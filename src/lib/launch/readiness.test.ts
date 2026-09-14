@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { buildProductionReadinessReport, summarizeReadiness } from "./readiness";
 
-const validEnv = {
+const validEnv: NodeJS.ProcessEnv = {
+  NODE_ENV: "production",
   NEXT_PUBLIC_SITE_URL: "https://calcumint.com",
   NEXT_PUBLIC_SUPABASE_URL: "https://example.supabase.co",
   NEXT_PUBLIC_SUPABASE_ANON_KEY: "anon",
@@ -20,7 +21,7 @@ const validEnv = {
   AI_MODEL: "model",
   AI_API_KEY: "ai-key",
   ADMIN_WORKER_SECRET: "admin-worker-1234"
-} as NodeJS.ProcessEnv;
+};
 
 describe("production readiness", () => {
   it("passes only when launch-critical production configuration exists", () => {
