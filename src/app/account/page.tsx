@@ -60,16 +60,16 @@ export default async function AccountPage() {
           <span className="eyebrow">Favorites</span>
           <h2>Saved calculators</h2>
           {favorites && favorites.length > 0 ? (
-            <ul>{favorites.map((item) => <li key={item.calculator_slug}><Link href={`/calculators/${item.calculator_slug}`}>{item.calculator_slug}</Link></li>)}</ul>
-          ) : <p>No favorites yet. Favorite controls will be connected to calculator pages after the account foundation is merged.</p>}
+            <ul>{favorites.map((item) => <li key={item.calculator_slug}><Link className="text-link" href={`/calculators?search=${encodeURIComponent(item.calculator_slug)}`}>{item.calculator_slug}</Link></li>)}</ul>
+          ) : <p>No favorites yet. Use the Favorite control on any certified calculator.</p>}
         </div>
 
         <div className="card">
           <span className="eyebrow">History</span>
           <h2>Recent calculations</h2>
           {history && history.length > 0 ? (
-            <ul>{history.map((item) => <li key={item.id}><strong>{item.calculator_slug}</strong> · v{item.calculator_version}</li>)}</ul>
-          ) : <p>No cloud calculation history yet.</p>}
+            <ul>{history.map((item) => <li key={item.id}><Link className="text-link" href={`/calculators?search=${encodeURIComponent(item.calculator_slug)}`}>{item.calculator_slug}</Link> · v{item.calculator_version}</li>)}</ul>
+          ) : <p>No cloud calculation history yet. Sign in on a calculator and choose Save calculation.</p>}
         </div>
       </div>
     </section>
