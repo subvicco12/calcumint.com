@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { featureFlags } from "./feature-flags";
 
 describe("product feature flags", () => {
-  it("enables B8 API and webhooks while AI and admin remain disabled", () => {
+  it("enables B9 AI while the later admin console remains disabled", () => {
     expect(featureFlags.calculatorEngine).toBe(true);
     expect(featureFlags.accounts).toBe(true);
     expect(featureFlags.proBilling).toBe(true);
@@ -10,7 +10,7 @@ describe("product feature flags", () => {
     expect(featureFlags.calculatorBuilder).toBe(true);
     expect(featureFlags.embedsAndLeads).toBe(true);
     expect(featureFlags.apiAndWebhooks).toBe(true);
-    expect(featureFlags.aiAssistant).toBe(false);
+    expect(featureFlags.aiAssistant).toBe(true);
     expect(featureFlags.adminConsole).toBe(false);
   });
 });
