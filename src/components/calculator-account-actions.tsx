@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
+import type { PlanId } from "@/lib/billing/plans";
 
 type Props = {
   calculatorSlug: string;
@@ -13,9 +14,29 @@ type Props = {
 
 const authConfigured = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
+function downloadFile(filename: string, content: string, mime: string) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  URL.revokeObjectURL(url);
+}
+
+function toCsv(input: Record<string, unknown>, output: Record<string, unknown>) {
+  const rows = [
+    ["section", "field", "value"],
+    ...Object.entries(input).map(([key, value]) => ["input", key, String(value)]),
+    ...Object.entries(output).map(([key, value]) => ["output", key, String(value)])
+  ];
+  return rows.map((row) => row.map((cell) => `"${cell.replaceAll('"', '""')}"`).join(",")).join("\n");
+}
+
 export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, input, output }: Props) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
+  const [plan, setPlan] = useState<PlanId>("free");
   const [status, setStatus] = useState("");
 
   useEffect(() => {
@@ -28,8 +49,14 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       if (!active) return;
       setSignedIn(Boolean(user));
       if (!user) return;
-      const { data } = await supabase.from("favorites").select("id").eq("user_id", user.id).eq("calculator_slug", calculatorSlug).maybeSingle();
-      if (active) setFavorite(Boolean(data));
+
+      const [{ data: favoriteData }, { data: profileData }] = await Promise.all([
+        supabase.from("favorites").select("id").eq("user_id", user.id).eq("calculator_slug", calculatorSlug).maybeSingle(),
+        supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle()
+      ]);
+      if (!active) return;
+      setFavorite(Boolean(favoriteData));
+      setPlan(profileData?.plan === "pro" || profileData?.plan === "business" ? profileData.plan : "free");
     })();
 
     return () => { active = false; };
@@ -47,7 +74,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       : await supabase.from("favorites").delete().eq("user_id", user.id).eq("calculator_slug", calculatorSlug);
 
     if (result.error) {
-      setStatus("Could not update favorite.");
+      setStatus(plan === "free" ? "Could not update favorite. Free accounts can save up to 10 favorites." : "Could not update favorite.");
       return;
     }
     setFavorite(nextFavorite);
@@ -68,7 +95,19 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       input_data: input,
       output_data: output
     });
-    setStatus(error ? "Could not save calculation." : "Calculation saved to your history.");
+    setStatus(error
+      ? plan === "free" ? "Could not save. Free accounts can keep up to 20 calculations." : "Could not save calculation."
+      : "Calculation saved to your history.");
+  }
+
+  function exportJson() {
+    if (!output || plan === "free") return;
+    downloadFile(`${calculatorSlug}.json`, JSON.stringify({ calculatorSlug, calculatorVersion, input, output }, null, 2), "application/json");
+  }
+
+  function exportCsv() {
+    if (!output || plan === "free") return;
+    downloadFile(`${calculatorSlug}.csv`, toCsv(input, output), "text/csv;charset=utf-8");
   }
 
   if (signedIn === false) {
@@ -80,6 +119,12 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     <div className="account-actions" aria-live="polite">
       <button className="button secondary" type="button" onClick={toggleFavorite}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
       <button className="button secondary" type="button" onClick={saveHistory} disabled={!output}>Save calculation</button>
+      {plan === "pro" || plan === "business" ? (
+        <>
+          <button className="button secondary" type="button" onClick={exportCsv} disabled={!output}>Export CSV</button>
+          <button className="button secondary" type="button" onClick={exportJson} disabled={!output}>Export JSON</button>
+        </>
+      ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {status && <span className="muted">{status}</span>}
     </div>
   );
