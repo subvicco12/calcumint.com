@@ -19,18 +19,21 @@ export default async function AccountPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const [{ data: profile }, { data: preferences }, { data: favorites }, { data: history }] = await Promise.all([
+  const [{ data: profile }, { data: preferences }, { data: favorites }, { data: history }, { data: subscription }] = await Promise.all([
     supabase.from("profiles").select("display_name,plan,created_at").eq("id", user.id).maybeSingle(),
     supabase.from("user_preferences").select("locale,currency,unit_system").eq("user_id", user.id).maybeSingle(),
     supabase.from("favorites").select("calculator_slug,created_at").eq("user_id", user.id).order("created_at", { ascending: false }).limit(12),
-    supabase.from("calculation_history").select("id,calculator_slug,calculator_version,created_at").eq("user_id", user.id).order("created_at", { ascending: false }).limit(10)
+    supabase.from("calculation_history").select("id,calculator_slug,calculator_version,created_at").eq("user_id", user.id).order("created_at", { ascending: false }).limit(10),
+    supabase.from("subscriptions").select("plan,billing_interval,status,current_period_end,cancel_at_period_end").eq("user_id", user.id).order("updated_at", { ascending: false }).limit(1).maybeSingle()
   ]);
+
+  const plan = String(profile?.plan ?? "free");
 
   return (
     <section className="container page-top account-page">
       <div className="section-heading">
         <div>
-          <span className="eyebrow">Free account</span>
+          <span className="eyebrow">{plan === "free" ? "Free account" : `${plan} account`}</span>
           <h1>{profile?.display_name ? `Welcome, ${profile.display_name}` : "Your CalcuMint account"}</h1>
           <p className="hero-copy">{user.email}</p>
         </div>
@@ -40,8 +43,14 @@ export default async function AccountPage() {
       <div className="account-grid">
         <div className="card">
           <span className="eyebrow">Plan</span>
-          <h2>{String(profile?.plan ?? "free").toUpperCase()}</h2>
-          <p>Your account currently uses the Free tier. Pro and Business billing will be connected in B4.</p>
+          <h2>{plan.toUpperCase()}</h2>
+          {subscription ? (
+            <>
+              <p>{String(subscription.status).replaceAll("_", " ")} · {subscription.billing_interval ?? "billing interval unavailable"}</p>
+              {subscription.current_period_end && <p className="muted-copy">Current term ends {new Date(subscription.current_period_end).toLocaleDateString()}.</p>}
+              {subscription.cancel_at_period_end && <p className="muted-copy">Cancellation is scheduled for the end of the current term.</p>}
+            </>
+          ) : <p>{plan === "free" ? "Free includes public calculators, 20 saved calculations and 10 favorites." : "Paid entitlement is active; billing details will appear after Paddle synchronization."}</p>}
           <Link className="button secondary" href="/pricing">Compare plans</Link>
         </div>
 

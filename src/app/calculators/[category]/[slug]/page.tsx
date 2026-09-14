@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CalculatorInteractive } from "@/components/calculator-interactive";
+import { FreeUserAdSlot } from "@/components/free-user-ad-slot";
 import { calculatorRegistry } from "@/calculators/registry";
 import { categoryContent, getPublicCalculatorContent, listPublicCalculators } from "@/calculators/public-content";
 import { siteConfig } from "@/lib/site";
@@ -70,6 +71,7 @@ export default async function CalculatorPage({ params }: PageProps) {
           <div className="calculator-card">
             <CalculatorInteractive slug={slug} />
           </div>
+          <FreeUserAdSlot />
 
           <article className="content-stack">
             <section className="content-section">
@@ -107,7 +109,7 @@ export default async function CalculatorPage({ params }: PageProps) {
             <p>Deterministic calculation logic, validated inputs and automated golden-vector tests.</p>
             <dl><div><dt>Risk class</dt><dd>{definition.riskClass}</dd></div><div><dt>Review status</dt><dd>{definition.reviewStatus}</dd></div><div><dt>Version</dt><dd>{definition.version}</dd></div></dl>
           </div>
-          <div className="upgrade-card"><span className="eyebrow">CalcuMint Pro</span><h3>Save, compare and export</h3><p>Advanced account features arrive in the next product batches. Core calculation remains public.</p><Link className="button secondary" href="/pricing">Compare plans</Link></div>
+          <div className="upgrade-card"><span className="eyebrow">CalcuMint Pro</span><h3>No ads, unlimited saves and exports</h3><p>Core calculation stays public. Pro adds a cleaner professional workflow and premium convenience features.</p><Link className="button secondary" href="/pricing">Compare plans</Link></div>
         </aside>
       </section>
     </>
