@@ -1,4 +1,24 @@
-import { createHmac, timingSafeEqual } from "node:crypto";
+import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+
+function deriveEncryptionKey(masterKey: string): Buffer {
+  return createHash("sha256").update(masterKey).digest();
+}
+
+export function encryptWebhookSecret(secret: string, masterKey: string): string {
+  const iv = randomBytes(12);
+  const cipher = createCipheriv("aes-256-gcm", deriveEncryptionKey(masterKey), iv);
+  const encrypted = Buffer.concat([cipher.update(secret, "utf8"), cipher.final()]);
+  const tag = cipher.getAuthTag();
+  return [iv.toString("base64url"), tag.toString("base64url"), encrypted.toString("base64url")].join(".");
+}
+
+export function decryptWebhookSecret(ciphertext: string, masterKey: string): string {
+  const [ivPart, tagPart, encryptedPart] = ciphertext.split(".");
+  if (!ivPart || !tagPart || !encryptedPart) throw new Error("Invalid encrypted webhook secret");
+  const decipher = createDecipheriv("aes-256-gcm", deriveEncryptionKey(masterKey), Buffer.from(ivPart, "base64url"));
+  decipher.setAuthTag(Buffer.from(tagPart, "base64url"));
+  return Buffer.concat([decipher.update(Buffer.from(encryptedPart, "base64url")), decipher.final()]).toString("utf8");
+}
 
 export function signWebhookPayload(secret: string, timestamp: number, payload: string): string {
   return createHmac("sha256", secret).update(`${timestamp}.${payload}`).digest("hex");
