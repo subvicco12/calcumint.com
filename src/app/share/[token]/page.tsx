@@ -13,8 +13,8 @@ export default async function SharedCalculatorPage({ params }: PageProps) {
   const admin = createSupabaseAdminClient();
   if (!admin) return <main className="embed-shell"><p>Share service is not configured.</p></main>;
   const tokenHash = createHash("sha256").update(token).digest("hex");
-  const { data: share } = await admin.from("share_links").select("calculator_id,label,expires_at,is_revoked").eq("token_hash", tokenHash).maybeSingle();
-  if (!share || share.is_revoked || (share.expires_at && new Date(share.expires_at).getTime() <= Date.now())) notFound();
+  const { data: share } = await admin.from("share_links").select("calculator_id,label,expires_at").eq("token_hash", tokenHash).eq("is_revoked", false).or("expires_at.is.null,expires_at.gt.now").maybeSingle();
+  if (!share) notFound();
   const { data: calculator } = await admin.from("custom_calculators").select("name,status,published_version").eq("id", share.calculator_id).eq("status", "published").maybeSingle();
   if (!calculator?.published_version) notFound();
   const { data: versionRow } = await admin.from("custom_calculator_versions").select("definition").eq("calculator_id", share.calculator_id).eq("version", calculator.published_version).maybeSingle();
