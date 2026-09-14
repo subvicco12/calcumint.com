@@ -4,17 +4,23 @@ import { unitConversionCalculator } from "./core/unit-conversion";
 import { compoundInterestCalculator } from "./finance/compound-interest";
 import { loanPaymentCalculator } from "./finance/loan-payment";
 
-type AnyCalculator = CalculatorDefinition<any, any>;
+type RegistryCalculator = CalculatorDefinition<unknown, unknown>;
 
-const definitions: readonly AnyCalculator[] = [
-  percentageCalculator,
-  unitConversionCalculator,
-  compoundInterestCalculator,
-  loanPaymentCalculator
+function eraseCalculatorTypes<TInput, TOutput>(
+  definition: CalculatorDefinition<TInput, TOutput>
+): RegistryCalculator {
+  return definition as unknown as RegistryCalculator;
+}
+
+const definitions: readonly RegistryCalculator[] = [
+  eraseCalculatorTypes(percentageCalculator),
+  eraseCalculatorTypes(unitConversionCalculator),
+  eraseCalculatorTypes(compoundInterestCalculator),
+  eraseCalculatorTypes(loanPaymentCalculator)
 ];
 
-const bySlug = new Map<string, AnyCalculator>();
-const byId = new Map<string, AnyCalculator>();
+const bySlug = new Map<string, RegistryCalculator>();
+const byId = new Map<string, RegistryCalculator>();
 
 for (const definition of definitions) {
   if (bySlug.has(definition.slug)) {
@@ -28,13 +34,13 @@ for (const definition of definitions) {
 }
 
 export const calculatorRegistry = {
-  list(): readonly AnyCalculator[] {
+  list(): readonly RegistryCalculator[] {
     return definitions;
   },
-  getBySlug(slug: string): AnyCalculator | undefined {
+  getBySlug(slug: string): RegistryCalculator | undefined {
     return bySlug.get(slug);
   },
-  getById(id: string): AnyCalculator | undefined {
+  getById(id: string): RegistryCalculator | undefined {
     return byId.get(id);
   }
 } as const;
