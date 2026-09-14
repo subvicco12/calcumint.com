@@ -21,7 +21,7 @@ export default async function BusinessApiPage({ searchParams }: PageProps) {
   const organizationId = String(membership.organization_id);
   const [{ data: keys }, { data: usage }] = await Promise.all([
     supabase.from("business_api_keys").select("id,name,key_prefix,scopes,status,rate_limit_per_minute,monthly_quota,last_used_at,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }),
-    supabase.from("api_usage_events").select("id,created_at").eq("organization_id", organizationId).gte("created_at", new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString())
+    supabase.from("api_usage_events").select("id,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(1000)
   ]);
 
   return (
@@ -35,7 +35,7 @@ export default async function BusinessApiPage({ searchParams }: PageProps) {
 
       <div className="business-stats">
         <article className="card"><span className="eyebrow">Keys</span><h2>{keys?.filter((key) => key.status === "active").length ?? 0}</h2><p>Active organization API credentials.</p></article>
-        <article className="card"><span className="eyebrow">Usage this month</span><h2>{usage?.length ?? 0}</h2><p>Metered API requests.</p></article>
+        <article className="card"><span className="eyebrow">Recent usage</span><h2>{usage?.length ?? 0}</h2><p>Recent metered API requests shown in this dashboard.</p></article>
         <article className="card"><span className="eyebrow">API version</span><h2>v1</h2><p>Stable Business calculation endpoints.</p></article>
       </div>
 
