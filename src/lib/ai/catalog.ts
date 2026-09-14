@@ -1,4 +1,4 @@
-import { listPublicCalculators } from "@/calculators/public-content";
+import { listPublicCalculators } from "../../calculators/public-content";
 
 export type CalculatorSuggestion = {
   slug: string;
