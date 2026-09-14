@@ -11,18 +11,17 @@ type Props = {
   output: Record<string, unknown> | null;
 };
 
+const authConfigured = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+
 export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, input, output }: Props) {
-  const [signedIn, setSignedIn] = useState<boolean | null>(null);
+  const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
   const [status, setStatus] = useState("");
 
   useEffect(() => {
     let active = true;
     const supabase = createSupabaseBrowserClient();
-    if (!supabase) {
-      setSignedIn(false);
-      return;
-    }
+    if (!supabase) return;
 
     void (async () => {
       const { data: { user } } = await supabase.auth.getUser();
