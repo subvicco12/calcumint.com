@@ -10,6 +10,8 @@ const serverSchema = z.object({
   WEBHOOK_ENCRYPTION_KEY: z.string().min(16).optional(),
   WEBHOOK_WORKER_SECRET: z.string().min(16).optional(),
   AI_PROVIDER: z.string().min(1).optional(),
+  AI_BASE_URL: z.string().url().optional(),
+  AI_MODEL: z.string().min(1).optional(),
   AI_API_KEY: z.string().min(1).optional()
 });
 

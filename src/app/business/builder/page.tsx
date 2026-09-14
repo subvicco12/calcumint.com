@@ -39,7 +39,7 @@ export default async function BuilderPage() {
     <section className="container page-top business-page">
       <div className="section-heading">
         <div><span className="eyebrow">Business Builder</span><h1>Build calculators without code.</h1><p className="hero-copy">Define inputs, formulas, outputs, charts, visibility and branding. CalcuMint executes formulas with a restricted parser—never arbitrary JavaScript.</p></div>
-        <Link className="button secondary" href="/business">Business workspace</Link>
+        <div className="button-row"><Link className="button primary" href="/business/builder/ai">AI draft assistant</Link><Link className="button secondary" href="/business">Business workspace</Link></div>
       </div>
 
       <div className="account-grid">
@@ -61,7 +61,7 @@ export default async function BuilderPage() {
           <label>Input fields JSON<textarea name="fields" rows={12} defaultValue={starterFields} spellCheck={false} /></label>
           <label>Outputs & formulas JSON<textarea name="outputs" rows={10} defaultValue={starterOutputs} spellCheck={false} /></label>
           <label>Charts JSON<textarea name="charts" rows={6} defaultValue={starterCharts} spellCheck={false} /></label>
-          <p className="muted-copy">Formula language supports +, −, ×, ÷, powers, comparisons, AND/OR, IF, MIN, MAX, ABS, ROUND, FLOOR and CEIL. Share-link/public delivery is activated in B7.</p>
+          <p className="muted-copy">Formula language supports +, −, ×, ÷, powers, comparisons, AND/OR, IF, MIN, MAX, ABS, ROUND, FLOOR and CEIL.</p>
           <button className="button primary" type="submit">Create calculator</button>
         </form>
       </div>

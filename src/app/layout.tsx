@@ -4,6 +4,7 @@ import "./account.css";
 import "./business.css";
 import "./builder.css";
 import "./delivery.css";
+import "./ai.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/lib/site";
