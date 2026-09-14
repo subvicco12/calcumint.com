@@ -17,18 +17,25 @@ async function requireUser() {
   return { supabase, user };
 }
 
+function parseJsonField(formData: FormData, name: string, fallback: unknown): unknown {
+  const raw = String(formData.get(name) ?? "").trim();
+  if (!raw) return fallback;
+  try { return JSON.parse(raw); } catch { throw new Error(`${name} must be valid JSON`); }
+}
+
 function parseDefinition(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim();
-  let fields: unknown;
-  let outputs: unknown;
-  try {
-    fields = JSON.parse(String(formData.get("fields") ?? "[]"));
-    outputs = JSON.parse(String(formData.get("outputs") ?? "[]"));
-  } catch {
-    throw new Error("Fields and outputs must be valid JSON");
-  }
-  return customCalculatorSchema.parse({ name, description, fields, outputs });
+  const visibility = String(formData.get("visibility") ?? "private");
+  const branding = {
+    companyName: String(formData.get("companyName") ?? "").trim(),
+    logoUrl: String(formData.get("logoUrl") ?? "").trim(),
+    accentColor: String(formData.get("accentColor") ?? "#0b7a66").trim()
+  };
+  const fields = parseJsonField(formData, "fields", []);
+  const outputs = parseJsonField(formData, "outputs", []);
+  const charts = parseJsonField(formData, "charts", []);
+  return customCalculatorSchema.parse({ name, description, visibility, branding, fields, outputs, charts });
 }
 
 export async function createCustomCalculator(formData: FormData) {
@@ -76,6 +83,7 @@ export async function saveCustomCalculatorVersion(formData: FormData) {
   const { error: updateError } = await supabase.from("custom_calculators").update({
     name: definition.name,
     description: definition.description,
+    visibility: definition.visibility,
     current_version: nextVersion,
     updated_at: new Date().toISOString()
   }).eq("id", calculatorId);
