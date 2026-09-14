@@ -5,7 +5,7 @@ export const featureFlags = {
   businessWorkspace: true,
   calculatorBuilder: true,
   embedsAndLeads: true,
-  apiAndWebhooks: false,
+  apiAndWebhooks: true,
   aiAssistant: false,
   adminConsole: false
 } as const;
