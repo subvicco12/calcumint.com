@@ -60,6 +60,10 @@ create policy "history_select_own" on public.calculation_history for select usin
 create policy "history_insert_own" on public.calculation_history for insert with check (auth.uid() = user_id);
 create policy "history_delete_own" on public.calculation_history for delete using (auth.uid() = user_id);
 
+-- The subscription plan is server-controlled. Authenticated users may edit only display_name.
+revoke update on public.profiles from authenticated;
+grant update(display_name) on public.profiles to authenticated;
+
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
