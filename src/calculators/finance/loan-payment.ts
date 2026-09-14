@@ -22,7 +22,7 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
   category: "loans-mortgages",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "reviewed",
+  reviewStatus: "draft",
   inputSchema,
   calculate: ({ principal, annualRatePercent, termMonths }) => {
     const monthlyRate = annualRatePercent / 100 / 12;
