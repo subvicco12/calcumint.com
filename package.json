@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "test:launch": "vitest run src/calculators/launch-portfolio.test.ts src/lib/launch/readiness.test.ts src/lib/launch/hardening.test.ts",
     "test:watch": "vitest"
   },
   "dependencies": {
