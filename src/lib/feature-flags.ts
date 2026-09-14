@@ -1,5 +1,5 @@
 export const featureFlags = {
-  calculatorEngine: false,
+  calculatorEngine: true,
   accounts: false,
   proBilling: false,
   businessWorkspace: false,
