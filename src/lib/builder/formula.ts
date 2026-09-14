@@ -42,6 +42,7 @@ class Parser {
   }
 
   private peek(): Token | undefined { return this.tokens[this.position]; }
+  private peekParen(value: "(" | ")"): boolean { const token = this.peek(); return token?.type === "paren" && token.value === value; }
   private consume(): Token { const token = this.tokens[this.position]; if (!token) throw new Error("Unexpected end of formula"); this.position += 1; return token; }
   private matchOperator(value: string): boolean { const token = this.peek(); if (token?.type === "operator" && token.value === value) { this.position += 1; return true; } return false; }
 
@@ -108,7 +109,7 @@ class Parser {
       const upper = token.value.toUpperCase();
       if (upper === "TRUE") return true;
       if (upper === "FALSE") return false;
-      if (this.peek()?.type === "paren" && this.peek()?.value === "(") return this.callFunction(upper);
+      if (this.peekParen("(")) return this.callFunction(upper);
       const value = this.variables[token.value];
       if (value === undefined || !Number.isFinite(value)) throw new Error(`Unknown or invalid variable: ${token.value}`);
       return value;
@@ -125,7 +126,7 @@ class Parser {
     if (!functionNames.has(name)) throw new Error(`Unsupported function: ${name}`);
     this.consume();
     const args: FormulaValue[] = [];
-    if (!(this.peek()?.type === "paren" && this.peek()?.value === ")")) {
+    if (!this.peekParen(")")) {
       while (true) {
         args.push(this.parseOr());
         if (this.peek()?.type === "comma") { this.consume(); continue; }
