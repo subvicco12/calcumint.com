@@ -24,7 +24,8 @@ export function roundTo(value: number, digits = 2, mode: RoundingMode = "half-aw
       break;
     default: {
       const absolute = Math.abs(scaled);
-      rounded = Math.sign(scaled) * Math.floor(absolute + 0.5 + Number.EPSILON);
+      const floatingTolerance = Number.EPSILON * Math.max(1, absolute) * 4;
+      rounded = Math.sign(scaled) * Math.floor(absolute + 0.5 + floatingTolerance);
     }
   }
 
