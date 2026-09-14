@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createApiKeySecret, hashApiKey, hasScope, normalizeScopes } from "./api-keys";
-import { nextWebhookRetry, signWebhookPayload, verifyWebhookSignature } from "./webhooks";
+import { decryptWebhookSecret, encryptWebhookSecret, nextWebhookRetry, signWebhookPayload, verifyWebhookSignature } from "./webhooks";
 
 describe("Business API security helpers", () => {
   it("creates opaque keys and stores only deterministic hashes", () => {
@@ -16,6 +16,13 @@ describe("Business API security helpers", () => {
     expect(scopes).toEqual(["calculations:run"]);
     expect(hasScope(scopes, "calculations:run")).toBe(true);
     expect(hasScope(scopes, "leads:read")).toBe(false);
+  });
+
+  it("encrypts signing secrets before database storage", () => {
+    const encrypted = encryptWebhookSecret("whsec_example", "master-secret-at-least-sixteen");
+    expect(encrypted).not.toContain("whsec_example");
+    expect(decryptWebhookSecret(encrypted, "master-secret-at-least-sixteen")).toBe("whsec_example");
+    expect(() => decryptWebhookSecret(encrypted, "wrong-master-key-value")).toThrow();
   });
 
   it("signs outbound webhook payloads and rejects tampering", () => {
