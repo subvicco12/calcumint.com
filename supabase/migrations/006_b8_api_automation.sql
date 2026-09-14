@@ -120,5 +120,63 @@ begin
 end;
 $$;
 
+create or replace function public.enqueue_business_webhook_event(p_organization_id uuid, p_event_type text, p_payload jsonb)
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare inserted_count integer;
+begin
+  insert into public.webhook_deliveries(organization_id, endpoint_id, event_type, payload)
+  select p_organization_id, e.id, p_event_type, p_payload
+  from public.business_webhook_endpoints e
+  where e.organization_id = p_organization_id
+    and e.status = 'active'
+    and e.event_types ? p_event_type;
+  get diagnostics inserted_count = row_count;
+  return inserted_count;
+end;
+$$;
+
+create or replace function public.queue_calculation_webhooks()
+returns trigger language plpgsql security definer set search_path = public
+as $$
+begin
+  perform public.enqueue_business_webhook_event(new.organization_id, 'calculation.completed', jsonb_build_object(
+    'run_id', new.id,
+    'calculator_id', new.calculator_id,
+    'calculator_version', new.calculator_version,
+    'input', new.input_data,
+    'output', new.output_data,
+    'created_at', new.created_at
+  ));
+  return new;
+end;
+$$;
+
+create or replace function public.queue_lead_webhooks()
+returns trigger language plpgsql security definer set search_path = public
+as $$
+begin
+  perform public.enqueue_business_webhook_event(new.organization_id, 'lead.created', jsonb_build_object(
+    'lead_id', new.id,
+    'calculator_id', new.calculator_id,
+    'email', new.email,
+    'name', new.name,
+    'company', new.company,
+    'created_at', new.created_at
+  ));
+  return new;
+end;
+$$;
+
+drop trigger if exists custom_runs_queue_webhooks on public.custom_calculator_runs;
+create trigger custom_runs_queue_webhooks after insert on public.custom_calculator_runs for each row execute function public.queue_calculation_webhooks();
+drop trigger if exists leads_queue_webhooks on public.leads;
+create trigger leads_queue_webhooks after insert on public.leads for each row execute function public.queue_lead_webhooks();
+
 revoke all on function public.consume_business_api_quota(uuid) from public;
 grant execute on function public.consume_business_api_quota(uuid) to service_role;
+revoke all on function public.enqueue_business_webhook_event(uuid,text,jsonb) from public;
+grant execute on function public.enqueue_business_webhook_event(uuid,text,jsonb) to service_role;
