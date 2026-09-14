@@ -5,6 +5,7 @@ import { runCalculator } from "@/calculators/engine";
 import { percentageCalculator } from "@/calculators/core/percentage";
 import { unitConversionCalculator } from "@/calculators/core/unit-conversion";
 import { getUnitFamily, supportedUnits } from "@/calculators/units";
+import { CalculatorAccountActions } from "@/components/calculator-account-actions";
 
 const unitLabels: Record<string, string> = {
   m: "Metres (m)", km: "Kilometres (km)", cm: "Centimetres (cm)", mm: "Millimetres (mm)",
@@ -26,13 +27,14 @@ function NumberField({ label, value, onChange }: { label: string; value: string;
 function PercentageTool() {
   const [percentage, setPercentage] = useState("20");
   const [value, setValue] = useState("250");
+  const numericInput = useMemo(() => ({ percentage: Number(percentage), value: Number(value) }), [percentage, value]);
   const result = useMemo(() => {
     try {
-      return runCalculator(percentageCalculator, { percentage: Number(percentage), value: Number(value) }).output.result;
+      return runCalculator(percentageCalculator, numericInput).output.result;
     } catch {
       return null;
     }
-  }, [percentage, value]);
+  }, [numericInput]);
 
   return (
     <div className="calculator-ui">
@@ -44,6 +46,12 @@ function PercentageTool() {
         <span>Result</span>
         <strong>{result === null ? "Enter valid numbers" : result.toLocaleString(undefined, { maximumFractionDigits: 12 })}</strong>
       </div>
+      <CalculatorAccountActions
+        calculatorSlug={percentageCalculator.slug}
+        calculatorVersion={percentageCalculator.version}
+        input={numericInput}
+        output={result === null ? null : { result }}
+      />
     </div>
   );
 }
@@ -54,13 +62,14 @@ function UnitConversionTool() {
   const [toUnit, setToUnit] = useState("km");
   const family = getUnitFamily(fromUnit);
   const targetUnits = supportedUnits.filter((unit) => getUnitFamily(unit) === family);
+  const numericInput = useMemo(() => ({ value: Number(value), fromUnit, toUnit }), [value, fromUnit, toUnit]);
   const result = useMemo(() => {
     try {
-      return runCalculator(unitConversionCalculator, { value: Number(value), fromUnit, toUnit }).output.result;
+      return runCalculator(unitConversionCalculator, numericInput).output.result;
     } catch {
       return null;
     }
-  }, [value, fromUnit, toUnit]);
+  }, [numericInput]);
 
   function changeSource(unit: string) {
     setFromUnit(unit);
@@ -81,6 +90,12 @@ function UnitConversionTool() {
         <span>Converted value</span>
         <strong>{result === null ? "Choose compatible units" : result.toLocaleString(undefined, { maximumFractionDigits: 12 })}</strong>
       </div>
+      <CalculatorAccountActions
+        calculatorSlug={unitConversionCalculator.slug}
+        calculatorVersion={unitConversionCalculator.version}
+        input={numericInput}
+        output={result === null ? null : { result }}
+      />
     </div>
   );
 }
