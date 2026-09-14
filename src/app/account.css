@@ -9,4 +9,6 @@
 .success-notice { background: #eaf8f2; border-color: #b7dfd5; color: #126b59; }
 .muted-copy { color: var(--muted); font-size: .92rem; }
 .muted-copy a { color: var(--brand-strong); font-weight: 700; }
+.account-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-top: 4px; }
+.account-actions .button:disabled { opacity: .55; cursor: not-allowed; }
 @media (max-width: 760px) { .auth-grid, .account-grid { grid-template-columns: 1fr; } }
