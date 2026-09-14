@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { refreshReviewAlerts, resolveAdminAlert } from "./schedule-actions";
 
 export const metadata = { title: "Platform Admin" };
 
@@ -22,6 +23,7 @@ export default async function AdminPage() {
   const counts = Object.fromEntries(["draft","review","certified","published","archived"].map((state) => [state, inventory.filter((item) => item.lifecycle === state).length]));
   const overdue = inventory.filter((item) => item.lifecycle === "published" && item.next_review_due_at && item.next_review_due_at < now).length;
   const ymyl = inventory.filter((item) => ["financial","health","tax"].includes(String(item.risk_class))).length;
+  const canReviewAlerts = ["owner","admin","reviewer"].includes(String(admin.role));
 
   return <section className="container page-top admin-page">
     <div className="section-heading"><div><span className="eyebrow">CalcuMint operations</span><h1>Admin Control Center</h1><p className="hero-copy">Review, certify, publish and monitor the calculator inventory from one governed workflow.</p></div><Link className="button primary" href="/admin/calculators">Calculator factory</Link></div>
@@ -38,7 +40,7 @@ export default async function AdminPage() {
       <article className="card"><span className="eyebrow">Operator</span><h2>{String(admin.role)}</h2><p>Platform-admin privileges are separate from customer Business roles and cannot be self-assigned.</p></article>
     </div>
 
-    <article className="card section"><div className="section-heading"><div><span className="eyebrow">Quality watch</span><h2>Open alerts</h2></div></div>{alerts?.length ? <ul className="admin-list">{alerts.map((alert) => <li key={alert.id}><strong>{alert.severity.toUpperCase()}</strong> · {alert.alert_type} — {alert.message}{alert.calculator_id ? <> · <Link href={`/admin/calculators/${alert.calculator_id}`}>Open calculator</Link></> : null}</li>)}</ul> : <p>No open alerts.</p>}</article>
+    <article className="card section"><div className="section-heading"><div><span className="eyebrow">Quality watch</span><h2>Open alerts</h2></div>{canReviewAlerts && <form action={refreshReviewAlerts}><button className="button secondary" type="submit">Refresh review alerts</button></form>}</div>{alerts?.length ? <ul className="admin-list">{alerts.map((alert) => <li key={alert.id}><strong>{alert.severity.toUpperCase()}</strong> · {alert.alert_type} — {alert.message}{alert.calculator_id ? <> · <Link href={`/admin/calculators/${alert.calculator_id}`}>Open calculator</Link></> : null}{canReviewAlerts ? <form className="inline-form" action={resolveAdminAlert}><input type="hidden" name="alertId" value={alert.id}/><button className="button secondary" type="submit">Resolve</button></form> : null}</li>)}</ul> : <p>No open alerts.</p>}</article>
 
     <article className="card section"><span className="eyebrow">Factory activity</span><h2>Recent bulk jobs</h2>{jobs?.length ? <ul className="admin-list">{jobs.map((job) => <li key={job.id}>{job.job_type} · <strong>{job.status}</strong> · {new Date(job.created_at).toLocaleString()}</li>)}</ul> : <p>No bulk jobs yet.</p>}</article>
   </section>;
