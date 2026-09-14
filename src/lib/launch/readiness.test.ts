@@ -9,8 +9,10 @@ const validEnv = {
   NEXT_PUBLIC_PADDLE_ENV: "production",
   PADDLE_API_KEY: "paddle",
   PADDLE_WEBHOOK_SECRET: "webhook",
-  PADDLE_PRO_MONTHLY_PRICE_ID: "pri_month",
-  PADDLE_PRO_YEARLY_PRICE_ID: "pri_year",
+  PADDLE_PRO_MONTHLY_PRICE_ID: "pri_pro_month",
+  PADDLE_PRO_YEARLY_PRICE_ID: "pri_pro_year",
+  PADDLE_BUSINESS_MONTHLY_PRICE_ID: "pri_business_month",
+  PADDLE_BUSINESS_YEARLY_PRICE_ID: "pri_business_year",
   WEBHOOK_ENCRYPTION_KEY: "12345678901234567890123456789012",
   WEBHOOK_WORKER_SECRET: "worker-secret-1234",
   AI_PROVIDER: "provider",
@@ -32,6 +34,12 @@ describe("production readiness", () => {
     expect(report.ready).toBe(false);
     expect(report.checks.find((check) => check.id === "env:SUPABASE_SERVICE_ROLE_KEY")?.ok).toBe(false);
     expect(report.checks.find((check) => check.id === "paddle:production")?.ok).toBe(false);
+  });
+
+  it("blocks launch when either Business billing price is missing", () => {
+    const report = buildProductionReadinessReport({ ...validEnv, PADDLE_BUSINESS_YEARLY_PRICE_ID: "" });
+    expect(report.ready).toBe(false);
+    expect(report.checks.find((check) => check.id === "env:PADDLE_BUSINESS_YEARLY_PRICE_ID")?.ok).toBe(false);
   });
 
   it("rejects a non-canonical or insecure production URL", () => {
