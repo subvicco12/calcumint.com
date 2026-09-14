@@ -1,0 +1,31 @@
+"use client";
+
+import { useState } from "react";
+
+type Props = {
+  calculatorName: string;
+  formula?: string;
+  assumptions?: readonly string[];
+  values: Record<string, unknown>;
+  result: Record<string, unknown>;
+};
+
+export function AiResultExplanation(props: Props) {
+  const [summary, setSummary] = useState("");
+  const [points, setPoints] = useState<string[]>([]);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function explain() {
+    setLoading(true); setMessage("");
+    try {
+      const response = await fetch("/api/ai/explain", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(props) });
+      const payload = await response.json() as { summary?: string; keyPoints?: string[]; caveat?: string; error?: string };
+      if (!response.ok) throw new Error(payload.error ?? "Explanation unavailable");
+      setSummary(payload.summary ?? ""); setPoints(payload.keyPoints ?? []); setMessage(payload.caveat ?? "");
+    } catch (error) { setMessage(error instanceof Error ? error.message : "Explanation unavailable"); }
+    finally { setLoading(false); }
+  }
+
+  return <div className="ai-explainer"><button className="button secondary" type="button" onClick={explain} disabled={loading}>{loading ? "Explaining…" : "Explain this result with AI"}</button>{summary && <div className="notice"><strong>AI explanation</strong><p>{summary}</p>{points.length > 0 && <ul>{points.map((point) => <li key={point}>{point}</li>)}</ul>}</div>}{message && <p className="muted-copy">{message}</p>}</div>;
+}
