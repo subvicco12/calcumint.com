@@ -2,8 +2,6 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { publicEnv, serverEnv } from "@/lib/env";
 import type { BillingInterval } from "./plans";
 
-const PADDLE_API_VERSION = "1";
-
 export function paddleApiBaseUrl(): string {
   return publicEnv.NEXT_PUBLIC_PADDLE_ENV === "production"
     ? "https://api.paddle.com"
@@ -25,7 +23,6 @@ export async function paddleRequest<T>(path: string, init: RequestInit): Promise
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
-      "Paddle-Version": PADDLE_API_VERSION,
       ...(init.headers ?? {})
     },
     cache: "no-store"
