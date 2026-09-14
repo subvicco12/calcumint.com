@@ -1,6 +1,6 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { publicEnv, serverEnv } from "../env";
-import type { BillingInterval } from "./plans";
+import type { BillingInterval, PlanId } from "./plans";
 
 export function paddleApiBaseUrl(): string {
   return publicEnv.NEXT_PUBLIC_PADDLE_ENV === "production"
@@ -8,10 +8,19 @@ export function paddleApiBaseUrl(): string {
     : "https://sandbox-api.paddle.com";
 }
 
-export function getProPriceId(interval: BillingInterval): string | null {
+export function getPriceId(plan: Exclude<PlanId, "free">, interval: BillingInterval): string | null {
+  if (plan === "pro") {
+    return interval === "monthly"
+      ? serverEnv.PADDLE_PRO_MONTHLY_PRICE_ID ?? null
+      : serverEnv.PADDLE_PRO_YEARLY_PRICE_ID ?? null;
+  }
   return interval === "monthly"
-    ? serverEnv.PADDLE_PRO_MONTHLY_PRICE_ID ?? null
-    : serverEnv.PADDLE_PRO_YEARLY_PRICE_ID ?? null;
+    ? serverEnv.PADDLE_BUSINESS_MONTHLY_PRICE_ID ?? null
+    : serverEnv.PADDLE_BUSINESS_YEARLY_PRICE_ID ?? null;
+}
+
+export function getProPriceId(interval: BillingInterval): string | null {
+  return getPriceId("pro", interval);
 }
 
 export async function paddleRequest<T>(path: string, init: RequestInit): Promise<T> {
