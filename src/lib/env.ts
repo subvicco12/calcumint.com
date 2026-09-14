@@ -9,6 +9,7 @@ const serverSchema = z.object({
   PADDLE_PRO_YEARLY_PRICE_ID: z.string().min(1).optional(),
   WEBHOOK_ENCRYPTION_KEY: z.string().min(16).optional(),
   WEBHOOK_WORKER_SECRET: z.string().min(16).optional(),
+  ADMIN_WORKER_SECRET: z.string().min(16).optional(),
   AI_PROVIDER: z.string().min(1).optional(),
   AI_BASE_URL: z.string().url().optional(),
   AI_MODEL: z.string().min(1).optional(),

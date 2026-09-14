@@ -7,5 +7,5 @@ export const featureFlags = {
   embedsAndLeads: true,
   apiAndWebhooks: true,
   aiAssistant: true,
-  adminConsole: false
+  adminConsole: true
 } as const;
