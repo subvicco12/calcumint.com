@@ -1,5 +1,5 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { publicEnv, serverEnv } from "@/lib/env";
+import { publicEnv, serverEnv } from "../env";
 import type { BillingInterval } from "./plans";
 
 export function paddleApiBaseUrl(): string {
