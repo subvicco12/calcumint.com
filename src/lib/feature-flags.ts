@@ -6,6 +6,6 @@ export const featureFlags = {
   calculatorBuilder: true,
   embedsAndLeads: true,
   apiAndWebhooks: true,
-  aiAssistant: false,
+  aiAssistant: true,
   adminConsole: false
 } as const;
