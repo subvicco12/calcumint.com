@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getProPriceId, paddleRequest } from "@/lib/billing/paddle";
+import { getPriceId, paddleRequest } from "@/lib/billing/paddle";
 import { publicEnv } from "@/lib/env";
 
 const requestSchema = z.object({
+  plan: z.enum(["pro", "business"]).default("pro"),
   interval: z.enum(["monthly", "yearly"])
 });
 
@@ -21,10 +22,11 @@ export async function POST(request: Request) {
   if (!user) return NextResponse.json({ error: "Sign in required" }, { status: 401 });
 
   const parsed = requestSchema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: "Invalid billing interval" }, { status: 400 });
+  if (!parsed.success) return NextResponse.json({ error: "Invalid billing selection" }, { status: 400 });
 
-  const priceId = getProPriceId(parsed.data.interval);
-  if (!priceId) return NextResponse.json({ error: "Pro pricing is not configured" }, { status: 503 });
+  const { plan, interval } = parsed.data;
+  const priceId = getPriceId(plan, interval);
+  if (!priceId) return NextResponse.json({ error: `${plan === "business" ? "Business" : "Pro"} pricing is not configured` }, { status: 503 });
 
   try {
     const transaction = await paddleRequest<PaddleTransaction>("/transactions", {
@@ -34,8 +36,8 @@ export async function POST(request: Request) {
         collection_mode: "automatic",
         custom_data: {
           calcumint_user_id: user.id,
-          calcumint_plan: "pro",
-          billing_interval: parsed.data.interval
+          calcumint_plan: plan,
+          billing_interval: interval
         },
         checkout: {
           url: `${publicEnv.NEXT_PUBLIC_SITE_URL}/pricing`
