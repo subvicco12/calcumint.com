@@ -17,7 +17,7 @@ const explanationResponseSchema = z.object({
 export async function findCalculatorWithAi(query: string) {
   const fallback = deterministicCalculatorSearch(query, 5);
   const provider = getAiProvider();
-  if (!provider) return { recommendations: fallback.map((item) => ({ ...item, reason: item.description })), usedAi: false };
+  if (!provider) return { recommendations: fallback.map((item) => ({ ...item, reason: item.description })), usedAi: false, usage: undefined };
 
   const catalog = publicCalculatorCatalog();
   const result = await provider.generateJson([
