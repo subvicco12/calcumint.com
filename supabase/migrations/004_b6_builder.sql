@@ -7,6 +7,7 @@ create table if not exists public.custom_calculators (
   slug text not null check (slug ~ '^[a-z0-9][a-z0-9-]{1,62}$'),
   description text not null default '',
   status text not null default 'draft' check (status in ('draft','published','archived')),
+  visibility text not null default 'private' check (visibility in ('private','workspace','share-link')),
   current_version integer not null default 1 check (current_version > 0),
   published_version integer,
   created_by uuid not null references auth.users(id),
@@ -83,12 +84,15 @@ language plpgsql
 security definer set search_path = public
 as $$
 declare v_id uuid;
+declare v_visibility text;
 begin
   if auth.uid() is null then raise exception 'Authentication required'; end if;
   if not public.has_org_role(p_organization_id, array['owner','admin','manager']) then raise exception 'Builder permission required'; end if;
+  v_visibility := coalesce(p_definition->>'visibility', 'private');
+  if v_visibility not in ('private','workspace','share-link') then raise exception 'Invalid visibility'; end if;
 
-  insert into public.custom_calculators (organization_id, name, slug, description, created_by)
-  values (p_organization_id, p_name, p_slug, coalesce(p_description, ''), auth.uid())
+  insert into public.custom_calculators (organization_id, name, slug, description, visibility, created_by)
+  values (p_organization_id, p_name, p_slug, coalesce(p_description, ''), v_visibility, auth.uid())
   returning id into v_id;
 
   insert into public.custom_calculator_versions (calculator_id, version, definition, change_note, created_by)
