@@ -15,6 +15,10 @@ const starterOutputs = JSON.stringify([
   { key: "margin", label: "Profit margin", formula: "IF(revenue > 0, profit / revenue * 100, 0)", format: "percentage", decimals: 2 }
 ], null, 2);
 
+const starterCharts = JSON.stringify([
+  { title: "Profit overview", type: "bar", outputKeys: ["profit", "margin"] }
+], null, 2);
+
 export default async function BuilderPage() {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Builder requires Supabase configuration.</h1></section>;
@@ -29,19 +33,19 @@ export default async function BuilderPage() {
   }
 
   const organizationId = String(membership.organization_id);
-  const { data: calculators } = await supabase.from("custom_calculators").select("id,name,slug,status,current_version,published_version,updated_at").eq("organization_id", organizationId).order("updated_at", { ascending: false });
+  const { data: calculators } = await supabase.from("custom_calculators").select("id,name,slug,status,visibility,current_version,published_version,updated_at").eq("organization_id", organizationId).order("updated_at", { ascending: false });
 
   return (
     <section className="container page-top business-page">
       <div className="section-heading">
-        <div><span className="eyebrow">Business Builder</span><h1>Build calculators without code.</h1><p className="hero-copy">Define inputs, formulas and outputs. CalcuMint executes formulas with a restricted parser—never arbitrary JavaScript.</p></div>
+        <div><span className="eyebrow">Business Builder</span><h1>Build calculators without code.</h1><p className="hero-copy">Define inputs, formulas, outputs, charts, visibility and branding. CalcuMint executes formulas with a restricted parser—never arbitrary JavaScript.</p></div>
         <Link className="button secondary" href="/business">Business workspace</Link>
       </div>
 
       <div className="account-grid">
         <article className="card">
           <span className="eyebrow">Existing calculators</span><h2>Your builder library</h2>
-          {calculators?.length ? <ul>{calculators.map((calculator) => <li key={calculator.id}><Link className="text-link" href={`/business/builder/${calculator.id}`}>{calculator.name}</Link> · {calculator.status} · v{calculator.current_version}</li>)}</ul> : <p>No custom calculators yet.</p>}
+          {calculators?.length ? <ul>{calculators.map((calculator) => <li key={calculator.id}><Link className="text-link" href={`/business/builder/${calculator.id}`}>{calculator.name}</Link> · {calculator.status} · {calculator.visibility} · v{calculator.current_version}</li>)}</ul> : <p>No custom calculators yet.</p>}
         </article>
 
         <form className="card form-stack" action={createCustomCalculator}>
@@ -50,9 +54,14 @@ export default async function BuilderPage() {
           <label>Name<input name="name" required minLength={2} maxLength={120} defaultValue="Profit Margin Calculator" /></label>
           <label>Slug<input name="slug" required pattern="[a-z0-9-]+" defaultValue="profit-margin-calculator" /></label>
           <label>Description<textarea name="description" rows={3} defaultValue="Calculate profit and profit margin from revenue and cost." /></label>
+          <label>Visibility<select name="visibility" defaultValue="private"><option value="private">Private</option><option value="workspace">Workspace</option><option value="share-link">Share-link ready</option></select></label>
+          <label>Brand / company name<input name="companyName" maxLength={120} placeholder="Acme Advisory" /></label>
+          <label>Logo URL<input name="logoUrl" type="url" placeholder="https://example.com/logo.svg" /></label>
+          <label>Accent color<input name="accentColor" pattern="#[0-9A-Fa-f]{6}" defaultValue="#0b7a66" /></label>
           <label>Input fields JSON<textarea name="fields" rows={12} defaultValue={starterFields} spellCheck={false} /></label>
           <label>Outputs & formulas JSON<textarea name="outputs" rows={10} defaultValue={starterOutputs} spellCheck={false} /></label>
-          <p className="muted-copy">Formula language supports +, −, ×, ÷, powers, comparisons, AND/OR, IF, MIN, MAX, ABS, ROUND, FLOOR and CEIL.</p>
+          <label>Charts JSON<textarea name="charts" rows={6} defaultValue={starterCharts} spellCheck={false} /></label>
+          <p className="muted-copy">Formula language supports +, −, ×, ÷, powers, comparisons, AND/OR, IF, MIN, MAX, ABS, ROUND, FLOOR and CEIL. Share-link/public delivery is activated in B7.</p>
           <button className="button primary" type="submit">Create calculator</button>
         </form>
       </div>
