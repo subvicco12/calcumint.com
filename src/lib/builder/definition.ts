@@ -21,14 +21,33 @@ export const customOutputSchema = z.object({
   decimals: z.number().int().min(0).max(12).default(2)
 });
 
+export const customChartSchema = z.object({
+  title: z.string().min(1).max(120),
+  type: z.enum(["bar", "comparison"]),
+  outputKeys: z.array(z.string().regex(/^[A-Za-z_][A-Za-z0-9_]*$/)).min(1).max(12)
+});
+
+export const customBrandingSchema = z.object({
+  companyName: z.string().max(120).default(""),
+  logoUrl: z.string().url().or(z.literal("")).default(""),
+  accentColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).default("#0b7a66")
+});
+
 export const customCalculatorSchema = z.object({
   name: z.string().min(2).max(120),
   description: z.string().max(1000).default(""),
+  visibility: z.enum(["private", "workspace", "share-link"]).default("private"),
+  branding: customBrandingSchema.default({ companyName: "", logoUrl: "", accentColor: "#0b7a66" }),
   fields: z.array(customFieldSchema).min(1).max(50),
-  outputs: z.array(customOutputSchema).min(1).max(20)
+  outputs: z.array(customOutputSchema).min(1).max(20),
+  charts: z.array(customChartSchema).max(8).default([])
 }).superRefine((definition, ctx) => {
   const keys = [...definition.fields.map((field) => field.key), ...definition.outputs.map((output) => output.key)];
   if (new Set(keys).size !== keys.length) ctx.addIssue({ code: "custom", message: "Field and output keys must be unique" });
+  const outputKeys = new Set(definition.outputs.map((output) => output.key));
+  definition.charts.forEach((chart, chartIndex) => chart.outputKeys.forEach((key) => {
+    if (!outputKeys.has(key)) ctx.addIssue({ code: "custom", path: ["charts", chartIndex, "outputKeys"], message: `Chart references unknown output: ${key}` });
+  }));
 });
 
 export type CustomCalculatorDefinition = z.infer<typeof customCalculatorSchema>;
@@ -52,8 +71,8 @@ export function runCustomCalculator(definition: CustomCalculatorDefinition, raw:
   const variables = validateCustomInput(parsed, raw);
   const output: Record<string, number | boolean> = {};
   for (const item of parsed.outputs) {
-    const value = evaluateFormula(item.formula, { ...variables, ...Object.fromEntries(Object.entries(output).filter(([, value]) => typeof value === "number")) as Record<string, number> });
-    output[item.key] = value;
+    const numericOutputs = Object.fromEntries(Object.entries(output).filter(([, value]) => typeof value === "number")) as Record<string, number>;
+    output[item.key] = evaluateFormula(item.formula, { ...variables, ...numericOutputs });
   }
   return { input: variables, output };
 }
