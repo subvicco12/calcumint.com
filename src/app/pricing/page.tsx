@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ProCheckoutButton } from "@/components/pro-checkout-button";
+import { PlanCheckoutButton } from "@/components/pro-checkout-button";
 import { planCatalog } from "@/lib/billing/plans";
 
 export const metadata = {
@@ -41,34 +41,38 @@ export default function PricingPage() {
             <li>Unlimited calculation history</li>
             <li>Unlimited favorites</li>
             <li>CSV/JSON professional exports</li>
-            <li>Advanced analysis features as they launch</li>
+            <li>Advanced analysis features</li>
             <li>Monthly → yearly upgrade allowed immediately</li>
             <li>Yearly → monthly takes effect only at term end</li>
           </ul>
           <div className="plan-actions">
-            <ProCheckoutButton interval="monthly" />
-            <ProCheckoutButton interval="yearly" />
+            <PlanCheckoutButton plan="pro" interval="monthly" />
+            <PlanCheckoutButton plan="pro" interval="yearly" />
           </div>
         </article>
 
         <article className="card pricing-card">
           <span className="eyebrow">{planCatalog.business.tagline}</span>
           <h2>Business</h2>
-          <p className="price">From ${planCatalog.business.monthlyPriceUsd.toFixed(2)}/month</p>
+          <p className="price">${planCatalog.business.monthlyPriceUsd.toFixed(2)}/month</p>
+          <p className="annual-price">or ${planCatalog.business.yearlyPriceUsd.toFixed(2)}/year — about 2 months free</p>
           <ul>
             <li>Everything in Pro</li>
+            <li>5 included team seats</li>
             <li>Team workspaces and roles</li>
             <li>No-code custom calculator builder</li>
             <li>White-label website embeds</li>
             <li>Lead-generation calculators</li>
-            <li>Branded reports and client workflows</li>
             <li>API, webhooks, bulk processing and automation</li>
           </ul>
-          <span className="status">Business activation arrives in B5+</span>
+          <div className="plan-actions">
+            <PlanCheckoutButton plan="business" interval="monthly" />
+            <PlanCheckoutButton plan="business" interval="yearly" />
+          </div>
         </article>
       </div>
 
-      <p className="muted pricing-note">Paddle checkout remains disabled until sandbox API keys, webhook secret and Pro price IDs are configured in the deployment environment.</p>
+      <p className="muted pricing-note">Paid checkout activates only when the corresponding Paddle production price IDs and webhook configuration are present in the deployment environment.</p>
     </section>
   );
 }
