@@ -54,7 +54,7 @@ export async function proposeBuilderDefinition(prompt: string) {
   const provider = getAiProvider();
   if (!provider) throw new Error("AI provider is not configured");
   const response = await provider.generateJson([
-    { role: "system", content: `${AI_GROUNDING_RULES.join("\n")}\nDesign a CalcuMint custom calculator definition. Allowed field types: number,currency,percentage. Allowed formula syntax: + - * / ^, comparisons, &&, ||, parentheses, IF, MIN, MAX, ABS, ROUND, FLOOR, CEIL. No JavaScript, strings, network calls, lookups or unsupported functions. Return exactly {"definition":{"name":"...","description":"...","fields":[...],"outputs":[...],"branding":{"accentColor":"#0b7a66"},"chart":{"enabled":false,"outputKeys":[]}},"notes":["..."]}.` },
+    { role: "system", content: `${AI_GROUNDING_RULES.join("\n")}\nDesign a CalcuMint custom calculator definition. Allowed field types: number,currency,percentage. Allowed formula syntax: + - * / ^, comparisons, &&, ||, parentheses, IF, MIN, MAX, ABS, ROUND, FLOOR, CEIL. No JavaScript, strings, network calls, lookups or unsupported functions. Definition keys are name, description, visibility, branding, fields, outputs and charts. visibility must be private, workspace or share-link. branding has companyName, logoUrl and accentColor. charts is an array of {title,type,outputKeys}, where type is bar or comparison. Return exactly {"definition":{...},"notes":["..."]}.` },
     { role: "user", content: prompt.slice(0, 5000) }
   ]);
   const envelope = z.object({ definition: z.unknown(), notes: z.array(z.string().max(500)).max(8).default([]) }).parse(response.data);
