@@ -56,7 +56,7 @@ class Parser {
     return left;
   }
   private parseComparison(): FormulaValue {
-    let left = this.parseAdditive();
+    const left = this.parseAdditive();
     const token = this.peek();
     if (token?.type === "operator" && ["<", "<=", ">", ">=", "==", "!="].includes(token.value)) {
       this.position += 1;
