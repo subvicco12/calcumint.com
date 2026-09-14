@@ -173,8 +173,8 @@ $$;
 
 drop trigger if exists custom_runs_queue_webhooks on public.custom_calculator_runs;
 create trigger custom_runs_queue_webhooks after insert on public.custom_calculator_runs for each row execute function public.queue_calculation_webhooks();
-drop trigger if exists leads_queue_webhooks on public.leads;
-create trigger leads_queue_webhooks after insert on public.leads for each row execute function public.queue_lead_webhooks();
+drop trigger if exists embed_leads_queue_webhooks on public.embed_leads;
+create trigger embed_leads_queue_webhooks after insert on public.embed_leads for each row execute function public.queue_lead_webhooks();
 
 revoke all on function public.consume_business_api_quota(uuid) from public;
 grant execute on function public.consume_business_api_quota(uuid) to service_role;
