@@ -4,7 +4,7 @@ export const featureFlags = {
   proBilling: true,
   businessWorkspace: true,
   calculatorBuilder: true,
-  embedsAndLeads: false,
+  embedsAndLeads: true,
   apiAndWebhooks: false,
   aiAssistant: false,
   adminConsole: false
