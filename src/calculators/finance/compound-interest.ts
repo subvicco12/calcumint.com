@@ -22,7 +22,7 @@ export const compoundInterestCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "reviewed",
+  reviewStatus: "draft",
   inputSchema,
   calculate: ({ principal, annualRatePercent, years, compoundsPerYear }) => {
     const rate = annualRatePercent / 100;
