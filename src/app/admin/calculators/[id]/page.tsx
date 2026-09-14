@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { assignReviewer, transitionCalculator, updateQaCheck } from "../../actions";
+import { scheduleCalculatorPublication } from "../../schedule-actions";
 import { requiredQaChecks } from "@/lib/admin/publishing";
 
 type PageProps = { params: Promise<{ id: string }> };
@@ -48,6 +49,8 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
       </div>
       <p className="muted-copy">Skipping lifecycle stages is rejected. Certification and publication also call the database publishing gate, so UI bypass cannot publish an incomplete calculator.</p>
     </article>
+
+    {canAssign && calculator.lifecycle === "certified" && <article className="card section"><span className="eyebrow">Publication scheduling</span><h2>Schedule certified calculator</h2><form className="inline-form" action={scheduleCalculatorPublication}><input type="hidden" name="calculatorId" value={id}/><input name="publishAt" type="datetime-local" required/><button className="button primary" type="submit">Schedule publication</button></form><p className="muted-copy">Current schedule: {calculator.publish_at ? new Date(calculator.publish_at).toLocaleString() : "not scheduled"}. The protected worker re-checks every QA gate before publication.</p></article>}
 
     {canAssign && <article className="card section"><span className="eyebrow">Reviewer</span><h2>Assign accountable reviewer</h2><form className="inline-form" action={assignReviewer}><input type="hidden" name="calculatorId" value={id}/><select name="reviewerId" required defaultValue={calculator.reviewer_id ?? ""}><option value="" disabled>Select reviewer</option>{(reviewers ?? []).filter((item) => ["owner","admin","reviewer"].includes(String(item.role))).map((item) => <option key={item.user_id} value={item.user_id}>{item.role} · {String(item.user_id).slice(0,8)}…</option>)}</select><button className="button secondary" type="submit">Assign</button></form></article>}
 
