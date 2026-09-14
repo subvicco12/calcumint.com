@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { apiScopes, createApiKeySecret, normalizeScopes } from "@/lib/api/api-keys";
+import { createApiKeySecret, normalizeScopes } from "@/lib/api/api-keys";
 
 async function requireAdmin() {
   const supabase = await createSupabaseServerClient();
@@ -19,8 +19,7 @@ async function requireAdmin() {
 export async function createBusinessApiKey(formData: FormData) {
   const { supabase, user, organizationId } = await requireAdmin();
   const name = String(formData.get("name") ?? "").trim();
-  const requestedScopes = formData.getAll("scopes").map(String);
-  const scopes = normalizeScopes(requestedScopes);
+  const scopes = normalizeScopes(formData.getAll("scopes").map(String));
   if (name.length < 2 || scopes.length === 0) throw new Error("Name and at least one valid scope are required");
   const rateLimit = Math.max(1, Math.min(Number(formData.get("rateLimit") ?? 60), 5000));
   const monthlyQuota = Math.max(1, Math.min(Number(formData.get("monthlyQuota") ?? 10000), 10_000_000));
@@ -47,5 +46,3 @@ export async function revokeBusinessApiKey(formData: FormData) {
   if (error) throw new Error(error.message);
   revalidatePath("/business/api");
 }
-
-export { apiScopes };
