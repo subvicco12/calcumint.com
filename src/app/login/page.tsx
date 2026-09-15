@@ -18,13 +18,17 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
       {message && <p className="notice success-notice">{message}</p>}
 
       <div className="auth-grid">
-        <form className="card form-stack" action={signIn}>
-          <h2>Sign in</h2>
-          <label>Email<input name="email" type="email" autoComplete="email" required /></label>
-          <label>Password<input name="password" type="password" autoComplete="current-password" required /></label>
-          <button className="button primary" type="submit">Sign in</button>
-          <button className="button secondary" formAction={signInWithGoogle} type="submit">Continue with Google</button>
-        </form>
+        <div className="card form-stack">
+          <form className="form-stack" action={signIn}>
+            <h2>Sign in</h2>
+            <label>Email<input name="email" type="email" autoComplete="email" required /></label>
+            <label>Password<input name="password" type="password" autoComplete="current-password" required /></label>
+            <button className="button primary" type="submit">Sign in</button>
+          </form>
+          <form action={signInWithGoogle}>
+            <button className="button secondary" type="submit">Continue with Google</button>
+          </form>
+        </div>
 
         <form className="card form-stack" action={signUp}>
           <h2>Create a free account</h2>
