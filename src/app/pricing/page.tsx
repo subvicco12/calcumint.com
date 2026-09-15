@@ -13,7 +13,8 @@ export default async function PricingPage() {
     if (!currentSubscription) return undefined;
     const mode = subscriptionChangeMode(currentSubscription.plan as PaidPlan, currentSubscription.billing_interval as BillingInterval, targetPlan, targetInterval);
     if (mode === "unchanged") return "Your current plan";
-    if (mode === "deferred") return "Available at your next renewal";
+    if (mode === "deferred") return "Available at your next renewal; contact billing support to schedule this change.";
+    return undefined;
   }
   const disabledReasons = Object.fromEntries((["pro", "business"] as PaidPlan[]).flatMap(plan => (["monthly", "yearly"] as BillingInterval[]).map(interval => [`${plan}-${interval}`, disabledReason(plan, interval)])));
   return <section className="container section page-top pricing-page">
