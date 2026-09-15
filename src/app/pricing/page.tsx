@@ -1,13 +1,31 @@
 import Link from "next/link";
 import { PlanCheckoutButton } from "@/components/pro-checkout-button";
-import { planCatalog } from "@/lib/billing/plans";
+import { planCatalog, type BillingInterval } from "@/lib/billing/plans";
+import { subscriptionChangeMode, type PaidPlan } from "@/lib/billing/paddle";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata = {
   title: "Pricing",
   description: "Compare CalcuMint Free, Pro and Business plans."
 };
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const supabase = await createSupabaseServerClient();
+  const user = supabase ? (await supabase.auth.getUser()).data.user : null;
+  const { data: currentSubscription } = user && supabase
+    ? await supabase.from("subscriptions").select("plan,billing_interval").eq("user_id", user.id).in("status", ["active", "trialing", "past_due"]).order("updated_at", { ascending: false }).limit(1).maybeSingle()
+    : { data: null };
+
+  function disabledReason(targetPlan: PaidPlan, targetInterval: BillingInterval): string | undefined {
+    if (!currentSubscription) return undefined;
+    const currentPlan = currentSubscription.plan as PaidPlan;
+    const currentInterval = currentSubscription.billing_interval as BillingInterval;
+    const mode = subscriptionChangeMode(currentPlan, currentInterval, targetPlan, targetInterval);
+    if (mode === "unchanged") return "Your current plan";
+    if (mode === "deferred") return "Available at your next renewal; contact billing support to schedule this change.";
+    return undefined;
+  }
+
   return (
     <section className="container section page-top">
       <span className="eyebrow">Three-plan architecture</span>
@@ -46,8 +64,8 @@ export default function PricingPage() {
             <li>Yearly → monthly takes effect only at term end</li>
           </ul>
           <div className="plan-actions">
-            <PlanCheckoutButton plan="pro" interval="monthly" />
-            <PlanCheckoutButton plan="pro" interval="yearly" />
+            <PlanCheckoutButton plan="pro" interval="monthly" disabledReason={disabledReason("pro", "monthly")} />
+            <PlanCheckoutButton plan="pro" interval="yearly" disabledReason={disabledReason("pro", "yearly")} />
           </div>
         </article>
 
@@ -66,8 +84,8 @@ export default function PricingPage() {
             <li>API, webhooks, bulk processing and automation</li>
           </ul>
           <div className="plan-actions">
-            <PlanCheckoutButton plan="business" interval="monthly" />
-            <PlanCheckoutButton plan="business" interval="yearly" />
+            <PlanCheckoutButton plan="business" interval="monthly" disabledReason={disabledReason("business", "monthly")} />
+            <PlanCheckoutButton plan="business" interval="yearly" disabledReason={disabledReason("business", "yearly")} />
           </div>
         </article>
       </div>
