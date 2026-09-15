@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/calculator-search";
 import { calculatorRegistry } from "@/calculators/registry";
 import { listPublicCalculators,listPublicCategories } from "@/calculators/public-content";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {title:{absolute:"CalcuMint — Calculate Anything"},description:siteConfig.description,alternates:{canonical:"/"},openGraph:{type:"website",title:"CalcuMint — Calculate Anything",description:siteConfig.description,url:"/"}};
 export default function HomePage(){const calculators=listPublicCalculators();const searchItems=calculators.flatMap(item=>{const d=calculatorRegistry.getBySlug(item.slug);return d?[{title:d.title,href:`/calculators/${item.category}/${item.slug}`,description:item.shortDescription,keywords:item.keywords}]:[]});const categories=listPublicCategories();return <>
 <section className="hero container"><div className="hero-main"><span className="eyebrow">One place for every calculation</span><h1>Calculate anything.<br/>Understand every result.</h1><p className="hero-copy">Reliable calculators for money, health, math, conversions, business and everyday decisions — with clear formulas and useful explanations.</p><div className="hero-actions"><Link className="button primary" href="/calculators">Explore calculators</Link><Link className="button secondary" href="/login?mode=signup">Create free account</Link></div><CalculatorSearch items={searchItems}/><div className="trust-strip"><span>✓ {calculators.length}+ published tools</span><span>✓ Clear formulas</span><span>✓ No account required</span><span>✓ Mobile friendly</span></div></div></section>
 <section className="container section"><div className="section-heading"><div><span className="eyebrow">Browse by topic</span><h2>Find the right calculator fast</h2></div><Link className="text-link" href="/calculators">View all calculators →</Link></div><div className="category-grid">{categories.map(c=><Link className="card category-link" href={`/calculators/${c.slug}`} key={c.slug}><h3>{c.name}</h3><p>{c.description}</p><span className="text-link">Explore →</span></Link>)}</div></section>
