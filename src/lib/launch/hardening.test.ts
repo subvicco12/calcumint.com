@@ -22,7 +22,7 @@ describe("B12 production hardening contracts", () => {
 
   it("prevents API caching and search indexing of private surfaces", () => {
     expect(nextConfig).toMatch(/source:\s*"\/api\/:path\*"[\s\S]*Cache-Control[\s\S]*no-store/i);
-    for (const path of ["/account/", "/admin/", "/business/", "/api/"]) {
+    for (const path of ["/account", "/account/", "/admin", "/admin/", "/business", "/business/", "/api", "/api/"]) {
       expect(robots).toContain(`"${path}"`);
     }
     expect(health).toMatch(/noindex, nofollow/i);
