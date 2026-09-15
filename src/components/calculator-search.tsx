@@ -9,17 +9,17 @@ export function CalculatorSearch({ items }: { items: readonly SearchItem[] }) {
   const [query, setQuery] = useState("");
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => {
-    if (!normalized) return items.slice(0, 6);
+    if (!normalized) return [];
     return items.filter((item) => [item.title, item.description, ...item.keywords].some((value) => value.toLowerCase().includes(normalized))).slice(0, 12);
   }, [items, normalized]);
 
   return <div className="search-panel">
     <label className="search-label" htmlFor="calculator-search">Search calculators</label>
     <input id="calculator-search" className="search-input" type="search" placeholder="Try percentage, unit conversion..." value={query} onChange={(event) => setQuery(event.target.value)} />
-    <div className="search-results" aria-live="polite">
+    {normalized && <div className="search-results" aria-live="polite">
       {matches.map((item) => <Link className="search-result" href={item.href} key={item.href}><strong>{item.title}</strong><span>{item.description}</span></Link>)}
       {matches.length === 0 && <p className="muted">No certified calculator matches that search yet.</p>}
-    </div>
+    </div>}
     {!normalized && <div className="search-footer"><Link className="text-link" href="/calculators">Browse all calculators →</Link></div>}
   </div>;
 }
