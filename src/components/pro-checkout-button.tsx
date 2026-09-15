@@ -27,7 +27,7 @@ export function PlanCheckoutButton({ plan, interval }: { plan: PaidPlan; interva
       }
       if (!response.ok) throw new Error(payload.error ?? "Checkout unavailable");
       if (payload.updated) {
-        router.push("/account?billing=updated");
+        router.push(`/account?billing=updated&plan=${plan}&interval=${interval}`);
         router.refresh();
         return;
       }
