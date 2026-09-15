@@ -1,12 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PlanCheckoutButton } from "@/components/pro-checkout-button";
 import { planCatalog, type BillingInterval } from "@/lib/billing/plans";
 import { subscriptionChangeMode, type PaidPlan } from "@/lib/billing/paddle";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Pricing",
-  description: "Compare CalcuMint Free, Pro and Business plans."
+  description: "Compare CalcuMint Free, Pro and Business plans.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    type: "website",
+    title: "CalcuMint Pricing",
+    description: "Compare CalcuMint Free, Pro and Business plans.",
+    url: "/pricing"
+  }
 };
 
 export default async function PricingPage() {
