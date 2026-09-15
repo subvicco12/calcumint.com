@@ -8,6 +8,7 @@ const envExample = readFileSync(".env.example", "utf8");
 const checkoutButton = readFileSync("src/components/pro-checkout-button.tsx", "utf8");
 const accountPage = readFileSync("src/app/account/page.tsx", "utf8");
 const billingSyncStatus = readFileSync("src/components/billing-sync-status.tsx", "utf8");
+const pricingPage = readFileSync("src/app/pricing/page.tsx", "utf8");
 
 describe("B12 production hardening contracts", () => {
   it("ships essential browser and transport security headers", () => {
@@ -42,6 +43,13 @@ describe("B12 production hardening contracts", () => {
     expect(checkoutButton).toMatch(/billing=updated/);
     expect(checkoutButton).toMatch(/plan=\$\{plan\}.*interval=\$\{interval\}/);
     expect(checkoutButton).toMatch(/payload\.checkoutUrl/);
+  });
+
+  it("does not present unsupported deferred downgrades as actionable", () => {
+    expect(pricingPage).toMatch(/subscriptionChangeMode/);
+    expect(pricingPage).toMatch(/mode === "deferred"/);
+    expect(pricingPage).toMatch(/contact billing support to schedule this change/);
+    expect(checkoutButton).toMatch(/disabled=\{busy \|\| Boolean\(disabledReason\)\}/);
   });
 
   it("keeps in-place upgrades pending until the Paddle webhook state matches", () => {
