@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: "CalcuMint",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" }
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }]
+  },
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
