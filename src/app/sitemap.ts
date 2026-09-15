@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = [
     { url: siteConfig.url, changeFrequency: "weekly", priority: 1 },
     { url: `${siteConfig.url}/calculators`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${siteConfig.url}/business-platform`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${siteConfig.url}/pricing`, changeFrequency: "monthly", priority: 0.6 }
   ];
   const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().map((category) => ({
