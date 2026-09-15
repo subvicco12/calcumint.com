@@ -30,7 +30,8 @@ The readiness endpoint returns only configuration status, never secret values.
 - Service-role, Paddle API/webhook, AI, webhook-worker/encryption and admin-worker credentials remain server-only.
 - Production must use HTTPS.
 - API responses are non-cacheable by default.
-- Customer-facing embeds remain frameable; the global CSP intentionally does not set `frame-ancestors`, because B7 controls embed access with its own domain allowlist.
+- Non-embed application routes are protected from cross-origin framing with `X-Frame-Options: SAMEORIGIN` and CSP `frame-ancestors 'self'`.
+- Customer-facing `/embed/*` routes use a separate permissive framing policy; B7's domain allowlist remains authoritative for embed access.
 - Existing RLS, role gates, deterministic calculator rules, billing webhook validation, API-key hashing and webhook signing remain mandatory.
 
 ## Go-live activation checklist
