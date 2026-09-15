@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { serverEnv } from "@/lib/env";
-import { verifyPaddleSignature, getProPriceId } from "@/lib/billing/paddle";
+import { verifyPaddleSignature, selectionForPriceId } from "@/lib/billing/paddle";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { planForSubscriptionStatus } from "@/lib/billing/entitlements";
 
@@ -29,13 +29,6 @@ function extractPriceId(data: Json): string | null {
   return stringValue(price.id) ?? stringValue(first.price_id);
 }
 
-function intervalForPrice(priceId: string | null): "monthly" | "yearly" | null {
-  if (!priceId) return null;
-  if (priceId === getProPriceId("monthly")) return "monthly";
-  if (priceId === getProPriceId("yearly")) return "yearly";
-  return null;
-}
-
 export async function POST(request: Request) {
   const secret = serverEnv.PADDLE_WEBHOOK_SECRET;
   const admin = createSupabaseAdminClient();
@@ -57,16 +50,19 @@ export async function POST(request: Request) {
   const data = event.data;
   const customData = asObject(data.custom_data);
   const userId = stringValue(customData.calcumint_user_id);
-  const requestedPlan = stringValue(customData.calcumint_plan) === "business" ? "business" : "pro";
 
   if (event.event_type.startsWith("subscription.") && userId) {
     const subscriptionId = stringValue(data.id);
     const customerId = stringValue(data.customer_id);
     const status = stringValue(data.status) ?? "unknown";
     const priceId = extractPriceId(data);
-    const interval = intervalForPrice(priceId) ?? (stringValue(customData.billing_interval) as "monthly" | "yearly" | null);
+    const selection = selectionForPriceId(priceId);
     const period = asObject(data.current_billing_period);
     const scheduledChange = asObject(data.scheduled_change);
+
+    if (!selection) {
+      return NextResponse.json({ error: "Unknown Paddle subscription price" }, { status: 400 });
+    }
 
     if (customerId) {
       await admin.from("billing_customers").upsert({
@@ -82,8 +78,8 @@ export async function POST(request: Request) {
         provider_subscription_id: subscriptionId,
         provider_customer_id: customerId,
         price_id: priceId,
-        plan: requestedPlan,
-        billing_interval: interval,
+        plan: selection.plan,
+        billing_interval: selection.interval,
         status,
         current_period_start: stringValue(period.starts_at),
         current_period_end: stringValue(period.ends_at),
@@ -92,7 +88,7 @@ export async function POST(request: Request) {
       }, { onConflict: "provider_subscription_id" });
 
       await admin.from("profiles").update({
-        plan: planForSubscriptionStatus(status, requestedPlan),
+        plan: planForSubscriptionStatus(status, selection.plan),
         updated_at: new Date().toISOString()
       }).eq("id", userId);
     }
