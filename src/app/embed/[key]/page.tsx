@@ -15,9 +15,10 @@ export default async function EmbedPage({ params }: PageProps) {
   if (!admin) return <main className="embed-shell"><p>Embed service is not configured.</p></main>;
   const requestHeaders = await headers();
   const referer = requestHeaders.get("referer");
+  const destination = requestHeaders.get("sec-fetch-dest");
 
   const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,allowed_domains,allow_direct,company_name,logo_url,accent_color,hide_calcumint_brand,cta_label,cta_url,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
-  if (!config || !isEmbedRequestAllowed(config.allowed_domains ?? [], Boolean(config.allow_direct), referer)) notFound();
+  if (!config || !isEmbedRequestAllowed(config.allowed_domains ?? [], Boolean(config.allow_direct), referer, destination)) notFound();
 
   const { data: calculator } = await admin.from("custom_calculators").select("id,status,published_version").eq("id", config.calculator_id).eq("status", "published").maybeSingle();
   if (!calculator?.published_version) notFound();
