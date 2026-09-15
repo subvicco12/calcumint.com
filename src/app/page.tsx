@@ -2,69 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/calculator-search";
 import { calculatorRegistry } from "@/calculators/registry";
-import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { listPublicCalculators,listPublicCategories } from "@/calculators/public-content";
 import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: { absolute: "CalcuMint — Calculate Anything" },
-  description: siteConfig.description,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    title: "CalcuMint — Calculate Anything",
-    description: siteConfig.description,
-    url: "/"
-  }
-};
-
-export default function HomePage() {
-  const calculators = listPublicCalculators();
-  const searchItems = calculators.flatMap((item) => {
-    const definition = calculatorRegistry.getBySlug(item.slug);
-    return definition ? [{ title: definition.title, href: `/calculators/${item.category}/${item.slug}`, description: item.shortDescription, keywords: item.keywords }] : [];
-  });
-
-  return (
-    <>
-      <section className="hero container">
-        <span className="eyebrow">Universal calculation platform</span>
-        <h1>Calculate anything. Understand the result.</h1>
-        <p className="hero-copy">Fast, deterministic calculators with clear formulas, worked examples and a quality gate before every tool is published.</p>
-        <div className="hero-actions">
-          <Link className="button primary" href="/calculators">Browse calculators</Link>
-          <Link className="button secondary" href="/pricing">Free, Pro & Business</Link>
-        </div>
-        <CalculatorSearch items={searchItems} />
-      </section>
-
-      <section id="categories" className="container section">
-        <div className="section-heading">
-          <div><span className="eyebrow">Browse by topic</span><h2>Certified calculator categories</h2></div>
-          <span className="status">{calculators.length} tools live in this build</span>
-        </div>
-        <div className="category-grid">
-          {listPublicCategories().map((category) => (
-            <Link className="card category-link" href={`/calculators/${category.slug}`} key={category.slug}>
-              <h3>{category.name}</h3>
-              <p>{category.description}</p>
-              <span className="text-link">Explore →</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="container section split">
-        <div className="card accent-card">
-          <span className="eyebrow">Free</span>
-          <h2>Core calculations stay public.</h2>
-          <p>Visitors get the primary calculation without a mandatory account wall. Free monetization will be introduced later without obstructing the calculator experience.</p>
-        </div>
-        <div className="card">
-          <span className="eyebrow">Quality first</span>
-          <h2>Every calculator earns publication.</h2>
-          <p>Only certified calculators are listed publicly. Draft finance, health and tax tools stay out of search until source and review requirements are complete.</p>
-        </div>
-      </section>
-    </>
-  );
-}
+export const metadata: Metadata = {title:{absolute:"CalcuMint — Calculate Anything"},description:siteConfig.description,alternates:{canonical:"/"},openGraph:{type:"website",title:"CalcuMint — Calculate Anything",description:siteConfig.description,url:"/"}};
+export default function HomePage(){const calculators=listPublicCalculators();const searchItems=calculators.flatMap(item=>{const d=calculatorRegistry.getBySlug(item.slug);return d?[{title:d.title,href:`/calculators/${item.category}/${item.slug}`,description:item.shortDescription,keywords:item.keywords}]:[]});const categories=listPublicCategories();return <>
+<section className="hero container"><div className="hero-main"><span className="eyebrow">One place for every calculation</span><h1>Calculate anything.<br/>Understand every result.</h1><p className="hero-copy">Reliable calculators for money, health, math, conversions, business and everyday decisions — with clear formulas and useful explanations.</p><div className="hero-actions"><Link className="button primary" href="/calculators">Explore calculators</Link><Link className="button secondary" href="/login?mode=signup">Create free account</Link></div><CalculatorSearch items={searchItems}/><div className="trust-strip"><span>✓ {calculators.length}+ published tools</span><span>✓ Clear formulas</span><span>✓ No account required</span><span>✓ Mobile friendly</span></div></div></section>
+<section className="container section"><div className="section-heading"><div><span className="eyebrow">Browse by topic</span><h2>Find the right calculator fast</h2></div><Link className="text-link" href="/calculators">View all calculators →</Link></div><div className="category-grid">{categories.map(c=><Link className="card category-link" href={`/calculators/${c.slug}`} key={c.slug}><h3>{c.name}</h3><p>{c.description}</p><span className="text-link">Explore →</span></Link>)}</div></section>
+<section className="container section value-section"><div className="section-heading"><div><span className="eyebrow">More than an answer</span><h2>Built to help you make sense of the numbers.</h2></div></div><div className="value-grid"><article className="card"><span className="feature-icon">ƒx</span><h3>Transparent calculations</h3><p>See formulas, assumptions and explanations instead of a mysterious number.</p></article><article className="card"><span className="feature-icon">AI</span><h3>Find it with AI</h3><p>Describe what you need to calculate and CalcuMint helps you find the right tool.</p><Link className="text-link" href="/ai">Try AI Finder →</Link></article><article className="card"><span className="feature-icon">↗</span><h3>Save your work</h3><p>Create a free account for saved calculations, favorites and synced regional preferences.</p><Link className="text-link" href="/login?mode=signup">Sign up free →</Link></article></div></section>
+<section className="container section split"><div className="card accent-card"><span className="eyebrow">For professionals</span><h2>Go further with Pro.</h2><p>Remove ads, keep unlimited history and unlock advanced analysis and professional exports.</p><Link className="button primary" href="/pricing">Explore Pro</Link></div><div className="card business-card"><span className="eyebrow">For teams & businesses</span><h2>Build calculators for your audience.</h2><p>Create, brand, embed and automate calculators with team workspaces and business integrations.</p><Link className="button secondary" href="/business">Explore Business</Link></div></section>
+<section className="container section final-cta"><span className="eyebrow">Ready when you are</span><h2>Start calculating for free.</h2><p>No registration required for public calculators.</p><div className="hero-actions"><Link className="button primary" href="/calculators">Browse calculators</Link><Link className="button secondary" href="/pricing">Compare plans</Link></div></section></>}
