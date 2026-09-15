@@ -2,13 +2,28 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { publicEnv, serverEnv } from "../env";
 import type { BillingInterval, PlanId } from "./plans";
 
+export type PaidPlan = Exclude<PlanId, "free">;
+export type SubscriptionChangeMode = "unchanged" | "immediate" | "deferred";
+
+export function subscriptionChangeMode(
+  currentPlan: PaidPlan,
+  currentInterval: BillingInterval,
+  targetPlan: PaidPlan,
+  targetInterval: BillingInterval
+): SubscriptionChangeMode {
+  if (currentPlan === targetPlan && currentInterval === targetInterval) return "unchanged";
+  if (currentPlan === "business" && targetPlan === "pro") return "deferred";
+  if (currentInterval === "yearly" && targetInterval === "monthly") return "deferred";
+  return "immediate";
+}
+
 export function paddleApiBaseUrl(): string {
   return publicEnv.NEXT_PUBLIC_PADDLE_ENV === "production"
     ? "https://api.paddle.com"
     : "https://sandbox-api.paddle.com";
 }
 
-export function getPriceId(plan: Exclude<PlanId, "free">, interval: BillingInterval): string | null {
+export function getPriceId(plan: PaidPlan, interval: BillingInterval): string | null {
   if (plan === "pro") {
     return interval === "monthly"
       ? serverEnv.PADDLE_PRO_MONTHLY_PRICE_ID ?? null

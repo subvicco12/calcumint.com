@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getPriceId, paddleRequest } from "@/lib/billing/paddle";
+import { getPriceId, paddleRequest, subscriptionChangeMode } from "@/lib/billing/paddle";
 import { publicEnv } from "@/lib/env";
 
 const requestSchema = z.object({
@@ -12,6 +12,12 @@ const requestSchema = z.object({
 type PaddleTransaction = {
   id: string;
   checkout?: { url?: string | null } | null;
+};
+
+type ExistingSubscription = {
+  provider_subscription_id: string;
+  plan: "pro" | "business";
+  billing_interval: "monthly" | "yearly";
 };
 
 export async function POST(request: Request) {
@@ -29,6 +35,45 @@ export async function POST(request: Request) {
   if (!priceId) return NextResponse.json({ error: `${plan === "business" ? "Business" : "Pro"} pricing is not configured` }, { status: 503 });
 
   try {
+    const { data: subscriptions, error: subscriptionError } = await supabase
+      .from("subscriptions")
+      .select("provider_subscription_id, plan, billing_interval")
+      .eq("user_id", user.id)
+      .in("status", ["active", "trialing", "past_due"])
+      .order("updated_at", { ascending: false })
+      .limit(2);
+
+    if (subscriptionError) throw new Error("Could not verify the current subscription");
+    if ((subscriptions?.length ?? 0) > 1) {
+      return NextResponse.json({ error: "Multiple active subscriptions require billing support" }, { status: 409 });
+    }
+
+    const existing = subscriptions?.[0] as ExistingSubscription | undefined;
+    if (existing) {
+      const mode = subscriptionChangeMode(existing.plan, existing.billing_interval, plan, interval);
+      if (mode === "unchanged") {
+        return NextResponse.json({ error: "This is already your current plan" }, { status: 409 });
+      }
+      if (mode === "deferred") {
+        return NextResponse.json({ error: "This downgrade can take effect only at the next renewal" }, { status: 409 });
+      }
+
+      await paddleRequest(`/subscriptions/${encodeURIComponent(existing.provider_subscription_id)}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          items: [{ price_id: priceId, quantity: 1 }],
+          proration_billing_mode: "prorated_immediately",
+          custom_data: {
+            calcumint_user_id: user.id,
+            calcumint_plan: plan,
+            billing_interval: interval
+          }
+        })
+      });
+
+      return NextResponse.json({ updated: true });
+    }
+
     const transaction = await paddleRequest<PaddleTransaction>("/transactions", {
       method: "POST",
       body: JSON.stringify({

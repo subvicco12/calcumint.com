@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const contentSecurityPolicy = [
+const contentSecurityPolicyDirectives = [
   "default-src 'self'",
   "base-uri 'self'",
   "form-action 'self' https://*.paddle.com",
@@ -13,7 +13,10 @@ const contentSecurityPolicy = [
   "frame-src 'self' https://*.paddle.com https://*.google.com https://*.doubleclick.net",
   "worker-src 'self' blob:",
   "upgrade-insecure-requests"
-].join("; ");
+];
+
+const contentSecurityPolicy = contentSecurityPolicyDirectives.join("; ");
+const protectedContentSecurityPolicy = [...contentSecurityPolicyDirectives, "frame-ancestors 'self'"].join("; ");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -23,7 +26,7 @@ const nextConfig: NextConfig = {
   },
   headers: async () => [
     {
-      source: "/:path*",
+      source: "/:path((?!embed(?:/|$)).*)",
       headers: [
         { key: "X-Content-Type-Options", value: "nosniff" },
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -31,6 +34,17 @@ const nextConfig: NextConfig = {
         { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
         { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
         { key: "X-DNS-Prefetch-Control", value: "on" },
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        { key: "Content-Security-Policy", value: protectedContentSecurityPolicy }
+      ]
+    },
+    {
+      source: "/embed/:path*",
+      headers: [
+        { key: "X-Content-Type-Options", value: "nosniff" },
+        { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=()" },
+        { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
         { key: "Content-Security-Policy", value: contentSecurityPolicy }
       ]
     },

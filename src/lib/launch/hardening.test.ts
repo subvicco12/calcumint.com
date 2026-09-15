@@ -14,6 +14,9 @@ describe("B12 production hardening contracts", () => {
     expect(nextConfig).toMatch(/Referrer-Policy/i);
     expect(nextConfig).toMatch(/Permissions-Policy/i);
     expect(nextConfig).toMatch(/Cross-Origin-Opener-Policy/i);
+    expect(nextConfig).toMatch(/X-Frame-Options[\s\S]*SAMEORIGIN/i);
+    expect(nextConfig).toMatch(/frame-ancestors 'self'/i);
+    expect(nextConfig).toMatch(/source:\s*"\/embed\/:path\*"[\s\S]*Content-Security-Policy/i);
   });
 
   it("prevents API caching and search indexing of private surfaces", () => {
