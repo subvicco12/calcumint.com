@@ -6,6 +6,8 @@ const robots = readFileSync("src/app/robots.ts", "utf8");
 const health = readFileSync("src/app/health/route.ts", "utf8");
 const envExample = readFileSync(".env.example", "utf8");
 const checkoutButton = readFileSync("src/components/pro-checkout-button.tsx", "utf8");
+const accountPage = readFileSync("src/app/account/page.tsx", "utf8");
+const billingSyncStatus = readFileSync("src/components/billing-sync-status.tsx", "utf8");
 
 describe("B12 production hardening contracts", () => {
   it("ships essential browser and transport security headers", () => {
@@ -38,6 +40,15 @@ describe("B12 production hardening contracts", () => {
   it("handles both new checkout and in-place subscription update responses", () => {
     expect(checkoutButton).toMatch(/payload\.updated/);
     expect(checkoutButton).toMatch(/billing=updated/);
+    expect(checkoutButton).toMatch(/plan=\$\{plan\}.*interval=\$\{interval\}/);
     expect(checkoutButton).toMatch(/payload\.checkoutUrl/);
+  });
+
+  it("keeps in-place upgrades pending until the Paddle webhook state matches", () => {
+    expect(accountPage).toMatch(/billingSyncPending/);
+    expect(accountPage).toMatch(/subscription\?\.plan !== requestedPlan/);
+    expect(accountPage).toMatch(/subscription\?\.billing_interval !== requestedInterval/);
+    expect(billingSyncStatus).toMatch(/router\.refresh\(\)/);
+    expect(billingSyncStatus).toMatch(/Do not submit the change again/);
   });
 });
