@@ -4,6 +4,7 @@ import type { BillingInterval, PlanId } from "./plans";
 
 export type PaidPlan = Exclude<PlanId, "free">;
 export type SubscriptionChangeMode = "unchanged" | "immediate" | "deferred";
+export type PaddlePriceSelection = { plan: PaidPlan; interval: BillingInterval };
 
 export function subscriptionChangeMode(
   currentPlan: PaidPlan,
@@ -36,6 +37,17 @@ export function getPriceId(plan: PaidPlan, interval: BillingInterval): string | 
 
 export function getProPriceId(interval: BillingInterval): string | null {
   return getPriceId("pro", interval);
+}
+
+export function selectionForPriceId(priceId: string | null): PaddlePriceSelection | null {
+  if (!priceId) return null;
+  const selections: PaddlePriceSelection[] = [
+    { plan: "pro", interval: "monthly" },
+    { plan: "pro", interval: "yearly" },
+    { plan: "business", interval: "monthly" },
+    { plan: "business", interval: "yearly" }
+  ];
+  return selections.find(({ plan, interval }) => getPriceId(plan, interval) === priceId) ?? null;
 }
 
 export async function paddleRequest<T>(path: string, init: RequestInit): Promise<T> {
