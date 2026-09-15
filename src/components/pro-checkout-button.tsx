@@ -20,12 +20,18 @@ export function PlanCheckoutButton({ plan, interval }: { plan: PaidPlan; interva
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ plan, interval })
       });
-      const payload = await response.json() as { checkoutUrl?: string; error?: string };
+      const payload = await response.json() as { checkoutUrl?: string; updated?: boolean; error?: string };
       if (response.status === 401) {
         router.push(`/login?next=${encodeURIComponent("/pricing")}`);
         return;
       }
-      if (!response.ok || !payload.checkoutUrl) throw new Error(payload.error ?? "Checkout unavailable");
+      if (!response.ok) throw new Error(payload.error ?? "Checkout unavailable");
+      if (payload.updated) {
+        router.push("/account?billing=updated");
+        router.refresh();
+        return;
+      }
+      if (!payload.checkoutUrl) throw new Error(payload.error ?? "Checkout unavailable");
       window.location.assign(payload.checkoutUrl);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "Checkout unavailable");

@@ -5,6 +5,7 @@ const nextConfig = readFileSync("next.config.ts", "utf8");
 const robots = readFileSync("src/app/robots.ts", "utf8");
 const health = readFileSync("src/app/health/route.ts", "utf8");
 const envExample = readFileSync(".env.example", "utf8");
+const checkoutButton = readFileSync("src/components/pro-checkout-button.tsx", "utf8");
 
 describe("B12 production hardening contracts", () => {
   it("ships essential browser and transport security headers", () => {
@@ -32,5 +33,11 @@ describe("B12 production hardening contracts", () => {
     for (const key of ["SUPABASE_SERVICE_ROLE_KEY", "PADDLE_API_KEY", "PADDLE_WEBHOOK_SECRET", "WEBHOOK_ENCRYPTION_KEY", "WEBHOOK_WORKER_SECRET", "AI_API_KEY", "ADMIN_WORKER_SECRET"]) {
       expect(envExample).toContain(`${key}=`);
     }
+  });
+
+  it("handles both new checkout and in-place subscription update responses", () => {
+    expect(checkoutButton).toMatch(/payload\.updated/);
+    expect(checkoutButton).toMatch(/billing=updated/);
+    expect(checkoutButton).toMatch(/payload\.checkoutUrl/);
   });
 });
