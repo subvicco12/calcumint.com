@@ -46,6 +46,7 @@ describe("B12 production hardening contracts", () => {
 
   it("keeps in-place upgrades pending until the Paddle webhook state matches", () => {
     expect(accountPage).toMatch(/billingSyncPending/);
+    expect(accountPage).toMatch(/plan !== requestedPlan/);
     expect(accountPage).toMatch(/subscription\?\.plan !== requestedPlan/);
     expect(accountPage).toMatch(/subscription\?\.billing_interval !== requestedInterval/);
     expect(billingSyncStatus).toMatch(/router\.refresh\(\)/);
