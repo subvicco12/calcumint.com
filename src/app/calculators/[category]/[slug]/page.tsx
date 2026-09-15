@@ -95,6 +95,22 @@ export default async function CalculatorPage({ params }: PageProps) {
               <h2>Assumptions and limitations</h2>
               <ul>{content.assumptions.map((item) => <li key={item}>{item}</li>)}</ul>
             </section>
+            <section className="content-section" aria-labelledby="methodology-sources-heading">
+              <h2 id="methodology-sources-heading">Methodology &amp; sources</h2>
+              <p>This calculator uses deterministic, versioned calculation logic. The formula and verified examples above are part of the calculation definition used by CalcuMint.</p>
+              <ul>
+                {definition.sources.map((source) => (
+                  <li key={`${source.label}-${source.url ?? "internal"}`}>
+                    {source.url ? (
+                      <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a>
+                    ) : (
+                      <strong>{source.label}</strong>
+                    )}
+                    {source.note ? <> — {source.note}</> : null}
+                  </li>
+                ))}
+              </ul>
+            </section>
             <section className="content-section">
               <h2>Frequently asked questions</h2>
               <div className="faq-list">{content.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>

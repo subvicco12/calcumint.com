@@ -33,7 +33,18 @@ export const unitConversionCalculator: CalculatorDefinition<Input, Output> = {
       description: "Linear conversions use SI/base factors; temperatures convert through kelvin."
     }
   ],
-  sources: [],
+  sources: [
+    {
+      label: "NIST Guide to the SI — conversion factors",
+      url: "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+      note: "Reference conversion factors for units by quantity, including the exact international mile-to-kilometre relationship used by the verified example."
+    },
+    {
+      label: "BIPM — SI Brochure, 9th edition",
+      url: "https://www.bipm.org/en/publications/si-brochure",
+      note: "Authoritative reference for the International System of Units (SI)."
+    }
+  ],
   examples: [
     {
       label: "1 mile to kilometres",

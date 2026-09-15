@@ -27,7 +27,13 @@ export const percentageCalculator: CalculatorDefinition<Input, Output> = {
       description: "Converts a percentage to decimal form and multiplies it by the base value."
     }
   ],
-  sources: [],
+  sources: [
+    {
+      label: "BIPM — SI Brochure, 9th edition",
+      url: "https://www.bipm.org/en/publications/si-brochure",
+      note: "Documents the internationally recognized percent symbol and its meaning as parts per hundred."
+    }
+  ],
   examples: [
     {
       label: "20% of 250",
