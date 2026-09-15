@@ -1,6 +1,21 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { publicEnv, serverEnv } from "../env";
-import type { BillingInterval } from "./plans";
+import type { BillingInterval, PlanId } from "./plans";
+
+export type PaidPlan = Exclude<PlanId, "free">;
+export type SubscriptionChangeMode = "unchanged" | "immediate" | "deferred";
+
+export function subscriptionChangeMode(
+  currentPlan: PaidPlan,
+  currentInterval: BillingInterval,
+  targetPlan: PaidPlan,
+  targetInterval: BillingInterval
+): SubscriptionChangeMode {
+  if (currentPlan === targetPlan && currentInterval === targetInterval) return "unchanged";
+  if (currentPlan === "business" && targetPlan === "pro") return "deferred";
+  if (currentInterval === "yearly" && targetInterval === "monthly") return "deferred";
+  return "immediate";
+}
 
 export function paddleApiBaseUrl(): string {
   return publicEnv.NEXT_PUBLIC_PADDLE_ENV === "production"
@@ -8,10 +23,19 @@ export function paddleApiBaseUrl(): string {
     : "https://sandbox-api.paddle.com";
 }
 
-export function getProPriceId(interval: BillingInterval): string | null {
+export function getPriceId(plan: PaidPlan, interval: BillingInterval): string | null {
+  if (plan === "pro") {
+    return interval === "monthly"
+      ? serverEnv.PADDLE_PRO_MONTHLY_PRICE_ID ?? null
+      : serverEnv.PADDLE_PRO_YEARLY_PRICE_ID ?? null;
+  }
   return interval === "monthly"
-    ? serverEnv.PADDLE_PRO_MONTHLY_PRICE_ID ?? null
-    : serverEnv.PADDLE_PRO_YEARLY_PRICE_ID ?? null;
+    ? serverEnv.PADDLE_BUSINESS_MONTHLY_PRICE_ID ?? null
+    : serverEnv.PADDLE_BUSINESS_YEARLY_PRICE_ID ?? null;
+}
+
+export function getProPriceId(interval: BillingInterval): string | null {
+  return getPriceId("pro", interval);
 }
 
 export async function paddleRequest<T>(path: string, init: RequestInit): Promise<T> {

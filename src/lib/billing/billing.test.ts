@@ -2,7 +2,7 @@ import { createHmac } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { canChangeBillingIntervalImmediately, canShowAds, canUsePremiumExports, requiresEndOfTermSchedule } from "./plans";
 import { planForSubscriptionStatus } from "./entitlements";
-import { verifyPaddleSignature } from "./paddle";
+import { subscriptionChangeMode, verifyPaddleSignature } from "./paddle";
 
 describe("B4 billing policy", () => {
   it("shows ads only to anonymous and Free users", () => {
@@ -29,6 +29,14 @@ describe("B4 billing policy", () => {
     expect(planForSubscriptionStatus("trialing", "pro")).toBe("pro");
     expect(planForSubscriptionStatus("past_due", "pro")).toBe("pro");
     expect(planForSubscriptionStatus("canceled", "pro")).toBe("free");
+  });
+
+  it("updates paid upgrades in place and defers downgrades", () => {
+    expect(subscriptionChangeMode("pro", "monthly", "business", "monthly")).toBe("immediate");
+    expect(subscriptionChangeMode("pro", "monthly", "pro", "yearly")).toBe("immediate");
+    expect(subscriptionChangeMode("pro", "yearly", "pro", "monthly")).toBe("deferred");
+    expect(subscriptionChangeMode("business", "monthly", "pro", "monthly")).toBe("deferred");
+    expect(subscriptionChangeMode("business", "yearly", "business", "yearly")).toBe("unchanged");
   });
 });
 
