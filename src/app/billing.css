@@ -1,0 +1,15 @@
+.pricing-card { display: flex; flex-direction: column; gap: 10px; }
+.pricing-card ul { flex: 1; }
+.featured-plan { border-color: #79c6b5; box-shadow: 0 18px 48px rgba(11,122,102,.16); }
+.annual-price, .pricing-note { color: var(--muted); }
+.plan-actions, .checkout-action, .account-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.checkout-action { flex-direction: column; align-items: stretch; }
+.error-text { color: #8c2424 !important; }
+.ad-placeholder, .ad-shell { margin-top: 18px; min-height: 90px; display: grid; place-items: center; border: 1px dashed var(--border); border-radius: 14px; color: var(--muted); background: var(--surface); font-size: .85rem; }
+.account-actions { padding-top: 4px; }
+.account-actions .muted { width: 100%; font-size: .9rem; }
+.button:disabled { cursor: not-allowed; opacity: .58; }
+@media (max-width: 620px) {
+  .plan-actions, .account-actions { align-items: stretch; flex-direction: column; }
+  .plan-actions .button, .account-actions .button { width: 100%; }
+}
