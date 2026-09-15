@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/calculator-search";
 import { calculatorRegistry } from "@/calculators/registry";
 import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: { absolute: "CalcuMint — Calculate Anything" },
+  description: siteConfig.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    title: "CalcuMint — Calculate Anything",
+    description: siteConfig.description,
+    url: "/"
+  }
+};
 
 export default function HomePage() {
   const calculators = listPublicCalculators();
