@@ -35,7 +35,7 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
   const billingSyncPending = query.billing === "updated"
     && requestedPlan !== null
     && requestedInterval !== null
-    && (subscription?.plan !== requestedPlan || subscription?.billing_interval !== requestedInterval);
+    && (plan !== requestedPlan || subscription?.plan !== requestedPlan || subscription?.billing_interval !== requestedInterval);
 
   return (
     <section className="container page-top account-page">
