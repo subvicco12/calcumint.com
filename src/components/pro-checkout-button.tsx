@@ -6,7 +6,7 @@ import type { BillingInterval, PlanId } from "@/lib/billing/plans";
 
 type PaidPlan = Exclude<PlanId, "free">;
 
-export function PlanCheckoutButton({ plan, interval }: { plan: PaidPlan; interval: BillingInterval }) {
+export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: PaidPlan; interval: BillingInterval; disabledReason?: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -42,9 +42,10 @@ export function PlanCheckoutButton({ plan, interval }: { plan: PaidPlan; interva
   const planLabel = plan === "business" ? "Business" : "Pro";
   return (
     <div className="checkout-action">
-      <button className="button primary" type="button" disabled={busy} onClick={startCheckout}>
+      <button className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={startCheckout}>
         {busy ? "Opening checkout…" : `Choose ${planLabel} ${interval}`}
       </button>
+      {disabledReason && <small className="muted-copy">{disabledReason}</small>}
       {error && <small className="error-text">{error}</small>}
     </div>
   );
