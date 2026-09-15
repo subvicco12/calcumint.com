@@ -23,7 +23,8 @@ describe("public calculator publication gate", () => {
       expect(definition?.sources.length).toBeGreaterThan(0);
       for (const source of definition?.sources ?? []) {
         expect(source.label.trim().length).toBeGreaterThan(0);
-        if (source.url) expect(() => new URL(source.url)).not.toThrow();
+        const sourceUrl = source.url;
+        if (sourceUrl) expect(() => new URL(sourceUrl)).not.toThrow();
       }
     }
   });
