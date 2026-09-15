@@ -1,27 +1,12 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { PlanCheckoutButton } from "@/components/pro-checkout-button";
 import { planCatalog, type BillingInterval } from "@/lib/billing/plans";
 import type { PaidPlan } from "@/lib/billing/paddle";
-
-type Props = { disabledReasons: Record<string, string | undefined> };
-
-export function PricingSelector({ disabledReasons }: Props) {
-  const [interval, setInterval] = useState<BillingInterval>("monthly");
-  const yearly = interval === "yearly";
-  const price = (plan: PaidPlan) => yearly ? planCatalog[plan].yearlyPriceUsd : planCatalog[plan].monthlyPriceUsd;
-
-  return <>
-    <div className="billing-toggle" role="group" aria-label="Billing interval">
-      <button className={!yearly ? "active" : ""} onClick={() => setInterval("monthly")} type="button">Monthly</button>
-      <button className={yearly ? "active" : ""} onClick={() => setInterval("yearly")} type="button">Yearly <span>Save 25%</span></button>
-    </div>
-    <div className="pricing-grid">
-      <article className="card pricing-card"><span className="eyebrow">Calculate</span><h2>Free</h2><p className="price">$0</p><p className="muted-copy">Free forever for everyday calculations.</p><ul><li>All public core calculators</li><li>20 saved calculations</li><li>10 favorite calculators</li><li>Synced preferences</li></ul><Link className="button secondary" href="/calculators">Start calculating</Link></article>
-      <article className="card pricing-card featured-plan"><span className="plan-badge">Most popular</span><span className="eyebrow">Calculate + Analyse</span><h2>Pro</h2><p className="price">${price("pro").toFixed(2)}<small>/{yearly ? "year" : "month"}</small></p>{yearly && <p className="saving-copy">Equivalent to $5.99/month · Save 25%</p>}<ul><li>No ads</li><li>Unlimited history & favorites</li><li>CSV/JSON professional exports</li><li>Advanced analysis features</li></ul><PlanCheckoutButton plan="pro" interval={interval} disabledReason={disabledReasons[`pro-${interval}`]} /></article>
-      <article className="card pricing-card"><span className="eyebrow">Build + Brand + Automate</span><h2>Business</h2><p className="price">${price("business").toFixed(2)}<small>/{yearly ? "year" : "month"}</small></p>{yearly && <p className="saving-copy">Equivalent to $22.49/month · Save 25%</p>}<ul><li>Everything in Pro</li><li>5 included team seats</li><li>No-code calculator builder</li><li>White-label embeds</li><li>API, webhooks & automation</li></ul><PlanCheckoutButton plan="business" interval={interval} disabledReason={disabledReasons[`business-${interval}`]} /></article>
-    </div>
-  </>;
-}
+type Props={disabledReasons:Record<string,string|undefined>};
+export function PricingSelector({disabledReasons}:Props){const [interval,setInterval]=useState<BillingInterval>("monthly");const yearly=interval==="yearly";const price=(plan:PaidPlan)=>yearly?planCatalog[plan].yearlyPriceUsd:planCatalog[plan].monthlyPriceUsd;return <><div className="billing-toggle" role="group" aria-label="Billing interval"><button className={!yearly?"active":""} onClick={()=>setInterval("monthly")} type="button">Monthly</button><button className={yearly?"active":""} onClick={()=>setInterval("yearly")} type="button">Yearly <span>Save 25%</span></button></div><div className="pricing-grid">
+<article className="card pricing-card"><span className="eyebrow">Everyday calculations</span><h2>Free</h2><p className="plan-persona">For personal everyday use</p><p className="price">$0</p><ul><li>Core public calculators</li><li>20 saved calculations</li><li>10 favorite calculators</li><li>Synced regional preferences</li></ul><Link className="button secondary" href="/calculators">Start calculating</Link></article>
+<article className="card pricing-card featured-plan"><span className="plan-badge">Most popular</span><span className="eyebrow">Professional analysis</span><h2>Pro</h2><p className="plan-persona">For professionals and power users</p><p className="price">${price("pro").toFixed(2)}<small>/{yearly?"year":"month"}</small></p>{yearly&&<p className="saving-copy">Equivalent to $5.99/month · Save 25%</p>}<ul><li>Everything in Free</li><li>No ads</li><li>Unlimited history & favorites</li><li>CSV/JSON professional exports</li><li>Advanced analysis features</li></ul><PlanCheckoutButton plan="pro" interval={interval} disabledReason={disabledReasons[`pro-${interval}`]}/></article>
+<article className="card pricing-card"><span className="eyebrow">Build & automate</span><h2>Business</h2><p className="plan-persona">For teams, agencies and businesses</p><p className="price">${price("business").toFixed(2)}<small>/{yearly?"year":"month"}</small></p>{yearly&&<p className="saving-copy">Equivalent to $22.49/month · Save 25%</p>}<ul><li>Everything in Pro</li><li>5 included team seats</li><li>No-code calculator builder</li><li>White-label embeds</li><li>API, webhooks & automation</li><li>Team collaboration</li></ul><PlanCheckoutButton plan="business" interval={interval} disabledReason={disabledReasons[`business-${interval}`]}/></article>
+</div></>}
