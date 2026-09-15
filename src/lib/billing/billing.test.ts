@@ -1,8 +1,19 @@
 import { createHmac } from "node:crypto";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { canChangeBillingIntervalImmediately, canShowAds, canUsePremiumExports, requiresEndOfTermSchedule } from "./plans";
 import { planForSubscriptionStatus } from "./entitlements";
-import { subscriptionChangeMode, verifyPaddleSignature } from "./paddle";
+
+vi.mock("../env", () => ({
+  publicEnv: { NEXT_PUBLIC_PADDLE_ENV: "sandbox" },
+  serverEnv: {
+    PADDLE_PRO_MONTHLY_PRICE_ID: "pri_pro_monthly",
+    PADDLE_PRO_YEARLY_PRICE_ID: "pri_pro_yearly",
+    PADDLE_BUSINESS_MONTHLY_PRICE_ID: "pri_business_monthly",
+    PADDLE_BUSINESS_YEARLY_PRICE_ID: "pri_business_yearly"
+  }
+}));
+
+import { selectionForPriceId, subscriptionChangeMode, verifyPaddleSignature } from "./paddle";
 
 describe("B4 billing policy", () => {
   it("shows ads only to anonymous and Free users", () => {
@@ -37,6 +48,20 @@ describe("B4 billing policy", () => {
     expect(subscriptionChangeMode("pro", "yearly", "pro", "monthly")).toBe("deferred");
     expect(subscriptionChangeMode("business", "monthly", "pro", "monthly")).toBe("deferred");
     expect(subscriptionChangeMode("business", "yearly", "business", "yearly")).toBe("unchanged");
+  });
+});
+
+describe("Paddle price mapping", () => {
+  it("maps all four configured paid prices to authoritative plan and interval", () => {
+    expect(selectionForPriceId("pri_pro_monthly")).toEqual({ plan: "pro", interval: "monthly" });
+    expect(selectionForPriceId("pri_pro_yearly")).toEqual({ plan: "pro", interval: "yearly" });
+    expect(selectionForPriceId("pri_business_monthly")).toEqual({ plan: "business", interval: "monthly" });
+    expect(selectionForPriceId("pri_business_yearly")).toEqual({ plan: "business", interval: "yearly" });
+  });
+
+  it("rejects missing and unknown paid prices", () => {
+    expect(selectionForPriceId(null)).toBeNull();
+    expect(selectionForPriceId("pri_unknown")).toBeNull();
   });
 });
 
