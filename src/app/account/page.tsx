@@ -3,8 +3,9 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { signOut } from "@/app/login/actions";
 import { updatePreferences } from "./actions";
+import { BillingSyncStatus } from "@/components/billing-sync-status";
 
-export default async function AccountPage() {
+export default async function AccountPage({ searchParams }: { searchParams: Promise<{ billing?: string; plan?: string; interval?: string }> }) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) {
     return (
@@ -28,6 +29,13 @@ export default async function AccountPage() {
   ]);
 
   const plan = String(profile?.plan ?? "free");
+  const query = await searchParams;
+  const requestedPlan = query.plan === "pro" || query.plan === "business" ? query.plan : null;
+  const requestedInterval = query.interval === "monthly" || query.interval === "yearly" ? query.interval : null;
+  const billingSyncPending = query.billing === "updated"
+    && requestedPlan !== null
+    && requestedInterval !== null
+    && (subscription?.plan !== requestedPlan || subscription?.billing_interval !== requestedInterval);
 
   return (
     <section className="container page-top account-page">
@@ -39,6 +47,8 @@ export default async function AccountPage() {
         </div>
         <form action={signOut}><button className="button secondary" type="submit">Sign out</button></form>
       </div>
+
+      {billingSyncPending && <BillingSyncStatus />}
 
       <div className="account-grid">
         <div className="card">
