@@ -11,6 +11,11 @@ const requestSchema = z.object({
 });
 type PaddleTransaction = { id: string };
 type ExistingSubscription = { provider_subscription_id: string; plan: "pro" | "business"; billing_interval: "monthly" | "yearly" };
+type PaddleMoney = { amount: string; currency_code: string };
+type PaddlePreview = {
+  immediate_transaction?: { currency_code?: string; details?: { totals?: { total?: string } } } | null;
+  update_summary?: { charge?: PaddleMoney; credit?: PaddleMoney; result?: string } | null;
+};
 
 export async function POST(request: Request) {
   const supabase = await createSupabaseServerClient();
@@ -35,15 +40,42 @@ export async function POST(request: Request) {
       const mode = subscriptionChangeMode(existing.plan, existing.billing_interval, plan, interval);
       if (mode === "unchanged") return NextResponse.json({ error: "This is already your current plan" }, { status: 409 });
       if (mode === "deferred") return NextResponse.json({ error: "Available at your next renewal; contact billing support to schedule this change." }, { status: 409 });
+
+      const changeBody = {
+        items: [{ price_id: priceId, quantity: 1 }],
+        proration_billing_mode: "prorated_immediately" as const,
+        on_payment_failure: "prevent_change" as const,
+        custom_data: { calcumint_user_id: user.id, calcumint_plan: plan, billing_interval: interval }
+      };
+
       if (!confirmChange) {
-        return NextResponse.json({ confirmationRequired: true, currentPlan: existing.plan, currentInterval: existing.billing_interval, requestedPlan: plan, requestedInterval: interval });
+        const preview = await paddleRequest<PaddlePreview>(`/subscriptions/${encodeURIComponent(existing.provider_subscription_id)}/preview`, {
+          method: "PATCH",
+          body: JSON.stringify(changeBody)
+        });
+        const immediateTotal = preview.immediate_transaction?.details?.totals?.total;
+        const currencyCode = preview.immediate_transaction?.currency_code
+          ?? preview.update_summary?.charge?.currency_code
+          ?? preview.update_summary?.credit?.currency_code;
+        return NextResponse.json({
+          confirmationRequired: true,
+          currentPlan: existing.plan,
+          currentInterval: existing.billing_interval,
+          requestedPlan: plan,
+          requestedInterval: interval,
+          prorationPreview: {
+            immediateTotal: immediateTotal ?? null,
+            currencyCode: currencyCode ?? null,
+            charge: preview.update_summary?.charge?.amount ?? null,
+            credit: preview.update_summary?.credit?.amount ?? null,
+            result: preview.update_summary?.result ?? null
+          }
+        });
       }
+
       await paddleRequest(`/subscriptions/${encodeURIComponent(existing.provider_subscription_id)}`, {
         method: "PATCH",
-        body: JSON.stringify({
-          items: [{ price_id: priceId, quantity: 1 }], proration_billing_mode: "prorated_immediately",
-          custom_data: { calcumint_user_id: user.id, calcumint_plan: plan, billing_interval: interval }
-        })
+        body: JSON.stringify(changeBody)
       });
       return NextResponse.json({ updated: true });
     }
