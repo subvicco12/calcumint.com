@@ -23,6 +23,7 @@ const publicSchema = z.object({
   NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
   NEXT_PUBLIC_PADDLE_ENV: z.enum(["sandbox", "production"]).default("sandbox"),
+  NEXT_PUBLIC_PADDLE_CLIENT_TOKEN: z.string().min(1).optional(),
   NEXT_PUBLIC_ADSENSE_CLIENT_ID: z.string().min(1).optional(),
   NEXT_PUBLIC_ADSENSE_SLOT_CALCULATOR: z.string().min(1).optional()
 });
@@ -33,6 +34,7 @@ export const publicEnv = publicSchema.parse({
   NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   NEXT_PUBLIC_PADDLE_ENV: process.env.NEXT_PUBLIC_PADDLE_ENV,
+  NEXT_PUBLIC_PADDLE_CLIENT_TOKEN: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN,
   NEXT_PUBLIC_ADSENSE_CLIENT_ID: process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,
   NEXT_PUBLIC_ADSENSE_SLOT_CALCULATOR: process.env.NEXT_PUBLIC_ADSENSE_SLOT_CALCULATOR
 });

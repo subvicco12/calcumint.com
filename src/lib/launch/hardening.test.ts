@@ -46,7 +46,9 @@ describe("B12 production hardening contracts", () => {
     expect(checkoutButton).toMatch(/payload\.updated/);
     expect(checkoutButton).toMatch(/billing=updated/);
     expect(checkoutButton).toMatch(/plan=\$\{plan\}.*interval=\$\{interval\}/);
-    expect(checkoutButton).toMatch(/payload\.checkoutUrl/);
+    expect(checkoutButton).toMatch(/payload\.transactionId/);
+    expect(checkoutButton).toMatch(/Checkout\.open/);
+    expect(checkoutButton).toMatch(/checkout\.(closed|completed)/);
   });
 
   it("does not present unsupported deferred downgrades as actionable", () => {
