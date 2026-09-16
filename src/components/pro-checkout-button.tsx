@@ -8,7 +8,7 @@ import { publicEnv } from "@/lib/env";
 type PaidPlan = Exclude<PlanId, "free">;
 
 type PaddleApi = {
-  Environment: { set: (environment: "sandbox") => void };
+  Environment: { set: (environment: "sandbox" | "production") => void };
   Initialize: (options: { token: string; eventCallback?: (event: { name?: string }) => void }) => void;
   Checkout: { open: (options: { transactionId: string; settings?: { displayMode?: "overlay"; theme?: "light" | "dark" } }) => void };
 };
@@ -20,10 +20,16 @@ declare global {
 }
 
 let paddleReady: Promise<PaddleApi> | null = null;
+let paddleInstance: PaddleApi | null = null;
+let paddleInitialized = false;
 const paddleEventListeners = new Set<(event: { name?: string }) => void>();
 
 function loadPaddle(): Promise<PaddleApi> {
   if (paddleReady) return paddleReady;
+  if (paddleInstance && paddleInitialized) {
+    paddleReady = Promise.resolve(paddleInstance);
+    return paddleReady;
+  }
 
   const loading = new Promise<PaddleApi>((resolve, reject) => {
     const token = publicEnv.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN;
@@ -39,15 +45,21 @@ function loadPaddle(): Promise<PaddleApi> {
         return;
       }
       try {
-        if (publicEnv.NEXT_PUBLIC_PADDLE_ENV === "sandbox") paddle.Environment.set("sandbox");
-        paddle.Initialize({
-          token,
-          eventCallback: (event) => {
-            for (const listener of paddleEventListeners) listener(event);
-          }
-        });
+        if (!paddleInitialized) {
+          paddle.Environment.set(publicEnv.NEXT_PUBLIC_PADDLE_ENV);
+          paddle.Initialize({
+            token,
+            eventCallback: (event) => {
+              for (const listener of paddleEventListeners) listener(event);
+            }
+          });
+          paddleInitialized = true;
+        }
+        paddleInstance = paddle;
         resolve(paddle);
       } catch (error) {
+        paddleInitialized = false;
+        paddleInstance = null;
         reject(error);
       }
     };
@@ -74,6 +86,8 @@ function loadPaddle(): Promise<PaddleApi> {
 
   const ready = loading.catch((error: unknown): never => {
     paddleReady = null;
+    paddleInitialized = false;
+    paddleInstance = null;
     throw error;
   });
   paddleReady = ready;
