@@ -24,6 +24,13 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["clsx"],
   },
+  redirects: async () => [
+    { source: "/about.html", destination: "/about", permanent: true },
+    { source: "/privacy-policy.html", destination: "/privacy", permanent: true },
+    { source: "/terms.html", destination: "/terms", permanent: true },
+    { source: "/disclaimer.html", destination: "/disclaimer", permanent: true },
+    { source: "/contact.html", destination: "/contact", permanent: true }
+  ],
   headers: async () => [
     {
       source: "/:path((?!embed(?:/|$)).*)",
