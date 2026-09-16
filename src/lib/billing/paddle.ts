@@ -13,8 +13,12 @@ export function subscriptionChangeMode(
   targetInterval: BillingInterval
 ): SubscriptionChangeMode {
   if (currentPlan === targetPlan && currentInterval === targetInterval) return "unchanged";
-  if (currentPlan === "business" && targetPlan === "pro") return "deferred";
-  if (currentInterval === "yearly" && targetInterval === "monthly") return "deferred";
+  // Never shorten a prepaid annual commitment mid-term. Annual downgrades and
+  // annual-to-monthly moves remain renewal-time changes.
+  if (currentInterval === "yearly" && (targetInterval === "monthly" || (currentPlan === "business" && targetPlan === "pro"))) return "deferred";
+  // A monthly Business customer may choose Pro yearly immediately: Paddle
+  // previews/prorates the cross-plan + cross-interval change before consent.
+  if (currentPlan === "business" && targetPlan === "pro" && targetInterval === "monthly") return "deferred";
   return "immediate";
 }
 
