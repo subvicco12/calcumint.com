@@ -124,7 +124,13 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
 
       const paddle = await loadPaddle();
       const checkoutEventListener = (event: { name?: string }) => {
-        if (event.name === "checkout.closed" || event.name === "checkout.completed") {
+        if (event.name === "checkout.completed") {
+          paddleEventListeners.delete(checkoutEventListener);
+          setBusy(false);
+          window.location.assign(`/account?billing=completed&plan=${plan}&interval=${interval}`);
+          return;
+        }
+        if (event.name === "checkout.closed") {
           paddleEventListeners.delete(checkoutEventListener);
           setBusy(false);
         }
