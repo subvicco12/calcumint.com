@@ -9,6 +9,7 @@ const checkoutButton = readFileSync("src/components/pro-checkout-button.tsx", "u
 const accountPage = readFileSync("src/app/account/page.tsx", "utf8");
 const billingSyncStatus = readFileSync("src/components/billing-sync-status.tsx", "utf8");
 const pricingPage = readFileSync("src/app/pricing/page.tsx", "utf8");
+const privateLayouts = ["src/app/account/layout.tsx", "src/app/admin/layout.tsx", "src/app/business/layout.tsx"].map((path) => readFileSync(path, "utf8"));
 
 describe("B12 production hardening contracts", () => {
   it("ships essential browser and transport security headers", () => {
@@ -27,6 +28,9 @@ describe("B12 production hardening contracts", () => {
     expect(nextConfig).toMatch(/source:\s*"\/api\/:path\*"[\s\S]*Cache-Control[\s\S]*no-store/i);
     for (const path of ["/account", "/account/", "/admin", "/admin/", "/business", "/business/", "/api", "/api/"]) {
       expect(robots).toContain(`"${path}"`);
+    }
+    for (const layout of privateLayouts) {
+      expect(layout).toMatch(/robots:\s*\{[\s\S]*index:\s*false[\s\S]*follow:\s*false/i);
     }
     expect(health).toMatch(/noindex, nofollow/i);
     expect(health).toMatch(/cache-control.*no-store/is);
