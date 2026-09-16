@@ -1,6 +1,7 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata = { title: "Page not found" };
+export const metadata: Metadata = { title: "Page not found", description: "The requested CalcuMint page could not be found.", robots: { index: false, follow: true } };
 
 export default function NotFound() {
   return (
