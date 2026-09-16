@@ -11,7 +11,6 @@ const requestSchema = z.object({
 
 type PaddleTransaction = {
   id: string;
-  checkout?: { url?: string | null } | null;
 };
 
 type ExistingSubscription = {
@@ -90,11 +89,11 @@ export async function POST(request: Request) {
       })
     });
 
-    if (!transaction.checkout?.url) {
-      return NextResponse.json({ error: "Paddle did not return a checkout URL" }, { status: 502 });
+    if (!transaction.id) {
+      return NextResponse.json({ error: "Paddle did not return a transaction ID" }, { status: 502 });
     }
 
-    return NextResponse.json({ checkoutUrl: transaction.checkout.url });
+    return NextResponse.json({ transactionId: transaction.id });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Checkout unavailable" }, { status: 502 });
   }
