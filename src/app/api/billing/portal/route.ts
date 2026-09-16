@@ -17,13 +17,28 @@ export async function POST(request: Request) {
 
   const body = await request.json().catch(() => ({})) as { action?: "overview" | "cancel" | "payment" };
   const action = body.action ?? "overview";
-  const { data: subscription, error } = await supabase.from("subscriptions")
-    .select("provider_customer_id,provider_subscription_id,status")
-    .eq("user_id", user.id).in("status", ["active", "trialing", "past_due", "paused"])
-    .order("updated_at", { ascending: false }).limit(1).maybeSingle();
+  const [{ data: subscription, error }, { data: profile }] = await Promise.all([
+    supabase.from("subscriptions")
+      .select("provider_customer_id,provider_subscription_id,status")
+      .eq("user_id", user.id).in("status", ["active", "trialing", "past_due", "paused"])
+      .order("updated_at", { ascending: false }).limit(1).maybeSingle(),
+    supabase.from("profiles").select("display_name").eq("id", user.id).maybeSingle()
+  ]);
   if (error) return NextResponse.json({ error: "Could not load billing account" }, { status: 502 });
   if (!subscription?.provider_customer_id || !subscription?.provider_subscription_id) {
     return NextResponse.json({ error: "No managed paid subscription found" }, { status: 404 });
+  }
+
+  const displayName = typeof profile?.display_name === "string" ? profile.display_name.trim() : "";
+  if (displayName) {
+    try {
+      await paddleRequest(`/customers/${encodeURIComponent(subscription.provider_customer_id)}`, {
+        method: "PATCH",
+        body: JSON.stringify({ name: displayName })
+      });
+    } catch {
+      // Customer profile enrichment is best-effort and must never block billing management.
+    }
   }
 
   try {
