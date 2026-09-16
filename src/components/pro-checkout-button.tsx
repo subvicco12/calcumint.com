@@ -6,6 +6,7 @@ import type { BillingInterval, PlanId } from "@/lib/billing/plans";
 import { publicEnv } from "@/lib/env";
 
 type PaidPlan = Exclude<PlanId, "free">;
+type ProrationPreview = { immediateTotal: string | null; currencyCode: string | null; charge: string | null; credit: string | null; result: string | null };
 type PaddleApi = {
   Environment: { set: (environment: "sandbox" | "production") => void };
   Initialize: (options: { token: string; eventCallback?: (event: { name?: string }) => void }) => void;
@@ -54,11 +55,18 @@ function loadPaddle(): Promise<PaddleApi> {
   return paddleReady;
 }
 
+function formatMinorAmount(amount: string | null, currencyCode: string | null) {
+  if (!amount || !currencyCode || !/^-?\d+$/.test(amount)) return null;
+  try { return new Intl.NumberFormat(undefined, { style: "currency", currency: currencyCode }).format(Number(amount) / 100); }
+  catch { return `${currencyCode} ${(Number(amount) / 100).toFixed(2)}`; }
+}
+
 export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: PaidPlan; interval: BillingInterval; disabledReason?: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState(false);
+  const [preview, setPreview] = useState<ProrationPreview | null>(null);
   const planLabel = plan === "business" ? "Business" : "Pro";
 
   async function requestBillingChange(confirmed = false) {
@@ -69,10 +77,10 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ plan, interval, confirmChange: confirmed })
       });
-      const payload = await response.json() as { transactionId?: string; updated?: boolean; confirmationRequired?: boolean; error?: string };
+      const payload = await response.json() as { transactionId?: string; updated?: boolean; confirmationRequired?: boolean; prorationPreview?: ProrationPreview; error?: string };
       if (response.status === 401) { router.push(`/login?next=${encodeURIComponent("/pricing")}`); return; }
       if (!response.ok) throw new Error(payload.error ?? "Checkout unavailable");
-      if (payload.confirmationRequired) { setConfirmation(true); setBusy(false); return; }
+      if (payload.confirmationRequired) { setPreview(payload.prorationPreview ?? null); setConfirmation(true); setBusy(false); return; }
       if (payload.updated) { router.push(`/account?billing=updated&plan=${plan}&interval=${interval}`); router.refresh(); return; }
       if (!payload.transactionId) throw new Error(payload.error ?? "Checkout unavailable");
       const paddle = await loadPaddle();
@@ -88,18 +96,23 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
     }
   }
 
+  const dueNow = formatMinorAmount(preview?.immediateTotal ?? null, preview?.currencyCode ?? null);
+  const credit = formatMinorAmount(preview?.credit ?? null, preview?.currencyCode ?? null);
+
   return (
     <div className="checkout-action">
       <button className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
-        {busy ? "Opening checkout…" : `Choose ${planLabel} ${interval}`}
+        {busy ? "Checking price…" : `Choose ${planLabel} ${interval}`}
       </button>
       {confirmation && (
         <div className="billing-change-confirmation" role="dialog" aria-label="Confirm plan change">
           <p><strong>Confirm change to {planLabel} {interval}</strong></p>
-          <p className="muted-copy">Your existing Paddle payment method will be used. Any immediate prorated charge is calculated by Paddle. By confirming, you authorize CalcuMint to update your subscription and charge the saved payment method where applicable.</p>
+          {dueNow ? <p><strong>Due now: {dueNow}</strong></p> : <p className="muted-copy">Paddle reports no immediate payment total for this change.</p>}
+          {credit && preview?.credit !== "0" ? <p className="muted-copy">Proration credit included: {credit}.</p> : null}
+          <p className="muted-copy">This amount is calculated by Paddle from your current subscription and the remaining billing period. Your saved Paddle payment method will be used. By confirming, you authorize this subscription update and any displayed immediate charge.</p>
           <div className="checkout-action">
             <button className="button primary" type="button" disabled={busy} onClick={() => requestBillingChange(true)}>{busy ? "Updating…" : "Confirm and update plan"}</button>
-            <button className="button secondary" type="button" disabled={busy} onClick={() => setConfirmation(false)}>Cancel</button>
+            <button className="button secondary" type="button" disabled={busy} onClick={() => { setConfirmation(false); setPreview(null); }}>Cancel</button>
           </div>
         </div>
       )}
