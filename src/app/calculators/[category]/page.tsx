@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { calculatorRegistry } from "@/calculators/registry";
 import { categoryContent, listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { siteConfig } from "@/lib/site";
 
 type PageProps = { params: Promise<{ category: string }> };
 export function generateStaticParams() { return listPublicCategories().map((category) => ({ category: category.slug })); }
@@ -16,7 +17,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const searchItems = items.flatMap((item) => { const definition = calculatorRegistry.getBySlug(item.slug); return definition ? [{ title: definition.title, href: `/calculators/${item.category}/${item.slug}`, description: item.shortDescription, keywords: item.keywords }] : []; });
   const otherCategories = listPublicCategories().filter((item) => item.slug !== category);
   const { CalculatorSearch } = await import("@/components/calculator-search");
-  const breadcrumbJsonLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://calcumint.com/" }, { "@type": "ListItem", position: 2, name: "Calculators", item: "https://calcumint.com/calculators" }, { "@type": "ListItem", position: 3, name: meta.name, item: `https://calcumint.com/calculators/${category}` }] };
+  const breadcrumbJsonLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/` }, { "@type": "ListItem", position: 2, name: "Calculators", item: `${siteConfig.url}/calculators` }, { "@type": "ListItem", position: 3, name: meta.name, item: `${siteConfig.url}/calculators/${category}` }] };
 
   return <section className="container page-top category-page">
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
