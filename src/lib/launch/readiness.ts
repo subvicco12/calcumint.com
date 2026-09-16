@@ -48,8 +48,8 @@ export function buildProductionReadinessReport(env: NodeJS.ProcessEnv = process.
   });
   checks.push({
     id: "site:canonical-host",
-    ok: /^https:\/\/(www\.)?calcumint\.com\/?$/i.test(siteUrl),
-    message: /^https:\/\/(www\.)?calcumint\.com\/?$/i.test(siteUrl) ? "Canonical production host is CalcuMint" : "NEXT_PUBLIC_SITE_URL must point to calcumint.com"
+    ok: /^https:\/\/calcumint\.com\/?$/i.test(siteUrl),
+    message: /^https:\/\/calcumint\.com\/?$/i.test(siteUrl) ? "Canonical production origin is https://calcumint.com" : "NEXT_PUBLIC_SITE_URL must use https://calcumint.com as the single production origin"
   });
   checks.push({
     id: "paddle:production",
