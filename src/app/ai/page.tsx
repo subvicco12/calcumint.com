@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { AiFinder } from "@/components/ai-finder";
 
-export const metadata = { title: "AI Calculator Finder" };
+export const metadata: Metadata = {
+  title: "AI Calculator Finder",
+  description: "Describe what you need to calculate and let CalcuMint help you find the right verified calculator without replacing deterministic calculation logic.",
+  alternates: { canonical: "/ai" },
+  openGraph: { type: "website", title: "AI Calculator Finder | CalcuMint", description: "Find the right verified CalcuMint calculator by describing what you need to calculate.", url: "/ai" }
+};
 
 export default function AiFinderPage() {
   return (
