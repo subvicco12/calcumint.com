@@ -24,7 +24,7 @@ let paddleReady: Promise<PaddleApi> | null = null;
 function loadPaddle(): Promise<PaddleApi> {
   if (paddleReady) return paddleReady;
 
-  paddleReady = new Promise((resolve, reject) => {
+  const loading = new Promise<PaddleApi>((resolve, reject) => {
     const token = publicEnv.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN;
     if (!token) {
       reject(new Error("Paddle client token is not configured"));
@@ -64,12 +64,14 @@ function loadPaddle(): Promise<PaddleApi> {
     script.addEventListener("load", initialize, { once: true });
     script.addEventListener("error", () => reject(new Error("Paddle checkout could not be loaded")), { once: true });
     document.head.appendChild(script);
-  }).catch((error) => {
+  });
+
+  const ready = loading.catch((error: unknown): never => {
     paddleReady = null;
     throw error;
   });
-
-  return paddleReady;
+  paddleReady = ready;
+  return ready;
 }
 
 export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: PaidPlan; interval: BillingInterval; disabledReason?: string }) {
