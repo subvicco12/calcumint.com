@@ -20,7 +20,7 @@ declare global {
 }
 
 let paddleReady: Promise<PaddleApi> | null = null;
-let paddleEventCallback: ((event: { name?: string }) => void) | null = null;
+const paddleEventListeners = new Set<(event: { name?: string }) => void>();
 
 function loadPaddle(): Promise<PaddleApi> {
   if (paddleReady) return paddleReady;
@@ -43,7 +43,7 @@ function loadPaddle(): Promise<PaddleApi> {
         paddle.Initialize({
           token,
           eventCallback: (event) => {
-            paddleEventCallback?.(event);
+            for (const listener of paddleEventListeners) listener(event);
           }
         });
         resolve(paddle);
@@ -88,6 +88,7 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
   async function startCheckout() {
     setBusy(true);
     setError("");
+    let handleCheckoutEvent: ((event: { name?: string }) => void) | null = null;
     try {
       const response = await fetch("/api/billing/checkout", {
         method: "POST",
@@ -108,18 +109,20 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
       if (!payload.transactionId) throw new Error(payload.error ?? "Checkout unavailable");
 
       const paddle = await loadPaddle();
-      paddleEventCallback = (event) => {
+      const checkoutEventListener = (event: { name?: string }) => {
         if (event.name === "checkout.closed" || event.name === "checkout.completed") {
-          paddleEventCallback = null;
+          paddleEventListeners.delete(checkoutEventListener);
           setBusy(false);
         }
       };
+      handleCheckoutEvent = checkoutEventListener;
+      paddleEventListeners.add(checkoutEventListener);
       paddle.Checkout.open({
         transactionId: payload.transactionId,
         settings: { displayMode: "overlay", theme: "light" }
       });
     } catch (caught) {
-      paddleEventCallback = null;
+      if (handleCheckoutEvent) paddleEventListeners.delete(handleCheckoutEvent);
       setError(caught instanceof Error ? caught.message : "Checkout unavailable");
       setBusy(false);
     }
