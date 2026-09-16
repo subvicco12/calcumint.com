@@ -49,4 +49,10 @@ describe("production readiness", () => {
     expect(report.checks.find((check) => check.id === "site:https")?.ok).toBe(false);
     expect(report.checks.find((check) => check.id === "site:canonical-host")?.ok).toBe(false);
   });
+
+  it("rejects www as an alternate production origin", () => {
+    const report = buildProductionReadinessReport({ ...validEnv, NEXT_PUBLIC_SITE_URL: "https://www.calcumint.com" });
+    expect(report.ready).toBe(false);
+    expect(report.checks.find((check) => check.id === "site:canonical-host")?.ok).toBe(false);
+  });
 });
