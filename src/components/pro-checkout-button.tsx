@@ -9,7 +9,7 @@ type PaidPlan = Exclude<PlanId, "free">;
 
 type PaddleApi = {
   Environment: { set: (environment: "sandbox") => void };
-  Initialize: (options: { token: string }) => void;
+  Initialize: (options: { token: string; eventCallback?: (event: { name?: string }) => void }) => void;
   Checkout: { open: (options: { transactionId: string; settings?: { displayMode?: "overlay"; theme?: "light" | "dark" } }) => void };
 };
 
@@ -20,6 +20,7 @@ declare global {
 }
 
 let paddleReady: Promise<PaddleApi> | null = null;
+let paddleEventCallback: ((event: { name?: string }) => void) | null = null;
 
 function loadPaddle(): Promise<PaddleApi> {
   if (paddleReady) return paddleReady;
@@ -39,7 +40,12 @@ function loadPaddle(): Promise<PaddleApi> {
       }
       try {
         if (publicEnv.NEXT_PUBLIC_PADDLE_ENV === "sandbox") paddle.Environment.set("sandbox");
-        paddle.Initialize({ token });
+        paddle.Initialize({
+          token,
+          eventCallback: (event) => {
+            paddleEventCallback?.(event);
+          }
+        });
         resolve(paddle);
       } catch (error) {
         reject(error);
@@ -102,12 +108,18 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
       if (!payload.transactionId) throw new Error(payload.error ?? "Checkout unavailable");
 
       const paddle = await loadPaddle();
+      paddleEventCallback = (event) => {
+        if (event.name === "checkout.closed" || event.name === "checkout.completed") {
+          paddleEventCallback = null;
+          setBusy(false);
+        }
+      };
       paddle.Checkout.open({
         transactionId: payload.transactionId,
         settings: { displayMode: "overlay", theme: "light" }
       });
-      setBusy(false);
     } catch (caught) {
+      paddleEventCallback = null;
       setError(caught instanceof Error ? caught.message : "Checkout unavailable");
       setBusy(false);
     }
