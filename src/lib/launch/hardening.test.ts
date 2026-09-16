@@ -24,6 +24,20 @@ describe("B12 production hardening contracts", () => {
     expect(nextConfig).toMatch(/source:\s*"\/embed\/:path\*"[\s\S]*Content-Security-Policy/i);
   });
 
+  it("preserves legacy public URL signals with permanent one-to-one redirects", () => {
+    for (const [source, destination] of [
+      ["/about.html", "/about"],
+      ["/privacy-policy.html", "/privacy"],
+      ["/terms.html", "/terms"],
+      ["/disclaimer.html", "/disclaimer"],
+      ["/contact.html", "/contact"]
+    ]) {
+      expect(nextConfig).toContain(`source: "${source}"`);
+      expect(nextConfig).toContain(`destination: "${destination}"`);
+    }
+    expect(nextConfig.match(/permanent:\s*true/g)?.length).toBeGreaterThanOrEqual(5);
+  });
+
   it("prevents API caching and search indexing of private surfaces", () => {
     expect(nextConfig).toMatch(/source:\s*"\/api\/:path\*"[\s\S]*Cache-Control[\s\S]*no-store/i);
     for (const path of ["/account", "/account/", "/admin", "/admin/", "/business", "/business/", "/api", "/api/"]) {

@@ -6,8 +6,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = [
     { url: siteConfig.url, changeFrequency: "weekly", priority: 1 },
     { url: `${siteConfig.url}/calculators`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${siteConfig.url}/about`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteConfig.url}/business-platform`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${siteConfig.url}/pricing`, changeFrequency: "monthly", priority: 0.6 }
+    { url: `${siteConfig.url}/pricing`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${siteConfig.url}/privacy`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteConfig.url}/terms`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteConfig.url}/disclaimer`, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteConfig.url}/contact`, changeFrequency: "yearly", priority: 0.3 }
   ];
   const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().map((category) => ({
     url: `${siteConfig.url}/calculators/${category.slug}`,
