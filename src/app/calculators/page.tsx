@@ -4,7 +4,8 @@ import { CalculatorSearch } from "@/components/calculator-search";
 import { calculatorRegistry } from "@/calculators/registry";
 import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
 
-export const metadata: Metadata = { title: "Calculators", description: "Browse CalcuMint's certified calculators by category, search the library, or use the A–Z calculator index.", alternates: { canonical: "/calculators" } };
+const directoryDescription = "Browse CalcuMint's certified calculators by category, search the library, or use the A–Z calculator index.";
+export const metadata: Metadata = { title: "Calculators", description: directoryDescription, alternates: { canonical: "/calculators" }, openGraph: { type: "website", title: "Calculators | CalcuMint", description: directoryDescription, url: "/calculators" } };
 
 export default function CalculatorsPage() {
   const calculators = listPublicCalculators();
