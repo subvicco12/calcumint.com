@@ -29,15 +29,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "No managed paid subscription found" }, { status: 404 });
   }
 
-  try {
-    const displayName = typeof profile?.display_name === "string" ? profile.display_name.trim() : "";
-    if (displayName) {
+  const displayName = typeof profile?.display_name === "string" ? profile.display_name.trim() : "";
+  if (displayName) {
+    try {
       await paddleRequest(`/customers/${encodeURIComponent(subscription.provider_customer_id)}`, {
         method: "PATCH",
         body: JSON.stringify({ name: displayName })
       });
+    } catch {
+      // Customer profile enrichment is best-effort and must never block billing management.
     }
+  }
 
+  try {
     const portal = await paddleRequest<PortalSession>(`/customers/${encodeURIComponent(subscription.provider_customer_id)}/portal-sessions`, {
       method: "POST",
       body: JSON.stringify({ subscription_ids: [subscription.provider_subscription_id] })
