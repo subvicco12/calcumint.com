@@ -36,5 +36,5 @@ export { clearTaxonomyRegistry, getJourney, listCategories, listJourneys, regist
 export type { CountryCode, CountryProfile, CountrySignals } from "./country-intelligence";
 export type { RulePack, RulePackSelection } from "./rule-packs";
 export type { CalculationJourney, CalculatorCategory } from "./taxonomy";
-export type { CalculatorContext, CalculatorDefinition, CalculatorExample, CalculatorFormula, CalculatorRunResult, CalculatorSource, CalculatorRuleMetadata, JurisdictionRef, ReverseSolverDefinition, UnitSystem } from "./types";
+export type { CalculatorContext, CalculatorDefinition, CalculatorExample, CalculatorFormula, CalculatorRunResult, CalculatorSource, CalculatorRuleMetadata, CalculatorUiMetadata, JurisdictionRef, ReverseSolverDefinition, UnitSystem } from "./types";
 export { CalculatorValidationError } from "./types";
