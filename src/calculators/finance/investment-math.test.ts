@@ -20,4 +20,15 @@ describe("investment math", () => {
     expect(result.futureValue).toBeGreaterThan(result.inflationAdjustedFutureValue);
     expect(result.realAnnualReturnPercent).toBeCloseTo(4.7619, 4);
   });
+
+  it("rejects projections that overflow JavaScript numeric range", () => {
+    expect(() => futureValue(Number.MAX_VALUE, 1000, 200)).toThrow(/supported numeric range/);
+    expect(() => investmentMathCalculator.calculate({ presentValue: Number.MAX_VALUE, annualReturnPercent: 1000, years: 200, inflationPercent: 0 }, {})).toThrow(/supported numeric range/);
+  });
+
+  it("keeps large but finite projections supported", () => {
+    const result = futureValue(1_000_000, 20, 100);
+    expect(Number.isFinite(result)).toBe(true);
+    expect(result).toBeGreaterThan(1_000_000);
+  });
 });
