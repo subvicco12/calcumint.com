@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { runCalculator } from "../engine";
 import { loanAnalysisCalculator, maxPrincipalForPayment, paymentForLoan } from "./loan-analysis";
 
 describe("loan EMI analysis", () => {
@@ -31,5 +32,11 @@ describe("loan EMI analysis", () => {
     expect(accelerated.totalInterest).toBeLessThan(base.totalInterest);
     expect(accelerated.interestSavedVsScheduled).toBeGreaterThan(0);
     expect(accelerated.monthsSavedVsScheduled).toBeGreaterThan(0);
+  });
+  it("rejects invalid direct solver inputs and validates through the common engine", () => {
+    expect(() => paymentForLoan(1000, -1, 12)).toThrow(/rate/);
+    expect(() => paymentForLoan(1000, 5, 12.5)).toThrow(/integer/);
+    expect(maxPrincipalForPayment(-1, 5, 12)).toBe(0);
+    expect(() => runCalculator(loanAnalysisCalculator, { principal: 0, annualRatePercent: 5, termMonths: 12, extraMonthlyPayment: 0 })).toThrow();
   });
 });
