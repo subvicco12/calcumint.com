@@ -13,6 +13,11 @@ const inputSchema = z.object({
 type Input = z.infer<typeof inputSchema>;
 type Output = { futureValue: number; investedAmount: number; estimatedGain: number; finalMonthlyContribution: number };
 
+function requireFinite(value: number, label: string): number {
+  if (!Number.isFinite(value)) throw new Error(`${label} exceeds supported numeric range`);
+  return value;
+}
+
 export function stepUpSipFutureValue(initialMonthlyContribution: number, annualStepUpPercent: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning") {
   const monthlyRate = annualReturnPercent / 100 / 12;
   const step = annualStepUpPercent / 100;
@@ -20,11 +25,11 @@ export function stepUpSipFutureValue(initialMonthlyContribution: number, annualS
   let invested = 0;
   let contribution = initialMonthlyContribution;
   for (let month = 1; month <= termMonths; month += 1) {
-    if (month > 1 && (month - 1) % 12 === 0) contribution *= 1 + step;
-    if (timing === "beginning") balance += contribution;
-    balance *= 1 + monthlyRate;
-    if (timing === "end") balance += contribution;
-    invested += contribution;
+    if (month > 1 && (month - 1) % 12 === 0) contribution = requireFinite(contribution * (1 + step), "Monthly contribution");
+    if (timing === "beginning") balance = requireFinite(balance + contribution, "Projected balance");
+    balance = requireFinite(balance * (1 + monthlyRate), "Projected balance");
+    if (timing === "end") balance = requireFinite(balance + contribution, "Projected balance");
+    invested = requireFinite(invested + contribution, "Invested amount");
   }
   return { futureValue: balance, investedAmount: invested, finalMonthlyContribution: contribution };
 }
@@ -32,7 +37,7 @@ export function stepUpSipFutureValue(initialMonthlyContribution: number, annualS
 export function requiredInitialStepUpSip(targetFutureValue: number, annualStepUpPercent: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
   if (targetFutureValue <= 0 || termMonths < 1) return 0;
   const factor = stepUpSipFutureValue(1, annualStepUpPercent, annualReturnPercent, termMonths, timing).futureValue;
-  return targetFutureValue / factor;
+  return requireFinite(targetFutureValue / factor, "Required initial contribution");
 }
 
 export const stepUpSipCalculator: CalculatorDefinition<Input, Output> = {
