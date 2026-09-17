@@ -12,21 +12,26 @@ const inputSchema = z.object({
 type Input = z.infer<typeof inputSchema>;
 type Output = { futureValue: number; inflationAdjustedFutureValue: number; realAnnualReturnPercent: number };
 
+function requireFinite(value: number, label: string): number {
+  if (!Number.isFinite(value)) throw new Error(`${label} exceeds supported numeric range`);
+  return value;
+}
+
 export function futureValue(presentValue: number, annualReturnPercent: number, years: number): number {
-  return presentValue * (1 + annualReturnPercent / 100) ** years;
+  return requireFinite(presentValue * (1 + annualReturnPercent / 100) ** years, "Future value");
 }
 
 export function presentValueFromFuture(future: number, annualReturnPercent: number, years: number): number {
-  return future / (1 + annualReturnPercent / 100) ** years;
+  return requireFinite(future / (1 + annualReturnPercent / 100) ** years, "Present value");
 }
 
 export function cagr(beginningValue: number, endingValue: number, years: number): number {
   if (beginningValue <= 0 || endingValue < 0 || years <= 0) throw new Error("CAGR requires positive beginning value, non-negative ending value and positive years");
-  return ((endingValue / beginningValue) ** (1 / years) - 1) * 100;
+  return requireFinite(((endingValue / beginningValue) ** (1 / years) - 1) * 100, "CAGR");
 }
 
 export function realReturnPercent(nominalPercent: number, inflationPercent: number): number {
-  return ((1 + nominalPercent / 100) / (1 + inflationPercent / 100) - 1) * 100;
+  return requireFinite(((1 + nominalPercent / 100) / (1 + inflationPercent / 100) - 1) * 100, "Real return");
 }
 
 export const investmentMathCalculator: CalculatorDefinition<Input, Output> = {
