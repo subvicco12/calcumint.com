@@ -81,6 +81,7 @@ export const loanAnalysisCalculator: CalculatorDefinition<Input, Output> = {
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
   reverseSolvers: [{ id: "max-principal", target: "principal", description: "Solve the maximum principal supported by a target monthly payment, annual rate and term." }],
+  ui: { simpleInputKeys: ["principal","annualRatePercent","termMonths"], advancedInputKeys: ["extraMonthlyPayment"] },
   relatedCalculators: ["loan-payment-calculator"],
   journeyMemberships: ["buy-a-home", "get-out-of-debt"]
 };
