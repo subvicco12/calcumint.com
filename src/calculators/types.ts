@@ -39,6 +39,11 @@ export type CalculatorRuleMetadata = {
   lastVerifiedAt?: string;
 };
 
+export type CalculatorUiMetadata = {
+  simpleInputKeys: readonly string[];
+  advancedInputKeys?: readonly string[];
+};
+
 export type ReverseSolverDefinition = {
   id: string;
   target: string;
@@ -75,6 +80,7 @@ export type CalculatorDefinition<TInput, TOutput> = {
   unitSystems?: readonly UnitSystem[];
   ruleMetadata?: readonly CalculatorRuleMetadata[];
   reverseSolvers?: readonly ReverseSolverDefinition[];
+  ui?: CalculatorUiMetadata;
   relatedCalculators?: readonly string[];
   journeyMemberships?: readonly string[];
 };
