@@ -23,14 +23,23 @@ type Output = {
 };
 
 export function paymentForLoan(principal: number, annualRatePercent: number, termMonths: number): number {
+  if (!Number.isFinite(principal) || principal <= 0) throw new Error("Principal must be positive and finite");
+  if (!Number.isFinite(annualRatePercent) || annualRatePercent < 0) throw new Error("Annual rate must be non-negative and finite");
+  if (!Number.isInteger(termMonths) || termMonths < 1) throw new Error("Term months must be a positive integer");
   const rate = annualRatePercent / 100 / 12;
-  return rate === 0 ? principal / termMonths : principal * rate / (1 - (1 + rate) ** -termMonths);
+  const payment = rate === 0 ? principal / termMonths : principal * rate / (1 - (1 + rate) ** -termMonths);
+  if (!Number.isFinite(payment)) throw new Error("Loan payment exceeds supported numeric range");
+  return payment;
 }
 
 export function maxPrincipalForPayment(monthlyPayment: number, annualRatePercent: number, termMonths: number): number {
-  if (monthlyPayment <= 0 || termMonths < 1) return 0;
+  if (!Number.isFinite(monthlyPayment) || monthlyPayment <= 0) return 0;
+  if (!Number.isFinite(annualRatePercent) || annualRatePercent < 0) throw new Error("Annual rate must be non-negative and finite");
+  if (!Number.isInteger(termMonths) || termMonths < 1) return 0;
   const rate = annualRatePercent / 100 / 12;
-  return rate === 0 ? monthlyPayment * termMonths : monthlyPayment * (1 - (1 + rate) ** -termMonths) / rate;
+  const principal = rate === 0 ? monthlyPayment * termMonths : monthlyPayment * (1 - (1 + rate) ** -termMonths) / rate;
+  if (!Number.isFinite(principal)) throw new Error("Maximum principal exceeds supported numeric range");
+  return principal;
 }
 
 function schedule(principal: number, annualRatePercent: number, termMonths: number, extra: number): AmortizationRow[] {
