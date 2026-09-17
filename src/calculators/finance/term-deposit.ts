@@ -37,6 +37,7 @@ export const termDepositCalculator: CalculatorDefinition<Input, Output> = {
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
+  ui: { simpleInputKeys: ["principal","annualRatePercent","termMonths"], advancedInputKeys: ["compoundingPerYear"] },
   relatedCalculators: ["compound-interest-calculator"],
   journeyMemberships: ["invest-for-a-goal", "plan-retirement"]
 };
