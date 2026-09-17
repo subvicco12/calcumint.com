@@ -27,4 +27,15 @@ describe("step-up SIP engine", () => {
     expect(result.estimatedGain).toBeCloseTo(result.futureValue - result.investedAmount, 2);
     expect(result.finalMonthlyContribution).toBeGreaterThan(10000);
   });
+
+  it("rejects projections that exceed supported numeric range", () => {
+    expect(() => stepUpSipFutureValue(Number.MAX_VALUE, 1000, 1000, 1200, "beginning")).toThrow(/supported numeric range/);
+  });
+
+  it("keeps demanding but finite step-up scenarios supported", () => {
+    const result = stepUpSipFutureValue(10000, 20, 15, 360, "beginning");
+    expect(Number.isFinite(result.futureValue)).toBe(true);
+    expect(Number.isFinite(result.investedAmount)).toBe(true);
+    expect(result.futureValue).toBeGreaterThan(result.investedAmount);
+  });
 });
