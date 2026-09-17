@@ -25,4 +25,11 @@ describe("rule-pack registry", () => {
     expect(() => registerRulePack({ ...pack, id: "bad", effectiveFrom: "2026-12-01", effectiveTo: "2026-01-01" })).toThrow(/effectiveTo/);
     expect(listRulePacks({ country: "US" })).toHaveLength(1);
   });
+
+  it("rejects rollover and impossible calendar dates", () => {
+    const base = { id: "calendar", jurisdiction: { country: "CA" }, ruleVersion: "v1", officialSources: source, lastVerifiedAt: "2026-09-01" } as const;
+    expect(() => registerRulePack({ ...base, effectiveFrom: "2026-02-30" })).toThrow(/valid YYYY-MM-DD/);
+    expect(() => registerRulePack({ ...base, effectiveFrom: "2026-13-01" })).toThrow(/valid YYYY-MM-DD/);
+    expect(() => selectRulePack({ jurisdiction: { country: "CA" }, asOf: "2026-02-30" })).toThrow(/valid YYYY-MM-DD/);
+  });
 });
