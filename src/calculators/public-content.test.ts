@@ -17,7 +17,14 @@ const draftFinanceSlugs = [
   "sip-calculator",
   "step-up-sip-calculator",
   "investment-growth-calculator",
-  "swp-calculator"
+  "swp-calculator",
+  "effective-interest-rate-calculator",
+  "savings-goal-calculator",
+  "roi-calculator",
+  "net-worth-calculator",
+  "inflation-calculator",
+  "simple-interest-calculator",
+  "emergency-fund-calculator"
 ] as const;
 
 describe("public calculator publication gate", () => {
