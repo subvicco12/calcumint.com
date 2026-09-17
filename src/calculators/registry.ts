@@ -9,6 +9,7 @@ import { loanPrepaymentCalculator } from "./finance/loan-prepayment";
 import { loanComparisonCalculator } from "./finance/loan-comparison";
 import { loanAffordabilityCalculator } from "./finance/loan-affordability";
 import { debtPayoffCalculator } from "./finance/debt-payoff";
+import { creditCardPayoffCalculator } from "./finance/credit-card-payoff";
 import { termDepositCalculator } from "./finance/term-deposit";
 import { recurringDepositCalculator } from "./finance/recurring-deposit";
 import { sipCalculator } from "./finance/sip";
@@ -21,7 +22,7 @@ type RegistryCalculator = CalculatorDefinition<unknown, unknown>;
 function eraseCalculatorTypes<TInput,TOutput>(definition:CalculatorDefinition<TInput,TOutput>):RegistryCalculator{return definition as unknown as RegistryCalculator;}
 const definitions: readonly RegistryCalculator[] = [
   eraseCalculatorTypes(percentageCalculator), eraseCalculatorTypes(unitConversionCalculator), eraseCalculatorTypes(compoundInterestCalculator), eraseCalculatorTypes(loanPaymentCalculator),
-  eraseCalculatorTypes(loanAnalysisCalculator), eraseCalculatorTypes(loanRefinanceCalculator), eraseCalculatorTypes(loanPrepaymentCalculator), eraseCalculatorTypes(loanComparisonCalculator), eraseCalculatorTypes(loanAffordabilityCalculator), eraseCalculatorTypes(debtPayoffCalculator), eraseCalculatorTypes(termDepositCalculator), eraseCalculatorTypes(recurringDepositCalculator), eraseCalculatorTypes(sipCalculator), eraseCalculatorTypes(stepUpSipCalculator), eraseCalculatorTypes(investmentMathCalculator), eraseCalculatorTypes(swpCalculator),
+  eraseCalculatorTypes(loanAnalysisCalculator), eraseCalculatorTypes(loanRefinanceCalculator), eraseCalculatorTypes(loanPrepaymentCalculator), eraseCalculatorTypes(loanComparisonCalculator), eraseCalculatorTypes(loanAffordabilityCalculator), eraseCalculatorTypes(debtPayoffCalculator), eraseCalculatorTypes(creditCardPayoffCalculator), eraseCalculatorTypes(termDepositCalculator), eraseCalculatorTypes(recurringDepositCalculator), eraseCalculatorTypes(sipCalculator), eraseCalculatorTypes(stepUpSipCalculator), eraseCalculatorTypes(investmentMathCalculator), eraseCalculatorTypes(swpCalculator),
   ...launchDefinitions.map(eraseCalculatorTypes)
 ];
 const bySlug=new Map<string,RegistryCalculator>(); const byId=new Map<string,RegistryCalculator>();
