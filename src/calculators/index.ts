@@ -8,6 +8,7 @@ export { compoundInterestCalculator } from "./finance/compound-interest";
 export { loanPaymentCalculator } from "./finance/loan-payment";
 export { loanAnalysisCalculator, maxPrincipalForPayment, paymentForLoan } from "./finance/loan-analysis";
 export { compareLoanRefinance, loanRefinanceCalculator } from "./finance/loan-refinance";
+export { analyzeLoanPrepayment, loanPrepaymentCalculator, remainingLoanBalance } from "./finance/loan-prepayment";
 export { termDepositCalculator, termDepositFutureValue } from "./finance/term-deposit";
 export { recurringDepositCalculator, recurringDepositFutureValue, requiredMonthlyRecurringDeposit } from "./finance/recurring-deposit";
 export { requiredMonthlySip, sipCalculator, sipFutureValue } from "./finance/sip";
