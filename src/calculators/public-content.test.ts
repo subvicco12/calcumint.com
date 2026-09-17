@@ -11,6 +11,7 @@ const draftFinanceSlugs = [
   "loan-comparison-calculator",
   "loan-affordability-calculator",
   "debt-payoff-calculator",
+  "credit-card-payoff-calculator",
   "fixed-term-deposit-calculator",
   "recurring-deposit-calculator",
   "sip-calculator",
