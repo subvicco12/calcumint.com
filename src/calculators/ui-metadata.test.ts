@@ -7,6 +7,11 @@ import { roiCalculator } from "./finance/roi";
 import { inflationCalculator } from "./finance/inflation";
 import { rateConversionCalculator } from "./finance/rate-conversion";
 import { netWorthCalculator } from "./finance/net-worth";
+import { termDepositCalculator } from "./finance/term-deposit";
+import { recurringDepositCalculator } from "./finance/recurring-deposit";
+import { sipCalculator } from "./finance/sip";
+import { stepUpSipCalculator } from "./finance/step-up-sip";
+import { swpCalculator } from "./finance/swp";
 
 describe("calculator Simple and Advanced metadata",()=>{
   it("keeps advanced fields separate from the default Simple experience",()=>{
@@ -19,9 +24,14 @@ describe("calculator Simple and Advanced metadata",()=>{
     expect(inflationCalculator.ui?.advancedInputKeys).toBeUndefined();
     expect(rateConversionCalculator.ui?.simpleInputKeys).toContain("mode");
     expect(netWorthCalculator.ui?.simpleInputKeys).toEqual(["assets","liabilities"]);
+    expect(termDepositCalculator.ui?.advancedInputKeys).toEqual(["compoundingPerYear"]);
+    expect(recurringDepositCalculator.ui?.advancedInputKeys).toEqual(["depositTiming"]);
+    expect(sipCalculator.ui?.advancedInputKeys).toEqual(["contributionTiming"]);
+    expect(stepUpSipCalculator.ui?.advancedInputKeys).toEqual(["contributionTiming"]);
+    expect(swpCalculator.ui?.advancedInputKeys).toEqual(["withdrawalTiming"]);
   });
   it("does not duplicate a field between Simple and Advanced modes",()=>{
-    for(const definition of [loanAnalysisCalculator,savingsGoalCalculator,emergencyFundCalculator,simpleInterestCalculator,roiCalculator,inflationCalculator,rateConversionCalculator,netWorthCalculator]){
+    for(const definition of [loanAnalysisCalculator,savingsGoalCalculator,emergencyFundCalculator,simpleInterestCalculator,roiCalculator,inflationCalculator,rateConversionCalculator,netWorthCalculator,termDepositCalculator,recurringDepositCalculator,sipCalculator,stepUpSipCalculator,swpCalculator]){
       const simple=new Set(definition.ui?.simpleInputKeys??[]);
       for(const key of definition.ui?.advancedInputKeys??[])expect(simple.has(key),definition.slug).toBe(false);
     }
