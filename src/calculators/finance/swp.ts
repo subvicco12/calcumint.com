@@ -66,6 +66,7 @@ export const swpCalculator: CalculatorDefinition<Input, Output> = {
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
+  ui: { simpleInputKeys: ["initialCorpus","monthlyWithdrawal","annualReturnPercent","termMonths"], advancedInputKeys: ["withdrawalTiming"] },
   reverseSolvers: [{ id: "sustainable-monthly-withdrawal", target: "monthlyWithdrawal", description: "Solve the level monthly withdrawal that amortizes a corpus over the selected term at the assumed return." }],
   relatedCalculators: ["sip-calculator", "step-up-sip-calculator", "investment-growth-calculator"],
   journeyMemberships: ["plan-retirement", "invest-for-a-goal"]
