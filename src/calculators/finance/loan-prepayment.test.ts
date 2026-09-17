@@ -1,0 +1,12 @@
+import { describe, expect, it } from "vitest";
+import { analyzeLoanPrepayment, loanPrepaymentCalculator, remainingLoanBalance } from "./loan-prepayment";
+
+describe("loan prepayment engine",()=>{
+  it("returns original principal before any payments",()=>{expect(remainingLoanBalance(100000,6,360,0)).toBe(100000);});
+  it("reduces the remaining balance after scheduled payments",()=>{const balance=remainingLoanBalance(100000,6,360,60);expect(balance).toBeGreaterThan(0);expect(balance).toBeLessThan(100000);});
+  it("shows a lump-sum prepayment reducing payoff time and interest",()=>{const result=analyzeLoanPrepayment({principal:300000,annualRatePercent:6.5,originalTermMonths:360,paymentsMade:60,lumpSumPrepayment:50000,prepaymentFee:0});expect(result.remainingBalanceAfterPrepayment).toBeLessThan(result.remainingBalanceBeforePrepayment);expect(result.remainingMonthsAfterPrepayment).toBeLessThan(result.remainingMonthsWithoutPrepayment);expect(result.grossInterestSaved).toBeGreaterThan(0);expect(result.netSavingsAfterFee).toBe(result.grossInterestSaved);});
+  it("subtracts a prepayment fee from modeled savings",()=>{const result=analyzeLoanPrepayment({principal:200000,annualRatePercent:7,originalTermMonths:240,paymentsMade:24,lumpSumPrepayment:20000,prepaymentFee:1500});expect(result.netSavingsAfterFee).toBeCloseTo(result.grossInterestSaved-1500,2);});
+  it("caps prepayment at the outstanding balance and models immediate payoff",()=>{const result=analyzeLoanPrepayment({principal:50000,annualRatePercent:5,originalTermMonths:120,paymentsMade:60,lumpSumPrepayment:1000000,prepaymentFee:250});expect(result.prepaymentApplied).toBe(result.remainingBalanceBeforePrepayment);expect(result.remainingBalanceAfterPrepayment).toBe(0);expect(result.remainingMonthsAfterPrepayment).toBe(0);expect(result.foreclosureAmount).toBeCloseTo(result.remainingBalanceBeforePrepayment+250,2);});
+  it("handles zero-rate loans deterministically",()=>{expect(remainingLoanBalance(12000,0,12,5)).toBeCloseTo(7000,8);});
+  it("exposes structured calculator output",()=>{const result=loanPrepaymentCalculator.calculate({principal:150000,annualRatePercent:6,originalTermMonths:180,paymentsMade:36,lumpSumPrepayment:10000,prepaymentFee:0},{});expect(Number.isFinite(result.remainingBalanceBeforePrepayment)).toBe(true);expect(result.monthsSaved).toBeGreaterThanOrEqual(0);});
+});
