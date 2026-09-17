@@ -3,6 +3,9 @@ import { emergencyFundCalculator } from "./finance/emergency-fund";
 import { loanAnalysisCalculator } from "./finance/loan-analysis";
 import { savingsGoalCalculator } from "./finance/savings-goal";
 import { simpleInterestCalculator } from "./finance/simple-interest";
+import { roiCalculator } from "./finance/roi";
+import { inflationCalculator } from "./finance/inflation";
+import { rateConversionCalculator } from "./finance/rate-conversion";
 
 describe("calculator Simple and Advanced metadata",()=>{
   it("keeps advanced fields separate from the default Simple experience",()=>{
@@ -11,9 +14,12 @@ describe("calculator Simple and Advanced metadata",()=>{
     expect(savingsGoalCalculator.ui?.advancedInputKeys).toEqual(["monthlyContribution"]);
     expect(emergencyFundCalculator.ui?.advancedInputKeys).toEqual(["buildMonths"]);
     expect(simpleInterestCalculator.ui?.simpleInputKeys).toEqual(["principal","annualRatePercent","years"]);
+    expect(roiCalculator.ui?.advancedInputKeys).toEqual(["additionalCosts","incomeReceived"]);
+    expect(inflationCalculator.ui?.advancedInputKeys).toBeUndefined();
+    expect(rateConversionCalculator.ui?.simpleInputKeys).toContain("mode");
   });
   it("does not duplicate a field between Simple and Advanced modes",()=>{
-    for(const definition of [loanAnalysisCalculator,savingsGoalCalculator,emergencyFundCalculator,simpleInterestCalculator]){
+    for(const definition of [loanAnalysisCalculator,savingsGoalCalculator,emergencyFundCalculator,simpleInterestCalculator,roiCalculator,inflationCalculator,rateConversionCalculator]){
       const simple=new Set(definition.ui?.simpleInputKeys??[]);
       for(const key of definition.ui?.advancedInputKeys??[])expect(simple.has(key),definition.slug).toBe(false);
     }
