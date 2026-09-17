@@ -59,6 +59,7 @@ export const stepUpSipCalculator: CalculatorDefinition<Input, Output> = {
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
+  ui: { simpleInputKeys: ["initialMonthlyContribution","annualStepUpPercent","annualReturnPercent","termMonths"], advancedInputKeys: ["contributionTiming"] },
   reverseSolvers: [{ id: "target-initial-step-up-sip", target: "initialMonthlyContribution", description: "Solve the initial monthly contribution required to reach a target future value with a specified annual step-up." }],
   relatedCalculators: ["sip-calculator", "compound-interest-calculator"],
   journeyMemberships: ["invest-for-a-goal", "plan-retirement"]
