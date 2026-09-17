@@ -43,5 +43,5 @@ export const creditCardPayoffCalculator:CalculatorDefinition<Input,Output>={
   calculate:(input)=>simulateCreditCardPayoff(input),
   reverseSolvers:[{id:"target-payoff-payment",target:"monthlyPayment",description:"Solves the level modeled monthly payment required to repay the entered balance within a target number of months at the stated APR."}],
   formulas:[{id:"monthly-interest",expression:"interest = balance × APR / 12",description:"Generic monthly-interest approximation using nominal APR divided by 12."},{id:"target-payment",expression:"M = P × r / (1 − (1+r)^−n)",description:"Reverse-solves a level monthly payment for a target payoff term; zero-rate balances use principal divided by months."}],
-  sources:[],examples:[],jurisdictions:[{country:"GLOBAL"}],relatedCalculators:["debt-payoff-calculator","loan-affordability-calculator","loan-prepayment-calculator"],journeyMemberships:["get-out-of-debt"]
+  sources:[],examples:[],jurisdictions:[{country:"GLOBAL"}],ui:{simpleInputKeys:["balance","annualAprPercent","monthlyPayment"],advancedInputKeys:["extraMonthlyPayment"]},relatedCalculators:["debt-payoff-calculator","loan-affordability-calculator","loan-prepayment-calculator"],journeyMemberships:["get-out-of-debt"]
 };
