@@ -59,6 +59,7 @@ export const investmentMathCalculator: CalculatorDefinition<Input, Output> = {
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
+  ui: { simpleInputKeys: ["presentValue","annualReturnPercent","years"], advancedInputKeys: ["inflationPercent"] },
   reverseSolvers: [{ id: "present-value", target: "presentValue", description: "Solve the present capital required for a target future value." }],
   relatedCalculators: ["compound-interest-calculator", "sip-calculator", "step-up-sip-calculator"],
   journeyMemberships: ["invest-for-a-goal", "plan-retirement"]
