@@ -24,6 +24,7 @@ function finite(value: number, label: string): number {
 export function simulateDebtPayoff(input: Input): Output {
   const debts = input.debts.map((debt, index) => ({ ...debt, index, balance: debt.balance }));
   const startingBalance = finite(debts.reduce((sum, debt) => sum + debt.balance, 0), "Starting balance");
+  const monthlyBudget = finite(debts.reduce((sum, debt) => sum + debt.minimumPayment, input.extraMonthlyPayment), "Monthly debt budget");
   let totalInterest = 0;
   let totalPaid = 0;
   let months = 0;
@@ -31,6 +32,8 @@ export function simulateDebtPayoff(input: Input): Output {
 
   while (debts.some((debt) => debt.balance > 0.005) && months < 1200) {
     months += 1;
+    const openingBalance = debts.reduce((sum, debt) => sum + debt.balance, 0);
+
     for (const debt of debts) {
       if (debt.balance <= 0.005) continue;
       const interest = finite(debt.balance * (debt.annualRatePercent / 100 / 12), "Debt interest");
@@ -38,33 +41,34 @@ export function simulateDebtPayoff(input: Input): Output {
       totalInterest = finite(totalInterest + interest, "Total interest");
     }
 
-    let pool = input.extraMonthlyPayment;
+    let remainingBudget = monthlyBudget;
     for (const debt of debts) {
-      if (debt.balance <= 0.005) continue;
-      const payment = Math.min(debt.minimumPayment, debt.balance);
+      if (debt.balance <= 0.005 || remainingBudget <= 0) continue;
+      const payment = Math.min(debt.minimumPayment, debt.balance, remainingBudget);
       debt.balance -= payment;
-      pool += Math.max(0, debt.minimumPayment - payment);
+      remainingBudget -= payment;
       totalPaid = finite(totalPaid + payment, "Total paid");
       if (debt.balance <= 0.005 && !payoffOrder.includes(debt.name)) payoffOrder.push(debt.name);
     }
 
-    const active = debts
-      .filter((debt) => debt.balance > 0.005)
-      .sort((a, b) => input.strategy === "avalanche"
-        ? b.annualRatePercent - a.annualRatePercent || a.balance - b.balance || a.index - b.index
-        : a.balance - b.balance || b.annualRatePercent - a.annualRatePercent || a.index - b.index);
-
-    if (active.length && pool > 0) {
+    while (remainingBudget > 0.005) {
+      const active = debts
+        .filter((debt) => debt.balance > 0.005)
+        .sort((a, b) => input.strategy === "avalanche"
+          ? b.annualRatePercent - a.annualRatePercent || a.balance - b.balance || a.index - b.index
+          : a.balance - b.balance || b.annualRatePercent - a.annualRatePercent || a.index - b.index);
+      if (!active.length) break;
       const target = active[0];
-      const payment = Math.min(pool, target.balance);
+      const payment = Math.min(remainingBudget, target.balance);
       target.balance -= payment;
+      remainingBudget -= payment;
       totalPaid = finite(totalPaid + payment, "Total paid");
       if (target.balance <= 0.005 && !payoffOrder.includes(target.name)) payoffOrder.push(target.name);
     }
 
-    const activeAfter = debts.filter((debt) => debt.balance > 0.005);
-    if (activeAfter.length && input.extraMonthlyPayment === 0 && activeAfter.every((debt) => debt.minimumPayment <= debt.balance * (debt.annualRatePercent / 100 / 12) + 0.000001)) {
-      throw new Error("Minimum payments do not reduce the modeled debt balances");
+    const closingBalance = debts.reduce((sum, debt) => sum + Math.max(0, debt.balance), 0);
+    if (closingBalance > 0.005 && closingBalance >= openingBalance - 0.000001) {
+      throw new Error("Monthly debt budget does not reduce the modeled debt balances");
     }
   }
 
@@ -84,11 +88,11 @@ export const debtPayoffCalculator: CalculatorDefinition<Input, Output> = {
   calculate: (input) => simulateDebtPayoff(input),
   formulas: [
     { id: "monthly-interest", expression: "interest = balance × annual rate / 12", description: "Applies modeled monthly interest to each outstanding balance." },
-    { id: "payoff-priority", expression: "avalanche: highest rate first; snowball: lowest balance first", description: "Minimum payments are applied first, then available extra payment is directed to the selected priority debt." },
+    { id: "payoff-priority", expression: "monthly budget = original minimum payments + extra; avalanche: highest rate first; snowball: lowest balance first", description: "The original monthly debt budget is preserved so minimum-payment capacity freed by paid debts rolls to the remaining debts." },
   ],
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
-  relatedCalculators: ["loan-emi-calculator", "loan-affordability-calculator", "loan-prepayment-calculator"],
+  relatedCalculators: ["credit-card-payoff-calculator", "loan-emi-calculator", "loan-affordability-calculator", "loan-prepayment-calculator"],
   journeyMemberships: ["get-out-of-debt"],
 };
