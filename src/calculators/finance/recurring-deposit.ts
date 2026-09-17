@@ -49,6 +49,7 @@ export const recurringDepositCalculator: CalculatorDefinition<Input, Output> = {
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
+  ui: { simpleInputKeys: ["monthlyDeposit","annualInterestPercent","termMonths"], advancedInputKeys: ["depositTiming"] },
   reverseSolvers: [{ id: "target-monthly-deposit", target: "monthlyDeposit", description: "Solve the monthly recurring deposit required for a target maturity value." }],
   relatedCalculators: ["fixed-term-deposit-calculator", "sip-calculator", "investment-growth-calculator"],
   journeyMemberships: ["invest-for-a-goal", "plan-retirement"]
