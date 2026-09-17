@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { runCalculator } from "../engine";
+import { CalculatorValidationError } from "../types";
 import { analyzeLoanPrepayment, loanPrepaymentCalculator, remainingLoanBalance } from "./loan-prepayment";
 
 describe("loan prepayment engine",()=>{
@@ -6,7 +8,9 @@ describe("loan prepayment engine",()=>{
   it("reduces the remaining balance after scheduled payments",()=>{const balance=remainingLoanBalance(100000,6,360,60);expect(balance).toBeGreaterThan(0);expect(balance).toBeLessThan(100000);});
   it("shows a lump-sum prepayment reducing payoff time and interest",()=>{const result=analyzeLoanPrepayment({principal:300000,annualRatePercent:6.5,originalTermMonths:360,paymentsMade:60,lumpSumPrepayment:50000,prepaymentFee:0});expect(result.remainingBalanceAfterPrepayment).toBeLessThan(result.remainingBalanceBeforePrepayment);expect(result.remainingMonthsAfterPrepayment).toBeLessThan(result.remainingMonthsWithoutPrepayment);expect(result.grossInterestSaved).toBeGreaterThan(0);expect(result.netSavingsAfterFee).toBe(result.grossInterestSaved);});
   it("subtracts a prepayment fee from modeled savings",()=>{const result=analyzeLoanPrepayment({principal:200000,annualRatePercent:7,originalTermMonths:240,paymentsMade:24,lumpSumPrepayment:20000,prepaymentFee:1500});expect(result.netSavingsAfterFee).toBeCloseTo(result.grossInterestSaved-1500,2);});
+  it("does not apply an entered fee when no prepayment occurs",()=>{const result=analyzeLoanPrepayment({principal:200000,annualRatePercent:7,originalTermMonths:240,paymentsMade:24,lumpSumPrepayment:0,prepaymentFee:1500});expect(result.prepaymentApplied).toBe(0);expect(result.monthsSaved).toBe(0);expect(result.grossInterestSaved).toBeCloseTo(0,2);expect(result.prepaymentFee).toBe(0);expect(result.netSavingsAfterFee).toBeCloseTo(0,2);});
   it("caps prepayment at the outstanding balance and models immediate payoff",()=>{const result=analyzeLoanPrepayment({principal:50000,annualRatePercent:5,originalTermMonths:120,paymentsMade:60,lumpSumPrepayment:1000000,prepaymentFee:250});expect(result.prepaymentApplied).toBe(result.remainingBalanceBeforePrepayment);expect(result.remainingBalanceAfterPrepayment).toBe(0);expect(result.remainingMonthsAfterPrepayment).toBe(0);expect(result.foreclosureAmount).toBeCloseTo(result.remainingBalanceBeforePrepayment+250,2);});
   it("handles zero-rate loans deterministically",()=>{expect(remainingLoanBalance(12000,0,12,5)).toBeCloseTo(7000,8);});
+  it("rejects payments made at or beyond the original term through the calculator validation boundary",()=>{expect(()=>runCalculator(loanPrepaymentCalculator,{principal:100000,annualRatePercent:6,originalTermMonths:120,paymentsMade:120,lumpSumPrepayment:0,prepaymentFee:0},{})).toThrow(CalculatorValidationError);});
   it("exposes structured calculator output",()=>{const result=loanPrepaymentCalculator.calculate({principal:150000,annualRatePercent:6,originalTermMonths:180,paymentsMade:36,lumpSumPrepayment:10000,prepaymentFee:0},{});expect(Number.isFinite(result.remainingBalanceBeforePrepayment)).toBe(true);expect(result.monthsSaved).toBeGreaterThanOrEqual(0);});
 });
