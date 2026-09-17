@@ -5,6 +5,7 @@ import { compoundInterestCalculator } from "./finance/compound-interest";
 import { loanPaymentCalculator } from "./finance/loan-payment";
 import { loanAnalysisCalculator } from "./finance/loan-analysis";
 import { termDepositCalculator } from "./finance/term-deposit";
+import { recurringDepositCalculator } from "./finance/recurring-deposit";
 import { sipCalculator } from "./finance/sip";
 import { stepUpSipCalculator } from "./finance/step-up-sip";
 import { investmentMathCalculator } from "./finance/investment-math";
@@ -15,7 +16,7 @@ type RegistryCalculator = CalculatorDefinition<unknown, unknown>;
 function eraseCalculatorTypes<TInput,TOutput>(definition:CalculatorDefinition<TInput,TOutput>):RegistryCalculator{return definition as unknown as RegistryCalculator;}
 const definitions: readonly RegistryCalculator[] = [
   eraseCalculatorTypes(percentageCalculator), eraseCalculatorTypes(unitConversionCalculator), eraseCalculatorTypes(compoundInterestCalculator), eraseCalculatorTypes(loanPaymentCalculator),
-  eraseCalculatorTypes(loanAnalysisCalculator), eraseCalculatorTypes(termDepositCalculator), eraseCalculatorTypes(sipCalculator), eraseCalculatorTypes(stepUpSipCalculator), eraseCalculatorTypes(investmentMathCalculator), eraseCalculatorTypes(swpCalculator),
+  eraseCalculatorTypes(loanAnalysisCalculator), eraseCalculatorTypes(termDepositCalculator), eraseCalculatorTypes(recurringDepositCalculator), eraseCalculatorTypes(sipCalculator), eraseCalculatorTypes(stepUpSipCalculator), eraseCalculatorTypes(investmentMathCalculator), eraseCalculatorTypes(swpCalculator),
   ...launchDefinitions.map(eraseCalculatorTypes)
 ];
 const bySlug=new Map<string,RegistryCalculator>(); const byId=new Map<string,RegistryCalculator>();
