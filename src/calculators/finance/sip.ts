@@ -43,6 +43,7 @@ export const sipCalculator: CalculatorDefinition<Input, Output> = {
   sources: [],
   examples: [],
   jurisdictions: [{ country: "GLOBAL" }],
+  ui: { simpleInputKeys: ["monthlyContribution","annualReturnPercent","termMonths"], advancedInputKeys: ["contributionTiming"] },
   reverseSolvers: [{ id: "target-monthly-sip", target: "monthlyContribution", description: "Solve the monthly contribution required for a target future value." }],
   relatedCalculators: ["compound-interest-calculator", "fixed-term-deposit-calculator"],
   journeyMemberships: ["invest-for-a-goal", "plan-retirement"]
