@@ -19,6 +19,20 @@ describe("calculator taxonomy", () => {
     expect(listCategories("US").map((category) => category.id)).toEqual(["tax"]);
   });
 
+  it("completes core taxonomy after partial custom initialization", () => {
+    registerCategory({ id: "finance", title: "Custom Finance" });
+    registerJourney({ id: "custom", title: "Custom Journey", calculatorSlugs: ["custom-calculator"] });
+    registerCoreTaxonomy();
+    const categoryIds = listCategories().map((category) => category.id);
+    expect(categoryIds).toContain("finance");
+    expect(categoryIds).toContain("loans");
+    expect(categoryIds).toContain("health");
+    expect(listCategories().find((category) => category.id === "finance")?.title).toBe("Custom Finance");
+    expect(getJourney("custom")?.calculatorSlugs).toEqual(["custom-calculator"]);
+    expect(getJourney("buy-a-home")).toBeDefined();
+    expect(() => registerCoreTaxonomy()).not.toThrow();
+  });
+
   it("validates hierarchy, duplicate ids and journey members", () => {
     expect(() => registerCategory({ id: "child", title: "Child", parentId: "missing" })).toThrow(/Unknown parent/);
     registerCategory({ id: "finance", title: "Finance" });
