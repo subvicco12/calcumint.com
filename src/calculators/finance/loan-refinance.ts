@@ -3,52 +3,9 @@ import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
 import { paymentForLoan } from "./loan-analysis";
 
-const inputSchema = z.object({
-  remainingBalance: z.number().finite().positive(),
-  currentAnnualRatePercent: z.number().finite().min(0).max(1000),
-  currentRemainingMonths: z.number().int().min(1).max(1200),
-  newAnnualRatePercent: z.number().finite().min(0).max(1000),
-  newTermMonths: z.number().int().min(1).max(1200),
-  refinanceCosts: z.number().finite().min(0).default(0)
-});
-
-type Input = z.infer<typeof inputSchema>;
-type Output = {
-  currentMonthlyPayment: number; newMonthlyPayment: number; monthlyPaymentChange: number;
-  currentRemainingInterest: number; newLoanInterest: number; refinanceCosts: number;
-  grossInterestSavings: number; netLifetimeSavings: number; breakEvenMonths: number | null;
-};
-
-function requireFinite(value: number, label: string): number {
-  if (!Number.isFinite(value)) throw new Error(`${label} exceeds supported numeric range`);
-  return value;
-}
-
-export function compareLoanRefinance(input: Input): Output {
-  const currentPayment = requireFinite(paymentForLoan(input.remainingBalance, input.currentAnnualRatePercent, input.currentRemainingMonths), "Current payment");
-  const newPayment = requireFinite(paymentForLoan(input.remainingBalance, input.newAnnualRatePercent, input.newTermMonths), "New payment");
-  const currentInterest = requireFinite(currentPayment * input.currentRemainingMonths - input.remainingBalance, "Current remaining interest");
-  const newInterest = requireFinite(newPayment * input.newTermMonths - input.remainingBalance, "New loan interest");
-  const grossSavings = requireFinite(currentInterest - newInterest, "Gross interest savings");
-  const netSavings = requireFinite(grossSavings - input.refinanceCosts, "Net lifetime savings");
-  const monthlySavings = currentPayment - newPayment;
-  const breakEven = input.refinanceCosts === 0 ? 0 : monthlySavings > 0 ? Math.ceil(input.refinanceCosts / monthlySavings) : null;
-  return {
-    currentMonthlyPayment: roundTo(currentPayment, 2), newMonthlyPayment: roundTo(newPayment, 2), monthlyPaymentChange: roundTo(newPayment - currentPayment, 2),
-    currentRemainingInterest: roundTo(currentInterest, 2), newLoanInterest: roundTo(newInterest, 2), refinanceCosts: roundTo(input.refinanceCosts, 2),
-    grossInterestSavings: roundTo(grossSavings, 2), netLifetimeSavings: roundTo(netSavings, 2), breakEvenMonths: breakEven
-  };
-}
-
-export const loanRefinanceCalculator: CalculatorDefinition<Input, Output> = {
-  id: "finance.loan-refinance", slug: "loan-refinance-calculator", title: "Loan Refinance & Break-Even Calculator", category: "loans-mortgages", version: 1,
-  riskClass: "financial", reviewStatus: "draft", inputSchema,
-  calculate: (input) => compareLoanRefinance(input),
-  formulas: [
-    { id:"refinance-payment", expression:"M = P × r / (1 - (1+r)^(-n))", description:"Compares fully amortizing current and replacement loan payments using their respective remaining/new terms and rates." },
-    { id:"refinance-net-savings", expression:"net savings = current remaining interest − new loan interest − refinance costs", description:"Generic lifetime-cost comparison excluding jurisdiction-specific taxes, penalties, insurance and lender rules." },
-    { id:"refinance-break-even", expression:"break-even months = ceil(refinance costs / monthly payment savings)", description:"Simple cash-flow break-even when the replacement payment is lower; zero explicit costs break even immediately." }
-  ],
-  sources: [], examples: [], jurisdictions: [{ country:"GLOBAL" }],
-  relatedCalculators: ["loan-emi-calculator","loan-payment-calculator"], journeyMemberships: ["buy-a-home","get-out-of-debt"]
-};
+const inputSchema = z.object({ remainingBalance:z.number().finite().positive(), currentAnnualRatePercent:z.number().finite().min(0).max(1000), currentRemainingMonths:z.number().int().min(1).max(1200), newAnnualRatePercent:z.number().finite().min(0).max(1000), newTermMonths:z.number().int().min(1).max(1200), refinanceCosts:z.number().finite().min(0).default(0) });
+type Input=z.infer<typeof inputSchema>;
+type Output={currentMonthlyPayment:number;newMonthlyPayment:number;monthlyPaymentChange:number;currentRemainingInterest:number;newLoanInterest:number;refinanceCosts:number;grossInterestSavings:number;netLifetimeSavings:number;breakEvenMonths:number|null};
+function requireFinite(value:number,label:string):number{if(!Number.isFinite(value))throw new Error(`${label} exceeds supported numeric range`);return value;}
+export function compareLoanRefinance(input:Input):Output{const currentPayment=requireFinite(paymentForLoan(input.remainingBalance,input.currentAnnualRatePercent,input.currentRemainingMonths),"Current payment");const newPayment=requireFinite(paymentForLoan(input.remainingBalance,input.newAnnualRatePercent,input.newTermMonths),"New payment");const currentInterest=requireFinite(currentPayment*input.currentRemainingMonths-input.remainingBalance,"Current remaining interest");const newInterest=requireFinite(newPayment*input.newTermMonths-input.remainingBalance,"New loan interest");const grossSavings=requireFinite(currentInterest-newInterest,"Gross interest savings");const netSavings=requireFinite(grossSavings-input.refinanceCosts,"Net lifetime savings");const monthlySavings=currentPayment-newPayment;const breakEven=monthlySavings>0?(input.refinanceCosts===0?0:Math.ceil(input.refinanceCosts/monthlySavings)):null;return{currentMonthlyPayment:roundTo(currentPayment,2),newMonthlyPayment:roundTo(newPayment,2),monthlyPaymentChange:roundTo(newPayment-currentPayment,2),currentRemainingInterest:roundTo(currentInterest,2),newLoanInterest:roundTo(newInterest,2),refinanceCosts:roundTo(input.refinanceCosts,2),grossInterestSavings:roundTo(grossSavings,2),netLifetimeSavings:roundTo(netSavings,2),breakEvenMonths:breakEven};}
+export const loanRefinanceCalculator:CalculatorDefinition<Input,Output>={id:"finance.loan-refinance",slug:"loan-refinance-calculator",title:"Loan Refinance & Break-Even Calculator",category:"loans-mortgages",version:1,riskClass:"financial",reviewStatus:"draft",inputSchema,calculate:(input)=>compareLoanRefinance(input),formulas:[{id:"refinance-payment",expression:"M = P × r / (1 - (1+r)^(-n))",description:"Compares fully amortizing current and replacement loan payments using their respective remaining/new terms and rates."},{id:"refinance-net-savings",expression:"net savings = current remaining interest − new loan interest − refinance costs",description:"Generic lifetime-cost comparison excluding jurisdiction-specific taxes, penalties, insurance and lender rules."},{id:"refinance-break-even",expression:"break-even months = ceil(refinance costs / monthly payment savings)",description:"Simple cash-flow break-even only when the replacement payment is lower; zero explicit costs break even immediately only when monthly savings are positive."}],sources:[],examples:[],jurisdictions:[{country:"GLOBAL"}],relatedCalculators:["loan-emi-calculator","loan-payment-calculator","loan-comparison-calculator","loan-prepayment-calculator"],journeyMemberships:["buy-a-home","get-out-of-debt"]};
