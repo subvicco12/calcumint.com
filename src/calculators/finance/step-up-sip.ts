@@ -1,0 +1,60 @@
+import { z } from "zod";
+import { roundTo } from "../precision";
+import type { CalculatorDefinition } from "../types";
+
+const inputSchema = z.object({
+  initialMonthlyContribution: z.number().finite().positive(),
+  annualStepUpPercent: z.number().finite().min(0).max(1000),
+  annualReturnPercent: z.number().finite().min(-99).max(1000),
+  termMonths: z.number().int().min(1).max(1200),
+  contributionTiming: z.enum(["beginning", "end"]).default("beginning")
+});
+
+type Input = z.infer<typeof inputSchema>;
+type Output = { futureValue: number; investedAmount: number; estimatedGain: number; finalMonthlyContribution: number };
+
+export function stepUpSipFutureValue(initialMonthlyContribution: number, annualStepUpPercent: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning") {
+  const monthlyRate = annualReturnPercent / 100 / 12;
+  const step = annualStepUpPercent / 100;
+  let balance = 0;
+  let invested = 0;
+  let contribution = initialMonthlyContribution;
+  for (let month = 1; month <= termMonths; month += 1) {
+    if (month > 1 && (month - 1) % 12 === 0) contribution *= 1 + step;
+    if (timing === "beginning") balance += contribution;
+    balance *= 1 + monthlyRate;
+    if (timing === "end") balance += contribution;
+    invested += contribution;
+  }
+  return { futureValue: balance, investedAmount: invested, finalMonthlyContribution: contribution };
+}
+
+export function requiredInitialStepUpSip(targetFutureValue: number, annualStepUpPercent: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
+  if (targetFutureValue <= 0 || termMonths < 1) return 0;
+  const factor = stepUpSipFutureValue(1, annualStepUpPercent, annualReturnPercent, termMonths, timing).futureValue;
+  return targetFutureValue / factor;
+}
+
+export const stepUpSipCalculator: CalculatorDefinition<Input, Output> = {
+  id: "finance.step-up-sip",
+  slug: "step-up-sip-calculator",
+  title: "Step-Up SIP Calculator",
+  category: "finance-investment",
+  version: 1,
+  riskClass: "financial",
+  reviewStatus: "draft",
+  inputSchema,
+  calculate: ({ initialMonthlyContribution, annualStepUpPercent, annualReturnPercent, termMonths, contributionTiming }) => {
+    const result = stepUpSipFutureValue(initialMonthlyContribution, annualStepUpPercent, annualReturnPercent, termMonths, contributionTiming);
+    const futureValue = roundTo(result.futureValue, 2);
+    const investedAmount = roundTo(result.investedAmount, 2);
+    return { futureValue, investedAmount, estimatedGain: roundTo(futureValue - investedAmount, 2), finalMonthlyContribution: roundTo(result.finalMonthlyContribution, 2) };
+  },
+  formulas: [{ id: "step-up-sip-simulation", expression: "balance[m] = (balance[m-1] + contribution[m]) × (1+r) with annual contribution step-up", description: "Deterministic monthly cash-flow simulation with annual contribution increases; timing controls whether each contribution is invested before or after monthly growth." }],
+  sources: [],
+  examples: [],
+  jurisdictions: [{ country: "GLOBAL" }],
+  reverseSolvers: [{ id: "target-initial-step-up-sip", target: "initialMonthlyContribution", description: "Solve the initial monthly contribution required to reach a target future value with a specified annual step-up." }],
+  relatedCalculators: ["sip-calculator", "compound-interest-calculator"],
+  journeyMemberships: ["invest-for-a-goal", "plan-retirement"]
+};
