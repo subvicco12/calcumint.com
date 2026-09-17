@@ -11,6 +11,7 @@ export { compareLoanRefinance, loanRefinanceCalculator } from "./finance/loan-re
 export { analyzeLoanPrepayment, loanPrepaymentCalculator, remainingLoanBalance } from "./finance/loan-prepayment";
 export { compareLoans, loanComparisonCalculator } from "./finance/loan-comparison";
 export { calculateLoanAffordability, loanAffordabilityCalculator } from "./finance/loan-affordability";
+export { debtPayoffCalculator, simulateDebtPayoff } from "./finance/debt-payoff";
 export { termDepositCalculator, termDepositFutureValue } from "./finance/term-deposit";
 export { recurringDepositCalculator, recurringDepositFutureValue, requiredMonthlyRecurringDeposit } from "./finance/recurring-deposit";
 export { requiredMonthlySip, sipCalculator, sipFutureValue } from "./finance/sip";
