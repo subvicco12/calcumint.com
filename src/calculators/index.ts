@@ -24,6 +24,7 @@ export { requiredInitialStepUpSip, stepUpSipCalculator, stepUpSipFutureValue } f
 export { cagr, futureValue, investmentMathCalculator, presentValueFromFuture, realReturnPercent } from "./finance/investment-math";
 export { simulateSwp, sustainableMonthlyWithdrawal, swpCalculator } from "./finance/swp";
 export { convertAnnualRate, effectiveToNominalPercent, nominalToEffectivePercent, rateConversionCalculator } from "./finance/rate-conversion";
+export { calculateSavingsGoal, requiredMonthlySavings, savingsFutureValue, savingsGoalCalculator } from "./finance/savings-goal";
 export { COUNTRY_PROFILES, getCountryProfile, listWaveOneCountries, resolveCountry } from "./country-intelligence";
 export { clearRulePackRegistry, listRulePacks, registerRulePack, selectRulePack } from "./rule-packs";
 export { clearTaxonomyRegistry, getJourney, listCategories, listJourneys, registerCategory, registerCoreTaxonomy, registerJourney } from "./taxonomy";
