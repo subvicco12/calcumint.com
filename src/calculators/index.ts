@@ -28,6 +28,7 @@ export { calculateSavingsGoal, requiredMonthlySavings, savingsFutureValue, savin
 export { calculateRoi, roiCalculator } from "./finance/roi";
 export { calculateNetWorth, netWorthCalculator } from "./finance/net-worth";
 export { calculateInflation, inflationCalculator } from "./finance/inflation";
+export { calculateSimpleInterest, simpleInterestCalculator } from "./finance/simple-interest";
 export { COUNTRY_PROFILES, getCountryProfile, listWaveOneCountries, resolveCountry } from "./country-intelligence";
 export { clearRulePackRegistry, listRulePacks, registerRulePack, selectRulePack } from "./rule-packs";
 export { clearTaxonomyRegistry, getJourney, listCategories, listJourneys, registerCategory, registerCoreTaxonomy, registerJourney } from "./taxonomy";
