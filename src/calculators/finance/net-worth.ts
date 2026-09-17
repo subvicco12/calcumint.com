@@ -1,0 +1,10 @@
+import { z } from "zod";
+import { roundTo } from "../precision";
+import type { CalculatorDefinition } from "../types";
+const item=z.object({name:z.string().trim().min(1).max(100),amount:z.number().finite().min(0)});
+const inputSchema=z.object({assets:z.array(item).max(200),liabilities:z.array(item).max(200)});
+type Input=z.infer<typeof inputSchema>;
+type Output={totalAssets:number;totalLiabilities:number;netWorth:number;debtToAssetPercent:number|null};
+function sum(items:Input["assets"]){const value=items.reduce((a,b)=>a+b.amount,0);if(!Number.isFinite(value))throw new Error("Total exceeds supported numeric range");return value;}
+export function calculateNetWorth(input:Input):Output{const assets=sum(input.assets),liabilities=sum(input.liabilities);const net=assets-liabilities;if(!Number.isFinite(net))throw new Error("Net worth exceeds supported numeric range");return{totalAssets:roundTo(assets,2),totalLiabilities:roundTo(liabilities,2),netWorth:roundTo(net,2),debtToAssetPercent:assets===0?null:roundTo(liabilities/assets*100,6)};}
+export const netWorthCalculator:CalculatorDefinition<Input,Output>={id:"finance.net-worth",slug:"net-worth-calculator",title:"Net Worth Calculator",category:"finance",version:1,riskClass:"financial",reviewStatus:"draft",inputSchema,calculate:(input)=>calculateNetWorth(input),formulas:[{id:"net-worth",expression:"net worth=total assets−total liabilities",description:"Sums entered asset values and subtracts entered liabilities."},{id:"debt-assets",expression:"debt-to-asset ratio=liabilities/assets",description:"Reports liabilities as a percentage of assets when assets are greater than zero."}],sources:[],examples:[],jurisdictions:[{country:"GLOBAL"}],relatedCalculators:["debt-payoff-calculator","savings-goal-calculator","investment-growth-calculator"],journeyMemberships:["get-out-of-debt","invest-for-a-goal"]};
