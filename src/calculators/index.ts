@@ -1,5 +1,7 @@
 export { runCalculator } from "./engine";
 export { calculatorRegistry } from "./registry";
+export { goalSeek } from "./reverse";
+export type { GoalSeekOptions, GoalSeekResult } from "./reverse";
 export { convertUnit, getUnitFamily, supportedUnits } from "./units";
 export { roundTo } from "./precision";
 export { percentageCalculator } from "./core/percentage";
