@@ -13,4 +13,5 @@ describe("loan rate sensitivity",()=>{
   expect(compareLoanRateSensitivity({principal:12000,annualRatePercent:.5,termMonths:12}).scenarios[0].input.annualRatePercent).toBe(0);
   expect(()=>compareLoanRateSensitivity({principal:12000,annualRatePercent:5,termMonths:12},0)).toThrow(/Rate step/);
  });
+ it("rejects unsafe direct scenario inputs",()=>{expect(()=>compareLoanRateSensitivity({principal:Number.NaN,annualRatePercent:5,termMonths:12})).toThrow();expect(()=>compareLoanRateSensitivity({principal:1000,annualRatePercent:-1,termMonths:12})).toThrow();expect(()=>compareLoanRateSensitivity({principal:1000,annualRatePercent:5,termMonths:12.5})).toThrow();expect(()=>compareLoanRateSensitivity({principal:1000,annualRatePercent:5,termMonths:12,extraMonthlyPayment:-1})).toThrow();});
 });
