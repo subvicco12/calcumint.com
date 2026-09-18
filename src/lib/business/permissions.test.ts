@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import {isBusinessRole, describe, expect, it } from "vitest";
 import {
   BUSINESS_INCLUDED_SEATS,
   canEditSharedWork,
@@ -33,4 +33,5 @@ describe("business role permissions", () => {
   it("includes five seats in the initial Business entitlement", () => {
     expect(BUSINESS_INCLUDED_SEATS).toBe(5);
   });
+  it("fails closed for malformed runtime roles",()=>{expect(isBusinessRole("owner")).toBe(true);expect(isBusinessRole("superadmin")).toBe(false);expect(hasMinimumRole("superadmin" as BusinessRole,"viewer")).toBe(false);});
 });
