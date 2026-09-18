@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { canManageMembers, canManageProjects, type BusinessRole } from "@/lib/business/permissions";
 import { createClientWorkspace, createOrganization, createProject, inviteMember } from "./actions";
+import {getPlanEntitlements} from "@/lib/entitlements";
 
 export const metadata = { title: "Business Workspace" };
 
@@ -19,7 +20,7 @@ export default async function BusinessPage({ searchParams }: PageProps) {
   if (!user) redirect("/login");
 
   const { data: profile } = await supabase.from("profiles").select("plan,display_name").eq("id", user.id).maybeSingle();
-  if (profile?.plan !== "business") {
+  if (!getPlanEntitlements(profile?.plan).businessStudio) {
     return (
       <section className="container page-top">
         <span className="eyebrow">Business workspace</span>
