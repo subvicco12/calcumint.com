@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import type { PlanId } from "@/lib/billing/plans";
+import {getPlanEntitlements} from "@/lib/entitlements";
 
 type Props = {
   calculatorSlug: string;
@@ -62,6 +63,8 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     return () => { active = false; };
   }, [calculatorSlug]);
 
+  const entitlements=getPlanEntitlements(plan);
+
   async function toggleFavorite() {
     const supabase = createSupabaseBrowserClient();
     if (!supabase) return;
@@ -101,12 +104,12 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
   }
 
   function exportJson() {
-    if (!output || plan === "free") return;
+    if (!output || !entitlements.exports) return;
     downloadFile(`${calculatorSlug}.json`, JSON.stringify({ calculatorSlug, calculatorVersion, input, output }, null, 2), "application/json");
   }
 
   function exportCsv() {
-    if (!output || plan === "free") return;
+    if (!output || !entitlements.exports) return;
     downloadFile(`${calculatorSlug}.csv`, toCsv(input, output), "text/csv;charset=utf-8");
   }
 
@@ -119,7 +122,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     <div className="account-actions" aria-live="polite">
       <button className="button secondary" type="button" onClick={toggleFavorite}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
       <button className="button secondary" type="button" onClick={saveHistory} disabled={!output}>Save calculation</button>
-      {plan === "pro" || plan === "business" ? (
+      {entitlements.exports ? (
         <>
           <button className="button secondary" type="button" onClick={exportCsv} disabled={!output}>Export CSV</button>
           <button className="button secondary" type="button" onClick={exportJson} disabled={!output}>Export JSON</button>
