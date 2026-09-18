@@ -1,0 +1,2 @@
+import{readFileSync}from"node:fs";import{join}from"node:path";import{describe,expect,it}from"vitest";const sql=readFileSync(join(process.cwd(),"supabase/migrations/008_b10_admin_factory.sql"),"utf8");
+describe("admin factory governance",()=>{it("keeps admin identity explicitly provisioned",()=>expect(sql).toContain('admins_read_self'));it("applies both USING and WITH CHECK to governed catalog updates",()=>{const line=sql.split("\n").find(v=>v.includes('catalog_editor_update'))??"";expect(line).toContain("using");expect(line).toContain("with check")});});
