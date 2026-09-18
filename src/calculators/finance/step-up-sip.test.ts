@@ -38,4 +38,5 @@ describe("step-up SIP engine", () => {
     expect(Number.isFinite(result.investedAmount)).toBe(true);
     expect(result.futureValue).toBeGreaterThan(result.investedAmount);
   });
+  it("rejects unsafe direct-helper inputs",()=>{expect(()=>stepUpSipFutureValue(-1,10,8,12)).toThrow();expect(()=>stepUpSipFutureValue(100,Number.NaN,8,12)).toThrow();expect(()=>stepUpSipFutureValue(100,10,-100,12)).toThrow();expect(()=>stepUpSipFutureValue(100,10,8,12.5)).toThrow();expect(requiredInitialStepUpSip(Number.POSITIVE_INFINITY,10,8,12)).toBe(0);expect(requiredInitialStepUpSip(100000,10,8,12.5)).toBe(0);});
 });
