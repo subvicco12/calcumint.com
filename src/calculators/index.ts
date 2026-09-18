@@ -11,6 +11,8 @@ export { unitConversionCalculator } from "./core/unit-conversion";
 export { compoundInterestCalculator } from "./finance/compound-interest";
 export { loanPaymentCalculator } from "./finance/loan-payment";
 export { loanAnalysisCalculator, maxPrincipalForPayment, paymentForLoan } from "./finance/loan-analysis";
+export { compareLoanRateSensitivity } from "./finance/loan-scenarios";
+export type { LoanRateScenarioInput } from "./finance/loan-scenarios";
 export { compareLoanRefinance, loanRefinanceCalculator } from "./finance/loan-refinance";
 export { analyzeLoanPrepayment, loanPrepaymentCalculator, remainingLoanBalance } from "./finance/loan-prepayment";
 export { compareLoans, loanComparisonCalculator } from "./finance/loan-comparison";
