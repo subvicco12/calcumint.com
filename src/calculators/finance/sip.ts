@@ -14,8 +14,9 @@ type Output = { futureValue: number; investedAmount: number; estimatedGain: numb
 
 export function sipFutureValue(monthlyContribution: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
   if(!Number.isFinite(monthlyContribution)||monthlyContribution<0)throw new Error("Monthly contribution must be non-negative and finite");
-  if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100)throw new Error("Annual return must be greater than -100% and finite");
-  if(!Number.isInteger(termMonths)||termMonths<1)throw new Error("Term months must be a positive integer");
+  if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<-99||annualReturnPercent>1000)throw new Error("Annual return must be greater than -100% and finite");
+  if(!Number.isInteger(termMonths)||termMonths<1||termMonths>1200)throw new Error("Term months must be a positive integer");
+  if(timing!=="beginning"&&timing!=="end")throw new Error("Unsupported contribution timing");
   const r = annualReturnPercent / 100 / 12;
   if (r === 0) return monthlyContribution * termMonths;
   const ordinary = monthlyContribution * (((1 + r) ** termMonths - 1) / r);
@@ -26,7 +27,7 @@ export function sipFutureValue(monthlyContribution: number, annualReturnPercent:
 
 export function requiredMonthlySip(targetFutureValue: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
   if (!Number.isFinite(targetFutureValue)||targetFutureValue <= 0) return 0;
-  if(!Number.isInteger(termMonths)||termMonths<1)return 0;
+  if(!Number.isInteger(termMonths)||termMonths<1||termMonths>1200)return 0;
   const factor = sipFutureValue(1, annualReturnPercent, termMonths, timing);
   const required=targetFutureValue/factor;
   if(!Number.isFinite(required)||required<0)throw new Error("Required SIP exceeds supported numeric range");
