@@ -25,7 +25,8 @@ export function sipFutureValue(monthlyContribution: number, annualReturnPercent:
 }
 
 export function requiredMonthlySip(targetFutureValue: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
-  if (!Number.isFinite(targetFutureValue)||targetFutureValue <= 0 || termMonths < 1) return 0;
+  if (!Number.isFinite(targetFutureValue)||targetFutureValue <= 0) return 0;
+  if(!Number.isInteger(termMonths)||termMonths<1)return 0;
   const factor = sipFutureValue(1, annualReturnPercent, termMonths, timing);
   const required=targetFutureValue/factor;
   if(!Number.isFinite(required)||required<0)throw new Error("Required SIP exceeds supported numeric range");
