@@ -14,7 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/disclaimer`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${siteConfig.url}/contact`, changeFrequency: "yearly", priority: 0.3 }
   ];
-  const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().map((category) => ({
+  const publishedCategories=new Set(listPublicCalculators().map(item=>item.category));
+  const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().filter(category=>publishedCategories.has(category.slug)).map((category) => ({
     url: `${siteConfig.url}/calculators/${category.slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.8
