@@ -124,6 +124,9 @@ begin
   if not exists(select 1 from public.profiles where id = auth.uid() and plan = 'business') then
     raise exception 'Business plan required';
   end if;
+  if exists(select 1 from public.organization_members where user_id=auth.uid() and role='owner') then
+    raise exception 'Business account already owns an organization';
+  end if;
 
   insert into public.organizations(name, slug, owner_user_id)
   values (trim(org_name), lower(trim(org_slug)), auth.uid())
