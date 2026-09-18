@@ -103,7 +103,7 @@ alter table public.admin_alerts enable row level security;
 create policy "admins_read_self" on public.platform_admins for select using (user_id = auth.uid() and active);
 create policy "catalog_admin_read" on public.calculator_catalog_admin for select using (public.is_platform_admin());
 create policy "catalog_editor_insert" on public.calculator_catalog_admin for insert with check (public.has_platform_role(array['owner','admin','reviewer','editor']) and created_by = auth.uid());
-create policy "catalog_editor_update" on public.calculator_catalog_admin for update using (public.has_platform_role(array['owner','admin','reviewer','editor']));
+create policy "catalog_editor_update" on public.calculator_catalog_admin for update using (public.has_platform_role(array['owner','admin','reviewer','editor'])) with check (public.has_platform_role(array['owner','admin','reviewer','editor']));
 create policy "qa_admin_read" on public.calculator_qa_checks for select using (public.is_platform_admin());
 create policy "qa_reviewer_write" on public.calculator_qa_checks for all using (public.has_platform_role(array['owner','admin','reviewer'])) with check (public.has_platform_role(array['owner','admin','reviewer']));
 create policy "events_admin_read" on public.calculator_review_events for select using (public.is_platform_admin());
