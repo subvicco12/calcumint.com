@@ -63,3 +63,6 @@ export async function saveCalculationHistory(entry: {
   });
   if (error) throw new Error("Could not save calculation history");
 }
+
+export async function createCalculationProject(formData:FormData){const{supabase,user}=await requireUser();const{data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();if(!getPlanEntitlements(profile?.plan).projects)throw new Error("Projects require Pro or Business");const name=String(formData.get("name")??"").trim().slice(0,120);const description=String(formData.get("description")??"").trim().slice(0,1000);if(!name)throw new Error("Project name is required");const{error}=await supabase.from("calculation_projects").insert({user_id:user.id,name,description:description||null});if(error)throw new Error("Could not create project");revalidatePath("/account");}
+export async function deleteCalculationProject(formData:FormData){const{supabase,user}=await requireUser();const id=String(formData.get("projectId")??"");if(!id)throw new Error("Project id is required");const{error}=await supabase.from("calculation_projects").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete project");revalidatePath("/account");}
