@@ -25,6 +25,7 @@ export default async function BuilderPage() {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
+  const {data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();if(profile?.plan!=="business")redirect("/business");
   const { data: memberships } = await supabase.from("organization_members").select("organization_id,role").eq("user_id", user.id).limit(1);
   const membership = memberships?.[0];
   if (!membership) redirect("/business");
