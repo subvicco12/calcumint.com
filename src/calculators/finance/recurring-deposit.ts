@@ -18,7 +18,9 @@ function requireFinite(value: number, label: string): number {
 }
 
 export function recurringDepositFutureValue(monthlyDeposit: number, annualInterestPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
-  if (monthlyDeposit <= 0 || termMonths < 1) return 0;
+  if(!Number.isFinite(monthlyDeposit)||monthlyDeposit<=0)return 0;
+  if(!Number.isFinite(annualInterestPercent)||annualInterestPercent<0)throw new Error("Annual interest must be non-negative and finite");
+  if(!Number.isInteger(termMonths)||termMonths<1)return 0;
   const monthlyRate = annualInterestPercent / 100 / 12;
   if (monthlyRate === 0) return requireFinite(monthlyDeposit * termMonths, "Maturity value");
   const ordinary = monthlyDeposit * (((1 + monthlyRate) ** termMonths - 1) / monthlyRate);
@@ -26,7 +28,9 @@ export function recurringDepositFutureValue(monthlyDeposit: number, annualIntere
 }
 
 export function requiredMonthlyRecurringDeposit(targetMaturityValue: number, annualInterestPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
-  if (targetMaturityValue <= 0 || termMonths < 1) return 0;
+  if(!Number.isFinite(targetMaturityValue)||targetMaturityValue<=0)return 0;
+  if(!Number.isFinite(annualInterestPercent)||annualInterestPercent<0)throw new Error("Annual interest must be non-negative and finite");
+  if(!Number.isInteger(termMonths)||termMonths<1)return 0;
   const factor = recurringDepositFutureValue(1, annualInterestPercent, termMonths, timing);
   return requireFinite(targetMaturityValue / factor, "Required monthly deposit");
 }
