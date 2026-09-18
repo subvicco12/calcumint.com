@@ -43,3 +43,6 @@ export { CalculatorValidationError } from "./types";
 
 export { buildPublicCalculatorSearchIndex, findPublicCalculatorCandidates } from "./search-index";
 export type { CalculatorSearchItem } from "./search-index";
+
+export { listCertifiedCountryPriorities } from "./country-discovery";
+export type { CountryPriorityItem } from "./country-discovery";
