@@ -50,6 +50,7 @@ export function simulateSwp(initialCorpus: number, monthlyWithdrawal: number, an
 export function sustainableMonthlyWithdrawal(initialCorpus: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "end"): number {
   if (!Number.isFinite(initialCorpus)||initialCorpus <= 0 || !Number.isInteger(termMonths)||termMonths < 1) return 0;
   if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100)throw new Error("Annual return must be greater than -100% and finite");
+  if(timing!=="beginning"&&timing!=="end")throw new Error("Unsupported withdrawal timing");
   const r = annualReturnPercent / 100 / 12;
   if (Math.abs(r) < 1e-12) return initialCorpus / termMonths;
   const ordinary = initialCorpus * r / (1 - (1 + r) ** -termMonths);
