@@ -16,10 +16,12 @@ function finite(value:number,label:string){if(!Number.isFinite(value))throw new 
 export function requiredMonthlyPaymentForTargetMonths(balance:number,annualAprPercent:number,targetMonths:number):number{
   if(!Number.isFinite(balance)||balance<=0)throw new Error("Balance must be positive and finite");
   if(!Number.isInteger(targetMonths)||targetMonths<1||targetMonths>2400)throw new Error("Target months must be an integer from 1 to 2400");
+  if(!Number.isFinite(annualAprPercent)||annualAprPercent<0)throw new Error("APR must be non-negative and finite");
   return finite(paymentForLoan(balance,annualAprPercent,targetMonths),"Required monthly payment");
 }
 
 export function simulateCreditCardPayoff(input:Input):Output{
+  if(!Number.isFinite(input.balance)||input.balance<=0||!Number.isFinite(input.annualAprPercent)||input.annualAprPercent<0||!Number.isFinite(input.monthlyPayment)||input.monthlyPayment<=0||!Number.isFinite(input.extraMonthlyPayment)||input.extraMonthlyPayment<0)throw new Error("Credit-card payoff inputs must be finite and within supported ranges");
   const payment=finite(input.monthlyPayment+input.extraMonthlyPayment,"Monthly payment");
   const monthlyRate=input.annualAprPercent/100/12;
   const firstMonthInterest=finite(input.balance*monthlyRate,"First month interest");
