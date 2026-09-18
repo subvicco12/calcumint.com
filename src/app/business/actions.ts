@@ -68,6 +68,7 @@ export async function inviteMember(formData: FormData) {
 
 export async function createProject(formData: FormData) {
   const { supabase, user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
   const name = String(formData.get("name") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim();
@@ -84,6 +85,7 @@ export async function createProject(formData: FormData) {
 
 export async function createClientWorkspace(formData: FormData) {
   const { supabase, user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
   const name = String(formData.get("name") ?? "").trim();
   const reference = String(formData.get("reference") ?? "").trim();
