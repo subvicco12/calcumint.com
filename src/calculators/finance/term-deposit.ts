@@ -13,9 +13,15 @@ type Input = z.infer<typeof inputSchema>;
 type Output = { maturityValue: number; interestEarned: number; effectiveAnnualYieldPercent: number };
 
 export function termDepositFutureValue(principal: number, annualRatePercent: number, termMonths: number, compoundingPerYear: number): number {
+  if(!Number.isFinite(principal)||principal<=0)throw new Error("Principal must be positive and finite");
+  if(!Number.isFinite(annualRatePercent)||annualRatePercent<0)throw new Error("Annual rate must be non-negative and finite");
+  if(!Number.isInteger(termMonths)||termMonths<1)throw new Error("Term months must be a positive integer");
+  if(![1,2,4,12,365].includes(compoundingPerYear))throw new Error("Unsupported compounding frequency");
   const years = termMonths / 12;
   const rate = annualRatePercent / 100;
-  return principal * (1 + rate / compoundingPerYear) ** (compoundingPerYear * years);
+  const value=principal*(1+rate/compoundingPerYear)**(compoundingPerYear*years);
+  if(!Number.isFinite(value))throw new Error("Maturity value exceeds supported numeric range");
+  return value;
 }
 
 export const termDepositCalculator: CalculatorDefinition<Input, Output> = {
