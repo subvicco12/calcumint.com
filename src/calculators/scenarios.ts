@@ -12,7 +12,7 @@ export function compareScenarios<TInput,TOutput>(scenarios:readonly Scenario<TIn
  scenarios.forEach(s=>{validId(s.id,"Scenario");validLabel(s.label);});
  if(new Set(scenarios.map(s=>s.id)).size!==scenarios.length)throw new Error("Scenario ids must be unique");
  if(metrics.length<1)throw new Error("Scenario comparison requires at least one metric");
- metrics.forEach(m=>validId(m.id,"Scenario metric"));
+ metrics.forEach(m=>{validId(m.id,"Scenario metric");if(m.preference!==undefined&&m.preference!=="lower"&&m.preference!=="higher")throw new Error("Scenario metric preference must be lower or higher");});
  if(new Set(metrics.map(m=>m.id)).size!==metrics.length)throw new Error("Scenario metric ids must be unique");
  const results=scenarios.map(s=>({...s,output:calculate(s.input)}));
  const comparisons=metrics.map(metric=>{
