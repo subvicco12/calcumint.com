@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site";
 
 type PageProps = { params: Promise<{ category: string }> };
 export function generateStaticParams() { const published=new Set(listPublicCalculators().map(item=>item.category)); return listPublicCategories().filter(category=>published.has(category.slug)).map((category) => ({ category: category.slug })); }
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> { const { category } = await params; const meta = categoryContent[category as keyof typeof categoryContent]; if (!meta) return {}; return { title: meta.name, description: meta.description, alternates: { canonical: `/calculators/${category}` }, openGraph: { type: "website", title: `${meta.name} | CalcuMint`, description: meta.description, url: `/calculators/${category}` } }; }
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> { const { category } = await params; const meta = categoryContent[category as keyof typeof categoryContent]; if (!meta || !listPublicCalculators().some(item=>item.category===category)) return { robots: { index: false, follow: false } }; return { title: meta.name, description: meta.description, alternates: { canonical: `/calculators/${category}` }, openGraph: { type: "website", title: `${meta.name} | CalcuMint`, description: meta.description, url: `/calculators/${category}` } }; }
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
