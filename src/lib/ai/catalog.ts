@@ -3,7 +3,8 @@ import { buildPublicCalculatorSearchIndex,findPublicCalculatorCandidates } from 
 export type CalculatorSuggestion={slug:string;category:string;description:string;url:string;score:number};
 
 export function deterministicCalculatorSearch(query:string,limit=5):CalculatorSuggestion[]{
- return findPublicCalculatorCandidates(query,Math.max(1,Math.min(limit,10))).map((item,index)=>({slug:item.slug,category:item.category,description:item.description,url:item.href,score:Math.max(1,limit-index)}));
+ if(!Number.isInteger(limit)||limit<1||limit>10)return [];
+ return findPublicCalculatorCandidates(query,limit).map((item,index)=>({slug:item.slug,category:item.category,description:item.description,url:item.href,score:Math.max(1,limit-index)}));
 }
 
 export function publicCalculatorCatalog(){
