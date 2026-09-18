@@ -40,3 +40,6 @@ export type { RulePack, RulePackSelection } from "./rule-packs";
 export type { CalculationJourney, CalculatorCategory } from "./taxonomy";
 export type { CalculatorContext, CalculatorDefinition, CalculatorExample, CalculatorFormula, CalculatorRunResult, CalculatorSource, CalculatorRuleMetadata, CalculatorUiMetadata, JurisdictionRef, ReverseSolverDefinition, UnitSystem } from "./types";
 export { CalculatorValidationError } from "./types";
+
+export { buildPublicCalculatorSearchIndex, findPublicCalculatorCandidates } from "./search-index";
+export type { CalculatorSearchItem } from "./search-index";
