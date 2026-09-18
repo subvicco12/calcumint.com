@@ -6,4 +6,5 @@ describe("net worth",()=>{
  it("supports negative net worth",()=>{expect(calculateNetWorth({assets:[{name:"Cash",amount:1000}],liabilities:[{name:"Debt",amount:3000}]}).netWorth).toBe(-2000);});
  it("does not invent a debt-to-asset ratio with zero assets",()=>{expect(calculateNetWorth({assets:[],liabilities:[{name:"Debt",amount:100}]}).debtToAssetPercent).toBeNull();});
  it("validates through the common engine",()=>{expect(()=>runCalculator(netWorthCalculator,{assets:[{name:"",amount:1}],liabilities:[]})).toThrow();const r=runCalculator(netWorthCalculator,{assets:[{name:"Cash",amount:500}],liabilities:[]});expect(r.output.netWorth).toBe(500);});
+ it("rejects aggregate numeric overflow",()=>{expect(()=>calculateNetWorth({assets:[{name:"A",amount:Number.MAX_VALUE},{name:"B",amount:Number.MAX_VALUE}],liabilities:[]})).toThrow(/numeric range/);});
 });
