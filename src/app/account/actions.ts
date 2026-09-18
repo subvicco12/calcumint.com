@@ -24,6 +24,7 @@ export async function updatePreferences(formData: FormData) {
     locale,
     currency,
     unit_system: unitSystem,
+    country_code: country??null,
     updated_at: new Date().toISOString()
   });
   if (error) throw new Error("Could not update preferences");
