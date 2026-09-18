@@ -12,10 +12,16 @@ const inputSchema = z.object({
 type Input = z.infer<typeof inputSchema>;
 type Output = { futureValue: number; investedAmount: number; estimatedGain: number };
 
-export function sipFutureValue(monthlyContribution: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {\n  if(!Number.isFinite(monthlyContribution)||monthlyContribution<0)throw new Error("Monthly contribution must be non-negative and finite");\n  if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100)throw new Error("Annual return must be greater than -100% and finite");\n  if(!Number.isInteger(termMonths)||termMonths<1)throw new Error("Term months must be a positive integer");\n  const r = annualReturnPercent / 100 / 12;
+export function sipFutureValue(monthlyContribution: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
+  if(!Number.isFinite(monthlyContribution)||monthlyContribution<0)throw new Error("Monthly contribution must be non-negative and finite");
+  if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100)throw new Error("Annual return must be greater than -100% and finite");
+  if(!Number.isInteger(termMonths)||termMonths<1)throw new Error("Term months must be a positive integer");
+  const r = annualReturnPercent / 100 / 12;
   if (r === 0) return monthlyContribution * termMonths;
   const ordinary = monthlyContribution * (((1 + r) ** termMonths - 1) / r);
-  const value=timing === "beginning" ? ordinary * (1 + r) : ordinary;\n  if(!Number.isFinite(value))throw new Error("SIP future value exceeds supported numeric range");\n  return value;
+  const value=timing === "beginning" ? ordinary * (1 + r) : ordinary;
+  if(!Number.isFinite(value))throw new Error("SIP future value exceeds supported numeric range");
+  return value;
 }
 
 export function requiredMonthlySip(targetFutureValue: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
