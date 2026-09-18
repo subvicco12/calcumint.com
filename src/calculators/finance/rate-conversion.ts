@@ -12,13 +12,13 @@ type Output={annualNominalPercent:number;annualEffectivePercent:number;compounds
 function finite(value:number,label:string){if(!Number.isFinite(value))throw new Error(`${label} exceeds supported numeric range`);return value;}
 
 export function nominalToEffectivePercent(nominalPercent:number,compoundsPerYear:number):number{
-  if(!Number.isFinite(nominalPercent)||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1)throw new Error("Rate conversion inputs must be finite with a positive integer compounding frequency");
+  if(!Number.isFinite(nominalPercent)||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1||compoundsPerYear>100000)throw new Error("Rate conversion inputs must be finite with a positive integer compounding frequency");
   const periodic=nominalPercent/100/compoundsPerYear;
   if(periodic<=-1)throw new Error("Periodic rate must be greater than -100%");
   return finite((Math.pow(1+periodic,compoundsPerYear)-1)*100,"Effective annual rate");
 }
 export function effectiveToNominalPercent(effectivePercent:number,compoundsPerYear:number):number{
-  if(!Number.isFinite(effectivePercent)||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1)throw new Error("Rate conversion inputs must be finite with a positive integer compounding frequency");
+  if(!Number.isFinite(effectivePercent)||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1||compoundsPerYear>100000)throw new Error("Rate conversion inputs must be finite with a positive integer compounding frequency");
   const effective=effectivePercent/100;
   if(effective<=-1)throw new Error("Effective annual rate must be greater than -100%");
   return finite(compoundsPerYear*(Math.pow(1+effective,1/compoundsPerYear)-1)*100,"Nominal annual rate");
