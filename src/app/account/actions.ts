@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getCountryProfile,type CountryCode } from "@/calculators/country-intelligence";
 
 async function requireUser() {
   const supabase = await createSupabaseServerClient();
