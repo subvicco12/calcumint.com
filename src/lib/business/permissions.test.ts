@@ -1,11 +1,13 @@
-import {isBusinessRole, describe, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   BUSINESS_INCLUDED_SEATS,
   canEditSharedWork,
   canManageMembers,
   canManageProjects,
   canTransferOwnership,
-  hasMinimumRole
+  hasMinimumRole,
+  isBusinessRole,
+  type BusinessRole
 } from "./permissions";
 
 describe("business role permissions", () => {
