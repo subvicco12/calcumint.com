@@ -8,5 +8,5 @@ describe("goalSeek",()=>{
  it("rejects targets outside modeled bounds",()=>{expect(()=>goalSeek(101,x=>x,{min:0,max:100})).toThrow(/outside/);});
  it("rejects non-finite calculator output",()=>{expect(()=>goalSeek(5,()=>Number.POSITIVE_INFINITY,{min:0,max:10})).toThrow(/finite/);});
  it("reports nonconvergence when the iteration budget is exhausted",()=>{const r=goalSeek(1.23456789,x=>x,{min:0,max:10,tolerance:1e-15,maxIterations:1});expect(r.converged).toBe(false);expect(r.iterations).toBe(1);});
- it("validates bounds and solver controls",()=>{expect(()=>goalSeek(1,x=>x,{min:2,max:1})).toThrow(/exceed/);expect(()=>goalSeek(1,x=>x,{min:0,max:2,tolerance:0})).toThrow(/Tolerance/);expect(()=>goalSeek(1,x=>x,{min:0,max:2,maxIterations:0})).toThrow(/maxIterations/);});
+ it("validates bounds and solver controls",()=>{expect(()=>goalSeek(1,x=>x,{min:2,max:1})).toThrow(/exceed/);expect(()=>goalSeek(1,x=>x,{min:0,max:2,tolerance:0})).toThrow(/Tolerance/);expect(()=>goalSeek(1,x=>x,{min:0,max:2,maxIterations:0})).toThrow(/maxIterations/);expect(()=>goalSeek(1,x=>x,{min:0,max:2,direction:"sideways" as "increasing"})).toThrow(/Direction/);});
 });
