@@ -34,4 +34,5 @@ describe("SWP engine", () => {
     expect(result.totalWithdrawn).toBeGreaterThan(0);
     expect(result.endingCorpus).toBeGreaterThanOrEqual(0);
   });
+  it("rejects unsafe direct-helper inputs",()=>{expect(()=>simulateSwp(Number.POSITIVE_INFINITY,100,5,12)).toThrow();expect(()=>simulateSwp(1000,-1,5,12)).toThrow();expect(()=>simulateSwp(1000,10,-100,12)).toThrow();expect(()=>sustainableMonthlyWithdrawal(1000,Number.NaN,12)).toThrow()});
 });
