@@ -24,4 +24,5 @@ describe("SIP investment engine", () => {
     expect(result.futureValue).toBeGreaterThan(result.investedAmount);
     expect(result.estimatedGain).toBeCloseTo(result.futureValue - result.investedAmount, 2);
   });
+  it("rejects unsafe direct reverse-solver inputs",()=>{expect(()=>sipFutureValue(100,-120,12)).toThrow();expect(()=>sipFutureValue(100,8,12.5)).toThrow();expect(requiredMonthlySip(Number.POSITIVE_INFINITY,8,12)).toBe(0);});
 });
