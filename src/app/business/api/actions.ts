@@ -13,6 +13,7 @@ async function requireAdmin() {
   if (!supabase) throw new Error("Supabase is not configured");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
+  const {data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();if(profile?.plan!=="business")throw new Error("Business plan required");
   const { data: memberships } = await supabase.from("organization_members").select("organization_id,role").eq("user_id", user.id).limit(1);
   const membership = memberships?.[0];
   if (!membership || !["owner", "admin"].includes(String(membership.role))) throw new Error("Owner or Admin permission required");
@@ -23,9 +24,8 @@ export async function createBusinessApiKey(formData: FormData) {
   const { supabase, user, organizationId } = await requireAdmin();
   const name = String(formData.get("name") ?? "").trim();
   const scopes = normalizeScopes(formData.getAll("scopes").map(String));
-  if (name.length < 2 || scopes.length === 0) throw new Error("Name and at least one valid scope are required");
-  const rateLimit = Math.max(1, Math.min(Number(formData.get("rateLimit") ?? 60), 5000));
-  const monthlyQuota = Math.max(1, Math.min(Number(formData.get("monthlyQuota") ?? 10000), 10_000_000));
+  if (name.length < 2 || name.length>120 || scopes.length === 0) throw new Error("Name and at least one valid scope are required");
+  const rateLimit=Number(formData.get("rateLimit")??60),monthlyQuota=Number(formData.get("monthlyQuota")??10000);if(!Number.isInteger(rateLimit)||rateLimit<1||rateLimit>5000||!Number.isInteger(monthlyQuota)||monthlyQuota<1||monthlyQuota>10_000_000)throw new Error("Invalid API quota settings");
   const generated = createApiKeySecret(process.env.NODE_ENV === "production" ? "cm_live" : "cm_test");
   const { error } = await supabase.from("business_api_keys").insert({
     organization_id: organizationId,
@@ -56,7 +56,7 @@ export async function createWebhookEndpoint(formData: FormData) {
   if (!encryptionKey) throw new Error("Webhook encryption key is not configured");
   const name = String(formData.get("webhookName") ?? "").trim();
   const endpointUrl = String(formData.get("endpointUrl") ?? "").trim();
-  if (name.length < 2) throw new Error("Webhook name is required");
+  if (name.length < 2 || name.length>120) throw new Error("Webhook name must be 2–120 characters");
   let parsedUrl: URL;
   try { parsedUrl = new URL(endpointUrl); } catch { throw new Error("Enter a valid webhook URL"); }
   if (parsedUrl.protocol !== "https:") throw new Error("Webhook endpoints must use HTTPS");
