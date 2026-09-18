@@ -36,7 +36,7 @@ describe("loan EMI analysis", () => {
   it("rejects invalid direct solver inputs and validates through the common engine", () => {
     expect(() => paymentForLoan(1000, -1, 12)).toThrow(/rate/);
     expect(() => paymentForLoan(1000, 5, 12.5)).toThrow(/integer/);
-    expect(maxPrincipalForPayment(-1, 5, 12)).toBe(0);
+    expect(maxPrincipalForPayment(-1, 5, 12)).toBe(0);\n    expect(maxPrincipalForPayment(Number.POSITIVE_INFINITY,5,12)).toBe(0);\n    expect(() => maxPrincipalForPayment(1000,-1,12)).toThrow(/rate/);\n    expect(maxPrincipalForPayment(1000,5,12.5)).toBe(0);
     expect(() => runCalculator(loanAnalysisCalculator, { principal: 0, annualRatePercent: 5, termMonths: 12, extraMonthlyPayment: 0 })).toThrow();
   });
 });
