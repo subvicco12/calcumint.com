@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalculatorSearch } from "@/components/calculator-search";
 import { calculatorRegistry } from "@/calculators/registry";
+import { buildPublicCalculatorSearchIndex } from "@/calculators/search-index";
 import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
 import { siteConfig } from "@/lib/site";
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = { title: { absolute: "CalcuMint — Calculate 
 export default function HomePage() {
   const calculators = listPublicCalculators();
   const categories = listPublicCategories().map((category) => ({ ...category, count: calculators.filter((item) => item.category === category.slug).length })).filter((category) => category.count > 0);
-  const searchItems = calculators.flatMap((item) => { const definition = calculatorRegistry.getBySlug(item.slug); return definition ? [{ title: definition.title, href: `/calculators/${item.category}/${item.slug}`, description: item.shortDescription, keywords: item.keywords }] : []; });
+  const searchItems = buildPublicCalculatorSearchIndex();
   const featured = calculators.slice(0, 8);
   const websiteJsonLd = { "@context": "https://schema.org", "@type": "WebSite", "@id": `${siteConfig.url}/#website`, url: `${siteConfig.url}/`, name: "CalcuMint" };
   const organizationJsonLd = { "@context": "https://schema.org", "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: "CalcuMint", url: `${siteConfig.url}/`, logo: `${siteConfig.url}/brand/calcumint-logo.png`, email: "support@calcumint.com" };
