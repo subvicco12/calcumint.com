@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getCountryProfile,type CountryCode } from "@/calculators/country-intelligence";
+import {getPlanEntitlements} from "@/lib/entitlements";
 
 async function requireUser() {
   const supabase = await createSupabaseServerClient();
@@ -32,6 +33,7 @@ export async function updatePreferences(formData: FormData) {
 
 export async function saveFavorite(calculatorSlug: string) {
   const { supabase, user } = await requireUser();
+  const {data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();const limit=getPlanEntitlements(profile?.plan).favoritesLimit;if(limit!==null){const {count}=await supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id);if((count??0)>=limit)throw new Error(`Free accounts can save up to ${limit} favorites`);}
   const { error } = await supabase.from("favorites").upsert({ user_id: user.id, calculator_slug: calculatorSlug });
   if (error) throw new Error("Could not save favorite");
   revalidatePath("/account");
@@ -51,6 +53,7 @@ export async function saveCalculationHistory(entry: {
   output: Record<string, unknown>;
 }) {
   const { supabase, user } = await requireUser();
+  const {data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();const limit=getPlanEntitlements(profile?.plan).historyLimit;if(limit!==null){const {count}=await supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id);if((count??0)>=limit)throw new Error(`Free accounts can keep up to ${limit} calculations`);}
   const { error } = await supabase.from("calculation_history").insert({
     user_id: user.id,
     calculator_slug: entry.calculatorSlug,
