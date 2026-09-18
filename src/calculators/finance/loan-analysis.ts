@@ -68,10 +68,12 @@ export const loanAnalysisCalculator: CalculatorDefinition<Input, Output> = {
   reviewStatus: "draft",
   inputSchema,
   calculate: ({ principal, annualRatePercent, termMonths, extraMonthlyPayment }) => {
+    if(!Number.isFinite(extraMonthlyPayment)||extraMonthlyPayment<0)throw new Error("Extra monthly payment must be non-negative and finite");
     const scheduledPaymentRaw = paymentForLoan(principal, annualRatePercent, termMonths);
     const base = schedule(principal, annualRatePercent, termMonths, 0);
     const rows = schedule(principal, annualRatePercent, termMonths, extraMonthlyPayment);
-    const totalPayment = roundTo(rows.reduce((sum, row) => sum + row.payment, 0), 2);
+    const totalPaymentRaw=rows.reduce((sum,row)=>sum+row.payment,0);if(!Number.isFinite(totalPaymentRaw))throw new Error("Total payment exceeds supported numeric range");
+    const totalPayment = roundTo(totalPaymentRaw, 2);
     const baseInterest = roundTo(base.reduce((sum, row) => sum + row.interest, 0), 2);
     const totalInterest = roundTo(rows.reduce((sum, row) => sum + row.interest, 0), 2);
     return {
