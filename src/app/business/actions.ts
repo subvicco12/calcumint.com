@@ -24,7 +24,7 @@ async function requireBusiness(supabase:Awaited<ReturnType<typeof createSupabase
 export async function createOrganization(formData: FormData) {
   const { supabase,user } = await requireUser();
   await requireBusiness(supabase,user.id);
-  const name = String(formData.get("name") ?? "").trim();
+  const name = String(formData.get("name") ?? "").trim().slice(0,120);
   const slug = slugify(String(formData.get("slug") ?? name));
   if (name.length < 2 || slug.length < 2) throw new Error("Enter a valid organization name and slug");
   const { error } = await supabase.rpc("create_business_organization", { org_name: name, org_slug: slug });
@@ -70,8 +70,8 @@ export async function createProject(formData: FormData) {
   const { supabase, user } = await requireUser();
   await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
-  const name = String(formData.get("name") ?? "").trim();
-  const description = String(formData.get("description") ?? "").trim();
+  const name = String(formData.get("name") ?? "").trim().slice(0,140);
+  const description = String(formData.get("description") ?? "").trim().slice(0,2000);
   if (!organizationId || name.length < 2) throw new Error("Enter a project name");
   const { error } = await supabase.from("business_projects").insert({
     organization_id: organizationId,
@@ -87,8 +87,8 @@ export async function createClientWorkspace(formData: FormData) {
   const { supabase, user } = await requireUser();
   await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
-  const name = String(formData.get("name") ?? "").trim();
-  const reference = String(formData.get("reference") ?? "").trim();
+  const name = String(formData.get("name") ?? "").trim().slice(0,140);
+  const reference = String(formData.get("reference") ?? "").trim().slice(0,240);
   if (!organizationId || name.length < 2) throw new Error("Enter a client workspace name");
   const { error } = await supabase.from("client_workspaces").insert({
     organization_id: organizationId,
