@@ -24,6 +24,7 @@ export const compoundInterestCalculator: CalculatorDefinition<Input, Output> = {
   reviewStatus: "draft",
   inputSchema,
   calculate: ({ principal, annualRatePercent, years, compoundsPerYear }) => {
+    if(!Number.isFinite(principal)||principal<0||!Number.isFinite(annualRatePercent)||!Number.isFinite(years)||years<0||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1)throw new Error("Compound-interest inputs must be finite and within supported ranges");
     const periodicRate=annualRatePercent/100/compoundsPerYear;
     if(periodicRate<=-1)throw new Error("Periodic rate must be greater than -100%");
     const futureValue=finite(principal*Math.pow(1+periodicRate,compoundsPerYear*years),"Future value");
