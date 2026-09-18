@@ -30,7 +30,7 @@ export function goalSeek(target:number,evaluate:(candidate:number)=>number,optio
   const maxIterations=options.maxIterations??200;
   if(!Number.isFinite(tolerance)||tolerance<=0)throw new Error("Tolerance must be positive and finite");
   if(!Number.isInteger(maxIterations)||maxIterations<1||maxIterations>10000)throw new Error("maxIterations must be an integer from 1 to 10000");
-  const direction=options.direction??"increasing";
+  const direction=options.direction??"increasing";\n  if(direction!=="increasing"&&direction!=="decreasing")throw new Error("Direction must be increasing or decreasing");
   const lowValue=requireFinite(evaluate(low),"Lower-bound result");
   const highValue=requireFinite(evaluate(high),"Upper-bound result");
   const lowError=lowValue-target, highError=highValue-target;
