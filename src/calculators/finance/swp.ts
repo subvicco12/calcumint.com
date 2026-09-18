@@ -18,6 +18,7 @@ export function simulateSwp(initialCorpus: number, monthlyWithdrawal: number, an
   if(!Number.isFinite(monthlyWithdrawal)||monthlyWithdrawal<0)throw new Error("Monthly withdrawal must be non-negative and finite");
   if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100)throw new Error("Annual return must be greater than -100% and finite");
   if(!Number.isInteger(termMonths)||termMonths<1)throw new Error("Term months must be a positive integer");
+  if(timing!=="beginning"&&timing!=="end")throw new Error("Unsupported withdrawal timing");
   const monthlyRate = annualReturnPercent / 100 / 12;
   let balance = initialCorpus;
   let totalWithdrawn = 0;
