@@ -18,19 +18,22 @@ function requireFinite(value: number, label: string): number {
 }
 
 export function futureValue(presentValue: number, annualReturnPercent: number, years: number): number {
+  if(!Number.isFinite(presentValue)||presentValue<0||!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100||!Number.isFinite(years)||years<0)throw new Error("Future-value inputs must be finite and within supported ranges");
   return requireFinite(presentValue * (1 + annualReturnPercent / 100) ** years, "Future value");
 }
 
 export function presentValueFromFuture(future: number, annualReturnPercent: number, years: number): number {
+  if(!Number.isFinite(future)||future<0||!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100||!Number.isFinite(years)||years<0)throw new Error("Present-value inputs must be finite and within supported ranges");
   return requireFinite(future / (1 + annualReturnPercent / 100) ** years, "Present value");
 }
 
 export function cagr(beginningValue: number, endingValue: number, years: number): number {
-  if (beginningValue <= 0 || endingValue < 0 || years <= 0) throw new Error("CAGR requires positive beginning value, non-negative ending value and positive years");
+  if (!Number.isFinite(beginningValue)||!Number.isFinite(endingValue)||!Number.isFinite(years)||beginningValue <= 0 || endingValue < 0 || years <= 0) throw new Error("CAGR requires positive beginning value, non-negative ending value and positive years");
   return requireFinite(((endingValue / beginningValue) ** (1 / years) - 1) * 100, "CAGR");
 }
 
 export function realReturnPercent(nominalPercent: number, inflationPercent: number): number {
+  if(!Number.isFinite(nominalPercent)||nominalPercent<=-100||!Number.isFinite(inflationPercent)||inflationPercent<=-100)throw new Error("Return and inflation rates must be greater than -100% and finite");
   return requireFinite(((1 + nominalPercent / 100) / (1 + inflationPercent / 100) - 1) * 100, "Real return");
 }
 
