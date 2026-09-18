@@ -29,5 +29,8 @@ describe("country intelligence", () => {
     expect(COUNTRY_PROFILES.US.currency).toBe("USD");
     expect(COUNTRY_PROFILES.GB.currency).toBe("GBP");
     for (const country of listWaveOneCountries()) expect(country.priorityCalculatorSlugs.length).toBeGreaterThan(0);
+    expect(COUNTRY_PROFILES.IN.priorityCalculatorSlugs).toContain("loan-emi-calculator");
+    expect(COUNTRY_PROFILES.IN.priorityCalculatorSlugs).toContain("sip-calculator");
+    expect(COUNTRY_PROFILES.US.priorityCalculatorSlugs).toContain("compound-interest-calculator");
   });
 });
