@@ -31,4 +31,5 @@ describe("investment math", () => {
     expect(Number.isFinite(result)).toBe(true);
     expect(result).toBeGreaterThan(1_000_000);
   });
+  it("rejects unsafe direct helper inputs",()=>{expect(()=>futureValue(-1,8,10)).toThrow();expect(()=>presentValueFromFuture(100,-100,10)).toThrow();expect(()=>cagr(Number.POSITIVE_INFINITY,200,10)).toThrow();expect(()=>realReturnPercent(8,-100)).toThrow();});
 });
