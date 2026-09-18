@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { businessRoles, type BusinessRole } from "@/lib/business/permissions";
+import {getPlanEntitlements} from "@/lib/entitlements";
 
 function slugify(value: string): string {
   return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 63);
@@ -18,8 +19,11 @@ async function requireUser() {
   return { supabase, user };
 }
 
+async function requireBusiness(supabase:Awaited<ReturnType<typeof createSupabaseServerClient>>,userId:string){if(!supabase)throw new Error("Supabase is not configured");const{data:profile}=await supabase.from("profiles").select("plan").eq("id",userId).maybeSingle();if(!getPlanEntitlements(profile?.plan).businessStudio)throw new Error("Business plan required");}
+
 export async function createOrganization(formData: FormData) {
-  const { supabase } = await requireUser();
+  const { supabase,user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const name = String(formData.get("name") ?? "").trim();
   const slug = slugify(String(formData.get("slug") ?? name));
   if (name.length < 2 || slug.length < 2) throw new Error("Enter a valid organization name and slug");
@@ -30,6 +34,7 @@ export async function createOrganization(formData: FormData) {
 
 export async function inviteMember(formData: FormData) {
   const { supabase, user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const role = String(formData.get("role") ?? "member") as BusinessRole;
