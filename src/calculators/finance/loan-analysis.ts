@@ -74,8 +74,11 @@ export const loanAnalysisCalculator: CalculatorDefinition<Input, Output> = {
     const rows = schedule(principal, annualRatePercent, termMonths, extraMonthlyPayment);
     const totalPaymentRaw=rows.reduce((sum,row)=>sum+row.payment,0);if(!Number.isFinite(totalPaymentRaw))throw new Error("Total payment exceeds supported numeric range");
     const totalPayment = roundTo(totalPaymentRaw, 2);
-    const baseInterest = roundTo(base.reduce((sum, row) => sum + row.interest, 0), 2);
-    const totalInterest = roundTo(rows.reduce((sum, row) => sum + row.interest, 0), 2);
+    const baseInterestRaw=base.reduce((sum,row)=>sum+row.interest,0);
+    const totalInterestRaw=rows.reduce((sum,row)=>sum+row.interest,0);
+    if(!Number.isFinite(baseInterestRaw)||!Number.isFinite(totalInterestRaw))throw new Error("Interest total exceeds supported numeric range");
+    const baseInterest=roundTo(baseInterestRaw,2);
+    const totalInterest=roundTo(totalInterestRaw,2);
     return {
       monthlyPayment: roundTo(scheduledPaymentRaw + extraMonthlyPayment, 2),
       scheduledPayment: roundTo(scheduledPaymentRaw, 2),
