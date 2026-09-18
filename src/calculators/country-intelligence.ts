@@ -14,23 +14,23 @@ export type CountryProfile = {
 export const COUNTRY_PROFILES: Readonly<Record<CountryCode, CountryProfile>> = {
   IN: {
     code: "IN", name: "India", currency: "INR", locale: "en-IN", unitSystem: "metric",
-    priorityCalculatorSlugs: ["loan-payment", "compound-interest", "sip", "fixed-deposit", "income-tax-india", "gst", "salary-take-home-india"],
+    priorityCalculatorSlugs: ["loan-emi-calculator", "compound-interest-calculator", "sip-calculator", "fixed-term-deposit-calculator", "income-tax-india", "gst", "salary-take-home-india"],
   },
   US: {
     code: "US", name: "United States", currency: "USD", locale: "en-US", unitSystem: "us",
-    priorityCalculatorSlugs: ["mortgage-payment", "loan-payment", "compound-interest", "retirement", "income-tax-us", "salary-take-home-us", "capital-gains-us"],
+    priorityCalculatorSlugs: ["mortgage-payment", "loan-emi-calculator", "compound-interest-calculator", "retirement", "income-tax-us", "salary-take-home-us", "capital-gains-us"],
   },
   GB: {
     code: "GB", name: "United Kingdom", currency: "GBP", locale: "en-GB", unitSystem: "metric",
-    priorityCalculatorSlugs: ["mortgage-payment", "loan-payment", "compound-interest", "income-tax-uk", "salary-take-home-uk", "vat", "retirement"],
+    priorityCalculatorSlugs: ["mortgage-payment", "loan-emi-calculator", "compound-interest-calculator", "income-tax-uk", "salary-take-home-uk", "vat", "retirement"],
   },
   CA: {
     code: "CA", name: "Canada", currency: "CAD", locale: "en-CA", unitSystem: "metric",
-    priorityCalculatorSlugs: ["mortgage-payment", "loan-payment", "compound-interest", "income-tax-canada", "salary-take-home-canada", "retirement"],
+    priorityCalculatorSlugs: ["mortgage-payment", "loan-emi-calculator", "compound-interest-calculator", "income-tax-canada", "salary-take-home-canada", "retirement"],
   },
   AU: {
     code: "AU", name: "Australia", currency: "AUD", locale: "en-AU", unitSystem: "metric",
-    priorityCalculatorSlugs: ["mortgage-payment", "loan-payment", "compound-interest", "income-tax-australia", "salary-take-home-australia", "superannuation", "retirement"],
+    priorityCalculatorSlugs: ["mortgage-payment", "loan-emi-calculator", "compound-interest-calculator", "income-tax-australia", "salary-take-home-australia", "superannuation", "retirement"],
   },
 };
 
