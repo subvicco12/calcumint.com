@@ -5,7 +5,7 @@ create table if not exists public.calculation_projects (
  id uuid primary key default gen_random_uuid(),
  user_id uuid not null references auth.users(id) on delete cascade,
  name text not null check (char_length(btrim(name)) between 1 and 120),
- description text,
+ description text check (description is null or char_length(description)<=1000),
  created_at timestamptz not null default now(),
  updated_at timestamptz not null default now()
 );
@@ -13,7 +13,7 @@ create table if not exists public.saved_scenarios (
  id uuid primary key default gen_random_uuid(),
  user_id uuid not null references auth.users(id) on delete cascade,
  project_id uuid references public.calculation_projects(id) on delete cascade,
- calculator_slug text not null,
+ calculator_slug text not null check (char_length(calculator_slug) between 1 and 160),
  calculator_version integer not null check (calculator_version>0),
  name text not null check (char_length(btrim(name)) between 1 and 120),
  input_data jsonb not null default '{}'::jsonb,
