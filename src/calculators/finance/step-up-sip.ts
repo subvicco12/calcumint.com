@@ -19,6 +19,10 @@ function requireFinite(value: number, label: string): number {
 }
 
 export function stepUpSipFutureValue(initialMonthlyContribution: number, annualStepUpPercent: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning") {
+  if(!Number.isFinite(initialMonthlyContribution)||initialMonthlyContribution<0)throw new Error("Initial contribution must be non-negative and finite");
+  if(!Number.isFinite(annualStepUpPercent)||annualStepUpPercent<0)throw new Error("Annual step-up must be non-negative and finite");
+  if(!Number.isFinite(annualReturnPercent)||annualReturnPercent<=-100)throw new Error("Annual return must be greater than -100% and finite");
+  if(!Number.isInteger(termMonths)||termMonths<1)throw new Error("Term months must be a positive integer");
   const monthlyRate = annualReturnPercent / 100 / 12;
   const step = annualStepUpPercent / 100;
   let balance = 0;
@@ -35,7 +39,8 @@ export function stepUpSipFutureValue(initialMonthlyContribution: number, annualS
 }
 
 export function requiredInitialStepUpSip(targetFutureValue: number, annualStepUpPercent: number, annualReturnPercent: number, termMonths: number, timing: "beginning" | "end" = "beginning"): number {
-  if (targetFutureValue <= 0 || termMonths < 1) return 0;
+  if(!Number.isFinite(targetFutureValue)||targetFutureValue<=0)return 0;
+  if(!Number.isInteger(termMonths)||termMonths<1)return 0;
   const factor = stepUpSipFutureValue(1, annualStepUpPercent, annualReturnPercent, termMonths, timing).futureValue;
   return requireFinite(targetFutureValue / factor, "Required initial contribution");
 }
