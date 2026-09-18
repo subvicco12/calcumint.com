@@ -15,19 +15,18 @@ async function requireUser() {
 
 export async function updatePreferences(formData: FormData) {
   const { supabase, user } = await requireUser();
-  const locale = String(formData.get("locale") ?? "en").slice(0, 16);
-  const currency = String(formData.get("currency") ?? "USD").slice(0, 8).toUpperCase();
-  const unitSystem = formData.get("unitSystem") === "us" ? "us" : "metric";
-
+  const countryValue=String(formData.get("country")??"");
+  const allowedCountries:readonly CountryCode[]=["IN","US","GB","CA","AU"];
+  const country=allowedCountries.includes(countryValue as CountryCode)?countryValue as CountryCode:undefined;
+  const profile=country?getCountryProfile(country):undefined;
+  const locale=profile?.locale??String(formData.get("locale")??"en").slice(0,16);
+  const currency=profile?.currency??String(formData.get("currency")??"USD").slice(0,8).toUpperCase();
+  const unitSystem=profile?.unitSystem??(formData.get("unitSystem")==="us"?"us":"metric");
   const { error } = await supabase.from("user_preferences").upsert({
-    user_id: user.id,
-    locale,
-    currency,
-    unit_system: unitSystem,
-    country_code: country??null,
-    updated_at: new Date().toISOString()
+    user_id:user.id, locale, currency, unit_system:unitSystem, country_code:country??null,
+    updated_at:new Date().toISOString()
   });
-  if (error) throw new Error("Could not update preferences");
+  if(error)throw new Error("Could not update preferences");
   revalidatePath("/account");
 }
 
