@@ -1,5 +1,5 @@
 import { compareScenarios } from "../scenarios";
-import { loanAnalysisCalculator } from "./loan-analysis";
+import { runCalculator } from "../engine";\nimport { loanAnalysisCalculator } from "./loan-analysis";
 
 export type LoanRateScenarioInput={principal:number;annualRatePercent:number;termMonths:number;extraMonthlyPayment?:number};
 
@@ -12,7 +12,7 @@ export function compareLoanRateSensitivity(input:LoanRateScenarioInput,rateStepP
   {id:"lower-rate",label:`Rate -${rateStepPercent} pp`,input:lower},
   {id:"base-rate",label:"Base rate",input:base},
   {id:"higher-rate",label:`Rate +${rateStepPercent} pp`,input:higher}
- ],x=>loanAnalysisCalculator.calculate(x,{}),[
+ ],x=>runCalculator(loanAnalysisCalculator,x).output,[
   {id:"monthly-payment",value:o=>o.scheduledPayment,preference:"lower"},
   {id:"total-interest",value:o=>o.totalInterest,preference:"lower"}
  ]);
