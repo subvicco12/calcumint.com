@@ -1,5 +1,6 @@
 import { compareScenarios } from "../scenarios";
-import { runCalculator } from "../engine";\nimport { loanAnalysisCalculator } from "./loan-analysis";
+import { runCalculator } from "../engine";
+import { loanAnalysisCalculator } from "./loan-analysis";
 
 export type LoanRateScenarioInput={principal:number;annualRatePercent:number;termMonths:number;extraMonthlyPayment?:number};
 
