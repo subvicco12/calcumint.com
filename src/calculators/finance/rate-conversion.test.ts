@@ -8,5 +8,5 @@ describe("rate conversion",()=>{
   it("keeps annual compounding unchanged",()=>{expect(convertAnnualRate({mode:"nominal-to-effective",annualNominalPercent:7,compoundsPerYear:1}).annualEffectivePercent).toBe(7);});
   it("supports valid negative rates",()=>{expect(nominalToEffectivePercent(-12,12)).toBeLessThan(0);});
   it("returns structured output through the engine",()=>{const result=runCalculator(rateConversionCalculator,{mode:"nominal-to-effective",annualNominalPercent:12,compoundsPerYear:12});expect(result.output.annualEffectivePercent).toBeCloseTo(12.682503,5);expect(result.calculatorId).toBe("finance.rate-conversion");});
-  it("rejects unsafe direct conversion inputs",()=>{expect(()=>nominalToEffectivePercent(Number.NaN,12)).toThrow();expect(()=>nominalToEffectivePercent(8,12.5)).toThrow();expect(()=>effectiveToNominalPercent(-100,12)).toThrow();expect(rateConversionCalculator.category).toBe("finance-investment");});
+  it("rejects unsafe direct conversion inputs",()=>{expect(()=>nominalToEffectivePercent(Number.NaN,12)).toThrow();expect(()=>nominalToEffectivePercent(8,12.5)).toThrow();expect(()=>effectiveToNominalPercent(-100,12)).toThrow();expect(()=>nominalToEffectivePercent(8,100001)).toThrow();expect(()=>effectiveToNominalPercent(8,100001)).toThrow();expect(rateConversionCalculator.category).toBe("finance-investment");});
 });
