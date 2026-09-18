@@ -42,4 +42,5 @@ describe("loan EMI analysis", () => {
     expect(maxPrincipalForPayment(1000,5,12.5)).toBe(0);
     expect(() => runCalculator(loanAnalysisCalculator, { principal: 0, annualRatePercent: 5, termMonths: 12, extraMonthlyPayment: 0 })).toThrow();
   });
+  it("rejects unsafe direct calculator extras",()=>{expect(()=>loanAnalysisCalculator.calculate({principal:1000,annualRatePercent:5,termMonths:12,extraMonthlyPayment:-1},{})).toThrow();expect(()=>loanAnalysisCalculator.calculate({principal:1000,annualRatePercent:5,termMonths:12,extraMonthlyPayment:Number.POSITIVE_INFINITY},{})).toThrow();});
 });
