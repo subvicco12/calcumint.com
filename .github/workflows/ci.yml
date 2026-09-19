@@ -29,6 +29,8 @@ jobs:
         run: npm test
       - name: Launch certification
         run: npm run test:launch
+      - name: Calculator and rule-pack certification
+        run: npm run test:certification
       - name: Production build
         run: npm run build
         env:
