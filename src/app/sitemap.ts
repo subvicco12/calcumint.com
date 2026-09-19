@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
 import { siteConfig } from "@/lib/site";
+import {sitemapEntriesForAudit} from "@/calculators/sitemap-audit-helper";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = [
@@ -20,8 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly" as const,
     priority: 0.8
   }));
-  const calculatorEntries: MetadataRoute.Sitemap = listPublicCalculators().map((item) => ({
-    url: `${siteConfig.url}/calculators/${item.category}/${item.slug}`,
+  const calculatorEntries: MetadataRoute.Sitemap = sitemapEntriesForAudit().map((path) => ({
+    url: `${siteConfig.url}${path}`,
     changeFrequency: "monthly" as const,
     priority: 0.9
   }));
