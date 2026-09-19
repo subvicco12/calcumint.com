@@ -65,7 +65,7 @@ export const loanAnalysisCalculator: CalculatorDefinition<Input, Output> = {
   category: "loans-mortgages",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ principal, annualRatePercent, termMonths, extraMonthlyPayment }) => {
     if(!Number.isFinite(extraMonthlyPayment)||extraMonthlyPayment<0)throw new Error("Extra monthly payment must be non-negative and finite");
@@ -91,8 +91,8 @@ export const loanAnalysisCalculator: CalculatorDefinition<Input, Output> = {
     };
   },
   formulas: [{ id: "amortizing-loan-payment", expression: "M = P × r / (1 - (1 + r)^(-n))", description: "Fixed monthly payment for a fully amortizing loan; zero-rate loans use P/n." }],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Consumer Financial Protection Bureau — How mortgage lenders calculate monthly payments", url: "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" }],
+  examples: [{ label: "Zero-interest one-month loan", input: { principal: 1, annualRatePercent: 0, termMonths: 1, extraMonthlyPayment: 0 }, expected: { monthlyPayment: 1, scheduledPayment: 1, totalPayment: 1, totalInterest: 0, payoffMonths: 1, interestSavedVsScheduled: 0, monthsSavedVsScheduled: 0, amortization: [{ month: 1, payment: 1, principal: 1, interest: 0, balance: 0 }] } }],
   jurisdictions: [{ country: "GLOBAL" }],
   reverseSolvers: [{ id: "max-principal", target: "principal", description: "Solve the maximum principal supported by a target monthly payment, annual rate and term." }],
   ui: { simpleInputKeys: ["principal","annualRatePercent","termMonths"], advancedInputKeys: ["extraMonthlyPayment"] },
