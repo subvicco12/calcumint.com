@@ -9,7 +9,8 @@ begin
   end if;
  end if;
  return new;
-end $$;
+end $;
+revoke all on function public.enforce_calcumint_save_quotas() from public, anon, authenticated;
 drop trigger if exists favorites_free_quota on public.favorites;
 create trigger favorites_free_quota before insert on public.favorites for each row execute function public.enforce_calcumint_save_quotas();
 drop trigger if exists calculation_history_free_quota on public.calculation_history;
