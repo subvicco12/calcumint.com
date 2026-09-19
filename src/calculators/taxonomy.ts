@@ -50,8 +50,7 @@ export function clearTaxonomyRegistry(): void {
 }
 
 export function registerCoreTaxonomy(): void {
-  if (categories.size || journeys.size) return;
-  for (const category of [
+  const coreCategories:readonly CalculatorCategory[]=[
     { id: "finance", title: "Finance & Investment" },
     { id: "loans", title: "Loans, Mortgages & Credit", parentId: "finance" },
     { id: "tax", title: "Tax & Payroll" },
@@ -61,13 +60,13 @@ export function registerCoreTaxonomy(): void {
     { id: "science", title: "Science & Engineering" },
     { id: "health", title: "Health & Fitness" },
     { id: "everyday", title: "Everyday & Conversion" },
-  ]) registerCategory(category);
+  ];for(const category of coreCategories)if(!categories.has(category.id))registerCategory(category);
 
-  for (const journey of [
+  const coreJourneys:readonly CalculationJourney[]=[
     { id: "buy-a-home", title: "Buy a Home", calculatorSlugs: ["mortgage-payment", "loan-payment", "rent-vs-buy"] },
     { id: "plan-retirement", title: "Plan Retirement", calculatorSlugs: ["retirement", "compound-interest", "sip"] },
     { id: "start-a-business", title: "Start a Business", calculatorSlugs: ["break-even", "margin", "runway"] },
     { id: "invest-for-a-goal", title: "Invest for a Goal", calculatorSlugs: ["sip", "compound-interest", "future-value"] },
     { id: "get-out-of-debt", title: "Get Out of Debt", calculatorSlugs: ["loan-payment", "debt-payoff", "credit-card-payoff"] },
-  ]) registerJourney(journey);
+  ];for(const journey of coreJourneys)if(!journeys.has(journey.id))registerJourney(journey);
 }
