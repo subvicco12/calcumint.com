@@ -51,4 +51,11 @@ describe("public calculator publication gate", () => {
     expect(categories.has("finance-investment")).toBe(true);
     expect(categories.has("loans-mortgages")).toBe(true);
   });
+
+  it("publishes every calculator in the certified finance release", () => {
+    const publicSlugs = new Set(listPublicCalculators().map((item) => item.slug));
+    expect(publicSlugs.has("loan-emi-calculator")).toBe(true);
+    expect(publicSlugs.has("compound-interest-calculator")).toBe(true);
+    expect(publicSlugs.has("simple-interest-calculator")).toBe(true);
+  });
 });
