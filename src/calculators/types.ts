@@ -73,6 +73,11 @@ export type CalculatorDefinition<TInput, TOutput> = {
   formulas: readonly CalculatorFormula[];
   sources: readonly CalculatorSource[];
   examples: readonly CalculatorExample<TInput, TOutput>[];
+  /** Optional certification fixtures; required by the production gate once a calculator is certified. */
+  goldenTests?: readonly CalculatorExample<TInput, TOutput>[];
+  /** Optional calculator-level verification metadata for globally governed calculators. */
+  lastVerifiedAt?: string;
+  officialSources?: readonly CalculatorSource[];
   /** Optional global metadata. Existing certified calculators remain backwards compatible. */
   jurisdictions?: readonly JurisdictionRef[];
   locales?: readonly string[];
