@@ -8,7 +8,7 @@ describe("public sitemap", () => {
     expect(urls.some((url) => url.endsWith("/calculators/finance-investment"))).toBe(true);
     expect(urls.some((url) => url.endsWith("/calculators/loans-mortgages"))).toBe(true);
     expect(urls.some((url) => url.includes("simple-interest-calculator"))).toBe(true);
-    expect(urls.some((url) => url.includes("loan-payment-calculator"))).toBe(true);
+    expect(urls.some((url) => url.includes("loan-payment-calculator"))).toBe(false);
     expect(urls.some((url) => url.includes("loan-emi-calculator"))).toBe(true);
   });
 });
