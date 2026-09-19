@@ -44,7 +44,7 @@ export const investmentMathCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ presentValue, annualReturnPercent, years, inflationPercent }) => {
     const nominalFuture = futureValue(presentValue, annualReturnPercent, years);
@@ -59,8 +59,8 @@ export const investmentMathCalculator: CalculatorDefinition<Input, Output> = {
     { id: "future-value", expression: "FV = PV × (1+r)^t", description: "Compound future value." },
     { id: "real-return", expression: "real = (1+nominal)/(1+inflation) - 1", description: "Exact Fisher relationship for inflation-adjusted return." }
   ],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Investor.gov — Compound Interest Calculator", url: "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" }, { label: "Investor.gov — Savings Goal Calculator", url: "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator" }],
+  examples: [{ label: "$100,000 invested for 10 years at 10% nominal return with 5% inflation", input: { presentValue: 100000, annualReturnPercent: 10, years: 10, inflationPercent: 5 }, expected: { futureValue: 259374.25, inflationAdjustedFutureValue: 159233.29, realAnnualReturnPercent: 4.7619 } }],
   jurisdictions: [{ country: "GLOBAL" }],
   ui: { simpleInputKeys: ["presentValue","annualReturnPercent","years"], advancedInputKeys: ["inflationPercent"] },
   reverseSolvers: [{ id: "present-value", target: "presentValue", description: "Solve the present capital required for a target future value." }],
