@@ -2,6 +2,7 @@ import type { ZodType } from "zod";
 
 export type CalculatorRiskClass = "standard" | "financial" | "health" | "tax";
 export type CalculatorReviewStatus = "draft" | "reviewed" | "certified";
+export type UnitSystem = "metric" | "us";
 
 export type CalculatorSource = {
   label: string;
@@ -21,10 +22,37 @@ export type CalculatorExample<TInput, TOutput> = {
   expected: TOutput;
 };
 
+export type JurisdictionRef = {
+  country: string;
+  region?: string;
+};
+
+export type CalculatorRuleMetadata = {
+  jurisdiction: JurisdictionRef;
+  ruleVersion: string;
+  effectiveFrom?: string;
+  effectiveTo?: string;
+  taxYear?: string;
+  currency?: string;
+  unitSystem?: UnitSystem;
+  officialSources?: readonly CalculatorSource[];
+  lastVerifiedAt?: string;
+};
+
+export type ReverseSolverDefinition = {
+  id: string;
+  target: string;
+  description: string;
+};
+
 export type CalculatorContext = {
   locale?: string;
   currency?: string;
-  unitSystem?: "metric" | "us";
+  unitSystem?: UnitSystem;
+  country?: string;
+  region?: string;
+  ruleVersion?: string;
+  taxYear?: string;
 };
 
 export type CalculatorDefinition<TInput, TOutput> = {
@@ -40,6 +68,15 @@ export type CalculatorDefinition<TInput, TOutput> = {
   formulas: readonly CalculatorFormula[];
   sources: readonly CalculatorSource[];
   examples: readonly CalculatorExample<TInput, TOutput>[];
+  /** Optional global metadata. Existing certified calculators remain backwards compatible. */
+  jurisdictions?: readonly JurisdictionRef[];
+  locales?: readonly string[];
+  currencies?: readonly string[];
+  unitSystems?: readonly UnitSystem[];
+  ruleMetadata?: readonly CalculatorRuleMetadata[];
+  reverseSolvers?: readonly ReverseSolverDefinition[];
+  relatedCalculators?: readonly string[];
+  journeyMemberships?: readonly string[];
 };
 
 export type CalculatorRunResult<TInput, TOutput> = {
