@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { rankCalculatorSearchItems } from "@/calculators/search-ranking";
 
 type SearchItem = { title: string; href: string; description: string; keywords: readonly string[] };
 
@@ -10,7 +11,7 @@ export function CalculatorSearch({ items }: { items: readonly SearchItem[] }) {
   const normalized = query.trim().toLowerCase();
   const matches = useMemo(() => {
     if (!normalized) return [];
-    return items.filter((item) => [item.title, item.description, ...item.keywords].some((value) => value.toLowerCase().includes(normalized))).slice(0, 12);
+    return rankCalculatorSearchItems(items,normalized,12);
   }, [items, normalized]);
 
   return <div className="search-panel">

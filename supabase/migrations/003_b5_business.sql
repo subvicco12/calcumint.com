@@ -39,7 +39,7 @@ create table if not exists public.business_projects (
   id uuid primary key default gen_random_uuid(),
   organization_id uuid not null references public.organizations(id) on delete cascade,
   name text not null check (char_length(name) between 2 and 140),
-  description text,
+  description text check (description is null or char_length(description)<=2000),
   status text not null default 'active' check (status in ('active','archived')),
   created_by uuid not null references auth.users(id) on delete restrict,
   created_at timestamptz not null default now(),
@@ -51,7 +51,7 @@ create table if not exists public.client_workspaces (
   organization_id uuid not null references public.organizations(id) on delete cascade,
   project_id uuid references public.business_projects(id) on delete set null,
   name text not null check (char_length(name) between 2 and 140),
-  client_reference text,
+  client_reference text check (client_reference is null or char_length(client_reference)<=240),
   created_by uuid not null references auth.users(id) on delete restrict,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -62,9 +62,9 @@ create table if not exists public.shared_calculations (
   organization_id uuid not null references public.organizations(id) on delete cascade,
   project_id uuid references public.business_projects(id) on delete set null,
   client_workspace_id uuid references public.client_workspaces(id) on delete set null,
-  calculator_slug text not null,
+  calculator_slug text not null check (char_length(calculator_slug) between 1 and 160),
   calculator_version integer not null check (calculator_version > 0),
-  title text,
+  title text check (title is null or char_length(title)<=240),
   input_data jsonb not null default '{}'::jsonb,
   output_data jsonb not null default '{}'::jsonb,
   created_by uuid not null references auth.users(id) on delete restrict,
@@ -123,6 +123,9 @@ begin
   if auth.uid() is null then raise exception 'Authentication required'; end if;
   if not exists(select 1 from public.profiles where id = auth.uid() and plan = 'business') then
     raise exception 'Business plan required';
+  end if;
+  if exists(select 1 from public.organization_members where user_id=auth.uid() and role='owner') then
+    raise exception 'Business account already owns an organization';
   end if;
 
   insert into public.organizations(name, slug, owner_user_id)

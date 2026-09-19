@@ -5,7 +5,9 @@ import {
   canManageMembers,
   canManageProjects,
   canTransferOwnership,
-  hasMinimumRole
+  hasMinimumRole,
+  isBusinessRole,
+  type BusinessRole
 } from "./permissions";
 
 describe("business role permissions", () => {
@@ -33,4 +35,5 @@ describe("business role permissions", () => {
   it("includes five seats in the initial Business entitlement", () => {
     expect(BUSINESS_INCLUDED_SEATS).toBe(5);
   });
+  it("fails closed for malformed runtime roles",()=>{expect(isBusinessRole("owner")).toBe(true);expect(isBusinessRole("superadmin")).toBe(false);expect(hasMinimumRole("superadmin" as BusinessRole,"viewer")).toBe(false);});
 });

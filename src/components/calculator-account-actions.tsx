@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import type { PlanId } from "@/lib/billing/plans";
+import {getPlanEntitlements} from "@/lib/entitlements";
 
 type Props = {
   calculatorSlug: string;
@@ -38,6 +39,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
   const [favorite, setFavorite] = useState(false);
   const [plan, setPlan] = useState<PlanId>("free");
   const [status, setStatus] = useState("");
+  const [favoriteCount,setFavoriteCount]=useState(0);const [historyCount,setHistoryCount]=useState(0);
 
   useEffect(() => {
     let active = true;
@@ -50,17 +52,21 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       setSignedIn(Boolean(user));
       if (!user) return;
 
-      const [{ data: favoriteData }, { data: profileData }] = await Promise.all([
+      const [{ data: favoriteData }, { data: profileData },favoriteCountResult,historyCountResult] = await Promise.all([
         supabase.from("favorites").select("id").eq("user_id", user.id).eq("calculator_slug", calculatorSlug).maybeSingle(),
-        supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle()
+        supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle(),
+        supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id),
+        supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id)
       ]);
       if (!active) return;
       setFavorite(Boolean(favoriteData));
-      setPlan(profileData?.plan === "pro" || profileData?.plan === "business" ? profileData.plan : "free");
+      setPlan(profileData?.plan === "pro" || profileData?.plan === "business" ? profileData.plan : "free");setFavoriteCount(favoriteCountResult.count??0);setHistoryCount(historyCountResult.count??0);
     })();
 
     return () => { active = false; };
   }, [calculatorSlug]);
+
+  const entitlements=getPlanEntitlements(plan);
 
   async function toggleFavorite() {
     const supabase = createSupabaseBrowserClient();
@@ -68,7 +74,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    const nextFavorite = !favorite;
+    const nextFavorite = !favorite;if(nextFavorite&&entitlements.favoritesLimit!==null&&favoriteCount>=entitlements.favoritesLimit){setStatus(`Free accounts can save up to ${entitlements.favoritesLimit} favorites.`);return;}
     const result = nextFavorite
       ? await supabase.from("favorites").upsert({ user_id: user.id, calculator_slug: calculatorSlug })
       : await supabase.from("favorites").delete().eq("user_id", user.id).eq("calculator_slug", calculatorSlug);
@@ -77,12 +83,12 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       setStatus(plan === "free" ? "Could not update favorite. Free accounts can save up to 10 favorites." : "Could not update favorite.");
       return;
     }
-    setFavorite(nextFavorite);
+    setFavorite(nextFavorite);setFavoriteCount(v=>Math.max(0,v+(nextFavorite?1:-1)));
     setStatus(nextFavorite ? "Added to favorites." : "Removed from favorites.");
   }
 
   async function saveHistory() {
-    if (!output) return;
+    if (!output) return;if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){setStatus(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`);return;}
     const supabase = createSupabaseBrowserClient();
     if (!supabase) return;
     const { data: { user } } = await supabase.auth.getUser();
@@ -98,15 +104,16 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     setStatus(error
       ? plan === "free" ? "Could not save. Free accounts can keep up to 20 calculations." : "Could not save calculation."
       : "Calculation saved to your history.");
+    if(!error)setHistoryCount(v=>v+1);
   }
 
   function exportJson() {
-    if (!output || plan === "free") return;
+    if (!output || !entitlements.exports) return;
     downloadFile(`${calculatorSlug}.json`, JSON.stringify({ calculatorSlug, calculatorVersion, input, output }, null, 2), "application/json");
   }
 
   function exportCsv() {
-    if (!output || plan === "free") return;
+    if (!output || !entitlements.exports) return;
     downloadFile(`${calculatorSlug}.csv`, toCsv(input, output), "text/csv;charset=utf-8");
   }
 
@@ -119,7 +126,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     <div className="account-actions" aria-live="polite">
       <button className="button secondary" type="button" onClick={toggleFavorite}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
       <button className="button secondary" type="button" onClick={saveHistory} disabled={!output}>Save calculation</button>
-      {plan === "pro" || plan === "business" ? (
+      {entitlements.exports ? (
         <>
           <button className="button secondary" type="button" onClick={exportCsv} disabled={!output}>Export CSV</button>
           <button className="button secondary" type="button" onClick={exportJson} disabled={!output}>Export JSON</button>

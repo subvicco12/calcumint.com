@@ -4,7 +4,8 @@ import { createHash, randomBytes } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { businessRoles, type BusinessRole } from "@/lib/business/permissions";
+import { isBusinessRole, type BusinessRole } from "@/lib/business/permissions";
+import {getPlanEntitlements} from "@/lib/entitlements";
 
 function slugify(value: string): string {
   return value.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 63);
@@ -18,9 +19,12 @@ async function requireUser() {
   return { supabase, user };
 }
 
+async function requireBusiness(supabase:Awaited<ReturnType<typeof createSupabaseServerClient>>,userId:string){if(!supabase)throw new Error("Supabase is not configured");const{data:profile}=await supabase.from("profiles").select("plan").eq("id",userId).maybeSingle();if(!getPlanEntitlements(profile?.plan).businessStudio)throw new Error("Business plan required");}
+
 export async function createOrganization(formData: FormData) {
-  const { supabase } = await requireUser();
-  const name = String(formData.get("name") ?? "").trim();
+  const { supabase,user } = await requireUser();
+  await requireBusiness(supabase,user.id);
+  const name = String(formData.get("name") ?? "").trim().slice(0,120);
   const slug = slugify(String(formData.get("slug") ?? name));
   if (name.length < 2 || slug.length < 2) throw new Error("Enter a valid organization name and slug");
   const { error } = await supabase.rpc("create_business_organization", { org_name: name, org_slug: slug });
@@ -30,10 +34,11 @@ export async function createOrganization(formData: FormData) {
 
 export async function inviteMember(formData: FormData) {
   const { supabase, user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const role = String(formData.get("role") ?? "member") as BusinessRole;
-  if (!organizationId || !email.includes("@") || !businessRoles.includes(role) || role === "owner") {
+  const roleValue=String(formData.get("role")??"member");const role:BusinessRole=isBusinessRole(roleValue)?roleValue:"viewer";
+  if (!organizationId || !email.includes("@") || !isBusinessRole(roleValue) || role === "owner") {
     throw new Error("Invalid invitation details");
   }
 
@@ -63,10 +68,11 @@ export async function inviteMember(formData: FormData) {
 
 export async function createProject(formData: FormData) {
   const { supabase, user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
-  const name = String(formData.get("name") ?? "").trim();
-  const description = String(formData.get("description") ?? "").trim();
-  if (!organizationId || name.length < 2) throw new Error("Enter a project name");
+  const name = String(formData.get("name") ?? "").trim().slice(0,140);
+  const description = String(formData.get("description") ?? "").trim().slice(0,2000);
+  if (!organizationId || name.length < 2 || name.length>120 || description.length>1000) throw new Error("Enter a valid project name and description");
   const { error } = await supabase.from("business_projects").insert({
     organization_id: organizationId,
     name,
@@ -79,10 +85,11 @@ export async function createProject(formData: FormData) {
 
 export async function createClientWorkspace(formData: FormData) {
   const { supabase, user } = await requireUser();
+  await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
-  const name = String(formData.get("name") ?? "").trim();
-  const reference = String(formData.get("reference") ?? "").trim();
-  if (!organizationId || name.length < 2) throw new Error("Enter a client workspace name");
+  const name = String(formData.get("name") ?? "").trim().slice(0,140);
+  const reference = String(formData.get("reference") ?? "").trim().slice(0,240);
+  if (!organizationId || name.length < 2 || name.length>120 || reference.length>160) throw new Error("Enter a valid client workspace name and reference");
   const { error } = await supabase.from("client_workspaces").insert({
     organization_id: organizationId,
     name,

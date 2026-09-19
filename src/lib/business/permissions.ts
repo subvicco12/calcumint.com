@@ -9,8 +9,10 @@ const rank: Record<BusinessRole, number> = {
   viewer: 1
 };
 
+export function isBusinessRole(value:unknown):value is BusinessRole{return typeof value==="string"&&businessRoles.includes(value as BusinessRole)}
+
 export function hasMinimumRole(role: BusinessRole, minimum: BusinessRole): boolean {
-  return rank[role] >= rank[minimum];
+  return isBusinessRole(role)&&isBusinessRole(minimum)&&rank[role] >= rank[minimum];
 }
 
 export function canManageMembers(role: BusinessRole): boolean {

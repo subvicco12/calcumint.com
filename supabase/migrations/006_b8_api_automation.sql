@@ -103,7 +103,7 @@ declare v_key public.business_api_keys%rowtype;
 declare v_month_count bigint;
 declare v_minute_count bigint;
 begin
-  select * into v_key from public.business_api_keys where id = p_api_key_id and status = 'active';
+  select k.* into v_key from public.business_api_keys k join public.profiles p on p.id=k.created_by where k.id=p_api_key_id and k.status='active' and p.plan='business';
   if v_key.id is null then return false; end if;
 
   select coalesce(sum(units),0) into v_month_count from public.api_usage_events

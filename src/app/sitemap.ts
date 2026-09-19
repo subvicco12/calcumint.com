@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
 import { siteConfig } from "@/lib/site";
+import {sitemapEntriesForAudit} from "@/calculators/sitemap-audit-helper";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticEntries: MetadataRoute.Sitemap = [
@@ -14,13 +15,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/disclaimer`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${siteConfig.url}/contact`, changeFrequency: "yearly", priority: 0.3 }
   ];
-  const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().map((category) => ({
+  const publishedCategories=new Set(listPublicCalculators().map(item=>item.category));
+  const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().filter(category=>publishedCategories.has(category.slug)).map((category) => ({
     url: `${siteConfig.url}/calculators/${category.slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.8
   }));
-  const calculatorEntries: MetadataRoute.Sitemap = listPublicCalculators().map((item) => ({
-    url: `${siteConfig.url}/calculators/${item.category}/${item.slug}`,
+  const calculatorEntries: MetadataRoute.Sitemap = sitemapEntriesForAudit().map((path) => ({
+    url: `${siteConfig.url}${path}`,
     changeFrequency: "monthly" as const,
     priority: 0.9
   }));

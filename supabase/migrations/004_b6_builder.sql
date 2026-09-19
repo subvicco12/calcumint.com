@@ -87,6 +87,7 @@ declare v_id uuid;
 declare v_visibility text;
 begin
   if auth.uid() is null then raise exception 'Authentication required'; end if;
+  if not exists(select 1 from public.profiles p where p.id=auth.uid() and p.plan='business') then raise exception 'Business plan required'; end if;
   if not public.has_org_role(p_organization_id, array['owner','admin','manager']) then raise exception 'Builder permission required'; end if;
   v_visibility := coalesce(p_definition->>'visibility', 'private');
   if v_visibility not in ('private','workspace','share-link') then raise exception 'Invalid visibility'; end if;
@@ -113,6 +114,7 @@ declare v_org uuid;
 begin
   select organization_id into v_org from public.custom_calculators where id = p_calculator_id;
   if v_org is null then raise exception 'Calculator not found'; end if;
+  if not exists(select 1 from public.profiles p where p.id=auth.uid() and p.plan='business') then raise exception 'Business plan required'; end if;
   if not public.has_org_role(v_org, array['owner','admin','manager']) then raise exception 'Builder permission required'; end if;
   if not exists (select 1 from public.custom_calculator_versions where calculator_id = p_calculator_id and version = p_version) then raise exception 'Version not found'; end if;
 

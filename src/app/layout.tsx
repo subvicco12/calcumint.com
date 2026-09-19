@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: siteConfig.url
   },
+  robots:{index:true,follow:true},
   twitter: {
     card: "summary_large_image",
     title: "CalcuMint — Calculate Anything",
@@ -48,5 +49,5 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><div className="site-shell"><SiteHeader/><main>{children}</main><SiteFooter/></div></body></html>;
+  return <html lang="en"><body><div className="site-shell"><SiteHeader/><main id="main-content">{children}</main><SiteFooter/></div></body></html>;
 }

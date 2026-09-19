@@ -39,6 +39,11 @@ export type CalculatorRuleMetadata = {
   lastVerifiedAt?: string;
 };
 
+export type CalculatorUiMetadata = {
+  simpleInputKeys: readonly string[];
+  advancedInputKeys?: readonly string[];
+};
+
 export type ReverseSolverDefinition = {
   id: string;
   target: string;
@@ -68,6 +73,11 @@ export type CalculatorDefinition<TInput, TOutput> = {
   formulas: readonly CalculatorFormula[];
   sources: readonly CalculatorSource[];
   examples: readonly CalculatorExample<TInput, TOutput>[];
+  /** Optional certification fixtures; required by the production gate once a calculator is certified. */
+  goldenTests?: readonly CalculatorExample<TInput, TOutput>[];
+  /** Optional calculator-level verification metadata for globally governed calculators. */
+  lastVerifiedAt?: string;
+  officialSources?: readonly CalculatorSource[];
   /** Optional global metadata. Existing certified calculators remain backwards compatible. */
   jurisdictions?: readonly JurisdictionRef[];
   locales?: readonly string[];
@@ -75,6 +85,7 @@ export type CalculatorDefinition<TInput, TOutput> = {
   unitSystems?: readonly UnitSystem[];
   ruleMetadata?: readonly CalculatorRuleMetadata[];
   reverseSolvers?: readonly ReverseSolverDefinition[];
+  ui?: CalculatorUiMetadata;
   relatedCalculators?: readonly string[];
   journeyMemberships?: readonly string[];
 };

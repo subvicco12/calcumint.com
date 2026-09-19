@@ -44,6 +44,7 @@ export default async function CalculatorPage({ params }: PageProps) {
     .map((relatedSlug) => ({ definition: calculatorRegistry.getBySlug(relatedSlug), content: getPublicCalculatorContent(relatedSlug) }))
     .filter((item) => item.definition && item.content);
 
+  const calculatorJsonLd={"@context":"https://schema.org","@type":"WebApplication",name:definition.title,description:content.shortDescription,url:`${siteConfig.url}/calculators/${category}/${slug}`,applicationCategory:"CalculatorApplication",operatingSystem:"Any",isAccessibleForFree:true};
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -56,7 +57,7 @@ export default async function CalculatorPage({ params }: PageProps) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} /><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(calculatorJsonLd)}} />
       <section className="container calculator-page-top">
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span>/</span><Link href={`/calculators/${category}`}>{categoryMeta.name}</Link><span>/</span><span>{definition.title}</span>

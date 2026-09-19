@@ -6,16 +6,18 @@ import { categoryContent, listPublicCalculators, listPublicCategories } from "@/
 import { siteConfig } from "@/lib/site";
 
 type PageProps = { params: Promise<{ category: string }> };
-export function generateStaticParams() { return listPublicCategories().map((category) => ({ category: category.slug })); }
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> { const { category } = await params; const meta = categoryContent[category as keyof typeof categoryContent]; if (!meta) return {}; return { title: meta.name, description: meta.description, alternates: { canonical: `/calculators/${category}` }, openGraph: { type: "website", title: `${meta.name} | CalcuMint`, description: meta.description, url: `/calculators/${category}` } }; }
+export function generateStaticParams() { const published=new Set(listPublicCalculators().map(item=>item.category)); return listPublicCategories().filter(category=>published.has(category.slug)).map((category) => ({ category: category.slug })); }
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> { const { category } = await params; const meta = categoryContent[category as keyof typeof categoryContent]; if (!meta || !listPublicCalculators().some(item=>item.category===category)) return { robots: { index: false, follow: false } }; return { title: meta.name, description: meta.description, alternates: { canonical: `/calculators/${category}` }, openGraph: { type: "website", title: `${meta.name} | CalcuMint`, description: meta.description, url: `/calculators/${category}` } }; }
 
 export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params;
   const meta = categoryContent[category as keyof typeof categoryContent];
   if (!meta) notFound();
   const items = listPublicCalculators().filter((item) => item.category === category);
+  if (items.length === 0) notFound();
   const searchItems = items.flatMap((item) => { const definition = calculatorRegistry.getBySlug(item.slug); return definition ? [{ title: definition.title, href: `/calculators/${item.category}/${item.slug}`, description: item.shortDescription, keywords: item.keywords }] : []; });
-  const otherCategories = listPublicCategories().filter((item) => item.slug !== category);
+  const publishedCategories=new Set(listPublicCalculators().map(item=>item.category));
+  const otherCategories = listPublicCategories().filter((item) => item.slug !== category && publishedCategories.has(item.slug));
   const { CalculatorSearch } = await import("@/components/calculator-search");
   const breadcrumbJsonLd = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/` }, { "@type": "ListItem", position: 2, name: "Calculators", item: `${siteConfig.url}/calculators` }, { "@type": "ListItem", position: 3, name: meta.name, item: `${siteConfig.url}/calculators/${category}` }] };
 

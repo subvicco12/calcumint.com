@@ -1,0 +1,1 @@
+import{describe,expect,it}from"vitest";import{auditLaunchCertification}from"./launch-certification";describe("launch certification audit",()=>{it("finds no metadata defects in currently certified calculators",()=>expect(auditLaunchCertification(new Date("2100-01-01T00:00:00Z"))).toEqual([]));});

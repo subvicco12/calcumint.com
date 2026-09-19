@@ -41,6 +41,8 @@ const nextConfig: NextConfig = {
         { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
         { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
         { key: "X-DNS-Prefetch-Control", value: "on" },
+        { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
+        { key: "Origin-Agent-Cluster", value: "?1" },
         { key: "X-Frame-Options", value: "SAMEORIGIN" },
         { key: "Content-Security-Policy", value: protectedContentSecurityPolicy }
       ]

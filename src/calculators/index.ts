@@ -1,27 +1,48 @@
 export { runCalculator } from "./engine";
 export { calculatorRegistry } from "./registry";
+export { goalSeek } from "./reverse";
+export type { GoalSeekOptions, GoalSeekResult } from "./reverse";
+export { compareScenarios } from "./scenarios";
+export type { Scenario, ScenarioComparison, ScenarioMetric, ScenarioMetricComparison, ScenarioResult } from "./scenarios";
 export { convertUnit, getUnitFamily, supportedUnits } from "./units";
 export { roundTo } from "./precision";
 export { percentageCalculator } from "./core/percentage";
 export { unitConversionCalculator } from "./core/unit-conversion";
 export { compoundInterestCalculator } from "./finance/compound-interest";
 export { loanPaymentCalculator } from "./finance/loan-payment";
+export { loanAnalysisCalculator, maxPrincipalForPayment, paymentForLoan } from "./finance/loan-analysis";
+export { compareLoanRateSensitivity } from "./finance/loan-scenarios";
+export type { LoanRateScenarioInput } from "./finance/loan-scenarios";
+export { compareLoanRefinance, loanRefinanceCalculator } from "./finance/loan-refinance";
+export { analyzeLoanPrepayment, loanPrepaymentCalculator, remainingLoanBalance } from "./finance/loan-prepayment";
+export { compareLoans, loanComparisonCalculator } from "./finance/loan-comparison";
+export { calculateLoanAffordability, loanAffordabilityCalculator } from "./finance/loan-affordability";
+export { debtPayoffCalculator, simulateDebtPayoff } from "./finance/debt-payoff";
+export { creditCardPayoffCalculator, requiredMonthlyPaymentForTargetMonths, simulateCreditCardPayoff } from "./finance/credit-card-payoff";
+export { termDepositCalculator, termDepositFutureValue } from "./finance/term-deposit";
+export { recurringDepositCalculator, recurringDepositFutureValue, requiredMonthlyRecurringDeposit } from "./finance/recurring-deposit";
+export { requiredMonthlySip, sipCalculator, sipFutureValue } from "./finance/sip";
+export { requiredInitialStepUpSip, stepUpSipCalculator, stepUpSipFutureValue } from "./finance/step-up-sip";
+export { cagr, futureValue, investmentMathCalculator, presentValueFromFuture, realReturnPercent } from "./finance/investment-math";
+export { simulateSwp, sustainableMonthlyWithdrawal, swpCalculator } from "./finance/swp";
+export { convertAnnualRate, effectiveToNominalPercent, nominalToEffectivePercent, rateConversionCalculator } from "./finance/rate-conversion";
+export { calculateSavingsGoal, requiredMonthlySavings, savingsFutureValue, savingsGoalCalculator } from "./finance/savings-goal";
+export { calculateRoi, roiCalculator } from "./finance/roi";
+export { calculateNetWorth, netWorthCalculator } from "./finance/net-worth";
+export { calculateInflation, inflationCalculator } from "./finance/inflation";
+export { calculateSimpleInterest, simpleInterestCalculator } from "./finance/simple-interest";
+export { calculateEmergencyFund, emergencyFundCalculator } from "./finance/emergency-fund";
 export { COUNTRY_PROFILES, getCountryProfile, listWaveOneCountries, resolveCountry } from "./country-intelligence";
 export { clearRulePackRegistry, listRulePacks, registerRulePack, selectRulePack } from "./rule-packs";
 export { clearTaxonomyRegistry, getJourney, listCategories, listJourneys, registerCategory, registerCoreTaxonomy, registerJourney } from "./taxonomy";
 export type { CountryCode, CountryProfile, CountrySignals } from "./country-intelligence";
 export type { RulePack, RulePackSelection } from "./rule-packs";
 export type { CalculationJourney, CalculatorCategory } from "./taxonomy";
-export type {
-  CalculatorContext,
-  CalculatorDefinition,
-  CalculatorExample,
-  CalculatorFormula,
-  CalculatorRunResult,
-  CalculatorSource,
-  CalculatorRuleMetadata,
-  JurisdictionRef,
-  ReverseSolverDefinition,
-  UnitSystem
-} from "./types";
+export type { CalculatorContext, CalculatorDefinition, CalculatorExample, CalculatorFormula, CalculatorRunResult, CalculatorSource, CalculatorRuleMetadata, CalculatorUiMetadata, JurisdictionRef, ReverseSolverDefinition, UnitSystem } from "./types";
 export { CalculatorValidationError } from "./types";
+
+export { buildPublicCalculatorSearchIndex, findPublicCalculatorCandidates } from "./search-index";
+export type { CalculatorSearchItem } from "./search-index";
+
+export { getCountryDiscoveryProfile, listCertifiedCountryPriorities } from "./country-discovery";
+export type { CountryDiscoveryProfile, CountryPriorityItem } from "./country-discovery";

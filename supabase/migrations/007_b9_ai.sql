@@ -45,6 +45,7 @@ begin
   select count(*) into v_count from public.ai_usage_events
     where user_id = v_user and created_at >= date_trunc('month', now());
   if v_count >= v_limit then raise exception 'Monthly AI request limit reached'; end if;
+  if p_feature='builder' and not exists(select 1 from public.organization_members m where m.user_id=v_user and public.has_org_role(m.organization_id,array['owner','admin','manager'])) then raise exception 'Builder permission required'; end if;
 
   if exists(select 1 from public.ai_usage_events where user_id = v_user and created_at >= now() - interval '1 minute' having count(*) >= 10) then
     raise exception 'AI request rate limit reached';
