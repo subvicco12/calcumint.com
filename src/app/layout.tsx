@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     url: siteConfig.url
   },
+  robots:{index:true,follow:true},
   twitter: {
     card: "summary_large_image",
     title: "CalcuMint — Calculate Anything",
