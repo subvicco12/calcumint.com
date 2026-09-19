@@ -1,3 +1,14 @@
-import { describe,expect,it } from "vitest";
+import { describe, expect, it } from "vitest";
 import sitemap from "./sitemap";
-describe("public sitemap",()=>{it("contains calculator pages and only category hubs with published calculators",()=>{const urls=sitemap().map(x=>x.url);expect(urls.some(x=>x.endsWith("/calculators/math"))).toBe(true);expect(urls.some(x=>x.endsWith("/calculators/finance-investment"))).toBe(false);expect(urls.some(x=>x.includes("loan-emi-calculator"))).toBe(false)})});
+
+describe("public sitemap", () => {
+  it("contains certified calculator pages and category hubs while excluding drafts", () => {
+    const urls = sitemap().map((entry) => entry.url);
+    expect(urls.some((url) => url.endsWith("/calculators/math"))).toBe(true);
+    expect(urls.some((url) => url.endsWith("/calculators/finance-investment"))).toBe(true);
+    expect(urls.some((url) => url.endsWith("/calculators/loans-mortgages"))).toBe(true);
+    expect(urls.some((url) => url.includes("simple-interest-calculator"))).toBe(true);
+    expect(urls.some((url) => url.includes("loan-payment-calculator"))).toBe(false);
+    expect(urls.some((url) => url.includes("loan-emi-calculator"))).toBe(true);
+  });
+});
