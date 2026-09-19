@@ -14,6 +14,8 @@ export function CompactNavMenu({ authenticated }: CompactNavMenuProps) {
     if (detailsRef.current) detailsRef.current.open = false;
   }, [pathname]);
 
+  useEffect(()=>{const onKey=(event:KeyboardEvent)=>{if(event.key==="Escape"&&detailsRef.current?.open){detailsRef.current.open=false;detailsRef.current.querySelector<HTMLElement>("summary")?.focus();}};document.addEventListener("keydown",onKey);return()=>document.removeEventListener("keydown",onKey)},[]);
+
   const closeMenu = () => {
     if (detailsRef.current) detailsRef.current.open = false;
   };
