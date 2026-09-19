@@ -43,7 +43,7 @@ export const recurringDepositCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ monthlyDeposit, annualInterestPercent, termMonths, depositTiming }) => {
     const maturityValue = roundTo(recurringDepositFutureValue(monthlyDeposit, annualInterestPercent, termMonths, depositTiming), 2);
@@ -51,8 +51,8 @@ export const recurringDepositCalculator: CalculatorDefinition<Input, Output> = {
     return { maturityValue, depositedAmount, interestEarned: roundTo(maturityValue - depositedAmount, 2) };
   },
   formulas: [{ id: "recurring-deposit-future-value", expression: "FV = D × ((1+i)^n - 1) / i; beginning timing multiplies by (1+i)", description: "Generic monthly recurring-deposit future-value model. Institution- or jurisdiction-specific compounding conventions require a certified rule pack." }],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Investor.gov — Compound Interest Calculator", url: "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" }, { label: "Consumer Financial Protection Bureau — How compound interest works", url: "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/" }],
+  examples: [{ label: "$10,000 monthly deposit for 5 years at 7% annual interest (beginning of month)", input: { monthlyDeposit: 10000, annualInterestPercent: 7, termMonths: 60, depositTiming: "beginning" }, expected: { maturityValue: 720105.27, depositedAmount: 600000, interestEarned: 120105.27 } }],
   jurisdictions: [{ country: "GLOBAL" }],
   ui: { simpleInputKeys: ["monthlyDeposit","annualInterestPercent","termMonths"], advancedInputKeys: ["depositTiming"] },
   reverseSolvers: [{ id: "target-monthly-deposit", target: "monthlyDeposit", description: "Solve the monthly recurring deposit required for a target maturity value." }],
