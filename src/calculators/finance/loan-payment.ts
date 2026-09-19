@@ -22,7 +22,7 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
   category: "loans-mortgages",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ principal, annualRatePercent, termMonths }) => {
     const monthlyRate = annualRatePercent / 100 / 12;
@@ -46,7 +46,7 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
       description: "Fixed periodic payment for a fully amortizing loan with a fixed periodic interest rate."
     }
   ],
-  sources: [],
+  sources: [{ label: "Consumer Financial Protection Bureau — How mortgage lenders calculate monthly payments", url: "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" }],
   examples: [
     {
       label: "$100,000 at 6% for 30 years",
