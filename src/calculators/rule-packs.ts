@@ -25,6 +25,8 @@ function validDate(value: string): boolean {
 
 export function registerRulePack(pack: RulePack): void {
   if (!pack.id.trim() || !pack.ruleVersion.trim()) throw new Error("Rule pack id and version are required");
+  if (!pack.jurisdiction.country.trim()) throw new Error("Rule pack country is required");
+  if (!pack.officialSources.length || pack.officialSources.some((source)=>!source.url?.trim()||!source.title?.trim())) throw new Error("Rule packs require official source metadata");
   if (!validDate(pack.effectiveFrom) || (pack.effectiveTo && !validDate(pack.effectiveTo)) || !validDate(pack.lastVerifiedAt)) {
     throw new Error("Rule pack dates must use YYYY-MM-DD");
   }
