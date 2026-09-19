@@ -41,7 +41,7 @@ export const sipCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ monthlyContribution, annualReturnPercent, termMonths, contributionTiming }) => {
     const futureValue = roundTo(sipFutureValue(monthlyContribution, annualReturnPercent, termMonths, contributionTiming), 2);
@@ -49,8 +49,8 @@ export const sipCalculator: CalculatorDefinition<Input, Output> = {
     return { futureValue, investedAmount, estimatedGain: roundTo(futureValue - investedAmount, 2) };
   },
   formulas: [{ id: "sip-future-value", expression: "FV = PMT × ((1+r)^n - 1)/r × timingFactor", description: "Future value of equal monthly contributions. Beginning-of-period contributions multiply the ordinary-annuity value by (1+r)." }],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Investor.gov — Compound Interest Calculator", url: "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" }, { label: "Investor.gov — Dollar Cost Averaging", url: "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging" }],
+  examples: [{ label: "$10,000 monthly for 10 years at 10% estimated annual return (beginning of month)", input: { monthlyContribution: 10000, annualReturnPercent: 10, termMonths: 120, contributionTiming: "beginning" }, expected: { futureValue: 2065520.20, investedAmount: 1200000, estimatedGain: 865520.20 } }],
   jurisdictions: [{ country: "GLOBAL" }],
   ui: { simpleInputKeys: ["monthlyContribution","annualReturnPercent","termMonths"], advancedInputKeys: ["contributionTiming"] },
   reverseSolvers: [{ id: "target-monthly-sip", target: "monthlyContribution", description: "Solve the monthly contribution required for a target future value." }],
