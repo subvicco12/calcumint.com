@@ -25,4 +25,5 @@ describe("rule-pack registry", () => {
     expect(() => registerRulePack({ ...pack, id: "bad", effectiveFrom: "2026-12-01", effectiveTo: "2026-01-01" })).toThrow(/effectiveTo/);
     expect(listRulePacks({ country: "US" })).toHaveLength(1);
   });
+  it("rejects country packs without jurisdiction or official provenance",()=>{expect(()=>registerRulePack({...pack,jurisdiction:{country:" "}})).toThrow(/country/);expect(()=>registerRulePack({...pack,officialSources:[]})).toThrow(/official source/)});
 });
