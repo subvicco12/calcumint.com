@@ -4,6 +4,17 @@ import Link from "next/link";
 import { useState } from "react";
 
 type Recommendation = { slug: string; category: string; description: string; url: string; reason?: string };
+type FinderPayload = { recommendations?: Recommendation[]; error?: string; warning?: string; usedAi?: boolean };
+
+async function readFinderPayload(response: Response): Promise<FinderPayload> {
+  const text = await response.text();
+  if (!text.trim()) throw new Error("Calculator finder is temporarily unavailable. Please try again.");
+  try {
+    return JSON.parse(text) as FinderPayload;
+  } catch {
+    throw new Error("Calculator finder returned an invalid response. Please try again.");
+  }
+}
 
 export function AiFinder() {
   const [query, setQuery] = useState("");
@@ -17,7 +28,7 @@ export function AiFinder() {
     setMessage("");
     try {
       const response = await fetch("/api/ai/find", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ query }) });
-      const payload = await response.json() as { recommendations?: Recommendation[]; error?: string; warning?: string; usedAi?: boolean };
+      const payload = await readFinderPayload(response);
       if (!response.ok) throw new Error(payload.error ?? "Search failed");
       setItems(payload.recommendations ?? []);
       setMessage(payload.warning ?? (payload.usedAi ? "AI-assisted ranking from CalcuMint's verified calculator catalog." : "Matched from CalcuMint's verified calculator catalog."));
