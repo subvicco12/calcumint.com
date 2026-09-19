@@ -26,9 +26,9 @@ function validDate(value: string): boolean {
 export function registerRulePack(pack: RulePack): void {
   if (!pack.id.trim() || !pack.ruleVersion.trim()) throw new Error("Rule pack id and version are required");
   if (!pack.jurisdiction.country.trim()) throw new Error("Rule pack country is required");
-  if (!pack.officialSources.length || pack.officialSources.some((source)=>!source.url?.trim()||!source.title?.trim())) throw new Error("Rule packs require official source metadata");
+  if (!pack.officialSources.length || pack.officialSources.some((source)=>!source.url?.trim()||!source.label?.trim())) throw new Error("Rule packs require official source metadata");
   if (!validDate(pack.effectiveFrom) || (pack.effectiveTo && !validDate(pack.effectiveTo)) || !validDate(pack.lastVerifiedAt)) {
-    throw new Error("Rule pack dates must use YYYY-MM-DD");
+    throw new Error("Rule pack dates must use a valid YYYY-MM-DD calendar date");
   }
   if (pack.effectiveTo && pack.effectiveTo < pack.effectiveFrom) throw new Error("Rule pack effectiveTo cannot precede effectiveFrom");
   const bucket = key(pack.jurisdiction.country, pack.jurisdiction.region);
@@ -54,7 +54,7 @@ export type RulePackSelection = {
 };
 
 export function selectRulePack(selection: RulePackSelection): RulePack | undefined {
-  if (!validDate(selection.asOf)) throw new Error("Rule-pack selection date must use YYYY-MM-DD");
+  if (!validDate(selection.asOf)) throw new Error("Rule-pack selection date must use a valid YYYY-MM-DD calendar date");
   return listRulePacks(selection.jurisdiction)
     .filter((pack) => (!selection.id || pack.id === selection.id)
       && (!selection.ruleVersion || pack.ruleVersion === selection.ruleVersion)
