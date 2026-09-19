@@ -31,7 +31,7 @@ export const termDepositCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ principal, annualRatePercent, termMonths, compoundingPerYear }) => {
     const maturityValue = roundTo(termDepositFutureValue(principal, annualRatePercent, termMonths, compoundingPerYear), 2);
@@ -40,8 +40,8 @@ export const termDepositCalculator: CalculatorDefinition<Input, Output> = {
     return { maturityValue, interestEarned: roundTo(maturityValue - principal, 2), effectiveAnnualYieldPercent: roundTo(effective * 100, 4) };
   },
   formulas: [{ id: "compound-deposit", expression: "A = P(1 + r/m)^(m×t)", description: "Compound growth using the selected compounding frequency and fractional years derived from months." }],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Consumer Financial Protection Bureau — How compound interest works", url: "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/" }, { label: "CFPB Regulation DD Appendix A — Annual Percentage Yield Calculation", url: "https://www.consumerfinance.gov/rules-policy/regulations/1030/a/" }],
+  examples: [{ label: "$100,000 at 8% nominal annual rate for 12 months, compounded quarterly", input: { principal: 100000, annualRatePercent: 8, termMonths: 12, compoundingPerYear: 4 }, expected: { maturityValue: 108243.22, interestEarned: 8243.22, effectiveAnnualYieldPercent: 8.2432 } }],
   jurisdictions: [{ country: "GLOBAL" }],
   ui: { simpleInputKeys: ["principal","annualRatePercent","termMonths"], advancedInputKeys: ["compoundingPerYear"] },
   relatedCalculators: ["compound-interest-calculator"],
