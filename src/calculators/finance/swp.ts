@@ -66,15 +66,15 @@ export const swpCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ initialCorpus, monthlyWithdrawal, annualReturnPercent, termMonths, withdrawalTiming }) => {
     const result = simulateSwp(initialCorpus, monthlyWithdrawal, annualReturnPercent, termMonths, withdrawalTiming);
     return { endingCorpus: roundTo(result.endingCorpus, 2), totalWithdrawn: roundTo(result.totalWithdrawn, 2), depleted: result.depleted, depletionMonth: result.depletionMonth };
   },
   formulas: [{ id: "swp-cashflow", expression: "balance[m] = balance[m-1] × (1+r) - withdrawal", description: "Deterministic monthly withdrawal simulation; withdrawal timing controls whether cash is removed before or after monthly growth." }],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Investor.gov — Compound Interest Calculator", url: "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" }],
+  examples: [{ label: "$500,000 corpus, $5,000 monthly withdrawal, 8% estimated annual return for 5 years", input: { initialCorpus: 500000, monthlyWithdrawal: 5000, annualReturnPercent: 8, termMonths: 60, withdrawalTiming: "end" }, expected: { endingCorpus: 377538.57, totalWithdrawn: 300000, depleted: false, depletionMonth: null } }],
   jurisdictions: [{ country: "GLOBAL" }],
   ui: { simpleInputKeys: ["initialCorpus","monthlyWithdrawal","annualReturnPercent","termMonths"], advancedInputKeys: ["withdrawalTiming"] },
   reverseSolvers: [{ id: "sustainable-monthly-withdrawal", target: "monthlyWithdrawal", description: "Solve the level monthly withdrawal that amortizes a corpus over the selected term at the assumed return." }],
