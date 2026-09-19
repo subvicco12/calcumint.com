@@ -21,7 +21,7 @@ export const compoundInterestCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ principal, annualRatePercent, years, compoundsPerYear }) => {
     if(!Number.isFinite(principal)||principal<0||!Number.isFinite(annualRatePercent)||!Number.isFinite(years)||years<0||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1)throw new Error("Compound-interest inputs must be finite and within supported ranges");
@@ -32,7 +32,7 @@ export const compoundInterestCalculator: CalculatorDefinition<Input, Output> = {
     return {futureValue:roundedFutureValue,totalInterest:roundTo(roundedFutureValue-principal,2)};
   },
   formulas:[{id:"compound-interest",expression:"A = P(1 + r/n)^(nt)",description:"Future value with a fixed nominal annual rate compounded n times per year."}],
-  sources:[],
+  sources:[{label:"Investor.gov — Compound Interest Calculator",url:"https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"}],
   examples:[{label:"$10,000 at 5% for 10 years, compounded monthly",input:{principal:10000,annualRatePercent:5,years:10,compoundsPerYear:12},expected:{futureValue:16470.09,totalInterest:6470.09}}],
   jurisdictions:[{country:"GLOBAL"}],
   ui:{simpleInputKeys:["principal","annualRatePercent","years"],advancedInputKeys:["compoundsPerYear"]},
