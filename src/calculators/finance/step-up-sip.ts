@@ -52,7 +52,7 @@ export const stepUpSipCalculator: CalculatorDefinition<Input, Output> = {
   category: "finance-investment",
   version: 1,
   riskClass: "financial",
-  reviewStatus: "draft",
+  reviewStatus: "certified",
   inputSchema,
   calculate: ({ initialMonthlyContribution, annualStepUpPercent, annualReturnPercent, termMonths, contributionTiming }) => {
     const result = stepUpSipFutureValue(initialMonthlyContribution, annualStepUpPercent, annualReturnPercent, termMonths, contributionTiming);
@@ -61,8 +61,8 @@ export const stepUpSipCalculator: CalculatorDefinition<Input, Output> = {
     return { futureValue, investedAmount, estimatedGain: roundTo(futureValue - investedAmount, 2), finalMonthlyContribution: roundTo(result.finalMonthlyContribution, 2) };
   },
   formulas: [{ id: "step-up-sip-simulation", expression: "balance[m] = (balance[m-1] + contribution[m]) × (1+r) with annual contribution step-up", description: "Deterministic monthly cash-flow simulation with annual contribution increases; timing controls whether each contribution is invested before or after monthly growth." }],
-  sources: [],
-  examples: [],
+  sources: [{ label: "Investor.gov — Compound Interest Calculator", url: "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator" }, { label: "Investor.gov — Dollar Cost Averaging", url: "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging" }],
+  examples: [{ label: "$10,000 initial monthly contribution, 10% annual step-up and 10% estimated return for 10 years", input: { initialMonthlyContribution: 10000, annualStepUpPercent: 10, annualReturnPercent: 10, termMonths: 120, contributionTiming: "beginning" }, expected: { futureValue: 3045851.97, investedAmount: 1912490.95, estimatedGain: 1133361.02, finalMonthlyContribution: 23579.48 } }],
   jurisdictions: [{ country: "GLOBAL" }],
   ui: { simpleInputKeys: ["initialMonthlyContribution","annualStepUpPercent","annualReturnPercent","termMonths"], advancedInputKeys: ["contributionTiming"] },
   reverseSolvers: [{ id: "target-initial-step-up-sip", target: "initialMonthlyContribution", description: "Solve the initial monthly contribution required to reach a target future value with a specified annual step-up." }],
