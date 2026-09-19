@@ -38,3 +38,5 @@ export const publicEnv = publicSchema.parse({
   NEXT_PUBLIC_ADSENSE_CLIENT_ID: process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID,
   NEXT_PUBLIC_ADSENSE_SLOT_CALCULATOR: process.env.NEXT_PUBLIC_ADSENSE_SLOT_CALCULATOR
 });
+
+export function assertProductionEnvironment(env:NodeJS.ProcessEnv=process.env):void{if(env.NODE_ENV!=="production")return;const required=["NEXT_PUBLIC_SITE_URL","NEXT_PUBLIC_SUPABASE_URL","NEXT_PUBLIC_SUPABASE_ANON_KEY","SUPABASE_SERVICE_ROLE_KEY","NEXT_PUBLIC_PADDLE_CLIENT_TOKEN","PADDLE_API_KEY","PADDLE_WEBHOOK_SECRET","PADDLE_PRO_MONTHLY_PRICE_ID","PADDLE_PRO_YEARLY_PRICE_ID","PADDLE_BUSINESS_MONTHLY_PRICE_ID","PADDLE_BUSINESS_YEARLY_PRICE_ID","WEBHOOK_ENCRYPTION_KEY","WEBHOOK_WORKER_SECRET","ADMIN_WORKER_SECRET"] as const;const missing=required.filter(k=>!env[k]?.trim());if(missing.length)throw new Error(`Missing production environment variables: ${missing.join(", ")}`);if(env.NEXT_PUBLIC_SITE_URL!=="https://calcumint.com")throw new Error("NEXT_PUBLIC_SITE_URL must be https://calcumint.com in production");if(env.NEXT_PUBLIC_PADDLE_ENV!=="production")throw new Error("Paddle must use production environment for production certification");}
