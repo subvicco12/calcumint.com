@@ -1,6 +1,8 @@
 import { describe,expect,it } from "vitest";
 import { compoundInterestResult,loanResult,sipResult } from "./adapters";
 import { bmiResult,breakEvenResult,mortgageResult } from "./reference-adapters";
+import { runCalculator } from "../engine";
+import { sipCalculator } from "../finance/sip";
 
 describe("final result adapters",()=>{
   it("reconciles loan headline and composition",()=>{
@@ -14,11 +16,15 @@ describe("final result adapters",()=>{
     expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),2);
   });
   it("keeps SIP annual checkpoints unique and includes the exact terminal month",()=>{
-    const result=sipResult({monthlyContribution:1000,annualReturnPercent:8,termMonths:125,contributionTiming:"beginning"},{futureValue:1,investedAmount:1,estimatedGain:0});
+    const input={monthlyContribution:1000,annualReturnPercent:8,termMonths:125,contributionTiming:"beginning" as const};
+    const output=runCalculator(sipCalculator,input).output;
+    const result=sipResult(input,output);
     const months=result.series![0].points.map(point=>point.x);
     expect(months.at(-1)).toBe(125);
     expect(new Set(months).size).toBe(months.length);
     expect(months.filter(month=>month===125)).toHaveLength(1);
+    expect(result.series![0].points.at(-1)!.y).toBeCloseTo(output.futureValue,8);
+    expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),8);
   });
   it("reconciles compound-interest composition to future value",()=>{
     const result=compoundInterestResult({principal:10000,years:10},{futureValue:16470.09,totalInterest:6470.09});
