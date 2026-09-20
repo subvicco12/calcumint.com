@@ -24,7 +24,7 @@ export const quadraticFormulaCalculator:CalculatorDefinition<{a:number;b:number;
  formulas:[{id:"quadratic-formula",expression:"x = (-b ± √(b² - 4ac)) / (2a)",description:"Uses the discriminant to determine and calculate the two roots of ax² + bx + c = 0."}],
  sources:[{label:"CalcuMint deterministic algebra engine",note:"Standard quadratic formula and vertex identities."}],
  examples:[{label:"x² - 5x + 6 = 0",input:{a:1,b:-5,c:6},expected:{discriminant:1,root1:3,root2:2,root1Text:"3",root2Text:"2",vertexX:2.5,vertexY:-0.25,steps:["D = b² - 4ac = 1","Use stable q = -½(b + sign(b)√D)","x₁ = 3, x₂ = 2"]}}],
- goldenTests:[{label:"x² - 5x + 6 = 0",input:{a:1,b:-5,c:6},expected:{discriminant:1,root1:3,root2:2,root1Text:"3",root2Text:"2",vertexX:2.5,vertexY:-0.25,steps:["D = b² - 4ac = 1","x = (-b ± √D) / (2a)","x₁ = 3, x₂ = 2"]}}]
+ goldenTests:[{label:"x² - 5x + 6 = 0",input:{a:1,b:-5,c:6},expected:{discriminant:1,root1:3,root2:2,root1Text:"3",root2Text:"2",vertexX:2.5,vertexY:-0.25,steps:["D = b² - 4ac = 1","Use stable q = -½(b + sign(b)√D)","x₁ = 3, x₂ = 2"]}}]
 };
 
 export type DeterminantOutput={determinant:number;steps:readonly string[]};
