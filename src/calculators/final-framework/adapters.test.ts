@@ -23,6 +23,9 @@ describe("final result adapters",()=>{
     expect(result.primaryResult.value).toBe(output.monthlyPayment);
     expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
     expect(result.metrics!.find(metric=>metric.id==="total")!.value).toBe(output.totalPayment);
+    expect(result.metrics!.find(metric=>metric.id==="payoff")!.value).toBe(output.payoffMonths);
+    expect(result.metrics!.find(metric=>metric.id==="interest-saved")!.value).toBe(output.interestSavedVsScheduled);
+    expect(result.metrics!.find(metric=>metric.id==="months-saved")!.value).toBe(output.monthsSavedVsScheduled);
     expect(result.schedule).toEqual(schedule);
     expect(result.schedule!.at(-1)!.values.balance).toBe(0);
     expect(result.schedule!.at(-1)!.period).toBe(output.payoffMonths);
