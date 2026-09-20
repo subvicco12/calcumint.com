@@ -28,6 +28,23 @@ describe("final calculator entitlement rendering",()=>{
   });
 
 
+
+  it("renders certified metrics beyond the first four instead of dropping them",()=>{
+    const expanded:StructuredCalculationResult={...result,metrics:[
+      {id:"principal",label:"Principal",value:100000},
+      {id:"interest",label:"Total interest",value:115838},
+      {id:"total",label:"Total repayment",value:215838},
+      {id:"term",label:"Term",value:360,unit:"months"},
+      {id:"payoff",label:"Payoff time",value:300,unit:"months"},
+      {id:"interest-saved",label:"Interest saved",value:12000},
+      {id:"months-saved",label:"Time saved",value:60,unit:"months"}
+    ]};
+    render(<FinalResultPresentation result={expanded} plan="free"/>);
+    expect(screen.getByText("Payoff time")).not.toBeNull();
+    expect(screen.getByText("Interest saved")).not.toBeNull();
+    expect(screen.getByText("Time saved")).not.toBeNull();
+  });
+
   it("renders methodology and provenance without a paid-plan gate",()=>{
     render(<FinalResultPresentation result={result} plan="free"/>);
     expect(screen.getByText("Result methodology")).not.toBeNull();
