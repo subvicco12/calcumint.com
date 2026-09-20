@@ -1,13 +1,13 @@
 import { z } from "zod";
 import type { CalculatorDefinition } from "./types";
 
-export type LaunchField = { key: string; label: string; defaultValue: number; min?: number };
+export type LaunchField = { key: string; label: string; defaultValue: number; min?: number; integer?: boolean; disallow?: readonly number[] };
 export type LaunchSpec = {
   slug: string; title: string; category: "math"|"geometry"|"statistics"|"science"|"everyday";
   fields: readonly LaunchField[]; formula: string; description: string; explanation: string; keywords: readonly string[];
   compute: (v: Record<string, number>) => number;
 };
-const f=(key:string,label:string,defaultValue:number,min?:number):LaunchField=>({key,label,defaultValue,min});
+const f=(key:string,label:string,defaultValue:number,min?:number,options?:Pick<LaunchField,"integer"|"disallow">):LaunchField=>({key,label,defaultValue,min,...options});
 const pair=(slug:string,title:string,category:LaunchSpec["category"],a:LaunchField,b:LaunchField,formula:string,description:string,explanation:string,compute:LaunchSpec["compute"],keywords:string[]=[]):LaunchSpec=>({slug,title,category,fields:[a,b],formula,description,explanation,compute,keywords:[title.toLowerCase(),...keywords]});
 const triple=(slug:string,title:string,category:LaunchSpec["category"],a:LaunchField,b:LaunchField,c:LaunchField,formula:string,description:string,explanation:string,compute:LaunchSpec["compute"],keywords:string[]=[]):LaunchSpec=>({slug,title,category,fields:[a,b,c],formula,description,explanation,compute,keywords:[title.toLowerCase(),...keywords]});
 const single=(slug:string,title:string,category:LaunchSpec["category"],a:LaunchField,formula:string,description:string,explanation:string,compute:LaunchSpec["compute"],keywords:string[]=[]):LaunchSpec=>({slug,title,category,fields:[a],formula,description,explanation,compute,keywords:[title.toLowerCase(),...keywords]});
@@ -26,6 +26,10 @@ const base: LaunchSpec[] = [
  single("square-root-calculator","Square Root Calculator","math",f("x","Number",144,0),"√x","Find the principal square root of a non-negative number.","The principal square root is the non-negative value whose square equals the input.",v=>Math.sqrt(v.x)),
  single("cube-root-calculator","Cube Root Calculator","math",f("x","Number",125),"∛x","Find the real cube root of a number.","The cube root is the value that produces the input when raised to the third power.",v=>Math.cbrt(v.x)),
  pair("power-calculator","Power Calculator","math",f("base","Base",2),f("exp","Exponent",8),"base^exponent","Raise a base number to a chosen power.","Exponentiation multiplies the base according to the exponent and supports real-number powers where JavaScript real arithmetic is defined.",v=>Math.pow(v.base,v.exp)),
+ pair("exponent-calculator","Exponent Calculator","math",f("base","Base",3),f("exponent","Exponent",4),"base^exponent","Evaluate a base raised to a chosen exponent.","Raise the base to the entered exponent using real-number exponentiation where the result is defined.",v=>Math.pow(v.base,v.exponent),["exponents","powers"]),
+ pair("logarithm-calculator","Logarithm Calculator","math",f("x","Positive number",100,0.000000001),f("base","Logarithm base",10,0.000000001,{disallow:[1]}),"log_b(x) = ln(x) / ln(b)","Calculate a logarithm for a positive value and positive base other than one.","Divide the natural logarithm of the value by the natural logarithm of the chosen base.",v=>Math.log(v.x)/Math.log(v.base),["log","log base"]),
+ pair("scientific-notation-calculator","Scientific Notation Calculator","math",f("coefficient","Coefficient",3.2),f("exponent","Base-10 exponent",6),"coefficient × 10^exponent","Evaluate a number written as a coefficient times a power of ten.","Multiply the coefficient by ten raised to the entered exponent.",v=>v.coefficient*Math.pow(10,v.exponent),["scientific notation","powers of ten"]),
+ pair("rounding-calculator","Rounding Calculator","math",f("value","Value",123.4567),f("decimals","Decimal places",2,0,{integer:true}),"round(value × 10^decimals) / 10^decimals","Round a number to a chosen non-negative number of decimal places.","Scale by the requested power of ten, round to the nearest integer, then scale back.",v=>{const places=Math.trunc(v.decimals);const scale=Math.pow(10,places);return Math.round((v.value+Number.EPSILON)*scale)/scale},["round decimal","decimal places"]),
  single("reciprocal-calculator","Reciprocal Calculator","math",f("x","Number",4),"1 / x","Find the multiplicative inverse of a non-zero number.","Divide one by the input value.",v=>1/v.x),
  pair("remainder-calculator","Remainder Calculator","math",f("a","Dividend",17),f("b","Divisor",5),"a mod b","Find the remainder after division.","The remainder is the amount left after taking whole divisor-sized groups from the dividend.",v=>v.a%v.b,["modulo"]),
  pair("hypotenuse-calculator","Hypotenuse Calculator","geometry",f("a","Side a",3,0),f("b","Side b",4,0),"√(a² + b²)","Find the hypotenuse of a right triangle from its two perpendicular sides.","Apply the Pythagorean theorem and take the square root of the sum of the squared legs.",v=>Math.hypot(v.a,v.b),["pythagorean theorem"]),
@@ -144,8 +148,8 @@ if (base.length < 100) throw new Error(`B11 launch portfolio requires at least 1
 export const launchSpecs: readonly LaunchSpec[] = base;
 
 export function launchDefinition(spec: LaunchSpec): CalculatorDefinition<Record<string,number>,{result:number}> {
-  const shape: Record<string,z.ZodNumber> = {};
-  for (const field of spec.fields) { let schema=z.number().finite(); if(field.min!==undefined) schema=schema.min(field.min); shape[field.key]=schema; }
+  const shape: Record<string,z.ZodType<number>> = {};
+  for (const field of spec.fields) { let schema=z.number().finite(); if(field.min!==undefined) schema=schema.min(field.min); if(field.integer) schema=schema.int(); if(field.disallow?.length) schema=schema.refine(value=>!field.disallow!.includes(value),{message:`${field.label} uses a disallowed value`}); shape[field.key]=schema; }
   return {
     id:`launch-${spec.slug}`, slug:spec.slug, title:spec.title, category:spec.category, version:1, riskClass:"standard", reviewStatus:"certified",
     inputSchema:z.object(shape), calculate:(input)=>({result:spec.compute(input)}),

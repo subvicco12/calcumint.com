@@ -24,5 +24,18 @@ describe("B11 launch portfolio",()=>{
   ] as const;
   for(const [slug,input,expected] of cases){const definition=launchDefinitions.find(x=>x.slug===slug)!;expect(definition.reviewStatus).toBe("certified");expect(runCalculator(definition,input).output.result).toBeCloseTo(expected,10)}
  });
+ it("includes the second catalog foundation math expansion with validation",()=>{
+  const cases=[
+   ["exponent-calculator",{base:3,exponent:4},81],
+   ["logarithm-calculator",{x:100,base:10},2],
+   ["scientific-notation-calculator",{coefficient:3.2,exponent:6},3200000],
+   ["rounding-calculator",{value:123.4567,decimals:2},123.46]
+  ] as const;
+  for(const [slug,input,expected] of cases){const definition=launchDefinitions.find(x=>x.slug===slug)!;expect(definition.reviewStatus).toBe("certified");expect(runCalculator(definition,input).output.result).toBeCloseTo(expected,10)}
+  const log=launchDefinitions.find(x=>x.slug==="logarithm-calculator")!;
+  expect(()=>runCalculator(log,{x:100,base:1})).toThrow();
+  const rounding=launchDefinitions.find(x=>x.slug==="rounding-calculator")!;
+  expect(()=>runCalculator(rounding,{value:12.34,decimals:1.5})).toThrow();
+ });
  it("publishes 100+ SEO-routable calculator pages",()=>{const pages=listPublicCalculators();expect(pages.length).toBeGreaterThanOrEqual(108);for(const page of pages){expect(page.intro.length).toBeGreaterThan(80);expect(page.faq.length).toBeGreaterThanOrEqual(2);expect(page.assumptions.length).toBeGreaterThanOrEqual(2);expect(page.keywords.length).toBeGreaterThanOrEqual(3)}});
 });
