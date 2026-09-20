@@ -59,7 +59,7 @@ describe("Final Calculator Framework", () => {
     expect(bmi.supportsSensitivity).toBe(false);
 
     expect(referencePresentations.loanEmi.supportsSchedule).toBe(true);
-    expect(referencePresentations.sip.supportsSchedule).toBe(true);
+    expect(referencePresentations.sip.supportsSchedule).toBe(false);
     expect(referencePresentations.compoundInterest.supportsSchedule).toBe(false);
     expect(referencePresentations.mortgage.supportsSchedule).toBe(false);
     expect(referencePresentations.breakEven.supportsSchedule).toBe(false);
