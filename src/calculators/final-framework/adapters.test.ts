@@ -10,7 +10,8 @@ describe("final result adapters",()=>{
   });
   it("reconciles SIP composition to final corpus",()=>{
     const result=sipResult({monthlyContribution:10000,annualReturnPercent:10,termMonths:120,contributionTiming:"beginning"},{futureValue:2065520.2,investedAmount:1200000,estimatedGain:865520.2});
-    expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(Number(result.primaryResult.value),2);\n    expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),2);
+    expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(Number(result.primaryResult.value),2);
+    expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),2);
   });
   it("reconciles compound-interest composition to future value",()=>{
     const result=compoundInterestResult({principal:10000,years:10},{futureValue:16470.09,totalInterest:6470.09});
