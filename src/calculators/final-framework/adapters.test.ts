@@ -53,6 +53,7 @@ describe("final result adapters",()=>{
     expect(result.primaryResult.value).toBe(output.futureValue);
     expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(output.futureValue,2);
+    expect(result.sources).toEqual(compoundInterestCalculator.sources);
   });
   it("reconciles mortgage reference presentation to the certified loan engine",()=>{
     const input={principal:320000,annualRatePercent:6.5,termMonths:360};
@@ -61,6 +62,7 @@ describe("final result adapters",()=>{
     expect(result.primaryResult.value).toBe(output.monthlyPayment);
     expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(output.totalPayment,2);
+    expect(result.sources).toEqual(loanPaymentCalculator.sources);
   });
   it("reconciles BMI draft reference presentation without publishing it",()=>{
     const output=runCalculator(bmiCalculator,{weightKg:70,heightCm:175}).output;
@@ -79,6 +81,8 @@ describe("final result adapters",()=>{
     expect(result.primaryResult.value).toBe(output.breakEvenUnits);
     expect(result.metrics!.find(metric=>metric.id==="revenue")!.value).toBe(output.breakEvenRevenue);
     expect(result.metrics!.find(metric=>metric.id==="margin")!.value).toBe(output.contributionMarginPerUnit);
+    expect(result.sources).toEqual(breakEvenCalculator.sources);
+    expect(breakEvenCalculator.riskClass).toBe("standard");
     expect(breakEvenCalculator.reviewStatus).toBe("draft");
   });
 });
