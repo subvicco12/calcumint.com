@@ -10,16 +10,24 @@ describe("Final Calculator Framework", () => {
     expect(minimumPlanFor("coreCalculation")).toBe("free");
   });
 
-  it("places analysis capabilities at Pro without blocking Business", () => {
-    for (const capability of ["advancedVisualization", "detailedSchedule", "goalSolver", "scenarioComparison", "sensitivityAnalysis"] as const) {
+  it("places the complete analysis and professional capability set at Pro without blocking Business", () => {
+    for (const capability of [
+      "advancedVisualization", "detailedSchedule", "goalSolver", "scenarioComparison",
+      "sensitivityAnalysis", "professionalExport", "advancedAIExplanation", "savedProjects"
+    ] as const) {
+      expect(minimumPlanFor(capability)).toBe("pro");
       expect(hasCalculatorCapability("free", capability)).toBe(false);
       expect(hasCalculatorCapability("pro", capability)).toBe(true);
       expect(hasCalculatorCapability("business", capability)).toBe(true);
     }
   });
 
-  it("reserves deployment and automation capabilities for Business", () => {
-    for (const capability of ["teamWorkspace", "customBuilder", "embed", "whiteLabel", "api", "batchProcessing", "webhooks"] as const) {
+  it("reserves the complete workspace, deployment and automation capability set for Business", () => {
+    for (const capability of [
+      "teamWorkspace", "customBuilder", "embed", "whiteLabel", "api", "batchProcessing",
+      "webhooks", "leadCapture", "governance"
+    ] as const) {
+      expect(minimumPlanFor(capability)).toBe("business");
       expect(hasCalculatorCapability("free", capability)).toBe(false);
       expect(hasCalculatorCapability("pro", capability)).toBe(false);
       expect(hasCalculatorCapability("business", capability)).toBe(true);
@@ -45,5 +53,14 @@ describe("Final Calculator Framework", () => {
     const business = new Set(capabilitiesFor("business"));
     for (const capability of free) expect(pro.has(capability)).toBe(true);
     for (const capability of pro) expect(business.has(capability)).toBe(true);
+  });
+
+  it("keeps every declared capability in exactly one minimum-tier partition", () => {
+    const free = capabilitiesFor("free").filter(capability => minimumPlanFor(capability) === "free");
+    const pro = capabilitiesFor("pro").filter(capability => minimumPlanFor(capability) === "pro");
+    const business = capabilitiesFor("business").filter(capability => minimumPlanFor(capability) === "business");
+    const all = capabilitiesFor("business");
+    expect(new Set([...free, ...pro, ...business]).size).toBe(all.length);
+    expect(free.length + pro.length + business.length).toBe(all.length);
   });
 });
