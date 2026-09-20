@@ -67,7 +67,11 @@ describe("final result adapters",()=>{
     const result=bmiResult(output);
     expect(result.primaryResult.value).toBe(output.bmi);
     expect(result.metrics!.find(metric=>metric.id==="classification")!.value).toBe(output.classification);
-    expect(result.ranges).toEqual([{id:"adult-bmi",label:"Adult BMI reference",min:18.5,max:24.9,classification:output.classification}]);\n    expect(result.warnings).toContain("BMI is a screening measure and does not diagnose health or disease.");\n    expect(result.sources).toEqual(bmiCalculator.sources);\n    expect(bmiCalculator.riskClass).toBe("health");\n    expect(bmiCalculator.reviewStatus).toBe("draft");
+    expect(result.ranges).toEqual([{id:"adult-bmi",label:"Adult BMI reference",min:18.5,max:24.9,classification:output.classification}]);
+    expect(result.warnings).toContain("BMI is a screening measure and does not diagnose health or disease.");
+    expect(result.sources).toEqual(bmiCalculator.sources);
+    expect(bmiCalculator.riskClass).toBe("health");
+    expect(bmiCalculator.reviewStatus).toBe("draft");
   });
   it("reconciles break-even draft reference presentation without publishing it",()=>{
     const output=runCalculator(breakEvenCalculator,{fixedCosts:10000,pricePerUnit:50,variableCostPerUnit:30}).output;
