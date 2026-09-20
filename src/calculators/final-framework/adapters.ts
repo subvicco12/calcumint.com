@@ -1,4 +1,6 @@
 import { loanSchedule } from "./analysis";
+import { runCalculator } from "../engine";
+import { sipCalculator } from "../finance/sip";
 import type { StructuredCalculationResult } from "./types";
 
 export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number}):StructuredCalculationResult{
@@ -22,7 +24,7 @@ export function loanResult(input:{principal:number;annualRatePercent:number;term
   };
 }
 
-export function sipResult(input:{monthlyContribution:number;termMonths:number},output:{futureValue:number;investedAmount:number;estimatedGain:number}):StructuredCalculationResult{
+export function sipResult(input:{monthlyContribution:number;annualReturnPercent:number;termMonths:number;contributionTiming:"beginning"|"end"},output:{futureValue:number;investedAmount:number;estimatedGain:number}):StructuredCalculationResult{
   return {
     primaryResult:{id:"future-value",label:"Projected future value",value:output.futureValue},
     metrics:[
@@ -34,6 +36,7 @@ export function sipResult(input:{monthlyContribution:number;termMonths:number},o
       {id:"invested",label:"Contributions",value:output.investedAmount},
       {id:"gain",label:"Estimated growth",value:Math.max(output.estimatedGain,0)}
     ],
+    series:[{id:"growth",label:"Projected growth",unit:"",points:Array.from({length:Math.ceil(input.termMonths/12)+1},(_,i)=>{const month=Math.min(i*12,input.termMonths);if(month===0)return{x:0,y:0};return{x:month,y:runCalculator(sipCalculator,{...input,termMonths:month}).output.futureValue}})}],
     reverseTargets:["monthlyContribution"],
     scenarioVariables:["monthlyContribution","annualReturnPercent","termMonths"],
     sensitivityVariables:["annualReturnPercent","termMonths"],
