@@ -56,6 +56,8 @@ describe("Final Calculator Framework", () => {
     expect(bmi.supportsScenarios).toBe(false);
     expect(bmi.supportsSensitivity).toBe(false);
 
+  expect(referencePresentations.breakEven.supportsSchedule).toBe(false);
+
     for (const key of ["loanEmi", "sip", "compoundInterest", "mortgage", "breakEven"] as const) {
       const presentation = referencePresentations[key];
       expect(presentation.supportsGoalSolver).toBe(true);
