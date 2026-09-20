@@ -35,3 +35,8 @@ export function breakEvenScenarios(input:{fixedCosts:number;pricePerUnit:number;
 export function breakEvenSensitivity(input:{fixedCosts:number;pricePerUnit:number;variableCostPerUnit:number}):SensitivityPoint[]{
  return [-10,-5,0,5,10].map(percent=>{const price=input.pricePerUnit*(1+percent/100);if(price<=input.variableCostPerUnit)return null;return{input:price,value:runCalculator(breakEvenCalculator,{...input,pricePerUnit:price}).output.breakEvenUnits}}).filter((point):point is SensitivityPoint=>point!==null);
 }
+
+export function breakEvenPriceForTargetUnits(targetUnits:number,input:{fixedCosts:number;variableCostPerUnit:number}){
+ if(!Number.isFinite(targetUnits)||targetUnits<=0)throw new Error("Target units must be greater than zero");
+ return input.variableCostPerUnit+input.fixedCosts/targetUnits;
+}
