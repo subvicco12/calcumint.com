@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { capabilitiesFor, hasCalculatorCapability, minimumPlanFor } from "./entitlements";
 import { referencePresentations } from "./reference-presentations";
 import { calculatorRegistry } from "../registry";
-import { getPublicCalculatorContent } from "../public-content";
+import { getPublicCalculatorContent, listPublicCalculators } from "../public-content";
 
 describe("Final Calculator Framework", () => {
   it("keeps mathematical correctness free", () => {
@@ -95,6 +95,15 @@ describe("Final Calculator Framework", () => {
     expect(calculatorRegistry.getBySlug("break-even-calculator")?.reviewStatus).toBe("draft");
     expect(getPublicCalculatorContent("bmi-calculator")).toBeUndefined();
     expect(getPublicCalculatorContent("break-even-calculator")).toBeUndefined();
+  });
+
+  it("keeps public calculator slugs unique with one canonical category route", () => {
+    const published = listPublicCalculators();
+    expect(new Set(published.map(item => item.slug)).size).toBe(published.length);
+    for (const item of published) {
+      expect(getPublicCalculatorContent(item.slug)?.category).toBe(item.category);
+      expect(calculatorRegistry.getBySlug(item.slug)?.reviewStatus).toBe("certified");
+    }
   });
 
   it("keeps capability inheritance monotonic", () => {
