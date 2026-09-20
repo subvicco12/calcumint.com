@@ -5,9 +5,10 @@ import type { Scenario,SensitivityPoint } from "@/calculators/final-framework/an
 
 function n(value:number){return value.toLocaleString(undefined,{maximumFractionDigits:2})}
 
-export function GoalSolverPanel({plan,target,solved,label="Required input"}:{plan:PlanTier;target:number;solved:number;label?:string}){
+export function GoalSolverPanel({plan,target,solved,label="Required input",targetLabel="Target",solvedLabel}:{plan:PlanTier;target:number;solved:number;label?:string;targetLabel?:string;solvedLabel?:string}){
  if(!hasCalculatorCapability(plan,"goalSolver"))return null;
- return <section className="result-panel" aria-label="Goal Solver"><div className="result-panel-heading"><h3>Goal Solver</h3><span>Pro analysis</span></div><div className="metric-grid"><div className="metric-card"><span>Target</span><strong>{n(target)}</strong></div><div className="metric-card"><span>{label}</span><strong>{n(solved)}</strong></div></div></section>
+ const resolvedLabel=solvedLabel??label;
+ return <section className="result-panel" aria-label="Goal Solver"><div className="result-panel-heading"><h3>Goal Solver</h3><span>Pro analysis</span></div><div className="metric-grid"><div className="metric-card"><span>{targetLabel}</span><strong>{n(target)}</strong></div><div className="metric-card"><span>{resolvedLabel}</span><strong>{n(solved)}</strong></div></div></section>
 }
 export function ScenarioComparisonPanel({plan,scenarios}:{plan:PlanTier;scenarios:readonly Scenario[]}){
  if(!hasCalculatorCapability(plan,"scenarioComparison"))return null;
