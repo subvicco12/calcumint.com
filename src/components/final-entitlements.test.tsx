@@ -11,7 +11,8 @@ afterEach(cleanup);
 const result:StructuredCalculationResult={
   primaryResult:{id:"payment",label:"Monthly payment",value:599.55},
   schedule:[{id:"1",period:1,values:{payment:599.55,principal:99.55,interest:500,balance:99900.45}}],
-  methodology:"Certified deterministic result."
+  methodology:"Certified deterministic result.",
+  sources:[{label:"Authoritative reference",url:"https://example.com/reference"},{label:"Internal rule note"}]
 };
 
 describe("final calculator entitlement rendering",()=>{
@@ -24,6 +25,17 @@ describe("final calculator entitlement rendering",()=>{
   it("renders the detailed schedule for Pro",()=>{
     render(<FinalResultPresentation result={result} plan="pro"/>);
     expect(screen.getByRole("table")).not.toBeNull();
+  });
+
+
+  it("renders methodology and provenance without a paid-plan gate",()=>{
+    render(<FinalResultPresentation result={result} plan="free"/>);
+    expect(screen.getByText("Result methodology")).not.toBeNull();
+    expect(screen.getByText("Sources")).not.toBeNull();
+    const source=screen.getByRole("link",{name:"Authoritative reference"});
+    expect(source.getAttribute("href")).toBe("https://example.com/reference");
+    expect(source.getAttribute("target")).toBe("_blank");
+    expect(screen.getByText("Internal rule note")).not.toBeNull();
   });
 
   it("hides Pro analysis panels for Free",()=>{
