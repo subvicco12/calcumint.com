@@ -5,14 +5,17 @@ import { loanAnalysisCalculator } from "../finance/loan-analysis";
 import { compoundInterestCalculator } from "../finance/compound-interest";
 import type { StructuredCalculationResult } from "./types";
 
-export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number},schedule?:StructuredCalculationResult["schedule"]):StructuredCalculationResult{
+export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number;payoffMonths?:number;interestSavedVsScheduled?:number;monthsSavedVsScheduled?:number},schedule?:StructuredCalculationResult["schedule"]):StructuredCalculationResult{
   return {
     primaryResult:{id:"monthly-payment",label:"Monthly payment",value:output.monthlyPayment},
     metrics:[
       {id:"principal",label:"Principal",value:input.principal},
       {id:"interest",label:"Total interest",value:output.totalInterest},
       {id:"total",label:"Total repayment",value:output.totalPayment},
-      {id:"term",label:"Term",value:input.termMonths,unit:"months"}
+      {id:"term",label:"Term",value:input.termMonths,unit:"months"},
+      ...(output.payoffMonths!==undefined&&output.payoffMonths!==input.termMonths?[{id:"payoff",label:"Payoff time",value:output.payoffMonths,unit:"months"}]:[]),
+      ...(output.interestSavedVsScheduled!==undefined&&output.interestSavedVsScheduled>0?[{id:"interest-saved",label:"Interest saved",value:output.interestSavedVsScheduled}]:[]),
+      ...(output.monthsSavedVsScheduled!==undefined&&output.monthsSavedVsScheduled>0?[{id:"months-saved",label:"Time saved",value:output.monthsSavedVsScheduled,unit:"months"}]:[])
     ],
     composition:[
       {id:"principal",label:"Principal",value:input.principal},
