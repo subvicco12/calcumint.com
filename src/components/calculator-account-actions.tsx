@@ -52,15 +52,14 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       setSignedIn(Boolean(user));
       if (!user) return;
 
-      const [{ data: favoriteData }, { data: profileData },favoriteCountResult,historyCountResult] = await Promise.all([
+      const [{ data: favoriteData },favoriteCountResult,historyCountResult] = await Promise.all([
         supabase.from("favorites").select("id").eq("user_id", user.id).eq("calculator_slug", calculatorSlug).maybeSingle(),
-        Promise.resolve({data:null}),
         supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id),
         supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id)
       ]);
       if (!active) return;
       setFavorite(Boolean(favoriteData));
-      void profileData;setFavoriteCount(favoriteCountResult.count??0);setHistoryCount(historyCountResult.count??0);
+      setFavoriteCount(favoriteCountResult.count??0);setHistoryCount(historyCountResult.count??0);
     })();
 
     return () => { active = false; };
