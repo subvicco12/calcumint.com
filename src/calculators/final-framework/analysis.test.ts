@@ -1,7 +1,8 @@
 import {describe,expect,it} from "vitest";
-import {breakEvenPriceForTargetUnits,breakEvenScenarios,breakEvenSensitivity,compoundInterestSensitivity,loanRateSensitivity,loanScenarios,loanSchedule,sipGoal,sipSensitivity} from "./analysis";
+import {breakEvenPriceForTargetUnits,breakEvenScenarios,breakEvenSensitivity,compoundInterestSensitivity,mortgageRateSensitivity,mortgageScenarios,loanRateSensitivity,loanScenarios,loanSchedule,sipGoal,sipSensitivity} from "./analysis";
 import {runCalculator} from "../engine";
 import {loanAnalysisCalculator} from "../finance/loan-analysis";
+import {loanPaymentCalculator} from "../finance/loan-payment";
 import {compoundInterestCalculator} from "../finance/compound-interest";
 import {breakEvenCalculator} from "../business/break-even";
 describe("final analysis engine",()=>{
@@ -10,6 +11,8 @@ describe("final analysis engine",()=>{
  it("loan sensitivity is monotonic with rate",()=>{const p=loanRateSensitivity({principal:100000,annualRatePercent:6,termMonths:360});expect(p[0].value).toBeLessThan(p.at(-1)!.value)});
  it("loan scenarios preserve the base case",()=>{const s=loanScenarios({principal:100000,annualRatePercent:6,termMonths:360});expect(s[1].delta).toBe(0)});
  it("SIP goal solver reconciles with target",()=>{expect(sipGoal(2065520.2,{annualReturnPercent:10,termMonths:120,contributionTiming:"beginning"})).toBeCloseTo(10000,1)});
+ it("mortgage rate sensitivity reconciles every point with the certified loan engine",()=>{const input={principal:320000,annualRatePercent:6.5,termMonths:360};const points=mortgageRateSensitivity(input);for(const point of points){expect(point.value).toBe(runCalculator(loanPaymentCalculator,{...input,annualRatePercent:point.input}).output.monthlyPayment)}});
+ it("mortgage scenarios reconcile to the certified loan engine and base delta",()=>{const input={principal:320000,annualRatePercent:6.5,termMonths:360};const scenarios=mortgageScenarios(input);expect(scenarios.find(item=>item.label==="0% rate")?.delta).toBe(0);for(const scenario of scenarios){const delta=Number.parseFloat(scenario.label);const rate=Math.max(0,input.annualRatePercent+delta);expect(scenario.value).toBe(runCalculator(loanPaymentCalculator,{...input,annualRatePercent:rate}).output.monthlyPayment)}});
  it("compound sensitivity reconciles every point with the certified engine",()=>{const input={principal:10000,annualRatePercent:5,years:10,compoundsPerYear:12};const points=compoundInterestSensitivity(input);for(const point of points){const expected=runCalculator(compoundInterestCalculator,{...input,annualRatePercent:point.input}).output.futureValue;expect(point.value).toBe(expected)}expect(points[0].value).toBeLessThan(points.at(-1)!.value)});
  it("break-even reverse solver reconciles target units with the deterministic engine",()=>{const input={fixedCosts:10000,variableCostPerUnit:30};const targetUnits=400;const pricePerUnit=breakEvenPriceForTargetUnits(targetUnits,input);const output=runCalculator(breakEvenCalculator,{...input,pricePerUnit}).output;expect(pricePerUnit).toBe(55);expect(output.breakEvenUnits).toBeCloseTo(targetUnits,2)});
  it("break-even scenarios reconcile with the deterministic engine",()=>{const input={fixedCosts:10000,pricePerUnit:50,variableCostPerUnit:30};const scenarios=breakEvenScenarios(input);expect(scenarios.find(item=>item.label==="0% price")?.delta).toBe(0);for(const scenario of scenarios){const percent=Number.parseFloat(scenario.label);const price=input.pricePerUnit*(1+percent/100);expect(scenario.value).toBe(runCalculator(breakEvenCalculator,{...input,pricePerUnit:price}).output.breakEvenUnits)}});
