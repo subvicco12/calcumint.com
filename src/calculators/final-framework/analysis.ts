@@ -1,6 +1,6 @@
 import { loanPaymentCalculator } from "../finance/loan-payment";
 import { sipCalculator, requiredMonthlySip } from "../finance/sip";
-import { runCalculator } from "../registry";
+import { runCalculator } from "../engine";
 
 export type Scenario={id:string;label:string;value:number;delta:number};
 export type SensitivityPoint={input:number;value:number};
