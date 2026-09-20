@@ -4,6 +4,7 @@ import {runCalculator} from "../engine";
 import {loanAnalysisCalculator,maxPrincipalForPayment} from "../finance/loan-analysis";
 import {loanPaymentCalculator} from "../finance/loan-payment";
 import {compoundInterestCalculator} from "../finance/compound-interest";
+import {sipCalculator} from "../finance/sip";
 import {breakEvenCalculator} from "../business/break-even";
 describe("final analysis engine",()=>{
  it("amortization schedule reaches zero",()=>{const rows=loanSchedule({principal:100000,annualRatePercent:6,termMonths:360});expect(rows.at(-1)?.values.balance).toBeCloseTo(0,2);expect(rows.at(-1)?.period).toBe(360)});
