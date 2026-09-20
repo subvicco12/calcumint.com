@@ -31,5 +31,6 @@ export function FinalResultPresentation({result,plan="free"}:{result:StructuredC
     {result.warnings?.map(warning=><p className="result-warning" key={warning}>{warning}</p>)}
     <div className="pro-analysis"><div className="result-panel-heading"><div><span className="eyebrow">CalcuMint Pro</span><h3>Advanced Analysis</h3></div><a className="text-link" href="/pricing">Compare plans</a></div><div className="locked-feature-grid">{locked.filter(item=>!hasCalculatorCapability(plan,item.capability)).map(item=><div className="locked-feature" key={item.capability}><span aria-hidden="true">🔒</span><strong>{item.title}</strong><small>{item.copy}</small></div>)}</div></div>
     {result.methodology&&<details className="result-methodology"><summary>Result methodology</summary><p>{result.methodology}</p></details>}
+    {result.sources&&result.sources.length>0&&<details className="result-methodology"><summary>Sources</summary><ul>{result.sources.map((source,index)=><li key={`${source.label}-${index}`}>{source.url?<a className="text-link" href={source.url} target="_blank" rel="noreferrer">{source.label}</a>:source.label}</li>)}</ul></details>}
   </section>
 }
