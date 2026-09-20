@@ -1,4 +1,5 @@
 import { loanPaymentCalculator } from "../finance/loan-payment";
+import { loanAnalysisCalculator } from "../finance/loan-analysis";
 import { sipCalculator, requiredMonthlySip } from "../finance/sip";
 import { runCalculator } from "../engine";
 
@@ -6,10 +7,8 @@ export type Scenario={id:string;label:string;value:number;delta:number};
 export type SensitivityPoint={input:number;value:number};
 
 export function loanSchedule(input:{principal:number;annualRatePercent:number;termMonths:number}){
- const payment=runCalculator(loanPaymentCalculator,input).output.monthlyPayment;
- const r=input.annualRatePercent/100/12; const exactPayment=r===0?input.principal/input.termMonths:input.principal*r/(1-(1+r)**-input.termMonths); let balance=input.principal; const rows=[];
- for(let month=1;month<=input.termMonths;month++){const interest=balance*r;const scheduledPayment=month===input.termMonths?balance+interest:exactPayment;const principal=Math.min(balance,scheduledPayment-interest);balance=Math.max(0,balance-principal);if(month===1||month%12===0||month===input.termMonths)rows.push({id:String(month),period:month,values:{payment:Number((month===input.termMonths?balance+interest:payment).toFixed(2)),principal:Number(principal.toFixed(2)),interest:Number(interest.toFixed(2)),balance:Number(balance.toFixed(2))}})}
- return rows;
+ const amortization=runCalculator(loanAnalysisCalculator,{...input,extraMonthlyPayment:0}).output.amortization;
+ return amortization.filter(row=>row.month===1||row.month%12===0||row.month===amortization.length).map(row=>({id:String(row.month),period:row.month,values:{payment:row.payment,principal:row.principal,interest:row.interest,balance:row.balance}}));
 }
 export function loanRateSensitivity(input:{principal:number;annualRatePercent:number;termMonths:number},spread=2):SensitivityPoint[]{
  return [-spread,-spread/2,0,spread/2,spread].map(d=>{const rate=Math.max(0,input.annualRatePercent+d);return {input:rate,value:runCalculator(loanPaymentCalculator,{...input,annualRatePercent:rate}).output.monthlyPayment}});
