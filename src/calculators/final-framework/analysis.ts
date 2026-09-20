@@ -37,7 +37,9 @@ export function compoundInterestScenarios(input:{principal:number;annualRatePerc
 }
 export function compoundPrincipalForTarget(targetFutureValue:number,input:{annualRatePercent:number;years:number;compoundsPerYear:number}){
  if(!Number.isFinite(targetFutureValue)||targetFutureValue<0)throw new Error("Target future value must be nonnegative");
- const factor=runCalculator(compoundInterestCalculator,{principal:1,...input}).output.futureValue;
+ const periodicRate=input.annualRatePercent/100/input.compoundsPerYear;
+ if(periodicRate<=-1)throw new Error("Target cannot be solved for these inputs");
+ const factor=Math.pow(1+periodicRate,input.compoundsPerYear*input.years);
  if(!Number.isFinite(factor)||factor<=0)throw new Error("Target cannot be solved for these inputs");
  return targetFutureValue/factor;
 }
