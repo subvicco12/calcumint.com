@@ -1,6 +1,8 @@
 import { loanSchedule } from "./analysis";
 import { runCalculator } from "../engine";
 import { sipCalculator } from "../finance/sip";
+import { loanAnalysisCalculator } from "../finance/loan-analysis";
+import { compoundInterestCalculator } from "../finance/compound-interest";
 import type { StructuredCalculationResult } from "./types";
 
 export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number},schedule?:StructuredCalculationResult["schedule"]):StructuredCalculationResult{
@@ -20,7 +22,8 @@ export function loanResult(input:{principal:number;annualRatePercent:number;term
     reverseTargets:["principal","monthlyPayment","termMonths"],
     scenarioVariables:["annualRatePercent","termMonths","extraMonthlyPayment"],
     sensitivityVariables:["annualRatePercent","termMonths"],
-    methodology:"The presentation is derived from the same certified deterministic loan result used for the headline payment."
+    methodology:"The presentation is derived from the same certified deterministic loan result used for the headline payment.",
+    sources:loanAnalysisCalculator.sources
   };
 }
 
@@ -41,7 +44,8 @@ export function sipResult(input:{monthlyContribution:number;annualReturnPercent:
     scenarioVariables:["monthlyContribution","annualReturnPercent","termMonths"],
     sensitivityVariables:["annualReturnPercent","termMonths"],
     warnings:["Modeled returns are assumptions, not guaranteed investment outcomes."],
-    methodology:"The result uses the certified SIP engine. Presentation data never recalculates the headline value."
+    methodology:"The result uses the certified SIP engine. Presentation data never recalculates the headline value.",
+    sources:sipCalculator.sources
   };
 }
 
@@ -60,6 +64,7 @@ export function compoundInterestResult(input:{principal:number;years:number},out
     reverseTargets:["principal","annualRatePercent","years"],
     scenarioVariables:["annualRatePercent","years","compoundsPerYear"],
     sensitivityVariables:["annualRatePercent","years"],
-    methodology:"The result is adapted directly from the certified compound-interest engine."
+    methodology:"The result is adapted directly from the certified compound-interest engine.",
+    sources:compoundInterestCalculator.sources
   };
 }
