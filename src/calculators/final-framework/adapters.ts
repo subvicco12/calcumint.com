@@ -3,7 +3,7 @@ import { runCalculator } from "../engine";
 import { sipCalculator } from "../finance/sip";
 import type { StructuredCalculationResult } from "./types";
 
-export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number}):StructuredCalculationResult{
+export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number},schedule?:StructuredCalculationResult["schedule"]):StructuredCalculationResult{
   return {
     primaryResult:{id:"monthly-payment",label:"Monthly payment",value:output.monthlyPayment},
     metrics:[
@@ -16,7 +16,7 @@ export function loanResult(input:{principal:number;annualRatePercent:number;term
       {id:"principal",label:"Principal",value:input.principal},
       {id:"interest",label:"Interest",value:output.totalInterest}
     ],
-    schedule:loanSchedule({principal:input.principal,annualRatePercent:input.annualRatePercent,termMonths:input.termMonths}),
+    schedule:schedule??loanSchedule({principal:input.principal,annualRatePercent:input.annualRatePercent,termMonths:input.termMonths}),
     reverseTargets:["principal","monthlyPayment","termMonths"],
     scenarioVariables:["annualRatePercent","termMonths","extraMonthlyPayment"],
     sensitivityVariables:["annualRatePercent","termMonths"],
