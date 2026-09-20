@@ -31,6 +31,16 @@ export function sipScenarios(input:{monthlyContribution:number;annualReturnPerce
 export function compoundInterestSensitivity(input:{principal:number;annualRatePercent:number;years:number;compoundsPerYear:number},spread=2):SensitivityPoint[]{
  return [-spread,-spread/2,0,spread/2,spread].map(d=>{const rate=Math.max(-99,input.annualRatePercent+d);return{input:rate,value:runCalculator(compoundInterestCalculator,{...input,annualRatePercent:rate}).output.futureValue}})
 }
+export function compoundInterestScenarios(input:{principal:number;annualRatePercent:number;years:number;compoundsPerYear:number}):Scenario[]{
+ const base=runCalculator(compoundInterestCalculator,input).output.futureValue;
+ return [-1,0,1].map((delta,index)=>{const rate=Math.max(-99,input.annualRatePercent+delta);const value=runCalculator(compoundInterestCalculator,{...input,annualRatePercent:rate}).output.futureValue;return{id:String(index),label:`${delta>0?"+":""}${delta}% rate`,value,delta:value-base}});
+}
+export function compoundPrincipalForTarget(targetFutureValue:number,input:{annualRatePercent:number;years:number;compoundsPerYear:number}){
+ if(!Number.isFinite(targetFutureValue)||targetFutureValue<0)throw new Error("Target future value must be nonnegative");
+ const factor=runCalculator(compoundInterestCalculator,{principal:1,...input}).output.futureValue;
+ if(!Number.isFinite(factor)||factor<=0)throw new Error("Target cannot be solved for these inputs");
+ return targetFutureValue/factor;
+}
 
 export function breakEvenScenarios(input:{fixedCosts:number;pricePerUnit:number;variableCostPerUnit:number}):Scenario[]{
  const base=runCalculator(breakEvenCalculator,input).output.breakEvenUnits;
