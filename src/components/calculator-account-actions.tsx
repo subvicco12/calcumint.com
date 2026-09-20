@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
-import type { PlanId } from "@/lib/billing/plans";
-import {getPlanEntitlements} from "@/lib/entitlements";
+import {getPlanEntitlements,type CalcuMintPlan} from "@/lib/entitlements";
+import {useCalculatorPlan} from "@/components/use-calculator-plan";
 
 type Props = {
   calculatorSlug: string;
@@ -37,7 +37,7 @@ function toCsv(input: Record<string, unknown>, output: Record<string, unknown>) 
 export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, input, output }: Props) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
-  const [plan, setPlan] = useState<PlanId>("free");
+  const plan:CalcuMintPlan=useCalculatorPlan();
   const [status, setStatus] = useState("");
   const [favoriteCount,setFavoriteCount]=useState(0);const [historyCount,setHistoryCount]=useState(0);
 
@@ -52,15 +52,14 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
       setSignedIn(Boolean(user));
       if (!user) return;
 
-      const [{ data: favoriteData }, { data: profileData },favoriteCountResult,historyCountResult] = await Promise.all([
+      const [{ data: favoriteData },favoriteCountResult,historyCountResult] = await Promise.all([
         supabase.from("favorites").select("id").eq("user_id", user.id).eq("calculator_slug", calculatorSlug).maybeSingle(),
-        supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle(),
         supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id),
         supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id)
       ]);
       if (!active) return;
       setFavorite(Boolean(favoriteData));
-      setPlan(profileData?.plan === "pro" || profileData?.plan === "business" ? profileData.plan : "free");setFavoriteCount(favoriteCountResult.count??0);setHistoryCount(historyCountResult.count??0);
+      setFavoriteCount(favoriteCountResult.count??0);setHistoryCount(historyCountResult.count??0);
     })();
 
     return () => { active = false; };
