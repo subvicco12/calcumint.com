@@ -13,7 +13,7 @@ describe("final result adapters",()=>{
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(Number(result.primaryResult.value),2);
     expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),2);
   });
-  it("reconciles compound-interest composition to future value",()=>{
+  it("keeps SIP annual checkpoints unique and includes the exact terminal month",()=>{\n    const result=sipResult({monthlyContribution:1000,annualReturnPercent:8,termMonths:125,contributionTiming:"beginning"},{futureValue:1,investedAmount:1,estimatedGain:0});\n    const months=result.series![0].points.map(point=>point.x);\n    expect(months.at(-1)).toBe(125);\n    expect(new Set(months).size).toBe(months.length);\n    expect(months.filter(month=>month===125)).toHaveLength(1);\n  });\n  it("reconciles compound-interest composition to future value",()=>{
     const result=compoundInterestResult({principal:10000,years:10},{futureValue:16470.09,totalInterest:6470.09});
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(Number(result.primaryResult.value),2);
   });
