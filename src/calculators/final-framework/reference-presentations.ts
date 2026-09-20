@@ -34,7 +34,7 @@ export const referencePresentations = {
     level: "analytical",
     freeVisualization: "composition",
     supportedVisualizations: ["composition", "growth-line", "comparison-bars", "sensitivity"],
-    supportsSchedule: true,
+    supportsSchedule: false,
     supportsGoalSolver: true,
     supportsScenarios: true,
     supportsSensitivity: true
@@ -46,7 +46,7 @@ export const referencePresentations = {
     level: "decision",
     freeVisualization: "composition",
     supportedVisualizations: ["composition", "growth-line", "comparison-bars", "sensitivity"],
-    supportsSchedule: true,
+    supportsSchedule: false,
     supportsGoalSolver: true,
     supportsScenarios: true,
     supportsSensitivity: true,
