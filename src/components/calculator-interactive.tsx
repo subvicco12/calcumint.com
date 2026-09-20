@@ -14,7 +14,6 @@ import { roiCalculator } from "@/calculators/finance/roi";
 import { inflationCalculator } from "@/calculators/finance/inflation";
 import { rateConversionCalculator } from "@/calculators/finance/rate-conversion";
 import { loanAnalysisCalculator,maxPrincipalForPayment } from "@/calculators/finance/loan-analysis";
-import { compareLoanRateSensitivity } from "@/calculators/finance/loan-scenarios";
 import { netWorthCalculator } from "@/calculators/finance/net-worth";
 import { termDepositCalculator } from "@/calculators/finance/term-deposit";
 import { recurringDepositCalculator } from "@/calculators/finance/recurring-deposit";
