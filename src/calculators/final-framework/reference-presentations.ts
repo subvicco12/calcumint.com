@@ -21,7 +21,7 @@ export const referencePresentations = {
     level: "decision",
     freeVisualization: "growth-line",
     supportedVisualizations: ["growth-line", "composition", "comparison-bars", "sensitivity"],
-    supportsSchedule: true,
+    supportsSchedule: false,
     supportsGoalSolver: true,
     supportsScenarios: true,
     supportsSensitivity: true,
