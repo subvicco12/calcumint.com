@@ -1,6 +1,7 @@
 import { loanPaymentCalculator } from "../finance/loan-payment";
 import { loanAnalysisCalculator } from "../finance/loan-analysis";
 import { sipCalculator, requiredMonthlySip } from "../finance/sip";
+import { compoundInterestCalculator } from "../finance/compound-interest";
 import { runCalculator } from "../engine";
 
 export type Scenario={id:string;label:string;value:number;delta:number};
@@ -20,4 +21,8 @@ export function loanScenarios(input:{principal:number;annualRatePercent:number;t
 export function sipGoal(target:number,input:{annualReturnPercent:number;termMonths:number;contributionTiming:"beginning"|"end"}){return requiredMonthlySip(target,input.annualReturnPercent,input.termMonths,input.contributionTiming)}
 export function sipSensitivity(input:{monthlyContribution:number;annualReturnPercent:number;termMonths:number;contributionTiming:"beginning"|"end"}):SensitivityPoint[]{
  return [-2,-1,0,1,2].map(d=>{const rate=Math.max(-99,input.annualReturnPercent+d);return{input:rate,value:runCalculator(sipCalculator,{...input,annualReturnPercent:rate}).output.futureValue}})
+}
+
+export function compoundInterestSensitivity(input:{principal:number;annualRatePercent:number;years:number;compoundsPerYear:number},spread=2):SensitivityPoint[]{
+ return [-spread,-spread/2,0,spread/2,spread].map(d=>{const rate=Math.max(-99,input.annualRatePercent+d);return{input:rate,value:runCalculator(compoundInterestCalculator,{...input,annualRatePercent:rate}).output.futureValue}})
 }
