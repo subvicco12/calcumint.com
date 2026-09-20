@@ -16,7 +16,7 @@ export function loanResult(input:{principal:number;annualRatePercent:number;term
       {id:"principal",label:"Principal",value:input.principal},
       {id:"interest",label:"Interest",value:output.totalInterest}
     ],
-    schedule:loanSchedule({principal:input.principal,annualRatePercent:(input as {annualRatePercent?:number}).annualRatePercent??0,termMonths:input.termMonths}),
+    schedule:loanSchedule({principal:input.principal,annualRatePercent:input.annualRatePercent,termMonths:input.termMonths}),
     reverseTargets:["principal","monthlyPayment","termMonths"],
     scenarioVariables:["annualRatePercent","termMonths","extraMonthlyPayment"],
     sensitivityVariables:["annualRatePercent","termMonths"],
