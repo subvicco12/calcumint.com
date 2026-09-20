@@ -11,6 +11,9 @@ function display(value:number|string,unit?:string){
 
 export function FinalResultPresentation({result,plan="free"}:{result:StructuredCalculationResult;plan?:PlanTier}){
   const metrics=[result.primaryResult,...(result.metrics??[])];
+  const secondaryMetrics=metrics.slice(1);
+  const visibleMetrics=secondaryMetrics.slice(0,4);
+  const additionalMetrics=secondaryMetrics.slice(4);
   const locked:readonly {capability:CalculatorCapability;title:string;copy:string}[]=[
     {capability:"advancedVisualization",title:"Advanced charts",copy:"Explore the result across time and assumptions."},
     {capability:"scenarioComparison",title:"Scenario comparison",copy:"Compare multiple assumptions side by side."},
@@ -22,7 +25,8 @@ export function FinalResultPresentation({result,plan="free"}:{result:StructuredC
       <span>{result.primaryResult.label}</span>
       <strong>{display(result.primaryResult.value,result.primaryResult.unit)}</strong>
     </div>
-    {metrics.length>1&&<div className="metric-grid">{metrics.slice(1,5).map(metric=><div className="metric-card" key={metric.id}><span>{metric.label}</span><strong>{display(metric.value,metric.unit)}</strong></div>)}</div>}
+    {visibleMetrics.length>0&&<div className="metric-grid">{visibleMetrics.map(metric=><div className="metric-card" key={metric.id}><span>{metric.label}</span><strong>{display(metric.value,metric.unit)}</strong></div>)}</div>}
+    {additionalMetrics.length>0&&<div className="metric-grid">{additionalMetrics.map(metric=><div className="metric-card" key={metric.id}><span>{metric.label}</span><strong>{display(metric.value,metric.unit)}</strong></div>)}</div>}
     {result.composition&&result.composition.length>0&&<div className="result-panel"><div className="result-panel-heading"><h3>Overview</h3><span>Included with Free</span></div><div className="composition-list">{result.composition.map(item=><div key={item.id}><div><span>{item.label}</span><strong>{display(item.value,item.unit)}</strong></div><progress max={Math.max(...result.composition!.map(x=>Math.max(x.value,0)),1)} value={Math.max(item.value,0)} aria-label={item.label}/></div>)}</div></div>}
     {result.ranges&&result.ranges.length>0&&<div className="result-panel"><div className="result-panel-heading"><h3>Reference range</h3><span>Included with Free</span></div>{result.ranges.map(range=>{const value=typeof result.primaryResult.value==="number"?result.primaryResult.value:0;const ceiling=Math.max(range.max??value,value,1)*1.25;return <div className="range-indicator" key={range.id}><progress max={ceiling} value={Math.max(value,0)} aria-label={range.label}/><div><span>{range.min??"—"}–{range.max??"—"}</span><strong>{range.classification??range.label}</strong></div></div>})}</div>}
     {result.series&&result.series.length>0&&<div className="result-panel"><div className="result-panel-heading"><h3>Trend</h3><span>Included with Free</span></div><div className="mini-trend" role="img" aria-label="Calculation trend summary">{result.series[0].points.slice(-6).map(point=><div key={String(point.x)}><span>{String(point.x)}</span><strong>{display(point.y,result.series![0].unit)}</strong></div>)}</div></div>}
