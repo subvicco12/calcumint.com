@@ -70,6 +70,15 @@ describe("Final Calculator Framework", () => {
     }
   });
 
+  it("keeps declared analysis capabilities represented by matching visualization semantics", () => {
+    for (const presentation of Object.values(referencePresentations)) {
+      if (presentation.supportsScenarios) expect(presentation.supportedVisualizations).toContain("comparison-bars");
+      if (presentation.supportsSensitivity) expect(presentation.supportedVisualizations).toContain("sensitivity");
+      if (!presentation.supportsScenarios) expect(presentation.supportedVisualizations).not.toContain("comparison-bars");
+      if (!presentation.supportsSensitivity) expect(presentation.supportedVisualizations).not.toContain("sensitivity");
+    }
+  });
+
   it("keeps decision references distinct from analytical references", () => {
     expect(referencePresentations.loanEmi.level).toBe("decision");
     expect(referencePresentations.sip.level).toBe("decision");
