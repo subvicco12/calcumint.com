@@ -40,3 +40,11 @@ export function breakEvenPriceForTargetUnits(targetUnits:number,input:{fixedCost
  if(!Number.isFinite(targetUnits)||targetUnits<=0)throw new Error("Target units must be greater than zero");
  return input.variableCostPerUnit+input.fixedCosts/targetUnits;
 }
+
+export function mortgageRateSensitivity(input:{principal:number;annualRatePercent:number;termMonths:number},spread=2):SensitivityPoint[]{
+ return [-spread,-spread/2,0,spread/2,spread].map(delta=>{const rate=Math.max(0,input.annualRatePercent+delta);return{input:rate,value:runCalculator(loanPaymentCalculator,{...input,annualRatePercent:rate}).output.monthlyPayment}});
+}
+export function mortgageScenarios(input:{principal:number;annualRatePercent:number;termMonths:number}):Scenario[]{
+ const base=runCalculator(loanPaymentCalculator,input).output.monthlyPayment;
+ return [-1,0,1].map((delta,index)=>{const rate=Math.max(0,input.annualRatePercent+delta);const value=runCalculator(loanPaymentCalculator,{...input,annualRatePercent:rate}).output.monthlyPayment;return{id:String(index),label:`${delta>0?"+":""}${delta}% rate`,value,delta:value-base}});
+}
