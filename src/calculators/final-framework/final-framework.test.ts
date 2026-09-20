@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { capabilitiesFor, hasCalculatorCapability, minimumPlanFor } from "./entitlements";
 import { referencePresentations } from "./reference-presentations";
+import { calculatorRegistry } from "../registry";
+import { getPublicCalculatorContent } from "../public-content";
 
 describe("Final Calculator Framework", () => {
   it("keeps mathematical correctness free", () => {
@@ -86,6 +88,13 @@ describe("Final Calculator Framework", () => {
     expect(referencePresentations.breakEven.level).toBe("decision");
     expect(referencePresentations.compoundInterest.level).toBe("analytical");
     expect(referencePresentations.bmi.level).toBe("analytical");
+  });
+
+  it("keeps draft BMI and Break-even references outside public content", () => {
+    expect(calculatorRegistry.getBySlug("bmi-calculator")?.reviewStatus).toBe("draft");
+    expect(calculatorRegistry.getBySlug("break-even-calculator")?.reviewStatus).toBe("draft");
+    expect(getPublicCalculatorContent("bmi-calculator")).toBeUndefined();
+    expect(getPublicCalculatorContent("break-even-calculator")).toBeUndefined();
   });
 
   it("keeps capability inheritance monotonic", () => {
