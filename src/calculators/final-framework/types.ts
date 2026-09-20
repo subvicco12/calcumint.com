@@ -1,4 +1,6 @@
-export type PlanTier = "free" | "pro" | "business";
+import type { CalcuMintPlan } from "@/lib/entitlements";
+
+export type PlanTier = CalcuMintPlan;
 
 export type CalculatorDomain =
   | "finance-banking" | "loans-credit" | "investing-wealth" | "retirement"
