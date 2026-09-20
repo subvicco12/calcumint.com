@@ -7,8 +7,8 @@ export type SensitivityPoint={input:number;value:number};
 
 export function loanSchedule(input:{principal:number;annualRatePercent:number;termMonths:number}){
  const payment=runCalculator(loanPaymentCalculator,input).output.monthlyPayment;
- const r=input.annualRatePercent/100/12; let balance=input.principal; const rows=[];
- for(let month=1;month<=input.termMonths;month++){const interest=balance*r;const principal=Math.min(balance,payment-interest);balance=Math.max(0,balance-principal);if(month===1||month%12===0||month===input.termMonths)rows.push({id:String(month),period:month,values:{payment,principal:Number(principal.toFixed(2)),interest:Number(interest.toFixed(2)),balance:Number(balance.toFixed(2))}})}
+ const r=input.annualRatePercent/100/12; const exactPayment=r===0?input.principal/input.termMonths:input.principal*r/(1-(1+r)**-input.termMonths); let balance=input.principal; const rows=[];
+ for(let month=1;month<=input.termMonths;month++){const interest=balance*r;const scheduledPayment=month===input.termMonths?balance+interest:exactPayment;const principal=Math.min(balance,scheduledPayment-interest);balance=Math.max(0,balance-principal);if(month===1||month%12===0||month===input.termMonths)rows.push({id:String(month),period:month,values:{payment:Number((month===input.termMonths?balance+interest:payment).toFixed(2)),principal:Number(principal.toFixed(2)),interest:Number(interest.toFixed(2)),balance:Number(balance.toFixed(2))}})}
  return rows;
 }
 export function loanRateSensitivity(input:{principal:number;annualRatePercent:number;termMonths:number},spread=2):SensitivityPoint[]{
