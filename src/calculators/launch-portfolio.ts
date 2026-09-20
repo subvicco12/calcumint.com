@@ -148,7 +148,7 @@ if (base.length < 100) throw new Error(`B11 launch portfolio requires at least 1
 export const launchSpecs: readonly LaunchSpec[] = base;
 
 export function launchDefinition(spec: LaunchSpec): CalculatorDefinition<Record<string,number>,{result:number}> {
-  const shape: Record<string,z.ZodTypeAny> = {};
+  const shape: Record<string,z.ZodType<number>> = {};
   for (const field of spec.fields) { let schema=z.number().finite(); if(field.min!==undefined) schema=schema.min(field.min); if(field.integer) schema=schema.int(); if(field.disallow?.length) schema=schema.refine(value=>!field.disallow!.includes(value),{message:`${field.label} uses a disallowed value`}); shape[field.key]=schema; }
   return {
     id:`launch-${spec.slug}`, slug:spec.slug, title:spec.title, category:spec.category, version:1, riskClass:"standard", reviewStatus:"certified",
