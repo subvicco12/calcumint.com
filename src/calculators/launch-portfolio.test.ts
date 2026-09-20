@@ -1,5 +1,5 @@
 import { describe,expect,it } from "vitest";
-import { launchDefinitions,launchSpecs } from "./launch-portfolio";
+import { getLaunchSpec,launchDefinitions,launchSpecs } from "./launch-portfolio";
 import { runCalculator } from "./engine";
 import { listPublicCalculators } from "./public-content";
 describe("B11 launch portfolio",()=>{
@@ -51,5 +51,6 @@ describe("B11 launch portfolio",()=>{
   expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="polygon-area-calculator")!,{sides:2,side:4})).toThrow();
   expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="polygon-area-calculator")!,{sides:6.5,side:4})).toThrow();
  });
+ it("includes the fourth catalog foundation math expansion with validation",()=>{const cases=[["fraction-calculator",{numerator:3,denominator:4},0.75],["decimal-to-fraction-calculator",{decimal:0.75,precision:2},0.75],["factor-calculator",{number:12},2]] as const;for(const [slug,input,expected] of cases){const definition=launchDefinitions.find(x=>x.slug===slug)!;expect(definition.reviewStatus).toBe("certified");expect(runCalculator(definition,input).output.result).toBeCloseTo(expected,10)}expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="fraction-calculator")!,{numerator:3,denominator:0})).toThrow();expect(getLaunchSpec("decimal-to-fraction-calculator")?.formatResult?.({decimal:0.75,precision:2},0.75)).toBe("3/4");expect(getLaunchSpec("decimal-to-fraction-calculator")?.formatResult?.({decimal:-1.25,precision:2},-1.25)).toBe("-5/4");expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="decimal-to-fraction-calculator")!,{decimal:0.75,precision:1.5})).toThrow();expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="decimal-to-fraction-calculator")!,{decimal:0.75,precision:309})).toThrow();expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="factor-calculator")!,{number:1})).toThrow();expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="factor-calculator")!,{number:12.5})).toThrow();expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="factor-calculator")!,{number:1_000_000_001})).toThrow();});
  it("publishes 100+ SEO-routable calculator pages",()=>{const pages=listPublicCalculators();expect(pages.length).toBeGreaterThanOrEqual(108);for(const page of pages){expect(page.intro.length).toBeGreaterThan(80);expect(page.faq.length).toBeGreaterThanOrEqual(2);expect(page.assumptions.length).toBeGreaterThanOrEqual(2);expect(page.keywords.length).toBeGreaterThanOrEqual(3)}});
 });
