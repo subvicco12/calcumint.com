@@ -37,5 +37,19 @@ describe("B11 launch portfolio",()=>{
   const rounding=launchDefinitions.find(x=>x.slug==="rounding-calculator")!;
   expect(()=>runCalculator(rounding,{value:12.34,decimals:1.5})).toThrow();
  });
+ it("includes the third catalog foundation math and geometry expansion with validation",()=>{
+  const cases=[
+   ["fraction-to-decimal-calculator",{numerator:3,denominator:4},0.75],
+   ["lcm-calculator",{a:12,b:18},36],
+   ["gcf-calculator",{a:48,b:18},6],
+   ["polygon-area-calculator",{sides:6,side:4},41.569219381653056]
+  ] as const;
+  for(const [slug,input,expected] of cases){const definition=launchDefinitions.find(x=>x.slug===slug)!;expect(definition.reviewStatus).toBe("certified");expect(runCalculator(definition,input).output.result).toBeCloseTo(expected,10)}
+  expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="fraction-to-decimal-calculator")!,{numerator:3,denominator:0})).toThrow();
+  expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="lcm-calculator")!,{a:12.5,b:18})).toThrow();
+  expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="gcf-calculator")!,{a:0,b:18})).toThrow();
+  expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="polygon-area-calculator")!,{sides:2,side:4})).toThrow();
+  expect(()=>runCalculator(launchDefinitions.find(x=>x.slug==="polygon-area-calculator")!,{sides:6.5,side:4})).toThrow();
+ });
  it("publishes 100+ SEO-routable calculator pages",()=>{const pages=listPublicCalculators();expect(pages.length).toBeGreaterThanOrEqual(108);for(const page of pages){expect(page.intro.length).toBeGreaterThan(80);expect(page.faq.length).toBeGreaterThanOrEqual(2);expect(page.assumptions.length).toBeGreaterThanOrEqual(2);expect(page.keywords.length).toBeGreaterThanOrEqual(3)}});
 });
