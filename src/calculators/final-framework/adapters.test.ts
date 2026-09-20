@@ -14,6 +14,7 @@ describe("final result adapters",()=>{
     const result=loanResult({principal:100000,annualRatePercent:6,termMonths:360},{monthlyPayment:599.55,totalPayment:215838,totalInterest:115838});
     expect(result.primaryResult.value).toBe(599.55);
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBe(215838);
+    expect(result.sources).toBeTruthy();
   });
   it("reconciles canonical EMI extra-payment output with injected certified schedule",()=>{
     const input={principal:250000,annualRatePercent:7,termMonths:360,extraMonthlyPayment:300};
@@ -34,6 +35,7 @@ describe("final result adapters",()=>{
     const result=sipResult({monthlyContribution:10000,annualReturnPercent:10,termMonths:120,contributionTiming:"beginning"},{futureValue:2065520.2,investedAmount:1200000,estimatedGain:865520.2});
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(Number(result.primaryResult.value),2);
     expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),2);
+    expect(result.sources).toEqual(sipCalculator.sources);
   });
   it("keeps SIP annual checkpoints unique and includes the exact terminal month",()=>{
     const input={monthlyContribution:1000,annualReturnPercent:8,termMonths:125,contributionTiming:"beginning" as const};
