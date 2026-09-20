@@ -90,6 +90,13 @@ describe("Final Calculator Framework", () => {
     expect(referencePresentations.bmi.level).toBe("analytical");
   });
 
+  it("publishes the certified mortgage reference on its canonical loans route", () => {
+    const mortgage = calculatorRegistry.getBySlug("mortgage-payment");
+    expect(mortgage?.title).toBe("Mortgage Calculator");
+    expect(mortgage?.reviewStatus).toBe("certified");
+    expect(getPublicCalculatorContent("mortgage-payment")?.category).toBe("loans-mortgages");
+  });
+
   it("keeps draft BMI and Break-even references outside public content", () => {
     expect(calculatorRegistry.getBySlug("bmi-calculator")?.reviewStatus).toBe("draft");
     expect(calculatorRegistry.getBySlug("break-even-calculator")?.reviewStatus).toBe("draft");
