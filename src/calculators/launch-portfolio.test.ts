@@ -15,5 +15,14 @@ describe("B11 launch portfolio",()=>{
   ] as const;
   for(const [slug,input,expected] of cases){const definition=launchDefinitions.find(x=>x.slug===slug)!;expect(runCalculator(definition,input).output.result).toBeCloseTo(expected,10)}
  });
+ it("includes the first catalog foundation math expansion with verified vectors",()=>{
+  const cases=[
+   ["percentage-increase-calculator",{value:100,percent:20},120],
+   ["percentage-decrease-calculator",{value:100,percent:20},80],
+   ["percent-error-calculator",{observed:98,actual:100},2],
+   ["pythagorean-theorem-calculator",{a:3,b:4},5]
+  ] as const;
+  for(const [slug,input,expected] of cases){const definition=launchDefinitions.find(x=>x.slug===slug)!;expect(definition.reviewStatus).toBe("certified");expect(runCalculator(definition,input).output.result).toBeCloseTo(expected,10)}
+ });
  it("publishes 100+ SEO-routable calculator pages",()=>{const pages=listPublicCalculators();expect(pages.length).toBeGreaterThanOrEqual(108);for(const page of pages){expect(page.intro.length).toBeGreaterThan(80);expect(page.faq.length).toBeGreaterThanOrEqual(2);expect(page.assumptions.length).toBeGreaterThanOrEqual(2);expect(page.keywords.length).toBeGreaterThanOrEqual(3)}});
 });
