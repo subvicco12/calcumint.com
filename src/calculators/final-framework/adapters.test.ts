@@ -3,12 +3,25 @@ import { compoundInterestResult,loanResult,sipResult } from "./adapters";
 import { bmiResult,breakEvenResult,mortgageResult } from "./reference-adapters";
 import { runCalculator } from "../engine";
 import { sipCalculator } from "../finance/sip";
+import { loanAnalysisCalculator } from "../finance/loan-analysis";
 
 describe("final result adapters",()=>{
   it("reconciles loan headline and composition",()=>{
     const result=loanResult({principal:100000,annualRatePercent:6,termMonths:360},{monthlyPayment:599.55,totalPayment:215838,totalInterest:115838});
     expect(result.primaryResult.value).toBe(599.55);
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBe(215838);
+  });
+  it("reconciles canonical EMI extra-payment output with injected certified schedule",()=>{
+    const input={principal:250000,annualRatePercent:7,termMonths:360,extraMonthlyPayment:300};
+    const output=runCalculator(loanAnalysisCalculator,input).output;
+    const schedule=output.amortization.filter(row=>row.month===1||row.month%12===0||row.month===output.amortization.length).map(row=>({id:String(row.month),period:row.month,values:{payment:row.payment,principal:row.principal,interest:row.interest,balance:row.balance}}));
+    const result=loanResult(input,output,schedule);
+    expect(result.primaryResult.value).toBe(output.monthlyPayment);
+    expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
+    expect(result.metrics!.find(metric=>metric.id==="total")!.value).toBe(output.totalPayment);
+    expect(result.schedule).toEqual(schedule);
+    expect(result.schedule!.at(-1)!.values.balance).toBe(0);
+    expect(result.schedule!.at(-1)!.period).toBe(output.payoffMonths);
   });
   it("reconciles SIP composition to final corpus",()=>{
     const result=sipResult({monthlyContribution:10000,annualReturnPercent:10,termMonths:120,contributionTiming:"beginning"},{futureValue:2065520.2,investedAmount:1200000,estimatedGain:865520.2});
