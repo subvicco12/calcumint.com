@@ -4,7 +4,7 @@ import { bmiResult,breakEvenResult,mortgageResult } from "./reference-adapters";
 
 describe("final result adapters",()=>{
   it("reconciles loan headline and composition",()=>{
-    const result=loanResult({principal:100000,termMonths:360},{monthlyPayment:599.55,totalPayment:215838,totalInterest:115838});
+    const result=loanResult({principal:100000,annualRatePercent:6,termMonths:360},{monthlyPayment:599.55,totalPayment:215838,totalInterest:115838});
     expect(result.primaryResult.value).toBe(599.55);
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBe(215838);
   });
