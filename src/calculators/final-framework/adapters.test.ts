@@ -4,6 +4,10 @@ import { bmiResult,breakEvenResult,mortgageResult } from "./reference-adapters";
 import { runCalculator } from "../engine";
 import { sipCalculator } from "../finance/sip";
 import { loanAnalysisCalculator } from "../finance/loan-analysis";
+import { compoundInterestCalculator } from "../finance/compound-interest";
+import { loanPaymentCalculator } from "../finance/loan-payment";
+import { bmiCalculator } from "../health/bmi";
+import { breakEvenCalculator } from "../business/break-even";
 
 describe("final result adapters",()=>{
   it("reconciles loan headline and composition",()=>{
@@ -39,14 +43,35 @@ describe("final result adapters",()=>{
     expect(result.series![0].points.at(-1)!.y).toBeCloseTo(output.futureValue,8);
     expect(result.series![0].points.at(-1)!.y).toBeCloseTo(Number(result.primaryResult.value),8);
   });
-  it("reconciles compound-interest composition to future value",()=>{
-    const result=compoundInterestResult({principal:10000,years:10},{futureValue:16470.09,totalInterest:6470.09});
-    expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(Number(result.primaryResult.value),2);
+  it("reconciles compound-interest presentation to the certified engine",()=>{
+    const input={principal:10000,annualRatePercent:5,years:10,compoundsPerYear:12};
+    const output=runCalculator(compoundInterestCalculator,input).output;
+    const result=compoundInterestResult(input,output);
+    expect(result.primaryResult.value).toBe(output.futureValue);
+    expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
+    expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(output.futureValue,2);
   });
-  it("covers the remaining reference adapters",()=>{
-    expect(bmiResult({bmi:22.9,classification:"Within reference range"}).primaryResult.value).toBe(22.9);
-    expect(breakEvenResult({breakEvenUnits:500,breakEvenRevenue:25000,contributionMarginPerUnit:20,contributionMarginPercent:40}).primaryResult.value).toBe(500);
-    const mortgage=mortgageResult({principal:320000,termMonths:360},{monthlyPayment:2022.62,totalPayment:728143.2,totalInterest:408143.2});
-    expect(mortgage.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(728143.2,2);
+  it("reconciles mortgage reference presentation to the certified loan engine",()=>{
+    const input={principal:320000,annualRatePercent:6.5,termMonths:360};
+    const output=runCalculator(loanPaymentCalculator,input).output;
+    const result=mortgageResult(input,output);
+    expect(result.primaryResult.value).toBe(output.monthlyPayment);
+    expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
+    expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(output.totalPayment,2);
+  });
+  it("reconciles BMI draft reference presentation without publishing it",()=>{
+    const output=runCalculator(bmiCalculator,{weightKg:70,heightCm:175}).output;
+    const result=bmiResult(output);
+    expect(result.primaryResult.value).toBe(output.bmi);
+    expect(result.metrics!.find(metric=>metric.id==="classification")!.value).toBe(output.classification);
+    expect(bmiCalculator.reviewStatus).toBe("draft");
+  });
+  it("reconciles break-even draft reference presentation without publishing it",()=>{
+    const output=runCalculator(breakEvenCalculator,{fixedCosts:10000,pricePerUnit:50,variableCostPerUnit:30}).output;
+    const result=breakEvenResult(output);
+    expect(result.primaryResult.value).toBe(output.breakEvenUnits);
+    expect(result.metrics!.find(metric=>metric.id==="revenue")!.value).toBe(output.breakEvenRevenue);
+    expect(result.metrics!.find(metric=>metric.id==="margin")!.value).toBe(output.contributionMarginPerUnit);
+    expect(breakEvenCalculator.reviewStatus).toBe("draft");
   });
 });
