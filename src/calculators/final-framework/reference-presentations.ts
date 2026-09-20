@@ -72,7 +72,7 @@ export const referencePresentations = {
     level: "decision",
     freeVisualization: "break-even",
     supportedVisualizations: ["break-even", "comparison-bars", "sensitivity"],
-    supportsSchedule: true,
+    supportsSchedule: false,
     supportsGoalSolver: true,
     supportsScenarios: true,
     supportsSensitivity: true
