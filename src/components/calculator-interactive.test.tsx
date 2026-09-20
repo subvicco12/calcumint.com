@@ -11,6 +11,16 @@ import {CalculatorInteractive} from "./calculator-interactive";
 afterEach(cleanup);
 
 describe("calculator interactive entitlement boundary",()=>{
+  it("does not expose paid Compound Interest analysis when a Free user selects Advanced",()=>{
+    render(<CalculatorInteractive slug="compound-interest-calculator"/>);
+    fireEvent.click(screen.getByRole("button",{name:"Advanced"}));
+
+    expect(screen.queryByText("Target future value")).toBeNull();
+    expect(screen.queryByLabelText("Goal Solver")).toBeNull();
+    expect(screen.queryByLabelText("Scenario comparison")).toBeNull();
+    expect(screen.queryByLabelText("Sensitivity analysis")).toBeNull();
+  });
+
   it("does not expose paid SIP analysis when a Free user selects Advanced",()=>{
     render(<CalculatorInteractive slug="sip-calculator"/>);
     fireEvent.click(screen.getByRole("button",{name:"Advanced"}));
