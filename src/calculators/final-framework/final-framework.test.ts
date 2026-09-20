@@ -47,6 +47,32 @@ describe("Final Calculator Framework", () => {
     }
   });
 
+
+  it("keeps reference feature declarations semantically bounded", () => {
+    const bmi = referencePresentations.bmi;
+    expect(bmi.supportedVisualizations).toEqual(["range-indicator"]);
+    expect(bmi.supportsSchedule).toBe(false);
+    expect(bmi.supportsGoalSolver).toBe(false);
+    expect(bmi.supportsScenarios).toBe(false);
+    expect(bmi.supportsSensitivity).toBe(false);
+
+    for (const key of ["loanEmi", "sip", "compoundInterest", "mortgage", "breakEven"] as const) {
+      const presentation = referencePresentations[key];
+      expect(presentation.supportsGoalSolver).toBe(true);
+      expect(presentation.supportsScenarios).toBe(true);
+      expect(presentation.supportsSensitivity).toBe(true);
+    }
+  });
+
+  it("keeps decision references distinct from analytical references", () => {
+    expect(referencePresentations.loanEmi.level).toBe("decision");
+    expect(referencePresentations.sip.level).toBe("decision");
+    expect(referencePresentations.mortgage.level).toBe("decision");
+    expect(referencePresentations.breakEven.level).toBe("decision");
+    expect(referencePresentations.compoundInterest.level).toBe("analytical");
+    expect(referencePresentations.bmi.level).toBe("analytical");
+  });
+
   it("keeps capability inheritance monotonic", () => {
     const free = new Set(capabilitiesFor("free"));
     const pro = new Set(capabilitiesFor("pro"));
