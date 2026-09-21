@@ -62,7 +62,7 @@ export default async function CalculatorPage({ params }: PageProps) {
         <nav className="breadcrumbs" aria-label="Breadcrumb">
           <Link href="/">Home</Link><span>/</span><Link href={`/calculators/${category}`}>{categoryMeta.name}</Link><span>/</span><span>{definition.title}</span>
         </nav>
-        <span className="eyebrow">Certified calculator · Version {definition.version}</span>
+        <span className="eyebrow">Formula verified · Deterministic calculation</span>
         <h1>{definition.title}</h1>
         <p className="hero-copy">{content.intro}</p>
       </section>
