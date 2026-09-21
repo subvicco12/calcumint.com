@@ -16,10 +16,23 @@ export type CalculatorFormula = {
   description: string;
 };
 
+export type GoldenExpectation<T> =
+  T extends number ? number :
+  T extends readonly (infer U)[] ? { length?: number; items?: Readonly<Record<number, GoldenExpectation<U>>> } :
+  T extends object ? { readonly [K in keyof T]?: GoldenExpectation<T[K]> } :
+  T;
+
 export type CalculatorExample<TInput, TOutput> = {
   label: string;
   input: TInput;
   expected: TOutput;
+};
+
+export type CalculatorGoldenTest<TInput, TOutput> = {
+  label: string;
+  input: TInput;
+  /** Explicit deterministic assertions. Object fields may be selected; arrays require a length and/or indexed items. */
+  expected: GoldenExpectation<TOutput>;
 };
 
 export type JurisdictionRef = {
@@ -74,7 +87,7 @@ export type CalculatorDefinition<TInput, TOutput> = {
   sources: readonly CalculatorSource[];
   examples: readonly CalculatorExample<TInput, TOutput>[];
   /** Optional certification fixtures; required by the production gate once a calculator is certified. */
-  goldenTests?: readonly CalculatorExample<TInput, TOutput>[];
+  goldenTests?: readonly CalculatorGoldenTest<TInput, TOutput>[];
   /** Optional calculator-level verification metadata for globally governed calculators. */
   lastVerifiedAt?: string;
   officialSources?: readonly CalculatorSource[];
