@@ -63,4 +63,4 @@ describe("calculator interactive entitlement boundary",()=>{
 });
 
 
-describe("Physics validation feedback",()=>{it("announces invalid acceleration input",()=>{render(<CalculatorInteractive slug="acceleration-calculator"/>);fireEvent.change(screen.getByLabelText("Time"),{target:{value:"0"}});expect(screen.getByRole("alert")).toHaveTextContent("Enter valid inputs")})});
+describe("Physics validation feedback",()=>{it("announces invalid acceleration input",()=>{render(<CalculatorInteractive slug="acceleration-calculator"/>);fireEvent.change(screen.getByLabelText("Time"),{target:{value:"0"}});expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs")})});
