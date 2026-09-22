@@ -61,3 +61,6 @@ describe("calculator interactive entitlement boundary",()=>{
     expect(screen.queryByLabelText("Sensitivity analysis")).toBeNull();
   });
 });
+
+
+describe("Physics validation feedback",()=>{it("announces invalid acceleration input",()=>{render(<CalculatorInteractive slug="acceleration-calculator"/>);fireEvent.change(screen.getByLabelText("Time"),{target:{value:"0"}});expect(screen.getByRole("alert")).toHaveTextContent("Enter valid inputs")})});
