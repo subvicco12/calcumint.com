@@ -5,7 +5,7 @@ import type { PlanTier } from "@/calculators/final-framework/types";
 
 function maxPositive(values:readonly number[]){return Math.max(...values.map(v=>Math.max(v,0)),1)}
 function display(value:number|string,unit?:string){
-  const rendered=typeof value==="number"?value.toLocaleString(undefined,{maximumFractionDigits:2}):value;
+  const rendered=typeof value==="number"?(value!==0&&Math.abs(value)<0.01?value.toLocaleString(undefined,{maximumSignificantDigits:8}):value.toLocaleString(undefined,{maximumFractionDigits:2})):value;
   return unit?rendered+" "+unit:rendered;
 }
 
