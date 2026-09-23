@@ -44,7 +44,7 @@ export const roofingCalculator=mk("engineering.roofing","roofing-calculator","Ro
  z.object({buildingLengthFeet:positive,buildingWidthFeet:positive,pitchRisePer12:nonnegative,wastePercent:waste}),
  x=>{const slope=Math.sqrt(1+Math.pow(x.pitchRisePer12/12,2));return x.buildingLengthFeet*x.buildingWidthFeet*slope*(1+x.wastePercent/100)/100},
  "squares=(plan area×√(1+(rise/12)²)×(1+w/100))/100","Roofing squares (100 ft² each) for a simple gable-equivalent roof using plan area, pitch and waste.",
- {buildingLengthFeet:40,buildingWidthFeet:30,pitchRisePer12:6,wastePercent:10},14.758048651498612);
+ {buildingLengthFeet:40,buildingWidthFeet:30,pitchRisePer12:6,wastePercent:10},14.758048651498614);
 
 export const tileCalculator=mk("engineering.tile","tile-calculator","Tile Calculator",
  z.object({areaSquareMeters:positive,tileLengthCm:positive,tileWidthCm:positive,wastePercent:waste}),
