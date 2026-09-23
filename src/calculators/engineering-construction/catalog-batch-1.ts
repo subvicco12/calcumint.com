@@ -7,11 +7,13 @@ const waste=z.number().finite().min(0).max(100);
 type Out={value:number;steps:readonly string[]};
 const checked=(v:number)=>{if(!Number.isFinite(v))throw new Error("Calculated result is outside the supported finite range");return v};
 function def<I>(x:CalculatorDefinition<I,Out>){return x}
+const source=(label:string,url:string,note:string)=>({label,url,note});
+const geometrySource=source("NIST SI Guide","https://www.nist.gov/pml/special-publication-811","Supports consistent dimensional and SI-unit treatment for geometric calculations.");
 const mk=<I>(id:string,slug:string,title:string,schema:z.ZodType<I>,calc:(x:I)=>number,expression:string,description:string,example:I,expected:number)=>{
  const label=title.replace(" Calculator","");
  return def({id,slug,title,category:"engineering-construction",version:1,riskClass:"standard",reviewStatus:"certified",inputSchema:schema,
  calculate:(input:I)=>{const value=checked(calc(input));return{value,steps:[label+" = "+value]};},
- formulas:[{id,expression,description}],sources:[{label:"CalcuMint deterministic engineering & construction engine"}],
+ formulas:[{id,expression,description}],sources:[geometrySource],
  examples:[{label:"Verified example",input:example,expected:{value:expected,steps:[label+" = "+expected]}}],
  goldenTests:[{label:"Verified example",input:example,expected:{value:expected,steps:[label+" = "+expected]}}]});
 };
@@ -33,6 +35,7 @@ export const paintCalculator=mk("engineering.paint","paint-calculator","Paint Ca
  x=>x.wallAreaSquareMeters*x.coats/x.coverageSquareMetersPerLiter*(1+x.wastePercent/100),
  "litres=(area×coats/coverage)×(1+w/100)","Paint required in litres from paintable area, coats, stated coverage and waste allowance.",
  {wallAreaSquareMeters:100,coats:2,coverageSquareMetersPerLiter:10,wastePercent:10},22);
+paintCalculator.sources=[source("Sherwin-Williams Painting FAQs","https://www.sherwin-williams.com/en-us/project-center/faqs/paint-faq","Paint quantity is estimated by dividing paintable area by product coverage; actual requirements vary with surface and application.")];
 
 export const flooringCalculator=mk("engineering.flooring","flooring-calculator","Flooring Calculator",
  z.object({lengthMeters:positive,widthMeters:positive,wastePercent:waste}),
@@ -63,6 +66,7 @@ export const lumberCalculator=mk("engineering.lumber","lumber-calculator","Lumbe
  x=>x.thicknessInches*x.widthInches*x.lengthFeet*x.quantity/12,
  "board feet=T(in)×W(in)×L(ft)×q/12","Total lumber volume in board feet.",
  {thicknessInches:2,widthInches:6,lengthFeet:10,quantity:10},100);
+lumberCalculator.sources=[source("USDA Forest Service — Board foot definition","https://research.fs.usda.gov/pnw/products/dataandtools/production-prices-employment-and-trade-northwest-forest-industries-1958","Defines one board foot as 12 in × 12 in × 1 in, equivalent to the implemented board-foot formula.")];
 
 export const engineeringConstructionBatch1Definitions=[
  concreteCalculator,squareFootageCalculator,paintCalculator,flooringCalculator,roofingCalculator,tileCalculator,drywallCalculator,lumberCalculator
