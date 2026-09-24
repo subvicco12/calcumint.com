@@ -8,6 +8,7 @@ const checked=(v:number)=>{if(!Number.isFinite(v))throw new Error("Calculated re
 const def=<I>(x:CalculatorDefinition<I,Out>)=>x;
 const src={label:"CalcuMint Technology Methodology",note:"Deterministic calculation from explicitly supplied technical inputs; implementation details, protocol behavior and hardware specifications should be checked separately."};
 const cidrSource={label:"RFC 4632 — Classless Inter-domain Routing (CIDR)",url:"https://www.rfc-editor.org/rfc/rfc4632",note:"CIDR uses an IPv4 prefix length from 0 through 32; a prefix describes a power-of-two-sized block from one through 2^32 addresses."};
+const aspectRatioSource={label:"NIST — Aspect Ratio",url:"https://www.nist.gov/glossary-term/37036",note:"NIST defines aspect ratio as the ratio of the width to the height of a rectangle such as an image, pixel, or active video frame."};
 const binaryUnitSource={label:"NIST — Binary prefixes",url:"https://physics.nist.gov/cuu/Units/binary.html",note:"IEC binary prefixes distinguish 1024-based units such as MiB and GiB from decimal SI MB and GB."};
 const mk=<I>(id:string,slug:string,title:string,schema:z.ZodType<I>,calc:(x:I)=>number,expression:string,description:string,example:I,expected:number)=>def({id,slug,title,category:"technology-computing",version:1,riskClass:"standard",reviewStatus:"reviewed",inputSchema:schema,calculate:(input:I)=>{const value=checked(calc(input));return{value,steps:[title.replace(" Calculator","")+" = "+value]}},formulas:[{id:slug,expression,description}],sources:[src],examples:[{label:"Verified example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+expected]}}],goldenTests:[{label:"Verified example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+expected]}}]});
 
@@ -26,5 +27,6 @@ export const aspectRatioCalculator=mk("technology.aspect-ratio","aspect-ratio-ca
 ipSubnetCalculator.sources=[cidrSource];
 cidrCalculator.sources=[cidrSource];
 storageConversionCalculator.sources=[binaryUnitSource];
+aspectRatioCalculator.sources=[aspectRatioSource];
 
 export const technologyBatch1Definitions=[ipSubnetCalculator,cidrCalculator,bandwidthCalculator,downloadTimeCalculator,uploadTimeCalculator,dataTransferCalculator,storageConversionCalculator,raidCapacityCalculator,screenPpiCalculator,aspectRatioCalculator] as const;
