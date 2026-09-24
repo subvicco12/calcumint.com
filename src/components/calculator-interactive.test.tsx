@@ -108,3 +108,25 @@ describe("Technology batch 2 UI validation",()=>{
     expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
   });
 });
+
+
+describe("Technology batch 1 UI validation",()=>{
+  it("announces an invalid CIDR prefix",()=>{
+    render(<CalculatorInteractive slug="cidr-calculator"/>);
+    fireEvent.change(screen.getByLabelText("CIDR prefix"),{target:{value:"33"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("announces an invalid RAID topology",()=>{
+    render(<CalculatorInteractive slug="raid-capacity-calculator"/>);
+    fireEvent.change(screen.getByLabelText("RAID level"),{target:{value:"6"}});
+    fireEvent.change(screen.getByLabelText("Disk count"),{target:{value:"3"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("announces a zero physical diagonal for PPI",()=>{
+    render(<CalculatorInteractive slug="screen-ppi-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Diagonal (in)"),{target:{value:"0"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+});
