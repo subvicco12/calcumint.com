@@ -8,6 +8,7 @@ const checked=(v:number)=>{if(!Number.isFinite(v))throw new Error("Calculated re
 const def=<I>(x:CalculatorDefinition<I,Out>)=>x;
 const src={label:"CalcuMint Technology Methodology",note:"Deterministic calculation from explicitly supplied technical inputs; implementation details, protocol behavior and hardware specifications should be checked separately."};
 const cidrSource={label:"RFC 4632 — Classless Inter-domain Routing (CIDR)",url:"https://www.rfc-editor.org/rfc/rfc4632",note:"CIDR uses an IPv4 prefix length from 0 through 32; a prefix describes a power-of-two-sized block from one through 2^32 addresses."};
+const transferUnitSource={label:"RFC 1547 — octet terminology",url:"https://www.rfc-editor.org/rfc/rfc1547",note:"RFC 1547 defines an octet as eight bits. CalcuMint uses that unit relationship for its idealized MB/Mbps transfer-rate arithmetic; protocol overhead, latency and congestion are intentionally outside these simple estimates."};
 const ppiSource={label:"NIST — image resolution terminology",url:"https://www.nist.gov/glossary-term/28116",note:"NIST defines nominal image resolution as pixels per unit distance (for example ppi or ppmm). CalcuMint derives the screen pixel diagonal geometrically from supplied horizontal and vertical pixel dimensions, then divides by the supplied physical diagonal in inches."};
 const aspectRatioSource={label:"NIST — Aspect Ratio",url:"https://www.nist.gov/glossary-term/37036",note:"NIST defines aspect ratio as the ratio of the width to the height of a rectangle such as an image, pixel, or active video frame."};
 const binaryUnitSource={label:"NIST — Binary prefixes",url:"https://physics.nist.gov/cuu/Units/binary.html",note:"IEC binary prefixes distinguish 1024-based units such as MiB and GiB from decimal SI MB and GB."};
@@ -30,5 +31,9 @@ cidrCalculator.sources=[cidrSource];
 storageConversionCalculator.sources=[binaryUnitSource];
 aspectRatioCalculator.sources=[aspectRatioSource];
 screenPpiCalculator.sources=[ppiSource];
+bandwidthCalculator.sources=[transferUnitSource];
+downloadTimeCalculator.sources=[transferUnitSource];
+uploadTimeCalculator.sources=[transferUnitSource];
+dataTransferCalculator.sources=[transferUnitSource];
 
 export const technologyBatch1Definitions=[ipSubnetCalculator,cidrCalculator,bandwidthCalculator,downloadTimeCalculator,uploadTimeCalculator,dataTransferCalculator,storageConversionCalculator,raidCapacityCalculator,screenPpiCalculator,aspectRatioCalculator] as const;
