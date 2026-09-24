@@ -3,6 +3,7 @@ import { runCalculator } from "../engine";
 import { technologyBatch2Definitions,resolutionCalculator,dpiCalculator,batteryRuntimeCalculator,upsRuntimeCalculator,powerSupplyCalculator,websiteBandwidthCalculator,cloudStorageCostCalculator,cloudDataTransferCostCalculator,base64SizeCalculator,passwordEntropyCalculator } from "./catalog-batch-2";
 
 describe("Technology & Computing catalog #378-387",()=>{
+  // Boundary coverage is part of the batch certification evidence.
   it("passes every golden fixture through the authoritative engine",()=>{
     for(const definition of technologyBatch2Definitions){
       for(const golden of definition.goldenTests??[]){
