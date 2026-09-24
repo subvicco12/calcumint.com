@@ -10,7 +10,8 @@ describe("Engineering & Construction batch 2 boundaries",()=>{
     expect(runCalculator(stairCalculator,{totalRiseCm:280,targetRiserHeightCm:17.5}).output.value).toBe(16);
   });
   it("rounds genuinely fractional purchase quantities upward",()=>{
-    expect(runCalculator(insulationCalculator,{areaSquareMeters:100.01,packCoverageSquareMeters:10,wastePercent:10}).output.value).toBe(12);\n    expect(runCalculator(insulationCalculator,{areaSquareMeters:1000000000000000.4,packCoverageSquareMeters:1,wastePercent:0}).output.value).toBe(1000000000000001);
+    expect(runCalculator(insulationCalculator,{areaSquareMeters:100.01,packCoverageSquareMeters:10,wastePercent:10}).output.value).toBe(12);
+    expect(runCalculator(insulationCalculator,{areaSquareMeters:1000000000000000.4,packCoverageSquareMeters:1,wastePercent:0}).output.value).toBe(1000000000000001);
     expect(runCalculator(deckingCalculator,{deckAreaSquareMeters:20,boardWidthMeters:.14,boardLengthMeters:4,wastePercent:10}).output.value).toBe(40);
   });
   it("accepts waste endpoints and rejects out-of-range waste",()=>{
