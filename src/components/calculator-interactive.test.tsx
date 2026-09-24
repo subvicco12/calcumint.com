@@ -130,3 +130,32 @@ describe("Technology batch 1 UI validation",()=>{
     expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
   });
 });
+
+
+describe("Health batch 1 UI validation",()=>{
+  it("announces an underage BMR input",()=>{
+    render(<CalculatorInteractive slug="bmr-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Age (years)"),{target:{value:"17"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("announces a macro allocation that does not total 100 percent",()=>{
+    render(<CalculatorInteractive slug="macro-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Fat (%)"),{target:{value:"20"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("announces a Devine-height input below the engine boundary",()=>{
+    render(<CalculatorInteractive slug="ideal-weight-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Height (cm)"),{target:{value:"150"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("resets form defaults when navigating between Health calculators",()=>{
+    const view=render(<CalculatorInteractive slug="bmr-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Weight (kg)"),{target:{value:"91"}});
+    view.rerender(<CalculatorInteractive slug="macro-calculator"/>);
+    expect((screen.getByLabelText("Daily calories") as HTMLInputElement).value).toBe("2000");
+    expect(screen.getByRole("region",{name:"Calculation result"}).textContent).toContain("150");
+  });
+});
