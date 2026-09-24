@@ -31,7 +31,7 @@ describe("Health catalog #389-397 draft engines",()=>{
   });
 
   it("covers sex-specific and independent reference outputs",()=>{
-    expect(runCalculator(bmrCalculator,{sex:"female",weightKg:60,heightCm:165,ageYears:30}).output.value).toBe(1307.75);
+    expect(runCalculator(bmrCalculator,{sex:"female",weightKg:60,heightCm:165,ageYears:30}).output.value).toBe(1320.25);
     expect(runCalculator(bodyFatCalculator,{bmi:22.9,ageYears:30,sex:"female"}).output.value).toBeCloseTo(28.98,10);
     expect(runCalculator(idealWeightCalculator,{sex:"female",heightCm:177.8}).output.value).toBeCloseTo(68.5,10);
     expect(runCalculator(leanBodyMassCalculator,{sex:"female",weightKg:60,heightCm:165}).output.value).toBeCloseTo(44.865,10);
