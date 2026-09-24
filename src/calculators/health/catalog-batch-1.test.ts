@@ -1,6 +1,6 @@
 import { describe,expect,it } from "vitest";
 import { runCalculator } from "../engine";
-import { bmrCalculator,tdeeCalculator,calorieCalculator,bodyFatCalculator,idealWeightCalculator,healthyWeightCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator,macroCalculator } from "./catalog-batch-1";
+import { bmrCalculator,tdeeCalculator,calorieCalculator,bodyFatCalculator,idealWeightCalculator,healthyWeightCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator,macroCalculator,healthBatch1Definitions } from "./catalog-batch-1";
 
 describe("Health catalog #389-397 draft engines",()=>{
   it("matches golden reference calculations",()=>{
@@ -20,7 +20,7 @@ describe("Health catalog #389-397 draft engines",()=>{
     expect(()=>runCalculator(idealWeightCalculator,{sex:"female",heightCm:150})).toThrow();
   });
   it("keeps every Health batch calculator behind the health certification gate",()=>{
-    for(const calculator of [bmrCalculator,tdeeCalculator,calorieCalculator,bodyFatCalculator,idealWeightCalculator,healthyWeightCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator,macroCalculator]){
+    for(const calculator of healthBatch1Definitions){
       expect(calculator.category).toBe("health");
       expect(calculator.riskClass).toBe("health");
       expect(calculator.reviewStatus).toBe("draft");
