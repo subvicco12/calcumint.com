@@ -26,4 +26,15 @@ describe("Technology & Computing 368-377",()=>{
   expect(()=>runCalculator(raidCapacityCalculator,{diskCount:3,diskSizeGb:1000,raidLevel:"6"})).toThrow();
   expect(()=>runCalculator(raidCapacityCalculator,{diskCount:3,diskSizeGb:1000,raidLevel:"10"})).toThrow();
  });
+ it("covers boundary and identity behavior",()=>{
+  expect(runCalculator(cidrCalculator,{prefixLength:0}).output.value).toBe(4294967296);
+  expect(runCalculator(cidrCalculator,{prefixLength:32}).output.value).toBe(1);
+  expect(runCalculator(ipSubnetCalculator,{address:"0.0.0.0",prefixLength:0}).output.value).toBe(4294967296);
+  expect(runCalculator(ipSubnetCalculator,{address:"255.255.255.255",prefixLength:32}).output.value).toBe(1);
+  expect(runCalculator(storageConversionCalculator,{value:7,fromUnit:"GiB",toUnit:"GiB"}).output.value).toBe(7);
+  expect(()=>runCalculator(screenPpiCalculator,{widthPixels:0,heightPixels:1080,diagonalInches:15.6})).toThrow();
+  expect(()=>runCalculator(aspectRatioCalculator,{width:1920,height:0})).toThrow();
+  expect(()=>runCalculator(dataTransferCalculator,{bandwidthMbps:1e100,timeSeconds:1e100})).toThrow();
+ });
+
 });
