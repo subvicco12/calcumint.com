@@ -74,6 +74,8 @@ describe("Technology final controls",()=>{
     fireEvent.change(screen.getByLabelText("From unit"),{target:{value:"MiB"}});
     fireEvent.change(screen.getByLabelText("To unit"),{target:{value:"KiB"}});
     expect((screen.getByLabelText("To unit") as HTMLSelectElement).value).toBe("KiB");
+    expect(screen.getByRole("region",{name:"Calculation result"}).textContent).toContain("1,024");
+    expect(screen.getByRole("region",{name:"Calculation result"}).textContent).toContain("KiB");
   });
 
   it("supports selectable RAID levels",()=>{
@@ -82,5 +84,6 @@ describe("Technology final controls",()=>{
     expect(selector.value).toBe("10");
     fireEvent.change(selector,{target:{value:"5"}});
     expect(selector.value).toBe("5");
+    expect(screen.getByRole("region",{name:"Calculation result"}).textContent).toContain("3,000");
   });
 });
