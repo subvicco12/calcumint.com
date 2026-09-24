@@ -10,7 +10,7 @@ describe("Health catalog #389-397 draft engines",()=>{
     expect(runCalculator(bodyFatCalculator,{bmi:22.9,ageYears:30,sex:"male"}).output.value).toBeCloseTo(18.18,10);
     expect(runCalculator(idealWeightCalculator,{sex:"male",heightCm:177.8}).output.value).toBeCloseTo(73,10);
     expect(runCalculator(healthyWeightCalculator,{heightCm:175,targetBmi:22}).output.value).toBeCloseTo(67.375,10);
-    expect(runCalculator(leanBodyMassCalculator,{sex:"male",weightKg:70,heightCm:175}).output.value).toBeCloseTo(56.115,10);
+    expect(runCalculator(leanBodyMassCalculator,{sex:"male",weightKg:70,heightCm:175}).output.value).toBeCloseTo(56.015,10);
     expect(runCalculator(bodySurfaceAreaCalculator,{weightKg:70,heightCm:175}).output.value).toBeCloseTo(1.8446619684315546,10);
     expect(runCalculator(macroCalculator,{dailyCalories:2000,proteinPercent:30,carbPercent:40,fatPercent:30}).output.value).toBe(150);
   });
