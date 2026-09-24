@@ -30,7 +30,7 @@ describe("Engineering & Construction batch 3",()=>{
   expect(()=>runCalculator(batteryStorageCalculator,{dailyEnergyKwh:10,backupDays:1,depthOfDischargePercent:80,systemEfficiencyPercent:0})).toThrow();
  });
  it("guards overflow",()=>{
-  expect(()=>runCalculator(pipeVolumeCalculator,{lengthMeters:1e100,internalDiameterMeters:1e100})).toThrow("supported finite range");
-  expect(()=>runCalculator(electricalLoadCalculator,{voltageVolts:1e100,currentAmps:1e100})).toThrow("supported finite range");
+  expect(()=>runCalculator(solarPanelRequirementCalculator,{dailyEnergyKwh:1e100,panelWatts:1e-100,peakSunHours:1e-100,systemEfficiencyPercent:1e-100})).toThrow("supported finite range");
+  expect(()=>runCalculator(batteryStorageCalculator,{dailyEnergyKwh:1e100,backupDays:1e100,depthOfDischargePercent:1e-100,systemEfficiencyPercent:1e-100})).toThrow("supported finite range");
  });
 });
