@@ -113,7 +113,7 @@ describe("Technology batch 2 UI validation",()=>{
 describe("Technology batch 1 UI validation",()=>{
   it("announces an invalid CIDR prefix",()=>{
     render(<CalculatorInteractive slug="cidr-calculator"/>);
-    fireEvent.change(screen.getByLabelText("Prefix length"),{target:{value:"33"}});
+    fireEvent.change(screen.getByLabelText("CIDR prefix"),{target:{value:"33"}});
     expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
   });
 
