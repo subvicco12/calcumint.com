@@ -9,7 +9,7 @@ describe("Technology & Computing 368-377",()=>{
   expect(runCalculator(downloadTimeCalculator,{dataMegabytes:100,bandwidthMbps:80}).output.value).toBe(10);
   expect(runCalculator(uploadTimeCalculator,{dataMegabytes:100,bandwidthMbps:80}).output.value).toBe(10);
   expect(runCalculator(dataTransferCalculator,{bandwidthMbps:80,timeSeconds:10}).output.value).toBe(100);
-  expect(runCalculator(storageConversionCalculator,{value:1,fromUnit:"GB",toUnit:"MB"}).output.value).toBe(1024);
+  expect(runCalculator(storageConversionCalculator,{value:1,fromUnit:"GiB",toUnit:"MiB"}).output.value).toBe(1024);
   expect(runCalculator(raidCapacityCalculator,{diskCount:4,diskSizeGb:1000,raidLevel:"10"}).output.value).toBe(2000);
   expect(runCalculator(raidCapacityCalculator,{diskCount:4,diskSizeGb:1000,raidLevel:"1"}).output.value).toBe(1000);
   expect(runCalculator(screenPpiCalculator,{widthPixels:1920,heightPixels:1080,diagonalInches:15.6}).output.value).toBeCloseTo(141.21199808219862,10);
@@ -20,7 +20,7 @@ describe("Technology & Computing 368-377",()=>{
   expect(()=>runCalculator(ipSubnetCalculator,{address:"192.168.1.1",prefixLength:33})).toThrow();
   expect(()=>runCalculator(bandwidthCalculator,{dataMegabytes:100,timeSeconds:0})).toThrow();
   expect(()=>runCalculator(downloadTimeCalculator,{dataMegabytes:0,bandwidthMbps:80})).toThrow();
-  expect(()=>runCalculator(storageConversionCalculator,{value:1,fromUnit:"GB",toUnit:"INVALID"})).toThrow();
+  expect(()=>runCalculator(storageConversionCalculator,{value:1,fromUnit:"GiB",toUnit:"INVALID"})).toThrow();
   expect(()=>runCalculator(raidCapacityCalculator,{diskCount:1,diskSizeGb:1000,raidLevel:"0"})).toThrow();
   expect(()=>runCalculator(raidCapacityCalculator,{diskCount:2,diskSizeGb:1000,raidLevel:"5"})).toThrow();
   expect(()=>runCalculator(raidCapacityCalculator,{diskCount:3,diskSizeGb:1000,raidLevel:"6"})).toThrow();
