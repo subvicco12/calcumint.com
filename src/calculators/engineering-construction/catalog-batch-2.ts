@@ -3,7 +3,7 @@ import type { CalculatorDefinition } from "../types";
 const positive=z.number().finite().positive().max(1e100),nonnegative=z.number().finite().min(0).max(1e100),waste=z.number().finite().min(0).max(100);
 type Out={value:number;steps:readonly string[]};
 // Avoid over-counting whole purchasable units when binary floating point lands infinitesimally above an exact integer.
-const ceilUnits=(value:number)=>{const nearest=Math.round(value);const tolerance=Number.EPSILON*Math.max(1,Math.abs(value))*8;return Math.abs(value-nearest)<=tolerance?nearest:Math.ceil(value)};
+const ceilUnits=(value:number)=>{const nearest=Math.round(value);const tolerance=Math.min(1e-9,Number.EPSILON*Math.max(1,Math.abs(value))*8);return Math.abs(value-nearest)<=tolerance?nearest:Math.ceil(value)};
 const checked=(v:number)=>{if(!Number.isFinite(v))throw new Error("Calculated result is outside the supported finite range");return v};
 function def<I>(x:CalculatorDefinition<I,Out>){return x}
 const src={label:"CalcuMint Engineering Methodology",note:"Deterministic geometric/material-estimation method; project-specific codes, product coverage and site conditions must be checked separately."};
