@@ -73,7 +73,7 @@ describe("Technology final controls",()=>{
     expect(screen.getByLabelText("To unit")).not.toBeNull();
     fireEvent.change(screen.getByLabelText("From unit"),{target:{value:"MiB"}});
     fireEvent.change(screen.getByLabelText("To unit"),{target:{value:"KiB"}});
-    expect(screen.getByText("KiB")).not.toBeNull();
+    expect((screen.getByLabelText("To unit") as HTMLSelectElement).value).toBe("KiB");
   });
 
   it("supports selectable RAID levels",()=>{
