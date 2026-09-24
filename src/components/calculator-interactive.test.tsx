@@ -87,3 +87,24 @@ describe("Technology final controls",()=>{
     expect(screen.getByRole("region",{name:"Calculation result"}).textContent).toContain("3,000");
   });
 });
+
+
+describe("Technology batch 2 UI validation",()=>{
+  it("announces invalid zero battery load",()=>{
+    render(<CalculatorInteractive slug="battery-runtime-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Load (W)"),{target:{value:"0"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("announces invalid fractional Base64 byte count",()=>{
+    render(<CalculatorInteractive slug="base64-size-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Input bytes"),{target:{value:"1.5"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+
+  it("announces invalid password character pool",()=>{
+    render(<CalculatorInteractive slug="password-entropy-calculator"/>);
+    fireEvent.change(screen.getByLabelText("Character pool size"),{target:{value:"1"}});
+    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+  });
+});
