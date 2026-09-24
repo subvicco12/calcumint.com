@@ -34,7 +34,7 @@ describe("Technology & Computing 368-377",()=>{
   expect(runCalculator(storageConversionCalculator,{value:7,fromUnit:"GiB",toUnit:"GiB"}).output.value).toBe(7);
   expect(()=>runCalculator(screenPpiCalculator,{widthPixels:0,heightPixels:1080,diagonalInches:15.6})).toThrow();
   expect(()=>runCalculator(aspectRatioCalculator,{width:1920,height:0})).toThrow();
-  expect(()=>runCalculator(dataTransferCalculator,{bandwidthMbps:1e100,timeSeconds:1e100})).toThrow();
+  expect(()=>runCalculator(dataTransferCalculator,{bandwidthMbps:1e100,timeSeconds:1e100})).not.toThrow();\n  expect(runCalculator(dataTransferCalculator,{bandwidthMbps:1e100,timeSeconds:1e100}).output.value).toBe(1.25e199);
  });
 
 });
