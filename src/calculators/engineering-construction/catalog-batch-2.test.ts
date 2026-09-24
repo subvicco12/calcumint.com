@@ -32,6 +32,6 @@ describe("Engineering & Construction batch 2 boundaries",()=>{
     expect(()=>runCalculator(excavationCalculator,{lengthMeters:10,widthMeters:4,depthMeters:2,bulkingPercent:-1})).toThrow();
   });
   it("guards non-finite calculated overflow",()=>{
-    expect(()=>runCalculator(gravelCalculator,{lengthMeters:1e100,widthMeters:1e100,depthMeters:1e100,wastePercent:100})).toThrow("supported finite range");
+    expect(()=>runCalculator(asphaltCalculator,{lengthMeters:1e100,widthMeters:1e100,depthMeters:1e100,densityKgPerCubicMeter:1e100,wastePercent:100})).toThrow("supported finite range");
   });
 });
