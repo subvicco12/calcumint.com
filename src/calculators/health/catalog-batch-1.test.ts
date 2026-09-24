@@ -30,4 +30,19 @@ describe("Health catalog #389-397 draft engines",()=>{
     }
   });
 
+  it("covers sex-specific and independent reference outputs",()=>{
+    expect(runCalculator(bmrCalculator,{sex:"female",weightKg:60,heightCm:165,ageYears:30}).output.value).toBe(1307.75);
+    expect(runCalculator(bodyFatCalculator,{bmi:22.9,ageYears:30,sex:"female"}).output.value).toBeCloseTo(7.38,10);
+    expect(runCalculator(idealWeightCalculator,{sex:"female",heightCm:177.8}).output.value).toBeCloseTo(68.5,10);
+    expect(runCalculator(leanBodyMassCalculator,{sex:"female",weightKg:60,heightCm:165}).output.value).toBeCloseTo(44.55,10);
+    expect(runCalculator(bodySurfaceAreaCalculator,{weightKg:60,heightCm:165}).output.value).toBeCloseTo(1.656805,6);
+  });
+
+  it("rejects non-finite and out-of-range inputs",()=>{
+    expect(()=>runCalculator(bmrCalculator,{sex:"male",weightKg:0,heightCm:175,ageYears:30})).toThrow();
+    expect(()=>runCalculator(tdeeCalculator,{bmrKcal:1600,activityMultiplier:2.6})).toThrow();
+    expect(()=>runCalculator(healthyWeightCalculator,{heightCm:175,targetBmi:25})).toThrow();
+    expect(()=>runCalculator(macroCalculator,{dailyCalories:2000,proteinPercent:33.3,carbPercent:33.3,fatPercent:33.3})).toThrow();
+  });
+
 });
