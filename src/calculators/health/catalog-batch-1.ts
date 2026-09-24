@@ -1,0 +1,32 @@
+import { z } from "zod";
+import type { CalculatorDefinition } from "../types";
+
+type Out={value:number;steps:readonly string[]};
+const positive=z.number().finite().positive().max(1e6);
+const pct=z.number().finite().min(1).max(100);
+const checked=(v:number)=>{if(!Number.isFinite(v))throw new Error("Calculated result is outside the supported finite range");return v};
+const def=<I>(x:CalculatorDefinition<I,Out>)=>x;
+const generalSource={label:"CalcuMint Health Methodology",note:"Deterministic estimate from explicitly supplied inputs. Health calculators are informational and are not diagnosis, treatment, or individualized medical advice."};
+const mk=<I>(id:string,slug:string,title:string,schema:z.ZodType<I>,calc:(x:I)=>number,expression:string,description:string,example:I,expected:number,sources=[generalSource])=>def({id,slug,title,category:"health",version:1,riskClass:"health",reviewStatus:"draft",inputSchema:schema,calculate:(input:I)=>{const value=checked(calc(input));return{value,steps:[title.replace(" Calculator","")+" = "+value]}},formulas:[{id:slug,expression,description}],sources,examples:[{label:"Reference example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+checked(calc(example))]}}],goldenTests:[{label:"Reference example",input:example,expected:{value:expected}}],jurisdictions:[{country:"GLOBAL"}]});
+
+const sex=z.enum(["male","female"]);
+const mifflinSource={label:"Mifflin et al. — A new predictive equation for resting energy expenditure in healthy individuals",url:"https://pubmed.ncbi.nlm.nih.gov/2305711/",note:"BMR estimate uses the Mifflin-St Jeor equations; individual energy needs vary."};
+const mostellerSource={label:"Mosteller — Simplified calculation of body-surface area",url:"https://pubmed.ncbi.nlm.nih.gov/3657876/",note:"Body surface area is estimated as sqrt(height(cm) × weight(kg) / 3600)."};
+const boerSource={label:"Boer — Estimated lean body mass as an index for normalization of body fluid volumes in humans",url:"https://pubmed.ncbi.nlm.nih.gov/7270708/",note:"Lean body mass uses the sex-specific Boer equations and is an estimate, not a direct body-composition measurement."};
+
+export const bmrCalculator=mk("health.bmr","bmr-calculator","BMR Calculator",z.object({sex,weightKg:positive,heightCm:positive,ageYears:z.number().int().min(18).max(120)}),x=>x.sex==="male"?10*x.weightKg+6.25*x.heightCm-5*x.ageYears+5:10*x.weightKg+6.25*x.heightCm-5*x.ageYears-161,"BMR = 10W + 6.25H − 5A + sex constant","Adult resting-energy estimate using Mifflin-St Jeor.",{sex:"male",weightKg:70,heightCm:175,ageYears:30},1648.75,[mifflinSource]);
+
+const activity=z.number().finite().min(1).max(2.5);
+export const tdeeCalculator=mk("health.tdee","tdee-calculator","TDEE Calculator",z.object({bmrKcal:positive,activityMultiplier:activity}),x=>x.bmrKcal*x.activityMultiplier,"TDEE = BMR × activity multiplier","Planning estimate based on a supplied BMR and activity multiplier.",{bmrKcal:1600,activityMultiplier:1.5},2400);
+export const calorieCalculator=mk("health.calorie","calorie-calculator","Calorie Calculator",z.object({tdeeKcal:positive,dailyAdjustmentKcal:z.number().finite().min(-2000).max(2000)}),x=>Math.max(0,x.tdeeKcal+x.dailyAdjustmentKcal),"Daily target = TDEE + selected adjustment","Arithmetic planning target from a supplied TDEE and user-selected adjustment; it does not prescribe a medically appropriate deficit or surplus.",{tdeeKcal:2400,dailyAdjustmentKcal:-300},2100);
+
+export const bodyFatCalculator=mk("health.body-fat","body-fat-calculator","Body Fat Calculator",z.object({bmi:positive,ageYears:z.number().int().min(18).max(120),sex}),x=>1.2*x.bmi+0.23*x.ageYears-(x.sex==="male"?10.8:0)-5.4,"Estimated body fat % = 1.2 × BMI + 0.23 × age − 10.8 × sex − 5.4","Adult BMI-based population estimate; not a direct body-fat measurement.",{bmi:22.9,ageYears:30,sex:"male"},18.18);
+
+export const idealWeightCalculator=mk("health.ideal-weight","ideal-weight-calculator","Ideal Weight Calculator",z.object({sex,heightCm:z.number().finite().min(152.4).max(250)}),x=>{const inches=x.heightCm/2.54;return (x.sex==="male"?50:45.5)+2.3*(inches-60)},"Devine estimate = base kg + 2.3 × inches over 5 ft","Historical Devine formula estimate for adults at least 5 ft tall; not a personal health target.",{sex:"male",heightCm:177.8},73);
+export const healthyWeightCalculator=mk("health.healthy-weight","healthy-weight-calculator","Healthy Weight Calculator",z.object({heightCm:positive,targetBmi:z.number().finite().min(18.5).max(24.9)}),x=>x.targetBmi*(x.heightCm/100)**2,"Weight = target BMI × height(m)^2","Weight corresponding mathematically to a user-selected adult BMI within 18.5–24.9; BMI is a screening measure, not a diagnosis.",{heightCm:175,targetBmi:22},67.375);
+
+export const leanBodyMassCalculator=mk("health.lean-body-mass","lean-body-mass-calculator","Lean Body Mass Calculator",z.object({sex,weightKg:positive,heightCm:positive}),x=>x.sex==="male"?0.407*x.weightKg+0.267*x.heightCm-19.2:0.252*x.weightKg+0.473*x.heightCm-48.3,"Boer LBM = sex-specific linear equation","Estimated lean body mass using the Boer equation.",{sex:"male",weightKg:70,heightCm:175},56.015,[boerSource]);
+export const bodySurfaceAreaCalculator=mk("health.body-surface-area","body-surface-area-calculator","Body Surface Area Calculator",z.object({weightKg:positive,heightCm:positive}),x=>Math.sqrt(x.weightKg*x.heightCm/3600),"BSA = √(height(cm) × weight(kg) / 3600)","Mosteller body-surface-area estimate in square metres.",{weightKg:70,heightCm:175},1.8446619684315546,[mostellerSource]);
+export const macroCalculator=mk("health.macro","macro-calculator","Macro Calculator",z.object({dailyCalories:positive,proteinPercent:pct,carbPercent:pct,fatPercent:pct}).refine(x=>Math.abs(x.proteinPercent+x.carbPercent+x.fatPercent-100)<1e-9,{message:"Macro percentages must total 100"}),x=>x.dailyCalories*(x.proteinPercent/100)/4,"Protein grams = calories × protein share ÷ 4","Returns protein grams for a user-supplied calorie target and macro split; carbohydrate and fat shares are validated as part of a 100% allocation.",{dailyCalories:2000,proteinPercent:30,carbPercent:40,fatPercent:30},150);
+
+export const healthBatch1Definitions=[bmrCalculator,tdeeCalculator,calorieCalculator,bodyFatCalculator,idealWeightCalculator,healthyWeightCalculator,leanBodyMassCalculator,bodySurfaceAreaCalculator,macroCalculator] as const;
