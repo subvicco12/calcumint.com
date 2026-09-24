@@ -64,3 +64,23 @@ describe("calculator interactive entitlement boundary",()=>{
 
 
 describe("Physics validation feedback",()=>{it("announces invalid acceleration input",()=>{render(<CalculatorInteractive slug="acceleration-calculator"/>);fireEvent.change(screen.getByLabelText("Time"),{target:{value:"0"}});expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs")})});
+
+
+describe("Technology final controls",()=>{
+  it("supports selectable IEC storage units and updates the result unit",()=>{
+    render(<CalculatorInteractive slug="storage-conversion-calculator"/>);
+    expect(screen.getByLabelText("From unit")).not.toBeNull();
+    expect(screen.getByLabelText("To unit")).not.toBeNull();
+    fireEvent.change(screen.getByLabelText("From unit"),{target:{value:"MiB"}});
+    fireEvent.change(screen.getByLabelText("To unit"),{target:{value:"KiB"}});
+    expect(screen.getByText("KiB")).not.toBeNull();
+  });
+
+  it("supports selectable RAID levels",()=>{
+    render(<CalculatorInteractive slug="raid-capacity-calculator"/>);
+    const selector=screen.getByLabelText("RAID level") as HTMLSelectElement;
+    expect(selector.value).toBe("10");
+    fireEvent.change(selector,{target:{value:"5"}});
+    expect(selector.value).toBe("5");
+  });
+});
