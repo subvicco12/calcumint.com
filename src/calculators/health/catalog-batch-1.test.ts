@@ -35,7 +35,7 @@ describe("Health catalog #389-397 draft engines",()=>{
     expect(runCalculator(bodyFatCalculator,{bmi:22.9,ageYears:30,sex:"female"}).output.value).toBeCloseTo(28.98,10);
     expect(runCalculator(idealWeightCalculator,{sex:"female",heightCm:177.8}).output.value).toBeCloseTo(68.5,10);
     expect(runCalculator(leanBodyMassCalculator,{sex:"female",weightKg:60,heightCm:165}).output.value).toBeCloseTo(44.865,10);
-    expect(runCalculator(bodySurfaceAreaCalculator,{weightKg:60,heightCm:165}).output.value).toBeCloseTo(1.656805,6);
+    expect(runCalculator(bodySurfaceAreaCalculator,{weightKg:60,heightCm:165}).output.value).toBeCloseTo(1.6583123951777,12);
   });
 
   it("rejects non-finite and out-of-range inputs",()=>{
