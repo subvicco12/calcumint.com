@@ -6,7 +6,7 @@ describe("public calculator publication gate", () => {
   it("publishes only certified calculator definitions", () => {
     const publicItems = listPublicCalculators();
     expect(publicItems.length).toBeGreaterThan(0);
-    expect(new Set(publicItems.map((item) => item.slug)).size).toBe(publicItems.length);
+    const slugCounts=new Map<string,number>(); for(const item of publicItems) slugCounts.set(item.slug,(slugCounts.get(item.slug)??0)+1); console.log("PUBLIC_DUPLICATES",Array.from(slugCounts.entries()).filter(([,count])=>count>1)); expect(new Set(publicItems.map((item) => item.slug)).size).toBe(publicItems.length);
     for (const item of publicItems) {
       const definition = calculatorRegistry.getBySlug(item.slug);
       expect(definition).toBeDefined();
