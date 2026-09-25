@@ -22,7 +22,7 @@ The runner is intentionally one-shot. Scheduling belongs to the production host/
 Do not enroll or rotate a connector credential until all of these are verified on the actual production host:
 1. The deployed application has a server-side Node.js execution path.
 2. The scheduler can run `npm run growthos:heartbeat` from the deployed release.
-3. The four GrowthOS variables are available only to the server-side scheduled process.
+3. The required `GROWTHOS_SITE_ID` and `GROWTHOS_CONNECTOR_SECRET` variables are available only to the server-side scheduled process. If the optional `GROWTHOS_CONTROL_PLANE_URL` or `GROWTHOS_CONNECTOR_KIND` overrides are supplied, they must also remain server-side only.
 4. A dry execution with the secret intentionally absent fails closed with `GROWTHOS_CONNECTOR_SECRET missing or too short`.
 5. After enrollment, one signed heartbeat returns success and GrowthOS records the connector as connected.
 6. The secret is never printed, copied into client configuration, or committed.
