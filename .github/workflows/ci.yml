@@ -21,6 +21,8 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: GrowthOS heartbeat syntax
+        run: node --check scripts/growthos-heartbeat.mjs
       - name: Lint
         run: npm run lint
       - name: Typecheck
