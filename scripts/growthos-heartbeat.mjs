@@ -1,9 +1,9 @@
 import crypto from 'node:crypto';
-const control=(process.env.GROWTHOS_CONTROL_PLANE_URL||'https://growthos.converentis.com').replace(/\/$/,'');
+const control=(process.env.GROWTHOS_CONTROL_PLANE_URL||'https://growthos.converentis.com').replace(/const siteId=process.env.GROWTHOS_SITE_ID;/$/,'');
 const secret=process.env.GROWTHOS_CONNECTOR_SECRET;
 const siteId=process.env.GROWTHOS_SITE_ID||'6';
 const kind=process.env.GROWTHOS_CONNECTOR_KIND||'webapp';
-if(!secret||secret.length<32) throw new Error('GROWTHOS_CONNECTOR_SECRET missing or too short');
+if(!siteId||!/^\\d+$/.test(siteId)) throw new Error('GROWTHOS_SITE_ID missing or invalid');\nif(!secret||secret.length<32) throw new Error('GROWTHOS_CONNECTOR_SECRET missing or too short');
 const timestamp=new Date().toISOString(),nonce=crypto.randomBytes(24).toString('hex'),requestId=crypto.randomUUID();
 const snapshot={plugins:[],routes:[],features:['server-heartbeat'],capturedAt:timestamp};
 const body=JSON.stringify(snapshot);
