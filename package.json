@@ -15,7 +15,8 @@
     "test:launch": "vitest run src/calculators/launch-portfolio.test.ts src/lib/launch/readiness.test.ts src/lib/launch/hardening.test.ts",
     "test:watch": "vitest",
     "test:certification": "vitest run src/calculators/launch-certification.test.ts src/calculators/rule-packs.test.ts",
-    "test:production": "npm run lint && npm run typecheck && npm test && npm run test:launch && npm run test:certification && npm run build"
+    "test:production": "npm run lint && npm run typecheck && npm test && npm run test:launch && npm run test:certification && npm run build",
+    "growthos:heartbeat": "node scripts/growthos-heartbeat.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
