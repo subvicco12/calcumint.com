@@ -1,0 +1,14 @@
+import crypto from 'node:crypto';
+const control=(process.env.GROWTHOS_CONTROL_PLANE_URL||'https://growthos.converentis.com').replace(/\/$/,'');
+const secret=process.env.GROWTHOS_CONNECTOR_SECRET;
+const siteId=process.env.GROWTHOS_SITE_ID||'6';
+const kind=process.env.GROWTHOS_CONNECTOR_KIND||'webapp';
+if(!secret||secret.length<32) throw new Error('GROWTHOS_CONNECTOR_SECRET missing or too short');
+const timestamp=new Date().toISOString(),nonce=crypto.randomBytes(24).toString('hex'),requestId=crypto.randomUUID();
+const snapshot={plugins:[],routes:[],features:['server-heartbeat'],capturedAt:timestamp};
+const body=JSON.stringify(snapshot);
+const canonical=[siteId,timestamp,nonce,requestId,body].join('\n');
+const signature=crypto.createHmac('sha256',secret).update(canonical).digest('hex');
+const url=new URL('/wp-json/growthos/v1/connectors/heartbeat',control);url.searchParams.set('site_id',siteId);url.searchParams.set('kind',kind);
+const res=await fetch(url,{method:'POST',headers:{'content-type':'application/json','x-growthos-timestamp':timestamp,'x-growthos-nonce':nonce,'x-growthos-request-id':requestId,'x-growthos-signature':signature},body});
+const text=await res.text();if(!res.ok) throw new Error('GrowthOS heartbeat failed '+res.status+': '+text);console.log(text);
