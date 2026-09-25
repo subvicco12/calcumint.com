@@ -13,24 +13,14 @@ const nonce = crypto.randomBytes(24).toString('hex');
 const requestId = crypto.randomUUID();
 const snapshot = { plugins: [], routes: [], features: ['server-heartbeat'], capturedAt: timestamp };
 const body = JSON.stringify(snapshot);
-const canonical = [siteId, timestamp, nonce, requestId, body].join('\n');
-const signature = crypto.createHmac('sha256', secret).update(canonical).digest('hex');
+const canonicalPayload = [siteId, timestamp, nonce, requestId, body].join('\n');
+const signature = crypto.createHmac('sha256', secret).update(canonicalPayload).digest('hex');
 
 const url = new URL('/wp-json/growthos/v1/connectors/heartbeat', control);
 url.searchParams.set('site_id', siteId);
 url.searchParams.set('kind', kind);
-
-const res = await fetch(url, {
-  method: 'POST',
-  headers: {
-    'content-type': 'application/json',
-    'x-growthos-timestamp': timestamp,
-    'x-growthos-nonce': nonce,
-    'x-growthos-request-id': requestId,
-    'x-growthos-signature': signature,
-  },
-  body,
-});
+const signal = AbortSignal.timeout(15000);
+const res = await fetch(url, { method: 'POST', signal, headers: { 'content-type': 'application/json', 'x-growthos-timestamp': timestamp, 'x-growthos-nonce': nonce, 'x-growthos-request-id': requestId, 'x-growthos-signature': signature }, body });
 const responseText = await res.text();
 if (!res.ok) throw new Error('GrowthOS heartbeat failed ' + res.status + ': ' + responseText);
 console.log(responseText);
