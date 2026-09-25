@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-const control=(process.env.GROWTHOS_CONTROL_PLANE_URL||'https://growthos.converentis.com').replace(/const siteId=process.env.GROWTHOS_SITE_ID;/$/,'');
+const control=(process.env.GROWTHOS_CONTROL_PLANE_URL||'https://growthos.converentis.com');
 const secret=process.env.GROWTHOS_CONNECTOR_SECRET;
 const siteId=process.env.GROWTHOS_SITE_ID||'6';
 const kind=process.env.GROWTHOS_CONNECTOR_KIND||'webapp';
