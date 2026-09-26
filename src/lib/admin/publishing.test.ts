@@ -38,6 +38,14 @@ describe("B10 publishing policy", () => {
     expect(requiredQaChecks("standard")).toContain("performance");
   });
 
+  it("requires rule-pack evidence only when regulatory rules are applicable", () => {
+    expect(requiredQaChecks("standard")).not.toContain("rule-pack-validation");
+    expect(requiredQaChecks("standard", true)).toContain("rule-pack-validation");
+    expect(publishingGate({ ...ready, rulePackRequired: true, rulePackValidationPassed: false }).failures)
+      .toContain("Applicable regulatory rule-pack validation must pass");
+    expect(publishingGate({ ...ready, rulePackRequired: true, rulePackValidationPassed: true })).toEqual({ ok: true, failures: [] });
+  });
+
   it("adds specialist review and reviewer assignment for YMYL calculators", () => {
     const result = publishingGate({ ...ready, riskClass: "health" });
     expect(result.ok).toBe(false);
