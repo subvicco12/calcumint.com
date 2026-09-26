@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ellipsoidSurfaceAreaApprox } from "./solid-geometry-batch-3";
+import { ellipsoidSurfaceAreaApprox, sphericalSegmentVolume } from "./solid-geometry-batch-3";
 
 describe("solid geometry batch 3 ellipsoid regression", () => {
   it("uses the p=1.6075 Knud Thomsen approximation", () => {
@@ -23,5 +23,25 @@ describe("solid geometry batch 3 ellipsoid regression", () => {
 
   it("uses a Thomsen-specific source rather than the generic geometry source", () => {
     expect(ellipsoidSurfaceAreaApprox.sources[0]?.url).toContain("numericana.com/answer/ellipsoid");
+  });
+});
+
+describe("solid geometry batch 3 spherical segment stability", () => {
+  it("avoids pole-adjacent cancellation for a thin valid segment", () => {
+    const result = sphericalSegmentVolume.calculate({
+      sphereRadiusM: 1,
+      capHeight1M: 2 - 5e-16,
+      capHeight2M: 2.5e-16,
+    });
+    expect(result.value).toBeCloseTo(4.23220365287269e-31, 12);
+  });
+
+  it("preserves the existing worked example", () => {
+    const result = sphericalSegmentVolume.calculate({
+      sphereRadiusM: 5,
+      capHeight1M: 1,
+      capHeight2M: 1,
+    });
+    expect(result.value).toBeCloseTo((472 * Math.PI) / 3, 12);
   });
 });
