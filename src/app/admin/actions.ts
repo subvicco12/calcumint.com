@@ -110,7 +110,7 @@ export async function assignReviewer(formData: FormData) {
 
 const bulkItemSchema = z.object({
   calculatorKey: z.string().min(2).max(160), slug: z.string().regex(/^[a-z0-9-]+$/).max(160), title: z.string().min(2).max(160),
-  category: z.string().min(2).max(100), riskClass: z.enum(["standard", "financial", "health", "tax"]).default("standard"), sourceCount: z.number().int().min(0).max(1000).default(0)
+  category: z.string().min(2).max(100), riskClass: z.enum(["standard", "financial", "health", "tax"]).default("standard"), rulePackRequired: z.boolean().default(false), sourceCount: z.number().int().min(0).max(1000).default(0)
 });
 
 export async function importCalculatorInventory(formData: FormData) {
@@ -120,13 +120,13 @@ export async function importCalculatorInventory(formData: FormData) {
   const parsed = z.array(bulkItemSchema).min(1).max(250).parse(JSON.parse(raw));
   const { data: job, error: jobError } = await supabase.from("calculator_bulk_jobs").insert({ job_type: "inventory-import", requested_by: user.id, status: "processing", payload: { count: parsed.length } }).select("id").single();
   if (jobError) throw new Error(jobError.message);
-  const rows = parsed.map((item) => ({ calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, source_count: item.sourceCount, created_by: user.id }));
-  const { data: inserted, error } = await supabase.from("calculator_catalog_admin").upsert(rows, { onConflict: "calculator_key", ignoreDuplicates: true }).select("id,risk_class");
+  const rows = parsed.map((item) => ({ calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, source_count: item.sourceCount, metadata: { rulePackRequired: item.rulePackRequired }, created_by: user.id }));
+  const { data: inserted, error } = await supabase.from("calculator_catalog_admin").upsert(rows, { onConflict: "calculator_key", ignoreDuplicates: true }).select("id,risk_class,metadata");
   if (error) {
     await supabase.from("calculator_bulk_jobs").update({ status: "failed", error_message: error.message, completed_at: new Date().toISOString() }).eq("id", job.id);
     throw new Error(error.message);
   }
-  const checkRows = (inserted ?? []).flatMap((item) => (String(item.risk_class) === "standard" ? qaCheckTypes.filter((type) => type !== "ymyl-review") : qaCheckTypes).map((checkType) => ({ calculator_id: item.id, check_type: checkType })));
+  const checkRows = (inserted ?? []).flatMap((item) => requiredQaChecks(String(item.risk_class) as "standard" | "financial" | "health" | "tax", item.metadata?.rulePackRequired === true).map((checkType) => ({ calculator_id: item.id, check_type: checkType })));
   if (checkRows.length) await supabase.from("calculator_qa_checks").upsert(checkRows, { onConflict: "calculator_id,check_type", ignoreDuplicates: true });
   await supabase.from("calculator_bulk_jobs").update({ status: "completed", result: { received: parsed.length, inserted: inserted?.length ?? 0 }, completed_at: new Date().toISOString() }).eq("id", job.id);
   revalidatePath("/admin");
