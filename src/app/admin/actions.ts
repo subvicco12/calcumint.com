@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { canTransition, lifecycleStates, qaCheckTypes, roleCanTransition, type AdminRole, type LifecycleState } from "@/lib/admin/publishing";
+import { canTransition, lifecycleStates, qaCheckTypes, requiredQaChecks, roleCanTransition, type AdminRole, type LifecycleState } from "@/lib/admin/publishing";
 
 async function requirePlatformAdmin() {
   const supabase = await createSupabaseServerClient();
@@ -22,6 +22,7 @@ const createSchema = z.object({
   title: z.string().min(2).max(160),
   category: z.string().min(2).max(100),
   riskClass: z.enum(["standard", "financial", "health", "tax"]),
+  rulePackRequired: z.boolean().default(false),
   sourceCount: z.coerce.number().int().min(0).max(1000).default(0)
 });
 
@@ -33,6 +34,7 @@ export async function createCatalogCalculator(formData: FormData) {
     title: formData.get("title"),
     category: formData.get("category"),
     riskClass: formData.get("riskClass"),
+    rulePackRequired: formData.get("rulePackRequired") === "true",
     sourceCount: formData.get("sourceCount")
   });
   const { data, error } = await supabase.from("calculator_catalog_admin").insert({
@@ -42,10 +44,11 @@ export async function createCatalogCalculator(formData: FormData) {
     category: input.category,
     risk_class: input.riskClass,
     source_count: input.sourceCount,
+    metadata: { rulePackRequired: input.rulePackRequired },
     created_by: user.id
   }).select("id").single();
   if (error) throw new Error(error.message);
-  const requiredChecks = input.riskClass === "standard" ? qaCheckTypes.filter((type) => type !== "ymyl-review") : qaCheckTypes;
+  const requiredChecks = requiredQaChecks(input.riskClass, input.rulePackRequired);
   const { error: checkError } = await supabase.from("calculator_qa_checks").insert(requiredChecks.map((checkType) => ({ calculator_id: data.id, check_type: checkType })));
   if (checkError) throw new Error(checkError.message);
   await supabase.from("calculator_review_events").insert({ calculator_id: data.id, actor_id: user.id, event_type: "created", to_state: "draft" });
