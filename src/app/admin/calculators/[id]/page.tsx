@@ -26,7 +26,8 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
   if (!calculator) notFound();
 
   const riskClass = String(calculator.risk_class) as "standard" | "financial" | "health" | "tax";
-  const required = requiredQaChecks(riskClass);
+  const rulePackRequired = calculator.metadata?.rulePackRequired === true;
+  const required = requiredQaChecks(riskClass, rulePackRequired);
   const checkMap = new Map((checks ?? []).map((check) => [String(check.check_type), check]));
   const complete = required.every((type) => ["passed","waived"].includes(String(checkMap.get(type)?.status ?? "pending")));
   const canReview = ["owner","admin","reviewer"].includes(String(admin.role));
