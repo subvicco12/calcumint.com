@@ -8,6 +8,15 @@ const ready = {
   formulaReviewPassed: true,
   sourcesPassed: true,
   methodologyPassed: true,
+  reverseSolvePassed: true,
+  visualizationReconciliationPassed: true,
+  scheduleReconciliationPassed: true,
+  scenarioReconciliationPassed: true,
+  sensitivityValidationPassed: true,
+  entitlementValidationPassed: true,
+  uxResponsivePassed: true,
+  performancePassed: true,
+  securityPassed: true,
   seoContentPassed: true,
   accessibilityPassed: true,
   ymylReviewPassed: false,
@@ -18,6 +27,15 @@ const ready = {
 describe("B10 publishing policy", () => {
   it("allows a standard calculator through when all general gates pass", () => {
     expect(publishingGate(ready)).toEqual({ ok: true, failures: [] });
+  });
+
+  it("blocks certification when final-framework evidence is missing", () => {
+    const result = publishingGate({ ...ready, reverseSolvePassed: false, securityPassed: false });
+    expect(result.ok).toBe(false);
+    expect(result.failures).toContain("Reverse-solve verification must pass or be marked not applicable");
+    expect(result.failures).toContain("Security and server-side entitlement validation must pass");
+    expect(requiredQaChecks("standard")).toContain("sensitivity-validation");
+    expect(requiredQaChecks("standard")).toContain("performance");
   });
 
   it("adds specialist review and reviewer assignment for YMYL calculators", () => {
