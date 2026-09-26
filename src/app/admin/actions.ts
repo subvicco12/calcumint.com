@@ -63,7 +63,7 @@ export async function updateQaCheck(formData: FormData) {
   const checkType = z.enum(qaCheckTypes).parse(formData.get("checkType"));
   const status = z.enum(["pending", "passed", "failed", "waived"]).parse(formData.get("status"));
   const details = String(formData.get("details") ?? "").slice(0, 2000);
-  const { error } = await supabase.from("calculator_qa_checks").update({ status, details, checked_by: user.id, checked_at: new Date().toISOString() }).eq("calculator_id", calculatorId).eq("check_type", checkType);
+  const { error } = await supabase.from("calculator_qa_checks").upsert({ calculator_id: calculatorId, check_type: checkType, status, details, checked_by: user.id, checked_at: new Date().toISOString() }, { onConflict: "calculator_id,check_type" });
   if (error) throw new Error(error.message);
   await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "qa-check", notes: `${checkType}: ${status}` });
   revalidatePath(`/admin/calculators/${calculatorId}`);
