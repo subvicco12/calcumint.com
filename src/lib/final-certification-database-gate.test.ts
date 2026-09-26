@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { qaCheckTypes } from "./admin/publishing";
 
 const migration = readFileSync("supabase/migrations/016_final_certification_evidence_gate.sql", "utf8");
+const rulePackMigration = readFileSync("supabase/migrations/017_regulatory_rule_pack_evidence.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -22,6 +23,13 @@ describe("Final Master database certification gate", () => {
       expect(migration).toContain(`'${checkType}'`);
     }
     expect(migration).toMatch(/coalesce\(v_status, 'pending'\) not in \('passed','waived'\)/i);
+  });
+
+  it("requires regulatory rule-pack evidence only when catalog metadata declares applicability", () => {
+    expect(rulePackMigration).toContain("'rule-pack-validation'");
+    expect(rulePackMigration).toMatch(/metadata ->> 'rulePackRequired'/);
+    expect(rulePackMigration).toMatch(/v_required := array_append\(v_required, 'rule-pack-validation'\)/);
+    expect(rulePackMigration).toMatch(/on conflict \(calculator_id, check_type\) do nothing/i);
   });
 
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
