@@ -4,7 +4,7 @@ export type AdminRole = (typeof adminRoles)[number];
 export const lifecycleStates = ["draft", "review", "certified", "published", "archived"] as const;
 export type LifecycleState = (typeof lifecycleStates)[number];
 
-export const qaCheckTypes = ["engine-tests", "formula-review", "sources", "methodology", "reverse-solve", "visualization-reconciliation", "schedule-reconciliation", "scenario-reconciliation", "sensitivity-validation", "entitlement-validation", "ux-responsive", "performance", "security", "seo-content", "accessibility", "ymyl-review"] as const;
+export const qaCheckTypes = ["engine-tests", "formula-review", "sources", "methodology", "reverse-solve", "visualization-reconciliation", "schedule-reconciliation", "scenario-reconciliation", "sensitivity-validation", "entitlement-validation", "ux-responsive", "performance", "security", "seo-content", "accessibility", "rule-pack-validation", "ymyl-review"] as const;
 export type QaCheckType = (typeof qaCheckTypes)[number];
 
 export type PublishingRecord = {
@@ -25,6 +25,8 @@ export type PublishingRecord = {
   securityPassed: boolean;
   seoContentPassed: boolean;
   accessibilityPassed: boolean;
+  rulePackRequired?: boolean;
+  rulePackValidationPassed?: boolean;
   ymylReviewPassed: boolean;
   reviewerId?: string | null;
   sourceCount: number;
@@ -34,9 +36,10 @@ export function isYmyl(riskClass: PublishingRecord["riskClass"]): boolean {
   return riskClass === "financial" || riskClass === "health" || riskClass === "tax";
 }
 
-export function requiredQaChecks(riskClass: PublishingRecord["riskClass"]): QaCheckType[] {
+export function requiredQaChecks(riskClass: PublishingRecord["riskClass"], rulePackRequired = false): QaCheckType[] {
   const base: QaCheckType[] = ["engine-tests", "formula-review", "sources", "methodology", "reverse-solve", "visualization-reconciliation", "schedule-reconciliation", "scenario-reconciliation", "sensitivity-validation", "entitlement-validation", "ux-responsive", "performance", "security", "seo-content", "accessibility"];
-  return isYmyl(riskClass) ? [...base, "ymyl-review"] : base;
+  const applicable = rulePackRequired ? [...base, "rule-pack-validation" as const] : base;
+  return isYmyl(riskClass) ? [...applicable, "ymyl-review"] : applicable;
 }
 
 export function publishingGate(record: PublishingRecord) {
@@ -56,6 +59,7 @@ export function publishingGate(record: PublishingRecord) {
   if (!record.securityPassed) failures.push("Security and server-side entitlement validation must pass");
   if (!record.seoContentPassed) failures.push("SEO/content completeness gate must pass");
   if (!record.accessibilityPassed) failures.push("Accessibility review must pass");
+  if (record.rulePackRequired && !record.rulePackValidationPassed) failures.push("Applicable regulatory rule-pack validation must pass");
   if (isYmyl(record.riskClass)) {
     if (!record.ymylReviewPassed) failures.push("YMYL specialist review must pass");
     if (!record.reviewerId) failures.push("YMYL calculators require an assigned reviewer");
