@@ -11,7 +11,7 @@ describe("Final Master database certification gate", () => {
     }
   });
 
-  it("requires every non-YMYL Final Master evidence check in the authoritative RPC", () => {
+  it("seeds new evidence checks for existing catalog records", () => {\n    expect(migration).toContain("insert into public.calculator_qa_checks (calculator_id, check_type)");\n    expect(migration).toContain("from public.calculator_catalog_admin c");\n    expect(migration).toContain("on conflict (calculator_id, check_type) do nothing");\n  });\n\n  it("requires every non-YMYL Final Master evidence check in the authoritative RPC", () => {
     for (const checkType of qaCheckTypes.filter((type) => type !== "ymyl-review")) {
       expect(migration).toContain(`'${checkType}'`);
     }
