@@ -8,7 +8,8 @@ const rulePackMigration = readFileSync("supabase/migrations/017_regulatory_rule_
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
     for (const checkType of qaCheckTypes) {
-      expect(migration).toContain(`'${checkType}'`);
+      const authoritativeMigration = checkType === "rule-pack-validation" ? rulePackMigration : migration;
+      expect(authoritativeMigration).toContain(`'${checkType}'`);
     }
   });
 
@@ -19,9 +20,10 @@ describe("Final Master database certification gate", () => {
   });
 
   it("requires every non-YMYL Final Master evidence check in the authoritative RPC", () => {
-    for (const checkType of qaCheckTypes.filter((type) => type !== "ymyl-review")) {
+    for (const checkType of qaCheckTypes.filter((type) => type !== "ymyl-review" && type !== "rule-pack-validation")) {
       expect(migration).toContain(`'${checkType}'`);
     }
+    expect(rulePackMigration).toContain("'rule-pack-validation'");
     expect(migration).toMatch(/coalesce\(v_status, 'pending'\) not in \('passed','waived'\)/i);
   });
 
