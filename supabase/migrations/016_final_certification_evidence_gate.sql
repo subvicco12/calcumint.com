@@ -14,6 +14,18 @@ alter table public.calculator_qa_checks
     'seo-content','accessibility','ymyl-review'
   ));
 
+-- Existing catalog records predate these evidence types. Seed them as pending so the
+-- admin review workspace can display and update every newly required check immediately.
+insert into public.calculator_qa_checks (calculator_id, check_type)
+select c.id, required.check_type
+from public.calculator_catalog_admin c
+cross join unnest(array[
+  'reverse-solve','visualization-reconciliation','schedule-reconciliation',
+  'scenario-reconciliation','sensitivity-validation','entitlement-validation',
+  'ux-responsive','performance','security'
+]) as required(check_type)
+on conflict (calculator_id, check_type) do nothing;
+
 create or replace function public.validate_calculator_publish_gate(p_calculator_id uuid)
 returns table(ok boolean, failures text[])
 language plpgsql
