@@ -33,7 +33,8 @@ describe("solid geometry batch 3 spherical segment stability", () => {
       capHeight1M: 2 - 5e-16,
       capHeight2M: 2.5e-16,
     });
-    expect(result.value).toBeCloseTo(4.23220365287269e-31, 12);
+    const expected = 4.23220365287269e-31;
+    expect(result.value / expected).toBeCloseTo(1, 12);
   });
 
   it("preserves the existing worked example", () => {
