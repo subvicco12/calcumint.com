@@ -8,6 +8,16 @@ declare
   v_failures text[];
   v_role text;
 begin
+  if new.publish_at is distinct from old.publish_at and auth.role() <> 'service_role' then
+    select role into v_role
+    from public.platform_admins
+    where user_id = auth.uid() and active;
+
+    if v_role not in ('owner','admin') or v_role is null then
+      raise exception 'Owner or admin required to schedule publication';
+    end if;
+  end if;
+
   if new.lifecycle is distinct from old.lifecycle then
     if not (
       (old.lifecycle = 'draft' and new.lifecycle in ('review','archived')) or
