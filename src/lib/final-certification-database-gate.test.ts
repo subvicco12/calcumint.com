@@ -9,6 +9,7 @@ const lifecycleEnforcementMigration = readFileSync("supabase/migrations/019_auth
 const postCertificationRevalidationMigration = readFileSync("supabase/migrations/020_post_certification_revalidation.sql", "utf8");
 const rulePackProvenanceMigration = readFileSync("supabase/migrations/021_require_rule_pack_provenance.sql", "utf8");
 const reviewerAuthorityMigration = readFileSync("supabase/migrations/022_harden_reviewer_waiver_authority.sql", "utf8");
+const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
