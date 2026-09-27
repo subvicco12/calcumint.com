@@ -179,7 +179,8 @@ describe("Final Master database certification gate", () => {
 
 
   it("enforces reviewer assignment authority at the database boundary", () => {
-    expect(reviewerAssignmentMigration).toContain("before update of reviewer_id");
+    expect(reviewerAssignmentMigration).toContain("before insert or update of reviewer_id");
+    expect(reviewerAssignmentMigration).toContain("tg_op = 'INSERT' and new.reviewer_id is null");
     expect(reviewerAssignmentMigration).toContain("v_role not in ('owner','admin')");
     expect(reviewerAssignmentMigration).toContain("Owner or admin required to assign calculator reviewer");
     expect(reviewerAssignmentMigration).toContain("role in ('owner','admin','reviewer')");
