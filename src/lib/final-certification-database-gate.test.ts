@@ -141,4 +141,11 @@ describe("Final Master database certification gate", () => {
     expect(migration).toMatch(/auth\.role\(\) <> 'service_role' and not public\.is_platform_admin\(\)/i);
     expect(migration).toMatch(/revoke execute on function public\.validate_calculator_publish_gate\(uuid\) from public, anon/i);
   });
+
+  it("does not treat absent registry rule metadata as proof of non-applicability", () => {
+    expect(adminActions).toContain("input.rulePackRequired || registryRegulatory.rulePackRequired");
+    expect(adminActions).toContain("item.rulePackRequired || registryRegulatory.rulePackRequired");
+    expect(adminActions).not.toContain("registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired");
+  });
+
 });
