@@ -10,6 +10,7 @@ import { solidGeometryBatch7Definitions } from "./solid-geometry-batch-7";
 import { solidGeometryBatch8Definitions } from "./solid-geometry-batch-8";
 import { solidGeometryBatch9Definitions } from "./solid-geometry-batch-9";
 import { solidGeometryBatch10Definitions } from "./solid-geometry-batch-10";
+import { solidGeometryReconciliationManifest } from "./solid-geometry-reconciliation";
 
 const batchDefinitions = [
   ...solidGeometryBatch1Definitions,
@@ -56,6 +57,18 @@ describe("solid geometry explicit batch integrity", () => {
     expect(batchDefinitions).toHaveLength(50);
     expect(batchDefinitions.every((definition) => definition.reviewStatus === "draft")).toBe(true);
     expect(batchDefinitions.filter((definition) => masterCatalogNamedSolidTitles.has(definition.title))).toEqual([]);
+  });
+
+  it("requires exactly one non-authoritative reconciliation disposition for every Batch 1–10 calculator", () => {
+    const batchTitles = batchDefinitions.map((definition) => definition.title).sort();
+    const manifestTitles = solidGeometryReconciliationManifest.map((entry) => entry.title).sort();
+    expect(solidGeometryReconciliationManifest).toHaveLength(50);
+    expect(new Set(manifestTitles).size).toBe(50);
+    expect(manifestTitles).toEqual(batchTitles);
+    expect(solidGeometryReconciliationManifest.every((entry) => entry.certificationAuthority === false)).toBe(true);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.disposition === "volume-family-proposal")).toHaveLength(26);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.disposition === "surface-area-family-proposal")).toHaveLength(22);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.disposition === "explicit-expansion-required")).toHaveLength(2);
   });
 
   it("registers every explicit batch calculator without identity drift", () => {
