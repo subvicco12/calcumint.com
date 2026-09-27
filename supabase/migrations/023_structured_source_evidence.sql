@@ -37,30 +37,6 @@ with check (
 create policy "source_evidence_admin_delete" on public.calculator_source_evidence
 for delete using (public.has_platform_role(array['owner','admin']));
 
-create or replace function public.enforce_source_evidence_certification()
-returns trigger language plpgsql security definer set search_path = public as $$
-declare
-  v_calculator_id uuid;
-  v_lifecycle text;
-  v_ok boolean;
-  v_failures text[];
-begin
-  v_calculator_id := coalesce(new.calculator_id, old.calculator_id);
-  select lifecycle into v_lifecycle from public.calculator_catalog_admin where id = v_calculator_id;
-  if v_lifecycle in ('certified','published') then
-    select ok, failures into v_ok, v_failures from public.validate_calculator_publish_gate(v_calculator_id);
-    if not v_ok then
-      raise exception 'Certified calculator source evidence cannot become invalid: %', array_to_string(v_failures, '; ');
-    end if;
-  end if;
-  return case when tg_op = 'DELETE' then old else new end;
-end;
-$$;
-
-create constraint trigger calculator_source_evidence_certification_after_write
-after insert or update or delete on public.calculator_source_evidence
-deferrable initially deferred
-for each row execute function public.enforce_source_evidence_certification();
 
 -- Extend the current authoritative gate without weakening migration 022 semantics.
 create or replace function public.validate_calculator_publish_gate(p_calculator_id uuid)
@@ -136,3 +112,51 @@ $$;
 
 revoke execute on function public.validate_calculator_publish_gate(uuid) from public, anon;
 grant execute on function public.validate_calculator_publish_gate(uuid) to authenticated, service_role;
+
+-- source_count is derived from structured evidence, never maintained by a second client transaction.
+create or replace function public.sync_source_evidence_count()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare v_calculator_id uuid;
+begin
+  v_calculator_id := coalesce(new.calculator_id, old.calculator_id);
+  update public.calculator_catalog_admin
+  set source_count = (select count(*)::integer from public.calculator_source_evidence where calculator_id = v_calculator_id)
+  where id = v_calculator_id;
+  return case when tg_op = 'DELETE' then old else new end;
+end;
+$$;
+
+create trigger calculator_source_evidence_sync_count_after_write
+after insert or update or delete on public.calculator_source_evidence
+for each row execute function public.sync_source_evidence_count();
+
+create or replace function public.enforce_source_evidence_certification()
+returns trigger language plpgsql security definer set search_path = public as $$
+declare v_calculator_id uuid; v_lifecycle text; v_ok boolean; v_failures text[];
+begin
+  v_calculator_id := coalesce(new.calculator_id, old.calculator_id);
+  select lifecycle into v_lifecycle from public.calculator_catalog_admin where id = v_calculator_id;
+  if v_lifecycle in ('certified','published') then
+    select ok, failures into v_ok, v_failures from public.validate_calculator_publish_gate(v_calculator_id);
+    if not v_ok then raise exception 'Certified calculator source evidence cannot become invalid: %', array_to_string(v_failures, '; '); end if;
+  end if;
+  return case when tg_op = 'DELETE' then old else new end;
+end;
+$$;
+
+create constraint trigger calculator_source_evidence_certification_after_write
+after insert or update or delete on public.calculator_source_evidence
+deferrable initially deferred
+for each row execute function public.enforce_source_evidence_certification();
+
+-- Do not leave legacy certifications stale under the stronger evidence model.
+-- No source records are invented: affected records must be reviewed and supplied with real evidence.
+update public.calculator_catalog_admin
+set lifecycle = 'review',
+    publish_at = null,
+    updated_at = now()
+where lifecycle in ('certified','published')
+  and not exists (
+    select 1 from public.calculator_source_evidence s
+    where s.calculator_id = calculator_catalog_admin.id
+  );
