@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { assignReviewer, transitionCalculator, updateQaCheck } from "../../actions";
+import { addCalculatorSourceEvidence, assignReviewer, transitionCalculator, updateQaCheck } from "../../actions";
 import { scheduleCalculatorPublication } from "../../schedule-actions";
 import { requiredQaChecks } from "@/lib/admin/publishing";
 
@@ -17,11 +17,12 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
   const { data: admin } = await supabase.from("platform_admins").select("role,active").eq("user_id", user.id).maybeSingle();
   if (!admin?.active) redirect("/admin");
 
-  const [{ data: calculator }, { data: checks }, { data: events }, { data: reviewers }] = await Promise.all([
+  const [{ data: calculator }, { data: checks }, { data: events }, { data: reviewers }, { data: sources }] = await Promise.all([
     supabase.from("calculator_catalog_admin").select("*").eq("id", id).maybeSingle(),
     supabase.from("calculator_qa_checks").select("id,check_type,status,details,checked_by,checked_at").eq("calculator_id", id).order("check_type"),
     supabase.from("calculator_review_events").select("id,event_type,from_state,to_state,notes,created_at").eq("calculator_id", id).order("created_at", { ascending: false }).limit(30),
-    supabase.from("platform_admins").select("user_id,role,active").eq("active", true)
+    supabase.from("platform_admins").select("user_id,role,active").eq("active", true),
+    supabase.from("calculator_source_evidence").select("id,label,url,source_kind,reviewed_by,reviewed_at").eq("calculator_id", id).order("reviewed_at", { ascending: false })
   ]);
   if (!calculator) notFound();
 
@@ -55,6 +56,11 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
     {canAssign && calculator.lifecycle === "certified" && <article className="card section"><span className="eyebrow">Publication scheduling</span><h2>Schedule certified calculator</h2><form className="inline-form" action={scheduleCalculatorPublication}><input type="hidden" name="calculatorId" value={id}/><input name="publishAt" type="datetime-local" required/><button className="button primary" type="submit">Schedule publication</button></form><p className="muted-copy">Current schedule: {calculator.publish_at ? new Date(calculator.publish_at).toLocaleString() : "not scheduled"}. The protected worker re-checks every QA gate before publication.</p></article>}
 
     {canAssign && <article className="card section"><span className="eyebrow">Reviewer</span><h2>Assign accountable reviewer</h2><form className="inline-form" action={assignReviewer}><input type="hidden" name="calculatorId" value={id}/><select name="reviewerId" required defaultValue={calculator.reviewer_id ?? ""}><option value="" disabled>Select reviewer</option>{(reviewers ?? []).filter((item) => ["owner","admin","reviewer"].includes(String(item.role))).map((item) => <option key={item.user_id} value={item.user_id}>{item.role} · {String(item.user_id).slice(0,8)}…</option>)}</select><button className="button secondary" type="submit">Assign</button></form></article>}
+
+    <article className="card section"><span className="eyebrow">Source evidence</span><h2>Reviewed authoritative references</h2>
+      {canReview && <form className="inline-form" action={addCalculatorSourceEvidence}><input type="hidden" name="calculatorId" value={id}/><input name="label" placeholder="Source label" required minLength={2}/><input name="url" type="url" placeholder="https://…" required/><select name="sourceKind" defaultValue="reference"><option value="reference">Reference</option><option value="official">Official</option><option value="methodology">Methodology</option></select><button className="button secondary" type="submit">Add reviewed source</button></form>}
+      {sources?.length ? <ul className="admin-list">{sources.map((source) => <li key={source.id}><strong>{source.label}</strong> · {source.source_kind} · <a href={source.url} target="_blank" rel="noreferrer">open source</a> · reviewed {new Date(source.reviewed_at).toLocaleString()}</li>)}</ul> : <p>No structured reviewed source evidence recorded. Certification remains blocked.</p>}
+    </article>
 
     <article className="card section"><span className="eyebrow">Quality gates</span><h2>Required checks</h2><div className="qa-grid">{required.map((type) => {
       const check = checkMap.get(type);
