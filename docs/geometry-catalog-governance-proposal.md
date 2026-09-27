@@ -52,6 +52,7 @@ No option is selected by this document.
 Issue #235 can close when a source-of-truth governance decision explicitly:
 - approves or rejects the family-authorization model;
 - if approved, records the 22 children of 274 and 26 children of 275;
+- if rejected, records an explicit alternative disposition for all 48 proposed family members (for example dedicated catalog rows/families or retirement), so no draft identity remains unreconciled;
 - records one explicit disposition for both diagonal calculators;
 - preserves independent Final publish-gate certification for every child;
 - leaves all affected calculators DRAFT until certification actually passes.
