@@ -8,6 +8,7 @@ const rulePackHardeningMigration = readFileSync("supabase/migrations/018_harden_
 const lifecycleEnforcementMigration = readFileSync("supabase/migrations/019_authoritative_lifecycle_enforcement.sql", "utf8");
 const postCertificationRevalidationMigration = readFileSync("supabase/migrations/020_post_certification_revalidation.sql", "utf8");
 const rulePackProvenanceMigration = readFileSync("supabase/migrations/021_require_rule_pack_provenance.sql", "utf8");
+const reviewerAuthorityMigration = readFileSync("supabase/migrations/022_harden_reviewer_waiver_authority.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -108,6 +109,26 @@ describe("Final Master database certification gate", () => {
   it("rejects evidence mutations that would leave certification invalid", () => {
     expect(postCertificationRevalidationMigration).toContain("Certified calculator evidence cannot become invalid");
     expect(postCertificationRevalidationMigration).toContain("coalesce(new.calculator_id, old.calculator_id)");
+  });
+
+
+  it("requires an active review-capable reviewer for YMYL certification", () => {
+    expect(reviewerAuthorityMigration).toContain("user_id = v_calc.reviewer_id");
+    expect(reviewerAuthorityMigration).toContain("and active");
+    expect(reviewerAuthorityMigration).toContain("role in ('owner','admin','reviewer')");
+    expect(reviewerAuthorityMigration).toContain("Active review-capable YMYL reviewer is required");
+  });
+
+  it("binds authenticated QA evidence to its real reviewer and restricts waivers", () => {
+    expect(reviewerAuthorityMigration).toContain("new.checked_by is distinct from auth.uid()");
+    expect(reviewerAuthorityMigration).toContain("QA evidence checked_by must match the authenticated reviewer");
+    expect(reviewerAuthorityMigration).toContain("new.status = 'waived' and v_role not in ('owner','admin')");
+    expect(reviewerAuthorityMigration).toContain("Owner or admin required to waive QA evidence");
+    expect(reviewerAuthorityMigration).toContain("new.status <> 'pending'");
+    expect(reviewerAuthorityMigration).toContain("case when tg_op = 'DELETE' then old else new end");
+    expect(reviewerAuthorityMigration).toContain("protect_active_ymyl_reviewer_authority");
+    expect(reviewerAuthorityMigration).toContain("Reassign or decertify governed YMYL calculators before removing reviewer authority");
+    expect(reviewerAuthorityMigration).toContain("tg_op = 'DELETE' and v_role not in ('owner','admin')");
   });
 
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
