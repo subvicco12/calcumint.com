@@ -157,6 +157,10 @@ describe("Final Master database certification gate", () => {
     expect(sourceEvidenceMigration).toContain("reviewed_by = auth.uid()");
     expect(sourceEvidenceMigration).toContain("At least one reviewed source evidence record is required");
     expect(sourceEvidenceMigration).toContain("Source count must match structured reviewed source evidence");
+    expect(sourceEvidenceMigration).toContain("calculator_source_evidence_sync_count_after_write");
+    expect(sourceEvidenceMigration).toContain("set source_count = (select count(*)::integer");
+    expect(sourceEvidenceMigration).toContain("set lifecycle = 'review'");
+    expect(sourceEvidenceMigration).toContain("where lifecycle in ('certified','published')");
     expect(sourceEvidenceMigration).not.toContain("insert into public.calculator_source_evidence");
   });
 
