@@ -11,6 +11,7 @@ const rulePackProvenanceMigration = readFileSync("supabase/migrations/021_requir
 const reviewerAuthorityMigration = readFileSync("supabase/migrations/022_harden_reviewer_waiver_authority.sql", "utf8");
 const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
 const sourceEvidenceMigration = readFileSync("supabase/migrations/023_structured_source_evidence.sql", "utf8");
+const reviewerAssignmentMigration = readFileSync("supabase/migrations/024_reviewer_assignment_authority.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -174,6 +175,16 @@ describe("Final Master database certification gate", () => {
     expect(sourceEvidenceMigration).toContain("calculator_source_evidence_certification_after_write");
     expect(sourceEvidenceMigration).toContain("deferrable initially deferred");
     expect(sourceEvidenceMigration).toContain("Certified calculator source evidence cannot become invalid");
+  });
+
+
+  it("enforces reviewer assignment authority at the database boundary", () => {
+    expect(reviewerAssignmentMigration).toContain("before update of reviewer_id");
+    expect(reviewerAssignmentMigration).toContain("v_role not in ('owner','admin')");
+    expect(reviewerAssignmentMigration).toContain("Owner or admin required to assign calculator reviewer");
+    expect(reviewerAssignmentMigration).toContain("role in ('owner','admin','reviewer')");
+    expect(reviewerAssignmentMigration).toContain("Reviewer must be an active review-capable admin");
+    expect(reviewerAssignmentMigration).toContain("auth.role() <> 'service_role'");
   });
 
 });
