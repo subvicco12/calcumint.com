@@ -65,6 +65,7 @@ export async function updateQaCheck(formData: FormData) {
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
   const checkType = z.enum(qaCheckTypes).parse(formData.get("checkType"));
   const status = z.enum(["pending", "passed", "failed", "waived"]).parse(formData.get("status"));
+  if (status === "waived" && !(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Owner or admin permission required to waive QA evidence");
   const details = String(formData.get("details") ?? "").slice(0, 2000);
   const { error } = await supabase.from("calculator_qa_checks").upsert({ calculator_id: calculatorId, check_type: checkType, status, details, checked_by: user.id, checked_at: new Date().toISOString() }, { onConflict: "calculator_id,check_type" });
   if (error) throw new Error(error.message);
