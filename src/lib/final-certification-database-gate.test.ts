@@ -62,6 +62,9 @@ describe("Final Master database certification gate", () => {
     expect(lifecycleEnforcementMigration).toContain("v_role = 'editor' and new.lifecycle not in ('draft','review')");
     expect(lifecycleEnforcementMigration).toContain("v_role = 'reviewer' and new.lifecycle = 'published'");
     expect(lifecycleEnforcementMigration).toContain("from public.validate_calculator_publish_gate(new.id)");
+    expect(lifecycleEnforcementMigration).toContain("new.publish_at is distinct from old.publish_at");
+    expect(lifecycleEnforcementMigration).toContain("v_role not in ('owner','admin')");
+    expect(lifecycleEnforcementMigration).toContain("Owner or admin required to schedule publication");
   });
 
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
