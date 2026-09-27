@@ -50,7 +50,7 @@ describe("Final Master database certification gate", () => {
 
   it("fails closed when rule-pack applicability lacks complete regulatory provenance", () => {
     expect(rulePackProvenanceMigration).toContain("metadata -> 'ruleMetadata'");
-    expect(rulePackProvenanceMigration).toContain("jsonb_array_length(v_calc.metadata -> 'ruleMetadata') = 0");
+    expect(rulePackProvenanceMigration).toContain("coalesce(jsonb_array_length(v_calc.metadata -> 'ruleMetadata'), 0) = 0");
     expect(rulePackProvenanceMigration).toContain("'{jurisdiction,country}'");
     expect(rulePackProvenanceMigration).toContain("'ruleVersion'");
     expect(rulePackProvenanceMigration).toContain("'effectiveFrom'");
