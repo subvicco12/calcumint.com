@@ -4,6 +4,7 @@ import { qaCheckTypes } from "./admin/publishing";
 
 const migration = readFileSync("supabase/migrations/016_final_certification_evidence_gate.sql", "utf8");
 const rulePackMigration = readFileSync("supabase/migrations/017_regulatory_rule_pack_evidence.sql", "utf8");
+const rulePackHardeningMigration = readFileSync("supabase/migrations/018_harden_rule_pack_required_metadata.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -34,9 +35,11 @@ describe("Final Master database certification gate", () => {
     expect(rulePackMigration).toMatch(/on conflict \(calculator_id, check_type\) do nothing/i);
   });
 
-  it("parses rulePackRequired without unsafe boolean casts", () => {
-    expect(rulePackMigration).not.toMatch(/rulePackRequired'\)\s*::boolean/i);
-    expect(rulePackMigration.match(/lower\(trim\(coalesce\([^\n]*rulePackRequired[^\n]*\)\)\) = 'true'/g)).toHaveLength(2);
+  it("ships safe rulePackRequired parsing as a forward migration", () => {
+    expect(rulePackHardeningMigration).not.toMatch(/rulePackRequired\')\\s*::boolean/i);
+    expect(rulePackHardeningMigration.match(/lower\\(trim\\(coalesce\\([^\\n]*rulePackRequired[^\\n]*\\)\\)\\) = \'true\'/g)).toHaveLength(2);
+    expect(rulePackHardeningMigration).toContain("create or replace function public.validate_calculator_publish_gate");
+    expect(rulePackHardeningMigration).toContain("insert into public.calculator_qa_checks (calculator_id, check_type)");
   });
 
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
