@@ -17,6 +17,8 @@ declare
   v_check text;
   v_status text;
   v_rule jsonb;
+  v_source jsonb;
+  v_date text;
 begin
   if auth.role() <> 'service_role' and not public.is_platform_admin() then raise exception 'Platform admin required'; end if;
   select * into v_calc from public.calculator_catalog_admin where id = p_calculator_id;
@@ -25,23 +27,50 @@ begin
 
   if lower(trim(coalesce(v_calc.metadata ->> 'rulePackRequired', ''))) = 'true' then
     v_required := array_append(v_required, 'rule-pack-validation');
-    if jsonb_typeof(v_calc.metadata -> 'ruleMetadata') <> 'array'
-       or jsonb_array_length(v_calc.metadata -> 'ruleMetadata') = 0 then
+    if coalesce(jsonb_typeof(v_calc.metadata -> 'ruleMetadata'), '') <> 'array'
+       or coalesce(jsonb_array_length(v_calc.metadata -> 'ruleMetadata'), 0) = 0 then
       v_failures := array_append(v_failures, 'Complete regulatory rule metadata is required');
     else
       for v_rule in select value from jsonb_array_elements(v_calc.metadata -> 'ruleMetadata') loop
         if trim(coalesce(v_rule #>> '{jurisdiction,country}', '')) = ''
            or trim(coalesce(v_rule ->> 'ruleVersion', '')) = ''
-           or coalesce(v_rule ->> 'effectiveFrom', '') !~ '^\d{4}-\d{2}-\d{2}$'
-           or coalesce(v_rule ->> 'lastVerifiedAt', '') !~ '^\d{4}-\d{2}-\d{2}$'
-           or jsonb_typeof(v_rule -> 'officialSources') <> 'array'
-           or jsonb_array_length(v_rule -> 'officialSources') = 0 then
+           or coalesce(v_rule ->> 'effectiveFrom', '') !~ '^\\d{4}-\\d{2}-\\d{2}$'
+           or coalesce(v_rule ->> 'lastVerifiedAt', '') !~ '^\\d{4}-\\d{2}-\\d{2}$'
+           or coalesce(jsonb_typeof(v_rule -> 'officialSources'), '') <> 'array'
+           or coalesce(jsonb_array_length(v_rule -> 'officialSources'), 0) = 0 then
           v_failures := array_append(v_failures, 'Regulatory rule metadata is incomplete');
           exit;
         end if;
+        foreach v_date in array array[v_rule ->> 'effectiveFrom', v_rule ->> 'lastVerifiedAt'] loop
+          begin
+            if to_char(v_date::date, 'YYYY-MM-DD') <> v_date then raise exception 'invalid date'; end if;
+          exception when others then
+            v_failures := array_append(v_failures, 'Regulatory rule metadata contains an invalid date');
+            exit;
+          end;
+        end loop;
+        if array_position(v_failures, 'Regulatory rule metadata contains an invalid date') is not null then exit; end if;
+        if v_rule ? 'effectiveTo' then
+          v_date := v_rule ->> 'effectiveTo';
+          begin
+            if v_date !~ '^\\d{4}-\\d{2}-\\d{2}$' or to_char(v_date::date, 'YYYY-MM-DD') <> v_date
+               or v_date::date < (v_rule ->> 'effectiveFrom')::date then raise exception 'invalid effective period'; end if;
+          exception when others then
+            v_failures := array_append(v_failures, 'Regulatory rule metadata contains an invalid effective period');
+            exit;
+          end;
+        end if;
+        for v_source in select value from jsonb_array_elements(v_rule -> 'officialSources') loop
+          if jsonb_typeof(v_source) <> 'object'
+             or trim(coalesce(v_source ->> 'label', '')) = ''
+             or trim(coalesce(v_source ->> 'url', '')) = '' then
+            v_failures := array_append(v_failures, 'Regulatory official sources require labels and URLs');
+            exit;
+          end if;
+        end loop;
+        if array_position(v_failures, 'Regulatory official sources require labels and URLs') is not null then exit; end if;
       end loop;
-    end if;
-  end if;
+    end if;  end if;
 
   if v_calc.risk_class in ('financial','health','tax') then
     v_required := array_append(v_required, 'ymyl-review');
