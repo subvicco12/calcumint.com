@@ -24,6 +24,14 @@ const batchDefinitions = [
   ...solidGeometryBatch10Definitions,
 ] as const;
 
+const masterCatalogNamedSolidTitles = new Set([
+  "Sphere Volume Calculator",
+  "Sphere Surface Area Calculator",
+  "Cylinder Volume Calculator",
+  "Cone Volume Calculator",
+  "Rectangular Prism Volume Calculator",
+]);
+
 describe("solid geometry explicit batch integrity", () => {
   it("contains exactly ten five-calculator batches", () => {
     expect(batchDefinitions).toHaveLength(50);
@@ -42,6 +50,12 @@ describe("solid geometry explicit batch integrity", () => {
       expect(definition.examples.length).toBeGreaterThan(0);
       expect(definition.goldenTests.length).toBeGreaterThan(0);
     }
+  });
+
+  it("keeps unreconciled Batch 1–10 inventory distinct from explicitly named Master Catalog solids", () => {
+    expect(batchDefinitions).toHaveLength(50);
+    expect(batchDefinitions.every((definition) => definition.reviewStatus === "draft")).toBe(true);
+    expect(batchDefinitions.filter((definition) => masterCatalogNamedSolidTitles.has(definition.title))).toEqual([]);
   });
 
   it("registers every explicit batch calculator without identity drift", () => {
