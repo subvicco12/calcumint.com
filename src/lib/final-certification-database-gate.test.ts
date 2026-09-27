@@ -6,6 +6,7 @@ const migration = readFileSync("supabase/migrations/016_final_certification_evid
 const rulePackMigration = readFileSync("supabase/migrations/017_regulatory_rule_pack_evidence.sql", "utf8");
 const rulePackHardeningMigration = readFileSync("supabase/migrations/018_harden_rule_pack_required_metadata.sql", "utf8");
 const lifecycleEnforcementMigration = readFileSync("supabase/migrations/019_authoritative_lifecycle_enforcement.sql", "utf8");
+const postCertificationRevalidationMigration = readFileSync("supabase/migrations/020_post_certification_revalidation.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -65,6 +66,29 @@ describe("Final Master database certification gate", () => {
     expect(lifecycleEnforcementMigration).toContain("new.publish_at is distinct from old.publish_at");
     expect(lifecycleEnforcementMigration).toContain("v_role not in ('owner','admin')");
     expect(lifecycleEnforcementMigration).toContain("Owner or admin required to schedule publication");
+  });
+
+
+  it("revalidates certified and published calculators after gate-sensitive catalog changes", () => {
+    expect(postCertificationRevalidationMigration).toContain("new.risk_class is distinct from old.risk_class");
+    expect(postCertificationRevalidationMigration).toContain("new.source_count is distinct from old.source_count");
+    expect(postCertificationRevalidationMigration).toContain("new.reviewer_id is distinct from old.reviewer_id");
+    expect(postCertificationRevalidationMigration).toContain("new.metadata is distinct from old.metadata");
+    expect(postCertificationRevalidationMigration).toContain("new.lifecycle in ('certified','published') and v_gate_sensitive_change");
+    expect(postCertificationRevalidationMigration).toContain("from public.validate_calculator_publish_gate(new.id)");
+  });
+
+  it("revalidates QA evidence writes for certified and published calculators", () => {
+    expect(postCertificationRevalidationMigration).toContain("create or replace function public.enforce_qa_evidence_certification()");
+    expect(postCertificationRevalidationMigration).toContain("v_lifecycle in ('certified','published')");
+    expect(postCertificationRevalidationMigration).toContain("from public.validate_calculator_publish_gate(v_calculator_id)");
+    expect(postCertificationRevalidationMigration).toContain("after insert or update or delete on public.calculator_qa_checks");
+    expect(postCertificationRevalidationMigration).toContain("deferrable initially deferred");
+  });
+
+  it("rejects evidence mutations that would leave certification invalid", () => {
+    expect(postCertificationRevalidationMigration).toContain("Certified calculator evidence cannot become invalid");
+    expect(postCertificationRevalidationMigration).toContain("coalesce(new.calculator_id, old.calculator_id)");
   });
 
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
