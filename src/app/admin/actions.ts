@@ -72,10 +72,6 @@ export async function addCalculatorSourceEvidence(formData: FormData) {
     calculator_id: calculatorId, label, url, source_kind: sourceKind, reviewed_by: user.id
   });
   if (error) throw new Error(error.message);
-  const { count, error: countError } = await supabase.from("calculator_source_evidence").select("id", { count: "exact", head: true }).eq("calculator_id", calculatorId);
-  if (countError) throw new Error(countError.message);
-  const { error: catalogError } = await supabase.from("calculator_catalog_admin").update({ source_count: count ?? 0 }).eq("id", calculatorId);
-  if (catalogError) throw new Error(catalogError.message);
   revalidatePath(`/admin/calculators/${calculatorId}`);
 }
 
