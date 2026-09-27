@@ -58,6 +58,10 @@ describe("Final Master database certification gate", () => {
     expect(rulePackProvenanceMigration).toContain("'lastVerifiedAt'");
     expect(rulePackProvenanceMigration).toContain("Complete regulatory rule metadata is required");
     expect(rulePackProvenanceMigration).toContain("Regulatory rule metadata is incomplete");
+    expect(rulePackProvenanceMigration).toContain("coalesce(jsonb_typeof(v_calc.metadata -> 'ruleMetadata'), '') <> 'array'");
+    expect(rulePackProvenanceMigration).toContain("Regulatory official sources require labels and URLs");
+    expect(rulePackProvenanceMigration).toContain("Regulatory rule metadata contains an invalid date");
+    expect(rulePackProvenanceMigration).toContain("Regulatory rule metadata contains an invalid effective period");
     expect(rulePackProvenanceMigration).toContain("v_required := array_append(v_required, 'rule-pack-validation')");
   });
 
