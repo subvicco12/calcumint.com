@@ -9,6 +9,7 @@ const lifecycleEnforcementMigration = readFileSync("supabase/migrations/019_auth
 const postCertificationRevalidationMigration = readFileSync("supabase/migrations/020_post_certification_revalidation.sql", "utf8");
 const rulePackProvenanceMigration = readFileSync("supabase/migrations/021_require_rule_pack_provenance.sql", "utf8");
 const reviewerAuthorityMigration = readFileSync("supabase/migrations/022_harden_reviewer_waiver_authority.sql", "utf8");
+const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -141,4 +142,11 @@ describe("Final Master database certification gate", () => {
     expect(migration).toMatch(/auth\.role\(\) <> 'service_role' and not public\.is_platform_admin\(\)/i);
     expect(migration).toMatch(/revoke execute on function public\.validate_calculator_publish_gate\(uuid\) from public, anon/i);
   });
+
+  it("does not treat absent registry rule metadata as proof of non-applicability", () => {
+    expect(adminActions).toContain("input.rulePackRequired || registryRegulatory.rulePackRequired");
+    expect(adminActions).toContain("item.rulePackRequired || registryRegulatory.rulePackRequired");
+    expect(adminActions).not.toContain("registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired");
+  });
+
 });
