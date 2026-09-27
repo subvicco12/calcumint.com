@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildCatalogRegulatoryMetadata, serializeRuleMetadata, validateCalculatorRuleMetadata } from "./regulatory-metadata";
+import { calculatorRegistry } from "./registry";
 
 const complete = {
   jurisdiction: { country: "in" },
@@ -41,5 +42,12 @@ describe("calculator regulatory metadata binding", () => {
   it("derives rulePackRequired from actual rule metadata", () => {
     expect(buildCatalogRegulatoryMetadata({ ruleMetadata: [] })).toEqual({ rulePackRequired: false, ruleMetadata: [] });
     expect(buildCatalogRegulatoryMetadata({ ruleMetadata: [complete] }).rulePackRequired).toBe(true);
+  });
+  it("keeps every registry ruleMetadata entry structurally complete", () => {
+    for (const definition of calculatorRegistry.list()) {
+      for (const metadata of definition.ruleMetadata ?? []) {
+        expect(validateCalculatorRuleMetadata(metadata), definition.slug).toEqual([]);
+      }
+    }
   });
 });
