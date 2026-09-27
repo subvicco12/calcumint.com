@@ -121,12 +121,14 @@ export async function importCalculatorInventory(formData: FormData) {
   if (!(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Admin permission required");
   const raw = String(formData.get("inventory") ?? "");
   const parsed = z.array(bulkItemSchema).min(1).max(250).parse(JSON.parse(raw));
-  const { data: job, error: jobError } = await supabase.from("calculator_bulk_jobs").insert({ job_type: "inventory-import", requested_by: user.id, status: "processing", payload: { count: parsed.length } }).select("id").single();
-  if (jobError) throw new Error(jobError.message);
+  // Resolve and validate deterministic registry identities before creating a processing job.
+  // A conflicting id/slug must fail without leaving an orphaned job row behind.
   const rows = parsed.map((item) => {
     const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: item.calculatorKey, slug: item.slug });
     return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, source_count: item.sourceCount, metadata: registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: item.rulePackRequired }, created_by: user.id };
   });
+  const { data: job, error: jobError } = await supabase.from("calculator_bulk_jobs").insert({ job_type: "inventory-import", requested_by: user.id, status: "processing", payload: { count: parsed.length } }).select("id").single();
+  if (jobError) throw new Error(jobError.message);
   const { data: inserted, error } = await supabase.from("calculator_catalog_admin").upsert(rows, { onConflict: "calculator_key", ignoreDuplicates: true }).select("id,risk_class,metadata");
   if (error) {
     await supabase.from("calculator_bulk_jobs").update({ status: "failed", error_message: error.message, completed_at: new Date().toISOString() }).eq("id", job.id);
