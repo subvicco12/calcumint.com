@@ -39,7 +39,8 @@ export async function createCatalogCalculator(formData: FormData) {
     sourceCount: formData.get("sourceCount")
   });
   const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: input.calculatorKey, slug: input.slug });
-  const regulatoryMetadata = registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: input.rulePackRequired };
+  const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
+  const regulatoryMetadata = registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired };
   const { data, error } = await supabase.from("calculator_catalog_admin").insert({
     calculator_key: input.calculatorKey,
     slug: input.slug,
@@ -51,7 +52,7 @@ export async function createCatalogCalculator(formData: FormData) {
     created_by: user.id
   }).select("id").single();
   if (error) throw new Error(error.message);
-  const requiredChecks = requiredQaChecks(input.riskClass, registryRegulatory.matched ? registryRegulatory.rulePackRequired : input.rulePackRequired);
+  const requiredChecks = requiredQaChecks(input.riskClass, effectiveRulePackRequired);
   const { error: checkError } = await supabase.from("calculator_qa_checks").insert(requiredChecks.map((checkType) => ({ calculator_id: data.id, check_type: checkType })));
   if (checkError) throw new Error(checkError.message);
   await supabase.from("calculator_review_events").insert({ calculator_id: data.id, actor_id: user.id, event_type: "created", to_state: "draft" });
@@ -126,7 +127,8 @@ export async function importCalculatorInventory(formData: FormData) {
   // A conflicting id/slug must fail without leaving an orphaned job row behind.
   const rows = parsed.map((item) => {
     const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: item.calculatorKey, slug: item.slug });
-    return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, source_count: item.sourceCount, metadata: registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: item.rulePackRequired }, created_by: user.id };
+    const effectiveRulePackRequired = item.rulePackRequired || registryRegulatory.rulePackRequired;
+    return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, source_count: item.sourceCount, metadata: registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired }, created_by: user.id };
   });
   const { data: job, error: jobError } = await supabase.from("calculator_bulk_jobs").insert({ job_type: "inventory-import", requested_by: user.id, status: "processing", payload: { count: parsed.length } }).select("id").single();
   if (jobError) throw new Error(jobError.message);
