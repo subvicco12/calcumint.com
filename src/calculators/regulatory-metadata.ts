@@ -1,4 +1,5 @@
 import type { CalculatorDefinition, CalculatorRuleMetadata } from "./types";
+import { calculatorRegistry } from "./registry";
 
 export type CatalogRuleMetadata = {
   jurisdiction: { country: string; region?: string };
@@ -53,4 +54,27 @@ export function buildCatalogRegulatoryMetadata(definition: Pick<CalculatorDefini
 } {
   const rules = definition.ruleMetadata ?? [];
   return { rulePackRequired: rules.length > 0, ruleMetadata: rules.map(serializeRuleMetadata) };
+}
+
+
+export type RegistryIdentity = {
+  id?: string;
+  slug?: string;
+};
+
+export function resolveRegistryDefinition(identity: RegistryIdentity): CalculatorDefinition<unknown, unknown> | undefined {
+  const byId = identity.id?.trim() ? calculatorRegistry.getById(identity.id.trim()) : undefined;
+  const bySlug = identity.slug?.trim() ? calculatorRegistry.getBySlug(identity.slug.trim()) : undefined;
+  if (byId && bySlug && byId !== bySlug) throw new Error("Registry id and slug resolve to different calculators");
+  return byId ?? bySlug;
+}
+
+export function buildVerifiedCatalogRegulatoryMetadata(identity: RegistryIdentity): {
+  matched: boolean;
+  rulePackRequired: boolean;
+  ruleMetadata: readonly CatalogRuleMetadata[];
+} {
+  const definition = resolveRegistryDefinition(identity);
+  if (!definition) return { matched: false, rulePackRequired: false, ruleMetadata: [] };
+  return { matched: true, ...buildCatalogRegulatoryMetadata(definition) };
 }

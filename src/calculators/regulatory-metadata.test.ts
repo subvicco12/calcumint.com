@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildCatalogRegulatoryMetadata, serializeRuleMetadata, validateCalculatorRuleMetadata } from "./regulatory-metadata";
+import { buildCatalogRegulatoryMetadata, buildVerifiedCatalogRegulatoryMetadata, resolveRegistryDefinition, serializeRuleMetadata, validateCalculatorRuleMetadata } from "./regulatory-metadata";
 import { calculatorRegistry } from "./registry";
 
 const complete = {
@@ -43,6 +43,28 @@ describe("calculator regulatory metadata binding", () => {
     expect(buildCatalogRegulatoryMetadata({ ruleMetadata: [] })).toEqual({ rulePackRequired: false, ruleMetadata: [] });
     expect(buildCatalogRegulatoryMetadata({ ruleMetadata: [complete] }).rulePackRequired).toBe(true);
   });
+
+  it("resolves admin synchronization only by exact registry id or slug", () => {
+    const definition = calculatorRegistry.list()[0];
+    expect(resolveRegistryDefinition({ id: definition.id })).toBe(definition);
+    expect(resolveRegistryDefinition({ slug: definition.slug })).toBe(definition);
+    expect(resolveRegistryDefinition({ id: "core:not-a-real-calculator", slug: "not-a-real-calculator" })).toBeUndefined();
+  });
+
+  it("rejects conflicting registry identities", () => {
+    const definitions = calculatorRegistry.list();
+    expect(definitions.length).toBeGreaterThan(1);
+    expect(() => resolveRegistryDefinition({ id: definitions[0].id, slug: definitions[1].slug })).toThrow(/different calculators/);
+  });
+
+  it("keeps unmatched inventory non-regulatory instead of guessing a binding", () => {
+    expect(buildVerifiedCatalogRegulatoryMetadata({ id: "unknown", slug: "unknown" })).toEqual({
+      matched: false,
+      rulePackRequired: false,
+      ruleMetadata: []
+    });
+  });
+
   it("keeps every registry ruleMetadata entry structurally complete", () => {
     for (const definition of calculatorRegistry.list()) {
       for (const metadata of definition.ruleMetadata ?? []) {
