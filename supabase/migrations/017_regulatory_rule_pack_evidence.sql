@@ -15,7 +15,7 @@ alter table public.calculator_qa_checks
 insert into public.calculator_qa_checks (calculator_id, check_type)
 select id, 'rule-pack-validation'
 from public.calculator_catalog_admin
-where coalesce((metadata ->> 'rulePackRequired')::boolean, false)
+where lower(trim(coalesce(metadata ->> 'rulePackRequired', ''))) = 'true'
 on conflict (calculator_id, check_type) do nothing;
 
 create or replace function public.validate_calculator_publish_gate(p_calculator_id uuid)
@@ -38,7 +38,7 @@ begin
   select * into v_calc from public.calculator_catalog_admin where id = p_calculator_id;
   if v_calc.id is null then return query select false, array['Calculator not found']; return; end if;
   if v_calc.source_count < 1 then v_failures := array_append(v_failures, 'At least one reviewed source is required'); end if;
-  if coalesce((v_calc.metadata ->> 'rulePackRequired')::boolean, false) then
+  if lower(trim(coalesce(v_calc.metadata ->> 'rulePackRequired', ''))) = 'true' then
     v_required := array_append(v_required, 'rule-pack-validation');
   end if;
   if v_calc.risk_class in ('financial','health','tax') then
