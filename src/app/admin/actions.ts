@@ -60,6 +60,25 @@ export async function createCatalogCalculator(formData: FormData) {
   revalidatePath("/admin/calculators");
 }
 
+
+export async function addCalculatorSourceEvidence(formData: FormData) {
+  const { supabase, user, role } = await requirePlatformAdmin();
+  if (!(["owner", "admin", "reviewer"] as AdminRole[]).includes(role)) throw new Error("Reviewer permission required");
+  const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
+  const label = z.string().min(2).max(300).parse(formData.get("label"));
+  const url = z.string().url().max(2000).parse(formData.get("url"));
+  const sourceKind = z.enum(["reference", "official", "methodology"]).parse(formData.get("sourceKind") ?? "reference");
+  const { error } = await supabase.from("calculator_source_evidence").insert({
+    calculator_id: calculatorId, label, url, source_kind: sourceKind, reviewed_by: user.id
+  });
+  if (error) throw new Error(error.message);
+  const { count, error: countError } = await supabase.from("calculator_source_evidence").select("id", { count: "exact", head: true }).eq("calculator_id", calculatorId);
+  if (countError) throw new Error(countError.message);
+  const { error: catalogError } = await supabase.from("calculator_catalog_admin").update({ source_count: count ?? 0 }).eq("id", calculatorId);
+  if (catalogError) throw new Error(catalogError.message);
+  revalidatePath(`/admin/calculators/${calculatorId}`);
+}
+
 export async function updateQaCheck(formData: FormData) {
   const { supabase, user, role } = await requirePlatformAdmin();
   if (!(["owner", "admin", "reviewer"] as AdminRole[]).includes(role)) throw new Error("Reviewer permission required");
