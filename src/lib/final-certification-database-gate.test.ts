@@ -34,6 +34,11 @@ describe("Final Master database certification gate", () => {
     expect(rulePackMigration).toMatch(/on conflict \(calculator_id, check_type\) do nothing/i);
   });
 
+  it("parses rulePackRequired without unsafe boolean casts", () => {
+    expect(rulePackMigration).not.toMatch(/rulePackRequired'\)\s*::boolean/i);
+    expect(rulePackMigration.match(/lower\(trim\(coalesce\([^\n]*rulePackRequired[^\n]*\)\)\) = 'true'/g)).toHaveLength(2);
+  });
+
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
     expect(migration).toMatch(/risk_class in \('financial','health','tax'\)/i);
     expect(migration).toContain("v_required := array_append(v_required, 'ymyl-review')");
