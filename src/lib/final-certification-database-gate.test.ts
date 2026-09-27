@@ -10,6 +10,7 @@ const postCertificationRevalidationMigration = readFileSync("supabase/migrations
 const rulePackProvenanceMigration = readFileSync("supabase/migrations/021_require_rule_pack_provenance.sql", "utf8");
 const reviewerAuthorityMigration = readFileSync("supabase/migrations/022_harden_reviewer_waiver_authority.sql", "utf8");
 const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
+const sourceEvidenceMigration = readFileSync("supabase/migrations/023_structured_source_evidence.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -147,6 +148,22 @@ describe("Final Master database certification gate", () => {
     expect(adminActions).toContain("input.rulePackRequired || registryRegulatory.rulePackRequired");
     expect(adminActions).toContain("item.rulePackRequired || registryRegulatory.rulePackRequired");
     expect(adminActions).not.toContain("registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired");
+  });
+
+
+  it("requires structured reviewed source evidence instead of trusting source_count alone", () => {
+    expect(sourceEvidenceMigration).toContain("create table if not exists public.calculator_source_evidence");
+    expect(sourceEvidenceMigration).toContain("reviewed_by uuid not null");
+    expect(sourceEvidenceMigration).toContain("reviewed_by = auth.uid()");
+    expect(sourceEvidenceMigration).toContain("At least one reviewed source evidence record is required");
+    expect(sourceEvidenceMigration).toContain("Source count must match structured reviewed source evidence");
+    expect(sourceEvidenceMigration).not.toContain("insert into public.calculator_source_evidence");
+  });
+
+  it("revalidates certified calculators when structured source evidence changes", () => {
+    expect(sourceEvidenceMigration).toContain("calculator_source_evidence_certification_after_write");
+    expect(sourceEvidenceMigration).toContain("deferrable initially deferred");
+    expect(sourceEvidenceMigration).toContain("Certified calculator source evidence cannot become invalid");
   });
 
 });
