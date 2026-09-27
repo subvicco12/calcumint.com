@@ -5,6 +5,7 @@ import { qaCheckTypes } from "./admin/publishing";
 const migration = readFileSync("supabase/migrations/016_final_certification_evidence_gate.sql", "utf8");
 const rulePackMigration = readFileSync("supabase/migrations/017_regulatory_rule_pack_evidence.sql", "utf8");
 const rulePackHardeningMigration = readFileSync("supabase/migrations/018_harden_rule_pack_required_metadata.sql", "utf8");
+const lifecycleEnforcementMigration = readFileSync("supabase/migrations/019_authoritative_lifecycle_enforcement.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -42,6 +43,28 @@ describe("Final Master database certification gate", () => {
     expect(rulePackHardeningMigration.split("rulePackRequired").length - 1).toBeGreaterThanOrEqual(2);
     expect(rulePackHardeningMigration).toContain("create or replace function public.validate_calculator_publish_gate");
     expect(rulePackHardeningMigration).toContain("insert into public.calculator_qa_checks (calculator_id, check_type)");
+  });
+
+  it("enforces the application lifecycle graph at the database boundary", () => {
+    const allowedTransitions = [
+      "old.lifecycle = 'draft' and new.lifecycle in ('review','archived')",
+      "old.lifecycle = 'review' and new.lifecycle in ('draft','certified','archived')",
+      "old.lifecycle = 'certified' and new.lifecycle in ('review','published','archived')",
+      "old.lifecycle = 'published' and new.lifecycle in ('review','archived')",
+      "old.lifecycle = 'archived' and new.lifecycle = 'draft'"
+    ];
+    for (const transition of allowedTransitions) expect(lifecycleEnforcementMigration).toContain(transition);
+    expect(lifecycleEnforcementMigration).toContain("Invalid lifecycle transition");
+  });
+
+  it("enforces lifecycle role permissions without blocking the service worker", () => {
+    expect(lifecycleEnforcementMigration).toContain("auth.role() <> 'service_role'");
+    expect(lifecycleEnforcementMigration).toContain("v_role = 'editor' and new.lifecycle not in ('draft','review')");
+    expect(lifecycleEnforcementMigration).toContain("v_role = 'reviewer' and new.lifecycle = 'published'");
+    expect(lifecycleEnforcementMigration).toContain("from public.validate_calculator_publish_gate(new.id)");
+    expect(lifecycleEnforcementMigration).toContain("new.publish_at is distinct from old.publish_at");
+    expect(lifecycleEnforcementMigration).toContain("v_role not in ('owner','admin')");
+    expect(lifecycleEnforcementMigration).toContain("Owner or admin required to schedule publication");
   });
 
   it("preserves specialist review and reviewer assignment for YMYL calculators", () => {
