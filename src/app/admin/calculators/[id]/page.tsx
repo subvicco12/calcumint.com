@@ -32,6 +32,7 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
   const complete = required.every((type) => ["passed","waived"].includes(String(checkMap.get(type)?.status ?? "pending")));
   const canReview = ["owner","admin","reviewer"].includes(String(admin.role));
   const canAssign = ["owner","admin"].includes(String(admin.role));
+  const canWaive = ["owner","admin"].includes(String(admin.role));
 
   return <section className="container page-top admin-page">
     <div className="section-heading"><div><span className="eyebrow">Calculator governance</span><h1>{calculator.title}</h1><p className="hero-copy"><code>{calculator.slug}</code> · {calculator.category} · {calculator.risk_class} risk · v{calculator.version}</p></div><Link className="button secondary" href="/admin/calculators">Inventory</Link></div>
@@ -60,7 +61,7 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
       return <form className="qa-card" action={updateQaCheck} key={type}>
         <input type="hidden" name="calculatorId" value={id}/><input type="hidden" name="checkType" value={type}/>
         <strong>{type}</strong><span className={`status-pill status-${String(check?.status ?? "pending")}`}>{String(check?.status ?? "pending")}</span>
-        {canReview ? <><select name="status" defaultValue={String(check?.status ?? "pending")}><option value="pending">Pending</option><option value="passed">Passed</option><option value="failed">Failed</option><option value="waived">Waived</option></select><textarea name="details" rows={3} defaultValue={String(check?.details ?? "")} placeholder="Evidence / reviewer notes"/><button className="button secondary" type="submit">Save check</button></> : <p>{String(check?.details ?? "No notes")}</p>}
+        {canReview ? <><select name="status" defaultValue={String(check?.status ?? "pending")}><option value="pending">Pending</option><option value="passed">Passed</option><option value="failed">Failed</option>{canWaive && <option value="waived">Waived</option>}</select><textarea name="details" rows={3} defaultValue={String(check?.details ?? "")} placeholder="Evidence / reviewer notes"/><button className="button secondary" type="submit">Save check</button></> : <p>{String(check?.details ?? "No notes")}</p>}
       </form>;
     })}</div></article>
 
