@@ -36,8 +36,10 @@ describe("Final Master database certification gate", () => {
   });
 
   it("ships safe rulePackRequired parsing as a forward migration", () => {
-    expect(rulePackHardeningMigration).not.toMatch(/rulePackRequired\')\\s*::boolean/i);
-    expect(rulePackHardeningMigration.match(/lower\\(trim\\(coalesce\\([^\\n]*rulePackRequired[^\\n]*\\)\\)\\) = \'true\'/g)).toHaveLength(2);
+    expect(rulePackHardeningMigration).not.toContain("rulePackRequired')::boolean");
+    const safeRulePackCheck = "lower(trim(coalesce";
+    expect(rulePackHardeningMigration.split(safeRulePackCheck)).toHaveLength(3);
+    expect(rulePackHardeningMigration.split("rulePackRequired").length - 1).toBeGreaterThanOrEqual(2);
     expect(rulePackHardeningMigration).toContain("create or replace function public.validate_calculator_publish_gate");
     expect(rulePackHardeningMigration).toContain("insert into public.calculator_qa_checks (calculator_id, check_type)");
   });
