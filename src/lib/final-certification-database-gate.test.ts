@@ -7,6 +7,7 @@ const rulePackMigration = readFileSync("supabase/migrations/017_regulatory_rule_
 const rulePackHardeningMigration = readFileSync("supabase/migrations/018_harden_rule_pack_required_metadata.sql", "utf8");
 const lifecycleEnforcementMigration = readFileSync("supabase/migrations/019_authoritative_lifecycle_enforcement.sql", "utf8");
 const postCertificationRevalidationMigration = readFileSync("supabase/migrations/020_post_certification_revalidation.sql", "utf8");
+const rulePackProvenanceMigration = readFileSync("supabase/migrations/021_require_rule_pack_provenance.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -44,6 +45,24 @@ describe("Final Master database certification gate", () => {
     expect(rulePackHardeningMigration.split("rulePackRequired").length - 1).toBeGreaterThanOrEqual(2);
     expect(rulePackHardeningMigration).toContain("create or replace function public.validate_calculator_publish_gate");
     expect(rulePackHardeningMigration).toContain("insert into public.calculator_qa_checks (calculator_id, check_type)");
+  });
+
+
+  it("fails closed when rule-pack applicability lacks complete regulatory provenance", () => {
+    expect(rulePackProvenanceMigration).toContain("metadata -> 'ruleMetadata'");
+    expect(rulePackProvenanceMigration).toContain("coalesce(jsonb_array_length(v_calc.metadata -> 'ruleMetadata'), 0) = 0");
+    expect(rulePackProvenanceMigration).toContain("'{jurisdiction,country}'");
+    expect(rulePackProvenanceMigration).toContain("'ruleVersion'");
+    expect(rulePackProvenanceMigration).toContain("'effectiveFrom'");
+    expect(rulePackProvenanceMigration).toContain("'officialSources'");
+    expect(rulePackProvenanceMigration).toContain("'lastVerifiedAt'");
+    expect(rulePackProvenanceMigration).toContain("Complete regulatory rule metadata is required");
+    expect(rulePackProvenanceMigration).toContain("Regulatory rule metadata is incomplete");
+    expect(rulePackProvenanceMigration).toContain("coalesce(jsonb_typeof(v_calc.metadata -> 'ruleMetadata'), '') <> 'array'");
+    expect(rulePackProvenanceMigration).toContain("Regulatory official sources require labels and URLs");
+    expect(rulePackProvenanceMigration).toContain("Regulatory rule metadata contains an invalid date");
+    expect(rulePackProvenanceMigration).toContain("Regulatory rule metadata contains an invalid effective period");
+    expect(rulePackProvenanceMigration).toContain("v_required := array_append(v_required, 'rule-pack-validation')");
   });
 
   it("enforces the application lifecycle graph at the database boundary", () => {
