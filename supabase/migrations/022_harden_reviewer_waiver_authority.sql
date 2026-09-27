@@ -7,7 +7,7 @@ declare
   v_role text;
 begin
   if auth.role() = 'service_role' then
-    return new;
+    return case when tg_op = 'DELETE' then old else new end;
   end if;
 
   select role into v_role
@@ -18,7 +18,7 @@ begin
     raise exception 'Review-capable platform admin required';
   end if;
 
-  if tg_op in ('INSERT','UPDATE') then
+  if tg_op in ('INSERT','UPDATE') and new.status <> 'pending' then
     if new.checked_by is distinct from auth.uid() then
       raise exception 'QA evidence checked_by must match the authenticated reviewer';
     end if;
@@ -136,3 +136,30 @@ $$;
 
 revoke execute on function public.validate_calculator_publish_gate(uuid) from public, anon;
 grant execute on function public.validate_calculator_publish_gate(uuid) to authenticated, service_role;
+
+
+-- Prevent authority changes from silently invalidating already certified/published YMYL records.
+-- This does not demote or unpublish calculators; the authority change itself must wait until
+-- affected records are reassigned or moved out of a certified/published lifecycle.
+create or replace function public.protect_active_ymyl_reviewer_authority()
+returns trigger language plpgsql security definer set search_path = public as $$
+begin
+  if old.active and old.role in ('owner','admin','reviewer')
+     and (not new.active or new.role not in ('owner','admin','reviewer')) then
+    if exists(
+      select 1 from public.calculator_catalog_admin c
+      where c.reviewer_id = old.user_id
+        and c.risk_class in ('financial','health','tax')
+        and c.lifecycle in ('certified','published')
+    ) then
+      raise exception 'Reassign or decertify governed YMYL calculators before removing reviewer authority';
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists protect_active_ymyl_reviewer_authority_before_update on public.platform_admins;
+create trigger protect_active_ymyl_reviewer_authority_before_update
+before update of active, role on public.platform_admins
+for each row execute function public.protect_active_ymyl_reviewer_authority();
