@@ -71,6 +71,15 @@ describe("solid geometry explicit batch integrity", () => {
     expect(solidGeometryReconciliationManifest.filter((entry) => entry.disposition === "explicit-expansion-required")).toHaveLength(2);
   });
 
+  it("keeps the single governance approval target proposed and non-authoritative", () => {
+    expect(solidGeometryReconciliationManifest.every((entry) => entry.governanceDecisionStatus === "proposed")).toBe(true);
+    expect(solidGeometryReconciliationManifest.every((entry) => entry.certificationAuthority === false)).toBe(true);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.governanceDecisionCatalogId === 274)).toHaveLength(22);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.governanceDecisionCatalogId === 275)).toHaveLength(26);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.governanceDecisionCatalogId === 278)).toHaveLength(2);
+    expect(solidGeometryReconciliationManifest.filter((entry) => entry.disposition === "explicit-expansion-required").every((entry) => entry.governanceDecisionCatalogId === 278)).toBe(true);
+  });
+
   it("registers every explicit batch calculator without identity drift", () => {
     for (const definition of batchDefinitions) {
       expect(calculatorRegistry.getById(definition.id)?.slug).toBe(definition.slug);
