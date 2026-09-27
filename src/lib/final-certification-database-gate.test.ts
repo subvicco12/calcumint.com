@@ -124,6 +124,10 @@ describe("Final Master database certification gate", () => {
     expect(reviewerAuthorityMigration).toContain("QA evidence checked_by must match the authenticated reviewer");
     expect(reviewerAuthorityMigration).toContain("new.status = 'waived' and v_role not in ('owner','admin')");
     expect(reviewerAuthorityMigration).toContain("Owner or admin required to waive QA evidence");
+    expect(reviewerAuthorityMigration).toContain("new.status <> 'pending'");
+    expect(reviewerAuthorityMigration).toContain("case when tg_op = 'DELETE' then old else new end");
+    expect(reviewerAuthorityMigration).toContain("protect_active_ymyl_reviewer_authority");
+    expect(reviewerAuthorityMigration).toContain("Reassign or decertify governed YMYL calculators before removing reviewer authority");
     expect(reviewerAuthorityMigration).toContain("tg_op = 'DELETE' and v_role not in ('owner','admin')");
   });
 
