@@ -13,6 +13,8 @@ describe("conversion catalog batch 1",()=>{
   expect(temperatureConverter.calculate({value:212,fromUnit:"f",toUnit:"c"},{}).result).toBe(100);
   expect(temperatureConverter.calculate({value:-459.67,fromUnit:"f",toUnit:"k"},{}).result).toBe(0);
   expect(temperatureConverter.calculate({value:0,fromUnit:"k",toUnit:"f"},{}).result).toBe(-459.67);
+  expect(temperatureConverter.calculate({value:Number.MAX_VALUE,fromUnit:"f",toUnit:"k"},{}).result).toBeCloseTo(9.98718408256842e307,12);
+  expect(temperatureConverter.calculate({value:5e307,fromUnit:"c",toUnit:"f"},{}).result).toBe(9e307);
   expect(speedConverter.calculate({value:60,fromUnit:"mph",toUnit:"km_h"},{}).result).toBeCloseTo(96.56064,10);
  });
  it("preserves tiny nonzero results without fixed-decimal truncation",()=>{expect(areaConverter.calculate({value:1e-6,fromUnit:"cm2",toUnit:"km2"},{}).result).toBe(1e-16);const tinyLength=lengthConverter.calculate({value:1e-12,fromUnit:"mm",toUnit:"km"},{}).result;expect(tinyLength).toBeGreaterThan(0);expect(Math.abs(tinyLength-1e-18)/1e-18).toBeLessThan(1e-12);expect(volumeConverter.calculate({value:Number.MIN_VALUE,fromUnit:"gal_us",toUnit:"ml"},{}).result).toBeGreaterThan(0);expect(lengthConverter.calculate({value:Number.MIN_VALUE,fromUnit:"cm",toUnit:"mm"},{}).result).toBeGreaterThan(0);expect(lengthConverter.calculate({value:Number.MAX_VALUE,fromUnit:"km",toUnit:"mi"},{}).result).toBeCloseTo(1.1170347264862674e308,12);});
