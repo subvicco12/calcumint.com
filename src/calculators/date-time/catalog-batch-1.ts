@@ -3,14 +3,13 @@ import type { CalculatorDefinition } from "../types";
 
 type DateParts={year:number;month:number;day:number};
 const ISO=/^(\d{4})-(\d{2})-(\d{2})$/;
-const MS_DAY=86400000;
 const source={label:"ISO 8601 date representation",url:"https://www.iso.org/iso-8601-date-and-time-format.html",note:"Date-only inputs use the ISO YYYY-MM-DD representation; calendar arithmetic is deterministic and timezone-independent."};
 function leap(y:number){return y%4===0&&(y%100!==0||y%400===0)}
 function dim(y:number,m:number){return m===2?(leap(y)?29:28):[4,6,9,11].includes(m)?30:31}
 function parseDate(s:string):DateParts{const m=ISO.exec(s);if(!m)throw new Error("Date must use YYYY-MM-DD");const p={year:+m[1]!,month:+m[2]!,day:+m[3]!};if(p.month<1||p.month>12||p.day<1||p.day>dim(p.year,p.month))throw new Error("Invalid calendar date");return p}
 function iso(p:DateParts){return `${String(p.year).padStart(4,"0")}-${String(p.month).padStart(2,"0")}-${String(p.day).padStart(2,"0")}`}
-function epoch(p:DateParts){const x=new Date(0);x.setUTCHours(0,0,0,0);x.setUTCFullYear(p.year,p.month-1,p.day);return x.getTime()/MS_DAY}
-function fromEpoch(d:number):DateParts{const x=new Date(d*MS_DAY);return{year:x.getUTCFullYear(),month:x.getUTCMonth()+1,day:x.getUTCDate()}}
+function epoch(p:DateParts){let y=p.year,m=p.month;if(m<=2){y--;m+=12}const era=Math.floor(y/400),yoe=y-era*400,doy=Math.floor((153*(m-3)+2)/5)+p.day-1,doe=yoe*365+Math.floor(yoe/4)-Math.floor(yoe/100)+doy;return era*146097+doe-719468}
+function fromEpoch(d:number):DateParts{if(!Number.isSafeInteger(d))throw new Error("Result is outside the supported four-digit date range");const z=d+719468,era=Math.floor(z/146097),doe=z-era*146097,yoe=Math.floor((doe-Math.floor(doe/1460)+Math.floor(doe/36524)-Math.floor(doe/146096))/365);let y=yoe+era*400;const doy=doe-(365*yoe+Math.floor(yoe/4)-Math.floor(yoe/100)),mp=Math.floor((5*doy+2)/153),day=doy-Math.floor((153*mp+2)/5)+1,month=mp+(mp<10?3:-9);y+=month<=2?1:0;return{year:y,month,day}}
 function assertRange(p:DateParts){if(!Number.isFinite(p.year)||!Number.isFinite(p.month)||!Number.isFinite(p.day)||p.year<0||p.year>9999)throw new Error("Result is outside the supported four-digit date range");return p}
 function addMonthsClamped(p:DateParts,months:number){const total=p.year*12+(p.month-1)+months,y=Math.floor(total/12),m=((total%12)+12)%12+1,result={year:y,month:m,day:Math.min(p.day,dim(y,m))};if(!Number.isFinite(result.year)||!Number.isFinite(result.month)||!Number.isFinite(result.day))throw new Error("Result is outside the supported four-digit date range");return result}
 const dateString=z.string().refine(v=>{try{parseDate(v);return true}catch{return false}},"Invalid ISO calendar date");
@@ -29,5 +28,5 @@ export const dayCounterCalculator:CalculatorDefinition<DiffIn,DiffOut>={...base,
 
 type DowIn={date:string};type DowOut={dayIndex:number;dayName:string};
 const names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"] as const;
-export const dayOfWeekCalculator:CalculatorDefinition<DowIn,DowOut>={...base,id:"date-time.day-of-week",slug:"day-of-week-calculator",title:"Day of Week Calculator",inputSchema:z.object({date:dateString}),calculate:({date})=>{const i=new Date(epoch(parseDate(date))*MS_DAY).getUTCDay();return{dayIndex:i,dayName:names[i]!}},formulas:[{id:"weekday",expression:"weekday = Gregorian weekday(date)",description:"Returns Sunday=0 through Saturday=6 using UTC calendar arithmetic."}],examples:[{label:"Known Sunday",input:{date:"2026-09-27"},expected:{dayIndex:0,dayName:"Sunday"}}],goldenTests:[{label:"Known Sunday",input:{date:"2026-09-27"},expected:{dayIndex:0,dayName:"Sunday"}}],ui:{simpleInputKeys:["date"]}};
+export const dayOfWeekCalculator:CalculatorDefinition<DowIn,DowOut>={...base,id:"date-time.day-of-week",slug:"day-of-week-calculator",title:"Day of Week Calculator",inputSchema:z.object({date:dateString}),calculate:({date})=>{const i=((epoch(parseDate(date))+4)%7+7)%7;return{dayIndex:i,dayName:names[i]!}},formulas:[{id:"weekday",expression:"weekday = Gregorian weekday(date)",description:"Returns Sunday=0 through Saturday=6 using UTC calendar arithmetic."}],examples:[{label:"Known Sunday",input:{date:"2026-09-27"},expected:{dayIndex:0,dayName:"Sunday"}}],goldenTests:[{label:"Known Sunday",input:{date:"2026-09-27"},expected:{dayIndex:0,dayName:"Sunday"}}],ui:{simpleInputKeys:["date"]}};
 export const dateTimeBatch1Definitions=[ageCalculator,dateDifferenceCalculator,dateAddSubtractCalculator,dayCounterCalculator,dayOfWeekCalculator] as const;
