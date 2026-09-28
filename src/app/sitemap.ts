@@ -1,9 +1,13 @@
 import type { MetadataRoute } from "next";
-import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { listGovernedPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
 import { siteConfig } from "@/lib/site";
-import {sitemapEntriesForAudit} from "@/calculators/sitemap-audit-helper";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const publishedSlugs = await getPublishedCalculatorSlugs();
+  const publishedCalculators = listGovernedPublicCalculators(publishedSlugs);
   const staticEntries: MetadataRoute.Sitemap = [
     { url: siteConfig.url, changeFrequency: "weekly", priority: 1 },
     { url: `${siteConfig.url}/calculators`, changeFrequency: "weekly", priority: 0.9 },
@@ -15,14 +19,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/disclaimer`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${siteConfig.url}/contact`, changeFrequency: "yearly", priority: 0.3 }
   ];
-  const publishedCategories=new Set(listPublicCalculators().map(item=>item.category));
+  const publishedCategories=new Set(publishedCalculators.map(item=>item.category));
   const categoryEntries: MetadataRoute.Sitemap = listPublicCategories().filter(category=>publishedCategories.has(category.slug)).map((category) => ({
     url: `${siteConfig.url}/calculators/${category.slug}`,
     changeFrequency: "weekly" as const,
     priority: 0.8
   }));
-  const calculatorEntries: MetadataRoute.Sitemap = sitemapEntriesForAudit().map((path) => ({
-    url: `${siteConfig.url}${path}`,
+  const calculatorEntries: MetadataRoute.Sitemap = publishedCalculators.map((item) => ({
+    url: `${siteConfig.url}/calculators/${item.category}/${item.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.9
   }));
