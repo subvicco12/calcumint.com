@@ -3,15 +3,19 @@ import Link from "next/link";
 import { CalculatorSearch } from "@/components/calculator-search";
 import { calculatorRegistry } from "@/calculators/registry";
 import { buildPublicCalculatorSearchIndex } from "@/calculators/search-index";
-import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { listGovernedPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = { title: { absolute: "CalcuMint — Calculate Anything" }, description: siteConfig.description, alternates: { canonical: "/" }, openGraph: { type: "website", title: "CalcuMint — Calculate Anything", description: siteConfig.description, url: "/" } };
 
-export default function HomePage() {
-  const calculators = listPublicCalculators();
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const publishedSlugs = await getPublishedCalculatorSlugs();
+  const calculators = listGovernedPublicCalculators(publishedSlugs);
   const categories = listPublicCategories().map((category) => ({ ...category, count: calculators.filter((item) => item.category === category.slug).length })).filter((category) => category.count > 0);
-  const searchItems = buildPublicCalculatorSearchIndex();
+  const searchItems = buildPublicCalculatorSearchIndex(publishedSlugs);
   const featured = calculators.slice(0, 8);
   const websiteJsonLd = { "@context": "https://schema.org", "@type": "WebSite", "@id": `${siteConfig.url}/#website`, url: `${siteConfig.url}/`, name: "CalcuMint" };
   const organizationJsonLd = { "@context": "https://schema.org", "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: "CalcuMint", url: `${siteConfig.url}/`, logo: `${siteConfig.url}/brand/calcumint-logo.png`, email: "support@calcumint.com" };
