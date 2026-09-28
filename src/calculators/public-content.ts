@@ -203,3 +203,12 @@ everyday:{name:"Everyday Calculators",description:"Practical calculators for cos
 export function getPublicCalculatorContent(slug:string){const definition=calculatorRegistry.getBySlug(slug);if(!definition||definition.reviewStatus!=="certified")return undefined;return content.find(item=>item.slug===slug)}
 export function listPublicCalculators():readonly PublicCalculatorContent[]{return content.filter(item=>calculatorRegistry.getBySlug(item.slug)?.reviewStatus==="certified").map(item=>{if(item.intro.length>80)return item;const guidance=categoryContent[item.category as keyof typeof categoryContent]?.guidance;return guidance?{...item,intro:item.intro+" "+guidance}:item})}
 export function listPublicCategories(){return Object.entries(categoryContent).map(([slug,value])=>({slug,...value}))}
+
+
+export function getGovernedPublicCalculatorContent(slug:string,publishedSlugs:ReadonlySet<string>){
+  if(!publishedSlugs.has(slug)) return undefined;
+  return getPublicCalculatorContent(slug);
+}
+export function listGovernedPublicCalculators(publishedSlugs:ReadonlySet<string>):readonly PublicCalculatorContent[]{
+  return listPublicCalculators().filter(item=>publishedSlugs.has(item.slug));
+}

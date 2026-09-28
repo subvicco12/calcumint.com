@@ -3,6 +3,7 @@ import { customCalculatorSchema, runCustomCalculator } from "@/lib/builder/defin
 import { deterministicCalculatorSearch, publicCalculatorCatalog } from "./catalog";
 import { AI_GROUNDING_RULES } from "./policy";
 import { getAiProvider } from "./provider";
+import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
 
 const finderResponseSchema = z.object({
   recommendations: z.array(z.object({ slug: z.string(), reason: z.string().min(1).max(400) })).max(5)
@@ -15,11 +16,12 @@ const explanationResponseSchema = z.object({
 });
 
 export async function findCalculatorWithAi(query: string) {
-  const fallback = deterministicCalculatorSearch(query, 5);
+  const publishedSlugs = await getPublishedCalculatorSlugs();
+  const fallback = deterministicCalculatorSearch(query, publishedSlugs, 5);
   const provider = getAiProvider();
   if (!provider) return { recommendations: fallback.map((item) => ({ ...item, reason: item.description })), usedAi: false, usage: undefined };
 
-  const catalog = publicCalculatorCatalog();
+  const catalog = publicCalculatorCatalog(publishedSlugs);
   const result = await provider.generateJson([
     { role: "system", content: `${AI_GROUNDING_RULES.join("\n")}\nYou are a calculator discovery router. Choose only slugs from the supplied catalog. Never answer the user's calculation. Return {"recommendations":[{"slug":"...","reason":"..."}]}.` },
     { role: "user", content: JSON.stringify({ query, catalog }) }
