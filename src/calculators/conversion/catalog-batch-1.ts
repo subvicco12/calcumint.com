@@ -29,7 +29,7 @@ const sharedDefinition=(id:string,slug:string,title:string,codes:readonly string
   goldenTests:[{label:"Worked example",input:{value:example.value,fromUnit:example.fromUnit,toUnit:example.toUnit},expected:{result:example.expected}}],ui:{simpleInputKeys:["value","fromUnit","toUnit"]}};
 };
 
-export const lengthConverter=sharedDefinition("conversion.length","length-converter","Length Converter",["m","km","cm","mm","in","ft","yd","mi"],{value:1,fromUnit:"mi",toUnit:"km",expected:1.609344},"target = source × source metres / target metres",[nist,bipm]);
+export const lengthConverter=linearDefinition("conversion.length","length-converter","Length Converter",[{code:"m",factor:1},{code:"km",factor:1000},{code:"cm",factor:.01},{code:"mm",factor:.001},{code:"in",factor:.0254},{code:"ft",factor:.3048},{code:"yd",factor:.9144},{code:"mi",factor:1609.344}],{value:1,fromUnit:"mi",toUnit:"km",expected:1.609344},"target = source × source metres / target metres");
 
 export const areaConverter=linearDefinition("conversion.area","area-converter","Area Converter",[
  {code:"m2",factor:1},{code:"km2",factor:1e6},{code:"cm2",factor:1e-4},{code:"ft2",factor:.09290304},{code:"yd2",factor:.83612736},{code:"acre",factor:4046.8564224},{code:"ha",factor:10000},{code:"mi2",factor:2589988.110336}
