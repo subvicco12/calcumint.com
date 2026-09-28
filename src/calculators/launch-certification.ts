@@ -13,7 +13,8 @@ export function goldenMismatch(actual:unknown,expected:unknown,path="output"):st
  }
  return Object.is(actual,expected)?null:`${path}: expected ${String(expected)}, received ${String(actual)}`;
 }
-const blank=(value:unknown)=>typeof value!=="string"||value.trim().length===0;\nconst usableSource=(source:{label:string;url?:string})=>{if(blank(source.label))return false;if(!source.url)return true;try{new URL(source.url);return true}catch{return false}};
+const blank=(value:unknown)=>typeof value!=="string"||value.trim().length===0;
+const usableSource=(source:{label:string;url?:string})=>{if(blank(source.label))return false;if(!source.url)return true;try{new URL(source.url);return true}catch{return false}};
 export function auditLaunchCertificationDefinitions(definitions:readonly RegistryCalculator[],getContent:PublicContentLookup,now=new Date()):LaunchCertificationIssue[]{
  const issues:LaunchCertificationIssue[]=[];
  for(const d of definitions){if(d.reviewStatus!=="certified")continue;
