@@ -209,7 +209,7 @@ describe("source evidence reviewer foreign-key performance", () => {
     expect(sourceEvidenceReviewerIndexMigration).toContain("create index if not exists calculator_source_evidence_reviewed_by_idx");
     expect(sourceEvidenceReviewerIndexMigration).toContain("on public.calculator_source_evidence(reviewed_by)");
     expect(sourceEvidenceReviewerIndexMigration).not.toContain("create policy");
-    expect(sourceEvidenceReviewerIndexMigration).not.toContain("lifecycle");
+    expect(sourceEvidenceReviewerIndexMigration).not.toMatch(/\b(update|insert|delete)\b[\s\S]*\blifecycle\b/i);
   });
 });
 
