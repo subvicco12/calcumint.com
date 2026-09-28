@@ -1,11 +1,13 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { generateStaticParams } from "./page";
 
-describe("calculator category static routes", () => {
-  it("generates categories that contain certified public calculators", () => {
-    const categories = generateStaticParams().map((item) => item.category);
-    expect(categories).toContain("math");
-    expect(categories).toContain("finance-investment");
-    expect(categories).toContain("loans-mortgages");
+describe("calculator category publication routing", () => {
+  const source = readFileSync("src/app/calculators/[category]/page.tsx", "utf8");
+
+  it("resolves categories at runtime from governed published calculators", () => {
+    expect(source).toContain('dynamic = "force-dynamic"');
+    expect(source).toContain("getPublishedCalculatorSlugs");
+    expect(source).toContain("listGovernedPublicCalculators");
+    expect(source).not.toContain("generateStaticParams");
   });
 });
