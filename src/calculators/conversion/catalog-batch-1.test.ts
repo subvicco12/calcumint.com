@@ -13,6 +13,7 @@ describe("conversion catalog batch 1",()=>{
   expect(temperatureConverter.calculate({value:212,fromUnit:"f",toUnit:"c"},{}).result).toBe(100);
   expect(speedConverter.calculate({value:60,fromUnit:"mph",toUnit:"km_h"},{}).result).toBe(96.56064);
  });
+ it("never emits non-finite output after rounding",()=>{expect(()=>areaConverter.calculate({value:Number.MAX_VALUE,fromUnit:"m2",toUnit:"km2"},{})).toThrow("supported finite range");expect(()=>lengthConverter.calculate({value:Number.MAX_VALUE,fromUnit:"m",toUnit:"km"},{})).toThrow("supported finite range");});
  it("rejects unsupported units at validation",()=>{
   expect(lengthConverter.inputSchema.safeParse({value:1,fromUnit:"kg",toUnit:"m"}).success).toBe(false);
   expect(temperatureConverter.inputSchema.safeParse({value:0,fromUnit:"c",toUnit:"m"}).success).toBe(false);
