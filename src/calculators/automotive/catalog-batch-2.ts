@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { CalculatorDefinition } from "../types";
 import { roundTo } from "../precision";
 
-type Out={value:number;steps:readonly string[]};
+type Out={value:number;steps:string[]};
 const positive=z.number().finite().positive().max(1e12);
 const nonnegative=z.number().finite().nonnegative().max(1e12);
 const source={label:"U.S. Department of Energy — FuelEconomy.gov",url:"https://www.fueleconomy.gov/",note:"Fuel economy and trip fuel use vary with vehicle and operating conditions. These DRAFT calculators use explicit user-supplied distance and fuel quantities."};
