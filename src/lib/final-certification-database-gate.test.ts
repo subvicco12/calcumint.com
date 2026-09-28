@@ -12,6 +12,7 @@ const reviewerAuthorityMigration = readFileSync("supabase/migrations/022_harden_
 const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
 const sourceEvidenceMigration = readFileSync("supabase/migrations/023_structured_source_evidence.sql", "utf8");
 const reviewerAssignmentMigration = readFileSync("supabase/migrations/024_reviewer_assignment_authority.sql", "utf8");
+const derivedSourceCountMigration = readFileSync("supabase/migrations/025_derived_source_count_authority.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -188,4 +189,15 @@ describe("Final Master database certification gate", () => {
     expect(reviewerAssignmentMigration).toContain("auth.role() <> 'service_role'");
   });
 
+});
+
+
+describe("derived source count authority", () => {
+  it("rejects direct authenticated source-count fabrication and normalizes from evidence", () => {
+    expect(derivedSourceCountMigration).toContain("source_count is derived from calculator_source_evidence");
+    expect(derivedSourceCountMigration).toContain("auth.role() <> 'service_role'");
+    expect(derivedSourceCountMigration).toContain("before insert or update of source_count");
+    expect(derivedSourceCountMigration).toContain("from public.calculator_source_evidence");
+    expect(derivedSourceCountMigration).toContain("update public.calculator_catalog_admin c");
+  });
 });

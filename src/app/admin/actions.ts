@@ -23,8 +23,7 @@ const createSchema = z.object({
   title: z.string().min(2).max(160),
   category: z.string().min(2).max(100),
   riskClass: z.enum(["standard", "financial", "health", "tax"]),
-  rulePackRequired: z.boolean().default(false),
-  sourceCount: z.coerce.number().int().min(0).max(1000).default(0)
+  rulePackRequired: z.boolean().default(false)
 });
 
 export async function createCatalogCalculator(formData: FormData) {
@@ -35,8 +34,7 @@ export async function createCatalogCalculator(formData: FormData) {
     title: formData.get("title"),
     category: formData.get("category"),
     riskClass: formData.get("riskClass"),
-    rulePackRequired: formData.get("rulePackRequired") === "true",
-    sourceCount: formData.get("sourceCount")
+    rulePackRequired: formData.get("rulePackRequired") === "true"
   });
   const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: input.calculatorKey, slug: input.slug });
   const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
@@ -47,7 +45,6 @@ export async function createCatalogCalculator(formData: FormData) {
     title: input.title,
     category: input.category,
     risk_class: input.riskClass,
-    source_count: input.sourceCount,
     metadata: regulatoryMetadata,
     created_by: user.id
   }).select("id").single();
@@ -130,7 +127,7 @@ export async function assignReviewer(formData: FormData) {
 
 const bulkItemSchema = z.object({
   calculatorKey: z.string().min(2).max(160), slug: z.string().regex(/^[a-z0-9-]+$/).max(160), title: z.string().min(2).max(160),
-  category: z.string().min(2).max(100), riskClass: z.enum(["standard", "financial", "health", "tax"]).default("standard"), rulePackRequired: z.boolean().default(false), sourceCount: z.number().int().min(0).max(1000).default(0)
+  category: z.string().min(2).max(100), riskClass: z.enum(["standard", "financial", "health", "tax"]).default("standard"), rulePackRequired: z.boolean().default(false)
 });
 
 export async function importCalculatorInventory(formData: FormData) {
@@ -143,7 +140,7 @@ export async function importCalculatorInventory(formData: FormData) {
   const rows = parsed.map((item) => {
     const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: item.calculatorKey, slug: item.slug });
     const effectiveRulePackRequired = item.rulePackRequired || registryRegulatory.rulePackRequired;
-    return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, source_count: item.sourceCount, metadata: registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired }, created_by: user.id };
+    return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, metadata: registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired }, created_by: user.id };
   });
   const { data: job, error: jobError } = await supabase.from("calculator_bulk_jobs").insert({ job_type: "inventory-import", requested_by: user.id, status: "processing", payload: { count: parsed.length } }).select("id").single();
   if (jobError) throw new Error(jobError.message);
