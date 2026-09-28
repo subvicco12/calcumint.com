@@ -1,0 +1,25 @@
+import { z } from "zod";
+import type { CalculatorDefinition } from "../types";
+
+const source={label:"ISO 8601 date and time representation",url:"https://www.iso.org/iso-8601-date-and-time-format.html",note:"CalcuMint Batch 2 uses deterministic civil-date and clock arithmetic without timezone or network dependencies."};
+const base={category:"date-time",version:1,riskClass:"standard" as const,reviewStatus:"draft" as const,sources:[source]};
+const TIME=/^(\d{2}):(\d{2})$/;
+function minutes(s:string){const m=TIME.exec(s);if(!m)throw new Error("Time must use HH:MM");const h=+m[1]!,n=+m[2]!;if(h>23||n>59)throw new Error("Invalid clock time");return h*60+n}
+const timeString=z.string().refine(v=>{try{minutes(v);return true}catch{return false}},"Invalid HH:MM clock time");
+function duration(start:string,end:string,overnight:boolean){const a=minutes(start),b=minutes(end);let d=b-a;if(d<0&&overnight)d+=1440;if(d<0)throw new Error("endTime precedes startTime");return d}
+function split(totalMinutes:number){return{hours:Math.floor(totalMinutes/60),minutes:totalMinutes%60,totalMinutes}}
+
+type DurationIn={startTime:string;endTime:string;overnight:boolean};type DurationOut={hours:number;minutes:number;totalMinutes:number};
+export const timeDurationCalculator:CalculatorDefinition<DurationIn,DurationOut>={...base,id:"date-time.time-duration",slug:"time-duration-calculator",title:"Time Duration Calculator",inputSchema:z.object({startTime:timeString,endTime:timeString,overnight:z.boolean()}),calculate:({startTime,endTime,overnight})=>split(duration(startTime,endTime,overnight)),formulas:[{id:"clock-duration",expression:"duration = end - start (+ 24h when overnight and end < start)",description:"Elapsed clock minutes with an explicit overnight flag; equal times are zero."}],examples:[{label:"Overnight duration",input:{startTime:"22:30",endTime:"01:15",overnight:true},expected:{hours:2,minutes:45,totalMinutes:165}}],goldenTests:[{label:"Overnight duration",input:{startTime:"22:30",endTime:"01:15",overnight:true},expected:{hours:2,minutes:45,totalMinutes:165}}],ui:{simpleInputKeys:["startTime","endTime","overnight"]}};
+
+type HoursIn={startTime:string;endTime:string;overnight:boolean;breakMinutes:number};type HoursOut={hours:number;minutes:number;totalMinutes:number};
+export const hoursCalculator:CalculatorDefinition<HoursIn,HoursOut>={...base,id:"date-time.hours",slug:"hours-calculator",title:"Hours Calculator",inputSchema:z.object({startTime:timeString,endTime:timeString,overnight:z.boolean(),breakMinutes:z.number().int().min(0).max(1440)}),calculate:({startTime,endTime,overnight,breakMinutes})=>{const elapsed=duration(startTime,endTime,overnight);if(breakMinutes>elapsed)throw new Error("breakMinutes exceeds elapsed duration");return split(elapsed-breakMinutes)},formulas:[{id:"net-hours",expression:"net minutes = elapsed minutes - break minutes",description:"Computes net elapsed hours from explicit clock times; no payroll rounding is applied."}],examples:[{label:"Work interval",input:{startTime:"09:00",endTime:"17:30",overnight:false,breakMinutes:30},expected:{hours:8,minutes:0,totalMinutes:480}}],goldenTests:[{label:"Work interval",input:{startTime:"09:00",endTime:"17:30",overnight:false,breakMinutes:30},expected:{hours:8,minutes:0,totalMinutes:480}}],ui:{simpleInputKeys:["startTime","endTime","overnight","breakMinutes"]}};
+
+type WeekIn={date:string};type WeekOut={weekYear:number;weekNumber:number};
+const DATE=/^(\d{4})-(\d{2})-(\d{2})$/;
+function parseDate(s:string){const m=DATE.exec(s);if(!m)throw new Error("Date must use YYYY-MM-DD");const y=+m[1]!,mo=+m[2]!,d=+m[3]!,dt=new Date(Date.UTC(0,mo-1,d));dt.setUTCFullYear(y);if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)throw new Error("Invalid calendar date");return dt}
+const dateString=z.string().refine(v=>{try{parseDate(v);return true}catch{return false}},"Invalid ISO calendar date");
+function isoWeek(s:string):WeekOut{const dt=parseDate(s),day=dt.getUTCDay()||7;dt.setUTCDate(dt.getUTCDate()+4-day);const weekYear=dt.getUTCFullYear(),jan4=new Date(Date.UTC(0,0,4));jan4.setUTCFullYear(weekYear);const jan4day=jan4.getUTCDay()||7;jan4.setUTCDate(jan4.getUTCDate()+4-jan4day);return{weekYear,weekNumber:1+Math.round((dt.getTime()-jan4.getTime())/604800000)}}
+export const weekNumberCalculator:CalculatorDefinition<WeekIn,WeekOut>={...base,id:"date-time.week-number",slug:"week-number-calculator",title:"Week Number Calculator",inputSchema:z.object({date:dateString}),calculate:({date})=>isoWeek(date),formulas:[{id:"iso-week",expression:"ISO week = week containing Thursday; week 1 contains January 4",description:"CalcuMint contract: ISO 8601 week-date numbering, Monday-based, with an explicit week-year."}],examples:[{label:"ISO year boundary",input:{date:"2021-01-01"},expected:{weekYear:2020,weekNumber:53}}],goldenTests:[{label:"ISO year boundary",input:{date:"2021-01-01"},expected:{weekYear:2020,weekNumber:53}}],ui:{simpleInputKeys:["date"]}};
+
+export const dateTimeBatch2Definitions=[timeDurationCalculator,hoursCalculator,weekNumberCalculator] as const;
