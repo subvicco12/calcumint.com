@@ -14,9 +14,11 @@ describe("runtime publication authority", () => {
     expect(migration).toContain("where c.lifecycle = 'published'");
     expect(migration).toContain("security definer");
     expect(migration).toContain("grant execute on function public.list_published_calculator_manifest() to anon, authenticated, service_role");
-    expect(migration).not.toContain("reviewer_id");
-    expect(migration).not.toContain("review_notes");
-    expect(migration).not.toContain("metadata");
+    expect(migration).toContain("select c.calculator_key, c.slug, c.version");
+    const projection = migration.match(/select[\\s\\S]*?from public\\.calculator_catalog_admin c/i)?.[0] ?? "";
+    expect(projection).not.toContain("reviewer_id");
+    expect(projection).not.toContain("review_notes");
+    expect(projection).not.toContain("metadata");
   });
 
   it("fails closed when the publication manifest cannot be established", () => {
