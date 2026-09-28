@@ -9,7 +9,8 @@ type TripFuelInput = { distanceKm: number; fuelConsumptionLitersPer100Km: number
 const positive = z.number().finite().positive().max(1e12);
 const nonnegative = z.number().finite().nonnegative().max(1e12);
 const source = { label: "U.S. Department of Energy — FuelEconomy.gov", url: "https://www.fueleconomy.gov/", note: "Fuel economy and trip fuel use vary with vehicle and operating conditions. These DRAFT calculators use explicit user-supplied distance and fuel quantities." };
-function finite(value: number): number { if (!Number.isFinite(value)) throw new Error("Calculated result is outside the supported finite range"); return value; }\nconst base = { category: "everyday", version: 1, riskClass: "standard" as const, reviewStatus: "draft" as const, sources: [source], jurisdictions: [{ country: "GLOBAL" }] };
+function finite(value: number): number { if (!Number.isFinite(value)) throw new Error("Calculated result is outside the supported finite range"); return value; }
+const base = { category: "everyday", version: 1, riskClass: "standard" as const, reviewStatus: "draft" as const, sources: [source], jurisdictions: [{ country: "GLOBAL" }] };
 
 export const fuelEconomyCalculator: CalculatorDefinition<MetricEconomyInput, Out> = {
   ...base, id: "automotive.fuel-economy", slug: "fuel-economy-calculator", title: "Fuel Economy Calculator",
