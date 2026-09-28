@@ -41,7 +41,6 @@ export default async function AdminCalculatorsPage() {
         <label>Title<input name="title" required placeholder="Percentage Calculator"/></label>
         <label>Category<input name="category" required placeholder="math"/></label>
         <label>Risk class<select name="riskClass" defaultValue="standard"><option value="standard">Standard</option><option value="financial">Financial</option><option value="health">Health</option><option value="tax">Tax</option></select></label>
-        <label>Reviewed source count<input name="sourceCount" type="number" min="0" max="1000" defaultValue="0"/></label>
         <button className="button primary" type="submit">Create draft record</button>
       </form>
 
