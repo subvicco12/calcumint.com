@@ -6,7 +6,7 @@ import { createCatalogCalculator, importCalculatorInventory } from "../actions";
 export const metadata = { title: "Calculator Factory" };
 
 const bulkExample = JSON.stringify([
-  { calculatorKey: "core:bmi", slug: "bmi-calculator", title: "BMI Calculator", category: "health", riskClass: "health", sourceCount: 2 }
+  { calculatorKey: "core:bmi", slug: "bmi-calculator", title: "BMI Calculator", category: "health", riskClass: "health" }
 ], null, 2);
 
 export default async function AdminCalculatorsPage() {
