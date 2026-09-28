@@ -12,7 +12,7 @@ function iso(p:DateParts){return `${String(p.year).padStart(4,"0")}-${String(p.m
 function epoch(p:DateParts){const x=new Date(0);x.setUTCHours(0,0,0,0);x.setUTCFullYear(p.year,p.month-1,p.day);return x.getTime()/MS_DAY}
 function fromEpoch(d:number):DateParts{const x=new Date(d*MS_DAY);return{year:x.getUTCFullYear(),month:x.getUTCMonth()+1,day:x.getUTCDate()}}
 function assertRange(p:DateParts){if(!Number.isFinite(p.year)||!Number.isFinite(p.month)||!Number.isFinite(p.day)||p.year<0||p.year>9999)throw new Error("Result is outside the supported four-digit date range");return p}
-function addMonthsClamped(p:DateParts,months:number){const total=p.year*12+(p.month-1)+months,y=Math.floor(total/12),m=((total%12)+12)%12+1;return assertRange({year:y,month:m,day:Math.min(p.day,dim(y,m))})}
+function addMonthsClamped(p:DateParts,months:number){const total=p.year*12+(p.month-1)+months,y=Math.floor(total/12),m=((total%12)+12)%12+1,result={year:y,month:m,day:Math.min(p.day,dim(y,m))};if(!Number.isFinite(result.year)||!Number.isFinite(result.month)||!Number.isFinite(result.day))throw new Error("Result is outside the supported four-digit date range");return result}
 const dateString=z.string().refine(v=>{try{parseDate(v);return true}catch{return false}},"Invalid ISO calendar date");
 const base={category:"date-time",version:1,riskClass:"standard" as const,reviewStatus:"draft" as const,sources:[source]};
 
