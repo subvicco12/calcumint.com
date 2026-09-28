@@ -13,7 +13,7 @@ export function goldenMismatch(actual:unknown,expected:unknown,path="output"):st
  }
  return Object.is(actual,expected)?null:`${path}: expected ${String(expected)}, received ${String(actual)}`;
 }
-const blank=(value:unknown)=>typeof value!=="string"||value.trim().length===0;
+const blank=(value:unknown)=>typeof value!=="string"||value.trim().length===0;\nconst usableSource=(source:{label:string;url?:string})=>{if(blank(source.label))return false;if(!source.url)return true;try{new URL(source.url);return true}catch{return false}};
 export function auditLaunchCertificationDefinitions(definitions:readonly RegistryCalculator[],getContent:PublicContentLookup,now=new Date()):LaunchCertificationIssue[]{
  const issues:LaunchCertificationIssue[]=[];
  for(const d of definitions){if(d.reviewStatus!=="certified")continue;
@@ -26,7 +26,7 @@ export function auditLaunchCertificationDefinitions(definitions:readonly Registr
   const fixtures=d.goldenTests?.length?d.goldenTests:d.examples;
   if(!fixtures?.length)issues.push({slug,reason:"missing certification fixtures"});else for(const fixture of fixtures){try{const actual=runCalculator(d,fixture.input).output;const mismatch=goldenMismatch(actual,fixture.expected);if(mismatch)issues.push({slug,reason:`golden fixture "${fixture.label}" mismatch: ${mismatch}`})}catch(error){issues.push({slug,reason:`golden fixture "${fixture.label}" failed: ${error instanceof Error?error.message:String(error)}`})}}
   if(!d.formulas?.length)issues.push({slug,reason:"missing formulas"});
-  if(!d.sources?.length)issues.push({slug,reason:"missing sources"});
+  if(!d.sources?.length)issues.push({slug,reason:"missing sources"});else if(d.sources.some(source=>!usableSource(source)))issues.push({slug,reason:"invalid source"});
   const publicContent=blank(d.slug)?undefined:getContent(d.slug);
   if(!publicContent)issues.push({slug,reason:"missing public content"});else{
    if(publicContent.slug!==d.slug)issues.push({slug,reason:"public content slug mismatch"});
