@@ -37,8 +37,8 @@ export const horsepowerCalculator:CalculatorDefinition<HorsepowerInput,Horsepowe
  calculate:(input)=>{const horsepower=finite(input.kilowatts*1000/745.6999);return{horsepower,steps:[`Mechanical horsepower = ${horsepower}`]};},
  formulas:[{id:"kw-to-mechanical-hp",expression:"hp = kW × 1000 ÷ 745.6999",description:"Convert SI power in kilowatts to mechanical horsepower using the NIST conversion factor."}],
  sources:[nistSource],
- examples:[{label:"100 kW",input:{kilowatts:100},expected:{horsepower:134.1022140476948,steps:["Mechanical horsepower = 134.1022140476948"]}}],
- goldenTests:[{label:"NIST conversion",input:{kilowatts:100},expected:{horsepower:134.1022140476948}}]
+ examples:[{label:"100 kW",input:{kilowatts:100},expected:{horsepower:134.10220384902829,steps:["Mechanical horsepower = 134.10220384902829"]}}],
+ goldenTests:[{label:"NIST conversion",input:{kilowatts:100},expected:{horsepower:134.10220384902829}}]
 };
 
 export const engineHorsepowerCalculator:CalculatorDefinition<EngineHorsepowerInput,EngineHorsepowerOut>={
