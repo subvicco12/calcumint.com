@@ -2,14 +2,41 @@ import { z } from "zod";
 import type { CalculatorDefinition } from "../types";
 import { roundTo } from "../precision";
 
-type Out={value:number;steps:string[]};
-const positive=z.number().finite().positive().max(1e12);
-const nonnegative=z.number().finite().nonnegative().max(1e12);
-const source={label:"U.S. Department of Energy — FuelEconomy.gov",url:"https://www.fueleconomy.gov/",note:"Fuel economy and trip fuel use vary with vehicle and operating conditions. These DRAFT calculators use explicit user-supplied distance and fuel quantities."};
-const mk=<I>(id:string,slug:string,title:string,schema:z.ZodType<I>,calc:(x:I)=>number,expression:string,description:string,example:I,expected:number)=>({id,slug,title,category:"everyday",version:1,riskClass:"standard" as const,reviewStatus:"draft" as const,inputSchema:schema,calculate:(input:I)=>{const value=roundTo(calc(input),6);if(!Number.isFinite(value))throw new Error("Calculated result is outside the supported finite range");return{value,steps:[title.replace(" Calculator","")+" = "+value]}},formulas:[{id:slug,expression,description}],sources:[source],examples:[{label:"Reference example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+expected]}}],goldenTests:[{label:"Reference example",input:example,expected:{value:expected}}],jurisdictions:[{country:"GLOBAL"}]}) satisfies CalculatorDefinition<I,Out>;
+type Out = { value: number; steps: string[] };
+type MetricEconomyInput = { distanceKm: number; fuelUsedLiters: number };
+type GasMileageInput = { distanceMiles: number; fuelUsedUsGallons: number };
+type TripFuelInput = { distanceKm: number; fuelConsumptionLitersPer100Km: number };
 
-export const fuelEconomyCalculator=mk("automotive.fuel-economy","fuel-economy-calculator","Fuel Economy Calculator",z.object({distanceKm:nonnegative,fuelUsedLiters:positive}),x=>x.distanceKm/x.fuelUsedLiters,"fuel economy = distance ÷ fuel used","Calculate distance traveled per liter from user-supplied distance and fuel used.",{distanceKm:600,fuelUsedLiters:40},15);
-export const gasMileageCalculator=mk("automotive.gas-mileage","gas-mileage-calculator","Gas Mileage Calculator",z.object({distanceMiles:nonnegative,fuelUsedUsGallons:positive}),x=>x.distanceMiles/x.fuelUsedUsGallons,"gas mileage = distance miles ÷ US gallons used","Calculate US miles per gallon from user-supplied distance and US gallons consumed.",{distanceMiles:300,fuelUsedUsGallons:10},30);
-export const tripFuelCalculator=mk("automotive.trip-fuel","trip-fuel-calculator","Trip Fuel Calculator",z.object({distanceKm:nonnegative,fuelConsumptionLitersPer100Km:nonnegative}),x=>x.distanceKm*x.fuelConsumptionLitersPer100Km/100,"trip fuel = distance × L/100 km ÷ 100","Estimate trip fuel quantity from distance and average consumption.",{distanceKm:500,fuelConsumptionLitersPer100Km:8},40);
+const positive = z.number().finite().positive().max(1e12);
+const nonnegative = z.number().finite().nonnegative().max(1e12);
+const source = { label: "U.S. Department of Energy — FuelEconomy.gov", url: "https://www.fueleconomy.gov/", note: "Fuel economy and trip fuel use vary with vehicle and operating conditions. These DRAFT calculators use explicit user-supplied distance and fuel quantities." };
+const base = { category: "everyday", version: 1, riskClass: "standard" as const, reviewStatus: "draft" as const, sources: [source], jurisdictions: [{ country: "GLOBAL" }] };
 
-export const automotiveCatalogBatch1Definitions=[fuelEconomyCalculator,gasMileageCalculator,tripFuelCalculator] as const;
+export const fuelEconomyCalculator: CalculatorDefinition<MetricEconomyInput, Out> = {
+  ...base, id: "automotive.fuel-economy", slug: "fuel-economy-calculator", title: "Fuel Economy Calculator",
+  inputSchema: z.object({ distanceKm: nonnegative, fuelUsedLiters: positive }),
+  calculate: (input) => { const value = roundTo(input.distanceKm / input.fuelUsedLiters, 6); return { value, steps: [`Fuel economy = ${value}`] }; },
+  formulas: [{ id: "fuel-economy-calculator", expression: "fuel economy = distance ÷ fuel used", description: "Calculate distance traveled per liter from user-supplied distance and fuel used." }],
+  examples: [{ label: "Reference example", input: { distanceKm: 600, fuelUsedLiters: 40 }, expected: { value: 15, steps: ["Fuel economy = 15"] } }],
+  goldenTests: [{ label: "Reference example", input: { distanceKm: 600, fuelUsedLiters: 40 }, expected: { value: 15 } }]
+};
+
+export const gasMileageCalculator: CalculatorDefinition<GasMileageInput, Out> = {
+  ...base, id: "automotive.gas-mileage", slug: "gas-mileage-calculator", title: "Gas Mileage Calculator",
+  inputSchema: z.object({ distanceMiles: nonnegative, fuelUsedUsGallons: positive }),
+  calculate: (input) => { const value = roundTo(input.distanceMiles / input.fuelUsedUsGallons, 6); return { value, steps: [`Gas mileage = ${value}`] }; },
+  formulas: [{ id: "gas-mileage-calculator", expression: "gas mileage = distance miles ÷ US gallons used", description: "Calculate US miles per gallon from user-supplied distance and US gallons consumed." }],
+  examples: [{ label: "Reference example", input: { distanceMiles: 300, fuelUsedUsGallons: 10 }, expected: { value: 30, steps: ["Gas mileage = 30"] } }],
+  goldenTests: [{ label: "Reference example", input: { distanceMiles: 300, fuelUsedUsGallons: 10 }, expected: { value: 30 } }]
+};
+
+export const tripFuelCalculator: CalculatorDefinition<TripFuelInput, Out> = {
+  ...base, id: "automotive.trip-fuel", slug: "trip-fuel-calculator", title: "Trip Fuel Calculator",
+  inputSchema: z.object({ distanceKm: nonnegative, fuelConsumptionLitersPer100Km: nonnegative }),
+  calculate: (input) => { const value = roundTo(input.distanceKm * input.fuelConsumptionLitersPer100Km / 100, 6); return { value, steps: [`Trip fuel = ${value}`] }; },
+  formulas: [{ id: "trip-fuel-calculator", expression: "trip fuel = distance × L/100 km ÷ 100", description: "Estimate trip fuel quantity from distance and average consumption." }],
+  examples: [{ label: "Reference example", input: { distanceKm: 500, fuelConsumptionLitersPer100Km: 8 }, expected: { value: 40, steps: ["Trip fuel = 40"] } }],
+  goldenTests: [{ label: "Reference example", input: { distanceKm: 500, fuelConsumptionLitersPer100Km: 8 }, expected: { value: 40 } }]
+};
+
+export const automotiveCatalogBatch1Definitions = [fuelEconomyCalculator, gasMileageCalculator, tripFuelCalculator] as const;
