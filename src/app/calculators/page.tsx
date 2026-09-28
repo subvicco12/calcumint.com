@@ -4,15 +4,19 @@ import { CalculatorSearch } from "@/components/calculator-search";
 import { CountryDiscovery } from "@/components/country-discovery";
 import { calculatorRegistry } from "@/calculators/registry";
 import { buildPublicCalculatorSearchIndex } from "@/calculators/search-index";
-import { listPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { listGovernedPublicCalculators, listPublicCategories } from "@/calculators/public-content";
+import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
 
 const directoryDescription = "Browse CalcuMint's certified calculators by category, search the library, or use the A–Z calculator index.";
 export const metadata: Metadata = { title: "Calculators", description: directoryDescription, alternates: { canonical: "/calculators" }, openGraph: { type: "website", title: "Calculators | CalcuMint", description: directoryDescription, url: "/calculators" } };
 
-export default function CalculatorsPage() {
-  const calculators = listPublicCalculators();
+export const dynamic = "force-dynamic";
+
+export default async function CalculatorsPage() {
+  const publishedSlugs = await getPublishedCalculatorSlugs();
+  const calculators = listGovernedPublicCalculators(publishedSlugs);
   const categories = listPublicCategories().map((category) => ({ ...category, count: calculators.filter((item) => item.category === category.slug).length })).filter((category) => category.count > 0);
-  const searchItems = buildPublicCalculatorSearchIndex();
+  const searchItems = buildPublicCalculatorSearchIndex(publishedSlugs);
   const featured = calculators.slice(0, 8);
   const alphabetical = calculators.flatMap((item) => { const definition = calculatorRegistry.getBySlug(item.slug); return definition ? [{ ...item, title: definition.title }] : []; }).sort((a, b) => a.title.localeCompare(b.title));
 
