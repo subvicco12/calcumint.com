@@ -14,7 +14,7 @@ function linearDefinition(id:string,slug:string,title:string,units:readonly Conv
  const schema=z.object({value:z.number().finite(),fromUnit:z.string().refine(x=>codes.includes(x),"Unsupported source unit"),toUnit:z.string().refine(x=>codes.includes(x),"Unsupported target unit")});
  const map=new Map(units.map(x=>[x.code,x]));
  return {id,slug,title,category:"unit-conversions",version:1,riskClass:"standard",reviewStatus:"draft",inputSchema:schema,
-  calculate:({value,fromUnit,toUnit})=>{const from=map.get(fromUnit)!,to=map.get(toUnit)!;const result=value*(from.factor??1)/(to.factor??1);if(!Number.isFinite(result))throw new Error("Converted result is outside the supported finite range");return{result:roundTo(result,12)}},
+  calculate:({value,fromUnit,toUnit})=>{const from=map.get(fromUnit)!,to=map.get(toUnit)!;const result=value*(from.factor??1)/(to.factor??1);if(!Number.isFinite(result))throw new Error("Converted result is outside the supported finite range");const rounded=roundTo(result,12);if(!Number.isFinite(rounded))throw new Error("Converted result is outside the supported finite range");return{result:rounded}},
   formulas:[{id:"conversion",expression:formula,description:"Convert through the family's common base unit using fixed conversion factors."}],
   sources:[nist,bipm],examples:[{label:"Worked example",input:{value:example.value,fromUnit:example.fromUnit,toUnit:example.toUnit},expected:{result:example.expected}}],
   goldenTests:[{label:"Worked example",input:{value:example.value,fromUnit:example.fromUnit,toUnit:example.toUnit},expected:{result:example.expected}}],
@@ -24,7 +24,7 @@ function linearDefinition(id:string,slug:string,title:string,units:readonly Conv
 const sharedDefinition=(id:string,slug:string,title:string,codes:readonly string[],example:{value:number;fromUnit:string;toUnit:string;expected:number},formula:string,sources:readonly typeof nist[]):CalculatorDefinition<{value:number;fromUnit:string;toUnit:string},Output>=>{
  const schema=z.object({value:z.number().finite(),fromUnit:z.string().refine(x=>codes.includes(x),"Unsupported source unit"),toUnit:z.string().refine(x=>codes.includes(x),"Unsupported target unit")});
  return {id,slug,title,category:"unit-conversions",version:1,riskClass:"standard",reviewStatus:"draft",inputSchema:schema,
-  calculate:({value,fromUnit,toUnit})=>({result:roundTo(convertUnit(value,fromUnit,toUnit),12)}),
+  calculate:({value,fromUnit,toUnit})=>{const result=convertUnit(value,fromUnit,toUnit);if(!Number.isFinite(result))throw new Error("Converted result is outside the supported finite range");const rounded=roundTo(result,12);if(!Number.isFinite(rounded))throw new Error("Converted result is outside the supported finite range");return{result:rounded}},
   formulas:[{id:"conversion",expression:formula,description:"Convert through the existing certified shared unit engine."}],sources,
   examples:[{label:"Worked example",input:{value:example.value,fromUnit:example.fromUnit,toUnit:example.toUnit},expected:{result:example.expected}}],
   goldenTests:[{label:"Worked example",input:{value:example.value,fromUnit:example.fromUnit,toUnit:example.toUnit},expected:{result:example.expected}}],ui:{simpleInputKeys:["value","fromUnit","toUnit"]}};
