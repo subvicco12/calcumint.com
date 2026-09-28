@@ -189,3 +189,16 @@ describe("Final Master database certification gate", () => {
   });
 
 });
+
+
+describe("derived source count authority", () => {
+  const derivedSourceCountMigration = readMigration("025_derived_source_count_authority.sql");
+
+  it("rejects direct authenticated source-count fabrication and normalizes from evidence", () => {
+    expect(derivedSourceCountMigration).toContain("source_count is derived from calculator_source_evidence");
+    expect(derivedSourceCountMigration).toContain("auth.role() <> 'service_role'");
+    expect(derivedSourceCountMigration).toContain("before insert or update of source_count");
+    expect(derivedSourceCountMigration).toContain("from public.calculator_source_evidence");
+    expect(derivedSourceCountMigration).toContain("update public.calculator_catalog_admin c");
+  });
+});
