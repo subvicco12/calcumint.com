@@ -10,11 +10,11 @@ describe("Energy & Environment catalog batch 2", () => {
   });
 
   it("calculates lighting energy from quantity, wattage, and runtime", () => {
-    expect(lightingEnergyCalculator.calculate({ quantity: 10, wattsPerLight: 12, hoursUsed: 5 }).energyKwh).toBe(0.6);
+    expect(lightingEnergyCalculator.calculate({ quantity: 10, wattsPerLight: 12, hoursUsed: 5 }, {}).energyKwh).toBe(0.6);
   });
 
   it("accepts zero runtime as zero energy", () => {
-    expect(lightingEnergyCalculator.calculate({ quantity: 4, wattsPerLight: 9, hoursUsed: 0 }).energyKwh).toBe(0);
+    expect(lightingEnergyCalculator.calculate({ quantity: 4, wattsPerLight: 9, hoursUsed: 0 }, {}).energyKwh).toBe(0);
   });
 
   it("rejects invalid fixture quantities", () => {
