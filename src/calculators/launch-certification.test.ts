@@ -9,7 +9,7 @@ describe("launch certification audit",()=>{
  it("finds no structural defects in currently certified calculators",()=>expect(auditLaunchCertification(now)).toEqual([]));
  it("fails closed without a worked certification fixture",()=>expect(audit({...base,goldenTests:[],examples:[]})).toContain("missing certification fixtures"));
  it("requires non-blank identity metadata",()=>{expect(audit({...base,id:""})).toContain("missing calculator id");expect(audit({...base,title:"  "})).toContain("missing calculator title");expect(audit({...base,category:""})).toContain("missing calculator category");});
- it("requires a usable source",()=>expect(audit({...base,sources:[],officialSources:[]})).toContain("missing sources"));
+ it("requires a usable source",()=>{expect(audit({...base,sources:[],officialSources:[]})).toContain("missing sources");expect(audit({...base,sources:[{label:"   "}]})).toContain("invalid source");expect(audit({...base,sources:[{label:"Source",url:"not a url"}]})).toContain("invalid source");});
  it("requires composed public content",()=>expect(audit(base,()=>undefined)).toContain("missing public content"));
  it("requires public content category identity",()=>expect(audit(base,()=>({...content,category:"wrong-category"}))).toContain("public content category mismatch"));
  it("requires an editorial formula explanation",()=>expect(audit(base,()=>({...content,formulaExplanation:" "}))).toContain("missing editorial formula explanation"));
