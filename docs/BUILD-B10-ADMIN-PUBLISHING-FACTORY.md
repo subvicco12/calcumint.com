@@ -37,7 +37,7 @@ The admin inventory supports individual calculator records and controlled bulk i
 Failed QA checks automatically create quality alerts. Resolving/re-passing the failed check resolves the related alert. `refresh_admin_review_alerts()` raises overdue-review alerts, with higher severity for YMYL calculators. The Admin Control Center surfaces open alerts and lets review-capable operators resolve them.
 
 ## Publication scheduling
-Owner/Admin can schedule a calculator only after it is `certified` and the publishing gate passes. The protected internal endpoint `POST /api/internal/admin/publish` processes due records. It requires server-only `ADMIN_WORKER_SECRET`, rechecks the database gate immediately before publication, raises a critical alert when blocked, and sets the next review date to 180 days after publication.
+Owner/Admin can schedule a calculator only after it is `certified` and the publishing gate passes. The protected internal endpoint `POST /api/internal/admin/publish` processes due records. It requires server-only `ADMIN_WORKER_SECRET`, rechecks the database gate immediately before publication, raises a critical alert when blocked, and preserves any review deadline established by an applicable governance or source policy.
 
 The worker is intentionally not scheduled or activated in B10. Production scheduling belongs to environment integration/launch authorization.
 
