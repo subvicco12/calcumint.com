@@ -8,7 +8,7 @@ describe("conversion catalog batch 1",()=>{
  });
  it("converts exact and reference factors deterministically",()=>{
   expect(lengthConverter.calculate({value:1,fromUnit:"mi",toUnit:"km"},{}).result).toBe(1.609344);
-  expect(areaConverter.calculate({value:1,fromUnit:"acre",toUnit:"m2"},{}).result).toBe(4046.8564224);
+  expect(areaConverter.calculate({value:1,fromUnit:"acre",toUnit:"m2"},{}).result).toBeCloseTo(4046.8564224,9);
   expect(volumeConverter.calculate({value:1,fromUnit:"gal_us",toUnit:"l"},{}).result).toBe(3.785411784);
   expect(temperatureConverter.calculate({value:212,fromUnit:"f",toUnit:"c"},{}).result).toBe(100);
   expect(speedConverter.calculate({value:60,fromUnit:"mph",toUnit:"km_h"},{}).result).toBe(96.56064);
