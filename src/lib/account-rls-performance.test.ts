@@ -22,7 +22,8 @@ describe("account RLS auth initplan optimization", () => {
   });
 
   it("keeps ownership bound to auth.uid while using scalar subqueries", () => {
-    expect(optimized).not.toMatch(/(?<!select )auth\.uid\(\)/);
+    const executable = optimized.split("\n").filter((line) => !line.trimStart().startsWith("--")).join("\n");
+    expect(executable).not.toMatch(/(?<!select )auth\.uid\(\)/);
     expect(optimized.match(/\(select auth\.uid\(\)\)/g)?.length).toBe(11);
     expect(optimized).not.toContain("true");
     expect(optimized).not.toContain("service_role");
