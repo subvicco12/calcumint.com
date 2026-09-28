@@ -4,7 +4,7 @@ const base=calculatorRegistry.list().find(item=>item.reviewStatus==="certified")
 if(!base)throw new Error("Expected at least one certified calculator");
 const content=getPublicCalculatorContent(base.slug);
 if(!content)throw new Error("Expected public content for certified fixture");
-const audit=(definition:typeof base,lookup=()=>content)=>auditLaunchCertificationDefinitions([definition],lookup,now).map(issue=>issue.reason);
+const audit=(definition:typeof base,lookup:(slug:string)=>typeof content|undefined=()=>content)=>auditLaunchCertificationDefinitions([definition],lookup,now).map(issue=>issue.reason);
 describe("launch certification audit",()=>{
  it("finds no structural defects in currently certified calculators",()=>expect(auditLaunchCertification(now)).toEqual([]));
  it("fails closed without a worked certification fixture",()=>expect(audit({...base,goldenTests:[],examples:[]})).toContain("missing certification fixtures"));
