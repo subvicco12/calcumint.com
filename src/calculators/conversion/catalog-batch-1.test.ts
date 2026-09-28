@@ -13,6 +13,8 @@ describe("conversion catalog batch 1",()=>{
   expect(temperatureConverter.calculate({value:212,fromUnit:"f",toUnit:"c"},{}).result).toBe(100);
   expect(temperatureConverter.calculate({value:-459.67,fromUnit:"f",toUnit:"k"},{}).result).toBe(0);
   expect(temperatureConverter.calculate({value:0,fromUnit:"k",toUnit:"f"},{}).result).toBe(-459.67);
+  expect(temperatureConverter.calculate({value:-459.67,fromUnit:"f",toUnit:"c"},{}).result).toBe(-273.15);
+  expect(temperatureConverter.calculate({value:-273.15,fromUnit:"c",toUnit:"f"},{}).result).toBe(-459.67);
   expect(temperatureConverter.calculate({value:Number.MAX_VALUE,fromUnit:"f",toUnit:"k"},{}).result).toBeCloseTo(9.98718408256842e307,12);
   expect(temperatureConverter.calculate({value:5e307,fromUnit:"c",toUnit:"f"},{}).result).toBe(9e307);
   expect(speedConverter.calculate({value:60,fromUnit:"mph",toUnit:"km_h"},{}).result).toBeCloseTo(96.56064,10);
