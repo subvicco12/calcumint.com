@@ -4,18 +4,18 @@ import { notFound } from "next/navigation";
 import { CalculatorInteractive } from "@/components/calculator-interactive";
 import { FreeUserAdSlot } from "@/components/free-user-ad-slot";
 import { calculatorRegistry } from "@/calculators/registry";
-import { categoryContent, getPublicCalculatorContent, listPublicCalculators } from "@/calculators/public-content";
+import { categoryContent, getGovernedPublicCalculatorContent } from "@/calculators/public-content";
+import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
 import { siteConfig } from "@/lib/site";
 
 type PageProps = { params: Promise<{ category: string; slug: string }> };
 
-export function generateStaticParams() {
-  return listPublicCalculators().map((item) => ({ category: item.category, slug: item.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, slug } = await params;
-  const content = getPublicCalculatorContent(slug);
+  const publishedSlugs = await getPublishedCalculatorSlugs();
+  const content = getGovernedPublicCalculatorContent(slug, publishedSlugs);
   const definition = calculatorRegistry.getBySlug(slug);
   if (!content || !definition || content.category !== category) return {};
   const path = `/calculators/${category}/${slug}`;
@@ -35,13 +35,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CalculatorPage({ params }: PageProps) {
   const { category, slug } = await params;
-  const content = getPublicCalculatorContent(slug);
+  const publishedSlugs = await getPublishedCalculatorSlugs();
+  const content = getGovernedPublicCalculatorContent(slug, publishedSlugs);
   const definition = calculatorRegistry.getBySlug(slug);
   const categoryMeta = categoryContent[category as keyof typeof categoryContent];
   if (!content || !definition || !categoryMeta || content.category !== category) notFound();
 
   const related = content.relatedSlugs
-    .map((relatedSlug) => ({ definition: calculatorRegistry.getBySlug(relatedSlug), content: getPublicCalculatorContent(relatedSlug) }))
+    .map((relatedSlug) => ({ definition: calculatorRegistry.getBySlug(relatedSlug), content: getGovernedPublicCalculatorContent(relatedSlug, publishedSlugs) }))
     .filter((item) => item.definition && item.content);
 
   const calculatorJsonLd={"@context":"https://schema.org","@type":"WebApplication",name:definition.title,description:content.shortDescription,url:`${siteConfig.url}/calculators/${category}/${slug}`,applicationCategory:"CalculatorApplication",operatingSystem:"Any",isAccessibleForFree:true};
