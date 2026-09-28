@@ -23,8 +23,7 @@ const createSchema = z.object({
   title: z.string().min(2).max(160),
   category: z.string().min(2).max(100),
   riskClass: z.enum(["standard", "financial", "health", "tax"]),
-  rulePackRequired: z.boolean().default(false),
-  sourceCount: z.coerce.number().int().min(0).max(1000).default(0)
+  rulePackRequired: z.boolean().default(false)
 });
 
 export async function createCatalogCalculator(formData: FormData) {
@@ -35,8 +34,7 @@ export async function createCatalogCalculator(formData: FormData) {
     title: formData.get("title"),
     category: formData.get("category"),
     riskClass: formData.get("riskClass"),
-    rulePackRequired: formData.get("rulePackRequired") === "true",
-    sourceCount: formData.get("sourceCount")
+    rulePackRequired: formData.get("rulePackRequired") === "true"
   });
   const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: input.calculatorKey, slug: input.slug });
   const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
@@ -47,7 +45,6 @@ export async function createCatalogCalculator(formData: FormData) {
     title: input.title,
     category: input.category,
     risk_class: input.riskClass,
-    source_count: input.sourceCount,
     metadata: regulatoryMetadata,
     created_by: user.id
   }).select("id").single();
