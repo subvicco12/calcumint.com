@@ -37,7 +37,7 @@ export function auditLaunchCertificationDefinitions(definitions:readonly Registr
    if(!publicContent.assumptions?.some(item=>!blank(item)))issues.push({slug,reason:"missing editorial assumptions"});
   }
   if(d.lastVerifiedAt){const t=Date.parse(d.lastVerifiedAt);if(!Number.isFinite(t)||t>now.getTime())issues.push({slug,reason:"invalid verification date"});}
-  if(["financial","tax","health"].includes(String(d.riskClass))){const sources=d.officialSources?.length?d.officialSources:d.sources;if(!sources?.length)issues.push({slug,reason:"regulated calculator missing official sources"});}
+  if(["financial","tax","health"].includes(String(d.riskClass))){const sources=d.officialSources?.length?d.officialSources:d.sources;if(!sources?.length)issues.push({slug,reason:"regulated calculator missing official sources"});else if(sources.some(source=>!usableSource(source)))issues.push({slug,reason:"regulated calculator has invalid official source"});}
  }
  return issues;
 }
