@@ -46,7 +46,7 @@ export async function POST(request: Request) {
       await raiseBlockedAlert(admin, calculator.id, reason);
       continue;
     }
-    const { error: updateError } = await admin.from("calculator_catalog_admin").update({ lifecycle: "published", published_at: now, publish_at: null, next_review_due_at: new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString() }).eq("id", calculator.id);
+    const { error: updateError } = await admin.from("calculator_catalog_admin").update({ lifecycle: "published", published_at: now, publish_at: null }).eq("id", calculator.id);
     if (updateError) {
       blocked.push({ id: calculator.id, reason: updateError.message });
       await raiseBlockedAlert(admin, calculator.id, updateError.message);

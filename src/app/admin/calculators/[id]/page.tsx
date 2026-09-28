@@ -42,7 +42,7 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
       <article className="card"><span className="eyebrow">Lifecycle</span><h2>{calculator.lifecycle}</h2><p>Current governed publication state.</p></article>
       <article className="card"><span className="eyebrow">QA gate</span><h2>{complete ? "Ready" : "Blocked"}</h2><p>{required.filter((type) => !["passed","waived"].includes(String(checkMap.get(type)?.status ?? "pending"))).length} required checks incomplete.</p></article>
       <article className="card"><span className="eyebrow">Sources</span><h2>{calculator.source_count}</h2><p>Reviewed source references recorded.</p></article>
-      <article className="card"><span className="eyebrow">Next review</span><h2>{calculator.next_review_due_at ? new Date(calculator.next_review_due_at).toLocaleDateString() : "—"}</h2><p>Published calculators default to a 180-day review cycle.</p></article>
+      <article className="card"><span className="eyebrow">Next review</span><h2>{calculator.next_review_due_at ? new Date(calculator.next_review_due_at).toLocaleDateString() : "—"}</h2><p>Review deadlines are shown when an applicable governance or source policy establishes one.</p></article>
     </div>
 
     <article className="card section">
