@@ -1,0 +1,31 @@
+import { z } from "zod";
+import type { CalculatorDefinition } from "../types";
+
+type DateParts={year:number;month:number;day:number};
+const ISO=/^(\d{4})-(\d{2})-(\d{2})$/;
+const MS_DAY=86400000;
+const source={label:"ISO 8601 date representation",url:"https://www.iso.org/iso-8601-date-and-time-format.html",note:"Date-only inputs use the ISO YYYY-MM-DD representation; calendar arithmetic is deterministic and timezone-independent."};
+function leap(y:number){return y%4===0&&(y%100!==0||y%400===0)}
+function dim(y:number,m:number){return m===2?(leap(y)?29:28):[4,6,9,11].includes(m)?30:31}
+function parseDate(s:string):DateParts{const m=ISO.exec(s);if(!m)throw new Error("Date must use YYYY-MM-DD");const p={year:+m[1]!,month:+m[2]!,day:+m[3]!};if(p.month<1||p.month>12||p.day<1||p.day>dim(p.year,p.month))throw new Error("Invalid calendar date");return p}
+function iso(p:DateParts){return `${String(p.year).padStart(4,"0")}-${String(p.month).padStart(2,"0")}-${String(p.day).padStart(2,"0")}`}
+function epoch(p:DateParts){return Date.UTC(p.year,p.month-1,p.day)/MS_DAY}
+function fromEpoch(d:number):DateParts{const x=new Date(d*MS_DAY);return{year:x.getUTCFullYear(),month:x.getUTCMonth()+1,day:x.getUTCDate()}}
+const dateString=z.string().refine(v=>{try{parseDate(v);return true}catch{return false}},"Invalid ISO calendar date");
+const base={category:"date-time",version:1,riskClass:"standard" as const,reviewStatus:"draft" as const,sources:[source]};
+
+type AgeIn={birthDate:string;asOfDate:string};type AgeOut={years:number;months:number;days:number};
+export const ageCalculator:CalculatorDefinition<AgeIn,AgeOut>={...base,id:"date-time.age",slug:"age-calculator",title:"Age Calculator",inputSchema:z.object({birthDate:dateString,asOfDate:dateString}),calculate:({birthDate,asOfDate})=>{const b=parseDate(birthDate),a=parseDate(asOfDate);if(epoch(a)<epoch(b))throw new Error("asOfDate must not precede birthDate");let y=a.year-b.year,m=a.month-b.month,d=a.day-b.day;if(d<0){m--;const pm=a.month===1?12:a.month-1,py=a.month===1?a.year-1:a.year;d+=dim(py,pm)}if(m<0){y--;m+=12}return{years:y,months:m,days:d}},formulas:[{id:"calendar-age",expression:"calendar difference from birthDate to asOfDate",description:"Whole calendar years, then months, then remaining days."}],examples:[{label:"Calendar age",input:{birthDate:"2000-01-15",asOfDate:"2026-09-28"},expected:{years:26,months:8,days:13}}],goldenTests:[{label:"Calendar age",input:{birthDate:"2000-01-15",asOfDate:"2026-09-28"},expected:{years:26,months:8,days:13}}],ui:{simpleInputKeys:["birthDate","asOfDate"]}};
+
+type DiffIn={startDate:string;endDate:string};type DiffOut={days:number};
+export const dateDifferenceCalculator:CalculatorDefinition<DiffIn,DiffOut>={...base,id:"date-time.date-difference",slug:"date-difference-calculator",title:"Date Difference Calculator",inputSchema:z.object({startDate:dateString,endDate:dateString}),calculate:({startDate,endDate})=>({days:epoch(parseDate(endDate))-epoch(parseDate(startDate))}),formulas:[{id:"elapsed-days",expression:"days = endDate - startDate",description:"Signed elapsed calendar days; equal dates return zero."}],examples:[{label:"Leap-day span",input:{startDate:"2024-02-28",endDate:"2024-03-01"},expected:{days:2}}],goldenTests:[{label:"Leap-day span",input:{startDate:"2024-02-28",endDate:"2024-03-01"},expected:{days:2}}],ui:{simpleInputKeys:["startDate","endDate"]}};
+
+type AddIn={date:string;years:number;months:number;days:number};type AddOut={date:string};
+export const dateAddSubtractCalculator:CalculatorDefinition<AddIn,AddOut>={...base,id:"date-time.date-add-subtract",slug:"date-add-subtract-calculator",title:"Date Add/Subtract Calculator",inputSchema:z.object({date:dateString,years:z.number().int(),months:z.number().int(),days:z.number().int()}),calculate:({date,years,months,days})=>{const p=parseDate(date);const total=p.year*12+(p.month-1)+years*12+months;const y=Math.floor(total/12),m=((total%12)+12)%12+1;const clamped={year:y,month:m,day:Math.min(p.day,dim(y,m))};return{date:iso(fromEpoch(epoch(clamped)+days))}},formulas:[{id:"calendar-add",expression:"target = clamp(date + years + months) + days",description:"Years/months use calendar arithmetic with end-of-month clamping; days are then added as calendar days."}],examples:[{label:"Month-end clamp",input:{date:"2024-01-31",years:0,months:1,days:0},expected:{date:"2024-02-29"}}],goldenTests:[{label:"Month-end clamp",input:{date:"2024-01-31",years:0,months:1,days:0},expected:{date:"2024-02-29"}}],ui:{simpleInputKeys:["date","years","months","days"]}};
+
+export const dayCounterCalculator:CalculatorDefinition<DiffIn,DiffOut>={...base,id:"date-time.day-counter",slug:"day-counter",title:"Day Counter",inputSchema:z.object({startDate:dateString,endDate:dateString}),calculate:({startDate,endDate})=>({days:epoch(parseDate(endDate))-epoch(parseDate(startDate))}),formulas:[{id:"day-count",expression:"days = endDate - startDate",description:"Counts elapsed date boundaries; equal dates return zero and reversed ranges are negative."}],examples:[{label:"One week",input:{startDate:"2026-09-21",endDate:"2026-09-28"},expected:{days:7}}],goldenTests:[{label:"One week",input:{startDate:"2026-09-21",endDate:"2026-09-28"},expected:{days:7}}],ui:{simpleInputKeys:["startDate","endDate"]}};
+
+type DowIn={date:string};type DowOut={dayIndex:number;dayName:string};
+const names=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"] as const;
+export const dayOfWeekCalculator:CalculatorDefinition<DowIn,DowOut>={...base,id:"date-time.day-of-week",slug:"day-of-week-calculator",title:"Day of Week Calculator",inputSchema:z.object({date:dateString}),calculate:({date})=>{const i=new Date(epoch(parseDate(date))*MS_DAY).getUTCDay();return{dayIndex:i,dayName:names[i]!}},formulas:[{id:"weekday",expression:"weekday = Gregorian weekday(date)",description:"Returns Sunday=0 through Saturday=6 using UTC calendar arithmetic."}],examples:[{label:"Known Sunday",input:{date:"2026-09-27"},expected:{dayIndex:0,dayName:"Sunday"}}],goldenTests:[{label:"Known Sunday",input:{date:"2026-09-27"},expected:{dayIndex:0,dayName:"Sunday"}}],ui:{simpleInputKeys:["date"]}};
+export const dateTimeBatch1Definitions=[ageCalculator,dateDifferenceCalculator,dateAddSubtractCalculator,dayCounterCalculator,dayOfWeekCalculator] as const;
