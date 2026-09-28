@@ -207,11 +207,14 @@ describe("review freshness policy alignment", () => {
   const adminActionsSource = readFileSync("src/app/admin/actions.ts", "utf8");
   const scheduledPublisherSource = readFileSync("src/app/api/internal/admin/publish/route.ts", "utf8");
   const calculatorDetailSource = readFileSync("src/app/admin/calculators/[id]/page.tsx", "utf8");
+  const publishingFactoryDoc = readFileSync("docs/BUILD-B10-ADMIN-PUBLISHING-FACTORY.md", "utf8");
 
   it("does not invent a universal 180-day review deadline during publication", () => {
     expect(adminActionsSource).not.toContain("180 * 24 * 60 * 60 * 1000");
     expect(scheduledPublisherSource).not.toContain("180 * 24 * 60 * 60 * 1000");
     expect(calculatorDetailSource).not.toContain("180-day review cycle");
     expect(calculatorDetailSource).toContain("applicable governance or source policy establishes one");
+    expect(publishingFactoryDoc).not.toContain("sets the next review date to 180 days after publication");
+    expect(publishingFactoryDoc).toContain("preserves any review deadline established by an applicable governance or source policy");
   });
 });
