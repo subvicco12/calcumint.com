@@ -104,7 +104,6 @@ export async function transitionCalculator(formData: FormData) {
   }
   const update: Record<string, unknown> = { lifecycle: target };
   if (target === "certified") update.last_reviewed_at = new Date().toISOString();
-  if (target === "published") update.next_review_due_at = new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toISOString();
   const { error } = await supabase.from("calculator_catalog_admin").update(update).eq("id", calculatorId);
   if (error) throw new Error(error.message);
   await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "lifecycle-transition", from_state: current, to_state: target });
