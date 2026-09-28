@@ -1,15 +1,14 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import sitemap from "./sitemap";
 
-describe("public sitemap", () => {
-  it("contains certified calculator pages and category hubs while excluding drafts", () => {
-    const urls = sitemap().map((entry) => entry.url);
-    expect(urls.some((url) => url.endsWith("/calculators/math"))).toBe(true);
-    expect(urls.some((url) => url.endsWith("/calculators/finance-investment"))).toBe(true);
-    expect(urls.some((url) => url.endsWith("/calculators/loans-mortgages"))).toBe(true);
-    expect(urls.some((url) => url.includes("simple-interest-calculator"))).toBe(true);
-    expect(urls.some((url) => url.includes("compound-interest-calculator"))).toBe(true);
-    expect(urls.some((url) => url.includes("loan-payment-calculator"))).toBe(false);
-    expect(urls.some((url) => url.includes("loan-emi-calculator"))).toBe(true);
+describe("public sitemap publication authority", () => {
+  const source = readFileSync("src/app/sitemap.ts", "utf8");
+
+  it("derives calculator and category URLs from the governed publication manifest at runtime", () => {
+    expect(source).toContain('dynamic = "force-dynamic"');
+    expect(source).toContain("getPublishedCalculatorSlugs");
+    expect(source).toContain("listGovernedPublicCalculators");
+    expect(source).toContain("/calculators/${item.category}/${item.slug}");
+    expect(source).not.toContain("sitemapEntriesForAudit");
   });
 });
