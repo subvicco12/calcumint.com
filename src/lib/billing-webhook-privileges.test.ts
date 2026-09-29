@@ -7,15 +7,26 @@ const migration = fs.readFileSync(
   "utf8"
 ).toLowerCase();
 
+const statements = migration
+  .split(";")
+  .map((statement) => statement.replace(/^\s*--.*$/gm, "").trim())
+  .filter(Boolean);
+
 describe("billing webhook event ledger privileges", () => {
   it("revokes all direct client table privileges", () => {
-    expect(migration).toMatch(
-      /revoke\s+all\s+privileges\s+on\s+table\s+public\.billing_webhook_events\s+from\s+anon\s*,\s*authenticated\s*;/
+    expect(statements).toContain(
+      "revoke all privileges on table public.billing_webhook_events from anon, authenticated"
     );
   });
 
   it("does not grant client or public access", () => {
-    expect(migration).not.toMatch(/grant[\s\S]*\b(?:anon|authenticated|public)\b/);
+    expect(
+      statements.some(
+        (statement) =>
+          /^grant\b/.test(statement) &&
+          /\b(?:anon|authenticated|public)\b/.test(statement)
+      )
+    ).toBe(false);
   });
 
   it("does not alter RLS policies or service-role privileges", () => {
