@@ -17,6 +17,7 @@ create table auth.users (
 \ir ../supabase/migrations/003_b5_business.sql
 \ir ../supabase/migrations/004_b6_builder.sql
 \ir ../supabase/migrations/005_b7_delivery.sql
+\ir ../supabase/migrations/006_b8_api_automation.sql
 \ir ../supabase/migrations/007_b9_ai.sql
 \ir ../supabase/migrations/008_b10_admin_factory.sql
 \ir ../supabase/migrations/030_billing_ai_rls_auth_initplan.sql
