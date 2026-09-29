@@ -57,6 +57,13 @@ describe("calculator regulatory metadata binding", () => {
     expect(() => resolveRegistryDefinition({ id: definitions[0].id, slug: definitions[1].slug })).toThrow(/different calculators/);
   });
 
+  it("requires an exact id-and-slug pair when both identity fields are supplied", () => {
+    const definition = calculatorRegistry.list()[0];
+    expect(buildVerifiedCatalogRegulatoryMetadata({ id: definition.id, slug: "wrong-slug" }).matched).toBe(false);
+    expect(buildVerifiedCatalogRegulatoryMetadata({ id: "wrong-id", slug: definition.slug }).matched).toBe(false);
+    expect(buildVerifiedCatalogRegulatoryMetadata({ id: definition.id, slug: definition.slug }).matched).toBe(true);
+  });
+
   it("keeps unmatched inventory non-regulatory instead of guessing a binding", () => {
     expect(buildVerifiedCatalogRegulatoryMetadata({ id: "unknown", slug: "unknown" })).toEqual({
       matched: false,
