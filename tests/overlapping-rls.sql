@@ -12,6 +12,7 @@ create table public.profiles (
   plan text not null
 );
 
+\ir ../supabase/migrations/002_b4_billing.sql
 \ir ../supabase/migrations/003_b5_business.sql
 \ir ../supabase/migrations/004_b6_builder.sql
 \ir ../supabase/migrations/005_b7_delivery.sql
@@ -124,9 +125,9 @@ end $$;
 
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000006';
 update public.calculator_qa_checks set details='reviewer allowed' where id='60000000-0000-0000-0000-000000000001';
-do $ begin
+do \$\$ begin
  if not exists(select 1 from public.calculator_qa_checks where id='60000000-0000-0000-0000-000000000001' and details='reviewer allowed') then raise exception 'reviewer QA write failed'; end if;
-end $;
+end \$\$;
 
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000004';
 do $$ begin
