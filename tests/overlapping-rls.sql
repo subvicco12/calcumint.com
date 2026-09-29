@@ -1,6 +1,7 @@
 \set ON_ERROR_STOP on
 
 create schema auth;
+create role anon noinherit;
 create role authenticated noinherit;
 create role service_role noinherit;
 create function auth.uid() returns uuid language sql stable as $$
@@ -24,9 +25,11 @@ create table auth.users (
 \ir ../supabase/migrations/032_business_builder_rls_auth_initplan.sql
 \ir ../supabase/migrations/035_split_overlapping_write_policies.sql
 \ir ../supabase/migrations/036_consolidate_ai_usage_read_policy.sql
+\ir ../supabase/migrations/037_builder_publish_business_entitlement.sql
 
 grant usage on schema public to authenticated;
 grant select on public.organization_members, public.platform_admins to authenticated;
+grant select, update on public.custom_calculators to authenticated;
 grant select on public.ai_usage_events, public.calculator_qa_checks, public.embed_configs, public.share_links to authenticated;
 grant insert, update, delete on public.calculator_qa_checks, public.embed_configs, public.share_links to authenticated;
 
@@ -54,6 +57,8 @@ insert into public.organization_members(organization_id,user_id,role) values
 
 insert into public.custom_calculators(id,organization_id,name,slug,created_by) values
  ('20000000-0000-0000-0000-000000000001','10000000-0000-0000-0000-000000000001','Test Calc','test-calc','00000000-0000-0000-0000-000000000001');
+insert into public.custom_calculator_versions(calculator_id,version,definition,created_by) values
+ ('20000000-0000-0000-0000-000000000001',1,'{}'::jsonb,'00000000-0000-0000-0000-000000000001');
 
 insert into public.embed_configs(id,organization_id,calculator_id,public_key,name,created_by) values
  ('30000000-0000-0000-0000-000000000001','10000000-0000-0000-0000-000000000001','20000000-0000-0000-0000-000000000001','abcdefghijklmnopqrstuvwx','Owner Embed','00000000-0000-0000-0000-000000000001');
@@ -157,6 +162,70 @@ select 1 / case when exists(
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000004';
 do $$ begin
  if exists(select 1 from public.calculator_qa_checks) then raise exception 'ordinary user QA visible'; end if;
+end $$;
+
+-- Builder publication RPC: Business entitlement and builder role are both required.
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000003';
+select public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
+select 1 / case when exists(
+ select 1 from public.custom_calculators
+ where id='20000000-0000-0000-0000-000000000001' and status='published' and published_version=1
+) then 1 else 0 end as business_manager_publish_verified;
+
+reset role;
+update public.custom_calculators set status='draft', published_version=null where id='20000000-0000-0000-0000-000000000001';
+update public.profiles set plan='pro' where id='00000000-0000-0000-0000-000000000003';
+set role authenticated;
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000003';
+do $$ begin
+ begin
+  perform public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
+  raise exception 'downgraded manager publication unexpectedly succeeded';
+ exception when others then
+  if sqlerrm <> 'Business plan required' then raise; end if;
+ end;
+end $$;
+reset role;
+select 1 / case when exists(
+ select 1 from public.custom_calculators
+ where id='20000000-0000-0000-0000-000000000001' and status='draft' and published_version is null
+) then 1 else 0 end as downgraded_publish_remained_draft;
+set role authenticated;
+do $$ begin
+ begin
+  update public.custom_calculators
+     set status='published', published_version=1
+   where id='20000000-0000-0000-0000-000000000001';
+  raise exception 'downgraded manager direct publication unexpectedly succeeded';
+ exception when others then
+  if sqlerrm <> 'Business plan required' then raise; end if;
+ end;
+end $$;
+reset role;
+select 1 / case when exists(
+ select 1 from public.custom_calculators
+ where id='20000000-0000-0000-0000-000000000001' and status='draft' and published_version is null
+) then 1 else 0 end as direct_publish_bypass_blocked;
+set role authenticated;
+
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000004';
+do $$ begin
+ begin
+  perform public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
+  raise exception 'business member publication unexpectedly succeeded';
+ exception when others then
+  if sqlerrm <> 'Builder permission required' then raise; end if;
+ end;
+end $$;
+
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000005';
+do $$ begin
+ begin
+  perform public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
+  raise exception 'foreign owner publication unexpectedly succeeded';
+ exception when others then
+  if sqlerrm <> 'Builder permission required' then raise; end if;
+ end;
 end $$;
 
 \echo 'Overlapping RLS behavioral checks passed'
