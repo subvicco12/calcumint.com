@@ -17,7 +17,8 @@
     "test:certification": "vitest run src/calculators/launch-certification.test.ts src/calculators/rule-packs.test.ts",
     "test:production": "npm run lint && npm run typecheck && npm test && npm run test:launch && npm run test:certification && npm run build",
     "growthos:heartbeat": "node scripts/growthos-heartbeat.mjs",
-    "admin:bootstrap-owner": "node scripts/bootstrap-platform-owner.mjs"
+    "admin:bootstrap-owner": "node scripts/bootstrap-platform-owner.mjs",
+    "admin:publication-preflight": "node scripts/publication-recovery-preflight.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
