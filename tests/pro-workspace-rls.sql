@@ -13,6 +13,7 @@ create table public.profiles (
 );
 
 \ir ../supabase/migrations/010_b7_pro_workspace.sql
+\ir ../supabase/migrations/033_pro_workspace_rls_auth_initplan.sql
 
 grant usage on schema public to authenticated;
 grant select on public.profiles to authenticated;
