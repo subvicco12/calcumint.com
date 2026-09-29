@@ -7,9 +7,10 @@ const migration = fs.readFileSync(
   "utf8"
 ).toLowerCase();
 
-const statements = migration
+const sql = migration.replace(/^\s*--.*$/gm, "");
+const statements = sql
   .split(";")
-  .map((statement) => statement.replace(/^\s*--.*$/gm, "").trim())
+  .map((statement) => statement.trim())
   .filter(Boolean);
 
 describe("billing webhook event ledger privileges", () => {
@@ -30,7 +31,7 @@ describe("billing webhook event ledger privileges", () => {
   });
 
   it("does not alter RLS policies or service-role privileges", () => {
-    expect(migration).not.toMatch(/(?:create|alter|drop)\s+policy/);
-    expect(migration).not.toMatch(/service_role/);
+    expect(sql).not.toMatch(/(?:create|alter|drop)\s+policy/);
+    expect(sql).not.toMatch(/service_role/);
   });
 });
