@@ -37,6 +37,7 @@ export async function createCatalogCalculator(formData: FormData) {
     rulePackRequired: formData.get("rulePackRequired") === "true"
   });
   const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: input.calculatorKey, slug: input.slug });
+  if (!registryRegulatory.matched) throw new Error("Catalog identity must exactly match a registered calculator id and slug");
   const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
   const regulatoryMetadata = registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired };
   const { data, error } = await supabase.from("calculator_catalog_admin").insert({
@@ -138,6 +139,7 @@ export async function importCalculatorInventory(formData: FormData) {
   // A conflicting id/slug must fail without leaving an orphaned job row behind.
   const rows = parsed.map((item) => {
     const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: item.calculatorKey, slug: item.slug });
+    if (!registryRegulatory.matched) throw new Error(`Catalog identity must exactly match the registry: ${item.calculatorKey} / ${item.slug}`);
     const effectiveRulePackRequired = item.rulePackRequired || registryRegulatory.rulePackRequired;
     return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, metadata: registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired }, created_by: user.id };
   });
