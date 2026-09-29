@@ -29,6 +29,7 @@ create table auth.users (
 
 grant usage on schema public to authenticated;
 grant select on public.organization_members, public.platform_admins to authenticated;
+grant select, update on public.custom_calculators to authenticated;
 grant select on public.ai_usage_events, public.calculator_qa_checks, public.embed_configs, public.share_links to authenticated;
 grant insert, update, delete on public.calculator_qa_checks, public.embed_configs, public.share_links to authenticated;
 
