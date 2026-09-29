@@ -13,6 +13,7 @@ const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
 const sourceEvidenceMigration = readFileSync("supabase/migrations/023_structured_source_evidence.sql", "utf8");
 const reviewerAssignmentMigration = readFileSync("supabase/migrations/024_reviewer_assignment_authority.sql", "utf8");
 const derivedSourceCountMigration = readFileSync("supabase/migrations/025_derived_source_count_authority.sql", "utf8");
+const sourceEvidenceReviewerIndexMigration = readFileSync("supabase/migrations/028_source_evidence_reviewer_index.sql", "utf8");
 const triggerPrivilegeHardeningMigration = readFileSync("supabase/migrations/027_publication_trigger_privilege_hardening.sql", "utf8");
 const publicationManifestMigration = readFileSync("supabase/migrations/026_publication_manifest_authority.sql", "utf8");
 
@@ -233,6 +234,16 @@ describe("publication trigger privilege hardening", () => {
     expect(privilegeStatements.at(-1)).toMatch(
       /^grant execute on function public\.list_published_calculator_manifest\(\) to anon, authenticated, service_role$/
     );
+  });
+});
+
+
+describe("source evidence reviewer foreign-key performance", () => {
+  it("indexes reviewed_by without changing source-evidence lifecycle semantics", () => {
+    expect(sourceEvidenceReviewerIndexMigration).toContain("create index if not exists calculator_source_evidence_reviewed_by_idx");
+    expect(sourceEvidenceReviewerIndexMigration).toContain("on public.calculator_source_evidence(reviewed_by)");
+    expect(sourceEvidenceReviewerIndexMigration).not.toContain("create policy");
+    expect(sourceEvidenceReviewerIndexMigration).not.toMatch(/\b(update|insert|delete)\b[\s\S]*\blifecycle\b/i);
   });
 });
 
