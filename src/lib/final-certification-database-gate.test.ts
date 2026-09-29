@@ -13,6 +13,8 @@ const adminActions = readFileSync("src/app/admin/actions.ts", "utf8");
 const sourceEvidenceMigration = readFileSync("supabase/migrations/023_structured_source_evidence.sql", "utf8");
 const reviewerAssignmentMigration = readFileSync("supabase/migrations/024_reviewer_assignment_authority.sql", "utf8");
 const derivedSourceCountMigration = readFileSync("supabase/migrations/025_derived_source_count_authority.sql", "utf8");
+const triggerPrivilegeHardeningMigration = readFileSync("supabase/migrations/027_publication_trigger_privilege_hardening.sql", "utf8");
+const publicationManifestMigration = readFileSync("supabase/migrations/026_publication_manifest_authority.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -199,6 +201,38 @@ describe("derived source count authority", () => {
     expect(derivedSourceCountMigration).toContain("before insert or update of source_count");
     expect(derivedSourceCountMigration).toContain("from public.calculator_source_evidence");
     expect(derivedSourceCountMigration).toContain("update public.calculator_catalog_admin c");
+  });
+});
+
+
+describe("publication trigger privilege hardening", () => {
+  it("keeps trigger-only SECURITY DEFINER functions off the client RPC surface", () => {
+    const triggerOnlyFunctions = [
+      "enforce_calculator_publish_gate",
+      "enforce_derived_source_count",
+      "enforce_qa_evidence_authority",
+      "enforce_qa_evidence_certification",
+      "enforce_reviewer_assignment_authority",
+      "enforce_source_evidence_certification",
+      "protect_active_ymyl_reviewer_authority",
+      "stamp_source_evidence_review",
+      "sync_source_evidence_count"
+    ];
+    for (const fn of triggerOnlyFunctions) {
+      expect(triggerPrivilegeHardeningMigration).toContain(`revoke execute on function public.${fn}() from public, anon, authenticated`);
+      expect(triggerPrivilegeHardeningMigration).toContain(`grant execute on function public.${fn}() to service_role`);
+    }
+  });
+
+  it("leaves the manifest callable by anon and authenticated after the last migration", () => {
+    const privilegeStatements = `${publicationManifestMigration}\n${triggerPrivilegeHardeningMigration}`
+      .split(";")
+      .map((statement) => statement.replace(/--[^\n]*/g, "").trim().toLowerCase())
+      .filter((statement) => /\b(?:grant|revoke)\b/.test(statement) &&
+        /(?:public\.list_published_calculator_manifest\(\)|all functions in schema public)/.test(statement));
+    expect(privilegeStatements.at(-1)).toMatch(
+      /^grant execute on function public\.list_published_calculator_manifest\(\) to anon, authenticated, service_role$/
+    );
   });
 });
 
