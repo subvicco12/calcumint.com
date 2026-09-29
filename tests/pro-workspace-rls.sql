@@ -15,6 +15,7 @@ create table public.profiles (
 \ir ../supabase/migrations/010_b7_pro_workspace.sql
 
 grant usage on schema public to authenticated;
+grant select on public.profiles to authenticated;
 grant select, insert, update, delete on public.calculation_projects, public.saved_scenarios to authenticated;
 
 insert into auth.users(id) values
