@@ -3,6 +3,7 @@ name: Overlapping RLS behavior
 on:
   pull_request:
     paths:
+      - "supabase/migrations/002_b4_billing.sql"
       - "supabase/migrations/003_b5_business.sql"
       - "supabase/migrations/004_b6_builder.sql"
       - "supabase/migrations/005_b7_delivery.sql"
@@ -15,11 +16,14 @@ on:
   push:
     branches: [main]
     paths:
+      - "supabase/migrations/002_b4_billing.sql"
       - "supabase/migrations/003_b5_business.sql"
       - "supabase/migrations/004_b6_builder.sql"
       - "supabase/migrations/005_b7_delivery.sql"
       - "supabase/migrations/007_b9_ai.sql"
       - "supabase/migrations/008_b10_admin_factory.sql"
+      - "supabase/migrations/030_billing_ai_rls_auth_initplan.sql"
+      - "supabase/migrations/032_business_builder_rls_auth_initplan.sql"
       - "tests/overlapping-rls.sql"
       - ".github/workflows/overlapping-rls.yml"
 
