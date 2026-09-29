@@ -175,10 +175,26 @@ update public.custom_calculators set status='draft', published_version=null wher
 update public.profiles set plan='pro' where id='00000000-0000-0000-0000-000000000003';
 set role authenticated;
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000003';
-do $ begin
+do $$ begin
  begin
   perform public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
   raise exception 'downgraded manager publication unexpectedly succeeded';
+ exception when others then
+  if sqlerrm <> 'Business plan required' then raise; end if;
+ end;
+end $$;
+reset role;
+select 1 / case when exists(
+ select 1 from public.custom_calculators
+ where id='20000000-0000-0000-0000-000000000001' and status='draft' and published_version is null
+) then 1 else 0 end as downgraded_publish_remained_draft;
+set role authenticated;
+do $ begin
+ begin
+  update public.custom_calculators
+     set status='published', published_version=1
+   where id='20000000-0000-0000-0000-000000000001';
+  raise exception 'downgraded manager direct publication unexpectedly succeeded';
  exception when others then
   if sqlerrm <> 'Business plan required' then raise; end if;
  end;
@@ -187,27 +203,27 @@ reset role;
 select 1 / case when exists(
  select 1 from public.custom_calculators
  where id='20000000-0000-0000-0000-000000000001' and status='draft' and published_version is null
-) then 1 else 0 end as downgraded_publish_remained_draft;
+) then 1 else 0 end as direct_publish_bypass_blocked;
 set role authenticated;
 
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000004';
-do $ begin
+do $$ begin
  begin
   perform public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
   raise exception 'business member publication unexpectedly succeeded';
  exception when others then
   if sqlerrm <> 'Builder permission required' then raise; end if;
  end;
-end $;
+end $$;
 
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000005';
-do $ begin
+do $$ begin
  begin
   perform public.publish_custom_calculator('20000000-0000-0000-0000-000000000001',1);
   raise exception 'foreign owner publication unexpectedly succeeded';
  exception when others then
   if sqlerrm <> 'Builder permission required' then raise; end if;
  end;
-end $;
+end $$;
 
 \echo 'Overlapping RLS behavioral checks passed'
