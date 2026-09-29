@@ -2,6 +2,7 @@
 
 create schema auth;
 create role authenticated noinherit;
+create role service_role noinherit;
 create function auth.uid() returns uuid language sql stable as $$
   select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid
 $$;
@@ -16,6 +17,8 @@ create table public.profiles (
 \ir ../supabase/migrations/005_b7_delivery.sql
 \ir ../supabase/migrations/007_b9_ai.sql
 \ir ../supabase/migrations/008_b10_admin_factory.sql
+\ir ../supabase/migrations/030_billing_ai_rls_auth_initplan.sql
+\ir ../supabase/migrations/032_business_builder_rls_auth_initplan.sql
 
 grant usage on schema public to authenticated;
 grant select on public.organization_members, public.platform_admins to authenticated;
@@ -121,9 +124,9 @@ end $$;
 
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000006';
 update public.calculator_qa_checks set details='reviewer allowed' where id='60000000-0000-0000-0000-000000000001';
-do $$ begin
- if not found then null; end if;
-end $$;
+do $ begin
+ if not exists(select 1 from public.calculator_qa_checks where id='60000000-0000-0000-0000-000000000001' and details='reviewer allowed') then raise exception 'reviewer QA write failed'; end if;
+end $;
 
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000004';
 do $$ begin
