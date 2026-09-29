@@ -1,6 +1,7 @@
 \set ON_ERROR_STOP on
 
 create schema auth;
+create role anon noinherit;
 create role authenticated noinherit;
 create role service_role noinherit;
 create function auth.uid() returns uuid language sql stable as $$
