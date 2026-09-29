@@ -36,7 +36,8 @@ insert into auth.users(id,email) values
  ('00000000-0000-0000-0000-000000000004','member@example.test'),
  ('00000000-0000-0000-0000-000000000005','foreign@example.test'),
  ('00000000-0000-0000-0000-000000000006','reviewer@example.test'),
- ('00000000-0000-0000-0000-000000000007','editor@example.test');
+ ('00000000-0000-0000-0000-000000000007','editor@example.test'),
+ ('00000000-0000-0000-0000-000000000008','viewer@example.test');
 update public.profiles set plan='business' where id in (select id from auth.users);
 
 insert into public.organizations(id,name,slug,owner_user_id) values
@@ -47,6 +48,7 @@ insert into public.organization_members(organization_id,user_id,role) values
  ('10000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000002','admin'),
  ('10000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000003','manager'),
  ('10000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000004','member'),
+ ('10000000-0000-0000-0000-000000000001','00000000-0000-0000-0000-000000000008','viewer'),
  ('10000000-0000-0000-0000-000000000002','00000000-0000-0000-0000-000000000005','owner');
 
 insert into public.custom_calculators(id,organization_id,name,slug,created_by) values
@@ -59,7 +61,10 @@ insert into public.share_links(id,organization_id,calculator_id,token_hash,label
 
 insert into public.ai_usage_events(user_id,organization_id,feature) values
  ('00000000-0000-0000-0000-000000000004','10000000-0000-0000-0000-000000000001','finder'),
- ('00000000-0000-0000-0000-000000000005','10000000-0000-0000-0000-000000000002','finder');
+ ('00000000-0000-0000-0000-000000000005','10000000-0000-0000-0000-000000000002','finder'),
+ ('00000000-0000-0000-0000-000000000002','10000000-0000-0000-0000-000000000002','finder'),
+ ('00000000-0000-0000-0000-000000000003','10000000-0000-0000-0000-000000000001','finder'),
+ ('00000000-0000-0000-0000-000000000008','10000000-0000-0000-0000-000000000001','finder');
 
 insert into public.platform_admins(user_id,role,active) values
  ('00000000-0000-0000-0000-000000000001','owner',true),
@@ -73,18 +78,33 @@ insert into public.calculator_qa_checks(id,calculator_id,check_type) values
 
 set role authenticated;
 
--- AI: self-read, org owner/admin aggregate-read, manager/member no aggregate route, foreign denied.
+-- AI: permissive OR semantics. Owner/admin get org aggregate access; every user keeps self-read even outside admin scope.
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000001';
+do $$ begin
+ if (select count(*) from public.ai_usage_events where organization_id='10000000-0000-0000-0000-000000000001') <> 3 then raise exception 'owner org AI aggregate read failed'; end if;
+ if exists(select 1 from public.ai_usage_events where organization_id='10000000-0000-0000-0000-000000000002') then raise exception 'owner saw foreign-org AI event'; end if;
+end $$;
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000002';
+do $$ begin
+ if (select count(*) from public.ai_usage_events) <> 4 then raise exception 'admin must see Test Org aggregate plus own foreign-org event'; end if;
+ if not exists(select 1 from public.ai_usage_events where user_id='00000000-0000-0000-0000-000000000002' and organization_id='10000000-0000-0000-0000-000000000002') then raise exception 'admin lost self-read outside admin org'; end if;
+end $$;
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000003';
+do $$ begin
+ if (select count(*) from public.ai_usage_events) <> 1 then raise exception 'manager must see only own AI event'; end if;
+end $$;
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000004';
 do $$ begin
  if (select count(*) from public.ai_usage_events) <> 1 then raise exception 'member must see only own AI event'; end if;
 end $$;
-set request.jwt.claim.sub='00000000-0000-0000-0000-000000000001';
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000008';
 do $$ begin
- if (select count(*) from public.ai_usage_events where organization_id='10000000-0000-0000-0000-000000000001') <> 1 then raise exception 'owner org AI read failed'; end if;
+ if (select count(*) from public.ai_usage_events) <> 1 then raise exception 'viewer must see only own AI event'; end if;
 end $$;
-set request.jwt.claim.sub='00000000-0000-0000-0000-000000000003';
+set request.jwt.claim.sub='00000000-0000-0000-0000-000000000005';
 do $$ begin
- if exists(select 1 from public.ai_usage_events) then raise exception 'manager gained org-admin AI read'; end if;
+ if (select count(*) from public.ai_usage_events) <> 1 then raise exception 'foreign owner must see only Foreign Org event'; end if;
+ if exists(select 1 from public.ai_usage_events where organization_id='10000000-0000-0000-0000-000000000001') then raise exception 'foreign owner saw Test Org AI event'; end if;
 end $$;
 
 -- Delivery: all org members read; manager can write only rows they create; member/foreign cannot write.
