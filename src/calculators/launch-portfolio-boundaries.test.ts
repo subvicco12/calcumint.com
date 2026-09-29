@@ -27,6 +27,6 @@ describe("launch portfolio numeric boundaries",()=>{
   it("fails closed when an otherwise valid calculation overflows",()=>{
     const d=definition("exponential-calculator");
     const parsed=d.inputSchema.parse({x:1000});
-    expect(()=>d.calculate(parsed)).toThrow("outside the supported finite range");
+    expect(()=>d.calculate(parsed,{})).toThrow("outside the supported finite range");
   });
 });
