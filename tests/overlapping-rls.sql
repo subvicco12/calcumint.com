@@ -103,7 +103,7 @@ do $$ begin
 end $$;
 set request.jwt.claim.sub='00000000-0000-0000-0000-000000000005';
 do $$ begin
- if (select count(*) from public.ai_usage_events) <> 1 then raise exception 'foreign owner must see only Foreign Org event'; end if;
+ if (select count(*) from public.ai_usage_events) <> 2 then raise exception 'foreign owner must see both Foreign Org events'; end if;
  if exists(select 1 from public.ai_usage_events where organization_id='10000000-0000-0000-0000-000000000001') then raise exception 'foreign owner saw Test Org AI event'; end if;
 end $$;
 
