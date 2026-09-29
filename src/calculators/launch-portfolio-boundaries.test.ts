@@ -21,6 +21,11 @@ describe("launch portfolio numeric boundaries",()=>{
     ["probability-complement-calculator",{p:101,whole:100}],
     ["probability-complement-calculator",{p:35,whole:101}],
     ["expected-value-two-outcome-calculator",{value:1,probability:101}],
+    ["coverage-rate-calculator",{covered:101,total:100}],
+    ["completion-rate-calculator",{complete:101,total:100}],
+    ["error-rate-calculator",{errors:101,total:100}],
+    ["success-rate-calculator",{successes:101,total:100}],
+    ["sample-proportion-calculator",{successes:101,sample:100}],
   ] as const;
   for(const [slug,input] of invalidCases){
     it(`${slug} rejects an invalid denominator/domain boundary`,()=>{
