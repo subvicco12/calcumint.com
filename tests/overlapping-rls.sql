@@ -6,10 +6,10 @@ create role service_role noinherit;
 create function auth.uid() returns uuid language sql stable as $$
   select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid
 $$;
-create table auth.users (id uuid primary key, email text);
-create table public.profiles (
-  id uuid primary key references auth.users(id),
-  plan text not null
+create table auth.users (
+  id uuid primary key,
+  email text,
+  raw_user_meta_data jsonb not null default '{}'::jsonb
 );
 
 \ir ../supabase/migrations/001_b3_accounts.sql
