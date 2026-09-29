@@ -26,6 +26,10 @@ describe("launch portfolio numeric boundaries",()=>{
     ["error-rate-calculator",{errors:101,total:100}],
     ["success-rate-calculator",{successes:101,total:100}],
     ["sample-proportion-calculator",{successes:101,sample:100}],
+    ["probability-complement-calculator",{p:60,whole:50}],
+    ["efficiency-calculator",{output:101,input:100}],
+    ["discount-amount-calculator",{price:100,percent:101}],
+    ["sale-price-calculator",{price:100,percent:101}],
   ] as const;
   for(const [slug,input] of invalidCases){
     it(`${slug} rejects an invalid denominator/domain boundary`,()=>{
