@@ -36,7 +36,7 @@ insert into auth.users(id,email) values
  ('00000000-0000-0000-0000-000000000005','foreign@example.test'),
  ('00000000-0000-0000-0000-000000000006','reviewer@example.test'),
  ('00000000-0000-0000-0000-000000000007','editor@example.test');
-insert into public.profiles(id,plan) select id,'business' from auth.users;
+update public.profiles set plan='business' where id in (select id from auth.users);
 
 insert into public.organizations(id,name,slug,owner_user_id) values
  ('10000000-0000-0000-0000-000000000001','Test Org','test-org','00000000-0000-0000-0000-000000000001'),
