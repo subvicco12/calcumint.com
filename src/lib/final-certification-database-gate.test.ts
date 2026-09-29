@@ -14,6 +14,7 @@ const sourceEvidenceMigration = readFileSync("supabase/migrations/023_structured
 const reviewerAssignmentMigration = readFileSync("supabase/migrations/024_reviewer_assignment_authority.sql", "utf8");
 const derivedSourceCountMigration = readFileSync("supabase/migrations/025_derived_source_count_authority.sql", "utf8");
 const triggerPrivilegeHardeningMigration = readFileSync("supabase/migrations/027_publication_trigger_privilege_hardening.sql", "utf8");
+const publicationManifestMigration = readFileSync("supabase/migrations/026_publication_manifest_authority.sql", "utf8");
 
 describe("Final Master database certification gate", () => {
   it("keeps the database QA vocabulary aligned with the application gate", () => {
@@ -207,6 +208,7 @@ describe("derived source count authority", () => {
 describe("publication trigger privilege hardening", () => {
   it("keeps trigger-only SECURITY DEFINER functions off the client RPC surface", () => {
     const triggerOnlyFunctions = [
+      "enforce_calculator_publish_gate",
       "enforce_derived_source_count",
       "enforce_qa_evidence_authority",
       "enforce_qa_evidence_certification",
@@ -220,7 +222,17 @@ describe("publication trigger privilege hardening", () => {
       expect(triggerPrivilegeHardeningMigration).toContain(`revoke execute on function public.${fn}() from public, anon, authenticated`);
       expect(triggerPrivilegeHardeningMigration).toContain(`grant execute on function public.${fn}() to service_role`);
     }
-    expect(triggerPrivilegeHardeningMigration).not.toContain("revoke execute on function public.list_published_calculator_manifest()");
+  });
+
+  it("leaves the manifest callable by anon and authenticated after the last migration", () => {
+    const privilegeStatements = `${publicationManifestMigration}\n${triggerPrivilegeHardeningMigration}`
+      .split(";")
+      .map((statement) => statement.replace(/--[^\n]*/g, "").trim().toLowerCase())
+      .filter((statement) => /\b(?:grant|revoke)\b/.test(statement) &&
+        /(?:public\.list_published_calculator_manifest\(\)|all functions in schema public)/.test(statement));
+    expect(privilegeStatements.at(-1)).toMatch(
+      /^grant execute on function public\.list_published_calculator_manifest\(\) to anon, authenticated, service_role$/
+    );
   });
 });
 
