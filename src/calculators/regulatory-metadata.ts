@@ -76,5 +76,10 @@ export function buildVerifiedCatalogRegulatoryMetadata(identity: RegistryIdentit
 } {
   const definition = resolveRegistryDefinition(identity);
   if (!definition) return { matched: false, rulePackRequired: false, ruleMetadata: [] };
+  const requestedId = identity.id?.trim();
+  const requestedSlug = identity.slug?.trim();
+  if ((requestedId && definition.id !== requestedId) || (requestedSlug && definition.slug !== requestedSlug)) {
+    return { matched: false, rulePackRequired: false, ruleMetadata: [] };
+  }
   return { matched: true, ...buildCatalogRegulatoryMetadata(definition) };
 }
