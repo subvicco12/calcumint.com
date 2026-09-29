@@ -3,6 +3,7 @@ name: Overlapping RLS behavior
 on:
   pull_request:
     paths:
+      - "supabase/migrations/001_b3_accounts.sql"
       - "supabase/migrations/002_b4_billing.sql"
       - "supabase/migrations/003_b5_business.sql"
       - "supabase/migrations/004_b6_builder.sql"
@@ -16,6 +17,7 @@ on:
   push:
     branches: [main]
     paths:
+      - "supabase/migrations/001_b3_accounts.sql"
       - "supabase/migrations/002_b4_billing.sql"
       - "supabase/migrations/003_b5_business.sql"
       - "supabase/migrations/004_b6_builder.sql"
