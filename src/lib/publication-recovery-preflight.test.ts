@@ -7,14 +7,22 @@ describe("publication recovery preflight", () => {
   it("is read-only and checks the governed production dependencies", () => {
     expect(script).toContain('from("platform_admins")');
     expect(script).toContain('from("calculator_catalog_admin")');
+    expect(script).toContain('from("calculator_source_evidence")');
+    expect(script).toContain('from("calculator_qa_checks")');
     expect(script).toContain('rpc("list_published_calculator_manifest")');
     expect(script).not.toContain(".insert(");
     expect(script).not.toContain(".update(");
     expect(script).not.toContain(".delete(");
   });
 
-  it("fails readiness when no active administrator exists", () => {
-    expect(script).toContain("readyForInventoryImport: (adminCount ?? 0) > 0");
+  it("requires exactly one active owner before inventory recovery", () => {
+    expect(script).toContain('eq("role", "owner")');
+    expect(script).toContain("readyForInventoryImport: (ownerCount ?? 0) === 1");
     expect(script).toContain("process.exitCode = 2");
+  });
+
+  it("reports evidence and QA population without mutating it", () => {
+    expect(script).toContain("sourceEvidenceRows: sourceEvidenceCount ?? 0");
+    expect(script).toContain("qaRows: qaCheckCount ?? 0");
   });
 });
