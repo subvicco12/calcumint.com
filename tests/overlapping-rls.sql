@@ -23,6 +23,7 @@ create table auth.users (
 \ir ../supabase/migrations/030_billing_ai_rls_auth_initplan.sql
 \ir ../supabase/migrations/032_business_builder_rls_auth_initplan.sql
 \ir ../supabase/migrations/035_split_overlapping_write_policies.sql
+\ir ../supabase/migrations/036_consolidate_ai_usage_read_policy.sql
 
 grant usage on schema public to authenticated;
 grant select on public.organization_members, public.platform_admins to authenticated;
