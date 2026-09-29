@@ -189,7 +189,7 @@ select 1 / case when exists(
  where id='20000000-0000-0000-0000-000000000001' and status='draft' and published_version is null
 ) then 1 else 0 end as downgraded_publish_remained_draft;
 set role authenticated;
-do $ begin
+do $$ begin
  begin
   update public.custom_calculators
      set status='published', published_version=1
@@ -198,7 +198,7 @@ do $ begin
  exception when others then
   if sqlerrm <> 'Business plan required' then raise; end if;
  end;
-end $;
+end $$;
 reset role;
 select 1 / case when exists(
  select 1 from public.custom_calculators
