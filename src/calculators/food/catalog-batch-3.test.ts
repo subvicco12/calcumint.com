@@ -11,9 +11,9 @@ describe("Food & Cooking catalog batch 3",()=>{
   expect(cakePanConversionCalculator.calculate({originalPanArea:100,targetPanArea:50,originalIngredientQuantity:300}).value).toBe(150);
  });
  it("rejects zero original pan area",()=>{
-  expect(()=>cakePanConversionCalculator.calculate({originalPanArea:0,targetPanArea:100,originalIngredientQuantity:200})).toThrow();
+  expect(()=>cakePanConversionCalculator.inputSchema.parse({originalPanArea:0,targetPanArea:100,originalIngredientQuantity:200})).toThrow();
  });
  it("rejects zero target pan area",()=>{
-  expect(()=>cakePanConversionCalculator.calculate({originalPanArea:64,targetPanArea:0,originalIngredientQuantity:200})).toThrow();
+  expect(()=>cakePanConversionCalculator.inputSchema.parse({originalPanArea:64,targetPanArea:0,originalIngredientQuantity:200})).toThrow();
  });
 });
