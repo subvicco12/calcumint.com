@@ -99,7 +99,7 @@ export default async function CalculatorPage({ params }: PageProps) {
             </section>
             <section className="content-section" aria-labelledby="methodology-sources-heading">
               <h2 id="methodology-sources-heading">Methodology &amp; sources</h2>
-              <p>This calculator uses deterministic, versioned calculation logic. The formula and verified examples above are part of the calculation definition used by CalcuMint.</p>
+              <p>This calculator uses deterministic, versioned calculation logic. The formula and verified examples above are part of the calculation definition used by CalcuMint. Technical calculation version: {definition.version}.</p>
               <ul>
                 {definition.sources.map((source) => (
                   <li key={`${source.label}-${source.url ?? "internal"}`}>
@@ -125,7 +125,7 @@ export default async function CalculatorPage({ params }: PageProps) {
           <div className="trust-card">
             <strong>CalcuMint calculation standard</strong>
             <p>Deterministic calculation logic, validated inputs and automated golden-vector tests.</p>
-            <dl><div><dt>Risk class</dt><dd>{definition.riskClass}</dd></div><div><dt>Review status</dt><dd>{definition.reviewStatus}</dd></div><div><dt>Version</dt><dd>{definition.version}</dd></div></dl>
+            <dl><div><dt>Risk class</dt><dd>{definition.riskClass}</dd></div><div><dt>Review status</dt><dd>{definition.reviewStatus}</dd></div><div><dt>Release</dt><dd>Final</dd></div></dl>
           </div>
           <div className="upgrade-card"><span className="eyebrow">CalcuMint Pro</span><h3>No ads, unlimited saves and exports</h3><p>Core calculation stays public. Pro adds a cleaner professional workflow and premium convenience features.</p><Link className="button secondary" href="/pricing">Compare plans</Link></div>
         </aside>
