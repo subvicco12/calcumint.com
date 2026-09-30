@@ -16,6 +16,7 @@ const [
   { count: catalogCount, error: catalogError },
   { count: sourceEvidenceCount, error: sourceError },
   { count: qaCheckCount, error: qaError },
+  { count: publishedCount, error: publishedError },
   manifest
 ] = await Promise.all([
   supabase.from("platform_admins").select("*", { count: "exact", head: true }).eq("active", true),
@@ -23,9 +24,10 @@ const [
   supabase.from("calculator_catalog_admin").select("*", { count: "exact", head: true }),
   supabase.from("calculator_source_evidence").select("*", { count: "exact", head: true }),
   supabase.from("calculator_qa_checks").select("*", { count: "exact", head: true }),
+  supabase.from("calculator_catalog_admin").select("*", { count: "exact", head: true }).eq("lifecycle", "published"),
   supabase.rpc("list_published_calculator_manifest")
 ]);
-for (const error of [adminError, ownerError, catalogError, sourceError, qaError]) {
+for (const error of [adminError, ownerError, catalogError, sourceError, qaError, publishedError]) {
   if (error) throw error;
 }
 if (manifest.error) throw manifest.error;
@@ -36,9 +38,11 @@ const report = {
   catalogRows: catalogCount ?? 0,
   sourceEvidenceRows: sourceEvidenceCount ?? 0,
   qaRows: qaCheckCount ?? 0,
+  publishedCatalogRows: publishedCount ?? 0,
   manifestRows: Array.isArray(manifest.data) ? manifest.data.length : 0,
   readyForInventoryImport: (ownerCount ?? 0) === 1,
-  publicCatalogNonEmpty: Array.isArray(manifest.data) && manifest.data.length > 0
+  publicCatalogNonEmpty: Array.isArray(manifest.data) && manifest.data.length > 0,
+  publicationManifestConsistent: Array.isArray(manifest.data) && (publishedCount ?? 0) === manifest.data.length
 };
 console.log(JSON.stringify(report, null, 2));
 if (!report.readyForInventoryImport) process.exitCode = 2;
