@@ -99,7 +99,7 @@ export default async function CalculatorPage({ params }: PageProps) {
             </section>
             <section className="content-section" aria-labelledby="methodology-sources-heading">
               <h2 id="methodology-sources-heading">Methodology &amp; sources</h2>
-              <p>This calculator uses deterministic, versioned calculation logic. The formula and verified examples above are part of the calculation definition used by CalcuMint. Technical calculation version: {definition.version}.</p>
+              <p>This calculator uses deterministic, versioned calculation logic. The formula and verified examples above are part of the calculation definition used by CalcuMint. <strong>Technical calculation version:</strong> {definition.version}.</p>
               <ul>
                 {definition.sources.map((source) => (
                   <li key={`${source.label}-${source.url ?? "internal"}`}>
