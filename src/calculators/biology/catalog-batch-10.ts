@@ -1,0 +1,14 @@
+import { z } from "zod";
+import type { CalculatorDefinition } from "../types";
+import { roundTo } from "../precision";
+type In={stockCellsPerMl:number;desiredCells:number;finalVolumeMl:number};type Out={stockVolumeMl:number;mediumVolumeMl:number;resultingCellsPerMl:number;steps:readonly string[]};
+export const cellDilutionCalculator:CalculatorDefinition<In,Out>={
+ id:"biology.cell-dilution",slug:"cell-dilution-calculator",title:"Cell Dilution Calculator",category:"biology",version:1,riskClass:"standard",reviewStatus:"draft",
+ inputSchema:z.object({stockCellsPerMl:z.number().finite().positive().max(1e15),desiredCells:z.number().finite().nonnegative().max(1e15),finalVolumeMl:z.number().finite().positive().max(1e9)}).refine(x=>x.desiredCells/x.stockCellsPerMl<=x.finalVolumeMl,{message:"Required stock suspension volume cannot exceed final volume.",path:["desiredCells"]}),
+ calculate:x=>{const stockVolumeMl=x.desiredCells/x.stockCellsPerMl;const mediumVolumeMl=x.finalVolumeMl-stockVolumeMl;const resultingCellsPerMl=x.desiredCells/x.finalVolumeMl;return{stockVolumeMl:roundTo(stockVolumeMl,6),mediumVolumeMl:roundTo(mediumVolumeMl,6),resultingCellsPerMl:roundTo(resultingCellsPerMl,6),steps:[`Stock suspension volume = ${x.desiredCells} ÷ ${x.stockCellsPerMl} = ${roundTo(stockVolumeMl,6)} mL`,`Medium volume = ${x.finalVolumeMl} - ${roundTo(stockVolumeMl,6)} = ${roundTo(mediumVolumeMl,6)} mL`,`Resulting concentration = ${x.desiredCells} ÷ ${x.finalVolumeMl} = ${roundTo(resultingCellsPerMl,6)} cells/mL`]};},
+ formulas:[{id:"cell-seeding-dilution",expression:"stock volume = desired cells / stock cells per mL; medium volume = final volume - stock volume",description:"Cell-culture seeding workflow: take the suspension volume containing the desired cell number, then add medium to the final volume."}],
+ sources:[{label:"Thermo Fisher Scientific — Maintaining Cultured Cells",url:"https://www.thermofisher.com/ar/en/home/references/gibco-cell-culture-basics/maintaining-cultured-cells.html",note:"Cell-culture guidance uses measured cell concentration to determine the volume of cell suspension required for a desired cell number, then medium is added for plating."}],
+ examples:[{label:"Seed 500,000 cells from 1,000,000 cells/mL into 2 mL",input:{stockCellsPerMl:1000000,desiredCells:500000,finalVolumeMl:2},expected:{stockVolumeMl:.5,mediumVolumeMl:1.5,resultingCellsPerMl:250000,steps:["Stock suspension volume = 500000 ÷ 1000000 = 0.5 mL","Medium volume = 2 - 0.5 = 1.5 mL","Resulting concentration = 500000 ÷ 2 = 250000 cells/mL"]}}],
+ goldenTests:[{label:"Cell seeding dilution fixture",input:{stockCellsPerMl:1000000,desiredCells:500000,finalVolumeMl:2},expected:{stockVolumeMl:.5,mediumVolumeMl:1.5,resultingCellsPerMl:250000}}],
+ ui:{simpleInputKeys:["stockCellsPerMl","desiredCells","finalVolumeMl"]}
+};export const biologyBatch10Definitions=[cellDilutionCalculator] as const;
