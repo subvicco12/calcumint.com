@@ -66,7 +66,8 @@ import { technologyBatch3Definitions } from "./technology-computing/catalog-batc
 import { astronomyBatch1Definitions } from "./astronomy/catalog-batch-1";
 import { astronomyBatch2Definitions } from "./astronomy/catalog-batch-2";
 import { biologyBatch1Definitions } from "./biology/catalog-batch-1";
-import { biologyBatch2Definitions } from "./biology/catalog-batch-2";\nimport { biologyBatch3Definitions } from "./biology/catalog-batch-3";
+import { biologyBatch2Definitions } from "./biology/catalog-batch-2";
+import { biologyBatch3Definitions } from "./biology/catalog-batch-3";
 import { earthScienceBatch1Definitions } from "./earth-science/catalog-batch-1";
 import { earthScienceBatch2Definitions } from "./earth-science/catalog-batch-2";
 import { earthScienceBatch3Definitions } from "./earth-science/catalog-batch-3";
