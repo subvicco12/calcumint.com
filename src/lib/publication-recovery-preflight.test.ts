@@ -24,5 +24,7 @@ describe("publication recovery preflight", () => {
   it("reports evidence and QA population without mutating it", () => {
     expect(script).toContain("sourceEvidenceRows: sourceEvidenceCount ?? 0");
     expect(script).toContain("qaRows: qaCheckCount ?? 0");
+    expect(script).toContain("publishedCatalogRows: publishedCount ?? 0");
+    expect(script).toContain("publicationManifestConsistent:");
   });
 });
