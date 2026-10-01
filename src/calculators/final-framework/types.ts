@@ -11,10 +11,19 @@ export type CalculatorDomain =
   | "date-time" | "conversion" | "automotive-ev" | "travel" | "food-cooking"
   | "energy-environment" | "sports" | "education" | "everyday-life" | "professional";
 
-export type PresentationFamily =
-  | "amortization-debt" | "growth-goal" | "business-unit-economics"
-  | "range-health" | "distribution-statistics" | "math-solver"
-  | "technical-engineering" | "utility-conversion" | "cost-comparison" | "general-analytical";
+import type { FinalPresentationFamily } from "./presentation-families";
+
+export type LegacyPresentationFamily =
+  | "growth-goal" | "business-unit-economics" | "range-health"
+  | "distribution-statistics" | "math-solver" | "technical-engineering"
+  | "utility-conversion" | "cost-comparison" | "general-analytical";
+
+/**
+ * Canonical Blueprint families are the migration target. Legacy values remain
+ * accepted temporarily so existing Reference-Six metadata can migrate without
+ * a flag-day rewrite.
+ */
+export type PresentationFamily = FinalPresentationFamily | LegacyPresentationFamily;
 
 export type PresentationLevel = "essential" | "analytical" | "decision";
 
