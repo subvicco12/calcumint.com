@@ -2,12 +2,10 @@
 import type { StructuredCalculationResult } from "@/calculators/final-framework/types";
 import { hasCalculatorCapability, type CalculatorCapability } from "@/calculators/final-framework/entitlements";
 import type { PlanTier } from "@/calculators/final-framework/types";
+import { displayFinalValue } from "@/calculators/final-framework/renderer-display";
 
 function maxPositive(values:readonly number[]){return Math.max(...values.map(v=>Math.max(v,0)),1)}
-function display(value:number|string,unit?:string){
-  const rendered=typeof value==="number"?(value!==0&&Math.abs(value)<0.01?value.toLocaleString(undefined,{maximumSignificantDigits:8}):value.toLocaleString(undefined,{maximumFractionDigits:2})):value;
-  return unit?rendered+" "+unit:rendered;
-}
+const display = displayFinalValue;
 
 export function FinalResultPresentation({result,plan="free"}:{result:StructuredCalculationResult;plan?:PlanTier}){
   const metrics=[result.primaryResult,...(result.metrics??[])];
