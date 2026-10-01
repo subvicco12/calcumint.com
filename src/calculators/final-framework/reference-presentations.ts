@@ -17,7 +17,7 @@ export const referencePresentations = {
   sip: {
     id: "reference.sip",
     domain: "investing-wealth",
-    family: "growth-goal",
+    family: "growth-accumulation",
     level: "decision",
     freeVisualization: "growth-line",
     supportedVisualizations: ["growth-line", "composition", "comparison-bars", "sensitivity"],
@@ -30,7 +30,7 @@ export const referencePresentations = {
   compoundInterest: {
     id: "reference.compound-interest",
     domain: "investing-wealth",
-    family: "growth-goal",
+    family: "growth-accumulation",
     level: "analytical",
     freeVisualization: "composition",
     supportedVisualizations: ["composition", "growth-line", "comparison-bars", "sensitivity"],
@@ -55,7 +55,7 @@ export const referencePresentations = {
   bmi: {
     id: "reference.bmi",
     domain: "health-fitness",
-    family: "range-health",
+    family: "range-classification",
     level: "analytical",
     freeVisualization: "range-indicator",
     supportedVisualizations: ["range-indicator"],
@@ -68,7 +68,7 @@ export const referencePresentations = {
   breakEven: {
     id: "reference.break-even",
     domain: "business-accounting",
-    family: "business-unit-economics",
+    family: "break-even-crossover",
     level: "decision",
     freeVisualization: "break-even",
     supportedVisualizations: ["break-even", "comparison-bars", "sensitivity"],
