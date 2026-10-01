@@ -25,8 +25,15 @@ describe("Final Blueprint cross-plan mathematical parity", () => {
     }
   });
 
-  it("does not accept plan as an engine input dimension", () => {
-    expect("plan" in compoundInterestCalculator.inputSchema.shape).toBe(false);
-    expect("plan" in sipCalculator.inputSchema.shape).toBe(false);
+  it("keeps plan outside the authoritative input schema", () => {
+    expect(compoundInterestCalculator.inputSchema.safeParse({
+      principal: 10000, annualRatePercent: 7, years: 10, compoundsPerYear: 12, plan: "pro"
+    }).success).toBe(true);
+    expect(sipCalculator.inputSchema.safeParse({
+      monthlyContribution: 5000, annualReturnPercent: 10, termMonths: 120, contributionTiming: "end", plan: "business"
+    }).success).toBe(true);
+    expect(runCalculator(compoundInterestCalculator, {
+      principal: 10000, annualRatePercent: 7, years: 10, compoundsPerYear: 12, plan: "pro"
+    }).input).not.toHaveProperty("plan");
   });
 });
