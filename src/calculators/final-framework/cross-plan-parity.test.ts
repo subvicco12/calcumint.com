@@ -26,7 +26,7 @@ describe("Final Blueprint cross-plan mathematical parity", () => {
   });
 
   it("does not accept plan as an engine input dimension", () => {
-    expect(compoundInterestCalculator.inputs.some(input => input.key === "plan")).toBe(false);
-    expect(sipCalculator.inputs.some(input => input.key === "plan")).toBe(false);
+    expect("plan" in compoundInterestCalculator.inputSchema.shape).toBe(false);
+    expect("plan" in sipCalculator.inputSchema.shape).toBe(false);
   });
 });
