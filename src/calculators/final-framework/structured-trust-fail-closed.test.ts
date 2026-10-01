@@ -3,7 +3,7 @@ import { createStructuredResult } from "./structured-result";
 import { resolveStructuredFinalTrustMetadata } from "./structured-trust-metadata";
 
 describe("structured Final trust metadata", () => {
-  const primaryResult = { id: "result", label: "Result", value: 1 };
+  const primaryResult = { key: "result", label: "Result", value: 1 };
 
   it("fails closed when methodology is missing", () => {
     const result = createStructuredResult({ primaryResult, sources: [{ label: "Source" }] });
