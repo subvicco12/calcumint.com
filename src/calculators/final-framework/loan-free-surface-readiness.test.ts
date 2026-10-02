@@ -1,0 +1,2 @@
+import { describe, expect, it } from "vitest"; import { loanResult } from "./adapters";
+describe("Loan Free structured surface readiness",()=>{it("carries primary metrics composition and schedule without plan-dependent mathematics",()=>{const r=loanResult({principal:100000,annualRatePercent:6,termMonths:12},{monthlyPayment:8606.64,totalPayment:103279.68,totalInterest:3279.68});expect(r.primaryResult.value).toBe(8606.64);expect(r.metrics?.length).toBeGreaterThan(0);expect(r.composition?.length).toBe(2);expect(r.schedule?.length).toBeGreaterThan(0);});});
