@@ -1,0 +1,2 @@
+import { describe, expect, it } from "vitest"; import fs from "node:fs"; import path from "node:path";
+describe("Mortgage renderer wiring readiness",()=>{it("has one isolated normal-result presentation boundary",()=>{const s=fs.readFileSync(path.join(process.cwd(),"src/components/calculator-interactive.tsx"),"utf8");const a=s.indexOf("function MortgageReferenceTool");const b=s.indexOf("function ",a+12);const x=s.slice(a,b);expect(x).toContain("<FinalResultPresentation result={mortgageResult(input,output)} plan={plan}/>");expect(x).toContain("MortgageGoalSolver");});});
