@@ -1,0 +1,4 @@
+import { describe, expect, it } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
+describe("SIP wiring boundary",()=>{it("keeps projection and reverse-solve analysis paths separate",()=>{const source=fs.readFileSync(path.join(process.cwd(),"src/components/calculator-interactive.tsx"),"utf8");const start=source.indexOf("function SipTool");const end=source.indexOf("function ",start+12);const section=source.slice(start,end);expect(section).toContain("sipResult(input,output)");expect(section).toContain("requiredMonthlySip");expect(section).toContain("GoalSolverPanel");expect(section).toContain("ScenarioComparisonPanel");expect(section).toContain("SensitivityPanel");});});
