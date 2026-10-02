@@ -1,0 +1,2 @@
+import { describe, expect, it } from "vitest"; import { mortgageResult } from "./reference-adapters"; import { rendererTrustSurface } from "./renderer-trust-surface";
+describe("Mortgage renderer trust readiness",()=>{it("exposes methodology and sources through the fail-closed renderer trust surface",()=>{const r=mortgageResult({principal:320000,termMonths:360},{monthlyPayment:2022.62,totalPayment:728143.2,totalInterest:408143.2});const trust=rendererTrustSurface(r);expect(trust?.methodology).toBeTruthy();expect(trust?.sources.length).toBeGreaterThan(0);});});
