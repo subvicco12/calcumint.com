@@ -1,0 +1,2 @@
+import { describe, expect, it } from "vitest"; import { loanResult } from "./adapters"; import { rendererTrustSurface } from "./renderer-trust-surface";
+describe("Loan renderer trust readiness",()=>{it("exposes methodology and sources through the fail-closed renderer trust surface",()=>{const r=loanResult({principal:100000,annualRatePercent:6,termMonths:360},{monthlyPayment:599.55,totalPayment:215838,totalInterest:115838});const trust=rendererTrustSurface(r);expect(trust?.methodology).toBeTruthy();expect(trust?.sources.length).toBeGreaterThan(0);});});
