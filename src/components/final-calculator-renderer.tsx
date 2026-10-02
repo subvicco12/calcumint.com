@@ -1,15 +1,11 @@
-import type { StructuredCalculationResult } from "@/calculators/final-framework/types";
+import type { PresentationDefinition, StructuredCalculationResult } from "@/calculators/final-framework/types";
 import type { FinalPlan } from "@/calculators/final-framework/product-capabilities";
 import { displayFinalValue } from "@/calculators/final-framework/renderer-display";
 import { rendererTrustSurface } from "@/calculators/final-framework/renderer-trust-surface";
 import { resolveAnalysisSurface } from "@/calculators/final-framework/analysis-surface-policy";
-import { referencePresentations } from "@/calculators/final-framework/reference-presentations";
-
-type ReferencePresentation = typeof referencePresentations[keyof typeof referencePresentations];
-
-export function FinalCalculatorRenderer({ result, plan="free", presentation=referencePresentations.loanEmi }: { result: StructuredCalculationResult; plan?: FinalPlan; presentation?: ReferencePresentation }) {
+export function FinalCalculatorRenderer({ result, plan="free", presentation }: { result: StructuredCalculationResult; plan?: FinalPlan; presentation?: PresentationDefinition }) {
   const trust=rendererTrustSurface(result);
-  const schedule=result.schedule?.length?resolveAnalysisSurface(plan,presentation,"schedule"):null;
+  const schedule=result.schedule?.length&&presentation?resolveAnalysisSurface(plan,presentation,"schedule"):null;
   return <section className="final-calculator-renderer" aria-live="polite">
     <div className="result-box"><span>{result.primaryResult.label}</span><strong>{displayFinalValue(result.primaryResult.value,result.primaryResult.unit)}</strong></div>
     {result.metrics?.length?<dl>{result.metrics.map(metric=><div key={metric.id}><dt>{metric.label}</dt><dd>{displayFinalValue(metric.value,metric.unit)}</dd></div>)}</dl>:null}
