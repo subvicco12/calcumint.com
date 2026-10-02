@@ -1,0 +1,3 @@
+import { describe, expect, it } from "vitest";
+import { resolveCapabilityPresentation } from "./capability-presentation"; import type { FinalPlan } from "./product-capabilities";
+describe("SIP cross-plan readiness",()=>{it("keeps authoritative mathematical surfaces active for every plan",()=>{for(const plan of ["free","pro","business"] as FinalPlan[]){expect(resolveCapabilityPresentation(plan,"certifiedCoreCalculation").canExecute).toBe(true);expect(resolveCapabilityPresentation(plan,"primaryResultAndMetrics").canExecute).toBe(true);expect(resolveCapabilityPresentation(plan,"formulaAndMethodology").canExecute).toBe(true);}});});
