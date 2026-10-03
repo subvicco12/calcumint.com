@@ -1,0 +1,2 @@
+import {zScoreCalculator,type ZScoreOutput} from "../statistics/catalog-batch-1";import type {StructuredCalculationResult} from "./types";
+export function zScoreResult(output:ZScoreOutput):StructuredCalculationResult{return{primaryResult:{id:"z",label:"Z-score",value:output.zScore},metrics:[{id:"deviation",label:"Deviation from mean",value:output.deviation}],methodology:"z=(x−μ)/σ using the supplied positive standard deviation.",sources:zScoreCalculator.sources};}
