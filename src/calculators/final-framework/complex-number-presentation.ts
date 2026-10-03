@@ -1,0 +1,1 @@
+import type {PresentationDefinition} from "./types";export const complexNumberPresentation={id:"standard.advanced-math-complex-number",domain:"advanced-math-graphing",family:"equation-solver",level:"analytical",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
