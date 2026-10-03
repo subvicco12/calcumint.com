@@ -1,0 +1,1 @@
+import type {PresentationDefinition} from "./types";export const matrixInversePresentation={id:"standard.advanced-math-matrix-inverse",domain:"advanced-math-graphing",family:"equation-solver",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
