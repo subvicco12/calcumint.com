@@ -8,7 +8,7 @@ describe("Period Calculator Final-renderer readiness", () => {
     expect(periodCalculator.reviewStatus).toBe("certified");
     expect(periodCalculator.formulas.length).toBeGreaterThan(0);
     expect(periodCalculator.sources.length).toBeGreaterThan(0);
-    expect(periodCalculator.goldenTests.length).toBeGreaterThan(0);
+    expect(periodCalculator.goldenTests?.length ?? 0).toBeGreaterThan(0);
   });
 
   it("keeps the authoritative reciprocal-frequency engine deterministic", () => {
