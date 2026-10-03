@@ -61,6 +61,8 @@ import { distanceTimePresentation } from "@/calculators/final-framework/distance
 import { speedPresentation } from "@/calculators/final-framework/speed-presentation";
 import { velocityResult } from "@/calculators/final-framework/velocity-adapter";
 import { velocityPresentation } from "@/calculators/final-framework/velocity-presentation";
+import { accelerationResult } from "@/calculators/final-framework/acceleration-adapter";
+import { accelerationPresentation } from "@/calculators/final-framework/acceleration-presentation";
 import { molarityResult } from "@/calculators/final-framework/molarity-adapter";
 import { molarityPresentation } from "@/calculators/final-framework/molarity-presentation";
 import { momentumResult } from "@/calculators/final-framework/momentum-adapter";
