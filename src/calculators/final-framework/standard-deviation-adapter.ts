@@ -1,0 +1,4 @@
+import {standardDeviationCalculator} from "../statistics/catalog-batch-1";
+import type {StructuredCalculationResult} from "./types";
+type DispersionOutput={count:number;mean:number;variance:number;standardDeviation:number;kind:"population"|"sample";steps:readonly string[]};
+export function standardDeviationResult(output:DispersionOutput):StructuredCalculationResult{return{primaryResult:{id:"sd",label:"Standard deviation",value:output.standardDeviation},metrics:[{id:"mean",label:"Mean",value:output.mean},{id:"variance",label:"Variance",value:output.variance},{id:"sd",label:"Standard deviation",value:output.standardDeviation},{id:"count",label:"Count",value:output.count}],methodology:`Deterministic ${output.kind} dispersion using the explicit ${output.kind==="sample"?"n−1":"N"} denominator.`,sources:standardDeviationCalculator.sources};}
