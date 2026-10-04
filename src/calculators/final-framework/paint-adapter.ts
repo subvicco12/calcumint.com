@@ -1,0 +1,3 @@
+import {paintCalculator} from "../engineering-construction/catalog-batch-1";
+import type {StructuredCalculationResult} from "./types";
+export function paintResult(output:{value:number;steps:readonly string[]}):StructuredCalculationResult{return{primaryResult:{id:"result",label:"Paint required",value:output.value,unit:"L"},methodology:"Deterministic calculation using the displayed Engineering & Construction formula. "+output.steps.join(" "),sources:paintCalculator.sources};}
