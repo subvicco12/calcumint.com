@@ -1,0 +1,4 @@
+import {meanMedianModeRangeCalculator} from "../statistics/catalog-batch-1";
+import type {StructuredCalculationResult} from "./types";
+const d=(value:number)=>Number.isInteger(value)?String(value):String(Number(value.toPrecision(12)));
+export function statisticsSummaryResult(output:{count:number;mean:number;median:number;modes:readonly number[];range:number}):StructuredCalculationResult{return{primaryResult:{id:"mean",label:"Mean",value:d(output.mean)},metrics:[{id:"median",label:"Median",value:d(output.median)},{id:"mode",label:"Mode",value:output.modes.length?output.modes.map(d).join(", "):"No mode"},{id:"range",label:"Range",value:d(output.range)},{id:"count",label:"Count",value:output.count}],methodology:"Deterministic descriptive statistics from the validated dataset.",sources:meanMedianModeRangeCalculator.sources};}
