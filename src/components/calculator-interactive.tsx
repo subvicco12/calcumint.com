@@ -5,6 +5,8 @@ import {statisticsSummaryResult} from "@/calculators/final-framework/statistics-
 import {statisticsSummaryPresentation} from "@/calculators/final-framework/statistics-summary-presentation";
 import {forceResult} from "@/calculators/final-framework/force-adapter";
 import {forcePresentation} from "@/calculators/final-framework/force-presentation";
+import {powerResult} from "@/calculators/final-framework/power-adapter";
+import {powerPresentation} from "@/calculators/final-framework/power-presentation";
 import {concreteResult} from "@/calculators/final-framework/concrete-adapter";
 import {concretePresentation} from "@/calculators/final-framework/concrete-presentation";
 import {squareFootageResult} from "@/calculators/final-framework/square-footage-adapter";
