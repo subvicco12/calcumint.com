@@ -17,13 +17,14 @@ describe("Momentum Calculator Final renderer migration",()=>{
     expect(momentumPresentation.domain).toBe("physics");
     expect(momentumPresentation.family).toBe("simple-scalar");
   });
-  it("routes only Momentum through the Final renderer and preserves sibling legacy rendering",()=>{
+  it("keeps Physics Batch 2 exhaustively on the Final renderer",()=>{
     const s=fs.readFileSync(path.join(process.cwd(),"src/components/calculator-interactive.tsx"),"utf8");
     const a=s.indexOf("function PhysicsBatch2Tool");
     const b=s.indexOf("type PhysicsKind",a);
     const body=s.slice(a,b);
     expect(body).toContain('kind==="momentum"?<FinalCalculatorRenderer result={momentumResult(output)} presentation={momentumPresentation}/>');
-    expect(body).toContain("<FinalResultPresentation");
+    expect(body).not.toContain("<FinalResultPresentation");
     for(const sibling of ['kind==="pressure"','kind==="density"','kind==="frequency"','kind==="period"']) expect(body).toContain(sibling);
+    expect(body).toContain('wavelengthResult(output)');
   });
 });
