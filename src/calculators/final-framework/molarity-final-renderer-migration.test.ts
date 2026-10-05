@@ -23,7 +23,7 @@ describe("Molarity Calculator Final renderer migration",()=>{
     const b=s.indexOf("type ChemistryNumericKind",a);
     const body=s.slice(a,b);
     expect(body).toContain('kind==="molarity"?<FinalCalculatorRenderer result={molarityResult(output)} presentation={molarityPresentation}/>');
-    expect(body).toContain("<FinalResultPresentation");
+    expect(body).not.toContain("<FinalResultPresentation");
     expect(body).toContain("<CalculatorAccountActions");
   });
 });
