@@ -1,0 +1,1 @@
+import type {PresentationDefinition} from "./types";export const drywallPresentation={id:"standard.engineering-drywall",domain:"construction",family:"engineering-quantity",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
