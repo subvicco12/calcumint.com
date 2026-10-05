@@ -24,6 +24,6 @@ describe("Speed Calculator Final renderer migration",()=>{
     const b=s.indexOf("function PhysicsBatch3Tool",a);
     const body=s.slice(a,b);
     expect(body).toContain('kind==="speed"?<FinalCalculatorRenderer result={speedResult(output)} presentation={speedPresentation}/>');
-    expect(body).toContain("<FinalResultPresentation");
+    expect(body).not.toContain("<FinalResultPresentation");
   });
 });
