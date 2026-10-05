@@ -24,6 +24,7 @@ describe("Momentum Calculator Final renderer migration",()=>{
     const body=s.slice(a,b);
     expect(body).toContain('kind==="momentum"?<FinalCalculatorRenderer result={momentumResult(output)} presentation={momentumPresentation}/>');
     expect(body).not.toContain("<FinalResultPresentation");
-    for(const sibling of ['kind==="pressure"','kind==="density"','kind==="frequency"','kind==="period"']) expect(body).toContain(sibling);\n    expect(body).toContain('wavelengthResult(output)');
+    for(const sibling of ['kind==="pressure"','kind==="density"','kind==="frequency"','kind==="period"']) expect(body).toContain(sibling);
+    expect(body).toContain('wavelengthResult(output)');
   });
 });
