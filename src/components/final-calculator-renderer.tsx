@@ -7,8 +7,8 @@ export function FinalCalculatorRenderer({ result, plan="free", presentation }: {
   const trust=rendererTrustSurface(result);
   const schedule=result.schedule?.length&&presentation?resolveAnalysisSurface(plan,presentation,"schedule"):null;
   const freeVisualization=presentation?.freeVisualization;
-  return <section className="final-calculator-renderer" aria-live="polite">
-    <div className="result-box"><span>{result.primaryResult.label}</span><strong>{displayFinalValue(result.primaryResult.value,result.primaryResult.unit)}</strong></div>
+  return <section className="final-calculator-renderer">
+    <div className="result-box" role="status" aria-live="polite" aria-atomic="true"><span>{result.primaryResult.label}</span><strong>{displayFinalValue(result.primaryResult.value,result.primaryResult.unit)}</strong></div>
     {result.metrics?.length?<dl>{result.metrics.map(metric=><div key={metric.id}><dt>{metric.label}</dt><dd>{displayFinalValue(metric.value,metric.unit)}</dd></div>)}</dl>:null}
     {result.composition?.length&&(!freeVisualization||freeVisualization==="composition")?<div className="result-panel" data-visualization="composition"><h3>Overview</h3>{result.composition.map(item=><div key={item.id}><span>{item.label}</span><strong>{displayFinalValue(item.value,item.unit)}</strong></div>)}</div>:null}
     {result.ranges?.length&&(!freeVisualization||freeVisualization==="range-indicator")?<div className="result-panel" data-visualization="range-indicator"><h3>Reference range</h3>{result.ranges.map(range=><div key={range.id}><span>{range.label}</span><strong>{range.classification??`${range.min??"—"}–${range.max??"—"}`}</strong></div>)}</div>:null}
