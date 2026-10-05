@@ -1,0 +1,1 @@
+import type {PresentationDefinition} from "./types";export const molecularWeightPresentation={id:"standard.chemistry-molecular-weight",domain:"chemistry",family:"simple-scalar",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
