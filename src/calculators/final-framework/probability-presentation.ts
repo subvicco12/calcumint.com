@@ -1,0 +1,1 @@
+import type {PresentationDefinition} from "./types";export const probabilityPresentation={id:"standard.statistics-probability",domain:"statistics-probability",family:"distribution",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
