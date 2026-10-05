@@ -95,6 +95,8 @@ import { accelerationResult } from "@/calculators/final-framework/acceleration-a
 import { accelerationPresentation } from "@/calculators/final-framework/acceleration-presentation";
 import { molarityResult } from "@/calculators/final-framework/molarity-adapter";
 import { molarityPresentation } from "@/calculators/final-framework/molarity-presentation";
+import { molalityResult } from "@/calculators/final-framework/molality-adapter";
+import { molalityPresentation } from "@/calculators/final-framework/molality-presentation";
 import { momentumResult } from "@/calculators/final-framework/momentum-adapter";
 import { momentumPresentation } from "@/calculators/final-framework/momentum-presentation";
 import { periodResult } from "@/calculators/final-framework/period-adapter";
