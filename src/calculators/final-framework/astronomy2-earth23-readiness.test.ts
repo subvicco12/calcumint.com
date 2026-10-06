@@ -20,10 +20,10 @@ describe("Astronomy 2 and Earth Science 2/3 draft readiness",()=>{
    expect(d.sources.every(s=>Boolean(s.url))).toBe(true);
    expect(d.goldenTests?.length??0).toBeGreaterThan(0);
    expect(getPublicCalculatorContent(d.slug)).toBeUndefined();
-   expect(getCertificationCandidateContent(d.slug)).toBeUndefined();
+   expect(getCertificationCandidateContent(d.slug)).toBeDefined();
   }
  });
- it("locks authoritative external source families for the next editorial lane",()=>{
+ it("locks authoritative source families and candidate boundaries",()=>{
   expect(astronomy[0].sources.some(s=>s.label.includes("IAU"))).toBe(true);
   expect(astronomy[0].sources.some(s=>s.label.includes("NIST"))).toBe(true);
   expect(earth.every(d=>d.sources.some(s=>s.label.includes("USGS")||s.label.includes("NOAA")||s.label.includes("NIST")))).toBe(true);
