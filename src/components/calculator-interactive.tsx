@@ -99,6 +99,8 @@ import { debtPayoffCalculator } from "@/calculators/finance/debt-payoff";
 import { compoundInterestCalculator } from "@/calculators/finance/compound-interest";
 import { FinalResultPresentation } from "@/components/final-result-presentation";
 import { FinalCalculatorRenderer } from "@/components/final-calculator-renderer";
+import { equationSolverResult,derivativeResult,integralResult,limitResult } from "@/calculators/final-framework/advanced-math-calculus-adapters";
+import { equationSolverPresentation,calculusPresentation } from "@/calculators/final-framework/advanced-math-calculus-presentations";
 import { referencePresentations } from "@/calculators/final-framework/reference-presentations";
 import { compoundInterestResult,sipResult,loanResult } from "@/calculators/final-framework/adapters";
 import { bmiResult,breakEvenResult,mortgageResult } from "@/calculators/final-framework/reference-adapters";
