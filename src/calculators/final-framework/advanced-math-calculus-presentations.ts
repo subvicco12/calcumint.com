@@ -1,0 +1,3 @@
+import type {PresentationDefinition} from "./types";
+export const equationSolverPresentation={id:"standard.equation-solver",domain:"advanced-math-graphing",family:"equation-solver",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
+export const calculusPresentation={id:"standard.calculus-graph",domain:"advanced-math-graphing",family:"graphing",level:"essential",freeVisualization:"growth-line",supportedVisualizations:["growth-line"],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
