@@ -1,0 +1,1 @@
+import type {PresentationDefinition} from "./types";export const geometryCorePresentation={id:"standard.geometry-core",domain:"geometry",family:"engineering-quantity",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false} as const satisfies PresentationDefinition;
