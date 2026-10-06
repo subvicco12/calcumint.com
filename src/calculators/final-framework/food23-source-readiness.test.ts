@@ -18,7 +18,7 @@ describe("Food Batches 2/3 source readiness",()=>{
   }
  });
  it("keeps all six source-review blocked until independent URL-backed evidence is added",()=>{
-  expect(defs.every(d=>d.sources.some(s=>!s.url))).toBe(true);
+  expect(defs.every(d=>d.sources.some(s=>!("url" in s)))).toBe(true);
   expect(defs.every(d=>d.sources.some(s=>s.label.includes("Master Calculator Catalog")))).toBe(true);
  });
 });
