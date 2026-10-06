@@ -1,0 +1,6 @@
+import {describe,expect,it} from "vitest";
+import {getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
+import {travelEverydayBatch1Definitions} from "../travel/catalog-batch-1";
+import {travelEverydayBatch2Definitions} from "../travel/catalog-batch-2";
+import {travelEverydayBatch3Definitions} from "../travel/catalog-batch-3";
+describe("Travel and Everyday source readiness",()=>{const defs=[...travelEverydayBatch1Definitions,...travelEverydayBatch2Definitions,...travelEverydayBatch3Definitions];it("locks deterministic draft evidence",()=>{expect(defs).toHaveLength(7);for(const d of defs){expect(d.riskClass).toBe("standard");expect(d.reviewStatus).toBe("draft");expect(d.formulas?.length??0).toBeGreaterThan(0);expect(d.goldenTests?.length??0).toBeGreaterThan(0);expect(d.sources?.length??0).toBeGreaterThan(0);expect(getPublicCalculatorContent(d.slug)).toBeUndefined();expect(getCertificationCandidateContent(d.slug)).toBeUndefined();}});it("keeps all seven source-review blocked until independent URL-backed evidence exists",()=>{expect(defs.every(d=>d.sources.some(s=>!("url" in s)))).toBe(true);expect(defs.every(d=>d.sources.some(s=>s.label.includes("Master Calculator Catalog")))).toBe(true);});});
