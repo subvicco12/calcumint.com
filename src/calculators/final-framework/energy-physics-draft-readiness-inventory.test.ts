@@ -16,11 +16,7 @@ describe("Energy and Physics draft readiness inventory",()=>{
    expect(getPublicCalculatorContent(d.slug)).toBeUndefined();
   }
  });
- it("records the current editorial blocker explicitly",()=>{
-  expect(defs.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual([
-   "ev-charging-cost-calculator","ev-range-calculator","ev-trip-energy-calculator","ev-charging-time-calculator",
-   "solar-daily-energy-calculator","solar-simple-payback-calculator","coefficient-of-restitution-calculator",
-   "moment-of-inertia-solid-disk-calculator","simple-pendulum-period-calculator","centrifugal-force-calculator","radius-of-gyration-calculator",
-  ]);
+ it("requires complete certification-candidate editorial content",()=>{
+  expect(defs.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual([]);
  });
 });
