@@ -1,5 +1,5 @@
 import {describe,expect,it} from "vitest";
-import {getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
+import {categoryContent,getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
 import {conversionBatch1Definitions} from "../conversion/catalog-batch-1";
 import {dateTimeBatch1Definitions} from "../date-time/catalog-batch-1";
 
@@ -20,5 +20,6 @@ describe("standard-risk draft certification-candidate coverage",()=>{
    if(!getCertificationCandidateContent(d.slug))missing.push(d.slug);
   }
   expect(missing).toEqual([]);
+  expect(categoryContent["date-time"]).toBeDefined();
  });
 });
