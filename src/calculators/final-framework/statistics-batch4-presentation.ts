@@ -1,0 +1,1 @@
+import type{PresentationDefinition}from"./types";export const statisticsBatch4Presentation={id:"standard.statistics-batch4",domain:"statistics-probability",family:"simple-scalar",level:"essential",supportedVisualizations:[],supportsSchedule:false,supportsGoalSolver:false,supportsScenarios:false,supportsSensitivity:false}as const satisfies PresentationDefinition;
