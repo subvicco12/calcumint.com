@@ -20,7 +20,8 @@ describe("Food, Astronomy and Earth Science draft readiness",()=>{
   }
  });
  it("records candidate editorial work without changing authority",()=>{
-  expect(defs.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual([]);\n  expect(getCertificationCandidateContent("brine-salt-calculator")?.assumptions.join(" ").toLowerCase()).toContain("does not determine food preservation or safety");
+  expect(defs.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual([]);
+  expect(getCertificationCandidateContent("brine-salt-calculator")?.assumptions.join(" ").toLowerCase()).toContain("does not determine food preservation or safety");
   expect(food.find(d=>d.slug==="brine-salt-calculator")?.sources[0]?.label).toContain("USDA");
   expect(astronomy.some(d=>d.sources.some(s=>s.label.includes("NIST")))).toBe(true);
   expect(earth.some(d=>d.sources.some(s=>s.label.includes("USGS")))).toBe(true);
