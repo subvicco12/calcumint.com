@@ -1,5 +1,5 @@
 import {describe,expect,it} from "vitest";
-import {getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
+import {categoryContent,getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
 import {conversionBatch2Definitions} from "../conversion/catalog-batch-2";
 import {conversionBatch3Definitions} from "../conversion/catalog-batch-3";
 import {conversionBatch4Definitions} from "../conversion/catalog-batch-4";
@@ -22,5 +22,7 @@ describe("Conversion and Date/Time wave 2 draft readiness",()=>{
  it("requires complete candidate editorial content",()=>{
   const missing=defs.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug);
   expect(missing).toEqual([]);
+  expect(categoryContent["date-time"]).toBeDefined();
+  for(const d of defs){const content=getCertificationCandidateContent(d.slug); expect(content?.intro).not.toContain("certification-candidate"); expect(content?.faq.map(x=>x.answer).join(" ")).not.toContain("already public");}
  });
 });
