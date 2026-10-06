@@ -23,7 +23,7 @@ describe("Biology draft readiness",()=>{
    expect(d.sources.every(s=>"url" in s && Boolean(s.url))).toBe(true);
    expect(d.goldenTests?.length??0).toBeGreaterThan(0);
    expect(getPublicCalculatorContent(d.slug)).toBeUndefined();
-   expect(getCertificationCandidateContent(d.slug)).toBeUndefined();
+   expect(getCertificationCandidateContent(d.slug)).toBeDefined();
   }
  });
 });
