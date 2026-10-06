@@ -1,0 +1,13 @@
+import {describe,expect,it} from "vitest";
+import {getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
+import {solidGeometryBatch1Definitions} from "../geometry/solid-geometry-batch-1";
+import {solidGeometryBatch2Definitions} from "../geometry/solid-geometry-batch-2";
+import {solidGeometryBatch3Definitions} from "../geometry/solid-geometry-batch-3";
+import {solidGeometryBatch4Definitions} from "../geometry/solid-geometry-batch-4";
+import {solidGeometryBatch5Definitions} from "../geometry/solid-geometry-batch-5";
+import {solidGeometryBatch6Definitions} from "../geometry/solid-geometry-batch-6";
+import {solidGeometryBatch7Definitions} from "../geometry/solid-geometry-batch-7";
+import {solidGeometryBatch8Definitions} from "../geometry/solid-geometry-batch-8";
+import {solidGeometryBatch9Definitions} from "../geometry/solid-geometry-batch-9";
+import {solidGeometryBatch10Definitions} from "../geometry/solid-geometry-batch-10";
+describe("Solid Geometry draft readiness",()=>{const defs=[...solidGeometryBatch1Definitions,...solidGeometryBatch2Definitions,...solidGeometryBatch3Definitions,...solidGeometryBatch4Definitions,...solidGeometryBatch5Definitions,...solidGeometryBatch6Definitions,...solidGeometryBatch7Definitions,...solidGeometryBatch8Definitions,...solidGeometryBatch9Definitions,...solidGeometryBatch10Definitions];it("locks 50 standard-risk deterministic candidates",()=>{expect(defs).toHaveLength(50);for(const d of defs){expect(d.riskClass).toBe("standard");expect(d.reviewStatus).toBe("draft");expect(d.formulas?.length??0).toBeGreaterThan(0);expect(d.goldenTests?.length??0).toBeGreaterThan(0);expect(d.sources?.length??0).toBeGreaterThan(0);expect(d.sources.every(s=>"url" in s&&Boolean(s.url))).toBe(true);expect(getPublicCalculatorContent(d.slug)).toBeUndefined();expect(getCertificationCandidateContent(d.slug)).toBeUndefined();}});it("keeps the geometry evidence anchored to explicit external references",()=>{expect(defs.every(d=>d.sources.some(s=>("url" in s)&&String(s.url).startsWith("https://")))).toBe(true);});});
