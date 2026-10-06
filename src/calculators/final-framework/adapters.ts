@@ -71,3 +71,5 @@ export function compoundInterestResult(input:{principal:number;years:number},out
     sources:compoundInterestCalculator.sources
   };
 }
+
+export function sipReverseResult(targetFutureValue:number,annualReturnPercent:number,termMonths:number,requiredMonthlyContribution:number):StructuredCalculationResult{return{primaryResult:{id:"required-monthly-contribution",label:"Required modeled monthly contribution",value:requiredMonthlyContribution},metrics:[{id:"target",label:"Target future value",value:targetFutureValue},{id:"term",label:"Term",value:termMonths,unit:"months"},{id:"return",label:"Modeled annual return",value:annualReturnPercent,unit:"%"}],warnings:["Reverse-solved using the modeled return. This is a mathematical projection, not a guaranteed investment outcome."],methodology:"The required contribution is reverse-solved by the certified SIP engine using the selected contribution timing.",sources:sipCalculator.sources};}
