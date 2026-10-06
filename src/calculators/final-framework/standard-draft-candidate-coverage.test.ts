@@ -8,7 +8,7 @@ describe("standard-risk draft certification-candidate coverage",()=>{
   ["Conversion Batch 1",conversionBatch1Definitions],
   ["Date/Time Batch 1",dateTimeBatch1Definitions],
  ] as const;
- it("keeps audited families draft and non-public while exposing missing editorial readiness",()=>{
+ it("keeps audited families draft and non-public with complete editorial candidates",()=>{
   const missing:string[]=[];
   for(const [,defs] of families)for(const d of defs){
    expect(d.riskClass).toBe("standard");
@@ -19,9 +19,6 @@ describe("standard-risk draft certification-candidate coverage",()=>{
    expect(getPublicCalculatorContent(d.slug)).toBeUndefined();
    if(!getCertificationCandidateContent(d.slug))missing.push(d.slug);
   }
-  expect(missing).toEqual([
-   "length-converter","area-converter","volume-converter","temperature-converter","speed-converter",
-   "age-calculator","date-difference-calculator","date-add-subtract-calculator","day-counter","day-of-week-calculator",
-  ]);
+  expect(missing).toEqual([]);
  });
 });
