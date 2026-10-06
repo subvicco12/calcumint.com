@@ -19,7 +19,8 @@ describe("Physics 5, Sports and Automotive draft readiness",()=>{
   }
  });
  it("records editorial and source-review blockers separately",()=>{
-  expect([...physics,...automotive].filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual([]);\n  expect(sports.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual(sports.map(d=>d.slug));
+  expect([...physics,...automotive].filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual([]);
+  expect(sports.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug)).toEqual(sports.map(d=>d.slug));
   expect(sports.every(d=>d.sources.some(s=>!s.url))).toBe(true);
   expect(physics.every(d=>d.sources.every(s=>Boolean(s.url)))).toBe(true);
   expect(automotive.every(d=>d.sources.every(s=>Boolean(s.url)))).toBe(true);
