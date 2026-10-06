@@ -1,0 +1,7 @@
+import {describe,expect,it} from "vitest";
+import {getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
+import {structuralMechanicsBatch1Definitions} from "../engineering/structural-mechanics-batch-1";
+import {structuralMechanicsBatch2Definitions} from "../engineering/structural-mechanics-batch-2";
+import {structuralMechanicsBatch3Definitions} from "../engineering/structural-mechanics-batch-3";
+import {structuralMechanicsBatch4Definitions} from "../engineering/structural-mechanics-batch-4";
+describe("Structural Mechanics draft readiness",()=>{const defs=[...structuralMechanicsBatch1Definitions,...structuralMechanicsBatch2Definitions,...structuralMechanicsBatch3Definitions,...structuralMechanicsBatch4Definitions];it("locks 20 standard-risk deterministic drafts",()=>{expect(defs).toHaveLength(20);for(const d of defs){expect(d.riskClass).toBe("standard");expect(d.reviewStatus).toBe("draft");expect(d.formulas?.length??0).toBeGreaterThan(0);expect(d.goldenTests?.length??0).toBeGreaterThan(0);expect(d.sources?.length??0).toBeGreaterThan(0);expect(d.sources.every(s=>"url" in s&&Boolean(s.url))).toBe(true);expect(getPublicCalculatorContent(d.slug)).toBeUndefined();expect(getCertificationCandidateContent(d.slug)).toBeUndefined();}});it("keeps structural results within explicit idealized mechanics models",()=>{expect(defs.every(d=>d.sources.some(s=>s.note?.toLowerCase().includes("assumption")))).toBe(true);});});
