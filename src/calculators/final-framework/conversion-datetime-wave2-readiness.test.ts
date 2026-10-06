@@ -19,8 +19,8 @@ describe("Conversion and Date/Time wave 2 draft readiness",()=>{
    expect(getPublicCalculatorContent(d.slug)).toBeUndefined();
   }
  });
- it("makes missing candidate editorial work explicit",()=>{
+ it("requires complete candidate editorial content",()=>{
   const missing=defs.filter(d=>!getCertificationCandidateContent(d.slug)).map(d=>d.slug);
-  expect(missing).toEqual(defs.map(d=>d.slug));
+  expect(missing).toEqual([]);
  });
 });
