@@ -1,0 +1,4 @@
+import {describe,expect,it} from "vitest";
+import {energyEnvironmentCatalogBatch1Definitions} from "../energy/catalog-batch-2";
+import {getCertificationCandidateContent,getPublicCalculatorContent} from "../public-content";
+describe("Energy draft readiness",()=>{it("locks two standard-risk deterministic candidates",()=>{expect(energyEnvironmentCatalogBatch1Definitions).toHaveLength(2);for(const d of energyEnvironmentCatalogBatch1Definitions){expect(d.riskClass).toBe("standard");expect(d.reviewStatus).toBe("draft");expect(d.formulas?.length??0).toBeGreaterThan(0);expect(d.goldenTests?.length??0).toBeGreaterThan(0);expect(d.sources?.length??0).toBeGreaterThan(0);expect(d.sources?.every(s=>"url" in s&&Boolean(s.url))).toBe(true);expect(getPublicCalculatorContent(d.slug)).toBeUndefined();expect(getCertificationCandidateContent(d.slug)).toBeDefined();}});});
