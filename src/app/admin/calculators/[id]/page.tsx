@@ -4,6 +4,9 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { addCalculatorSourceEvidence, assignReviewer, transitionCalculator, updateQaCheck } from "../../actions";
 import { scheduleCalculatorPublication } from "../../schedule-actions";
 import { requiredQaChecks } from "@/lib/admin/publishing";
+import { calculatorRegistry } from "@/calculators/registry";
+import { inspectCertificationEvidencePacket } from "@/calculators/certification-evidence-packet";
+import { buildReviewerEvidencePrefill } from "@/lib/admin/reviewer-evidence-prefill";
 
 type PageProps = { params: Promise<{ id: string }> };
 export const metadata = { title: "Calculator Review" };
@@ -34,6 +37,11 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
   const canReview = ["owner","admin","reviewer"].includes(String(admin.role));
   const canAssign = ["owner","admin"].includes(String(admin.role));
   const canWaive = ["owner","admin"].includes(String(admin.role));
+  const registryDefinition = calculatorRegistry.getById(String(calculator.calculator_key));
+  const evidenceReadiness = registryDefinition?.riskClass === "standard" && registryDefinition.reviewStatus === "reviewed" ? inspectCertificationEvidencePacket(registryDefinition) : null;
+  const evidencePrefill = evidenceReadiness?.ready && evidenceReadiness.packet ? buildReviewerEvidencePrefill(evidenceReadiness.packet) : null;
+  const recordedSourceUrls = new Set((sources ?? []).map((source) => String(source.url)));
+  const suggestedSources = evidencePrefill?.sources.filter((source) => !recordedSourceUrls.has(source.url)) ?? [];
 
   return <section className="container page-top admin-page">
     <div className="section-heading"><div><span className="eyebrow">Calculator governance</span><h1>{calculator.title}</h1><p className="hero-copy"><code>{calculator.slug}</code> · {calculator.category} · {calculator.risk_class} risk · v{calculator.version}</p></div><Link className="button secondary" href="/admin/calculators">Inventory</Link></div>
@@ -56,6 +64,8 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
     {canAssign && calculator.lifecycle === "certified" && <article className="card section"><span className="eyebrow">Publication scheduling</span><h2>Schedule certified calculator</h2><form className="inline-form" action={scheduleCalculatorPublication}><input type="hidden" name="calculatorId" value={id}/><input name="publishAt" type="datetime-local" required/><button className="button primary" type="submit">Schedule publication</button></form><p className="muted-copy">Current schedule: {calculator.publish_at ? new Date(calculator.publish_at).toLocaleString() : "not scheduled"}. The protected worker re-checks every QA gate before publication.</p></article>}
 
     {canAssign && <article className="card section"><span className="eyebrow">Reviewer</span><h2>Assign accountable reviewer</h2><form className="inline-form" action={assignReviewer}><input type="hidden" name="calculatorId" value={id}/><select name="reviewerId" required defaultValue={calculator.reviewer_id ?? ""}><option value="" disabled>Select reviewer</option>{(reviewers ?? []).filter((item) => ["owner","admin","reviewer"].includes(String(item.role))).map((item) => <option key={item.user_id} value={item.user_id}>{item.role} · {String(item.user_id).slice(0,8)}…</option>)}</select><button className="button secondary" type="submit">Assign</button></form></article>}
+
+    {evidenceReadiness && <article className="card section"><span className="eyebrow">Registry evidence</span><h2>{evidenceReadiness.ready ? "Reviewer prefill available" : "Evidence packet blocked"}</h2>{evidenceReadiness.ready ? <><p>Registry evidence is preparation only. A reviewer must explicitly record each source and make every QA decision.</p>{suggestedSources.length ? <ul className="admin-list">{suggestedSources.map((source) => <li key={source.url}><strong>{source.label}</strong> · <a href={source.url} target="_blank" rel="noreferrer">inspect source</a>{canReview && <form className="inline-form" action={addCalculatorSourceEvidence}><input type="hidden" name="calculatorId" value={id}/><input type="hidden" name="label" value={source.label}/><input type="hidden" name="url" value={source.url}/><input type="hidden" name="sourceKind" value={source.sourceKind}/><button className="button secondary" type="submit">Add reviewed source</button></form>}</li>)}</ul> : <p>All registry-suggested source URLs are already recorded.</p>}</> : <p>Missing evidence: {evidenceReadiness.missing.join(", ")}. No certification packet or reviewer prefill is produced.</p>}</article>}
 
     <article className="card section"><span className="eyebrow">Source evidence</span><h2>Reviewed authoritative references</h2>
       {canReview && <form className="inline-form" action={addCalculatorSourceEvidence}><input type="hidden" name="calculatorId" value={id}/><input name="label" placeholder="Source label" required minLength={2}/><input name="url" type="url" placeholder="https://…" required/><select name="sourceKind" defaultValue="reference"><option value="reference">Reference</option><option value="official">Official</option><option value="methodology">Methodology</option></select><button className="button secondary" type="submit">Add reviewed source</button></form>}
