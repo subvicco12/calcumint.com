@@ -4,6 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createCatalogCalculator, importCalculatorInventory } from "../actions";
 import { calculatorRegistry } from "@/calculators/registry";
 import { buildReviewedEvidenceInventory } from "@/calculators/reviewed-evidence-inventory";
+import { summarizeReviewedEvidenceRemediation } from "@/calculators/reviewed-evidence-remediation-summary";
 
 export const metadata = { title: "Calculator Factory" };
 
@@ -23,6 +24,7 @@ export default async function AdminCalculatorsPage() {
   const reviewedEvidence = buildReviewedEvidenceInventory(calculatorRegistry.list());
   const evidenceReady = reviewedEvidence.filter((item) => item.ready).length;
   const blockedEvidence = reviewedEvidence.filter((item) => !item.ready);
+  const remediationSummary = summarizeReviewedEvidenceRemediation(reviewedEvidence);
 
   const { data: calculators } = await supabase.from("calculator_catalog_admin")
     .select("id,calculator_key,slug,title,category,risk_class,lifecycle,version,source_count,reviewer_id,next_review_due_at,updated_at")
@@ -33,7 +35,7 @@ export default async function AdminCalculatorsPage() {
 
     <div className="admin-stats"><article className="card"><span className="eyebrow">Reviewed standard</span><h2>{reviewedEvidence.length}</h2><p>Deterministic registry candidates awaiting governed certification.</p></article><article className="card"><span className="eyebrow">Evidence ready</span><h2>{evidenceReady}</h2><p>Registry evidence packets can be prepared for reviewer action.</p></article><article className="card"><span className="eyebrow">Evidence blocked</span><h2>{blockedEvidence.length}</h2><p>Missing URL-backed sources, golden tests, or formulas keep these candidates blocked.</p></article></div>
 
-    {blockedEvidence.length > 0 && <article className="card section"><span className="eyebrow">Evidence blockers</span><h2>Reviewed candidates requiring evidence remediation</h2><p>Read-only registry diagnostics. Resolve the listed evidence gaps before reviewer certification; this view does not change QA or lifecycle state.</p><ul>{blockedEvidence.map((item) => <li key={item.calculatorKey}><code>{item.calculatorKey}</code> · <code>{item.slug}</code> — {item.missing.join(", ")}</li>)}</ul></article>}
+    {blockedEvidence.length > 0 && <article className="card section"><span className="eyebrow">Evidence blockers</span><h2>Reviewed candidates requiring evidence remediation</h2><p>Read-only registry diagnostics. Resolve the listed evidence gaps before reviewer certification; this view does not change QA or lifecycle state.</p><p><strong>{remediationSummary.sourceOnly}</strong> source-only · <strong>{remediationSummary.withGoldenTestGap}</strong> golden-test gaps · <strong>{remediationSummary.withFormulaGap}</strong> formula gaps</p><ul>{blockedEvidence.map((item) => <li key={item.calculatorKey}><code>{item.calculatorKey}</code> · <code>{item.slug}</code> — {item.missing.join(", ")}</li>)}</ul></article>}
 
     <article className="card section admin-table-wrap">
       <table className="admin-table"><thead><tr><th>Calculator</th><th>Category</th><th>Risk</th><th>State</th><th>Sources</th><th>Version</th></tr></thead><tbody>
