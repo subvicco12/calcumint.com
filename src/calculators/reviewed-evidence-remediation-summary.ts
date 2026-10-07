@@ -1,0 +1,3 @@
+import type{ReviewedEvidenceInventoryItem}from"./reviewed-evidence-inventory";
+export type ReviewedEvidenceRemediationSummary={blocked:number;sourceOnly:number;withGoldenTestGap:number;withFormulaGap:number};
+export function summarizeReviewedEvidenceRemediation(items:readonly ReviewedEvidenceInventoryItem[]):ReviewedEvidenceRemediationSummary{const blocked=items.filter((item)=>!item.ready);return{blocked:blocked.length,sourceOnly:blocked.filter((item)=>item.missing.length===1&&item.missing[0]==="url-backed-source").length,withGoldenTestGap:blocked.filter((item)=>item.missing.includes("golden-tests")).length,withFormulaGap:blocked.filter((item)=>item.missing.includes("formulas")).length};}
