@@ -12,6 +12,7 @@ const transferUnitSource={label:"RFC 1547 — octet terminology",url:"https://ww
 const ppiSource={label:"NIST — image resolution terminology",url:"https://www.nist.gov/glossary-term/28116",note:"NIST defines nominal image resolution as pixels per unit distance (for example ppi or ppmm). CalcuMint derives the screen pixel diagonal geometrically from supplied horizontal and vertical pixel dimensions, then divides by the supplied physical diagonal in inches."};
 const aspectRatioSource={label:"NIST — Aspect Ratio",url:"https://www.nist.gov/glossary-term/37036",note:"NIST defines aspect ratio as the ratio of the width to the height of a rectangle such as an image, pixel, or active video frame."};
 const binaryUnitSource={label:"NIST — Binary prefixes",url:"https://physics.nist.gov/cuu/Units/binary.html",note:"IEC binary prefixes distinguish 1024-based units such as MiB and GiB from decimal SI MB and GB."};
+const raidSource={label:"SNIA — Data Protection Best Practices: RAID levels",url:"https://www.snia.org/sites/default/files/DPCO/Data%20Protection%20BP%20White%20Paper%20Final%20v1_0.pdf",note:"SNIA describes RAID 0 striping, RAID 1 mirroring, RAID 5 distributed parity, RAID 6 dual parity, and RAID 10 striping plus mirroring. CalcuMint reports simplified nominal usable capacity and separately documents that vendor/filesystem overhead is excluded."};
 const mk=<I>(id:string,slug:string,title:string,schema:z.ZodType<I>,calc:(x:I)=>number,expression:string,description:string,example:I,expected:number)=>def({id,slug,title,category:"technology-computing",version:1,riskClass:"standard",reviewStatus:"reviewed",inputSchema:schema,calculate:(input:I)=>{const value=checked(calc(input));return{value,steps:[title.replace(" Calculator","")+" = "+value]}},formulas:[{id:slug,expression,description}],sources:[src],examples:[{label:"Verified example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+expected]}}],goldenTests:[{label:"Verified example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+expected]}}]});
 
 const ipv4=z.string().regex(/^\d{1,3}(?:\.\d{1,3}){3}$/);
@@ -35,5 +36,6 @@ bandwidthCalculator.sources=[transferUnitSource];
 downloadTimeCalculator.sources=[transferUnitSource];
 uploadTimeCalculator.sources=[transferUnitSource];
 dataTransferCalculator.sources=[transferUnitSource];
+raidCapacityCalculator.sources=[raidSource];
 
 export const technologyBatch1Definitions=[ipSubnetCalculator,cidrCalculator,bandwidthCalculator,downloadTimeCalculator,uploadTimeCalculator,dataTransferCalculator,storageConversionCalculator,raidCapacityCalculator,screenPpiCalculator,aspectRatioCalculator] as const;
