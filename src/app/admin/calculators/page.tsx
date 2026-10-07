@@ -2,6 +2,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createCatalogCalculator, importCalculatorInventory } from "../actions";
+import { calculatorRegistry } from "@/calculators/registry";
+import { inspectCertificationEvidencePacket } from "@/calculators/certification-evidence-packet";
 
 export const metadata = { title: "Calculator Factory" };
 
@@ -18,6 +20,9 @@ export default async function AdminCalculatorsPage() {
   if (!admin?.active) redirect("/admin");
   const role = String(admin.role);
   const canBulk = ["owner","admin"].includes(role);
+  const reviewedStandard = calculatorRegistry.list().filter((definition) => definition.riskClass === "standard" && definition.reviewStatus === "reviewed");
+  const evidenceReady = reviewedStandard.filter((definition) => inspectCertificationEvidencePacket(definition).ready).length;
+  const evidenceBlocked = reviewedStandard.length - evidenceReady;
 
   const { data: calculators } = await supabase.from("calculator_catalog_admin")
     .select("id,calculator_key,slug,title,category,risk_class,lifecycle,version,source_count,reviewer_id,next_review_due_at,updated_at")
@@ -25,6 +30,8 @@ export default async function AdminCalculatorsPage() {
 
   return <section className="container page-top admin-page">
     <div className="section-heading"><div><span className="eyebrow">Publishing factory</span><h1>Calculator inventory</h1><p className="hero-copy">Every calculator moves through draft → review → certified → published, with explicit QA gates and stronger YMYL controls.</p></div><Link className="button secondary" href="/admin">Admin dashboard</Link></div>
+
+    <div className="admin-stats"><article className="card"><span className="eyebrow">Reviewed standard</span><h2>{reviewedStandard.length}</h2><p>Deterministic registry candidates awaiting governed certification.</p></article><article className="card"><span className="eyebrow">Evidence ready</span><h2>{evidenceReady}</h2><p>Registry evidence packets can be prepared for reviewer action.</p></article><article className="card"><span className="eyebrow">Evidence blocked</span><h2>{evidenceBlocked}</h2><p>Missing URL-backed sources, golden tests, or formulas keep these candidates blocked.</p></article></div>
 
     <article className="card section admin-table-wrap">
       <table className="admin-table"><thead><tr><th>Calculator</th><th>Category</th><th>Risk</th><th>State</th><th>Sources</th><th>Version</th></tr></thead><tbody>
