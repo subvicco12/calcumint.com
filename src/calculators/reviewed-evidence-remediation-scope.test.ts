@@ -1,0 +1,2 @@
+import{describe,expect,it}from"vitest";import{calculatorRegistry}from"./registry";import{buildReviewedEvidenceInventory}from"./reviewed-evidence-inventory";
+describe("reviewed evidence remediation scope",()=>{it("identifies whether current blockers are source-only before source remediation",()=>{const blocked=buildReviewedEvidenceInventory(calculatorRegistry.list()).filter((item)=>!item.ready);expect(blocked.length).toBeGreaterThan(0);const reasons=new Set(blocked.flatMap((item)=>[...item.missing]));expect([...reasons].sort()).toEqual(["url-backed-source"]);});});
