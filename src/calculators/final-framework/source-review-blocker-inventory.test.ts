@@ -13,6 +13,6 @@ describe("standard-risk source-review blocker inventory",()=>{
  const defs=[...food,...travel,...sports];
  it("locks the known source-review-blocked population",()=>{
   expect(food).toHaveLength(6);expect(travel).toHaveLength(7);expect(sports).toHaveLength(3);expect(defs).toHaveLength(16);
-  for(const d of defs){expect(d.riskClass).toBe("standard");expect(d.reviewStatus).toBe("draft");expect(d.formulas?.length??0).toBeGreaterThan(0);expect(d.goldenTests?.length??0).toBeGreaterThan(0);expect(d.sources?.some(s=>!s.url)).toBe(true);expect(getCertificationCandidateContent(d.slug)).toBeUndefined();expect(getPublicCalculatorContent(d.slug)).toBeUndefined();}
+  for(const d of defs){expect(d.riskClass).toBe("standard");expect(d.reviewStatus).toBe("draft");expect(d.formulas?.length??0).toBeGreaterThan(0);expect(d.goldenTests?.length??0).toBeGreaterThan(0);expect(d.sources?.some(s=>!("url" in s)||!s.url)).toBe(true);expect(getCertificationCandidateContent(d.slug)).toBeUndefined();expect(getPublicCalculatorContent(d.slug)).toBeUndefined();}
  });
 });
