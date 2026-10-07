@@ -1,0 +1,3 @@
+import type{CalculatorDefinition}from"./types";import{inspectCertificationEvidencePacket}from"./certification-evidence-packet";
+export type ReviewedEvidenceInventoryItem={calculatorKey:string;slug:string;ready:boolean;missing:readonly("url-backed-source"|"golden-tests"|"formulas")[]};
+export function buildReviewedEvidenceInventory(definitions:readonly CalculatorDefinition<unknown,unknown>[]):ReviewedEvidenceInventoryItem[]{return definitions.filter((definition)=>definition.riskClass==="standard"&&definition.reviewStatus==="reviewed").map((definition)=>{const readiness=inspectCertificationEvidencePacket(definition);return{calculatorKey:definition.id,slug:definition.slug,ready:readiness.ready,missing:readiness.missing};});}
