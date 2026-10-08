@@ -53,3 +53,5 @@ reset request.jwt.claim.sub;
 \ir publication-manifest-db-gate.sql
 \ir publication-manifest-state-matrix.sql
 \ir certification-gate-denials-postgres.sql
+\ir ../supabase/migrations/019_authoritative_lifecycle_enforcement.sql
+\ir lifecycle-transition-authority-postgres.sql
