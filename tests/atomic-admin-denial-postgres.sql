@@ -47,7 +47,7 @@ begin
       v_error := sqlerrm;
     end;
     if v_error is null then raise exception 'Unauthorized RPC % unexpectedly succeeded', v_call; end if;
-    if v_error not in ('Reviewer permission required','Admin permission required','Platform admin required') then
+    if v_error not in ('Reviewer permission required','Admin permission required','Platform admin required','Platform admin permission required') then
       raise exception 'Unexpected unauthorized RPC % failure: %', v_call, v_error;
     end if;
   end loop;
