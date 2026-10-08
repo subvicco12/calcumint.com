@@ -125,16 +125,10 @@ export async function assignReviewer(formData: FormData) {
   if (!(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Admin permission required");
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
   const reviewerId = z.string().uuid().parse(formData.get("reviewerId"));
-  const { data: reviewer, error: reviewerError } = await supabase.from("platform_admins").select("user_id,active,role").eq("user_id", reviewerId).maybeSingle();
-  if (reviewerError) throw new Error("Reviewer eligibility lookup failed");
-  if (!reviewer?.active || !["owner", "admin", "reviewer"].includes(String(reviewer.role))) throw new Error("Reviewer must be an active review-capable admin");
-  const { data: calculator, error: calculatorError } = await supabase.from("calculator_catalog_admin").select("id").eq("id", calculatorId).maybeSingle();
-  if (calculatorError || !calculator) throw new Error("Calculator lookup failed");
-  const { data: updated, error } = await supabase.from("calculator_catalog_admin").update({ reviewer_id: reviewerId }).eq("id", calculatorId).select("id").maybeSingle();
+  const { error } = await supabase.rpc("assign_calculator_reviewer", {
+    p_calculator_id: calculatorId, p_reviewer_id: reviewerId
+  });
   if (error) throw new Error(error.message);
-  if (!updated) throw new Error("Reviewer assignment did not update the calculator");
-  const { error: auditError } = await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "reviewer-assigned", metadata: { reviewerId } });
-  if (auditError) throw new Error(`Reviewer assignment audit recording failed: ${auditError.message}`);
   revalidatePath(`/admin/calculators/${calculatorId}`);
 }
 
