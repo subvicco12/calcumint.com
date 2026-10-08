@@ -54,7 +54,8 @@ export async function createCatalogCalculator(formData: FormData) {
   const requiredChecks = requiredQaChecks(input.riskClass, effectiveRulePackRequired);
   const { error: checkError } = await supabase.from("calculator_qa_checks").insert(requiredChecks.map((checkType) => ({ calculator_id: data.id, check_type: checkType })));
   if (checkError) throw new Error(checkError.message);
-  await supabase.from("calculator_review_events").insert({ calculator_id: data.id, actor_id: user.id, event_type: "created", to_state: "draft" });
+  const { error: auditError } = await supabase.from("calculator_review_events").insert({ calculator_id: data.id, actor_id: user.id, event_type: "created", to_state: "draft" });
+  if (auditError) throw new Error(`Calculator creation audit recording failed: ${auditError.message}`);
   revalidatePath("/admin");
   revalidatePath("/admin/calculators");
 }
