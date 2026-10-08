@@ -28,8 +28,7 @@ begin
   select reviewer_id into v_previous
     from public.calculator_catalog_admin where id = v_calc;
   if not found then raise exception 'Missing isolated calculator fixture'; end if;
-  if not exists (select 1 from public.platform_admins
-    where user_id = v_reviewer and active and role in ('owner','admin','reviewer')) then
+  if not public.atomic_test_reviewer_exists(v_reviewer) then
     raise exception 'Missing active reviewer fixture';
   end if;
   begin
