@@ -111,11 +111,10 @@ export async function transitionCalculator(formData: FormData) {
     const result = Array.isArray(gate) ? gate[0] : gate;
     if (!result?.ok) throw new Error(`Publishing gate failed: ${(result?.failures ?? []).join("; ")}`);
   }
-  const update: Record<string, unknown> = { lifecycle: target };
-  if (target === "certified") update.last_reviewed_at = new Date().toISOString();
-  const { error } = await supabase.from("calculator_catalog_admin").update(update).eq("id", calculatorId);
+  const { error } = await supabase.rpc("transition_calculator_with_audit", {
+    p_calculator_id: calculatorId, p_expected_lifecycle: current, p_target_lifecycle: target
+  });
   if (error) throw new Error(error.message);
-  await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "lifecycle-transition", from_state: current, to_state: target });
   revalidatePath(`/admin/calculators/${calculatorId}`);
   revalidatePath("/admin");
 }
