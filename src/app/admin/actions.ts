@@ -89,7 +89,8 @@ export async function updateQaCheck(formData: FormData) {
   const details = String(formData.get("details") ?? "").slice(0, 2000);
   const { error } = await supabase.from("calculator_qa_checks").upsert({ calculator_id: calculatorId, check_type: checkType, status, details, checked_by: user.id, checked_at: new Date().toISOString() }, { onConflict: "calculator_id,check_type" });
   if (error) throw new Error(error.message);
-  await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "qa-check", notes: `${checkType}: ${status}` });
+  const { error: auditError } = await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "qa-check", notes: `${checkType}: ${status}` });
+  if (auditError) throw new Error(`QA audit event recording failed: ${auditError.message}`);
   revalidatePath(`/admin/calculators/${calculatorId}`);
   revalidatePath("/admin");
 }
