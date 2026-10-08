@@ -88,10 +88,10 @@ export async function updateQaCheck(formData: FormData) {
   const riskClass = z.enum(["standard", "financial", "health", "tax"]).parse(calculator.risk_class);
   if (!requiredQaChecks(riskClass, calculator.metadata?.rulePackRequired === true).includes(checkType)) throw new Error("QA check is not applicable to this calculator");
   const details = String(formData.get("details") ?? "").slice(0, 2000);
-  const { error } = await supabase.from("calculator_qa_checks").upsert({ calculator_id: calculatorId, check_type: checkType, status, details, checked_by: user.id, checked_at: new Date().toISOString() }, { onConflict: "calculator_id,check_type" });
+  const { error } = await supabase.rpc("record_calculator_qa_decision", {
+    p_calculator_id: calculatorId, p_check_type: checkType, p_status: status, p_details: details
+  });
   if (error) throw new Error(error.message);
-  const { error: auditError } = await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "qa-check", notes: `${checkType}: ${status}` });
-  if (auditError) throw new Error(`QA audit event recording failed: ${auditError.message}`);
   revalidatePath(`/admin/calculators/${calculatorId}`);
   revalidatePath("/admin");
 }
