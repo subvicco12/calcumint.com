@@ -5,6 +5,11 @@
 -- The behavioral RLS script ends as authenticated; migrations require DDL owner.
 reset role;
 reset request.jwt.claim.sub;
+create or replace function auth.role() returns text language sql stable as $
+  select nullif(current_setting('request.jwt.claim.role', true), '')
+$;
+\ir ../supabase/migrations/016_final_certification_evidence_gate.sql
+\ir ../supabase/migrations/017_regulatory_rule_pack_evidence.sql
 \ir ../supabase/migrations/032_atomic_reviewer_qa_audit.sql
 \ir ../supabase/migrations/033_atomic_reviewer_assignment_audit.sql
 \ir ../supabase/migrations/034_atomic_lifecycle_transition_audit.sql
