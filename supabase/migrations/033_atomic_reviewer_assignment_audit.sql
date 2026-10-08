@@ -1,4 +1,16 @@
 -- Assign a reviewer and record the audit event in the same transaction.
+-- Target reviewer identity is checked through a tightly scoped definer helper:
+-- platform_admins RLS intentionally exposes only the caller's own row.
+create or replace function public.is_active_review_capable_admin(p_user_id uuid)
+returns boolean language sql stable security definer set search_path = public as $review_target$
+  select public.has_platform_role(array['owner','admin']) and exists (
+    select 1 from public.platform_admins
+    where user_id = p_user_id and active and role in ('owner','admin','reviewer')
+  )
+$review_target$;
+revoke all on function public.is_active_review_capable_admin(uuid) from public, anon;
+grant execute on function public.is_active_review_capable_admin(uuid) to authenticated;
+
 -- SECURITY INVOKER preserves existing RLS, role policies and catalog gate triggers.
 create or replace function public.assign_calculator_reviewer(
   p_calculator_id uuid, p_reviewer_id uuid
@@ -7,7 +19,6 @@ language plpgsql security invoker set search_path = public
 as $$
 declare
   v_role text;
-  v_reviewer_role text;
   v_updated_id uuid;
 begin
   select role into v_role from public.platform_admins
@@ -15,9 +26,7 @@ begin
   if v_role is null or v_role not in ('owner','admin') then
     raise exception 'Admin permission required';
   end if;
-  select role into v_reviewer_role from public.platform_admins
-    where user_id = p_reviewer_id and active;
-  if v_reviewer_role is null or v_reviewer_role not in ('owner','admin','reviewer') then
+  if not public.is_active_review_capable_admin(p_reviewer_id) then
     raise exception 'Reviewer must be an active review-capable admin';
   end if;
   update public.calculator_catalog_admin
