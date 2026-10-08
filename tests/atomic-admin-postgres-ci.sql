@@ -62,3 +62,5 @@ reset request.jwt.claim.sub;
 \ir derived-source-count-postgres.sql
 \ir ../supabase/migrations/024_reviewer_assignment_authority.sql
 \ir reviewer-assignment-authority-postgres.sql
+\ir ../supabase/migrations/020_post_certification_revalidation.sql
+\ir post-certification-revalidation-postgres.sql
