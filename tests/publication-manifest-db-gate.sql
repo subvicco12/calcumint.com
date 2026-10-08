@@ -3,15 +3,14 @@
 begin;
 reset role;
 do $manifest_contract$
-declare v_cols text[];
+declare v_result text;
 begin
-  select array_agg(a.attname order by a.attnum) into v_cols
+  select pg_get_function_result(p.oid) into v_result
   from pg_proc p join pg_namespace n on n.oid=p.pronamespace
-  join pg_type t on t.oid=p.prorettype
-  join pg_attribute a on a.attrelid=t.typrelid and a.attnum>0 and not a.attisdropped
-  where n.nspname='public' and p.proname='list_published_calculator_manifest';
-  if v_cols is distinct from array['calculator_key','slug','version'] then
-    raise exception 'Publication manifest exposed unexpected columns: %', v_cols;
+  where n.nspname='public' and p.proname='list_published_calculator_manifest'
+    and p.pronargs=0;
+  if v_result is distinct from 'TABLE(calculator_key text, slug text, version integer)' then
+    raise exception 'Publication manifest exposed unexpected output: %', v_result;
   end if;
 end
 $manifest_contract$;
