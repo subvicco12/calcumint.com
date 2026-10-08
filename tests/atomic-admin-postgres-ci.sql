@@ -62,3 +62,4 @@ reset request.jwt.claim.sub;
 \ir derived-source-count-postgres.sql
 \ir ../supabase/migrations/024_reviewer_assignment_authority.sql
 \ir reviewer-assignment-authority-postgres.sql
+\ir structured-source-gate-postgres.sql
