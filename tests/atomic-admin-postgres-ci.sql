@@ -10,6 +10,7 @@ create or replace function auth.role() returns text language sql stable as $auth
 $authrole$;
 \ir ../supabase/migrations/016_final_certification_evidence_gate.sql
 \ir ../supabase/migrations/017_regulatory_rule_pack_evidence.sql
+\ir ../supabase/migrations/026_publication_manifest_authority.sql
 \ir ../supabase/migrations/032_atomic_reviewer_qa_audit.sql
 \ir ../supabase/migrations/033_atomic_reviewer_assignment_audit.sql
 \ir ../supabase/migrations/034_atomic_lifecycle_transition_audit.sql
@@ -49,3 +50,4 @@ reset request.jwt.claim.sub;
 \ir atomic-admin-denial-postgres.sql
 \ir atomic-admin-role-matrix-postgres.sql
 \ir atomic-admin-authorized-postgres.sql
+\ir publication-manifest-db-gate.sql
