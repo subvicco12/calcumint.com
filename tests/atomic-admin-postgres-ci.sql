@@ -16,7 +16,7 @@ reset request.jwt.claim.sub;
 grant usage on schema public to authenticated;
 grant select, insert, update on public.calculator_catalog_admin to authenticated;
 grant select, insert, update on public.calculator_qa_checks to authenticated;
-grant select, insert on public.calculator_review_events to authenticated;
+grant select, insert, trigger on public.calculator_review_events to authenticated;
 grant usage, select on all sequences in schema public to authenticated;
 set role authenticated;
 set request.jwt.claim.sub = '00000000-0000-0000-0000-000000000001';
