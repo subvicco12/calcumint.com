@@ -54,3 +54,5 @@ reset request.jwt.claim.sub;
 \ir publication-manifest-state-matrix.sql
 \ir certification-gate-denials-postgres.sql
 \ir ymyl-reviewer-authority-postgres.sql
+\ir ../supabase/migrations/020_post_certification_revalidation.sql
+\ir post-certification-revalidation-postgres.sql
