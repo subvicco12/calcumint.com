@@ -48,3 +48,4 @@ reset role;
 reset request.jwt.claim.sub;
 \ir atomic-admin-denial-postgres.sql
 \ir atomic-admin-role-matrix-postgres.sql
+\ir atomic-admin-authorized-postgres.sql
