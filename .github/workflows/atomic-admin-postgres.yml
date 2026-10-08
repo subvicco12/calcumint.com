@@ -7,6 +7,9 @@ on:
       - "supabase/migrations/034_atomic_lifecycle_transition_audit.sql"
       - "supabase/migrations/035_atomic_catalog_creation.sql"
       - "tests/atomic-admin-*.sql"
+      - "tests/atomic-reviewer-assignment-audit-rollback.sql"
+      - "tests/atomic-lifecycle-audit-rollback.sql"
+      - "tests/atomic-qa-audit-rollback.sql"
       - "tests/overlapping-rls.sql"
       - ".github/workflows/atomic-admin-postgres.yml"
   push:
