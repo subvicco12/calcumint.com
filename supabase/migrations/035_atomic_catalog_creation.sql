@@ -19,7 +19,7 @@ declare
 begin
   select role into v_role from public.platform_admins
     where user_id = auth.uid() and active;
-  if v_role is null or v_role not in ('owner','admin','reviewer','editor') then
+  if v_role is null or v_role not in ('owner','admin','reviewer') then
     raise exception 'Platform admin permission required';
   end if;
   if p_risk_class is null or p_risk_class not in ('standard','financial','health','tax') then
