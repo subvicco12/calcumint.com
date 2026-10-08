@@ -51,3 +51,5 @@ reset request.jwt.claim.sub;
 \ir atomic-admin-role-matrix-postgres.sql
 \ir atomic-admin-authorized-postgres.sql
 \ir publication-manifest-db-gate.sql
+\ir ../supabase/migrations/019_authoritative_lifecycle_enforcement.sql
+\ir lifecycle-transition-authority-postgres.sql
