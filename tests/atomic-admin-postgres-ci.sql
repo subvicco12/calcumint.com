@@ -25,6 +25,17 @@ grant select, insert, update on public.calculator_catalog_admin to authenticated
 grant select, insert, update on public.calculator_qa_checks to authenticated;
 grant select, insert, trigger on public.calculator_review_events to authenticated;
 grant usage, select on all sequences in schema public to authenticated;
+-- The admin self-read policy intentionally hides other reviewers. Use a
+-- disposable test-only definer helper for fixture presence assertions.
+create or replace function public.atomic_test_reviewer_exists(p_user uuid)
+returns boolean language sql stable security definer set search_path = public as $reviewer$
+  select exists (
+    select 1 from public.platform_admins
+    where user_id = p_user and active and role in ('owner','admin','reviewer')
+  )
+$reviewer$;
+revoke all on function public.atomic_test_reviewer_exists(uuid) from public, anon;
+grant execute on function public.atomic_test_reviewer_exists(uuid) to authenticated;
 set role authenticated;
 set request.jwt.claim.sub = '00000000-0000-0000-0000-000000000001';
 set test.calculator_id = '50000000-0000-0000-0000-000000000001';
