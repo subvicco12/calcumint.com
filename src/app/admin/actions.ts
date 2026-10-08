@@ -80,6 +80,10 @@ export async function updateQaCheck(formData: FormData) {
   const checkType = z.enum(qaCheckTypes).parse(formData.get("checkType"));
   const status = z.enum(["pending", "passed", "failed", "waived"]).parse(formData.get("status"));
   if (status === "waived" && !(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Owner or admin permission required to waive QA evidence");
+  const { data: calculator, error: calculatorError } = await supabase.from("calculator_catalog_admin").select("risk_class,metadata").eq("id", calculatorId).maybeSingle();
+  if (calculatorError || !calculator) throw new Error("Calculator lookup failed");
+  const riskClass = z.enum(["standard", "financial", "health", "tax"]).parse(calculator.risk_class);
+  if (!requiredQaChecks(riskClass, calculator.metadata?.rulePackRequired === true).includes(checkType)) throw new Error("QA check is not applicable to this calculator");
   const details = String(formData.get("details") ?? "").slice(0, 2000);
   const { error } = await supabase.from("calculator_qa_checks").upsert({ calculator_id: calculatorId, check_type: checkType, status, details, checked_by: user.id, checked_at: new Date().toISOString() }, { onConflict: "calculator_id,check_type" });
   if (error) throw new Error(error.message);
