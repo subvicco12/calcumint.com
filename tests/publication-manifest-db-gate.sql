@@ -28,6 +28,13 @@ $manifest_contract$;
 
 -- The published fixture is synthetic and exists only within this rollback-only
 -- transaction. This tests the positive path as well as draft exclusion.
+-- Seed synthetic passing evidence inside the disposable rollback-only transaction.
+-- Production publishing gate remains active and must approve the transition.
+update public.calculator_catalog_admin
+set source_count = 1 where calculator_key = 'matrix-test';
+update public.calculator_qa_checks
+set status = 'passed'
+where calculator_id = '50000000-0000-0000-0000-000000000001';
 update public.calculator_catalog_admin
 set lifecycle = 'published', version = 7
 where calculator_key = 'matrix-test';
