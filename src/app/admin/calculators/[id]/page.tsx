@@ -49,7 +49,7 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
 
     <div className="admin-stats">
       <article className="card"><span className="eyebrow">Lifecycle</span><h2>{calculator.lifecycle}</h2><p>Current governed publication state.</p></article>
-      <article className="card"><span className="eyebrow">QA gate</span><h2>{complete ? "Ready" : "Blocked"}</h2><p>{incompleteChecks.length} required checks incomplete.</p></article>
+      <article className="card"><span className="eyebrow">QA decisions</span><h2>{complete ? "Statuses complete" : "Incomplete"}</h2><p>{incompleteChecks.length} required checks incomplete. Recorded sources, reviewer authority, and database certification/publication gates are evaluated separately; completed QA statuses do not certify a calculator.</p></article>
       <article className="card"><span className="eyebrow">Sources</span><h2>{calculator.source_count}</h2><p>Reviewed source references recorded.</p></article>
       <article className="card"><span className="eyebrow">Next review</span><h2>{calculator.next_review_due_at ? new Date(calculator.next_review_due_at).toLocaleDateString() : "—"}</h2><p>Review deadlines are shown when an applicable governance or source policy establishes one.</p></article>
     </div>
