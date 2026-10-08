@@ -4,8 +4,13 @@ begin;
 reset role;
 set request.jwt.claim.role = 'service_role';
 update public.calculator_catalog_admin
-set source_count=1, lifecycle='review'
+set lifecycle='review'
 where calculator_key='matrix-test';
+insert into public.calculator_source_evidence
+(calculator_id, label, url, source_kind, reviewed_by)
+values ('50000000-0000-0000-0000-000000000001',
+ 'Synthetic reviewed reference', 'https://example.org/test-reviewed-source',
+ 'reference', '00000000-0000-0000-0000-000000000001');
 insert into public.calculator_qa_checks (calculator_id, check_type, status)
 select '50000000-0000-0000-0000-000000000001'::uuid, required.check_type, 'passed'
 from unnest(array[
