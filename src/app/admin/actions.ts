@@ -123,7 +123,8 @@ export async function assignReviewer(formData: FormData) {
   if (!(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Admin permission required");
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
   const reviewerId = z.string().uuid().parse(formData.get("reviewerId"));
-  const { data: reviewer } = await supabase.from("platform_admins").select("user_id,active,role").eq("user_id", reviewerId).maybeSingle();
+  const { data: reviewer, error: reviewerError } = await supabase.from("platform_admins").select("user_id,active,role").eq("user_id", reviewerId).maybeSingle();
+  if (reviewerError) throw new Error("Reviewer eligibility lookup failed");
   if (!reviewer?.active || !["owner", "admin", "reviewer"].includes(String(reviewer.role))) throw new Error("Reviewer must be an active review-capable admin");
   const { data: calculator, error: calculatorError } = await supabase.from("calculator_catalog_admin").select("id").eq("id", calculatorId).maybeSingle();
   if (calculatorError || !calculator) throw new Error("Calculator lookup failed");
