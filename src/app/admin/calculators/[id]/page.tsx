@@ -33,7 +33,8 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
   const rulePackRequired = calculator.metadata?.rulePackRequired === true;
   const required = requiredQaChecks(riskClass, rulePackRequired);
   const checkMap = new Map((checks ?? []).map((check) => [String(check.check_type), check]));
-  const complete = required.every((type) => ["passed","waived"].includes(String(checkMap.get(type)?.status ?? "pending")));
+  const incompleteChecks = required.filter((type) => !["passed","waived"].includes(String(checkMap.get(type)?.status ?? "pending")));
+  const complete = incompleteChecks.length === 0;
   const canReview = ["owner","admin","reviewer"].includes(String(admin.role));
   const canAssign = ["owner","admin"].includes(String(admin.role));
   const canWaive = ["owner","admin"].includes(String(admin.role));
@@ -48,7 +49,7 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
 
     <div className="admin-stats">
       <article className="card"><span className="eyebrow">Lifecycle</span><h2>{calculator.lifecycle}</h2><p>Current governed publication state.</p></article>
-      <article className="card"><span className="eyebrow">QA gate</span><h2>{complete ? "Ready" : "Blocked"}</h2><p>{required.filter((type) => !["passed","waived"].includes(String(checkMap.get(type)?.status ?? "pending"))).length} required checks incomplete.</p></article>
+      <article className="card"><span className="eyebrow">QA gate</span><h2>{complete ? "Ready" : "Blocked"}</h2><p>{incompleteChecks.length} required checks incomplete.</p></article>
       <article className="card"><span className="eyebrow">Sources</span><h2>{calculator.source_count}</h2><p>Reviewed source references recorded.</p></article>
       <article className="card"><span className="eyebrow">Next review</span><h2>{calculator.next_review_due_at ? new Date(calculator.next_review_due_at).toLocaleDateString() : "—"}</h2><p>Review deadlines are shown when an applicable governance or source policy establishes one.</p></article>
     </div>
@@ -72,7 +73,7 @@ export default async function AdminCalculatorDetailPage({ params }: PageProps) {
       {sources?.length ? <ul className="admin-list">{sources.map((source) => <li key={source.id}><strong>{source.label}</strong> · {source.source_kind} · <a href={source.url} target="_blank" rel="noreferrer">open source</a> · reviewed {new Date(source.reviewed_at).toLocaleString()}</li>)}</ul> : <p>No structured reviewed source evidence recorded. Certification remains blocked.</p>}
     </article>
 
-    <article className="card section"><span className="eyebrow">Quality gates</span><h2>Required checks</h2><div className="qa-grid">{required.map((type) => {
+    <article className="card section"><span className="eyebrow">Quality gates</span><h2>Required checks</h2><p>{required.length - incompleteChecks.length} of {required.length} required checks passed or waived. {incompleteChecks.length ? `Still requiring an explicit reviewer decision: ${incompleteChecks.join(", ")}.` : "All required QA statuses are recorded; database certification and publication gates still apply."}</p><div className="qa-grid">{required.map((type) => {
       const check = checkMap.get(type);
       return <form className="qa-card" action={updateQaCheck} key={type}>
         <input type="hidden" name="calculatorId" value={id}/><input type="hidden" name="checkType" value={type}/>
