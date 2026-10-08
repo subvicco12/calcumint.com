@@ -14,6 +14,8 @@ reset request.jwt.claim.sub;
 -- Use existing isolated fixture identities from overlapping-rls.sql.
 -- DDL owner supplies grants, then all RPC calls run under authenticated RLS.
 grant usage on schema public to authenticated;
+grant usage on schema auth to authenticated;
+grant execute on function auth.uid() to authenticated;
 grant select, insert, update on public.calculator_catalog_admin to authenticated;
 grant select, insert, update on public.calculator_qa_checks to authenticated;
 grant select, insert, trigger on public.calculator_review_events to authenticated;
