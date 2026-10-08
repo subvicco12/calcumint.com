@@ -53,3 +53,6 @@ reset request.jwt.claim.sub;
 \ir publication-manifest-db-gate.sql
 \ir publication-manifest-state-matrix.sql
 \ir certification-gate-denials-postgres.sql
+\ir ../supabase/migrations/023_structured_source_evidence.sql
+\ir ../supabase/migrations/025_derived_source_count_authority.sql
+\ir derived-source-count-postgres.sql
