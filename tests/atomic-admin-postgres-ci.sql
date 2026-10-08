@@ -46,3 +46,4 @@ set test.reviewer_id = '00000000-0000-0000-0000-000000000006';
 \ir atomic-qa-audit-rollback.sql
 reset role;
 reset request.jwt.claim.sub;
+\ir atomic-admin-denial-postgres.sql
