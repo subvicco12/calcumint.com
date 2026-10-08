@@ -27,7 +27,9 @@ begin
     );
     raise exception 'Invalid risk unexpectedly accepted';
   exception when others then
-    if sqlerrm = 'Invalid risk unexpectedly accepted' then raise; end if;
+    if sqlerrm <> 'Invalid calculator risk class' then
+      raise exception 'Expected invalid risk rejection, got: %', sqlerrm;
+    end if;
   end;
 
   -- Successful call must create exactly the 15 baseline pending QA checks
