@@ -130,9 +130,11 @@ export async function assignReviewer(formData: FormData) {
   if (!reviewer?.active || !["owner", "admin", "reviewer"].includes(String(reviewer.role))) throw new Error("Reviewer must be an active review-capable admin");
   const { data: calculator, error: calculatorError } = await supabase.from("calculator_catalog_admin").select("id").eq("id", calculatorId).maybeSingle();
   if (calculatorError || !calculator) throw new Error("Calculator lookup failed");
-  const { error } = await supabase.from("calculator_catalog_admin").update({ reviewer_id: reviewerId }).eq("id", calculatorId);
+  const { data: updated, error } = await supabase.from("calculator_catalog_admin").update({ reviewer_id: reviewerId }).eq("id", calculatorId).select("id").maybeSingle();
   if (error) throw new Error(error.message);
-  await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "reviewer-assigned", metadata: { reviewerId } });
+  if (!updated) throw new Error("Reviewer assignment did not update the calculator");
+  const { error: auditError } = await supabase.from("calculator_review_events").insert({ calculator_id: calculatorId, actor_id: user.id, event_type: "reviewer-assigned", metadata: { reviewerId } });
+  if (auditError) throw new Error(`Reviewer assignment audit recording failed: ${auditError.message}`);
   revalidatePath(`/admin/calculators/${calculatorId}`);
 }
 
