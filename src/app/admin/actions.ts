@@ -12,7 +12,8 @@ async function requirePlatformAdmin() {
   if (!supabase) throw new Error("Supabase is not configured");
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
-  const { data: admin } = await supabase.from("platform_admins").select("role,active").eq("user_id", user.id).maybeSingle();
+  const { data: admin, error: adminError } = await supabase.from("platform_admins").select("role,active").eq("user_id", user.id).maybeSingle();
+  if (adminError) throw new Error("Platform admin authorization lookup failed");
   if (!admin?.active) throw new Error("Platform admin access required");
   return { supabase, user, role: String(admin.role) as AdminRole };
 }
