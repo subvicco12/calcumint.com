@@ -98,8 +98,8 @@ export async function transitionCalculator(formData: FormData) {
   const { supabase, user, role } = await requirePlatformAdmin();
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
   const target = z.enum(lifecycleStates).parse(formData.get("target")) as LifecycleState;
-  const { data: calculator } = await supabase.from("calculator_catalog_admin").select("lifecycle").eq("id", calculatorId).maybeSingle();
-  if (!calculator) throw new Error("Calculator not found");
+  const { data: calculator, error: calculatorError } = await supabase.from("calculator_catalog_admin").select("lifecycle").eq("id", calculatorId).maybeSingle();
+  if (calculatorError || !calculator) throw new Error("Calculator lifecycle lookup failed");
   const current = String(calculator.lifecycle) as LifecycleState;
   if (!canTransition(current, target)) throw new Error(`Invalid lifecycle transition: ${current} → ${target}`);
   if (!roleCanTransition(role, target)) throw new Error("Your role cannot perform this transition");
