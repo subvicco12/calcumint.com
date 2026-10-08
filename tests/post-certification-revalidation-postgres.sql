@@ -1,29 +1,50 @@
--- Rollback-only: QA evidence must not be invalidated after certification.
+-- Rollback-only: invalidating QA evidence of a certified calculator must fail.
 \set ON_ERROR_STOP on
 begin;
 reset role;
 set request.jwt.claim.role = 'service_role';
--- Reuse the synthetic published fixture from the preceding manifest gate test
--- only when it exists; this test supplies its own evidence and rollback boundary.
-do $revalidation$
+update public.calculator_catalog_admin
+set source_count=1, lifecycle='review'
+where calculator_key='matrix-test';
+insert into public.calculator_qa_checks (calculator_id, check_type, status)
+select '50000000-0000-0000-0000-000000000001'::uuid, required.check_type, 'passed'
+from unnest(array[
+ 'engine-tests','formula-review','sources','methodology',
+ 'reverse-solve','visualization-reconciliation','schedule-reconciliation',
+ 'scenario-reconciliation','sensitivity-validation','entitlement-validation',
+ 'ux-responsive','performance','security','seo-content','accessibility'
+]) as required(check_type)
+on conflict (calculator_id, check_type) do update set status=excluded.status;
+update public.calculator_catalog_admin set lifecycle='certified'
+where calculator_key='matrix-test';
+do $certified$
+begin
+  if not exists(select 1 from public.calculator_catalog_admin
+    where calculator_key='matrix-test' and lifecycle='certified') then
+    raise exception 'Positive certification fixture failed';
+  end if;
+end
+$certified$;
+-- A deferred constraint trigger from migration 020 must reject evidence loss.
+update public.calculator_qa_checks set status='pending'
+where calculator_id='50000000-0000-0000-0000-000000000001'
+  and check_type='engine-tests';
+-- Force deferred revalidation before the rollback-only test ends.
+do $qa_mutation$
 declare denied boolean := false;
 begin
-  -- A draft remains uncertified, so missing evidence must still fail the gate.
-  if exists (select 1 from public.calculator_catalog_admin
-             where calculator_key='matrix-test' and lifecycle in ('certified','published')) then
-    raise exception 'Baseline fixture unexpectedly certified';
-  end if;
   begin
-    update public.calculator_catalog_admin set lifecycle='certified'
-    where calculator_key='matrix-test';
+    set constraints calculator_qa_certification_after_write immediate;
   exception when others then
-    if sqlerrm like '%Publishing gate failed:%' or sqlerrm like '%Invalid lifecycle transition:%' then
+    if sqlerrm like '%Certified calculator evidence cannot become invalid:%' then
       denied := true;
     else
       raise;
     end if;
   end;
-  if not denied then raise exception 'Incomplete evidence certified'; end if;
+  if not denied then
+    raise exception 'Certified calculator accepted invalidated engine QA evidence';
+  end if;
 end
-$revalidation$;
+$qa_mutation$;
 rollback;
