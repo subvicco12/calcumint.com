@@ -53,3 +53,4 @@ reset request.jwt.claim.sub;
 \ir publication-manifest-db-gate.sql
 \ir publication-manifest-state-matrix.sql
 \ir certification-gate-denials-postgres.sql
+\ir structured-source-evidence-postgres.sql
