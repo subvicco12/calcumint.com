@@ -54,3 +54,11 @@ reset request.jwt.claim.sub;
 \ir publication-manifest-state-matrix.sql
 \ir certification-gate-denials-postgres.sql
 \ir ymyl-reviewer-authority-postgres.sql
+\ir structured-source-evidence-postgres.sql
+\ir ../supabase/migrations/019_authoritative_lifecycle_enforcement.sql
+\ir lifecycle-transition-authority-postgres.sql
+\ir ../supabase/migrations/023_structured_source_evidence.sql
+\ir ../supabase/migrations/025_derived_source_count_authority.sql
+\ir derived-source-count-postgres.sql
+\ir ../supabase/migrations/024_reviewer_assignment_authority.sql
+\ir reviewer-assignment-authority-postgres.sql
