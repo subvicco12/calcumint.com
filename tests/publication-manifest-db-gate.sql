@@ -32,9 +32,15 @@ $manifest_contract$;
 -- Production publishing gate remains active and must approve the transition.
 update public.calculator_catalog_admin
 set source_count = 1 where calculator_key = 'matrix-test';
-update public.calculator_qa_checks
-set status = 'passed'
-where calculator_id = '50000000-0000-0000-0000-000000000001';
+insert into public.calculator_qa_checks (calculator_id, check_type, status)
+select '50000000-0000-0000-0000-000000000001'::uuid, required.check_type, 'passed'
+from unnest(array[
+ 'engine-tests','formula-review','sources','methodology',
+ 'reverse-solve','visualization-reconciliation','schedule-reconciliation',
+ 'scenario-reconciliation','sensitivity-validation','entitlement-validation',
+ 'ux-responsive','performance','security','seo-content','accessibility'
+]) as required(check_type)
+on conflict (calculator_id, check_type) do update set status = excluded.status;
 update public.calculator_catalog_admin
 set lifecycle = 'published', version = 7
 where calculator_key = 'matrix-test';
