@@ -1,7 +1,8 @@
 -- Disposable PostgreSQL: owner cannot certify with incomplete QA/source evidence.
 \set ON_ERROR_STOP on
 begin;
-set role authenticated;
+reset role;
+set request.jwt.claim.role = 'service_role';
 set request.jwt.claim.sub = '00000000-0000-0000-0000-000000000001';
 do $gate$
 declare
