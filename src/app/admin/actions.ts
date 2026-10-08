@@ -66,6 +66,8 @@ export async function addCalculatorSourceEvidence(formData: FormData) {
   const label = z.string().min(2).max(300).parse(formData.get("label"));
   const url = z.string().url().max(2000).parse(formData.get("url"));
   const sourceKind = z.enum(["reference", "official", "methodology"]).parse(formData.get("sourceKind") ?? "reference");
+  const { data: calculator, error: calculatorError } = await supabase.from("calculator_catalog_admin").select("id").eq("id", calculatorId).maybeSingle();
+  if (calculatorError || !calculator) throw new Error("Calculator lookup failed");
   const { error } = await supabase.from("calculator_source_evidence").insert({
     calculator_id: calculatorId, label, url, source_kind: sourceKind, reviewed_by: user.id
   });
