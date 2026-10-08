@@ -41,21 +41,15 @@ export async function createCatalogCalculator(formData: FormData) {
   if (!registryRegulatory.matched) throw new Error("Catalog identity must exactly match a registered calculator id and slug");
   const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
   const regulatoryMetadata = registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired };
-  const { data, error } = await supabase.from("calculator_catalog_admin").insert({
-    calculator_key: input.calculatorKey,
-    slug: input.slug,
-    title: input.title,
-    category: input.category,
-    risk_class: input.riskClass,
-    metadata: regulatoryMetadata,
-    created_by: user.id
-  }).select("id").single();
+  const { error } = await supabase.rpc("create_catalog_calculator_with_audit", {
+    p_calculator_key: input.calculatorKey,
+    p_slug: input.slug,
+    p_title: input.title,
+    p_category: input.category,
+    p_risk_class: input.riskClass,
+    p_metadata: regulatoryMetadata
+  });
   if (error) throw new Error(error.message);
-  const requiredChecks = requiredQaChecks(input.riskClass, effectiveRulePackRequired);
-  const { error: checkError } = await supabase.from("calculator_qa_checks").insert(requiredChecks.map((checkType) => ({ calculator_id: data.id, check_type: checkType })));
-  if (checkError) throw new Error(checkError.message);
-  const { error: auditError } = await supabase.from("calculator_review_events").insert({ calculator_id: data.id, actor_id: user.id, event_type: "created", to_state: "draft" });
-  if (auditError) throw new Error(`Calculator creation audit recording failed: ${auditError.message}`);
   revalidatePath("/admin");
   revalidatePath("/admin/calculators");
 }
