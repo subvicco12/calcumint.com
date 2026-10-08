@@ -1,0 +1,44 @@
+name: Atomic admin PostgreSQL integration
+on:
+  pull_request:
+    paths:
+      - "supabase/migrations/032_atomic_reviewer_qa_audit.sql"
+      - "supabase/migrations/033_atomic_reviewer_assignment_audit.sql"
+      - "supabase/migrations/034_atomic_lifecycle_transition_audit.sql"
+      - "supabase/migrations/035_atomic_catalog_creation.sql"
+      - "tests/atomic-admin-*.sql"
+      - "tests/overlapping-rls.sql"
+      - ".github/workflows/atomic-admin-postgres.yml"
+  push:
+    branches: [main]
+    paths:
+      - "supabase/migrations/032_atomic_reviewer_qa_audit.sql"
+      - "supabase/migrations/033_atomic_reviewer_assignment_audit.sql"
+      - "supabase/migrations/034_atomic_lifecycle_transition_audit.sql"
+      - "supabase/migrations/035_atomic_catalog_creation.sql"
+      - "tests/atomic-admin-*.sql"
+      - "tests/overlapping-rls.sql"
+      - ".github/workflows/atomic-admin-postgres.yml"
+permissions:
+  contents: read
+jobs:
+  atomic-admin-db:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGPASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v5
+      - name: Execute isolated PostgreSQL admin RPC checks
+        run: psql -h 127.0.0.1 -U postgres -d postgres -f tests/atomic-admin-postgres-ci.sql
