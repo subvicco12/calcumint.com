@@ -66,3 +66,4 @@ reset request.jwt.claim.sub;
 \ir post-certification-revalidation-postgres.sql
 \ir certified-source-deletion-postgres.sql
 \ir structured-source-gate-postgres.sql
+\ir regulatory-rule-metadata-postgres.sql
