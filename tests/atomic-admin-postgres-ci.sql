@@ -64,3 +64,4 @@ reset request.jwt.claim.sub;
 \ir reviewer-assignment-authority-postgres.sql
 \ir ../supabase/migrations/020_post_certification_revalidation.sql
 \ir post-certification-revalidation-postgres.sql
+\ir certified-source-deletion-postgres.sql
