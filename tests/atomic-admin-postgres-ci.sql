@@ -65,3 +65,4 @@ reset request.jwt.claim.sub;
 \ir ../supabase/migrations/020_post_certification_revalidation.sql
 \ir post-certification-revalidation-postgres.sql
 \ir certified-source-deletion-postgres.sql
+\ir certified-source-relocation-postgres.sql
