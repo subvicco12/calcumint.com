@@ -73,3 +73,4 @@ reset request.jwt.claim.sub;
 \ir regulatory-official-source-url-postgres.sql
 \ir regulatory-official-source-shape-postgres.sql
 \ir regulatory-effective-to-calendar-postgres.sql
+-- Certification regression: deletion denial must be enforced by its precise deferred constraint.
