@@ -90,3 +90,5 @@ reset request.jwt.claim.sub;
 \ir review-to-archived-retirement-postgres.sql
 \ir certified-to-archived-retirement-postgres.sql
 \ir certified-to-review-revalidation-postgres.sql
+\ir review-to-certified-authorized-postgres.sql
+\ir certified-to-published-authorized-postgres.sql
