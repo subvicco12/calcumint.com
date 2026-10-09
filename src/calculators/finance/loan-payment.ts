@@ -30,8 +30,15 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
       ? principal / termMonths
       : principal * monthlyRate / (1 - (1 + monthlyRate) ** -termMonths);
 
+    if (!Number.isFinite(unroundedPayment) || unroundedPayment < 0) {
+      throw new Error("Loan payment exceeds supported numeric range");
+    }
+
     const monthlyPayment = roundTo(unroundedPayment, 2);
     const totalPayment = roundTo(monthlyPayment * termMonths, 2);
+    if (!Number.isFinite(totalPayment)) {
+      throw new Error("Total loan payment exceeds supported numeric range");
+    }
 
     return {
       monthlyPayment,
