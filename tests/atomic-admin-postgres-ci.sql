@@ -94,3 +94,4 @@ reset request.jwt.claim.sub;
 \ir certified-to-published-authorized-postgres.sql
 \ir published-qa-revalidation-denial-postgres.sql
 \ir published-source-deletion-denial-postgres.sql
+\ir published-source-relocation-denial-postgres.sql
