@@ -75,3 +75,4 @@ reset request.jwt.claim.sub;
 \ir regulatory-effective-to-calendar-postgres.sql
 -- Certification regression: relocation denial must be enforced by its precise deferred constraint.
 -- Recheck precise certified-source deletion denial on updated main.
+\ir archived-to-published-denial-postgres.sql
