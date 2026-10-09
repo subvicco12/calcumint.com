@@ -77,3 +77,4 @@ reset request.jwt.claim.sub;
 -- Recheck precise certified-source deletion denial on updated main.
 \ir archived-to-published-denial-postgres.sql
 \ir published-to-draft-denial-postgres.sql
+\ir certified-to-draft-denial-postgres.sql
