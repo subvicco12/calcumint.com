@@ -82,3 +82,4 @@ reset request.jwt.claim.sub;
 \ir review-to-published-denial-postgres.sql
 \ir archived-to-review-denial-postgres.sql
 \ir archived-to-draft-recovery-postgres.sql
+\ir draft-to-review-authorized-postgres.sql
