@@ -70,3 +70,4 @@ reset request.jwt.claim.sub;
 \ir regulatory-rule-metadata-postgres.sql
 \ir regulatory-official-source-postgres.sql
 \ir regulatory-effective-period-postgres.sql
+\ir regulatory-effective-to-calendar-postgres.sql
