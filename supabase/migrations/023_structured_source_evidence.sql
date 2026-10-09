@@ -116,8 +116,8 @@ begin
       for v_rule in select value from jsonb_array_elements(v_calc.metadata -> 'ruleMetadata') loop
         if trim(coalesce(v_rule #>> '{jurisdiction,country}', '')) = ''
            or trim(coalesce(v_rule ->> 'ruleVersion', '')) = ''
-           or coalesce(v_rule ->> 'effectiveFrom', '') !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}
-           or coalesce(v_rule ->> 'lastVerifiedAt', '') !~ '^\\d{4}-\\d{2}-\\d{2}$'
+           or coalesce(v_rule ->> 'effectiveFrom', '') !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+           or coalesce(v_rule ->> 'lastVerifiedAt', '') !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
            or coalesce(jsonb_typeof(v_rule -> 'officialSources'), '') <> 'array'
            or coalesce(jsonb_array_length(v_rule -> 'officialSources'), 0) = 0 then
           v_failures := array_append(v_failures, 'Regulatory rule metadata is incomplete'); exit;
@@ -133,7 +133,7 @@ begin
         if v_rule ? 'effectiveTo' then
           v_date := v_rule ->> 'effectiveTo';
           begin
-            if v_date !~ '^\\d{4}-\\d{2}-\\d{2}$'
+            if v_date !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
                or to_char(v_date::date, 'YYYY-MM-DD') <> v_date
                or v_date::date < (v_rule ->> 'effectiveFrom')::date then raise exception 'invalid effective period'; end if;
           exception when others then
