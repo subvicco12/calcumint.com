@@ -80,3 +80,4 @@ reset request.jwt.claim.sub;
 \ir archived-to-certified-denial-postgres.sql
 \ir certified-to-draft-denial-postgres.sql
 \ir review-to-published-denial-postgres.sql
+\ir archived-to-review-denial-postgres.sql
