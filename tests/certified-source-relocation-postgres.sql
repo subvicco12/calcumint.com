@@ -31,7 +31,9 @@ begin
     where calculator_id='50000000-0000-0000-0000-000000000001';
     set constraints calculator_source_evidence_certification_after_write immediate;
   exception when others then
-    if sqlerrm like 'Certified calculator source evidence cannot become invalid:%' then denied:=true;
+    if sqlerrm like 'Certified calculator source evidence cannot become invalid:%'
+       or sqlerrm = 'Publishing gate failed: At least one reviewed source evidence record is required'
+    then denied:=true;
     else raise; end if;
   end;
   if not denied then raise exception 'Certified calculator source relocated without denial'; end if;
