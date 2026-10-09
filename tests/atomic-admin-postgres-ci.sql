@@ -76,3 +76,4 @@ reset request.jwt.claim.sub;
 -- Certification regression: relocation denial must be enforced by its precise deferred constraint.
 -- Recheck precise certified-source deletion denial on updated main.
 \ir archived-to-published-denial-postgres.sql
+\ir published-to-draft-denial-postgres.sql
