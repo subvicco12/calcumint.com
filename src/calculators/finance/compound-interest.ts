@@ -29,7 +29,8 @@ export const compoundInterestCalculator: CalculatorDefinition<Input, Output> = {
     if(periodicRate<=-1)throw new Error("Periodic rate must be greater than -100%");
     const futureValue=finite(principal*Math.pow(1+periodicRate,compoundsPerYear*years),"Future value");
     const roundedFutureValue=roundTo(futureValue,2);
-    return {futureValue:roundedFutureValue,totalInterest:roundTo(roundedFutureValue-principal,2)};
+    const totalInterest=finite(roundedFutureValue-principal,"Total interest");
+    return {futureValue:roundedFutureValue,totalInterest:roundTo(totalInterest,2)};
   },
   formulas:[{id:"compound-interest",expression:"A = P(1 + r/n)^(nt)",description:"Future value with a fixed nominal annual rate compounded n times per year."}],
   sources:[{label:"Investor.gov — Compound Interest Calculator",url:"https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"}],
