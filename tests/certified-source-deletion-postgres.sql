@@ -22,8 +22,9 @@ begin
   begin
     delete from public.calculator_source_evidence
     where calculator_id='50000000-0000-0000-0000-000000000001';
+    set constraints calculator_source_evidence_certification_after_write immediate;
   exception when others then
-    if sqlerrm like '%Certified%' or sqlerrm like '%source%' then denied:=true;
+    if sqlerrm like 'Certified calculator source evidence cannot become invalid:%' then denied:=true;
     else raise; end if;
   end;
   if not denied then raise exception 'Certified calculator lost its reviewed source'; end if;
