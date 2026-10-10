@@ -1198,5 +1198,65 @@
     "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 464; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
     "decision": "approved",
     "reviewStatus": "draft"
+  },
+  {
+    "slug": "appliance-running-cost-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/energy/catalog-batch-2.ts",
+    "inputContract": "powerWatts, hoursUsed, ratePerKwh finite nonnegative <=1e12",
+    "outputContract": "energyKwh=powerWatts*hoursUsed/1000; cost=energyKwh*ratePerKwh",
+    "evidence": "Effective everyday registry missing queue, unique exact-title Energy & Environment master ID 478; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "home-energy-consumption-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/energy/catalog-batch-2.ts",
+    "inputContract": "averagePowerWatts and ratePerKwh finite nonnegative <=1e12; hoursPerDay 0..24; days >0..366",
+    "outputContract": "dailyEnergyKwh=averagePowerWatts*hoursPerDay/1000; periodEnergyKwh=dailyEnergyKwh*days; periodCost=periodEnergyKwh*ratePerKwh",
+    "evidence": "Effective everyday registry missing queue, unique exact-title Energy & Environment master ID 479; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "cake-pan-conversion-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-3.ts",
+    "inputContract": "originalPanArea and targetPanArea positive <=1e12; originalIngredientQuantity finite nonnegative <=1e12",
+    "outputContract": "scaled quantity=round6(originalIngredientQuantity*targetPanArea/originalPanArea)",
+    "evidence": "Effective everyday registry missing queue, unique exact-title Food & Cooking master ID 501; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "tire-size-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-3.ts",
+    "inputContract": "current/new tire width positive <=1000mm; aspect positive <=100; rim positive <=100 inches",
+    "outputContract": "nominal diameter mm=2*width*aspect/100+rim*25.4; differencePercent=(new-current)/current*100",
+    "evidence": "Effective everyday registry missing queue, unique exact-title Automotive & EV master ID 474; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "horsepower-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-3.ts",
+    "inputContract": "kilowatts finite nonnegative <=1e9",
+    "outputContract": "mechanical horsepower=kilowatts*1000/745.6999",
+    "evidence": "Effective everyday registry missing queue, unique exact-title Automotive & EV master ID 475; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "engine-horsepower-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-3.ts",
+    "inputContract": "torqueLbFt finite nonnegative <=1e9; rpm positive <=1e9",
+    "outputContract": "engine horsepower=torqueLbFt*rpm/5252",
+    "evidence": "Effective everyday registry missing queue, unique exact-title Automotive & EV master ID 476; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
   }
 ]
