@@ -11,7 +11,7 @@ mapping and must never be passed off as one.
    `science` and `everyday` slug; do not rely on a frozen count.
 2. Find the defining implementation in `src/calculators/` for each slug.
    Record the actual source path, validation and input units, output semantics,
-   formula, review status and any competing implementation.
+   formula, review status and any competing implementation. The JSON reviewStatus must match the registry inventory exactly; status is not publication authority.
 3. Match against the 540-row master CSV by master domain and title, checking
    cross-domain collisions. Use HOLD for uncertain assignments; do not invent
    alias equivalence or specialist certification.
