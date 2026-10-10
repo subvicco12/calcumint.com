@@ -85,7 +85,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "fuel >= 0; efficiency >= 0",
     "outputContract": "fuel × distance-per-fuel-unit efficiency",
-    "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication",
+    "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication Verified launch-portfolio.ts: fuel>=0 and distance-per-fuel efficiency>=0, output fuel*efficiency as estimated distance. Canonical Automotive & EV ID 459 Fuel Economy Calculator is a nonexact title candidate, and computes a potentially different metric; no automatic mapping. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -125,7 +125,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "bill >= 0; tip percent >= 0",
     "outputContract": "bill × tip percent / 100",
-    "evidence": "Tip amount formula inspected; master-domain match pending",
+    "evidence": "Tip amount formula inspected; master-domain match pending Verified launch-portfolio.ts: bill>=0 and tip percent>=0, returns tip amount bill*percent/100, not bill-with-tip total. Canonical Personal Finance & Household ID 116 Tip Calculator is a nonexact title candidate; contract identity not established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -195,7 +195,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "original amount >= 0; factor >= 0",
     "outputContract": "scaled ingredient amount = amount × factor",
-    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: amount>=0 and scale factor>=0, output amount*factor; canonical master Food & Cooking ID 496 is Recipe Scaling Calculator (not exact title). Source only scales one ingredient quantity; full recipe contract and identity unproven. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -205,7 +205,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "original amount >= 0; serving ratio >= 0",
     "outputContract": "scaled quantity = amount × new-to-old servings ratio",
-    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: amount>=0 and ratio>=0 (described as new servings / old servings), output amount*ratio. Canonical Food & Cooking ID 497 Serving Size Calculator is not an exact-title match and may represent a distinct quantity. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -325,7 +325,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "capacity >= 0; average load >= 1e-9",
     "outputContract": "ideal capacity / load runtime index; real runtime varies",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: capacity>=0 and load>0, output capacity/load in compatible units; idealized only, excluding voltage, efficiency, temperature and discharge characteristics. Canonical Battery Runtime Calculator appears in Technology & Computing ID 380 and Energy & Environment ID 482; neither is an exact title and domain collision unresolved. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
