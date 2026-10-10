@@ -928,5 +928,25 @@
     "evidence": "Actual registry-effective science-category certified physics batch 2 definition and golden example inspected. Unique exact-title Physics master ID 316; catalog mapping approval does not grant publication.",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "velocity-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "signed displacement finite between -1e100 and 1e100; elapsed time finite positive <=1e100",
+    "outputContract": "signed average velocity = displacement/time, m/s for metres and seconds",
+    "evidence": "Actual registry-effective science category certified definition, formula and golden example inspected. Unique exact-title Physics master ID 303. Mapping approval does not imply publication; distance-time multiplication overflow risk noted for follow-up engine hardening.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "distance-time-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "speed and elapsed time finite nonnegative <=1e100",
+    "outputContract": "constant-speed distance = speed × time, metres for m/s and seconds; multiplication lacks explicit finite-result guard",
+    "evidence": "Actual registry-effective science category certified definition, formula and golden example inspected. Unique exact-title Physics master ID 305. Mapping approval does not imply publication; distance-time multiplication overflow risk noted for follow-up engine hardening.",
+    "decision": "approved",
+    "reviewStatus": "certified"
   }
 ]
