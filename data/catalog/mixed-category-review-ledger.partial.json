@@ -898,5 +898,65 @@
     "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 377; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
     "decision": "approved",
     "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "video-file-size-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "inputContract": "videoBitrateMbps >= 0; audioBitrateKbps >= 0; durationMinutes > 0",
+    "outputContract": "estimated decimal GB = (video Mbps + audio kbps / 1000) × seconds / 8 / 1000; excludes container overhead",
+    "evidence": "Source-reviewed registry technology batch 3 implementation; no unique exact-title match in canonical 540-row master catalog. HOLD pending explicit owner-backed mapping adjudication; formula similarity cannot authorize an alias.",
+    "decision": "hold",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "audio-file-size-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "inputContract": "bitrateKbps > 0; durationMinutes > 0",
+    "outputContract": "estimated decimal MB = kbps × seconds / 8 / 1000",
+    "evidence": "Source-reviewed registry technology batch 3 implementation; no unique exact-title match in canonical 540-row master catalog. HOLD pending explicit owner-backed mapping adjudication; formula similarity cannot authorize an alias.",
+    "decision": "hold",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "video-bitrate-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "inputContract": "targetFileSizeGb > 0; durationMinutes > 0; audioBitrateKbps >= 0",
+    "outputContract": "video Mbps budget = max(0, target decimal GB × 8000 / seconds − audio kbps / 1000)",
+    "evidence": "Source-reviewed registry technology batch 3 implementation; no unique exact-title match in canonical 540-row master catalog. HOLD pending explicit owner-backed mapping adjudication; formula similarity cannot authorize an alias.",
+    "decision": "hold",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "compression-ratio-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "inputContract": "originalSize > 0; compressedSize > 0 in same units",
+    "outputContract": "dimensionless original size / compressed size",
+    "evidence": "Source-reviewed registry technology batch 3 implementation; no unique exact-title match in canonical 540-row master catalog. HOLD pending explicit owner-backed mapping adjudication; formula similarity cannot authorize an alias.",
+    "decision": "hold",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "database-storage-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "inputContract": "rowCount integer 0..1e15; averageRowBytes >= 0; indexOverheadPercent 0..1000",
+    "outputContract": "estimated decimal GB = rows × average bytes × (1 + overhead% / 100) / 1e9; excludes replication",
+    "evidence": "Source-reviewed registry technology batch 3 implementation; no unique exact-title match in canonical 540-row master catalog. HOLD pending explicit owner-backed mapping adjudication; formula similarity cannot authorize an alias.",
+    "decision": "hold",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "backup-storage-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "inputContract": "sourceDataGb >= 0; fullBackups integer 0..1e6; incrementalBackupGb >= 0; incrementalBackups integer 0..1e6",
+    "outputContract": "raw retained GB = source GB × full backups + incremental GB × incremental backups; excludes compression and deduplication",
+    "evidence": "Source-reviewed registry technology batch 3 implementation; no unique exact-title match in canonical 540-row master catalog. HOLD pending explicit owner-backed mapping adjudication; formula similarity cannot authorize an alias.",
+    "decision": "hold",
+    "reviewStatus": "reviewed"
   }
 ]
