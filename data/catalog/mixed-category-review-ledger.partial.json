@@ -5,7 +5,7 @@
     "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
     "inputContract": "finite work, positive time",
     "outputContract": "average power = work / time; output units depend on work/time units",
-    "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established",
+    "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established; Master title collision: Math ID 222 versus Physics ID 308; retain HOLD until row identity and competing implementation adjudicated.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -15,7 +15,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "work and time, positive time bound",
     "outputContract": "work / time; input-unit semantics not enforced in source",
-    "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved",
+    "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved; Master title collision: Math ID 222 versus Physics ID 308; competing physics power implementation requires distinct identity review.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -25,7 +25,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "distanceKm nonnegative, averageSpeedKmh positive",
     "outputContract": "moving hours, excluding stops and delays",
-    "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation",
+    "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation; Master ID 510 title shared by two implementations; fixed km/kmh versus generic compatible units prevents inferred equivalence.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -35,7 +35,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "distance nonnegative, speed positive",
     "outputContract": "distance / speed using compatible input units",
-    "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science",
+    "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science; Master ID 510 title shared by two implementations; generic input units versus fixed km/kmh prevents inferred equivalence.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -55,7 +55,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "speed finite; time >= 0",
     "outputContract": "speed × time using compatible units",
-    "evidence": "Launch portfolio formula and bounds verified; generic distance semantics require master mapping review",
+    "evidence": "Launch portfolio formula and bounds verified; generic distance semantics require master mapping review; Master title collision: Geometry ID 277 versus Travel & Everyday ID 511; generic speed-times-time semantics do not establish either mapping.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
