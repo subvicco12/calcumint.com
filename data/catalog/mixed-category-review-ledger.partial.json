@@ -38,5 +38,55 @@
     "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science",
     "decision": "hold",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "speed-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "distance >= 0; time >= 1e-9",
+    "outputContract": "distance / time; units follow input ratio",
+    "evidence": "Launch portfolio formula and bounds verified; master-domain assignment and collisions not adjudicated",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "distance-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "speed finite; time >= 0",
+    "outputContract": "speed × time using compatible units",
+    "evidence": "Launch portfolio formula and bounds verified; generic distance semantics require master mapping review",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "density-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; volume >= 1e-9",
+    "outputContract": "mass / volume; units follow supplied inputs",
+    "evidence": "Launch portfolio formula and bounds verified; domain mapping not yet adjudicated",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "pressure-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "force finite; area >= 1e-9",
+    "outputContract": "force / area; generic units",
+    "evidence": "Launch portfolio formula and bounds verified; category-to-master mapping not yet adjudicated",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "fuel-economy-distance-calculator",
+    "domain": "Automotive",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "fuel >= 0; efficiency >= 0",
+    "outputContract": "fuel × distance-per-fuel-unit efficiency",
+    "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
