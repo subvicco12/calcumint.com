@@ -24,7 +24,7 @@ function diameterMm(width:number,ratio:number,rimInches:number){return finite(2*
 export const tireSizeCalculator:CalculatorDefinition<TireInput,TireOut>={
  ...global,id:"automotive.tire-size",slug:"tire-size-calculator",title:"Tire Size Calculator",
  inputSchema:z.object({currentWidthMm:tireWidth,currentAspectRatio:aspect,currentRimInches:rim,newWidthMm:tireWidth,newAspectRatio:aspect,newRimInches:rim}),
- calculate:(input)=>{const currentDiameterMm=diameterMm(input.currentWidthMm,input.currentAspectRatio,input.currentRimInches);const newDiameterMm=diameterMm(input.newWidthMm,input.newAspectRatio,input.newRimInches);const diameterDifferencePercent=finite((newDiameterMm-currentDiameterMm)/currentDiameterMm*100);return{currentDiameterMm,newDiameterMm,diameterDifferencePercent,steps:[`Current nominal diameter = ${currentDiameterMm} mm`,`New nominal diameter = ${newDiameterMm} mm`,`Diameter difference = ${diameterDifferencePercent}%`]};},
+ calculate:(input)=>{z.object({currentWidthMm:tireWidth,currentAspectRatio:aspect,currentRimInches:rim,newWidthMm:tireWidth,newAspectRatio:aspect,newRimInches:rim}).parse(input);const currentDiameterMm=diameterMm(input.currentWidthMm,input.currentAspectRatio,input.currentRimInches);const newDiameterMm=diameterMm(input.newWidthMm,input.newAspectRatio,input.newRimInches);const diameterDifferencePercent=finite((newDiameterMm-currentDiameterMm)/currentDiameterMm*100);return{currentDiameterMm,newDiameterMm,diameterDifferencePercent,steps:[`Current nominal diameter = ${currentDiameterMm} mm`,`New nominal diameter = ${newDiameterMm} mm`,`Diameter difference = ${diameterDifferencePercent}%`]};},
  formulas:[{id:"nominal-tire-diameter",expression:"diameter mm = 2 × width mm × aspect ratio / 100 + rim inches × 25.4",description:"Estimate nominal overall diameter from metric tire width, aspect ratio and rim diameter."},{id:"diameter-difference",expression:"difference % = (new diameter − current diameter) ÷ current diameter × 100",description:"Compare the nominal overall diameters of two tire sizes."}],
  sources:[tireSource],
  examples:[{label:"225/45R17 to 245/40R18",input:{currentWidthMm:225,currentAspectRatio:45,currentRimInches:17,newWidthMm:245,newAspectRatio:40,newRimInches:18},expected:{currentDiameterMm:634.3,newDiameterMm:653.2,diameterDifferencePercent:2.979662620211258,steps:["Current nominal diameter = 634.3 mm","New nominal diameter = 653.2 mm","Diameter difference = 2.979662620211258%"]}}],
@@ -34,7 +34,7 @@ export const tireSizeCalculator:CalculatorDefinition<TireInput,TireOut>={
 export const horsepowerCalculator:CalculatorDefinition<HorsepowerInput,HorsepowerOut>={
  ...global,id:"automotive.horsepower",slug:"horsepower-calculator",title:"Horsepower Calculator",
  inputSchema:z.object({kilowatts:z.number().finite().nonnegative().max(1e9)}),
- calculate:(input)=>{const horsepower=finite(input.kilowatts*1000/745.6999);return{horsepower,steps:[`Mechanical horsepower = ${horsepower}`]};},
+ calculate:(input)=>{z.object({kilowatts:z.number().finite().nonnegative().max(1e9)}).parse(input);const horsepower=finite(input.kilowatts*1000/745.6999);return{horsepower,steps:[`Mechanical horsepower = ${horsepower}`]};},
  formulas:[{id:"kw-to-mechanical-hp",expression:"hp = kW × 1000 ÷ 745.6999",description:"Convert SI power in kilowatts to mechanical horsepower using the NIST conversion factor."}],
  sources:[nistSource],
  examples:[{label:"100 kW",input:{kilowatts:100},expected:{horsepower:134.10220384902829,steps:["Mechanical horsepower = 134.10220384902829"]}}],
@@ -44,7 +44,7 @@ export const horsepowerCalculator:CalculatorDefinition<HorsepowerInput,Horsepowe
 export const engineHorsepowerCalculator:CalculatorDefinition<EngineHorsepowerInput,EngineHorsepowerOut>={
  ...global,id:"automotive.engine-horsepower",slug:"engine-horsepower-calculator",title:"Engine Horsepower Calculator",
  inputSchema:z.object({torqueLbFt:z.number().finite().nonnegative().max(1e9),rpm:positive}),
- calculate:(input)=>{const horsepower=finite(input.torqueLbFt*input.rpm/5252);return{horsepower,steps:[`Engine horsepower = ${horsepower}`]};},
+ calculate:(input)=>{z.object({torqueLbFt:z.number().finite().nonnegative().max(1e9),rpm:positive}).parse(input);const horsepower=finite(input.torqueLbFt*input.rpm/5252);return{horsepower,steps:[`Engine horsepower = ${horsepower}`]};},
  formulas:[{id:"torque-rpm-hp",expression:"hp = torque (lb-ft) × rpm ÷ 5252",description:"Calculate engine horsepower from measured torque and engine speed."}],
  sources:[engineSource,nistSource],
  examples:[{label:"400 lb-ft at 5252 rpm",input:{torqueLbFt:400,rpm:5252},expected:{horsepower:400,steps:["Engine horsepower = 400"]}}],
