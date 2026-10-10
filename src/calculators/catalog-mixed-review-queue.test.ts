@@ -11,6 +11,12 @@ describe("mixed-category review queue", () => {
     expect(queue.approved).toBe(reviews.filter((item: {decision: string}) => item.decision === "approved").length);
     expect(queue.held).toBe(reviews.filter((item: {decision: string}) => item.decision === "hold").length);
     expect(queue.total).toBe(queue.approved + queue.held + queue.missing);
+    expect(queue.total).toBe(140);
+    expect(queue.approved).toBe(25);
+    expect(queue.held).toBe(45);
+    expect(queue.missing).toBe(70);
+    expect(queue.entries.filter(item=>item.category==="science")).toHaveLength(69);
+    expect(queue.entries.filter(item=>item.category==="everyday")).toHaveLength(71);
     console.info("CALCUMINT_MIXED_REGISTRY_COVERAGE " + JSON.stringify({total:queue.total,approved:queue.approved,held:queue.held,missing:queue.missing,byCategory:Object.fromEntries(["science","everyday"].map(category=>[category,{total:queue.entries.filter(item=>item.category===category).length,missing:queue.entries.filter(item=>item.category===category&&item.decision==="missing").length}]))}));
     expect(queue.entries.find((item) => item.slug === "aspect-ratio-value-calculator")?.decision).toBe("approved");
     expect(queue.entries.find((item) => item.slug === "power-calculator")?.decision).toBe("hold");
