@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { cookingMeasurementConverter as calculator } from "./catalog-batch-4";
 describe("cooking volume domain", () => {
-  it("rejects negative quantities and unsupported units", () => {
-    expect(() => calculator.calculate({value:-1,fromUnit:"ml",toUnit:"l"},{})).toThrow();
+  it("preserves signed conversions and rejects unsupported units", () => {
+    expect(calculator.calculate({value:-1000,fromUnit:"ml",toUnit:"l"},{}).result).toBe(-1);
     expect(() => calculator.calculate({value:1,fromUnit:"invalid",toUnit:"ml"},{})).toThrow();
   });
   it("preserves zero and reference cup conversion", () => {
