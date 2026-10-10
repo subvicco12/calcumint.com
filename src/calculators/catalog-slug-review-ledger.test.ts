@@ -21,7 +21,7 @@ describe("mixed-category review ledger", () => {
     expect(() => requireCompleteCatalogSlugReviewLedger([{ ...evidence, decision: "hold" }])).toThrow(/source review incomplete/);
   });
   it("rejects malformed review records and untrusted source paths", () => {
-    expect(() => auditCatalogSlugReviewLedger([null as unknown as typeof evidence])).toThrow(/Invalid source review entry/);
+    expect(() => auditCatalogSlugReviewLedger([null as unknown as (typeof evidence & { decision: "hold" })])).toThrow(/Invalid source review entry/);
     expect(() => auditCatalogSlugReviewLedger([{ ...evidence, decision: "hold", sourcePath: "../untrusted.ts" }])).toThrow(/Invalid implementation source path/);
     expect(() => auditCatalogSlugReviewLedger([{ ...evidence, decision: "hold", sourcePath: undefined as unknown as string }])).toThrow(/Invalid implementation source path/);
   });
