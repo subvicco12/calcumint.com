@@ -12,8 +12,8 @@ describe("geometry batch 1 direct-call domain validation", () => {
       const numericKey = Object.keys(example).find((key) => typeof (example as Record<string, unknown>)[key] === "number");
       expect(numericKey).toBeDefined();
       const invalid = { ...example, [numericKey!]: Number.POSITIVE_INFINITY };
-      expect(() => calculator.calculate(invalid as typeof example)).toThrow("Geometry inputs are outside the supported domain");
-      const actual = calculator.calculate(example).value;
+      expect(() => calculator.calculate(invalid as never)).toThrow("Geometry inputs are outside the supported domain");
+      const actual = calculator.calculate(example as never).value;
       expect(actual).toBeCloseTo(calculator.goldenTests[0].expected.value, 5);
     });
   }
@@ -25,8 +25,8 @@ describe("geometry batch 2 direct-call domain validation", () => {
       const numericKey = Object.keys(example).find((key) => typeof (example as Record<string, unknown>)[key] === "number");
       expect(numericKey).toBeDefined();
       const invalid = { ...example, [numericKey!]: Number.POSITIVE_INFINITY };
-      expect(() => calculator.calculate(invalid as typeof example)).toThrow("Geometry inputs are outside the supported domain");
-      const actual = calculator.calculate(example).value;
+      expect(() => calculator.calculate(invalid as never)).toThrow("Geometry inputs are outside the supported domain");
+      const actual = calculator.calculate(example as never).value;
       expect(actual).toBeCloseTo(calculator.goldenTests[0].expected.value, 5);
     });
   }
@@ -38,8 +38,8 @@ describe("geometry batch 3 direct-call domain validation", () => {
       const numericKey = Object.keys(example).find((key) => typeof (example as Record<string, unknown>)[key] === "number");
       expect(numericKey).toBeDefined();
       const invalid = { ...example, [numericKey!]: Number.POSITIVE_INFINITY };
-      expect(() => calculator.calculate(invalid as typeof example)).toThrow("Geometry inputs are outside the supported domain");
-      const actual = calculator.calculate(example).value;
+      expect(() => calculator.calculate(invalid as never)).toThrow("Geometry inputs are outside the supported domain");
+      const actual = calculator.calculate(example as never).value;
       expect(actual).toBeCloseTo(calculator.goldenTests[0].expected.value, 5);
     });
   }
@@ -51,8 +51,8 @@ describe("geometry batch 4 direct-call domain validation", () => {
       const numericKey = Object.keys(example).find((key) => typeof (example as Record<string, unknown>)[key] === "number");
       expect(numericKey).toBeDefined();
       const invalid = { ...example, [numericKey!]: Number.POSITIVE_INFINITY };
-      expect(() => calculator.calculate(invalid as typeof example)).toThrow("Geometry inputs are outside the supported domain");
-      const actual = calculator.calculate(example).value;
+      expect(() => calculator.calculate(invalid as never)).toThrow("Geometry inputs are outside the supported domain");
+      const actual = calculator.calculate(example as never).value;
       expect(actual).toBeCloseTo(calculator.goldenTests[0].expected.value, 5);
     });
   }
@@ -64,8 +64,8 @@ describe("geometry batch 5 direct-call domain validation", () => {
       const numericKey = Object.keys(example).find((key) => typeof (example as Record<string, unknown>)[key] === "number");
       expect(numericKey).toBeDefined();
       const invalid = { ...example, [numericKey!]: Number.POSITIVE_INFINITY };
-      expect(() => calculator.calculate(invalid as typeof example)).toThrow("Geometry inputs are outside the supported domain");
-      const actual = calculator.calculate(example).value;
+      expect(() => calculator.calculate(invalid as never)).toThrow("Geometry inputs are outside the supported domain");
+      const actual = calculator.calculate(example as never).value;
       expect(actual).toBeCloseTo(calculator.goldenTests[0].expected.value, 5);
     });
   }
