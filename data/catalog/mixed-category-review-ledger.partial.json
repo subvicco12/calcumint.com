@@ -1285,7 +1285,7 @@
     "sourcePath": "src/calculators/food/catalog-batch-1.ts",
     "inputContract": "dough mass and count",
     "outputContract": "mass per piece",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified food/catalog-batch-1.ts: totalDoughWeightGrams>=0 and numberOfPieces positive integer <=1e9; output total grams/pieces (1800/6=300g), equal target weight only, no processing loss or proofing allowance. Food & Cooking master IDs 496-506 have no exact Dough Piece Weight title; food-domain specialist/identity review outstanding. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1295,7 +1295,7 @@
     "sourcePath": "src/calculators/food/catalog-batch-1.ts",
     "inputContract": "flour and ingredient weights",
     "outputContract": "total dough weight",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified food/catalog-batch-1.ts: flourWeightGrams, waterWeightGrams, otherIngredientsGrams each nonnegative; output sum (1000+700+50=1750g) before processing loss. Food & Cooking master IDs 496-506 have no exact Dough Total Weight title. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1305,7 +1305,7 @@
     "sourcePath": "src/calculators/food/catalog-batch-1.ts",
     "inputContract": "flour mass and baker percentage",
     "outputContract": "ingredient weight",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified food/catalog-batch-1.ts: flourWeightGrams>=0, bakersPercent>=0; output flourWeightGrams*bakersPercent/100 (1000g at 2%=20g). Food & Cooking ID 499 Baker's Percentage Calculator has distinct direction (derive percentage vs derive ingredient mass); no exact Baker's Ingredient Weight title. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
