@@ -8,6 +8,6 @@ describe("astronomy finite result protection", () => {
     }
   });
   it("rejects a mathematically overflowing but schema-valid orbital period", () => {
-    expect(() => orbitalPeriodCalculator.calculate({semiMajorAxisAu:1e35,centralMassSolar:1e-30},{})).toThrow();
+    expect(() => orbitalPeriodCalculator.calculate({semiMajorAxisAu:1e35,centralMassSolar:1e-250},{})).toThrow();
   });
 });
