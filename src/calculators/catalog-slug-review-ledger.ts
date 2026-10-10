@@ -44,7 +44,7 @@ export function auditCatalogSlugReviewLedger(
     if (seen.has(review.slug)) throw new Error(`Duplicate review slug: ${review.slug}`);
     seen.add(review.slug);
     if (!known.has(review.domain)) throw new Error(`Unknown master domain for ${review.slug}`);
-    if (!review.sourcePath.startsWith("src/calculators/") || !review.sourcePath.endsWith(".ts") || review.sourcePath.includes("..")) {
+    if (typeof review.sourcePath !== "string" || !review.sourcePath.startsWith("src/calculators/") || !review.sourcePath.endsWith(".ts") || review.sourcePath.includes("..")) {
       throw new Error(`Invalid implementation source path for ${review.slug}`);
     }
     if (![review.sourcePath, review.inputContract, review.outputContract, review.evidence].every(
