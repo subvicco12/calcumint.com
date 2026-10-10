@@ -16,6 +16,16 @@ export type CatalogSlugReview = Readonly<{
  * HOLD entries are deliberately excluded from the approved mapping.
  * This is offline planning evidence and grants no publication authority.
  */
+export function requireCompleteCatalogSlugReviewLedger(
+  reviews: readonly CatalogSlugReview[],
+): Readonly<Record<string, string>> {
+  const audit = auditCatalogSlugReviewLedger(reviews);
+  if (audit.missing.length || audit.held.length) {
+    throw new Error(`Catalog source review incomplete: ${JSON.stringify({ missing: audit.missing, held: audit.held })}`);
+  }
+  return audit.approvedDomains;
+}
+
 export function auditCatalogSlugReviewLedger(
   reviews: readonly CatalogSlugReview[],
 ): Readonly<{ approvedDomains: Readonly<Record<string, string>>; missing: readonly string[]; held: readonly string[] }> {
