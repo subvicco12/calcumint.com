@@ -538,5 +538,65 @@
     "decision": "hold",
     "evidence": "No exact master title; matching units required",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "work-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "force >= 0; distance >= 0; angleDegrees 0..180",
+    "outputContract": "W = force × distance × cos(angle)",
+    "decision": "approved",
+    "evidence": "Master Physics ID 307 exact title; authoritative implementation handles angle unlike excluded launch definition",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "kinetic-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "mass >= 0; speed magnitude >= 0",
+    "outputContract": "KE = 0.5 × mass × velocity²",
+    "decision": "approved",
+    "evidence": "Master Physics ID 309 exact title; authoritative translational kinetic energy",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "potential-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "mass >= 0; gravity >= 0; height finite",
+    "outputContract": "PE = mass × gravity × height",
+    "decision": "approved",
+    "evidence": "Master Physics ID 310 exact title; authoritative implementation accepts gravity unlike excluded launch definition",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "momentum-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-2.ts",
+    "inputContract": "mass >= 0; signed velocity finite",
+    "outputContract": "signed momentum = mass × velocity",
+    "decision": "approved",
+    "evidence": "Master Physics ID 311 exact title; authoritative signed momentum",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "molarity-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "moles >= 0; solutionVolumeLiters > 0",
+    "outputContract": "M = moles / solution volume liters",
+    "decision": "approved",
+    "evidence": "Master Chemistry ID 328 exact title; authoritative molarity implementation",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "dilution-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "initialConcentration >= 0; initialVolume >= 0; finalVolume > 0",
+    "outputContract": "final concentration = initial concentration × initial volume / final volume",
+    "decision": "approved",
+    "evidence": "Master Chemistry ID 332 exact title; authoritative dilution implementation",
+    "reviewStatus": "certified"
   }
 ]
