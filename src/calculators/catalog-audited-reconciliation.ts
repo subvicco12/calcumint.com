@@ -1,5 +1,7 @@
 import { parseMasterCatalogCsv } from "./catalog-csv-ingestion";
 import { auditCatalogDomainMappings } from "./catalog-domain-audit";
+import { listCalculatorImplementationInventory } from "./implementation-inventory";
+import { MASTER_CATALOG_DOMAINS } from "./catalog-domain-audit";
 import { buildCatalogReconciliationReport, exportCatalogReconciliationCsv } from "./catalog-reconciliation-report";
 
 export type AuditedCatalogReconciliation = Readonly<{
@@ -16,6 +18,7 @@ export function reconcileAuditedMasterCatalogCsv(
   source: string,
   categoryDomains: Readonly<Record<string, string>>,
   aliases: Readonly<Record<string, string>> = {},
+  slugDomains: Readonly<Record<string, string>> = {},
 ): AuditedCatalogReconciliation {
   const master = parseMasterCatalogCsv(source);
   const audit = auditCatalogDomainMappings(master, categoryDomains);
@@ -28,7 +31,19 @@ export function reconcileAuditedMasterCatalogCsv(
       })}`,
     );
   }
-  const report = buildCatalogReconciliationReport(master, { categoryDomains, aliases });
+  const inventory = listCalculatorImplementationInventory();
+  const known = new Set<string>(MASTER_CATALOG_DOMAINS);
+  const registrySlugs = new Set(inventory.map((entry) => entry.slug));
+  const unknownOverrides = Object.keys(slugDomains).filter((slug) => !registrySlugs.has(slug)).sort();
+  const invalidOverrides = Object.entries(slugDomains).filter(([, domain]) => !known.has(domain)).map(([slug]) => slug).sort();
+  const unresolved = inventory.filter((entry) => {
+    const domain = slugDomains[entry.slug] ?? categoryDomains[entry.category] ?? entry.category;
+    return !known.has(domain);
+  }).map((entry) => entry.slug);
+  if (unknownOverrides.length || invalidOverrides.length || unresolved.length) {
+    throw new Error(`Catalog calculator mapping audit incomplete: ${JSON.stringify({ unknownOverrides, invalidOverrides, unresolved })}`);
+  }
+  const report = buildCatalogReconciliationReport(master, { categoryDomains, aliases, slugDomains });
   return {
     summary: JSON.stringify({
       totalMaster: report.totalMaster,
