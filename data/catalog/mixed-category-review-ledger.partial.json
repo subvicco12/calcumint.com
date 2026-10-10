@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "power-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "finite work, positive time",
+    "outputContract": "average power = work / time; output units depend on work/time units",
+    "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established",
+    "decision": "hold"
+  },
+  {
+    "slug": "power-from-work-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "work and time, positive time bound",
+    "outputContract": "work / time; input-unit semantics not enforced in source",
+    "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved",
+    "decision": "hold"
+  },
+  {
+    "slug": "travel-time-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "distanceKm nonnegative, averageSpeedKmh positive",
+    "outputContract": "moving hours, excluding stops and delays",
+    "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation",
+    "decision": "hold"
+  },
+  {
+    "slug": "time-from-distance-speed-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "distance nonnegative, speed positive",
+    "outputContract": "distance / speed using compatible input units",
+    "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science",
+    "decision": "hold"
+  }
+]
