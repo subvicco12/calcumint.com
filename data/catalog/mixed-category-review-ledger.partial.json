@@ -228,5 +228,65 @@
     "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending; exact title and domain confirmed in canonical 540-row CSV; this approval is catalog mapping only, not publication or certification authority",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "aspect-ratio-value-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "width >= 0; height >= 1e-9",
+    "outputContract": "numeric width / height ratio",
+    "evidence": "Master ID 377 Aspect Ratio Calculator; source numeric aspect ratio formula verified",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "pixels-per-inch-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "pixel dimension >= 0; inches >= 1e-9",
+    "outputContract": "pixels per physical inch along one dimension",
+    "evidence": "Source verifies one-dimensional pixel density; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "storage-per-file-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "storage >= 0; files >= 1",
+    "outputContract": "average storage / file count",
+    "evidence": "Source verifies average storage per file; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "paint-coverage-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "area >= 0; coverage per unit >= 1e-9",
+    "outputContract": "theoretical paint units = area / coverage; excludes coats and waste",
+    "evidence": "Source warns to adjust for coats and waste; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "tile-count-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "surface area >= 0; tile area >= 1e-9",
+    "outputContract": "theoretical tile count = area / tile area; purchasing requires rounding and waste allowance",
+    "evidence": "Source provides theoretical tile count only; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "concrete-volume-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "base area >= 0; depth >= 0",
+    "outputContract": "rectangular concrete volume = base area × depth",
+    "evidence": "Source uses compatible area and depth units; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
