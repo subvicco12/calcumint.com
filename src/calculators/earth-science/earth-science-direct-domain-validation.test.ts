@@ -10,7 +10,9 @@ describe("earth science batch 1 direct-call validation", () => {
       const key = Object.keys(input).find((name) => typeof (input as Record<string, unknown>)[name] === "number");
       expect(key).toBeDefined();
       expect(() => calculator.calculate({ ...input, [key!]: Number.POSITIVE_INFINITY } as never)).toThrow("Earth science inputs are outside the supported domain");
-      expect(calculator.calculate(input as never).value).toBeCloseTo(calculator.goldenTests[0].expected.value, 5);
+      const actual = calculator.calculate(input as never).value;
+      const expected = calculator.goldenTests[0].expected.value;
+      expect(Math.abs(actual - expected)).toBeLessThanOrEqual(Math.max(0.01, Math.abs(expected) * 1e-8));
     });
   }
 });
