@@ -6,7 +6,7 @@ const base={category:"date-time",version:1,riskClass:"standard" as const,reviewS
 const TIME=/^(\d{2}):(\d{2})$/;
 function minutes(s:string){const m=TIME.exec(s);if(!m)throw new Error("Time must use HH:MM");const h=+m[1]!,n=+m[2]!;if(h>23||n>59)throw new Error("Invalid clock time");return h*60+n}
 const timeString=z.string().refine(v=>{try{minutes(v);return true}catch{return false}},"Invalid HH:MM clock time");
-function duration(start:string,end:string,overnight:boolean){const a=minutes(start),b=minutes(end);let d=b-a;if(d<0&&overnight)d+=1440;if(d<0)throw new Error("endTime precedes startTime");return d}
+function duration(start:string,end:string,overnight:boolean){if(typeof overnight!=="boolean")throw new Error("overnight must be a boolean");const a=minutes(start),b=minutes(end);let d=b-a;if(d<0&&overnight)d+=1440;if(d<0)throw new Error("endTime precedes startTime");return d}
 function split(totalMinutes:number){return{hours:Math.floor(totalMinutes/60),minutes:totalMinutes%60,totalMinutes}}
 
 type DurationIn={startTime:string;endTime:string;overnight:boolean};type DurationOut={hours:number;minutes:number;totalMinutes:number};
