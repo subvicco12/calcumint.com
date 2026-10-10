@@ -1325,7 +1325,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "distance, consumption and fuel price",
     "outputContract": "distance*consumption/100*price",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified automotive/catalog-batch-1.ts: distanceKm>=0, L/100km>=0, fuelPricePerLiter>=0; output distance*consumption/100*price (500km,8L/100km,1.5=60). Canonical master Automotive ID 458 Fuel Cost Calculator and Travel ID 509 Fuel Trip Cost Calculator are nonexact competing candidates; trip-specific input semantics and domain identity unresolved. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1335,7 +1335,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "consumption L/100km and fuel price",
     "outputContract": "consumption*price per 100km",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified automotive/catalog-batch-1.ts: L/100km>=0 and fuelPricePerLiter>=0; output consumption*price (8*1.5=12 currency/100km). Master ID 458 Fuel Cost Calculator is nonexact and may represent total fuel cost rather than normalized cost per 100km. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1345,7 +1345,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "positive litersPer100Km",
     "outputContract": "235.214583/litersPer100Km US mpg",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified automotive/catalog-batch-1.ts: L/100km>0; output 235.214583/L/100km in US mpg, rounded to six decimals. Master Conversion ID 435 Fuel Economy Converter is nonexact and direction-specific; US gallon versus imperial gallon distinction material. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1355,7 +1355,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "positive usMpg",
     "outputContract": "235.214583/usMpg L/100km",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified automotive/catalog-batch-1.ts: US mpg>0; output 235.214583/US mpg in L/100km, rounded to six decimals. Master Conversion ID 435 Fuel Economy Converter is nonexact; reverse direction distinct from L/100km-to-US-mpg implementation. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1365,7 +1365,7 @@
     "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
     "inputContract": "distance km and consumption kWh/100km",
     "outputContract": "distance*consumption/100 kWh",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified energy/catalog-batch-1.ts: distanceKm>=0 and consumptionKwhPer100Km>=0; output distance*consumption/100 traction kWh (300km*18/100=54kWh). Canonical Energy ID 484 EV Charging Energy Calculator is nonexact and describes charging rather than traction energy; no automatic identity. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1375,7 +1375,7 @@
     "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
     "inputContract": "system size kW, sun hours, efficiency percent",
     "outputContract": "size*hours*efficiency/100 kWh",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication. Verified energy/catalog-batch-1.ts: systemSizeKw>=0, peakSunHours>=0, efficiency 0..100%; output size*sun-hours*efficiency/100 (5*5*80%=20kWh/day). Master Energy ID 481 Solar Panel Calculator is nonexact, potentially broader sizing/production scope; model is not PVWatts simulation. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
