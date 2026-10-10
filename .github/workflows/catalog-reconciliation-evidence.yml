@@ -1,0 +1,48 @@
+name: Offline catalog reconciliation evidence
+
+on:
+  workflow_dispatch:
+    inputs:
+      produce_reconciliation:
+        description: 'Generate reconciliation only when reviewed mapping files are committed'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Export full runtime registry inventory
+        env:
+          CALCUMINT_INVENTORY_OUT: catalog-evidence
+        run: npx vitest run src/calculators/catalog-inventory-export.test.ts
+      - name: Generate audited 540-row reconciliation
+        if: ${{ inputs.produce_reconciliation }}
+        env:
+          CALCUMINT_MASTER_CSV: data/catalog/master-catalog-2026.csv
+          CALCUMINT_CATEGORY_MAPPINGS: data/catalog/reviewed-category-domains.json
+          CALCUMINT_SLUG_DOMAINS: data/catalog/reviewed-slug-domains.json
+          CALCUMINT_RECONCILIATION_OUT: catalog-evidence
+        run: |
+          test -f "$CALCUMINT_CATEGORY_MAPPINGS"
+          test -f "$CALCUMINT_SLUG_DOMAINS"
+          npx vitest run src/calculators/catalog-full-evidence.test.ts
+      - name: Upload offline evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-registry-evidence
+          path: catalog-evidence/
+          if-no-files-found: error
+          retention-days: 30
