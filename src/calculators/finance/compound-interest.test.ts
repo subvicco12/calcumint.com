@@ -21,5 +21,12 @@ describe("compound interest calculator",()=>{
   it("rejects finite inputs that overflow total interest",()=>{
     expect(()=>runCalculator(compoundInterestCalculator,{principal:1e308,annualRatePercent:1000,years:200,compoundsPerYear:365})).toThrow(/numeric range/);
   });
+  it("rejects out-of-schema finite direct calculation values",()=>{
+    const base={principal:1000,annualRatePercent:5,years:1,compoundsPerYear:12};
+    expect(()=>compoundInterestCalculator.calculate({...base,annualRatePercent:1000.01},{})).toThrow(/supported ranges/);
+    expect(()=>compoundInterestCalculator.calculate({...base,annualRatePercent:-99.9999991},{})).toThrow(/supported ranges/);
+    expect(()=>compoundInterestCalculator.calculate({...base,years:200.01},{})).toThrow(/supported ranges/);
+    expect(()=>compoundInterestCalculator.calculate({...base,compoundsPerYear:366},{})).toThrow(/supported ranges/);
+  });
   it("rejects unsafe direct calculator calls",()=>{expect(()=>compoundInterestCalculator.calculate({principal:Number.NaN,annualRatePercent:5,years:1,compoundsPerYear:12},{})).toThrow();expect(()=>compoundInterestCalculator.calculate({principal:1000,annualRatePercent:5,years:1,compoundsPerYear:12.5},{})).toThrow();expect(()=>compoundInterestCalculator.calculate({principal:1000,annualRatePercent:5,years:Number.POSITIVE_INFINITY,compoundsPerYear:12},{})).toThrow();});
 });
