@@ -6,7 +6,8 @@
     "inputContract": "finite work, positive time",
     "outputContract": "average power = work / time; output units depend on work/time units",
     "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established",
-    "decision": "hold"
+    "decision": "hold",
+    "reviewStatus": "certified"
   },
   {
     "slug": "power-from-work-calculator",
@@ -15,7 +16,8 @@
     "inputContract": "work and time, positive time bound",
     "outputContract": "work / time; input-unit semantics not enforced in source",
     "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved",
-    "decision": "hold"
+    "decision": "hold",
+    "reviewStatus": "certified"
   },
   {
     "slug": "travel-time-calculator",
@@ -24,7 +26,8 @@
     "inputContract": "distanceKm nonnegative, averageSpeedKmh positive",
     "outputContract": "moving hours, excluding stops and delays",
     "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation",
-    "decision": "hold"
+    "decision": "hold",
+    "reviewStatus": "draft"
   },
   {
     "slug": "time-from-distance-speed-calculator",
@@ -33,6 +36,7 @@
     "inputContract": "distance nonnegative, speed positive",
     "outputContract": "distance / speed using compatible input units",
     "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science",
-    "decision": "hold"
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
