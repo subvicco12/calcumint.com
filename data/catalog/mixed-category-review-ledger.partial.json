@@ -798,5 +798,105 @@
     "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 327; formula and constraints recorded without equating other similarly named calculators",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "ip-subnet-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "valid IPv4 address; CIDR prefix 0..32",
+    "outputContract": "total IPv4 addresses in subnet = 2^(32 − prefix); not usable-host count",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 368; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "cidr-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "CIDR prefix 0..32",
+    "outputContract": "total IPv4 addresses = 2^(32 − prefix)",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 369; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "bandwidth-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "dataMegabytes > 0; timeSeconds > 0",
+    "outputContract": "average Mbps = data MB × 8 / seconds",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 370; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "download-time-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "dataMegabytes > 0; bandwidthMbps > 0",
+    "outputContract": "ideal seconds = data MB × 8 / Mbps; ignores network overhead",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 371; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "upload-time-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "dataMegabytes > 0; bandwidthMbps > 0",
+    "outputContract": "ideal upload seconds = data MB × 8 / Mbps",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 372; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "data-transfer-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "bandwidthMbps > 0; timeSeconds > 0",
+    "outputContract": "ideal data MB = Mbps × seconds / 8",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 373; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "storage-conversion-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "value > 0; fromUnit and toUnit one of B, KiB, MiB, GiB, TiB",
+    "outputContract": "binary IEC 1024-based unit conversion",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 374; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "raid-capacity-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "diskCount integer 2..64; diskSizeGb > 0; RAID 0/1/5/6/10 with additional level-specific disk count rules",
+    "outputContract": "nominal usable capacity: RAID0 n*s, RAID1 s, RAID5 (n−1)*s, RAID6 (n−2)*s, RAID10 n*s/2; overhead excluded",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 375; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "screen-ppi-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "widthPixels > 0; heightPixels > 0; diagonalInches > 0",
+    "outputContract": "PPI = √(widthPixels² + heightPixels²) / diagonalInches",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 376; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
+  },
+  {
+    "slug": "aspect-ratio-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "inputContract": "width > 0; height > 0",
+    "outputContract": "numeric width / height ratio; not a reduced fraction",
+    "evidence": "Registry-effective technology batch 1 reviewed implementation; unique exact-title Technology & Computing master ID 377; formula, output interpretation and constraints inspected. No automatic aliases or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "reviewed"
   }
 ]
