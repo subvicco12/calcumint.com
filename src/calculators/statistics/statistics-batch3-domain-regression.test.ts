@@ -4,7 +4,7 @@ describe("statistics batch 3 domain regression", () => {
   it("preserves combination symmetry and exact small counts", () => {
     expect(combinationCalculator.calculate({n:10,r:3},{}).combinations).toBe(120);
     expect(combinationCalculator.calculate({n:10,r:7},{}).combinations).toBe(120);
-    expect(() => combinationCalculator.calculate({n:5,r:6},{})).toThrow();
+    expect(combinationCalculator.inputSchema.safeParse({n:5,r:6}).success).toBe(false);
     expect(() => combinationCalculator.calculate({n:100,r:50},{})).toThrow();
   });
   it("handles degenerate binomial probabilities", () => {
@@ -17,11 +17,11 @@ describe("statistics batch 3 domain regression", () => {
     const left=normalDistributionCalculator.calculate({x:-1,mean:0,standardDeviation:1},{});
     const right=normalDistributionCalculator.calculate({x:1,mean:0,standardDeviation:1},{});
     expect(left.cdf).toBeCloseTo(right.upperTail,10);
-    expect(() => normalDistributionCalculator.calculate({x:1,mean:0,standardDeviation:0},{})).toThrow();
+    expect(normalDistributionCalculator.inputSchema.safeParse({x:1,mean:0,standardDeviation:0}).success).toBe(false);
   });
   it("rejects constant or mismatched correlation datasets", () => {
     expect(correlationCalculator.calculate({xValues:[1,2,3],yValues:[3,2,1]},{}).correlation).toBeCloseTo(-1,10);
     expect(() => correlationCalculator.calculate({xValues:[1,1],yValues:[2,3]},{})).toThrow();
-    expect(() => correlationCalculator.calculate({xValues:[1,2],yValues:[2,3,4]},{})).toThrow();
+    expect(correlationCalculator.inputSchema.safeParse({xValues:[1,2],yValues:[2,3,4]}).success).toBe(false);
   });
 });
