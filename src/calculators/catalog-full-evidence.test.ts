@@ -10,6 +10,7 @@ import { reconcileAuditedMasterCatalogCsv } from "./catalog-audited-reconciliati
  * CALCUMINT_MASTER_CSV=/path/to/CalcuMint_540_Master_Ingestion.csv
  * CALCUMINT_CATEGORY_MAPPINGS=/path/to/reviewed-mappings.json
  * CALCUMINT_RECONCILIATION_OUT=/path/to/output-directory
+ * CALCUMINT_SLUG_DOMAINS=/path/to/reviewed-slug-overrides.json
  *
  * Mappings JSON is { "registry category": "master domain" }.
  * Never silently infer domain equivalence or publication authority.
@@ -37,7 +38,10 @@ describe("opt-in full master catalog reconciliation evidence", () => {
     expect(rows).toHaveLength(540);
     const audit = auditCatalogDomainMappings(rows, mappings);
     expect(audit).toMatchObject({ complete: true, unknownMasterDomains: [], unmappedRegistryCategories: [], unusedMappings: [] });
-    const result = reconcileAuditedMasterCatalogCsv(csv, mappings);
+    const slugDomains = process.env.CALCUMINT_SLUG_DOMAINS
+      ? JSON.parse(readFileSync(resolve(process.env.CALCUMINT_SLUG_DOMAINS), "utf8")) as Record<string, string>
+      : {};
+    const result = reconcileAuditedMasterCatalogCsv(csv, mappings, {}, slugDomains);
     const summary = JSON.parse(result.summary);
     expect(summary.exact + summary.alias + summary.ambiguous + summary.unmatched).toBe(540);
     mkdirSync(resolve(outputPath!), { recursive: true });
