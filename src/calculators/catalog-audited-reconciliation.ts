@@ -31,6 +31,8 @@ export function reconcileAuditedMasterCatalogCsv(
       })}`,
     );
   }
+  // A domain assignment alone is not review evidence. The caller must supply
+  // a source-backed decision for every mixed-category slug before reporting.
   const inventory = listCalculatorImplementationInventory();
   const known = new Set<string>(MASTER_CATALOG_DOMAINS);
   const registrySlugs = new Set(inventory.map((entry) => entry.slug));

@@ -1,0 +1,352 @@
+[
+  {
+    "slug": "power-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+    "inputContract": "finite work, positive time",
+    "outputContract": "average power = work / time; output units depend on work/time units",
+    "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established; Master title collision: Math ID 222 versus Physics ID 308; retain HOLD until row identity and competing implementation adjudicated.",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "power-from-work-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "work and time, positive time bound",
+    "outputContract": "work / time; input-unit semantics not enforced in source",
+    "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved; Master title collision: Math ID 222 versus Physics ID 308; competing physics power implementation requires distinct identity review.",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "travel-time-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "distanceKm nonnegative, averageSpeedKmh positive",
+    "outputContract": "moving hours, excluding stops and delays",
+    "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation; Master ID 510 title shared by two implementations; fixed km/kmh versus generic compatible units prevents inferred equivalence.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "time-from-distance-speed-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "distance nonnegative, speed positive",
+    "outputContract": "distance / speed using compatible input units",
+    "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science; Master ID 510 title shared by two implementations; generic input units versus fixed km/kmh prevents inferred equivalence.",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "speed-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "distance >= 0; time >= 1e-9",
+    "outputContract": "distance / time; units follow input ratio",
+    "evidence": "Launch portfolio formula and bounds verified; master-domain assignment and collisions not adjudicated; exact title and Physics domain confirmed at master ID 302; mapping only, not certification/publication authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "distance-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "speed finite; time >= 0",
+    "outputContract": "speed × time using compatible units",
+    "evidence": "Launch portfolio formula and bounds verified; generic distance semantics require master mapping review; Master title collision: Geometry ID 277 versus Travel & Everyday ID 511; generic speed-times-time semantics do not establish either mapping.",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "density-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; volume >= 1e-9",
+    "outputContract": "mass / volume; units follow supplied inputs",
+    "evidence": "Launch portfolio formula and bounds verified; domain mapping not yet adjudicated; exact title and Physics domain confirmed at master ID 313; mapping only, not certification/publication authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "pressure-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "force finite; area >= 1e-9",
+    "outputContract": "force / area; generic units",
+    "evidence": "Launch portfolio formula and bounds verified; category-to-master mapping not yet adjudicated; exact title and Physics domain confirmed at master ID 312; mapping only, not certification/publication authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "fuel-economy-distance-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "fuel >= 0; efficiency >= 0",
+    "outputContract": "fuel × distance-per-fuel-unit efficiency",
+    "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "fuel-cost-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "fuel >= 0; unit price >= 0",
+    "outputContract": "fuel × unit price; output currency follows input",
+    "evidence": "Fuel purchase cost formula and bounds inspected; exact title and domain confirmed in canonical 540-row CSV; this approval is catalog mapping only, not publication or certification authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "unit-price-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "price >= 0; quantity >= 1e-9",
+    "outputContract": "price / quantity; currency per unit",
+    "evidence": "Generic price-per-unit implementation inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "cost-per-person-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "total >= 0; people >= 1",
+    "outputContract": "total / people; equal allocation",
+    "evidence": "Simple split cost implementation inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "tip-amount-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "bill >= 0; tip percent >= 0",
+    "outputContract": "bill × tip percent / 100",
+    "evidence": "Tip amount formula inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "data-rate-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "data >= 0; time >= 1e-9",
+    "outputContract": "data / time; units depend on inputs",
+    "evidence": "Data transfer rate formula inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "flow-rate-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "volume >= 0; time >= 1e-9",
+    "outputContract": "volume / time; compatible units",
+    "evidence": "Volumetric flow implementation inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "acceleration-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "velocityChange finite; time >= 1e-9",
+    "outputContract": "velocity change / elapsed time; compatible units",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending; exact title and domain confirmed in canonical 540-row CSV; this approval is catalog mapping only, not publication or certification authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "force-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; acceleration finite",
+    "outputContract": "net force = mass × acceleration",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending; exact title and domain confirmed in canonical 540-row CSV; this approval is catalog mapping only, not publication or certification authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "impulse-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "force finite; time >= 0",
+    "outputContract": "impulse = average force × time interval",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "torque-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "perpendicular force finite; radius >= 0",
+    "outputContract": "torque = force × lever arm",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending; exact title and domain confirmed in canonical 540-row CSV; this approval is catalog mapping only, not publication or certification authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "recipe-scale-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "original amount >= 0; factor >= 0",
+    "outputContract": "scaled ingredient amount = amount × factor",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "servings-scale-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "original amount >= 0; serving ratio >= 0",
+    "outputContract": "scaled quantity = amount × new-to-old servings ratio",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "energy-cost-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "energy >= 0; unit tariff >= 0",
+    "outputContract": "energy × unit tariff; excludes taxes, fixed charges and tiers",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "water-usage-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "flow per minute >= 0; minutes >= 0",
+    "outputContract": "water use = flow rate × minutes",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending; exact title and domain confirmed in canonical 540-row CSV; this approval is catalog mapping only, not publication or certification authority",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "aspect-ratio-value-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "width >= 0; height >= 1e-9",
+    "outputContract": "numeric width / height ratio",
+    "evidence": "Master ID 377 Aspect Ratio Calculator; source numeric aspect ratio formula verified",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "pixels-per-inch-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "pixel dimension >= 0; inches >= 1e-9",
+    "outputContract": "pixels per physical inch along one dimension",
+    "evidence": "Source verifies one-dimensional pixel density; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "storage-per-file-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "storage >= 0; files >= 1",
+    "outputContract": "average storage / file count",
+    "evidence": "Source verifies average storage per file; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "paint-coverage-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "area >= 0; coverage per unit >= 1e-9",
+    "outputContract": "theoretical paint units = area / coverage; excludes coats and waste",
+    "evidence": "Source warns to adjust for coats and waste; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "tile-count-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "surface area >= 0; tile area >= 1e-9",
+    "outputContract": "theoretical tile count = area / tile area; purchasing requires rounding and waste allowance",
+    "evidence": "Source provides theoretical tile count only; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "concrete-volume-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "base area >= 0; depth >= 0",
+    "outputContract": "rectangular concrete volume = base area × depth",
+    "evidence": "Source uses compatible area and depth units; no exact master title established",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "occupancy-density-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "people >= 0; area >= 1e-9",
+    "outputContract": "occupants / area; descriptive only, not a building-code limit",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "cost-per-square-unit-calculator",
+    "domain": "Mortgage & Property Finance",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "cost >= 0; area >= 1e-9",
+    "outputContract": "cost per unit area in chosen currency and area units",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "coverage-rate-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "covered >= 0; total >= 1e-9",
+    "outputContract": "covered / total × 100 percent",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "battery-runtime-index-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "capacity >= 0; average load >= 1e-9",
+    "outputContract": "ideal capacity / load runtime index; real runtime varies",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "map-scale-distance-calculator",
+    "domain": "Geometry",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "map distance >= 0; real-units-per-map-unit scale >= 0",
+    "outputContract": "map distance × scale in compatible units",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "spring-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "spring constant >= 0; displacement finite",
+    "outputContract": "ideal elastic energy = k × x² / 2",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  }
+]
