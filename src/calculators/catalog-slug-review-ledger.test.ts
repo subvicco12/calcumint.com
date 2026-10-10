@@ -21,6 +21,10 @@ describe("mixed-category review ledger", () => {
   it("refuses to export mappings while evidence is held or missing", () => {
     expect(() => requireCompleteCatalogSlugReviewLedger([{ ...evidence, decision: "hold" }])).toThrow(/source review incomplete/);
   });
+  it("rejects lifecycle status inconsistent with registry inventory", () => {
+    expect(() => auditCatalogSlugReviewLedger([{ ...evidence, decision: "approved", reviewStatus: "draft" }]))
+      .toThrow(/Review status mismatch/);
+  });
   it("rejects malformed review records and untrusted source paths", () => {
     expect(() => auditCatalogSlugReviewLedger([null as unknown as (typeof evidence & { decision: "hold" })])).toThrow(/Invalid source review entry/);
     expect(() => auditCatalogSlugReviewLedger([{ ...evidence, decision: "hold", sourcePath: "../untrusted.ts" }])).toThrow(/Invalid implementation source path/);
