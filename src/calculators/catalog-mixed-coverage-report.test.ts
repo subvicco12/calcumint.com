@@ -15,6 +15,11 @@ describe("mixed review coverage report", () => {
     expect(master).toHaveLength(540);
     const report = buildMixedReviewCoverageReport(reviews, master);
     expect(report.total).toBe(report.approved + report.held + report.missing);
+    expect(report.rows).toHaveLength(report.total);
+    for (const row of report.rows.filter((item) => item.decision === "approved")) {
+      expect(row.sameDomainCandidates.length, `Approved mapping ${row.slug} lacks unique master title/domain evidence`).toBe(1);
+      expect(row.exactTitleCandidates.length, `Approved mapping ${row.slug} has an ambiguous master title`).toBe(1);
+    }
     expect(report.approved).toBe(reviews.filter((entry: { decision: string }) => entry.decision === "approved").length);
     const power = report.rows.find((entry) => entry.slug === "power-calculator");
     expect(power?.exactTitleCandidates.map((entry) => entry.id)).toEqual([222, 308]);
