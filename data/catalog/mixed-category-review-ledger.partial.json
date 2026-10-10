@@ -305,7 +305,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "cost >= 0; area >= 1e-9",
     "outputContract": "cost per unit area in chosen currency and area units",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: total cost>=0 and area>0, returns cost/area with generic currency and area units. Generic unit-area ratio does not establish Mortgage & Property Finance master identity. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -396,7 +396,7 @@
     "inputContract": "bill >= 0; tip percent >= 0",
     "outputContract": "total bill = bill × (1 + tip/100)",
     "decision": "hold",
-    "evidence": "No exact master title; not equivalent to tip amount output",
+    "evidence": "No exact master title; not equivalent to tip amount output Verified launch-portfolio.ts: bill>=0, tip percent>=0, output bill*(1+percent/100), unlike tip-amount-calculator which outputs only tip. No exact-title master; do not collapse distinct result contracts. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -446,7 +446,7 @@
     "inputContract": "revenue > 0; cost >= 0",
     "outputContract": "gross margin percent = (revenue − cost)/revenue × 100",
     "decision": "hold",
-    "evidence": "Source simple gross margin; no exact master title",
+    "evidence": "Source simple gross margin; no exact master title Verified launch-portfolio.ts: revenue>0 and cost>=0; returns (revenue-cost)/revenue*100, simple gross margin only excluding tax and other expenses. No exact-title master identity; business-accounting semantics require adjudication. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -1275,7 +1275,7 @@
     "sourcePath": "src/calculators/food/catalog-batch-1.ts",
     "inputContract": "salt concentration inputs",
     "outputContract": "brine salt quantity",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; food-safety identity unresolved. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; food-safety identity unresolved. Requires master-row identity adjudication; no certification or publication. Verified food/catalog-batch-1.ts: waterWeightGrams>=0, saltPercentOfWater finite 0..100; salt mass = waterWeightGrams*saltPercentOfWater/100; 1000g at 2%=20g. Source explicitly disclaims food-preservation or safety guidance. No exact-title master; specialist food-safety interpretation must not be inferred. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1385,7 +1385,7 @@
     "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
     "inputContract": "net cost and positive annual savings",
     "outputContract": "net cost/annual savings years",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; financial scope unresolved. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; financial scope unresolved. Requires master-row identity adjudication; no certification or publication. Verified energy/catalog-batch-1.ts: netSystemCost>=0, annualSavings>0; undiscounted years = cost/savings, example 12000/1500=8. Source excludes financing, degradation, tariff changes, maintenance and time value of money unless supplied. No exact-title master; financial-risk scope unresolved. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
