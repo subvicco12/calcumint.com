@@ -34,13 +34,19 @@ export function auditCatalogSlugReviewLedger(
   const required = new Set(inventory.filter((entry) => mixed.has(entry.category)).map((entry) => entry.slug));
   const known = new Set<string>(MASTER_CATALOG_DOMAINS);
   const seen = new Set<string>();
-  const approvedDomains: Record<string, string> = {};
+  const approvedDomains: Record<string, string> = Object.create(null) as Record<string, string>;
   const held: string[] = [];
   for (const review of reviews) {
+    if (!review || typeof review !== "object" || typeof review.slug !== "string") {
+      throw new Error("Invalid source review entry");
+    }
     if (!required.has(review.slug)) throw new Error(`Unexpected mixed-category review slug: ${review.slug}`);
     if (seen.has(review.slug)) throw new Error(`Duplicate review slug: ${review.slug}`);
     seen.add(review.slug);
     if (!known.has(review.domain)) throw new Error(`Unknown master domain for ${review.slug}`);
+    if (!review.sourcePath.startsWith("src/calculators/") || !review.sourcePath.endsWith(".ts") || review.sourcePath.includes("..")) {
+      throw new Error(`Invalid implementation source path for ${review.slug}`);
+    }
     if (![review.sourcePath, review.inputContract, review.outputContract, review.evidence].every(
       (value) => typeof value === "string" && value.trim().length > 0
     )) throw new Error(`Missing source evidence for ${review.slug}`);
