@@ -31,7 +31,7 @@ describe("audited catalog reconciliation", () => {
   it("rejects incomplete per-slug assignments for shared categories", () => {
     const inventory = listCalculatorImplementationInventory();
     const mapping = Object.fromEntries([...new Set(inventory.map((entry) => entry.category))].map((category) => [category, "Math"]));
-    expect(() => reconcileAuditedMasterCatalogCsv("master_id,domain,title\\n1,Math,Example\\n", mapping))
+    expect(() => reconcileAuditedMasterCatalogCsv("master_id,domain,title\n1,Math,Example\n", mapping))
       .toThrow(/missingSharedOverrides/);
   });
 
