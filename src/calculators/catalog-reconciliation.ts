@@ -22,6 +22,8 @@ export function reconcileMasterCatalog(
     aliases?: Readonly<Record<string, string>>;
     /** Explicitly map registry category labels to master domains. */
     categoryDomains?: Readonly<Record<string, string>>;
+    /** Explicit overrides for calculators in shared categories. */
+    slugDomains?: Readonly<Record<string, string>>;
   }> = {},
 ): readonly CatalogMatch[] {
   const slugs = new Set<string>();
@@ -29,7 +31,7 @@ export function reconcileMasterCatalog(
   for (const record of inventory) {
     if (slugs.has(record.slug)) throw new Error(`Duplicate registry slug: ${record.slug}`);
     slugs.add(record.slug);
-    const domain = options.categoryDomains?.[record.category] ?? record.category;
+    const domain = options.slugDomains?.[record.slug] ?? options.categoryDomains?.[record.category] ?? record.category;
     const k = key(domain, record.title);
     if (!candidates.has(k)) candidates.set(k, new Set());
     candidates.get(k)!.add(record.slug);
