@@ -19,6 +19,8 @@ describe("mixed review coverage report", () => {
     const power = report.rows.find((entry) => entry.slug === "power-calculator");
     expect(power?.exactTitleCandidates.map((entry) => entry.id)).toEqual([222, 308]);
     expect(power?.requiresAdjudication).toBe(true);
+    expect(power?.titleCollision).toBe(true);
+    expect(power?.reviewPriority).toBe("collision");
     expect(report.rows.find((entry) => entry.slug === "travel-time-calculator")?.requiresAdjudication).toBe(true);
   });
 });
