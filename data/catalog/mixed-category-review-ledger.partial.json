@@ -948,5 +948,125 @@
     "evidence": "Actual registry-effective science category certified definition, formula and golden example inspected. Unique exact-title Physics master ID 305. Mapping approval does not imply publication; distance-time multiplication overflow risk noted for follow-up engine hardening.",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "molality-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "moles nonnegative, solventMassKg positive; finite <=1e100",
+    "outputContract": "molality=moles/solventMassKg; mol/kg",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 329; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "moles-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "massGrams nonnegative, molarMass positive; finite <=1e100",
+    "outputContract": "amount in mol=massGrams/molarMass",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 331; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "ph-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "hydrogenIonConcentration finite positive <=1e100",
+    "outputContract": "pH=-log10(hydrogenIonConcentration in mol/L)",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 333; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "ideal-gas-law-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "moles and temperatureKelvin nonnegative; volumeLiters positive; finite <=1e100",
+    "outputContract": "pressure atm=moles*0.082057366080960*temperatureKelvin/volumeLiters",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 334; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "gas-density-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "pressureAtm and molarMassGPerMol nonnegative; temperatureKelvin positive; finite <=1e100",
+    "outputContract": "density g/L=pressureAtm*molarMassGPerMol/(0.082057366080960*temperatureKelvin)",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 335; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "percent-composition-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "componentMass nonnegative, totalMass positive; finite <=1e100",
+    "outputContract": "mass percentage=100*componentMass/totalMass",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 336; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "solution-concentration-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "soluteMassGrams nonnegative, solutionVolumeLiters positive; finite <=1e100",
+    "outputContract": "mass concentration g/L=soluteMassGrams/solutionVolumeLiters",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 337; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "stoichiometry-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "knownMoles nonnegative, knownCoefficient positive, targetCoefficient nonnegative; finite <=1e100",
+    "outputContract": "target mol=knownMoles*targetCoefficient/knownCoefficient",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 338; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "half-life-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "initialAmount and elapsedTime nonnegative, halfLife positive; finite <=1e100",
+    "outputContract": "remaining amount=initialAmount*0.5^(elapsedTime/halfLife)",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 339; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "nernst-equation-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "standardPotential signed finite; temperatureKelvin, electronCount, reactionQuotient positive; all <=1e100",
+    "outputContract": "cell potential=standardPotential-(RT/nF)*ln(reactionQuotient)",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 340; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "beer-lambert-law-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "molarAbsorptivity, pathLength, concentration nonnegative finite <=1e100",
+    "outputContract": "absorbance=molarAbsorptivity*pathLength*concentration",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 341; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "titration-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/catalog-batch-1.ts",
+    "inputContract": "titrantConcentration and titrantVolume nonnegative; analyteVolume, titrantCoefficient, analyteCoefficient positive; finite <=1e100",
+    "outputContract": "analyte concentration=titrantConcentration*titrantVolume*analyteCoefficient/(analyteVolume*titrantCoefficient)",
+    "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 342; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
   }
 ]
