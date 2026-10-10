@@ -1138,5 +1138,65 @@
     "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 505. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
     "decision": "approved",
     "reviewStatus": "draft"
+  },
+  {
+    "slug": "fuel-economy-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-2.ts",
+    "inputContract": "distanceKm nonnegative; fuelUsedLiters positive, finite <=1e12",
+    "outputContract": "distanceKm/fuelUsedLiters in km/L",
+    "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 459; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "gas-mileage-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-2.ts",
+    "inputContract": "distanceMiles nonnegative; fuelUsedUsGallons positive, finite <=1e12",
+    "outputContract": "distanceMiles/fuelUsedUsGallons in US mpg",
+    "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 460; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "trip-fuel-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-2.ts",
+    "inputContract": "distanceKm and fuelConsumptionLitersPer100Km nonnegative finite <=1e12",
+    "outputContract": "distanceKm*fuelConsumptionLitersPer100Km/100 in liters",
+    "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 461; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "ev-charging-cost-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
+    "inputContract": "batteryEnergyAddedKwh and electricityRatePerKwh nonnegative <=1e12; chargingEfficiencyPercent 1..100",
+    "outputContract": "batteryEnergyAddedKwh/(chargingEfficiencyPercent/100)*electricityRatePerKwh",
+    "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 462; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "ev-charging-time-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
+    "inputContract": "energyToAddKwh nonnegative; averageChargingPowerKw positive finite <=1e12",
+    "outputContract": "energyToAddKwh/averageChargingPowerKw in hours",
+    "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 463; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "ev-range-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
+    "inputContract": "usableBatteryKwh nonnegative; consumptionKwhPer100Km positive finite <=1e12",
+    "outputContract": "usableBatteryKwh/consumptionKwhPer100Km*100 in km",
+    "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 464; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
   }
 ]
