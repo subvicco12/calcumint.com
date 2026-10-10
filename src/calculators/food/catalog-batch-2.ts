@@ -8,7 +8,7 @@ const positive=z.number().finite().positive().max(1e12);
 const source={label:"CalcuMint Master Calculator Catalog 2026 — Food & Cooking scope",note:"Approved catalog scope only. Independent formula/source review remains required before certification or publication."};
 const mk=<I>(id:string,slug:string,title:string,schema:z.ZodType<I>,calc:(x:I)=>number,expression:string,description:string,example:I,expected:number)=>({
  id,slug,title,category:"everyday",version:1,riskClass:"standard",reviewStatus:"draft",inputSchema:schema,
- calculate:(input:I)=>{const value=roundTo(calc(input),6);if(!Number.isFinite(value))throw new Error("Calculated result is outside the supported finite range");return{value,steps:[title.replace(" Calculator","")+" = "+value]}},
+ calculate:(input:I)=>{const parsed=schema.safeParse(input);if(!parsed.success)throw new Error("Food cooking inputs are outside the supported domain");const value=roundTo(calc(parsed.data),6);if(!Number.isFinite(value))throw new Error("Calculated result is outside the supported finite range");return{value,steps:[title.replace(" Calculator","")+" = "+value]}},
  formulas:[{id:slug,expression,description}],sources:[source],
  examples:[{label:"Deterministic example",input:example,expected:{value:expected,steps:[title.replace(" Calculator","")+" = "+expected]}}],
  goldenTests:[{label:"Deterministic example",input:example,expected:{value:expected}}],
