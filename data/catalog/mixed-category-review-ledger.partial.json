@@ -436,7 +436,7 @@
     "inputContract": "revenue >= 0; cost >= 0",
     "outputContract": "gross amount = revenue − cost",
     "decision": "hold",
-    "evidence": "Source excludes taxes and overhead; no exact master title",
+    "evidence": "Source excludes taxes and overhead; no exact master title Verified launch-portfolio.ts: revenue>=0 and direct cost>=0; output revenue-cost (100-70=30 monetary units), excluding tax/other expenses. Master Business & Accounting ID 139 Gross Margin Calculator typically returns a percentage, while ID 144 Profit Calculator is broader and nonexact. Amount-versus-rate and profit-scope identities unresolved. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -466,7 +466,7 @@
     "inputContract": "output >= 0; time > 0",
     "outputContract": "average output per unit time",
     "decision": "hold",
-    "evidence": "No exact master title",
+    "evidence": "No exact master title Verified launch-portfolio.ts: output units>=0 and elapsed time>0; output units/time (120/8=15 units per time unit), an average throughput rate without labor/capital productivity factors. No exact Productivity Rate Calculator title in canonical 540-row master. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -476,7 +476,7 @@
     "inputContract": "mass >= 0; specific heat >= 0; signed temperature change finite",
     "outputContract": "sensible heat Q = m × c × ΔT",
     "decision": "hold",
-    "evidence": "No exact master title; units must be compatible",
+    "evidence": "No exact master title; units must be compatible Verified launch-portfolio.ts: mass>=0, specific heat capacity>=0, signed temperature change; output Q=m*c*deltaT (2*4186*10=83720 compatible energy units), sensible heat only, with negative results for cooling. No exact Heat Energy Calculator master title; not equivalent to Heat Index or thermal savings. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -486,7 +486,7 @@
     "inputContract": "absolute temperature >= 0; volume > 0",
     "outputContract": "temperature/volume proportional index, not pressure",
     "decision": "hold",
-    "evidence": "Source explicitly returns index, not pressure; no exact master title",
+    "evidence": "Source explicitly returns index, not pressure; no exact master title Verified launch-portfolio.ts: absolute temperature>=0, volume>0; output T/V (300/10=30), a proportional index at fixed gas amount, not absolute pressure. Canonical Chemistry ID 334 Ideal Gas Law Calculator may calculate P=nRT/V; gas quantity and R absent here. Non-equivalent identity. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -496,7 +496,7 @@
     "inputContract": "conductor length >= 0; cross-section area > 0",
     "outputContract": "resistance geometry factor length/area, not resistance",
     "decision": "hold",
-    "evidence": "Source returns geometry factor only; no exact master title",
+    "evidence": "Source returns geometry factor only; no exact master title Verified launch-portfolio.ts: conductor length>=0, cross-sectional area>0; output length/area (10/2=5), geometry factor only. Canonical Physics ID 321 Resistance Calculator requires resistivity for R=rho*L/A; source has no resistivity input and does not calculate resistance. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -526,7 +526,7 @@
     "inputContract": "output force finite; input force > 0",
     "outputContract": "force mechanical advantage = output/input",
     "decision": "hold",
-    "evidence": "No exact master title",
+    "evidence": "No exact master title Verified launch-portfolio.ts: signed output force and positive input force; output outputForce/inputForce (200/50=4), idealized force ratio only, no friction/efficiency adjustment. No exact Mechanical Advantage Calculator title in canonical 540-row master. HOLD.",
     "reviewStatus": "certified"
   },
   {
