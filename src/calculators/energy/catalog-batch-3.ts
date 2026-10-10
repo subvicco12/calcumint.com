@@ -33,6 +33,7 @@ export const lightingEnergyCalculator: CalculatorDefinition<
     hoursUsed: nonnegative
   }),
   calculate: (input) => {
+    z.object({ quantity: positiveInteger, wattsPerLight: nonnegative, hoursUsed: nonnegative }).parse(input);
     const energyKwh = finite(input.quantity * input.wattsPerLight * input.hoursUsed / 1000);
     return {
       energyKwh,
