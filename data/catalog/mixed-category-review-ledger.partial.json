@@ -798,5 +798,35 @@
     "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 327; formula and constraints recorded without equating other similarly named calculators",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "hotel-cost-split-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-1.ts",
+    "inputContract": "totalHotelCost finite nonnegative <=1e12; people finite positive <=1e12",
+    "outputContract": "cost per person = totalHotelCost / people; consistent currency",
+    "evidence": "Actual registry-effective everyday draft source and golden test inspected. Unique exact-title Travel & Everyday master ID 513; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "group-expense-split-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-1.ts",
+    "inputContract": "totalExpense finite nonnegative <=1e12; people finite positive <=1e12",
+    "outputContract": "expense per person = totalExpense / people; consistent currency",
+    "evidence": "Actual registry-effective everyday draft source and golden test inspected. Unique exact-title Travel & Everyday master ID 514; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "tip-split-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-1.ts",
+    "inputContract": "billAmount finite nonnegative <=1e12; tipPercent finite 0..1000; people finite positive <=1e12",
+    "outputContract": "total per person including tip = billAmount × (1 + tipPercent/100) / people; consistent currency",
+    "evidence": "Actual registry-effective everyday draft source and golden test inspected. Unique exact-title Travel & Everyday master ID 515; no formula certification or publication authorization.",
+    "decision": "approved",
+    "reviewStatus": "draft"
   }
 ]
