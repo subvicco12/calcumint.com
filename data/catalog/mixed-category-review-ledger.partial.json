@@ -288,5 +288,65 @@
     "evidence": "Source uses compatible area and depth units; no exact master title established",
     "decision": "hold",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "occupancy-density-calculator",
+    "domain": "Engineering & Construction",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "people >= 0; area >= 1e-9",
+    "outputContract": "occupants / area; descriptive only, not a building-code limit",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "cost-per-square-unit-calculator",
+    "domain": "Mortgage & Property Finance",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "cost >= 0; area >= 1e-9",
+    "outputContract": "cost per unit area in chosen currency and area units",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "coverage-rate-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "covered >= 0; total >= 1e-9",
+    "outputContract": "covered / total × 100 percent",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "battery-runtime-index-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "capacity >= 0; average load >= 1e-9",
+    "outputContract": "ideal capacity / load runtime index; real runtime varies",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "map-scale-distance-calculator",
+    "domain": "Geometry",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "map distance >= 0; real-units-per-map-unit scale >= 0",
+    "outputContract": "map distance × scale in compatible units",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "spring-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "spring constant >= 0; displacement finite",
+    "outputContract": "ideal elastic energy = k × x² / 2",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
