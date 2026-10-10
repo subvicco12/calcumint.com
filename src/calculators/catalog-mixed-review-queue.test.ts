@@ -11,6 +11,7 @@ describe("mixed-category review queue", () => {
     expect(queue.approved).toBe(reviews.filter((item: {decision: string}) => item.decision === "approved").length);
     expect(queue.held).toBe(reviews.filter((item: {decision: string}) => item.decision === "hold").length);
     expect(queue.total).toBe(queue.approved + queue.held + queue.missing);
+    expect(queue.entries.find((item) => item.slug === "aspect-ratio-value-calculator")?.decision).toBe("approved");
     expect(queue.entries.find((item) => item.slug === "power-calculator")?.decision).toBe("hold");
     expect(queue.entries.find((item) => item.slug === "travel-time-calculator")?.decision).toBe("hold");
   });
