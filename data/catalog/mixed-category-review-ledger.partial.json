@@ -898,5 +898,35 @@
     "evidence": "Actual registry-effective everyday draft source and golden test inspected. Unique exact-title Travel & Everyday master ID 515; no formula certification or publication authorization.",
     "decision": "approved",
     "reviewStatus": "draft"
+  },
+  {
+    "slug": "frequency-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-2.ts",
+    "inputContract": "cycles finite nonnegative <=1e100; time finite positive <=1e100",
+    "outputContract": "frequency = cycles/time, Hz if time is seconds",
+    "evidence": "Actual registry-effective science-category certified physics batch 2 definition and golden example inspected. Unique exact-title Physics master ID 314; catalog mapping approval does not grant publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "period-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-2.ts",
+    "inputContract": "frequency finite positive <=1e100",
+    "outputContract": "period = 1/frequency, seconds if frequency is Hz",
+    "evidence": "Actual registry-effective science-category certified physics batch 2 definition and golden example inspected. Unique exact-title Physics master ID 315; catalog mapping approval does not grant publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "wavelength-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-2.ts",
+    "inputContract": "waveSpeed finite nonnegative <=1e100; frequency finite positive <=1e100",
+    "outputContract": "wavelength = waveSpeed/frequency, metres for m/s and Hz",
+    "evidence": "Actual registry-effective science-category certified physics batch 2 definition and golden example inspected. Unique exact-title Physics master ID 316; catalog mapping approval does not grant publication.",
+    "decision": "approved",
+    "reviewStatus": "certified"
   }
 ]
