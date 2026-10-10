@@ -798,5 +798,75 @@
     "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 327; formula and constraints recorded without equating other similarly named calculators",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "fuel-trip-cost-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-2.ts",
+    "inputContract": "distanceKm, litersPer100Km, pricePerLiter each finite nonnegative <=1e12",
+    "outputContract": "cost = distance km × L/100 km ÷ 100 × price per liter",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 509 in Travel & Everyday. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "trip-cost-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-2.ts",
+    "inputContract": "transportCost, lodgingCost, foodCost, otherCost each finite nonnegative <=1e12",
+    "outputContract": "total = transport + lodging + food + other, in consistent user-supplied currency",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 508 in Travel & Everyday. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "household-utility-cost-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-3.ts",
+    "inputContract": "electricity, water, gas, internet, other each finite nonnegative <=1e12",
+    "outputContract": "total = sum of five supplied utility costs in consistent currency",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 519 in Travel & Everyday. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "moving-cost-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/travel/catalog-batch-3.ts",
+    "inputContract": "transport, packing, labor, storage, other each finite nonnegative <=1e12",
+    "outputContract": "total = sum of five supplied moving costs in consistent currency",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 520 in Travel & Everyday. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "running-pace-calculator",
+    "domain": "Sports",
+    "sourcePath": "src/calculators/sports/catalog-batch-1.ts",
+    "inputContract": "distanceKm and timeMinutes finite positive <=1e12",
+    "outputContract": "average pace = timeMinutes / distanceKm, minutes per km",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 521 in Sports. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "cycling-speed-calculator",
+    "domain": "Sports",
+    "sourcePath": "src/calculators/sports/catalog-batch-1.ts",
+    "inputContract": "distanceKm and timeHours finite positive <=1e12",
+    "outputContract": "average speed = distanceKm / timeHours, km/h",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 523 in Sports. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "swimming-pace-calculator",
+    "domain": "Sports",
+    "sourcePath": "src/calculators/sports/catalog-batch-1.ts",
+    "inputContract": "distanceMeters and timeMinutes finite positive <=1e12",
+    "outputContract": "average pace = timeMinutes / (distanceMeters / 100), minutes per 100m",
+    "evidence": "Registry-effective everyday-category source definition; draft status and golden example inspected. Unique exact-title canonical master entry 524 in Sports. This mapping review does not certify formula or permit publication.",
+    "decision": "approved",
+    "reviewStatus": "draft"
   }
 ]
