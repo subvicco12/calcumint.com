@@ -26,3 +26,5 @@ mapping and must never be passed off as one.
 The currently held Power and Travel Time pairs require explicit contract and
 lifecycle adjudication. A source path string in a review record is provenance
 metadata, **not automated proof** that a human inspected the source.
+
+The `buildMixedCategoryReviewQueue` helper in `src/calculators/catalog-mixed-review-queue.ts` returns the current inventory-backed queue, with missing/held/approved totals and per-slug records. It never generates approvals or substitutes for source inspection.
