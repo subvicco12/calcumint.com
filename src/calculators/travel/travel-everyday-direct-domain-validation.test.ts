@@ -5,11 +5,11 @@ import { travelEverydayBatch2Definitions } from "./catalog-batch-2";
 import { travelEverydayBatch3Definitions } from "./catalog-batch-3";
 
 describe("travel everyday direct-call input domains", () => {
-  const calculators: readonly CalculatorDefinition<Record<string, number>, { value: number; steps: string[] }>[] = [
+  const calculators = ([
     ...travelEverydayBatch1Definitions,
     ...travelEverydayBatch2Definitions,
     ...travelEverydayBatch3Definitions,
-  ];
+  ] as unknown) as readonly CalculatorDefinition<Record<string, number>, { value: number; steps: string[] }>[];
   for (const calculator of calculators) {
     it(`${calculator.slug} rejects invalid direct input and preserves its reference example`, () => {
       const input = calculator.examples[0].input;
