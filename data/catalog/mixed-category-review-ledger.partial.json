@@ -608,5 +608,105 @@
     "evidence": "Registry-effective Physics catalog batch 3 definition; exact unique Physics master title Electrical Power Calculator, ID 318; unlike shadowed launch definition this implementation permits signed voltage and current",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "coefficient-of-restitution-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "approachSpeed > 0; recessionSpeed >= 0",
+    "outputContract": "relative separation speed / relative approach speed",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "moment-of-inertia-solid-disk-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "massKg >= 0; radiusM >= 0",
+    "outputContract": "0.5 × mass × radius² about disk central axis",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "simple-pendulum-period-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "lengthM > 0; gravityMps2 > 0",
+    "outputContract": "2π√(length/gravity), small-angle period",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "centrifugal-force-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "massKg >= 0; angularSpeedRadS >= 0; radiusM >= 0",
+    "outputContract": "mass × angular speed² × radius, rotating-frame pseudo-force magnitude",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "radius-of-gyration-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "momentOfInertiaKgM2 >= 0; massKg > 0",
+    "outputContract": "√(moment of inertia / mass)",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "physical-pendulum-period-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "momentOfInertiaKgM2 > 0; massKg > 0; gravityMps2 > 0; pivotToComM > 0",
+    "outputContract": "2π√(I/(mass × gravity × pivot-to-COM)), small-angle",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "rolling-kinetic-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "massKg >= 0; linearSpeedMps finite; momentOfInertiaKgM2 >= 0; angularSpeedRadS finite",
+    "outputContract": "0.5mv² + 0.5Iω²",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "moment-of-inertia-uniform-rod-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "massKg >= 0; lengthM >= 0",
+    "outputContract": "mass × length² / 12, perpendicular center axis",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "angular-kinematics-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "initialAngularSpeedRadS finite; angularAccelerationRadS2 finite; timeS >= 0",
+    "outputContract": "angular displacement = ω₀t + 0.5αt²",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "rolling-speed-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "angularSpeedRadS >= 0; radiusM >= 0",
+    "outputContract": "tangential speed = angular speed × radius",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
