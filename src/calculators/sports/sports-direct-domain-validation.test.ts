@@ -3,7 +3,7 @@ import type { CalculatorDefinition } from "../types";
 import { sportsBatch1Definitions } from "./catalog-batch-1";
 
 describe("sports direct-call input domains", () => {
-  for (const calculator of sportsBatch1Definitions as readonly CalculatorDefinition<Record<string, number>, { value: number; steps: string[] }>[]) {
+  for (const calculator of sportsBatch1Definitions as unknown as readonly CalculatorDefinition<Record<string, number>, { value: number; steps: string[] }>[]) {
     it(`${calculator.slug} rejects nonfinite and zero input while retaining its example`, () => {
       const input = calculator.examples[0].input;
       const key = Object.keys(input)[0];
