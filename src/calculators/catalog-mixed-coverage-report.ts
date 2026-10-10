@@ -26,6 +26,8 @@ export function buildMixedReviewCoverageReport(
       ...entry,
       exactTitleCandidates: candidates,
       sameDomainCandidates: candidates.filter((row) => row.domain === entry.proposedDomain),
+      titleCollision: candidates.length > 1,
+      reviewPriority: entry.decision === "approved" ? "completed" : candidates.length > 1 ? "collision" : candidates.length === 1 ? "exact-title-review" : "source-contract-review",
       requiresAdjudication: entry.decision !== "approved",
     };
   });
