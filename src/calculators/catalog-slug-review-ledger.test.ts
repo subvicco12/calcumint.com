@@ -3,6 +3,7 @@ import { auditCatalogSlugReviewLedger, requireCompleteCatalogSlugReviewLedger } 
 
 const evidence = {
   slug: "power-calculator",
+  reviewStatus: "certified",
   domain: "Physics",
   sourcePath: "src/calculators/physics/catalog-batch-1.ts",
   inputContract: "work finite, time positive",
