@@ -27,11 +27,13 @@ export function reconcileMasterCatalog(
   }> = {},
 ): readonly CatalogMatch[] {
   const slugs = new Set<string>();
+  const slugDomainKeys = new Map<string, string>();
   const candidates = new Map<string, Set<string>>();
   for (const record of inventory) {
     if (slugs.has(record.slug)) throw new Error(`Duplicate registry slug: ${record.slug}`);
     slugs.add(record.slug);
     const domain = options.slugDomains?.[record.slug] ?? options.categoryDomains?.[record.category] ?? record.category;
+    slugDomainKeys.set(record.slug, normalize(domain));
     const k = key(domain, record.title);
     if (!candidates.has(k)) candidates.set(k, new Set());
     candidates.get(k)!.add(record.slug);
@@ -47,6 +49,9 @@ export function reconcileMasterCatalog(
     const exact = [...(candidates.get(k) ?? [])].sort();
     const alias = options.aliases?.[k];
     if (alias && !slugs.has(alias)) throw new Error(`Alias points to unknown registry slug: ${alias}`);
+    if (alias && slugDomainKeys.get(alias) !== normalize(row.domain)) {
+      throw new Error(`Alias crosses master domain for ${row.masterId}: ${alias}`);
+    }
     if (alias && exact.length && !exact.includes(alias)) {
       return { ...common, status: "ambiguous" as const, candidates: [...new Set([...exact, alias])].sort() };
     }
