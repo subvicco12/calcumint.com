@@ -28,3 +28,5 @@ lifecycle adjudication. A source path string in a review record is provenance
 metadata, **not automated proof** that a human inspected the source.
 
 The `buildMixedCategoryReviewQueue` helper in `src/calculators/catalog-mixed-review-queue.ts` returns the current inventory-backed queue, with missing/held/approved totals and per-slug records. It never generates approvals or substitutes for source inspection.
+
+Review prioritization: run the opt-in coverage report using `CALCUMINT_PRINT_MIXED_REVIEW_COVERAGE=1` with the TypeScript runner supported by the repository. Triage `collision` first, then `exact-title-review`, then `source-contract-review`. Exact title candidates are evidence leads only; verify formula, units, inputs, outputs, competing implementations and master domain before approving. Do not infer aliases or clear HOLD solely from a candidate match.
