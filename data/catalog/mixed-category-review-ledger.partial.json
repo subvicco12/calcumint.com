@@ -265,7 +265,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "area >= 0; coverage per unit >= 1e-9",
     "outputContract": "theoretical paint units = area / coverage; excludes coats and waste",
-    "evidence": "Source warns to adjust for coats and waste; no exact master title established",
+    "evidence": "Source warns to adjust for coats and waste; no exact master title established Verified launch-portfolio.ts: area>=0, coverage>0; output area/coverage paint units before extra coats or waste. Canonical Engineering & Construction ID 345 Paint Calculator is a nonexact title; full project quantity contract not established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -275,7 +275,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "surface area >= 0; tile area >= 1e-9",
     "outputContract": "theoretical tile count = area / tile area; purchasing requires rounding and waste allowance",
-    "evidence": "Source provides theoretical tile count only; no exact master title established",
+    "evidence": "Source provides theoretical tile count only; no exact master title established Verified launch-portfolio.ts: surface area>=0, tileArea>0; output theoretical area/tileArea without ceiling, grout or waste. Canonical Engineering & Construction ID 348 Tile Calculator is nonexact title; purchase-quantity semantics differ. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -285,7 +285,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "base area >= 0; depth >= 0",
     "outputContract": "rectangular concrete volume = base area × depth",
-    "evidence": "Source uses compatible area and depth units; no exact master title established",
+    "evidence": "Source uses compatible area and depth units; no exact master title established Verified launch-portfolio.ts: base area>=0, depth>=0; output area*depth with compatible units for rectangular concrete volume. Canonical Engineering & Construction ID 343 Concrete Calculator is nonexact title and may require shape/quantity contract review. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -406,7 +406,7 @@
     "inputContract": "original price >= 0; discount percent 0..100",
     "outputContract": "discount amount = price × percent / 100",
     "decision": "hold",
-    "evidence": "Source computes discount amount, not sale price; no exact master title",
+    "evidence": "Source computes discount amount, not sale price; no exact master title Verified launch-portfolio.ts: price>=0, percent in 0..100; output discount monetary amount, not discounted sale price. Canonical Personal Finance & Household ID 117 Discount Calculator is nonexact title; output contract must be distinguished from sale-price-calculator. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -426,7 +426,7 @@
     "inputContract": "cost >= 0; markup percent >= 0",
     "outputContract": "selling price = cost × (1 + markup/100)",
     "decision": "hold",
-    "evidence": "Source markup on cost; no exact master title",
+    "evidence": "Source markup on cost; no exact master title Verified launch-portfolio.ts: cost>=0 and signed markup percentage, output cost*(1+percent/100) as selling price. Canonical Business & Accounting ID 141 Markup Calculator is nonexact title; margin versus markup and output identity require adjudication. HOLD.",
     "reviewStatus": "certified"
   },
   {
