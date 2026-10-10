@@ -438,5 +438,175 @@
     "evidence": "Source formula; no exact master title",
     "decision": "hold",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "molarity-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "moles >= 0; solution volume L > 0",
+    "outputContract": "molarity = mol / L",
+    "decision": "approved",
+    "evidence": "Master ID 328 exact Chemistry title; source molar concentration",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "dilution-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "initial concentration >= 0; initial/final volume ratio >= 0",
+    "outputContract": "final concentration = initial concentration × volume ratio",
+    "decision": "hold",
+    "evidence": "Source dilution ratio; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "bill-with-tip-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "bill >= 0; tip percent >= 0",
+    "outputContract": "total bill = bill × (1 + tip/100)",
+    "decision": "hold",
+    "evidence": "No exact master title; not equivalent to tip amount output",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "discount-amount-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "original price >= 0; discount percent 0..100",
+    "outputContract": "discount amount = price × percent / 100",
+    "decision": "hold",
+    "evidence": "Source computes discount amount, not sale price; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "sale-price-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "original price >= 0; discount percent 0..100",
+    "outputContract": "discounted price = price × (1 − percent/100)",
+    "decision": "hold",
+    "evidence": "Source computes sale price; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "markup-price-calculator",
+    "domain": "Business & Growth",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "cost >= 0; markup percent >= 0",
+    "outputContract": "selling price = cost × (1 + markup/100)",
+    "decision": "hold",
+    "evidence": "Source markup on cost; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "margin-amount-calculator",
+    "domain": "Business & Growth",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "revenue >= 0; cost >= 0",
+    "outputContract": "gross amount = revenue − cost",
+    "decision": "hold",
+    "evidence": "Source excludes taxes and overhead; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "profit-margin-calculator",
+    "domain": "Business & Growth",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "revenue > 0; cost >= 0",
+    "outputContract": "gross margin percent = (revenue − cost)/revenue × 100",
+    "decision": "hold",
+    "evidence": "Source simple gross margin; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "pace-calculator",
+    "domain": "Health & Fitness",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "elapsed time >= 0; distance > 0",
+    "outputContract": "time per distance unit",
+    "decision": "hold",
+    "evidence": "Master ID 402 exact title but health-domain mapping requires contract and specialist adjudication",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "productivity-rate-calculator",
+    "domain": "Business & Growth",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "output >= 0; time > 0",
+    "outputContract": "average output per unit time",
+    "decision": "hold",
+    "evidence": "No exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "heat-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; specific heat >= 0; signed temperature change finite",
+    "outputContract": "sensible heat Q = m × c × ΔT",
+    "decision": "hold",
+    "evidence": "No exact master title; units must be compatible",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "ideal-gas-pressure-index-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "absolute temperature >= 0; volume > 0",
+    "outputContract": "temperature/volume proportional index, not pressure",
+    "decision": "hold",
+    "evidence": "Source explicitly returns index, not pressure; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "resistivity-index-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "conductor length >= 0; cross-section area > 0",
+    "outputContract": "resistance geometry factor length/area, not resistance",
+    "decision": "hold",
+    "evidence": "Source returns geometry factor only; no exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "centripetal-acceleration-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "speed finite; radius > 0",
+    "outputContract": "centripetal acceleration = speed²/radius",
+    "decision": "hold",
+    "evidence": "No exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "angular-speed-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "angle radians finite; time > 0",
+    "outputContract": "average angular speed = angle/time",
+    "decision": "hold",
+    "evidence": "No exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "mechanical-advantage-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "output force finite; input force > 0",
+    "outputContract": "force mechanical advantage = output/input",
+    "decision": "hold",
+    "evidence": "No exact master title",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "efficiency-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "useful output >= 0; input > 0",
+    "outputContract": "efficiency percent = useful output/input × 100",
+    "decision": "hold",
+    "evidence": "No exact master title; matching units required",
+    "reviewStatus": "certified"
   }
 ]
