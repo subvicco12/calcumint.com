@@ -348,5 +348,95 @@
     "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
     "decision": "hold",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "work-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "force finite; displacement finite",
+    "outputContract": "aligned mechanical work = force × displacement",
+    "evidence": "Master ID 307 exact Physics title; source explicitly assumes aligned constant force",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "momentum-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; signed velocity finite",
+    "outputContract": "signed linear momentum = mass × velocity",
+    "evidence": "Master ID 311 exact Physics title; source preserves direction through velocity sign",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "kinetic-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; velocity finite",
+    "outputContract": "translational kinetic energy = mass × velocity² / 2",
+    "evidence": "Master ID 309 exact Physics title; source translational kinetic energy",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "potential-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass kg >= 0; height m finite",
+    "outputContract": "near-Earth gravitational energy m × 9.80665 × h",
+    "evidence": "Source near-Earth gravity assumption; no exact master title; requires mapping adjudication",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "ohms-law-voltage-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "current A finite; resistance Ω >= 0",
+    "outputContract": "ohmic voltage = current × resistance",
+    "evidence": "Source ohmic element; no exact master title",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "ohms-law-current-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "voltage V finite; resistance Ω > 0",
+    "outputContract": "ohmic current = voltage / resistance",
+    "evidence": "Source ohmic element; no exact master title",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "electrical-power-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "voltage V finite; current A finite",
+    "outputContract": "DC electrical power = voltage × current",
+    "evidence": "Master ID 318 exact Physics title; source DC power only",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "frequency-period-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "frequency Hz > 0; cycles >= 0",
+    "outputContract": "elapsed time = cycles / frequency",
+    "evidence": "Source uses arbitrary cycles count; no exact master title",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "wave-speed-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "frequency and wavelength from launch definition",
+    "outputContract": "wave speed = frequency × wavelength",
+    "evidence": "Source formula; no exact master title",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
