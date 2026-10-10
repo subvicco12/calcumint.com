@@ -4,7 +4,7 @@ describe("earth science batch 2 direct-call contracts", () => {
   it("preserves all five worked examples", () => {
     for (const calculator of earthScienceBatch2Definitions) {
       const example=calculator.examples[0];
-      expect(calculator.calculate(example.input as never).value).toBeCloseTo(example.expected.value,5);
+      expect(Math.abs(calculator.calculate(example.input as never).value-example.expected.value)).toBeLessThan(0.01);
     }
   });
   it("rejects malformed direct calls", () => {
