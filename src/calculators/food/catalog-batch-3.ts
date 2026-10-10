@@ -16,6 +16,7 @@ export const cakePanConversionCalculator=({
  reviewStatus:"draft",
  inputSchema:z.object({originalPanArea:positive,targetPanArea:positive,originalIngredientQuantity:z.number().finite().nonnegative().max(1e12)}),
  calculate:(input)=>{
+  z.object({originalPanArea:positive,targetPanArea:positive,originalIngredientQuantity:z.number().finite().nonnegative().max(1e12)}).parse(input);
   const value=roundTo(input.originalIngredientQuantity*input.targetPanArea/input.originalPanArea,6);
   if(!Number.isFinite(value))throw new Error("Calculated result is outside the supported finite range");
   return{value,steps:["Scaled ingredient quantity = "+value]};
