@@ -1068,5 +1068,75 @@
     "evidence": "CI registry-effective science missing queue, unique exact-title Chemistry master ID 342; inspected certified chemistry source formula, schema, finite-result guard and golden example. Mapping review only; does not change certification/publication.",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "bakers-percentage-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-1.ts",
+    "inputContract": "ingredientWeightGrams nonnegative, flourWeightGrams positive <=1e12",
+    "outputContract": "ingredient/flour*100",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 499. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "dough-hydration-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-1.ts",
+    "inputContract": "waterWeightGrams nonnegative, flourWeightGrams positive <=1e12",
+    "outputContract": "water/flour*100",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 500. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "recipe-scaling-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-2.ts",
+    "inputContract": "originalServings positive, targetServings and originalQuantity nonnegative <=1e12",
+    "outputContract": "originalQuantity*targetServings/originalServings",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 496. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "serving-size-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-2.ts",
+    "inputContract": "totalQuantity nonnegative, servings positive <=1e12",
+    "outputContract": "totalQuantity/servings",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 497. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "nutrition-scaling-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-2.ts",
+    "inputContract": "nutrientAmountPerServing and servings nonnegative <=1e12",
+    "outputContract": "nutrientAmountPerServing*servings",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 503. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "coffee-ratio-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-2.ts",
+    "inputContract": "waterGrams nonnegative, waterToCoffeeRatio positive <=1e12",
+    "outputContract": "waterGrams/waterToCoffeeRatio",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 504. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "water-to-rice-ratio-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-2.ts",
+    "inputContract": "riceAmount and waterPerRiceUnit nonnegative <=1e12",
+    "outputContract": "riceAmount*waterPerRiceUnit",
+    "evidence": "Registry-effective everyday missing CI diagnostic; unique exact-title Food & Cooking master ID 505. Inspected deterministic source schema, formula and example; source remains DRAFT and needs independent formula/source certification and publication gates.",
+    "decision": "approved",
+    "reviewStatus": "draft"
   }
 ]
