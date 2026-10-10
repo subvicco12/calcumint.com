@@ -9,6 +9,7 @@ export type CatalogSlugReview = Readonly<{
   outputContract: string;
   evidence: string;
   decision: "approved" | "hold";
+  reviewStatus: "draft" | "reviewed" | "certified";
 }>;
 
 /**
@@ -31,7 +32,9 @@ export function auditCatalogSlugReviewLedger(
 ): Readonly<{ approvedDomains: Readonly<Record<string, string>>; missing: readonly string[]; held: readonly string[] }> {
   const inventory = listCalculatorImplementationInventory();
   const mixed = new Set(["science", "everyday"]);
-  const required = new Set(inventory.filter((entry) => mixed.has(entry.category)).map((entry) => entry.slug));
+  const mixedInventory = inventory.filter((entry) => mixed.has(entry.category));
+  const required = new Set(mixedInventory.map((entry) => entry.slug));
+  const statusBySlug = new Map(mixedInventory.map((entry) => [entry.slug, entry.reviewStatus]));
   const known = new Set<string>(MASTER_CATALOG_DOMAINS);
   const seen = new Set<string>();
   const approvedDomains: Record<string, string> = Object.create(null) as Record<string, string>;
@@ -43,6 +46,7 @@ export function auditCatalogSlugReviewLedger(
     if (!required.has(review.slug)) throw new Error(`Unexpected mixed-category review slug: ${review.slug}`);
     if (seen.has(review.slug)) throw new Error(`Duplicate review slug: ${review.slug}`);
     seen.add(review.slug);
+    if (review.reviewStatus !== statusBySlug.get(review.slug)) throw new Error(`Review status mismatch for ${review.slug}`);
     if (!known.has(review.domain)) throw new Error(`Unknown master domain for ${review.slug}`);
     if (typeof review.sourcePath !== "string" || !review.sourcePath.startsWith("src/calculators/") || !review.sourcePath.endsWith(".ts") || review.sourcePath.includes("..")) {
       throw new Error(`Invalid implementation source path for ${review.slug}`);
