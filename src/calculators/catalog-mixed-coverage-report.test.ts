@@ -16,6 +16,8 @@ describe("mixed review coverage report", () => {
     const report = buildMixedReviewCoverageReport(reviews, master);
     expect(report.total).toBe(report.approved + report.held + report.missing);
     expect(report.rows).toHaveLength(report.total);
+    // Emit the actual registry-derived missing queue in CI; never infer category from a source directory.
+    console.info("CALCUMINT_EFFECTIVE_MISSING_SLUGS=" + JSON.stringify(report.rows.filter((row) => row.decision === "missing").map((row) => ({ slug: row.slug, title: row.title, category: row.category, candidates: row.exactTitleCandidates.map((candidate) => ({ id: candidate.id, domain: candidate.domain })) }))));
     for (const row of report.rows.filter((item) => item.decision === "approved")) {
       expect(row.sameDomainCandidates.length, `Approved mapping ${row.slug} lacks unique master title/domain evidence`).toBe(1);
       expect(row.exactTitleCandidates.length, `Approved mapping ${row.slug} has an ambiguous master title`).toBe(1);
