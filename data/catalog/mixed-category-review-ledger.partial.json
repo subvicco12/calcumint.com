@@ -608,5 +608,95 @@
     "evidence": "Registry-effective Physics catalog batch 3 definition; exact unique Physics master title Electrical Power Calculator, ID 318; unlike shadowed launch definition this implementation permits signed voltage and current",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "ohms-law-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "current finite; resistance >= 0",
+    "outputContract": "voltage = current × resistance",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 317; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "voltage-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "current finite; resistance >= 0",
+    "outputContract": "voltage = current × resistance",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 319; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "current-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "voltage finite; resistance > 0",
+    "outputContract": "current = voltage / resistance",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 320; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "resistance-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "voltage finite; current finite and nonzero",
+    "outputContract": "resistance = voltage / current, signed result possible",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 321; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "capacitance-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "charge finite; voltage finite and nonzero",
+    "outputContract": "capacitance = charge / voltage, signed result possible",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 322; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "coulomb-force-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "charge1 finite; charge2 finite; separation distance > 0",
+    "outputContract": "signed Coulomb force = k × charge1 × charge2 / distance²",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 323; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "projectile-motion-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "speed >= 0; launch angle 0..90 degrees; gravity > 0",
+    "outputContract": "ideal level-ground range = speed² sin(2angle)/gravity; ignores drag",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 324; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "free-fall-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "time >= 0; gravity >= 0",
+    "outputContract": "distance from rest = 0.5 × gravity × time²",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 325; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "angular-velocity-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "angular displacement finite; elapsed time > 0",
+    "outputContract": "average angular velocity = angular displacement / time",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 327; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
   }
 ]
