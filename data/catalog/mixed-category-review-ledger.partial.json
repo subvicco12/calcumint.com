@@ -5,7 +5,7 @@
     "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
     "inputContract": "finite work, positive time",
     "outputContract": "average power = work / time; output units depend on work/time units",
-    "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established; Master title collision: Math ID 222 versus Physics ID 308; retain HOLD until row identity and competing implementation adjudicated. Confirmed physics/catalog-batch-1.ts: certified physics.power takes finite work and strictly positive time, returns checked work/time, example 1000/20=50. Competing launch-portfolio.ts power-from-work-calculator uses generic work/time; identical nominal equation does not prove full unit/identity equivalence. HOLD retained.",
+    "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established; Master title collision: Math ID 222 versus Physics ID 308; retain HOLD until row identity and competing implementation adjudicated. Confirmed physics/catalog-batch-1.ts: certified physics.power takes finite work and strictly positive time, returns checked work/time, example 1000/20=50. Competing launch-portfolio.ts power-from-work-calculator uses generic work/time; identical nominal equation does not prove full unit/identity equivalence. HOLD retained. Canonical master CSV confirms exact title Power Calculator at Math ID 222 and Physics ID 308; domain-qualified Physics candidate does not resolve collision with competing power-from-work implementation. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -15,7 +15,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "work and time, positive time bound",
     "outputContract": "work / time; input-unit semantics not enforced in source",
-    "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved; Master title collision: Math ID 222 versus Physics ID 308; competing physics power implementation requires distinct identity review. Confirmed launch-portfolio.ts: certified science pair with work default 1000 and time positive (minimum 1e-9), returns work/time with no explicit SI unit enforcement. Physics power-calculator is a distinct certified ID. HOLD retained.",
+    "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved; Master title collision: Math ID 222 versus Physics ID 308; competing physics power implementation requires distinct identity review. Confirmed launch-portfolio.ts: certified science pair with work default 1000 and time positive (minimum 1e-9), returns work/time with no explicit SI unit enforcement. Physics power-calculator is a distinct certified ID. HOLD retained. Canonical master CSV confirms Power Calculator at Math ID 222 and Physics ID 308; same displayed title as power-calculator but separate implementation ID. No automatic master assignment. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -25,7 +25,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "distanceKm nonnegative, averageSpeedKmh positive",
     "outputContract": "moving hours, excluding stops and delays",
-    "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation; Master ID 510 title shared by two implementations; fixed km/kmh versus generic compatible units prevents inferred equivalence. Confirmed automotive/catalog-batch-1.ts: DRAFT travel.travel-time accepts distanceKm>=0 and averageSpeedKmh>0; output is moving hours excluding stops/delays; example 300/60=5. Generic competing science implementation does not enforce km/kmh. HOLD retained.",
+    "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation; Master ID 510 title shared by two implementations; fixed km/kmh versus generic compatible units prevents inferred equivalence. Confirmed automotive/catalog-batch-1.ts: DRAFT travel.travel-time accepts distanceKm>=0 and averageSpeedKmh>0; output is moving hours excluding stops/delays; example 300/60=5. Generic competing science implementation does not enforce km/kmh. HOLD retained. Canonical master CSV confirms Travel Time Calculator at Travel & Everyday ID 510, but generic time-from-distance-speed implementation has same displayed title; DRAFT fixed-unit contract remains distinct. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -35,7 +35,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "distance nonnegative, speed positive",
     "outputContract": "distance / speed using compatible input units",
-    "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science; Master ID 510 title shared by two implementations; generic input units versus fixed km/kmh prevents inferred equivalence. Confirmed launch-portfolio.ts: certified science implementation accepts generic nonnegative distance and strictly positive speed, outputs distance/speed in compatible units; unlike DRAFT fixed km/kmh travel-time implementation. HOLD retained.",
+    "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science; Master ID 510 title shared by two implementations; generic input units versus fixed km/kmh prevents inferred equivalence. Confirmed launch-portfolio.ts: certified science implementation accepts generic nonnegative distance and strictly positive speed, outputs distance/speed in compatible units; unlike DRAFT fixed km/kmh travel-time implementation. HOLD retained. Canonical master CSV confirms Travel Time Calculator at Travel & Everyday ID 510; this science implementation uses compatible generic units, unlike fixed km/kmh draft travel-time-calculator. Master identity conflict remains. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -55,7 +55,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "speed finite; time >= 0",
     "outputContract": "speed × time using compatible units",
-    "evidence": "Launch portfolio formula and bounds verified; generic distance semantics require master mapping review; Master title collision: Geometry ID 277 versus Travel & Everyday ID 511; generic speed-times-time semantics do not establish either mapping. Confirmed launch-portfolio.ts: certified science calculator accepts speed (signed finite) and nonnegative time, outputs speed*time in compatible units; Geometry ID 277 and Travel & Everyday ID 511 title collision remains unresolved. HOLD retained.",
+    "evidence": "Launch portfolio formula and bounds verified; generic distance semantics require master mapping review; Master title collision: Geometry ID 277 versus Travel & Everyday ID 511; generic speed-times-time semantics do not establish either mapping. Confirmed launch-portfolio.ts: certified science calculator accepts speed (signed finite) and nonnegative time, outputs speed*time in compatible units; Geometry ID 277 and Travel & Everyday ID 511 title collision remains unresolved. HOLD retained. Canonical master CSV confirms Distance Calculator at Geometry ID 277 and Travel & Everyday ID 511; source generic speed*time contract does not establish either identity. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -456,7 +456,7 @@
     "inputContract": "elapsed time >= 0; distance > 0",
     "outputContract": "time per distance unit",
     "decision": "hold",
-    "evidence": "Master ID 402 exact title but health-domain mapping requires contract and specialist adjudication Confirmed launch-portfolio.ts: certified everyday calculator accepts time>=0 and distance>0 and outputs time/distance in user-supplied compatible units; no explicit minutes/km or minutes/mile conversion. Health & Fitness master ID 402 requires domain/specialist adjudication. HOLD retained.",
+    "evidence": "Master ID 402 exact title but health-domain mapping requires contract and specialist adjudication Confirmed launch-portfolio.ts: certified everyday calculator accepts time>=0 and distance>0 and outputs time/distance in user-supplied compatible units; no explicit minutes/km or minutes/mile conversion. Health & Fitness master ID 402 requires domain/specialist adjudication. HOLD retained. Canonical master CSV confirms Pace Calculator Health & Fitness ID 402 and separate Running Pace Calculator Sports ID 521; generic time/distance source does not establish sport-specific semantics or health specialist approval. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -1315,7 +1315,7 @@
     "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
     "inputContract": "distance km and consumption L/100km",
     "outputContract": "distance*consumption/100 liters",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; potential duplicate of Trip Fuel ID 461. Requires master-row identity adjudication; no certification or publication.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; potential duplicate of Trip Fuel ID 461. Requires master-row identity adjudication; no certification or publication. Canonical master CSV contains Trip Fuel Calculator Automotive & EV ID 461, not exact title Road Trip Fuel Calculator. Potential conceptual match requires input/output and master-identity adjudication. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
@@ -1385,7 +1385,7 @@
     "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
     "inputContract": "net cost and positive annual savings",
     "outputContract": "net cost/annual savings years",
-    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; financial scope unresolved. Requires master-row identity adjudication; no certification or publication. Verified energy/catalog-batch-1.ts: netSystemCost>=0, annualSavings>0; undiscounted years = cost/savings, example 12000/1500=8. Source excludes financing, degradation, tariff changes, maintenance and time value of money unless supplied. No exact-title master; financial-risk scope unresolved. HOLD.",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; financial scope unresolved. Requires master-row identity adjudication; no certification or publication. Verified energy/catalog-batch-1.ts: netSystemCost>=0, annualSavings>0; undiscounted years = cost/savings, example 12000/1500=8. Source excludes financing, degradation, tariff changes, maintenance and time value of money unless supplied. No exact-title master; financial-risk scope unresolved. HOLD. Canonical master CSV contains Solar Payback Calculator Energy & Environment ID 480, not exact title Solar Simple Payback Calculator; source explicitly undiscounted and omits financing, degradation, maintenance, tariff changes and time value of money. Financial-scope review required. HOLD.",
     "decision": "hold",
     "reviewStatus": "draft"
   },
