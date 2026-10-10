@@ -1,6 +1,9 @@
 name: Offline catalog reconciliation evidence
 
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/catalog-reconciliation-evidence.yml'
   workflow_dispatch:
     inputs:
       produce_reconciliation:
@@ -28,7 +31,7 @@ jobs:
           CALCUMINT_INVENTORY_OUT: catalog-evidence
         run: npx vitest run src/calculators/catalog-inventory-export.test.ts
       - name: Generate audited 540-row reconciliation
-        if: ${{ inputs.produce_reconciliation }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.produce_reconciliation }}
         env:
           CALCUMINT_MASTER_CSV: data/catalog/master-catalog-2026.csv
           CALCUMINT_CATEGORY_MAPPINGS: data/catalog/reviewed-category-domains.json
