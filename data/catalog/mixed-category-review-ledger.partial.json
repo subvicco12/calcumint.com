@@ -1258,5 +1258,145 @@
     "evidence": "Effective everyday registry missing queue, unique exact-title Automotive & EV master ID 476; inspected DRAFT source input schema, output formulas, examples and finite-result checks. Mapping review only, not certification or publication.",
     "decision": "approved",
     "reviewStatus": "draft"
+  },
+  {
+    "slug": "molecular-weight-calculator",
+    "domain": "Chemistry",
+    "sourcePath": "src/calculators/chemistry/molecular-weight.ts",
+    "inputContract": "trimmed formula string length 1..200; supported element symbols and grouped integer subscripts 1..100000",
+    "outputContract": "sum of atomic masses times stoichiometric counts; finite positive value",
+    "evidence": "Registry-effective science certified source inspected, unique exact-title Chemistry master ID 330; H2O golden test 18.015. Mapping review only.",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "brine-salt-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-1.ts",
+    "inputContract": "salt concentration inputs",
+    "outputContract": "brine salt quantity",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; food-safety identity unresolved. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "dough-piece-weight-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-1.ts",
+    "inputContract": "dough mass and count",
+    "outputContract": "mass per piece",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "dough-total-weight-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-1.ts",
+    "inputContract": "flour and ingredient weights",
+    "outputContract": "total dough weight",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "ingredient-from-bakers-percent-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/food/catalog-batch-1.ts",
+    "inputContract": "flour mass and baker percentage",
+    "outputContract": "ingredient weight",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "road-trip-fuel-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "distance km and consumption L/100km",
+    "outputContract": "distance*consumption/100 liters",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; potential duplicate of Trip Fuel ID 461. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "road-trip-fuel-cost-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "distance, consumption and fuel price",
+    "outputContract": "distance*consumption/100*price",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "fuel-cost-per-100km-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "consumption L/100km and fuel price",
+    "outputContract": "consumption*price per 100km",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "liters-per-100km-to-us-mpg-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "positive litersPer100Km",
+    "outputContract": "235.214583/litersPer100Km US mpg",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "us-mpg-to-liters-per-100km-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+    "inputContract": "positive usMpg",
+    "outputContract": "235.214583/usMpg L/100km",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "ev-trip-energy-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
+    "inputContract": "distance km and consumption kWh/100km",
+    "outputContract": "distance*consumption/100 kWh",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "solar-daily-energy-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
+    "inputContract": "system size kW, sun hours, efficiency percent",
+    "outputContract": "size*hours*efficiency/100 kWh",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "solar-simple-payback-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/energy/catalog-batch-1.ts",
+    "inputContract": "net cost and positive annual savings",
+    "outputContract": "net cost/annual savings years",
+    "evidence": "Effective everyday DRAFT source inspected. HOLD: No exact-title master; financial scope unresolved. Requires master-row identity adjudication; no certification or publication.",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "lighting-energy-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/energy/catalog-batch-3.ts",
+    "inputContract": "quantity positive integer <=1000000; wattsPerLight and hoursUsed finite nonnegative <=1e12",
+    "outputContract": "energyKwh=quantity*wattsPerLight*hoursUsed/1000",
+    "evidence": "Effective everyday DRAFT source inspected, unique exact-title Energy & Environment master ID 489, 10*12W*5h golden test 0.6kWh; mapping review only.",
+    "decision": "approved",
+    "reviewStatus": "draft"
   }
 ]
