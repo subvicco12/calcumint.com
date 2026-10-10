@@ -148,5 +148,85 @@
     "evidence": "Volumetric flow implementation inspected; master-domain match pending",
     "decision": "hold",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "acceleration-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "velocityChange finite; time >= 1e-9",
+    "outputContract": "velocity change / elapsed time; compatible units",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "force-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "mass >= 0; acceleration finite",
+    "outputContract": "net force = mass × acceleration",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "impulse-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "force finite; time >= 0",
+    "outputContract": "impulse = average force × time interval",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "torque-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "perpendicular force finite; radius >= 0",
+    "outputContract": "torque = force × lever arm",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "recipe-scale-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "original amount >= 0; factor >= 0",
+    "outputContract": "scaled ingredient amount = amount × factor",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "servings-scale-calculator",
+    "domain": "Food & Cooking",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "original amount >= 0; serving ratio >= 0",
+    "outputContract": "scaled quantity = amount × new-to-old servings ratio",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "energy-cost-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "energy >= 0; unit tariff >= 0",
+    "outputContract": "energy × unit tariff; excludes taxes, fixed charges and tiers",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "water-usage-calculator",
+    "domain": "Energy & Environment",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "flow per minute >= 0; minutes >= 0",
+    "outputContract": "water use = flow rate × minutes",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
