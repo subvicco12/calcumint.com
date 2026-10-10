@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { auditCatalogSlugReviewLedger } from "./catalog-slug-review-ledger";
+import { auditCatalogSlugReviewLedger, requireCompleteCatalogSlugReviewLedger } from "./catalog-slug-review-ledger";
 
 const evidence = {
   slug: "power-calculator",
@@ -16,6 +16,9 @@ describe("mixed-category review ledger", () => {
     expect(result.held).toContain("power-calculator");
     expect(result.approvedDomains).not.toHaveProperty("power-calculator");
     expect(result.missing.length).toBeGreaterThan(0);
+  });
+  it("refuses to export mappings while evidence is held or missing", () => {
+    expect(() => requireCompleteCatalogSlugReviewLedger([{ ...evidence, decision: "hold" }])).toThrow(/source review incomplete/);
   });
   it("rejects unsupported decisions and duplicate slugs", () => {
     expect(() => auditCatalogSlugReviewLedger([{ ...evidence, decision: "approved", evidence: "" }]))
