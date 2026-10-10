@@ -135,7 +135,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "data >= 0; time >= 1e-9",
     "outputContract": "data / time; units depend on inputs",
-    "evidence": "Data transfer rate formula inspected; master-domain match pending",
+    "evidence": "Data transfer rate formula inspected; master-domain match pending Verified launch-portfolio.ts: data>=0, time>0, output data/time average transferred data per elapsed time in consistent units. Canonical Technology & Computing ID 370 Bandwidth Calculator is nonexact title; observed average throughput does not establish network bandwidth-capacity contract. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -145,7 +145,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "volume >= 0; time >= 1e-9",
     "outputContract": "volume / time; compatible units",
-    "evidence": "Volumetric flow implementation inspected; master-domain match pending",
+    "evidence": "Volumetric flow implementation inspected; master-domain match pending Verified launch-portfolio.ts: volume>=0, time>0, output volume/time average volumetric flow. No exact Flow Rate Calculator title in 540-row canonical master; no automatic engineering or Physics identity. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -175,7 +175,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "force finite; time >= 0",
     "outputContract": "impulse = average force × time interval",
-    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: average force signed finite and time interval>=0, output force*time, signed impulse for constant or average force. No exact Impulse Calculator title in 540-row canonical master; vector direction and scope require adjudication. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -215,7 +215,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "energy >= 0; unit tariff >= 0",
     "outputContract": "energy × unit tariff; excludes taxes, fixed charges and tiers",
-    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: energy>=0, price per energy unit>=0, output energy*rate; excludes taxes, fixed charges and tiered rates. Canonical Energy & Environment ID 477 Electricity Cost Calculator is nonexact and may require electricity-specific tariff and billing scope. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -245,7 +245,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "pixel dimension >= 0; inches >= 1e-9",
     "outputContract": "pixels per physical inch along one dimension",
-    "evidence": "Source verifies one-dimensional pixel density; no exact master title established",
+    "evidence": "Source verifies one-dimensional pixel density; no exact master title established Verified launch-portfolio.ts: pixels>=0 and physical inches>0, output pixels/inches along one dimension. Canonical Technology & Computing ID 376 Screen PPI Calculator is nonexact title; screen-specific diagonal/geometry semantics not established by one-axis source inputs. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -255,7 +255,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "storage >= 0; files >= 1",
     "outputContract": "average storage / file count",
-    "evidence": "Source verifies average storage per file; no exact master title established",
+    "evidence": "Source verifies average storage per file; no exact master title established Verified launch-portfolio.ts: total storage>=0, number of files>=1, output storage/files average per-file usage. Canonical Technology & Computing ID 374 Storage Conversion Calculator is nonexact and concerns unit conversion rather than averaging files. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
