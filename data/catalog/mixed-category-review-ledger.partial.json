@@ -345,7 +345,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "spring constant >= 0; displacement finite",
     "outputContract": "ideal elastic energy = k × x² / 2",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: spring constant>=0, displacement signed, output k*x*x/2 for ideal linear spring. Canonical Physics ID 310 Potential Energy Calculator is nonexact title and may refer to gravitational rather than elastic potential energy. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -355,7 +355,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "current A finite; resistance Ω >= 0",
     "outputContract": "ohmic voltage = current × resistance",
-    "evidence": "Source ohmic element; no exact master title",
+    "evidence": "Source ohmic element; no exact master title Verified launch-portfolio.ts: current signed finite, resistance>=0, output V=I*R for an ohmic element. Canonical Physics ID 317 Ohm's Law Calculator is a nonexact title; voltage-specific output differs from other Ohm's Law rearrangements. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -365,7 +365,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "voltage V finite; resistance Ω > 0",
     "outputContract": "ohmic current = voltage / resistance",
-    "evidence": "Source ohmic element; no exact master title",
+    "evidence": "Source ohmic element; no exact master title Verified launch-portfolio.ts: voltage signed finite, resistance>0 (minimum 1e-9), output I=V/R for an ohmic element. Canonical Physics ID 317 Ohm's Law Calculator is nonexact title and also candidate for voltage variant; distinct input and output contracts. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -375,7 +375,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "frequency Hz > 0; cycles >= 0",
     "outputContract": "elapsed time = cycles / frequency",
-    "evidence": "Source uses arbitrary cycles count; no exact master title",
+    "evidence": "Source uses arbitrary cycles count; no exact master title Verified launch-portfolio.ts: frequency>0, cycles>=0, output cycles/frequency elapsed time for selected cycles. Canonical Physics ID 314 Frequency Calculator and ID 315 Period Calculator are separate titles; output is not necessarily single-cycle period. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -385,7 +385,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "frequency and wavelength from launch definition",
     "outputContract": "wave speed = frequency × wavelength",
-    "evidence": "Source formula; no exact master title",
+    "evidence": "Source formula; no exact master title Verified launch-portfolio.ts: frequency>=0, wavelength>=0, output frequency*wavelength with compatible units. Canonical Physics ID 316 Wavelength Calculator is a nonexact candidate with different solved variable; no Wave Speed Calculator exact master row established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
