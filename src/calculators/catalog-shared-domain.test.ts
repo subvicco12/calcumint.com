@@ -17,6 +17,6 @@ describe("shared registry category domain overrides", () => {
       slugDomains: { "physics-speed": "Physics", "chemistry-speed": "Chemistry" },
     });
     expect(rows.map((row) => row.status)).toEqual(["exact", "exact"]);
-    expect(rows.filter((row) => row.status === "exact").map((row) => row.slug)).toEqual(["physics-speed", "chemistry-speed"]);
+    expect(rows.flatMap((row) => row.status === "exact" ? [row.slug] : [])).toEqual(["physics-speed", "chemistry-speed"]);
   });
 });
