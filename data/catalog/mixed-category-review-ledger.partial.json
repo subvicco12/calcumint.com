@@ -608,5 +608,195 @@
     "evidence": "Registry-effective Physics catalog batch 3 definition; exact unique Physics master title Electrical Power Calculator, ID 318; unlike shadowed launch definition this implementation permits signed voltage and current",
     "decision": "approved",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "coefficient-of-restitution-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "approachSpeed > 0; recessionSpeed >= 0",
+    "outputContract": "relative separation speed / relative approach speed",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "moment-of-inertia-solid-disk-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "massKg >= 0; radiusM >= 0",
+    "outputContract": "0.5 × mass × radius² about disk central axis",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "simple-pendulum-period-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "lengthM > 0; gravityMps2 > 0",
+    "outputContract": "2π√(length/gravity), small-angle period",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "centrifugal-force-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "massKg >= 0; angularSpeedRadS >= 0; radiusM >= 0",
+    "outputContract": "mass × angular speed² × radius, rotating-frame pseudo-force magnitude",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "radius-of-gyration-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-4.ts",
+    "inputContract": "momentOfInertiaKgM2 >= 0; massKg > 0",
+    "outputContract": "√(moment of inertia / mass)",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "physical-pendulum-period-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "momentOfInertiaKgM2 > 0; massKg > 0; gravityMps2 > 0; pivotToComM > 0",
+    "outputContract": "2π√(I/(mass × gravity × pivot-to-COM)), small-angle",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "rolling-kinetic-energy-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "massKg >= 0; linearSpeedMps finite; momentOfInertiaKgM2 >= 0; angularSpeedRadS finite",
+    "outputContract": "0.5mv² + 0.5Iω²",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "moment-of-inertia-uniform-rod-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "massKg >= 0; lengthM >= 0",
+    "outputContract": "mass × length² / 12, perpendicular center axis",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "angular-kinematics-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "initialAngularSpeedRadS finite; angularAccelerationRadS2 finite; timeS >= 0",
+    "outputContract": "angular displacement = ω₀t + 0.5αt²",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "rolling-speed-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-5.ts",
+    "inputContract": "angularSpeedRadS >= 0; radiusM >= 0",
+    "outputContract": "tangential speed = angular speed × radius",
+    "evidence": "Inspected registry-effective physics mechanics source; no exact-title identity in 540-row canonical master; keep HOLD pending explicit identity and scope adjudication",
+    "decision": "hold",
+    "reviewStatus": "draft"
+  },
+  {
+    "slug": "ohms-law-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "current finite; resistance >= 0",
+    "outputContract": "voltage = current × resistance",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 317; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "voltage-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "current finite; resistance >= 0",
+    "outputContract": "voltage = current × resistance",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 319; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "current-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "voltage finite; resistance > 0",
+    "outputContract": "current = voltage / resistance",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 320; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "resistance-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "voltage finite; current finite and nonzero",
+    "outputContract": "resistance = voltage / current, signed result possible",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 321; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "capacitance-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "charge finite; voltage finite and nonzero",
+    "outputContract": "capacitance = charge / voltage, signed result possible",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 322; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "coulomb-force-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "charge1 finite; charge2 finite; separation distance > 0",
+    "outputContract": "signed Coulomb force = k × charge1 × charge2 / distance²",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 323; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "projectile-motion-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "speed >= 0; launch angle 0..90 degrees; gravity > 0",
+    "outputContract": "ideal level-ground range = speed² sin(2angle)/gravity; ignores drag",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 324; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "free-fall-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "time >= 0; gravity >= 0",
+    "outputContract": "distance from rest = 0.5 × gravity × time²",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 325; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "angular-velocity-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/physics/catalog-batch-3.ts",
+    "inputContract": "angular displacement finite; elapsed time > 0",
+    "outputContract": "average angular velocity = angular displacement / time",
+    "evidence": "Registry-effective Physics batch 3 implementation inspected; unique exact-title Physics master ID 327; formula and constraints recorded without equating other similarly named calculators",
+    "decision": "approved",
+    "reviewStatus": "certified"
   }
 ]
