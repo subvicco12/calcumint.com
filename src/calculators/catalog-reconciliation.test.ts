@@ -41,6 +41,25 @@ describe("offline master catalog reconciliation", () => {
     expect(() => reconcileMasterCatalog([{ masterId: 1, domain: "Finance", title: "APR Calculator" }], inventory, { aliases: { "finance:apr": "missing" } })).toThrow("unknown registry slug");
   });
 
+  it("rejects cross-domain aliases even when the registry slug exists", () => {
+    const rows = [{ masterId: 12, domain: "Physics", title: "Power Calculator" }];
+    const inventory = [entry("business-power", "Power Calculator", "business")];
+    expect(() => reconcileMasterCatalog(rows, inventory, {
+      categoryDomains: { business: "Business & Accounting" },
+      aliases: { "physics:power": "business-power" },
+    })).toThrow("Alias crosses master domain");
+  });
+
+  it("accepts reviewed aliases within the same resolved domain", () => {
+    const rows = [{ masterId: 12, domain: "Physics", title: "Power Calculator" }];
+    const inventory = [entry("work-power", "Power from Work Calculator", "science")];
+    expect(reconcileMasterCatalog(rows, inventory, {
+      categoryDomains: { science: "Chemistry" },
+      slugDomains: { "work-power": "Physics" },
+      aliases: { "physics:power": "work-power" },
+    })[0]).toMatchObject({ status: "alias", slug: "work-power" });
+  });
+
   it("rejects duplicate master IDs and registry slugs", () => {
     expect(() => reconcileMasterCatalog([{ masterId: 1, domain: "A", title: "X" }, { masterId: 1, domain: "A", title: "Y" }], [])).toThrow("duplicate master ID");
     expect(() => reconcileMasterCatalog([], [entry("duplicate", "A", "X"), entry("duplicate", "B", "X")])).toThrow("Duplicate registry slug");
