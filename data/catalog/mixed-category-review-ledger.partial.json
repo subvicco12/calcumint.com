@@ -88,5 +88,65 @@
     "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication",
     "decision": "hold",
     "reviewStatus": "certified"
+  },
+  {
+    "slug": "fuel-cost-calculator",
+    "domain": "Automotive & EV",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "fuel >= 0; unit price >= 0",
+    "outputContract": "fuel × unit price; output currency follows input",
+    "evidence": "Fuel purchase cost formula and bounds inspected",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "unit-price-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "price >= 0; quantity >= 1e-9",
+    "outputContract": "price / quantity; currency per unit",
+    "evidence": "Generic price-per-unit implementation inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "cost-per-person-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "total >= 0; people >= 1",
+    "outputContract": "total / people; equal allocation",
+    "evidence": "Simple split cost implementation inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "tip-amount-calculator",
+    "domain": "Travel & Everyday",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "bill >= 0; tip percent >= 0",
+    "outputContract": "bill × tip percent / 100",
+    "evidence": "Tip amount formula inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "data-rate-calculator",
+    "domain": "Technology & Computing",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "data >= 0; time >= 1e-9",
+    "outputContract": "data / time; units depend on inputs",
+    "evidence": "Data transfer rate formula inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
+  },
+  {
+    "slug": "flow-rate-calculator",
+    "domain": "Physics",
+    "sourcePath": "src/calculators/launch-portfolio.ts",
+    "inputContract": "volume >= 0; time >= 1e-9",
+    "outputContract": "volume / time; compatible units",
+    "evidence": "Volumetric flow implementation inspected; master-domain match pending",
+    "decision": "hold",
+    "reviewStatus": "certified"
   }
 ]
