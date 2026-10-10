@@ -36,12 +36,18 @@ export function reconcileAuditedMasterCatalogCsv(
   const registrySlugs = new Set(inventory.map((entry) => entry.slug));
   const unknownOverrides = Object.keys(slugDomains).filter((slug) => !registrySlugs.has(slug)).sort();
   const invalidOverrides = Object.entries(slugDomains).filter(([, domain]) => !known.has(domain)).map(([slug]) => slug).sort();
+  // Shared registry categories mix unrelated master domains. A category-level
+  // default alone cannot certify their semantic classification.
+  const sharedCategories = new Set(["science", "everyday"]);
+  const missingSharedOverrides = inventory.filter((entry) =>
+    sharedCategories.has(entry.category) && !Object.prototype.hasOwnProperty.call(slugDomains, entry.slug)
+  ).map((entry) => entry.slug).sort();
   const unresolved = inventory.filter((entry) => {
     const domain = slugDomains[entry.slug] ?? categoryDomains[entry.category] ?? entry.category;
     return !known.has(domain);
   }).map((entry) => entry.slug);
-  if (unknownOverrides.length || invalidOverrides.length || unresolved.length) {
-    throw new Error(`Catalog calculator mapping audit incomplete: ${JSON.stringify({ unknownOverrides, invalidOverrides, unresolved })}`);
+  if (unknownOverrides.length || invalidOverrides.length || unresolved.length || missingSharedOverrides.length) {
+    throw new Error(`Catalog calculator mapping audit incomplete: ${JSON.stringify({ unknownOverrides, invalidOverrides, unresolved, missingSharedOverrides })}`);
   }
   const report = buildCatalogReconciliationReport(master, { categoryDomains, aliases, slugDomains });
   return {
