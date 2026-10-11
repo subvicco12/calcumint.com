@@ -53,11 +53,21 @@
       "competingSourceContracts": "travel-time-calculator [automotive/catalog-batch-1.ts]: distanceKm>=0, speedKmh>0 -> moving hours excluding stops; time-from-distance-speed-calculator [launch-portfolio.ts]: generic distance>=0, speed>0 -> compatible-unit time",
       "proposedDecisionOwner": "Master catalog owner + travel domain owner",
       "requiredEvidence": "Decide canonical implementation or formally distinct variants; units, exclusions, lifecycle and output equivalence review",
-      "decisionStatus": "HOLD",
-      "actualDecisionMaker": null,
+      "decisionStatus": "owner-identity-mapping-authorized-pending-contract-review",
+      "actualDecisionMaker": "Project owner (explicit in-chat 'Proceed' response to Travel Time #510 mapping question, 2026-10-11)",
       "decisionEvidenceLink": null,
       "specialistApprovalEvidence": null,
-      "publicationAuthorization": null
+      "publicationAuthorization": null,
+      "ownerDecisionRecord": {
+        "date": "2026-10-11",
+        "authority": "Project owner in current ChatGPT conversation",
+        "scope": "Travel & Everyday master ID 510 identity only",
+        "canonicalSlug": "travel-time-calculator",
+        "otherSlug": "time-from-distance-speed-calculator",
+        "otherSlugDisposition": "separate generic implementation; final noncanonical disposition pending review",
+        "authorizationLimit": "Does not authorize review-ledger approval, certification, publication, specialist signoff or bypass of required domain review",
+        "evidenceReference": "Owner replied 'Proceed' to the immediately preceding explicit question authorizing this specific identity mapping; external immutable conversation evidence URL not supplied"
+      }
     },
     {
       "decisionId": "TIP",
