@@ -105,7 +105,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "price >= 0; quantity >= 1e-9",
     "outputContract": "price / quantity; currency per unit",
-    "evidence": "Generic price-per-unit implementation inspected; master-domain match pending",
+    "evidence": "Generic price-per-unit implementation inspected; master-domain match pending Verified launch-portfolio.ts: price>=0, quantity>=1e-9; output price/quantity (12/6=2 currency units per unit). Generic units and currency not independently standardized; no exact-title canonical master mapping established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -115,7 +115,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "total >= 0; people >= 1",
     "outputContract": "total / people; equal allocation",
-    "evidence": "Simple split cost implementation inspected; master-domain match pending",
+    "evidence": "Simple split cost implementation inspected; master-domain match pending Verified launch-portfolio.ts: total>=0, people>=1; output total/people (120/4=30), equal-share allocation only, not individual contributions or settlement. No exact-title canonical master mapping established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -295,7 +295,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "people >= 0; area >= 1e-9",
     "outputContract": "occupants / area; descriptive only, not a building-code limit",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: people>=0, area>=1e-9; output people/area (20/100=0.2 persons per area unit). Source explicitly descriptive, not building-code occupancy limit; no exact-title canonical master mapping established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -315,7 +315,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "covered >= 0; total >= 1e-9",
     "outputContract": "covered / total × 100 percent",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: covered>=0, total>=1e-9; output covered/total*100 (75/100=75%). No source constraint covered<=total, so result can exceed 100%; coverage meaning not independently specified and no exact-title canonical master mapping established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -335,7 +335,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "map distance >= 0; real-units-per-map-unit scale >= 0",
     "outputContract": "map distance × scale in compatible units",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: map distance>=0, scale real units per map unit>=0; output map*scale (5*10000=50000 real units), compatible units assumed and not converted. No exact-title canonical master mapping established. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -416,7 +416,7 @@
     "inputContract": "original price >= 0; discount percent 0..100",
     "outputContract": "discounted price = price × (1 − percent/100)",
     "decision": "hold",
-    "evidence": "Source computes sale price; no exact master title",
+    "evidence": "Source computes sale price; no exact master title Verified launch-portfolio.ts: original price>=0, discount percent constrained 0..100; output price*(1-percent/100) (100,20%=>80), final discounted price rather than discount amount. No exact-title canonical master mapping established. HOLD.",
     "reviewStatus": "certified"
   },
   {
