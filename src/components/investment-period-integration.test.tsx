@@ -49,10 +49,11 @@ describe("actual investment route projection and download boundaries", () => {
     for (const plan of ["free", "pro", "business"]) {
       session.plan = plan; const download = captureDownload();
       render(<CalculatorInteractive slug={reference.slug} />);
-      headlines.push(screen.getByRole("status").textContent!);
+      headlines.push(document.querySelector(".final-calculator-renderer .result-box")!.textContent!);
       expect(screen.queryByRole("alert")).toBeNull();
       if (plan === "free") {
-        expect(screen.queryByRole("table")).toBeNull();
+        expect(screen.queryByRole("table", { name: reference.caption })).toBeNull();
+        expect(screen.queryByRole("table", { name: /Trend data:/ }) !== null).toBe(reference.slug === "sip-calculator");
         expect(screen.getByText("Detailed schedule").closest(".locked-feature")).not.toBeNull();
         expect(screen.queryByRole("button", { name: "Export CSV" })).toBeNull();
       } else {

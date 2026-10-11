@@ -73,3 +73,29 @@ Current reused counts:540master IDs;574registered engines;226source-code certifi
 Mortgage is registered in the proposed ancestry but remains absent from reused published authority; aggregate source certification is not publication approval. Period outputs remain BLOCKED on financial recurrence/rounding/final-payment/reconciliation decisions in `MORTGAGE-SPECIALIST-REVIEW-PACKAGE.md`. BMI and BreakEven remain draft-gated. No publication/certification promotion, DB write, approval, merge, deployment, security/RLS weakening or financial formula change occurs.
 
 Remaining release work: framework/accessibility and finance/YMYL review of this cumulative candidate, actual assistive-technology/RSC verification, and authorized owner review of protected specialist/HOLD/master-identity evidence. Specialist decisions must precede any future Mortgage period engineering or publication. Billed Codex usage is unavailable; measured automatic Actions runtime is reported in the PR.
+
+# Batch 15 — accessible shared result data and keyboard schedules
+
+Review date: 12 October 2026 IST. New cumulative main review uses unchanged #1384 ancestry (`a908d9c65406784f6344c6c8de9f69257f299d99`); main remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. Earlier source drafts remain unchanged; this proposal replaces separate integration merges only after authorized review, without closing or merging any PR.
+
+## Proven shared accessibility corrections
+
+The compatibility renderer exposed trend child values through a generic role=img, hiding their individual screen-reader semantics. Its separate progress scale clamped negative results to zero and omitted exact value text. Both result renderers now share a signed meter and complete semantic series-data table, with25-row chart/table paging, full-data domain, raw signs/units and exact position identities. The shared component receives only the first series already validated by the existing result inspector. Empty point arrays produce no numerical artifact. Existing first-series and declared free-visualization policies remain authoritative; no formula, currency inference or new paid chart capability is added.
+
+Essential Free chart data is accessible in the same chart/table view (for example SIP). It is not the separate multi-column paid period schedule. Compound's existing Free composition policy continues to suppress its trend. Detailed schedule/export entitlements remain unchanged. Complete raw account JSON/CSV arrays remain unchanged by visible pages.
+
+Legacy schedule tables now expose focusable labelled horizontal-scroll regions with visible focus outlines and explicit column/period-row header scopes. Column-alignment algorithms and declared metadata/terminal checks are unchanged. Chromium also exposed compatibility disclosure min-content expansion to2528pixels at a320pixel viewport; scoped min-width containment fixes page overflow and enables native keyboard scrolling. Compatibility headline announcements now expose an atomic polite status.
+
+## Evidence and matrix reconciliation
+
+112focused tests across19files pass: both renderers' zero/negative/tiny signed data, exact fractional positions, paging/recovery, malformed-data containment, complete raw JSON/CSV downloads on Pro/Business, Reference Six core/trust/plan integration, canonical/sampled schedules and unchanged publication/version gates. Static assertions now require shared growth-line wiring/value text and scoped keyboard/header semantics. DOM fixtures explicitly distinguish rowheaders from cells, primary status from pager status, and chart data from paid schedules; numerical/order/export assertions remain intact.
+
+Actual Chromium at320and1280pixels verifies both renderer surfaces: keyboard pager, ArrowRight native schedule scrolling, visible2pixel focus outline, semantic chart meters/table in its accessibility snapshot, bounded25meters and no page overflow. Components and repository CSS are real; this synthetic boundary smoke is not a deployed route or real screen-reader certification. Existing actual Reference Six and all16 candidate interface tests run across Free/Pro/Business. No database writes occur in mocked account/download tests.
+
+All16 original candidate matrix rows were checked against current registered IDs/slugs/versions/risk/source counts/code statuses. Matrix publication absence is explicitly historical Batch6 evidence reused12October, not refreshed. Protected specialist approval/HOLD evidence remains UNKNOWN. Later engineering scopes for Loan/SIP/Compound are reconciled in the matrix. Current574registered engines/226source-code certified candidates include proposed Mortgage registration separately from the original16cohort; the dated209published baseline must not be subtracted to infer a freshly observed17candidate cohort. Candidate completion documentation now supersedes its historical unregistered-Mortgage statements while retaining their dated context.
+
+Final local typecheck/affected lint and exact-head mandatory CI evidence are recorded in the new draft PR. No local full build, dependency installation or additional workflow dispatch. Billing telemetry remains unavailable; measured Actions runtime is reported separately.
+
+## Release blockers unchanged
+
+Framework/accessibility owner review and actual assistive-technology/RSC verification remain required. Finance/YMYL and protected owner-led specialist/HOLD/master-identity review remain separate. Code evidence does not grant or waive approval. Mortgage period outputs remain BLOCKED on the existing financial specialist package decisions. BMI/BreakEven remain draft-gated. No certification/publication promotion, database write, formula/security/RLS change, approval, merge or deployment is performed.

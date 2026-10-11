@@ -83,3 +83,10 @@ it.each(rateFixtures)('downloads identical registered raw rate context for $name
   fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=await blob!.text();expect(csv).toContain('rateAnalysis');expect(csv).toContain(fixture.definition.id);expect(csv).toContain('registered-rate-comparison');expect(state.inserts).toHaveLength(0);cleanup();vi.restoreAllMocks();
  }
 });
+it.each(['pro','business'] as const)('keeps exact raw series JSON/CSV unchanged through both paged result presentations on %s',async plan=>{
+ state.plan=plan;const points=Array.from({length:51},(_,x)=>({x,y:x===50?-1e-12:x}));
+ for(const Renderer of [FinalCalculatorRenderer,FinalResultPresentation]){let blob:NodeBlob|undefined;vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(value:NodeBlob)=>{blob=value;return 'blob:synthetic';},revokeObjectURL:()=>{}});vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementation(()=>{});
+  render(<><Renderer plan={plan} result={{primaryResult:{id:'v',label:'Value',value:0},series:[{id:'s',label:'Projected value',points}]}}/><CalculatorAccountActions {...identity} input={{rate:0}} output={{points}}/></>);expect(screen.getAllByRole('meter')).toHaveLength(25);fireEvent.click(screen.getByRole('button',{name:'Next trend page'}));
+  fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));expect(JSON.parse(await blob!.text()).output.points).toEqual(points);fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));expect(await blob!.text()).toContain('-1e-12');expect(state.inserts).toHaveLength(0);cleanup();vi.restoreAllMocks();
+ }
+});

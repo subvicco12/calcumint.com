@@ -22,7 +22,7 @@ describe("Final schedule column reconciliation", () => {
     render(<FinalCalculatorRenderer result={result} plan={plan} presentation={referencePresentations.loanEmi} />);
     const rows = within(screen.getByRole("table", { name: "Detailed calculation schedule" })).getAllByRole("row");
     expect(within(rows[0]).getAllByRole("columnheader").map(cell => cell.textContent)).toEqual(["Period", "principal", "interest", "balance"]);
-    expect(rows.slice(1).map(row => within(row).getAllByRole("cell").map(cell => cell.textContent))).toEqual([
+    expect(rows.slice(1).map(row => [within(row).getByRole("rowheader").textContent,...within(row).getAllByRole("cell").map(cell => cell.textContent)])).toEqual([
       ["1", "100", "25", "—"],
       ["2", "105", "20", "—"],
       ["3", "0", "—", "0"]
