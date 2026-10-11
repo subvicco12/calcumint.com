@@ -24,7 +24,8 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
-  calculate: ({ principal, annualRatePercent, termMonths }) => {
+  calculate: (input) => {
+    const { principal, annualRatePercent, termMonths } = inputSchema.parse(input);
     const monthlyRate = annualRatePercent / 100 / 12;
     const unroundedPayment = monthlyRate === 0
       ? principal / termMonths
