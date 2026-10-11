@@ -11,6 +11,8 @@ vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>{
  const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:null}),then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({data:null,count:0}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.inserts.push(value);return {error:null};}};
  return {auth:{getUser:()=>state.defer?new Promise(resolve=>{state.resolve=resolve;}):Promise.resolve({data:{user:{id:'synthetic-user'}}})},from:()=>query};
 }}));
+import { FinalCalculatorRenderer } from './final-calculator-renderer';
+import { FinalResultPresentation } from './final-result-presentation';
 import { CalculatorAccountActions } from './calculator-account-actions';
 afterEach(()=>{cleanup();state.inserts=[];state.defer=false;state.resolve=null;vi.unstubAllGlobals();vi.restoreAllMocks();});
 const identity={calculatorSlug:'sip-calculator',calculatorVersion:1};
@@ -35,4 +37,15 @@ it('exports identical nested context/analysis precision in JSON and CSV with sta
  render(<CalculatorAccountActions {...identity} input={{negativeZero:-0,small:0.000000001}} output={{context:{version:1},rows:[{value:123.456789}],zero:0}}/>);
  fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));const json=JSON.parse(await blob!.text());expect(json.input.small).toBe(0.000000001);expect(json.output.rows[0].value).toBe(123.456789);expect(Object.is(json.input.negativeZero,-0)).toBe(false);
  fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=await blob!.text();expect(csv).toContain('"negativeZero","-0"');expect(csv).toContain('123.456789');
+});
+
+it.each(['free','pro','business'] as const)('aligns both result presentations with account rejection and recovery on %s',async plan=>{
+ state.plan=plan;
+ for(const Renderer of [FinalCalculatorRenderer,FinalResultPresentation]){
+  const fixture=(value:number)=><><Renderer plan={plan} result={{primaryResult:{id:'value',label:'Value',value}}}/><CalculatorAccountActions {...identity} input={{rate:0}} output={{value}}/></>;
+  const view=render(fixture(Infinity));const save=await screen.findByRole('button',{name:'Save calculation'});
+  expect(screen.getAllByRole('alert')).toHaveLength(2);expect((save as HTMLButtonElement).disabled).toBe(true);expect(document.querySelector('.result-box,.result-hero')).toBeNull();
+  if(plan!=='free')for(const name of ['Export CSV','Export JSON'])expect((screen.getByRole('button',{name}) as HTMLButtonElement).disabled).toBe(true);
+  view.rerender(fixture(0));expect(screen.queryByRole('alert')).toBeNull();expect((save as HTMLButtonElement).disabled).toBe(false);expect(document.querySelector('.result-box,.result-hero')?.textContent).toContain('0');cleanup();
+ }
 });

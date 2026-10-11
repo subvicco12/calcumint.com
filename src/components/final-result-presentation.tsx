@@ -1,4 +1,6 @@
 "use client";
+import { inspectStructuredResult } from "@/calculators/final-framework/result-inspection";
+import { ResultDataError } from "./result-data-error";
 import type { StructuredCalculationResult } from "@/calculators/final-framework/types";
 import { hasCalculatorCapability, type CalculatorCapability } from "@/calculators/final-framework/entitlements";
 import type { PlanTier } from "@/calculators/final-framework/types";
@@ -7,7 +9,10 @@ import { displayFinalValue } from "@/calculators/final-framework/renderer-displa
 function maxPositive(values:readonly number[]){return Math.max(...values.map(v=>Math.max(v,0)),1)}
 const display = displayFinalValue;
 
-export function FinalResultPresentation({result,plan="free"}:{result:StructuredCalculationResult;plan?:PlanTier}){
+export function FinalResultPresentation({result:rawResult,plan="free"}:{result:StructuredCalculationResult;plan?:PlanTier}){
+  const inspection=inspectStructuredResult(rawResult);
+  if(!inspection.coreValid)return <section className="final-result" aria-label="Calculation result"><ResultDataError/></section>;
+  const result=inspection.renderable!;
   const metrics=[result.primaryResult,...(result.metrics??[])];
   const secondaryMetrics=metrics.slice(1);
   const visibleMetrics=secondaryMetrics.slice(0,4);
@@ -19,6 +24,7 @@ export function FinalResultPresentation({result,plan="free"}:{result:StructuredC
     {capability:"goalSolver",title:"Goal Solver",copy:"Solve backwards from the outcome you want."}
   ];
   return <section className="final-result" aria-label="Calculation result">
+    {inspection.invalidSurfaces.map(surface=><ResultDataError key={surface} surface={surface} issues={surface==="schedule"?inspection.scheduleIssues:undefined}/>)}
     <div className="result-hero" aria-live="polite">
       <span>{result.primaryResult.label}</span>
       <strong>{display(result.primaryResult.value,result.primaryResult.unit)}</strong>

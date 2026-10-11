@@ -1,10 +1,15 @@
+import { inspectStructuredResult } from "@/calculators/final-framework/result-inspection";
+import { ResultDataError } from "./result-data-error";
 import type { PresentationDefinition, StructuredCalculationResult } from "@/calculators/final-framework/types";
 import type { FinalPlan } from "@/calculators/final-framework/product-capabilities";
 import { displayFinalValue } from "@/calculators/final-framework/renderer-display";
 import { rendererTrustSurface } from "@/calculators/final-framework/renderer-trust-surface";
 import { FinalScheduleTable } from "./final-schedule-table";
 import { resolveAnalysisSurface } from "@/calculators/final-framework/analysis-surface-policy";
-export function FinalCalculatorRenderer({ result, plan="free", presentation }: { result: StructuredCalculationResult; plan?: FinalPlan; presentation?: PresentationDefinition }) {
+export function FinalCalculatorRenderer({ result: rawResult, plan="free", presentation }: { result: StructuredCalculationResult; plan?: FinalPlan; presentation?: PresentationDefinition }) {
+  const inspection=inspectStructuredResult(rawResult);
+  if(!inspection.coreValid)return <section className="final-calculator-renderer" aria-label="Calculation result"><ResultDataError/></section>;
+  const result=inspection.renderable!;
   const trust=rendererTrustSurface(result);
   const schedulePolicy=result.schedule?.length&&presentation?resolveAnalysisSurface(plan,presentation,"schedule"):null;
   const schedule=result.scheduleMetadata&&schedulePolicy?.canExecute?null:schedulePolicy;
@@ -12,6 +17,7 @@ export function FinalCalculatorRenderer({ result, plan="free", presentation }: {
   const scheduleColumns=schedule?.canExecute?Array.from(new Set(result.schedule!.flatMap(row=>Object.keys(row.values)))):[];
   const freeVisualization=presentation?.freeVisualization;
   return <section className="final-calculator-renderer">
+    {inspection.invalidSurfaces.map(surface=><ResultDataError key={surface} surface={surface} issues={surface==="schedule"?inspection.scheduleIssues:undefined}/>)}
     <div className="result-box" role="status" aria-live="polite" aria-atomic="true"><span>{result.primaryResult.label}</span><strong>{displayFinalValue(result.primaryResult.value,result.primaryResult.unit)}</strong></div>
     {result.metrics?.length?<dl>{result.metrics.map(metric=><div key={metric.id}><dt>{metric.label}</dt><dd>{displayFinalValue(metric.value,metric.unit)}</dd></div>)}</dl>:null}
     {result.composition?.length&&(!freeVisualization||freeVisualization==="composition")?<div className="result-panel" data-visualization="composition"><h3>Overview</h3>{result.composition.map(item=><div key={item.id}><span>{item.label}</span><strong>{displayFinalValue(item.value,item.unit)}</strong></div>)}</div>:null}
