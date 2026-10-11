@@ -32,12 +32,13 @@ function parseCsv(content: string) {
   return content.match(/"(?:[^"]|"")*"(?:,"(?:[^"]|"")*"){2}/g)!.map(row => row.match(/"(?:[^"]|"")*"/g)!.map(cell => cell.slice(1, -1).replaceAll('""', '"')));
 }
 
+import { mortgageCalculator } from "@/calculators/finance/mortgage";
 import { loanAnalysisCalculator } from "@/calculators/finance/loan-analysis";
 const references = [
   { slug: "loan-emi-calculator", schedule: "Loan amortization checkpoints", export: "loan", analysis: "Total interest" },
   { slug: "sip-calculator", schedule: "SIP projected monthly snapshots", export: "sip", analysis: "Future value" },
   { slug: "compound-interest-calculator", schedule: "Compound-interest projected snapshots", export: "compound", analysis: "Future value" },
-  { slug: "mortgage-payment", schedule: null, export: null, analysis: "Monthly principal & interest" },
+  { slug: "mortgage-payment", schedule: null, export: "mortgage", analysis: "Monthly principal & interest" },
   { slug: "bmi-calculator", schedule: null, export: null, analysis: null },
   { slug: "break-even-calculator", schedule: null, export: null, analysis: "Break-even units" }
 ];
@@ -62,9 +63,9 @@ describe("combined Reference Six route workflow boundaries", () => {
       if (reference.export && paid) {
         fireEvent.click(await screen.findByRole("button", { name: "Export JSON" }));
         const exported = JSON.parse(await download()!.text());
-        const expected = reference.export === "loan" ? runCalculator(loanAnalysisCalculator, exported.input).output : reference.export === "sip" ? runCalculator(sipCalculator, exported.input).output : runCalculator(compoundInterestCalculator, exported.input).output;
+        const expected = reference.export === "loan" ? runCalculator(loanAnalysisCalculator, exported.input).output : reference.export === "sip" ? runCalculator(sipCalculator, exported.input).output : reference.export === "mortgage" ? runCalculator(mortgageCalculator, exported.input).output : runCalculator(compoundInterestCalculator, exported.input).output;
         for (const [key, value] of Object.entries(expected)) expect(exported.output[key]).toEqual(value);
-        if (reference.export !== "loan") {
+        if (reference.export !== "loan" && reference.export !== "mortgage") {
           const rows = exported.output.periodProjection.rows;
           const { elapsedYears: _elapsed, ...terminal } = rows.at(-1).values;
           void _elapsed;
@@ -72,8 +73,8 @@ describe("combined Reference Six route workflow boundaries", () => {
         }
         fireEvent.click(screen.getByRole("button", { name: "Export CSV" }));
         const csv = parseCsv(await download()!.text());
-        const field = reference.export === "loan" ? "amortization" : "periodProjection";
-        expect(JSON.parse(csv.find(row => row[1] === field)![2])).toEqual(exported.output[field]);
+        if(reference.export === "mortgage"){for(const [field,value] of Object.entries(expected))expect(Number(csv.find(row=>row[0] === "output" && row[1] === field)![2])).toBe(value);}else{const field = reference.export === "loan" ? "amortization" : "periodProjection";
+        expect(JSON.parse(csv.find(row => row[1] === field)![2])).toEqual(exported.output[field]);}
       } else expect(screen.queryByRole("button", { name: "Export JSON" })).toBeNull();
       cleanup(); vi.unstubAllGlobals(); vi.restoreAllMocks();
     }
@@ -118,4 +119,34 @@ describe("release integration invalid-output boundaries", () => {
     expect((save as HTMLButtonElement).disabled).toBe(false);
     expect((screen.getByRole("button", { name: "Export JSON" }) as HTMLButtonElement).disabled).toBe(false);
   });
+});
+describe('Mortgage aggregate export reconciliation',()=>{
+ it.each(['pro','business'])('disables actual account actions for invalid Mortgage inputs on %s',async plan=>{
+  session.plan=plan;const download=captureDownload();render(<CalculatorInteractive slug='mortgage-payment'/>);
+  const save=await screen.findByRole('button',{name:'Save calculation'});
+  for(const [label,value] of [['Down payment',''],['Down payment','400001'],['Annual mortgage rate (%)',''],['Term (months)','1201']]){
+   const field=screen.getByLabelText(label),original=(field as HTMLInputElement).value;fireEvent.change(field,{target:{value}});
+   for(const button of [save,screen.getByRole('button',{name:'Export JSON'}),screen.getByRole('button',{name:'Export CSV'})]){expect((button as HTMLButtonElement).disabled).toBe(true);fireEvent.click(button);}
+   expect(download()).toBeUndefined();expect(screen.getByRole('alert')).toBeTruthy();
+   fireEvent.change(field,{target:{value:original}});expect((save as HTMLButtonElement).disabled).toBe(false);
+  }
+ });
+});
+describe('Mortgage advanced analytical exports',()=>{
+ it.each(['pro','business'])('exports exact available/unavailable comparison evidence and entered context on %s',async plan=>{
+  session.plan=plan;const download=captureDownload();render(<CalculatorInteractive slug='mortgage-payment'/>);
+  fireEvent.change(screen.getByLabelText('Annual mortgage rate (%)'),{target:{value:'1000'}});fireEvent.click(screen.getByRole('button',{name:'Advanced'}));
+  fireEvent.click(screen.getByText('Rate comparison totals'));
+  const table=screen.getByRole('table',{name:'Mortgage aggregate rate comparison totals'});expect(table.textContent).toContain('Unavailable');
+  fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));const exported=JSON.parse(await download()!.text());
+  expect(exported.output.mortgageContext).toEqual({version:1,propertyPrice:400000,downPayment:80000,scope:'principal-and-interest-only'});
+  expect(exported.output.rateAnalysis.kind).toBe('aggregate-rate-comparison');
+  for(const point of [...exported.output.rateAnalysis.scenarios,...exported.output.rateAnalysis.sensitivity]){
+   if(point.state==='available')expect(point.output).toEqual(runCalculator(mortgageCalculator,point.input).output);
+   else expect(point.reason).toBe('outside-supported-inputs');
+  }
+  for(const point of exported.output.rateAnalysis.sensitivity.filter((p:{state:string})=>p.state==='available'))expect(screen.getAllByRole('meter').some(m=>Number(m.getAttribute('value'))===point.output.monthlyPayment)).toBe(true);
+  fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=parseCsv(await download()!.text());
+  for(const field of ['mortgageContext','rateAnalysis'])expect(JSON.parse(csv.find(row=>row[1]===field)![2])).toEqual(exported.output[field]);
+ });
 });

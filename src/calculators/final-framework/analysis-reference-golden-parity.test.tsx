@@ -5,7 +5,7 @@ import { FinalCalculatorRenderer } from "@/components/final-calculator-renderer"
 import { runCalculator } from "../engine";
 import type { CalculatorDefinition } from "../types";
 import { loanAnalysisCalculator } from "../finance/loan-analysis";
-import { loanPaymentCalculator } from "../finance/loan-payment";
+import { mortgageCalculator } from "../finance/mortgage";
 import { sipCalculator } from "../finance/sip";
 import { compoundInterestCalculator } from "../finance/compound-interest";
 import { bmiCalculator } from "../health/bmi";
@@ -29,7 +29,7 @@ const fixtures = {
   loanEmi: () => golden(loanAnalysisCalculator, loanResult),
   sip: () => golden(sipCalculator, sipResult),
   compoundInterest: () => golden(compoundInterestCalculator, compoundInterestResult),
-  mortgage: () => golden(loanPaymentCalculator, mortgageResult),
+  mortgage: () => golden(mortgageCalculator, mortgageResult),
   bmi: () => golden(bmiCalculator, (_input, output) => bmiResult(output)),
   breakEven: () => golden(breakEvenCalculator, (_input, output) => breakEvenResult(output))
 };

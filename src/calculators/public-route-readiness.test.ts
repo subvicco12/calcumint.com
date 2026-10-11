@@ -8,7 +8,7 @@ describe("governed route readiness", () => {
     expect(route.state).toBe("ready");
     if (route.state === "ready") expect(route.path).toBe("/calculators/finance-investment/sip-calculator");
     for (const category of ["math", "__proto__", "Finance-Investment"]) expect(resolvePublicCalculatorRoute(category, slug, approved)).toEqual({ state: "blocked", reason: "invalid-category" });
-    expect(resolvePublicCalculatorRoute("loans-mortgages", "mortgage-payment", approved)).toEqual({ state: "blocked", reason: "unknown-calculator" });
+    expect(resolvePublicCalculatorRoute("loans-mortgages", "mortgage-payment", approved)).toEqual({ state: "blocked", reason: "unpublished" });
     expect(resolvePublicCalculatorRoute("health", "bmi-calculator", { ...approved, slugs: new Set(["bmi-calculator"]) })).toEqual({ state: "blocked", reason: "uncertified" });
   });
   it("withdraws routes when authority becomes unavailable or the published lifecycle set is withdrawn", () => {
@@ -29,9 +29,9 @@ describe("governed route readiness", () => {
   });
   it("reports structural readiness separately from unknown DB authority without invented approval counts", () => {
     const report = buildPublicRouteReadinessReport({ state: "unavailable", slugs: new Set() });
-    expect(report).toHaveLength(573);
+    expect(report).toHaveLength(574);
     expect(report.every(row => row.publicationEvidence === "unknown")).toBe(true);
-    expect(report.filter(row => row.structuralRoute)).toHaveLength(225);
+    expect(report.filter(row => row.structuralRoute)).toHaveLength(226);
     const published = buildPublicRouteReadinessReport(approved);
     expect(published.filter(row => row.publicationEvidence === "approved-route-ready").map(row => row.slug)).toEqual([slug]);
   });
