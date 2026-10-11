@@ -85,7 +85,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "fuel >= 0; efficiency >= 0",
     "outputContract": "fuel × distance-per-fuel-unit efficiency",
-    "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication Verified launch-portfolio.ts: fuel>=0 and distance-per-fuel efficiency>=0, output fuel*efficiency as estimated distance. Canonical Automotive & EV ID 459 Fuel Economy Calculator is a nonexact title candidate, and computes a potentially different metric; no automatic mapping. HOLD.",
+    "evidence": "Launch portfolio source inspected; canonical master domain needs adjudication Verified launch-portfolio.ts: fuel>=0 and distance-per-fuel efficiency>=0, output fuel*efficiency as estimated distance. Canonical Automotive & EV ID 459 Fuel Economy Calculator is a nonexact title candidate, and computes a potentially different metric; no automatic mapping. HOLD. Additional boundary: fuel=40, efficiency=15 distance/fuel unit yields 600 distance units; this estimates distance from known efficiency, not efficiency from distance and fuel. Automotive ID459 Fuel Economy Calculator and Conversion ID435 Fuel Economy Converter are nonexact and solve different tasks. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -125,7 +125,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "bill >= 0; tip percent >= 0",
     "outputContract": "bill × tip percent / 100",
-    "evidence": "Tip amount formula inspected; master-domain match pending Verified launch-portfolio.ts: bill>=0 and tip percent>=0, returns tip amount bill*percent/100, not bill-with-tip total. Canonical Personal Finance & Household ID 116 Tip Calculator is a nonexact title candidate; contract identity not established. HOLD.",
+    "evidence": "Tip amount formula inspected; master-domain match pending Verified launch-portfolio.ts: bill>=0 and tip percent>=0, returns tip amount bill*percent/100, not bill-with-tip total. Canonical Personal Finance & Household ID 116 Tip Calculator is a nonexact title candidate; contract identity not established. HOLD. Additional boundary: bill=80 and tip=15% yields 12 currency units, not 92 total; percentage is nonnegative without 100% cap. Personal Finance ID116 Tip Calculator may include amount/total/split semantics not established by this single-output source. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -406,7 +406,7 @@
     "inputContract": "original price >= 0; discount percent 0..100",
     "outputContract": "discount amount = price × percent / 100",
     "decision": "hold",
-    "evidence": "Source computes discount amount, not sale price; no exact master title Verified launch-portfolio.ts: price>=0, percent in 0..100; output discount monetary amount, not discounted sale price. Canonical Personal Finance & Household ID 117 Discount Calculator is nonexact title; output contract must be distinguished from sale-price-calculator. HOLD.",
+    "evidence": "Source computes discount amount, not sale price; no exact master title Verified launch-portfolio.ts: price>=0, percent in 0..100; output discount monetary amount, not discounted sale price. Canonical Personal Finance & Household ID 117 Discount Calculator is nonexact title; output contract must be distinguished from sale-price-calculator. HOLD. Additional boundary: original price=100, discount=20% yields 20 monetary discount, not final price 80; percent constrained 0..100. Personal Finance ID117 Discount Calculator remains nonexact and cannot be conflated with sale-price-calculator. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -426,7 +426,7 @@
     "inputContract": "cost >= 0; markup percent >= 0",
     "outputContract": "selling price = cost × (1 + markup/100)",
     "decision": "hold",
-    "evidence": "Source markup on cost; no exact master title Verified launch-portfolio.ts: cost>=0 and signed markup percentage, output cost*(1+percent/100) as selling price. Canonical Business & Accounting ID 141 Markup Calculator is nonexact title; margin versus markup and output identity require adjudication. HOLD.",
+    "evidence": "Source markup on cost; no exact master title Verified launch-portfolio.ts: cost>=0 and signed markup percentage, output cost*(1+percent/100) as selling price. Canonical Business & Accounting ID 141 Markup Calculator is nonexact title; margin versus markup and output identity require adjudication. HOLD. Additional boundary: cost=80, markup=25% yields selling price 100; signed percent is allowed, so negative markup can produce a below-cost or even negative result. Business ID141 Markup Calculator identity and price-vs-markup-rate output remain unadjudicated. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -436,7 +436,7 @@
     "inputContract": "revenue >= 0; cost >= 0",
     "outputContract": "gross amount = revenue − cost",
     "decision": "hold",
-    "evidence": "Source excludes taxes and overhead; no exact master title Verified launch-portfolio.ts: revenue>=0 and direct cost>=0; output revenue-cost (100-70=30 monetary units), excluding tax/other expenses. Master Business & Accounting ID 139 Gross Margin Calculator typically returns a percentage, while ID 144 Profit Calculator is broader and nonexact. Amount-versus-rate and profit-scope identities unresolved. HOLD.",
+    "evidence": "Source excludes taxes and overhead; no exact master title Verified launch-portfolio.ts: revenue>=0 and direct cost>=0; output revenue-cost (100-70=30 monetary units), excluding tax/other expenses. Master Business & Accounting ID 139 Gross Margin Calculator typically returns a percentage, while ID 144 Profit Calculator is broader and nonexact. Amount-versus-rate and profit-scope identities unresolved. HOLD. Additional boundary: revenue=100, cost=70 yields 30 monetary amount, not 30% margin ratio by definition; costs may exceed revenue, producing negative result. Business ID139 Gross Margin and ID144 Profit are nonexact, distinct scope/units. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -466,7 +466,7 @@
     "inputContract": "output >= 0; time > 0",
     "outputContract": "average output per unit time",
     "decision": "hold",
-    "evidence": "No exact master title Verified launch-portfolio.ts: output units>=0 and elapsed time>0; output units/time (120/8=15 units per time unit), an average throughput rate without labor/capital productivity factors. No exact Productivity Rate Calculator title in canonical 540-row master. HOLD.",
+    "evidence": "No exact master title Verified launch-portfolio.ts: output units>=0 and elapsed time>0; output units/time (120/8=15 units per time unit), an average throughput rate without labor/capital productivity factors. No exact Productivity Rate Calculator title in canonical 540-row master. HOLD. Additional boundary: 120 output units/8 time units=15 units per time unit; denominator minimum 1e-9, no staffing, utilization or quality adjustment. Generic throughput is not a specialist labor-productivity model and no exact canonical master title exists. HOLD.",
     "reviewStatus": "certified"
   },
   {
