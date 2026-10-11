@@ -41,7 +41,8 @@ describe("Reference Six schedule applicability and core parity", () => {
     for (const plan of ["free", "pro", "business"] as const) {
       render(<FinalCalculatorRenderer result={reference.result} plan={plan} presentation={reference.presentation} />);
       outputs.push(screen.getByRole("status").textContent!);
-      expect(Boolean(screen.queryByRole("table"))).toBe(reference.name === "Loan" && plan !== "free");
+      expect(Boolean(screen.queryByRole("table", {name:reference.result.scheduleMetadata?.caption??"Detailed calculation schedule"}))).toBe(reference.name === "Loan" && plan !== "free");
+      expect(Boolean(screen.queryByRole("table", {name:/^Trend data:/}))).toBe(reference.presentation.freeVisualization === "growth-line" && Boolean(reference.result.series?.length));
       expect(screen.queryByRole("alert")).toBeNull();
       cleanup();
     }
