@@ -145,7 +145,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "volume >= 0; time >= 1e-9",
     "outputContract": "volume / time; compatible units",
-    "evidence": "Volumetric flow implementation inspected; master-domain match pending Verified launch-portfolio.ts: volume>=0, time>0, output volume/time average volumetric flow. No exact Flow Rate Calculator title in 540-row canonical master; no automatic engineering or Physics identity. HOLD.",
+    "evidence": "Volumetric flow implementation inspected; master-domain match pending Verified launch-portfolio.ts: volume>=0, time>0, output volume/time average volumetric flow. No exact Flow Rate Calculator title in 540-row canonical master; no automatic engineering or Physics identity. HOLD. Additional identity boundary: 100 volume units / 5 time units =20 volume units per time unit; volumetric flow is not mass flow and no unit conversion or fluid density input is present. No exact canonical master title. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -175,7 +175,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "force finite; time >= 0",
     "outputContract": "impulse = average force × time interval",
-    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: average force signed finite and time interval>=0, output force*time, signed impulse for constant or average force. No exact Impulse Calculator title in 540-row canonical master; vector direction and scope require adjudication. HOLD.",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: average force signed finite and time interval>=0, output force*time, signed impulse for constant or average force. No exact Impulse Calculator title in 540-row canonical master; vector direction and scope require adjudication. HOLD. Additional identity boundary: 50 average-force units * 2 time units =100 force-time units; source permits signed force and assumes constant/average force, not a time-varying force integral or multi-axis vector. No exact canonical master title. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -355,7 +355,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "current A finite; resistance Ω >= 0",
     "outputContract": "ohmic voltage = current × resistance",
-    "evidence": "Source ohmic element; no exact master title Verified launch-portfolio.ts: current signed finite, resistance>=0, output V=I*R for an ohmic element. Canonical Physics ID 317 Ohm's Law Calculator is a nonexact title; voltage-specific output differs from other Ohm's Law rearrangements. HOLD.",
+    "evidence": "Source ohmic element; no exact master title Verified launch-portfolio.ts: current signed finite, resistance>=0, output V=I*R for an ohmic element. Canonical Physics ID 317 Ohm's Law Calculator is a nonexact title; voltage-specific output differs from other Ohm's Law rearrangements. HOLD. Additional identity boundary: 2 A * 10 ohms=20 V; canonical Physics ID319 Voltage Calculator and ID317 Ohm's Law Calculator are nonexact titles and cannot be automatically mapped to this current-resistance voltage variant. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -365,7 +365,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "voltage V finite; resistance Ω > 0",
     "outputContract": "ohmic current = voltage / resistance",
-    "evidence": "Source ohmic element; no exact master title Verified launch-portfolio.ts: voltage signed finite, resistance>0 (minimum 1e-9), output I=V/R for an ohmic element. Canonical Physics ID 317 Ohm's Law Calculator is nonexact title and also candidate for voltage variant; distinct input and output contracts. HOLD.",
+    "evidence": "Source ohmic element; no exact master title Verified launch-portfolio.ts: voltage signed finite, resistance>0 (minimum 1e-9), output I=V/R for an ohmic element. Canonical Physics ID 317 Ohm's Law Calculator is nonexact title and also candidate for voltage variant; distinct input and output contracts. HOLD. Additional identity boundary: 12 V / 6 ohms=2 A; canonical Physics ID320 Current Calculator and ID317 Ohm's Law Calculator are nonexact titles and cannot be automatically mapped to this voltage-resistance current variant. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -375,7 +375,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "frequency Hz > 0; cycles >= 0",
     "outputContract": "elapsed time = cycles / frequency",
-    "evidence": "Source uses arbitrary cycles count; no exact master title Verified launch-portfolio.ts: frequency>0, cycles>=0, output cycles/frequency elapsed time for selected cycles. Canonical Physics ID 314 Frequency Calculator and ID 315 Period Calculator are separate titles; output is not necessarily single-cycle period. HOLD.",
+    "evidence": "Source uses arbitrary cycles count; no exact master title Verified launch-portfolio.ts: frequency>0, cycles>=0, output cycles/frequency elapsed time for selected cycles. Canonical Physics ID 314 Frequency Calculator and ID 315 Period Calculator are separate titles; output is not necessarily single-cycle period. HOLD. Additional identity boundary: cycles=1 and frequency=50 Hz yields 0.02s single-cycle period, but cycles=5 yields 0.1s elapsed duration; title Frequency to Period does not guarantee single-cycle output for all valid inputs. Master Physics ID315 Period Calculator nonexact. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -385,7 +385,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "frequency and wavelength from launch definition",
     "outputContract": "wave speed = frequency × wavelength",
-    "evidence": "Source formula; no exact master title Verified launch-portfolio.ts: frequency>=0, wavelength>=0, output frequency*wavelength with compatible units. Canonical Physics ID 316 Wavelength Calculator is a nonexact candidate with different solved variable; no Wave Speed Calculator exact master row established. HOLD.",
+    "evidence": "Source formula; no exact master title Verified launch-portfolio.ts: frequency>=0, wavelength>=0, output frequency*wavelength with compatible units. Canonical Physics ID 316 Wavelength Calculator is a nonexact candidate with different solved variable; no Wave Speed Calculator exact master row established. HOLD. Additional identity boundary: 440 Hz * 0.78m=343.2m/s only with compatible units; no wave-medium or dispersion model. Canonical Physics ID316 Wavelength Calculator solves a different output variable. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
