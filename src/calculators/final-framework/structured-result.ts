@@ -1,3 +1,5 @@
+import type { ResultScheduleMetadata } from "./types";
+
 export type StructuredResultMetric = {
   key: string;
   label: string;
@@ -22,6 +24,7 @@ export type StructuredResultComposition = {
 export type StructuredResultSchedule = {
   columns: readonly string[];
   rows: readonly Readonly<Record<string, number | string>>[];
+  metadata?: ResultScheduleMetadata;
 };
 
 export type StructuredResultRange = {
