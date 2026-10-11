@@ -215,7 +215,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "energy >= 0; unit tariff >= 0",
     "outputContract": "energy × unit tariff; excludes taxes, fixed charges and tiers",
-    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: energy>=0, price per energy unit>=0, output energy*rate; excludes taxes, fixed charges and tiered rates. Canonical Energy & Environment ID 477 Electricity Cost Calculator is nonexact and may require electricity-specific tariff and billing scope. HOLD.",
+    "evidence": "Source formula and bounds inspected; canonical master mapping and collision adjudication pending Verified launch-portfolio.ts: energy>=0, price per energy unit>=0, output energy*rate; excludes taxes, fixed charges and tiered rates. Canonical Energy & Environment ID 477 Electricity Cost Calculator is nonexact and may require electricity-specific tariff and billing scope. HOLD. Further verified source: energy>=0 and rate>=0, cost=energy*unit rate (100*0.2=20), omits fixed charges, taxes and tiered tariffs. Canonical Energy ID477 Electricity Cost Calculator is nonexact: generic energy-unit cost need not model electricity billing. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -325,7 +325,7 @@
     "sourcePath": "src/calculators/launch-portfolio.ts",
     "inputContract": "capacity >= 0; average load >= 1e-9",
     "outputContract": "ideal capacity / load runtime index; real runtime varies",
-    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: capacity>=0 and load>0, output capacity/load in compatible units; idealized only, excluding voltage, efficiency, temperature and discharge characteristics. Canonical Battery Runtime Calculator appears in Technology & Computing ID 380 and Energy & Environment ID 482; neither is an exact title and domain collision unresolved. HOLD.",
+    "evidence": "Launch portfolio source formula and input constraints inspected; no exact master-title mapping established; HOLD Verified launch-portfolio.ts: capacity>=0 and load>0, output capacity/load in compatible units; idealized only, excluding voltage, efficiency, temperature and discharge characteristics. Canonical Battery Runtime Calculator appears in Technology & Computing ID 380 and Energy & Environment ID 482; neither is an exact title and domain collision unresolved. HOLD. Further verified source: capacity>=0 and load>=1e-9, capacity/load (5000/500=10) only if energy and power or charge and current units are compatible; no voltage, discharge curve, temperature or conversion. Canonical Battery Runtime title collision Technology ID380 and Energy ID482 remains unresolved. HOLD.",
     "decision": "hold",
     "reviewStatus": "certified"
   },
@@ -476,7 +476,7 @@
     "inputContract": "mass >= 0; specific heat >= 0; signed temperature change finite",
     "outputContract": "sensible heat Q = m × c × ΔT",
     "decision": "hold",
-    "evidence": "No exact master title; units must be compatible Verified launch-portfolio.ts: mass>=0, specific heat capacity>=0, signed temperature change; output Q=m*c*deltaT (2*4186*10=83720 compatible energy units), sensible heat only, with negative results for cooling. No exact Heat Energy Calculator master title; not equivalent to Heat Index or thermal savings. HOLD.",
+    "evidence": "No exact master title; units must be compatible Verified launch-portfolio.ts: mass>=0, specific heat capacity>=0, signed temperature change; output Q=m*c*deltaT (2*4186*10=83720 compatible energy units), sensible heat only, with negative results for cooling. No exact Heat Energy Calculator master title; not equivalent to Heat Index or thermal savings. HOLD. Further verified source: Q=m*c*deltaT with signed temperature change, including negative cooling energy; assumes compatible mass, specific-heat and temperature units, no latent heat or phase change. No exact canonical master title; specialist scientific scope remains unadjudicated. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -486,7 +486,7 @@
     "inputContract": "absolute temperature >= 0; volume > 0",
     "outputContract": "temperature/volume proportional index, not pressure",
     "decision": "hold",
-    "evidence": "Source explicitly returns index, not pressure; no exact master title Verified launch-portfolio.ts: absolute temperature>=0, volume>0; output T/V (300/10=30), a proportional index at fixed gas amount, not absolute pressure. Canonical Chemistry ID 334 Ideal Gas Law Calculator may calculate P=nRT/V; gas quantity and R absent here. Non-equivalent identity. HOLD.",
+    "evidence": "Source explicitly returns index, not pressure; no exact master title Verified launch-portfolio.ts: absolute temperature>=0, volume>0; output T/V (300/10=30), a proportional index at fixed gas amount, not absolute pressure. Canonical Chemistry ID 334 Ideal Gas Law Calculator may calculate P=nRT/V; gas quantity and R absent here. Non-equivalent identity. HOLD. Further verified source title explicitly Pressure Index, not pressure: T/V (300/10=30) excludes gas quantity and gas constant; canonical Chemistry ID334 Ideal Gas Law requires additional state/units. Never present proportional index as physical pressure. HOLD.",
     "reviewStatus": "certified"
   },
   {
@@ -496,7 +496,7 @@
     "inputContract": "conductor length >= 0; cross-section area > 0",
     "outputContract": "resistance geometry factor length/area, not resistance",
     "decision": "hold",
-    "evidence": "Source returns geometry factor only; no exact master title Verified launch-portfolio.ts: conductor length>=0, cross-sectional area>0; output length/area (10/2=5), geometry factor only. Canonical Physics ID 321 Resistance Calculator requires resistivity for R=rho*L/A; source has no resistivity input and does not calculate resistance. HOLD.",
+    "evidence": "Source returns geometry factor only; no exact master title Verified launch-portfolio.ts: conductor length>=0, cross-sectional area>0; output length/area (10/2=5), geometry factor only. Canonical Physics ID 321 Resistance Calculator requires resistivity for R=rho*L/A; source has no resistivity input and does not calculate resistance. HOLD. Further verified source title Resistance Geometry Index: length/area (10/2=5) excludes material resistivity, unlike Physics ID321 Resistance Calculator. Geometry factor is not ohms and must not inherit resistance identity. HOLD.",
     "reviewStatus": "certified"
   },
   {
