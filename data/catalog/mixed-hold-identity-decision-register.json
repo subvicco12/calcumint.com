@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sourceBaselineMain": "f1099ff0bc7d8ad26ccaf85c61d47f2da255d546",
+  "status": "proposed-decisions-only",
+  "authorityNote": "Roles are proposed decision owners, not assertions of assigned or completed approvals. No entry authorizes calculator certification, ledger approval, or publication.",
+  "entries": [
+    {
+      "decisionId": "POWER",
+      "canonicalMasterIds": [
+        222,
+        308
+      ],
+      "candidateDomains": [
+        "Math",
+        "Physics"
+      ],
+      "competingSourceContracts": "power-calculator [physics/catalog-batch-1.ts]: finite work, positive time -> work/time; power-from-work-calculator [launch-portfolio.ts]: work, positive time -> work/time without enforced input-unit semantics",
+      "proposedDecisionOwner": "Master catalog owner",
+      "requiredEvidence": "Choose master domain and authoritative source contract for each slug; documented unit/meaning comparison; domain owner acknowledgement",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "DISTANCE",
+      "canonicalMasterIds": [
+        277,
+        511
+      ],
+      "candidateDomains": [
+        "Geometry",
+        "Travel & Everyday"
+      ],
+      "competingSourceContracts": "distance-calculator [launch-portfolio.ts]: signed finite speed, time>=0 -> signed speed*time with compatible units",
+      "proposedDecisionOwner": "Master catalog owner + geometry/travel domain owner",
+      "requiredEvidence": "Choose geometric vs travel semantics; document signed output and units; approve explicit master association or noncanonical disposition",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "TRAVEL_TIME",
+      "canonicalMasterIds": [
+        510
+      ],
+      "candidateDomains": [
+        "Travel & Everyday"
+      ],
+      "competingSourceContracts": "travel-time-calculator [automotive/catalog-batch-1.ts]: distanceKm>=0, speedKmh>0 -> moving hours excluding stops; time-from-distance-speed-calculator [launch-portfolio.ts]: generic distance>=0, speed>0 -> compatible-unit time",
+      "proposedDecisionOwner": "Master catalog owner + travel domain owner",
+      "requiredEvidence": "Decide canonical implementation or formally distinct variants; units, exclusions, lifecycle and output equivalence review",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "TIP",
+      "canonicalMasterIds": [
+        116
+      ],
+      "candidateDomains": [
+        "Personal Finance & Household"
+      ],
+      "competingSourceContracts": "tip-amount-calculator: bill>=0, percent>=0 -> tip only; bill-with-tip-calculator: same inputs -> bill plus tip; both launch-portfolio.ts",
+      "proposedDecisionOwner": "Master catalog owner + finance domain owner",
+      "requiredEvidence": "Define canonical outputs, billing scope and rounding policy; applicable finance review if user-facing claims require it",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "DISCOUNT",
+      "canonicalMasterIds": [
+        117
+      ],
+      "candidateDomains": [
+        "Personal Finance & Household"
+      ],
+      "competingSourceContracts": "discount-amount-calculator: price>=0, percent 0..100 -> discount only; sale-price-calculator: same inputs -> discounted price; both launch-portfolio.ts",
+      "proposedDecisionOwner": "Master catalog owner + finance domain owner",
+      "requiredEvidence": "Define canonical output(s), tax/rounding assumptions, and whether both slugs are variants",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "BATTERY_RUNTIME",
+      "canonicalMasterIds": [
+        380,
+        482
+      ],
+      "candidateDomains": [
+        "Technology & Computing",
+        "Energy & Environment"
+      ],
+      "competingSourceContracts": "battery-runtime-index-calculator [launch-portfolio.ts]: capacity>=0, load>=1e-9 -> capacity/load idealized index",
+      "proposedDecisionOwner": "Master catalog owner + technology/energy domain owner",
+      "requiredEvidence": "Resolve duplicated title, dimensional units, voltage and efficiency assumptions; independent specialist scope assessment where applicable",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "PACE",
+      "canonicalMasterIds": [
+        402,
+        null
+      ],
+      "candidateDomains": [
+        "Health & Fitness",
+        "Sports"
+      ],
+      "competingSourceContracts": "pace-calculator [launch-portfolio.ts]: elapsed time>=0, distance>0 -> time per distance unit; no enforced sport-specific unit conversions",
+      "proposedDecisionOwner": "Master catalog owner + health domain owner; applicable health specialist",
+      "requiredEvidence": "Resolve Health ID402 versus distinct Sports ID521, unit display and health claims; retain HOLD pending applicable specialist signoff",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    }
+  ]
+}
