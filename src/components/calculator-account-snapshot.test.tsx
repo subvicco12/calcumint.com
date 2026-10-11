@@ -15,6 +15,12 @@ import { SensitivityPanel } from './final-analysis-panels';
 import { referencePresentations } from '@/calculators/final-framework/reference-presentations';
 import { FinalCalculatorRenderer } from './final-calculator-renderer';
 import { FinalResultPresentation } from './final-result-presentation';
+import {registeredRateExport,loanRegisteredRateAnalysis,sipRegisteredRateAnalysis,compoundRegisteredRateAnalysis} from '@/calculators/final-framework/registered-rate-analysis';
+import {loanPaymentCalculator} from '@/calculators/finance/loan-payment';
+import {loanAnalysisCalculator} from '@/calculators/finance/loan-analysis';
+import {sipCalculator} from '@/calculators/finance/sip';
+import {compoundInterestCalculator} from '@/calculators/finance/compound-interest';
+import {runCalculator} from '@/calculators/engine';
 import { CalculatorAccountActions } from './calculator-account-actions';
 afterEach(()=>{cleanup();state.inserts=[];state.defer=false;state.resolve=null;vi.unstubAllGlobals();vi.restoreAllMocks();});
 const identity={calculatorSlug:'sip-calculator',calculatorVersion:1};
@@ -62,4 +68,18 @@ it.each(['pro','business'])('exports complete raw analytic arrays despite presen
  expect(screen.getAllByRole('meter')).toHaveLength(25);fireEvent.click(screen.getByRole('button',{name:'Next sensitivity page'}));
  fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));expect(JSON.parse(await blob!.text()).output.points).toEqual(points);
  fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=await blob!.text();expect(csv).toContain('-1e-12');expect(csv).toContain('50');expect(points).toHaveLength(51);
+});
+
+const rateFixtures=[
+ {name:'ordinary loan',get:()=>{const input={principal:320000,annualRatePercent:0,termMonths:360};return {definition:loanPaymentCalculator,input,output:runCalculator(loanPaymentCalculator,input).output,analysis:loanRegisteredRateAnalysis(input,false),metric:{key:'totalInterest',label:'Total interest'}};}},
+ {name:'canonical loan',get:()=>{const input={principal:100000,annualRatePercent:6,termMonths:360,extraMonthlyPayment:100};return {definition:loanAnalysisCalculator,input,output:runCalculator(loanAnalysisCalculator,input).output,analysis:loanRegisteredRateAnalysis(input,true),metric:{key:'totalInterest',label:'Total interest'}};}},
+ {name:'SIP',get:()=>{const input={monthlyContribution:500,annualReturnPercent:1000,termMonths:1,contributionTiming:'end' as const};return {definition:sipCalculator,input,output:runCalculator(sipCalculator,input).output,analysis:sipRegisteredRateAnalysis(input),metric:{key:'futureValue',label:'Future value'}};}},
+ {name:'Compound',get:()=>{const input={principal:10000,annualRatePercent:1000,years:.01,compoundsPerYear:12};return {definition:compoundInterestCalculator,input,output:runCalculator(compoundInterestCalculator,input).output,analysis:compoundRegisteredRateAnalysis(input),metric:{key:'futureValue',label:'Future value'}};}}
+];
+it.each(rateFixtures)('downloads identical registered raw rate context for $name on paid plans without writes',async ({get})=>{
+ const fixture=get();const output=registeredRateExport(fixture.output,fixture.analysis,fixture.definition,fixture.metric);
+ for(const plan of ['pro','business']){state.plan=plan;let blob:NodeBlob|undefined;vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(value:NodeBlob)=>{blob=value;return 'blob:synthetic';},revokeObjectURL:()=>{}});vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementation(()=>{});
+  render(<CalculatorAccountActions calculatorSlug={fixture.definition.slug} calculatorVersion={fixture.definition.version} input={fixture.input} output={output}/>);fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));expect(JSON.parse(await blob!.text()).output).toEqual(output);
+  fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=await blob!.text();expect(csv).toContain('rateAnalysis');expect(csv).toContain(fixture.definition.id);expect(csv).toContain('registered-rate-comparison');expect(state.inserts).toHaveLength(0);cleanup();vi.restoreAllMocks();
+ }
 });

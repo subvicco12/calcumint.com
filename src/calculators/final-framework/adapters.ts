@@ -1,3 +1,4 @@
+import {loanPaymentCalculator} from "../finance/loan-payment";
 import { loanSchedule } from "./analysis";
 import { runCalculator } from "../engine";
 import { sipCalculator } from "../finance/sip";
@@ -35,6 +36,12 @@ export function loanResult(input:{principal:number;annualRatePercent:number;term
     methodology:"The presentation is derived from the same certified deterministic loan result used for the headline payment.",
     sources:loanAnalysisCalculator.sources
   };
+}
+
+/** Ordinary LoanPayment has aggregate outputs only; never borrow LoanAnalysis rows. */
+export function loanPaymentAggregateResult(input:Parameters<typeof loanResult>[0],output:Parameters<typeof loanResult>[1]):StructuredCalculationResult{
+ const result=loanResult(input,output,[]);
+ return {...result,schedule:undefined,scheduleMetadata:undefined,scenarioVariables:["annualRatePercent","termMonths"],methodology:"The registered loan-payment engine rounds the monthly payment first and derives aggregate repayment and interest from that payment. No period ledger is supplied by this engine.",sources:loanPaymentCalculator.sources};
 }
 
 export function sipResult(input:{monthlyContribution:number;annualReturnPercent:number;termMonths:number;contributionTiming:"beginning"|"end"},output:{futureValue:number;investedAmount:number;estimatedGain:number}):StructuredCalculationResult{
