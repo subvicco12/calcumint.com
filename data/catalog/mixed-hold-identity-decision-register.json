@@ -130,6 +130,173 @@
       "decisionEvidenceLink": null,
       "specialistApprovalEvidence": null,
       "publicationAuthorization": null
+    },
+    {
+      "decisionId": "BRINE_SALT",
+      "canonicalMasterIds": [],
+      "candidateDomains": [
+        "Food & Cooking"
+      ],
+      "competingSourceContracts": "brine-salt-calculator [food/catalog-batch-1.ts]: waterWeightGrams>=0; saltPercentOfWater 0..100 -> water weight * salt percentage /100; not food-preservation guidance",
+      "proposedDecisionOwner": "Master catalog owner + food domain owner; food safety specialist if preservation claims",
+      "requiredEvidence": "Explicit noncanonical disposition or approved master amendment; review salt-percent denominator, units, and safety disclaimers; specialist evidence for any preservation claims",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "SOLAR_PAYBACK",
+      "canonicalMasterIds": [
+        480,
+        78
+      ],
+      "candidateDomains": [
+        "Energy & Environment",
+        "Investing & Wealth"
+      ],
+      "competingSourceContracts": "solar-simple-payback-calculator [energy/catalog-batch-1.ts]: net cost / positive annual savings -> undiscounted years; excludes financing, degradation, maintenance, tariff change and discounting",
+      "proposedDecisionOwner": "Master catalog owner + energy domain owner; applicable financial-risk specialist",
+      "requiredEvidence": "Choose whether simplified model may represent Energy ID480; identify cash-flow assumptions, limitations and financial specialist signoff if applicable",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "SOLAR_DAILY_ENERGY",
+      "canonicalMasterIds": [
+        481
+      ],
+      "candidateDomains": [
+        "Energy & Environment"
+      ],
+      "competingSourceContracts": "solar-daily-energy-calculator [energy/catalog-batch-1.ts]: system kW * peak sun hours * efficiency fraction -> kWh/day, no weather/site simulation",
+      "proposedDecisionOwner": "Master catalog owner + energy domain owner",
+      "requiredEvidence": "Resolve nonexact Solar Panel ID481 mapping; source-specific kW/kWh units, losses, scope and claim review",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "GROSS_MARGIN",
+      "canonicalMasterIds": [
+        139,
+        144
+      ],
+      "candidateDomains": [
+        "Business & Accounting"
+      ],
+      "competingSourceContracts": "profit-margin-calculator [launch-portfolio.ts]: revenue>0, cost>=0 -> (revenue-cost)/revenue*100 simple gross-margin percent; excludes other expenses",
+      "proposedDecisionOwner": "Master catalog owner + business accounting domain owner; applicable financial specialist",
+      "requiredEvidence": "Select Gross Margin ID139 versus nonexact Profit ID144; approve explicit definition of cost, exclusions and percentage output",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "UNIT_AREA_COST",
+      "canonicalMasterIds": [],
+      "candidateDomains": [
+        "Mortgage & Property Finance"
+      ],
+      "competingSourceContracts": "cost-per-square-unit-calculator [launch-portfolio.ts]: cost>=0, area>0 -> generic cost/area in user-selected units",
+      "proposedDecisionOwner": "Master catalog owner + property/finance domain owner",
+      "requiredEvidence": "Choose noncanonical disposition or source-backed canonical identity; avoid presenting generic ratio as property valuation or regulated financial advice",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "IDEAL_GAS_INDEX",
+      "canonicalMasterIds": [
+        334
+      ],
+      "candidateDomains": [
+        "Chemistry"
+      ],
+      "competingSourceContracts": "ideal-gas-pressure-index-calculator [launch-portfolio.ts]: absolute temperature>=0, volume>0 -> temperature/volume index, not physical pressure (no gas quantity or R)",
+      "proposedDecisionOwner": "Master catalog owner + chemistry domain specialist",
+      "requiredEvidence": "Reject automatic equivalence to Ideal Gas Law ID334; require validated units, n and R for physical pressure claim or retain noncanonical index",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "RESISTANCE_GEOMETRY_INDEX",
+      "canonicalMasterIds": [
+        321
+      ],
+      "candidateDomains": [
+        "Physics"
+      ],
+      "competingSourceContracts": "resistivity-index-calculator [launch-portfolio.ts]: length>=0, area>0 -> length/area geometry factor, not resistance in ohms (no material resistivity)",
+      "proposedDecisionOwner": "Master catalog owner + physics/electrical domain specialist",
+      "requiredEvidence": "Reject automatic equivalence to Resistance ID321; require resistivity input and compatible units for resistance claims or retain noncanonical index",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "SENSIBLE_HEAT",
+      "canonicalMasterIds": [],
+      "candidateDomains": [
+        "Physics"
+      ],
+      "competingSourceContracts": "heat-energy-calculator [launch-portfolio.ts]: mass>=0, specific heat>=0, signed temperature change -> Q=m*c*deltaT, no latent heat or phase change",
+      "proposedDecisionOwner": "Master catalog owner + thermodynamics domain specialist",
+      "requiredEvidence": "Determine noncanonical disposition or approved master amendment; sign off on units, signed cooling and scope limitations",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "TRIP_FUEL",
+      "canonicalMasterIds": [
+        461
+      ],
+      "candidateDomains": [
+        "Automotive & EV"
+      ],
+      "competingSourceContracts": "road-trip-fuel-calculator [automotive/catalog-batch-1.ts]: distance km * consumption L/100km /100 -> fuel liters",
+      "proposedDecisionOwner": "Master catalog owner + automotive domain owner",
+      "requiredEvidence": "Decide if Road Trip Fuel matches nonexact Trip Fuel ID461, document units and exclusions and compare any other candidate implementation",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
+    },
+    {
+      "decisionId": "EV_TRACTION_ENERGY",
+      "canonicalMasterIds": [
+        484
+      ],
+      "candidateDomains": [
+        "Energy & Environment"
+      ],
+      "competingSourceContracts": "ev-trip-energy-calculator [energy/catalog-batch-1.ts]: distance km * consumption kWh/100km /100 -> traction kWh, not charging energy",
+      "proposedDecisionOwner": "Master catalog owner + EV/energy domain owner",
+      "requiredEvidence": "Reject automatic equivalence to EV Charging Energy ID484; define traction versus grid charging scope and any specialist assumptions",
+      "decisionStatus": "HOLD",
+      "actualDecisionMaker": null,
+      "decisionEvidenceLink": null,
+      "specialistApprovalEvidence": null,
+      "publicationAuthorization": null
     }
   ]
 }
