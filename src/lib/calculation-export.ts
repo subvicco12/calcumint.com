@@ -1,5 +1,7 @@
+import { copyCalculationData } from "./calculation-snapshot";
 /** Export raw engine values; formatting and on-screen sampling do not affect CSV. */
 export function serializeCalculationCsv(input: Record<string, unknown>, output: Record<string, unknown>): string {
+  ({input,output}=copyCalculationData(input,output));
   const text = (value: unknown): string => {
     if (typeof value === "number") {
       if (!Number.isFinite(value)) throw new Error("Non-finite export value");

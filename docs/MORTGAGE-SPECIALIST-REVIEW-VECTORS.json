@@ -1,0 +1,161 @@
+{
+  "evidenceDateIST": "12 October 2026",
+  "calculatorId": "finance.mortgage",
+  "calculatorSlug": "mortgage-payment",
+  "calculatorVersion": 1,
+  "authority": "proposed source #60 delegated loan-payment v1; code status is not specialist approval",
+  "periodContract": "BLOCKED: not supplied",
+  "vectors": [
+    {
+      "id": "source-golden",
+      "input": {
+        "principal": 100000,
+        "annualRatePercent": 6,
+        "termMonths": 360
+      },
+      "outcome": "aggregate-output",
+      "output": {
+        "monthlyPayment": 599.55,
+        "totalPayment": 215838,
+        "totalInterest": 115838
+      }
+    },
+    {
+      "id": "zero-rate-rounded-total",
+      "input": {
+        "principal": 320000,
+        "annualRatePercent": 0,
+        "termMonths": 360
+      },
+      "outcome": "aggregate-output",
+      "output": {
+        "monthlyPayment": 888.89,
+        "totalPayment": 320000.4,
+        "totalInterest": 0.4
+      }
+    },
+    {
+      "id": "tiny-principal-rounded-zero",
+      "input": {
+        "principal": 0.001,
+        "annualRatePercent": 0,
+        "termMonths": 1
+      },
+      "outcome": "aggregate-output",
+      "output": {
+        "monthlyPayment": 0,
+        "totalPayment": 0,
+        "totalInterest": 0
+      }
+    },
+    {
+      "id": "fractional-principal-small-rate",
+      "input": {
+        "principal": 123456.789,
+        "annualRatePercent": 0.001,
+        "termMonths": 37
+      },
+      "outcome": "aggregate-output",
+      "output": {
+        "monthlyPayment": 3336.72,
+        "totalPayment": 123458.64,
+        "totalInterest": 1.85
+      }
+    },
+    {
+      "id": "upper-rate-long-term",
+      "input": {
+        "principal": 100,
+        "annualRatePercent": 1000,
+        "termMonths": 1200
+      },
+      "outcome": "aggregate-output",
+      "output": {
+        "monthlyPayment": 83.33,
+        "totalPayment": 99996,
+        "totalInterest": 99896
+      }
+    },
+    {
+      "id": "tiny-rate-nonfinite-result",
+      "input": {
+        "principal": 320000,
+        "annualRatePercent": 1e-300,
+        "termMonths": 360
+      },
+      "outcome": "rejected"
+    },
+    {
+      "id": "invalid-principal",
+      "input": {
+        "principal": 0,
+        "annualRatePercent": 6,
+        "termMonths": 360
+      },
+      "outcome": "rejected"
+    },
+    {
+      "id": "invalid-negative-rate",
+      "input": {
+        "principal": 100,
+        "annualRatePercent": -0.01,
+        "termMonths": 12
+      },
+      "outcome": "rejected"
+    },
+    {
+      "id": "invalid-upper-rate",
+      "input": {
+        "principal": 100,
+        "annualRatePercent": 1000.01,
+        "termMonths": 12
+      },
+      "outcome": "rejected"
+    },
+    {
+      "id": "invalid-short-term",
+      "input": {
+        "principal": 100,
+        "annualRatePercent": 6,
+        "termMonths": 0
+      },
+      "outcome": "rejected"
+    },
+    {
+      "id": "invalid-long-term",
+      "input": {
+        "principal": 100,
+        "annualRatePercent": 6,
+        "termMonths": 1201
+      },
+      "outcome": "rejected"
+    },
+    {
+      "id": "invalid-fractional-term",
+      "input": {
+        "principal": 100,
+        "annualRatePercent": 6,
+        "termMonths": 1.5
+      },
+      "outcome": "rejected"
+    }
+  ],
+  "incompatiblePeriodEngineObservation": {
+    "calculatorId": "finance.loan-analysis",
+    "calculatorVersion": 1,
+    "input": {
+      "principal": 320000,
+      "annualRatePercent": 0,
+      "termMonths": 360,
+      "extraMonthlyPayment": 0
+    },
+    "output": {
+      "monthlyPayment": 888.89,
+      "totalPayment": 320000.4,
+      "totalInterest": 0,
+      "payoffMonths": 360,
+      "terminalBalance": 0
+    },
+    "meaning": "Observed comparison only; not a Mortgage period contract or specialist approval"
+  }
+}

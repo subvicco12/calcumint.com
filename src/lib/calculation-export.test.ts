@@ -14,3 +14,7 @@ describe("raw calculation CSV safety", () => {
     expect(() => serializeCalculationCsv({}, { rows: [{ value: undefined }] })).toThrow(/Unsupported/);
   });
 });
+
+it.each([new Date('2026-10-12'),{toJSON:()=>({value:0})},new Map([['value',1]]),Array(1)])('rejects values that JSON would coerce or silently omit %#',value=>{
+ expect(()=>serializeCalculationCsv({}, {value})).toThrow();
+});
