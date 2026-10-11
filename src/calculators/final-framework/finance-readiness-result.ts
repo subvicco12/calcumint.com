@@ -31,9 +31,4 @@ export function financeReadinessResult(definition: Definition, output: Readonly<
     assumptions: financeReadinessAssumptions[definition.slug] ?? [] };
 }
 
-/** A cleared required field is missing, not an explicit zero. Schemas retain all numeric bounds. */
-export function requiredFinanceNumber(value: string): number {
-  if (!value.trim()) return Number.NaN;
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : Number.NaN;
-}
+export { requiredCalculatorNumber as requiredFinanceNumber } from "./numeric-input";

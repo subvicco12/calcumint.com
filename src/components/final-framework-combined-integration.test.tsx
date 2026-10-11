@@ -79,3 +79,43 @@ describe("combined Reference Six route workflow boundaries", () => {
     }
   });
 });
+
+describe("release integration invalid-output boundaries", () => {
+  it.each(["pro", "business"])("disables actual saves/exports and removes derived Loan data when canonical extra payment is invalid on %s", async plan => {
+    session.plan = plan;
+    render(<CalculatorInteractive slug="loan-emi-calculator"/>);
+    const save = await screen.findByRole("button", { name: "Save calculation" });
+    fireEvent.click(screen.getByRole("button", { name: "Advanced" }));
+    for (const value of ["-1", ""]) {
+      fireEvent.change(screen.getByLabelText("Extra monthly payment"), { target: { value } });
+      expect(document.querySelector(".final-calculator-renderer")).toBeNull();
+      expect(screen.queryByLabelText("Scenario comparison")).toBeNull();
+      expect(screen.queryByLabelText("Sensitivity analysis")).toBeNull();
+      expect(document.querySelector("table")).toBeNull();
+      expect((save as HTMLButtonElement).disabled).toBe(true);
+      const capture = captureDownload();
+      for (const name of ["Export CSV", "Export JSON"]) {
+        const button = screen.getByRole("button", { name });
+        expect((button as HTMLButtonElement).disabled).toBe(true);
+        fireEvent.click(button);
+      }
+      expect(capture()).toBeUndefined();
+    }
+    fireEvent.change(screen.getByLabelText("Extra monthly payment"), { target: { value: "0" } });
+    expect((save as HTMLButtonElement).disabled).toBe(false);
+    expect((screen.getByRole("button", { name: "Export CSV" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+  it.each(["pro", "business"])("disables SIP reverse saves/exports when a target is missing and recovers on %s", async plan => {
+    session.plan = plan;
+    render(<CalculatorInteractive slug="sip-calculator"/>);
+    const save = await screen.findByRole("button", { name: "Save calculation" });
+    fireEvent.click(screen.getByRole("button", { name: "Solve monthly contribution" }));
+    fireEvent.change(screen.getByLabelText("Target future value"), { target: { value: "" } });
+    expect((save as HTMLButtonElement).disabled).toBe(true);
+    for (const name of ["Export CSV", "Export JSON"]) expect((screen.getByRole("button", { name }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.getByRole("alert")).toBeTruthy();
+    fireEvent.change(screen.getByLabelText("Target future value"), { target: { value: "100000" } });
+    expect((save as HTMLButtonElement).disabled).toBe(false);
+    expect((screen.getByRole("button", { name: "Export JSON" }) as HTMLButtonElement).disabled).toBe(false);
+  });
+});
