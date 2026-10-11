@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { serializeCalculationCsv } from "@/lib/calculation-export";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import {getPlanEntitlements,type CalcuMintPlan} from "@/lib/entitlements";
@@ -25,14 +26,6 @@ function downloadFile(filename: string, content: string, mime: string) {
   URL.revokeObjectURL(url);
 }
 
-function toCsv(input: Record<string, unknown>, output: Record<string, unknown>) {
-  const rows = [
-    ["section", "field", "value"],
-    ...Object.entries(input).map(([key, value]) => ["input", key, String(value)]),
-    ...Object.entries(output).map(([key, value]) => ["output", key, String(value)])
-  ];
-  return rows.map((row) => row.map((cell) => `"${cell.replaceAll('"', '""')}"`).join(",")).join("\n");
-}
 
 export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, input, output }: Props) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
@@ -113,7 +106,11 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
 
   function exportCsv() {
     if (!output || !entitlements.exports) return;
-    downloadFile(`${calculatorSlug}.csv`, toCsv(input, output), "text/csv;charset=utf-8");
+    try {
+      downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(input, output), "text/csv;charset=utf-8");
+    } catch {
+      setStatus("Could not export calculation: result data is invalid.");
+    }
   }
 
   if (signedIn === false) {
