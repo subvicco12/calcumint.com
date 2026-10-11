@@ -24,15 +24,15 @@ describe("runtime publication authority", () => {
   });
 
   it("fails closed when the publication manifest cannot be established", () => {
-    expect(manifestLoader).toContain("if (!url || !anonKey) return new Set()");
-    expect(manifestLoader).toContain("if (error || !Array.isArray(data)) return new Set()");
+    expect(manifestLoader).toContain('if (!url || !anonKey) return { state: "unavailable", slugs: new Set() }');
+    expect(manifestLoader).toContain('if (error || !Array.isArray(data)) return { state: "unavailable", slugs: new Set() }');
     expect(manifestLoader).toContain("catch {");
-    expect(manifestLoader).toContain("return new Set()");
+    expect(manifestLoader).toContain('return { state: "unavailable", slugs: new Set() }');
   });
 
   it("binds every public runtime surface to the governed manifest", () => {
     for (const source of [home, directory, category, detail, sitemap]) {
-      expect(source).toContain("getPublishedCalculatorSlugs");
+      expect(source).toMatch(/getPublishedCalculatorSlugs|getPublicationSnapshot/);
       expect(source).toContain('dynamic = "force-dynamic"');
     }
     expect(home).toContain("listGovernedPublicCalculators");

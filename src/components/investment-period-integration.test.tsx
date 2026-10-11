@@ -84,12 +84,12 @@ describe("actual investment route projection and download boundaries", () => {
     fireEvent.change(screen.getByLabelText("Contribution timing"), { target: { value: "end" } });
     fireEvent.change(screen.getByLabelText("Term (months)"), { target: { value: "1" } });
     fireEvent.change(screen.getByLabelText("Modeled annual return (%)"), { target: { value: "-20" } });
-    expect(screen.getByRole("table").querySelectorAll("tbody tr")).toHaveLength(1);
+    expect(screen.getByRole("table", { name: "SIP projected monthly snapshots" }).querySelectorAll("tbody tr")).toHaveLength(1);
     fireEvent.click(await screen.findByRole("button", { name: "Export JSON" }));
     const exported = JSON.parse(await download()!.text());
     expect(exported.output.periodProjection.rows[0].values).toEqual(runCalculator(sipCalculator, exported.input).output);
     fireEvent.click(screen.getByRole("button", { name: "Solve monthly contribution" }));
-    expect(screen.queryByRole("table")).toBeNull();
+    expect(screen.queryByRole("table", { name: "SIP projected monthly snapshots" })).toBeNull();
   });
   it("updates Compound frequency and fractional term, preserving exact terminal projection", async () => {
     session.plan = "business"; const download = captureDownload(); render(<CalculatorInteractive slug="compound-interest-calculator" />);
