@@ -1,1 +1,7 @@
-import { describe,expect,it } from "vitest"; import fs from "node:fs"; import path from "node:path"; describe("Final renderer Free visualization semantics",()=>{it("binds declared visualization kinds to renderer surfaces",()=>{const s=fs.readFileSync(path.join(process.cwd(),"src/components/final-calculator-renderer.tsx"),"utf8");expect(s).toContain('data-visualization="composition"');expect(s).toContain('data-visualization="growth-line"');expect(s).toContain('data-visualization="range-indicator"');expect(s).toContain('data-visualization="break-even"');expect(s).toContain("presentation?.freeVisualization");});});
+import {expect,it} from 'vitest';import fs from 'node:fs';import path from 'node:path';
+it('binds declared visualization kinds to the renderer and shared signed series surface',()=>{
+ const renderer=fs.readFileSync(path.join(process.cwd(),'src/components/final-calculator-renderer.tsx'),'utf8');
+ for(const kind of ['composition','range-indicator','break-even'])expect(renderer).toContain(`data-visualization="${kind}"`);
+ expect(renderer).toContain('presentation?.freeVisualization');expect(renderer).toContain('freeVisualization==="growth-line"');expect(renderer).toContain('<ResultSeriesPanel series={result.series[0]}/>');
+ const series=fs.readFileSync(path.join(process.cwd(),'src/components/result-series-panel.tsx'),'utf8');expect(series).toContain('data-visualization="growth-line"');expect(series).toContain('aria-valuetext={displayFinalValue(point.y,series.unit)}');
+});

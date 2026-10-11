@@ -1,11 +1,12 @@
+import {loanPaymentCalculator} from "../finance/loan-payment";
 import { loanSchedule } from "./analysis";
 import { runCalculator } from "../engine";
 import { sipCalculator } from "../finance/sip";
-import { loanAnalysisCalculator } from "../finance/loan-analysis";
+import { loanAnalysisCalculator, type AmortizationRow } from "../finance/loan-analysis";
 import { compoundInterestCalculator } from "../finance/compound-interest";
 import type { StructuredCalculationResult } from "./types";
 
-export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number;payoffMonths?:number;interestSavedVsScheduled?:number;monthsSavedVsScheduled?:number},schedule?:StructuredCalculationResult["schedule"]):StructuredCalculationResult{
+export function loanResult(input:{principal:number;annualRatePercent:number;termMonths:number},output:{monthlyPayment:number;totalPayment:number;totalInterest:number;payoffMonths?:number;interestSavedVsScheduled?:number;monthsSavedVsScheduled?:number;amortization?:readonly AmortizationRow[]},schedule?:StructuredCalculationResult["schedule"]):StructuredCalculationResult{
   return {
     primaryResult:{id:"monthly-payment",label:"Monthly payment",value:output.monthlyPayment},
     metrics:[
@@ -21,13 +22,26 @@ export function loanResult(input:{principal:number;annualRatePercent:number;term
       {id:"principal",label:"Principal",value:input.principal},
       {id:"interest",label:"Interest",value:output.totalInterest}
     ],
-    schedule:schedule??loanSchedule({principal:input.principal,annualRatePercent:input.annualRatePercent,termMonths:input.termMonths}),
+    schedule:schedule??(output.amortization ? output.amortization.filter(row=>row.month===1||row.month%12===0||row.month===(output.payoffMonths??input.termMonths)).map(row=>({id:String(row.month),period:row.month,values:{payment:row.payment,principal:row.principal,interest:row.interest,balance:row.balance}})) : loanSchedule({principal:input.principal,annualRatePercent:input.annualRatePercent,termMonths:input.termMonths})),
+    scheduleMetadata:{
+      caption:"Loan amortization checkpoints",
+      period:{key:"month",label:"Month",unit:"months"},
+      columns:[{key:"payment",label:"Payment"},{key:"principal",label:"Principal paid"},{key:"interest",label:"Interest paid"},{key:"balance",label:"Remaining balance"}],
+      granularity:"checkpoints",
+      terminal:[{column:"month",expected:output.payoffMonths??input.termMonths,tolerance:0},{column:"balance",expected:0,tolerance:0.01}]
+    },
     reverseTargets:["principal","monthlyPayment","termMonths"],
     scenarioVariables:["annualRatePercent","termMonths","extraMonthlyPayment"],
     sensitivityVariables:["annualRatePercent","termMonths"],
     methodology:"The presentation is derived from the same certified deterministic loan result used for the headline payment.",
     sources:loanAnalysisCalculator.sources
   };
+}
+
+/** Ordinary LoanPayment has aggregate outputs only; never borrow LoanAnalysis rows. */
+export function loanPaymentAggregateResult(input:Parameters<typeof loanResult>[0],output:Parameters<typeof loanResult>[1]):StructuredCalculationResult{
+ const result=loanResult(input,output,[]);
+ return {...result,schedule:undefined,scheduleMetadata:undefined,scenarioVariables:["annualRatePercent","termMonths"],methodology:"The registered loan-payment engine rounds the monthly payment first and derives aggregate repayment and interest from that payment. No period ledger is supplied by this engine.",sources:loanPaymentCalculator.sources};
 }
 
 export function sipResult(input:{monthlyContribution:number;annualReturnPercent:number;termMonths:number;contributionTiming:"beginning"|"end"},output:{futureValue:number;investedAmount:number;estimatedGain:number}):StructuredCalculationResult{
