@@ -19,11 +19,22 @@ The production application is the Next.js project under `src/`, built with `npm 
 
 ## Local development
 
+Use Node.js 22 or newer (CI uses Node.js 22) and npm. From the repository root:
+
 ```bash
-npm install
-cp .env.example .env.local
+npm ci
+# For a fresh checkout only; preserve an existing .env.local.
+cp -n .env.example .env.local
 npm run dev
 ```
+
+The template enables only local, non-secret defaults. Leave optional integration settings commented out until needed; uncomment them only with valid nonempty values. Blank assignments such as `SUPABASE_SERVICE_ROLE_KEY=` are invalid. Keep credentials in ignored local files or secure environment settings, never in Git. Production credentials are not required for unit tests or the local application shell.
+
+Without Supabase publication configuration, the calculator directory is empty and individual calculator pages return 404. This preserves the publication gate: repository certification alone does not authorize public visibility. Calculator engines and interactive components can still be developed and tested with the unit suite. Authentication, billing, AI, and database-backed workflows require their respective integration configuration.
+
+Use `npm ci` for fresh checkouts and CI; it installs the committed `package-lock.json` without updating dependency declarations or the lockfile. For an intentional dependency change, use `npm install` and review and commit both the manifest and lockfile changes.
+
+Production environment validation and certification requirements still apply to releases. The local template is not production configuration.
 
 Validation:
 
