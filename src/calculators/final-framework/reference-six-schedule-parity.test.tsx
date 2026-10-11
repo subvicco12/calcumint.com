@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { FinalCalculatorRenderer } from "@/components/final-calculator-renderer";
 import { runCalculator } from "../engine";
 import { loanAnalysisCalculator } from "../finance/loan-analysis";
-import { loanPaymentCalculator } from "../finance/loan-payment";
+import { mortgageCalculator } from "../finance/mortgage";
 import { sipCalculator } from "../finance/sip";
 import { compoundInterestCalculator } from "../finance/compound-interest";
 import { bmiCalculator } from "../health/bmi";
@@ -17,7 +17,7 @@ afterEach(cleanup);
 const loanInput = { principal: 1, annualRatePercent: 0, termMonths: 1, extraMonthlyPayment: 0 };
 const loan = runCalculator(loanAnalysisCalculator, loanInput).output;
 const mortgageInput = { principal: 1200, annualRatePercent: 0, termMonths: 12 };
-const mortgage = runCalculator(loanPaymentCalculator, mortgageInput).output;
+const mortgage = runCalculator(mortgageCalculator, mortgageInput).output;
 const sipInput = { monthlyContribution: 100, annualReturnPercent: 0, termMonths: 12, contributionTiming: "end" as const };
 const sip = runCalculator(sipCalculator, sipInput).output;
 const compoundInput = { principal: 100, annualRatePercent: 10, years: 1, compoundsPerYear: 1 };
@@ -26,7 +26,7 @@ const bmi = runCalculator(bmiCalculator, { weightKg: 70, heightCm: 175 }).output
 const breakEven = runCalculator(breakEvenCalculator, { fixedCosts: 10000, pricePerUnit: 50, variableCostPerUnit: 30 }).output;
 const references = [
   { name: "Loan", result: loanResult(loanInput, loan), presentation: referencePresentations.loanEmi, expected: 1, sources: loanAnalysisCalculator.sources },
-  { name: "Mortgage", result: mortgageResult(mortgageInput, mortgage), presentation: referencePresentations.mortgage, expected: 100, sources: loanPaymentCalculator.sources },
+  { name: "Mortgage", result: mortgageResult(mortgageInput, mortgage), presentation: referencePresentations.mortgage, expected: 100, sources: mortgageCalculator.sources },
   { name: "SIP", result: sipResult(sipInput, sip), presentation: referencePresentations.sip, expected: 1200, sources: sipCalculator.sources },
   { name: "Compound", result: compoundInterestResult(compoundInput, compound), presentation: referencePresentations.compoundInterest, expected: 110, sources: compoundInterestCalculator.sources },
   { name: "BMI", result: bmiResult(bmi), presentation: referencePresentations.bmi, expected: bmi.bmi, sources: bmiCalculator.sources },
