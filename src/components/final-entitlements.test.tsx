@@ -6,6 +6,8 @@ import {FinalResultPresentation} from "./final-result-presentation";
 import {GoalSolverPanel,ScenarioComparisonPanel,SensitivityPanel} from "./final-analysis-panels";
 import type {StructuredCalculationResult} from "@/calculators/final-framework/types";
 
+import { referencePresentations } from "@/calculators/final-framework/reference-presentations";
+
 afterEach(cleanup);
 
 const result:StructuredCalculationResult={
@@ -56,7 +58,7 @@ describe("final calculator entitlement rendering",()=>{
   });
 
   it("hides Pro analysis panels for Free",()=>{
-    render(<><GoalSolverPanel plan="free" target={100} solved={10}/><ScenarioComparisonPanel plan="free" scenarios={[{id:"base",label:"Base",value:100,delta:0}]}/><SensitivityPanel plan="free" points={[{input:1,value:100}]}/></>);
+    render(<><GoalSolverPanel plan="free" presentation={referencePresentations.sip} target={100} solved={10}/><ScenarioComparisonPanel plan="free" presentation={referencePresentations.sip} resultLabel="Future value" scenarios={[{id:"base",label:"Base",value:100,delta:0}]}/><SensitivityPanel plan="free" presentation={referencePresentations.sip} resultLabel="Future value" points={[{input:1,value:100}]}/></>);
     expect(screen.queryByLabelText("Goal Solver")).toBeNull();
     expect(screen.queryByLabelText("Scenario comparison")).toBeNull();
     expect(screen.queryByLabelText("Sensitivity analysis")).toBeNull();
@@ -65,11 +67,11 @@ describe("final calculator entitlement rendering",()=>{
   it("renders Pro analysis panels for Pro and Business",()=>{
     const scenarios=[{id:"base",label:"Base",value:100,delta:0}];
     const points=[{input:1,value:100}];
-    const {rerender}=render(<><GoalSolverPanel plan="pro" target={100} solved={10}/><ScenarioComparisonPanel plan="pro" scenarios={scenarios}/><SensitivityPanel plan="pro" points={points}/></>);
+    const {rerender}=render(<><GoalSolverPanel plan="pro" presentation={referencePresentations.sip} target={100} solved={10}/><ScenarioComparisonPanel plan="pro" presentation={referencePresentations.sip} resultLabel="Future value" scenarios={scenarios}/><SensitivityPanel plan="pro" presentation={referencePresentations.sip} resultLabel="Future value" points={points}/></>);
     expect(screen.getByLabelText("Goal Solver")).not.toBeNull();
     expect(screen.getByLabelText("Scenario comparison")).not.toBeNull();
     expect(screen.getByLabelText("Sensitivity analysis")).not.toBeNull();
-    rerender(<><GoalSolverPanel plan="business" target={100} solved={10}/><ScenarioComparisonPanel plan="business" scenarios={scenarios}/><SensitivityPanel plan="business" points={points}/></>);
+    rerender(<><GoalSolverPanel plan="business" presentation={referencePresentations.sip} target={100} solved={10}/><ScenarioComparisonPanel plan="business" presentation={referencePresentations.sip} resultLabel="Future value" scenarios={scenarios}/><SensitivityPanel plan="business" presentation={referencePresentations.sip} resultLabel="Future value" points={points}/></>);
     expect(screen.getByLabelText("Goal Solver")).not.toBeNull();
     expect(screen.getByLabelText("Scenario comparison")).not.toBeNull();
     expect(screen.getByLabelText("Sensitivity analysis")).not.toBeNull();
