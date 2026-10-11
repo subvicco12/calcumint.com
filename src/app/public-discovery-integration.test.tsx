@@ -10,7 +10,7 @@ vi.mock("@/components/free-user-ad-slot", () => ({ FreeUserAdSlot: () => null })
 import HomePage from "./page";
 import DirectoryPage from "./calculators/page";
 import CategoryPage from "./calculators/[category]/page";
-import DetailPage from "./calculators/[category]/[slug]/page";
+import DetailPage, { generateMetadata } from "./calculators/[category]/[slug]/page";
 import sitemap from "./sitemap";
 
 afterEach(cleanup);
@@ -45,6 +45,20 @@ describe("actual governed public discovery surfaces", () => {
     render(await DirectoryPage()); expect(screen.getByText(/No calculators are currently published/)).toBeTruthy(); cleanup();
     await expect(CategoryPage({ params: Promise.resolve({ category: "finance-investment" }) })).rejects.toThrow("NOT_FOUND");
     await expect(DetailPage({ params: Promise.resolve({ category: "finance-investment", slug: "sip-calculator" }) })).rejects.toThrow("NOT_FOUND");
+  });
+  it("keeps canonical metadata, detail and sitemap aligned as published routes are withdrawn", async () => {
+    const params = Promise.resolve({ category: "finance-investment", slug: "sip-calculator" });
+    authority.state = "available"; authority.slugs = new Set(["sip-calculator"]);
+    expect((await generateMetadata({ params })).alternates?.canonical).toBe("/calculators/finance-investment/sip-calculator");
+    expect((await sitemap()).some(entry => entry.url.endsWith("/finance-investment/sip-calculator"))).toBe(true);
+    for (const state of ["available", "unavailable"]) {
+      authority.state = state; authority.slugs = new Set();
+      expect(await generateMetadata({ params })).toEqual({});
+      await expect(DetailPage({ params })).rejects.toThrow("NOT_FOUND");
+      expect((await sitemap()).some(entry => entry.url.endsWith("/sip-calculator"))).toBe(false);
+    }
+    authority.state = "available"; authority.slugs = new Set(["sip-calculator"]);
+    expect(await generateMetadata({ params: Promise.resolve({ category: "math", slug: "sip-calculator" }) })).toEqual({});
   });
   it("rejects draft, unpublished and wrong-category details even when slugs are supplied", async () => {
     authority.state = "available"; authority.slugs = new Set(["bmi-calculator", "sip-calculator"]);

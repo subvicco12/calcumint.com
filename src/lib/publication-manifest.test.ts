@@ -26,6 +26,15 @@ describe("publication availability evidence", () => {
     state.rpc.mockRejectedValue(new Error("synthetic transport failure"));
     expect((await getPublicationSnapshot()).state).toBe("unavailable");
   });
+  it("marks corrupt or ambiguous manifests unavailable and never leaks a partial valid route", async () => {
+    const loan = calculatorRegistry.getBySlug("loan-emi-calculator")!;
+    const valid = { calculator_key: loan.id, slug: loan.slug, version: loan.version };
+    for (const data of [[valid, null], [valid, { ...valid, version: loan.version + 1 }], [valid, { ...valid, slug: "alternate-loan" }]]) {
+      state.rpc.mockResolvedValue({ data, error: null });
+      expect(await getPublicationSnapshot()).toEqual({ state: "unavailable", slugs: new Set() });
+      expect(await getPublishedCalculatorSlugs()).toEqual(new Set());
+    }
+  });
   it("requires manifest identity/version and repository certification; a forged draft slug grants nothing", async () => {
     const loan = calculatorRegistry.getBySlug("loan-emi-calculator")!;
     const bmi = calculatorRegistry.getBySlug("bmi-calculator")!;
