@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
+import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import {getPlanEntitlements,type CalcuMintPlan} from "@/lib/entitlements";
@@ -59,6 +60,10 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
   }, [calculatorSlug]);
 
   const entitlements=getPlanEntitlements(plan);
+  let snapshot:ReturnType<typeof createCalculationSnapshot>|null=null;
+  let invalidData=false;
+  if(output){try{snapshot=createCalculationSnapshot({calculatorSlug,calculatorVersion,input,output});}catch{invalidData=true;}}
+
 
   async function toggleFavorite() {
     const supabase = createSupabaseBrowserClient();
@@ -80,7 +85,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
   }
 
   async function saveHistory() {
-    if (!output) return;if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){setStatus(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`);return;}
+    if (!snapshot) return;if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){setStatus(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`);return;}
     const supabase = createSupabaseBrowserClient();
     if (!supabase) return;
     const { data: { user } } = await supabase.auth.getUser();
@@ -88,10 +93,10 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
 
     const { error } = await supabase.from("calculation_history").insert({
       user_id: user.id,
-      calculator_slug: calculatorSlug,
-      calculator_version: calculatorVersion,
-      input_data: input,
-      output_data: output
+      calculator_slug: snapshot.calculatorSlug,
+      calculator_version: snapshot.calculatorVersion,
+      input_data: snapshot.input,
+      output_data: snapshot.output
     });
     setStatus(error
       ? plan === "free" ? "Could not save. Free accounts can keep up to 20 calculations." : "Could not save calculation."
@@ -100,14 +105,14 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
   }
 
   function exportJson() {
-    if (!output || !entitlements.exports) return;
-    downloadFile(`${calculatorSlug}.json`, JSON.stringify({ calculatorSlug, calculatorVersion, input, output }, null, 2), "application/json");
+    if (!snapshot || !entitlements.exports) return;
+    downloadFile(`${calculatorSlug}.json`, serializeCalculationJson(snapshot), "application/json");
   }
 
   function exportCsv() {
-    if (!output || !entitlements.exports) return;
+    if (!snapshot || !entitlements.exports) return;
     try {
-      downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(input, output), "text/csv;charset=utf-8");
+      downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(snapshot.input, snapshot.output), "text/csv;charset=utf-8");
     } catch {
       setStatus("Could not export calculation: result data is invalid.");
     }
@@ -121,13 +126,14 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
   return (
     <div className="account-actions" aria-live="polite">
       <button className="button secondary" type="button" onClick={toggleFavorite}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
-      <button className="button secondary" type="button" onClick={saveHistory} disabled={!output}>Save calculation</button>
+      <button className="button secondary" type="button" onClick={saveHistory} disabled={!snapshot}>Save calculation</button>
       {entitlements.exports ? (
         <>
-          <button className="button secondary" type="button" onClick={exportCsv} disabled={!output}>Export CSV</button>
-          <button className="button secondary" type="button" onClick={exportJson} disabled={!output}>Export JSON</button>
+          <button className="button secondary" type="button" onClick={exportCsv} disabled={!snapshot}>Export CSV</button>
+          <button className="button secondary" type="button" onClick={exportJson} disabled={!snapshot}>Export JSON</button>
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
+      {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
       {status && <span className="muted">{status}</span>}
     </div>
   );
