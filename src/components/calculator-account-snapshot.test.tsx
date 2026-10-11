@@ -11,6 +11,8 @@ vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>{
  const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:null}),then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({data:null,count:0}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.inserts.push(value);return {error:null};}};
  return {auth:{getUser:()=>state.defer?new Promise(resolve=>{state.resolve=resolve;}):Promise.resolve({data:{user:{id:'synthetic-user'}}})},from:()=>query};
 }}));
+import { SensitivityPanel } from './final-analysis-panels';
+import { referencePresentations } from '@/calculators/final-framework/reference-presentations';
 import { FinalCalculatorRenderer } from './final-calculator-renderer';
 import { FinalResultPresentation } from './final-result-presentation';
 import { CalculatorAccountActions } from './calculator-account-actions';
@@ -48,4 +50,16 @@ it.each(['free','pro','business'] as const)('aligns both result presentations wi
   if(plan!=='free')for(const name of ['Export CSV','Export JSON'])expect((screen.getByRole('button',{name}) as HTMLButtonElement).disabled).toBe(true);
   view.rerender(fixture(0));expect(screen.queryByRole('alert')).toBeNull();expect((save as HTMLButtonElement).disabled).toBe(false);expect(document.querySelector('.result-box,.result-hero')?.textContent).toContain('0');cleanup();
  }
+});
+
+it.each(['free','pro','business'] as const)('isolates invalid analytic presentation from core while rejecting the same nonfinite raw account payload on %s',async plan=>{
+ state.plan=plan;const points=[{input:0,value:Infinity}];render(<><FinalCalculatorRenderer result={{primaryResult:{id:'value',label:'Core',value:123}}} plan={plan}/><SensitivityPanel plan={plan} presentation={referencePresentations.sip} resultLabel="Value" points={points}/><CalculatorAccountActions {...identity} input={{rate:0}} output={{value:123,points}}/></>);
+ const save=await screen.findByRole('button',{name:'Save calculation'});expect((save as HTMLButtonElement).disabled).toBe(true);expect(document.querySelector('.result-box')?.textContent).toContain('123');expect(screen.getAllByRole('alert')).toHaveLength(plan==='free'?1:2);expect(screen.queryByRole('meter')).toBeNull();
+});
+it.each(['pro','business'])('exports complete raw analytic arrays despite presentation paging on %s',async plan=>{
+ state.plan=plan;let blob:NodeBlob|undefined;vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(value:NodeBlob)=>{blob=value;return 'blob:synthetic';},revokeObjectURL:()=>{}});vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementation(()=>{});
+ const points=Array.from({length:51},(_,input)=>({input,value:input===50?-1e-12:input}));render(<><SensitivityPanel plan={plan as 'pro'|'business'} presentation={referencePresentations.sip} resultLabel="Value" points={points}/><CalculatorAccountActions {...identity} input={{rate:0}} output={{points}}/></>);
+ expect(screen.getAllByRole('meter')).toHaveLength(25);fireEvent.click(screen.getByRole('button',{name:'Next sensitivity page'}));
+ fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));expect(JSON.parse(await blob!.text()).output.points).toEqual(points);
+ fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=await blob!.text();expect(csv).toContain('-1e-12');expect(csv).toContain('50');expect(points).toHaveLength(51);
 });
