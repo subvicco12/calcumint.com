@@ -1,3 +1,4 @@
+import { inspectStructuredResult } from "./result-inspection";
 import type { StructuredCalculationResult } from "./types";
 import type { StructuredResultContract } from "./structured-result";
 import { inspectScheduleContract } from "./schedule-contract";
@@ -8,6 +9,7 @@ import { inspectScheduleContract } from "./schedule-contract";
  * recalculated here.
  */
 export function toRendererResult(result: StructuredResultContract): StructuredCalculationResult {
+  if(!result?.primaryResult)throw new Error("A valid structured primary result is required.");
   const metadata = result.schedule?.metadata;
   const periodKey = metadata?.period.key ?? result.schedule?.columns[0] ?? "period";
   if (metadata && result.schedule) {
@@ -47,5 +49,6 @@ export function toRendererResult(result: StructuredResultContract): StructuredCa
     const issues = inspectScheduleContract(rendered.schedule ?? [], metadata);
     if (issues.length) throw new Error(issues.join(" "));
   }
+  if(!inspectStructuredResult(rendered).coreValid)throw new Error("Structured result core data is invalid.");
   return rendered;
 }
