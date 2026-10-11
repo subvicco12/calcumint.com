@@ -132,3 +132,21 @@ describe('Mortgage aggregate export reconciliation',()=>{
   }
  });
 });
+describe('Mortgage advanced analytical exports',()=>{
+ it.each(['pro','business'])('exports exact available/unavailable comparison evidence and entered context on %s',async plan=>{
+  session.plan=plan;const download=captureDownload();render(<CalculatorInteractive slug='mortgage-payment'/>);
+  fireEvent.change(screen.getByLabelText('Annual mortgage rate (%)'),{target:{value:'1000'}});fireEvent.click(screen.getByRole('button',{name:'Advanced'}));
+  fireEvent.click(screen.getByText('Rate comparison totals'));
+  const table=screen.getByRole('table',{name:'Mortgage aggregate rate comparison totals'});expect(table.textContent).toContain('Unavailable');
+  fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));const exported=JSON.parse(await download()!.text());
+  expect(exported.output.mortgageContext).toEqual({version:1,propertyPrice:400000,downPayment:80000,scope:'principal-and-interest-only'});
+  expect(exported.output.rateAnalysis.kind).toBe('aggregate-rate-comparison');
+  for(const point of [...exported.output.rateAnalysis.scenarios,...exported.output.rateAnalysis.sensitivity]){
+   if(point.state==='available')expect(point.output).toEqual(runCalculator(mortgageCalculator,point.input).output);
+   else expect(point.reason).toBe('outside-supported-inputs');
+  }
+  for(const point of exported.output.rateAnalysis.sensitivity.filter((p:{state:string})=>p.state==='available'))expect(screen.getAllByRole('meter').some(m=>Number(m.getAttribute('value'))===point.output.monthlyPayment)).toBe(true);
+  fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=parseCsv(await download()!.text());
+  for(const field of ['mortgageContext','rateAnalysis'])expect(JSON.parse(csv.find(row=>row[1]===field)![2])).toEqual(exported.output[field]);
+ });
+});
