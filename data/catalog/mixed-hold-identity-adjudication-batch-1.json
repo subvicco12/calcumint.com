@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sourceBaselineMain": "c57d24146c4957d6e2655dca26e1edb53c6862f6",
+  "purpose": "First decision-ready identity adjudication batch. Recommendations are source-backed proposals, not owner decisions, specialist approvals, certification or publication.",
+  "cases": [
+    {
+      "slugs": [
+        "travel-time-calculator",
+        "time-from-distance-speed-calculator"
+      ],
+      "masterCandidates": [
+        510
+      ],
+      "proposedIdentity": "Prefer travel-time-calculator as candidate for Travel & Everyday ID510 because its km/kmh moving-hours contract is travel-specific; retain generic time-from-distance-speed as separate noncanonical candidate pending owner decision.",
+      "contractDifference": "distanceKm/speedKmh -> moving hours excluding stops versus generic compatible-unit distance/speed -> time",
+      "requiredDecision": "Master catalog owner and travel domain owner explicitly select ID510 implementation and decide disposition of other slug.",
+      "status": "awaiting-owner-authorization"
+    },
+    {
+      "slugs": [
+        "power-calculator",
+        "power-from-work-calculator"
+      ],
+      "masterCandidates": [
+        222,
+        308
+      ],
+      "proposedIdentity": "Physics implementation power-calculator is a candidate for Physics ID308; Math ID222 cannot be assigned automatically; second source remains separate until scope and units adjudicated.",
+      "contractDifference": "Physics work/time with positive time and unit-dependent result versus launch work/time without enforced unit semantics",
+      "requiredDecision": "Master owner resolves duplicate titles, physics units and separate Math scope.",
+      "status": "awaiting-owner-authorization"
+    },
+    {
+      "slugs": [
+        "distance-calculator"
+      ],
+      "masterCandidates": [
+        277,
+        511
+      ],
+      "proposedIdentity": "Speed × time is potentially travel/kinematics distance, not automatically geometric point-to-point distance.",
+      "contractDifference": "signed finite speed * nonnegative time, compatible units; neither geometric coordinates nor travel constraints enforced",
+      "requiredDecision": "Master owner and geometry/travel owners decide ID511 versus ID277 or noncanonical.",
+      "status": "awaiting-owner-authorization"
+    },
+    {
+      "slugs": [
+        "tip-amount-calculator",
+        "bill-with-tip-calculator"
+      ],
+      "masterCandidates": [
+        116
+      ],
+      "proposedIdentity": "Two distinct output variants of nonexact Tip Calculator ID116, not interchangeable.",
+      "contractDifference": "tip amount versus bill total including tip",
+      "requiredDecision": "Finance/domain owner specifies canonical output(s), tax and rounding scope; applicable specialist approval if needed.",
+      "status": "awaiting-owner-and-applicable-specialist-review"
+    },
+    {
+      "slugs": [
+        "discount-amount-calculator",
+        "sale-price-calculator"
+      ],
+      "masterCandidates": [
+        117
+      ],
+      "proposedIdentity": "Two distinct output variants of nonexact Discount Calculator ID117.",
+      "contractDifference": "discount amount versus final sale price",
+      "requiredDecision": "Finance/domain owner specifies output(s), taxes and rounding scope; applicable specialist approval if needed.",
+      "status": "awaiting-owner-and-applicable-specialist-review"
+    },
+    {
+      "slugs": [
+        "pace-calculator"
+      ],
+      "masterCandidates": [
+        402,
+        521
+      ],
+      "proposedIdentity": "Exact Health & Fitness ID402 title is a candidate; Sports ID521 Running Pace is a different canonical title and cannot be substituted.",
+      "contractDifference": "generic elapsed time / distance, no enforced running unit conversions",
+      "requiredDecision": "Master/health owner decides ID402 contract, unit display and claims; applicable health specialist signoff required.",
+      "status": "awaiting-owner-and-specialist-review"
+    }
+  ],
+  "authorization": {
+    "ownerDecisionRecorded": false,
+    "specialistSignoffRecorded": false,
+    "ledgerApprovalAuthorized": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false
+  }
+}
