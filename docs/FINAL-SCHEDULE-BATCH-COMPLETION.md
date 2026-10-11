@@ -3,7 +3,7 @@
 Status: implemented for draft review; specialist approval, publication and release remain gated.
 Baseline: main `caffafe639350ca0c2c2cf33ae1f099294f5af54`.
 
-Authority: CalcuMint Final Master Blueprint and Product Architecture 2026, sections 3 (shared pipeline), 5 (result reconciliation), 9 (cross-plan parity), 10 (large structured results), 21 (Reference Six), and 24 (definition of done). Catalog workbook `CalcuMint_Master_Calculator_Catalog_2026 (1) (1).xlsx`, Reference Six sheet (worksheet 4), rows 2 (Loan full schedule), 4 (Compound detailed periods), and 5 (Mortgage amortization). These requirements guide the scope; this ledger does not certify the full blueprint.
+Authority: CalcuMint Final Master Blueprint and Product Architecture 2026, sections 3 (shared pipeline), 5 (result reconciliation), 9 (cross-plan parity), 10 (advanced analysis architecture), 21 (Reference Six), and 24 (definition of done). Catalog workbook `CalcuMint_Master_Calculator_Catalog_2026 (1) (1).xlsx`, Reference Six sheet (worksheet 4), rows 2 (Loan full schedule), 4 (Compound detailed periods), and 5 (Mortgage amortization). These requirements guide the scope; this ledger does not certify the full blueprint.
 
 Completed:
 - Additive schedule metadata declares period identity, ordered labels/optional explicit units, complete versus checkpoint granularity, and optional terminal expectations/tolerance. Invalid schema, unknown columns, nonfinite values, duplicate identities, missing periods and terminal mismatches fail visibly; sparse cells stay missing, zero stays zero.
