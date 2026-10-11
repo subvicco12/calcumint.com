@@ -1,3 +1,4 @@
+import { mortgageCalculator } from "../finance/mortgage";
 import { describe,expect,it } from "vitest";
 import { compoundInterestResult,loanResult,sipResult } from "./adapters";
 import { bmiResult,breakEvenResult,mortgageResult } from "./reference-adapters";
@@ -64,7 +65,8 @@ describe("final result adapters",()=>{
     expect(result.primaryResult.value).toBe(output.monthlyPayment);
     expect(result.metrics!.find(metric=>metric.id==="interest")!.value).toBe(output.totalInterest);
     expect(result.composition!.reduce((sum,item)=>sum+item.value,0)).toBeCloseTo(output.totalPayment,2);
-    expect(result.sources).toEqual(loanPaymentCalculator.sources);
+    expect(result.sources).toEqual(mortgageCalculator.sources);
+    expect(result.sources).toEqual(expect.arrayContaining([...loanPaymentCalculator.sources]));
   });
   it("reconciles BMI draft reference presentation without publishing it",()=>{
     const output=runCalculator(bmiCalculator,{weightKg:70,heightCm:175}).output;

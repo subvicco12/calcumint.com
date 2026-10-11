@@ -90,7 +90,7 @@ describe("Final Calculator Framework", () => {
     expect(referencePresentations.bmi.level).toBe("analytical");
   });
 
-  it("publishes the certified mortgage reference on its canonical loans route", () => {
+  it("registers the source Mortgage candidate with canonical loans content; publication remains independently gated", () => {
     const mortgage = calculatorRegistry.getBySlug("mortgage-payment");
     expect(mortgage?.title).toBe("Mortgage Calculator");
     expect(mortgage?.reviewStatus).toBe("certified");
