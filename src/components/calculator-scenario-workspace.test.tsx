@@ -74,7 +74,7 @@ it('groups eligible what-if inputs in a named scenario fieldset',()=>{
  render(<CalculatorScenarioWorkspace plan="pro" snapshot={percentage} download={vi.fn()}/>);
  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
  const group=screen.getByRole('group',{name:/What-if preview for scenario A/});
- expect(group.querySelectorAll('input')).toHaveLength(2);
+ expect(group.querySelectorAll('input[type="number"]')).toHaveLength(2);
  expect(group.textContent).toContain('original capture stays unchanged');
  expect(screen.getByRole('spinbutton',{name:'percentage'})).toBeTruthy();
 });
