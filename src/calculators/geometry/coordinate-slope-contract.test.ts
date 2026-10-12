@@ -19,6 +19,12 @@ describe("approved Geometry coordinate slope candidate (not publication authorit
     expect(a.value).toBe(b.value);
     expect(a.value).toBe(2);
   });
+  it("preserves the numeric rise/run slope through an origin-anchored adapter", () => {
+    const legacy = { rise: -8, run: 4 };
+    const migrated = { x1: 0, y1: 0, x2: legacy.run, y2: legacy.rise };
+    expect(slopeCalculator.calculate(migrated, {}).value).toBe(legacy.rise / legacy.run);
+    expect(slopeCalculator.inputSchema.safeParse({ x1: 0, y1: 0, x2: 0, y2: 5 }).success).toBe(false);
+  });
   it("rejects nonfinite coordinates", () => {
     expect(slopeCalculator.inputSchema.safeParse({ x1: Infinity, y1: 0, x2: 1, y2: 2 }).success).toBe(false);
   });
