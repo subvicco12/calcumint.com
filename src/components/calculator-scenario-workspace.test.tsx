@@ -102,3 +102,27 @@ it('keeps historical JSON and CSV exports identical after what-if preview and in
  expect(download.mock.calls[4][1]).toBe(originalJson);
  expect(download.mock.calls[5][1]).toBe(originalCsv);
 });
+
+it('previews deterministic sensitivity in the shared workspace without changing captured JSON or CSV',()=>{
+ const download=vi.fn();
+ const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ render(<CalculatorScenarioWorkspace plan="pro" snapshot={percentage} download={download}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set CSV'}));
+ const json=download.mock.calls[0][1],csv=download.mock.calls[1][1];
+ fireEvent.change(screen.getByRole('textbox',{name:/Candidate values/}),{target:{value:'10, 20, 30'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview sensitivity A'}));
+ const table=screen.getByRole('table',{name:/Sensitivity preview for scenario A/});
+ expect(table.textContent).toContain('25');
+ expect(table.textContent).toContain('50');
+ expect(table.textContent).toContain('75');
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set CSV'}));
+ expect(download.mock.calls[2][1]).toBe(json);
+ expect(download.mock.calls[3][1]).toBe(csv);
+ fireEvent.change(screen.getByRole('textbox',{name:/Candidate values/}),{target:{value:'not-a-number'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview sensitivity A'}));
+ expect(screen.getByRole('alert').textContent).toContain('captured history is unchanged');
+ expect(screen.queryByRole('table',{name:/Sensitivity preview for scenario A/})).toBeNull();
+});
