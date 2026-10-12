@@ -4,6 +4,8 @@ import { auditCatalogSlugReviewLedger, type CatalogSlugReview } from "./catalog-
 import { buildCatalogCertificationQueueReport } from "./catalog-certification-queue-report";
 import { calculatorRegistry } from "./registry";
 import { inspectCertificationEvidencePacket } from "./certification-evidence-packet";
+import { auditLaunchCertificationDefinitions } from "./launch-certification";
+import { getPublicCalculatorContent } from "./public-content";
 
 it("exports reviewed-identity shortlist and packet readiness without granting certification", () => {
   const csv=readFileSync("data/catalog/master-catalog-2026.csv","utf8");
@@ -53,7 +55,9 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
   const six=sixSlugs.map(slug=>{
     const d=definitions.get(slug);
     if(!d)throw new Error("Missing six-candidate registry definition: "+slug);
-    return {id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,formulaCount:d.formulas.length,sourceCount:d.sources.length,goldenTestCount:d.goldenTests?.length??0,exampleCount:d.examples.length};
+    const issues=auditLaunchCertificationDefinitions([d],getPublicCalculatorContent);
+    const titles=report.rows.filter(row=>row.title.trim().toLowerCase()===d.title.trim().toLowerCase()).map(row=>({masterId:row.masterId,domain:row.domain,status:row.status}));
+    return {id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,formulaCount:d.formulas.length,sourceCount:d.sources.length,goldenTestCount:d.goldenTests?.length??0,exampleCount:d.examples.length,launchAuditIssues:issues,catalogTitleCandidates:titles,sourceReviewDomain:audit.approvedDomains[d.slug]??null,publicationApproved:false};
   });
   console.info("SIX_STANDARD_CANDIDATE_EVIDENCE",JSON.stringify(six));
   expect(six.every(d=>d.riskClass==="standard"&&d.reviewStatus==="certified")).toBe(true);
