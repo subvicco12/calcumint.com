@@ -126,3 +126,29 @@ it('previews deterministic sensitivity in the shared workspace without changing 
  expect(screen.getByRole('alert').textContent).toContain('captured history is unchanged');
  expect(screen.queryByRole('table',{name:/Sensitivity preview for scenario A/})).toBeNull();
 });
+
+it('rejects empty, non-finite and oversized sensitivity series while retaining captured comparison and exports',()=>{
+ const download=vi.fn();
+ const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ render(<CalculatorScenarioWorkspace plan="business" snapshot={percentage} download={download}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ const input=screen.getByRole('textbox',{name:/Candidate values/});
+ for(const invalid of ['', '10,,20', 'Infinity', Array(26).fill('1').join(',')]){
+  fireEvent.change(input,{target:{value:invalid}});
+  fireEvent.click(screen.getByRole('button',{name:'Preview sensitivity A'}));
+  expect(screen.getByRole('alert').textContent).toContain('captured history is unchanged');
+  expect(screen.queryByRole('table',{name:/Sensitivity preview for scenario A/})).toBeNull();
+ }
+ expect(screen.getByRole('table',{name:'Captured engine outputs'}).textContent).toContain('50');
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ expect(JSON.parse(download.mock.calls[0][1]).scenarios[0].output).toEqual({result:50});
+});
+it('never exposes sensitivity previews to Free or excluded mortgage engines',()=>{
+ const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const view=render(<CalculatorScenarioWorkspace plan="free" snapshot={percentage} download={vi.fn()}/>);
+ expect(screen.queryByRole('button',{name:/Preview sensitivity/})).toBeNull();
+ const mortgage=createCalculationSnapshot({calculatorSlug:'mortgage-calculator',calculatorVersion:1,input:{principal:100,termMonths:12},output:{monthlyPayment:10}});
+ view.rerender(<CalculatorScenarioWorkspace plan="pro" snapshot={mortgage} download={vi.fn()}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ expect(screen.queryByRole('button',{name:/Preview sensitivity/})).toBeNull();
+});
