@@ -26,6 +26,7 @@ it("runs against the complete canonical 540-entry catalog without inventing mapp
  const {readFileSync}=await import("node:fs");
  const csv=readFileSync("data/catalog/master-catalog-2026.csv","utf8");
  const report=buildCatalogCertificationQueueReport(csv);
+ console.info("CATALOG_CERTIFICATION_QUEUE_COUNTS",JSON.stringify(report.summary));
  expect(report.rows).toHaveLength(540);
  expect(report.summary.totalMaster).toBe(540);
  expect(Object.values(report.summary.counts).reduce((a,b)=>a+b,0)).toBe(540);
