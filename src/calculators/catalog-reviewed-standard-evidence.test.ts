@@ -11,6 +11,21 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
   const audit=auditCatalogSlugReviewLedger(ledger);
   const report=buildCatalogCertificationQueueReport(csv,{slugDomains:audit.approvedDomains});
   const definitions=new Map(calculatorRegistry.list().map(definition=>[definition.slug,definition]));
+  const registry=calculatorRegistry.list();
+  const categoryCounts=Object.entries(registry.reduce((acc,definition)=>{
+    const k=definition.category+"|"+definition.riskClass+"|"+definition.reviewStatus;
+    acc[k]=(acc[k]??0)+1;return acc;
+  },{} as Record<string,number>)).sort(([a],[b])=>a.localeCompare(b));
+  const standardCertified=registry.filter(d=>d.riskClass==="standard"&&d.reviewStatus==="certified");
+  const standardReviewed=registry.filter(d=>d.riskClass==="standard"&&d.reviewStatus==="reviewed");
+  console.info("STANDARD_RISK_REGISTRY_AUDIT",JSON.stringify({
+    totalRegistered:registry.length,
+    standardCertified:standardCertified.length,
+    standardReviewed:standardReviewed.length,
+    certifiedFirst25:standardCertified.slice(0,25).map(d=>({id:d.id,slug:d.slug,version:d.version,category:d.category})),
+    categoryRiskReviewCounts:categoryCounts,
+    databaseManifestCrossCheckPending:true,
+  }));
   const candidates=report.rows.filter(row=>{
     if(!row.registrySlug||row.riskClass!=="standard"||row.registryReviewStatus!=="reviewed")return false;
     const definition=definitions.get(row.registrySlug);
