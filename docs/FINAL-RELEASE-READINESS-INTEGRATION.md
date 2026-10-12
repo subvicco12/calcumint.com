@@ -149,3 +149,25 @@ Only SIP/Compound engineering questions in the original16 matrix change; identit
 ## Release prerequisites remain separate
 
 The final packet supplies exact source review order, framework/accessibility and financial/YMYL/domain responsibilities, authorized protected evidence adjudication and nonexecuted deployment prerequisites. Actual assistive-technology/RSC validation and owner/admin release decisions remain required; code evidence cannot waive specialist/HOLD or publication ID/version gates. BMI/BreakEven remain draft-gated. No formula, certification/publication promotion, RLS/security change, database write, approval, merge or deployment. Final local typecheck/affected lint and exact-head CI/Actions runtime are reported in the PR. No local full build/install; billed telemetry remains unavailable.
+
+# Batch 18 — registered trust metadata for lifecycle-blocked generic value interfaces
+
+Review date: 12 October 2026 IST. This cumulative main proposal retains unchanged #1387 (`047f0e851668169c2e8ec060b606fbf1f0e01036`) and earlier provenance; main baseline remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. The existing review packet now includes that source head and this local readiness increment. No source PR is edited, closed, approved or merged.
+
+## Proven omission and bounded engineering result
+
+Generic TechnologyTool, HealthTool and nonmigrated EngineeringTool rendered result/methodology prose without the registered definition's source citations or exact formula text. A shared presentation-only adapter now retains caller labels/units/value/prose/warnings and appends existing registered formula descriptions/expressions, with unmodified source metadata. Missing source/formula metadata stays absent instead of being invented; existing methodology survives. Both medical cautions remain verbatim. Engineering account identity uses the actual registered version instead of a literal1. No formula, numeric coercion, input/default, output/schema, clinical rule or paid feature changes.
+
+The exact changed cohort is51 generic interfaces:20 Technology,14 Health and17 Engineering fallbacks. Already migrated engineering paths and the six newer Technology definitions are excluded. Existing lifecycle guards prove37 code-reviewed definitions and14 Health drafts; these are not51 certified/published calculators. The four compatibility callers remain unchanged and lifecycle-blocked. This source visibility improves local engineering readiness without certification, publication or specialist approval.
+
+## Evidence
+
+75 focused tests across10files pass: test-first missing-source workflows; actual registered output/version/formula/source mapping for all51 changed paths; representative bandwidth/BMR/asphalt core/trust and invalid-input recovery; exact raw JSON/CSV through actual account actions on paid plans with Free export gates; zero/signed/tiny/extreme pure adapter preservation and honest absent metadata; legacy lifecycle/inventory boundaries; Reference Six integration; existing snapshots and publication/version protections. One export fixture initially used60seconds while the UI default is10; its expected input/output was corrected without changing production defaults. Account auth/persistence/download boundaries are mocked; no real database writes occur.
+
+Chromium checks bandwidth/BMR/asphalt at320pixels (Free) and1280pixels (Business): keyboard methodology/Sources disclosures, trust in accessibility snapshots, cleared-input recovery, clinical caution and no overflow/page errors. Actual components/CSS/account UI are used; plan/auth/read boundaries are mocked. Pro export/core behavior is covered by DOM integration. This is not deployed-route or actual screen-reader certification.
+
+Original16 candidate matrix/checklists, Mortgage worksheet/vector questions and period BLOCKED state remain unchanged. Existing registry counts and dated209anonymous publication observations are reused, not refreshed; protected specialist/HOLD/deployed evidence remains UNKNOWN. No broader registry or publication audit occurs.
+
+## Required review remains separate
+
+Applicable domain/clinical-YMYL and framework/accessibility owners must review sources, methodology and UI evidence; actual assistive-technology/RSC checks remain separate. Code-reviewed/draft status is not specialist approval or route readiness. The review packet retains protected owner adjudication and normal immutable-version/certification/RLS/publication/deployment prerequisites without executing them. No certification/publication promotion, database write, approval, formula/security change, merge or deployment. Final local typecheck/affected lint and exact-head mandatory CI/Actions runtime are recorded in the draft PR. No local full build/install; billed telemetry is unavailable.

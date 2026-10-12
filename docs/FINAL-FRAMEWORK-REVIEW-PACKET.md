@@ -1,6 +1,6 @@
 # Final Framework cumulative review packet
 
-Prepared 12 October 2026 IST. This packet is engineering evidence for the new main-based candidate after #1386, not release, specialist or publication approval. Candidate head and final mandatory CI are recorded in its draft PR body. Main baseline remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`.
+Prepared 12 October 2026 IST. This packet is engineering evidence for the new main-based candidate after #1387, not release, specialist or publication approval. Candidate head and final mandatory CI are recorded in its draft PR body. Main baseline remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`.
 
 ## Exact source review sequence
 
@@ -14,6 +14,7 @@ Prepared 12 October 2026 IST. This packet is engineering evidence for the new ma
 | #1384 | a908d9c65406784f6344c6c8de9f69257f299d99 | Registered rate authority, independent unavailable requests and aggregate-only ordinary LoanPayment |
 | #1385 | 9e19a94959ec2a532079e5730befd6bc2c542c1d | Accessible signed series data and keyboard schedule scrolling |
 | #1386 | a4ae8b833c7f4e27f64cfba66657ddb4e6037d15 | Recoverable account operation exclusion, identity-scoped feedback and individual reviewer worksheets |
+| #1387 | 047f0e851668169c2e8ec060b606fbf1f0e01036 | Truthful signed overview/reference data and finite-value containment |
 
 The preferred review path is the current cumulative draft against main, retaining these commits. Superseding separate integration merges is proposed only; no source PR is closed, edited, approved or merged. Do not merge duplicate source changes separately after accepting the cumulative candidate.
 
@@ -34,3 +35,9 @@ Mortgage remains aggregate-only with ownership costs excluded. Proposed registra
 5. Only authorized owner/admin release decisions may proceed after the existing certification, immutable-version, RLS, publication ID/slug/version and normal CI gates pass. Deployment authorization and approved live route verification are separate subsequent steps.
 
 No database write, approval, certification/publication promotion, merge, deployment or production change occurs in this packet. Raw formulas and math remain unchanged. Billed Codex telemetry is unavailable; measured automatic Actions runtime is recorded in the draft PR.
+
+## Batch 18 local trust-readiness increment
+
+The generic Technology/Health/nonmigrated Engineering value paths now display exact registered formula/source metadata alongside preserved methodology and medical cautions. The bounded51-interface cohort consists of37 code-reviewed definitions (20 Technology/17 Engineering) and14 Health drafts. It is not a certified or published cohort. Compatibility caller lifecycle guards and the four-caller inventory remain unchanged; metadata visibility does not activate or converge blocked calculators.
+
+The original16 certified-candidate matrix remains unchanged. Registered inventory, protected reviewer/HOLD evidence, dated anonymous publication evidence and deployed visibility are separate. This local trust increment cannot satisfy specialist approval, certification or publication requirements; applicable domain/clinical-YMYL and accessibility review remains required before any later transition.
