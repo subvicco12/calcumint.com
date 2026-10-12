@@ -68,3 +68,22 @@ it('round-trips the complete scenario array from CSV into the same JSON evidence
  expect(expected.scenarios[0].notes).toBe('=SUM(A1:A2)');
  expect(csv).not.toContain('differenceFromBaseline');
 });
+
+it('preserves scenario slot order, multiline notes and metadata through the complete CSV evidence cell',()=>{
+ const base=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const meta={schemaVersion:1 as const,calculatorSlug:base.calculatorSlug,calculatorVersion:1,inputs:{},outputs:{result:{label:'Amount',unit:'USD'}}};
+ let captures=captureScenario([],'A',base,'first\\nsecond',meta);
+ captures=captureScenario(captures,'C',base,'=HYPERLINK("example")',meta);
+ captures=captureScenario(captures,'B',base,'middle',meta);
+ const expected=scenarioSetPayload(captures);
+ const csv=serializeScenarioSetCsv(captures);
+ // The serializer quotes each CSV cell and doubles embedded quotation marks.
+ const match=csv.match(/"output","scenarios","((?:[^"]|"")*)"$/);
+ expect(match).not.toBeNull();
+ const encoded=match![1].replaceAll('""','"');
+ expect(JSON.parse(encoded)).toEqual(JSON.parse(JSON.stringify(expected.scenarios)));
+ expect(expected.scenarios.map(row=>row.slot)).toEqual(['A','B','C']);
+ expect(expected.scenarios[0].notes).toBe('first\\nsecond');
+ expect(expected.scenarios[2].notes).toBe('=HYPERLINK("example")');
+ expect(expected.scenarios[2].displayMetadata?.outputs.result.unit).toBe('USD');
+});
