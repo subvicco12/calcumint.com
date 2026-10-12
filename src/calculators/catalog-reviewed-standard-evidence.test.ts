@@ -6,6 +6,7 @@ import { calculatorRegistry } from "./registry";
 import { inspectCertificationEvidencePacket } from "./certification-evidence-packet";
 import { auditLaunchCertificationDefinitions } from "./launch-certification";
 import { getPublicCalculatorContent } from "./public-content";
+import { slopeCalculator as inactiveGeometrySlope } from "./geometry/catalog-completion";
 
 it("exports reviewed-identity shortlist and packet readiness without granting certification", () => {
   const csv=readFileSync("data/catalog/master-catalog-2026.csv","utf8");
@@ -51,6 +52,12 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     databaseCertificationVerified:false,
     publicationVerified:false,
   }));
+  const activeSlope=definitions.get("slope-calculator");
+  expect(activeSlope?.id).toBe("launch-slope-calculator");
+  expect(inactiveGeometrySlope.slug).toBe(activeSlope?.slug);
+  expect(inactiveGeometrySlope.id).not.toBe(activeSlope?.id);
+  expect(registry.filter(d=>d.slug==="slope-calculator")).toHaveLength(1);
+  console.info("SLOPE_IDENTITY_CONFLICT",JSON.stringify({activeId:activeSlope?.id,activeCategory:activeSlope?.category,inactiveId:inactiveGeometrySlope.id,inactiveCategory:inactiveGeometrySlope.category,sharedSlug:inactiveGeometrySlope.slug,registryDuplicate:false,masterCatalogId:276,masterDomain:"Geometry",mappingApproved:false}));
   const sixSlugs=["slope-calculator","graphing-calculator","function-plotter-2d","volume-calculator","standard-deviation-calculator","variance-calculator"];
   const six=sixSlugs.map(slug=>{
     const d=definitions.get(slug);
