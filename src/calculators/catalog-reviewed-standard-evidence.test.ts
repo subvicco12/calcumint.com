@@ -60,7 +60,10 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     const expectedDomain=({math:"Math","advanced-math-graphing":"Advanced Math & Graphing",geometry:"Geometry",statistics:"Statistics & Probability"} as Record<string,string>)[d.category];
     const domainTitleMatches=titles.filter(row=>row.domain===expectedDomain);
     const identityDecision=domainTitleMatches.length===1?"candidate-needs-source-review":"hold-ambiguous-or-missing";
-    return {id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,formulaCount:d.formulas.length,sourceCount:d.sources.length,goldenTestCount:d.goldenTests?.length??0,exampleCount:d.examples.length,launchAuditIssues:issues,catalogTitleCandidates:titles,expectedMasterDomain:expectedDomain??null,domainTitleMatches,identityDecision,sourceReviewDomain:audit.approvedDomains[d.slug]??null,publicationApproved:false};
+    const sourceDetails=d.sources.map(source=>({label:source.label,url:source.url??null}));
+    const dedicatedGoldenFixturePresent=(d.goldenTests?.length??0)>0;
+    const gateHolds=[...(identityDecision!=="candidate-needs-source-review"?["catalog-domain-or-title-unresolved"]:["catalog-identity-source-review-unapproved"]),...(!dedicatedGoldenFixturePresent?["dedicated-golden-fixture-missing"]:[]),"database-certification-not-verified","publication-authority-not-granted"];
+    return {id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,formulaCount:d.formulas.length,sourceCount:d.sources.length,goldenTestCount:d.goldenTests?.length??0,exampleCount:d.examples.length,launchAuditIssues:issues,catalogTitleCandidates:titles,expectedMasterDomain:expectedDomain??null,domainTitleMatches,identityDecision,sourceDetails,dedicatedGoldenFixturePresent,gateHolds,sourceReviewDomain:audit.approvedDomains[d.slug]??null,publicationApproved:false};
   });
   console.info("SIX_STANDARD_CANDIDATE_EVIDENCE",JSON.stringify(six));
   expect(six.every(d=>d.riskClass==="standard"&&d.reviewStatus==="certified")).toBe(true);
