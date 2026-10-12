@@ -7,3 +7,17 @@ it('preserves nested data and formula-safe CSV annotations using the existing se
 it('retains every authoritative period in full exports without truncation',()=>{const rows=Array.from({length:1200},(_,period)=>({period:period+1,value:period===1199?1e-12:period}));const snapshot=createCalculationSnapshot({...a,output:{value:1e-12,rows}});const captures=captureScenario([],'A',snapshot,'');const payload=scenarioSetPayload(captures);expect(payload.scenarios[0].output.rows).toEqual(rows);expect(serializeScenarioSetCsv(captures)).toContain('1200');});
 
 it('freezes version-bound display metadata separately from raw result snapshots',()=>{const metadata={schemaVersion:1 as const,calculatorSlug:a.calculatorSlug,calculatorVersion:1,inputs:{},outputs:{value:{label:'Original label',unit:'kg'}}};const rows=captureScenario([],'A',a,'',metadata);metadata.outputs.value.label='Changed caller label';expect(rows[0].displayMetadata!.outputs.value.label).toBe('Original label');expect(Object.isFrozen(rows[0].displayMetadata!.outputs.value)).toBe(true);expect(rows[0].snapshot.output).toEqual(a.output);});
+
+it('preserves distinct scenario display contexts in JSON and CSV without modifying authoritative raw results',()=>{
+ const base=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const next=createCalculationSnapshot({...base,input:{percentage:30,value:250},output:{result:75}});
+ const metadata=(unit:string)=>({schemaVersion:1 as const,calculatorSlug:base.calculatorSlug,calculatorVersion:1,inputs:{value:{label:'Base amount',unit}},outputs:{result:{label:'Computed amount',unit}}});
+ let captures=captureScenario([],'A',base,'baseline',metadata('USD'));
+ captures=captureScenario(captures,'B',next,'alternative',metadata('EUR'));
+ const payload=scenarioSetPayload(captures);
+ expect(payload.scenarios.map(row=>row.output.result)).toEqual([50,75]);
+ expect(payload.scenarios.map(row=>row.displayMetadata?.outputs.result.unit)).toEqual(['USD','EUR']);
+ expect(serializeScenarioSetCsv(captures)).toContain('EUR');
+ expect(serializeScenarioSetCsv(captures)).toContain('USD');
+ expect(captures[0].snapshot.output.result).toBe(50);
+});
