@@ -41,3 +41,12 @@ it('keeps an overflowing numeric delta unavailable rather than presenting infini
  expect(rows[0].metrics).toEqual([{field:'result',value:1e308,baselineDifference:null}]);
  expect(JSON.stringify(baseline.output)).toBe(JSON.stringify({result:-1e308}));
 });
+
+it('preserves candidate ordering and duplicate values without rounding presentation differences',()=>{
+ const baseline=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const points=calculateScenarioSensitivity(baseline,'percentage',[30,10,30,20]);
+ const presentation=presentSensitivityResults(baseline,points);
+ expect(presentation.map(row=>row.inputValue)).toEqual([30,10,30,20]);
+ expect(presentation.map(row=>row.metrics[0].baselineDifference)).toEqual([25,-25,25,0]);
+ expect(presentation.map(row=>row.metrics[0].value)).toEqual([75,25,75,50]);
+});
