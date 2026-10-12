@@ -87,3 +87,20 @@ it('preserves scenario slot order, multiline notes and metadata through the comp
  expect(expected.scenarios[2].notes).toBe('=HYPERLINK("example")');
  expect(expected.scenarios[2].displayMetadata?.outputs.result.unit).toBe('USD');
 });
+
+it('keeps captured export evidence unchanged when a scenario slot is replaced after a prior export',()=>{
+ const baseline=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const oldAlternative=createCalculationSnapshot({...baseline,input:{percentage:30,value:250},output:{result:75}});
+ const newAlternative=createCalculationSnapshot({...baseline,input:{percentage:40,value:250},output:{result:100}});
+ let captures=captureScenario([],'A',baseline,'original baseline');
+ captures=captureScenario(captures,'B',oldAlternative,'old alternative');
+ const priorPayload=scenarioSetPayload(captures);
+ const priorCsv=serializeScenarioSetCsv(captures);
+ const replaced=captureScenario(captures,'B',newAlternative,'revised alternative');
+ expect(priorPayload.scenarios.map(row=>row.output.result)).toEqual([50,75]);
+ expect(serializeScenarioSetCsv(captures)).toBe(priorCsv);
+ expect(scenarioSetPayload(replaced).scenarios.map(row=>row.output.result)).toEqual([50,100]);
+ expect(scenarioSetPayload(replaced).scenarios[1].notes).toBe('revised alternative');
+ expect(replaced[0].snapshot).toEqual(captures[0].snapshot);
+ expect(Object.isFrozen(priorPayload.scenarios[1].output)).toBe(true);
+});
