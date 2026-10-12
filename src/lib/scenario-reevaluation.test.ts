@@ -50,6 +50,19 @@ describe('calculator-specific complete-input eligibility', () => {
     expect(result.output).toEqual({ result: 50 });
     expect(result.input).toEqual(percentage.input);
   });
+  it('re-evaluates edited inputs without rewriting captured evidence', () => {
+    const result = reevaluateScenario(percentage, eligibleScenarioContract(percentage), { percentage: 30, value: 250 });
+    expect(result.output).toEqual({ result: 75 });
+    expect(result.input).toEqual({ percentage: 30, value: 250 });
+    expect(percentage.input).toEqual({ percentage: 20, value: 250 });
+    expect(percentage.output).toEqual({ result: 50 });
+  });
+  it('rejects invalid edited inputs and preserves historical results', () => {
+    const approved = eligibleScenarioContract(percentage);
+    expect(() => reevaluateScenario(percentage, approved, { percentage: Infinity, value: 2 })).toThrow();
+    expect(() => reevaluateScenario(percentage, approved, { percentage: 20 })).toThrow();
+    expect(percentage.output).toEqual({ result: 50 });
+  });
   it('excludes Mortgage, unsupported identities and versions', () => {
     for (const slug of ['mortgage-calculator', 'sip-calculator', 'unknown']) {
       expect(eligibleScenarioContract({ ...percentage, calculatorSlug: slug })).toBeUndefined();
