@@ -30,6 +30,15 @@ describe('scenario sensitivity contract', () => {
     });
     expect(() => calculateScenarioSensitivity(mortgage, 'principal', [100])).toThrow();
   });
+  it('reconciles baseline sensitivity to certified historical output and rejects a mixed invalid series atomically', () => {
+    const original = JSON.stringify(captured);
+    const points = calculateScenarioSensitivity(captured, 'percentage', [10, 20, 30]);
+    const baseline = points.find(point => point.inputValue === captured.input.percentage);
+    expect(baseline?.snapshot.output).toEqual(captured.output);
+    expect(baseline?.snapshot.input).toEqual(captured.input);
+    expect(() => calculateScenarioSensitivity(captured, 'percentage', [10, Number.POSITIVE_INFINITY, 30])).toThrow();
+    expect(JSON.stringify(captured)).toBe(original);
+  });
   it('runs unit conversion sensitivity through the registered conversion engine', () => {
     const conversion = createCalculationSnapshot({
       calculatorSlug: 'unit-conversion-calculator', calculatorVersion: 1,
