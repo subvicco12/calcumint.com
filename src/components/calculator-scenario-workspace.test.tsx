@@ -78,3 +78,27 @@ it('groups eligible what-if inputs in a named scenario fieldset',()=>{
  expect(group.textContent).toContain('original capture stays unchanged');
  expect(screen.getByRole('spinbutton',{name:'percentage'})).toBeTruthy();
 });
+
+it('keeps historical JSON and CSV exports identical after what-if preview and invalid edits',()=>{
+ const download=vi.fn();
+ const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ render(<CalculatorScenarioWorkspace plan="business" snapshot={percentage} download={download}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set CSV'}));
+ const originalJson=download.mock.calls[0][1],originalCsv=download.mock.calls[1][1];
+ fireEvent.change(screen.getByRole('spinbutton',{name:'percentage'}),{target:{value:'40'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByText(/"result": 100/)).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set CSV'}));
+ expect(download.mock.calls[2][1]).toBe(originalJson);
+ expect(download.mock.calls[3][1]).toBe(originalCsv);
+ fireEvent.change(screen.getByRole('spinbutton',{name:'percentage'}),{target:{value:''}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByRole('alert').textContent).toContain('Historical captures remain unchanged');
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set CSV'}));
+ expect(download.mock.calls[4][1]).toBe(originalJson);
+ expect(download.mock.calls[5][1]).toBe(originalCsv);
+});
