@@ -18,6 +18,7 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
   },{} as Record<string,number>)).sort(([a],[b])=>a.localeCompare(b));
   const standardCertified=registry.filter(d=>d.riskClass==="standard"&&d.reviewStatus==="certified");
   const standardReviewed=registry.filter(d=>d.riskClass==="standard"&&d.reviewStatus==="reviewed");
+  console.info("REGISTRY_IDENTITY_SNAPSHOT",JSON.stringify(registry.map(d=>({id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,category:d.category}))));
   console.info("STANDARD_RISK_REGISTRY_AUDIT",JSON.stringify({
     totalRegistered:registry.length,
     standardCertified:standardCertified.length,
