@@ -6,8 +6,8 @@ import { createCalculationSnapshot } from './calculation-snapshot';
 
 /**
  * Re-evaluation is opt-in. A complete-input contract must be reviewed and
- * supplied by the caller; this module never infers eligibility from a slug.
- * No calculator is registered by default.
+ * supplied by the caller. Only explicitly allowlisted certified standard-risk
+ * engines with complete input schemas are eligible; slug alone is insufficient.
  */
 export type ScenarioReevaluationContract = Readonly<{
   calculatorSlug: string;
