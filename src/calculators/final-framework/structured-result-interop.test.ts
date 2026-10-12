@@ -16,3 +16,11 @@ describe("normalized structured-result renderer interoperability", () => {
     expect(rendered.composition?.[0]).toMatchObject({ id: "part", value: 42 });
   });
 });
+
+it.each([NaN,Infinity,-Infinity])('rejects nonfinite normalized primary and metrics %s',value=>{
+ expect(()=>toRendererResult(createStructuredResult({primaryResult:{key:'answer',label:'Answer',value}}))).toThrow('core data is invalid');
+ expect(()=>toRendererResult(createStructuredResult({primaryResult:{key:'answer',label:'Answer',value:0},metrics:[{key:'m',label:'M',value}]}))).toThrow('core data is invalid');
+});
+it.each([0,-1,1e-20,'Exact label'])('preserves valid normalized core %s',value=>{
+ expect(toRendererResult(createStructuredResult({primaryResult:{key:'answer',label:'Answer',value}})).primaryResult.value).toBe(value);
+});
