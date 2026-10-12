@@ -31,6 +31,6 @@ it("classifies all planning entries without inferring DB certification or public
 
 it("fails closed on duplicate master identities and missing registry definitions",()=>{
  expect(()=>buildCatalogCertificationQueue([matches[0],matches[0]],inventory)).toThrow("Duplicate master catalog ID");
- expect(()=>buildCatalogCertificationQueue([{...matches[0],slug:"unknown-calculator"}],inventory)).toThrow("Missing registry definition");
+ expect(()=>buildCatalogCertificationQueue([{masterId:1,domain:"Math",title:"Unknown",status:"exact",slug:"unknown-calculator",evidence:"domain-title"}],inventory)).toThrow("Missing registry definition");
  expect(()=>buildCatalogCertificationQueue(matches,[...inventory,inventory[0]])).toThrow("Duplicate registry slug");
 });
