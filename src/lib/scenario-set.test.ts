@@ -38,3 +38,33 @@ it('reconciles CSV and JSON exports from the same validated scenario payload',()
  expect(JSON.stringify(payload)).not.toContain('differenceFromBaseline');
  expect(csv).not.toContain('differenceFromBaseline');
 });
+
+it('round-trips the complete scenario array from CSV into the same JSON evidence payload',()=>{
+ const baseline=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50,nested:{periods:[1,2],zero:-0}}});
+ const alternative=createCalculationSnapshot({...baseline,input:{percentage:30,value:250},output:{result:75,nested:{periods:[3,4],zero:0}}});
+ let captures=captureScenario([],'A',baseline,'=SUM(A1:A2)');
+ captures=captureScenario(captures,'B',alternative,'line one\\nline two');
+ const expected=scenarioSetPayload(captures);
+ const csv=serializeScenarioSetCsv(captures);
+ // The shared serializer uses quoted RFC-style cells, doubling embedded quotes.
+ // Decode the single output/scenarios cell without a lossy substring comparison.
+ const records:string[][]=[];let row:string[]=[];let cell='';let quoted=false;
+ for(let i=0;i<csv.length;i++){
+  const char=csv[i];
+  if(char==='"'&&quoted&&csv[i+1]==='"'){cell+='"';i++;continue;}
+  if(char==='"'){quoted=!quoted;continue;}
+  if(char===','&&!quoted){row.push(cell);cell='';continue;}
+  if(char==='\\n'&&!quoted){row.push(cell);records.push(row);row=[];cell='';continue;}
+  cell+=char;
+ }
+ row.push(cell);records.push(row);
+ expect(records[0]).toEqual(['section','field','value']);
+ const evidence=records.find(record=>record[0]==='output'&&record[1]==='scenarios');
+ expect(evidence).toBeDefined();
+ expect(JSON.parse(evidence![2])).toEqual(JSON.parse(JSON.stringify(expected.scenarios)));
+ expect(records.find(record=>record[0]==='input'&&record[1]==='calculatorSlug')?.[2]).toBe(expected.calculatorSlug);
+ expect(records.find(record=>record[0]==='input'&&record[1]==='calculatorVersion')?.[2]).toBe(String(expected.calculatorVersion));
+ expect(records.find(record=>record[0]==='input'&&record[1]==='baseline')?.[2]).toBe('A');
+ expect(expected.scenarios[0].notes).toBe('=SUM(A1:A2)');
+ expect(csv).not.toContain('differenceFromBaseline');
+});
