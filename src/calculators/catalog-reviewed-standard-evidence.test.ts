@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { expect, it } from "vitest";
 import { auditCatalogSlugReviewLedger, type CatalogSlugReview } from "./catalog-slug-review-ledger";
 import { buildCatalogCertificationQueueReport } from "./catalog-certification-queue-report";
@@ -33,6 +33,26 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     databaseCertificationVerified:false,
     publicationVerified:false,
   }));
+  const output=process.env.CALCUMINT_CERTIFICATION_EVIDENCE_OUT;
+  if(output){
+    mkdirSync(output,{recursive:true});
+    const snapshot={
+      totalMaster:report.summary.totalMaster,
+      totalRegistered:report.summary.totalRegistered,
+      provisionalCounts:report.summary.counts,
+      reviewedMixedCategoryApproved:Object.keys(audit.approvedDomains).length,
+      heldMixedCategory:audit.held.length,
+      missingMixedCategoryReviews:audit.missing.length,
+      reviewedStandardCandidates:evidence.length,
+      packetEvidenceReady:evidence.filter(row=>row.ready).length,
+      identityMappingComplete:false,
+      databaseCertificationVerified:false,
+      publicationVerified:false,
+    };
+    writeFileSync(output+"/certification-readiness-summary.json",JSON.stringify(snapshot,null,2)+"\\n");
+    writeFileSync(output+"/certification-readiness-rows.csv",report.csv);
+    writeFileSync(output+"/reviewed-standard-packet-candidates.json",JSON.stringify(evidence,null,2)+"\\n");
+  }
   expect(report.rows).toHaveLength(540);
   expect(evidence.every(row=>row.slug!==null)).toBe(true);
 });
