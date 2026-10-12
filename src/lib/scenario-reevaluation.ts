@@ -23,6 +23,7 @@ function validIdentity(slug: string, version: number) {
 export function reevaluateScenario(
   captured: CalculationSnapshot,
   contract: ScenarioReevaluationContract | undefined,
+  editedInput?: Readonly<Record<string, unknown>>,
 ): CalculationSnapshot {
   if (!contract || !validIdentity(contract.calculatorSlug, contract.calculatorVersion) ||
       !contract.reviewEvidence?.trim() || typeof contract.calculate !== 'function') {
@@ -34,7 +35,7 @@ export function reevaluateScenario(
     throw new Error('Scenario re-evaluation calculator identity mismatch');
   }
   // Never pass the historical input object itself to the engine.
-  const input = createCalculationSnapshot(original).input;
+  const input = createCalculationSnapshot({ ...original, input: editedInput ? { ...editedInput } : original.input }).input;
   const output = contract.calculate(input);
   // Snapshot validation rejects non-finite, cyclic and non-JSON results.
   return createCalculationSnapshot({
