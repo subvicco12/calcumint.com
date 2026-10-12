@@ -13,6 +13,20 @@ describe('reviewed sensitivity capability metadata', () => {
     expect(calculateScenarioSensitivity(snapshot, 'value', [100, 200]).map(point => point.snapshot.output.result)).toEqual([20, 40]);
     expect(() => calculateScenarioSensitivity(snapshot, 'unreviewed', [100])).toThrow();
   });
+  it('fails closed for unreviewed versions and missing approved fields', () => {
+    const nextVersion = createCalculationSnapshot({
+      calculatorSlug: 'percentage-of-value-calculator', calculatorVersion: 2,
+      input: { percentage: 20, value: 250 }, output: { result: 50 },
+    });
+    expect(eligibleSensitivityFields(nextVersion)).toEqual([]);
+    expect(() => calculateScenarioSensitivity(nextVersion, 'percentage', [10])).toThrow();
+    const incomplete = createCalculationSnapshot({
+      calculatorSlug: 'percentage-of-value-calculator', calculatorVersion: 1,
+      input: { percentage: 20 }, output: { result: 50 },
+    });
+    expect(eligibleSensitivityFields(incomplete)).toEqual(['percentage']);
+    expect(() => calculateScenarioSensitivity(incomplete, 'percentage', [10])).toThrow();
+  });
   it('allows only conversion magnitude, not unit identity, and excludes mortgage', () => {
     const conversion = createCalculationSnapshot({
       calculatorSlug: 'unit-conversion-calculator', calculatorVersion: 1,
