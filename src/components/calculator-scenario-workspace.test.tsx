@@ -16,14 +16,14 @@ it('previews edited eligible percentage inputs without changing captured history
  const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
  render(<CalculatorScenarioWorkspace plan="pro" snapshot={percentage} download={download}/>);
  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
- fireEvent.change(screen.getByRole('spinbutton',{name:'Percentage'}),{target:{value:'30'}});
+ fireEvent.change(screen.getByRole('spinbutton',{name:'percentage'}),{target:{value:'30'}});
  fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
  expect(screen.getByText(/Re-evaluation preview for scenario A/)).toBeTruthy();
  expect(screen.getByText(/"result": 75/)).toBeTruthy();
  expect(screen.getByRole('table',{name:'Captured engine outputs'}).textContent).toContain('50');
  fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
  expect(JSON.parse(download.mock.calls[0][1]).scenarios[0].output).toEqual({result:50});
- fireEvent.change(screen.getByRole('spinbutton',{name:'Percentage'}),{target:{value:''}});
+ fireEvent.change(screen.getByRole('spinbutton',{name:'percentage'}),{target:{value:''}});
  expect(screen.queryByText(/Re-evaluation preview for scenario A/)).toBeNull();
  fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
  expect(screen.getByRole('alert').textContent).toContain('Historical captures remain unchanged');
@@ -33,4 +33,19 @@ it('does not offer what-if controls for excluded mortgage captures',()=>{
  render(<CalculatorScenarioWorkspace plan="pro" snapshot={mortgage} download={vi.fn()}/>);
  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
  expect(screen.queryByRole('button',{name:/Preview edited scenario/})).toBeNull();
+});
+
+it('previews certified unit conversion with complete editable inputs while preserving original evidence',()=>{
+ const download=vi.fn();
+ const conversion=createCalculationSnapshot({calculatorSlug:'unit-conversion-calculator',calculatorVersion:1,input:{value:1,fromUnit:'mi',toUnit:'km'},output:{result:1.609344}});
+ render(<CalculatorScenarioWorkspace plan="pro" snapshot={conversion} download={download}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ fireEvent.change(screen.getByRole('spinbutton',{name:'value'}),{target:{value:'2'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByText(/"result": 3.218688/)).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ expect(JSON.parse(download.mock.calls[0][1]).scenarios[0].output).toEqual({result:1.609344});
+ fireEvent.change(screen.getByRole('textbox',{name:'toUnit'}),{target:{value:'kg'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByRole('alert').textContent).toContain('Historical captures remain unchanged');
 });
