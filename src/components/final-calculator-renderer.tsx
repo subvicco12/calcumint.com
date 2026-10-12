@@ -1,4 +1,5 @@
 import { inspectStructuredResult } from "@/calculators/final-framework/result-inspection";
+import {ResultCompositionPanel,ResultRangePanel} from "./result-overview-panels";
 import {ResultSeriesPanel} from "./result-series-panel";
 import { ResultDataError } from "./result-data-error";
 import type { PresentationDefinition, StructuredCalculationResult } from "@/calculators/final-framework/types";
@@ -21,8 +22,8 @@ export function FinalCalculatorRenderer({ result: rawResult, plan="free", presen
     {inspection.invalidSurfaces.map(surface=><ResultDataError key={surface} surface={surface} issues={surface==="schedule"?inspection.scheduleIssues:undefined}/>)}
     <div className="result-box" role="status" aria-live="polite" aria-atomic="true"><span>{result.primaryResult.label}</span><strong>{displayFinalValue(result.primaryResult.value,result.primaryResult.unit)}</strong></div>
     {result.metrics?.length?<dl>{result.metrics.map(metric=><div key={metric.id}><dt>{metric.label}</dt><dd>{displayFinalValue(metric.value,metric.unit)}</dd></div>)}</dl>:null}
-    {result.composition?.length&&(!freeVisualization||freeVisualization==="composition")?<div className="result-panel" data-visualization="composition"><h3>Overview</h3>{result.composition.map(item=><div key={item.id}><span>{item.label}</span><strong>{displayFinalValue(item.value,item.unit)}</strong></div>)}</div>:null}
-    {result.ranges?.length&&(!freeVisualization||freeVisualization==="range-indicator")?<div className="result-panel" data-visualization="range-indicator"><h3>Reference range</h3>{result.ranges.map(range=><div key={range.id}><span>{range.label}</span><strong>{range.classification??`${range.min??"—"}–${range.max??"—"}`}</strong></div>)}</div>:null}
+    {result.composition?.length&&(!freeVisualization||freeVisualization==="composition")?<ResultCompositionPanel items={result.composition}/>:null}
+    {result.ranges?.length&&(!freeVisualization||freeVisualization==="range-indicator")?<ResultRangePanel ranges={result.ranges} primary={result.primaryResult}/>:null}
     {result.series?.length&&(!freeVisualization||freeVisualization==="growth-line")?<ResultSeriesPanel series={result.series[0]}/>:null}
     {freeVisualization==="break-even"?<div className="result-panel" data-visualization="break-even"><h3>Break-even</h3><p>{displayFinalValue(result.primaryResult.value,result.primaryResult.unit)} {result.primaryResult.label}</p></div>:null}
     {schedulePolicy?.canExecute&&result.scheduleMetadata?<FinalScheduleTable rows={result.schedule!} metadata={result.scheduleMetadata}/>:null}

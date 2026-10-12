@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { Blob as NodeBlob } from "node:buffer";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { runCalculator } from "@/calculators/engine";
 
@@ -103,4 +103,23 @@ describe("actual investment route projection and download boundaries", () => {
     expect(exported.output.periodProjection.rows.at(-1).values).toEqual({ elapsedYears: String(exported.input.years), ...runCalculator(compoundInterestCalculator, exported.input).output });
     expect(exported.output.periodProjection.rows).toHaveLength(6);
   });
+});
+it.each(['free','pro','business'])('keeps real negative-rate investment visuals and raw account exports authoritative on %s',async plan=>{
+ for(const slug of ['compound-interest-calculator','sip-calculator']){
+  session.plan=plan;const download=captureDownload();render(<CalculatorInteractive slug={slug}/>);
+  let expected:ReturnType<typeof investmentPeriodExport>;
+  if(slug==='compound-interest-calculator'){
+   fireEvent.change(screen.getByLabelText('Years'),{target:{value:'1'}});fireEvent.change(screen.getByLabelText('Annual rate (%)'),{target:{value:'-50'}});
+   const input={principal:10000,annualRatePercent:-50,years:1,compoundsPerYear:12};const output=runCalculator(compoundInterestCalculator,input).output;expected=investmentPeriodExport(output,compoundPeriodResult(input,output));
+   const overview=screen.getByRole('region',{name:'Overview'});expect(within(overview).getByRole('meter',{name:'Interest'}).getAttribute('value')).toBe(String(output.totalInterest));
+  }else{
+   fireEvent.change(screen.getByLabelText('Term (months)'),{target:{value:'12'}});fireEvent.change(screen.getByLabelText('Modeled annual return (%)'),{target:{value:'-50'}});
+   const input={monthlyContribution:500,annualReturnPercent:-50,termMonths:12,contributionTiming:'beginning' as const};const output=runCalculator(sipCalculator,input).output;expected=investmentPeriodExport(output,sipPeriodResult(input,output));expect(output.estimatedGain).toBeLessThan(0);expect(screen.queryByRole('region',{name:'Overview'})).toBeNull();
+  }
+  if(plan==='free')expect(screen.queryByRole('button',{name:'Export JSON'})).toBeNull();else{
+   fireEvent.click(await screen.findByRole('button',{name:'Export JSON'}));expect(JSON.parse(await download()!.text()).output).toEqual(expected);
+   fireEvent.click(screen.getByRole('button',{name:'Export CSV'}));const csv=parseCsv(await download()!.text());expect(JSON.parse(csv.find(row=>row[1]==='periodProjection')![2])).toEqual(expected.periodProjection);
+  }
+  cleanup();vi.unstubAllGlobals();vi.restoreAllMocks();
+ }
 });

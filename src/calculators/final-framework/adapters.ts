@@ -54,7 +54,7 @@ export function sipResult(input:{monthlyContribution:number;annualReturnPercent:
     ],
     composition:[
       {id:"invested",label:"Contributions",value:output.investedAmount},
-      {id:"gain",label:"Estimated growth",value:Math.max(output.estimatedGain,0)}
+      {id:"gain",label:"Estimated growth",value:output.estimatedGain}
     ],
     series:[{id:"growth",label:"Projected growth",unit:"",points:[0,...Array.from({length:Math.floor(input.termMonths/12)},(_,i)=>(i+1)*12),input.termMonths].filter((month,i,months)=>months.indexOf(month)===i).map(month=>month===0?{x:0,y:0}:{x:month,y:runCalculator(sipCalculator,{...input,termMonths:month}).output.futureValue})}],
     reverseTargets:["monthlyContribution"],
@@ -76,7 +76,7 @@ export function compoundInterestResult(input:{principal:number;years:number},out
     ],
     composition:[
       {id:"principal",label:"Principal",value:input.principal},
-      {id:"interest",label:"Interest",value:Math.max(output.totalInterest,0)}
+      {id:"interest",label:"Interest",value:output.totalInterest}
     ],
     reverseTargets:["principal","annualRatePercent","years"],
     scenarioVariables:["annualRatePercent","years","compoundsPerYear"],

@@ -1,7 +1,7 @@
 import {expect,it} from 'vitest';import fs from 'node:fs';import path from 'node:path';
 it('binds declared visualization kinds to the renderer and shared signed series surface',()=>{
  const renderer=fs.readFileSync(path.join(process.cwd(),'src/components/final-calculator-renderer.tsx'),'utf8');
- for(const kind of ['composition','range-indicator','break-even'])expect(renderer).toContain(`data-visualization="${kind}"`);
- expect(renderer).toContain('presentation?.freeVisualization');expect(renderer).toContain('freeVisualization==="growth-line"');expect(renderer).toContain('<ResultSeriesPanel series={result.series[0]}/>');
+ for(const kind of ['break-even'])expect(renderer).toContain(`data-visualization="${kind}"`);
+ expect(renderer).toContain('freeVisualization==="composition"');expect(renderer).toContain('<ResultCompositionPanel items={result.composition}/>');expect(renderer).toContain('freeVisualization==="range-indicator"');expect(renderer).toContain('<ResultRangePanel ranges={result.ranges} primary={result.primaryResult}/>');const overview=fs.readFileSync(path.join(process.cwd(),'src/components/result-overview-panels.tsx'),'utf8');expect(overview).toContain('data-visualization="composition"');expect(overview).toContain('data-visualization="range-indicator"');expect(renderer).toContain('presentation?.freeVisualization');expect(renderer).toContain('freeVisualization==="growth-line"');expect(renderer).toContain('<ResultSeriesPanel series={result.series[0]}/>');
  const series=fs.readFileSync(path.join(process.cwd(),'src/components/result-series-panel.tsx'),'utf8');expect(series).toContain('data-visualization="growth-line"');expect(series).toContain('aria-valuetext={displayFinalValue(point.y,series.unit)}');
 });

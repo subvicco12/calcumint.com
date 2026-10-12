@@ -1,5 +1,6 @@
 "use client";
 import { inspectStructuredResult } from "@/calculators/final-framework/result-inspection";
+import {ResultCompositionPanel,ResultRangePanel} from "./result-overview-panels";
 import {ResultSeriesPanel} from "./result-series-panel";
 import { ResultDataError } from "./result-data-error";
 import type { StructuredCalculationResult } from "@/calculators/final-framework/types";
@@ -31,8 +32,8 @@ export function FinalResultPresentation({result:rawResult,plan="free"}:{result:S
     </div>
     {visibleMetrics.length>0&&<div className="metric-grid">{visibleMetrics.map(metric=><div className="metric-card" key={metric.id}><span>{metric.label}</span><strong>{display(metric.value,metric.unit)}</strong></div>)}</div>}
     {additionalMetrics.length>0&&<div className="metric-grid">{additionalMetrics.map(metric=><div className="metric-card" key={metric.id}><span>{metric.label}</span><strong>{display(metric.value,metric.unit)}</strong></div>)}</div>}
-    {result.composition&&result.composition.length>0&&<div className="result-panel"><div className="result-panel-heading"><h3>Overview</h3><span>Included with Free</span></div><div className="composition-list">{result.composition.map(item=><div key={item.id}><div><span>{item.label}</span><strong>{display(item.value,item.unit)}</strong></div><progress max={Math.max(...result.composition!.map(x=>Math.max(x.value,0)),1)} value={Math.max(item.value,0)} aria-label={item.label}/></div>)}</div></div>}
-    {result.ranges&&result.ranges.length>0&&<div className="result-panel"><div className="result-panel-heading"><h3>Reference range</h3><span>Included with Free</span></div>{result.ranges.map(range=>{const value=typeof result.primaryResult.value==="number"?result.primaryResult.value:0;const ceiling=Math.max(range.max??value,value,1)*1.25;return <div className="range-indicator" key={range.id}><progress max={ceiling} value={Math.max(value,0)} aria-label={range.label}/><div><span>{range.min??"—"}–{range.max??"—"}</span><strong>{range.classification??range.label}</strong></div></div>})}</div>}
+    {result.composition&&result.composition.length>0?<ResultCompositionPanel items={result.composition}/>:null}
+    {result.ranges&&result.ranges.length>0?<ResultRangePanel ranges={result.ranges} primary={result.primaryResult}/>:null}
     {result.series&&result.series.length>0&&<ResultSeriesPanel series={result.series[0]}/>}
     {result.schedule&&result.schedule.length>0&&(hasCalculatorCapability(plan,"detailedSchedule")?<details className="result-methodology"><summary>Detailed schedule</summary><div className="schedule-scroll" role="region" aria-label="Detailed calculation schedule data" tabIndex={0}><table className="result-table"><caption className="sr-only">Detailed calculation schedule</caption><thead><tr><th scope="col">Period</th>{Object.keys(result.schedule[0].values).map(k=><th scope="col" key={k}>{k}</th>)}</tr></thead><tbody>{result.schedule.map(row=><tr key={row.id}><th scope="row">{row.period}</th>{Object.entries(row.values).map(([k,v])=><td key={k}>{display(v)}</td>)}</tr>)}</tbody></table></div></details>:<div className="locked-feature"><span aria-hidden="true">🔒</span><strong>Detailed schedule</strong><small>Full period-by-period schedule is included with Pro.</small></div>)}
 
