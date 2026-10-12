@@ -9,7 +9,10 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import {getPlanEntitlements,type CalcuMintPlan} from "@/lib/entitlements";
 import {useCalculatorPlan} from "@/components/use-calculator-plan";
 
+import type {ScenarioDisplayMetadata} from "@/lib/scenario-display-metadata";
+
 type Props = {
+  scenarioDisplayMetadata?:ScenarioDisplayMetadata;
   calculatorSlug: string;
   calculatorVersion: number;
   input: Record<string, unknown>;
@@ -44,7 +47,7 @@ export function CalculatorAccountActions(props:Props){
   return <AccountActionsSession key={JSON.stringify([props.calculatorSlug,props.calculatorVersion,authIdentity!==undefined,authIdentity])} {...props} observedAuthOwner={observedAuthOwner}/>;
 }
 
-function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output,observedAuthOwner }: Props & {observedAuthOwner:{current:string|null|undefined}}) {
+function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output,scenarioDisplayMetadata,observedAuthOwner }: Props & {observedAuthOwner:{current:string|null|undefined}}) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
   const plan:CalcuMintPlan=useCalculatorPlan();
@@ -144,7 +147,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   if(readFailure)return <div className="account-actions"><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" onClick={retryAccountRead}>Retry account actions</button></div>;
   if (signedIn === false) {
-    return <div className="account-actions"><Link className="text-link" href="/login">Sign in to save this calculation</Link><CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={downloadFile}/></div>;
+    return <div className="account-actions"><Link className="text-link" href="/login">Sign in to save this calculation</Link><CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/></div>;
   }
   if (signedIn === null) return <p role="status" aria-busy="true">Loading account actions…</p>;
 
@@ -159,7 +162,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
-      <CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={downloadFile}/>
+      <CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/>
       {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
     </div>
   );
