@@ -21,3 +21,13 @@ it("escapes formula-like catalog titles in spreadsheet CSV without changing evid
 it("rejects malformed and duplicate canonical catalog identifiers",()=>{
  expect(()=>buildCatalogCertificationQueueReport("master_id,domain,title\n1,Math,One\n1,Math,Two\n")).toThrow();
 });
+
+it("runs against the complete canonical 540-entry catalog without inventing mapping approvals",async()=>{
+ const {readFileSync}=await import("node:fs");
+ const csv=readFileSync("data/catalog/master-catalog-2026.csv","utf8");
+ const report=buildCatalogCertificationQueueReport(csv);
+ expect(report.rows).toHaveLength(540);
+ expect(report.summary.totalMaster).toBe(540);
+ expect(Object.values(report.summary.counts).reduce((a,b)=>a+b,0)).toBe(540);
+ expect(report.rows.every(row=>!row.databaseCertificationVerified&&!row.publicationVerified)).toBe(true);
+});
