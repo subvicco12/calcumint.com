@@ -9,3 +9,9 @@
 .scenario-controls button{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 .scenario-controls input:focus-visible,.scenario-controls button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 @media(max-width:480px){.scenario-controls>div{flex-basis:100%}.scenario-controls>button{flex:1 1 100%}}
+
+.scenario-controls>.scenario-editor{min-width:0;max-width:100%;flex:1 1 16rem;box-sizing:border-box;border:1px solid currentColor;border-radius:.375rem;padding:.75rem}
+.scenario-editor legend{font-weight:600;max-width:100%;white-space:normal;overflow-wrap:anywhere;padding:0 .25rem}
+.scenario-editor label{display:block;margin:.5rem 0;overflow-wrap:anywhere}
+.scenario-editor input{display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box;font:inherit;padding:.5rem}
+@media(max-width:480px){.scenario-controls>.scenario-editor{flex-basis:100%}}
