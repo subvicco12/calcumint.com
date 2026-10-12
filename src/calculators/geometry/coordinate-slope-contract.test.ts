@@ -25,6 +25,10 @@ describe("approved Geometry coordinate slope candidate (not publication authorit
     expect(slopeCalculator.calculate(migrated, {}).value).toBe(legacy.rise / legacy.run);
     expect(slopeCalculator.inputSchema.safeParse({ x1: 0, y1: 0, x2: 0, y2: 5 }).success).toBe(false);
   });
+  it("fails closed on arithmetic overflow and near-vertical nonfinite slope", () => {
+    expect(() => slopeCalculator.calculate({ x1: -1e308, y1: 0, x2: 1e308, y2: 1 }, {})).toThrow(/finite range/);
+    expect(() => slopeCalculator.calculate({ x1: 0, y1: 1e308, x2: Number.MIN_VALUE, y2: -1e308 }, {})).toThrow(/finite range/);
+  });
   it("rejects nonfinite coordinates", () => {
     expect(slopeCalculator.inputSchema.safeParse({ x1: Infinity, y1: 0, x2: 1, y2: 2 }).success).toBe(false);
   });
