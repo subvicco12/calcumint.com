@@ -1,3 +1,5 @@
+import { percentageCalculator } from '@/calculators/core/percentage';
+import { runCalculator } from '@/calculators/engine';
 import type { CalculationSnapshot } from './calculation-snapshot';
 import { createCalculationSnapshot } from './calculation-snapshot';
 
@@ -41,4 +43,20 @@ export function reevaluateScenario(
     input,
     output,
   });
+}
+
+/** Explicit complete-input allowlist; specialist-dependent calculators are excluded. */
+export function eligibleScenarioContract(snapshot: CalculationSnapshot): ScenarioReevaluationContract | undefined {
+  if (snapshot.calculatorSlug !== 'percentage-of-value-calculator' || snapshot.calculatorVersion !== 1) return undefined;
+  return {
+    calculatorSlug: 'percentage-of-value-calculator',
+    calculatorVersion: 1,
+    reviewEvidence: 'core.percentage-of-value v1: complete percentage/value inputs; certified standard-risk engine',
+    calculate: input => {
+      const parsed = percentageCalculator.inputSchema.parse(input);
+      // Zod strips extraneous keys: an edited capture must represent the full input contract.
+      if (Object.keys(input).length !== Object.keys(parsed).length) throw new Error('Incomplete or unsupported scenario input');
+      return runCalculator(percentageCalculator, parsed).output;
+    },
+  };
 }
