@@ -32,3 +32,12 @@ it("runs against the complete canonical 540-entry catalog without inventing mapp
  expect(Object.values(report.summary.counts).reduce((a,b)=>a+b,0)).toBe(540);
  expect(report.rows.every(row=>!row.databaseCertificationVerified&&!row.publicationVerified)).toBe(true);
 });
+
+it("prints a bounded provisional standard-risk shortlist without claiming reviewed mapping or DB authority",async()=>{
+ const {readFileSync}=await import("node:fs");
+ const report=buildCatalogCertificationQueueReport(readFileSync("data/catalog/master-catalog-2026.csv","utf8"));
+ const shortlist=report.rows.filter(row=>row.riskClass==="standard"&&row.status==="registry-certified-unverified")
+  .map(row=>({masterId:row.masterId,slug:row.registrySlug,title:row.title}));
+ console.info("PROVISIONAL_STANDARD_RISK_SHORTLIST",JSON.stringify({count:shortlist.length,first25:shortlist.slice(0,25),identityReviewRequired:true,databasePublicationUnverified:true}));
+ expect(shortlist.every(row=>row.slug!==null)).toBe(true);
+});
