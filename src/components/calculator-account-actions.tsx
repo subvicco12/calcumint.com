@@ -29,10 +29,21 @@ function downloadFile(filename: string, content: string, mime: string) {
 
 
 export function CalculatorAccountActions(props:Props){
-  return <AccountActionsSession key={JSON.stringify([props.calculatorSlug,props.calculatorVersion])} {...props}/>;
+  const [authIdentity,setAuthIdentity]=useState<string|null|undefined>(undefined);
+  const observedAuthOwner=useRef<string|null|undefined>(undefined);
+  useEffect(()=>{
+    const client=createSupabaseBrowserClient();
+    if(!client||typeof client.auth.onAuthStateChange!=="function")return;
+    const {data}=client.auth.onAuthStateChange((_event,session)=>{
+      observedAuthOwner.current=session?.user.id??null;
+      setAuthIdentity(observedAuthOwner.current);
+    });
+    return ()=>data.subscription.unsubscribe();
+  },[]);
+  return <AccountActionsSession key={JSON.stringify([props.calculatorSlug,props.calculatorVersion,authIdentity!==undefined,authIdentity])} {...props} observedAuthOwner={observedAuthOwner}/>;
 }
 
-function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output }: Props) {
+function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output,observedAuthOwner }: Props & {observedAuthOwner:{current:string|null|undefined}}) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
   const plan:CalcuMintPlan=useCalculatorPlan();
@@ -44,6 +55,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   const saveLock=useRef(false),favoriteLock=useRef(false),readRetryLock=useRef(false),mounted=useRef(true);
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
   const report=(message:string,error=false)=>{if(mounted.current){setStatus(message);setStatusError(error);}};
+  const accountOwner=useRef<string|null>(null);
   const [favoriteCount,setFavoriteCount]=useState(0);const [historyCount,setHistoryCount]=useState(0);
 
   useEffect(() => {
@@ -57,7 +69,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         if(!active)return;
         if(auth.error)throw new Error("Account authentication unavailable");
         const user=auth.data.user;
-        if(!user){setReadFailure(false);setSignedIn(false);return;}
+        if(!user){accountOwner.current=null;setReadFailure(false);setSignedIn(false);return;}
         const [favoriteResult,favoriteCountResult,historyCountResult]=await Promise.all([
           supabase.from("favorites").select("id").eq("user_id",user.id).eq("calculator_slug",calculatorSlug).maybeSingle(),
           supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id),
@@ -65,7 +77,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         ]);
         if(!active)return;
         if(favoriteResult.error||favoriteCountResult.error||historyCountResult.error||!Number.isSafeInteger(favoriteCountResult.count)||favoriteCountResult.count!<0||!Number.isSafeInteger(historyCountResult.count)||historyCountResult.count!<0)throw new Error("Account state unavailable");
-        setFavorite(Boolean(favoriteResult.data));setFavoriteCount(favoriteCountResult.count!);setHistoryCount(historyCountResult.count!);setReadFailure(false);setSignedIn(true);
+        accountOwner.current=user.id;setFavorite(Boolean(favoriteResult.data));setFavoriteCount(favoriteCountResult.count!);setHistoryCount(historyCountResult.count!);setReadFailure(false);setSignedIn(true);
       }catch{if(active){setReadFailure(true);setSignedIn(null);}}
       finally{if(active)readRetryLock.current=false;}
     })();
@@ -85,6 +97,8 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
       if(!user){report("Sign in to update your favorites.",true);return;}
+      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
+      if(user.id!==accountOwner.current){retryAccountRead();return;}
       const nextFavorite=!favorite;
       if(nextFavorite&&entitlements.favoritesLimit!==null&&favoriteCount>=entitlements.favoritesLimit){report(`Free accounts can save up to ${entitlements.favoritesLimit} favorites.`,true);return;}
       const result=nextFavorite?await supabase.from("favorites").upsert({user_id:user.id,calculator_slug:calculatorSlug}):await supabase.from("favorites").delete().eq("user_id",user.id).eq("calculator_slug",calculatorSlug);
@@ -98,10 +112,12 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
     if(!snapshot||saveLock.current)return;
     saveLock.current=true;setSaving(true);report("Saving calculation…");
     try{
-      if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){report(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`,true);return;}
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
       if(!user){report("Sign in to save this calculation.",true);return;}
+      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
+      if(user.id!==accountOwner.current){retryAccountRead();return;}
+      if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){report(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`,true);return;}
       const {error}=await supabase.from("calculation_history").insert({user_id:user.id,calculator_slug:snapshot.calculatorSlug,calculator_version:snapshot.calculatorVersion,input_data:snapshot.input,output_data:snapshot.output});
       if(error)throw new Error("History save unavailable");
       if(mounted.current){setHistoryCount(v=>v+1);report("Calculation saved to your history.");}
