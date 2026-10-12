@@ -76,3 +76,18 @@ describe('calculator-specific complete-input eligibility', () => {
     expect(percentage.output).toEqual({ result: 50 });
   });
 });
+
+describe('certified unit conversion scenario eligibility',()=>{
+ const conversion=createCalculationSnapshot({calculatorSlug:'unit-conversion-calculator',calculatorVersion:1,input:{value:1,fromUnit:'mi',toUnit:'km'},output:{result:1.609344}});
+ it('uses authoritative conversion engine and preserves historical evidence',()=>{
+  const result=reevaluateScenario(conversion,eligibleScenarioContract(conversion),{value:2,fromUnit:'mi',toUnit:'km'});
+  expect(result.output).toEqual({result:3.218688});
+  expect(conversion.output).toEqual({result:1.609344});
+ });
+ it('rejects incomplete, extra and incompatible conversion inputs',()=>{
+  const contract=eligibleScenarioContract(conversion);
+  expect(()=>reevaluateScenario(conversion,contract,{value:2,fromUnit:'mi'})).toThrow();
+  expect(()=>reevaluateScenario(conversion,contract,{value:2,fromUnit:'mi',toUnit:'kg'})).toThrow();
+  expect(()=>reevaluateScenario(conversion,contract,{value:2,fromUnit:'mi',toUnit:'km',extra:1})).toThrow();
+ });
+});
