@@ -54,7 +54,7 @@ it('round-trips the complete scenario array from CSV into the same JSON evidence
   if(char==='"'&&quoted&&csv[i+1]==='"'){cell+='"';i++;continue;}
   if(char==='"'){quoted=!quoted;continue;}
   if(char===','&&!quoted){row.push(cell);cell='';continue;}
-  if(char==='\\n'&&!quoted){row.push(cell);records.push(row);row=[];cell='';continue;}
+  if(char==='\n'&&!quoted){row.push(cell);records.push(row);row=[];cell='';continue;}
   cell+=char;
  }
  row.push(cell);records.push(row);
