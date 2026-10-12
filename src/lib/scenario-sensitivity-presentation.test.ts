@@ -22,3 +22,14 @@ it('fails closed for mismatched calculator identity and omits nonnumeric output 
   const points=calculateScenarioSensitivity(baseline,'percentage',[10]);
   expect(presentSensitivityResults(baseline,points)[0].metrics).toEqual([{field:'result',value:25,baselineDifference:-25}]);
 });
+
+it('reports unavailable baseline comparisons without inventing values or units',()=>{
+ const baseline=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const candidate=createCalculationSnapshot({...baseline,output:{result:75,other:12,description:'not numeric'}});
+ const rows=presentSensitivityResults(baseline,[{inputValue:30,snapshot:candidate}]);
+ expect(rows[0].metrics).toEqual([
+  {field:'result',value:75,baselineDifference:25},
+  {field:'other',value:12,baselineDifference:null},
+ ]);
+ expect(rows[0].metrics.some(metric=>metric.field==='description')).toBe(false);
+});
