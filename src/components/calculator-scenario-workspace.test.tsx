@@ -49,3 +49,22 @@ it('previews certified unit conversion with complete editable inputs while prese
  fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
  expect(screen.getByRole('alert').textContent).toContain('Historical captures remain unchanged');
 });
+
+it('keeps scenario editing unavailable on Free and supports keyboard-accessible labeled inputs on paid plans',()=>{
+ const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const download=vi.fn();
+ const view=render(<CalculatorScenarioWorkspace plan="free" snapshot={percentage} download={download}/>);
+ expect(screen.queryByRole('button',{name:/Preview edited scenario/})).toBeNull();
+ expect((screen.getByRole('button',{name:'Capture baseline A'}) as HTMLButtonElement).disabled).toBe(true);
+ view.rerender(<CalculatorScenarioWorkspace plan="business" snapshot={percentage} download={download}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ const field=screen.getByRole('spinbutton',{name:'percentage'}) as HTMLInputElement;
+ expect(field.labels?.length).toBeGreaterThan(0);
+ expect((screen.getByRole('button',{name:'Preview edited scenario A'}) as HTMLButtonElement).disabled).toBe(false);
+ fireEvent.change(field,{target:{value:'40'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByText(/"result": 100/)).toBeTruthy();
+ view.rerender(<CalculatorScenarioWorkspace plan="free" snapshot={percentage} download={download}/>);
+ expect(screen.queryByRole('button',{name:/Preview edited scenario/})).toBeNull();
+ expect(screen.queryByText(/Re-evaluation preview for scenario A/)).toBeNull();
+});
