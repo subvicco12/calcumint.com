@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
 import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import {getPlanEntitlements,type CalcuMintPlan} from "@/lib/entitlements";
 import {useCalculatorPlan} from "@/components/use-calculator-plan";
@@ -28,11 +28,22 @@ function downloadFile(filename: string, content: string, mime: string) {
 }
 
 
-export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, input, output }: Props) {
+export function CalculatorAccountActions(props:Props){
+  return <AccountActionsSession key={JSON.stringify([props.calculatorSlug,props.calculatorVersion])} {...props}/>;
+}
+
+function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output }: Props) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
   const plan:CalcuMintPlan=useCalculatorPlan();
   const [status, setStatus] = useState("");
+  const [statusError,setStatusError]=useState(false);
+  const [readFailure,setReadFailure]=useState(false);
+  const [readAttempt,setReadAttempt]=useState(0);
+  const [saving,setSaving]=useState(false),[favoriting,setFavoriting]=useState(false);
+  const saveLock=useRef(false),favoriteLock=useRef(false),readRetryLock=useRef(false),mounted=useRef(true);
+  useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
+  const report=(message:string,error=false)=>{if(mounted.current){setStatus(message);setStatusError(error);}};
   const [favoriteCount,setFavoriteCount]=useState(0);const [historyCount,setHistoryCount]=useState(0);
 
   useEffect(() => {
@@ -41,23 +52,25 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     if (!supabase) return;
 
     void (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!active) return;
-      setSignedIn(Boolean(user));
-      if (!user) return;
-
-      const [{ data: favoriteData },favoriteCountResult,historyCountResult] = await Promise.all([
-        supabase.from("favorites").select("id").eq("user_id", user.id).eq("calculator_slug", calculatorSlug).maybeSingle(),
-        supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id),
-        supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id)
-      ]);
-      if (!active) return;
-      setFavorite(Boolean(favoriteData));
-      setFavoriteCount(favoriteCountResult.count??0);setHistoryCount(historyCountResult.count??0);
+      try{
+        const auth=await supabase.auth.getUser();
+        if(!active)return;
+        if(auth.error)throw new Error("Account authentication unavailable");
+        const user=auth.data.user;
+        if(!user){setReadFailure(false);setSignedIn(false);return;}
+        const [favoriteResult,favoriteCountResult,historyCountResult]=await Promise.all([
+          supabase.from("favorites").select("id").eq("user_id",user.id).eq("calculator_slug",calculatorSlug).maybeSingle(),
+          supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id),
+          supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id)
+        ]);
+        if(!active)return;
+        if(favoriteResult.error||favoriteCountResult.error||historyCountResult.error||!Number.isSafeInteger(favoriteCountResult.count)||favoriteCountResult.count!<0||!Number.isSafeInteger(historyCountResult.count)||historyCountResult.count!<0)throw new Error("Account state unavailable");
+        setFavorite(Boolean(favoriteResult.data));setFavoriteCount(favoriteCountResult.count!);setHistoryCount(historyCountResult.count!);setReadFailure(false);setSignedIn(true);
+      }catch{if(active){setReadFailure(true);setSignedIn(null);}}
+      finally{if(active)readRetryLock.current=false;}
     })();
-
     return () => { active = false; };
-  }, [calculatorSlug]);
+  }, [calculatorSlug,readAttempt]);
 
   const entitlements=getPlanEntitlements(plan);
   let snapshot:ReturnType<typeof createCalculationSnapshot>|null=null;
@@ -66,42 +79,34 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
 
 
   async function toggleFavorite() {
-    const supabase = createSupabaseBrowserClient();
-    if (!supabase) return;
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
-    const nextFavorite = !favorite;if(nextFavorite&&entitlements.favoritesLimit!==null&&favoriteCount>=entitlements.favoritesLimit){setStatus(`Free accounts can save up to ${entitlements.favoritesLimit} favorites.`);return;}
-    const result = nextFavorite
-      ? await supabase.from("favorites").upsert({ user_id: user.id, calculator_slug: calculatorSlug })
-      : await supabase.from("favorites").delete().eq("user_id", user.id).eq("calculator_slug", calculatorSlug);
-
-    if (result.error) {
-      setStatus(plan === "free" ? "Could not update favorite. Free accounts can save up to 10 favorites." : "Could not update favorite.");
-      return;
-    }
-    setFavorite(nextFavorite);setFavoriteCount(v=>Math.max(0,v+(nextFavorite?1:-1)));
-    setStatus(nextFavorite ? "Added to favorites." : "Removed from favorites.");
+    if(favoriteLock.current)return;
+    favoriteLock.current=true;setFavoriting(true);report("Updating favorite…");
+    try{
+      const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
+      const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
+      if(!user){report("Sign in to update your favorites.",true);return;}
+      const nextFavorite=!favorite;
+      if(nextFavorite&&entitlements.favoritesLimit!==null&&favoriteCount>=entitlements.favoritesLimit){report(`Free accounts can save up to ${entitlements.favoritesLimit} favorites.`,true);return;}
+      const result=nextFavorite?await supabase.from("favorites").upsert({user_id:user.id,calculator_slug:calculatorSlug}):await supabase.from("favorites").delete().eq("user_id",user.id).eq("calculator_slug",calculatorSlug);
+      if(result.error)throw new Error("Favorite update unavailable");
+      if(mounted.current){setFavorite(nextFavorite);setFavoriteCount(v=>Math.max(0,v+(nextFavorite?1:-1)));report(nextFavorite?"Added to favorites.":"Removed from favorites.");}
+    }catch{report(plan==="free"?"Could not update favorite. Free accounts can save up to 10 favorites.":"Could not update favorite.",true);}
+    finally{favoriteLock.current=false;if(mounted.current)setFavoriting(false);}
   }
 
   async function saveHistory() {
-    if (!snapshot) return;if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){setStatus(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`);return;}
-    const supabase = createSupabaseBrowserClient();
-    if (!supabase) return;
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return;
-
-    const { error } = await supabase.from("calculation_history").insert({
-      user_id: user.id,
-      calculator_slug: snapshot.calculatorSlug,
-      calculator_version: snapshot.calculatorVersion,
-      input_data: snapshot.input,
-      output_data: snapshot.output
-    });
-    setStatus(error
-      ? plan === "free" ? "Could not save. Free accounts can keep up to 20 calculations." : "Could not save calculation."
-      : "Calculation saved to your history.");
-    if(!error)setHistoryCount(v=>v+1);
+    if(!snapshot||saveLock.current)return;
+    saveLock.current=true;setSaving(true);report("Saving calculation…");
+    try{
+      if(entitlements.historyLimit!==null&&historyCount>=entitlements.historyLimit){report(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`,true);return;}
+      const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
+      const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
+      if(!user){report("Sign in to save this calculation.",true);return;}
+      const {error}=await supabase.from("calculation_history").insert({user_id:user.id,calculator_slug:snapshot.calculatorSlug,calculator_version:snapshot.calculatorVersion,input_data:snapshot.input,output_data:snapshot.output});
+      if(error)throw new Error("History save unavailable");
+      if(mounted.current){setHistoryCount(v=>v+1);report("Calculation saved to your history.");}
+    }catch{report(plan==="free"?"Could not save. Free accounts can keep up to 20 calculations.":"Could not save calculation.",true);}
+    finally{saveLock.current=false;if(mounted.current)setSaving(false);}
   }
 
   function exportJson() {
@@ -114,19 +119,22 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
     try {
       downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(snapshot.input, snapshot.output), "text/csv;charset=utf-8");
     } catch {
-      setStatus("Could not export calculation: result data is invalid.");
+      report("Could not export calculation: result data is invalid.",true);
     }
   }
 
+  function retryAccountRead(){if(readRetryLock.current)return;readRetryLock.current=true;setReadFailure(false);setSignedIn(null);setReadAttempt(value=>value+1);}
+
+  if(readFailure)return <div className="account-actions"><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" onClick={retryAccountRead}>Retry account actions</button></div>;
   if (signedIn === false) {
     return <div className="account-actions"><Link className="text-link" href="/login">Sign in to save this calculation</Link></div>;
   }
-  if (signedIn === null) return null;
+  if (signedIn === null) return <p role="status" aria-busy="true">Loading account actions…</p>;
 
   return (
-    <div className="account-actions" aria-live="polite">
-      <button className="button secondary" type="button" onClick={toggleFavorite}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
-      <button className="button secondary" type="button" onClick={saveHistory} disabled={!snapshot}>Save calculation</button>
+    <div className="account-actions">
+      <button className="button secondary" type="button" onClick={toggleFavorite} disabled={favoriting} aria-busy={favoriting}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
+      <button className="button secondary" type="button" onClick={saveHistory} disabled={!snapshot||saving} aria-busy={saving}>Save calculation</button>
       {entitlements.exports ? (
         <>
           <button className="button secondary" type="button" onClick={exportCsv} disabled={!snapshot}>Export CSV</button>
@@ -134,7 +142,7 @@ export function CalculatorAccountActions({ calculatorSlug, calculatorVersion, in
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
-      {status && <span className="muted">{status}</span>}
+      {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
     </div>
   );
 }

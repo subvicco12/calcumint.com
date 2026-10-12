@@ -99,3 +99,29 @@ Final local typecheck/affected lint and exact-head mandatory CI evidence are rec
 ## Release blockers unchanged
 
 Framework/accessibility owner review and actual assistive-technology/RSC verification remain required. Finance/YMYL and protected owner-led specialist/HOLD/master-identity review remain separate. Code evidence does not grant or waive approval. Mortgage period outputs remain BLOCKED on the existing financial specialist package decisions. BMI/BreakEven remain draft-gated. No certification/publication promotion, database write, formula/security/RLS change, approval, merge or deployment is performed.
+
+# Batch 16 — reliable shared account actions and reviewer decision worksheets
+
+Review date: 12 October 2026 IST. This cumulative main review follows unchanged #1385 (`9e19a94959ec2a532079e5730befd6bc2c542c1d`) with all previous source ancestry retained. Main baseline remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. No source PR is edited, closed, approved or merged.
+
+## Proven shared operation defects corrected
+
+Save/favorite actions previously remained enabled across authentication and database-request awaits, allowing duplicate requests and conflicting favorite state/count updates. Rejected authentication/read/action promises were uncaught, with account controls remaining blank or no recoverable feedback. Favorite/save completions could also announce/update the current interface after calculator slug or version changed.
+
+The shared account interface now has immediate per-action exclusion, disabled/busy controls, explicit pending/success/error feedback, caught read/action failures and a keyboard-operable read retry. Retry itself is excluded while its read is pending. Failed or unavailable quota counts remain unknown rather than being silently treated as zero. Existing Free limits, paid export entitlements, database favorite-by-slug contract and RLS remain unchanged.
+
+A session boundary keyed by calculator slug/version prevents old completions from mutating a new interface. An already requested save still uses its captured validated immutable snapshot and may complete after input/identity changes; it is not silently cancelled or relabelled as the new calculation. Mounted-state cleanup suppresses obsolete UI updates. No engine input/output, formula, version, raw snapshot/export representation or financial rule changes.
+
+## Focused verification
+
+84 tests across10files pass, including11 test-first lifecycle regressions; all existing immutable snapshot/raw-download tests; actual registered account/export integration; required-input recovery; Reference Six-related schedule/rate context; and unchanged publication/version gates. Deferred mocked auth/read/write requests verify duplicate exclusion, failures/retry, null quota reads, unchanged Free limits, version/slug isolation and captured old save identity. All database boundaries are mocked; no real writes or permission probes occur.
+
+Installed Chromium at320/1280pixels on Free/Pro/Business verifies keyboard Save/Retry, pending/busy state, one mocked request despite repeated activation, read recovery, export entitlement policy, no page overflow and no page exceptions. Actual shared account/result components and repository CSS are bundled; only auth/plan/read/write boundaries are mocked. This is not deployed-route or real screen-reader certification. Local typecheck/affected lint and exact-head mandatory CI evidence are recorded in the draft PR. No full local build or installation.
+
+## Individual reviewer evidence remains separate
+
+The original16-row matrix now contains individual review questions, required financial/YMYL versus domain/framework/accessibility roles and explicit decision-evidence state. Registered identity/version/source/code evidence from Batch15 is reused; historical Batch6 publication absence is not refreshed. Actual protected specialist approval/HOLD/lifecycle remains UNKNOWN. An authorized reviewer must supply the real decision/source/QA record; owner/admin alone may consider publication after existing gates pass.
+
+The Mortgage package adds a response worksheet tied to existing golden/boundary observations. Its questions do not adopt financial rules, change vector outputs or infer approval. Period recurrence, rounding, final-payment/residual and terminal/summation decisions remain unresolved and Mortgage period output remains BLOCKED. The original16 cohort is distinct from proposed Mortgage registration; dated209published evidence must not be subtracted from current574engine/226code-candidate counts to infer a fresh unpublished inventory.
+
+Next critical work: authorized framework/accessibility review and assistive-technology/RSC verification, then owner-led protected review/HOLD/master-identity adjudication and financial specialist responses. Certification/publication/production approval remains separate. No database writes, approvals, certification or publication promotion, formula/RLS/security weakening, merge or deployment. Billed Codex telemetry is unavailable; measured automatic Actions runtime is reported in the PR.

@@ -48,3 +48,18 @@ The zero-rate case requires explicit financial review: the aggregate's `totalInt
 6. Existing RLS, specialist/HOLD and matching published-ID/version gates remain intact. Authorized owner/admin approval, release/deployment and live route verification remain separate steps; this package performs none.
 
 **Release evidence:** 574 registered engines / 226 source code-certified candidates; 209 prior anonymous authoritative published entries reused. Mortgage is not observed in that manifest. Specialist approval/HOLD remains UNKNOWN, and Mortgage period outputs remain **BLOCKED**. BMI and Break-even draft restrictions and the sixteen-candidate matrix remain unchanged.
+
+## Batch 16 reviewer response worksheet — no financial decision recorded
+
+Prepared 12 October 2026 IST for the cumulative review following unchanged #1385. The golden vector JSON and all aggregate outputs above remain unchanged. Questions below request specialist evidence; they do not adopt a rounding rule, tolerance, ledger or approval. Actual protected review/approval/HOLD evidence remains UNKNOWN.
+
+| Existing observed vector | Question requiring a documented specialist response |
+| --- | --- |
+| `source-golden`: 100000 / 6% / 360 | Which reviewed source and precision policy accepts the observed monthly-first 599.55 / 215838 / 115838 aggregate, and what immutable identity/version would a future period model use? |
+| `zero-rate-rounded-total`: 320000 / 0% / 360 | Is the observed 0.4 aggregate interest residual acceptable for this aggregate model? If a different treatment is required, specify a governed version and golden output; do not borrow LoanAnalysis's zero-interest rows. |
+| Tiny principal: 0.001 / 0% / 1 | How should a separately reviewed period model address a principal smaller than the existing displayed payment precision? Supply accepted inputs/outputs or rejection policy; no clamp or tolerance is assumed here. |
+| Fractional principal / 0.001% / 37 | Specify which raw versus rounded quantities would feed each period recurrence, and reviewed final-payment/reconciliation vectors. Existing aggregate observations alone do not answer this. |
+| Upper schema boundary: 100 / 1000% / 1200 | Document suitability of the supported modeled range and required caveats; supply period-boundary/terminal evidence rather than extrapolating a schedule from aggregate totals. |
+| Schema-valid `1e-300` rate rejected by rounding guard | Confirm the intended numeric-range rejection or provide a separately governed stable implementation and reviewed vectors. Presentation must not convert the rejection into zero. |
+
+For every response, the authorized financial reviewer must identify the source basis, accepted/rejected/request-changes decision, reviewed engine version, golden/boundary evidence and explicit outstanding questions through the existing review workflow. Framework/accessibility reviewers separately assess chart/table/export consistency and assistive-technology behavior. Only owner/admin may consider publication after all normal gates pass. This worksheet records no approval or lifecycle transition; Mortgage period outputs remain **BLOCKED**.
