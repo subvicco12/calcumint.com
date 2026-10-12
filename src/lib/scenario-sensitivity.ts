@@ -1,5 +1,6 @@
 import type { CalculationSnapshot } from './calculation-snapshot';
 import { eligibleScenarioContract, reevaluateScenario } from './scenario-reevaluation';
+import { eligibleSensitivityFields } from './scenario-sensitivity-capabilities';
 
 /**
  * Deterministic, read-only one-variable sensitivity. Only certified, explicitly
@@ -18,7 +19,7 @@ export function calculateScenarioSensitivity(
 ): readonly SensitivityPoint[] {
   const contract = eligibleScenarioContract(captured);
   if (!contract) throw new Error('Sensitivity requires an eligible certified calculator');
-  if (!Object.hasOwn(captured.input, field) || typeof captured.input[field] !== 'number') {
+  if (!eligibleSensitivityFields(captured).includes(field)) {
     throw new Error('Sensitivity requires an existing numeric engine input');
   }
   if (!Array.isArray(candidateValues) || candidateValues.length === 0 || candidateValues.length > 25 ||
