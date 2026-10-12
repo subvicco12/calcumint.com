@@ -10,3 +10,27 @@ it('shows explicit labels/units with exact signed precision and treats different
 it('blocks malformed or mismatched display metadata and preserves earlier valid captures',()=>{const download=vi.fn();const metadata={schemaVersion:1 as const,calculatorSlug:snapshot.calculatorSlug,calculatorVersion:1,inputs:{},outputs:{value:{label:'Future value'}}};const view=render(<CalculatorScenarioWorkspace plan="pro" snapshot={snapshot} displayMetadata={metadata} download={download}/>);fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));view.rerender(<CalculatorScenarioWorkspace plan="pro" snapshot={snapshot} displayMetadata={{...metadata,calculatorVersion:2}} download={download}/>);fireEvent.click(screen.getByRole('button',{name:'Replace baseline A'}));expect(screen.getByRole('alert').textContent).toContain('Earlier valid snapshots');fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));expect(JSON.parse(download.mock.calls[0][1]).scenarios[0].displayMetadata.calculatorVersion).toBe(1);view.rerender(<CalculatorScenarioWorkspace plan="pro" snapshot={snapshot} displayMetadata={metadata} download={download}/>);fireEvent.click(screen.getByRole('button',{name:'Replace baseline A'}));expect(screen.queryByRole('alert')).toBeNull();});
 
 it('shows explicit empty-record states without inventing zero fields',()=>{render(<CalculatorScenarioWorkspace plan="pro" snapshot={{...snapshot,input:{},output:{}}} download={vi.fn()}/>);fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));expect(screen.getByText('No engine output fields were captured.')).toBeTruthy();expect(screen.getByText('No input fields were captured.')).toBeTruthy();expect(screen.queryByRole('table')).toBeNull();});
+
+it('previews edited eligible percentage inputs without changing captured history or exports',()=>{
+ const download=vi.fn();
+ const percentage=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ render(<CalculatorScenarioWorkspace plan="pro" snapshot={percentage} download={download}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ fireEvent.change(screen.getByRole('spinbutton',{name:'Percentage'}),{target:{value:'30'}});
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByText(/Re-evaluation preview for scenario A/)).toBeTruthy();
+ expect(screen.getByText(/"result": 75/)).toBeTruthy();
+ expect(screen.getByRole('table',{name:'Captured engine outputs'}).textContent).toContain('50');
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ expect(JSON.parse(download.mock.calls[0][1]).scenarios[0].output).toEqual({result:50});
+ fireEvent.change(screen.getByRole('spinbutton',{name:'Percentage'}),{target:{value:''}});
+ expect(screen.queryByText(/Re-evaluation preview for scenario A/)).toBeNull();
+ fireEvent.click(screen.getByRole('button',{name:'Preview edited scenario A'}));
+ expect(screen.getByRole('alert').textContent).toContain('Historical captures remain unchanged');
+});
+it('does not offer what-if controls for excluded mortgage captures',()=>{
+ const mortgage=createCalculationSnapshot({calculatorSlug:'mortgage-calculator',calculatorVersion:1,input:{principal:100,termMonths:12},output:{monthlyPayment:10}});
+ render(<CalculatorScenarioWorkspace plan="pro" snapshot={mortgage} download={vi.fn()}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ expect(screen.queryByRole('button',{name:/Preview edited scenario/})).toBeNull();
+});
