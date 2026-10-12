@@ -23,7 +23,7 @@ describe('scenario sensitivity contract', () => {
     expect(() => calculateScenarioSensitivity(captured, 'percentage', [Number.NaN])).toThrow();
     expect(() => calculateScenarioSensitivity(captured, 'percentage', [])).toThrow();
     expect(() => calculateScenarioSensitivity(captured, 'percentage', Array(26).fill(1))).toThrow();
-    expect(() => calculateScenarioSensitivity(captured, 'percentage', [-10])).toThrow();
+    expect(calculateScenarioSensitivity(captured, 'percentage', [-10])[0].snapshot.output.result).toBe(-25);
     const mortgage = createCalculationSnapshot({
       calculatorSlug: 'mortgage-calculator', calculatorVersion: 1,
       input: { principal: 100, termMonths: 12 }, output: { monthlyPayment: 10 },
