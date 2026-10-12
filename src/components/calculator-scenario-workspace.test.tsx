@@ -114,6 +114,8 @@ it('previews deterministic sensitivity in the shared workspace without changing 
  fireEvent.change(screen.getByRole('textbox',{name:/Candidate values/}),{target:{value:'10, 20, 30'}});
  fireEvent.click(screen.getByRole('button',{name:'Preview sensitivity A'}));
  const table=screen.getByRole('table',{name:/Sensitivity preview for scenario A/});
+ expect(screen.getByRole('region',{name:'Sensitivity preview'}).getAttribute('tabindex')).toBe('0');
+ expect(table.textContent).toContain('Baseline delta');
  expect(table.textContent).toContain('25');
  expect(table.textContent).toContain('50');
  expect(table.textContent).toContain('75');
