@@ -21,3 +21,20 @@ it('preserves distinct scenario display contexts in JSON and CSV without modifyi
  expect(serializeScenarioSetCsv(captures)).toContain('USD');
  expect(captures[0].snapshot.output.result).toBe(50);
 });
+
+it('reconciles CSV and JSON exports from the same validated scenario payload',()=>{
+ const baseline=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:50}});
+ const alternative=createCalculationSnapshot({...baseline,input:{percentage:30,value:250},output:{result:75}});
+ let rows=captureScenario([],'A',baseline,'baseline');
+ rows=captureScenario(rows,'B',alternative,'alternative');
+ const payload=scenarioSetPayload(rows);
+ const csv=serializeScenarioSetCsv(rows);
+ expect(payload.scenarios.map(row=>row.output.result)).toEqual([50,75]);
+ expect(csv).toContain('percentage-of-value-calculator');
+ expect(csv).toContain('baseline');
+ expect(csv).toContain('alternative');
+ expect(csv).toContain('50');
+ expect(csv).toContain('75');
+ expect(JSON.stringify(payload)).not.toContain('differenceFromBaseline');
+ expect(csv).not.toContain('differenceFromBaseline');
+});
