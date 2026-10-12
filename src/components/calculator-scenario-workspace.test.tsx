@@ -116,6 +116,9 @@ it('previews deterministic sensitivity in the shared workspace without changing 
  const table=screen.getByRole('table',{name:/Sensitivity preview for scenario A/});
  expect(screen.getByRole('region',{name:'Sensitivity preview'}).getAttribute('tabindex')).toBe('0');
  expect(table.textContent).toContain('Difference from captured baseline');
+ expect(table.textContent).toContain('result: -25');
+ expect(table.textContent).toContain('result: 0');
+ expect(table.textContent).toContain('result: 25');
  expect(table.textContent).toContain('25');
  expect(table.textContent).toContain('50');
  expect(table.textContent).toContain('75');
