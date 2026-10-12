@@ -33,3 +33,11 @@ it('reports unavailable baseline comparisons without inventing values or units',
  ]);
  expect(rows[0].metrics.some(metric=>metric.field==='description')).toBe(false);
 });
+
+it('keeps an overflowing numeric delta unavailable rather than presenting infinity',()=>{
+ const baseline=createCalculationSnapshot({calculatorSlug:'percentage-of-value-calculator',calculatorVersion:1,input:{percentage:20,value:250},output:{result:-1e308}});
+ const candidate=createCalculationSnapshot({...baseline,output:{result:1e308}});
+ const rows=presentSensitivityResults(baseline,[{inputValue:30,snapshot:candidate}]);
+ expect(rows[0].metrics).toEqual([{field:'result',value:1e308,baselineDifference:null}]);
+ expect(JSON.stringify(baseline.output)).toBe(JSON.stringify({result:-1e308}));
+});
