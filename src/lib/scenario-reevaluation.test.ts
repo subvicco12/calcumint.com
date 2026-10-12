@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createCalculationSnapshot } from './calculation-snapshot';
-import { reevaluateScenario, type ScenarioReevaluationContract } from './scenario-reevaluation';
+import { eligibleScenarioContract, reevaluateScenario, type ScenarioReevaluationContract } from './scenario-reevaluation';
 
 const original = createCalculationSnapshot({
   calculatorSlug: 'test-calculator',
@@ -35,5 +35,31 @@ describe('explicit scenario re-evaluation boundary', () => {
   it('rejects invalid engine outputs without changing historical evidence', () => {
     expect(() => reevaluateScenario(original, { ...contract, calculate: () => ({ result: Infinity }) })).toThrow(/Non-finite/);
     expect(original.output).toEqual({ result: 4 });
+  });
+});
+
+describe('calculator-specific complete-input eligibility', () => {
+  const percentage = createCalculationSnapshot({
+    calculatorSlug: 'percentage-of-value-calculator',
+    calculatorVersion: 1,
+    input: { percentage: 20, value: 250 },
+    output: { result: 50 },
+  });
+  it('reuses the registered certified percentage engine', () => {
+    const result = reevaluateScenario(percentage, eligibleScenarioContract(percentage));
+    expect(result.output).toEqual({ result: 50 });
+    expect(result.input).toEqual(percentage.input);
+  });
+  it('excludes Mortgage, unsupported identities and versions', () => {
+    for (const slug of ['mortgage-calculator', 'sip-calculator', 'unknown']) {
+      expect(eligibleScenarioContract({ ...percentage, calculatorSlug: slug })).toBeUndefined();
+    }
+    expect(eligibleScenarioContract({ ...percentage, calculatorVersion: 2 })).toBeUndefined();
+  });
+  it('rejects incomplete and extra-field input without changing historical output', () => {
+    const contract = eligibleScenarioContract(percentage);
+    expect(() => reevaluateScenario({ ...percentage, input: { value: 250 } }, contract)).toThrow();
+    expect(() => reevaluateScenario({ ...percentage, input: { percentage: 20, value: 250, unexpected: 1 } }, contract)).toThrow();
+    expect(percentage.output).toEqual({ result: 50 });
   });
 });
