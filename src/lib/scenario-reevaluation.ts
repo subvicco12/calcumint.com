@@ -1,3 +1,4 @@
+import { unitConversionCalculator } from '@/calculators/core/unit-conversion';
 import { percentageCalculator } from '@/calculators/core/percentage';
 import { runCalculator } from '@/calculators/engine';
 import type { CalculationSnapshot } from './calculation-snapshot';
@@ -46,18 +47,27 @@ export function reevaluateScenario(
   });
 }
 
-/** Explicit complete-input allowlist; specialist-dependent calculators are excluded. */
+/** Explicit complete-input allowlist; financial and specialist-dependent calculators are excluded. */
 export function eligibleScenarioContract(snapshot: CalculationSnapshot): ScenarioReevaluationContract | undefined {
-  if (snapshot.calculatorSlug !== 'percentage-of-value-calculator' || snapshot.calculatorVersion !== 1) return undefined;
+  const definitions = [percentageCalculator, unitConversionCalculator] as const;
+  const definition = definitions.find(item => item.slug === snapshot.calculatorSlug && item.version === snapshot.calculatorVersion);
+  if (!definition || definition.reviewStatus !== 'certified' || definition.riskClass !== 'standard') return undefined;
   return {
-    calculatorSlug: 'percentage-of-value-calculator',
-    calculatorVersion: 1,
-    reviewEvidence: 'core.percentage-of-value v1: complete percentage/value inputs; certified standard-risk engine',
+    calculatorSlug: definition.slug,
+    calculatorVersion: definition.version,
+    reviewEvidence: `${definition.id} v${definition.version}: complete engine input schema, certified standard-risk engine`,
     calculate: input => {
-      const parsed = percentageCalculator.inputSchema.parse(input);
-      // Zod strips extraneous keys: an edited capture must represent the full input contract.
-      if (Object.keys(input).length !== Object.keys(parsed).length) throw new Error('Incomplete or unsupported scenario input');
-      return runCalculator(percentageCalculator, parsed).output;
+      // All approved engines receive exactly their declared complete input shape.
+      const parsed = definition.inputSchema.parse(input);
+      if (Object.keys(input).length !== Object.keys(parsed).length ||
+          Object.keys(parsed).some(key => !Object.hasOwn(input, key))) {
+        throw new Error('Incomplete or unsupported scenario input');
+      }
+      // Narrow by identity before calling the typed engine.
+      if (definition.slug === percentageCalculator.slug) {
+        return runCalculator(percentageCalculator, percentageCalculator.inputSchema.parse(parsed)).output;
+      }
+      return runCalculator(unitConversionCalculator, unitConversionCalculator.inputSchema.parse(parsed)).output;
     },
   };
 }
