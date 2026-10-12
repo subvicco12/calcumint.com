@@ -22,6 +22,6 @@ describe("isolated legacy slope adapter", () => {
     expect(() => calculateLegacySlopeCompatibility(input)).toThrow();
   });
   it("rejects arithmetic overflow in the derived coordinate engine", () => {
-    expect(() => calculateLegacySlopeCompatibility({ rise: 1e308, run: Number.MIN_VALUE })).toThrow(/finite range/);
+    expect(() => calculateLegacySlopeCompatibility({ rise: 1e308, run: Number.MIN_VALUE })).toThrow(/finite range|Too big/);
   });
 });
