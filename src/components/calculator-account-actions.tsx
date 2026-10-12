@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
 import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
 import { useEffect, useRef, useState } from "react";
@@ -143,7 +144,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   if(readFailure)return <div className="account-actions"><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" onClick={retryAccountRead}>Retry account actions</button></div>;
   if (signedIn === false) {
-    return <div className="account-actions"><Link className="text-link" href="/login">Sign in to save this calculation</Link></div>;
+    return <div className="account-actions"><Link className="text-link" href="/login">Sign in to save this calculation</Link><CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={downloadFile}/></div>;
   }
   if (signedIn === null) return <p role="status" aria-busy="true">Loading account actions…</p>;
 
@@ -158,6 +159,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
+      <CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={downloadFile}/>
       {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
     </div>
   );
