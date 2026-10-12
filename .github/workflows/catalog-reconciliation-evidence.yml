@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '.github/workflows/catalog-reconciliation-evidence.yml'
+      - 'src/calculators/catalog-reviewed-standard-evidence.test.ts'
+      - 'src/calculators/catalog-certification-queue*.ts'
   workflow_dispatch:
     inputs:
       produce_reconciliation:
@@ -29,6 +31,10 @@ jobs:
         env:
           CALCUMINT_INVENTORY_OUT: catalog-evidence
         run: npx vitest run src/calculators/catalog-inventory-export.test.ts
+      - name: Export provisional 540-row certification readiness and reviewed standard-risk packet candidates
+        env:
+          CALCUMINT_CERTIFICATION_EVIDENCE_OUT: catalog-evidence
+        run: npx vitest run src/calculators/catalog-reviewed-standard-evidence.test.ts
       - name: Generate audited 540-row reconciliation
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.produce_reconciliation }}
         env:
