@@ -49,6 +49,14 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     databaseCertificationVerified:false,
     publicationVerified:false,
   }));
+  const sixSlugs=["slope-calculator","graphing-calculator","function-plotter-2d","volume-calculator","standard-deviation-calculator","variance-calculator"];
+  const six=sixSlugs.map(slug=>{
+    const d=definitions.get(slug);
+    if(!d)throw new Error("Missing six-candidate registry definition: "+slug);
+    return {id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus,formulaCount:d.formulas.length,sourceCount:d.sources.length,goldenTestCount:d.goldenTests?.length??0,exampleCount:d.examples.length};
+  });
+  console.info("SIX_STANDARD_CANDIDATE_EVIDENCE",JSON.stringify(six));
+  expect(six.every(d=>d.riskClass==="standard"&&d.reviewStatus==="certified")).toBe(true);
   const output=process.env.CALCUMINT_CERTIFICATION_EVIDENCE_OUT;
   if(output){
     mkdirSync(output,{recursive:true});
@@ -67,6 +75,7 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     };
     writeFileSync(output+"/certification-readiness-summary.json",JSON.stringify(snapshot,null,2)+"\\n");
     writeFileSync(output+"/certification-readiness-rows.csv",report.csv);
+    writeFileSync(output+"/six-standard-candidate-evidence.json",JSON.stringify(six,null,2)+"\\n");
     writeFileSync(output+"/reviewed-standard-packet-candidates.json",JSON.stringify(evidence,null,2)+"\\n");
   }
   expect(report.rows).toHaveLength(540);
