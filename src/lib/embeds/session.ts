@@ -31,3 +31,8 @@ export function verifyEmbedSession(token: string | null | undefined, secret: str
     return claims.expiresAt > now && claims.expiresAt <= now + 15 * 60_000 ? claims : null;
   } catch { return null; }
 }
+
+/** Mint an expiring capability outside React's render-phase clock access. */
+export function issueEmbedSession(claims: Omit<EmbedSessionClaims, "expiresAt">, secret: string): string {
+  return signEmbedSession({ ...claims, expiresAt: Date.now() + 5 * 60_000 }, secret);
+}
