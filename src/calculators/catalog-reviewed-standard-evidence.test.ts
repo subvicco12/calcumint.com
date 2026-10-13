@@ -56,9 +56,9 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
   expect(activeSlope?.id).toBe("geometry.slope");
   expect(activeSlope?.version).toBe(2);
   expect(geometrySlope.slug).toBe(activeSlope?.slug);
-  expect(inactiveGeometrySlope.id).not.toBe(activeSlope?.id);
+  expect(geometrySlope.id).toBe(activeSlope?.id);
   expect(registry.filter(d=>d.slug==="slope-calculator")).toHaveLength(1);
-  console.info("SLOPE_IDENTITY_CONFLICT",JSON.stringify({activeId:activeSlope?.id,activeCategory:activeSlope?.category,inactiveId:inactiveGeometrySlope.id,inactiveCategory:inactiveGeometrySlope.category,sharedSlug:inactiveGeometrySlope.slug,registryDuplicate:false,masterCatalogId:276,masterDomain:"Geometry",mappingApproved:false}));
+  console.info("SLOPE_DRAFT_IDENTITY",JSON.stringify({activeId:activeSlope?.id,activeCategory:activeSlope?.category,activeVersion:activeSlope?.version,registryDuplicate:false,masterCatalogId:276,masterDomain:"Geometry",databaseCertificationVerified:false,publicationApproved:false}));
   const sixSlugs=["slope-calculator","graphing-calculator","function-plotter-2d","volume-calculator","standard-deviation-calculator","variance-calculator"];
   const six=sixSlugs.map(slug=>{
     const d=definitions.get(slug);
