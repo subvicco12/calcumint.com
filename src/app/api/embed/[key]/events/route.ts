@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { verifyEmbedSession } from "@/lib/embeds/session";
 import { embedEventSchema } from "@/lib/embeds/schema";
 
 type RouteProps = { params: Promise<{ key: string }> };
 
 export async function POST(request: NextRequest, { params }: RouteProps) {
   const { key } = await params;
+  const session = verifyEmbedSession(request.headers.get("x-embed-session"), process.env.EMBED_SESSION_SECRET ?? "");
+  if (!session) return NextResponse.json({ error: "Embed session unavailable" }, { status: 403 });
   const admin = createSupabaseAdminClient();
   if (!admin) return NextResponse.json({ error: "Not configured" }, { status: 503 });
   const parsed = embedEventSchema.safeParse(await request.json().catch(() => null));
@@ -13,7 +16,7 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status").eq("public_key", key).eq("status", "active").maybeSingle();
   if (!config) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const { data: calculator, error: calculatorError } = await admin.from("custom_calculators").select("id,published_version").eq("id", config.calculator_id).eq("organization_id", config.organization_id).eq("status", "published").maybeSingle();
-  if (calculatorError || !calculator?.published_version) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  if (calculatorError || !calculator?.published_version || session.configId !== config.id || session.organizationId !== config.organization_id || session.calculatorId !== config.calculator_id || session.version !== calculator.published_version) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const { error } = await admin.from("embed_events").insert({ organization_id: config.organization_id, embed_config_id: config.id, calculator_id: config.calculator_id, event_type: parsed.data.type, source_url: parsed.data.sourceUrl ?? null, referrer: parsed.data.referrer ?? null, metadata: parsed.data.metadata ?? {} });
   return error ? NextResponse.json({ error: "Could not record event" }, { status: 500 }) : NextResponse.json({ ok: true });
 }
