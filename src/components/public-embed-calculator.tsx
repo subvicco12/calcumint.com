@@ -25,21 +25,31 @@ export function PublicEmbedCalculator(props: Props) {
   const [values, setValues] = useState<Record<string, string>>(initial);
   const [leadStatus, setLeadStatus] = useState("");
   const sessionRef = useRef(props.sessionToken);
+  const renewalRef = useRef<Promise<boolean> | null>(null);
   const [sessionAvailable, setSessionAvailable] = useState(true);
 
   useEffect(() => {
-    const renew = async () => {
+    const renew = async (): Promise<boolean> => {
       try {
         const response = await fetch(`/api/embed/${props.publicKey}/session`, { method: "POST", headers: { "X-Embed-Session": sessionRef.current } });
-        if (!response.ok) { setSessionAvailable(false); return; }
+        if (!response.ok) { setSessionAvailable(false); return false; }
         const payload: unknown = await response.json();
-        if (!payload || typeof payload !== "object" || !("sessionToken" in payload) || typeof payload.sessionToken !== "string") { setSessionAvailable(false); return; }
+        if (!payload || typeof payload !== "object" || !("sessionToken" in payload) || typeof payload.sessionToken !== "string") { setSessionAvailable(false); return false; }
         sessionRef.current = payload.sessionToken;
         setSessionAvailable(true);
-      } catch { setSessionAvailable(false); }
+        return true;
+      } catch { setSessionAvailable(false); return false; }
     };
-    const onResume = () => { if (document.visibilityState === "visible") void renew(); };
-    const interval = window.setInterval(() => { void renew(); }, 3 * 60_000);
+    const renewOnce = () => {
+      if (!renewalRef.current) {
+        const pending = renew();
+        renewalRef.current = pending;
+        void pending.finally(() => { if (renewalRef.current === pending) renewalRef.current = null; });
+      }
+      return renewalRef.current;
+    };
+    const onResume = () => { if (document.visibilityState === "visible") void renewOnce(); };
+    const interval = window.setInterval(() => { void renewOnce(); }, 3 * 60_000);
     document.addEventListener("visibilitychange", onResume);
     window.addEventListener("focus", onResume);
     return () => { window.clearInterval(interval); document.removeEventListener("visibilitychange", onResume); window.removeEventListener("focus", onResume); };
