@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { createCalculationSnapshot } from "../../lib/calculation-snapshot";
-import { eligibleScenarioContract } from "../../lib/scenario-reevaluation";
+import { eligibleScenarioContract, reevaluateScenario } from "../../lib/scenario-reevaluation";
 import { calculateLegacySlopeCompatibility } from "./slope-legacy-compatibility";
 
 describe("legacy slope snapshot preservation and scenario HOLD", () => {
@@ -30,5 +30,7 @@ describe("legacy slope snapshot preservation and scenario HOLD", () => {
     });
     expect(eligibleScenarioContract(legacy)).toBeUndefined();
     expect(eligibleScenarioContract(coordinate)).toBeUndefined();
+    expect(() => reevaluateScenario(legacy, eligibleScenarioContract(legacy))).toThrow(/explicit reviewed contract/);
+    expect(() => reevaluateScenario(coordinate, eligibleScenarioContract(coordinate))).toThrow(/explicit reviewed contract/);
   });
 });
