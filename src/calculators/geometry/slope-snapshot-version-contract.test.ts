@@ -1,0 +1,38 @@
+import { describe, expect, it } from "vitest";
+import { calculatorRegistry } from "../registry";
+import { slopeCalculator } from "./catalog-completion";
+import { calculateLegacySlopeCompatibility } from "./slope-legacy-compatibility";
+import { createCalculationSnapshot } from "../../lib/calculation-snapshot";
+
+/**
+ * Pre-migration characterization only. This is deliberately NOT a runtime
+ * dispatch implementation or authorization to replace the active registry.
+ */
+describe("Slope historical version collision gate", () => {
+  it("records the unresolved slug/version collision while the candidate is inactive", () => {
+    const active = calculatorRegistry.getBySlug("slope-calculator");
+    expect(active).toBeDefined();
+    expect(active?.slug).toBe(slopeCalculator.slug);
+    expect(active?.version).toBe(1);
+    expect(slopeCalculator.version).toBe(1);
+    expect(active?.id).not.toBe(slopeCalculator.id);
+    expect(calculatorRegistry.getById(slopeCalculator.id)).toBeUndefined();
+  });
+  it("keeps historical v1 rise/run payload distinct from candidate coordinate input", () => {
+    const legacy = createCalculationSnapshot({
+      calculatorSlug: "slope-calculator",
+      calculatorVersion: 1,
+      input: { rise: 9, run: 3 },
+      output: { result: 3 },
+    });
+    expect(slopeCalculator.inputSchema.safeParse(legacy.input).success).toBe(false);
+    expect(calculateLegacySlopeCompatibility(legacy.input).legacyOutput).toEqual({ result: 3 });
+    expect(legacy.calculatorVersion).toBe(1);
+    expect(legacy.input).toEqual({ rise: 9, run: 3 });
+  });
+  it("does not misinterpret coordinate input as a historical rise/run payload", () => {
+    const coordinates = { x1: 1, y1: 2, x2: 4, y2: 8 };
+    expect(slopeCalculator.inputSchema.safeParse(coordinates).success).toBe(true);
+    expect(() => calculateLegacySlopeCompatibility(coordinates)).toThrow();
+  });
+});
