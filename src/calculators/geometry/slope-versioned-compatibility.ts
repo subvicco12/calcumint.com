@@ -26,6 +26,22 @@ const coordinateOutputSchema = z.object({
   steps: z.array(z.string()),
 }).strict();
 
+/** Decode a persisted calculation_history row without changing its stored result. */
+export function readPersistedSlopeHistoryRow(value: unknown) {
+  const row = z.object({
+    calculator_slug: z.literal("slope-calculator"),
+    calculator_version: z.union([z.literal(1), z.literal(2)]),
+    input_data: z.record(z.string(), z.unknown()),
+    output_data: z.record(z.string(), z.unknown()),
+  }).passthrough().parse(value);
+  return readVersionedSlopeSnapshot({
+    calculatorSlug: row.calculator_slug,
+    calculatorVersion: row.calculator_version,
+    input: row.input_data,
+    output: row.output_data,
+  });
+}
+
 export function readVersionedSlopeSnapshot(value: unknown) {
   const snapshot = versionedSlopeSnapshotSchema.parse(value);
   if (snapshot.calculatorVersion === 1) {
