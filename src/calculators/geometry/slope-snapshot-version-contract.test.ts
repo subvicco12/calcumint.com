@@ -3,6 +3,7 @@ import { calculatorRegistry } from "../registry";
 import { slopeCalculator } from "./catalog-completion";
 import { calculateLegacySlopeCompatibility } from "./slope-legacy-compatibility";
 import { createCalculationSnapshot } from "../../lib/calculation-snapshot";
+import { eligibleScenarioContract } from "../../lib/scenario-reevaluation";
 
 /**
  * Pre-migration characterization only. This is deliberately NOT a runtime
@@ -29,6 +30,16 @@ describe("Slope historical version collision gate", () => {
     expect(calculateLegacySlopeCompatibility(legacy.input).legacyOutput).toEqual({ result: 3 });
     expect(legacy.calculatorVersion).toBe(1);
     expect(legacy.input).toEqual({ rise: 9, run: 3 });
+  });
+  it("rejects automatic scenario eligibility for both proposed snapshot generations", () => {
+    for (const version of [1, 2]) {
+      const snapshot = createCalculationSnapshot({
+        calculatorSlug: "slope-calculator", calculatorVersion: version,
+        input: version === 1 ? { rise: 6, run: 3 } : { x1: 0, y1: 0, x2: 3, y2: 6 },
+        output: version === 1 ? { result: 2 } : { value: 2, dx: 3, dy: 6 },
+      });
+      expect(eligibleScenarioContract(snapshot)).toBeUndefined();
+    }
   });
   it("does not misinterpret coordinate input as a historical rise/run payload", () => {
     const coordinates = { x1: 1, y1: 2, x2: 4, y2: 8 };
