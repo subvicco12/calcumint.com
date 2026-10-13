@@ -87,4 +87,37 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     expect((await POST(request("events", { type: "view" }), context)).status).toBe(404);
     expect(state.writes).toEqual([]);
   });
+  it("refuses a renewal when the embed is disabled or its organization changes", async () => {
+    const { POST } = await import("@/app/api/embed/[key]/session/route");
+    state.config = null;
+    expect((await POST(request("session", {}), context)).status).toBe(404);
+    state.config = { id: configId, organization_id: "44444444-4444-4444-8444-444444444444", calculator_id: calculatorId };
+    expect((await POST(request("session", {}), context)).status).toBe(404);
+    expect(state.writes).toEqual([]);
+  });
+  it("returns a fresh signed capability after renewal and refuses a revoked version for event and lead routes", async () => {
+    const { POST: renew } = await import("@/app/api/embed/[key]/session/route");
+    const { POST: event } = await import("@/app/api/embed/[key]/events/route");
+    const { POST: lead } = await import("@/app/api/embed/[key]/leads/route");
+    const response = await renew(request("session", {}), context);
+    expect(response.status).toBe(200);
+    const body = await response.json();
+    expect(typeof body.sessionToken).toBe("string");
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    expect((await event(request("events", { type: "view" }, body.sessionToken), context)).status).toBe(200);
+    state.writes.length = 0;
+    state.calculator = { id: calculatorId, published_version: 3 };
+    expect((await event(request("events", { type: "view" }, body.sessionToken), context)).status).toBe(404);
+    expect((await lead(request("leads", { consented: true, email: "example@example.com" }, body.sessionToken), context)).status).toBe(404);
+    expect(state.writes).toEqual([]);
+  });
+  it("rejects expired event and lead tokens before any writes", async () => {
+    const { POST: event } = await import("@/app/api/embed/[key]/events/route");
+    const { POST: lead } = await import("@/app/api/embed/[key]/leads/route");
+    const expired = token(Date.now() - 1000);
+    expect((await event(request("events", { type: "view" }, expired), context)).status).toBe(403);
+    expect((await lead(request("leads", { consented: true, email: "example@example.com" }, expired), context)).status).toBe(403);
+    expect(state.writes).toEqual([]);
+  });
+
 });
