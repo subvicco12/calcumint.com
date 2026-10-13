@@ -23,7 +23,7 @@ const coordinateOutputSchema = z.object({
   value: z.number().finite(),
   dx: z.number().finite(),
   dy: z.number().finite(),
-  steps: z.unknown(),
+  steps: z.array(z.string()),
 }).strict();
 
 export function readVersionedSlopeSnapshot(value: unknown) {
