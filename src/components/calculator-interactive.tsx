@@ -1,5 +1,6 @@
 "use client";
 import {scenarioMetadataForResult} from "@/lib/scenario-display-metadata";
+import { calculatorRegistry } from "@/calculators/registry";
 import {registeredValueResult,type RegisteredValueDefinition} from "@/calculators/final-framework/registered-value-result";
 import {loanRegisteredRateAnalysis,sipRegisteredRateAnalysis,compoundRegisteredRateAnalysis,registeredRateExport} from "@/calculators/final-framework/registered-rate-analysis";
 import {UnavailableRateAnalysis} from "./unavailable-rate-analysis";
