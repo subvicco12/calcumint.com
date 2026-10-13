@@ -5,6 +5,7 @@ import { runCustomCalculator, type CustomCalculatorDefinition } from "@/lib/buil
 
 type Props = {
   publicKey: string;
+  sessionToken: string;
   definition: CustomCalculatorDefinition;
   companyName?: string | null;
   logoUrl?: string | null;
@@ -28,7 +29,7 @@ export function PublicEmbedCalculator(props: Props) {
   }, [props.definition, values]);
 
   useEffect(() => {
-    void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "view", sourceUrl: window.location.href, referrer: document.referrer || undefined }) });
+    void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json", "X-Embed-Session": props.sessionToken }, body: JSON.stringify({ type: "view", sourceUrl: window.location.href, referrer: document.referrer || undefined }) });
   }, [props.publicKey]);
 
   async function submitLead(event: FormEvent<HTMLFormElement>) {
@@ -38,14 +39,14 @@ export function PublicEmbedCalculator(props: Props) {
     const payload = Object.fromEntries(["name", "email", "phone", "company"].map((key) => [key, String(form.get(key) ?? "").trim()]));
     const response = await fetch(`/api/embed/${props.publicKey}/leads`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-Embed-Session": props.sessionToken },
       body: JSON.stringify({ ...payload, consented: form.get("consent") === "on", input: values, output: evaluated.result, sourceUrl: window.location.href })
     });
     setLeadStatus(response.ok ? "Thanks — your details were submitted." : "Could not submit your details.");
   }
 
   function recordCalculation() {
-    void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "calculate", sourceUrl: window.location.href }) });
+    void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json", "X-Embed-Session": props.sessionToken }, body: JSON.stringify({ type: "calculate", sourceUrl: window.location.href }) });
   }
 
   return (
@@ -55,7 +56,7 @@ export function PublicEmbedCalculator(props: Props) {
         {props.definition.fields.map((field) => <label className="field" key={field.key}><span>{field.label}</span><input type="number" inputMode="decimal" min={field.min ?? undefined} max={field.max ?? undefined} step={field.step ?? "any"} value={values[field.key] ?? ""} onChange={(event) => { setValues((current) => ({ ...current, [field.key]: event.target.value })); recordCalculation(); }} />{field.helpText && <small>{field.helpText}</small>}</label>)}
       </div>
       {evaluated.error ? <div className="notice error-notice">{evaluated.error}</div> : <div className="builder-results">{props.definition.outputs.map((output) => <div className="result-box" key={output.key}><span>{output.label}</span><strong>{formatValue(evaluated.result?.[output.key], output.format, output.decimals)}</strong></div>)}</div>}
-      {props.ctaLabel && props.ctaUrl && <a className="button primary embed-cta" href={props.ctaUrl} target="_blank" rel="noreferrer" onClick={() => void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "cta_click", sourceUrl: window.location.href }) })}>{props.ctaLabel}</a>}
+      {props.ctaLabel && props.ctaUrl && <a className="button primary embed-cta" href={props.ctaUrl} target="_blank" rel="noreferrer" onClick={() => void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json", "X-Embed-Session": props.sessionToken }, body: JSON.stringify({ type: "cta_click", sourceUrl: window.location.href }) })}>{props.ctaLabel}</a>}
       {props.leadCaptureEnabled && <form className="embed-lead-form" onSubmit={submitLead}><h3>Send me this result</h3>{props.leadFields.includes("name") && <label>Name<input name="name" required /></label>}{props.leadFields.includes("email") && <label>Email<input name="email" type="email" required /></label>}{props.leadFields.includes("phone") && <label>Phone<input name="phone" /></label>}{props.leadFields.includes("company") && <label>Company<input name="company" /></label>}<label className="consent-row"><input name="consent" type="checkbox" required /><span>{props.consentText}{props.privacyUrl && <> <a href={props.privacyUrl} target="_blank" rel="noreferrer">Privacy policy</a></>}</span></label><button className="button primary" type="submit">Submit</button>{leadStatus && <p aria-live="polite">{leadStatus}</p>}</form>}
       {!props.hideCalcumintBrand && <footer className="embed-powered">Powered by CalcuMint</footer>}
     </div>
