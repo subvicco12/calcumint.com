@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { isEmbedRequestAllowed } from "@/lib/embeds/origin";
 import { publicLeadSchema } from "@/lib/embeds/schema";
 
 type RouteProps = { params: Promise<{ key: string }> };
@@ -11,8 +10,8 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   if (!admin) return NextResponse.json({ error: "Not configured" }, { status: 503 });
   const parsed = publicLeadSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Invalid lead" }, { status: 400 });
-  const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,allowed_domains,allow_direct,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
-  if (!config || !config.lead_capture_enabled || !isEmbedRequestAllowed(config.allowed_domains ?? [], Boolean(config.allow_direct), request.headers.get("referer"), request.headers.get("sec-fetch-dest"))) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
+  const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
+  if (!config || !config.lead_capture_enabled) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
   const { data: calculator, error: calculatorError } = await admin.from("custom_calculators").select("id,published_version").eq("id", config.calculator_id).eq("organization_id", config.organization_id).eq("status", "published").maybeSingle();
   if (calculatorError || !calculator?.published_version) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
 
