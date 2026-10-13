@@ -28,5 +28,7 @@ describe("embed session integration contracts", () => {
     expect(component).toContain("/session");
     expect(component).toContain("setSessionAvailable(false)");
     expect(component).toContain("disabled={!sessionAvailable}");
+    expect(component).toContain('addEventListener("visibilitychange", onResume)');
+    expect(component).toContain('addEventListener("focus", onResume)');
   });
 });
