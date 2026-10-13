@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { verifyEmbedSession } from "@/lib/embeds/session";
 import { publicLeadSchema } from "@/lib/embeds/schema";
 
 type RouteProps = { params: Promise<{ key: string }> };
 
 export async function POST(request: NextRequest, { params }: RouteProps) {
   const { key } = await params;
+  const session = verifyEmbedSession(request.headers.get("x-embed-session"), process.env.EMBED_SESSION_SECRET ?? "");
+  if (!session) return NextResponse.json({ error: "Embed session unavailable" }, { status: 403 });
   const admin = createSupabaseAdminClient();
   if (!admin) return NextResponse.json({ error: "Not configured" }, { status: 503 });
   const parsed = publicLeadSchema.safeParse(await request.json().catch(() => null));
@@ -13,7 +16,7 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
   if (!config || !config.lead_capture_enabled) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
   const { data: calculator, error: calculatorError } = await admin.from("custom_calculators").select("id,published_version").eq("id", config.calculator_id).eq("organization_id", config.organization_id).eq("status", "published").maybeSingle();
-  if (calculatorError || !calculator?.published_version) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
+  if (calculatorError || !calculator?.published_version || session.configId !== config.id || session.organizationId !== config.organization_id || session.calculatorId !== config.calculator_id || session.version !== calculator.published_version) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
 
   for (const field of config.lead_fields ?? []) {
     if (field === "email" && !parsed.data.email) return NextResponse.json({ error: "Email is required" }, { status: 400 });
