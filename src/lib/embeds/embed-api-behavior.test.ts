@@ -120,4 +120,27 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     expect(state.writes).toEqual([]);
   });
 
+  it("rejects forged session signatures and mismatched calculator bindings", async () => {
+    const { POST: renew } = await import("@/app/api/embed/[key]/session/route");
+    const { POST: event } = await import("@/app/api/embed/[key]/events/route");
+    const { POST: lead } = await import("@/app/api/embed/[key]/leads/route");
+    const forged = token() + "x";
+    expect((await renew(request("session", {}, forged), context)).status).toBe(403);
+    expect((await event(request("events", { type: "view" }, forged), context)).status).toBe(403);
+    expect((await lead(request("leads", { consented: true, email: "example@example.com" }, forged), context)).status).toBe(403);
+    state.config = { id: configId, organization_id: organizationId, calculator_id: "55555555-5555-4555-8555-555555555555", lead_capture_enabled: true };
+    expect((await renew(request("session", {}), context)).status).toBe(404);
+    expect((await event(request("events", { type: "view" }), context)).status).toBe(404);
+    expect((await lead(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(404);
+    expect(state.writes).toEqual([]);
+  });
+  it("fails closed when signing secret is unavailable", async () => {
+    const { POST: renew } = await import("@/app/api/embed/[key]/session/route");
+    const { POST: event } = await import("@/app/api/embed/[key]/events/route");
+    delete process.env.EMBED_SESSION_SECRET;
+    expect((await renew(request("session", {}), context)).status).toBe(403);
+    expect((await event(request("events", { type: "view" }), context)).status).toBe(403);
+    expect(state.writes).toEqual([]);
+  });
+
 });
