@@ -20,6 +20,8 @@ describe("isolated versioned Slope historical snapshot reader", () => {
       calculatorVersion: 2, output: { value: 2.001, dx: 3, dy: 6, steps: ["stored"] },
     });
     expect(() => readVersionedSlopeSnapshot({ ...snapshot, input: { rise: 6, run: 3 } })).toThrow();
+    expect(() => readVersionedSlopeSnapshot({ ...snapshot, output: { value: 2, dx: 3, dy: 6, steps: [123] } })).toThrow();
+    expect(() => readVersionedSlopeSnapshot({ ...snapshot, output: { value: 2, dx: 3, dy: 6, steps: "text" } })).toThrow();
   });
   it("fails closed on unknown versions, mixed shapes, missing outputs and other slugs", () => {
     const legacy = { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: 6, run: 3 }, output: { result: 2 } };
