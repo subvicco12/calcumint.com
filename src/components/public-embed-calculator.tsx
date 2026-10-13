@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState, useRef } from "react";
+import Image from "next/image";
 import { runCustomCalculator, type CustomCalculatorDefinition } from "@/lib/builder/definition";
 
 type Props = {
@@ -68,7 +69,7 @@ export function PublicEmbedCalculator(props: Props) {
 
   return (
     <div className="public-embed" style={{ "--embed-accent": props.accentColor } as React.CSSProperties}>
-      {(props.companyName || props.logoUrl) && <header className="embed-brand">{props.logoUrl && <img src={props.logoUrl} alt="" />}<strong>{props.companyName}</strong></header>}
+      {(props.companyName || props.logoUrl) && <header className="embed-brand">{props.logoUrl && <Image src={props.logoUrl} alt="" width={120} height={48} unoptimized />}<strong>{props.companyName}</strong></header>}
       <div className="field-grid">
         {props.definition.fields.map((field) => <label className="field" key={field.key}><span>{field.label}</span><input type="number" inputMode="decimal" min={field.min ?? undefined} max={field.max ?? undefined} step={field.step ?? "any"} value={values[field.key] ?? ""} onChange={(event) => { setValues((current) => ({ ...current, [field.key]: event.target.value })); recordCalculation(); }} />{field.helpText && <small>{field.helpText}</small>}</label>)}
       </div>
