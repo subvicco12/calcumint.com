@@ -4,7 +4,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { customCalculatorSchema } from "@/lib/builder/definition";
 import { isEmbedRequestAllowed } from "@/lib/embeds/origin";
 import { PublicEmbedCalculator } from "@/components/public-embed-calculator";
-import { signEmbedSession } from "@/lib/embeds/session";
+import { issueEmbedSession } from "@/lib/embeds/session";
 
 type PageProps = { params: Promise<{ key: string }> };
 
@@ -29,7 +29,7 @@ export default async function EmbedPage({ params }: PageProps) {
 
   const sessionSecret = process.env.EMBED_SESSION_SECRET;
   if (!sessionSecret || sessionSecret.length < 32) return <main className="embed-shell"><p>Embed service is not configured.</p></main>;
-  const sessionToken = signEmbedSession({ configId: config.id, organizationId: config.organization_id, calculatorId: calculator.id, version: calculator.published_version, expiresAt: Date.now() + 5 * 60_000 }, sessionSecret);
+  const sessionToken = issueEmbedSession({ configId: config.id, organizationId: config.organization_id, calculatorId: calculator.id, version: calculator.published_version }, sessionSecret);
 
   return <main className="embed-shell"><PublicEmbedCalculator sessionToken={sessionToken} publicKey={key} definition={parsed.data} companyName={config.company_name} logoUrl={config.logo_url} accentColor={config.accent_color} hideCalcumintBrand={config.hide_calcumint_brand} ctaLabel={config.cta_label} ctaUrl={config.cta_url} leadCaptureEnabled={config.lead_capture_enabled} leadFields={config.lead_fields ?? ["name","email"]} consentText={config.consent_text} privacyUrl={config.privacy_url} /></main>;
 }
