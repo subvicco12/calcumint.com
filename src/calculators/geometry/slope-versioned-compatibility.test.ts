@@ -23,6 +23,12 @@ describe("isolated versioned Slope historical snapshot reader", () => {
     expect(() => readVersionedSlopeSnapshot({ ...snapshot, output: { value: 2, dx: 3, dy: 6, steps: [123] } })).toThrow();
     expect(() => readVersionedSlopeSnapshot({ ...snapshot, output: { value: 2, dx: 3, dy: 6, steps: "text" } })).toThrow();
   });
+  it("rejects unknown metadata and mathematical output keys rather than discarding them", () => {
+    const base = { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: 6, run: 3 }, output: { result: 2 } };
+    expect(() => readVersionedSlopeSnapshot({ ...base, createdAt: "2026-10-13" })).toThrow();
+    expect(() => readVersionedSlopeSnapshot({ ...base, output: { result: 2, note: "legacy" } })).toThrow();
+    expect(() => readVersionedSlopeSnapshot({ ...base, input: { rise: 6, run: 3, note: "legacy" } })).toThrow();
+  });
   it("fails closed on unknown versions, mixed shapes, missing outputs and other slugs", () => {
     const legacy = { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: 6, run: 3 }, output: { result: 2 } };
     for (const payload of [
