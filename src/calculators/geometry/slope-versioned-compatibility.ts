@@ -41,6 +41,11 @@ export function readVersionedSlopeSnapshot(value: unknown) {
       provenance: "historical-rise-run" as const,
     };
   }
+  // The live Zod object permits stripping unknown keys; historical decoding must not.
+  const coordinateKeys = ["x1", "y1", "x2", "y2"];
+  if (Object.keys(snapshot.input).length !== coordinateKeys.length || Object.keys(snapshot.input).some((key) => !coordinateKeys.includes(key))) {
+    throw new Error("Slope v2 snapshot requires exactly x1, y1, x2, y2");
+  }
   const input = slopeCalculator.inputSchema.parse(snapshot.input);
   const output = coordinateOutputSchema.parse(snapshot.output);
   return {
