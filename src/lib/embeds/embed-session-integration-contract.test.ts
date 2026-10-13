@@ -8,7 +8,7 @@ describe("embed session integration contracts", () => {
   it("mints a token only after embed authorization and publication checks", () => {
     const page = source("src/app/embed/[key]/page.tsx");
     expect(page.indexOf("isEmbedRequestAllowed(")).toBeLessThan(page.indexOf("issueEmbedSession("));
-    expect(page.indexOf("customCalculatorSchema.safeParse(")).toBeLessThan(page.indexOf("signEmbedSession("));
+    expect(page.indexOf("customCalculatorSchema.safeParse(")).toBeLessThan(page.indexOf("issueEmbedSession("));
     expect(page).toContain("sessionToken={sessionToken}");
     expect(page).not.toContain("Date.now()");
   });
