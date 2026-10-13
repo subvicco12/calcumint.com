@@ -6,18 +6,18 @@ import { createCalculationSnapshot } from "../../lib/calculation-snapshot";
 import { eligibleScenarioContract } from "../../lib/scenario-reevaluation";
 
 /**
- * Pre-migration characterization only. This is deliberately NOT a runtime
+ * Draft-only registry characterization. This is deliberately NOT a production
  * dispatch implementation or authorization to replace the active registry.
  */
-describe("Slope historical version collision gate", () => {
-  it("records the unresolved slug/version collision while the candidate is inactive", () => {
+describe("Slope draft registry version separation", () => {
+  it("reserves legacy v1 and selects coordinate v2 in the draft registry", () => {
     const active = calculatorRegistry.getBySlug("slope-calculator");
     expect(active).toBeDefined();
     expect(active?.slug).toBe(slopeCalculator.slug);
-    expect(active?.version).toBe(1);
-    expect(slopeCalculator.version).toBe(1);
-    expect(active?.id).not.toBe(slopeCalculator.id);
-    expect(calculatorRegistry.getById(slopeCalculator.id)).toBeUndefined();
+    expect(active?.version).toBe(2);
+    expect(slopeCalculator.version).toBe(2);
+    expect(active?.id).toBe(slopeCalculator.id);
+    expect(calculatorRegistry.getById(slopeCalculator.id)).toBe(active);
   });
   it("keeps historical v1 rise/run payload distinct from candidate coordinate input", () => {
     const legacy = createCalculationSnapshot({
