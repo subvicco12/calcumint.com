@@ -20,6 +20,8 @@ describe("isolated versioned Slope historical snapshot reader", () => {
       calculatorVersion: 2, output: { value: 2.001, dx: 3, dy: 6, steps: ["stored"] },
     });
     expect(() => readVersionedSlopeSnapshot({ ...snapshot, input: { rise: 6, run: 3 } })).toThrow();
+    expect(() => readVersionedSlopeSnapshot({ ...snapshot, input: { ...snapshot.input, note: "unrecognized" } })).toThrow();
+    expect(() => readVersionedSlopeSnapshot({ ...snapshot, input: { x1: 1, y1: 2, x2: 4 } })).toThrow();
     expect(() => readVersionedSlopeSnapshot({ ...snapshot, output: { value: 2, dx: 3, dy: 6, steps: [123] } })).toThrow();
     expect(() => readVersionedSlopeSnapshot({ ...snapshot, output: { value: 2, dx: 3, dy: 6, steps: "text" } })).toThrow();
   });
