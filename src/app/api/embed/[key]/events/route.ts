@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { isEmbedRequestAllowed } from "@/lib/embeds/origin";
 import { embedEventSchema } from "@/lib/embeds/schema";
 
 type RouteProps = { params: Promise<{ key: string }> };
@@ -11,8 +10,8 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   if (!admin) return NextResponse.json({ error: "Not configured" }, { status: 503 });
   const parsed = embedEventSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Invalid event" }, { status: 400 });
-  const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,allowed_domains,allow_direct").eq("public_key", key).eq("status", "active").maybeSingle();
-  if (!config || !isEmbedRequestAllowed(config.allowed_domains ?? [], Boolean(config.allow_direct), request.headers.get("referer"), request.headers.get("sec-fetch-dest"))) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status").eq("public_key", key).eq("status", "active").maybeSingle();
+  if (!config) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const { data: calculator, error: calculatorError } = await admin.from("custom_calculators").select("id,published_version").eq("id", config.calculator_id).eq("organization_id", config.organization_id).eq("status", "published").maybeSingle();
   if (calculatorError || !calculator?.published_version) return NextResponse.json({ error: "Not found" }, { status: 404 });
   const { error } = await admin.from("embed_events").insert({ organization_id: config.organization_id, embed_config_id: config.id, calculator_id: config.calculator_id, event_type: parsed.data.type, source_url: parsed.data.sourceUrl ?? null, referrer: parsed.data.referrer ?? null, metadata: parsed.data.metadata ?? {} });
