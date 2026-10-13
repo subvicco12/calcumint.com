@@ -30,5 +30,7 @@ describe("embed session integration contracts", () => {
     expect(component).toContain("disabled={!sessionAvailable}");
     expect(component).toContain('addEventListener("visibilitychange", onResume)');
     expect(component).toContain('addEventListener("focus", onResume)');
+    expect(component).toContain("renewalRef.current = pending");
+    expect(component).toContain("renewOnce()");
   });
 });
