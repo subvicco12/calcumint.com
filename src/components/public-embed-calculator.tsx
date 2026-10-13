@@ -38,8 +38,11 @@ export function PublicEmbedCalculator(props: Props) {
         setSessionAvailable(true);
       } catch { setSessionAvailable(false); }
     };
+    const onResume = () => { if (document.visibilityState === "visible") void renew(); };
     const interval = window.setInterval(() => { void renew(); }, 3 * 60_000);
-    return () => window.clearInterval(interval);
+    document.addEventListener("visibilitychange", onResume);
+    window.addEventListener("focus", onResume);
+    return () => { window.clearInterval(interval); document.removeEventListener("visibilitychange", onResume); window.removeEventListener("focus", onResume); };
   }, [props.publicKey]);
   const evaluated = useMemo(() => {
     try { return { result: runCustomCalculator(props.definition, values).output, error: "" }; }
