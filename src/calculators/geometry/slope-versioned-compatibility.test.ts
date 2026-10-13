@@ -1,31 +1,34 @@
 import { describe, expect, it } from "vitest";
 import { readVersionedSlopeSnapshot } from "./slope-versioned-compatibility";
 
-describe("isolated versioned Slope compatibility reader", () => {
-  it("reads legacy v1 rise/run without rewriting the supplied payload", () => {
-    const snapshot = { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: -6, run: 3 } };
+describe("isolated versioned Slope historical snapshot reader", () => {
+  it("preserves the stored legacy v1 result without recalculation or mutation", () => {
+    const snapshot = { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: -6, run: 3 }, output: { result: -1.999 } };
     const before = JSON.stringify(snapshot);
-    expect(readVersionedSlopeSnapshot(snapshot)).toMatchObject({
-      calculatorVersion: 1, input: { rise: -6, run: 3 },
-      output: { result: -2 }, provenance: "historical-rise-run",
-    });
+    const decoded = readVersionedSlopeSnapshot(snapshot);
+    expect(decoded).toMatchObject({ calculatorVersion: 1, input: { rise: -6, run: 3 }, output: { result: -1.999 }, provenance: "historical-rise-run" });
     expect(JSON.stringify(snapshot)).toBe(before);
+    expect(Object.isFrozen(decoded.output)).toBe(true);
   });
-  it("reads coordinate v2 and rejects legacy shapes", () => {
-    expect(readVersionedSlopeSnapshot({
+  it("preserves coordinate v2 stored output rather than recomputing", () => {
+    const snapshot = {
       calculatorSlug: "slope-calculator", calculatorVersion: 2,
       input: { x1: 1, y1: 2, x2: 4, y2: 8 },
-    })).toMatchObject({ calculatorVersion: 2, output: { value: 2, dx: 3, dy: 6 } });
-    expect(() => readVersionedSlopeSnapshot({
-      calculatorSlug: "slope-calculator", calculatorVersion: 2, input: { rise: 6, run: 3 },
-    })).toThrow();
+      output: { value: 2.001, dx: 3, dy: 6, steps: ["stored"] },
+    };
+    expect(readVersionedSlopeSnapshot(snapshot)).toMatchObject({
+      calculatorVersion: 2, output: { value: 2.001, dx: 3, dy: 6, steps: ["stored"] },
+    });
+    expect(() => readVersionedSlopeSnapshot({ ...snapshot, input: { rise: 6, run: 3 } })).toThrow();
   });
-  it("fails closed on unknown versions, mixed shapes and other calculator slugs", () => {
+  it("fails closed on unknown versions, mixed shapes, missing outputs and other slugs", () => {
+    const legacy = { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: 6, run: 3 }, output: { result: 2 } };
     for (const payload of [
-      { calculatorSlug: "slope-calculator", calculatorVersion: 3, input: { rise: 6, run: 3 } },
-      { calculatorSlug: "other-calculator", calculatorVersion: 1, input: { rise: 6, run: 3 } },
-      { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { x1: 0, y1: 0, x2: 3, y2: 6 } },
-      { calculatorSlug: "slope-calculator", calculatorVersion: 1, input: { rise: 6, run: 3, x1: 0 } },
+      { ...legacy, calculatorVersion: 3 },
+      { ...legacy, calculatorSlug: "other-calculator" },
+      { ...legacy, input: { x1: 0, y1: 0, x2: 3, y2: 6 } },
+      { ...legacy, input: { rise: 6, run: 3, x1: 0 } },
+      { calculatorSlug: "slope-calculator", calculatorVersion: 2, input: { x1: 0, y1: 0, x2: 3, y2: 6 } },
     ]) expect(() => readVersionedSlopeSnapshot(payload)).toThrow();
   });
 });
