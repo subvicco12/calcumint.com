@@ -12,6 +12,8 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   if (!parsed.success) return NextResponse.json({ error: "Invalid lead" }, { status: 400 });
   const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
   if (!config || !config.lead_capture_enabled) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
+  const { data: calculator, error: calculatorError } = await admin.from("custom_calculators").select("id,published_version").eq("id", config.calculator_id).eq("organization_id", config.organization_id).eq("status", "published").maybeSingle();
+  if (calculatorError || !calculator?.published_version) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
 
   for (const field of config.lead_fields ?? []) {
     if (field === "email" && !parsed.data.email) return NextResponse.json({ error: "Email is required" }, { status: 400 });
