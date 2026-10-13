@@ -1,5 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { readVersionedSlopeSnapshot } from "./slope-versioned-compatibility";
+import { readPersistedSlopeHistoryRow, readVersionedSlopeSnapshot } from "./slope-versioned-compatibility";
+
+describe("persisted Slope history row read boundary", () => {
+  it("preserves legacy v1 rows with database metadata", () => {
+    const row = { id: "historical-row", created_at: "2026-01-01", calculator_slug: "slope-calculator", calculator_version: 1, input_data: { rise: -6, run: 3 }, output_data: { result: -2 } };
+    const before = JSON.stringify(row);
+    expect(readPersistedSlopeHistoryRow(row)).toMatchObject({ calculatorVersion: 1, provenance: "historical-rise-run", output: { result: -2 } });
+    expect(JSON.stringify(row)).toBe(before);
+  });
+  it("preserves v2 rows and rejects incompatible versions or shapes", () => {
+    const row = { calculator_slug: "slope-calculator", calculator_version: 2, input_data: { x1: 0, y1: 1, x2: 2, y2: 5 }, output_data: { value: 2, dx: 2, dy: 4, steps: ["recorded"] } };
+    expect(readPersistedSlopeHistoryRow(row)).toMatchObject({ calculatorVersion: 2, provenance: "coordinate-points", output: row.output_data });
+    expect(() => readPersistedSlopeHistoryRow({ ...row, calculator_version: 3 })).toThrow();
+    expect(() => readPersistedSlopeHistoryRow({ ...row, input_data: { rise: 4, run: 2 } })).toThrow();
+    expect(() => readPersistedSlopeHistoryRow({ ...row, input_data: { ...row.input_data, run: 2 } })).toThrow();
+  });
+});
 
 describe("isolated versioned Slope historical snapshot reader", () => {
   it("preserves the stored legacy v1 result without recalculation or mutation", () => {
