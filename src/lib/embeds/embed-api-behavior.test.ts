@@ -18,12 +18,14 @@ const state = vi.hoisted(() => ({
 vi.mock("@/lib/supabase/admin", () => ({
   createSupabaseAdminClient: () => ({
     from(table: string) {
+      const filters: Array<[string, unknown]> = [];
       const chain = {
         select() { return chain; },
-        eq() { return chain; },
+        eq(field: string, value: unknown) { filters.push([field, value]); return chain; },
         async maybeSingle() {
           if (state.dbError) return { data: null, error: { message: "Database unavailable" } };
-          return { data: table === "embed_configs" ? state.config : state.calculator, error: null };
+          const record = table === "embed_configs" ? state.config : state.calculator;
+          return { data: record && filters.every(([field, value]) => record[field] === value) ? record : null, error: null };
         },
         insert() {
           state.writes.push(table);
@@ -45,8 +47,8 @@ const context = { params: Promise.resolve({ key }) };
 
 beforeEach(() => {
   process.env.EMBED_SESSION_SECRET = secret;
-  state.config = { id: configId, organization_id: organizationId, calculator_id: calculatorId, lead_capture_enabled: true, lead_fields: ["email"], consent_text: "I agree" };
-  state.calculator = { id: calculatorId, published_version: 2 };
+  state.config = { id: configId, organization_id: organizationId, calculator_id: calculatorId, status: "active", public_key: key, lead_capture_enabled: true, lead_fields: ["email"], consent_text: "I agree" };
+  state.calculator = { id: calculatorId, organization_id: organizationId, status: "published", published_version: 2 };
   state.dbError = false;
   state.writes.length = 0;
 });
@@ -63,7 +65,7 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     const { POST } = await import("@/app/api/embed/[key]/session/route");
     state.calculator = null;
     expect((await POST(request("session", {}), context)).status).toBe(404);
-    state.calculator = { published_version: 3 };
+    state.calculator = { id: calculatorId, organization_id: organizationId, status: "published", published_version: 3 };
     expect((await POST(request("session", {}), context)).status).toBe(404);
   });
   it("fails closed on database errors", async () => {
@@ -106,7 +108,7 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect((await event(request("events", { type: "view" }, body.sessionToken), context)).status).toBe(200);
     state.writes.length = 0;
-    state.calculator = { id: calculatorId, published_version: 3 };
+    state.calculator = { id: calculatorId, organization_id: organizationId, status: "published", published_version: 3 };
     expect((await event(request("events", { type: "view" }, body.sessionToken), context)).status).toBe(404);
     expect((await lead(request("leads", { consented: true, email: "example@example.com" }, body.sessionToken), context)).status).toBe(404);
     expect(state.writes).toEqual([]);
@@ -140,6 +142,22 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     delete process.env.EMBED_SESSION_SECRET;
     expect((await renew(request("session", {}), context)).status).toBe(403);
     expect((await event(request("events", { type: "view" }), context)).status).toBe(403);
+    expect(state.writes).toEqual([]);
+  });
+
+  it("rejects inactive embeds and draft calculators through actual query filters", async () => {
+    const { POST: renew } = await import("@/app/api/embed/[key]/session/route");
+    const { POST: event } = await import("@/app/api/embed/[key]/events/route");
+    const { POST: lead } = await import("@/app/api/embed/[key]/leads/route");
+    state.config = { ...state.config, status: "inactive" };
+    expect((await renew(request("session", {}), context)).status).toBe(404);
+    expect((await event(request("events", { type: "view" }), context)).status).toBe(404);
+    expect((await lead(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(404);
+    state.config = { ...state.config, status: "active" };
+    state.calculator = { ...state.calculator, status: "draft" };
+    expect((await renew(request("session", {}), context)).status).toBe(404);
+    expect((await event(request("events", { type: "view" }), context)).status).toBe(404);
+    expect((await lead(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(404);
     expect(state.writes).toEqual([]);
   });
 
