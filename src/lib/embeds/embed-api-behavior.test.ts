@@ -12,6 +12,7 @@ const state = vi.hoisted(() => ({
   config: null as Record<string, unknown> | null,
   calculator: null as Record<string, unknown> | null,
   dbError: false,
+  consentError: false,
   writes: [] as string[]
 }));
 
@@ -29,7 +30,7 @@ vi.mock("@/lib/supabase/admin", () => ({
         },
         insert() {
           state.writes.push(table);
-          return { error: null, select: () => ({ single: async () => ({ data: { id: configId }, error: null }) }) };
+          return { error: table === "lead_consents" && state.consentError ? { message: "Consent persistence unavailable" } : null, select: () => ({ single: async () => ({ data: { id: configId }, error: null }) }) };
         }
       };
       return chain;
@@ -50,6 +51,7 @@ beforeEach(() => {
   state.config = { id: configId, organization_id: organizationId, calculator_id: calculatorId, status: "active", public_key: key, lead_capture_enabled: true, lead_fields: ["email"], consent_text: "I agree" };
   state.calculator = { id: calculatorId, organization_id: organizationId, status: "published", published_version: 2 };
   state.dbError = false;
+  state.consentError = false;
   state.writes.length = 0;
 });
 afterEach(() => { delete process.env.EMBED_SESSION_SECRET; vi.useRealTimers(); });
@@ -159,6 +161,16 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     expect((await event(request("events", { type: "view" }), context)).status).toBe(404);
     expect((await lead(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(404);
     expect(state.writes).toEqual([]);
+  });
+
+  it("does not report success or emit a lead-submit event if consent persistence fails", async () => {
+    const { POST } = await import("@/app/api/embed/[key]/leads/route");
+    state.consentError = true;
+    const response = await POST(request("leads", { consented: true, email: "example@example.com" }), context);
+    expect(response.status).toBe(500);
+    expect(state.writes).toContain("embed_leads");
+    expect(state.writes).toContain("lead_consents");
+    expect(state.writes).not.toContain("embed_events");
   });
 
 });
