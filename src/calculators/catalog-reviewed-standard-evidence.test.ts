@@ -3,6 +3,7 @@ import { expect, it } from "vitest";
 import { auditCatalogSlugReviewLedger, type CatalogSlugReview } from "./catalog-slug-review-ledger";
 import { buildCatalogCertificationQueueReport } from "./catalog-certification-queue-report";
 import { buildCatalogIdentityCandidateReport } from "./catalog-identity-candidate-report";
+import { buildCatalogReviewPriority } from "./catalog-review-priority";
 import { parseMasterCatalogCsv } from "./catalog-csv-ingestion";
 import { listCalculatorImplementationInventory } from "./implementation-inventory";
 import { calculatorRegistry } from "./registry";
@@ -17,6 +18,7 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
   const audit=auditCatalogSlugReviewLedger(ledger);
   const report=buildCatalogCertificationQueueReport(csv,{slugDomains:audit.approvedDomains});
   const titleCandidates=buildCatalogIdentityCandidateReport(parseMasterCatalogCsv(csv),listCalculatorImplementationInventory());
+  const reviewPriorities=buildCatalogReviewPriority(parseMasterCatalogCsv(csv),listCalculatorImplementationInventory());
   const definitions=new Map(calculatorRegistry.list().map(definition=>[definition.slug,definition]));
   const registry=calculatorRegistry.list();
   const categoryCounts=Object.entries(registry.reduce((acc,definition)=>{
@@ -102,6 +104,7 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
     writeFileSync(output+"/certification-readiness-rows.csv",report.csv);
     writeFileSync(output+"/identity-title-candidates.json",JSON.stringify(titleCandidates,null,2)+"\\n");
     writeFileSync(output+"/identity-title-candidate-summary.json",JSON.stringify({totalMaster:titleCandidates.length,dispositions:titleCandidates.reduce((counts,row)=>{counts[row.disposition]=(counts[row.disposition]??0)+1;return counts;},{} as Record<string,number>),identityApproved:false,publicationVerified:false},null,2)+"\\n");
+    writeFileSync(output+"/identity-source-review-priorities.json",JSON.stringify(reviewPriorities,null,2)+"\\n");
     writeFileSync(output+"/six-standard-candidate-evidence.json",JSON.stringify(six,null,2)+"\\n");
     writeFileSync(output+"/reviewed-standard-packet-candidates.json",JSON.stringify(evidence,null,2)+"\\n");
   }
