@@ -37,9 +37,9 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   }).select("id").single();
   if (error || !lead) return NextResponse.json({ error: "Could not save lead" }, { status: 500 });
 
-  await Promise.all([
-    admin.from("lead_consents").insert({ lead_id: lead.id, consent_text: config.consent_text ?? "Lead submission consent", privacy_url: config.privacy_url ?? null, consented: true }),
-    admin.from("embed_events").insert({ organization_id: config.organization_id, embed_config_id: config.id, calculator_id: config.calculator_id, event_type: "lead_submit", source_url: parsed.data.sourceUrl ?? null })
-  ]);
+  const { error: consentError } = await admin.from("lead_consents").insert({ lead_id: lead.id, consent_text: config.consent_text ?? "Lead submission consent", privacy_url: config.privacy_url ?? null, consented: true });
+  if (consentError) return NextResponse.json({ error: "Could not record lead consent" }, { status: 500 });
+  // Analytics is best-effort; do not misreport a saved lead and consent as failed.
+  await admin.from("embed_events").insert({ organization_id: config.organization_id, embed_config_id: config.id, calculator_id: config.calculator_id, event_type: "lead_submit", source_url: parsed.data.sourceUrl ?? null });
   return NextResponse.json({ ok: true });
 }
