@@ -61,7 +61,7 @@ describe("embedded calculator browser lifecycle", () => {
     await waitFor(() => expect(getByText("Thanks — your details were submitted.")).toBeTruthy());
     const leadCall = fetchMock.mock.calls.find(([url]) => url.endsWith("/leads"));
     expect(leadCall).toBeDefined();
-    const leadOptions: RequestInit | undefined = leadCall?.[1];
+    const leadOptions = (leadCall as unknown as [string, RequestInit] | undefined)?.[1];
     expect(leadOptions?.headers).toMatchObject({ "X-Embed-Session": "renewed-token" });
   });
 
