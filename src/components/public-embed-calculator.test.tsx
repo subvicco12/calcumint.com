@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { act, cleanup, render, waitFor } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, waitFor } from "@testing-library/react";
 import { PublicEmbedCalculator } from "./public-embed-calculator";
 
 vi.mock("next/image", () => ({ default: () => null }));
@@ -45,4 +45,23 @@ describe("embedded calculator browser lifecycle", () => {
     await waitFor(() => expect((getByRole("button", { name: "Submit" }) as HTMLButtonElement).disabled).toBe(true));
     expect(getByRole("alert").textContent).toContain("Reload");
   });
+  it("uses the renewed token when submitting a legitimate iframe lead", async () => {
+    const fetchMock = vi.fn((url: string) => Promise.resolve(
+      url.endsWith("/session")
+        ? { ok: true, json: async () => ({ sessionToken: "renewed-token" }) }
+        : { ok: true }
+    ));
+    vi.stubGlobal("fetch", fetchMock);
+    const { getByRole, getByLabelText, getByText } = render(<PublicEmbedCalculator {...props} />);
+    await act(async () => { window.dispatchEvent(new Event("focus")); });
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => url.endsWith("/session"))).toBe(true));
+    fireEvent.change(getByLabelText("Email"), { target: { value: "valid@example.com" } });
+    fireEvent.click(getByRole("checkbox"));
+    await act(async () => { fireEvent.click(getByRole("button", { name: "Submit" })); });
+    await waitFor(() => expect(getByText("Thanks — your details were submitted.")).toBeTruthy());
+    const leadCall = fetchMock.mock.calls.find(([url]) => url.endsWith("/leads"));
+    expect(leadCall).toBeDefined();
+    expect((leadCall?.[1] as RequestInit).headers).toMatchObject({ "X-Embed-Session": "renewed-token" });
+  });
+
 });
