@@ -65,4 +65,21 @@ describe("embedded calculator browser lifecycle", () => {
     expect(leadOptions?.headers).toMatchObject({ "X-Embed-Session": "renewed-token" });
   });
 
+  it("fails closed after a suspended iframe resumes with an expired capability", async () => {
+    const fetchMock = vi.fn((url: string) => Promise.resolve(
+      url.endsWith("/session") ? { ok: false, status: 403 } : { ok: true }
+    ));
+    vi.stubGlobal("fetch", fetchMock);
+    const { getByRole, getByText } = render(<PublicEmbedCalculator {...props} />);
+    await act(async () => {
+      document.dispatchEvent(new Event("visibilitychange"));
+      window.dispatchEvent(new Event("focus"));
+    });
+    await waitFor(() => expect((getByRole("button", { name: "Submit" }) as HTMLButtonElement).disabled).toBe(true));
+    expect(getByRole("alert").textContent).toContain("Reload");
+    fireEvent.click(getByRole("button", { name: "Submit" }));
+    expect(fetchMock.mock.calls.some(([url]) => url.endsWith("/leads"))).toBe(false);
+    expect(getByText("Embed session expired. Reload this calculator to continue submitting events or leads.")).toBeTruthy();
+  });
+
 });
