@@ -1,4 +1,5 @@
 import type { CertificationQueueRow } from "./catalog-certification-queue";
+import type { CalculatorInventoryRecord } from "./implementation-inventory";
 
 /** Offline evidence only. Never grants certification, publication or route access. */
 export type PublicationEvidence = Readonly<{
@@ -28,11 +29,17 @@ export type PublicationEvidenceResult = Readonly<{
 export function reconcilePublicationEvidence(
   queue: readonly CertificationQueueRow[],
   evidence: readonly PublicationEvidence[],
+  inventory: readonly CalculatorInventoryRecord[] = [],
 ): PublicationEvidenceResult {
+  const inventoryBySlug = new Map<string, CalculatorInventoryRecord>();
+  for (const item of inventory) {
+    if (inventoryBySlug.has(item.slug)) throw new Error("Duplicate registry slug");
+    inventoryBySlug.set(item.slug, item);
+  }
   const bySlug = new Map<string, PublicationEvidence>();
   const conflicts = new Set<string>();
   for (const item of evidence) {
-    if (!item.slug || !item.calculatorKey || !Number.isSafeInteger(item.version) || item.version < 1) {
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug) || !item.calculatorKey.trim() || item.calculatorKey !== item.calculatorKey.trim() || !Number.isSafeInteger(item.version) || item.version < 1 || (item.publishedAt !== null && !Number.isFinite(Date.parse(item.publishedAt)))) {
       throw new Error("Invalid publication evidence");
     }
     if (bySlug.has(item.slug)) conflicts.add(item.slug);
@@ -46,9 +53,11 @@ export function reconcilePublicationEvidence(
     let status: "published-record-match" | "unpublished" | "identity-hold" | "conflict";
     if (!slug || row.status === "identity-hold") status = "identity-hold";
     else if (conflicts.has(slug)) status = "conflict";
+    else if (!inventoryBySlug.has(slug)) status = "identity-hold";
     else {
       const record = bySlug.get(slug);
-      status = record && record.lifecycle === "published" && !!record.publishedAt
+      const definition = inventoryBySlug.get(slug)!;
+      status = record && record.calculatorKey === definition.id && record.version === definition.version && definition.reviewStatus === "certified" && record.lifecycle === "published" && !!record.publishedAt
         ? "published-record-match" : "unpublished";
     }
     return Object.freeze({ masterId: row.masterId, slug, status });
