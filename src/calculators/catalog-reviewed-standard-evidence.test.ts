@@ -100,13 +100,13 @@ it("exports reviewed-identity shortlist and packet readiness without granting ce
       databaseCertificationVerified:false,
       publicationVerified:false,
     };
-    writeFileSync(output+"/certification-readiness-summary.json",JSON.stringify(snapshot,null,2)+"\\n");
+    writeFileSync(output+"/certification-readiness-summary.json",JSON.stringify(snapshot,null,2)+"\n");
     writeFileSync(output+"/certification-readiness-rows.csv",report.csv);
-    writeFileSync(output+"/identity-title-candidates.json",JSON.stringify(titleCandidates,null,2)+"\\n");
-    writeFileSync(output+"/identity-title-candidate-summary.json",JSON.stringify({totalMaster:titleCandidates.length,dispositions:titleCandidates.reduce((counts,row)=>{counts[row.disposition]=(counts[row.disposition]??0)+1;return counts;},{} as Record<string,number>),identityApproved:false,publicationVerified:false},null,2)+"\\n");
-    writeFileSync(output+"/identity-source-review-priorities.json",JSON.stringify(reviewPriorities,null,2)+"\\n");
-    writeFileSync(output+"/six-standard-candidate-evidence.json",JSON.stringify(six,null,2)+"\\n");
-    writeFileSync(output+"/reviewed-standard-packet-candidates.json",JSON.stringify(evidence,null,2)+"\\n");
+    writeFileSync(output+"/identity-title-candidates.json",JSON.stringify(titleCandidates,null,2)+"\n");
+    writeFileSync(output+"/identity-title-candidate-summary.json",JSON.stringify({totalMaster:titleCandidates.length,dispositions:titleCandidates.reduce((counts,row)=>{counts[row.disposition]=(counts[row.disposition]??0)+1;return counts;},{} as Record<string,number>),identityApproved:false,publicationVerified:false},null,2)+"\n");
+    writeFileSync(output+"/identity-source-review-priorities.json",JSON.stringify(reviewPriorities,null,2)+"\n");
+    writeFileSync(output+"/six-standard-candidate-evidence.json",JSON.stringify(six,null,2)+"\n");
+    writeFileSync(output+"/reviewed-standard-packet-candidates.json",JSON.stringify(evidence,null,2)+"\n");
   }
   expect(report.rows).toHaveLength(540);
   expect(evidence.every(row=>row.slug!==null)).toBe(true);
