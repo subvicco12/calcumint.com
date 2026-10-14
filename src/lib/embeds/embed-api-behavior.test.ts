@@ -13,6 +13,8 @@ const state = vi.hoisted(() => ({
   calculator: null as Record<string, unknown> | null,
   dbError: false,
   consentError: false,
+  leadError: false,
+  eventError: false,
   writes: [] as string[]
 }));
 
@@ -30,7 +32,8 @@ vi.mock("@/lib/supabase/admin", () => ({
         },
         insert() {
           state.writes.push(table);
-          return { error: table === "lead_consents" && state.consentError ? { message: "Consent persistence unavailable" } : null, select: () => ({ single: async () => ({ data: { id: configId }, error: null }) }) };
+          const error = (table === "lead_consents" && state.consentError) || (table === "embed_events" && state.eventError) || (table === "embed_leads" && state.leadError) ? { message: "Simulated write failure" } : null;
+          return { error, select: () => ({ single: async () => ({ data: error ? null : { id: configId }, error }) }) };
         }
       };
       return chain;
@@ -52,6 +55,8 @@ beforeEach(() => {
   state.calculator = { id: calculatorId, organization_id: organizationId, status: "published", published_version: 2 };
   state.dbError = false;
   state.consentError = false;
+  state.leadError = false;
+  state.eventError = false;
   state.writes.length = 0;
 });
 afterEach(() => { delete process.env.EMBED_SESSION_SECRET; vi.useRealTimers(); });
@@ -171,6 +176,27 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     expect(state.writes).toContain("embed_leads");
     expect(state.writes).toContain("lead_consents");
     expect(state.writes).not.toContain("embed_events");
+  });
+
+  it("rejects failed lead inserts without writing consent or analytics", async () => {
+    const { POST } = await import("@/app/api/embed/[key]/leads/route");
+    state.leadError = true;
+    expect((await POST(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(500);
+    expect(state.writes).toEqual(["embed_leads"]);
+  });
+
+  it("returns success for a saved lead and consent when best-effort analytics fails", async () => {
+    const { POST } = await import("@/app/api/embed/[key]/leads/route");
+    state.eventError = true;
+    expect((await POST(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(200);
+    expect(state.writes).toEqual(["embed_leads", "lead_consents", "embed_events"]);
+  });
+
+  it("returns failure when a standalone event insert fails", async () => {
+    const { POST } = await import("@/app/api/embed/[key]/events/route");
+    state.eventError = true;
+    expect((await POST(request("events", { type: "view" }), context)).status).toBe(500);
+    expect(state.writes).toEqual(["embed_events"]);
   });
 
 });
