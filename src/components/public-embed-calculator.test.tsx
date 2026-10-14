@@ -25,7 +25,7 @@ describe("embedded calculator browser lifecycle", () => {
   it("renews on focus and visibility resume with a single in-flight request", async () => {
     let finishRenewal!: (response: unknown) => void;
     const pending = new Promise<unknown>((resolve) => { finishRenewal = resolve; });
-    const fetchMock = vi.fn((url: string) => url.endsWith("/session") ? pending : Promise.resolve({ ok: true }));
+    const fetchMock = vi.fn((url: string, _options?: RequestInit) => url.endsWith("/session") ? pending : Promise.resolve({ ok: true }));
     vi.stubGlobal("fetch", fetchMock);
     render(<PublicEmbedCalculator {...props} />);
     await act(async () => {
