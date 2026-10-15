@@ -23,7 +23,7 @@ describe("P1 math independent deterministic regression cases", () => {
       expect(definition).toBeDefined();
       const parsed = definition!.inputSchema.parse(testCase.input);
       const result = definition!.calculate(parsed, {});
-      expect(result.result).toBeCloseTo(testCase.expected, 12);
+      expect(result).toEqual(expect.objectContaining({ result: expect.closeTo(testCase.expected, 12) }));
     });
   }
 
