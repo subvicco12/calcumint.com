@@ -14,6 +14,14 @@ const cases = [
   { slug: "fraction-calculator", input: { numerator: -7, denominator: 8 }, expected: -0.875 },
   { slug: "square-calculator", input: { x: -12 }, expected: 144 },
   { slug: "cube-calculator", input: { x: -3 }, expected: -27 },
+  { slug: "square-root-calculator", input: { x: 225 }, expected: 15 },
+  { slug: "cube-root-calculator", input: { x: -64 }, expected: -4 },
+  { slug: "reciprocal-calculator", input: { x: -8 }, expected: -0.125 },
+  { slug: "remainder-calculator", input: { a: 29, b: 6 }, expected: 5 },
+  { slug: "exponent-calculator", input: { base: 2, exponent: -3 }, expected: 0.125 },
+  { slug: "logarithm-calculator", input: { x: 81, base: 3 }, expected: 4 },
+  { slug: "lcm-calculator", input: { a: 12, b: 18 }, expected: 36 },
+  { slug: "gcf-calculator", input: { a: 48, b: 18 }, expected: 6 },
 ] as const;
 
 describe("P1 math independent deterministic regression cases", () => {
