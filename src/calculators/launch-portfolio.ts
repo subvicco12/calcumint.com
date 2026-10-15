@@ -1,4 +1,5 @@
 import { z } from "zod";
+import independentGoldens from "../../data/verification/codex-a-standard-risk-goldens-2026-10-15.json";
 import type { CalculatorDefinition } from "./types";
 
 export type LaunchField = { key: string; label: string; defaultValue: number; min?: number; max?: number; integer?: boolean; disallow?: readonly number[] };
@@ -29,7 +30,7 @@ const base: LaunchSpec[] = [
  pair("exponent-calculator","Exponent Calculator","math",f("base","Base",3),f("exponent","Exponent",4),"base^exponent","Evaluate a base raised to a chosen exponent.","Raise the base to the entered exponent using real-number exponentiation where the result is defined.",v=>Math.pow(v.base,v.exponent),["exponents","powers"]),
  pair("logarithm-calculator","Logarithm Calculator","math",f("x","Positive number",100,0.000000001),f("base","Logarithm base",10,0.000000001,{disallow:[1]}),"log_b(x) = ln(x) / ln(b)","Calculate a logarithm for a positive value and positive base other than one.","Divide the natural logarithm of the value by the natural logarithm of the chosen base.",v=>Math.log(v.x)/Math.log(v.base),["log","log base"]),
  pair("scientific-notation-calculator","Scientific Notation Calculator","math",f("coefficient","Coefficient",3.2),f("exponent","Base-10 exponent",6),"coefficient × 10^exponent","Evaluate a number written as a coefficient times a power of ten.","Multiply the coefficient by ten raised to the entered exponent.",v=>v.coefficient*Math.pow(10,v.exponent),["scientific notation","powers of ten"]),
- pair("rounding-calculator","Rounding Calculator","math",f("value","Value",123.4567),f("decimals","Decimal places",2,0,{integer:true}),"round(value × 10^decimals) / 10^decimals","Round a number to a chosen non-negative number of decimal places.","Scale by the requested power of ten, round to the nearest integer, then scale back.",v=>{const places=Math.trunc(v.decimals);const scale=Math.pow(10,places);if(!Number.isFinite(scale))return v.value;return Math.round((v.value+Number.EPSILON)*scale)/scale},["round decimal","decimal places"]),
+ pair("rounding-calculator","Rounding Calculator","math",f("value","Value",123.4567),f("decimals","Decimal places",2,0,{integer:true}),"round(value × 10^decimals) / 10^decimals","Round a number to a chosen non-negative number of decimal places.","Scale by the requested power of ten, round to the nearest integer, then scale back.",v=>{if(v.value===0)return v.value;const places=Math.trunc(v.decimals);const [coefficient,exponent="0"]=String(v.value).split("e");const shifted=Number(`${coefficient}e${Number(exponent)+places}`);if(!Number.isFinite(shifted))return v.value;const rounded=Math.round(shifted);if(Object.is(rounded,-0))return -0;const [digits,power="0"]=String(rounded).split("e");return Number(`${digits}e${Number(power)-places}`)},["round decimal","decimal places"]),
  single("reciprocal-calculator","Reciprocal Calculator","math",f("x","Number",4,undefined,{disallow:[0]}),"1 / x","Find the multiplicative inverse of a non-zero number.","Divide one by the input value.",v=>1/v.x),
  pair("remainder-calculator","Remainder Calculator","math",f("a","Dividend",17),f("b","Divisor",5,undefined,{disallow:[0]}),"a mod b","Find the remainder after division.","The remainder is the amount left after taking whole divisor-sized groups from the dividend.",v=>v.a%v.b,["modulo"]),
  pair("fraction-to-decimal-calculator","Fraction to Decimal Calculator","math",f("numerator","Numerator",3),f("denominator","Denominator",4,undefined,{disallow:[0]}),"numerator / denominator","Convert a fraction to its decimal value.","Divide the numerator by the non-zero denominator to express the fraction as a decimal.",v=>v.numerator/v.denominator,["fraction decimal","convert fraction"]),
@@ -154,6 +155,7 @@ if (base.length < 100) throw new Error(`B11 launch portfolio requires at least 1
 export const launchSpecs: readonly LaunchSpec[] = base;
 
 export function launchDefinition(spec: LaunchSpec): CalculatorDefinition<Record<string,number>,{result:number}> {
+  const independent=independentGoldens.calculators.find(row=>row.calculatorId===`launch-${spec.slug}`&&row.slug===spec.slug&&row.version===1);
   const shape: Record<string,z.ZodType<number>> = {};
   for (const field of spec.fields) { let schema=z.number().finite(); if(field.min!==undefined) schema=schema.min(field.min); if(field.max!==undefined) schema=schema.max(field.max); if(field.integer) schema=schema.int(); if(field.disallow?.length) schema=schema.refine(value=>!field.disallow!.includes(value),{message:`${field.label} uses a disallowed value`}); shape[field.key]=schema; }
   return {
@@ -162,7 +164,7 @@ export function launchDefinition(spec: LaunchSpec): CalculatorDefinition<Record<
     formulas:[{id:"primary",expression:spec.formula,description:spec.explanation}],
     sources:[{label:"CalcuMint deterministic formula review",note:"Standard mathematical/scientific identity reviewed for launch portfolio."}],
     examples:[{label:"Default verified example",input:Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])),expected:{result:spec.compute(Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])))}}],
-    goldenTests:spec.slug==="slope-calculator"?[{label:"Positive rise over run",input:{rise:6,run:3},expected:{result:2}},{label:"Negative slope",input:{rise:-8,run:4},expected:{result:-2}}]:undefined
+    goldenTests:spec.slug==="slope-calculator"?[{label:"Positive rise over run",input:{rise:6,run:3},expected:{result:2}},{label:"Negative slope",input:{rise:-8,run:4},expected:{result:-2}}]:independent?.cases.map(vector=>({label:`${vector.label}: ${vector.derivation}`,input:Object.fromEntries(Object.entries(vector.input)) as Record<string,number>,expected:{result:vector.expected}}))
   };
 }
 export const launchDefinitions = launchSpecs.map(launchDefinition);

@@ -1,0 +1,26 @@
+# Codex A mathematical verification — 15 October 2026 IST
+
+Base: #1392 `3b6e67812e9756a4c31f3d5572d938dbebdc2744`; isolated branch `verify/standard-risk-independent-goldens`. Codex B file ownership was unavailable; scoped open golden/math/launch searches found no overlap. No shared framework, registry, catalog governance or publication files changed. Standard-math factory edits are limited to rounding evaluation and literal fixture wiring.
+
+## Verified first47 registered engines
+
+- Existing16 independent mathematical cases:18 prior tests passed;32 explicit literal positive/signed vectors now bound as records.
+- Geometry10:20 literal area/perimeter vectors.
+- Science10:20 literal compatible-unit distance/time/electrical/rate/impulse vectors.
+- Utility11:22 literal rounding/scaling/percentage vectors; elementary cost arithmetic is not financial advice.
+
+The JSON file identifies every exact registered ID/slug/version, input and expected value with an independent arithmetic derivation. Expected values never call the implementation. Test comparison is exact zero or within16 binary64 epsilons relative error, not a financial rounding tolerance. Parsed direct calls and public engine calls are checked separately; malformed/nonfinite inputs are rejected at schema/public-engine boundaries. Raw direct calls retain their existing parsed-input precondition.
+
+Initial science identity assertions exposed seven shadowed launch slugs resolving physics.* contracts. Those were removed and replaced with verified active launch IDs; no collision or physics formula was changed. The suspected potential-energy defect was withdrawn: its active contract requires gravity and was not shown defective.
+
+Actual baseline explicit-golden absence was145/574, including121 standard-risk, not the reported47. Adding94 literal vectors for these47 previously missing registered definitions reduced absence to98 (74 standard-risk). Existing Slope records, statuses, IDs and versions remain unchanged. This closes47 selected registered records; the identity of the user's originally reported47 is not assumed. Master/P1 catalog mapping is not approved or closed.
+
+## Confirmed rounding corrections
+
+The old absolute epsilon turned exact zero at20 places into2.2204e-16 and distorted tiny values. Finite±1e308 at2 places failed solely through scale overflow. Decimal exponent shifting now avoids those intermediates, preserves negative zero, normal1.005/2.675 examples and Math.round negative-half ties toward positive infinity. It is not financial half-away rounding. Five regressions cover tiny/signed/near-half/huge values and0/2/20/309 decimal counts. Inherited certified flags/version1 are not new review approval; release requires normal technical-version disposition.
+
+## Checks and remaining authority
+
+220 focused tests/5files passed; launch45 tests and certification15 tests passed. Full lint has0 errors/28 warnings; typecheck passed. Required actual `npm run build` (`next build --webpack`) passed with supported environment proxy. Generated tsconfig changes were restored to the pre-build contents. No CI or deployment was triggered at this checkpoint.
+
+External references are explicit textbook/ECMAScript reference pointers, not newly fetched independent specialist approval. Existing Work OpenStax review is reused; formula/source provenance, master identity, specialist decisions and HOLD remain separate outstanding evidence. No DB write, certification/status promotion, publication, merge or deployment occurred. Billed usage unavailable.
