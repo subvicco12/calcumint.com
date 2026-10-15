@@ -28,13 +28,13 @@
     "certificationAuthority": false
   },
   "independent": {
-    "scope": "aggregate-only",
+    "scope": "complete-published-population",
     "provenance": {
-      "evidenceId": "codex-e-user-verified-aggregates-2026-10-15",
-      "sourceKind": "user-verified-aggregate",
+      "evidenceId": "codex-e-sanitized-row-export-2026-10-15",
+      "sourceKind": "independent-read-only-db-export",
       "receivedOn": "2026-10-15",
       "observedAt": null,
-      "payloadSha256": null
+      "payloadSha256": "c4ad1110d6db0ce1c31ef0279283fd123fec9b8dea1fb60618f1d36d2ca1f0f5"
     },
     "aggregateObservations": {
       "publishedIdentities": 209,
@@ -49,18 +49,18 @@
       "sourceRecords": 210,
       "sourceIdentities": 209
     },
-    "importedIdentities": 0,
-    "registryIdentityMatches": 0,
+    "importedIdentities": 209,
+    "registryIdentityMatches": 209,
     "registryIdentityConflicts": 0,
-    "masterRowsWithImportedIdentity": 0,
-    "rowLevelWaiversObserved": 0,
+    "masterRowsWithImportedIdentity": 140,
+    "rowLevelWaiversObserved": 836,
     "importedRowsWithUnknownQa": 0,
     "importedRowsWithUnknownSources": 0,
-    "populationIdentityCoverage": "UNKNOWN",
+    "populationIdentityCoverage": "COMPLETE_DECLARED",
     "anonymousAggregateCountComparison": "COUNTS_AGREE_IDENTITIES_UNPROVEN",
     "recordedHoldIdentities": 0,
     "waiverAuthorityConflicts": 0,
-    "missingRowExport": true,
+    "missingRowExport": false,
     "approvalsGranted": false,
     "aggregateWaiverChecksRequiringDecisionEvidence": 836
   }
