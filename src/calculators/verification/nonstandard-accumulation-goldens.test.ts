@@ -51,7 +51,7 @@ describe("independent accumulation contract goldens (specialist review pending)"
   it("reports five new explicit records independently of specialist approval", () => {
     const definitions = calculatorRegistry.list();
     expect(definitions).toHaveLength(574);
-    expect(definitions.filter(definition => !definition.goldenTests?.length)).toHaveLength(19);
+    expect(definitions.filter(definition => !definition.goldenTests?.length)).toHaveLength(13);
     expect(definitions.filter(definition => definition.riskClass === "standard" && !definition.goldenTests?.length)).toHaveLength(0);
   });
 
