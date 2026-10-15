@@ -1,17 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { verifyEmbedSession } from "@/lib/embeds/session";
 import { publicLeadSchema } from "@/lib/embeds/schema";
 
 type RouteProps = { params: Promise<{ key: string }> };
 
 export async function POST(request: NextRequest, { params }: RouteProps) {
   const { key } = await params;
+  const session = verifyEmbedSession(request.headers.get("x-embed-session"), process.env.EMBED_SESSION_SECRET ?? "");
+  if (!session) return NextResponse.json({ error: "Embed session unavailable" }, { status: 403 });
   const admin = createSupabaseAdminClient();
   if (!admin) return NextResponse.json({ error: "Not configured" }, { status: 503 });
   const parsed = publicLeadSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Invalid lead" }, { status: 400 });
   const { data: config } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
   if (!config || !config.lead_capture_enabled) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
+  const { data: calculator, error: calculatorError } = await admin.from("custom_calculators").select("id,published_version").eq("id", config.calculator_id).eq("organization_id", config.organization_id).eq("status", "published").maybeSingle();
+  if (calculatorError || !calculator?.published_version || session.configId !== config.id || session.organizationId !== config.organization_id || session.calculatorId !== config.calculator_id || session.version !== calculator.published_version) return NextResponse.json({ error: "Lead capture unavailable" }, { status: 404 });
 
   for (const field of config.lead_fields ?? []) {
     if (field === "email" && !parsed.data.email) return NextResponse.json({ error: "Email is required" }, { status: 400 });
@@ -32,9 +37,9 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   }).select("id").single();
   if (error || !lead) return NextResponse.json({ error: "Could not save lead" }, { status: 500 });
 
-  await Promise.all([
-    admin.from("lead_consents").insert({ lead_id: lead.id, consent_text: config.consent_text ?? "Lead submission consent", privacy_url: config.privacy_url ?? null, consented: true }),
-    admin.from("embed_events").insert({ organization_id: config.organization_id, embed_config_id: config.id, calculator_id: config.calculator_id, event_type: "lead_submit", source_url: parsed.data.sourceUrl ?? null })
-  ]);
+  const { error: consentError } = await admin.from("lead_consents").insert({ lead_id: lead.id, consent_text: config.consent_text ?? "Lead submission consent", privacy_url: config.privacy_url ?? null, consented: true });
+  if (consentError) return NextResponse.json({ error: "Could not record lead consent" }, { status: 500 });
+  // Analytics is best-effort; do not misreport a saved lead and consent as failed.
+  await admin.from("embed_events").insert({ organization_id: config.organization_id, embed_config_id: config.id, calculator_id: config.calculator_id, event_type: "lead_submit", source_url: parsed.data.sourceUrl ?? null });
   return NextResponse.json({ ok: true });
 }

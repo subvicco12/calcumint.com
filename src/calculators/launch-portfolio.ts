@@ -161,7 +161,8 @@ export function launchDefinition(spec: LaunchSpec): CalculatorDefinition<Record<
     inputSchema:z.object(shape).superRefine((input,ctx)=>{const v=input as Record<string,number>;const boundedPairs:[string,string][]=[["covered","total"],["complete","total"],["errors","total"],["successes","total"],["successes","sample"]];for(const [part,total] of boundedPairs){if(part in v&&total in v&&v[part]>v[total])ctx.addIssue({code:"custom",path:[part],message:`${part} cannot exceed ${total}`});}if(spec.slug==="probability-complement-calculator"&&v.p>v.whole)ctx.addIssue({code:"custom",path:["p"],message:"Probability cannot exceed the whole probability"});if(spec.slug==="efficiency-calculator"&&v.output>v.input)ctx.addIssue({code:"custom",path:["output"],message:"Useful output cannot exceed input"});}), calculate:(input)=>{const result=spec.compute(input);if(!Number.isFinite(result))throw new Error("Calculated result is outside the supported finite range");return{result}},
     formulas:[{id:"primary",expression:spec.formula,description:spec.explanation}],
     sources:[{label:"CalcuMint deterministic formula review",note:"Standard mathematical/scientific identity reviewed for launch portfolio."}],
-    examples:[{label:"Default verified example",input:Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])),expected:{result:spec.compute(Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])))}}]
+    examples:[{label:"Default verified example",input:Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])),expected:{result:spec.compute(Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])))}}],
+    goldenTests:spec.slug==="slope-calculator"?[{label:"Positive rise over run",input:{rise:6,run:3},expected:{result:2}},{label:"Negative slope",input:{rise:-8,run:4},expected:{result:-2}}]:undefined
   };
 }
 export const launchDefinitions = launchSpecs.map(launchDefinition);
