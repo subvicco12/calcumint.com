@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "preparedAt": "2026-10-15 IST",
   "baseCommit": "3b6e67812e9756a4c31f3d5572d938dbebdc2744",
-  "scope": "57 registered standard-risk engines:16 existing-case audit +geometry10 +science10 +utility11 +means/rates10. Not master-catalog approval.",
+  "scope": "67 registered standard-risk engines in bounded16/10/10/11/10/10 batches; no master-catalog approval.",
   "expectedValuePolicy": "Literal independent arithmetic, never spec.compute/calculate-generated. Compare finite values within16 binary64 epsilons relative error, exact mathematical zero; no financial rounding policy.",
   "sources": {
     "algebra": {
@@ -1659,6 +1659,294 @@
           },
           "expected": 0,
           "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "hypotenuse-calculator",
+      "calculatorId": "launch-hypotenuse-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "a": 7.5,
+            "b": 10
+          },
+          "expected": 12.5,
+          "derivation": "sqrt(7.5^2+10^2)=12.5"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "a": 0,
+            "b": 2
+          },
+          "expected": 2,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "pythagorean-theorem-calculator",
+      "calculatorId": "launch-pythagorean-theorem-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "a": 0.6,
+            "b": 0.8
+          },
+          "expected": 1,
+          "derivation": "sqrt(.6^2+.8^2)=1"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "a": 0,
+            "b": 2
+          },
+          "expected": 2,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "polygon-area-calculator",
+      "calculatorId": "launch-polygon-area-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "sides": 4,
+            "side": 2
+          },
+          "expected": 4,
+          "derivation": "A square of side2 has area4"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "sides": 3,
+            "side": 2
+          },
+          "expected": 1.7320508075688772,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "sphere-volume-calculator",
+      "calculatorId": "launch-sphere-volume-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "radius": 3
+          },
+          "expected": 113.09733552923255,
+          "derivation": "4*pi*3^3/3=36*pi"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "radius": 0
+          },
+          "expected": 0,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "sphere-surface-area-calculator",
+      "calculatorId": "launch-sphere-surface-area-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "radius": 2
+          },
+          "expected": 50.26548245743669,
+          "derivation": "4*pi*2^2=16*pi"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "radius": 0
+          },
+          "expected": 0,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "cylinder-volume-calculator",
+      "calculatorId": "launch-cylinder-volume-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "radius": 2,
+            "height": 3
+          },
+          "expected": 37.69911184307752,
+          "derivation": "pi*2^2*3=12*pi"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "radius": 1e-200,
+            "height": 1e+200
+          },
+          "expected": 3.141592653589793e-200,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "cone-volume-calculator",
+      "calculatorId": "launch-cone-volume-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "radius": 3,
+            "height": 2
+          },
+          "expected": 18.84955592153876,
+          "derivation": "pi*3^2*2/3=6*pi"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "radius": 0,
+            "height": 2
+          },
+          "expected": 0,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "rectangular-prism-volume-calculator",
+      "calculatorId": "launch-rectangular-prism-volume-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "geometry",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "length": 2.5,
+            "width": 4,
+            "height": 3
+          },
+          "expected": 30,
+          "derivation": "2.5*4*3=30"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "length": 7,
+            "width": 2,
+            "height": 0
+          },
+          "expected": 0,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "direct-variation-calculator",
+      "calculatorId": "launch-direct-variation-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "k": -3,
+            "x": 2.5
+          },
+          "expected": -7.5,
+          "derivation": "-3*2.5=-7.5"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "k": 7,
+            "x": 0
+          },
+          "expected": 0,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "geometry-scaling-10",
+      "slug": "inverse-variation-calculator",
+      "calculatorId": "launch-inverse-variation-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent geometry/scaling example",
+          "input": {
+            "k": -6,
+            "x": 4
+          },
+          "expected": -1.5,
+          "derivation": "-6/4=-1.5"
+        },
+        {
+          "label": "Boundary or independent scaled example",
+          "input": {
+            "k": 0,
+            "x": 7
+          },
+          "expected": 0,
+          "derivation": "Explicit zero, Pythagorean or regular-polygon identity; literal expected result, never production evaluation."
         }
       ]
     }
