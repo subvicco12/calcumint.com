@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "preparedAt": "2026-10-15 IST",
   "baseCommit": "3b6e67812e9756a4c31f3d5572d938dbebdc2744",
-  "scope": "47 registered standard-risk engines: 16 existing independent-case audit +31 additional. Not a master-catalog identity approval or registered goldenTests injection.",
+  "scope": "57 registered standard-risk engines:16 existing-case audit +geometry10 +science10 +utility11 +means/rates10. Not master-catalog approval.",
   "expectedValuePolicy": "Literal independent arithmetic, never spec.compute/calculate-generated. Compare finite values within16 binary64 epsilons relative error, exact mathematical zero; no financial rounding policy.",
   "sources": {
     "algebra": {
@@ -1369,6 +1369,296 @@
           },
           "expected": 0,
           "derivation": "Evaluate the declared formula on these explicit boundary/signed inputs; no implementation-derived expected value."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "percent-error-calculator",
+      "calculatorId": "launch-percent-error-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "observed": 9,
+            "actual": 8
+          },
+          "expected": 12.5,
+          "derivation": "abs(9-8)/8*100=12.5"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "observed": -1e+308,
+            "actual": 1e+308
+          },
+          "expected": 200,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "average-two-numbers-calculator",
+      "calculatorId": "launch-average-two-numbers-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "a": -7,
+            "b": 3
+          },
+          "expected": -2,
+          "derivation": "(-7+3)/2=-2"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "a": 1e+308,
+            "b": 1e+308
+          },
+          "expected": 1e+308,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "weighted-average-two-values-calculator",
+      "calculatorId": "launch-weighted-average-two-values-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "a": -4,
+            "b": 5
+          },
+          "expected": 2,
+          "derivation": "(-4+2*5)/3=2"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "a": 1e+308,
+            "b": 1e+308
+          },
+          "expected": 1e+308,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "completion-rate-calculator",
+      "calculatorId": "launch-completion-rate-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "complete": 3,
+            "total": 8
+          },
+          "expected": 37.5,
+          "derivation": "3/8*100=37.5"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "complete": 1e+308,
+            "total": 1e+308
+          },
+          "expected": 100,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "error-rate-calculator",
+      "calculatorId": "launch-error-rate-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "errors": 1,
+            "total": 8
+          },
+          "expected": 12.5,
+          "derivation": "1/8*100=12.5"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "errors": 0,
+            "total": 1e+308
+          },
+          "expected": 0,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "success-rate-calculator",
+      "calculatorId": "launch-success-rate-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "successes": 7,
+            "total": 8
+          },
+          "expected": 87.5,
+          "derivation": "7/8*100=87.5"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "successes": 1e+308,
+            "total": 1e+308
+          },
+          "expected": 100,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "relative-difference-calculator",
+      "calculatorId": "launch-relative-difference-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "a": 3,
+            "b": 5
+          },
+          "expected": 50,
+          "derivation": "abs(3-5)/((3+5)/2)*100=50"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "a": -1e+308,
+            "b": 1e+308
+          },
+          "expected": 200,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "range-two-values-calculator",
+      "calculatorId": "launch-range-two-values-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "min": -7,
+            "max": -2
+          },
+          "expected": 5,
+          "derivation": "-2-(-7)=5"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "min": -3,
+            "max": -3
+          },
+          "expected": 0,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "midrange-calculator",
+      "calculatorId": "launch-midrange-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "min": -8,
+            "max": 2
+          },
+          "expected": -3,
+          "derivation": "(-8+2)/2=-3"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "min": 1e+308,
+            "max": 1e+308
+          },
+          "expected": 1e+308,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
+        }
+      ]
+    },
+    {
+      "batch": "means-rates-10",
+      "slug": "sample-proportion-calculator",
+      "calculatorId": "launch-sample-proportion-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent signed/count example",
+          "input": {
+            "successes": 3,
+            "sample": 8
+          },
+          "expected": 0.375,
+          "derivation": "3/8=.375"
+        },
+        {
+          "label": "Boundary or representable finite extreme",
+          "input": {
+            "successes": 0,
+            "sample": 1e+308
+          },
+          "expected": 0,
+          "derivation": "Explicit constant result derived from the stated arithmetic identity, not engine evaluation."
         }
       ]
     }
