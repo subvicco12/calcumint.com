@@ -36,12 +36,11 @@ describe("independent debt aggregate vectors; no financial approval", () => {
       });
     }
   }
-  it("asserts exactly seven remaining records separately from approvals", () => {
+  it("asserts exactly two remaining records separately from approvals", () => {
     const definitions = calculatorRegistry.list();
     expect(definitions).toHaveLength(574);
     expect(definitions.filter(definition => !definition.goldenTests?.length).map(definition => definition.id).sort()).toEqual([
-      "finance.credit-card-payoff", "finance.debt-payoff", "finance.loan-analysis", "finance.loan-prepayment",
-      "finance.loan-refinance", "finance.mortgage", "health.bmi",
+      "finance.mortgage", "health.bmi",
     ]);
     expect(definitions.filter(definition => definition.riskClass === "standard" && !definition.goldenTests?.length)).toHaveLength(0);
   });

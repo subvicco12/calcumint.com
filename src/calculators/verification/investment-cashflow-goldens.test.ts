@@ -48,12 +48,11 @@ describe("independent investment cash-flow golden contracts; specialist approval
       }
     });
   }
-  it("retains seven remaining gaps without implying certification", () => {
+  it("retains two remaining gaps without implying certification", () => {
     const definitions = calculatorRegistry.list();
     expect(definitions).toHaveLength(574);
     expect(definitions.filter(definition => !definition.goldenTests?.length).map(definition => definition.id).sort()).toEqual([
-      "finance.credit-card-payoff", "finance.debt-payoff", "finance.loan-analysis",
-      "finance.loan-prepayment", "finance.loan-refinance", "finance.mortgage", "health.bmi",
+      "finance.mortgage", "health.bmi",
     ]);
     expect(definitions.filter(definition => definition.riskClass === "standard" && !definition.goldenTests?.length)).toHaveLength(0);
   });
