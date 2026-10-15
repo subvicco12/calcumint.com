@@ -24,15 +24,29 @@ describe("runtime publication authority", () => {
   });
 
   it("fails closed when the publication manifest cannot be established", () => {
-    expect(manifestLoader).toContain("if (!url || !anonKey) return new Set()");
-    expect(manifestLoader).toContain("if (error || !Array.isArray(data)) return new Set()");
+    expect(manifestLoader).toContain('if (!url || !anonKey) return { state: "unavailable", slugs: new Set() }');
+    expect(manifestLoader).toContain('if (error || !manifest) return { state: "unavailable", slugs: new Set() }');
+    expect(manifestLoader).toContain("const manifest = parsePublishedCalculatorManifest(data)");
     expect(manifestLoader).toContain("catch {");
-    expect(manifestLoader).toContain("return new Set()");
+    expect(manifestLoader).toContain('return { state: "unavailable", slugs: new Set() }');
   });
 
+  it("memoizes authority only within the React request and shares metadata/detail route resolution", () => {
+    const route = readFileSync("src/lib/public-calculator-route.ts", "utf8");
+    expect(manifestLoader).toContain('import { cache } from "react"');
+    expect(manifestLoader).toContain("getPublicationSnapshot = cache(async");
+    expect(route).toContain("getPublicCalculatorRoute = cache(async");
+    expect(route).toContain("await getPublicationSnapshot()");
+    expect(detail.match(/await getPublicCalculatorRoute\(category, slug\)/g)).toHaveLength(2);
+    for (const source of [manifestLoader, route]) {
+      expect(source).not.toContain("unstable_cache");
+      expect(source).not.toContain('"use cache"');
+      expect(source).not.toContain("revalidate:");
+    }
+  });
   it("binds every public runtime surface to the governed manifest", () => {
     for (const source of [home, directory, category, detail, sitemap]) {
-      expect(source).toContain("getPublishedCalculatorSlugs");
+      expect(source).toMatch(/getPublishedCalculatorSlugs|getPublicationSnapshot/);
       expect(source).toContain('dynamic = "force-dynamic"');
     }
     expect(home).toContain("listGovernedPublicCalculators");
