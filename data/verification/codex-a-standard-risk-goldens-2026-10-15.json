@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "preparedAt": "2026-10-15 IST",
   "baseCommit": "3b6e67812e9756a4c31f3d5572d938dbebdc2744",
-  "scope": "92 registered standard-risk engines in bounded16/10/10/11/10/10/12/13 batches; no master-catalog approval.",
+  "scope": "117 registered standard-risk engines in bounded batches; no master-catalog approval.",
   "expectedValuePolicy": "Literal independent arithmetic, never spec.compute/calculate-generated. Compare finite values within16 binary64 epsilons relative error, exact mathematical zero; no financial rounding policy.",
   "sources": {
     "algebra": {
@@ -2659,6 +2659,733 @@
           },
           "expected": 0,
           "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "heat-energy-calculator",
+      "calculatorId": "launch-heat-energy-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "mass": 2,
+            "specificHeat": 3,
+            "deltaT": -4
+          },
+          "expected": -24,
+          "derivation": "2 * 3 * -4 = -24"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "mass": 0,
+            "specificHeat": 3,
+            "deltaT": -4
+          },
+          "expected": 0,
+          "derivation": "0 * 3 * -4 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "ideal-gas-pressure-index-calculator",
+      "calculatorId": "launch-ideal-gas-pressure-index-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "temperature": 300,
+            "volume": 12
+          },
+          "expected": 25,
+          "derivation": "300 / 12 = 25; proportional index only"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "temperature": 0,
+            "volume": 12
+          },
+          "expected": 0,
+          "derivation": "0 / 12 = 0 proportional index"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "resistivity-index-calculator",
+      "calculatorId": "launch-resistivity-index-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "length": 7.5,
+            "area": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5 geometry factor only"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "length": 0,
+            "area": 3
+          },
+          "expected": 0,
+          "derivation": "0 / 3 = 0 geometry factor"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "spring-energy-calculator",
+      "calculatorId": "launch-spring-energy-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "k": 8,
+            "x": -3
+          },
+          "expected": 36,
+          "derivation": "8 * (-3)^2 / 2 = 36"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "k": 0,
+            "x": -3
+          },
+          "expected": 0,
+          "derivation": "0 * (-3)^2 / 2 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "centripetal-acceleration-calculator",
+      "calculatorId": "launch-centripetal-acceleration-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "velocity": -6,
+            "radius": 3
+          },
+          "expected": 12,
+          "derivation": "(-6)^2 / 3 = 12"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "velocity": 0,
+            "radius": 3
+          },
+          "expected": 0,
+          "derivation": "0^2 / 3 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "angular-speed-calculator",
+      "calculatorId": "launch-angular-speed-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "angle": -7.5,
+            "time": 3
+          },
+          "expected": -2.5,
+          "derivation": "-7.5 / 3 = -2.5 radians per time unit"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "angle": 0,
+            "time": 3
+          },
+          "expected": 0,
+          "derivation": "0 / 3 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "mechanical-advantage-calculator",
+      "calculatorId": "launch-mechanical-advantage-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "mechanics",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "output": -7.5,
+            "input": 3
+          },
+          "expected": -2.5,
+          "derivation": "-7.5 / 3 = -2.5 as declared signed model"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "output": 0,
+            "input": 3
+          },
+          "expected": 0,
+          "derivation": "0 / 3 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "efficiency-calculator",
+      "calculatorId": "launch-efficiency-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "output": 3,
+            "input": 8
+          },
+          "expected": 37.5,
+          "derivation": "3 / 8 * 100 = 37.5"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "output": 0,
+            "input": 8
+          },
+          "expected": 0,
+          "derivation": "0 / 8 * 100 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "odds-from-probability-calculator",
+      "calculatorId": "launch-odds-from-probability-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "p": 20,
+            "scale": 2
+          },
+          "expected": 0.5,
+          "derivation": "20 / (100 - 20) * 2 = 0.5"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "p": 0,
+            "scale": 2
+          },
+          "expected": 0,
+          "derivation": "0 / (100 - 0) * 2 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "probability-complement-calculator",
+      "calculatorId": "launch-probability-complement-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "p": 25,
+            "whole": 80
+          },
+          "expected": 55,
+          "derivation": "80 - 25 = 55"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "p": 0,
+            "whole": 80
+          },
+          "expected": 80,
+          "derivation": "80 - 0 = 80"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "expected-value-two-outcome-calculator",
+      "calculatorId": "launch-expected-value-two-outcome-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "value": -7.5,
+            "probability": 40
+          },
+          "expected": -3,
+          "derivation": "-7.5 * 40 / 100 = -3 one-outcome contribution"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "value": 0,
+            "probability": 40
+          },
+          "expected": 0,
+          "derivation": "0 * 40 / 100 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "rate-per-thousand-calculator",
+      "calculatorId": "launch-rate-per-thousand-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "events": 3,
+            "population": 8
+          },
+          "expected": 375,
+          "derivation": "3 / 8 * 1000 = 375"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "events": 0,
+            "population": 8
+          },
+          "expected": 0,
+          "derivation": "0 / 8 * 1000 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "science-probability-13",
+      "slug": "rate-per-million-calculator",
+      "calculatorId": "launch-rate-per-million-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent stated-model arithmetic",
+          "input": {
+            "events": 3,
+            "population": 8
+          },
+          "expected": 375000,
+          "derivation": "3 / 8 * 1000000 = 375000"
+        },
+        {
+          "label": "Exact zero boundary",
+          "input": {
+            "events": 0,
+            "population": 8
+          },
+          "expected": 0,
+          "derivation": "0 / 8 * 1000000 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "sale-price-calculator",
+      "calculatorId": "launch-sale-price-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "price": 80,
+            "percent": 25
+          },
+          "expected": 60,
+          "derivation": "80 * (1 - 25/100) = 60"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "price": 80,
+            "percent": 100
+          },
+          "expected": 0,
+          "derivation": "80 * (1 - 100/100) = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "markup-price-calculator",
+      "calculatorId": "launch-markup-price-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "cost": 80,
+            "percent": 25
+          },
+          "expected": 100,
+          "derivation": "80 * 1.25 = 100"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "cost": 80,
+            "percent": -25
+          },
+          "expected": 60,
+          "derivation": "80 * 0.75 = 60"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "margin-amount-calculator",
+      "calculatorId": "launch-margin-amount-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "revenue": 75,
+            "cost": 100
+          },
+          "expected": -25,
+          "derivation": "75 - 100 = -25"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "revenue": 100,
+            "cost": 100
+          },
+          "expected": 0,
+          "derivation": "100 - 100 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "profit-margin-calculator",
+      "calculatorId": "launch-profit-margin-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "revenue": 80,
+            "cost": 100
+          },
+          "expected": -25,
+          "derivation": "(80 - 100) / 80 * 100 = -25"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "revenue": 80,
+            "cost": 80
+          },
+          "expected": 0,
+          "derivation": "(80 - 80) / 80 * 100 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "coverage-rate-calculator",
+      "calculatorId": "launch-coverage-rate-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "covered": 3,
+            "total": 8
+          },
+          "expected": 37.5,
+          "derivation": "3 / 8 * 100 = 37.5"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "covered": 0,
+            "total": 8
+          },
+          "expected": 0,
+          "derivation": "0 / 8 * 100 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "growth-factor-calculator",
+      "calculatorId": "launch-growth-factor-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "old": -8,
+            "next": 12
+          },
+          "expected": -1.5,
+          "derivation": "12 / -8 = -1.5"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "old": 8,
+            "next": 0
+          },
+          "expected": 0,
+          "derivation": "0 / 8 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "linear-interpolation-midpoint-calculator",
+      "calculatorId": "launch-linear-interpolation-midpoint-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "a": -8,
+            "b": 12
+          },
+          "expected": 2,
+          "derivation": "-8 + (12 + 8)/2 = 2"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "a": -8,
+            "b": 8
+          },
+          "expected": 0,
+          "derivation": "-8 + (8 + 8)/2 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "harmonic-mean-two-values-calculator",
+      "calculatorId": "launch-harmonic-mean-two-values-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "a": 3,
+            "b": 6
+          },
+          "expected": 4,
+          "derivation": "2*3*6/(3+6) = 4"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "a": 8,
+            "b": 8
+          },
+          "expected": 8,
+          "derivation": "2*8*8/(8+8) = 8"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "geometric-mean-two-values-calculator",
+      "calculatorId": "launch-geometric-mean-two-values-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "a": 4,
+            "b": 9
+          },
+          "expected": 6,
+          "derivation": "sqrt(4 * 9) = 6"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "a": 0,
+            "b": 9
+          },
+          "expected": 0,
+          "derivation": "sqrt(0 * 9) = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "quadratic-discriminant-calculator",
+      "calculatorId": "launch-quadratic-discriminant-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "b": 3,
+            "ac": 4
+          },
+          "expected": -7,
+          "derivation": "3^2 - 4*4 = -7"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "b": 4,
+            "ac": 4
+          },
+          "expected": 0,
+          "derivation": "4^2 - 4*4 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "simple-interest-amount-index-calculator",
+      "calculatorId": "launch-simple-interest-amount-index-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "principal": 80,
+            "rate": -25
+          },
+          "expected": -20,
+          "derivation": "80 * -25 / 100 = -20 one-period arithmetic only"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "principal": 80,
+            "rate": 0
+          },
+          "expected": 0,
+          "derivation": "80 * 0 / 100 = 0"
+        }
+      ]
+    },
+    {
+      "batch": "arithmetic-models-12",
+      "slug": "doubling-growth-calculator",
+      "calculatorId": "launch-doubling-growth-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent non-default arithmetic",
+          "input": {
+            "value": -3,
+            "doublings": 4
+          },
+          "expected": -48,
+          "derivation": "-3 * 2^4 = -48"
+        },
+        {
+          "label": "Signed or boundary arithmetic",
+          "input": {
+            "value": 8,
+            "doublings": -2
+          },
+          "expected": 2,
+          "derivation": "8 * 2^-2 = 2"
         }
       ]
     }

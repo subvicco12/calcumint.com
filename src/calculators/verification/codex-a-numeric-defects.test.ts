@@ -13,3 +13,9 @@ it.each(['scientific-notation-calculator','scientific-notation-scale-calculator'
 it('keeps a representable LCM exact by dividing before the potentially inexact product',()=>{expect(run('lcm-calculator',{a:101000303,b:103000309})).toBe(10403031209);});
 
 it("rejects LCM outside the exact safe-integer output range",()=>{expect(()=>run("lcm-calculator",{a:9007199254740991,b:9007199254740989})).toThrow("safe-integer");});
+
+it.each([
+ ['efficiency-calculator',{output:Number.MIN_VALUE,input:100}],
+ ['rate-per-thousand-calculator',{events:Number.MIN_VALUE,population:1000}],
+ ['rate-per-million-calculator',{events:Number.MIN_VALUE,population:1000000}],
+] as const)('retains a representable subnormal scaled ratio for %s',(slug,input)=>{expect(run(slug,input)).toBe(Number.MIN_VALUE);});
