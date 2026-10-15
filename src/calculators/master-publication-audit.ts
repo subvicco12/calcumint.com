@@ -106,12 +106,14 @@ export function buildMasterPublicationAudit(
   } };
 }
 
-export function exportMasterPublicationAuditCsv(report: ReturnType<typeof buildMasterPublicationAudit>): string {
+export function exportMasterPublicationAuditCsv(report: ReturnType<typeof buildMasterPublicationAudit>, additionalColumns: Readonly<Record<string, readonly unknown[]>> = {}): string {
   const columns = ["masterId", "domain", "title", "classification", "reason", "priority", "nextAction", "mappingBasis", "candidateKey", "candidateSlug", "candidateVersion", "codeReviewStatus", "hold", "holdBasis", "identityApproval", "dbPublication", "observedDbKey", "observedDbVersion", "dbCertification", "specialistApproval", "deployment", "publicationAuthorized", "certificationAuthorized", "candidates"] as const;
   const cell = (value: unknown) => {
     const text = value === null ? "UNKNOWN" : typeof value === "object" ? JSON.stringify(value) : String(value);
     const safe = /^[=+@\-\t\r]/.test(text) ? "'" + text : text;
     return '"' + safe.replace(/"/g, '""') + '"';
   };
-  return [columns.map(cell).join(","), ...report.rows.map(row => columns.map(column => cell(row[column])).join(","))].join("\r\n") + "\r\n";
+  const extra = Object.entries(additionalColumns);
+  if (extra.some(([name, values]) => columns.some(column => column === name) || values.length !== report.rows.length)) throw new Error("Invalid additional CSV evidence columns");
+  return [[...columns, ...extra.map(([name]) => name)].map(cell).join(","), ...report.rows.map((row, index) => [...columns.map(column => row[column]), ...extra.map(([, values]) => values[index])].map(cell).join(","))].join("\r\n") + "\r\n";
 }
