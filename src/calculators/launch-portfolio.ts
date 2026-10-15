@@ -1,5 +1,6 @@
 import { z } from "zod";
 import independentGoldens from "../../data/verification/codex-a-standard-risk-goldens-2026-10-15.json";
+import { decimalFractionGoldenTests } from "./decimal-fraction-goldens";
 import type { CalculatorDefinition } from "./types";
 
 export type LaunchField = { key: string; label: string; defaultValue: number; min?: number; max?: number; integer?: boolean; disallow?: readonly number[] };
@@ -170,7 +171,7 @@ export function launchDefinition(spec: LaunchSpec): CalculatorDefinition<Record<
     formulas:[{id:"primary",expression:spec.formula,description:spec.explanation}],
     sources:[{label:"CalcuMint deterministic formula review",note:"Standard mathematical/scientific identity reviewed for launch portfolio."}],
     examples:[{label:"Default verified example",input:Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])),expected:{result:spec.compute(Object.fromEntries(spec.fields.map(x=>[x.key,x.defaultValue])))}}],
-    goldenTests:spec.slug==="slope-calculator"?[{label:"Positive rise over run",input:{rise:6,run:3},expected:{result:2}},{label:"Negative slope",input:{rise:-8,run:4},expected:{result:-2}}]:independent?.cases.map(vector=>({label:`${vector.label}: ${vector.derivation}`,input:Object.fromEntries(Object.entries(vector.input)) as Record<string,number>,expected:{result:vector.expected}}))
+    goldenTests:spec.slug==="slope-calculator"?[{label:"Positive rise over run",input:{rise:6,run:3},expected:{result:2}},{label:"Negative slope",input:{rise:-8,run:4},expected:{result:-2}}]:spec.slug==="decimal-to-fraction-calculator"?decimalFractionGoldenTests:independent?.cases.map(vector=>({label:`${vector.label}: ${vector.derivation}`,input:Object.fromEntries(Object.entries(vector.input)) as Record<string,number>,expected:{result:vector.expected}}))
   };
 }
 export const launchDefinitions = launchSpecs.map(launchDefinition);
