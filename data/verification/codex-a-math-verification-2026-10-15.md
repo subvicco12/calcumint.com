@@ -1,6 +1,6 @@
 # Codex A mathematical verification — 15 October 2026 IST
 
-Base: #1392 `3b6e67812e9756a4c31f3d5572d938dbebdc2744`; isolated branch `verify/standard-risk-independent-goldens`. Codex B file ownership was unavailable; scoped open golden/math/launch searches found no overlap. No shared framework, registry, catalog governance or publication files changed. Standard-math factory edits are limited to rounding evaluation and literal fixture wiring.
+Base: #1392 `3b6e67812e9756a4c31f3d5572d938dbebdc2744`; isolated branch `verify/standard-risk-independent-goldens`. Codex B file ownership was unavailable; scoped open golden/math/launch searches found no overlap. No shared framework, registry, catalog governance or publication files changed. Standard-math factory edits cover literal fixture wiring and demonstrated rounding, integer exactness, volume intermediate scaling, trigonometric argument reduction and scientific-notation scaling defects. No certification or technical-version approval is inferred.
 
 ## Verified first47 registered engines
 
@@ -36,3 +36,9 @@ Eight remaining active launch geometry IDs and direct/inverse variation now have
 ## Subsequent elementary-functions12 checkpoint
 
 Twelve more active elementary math IDs now have24 literal power/fraction/factor/common-angle/log/exp vectors.327 focused tests/5files passed; absence78→66 (standard54→42), total574 unchanged. Exact complete-turn degree reduction fixes independently demonstrated sin/cos/tan phase drift at large exactly represented degree inputs. Exact odd90-degree tangent poles now reject without a near-pole tolerance. The two scientific-notation variants retain ordinary finite nonzero paths and share a calculator-specific decimal shift fallback for zero coefficients and representable overflow/underflow cancellations; fractional exponents remain supported. No angle quantization, financial policy or unrelated arithmetic helper was added. Source reference pointers are not newly fetched specialist approval. Final integrated checks/build remain pending for later changes.
+
+## Dimensional13 and exact-integer correction
+
+Added26 literal compatible-unit vectors for pace, productivity, aspect ratio, PPI, storage/file, paint, theoretical tile quantity, concrete volume, ideal battery index, energy cost, constant-flow water usage, descriptive occupancy density and cost/area. No purchasing, building-code, battery-performance or tariff policy inferred. Total92 registered records/184 vectors; explicit absence53/574 (29 standard-risk). Targeted verification295 tests/2 files passed.
+
+LCM reproduced an integer error: inputs101000303 and103000309 have GCF1000003 and exact LCM10403031209; product-before-division returned10403031209.000002. Division by GCF before multiplication preserves that integer. Outputs beyond Number.MAX_SAFE_INTEGER now fail closed with an explicit exact-integer-range error rather than returning an unverified rounded integer. Numeric regression16 tests passed. This is an engineering proposal; certification/version disposition remains unresolved.

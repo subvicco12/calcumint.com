@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "preparedAt": "2026-10-15 IST",
   "baseCommit": "3b6e67812e9756a4c31f3d5572d938dbebdc2744",
-  "scope": "79 registered standard-risk engines in bounded16/10/10/11/10/10/12 batches; no master-catalog approval.",
+  "scope": "92 registered standard-risk engines in bounded16/10/10/11/10/10/12/13 batches; no master-catalog approval.",
   "expectedValuePolicy": "Literal independent arithmetic, never spec.compute/calculate-generated. Compare finite values within16 binary64 epsilons relative error, exact mathematical zero; no financial rounding policy.",
   "sources": {
     "algebra": {
@@ -2282,6 +2282,383 @@
           },
           "expected": 1,
           "derivation": "Explicit power/fraction/angle/logarithm identity; expected literal independent of production code."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "pace-calculator",
+      "calculatorId": "launch-pace-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "time": 7.5,
+            "distance": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "time": 0,
+            "distance": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "productivity-rate-calculator",
+      "calculatorId": "launch-productivity-rate-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "output": 7.5,
+            "time": 2.5
+          },
+          "expected": 3,
+          "derivation": "7.5 / 2.5 = 3"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "output": 0,
+            "time": 2.5
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "aspect-ratio-value-calculator",
+      "calculatorId": "launch-aspect-ratio-value-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "width": 16,
+            "height": 10
+          },
+          "expected": 1.6,
+          "derivation": "16 / 10 = 1.6"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "width": 0,
+            "height": 10
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "pixels-per-inch-calculator",
+      "calculatorId": "launch-pixels-per-inch-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "pixels": 300,
+            "inches": 2.5
+          },
+          "expected": 120,
+          "derivation": "300 / 2.5 = 120"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "pixels": 0,
+            "inches": 2.5
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "storage-per-file-calculator",
+      "calculatorId": "launch-storage-per-file-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "storage": 7.5,
+            "files": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "storage": 0,
+            "files": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "paint-coverage-calculator",
+      "calculatorId": "launch-paint-coverage-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "area": 7.5,
+            "coverage": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5; stated coverage only"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "area": 0,
+            "coverage": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "tile-count-calculator",
+      "calculatorId": "launch-tile-count-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "area": 7.5,
+            "tileArea": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5 theoretical tiles, not a purchase quantity"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "area": 0,
+            "tileArea": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "concrete-volume-calculator",
+      "calculatorId": "launch-concrete-volume-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "area": 7.5,
+            "depth": 0.4
+          },
+          "expected": 3,
+          "derivation": "7.5 * 0.4 = 3 compatible cubic units"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "area": 0,
+            "depth": 0.4
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "battery-runtime-index-calculator",
+      "calculatorId": "launch-battery-runtime-index-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "capacity": 7.5,
+            "load": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5 ideal index, not real battery behavior"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "capacity": 0,
+            "load": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "energy-cost-calculator",
+      "calculatorId": "launch-energy-cost-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "energy": 7.5,
+            "rate": 0.4
+          },
+          "expected": 3,
+          "derivation": "7.5 * 0.4 = 3 before excluded charges"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "energy": 0,
+            "rate": 0.4
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "water-usage-calculator",
+      "calculatorId": "launch-water-usage-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "rate": 2.5,
+            "minutes": 3
+          },
+          "expected": 7.5,
+          "derivation": "2.5 * 3 = 7.5 constant-flow units"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "rate": 0,
+            "minutes": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "occupancy-density-calculator",
+      "calculatorId": "launch-occupancy-density-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "people": 3,
+            "area": 7.5
+          },
+          "expected": 0.4,
+          "derivation": "3 / 7.5 = 0.4 descriptive density only"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "people": 0,
+            "area": 7.5
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
+        }
+      ]
+    },
+    {
+      "batch": "dimensional-13",
+      "slug": "cost-per-square-unit-calculator",
+      "calculatorId": "launch-cost-per-square-unit-calculator",
+      "version": 1,
+      "riskClass": "standard",
+      "source": "algebra",
+      "contractFile": "src/calculators/launch-portfolio.ts",
+      "cases": [
+        {
+          "label": "Independent compatible-unit arithmetic",
+          "input": {
+            "cost": 7.5,
+            "area": 3
+          },
+          "expected": 2.5,
+          "derivation": "7.5 / 3 = 2.5 compatible cost/area units"
+        },
+        {
+          "label": "Exact zero numerator or factor",
+          "input": {
+            "cost": 0,
+            "area": 3
+          },
+          "expected": 0,
+          "derivation": "Zero numerator divided by positive denominator, or zero factor multiplied by finite value, equals zero."
         }
       ]
     }
