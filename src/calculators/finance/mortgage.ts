@@ -9,6 +9,8 @@ import { loanPaymentCalculator } from "./loan-payment";
  */
 export const mortgageCalculator = {
   ...loanPaymentCalculator,
+  // Golden evidence is calculator-scoped; Loan Payment fixtures do not close Mortgage review.
+  goldenTests: undefined,
   id: "finance.mortgage",
   slug: "mortgage-payment",
   title: "Mortgage Calculator",

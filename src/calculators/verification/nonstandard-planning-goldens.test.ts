@@ -35,10 +35,10 @@ describe("literal planning contract vectors, source and specialist evidence pend
       });
     }
   }
-  it("reduces explicit nonstandard record gaps to ten, without approvals", () => {
+  it("reduces explicit nonstandard record gaps to seven, without approvals", () => {
     const definitions = calculatorRegistry.list();
     expect(definitions).toHaveLength(574);
-    expect(definitions.filter(definition => !definition.goldenTests?.length)).toHaveLength(10);
+    expect(definitions.filter(definition => !definition.goldenTests?.length)).toHaveLength(7);
     expect(definitions.filter(definition => definition.riskClass === "standard" && !definition.goldenTests?.length)).toHaveLength(0);
   });
   it("rejects malformed monetary inputs and preserves nullable/boolean results", () => {
