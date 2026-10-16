@@ -16,14 +16,16 @@ export function useCalculatorPlan():CalcuMintPlan{
         if(active&&request===revision)setPlan(error?"free":normalizePlan(data?.plan));
       }catch{if(active&&request===revision)setPlan("free");}
     }
-    function identify(id:string|null){
-      if(!active||identity===id)return;
+    function identify(id:string|null,revalidate=false){
+      if(!active||(identity===id&&!revalidate))return;
       identity=id;const request=++revision;setPlan("free");
       // Auth callbacks must finish synchronously before another SDK request starts.
       if(id)queueMicrotask(()=>{if(active&&request===revision)void loadPlan(id,request);});
     }
+    // Re-authentication/user updates invalidate profile-derived capabilities even for
+    // the same account. Routine token refresh preserves the existing no-reload contract.
     const subscription=typeof supabase.auth.onAuthStateChange==="function"
-      ?supabase.auth.onAuthStateChange((_event,session)=>identify(session?.user.id??null)).data.subscription:null;
+      ?supabase.auth.onAuthStateChange((event,session)=>identify(session?.user.id??null,event==="SIGNED_IN"||event==="USER_UPDATED")).data.subscription:null;
     void supabase.auth.getUser().then(({data,error})=>{
       if(active&&identity===undefined)identify(error?null:data.user?.id??null);
     }).catch(()=>{if(active&&identity===undefined)identify(null);});

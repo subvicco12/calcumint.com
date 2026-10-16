@@ -166,3 +166,29 @@ All836waiver authorities,210source reviews,540mapping decisions,12protected HOLD
 Owners/admins authorized at decision time must authenticate waiver records; authorized source reviewers must bind source applicability per identity/version; the catalog owner and applicable specialists must resolve held mappings and immutable scopes. Qualified financial/clinical reviewers retain Mortgage/BMI decisions. Engineering checks do not replace any of those authorities.
 
 Review the inherited cumulative stack, then this action-boundary delta and its exact-head checks. Next engineering batches should address only reproduced persisted-scenario consumer failures or authoritative historical-contract gaps. Do not add generic version migrations, new derived financial/medical rules, approval-shaped evidence or tests duplicating existing vectors. No further demonstrated history-schema defect was found in this bounded pass. **RELEASE HOLD remains.**
+
+## Same-account entitlement recovery follow-up
+
+Verified main and all fourteen source PR heads #1397–#1410 once: unchanged, OPEN/DRAFT and latest CI SUCCESS. Main remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`; cumulative base #1410 is `7173ff776cec01f644397dfe1bf4ff3c1337909a`, retaining prior evidence, history, account recovery and governed discovery work. Relevant older entitlement PRs concern renderer/schedule alignment rather than this hook; no separate newer owner was found. Source PRs remain unchanged.
+
+### Reproduced defect and compatibility decision
+
+`useCalculatorPlan` ignored every auth event for an unchanged user ID. This retained stale paid presentation after same-account sign-in/user-update and prevented recovery from failed profile reads on those events. Seven regressions failed before implementation; the existing three tests and new initial-auth recovery test passed. Same-user TOKEN_REFRESHED intentionally has an existing no-reload contract and is preserved unchanged, not silently broadened into polling.
+
+Same-account SIGNED_IN and USER_UPDATED now invalidate cached capabilities, fall back to Free while revalidating and read the actual profile in a microtask after the auth callback returns. Events do not supply a trusted plan themselves. Existing revision/unmount guards discard earlier same-user/prior-user responses and prevent a pending read restoring paid state after logout. No new auth provider, polling loop, realtime service, server authorization, cache store or dependency is introduced.
+
+### Verified consumer behavior
+
+Nine new tests cover same-account downgrade, failed read recovery to Pro/Business, overlapping-event races, logout, rejected reads/retry, initial authentication failure and actual scenario capture/export through downgrade/recovery. The scenario integration retains an exact captured mathematical payload and JSON/CSV across same-owner recovery while Free/pending capabilities expose no paid exports. Account/version changes still clear private captures through the existing AccountActionsSession key; no owner boundary was weakened. Routine token refresh continues not to reload. This is event-driven presentation freshness, not continuous billing synchronization; authoritative server plan reads and RLS remain required.
+
+183 focused tests across16files passed: hook, scenario workspace, entitlement presentation, account identity/lifecycle/snapshot, persisted actions/readers, snapshot/scenario exports/re-evaluation, Slope v1/v2/HOLD, certification and rule packs. Typecheck passed. Full lint passed with0errors/28inherited warnings. Single `NODE_USE_ENV_PROXY=1 npm run build` passed; generated Next configuration restored. No formula, calculator identity/version, golden vector, legacy decoder or stored history change was made. New test data are synthetic and no production query/write was executed.
+
+### Acceptance and remaining limits
+
+All836waiver authorities,210source reviews,540mapping decisions,12protected HOLD dispositions and38specialist requests remain UNKNOWN. No new authentic authority evidence was supplied and no approval count advanced. The12HOLD disposition requests refer to rows already among540mappings. Mortgage/BMI and all existing specialist-dependent financial/clinical decisions remain blocked. Historical209DB publication observations are not fresh deployment proof; observation time remains UNKNOWN. Named authorized reviewers remain UNKNOWN.
+
+Authorized owner/admin waiver records, identity-bound source applicability, catalog/HOLD decisions and qualified specialist evidence remain separate release prerequisites. These UI checks grant no certification or publication. No RLS/security/CI, entitlement mathematics or source requirements changed. `npm ci` and production `next build --webpack` remain unchanged.
+
+Review the pinned source stack then this isolated hook delta. Exact final head and automatic CI links/outcomes are in the draft PR description; no manual CI dispatch is needed. Next bounded engineering work should investigate demonstrated event/consumer recovery faults, not invent historical contracts or automatic billing freshness policies. Add further event triggers only with a reproduced requirement; no new decoder is justified by this pass.
+
+Original Codex O ZIP preserved:232,035bytes, SHA-256 `eb91318776461ab0c8be27f5b75d21f0290c45b1c24ef2e49fdc66cbfaa08950`. No production writes, merges, deployments, approvals, certification or publication. **RELEASE HOLD remains.**
