@@ -13,7 +13,11 @@ export const metadata: Metadata = { title: "Calculators", description: directory
 
 export const dynamic = "force-dynamic";
 
-export default async function CalculatorsPage() {
+export default async function CalculatorsPage({ searchParams }: {
+  searchParams?: Promise<{ search?: string | string[] }>;
+}) {
+  const search = (await searchParams)?.search;
+  const initialQuery = typeof search === "string" ? search : "";
   const publication = await getPublicationSnapshot();
   const publishedSlugs = publication.slugs;
   const calculators = listGovernedPublicCalculators(publishedSlugs);
@@ -23,7 +27,7 @@ export default async function CalculatorsPage() {
   const alphabetical = calculators.flatMap((item) => { const definition = calculatorRegistry.getBySlug(item.slug); return definition ? [{ ...item, title: definition.title }] : []; }).sort((a, b) => a.title.localeCompare(b.title));
 
   return <section className="container page-top directory-page">
-    <span className="eyebrow">Universal calculator directory</span><h1>Find the right calculator.</h1><p className="hero-copy">Start with a category, search the certified library, or jump to the A–Z index when you know the calculator name.</p><CalculatorSearch items={searchItems} />{publication.state === "unavailable" ? <p role="status">Calculator availability is temporarily unavailable. Please try again shortly.</p> : calculators.length === 0 ? <p role="status">No calculators are currently published. Please check back soon.</p> : null}
+    <span className="eyebrow">Universal calculator directory</span><h1>Find the right calculator.</h1><p className="hero-copy">Start with a category, search the certified library, or jump to the A–Z index when you know the calculator name.</p><CalculatorSearch items={searchItems} initialQuery={initialQuery} />{publication.state === "unavailable" ? <p role="status">Calculator availability is temporarily unavailable. Please try again shortly.</p> : calculators.length === 0 ? <p role="status">No calculators are currently published. Please check back soon.</p> : null}
     <div className="section-heading directory-heading"><div><span className="eyebrow">Start here</span><h2>Browse by category</h2><p className="muted-copy">Categories are the primary way to explore CalcuMint as the library grows.</p></div><span className="status">{publication.state === "available" ? `${calculators.length} published tools` : "Published tool count unavailable"} · {MASTER_CALCULATOR_CATALOG_TOTAL} planned in master catalog</span></div>
     <div className="category-grid">{categories.map((category) => <Link className="card category-link category-discovery-card" href={`/calculators/${category.slug}`} key={category.slug}><span className="category-count">{category.count} calculator{category.count === 1 ? "" : "s"}</span><h3>{category.name}</h3><p>{category.description}</p><span className="text-link">Browse category →</span></Link>)}</div>
     {publication.state === "available" && <CountryDiscovery publishedSlugs={publishedSlugs} />}<div className="section-heading directory-heading"><div><span className="eyebrow">Featured tools</span><h2>Featured calculators</h2></div></div><div className="popular-grid">{featured.map((item) => { const definition = calculatorRegistry.getBySlug(item.slug); if (!definition) return null; return <Link className="popular-card" href={`/calculators/${item.category}/${item.slug}`} key={item.slug}><span className="category-count">{categories.find((category) => category.slug === item.category)?.name ?? item.category}</span><strong>{definition.title}</strong><span>{item.shortDescription}</span></Link>; })}</div>

@@ -20,7 +20,7 @@ describe("actual governed public discovery surfaces", () => {
     authority.state = "available"; authority.slugs = new Set(["loan-emi-calculator", "sip-calculator", "bmi-calculator", "unknown-draft"]);
     const paths = ["loan-emi-calculator", "sip-calculator"].map(slug => { const content = getPublicCalculatorContent(slug)!; return `/calculators/${content.category}/${slug}`; });
     render(await HomePage()); expect([...new Set(calculatorPaths())].sort()).toEqual(paths.sort()); cleanup();
-    render(await DirectoryPage()); expect([...new Set(calculatorPaths())].sort()).toEqual(paths.sort()); cleanup();
+    render(await DirectoryPage({})); expect([...new Set(calculatorPaths())].sort()).toEqual(paths.sort()); cleanup();
     const content = getPublicCalculatorContent("sip-calculator")!;
     render(await CategoryPage({ params: Promise.resolve({ category: content.category }) }));
     expect([...new Set(calculatorPaths())]).toEqual([`/calculators/${content.category}/sip-calculator`]); cleanup();
@@ -32,7 +32,7 @@ describe("actual governed public discovery surfaces", () => {
   it("distinguishes unknown availability from zero without fallback calculator links or global availability claims", async () => {
     authority.state = "unavailable"; authority.slugs = new Set();
     for (const page of [HomePage, DirectoryPage]) {
-      render(await page());
+      render(await page({}));
       expect(screen.getByText(/Calculator availability is temporarily unavailable/)).toBeTruthy();
       expect(document.body.textContent).not.toContain("0 published tools");
       expect(document.body.textContent).not.toContain("Global certified calculators remain available");
@@ -42,7 +42,7 @@ describe("actual governed public discovery surfaces", () => {
   });
   it("reports an authoritative empty library as empty and blocks category/detail routes", async () => {
     authority.state = "available"; authority.slugs = new Set();
-    render(await DirectoryPage()); expect(screen.getByText(/No calculators are currently published/)).toBeTruthy(); cleanup();
+    render(await DirectoryPage({})); expect(screen.getByText(/No calculators are currently published/)).toBeTruthy(); cleanup();
     await expect(CategoryPage({ params: Promise.resolve({ category: "finance-investment" }) })).rejects.toThrow("NOT_FOUND");
     await expect(DetailPage({ params: Promise.resolve({ category: "finance-investment", slug: "sip-calculator" }) })).rejects.toThrow("NOT_FOUND");
   });
