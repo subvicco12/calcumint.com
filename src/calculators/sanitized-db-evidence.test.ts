@@ -130,6 +130,37 @@ describe("strict sanitized DB evidence import", () => {
     expect(result.rows[0].independentEvidence[0].status).toBe("IDENTITY_CONFLICT");
     expect(result.rows[0].candidateVersion).toBe(1);
   });
+  it("rejects impossible observation chronology while retaining unknown snapshot times", () => {
+    const e = fixture(); e.provenance.observedAt = "2026-10-16T00:00:00Z";
+    expect(() => parseSanitizedDbEvidence(e)).toThrow(/observation time/);
+    e.provenance.observedAt = "2026-10-15T23:59:59.999Z";
+    expect(parseSanitizedDbEvidence(e).provenance.observedAt).toBe(e.provenance.observedAt);
+    e.provenance.observedAt = null;
+    expect(parseSanitizedDbEvidence(e).provenance.observedAt).toBeNull();
+  });
+  it("does not label a slug-only fallback as a match for a different candidate identity", () => {
+    const original = base();
+    original.rows[0].candidates[0].id = "other.alias";
+    const result = reconcileSanitizedDbEvidence(original, inventory, fixture());
+    const candidate = result.rows[0].independentEvidence.find(item => item.calculatorKey === "other.alias")!;
+    expect(candidate.status).toBe("IDENTITY_CONFLICT");
+    expect("observation" in candidate && candidate.observation?.registryMatch).toBe("EXACT_KEY_SLUG_VERSION");
+    expect(result.rows[0].publicationAuthorized).toBe(false);
+  });
+  it("does not label a key-only lookup as a match for a different candidate slug", () => {
+    const original = base();
+    original.rows[0].candidates[0].slug = "historical-example";
+    const result = reconcileSanitizedDbEvidence(original, inventory, fixture());
+    expect(result.rows[0].independentEvidence[0].status).toBe("IDENTITY_CONFLICT");
+    expect(result.importSummary.registryIdentityMatches).toBe(1);
+    expect(result.importSummary.masterRowsWithImportedIdentity).toBe(0);
+  });
+  it("does not apply a current imported version to a historical candidate version", () => {
+    const original = base();
+    original.rows[0].candidates[0].version = 2;
+    const result = reconcileSanitizedDbEvidence(original, inventory, fixture());
+    expect(result.rows[0].independentEvidence[0].status).toBe("IDENTITY_CONFLICT");
+  });
   it("keeps the existing CSV stable and rejects incomplete or conflicting evidence columns", () => {
     const original = exportMasterPublicationAuditCsv(base());
     expect(exportMasterPublicationAuditCsv(base(), {})).toBe(original);

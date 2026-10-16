@@ -58,6 +58,7 @@ export function parseSanitizedDbEvidence(value: unknown): SanitizedDbEvidence {
   const result = sanitizedDbEvidenceSchema.safeParse(value);
   if (!result.success) throw new Error("Invalid sanitized DB evidence contract; unknown/private fields are forbidden");
   const evidence = result.data;
+  if (evidence.provenance.observedAt && Date.parse(evidence.provenance.observedAt) > Date.parse(evidence.provenance.receivedOn + "T23:59:59.999Z")) throw new Error("DB evidence observation time conflict");
   const a = evidence.aggregates;
   if (a.qaPassed + a.qaWaived !== a.qaChecks || a.qaIdentities * a.passedPerIdentity !== a.qaPassed || a.qaIdentities * a.waivedPerIdentity !== a.qaWaived || a.sourceIdentities > a.sourceRecords || a.sourceIdentities > a.publishedIdentities || a.qaIdentities > a.publishedIdentities) throw new Error("Inconsistent aggregate evidence");
   if (evidence.scope === "aggregate-only") {
@@ -140,15 +141,19 @@ export function reconcileSanitizedDbEvidence(
   });
   const observationByKey = new Map(observations.map(entry => [entry.identity.calculatorKey, entry]));
   const rows = base.rows.map(entry => {
-    const candidates = entry.candidates.map(candidate => ({ calculatorKey: candidate.id, imported: byKey.get(candidate.id) ?? importedBySlug.get(candidate.slug) }));
+    const candidates = entry.candidates.map(candidate => ({ calculatorKey: candidate.id, candidateIdentity: { calculatorKey: candidate.id, slug: candidate.slug, version: candidate.version }, imported: byKey.get(candidate.id) ?? importedBySlug.get(candidate.slug) }));
     for (const imported of evidence.rows.filter(item => item.masterMapping?.masterId === entry.masterId)) {
-      if (!candidates.some(candidate => candidate.imported?.calculatorKey === imported.calculatorKey)) candidates.push({ calculatorKey: imported.calculatorKey, imported });
+      if (!candidates.some(candidate => candidate.imported?.calculatorKey === imported.calculatorKey)) candidates.push({ calculatorKey: imported.calculatorKey, candidateIdentity: { calculatorKey: imported.calculatorKey, slug: imported.slug, version: imported.version }, imported });
     }
     return { ...entry, independentEvidence: candidates.map(candidate => {
       const imported = candidate.imported;
       if (!imported) return { calculatorKey: candidate.calculatorKey, status: "UNKNOWN" as const };
       const observation = observationByKey.get(imported.calculatorKey)!;
-      return { calculatorKey: candidate.calculatorKey, status: observation.registryMatch === "EXACT_KEY_SLUG_VERSION" ? "IDENTITY_MATCHED_OBSERVATION" : "IDENTITY_CONFLICT", observation,
+      // Slug fallback keeps conflicting observations visible; it must not authenticate
+      // a different key or immutable version from the master candidate contract.
+      const candidateMatches = candidate.candidateIdentity.calculatorKey === imported.calculatorKey
+        && candidate.candidateIdentity.slug === imported.slug && candidate.candidateIdentity.version === imported.version;
+      return { calculatorKey: candidate.calculatorKey, status: candidateMatches && observation.registryMatch === "EXACT_KEY_SLUG_VERSION" ? "IDENTITY_MATCHED_OBSERVATION" : "IDENTITY_CONFLICT", observation,
         masterMappingStatus: imported.masterMapping?.masterId === entry.masterId
           ? imported.masterMapping.decision === "approved" && imported.masterMapping.decisionRef && (imported.masterMapping.authorityRole === "owner" || imported.masterMapping.authorityRole === "admin") ? "RECORDED_APPROVED_MAPPING_REQUIRES_REVIEW" : "RECORDED_MAPPING_DECISION_REQUIRES_REVIEW"
           : "CANDIDATE_ONLY" };
