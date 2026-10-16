@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import {Blob as NodeBlob} from 'node:buffer';
 import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';import {afterEach,expect,it,vi} from 'vitest';
 const state=vi.hoisted(()=>{process.env.NEXT_PUBLIC_SUPABASE_URL='https://example.invalid';process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY='synthetic-key';return {plan:'pro',authMode:'ok',readError:false,count:0 as number|null,writeMode:'ok',pendingWrites:[] as {resolve:(value:unknown)=>void;reject:(error:Error)=>void}[],writes:[] as {table:string;value:Record<string,unknown>}[],auth:[] as {resolve:(value:unknown)=>void;reject:(error:Error)=>void}[]};});
 vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
@@ -6,7 +7,7 @@ vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>({auth:{g
  const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:null,error:state.readError?{code:'synthetic'}:null}),then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({data:null,count:state.count,error:state.readError?{code:'synthetic'}:null}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});if(state.writeMode==='defer')return new Promise((resolve,reject)=>state.pendingWrites.push({resolve,reject}));if(state.writeMode==='reject')throw new Error('synthetic write transport');return {error:state.writeMode==='error'?{code:'synthetic'}:null};},upsert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});if(state.writeMode==='defer')return new Promise((resolve,reject)=>state.pendingWrites.push({resolve,reject}));if(state.writeMode==='reject')throw new Error('synthetic write transport');return {error:state.writeMode==='error'?{code:'synthetic'}:null};},delete:()=>query};return query;
 }})}));
 import {CalculatorAccountActions} from './calculator-account-actions';
-afterEach(()=>{cleanup();state.plan='pro';state.authMode='ok';state.readError=false;state.writes=[];state.auth=[];state.count=0;state.writeMode='ok';state.pendingWrites=[];});
+afterEach(()=>{cleanup();state.plan='pro';state.authMode='ok';state.readError=false;state.writes=[];state.auth=[];state.count=0;state.writeMode='ok';state.pendingWrites=[];vi.unstubAllGlobals();vi.restoreAllMocks();});
 const props={calculatorSlug:'sip-calculator',calculatorVersion:1,input:{rate:0},output:{value:.001}};
 const user={data:{user:{id:'synthetic-user'}}};
 it.each(['free','pro','business'])('excludes duplicate save/favorite requests immediately and restores controls on %s',async plan=>{
@@ -36,4 +37,43 @@ it('handles initial rejected authentication with retry and keeps old save comple
 
 it('excludes repeated read retries and exposes the pending read before keyboard recovery',async()=>{
  state.readError=true;render(<CalculatorAccountActions {...props}/>);const retry=await screen.findByRole('button',{name:'Retry account actions'});state.readError=false;state.authMode='defer';fireEvent.click(retry);fireEvent.click(retry);expect(screen.queryByRole('alert')).toBeNull();expect(screen.getByRole('status').textContent).toBe('Loading account actions…');expect(screen.getByRole('status').getAttribute('aria-busy')).toBe('true');await waitFor(()=>expect(state.auth).toHaveLength(1));state.auth[0].resolve(user);expect(await screen.findByRole('button',{name:'Save calculation'})).toBeTruthy();
+});
+
+it.each(['free','pro','business'])('keeps local scenario workspace available during account failure and retry on %s',async plan=>{
+ state.plan=plan;state.readError=true;
+ render(<CalculatorAccountActions {...props}/>);
+ expect(await screen.findByRole('button',{name:'Retry account actions'})).toBeTruthy();
+ const capture=screen.getByRole('button',{name:'Capture baseline A'}) as HTMLButtonElement;
+ expect(capture.disabled).toBe(plan==='free');
+ if(plan!=='free')fireEvent.click(capture);
+ state.readError=false;state.authMode='defer';fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
+ expect(screen.getByText('Loading account actions…')).toBeTruthy();
+ if(plan!=='free')expect(screen.getByRole('button',{name:'Replace baseline A'})).toBeTruthy();
+ else expect(screen.getByRole('button',{name:'Capture baseline A'})).toHaveProperty('disabled',true);
+ await waitFor(()=>expect(state.auth).toHaveLength(1));state.auth[0].resolve(user);
+ expect(await screen.findByRole('button',{name:'Save calculation'})).toBeTruthy();
+ if(plan!=='free'){
+  expect(screen.getByRole('button',{name:'Replace baseline A'})).toBeTruthy();
+  expect(screen.getByText('Complete snapshot A (baseline)')).toBeTruthy();
+ }
+ expect(state.writes).toHaveLength(0);
+});
+
+it.each(['pro','business'])('preserves exact captured exports through initial auth rejection and invalid current data on %s',async plan=>{
+ state.plan=plan;state.authMode='defer';let blob:NodeBlob|undefined;
+ vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(value:NodeBlob)=>{blob=value;return 'blob:synthetic';},revokeObjectURL:()=>{}});
+ vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementation(()=>{});
+ const view=render(<CalculatorAccountActions {...props}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ await waitFor(()=>expect(state.auth).toHaveLength(1));state.auth[0].reject(new Error('synthetic auth failure'));
+ expect(await screen.findByRole('button',{name:'Retry account actions'})).toBeTruthy();
+ view.rerender(<CalculatorAccountActions {...props} output={{value:Infinity}}/>);
+ expect(screen.getByRole('button',{name:'Replace baseline A'})).toHaveProperty('disabled',true);
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ const exported=JSON.parse(await blob!.text());
+ expect(exported.scenarios[0].output).toEqual(props.output);
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set CSV'}));
+ expect(await blob!.text()).toContain('0.001');
+ expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();
+ expect(state.writes).toHaveLength(0);
 });
