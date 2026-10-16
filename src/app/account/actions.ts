@@ -15,6 +15,21 @@ async function requireUser() {
   return { supabase, user };
 }
 
+type AccountClient=NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>;
+
+async function readAccountEntitlements(supabase:AccountClient,userId:string){
+ const profile=await supabase.from("profiles").select("plan").eq("id",userId).maybeSingle();
+ if(profile.error)throw new Error("Account plan unavailable");
+ return getPlanEntitlements(profile.data?.plan);
+}
+
+async function enforceSaveQuota(supabase:AccountClient,userId:string,table:"favorites"|"calculation_history",limit:number|null){
+ if(limit===null)return;
+ const result=await supabase.from(table).select("id",{count:"exact",head:true}).eq("user_id",userId);
+ if(result.error||!Number.isSafeInteger(result.count)||result.count!<0)throw new Error(table==="favorites"?"Favorite quota unavailable":"History quota unavailable");
+ if(result.count!>=limit)throw new Error(table==="favorites"?`Free accounts can save up to ${limit} favorites`:`Free accounts can keep up to ${limit} calculations`);
+}
+
 export async function updatePreferences(formData: FormData) {
   const { supabase, user } = await requireUser();
   const countryValue=String(formData.get("country")??"");
@@ -34,7 +49,8 @@ export async function updatePreferences(formData: FormData) {
 
 export async function saveFavorite(calculatorSlug: string) {
   const { supabase, user } = await requireUser();
-  const {data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();const limit=getPlanEntitlements(profile?.plan).favoritesLimit;if(limit!==null){const {count}=await supabase.from("favorites").select("id",{count:"exact",head:true}).eq("user_id",user.id);if((count??0)>=limit)throw new Error(`Free accounts can save up to ${limit} favorites`);}
+  const entitlements=await readAccountEntitlements(supabase,user.id);
+  await enforceSaveQuota(supabase,user.id,"favorites",entitlements.favoritesLimit);
   const { error } = await supabase.from("favorites").upsert({ user_id: user.id, calculator_slug: calculatorSlug });
   if (error) throw new Error("Could not save favorite");
   revalidatePath("/account");
@@ -56,14 +72,8 @@ export async function saveCalculationHistory(entry: {
   // Copy before the first await so caller mutation cannot change the persisted revision.
   const snapshot=validateHistoricalCalculationSnapshot(entry);
   const { supabase, user } = await requireUser();
-  const profile=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();
-  if(profile.error)throw new Error("Account plan unavailable");
-  const limit=getPlanEntitlements(profile.data?.plan).historyLimit;
-  if(limit!==null){
-    const result=await supabase.from("calculation_history").select("id",{count:"exact",head:true}).eq("user_id",user.id);
-    if(result.error||!Number.isSafeInteger(result.count)||result.count!<0)throw new Error("History quota unavailable");
-    if(result.count!>=limit)throw new Error(`Free accounts can keep up to ${limit} calculations`);
-  }
+  const entitlements=await readAccountEntitlements(supabase,user.id);
+  await enforceSaveQuota(supabase,user.id,"calculation_history",entitlements.historyLimit);
   const { error } = await supabase.from("calculation_history").insert({
     user_id: user.id,
     calculator_slug: snapshot.calculatorSlug,
@@ -74,14 +84,13 @@ export async function saveCalculationHistory(entry: {
   if (error) throw new Error("Could not save calculation history");
 }
 
-export async function createCalculationProject(formData:FormData){const{supabase,user}=await requireUser();const{data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();if(!getPlanEntitlements(profile?.plan).projects)throw new Error("Projects require Pro or Business");const name=String(formData.get("name")??"").trim().slice(0,120);const description=String(formData.get("description")??"").trim().slice(0,1000);if(!name)throw new Error("Project name is required");const{error}=await supabase.from("calculation_projects").insert({user_id:user.id,name,description:description||null});if(error)throw new Error("Could not create project");revalidatePath("/account");}
+export async function createCalculationProject(formData:FormData){const{supabase,user}=await requireUser();const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.projects)throw new Error("Projects require Pro or Business");const name=String(formData.get("name")??"").trim().slice(0,120);const description=String(formData.get("description")??"").trim().slice(0,1000);if(!name)throw new Error("Project name is required");const{error}=await supabase.from("calculation_projects").insert({user_id:user.id,name,description:description||null});if(error)throw new Error("Could not create project");revalidatePath("/account");}
 export async function deleteCalculationProject(formData:FormData){const{supabase,user}=await requireUser();const id=String(formData.get("projectId")??"");if(!id)throw new Error("Project id is required");const{error}=await supabase.from("calculation_projects").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete project");revalidatePath("/account");}
 
 export async function saveProjectScenario(formData:FormData){
  const{supabase,user}=await requireUser();
- const profile=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();
- if(profile.error)throw new Error("Account plan unavailable");
- if(!getPlanEntitlements(profile.data?.plan).scenarios)throw new Error("Saved scenarios require Pro or Business");
+ const entitlements=await readAccountEntitlements(supabase,user.id);
+ if(!entitlements.scenarios)throw new Error("Saved scenarios require Pro or Business");
  const projectId=String(formData.get("projectId")??"");
  const historyId=String(formData.get("historyId")??"");
  const name=String(formData.get("name")??"").trim().slice(0,120);
@@ -101,5 +110,5 @@ export async function saveProjectScenario(formData:FormData){
  if(error)throw new Error("Could not save scenario");
  revalidatePath("/account");
 }
-export async function updateProjectScenarioName(formData:FormData){const{supabase,user}=await requireUser();const id=String(formData.get("scenarioId")??"");const name=String(formData.get("name")??"").trim().slice(0,120);if(!id||!name)throw new Error("Scenario and name are required");const{data:profile}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();if(!getPlanEntitlements(profile?.plan).scenarios)throw new Error("Saved scenarios require Pro or Business");const{error}=await supabase.from("saved_scenarios").update({name,updated_at:new Date().toISOString()}).eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not rename scenario");revalidatePath("/account");}
+export async function updateProjectScenarioName(formData:FormData){const{supabase,user}=await requireUser();const id=String(formData.get("scenarioId")??"");const name=String(formData.get("name")??"").trim().slice(0,120);if(!id||!name)throw new Error("Scenario and name are required");const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.scenarios)throw new Error("Saved scenarios require Pro or Business");const{error}=await supabase.from("saved_scenarios").update({name,updated_at:new Date().toISOString()}).eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not rename scenario");revalidatePath("/account");}
 export async function deleteProjectScenario(formData:FormData){const{supabase,user}=await requireUser();const id=String(formData.get("scenarioId")??"");if(!id)throw new Error("Scenario id is required");const{error}=await supabase.from("saved_scenarios").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete scenario");revalidatePath("/account");}

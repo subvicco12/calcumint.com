@@ -136,3 +136,33 @@ All1,636 existing decision requests remain UNKNOWN; no new authentic authority a
 Next safe engineering batch: investigate only newly reproduced saved-history/scenario consumer faults or actual accessible navigation problems. Add historical version decoders only from authoritative contracts, never by applying today's engine to old snapshots. Review pinned cumulative source stack, then independent account/search deltas and integrated checks; resolve protected decisions through existing controls before separately authorized release actions.
 
 Original Codex O ZIP unchanged:232,035 bytes, SHA-256 `eb91318776461ab0c8be27f5b75d21f0290c45b1c24ef2e49fdc66cbfaa08950`. No production queries/writes, merges, deployments, publication, certification, fabricated approval, RLS/security/CI weakening, package installation or redundant manual workflows occurred. Actual final CI durations belong in the report; billed Codex cost telemetry is unavailable.
+
+## Saved-scenario action compatibility follow-up
+
+Verified main and all thirteen source PR heads #1397–#1409 once: all unchanged, OPEN/DRAFT, latest CI rollups SUCCESS. Main remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. Latest source heads are #1408 `8fe0091036dbba45f7e3b8b2b778c98506e812bc` and #1409 `ae40adc7c82915cbed0c60b7f784c0f7fa13a379`. This isolated branch starts at #1408 and retains #1409 via unchanged cherry-pick `878372c`; source branches remain intact. Integration is local only, with no main merge. Relevant scenario PR ownership is the inherited #1407/#1406/#1390–1392 work; no separate newer scenario-action owner was found.
+
+### Reproduced failures and engineering correction
+
+Three remaining actions—project creation, scenario rename and favorite save—ignored failed plan reads and could use stale paid data returned alongside an error. Favorite save also treated unavailable/invalid quota counts as spare capacity. Seven new regression cases failed before changes;27 others passed. These are action boundaries distinct from #1407 history/copy validation and #1408 read-only account rendering.
+
+Shared internal guards now read account entitlements fail closed and validate finite, nonnegative safe-integer saved-item counts. The same guards cover favorite save, history save, project creation, scenario copy and scenario rename. Existing history/copy validation remains in place, including detached snapshots before async work. Missing successful profile rows retain the existing Free fallback; read failures never become plan decisions. Paid unlimited limits remain unchanged, and DB atomic quota/RLS controls remain authoritative.
+
+Scenario rename continues to update only name/timestamp, filtered by authenticated owner and scenario ID; no recorded inputs, outputs, identities or technical versions change. Existing deletion/cleanup access after a downgrade is preserved without adding paid gates. Legacy Slope v1 rise/run output remains immutable and never re-evaluates through current coordinates; no historical decoder, golden vector or formula change was made.
+
+### Validation and provenance
+
+-12new regressions: stale paid profile/error rejection and recovery for3actions; null/negative/fractional/nonfinite favorite quotas; quota error recovery; existing Free/Pro/Business limits; owner-scoped metadata-only rename and downgrade cleanup.
+-177 focused tests across16files passed: server action persistence, account section recovery, detached snapshots, scenarios/exports/re-evaluation, auth identity, Slope legacy/version/HOLD, governed discovery integration, certification and rule packs.
+-Typecheck passed; full lint passed with0errors/28inherited warnings.
+-Single `NODE_USE_ENV_PROXY=1 npm run build` passed; generated Next configuration restored. Mandatory `npm ci`, CI, publication/certification and security workflows are unchanged.
+-Final PR head and automatic exact-head check links/status are in the draft PR description. No manual CI dispatch or repeated full suite is required locally.
+
+All test DB calls use synthetic mocks. No production DB query/write, merge, deployment, certification, publication or approval change occurred. The original reviewer ZIP remains232,035bytes with SHA-256 `eb91318776461ab0c8be27f5b75d21f0290c45b1c24ef2e49fdc66cbfaa08950`.
+
+### Unchanged blockers and next actions
+
+All836waiver authorities,210source reviews,540mapping decisions,12protected HOLD dispositions and38specialist reviews remain UNKNOWN. No authentic new authority artifact was supplied, so no approval count advanced. The12HOLD requests refer to rows already within540mappings. Mortgage financial-rule and BMI clinical/population/classification decisions remain specialist-blocked. Historical209 DB-published observations are not fresh deployment evidence; observation time remains UNKNOWN. Named authority assignees remain UNKNOWN.
+
+Owners/admins authorized at decision time must authenticate waiver records; authorized source reviewers must bind source applicability per identity/version; the catalog owner and applicable specialists must resolve held mappings and immutable scopes. Qualified financial/clinical reviewers retain Mortgage/BMI decisions. Engineering checks do not replace any of those authorities.
+
+Review the inherited cumulative stack, then this action-boundary delta and its exact-head checks. Next engineering batches should address only reproduced persisted-scenario consumer failures or authoritative historical-contract gaps. Do not add generic version migrations, new derived financial/medical rules, approval-shaped evidence or tests duplicating existing vectors. No further demonstrated history-schema defect was found in this bounded pass. **RELEASE HOLD remains.**

@@ -4,9 +4,9 @@ vi.mock('next/cache',()=>({revalidatePath:vi.fn()}));
 vi.mock('next/navigation',()=>({redirect:(url:string)=>{throw new Error(`redirect ${url}`);}}));
 vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:'owner-a'}},error:state.authError?{}:null})},from:(table:string)=>{
  let countOnly=false;
- const query={select:(_columns:string,options?:{head?:boolean})=>{countOnly=Boolean(options?.head);return query;},eq:(field:string,value:string)=>{state.filters.push(`${table}:${field}:${value}`);return query;},maybeSingle:async()=>table==='profiles'?{data:{plan:state.plan},error:state.profileError?{}:null}:table==='calculation_projects'?{data:{id:'project-a'},error:state.projectError?{}:null}:{data:state.history,error:state.historyError?{}:null},then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({count:countOnly?state.count:null,error:state.countError?{}:null}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};}};return query;
+ const query={select:(_columns:string,options?:{head?:boolean})=>{countOnly=Boolean(options?.head);return query;},eq:(field:string,value:string)=>{state.filters.push(`${table}:${field}:${value}`);return query;},maybeSingle:async()=>table==='profiles'?{data:{plan:state.plan},error:state.profileError?{}:null}:table==='calculation_projects'?{data:{id:'project-a'},error:state.projectError?{}:null}:{data:state.history,error:state.historyError?{}:null},then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({count:countOnly?state.count:null,error:state.countError?{}:null}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},upsert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},update:(value:Record<string,unknown>)=>{state.writes.push({table,value});return query;},delete:()=>{state.writes.push({table,value:{}});return query;}};return query;
 }})}));
-import {saveCalculationHistory,saveProjectScenario} from './actions';
+import {saveCalculationHistory,saveProjectScenario,saveFavorite,createCalculationProject,updateProjectScenarioName,deleteProjectScenario} from './actions';
 const legacy=()=>({calculator_slug:'slope-calculator',calculator_version:1,input_data:{rise:6,run:3},output_data:{result:1.999}});
 const form=()=>{const f=new FormData();f.set('projectId','project-a');f.set('historyId','history-a');f.set('name','Legacy snapshot');return f;};
 beforeEach(()=>{Object.assign(state,{plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0,history:legacy(),writes:[],filters:[]});});
@@ -54,4 +54,40 @@ it('rejects invalid direct history payloads without database writes',async()=>{
  await expect(saveCalculationHistory(entry)).rejects.toThrow();
  }
  expect(state.writes).toHaveLength(0);
+});
+
+const scenarioForm=()=>{const f=form();f.set('scenarioId','scenario-a');return f;};
+const recoveryActions=[
+ {name:'project creation',run:()=>createCalculationProject(form())},
+ {name:'scenario rename',run:()=>updateProjectScenarioName(scenarioForm())},
+ {name:'favorite save',run:()=>saveFavorite('slope-calculator')},
+];
+it.each(recoveryActions)('rejects failed plan reads despite stale paid data, then recovers: $name',async action=>{
+ state.profileError=true;await expect(action.run()).rejects.toThrow(/unavailable/);expect(state.writes).toHaveLength(0);
+ state.profileError=false;await action.run();expect(state.writes).toHaveLength(1);
+});
+it.each([null,-1,1.5,Infinity])('rejects unavailable or corrupt favorite quota %s',async count=>{
+ state.plan='free';state.count=count;await expect(saveFavorite('slope-calculator')).rejects.toThrow();expect(state.writes).toHaveLength(0);
+});
+it('does not turn a favorite quota transport error into spare capacity and recovers',async()=>{
+ state.plan='free';state.countError=true;await expect(saveFavorite('slope-calculator')).rejects.toThrow();expect(state.writes).toHaveLength(0);
+ state.countError=false;await saveFavorite('slope-calculator');expect(state.writes).toHaveLength(1);
+});
+it('retains the existing Free favorite limit and does not impose it on paid plans',async()=>{
+ state.plan='free';state.count=9;await saveFavorite('slope-calculator');state.count=10;
+ await expect(saveFavorite('slope-calculator')).rejects.toThrow(/10 favorites/);
+ for(const plan of ['pro','business']){state.plan=plan;state.count=null;await saveFavorite('slope-calculator');}
+ expect(state.writes).toHaveLength(3);
+});
+it.each(['free','pro','business'])('preserves scenario snapshot fields and owner scope on metadata operations: %s',async plan=>{
+ state.plan=plan;const before=JSON.stringify(state.history);
+ if(plan==='free')await expect(updateProjectScenarioName(scenarioForm())).rejects.toThrow(/Pro or Business/);
+ else {
+  await updateProjectScenarioName(scenarioForm());
+  expect(Object.keys(state.writes[0].value).sort()).toEqual(['name','updated_at']);
+  expect(state.filters).toContain('saved_scenarios:user_id:owner-a');expect(state.filters).toContain('saved_scenarios:id:scenario-a');
+ }
+ // Existing cleanup access remains available after a downgrade; never add a paid deletion gate.
+ await deleteProjectScenario(scenarioForm());
+ expect(state.filters).toContain('saved_scenarios:user_id:owner-a');expect(JSON.stringify(state.history)).toBe(before);
 });
