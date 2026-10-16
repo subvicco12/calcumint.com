@@ -104,3 +104,31 @@ it.each(['pro','business'])('retains unlimited %s saves without adding a quota a
  expect(state.writes[0].value.output_data).toEqual(props.output);
  fireEvent.click(screen.getByRole('button',{name:'☆ Favorite'}));await waitFor(()=>expect(state.writes).toHaveLength(2));
 });
+
+it.each(['pro','business'].flatMap(plan=>['JSON','CSV'].flatMap(format=>['url','click'].map(stage=>({plan,format,stage})))))('recovers $plan $format download failure at $stage without invalidating the snapshot',async({plan,format,stage})=>{
+ state.plan=plan;
+ const create=vi.fn((blob:NodeBlob):string=>{void blob;if(stage==='url'&&create.mock.calls.length===1)throw new Error('synthetic URL failure');return 'blob:synthetic';});
+ const revoke=vi.fn();vi.stubGlobal('URL',{createObjectURL:create,revokeObjectURL:revoke});vi.stubGlobal('Blob',NodeBlob);
+ const click=vi.spyOn(HTMLAnchorElement.prototype,'click');
+ if(stage==='click')click.mockImplementationOnce(()=>{throw new Error('synthetic browser rejection');});
+ click.mockImplementation(()=>{});
+ render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ fireEvent.click(screen.getByRole('button',{name:`Export ${format}`}));
+ expect(await screen.findByRole('alert')).toHaveProperty('textContent','Could not download calculation. Try again.');
+ expect(revoke).toHaveBeenCalledTimes(stage==='click'?1:0);
+ fireEvent.click(screen.getByRole('button',{name:`Export ${format}`}));expect(screen.queryByRole('alert')).toBeNull();
+ expect(revoke).toHaveBeenCalledTimes(stage==='click'?2:1);expect(state.writes).toHaveLength(0);
+ const blob=create.mock.calls[1][0] as NodeBlob;
+ const content=await blob.text();if(format==='JSON')expect(JSON.parse(content).output).toEqual(props.output);else expect(content).toContain('0.001');
+});
+
+it.each(['pro','business'])('retains captured scenario exports and releases failed download URLs on %s',async plan=>{
+ state.plan=plan;let latest:NodeBlob|undefined;const revoke=vi.fn();
+ vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(blob:NodeBlob)=>{latest=blob;return 'blob:scenario';},revokeObjectURL:revoke});
+ vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementationOnce(()=>{throw new Error('synthetic blocked download');}).mockImplementation(()=>{});
+ render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));
+ await screen.findByRole('alert');expect(revoke).toHaveBeenCalledTimes(1);expect(screen.getByRole('button',{name:'Replace baseline A'})).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));expect(revoke).toHaveBeenCalledTimes(2);
+ expect(JSON.parse(await latest!.text()).scenarios[0].output).toEqual(props.output);expect(state.writes).toHaveLength(0);
+});

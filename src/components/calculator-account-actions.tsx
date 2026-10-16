@@ -33,11 +33,14 @@ async function readCurrentSaveCount(client:AccountBrowserClient,table:"favorites
 function downloadFile(filename: string, content: string, mime: string) {
   const blob = new Blob([content], { type: mime });
   const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  anchor.click();
-  URL.revokeObjectURL(url);
+  try {
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = filename;
+    anchor.click();
+  } finally {
+    URL.revokeObjectURL(url);
+  }
 }
 
 
@@ -147,15 +150,21 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   function exportJson() {
     if (!snapshot || !entitlements.exports) return;
-    downloadFile(`${calculatorSlug}.json`, serializeCalculationJson(snapshot), "application/json");
+    try {
+      downloadFile(`${calculatorSlug}.json`, serializeCalculationJson(snapshot), "application/json");
+      report("");
+    } catch {
+      report("Could not download calculation. Try again.",true);
+    }
   }
 
   function exportCsv() {
     if (!snapshot || !entitlements.exports) return;
     try {
       downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(snapshot.input, snapshot.output), "text/csv;charset=utf-8");
+      report("");
     } catch {
-      report("Could not export calculation: result data is invalid.",true);
+      report("Could not download calculation. Try again.",true);
     }
   }
 
