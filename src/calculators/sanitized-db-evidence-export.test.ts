@@ -1,0 +1,74 @@
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { expect, it } from "vitest";
+import { z } from "zod";
+import { exportMasterPublicationAuditCsv, type buildMasterPublicationAudit } from "./master-publication-audit";
+import { listCalculatorImplementationInventory } from "./implementation-inventory";
+import { reconcileSanitizedDbEvidence, sanitizedDbEvidenceSchema } from "./sanitized-db-evidence";
+
+const directory = "data/catalog/independent-db-evidence-2026-10-15";
+it("reuses the prior 540-row audit without granting approvals or canonical mappings", () => {
+  const base = JSON.parse(readFileSync("data/catalog/audit-2026-10-15/master-publication-audit.json", "utf8")) as ReturnType<typeof buildMasterPublicationAudit>;
+  const inputPath = process.env.CALCUMINT_SANITIZED_DB_EXPORT ?? `${directory}/sanitized-row-export.json`;
+  const raw: unknown = JSON.parse(readFileSync(inputPath, "utf8"));
+  const report = reconcileSanitizedDbEvidence(base, listCalculatorImplementationInventory(), raw);
+  expect(report.rows).toHaveLength(540);
+  expect(report.rows.map(entry => entry.masterId)).toEqual(base.rows.map(entry => entry.masterId));
+  expect(report.rows.every(entry => !entry.publicationAuthorized && !entry.certificationAuthorized)).toBe(true);
+  expect(report.rows.filter(entry => entry.holdBasis === "explicit-master-review")).toHaveLength(6);
+  if (!process.env.CALCUMINT_SANITIZED_DB_EXPORT) {
+    expect(report.importSummary.scope).toBe("complete-published-population");
+    expect(report.importSummary.importedIdentities).toBe(209);
+    expect(report.importSummary.registryIdentityMatches).toBe(209);
+    expect(report.importSummary.masterRowsWithImportedIdentity).toBe(140);
+    expect(report.importSummary.rowLevelWaiversObserved).toBe(836);
+    expect(report.observations.every(entry => entry.masterMapping === "UNKNOWN" && entry.certificationDecision === "UNKNOWN" && entry.specialistDecision === "UNKNOWN" && entry.publicationDecision === "UNKNOWN")).toBe(true);
+    expect(report.observations.flatMap(entry => entry.qa.waiverFindings).every(entry => entry.finding === "WAIVER_AUTHORITY_UNKNOWN")).toBe(true);
+    expect(report.observations.reduce((sum, entry) => sum + (entry.sources.reviewEvidenceMissing ?? 0), 0)).toBe(210);
+    expect(report.importSummary.registryIdentityConflicts).toBe(0);
+    const provenance = JSON.parse(readFileSync(`${directory}/input-provenance.json`, "utf8"));
+    expect(report.independentEvidence.provenance.payloadSha256).toBe(provenance.payloadSha256);
+    expect(report.independentEvidence.provenance.observedAt).toBeNull();
+    const snapshot = JSON.parse(readFileSync("data/catalog/audit-2026-10-15/anonymous-publication-snapshot.json", "utf8")) as { manifest: { calculator_key: string; slug: string; version: number }[] };
+    expect(report.independentEvidence.rows.map(row => `${row.calculatorKey}|${row.slug}|${row.version}`).sort())
+      .toEqual(snapshot.manifest.map(row => `${row.calculator_key}|${row.slug}|${row.version}`).sort());
+    const waiverTypes: Record<string, number> = {};
+    for (const row of report.independentEvidence.rows) for (const qa of row.qa ?? []) {
+      if (qa.status === "waived") waiverTypes[qa.checkType] = (waiverTypes[qa.checkType] ?? 0) + 1;
+    }
+    expect(waiverTypes).toEqual(provenance.waiversByCheckType);
+    expect(report.importSummary.aggregateObservations).toEqual({ publishedIdentities: 209, riskClass: "standard", version: 1, qaIdentities: 209, qaChecks: 3135, qaPassed: 2299, qaWaived: 836, passedPerIdentity: 11, waivedPerIdentity: 4, sourceRecords: 210, sourceIdentities: 209 });
+  }
+  const facts = report.importSummary.aggregateObservations;
+  const decisionLedger = {
+    evidenceId: report.independentEvidence.provenance.evidenceId, grantsApprovals: false,
+    aggregateFacts: report.importSummary.aggregateObservations,
+    globalBlockers: [
+      { priority: "P0", code: "ROW_EXPORT_VALIDATED", identities: facts.publishedIdentities, state: report.importSummary.populationIdentityCoverage === "COMPLETE_DECLARED" ? "VERIFIED" : "BLOCKED", nextAction: "209 identity rows validated; export observation time was not supplied and remains UNKNOWN; digest establishes integrity, not approval" },
+      { priority: "P0", code: "WAIVER_DECISIONS_REQUIRED", checks: facts.qaWaived, state: report.importSummary.missingRowExport ? "UNKNOWN" : "REVIEW_REQUIRED", nextAction: "Review actual check types, owner/admin authority-at-decision and hashed decision/rationale references; do not assume which four checks were waived" },
+      { priority: "P0", code: "SOURCE_REVIEW_RECORDS_REQUIRED", records: facts.sourceRecords, identities: facts.sourceIdentities, state: report.importSummary.missingRowExport ? "UNKNOWN" : "REVIEW_REQUIRED", nextAction: "Review imported per-identity structured source references; missing source review evidence remains UNKNOWN" },
+      { priority: "P0", code: "CERTIFICATION_AND_SPECIALIST_EVIDENCE", state: "UNKNOWN", nextAction: "Separate published lifecycle, certification decisions, specialist scope, approved engine SHA/version and master mapping authority" },
+      { priority: "P0", code: "SLOPE_AND_SIX_HOLDS", state: "HOLD", nextAction: "Retain six explicit and six candidate-linked HOLD rows; preserve historical Slope v1 and draft coordinate v2; published v1 aggregate cannot certify v2" },
+    ],
+    remainingNonstandardGoldenGaps: 24, releaseState: "HOLD",
+    masterDecisions: report.rows.map(entry => ({ masterId: entry.masterId, classification: entry.classification, priority: entry.priority, hold: entry.hold, holdBasis: entry.holdBasis, nextAction: entry.nextAction, independentEvidence: entry.independentEvidence }))
+      .sort((a, b) => a.priority.localeCompare(b.priority) || a.masterId - b.masterId),
+  };
+  const payload = { ...report, evidenceIntegrationBaseline: "ea2e70c975fe861c399dde10f636c361362a10fc", sixHeldIdentities: report.rows.filter(entry => entry.holdBasis === "explicit-master-review"), decisionLedger };
+  const files = {
+    "reconciled-master.json": JSON.stringify(payload, null, 2) + "\n",
+    "reconciled-master.csv": exportMasterPublicationAuditCsv(report, {
+      independentEvidenceId: report.rows.map(() => report.independentEvidence.provenance.evidenceId),
+      independentRowEvidence: report.rows.map(entry => entry.independentEvidence),
+    }),
+    "summary.json": JSON.stringify({ baseline: report.summary, independent: report.importSummary }, null, 2) + "\n",
+    "decision-ledger.json": JSON.stringify(decisionLedger, null, 2) + "\n",
+    "sanitized-import.schema.json": JSON.stringify(z.toJSONSchema(sanitizedDbEvidenceSchema), null, 2) + "\n",
+  };
+  const destination = process.env.CALCUMINT_SANITIZED_EVIDENCE_OUT;
+  if (destination) {
+    mkdirSync(resolve(destination), { recursive: true });
+    for (const [file, content] of Object.entries(files)) writeFileSync(resolve(destination, file), content);
+  } else for (const [file, content] of Object.entries(files)) expect(readFileSync(`${directory}/${file}`, "utf8")).toBe(content);
+  console.info("INDEPENDENT_EVIDENCE_COUNTS", JSON.stringify(report.importSummary));
+});
