@@ -6,16 +6,30 @@ import {normalizePlan,type CalcuMintPlan} from "@/lib/entitlements";
 export function useCalculatorPlan():CalcuMintPlan{
   const [plan,setPlan]=useState<CalcuMintPlan>("free");
   useEffect(()=>{
-    let active=true;
+    let active=true,revision=0;
+    let identity:string|null|undefined;
     const supabase=createSupabaseBrowserClient();
     if(!supabase)return;
-    void (async()=>{
-      const {data:{user}}=await supabase.auth.getUser();
-      if(!active||!user){if(active)setPlan("free");return;}
-      const {data}=await supabase.from("profiles").select("plan").eq("id",user.id).maybeSingle();
-      if(active)setPlan(normalizePlan(data?.plan));
-    })();
-    return()=>{active=false};
+    async function loadPlan(id:string,request:number){
+      try{
+        const {data,error}=await supabase!.from("profiles").select("plan").eq("id",id).maybeSingle();
+        if(active&&request===revision)setPlan(error?"free":normalizePlan(data?.plan));
+      }catch{if(active&&request===revision)setPlan("free");}
+    }
+    function identify(id:string|null,revalidate=false){
+      if(!active||(identity===id&&!revalidate))return;
+      identity=id;const request=++revision;setPlan("free");
+      // Auth callbacks must finish synchronously before another SDK request starts.
+      if(id)queueMicrotask(()=>{if(active&&request===revision)void loadPlan(id,request);});
+    }
+    // Re-authentication/user updates invalidate profile-derived capabilities even for
+    // the same account. Routine token refresh preserves the existing no-reload contract.
+    const subscription=typeof supabase.auth.onAuthStateChange==="function"
+      ?supabase.auth.onAuthStateChange((event,session)=>identify(session?.user.id??null,event==="SIGNED_IN"||event==="USER_UPDATED")).data.subscription:null;
+    void supabase.auth.getUser().then(({data,error})=>{
+      if(active&&identity===undefined)identify(error?null:data.user?.id??null);
+    }).catch(()=>{if(active&&identity===undefined)identify(null);});
+    return()=>{active=false;subscription?.unsubscribe();};
   },[]);
   return plan;
 }
