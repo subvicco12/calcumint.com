@@ -45,6 +45,12 @@ export const unitConversionCalculator: CalculatorDefinition<Input, Output> = {
       note: "Authoritative reference for the International System of Units (SI)."
     }
   ],
+  goldenTests: [
+    { label: "Exact international mile: 1609.344/1000 = 1.609344 km (NIST)", input: { value: 1, fromUnit: "mi", toUnit: "km" }, expected: { result: 1.609344 } },
+    { label: "Signed linear conversion: -1 international mile = -1.609344 km", input: { value: -1, fromUnit: "mi", toUnit: "km" }, expected: { result: -1.609344 } },
+    { label: "Temperature reference: 0 Celsius = 32 Fahrenheit", input: { value: 0, fromUnit: "c", toUnit: "f" }, expected: { result: 32 } },
+    { label: "Identical unit: 1e308 metres = 1e308 metres", input: { value: 1e308, fromUnit: "m", toUnit: "m" }, expected: { result: 1e308 } }
+  ],
   examples: [
     {
       label: "1 mile to kilometres",
