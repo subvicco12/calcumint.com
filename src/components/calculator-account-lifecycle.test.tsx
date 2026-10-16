@@ -77,3 +77,30 @@ it.each(['pro','business'])('preserves exact captured exports through initial au
  expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();
  expect(state.writes).toHaveLength(0);
 });
+
+const actionCases=[{name:'history',button:'Save calculation',limit:20,table:'calculation_history'},{name:'favorite',button:'☆ Favorite',limit:10,table:'favorites'}];
+it.each(actionCases)('uses capacity freed in another tab before $name save',async item=>{
+ state.plan='free';state.count=item.limit;render(<CalculatorAccountActions {...props}/>);
+ const button=await screen.findByRole('button',{name:item.button});state.count=item.limit-1;fireEvent.click(button);
+ await waitFor(()=>expect(state.writes).toHaveLength(1));expect(state.writes[0].table).toBe(item.table);
+});
+it.each(actionCases)('rejects capacity consumed in another tab before $name save',async item=>{
+ state.plan='free';render(<CalculatorAccountActions {...props}/>);const button=await screen.findByRole('button',{name:item.button});
+ state.count=item.limit;fireEvent.click(button);await screen.findByRole('alert');expect(state.writes).toHaveLength(0);
+});
+it.each(actionCases.flatMap(item=>[null,-1,1.5,Infinity].map(count=>({...item,count}))))('fails closed on changed $name quota $count',async item=>{
+ state.plan='free';render(<CalculatorAccountActions {...props}/>);const button=await screen.findByRole('button',{name:item.button});
+ state.count=item.count;fireEvent.click(button);await screen.findByRole('alert');expect(state.writes).toHaveLength(0);
+});
+it.each(actionCases)('recovers a failed $name quota read without losing valid current output',async item=>{
+ state.plan='free';render(<CalculatorAccountActions {...props}/>);const button=await screen.findByRole('button',{name:item.button});
+ state.readError=true;fireEvent.click(button);await screen.findByRole('alert');expect(state.writes).toHaveLength(0);
+ state.readError=false;fireEvent.click(button);await waitFor(()=>expect(state.writes).toHaveLength(1));
+ if(item.name==='history')expect(state.writes[0].value.output_data).toEqual(props.output);
+});
+it.each(['pro','business'])('retains unlimited %s saves without adding a quota availability dependency',async plan=>{
+ state.plan=plan;render(<CalculatorAccountActions {...props}/>);const save=await screen.findByRole('button',{name:'Save calculation'});
+ state.readError=true;state.count=null;fireEvent.click(save);await waitFor(()=>expect(state.writes).toHaveLength(1));
+ expect(state.writes[0].value.output_data).toEqual(props.output);
+ fireEvent.click(screen.getByRole('button',{name:'☆ Favorite'}));await waitFor(()=>expect(state.writes).toHaveLength(2));
+});
