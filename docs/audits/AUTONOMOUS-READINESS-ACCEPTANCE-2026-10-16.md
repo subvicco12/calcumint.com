@@ -73,3 +73,33 @@ Review pinned inherited stack, then independent evidence identity/chronology and
 Next safe engineering batches: investigate actual source and persisted-history schema-drift/recovery defects with bounded repros; extend exact identity/version conflict tests only for newly demonstrated adapter/export defects. Reuse existing goldens and owner packets. Mortgage period implementation and BMI classification changes stay blocked. Avoid creating more approval-shaped artifacts or re-running catalog-wide audits in place of authority evidence.
 
 No production DB calls/writes, approvals, merges, deployments, publication promotions, certification, RLS/security/CI weakening or subscription mathematical changes occurred. Two automatic PR validations are expected (one per independent branch); no performance-only runs. Codex billed-token/cost telemetry unavailable; actual CI run durations belong in the final report, not estimates.
+
+## History compatibility follow-up — 16 October 2026
+
+Verified main and #1397–#1406 heads once: all ten drafts remain unchanged, OPEN/DRAFT, latest rollups SUCCESS. Main remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. Additional pinned heads: #1405 `14a8decabb6c1039184d7ffb5038862614ed60f3`; #1406 `e1c19ffc10b808a8099aa0fa879122a924be4de7`. This branch starts at #1405 and cherry-picks #1406 unchanged as `b0086cc` before the new history delta; original branches remain intact. The earlier acceptance sections above remain historical evidence, not an assertion that this follow-up is disjoint from the prior framework branch.
+
+### Reproduced defects and correction
+
+The server `saveProjectScenario` action copied raw persisted JSON and ignored project/history query errors, bypassing the isolated Slope historical reader. `saveCalculationHistory` copied mutable caller data after authentication and accepted malformed/nonfinite snapshots; Free quota errors or null counts fell through as zero. Authentication errors with a returned user were also ignored. The new action suite reproduced 17 failures / 5 passes before implementation; no production queries were executed.
+
+A shared read-only persisted snapshot boundary now validates required fields, immutable numeric version, finite detached JSON, and recognized Slope shapes. History saves capture before their first await. Scenario copies read only owner-filtered history/project rows, reject read errors, then copy validated immutable recorded input/output. No current engine is executed and stored records are never updated or repaired. Profile/quota read failures remain failures rather than defaults; successful later calls recover normally. RLS and the existing atomic DB quota controls remain unchanged.
+
+### Compatibility decisions (engineering, not identity approval)
+
+- Slope v1: keep `rise`/`run` and recorded `{result}` exactly, including finite outputs that differ from today's computation. No derived coordinates, version upgrade, ratio recalculation or alias promotion.
+- Slope v2: keep coordinate fields and full stored output under the existing strict versioned reader. Reject cross-version shapes and unknown Slope versions because no authoritative decoder exists. Invalid original records remain untouched; rejection only prevents another invalid save/copy.
+- Other calculators: preserve finite complete JSON at recorded positive safe-integer versions, even when the definition is retired or the current registry differs. Do not invent historical schemas or claim mathematical reconciliation merely from shape validation.
+- Source metadata and creation/id fields remain on their original DB rows; the snapshot contains only the established calculator identity and input/output contract. No schema migration or history rewrite.
+- Free retains history quota and no paid saved scenarios. Pro/Business retain scenario capability; identical recorded numeric values are preserved across all plans.
+- Existing Slope registry/HOLD, draft status, re-evaluation ineligibility, Mortgage/BMI and other protected decisions are unchanged.
+
+### Verified checks and remaining work
+
+- 159 focused tests across 16 files passed: new persisted reader/action suites, existing snapshot/persistence/scenario tests, Slope version/legacy/HOLD suites, account lifecycle/owner/snapshot suites, certification and rule packs. 29 new regressions; existing golden vectors unchanged.
+- Typecheck passed; full lint passed with 0 errors / 28 inherited warnings.
+- `NODE_USE_ENV_PROXY=1 npm run build` passed (single local build; generated Next configuration restored); production command remains `next build --webpack`.
+- Automatic exact-head CI and final SHA are recorded in the draft PR description without changing code to embed its own SHA.
+
+All DB interactions in action tests use synthetic in-memory mocks; no real DB calls or writes occurred. Existing code-certified, DB-published, specialist-approved and deployed states remain distinct. The prior 209 historical DB observations, 836 waiver authorities, 210 source reviews, 540 mapping decisions, 12 HOLD dispositions and 38 specialist requests are unchanged. All corresponding decision requests remain UNKNOWN; RELEASE HOLD remains. The Codex O ZIP remains unchanged, SHA-256 `eb91318776461ab0c8be27f5b75d21f0290c45b1c24ef2e49fdc66cbfaa08950`.
+
+Next actions: authenticated owner evidence for held identities and waiver/source decisions; qualified financial/clinical decisions for Mortgage/BMI; additional historical schemas only when authoritative version contracts are supplied. Engineering follow-up should target demonstrated consumers/read failures rather than guessing historical output semantics. Named authority assignees remain UNKNOWN. No merges, deployment, publication, certification, production writes or governance weakening occurred.
