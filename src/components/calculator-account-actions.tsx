@@ -145,14 +145,12 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   function retryAccountRead(){if(readRetryLock.current)return;readRetryLock.current=true;setReadFailure(false);setSignedIn(null);setReadAttempt(value=>value+1);}
 
-  if(readFailure)return <div className="account-actions"><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" onClick={retryAccountRead}>Retry account actions</button></div>;
-  if (signedIn === false) {
-    return <div className="account-actions"><Link className="text-link" href="/login">Sign in to save this calculation</Link><CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/></div>;
-  }
-  if (signedIn === null) return <p role="status" aria-busy="true">Loading account actions…</p>;
-
   return (
     <div className="account-actions">
+      {readFailure ? <div><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" onClick={retryAccountRead}>Retry account actions</button></div>
+        : signedIn === false ? <Link className="text-link" href="/login">Sign in to save this calculation</Link>
+        : signedIn === null ? <p role="status" aria-busy="true">Loading account actions…</p>
+        : <>
       <button className="button secondary" type="button" onClick={toggleFavorite} disabled={favoriting} aria-busy={favoriting}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
       <button className="button secondary" type="button" onClick={saveHistory} disabled={!snapshot||saving} aria-busy={saving}>Save calculation</button>
       {entitlements.exports ? (
@@ -162,8 +160,9 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
-      <CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/>
       {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
+      </>}
+      <CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/>
     </div>
   );
 }
