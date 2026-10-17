@@ -1,3 +1,4 @@
+import { investmentCashflowIndependentGoldens } from "./investment-cashflow-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -46,6 +47,7 @@ export const investmentMathCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: investmentCashflowIndependentGoldens.investmentMath,
   calculate: ({ presentValue, annualReturnPercent, years, inflationPercent }) => {
     const nominalFuture = futureValue(presentValue, annualReturnPercent, years);
     const realRate = realReturnPercent(annualReturnPercent, inflationPercent);
