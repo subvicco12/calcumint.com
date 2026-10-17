@@ -8,6 +8,10 @@ export function roundTo(value: number, digits = 2, mode: RoundingMode = "half-aw
     throw new RangeError("digits must be an integer between 0 and 12");
   }
 
+  // Non-negative decimal precision cannot change an already integral value.
+  // Avoid both scale overflow and a relative tie tolerance moving large integers.
+  if (Number.isInteger(value)) return value === 0 ? 0 : value;
+
   const factor = 10 ** digits;
   const scaled = value * factor;
   let rounded: number;
