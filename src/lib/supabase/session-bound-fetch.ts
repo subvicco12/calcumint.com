@@ -1,15 +1,15 @@
-import { isChunkLike, parseCookieHeader } from "@supabase/ssr";
+import { combineChunks, isChunkLike, parseCookieHeader, stringFromBase64URL } from "@supabase/ssr";
 
 // Only /user reads are bound: the SDK still owns mutations, refresh and errors.
 export function createSessionBoundFetch(supabaseUrl: string, fetcher: typeof fetch): typeof fetch {
   const base = supabaseUrl.trim().replace(/\/?$/, "/");
   const userUrl = new URL("auth/v1/user", base);
   const storageKey = `sb-${userUrl.hostname.split(".")[0]}-auth-token`;
-  function sessionState() {
+  function sessionCookies() {
     if (typeof document === "undefined") return null;
-    return JSON.stringify(parseCookieHeader(document.cookie)
+    return parseCookieHeader(document.cookie)
       .filter(({ name }) => isChunkLike(name, storageKey))
-      .sort((a, b) => a.name.localeCompare(b.name)));
+      .sort((a, b) => a.name.localeCompare(b.name));
   }
   return async (input, init) => {
     const url = new URL(typeof input === "string" ? input : "url" in input ? input.url : input.href);
@@ -17,10 +17,28 @@ export function createSessionBoundFetch(supabaseUrl: string, fetcher: typeof fet
     if (method.toUpperCase() !== "GET" || url.origin !== userUrl.origin || url.pathname !== userUrl.pathname) {
       return fetcher(input, init);
     }
-    const startedWith = sessionState();
+    const cookiesAtDispatch = sessionCookies();
+    const startedWith = JSON.stringify(cookiesAtDispatch);
     const assertCurrent = () => {
-      if (sessionState() !== startedWith) throw new DOMException("Authentication session changed. Retry.", "AbortError");
+      if (JSON.stringify(sessionCookies()) !== startedWith) throw new DOMException("Authentication session changed. Retry.", "AbortError");
     };
+    const headers = new Headers(init?.headers ?? (typeof input !== "string" && "headers" in input ? input.headers : undefined));
+    const bearer = headers.get("authorization")?.match(/^Bearer (.+)$/i)?.[1];
+    if (cookiesAtDispatch !== null && bearer !== undefined) {
+      let cookieToken: unknown = null;
+      try {
+        const encoded = await combineChunks(storageKey, (name) => cookiesAtDispatch.find((cookie) => cookie.name === name)?.value);
+        if (encoded) {
+          const stored = JSON.parse(encoded.startsWith("base64-") ? stringFromBase64URL(encoded.slice("base64-".length)) : encoded);
+          cookieToken = stored?.access_token;
+        }
+      } catch {
+        // Unreadable storage cannot establish token continuity.
+      }
+      // Token equality rejects stale reads; it never authenticates cookie data.
+      if (typeof cookieToken !== "string" || cookieToken !== bearer) throw new DOMException("Authentication session changed. Retry.", "AbortError");
+      assertCurrent();
+    }
     const response = await fetcher(input, init);
     try {
       assertCurrent();

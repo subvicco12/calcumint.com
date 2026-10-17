@@ -4,17 +4,19 @@ import type {SupabaseClient} from '@supabase/supabase-js';
 let client:SupabaseClient|null=null;
 let currentId='00000000-0000-4000-8000-000000000001';
 let large=false;
+let tokenRevision=0;
 let rejectRefresh=false;
 let interruptPassword=false;
 let requests:string[]=[];
 let deferUser=false;
 let pendingUser:null|((response:Response)=>void)=null;
+let missingUserId:string|null=null;
 const key='sb-synthetic-auth-token';
 function clearCookies(){for(const entry of document.cookie.split(';'))document.cookie=entry.split('=')[0].trim()+'=; Max-Age=0; Path=/';}
 async function browserClient(){const {createSupabaseBrowserClient}=await import('./browser');client=createSupabaseBrowserClient();return client!;}
 function claims(token:string){return JSON.parse(atob(token.split('.')[1].replaceAll('-','+').replaceAll('_','/')));}
 beforeEach(()=>{
- vi.resetModules();clearCookies();deferUser=false;pendingUser=null;currentId='00000000-0000-4000-8000-000000000001';large=false;rejectRefresh=false;interruptPassword=false;requests=[];
+ vi.resetModules();clearCookies();tokenRevision=0;missingUserId=null;deferUser=false;pendingUser=null;currentId='00000000-0000-4000-8000-000000000001';large=false;rejectRefresh=false;interruptPassword=false;requests=[];
  vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL','https://synthetic.invalid');vi.stubEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY','synthetic-anon');
  // Isolate tabs in jsdom; real cross-tab behavior is a separate browser check.
  vi.stubGlobal('BroadcastChannel',undefined);vi.spyOn(console,'error').mockImplementation(()=>{});vi.spyOn(console,'warn').mockImplementation(()=>{});
@@ -25,9 +27,10 @@ beforeEach(()=>{
   if(url.includes('/logout'))return new Response(null,{status:204});
   if(deferUser&&url.endsWith('/user'))return new Promise<Response>(resolve=>{pendingUser=resolve;});
   const auth=new Headers(init?.headers).get('authorization');const id=url.endsWith('/user')?claims(auth!.split(' ')[1]).sub:currentId;
+  if(url.endsWith('/user')&&id===missingUserId)return new Response(JSON.stringify({code:'session_not_found',message:'Synthetic stale session'}),{status:401,headers:{'Content-Type':'application/json','X-Supabase-Api-Version':'2024-01-01'}});
   const user={id,aud:'authenticated',email:'synthetic@example.invalid',app_metadata:{},user_metadata:{note:large?'x'.repeat(8000):'synthetic'},created_at:'2026-10-17T00:00:00Z'};
   const encoded=(value:unknown)=>btoa(JSON.stringify(value)).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');
-  return new Response(JSON.stringify(url.endsWith('/user')?user:{access_token:encoded({alg:'HS256',typ:'JWT'})+'.'+encoded({sub:id,exp:Math.floor(Date.now()/1000)+3600})+'.synthetic',refresh_token:'synthetic-refresh',expires_in:3600,token_type:'bearer',user}),{status:200,headers:{'Content-Type':'application/json'}});
+  return new Response(JSON.stringify(url.endsWith('/user')?user:{access_token:encoded({alg:'HS256',typ:'JWT'})+'.'+encoded({sub:id,exp:Math.floor(Date.now()/1000)+3600,fixture_revision:++tokenRevision})+'.synthetic',refresh_token:'synthetic-refresh',expires_in:3600,token_type:'bearer',user}),{status:200,headers:{'Content-Type':'application/json'}});
  }));
 });
 afterEach(async()=>{if(client)await client.auth.stopAutoRefresh();client=null;clearCookies();vi.restoreAllMocks();vi.unstubAllGlobals();vi.unstubAllEnvs();});
@@ -125,4 +128,33 @@ it('cannot return a delayed authenticated identity after logout without a replac
  deferUser=true;const request=sdk.auth.getUser();await vi.waitFor(()=>expect(pendingUser).not.toBeNull());await sdk.auth.signOut();deferUser=false;
  pendingUser!(new Response(JSON.stringify({id:currentId,aud:'authenticated'}),{status:200,headers:{'Content-Type':'application/json'}}));
  const stale=await request;expect(stale.data.user).toBeNull();expect(stale.error).toBeTruthy();expect((await sdk.auth.getUser()).data.user).toBeNull();
+});
+
+it.each(['success','session missing'])('blocks a pre-dispatch old-token %s after cookie replacement',async(outcome)=>{
+ const sdk=await browserClient();await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});
+ const oldId=currentId;const oldCookie=document.cookie;await sdk.auth.signOut();currentId='00000000-0000-4000-8000-000000000002';
+ await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});const newCookie=document.cookie;
+ clearCookies();document.cookie=oldCookie+'; Path=/';if(outcome==='session missing')missingUserId=oldId;
+ const descriptor=Object.getOwnPropertyDescriptor(Document.prototype,'cookie')!;let armed=true;
+ const getter=vi.spyOn(document,'cookie','get').mockImplementation(()=>{
+  const snapshot=descriptor.get!.call(document);if(armed){armed=false;queueMicrotask(()=>{clearCookies();document.cookie=newCookie+'; Path=/';});}return snapshot;
+ });
+ const before=requests.length;const stale=await sdk.auth.getUser();getter.mockRestore();
+ expect(stale.data.user).toBeNull();expect(stale.error).toBeTruthy();expect(requests).toHaveLength(before);
+ expect((await sdk.auth.getUser()).data.user?.id).toBe(currentId);
+});
+it('does not dispatch a selected token after another tab logs out and starts new PKCE setup',async()=>{
+ const sdk=await browserClient();await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});
+ const descriptor=Object.getOwnPropertyDescriptor(Document.prototype,'cookie')!;let armed=true;
+ const getter=vi.spyOn(document,'cookie','get').mockImplementation(()=>{const snapshot=descriptor.get!.call(document);if(armed){armed=false;queueMicrotask(()=>{clearCookies();document.cookie=key+'-code-verifier=fresh; Path=/';});}return snapshot;});
+ const before=requests.length;const stale=await sdk.auth.getUser();getter.mockRestore();expect(stale.data.user).toBeNull();expect(stale.error).toBeTruthy();expect(requests).toHaveLength(before);expect(document.cookie).toContain('code-verifier=fresh');
+ expect((await sdk.auth.getUser()).data.user).toBeNull();
+});
+it('discards a pre-dispatch token superseded by same-account refresh and permits a fresh retry',async()=>{
+ const sdk=await browserClient();await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});const oldCookie=document.cookie;
+ expect((await sdk.auth.refreshSession()).error).toBeNull();const newCookie=document.cookie;expect(newCookie).not.toBe(oldCookie);
+ clearCookies();document.cookie=oldCookie+'; Path=/';const descriptor=Object.getOwnPropertyDescriptor(Document.prototype,'cookie')!;let armed=true;
+ const getter=vi.spyOn(document,'cookie','get').mockImplementation(()=>{const snapshot=descriptor.get!.call(document);if(armed){armed=false;queueMicrotask(()=>{clearCookies();document.cookie=newCookie+'; Path=/';});}return snapshot;});
+ const before=requests.length;const stale=await sdk.auth.getUser();getter.mockRestore();expect(stale.data.user).toBeNull();expect(stale.error).toBeTruthy();expect(requests).toHaveLength(before);
+ expect((await sdk.auth.getUser()).data.user?.id).toBe(currentId);expect(document.cookie).toBe(newCookie);
 });

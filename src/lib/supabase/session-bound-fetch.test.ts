@@ -42,3 +42,45 @@ it('preserves interruption and caller cancellation rather than manufacturing an 
  const interrupted=new DOMException('Synthetic interruption','AbortError');const fetcher=vi.fn(async()=>{throw interrupted;});const bound=createSessionBoundFetch(origin,fetcher);
  const signal=new AbortController().signal;await expect(bound(endpoint,{signal})).rejects.toBe(interrupted);expect(fetcher).toHaveBeenCalledWith(endpoint,{signal});
 });
+
+async function storedSession(token:string,format:'raw'|'base64'|'chunked'='base64'){
+ const {createChunks,stringToBase64URL,serializeCookieHeader}=await import('@supabase/ssr');
+ const json=JSON.stringify({access_token:token,refresh_token:'synthetic',expires_at:9999999999,note:format==='chunked'?'x'.repeat(8000):''});
+ const value=format==='raw'?json:'base64-'+stringToBase64URL(json);
+ for(const chunk of createChunks(key,value))document.cookie=serializeCookieHeader(chunk.name,chunk.value,{path:'/'});
+}
+it.each(['raw','base64','chunked'] as const)('forwards matching opaque token in %s SDK session storage',async format=>{
+ await storedSession('current-token',format);const init={headers:{Authorization:'Bearer current-token'}};const fetcher=vi.fn(async()=>new Response('{"id":"synthetic"}'));
+ expect(await (await createSessionBoundFetch(origin,fetcher)(endpoint,init)).json()).toEqual({id:'synthetic'});expect(fetcher).toHaveBeenCalledWith(endpoint,init);
+});
+it('rejects an already-selected old token before network dispatch without clearing replacement cookies',async()=>{
+ await storedSession('new-token');const before=document.cookie;const fetcher=vi.fn(async()=>new Response('{}'));
+ await expect(createSessionBoundFetch(origin,fetcher)(endpoint,{headers:{authorization:'Bearer old-token'}})).rejects.toMatchObject({name:'AbortError'});
+ expect(fetcher).not.toHaveBeenCalled();expect(document.cookie).toBe(before);
+});
+it.each(['absent','malformed','incomplete'])('fails closed before dispatch with %s session storage',async mode=>{
+ if(mode==='malformed')cookie('base64-!!!!');if(mode==='incomplete')cookie(encodeURIComponent('{"user":{"id":"untrusted"}}'));
+ const fetcher=vi.fn(async()=>new Response('{}'));
+ await expect(createSessionBoundFetch(origin,fetcher)(endpoint,{headers:{authorization:'Bearer stale-token'}})).rejects.toMatchObject({name:'AbortError'});expect(fetcher).not.toHaveBeenCalled();
+});
+it('rechecks cookie state after asynchronous chunk decoding before dispatch',async()=>{
+ await storedSession('old-token','chunked');const fetcher=vi.fn(async()=>new Response('{}'));
+ const request=createSessionBoundFetch(origin,fetcher)(endpoint,{headers:{authorization:'Bearer old-token'}});cookie('replacement');
+ await expect(request).rejects.toMatchObject({name:'AbortError'});expect(fetcher).not.toHaveBeenCalled();
+});
+it('uses Request authorization and honors init header overrides',async()=>{
+ await storedSession('current-token');const request=new Request(endpoint,{headers:{authorization:'Bearer current-token'}});const fetcher=vi.fn(async()=>new Response('{}'));const bound=createSessionBoundFetch(origin,fetcher);
+ expect((await bound(request)).status).toBe(200);
+ await expect(bound(request,{headers:{authorization:'Bearer stale-token'}})).rejects.toMatchObject({name:'AbortError'});expect(fetcher).toHaveBeenCalledTimes(1);
+});
+it('preserves a current provider revocation response when bearer and storage agree',async()=>{
+ await storedSession('current-token');const provider=new Response('{"code":"session_not_found"}',{status:401,headers:{'X-Supabase-Api-Version':'2024-01-01'}});
+ const response=await createSessionBoundFetch(origin,vi.fn(async()=>provider))(endpoint,{headers:{authorization:'Bearer current-token'}});
+ expect(response.status).toBe(401);expect(await response.json()).toEqual({code:'session_not_found'});
+});
+it('ignores new PKCE and unrelated cookies during preflight validation',async()=>{
+ await storedSession('current-token');const fetcher=vi.fn(async()=>new Response('{}'));
+ const request=createSessionBoundFetch(origin,fetcher)(endpoint,{headers:{authorization:'Bearer current-token'}});
+ document.cookie=key+'-code-verifier=fresh; Path=/';document.cookie='preferences=fresh; Path=/';document.cookie='sb-other-auth-token=fresh; Path=/';
+ expect((await request).status).toBe(200);expect(fetcher).toHaveBeenCalledOnce();expect(document.cookie).toContain('code-verifier=fresh');
+});
