@@ -1,3 +1,4 @@
+import { investmentCashflowIndependentGoldens } from "./investment-cashflow-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -54,6 +55,7 @@ export const stepUpSipCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: investmentCashflowIndependentGoldens.stepUpSip,
   calculate: ({ initialMonthlyContribution, annualStepUpPercent, annualReturnPercent, termMonths, contributionTiming }) => {
     const result = stepUpSipFutureValue(initialMonthlyContribution, annualStepUpPercent, annualReturnPercent, termMonths, contributionTiming);
     const futureValue = roundTo(result.futureValue, 2);
