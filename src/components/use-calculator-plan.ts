@@ -1,4 +1,5 @@
 "use client";
+import {ACCOUNT_RECOVERY_EVENT} from '@/lib/account-recovery';
 import {useEffect,useState} from "react";
 import {createSupabaseBrowserClient} from "@/lib/supabase/browser";
 import {normalizePlan,type CalcuMintPlan} from "@/lib/entitlements";
@@ -25,11 +26,21 @@ export function useCalculatorPlan():CalcuMintPlan{
     // Re-authentication/user updates invalidate profile-derived capabilities even for
     // the same account. Routine token refresh preserves the existing no-reload contract.
     const subscription=typeof supabase.auth.onAuthStateChange==="function"
-      ?supabase.auth.onAuthStateChange((event,session)=>identify(session?.user.id??null,event==="SIGNED_IN"||event==="USER_UPDATED")).data.subscription:null;
+      ?supabase.auth.onAuthStateChange((event,session)=>identify(session?.user.id??null,event==="SIGNED_IN"||event==="USER_UPDATED"||event==="SIGNED_OUT")).data.subscription:null;
+    async function reloadIdentity(){
+      const request=++revision;setPlan("free");
+      try{
+        const {data,error}=await supabase!.auth.getUser();
+        if(active&&request===revision)identify(error?null:data.user?.id??null,true);
+      }catch{if(active&&request===revision)identify(null,true);}
+    }
+    const retry=()=>{void reloadIdentity();};
+    window.addEventListener(ACCOUNT_RECOVERY_EVENT,retry);
+    const initialRequest=revision;
     void supabase.auth.getUser().then(({data,error})=>{
-      if(active&&identity===undefined)identify(error?null:data.user?.id??null);
-    }).catch(()=>{if(active&&identity===undefined)identify(null);});
-    return()=>{active=false;subscription?.unsubscribe();};
+      if(active&&identity===undefined&&initialRequest===revision)identify(error?null:data.user?.id??null);
+    }).catch(()=>{if(active&&identity===undefined&&initialRequest===revision)identify(null);});
+    return()=>{active=false;window.removeEventListener(ACCOUNT_RECOVERY_EVENT,retry);subscription?.unsubscribe();};
   },[]);
   return plan;
 }

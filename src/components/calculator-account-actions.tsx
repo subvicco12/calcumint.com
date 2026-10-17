@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import {requestAccountRecovery} from '@/lib/account-recovery';
 import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
 import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
@@ -72,6 +73,15 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
   const report=(message:string,error=false)=>{if(mounted.current){setStatus(message);setStatusError(error);}};
   const accountOwner=useRef<string|null>(null);
+  const retryButton=useRef<HTMLButtonElement>(null),firstAction=useRef<HTMLButtonElement>(null),loginLink=useRef<HTMLAnchorElement>(null),restoreRetryFocus=useRef(false);
+  useEffect(()=>{
+    if(!restoreRetryFocus.current||(!readFailure&&signedIn===null))return;
+    restoreRetryFocus.current=false;
+    if(document.activeElement!==document.body)return;
+    if(readFailure)retryButton.current?.focus();
+    else if(signedIn)firstAction.current?.focus();
+    else loginLink.current?.focus();
+  },[readFailure,signedIn]);
 
   useEffect(() => {
     let active = true;
@@ -168,15 +178,15 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
     }
   }
 
-  function retryAccountRead(){if(readRetryLock.current)return;readRetryLock.current=true;setReadFailure(false);setSignedIn(null);setReadAttempt(value=>value+1);}
+  function retryAccountRead(){if(readRetryLock.current)return;readRetryLock.current=true;restoreRetryFocus.current=document.activeElement===retryButton.current;requestAccountRecovery();setReadFailure(false);setSignedIn(null);setReadAttempt(value=>value+1);}
 
   return (
     <div className="account-actions">
-      {readFailure ? <div><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" onClick={retryAccountRead}>Retry account actions</button></div>
-        : signedIn === false ? <Link className="text-link" href="/login">Sign in to save this calculation</Link>
+      {readFailure ? <div><p role="alert">Account actions are temporarily unavailable. Try again.</p><button type="button" className="button secondary" ref={retryButton} onClick={retryAccountRead}>Retry account actions</button></div>
+        : signedIn === false ? <Link ref={loginLink} className="text-link" href="/login">Sign in to save this calculation</Link>
         : signedIn === null ? <p role="status" aria-busy="true">Loading account actions…</p>
         : <>
-      <button className="button secondary" type="button" onClick={toggleFavorite} disabled={favoriting} aria-busy={favoriting}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
+      <button className="button secondary" type="button" ref={firstAction} onClick={toggleFavorite} disabled={favoriting} aria-busy={favoriting}>{favorite ? "★ Favorited" : "☆ Favorite"}</button>
       <button className="button secondary" type="button" onClick={saveHistory} disabled={!snapshot||saving} aria-busy={saving}>Save calculation</button>
       {entitlements.exports ? (
         <>
