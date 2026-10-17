@@ -11,7 +11,7 @@ it.each([' leading-and-trailing ','        '])('preserves the exact password byt
  expect(state.password).toHaveBeenCalledWith({email:'synthetic@example.invalid',password});
 });
 it('preserves password whitespace on signup without changing the eight-character minimum',async()=>{
- const password=' abcdef ';
+ const password=' abcdefgh ';
  await expect(signUp(form(password))).rejects.toThrow('REDIRECT:/login?message=');
  expect(state.signup).toHaveBeenCalledWith(expect.objectContaining({password,email:'synthetic@example.invalid',options:expect.objectContaining({data:{display_name:'Synthetic'}})}));
 });
@@ -40,4 +40,9 @@ it('offers recovery on a rejected sign-out transport request',async()=>{
 it('preserves successful logout and missing-configuration behavior',async()=>{
  state.signout.mockResolvedValue({error:null});await expect(signOut()).rejects.toThrow('REDIRECT:/');
  state.client.mockResolvedValue(null);await expect(signOut()).rejects.toThrow('REDIRECT:/');
+});
+
+it('retains the existing signup minimum after excluding surrounding whitespace',async()=>{
+ await expect(signUp(form(' abcdef '))).rejects.toThrow('REDIRECT:/login?error=Use%20a%20valid%20email%20and%20a%20password%20of%20at%20least%208%20characters.');
+ expect(state.signup).not.toHaveBeenCalled();
 });

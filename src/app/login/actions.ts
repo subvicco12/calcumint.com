@@ -47,7 +47,7 @@ export async function signUp(formData: FormData) {
   const email = formValue(formData, "email");
   const password = passwordValue(formData);
   const displayName = formValue(formData, "displayName");
-  if (!email || password.length < 8) loginError("Use a valid email and a password of at least 8 characters.");
+  if (!email || password.trim().length < 8) loginError("Use a valid email and a password of at least 8 characters.");
 
   const { error } = await authenticationRequest(() => supabase.auth.signUp({
     email,
