@@ -128,9 +128,11 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
       if(!user){report("Sign in to update your favorites.",true);return;}
-      if(!mounted.current)return;
+      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id){
+        if(mounted.current)retryAccountRead();
+        return;
+      }
       if(user.id!==accountOwner.current){retryAccountRead();return;}
-      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
       const nextFavorite=!favorite;
       if(nextFavorite&&entitlements.favoritesLimit!==null){
         const count=await readCurrentSaveCount(supabase,"favorites",user.id);
@@ -151,9 +153,11 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
       if(!user){report("Sign in to save this calculation.",true);return;}
-      if(!mounted.current)return;
+      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id){
+        if(mounted.current)retryAccountRead();
+        return;
+      }
       if(user.id!==accountOwner.current){retryAccountRead();return;}
-      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
       if(entitlements.historyLimit!==null){
         const count=await readCurrentSaveCount(supabase,"calculation_history",user.id);
         if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
