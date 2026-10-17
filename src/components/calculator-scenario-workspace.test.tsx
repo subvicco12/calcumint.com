@@ -157,3 +157,32 @@ it('never exposes sensitivity previews to Free or excluded mortgage engines',()=
  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
  expect(screen.queryByRole('button',{name:/Preview sensitivity/})).toBeNull();
 });
+
+for(const plan of ['pro','business'] as const){
+ it(`${plan} restores keyboard focus after clearing captures without changing the current calculation`,()=>{
+  render(<CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={vi.fn()}/>);
+  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+  const clear=screen.getByRole('button',{name:'Clear scenario set'});clear.focus();fireEvent.click(clear);
+  expect(document.activeElement).toBe(screen.getByRole('button',{name:'Capture baseline A'}));
+  expect(screen.queryByRole('table')).toBeNull();
+ });
+ it(`${plan} restores focus to the disclosure when the current calculation is invalid`,()=>{
+  const view=render(<CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={vi.fn()}/>);
+  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+  view.rerender(<CalculatorScenarioWorkspace plan={plan} snapshot={null} download={vi.fn()}/>);
+  const clear=screen.getByRole('button',{name:'Clear scenario set'});clear.focus();fireEvent.click(clear);
+  expect(document.activeElement?.textContent).toBe('Your A/B/C scenarios');
+ });
+ for(const format of ['JSON','CSV'])it(`${plan} offers an honest ${format} download retry with unchanged captures`,()=>{
+  const download=vi.fn().mockImplementationOnce(()=>{throw Error('Browser download blocked');});
+  render(<CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} download={download}/>);
+  fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+  const button=screen.getByRole('button',{name:`Export scenario set ${format}`});
+  fireEvent.click(button);
+  expect(screen.getByRole('alert').textContent).toBe('Could not download this scenario set. Try again. Your captures are unchanged.');
+  expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();
+  fireEvent.click(button);
+  expect(screen.queryByRole('alert')).toBeNull();
+  expect(download.mock.calls[1]).toEqual(download.mock.calls[0]);
+ });
+}

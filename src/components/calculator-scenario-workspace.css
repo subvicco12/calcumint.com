@@ -19,3 +19,7 @@
 .scenario-sensitivity{margin-top:1rem;min-width:0;max-width:100%}
 .scenario-sensitivity select{display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box;font:inherit;padding:.5rem}
 .scenario-sensitivity select:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+
+/* Keep disclosure and editable targets comfortable for touch without hiding native markers. */
+.calculator-scenarios summary{min-height:44px;box-sizing:border-box;padding:.5rem 0}
+.scenario-editor input,.scenario-sensitivity select{min-height:44px}

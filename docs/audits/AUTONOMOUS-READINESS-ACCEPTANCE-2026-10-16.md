@@ -192,3 +192,55 @@ Authorized owner/admin waiver records, identity-bound source applicability, cata
 Review the pinned source stack then this isolated hook delta. Exact final head and automatic CI links/outcomes are in the draft PR description; no manual CI dispatch is needed. Next bounded engineering work should investigate demonstrated event/consumer recovery faults, not invent historical contracts or automatic billing freshness policies. Add further event triggers only with a reproduced requirement; no new decoder is justified by this pass.
 
 Original Codex O ZIP preserved:232,035bytes, SHA-256 `eb91318776461ab0c8be27f5b75d21f0290c45b1c24ef2e49fdc66cbfaa08950`. No production writes, merges, deployments, approvals, certification or publication. **RELEASE HOLD remains.**
+
+## Account quota and download recovery — 17 October 2026 (Asia/Calcutta)
+
+Verified current main and all fifteen draft heads #1397–#1411 once: unchanged,OPEN/DRAFT,latest CI SUCCESS. Main remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. Latest cumulative base #1411 is `45964c2e253b1de3ed1aba03465fc964a92dd2f5`; this explicitly reuses its completed entitlement recovery rather than duplicating it. Relevant quota-title ownership search found no separate open quota PR. Source PRs remain unchanged.
+
+### Batch1 — fresh client save quotas
+
+CalculatorAccountActions enforced page-load counts indefinitely. With capacity freed in another tab, valid Free saves could remain blocked; newly consumed capacity and unreadable later counts were also ignored. Fourteen lifecycle and two owner-boundary tests failed before correction. A fresh, owner-filtered count now precedes Free history saves/favorite additions; invalid/unavailable counts fail closed. Account identity is checked again after the new asynchronous boundary so a prior-owner request cannot mutate after a switch. Removed unused cached counts; initial account-read validation, request exclusion, exact snapshot payloads, limits and paid unlimited behavior are preserved. Database atomic quota/RLS enforcement remains authoritative; the UI preflight is not race-proof authorization. Eighteen new regressions, including cross-tab capacity changes, corrupt counts, retry, unlimited plans and owner-switch during pending read.
+
+### Batch2 — recoverable file exports
+
+Calculation JSON download errors escaped the handler; CSV download errors incorrectly blamed valid result data. A failed anchor click also leaked its object URL. Eight format/plan/API failure tests and two scenario URL-cleanup tests failed before correction. Calculation JSON/CSV now report a recoverable download error, clear that error on a later successful request, and release created URLs in finally. Scenario exports share the cleanup helper and retain captured evidence for retry. Ten new regressions across Pro/Business verify URL creation/click failures, cleanup, unchanged exact output and scenario retention. These are synthetic browser-API failure tests in DOM; no real browser download/mobile-device certification or workspace artifact-transfer capability is claimed.
+
+### Integration and verification
+
+The independent branches start at #1411. They overlap CalculatorAccountActions and append tests to the same lifecycle suite. Implementation hunks apply cleanly; appended tests were explicitly consolidated rather than selecting one side. Temporary integration `176535e21827d6c770a83deea8d0657325b8a5b4` retains quota implementation `cc24aab290f8a54b67e5ba20c02deb4aee3cee9a` and export implementation `988c4aecfe9c064f5bee24ae556bd28bc820db89` plus both regression sets. Future authorized integration must preserve both append-only test contributions; source branches are not rewritten or merged here.
+
+211 tests passed across16focused files, including28new cases, hook/scenario/entitlement state, account snapshots and owner recovery, persisted history, Slope v1/v2/HOLD, certification and rule packs. Typecheck passed; full lint passed with0errors/28inherited warnings. Single integrated `NODE_USE_ENV_PROXY=1 npm run build` passed; generated Next configuration restored. `npm ci`, mandatory CI and production build command remain unchanged. Final source PR SHAs and automatic exact-head results are recorded in their descriptions without pushing the temporary integration candidate or dispatching redundant workflows. Codex billed usage is unavailable; observed Actions runtime is reported as runtime only.
+
+No formula, golden vector, calculator identity/version, historical decoder, stored snapshot or source/trust metadata change occurred. Client mutation and export tests use synthetic data/mocks; no production DB calls or writes. No public sharing, merge, deployment, certification or publication. Original reviewer ZIP unchanged:232,035bytes,SHA-256 `eb91318776461ab0c8be27f5b75d21f0290c45b1c24ef2e49fdc66cbfaa08950`.
+
+### Unchanged blockers and next actions
+
+All836waiver authorities,210source reviews,540mapping decisions,12HOLD dispositions and38specialist requests remain UNKNOWN; no authentic authority artifact was supplied. The12HOLD requests refer to rows already within540mappings. Qualified Mortgage financial/rounding and BMI clinical/population decisions remain blocked. Snapshot freshness and named reviewer assignments remain UNKNOWN. Existing209DB-published observations are historical, not fresh release/deployment authorization.
+
+Authorized owner/admin waiver records, identity/version-bound source applicability, catalog/HOLD decisions and applicable financial/health specialist evidence remain external release prerequisites. Passing UI/engineering checks do not satisfy them. Slope v1 recorded rise/run values remain immutable; scenario re-evaluation eligibility and publication gates remain unchanged.
+
+Next safe batch: bounded real-browser keyboard/mobile download and multi-tab recovery verification when available, acting only on reproduced platform failures. Retain atomic DB protections and authoritative historical decoders; do not add speculative versions or billing triggers. **RELEASE HOLD remains.**
+
+## Mobile scenario actions and accessible recovery — 17 October 2026
+
+Verified main `caffafe639350ca0c2c2cf33ae1f099294f5af54` and draft heads #1397–#1413 once; all remain draft with SUCCESS rollups. This candidate starts at temporary integration `176535e21827d6c770a83deea8d0657325b8a5b4`, preserving both #1412 quota and #1413 export implementation/test contributions. The #1412 consolidated evidence section is carried forward explicitly; source PRs are unchanged. Review prior stack first, the independent quota/export deltas next, then this scenario-only delta.
+
+### Reproduced defects and corrections
+
+Real Chromium keyboard activation of Clear scenario set left focus on body after its button was removed. Focus now returns to baseline capture, or the native workspace disclosure if current inputs are invalid. Eight new regressions failed before correction and pass afterward across Pro/Business, valid/invalid current calculation, and JSON/CSV browser failures. Browser failures previously blamed valid captures and requested recapture; payload validation still fails closed separately, while download failures now explicitly retain evidence and offer retry. The retried filename, content and MIME are identical. Free capture/export restrictions and all mathematical contracts are unchanged.
+
+Scenario disclosures measured 25.59375px high in the original real-browser harness. Scoped CSS now provides at least44px disclosure/editor/select heights, retaining native summary markers, focus styling, semantic controls and wrapping. This is touch usability engineering, not a claim of accessibility certification.
+
+### Verification and coverage limits
+
+29 scenario/Reference Six tests,99 account/history/scenario regressions and15 certification/rule-pack tests passed (143total). Typecheck and affected ESLint passed. One production `npm run build` (`next build --webpack`) passed; generated Next configuration changes were discarded. No dependency installation, workflow edits or repeat build. Eight new regressions are included in those totals, not additional to them.
+
+Local Chromium browser harness bundles actual shared components/CSS with a synthetic SDK and Link shim, blocks non-local requests, and checks Pixel7 emulation at320/393px plus desktop1280px: touch capture, keyboard disclosure activation and clear-focus recovery, native JSON/CSV downloads retaining0.001, browser-click failure/retry, accessibility-tree disclosure exposure, sign-out removal of scenario exports and no unhandled errors. Browser evidence is under `/workspace/review-artifacts/mobile-scenario-browser-2026-10-17/`; it contains no production evidence or credentials. Browser harness setup errors involving synthetic sign-out were corrected in the mock; no auth production code was changed.
+
+No physical Android/TalkBack, OS download-manager interruption, screen-reader announcement timing or complete deployed Next application validation was available. Blob downloads have no server transfer to interrupt; simulated browser API failures test recoverability, not completion of an OS-managed download. Those remain device/reviewer validation tasks. Existing account-boundary/recovery tests and passing source CI are reused.
+
+### Acceptance and next work
+
+836 waiver authorities,210 source applicability reviews,540 mapping decisions,12 HOLD dispositions and38 specialist reviews remain UNKNOWN. Mortgage period/rounding and BMI clinical decisions remain blocked. Historical209 DB observations are not fresh deployment or approval evidence. No identity, version, formula, stored history, trust metadata, RLS, security, certification or publication gate changed. The original reviewer ZIP was not regenerated or modified. Exact candidate head, automatic CI links and observed Actions durations are recorded in the draft PR; billed Codex usage is unavailable.
+
+Next: physical Android/TalkBack review of focus/announcements and downloads, plus bounded authenticated multi-tab recovery validation using authorized non-production test accounts. Act only on reproduced defects; no speculative legacy decoder or approval inference. **RELEASE HOLD remains.**
