@@ -91,3 +91,11 @@ it.each(['free','pro','business'])('preserves scenario snapshot fields and owner
  await deleteProjectScenario(scenarioForm());
  expect(state.filters).toContain('saved_scenarios:user_id:owner-a');expect(JSON.stringify(state.history)).toBe(before);
 });
+it.each(['free','pro','business'])('denies unauthenticated saved-scenario requests before any account reads on %s and recovers under existing plan rules',async plan=>{
+ state.plan=plan;state.authError=true;
+ await expect(saveProjectScenario(form())).rejects.toThrow('redirect /login');
+ expect(state.writes).toHaveLength(0);expect(state.filters).toHaveLength(0);
+ state.authError=false;
+ if(plan==='free'){await expect(saveProjectScenario(form())).rejects.toThrow(/Pro or Business/);expect(state.writes).toHaveLength(0);}
+ else{await saveProjectScenario(form());expect(state.writes).toHaveLength(1);expect(state.writes[0].value.user_id).toBe('owner-a');expect(state.writes[0].value.calculator_version).toBe(1);}
+});
