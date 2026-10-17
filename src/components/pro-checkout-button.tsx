@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { BillingInterval, PlanId } from "@/lib/billing/plans";
 import { publicEnv } from "@/lib/env";
@@ -67,7 +67,24 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState(false);
   const [preview, setPreview] = useState<ProrationPreview | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const confirmationRef = useRef<HTMLDivElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const descriptionId = useId();
   const planLabel = plan === "business" ? "Business" : "Pro";
+
+  useLayoutEffect(() => {
+    if (confirmation && (document.activeElement === document.body || document.activeElement === triggerRef.current)) {
+      cancelRef.current?.focus({ preventScroll: true });
+    }
+  }, [confirmation]);
+
+  function dismissConfirmation() {
+    if (busy) return;
+    const restore = confirmationRef.current?.contains(document.activeElement);
+    setConfirmation(false); setPreview(null);
+    if (restore) triggerRef.current?.focus({ preventScroll: true });
+  }
 
   async function requestBillingChange(confirmed = false) {
     setBusy(true); setError("");
@@ -101,23 +118,23 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
 
   return (
     <div className="checkout-action">
-      <button className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
+      <button ref={triggerRef} className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
         {busy ? "Checking price…" : `Choose ${planLabel} ${interval}`}
       </button>
       {confirmation && (
-        <div className="billing-change-confirmation" role="dialog" aria-label="Confirm plan change">
+        <div ref={confirmationRef} className="billing-change-confirmation" role="dialog" aria-label="Confirm plan change" aria-describedby={descriptionId} aria-busy={busy} onKeyDown={event => { if (event.key === "Escape" && !busy) { event.preventDefault(); event.stopPropagation(); dismissConfirmation(); } }}>
           <p><strong>Confirm change to {planLabel} {interval}</strong></p>
           {dueNow ? <p><strong>Due now: {dueNow}</strong></p> : <p className="muted-copy">Paddle reports no immediate payment total for this change.</p>}
           {credit && preview?.credit !== "0" ? <p className="muted-copy">Proration credit included: {credit}.</p> : null}
-          <p className="muted-copy">This amount is calculated by Paddle from your current subscription and the remaining billing period. Your saved Paddle payment method will be used. By confirming, you authorize this subscription update and any displayed immediate charge.</p>
+          <p id={descriptionId} className="muted-copy">This amount is calculated by Paddle from your current subscription and the remaining billing period. Your saved Paddle payment method will be used. By confirming, you authorize this subscription update and any displayed immediate charge.</p>
           <div className="checkout-action">
             <button className="button primary" type="button" disabled={busy} onClick={() => requestBillingChange(true)}>{busy ? "Updating…" : "Confirm and update plan"}</button>
-            <button className="button secondary" type="button" disabled={busy} onClick={() => { setConfirmation(false); setPreview(null); }}>Cancel</button>
+            <button ref={cancelRef} className="button secondary" type="button" disabled={busy} onClick={dismissConfirmation}>Cancel</button>
           </div>
         </div>
       )}
       {disabledReason && <small className="muted-copy">{disabledReason}</small>}
-      {error && <small className="error-text">{error}</small>}
+      {error && <small className="error-text" role="alert">{error}</small>}
     </div>
   );
 }
