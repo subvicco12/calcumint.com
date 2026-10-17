@@ -46,3 +46,33 @@ it('revalidates a remounted page under its new server-bound owner',async()=>{
  const view=render(<AccountSessionBoundary key="a" ownerId="owner-a">{content}</AccountSessionBoundary>);await screen.findByRole('textbox');state.owner='owner-b';view.rerender(<AccountSessionBoundary key="b" ownerId="owner-b"><p>Private account B</p></AccountSessionBoundary>);
  await waitFor(()=>expect(screen.getByText('Private account B').closest('noscript,[hidden]')).toBeNull());expect(screen.queryByText('Private account A')).toBeNull();
 });
+it('restores a focused draft after same-owner foreground verification',async()=>{
+ render(<AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary>);const input=await screen.findByRole('textbox');input.focus();fireEvent.change(input,{target:{value:'Focused draft'}});state.defer=true;
+ fireEvent(window,new Event('focus'));input.blur();await act(async()=>state.pending[0](user('owner-a')));
+ await waitFor(()=>expect(document.activeElement).toBe(input));expect(input).toHaveProperty('value','Focused draft');
+});
+it('returns an initial keyboard retry to the account heading after verified recovery',async()=>{
+ state.error=new Error('synthetic interruption');render(<AccountSessionBoundary ownerId="owner-a"><h1>Account overview</h1>{content}</AccountSessionBoundary>);
+ const retry=await screen.findByRole('button',{name:'Retry account verification'});retry.focus();state.error=null;fireEvent.click(retry);
+ const heading=await screen.findByRole('heading',{name:'Account overview'});await waitFor(()=>expect(document.activeElement).toBe(heading));
+});
+it('restores a draft selection without moving focus on the initial successful load',async()=>{
+ render(<AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary>);const input=await screen.findByRole('textbox') as HTMLInputElement;expect(document.activeElement).toBe(document.body);input.focus();input.setSelectionRange(1,5,'backward');state.defer=true;
+ fireEvent(window,new Event('focus'));input.blur();await act(async()=>state.pending[0](user('owner-a')));
+ expect(document.activeElement).toBe(input);expect([input.selectionStart,input.selectionEnd,input.selectionDirection]).toEqual([1,5,'backward']);
+});
+it.each(['outside focus','outside pointer'])('does not steal focus after %s during recovery',async movement=>{
+ render(<><button>Outside control</button><AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary></>);const input=await screen.findByRole('textbox');input.focus();state.defer=true;fireEvent(window,new Event('focus'));input.blur();
+ if(movement==='outside focus')screen.getByRole('button',{name:'Outside control'}).focus();else fireEvent.pointerDown(document.body);
+ await act(async()=>state.pending[0](user('owner-a')));expect(document.activeElement).not.toBe(input);
+});
+it.each(['disabled','removed'])('does not restore a %s draft target',async change=>{
+ const view=render(<AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary>);const input=await screen.findByRole('textbox');input.focus();state.defer=true;fireEvent(window,new Event('focus'));input.blur();
+ if(change==='disabled')input.setAttribute('disabled','');else view.rerender(<AccountSessionBoundary ownerId="owner-a"><p>Draft removed</p></AccountSessionBoundary>);
+ await act(async()=>state.pending[0](user('owner-a')));expect(document.activeElement).not.toBe(input);
+});
+it('does not restore private focus after a newer account replaces a pending check',async()=>{
+ render(<AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary>);const input=await screen.findByRole('textbox');input.focus();state.defer=true;fireEvent(window,new Event('focus'));input.blur();
+ act(()=>{for(const callback of state.callbacks)callback('SIGNED_IN',{user:{id:'owner-b'}});});await act(async()=>state.pending[0](user('owner-a')));
+ expect(input.isConnected).toBe(false);expect(document.activeElement).not.toBe(input);expect(screen.queryByText('Private account A')).toBeNull();
+});

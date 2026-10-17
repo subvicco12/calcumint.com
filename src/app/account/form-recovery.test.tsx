@@ -91,3 +91,13 @@ it('uses distinct form keys within the rendered account workspace',async()=>{
  const errors=vi.spyOn(console,'error').mockImplementation(()=>{});
  try{await renderAccount();expect(errors.mock.calls.map(args=>String(args[0])).filter(value=>value.includes('same key'))).toHaveLength(0);}finally{errors.mockRestore();}
 });
+it.each(['pro','business'])('preserves independent %s form drafts and focus through an uncertain request and account retry',async plan=>{
+ state.plan=plan;await renderAccount();const project=screen.getByRole('button',{name:'Create project'}).closest('form')!,scenario=screen.getByRole('button',{name:'Save scenario'}).closest('form')!;
+ const projectInput=project.querySelector<HTMLInputElement>('input[name="name"]')!,scenarioInput=scenario.querySelector<HTMLInputElement>('input[name="name"]')!;
+ fireEvent.change(projectInput,{target:{value:'Project draft'}});fireEvent.change(scenarioInput,{target:{value:'Scenario draft'}});fireEvent.submit(project);await waitFor(()=>expect(state.pending).toHaveLength(1));scenarioInput.focus();scenarioInput.setSelectionRange(2,6);
+ state.authFailure=new Error('synthetic interrupted verification');fireEvent(window,new Event('focus'));scenarioInput.blur();await screen.findByRole('button',{name:'Retry account verification'});
+ await act(async()=>state.pending[0].resolve());expect(screen.queryByText('Request completed.')).toBeNull();expect(state.calls).toHaveLength(1);
+ state.authFailure=null;const retry=screen.getByRole('button',{name:'Retry account verification'});retry.focus();fireEvent.click(retry);await waitFor(()=>expect(document.activeElement).toBe(scenarioInput));
+ expect(projectInput.value).toBe('Project draft');expect(scenarioInput.value).toBe('Scenario draft');expect([scenarioInput.selectionStart,scenarioInput.selectionEnd]).toEqual([2,6]);expect(state.calls).toHaveLength(1);expect(screen.getByText(/We could not confirm this request/)).toBeTruthy();
+ fireEvent.submit(scenario);fireEvent.submit(scenario);await waitFor(()=>expect(state.pending).toHaveLength(2));expect(state.calls[1].get('name')).toBe('Scenario draft');await act(async()=>state.pending[1].resolve());expect(projectInput.value).toBe('Project draft');expect(screen.getByText('Request completed.')).toBeTruthy();
+});
