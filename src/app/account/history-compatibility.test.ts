@@ -1,15 +1,15 @@
 import {beforeEach,expect,it,vi} from 'vitest';
-const state=vi.hoisted(()=>({plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0 as number|null,history:{} as Record<string,unknown>,writes:[] as {table:string;value:Record<string,unknown>}[],filters:[] as string[]}));
+const state=vi.hoisted(()=>({userId:'owner-a',plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0 as number|null,history:{} as Record<string,unknown>,writes:[] as {table:string;value:Record<string,unknown>}[],filters:[] as string[]}));
 vi.mock('next/cache',()=>({revalidatePath:vi.fn()}));
 vi.mock('next/navigation',()=>({redirect:(url:string)=>{throw new Error(`redirect ${url}`);}}));
-vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:'owner-a'}},error:state.authError?{}:null})},from:(table:string)=>{
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.userId}},error:state.authError?{}:null})},from:(table:string)=>{
  let countOnly=false;
  const query={select:(_columns:string,options?:{head?:boolean})=>{countOnly=Boolean(options?.head);return query;},eq:(field:string,value:string)=>{state.filters.push(`${table}:${field}:${value}`);return query;},maybeSingle:async()=>table==='profiles'?{data:{plan:state.plan},error:state.profileError?{}:null}:table==='calculation_projects'?{data:{id:'project-a'},error:state.projectError?{}:null}:{data:state.history,error:state.historyError?{}:null},then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({count:countOnly?state.count:null,error:state.countError?{}:null}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},upsert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},update:(value:Record<string,unknown>)=>{state.writes.push({table,value});return query;},delete:()=>{state.writes.push({table,value:{}});return query;}};return query;
 }})}));
-import {saveCalculationHistory,saveProjectScenario,saveFavorite,createCalculationProject,updateProjectScenarioName,deleteProjectScenario} from './actions';
+import {saveCalculationHistory,saveProjectScenario,saveFavorite,createCalculationProject,updateProjectScenarioName,deleteProjectScenario,deleteCalculationProject} from './actions';
 const legacy=()=>({calculator_slug:'slope-calculator',calculator_version:1,input_data:{rise:6,run:3},output_data:{result:1.999}});
 const form=()=>{const f=new FormData();f.set('projectId','project-a');f.set('historyId','history-a');f.set('name','Legacy snapshot');return f;};
-beforeEach(()=>{Object.assign(state,{plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0,history:legacy(),writes:[],filters:[]});});
+beforeEach(()=>{Object.assign(state,{userId:'owner-a',plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0,history:legacy(),writes:[],filters:[]});});
 it.each(['pro','business'])('copies recorded Slope v1 on %s without recomputation or version upgrade',async plan=>{
  state.plan=plan;const before=JSON.stringify(state.history);await saveProjectScenario(form());
  expect(state.writes).toEqual([{table:'saved_scenarios',value:{user_id:'owner-a',project_id:'project-a',name:'Legacy snapshot',...legacy()}}]);
@@ -98,4 +98,12 @@ it.each(['free','pro','business'])('denies unauthenticated saved-scenario reques
  state.authError=false;
  if(plan==='free'){await expect(saveProjectScenario(form())).rejects.toThrow(/Pro or Business/);expect(state.writes).toHaveLength(0);}
  else{await saveProjectScenario(form());expect(state.writes).toHaveLength(1);expect(state.writes[0].value.user_id).toBe('owner-a');expect(state.writes[0].value.calculator_version).toBe(1);}
+});
+
+it.each([
+ {name:'project creation',run:createCalculationProject}, {name:'project deletion',run:deleteCalculationProject},
+ {name:'scenario save',run:saveProjectScenario}, {name:'scenario rename',run:updateProjectScenarioName}, {name:'scenario deletion',run:deleteProjectScenario},
+])('rejects stale owner binding before $name queries/writes',async({run})=>{
+ const data=scenarioForm();data.set('name','Private account A draft');data.set('expectedOwnerId','owner-a');state.userId='owner-b';
+ await expect(run(data)).rejects.toThrow('Account context changed');expect(state.writes).toHaveLength(0);expect(state.filters).toHaveLength(0);
 });
