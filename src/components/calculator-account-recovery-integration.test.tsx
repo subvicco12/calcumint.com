@@ -37,7 +37,7 @@ it('retains Free restrictions and does not manufacture a paid plan when recovery
 it('restores keyboard focus to an available account action after retry',async()=>{
  state.profileError=false;render(<App/>);const retry=await screen.findByRole('button',{name:'Retry account actions'});retry.focus();state.accountError=false;
  fireEvent.click(retry);await screen.findByRole('button',{name:'Save calculation'});
- expect(document.activeElement).toBe(screen.getByRole('button',{name:'☆ Favorite'}));
+ await waitFor(()=>expect(document.activeElement).toBe(screen.getByRole('button',{name:'☆ Favorite'})));
 });
 it('restores keyboard focus to the retry button after another failed read',async()=>{
  render(<App/>);const retry=await screen.findByRole('button',{name:'Retry account actions'});retry.focus();fireEvent.click(retry);
