@@ -80,3 +80,73 @@ it('isolates current identity across separate cookie stores and interleaved acco
  const [a,b]=await Promise.all([clientA!.auth.getUser(),clientB!.auth.getUser()]);
  expect(a.data.user?.id).toBe('00000000-0000-4000-8000-000000000001');expect(b.data.user?.id).toBe(state.userId);
 });
+
+it.each([
+ ['invalid JSON','{'],
+ ['invalid base64','base64-!!!!'],
+ ['invalid UTF-8','base64-_w'],
+ ['missing session fields',JSON.stringify({user:{id:'untrusted'}})],
+ ['oversized invalid JSON','{'+ 'x'.repeat(50000)],
+])('recovers password sign-in from %s without trusting corrupted identity',async(_label,value)=>{
+ state.jar.set('sb-synthetic-auth-token',value);
+ await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ const recovered=await createSupabaseServerClient();const result=await recovered!.auth.getUser();
+ expect(result.error).toBeNull();expect(result.data.user?.id).toBe(state.userId);
+});
+it('recovers sign-in after a failed partial chunk write and removes abandoned chunks',async()=>{
+ state.large=true;state.failAt=2;await expect(signIn(form())).rejects.toThrow(failure);
+ state.failAt=0;state.large=false;await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ expect(Array.from(state.jar.keys())).toEqual(['sb-synthetic-auth-token']);
+ const recovered=await createSupabaseServerClient();expect((await recovered!.auth.getUser()).data.user?.id).toBe(state.userId);
+});
+it('round-trips a large multi-chunk session and clears every chunk on logout',async()=>{
+ state.large=true;await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ expect(state.jar.size).toBeGreaterThan(3);
+ const client=await createSupabaseServerClient();expect((await client!.auth.getUser()).data.user?.id).toBe(state.userId);
+ await expect(signOut()).rejects.toThrow('REDIRECT:/');expect(state.jar.size).toBe(0);
+});
+it.each(['missing first','missing middle','truncated last'])('fails closed on %s session chunk and permits fresh sign-in',async(mode)=>{
+ state.large=true;await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ const names=Array.from(state.jar.keys());
+ if(mode==='missing first')state.jar.delete(names[0]);
+ else if(mode==='missing middle')state.jar.delete(names[1]);
+ else state.jar.set(names.at(-1)!,state.jar.get(names.at(-1)!)!.slice(0,-20));
+ const broken=await createSupabaseServerClient();const result=await broken!.auth.getUser();expect(result.data.user).toBeNull();
+ state.large=false;await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ expect(Array.from(state.jar.keys())).toEqual(['sb-synthetic-auth-token']);
+});
+
+it.each(['base64-!!!!','base64-_w'])('fails closed on unreadable cookie bytes %s before explicit password recovery',async(value)=>{
+ state.jar.set('sb-synthetic-auth-token',value);
+ state.jar.set('sb-synthetic-auth-token-code-verifier','preserved-verifier');state.jar.set('preferences','preserved');
+ const client=await createSupabaseServerClient();const result=await client!.auth.getUser();
+ expect(result.data.user).toBeNull();expect(state.requests).toBe(0);
+ await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ expect(state.jar.get('preferences')).toBe('preserved');
+ expect(state.jar.get('sb-synthetic-auth-token-code-verifier')).toBe('preserved-verifier');
+ await expect(signOut()).rejects.toThrow('REDIRECT:/');
+ expect(state.jar.get('preferences')).toBe('preserved');
+});
+
+it('retries logout after only some session chunks were deleted',async()=>{
+ state.large=true;await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+ state.failAt=state.writeCalls+2;await expect(signOut()).rejects.toThrow(failure);expect(state.jar.size).toBeGreaterThan(0);
+ state.failAt=0;await expect(signOut()).rejects.toThrow('REDIRECT:/');expect(state.jar.size).toBe(0);
+ await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+});
+it('does not authenticate malformed JSON and can explicitly log out before retry',async()=>{
+ state.jar.set('sb-synthetic-auth-token','{');const client=await createSupabaseServerClient();
+ expect((await client!.auth.getUser()).data.user).toBeNull();expect(state.requests).toBe(0);
+ await expect(signOut()).rejects.toThrow('REDIRECT:/');expect(state.jar.size).toBe(0);
+ await expect(signIn(form())).rejects.toThrow('REDIRECT:/account');
+});
+it('preserves OAuth PKCE setup after incomplete-session cleanup',async()=>{
+ state.jar.set('sb-synthetic-auth-token',JSON.stringify({user:{id:'untrusted'}}));
+ await expect(signInWithGoogle()).rejects.toThrow('REDIRECT:https://synthetic.invalid/auth/v1/authorize');
+ expect(state.jar.has('sb-synthetic-auth-token-code-verifier')).toBe(true);expect(state.jar.has('sb-synthetic-auth-token')).toBe(false);
+});
+it('preserves confirmation-pending signup PKCE after incomplete-session cleanup',async()=>{
+ state.jar.set('sb-synthetic-auth-token',JSON.stringify({user:{id:'untrusted'}}));state.signupPending=true;
+ await expect(signUp(form())).rejects.toThrow('REDIRECT:/login?message=');
+ expect(state.jar.has('sb-synthetic-auth-token-code-verifier')).toBe(true);expect(state.jar.has('sb-synthetic-auth-token')).toBe(false);
+});

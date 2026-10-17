@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { publicEnv } from "@/lib/env";
+import { readableSessionCookies } from "./session-cookies";
 
 export async function createSupabaseServerClient({requireCookieWrites=false}:{requireCookieWrites?:boolean}={}) {
   const url = publicEnv.NEXT_PUBLIC_SUPABASE_URL;
@@ -10,10 +11,10 @@ export async function createSupabaseServerClient({requireCookieWrites=false}:{re
 
   const cookieStore = await cookies();
 
-  return createServerClient(url, key, {
+  const client = createServerClient(url, key, {
     cookies: {
       getAll() {
-        return cookieStore.getAll();
+        return readableSessionCookies(cookieStore.getAll(), url);
       },
       setAll(cookiesToSet) {
         try {
@@ -26,4 +27,8 @@ export async function createSupabaseServerClient({requireCookieWrites=false}:{re
       }
     }
   });
+
+  // Let SDK initialization finish invalid-session cleanup before auth mutations.
+  if (requireCookieWrites) await client.auth.initialize();
+  return client;
 }
