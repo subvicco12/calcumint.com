@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { publicEnv } from "@/lib/env";
 
-export async function createSupabaseServerClient() {
+export async function createSupabaseServerClient({requireCookieWrites=false}:{requireCookieWrites?:boolean}={}) {
   const url = publicEnv.NEXT_PUBLIC_SUPABASE_URL;
   const key = publicEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -18,8 +18,10 @@ export async function createSupabaseServerClient() {
       setAll(cookiesToSet) {
         try {
           cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
-        } catch {
-          // Server Components cannot always mutate cookies. Auth routes/actions can.
+        } catch (error) {
+          // Mutating auth callers must not report success when response cookies fail.
+          if(requireCookieWrites)throw error;
+          // Server Component readers retain best-effort refresh behavior.
         }
       }
     }

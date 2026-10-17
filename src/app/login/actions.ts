@@ -28,7 +28,7 @@ async function authenticationRequest<T>(request: () => Promise<T>): Promise<T> {
 }
 
 export async function signIn(formData: FormData) {
-  const supabase = await authenticationRequest(createSupabaseServerClient);
+  const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (!supabase) loginError("Authentication is not configured yet.");
 
   const email = formValue(formData, "email");
@@ -41,7 +41,7 @@ export async function signIn(formData: FormData) {
 }
 
 export async function signUp(formData: FormData) {
-  const supabase = await authenticationRequest(createSupabaseServerClient);
+  const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (!supabase) loginError("Authentication is not configured yet.");
 
   const email = formValue(formData, "email");
@@ -62,7 +62,7 @@ export async function signUp(formData: FormData) {
 }
 
 export async function signInWithGoogle() {
-  const supabase = await authenticationRequest(createSupabaseServerClient);
+  const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (!supabase) loginError("Authentication is not configured yet.");
 
   const { data, error } = await authenticationRequest(() => supabase.auth.signInWithOAuth({
@@ -74,7 +74,7 @@ export async function signInWithGoogle() {
 }
 
 export async function signOut() {
-  const supabase = await authenticationRequest(createSupabaseServerClient);
+  const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (supabase) {
     const { error } = await authenticationRequest(() => supabase.auth.signOut());
     if (error) loginError("Could not sign out. Try again.");

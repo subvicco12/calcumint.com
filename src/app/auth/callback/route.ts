@@ -35,7 +35,7 @@ export async function GET(request: Request) {
   const failed = () => NextResponse.redirect(new URL("/login?error=Authentication%20callback%20failed.", origin));
   if (!code) return failed();
   try {
-    const supabase = await createSupabaseServerClient();
+    const supabase = await createSupabaseServerClient({requireCookieWrites:true});
     if (!supabase) return failed();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (error) {
