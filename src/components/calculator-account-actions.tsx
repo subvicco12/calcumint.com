@@ -72,7 +72,13 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   const [saving,setSaving]=useState(false),[favoriting,setFavoriting]=useState(false);
   const saveLock=useRef(false),favoriteLock=useRef(false),readRetryLock=useRef(false),mounted=useRef(true);
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
+  const statusRevision=useRef(0);
   const report=(message:string,error=false)=>{if(mounted.current){setStatus(message);setStatusError(error);}};
+  function beginActionStatus(message:string){
+    const revision=++statusRevision.current;
+    report(message);
+    return (nextMessage:string,error=false)=>{if(revision===statusRevision.current)report(nextMessage,error);};
+  }
   const accountOwner=useRef<string|null>(null);
   const [scenarioOwner,setScenarioOwner]=useState(observedAuthOwner.current);
   const retryButton=useRef<HTMLButtonElement>(null),firstAction=useRef<HTMLButtonElement>(null),saveAction=useRef<HTMLButtonElement>(null),loginLink=useRef<HTMLAnchorElement>(null),restoreRetryFocus=useRef(false);
@@ -98,7 +104,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         const user=auth.error?null:auth.data.user;
         // Auth notifications may be delayed or absent. A verified read must also
         // invalidate captures before any new owner's account queries complete.
-        if(observedAuthOwner.current!==(user?.id??null)){setStatus("");setStatusError(false);}
+        if(observedAuthOwner.current!==(user?.id??null)){statusRevision.current++;setStatus("");setStatusError(false);}
         observedAuthOwner.current=user?.id??null;
         setScenarioOwner(observedAuthOwner.current);
         if(!user){accountOwner.current=null;setReadFailure(false);setSignedIn(false);return;}
@@ -132,14 +138,14 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
     restoreRetryFocus.current=document.activeElement===focusedElement&&(focusedElement===firstAction.current||focusedElement===saveAction.current);
     accountOwner.current=null;observedAuthOwner.current=null;
     setScenarioOwner(null);setFavorite(false);setReadFailure(false);setSignedIn(false);
-    setStatus("");setStatusError(false);
+    statusRevision.current++;setStatus("");setStatusError(false);
     requestAccountRecovery();
   }
 
   async function toggleFavorite() {
     if(favoriteLock.current)return;
     const actionOwner=accountOwner.current,focusedElement=document.activeElement;
-    favoriteLock.current=true;setFavoriting(true);report("Updating favorite…");
+    favoriteLock.current=true;setFavoriting(true);const reportAction=beginActionStatus("Updating favorite…");
     try{
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw auth.error;const user=auth.data.user;
@@ -153,19 +159,19 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       if(nextFavorite&&entitlements.favoritesLimit!==null){
         const count=await readCurrentSaveCount(supabase,"favorites",user.id);
         if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
-        if(count>=entitlements.favoritesLimit){report(`Free accounts can save up to ${entitlements.favoritesLimit} favorites.`,true);return;}
+        if(count>=entitlements.favoritesLimit){reportAction(`Free accounts can save up to ${entitlements.favoritesLimit} favorites.`,true);return;}
       }
       const result=nextFavorite?await supabase.from("favorites").upsert({user_id:user.id,calculator_slug:calculatorSlug}):await supabase.from("favorites").delete().eq("user_id",user.id).eq("calculator_slug",calculatorSlug);
       if(result.error)throw new Error("Favorite update unavailable");
-      if(isCurrentActionOwner(actionOwner)){setFavorite(nextFavorite);report(nextFavorite?"Added to favorites.":"Removed from favorites.");}
-    }catch(error){if(requiresSignIn(error)){requireActionSignIn(actionOwner,focusedElement);return;}if(isCurrentActionOwner(actionOwner))report(plan==="free"?"Could not update favorite. Free accounts can save up to 10 favorites.":"Could not update favorite.",true);}
+      if(isCurrentActionOwner(actionOwner)){setFavorite(nextFavorite);reportAction(nextFavorite?"Added to favorites.":"Removed from favorites.");}
+    }catch(error){if(requiresSignIn(error)){requireActionSignIn(actionOwner,focusedElement);return;}if(isCurrentActionOwner(actionOwner))reportAction(plan==="free"?"Could not update favorite. Free accounts can save up to 10 favorites.":"Could not update favorite.",true);}
     finally{favoriteLock.current=false;if(mounted.current)setFavoriting(false);}
   }
 
   async function saveHistory() {
     if(!snapshot||saveLock.current)return;
     const actionOwner=accountOwner.current,focusedElement=document.activeElement;
-    saveLock.current=true;setSaving(true);report("Saving calculation…");
+    saveLock.current=true;setSaving(true);const reportAction=beginActionStatus("Saving calculation…");
     try{
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw auth.error;const user=auth.data.user;
@@ -178,32 +184,34 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       if(entitlements.historyLimit!==null){
         const count=await readCurrentSaveCount(supabase,"calculation_history",user.id);
         if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
-        if(count>=entitlements.historyLimit){report(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`,true);return;}
+        if(count>=entitlements.historyLimit){reportAction(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`,true);return;}
       }
       const {error}=await supabase.from("calculation_history").insert({user_id:user.id,calculator_slug:snapshot.calculatorSlug,calculator_version:snapshot.calculatorVersion,input_data:snapshot.input,output_data:snapshot.output});
       if(error)throw new Error("History save unavailable");
-      if(isCurrentActionOwner(actionOwner)){report("Calculation saved to your history.");}
-    }catch(error){if(requiresSignIn(error)){requireActionSignIn(actionOwner,focusedElement);return;}if(isCurrentActionOwner(actionOwner))report(plan==="free"?"Could not save. Free accounts can keep up to 20 calculations.":"Could not save calculation.",true);}
+      if(isCurrentActionOwner(actionOwner)){reportAction("Calculation saved to your history.");}
+    }catch(error){if(requiresSignIn(error)){requireActionSignIn(actionOwner,focusedElement);return;}if(isCurrentActionOwner(actionOwner))reportAction(plan==="free"?"Could not save. Free accounts can keep up to 20 calculations.":"Could not save calculation.",true);}
     finally{saveLock.current=false;if(mounted.current)setSaving(false);}
   }
 
   function exportJson() {
     if (!snapshot || !entitlements.exports) return;
+    const reportAction=beginActionStatus("");
     try {
       downloadFile(`${calculatorSlug}.json`, serializeCalculationJson(snapshot), "application/json");
-      report("");
+      reportAction("");
     } catch {
-      report("Could not download calculation. Try again.",true);
+      reportAction("Could not download calculation. Try again.",true);
     }
   }
 
   function exportCsv() {
     if (!snapshot || !entitlements.exports) return;
+    const reportAction=beginActionStatus("");
     try {
       downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(snapshot.input, snapshot.output), "text/csv;charset=utf-8");
-      report("");
+      reportAction("");
     } catch {
-      report("Could not download calculation. Try again.",true);
+      reportAction("Could not download calculation. Try again.",true);
     }
   }
 

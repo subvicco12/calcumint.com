@@ -132,3 +132,46 @@ it.each(['pro','business'])('retains captured scenario exports and releases fail
  fireEvent.click(screen.getByRole('button',{name:'Export scenario set JSON'}));expect(revoke).toHaveBeenCalledTimes(2);
  expect(JSON.parse(await latest!.text()).scenarios[0].output).toEqual(props.output);expect(state.writes).toHaveLength(0);
 });
+it.each(['free','pro','business'])('keeps a newer favorite failure visible when an older save completes later on %s',async plan=>{
+ state.plan=plan;
+ render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ state.writeMode='defer';fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.pendingWrites).toHaveLength(1));
+ state.writeMode='error';fireEvent.click(screen.getByRole('button',{name:'☆ Favorite'}));await screen.findByRole('alert');
+ state.pendingWrites[0].resolve({error:null});await waitFor(()=>expect(screen.getByRole('button',{name:'Save calculation'})).toHaveProperty('disabled',false));
+ expect(screen.getByRole('alert').textContent).toContain('Could not update favorite.');expect(screen.queryByText('Calculation saved to your history.')).toBeNull();
+});
+it.each(['free','pro','business'])('retains a newer save failure while an older favorite succeeds without losing favorite state on %s',async plan=>{
+ state.plan=plan;
+ render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ state.writeMode='defer';fireEvent.click(screen.getByRole('button',{name:'☆ Favorite'}));await waitFor(()=>expect(state.pendingWrites).toHaveLength(1));
+ state.writeMode='error';fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await screen.findByRole('alert');
+ state.pendingWrites[0].resolve({error:null});await screen.findByRole('button',{name:'★ Favorited'});
+ expect(screen.getByRole('alert').textContent).toContain('Could not save');expect(screen.queryByText('Added to favorites.')).toBeNull();
+});
+
+it.each(['free','pro','business'])('keeps the newer success and both write locks when an older action fails on %s',async plan=>{
+ state.plan=plan;render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ if(plan!=='free')fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ state.writeMode='defer';const save=screen.getByRole('button',{name:'Save calculation'}),favorite=screen.getByRole('button',{name:'☆ Favorite'});
+ fireEvent.click(save);await waitFor(()=>expect(state.pendingWrites).toHaveLength(1));fireEvent.click(favorite);await waitFor(()=>expect(state.pendingWrites).toHaveLength(2));
+ fireEvent.click(save);fireEvent.click(favorite);expect(state.writes).toHaveLength(2);
+ state.pendingWrites[1].resolve({error:null});await screen.findByRole('button',{name:'★ Favorited'});
+ state.pendingWrites[0].reject(new Error('private interrupted write'));await waitFor(()=>expect(save).toHaveProperty('disabled',false));
+ expect(screen.getByText('Added to favorites.').getAttribute('role')).toBe('status');expect(screen.queryByRole('alert')).toBeNull();expect(state.writes).toHaveLength(2);
+ if(plan!=='free')expect(screen.getByRole('table',{name:'Captured engine outputs'}).textContent).toContain('0.001');
+});
+it.each(['pro','business'].flatMap(plan=>['JSON','CSV'].map(format=>({plan,format}))))('retains the newer $plan $format download error when an older save succeeds',async({plan,format})=>{
+ state.plan=plan;vi.stubGlobal('URL',{createObjectURL:()=>{throw new Error('private download failure');},revokeObjectURL:vi.fn()});
+ render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ state.writeMode='defer';fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.pendingWrites).toHaveLength(1));
+ fireEvent.click(screen.getByRole('button',{name:`Export ${format}`}));await screen.findByRole('alert');
+ state.pendingWrites[0].resolve({error:null});await waitFor(()=>expect(screen.getByRole('button',{name:'Save calculation'})).toHaveProperty('disabled',false));
+ expect(screen.getByRole('alert').textContent).toBe('Could not download calculation. Try again.');expect(screen.getByRole('table',{name:'Captured engine outputs'}).textContent).toContain('0.001');expect(state.writes).toHaveLength(1);
+});
+it.each(['slug','version'])('ignores a rejected recovery response after navigation changes calculator %s',async changed=>{
+ state.authMode='reject';const view=render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Retry account actions'});
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));state.authMode='defer';fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));await waitFor(()=>expect(state.auth).toHaveLength(1));
+ state.authMode='ok';view.rerender(<CalculatorAccountActions {...props} calculatorSlug={changed==='slug'?'compound-interest-calculator':props.calculatorSlug} calculatorVersion={changed==='version'?2:1}/>);await screen.findByRole('button',{name:'Save calculation'});
+ state.auth[0].reject(new Error('private delayed recovery failure'));await waitFor(()=>expect(screen.queryByRole('alert')).toBeNull());
+ expect(screen.queryByRole('button',{name:'Retry account actions'})).toBeNull();expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();expect(state.writes).toHaveLength(0);
+});
