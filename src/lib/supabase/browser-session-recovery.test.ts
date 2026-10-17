@@ -7,12 +7,14 @@ let large=false;
 let rejectRefresh=false;
 let interruptPassword=false;
 let requests:string[]=[];
+let deferUser=false;
+let pendingUser:null|((response:Response)=>void)=null;
 const key='sb-synthetic-auth-token';
 function clearCookies(){for(const entry of document.cookie.split(';'))document.cookie=entry.split('=')[0].trim()+'=; Max-Age=0; Path=/';}
 async function browserClient(){const {createSupabaseBrowserClient}=await import('./browser');client=createSupabaseBrowserClient();return client!;}
 function claims(token:string){return JSON.parse(atob(token.split('.')[1].replaceAll('-','+').replaceAll('_','/')));}
 beforeEach(()=>{
- vi.resetModules();clearCookies();currentId='00000000-0000-4000-8000-000000000001';large=false;rejectRefresh=false;interruptPassword=false;requests=[];
+ vi.resetModules();clearCookies();deferUser=false;pendingUser=null;currentId='00000000-0000-4000-8000-000000000001';large=false;rejectRefresh=false;interruptPassword=false;requests=[];
  vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL','https://synthetic.invalid');vi.stubEnv('NEXT_PUBLIC_SUPABASE_ANON_KEY','synthetic-anon');
  // Isolate tabs in jsdom; real cross-tab behavior is a separate browser check.
  vi.stubGlobal('BroadcastChannel',undefined);vi.spyOn(console,'error').mockImplementation(()=>{});vi.spyOn(console,'warn').mockImplementation(()=>{});
@@ -21,6 +23,7 @@ beforeEach(()=>{
   if(interruptPassword&&url.includes('grant_type=password'))throw new TypeError('Synthetic interrupted connection');
   if(rejectRefresh&&url.includes('grant_type=refresh_token'))return new Response(JSON.stringify({code:'refresh_token_not_found',message:'Synthetic expired session'}),{status:400,headers:{'Content-Type':'application/json'}});
   if(url.includes('/logout'))return new Response(null,{status:204});
+  if(deferUser&&url.endsWith('/user'))return new Promise<Response>(resolve=>{pendingUser=resolve;});
   const auth=new Headers(init?.headers).get('authorization');const id=url.endsWith('/user')?claims(auth!.split(' ')[1]).sub:currentId;
   const user={id,aud:'authenticated',email:'synthetic@example.invalid',app_metadata:{},user_metadata:{note:large?'x'.repeat(8000):'synthetic'},created_at:'2026-10-17T00:00:00Z'};
   const encoded=(value:unknown)=>btoa(JSON.stringify(value)).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');
@@ -100,4 +103,26 @@ it('fails closed on invalid bytes in a middle chunk without erasing a PKCE verif
  expect((await sdk.auth.getUser()).data.user).toBeNull();expect(document.cookie).toContain('code-verifier=preserved');
  large=false;expect((await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'})).error).toBeNull();
  expect(document.cookie).not.toContain(key+'.');expect((await sdk.auth.getUser()).data.user?.id).toBe(currentId);
+});
+
+it.each(['success','session missing'])('discards an old-account %s response after logout and account replacement',async(outcome)=>{
+ const sdk=await browserClient();await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});
+ const oldId=currentId;deferUser=true;const oldRequest=sdk.auth.getUser();await vi.waitFor(()=>expect(pendingUser).not.toBeNull());
+ await sdk.auth.signOut();currentId='00000000-0000-4000-8000-000000000002';
+ expect((await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'})).error).toBeNull();
+ deferUser=false;pendingUser!(new Response(JSON.stringify(outcome==='success'?{id:oldId,aud:'authenticated'}:{code:'session_not_found',message:'Synthetic old session revoked'}),{status:outcome==='success'?200:401,headers:{'Content-Type':'application/json','X-Supabase-Api-Version':'2024-01-01'}}));
+ const stale=await oldRequest;expect(stale.data.user).toBeNull();expect(stale.error).toBeTruthy();
+ expect((await sdk.auth.getUser()).data.user?.id).toBe(currentId);
+});
+it('still clears a revoked current session when its own authoritative read fails',async()=>{
+ const sdk=await browserClient();await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});
+ deferUser=true;const request=sdk.auth.getUser();await vi.waitFor(()=>expect(pendingUser).not.toBeNull());deferUser=false;
+ pendingUser!(new Response(JSON.stringify({code:'session_not_found',message:'Synthetic current session revoked'}),{status:401,headers:{'Content-Type':'application/json','X-Supabase-Api-Version':'2024-01-01'}}));
+ expect((await request).data.user).toBeNull();expect(document.cookie).not.toContain('sb-synthetic-auth-token');expect((await sdk.auth.getUser()).data.user).toBeNull();
+});
+it('cannot return a delayed authenticated identity after logout without a replacement session',async()=>{
+ const sdk=await browserClient();await sdk.auth.signInWithPassword({email:'synthetic@example.invalid',password:'synthetic-password'});
+ deferUser=true;const request=sdk.auth.getUser();await vi.waitFor(()=>expect(pendingUser).not.toBeNull());await sdk.auth.signOut();deferUser=false;
+ pendingUser!(new Response(JSON.stringify({id:currentId,aud:'authenticated'}),{status:200,headers:{'Content-Type':'application/json'}}));
+ const stale=await request;expect(stale.data.user).toBeNull();expect(stale.error).toBeTruthy();expect((await sdk.auth.getUser()).data.user).toBeNull();
 });
