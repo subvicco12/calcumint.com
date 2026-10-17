@@ -1,0 +1,23 @@
+# Master identity reviewer proposals — 15 October 2026
+
+This lane owns a review queue, not identity decisions. All 540 master rows retain the existing audit classifications: 245 missing linkage evidence, 174 ambiguous, 121 approval pending, zero verified. The queue contains 283 proposed rows, 245 UNKNOWN rows and 12 HOLD rows (six explicit and six candidate-linked). No new candidates, aliases, canonical mappings, approvals, engine versions or identities are introduced. TravelTime510 owner decision #1368 remains outside this lane and is not duplicated or promoted.
+
+`proposals.json` carries every existing candidate's immutable key/slug/version, source evidence, imported exact identity or conflict result, shared master IDs, required evidence, decision owner role and next action. Owner assignment is UNKNOWN: a role is a routing requirement, not proof anyone has accepted authority. The conflict-first ranking prioritizes discrepancy review, then reused identities, then other candidates; alphabetical ordering breaks ties. Ranking is not a probability or an approval recommendation. Proposed means existing candidate evidence warrants human comparison, not an accepted mapping. Missing candidates remain UNKNOWN; no implementation absence is inferred.
+
+The anonymous audit and sanitized import establish different observations. A DB key/slug/version equality does not establish master scope, engine equivalence, source approval, waiver authority, certification or specialist approval. Existing evidence covers 140 master rows with any imported candidate and 136 unique public candidate links; neither figure counts approved mappings. The export observation time remains UNKNOWN.
+
+Reviewers should compare master scope and feature contracts, examine every shared-master association, preserve all HOLDs, and provide an attributable domain-qualified decision with engine SHA/version and authority references. Protected approval evidence remains independently required. No DB writes, publication, certification, deployment or merge are authorized by this queue.
+
+Reproduce/check: `npx vitest run src/calculators/master-identity-proposals.test.ts`. Regenerate: `CALCUMINT_IDENTITY_PROPOSALS_OUT=data/catalog/identity-proposals-2026-10-15 npx vitest run src/calculators/master-identity-proposals.test.ts`. Existing audit and strict sanitized evidence parsers are reused; no network is needed.
+
+## Consolidated acceptance ledger
+
+| Lane / evidence | Acceptance and current limit | Decision owner / next action |
+| --- | --- | --- |
+| Inherited #1397 / `d9913f66428c66a1d408c7d60b50f7d2e39238b9` | 209 imported exact registry identities; zero observed conflicts; 140 candidate-covered master rows versus 136 unique public candidate links; zero canonical mappings approved | Catalog authority must adjudicate exact master scope; published observation grants no approval |
+| Identity proposal lane | All 540 rows reproduced; base classifications 245/174/121 preserved; proposal states 283 proposed / 245 UNKNOWN / 12 HOLD; six explicit plus six candidate HOLDs preserved; immutable candidate versions unchanged | Authorized identity reviewer, assignment UNKNOWN; supply feature contracts, engine SHA and attributable decision evidence |
+| Independent evidence supplement lane [#1398](https://github.com/subvicco12/calcumint.com/pull/1398), `08673b0338805e43e5419ff62a91b4b221c4475e` | Strict supplement workflow; no actual authority artifacts supplied. 836 waiver and 210 source decisions plus authenticity remain UNKNOWN. Coordinator reports 22 focused tests, TypeScript, affected lint and 15 certification tests passed | Owner/admin, source reviewers and applicable specialists must substantiate waiver, source and protected lifecycle decisions |
+| Numerical verification lane | Separate draft required; this identity branch does not change vectors, formulas or the inherited 24-gap numerical baseline | Numerical/specialist reviewers assess that lane's exact-head evidence independently |
+| Aggregate release acceptance | RELEASE HOLD. No lane can certify or publish through this ledger; immutable historical revisions remain auditable | Root coordinates exact-head CI and mandatory human review; no merge/deployment/publication authorized |
+
+Local verification: proposal tests (4), existing audit/import tests (28 additional), certification/rule-pack tests (15), TypeScript and affected ESLint passed. Full build is reserved for automatic exact-head CI and remains pending at draft creation. Independent lanes' final PR/SHA and CI evidence belong to the coordinator's final acceptance report; this ledger does not claim their work passed.
