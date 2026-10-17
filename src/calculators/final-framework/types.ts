@@ -61,6 +61,14 @@ export type ResultScheduleRow = {
   values: Readonly<Record<string, number | string>>;
 };
 
+export type ResultScheduleMetadata = {
+  caption: string;
+  period: { key: string; label: string; unit?: string };
+  columns: readonly { key: string; label: string; unit?: string }[];
+  granularity: "complete" | "checkpoints";
+  terminal?: readonly { column: string; expected: number; tolerance: number }[];
+};
+
 export type ResultRange = {
   id: string;
   label: string;
@@ -75,6 +83,7 @@ export type StructuredCalculationResult = {
   series?: readonly ResultSeries[];
   composition?: readonly ResultCompositionItem[];
   schedule?: readonly ResultScheduleRow[];
+  scheduleMetadata?: ResultScheduleMetadata;
   ranges?: readonly ResultRange[];
   reverseTargets?: readonly string[];
   scenarioVariables?: readonly string[];

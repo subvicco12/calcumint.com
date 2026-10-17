@@ -1,3 +1,4 @@
+import { termDepositIndependentGoldens } from "./term-deposit-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -33,6 +34,7 @@ export const termDepositCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: termDepositIndependentGoldens,
   calculate: ({ principal, annualRatePercent, termMonths, compoundingPerYear }) => {
     const maturityValue = roundTo(termDepositFutureValue(principal, annualRatePercent, termMonths, compoundingPerYear), 2);
     const nominal = annualRatePercent / 100;
