@@ -1,3 +1,4 @@
+import { debtPayoffIndependentGoldens } from "./debt-payoff-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -67,6 +68,7 @@ export const loanAnalysisCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: debtPayoffIndependentGoldens.analysis,
   calculate: ({ principal, annualRatePercent, termMonths, extraMonthlyPayment }) => {
     if(!Number.isFinite(extraMonthlyPayment)||extraMonthlyPayment<0)throw new Error("Extra monthly payment must be non-negative and finite");
     const scheduledPaymentRaw = paymentForLoan(principal, annualRatePercent, termMonths);

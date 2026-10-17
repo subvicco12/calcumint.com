@@ -1,3 +1,4 @@
+import { compoundInterestIndependentGoldens } from "./compound-interest-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -23,6 +24,7 @@ export const compoundInterestCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: compoundInterestIndependentGoldens,
   calculate: ({ principal, annualRatePercent, years, compoundsPerYear }) => {
     if(!Number.isFinite(principal)||principal<0||!Number.isFinite(annualRatePercent)||!Number.isFinite(years)||years<0||!Number.isInteger(compoundsPerYear)||compoundsPerYear<1)throw new Error("Compound-interest inputs must be finite and within supported ranges");
     const periodicRate=annualRatePercent/100/compoundsPerYear;
