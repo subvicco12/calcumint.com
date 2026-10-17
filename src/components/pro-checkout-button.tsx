@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { BillingInterval, PlanId } from "@/lib/billing/plans";
 import { publicEnv } from "@/lib/env";
+import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { requiresSignIn } from "@/lib/auth-recovery";
 
 type PaidPlan = Exclude<PlanId, "free">;
 type ProrationPreview = { immediateTotal: string | null; currencyCode: string | null; charge: string | null; credit: string | null; result: string | null };
@@ -61,38 +63,120 @@ function formatMinorAmount(amount: string | null, currencyCode: string | null) {
   catch { return `${currencyCode} ${(Number(amount) / 100).toFixed(2)}`; }
 }
 
-export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: PaidPlan; interval: BillingInterval; disabledReason?: string }) {
+type CheckoutButtonProps = { plan: PaidPlan; interval: BillingInterval; disabledReason?: string };
+export function PlanCheckoutButton(props: CheckoutButtonProps) {
+  return <CheckoutSessionButton key={`${props.plan}:${props.interval}:${props.disabledReason ?? ""}`} {...props}/>;
+}
+
+function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButtonProps) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState(false);
   const [preview, setPreview] = useState<ProrationPreview | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const confirmationRef = useRef<HTMLDivElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  const descriptionId = useId();
+  const lifetime = useRef<object | null>(null), requestIdentity = useRef<object | null>(null);
+  const owner = useRef<string | null>(null), previewOwner = useRef<string | null>(null), locked = useRef(false);
+  const checkoutEvent = useRef<((event: { name?: string }) => void) | null>(null);
   const planLabel = plan === "business" ? "Business" : "Pro";
 
+  function invalidate() {
+    requestIdentity.current = null; owner.current = null; previewOwner.current = null; locked.current = false;
+    if (checkoutEvent.current) paddleEventListeners.delete(checkoutEvent.current);
+    checkoutEvent.current = null;
+    setConfirmation(false); setPreview(null); setBusy(false);
+  }
+
+  useLayoutEffect(() => {
+    lifetime.current = {};
+    const subscription = createSupabaseBrowserClient()?.auth.onAuthStateChange((_event, session) => {
+      if (owner.current && session?.user.id !== owner.current) {
+        invalidate(); setError("Your account session changed. Choose your plan again.");
+      }
+    }).data.subscription;
+    return () => {
+      lifetime.current = null; requestIdentity.current = null; locked.current = false;
+      if (checkoutEvent.current) paddleEventListeners.delete(checkoutEvent.current);
+      checkoutEvent.current = null; subscription?.unsubscribe();
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (confirmation && (document.activeElement === document.body || document.activeElement === triggerRef.current)) {
+      cancelRef.current?.focus({ preventScroll: true });
+    }
+  }, [confirmation]);
+
+  function dismissConfirmation() {
+    if (busy) return;
+    const restore = confirmationRef.current?.contains(document.activeElement);
+    setConfirmation(false); setPreview(null);
+    if (restore) triggerRef.current?.focus({ preventScroll: true });
+  }
+
   async function requestBillingChange(confirmed = false) {
+    if (locked.current || disabledReason || (confirmed && !previewOwner.current)) return;
+    locked.current = true;
+    const scope = lifetime.current, request = requestIdentity.current = {};
+    const current = () => scope !== null && lifetime.current === scope && requestIdentity.current === request;
+    const client = createSupabaseBrowserClient();
+    let overlayOpen = false;
+    const accountChanged = () => { if (current()) { invalidate(); setError("Your account session changed. Choose your plan again."); } };
+    async function verifyOwner(expected?: string | null) {
+      if (!current()) return null;
+      const auth = await client?.auth.getUser();
+      if (!current()) return null;
+      if (auth?.error && requiresSignIn(auth.error)) { accountChanged(); router.push(`/login?next=${encodeURIComponent("/pricing")}`); return null; }
+      if (!auth || auth.error) {
+        setConfirmation(false); setPreview(null); previewOwner.current = null;
+        throw new Error("We could not verify your account. Choose your plan again after recovery.");
+      }
+      if (!auth.data.user) { accountChanged(); router.push(`/login?next=${encodeURIComponent("/pricing")}`); return null; }
+      if (expected && auth.data.user.id !== expected) { accountChanged(); return null; }
+      return auth.data.user.id;
+    }
     setBusy(true); setError("");
     let handleCheckoutEvent: ((event: { name?: string }) => void) | null = null;
     try {
+      const verifiedOwner = await verifyOwner(confirmed ? previewOwner.current : null);
+      if (!verifiedOwner) return;
+      owner.current = verifiedOwner;
       const response = await fetch("/api/billing/checkout", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan, interval, confirmChange: confirmed })
+        body: JSON.stringify({ plan, interval, confirmChange: confirmed, expectedOwnerId: verifiedOwner })
       });
       const payload = await response.json() as { transactionId?: string; updated?: boolean; confirmationRequired?: boolean; prorationPreview?: ProrationPreview; error?: string };
+      if (!await verifyOwner(verifiedOwner)) return;
       if (response.status === 401) { router.push(`/login?next=${encodeURIComponent("/pricing")}`); return; }
       if (!response.ok) throw new Error(payload.error ?? "Checkout unavailable");
-      if (payload.confirmationRequired) { setPreview(payload.prorationPreview ?? null); setConfirmation(true); setBusy(false); return; }
+      if (payload.confirmationRequired) { previewOwner.current = verifiedOwner; setPreview(payload.prorationPreview ?? null); setConfirmation(true); setBusy(false); return; }
       if (payload.updated) { router.push(`/account?billing=updated&plan=${plan}&interval=${interval}`); router.refresh(); return; }
       if (!payload.transactionId) throw new Error(payload.error ?? "Checkout unavailable");
       const paddle = await loadPaddle();
+      if (!await verifyOwner(verifiedOwner)) return;
       const listener = (event: { name?: string }) => {
-        if (event.name === "checkout.completed") { paddleEventListeners.delete(listener); setBusy(false); window.location.assign(`/account?billing=completed&plan=${plan}&interval=${interval}`); }
-        if (event.name === "checkout.closed") { paddleEventListeners.delete(listener); setBusy(false); }
+        if (!current() || (event.name !== "checkout.completed" && event.name !== "checkout.closed")) return;
+        paddleEventListeners.delete(listener); checkoutEvent.current = null;
+        void verifyOwner(verifiedOwner).then(id => {
+          if (!id) return;
+          locked.current = false; setBusy(false);
+          if (event.name === "checkout.completed") window.location.assign(`/account?billing=completed&plan=${plan}&interval=${interval}`);
+        }).catch(() => { if (current()) { locked.current = false; setBusy(false); setError("We could not verify checkout completion. Check your account before retrying."); } });
       };
-      handleCheckoutEvent = listener; paddleEventListeners.add(listener);
+      handleCheckoutEvent = listener; checkoutEvent.current = listener; paddleEventListeners.add(listener);
+      overlayOpen = true;
       paddle.Checkout.open({ transactionId: payload.transactionId, settings: { displayMode: "overlay", theme: "light" } });
     } catch (caught) {
       if (handleCheckoutEvent) paddleEventListeners.delete(handleCheckoutEvent);
-      setError(caught instanceof Error ? caught.message : "Checkout unavailable"); setBusy(false);
+      overlayOpen = false;
+      if (!current()) return;
+      if (owner.current) { try { if (!await verifyOwner(owner.current)) return; } catch { if (!current()) return; } }
+      if (current()) { setError(caught instanceof Error ? caught.message : "Checkout unavailable"); setBusy(false); }
+    } finally {
+      if (current() && !overlayOpen) { locked.current = false; setBusy(false); }
     }
   }
 
@@ -101,23 +185,23 @@ export function PlanCheckoutButton({ plan, interval, disabledReason }: { plan: P
 
   return (
     <div className="checkout-action">
-      <button className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
+      <button ref={triggerRef} className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
         {busy ? "Checking price…" : `Choose ${planLabel} ${interval}`}
       </button>
       {confirmation && (
-        <div className="billing-change-confirmation" role="dialog" aria-label="Confirm plan change">
+        <div ref={confirmationRef} className="billing-change-confirmation" role="dialog" aria-label="Confirm plan change" aria-describedby={descriptionId} aria-busy={busy} onKeyDown={event => { if (event.key === "Escape" && !busy) { event.preventDefault(); event.stopPropagation(); dismissConfirmation(); } }}>
           <p><strong>Confirm change to {planLabel} {interval}</strong></p>
           {dueNow ? <p><strong>Due now: {dueNow}</strong></p> : <p className="muted-copy">Paddle reports no immediate payment total for this change.</p>}
           {credit && preview?.credit !== "0" ? <p className="muted-copy">Proration credit included: {credit}.</p> : null}
-          <p className="muted-copy">This amount is calculated by Paddle from your current subscription and the remaining billing period. Your saved Paddle payment method will be used. By confirming, you authorize this subscription update and any displayed immediate charge.</p>
+          <p id={descriptionId} className="muted-copy">This amount is calculated by Paddle from your current subscription and the remaining billing period. Your saved Paddle payment method will be used. By confirming, you authorize this subscription update and any displayed immediate charge.</p>
           <div className="checkout-action">
             <button className="button primary" type="button" disabled={busy} onClick={() => requestBillingChange(true)}>{busy ? "Updating…" : "Confirm and update plan"}</button>
-            <button className="button secondary" type="button" disabled={busy} onClick={() => { setConfirmation(false); setPreview(null); }}>Cancel</button>
+            <button ref={cancelRef} className="button secondary" type="button" disabled={busy} onClick={dismissConfirmation}>Cancel</button>
           </div>
         </div>
       )}
       {disabledReason && <small className="muted-copy">{disabledReason}</small>}
-      {error && <small className="error-text">{error}</small>}
+      {error && <small className="error-text" role="alert">{error}</small>}
     </div>
   );
 }
