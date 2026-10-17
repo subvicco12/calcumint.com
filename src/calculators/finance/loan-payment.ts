@@ -1,3 +1,4 @@
+import { debtAggregateIndependentGoldens } from "./debt-aggregate-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -24,6 +25,7 @@ export const loanPaymentCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: debtAggregateIndependentGoldens.payment,
   calculate: ({ principal, annualRatePercent, termMonths }) => {
     const monthlyRate = annualRatePercent / 100 / 12;
     const unroundedPayment = monthlyRate === 0
