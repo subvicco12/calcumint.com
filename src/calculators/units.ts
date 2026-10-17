@@ -35,8 +35,8 @@ export const supportedUnits = Object.freeze(Object.keys(units));
 
 export function convertUnit(value: number, from: string, to: string): number {
   assertFiniteNumber(value, "value");
-  const source = units[from];
-  const target = units[to];
+  const source = Object.hasOwn(units, from) ? units[from] : undefined;
+  const target = Object.hasOwn(units, to) ? units[to] : undefined;
 
   if (!source || !target) {
     throw new RangeError("Unsupported unit");
@@ -45,15 +45,28 @@ export function convertUnit(value: number, from: string, to: string): number {
     throw new RangeError(`Cannot convert ${source.family} to ${target.family}`);
   }
 
+  if (from === to) return value;
+
   if (source.family === "temperature" && target.family === "temperature") {
-    return target.fromKelvin(source.toKelvin(value));
+    const result = target.fromKelvin(source.toKelvin(value));
+    assertFiniteNumber(result, "Converted value");
+    return result;
   }
 
   if (source.family === "temperature" || target.family === "temperature") {
     throw new RangeError("Invalid unit family conversion");
   }
 
-  return value * source.toBase / target.toBase;
+  const baseValue = value * source.toBase;
+  const direct = baseValue / target.toBase;
+  // Keep ordinary conversions unchanged; avoid a base-unit intermediate that
+  // overflows or erases a representable subnormal before division by the target.
+  const subnormalBase = baseValue !== 0 && Math.abs(baseValue) < 2 ** -1022;
+  const result = Number.isFinite(direct) && (direct !== 0 || value === 0) && !subnormalBase
+    ? direct
+    : value * (source.toBase / target.toBase);
+  assertFiniteNumber(result, "Converted value");
+  return result;
 }
 
 export function getUnitFamily(unit: string): UnitFamily | undefined {
