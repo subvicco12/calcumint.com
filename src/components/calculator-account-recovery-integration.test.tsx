@@ -69,3 +69,32 @@ it('moves retry keyboard focus to reauthentication when the SDK confirms a missi
  const login=await screen.findByRole('link',{name:'Sign in to save this calculation'});await waitFor(()=>expect(document.activeElement).toBe(login));
  expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();expect(screen.getByTestId('other-plan').textContent).toBe('free');
 });
+it.each(['free','pro','business'])('clears prior-owner captures when retry verifies a different %s owner without an auth notification',async plan=>{
+ state.plan='pro';state.profileError=false;render(<App/>);await screen.findByRole('button',{name:'Retry account actions'});
+ await waitFor(()=>expect(screen.getByRole('button',{name:'Capture baseline A'})).toHaveProperty('disabled',false));
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();
+ state.plan=plan;state.userId='different-owner';state.accountError=false;fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
+ await screen.findByRole('button',{name:'Save calculation'});
+ expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();
+ expect(screen.getByRole('button',{name:'Capture baseline A'})).toBeTruthy();
+});
+it('clears captures when retry confirms a missing session without a logout notification',async()=>{
+ state.profileError=false;render(<App/>);await screen.findByRole('button',{name:'Retry account actions'});
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authFailure=new AuthSessionMissingError();
+ fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
+ await screen.findByRole('link',{name:'Sign in to save this calculation'});
+ expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();
+});
+it('discards old captures as soon as a changed owner is verified even if account reads fail',async()=>{
+ state.profileError=false;render(<App/>);await screen.findByRole('button',{name:'Retry account actions'});
+ await waitFor(()=>expect(screen.getByRole('button',{name:'Capture baseline A'})).toHaveProperty('disabled',false));
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ state.userId='different-owner';fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
+ await screen.findByRole('button',{name:'Retry account actions'});
+ expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();
+ state.accountError=false;fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
+ await screen.findByRole('button',{name:'Export JSON'});
+ expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();
+});

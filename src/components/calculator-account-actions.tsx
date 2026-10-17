@@ -74,6 +74,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
   const report=(message:string,error=false)=>{if(mounted.current){setStatus(message);setStatusError(error);}};
   const accountOwner=useRef<string|null>(null);
+  const [scenarioOwner,setScenarioOwner]=useState(observedAuthOwner.current);
   const retryButton=useRef<HTMLButtonElement>(null),firstAction=useRef<HTMLButtonElement>(null),loginLink=useRef<HTMLAnchorElement>(null),restoreRetryFocus=useRef(false);
   useEffect(()=>{
     if(!restoreRetryFocus.current||(!readFailure&&signedIn===null))return;
@@ -95,6 +96,10 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         if(!active)return;
         if(auth.error&&!requiresSignIn(auth.error))throw new Error("Account authentication unavailable");
         const user=auth.error?null:auth.data.user;
+        // Auth notifications may be delayed or absent. A verified read must also
+        // invalidate captures before any new owner's account queries complete.
+        observedAuthOwner.current=user?.id??null;
+        setScenarioOwner(observedAuthOwner.current);
         if(!user){accountOwner.current=null;setReadFailure(false);setSignedIn(false);return;}
         const [favoriteResult,favoriteCountResult,historyCountResult]=await Promise.all([
           supabase.from("favorites").select("id").eq("user_id",user.id).eq("calculator_slug",calculatorSlug).maybeSingle(),
@@ -108,7 +113,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       finally{if(active)readRetryLock.current=false;}
     })();
     return () => { active = false; };
-  }, [calculatorSlug,readAttempt]);
+  }, [calculatorSlug,readAttempt,observedAuthOwner]);
 
   const entitlements=getPlanEntitlements(plan);
   let snapshot:ReturnType<typeof createCalculationSnapshot>|null=null;
@@ -123,8 +128,9 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
       if(!user){report("Sign in to update your favorites.",true);return;}
-      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
+      if(!mounted.current)return;
       if(user.id!==accountOwner.current){retryAccountRead();return;}
+      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
       const nextFavorite=!favorite;
       if(nextFavorite&&entitlements.favoritesLimit!==null){
         const count=await readCurrentSaveCount(supabase,"favorites",user.id);
@@ -145,8 +151,9 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw new Error("Authentication unavailable");const user=auth.data.user;
       if(!user){report("Sign in to save this calculation.",true);return;}
-      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
+      if(!mounted.current)return;
       if(user.id!==accountOwner.current){retryAccountRead();return;}
+      if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
       if(entitlements.historyLimit!==null){
         const count=await readCurrentSaveCount(supabase,"calculation_history",user.id);
         if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
@@ -198,7 +205,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
       {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
       </>}
-      <CalculatorScenarioWorkspace plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/>
+      <CalculatorScenarioWorkspace key={JSON.stringify([scenarioOwner!==undefined,scenarioOwner])} plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/>
     </div>
   );
 }
