@@ -21,5 +21,9 @@ it('does not create an auth client or exchange without a code',async()=>{
 });
 it('keeps explicit exchange failure on the login page',async()=>{
  state.exchange.mockResolvedValue({error:{message:'Expired code'}});
- expect((await GET(request('/account'))).headers.get('location')).toBe('https://app.example.invalid/login?error=Expired%20code');
+ expect((await GET(request('/account'))).headers.get('location')).toBe('https://app.example.invalid/login?error=Authentication%20callback%20failed.');
+});
+it('does not expose returned provider details in the callback recovery URL',async()=>{
+ state.exchange.mockResolvedValue({error:{message:'synthetic-sensitive-session-detail'}});
+ const location=(await GET(request('/account'))).headers.get('location');expect(location).toContain('https://app.example.invalid/login?error=');expect(location).not.toContain('synthetic-sensitive-session-detail');
 });

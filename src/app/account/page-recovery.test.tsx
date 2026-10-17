@@ -24,3 +24,16 @@ describe("account read recovery",()=>{
  it.each(["free","pro","business"])("keeps valid historical identity readable for %s",async(plan)=>{state.tables.profiles={data:{plan},error:null};state.tables.calculation_history={data:[{id:"old",calculator_slug:"slope-calculator",calculator_version:"1",created_at:"2026-01-01"}],error:null};expect(await render()).toContain("slope");});
  it("keeps genuine successful empty states and preferences",async()=>{const html=await render();expect(html).toContain("No favorites yet");expect(html).toContain("Your saved calculation history will appear here");expect(html).toContain('name="currency"');});
 });
+
+it('offers a sign-in route instead of an endless retry for an SDK missing session',async()=>{
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authError=new AuthSessionMissingError();state.signedOut=true;
+ const html=await render();expect(html).toContain('href="/login"');expect(html).toContain('Sign in to continue');expect(html).not.toContain('Auth session missing');expect(html).not.toContain('a@example.invalid');
+});
+it.each(['session_expired','refresh_token_not_found','refresh_token_already_used'])('offers reauthentication for terminal SDK code %s',async code=>{
+ const {AuthApiError}=await import('@supabase/supabase-js');state.authError=new AuthApiError('synthetic-sensitive-detail',400,code);
+ const html=await render();expect(html).toContain('Sign in to continue');expect(html).toContain('href="/login"');expect(html).toContain('href="/account"');expect(html).toContain('role="alert"');expect(html).not.toContain('synthetic-sensitive-detail');
+});
+it('restores account history after reauthentication without rewriting prior versions',async()=>{
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authError=new AuthSessionMissingError();expect(await render()).toContain('Sign in to continue');
+ state.authError=null;state.tables.calculation_history={data:[{id:'legacy',calculator_slug:'slope-calculator',calculator_version:'1',created_at:'2026-01-01'}],error:null};expect(await render()).toContain('slope');
+});

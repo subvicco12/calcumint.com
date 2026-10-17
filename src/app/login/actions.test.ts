@@ -1,4 +1,5 @@
 import {beforeEach,expect,it,vi} from 'vitest';
+import {AuthApiError} from '@supabase/supabase-js';
 const state=vi.hoisted(()=>({client:vi.fn(),password:vi.fn(),signup:vi.fn(),oauth:vi.fn(),signout:vi.fn()}));
 vi.mock('@/lib/env',()=>({publicEnv:{NEXT_PUBLIC_SITE_URL:'https://app.example.invalid'}}));
 vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:state.client}));
@@ -24,7 +25,7 @@ it.each([[signIn,'password'],[signUp,'signup'],[signInWithGoogle,'oauth']] as co
  await expect(action(form('synthetic-password'))).rejects.toThrow('REDIRECT:/login?error=Authentication%20is%20temporarily%20unavailable.%20Try%20again.');
 });
 it('keeps returned authentication errors and successful OAuth redirects intact',async()=>{
- state.password.mockResolvedValue({error:{message:'Invalid credentials'}});
+ state.password.mockResolvedValue({error:new AuthApiError('Synthetic internal details',400,'invalid_credentials')});
  await expect(signIn(form('synthetic-password'))).rejects.toThrow('REDIRECT:/login?error=Invalid%20credentials');
  await expect(signInWithGoogle()).rejects.toThrow('REDIRECT:https://provider.example.invalid');
 });
@@ -45,4 +46,8 @@ it('preserves successful logout and missing-configuration behavior',async()=>{
 it('retains the existing signup minimum after excluding surrounding whitespace',async()=>{
  await expect(signUp(form(' abcdef '))).rejects.toThrow('REDIRECT:/login?error=Use%20a%20valid%20email%20and%20a%20password%20of%20at%20least%208%20characters.');
  expect(state.signup).not.toHaveBeenCalled();
+});
+it.each([['password',signIn],['signup',signUp],['oauth',signInWithGoogle]] as const)('does not put unknown %s provider details into a recovery URL',async(method,action)=>{
+ state[method].mockResolvedValue({data:{url:'https://provider.example.invalid'},error:{message:'synthetic-sensitive-session-detail'}});
+ try{await action(form('synthetic-password'));throw Error('Expected a redirect');}catch(error){expect(String(error)).toContain('REDIRECT:/login?error=');expect(String(error)).not.toContain('synthetic-sensitive-session-detail');}
 });

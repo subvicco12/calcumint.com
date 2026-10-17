@@ -1,13 +1,13 @@
 // @vitest-environment jsdom
 import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {afterEach,expect,it,vi} from 'vitest';
-const state=vi.hoisted(()=>{process.env.NEXT_PUBLIC_SUPABASE_URL='https://synthetic.invalid';process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY='synthetic';return {userId:'synthetic-owner',deferCounts:false,pendingCounts:[] as ((value:unknown)=>void)[],plan:'pro',profileError:true,accountError:true,authError:false,profileReads:0,callbacks:new Set<(event:string,session:{user:{id:string}}|null)=>void>()};});
-vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>({auth:{getUser:async()=>({data:{user:state.authError||!state.userId?null:{id:state.userId}},error:state.authError?{}:null}),onAuthStateChange:(cb:(event:string,session:{user:{id:string}}|null)=>void)=>{state.callbacks.add(cb);return {data:{subscription:{unsubscribe:()=>state.callbacks.delete(cb)}}};}},from:(table:string)=>{const query={select:()=>query,eq:()=>query,maybeSingle:async()=>{if(table==='profiles'){state.profileReads++;return {data:{plan:state.plan},error:state.profileError?{}:null};}return {data:null,error:state.accountError?{}:null};},then:(resolve:(value:unknown)=>unknown)=>(state.deferCounts?new Promise(r=>state.pendingCounts.push(r)):Promise.resolve({count:0,error:state.accountError?{}:null})).then(resolve)};return query;}})}));
+const state=vi.hoisted(()=>{process.env.NEXT_PUBLIC_SUPABASE_URL='https://synthetic.invalid';process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY='synthetic';return {userId:'synthetic-owner',deferCounts:false,pendingCounts:[] as ((value:unknown)=>void)[],plan:'pro',profileError:true,accountError:true,authError:false,authFailure:null as unknown,profileReads:0,callbacks:new Set<(event:string,session:{user:{id:string}}|null)=>void>()};});
+vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>({auth:{getUser:async()=>({data:{user:state.authError||!state.userId?null:{id:state.userId}},error:state.authError?{}:state.authFailure}),onAuthStateChange:(cb:(event:string,session:{user:{id:string}}|null)=>void)=>{state.callbacks.add(cb);return {data:{subscription:{unsubscribe:()=>state.callbacks.delete(cb)}}};}},from:(table:string)=>{const query={select:()=>query,eq:()=>query,maybeSingle:async()=>{if(table==='profiles'){state.profileReads++;return {data:{plan:state.plan},error:state.profileError?{}:null};}return {data:null,error:state.accountError?{}:null};},then:(resolve:(value:unknown)=>unknown)=>(state.deferCounts?new Promise(r=>state.pendingCounts.push(r)):Promise.resolve({count:0,error:state.accountError?{}:null})).then(resolve)};return query;}})}));
 import {CalculatorAccountActions} from './calculator-account-actions';
 import {useCalculatorPlan} from './use-calculator-plan';
 function OtherConsumer(){return <output data-testid="other-plan">{useCalculatorPlan()}</output>;}
 function App(){return <><OtherConsumer/><CalculatorAccountActions calculatorSlug="sip-calculator" calculatorVersion={1} input={{rate:0}} output={{value:0.001}}/></>;}
-afterEach(()=>{cleanup();Object.assign(state,{userId:'synthetic-owner',deferCounts:false,pendingCounts:[],plan:'pro',profileError:true,accountError:true,authError:false,profileReads:0});state.callbacks.clear();});
+afterEach(()=>{cleanup();Object.assign(state,{userId:'synthetic-owner',deferCounts:false,pendingCounts:[],plan:'pro',profileError:true,accountError:true,authError:false,authFailure:null as unknown,profileReads:0});state.callbacks.clear();});
 it.each(['pro','business'])('recovers both account actions and separate analysis entitlements to %s without another auth event',async plan=>{
  state.plan=plan;render(<App/>);await screen.findByRole('button',{name:'Retry account actions'});await waitFor(()=>expect(state.profileReads).toBe(2));
  state.accountError=false;state.profileError=false;fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
@@ -55,6 +55,17 @@ it('does not steal focus when the user moves elsewhere while recovery is pending
 it('returns keyboard focus to sign-in when recovery confirms an expired session',async()=>{
  state.profileError=false;render(<App/>);const retry=await screen.findByRole('button',{name:'Retry account actions'});retry.focus();
  state.userId='';state.accountError=false;fireEvent.click(retry);
- const login=await screen.findByRole('link',{name:'Sign in to save this calculation'});expect(document.activeElement).toBe(login);
+ const login=await screen.findByRole('link',{name:'Sign in to save this calculation'});await waitFor(()=>expect(document.activeElement).toBe(login));
  expect(screen.queryByRole('button',{name:'Export JSON'})).toBeNull();expect(screen.getByTestId('other-plan').textContent).toBe('free');
+});
+it('offers reauthentication after a known missing-session error without exposing raw details',async()=>{
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authFailure=new AuthSessionMissingError();
+ render(<App/>);const login=await screen.findByRole('link',{name:'Sign in to save this calculation'});expect(login.getAttribute('href')).toBe('/login');
+ expect(screen.queryByRole('button',{name:'Retry account actions'})).toBeNull();expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();expect(document.body.textContent).not.toContain('Auth session missing');
+});
+it('moves retry keyboard focus to reauthentication when the SDK confirms a missing session',async()=>{
+ state.profileError=false;render(<App/>);const retry=await screen.findByRole('button',{name:'Retry account actions'});retry.focus();
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authFailure=new AuthSessionMissingError();fireEvent.click(retry);
+ const login=await screen.findByRole('link',{name:'Sign in to save this calculation'});await waitFor(()=>expect(document.activeElement).toBe(login));
+ expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();expect(screen.getByTestId('other-plan').textContent).toBe('free');
 });

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import {requiresSignIn} from "@/lib/auth-recovery";
 import {requestAccountRecovery} from '@/lib/account-recovery';
 import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
@@ -92,8 +93,8 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       try{
         const auth=await supabase.auth.getUser();
         if(!active)return;
-        if(auth.error)throw new Error("Account authentication unavailable");
-        const user=auth.data.user;
+        if(auth.error&&!requiresSignIn(auth.error))throw new Error("Account authentication unavailable");
+        const user=auth.error?null:auth.data.user;
         if(!user){accountOwner.current=null;setReadFailure(false);setSignedIn(false);return;}
         const [favoriteResult,favoriteCountResult,historyCountResult]=await Promise.all([
           supabase.from("favorites").select("id").eq("user_id",user.id).eq("calculator_slug",calculatorSlug).maybeSingle(),
@@ -103,7 +104,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         if(!active)return;
         if(favoriteResult.error||favoriteCountResult.error||historyCountResult.error||!Number.isSafeInteger(favoriteCountResult.count)||favoriteCountResult.count!<0||!Number.isSafeInteger(historyCountResult.count)||historyCountResult.count!<0)throw new Error("Account state unavailable");
         accountOwner.current=user.id;setFavorite(Boolean(favoriteResult.data));setReadFailure(false);setSignedIn(true);
-      }catch{if(active){setReadFailure(true);setSignedIn(null);}}
+      }catch(error){if(active){if(requiresSignIn(error)){accountOwner.current=null;setReadFailure(false);setSignedIn(false);}else{setReadFailure(true);setSignedIn(null);}}}
       finally{if(active)readRetryLock.current=false;}
     })();
     return () => { active = false; };

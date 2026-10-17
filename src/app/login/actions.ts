@@ -1,5 +1,6 @@
 "use server";
 
+import {authFailureMessage} from "@/lib/auth-recovery";
 import { redirect } from "next/navigation";
 import { publicEnv } from "@/lib/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -36,7 +37,7 @@ export async function signIn(formData: FormData) {
   if (!email || !password) loginError("Email and password are required.");
 
   const { error } = await authenticationRequest(() => supabase.auth.signInWithPassword({ email, password }));
-  if (error) loginError(error.message);
+  if (error) loginError(authFailureMessage(error, "signin"));
   redirect("/account");
 }
 
@@ -57,7 +58,7 @@ export async function signUp(formData: FormData) {
       data: { display_name: displayName }
     }
   }));
-  if (error) loginError(error.message);
+  if (error) loginError(authFailureMessage(error, "signup"));
   redirect("/login?message=Check%20your%20email%20to%20confirm%20your%20account.");
 }
 
@@ -69,7 +70,7 @@ export async function signInWithGoogle() {
     provider: "google",
     options: { redirectTo: `${publicEnv.NEXT_PUBLIC_SITE_URL}/auth/callback?next=/account` }
   }));
-  if (error || !data.url) loginError(error?.message ?? "Google sign-in could not start.");
+  if (error || !data.url) loginError(authFailureMessage(error, "oauth"));
   redirect(data.url);
 }
 
