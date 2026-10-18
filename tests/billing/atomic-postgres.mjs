@@ -1,5 +1,6 @@
 // Disposable local PostgreSQL/PostgREST only. No production URL/credentials; HTTP stays on an inspected internal Docker address; no published ports.
 import assert from 'node:assert/strict';
+import { verifyClientPrivileges } from './client-privileges.mjs';
 import { spawn } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
@@ -75,6 +76,8 @@ try {
   await assert.rejects(sql(proposal), /PROPOSAL ONLY/);
   // Remove the guard only in this isolated container's stdin, never the document.
   await sql(proposal.replace(guard, ''));
+  await sql('CREATE DATABASE client_privileges;');
+  await verifyClientPrivileges(text => command(['exec','-i',name,'psql','-h','127.0.0.1','-X','-qAt','-v','ON_ERROR_STOP=1','-U','postgres','-d','client_privileges'], text), proposal.replace(guard, ''));
   await sql('GRANT SELECT, INSERT ON public.billing_webhook_events TO service_role;');
   await sql(`GRANT SELECT ON public.billing_customers, public.subscriptions TO authenticated;
     CREATE FUNCTION public.inject_billing_failure() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN

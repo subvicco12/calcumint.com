@@ -668,3 +668,9 @@ Validation: **54 disposable PostgreSQL cases** (25 transaction +10 RPC +19 nativ
 | Provider event/snapshot authority | Offline signatures and synthetic snapshots only | Provider/billing owner establishes authenticity, event identity and snapshot freshness contract |
 
 No production calls or writes, migrations outside disposable fixtures, live payments, merges or deployment. SQL remains guarded and unapplied. Full production atomicity, exactly-once delivery and independently verified production grants are NOT established. All 1,636 authority decisions remain UNKNOWN; Mortgage/BMI decisions remain blocked. RELEASE HOLD remains active.
+
+## Client-role privilege hardening — 18 October 2026
+
+Owner-supplied excessive SQL grants are addressed by **unapplied migration 038**, cumulative from #1439. Anon receives no privileges on profiles/preferences/subscriptions/customers; authenticated retains profile SELECT + display_name UPDATE, preferences SELECT/INSERT/UPDATE, and billing SELECT only. Direct table, column and PUBLIC excess grants are removed; residual inherited grants abort/roll back the transaction. RLS, table owners, explicit service_role grants, atomic RPC proposals, immutable evidence and formulas are unchanged.
+
+Disposable tests reproduce anon TRUNCATE despite RLS (rolled back), then prove 37 actual forbidden statements denied, bootstrap/account/preferences compatibility, unchanged policies, idempotent application, rollback on inherited excess privileges and successful proposed atomic RPC use after hardening. Existing billing tests are retained. Full matrix, evidence scope and ordered owner actions: [client privilege proposal](CLIENT-ROLE-PRIVILEGE-HARDENING-2026-10-18.md). Production ACL attestation, deployment ordering/authorization and external privileged dependencies remain owner decisions. No production SQL or migration application. All external approvals remain UNKNOWN. RELEASE HOLD.
