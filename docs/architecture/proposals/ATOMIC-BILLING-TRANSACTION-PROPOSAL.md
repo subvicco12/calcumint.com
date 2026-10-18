@@ -1,6 +1,6 @@
 # Atomic billing transaction proposal — NOT APPROVED OR APPLIED
 
-This is a review artifact, outside `supabase/migrations`. No application calls these proposed functions. No schema changes or PostgreSQL execution have occurred. The leading transaction guard deliberately aborts the complete SQL block if copied into a SQL client. Remove it only after explicit approval and isolated PostgreSQL acceptance testing. TypeScript/mocked tests do not verify this SQL.
+This is a review artifact, outside `supabase/migrations`. No application calls these proposed functions. No production schema changes have occurred. The proposal has now been executed only in disposable, network-isolated PostgreSQL acceptance fixtures (see the evidence below). The leading transaction guard deliberately aborts the complete SQL block if copied into a SQL client. Remove it for deployment only after explicit approval; the acceptance harness removes the exact guard only from its disposable-container input. TypeScript/mocked tests do not verify this SQL.
 
 The current event-ID primary key does not make independent REST writes atomic. A receipt also does not prove legacy side effects succeeded. This proposal adds a **local account revision fence**, not an invented provider timestamp/version rule, and an atomic-completion marker separate from legacy receipts. It preserves the existing rule that ambiguous paid subscriptions require billing support instead of selecting a winning plan.
 
@@ -176,7 +176,7 @@ COMMIT;
 | Revision beyond JavaScript safe integer | Decimal-string transport preserves the exact fence |
 | Account deletion/retention, privileged writer bypass and deadlock | Explicit policy, role tests and retry/reconciliation evidence |
 
-Still UNKNOWN: actual SQL compilation/rollback/concurrency behavior, deployment-role ownership, provider read-consistency guarantees, payload normalization rules for legacy receipts, retention policy and all privileged-writer participation. Existing application code remains non-atomic until this proposal is approved, applied through authorized change control and integrated/tested. No exactly-once claim follows from this draft.
+Verified locally: SQL compilation, injected-write rollback and the concurrency cases below. Still UNKNOWN: deployment-role ownership, provider read-consistency guarantees, payload normalization rules for legacy receipts, retention policy and all privileged-writer participation. Existing application code remains non-atomic until this proposal is approved, applied through authorized change control and integrated/tested. No exactly-once claim follows from this draft.
 
 ## Reproduced blocked concurrency case
 
@@ -185,3 +185,27 @@ An offline diagnostic starts an active provider read and holds its response, pro
 The local fence must be read before the provider GET for the proposed CAS to reject that old response. Reading a new fence after fetching the old snapshot would defeat the protection. The proposal persists only selected non-payment-instrument fields for current-snapshot evidence; retention and privileged-access review still applies.
 
 The current ambiguity guard retains the prior profile while rejecting the notification; it does not establish the correct aggregate tier. That profile may remain over- or under-entitled until reviewed reconciliation. The guard is not a substitute for an approved multiple-subscription policy.
+
+
+## Isolated PostgreSQL acceptance — 18 October 2026
+
+Run `node tests/billing/atomic-postgres.mjs` from the repository root with Docker available. No npm installation or database URL is needed. The harness starts a uniquely named container with `--network none`, no published ports and tmpfs data; it removes that container on completion. The local trust setting is confined to that network-isolated synthetic database. No production environment variables or credentials are supplied. PostgreSQL **16.15**, official `postgres:16-alpine` image digest `sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea`.
+
+The harness executes existing migrations **002**, **030** and **034_billing_webhook_event_privileges** against minimal synthetic auth/profile/history/AI prerequisites. It extracts this exact SQL block, verifies the complete guarded block aborts, then removes only the known guard in memory for local testing. It creates no executable production migration and introduces no application RPC calls. Fixture roles and prerequisites are not a production schema/privilege attestation.
+
+**25 passing acceptance cases:** failure after each of six table writes and a separate fence-increment failure; interrupted backend after writes/before commit; missing profile; bigint exhaustion; revoked service-role execution; concurrent duplicate and post-commit retry with unchanged state; competing distinct events; delayed active snapshot rejected with SQLSTATE `40001` after newer cancellation; conflicting/legacy receipts; concurrent cross-account subscription and customer binding; active/trialing/past_due ambiguity; Business/yearly metadata and cancellation; invalid owner/price; exact bigint string transport; invalid period cast; and client execution/ledger restrictions plus owner-scoped billing reads. Duplicate concurrency explicitly observes the second backend waiting on a database lock. Rollback tests compare every billing table, profile and fence before/after failure.
+
+This proves the proposal's tested PostgreSQL transaction behavior, not production application atomicity or exactly-once delivery. The existing REST webhook still performs separate writes. No financial formulas, calculator versions or history records changed. Mandatory CI is unchanged; a narrowly scoped additional PostgreSQL workflow protects changes to this proposal, its harness and the three billing migrations.
+
+### Minimum adoption decisions and sequence
+
+| Owner / authority | Required evidence or decision | Current state |
+| --- | --- | --- |
+| Database/security owner | Actual schema drift, function owner, service-role grants/BYPASSRLS, fixed search path, backup/rollback and migration review | UNKNOWN; synthetic fixture only |
+| Billing/application maintainer | Inventory every privileged subscription/profile writer; require the same account fence/lock or explicit invalidation; forbid revision reuse with old provider snapshots | Required before application wiring |
+| Payment-provider integration owner | Provider GET freshness semantics, normalized immutable event fields, valid status/price/period evidence and retry/reconciliation limits | Existing application semantics preserved; external guarantees UNKNOWN |
+| Billing support + data owner | Resolve legacy receipts without atomic markers and multiple-paid-subscription ambiguity; never backfill success from receipt existence | Review required; blocked automatically |
+| Security/privacy + data owner | Receipt/minimal-snapshot retention, account deletion/cascade policy and privileged audit access | UNKNOWN; no retention policy invented |
+| Application maintainer + database reviewer | Implement guarded RPC orchestration and response mapping: `40001`/`40P01` require reconciliation + new fence/provider GET, conflicts require review, uncertain outcomes require matching atomic completion lookup | Not wired; live deadlock/recovery and RPC transport still unverified |
+
+Order: resolve schema/role/writer and retention decisions → review versioned migration/rollback proposal → authorize isolated full-schema integration → implement and test server orchestration against that contract → authorized migration/deployment review. None of these approvals or applications is performed here. A lost response after commit is reconciled by the existing immutable event plus atomic marker; an interrupted uncommitted transaction rolls back. Event ID uniqueness is a database constraint, not an exactly-once network guarantee. Unrelated privileged writes can defeat fencing until all writers participate.
