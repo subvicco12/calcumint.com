@@ -9,16 +9,17 @@ import { requiresSignIn } from "@/lib/auth-recovery";
 
 type PaidPlan = Exclude<PlanId, "free">;
 type ProrationPreview = { immediateTotal: string | null; currencyCode: string | null; charge: string | null; credit: string | null; result: string | null };
+type PaddleEvent = { name?: string; data?: { transaction_id?: unknown } };
 type PaddleApi = {
   Environment: { set: (environment: "sandbox" | "production") => void };
-  Initialize: (options: { token: string; eventCallback?: (event: { name?: string }) => void }) => void;
+  Initialize: (options: { token: string; eventCallback?: (event: PaddleEvent) => void }) => void;
   Checkout: { open: (options: { transactionId: string; settings?: { displayMode?: "overlay"; theme?: "light" | "dark" } }) => void };
 };
 declare global { interface Window { Paddle?: PaddleApi; } }
 let paddleReady: Promise<PaddleApi> | null = null;
 let paddleInstance: PaddleApi | null = null;
 let paddleInitialized = false;
-const paddleEventListeners = new Set<(event: { name?: string }) => void>();
+const paddleEventListeners = new Set<(event: PaddleEvent) => void>();
 
 function loadPaddle(): Promise<PaddleApi> {
   if (paddleReady) return paddleReady;
@@ -32,7 +33,7 @@ function loadPaddle(): Promise<PaddleApi> {
       try {
         if (!paddleInitialized) {
           paddle.Environment.set(publicEnv.NEXT_PUBLIC_PADDLE_ENV);
-          paddle.Initialize({ token, eventCallback: (event) => { for (const listener of paddleEventListeners) listener(event); } });
+          paddle.Initialize({ token, eventCallback: (event) => { if (!event || typeof event !== "object") return; for (const listener of paddleEventListeners) listener(event); } });
           paddleInitialized = true;
         }
         paddleInstance = paddle;
@@ -71,6 +72,7 @@ export function PlanCheckoutButton(props: CheckoutButtonProps) {
 function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButtonProps) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+  const [needsReconciliation, setNeedsReconciliation] = useState(false);
   const [error, setError] = useState("");
   const [confirmation, setConfirmation] = useState(false);
   const [preview, setPreview] = useState<ProrationPreview | null>(null);
@@ -80,14 +82,14 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
   const descriptionId = useId();
   const lifetime = useRef<object | null>(null), requestIdentity = useRef<object | null>(null);
   const owner = useRef<string | null>(null), previewOwner = useRef<string | null>(null), locked = useRef(false);
-  const checkoutEvent = useRef<((event: { name?: string }) => void) | null>(null);
+  const checkoutEvent = useRef<((event: PaddleEvent) => void) | null>(null);
   const planLabel = plan === "business" ? "Business" : "Pro";
 
   function invalidate() {
     requestIdentity.current = null; owner.current = null; previewOwner.current = null; locked.current = false;
     if (checkoutEvent.current) paddleEventListeners.delete(checkoutEvent.current);
     checkoutEvent.current = null;
-    setConfirmation(false); setPreview(null); setBusy(false);
+    setConfirmation(false); setPreview(null); setBusy(false); setNeedsReconciliation(false);
   }
 
   useLayoutEffect(() => {
@@ -118,12 +120,12 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
   }
 
   async function requestBillingChange(confirmed = false) {
-    if (locked.current || disabledReason || (confirmed && !previewOwner.current)) return;
+    if (locked.current || needsReconciliation || disabledReason || (confirmed && !previewOwner.current)) return;
     locked.current = true;
     const scope = lifetime.current, request = requestIdentity.current = {};
     const current = () => scope !== null && lifetime.current === scope && requestIdentity.current === request;
     const client = createSupabaseBrowserClient();
-    let overlayOpen = false;
+    let overlayOpen = false, transactionAvailable = false;
     const accountChanged = () => { if (current()) { invalidate(); setError("Your account session changed. Choose your plan again."); } };
     async function verifyOwner(expected?: string | null) {
       if (!current()) return null;
@@ -139,7 +141,7 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
       return auth.data.user.id;
     }
     setBusy(true); setError("");
-    let handleCheckoutEvent: ((event: { name?: string }) => void) | null = null;
+    let handleCheckoutEvent: ((event: PaddleEvent) => void) | null = null;
     try {
       const verifiedOwner = await verifyOwner(confirmed ? previewOwner.current : null);
       if (!verifiedOwner) return;
@@ -154,17 +156,26 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
       if (!response.ok) throw new Error(payload.error ?? "Checkout unavailable");
       if (payload.confirmationRequired) { previewOwner.current = verifiedOwner; setPreview(payload.prorationPreview ?? null); setConfirmation(true); setBusy(false); return; }
       if (payload.updated) { router.push(`/account?billing=updated&plan=${plan}&interval=${interval}`); router.refresh(); return; }
-      if (!payload.transactionId) throw new Error(payload.error ?? "Checkout unavailable");
+      if (typeof payload.transactionId !== "string" || !payload.transactionId.trim()) throw new Error(payload.error ?? "Checkout unavailable");
+      transactionAvailable = true;
       const paddle = await loadPaddle();
       if (!await verifyOwner(verifiedOwner)) return;
-      const listener = (event: { name?: string }) => {
-        if (!current() || (event.name !== "checkout.completed" && event.name !== "checkout.closed")) return;
+      const listener = (event: PaddleEvent) => {
+        if (!current() || event.data?.transaction_id !== payload.transactionId || (event.name !== "checkout.completed" && event.name !== "checkout.closed")) return;
         paddleEventListeners.delete(listener); checkoutEvent.current = null;
-        void verifyOwner(verifiedOwner).then(id => {
+        void verifyOwner(verifiedOwner).then(async id => {
           if (!id) return;
+          if (event.name === "checkout.completed") {
+            // Browser events are hints. Only authenticated server/provider evidence can confirm this transaction.
+            const query = new URLSearchParams({transactionId:payload.transactionId!,expectedOwnerId:verifiedOwner,plan,interval});
+            const response = await fetch(`/api/billing/checkout/status?${query}`, {cache:"no-store"});
+            const evidence = await response.json() as {verified?:unknown};
+            if (!await verifyOwner(verifiedOwner)) return;
+            if (!response.ok || evidence.verified !== true) throw new Error("Unverified checkout");
+          }
           locked.current = false; setBusy(false);
           if (event.name === "checkout.completed") window.location.assign(`/account?billing=completed&plan=${plan}&interval=${interval}`);
-        }).catch(() => { if (current()) { locked.current = false; setBusy(false); setError("We could not verify checkout completion. Check your account before retrying."); } });
+        }).catch(() => { if (current()) { locked.current = false; setBusy(false); setNeedsReconciliation(true); setError("We could not verify checkout completion. Check your account before retrying."); } });
       };
       handleCheckoutEvent = listener; checkoutEvent.current = listener; paddleEventListeners.add(listener);
       overlayOpen = true;
@@ -174,7 +185,13 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
       overlayOpen = false;
       if (!current()) return;
       if (owner.current) { try { if (!await verifyOwner(owner.current)) return; } catch { if (!current()) return; } }
-      if (current()) { setError(caught instanceof Error ? caught.message : "Checkout unavailable"); setBusy(false); }
+      if (current()) {
+        if (transactionAvailable) {
+          setNeedsReconciliation(true); setConfirmation(false); setPreview(null); previewOwner.current = null;
+          setError("Checkout was interrupted. Check your account before retrying.");
+        } else setError(caught instanceof Error ? caught.message : "Checkout unavailable");
+        setBusy(false);
+      }
     } finally {
       if (current() && !overlayOpen) { locked.current = false; setBusy(false); }
     }
@@ -185,7 +202,7 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
 
   return (
     <div className="checkout-action">
-      <button ref={triggerRef} className="button primary" type="button" disabled={busy || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
+      <button ref={triggerRef} className="button primary" type="button" disabled={busy || needsReconciliation || Boolean(disabledReason)} onClick={() => requestBillingChange(false)}>
         {busy ? "Checking price…" : `Choose ${planLabel} ${interval}`}
       </button>
       {confirmation && (
@@ -202,6 +219,7 @@ function CheckoutSessionButton({ plan, interval, disabledReason }: CheckoutButto
       )}
       {disabledReason && <small className="muted-copy">{disabledReason}</small>}
       {error && <small className="error-text" role="alert">{error}</small>}
+      {(busy || needsReconciliation) && <a href="/account">Check account</a>}
     </div>
   );
 }

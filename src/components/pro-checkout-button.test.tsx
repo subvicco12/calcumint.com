@@ -20,7 +20,7 @@ vi.mock("@/lib/env", () => ({
   }
 }));
 
-type PaddleEvent = { name?: string };
+type PaddleEvent = { name?: string; data?: {transaction_id?: unknown} };
 
 describe("PlanCheckoutButton", () => {
   beforeEach(() => {
@@ -45,11 +45,12 @@ describe("PlanCheckoutButton", () => {
       Checkout: { open }
     };
 
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({
+    const transport=vi.fn().mockImplementation(async (url:string)=>url.startsWith('/api/billing/checkout/status?')?{status:202,ok:true,json:async()=>({verified:false})}:{
       status: 200,
       ok: true,
       json: async () => ({ transactionId: "txn_123" })
-    } satisfies Partial<Response>));
+    } satisfies Partial<Response>);
+    vi.stubGlobal("fetch", transport);
 
     const { PlanCheckoutButton } = await import("./pro-checkout-button");
     render(<PlanCheckoutButton plan="pro" interval="monthly" />);
@@ -62,7 +63,7 @@ describe("PlanCheckoutButton", () => {
       settings: { displayMode: "overlay", theme: "light" }
     }));
 
-    return { button, initialize, open, paddleEventCallback, setEnvironment };
+    return { button, initialize, open, paddleEventCallback, setEnvironment, transport };
   }
 
   it("keeps the button disabled until Paddle closes the checkout", async () => {
@@ -73,7 +74,7 @@ describe("PlanCheckoutButton", () => {
     expect(button).toHaveProperty("disabled", true);
 
     act(() => {
-      paddleEventCallback?.({ name: "checkout.closed" });
+      paddleEventCallback?.({ name: "checkout.closed", data:{transaction_id:'txn_123'} });
     });
 
     await waitFor(() => expect(button).toHaveProperty("disabled", false));
@@ -84,16 +85,35 @@ describe("PlanCheckoutButton", () => {
     expect(initialize).toHaveBeenCalledTimes(1);
   });
 
-  it("re-enables the button when Paddle completes checkout", async () => {
-    const { button, paddleEventCallback } = await renderCheckoutButton();
+  it("requires server evidence and reconciliation before accepting browser completion", async () => {
+    const { button, paddleEventCallback, transport } = await renderCheckoutButton();
 
     expect(button).toHaveProperty("disabled", true);
 
     act(() => {
-      paddleEventCallback?.({ name: "checkout.completed" });
+      paddleEventCallback?.({ name: "checkout.completed", data:{transaction_id:'txn_123'} });
     });
 
-    await waitFor(() => expect(button).toHaveProperty("disabled", false));
+    await screen.findByRole('alert');expect(screen.getByRole('link',{name:'Check account'})).toBeTruthy();expect(button).toHaveProperty('disabled',true);expect(transport.mock.calls.some(([url])=>url.startsWith('/api/billing/checkout/status?'))).toBe(true);
+  });
+
+  it.each([undefined,{}, {transaction_id:'different-transaction'}, {transaction_id:42}])('ignores uncorrelated terminal events: %j',async data=>{
+    const {button,paddleEventCallback,transport}=await renderCheckoutButton();await act(async()=>{paddleEventCallback?.({name:'checkout.closed',data});});expect(button).toHaveProperty('disabled',true);expect(transport).toHaveBeenCalledTimes(1);
+    await act(async()=>{paddleEventCallback?.({name:'checkout.closed',data:{transaction_id:'txn_123'}});});await waitFor(()=>expect(button).toHaveProperty('disabled',false));
+  });
+
+  it('consumes duplicate completion callbacks once without replaying a billing POST',async()=>{
+    const {paddleEventCallback,transport}=await renderCheckoutButton();await act(async()=>{for(let i=0;i<3;i++)paddleEventCallback?.({name:'checkout.completed',data:{transaction_id:'txn_123'}});});await screen.findByRole('alert');expect(transport.mock.calls.filter(([url])=>url.startsWith('/api/billing/checkout/status?'))).toHaveLength(1);expect(transport.mock.calls.filter(([url])=>url==='/api/billing/checkout')).toHaveLength(1);
+  });
+
+  it('ignores malformed callback envelopes without crashing the active checkout',async()=>{
+    const {button,paddleEventCallback}=await renderCheckoutButton();expect(()=>paddleEventCallback?.(null as unknown as PaddleEvent)).not.toThrow();expect(button).toHaveProperty('disabled',true);
+  });
+  it.each([null,42,''])('never opens a provider checkout with invalid transaction identity %j',async transactionId=>{
+    const open=vi.fn();window.Paddle={Environment:{set:vi.fn()},Initialize:vi.fn(),Checkout:{open}};vi.stubGlobal('fetch',vi.fn().mockResolvedValue({status:200,ok:true,json:async()=>({transactionId})}));const {PlanCheckoutButton}=await import('./pro-checkout-button');render(<PlanCheckoutButton plan="pro" interval="monthly"/>);fireEvent.click(screen.getByRole('button',{name:'Choose Pro monthly'}));await screen.findByRole('alert');expect(open).not.toHaveBeenCalled();
+  });
+  it('requires reconciliation after a created transaction cannot open its overlay',async()=>{
+    const transport=vi.fn().mockResolvedValue({status:200,ok:true,json:async()=>({transactionId:'txn_123'})});vi.stubGlobal('fetch',transport);window.Paddle={Environment:{set:vi.fn()},Initialize:vi.fn(),Checkout:{open:vi.fn(()=>{throw new Error('Synthetic interrupted overlay');})}};const {PlanCheckoutButton}=await import('./pro-checkout-button');render(<PlanCheckoutButton plan="pro" interval="monthly"/>);const button=screen.getByRole('button',{name:'Choose Pro monthly'});fireEvent.click(button);await screen.findByRole('alert');expect(button).toHaveProperty('disabled',true);expect(screen.getByRole('link',{name:'Check account'})).toBeTruthy();fireEvent.click(button);expect(transport).toHaveBeenCalledTimes(1);
   });
 
   it("moves keyboard focus into the confirmation and restores the trigger on Escape", async () => {
