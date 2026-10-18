@@ -1,0 +1,476 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "evidenceId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "sourceKind": {
+          "type": "string",
+          "enum": [
+            "user-verified-aggregate",
+            "independent-read-only-db-export"
+          ]
+        },
+        "receivedOn": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+        },
+        "observedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z))$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "payloadSha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "evidenceId",
+        "sourceKind",
+        "receivedOn",
+        "observedAt",
+        "payloadSha256"
+      ],
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "aggregate-only",
+        "partial-rows",
+        "complete-published-population"
+      ]
+    },
+    "aggregates": {
+      "type": "object",
+      "properties": {
+        "publishedIdentities": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "riskClass": {
+          "type": "string",
+          "enum": [
+            "standard",
+            "financial",
+            "health",
+            "tax"
+          ]
+        },
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qaIdentities": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qaChecks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qaPassed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qaWaived": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "passedPerIdentity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "waivedPerIdentity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "sourceRecords": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "sourceIdentities": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "publishedIdentities",
+        "riskClass",
+        "version",
+        "qaIdentities",
+        "qaChecks",
+        "qaPassed",
+        "qaWaived",
+        "passedPerIdentity",
+        "waivedPerIdentity",
+        "sourceRecords",
+        "sourceIdentities"
+      ],
+      "additionalProperties": false
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "calculatorKey": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9.-]*$"
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "version": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          },
+          "lifecycle": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "review",
+              "certified",
+              "published",
+              "archived"
+            ]
+          },
+          "riskClass": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "financial",
+              "health",
+              "tax"
+            ]
+          },
+          "rulePackRequired": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string",
+                "const": "UNKNOWN"
+              }
+            ]
+          },
+          "qa": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "checkType": {
+                      "type": "string",
+                      "enum": [
+                        "engine-tests",
+                        "formula-review",
+                        "sources",
+                        "methodology",
+                        "reverse-solve",
+                        "visualization-reconciliation",
+                        "schedule-reconciliation",
+                        "scenario-reconciliation",
+                        "sensitivity-validation",
+                        "entitlement-validation",
+                        "ux-responsive",
+                        "performance",
+                        "security",
+                        "seo-content",
+                        "accessibility",
+                        "rule-pack-validation",
+                        "ymyl-review"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "passed",
+                        "failed",
+                        "waived"
+                      ]
+                    },
+                    "authorityRole": {
+                      "type": "string",
+                      "enum": [
+                        "owner",
+                        "admin",
+                        "reviewer",
+                        "editor",
+                        "UNKNOWN"
+                      ]
+                    },
+                    "decisionRef": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "rationaleRef": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "checkType",
+                    "status",
+                    "authorityRole",
+                    "decisionRef",
+                    "rationaleRef"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sources": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "sourceRef": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "sourceKind": {
+                      "type": "string",
+                      "enum": [
+                        "reference",
+                        "official",
+                        "methodology"
+                      ]
+                    },
+                    "reviewRef": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "sourceRef",
+                    "sourceKind",
+                    "reviewRef"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reviews": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "certification",
+                        "specialist",
+                        "publication"
+                      ]
+                    },
+                    "decision": {
+                      "type": "string",
+                      "enum": [
+                        "approved",
+                        "HOLD",
+                        "rejected",
+                        "UNKNOWN"
+                      ]
+                    },
+                    "authorityRole": {
+                      "type": "string",
+                      "enum": [
+                        "owner",
+                        "admin",
+                        "reviewer",
+                        "editor",
+                        "UNKNOWN"
+                      ]
+                    },
+                    "decisionRef": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "engineCommit": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{40}$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "kind",
+                    "decision",
+                    "authorityRole",
+                    "decisionRef",
+                    "engineCommit"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "masterMapping": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "masterId": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  "decision": {
+                    "type": "string",
+                    "enum": [
+                      "approved",
+                      "HOLD",
+                      "rejected",
+                      "UNKNOWN"
+                    ]
+                  },
+                  "authorityRole": {
+                    "type": "string",
+                    "enum": [
+                      "owner",
+                      "admin",
+                      "reviewer",
+                      "editor",
+                      "UNKNOWN"
+                    ]
+                  },
+                  "decisionRef": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[a-f0-9]{64}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "masterId",
+                  "decision",
+                  "authorityRole",
+                  "decisionRef"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "calculatorKey",
+          "slug",
+          "version",
+          "lifecycle",
+          "riskClass",
+          "rulePackRequired",
+          "qa",
+          "sources",
+          "reviews",
+          "masterMapping"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "provenance",
+    "scope",
+    "aggregates",
+    "rows"
+  ],
+  "additionalProperties": false
+}
