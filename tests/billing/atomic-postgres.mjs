@@ -37,7 +37,7 @@ let count = 0;
 let created = false;
 async function test(label, run) { await reset(); await run(); count++; console.log(`PASS ${label}`); }
 try {
-  await command(['run', '-d', '--rm', '--name', name, '--network', 'none', '--tmpfs', '/var/lib/postgresql/data', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust', image]);
+  await command(['run', '-d', '--rm', '--name', name, '--network', 'none', '--label', 'calcumint.billing-fixture=true', '--tmpfs', '/var/lib/postgresql/data', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust', image]);
   created = true;
   for (let attempt = 0; ; attempt++) {
     try { await sql('SELECT 1;'); break; } catch (error) {
@@ -237,6 +237,13 @@ try {
     await assert.rejects(sql(`SET ROLE authenticated; UPDATE public.subscriptions SET status='active';`), /permission denied/);
   });
   console.log(`${count} PostgreSQL acceptance cases passed; proposal remains guarded and unwired.`);
+  await new Promise((resolve,reject)=>{
+    const child=spawn(process.execPath,['node_modules/vitest/vitest.mjs','run','--config','tests/billing/vitest.postgres.config.ts'],{
+      stdio:'inherit',env:{...process.env,CALCUMINT_BILLING_TEST_CONTAINER:name},timeout:120_000
+    });
+    child.on('error',reject);
+    child.on('close',code=>code===0?resolve():reject(new Error(`Atomic RPC integration failed: ${code}`)));
+  });
 } finally {
   if (created) await command(['rm', '-f', name]);
 }

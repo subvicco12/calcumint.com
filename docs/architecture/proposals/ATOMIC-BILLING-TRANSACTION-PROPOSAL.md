@@ -1,6 +1,6 @@
 # Atomic billing transaction proposal — NOT APPROVED OR APPLIED
 
-This is a review artifact, outside `supabase/migrations`. No application calls these proposed functions. No production schema changes have occurred. The proposal has now been executed only in disposable, network-isolated PostgreSQL acceptance fixtures (see the evidence below). The leading transaction guard deliberately aborts the complete SQL block if copied into a SQL client. Remove it for deployment only after explicit approval; the acceptance harness removes the exact guard only from its disposable-container input. TypeScript/mocked tests do not verify this SQL.
+This is a review artifact, outside `supabase/migrations`. No application route calls these proposed functions; isolated orchestration uses test-supplied storage only. No production schema changes have occurred. The proposal has now been executed only in disposable, network-isolated PostgreSQL acceptance fixtures (see the evidence below). The leading transaction guard deliberately aborts the complete SQL block if copied into a SQL client. Remove it for deployment only after explicit approval; the acceptance harness removes the exact guard only from its disposable-container input. TypeScript/mocked tests do not verify this SQL.
 
 The current event-ID primary key does not make independent REST writes atomic. A receipt also does not prove legacy side effects succeeded. This proposal adds a **local account revision fence**, not an invented provider timestamp/version rule, and an atomic-completion marker separate from legacy receipts. It preserves the existing rule that ambiguous paid subscriptions require billing support instead of selecting a winning plan.
 
@@ -45,6 +45,40 @@ RETURNS text LANGUAGE sql STABLE SECURITY DEFINER
 SET search_path = pg_catalog, public AS $$
   SELECT COALESCE((SELECT revision::text FROM public.billing_account_fences
                    WHERE user_id = p_user_id), '0');
+$$;
+
+-- Read-only reconciliation: receipt existence alone never establishes atomic completion.
+CREATE FUNCTION public.read_verified_billing_completion_v1(p_user_id uuid, p_event jsonb)
+RETURNS jsonb LANGUAGE plpgsql STABLE SECURITY DEFINER
+SET search_path = pg_catalog, public AS $$
+DECLARE
+  v_receipt public.billing_webhook_events%ROWTYPE;
+  v_completion public.billing_atomic_completions%ROWTYPE;
+BEGIN
+  IF p_user_id IS NULL OR jsonb_typeof(p_event) IS DISTINCT FROM 'object'
+     OR COALESCE(p_event->>'event_id', '') = ''
+     OR COALESCE(p_event->>'event_type', '') NOT LIKE 'subscription.%'
+     OR COALESCE(p_event#>>'{data,id}', '') = ''
+     OR p_event#>>'{data,custom_data,calcumint_user_id}' IS DISTINCT FROM p_user_id::text THEN
+    RAISE EXCEPTION 'Invalid verified billing receipt';
+  END IF;
+  SELECT * INTO v_receipt FROM public.billing_webhook_events
+    WHERE event_id = p_event->>'event_id';
+  IF NOT FOUND THEN RETURN jsonb_build_object('status','missing'); END IF;
+  IF v_receipt.payload IS DISTINCT FROM p_event
+     OR v_receipt.event_type IS DISTINCT FROM p_event->>'event_type' THEN
+    RAISE EXCEPTION 'Conflicting event receipt';
+  END IF;
+  SELECT * INTO v_completion FROM public.billing_atomic_completions
+    WHERE event_id = p_event->>'event_id';
+  IF NOT FOUND THEN RAISE EXCEPTION 'Legacy receipt requires review'; END IF;
+  IF v_completion.user_id IS DISTINCT FROM p_user_id
+     OR v_completion.provider_subscription_id IS DISTINCT FROM p_event#>>'{data,id}'
+     OR v_completion.provider_snapshot->>'subscription_id' IS DISTINCT FROM p_event#>>'{data,id}' THEN
+    RAISE EXCEPTION 'Atomic completion identity conflict';
+  END IF;
+  RETURN jsonb_build_object('status','completed','revision',v_completion.revision::text);
+END;
 $$;
 
 CREATE FUNCTION public.apply_verified_billing_event_v1(
@@ -152,9 +186,11 @@ BEGIN
   RETURN jsonb_build_object('status','applied','revision',v_revision::text);
 END;
 $$;
+REVOKE ALL ON FUNCTION public.read_verified_billing_completion_v1(uuid,jsonb) FROM PUBLIC, anon, authenticated;
 REVOKE ALL ON FUNCTION public.read_billing_fence_v1(uuid) FROM PUBLIC, anon, authenticated;
 REVOKE ALL ON FUNCTION public.apply_verified_billing_event_v1(uuid,bigint,jsonb,jsonb,text,text,text)
   FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.read_verified_billing_completion_v1(uuid,jsonb) TO service_role;
 GRANT EXECUTE ON FUNCTION public.read_billing_fence_v1(uuid) TO service_role;
 GRANT EXECUTE ON FUNCTION public.apply_verified_billing_event_v1(uuid,bigint,jsonb,jsonb,text,text,text)
   TO service_role;
@@ -189,7 +225,7 @@ The current ambiguity guard retains the prior profile while rejecting the notifi
 
 ## Isolated PostgreSQL acceptance — 18 October 2026
 
-Run `node tests/billing/atomic-postgres.mjs` from the repository root with Docker available. No npm installation or database URL is needed. The harness starts a uniquely named container with `--network none`, no published ports and tmpfs data; it removes that container on completion. The local trust setting is confined to that network-isolated synthetic database. No production environment variables or credentials are supplied. PostgreSQL **16.15**, official `postgres:16-alpine` image digest `sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea`.
+Run `node tests/billing/atomic-postgres.mjs` from the repository root with Docker available. Reuse the locked npm test dependencies (`npm ci` on a fresh checkout); no database URL is needed. The harness starts a uniquely named container with `--network none`, no published ports and tmpfs data; it removes that container on completion. The harness also executes the injectable TypeScript orchestrator against these same PostgreSQL functions through a local SQL RPC adapter. The local trust setting is confined to that network-isolated synthetic database. No production environment variables or credentials are supplied. PostgreSQL **16.15**, official `postgres:16-alpine` image digest `sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea`.
 
 The harness executes existing migrations **002**, **030** and **034_billing_webhook_event_privileges** against minimal synthetic auth/profile/history/AI prerequisites. It extracts this exact SQL block, verifies the complete guarded block aborts, then removes only the known guard in memory for local testing. It creates no executable production migration and introduces no application RPC calls. Fixture roles and prerequisites are not a production schema/privilege attestation.
 
@@ -209,3 +245,32 @@ This proves the proposal's tested PostgreSQL transaction behavior, not productio
 | Application maintainer + database reviewer | Implement guarded RPC orchestration and response mapping: `40001`/`40P01` require reconciliation + new fence/provider GET, conflicts require review, uncertain outcomes require matching atomic completion lookup | Not wired; live deadlock/recovery and RPC transport still unverified |
 
 Order: resolve schema/role/writer and retention decisions → review versioned migration/rollback proposal → authorize isolated full-schema integration → implement and test server orchestration against that contract → authorized migration/deployment review. None of these approvals or applications is performed here. A lost response after commit is reconciled by the existing immutable event plus atomic marker; an interrupted uncommitted transaction rolls back. Event ID uniqueness is a database constraint, not an exactly-once network guarantee. Unrelated privileged writes can defeat fencing until all writers participate.
+
+## Isolated RPC orchestration and writer inventory — 18 October 2026
+
+`src/lib/billing/atomic-webhook.ts` implements an injectable subscription-event orchestrator. It is **not imported by any application route**, has no production admin-client construction or network configuration, and denies dispatch unless explicitly enabled with a webhook secret. It authenticates the original raw body with the existing HMAC verifier before storage access, normalizes the same immutable event envelope, binds the signed subscription/account identity, and validates current provider identity, configured price/plan/interval and optional period/scheduled-change evidence. It forwards only whitelisted snapshot fields. Subscription events only are supported; adoption must explicitly decide the handling of other provider notifications.
+
+The proposed `read_verified_billing_completion_v1` function is read-only, service-role-only, and verifies normalized receipt equality plus account/subscription-bound atomic completion. A legacy receipt, conflicting receipt or mismatched marker is review-required. It never treats QA, receipt existence, current plan, or provider status as approval. Verified completion can acknowledge an already committed event even if the provider is currently unavailable; that acknowledgement does not attest the account's current tier.
+
+Dispatch order is completion reconciliation → text fence → fresh provider GET/validation → atomic apply. Only known aborted transactions (`40001` serialization/fence conflict, `40P01` deadlock) may automatically retry, at most once, and each retry starts the complete read/validation sequence again. Unknown transport/storage outcomes and malformed acknowledgements trigger read-only completion reconciliation; an absent/unverifiable completion never becomes success or a blind write retry. The function returns sanitized outcomes, not provider/database error strings. HTTP response mapping, PostgREST transport and production route selection remain adoption work, not implied guarantees.
+
+| Repository writer/path | Existing behavior | Atomicity status / adoption requirement |
+| --- | --- | --- |
+| `src/app/api/billing/webhook/route.ts` | Separate customer upsert, subscription insert/owner-conditional update, profile update and receipt insert; non-subscription events receipt-only | **Bypasses proposed transaction**; unchanged and still release-blocked for partial writes / overlapping stale snapshots |
+| `src/app/api/billing/checkout/route.ts` | Provider transaction POST or subscription PATCH; reads local subscriptions, no local plan/subscription write | External provider changes cannot join a PostgreSQL transaction; fresh snapshot/fence orchestration and provider consistency review remain necessary |
+| `src/app/api/billing/portal/route.ts` | Owner-scoped reads and provider portal-session request | No local billing write; provider-originated later changes require webhook reconciliation |
+| `supabase/migrations/001_b3_accounts.sql: handle_new_user` | Inserts initial Free profile, conflict-do-nothing | Bootstrap, not paid-tier grant; preserve initial profile requirement |
+| `profiles_update_own` + column grants in migrations 001/029 | Client may update display name only; plan remains server-controlled | Preserve column restriction and owner RLS; verify actual deployed grants separately |
+| Guarded functions in this proposal | Account fence/profile lock, immutable bindings, atomic effects + receipt + marker | Locally exercised only; not a deployed migration or application path |
+| Auth account deletion, console/service-role jobs and external privileged writers | Not established by repository inventory | **UNKNOWN**; owner must inventory/restrict or fence/invalidate every relevant writer before adoption |
+
+The inventory covers repository application, scripts and migrations referencing these billing tables/profile plan; it is not an inventory of production console operations or external jobs. No source webhook/checkout/portal behavior, calculator formula, identity, Slope v1 or immutable history was changed. The existing prototype SQL guard is retained and no migration is created or applied outside disposable fixtures. Role ownership, deployed-schema drift, retention, legacy reconciliation and provider consistency remain owner decisions. Passing local SQL/RPC tests cannot authorize application wiring or remove RELEASE HOLD.
+
+
+### Combined orchestration acceptance
+
+On 18 October 2026 the extended harness passed the existing **25 transaction cases** plus **10 real PostgreSQL orchestration cases**. The latter cover a committed duplicate without provider availability, concurrent duplicate orchestrators, delayed active snapshot after cancellation with fresh-provider retry, actual database deadlock `40P01` with fresh fence/provider retry, lost post-commit response, late-write rollback and explicit recovery, pre-dispatch interruption, conflicting receipts/cross-account adoption, legacy receipts and restricted/owner-bound completion lookup. The stale-snapshot diagnostic remains unresolved in the unchanged production REST path; it is fixed only for the isolated proposed path.
+
+The deadlock fixture uses an advisory gate to establish lock order and observes waiting backends before forming the cycle. The RPC detector checks after the cycle forms; PostgreSQL aborts the RPC transaction and the orchestrator refetches. An earlier sleep-based diagnostic selected the controller as victim (and a shorter client timeout obscured the server error). The deterministic gate replaces that fixture assumption; no orchestration security condition was relaxed. No expected failure or skip is included in the final acceptance command.
+
+**31 unit regressions** cover dispatch guards, HMAC-first access, normalized event identity, metadata minimization, bigint strings, configured Business/yearly mapping, invalid snapshots, corrupt/missing RPC evidence, bounded `40001`/`40P01` retries and uncertain outcomes. All **65 existing focused billing tests**, **15 certification/rule-pack checks**, typecheck, affected lint and one webpack build passed. The scoped PostgreSQL workflow now installs locked test dependencies and invokes the same combined command. PostgREST/HTTP transport, deployed role/schema fidelity, external privileged writers and provider consistency are still UNVERIFIED/UNKNOWN. No end-to-end exactly-once processing is claimed.
