@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { serverEnv } from "@/lib/env";
-import { verifyPaddleSignature, selectionForPriceId } from "@/lib/billing/paddle";
+import { verifyPaddleSignature, selectionForPriceId, paddleRequest } from "@/lib/billing/paddle";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { planForSubscriptionStatus } from "@/lib/billing/entitlements";
 
@@ -10,7 +10,7 @@ type Json = Record<string, unknown>;
 const eventSchema = z.object({
   event_id: z.string().min(1),
   event_type: z.string().min(1),
-  occurred_at: z.string().optional(),
+  occurred_at: z.iso.datetime({offset:true}).optional(),
   data: z.record(z.string(), z.unknown())
 });
 
@@ -19,7 +19,7 @@ function asObject(value: unknown): Json {
 }
 
 function stringValue(value: unknown): string | null {
-  return typeof value === "string" && value.length > 0 ? value : null;
+  return typeof value === "string" && value.trim().length > 0 ? value : null;
 }
 
 function extractPriceId(data: Json): string | null {
@@ -40,40 +40,58 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
-  const parsed = eventSchema.safeParse(JSON.parse(rawBody));
+  let payload:unknown;
+  try { payload=JSON.parse(rawBody); } catch { return NextResponse.json({ error: "Invalid event payload" }, { status: 400 }); }
+  const parsed = eventSchema.safeParse(payload);
   if (!parsed.success) return NextResponse.json({ error: "Invalid event payload" }, { status: 400 });
 
   const event = parsed.data;
-  const { data: existing } = await admin.from("billing_webhook_events").select("event_id").eq("event_id", event.event_id).maybeSingle();
+  try {
+  const { data: existing, error: lookupError } = await admin.from("billing_webhook_events").select("event_id").eq("event_id", event.event_id).maybeSingle();
+  if(lookupError)return NextResponse.json({error:"Could not verify webhook processing"},{status:500});
   if (existing) return NextResponse.json({ ok: true, duplicate: true });
 
-  const data = event.data;
-  const customData = asObject(data.custom_data);
+  const customData = asObject(event.data.custom_data);
   const userId = stringValue(customData.calcumint_user_id);
 
-  if (event.event_type.startsWith("subscription.") && userId) {
-    const subscriptionId = stringValue(data.id);
+  if (event.event_type.startsWith("subscription.")) {
+    const subscriptionId = stringValue(event.data.id);
+    if(!userId||!subscriptionId)return NextResponse.json({error:"Missing subscription identity"},{status:400});
+    // Notifications may be delivered out of order. Reconcile current provider state,
+    // rather than granting access from the historical notification snapshot.
+    let data:Json;
+    try { data=asObject(await paddleRequest<unknown>(`/subscriptions/${encodeURIComponent(subscriptionId)}`,{method:"GET"})); }
+    catch { return NextResponse.json({error:"Could not verify subscription"},{status:502}); }
+    if(stringValue(data.id)!==subscriptionId||stringValue(asObject(data.custom_data).calcumint_user_id)!==userId)return NextResponse.json({error:"Subscription identity mismatch"},{status:409});
     const customerId = stringValue(data.customer_id);
-    const status = stringValue(data.status) ?? "unknown";
+    const status = stringValue(data.status);
+    if(!customerId||!status)return NextResponse.json({error:"Incomplete subscription evidence"},{status:502});
     const priceId = extractPriceId(data);
     const selection = selectionForPriceId(priceId);
     const period = asObject(data.current_billing_period);
     const scheduledChange = asObject(data.scheduled_change);
+    if(data.current_billing_period!=null&&(!z.iso.datetime({offset:true}).safeParse(period.starts_at).success||!z.iso.datetime({offset:true}).safeParse(period.ends_at).success))return NextResponse.json({error:"Invalid subscription period"},{status:502});
+    if(data.scheduled_change!=null&&!stringValue(scheduledChange.action))return NextResponse.json({error:"Invalid scheduled change"},{status:502});
 
     if (!selection) {
       return NextResponse.json({ error: "Unknown Paddle subscription price" }, { status: 400 });
     }
 
-    if (customerId) {
-      await admin.from("billing_customers").upsert({
+    const [boundSubscription,boundCustomer]=await Promise.all([
+      admin.from("subscriptions").select("user_id").eq("provider_subscription_id",subscriptionId).maybeSingle(),
+      admin.from("billing_customers").select("user_id").eq("paddle_customer_id",customerId).maybeSingle()
+    ]);
+    if(boundSubscription.error||boundCustomer.error)return NextResponse.json({error:"Could not verify billing ownership"},{status:500});
+    if((boundSubscription.data&&boundSubscription.data.user_id!==userId)||(boundCustomer.data&&boundCustomer.data.user_id!==userId))return NextResponse.json({error:"Billing ownership mismatch"},{status:409});
+
+      const customerWrite=await admin.from("billing_customers").upsert({
         user_id: userId,
         paddle_customer_id: customerId,
         updated_at: new Date().toISOString()
       }, { onConflict: "user_id" });
-    }
+      if(customerWrite.error)return NextResponse.json({error:"Could not synchronize billing customer"},{status:500});
 
-    if (subscriptionId) {
-      await admin.from("subscriptions").upsert({
+      const subscriptionValues={
         user_id: userId,
         provider_subscription_id: subscriptionId,
         provider_customer_id: customerId,
@@ -85,13 +103,18 @@ export async function POST(request: Request) {
         current_period_end: stringValue(period.ends_at),
         cancel_at_period_end: stringValue(scheduledChange.action) === "cancel",
         updated_at: new Date().toISOString()
-      }, { onConflict: "provider_subscription_id" });
+      };
+      // Never let an upsert reassign a subscription after the ownership read.
+      const subscriptionWrite=boundSubscription.data
+        ? await admin.from("subscriptions").update(subscriptionValues).eq("provider_subscription_id",subscriptionId).eq("user_id",userId).select("provider_subscription_id,user_id").single()
+        : await admin.from("subscriptions").insert(subscriptionValues);
+      if(subscriptionWrite.error)return NextResponse.json({error:"Could not synchronize subscription"},{status:500});
 
-      await admin.from("profiles").update({
+      const profileWrite=await admin.from("profiles").update({
         plan: planForSubscriptionStatus(status, selection.plan),
         updated_at: new Date().toISOString()
-      }).eq("id", userId);
-    }
+      }).eq("id", userId).select("id").single();
+      if(profileWrite.error||profileWrite.data?.id!==userId)return NextResponse.json({error:"Could not synchronize account plan"},{status:500});
   }
 
   const { error: eventError } = await admin.from("billing_webhook_events").insert({
@@ -103,4 +126,5 @@ export async function POST(request: Request) {
 
   if (eventError) return NextResponse.json({ error: "Could not record webhook" }, { status: 500 });
   return NextResponse.json({ ok: true });
+  } catch { return NextResponse.json({error:"Could not process webhook"},{status:500}); }
 }
