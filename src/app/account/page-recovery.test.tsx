@@ -1,0 +1,39 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+const state = vi.hoisted(() => ({ tables: {} as Record<string, {data: unknown; error: unknown}>, authError: null as unknown, thrownTable: "", signedOut:false, authReject:false }));
+vi.mock("@/lib/supabase/server", () => ({createSupabaseServerClient: async () => ({auth: {getUser: async () => {if(state.authReject) throw new Error("transport");return {data: {user: state.signedOut?null:{id:"user-a",email:"a@example.invalid"}}, error:state.authError}}},from: (table:string) => {const result = {then: (resolve: (value: unknown) => unknown, reject: (reason: unknown) => unknown) => state.thrownTable === table ? Promise.reject(new Error("transport")).then(resolve,reject) : Promise.resolve(state.tables[table] ?? {data:[],error:null}).then(resolve,reject),select:()=>result,eq:()=>result,order:()=>result,limit:()=>result,maybeSingle:()=>result};return result;}})}));
+vi.mock("next/navigation", () => ({redirect:vi.fn(()=>{throw new Error("REDIRECT_LOGIN")})}));
+vi.mock("./actions", () => ({updatePreferences:vi.fn(),createCalculationProject:vi.fn(),deleteCalculationProject:vi.fn(),saveProjectScenario:vi.fn(),updateProjectScenarioName:vi.fn(),deleteProjectScenario:vi.fn()}));
+vi.mock("@/app/login/actions", () => ({signOut:vi.fn()}));
+vi.mock("@/components/billing-sync-status", () => ({BillingSyncStatus:()=>null}));
+vi.mock("@/components/billing-portal-button", () => ({BillingPortalButton:()=>null}));
+import AccountPage from "./page";
+const render = async () => renderToStaticMarkup(await AccountPage({searchParams:Promise.resolve({})}));
+beforeEach(()=>{state.tables={profiles:{data:{plan:"pro"},error:null},user_preferences:{data:{currency:"EUR"},error:null}};state.authError=null;state.thrownTable="";state.signedOut=false;state.authReject=false;});
+describe("account read recovery",()=>{
+ it("distinguishes failed history from empty history while retaining valid favorites",async()=>{state.tables.calculation_history={data:null,error:{message:"private backend failure"}};state.tables.favorites={data:[{calculator_slug:"slope-calculator"}],error:null};const html=await render();expect(html).toContain("Recent calculations are temporarily unavailable");expect(html).not.toContain("Your saved calculation history will appear here");expect(html).toContain("slope");expect(html).not.toContain("private backend failure");});
+ it("does not present failed preferences as editable defaults",async()=>{state.tables.user_preferences={data:null,error:{message:"offline"}};const html=await render();expect(html).toContain("Regional defaults are temporarily unavailable");expect(html).not.toContain('name="currency"');});
+ it("does not downgrade an unreadable plan or render upgrade claims",async()=>{state.tables.profiles={data:null,error:{message:"offline"}};const html=await render();expect(html).toContain("Plan unavailable");expect(html).not.toContain("FREE");expect(html).not.toContain("Upgrade to Pro");expect(html).not.toContain('name="projectId"');});
+ it("does not treat failed projects or scenarios as empty",async()=>{state.tables.calculation_projects={data:null,error:{message:"offline"}};state.tables.saved_scenarios={data:null,error:{message:"offline"}};const html=await render();expect(html).toContain("Projects and saved scenarios are temporarily unavailable");expect(html).not.toContain("No projects yet");});
+ it("isolates a rejected read without hiding valid history",async()=>{state.thrownTable="favorites";state.tables.calculation_history={data:[{id:"old",calculator_slug:"slope-calculator",calculator_version:"1",created_at:"2026-01-01"}],error:null};const html=await render();expect(html).toContain("Favorites are temporarily unavailable");expect(html).toContain("slope");});
+ it("does not redirect a transient authentication error to login",async()=>{state.authError={message:"offline"};const html=await render();expect(html).toContain("Account temporarily unavailable");});
+ it("does not show free billing copy on a subscription read failure",async()=>{state.tables.subscriptions={data:null,error:{message:"offline"}};const html=await render();expect(html).toContain("Billing details are temporarily unavailable");expect(html).not.toContain("Public calculators, 20 saved calculations");});
+ it("keeps the signed-out login redirect",async()=>{state.signedOut=true;await expect(render()).rejects.toThrow("REDIRECT_LOGIN");});
+ it("recovers after a failed history read without persisting an empty replacement",async()=>{state.tables.calculation_history={data:null,error:{message:"offline"}};expect(await render()).toContain("Recent calculations are temporarily unavailable");state.tables.calculation_history={data:[{id:"restored",calculator_slug:"slope-calculator",calculator_version:"1",created_at:"2026-01-01"}],error:null};const html=await render();expect(html).not.toContain("Recent calculations are temporarily unavailable");expect(html).toContain("slope");});
+ it("handles rejected authentication without leaking transport details",async()=>{state.authReject=true;const html=await render();expect(html).toContain("Account temporarily unavailable");expect(html).not.toContain("transport");});
+ it.each(["free","pro","business"])("keeps valid historical identity readable for %s",async(plan)=>{state.tables.profiles={data:{plan},error:null};state.tables.calculation_history={data:[{id:"old",calculator_slug:"slope-calculator",calculator_version:"1",created_at:"2026-01-01"}],error:null};expect(await render()).toContain("slope");});
+ it("keeps genuine successful empty states and preferences",async()=>{const html=await render();expect(html).toContain("No favorites yet");expect(html).toContain("Your saved calculation history will appear here");expect(html).toContain('name="currency"');});
+});
+
+it('offers a sign-in route instead of an endless retry for an SDK missing session',async()=>{
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authError=new AuthSessionMissingError();state.signedOut=true;
+ const html=await render();expect(html).toContain('href="/login"');expect(html).toContain('Sign in to continue');expect(html).not.toContain('Auth session missing');expect(html).not.toContain('a@example.invalid');
+});
+it.each(['session_expired','refresh_token_not_found','refresh_token_already_used'])('offers reauthentication for terminal SDK code %s',async code=>{
+ const {AuthApiError}=await import('@supabase/supabase-js');state.authError=new AuthApiError('synthetic-sensitive-detail',400,code);
+ const html=await render();expect(html).toContain('Sign in to continue');expect(html).toContain('href="/login"');expect(html).toContain('href="/account"');expect(html).toContain('role="alert"');expect(html).not.toContain('synthetic-sensitive-detail');
+});
+it('restores account history after reauthentication without rewriting prior versions',async()=>{
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authError=new AuthSessionMissingError();expect(await render()).toContain('Sign in to continue');
+ state.authError=null;state.tables.calculation_history={data:[{id:'legacy',calculator_slug:'slope-calculator',calculator_version:'1',created_at:'2026-01-01'}],error:null};expect(await render()).toContain('slope');
+});
