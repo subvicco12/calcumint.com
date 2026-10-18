@@ -47,7 +47,7 @@ describe('isolated atomic billing orchestration', () => {
     const f=fixture();f.rpc.mockResolvedValue({data:{status:'completed',revision:'3'},error:null});
     expect(await processAtomicBillingWebhook(input(),f.deps)).toEqual({outcome:'duplicate',revision:'3'});expect(f.fetchSubscription).not.toHaveBeenCalled();
   });
-  it.each(['40001','40P01'])('reconciles and refetches both fence and provider on %s',async code=>{
+  it.each(['PT409','40001','40P01'])('reconciles and refetches both fence and provider on %s',async code=>{
     const f=fixture();let attempts=0, reads=0;
     f.rpc.mockImplementation(async name=>({data:name==='read_verified_billing_completion_v1'?{status:'missing'}:name==='read_billing_fence_v1'?String(reads++):++attempts===1?null:{status:'applied',revision:'2'},error:name==='apply_verified_billing_event_v1'&&attempts===1?{code}:null}));
     f.fetchSubscription.mockResolvedValueOnce(snapshot()).mockResolvedValueOnce({...snapshot(),status:'canceled'});
@@ -73,11 +73,11 @@ describe('isolated atomic billing orchestration', () => {
   });
   it.each(['id','customer_id','status','custom_data','items'])('rejects missing provider %s without write',async key=>{
     const f=fixture();const invalid:Record<string,unknown>=snapshot();delete invalid[key];f.fetchSubscription.mockResolvedValue(invalid);
-    expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe('invalid_snapshot');expect(f.rpc).toHaveBeenCalledTimes(2);
+    expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe(key==='id'||key==='custom_data'?'identity_conflict':'invalid_snapshot');expect(f.rpc).toHaveBeenCalledTimes(2);
   });
   it('rejects wrong provider owner and unconfigured price',async()=>{
     const f=fixture();f.fetchSubscription.mockResolvedValue({...snapshot(),custom_data:{calcumint_user_id:'another-owner'}});
-    expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe('invalid_snapshot');f.fetchSubscription.mockResolvedValue({...snapshot(),items:[{price_id:'unconfigured'}]});expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe('invalid_snapshot');
+    expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe('identity_conflict');f.fetchSubscription.mockResolvedValue({...snapshot(),items:[{price_id:'unconfigured'}]});expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe('invalid_selection');
   });
   it.each([{current_billing_period:{starts_at:'invalid',ends_at:'invalid'}},{scheduled_change:{}}])('rejects malformed optional provider evidence',async invalid=>{
     const f=fixture();f.fetchSubscription.mockResolvedValue({...snapshot(),...invalid});expect((await processAtomicBillingWebhook(input(),f.deps)).outcome).toBe('invalid_snapshot');

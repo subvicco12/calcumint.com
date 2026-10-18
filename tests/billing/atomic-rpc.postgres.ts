@@ -38,7 +38,9 @@ const fixture=():AtomicBillingDependencies=>({enabled:true,secret,rpc,fetchSubsc
 const state=()=>sql(`SELECT jsonb_build_array(${['billing_customers','subscriptions','profiles','billing_webhook_events','billing_account_fences','billing_atomic_completions'].map(t=>`(SELECT COALESCE(jsonb_agg(r ORDER BY to_jsonb(r)::text),'[]') FROM public.${t} r)`).join(',')});`);
 beforeAll(async()=>{
   const {stdout}=await exec('docker',['inspect','--format','{{.HostConfig.NetworkMode}} {{index .Config.Labels "calcumint.billing-fixture"}}',container!]);
-  expect(stdout.trim()).toBe('none true');
+  const [network,label]=stdout.trim().split(' ');
+  expect(network).toBe(`${container}-network`);expect(label).toBe('true');
+  expect((await exec('docker',['network','inspect','--format','{{.Internal}}',network])).stdout.trim()).toBe('true');
 });
 beforeEach(async()=>{await sql("TRUNCATE public.billing_atomic_completions,public.billing_webhook_events,public.billing_account_fences,public.subscriptions,public.billing_customers; UPDATE public.profiles SET plan='free';");});
 describe('actual isolated PostgreSQL RPC orchestration',()=>{

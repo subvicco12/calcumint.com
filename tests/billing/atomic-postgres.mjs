@@ -1,10 +1,13 @@
-// Disposable local PostgreSQL only. No database URL, production credentials, or host ports.
+// Disposable local PostgreSQL/PostgREST only. No production URL/credentials; HTTP stays on an inspected internal Docker address; no published ports.
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { randomUUID } from 'node:crypto';
 const image = 'postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea';
 const name = `calcumint-billing-test-${randomUUID()}`;
+const network = `${name}-network`;
+const rest = `${name}-rest`;
+const restImage = 'postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401';
 function command(args, input = '') {
   return new Promise((resolve, reject) => {
     const child = spawn('docker', args, { stdio: ['pipe', 'pipe', 'pipe'], timeout: 30_000 });
@@ -34,10 +37,12 @@ async function state() {
   return sql(`SELECT jsonb_build_array(${['billing_customers', 'subscriptions', 'profiles', 'billing_webhook_events', 'billing_account_fences', 'billing_atomic_completions'].map(table => `(SELECT COALESCE(jsonb_agg(t ORDER BY to_jsonb(t)::text), '[]') FROM public.${table} t)`).join(',')});`);
 }
 let count = 0;
-let created = false;
+let created = false, networkCreated = false, restCreated = false;
 async function test(label, run) { await reset(); await run(); count++; console.log(`PASS ${label}`); }
 try {
-  await command(['run', '-d', '--rm', '--name', name, '--network', 'none', '--label', 'calcumint.billing-fixture=true', '--tmpfs', '/var/lib/postgresql/data', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust', image]);
+  await command(['network', 'create', '--internal', network]);
+  networkCreated = true;
+  await command(['run', '-d', '--rm', '--name', name, '--network', network, '--label', 'calcumint.billing-fixture=true', '--tmpfs', '/var/lib/postgresql/data', '-e', 'POSTGRES_HOST_AUTH_METHOD=trust', image]);
   created = true;
   for (let attempt = 0; ; attempt++) {
     try { await sql('SELECT 1;'); break; } catch (error) {
@@ -48,8 +53,10 @@ try {
   console.log(await sql('SELECT version();'));
   // Minimal synthetic Supabase prerequisites, not a production schema snapshot.
   await sql(`CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;
+    CREATE ROLE billing_fixture_authenticator LOGIN NOINHERIT PASSWORD 'synthetic-fixture-only';
+    GRANT anon, authenticated, service_role TO billing_fixture_authenticator;
     CREATE SCHEMA auth; CREATE TABLE auth.users(id uuid PRIMARY KEY);
-    CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
+    CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT coalesce(nullif(current_setting('request.jwt.claim.sub', true), ''), nullif(current_setting('request.jwt.claims', true), '')::jsonb->>'sub')::uuid $$;
     GRANT USAGE ON SCHEMA public, auth TO anon, authenticated, service_role;
     GRANT EXECUTE ON FUNCTION auth.uid() TO anon, authenticated;
     CREATE TABLE public.profiles(id uuid PRIMARY KEY REFERENCES auth.users, plan text NOT NULL CHECK(plan IN ('free','pro','business')), updated_at timestamptz DEFAULT now());
@@ -68,6 +75,7 @@ try {
   await assert.rejects(sql(proposal), /PROPOSAL ONLY/);
   // Remove the guard only in this isolated container's stdin, never the document.
   await sql(proposal.replace(guard, ''));
+  await sql('GRANT SELECT, INSERT ON public.billing_webhook_events TO service_role;');
   await sql(`GRANT SELECT ON public.billing_customers, public.subscriptions TO authenticated;
     CREATE FUNCTION public.inject_billing_failure() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN
       IF current_setting('billing.test_fail',true) = TG_TABLE_NAME THEN RAISE EXCEPTION 'injected failure %', TG_TABLE_NAME; END IF;
@@ -153,14 +161,14 @@ try {
   await test('overlapping distinct events: one winner, stale fence rejected', async () => {
     const results = await Promise.allSettled([service(call('evt_one')), service(call('evt_two', { status: 'canceled' }))]);
     assert.equal(results.filter(result => result.status === 'fulfilled').length, 1);
-    assert.match(results.find(result => result.status === 'rejected').reason.message, /40001: Stale billing fence/);
+    assert.match(results.find(result => result.status === 'rejected').reason.message, /PT409: Stale billing fence/);
     assert.equal(await sql('SELECT count(*) FROM public.billing_atomic_completions;'), '1');
   });
   await test('delayed active snapshot cannot overwrite newer cancellation; fresh retry', async () => {
     assert.equal(await service(`SELECT public.read_billing_fence_v1('${a}');`), '0');
     await service(call('evt_cancel', { status: 'canceled' }));
     const before = await state();
-    await assert.rejects(service(call('evt_old')), /40001: Stale billing fence/);
+    await assert.rejects(service(call('evt_old')), /PT409: Stale billing fence/);
     assert.equal(await state(), before);
     assert.equal(await sql(`SELECT plan FROM public.profiles WHERE id='${a}';`), 'free');
     await service(call('evt_old', { revision: '1', status: 'canceled' }));
@@ -236,14 +244,30 @@ try {
     assert.equal(await sql(`SET ROLE authenticated; SET request.jwt.claim.sub='${a}'; SELECT count(*) FROM public.billing_customers WHERE user_id='${b}';`), '0');
     await assert.rejects(sql(`SET ROLE authenticated; UPDATE public.subscriptions SET status='active';`), /permission denied/);
   });
-  console.log(`${count} PostgreSQL acceptance cases passed; proposal remains guarded and unwired.`);
+  console.log(`${count} PostgreSQL acceptance cases passed; proposal remains guarded and unapplied outside fixtures.`);
+  await command(['run','-d','--rm','--name',rest,'--network',network,
+    '-e',`PGRST_DB_URI=postgresql://billing_fixture_authenticator:synthetic-fixture-only@${name}:5432/postgres`,
+    '-e','PGRST_DB_SCHEMAS=public','-e','PGRST_DB_ANON_ROLE=anon',
+    '-e','PGRST_JWT_SECRET=synthetic-isolated-billing-jwt-secret-not-production',restImage]);
+  restCreated = true;
+  const address=await command(['inspect','--format','{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}',rest]);
+  assert.match(address,/^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)[0-9.]+$/, 'private internal Docker address only');
+  const restUrl=`http://${address}:3000`;
+  for(let attempt=0;;attempt++) {
+    try { const response=await fetch(restUrl,{signal:AbortSignal.timeout(1000)}); if(!response.ok)throw new Error('PostgREST not ready'); break; }
+    catch(error) { if(attempt>=60)throw error; await new Promise(resolve=>setTimeout(resolve,250)); }
+  }
   await new Promise((resolve,reject)=>{
     const child=spawn(process.execPath,['node_modules/vitest/vitest.mjs','run','--config','tests/billing/vitest.postgres.config.ts'],{
-      stdio:'inherit',env:{...process.env,CALCUMINT_BILLING_TEST_CONTAINER:name},timeout:120_000
+      stdio:'inherit',env:{...process.env,CALCUMINT_BILLING_TEST_CONTAINER:name,CALCUMINT_BILLING_TEST_REST_URL:restUrl},timeout:120_000
     });
     child.on('error',reject);
     child.on('close',code=>code===0?resolve():reject(new Error(`Atomic RPC integration failed: ${code}`)));
   });
 } finally {
-  if (created) await command(['rm', '-f', name]);
+  try { if(restCreated)await command(['rm','-f',rest]); }
+  finally {
+    try { if(created)await command(['rm','-f',name]); }
+    finally { if(networkCreated)await command(['network','rm',network]); }
+  }
 }

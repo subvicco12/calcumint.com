@@ -1,5 +1,5 @@
-/** Isolated integration only: deliberately not imported by any application route.
- * Storage functions are guarded proposals, not deployed migrations. No REST fallback.
+/** Guarded subscription webhook orchestration.
+ * Storage functions remain proposals; unavailable RPCs fail closed. No REST fallback.
  */
 import { z } from 'zod';
 import { verifyPaddleSignature, type PaddlePriceSelection } from './paddle';
@@ -14,7 +14,7 @@ export type AtomicBillingDependencies = {
   selectionForPriceId: (id: string) => PaddlePriceSelection | null;
 };
 export type AtomicBillingResult = {outcome:'applied'|'duplicate';revision:string} | {
-  outcome:'disabled'|'invalid_receipt'|'invalid_snapshot'|'review_required'|'retry_required'|'provider_unavailable'|'storage_unavailable';
+  outcome:'disabled'|'invalid_receipt'|'invalid_snapshot'|'identity_conflict'|'invalid_selection'|'review_required'|'retry_required'|'provider_unavailable'|'storage_unavailable';
 };
 const receiptSchema = z.object({
   event_id:z.string().min(1),event_type:z.string().startsWith('subscription.'),
@@ -56,7 +56,7 @@ export async function processAtomicBillingWebhook(
     if(data.status==='completed'&&revision(data.revision)&&data.revision!=='0')return {outcome:'duplicate',revision:data.revision};
     return {outcome:'storage_unavailable'};
   }
-  // At most two attempts, and only known transaction-abort SQLSTATEs may replay.
+  // At most two attempts: application fence conflicts and known transaction aborts only.
   // Every replay reconciles first, then reads a new fence BEFORE a new provider GET.
   for(let attempt=0;attempt<2;attempt++) {
     const existing=await completion();
@@ -68,10 +68,11 @@ export async function processAtomicBillingWebhook(
     const snapshot=object(raw),custom=object(snapshot.custom_data);
     const first=object(Array.isArray(snapshot.items)?snapshot.items[0]:null);
     const price=nonempty(object(first.price).id)?object(first.price).id:first.price_id;
-    if(snapshot.id!==subscriptionId||custom.calcumint_user_id!==owner.data||!nonempty(snapshot.customer_id)||!nonempty(snapshot.status)||!nonempty(price))return {outcome:'invalid_snapshot'};
+    if(snapshot.id!==subscriptionId||custom.calcumint_user_id!==owner.data)return {outcome:'identity_conflict'};
+    if(!nonempty(snapshot.customer_id)||!nonempty(snapshot.status)||!nonempty(price))return {outcome:'invalid_snapshot'};
     let selection:ReturnType<typeof selectionSchema.safeParse>;
     try { selection=selectionSchema.safeParse(deps.selectionForPriceId(price)); } catch { return {outcome:'invalid_snapshot'}; }
-    if(!selection.success)return {outcome:'invalid_snapshot'};
+    if(!selection.success)return {outcome:'invalid_selection'};
     const period=snapshot.current_billing_period==null?null:periodSchema.safeParse(snapshot.current_billing_period);
     const scheduled=snapshot.scheduled_change==null?null:object(snapshot.scheduled_change);
     if((period&&!period.success)||(scheduled&&!nonempty(scheduled.action)))return {outcome:'invalid_snapshot'};
@@ -92,7 +93,7 @@ export async function processAtomicBillingWebhook(
       // Malformed/lost acknowledgements may follow a commit; reconcile, never guess.
       return await completion()??{outcome:'retry_required'};
     }
-    if(applied.error.code==='40001'||applied.error.code==='40P01')continue;
+    if(applied.error.code==='PT409'||applied.error.code==='40001'||applied.error.code==='40P01')continue;
     if(applied.error.code==='P0001'||applied.error.code==='23505')return storageFailure(applied);
     return await completion()??{outcome:'retry_required'};
   }
