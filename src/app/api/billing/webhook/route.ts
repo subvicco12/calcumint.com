@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { isDeepStrictEqual } from "node:util";
 import { serverEnv } from "@/lib/env";
 import { verifyPaddleSignature, selectionForPriceId, paddleRequest } from "@/lib/billing/paddle";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { planForSubscriptionStatus } from "@/lib/billing/entitlements";
+import { planForSubscriptionStatus, paidSubscriptionStatuses } from "@/lib/billing/entitlements";
 
 type Json = Record<string, unknown>;
 
@@ -47,9 +48,14 @@ export async function POST(request: Request) {
 
   const event = parsed.data;
   try {
-  const { data: existing, error: lookupError } = await admin.from("billing_webhook_events").select("event_id").eq("event_id", event.event_id).maybeSingle();
+  const { data: existing, error: lookupError } = await admin.from("billing_webhook_events").select("event_id,payload").eq("event_id", event.event_id).maybeSingle();
   if(lookupError)return NextResponse.json({error:"Could not verify webhook processing"},{status:500});
-  if (existing) return NextResponse.json({ ok: true, duplicate: true });
+  if (existing) {
+    const stored=eventSchema.safeParse(existing.payload);
+    if(!stored.success)return NextResponse.json({error:"Could not verify recorded webhook"},{status:500});
+    if(!isDeepStrictEqual(stored.data,event))return NextResponse.json({error:"Webhook event identity conflict"},{status:409});
+    return NextResponse.json({ ok: true, duplicate: true });
+  }
 
   const customData = asObject(event.data.custom_data);
   const userId = stringValue(customData.calcumint_user_id);
@@ -83,6 +89,11 @@ export async function POST(request: Request) {
     ]);
     if(boundSubscription.error||boundCustomer.error)return NextResponse.json({error:"Could not verify billing ownership"},{status:500});
     if((boundSubscription.data&&boundSubscription.data.user_id!==userId)||(boundCustomer.data&&boundCustomer.data.user_id!==userId))return NextResponse.json({error:"Billing ownership mismatch"},{status:409});
+    // Match checkout's existing billing-support gate; never invent an aggregate
+    // entitlement or revoke another paid subscription from this notification.
+    const otherPaid=await admin.from("subscriptions").select("provider_subscription_id").eq("user_id",userId).in("status",[...paidSubscriptionStatuses]).neq("provider_subscription_id",subscriptionId).limit(1).maybeSingle();
+    if(otherPaid.error)return NextResponse.json({error:"Could not verify active subscriptions"},{status:500});
+    if(otherPaid.data)return NextResponse.json({error:"Multiple paid subscriptions require billing support"},{status:409});
 
       const customerWrite=await admin.from("billing_customers").upsert({
         user_id: userId,
