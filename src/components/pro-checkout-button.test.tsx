@@ -115,6 +115,9 @@ describe("PlanCheckoutButton", () => {
   it('requires reconciliation after a created transaction cannot open its overlay',async()=>{
     const transport=vi.fn().mockResolvedValue({status:200,ok:true,json:async()=>({transactionId:'txn_123'})});vi.stubGlobal('fetch',transport);window.Paddle={Environment:{set:vi.fn()},Initialize:vi.fn(),Checkout:{open:vi.fn(()=>{throw new Error('Synthetic interrupted overlay');})}};const {PlanCheckoutButton}=await import('./pro-checkout-button');render(<PlanCheckoutButton plan="pro" interval="monthly"/>);const button=screen.getByRole('button',{name:'Choose Pro monthly'});fireEvent.click(button);await screen.findByRole('alert');expect(button).toHaveProperty('disabled',true);expect(screen.getByRole('link',{name:'Check account'})).toBeTruthy();fireEvent.click(button);expect(transport).toHaveBeenCalledTimes(1);
   });
+  it('keeps unsupported deferred changes disabled without sending a billing request',async()=>{
+    const transport=vi.fn();vi.stubGlobal('fetch',transport);const {PlanCheckoutButton}=await import('./pro-checkout-button');render(<PlanCheckoutButton plan="pro" interval="monthly" disabledReason="Available at renewal"/>);const button=screen.getByRole('button',{name:'Choose Pro monthly'});expect(button).toHaveProperty('disabled',true);fireEvent.click(button);expect(transport).not.toHaveBeenCalled();expect(screen.getByText('Available at renewal')).toBeTruthy();
+  });
 
   it("moves keyboard focus into the confirmation and restores the trigger on Escape", async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue({status:200,ok:true,json:async()=>({confirmationRequired:true})}));
