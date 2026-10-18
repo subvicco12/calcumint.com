@@ -54,9 +54,9 @@ it('ignores a pending response after navigation unmounts account forms',async()=
 });
 
 it('preserves a draft on unknown authentication failure and permits an explicit retry',async()=>{
- await renderAccount();const form=screen.getByRole('button',{name:'Create project'}).closest('form')!,input=form.querySelector('input[name="name"]')!;fireEvent.change(input,{target:{value:'Offline draft'}});
+ await renderAccount();const button=screen.getByRole('button',{name:'Create project'}),form=button.closest('form')!,input=form.querySelector('input[name="name"]')!;fireEvent.change(input,{target:{value:'Offline draft'}});
  const {AuthRetryableFetchError}=await import('@supabase/supabase-js');state.authFailure=new AuthRetryableFetchError('private connection detail',503);fireEvent.submit(form);await screen.findByRole('alert');
- expect(state.calls).toHaveLength(0);expect(input).toHaveProperty('value','Offline draft');state.authFailure=null;fireEvent.submit(form);await waitFor(()=>expect(state.pending).toHaveLength(1));await act(async()=>state.pending[0].resolve());expect(screen.getByText('Request completed.')).toBeTruthy();
+ expect(state.calls).toHaveLength(0);expect(input).toHaveProperty('value','Offline draft');await waitFor(()=>expect(button.matches(':disabled')).toBe(false));state.authFailure=null;fireEvent.click(button);await waitFor(()=>expect(state.pending).toHaveLength(1));await act(async()=>state.pending[0].resolve());expect(screen.getByText('Request completed.')).toBeTruthy();
 });
 it('blocks confirmed missing sessions before an action is dispatched',async()=>{
  await renderAccount();const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authFailure=new AuthSessionMissingError();fireEvent.submit(screen.getByRole('button',{name:'Create project'}).closest('form')!);
