@@ -1,3 +1,4 @@
+import { sipIndependentGoldens } from "./sip-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -43,6 +44,7 @@ export const sipCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: sipIndependentGoldens,
   calculate: ({ monthlyContribution, annualReturnPercent, termMonths, contributionTiming }) => {
     const futureValue = roundTo(sipFutureValue(monthlyContribution, annualReturnPercent, termMonths, contributionTiming), 2);
     const investedAmount = roundTo(monthlyContribution * termMonths, 2);
