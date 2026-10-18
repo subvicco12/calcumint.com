@@ -21,17 +21,28 @@ export async function GET(request: Request) {
   const origin = redirectOrigin(request);
   const code = url.searchParams.get("code");
   const nextParam = url.searchParams.get("next") ?? "/account";
-  const next = nextParam.startsWith("/") && !nextParam.startsWith("//") ? nextParam : "/account";
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase || !code) {
-    return NextResponse.redirect(new URL("/login?error=Authentication%20callback%20failed.", origin));
+  let destination = new URL("/account", origin);
+  if (nextParam.startsWith("/") && !nextParam.startsWith("//")) {
+    try {
+      const candidate = new URL(nextParam, origin);
+      // URL parsing normalizes backslashes and removes tabs/newlines. Check
+      // the resolved origin, not just the unparsed path prefix.
+      if (candidate.origin === destination.origin) destination = candidate;
+    } catch {
+      // Malformed return paths retain the safe account destination.
+    }
   }
-
-  const { error } = await supabase.auth.exchangeCodeForSession(code);
-  if (error) {
-    return NextResponse.redirect(new URL(`/login?error=${encodeURIComponent(error.message)}`, origin));
+  const failed = () => NextResponse.redirect(new URL("/login?error=Authentication%20callback%20failed.", origin));
+  if (!code) return failed();
+  try {
+    const supabase = await createSupabaseServerClient({requireCookieWrites:true});
+    if (!supabase) return failed();
+    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    if (error) {
+      return failed();
+    }
+  } catch {
+    return failed();
   }
-
-  return NextResponse.redirect(new URL(next, origin));
+  return NextResponse.redirect(destination);
 }
