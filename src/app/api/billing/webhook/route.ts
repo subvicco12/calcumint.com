@@ -43,16 +43,23 @@ export async function POST(request: Request) {
     }
     // Other signed notification types do not alter entitlements. Their receipt
     // remains an independent insert until the entire receipt family is migrated.
-    const existing = await admin.from("billing_webhook_events").select("event_id,payload").eq("event_id", event.event_id).maybeSingle();
-    if (existing.error) return unavailable();
-    if (existing.data) {
+    const readReceipt = () => admin.from("billing_webhook_events").select("event_id,payload").eq("event_id", event.event_id).maybeSingle();
+    const reconcile = (existing: Awaited<ReturnType<typeof readReceipt>>) => {
+      if (existing.error || !existing.data || existing.data.event_id !== event.event_id) return unavailable();
       const stored = eventSchema.safeParse(existing.data.payload);
       if (!stored.success) return unavailable();
       if (!isDeepStrictEqual(stored.data, event)) return NextResponse.json({ error: "Webhook event identity conflict" }, { status: 409 });
       return NextResponse.json({ ok: true, duplicate: true });
-    }
-    const receipt = await admin.from("billing_webhook_events").insert({ event_id: event.event_id, event_type: event.event_type, occurred_at: event.occurred_at ?? null, payload: event });
-    if (receipt.error) return unavailable();
+    };
+    const existing = await readReceipt();
+    if (existing.error) return unavailable();
+    if (existing.data) return reconcile(existing);
+    // A uniqueness loser or lost commit response is uncertain, not proof of
+    // failure. Re-read immutable evidence once; never retry or upsert the write.
+    try {
+      const receipt = await admin.from("billing_webhook_events").insert({ event_id: event.event_id, event_type: event.event_type, occurred_at: event.occurred_at ?? null, payload: event });
+      if (receipt.error) return reconcile(await readReceipt());
+    } catch { return reconcile(await readReceipt()); }
     return NextResponse.json({ ok: true });
   } catch { return unavailable(); }
 }

@@ -157,3 +157,65 @@ it('returns a distinct PT409 application fence conflict over PostgREST without r
   });
   expect(reply.status).toBe(409);expect(reply.error?.code).toBe('PT409');expect(await state()).toBe(before);
 });
+
+// Both reads must observe absence before either request can insert.
+function simultaneousReceiptReads() {
+  let reads=0,release!:()=>void;
+  const gate=new Promise<void>(resolve=>{release=resolve;});
+  fixture.admin=client('service_role',a,async(input,init)=>{
+    const response=await fetch(input,init);
+    if((init?.method??'GET')==='GET' && String(input).includes('/billing_webhook_events?') && ++reads<=2){
+      if(reads===2)release();
+      await gate;
+    }
+    return response;
+  });
+}
+it('reconciles simultaneous identical non-subscription receipts without a second write',async()=>{
+  simultaneousReceiptReads();
+  const replies=await Promise.all([send('evt_receipt_race',{type:'transaction.completed'}),send('evt_receipt_race',{type:'transaction.completed'})]);
+  expect(replies.map(r=>r.status)).toEqual([200,200]);
+  expect((await Promise.all(replies.map(r=>r.json()))).filter(r=>r.duplicate)).toHaveLength(1);
+  expect(await sql('SELECT count(*) FROM public.billing_webhook_events;')).toBe('1');
+  expect(await sql('SELECT count(*) FROM public.subscriptions;')).toBe('0');expect(providerCalls).toBe(0);
+});
+it('fails closed on competing signed non-subscription payloads with the same event ID',async()=>{
+  simultaneousReceiptReads();
+  const replies=await Promise.all([send('evt_receipt_conflict',{type:'transaction.completed'}),send('evt_receipt_conflict',{type:'transaction.updated'})]);
+  expect(replies.map(r=>r.status).sort()).toEqual([200,409]);
+  expect(await sql('SELECT count(*) FROM public.billing_webhook_events;')).toBe('1');expect(providerCalls).toBe(0);
+});
+it('reconciles a lost non-subscription insert response without repeating the insert',async()=>{
+  let writes=0;
+  fixture.admin=client('service_role',a,async(input,init)=>{
+    const response=await fetch(input,init);
+    if(init?.method==='POST'&&String(input).endsWith('/billing_webhook_events')){writes++;throw new Error('Synthetic lost receipt reply');}
+    return response;
+  });
+  const reply=await send('evt_receipt_lost',{type:'transaction.completed'});
+  expect(reply.status).toBe(200);expect(await reply.json()).toEqual({ok:true,duplicate:true});expect(writes).toBe(1);
+});
+it('never acknowledges a rolled-back receipt insert and permits explicit retry',async()=>{
+  await sql("CREATE FUNCTION public.receipt_failure() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic receipt rollback'; END $$; CREATE TRIGGER receipt_failure AFTER INSERT ON public.billing_webhook_events FOR EACH ROW EXECUTE FUNCTION public.receipt_failure();");
+  try {const before=await state();expect((await send('evt_receipt_rollback',{type:'transaction.completed'})).status).toBe(503);expect(await state()).toBe(before);}
+  finally {await sql('DROP TRIGGER receipt_failure ON public.billing_webhook_events; DROP FUNCTION public.receipt_failure();');}
+  expect((await send('evt_receipt_rollback',{type:'transaction.completed'})).status).toBe(200);
+});
+
+it('pins definer search paths and denies every billing RPC to client roles',async()=>{
+  const routines=JSON.parse(await sql("SELECT json_agg(json_build_object('name',p.proname,'owner',r.rolname,'definer',p.prosecdef,'config',p.proconfig,'anon',has_function_privilege('anon',p.oid,'EXECUTE'),'authenticated',has_function_privilege('authenticated',p.oid,'EXECUTE'),'service',has_function_privilege('service_role',p.oid,'EXECUTE'))) FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace JOIN pg_roles r ON r.oid=p.proowner WHERE n.nspname='public' AND p.proname IN ('read_billing_fence_v1','read_verified_billing_completion_v1','apply_verified_billing_event_v1');"));
+  expect(routines).toHaveLength(3);
+  for(const routine of routines){expect(routine).toMatchObject({owner:'postgres',definer:true,anon:false,authenticated:false,service:true});expect(routine.config).toContain('search_path=pg_catalog, public');}
+  for(const role of ['anon','authenticated']){
+    expect(await sql(`SELECT has_schema_privilege('${role}','public','CREATE');`)).toBe('f');
+    for(const [name,args] of [
+      ['read_billing_fence_v1',{p_user_id:a}],
+      ['read_verified_billing_completion_v1',{p_user_id:a,p_event:{}}],
+      ['apply_verified_billing_event_v1',{p_user_id:a,p_expected_revision:'0',p_event:{},p_snapshot:{},p_price_id:'pri_pro',p_plan:'pro',p_interval:'monthly'}]
+    ] as const){const reply=await client(role).rpc(name,args);expect(reply.error?.code).toBe('42501');}
+    const ledger=await client(role).from('billing_webhook_events').select('event_id');expect(ledger.error?.code).toBe('42501');
+  }
+  // A caller-controlled search path and same-named temporary relation cannot
+  // shadow the fully qualified public fence table inside SECURITY DEFINER.
+  expect(await sql(`BEGIN; CREATE TEMP TABLE billing_account_fences(user_id uuid,revision bigint); INSERT INTO billing_account_fences VALUES('${a}',999); SET LOCAL ROLE service_role; SET LOCAL search_path=pg_temp,public; SELECT public.read_billing_fence_v1('${a}'); ROLLBACK;`)).toBe('0');
+});
