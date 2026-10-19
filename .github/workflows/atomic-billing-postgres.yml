@@ -44,5 +44,7 @@ jobs:
           node-version: 22
       - name: Install locked test dependencies
         run: npm ci --no-audit --no-fund
+      - name: Test fail-closed account schema preflight (offline)
+        run: node --test tests/billing/account-schema-preflight.test.mjs tests/billing/migration-inventory.test.mjs tests/billing/migration-fingerprints.test.mjs
       - name: Test guarded proposal in disposable offline PostgreSQL
         run: node tests/billing/atomic-postgres.mjs
