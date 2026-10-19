@@ -22,3 +22,11 @@ Status: **BLOCKED / RELEASE HOLD**. No production migrations or changes authoriz
 - `country_code` present in a verified intended schema; deployment history is recorded or an equivalent application is independently evidenced.
 - No release readiness claim solely from fixture tests or matching migration names.
 - All production SQL and migration ledger writes remain forbidden until separately approved.
+
+## Content fingerprint results (read-only, 2026-10-19)
+- `001_b3_accounts.sql`: **EXACT_MATCH** against production ledger SHA-256.
+- `002_b4_billing.sql`: **EXACT_MATCH** against production ledger SHA-256.
+- `034_billing_webhook_event_privileges.sql`: **COMMENT_STRIPPED_MATCH** after removing full-line comments and trimming boundary whitespace; its one executable REVOKE statement matches.
+- `029_account_rls_auth_initplan.sql`: **UNRESOLVED_DIFFERENCE** after the same normalization. Production ledger metadata contains 11 ALTER POLICY clauses, 5 WITH CHECK clauses, and 13 auth.uid() references. Repository file visually contains 11 ALTER POLICY statements. Compare normalized executable SQL and current pg_policies before inferring equivalence.
+- Source of classifications: exact-head successful Atomic billing PostgreSQL proposal workflow #39266788267, commit `9fcf6cbb7aa3c1011a3a25e14ca5b54cc9ee70c2`. General CI #39266788296 also passed.
+- Fingerprints establish content comparison only; they do not substitute for deployment authorization or verify current schema effects. Migration 009 remains unrecorded and its `country_code` column absent in production.
