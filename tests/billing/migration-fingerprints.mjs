@@ -20,7 +20,7 @@ export async function compareMigrationFingerprints(evidence = MIGRATION_FINGERPR
   for (const entry of evidence) {
     const body = await readFile(entry.path);
     const actual = createHash('sha256').update(body).digest('hex');
-    const commentStripped = createHash('sha256').update(stripLineComments(body.toString('utf8'))).digest('hex');
+    const commentStripped = createHash('sha256').update(stripLineComments(body.toString('utf8')).trim()).digest('hex');
     result.push({ name:entry.name, path:entry.path,
       status:actual === entry.sha256 ? 'EXACT_MATCH' : commentStripped === entry.sha256 ? 'COMMENT_STRIPPED_MATCH' : 'UNRESOLVED_DIFFERENCE',
       repositorySha256:actual, commentStrippedSha256:commentStripped, ledgerSha256:entry.sha256 });
