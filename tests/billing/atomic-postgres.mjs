@@ -52,6 +52,26 @@ try {
     }
   }
   console.log(await sql('SELECT version();'));
+  // Production-shaped schema drift must fail closed before fixture migrations.
+  // This is an isolated PostgreSQL instance, never the live Supabase database.
+  const { ACCOUNT_SCHEMA_PREFLIGHT_SQL, assessAccountSchemaPreflight } =
+    await import('./account-schema-preflight.mjs');
+  await sql(`CREATE TABLE public.user_preferences(
+    user_id uuid PRIMARY KEY,
+    locale text NOT NULL DEFAULT 'en',
+    currency text NOT NULL DEFAULT 'USD',
+    unit_system text NOT NULL DEFAULT 'metric',
+    updated_at timestamptz NOT NULL DEFAULT now()
+  );
+  CREATE TABLE public.profiles(id uuid PRIMARY KEY, display_name text);`);
+  const preflightRows = JSON.parse(await sql(`SELECT row_to_json(preflight) FROM (${ACCOUNT_SCHEMA_PREFLIGHT_SQL}) AS preflight;`));
+  assert.equal(preflightRows.preferences_table_present, true);
+  assert.equal(preflightRows.country_code_present, false);
+  const drift = assessAccountSchemaPreflight(preflightRows, 'unknown');
+  assert.equal(drift.ready, false, 'production-shaped schema drift must block release');
+  assert.ok(drift.blockers.some(blocker => blocker.includes('country_code')));
+  await sql('DROP TABLE public.user_preferences, public.profiles;');
+  console.log('PASS production-shaped account schema drift fails closed in disposable PostgreSQL');
   // Minimal synthetic Supabase prerequisites, not a production schema snapshot.
   await sql(`CREATE ROLE anon; CREATE ROLE authenticated; CREATE ROLE service_role BYPASSRLS;
     CREATE ROLE billing_fixture_authenticator LOGIN NOINHERIT PASSWORD 'synthetic-fixture-only';
