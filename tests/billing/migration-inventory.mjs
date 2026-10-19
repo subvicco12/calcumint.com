@@ -5,7 +5,7 @@ export function inspectMigrationNames(names) {
   const sql = names.filter(name => name.endsWith('.sql')).sort();
   const prefixes = new Map();
   for (const name of sql) {
-    const match = /^(\\d+[a-z]?)_/.exec(name);
+    const match = /^(\d+[a-z]?)_/.exec(name);
     if (!match) continue;
     const prefix = match[1];
     prefixes.set(prefix, [...(prefixes.get(prefix) ?? []), name]);
