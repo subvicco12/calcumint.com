@@ -13,6 +13,10 @@ const eventSchema = z.object({
 });
 const fenceSchema = z.string().regex(/^(0|[1-9]\d*)$/).refine(value => BigInt(value) <= 9223372036854775807n);
 const outcomeSchema = z.object({ status: z.enum(["applied", "duplicate"]), revision: fenceSchema });
+const completionSchema = z.discriminatedUnion("status", [
+  z.object({ status: z.literal("missing") }),
+  z.object({ status: z.literal("duplicate"), revision: fenceSchema })
+]);
 function asObject(value: unknown): Json { return typeof value === "object" && value !== null && !Array.isArray(value) ? value as Json : {}; }
 function stringValue(value: unknown): string | null { return typeof value === "string" && value.trim().length > 0 ? value : null; }
 function extractPriceId(data: Json): string | null {
@@ -39,6 +43,12 @@ export async function POST(request: Request) {
       const subscriptionId = stringValue(event.data.id);
       if (!userId || !subscriptionId || !z.uuid().safeParse(userId).success)
         return NextResponse.json({ error: "Missing subscription identity" }, { status: 400 });
+      // The database checks the immutable receipt, account and subscription
+      // before reporting completion. A receipt without a marker never succeeds.
+      const completion = await admin.rpc("read_billing_event_completion_v1", { p_user_id: userId, p_event: event });
+      const completionStatus = completionSchema.safeParse(completion.data);
+      if (completion.error || !completionStatus.success) return unavailable();
+      if (completionStatus.data.status === "duplicate") return NextResponse.json({ ok: true, duplicate: true });
       // This fence must be obtained before the provider request. A failed CAS never
       // retries the old snapshot using a newly read fence.
       const fence = await admin.rpc("read_billing_fence_v1", { p_user_id: userId });

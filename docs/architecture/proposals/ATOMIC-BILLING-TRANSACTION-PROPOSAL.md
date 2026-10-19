@@ -10,7 +10,7 @@ Protocol prerequisites:
 2. Read the account fence **before** the provider GET. Treat revisions as decimal strings, never JavaScript numbers. Missing fence means `"0"`.
 3. Fetch and validate current provider state and configured price/plan/interval using existing server authority. Do not derive entitlement from the receipt's historical snapshot.
 4. Call the proposed write RPC with that original fence and verified snapshot. The transaction checks the fence, immutable ownership, other paid subscriptions, every write and receipt/completion persistence together. Any exception rolls everything back.
-5. Fence conflict/deadlock/unknown outcome requires owner-scoped reconciliation, then a fresh fence and fresh provider read. Never reuse the stale snapshot under a newly read revision. A matching atomic completion can acknowledge a retry without reapplying effects.
+5. Fence conflict/deadlock/unknown outcome requires owner-scoped reconciliation, then a fresh fence and fresh provider read. Never reuse the stale snapshot under a newly read revision. A matching atomic completion can acknowledge a retry without reapplying effects. The owner- and exact-event-bound read-only completion probe runs before the provider GET, so a committed response loss can be acknowledged even during a later provider outage; missing proceeds to a fresh fence/provider read, while conflicting and legacy receipts fail closed.
 6. A legacy receipt without an atomic marker is REVIEW REQUIRED; never silently backfill completion, infer success or automatically replay it.
 
 A local fence rejects overlapping application requests based on an older local revision. It does not prove provider read consistency, external settlement finality or exactly-once network delivery. Every local billing writer must participate in the fence or explicitly invalidate it; inventory and review of privileged writers is required before adoption.
@@ -39,6 +39,34 @@ REVOKE ALL ON public.billing_account_fences, public.billing_atomic_completions
   FROM PUBLIC, anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.billing_account_fences TO service_role;
 GRANT SELECT, INSERT ON public.billing_atomic_completions TO service_role;
+
+CREATE FUNCTION public.read_billing_event_completion_v1(p_user_id uuid, p_event jsonb)
+RETURNS jsonb LANGUAGE plpgsql STABLE SECURITY DEFINER
+SET search_path = pg_catalog, public AS $$
+DECLARE
+  v_event_id text := p_event->>'event_id';
+  v_subscription_id text := p_event#>>'{data,id}';
+  v_receipt public.billing_webhook_events%ROWTYPE;
+  v_revision bigint;
+BEGIN
+  IF p_user_id IS NULL OR jsonb_typeof(p_event) IS DISTINCT FROM 'object'
+     OR COALESCE(v_event_id, '') = '' OR COALESCE(v_subscription_id, '') = ''
+     OR COALESCE(p_event->>'event_type', '') NOT LIKE 'subscription.%'
+     OR p_event#>>'{data,custom_data,calcumint_user_id}' IS DISTINCT FROM p_user_id::text THEN
+    RAISE EXCEPTION 'Invalid billing completion lookup';
+  END IF;
+  SELECT * INTO v_receipt FROM public.billing_webhook_events WHERE event_id = v_event_id;
+  IF NOT FOUND THEN RETURN jsonb_build_object('status', 'missing'); END IF;
+  IF v_receipt.payload IS DISTINCT FROM p_event THEN
+    RAISE EXCEPTION 'Conflicting event receipt';
+  END IF;
+  SELECT revision INTO v_revision FROM public.billing_atomic_completions
+    WHERE event_id = v_event_id AND user_id = p_user_id
+      AND provider_subscription_id = v_subscription_id;
+  IF NOT FOUND THEN RAISE EXCEPTION 'Legacy receipt requires review'; END IF;
+  RETURN jsonb_build_object('status', 'duplicate', 'revision', v_revision::text);
+END;
+$$;
 
 CREATE FUNCTION public.read_billing_fence_v1(p_user_id uuid)
 RETURNS text LANGUAGE sql STABLE SECURITY DEFINER
@@ -153,9 +181,11 @@ BEGIN
 END;
 $$;
 REVOKE ALL ON FUNCTION public.read_billing_fence_v1(uuid) FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.read_billing_event_completion_v1(uuid,jsonb) FROM PUBLIC, anon, authenticated;
 REVOKE ALL ON FUNCTION public.apply_verified_billing_event_v1(uuid,bigint,jsonb,jsonb,text,text,text)
   FROM PUBLIC, anon, authenticated;
 GRANT EXECUTE ON FUNCTION public.read_billing_fence_v1(uuid) TO service_role;
+GRANT EXECUTE ON FUNCTION public.read_billing_event_completion_v1(uuid,jsonb) TO service_role;
 GRANT EXECUTE ON FUNCTION public.apply_verified_billing_event_v1(uuid,bigint,jsonb,jsonb,text,text,text)
   TO service_role;
 COMMIT;
@@ -212,4 +242,4 @@ Order: resolve schema/role/writer and retention decisions → review versioned m
 
 ## Draft application integration note — 18 October 2026
 
-The cumulative draft application route now calls the proposed RPCs for subscription notifications and fails closed when the functions are unavailable. The SQL above is still a guarded proposal, not an applied migration. This draft route and SQL must remain unmerged/undeployed until the actual database schema/role, writer fencing and owner decisions are reviewed. Provider reads and database commits cannot form one distributed transaction; an uncertain response returns a retryable 503, and a new delivery must read a fresh fence and provider snapshot. No production atomicity claim follows from this code change.
+The cumulative draft application route now calls the proposed completion lookup, fence read and apply RPCs for subscription notifications and fails closed when the functions are unavailable. The SQL above is still a guarded proposal, not an applied migration. This draft route and SQL must remain unmerged/undeployed until the actual database schema/role, writer fencing and owner decisions are reviewed. Provider reads and database commits cannot form one distributed transaction; an uncertain response returns a retryable 503, and a new delivery must read a fresh fence and provider snapshot. No production atomicity claim follows from this code change.

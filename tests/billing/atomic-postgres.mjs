@@ -26,6 +26,10 @@ function call(id, { owner = a, revision = '0', status = 'active', sub = 'sub_a',
   snapshot ??= { id: sub, customer_id: customer, status, custom_data: { calcumint_user_id: owner }, items: [{ price: { id: price } }], current_billing_period: { starts_at: '2026-10-01T00:00:00Z', ends_at: '2026-11-01T00:00:00Z' } };
   return `SELECT public.apply_verified_billing_event_v1('${owner}', '${revision}', ${quote(event)}, ${quote(snapshot)}, '${price}', '${plan}', '${interval}');`;
 }
+function completion(id, { owner = a, sub = 'sub_a', event } = {}) {
+  event ??= { event_id: id, event_type: 'subscription.updated', occurred_at: '2026-10-18T00:00:00Z', data: { id: sub, custom_data: { calcumint_user_id: owner } } };
+  return `SELECT public.read_billing_event_completion_v1('${owner}', ${quote(event)});`;
+}
 const service = query => sql(`SET ROLE service_role; ${query}`);
 async function reset() {
   await sql(`TRUNCATE public.billing_atomic_completions, public.billing_webhook_events, public.billing_account_fences, public.subscriptions, public.billing_customers; UPDATE public.profiles SET plan='free';`);
@@ -150,6 +154,24 @@ try {
     assert.equal(JSON.parse(await service(call('evt_duplicate'))).status, 'duplicate');
     assert.equal(await state(), before);
   });
+  await test('completion probe requires exact receipt and owner-bound atomic marker', async () => {
+    assert.equal(JSON.parse(await service(completion('evt_lookup'))).status, 'missing');
+    await service(call('evt_lookup'));
+    const before = await state();
+    assert.deepEqual(JSON.parse(await service(completion('evt_lookup'))), {status:'duplicate', revision:'1'});
+    assert.equal(await state(), before);
+    await assert.rejects(service(completion('evt_lookup', {owner:b})), /Invalid billing completion lookup|Conflicting event receipt/);
+    await assert.rejects(service(completion('evt_lookup', {sub:'sub_other'})), /Conflicting event receipt/);
+    await assert.rejects(service(completion('evt_lookup', {event: {event_id:'evt_lookup', event_type:'subscription.canceled', data:{id:'sub_a', custom_data:{calcumint_user_id:a}}}})), /Conflicting event receipt/);
+    assert.equal(await state(), before);
+  });
+  await test('legacy receipt cannot be acknowledged by completion probe', async () => {
+    const e = {event_id:'evt_legacy_probe', event_type:'subscription.updated', occurred_at:'2026-10-18T00:00:00Z', data:{id:'sub_a',custom_data:{calcumint_user_id:a}}};
+    await sql(`INSERT INTO public.billing_webhook_events(event_id,event_type,payload) VALUES('evt_legacy_probe','subscription.updated',${quote(e)});`);
+    const before = await state();
+    await assert.rejects(service(completion('evt_legacy_probe')), /Legacy receipt requires review/);
+    assert.equal(await state(), before);
+  });
   await test('overlapping distinct events: one winner, stale fence rejected', async () => {
     const results = await Promise.allSettled([service(call('evt_one')), service(call('evt_two', { status: 'canceled' }))]);
     assert.equal(results.filter(result => result.status === 'fulfilled').length, 1);
@@ -229,6 +251,7 @@ try {
     await service(call('evt_b', {owner:b, sub:'sub_b', customer:'ctm_b'}));
     for (const role of ['anon','authenticated']) {
       await assert.rejects(sql(`SET ROLE ${role}; SELECT public.read_billing_fence_v1('${a}');`), /permission denied/);
+      await assert.rejects(sql(`SET ROLE ${role}; ${completion('evt_a')}`), /permission denied/);
       await assert.rejects(sql(`SET ROLE ${role}; ${call('evt_attack')}`), /permission denied/);
       for (const table of ['billing_atomic_completions','billing_account_fences','billing_webhook_events']) await assert.rejects(sql(`SET ROLE ${role}; SELECT * FROM public.${table};`), /permission denied/);
     }
