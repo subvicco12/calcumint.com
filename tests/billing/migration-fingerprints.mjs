@@ -10,12 +10,20 @@ export const MIGRATION_FINGERPRINT_EVIDENCE = Object.freeze([
   { name:'billing_webhook_event_privileges', path:'supabase/migrations/034_billing_webhook_event_privileges.sql', sha256:'761759a22f2a52b165b4d31294b3ba4bac69feb7a3b420cacfb0278d4881a042' }
 ]);
 
+// Strip only full-line SQL comments. This is a diagnostic, not a SQL parser.
+export function stripLineComments(sql) {
+  return sql.replace(/^\\s*--[^\\n]*(?:\\n|$)/gm, '');
+}
+
 export async function compareMigrationFingerprints(evidence = MIGRATION_FINGERPRINT_EVIDENCE) {
   const result = [];
   for (const entry of evidence) {
     const body = await readFile(entry.path);
     const actual = createHash('sha256').update(body).digest('hex');
-    result.push({ name:entry.name, path:entry.path, status:actual === entry.sha256 ? 'EXACT_MATCH' : 'DIFFERENT_OR_WRAPPED', repositorySha256:actual, ledgerSha256:entry.sha256 });
+    const commentStripped = createHash('sha256').update(stripLineComments(body.toString('utf8'))).digest('hex');
+    result.push({ name:entry.name, path:entry.path,
+      status:actual === entry.sha256 ? 'EXACT_MATCH' : commentStripped === entry.sha256 ? 'COMMENT_STRIPPED_MATCH' : 'UNRESOLVED_DIFFERENCE',
+      repositorySha256:actual, commentStrippedSha256:commentStripped, ledgerSha256:entry.sha256 });
   }
   return result;
 }
