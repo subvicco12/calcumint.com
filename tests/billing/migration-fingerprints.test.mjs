@@ -15,3 +15,8 @@ test('comparison classifies each repository file without claiming schema equival
 test('comment removal strips comment lines without altering SQL statements', () => {
   assert.equal(stripLineComments('-- explanation\nselect 1;\n  -- detail\nselect 2;'), 'select 1;\nselect 2;');
 });
+
+test('known single-statement migration matches after comment and boundary whitespace removal', async () => {
+  const rows = await compareMigrationFingerprints();
+  assert.equal(rows.find(row => row.name === 'billing_webhook_event_privileges')?.status, 'COMMENT_STRIPPED_MATCH');
+});
