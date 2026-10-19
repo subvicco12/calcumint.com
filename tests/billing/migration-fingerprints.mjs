@@ -12,7 +12,7 @@ export const MIGRATION_FINGERPRINT_EVIDENCE = Object.freeze([
 
 // Strip only full-line SQL comments. This is a diagnostic, not a SQL parser.
 export function stripLineComments(sql) {
-  return sql.replace(/^\\s*--[^\\n]*(?:\\n|$)/gm, '');
+  return sql.replace(/^[ \t]*--[^\n]*(?:\n|$)/gm, '');
 }
 
 export async function compareMigrationFingerprints(evidence = MIGRATION_FINGERPRINT_EVIDENCE) {
