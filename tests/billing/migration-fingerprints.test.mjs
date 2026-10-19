@@ -8,5 +8,6 @@ test('recorded ledger fingerprints have valid SHA-256 syntax', () => {
 test('comparison classifies each repository file without claiming schema equivalence', async () => {
   const rows = await compareMigrationFingerprints();
   assert.equal(rows.length, 4);
+  for (const row of rows) console.log('Migration fingerprint:', row.name, row.status, row.repositorySha256, row.ledgerSha256);
   for (const row of rows) assert.ok(['EXACT_MATCH','DIFFERENT_OR_WRAPPED'].includes(row.status));
 });
