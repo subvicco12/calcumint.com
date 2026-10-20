@@ -75,3 +75,7 @@ Final head and GitHub check outcomes are recorded by the draft PR's immutable co
 - Real Reference Six browser: **36/36 journeys**, **zero issues**, **32 financial download files**, 320/1280 viewports across Free/Pro/Business. Actual engine scenario rows, terminal schedules, input recovery, SIP reverse mode and account-action retry/focus are exercised. No physical Android/TalkBack, live provider or real authentication claim.
 
 The CI workflow retains npm ci, full unit/launch/certification checks and `next build --webpack`, adding synthetic Reference Six browser acceptance using installed runner Chromium/Chrome. It does not disable or replace any security/database check. See the final commit's check runs for exact-head results and runtime; historical source CI is not substituted for them.
+
+### First-head CI correction
+
+At `6000694ea789f5704810dcc12be98513e3e0bf53`, all five isolated/evidence jobs passed. Main CI passed lint/typecheck but exposed three stale BMI copy assertions and one request-form retry timing assertion. The BMI tests now require the shared alert. The request-form test waits until the pending fieldset is enabled before retrying (the alert can render before the transition settles); no application retry behavior was changed. Affected 13 tests and ESLint passed. The subsequent automatic run is justified by this demonstrated failure, not a speculative rerun; unchanged local build evidence is reused.

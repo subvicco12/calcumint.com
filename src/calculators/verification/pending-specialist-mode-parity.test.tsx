@@ -52,7 +52,7 @@ describe("pending-specialist UI uses authoritative arithmetic without plan or mo
       expect(screen.queryByRole("button", { name: "Advanced" })).toBeNull();
       change("Height (cm)", "0");
       expect(screen.queryByRole("region", { name: "Calculation result" })).toBeNull();
-      expect(screen.getByText("Enter valid inputs")).toBeTruthy();
+      expect(screen.getByRole("alert").textContent).toContain("Enter valid values");
       expect((screen.getByLabelText("Weight (kg)") as HTMLInputElement).value).toBe("73.8");
       change("Height (cm)", "200");
       expect(within(screen.getByRole("status")).getByText("18.5")).toBeTruthy();
