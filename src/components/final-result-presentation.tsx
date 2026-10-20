@@ -2,6 +2,7 @@
 import { inspectStructuredResult } from "@/calculators/final-framework/result-inspection";
 import {ResultCompositionPanel,ResultRangePanel} from "./result-overview-panels";
 import {ResultSeriesPanel} from "./result-series-panel";
+import { FinalScheduleTable } from "./final-schedule-table";
 import { ResultDataError } from "./result-data-error";
 import type { StructuredCalculationResult } from "@/calculators/final-framework/types";
 import { hasCalculatorCapability, type CalculatorCapability } from "@/calculators/final-framework/entitlements";
@@ -35,7 +36,7 @@ export function FinalResultPresentation({result:rawResult,plan="free"}:{result:S
     {result.composition&&result.composition.length>0?<ResultCompositionPanel items={result.composition}/>:null}
     {result.ranges&&result.ranges.length>0?<ResultRangePanel ranges={result.ranges} primary={result.primaryResult}/>:null}
     {result.series&&result.series.length>0&&<ResultSeriesPanel series={result.series[0]}/>}
-    {result.schedule&&result.schedule.length>0&&(hasCalculatorCapability(plan,"detailedSchedule")?<details className="result-methodology"><summary>Detailed schedule</summary><div className="schedule-scroll" role="region" aria-label="Detailed calculation schedule data" tabIndex={0}><table className="result-table"><caption className="sr-only">Detailed calculation schedule</caption><thead><tr><th scope="col">Period</th>{Object.keys(result.schedule[0].values).map(k=><th scope="col" key={k}>{k}</th>)}</tr></thead><tbody>{result.schedule.map(row=><tr key={row.id}><th scope="row">{row.period}</th>{Object.entries(row.values).map(([k,v])=><td key={k}>{display(v)}</td>)}</tr>)}</tbody></table></div></details>:<div className="locked-feature"><span aria-hidden="true">🔒</span><strong>Detailed schedule</strong><small>Full period-by-period schedule is included with Pro.</small></div>)}
+    {result.schedule&&result.schedule.length>0&&(hasCalculatorCapability(plan,"detailedSchedule")?<FinalScheduleTable rows={result.schedule} metadata={result.scheduleMetadata}/>:<div className="locked-feature"><span aria-hidden="true">🔒</span><strong>Detailed schedule</strong><small>Full period-by-period schedule is included with Pro.</small></div>)}
 
     {result.warnings?.map(warning=><p className="result-warning" key={warning}>{warning}</p>)}
     <div className="pro-analysis"><div className="result-panel-heading"><div><span className="eyebrow">CalcuMint Pro</span><h3>Advanced Analysis</h3></div><a className="text-link" href="/pricing">Compare plans</a></div><div className="locked-feature-grid">{locked.filter(item=>!hasCalculatorCapability(plan,item.capability)).map(item=><div className="locked-feature" key={item.capability}><span aria-hidden="true">🔒</span><strong>{item.title}</strong><small>{item.copy}</small></div>)}</div></div>
