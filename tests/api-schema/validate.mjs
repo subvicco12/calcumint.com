@@ -43,12 +43,12 @@ export function validateCatalog(catalog,{lane='both'}={}) {
   if(!name.endsWith('receipts'))assert.ok(table.policies.length,`${name} policies`);
   assert.equal(table.grants.find(g=>g.role==='anon').select,false,`${name} anon SELECT`);
  }
- const types={submit_verified_batch_job_v1:'uuid, text, uuid, uuid, uuid, jsonb, integer, jsonb, jsonb',read_verified_batch_job_v1:'uuid, text, uuid, uuid',capture_verified_embed_lead_v1:'text, uuid, uuid, uuid, integer, bigint, uuid, jsonb'};
+ const signatures={submit_verified_batch_job_v1:'p_api_key_id uuid, p_key_hash text, p_organization_id uuid, p_request_id uuid, p_calculator_id uuid, p_input_rows jsonb, p_version integer, p_definition jsonb, p_output_rows jsonb',read_verified_batch_job_v1:'p_api_key_id uuid, p_key_hash text, p_organization_id uuid, p_request_id uuid',capture_verified_embed_lead_v1:'p_public_key text, p_config_id uuid, p_organization_id uuid, p_calculator_id uuid, p_version integer, p_expires_at bigint, p_request_id uuid, p_payload jsonb'};
  for(const name of rpc) {
   const matches=catalog.functions.filter(f=>f.name===name);assert.equal(matches.length,1,`${name} unique signature`);
   const f=matches[0];assert.equal(f.definer,true,`${name} SECURITY DEFINER`);assert.equal(f.result,'jsonb');
   assert.equal(typeof f.arguments,'string',`${name} arguments string required`);
-  assert.equal(f.arguments.split(', ').map(arg=>arg.slice(arg.indexOf(' ')+1)).join(', '),types[name],`${name} argument types`);
+  assert.equal(f.arguments,signatures[name],`${name} argument types and names`);
   assert.ok(Array.isArray(f.config)&&f.config.every(value=>typeof value==='string'&&value.trim()),`${name} config strings required`);
   assert.ok(f.config.includes('search_path=pg_catalog, public'),`${name} search path`);
   ownerCategory(f.owner,name);

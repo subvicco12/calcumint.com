@@ -73,7 +73,7 @@ node tests/api-schema/validate.mjs /path/to/sanitized-catalog.json embed
 
 The optional lane defaults to `both` (both proposals must exist). The validator
 checks bounded required tables, PK/FK presence, RLS/policy presence, anonymous
-read denial, role superuser/BYPASSRLS flags, and exact RPC parameter types,
+read denial, role superuser/BYPASSRLS flags, and exact RPC parameter names/types,
 result type, fixed search path, nonempty owner name outside the three observed roles and effective EXECUTE
 allowlist. Native fixtures validate real catalog output and reject deliberate
 mutations: disabled RLS, missing PK/FK, missing policy, unsafe search path,
