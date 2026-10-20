@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql'
+      - 'docs/architecture/proposals/ATOMIC-API-QUOTA.sql'
+      - 'src/lib/api/auth*'
       - 'tests/api-embed/**'
       - 'src/app/api/embed/**'
       - 'src/app/api/v1/batch/**'
