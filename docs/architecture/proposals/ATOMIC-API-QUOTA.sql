@@ -11,6 +11,10 @@ DECLARE
   month_units bigint;
   minute_units bigint;
 BEGIN
+  -- Counts must take a fresh statement snapshot after waiting on the key lock.
+  IF current_setting('transaction_isolation') IS DISTINCT FROM 'read committed' THEN
+    RAISE EXCEPTION 'Quota contract requires READ COMMITTED';
+  END IF;
   -- Serialize every debit for this key before inspecting either usage window.
   SELECT * INTO api_key FROM public.business_api_keys WHERE id=p_api_key_id FOR UPDATE;
   IF NOT FOUND OR api_key.status IS DISTINCT FROM 'active' THEN RETURN false; END IF;

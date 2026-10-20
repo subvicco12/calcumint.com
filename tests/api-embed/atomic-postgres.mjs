@@ -93,5 +93,10 @@ try {
   for(const role of ['anon','authenticated'])await assert.rejects(sql(`SET ROLE ${role};SELECT public.consume_business_api_quota('${key}');`),/permission denied/);
   await sql(`UPDATE public.business_api_keys SET status='revoked' WHERE id='${key}';`);assert.equal(await consume(),'f');
  });
+ await test('quota proposal rejects unsupported snapshot isolation before any debit',async()=>{
+  const before=await sql('SELECT count(*) FROM public.api_usage_events;');
+  for(const isolation of ['REPEATABLE READ','SERIALIZABLE'])await assert.rejects(sql(`BEGIN ISOLATION LEVEL ${isolation};SET LOCAL ROLE service_role;SELECT public.consume_business_api_quota('00000000-0000-4000-8000-000000000010');COMMIT;`),/requires READ COMMITTED/);
+  assert.equal(await sql('SELECT count(*) FROM public.api_usage_events;'),before);
+ });
  console.log(`${count} atomic embed PostgreSQL cases passed; proposal remains unapplied outside fixture.`);
 } finally {try{if(created)await cmd(['rm','-f',name]);}finally{if(net)await cmd(['network','rm',network]);}}
