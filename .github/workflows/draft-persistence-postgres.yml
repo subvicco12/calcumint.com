@@ -1,0 +1,32 @@
+name: Private DRAFT persistence PostgreSQL acceptance
+on:
+  pull_request:
+    paths:
+      - 'tests/draft-preview/**'
+      - 'src/calculators/**/draft-master-*.ts'
+      - 'src/calculators/core/draft-exact-decimal.ts'
+      - 'src/calculators/final-framework/draft-*.ts'
+      - 'supabase/migrations/001_b3_accounts.sql'
+      - 'supabase/migrations/010_b7_pro_workspace.sql'
+      - 'supabase/migrations/029_account_rls_auth_initplan.sql'
+      - 'supabase/migrations/033_pro_workspace_rls_auth_initplan.sql'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/draft-persistence-postgres.yml'
+permissions:
+  contents: read
+jobs:
+  draft-persistence-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Prepare pinned disposable PostgreSQL image
+        run: docker pull postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea
+      - name: Test private DRAFT snapshots and owner RLS without production access
+        run: npm run test:draft-persistence-postgres

@@ -1,0 +1,224 @@
+{
+  "release": "HOLD",
+  "ownerAuthorization": "Current user instruction authorizes only eligible non-YMYL unregistered DRAFT implementation; not blanket approval of 195 proposals.",
+  "sourcePackageSha256": "b43f1703b8fbea870ea14d7a61f19ec2ed998cdc9f6de7709ce9513a300bab38",
+  "eligibleIds": [
+    205,
+    232,
+    233,
+    435,
+    441,
+    481,
+    484,
+    487,
+    498,
+    529
+  ],
+  "eligibleCount": 10,
+  "counts": {
+    "EXCLUDED_FINANCIAL_OR_SPECIALIST": 173,
+    "BLOCKED_METHODOLOGY_OR_SCOPE": 50,
+    "ELIGIBLE_UNREGISTERED_DRAFT": 10,
+    "EXCLUDED_UNRESOLVED_CONTRACT": 4,
+    "EXCLUDED_EXISTING_OR_AMBIGUOUS_IDENTITY": 8
+  },
+  "thisBatchIds": [
+    205,
+    232,
+    233,
+    435,
+    441
+  ],
+  "otherIndependentBatchIds": [
+    481,
+    484,
+    487,
+    498,
+    529
+  ],
+  "rows": [
+    {
+      "masterId": 205,
+      "name": "Basic Calculator",
+      "domain": "Math",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "bf55276e1c844068974bdb0ade5543cf9f4cbabc92e416d1e74c6cc2c7e8e5f6",
+      "canonicalProposal": {
+        "action": "NEW_ENGINE",
+        "proposedKey": "math.basic",
+        "proposedSlug": "basic-calculator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [],
+        "collisionCheck": "Scoped current-source/new-key search found no obvious collision; parent owns complete key/slug/master/open-PR collision check before any approval or implementation. Existing keys intentionally retained."
+      },
+      "reviewEvidence": {
+        "id": 205,
+        "eligible": true,
+        "identity": "math.basic / basic-calculator",
+        "reason": "Bounded four-operation exact rational decimal contract, half-even 34-significant-digit rounding, explicit normalization, finite digit/scale/exponent bounds. Distinct from existing Number-based expression evaluation; no equivalent decimal operation engine located.",
+        "equivalentsChecked": [
+          "src/calculators/advanced-math/expression-engine.ts: supports +,-,*,/ but parses Number and evaluates binary64; not exact decimal string arithmetic",
+          "src/calculators/advanced-math/catalog-batch-6.ts: complex arithmetic has distinct complex Number inputs",
+          "src/calculators/launch-portfolio.ts: narrow fraction, percent, power and GCF calculators; no general exact decimal API"
+        ],
+        "independentGoldenMethod": "CPython decimal precision34 ROUND_HALF_EVEN, including signed ties, repeating division, normalization and boundary cases; must generate independently before completion."
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 232,
+      "name": "Big Number Calculator",
+      "domain": "Math",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "15a361e52fca3e2dc5b66217db2e38080c3e4d15d55b37e5c374cc8c7bfc6274",
+      "canonicalProposal": {
+        "action": "NEW_ENGINE",
+        "proposedKey": "math.big-number",
+        "proposedSlug": "big-number-calculator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [],
+        "collisionCheck": "Scoped current-source/new-key search found no obvious collision; parent owns complete key/slug/master/open-PR collision check before any approval or implementation. Existing keys intentionally retained."
+      },
+      "reviewEvidence": {
+        "id": 232,
+        "eligible": true,
+        "identity": "math.big-number / big-number-calculator",
+        "reason": "Exact signed 4096-digit integer add/subtract/multiply/divmod/gcd contract differs from existing Number-based GCF/LCM and expression engines; explicit truncation, remainder sign, limits, zero policies.",
+        "equivalentsChecked": [
+          "src/calculators/launch-portfolio.ts:47-48 GCF/LCM use Number positive integers, not signed arbitrary precision multi-operation API",
+          "src/calculators/statistics/catalog-batch-3.ts: combinatorics, not arbitrary integer arithmetic",
+          "src/calculators/numeric/exact-positive-product.ts and finance candidate BigInt internals are specialized helpers, not equivalent calculator identities"
+        ],
+        "independentGoldenMethod": "CPython int oracle with explicit truncation-toward-zero quotient, not Python signed divmod; large operand and output boundaries."
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 233,
+      "name": "Random Number Generator",
+      "domain": "Math",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "0f4f3ad2220f67b50897c8c8ed36b25be2662362e1dafaac01d2b3648c3ca98a",
+      "canonicalProposal": {
+        "action": "NEW_ENGINE",
+        "proposedKey": "math.random-number",
+        "proposedSlug": "random-number-generator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [],
+        "collisionCheck": "Scoped current-source/new-key search found no obvious collision; parent owns complete key/slug/master/open-PR collision check before any approval or implementation. Existing keys intentionally retained."
+      },
+      "reviewEvidence": {
+        "id": 233,
+        "eligible": true,
+        "identity": "math.random-number / random-number-generator",
+        "reason": "Complete deterministic PCG-XSH-RR64/32 initialization, stream, state, masking, bounded rejection and draw budget contract. No existing RNG/PCG calculator found in current source. Explicit noncryptographic educational scope.",
+        "equivalentsChecked": [
+          "Full src/calculators source searches for random, PCG, random-number and relevant keys; no equivalent engine",
+          "data/catalog/crosswalk-2026-10-20/crosswalk.csv master233 records no current candidate; absence corroborative only"
+        ],
+        "independentGoldenMethod": "Official PCG seed42 stream54 raw six-word vector plus separately derived bounded rejection, full-range, singleton state-consumption and budget tests."
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 435,
+      "name": "Fuel Economy Converter",
+      "domain": "Conversion",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "b9199308124e0c968101678c98b5c73cfbb55b9ff9cf69e9b8856667acf71301",
+      "canonicalProposal": {
+        "action": "NEW_DISTINCT_ENGINE",
+        "proposedKey": "conversion.fuel-economy",
+        "proposedSlug": "fuel-economy-converter",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [
+          {
+            "key": "automotive.fuel-economy",
+            "slug": "fuel-economy-calculator",
+            "version": 1,
+            "evidence": "src/calculators/automotive/catalog-batch-2.ts"
+          }
+        ],
+        "collisionCheck": "Scoped current-source/new-key search found no obvious collision; parent owns complete key/slug/master/open-PR collision check before any approval or implementation. Existing keys intentionally retained."
+      },
+      "reviewEvidence": {
+        "masterId": 435,
+        "title": "Fuel Economy Converter",
+        "status": "eligible_draft_candidate",
+        "reason": "Bounded deterministic distinct input/output scope, no specialist-only empirical model; proposed arithmetic goldens can be independently derived without production helper.",
+        "proposedKey": "conversion.fuel-economy",
+        "sourceDigest": "b9199308124e0c968101678c98b5c73cfbb55b9ff9cf69e9b8856667acf71301",
+        "formulaEvidence": "Normalize to km/L: km_per_l=value; l_per_100km=100/value; mpg_us=value*1.609344/3.785411784; mpg_imp=value*1.609344/4.54609. Convert inverse formulas from normalized rational to target.",
+        "goldenEvidence": [
+          "1mpg_us=0.4251437074302720034011496594421760km/L at34significant half-even; Python Decimal independent exact-rational evaluation performed for proposed vector.",
+          "10km/L=10L/100km;20km/L=5L/100km",
+          "Exact relation1USgallon=3.785411784L and1imperialgallon=4.54609L; independent rational reference for allpairs."
+        ],
+        "specialistEvidence": "No specialist authorization inferred; domain-owner mathematical review required; policy requirement UNKNOWN",
+        "identityEvidence": {
+          "currentRegistryTupleOccupied": false,
+          "existingCurrentTuple": null,
+          "currentMasterCandidateUsages": [],
+          "interpretation": "Occupied identity is a reuse/scope proposal, not authorization to overwrite or alias. A free namespace is not proof of an absent engine.",
+          "historicalVersionRule": "Preserve exact prior key/slug/version and stored outputs. Scope/arithmetic changes require reviewed internal revision; no silent v1 replacement."
+        }
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 441,
+      "name": "Digital Resolution Converter",
+      "domain": "Conversion",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "d148ca8296cfce95da41a5dda5ca2e4049c7c5a6e8b64e488ec6814a1ee135c3",
+      "canonicalProposal": {
+        "action": "NEW_DISTINCT_ENGINE",
+        "proposedKey": "conversion.digital-resolution",
+        "proposedSlug": "digital-resolution-converter",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [
+          {
+            "key": "technology.resolution",
+            "slug": "resolution-calculator",
+            "version": 1,
+            "evidence": "src/calculators/technology-computing/catalog-batch-2.ts"
+          }
+        ],
+        "collisionCheck": "Scoped current-source/new-key search found no obvious collision; parent owns complete key/slug/master/open-PR collision check before any approval or implementation. Existing keys intentionally retained."
+      },
+      "reviewEvidence": {
+        "masterId": 441,
+        "title": "Digital Resolution Converter",
+        "status": "eligible_draft_candidate",
+        "reason": "Bounded deterministic distinct input/output scope, no specialist-only empirical model; proposed arithmetic goldens can be independently derived without production helper.",
+        "proposedKey": "conversion.digital-resolution",
+        "sourceDigest": "d148ca8296cfce95da41a5dda5ca2e4049c7c5a6e8b64e488ec6814a1ee135c3",
+        "formulaEvidence": "CSS resolution unit conversion via dpi factors: dpi1;dpcm2.54;dppx96. result=value*factor(from)/factor(to).",
+        "goldenEvidence": [
+          "96dpi=1dppx;1dpcm=2.54dpi;254dpi=100dpcm",
+          "Independent exact rational vector checks and CSS normative text verification before approval."
+        ],
+        "specialistEvidence": "No specialist authorization inferred; domain-owner mathematical review required; policy requirement UNKNOWN",
+        "identityEvidence": {
+          "currentRegistryTupleOccupied": false,
+          "existingCurrentTuple": null,
+          "currentMasterCandidateUsages": [],
+          "interpretation": "Occupied identity is a reuse/scope proposal, not authorization to overwrite or alias. A free namespace is not proof of an absent engine.",
+          "historicalVersionRule": "Preserve exact prior key/slug/version and stored outputs. Scope/arithmetic changes require reviewed internal revision; no silent v1 replacement."
+        }
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    }
+  ],
+  "externalAuthorityRequests": "All 1636 previously UNKNOWN external authority requests remain UNKNOWN; no certification/publication or ambiguous mapping approval is inferred."
+}
