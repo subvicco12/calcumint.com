@@ -69,7 +69,7 @@ describe("B12 production hardening contracts", () => {
     expect(pricingPage).toMatch(/subscriptionChangeMode/);
     expect(pricingPage).toMatch(/mode === "deferred"/);
     expect(pricingPage).toMatch(/contact billing support to schedule this change/);
-    expect(checkoutButton).toMatch(/disabled=\{busy \|\| Boolean\(disabledReason\)\}/);
+    expect(checkoutButton).toMatch(/disabled=\{busy \|\| needsReconciliation \|\| Boolean\(disabledReason\)\}/);
   });
 
   it("keeps in-place upgrades pending until the Paddle webhook state matches", () => {

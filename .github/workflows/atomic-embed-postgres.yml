@@ -1,0 +1,25 @@
+name: Atomic embed PostgreSQL proposal
+on:
+  pull_request:
+    paths:
+      - 'docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql'
+      - 'tests/api-embed/**'
+      - 'src/app/api/embed/**'
+      - 'src/app/api/v1/batch/**'
+      - 'src/components/public-embed-calculator*'
+      - 'supabase/migrations/005_b7_delivery.sql'
+      - 'supabase/migrations/006_b8_api_automation.sql'
+      - '.github/workflows/atomic-embed-postgres.yml'
+permissions:
+  contents: read
+jobs:
+  atomic-embed-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Test guarded proposal in disposable PostgreSQL
+        run: node tests/api-embed/atomic-postgres.mjs
