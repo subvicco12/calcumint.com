@@ -2,10 +2,11 @@ import {beforeEach,expect,it,vi} from 'vitest';
 import {randomUUID} from 'node:crypto';
 import {draftPreviewDefinitions,calculateDraftPreview} from '@/calculators/final-framework/draft-preview-catalog';
 const m=vi.hoisted(()=>({owner:'owner-a',plan:'pro',active:true,role:'reviewer',authError:false,profileError:false,loseResponse:false,changeOwnerOnProfile:false,authReads:0,downgradeOnReauth:false,writes:0,rows:new Map<string,Record<string,unknown>>(),filters:[] as string[]}));
-vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>{m.authReads++;if(m.downgradeOnReauth&&m.authReads>1)m.plan='free';return {data:{user:{id:m.owner}},error:m.authError?{}:null};}},from:(table:string)=>{
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>{m.authReads++;if(m.downgradeOnReauth&&m.authReads>1)m.plan='free';return {data:{user:{id:m.owner}},error:m.authError?{}:null};}},rpc:async(_name:string,p:Record<string,unknown>)=>{if(p.p_expected_owner_id!==m.owner)return {data:null,error:{code:'42501'}};const id=String(p.p_request_id),row={id,user_id:m.owner,calculator_slug:p.p_calculator_slug,calculator_version:p.p_calculator_version,input_data:p.p_input_data,output_data:p.p_output_data,table:'calculation_history',created_at:'2026-10-20T00:00:00Z'};const existing=m.rows.get(id);if(existing)return {data:JSON.stringify(existing)===JSON.stringify(JSON.parse(JSON.stringify(row)))?id:null,error:JSON.stringify(existing)===JSON.stringify(JSON.parse(JSON.stringify(row)))?null:{code:'P0001'}};if(m.profileError||m.plan==='free'&&[...m.rows.values()].filter(r=>r.user_id===m.owner).length>=20)return {error:{code:'P0001'},data:null};m.writes++;m.rows.set(id,JSON.parse(JSON.stringify(row)));if(m.loseResponse){m.loseResponse=false;return {error:{code:'503'},data:null};}return {error:null,data:id};},from:(table:string)=>{
  const filters=new Map<string,unknown>();const matches=(row:Record<string,unknown>)=>[...filters].every(([k,v])=>row[k]===v);
- const q={select:()=>q,eq:(k:string,v:unknown)=>{filters.set(k,v);m.filters.push(`${table}:${k}:${v}`);return q;},order:()=>q,limit:()=>q,
+ const q={select:()=>q,eq:(k:string,v:unknown)=>{filters.set(k,v);m.filters.push(`${table}:${k}:${v}`);return q;},in:(key:string,_values:unknown[])=>{m.filters.push(`${table}:${key}:in`);return q;},order:()=>q,limit:()=>q,
  maybeSingle:async()=>{
+  if(table==='platform_admins'&&m.changeOwnerOnProfile)m.owner='owner-b';
   if(table==='platform_admins')return {data:{active:m.active,role:m.role},error:null};
   if(table==='profiles'){if(m.changeOwnerOnProfile)m.owner='owner-b';return {data:{plan:m.plan},error:m.profileError?{}:null};}
   return {data:[...m.rows.values()].find(row=>row.table===table&&matches(row))??null,error:null};
@@ -29,7 +30,7 @@ it('denies foreign owners, conflicting snapshots and new Free writes without del
  const different=calculateDraftPreview(205,{left:'1',right:'2',operation:'add'}).snapshot;
  await expect(saveDraftCalculation({...a,snapshot:different})).rejects.toThrow('Saved draft unavailable');
  m.owner='owner-b';await expect(reopenDraftCalculation({expectedOwnerId:'owner-b',source:'history',id:a.requestId})).rejects.toThrow('Saved draft unavailable');
- m.plan='free';await expect(saveDraftCalculation({...a,expectedOwnerId:'owner-b',requestId:randomUUID()})).rejects.toThrow('atomic Free history quota');expect(JSON.stringify(m.rows.get(a.requestId))).toBe(old);
+ m.plan='free';for(let i=0;i<20;i++)m.rows.set(randomUUID(),{user_id:'owner-b'});await expect(saveDraftCalculation({...a,expectedOwnerId:'owner-b',requestId:randomUUID()})).rejects.toThrow('Saved draft unavailable');expect(JSON.stringify(m.rows.get(a.requestId))).toBe(old);
 });
 it('denies stale sessions, role loss and pre-dispatch account switching',async()=>{
  const a=args();m.authError=true;await expect(saveDraftCalculation(a)).rejects.toThrow('Draft access unavailable');m.authError=false;m.active=false;await expect(saveDraftCalculation(a)).rejects.toThrow('Draft access unavailable');m.active=true;m.changeOwnerOnProfile=true;await expect(saveDraftCalculation(a)).rejects.toThrow('Draft access unavailable');expect(m.writes).toBe(0);
@@ -45,4 +46,4 @@ it('reconciles numeric signed zero after actual JSON transport normalization wit
  m.loseResponse=true;await expect(saveDraftCalculation(entry)).rejects.toThrow('Saved draft unavailable');expect(m.rows.size).toBe(1);expect(await saveDraftCalculation(entry)).toEqual({id:requestId});expect(m.writes).toBe(1);
 });
 
-it('rejects a plan downgrade discovered during pre-dispatch account re-verification',async()=>{const a=args();m.downgradeOnReauth=true;await expect(saveDraftCalculation(a)).rejects.toThrow('atomic Free history quota');expect(m.writes).toBe(0);});
+it('permits a Free save after a pre-dispatch downgrade when atomic capacity remains',async()=>{const a=args();m.downgradeOnReauth=true;expect(await saveDraftCalculation(a)).toEqual({id:a.requestId});expect(m.plan).toBe('free');expect(m.writes).toBe(1);});

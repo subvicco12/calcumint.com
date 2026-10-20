@@ -7,9 +7,10 @@ import {requiresSignIn} from '@/lib/auth-recovery';
 import {createSupabaseBrowserClient} from '@/lib/supabase/browser';
 
 /** Local exclusion only; the server authenticates and authorizes every request. */
-export function AccountMutationForm({action,ownerId,children,className}:{action:(data:FormData)=>Promise<void>;ownerId:string;children:ReactNode;className?:string}){
+export function AccountMutationForm({action,ownerId,children,className,requestId}:{requestId?:string;action:(data:FormData)=>Promise<void>;ownerId:string;children:ReactNode;className?:string}){
  const [pending,startTransition]=useTransition();
  const [blocked,setBlocked]=useState(false),[message,setMessage]=useState(''),[failed,setFailed]=useState(false);
+ const retryIdentity=useRef<{signature:string;id:string}|null>(null);
  const locked=useRef(false),mounted=useRef(true),revision=useRef<object>({});
  useEffect(()=>{
   mounted.current=true;
@@ -24,6 +25,7 @@ export function AccountMutationForm({action,ownerId,children,className}:{action:
   if(locked.current||pending||blocked)return;
   locked.current=true;setMessage('');setFailed(false);
   const data=new FormData(event.currentTarget);data.set('expectedOwnerId',ownerId);
+  if(requestId){const signature=JSON.stringify([...data.entries()].filter(([name])=>name!=='requestId'));if(!retryIdentity.current||retryIdentity.current.signature!==signature)retryIdentity.current={signature,id:retryIdentity.current?crypto.randomUUID():requestId};data.set('requestId',retryIdentity.current.id);}
   const request=revision.current;
   const current=()=>mounted.current&&request===revision.current;
   startTransition(async()=>{
@@ -56,7 +58,7 @@ export function AccountMutationForm({action,ownerId,children,className}:{action:
  }
  if(blocked)return <div role="alert">Your account session changed. <a href="/account">Reload account</a> or <Link href="/login">sign in</Link> to continue.</div>;
  return <form action={action} onSubmit={submit} className={className} aria-busy={pending}>
-  <input type="hidden" name="expectedOwnerId" value={ownerId}/>
+  <input type="hidden" name="expectedOwnerId" value={ownerId}/>{requestId&&<input type="hidden" name="requestId" value={requestId}/>}
   <fieldset disabled={pending} className={className} style={{border:0,padding:0,margin:0,minWidth:0}}>{children}</fieldset>
   {pending&&<p role="status">Submitting request…</p>}
   {message&&<p role={failed?'alert':'status'} aria-atomic="true">{message}{failed&&<> <a href="/account">Check account</a></>}</p>}

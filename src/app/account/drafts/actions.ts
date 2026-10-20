@@ -3,10 +3,12 @@
 import {z} from 'zod';
 import {isDeepStrictEqual} from 'node:util';
 import {requireDraftAccountAccess} from '@/lib/draft-account-access';
-import {readAccountEntitlements} from '@/lib/account-persistence';
+import {saveHistoryAtomically} from '@/lib/account-persistence';
 import {normalizePlan} from '@/lib/entitlements';
 import {readPersistedCalculationSnapshot} from '@/lib/persisted-calculation';
 import {draftMasterIdForSlug,validateDraftPersistedCapture,type DraftSavedReference} from '@/lib/draft-persistence-contract';
+
+import {draftHistorySlugs,decodeDraftHistoryCursor,encodeDraftHistoryCursor,draftHistorySeekFilter,type DraftHistoryPageRequest} from '@/lib/draft-history-pagination';
 
 const uuid=z.string().uuid();
 const referenceRow=z.object({id:uuid,calculator_slug:z.string().min(1),calculator_version:z.number().int().positive(),created_at:z.iso.datetime({offset:true}),name:z.string().min(1).max(120).optional()});
@@ -24,27 +26,46 @@ function capture(row:unknown){
  return validateDraftPersistedCapture(masterId,snapshot);
 }
 
-export async function loadDraftWorkspace(expectedOwnerId?:string){
+function reference(raw:unknown,source:'history'|'scenario'):DraftSavedReference{
+ const parsed=referenceRow.safeParse(raw);
+ if(!parsed.success||(source==='scenario'&&parsed.data.name===undefined))throw unavailable();
+ const row=parsed.data,masterId=draftMasterIdForSlug(row.calculator_slug);
+ if(masterId===undefined)throw unavailable();
+ return {id:row.id,masterId,source,label:source==='scenario'?row.name!:row.calculator_slug,createdAt:row.created_at};
+}
+async function historyPage(account:Account,entry:DraftHistoryPageRequest){
+ const source=z.enum(['history','scenario']).parse(entry.source);
+ const limit=z.union([z.literal(20),z.literal(50)]).parse(entry.limit??20);
+ const cursor=entry.cursor!=null?decodeDraftHistoryCursor(entry.cursor,account.user.id,source,limit):undefined;
+ const table=source==='history'?'calculation_history':'saved_scenarios';
+ let query=account.supabase.from(table).select(source==='history'?'id,calculator_slug,calculator_version,created_at':'id,calculator_slug,calculator_version,created_at,name').eq('user_id',account.user.id).in('calculator_slug',draftHistorySlugs);
+ if(cursor)query=query.or(draftHistorySeekFilter(cursor));
+ const result=await query.order('created_at',{ascending:false}).order('id',{ascending:false}).limit(limit+1);
+ if(result.error)throw unavailable();
+ const rows=(result.data??[]).map(raw=>reference(raw,source));
+ const records=rows.slice(0,limit),last=records.at(-1);
+ return {records,nextCursor:rows.length>limit&&last?encodeDraftHistoryCursor({v:1,owner:account.user.id,source,limit,createdAt:last.createdAt,id:last.id}):null};
+}
+export async function loadDraftHistoryPage(entry:DraftHistoryPageRequest){
+ const account=await requireDraftAccountAccess(z.string().min(1).parse(entry.expectedOwnerId));
+ return historyPage(account,entry);
+}
+export async function loadDraftWorkspace(expectedOwnerId?:string,selectedReference?:{source:'history'|'scenario';id:string}){
  const account=await requireDraftAccountAccess(expectedOwnerId);
  const profile=await account.supabase.from('profiles').select('plan').eq('id',account.user.id).maybeSingle();
  if(profile.error)throw new Error('Account plan unavailable');
- const records:DraftSavedReference[]=[];
- for(const source of ['history','scenario'] as const){
-  const query=source==='history'
-   ? account.supabase.from('calculation_history').select('id,calculator_slug,calculator_version,created_at')
-   : account.supabase.from('saved_scenarios').select('id,calculator_slug,calculator_version,created_at,name');
-  const result=await query.eq('user_id',account.user.id).order('created_at',{ascending:false}).limit(100);
-  if(result.error)throw unavailable();
-  for(const raw of result.data??[]){
-   const parsed=referenceRow.safeParse(raw);
-   if(!parsed.success||(source==='scenario'&&parsed.data.name===undefined))throw unavailable();
-   const row=parsed.data;
-   const masterId=draftMasterIdForSlug(row.calculator_slug);
-   if(masterId===undefined)continue;
-   records.push({id:row.id,masterId,source,label:source==='scenario'?row.name??row.calculator_slug:row.calculator_slug,createdAt:row.created_at});
+ const history=await historyPage(account,{expectedOwnerId:account.user.id,source:'history'});
+ const scenario=await historyPage(account,{expectedOwnerId:account.user.id,source:'scenario'});
+ const records=[...history.records,...scenario.records];
+ if(selectedReference){
+  const source=z.enum(['history','scenario']).parse(selectedReference.source),id=uuid.parse(selectedReference.id);
+  if(!records.some(record=>record.source===source&&record.id===id)){
+   const result=await account.supabase.from(source==='history'?'calculation_history':'saved_scenarios').select(source==='history'?'id,calculator_slug,calculator_version,created_at':'id,calculator_slug,calculator_version,created_at,name').eq('user_id',account.user.id).eq('id',id).in('calculator_slug',draftHistorySlugs).maybeSingle();
+   if(result.error||!result.data)throw unavailable();
+   records.push(reference(result.data,source));
   }
  }
- return {ownerId:account.user.id,plan:normalizePlan(profile.data?.plan),records};
+ return {ownerId:account.user.id,plan:normalizePlan(profile.data?.plan),records,pages:{history,scenario}};
 }
 
 export async function saveDraftCalculation(entry:{expectedOwnerId:string;masterId:number;requestId:string;snapshot:unknown}){
@@ -61,16 +82,10 @@ export async function saveDraftCalculation(entry:{expectedOwnerId:string;masterI
   return true;
  };
  if(await reconcile())return {id:requestId};
- const entitlements=await readAccountEntitlements(account.supabase,account.user.id);
- // Existing count-then-insert quota cannot safely authorize concurrent bounded writes.
- if(entitlements.historyLimit!==null)throw new Error('New private DRAFT saves require the atomic Free history quota contract; existing saved captures remain readable.');
  const dispatchAccount=await requireDraftAccountAccess(expectedOwnerId);
- const dispatchEntitlements=await readAccountEntitlements(dispatchAccount.supabase,dispatchAccount.user.id);
- if(dispatchEntitlements.historyLimit!==null)throw new Error('New private DRAFT saves require the atomic Free history quota contract; existing saved captures remain readable.');
- const snapshot=validated.snapshot;
- const result=await dispatchAccount.supabase.from('calculation_history').insert({id:requestId,user_id:dispatchAccount.user.id,calculator_slug:snapshot.calculatorSlug,calculator_version:snapshot.calculatorVersion,input_data:snapshot.input,output_data:snapshot.output});
- if(result.error){
-  if(result.error.code==='23505'&&await reconcile(dispatchAccount))return {id:requestId};
+ try{
+  await saveHistoryAtomically(dispatchAccount.supabase,requestId,validated.snapshot,dispatchAccount.user.id);
+ }catch{
   throw unavailable();
  }
  return {id:requestId};

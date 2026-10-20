@@ -103,11 +103,11 @@ it('resets account state immediately and revokes exports when authoritative plan
  view.rerender(<DraftCalculatorPreview persistence={{...persistence,plan:'free'}}/>);expect((screen.getByRole('button',{name:'Export calculation JSON'}) as HTMLButtonElement).disabled).toBe(true);expect(document.querySelector('.result-box')).toBeTruthy();
  view.rerender(<DraftCalculatorPreview persistence={{...persistence,ownerId:'account-b'}}/>);expect(document.querySelector('.result-box')).toBeNull();
 });
-it('shows Free save limitations and preserves the capture after a failed account save',async()=>{
+it('preserves the capture after a failed account save',async()=>{
  render(<DraftCalculatorPreview persistence={account({plan:'free',save:vi.fn(async()=>{throw Error('atomic quota unavailable');})})}/>);
  fireEvent.click(screen.getByRole('button',{name:'Calculate'}));const before=document.querySelector('.result-box')!.textContent;
  fireEvent.click(screen.getByRole('button',{name:'Save to account'}));await waitFor(()=>expect(screen.getByRole('alert').textContent).toContain('not confirmed'));
- expect(document.querySelector('.result-box')!.textContent).toBe(before);expect(screen.getByText(/atomic quota enforcement/)).toBeTruthy();expect(document.activeElement).toBe(screen.getByRole('alert'));
+ expect(document.querySelector('.result-box')!.textContent).toBe(before);expect(screen.queryByText(/atomic quota enforcement/)).toBeNull();expect(document.activeElement).toBe(screen.getByRole('alert'));
 });
 it('ignores pending account responses after account and calculator switches',async()=>{
  let resolve!:(value:{id:string})=>void;const persistence=account({save:vi.fn(()=>new Promise<{id:string}>(yes=>{resolve=yes;}))});
@@ -146,4 +146,41 @@ it('requires a source for ambiguous deep-linked IDs and selects an explicit scen
  expect((screen.getByRole('button',{name:'Reopen account snapshot'}) as HTMLButtonElement).disabled).toBe(true);
  view.rerender(<DraftCalculatorPreview persistence={{...persistence,ownerId:'explicit-source',initialRecordSource:'scenario'}}/>);
  expect((screen.getByLabelText('Saved account snapshot') as HTMLSelectElement).value).toBe('scenario:same');expect(persistence.reopen).not.toHaveBeenCalled();
+});
+
+it('loads older sources without losing selection, raw draft or capture and retries the same cursor', async()=>{
+ const {act}=await import('@testing-library/react');
+ const record={id:'shared',masterId:205,source:'history' as const,label:'History first',createdAt:'2026-10-20'};
+ let resolve!:(page:import('@/lib/draft-persistence-contract').DraftHistoryPage)=>void;
+ const loadPage=vi.fn().mockRejectedValueOnce(Error('private secret')).mockImplementation(()=>new Promise(r=>{resolve=r;}));
+ const save=vi.fn(),reopen=vi.fn();
+ render(<DraftCalculatorPreview persistence={{ownerId:'owner',plan:'free',records:[record],pages:{history:{records:[],nextCursor:'cursor-a'},scenario:{records:[],nextCursor:'cursor-b'}},loadPage,save,reopen}}/>);
+ fireEvent.change(screen.getByLabelText('Saved account snapshot'),{target:{value:'history:shared'}});
+ fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
+ await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Load older history'})));
+ expect(screen.getByRole('alert').textContent).not.toContain('private secret');expect(document.activeElement).toBe(screen.getByRole('alert'));
+ fireEvent.click(screen.getByRole('button',{name:'Load older history'}));
+ expect((screen.getByRole('button',{name:'Load older scenarios'}) as HTMLButtonElement).disabled).toBe(true);
+ await act(async()=>resolve({records:[{...record,label:'History duplicate'},{...record,id:'older',label:'Older'}],nextCursor:null}));
+ expect(loadPage.mock.calls).toEqual([['history','cursor-a'],['history','cursor-a']]);
+ expect((screen.getByLabelText('Saved account snapshot') as HTMLSelectElement).value).toBe('history:shared');
+ expect(document.querySelector('.result-box')).toBeTruthy();expect((screen.getByLabelText('Left decimal') as HTMLInputElement).value).toBe('0.1');
+ expect(screen.queryByRole('button',{name:'Load older history'})).toBeNull();
+ fireEvent.click(screen.getByRole('button',{name:'Load older scenarios'}));
+ await act(async()=>resolve({records:[{...record,source:'scenario',label:'Scenario same UUID'}],nextCursor:null}));
+ expect(screen.getByRole('option',{name:/Scenario same UUID/})).toHaveProperty('value','scenario:shared');expect(save).not.toHaveBeenCalled();
+});
+it.each(['owner','plan'])('ignores a late page after %s changes',async(change)=>{
+ const {act}=await import('@testing-library/react');let resolve!:(page:import('@/lib/draft-persistence-contract').DraftHistoryPage)=>void;
+ const persistence={ownerId:'a',plan:'pro' as const,records:[],pages:{history:{records:[],nextCursor:'next'}},loadPage:vi.fn(()=>new Promise<import('@/lib/draft-persistence-contract').DraftHistoryPage>(r=>{resolve=r;})),save:vi.fn(),reopen:vi.fn()};
+ const view=render(<DraftCalculatorPreview persistence={persistence}/>);fireEvent.click(screen.getByRole('button',{name:'Load older history'}));
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,...(change==='owner'?{ownerId:'b'}:{plan:'business' as const})}}/>);
+ await act(async()=>resolve({records:[{id:'late',masterId:205,source:'history',label:'Late private record',createdAt:'2026'}],nextCursor:null}));
+ expect(screen.queryByRole('option',{name:/Late private record/})).toBeNull();
+});
+it('rejects a page from an unexpected source',async()=>{
+ const {act}=await import('@testing-library/react');
+ render(<DraftCalculatorPreview persistence={{ownerId:'a',plan:'pro',records:[],pages:{history:{records:[],nextCursor:'next'}},loadPage:async()=>({records:[{id:'wrong',masterId:205,source:'scenario',label:'Wrong source',createdAt:'2026'}],nextCursor:null}),save:vi.fn(),reopen:vi.fn()}}/>);
+ await act(async()=>fireEvent.click(screen.getByRole('button',{name:'Load older history'})));
+ expect(screen.getByRole('alert')).toBeTruthy();expect(screen.queryByRole('option',{name:/Wrong source/})).toBeNull();
 });

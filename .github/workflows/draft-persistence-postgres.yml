@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'tests/draft-preview/**'
+      - 'docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql'
+      - 'src/app/account/actions.ts'
+      - 'src/components/calculator-account-actions.tsx'
+      - 'src/components/account-mutation-form.tsx'
       - 'src/app/account/drafts/**'
       - 'src/lib/draft-*'
       - 'src/lib/account-persistence.ts'
@@ -35,3 +39,5 @@ jobs:
         run: docker pull postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f19ad51be9fdc5970a6080ea
       - name: Test private DRAFT snapshots and owner RLS without production access
         run: npm run test:draft-persistence-postgres
+      - name: Test atomic history quotas, idempotency and owner fencing
+        run: npm run test:atomic-history-postgres

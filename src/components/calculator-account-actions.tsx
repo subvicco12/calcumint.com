@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import {requiresSignIn} from "@/lib/auth-recovery";
+import {saveHistoryAtomically} from "@/lib/account-persistence";
 import {requestAccountRecovery} from '@/lib/account-recovery';
 import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
@@ -70,6 +71,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   const [readFailure,setReadFailure]=useState(false);
   const [readAttempt,setReadAttempt]=useState(0);
   const [saving,setSaving]=useState(false),[favoriting,setFavoriting]=useState(false);
+  const historyRequest=useRef<{owner:string;signature:string;id:string}|null>(null);
   const saveLock=useRef(false),favoriteLock=useRef(false),readRetryLock=useRef(false),mounted=useRef(true);
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
   const statusRevision=useRef(0);
@@ -183,13 +185,11 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         return;
       }
       if(user.id!==accountOwner.current){retryAccountRead();return;}
-      if(entitlements.historyLimit!==null){
-        const count=await readCurrentSaveCount(supabase,"calculation_history",user.id);
-        if(observedAuthOwner.current!==undefined&&observedAuthOwner.current!==user.id)return;
-        if(count>=entitlements.historyLimit){reportAction(`Free accounts can keep up to ${entitlements.historyLimit} calculations.`,true);return;}
+      const signature=JSON.stringify(snapshot);
+      if(!historyRequest.current||historyRequest.current.owner!==user.id||historyRequest.current.signature!==signature){
+        historyRequest.current={owner:user.id,signature,id:crypto.randomUUID()};
       }
-      const {error}=await supabase.from("calculation_history").insert({user_id:user.id,calculator_slug:snapshot.calculatorSlug,calculator_version:snapshot.calculatorVersion,input_data:snapshot.input,output_data:snapshot.output});
-      if(error)throw new Error("History save unavailable");
+      await saveHistoryAtomically(supabase,historyRequest.current.id,snapshot,user.id);
       if(isCurrentActionOwner(actionOwner)){reportAction("Calculation saved to your history.");}
     }catch(error){if(requiresSignIn(error)){requireActionSignIn(actionOwner,focusedElement);return;}if(isCurrentActionOwner(actionOwner))reportAction(plan==="free"?"Could not save. Free accounts can keep up to 20 calculations.":"Could not save calculation.",true);}
     finally{saveLock.current=false;if(mounted.current)setSaving(false);}

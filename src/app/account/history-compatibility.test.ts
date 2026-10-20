@@ -2,7 +2,7 @@ import {beforeEach,expect,it,vi} from 'vitest';
 const state=vi.hoisted(()=>({userId:'owner-a',plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0 as number|null,history:{} as Record<string,unknown>,writes:[] as {table:string;value:Record<string,unknown>}[],filters:[] as string[]}));
 vi.mock('next/cache',()=>({revalidatePath:vi.fn()}));
 vi.mock('next/navigation',()=>({redirect:(url:string)=>{throw new Error(`redirect ${url}`);}}));
-vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.userId}},error:state.authError?{}:null})},from:(table:string)=>{
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.userId}},error:state.authError?{}:null})},rpc:async(name:string,p:Record<string,unknown>)=>{if(p.p_expected_owner_id!==state.userId)return {error:{code:'42501'},data:null};if(state.countError||state.plan==='free'&&(!Number.isSafeInteger(state.count)||state.count!<0||state.count!>=20))return {error:{code:'P0001'},data:null};const value=name==='save_calculation_history_atomic'?{user_id:state.userId,calculator_slug:p.p_calculator_slug,calculator_version:p.p_calculator_version,input_data:p.p_input_data,output_data:p.p_output_data}:{user_id:state.userId,project_id:p.p_project_id,name:p.p_name,...state.history};state.writes.push({table:name==='save_calculation_history_atomic'?'calculation_history':'saved_scenarios',value});return {error:null,data:p.p_request_id};},from:(table:string)=>{
  let countOnly=false;
  const query={select:(_columns:string,options?:{head?:boolean})=>{countOnly=Boolean(options?.head);return query;},eq:(field:string,value:string)=>{state.filters.push(`${table}:${field}:${value}`);return query;},maybeSingle:async()=>table==='profiles'?{data:{plan:state.plan},error:state.profileError?{}:null}:table==='calculation_projects'?{data:{id:'project-a'},error:state.projectError?{}:null}:{data:state.history,error:state.historyError?{}:null},then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({count:countOnly?state.count:null,error:state.countError?{}:null}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},upsert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},update:(value:Record<string,unknown>)=>{state.writes.push({table,value});return query;},delete:()=>{state.writes.push({table,value:{}});return query;}};return query;
 }})}));
@@ -106,4 +106,11 @@ it.each([
 ])('rejects stale owner binding before $name queries/writes',async({run})=>{
  const data=scenarioForm();data.set('name','Private account A draft');data.set('expectedOwnerId','owner-a');state.userId='owner-b';
  await expect(run(data)).rejects.toThrow('Account context changed');expect(state.writes).toHaveLength(0);expect(state.filters).toHaveLength(0);
+});
+
+it('binds generic history retry identity and owner before awaiting auth',async()=>{
+ const requestId='11111111-1111-4111-8111-111111111111';
+ const entry={calculatorSlug:'test',calculatorVersion:1,input:{x:1},output:{value:1},requestId,expectedOwnerId:'owner-a'};
+ const pending=saveCalculationHistory(entry);entry.requestId='invalid';entry.expectedOwnerId='owner-b';expect(await pending).toEqual({id:requestId});
+ state.writes=[];await expect(saveCalculationHistory({...entry,requestId,expectedOwnerId:'owner-b'})).rejects.toThrow('Account context changed');expect(state.writes).toHaveLength(0);
 });

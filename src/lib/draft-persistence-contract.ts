@@ -4,7 +4,11 @@ import {draftPreviewDefinitions,getDraftPreviewDefinition} from '@/calculators/f
 import {validateDraftPreviewCapture} from './draft-preview-history';
 export type DraftSavedReference={id:string;masterId:number;source:'history'|'scenario';label:string;createdAt:string};
 export type DraftPersistedCapture={masterId:number;snapshot:CalculationSnapshot};
+export type DraftHistoryPage={records:readonly DraftSavedReference[];nextCursor:string|null};
+export type DraftHistoryPages=Partial<Record<DraftSavedReference['source'],DraftHistoryPage>>;
 export type DraftAuthenticatedPersistence={
+ pages?:DraftHistoryPages;
+ loadPage?:(source:DraftSavedReference['source'],cursor?:string)=>Promise<DraftHistoryPage>;
  ownerId:string;plan:CalcuMintPlan;initialRecordId?:string;initialRecordSource?:DraftSavedReference['source'];records:readonly DraftSavedReference[];
  save:(masterId:number,snapshot:CalculationSnapshot,requestId:string)=>Promise<{id:string}>;
  reopen:(record:DraftSavedReference)=>Promise<DraftPersistedCapture>;

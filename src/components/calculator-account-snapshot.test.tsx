@@ -8,8 +8,8 @@ const state=vi.hoisted(()=>{
 });
 vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
 vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>{
- const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:null}),then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({data:null,count:0}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.inserts.push(value);return {error:null};}};
- return {auth:{getUser:()=>state.defer?new Promise(resolve=>{state.resolve=resolve;}):Promise.resolve({data:{user:{id:'synthetic-user'}}})},from:()=>query};
+ const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:null}),then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({data:null,count:0}).then(resolve),insert:async()=>{throw new Error('History must use atomic RPC');}};
+ return {auth:{getUser:()=>state.defer?new Promise(resolve=>{state.resolve=resolve;}):Promise.resolve({data:{user:{id:'synthetic-user'}}})},rpc:async(name:string,args:Record<string,unknown>)=>{expect(name).toBe('save_calculation_history_atomic');expect(args.p_expected_owner_id).toBe('synthetic-user');state.inserts.push({calculator_slug:args.p_calculator_slug,calculator_version:args.p_calculator_version,input_data:args.p_input_data,output_data:args.p_output_data});return {data:args.p_request_id,error:null};},from:()=>query};
 }}));
 import { SensitivityPanel } from './final-analysis-panels';
 import { referencePresentations } from '@/calculators/final-framework/reference-presentations';

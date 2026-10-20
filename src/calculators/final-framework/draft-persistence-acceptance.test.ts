@@ -2,7 +2,11 @@ import {beforeEach,expect,it,vi} from 'vitest';
 const state=vi.hoisted(()=>({userId:'owner-a',plan:'pro',authError:false,profileError:false,historyError:false,projectError:false,countError:false,count:0 as number|null,history:{} as Record<string,unknown>,writes:[] as {table:string;value:Record<string,unknown>}[],filters:[] as string[]}));
 vi.mock('next/cache',()=>({revalidatePath:vi.fn()}));
 vi.mock('next/navigation',()=>({redirect:(url:string)=>{throw new Error(`redirect ${url}`);}}));
-vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.userId}},error:state.authError?{}:null})},from:(table:string)=>{
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.userId}},error:state.authError?{}:null})},rpc:async(name:string,args:Record<string,unknown>)=>{
+ if(name==='save_calculation_history_atomic'){state.writes.push({table:'calculation_history',value:{user_id:state.userId,calculator_slug:args.p_calculator_slug,calculator_version:args.p_calculator_version,input_data:args.p_input_data,output_data:args.p_output_data}});return {data:args.p_request_id,error:null};}
+ if(name==='save_project_scenario_atomic'){state.writes.push({table:'saved_scenarios',value:{user_id:state.userId,project_id:args.p_project_id,name:args.p_name,...state.history}});return {data:args.p_request_id,error:null};}
+ return {data:null,error:{code:'PGRST202'}};
+ },from:(table:string)=>{
  let countOnly=false;
  const query={select:(_columns:string,options?:{head?:boolean})=>{countOnly=Boolean(options?.head);return query;},eq:(field:string,value:string)=>{state.filters.push(`${table}:${field}:${value}`);return query;},maybeSingle:async()=>table==='profiles'?{data:{plan:state.plan},error:state.profileError?{}:null}:table==='calculation_projects'?{data:{id:'project-a'},error:state.projectError?{}:null}:{data:state.history,error:state.historyError?{}:null},then:(resolve:(value:unknown)=>unknown)=>Promise.resolve({count:countOnly?state.count:null,error:state.countError?{}:null}).then(resolve),insert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},upsert:async(value:Record<string,unknown>)=>{state.writes.push({table,value});return {error:null};},update:(value:Record<string,unknown>)=>{state.writes.push({table,value});return query;},delete:()=>{state.writes.push({table,value:{}});return query;}};return query;
 }})}));

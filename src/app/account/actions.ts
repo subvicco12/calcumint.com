@@ -1,10 +1,12 @@
 "use server";
 
+import {randomUUID} from "node:crypto";
+import {z} from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getCountryProfile,type CountryCode } from "@/calculators/country-intelligence";
-import {readAccountEntitlements,enforceSaveQuota} from "@/lib/account-persistence";
+import {readAccountEntitlements,enforceSaveQuota,saveHistoryAtomically} from "@/lib/account-persistence";
 import {readPersistedCalculationSnapshot,validateHistoricalCalculationSnapshot} from "@/lib/persisted-calculation";
 
 async function requireUser() {
@@ -62,20 +64,16 @@ export async function saveCalculationHistory(entry: {
   calculatorVersion: number;
   input: Record<string, unknown>;
   output: Record<string, unknown>;
+  requestId?: string;
+  expectedOwnerId?: string;
 }) {
   // Copy before the first await so caller mutation cannot change the persisted revision.
   const snapshot=validateHistoricalCalculationSnapshot(entry);
+  const requestId=z.string().uuid().parse(entry.requestId??randomUUID());
+  const expectedOwnerId=entry.expectedOwnerId;
   const { supabase, user } = await requireUser();
-  const entitlements=await readAccountEntitlements(supabase,user.id);
-  await enforceSaveQuota(supabase,user.id,"calculation_history",entitlements.historyLimit);
-  const { error } = await supabase.from("calculation_history").insert({
-    user_id: user.id,
-    calculator_slug: snapshot.calculatorSlug,
-    calculator_version: snapshot.calculatorVersion,
-    input_data: snapshot.input,
-    output_data: snapshot.output
-  });
-  if (error) throw new Error("Could not save calculation history");
+  if(expectedOwnerId!==undefined&&expectedOwnerId!==user.id)throw new Error("Account context changed");
+  return saveHistoryAtomically(supabase,requestId,snapshot,user.id);
 }
 
 export async function createCalculationProject(formData:FormData){const{supabase,user}=await requireFormUser(formData);const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.projects)throw new Error("Projects require Pro or Business");const name=String(formData.get("name")??"").trim().slice(0,120);const description=String(formData.get("description")??"").trim().slice(0,1000);if(!name)throw new Error("Project name is required");const{error}=await supabase.from("calculation_projects").insert({user_id:user.id,name,description:description||null});if(error)throw new Error("Could not create project");revalidatePath("/account");}
@@ -96,12 +94,11 @@ export async function saveProjectScenario(formData:FormData){
  if(projectResult.error||historyResult.error)throw new Error("Project or calculation is temporarily unavailable");
  if(!projectResult.data||!historyResult.data)throw new Error("Project or calculation was not found");
  const snapshot=readPersistedCalculationSnapshot(historyResult.data);
- const{error}=await supabase.from("saved_scenarios").insert({
-  user_id:user.id,project_id:projectId,name,
-  calculator_slug:snapshot.calculatorSlug,calculator_version:snapshot.calculatorVersion,
-  input_data:snapshot.input,output_data:snapshot.output
- });
- if(error)throw new Error("Could not save scenario");
+ // Preserve historical validation before the database copies the owned immutable row.
+ void snapshot;
+ const requestId=z.string().uuid().parse(formData.get("requestId")??randomUUID());
+ const result=await supabase.rpc("save_project_scenario_atomic",{p_expected_owner_id:user.id,p_request_id:requestId,p_project_id:projectId,p_history_id:historyId,p_name:name});
+ if(result.error||result.data!==requestId||!z.string().uuid().safeParse(result.data).success)throw new Error("Could not save scenario");
  revalidatePath("/account");
 }
 export async function updateProjectScenarioName(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("scenarioId")??"");const name=String(formData.get("name")??"").trim().slice(0,120);if(!id||!name)throw new Error("Scenario and name are required");const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.scenarios)throw new Error("Saved scenarios require Pro or Business");const{error}=await supabase.from("saved_scenarios").update({name,updated_at:new Date().toISOString()}).eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not rename scenario");revalidatePath("/account");}
