@@ -24,12 +24,10 @@ for (const v of sipNumericalCompatibilityVectors) {
     expect(cents(exact.numerator, exact.denominator)).toBe(v.cents);
     expect(sipFutureValue(v.monthly, v.annual, v.months, v.timing)).toBeCloseTo(v.target, 9);
     expect(requiredMonthlySip(v.target, v.annual, v.months, v.timing)).toBeCloseTo(v.monthly, 9);
-    for (const plan of ['free', 'pro', 'business']) {
-      const run = runCalculator(sipCalculator, { monthlyContribution: v.monthly, annualReturnPercent: v.annual, termMonths: v.months, contributionTiming: v.timing, plan });
-      expect(run.version).toBe(1);
-      expect(run.output.futureValue).toBe(Number(v.cents) / 100);
-      expect(run.output.investedAmount).toBe(v.monthly * v.months);
-    }
+    const run = runCalculator(sipCalculator, { monthlyContribution: v.monthly, annualReturnPercent: v.annual, termMonths: v.months, contributionTiming: v.timing });
+    expect(run.version).toBe(1);
+    expect(run.output.futureValue).toBe(Number(v.cents) / 100);
+    expect(run.output.investedAmount).toBe(v.monthly * v.months);
   });
 }
 

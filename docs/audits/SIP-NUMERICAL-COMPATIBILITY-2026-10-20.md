@@ -49,8 +49,11 @@ the existing six registered references independently without rebinding them.
 Additional literal endpoint references: -99% uses q=367/400 and 400 deposits,
 two periods: end 767, beginning 281489/400=703.7225. +1000% uses q=11/6 and
 600 deposits, two periods: end 1700, beginning 9350/3. Zero at maximum term,
-both signed annual underflows, timing, independent inverse targets and all
-three plans are covered. The prior four negative inverse vectors are not
+both signed annual underflows, timing and independent inverse targets are covered.
+The separate `sip-numerical-recovery.test.tsx` mounts the actual SIP tool with
+each plan hook and verifies forward/reverse failure suppression, account-action
+captures and recovery in Simple/Advanced modes. No plan field is passed as an
+unknown engine input to imply plan coverage. The prior four negative inverse vectors are not
 duplicated. No stable-evaluation helper is shipped.
 
 ## Compatibility experiment (throwaway diagnostic, not a proposed engine)
