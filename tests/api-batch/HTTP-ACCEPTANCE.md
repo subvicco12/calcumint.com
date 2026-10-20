@@ -32,3 +32,11 @@ Validation:
 - `npx eslint src/app/api/v1/batch/route.ts src/app/api/v1/batch/route.test.ts tests/api-batch`: passed.
 
 Remaining unknowns include production role ownership/default privileges/RLS/schema history, all external quota writers, builder definition immutability outside the RPC, retention/deletion and receipt privacy, deployed gateway/auth fidelity, performance, and adoption approvals. All-writer key locking and READ COMMITTED remain required. GET missing is only an observation at its read snapshot; it cannot prove an in-flight POST will never commit. Accepted duplicate POST retains one request unit per request; GET recovery is read-only. No exactly-once network claim or release authorization follows from these tests.
+
+Schema fidelity follow-up (2026-10-20): the same HTTP/route cases now run against
+whole repository 001/003/004/005/006/029/032_business_builder dependencies and
+actual membership helpers/RLS. Final focused run: **16 native + 8 HTTP + 2 route
+cases passed** (prior 13 native preserved). Three shared schema/catalog check
+groups also pass, including required-evidence catalog drift rejections. See
+[bounded schema evidence and remaining production attestations](../api-schema/README.md).
+This supersedes only the earlier minimal fixture dependency description.

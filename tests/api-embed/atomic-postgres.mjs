@@ -1,5 +1,7 @@
 // Disposable PostgreSQL only; no production URL, no host ports, internal network.
 import assert from 'node:assert/strict';
+import { validateCatalog, verifyDriftDetection } from '../api-schema/validate.mjs';
+import { bootstrapSchema, member, committedMutation, verifyDefiners } from '../api-schema/bootstrap.mjs';
 import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -20,16 +22,7 @@ try {
  await cmd(['network','create','--internal',network]);net=true;
  await cmd(['run','-d','--rm','--name',name,'--network',network,'--label','calcumint.embed-fixture=true','--tmpfs','/var/lib/postgresql/data','-e','POSTGRES_HOST_AUTH_METHOD=trust',image]);created=true;
  for(let n=0;;n++){try{await sql('SELECT 1;');break;}catch(e){if(n>=60)throw e;await new Promise(r=>setTimeout(r,250));}}
- await sql(`CREATE ROLE anon;CREATE ROLE authenticated;CREATE ROLE service_role BYPASSRLS;CREATE SCHEMA auth;CREATE TABLE auth.users(id uuid PRIMARY KEY);
- CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT coalesce(nullif(current_setting('request.jwt.claim.sub',true),''),nullif(current_setting('request.jwt.claims',true),'')::jsonb->>'sub')::uuid $$;
- CREATE TABLE public.profiles(id uuid PRIMARY KEY,plan text);CREATE TABLE public.organizations(id uuid PRIMARY KEY);CREATE TABLE public.custom_calculators(id uuid PRIMARY KEY,organization_id uuid REFERENCES public.organizations,status text,published_version integer);
- CREATE TABLE public.custom_calculator_runs(id uuid,organization_id uuid,calculator_id uuid,calculator_version integer,input_data jsonb,output_data jsonb,created_at timestamptz);
- CREATE FUNCTION public.is_org_member(uuid) RETURNS boolean LANGUAGE sql STABLE AS $$ SELECT $1=auth.uid() $$;
- CREATE FUNCTION public.has_org_role(uuid,text[]) RETURNS boolean LANGUAGE sql STABLE AS $$ SELECT $1=auth.uid() $$;
- GRANT USAGE ON SCHEMA public,auth TO anon,authenticated,service_role;
- INSERT INTO auth.users VALUES('${a}'),('${b}');INSERT INTO public.profiles VALUES('${a}','business'),('${b}','free');INSERT INTO public.organizations VALUES('${a}'),('${b}');INSERT INTO public.custom_calculators VALUES('${a}','${a}','published',1);`);
- await sql(await readFile('supabase/migrations/005_b7_delivery.sql','utf8'));
- await sql(await readFile('supabase/migrations/006_b8_api_automation.sql','utf8'));
+ await bootstrapSchema(sql,{a,b});
  await sql(`INSERT INTO public.embed_configs(id,organization_id,calculator_id,public_key,name,lead_capture_enabled,consent_text,created_by) VALUES('${config}','${a}','${a}','synthetic_public_key_123456','Synthetic',true,'Synthetic consent','${a}');`);
  await sql(`INSERT INTO public.business_webhook_endpoints(organization_id,name,endpoint_url,secret_ciphertext,event_types,created_by) VALUES('${a}','Synthetic','https://example.invalid/hook','synthetic-not-a-secret','["lead.created"]','${a}');`);
  // Reproduce the original two-transaction failure without retaining fixture data.
@@ -38,6 +31,11 @@ try {
  assert.equal(await sql('SELECT count(*) FROM public.embed_leads;'),'1');console.log('PASS reproduced orphan lead after separate consent failure');await sql('TRUNCATE public.lead_consents,public.embed_leads,public.embed_events,public.webhook_deliveries;');
  const proposal=await readFile('docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql','utf8');const guard="DO $$ BEGIN RAISE EXCEPTION 'PROPOSAL ONLY: isolated acceptance and owner authorization required'; END $$;";
  assert.equal(proposal.split(guard).length,2);await assert.rejects(sql(proposal),/PROPOSAL ONLY/);await sql(proposal.replace(guard,''));
+ await verifyDefiners(sql,['capture_verified_embed_lead_v1']);
+ const catalog=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));
+ validateCatalog(catalog,{lane:'embed'});
+ verifyDriftDetection(catalog,'embed');
+ console.log('PASS sanitized catalog contract and required-evidence drift rejections');
  // Synthetic explicit service grants only; proposed function remains definer-owned.
  await sql('GRANT SELECT ON public.embed_configs,public.embed_leads,public.lead_consents TO authenticated;');
  await test('concurrent identical captures yield one lead, consent and receipt',async()=>{const id=randomUUID();const replies=await Promise.all([sql(call(id)),sql(call(id))]);assert.deepEqual(replies.map(r=>JSON.parse(r).status).sort(),['created','duplicate']);assert.equal(await state(),'[1, 1, 1, 1]');});
@@ -57,6 +55,20 @@ try {
  await test('paused config and changed publication reject captures',async()=>{await sql(`UPDATE public.embed_configs SET status='paused';`);await assert.rejects(sql(call(randomUUID())));await sql("UPDATE public.embed_configs SET status='active';UPDATE public.custom_calculators SET status='draft';");try{await assert.rejects(sql(call(randomUUID())));}finally{await sql("UPDATE public.custom_calculators SET status='published';");}assert.equal(await state(),'[0, 0, 0, 0]');});
  await test('client roles cannot execute RPC or access receipts; RLS isolates leads',async()=>{await sql(call(randomUUID()));for(const role of ['anon','authenticated']){await assert.rejects(sql(call(randomUUID()).replace('SET ROLE service_role',`SET ROLE ${role}`)),/permission denied/);await assert.rejects(sql(`SET ROLE ${role}; SELECT * FROM public.embed_lead_receipts;`),/permission denied/);}
  assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${b}';SELECT count(*) FROM public.embed_leads;`),'0');assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${a}';SELECT count(*) FROM public.embed_leads;`),'1');});
+ await test('member access follows actual membership and consent join RLS',async()=>{
+  await sql(call(randomUUID()));
+  for(const [user,expected] of [[a,'[1, 1]'],[member,'[1, 1]'],[b,'[0, 0]']])assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${user}';SELECT jsonb_build_array((SELECT count(*) FROM public.embed_leads),(SELECT count(*) FROM public.lead_consents));`),expected);
+  await sql(`DELETE FROM public.organization_members WHERE organization_id='${a}' AND user_id='${member}';`);
+  try {assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${member}';SELECT count(*) FROM public.lead_consents;`),'0');}
+  finally {await sql(`INSERT INTO public.organization_members VALUES('${a}','${member}','member',now());`);}
+  await assert.rejects(sql('SET ROLE anon;SELECT * FROM public.embed_leads;'),/permission denied/);
+ });
+ await test('concurrent calculator tenant transfer rejects capture after row lock waits',async()=>{
+  try {await committedMutation(sql,`UPDATE public.custom_calculators SET organization_id='${b}' WHERE id='${a}'`,async()=>{
+   await assert.rejects(sql(call(randomUUID())),/ownership changed/);
+  });assert.equal(await state(),'[0, 0, 0, 0]');}
+  finally {await sql(`UPDATE public.custom_calculators SET organization_id='${a}' WHERE id='${a}';`);}
+ });
  await test('new capture cannot record terms the stale widget did not display',async()=>{
   await sql("UPDATE public.embed_configs SET consent_text='Changed terms',privacy_url='https://example.invalid/new-privacy';");
   try {await assert.rejects(sql(call(randomUUID())),/Consent evidence changed/);assert.equal(await state(),'[0, 0, 0, 0]');}

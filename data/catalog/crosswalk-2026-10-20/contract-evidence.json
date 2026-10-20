@@ -1,0 +1,1040 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Current-repository engine-contract observations for identity review; examples are not independent mathematical verification or master mapping proof.",
+  "provenance": [
+    {
+      "path": "data/catalog/crosswalk-2026-10-20/review-triage.json",
+      "sha256": "24e27252e5c133656d1c1ebbd459bb6b91e3c1047ff5797ce67bd715a200e3e8"
+    },
+    {
+      "path": "data/catalog/crosswalk-2026-10-20/crosswalk.json",
+      "sha256": "6f894d6dc66abc2e9aff02f04fbf6d8d7c162cc14eff02f62f21bb5d86fc5b0a"
+    },
+    {
+      "path": "data/catalog/master-catalog-2026.csv",
+      "sha256": "3616153c285011c042bfe1ccf2b2244159649ce9a07ff7749504e35398cb0c90"
+    },
+    {
+      "path": "data/catalog/mixed-category-review-ledger.partial.json",
+      "sha256": "0eae8e8f14672b71a6d13e0864fc31c7ba7cc02ff9ea17c9473b1a048a67762a"
+    },
+    {
+      "path": "src/calculators/registry.ts",
+      "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+    },
+    {
+      "path": "src/calculators/master-identity-contract-evidence.ts",
+      "sha256": "524e80bbdb8b9c616b5d5a0a084b362a9102889a80af49bbb640efdb125e7aea"
+    }
+  ],
+  "provenanceLimit": "Hashes attest listed files only, not the complete transitive source/build closure, deployment or external source validation.",
+  "summary": {
+    "reviewCases": 6,
+    "masterIds": 7,
+    "implementationContracts": 9,
+    "mechanicallyProvedMasterAliases": 0,
+    "approvedMappings": 0,
+    "provenMissingEngines": 0
+  },
+  "cases": [
+    {
+      "reviewCaseId": "master-scope:55",
+      "masterIds": [
+        55
+      ],
+      "domains": [
+        "Investing & Wealth"
+      ],
+      "titles": [
+        {
+          "masterId": 55,
+          "title": "Fixed/Term Deposit Calculator"
+        }
+      ],
+      "candidateSlugs": [],
+      "existingHold": false,
+      "masterContractStatus": "NOT_SUPPLIED_BY_MASTER_TITLE_CSV",
+      "contracts": [
+        {
+          "calculatorKey": "finance.term-deposit",
+          "slug": "fixed-term-deposit-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "LABEL_HINT_ONLY",
+          "definitionSource": {
+            "path": "src/calculators/finance/term-deposit.ts",
+            "sha256": "5d5667156843d9a8a64ee63bf4d6d9143f4ecf8a1ab1d1b78a32559732b2feef"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "principal": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "annualRatePercent": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "termMonths": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1200
+              },
+              "compoundingPerYear": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "const": 1
+                  },
+                  {
+                    "type": "number",
+                    "const": 2
+                  },
+                  {
+                    "type": "number",
+                    "const": 4
+                  },
+                  {
+                    "type": "number",
+                    "const": 12
+                  },
+                  {
+                    "type": "number",
+                    "const": 365
+                  }
+                ]
+              }
+            },
+            "required": [
+              "principal",
+              "annualRatePercent",
+              "termMonths",
+              "compoundingPerYear"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "compound-deposit",
+              "expression": "A = P(1 + r/m)^(m×t)",
+              "description": "Compound growth using the selected compounding frequency and fractional years derived from months."
+            }
+          ],
+          "sources": [
+            {
+              "label": "Consumer Financial Protection Bureau — How compound interest works",
+              "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+            },
+            {
+              "label": "CFPB Regulation DD Appendix A — Annual Percentage Yield Calculation",
+              "url": "https://www.consumerfinance.gov/rules-policy/regulations/1030/a/"
+            }
+          ],
+          "unitScope": "Principal and maturity share currency units; annual rate and yield in percent; term in months; compounding events per year.",
+          "scopeLimit": "Compound deposit growth only; master CSV does not supply product terms, taxes or jurisdiction scope.",
+          "examples": [
+            {
+              "label": "$100,000 at 8% nominal annual rate for 12 months, compounded quarterly",
+              "input": {
+                "principal": 100000,
+                "annualRatePercent": 8,
+                "termMonths": 12,
+                "compoundingPerYear": 4
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "maturityValue": 108243.22,
+                "interestEarned": 8243.22,
+                "effectiveAnnualYieldPercent": 8.2432
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "unsupported compounding frequency",
+              "input": {
+                "principal": 1000,
+                "annualRatePercent": 5,
+                "termMonths": 12,
+                "compoundingPerYear": 3
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            }
+          ],
+          "existingReview": null
+        }
+      ],
+      "identityDecision": "UNKNOWN",
+      "aliasResolved": false,
+      "implementationAuthorized": false,
+      "blocker": "No explicit source-backed master key/slug/version alias binding or domain-qualified master input/output contract was supplied. Engine scope observations cannot supply that authority."
+    },
+    {
+      "reviewCaseId": "master-scope:222+308",
+      "masterIds": [
+        222,
+        308
+      ],
+      "domains": [
+        "Math",
+        "Physics"
+      ],
+      "titles": [
+        {
+          "masterId": 222,
+          "title": "Power Calculator"
+        },
+        {
+          "masterId": 308,
+          "title": "Power Calculator"
+        }
+      ],
+      "candidateSlugs": [
+        "power-calculator",
+        "power-from-work-calculator"
+      ],
+      "existingHold": true,
+      "masterContractStatus": "NOT_SUPPLIED_BY_MASTER_TITLE_CSV",
+      "contracts": [
+        {
+          "calculatorKey": "physics.power",
+          "slug": "power-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "EXISTING_UNAPPROVED_CANDIDATE",
+          "definitionSource": {
+            "path": "src/calculators/physics/catalog-batch-1.ts",
+            "sha256": "c3e93d1e67efe9a5a36316b8bc4c46d72ea131bb01fa8ddc058d6e4daf5f8432"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "work": {
+                "type": "number",
+                "minimum": -1e+100,
+                "maximum": 1e+100
+              },
+              "time": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1e+100
+              }
+            },
+            "required": [
+              "work",
+              "time"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "power",
+              "expression": "P=W/t",
+              "description": "Average power from work or energy transferred over elapsed time."
+            }
+          ],
+          "sources": [
+            {
+              "label": "CalcuMint deterministic physics engine"
+            }
+          ],
+          "unitScope": "Work / time; numerical schema does not enforce SI unit labels.",
+          "scopeLimit": "Average physical power from work and positive time; does not establish Math ID 222 or full equivalence to the competing engine.",
+          "examples": [
+            {
+              "label": "Work rate",
+              "input": {
+                "work": 1000,
+                "time": 20
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "value": 50,
+                "steps": [
+                  "Power = work / time = 50"
+                ]
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "tiny positive time",
+              "input": {
+                "work": 1,
+                "time": 1e-12
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "value": 1000000000000,
+                "steps": [
+                  "Power = work / time = 1000000000000"
+                ]
+              }
+            }
+          ],
+          "existingReview": {
+            "slug": "power-calculator",
+            "domain": "Physics",
+            "sourcePath": "src/calculators/physics/catalog-batch-1.ts",
+            "inputContract": "finite work, positive time",
+            "outputContract": "average power = work / time; output units depend on work/time units",
+            "evidence": "Certified implementation; competing power-from-work-calculator shares formula but full contract equivalence not established; Master title collision: Math ID 222 versus Physics ID 308; retain HOLD until row identity and competing implementation adjudicated. Confirmed physics/catalog-batch-1.ts: certified physics.power takes finite work and strictly positive time, returns checked work/time, example 1000/20=50. Competing launch-portfolio.ts power-from-work-calculator uses generic work/time; identical nominal equation does not prove full unit/identity equivalence. HOLD retained. Canonical master CSV confirms exact title Power Calculator at Math ID 222 and Physics ID 308; domain-qualified Physics candidate does not resolve collision with competing power-from-work implementation. HOLD.",
+            "decision": "hold",
+            "reviewStatus": "certified"
+          }
+        },
+        {
+          "calculatorKey": "launch-power-from-work-calculator",
+          "slug": "power-from-work-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "EXISTING_UNAPPROVED_CANDIDATE",
+          "definitionSource": {
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "work": {
+                "type": "number"
+              },
+              "time": {
+                "type": "number",
+                "minimum": 1e-9
+              }
+            },
+            "required": [
+              "work",
+              "time"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "primary",
+              "expression": "work / time",
+              "description": "Average power is work transferred per unit time."
+            }
+          ],
+          "sources": [
+            {
+              "label": "CalcuMint deterministic formula review",
+              "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+            }
+          ],
+          "unitScope": "Work / time in generic compatible input units; no SI enforcement.",
+          "scopeLimit": "Time lower bound 1e-9 differs from physics.power; title and formula do not establish master scope.",
+          "examples": [
+            {
+              "label": "Default verified example",
+              "input": {
+                "work": 1000,
+                "time": 20
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "result": 50
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "tiny positive time",
+              "input": {
+                "work": 1,
+                "time": 1e-12
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            }
+          ],
+          "existingReview": {
+            "slug": "power-from-work-calculator",
+            "domain": "Physics",
+            "sourcePath": "src/calculators/launch-portfolio.ts",
+            "inputContract": "work and time, positive time bound",
+            "outputContract": "work / time; input-unit semantics not enforced in source",
+            "evidence": "Launch portfolio implementation; overlaps with certified power-calculator; identity and lifecycle unresolved; Master title collision: Math ID 222 versus Physics ID 308; competing physics power implementation requires distinct identity review. Confirmed launch-portfolio.ts: certified science pair with work default 1000 and time positive (minimum 1e-9), returns work/time with no explicit SI unit enforcement. Physics power-calculator is a distinct certified ID. HOLD retained. Canonical master CSV confirms Power Calculator at Math ID 222 and Physics ID 308; same displayed title as power-calculator but separate implementation ID. No automatic master assignment. HOLD.",
+            "decision": "hold",
+            "reviewStatus": "certified"
+          }
+        }
+      ],
+      "identityDecision": "UNKNOWN",
+      "aliasResolved": false,
+      "implementationAuthorized": false,
+      "blocker": "No explicit source-backed master key/slug/version alias binding or domain-qualified master input/output contract was supplied. Engine scope observations cannot supply that authority."
+    },
+    {
+      "reviewCaseId": "master-scope:254",
+      "masterIds": [
+        254
+      ],
+      "domains": [
+        "Advanced Math & Graphing"
+      ],
+      "titles": [
+        {
+          "masterId": 254,
+          "title": "Root Finder Calculator"
+        }
+      ],
+      "candidateSlugs": [],
+      "existingHold": false,
+      "masterContractStatus": "NOT_SUPPLIED_BY_MASTER_TITLE_CSV",
+      "contracts": [
+        {
+          "calculatorKey": "advanced-math.root-finder",
+          "slug": "root-finder-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "LABEL_HINT_ONLY",
+          "definitionSource": {
+            "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+            "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "number",
+                "minimum": -1e+75,
+                "maximum": 1e+75
+              },
+              "b": {
+                "type": "number",
+                "minimum": -1e+75,
+                "maximum": 1e+75
+              },
+              "c": {
+                "type": "number",
+                "minimum": -1e+75,
+                "maximum": 1e+75
+              },
+              "d": {
+                "type": "number",
+                "minimum": -1e+75,
+                "maximum": 1e+75
+              },
+              "left": {
+                "type": "number",
+                "minimum": -1e+75,
+                "maximum": 1e+75
+              },
+              "right": {
+                "type": "number",
+                "minimum": -1e+75,
+                "maximum": 1e+75
+              }
+            },
+            "required": [
+              "a",
+              "b",
+              "c",
+              "d",
+              "left",
+              "right"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "bisection",
+              "expression": "m=(L+R)/2; retain the sign-changing half-interval",
+              "description": "Finds a real root of a polynomial inside a user-supplied sign-changing bracket."
+            }
+          ],
+          "sources": [
+            {
+              "label": "CalcuMint deterministic numerical solver",
+              "note": "Bisection method with bounded iterations and relative interval tolerance."
+            }
+          ],
+          "unitScope": "Numeric polynomial coefficients and root coordinates; physical units unspecified.",
+          "scopeLimit": "Nonconstant polynomial up to degree three; bounded bisection, endpoint root or sign-changing bracket; not an arbitrary function solver.",
+          "examples": [
+            {
+              "label": "x - 1 on [0,2]",
+              "input": {
+                "a": 0,
+                "b": 0,
+                "c": 1,
+                "d": -1,
+                "left": 0,
+                "right": 2
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "root": 1,
+                "residual": 0,
+                "iterations": 1,
+                "bracket": [
+                  0,
+                  2
+                ],
+                "steps": [
+                  "Start bracket [0, 2]",
+                  "Bisection iterations: 1",
+                  "Root ≈ 1",
+                  "Residual f(root) ≈ 0"
+                ]
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "constant polynomial",
+              "input": {
+                "a": 0,
+                "b": 0,
+                "c": 0,
+                "d": 1,
+                "left": 0,
+                "right": 2
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            },
+            {
+              "label": "no sign-changing bracket",
+              "input": {
+                "a": 0,
+                "b": 1,
+                "c": 0,
+                "d": 1,
+                "left": -1,
+                "right": 1
+              },
+              "schemaAccepted": true,
+              "execution": "REJECTED",
+              "output": null
+            }
+          ],
+          "existingReview": null
+        }
+      ],
+      "identityDecision": "UNKNOWN",
+      "aliasResolved": false,
+      "implementationAuthorized": false,
+      "blocker": "No explicit source-backed master key/slug/version alias binding or domain-qualified master input/output contract was supplied. Engine scope observations cannot supply that authority."
+    },
+    {
+      "reviewCaseId": "master-scope:377",
+      "masterIds": [
+        377
+      ],
+      "domains": [
+        "Technology & Computing"
+      ],
+      "titles": [
+        {
+          "masterId": 377,
+          "title": "Aspect Ratio Calculator"
+        }
+      ],
+      "candidateSlugs": [
+        "aspect-ratio-calculator",
+        "aspect-ratio-value-calculator"
+      ],
+      "existingHold": false,
+      "masterContractStatus": "NOT_SUPPLIED_BY_MASTER_TITLE_CSV",
+      "contracts": [
+        {
+          "calculatorKey": "technology.aspect-ratio",
+          "slug": "aspect-ratio-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "EXISTING_UNAPPROVED_CANDIDATE",
+          "definitionSource": {
+            "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+            "sha256": "a2ed116a3f74277f910831bc9b682c0da9ac95cc905b9bfb21eb7c6d7c9b7df3"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1e+100
+              },
+              "height": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1e+100
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "aspect-ratio-calculator",
+              "expression": "Ratio = width ÷ height",
+              "description": "Numeric width-to-height ratio from the supplied dimensions."
+            }
+          ],
+          "sources": [
+            {
+              "label": "NIST — Aspect Ratio",
+              "url": "https://www.nist.gov/glossary-term/37036",
+              "note": "NIST defines aspect ratio as the ratio of the width to the height of a rectangle such as an image, pixel, or active video frame."
+            }
+          ],
+          "unitScope": "Dimensionless width / height for dimensions in compatible units.",
+          "scopeLimit": "Positive width and height, each bounded by 1e100; master selection still requires authority.",
+          "examples": [
+            {
+              "label": "Verified example",
+              "input": {
+                "width": 1920,
+                "height": 1080
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "value": 1.7777777777777777,
+                "steps": [
+                  "Aspect Ratio = 1.7777777777777777"
+                ]
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "zero width",
+              "input": {
+                "width": 0,
+                "height": 1080
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            }
+          ],
+          "existingReview": null
+        },
+        {
+          "calculatorKey": "launch-aspect-ratio-value-calculator",
+          "slug": "aspect-ratio-value-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "EXISTING_UNAPPROVED_CANDIDATE",
+          "definitionSource": {
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "width": {
+                "type": "number",
+                "minimum": 0
+              },
+              "height": {
+                "type": "number",
+                "minimum": 1e-9
+              }
+            },
+            "required": [
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "primary",
+              "expression": "width / height",
+              "description": "Divide width by height."
+            }
+          ],
+          "sources": [
+            {
+              "label": "CalcuMint deterministic formula review",
+              "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+            }
+          ],
+          "unitScope": "Dimensionless width / height for dimensions in compatible units.",
+          "scopeLimit": "Nonnegative width; height lower bound 1e-9 differs from technology implementation.",
+          "examples": [
+            {
+              "label": "Default verified example",
+              "input": {
+                "width": 1920,
+                "height": 1080
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "result": 1.7777777777777777
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "zero width",
+              "input": {
+                "width": 0,
+                "height": 1080
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "result": 0
+              }
+            }
+          ],
+          "existingReview": {
+            "slug": "aspect-ratio-value-calculator",
+            "domain": "Technology & Computing",
+            "sourcePath": "src/calculators/launch-portfolio.ts",
+            "inputContract": "width >= 0; height >= 1e-9",
+            "outputContract": "numeric width / height ratio",
+            "evidence": "Master ID 377 Aspect Ratio Calculator; source numeric aspect ratio formula verified",
+            "decision": "approved",
+            "reviewStatus": "certified"
+          }
+        }
+      ],
+      "identityDecision": "UNKNOWN",
+      "aliasResolved": false,
+      "implementationAuthorized": false,
+      "blocker": "No explicit source-backed master key/slug/version alias binding or domain-qualified master input/output contract was supplied. Engine scope observations cannot supply that authority."
+    },
+    {
+      "reviewCaseId": "master-scope:435",
+      "masterIds": [
+        435
+      ],
+      "domains": [
+        "Conversion"
+      ],
+      "titles": [
+        {
+          "masterId": 435,
+          "title": "Fuel Economy Converter"
+        }
+      ],
+      "candidateSlugs": [],
+      "existingHold": false,
+      "masterContractStatus": "NOT_SUPPLIED_BY_MASTER_TITLE_CSV",
+      "contracts": [
+        {
+          "calculatorKey": "automotive.fuel-economy",
+          "slug": "fuel-economy-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "LABEL_HINT_ONLY",
+          "definitionSource": {
+            "path": "src/calculators/automotive/catalog-batch-2.ts",
+            "sha256": "6b0463fd727ee335e73a9ef87193d38e2cbd222d57e6b641860d848eedf48632"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "distanceKm": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000000000
+              },
+              "fuelUsedLiters": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1000000000000
+              }
+            },
+            "required": [
+              "distanceKm",
+              "fuelUsedLiters"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "fuel-economy-calculator",
+              "expression": "fuel economy = distance ÷ fuel used",
+              "description": "Calculate distance traveled per liter from user-supplied distance and fuel used."
+            }
+          ],
+          "sources": [
+            {
+              "label": "U.S. Department of Energy — FuelEconomy.gov",
+              "url": "https://www.fueleconomy.gov/",
+              "note": "Fuel economy and trip fuel use vary with vehicle and operating conditions. These DRAFT calculators use explicit user-supplied distance and fuel quantities."
+            }
+          ],
+          "unitScope": "distanceKm / fuelUsedLiters yields km/L.",
+          "scopeLimit": "Distance and fuel consumption calculation; no selectable fuel-economy unit conversion input.",
+          "examples": [
+            {
+              "label": "Reference example",
+              "input": {
+                "distanceKm": 600,
+                "fuelUsedLiters": 40
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "value": 15,
+                "steps": [
+                  "Fuel economy = 15"
+                ]
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "conversion-shaped input unsupported",
+              "input": {
+                "usMpg": 30
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            }
+          ],
+          "existingReview": {
+            "slug": "fuel-economy-calculator",
+            "domain": "Automotive & EV",
+            "sourcePath": "src/calculators/automotive/catalog-batch-2.ts",
+            "inputContract": "distanceKm nonnegative; fuelUsedLiters positive, finite <=1e12",
+            "outputContract": "distanceKm/fuelUsedLiters in km/L",
+            "evidence": "Registry-effective everyday missing queue, unique exact-title Automotive & EV master ID 459; inspected DRAFT source schema, formula, example and finite output guard. Catalog mapping only; no formula certification or publication authorization.",
+            "decision": "approved",
+            "reviewStatus": "draft"
+          }
+        }
+      ],
+      "identityDecision": "UNKNOWN",
+      "aliasResolved": false,
+      "implementationAuthorized": false,
+      "blocker": "No explicit source-backed master key/slug/version alias binding or domain-qualified master input/output contract was supplied. Engine scope observations cannot supply that authority."
+    },
+    {
+      "reviewCaseId": "master-scope:510",
+      "masterIds": [
+        510
+      ],
+      "domains": [
+        "Travel & Everyday"
+      ],
+      "titles": [
+        {
+          "masterId": 510,
+          "title": "Travel Time Calculator"
+        }
+      ],
+      "candidateSlugs": [
+        "time-from-distance-speed-calculator",
+        "travel-time-calculator"
+      ],
+      "existingHold": true,
+      "masterContractStatus": "NOT_SUPPLIED_BY_MASTER_TITLE_CSV",
+      "contracts": [
+        {
+          "calculatorKey": "launch-time-from-distance-speed-calculator",
+          "slug": "time-from-distance-speed-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "EXISTING_UNAPPROVED_CANDIDATE",
+          "definitionSource": {
+            "path": "src/calculators/launch-portfolio.ts",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "distance": {
+                "type": "number",
+                "minimum": 0
+              },
+              "speed": {
+                "type": "number",
+                "minimum": 1e-9
+              }
+            },
+            "required": [
+              "distance",
+              "speed"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "primary",
+              "expression": "distance / speed",
+              "description": "Divide distance by speed using compatible units."
+            }
+          ],
+          "sources": [
+            {
+              "label": "CalcuMint deterministic formula review",
+              "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+            }
+          ],
+          "unitScope": "distance / speed in generic compatible units; no km or km/h enforcement.",
+          "scopeLimit": "Speed lower bound 1e-9; generic input names differ from fixed-unit travel engine.",
+          "examples": [
+            {
+              "label": "Default verified example",
+              "input": {
+                "distance": 120,
+                "speed": 60
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "result": 2
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "fixed-unit input shape",
+              "input": {
+                "distanceKm": 120,
+                "averageSpeedKmh": 60
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            }
+          ],
+          "existingReview": {
+            "slug": "time-from-distance-speed-calculator",
+            "domain": "Travel & Everyday",
+            "sourcePath": "src/calculators/launch-portfolio.ts",
+            "inputContract": "distance nonnegative, speed positive",
+            "outputContract": "distance / speed using compatible input units",
+            "evidence": "Generic units; equivalence to fixed km/kmh travel-time-calculator unverified; category science; Master ID 510 title shared by two implementations; generic input units versus fixed km/kmh prevents inferred equivalence. Confirmed launch-portfolio.ts: certified science implementation accepts generic nonnegative distance and strictly positive speed, outputs distance/speed in compatible units; unlike DRAFT fixed km/kmh travel-time implementation. HOLD retained. Canonical master CSV confirms Travel Time Calculator at Travel & Everyday ID 510; this science implementation uses compatible generic units, unlike fixed km/kmh draft travel-time-calculator. Master identity conflict remains. HOLD.",
+            "decision": "hold",
+            "reviewStatus": "certified"
+          }
+        },
+        {
+          "calculatorKey": "travel.travel-time",
+          "slug": "travel-time-calculator",
+          "version": 1,
+          "registryBinding": "EXACT_KEY_SLUG_VERSION",
+          "linkageEvidence": "EXISTING_UNAPPROVED_CANDIDATE",
+          "definitionSource": {
+            "path": "src/calculators/automotive/catalog-batch-1.ts",
+            "sha256": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1"
+          },
+          "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "distanceKm": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1000000000000
+              },
+              "averageSpeedKmh": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1000000000000
+              }
+            },
+            "required": [
+              "distanceKm",
+              "averageSpeedKmh"
+            ],
+            "additionalProperties": false
+          },
+          "schemaLimit": "JSON Schema is structural evidence; refinements and runtime rejection are additionally demonstrated by probes and source. It is not a complete executable contract.",
+          "formulas": [
+            {
+              "id": "travel-time-calculator",
+              "expression": "travel time = distance ÷ average speed",
+              "description": "Idealized moving time in hours from distance and average speed; stops and delays are not included."
+            }
+          ],
+          "sources": [
+            {
+              "label": "U.S. Department of Transportation — Bureau of Transportation Statistics",
+              "url": "https://www.bts.gov/",
+              "note": "General transportation context. Travel time and trip-cost outputs here are deterministic estimates from user-supplied distance, speed, consumption and price assumptions."
+            }
+          ],
+          "unitScope": "distanceKm in km / averageSpeedKmh in km/h yields hours.",
+          "scopeLimit": "Moving time only; excludes stops and delays; fixed units differ from generic competing implementation.",
+          "examples": [
+            {
+              "label": "Reference example",
+              "input": {
+                "distanceKm": 300,
+                "averageSpeedKmh": 60
+              },
+              "schemaAccepted": true,
+              "execution": "RETURNED",
+              "output": {
+                "value": 5,
+                "steps": [
+                  "Travel Time = 5"
+                ]
+              }
+            }
+          ],
+          "probes": [
+            {
+              "label": "generic input shape",
+              "input": {
+                "distance": 120,
+                "speed": 60
+              },
+              "schemaAccepted": false,
+              "execution": "NOT_RUN",
+              "output": null
+            }
+          ],
+          "existingReview": {
+            "slug": "travel-time-calculator",
+            "domain": "Travel & Everyday",
+            "sourcePath": "src/calculators/automotive/catalog-batch-1.ts",
+            "inputContract": "distanceKm nonnegative, averageSpeedKmh positive",
+            "outputContract": "moving hours, excluding stops and delays",
+            "evidence": "Draft travel calculator; fixed km and km/h semantics differ from generic science implementation; Master ID 510 title shared by two implementations; fixed km/kmh versus generic compatible units prevents inferred equivalence. Confirmed automotive/catalog-batch-1.ts: DRAFT travel.travel-time accepts distanceKm>=0 and averageSpeedKmh>0; output is moving hours excluding stops/delays; example 300/60=5. Generic competing science implementation does not enforce km/kmh. HOLD retained. Canonical master CSV confirms Travel Time Calculator at Travel & Everyday ID 510, but generic time-from-distance-speed implementation has same displayed title; DRAFT fixed-unit contract remains distinct. HOLD.",
+            "decision": "hold",
+            "reviewStatus": "draft"
+          }
+        }
+      ],
+      "identityDecision": "UNKNOWN",
+      "aliasResolved": false,
+      "implementationAuthorized": false,
+      "blocker": "No explicit source-backed master key/slug/version alias binding or domain-qualified master input/output contract was supplied. Engine scope observations cannot supply that authority."
+    }
+  ]
+}
