@@ -110,8 +110,20 @@ back); whole 038 aborts on that inherited path. After removing the inheritance,
 038 clears direct table and column ACLs, preserves own display_name UPDATE,
 and rejects profile plan UPDATE and TRUNCATE. All three API proposals retain
 and exercise their refusal guards before isolated installation after 038.
-This verifies installation/catalog compatibility, not another full API behavior
-run against the expanded graph or any deployed grant change.
+The follow-up executes real service batch submit/recovery/duplicate charging
+(one job/receipt, two quota events), embed capture/duplicate (one lead/consent/receipt),
+all three client RPC denials, cross-organization embed rejection and late receipt
+fault rollback for both APIs. This remains bounded native behavior coverage,
+not another full HTTP run or any deployed grant change.
+
+Whole 013 exposes a real unresolved client dependency: revoking PUBLIC helper
+EXECUTE also removes authenticated access to is_org_member/has_org_role because
+the baseline whole files never grant it explicitly. The native test first
+reproduces authenticated owner RLS SELECT denial. It then adds explicitly
+fixture-only authenticated helper EXECUTE grants to verify owner/outsider job,
+lead and consent isolation. Unmodified whole-history client compatibility is
+therefore BLOCKED on helper ACL review; no repository SQL fix or hosted grant
+is inferred. Service RPC checks run before this fixture-only ACL restoration.
 
 Catalog version 2 additionally reports effective TRUNCATE/TRIGGER/REFERENCES,
 owner-role access, all physical column SELECT/INSERT/UPDATE/REFERENCES grants,
