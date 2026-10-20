@@ -17,9 +17,13 @@ function ownerCategory(owner,label) {
 }
 export function validateCatalog(catalog,{lane='both'}={}) {
  assert.ok(['both','batch','embed'].includes(lane),'unknown lane');
- assert.equal(catalog.version,1);
+ assert.equal(catalog.version,2);
  namedRows(catalog.roles,'rolname','roles',observedRoles);
  namedRows(catalog.tables,'name','tables');
+ namedRows(catalog.schemas,'role','schema grants',observedRoles);
+ assert.ok(Array.isArray(catalog.memberships),'memberships array required');
+ assert.equal(catalog.memberships.length,0,'inherited roles require owner review');
+ for(const grant of catalog.schemas){assert.equal(grant.usage,true,'public schema USAGE required');assert.equal(grant.create,false,'public schema CREATE prohibited');}
  assert.ok(Array.isArray(catalog.functions),'functions array required');
  for(const role of ['anon','authenticated','service_role']) {
   const actual=catalog.roles.find(r=>r.rolname===role);assert.ok(actual,`missing role ${role}`);
@@ -36,7 +40,10 @@ export function validateCatalog(catalog,{lane='both'}={}) {
   assert.ok(Array.isArray(table.constraints),`${name} constraints array required`);
   assert.ok(Array.isArray(table.policies),`${name} policies array required`);
   namedRows(table.grants,'role',`${name} grants`,observedRoles);
-  for(const grant of table.grants)for(const privilege of ['select','insert','update','delete'])assert.equal(typeof grant[privilege],'boolean',`${name} ${grant.role} ${privilege} boolean required`);
+  for(const grant of table.grants)for(const privilege of ['select','insert','update','delete','truncate','trigger','references','owner_access'])assert.equal(typeof grant[privilege],'boolean',`${name} ${grant.role} ${privilege} boolean required`);
+  for(const grant of table.grants.filter(g=>g.role!=='service_role'))for(const privilege of ['truncate','trigger','references','owner_access'])assert.equal(grant[privilege],false,`${name} ${grant.role} ${privilege} prohibited`);
+  namedRows(table.columns,'name',`${name} columns`);assert.ok(table.columns.length,`${name} columns required`);
+  for(const column of table.columns){namedRows(column.grants,'role',`${name}.${column.name} grants`,observedRoles);for(const grant of column.grants){for(const privilege of ['select','insert','update','references'])assert.equal(typeof grant[privilege],'boolean',`${name} column ${privilege} boolean required`);if(grant.role!=='service_role')assert.equal(grant.references,false,`${name} column REFERENCES prohibited`);if(grant.role==='anon')for(const privilege of ['select','insert','update'])assert.equal(grant[privilege],false,`${name} anon column ${privilege} prohibited`);}}
   assert.equal(table.rls,true,`${name} RLS`);
   assert.ok(table.constraints.some(c=>c.type==='p'),`${name} primary key`);
   assert.ok(table.constraints.some(c=>c.type==='f'),`${name} foreign key`);
