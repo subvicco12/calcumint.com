@@ -1,3 +1,4 @@
+import { investmentCashflowIndependentGoldens } from "./investment-cashflow-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -68,6 +69,7 @@ export const swpCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: investmentCashflowIndependentGoldens.swp,
   calculate: ({ initialCorpus, monthlyWithdrawal, annualReturnPercent, termMonths, withdrawalTiming }) => {
     const result = simulateSwp(initialCorpus, monthlyWithdrawal, annualReturnPercent, termMonths, withdrawalTiming);
     return { endingCorpus: roundTo(result.endingCorpus, 2), totalWithdrawn: roundTo(result.totalWithdrawn, 2), depleted: result.depleted, depletionMonth: result.depletionMonth };

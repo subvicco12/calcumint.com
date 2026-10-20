@@ -1,3 +1,4 @@
+import { debtPayoffIndependentGoldens } from "./debt-payoff-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -41,7 +42,7 @@ export function simulateCreditCardPayoff(input:Input):Output{
 }
 
 export const creditCardPayoffCalculator:CalculatorDefinition<Input,Output>={
-  id:"finance.credit-card-payoff",slug:"credit-card-payoff-calculator",title:"Credit Card Payoff Calculator",category:"loans-mortgages",version:1,riskClass:"financial",reviewStatus:"draft",inputSchema,
+  id:"finance.credit-card-payoff",slug:"credit-card-payoff-calculator",title:"Credit Card Payoff Calculator",category:"loans-mortgages",version:1,riskClass:"financial",reviewStatus:"draft",inputSchema,goldenTests:debtPayoffIndependentGoldens.credit,
   calculate:(input)=>simulateCreditCardPayoff(input),
   reverseSolvers:[{id:"target-payoff-payment",target:"monthlyPayment",description:"Solves the level modeled monthly payment required to repay the entered balance within a target number of months at the stated APR."}],
   formulas:[{id:"monthly-interest",expression:"interest = balance × APR / 12",description:"Generic monthly-interest approximation using nominal APR divided by 12."},{id:"target-payment",expression:"M = P × r / (1 − (1+r)^−n)",description:"Reverse-solves a level monthly payment for a target payoff term; zero-rate balances use principal divided by months."}],

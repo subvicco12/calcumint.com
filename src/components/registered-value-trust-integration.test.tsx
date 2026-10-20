@@ -1,0 +1,30 @@
+import type {ScenarioDisplayMetadata} from '@/lib/scenario-display-metadata';
+// @vitest-environment jsdom
+import {cleanup,fireEvent,render,screen} from '@testing-library/react';import {afterEach,expect,it,vi} from 'vitest';
+import {technologyBatch1Definitions} from '@/calculators/technology-computing/catalog-batch-1';
+import {technologyBatch2Definitions} from '@/calculators/technology-computing/catalog-batch-2';
+import {healthBatch1Definitions} from '@/calculators/health/catalog-batch-1';
+import {healthBatch2Definitions} from '@/calculators/health/catalog-batch-2';
+import {engineeringConstructionBatch2Definitions} from '@/calculators/engineering-construction/catalog-batch-2';
+import {engineeringConstructionBatch3Definitions} from '@/calculators/engineering-construction/catalog-batch-3';
+import {calculatorRegistry} from '@/calculators/registry';import {runCalculator} from '@/calculators/engine';import {displayFinalValue} from '@/calculators/final-framework/renderer-display';
+const state=vi.hoisted(()=>({plan:'free',account:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:Record<string,unknown>|null;scenarioDisplayMetadata?:ScenarioDisplayMetadata}}));
+vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));vi.mock('./calculator-account-actions',()=>({CalculatorAccountActions:(props:typeof state.account)=>{state.account=props;return null;}}));
+import {CalculatorInteractive} from './calculator-interactive';afterEach(()=>{cleanup();state.account=null;});
+const representatives=[{slug:'bandwidth-calculator',base:'Deterministic calculation using the reviewed Technology & Computing engine.'},{slug:'bmr-calculator',base:'Deterministic health calculation using the displayed formula and validated inputs.'},{slug:'asphalt-calculator',base:'Deterministic calculation using the displayed Engineering & Construction formula.'}];
+it.each(['free','pro','business'])('renders actual registered sources/formulas without changing raw output or existing cautions on %s',plan=>{
+ state.plan=plan;
+ for(const reference of representatives){render(<CalculatorInteractive slug={reference.slug}/>);const definition=calculatorRegistry.getBySlug(reference.slug)!;expect(state.account).not.toBeNull();const account=state.account!;const expected=runCalculator(definition,account.input).output as Record<string,unknown>;expect(account.output).toEqual(expected);expect(account.calculatorVersion).toBe(definition.version);expect(screen.getByText('Sources',{selector:'summary'})).toBeTruthy();
+  const methodology=screen.getByText('Result methodology',{selector:'summary'}).parentElement!;expect(methodology.textContent).toContain(reference.base);for(const formula of definition.formulas){expect(methodology.textContent).toContain(formula.expression);expect(methodology.textContent).toContain(formula.description);}for(const source of definition.sources){expect(screen.getByText(source.label)).toBeTruthy();if(source.url)expect(screen.getByRole('link',{name:source.label}).getAttribute('href')).toBe(source.url);}
+  expect(document.querySelector('.result-hero')?.textContent).toContain(displayFinalValue(expected.value as number));if(reference.slug==='bmr-calculator'){expect(screen.getByText('Informational estimate only. This result is not a diagnosis, treatment recommendation, or individualized medical advice.')).toBeTruthy();expect(screen.getByText('Health estimates can differ from direct measurement or individualized clinical assessment. Review the methodology and assumptions before using the result.')).toBeTruthy();expect(definition.reviewStatus).toBe('draft');}
+  cleanup();state.account=null;
+ }
+});
+it('keeps invalid inputs unavailable and restores exact source metadata after recovery',()=>{
+ for(const [slug,label] of [['bandwidth-calculator','Data (MB)'],['bmr-calculator','Weight (kg)'],['asphalt-calculator','Length (m)']]){render(<CalculatorInteractive slug={slug}/>);const field=screen.getByLabelText(label) as HTMLInputElement;const initial=field.value;fireEvent.change(field,{target:{value:''}});expect(state.account?.output).toBeNull();expect(screen.getByRole('alert')).toBeTruthy();expect(screen.queryByText('Sources',{selector:'summary'})).toBeNull();fireEvent.change(field,{target:{value:initial}});expect(state.account?.output).not.toBeNull();expect(screen.getByText('Sources',{selector:'summary'})).toBeTruthy();cleanup();}
+});
+
+it('binds the51 changed generic paths to their exact registered output/version/formula/source metadata',()=>{
+ const cohort=[...technologyBatch1Definitions,...technologyBatch2Definitions,...healthBatch1Definitions,...healthBatch2Definitions,...engineeringConstructionBatch2Definitions,...engineeringConstructionBatch3Definitions];expect(cohort).toHaveLength(51);state.plan='free';
+ for(const definition of cohort){render(<CalculatorInteractive slug={definition.slug}/>);expect(state.account,definition.slug).not.toBeNull();const account=state.account!;expect(account.calculatorSlug).toBe(definition.slug);expect(account.calculatorVersion).toBe(definition.version);expect(account.output).toEqual(runCalculator(calculatorRegistry.getBySlug(definition.slug)!,account.input).output);expect(account.scenarioDisplayMetadata?.calculatorSlug).toBe(definition.slug);expect(account.scenarioDisplayMetadata?.calculatorVersion).toBe(definition.version);expect(document.querySelector('.result-hero')?.textContent).toContain(account.scenarioDisplayMetadata!.outputs.value.label);for(const display of Object.values(account.scenarioDisplayMetadata!.inputs))expect(screen.getByLabelText(display.label)).toBeTruthy();const methodology=screen.getByText('Result methodology',{selector:'summary'}).parentElement!;for(const formula of definition.formulas){expect(methodology.textContent).toContain(formula.expression);expect(methodology.textContent).toContain(formula.description);}for(const source of definition.sources)expect(screen.getByText(source.label)).toBeTruthy();cleanup();state.account=null;}
+});
