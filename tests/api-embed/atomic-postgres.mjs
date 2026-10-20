@@ -64,5 +64,39 @@ try {
   await sql(`UPDATE public.profiles SET plan='free' WHERE id='${a}';DELETE FROM public.api_usage_events;`);
   assert.equal(await sql(`SET ROLE service_role;SELECT public.consume_business_api_quota('${key}');`),'f');
  });
+
+ // Deterministic proof: both legacy callers finish window reads before either
+ // INSERT can proceed. An advisory barrier is fixture-only, not a production lock.
+ await test('reproduces legacy quota race then verifies serialized proposal',async()=>{
+  const key='00000000-0000-4000-8000-000000000010';
+  await sql(`UPDATE public.profiles SET plan='business' WHERE id='${a}';INSERT INTO public.business_api_keys(id,organization_id,name,key_prefix,key_hash,monthly_quota,rate_limit_per_minute,created_by) VALUES('${key}','${a}','Race','race','race-synthetic-hash',1,10,'${a}');
+    CREATE FUNCTION public.quota_barrier() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN PERFORM pg_advisory_xact_lock_shared(92731);RETURN NEW;END $$;CREATE TRIGGER quota_barrier BEFORE INSERT ON public.api_usage_events FOR EACH ROW EXECUTE FUNCTION public.quota_barrier();`);
+  const gate=sql('SELECT pg_advisory_lock(92731);SELECT pg_sleep(20);').then(()=>null,error=>error);
+  const wait=async query=>{for(let n=0;n<100;n++){if(await sql(query)==='t')return;await new Promise(r=>setTimeout(r,20));}throw new Error('Quota concurrency barrier not reached');};
+  await wait("SELECT EXISTS(SELECT FROM pg_locks WHERE locktype='advisory' AND objid=92731 AND granted);");
+  const consume=()=>sql(`SET ROLE service_role;SELECT public.consume_business_api_quota('${key}');`);
+  const legacy=Promise.all([consume(),consume()]);
+  try {await wait("SELECT count(*)=2 FROM pg_locks WHERE locktype='advisory' AND objid=92731 AND NOT granted;");}
+  finally {await sql("SELECT pg_terminate_backend(pid) FROM pg_locks WHERE locktype='advisory' AND objid=92731 AND granted;");await gate;}
+  assert.deepEqual(await legacy,['t','t']);assert.equal(await sql(`SELECT sum(units) FROM public.api_usage_events WHERE api_key_id='${key}';`),'2');
+  await sql('DROP TRIGGER quota_barrier ON public.api_usage_events;DROP FUNCTION public.quota_barrier();DELETE FROM public.api_usage_events;');
+  const proposal=await readFile('docs/architecture/proposals/ATOMIC-API-QUOTA.sql','utf8');const guard="DO $$ BEGIN RAISE EXCEPTION 'PROPOSAL ONLY: isolated quota acceptance and owner authorization required'; END $$;";
+  assert.equal(proposal.split(guard).length,2);await assert.rejects(sql(proposal),/PROPOSAL ONLY/);await sql(proposal.replace(guard,''));
+  assert.deepEqual((await Promise.all([consume(),consume()])).sort(),['f','t']);
+  assert.equal(await sql(`SELECT sum(units) FROM public.api_usage_events WHERE api_key_id='${key}';`),'1');
+  await sql(`DELETE FROM public.api_usage_events;UPDATE public.business_api_keys SET monthly_quota=10,rate_limit_per_minute=1 WHERE id='${key}';`);
+  assert.deepEqual((await Promise.all([consume(),consume()])).sort(),['f','t']);
+  await sql(`DELETE FROM public.api_usage_events;CREATE FUNCTION public.quota_failure() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic quota failure';END $$;CREATE TRIGGER quota_failure AFTER INSERT ON public.api_usage_events FOR EACH ROW EXECUTE FUNCTION public.quota_failure();`);
+  try{await assert.rejects(consume(),/synthetic quota failure/);assert.equal(await sql('SELECT count(*) FROM public.api_usage_events;'),'0');}
+  finally{await sql('DROP TRIGGER quota_failure ON public.api_usage_events;DROP FUNCTION public.quota_failure();');}
+  assert.equal(await consume(),'t');
+  for(const role of ['anon','authenticated'])await assert.rejects(sql(`SET ROLE ${role};SELECT public.consume_business_api_quota('${key}');`),/permission denied/);
+  await sql(`UPDATE public.business_api_keys SET status='revoked' WHERE id='${key}';`);assert.equal(await consume(),'f');
+ });
+ await test('quota proposal rejects unsupported snapshot isolation before any debit',async()=>{
+  const before=await sql('SELECT count(*) FROM public.api_usage_events;');
+  for(const isolation of ['REPEATABLE READ','SERIALIZABLE'])await assert.rejects(sql(`BEGIN ISOLATION LEVEL ${isolation};SET LOCAL ROLE service_role;SELECT public.consume_business_api_quota('00000000-0000-4000-8000-000000000010');COMMIT;`),/requires READ COMMITTED/);
+  assert.equal(await sql('SELECT count(*) FROM public.api_usage_events;'),before);
+ });
  console.log(`${count} atomic embed PostgreSQL cases passed; proposal remains unapplied outside fixture.`);
 } finally {try{if(created)await cmd(['rm','-f',name]);}finally{if(net)await cmd(['network','rm',network]);}}

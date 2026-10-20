@@ -28,7 +28,7 @@ export async function authenticateApiRequest(request: Request, requiredScope: Ap
   if (!hasScope(scopes, requiredScope)) throw new ApiAuthError(403, "API key lacks required scope");
 
   const { data: allowed, error: quotaError } = await admin.rpc("consume_business_api_quota", { p_api_key_id: key.id });
-  if (quotaError) throw new ApiAuthError(503, "Usage metering unavailable");
+  if (quotaError || typeof allowed !== "boolean") throw new ApiAuthError(503, "Usage metering unavailable");
   if (!allowed) throw new ApiAuthError(429, "API quota exceeded");
 
   await admin.from("business_api_keys").update({ last_used_at: new Date().toISOString() }).eq("id", key.id);
