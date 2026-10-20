@@ -12,7 +12,7 @@ function storageError(code:string|undefined,requestId:string){if(code==='PT409')
 
 /** Read-only recovery never consumes another request unit or recreates a job. */
 export async function GET(request:Request){
- const key=z.uuid().safeParse(request.headers.get('Idempotency-Key'));if(!key.success)return NextResponse.json({error:'A stable Idempotency-Key UUID is required'},{status:400});
+ const key=z.uuid().transform(value=>value.toLowerCase()).safeParse(request.headers.get('Idempotency-Key'));if(!key.success)return NextResponse.json({error:'A stable Idempotency-Key UUID is required'},{status:400});
  try{const principal=await verifyApiRequest(request,'calculations:batch');const admin=createSupabaseAdminClient();if(!admin)return unavailable(key.data);
   const reply=await admin.rpc('read_verified_batch_job_v1',{p_api_key_id:principal.keyId,p_key_hash:principal.keyHash,p_organization_id:principal.organizationId,p_request_id:key.data});
   if(reply.error)return storageError(reply.error.code,key.data);if(reply.data?.status==='missing')return NextResponse.json({error:'No committed batch found',requestId:key.data},{status:404,headers:{'Cache-Control':'no-store'}});return result(reply.data,key.data);
@@ -20,7 +20,7 @@ export async function GET(request:Request){
 }
 
 export async function POST(request:Request){
- const key=z.uuid().safeParse(request.headers.get('Idempotency-Key'));if(!key.success)return NextResponse.json({error:'A stable Idempotency-Key UUID is required'},{status:400});
+ const key=z.uuid().transform(value=>value.toLowerCase()).safeParse(request.headers.get('Idempotency-Key'));if(!key.success)return NextResponse.json({error:'A stable Idempotency-Key UUID is required'},{status:400});
  try{
   const principal=await verifyApiRequest(request,'calculations:batch');
   const parsedBody=bodySchema.safeParse(await request.json().catch(()=>null));if(!parsedBody.success)return NextResponse.json({error:'Provide calculatorId and 1-100 rows'},{status:400});
