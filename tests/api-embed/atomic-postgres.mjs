@@ -13,14 +13,15 @@ const quote=v=>`'${JSON.stringify(v).replaceAll("'","''")}'::jsonb`;
 const call=(id,{body=payload,org=a,version=1,expires="(extract(epoch FROM now())*1000+300000)::bigint"}={})=>`SET ROLE service_role; SELECT public.capture_verified_embed_lead_v1('synthetic_public_key_123456', '${config}','${org}','${a}',${version},${expires},'${id}',${quote(body)});`;
 const reset=()=>sql('TRUNCATE public.embed_lead_receipts,public.lead_consents,public.embed_leads,public.embed_events,public.webhook_deliveries;');
 const state=()=>sql("SELECT jsonb_build_array((SELECT count(*) FROM public.embed_leads),(SELECT count(*) FROM public.lead_consents),(SELECT count(*) FROM public.embed_lead_receipts),(SELECT count(*) FROM public.webhook_deliveries));");
-let created=false,net=false,count=0;
+let created=false,net=false,restCreated=false,count=0;
+const rest=`${name}-rest`;
 const test=async(label,run)=>{await reset();await run();count++;console.log(`PASS ${label}`);};
 try {
  await cmd(['network','create','--internal',network]);net=true;
  await cmd(['run','-d','--rm','--name',name,'--network',network,'--label','calcumint.embed-fixture=true','--tmpfs','/var/lib/postgresql/data','-e','POSTGRES_HOST_AUTH_METHOD=trust',image]);created=true;
  for(let n=0;;n++){try{await sql('SELECT 1;');break;}catch(e){if(n>=60)throw e;await new Promise(r=>setTimeout(r,250));}}
  await sql(`CREATE ROLE anon;CREATE ROLE authenticated;CREATE ROLE service_role BYPASSRLS;CREATE SCHEMA auth;CREATE TABLE auth.users(id uuid PRIMARY KEY);
- CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
+ CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT coalesce(nullif(current_setting('request.jwt.claim.sub',true),''),nullif(current_setting('request.jwt.claims',true),'')::jsonb->>'sub')::uuid $$;
  CREATE TABLE public.profiles(id uuid PRIMARY KEY,plan text);CREATE TABLE public.organizations(id uuid PRIMARY KEY);CREATE TABLE public.custom_calculators(id uuid PRIMARY KEY,organization_id uuid REFERENCES public.organizations,status text,published_version integer);
  CREATE TABLE public.custom_calculator_runs(id uuid,organization_id uuid,calculator_id uuid,calculator_version integer,input_data jsonb,output_data jsonb,created_at timestamptz);
  CREATE FUNCTION public.is_org_member(uuid) RETURNS boolean LANGUAGE sql STABLE AS $$ SELECT $1=auth.uid() $$;
@@ -122,4 +123,10 @@ try {
   assert.equal(await sql('SELECT count(*) FROM public.api_usage_events;'),before);
  });
  console.log(`${count} atomic embed PostgreSQL cases passed; proposal remains unapplied outside fixture.`);
-} finally {try{if(created)await cmd(['rm','-f',name]);}finally{if(net)await cmd(['network','rm',network]);}}
+ await sql("CREATE ROLE embed_fixture_authenticator LOGIN NOINHERIT PASSWORD 'synthetic-fixture-only';GRANT anon,authenticated,service_role TO embed_fixture_authenticator;GRANT SELECT ON public.embed_configs,public.custom_calculators TO service_role;GRANT SELECT ON public.embed_leads,public.lead_consents TO authenticated;");
+ await cmd(['run','-d','--rm','--name',rest,'--network',network,'-e',`PGRST_DB_URI=postgresql://embed_fixture_authenticator:synthetic-fixture-only@${name}:5432/postgres`,'-e','PGRST_DB_SCHEMAS=public','-e','PGRST_DB_ANON_ROLE=anon','-e','PGRST_JWT_SECRET=synthetic-isolated-embed-jwt-secret-not-production','postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401']);restCreated=true;
+ const address=await cmd(['inspect','--format','{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}',rest]);assert.match(address,/^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)[0-9.]+$/);
+ const restUrl=`http://${address}:3000`;
+ for(let n=0;;n++){try{const reply=await fetch(restUrl,{signal:AbortSignal.timeout(1000)});if(!reply.ok)throw new Error('PostgREST not ready');break;}catch(error){if(n>=60)throw error;await new Promise(r=>setTimeout(r,250));}}
+ await new Promise((resolve,reject)=>{const child=spawn(process.execPath,['node_modules/vitest/vitest.mjs','run','--config','tests/api-embed/vitest.postgres.config.ts'],{stdio:'inherit',env:{...process.env,CALCUMINT_EMBED_TEST_CONTAINER:name,CALCUMINT_EMBED_TEST_REST_URL:restUrl},timeout:120000});child.on('error',reject);child.on('close',code=>code===0?resolve():reject(new Error(`Embed HTTP acceptance failed: ${code}`)));});
+} finally {try{if(restCreated)await cmd(['rm','-f',rest]);}finally{try{if(created)await cmd(['rm','-f',name]);}finally{if(net)await cmd(['network','rm',network]);}}}
