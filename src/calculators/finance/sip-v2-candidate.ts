@@ -89,12 +89,12 @@ export function sipV2FutureValue(monthly: number, annual: number, months: number
 }
 export function requiredMonthlySipV2(target: number, annual: number, months: number, timing: Timing = 'beginning'): number {
   if (!Number.isFinite(target) || target <= 0) throw new RangeError('Invalid SIP v2 target');
-  certifiedCents([decimal(target), decimal(target)]);
+  const targetCents = certifiedCents([decimal(target), decimal(target)]);
   // Factor itself need not be currency-sized; the forward result must be.
   const [lo, hi] = accumulation(1, annual, months, timing);
   const monthly = asNumber(decimal(target) * SCALE / ((lo + hi) / 2n));
   if (!Number.isFinite(monthly) || monthly <= 0) throw new RangeError('SIP v2 inverse exceeds numeric range');
-  sipV2FutureValue(monthly, annual, months, timing);
+  if (money(monthly, annual, months, timing) !== targetCents) throw new RangeError('SIP v2 inverse cannot reconcile target currency precision');
   return monthly;
 }
 export const sipV2Candidate: CalculatorDefinition<Input, Output> = {

@@ -74,3 +74,9 @@ describe('unregistered SIP v2 candidate', () => {
     expect(() => requiredMonthlySipV2(Infinity, 10, 120)).toThrow();
   });
 });
+
+it('fails closed when the approximate inverse crosses the target cent boundary', () => {
+  // Exact target 0.005 rounds half-up to 0.01. The binary64 inverse
+  // contribution lands just below that tie under the candidate decimal contract.
+  expect(() => requiredMonthlySipV2(0.005, 5, 1, 'beginning')).toThrow(/reconcile/);
+});
