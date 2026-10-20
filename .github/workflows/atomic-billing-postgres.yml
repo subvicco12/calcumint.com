@@ -1,0 +1,60 @@
+name: Atomic billing PostgreSQL proposal
+on:
+  pull_request:
+    paths:
+      - 'docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md'
+      - 'tests/billing/**'
+      - 'tests/migration-contract/**'
+      - 'docs/audits/migration-contract-2026-10-20/**'
+      - 'docs/architecture/proposals/**'
+      - 'supabase/migrations/**'
+      - 'src/lib/billing/atomic-webhook*'
+      - 'src/app/api/billing/webhook/**'
+      - 'src/lib/billing/paddle.ts'
+      - 'src/lib/billing/plans.ts'
+      - 'supabase/migrations/002_b4_billing.sql'
+      - 'supabase/migrations/030_billing_ai_rls_auth_initplan.sql'
+      - 'supabase/migrations/034_billing_webhook_event_privileges.sql'
+      - 'supabase/migrations/038_client_account_billing_privileges.sql'
+      - 'supabase/migrations/001_b3_accounts.sql'
+      - 'supabase/migrations/009_country_preferences.sql'
+      - '.github/workflows/atomic-billing-postgres.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md'
+      - 'tests/billing/**'
+      - 'tests/migration-contract/**'
+      - 'docs/audits/migration-contract-2026-10-20/**'
+      - 'docs/architecture/proposals/**'
+      - 'supabase/migrations/**'
+      - 'src/lib/billing/atomic-webhook*'
+      - 'src/app/api/billing/webhook/**'
+      - 'src/lib/billing/paddle.ts'
+      - 'src/lib/billing/plans.ts'
+      - 'supabase/migrations/002_b4_billing.sql'
+      - 'supabase/migrations/030_billing_ai_rls_auth_initplan.sql'
+      - 'supabase/migrations/034_billing_webhook_event_privileges.sql'
+      - 'supabase/migrations/038_client_account_billing_privileges.sql'
+      - 'supabase/migrations/001_b3_accounts.sql'
+      - 'supabase/migrations/009_country_preferences.sql'
+      - '.github/workflows/atomic-billing-postgres.yml'
+permissions:
+  contents: read
+jobs:
+  atomic-billing-postgres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Install locked test dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Test fail-closed account schema preflight (offline)
+        run: node --test tests/billing/account-schema-preflight.test.mjs tests/billing/migration-inventory.test.mjs tests/billing/migration-fingerprints.test.mjs
+      - name: Test guarded proposal in disposable offline PostgreSQL
+        run: node tests/billing/atomic-postgres.mjs
+      - name: Reconcile exact migration identities and combined release contracts
+        run: npm run test:migration-contract

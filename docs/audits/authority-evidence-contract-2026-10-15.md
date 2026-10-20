@@ -1,0 +1,13 @@
+# Supplemental authority evidence contract
+
+RELEASE HOLD. The supplied independent row export has 836 QA waivers and 210 source records without supplied authority evidence. Their authority remains UNKNOWN. No authentic authority records were supplied or invented by this change.
+
+`auditAuthorityEvidence(base, optionalSupplement)` reuses the strict sanitized DB importer. Omission means missing evidence, never approval. Explicit malformed supplements fail closed. The standalone schema accepts only sanitized fingerprints, exact calculator key/slug/version, a waived check type or source fingerprint, declared administrative role, decision, decision/rationale/authority-record references, decision time, and bounded provenance. A source fingerprint is scoped to its calculator identity; repeated fingerprints across identities are valid.
+
+The supplement must pin the parsed base evidence ID and payload hash. It rejects duplicate targets, absent/nonwaived checks, missing sources, wrong identity/version, forbidden fields, missing references, incompatible roles, decisions after observation and observations after receipt. Where the base supplies an observation time, earlier supplemental observations are rejected; historical decisions predating the base snapshot remain valid claims. A null base observation time provides no historical freshness proof. Receipt and observation timestamps remain supplied claims.
+
+Waivers require owner/admin declarations; source reviews reuse the existing certification role control (owner/admin/reviewer), matching migration 023 source-review update policy. These are structural checks only. Hashes prove neither authentic authority nor role assignment, decision content, source quality, specialist competence, nor approval. Every accepted record remains RECORDED_REQUIRES_AUTHORIZED_REVIEW with authenticity UNKNOWN. Authorized reviewers must independently inspect the referenced artifacts, identity/role at decision time, rationale, scope and current applicability through existing controls. No certification/publication grant, DB write, gate change, specialist/YMYL waiver, or base fact mutation occurs. High risk specialist requirements remain unchanged.
+
+No supplemental artifact is committed because none was supplied. Tests construct clearly synthetic in-memory claims, including attacks against contract boundaries, and exercise the real imported population for 836/210 UNKNOWN coverage. The source export, its provenance, reconciliation output, and decision ledger are unchanged.
+
+Scope ownership check: existing source/certification controls in open PRs #1171, #1161, #1170, #1174, #1188, #1219 and #1152 remain outside this offline contract. This lane adds no migrations or runtime gate integration.
