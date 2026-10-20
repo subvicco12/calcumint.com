@@ -1,5 +1,7 @@
 // Disposable PostgreSQL only; no production URL, no host ports, internal network.
 import assert from 'node:assert/strict';
+import { validateCatalog, verifyDriftDetection } from '../api-schema/validate.mjs';
+import { bootstrapSchema, member, committedMutation, verifyDefiners } from '../api-schema/bootstrap.mjs';
 import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -14,25 +16,21 @@ try {
  await cmd(['network','create','--internal',network]);net=true;
  await cmd(['run','-d','--rm','--name',name,'--network',network,'--label','calcumint.embed-fixture=true','--tmpfs','/var/lib/postgresql/data','-e','POSTGRES_HOST_AUTH_METHOD=trust',image]);created=true;
  for(let n=0;;n++){try{await sql('SELECT 1;');break;}catch(e){if(n>=60)throw e;await new Promise(r=>setTimeout(r,250));}}
- await sql(`CREATE ROLE anon;CREATE ROLE authenticated;CREATE ROLE service_role BYPASSRLS;CREATE SCHEMA auth;CREATE TABLE auth.users(id uuid PRIMARY KEY);
- CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$ SELECT nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
- CREATE TABLE public.profiles(id uuid PRIMARY KEY,plan text);CREATE TABLE public.organizations(id uuid PRIMARY KEY);CREATE TABLE public.custom_calculators(id uuid PRIMARY KEY,organization_id uuid REFERENCES public.organizations,status text,published_version integer);
- CREATE TABLE public.custom_calculator_runs(id uuid,organization_id uuid,calculator_id uuid,calculator_version integer,input_data jsonb,output_data jsonb,created_at timestamptz);
- CREATE FUNCTION public.is_org_member(uuid) RETURNS boolean LANGUAGE sql STABLE AS $$ SELECT $1=auth.uid() $$;
- CREATE FUNCTION public.has_org_role(uuid,text[]) RETURNS boolean LANGUAGE sql STABLE AS $$ SELECT $1=auth.uid() $$;
- GRANT USAGE ON SCHEMA public,auth TO anon,authenticated,service_role;
- INSERT INTO auth.users VALUES('${a}'),('${b}');INSERT INTO public.profiles VALUES('${a}','business'),('${b}','free');INSERT INTO public.organizations VALUES('${a}'),('${b}');INSERT INTO public.custom_calculators VALUES('${a}','${a}','published',1);`);
- await sql(await readFile('supabase/migrations/005_b7_delivery.sql','utf8'));
- await sql(await readFile('supabase/migrations/006_b8_api_automation.sql','utf8'));
+ await bootstrapSchema(sql,{a,b});
  await sql(`INSERT INTO public.embed_configs(id,organization_id,calculator_id,public_key,name,lead_capture_enabled,consent_text,created_by) VALUES('${config}','${a}','${a}','synthetic_public_key_123456','Synthetic',true,'Synthetic consent','${a}');`);
  await sql(`INSERT INTO public.business_webhook_endpoints(organization_id,name,endpoint_url,secret_ciphertext,event_types,created_by) VALUES('${a}','Synthetic','https://example.invalid/hook','synthetic-not-a-secret','["lead.created"]','${a}');`);
  const definition={name:'Synthetic',fields:[{key:'x',label:'Value',type:'number'}],outputs:[{key:'answer',label:'Answer',formula:'x*2'}]};
- await sql(`CREATE TABLE public.custom_calculator_versions(calculator_id uuid REFERENCES public.custom_calculators,version integer,definition jsonb,PRIMARY KEY(calculator_id,version));INSERT INTO public.custom_calculator_versions VALUES('${a}',1,${quote(definition)});INSERT INTO public.business_api_keys(id,organization_id,name,key_prefix,key_hash,monthly_quota,rate_limit_per_minute,created_by,scopes) VALUES('${b}','${a}','Synthetic','test','synthetic-hash',10,10,'${a}','["calculations:batch"]');`);
+ await sql(`INSERT INTO public.custom_calculator_versions(calculator_id,version,definition,created_by) VALUES('${a}',1,${quote(definition)},'${a}');INSERT INTO public.business_api_keys(id,organization_id,name,key_prefix,key_hash,monthly_quota,rate_limit_per_minute,created_by,scopes) VALUES('${b}','${a}','Synthetic','test','synthetic-hash',10,10,'${a}','["calculations:batch"]');`);
  const quotaProposal=await readFile('docs/architecture/proposals/ATOMIC-API-QUOTA.sql','utf8');
  const quotaGuard="DO $$ BEGIN RAISE EXCEPTION 'PROPOSAL ONLY: isolated quota acceptance and owner authorization required'; END $$;";
  assert.equal(quotaProposal.split(quotaGuard).length,2);await sql(quotaProposal.replace(quotaGuard,''));
  const proposal=await readFile('docs/architecture/proposals/ATOMIC-BATCH-JOB.sql','utf8');const guard="DO $$ BEGIN RAISE EXCEPTION 'PROPOSAL ONLY: isolated batch acceptance and owner authorization required'; END $$;";
  assert.equal(proposal.split(guard).length,2);await assert.rejects(sql(proposal),/PROPOSAL ONLY/);await sql(proposal.replace(guard,''));
+ await verifyDefiners(sql,['submit_verified_batch_job_v1','read_verified_batch_job_v1']);
+ const catalog=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));
+ validateCatalog(catalog,{lane:'batch'});
+ verifyDriftDetection(catalog,'batch');
+ console.log('PASS sanitized catalog contract and six deliberate drift rejections');
  const rows=[{x:3}],outputs=[{index:0,ok:true,output:{answer:6}}];
  const submit=(id,{input=rows,output=outputs,version=1,org=a,hash='synthetic-hash',def=definition}={})=>`SET ROLE service_role;SELECT public.submit_verified_batch_job_v1('${b}','${hash}','${org}','${id}','${a}',${quote(input)},${version===null?'NULL':version},${def===null?'NULL':quote(def)},${output===null?'NULL':quote(output)});`;
  const recover=id=>`SET ROLE service_role;SELECT public.read_verified_batch_job_v1('${b}','synthetic-hash','${a}','${id}');`;
@@ -52,6 +50,25 @@ try {
  await check('client role permissions and unsupported isolation reject before writes',async()=>{for(const role of ['anon','authenticated']){await assert.rejects(sql(submit(randomUUID()).replace('SET ROLE service_role',`SET ROLE ${role}`)),/permission denied/);await assert.rejects(sql(`SET ROLE ${role};SELECT * FROM public.batch_request_receipts;`),/permission denied/);}for(const level of ['REPEATABLE READ','SERIALIZABLE'])await assert.rejects(sql(`BEGIN ISOLATION LEVEL ${level};${submit(randomUUID())}COMMIT;`),/requires READ COMMITTED/);assert.equal(await snapshot(),'[0, 0, 0]');});
  await check('tampered receipt payload cannot rebind an immutable job to different inputs',async()=>{const id=randomUUID();await sql(submit(id));await sql(`UPDATE public.batch_request_receipts SET payload=${quote({calculator_id:a,input_rows:[{x:99}]})};`);await assert.rejects(sql(recover(id)),/changed batch evidence/);await assert.rejects(sql(submit(id,{input:[{x:99}],version:null,def:null,output:null})),/changed batch evidence/);assert.equal(await snapshot(),'[1, 1, 1]');});
  await check('tampered immutable job snapshot is not accepted and timezones do not break recovery',async()=>{const id=randomUUID();await sql(submit(id));assert.equal(JSON.parse(await sql("SET timezone='Asia/Kolkata';"+recover(id))).status,'completed');await sql("UPDATE public.batch_calculation_jobs SET output_rows='[]';");await assert.rejects(sql(recover(id)),/changed batch evidence/);});
+ await check('real membership isolates durable jobs across organizations',async()=>{
+  await sql(submit(randomUUID()));
+  for(const [user,expected] of [[a,'1'],[member,'1'],[b,'0']])assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${user}';SELECT count(*) FROM public.batch_calculation_jobs;`),expected);
+  await sql(`DELETE FROM public.organization_members WHERE organization_id='${a}' AND user_id='${member}';`);
+  try {assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${member}';SELECT count(*) FROM public.batch_calculation_jobs;`),'0');}
+  finally {await sql(`INSERT INTO public.organization_members VALUES('${a}','${member}','member',now());`);}
+  await assert.rejects(sql('SET ROLE anon;SELECT * FROM public.batch_calculation_jobs;'),/permission denied/);
+ });
+ await check('concurrent owner plan downgrade is observed after row lock waits',async()=>{
+  await committedMutation(sql,`UPDATE public.profiles SET plan='free' WHERE id='${a}'`,async()=>{
+   await assert.rejects(sql(submit(randomUUID())),/authority unavailable/);
+  });assert.equal(await snapshot(),'[0, 0, 0]');
+ });
+ await check('concurrent calculator tenant transfer rejects original binding after lock wait',async()=>{
+  try {await committedMutation(sql,`UPDATE public.custom_calculators SET organization_id='${b}' WHERE id='${a}'`,async()=>{
+   await assert.rejects(sql(submit(randomUUID())),/Published batch version changed/);
+  });assert.equal(await snapshot(),'[0, 0, 0]');}
+  finally {await sql(`UPDATE public.custom_calculators SET organization_id='${a}' WHERE id='${a}';`);}
+ });
  if(process.argv.includes('--http')){const {verifyHttp}=await import('./http-contract.mjs');await verifyHttp({cmd,sql,name,network,clear,snapshot,a,b,definition});}
  console.log(`${count} durable atomic batch PostgreSQL cases passed; proposals remain unapplied outside fixture.`);
 

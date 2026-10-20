@@ -22,3 +22,12 @@ The acceptance cases cover:
 Limits: synthetic membership helpers do not establish correctness of the full production organization graph. No browser/widget, CORS, reverse proxy, production deployment, migrations beyond fixture prerequisites, worker webhook delivery, real third-party service, distributed network fault injection, or complete Next server startup is covered. Application errors deliberately redact SQL details; generic failures may map to 503. Existing native quota cases run unchanged; this HTTP suite does not exercise quota middleware. Passing fixtures authorize no SQL deployment.
 
 Observed implementation defects: none reproduced in the application route or proposal. Initial owner RLS HTTP acceptance failed because the old fixture helper ignored PostgREST JSON JWT claims; correcting that fixture helper made actual owner/nonowner assertions pass. No production SQL or route change was needed.
+
+Schema fidelity follow-up (2026-10-20): the same HTTP/route cases now run against
+whole repository 001/003/004/005/006/029/032_business_builder dependencies and
+actual membership helpers/RLS. Final focused run: **18 native + 19 real route
+HTTP cases passed** (prior 16 native and separate orphan reproduction preserved).
+Three shared schema/catalog check groups also pass, including six deliberate
+catalog drift rejections. See [bounded schema evidence and remaining production
+attestations](../api-schema/README.md). This supersedes only the earlier minimal
+fixture dependency description.
