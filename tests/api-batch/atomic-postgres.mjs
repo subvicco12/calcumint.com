@@ -30,7 +30,7 @@ try {
  const catalog=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));
  validateCatalog(catalog,{lane:'batch'});
  verifyDriftDetection(catalog,'batch');
- console.log('PASS sanitized catalog contract and six deliberate drift rejections');
+ console.log('PASS sanitized catalog contract and required-evidence drift rejections');
  const rows=[{x:3}],outputs=[{index:0,ok:true,output:{answer:6}}];
  const submit=(id,{input=rows,output=outputs,version=1,org=a,hash='synthetic-hash',def=definition}={})=>`SET ROLE service_role;SELECT public.submit_verified_batch_job_v1('${b}','${hash}','${org}','${id}','${a}',${quote(input)},${version===null?'NULL':version},${def===null?'NULL':quote(def)},${output===null?'NULL':quote(output)});`;
  const recover=id=>`SET ROLE service_role;SELECT public.read_verified_batch_job_v1('${b}','synthetic-hash','${a}','${id}');`;

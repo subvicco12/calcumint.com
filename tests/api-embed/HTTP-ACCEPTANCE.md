@@ -27,7 +27,7 @@ Schema fidelity follow-up (2026-10-20): the same HTTP/route cases now run agains
 whole repository 001/003/004/005/006/029/032_business_builder dependencies and
 actual membership helpers/RLS. Final focused run: **18 native + 19 real route
 HTTP cases passed** (prior 16 native and separate orphan reproduction preserved).
-Three shared schema/catalog check groups also pass, including six deliberate
+Three shared schema/catalog check groups also pass, including required-evidence
 catalog drift rejections. See [bounded schema evidence and remaining production
 attestations](../api-schema/README.md). This supersedes only the earlier minimal
 fixture dependency description.

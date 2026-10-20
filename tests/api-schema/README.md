@@ -74,11 +74,21 @@ node tests/api-schema/validate.mjs /path/to/sanitized-catalog.json embed
 The optional lane defaults to `both` (both proposals must exist). The validator
 checks bounded required tables, PK/FK presence, RLS/policy presence, anonymous
 read denial, role superuser/BYPASSRLS flags, and exact RPC parameter types,
-result type, fixed search path, trusted owner category and effective EXECUTE
-allowlist. Native fixtures validate real catalog output and reject six deliberate
+result type, fixed search path, nonempty owner name outside the three observed roles and effective EXECUTE
+allowlist. Native fixtures validate real catalog output and reject deliberate
 mutations: disabled RLS, missing PK/FK, missing policy, unsafe search path,
-anonymous RPC grant, changed RPC signature. It intentionally does not assert
+anonymous RPC grant, changed RPC signature, incomplete/duplicate grants or roles,
+nonboolean grant values, missing/empty owner names and missing configuration. It intentionally does not assert
 exact full catalog equality, owner identity equivalence, all column/default ACLs,
 policy semantic equivalence, unlisted functions or external quota writers.
 Passing this validator proves only this bounded contract, never environment
 provenance, authorization to apply SQL, or production readiness.
+
+Required evidence is fail-closed: the three observed roles and every table/RPC
+role-grant array must contain exactly one row each for anon, authenticated and
+service_role, with boolean privilege values. Duplicate table names and missing
+required evidence are rejected. A nonempty owner name outside those three roles
+is only an owner-category check; it does not establish that an arbitrary named
+role is trusted, approved, or equivalent to the production owner. The standalone
+regressions run with `node --test tests/api-schema/validate.test.mjs`; the same
+tamper checks also run mandatorily inside both native fixture workflows.

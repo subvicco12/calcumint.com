@@ -35,7 +35,7 @@ try {
  const catalog=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));
  validateCatalog(catalog,{lane:'embed'});
  verifyDriftDetection(catalog,'embed');
- console.log('PASS sanitized catalog contract and six deliberate drift rejections');
+ console.log('PASS sanitized catalog contract and required-evidence drift rejections');
  // Synthetic explicit service grants only; proposed function remains definer-owned.
  await sql('GRANT SELECT ON public.embed_configs,public.embed_leads,public.lead_consents TO authenticated;');
  await test('concurrent identical captures yield one lead, consent and receipt',async()=>{const id=randomUUID();const replies=await Promise.all([sql(call(id)),sql(call(id))]);assert.deepEqual(replies.map(r=>JSON.parse(r).status).sort(),['created','duplicate']);assert.equal(await state(),'[1, 1, 1, 1]');});
