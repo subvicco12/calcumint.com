@@ -38,7 +38,7 @@ describe("embedded calculator browser lifecycle", () => {
   });
 
   it("disables lead submission when resume renewal fails", async () => {
-    const fetchMock = vi.fn((url: string) => Promise.resolve(url.endsWith("/session") ? { ok: false } : { ok: true }));
+    const fetchMock = vi.fn((url: string) => Promise.resolve(url.endsWith("/session") ? { ok: false } : { ok: true, json: async()=>({ok:true}) }));
     vi.stubGlobal("fetch", fetchMock);
     const { getByRole } = render(<PublicEmbedCalculator {...props} />);
     await act(async () => { window.dispatchEvent(new Event("focus")); });
@@ -49,7 +49,7 @@ describe("embedded calculator browser lifecycle", () => {
     const fetchMock = vi.fn((url: string) => Promise.resolve(
       url.endsWith("/session")
         ? { ok: true, json: async () => ({ sessionToken: "renewed-token" }) }
-        : { ok: true }
+        : { ok: true, json: async()=>({ok:true}) }
     ));
     vi.stubGlobal("fetch", fetchMock);
     const { getByRole, getByLabelText, getByText } = render(<PublicEmbedCalculator {...props} />);
@@ -67,7 +67,7 @@ describe("embedded calculator browser lifecycle", () => {
 
   it("fails closed after a suspended iframe resumes with an expired capability", async () => {
     const fetchMock = vi.fn((url: string) => Promise.resolve(
-      url.endsWith("/session") ? { ok: false, status: 403 } : { ok: true }
+      url.endsWith("/session") ? { ok: false, status: 403 } : { ok: true, json: async()=>({ok:true}) }
     ));
     vi.stubGlobal("fetch", fetchMock);
     const { getByRole, getByText } = render(<PublicEmbedCalculator {...props} />);
@@ -80,6 +80,27 @@ describe("embedded calculator browser lifecycle", () => {
     fireEvent.click(getByRole("button", { name: "Submit" }));
     expect(fetchMock.mock.calls.some(([url]) => url.endsWith("/leads"))).toBe(false);
     expect(getByText("Embed session expired. Reload this calculator to continue submitting events or leads.")).toBeTruthy();
+  });
+
+  it("retains one capture and request ID after a lost response, blocks overlap and retries only explicitly",async()=>{
+    let rejectLead!:(error:Error)=>void;
+    const pending=new Promise<never>((_,reject)=>{rejectLead=reject;});
+    let leadCalls=0;
+    const fetchMock=vi.fn((url:string,options?:RequestInit)=>{void options;return url.endsWith('/leads')?(++leadCalls===1?pending:Promise.resolve({ok:true,json:async()=>({ok:true,duplicate:true})})):Promise.resolve({ok:true});});
+    vi.stubGlobal('fetch',fetchMock);
+    const {getByRole,getByLabelText,getByText}=render(<PublicEmbedCalculator {...props}/>);
+    fireEvent.change(getByLabelText('Email'),{target:{value:'original@example.com'}});fireEvent.click(getByRole('checkbox'));
+    const form=getByRole('button',{name:'Submit'}).closest('form')!;
+    await act(async()=>{fireEvent.submit(form);fireEvent.submit(form);});
+    expect(fetchMock.mock.calls.filter(([u])=>u.endsWith('/leads'))).toHaveLength(1);
+    await act(async()=>{rejectLead(new Error('lost reply'));});
+    expect(getByText(/outcome is unconfirmed/)).toBeTruthy();
+    fireEvent.change(getByLabelText('Email'),{target:{value:'changed@example.com'}});
+    await act(async()=>{fireEvent.click(getByRole('button',{name:'Retry original submission'}));});
+    const calls=fetchMock.mock.calls.filter(([u])=>u.endsWith('/leads'));expect(calls).toHaveLength(2);
+    expect(calls[0][1]?.body).toBe(calls[1][1]?.body);expect(calls[0][1]?.headers).toMatchObject({'Idempotency-Key':expect.any(String)});
+    expect((calls[0][1]?.headers as Record<string,string>)['Idempotency-Key']).toBe((calls[1][1]?.headers as Record<string,string>)['Idempotency-Key']);
+    expect((getByLabelText('Email') as HTMLInputElement).value).toBe('changed@example.com');
   });
 
 });

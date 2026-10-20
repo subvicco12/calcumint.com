@@ -25,6 +25,10 @@ export function PublicEmbedCalculator(props: Props) {
   const [values, setValues] = useState<Record<string, string>>(initial);
   const [leadStatus, setLeadStatus] = useState("");
   const sessionRef = useRef(props.sessionToken);
+  const leadAttempt=useRef<{id:string;body:string;key:string;confirmed:boolean}|null>(null);
+  const leadPending=useRef(false);
+  const [submittingLead,setSubmittingLead]=useState(false);
+  const [uncertainLead,setUncertainLead]=useState(false);
   const renewalRef = useRef<Promise<boolean> | null>(null);
   const [sessionAvailable, setSessionAvailable] = useState(true);
 
@@ -65,15 +69,25 @@ export function PublicEmbedCalculator(props: Props) {
 
   async function submitLead(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!evaluated.result || !sessionAvailable) return;
+    if (!evaluated.result || !sessionAvailable || leadPending.current) return;
     const form = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(["name", "email", "phone", "company"].map((key) => [key, String(form.get(key) ?? "").trim()]));
-    const response = await fetch(`/api/embed/${props.publicKey}/leads`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-Embed-Session": sessionRef.current },
-      body: JSON.stringify({ ...payload, consented: form.get("consent") === "on", input: values, output: evaluated.result, sourceUrl: window.location.href })
-    });
-    setLeadStatus(response.ok ? "Thanks — your details were submitted." : "Could not submit your details.");
+    const payload = Object.fromEntries(["name", "email", "phone", "company"].map((key) => [key, String(form.get(key) ?? "").trim()]).filter(([,value])=>value!==""));
+    const body=JSON.stringify({...payload,consented:form.get("consent")==="on",input:values,output:evaluated.result,sourceUrl:window.location.href});
+    const previous=leadAttempt.current;
+    const attempt=previous?.key===props.publicKey&&(!previous.confirmed||previous.body===body)?previous:{id:crypto.randomUUID(),body,key:props.publicKey,confirmed:false};
+    leadAttempt.current=attempt;
+    leadPending.current=true;setSubmittingLead(true);setLeadStatus("");
+    try {
+      const response=await fetch(`/api/embed/${attempt.key}/leads`,{
+        method:"POST",headers:{"Content-Type":"application/json","X-Embed-Session":sessionRef.current,"Idempotency-Key":attempt.id},body:attempt.body
+      });
+      const result:unknown=await response.json();
+      if(!response.ok||!result||typeof result!=="object"||!("ok" in result)||result.ok!==true)throw new Error("Unconfirmed submission");
+      attempt.confirmed=true;setUncertainLead(false);setLeadStatus("Thanks — your details were submitted.");
+    } catch {
+      setUncertainLead(true);setLeadStatus("Submission outcome is unconfirmed. Retry the original submission; your current edits are preserved.");
+    } finally {leadPending.current=false;setSubmittingLead(false);}
+
   }
 
   function recordCalculation() {
@@ -89,7 +103,7 @@ export function PublicEmbedCalculator(props: Props) {
       {evaluated.error ? <div className="notice error-notice">{evaluated.error}</div> : <div className="builder-results">{props.definition.outputs.map((output) => <div className="result-box" key={output.key}><span>{output.label}</span><strong>{formatValue(evaluated.result?.[output.key], output.format, output.decimals)}</strong></div>)}</div>}
       {props.ctaLabel && props.ctaUrl && <a className="button primary embed-cta" href={props.ctaUrl} target="_blank" rel="noreferrer" onClick={() => void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json", "X-Embed-Session": sessionRef.current }, body: JSON.stringify({ type: "cta_click", sourceUrl: window.location.href }) })}>{props.ctaLabel}</a>}
       {!sessionAvailable && <p role="alert">Embed session expired. Reload this calculator to continue submitting events or leads.</p>}
-      {props.leadCaptureEnabled && <form className="embed-lead-form" onSubmit={submitLead}><h3>Send me this result</h3>{props.leadFields.includes("name") && <label>Name<input name="name" required /></label>}{props.leadFields.includes("email") && <label>Email<input name="email" type="email" required /></label>}{props.leadFields.includes("phone") && <label>Phone<input name="phone" /></label>}{props.leadFields.includes("company") && <label>Company<input name="company" /></label>}<label className="consent-row"><input name="consent" type="checkbox" required /><span>{props.consentText}{props.privacyUrl && <> <a href={props.privacyUrl} target="_blank" rel="noreferrer">Privacy policy</a></>}</span></label><button className="button primary" type="submit" disabled={!sessionAvailable}>Submit</button>{leadStatus && <p aria-live="polite">{leadStatus}</p>}</form>}
+      {props.leadCaptureEnabled && <form className="embed-lead-form" onSubmit={submitLead}><h3>Send me this result</h3>{props.leadFields.includes("name") && <label>Name<input name="name" required /></label>}{props.leadFields.includes("email") && <label>Email<input name="email" type="email" required /></label>}{props.leadFields.includes("phone") && <label>Phone<input name="phone" /></label>}{props.leadFields.includes("company") && <label>Company<input name="company" /></label>}<label className="consent-row"><input name="consent" type="checkbox" required /><span>{props.consentText}{props.privacyUrl && <> <a href={props.privacyUrl} target="_blank" rel="noreferrer">Privacy policy</a></>}</span></label><button className="button primary" type="submit" disabled={!sessionAvailable||submittingLead}>{submittingLead?"Submitting…":uncertainLead?"Retry original submission":"Submit"}</button>{leadStatus && <p aria-live="polite">{leadStatus}</p>}</form>}
       {!props.hideCalcumintBrand && <footer className="embed-powered">Powered by CalcuMint</footer>}
     </div>
   );

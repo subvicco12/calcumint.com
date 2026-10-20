@@ -15,11 +15,14 @@ const state = vi.hoisted(() => ({
   consentError: false,
   leadError: false,
   eventError: false,
+  rpcError: false,
+  rpcPayload: null as Record<string,unknown>|null,
   writes: [] as string[]
 }));
 
 vi.mock("@/lib/supabase/admin", () => ({
   createSupabaseAdminClient: () => ({
+    async rpc(_name:string,args:Record<string,unknown>){state.rpcPayload=args;state.writes.push("atomic_lead_rpc");return {data:state.consentError||state.leadError||state.rpcError?null:{status:"created",lead_id:configId},error:state.consentError||state.leadError||state.rpcError?{code:"PGRST202"}:null};},
     from(table: string) {
       const filters: Array<[string, unknown]> = [];
       const chain = {
@@ -44,7 +47,7 @@ vi.mock("@/lib/supabase/admin", () => ({
 function token(expiresAt = Date.now() + 5 * 60_000) { return signEmbedSession({ ...claims, expiresAt }, secret); }
 function request(path: string, body: unknown, session: string | null = token()) {
   return new NextRequest(`https://calcumint.com/api/embed/${key}/${path}`, {
-    method: "POST", headers: { "content-type": "application/json", ...(session ? { "x-embed-session": session } : {}) }, body: JSON.stringify(body)
+    method: "POST", headers: { "content-type": "application/json", "Idempotency-Key":"66666666-6666-4666-8666-666666666666", ...(session ? { "x-embed-session": session } : {}) }, body: JSON.stringify(body)
   });
 }
 const context = { params: Promise.resolve({ key }) };
@@ -58,6 +61,7 @@ beforeEach(() => {
   state.leadError = false;
   state.eventError = false;
   state.writes.length = 0;
+  state.rpcError=false;state.rpcPayload=null;
 });
 afterEach(() => { delete process.env.EMBED_SESSION_SECRET; vi.useRealTimers(); });
 
@@ -86,7 +90,7 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     expect((await event(request("events", { type: "view" }), context)).status).toBe(200);
     expect((await lead(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(200);
     expect(state.writes).toContain("embed_events");
-    expect(state.writes).toContain("embed_leads");
+    expect(state.writes).toContain("atomic_lead_rpc");
   });
   it("rejects invalid sessions, malformed events and unpublished calculators before writes", async () => {
     const { POST } = await import("@/app/api/embed/[key]/events/route");
@@ -172,26 +176,34 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
     const { POST } = await import("@/app/api/embed/[key]/leads/route");
     state.consentError = true;
     const response = await POST(request("leads", { consented: true, email: "example@example.com" }), context);
-    expect(response.status).toBe(500);
-    expect(state.writes).toContain("embed_leads");
-    expect(state.writes).toContain("lead_consents");
+    expect(response.status).toBe(503);
+    expect(state.writes).toEqual(["atomic_lead_rpc"]);
     expect(state.writes).not.toContain("embed_events");
   });
 
   it("rejects failed lead inserts without writing consent or analytics", async () => {
     const { POST } = await import("@/app/api/embed/[key]/leads/route");
     state.leadError = true;
-    expect((await POST(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(500);
-    expect(state.writes).toEqual(["embed_leads"]);
+    expect((await POST(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(503);
+    expect(state.writes).toEqual(["atomic_lead_rpc"]);
   });
 
   it("returns success for a saved lead and consent when best-effort analytics fails", async () => {
     const { POST } = await import("@/app/api/embed/[key]/leads/route");
     state.eventError = true;
     expect((await POST(request("leads", { consented: true, email: "example@example.com" }), context)).status).toBe(200);
-    expect(state.writes).toEqual(["embed_leads", "lead_consents", "embed_events"]);
+    expect(state.writes).toEqual(["atomic_lead_rpc"]);
   });
 
+  it("fails closed when atomic storage is absent and never falls back to REST writes",async()=>{
+    const {POST}=await import("@/app/api/embed/[key]/leads/route");state.rpcError=true;
+    expect((await POST(request("leads",{consented:true,email:"example@example.com"}),context)).status).toBe(503);
+    expect(state.writes).toEqual(["atomic_lead_rpc"]);
+  });
+  it("rejects a missing idempotency key before storage writes",async()=>{
+    const {POST}=await import("@/app/api/embed/[key]/leads/route");const req=request("leads",{consented:true,email:"example@example.com"});req.headers.delete("Idempotency-Key");
+    expect((await POST(req,context)).status).toBe(400);expect(state.writes).toEqual([]);
+  });
   it("returns failure when a standalone event insert fails", async () => {
     const { POST } = await import("@/app/api/embed/[key]/events/route");
     state.eventError = true;
