@@ -10,7 +10,7 @@ Before: `FinalResultPresentation` used first-row keys as headers but each row's 
 
 Both result surfaces now reuse `FinalScheduleTable`. Authoritative metadata controls column identity, order, labels and units. Without metadata, a stable union of actual keys controls every cell; unknown financial labels/units are not inferred. Missing fields display an em dash, additional legacy fields gain a correctly aligned column, zero/negative/tiny values retain existing formatting, and metadata-invalid or unreconciled schedules fail closed without hiding valid core results. Legacy rows are not called complete or checkpoint data without authoritative metadata.
 
-The existing accessible caption, scoped headers, focusable overflow region and bounded first24+terminal summary now apply to both surfaces. Expansion is keyboard-operable. One old source-string accessibility assertion was converted to actual rendered semantic assertions because moving the table into the shared component must not invalidate a correct accessibility contract.
+The existing accessible caption, scoped headers, focusable overflow region and bounded first24+terminal summary now apply to both surfaces. Expansion is keyboard-operable. Two old source-string accessibility assertions were converted to actual rendered semantic assertions because moving the table into the shared component must not invalidate a correct accessibility contract.
 
 Loan/EMI and SIP/Compound Interest schedule/terminal/export regressions pass. Mortgage remains aggregate-only; no period data, rounding policy or financial rule was invented.
 
@@ -53,3 +53,8 @@ Unchanged:540 master IDs,574 registry definitions,14 owner-authorized private DR
 Release still requires protected production schema/function/grant fingerprints, reviewed009/011/013/029 and032–035/038 migration/RPC adoption and rollback, genuine isolated auth/payment acceptance, Mortgage period/final-payment decisions, BMI clinical/golden approval, SIPv2 numerical-policy review, physical-device/accessibility/performance acceptance and remaining Blueprint/Business/PDF workflows. Passing this batch does not infer any of these decisions.
 
 Next: independently review these two engineering closures, then rehearse the exact owner-approved database upgrade/rollback contract when protected fingerprints are supplied. Continue separately scoped, source-backed remaining product work; do not publish calculators to erase404s or improve counts.
+
+
+### Exact-head CI regression correction
+
+Head `0234189baf9024d184bc7613b986a5757c50bdb7` passed lint/typecheck and all five isolated/evidence jobs, but full unit CI found one remaining old source-string caption assertion in `legacy-final-presentation-shared-semantics.test.ts`. The test now renders the actual component and verifies the accessible caption, focusable scroll container and safe source-link attributes. Seven affected tests across three files and affected lint pass. Application code is unchanged; prior local browser/build evidence is reused. Subsequent automatic CI is justified by this demonstrated failure, not an unchanged-check rerun.
