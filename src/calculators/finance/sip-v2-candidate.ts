@@ -111,3 +111,23 @@ export const sipV2Candidate: CalculatorDefinition<Input, Output> = {
   sources: [{ label: 'OpenStax — Mathematics of Finance: annuities', url: 'https://openstax.org/books/contemporary-mathematics/pages/6-3-annuities' }, { label: 'Investor.gov — Compound Interest Calculator', url: 'https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator' }],
   examples: [{ label: 'Near-zero 100-year accumulation', input: { monthlyContribution: 10000, annualReturnPercent: 1e-12, termMonths: 1200, contributionTiming: 'beginning' }, expected: { futureValue: 12000000, investedAmount: 12000000, estimatedGain: 0 } }],
 };
+
+/** Authoritative cumulative monthly snapshots, using one outward-rounded loop.
+ * Rounded snapshots are outputs, never rounded cash-flow state. May fail for a
+ * prefix even when the terminal calculation is representable. */
+export function sipV2PeriodSnapshots(raw: unknown): readonly { month: number; output: Output }[] {
+  const { monthlyContribution: p, annualReturnPercent: a, termMonths: n, contributionTiming: t } = schema.parse(raw);
+  const principal = decimal(p), numerator = SCALE * 1200n + decimal(a);
+  const qLo = numerator / 1200n, qHi = ceilDivide(numerator, 1200n);
+  let lo = 0n, hi = 0n;
+  const rows: { month: number; output: Output }[] = [];
+  for (let month = 1; month <= n; month++) {
+    lo = lo * qLo / SCALE + principal;
+    hi = ceilDivide(hi * qHi, SCALE) + principal;
+    const interval: [bigint, bigint] = t === 'beginning' ? [lo * qLo / SCALE, ceilDivide(hi * qHi, SCALE)] : [lo, hi];
+    const fv = certifiedCents(interval, () => exactBoundaryCents(p, a, month, t));
+    const invested = certifiedCents([principal * BigInt(month), principal * BigInt(month)]);
+    rows.push({ month, output: { futureValue: Number(fv) / 100, investedAmount: Number(invested) / 100, estimatedGain: Number(checkedCents(fv - invested)) / 100 } });
+  }
+  return rows;
+}
