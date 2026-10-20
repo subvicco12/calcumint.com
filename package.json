@@ -24,7 +24,8 @@
     "test:draft-persistence-postgres": "node tests/draft-preview/persistence.postgres.mjs",
     "test:authenticated-draft-browser": "node scripts/test-authenticated-draft-browser.mjs",
     "test:atomic-history-postgres": "node tests/draft-preview/atomic-history.postgres.mjs",
-    "test:draft-pagination-browser": "node scripts/test-draft-pagination-browser.mjs"
+    "test:draft-pagination-browser": "node scripts/test-draft-pagination-browser.mjs",
+    "test:migration-contract": "node --test tests/migration-contract/inventory.test.mjs && node tests/migration-contract/combined.postgres.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",

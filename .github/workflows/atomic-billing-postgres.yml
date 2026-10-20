@@ -4,6 +4,10 @@ on:
     paths:
       - 'docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md'
       - 'tests/billing/**'
+      - 'tests/migration-contract/**'
+      - 'docs/audits/migration-contract-2026-10-20/**'
+      - 'docs/architecture/proposals/**'
+      - 'supabase/migrations/**'
       - 'src/lib/billing/atomic-webhook*'
       - 'src/app/api/billing/webhook/**'
       - 'src/lib/billing/paddle.ts'
@@ -20,6 +24,10 @@ on:
     paths:
       - 'docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md'
       - 'tests/billing/**'
+      - 'tests/migration-contract/**'
+      - 'docs/audits/migration-contract-2026-10-20/**'
+      - 'docs/architecture/proposals/**'
+      - 'supabase/migrations/**'
       - 'src/lib/billing/atomic-webhook*'
       - 'src/app/api/billing/webhook/**'
       - 'src/lib/billing/paddle.ts'
@@ -48,3 +56,5 @@ jobs:
         run: node --test tests/billing/account-schema-preflight.test.mjs tests/billing/migration-inventory.test.mjs tests/billing/migration-fingerprints.test.mjs
       - name: Test guarded proposal in disposable offline PostgreSQL
         run: node tests/billing/atomic-postgres.mjs
+      - name: Reconcile exact migration identities and combined release contracts
+        run: npm run test:migration-contract
