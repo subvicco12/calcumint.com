@@ -1,0 +1,82 @@
+// @vitest-environment jsdom
+import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
+import {afterEach,expect,it,vi} from 'vitest';
+const state=vi.hoisted(()=>{process.env.NEXT_PUBLIC_SUPABASE_URL='https://example.invalid';process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY='synthetic';return {authFailure:null as unknown,plan:'free',id:'a',favorite:true,count:20,callback:null as null|((event:string,session:{user:{id:string}}|null)=>void),writes:[] as unknown[],pending:null as null|((value:unknown)=>void),defer:false,readError:false,deferCount:false,pendingCounts:[] as ((value:unknown)=>void)[],deferAuth:false,authResolve:null as null|((value:unknown)=>void),unsubscribed:0};});
+vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
+vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>({auth:{getUser:()=>state.deferAuth?new Promise(resolve=>{state.authResolve=resolve;}):Promise.resolve({data:{user:state.id?{id:state.id}:null},error:state.authFailure}),onAuthStateChange:(callback:typeof state.callback)=>{state.callback=callback;return {data:{subscription:{unsubscribe:()=>{state.unsubscribed++;}}}};}},rpc:async(name:string,args:Record<string,unknown>)=>{expect(name).toBe('save_calculation_history_atomic');expect(args.p_expected_owner_id).toBe(state.id);state.writes.push({table:'calculation_history',value:{user_id:state.id,calculator_slug:args.p_calculator_slug,calculator_version:args.p_calculator_version,input_data:args.p_input_data,output_data:args.p_output_data}});if(state.defer)return new Promise(resolve=>{state.pending=result=>resolve({...result as object,data:args.p_request_id});});return {data:args.p_request_id,error:null};},from:(table:string)=>{const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:state.favorite?{id:'favorite'}:null,error:state.readError?{}:null}),then:(resolve:(x:unknown)=>unknown)=>state.deferCount?new Promise(r=>state.pendingCounts.push(r)).then(resolve):Promise.resolve({count:state.count,error:null}).then(resolve),upsert:async(value:unknown)=>{state.writes.push({table,value});if(state.defer)return new Promise(resolve=>{state.pending=resolve;});return {error:null};},insert:async()=>{throw new Error('History must use atomic RPC');},delete:()=>{state.writes.push({table,delete:true});return query;}};return query;}})}));
+import {CalculatorAccountActions} from './calculator-account-actions';
+const props={calculatorSlug:'sip-calculator',calculatorVersion:1,input:{value:0},output:{value:.001}};
+afterEach(()=>{cleanup();state.authFailure=null;state.plan='free';state.id='a';state.favorite=true;state.count=20;state.callback=null;state.writes=[];state.defer=false;state.pending=null;state.readError=false;state.deferAuth=false;state.authResolve=null;state.deferCount=false;state.pendingCounts=[];});
+it.each(['free','pro','business'])('reloads owner-specific favorite/quota state on auth transition on %s',async plan=>{state.plan=plan;render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'★ Favorited'});state.id='b';state.favorite=false;state.count=0;act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));expect(await screen.findByRole('button',{name:'☆ Favorite'})).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.writes).toHaveLength(1));expect(state.writes[0]).toMatchObject({value:{user_id:'b'}});});
+it('does not use a different user’s loaded favorite state when auth notification lags',async()=>{render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'★ Favorited'});state.id='b';state.favorite=false;state.count=0;fireEvent.click(screen.getByRole('button',{name:'★ Favorited'}));await waitFor(()=>expect(screen.getByRole('button',{name:'☆ Favorite'})).toBeTruthy());expect(state.writes).toHaveLength(0);});
+it('handles sign-out and cleans the auth subscription',async()=>{const view=render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'★ Favorited'});state.id='';act(()=>state.callback?.('SIGNED_OUT',null));expect(await screen.findByRole('link',{name:'Sign in to save this calculation'})).toBeTruthy();expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();const before=state.unsubscribed;view.unmount();expect(state.unsubscribed).toBe(before+1);});
+
+it('ignores completion from an already-issued prior-owner save and keeps same-user refresh state',async()=>{state.plan='pro';state.favorite=false;state.count=0;render(<CalculatorAccountActions {...props}/>);act(()=>state.callback?.('INITIAL_SESSION',{user:{id:'a'}}));await screen.findByRole('button',{name:'Save calculation'});state.defer=true;fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.writes).toHaveLength(1));act(()=>state.callback?.('TOKEN_REFRESHED',{user:{id:'a'}}));expect(screen.getByRole('button',{name:'Save calculation'}).getAttribute('aria-busy')).toBe('true');state.id='b';act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));await waitFor(()=>expect(screen.getByRole('button',{name:'Save calculation'}).getAttribute('aria-busy')).toBe('false'));await act(async()=>state.pending?.({error:null}));expect(screen.queryByText('Calculation saved to your history.')).toBeNull();expect(state.writes[0]).toMatchObject({value:{user_id:'a',output_data:props.output}});});
+
+it('reloads a changed owner before applying a Free history quota',async()=>{render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});state.id='b';state.favorite=false;state.count=0;fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await screen.findByRole('button',{name:'☆ Favorite'});expect(state.writes).toHaveLength(0);fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.writes).toHaveLength(1));expect(state.writes[0]).toMatchObject({value:{user_id:'b'}});});
+it('does not issue a prior-owner mutation when its authentication response arrives after a switch',async()=>{state.plan='pro';render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});state.deferAuth=true;fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.authResolve).not.toBeNull());const resolve=state.authResolve!;state.deferAuth=false;state.id='b';state.favorite=false;state.count=0;act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));await screen.findByRole('button',{name:'☆ Favorite'});await act(async()=>resolve({data:{user:{id:'a'}}}));expect(state.writes).toHaveLength(0);});
+it('exposes a failed new-owner read and permits retry without old-owner state',async()=>{render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'★ Favorited'});state.id='b';state.favorite=false;state.count=0;state.readError=true;act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));await screen.findByRole('alert');expect(screen.queryByRole('button',{name:'★ Favorited'})).toBeNull();state.readError=false;fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));await screen.findByRole('button',{name:'☆ Favorite'});});
+
+it('clears private captured scenarios on auth or calculator revision replacement',async()=>{state.plan='pro';state.count=0;const view=render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Capture baseline A'});fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();state.id='b';act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));await screen.findByRole('button',{name:'Capture baseline A'});expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));view.rerender(<CalculatorAccountActions {...props} calculatorVersion={2}/>);await screen.findByRole('button',{name:'Capture baseline A'});expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();});
+
+it.each(['☆ Favorite'])('drops a prior-owner %s request waiting on a fresh quota',async button=>{
+ state.favorite=false;state.count=0;render(<CalculatorAccountActions {...props}/>);
+ await screen.findByRole('button',{name:button});state.deferCount=true;fireEvent.click(screen.getByRole('button',{name:button}));
+ await waitFor(()=>expect(state.pendingCounts).toHaveLength(1));const complete=state.pendingCounts[0];
+ state.deferCount=false;state.id='b';act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));
+ await screen.findByRole('button',{name:'☆ Favorite'});await act(async()=>complete({count:0,error:null}));expect(state.writes).toHaveLength(0);
+});
+
+it.each(['Save calculation','☆ Favorite','★ Favorited'])('offers reauthentication and clears private captures after terminal %s authentication',async button=>{
+ state.plan='pro';state.favorite=button==='★ Favorited';state.count=0;render(<CalculatorAccountActions {...props}/>);
+ await screen.findByRole('button',{name:button});fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');state.authFailure=new AuthSessionMissingError();
+ const action=screen.getByRole('button',{name:button});action.focus();fireEvent.click(action);
+ const login=await screen.findByRole('link',{name:'Sign in to save this calculation'});
+ await waitFor(()=>expect(document.activeElement).toBe(login));
+ expect(screen.queryByRole('button',{name:'Save calculation'})).toBeNull();expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();expect(state.writes).toHaveLength(0);
+});
+it('handles an anonymous action read without waiting for a logout notification',async()=>{
+ state.plan='pro';state.count=0;render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ state.id='';fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));
+ await screen.findByRole('link',{name:'Sign in to save this calculation'});expect(state.writes).toHaveLength(0);
+});
+it.each(['free','pro','business'].flatMap(plan=>['Save calculation','☆ Favorite','★ Favorited'].map(button=>({plan,button}))))('handles expired refresh before $plan $button without a write',async({plan,button})=>{
+ state.plan=plan;state.count=0;state.favorite=button==='★ Favorited';render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:button});
+ const {AuthApiError}=await import('@supabase/supabase-js');state.authFailure=new AuthApiError('private refresh detail',400,'refresh_token_not_found');
+ fireEvent.click(screen.getByRole('button',{name:button}));await screen.findByRole('link',{name:'Sign in to save this calculation'});
+ expect(state.writes).toHaveLength(0);expect(document.body.textContent).not.toContain('private refresh detail');
+});
+it.each(['Save calculation','☆ Favorite','★ Favorited'])('preserves local work and supports deliberate retry after interrupted %s authentication',async button=>{
+ state.plan='pro';state.count=0;state.favorite=button==='★ Favorited';render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:button});
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ const {AuthRetryableFetchError}=await import('@supabase/supabase-js');state.authFailure=new AuthRetryableFetchError('private connection detail',503);
+ fireEvent.click(screen.getByRole('button',{name:button}));await screen.findByRole('alert');
+ expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();expect(state.writes).toHaveLength(0);expect(document.body.textContent).not.toContain('private connection detail');
+ state.authFailure=null;fireEvent.click(screen.getByRole('button',{name:button}));await waitFor(()=>expect(state.writes).toHaveLength(1));
+ expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();
+});
+it.each(['Save calculation','☆ Favorite','★ Favorited'])('ignores a delayed prior-owner terminal %s failure after account replacement',async button=>{
+ state.plan='pro';state.count=0;state.favorite=button==='★ Favorited';render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:button});
+ state.deferAuth=true;fireEvent.click(screen.getByRole('button',{name:button}));await waitFor(()=>expect(state.authResolve).not.toBeNull());const complete=state.authResolve!;
+ state.deferAuth=false;state.id='b';state.favorite=false;act(()=>state.callback?.('SIGNED_IN',{user:{id:'b'}}));await screen.findByRole('button',{name:'Save calculation'});
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ const {AuthSessionMissingError}=await import('@supabase/supabase-js');await act(async()=>complete({data:{user:null},error:new AuthSessionMissingError()}));
+ expect(screen.getByRole('button',{name:'Save calculation'})).toBeTruthy();expect(screen.getByRole('table',{name:'Captured engine outputs'})).toBeTruthy();expect(screen.queryByRole('link',{name:'Sign in to save this calculation'})).toBeNull();expect(state.writes).toHaveLength(0);
+});
+it('suppresses prior-owner save success after a silent owner switch is discovered by another action',async()=>{
+ state.plan='pro';state.count=0;state.favorite=false;render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'Save calculation'});
+ state.defer=true;fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await waitFor(()=>expect(state.writes).toHaveLength(1));const complete=state.pending!;
+ state.id='b';fireEvent.click(screen.getByRole('button',{name:'☆ Favorite'}));await screen.findByRole('button',{name:'☆ Favorite'});
+ await act(async()=>complete({error:null}));
+ expect(screen.queryByText('Calculation saved to your history.')).toBeNull();expect(state.writes).toHaveLength(1);expect(state.writes[0]).toMatchObject({value:{user_id:'a'}});
+});
+
+it('does not apply prior-owner favorite success after silent owner recovery',async()=>{
+ state.plan='pro';state.count=0;state.favorite=false;render(<CalculatorAccountActions {...props}/>);await screen.findByRole('button',{name:'☆ Favorite'});
+ state.defer=true;fireEvent.click(screen.getByRole('button',{name:'☆ Favorite'}));await waitFor(()=>expect(state.writes).toHaveLength(1));const complete=state.pending!;
+ state.id='b';fireEvent.click(screen.getByRole('button',{name:'Save calculation'}));await screen.findByRole('button',{name:'Save calculation'});
+ await act(async()=>complete({error:null}));
+ expect(screen.getByRole('button',{name:'☆ Favorite'})).toBeTruthy();expect(screen.queryByText('Added to favorites.')).toBeNull();expect(state.writes).toHaveLength(1);expect(state.writes[0]).toMatchObject({value:{user_id:'a'}});
+});
