@@ -3,6 +3,14 @@ on:
   pull_request:
     paths:
       - 'tests/api-schema/**'
+      - 'docs/architecture/proposals/API-RLS-HELPER-EXECUTE.sql'
+      - 'supabase/migrations/002_b4_billing.sql'
+      - 'supabase/migrations/007_b9_ai.sql'
+      - 'supabase/migrations/008_b10_admin_factory.sql'
+      - 'supabase/migrations/008b_b10_alert_automation.sql'
+      - 'supabase/migrations/013_production_rpc_privilege_hardening_v2.sql'
+      - 'supabase/migrations/035_split_overlapping_write_policies.sql'
+      - 'supabase/migrations/038_client_account_billing_privileges.sql'
       - 'supabase/migrations/001_b3_accounts.sql'
       - 'supabase/migrations/003_b5_business.sql'
       - 'supabase/migrations/004_b6_builder.sql'
@@ -36,5 +44,7 @@ jobs:
         run: npm ci
       - name: Reject incomplete sanitized catalog evidence
         run: node --test tests/api-schema/validate.test.mjs
+      - name: Test expanded dependency graph and effective privileges
+        run: node tests/api-schema/privileges.postgres.mjs
       - name: Test guarded proposal and HTTP recovery in disposable PostgreSQL
         run: node tests/api-batch/atomic-postgres.mjs --http
