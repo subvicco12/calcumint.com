@@ -1,0 +1,86 @@
+import {spawn} from 'node:child_process';
+import {mkdtemp, mkdir, writeFile, readFile, readdir, rm} from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {startDraftPreview} from './draft-preview.mjs';
+const artifacts=process.env.DRAFT_PREVIEW_ARTIFACTS||'/workspace/review-artifacts/draft-experience-2026-10-20';
+await mkdir(artifacts,{recursive:true});
+const downloads=path.join(artifacts,'browser-downloads');await rm(downloads,{recursive:true,force:true});await mkdir(downloads,{recursive:true});
+const profile=await mkdtemp(path.join(os.tmpdir(),'draft-chromium-'));
+await mkdir(path.join(profile,'Default'),{recursive:true});await writeFile(path.join(profile,'Default','Preferences'),JSON.stringify({profile:{default_content_setting_values:{automatic_downloads:1}},download:{prompt_for_download:false}}));
+const server=await startDraftPreview(4181);
+const browser=spawn(process.env.CHROMIUM_PATH||'/usr/bin/chromium',['--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--disable-component-update','--no-first-run','--remote-debugging-address=127.0.0.1','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{stdio:['ignore','ignore','pipe']});
+let diagnostic='';browser.stderr.on('data',v=>diagnostic+=v);
+const deadline=Date.now()+30000;
+let endpoint;
+while(Date.now()<deadline){const match=diagnostic.match(/DevTools listening on (ws:\/\/[^\s]+)/);if(match){endpoint=match[1];break;}await new Promise(r=>setTimeout(r,30));}
+let socket;const report={browser:'Chromium headless via native CDP; synthetic local reviewer',limitations:['Headless Chromium viewport/touch emulation; no physical-device verification.','Export clicks are paced 350 ms apart to avoid Chromium automatic-download burst throttling.'],checks:[],network:[]};
+try {
+ assert(endpoint,'Chromium debugging endpoint');
+ const target=await (await fetch(`http://127.0.0.1:${new URL(endpoint).port}/json/new?about:blank`,{method:'PUT'})).json();
+ socket=new WebSocket(target.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{socket.onopen=resolve;socket.onerror=reject;});
+ let id=0;const pending=new Map();const events=[];
+ socket.onmessage=({data})=>{const m=JSON.parse(data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);if(m.error)p.reject(Error(m.error.message));else p.resolve(m.result);}else{events.push(m);if(m.method.startsWith('Browser.download'))(report.downloadEvents??=[]).push(m);if(m.method==='Fetch.requestPaused'){const url=m.params.request.url;const allowed=url.startsWith('http://127.0.0.1:4181/')||url.startsWith('data:')||url.startsWith('blob:http://127.0.0.1:4181/');report.network.push({url,allowed});send(allowed?'Fetch.continueRequest':'Fetch.failRequest',allowed?{requestId:m.params.requestId}:{requestId:m.params.requestId,errorReason:'BlockedByClient'}).catch(()=>{});}}};
+ function send(method,params={}){return new Promise((resolve,reject)=>{const seq=++id;pending.set(seq,{resolve,reject});socket.send(JSON.stringify({id:seq,method,params}));});}
+ async function js(expression){const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text+': '+r.exceptionDetails.exception?.description);return r.result.value;}
+ async function until(expression,label){const end=Date.now()+20000;while(Date.now()<end){if(await js(expression))return;await new Promise(r=>setTimeout(r,40));}throw Error(`Timed out: ${label}`);}
+ let lastDownloadRequest=0;
+ async function click(text){if(text.startsWith('Export ')){/* Chromium limits rapid download bursts; pace requests independently of DOM readiness. */const remaining=350-(Date.now()-lastDownloadRequest);if(remaining>0)await new Promise(resolve=>setTimeout(resolve,remaining));lastDownloadRequest=Date.now();}const point=await js(`(()=>{const b=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()===${JSON.stringify(text)});if(!b)throw Error('Missing button '+${JSON.stringify(text)});if(b.disabled)throw Error('Disabled button '+${JSON.stringify(text)});b.scrollIntoView({behavior:'instant',block:'center'});const r=b.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...point});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...point});}
+ async function select(label,value){await js(`(()=>{const el=[...document.querySelectorAll('select')].find(e=>e.labels?.[0]?.textContent.includes(${JSON.stringify(label)}));if(!el)throw Error('Missing select');Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(el,${JSON.stringify(value)});el.dispatchEvent(new Event('change',{bubbles:true}))})()`);}
+ const expected={205:'0.3',206:'0',232:'9007199254740994',233:'7',435:'5',441:'1',481:'5',484:'55.5556',487:'6',498:'240',517:'86',518:'45',529:'4',531:'686.47'};
+ await send('Runtime.enable');await send('Network.enable');await send('Network.setExtraHTTPHeaders',{headers:{Authorization:'Basic '+Buffer.from('reviewer:'+server.draftPreviewAccessToken).toString('base64')}});await send('Fetch.enable',{patterns:[{urlPattern:'*'}]});
+ await send('Page.enable');await send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads,eventsEnabled:true});
+ await send('Page.navigate',{url:'http://127.0.0.1:4181/tests/draft-preview/'});
+ await until(`!![...document.querySelectorAll('select')].find(e=>e.labels?.[0]?.textContent.includes('DRAFT calculator'))`,'preview UI');
+ for(const width of [320,1280]){
+  await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});
+  for(const masterId of [205,206,232,233,435,441,481,484,487,498,517,518,529,531]){
+   await select('DRAFT calculator',String(masterId));await click('Calculate');
+   await until(`!!document.querySelector('.result-box')`,'result '+masterId);
+   const state=await js(`({text:document.querySelector('.result-box').textContent,overflow:document.documentElement.scrollWidth>innerWidth+1,unlabelled:[...document.querySelectorAll('input,select')].filter(e=>!e.labels?.length&&!e.getAttribute('aria-label')).length})`);
+   assert(state.text.length>0,`nonempty result ${masterId}`);assert(state.text.replaceAll(',','').includes(expected[masterId]),`example output ${masterId}: ${state.text}`);assert(!state.overflow,`horizontal overflow ${masterId} at ${width}`);assert.equal(state.unlabelled,0,'labels');
+   report.checks.push({masterId,width,result:state.text,labels:true,noHorizontalOverflow:true});
+  }
+  if(width===320){
+   await send('Emulation.setTouchEmulationEnabled',{enabled:true});await js(`[...document.querySelectorAll('button')].find(b=>b.textContent==='Calculate').scrollIntoView({behavior:'instant',block:'center'})`);const point=await js(`(()=>{const r=[...document.querySelectorAll('button')].find(b=>b.textContent==='Calculate').getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()`);await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{...point,radiusX:1,radiusY:1,force:1}]});await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});await until(`!!document.querySelector('.result-box')`,'touch calculate');report.checks.push({viewport:320,chromiumEmulatedTouch:true});await send('Emulation.setTouchEmulationEnabled',{enabled:false});
+  }
+  await writeFile(path.join(artifacts,`draft-preview-${width}.png`),Buffer.from((await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})).data,'base64'));
+ }
+ async function input(key,value){await js(`(()=>{const e=document.querySelector('[data-field="${key}"] input');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,${JSON.stringify(value)});e.dispatchEvent(new Event('input',{bubbles:true}));})()`);}
+ for(const [masterId,left,right,expectedResult] of [[205,'-9007199254740993.1','0.1','-9007199254740993'],[232,'-9007199254740993','-1','-9007199254740994']]){
+ await select('DRAFT calculator',String(masterId));await input('left',left);await input('right',right);await click('Calculate');await until(`!!document.querySelector('.result-box')`,'signed exact result');const result=await js(`document.querySelector('.result-box strong').textContent.replaceAll(',','')`);assert.equal(result,expectedResult);report.checks.push({masterId,signedExactResult:result});}
+ await select('DRAFT calculator','205');await click('Calculate');
+ const before=await js(`document.querySelector('.result-box').textContent`);
+ await js(`(()=>{const e=document.querySelector('input');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(e,'');e.dispatchEvent(new Event('input',{bubbles:true}));e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+ await click('Calculate');await until(`!!document.querySelector('[role=alert]')`,'invalid field alert');await until(`document.activeElement===document.querySelector('[data-field=left] input')`,'error focus');report.checks.push({invalidFieldFocus:true});
+ await click('Load example');await click('Calculate');await until(`!!document.querySelector('.result-box')`,'valid recovery');assert.equal(await js(`document.querySelector('.result-box').textContent`),before);report.checks.push({invalidFieldRecovery:true});
+ await js(`document.querySelector('[data-field=left] input').focus()`);
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});assert.equal(await js(`document.activeElement.id`),'draft-205-operation','keyboard Tab advances to operation control');report.checks.push({keyboardTabFocus:true,tabTarget:'draft-205-operation'});
+ const mutations={205:['left','0.2'],206:['x','60'],232:['left','9007199254740994'],233:['seed','43'],435:['value','40'],441:['value','192'],481:['dailyEnergyTargetKwh','24'],484:['batteryEnergyAddedKwh','60'],487:['rainfallMm','50'],498:['value','240'],517:['assessments','70'],518:['awakeMinutes','10'],529:['powerWatts','600'],531:['bodyMass','80']};
+ async function captured(slot){return js(`JSON.parse([...document.querySelectorAll('.calculator-scenarios details')].find(d=>d.querySelector('summary')?.textContent.startsWith('Complete snapshot ${slot}')).querySelector('pre').textContent)`);}
+ async function downloaded(ending,prior){const end=Date.now()+10000;while(Date.now()<end){const names=await readdir(downloads);const name=names.find(n=>n.endsWith(ending)&&!prior.includes(n));if(name)return{name,content:await readFile(path.join(downloads,name),'utf8')};await new Promise(r=>setTimeout(r,40));}throw Error('Missing actual download '+ending+'; page: '+await js(`document.body.innerText`));}
+ for(const masterId of Object.keys(mutations).map(Number)){
+  await select('DRAFT calculator',String(masterId));await select('Preview plan','pro');await click('Calculate');await until(`!!document.querySelector('.result-box')`,'workflow result '+masterId);
+  const original=await js(`document.querySelector('.result-box').textContent`);
+  await click('Retain snapshot locally');
+  // Remount the form through another calculator, then reopen the retained engine snapshot.
+  await select('DRAFT calculator',String(masterId===205?206:205));await select('DRAFT calculator',String(masterId));await click('Reopen saved snapshot');await until(`!!document.querySelector('.result-box')`,'reopen '+masterId);assert.equal(await js(`document.querySelector('.result-box').textContent`),original);
+  if(masterId===205){await js(`window.__beforeDraftReload=true`);await send('Page.reload');await until(`!window.__beforeDraftReload&&!![...document.querySelectorAll('button')].find(b=>b.textContent==='Reopen saved snapshot')`,'reload');await click('Reopen saved snapshot');await until(`!!document.querySelector('.result-box')`,'persistent reload');assert.equal(await js(`document.querySelector('.result-box').textContent`),original);await select('Preview plan','pro');}
+  await js(`document.querySelector('.calculator-scenarios details').open=true`);await click('Capture baseline A');const baseline=await captured('A');
+  const prior=await readdir(downloads);await click('Export calculation JSON');await click('Export calculation CSV');
+  const jsonFile=await downloaded('-draft.json',prior),csvFile=await downloaded('-draft.csv',prior);const json=JSON.parse(jsonFile.content);assert.deepEqual(json.input,baseline.input);assert.deepEqual(json.output,baseline.output);assert.equal(json.calculatorVersion,1);assert(csvFile.content.startsWith('"section","field","value"'));assert(csvFile.content.includes('"output",'));assert(csvFile.content.length>40);const csvRows=csvFile.content.split('\n').map(line=>[...line.matchAll(/"((?:[^"]|"")*)"(?:,|$)/g)].map(match=>match[1].replaceAll('""','"')));for(const section of ['input','output'])for(const [field,value] of Object.entries(baseline[section])){const row=csvRows.find(cells=>cells[0]===section&&cells[1]===field);assert(row,`CSV ${masterId} ${section}.${field}`);const raw=typeof value==='object'&&value!==null?JSON.stringify(value):String(value);assert.equal(row[2],typeof value==='string'&&/^[\s]*[=+\-@]/u.test(value)?"'"+raw:raw,`raw CSV ${masterId} ${field}`);}
+  if(masterId===205)assert.equal(json.output.result,'0.3');if(masterId===232)assert.equal(json.output.result,'9007199254740994');if(masterId===517){assert(Array.isArray(json.input.assessments));assert.equal(json.output.average,86);}if(masterId===531)assert.equal(json.output.weightNewtons,70*9.80665);
+  await input(...mutations[masterId]);await click('Calculate');await until(`!!document.querySelector('.result-box')`,'changed scenario '+masterId);await click('Capture scenario B');const changed=await captured('B');assert.notDeepEqual(changed.input,baseline.input);assert.deepEqual(await captured('A'),baseline,'immutable baseline after editing '+masterId);
+  await click('Load example');await click('Calculate');await until(`!!document.querySelector('.result-box')`,'scenario C '+masterId);await click('Capture scenario C');assert.deepEqual(await captured('A'),baseline);assert.deepEqual((await captured('C')).input,baseline.input);assert.deepEqual((await captured('C')).output,baseline.output);assert.deepEqual(await captured('B'),changed,'immutable B after C');assert(await js(`[...document.querySelectorAll('.calculator-scenarios details')].filter(d=>d.querySelector('summary')?.textContent.startsWith('Complete snapshot')).every(d=>d.querySelector('p').textContent.endsWith('version 1'))`),'all captures use version 1');
+  if(masterId===205){const priorScenarios=await readdir(downloads);await click('Export scenario set JSON');await click('Export scenario set CSV');const scenarioJson=await downloaded('-scenarios.json',priorScenarios),scenarioCsv=await downloaded('-scenarios.csv',priorScenarios);const payload=JSON.parse(scenarioJson.content);assert.deepEqual(payload.scenarios.map(row=>row.slot),['A','B','C']);assert.equal(payload.baseline,'A');assert.equal(payload.scenarios[0].output.result,'0.3');assert.equal(payload.scenarios[1].output.result,'0.4');assert(scenarioCsv.content.includes('0.4'));report.checks.push({scenarioDownloads:[scenarioJson.name,scenarioCsv.name],distinctResults:true});}
+  if(masterId===517){for(const width of [320,1280]){await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});assert(await js(`document.documentElement.scrollWidth<=innerWidth+1`),'grade scenarios overflow '+width);await writeFile(path.join(artifacts,`draft-grade-scenarios-${width}.png`),Buffer.from((await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})).data,'base64'));} }
+  report.checks.push({masterId,width:1280,saveReopen:true,calculationDownloads:[jsonFile.name,csvFile.name],downloadMatchesCapturedInputAndOutput:true,scenarioSlots:['A','B','C'],baselineImmutableAfterChangedInput:true,outputChanged:JSON.stringify(changed.output)!==JSON.stringify(baseline.output),changedField:mutations[masterId][0],changedOutput:changed.output,defaultOutput:baseline.output});
+ }
+ assert.equal((await readdir(downloads)).filter(name=>name.endsWith('-draft.json')).length,14,'14 real calculation JSON downloads');assert.equal((await readdir(downloads)).filter(name=>name.endsWith('-draft.csv')).length,14,'14 real calculation CSV downloads');
+ assert(report.network.every(r=>r.allowed),'all browser requests stay on loopback');
+ report.downloadEvents=events.filter(event=>event.method==='Browser.downloadWillBegin'||event.method==='Browser.downloadProgress');report.passed=true;
+ await writeFile(path.join(artifacts,'browser-regressions.json'),JSON.stringify(report,null,2));
+ console.log(`PASS ${report.checks.length} browser checks; artifacts: ${artifacts}`);
+} catch(error){report.passed=false;report.error=String(error.stack||error);await writeFile(path.join(artifacts,'browser-regressions.json'),JSON.stringify(report,null,2));throw error;}
+finally{socket?.close();browser.kill('SIGTERM');await server.close();await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});}
