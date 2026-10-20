@@ -2,11 +2,16 @@ name: Atomic embed PostgreSQL proposal
 on:
   pull_request:
     paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'src/lib/builder/**'
+      - 'src/lib/supabase/admin.ts'
       - 'docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql'
       - 'docs/architecture/proposals/ATOMIC-API-QUOTA.sql'
       - 'src/lib/api/auth*'
       - 'tests/api-embed/**'
       - 'src/app/api/embed/**'
+      - 'src/lib/embeds/**'
       - 'src/app/api/v1/batch/**'
       - 'src/components/public-embed-calculator*'
       - 'supabase/migrations/005_b7_delivery.sql'
@@ -23,5 +28,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
+      - name: Install locked dependencies for real HTTP transport tests
+        run: npm ci
       - name: Test guarded proposal in disposable PostgreSQL
         run: node tests/api-embed/atomic-postgres.mjs

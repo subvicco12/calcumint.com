@@ -2,6 +2,10 @@ name: Atomic batch PostgreSQL proposal
 on:
   pull_request:
     paths:
+      - 'package.json'
+      - 'package-lock.json'
+      - 'src/lib/builder/**'
+      - 'src/lib/supabase/admin.ts'
       - 'docs/architecture/proposals/ATOMIC-BATCH-JOB.sql'
       - 'docs/architecture/proposals/ATOMIC-API-QUOTA.sql'
       - 'tests/api-batch/**'
@@ -21,5 +25,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
-      - name: Test guarded proposal in disposable PostgreSQL
-        run: node tests/api-batch/atomic-postgres.mjs
+          cache: npm
+      - name: Install locked dependencies for real route transport tests
+        run: npm ci
+      - name: Test guarded proposal and HTTP recovery in disposable PostgreSQL
+        run: node tests/api-batch/atomic-postgres.mjs --http

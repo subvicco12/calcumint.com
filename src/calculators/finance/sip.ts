@@ -19,8 +19,16 @@ export function sipFutureValue(monthlyContribution: number, annualReturnPercent:
   if(!Number.isInteger(termMonths)||termMonths<1||termMonths>1200)throw new Error("Term months must be a positive integer");
   if(timing!=="beginning"&&timing!=="end")throw new Error("Unsupported contribution timing");
   const r = annualReturnPercent / 100 / 12;
-  if (r === 0) return monthlyContribution * termMonths;
-  const ordinary = monthlyContribution * (((1 + r) ** termMonths - 1) / r);
+  if (r === 0) {
+    const value = monthlyContribution * termMonths;
+    if (!Number.isFinite(value)) throw new Error("SIP future value exceeds supported numeric range");
+    return value;
+  }
+  const factor = ((1 + r) ** termMonths - 1) / r;
+  // Positive deposits and supported positive accumulation factors imply a
+  // positive annuity sum. Cancellation can erase it even for schema-valid r.
+  if (monthlyContribution > 0 && factor <= 0) throw new Error("SIP annuity factor lost numeric precision");
+  const ordinary = monthlyContribution * factor;
   const value=timing === "beginning" ? ordinary * (1 + r) : ordinary;
   if(!Number.isFinite(value))throw new Error("SIP future value exceeds supported numeric range");
   return value;
