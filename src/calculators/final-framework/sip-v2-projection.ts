@@ -71,7 +71,13 @@ export function serializeSipV2DraftJson(projection: SipV2DraftProjection): strin
 }
 export function serializeSipV2DraftCsv(projection: SipV2DraftProjection): string {
   validateProjection(projection);
-  const cell = (value: unknown) => `"${(Object.is(value, -0) ? '-0' : String(value ?? '')).replaceAll('"', '""')}"`;
+  const cell = (value: unknown) => {
+    // Match existing calculation CSV policy: protect text cells while preserving
+    // signed raw numbers. Quoting alone does not disable spreadsheet formulas.
+    const text = Object.is(value, -0) ? '-0' : String(value ?? '');
+    const safe = typeof value === 'string' && /^[\s]*[=+\-@]/u.test(text) ? `'${text}` : text;
+    return `"${safe.replaceAll('"', '""')}"`;
+  };
   const rows: unknown[][] = [
     ['calculatorId', 'slug', 'version', 'reviewStatus', 'locale', 'currency'],
     [projection.identity.id, projection.identity.slug, projection.identity.version, projection.reviewStatus, projection.context.locale, projection.context.currency],

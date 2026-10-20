@@ -68,3 +68,11 @@ describe('SIP v2 draft projections', () => {
     }
   });
 });
+it('neutralizes formula-like context text in CSV without changing numeric signs or JSON',()=>{
+ for(const currency of ['=1+1',' +1','-1','@SUM(1,1)','\t=1+1']){
+  const projection=buildSipV2DraftProjection({monthlyContribution:100,annualReturnPercent:-12,termMonths:2,contributionTiming:'end'},{currency});
+  expect(serializeSipV2DraftCsv(projection)).toContain(`"'${currency}"`);
+  expect(JSON.parse(serializeSipV2DraftJson(projection)).context.currency).toBe(currency);
+  expect(serializeSipV2DraftCsv(projection)).toContain('"-1"');
+ }
+});
