@@ -36,3 +36,7 @@ Reviewed the selected domain queues in `data/catalog/crosswalk-2026-10-20/{cross
 | 442 Currency | No approved identity, rate provenance, rate-date or conversion contract supplied. |
 
 Every listed queue case has `implementationAuthorized: false`. These ten rows remain missing linkage/scope evidence, not ten proven missing engines. No alias was inferred, and no duplicate engine was created. Parent owns the shared unresolved-scope ledger.
+
+## Final-head attestation correction
+
+The first automatic CI correctly rejected the now-stale source-file SHA-256 in `contract-evidence.json` (master-identity-contract-evidence.test.ts). The existing documented collector regenerated the evidence: the only JSON change is the technology source hash for the existing aspect-ratio contract in the same source module. No alias, scope, authority or output evidence changed. The Technology suite plus five contract-evidence regressions pass (94 checks). A final corrected-head automatic CI is required; the failing check was preserved, not weakened or skipped. The consolidated security-branch ledger records the original engineering head; the PR's final-head CI evidence records this digest-only follow-up.
