@@ -27,7 +27,7 @@ describe("embed session integration contracts", () => {
     expect(component).toContain("X-Embed-Session");
     expect(component).toContain("/session");
     expect(component).toContain("setSessionAvailable(false)");
-    expect(component).toContain("disabled={!sessionAvailable}");
+    expect(component).toMatch(/disabled=\{!sessionAvailable\s*\|\|\s*submittingLead\}/);
     expect(component).toContain('addEventListener("visibilitychange", onResume)');
     expect(component).toContain('addEventListener("focus", onResume)');
     expect(component).toContain("renewalRef.current = pending");

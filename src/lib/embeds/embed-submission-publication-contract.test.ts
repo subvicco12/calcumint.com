@@ -17,7 +17,13 @@ describe("public embed submission publication boundary", () => {
       expect(source).toContain('.eq("organization_id", config.organization_id)');
       expect(source).toContain('.eq("status", "published")');
       expect(source).toContain('!calculator?.published_version');
-      expect(source.indexOf('!calculator?.published_version')).toBeLessThan(source.indexOf('.insert('));
+      const writeIndex=route === "leads" ? source.indexOf('admin.rpc("capture_verified_embed_lead_v1"') : source.indexOf('.insert(');
+      expect(writeIndex).toBeGreaterThan(-1);
+      expect(source.indexOf('!calculator?.published_version')).toBeLessThan(writeIndex);
+      if(route === "leads"){
+        expect(source).not.toContain('.from("embed_leads")');
+        expect(source).not.toContain('.from("lead_consents")');
+      }
     });
   }
 });
