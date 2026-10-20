@@ -34,7 +34,7 @@ All 14 v1 drafts covered: **205, 206, 232, 233, 435, 441, 481, 484, 487, 498, 51
 
 ## Validation
 
-- 386 focused unit/integration/certification tests across 19 files passed.
+- 389 focused unit/integration/certification tests across 20 files passed.
 - Disposable pinned PostgreSQL: 46 assertions in four PASS groups, actual repository 001/010/029/033 migrations with synthetic auth/platform grants. Covers mixed RPC/direct quota concurrency, paid limits, exact/conflicting retry, owner binding, malformed snapshots, rollback, stale isolation, downgrade ordering and scenario immutability.
 - Browser: five pagination groups at 320px/1280px, 126 records per source across all 14 calculators, keyboard/focus/retry and stale owner/plan cases. Evidence: `/workspace/review-artifacts/atomic-history-pagination-2026-10-20/browser/` (workspace artifact, not a public link).
 - Typecheck, affected lint and one local `next build --webpack` passed. Path-scoped PostgreSQL CI now runs legacy evidence and the new atomic fixture; mandatory CI remains enabled.
@@ -49,3 +49,5 @@ All 14 v1 drafts covered: **205, 206, 232, 233, 435, 441, 481, 484, 487, 498, 51
 5. Rollback planning must retain immutable rows and request IDs, stop new writers before contract changes and never restore unsafe count→insert fallbacks. Owners must decide receipt retention/tombstones if stronger post-deletion replay guarantees are required.
 
 No new engine, mapping, registration, certification or publication. All 836 waiver authorities, 210 source reviews, 540 mapping decisions, 12 HOLD dispositions and 38 specialist reviews remain UNKNOWN absent authentic evidence. Mortgage/BMI/SIP v2 specialist/version gates remain blocked.
+
+Initial exact-head CI passed all five storage/evidence jobs but found one obsolete source-text regression expecting the removed inline scenario REST payload. The correction asserts owned, version-bound source copying in the RPC proposal and prohibits restoring a REST insert fallback. Three legacy snapshot-contract tests are included in the 389-test focused total; application/SQL behavior did not change. Final-head CI is rerun automatically for this demonstrated failure.
