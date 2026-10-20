@@ -6,7 +6,7 @@ import {requestAccountRecovery} from '@/lib/account-recovery';
 import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
 import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 import {getPlanEntitlements,type CalcuMintPlan} from "@/lib/entitlements";
 import {useCalculatorPlan} from "@/components/use-calculator-plan";
@@ -82,7 +82,9 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   const accountOwner=useRef<string|null>(null);
   const [scenarioOwner,setScenarioOwner]=useState(observedAuthOwner.current);
   const retryButton=useRef<HTMLButtonElement>(null),firstAction=useRef<HTMLButtonElement>(null),saveAction=useRef<HTMLButtonElement>(null),loginLink=useRef<HTMLAnchorElement>(null),restoreRetryFocus=useRef(false);
-  useEffect(()=>{
+  // Consume focus requests in their DOM commit before a later interaction can
+  // enqueue another retry and be mistaken for this render's request.
+  useLayoutEffect(()=>{
     if(!restoreRetryFocus.current||(!readFailure&&signedIn===null))return;
     restoreRetryFocus.current=false;
     if(document.activeElement!==document.body)return;

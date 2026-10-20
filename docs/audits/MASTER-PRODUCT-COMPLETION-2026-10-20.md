@@ -69,3 +69,9 @@ Four contracts added;14 owner-authorized DRAFT definitions total. Grade and plan
 Cumulative from #1454 `d4dfb14472036ff1d8334c828a136e25b3012e16`: fourteen owner-authorized DRAFT v1 calculators now have a loopback-only synthetic review harness using shared Final results, inputs, A/B/C scenarios, local immutable capture/reopen and raw JSON/CSV exports. No public registry, route, sitemap, certification or publication is added. See `DRAFT-EXPERIENCE-INTEGRATION-2026-10-20.md` and the complete540-row overlay for applicability and limitations.
 
 460 focused tests (60 new UI/history regressions), typecheck, affected lint and one webpack build pass. Browser viewport/download evidence is recorded on the draft PR. Physical Android/TalkBack and real account storage remain UNVERIFIED; local reviewer scope is not authentication. Registered-only optional Goal Solver/sensitivity remain unavailable for unregistered drafts. External approvals remain UNKNOWN and RELEASE HOLD is unchanged.
+
+## Private DRAFT acceptance checkpoint
+
+Baseline #1455 `6e697b98dc4d59d46a382a9e05f3c9a977bbb115` retained. This batch adds per-run loopback reviewer authorization, fixes a deterministically reproduced retry-focus race, and verifies all14 DRAFTs against actual public surfaces and isolated PostgreSQL history/scenario RLS. See `DRAFT-ACCEPTANCE-2026-10-20.md` for VERIFIED/PARTIAL/BLOCKED/UNKNOWN boundaries. Authenticated DRAFT UI/reopen and certified-allowlist analytics remain unavailable; deployed authentication/RLS and physical Android/TalkBack remain UNKNOWN/UNVERIFIED.
+
+No new eligible engines established:14 implemented owner-authorized drafts plus231 remaining Work entries (173 specialist/financial,50 methodology/scope,8 existing/ambiguous). No mappings, certifications or publications approved. RELEASE HOLD and all unknown external evidence remain unchanged.

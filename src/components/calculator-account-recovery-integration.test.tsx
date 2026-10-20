@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {afterEach,expect,it,vi} from 'vitest';
+import {Profiler} from 'react';
 const state=vi.hoisted(()=>{process.env.NEXT_PUBLIC_SUPABASE_URL='https://synthetic.invalid';process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY='synthetic';return {userId:'synthetic-owner',deferCounts:false,pendingCounts:[] as ((value:unknown)=>void)[],plan:'pro',profileError:true,accountError:true,authError:false,authFailure:null as unknown,profileReads:0,callbacks:new Set<(event:string,session:{user:{id:string}}|null)=>void>()};});
 vi.mock('@/lib/supabase/browser',()=>({createSupabaseBrowserClient:()=>({auth:{getUser:async()=>({data:{user:state.authError||!state.userId?null:{id:state.userId}},error:state.authError?{}:state.authFailure}),onAuthStateChange:(cb:(event:string,session:{user:{id:string}}|null)=>void)=>{state.callbacks.add(cb);return {data:{subscription:{unsubscribe:()=>state.callbacks.delete(cb)}}};}},from:(table:string)=>{const query={select:()=>query,eq:()=>query,maybeSingle:async()=>{if(table==='profiles'){state.profileReads++;return {data:{plan:state.plan},error:state.profileError?{}:null};}return {data:null,error:state.accountError?{}:null};},then:(resolve:(value:unknown)=>unknown)=>(state.deferCounts?new Promise(r=>state.pendingCounts.push(r)):Promise.resolve({count:0,error:state.accountError?{}:null})).then(resolve)};return query;}})}));
 import {CalculatorAccountActions} from './calculator-account-actions';
@@ -97,4 +98,16 @@ it('discards old captures as soon as a changed owner is verified even if account
  state.accountError=false;fireEvent.click(screen.getByRole('button',{name:'Retry account actions'}));
  await screen.findByRole('button',{name:'Export JSON'});
  expect(screen.queryByRole('table',{name:'Captured engine outputs'})).toBeNull();
+});
+
+it('restores retry focus when retry starts before the preceding commit passive effects',async()=>{
+ // Profiler runs during commit, before passive effects from the newly shown
+ // retry control. This makes the interaction timing deterministic.
+ let retried=false;
+ render(<Profiler id="early-retry" onRender={()=>{
+  const retry=screen.queryByRole('button',{name:'Retry account actions'});
+  if(retry&&!retried){retried=true;retry.focus();retry.click();}
+ }}><App/></Profiler>);
+ await waitFor(()=>expect(retried).toBe(true));
+ await waitFor(()=>expect(document.activeElement).toBe(screen.getByRole('button',{name:'Retry account actions'})));
 });
