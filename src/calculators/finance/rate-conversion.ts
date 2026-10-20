@@ -1,3 +1,4 @@
+import { planningIndependentGoldens } from "./planning-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -28,7 +29,7 @@ export function convertAnnualRate(input:Input):Output{
   return{annualNominalPercent:roundTo(effectiveToNominalPercent(input.annualEffectivePercent,input.compoundsPerYear),8),annualEffectivePercent:roundTo(input.annualEffectivePercent,8),compoundsPerYear:input.compoundsPerYear};
 }
 export const rateConversionCalculator:CalculatorDefinition<Input,Output>={
-  id:"finance.rate-conversion",slug:"effective-interest-rate-calculator",title:"Nominal & Effective Interest Rate Calculator",category:"finance-investment",version:1,riskClass:"financial",reviewStatus:"draft",inputSchema,calculate:(input)=>convertAnnualRate(input),
+  id:"finance.rate-conversion",slug:"effective-interest-rate-calculator",title:"Nominal & Effective Interest Rate Calculator",category:"finance-investment",version:1,riskClass:"financial",reviewStatus:"draft",inputSchema,goldenTests:planningIndependentGoldens.rateConversion,calculate:(input)=>convertAnnualRate(input),
   formulas:[{id:"effective",expression:"EAR=(1+r_nominal/m)^m-1",description:"Converts a nominal annual rate compounded m times per year to its effective annual rate."},{id:"nominal",expression:"r_nominal=m((1+EAR)^(1/m)-1)",description:"Converts an effective annual rate to the equivalent nominal annual rate for m compounding periods."}],
   sources:[],examples:[],jurisdictions:[{country:"GLOBAL"}],ui:{simpleInputKeys:["mode","compoundsPerYear"],advancedInputKeys:["annualNominalPercent","annualEffectivePercent"]},relatedCalculators:["compound-interest-calculator","term-deposit-calculator","sip-calculator"],journeyMemberships:["invest-for-a-goal"]
 };
