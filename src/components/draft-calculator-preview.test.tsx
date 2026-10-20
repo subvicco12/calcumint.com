@@ -62,3 +62,88 @@ it.each(draftPreviewDefinitions)('completes private workflow for $masterId acros
  expect((screen.getByRole('button',{name:'Export calculation JSON'}) as HTMLButtonElement).disabled).toBe(true);
 });
 it('associates invalid grade-scale inputs with their error context',()=>{render(<DraftCalculatorPreview initialMasterId={517}/>);fireEvent.change(screen.getByLabelText('Minimum score'),{target:{value:''}});fireEvent.click(screen.getByRole('button',{name:'Calculate'}));const minimum=screen.getByLabelText('Minimum score');expect(minimum.getAttribute('aria-invalid')).toBe('true');expect(minimum.getAttribute('aria-describedby')).toBe('draft-517-scale-hint');expect(document.getElementById(minimum.getAttribute('aria-describedby')!)?.textContent).toContain('supported value');});
+
+import { act, waitFor } from '@testing-library/react';
+import type { DraftAuthenticatedPersistence } from '@/lib/draft-persistence-contract';
+function account(overrides: Partial<DraftAuthenticatedPersistence> = {}): DraftAuthenticatedPersistence {
+ return { ownerId: 'account-a', plan: 'pro', records: [], save: vi.fn(async () => ({id:'saved-a'})), reopen: vi.fn(async () => ({masterId:205,snapshot:calculateDraftPreview(205,getDefinition(205).initialInput).snapshot})), ...overrides };
+}
+function getDefinition(id:number){return draftPreviewDefinitions.find(item=>item.masterId===id)!;}
+it.each(draftPreviewDefinitions.flatMap(definition => (['pro','business'] as const).map(plan => ({...definition,plan}))))('saves and reopens authenticated $masterId on $plan using captured math',async definition=>{
+ const expected=calculateDraftPreview(definition.masterId,definition.initialInput);
+ const persistence=account({plan:definition.plan,reopen:vi.fn(async()=>({masterId:definition.masterId,snapshot:expected.snapshot}))});
+ const download=vi.fn();render(<DraftCalculatorPreview persistence={persistence} initialMasterId={definition.masterId} download={download}/>);
+ expect(screen.queryByLabelText('Preview plan')).toBeNull();expect(screen.queryByText('Retain snapshot locally')).toBeNull();
+ fireEvent.click(screen.getByRole('button',{name:'Calculate'}));fireEvent.click(screen.getByRole('button',{name:'Save to account'}));
+ await waitFor(()=>expect(screen.getByText('Snapshot saved to your account.')).toBeTruthy());
+ expect(persistence.save).toHaveBeenCalledWith(definition.masterId,expected.snapshot,expect.any(String));
+ fireEvent.click(screen.getByRole('button',{name:'Load example'}));fireEvent.click(screen.getByRole('button',{name:'Reopen account snapshot'}));
+ await waitFor(()=>expect(screen.getByText('Reopened saved account snapshot.')).toBeTruthy());
+ fireEvent.click(screen.getByRole('button',{name:'Export calculation JSON'}));expect(JSON.parse(download.mock.calls[0][1])).toEqual(JSON.parse(JSON.stringify(expected.snapshot)));
+});
+it('locks concurrent account saves and retains the same request after uncertain failure',async()=>{
+ let reject!:(reason:Error)=>void;const save=vi.fn().mockImplementationOnce(()=>new Promise((_resolve,no)=>{reject=no;})).mockResolvedValue({id:'retry'});
+ render(<DraftCalculatorPreview persistence={account({save})}/>);fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
+ const button=screen.getByRole('button',{name:'Save to account'});fireEvent.click(button);fireEvent.click(button);expect(save).toHaveBeenCalledTimes(1);
+ await act(async()=>reject(Error('uncertain')));expect(screen.getByRole('alert').textContent).toContain('not confirmed');expect(document.querySelector('.result-box')).toBeTruthy();
+ fireEvent.click(button);await waitFor(()=>expect(save).toHaveBeenCalledTimes(2));expect(save.mock.calls[0][2]).toBe(save.mock.calls[1][2]);
+});
+it('does not overwrite edits when a reopen finishes late and rejects unsupported saved versions',async()=>{
+ let resolve!:(value:unknown)=>void;
+ const reference={id:'old',masterId:205,source:'history' as const,label:'Old capture',createdAt:'2026-10-20'};
+ const reopen=vi.fn().mockImplementationOnce(()=>new Promise(yes=>{resolve=yes;})).mockResolvedValue({masterId:205,snapshot:{...calculateDraftPreview(205,getDefinition(205).initialInput).snapshot,calculatorVersion:999}});
+ render(<DraftCalculatorPreview persistence={account({records:[reference],reopen})}/>);
+ fireEvent.change(screen.getByLabelText('Saved account snapshot'),{target:{value:'history:old'}});fireEvent.click(screen.getByRole('button',{name:'Reopen account snapshot'}));
+ fireEvent.change(screen.getByLabelText('Left decimal'),{target:{value:'7'}});
+ await act(async()=>resolve({masterId:205,snapshot:calculateDraftPreview(205,getDefinition(205).initialInput).snapshot}));expect((screen.getByLabelText('Left decimal') as HTMLInputElement).value).toBe('7');expect(document.querySelector('.result-box')).toBeNull();
+ fireEvent.click(screen.getByRole('button',{name:'Reopen account snapshot'}));await waitFor(()=>expect(screen.getByRole('alert').textContent).toContain('saved version'));expect((screen.getByLabelText('Left decimal') as HTMLInputElement).value).toBe('7');
+});
+it('resets account state immediately and revokes exports when authoritative plan changes',()=>{
+ const persistence=account();const view=render(<DraftCalculatorPreview persistence={persistence}/>);fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,plan:'free'}}/>);expect((screen.getByRole('button',{name:'Export calculation JSON'}) as HTMLButtonElement).disabled).toBe(true);expect(document.querySelector('.result-box')).toBeTruthy();
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,ownerId:'account-b'}}/>);expect(document.querySelector('.result-box')).toBeNull();
+});
+it('shows Free save limitations and preserves the capture after a failed account save',async()=>{
+ render(<DraftCalculatorPreview persistence={account({plan:'free',save:vi.fn(async()=>{throw Error('atomic quota unavailable');})})}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Calculate'}));const before=document.querySelector('.result-box')!.textContent;
+ fireEvent.click(screen.getByRole('button',{name:'Save to account'}));await waitFor(()=>expect(screen.getByRole('alert').textContent).toContain('not confirmed'));
+ expect(document.querySelector('.result-box')!.textContent).toBe(before);expect(screen.getByText(/atomic quota enforcement/)).toBeTruthy();expect(document.activeElement).toBe(screen.getByRole('alert'));
+});
+it('ignores pending account responses after account and calculator switches',async()=>{
+ let resolve!:(value:{id:string})=>void;const persistence=account({save:vi.fn(()=>new Promise<{id:string}>(yes=>{resolve=yes;}))});
+ const view=render(<DraftCalculatorPreview persistence={persistence}/>);fireEvent.click(screen.getByRole('button',{name:'Calculate'}));fireEvent.click(screen.getByRole('button',{name:'Save to account'}));
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,ownerId:'different'}}/>);await act(async()=>resolve({id:'old-owner-save'}));expect(screen.queryByText('Snapshot saved to your account.')).toBeNull();expect(screen.getAllByRole('option').some(option=>option.getAttribute('value')==='old-owner-save')).toBe(false);
+ fireEvent.click(screen.getByRole('button',{name:'Calculate'}));fireEvent.click(screen.getByRole('button',{name:'Save to account'}));fireEvent.change(screen.getByLabelText('DRAFT calculator'),{target:{value:'206'}});await act(async()=>resolve({id:'old-master-save'}));expect(screen.queryByText('Snapshot saved to your account.')).toBeNull();expect(document.querySelector('.result-box')).toBeNull();
+});
+it('does not announce a stale save after the authoritative plan changes',async()=>{
+ let resolve!:(value:{id:string})=>void;const persistence=account({save:vi.fn(()=>new Promise<{id:string}>(yes=>{resolve=yes;}))});
+ const view=render(<DraftCalculatorPreview persistence={persistence}/>);fireEvent.click(screen.getByRole('button',{name:'Calculate'}));fireEvent.click(screen.getByRole('button',{name:'Save to account'}));
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,plan:'free'}}/>);await act(async()=>resolve({id:'pre-downgrade'}));expect(screen.queryByText('Snapshot saved to your account.')).toBeNull();expect((screen.getByRole('button',{name:'Export calculation JSON'}) as HTMLButtonElement).disabled).toBe(true);
+});
+it('selects an owned deep-linked snapshot without automatically reopening and fails closed for unknown references',async()=>{
+ const reference={id:'linked',masterId:205,source:'history' as const,label:'Linked capture',createdAt:'2026-10-20'};
+ const persistence=account({records:[reference],initialRecordId:'linked'});const view=render(<DraftCalculatorPreview persistence={persistence}/>);
+ expect((screen.getByLabelText('Saved account snapshot') as HTMLSelectElement).value).toBe('history:linked');expect(persistence.reopen).not.toHaveBeenCalled();
+ fireEvent.click(screen.getByRole('button',{name:'Reopen account snapshot'}));await waitFor(()=>expect(persistence.reopen).toHaveBeenCalledWith(reference));
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,ownerId:'unknown-reference-account',initialRecordId:'unknown'}}/>);
+ expect((screen.getByRole('button',{name:'Reopen account snapshot'}) as HTMLButtonElement).disabled).toBe(true);
+});
+it('preserves history and scenario references with the same UUID as separate selections',async()=>{
+ const history={id:'shared-uuid',masterId:205,source:'history' as const,label:'History copy',createdAt:'2026-10-20'};
+ const scenario={...history,source:'scenario' as const,label:'Scenario copy'};
+ const reopen=vi.fn(async (record:typeof history|typeof scenario)=>({masterId:205,snapshot:calculateDraftPreview(205,{...getDefinition(205).initialInput,left:record.source==='scenario'?'8':'3'}).snapshot}));
+ const persistence=account({records:[history,scenario],reopen});render(<DraftCalculatorPreview persistence={persistence}/>);
+ const selector=screen.getByLabelText('Saved account snapshot');
+ const option=within(selector).getByRole('option',{name:/Scenario copy/});
+ fireEvent.change(selector,{target:{value:option.getAttribute('value')}});fireEvent.click(screen.getByRole('button',{name:'Reopen account snapshot'}));
+ await waitFor(()=>expect((screen.getByLabelText('Left decimal') as HTMLInputElement).value).toBe('8'));expect(persistence.reopen).toHaveBeenCalledWith(scenario);
+ const historyOption=within(selector).getByRole('option',{name:/History copy/});fireEvent.change(selector,{target:{value:historyOption.getAttribute('value')}});fireEvent.click(screen.getByRole('button',{name:'Reopen account snapshot'}));
+ await waitFor(()=>expect((screen.getByLabelText('Left decimal') as HTMLInputElement).value).toBe('3'));expect(persistence.reopen).toHaveBeenLastCalledWith(history);
+});
+it('requires a source for ambiguous deep-linked IDs and selects an explicit scenario source',()=>{
+ const history={id:'same',masterId:205,source:'history' as const,label:'History',createdAt:'2026-10-20'};const scenario={...history,source:'scenario' as const,label:'Scenario'};
+ const persistence=account({records:[history,scenario],initialRecordId:'same'});const view=render(<DraftCalculatorPreview persistence={persistence}/>);
+ expect((screen.getByRole('button',{name:'Reopen account snapshot'}) as HTMLButtonElement).disabled).toBe(true);
+ view.rerender(<DraftCalculatorPreview persistence={{...persistence,ownerId:'explicit-source',initialRecordSource:'scenario'}}/>);
+ expect((screen.getByLabelText('Saved account snapshot') as HTMLSelectElement).value).toBe('scenario:same');expect(persistence.reopen).not.toHaveBeenCalled();
+});

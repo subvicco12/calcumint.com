@@ -3,6 +3,11 @@ on:
   pull_request:
     paths:
       - 'tests/draft-preview/**'
+      - 'src/app/account/drafts/**'
+      - 'src/lib/draft-*'
+      - 'src/lib/account-persistence.ts'
+      - 'src/components/authenticated-draft-workspace*'
+      - 'src/components/draft-calculator-preview*'
       - 'src/calculators/**/draft-master-*.ts'
       - 'src/calculators/core/draft-exact-decimal.ts'
       - 'src/calculators/final-framework/draft-*.ts'

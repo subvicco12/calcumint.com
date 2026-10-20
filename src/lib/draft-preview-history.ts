@@ -7,7 +7,7 @@ function canonical(value:unknown):string{
  if(value&&typeof value==="object")return `{${Object.keys(value).sort().map(k=>JSON.stringify(k)+":"+canonical((value as Record<string,unknown>)[k])).join(",")}}`;
  return JSON.stringify(value);
 }
-function validate(id:number,raw:unknown){
+export function validateDraftPreviewCapture(id:number,raw:unknown){
  if(!raw||typeof raw!=="object"||Array.isArray(raw))throw new Error("Invalid local capture");
  const record=copyCalculationData({},raw as Record<string,unknown>).output;
  if(Object.keys(record).sort().join(",")!=="calculatorSlug,calculatorVersion,input,output")throw new Error("Unexpected captured fields");
@@ -20,7 +20,7 @@ function validate(id:number,raw:unknown){
 }
 /** Synthetic local reviewer storage only, not server authentication or an account persistence writer. */
 export function saveDraftPreviewCapture(storage:Storage,owner:string,id:number,snapshot:CalculationSnapshot):void{
- const slot=key(owner,id);const checked=validate(id,snapshot);const payload=JSON.stringify({schemaVersion:1,ownerScope:owner,masterId:id,snapshot:checked.snapshot});
+ const slot=key(owner,id);const checked=validateDraftPreviewCapture(id,snapshot);const payload=JSON.stringify({schemaVersion:1,ownerScope:owner,masterId:id,snapshot:checked.snapshot});
  if(payload.length>LIMIT)throw new Error("Local capture exceeds the 1 MiB preview storage limit");
  storage.setItem(slot,payload);
 }
@@ -31,5 +31,5 @@ export function readDraftPreviewCapture(storage:Storage,owner:string,id:number){
  if(!parsed||typeof parsed!=="object"||Array.isArray(parsed))throw new Error("Invalid local capture envelope");
  const e=copyCalculationData({},parsed as Record<string,unknown>).output;
  if(Object.keys(e).sort().join(",")!=="masterId,ownerScope,schemaVersion,snapshot"||e.schemaVersion!==1||e.ownerScope!==owner||e.masterId!==id)throw new Error("Local capture owner/schema/identity mismatch");
- return validate(id,e.snapshot);
+ return validateDraftPreviewCapture(id,e.snapshot);
 }

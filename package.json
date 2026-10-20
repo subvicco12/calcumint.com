@@ -21,7 +21,8 @@
     "admin:publication-preflight": "node scripts/publication-recovery-preflight.mjs",
     "dev:draft-preview": "node scripts/draft-preview.mjs",
     "test:draft-preview-browser": "node scripts/test-draft-preview-browser.mjs",
-    "test:draft-persistence-postgres": "node tests/draft-preview/persistence.postgres.mjs"
+    "test:draft-persistence-postgres": "node tests/draft-preview/persistence.postgres.mjs",
+    "test:authenticated-draft-browser": "node scripts/test-authenticated-draft-browser.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
