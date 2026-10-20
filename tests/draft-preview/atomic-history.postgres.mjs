@@ -1,4 +1,5 @@
-// Disposable PostgreSQL only. Actual 001/010/029/033 plus guarded proposal.
+// Disposable PostgreSQL/PostgREST only: actual 001/002/008/010/029/033/038,
+// explicitly fixture-repaired historical 011, and guarded atomic proposal.
 // Supabase auth and platform grants are modeled; deployed roles are not attested.
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
@@ -15,15 +16,23 @@ const rpc=(id,output='{"nested":{"value":3},"list":[1,null,true]}')=>`SELECT pub
 const direct=(user,id=randomUUID())=>`INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data) VALUES('${id}','${user}','synthetic',1,'{"input":1}','{"nested":{"value":3},"list":[1,null,true]}');`;
 const count=id=>sql(owner(id,'SELECT count(*) FROM public.calculation_history;'));
 const barrier=async label=>{for(let n=0;n<200;n++){if(await sql(`SELECT count(*) FROM pg_stat_activity WHERE application_name='${label}' AND wait_event='PgSleep';`)==='1')return;await new Promise(r=>setTimeout(r,10));}throw Error('Transaction barrier failed');};
-let created=false,net=false;
+const rest=`${name}-rest`;
+const restImage='postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401';
+let created=false,net=false,restCreated=false;
 try{
  await cmd(['image','inspect',image,'--format','{{.Id}}']);
  await cmd(['network','create','--internal',network]);net=true;
  await cmd(['run','-d','--rm','--pull=never','--name',name,'--network',network,'--label','calcumint.atomic-history-fixture=true','--tmpfs','/var/lib/postgresql/data','-e','POSTGRES_HOST_AUTH_METHOD=trust',image]);created=true;
  for(let i=0;;i++){try{await sql('SELECT 1;');break;}catch(e){if(i>=60)throw e;await new Promise(r=>setTimeout(r,250));}}
- await sql(`CREATE ROLE anon;CREATE ROLE authenticated;CREATE SCHEMA auth;CREATE TABLE auth.users(id uuid PRIMARY KEY,raw_user_meta_data jsonb DEFAULT '{}'::jsonb);CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$SELECT nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;GRANT USAGE ON SCHEMA public,auth TO anon,authenticated;`);
- for(const m of ['001_b3_accounts','010_b7_pro_workspace','029_account_rls_auth_initplan','033_pro_workspace_rls_auth_initplan'])await sql(await readFile(`supabase/migrations/${m}.sql`,'utf8'));
+ await sql(`CREATE ROLE anon;CREATE ROLE authenticated;CREATE ROLE service_role;CREATE SCHEMA auth;CREATE TABLE auth.users(id uuid PRIMARY KEY,raw_user_meta_data jsonb DEFAULT '{}'::jsonb);CREATE FUNCTION auth.uid() RETURNS uuid LANGUAGE sql STABLE AS $$SELECT coalesce(nullif(current_setting('request.jwt.claim.sub',true),''),nullif(current_setting('request.jwt.claims',true),'')::jsonb->>'sub')::uuid$$;GRANT USAGE ON SCHEMA public,auth TO anon,authenticated;`);
+ for(const m of ['001_b3_accounts','002_b4_billing','008_b10_admin_factory','010_b7_pro_workspace','029_account_rls_auth_initplan','033_pro_workspace_rls_auth_initplan','038_client_account_billing_privileges'])await sql(await readFile(`supabase/migrations/${m}.sql`,'utf8'));
  await sql(`GRANT SELECT ON public.profiles TO authenticated;GRANT SELECT,INSERT,UPDATE,DELETE ON public.calculation_history,public.calculation_projects,public.saved_scenarios TO authenticated;INSERT INTO auth.users(id) VALUES('${a}'),('${b}'),('${c}');`);
+ const legacyQuota=await readFile('supabase/migrations/011_b8_free_save_quotas.sql','utf8');
+ await assert.rejects(sql(legacyQuota),/unterminated dollar-quoted string/);
+ assert.equal(legacyQuota.split('end $;').length,2);
+ // Fixture-only syntax repair; unchanged historical 011 is a deployment blocker.
+ await sql(legacyQuota.replace('end $;',()=> 'end $$;'));
+ console.log('PASS reproduced unchanged historical 011 syntax failure; exercised terminator-repaired fixture-only copy plus actual 002/008/038 (production application unknown)');
  const proposal=await readFile('docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql','utf8');
  await assert.rejects(sql(proposal),/UNAPPLIED_ATOMIC_ACCOUNT_HISTORY_PROPOSAL/);
  // Even clients that continue after errors cannot execute DDL in the aborted transaction.
@@ -113,5 +122,12 @@ try{
  assert.equal(await sql(owner(b,`SELECT count(*) FROM public.saved_scenarios;`)),'1');
  await sql(owner(b,`DELETE FROM public.saved_scenarios WHERE id='${scenarioId}';`));
  console.log('PASS atomic scenario copy/replay, owned history/project binding, name-only snapshot immutability, downgrade serialization, downgraded read/delete');
+ await sql("CREATE ROLE history_fixture_authenticator LOGIN NOINHERIT PASSWORD 'synthetic-fixture-only';GRANT anon,authenticated TO history_fixture_authenticator;GRANT SELECT ON public.platform_admins TO authenticated;");
+ await cmd(['image','inspect',restImage,'--format','{{.Id}}']);
+ await cmd(['run','-d','--rm','--pull=never','--name',rest,'--network',network,'-e',`PGRST_DB_URI=postgresql://history_fixture_authenticator:synthetic-fixture-only@${name}:5432/postgres`,'-e','PGRST_DB_SCHEMAS=public','-e','PGRST_DB_ANON_ROLE=anon','-e','PGRST_JWT_SECRET=synthetic-history-transport-jwt-secret-not-production',restImage]);restCreated=true;
+ const address=await cmd(['inspect','--format','{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}',rest]);assert.match(address,/^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)[0-9.]+$/);
+ const restUrl=`http://${address}:3000`;
+ for(let n=0;;n++){try{const reply=await fetch(restUrl,{signal:AbortSignal.timeout(1000)});if(!reply.ok)throw Error('PostgREST not ready');break;}catch(error){if(n>=60)throw error;await new Promise(r=>setTimeout(r,250));}}
+ await new Promise((resolve,reject)=>{const child=spawn(process.execPath,['node_modules/vitest/vitest.mjs','run','--config','tests/draft-preview/vitest.history.config.ts'],{stdio:'inherit',env:{...env,HISTORY_TEST_CONTAINER:name,HISTORY_TEST_REST_URL:restUrl},timeout:120000});child.on('error',reject);child.on('close',code=>code===0?resolve():reject(Error(`History HTTP acceptance failed: ${code}`)));});
  console.log('Disposable proposal acceptance passed. Proposal remains guarded and unapplied; production owners/grants/auth are unverified.');
-}finally{try{if(created)await cmd(['rm','-f',name]);}finally{if(net)await cmd(['network','rm',network]);}}
+}finally{try{if(restCreated)await cmd(['rm','-f',rest]);}finally{try{if(created)await cmd(['rm','-f',name]);}finally{if(net)await cmd(['network','rm',network]);}}}
