@@ -16,13 +16,14 @@ const state = vi.hoisted(() => ({
   leadError: false,
   eventError: false,
   rpcError: false,
+  rpcCode: null as string|null,
   rpcPayload: null as Record<string,unknown>|null,
   writes: [] as string[]
 }));
 
 vi.mock("@/lib/supabase/admin", () => ({
   createSupabaseAdminClient: () => ({
-    async rpc(_name:string,args:Record<string,unknown>){state.rpcPayload=args;state.writes.push("atomic_lead_rpc");return {data:state.consentError||state.leadError||state.rpcError?null:{status:"created",lead_id:configId},error:state.consentError||state.leadError||state.rpcError?{code:"PGRST202"}:null};},
+    async rpc(_name:string,args:Record<string,unknown>){state.rpcPayload=args;state.writes.push("atomic_lead_rpc");return {data:state.consentError||state.leadError||state.rpcError||state.rpcCode?null:{status:"created",lead_id:configId},error:state.consentError||state.leadError||state.rpcError||state.rpcCode?{code:state.rpcCode??"PGRST202"}:null};},
     from(table: string) {
       const filters: Array<[string, unknown]> = [];
       const chain = {
@@ -47,7 +48,7 @@ vi.mock("@/lib/supabase/admin", () => ({
 function token(expiresAt = Date.now() + 5 * 60_000) { return signEmbedSession({ ...claims, expiresAt }, secret); }
 function request(path: string, body: unknown, session: string | null = token()) {
   return new NextRequest(`https://calcumint.com/api/embed/${key}/${path}`, {
-    method: "POST", headers: { "content-type": "application/json", "Idempotency-Key":"66666666-6666-4666-8666-666666666666", ...(session ? { "x-embed-session": session } : {}) }, body: JSON.stringify(body)
+    method: "POST", headers: { "content-type": "application/json", "Idempotency-Key":"66666666-6666-4666-8666-666666666666", ...(session ? { "x-embed-session": session } : {}) }, body: JSON.stringify(path === "leads" && body && typeof body === "object" ? {consentText:"I agree",privacyUrl:null,...body} : body)
   });
 }
 const context = { params: Promise.resolve({ key }) };
@@ -61,7 +62,7 @@ beforeEach(() => {
   state.leadError = false;
   state.eventError = false;
   state.writes.length = 0;
-  state.rpcError=false;state.rpcPayload=null;
+  state.rpcError=false;state.rpcCode=null;state.rpcPayload=null;
 });
 afterEach(() => { delete process.env.EMBED_SESSION_SECRET; vi.useRealTimers(); });
 
@@ -203,6 +204,18 @@ describe("public embed API HTTP behavior (mock database, no writes)", () => {
   it("rejects a missing idempotency key before storage writes",async()=>{
     const {POST}=await import("@/app/api/embed/[key]/leads/route");const req=request("leads",{consented:true,email:"example@example.com"});req.headers.delete("Idempotency-Key");
     expect((await POST(req,context)).status).toBe(400);expect(state.writes).toEqual([]);
+  });
+  it("requires displayed consent evidence and forwards its exact literals",async()=>{
+    const {POST}=await import("@/app/api/embed/[key]/leads/route");
+    expect((await POST(request("leads",{consented:true,email:"example@example.com",consentText:undefined}),context)).status).toBe(400);
+    expect(state.writes).toEqual([]);
+    expect((await POST(request("leads",{consented:true,email:"example@example.com",consentText:"I agree",privacyUrl:"https://example.invalid/privacy"}),context)).status).toBe(200);
+    expect(state.rpcPayload?.p_payload).toMatchObject({consentText:"I agree",privacyUrl:"https://example.invalid/privacy"});
+  });
+  it("requires reload for stale displayed terms instead of splitting persistence",async()=>{
+    const {POST}=await import("@/app/api/embed/[key]/leads/route");state.rpcCode="PT412";
+    const reply=await POST(request("leads",{consented:true,email:"example@example.com"}),context);
+    expect(reply.status).toBe(409);expect(await reply.json()).toMatchObject({code:"CONSENT_CHANGED"});expect(state.writes).toEqual(["atomic_lead_rpc"]);
   });
   it("returns failure when a standalone event insert fails", async () => {
     const { POST } = await import("@/app/api/embed/[key]/events/route");

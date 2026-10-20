@@ -8,7 +8,7 @@ const image='postgres:16-alpine@sha256:721873c34ceb9f8d8fc265984940dc982404c105f
 const cmd=(args,input='')=>new Promise((resolve,reject)=>{const c=spawn('docker',args,{stdio:['pipe','pipe','pipe'],timeout:30000});let out='',err='';c.stdout.on('data',v=>out+=v);c.stderr.on('data',v=>err+=v);c.on('error',reject);c.on('close',n=>n===0?resolve(out.trim()):reject(new Error(err||out)));c.stdin.on('error',reject);c.stdin.end(input);});
 const sql=q=>cmd(['exec','-i',name,'psql','-h','127.0.0.1','-U','postgres','-X','-qAt','-v','ON_ERROR_STOP=1'],q);
 const a='00000000-0000-4000-8000-000000000001',b='00000000-0000-4000-8000-000000000002',config='00000000-0000-4000-8000-000000000003';
-const payload={name:'Synthetic',email:'synthetic@example.invalid',consented:true,input:{x:1},output:{answer:2}};
+const payload={consentText:'Synthetic consent',privacyUrl:null,name:'Synthetic',email:'synthetic@example.invalid',consented:true,input:{x:1},output:{answer:2}};
 const quote=v=>`'${JSON.stringify(v).replaceAll("'","''")}'::jsonb`;
 const call=(id,{body=payload,org=a,version=1,expires="(extract(epoch FROM now())*1000+300000)::bigint"}={})=>`SET ROLE service_role; SELECT public.capture_verified_embed_lead_v1('synthetic_public_key_123456', '${config}','${org}','${a}',${version},${expires},'${id}',${quote(body)});`;
 const reset=()=>sql('TRUNCATE public.embed_lead_receipts,public.lead_consents,public.embed_leads,public.embed_events,public.webhook_deliveries;');
@@ -56,6 +56,29 @@ try {
  await test('paused config and changed publication reject captures',async()=>{await sql(`UPDATE public.embed_configs SET status='paused';`);await assert.rejects(sql(call(randomUUID())));await sql("UPDATE public.embed_configs SET status='active';UPDATE public.custom_calculators SET status='draft';");try{await assert.rejects(sql(call(randomUUID())));}finally{await sql("UPDATE public.custom_calculators SET status='published';");}assert.equal(await state(),'[0, 0, 0, 0]');});
  await test('client roles cannot execute RPC or access receipts; RLS isolates leads',async()=>{await sql(call(randomUUID()));for(const role of ['anon','authenticated']){await assert.rejects(sql(call(randomUUID()).replace('SET ROLE service_role',`SET ROLE ${role}`)),/permission denied/);await assert.rejects(sql(`SET ROLE ${role}; SELECT * FROM public.embed_lead_receipts;`),/permission denied/);}
  assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${b}';SELECT count(*) FROM public.embed_leads;`),'0');assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${a}';SELECT count(*) FROM public.embed_leads;`),'1');});
+ await test('new capture cannot record terms the stale widget did not display',async()=>{
+  await sql("UPDATE public.embed_configs SET consent_text='Changed terms',privacy_url='https://example.invalid/new-privacy';");
+  try {await assert.rejects(sql(call(randomUUID())),/Consent evidence changed/);assert.equal(await state(),'[0, 0, 0, 0]');}
+  finally {await sql("UPDATE public.embed_configs SET consent_text='Synthetic consent',privacy_url=NULL;");}
+ });
+ await test('committed retry retains its exact original consent after current terms change',async()=>{
+  const id=randomUUID();await sql(call(id));
+  await sql("UPDATE public.embed_configs SET consent_text='Changed terms';");
+  try {assert.equal(JSON.parse(await sql(call(id))).status,'duplicate');assert.equal(await sql('SELECT consent_text FROM public.lead_consents;'),'Synthetic consent');}
+  finally {await sql("UPDATE public.embed_configs SET consent_text='Synthetic consent';");}
+ });
+ await test('corrupted tenant, payload or consent cannot acknowledge a duplicate',async()=>{
+  const id=randomUUID();await sql(call(id));
+  for(const [alter,restore] of [
+   [`UPDATE public.embed_leads SET organization_id='${b}';`,`UPDATE public.embed_leads SET organization_id='${a}';`],
+   ["UPDATE public.embed_leads SET email='corrupted@example.invalid';","UPDATE public.embed_leads SET email='synthetic@example.invalid';"],
+   ["UPDATE public.lead_consents SET consent_text='Never displayed';","UPDATE public.lead_consents SET consent_text='Synthetic consent';"]
+  ]) {await sql(alter);try{await assert.rejects(sql(call(id)),/Incomplete or conflicting lead receipt/);}finally{await sql(restore);}}
+ });
+ await test('RPC rejects non-object calculation captures and unknown payload fields',async()=>{
+  for(const body of [{...payload,input:[]},{...payload,output:'not an object'},{...payload,extraPersonalData:'not allowlisted'}])await assert.rejects(sql(call(randomUUID(),{body})),/Invalid lead payload/);
+  assert.equal(await state(),'[0, 0, 0, 0]');
+ });
  await test('existing API quota and Business owner gates remain independent and enforced sequentially',async()=>{
   const key='00000000-0000-4000-8000-000000000009';
   await sql(`INSERT INTO public.business_api_keys(id,organization_id,name,key_prefix,key_hash,monthly_quota,rate_limit_per_minute,created_by) VALUES('${key}','${a}','Synthetic','test','synthetic-hash',1,1,'${a}');`);
