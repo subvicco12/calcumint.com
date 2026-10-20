@@ -18,12 +18,19 @@
     "test:production": "npm run lint && npm run typecheck && npm test && npm run test:launch && npm run test:certification && npm run build",
     "growthos:heartbeat": "node scripts/growthos-heartbeat.mjs",
     "admin:bootstrap-owner": "node scripts/bootstrap-platform-owner.mjs",
-    "admin:publication-preflight": "node scripts/publication-recovery-preflight.mjs"
+    "admin:publication-preflight": "node scripts/publication-recovery-preflight.mjs",
+    "dev:draft-preview": "node scripts/draft-preview.mjs",
+    "test:draft-preview-browser": "node scripts/test-draft-preview-browser.mjs",
+    "test:draft-persistence-postgres": "node tests/draft-preview/persistence.postgres.mjs",
+    "test:authenticated-draft-browser": "node scripts/test-authenticated-draft-browser.mjs",
+    "test:atomic-history-postgres": "node tests/draft-preview/atomic-history.postgres.mjs",
+    "test:draft-pagination-browser": "node scripts/test-draft-pagination-browser.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.0",
     "clsx": "^2.1.1",
+    "decimal.js": "10.6.0",
     "next": "16.3.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -42,6 +49,7 @@
     "tailwindcss": "^4.1.13",
     "@tailwindcss/postcss": "^4.1.13",
     "typescript": "^5.9.2",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "vite": "7.3.7"
   }
 }

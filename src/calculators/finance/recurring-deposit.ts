@@ -1,3 +1,4 @@
+import { recurringDepositIndependentGoldens } from "./recurring-deposit-independent-goldens";
 import { z } from "zod";
 import { roundTo } from "../precision";
 import type { CalculatorDefinition } from "../types";
@@ -45,6 +46,7 @@ export const recurringDepositCalculator: CalculatorDefinition<Input, Output> = {
   riskClass: "financial",
   reviewStatus: "certified",
   inputSchema,
+  goldenTests: recurringDepositIndependentGoldens,
   calculate: ({ monthlyDeposit, annualInterestPercent, termMonths, depositTiming }) => {
     const maturityValue = roundTo(recurringDepositFutureValue(monthlyDeposit, annualInterestPercent, termMonths, depositTiming), 2);
     const depositedAmount = roundTo(monthlyDeposit * termMonths, 2);
