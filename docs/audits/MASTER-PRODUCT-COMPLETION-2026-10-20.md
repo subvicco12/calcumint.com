@@ -63,3 +63,9 @@ Migration 009 absence, unresolved production 029 equivalence, duplicate historic
 Cumulative from draft #1453 `42464b5c201ee22bf2d14e0c11951abb5c593ffa`, preserving #1452 and its ten DRAFT definitions. New206/517/518/531 definitions remain unregistered, uncertified and unpublished. The complete540-row implementation overlay is `data/catalog/owner-authorized-draft-acceptance-2026-10-20.json`; registry/linkage/publication authority remains distinct. See `docs/audits/OWNER-APPROVED-FOUR-CONTRACTS-2026-10-20.md` for numerical and review limits.
 
 Four contracts added;14 owner-authorized DRAFT definitions total. Grade and planetary force reuse existing mathematical engines rather than claiming four newly invented mathematical engines. Cumulative400 focused tests include127 new tests and15 certification guard tests. Typecheck, affected lint and one local `next build --webpack` passed. Passing checks are not certification or release authority.
+
+## Fourteen-calculator private experience checkpoint
+
+Cumulative from #1454 `d4dfb14472036ff1d8334c828a136e25b3012e16`: fourteen owner-authorized DRAFT v1 calculators now have a loopback-only synthetic review harness using shared Final results, inputs, A/B/C scenarios, local immutable capture/reopen and raw JSON/CSV exports. No public registry, route, sitemap, certification or publication is added. See `DRAFT-EXPERIENCE-INTEGRATION-2026-10-20.md` and the complete540-row overlay for applicability and limitations.
+
+460 focused tests (60 new UI/history regressions), typecheck, affected lint and one webpack build pass. Browser viewport/download evidence is recorded on the draft PR. Physical Android/TalkBack and real account storage remain UNVERIFIED; local reviewer scope is not authentication. Registered-only optional Goal Solver/sensitivity remain unavailable for unregistered drafts. External approvals remain UNKNOWN and RELEASE HOLD is unchanged.
