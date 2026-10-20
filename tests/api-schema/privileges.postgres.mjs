@@ -65,6 +65,12 @@ try {
  await sql(`CREATE TRIGGER privilege_failure AFTER INSERT ON public.${table} FOR EACH ROW EXECUTE FUNCTION public.privilege_failure();`);try{await assert.rejects(sql(call()),/synthetic late fault/);assert.equal(await state(),expected);}finally{await sql(`DROP TRIGGER privilege_failure ON public.${table};`);}}
  await sql('DROP FUNCTION public.privilege_failure();');
  console.log('PASS after 038: service batch submit/recover/duplicate quota, embed capture/duplicate, client execute denial, owner/outsider RLS, late receipt rollback');
+ // Membership proposal acceptance uses its own disposable database so its triggers
+ // cannot influence this catalog fixture. Keep this lane on the native CI command.
+ await new Promise((resolve,reject)=>{
+  const child=spawn(process.execPath,['tests/api-schema/membership.postgres.mjs'],{stdio:'inherit',timeout:120000});
+  child.on('error',reject);child.on('close',code=>code===0?resolve():reject(new Error(`Membership acceptance exited ${code}`)));
+ });
  const catalog=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));validateCatalog(catalog);verifyDriftDetection(catalog,'both');
  for(const privilege of ['TRUNCATE','TRIGGER','REFERENCES']){await sql(`GRANT ${privilege} ON public.profiles TO authenticated;`);const drift=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));assert.throws(()=>validateCatalog(drift),/prohibited/);await sql(`REVOKE ${privilege} ON public.profiles FROM authenticated;`);}
  await sql('GRANT CREATE ON SCHEMA public TO anon;');const schemaDrift=JSON.parse(await sql(await readFile('tests/api-schema/catalog.sql','utf8')));assert.throws(()=>validateCatalog(schemaDrift),/schema CREATE/);await sql('REVOKE CREATE ON SCHEMA public FROM anon;');
