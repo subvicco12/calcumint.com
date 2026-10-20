@@ -103,4 +103,51 @@ describe("embedded calculator browser lifecycle", () => {
     expect((getByLabelText('Email') as HTMLInputElement).value).toBe('changed@example.com');
   });
 
+  it("does not render an old capture completion in a new embed scope",async()=>{
+    let complete!:(value:unknown)=>void;
+    const pending=new Promise(resolve=>{complete=resolve;});
+    vi.stubGlobal('fetch',vi.fn((url:string)=>url.endsWith('/leads')?pending:Promise.resolve({ok:true})));
+    const view=render(<PublicEmbedCalculator {...props}/>);
+    fireEvent.change(view.getByLabelText('Email'),{target:{value:'previous@example.invalid'}});fireEvent.click(view.getByRole('checkbox'));
+    await act(async()=>{fireEvent.submit(view.getByRole('button',{name:'Submit'}).closest('form')!);});
+    view.rerender(<PublicEmbedCalculator {...props} publicKey="different-scope" sessionToken="different-token"/>);
+    await act(async()=>{complete({ok:true,json:async()=>({ok:true})});await pending;});
+    expect(view.queryByText('Thanks — your details were submitted.')).toBeNull();
+    expect((view.getByLabelText('Email') as HTMLInputElement).value).toBe('');
+  });
+
+  it("binds displayed terms and privacy URL and requires reload when they change remotely",async()=>{
+    const fetchMock=vi.fn((url:string,options?:RequestInit)=>{void options;return Promise.resolve(url.endsWith('/leads')?{ok:false,status:409,json:async()=>({code:'CONSENT_CHANGED'})}:{ok:true});});
+    vi.stubGlobal('fetch',fetchMock);
+    const view=render(<PublicEmbedCalculator {...props} privacyUrl="https://example.invalid/privacy"/>);
+    fireEvent.change(view.getByLabelText('Email'),{target:{value:'synthetic@example.invalid'}});fireEvent.click(view.getByRole('checkbox'));
+    await act(async()=>{fireEvent.submit(view.getByRole('button',{name:'Submit'}).closest('form')!);});
+    expect(view.getByRole('alert').textContent).toContain('Consent information changed');
+    expect((view.getByRole('button',{name:'Submit'}) as HTMLButtonElement).disabled).toBe(true);
+    const capture=fetchMock.mock.calls.find(([url])=>url.endsWith('/leads'))!;
+    expect(JSON.parse(String(capture[1]?.body))).toMatchObject({consentText:'I consent',privacyUrl:'https://example.invalid/privacy'});
+  });
+  it("drops a previous sensitive retry when the displayed definition or consent scope changes",async()=>{
+    const fetchMock=vi.fn((url:string,options?:RequestInit)=>{void options;return url.endsWith('/leads')?Promise.reject(new Error('Lost reply')):Promise.resolve({ok:true});});
+    vi.stubGlobal('fetch',fetchMock);
+    const view=render(<PublicEmbedCalculator {...props}/>);
+    fireEvent.change(view.getByLabelText('Email'),{target:{value:'previous@example.invalid'}});fireEvent.click(view.getByRole('checkbox'));
+    await act(async()=>{fireEvent.submit(view.getByRole('button',{name:'Submit'}).closest('form')!);});
+    expect(view.getByRole('button',{name:'Retry original submission'})).toBeTruthy();
+    view.rerender(<PublicEmbedCalculator {...props} consentText="New displayed terms"/>);
+    expect((view.getByLabelText('Email') as HTMLInputElement).value).toBe('');
+    expect(view.queryByRole('button',{name:'Retry original submission'})).toBeNull();
+  });
+
+  it("preserves same-version token renewal drafts but isolates identical definitions at a new version",()=>{
+    vi.stubGlobal('fetch',vi.fn(()=>Promise.resolve({ok:true})));
+    const token=(version:number,expiresAt:number)=>`${btoa(JSON.stringify({configId:'config',calculatorId:'calculator',organizationId:'org',version,expiresAt}))}.synthetic`;
+    const view=render(<PublicEmbedCalculator {...props} sessionToken={token(1,100)}/>);
+    fireEvent.change(view.getByLabelText('Email'),{target:{value:'current@example.invalid'}});
+    view.rerender(<PublicEmbedCalculator {...props} sessionToken={token(1,200)}/>);
+    expect((view.getByLabelText('Email') as HTMLInputElement).value).toBe('current@example.invalid');
+    view.rerender(<PublicEmbedCalculator {...props} sessionToken={token(2,300)}/>);
+    expect((view.getByLabelText('Email') as HTMLInputElement).value).toBe('');
+  });
+
 });

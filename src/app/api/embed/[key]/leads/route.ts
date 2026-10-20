@@ -14,7 +14,7 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
   if(!requestId.success)return NextResponse.json({error:"A stable Idempotency-Key UUID is required"},{status:400});
   const admin = createSupabaseAdminClient();
   if (!admin) return NextResponse.json({ error: "Not configured" }, { status: 503 });
-  const parsed = publicLeadSchema.safeParse(await request.json().catch(() => null));
+  const parsed = publicLeadSchema.extend({consentText:z.string().min(1).max(1000),privacyUrl:z.string().url().max(2048).nullable().default(null)}).safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Invalid lead" }, { status: 400 });
   const { data: config, error: configError } = await admin.from("embed_configs").select("id,organization_id,calculator_id,status,lead_capture_enabled,lead_fields,consent_text,privacy_url").eq("public_key", key).eq("status", "active").maybeSingle();
   if (configError) return NextResponse.json({error:"Lead storage unavailable"},{status:503});
@@ -35,6 +35,7 @@ export async function POST(request: NextRequest, { params }: RouteProps) {
       p_expires_at:session.expiresAt,p_request_id:requestId.data,p_payload:parsed.data
     });
     if(reply.error){
+      if(reply.error.code==="PT412")return NextResponse.json({error:"Consent information changed; reload before submitting",code:"CONSENT_CHANGED"},{status:409});
       if(reply.error.code==="PT409")return NextResponse.json({error:"Lead request conflicts with existing evidence"},{status:409});
       return NextResponse.json({error:"Lead persistence could not be confirmed; retry the same request"},{status:503});
     }

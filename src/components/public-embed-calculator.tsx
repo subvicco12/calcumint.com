@@ -21,9 +21,17 @@ type Props = {
 };
 
 export function PublicEmbedCalculator(props: Props) {
+  // Never carry contacts, retries or acknowledgements into another calculator or
+  // displayed-consent scope. Ordinary edits and token renewal retain their scope.
+  const scope=JSON.stringify([props.publicKey,capabilityScope(props.sessionToken),props.definition,props.consentText??null,props.privacyUrl??null]);
+  return <EmbedCalculatorScope key={scope} {...props}/>;
+}
+
+function EmbedCalculatorScope(props: Props) {
   const initial = Object.fromEntries(props.definition.fields.map((field) => [field.key, String(field.defaultValue ?? field.min ?? 0)]));
   const [values, setValues] = useState<Record<string, string>>(initial);
   const [leadStatus, setLeadStatus] = useState("");
+  const [sessionMessage,setSessionMessage]=useState("Embed session expired. Reload this calculator to continue submitting events or leads.");
   const sessionRef = useRef(props.sessionToken);
   const leadAttempt=useRef<{id:string;body:string;key:string;confirmed:boolean}|null>(null);
   const leadPending=useRef(false);
@@ -31,6 +39,8 @@ export function PublicEmbedCalculator(props: Props) {
   const [uncertainLead,setUncertainLead]=useState(false);
   const renewalRef = useRef<Promise<boolean> | null>(null);
   const [sessionAvailable, setSessionAvailable] = useState(true);
+
+  useEffect(() => { sessionRef.current=props.sessionToken; }, [props.sessionToken]);
 
   useEffect(() => {
     const renew = async (): Promise<boolean> => {
@@ -72,7 +82,7 @@ export function PublicEmbedCalculator(props: Props) {
     if (!evaluated.result || !sessionAvailable || leadPending.current) return;
     const form = new FormData(event.currentTarget);
     const payload = Object.fromEntries(["name", "email", "phone", "company"].map((key) => [key, String(form.get(key) ?? "").trim()]).filter(([,value])=>value!==""));
-    const body=JSON.stringify({...payload,consented:form.get("consent")==="on",input:values,output:evaluated.result,sourceUrl:window.location.href});
+    const body=JSON.stringify({...payload,consentText:props.consentText??"",privacyUrl:props.privacyUrl??null,consented:form.get("consent")==="on",input:values,output:evaluated.result,sourceUrl:window.location.href});
     const previous=leadAttempt.current;
     const attempt=previous?.key===props.publicKey&&(!previous.confirmed||previous.body===body)?previous:{id:crypto.randomUUID(),body,key:props.publicKey,confirmed:false};
     leadAttempt.current=attempt;
@@ -82,6 +92,9 @@ export function PublicEmbedCalculator(props: Props) {
         method:"POST",headers:{"Content-Type":"application/json","X-Embed-Session":sessionRef.current,"Idempotency-Key":attempt.id},body:attempt.body
       });
       const result:unknown=await response.json();
+      if(response.status===409&&result&&typeof result==="object"&&"code" in result&&result.code==="CONSENT_CHANGED"){
+        setSessionAvailable(false);setSessionMessage("Consent information changed. Reload this calculator before submitting again.");setLeadStatus("");setUncertainLead(false);return;
+      }
       if(!response.ok||!result||typeof result!=="object"||!("ok" in result)||result.ok!==true)throw new Error("Unconfirmed submission");
       attempt.confirmed=true;setUncertainLead(false);setLeadStatus("Thanks — your details were submitted.");
     } catch {
@@ -102,11 +115,25 @@ export function PublicEmbedCalculator(props: Props) {
       </div>
       {evaluated.error ? <div className="notice error-notice">{evaluated.error}</div> : <div className="builder-results">{props.definition.outputs.map((output) => <div className="result-box" key={output.key}><span>{output.label}</span><strong>{formatValue(evaluated.result?.[output.key], output.format, output.decimals)}</strong></div>)}</div>}
       {props.ctaLabel && props.ctaUrl && <a className="button primary embed-cta" href={props.ctaUrl} target="_blank" rel="noreferrer" onClick={() => void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json", "X-Embed-Session": sessionRef.current }, body: JSON.stringify({ type: "cta_click", sourceUrl: window.location.href }) })}>{props.ctaLabel}</a>}
-      {!sessionAvailable && <p role="alert">Embed session expired. Reload this calculator to continue submitting events or leads.</p>}
+      {!sessionAvailable && <p role="alert">{sessionMessage}</p>}
       {props.leadCaptureEnabled && <form className="embed-lead-form" onSubmit={submitLead}><h3>Send me this result</h3>{props.leadFields.includes("name") && <label>Name<input name="name" required /></label>}{props.leadFields.includes("email") && <label>Email<input name="email" type="email" required /></label>}{props.leadFields.includes("phone") && <label>Phone<input name="phone" /></label>}{props.leadFields.includes("company") && <label>Company<input name="company" /></label>}<label className="consent-row"><input name="consent" type="checkbox" required /><span>{props.consentText}{props.privacyUrl && <> <a href={props.privacyUrl} target="_blank" rel="noreferrer">Privacy policy</a></>}</span></label><button className="button primary" type="submit" disabled={!sessionAvailable||submittingLead}>{submittingLead?"Submitting…":uncertainLead?"Retry original submission":"Submit"}</button>{leadStatus && <p aria-live="polite">{leadStatus}</p>}</form>}
       {!props.hideCalcumintBrand && <footer className="embed-powered">Powered by CalcuMint</footer>}
     </div>
   );
+}
+
+// Decode only to partition local UI state. This is NOT capability verification;
+// every server route still verifies the signed token and current publication.
+function capabilityScope(token:string):string {
+  try {
+    const raw=token.split(".")[0].replace(/-/g,"+").replace(/_/g,"/");
+    const claims:unknown=JSON.parse(atob(raw));
+    if(claims&&typeof claims==="object"&&"configId" in claims&&"calculatorId" in claims&&"organizationId" in claims&&"version" in claims
+      && typeof claims.configId==="string"&&typeof claims.calculatorId==="string"&&typeof claims.organizationId==="string"
+      && typeof claims.version==="number"&&Number.isSafeInteger(claims.version)&&claims.version>0)
+      return JSON.stringify([claims.configId,claims.calculatorId,claims.organizationId,claims.version]);
+  } catch { /* An opaque/malformed token remains a separate UI scope. */ }
+  return token;
 }
 
 function formatValue(value: number | boolean | undefined, format: "number" | "currency" | "percentage", decimals: number) {
