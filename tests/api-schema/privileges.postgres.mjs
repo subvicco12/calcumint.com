@@ -1,7 +1,7 @@
 // Disposable PostgreSQL only; no production URL, no host ports, internal network.
 import assert from 'node:assert/strict';
 import { validateCatalog, verifyDriftDetection } from '../api-schema/validate.mjs';
-import { bootstrapSchema, verifyDefiners } from '../api-schema/bootstrap.mjs';
+import { bootstrapSchema, member, verifyDefiners } from '../api-schema/bootstrap.mjs';
 import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
@@ -49,9 +49,15 @@ try {
  for(const role of ['anon','authenticated'])for(const call of [submit(randomUUID()),recover(batchId),capture(randomUUID())])await assert.rejects(sql(call.replace('SET ROLE service_role',`SET ROLE ${role}`)),/permission denied/);
  await assert.rejects(sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${a}';SELECT count(*) FROM public.batch_calculation_jobs;`),/permission denied for function is_org_member/);
  console.log('PASS reproduced whole 013 missing authenticated helper EXECUTE: owner RLS SELECT blocked');
- // Explicit fixture-only platform ACL model, never claimed as repository or hosted state.
- await sql('GRANT EXECUTE ON FUNCTION public.is_org_member(uuid),public.has_org_role(uuid,text[]) TO authenticated;');
- for(const [user,expected] of [[a,'1'],[b,'0']])for(const table of ['batch_calculation_jobs','embed_leads','lead_consents'])assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${user}';SELECT count(*) FROM public.${table};`),expected);
+ const helperProposal=await readFile('docs/architecture/proposals/API-RLS-HELPER-EXECUTE.sql','utf8');
+ const helperGuard="DO $$ BEGIN RAISE EXCEPTION 'PROPOSAL ONLY: isolated helper acceptance and owner authorization required'; END $$;";
+ assert.equal(helperProposal.split(helperGuard).length,2);await assert.rejects(sql(helperProposal),/PROPOSAL ONLY/);
+ await assert.rejects(sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${a}';SELECT count(*) FROM public.batch_calculation_jobs;`),/permission denied for function is_org_member/);
+ await sql(helperProposal.replace(helperGuard,''));
+ for(const fn of [`is_org_member('${a}')`,`has_org_role('${a}',ARRAY['owner'])`,`org_role('${a}')`])await assert.rejects(sql(`SET ROLE anon;SELECT public.${fn};`),/permission denied/);
+ await assert.rejects(sql(`SET ROLE authenticated;SELECT public.org_role('${a}');`),/permission denied/);
+ for(const [user,expected] of [[a,'t'],[member,'f'],[b,'f']])assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${user}';SELECT public.has_org_role('${a}',ARRAY['owner','admin']);`),expected);
+ for(const [user,expected] of [[a,'1'],[member,'1'],[b,'0']])for(const table of ['batch_calculation_jobs','embed_leads','lead_consents'])assert.equal(await sql(`SET ROLE authenticated;SET request.jwt.claim.sub='${user}';SELECT count(*) FROM public.${table};`),expected);
  await sql("CREATE FUNCTION public.privilege_failure() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic late fault';END $$;");
  for(const [table,call,state,expected] of [['batch_request_receipts',()=>submit(randomUUID()),batchState,'[1, 1, 2]'],['embed_lead_receipts',()=>capture(randomUUID()),embedState,'[1, 1, 1]']]){
  await sql(`CREATE TRIGGER privilege_failure AFTER INSERT ON public.${table} FOR EACH ROW EXECUTE FUNCTION public.privilege_failure();`);try{await assert.rejects(sql(call()),/synthetic late fault/);assert.equal(await state(),expected);}finally{await sql(`DROP TRIGGER privilege_failure ON public.${table};`);}}

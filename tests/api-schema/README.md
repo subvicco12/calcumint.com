@@ -119,11 +119,16 @@ not another full HTTP run or any deployed grant change.
 Whole 013 exposes a real unresolved client dependency: revoking PUBLIC helper
 EXECUTE also removes authenticated access to is_org_member/has_org_role because
 the baseline whole files never grant it explicitly. The native test first
-reproduces authenticated owner RLS SELECT denial. It then adds explicitly
-fixture-only authenticated helper EXECUTE grants to verify owner/outsider job,
-lead and consent isolation. Unmodified whole-history client compatibility is
-therefore BLOCKED on helper ACL review; no repository SQL fix or hosted grant
-is inferred. Service RPC checks run before this fixture-only ACL restoration.
+reproduces authenticated owner RLS SELECT denial. It then verifies the refusal
+guard of `docs/architecture/proposals/API-RLS-HELPER-EXECUTE.sql`, removes only
+that exact guard inside the isolated fixture, and applies the minimal two-helper
+EXECUTE proposal. Owner/member/outsider job, lead and consent isolation passes;
+all anonymous helper execution and direct authenticated org_role execution remain
+denied. has_org_role evaluates org_role internally as its definer owner. Both
+entry points scope membership queries to auth.uid(); no arbitrary user argument
+is accepted. No historical migration is changed. Current production ACLs remain
+UNKNOWN and helper-permission repair adoption remains BLOCKED on owner review.
+Service RPC checks run before the isolated helper proposal is installed.
 
 Catalog version 2 additionally reports effective TRUNCATE/TRIGGER/REFERENCES,
 owner-role access, all physical column SELECT/INSERT/UPDATE/REFERENCES grants,
