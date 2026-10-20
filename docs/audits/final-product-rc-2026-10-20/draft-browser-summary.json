@@ -1,0 +1,159 @@
+{
+  "sourceHead": "8956ac526450ba66eed536fcf74055403164221d",
+  "branch": "integration/final-product-rc-20261020",
+  "status": "PASS_SYNTHETIC_ACCEPTANCE",
+  "masterIds": [
+    205,
+    206,
+    232,
+    233,
+    435,
+    441,
+    481,
+    484,
+    487,
+    498,
+    517,
+    518,
+    529,
+    531
+  ],
+  "browser": "Chromium 154.0.8037.57 headless CDP",
+  "viewports": [
+    320,
+    1280
+  ],
+  "runs": [
+    {
+      "name": "local",
+      "command": "npm run test:draft-preview-browser",
+      "exitCode": 0,
+      "passed": true,
+      "groupedChecks": 49,
+      "networkRequests": 143,
+      "disallowedRequests": 0,
+      "downloadCount": 30,
+      "jsonFiles": 15,
+      "csvFiles": 15,
+      "screenshots": [
+        "draft-preview-1280.png",
+        "draft-grade-scenarios-320.png",
+        "draft-grade-scenarios-1280.png",
+        "draft-preview-320.png"
+      ],
+      "report": "/workspace/review-artifacts/final-product-rc-2026-10-20/drafts/local/browser-regressions.json",
+      "masterIds": [
+        205,
+        206,
+        232,
+        233,
+        435,
+        441,
+        481,
+        484,
+        487,
+        498,
+        517,
+        518,
+        529,
+        531
+      ]
+    },
+    {
+      "name": "authenticated",
+      "command": "npm run test:authenticated-draft-browser",
+      "exitCode": 0,
+      "passed": true,
+      "groupedChecks": 32,
+      "networkRequests": 72,
+      "disallowedRequests": 0,
+      "downloadCount": 56,
+      "jsonFiles": 28,
+      "csvFiles": 28,
+      "screenshots": [
+        "synthetic-account-320.png",
+        "synthetic-account-1280.png"
+      ],
+      "report": "/workspace/review-artifacts/final-product-rc-2026-10-20/drafts/authenticated/browser-regressions.json",
+      "masterIds": [
+        205,
+        206,
+        232,
+        233,
+        435,
+        441,
+        481,
+        484,
+        487,
+        498,
+        517,
+        518,
+        529,
+        531
+      ]
+    },
+    {
+      "name": "pagination",
+      "command": "npm run test:draft-pagination-browser",
+      "exitCode": 0,
+      "passed": true,
+      "groupedChecks": 5,
+      "networkRequests": 72,
+      "disallowedRequests": 0,
+      "downloadCount": 0,
+      "jsonFiles": 0,
+      "csvFiles": 0,
+      "screenshots": [
+        "pagination-320.png",
+        "pagination-1280.png"
+      ],
+      "report": "/workspace/review-artifacts/final-product-rc-2026-10-20/drafts/pagination/browser-regressions.json"
+    }
+  ],
+  "totals": {
+    "browserGroupedChecks": 86,
+    "actualDownloads": 86,
+    "jsonDownloads": 43,
+    "csvDownloads": 43,
+    "guardedRequests": 287,
+    "disallowedRequests": 0
+  },
+  "focusedTests": {
+    "command": "npx vitest run src/components/draft-calculator-preview.test.tsx src/components/authenticated-draft-workspace.test.tsx src/app/account/drafts/actions-integration.test.ts src/lib/draft-account-access.test.ts src/lib/draft-preview-server.test.ts",
+    "exitCode": 0,
+    "files": 5,
+    "passed": 116,
+    "coverage": [
+      "All14 Free calculations and disabled export/scenario gates; Pro/Business export/scenario behavior",
+      "All14 authenticated-action v1 save/history and scenario reopen using mocked transport",
+      "Platform reviewer role, owner binding, auth/role errors fail closed",
+      "Private preview authorization, origin/host/method restrictions, env/fs denial, credential lifecycle"
+    ],
+    "warnings": [
+      "Expected forbidden /etc/passwd Vite diagnostic.",
+      "CLI credential cleanup test closes shared server during dependency scan, logging outdated request shutdown warnings; 9 server tests and whole run passed."
+    ]
+  },
+  "verified": [
+    "28 local rendering cases across 320/1280; labels and no page overflow",
+    "14 local v1 save/reopen cases; local reload persistence for Basic",
+    "14 local A/B/C scenario captures; baseline A and changed B remain immutable",
+    "14 calculation JSON +14 CSV downloads match raw captured inputs/outputs; Basic A/B/C scenario set JSON/CSV pair verifies differing results",
+    "28 synthetic authenticated save/reopen cases; JSON/CSV exact v1 capture comparisons",
+    "Ambiguous commit retries reuse UUID and do not duplicate; error receives focus",
+    "Pending save/reopen owner switches discard stale completion and isolate record list",
+    "Pagination error/retry uses same cursor and preserves selected capture at both widths; pending lock; keyboard Enter loads scenario page",
+    "Late owner/plan pagination discarded; all14 calculators can reach exhausted126 history +126 scenario source records, same UUID distinct by source",
+    "Keyboard Tab advances to operation; emulated touch Calculate works; invalid-field focus/recovery works",
+    "Private server authorization/origin/env restrictions passed focused tests; browser request guards reported zero disallowed requests",
+    "Runner-owned ports4181/4183 free after cleanup"
+  ],
+  "unverified": [
+    "Physical Android device and TalkBack: UNVERIFIED",
+    "Real provider login/session/network and production RLS: UNVERIFIED; browser account fixture is synthetic",
+    "Full keyboard accessibility or assistive technology conformance: UNVERIFIED; tested specified Tab/Enter/focus paths only",
+    "Scenario-set file downloads exercised for Basic only in native browser runner; all14 scenario capture/metadata and plan workflows covered by existing focused UI tests"
+  ],
+  "defects": [],
+  "sourceEdits": false
+}

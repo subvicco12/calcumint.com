@@ -38,6 +38,13 @@ jobs:
         run: npm run test:launch
       - name: Calculator and rule-pack certification
         run: npm run test:certification
+      - name: Synthetic Reference Six browser acceptance
+        run: |
+          export CHROMIUM_PATH="$(command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable)"
+          test -n "$CHROMIUM_PATH"
+          npm run test:final-reference-browser
+        env:
+          FINAL_REFERENCE_ARTIFACTS: ${{ runner.temp }}/final-reference-browser
       - name: Production build
         run: npm run build
         env:

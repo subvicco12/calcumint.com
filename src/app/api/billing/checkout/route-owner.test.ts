@@ -1,0 +1,12 @@
+import {beforeEach,expect,it,vi} from 'vitest';
+const state=vi.hoisted(()=>({owner:'owner-a',error:null as unknown,query:vi.fn(),provider:vi.fn()}));
+vi.mock('@/lib/env',()=>({publicEnv:{NEXT_PUBLIC_SITE_URL:'https://synthetic.invalid'}}));
+vi.mock('@/lib/billing/paddle',()=>({getPriceId:()=> 'synthetic-price',subscriptionChangeMode:()=> 'immediate',paddleRequest:state.provider}));
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.owner}},error:state.error})},from:state.query})}));
+import {POST} from './route';
+beforeEach(()=>{state.owner='owner-a';state.error=null;state.query.mockReset();state.provider.mockReset().mockResolvedValue({id:'synthetic-transaction'});const q={select:()=>q,eq:()=>q,in:()=>q,order:()=>q,limit:async()=>({data:[],error:null})};state.query.mockReturnValue(q);});
+const request=(expectedOwnerId?:unknown)=>new Request('https://synthetic.invalid/api/billing/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:'pro',interval:'monthly',expectedOwnerId})});
+it('denies stale browser-owner binding before any subscription query or provider write',async()=>{const response=await POST(request('owner-b'));expect(response.status).toBe(409);expect(state.query).not.toHaveBeenCalled();expect(state.provider).not.toHaveBeenCalled();});
+it('fails closed when auth returns both a user and an error',async()=>{state.error=new Error('synthetic auth failure');const response=await POST(request('owner-a'));expect(response.status).toBe(401);expect(state.query).not.toHaveBeenCalled();expect(state.provider).not.toHaveBeenCalled();});
+it('preserves independently authenticated same-owner checkout and legacy request compatibility',async()=>{for(const expected of ['owner-a',undefined]){const response=await POST(request(expected));expect(response.status).toBe(200);expect(await response.json()).toEqual({transactionId:'synthetic-transaction'});}});
+it('rejects malformed owner bindings without provider access',async()=>{expect((await POST(request(42))).status).toBe(400);expect(state.provider).not.toHaveBeenCalled();});
