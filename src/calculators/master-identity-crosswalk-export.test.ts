@@ -6,7 +6,7 @@ import { auditCatalogSlugReviewLedger, type CatalogSlugReview } from "./catalog-
 import { buildCatalogReconciliationReport } from "./catalog-reconciliation-report";
 import { buildMasterPublicationAudit, type AnonymousCatalogSnapshot } from "./master-publication-audit";
 import { listCalculatorImplementationInventory } from "./implementation-inventory";
-import { buildMasterIdentityCrosswalk, exportMasterIdentityCrosswalkCsv } from "./master-identity-crosswalk";
+import { buildMasterIdentityCrosswalk, exportMasterIdentityCrosswalkCsv, buildIdentityEvidenceTriage } from "./master-identity-crosswalk";
 
 it("exports all 540 live-registry crosswalk rows and 27 bounded domain queues from existing evidence", () => {
   const masterSource = readFileSync("data/catalog/master-catalog-2026.csv", "utf8");
@@ -20,6 +20,8 @@ it("exports all 540 live-registry crosswalk rows and 27 bounded domain queues fr
   const inventory = listCalculatorImplementationInventory();
   const audit = buildMasterPublicationAudit(master, inventory, matches.rows, JSON.parse(snapshotSource) as AnonymousCatalogSnapshot, holds, review.held);
   const report = buildMasterIdentityCrosswalk(audit, inventory);
+  const triage = buildIdentityEvidenceTriage(report, inventory);
+  console.log("Identity evidence triage", triage.summary);
   expect(report.summary).toMatchObject({ totalMaster: 540, registryDefinitions: 574, missingLinkage: 245, singleCandidate: 291, multipleCandidates: 4, reusedSlugs: 8, singleCandidateReusedSlugs: 6 });
   expect(audit.summary.observedPublished).toBe(209); // Historical observation only, never current approval.
   const sha256 = (body: string) => createHash("sha256").update(body).digest("hex");
@@ -30,10 +32,11 @@ it("exports all 540 live-registry crosswalk rows and 27 bounded domain queues fr
     mappingApproval: "UNKNOWN", publicationAuthority: false, certificationAuthority: false,
   };
   const outputs = {
+    "review-triage.json": JSON.stringify({ provenance, ...triage }, null, 2) + "\n",
     "crosswalk.json": JSON.stringify({ provenance, ...report }, null, 2) + "\n",
     "crosswalk.csv": exportMasterIdentityCrosswalkCsv(report),
-    "domain-batches.json": JSON.stringify({ provenance, domainBatches: report.domainBatches }, null, 2) + "\n",
-    "summary.json": JSON.stringify({ provenance, summary: report.summary, reusedSlugs: report.reusedSlugs }, null, 2) + "\n",
+    "domain-batches.json": JSON.stringify({ provenance, domainBatches: report.domainBatches, reviewDomains: triage.domains }, null, 2) + "\n",
+    "summary.json": JSON.stringify({ provenance, summary: report.summary, reusedSlugs: report.reusedSlugs, triageSummary: triage.summary }, null, 2) + "\n",
   };
   const directory = process.env.CALCUMINT_CROSSWALK_OUT ?? "data/catalog/crosswalk-2026-10-20";
   if (process.env.CALCUMINT_CROSSWALK_OUT) mkdirSync(directory, { recursive: true });

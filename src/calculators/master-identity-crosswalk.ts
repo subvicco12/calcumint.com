@@ -107,3 +107,75 @@ export function exportMasterIdentityCrosswalkCsv(report: ReturnType<typeof build
     row.identityApproval, row.lifecycle, row.engineAbsenceProven, row.mappingApproved,
     row.publicationAuthorized, row.certificationAuthorized])].map(row => row.map(cell).join(",")).join("\r\n") + "\r\n";
 }
+
+/** Label evidence is a search aid, never an accepted alias or identity edge. */
+const reviewLabelKey = (value: string) => value.toLowerCase().replace(/\b(calculator|converter)\b/g, "").replace(/[^a-z0-9]/g, "");
+export function buildIdentityEvidenceTriage(report: ReturnType<typeof buildMasterIdentityCrosswalk>, inventory: readonly CalculatorInventoryRecord[]) {
+  const definitions = new Map(inventory.map(record => [record.slug, record]));
+  if (definitions.size !== inventory.length || new Set(inventory.map(record=>record.id)).size !== inventory.length || inventory.some(record => !record.id || !record.slug || !Number.isSafeInteger(record.version) || record.version < 1)) {
+    throw new Error("Invalid registry evidence for identity triage");
+  }
+  const selected = report.rows.filter(row => row.candidates.length !== 1).sort((a,b)=>a.masterId-b.masterId);
+  const selectedIds = new Set(selected.map(row => row.masterId));
+  const byMasterId = new Map(selected.map(row=>[row.masterId,row]));
+  const adjacency = new Map(selected.map(row=>[row.masterId,new Set<number>()]));
+  for(const row of selected) for(const candidate of row.candidates) for(const linked of candidate.sharedMasterIds){
+    if(selectedIds.has(linked)){adjacency.get(row.masterId)!.add(linked);adjacency.get(linked)!.add(row.masterId);}
+  }
+  const grouped = new Map<string, typeof selected>();
+  const visited = new Set<number>();
+  for (const row of selected) {
+    if(visited.has(row.masterId))continue;
+    const pending=[row.masterId], scopeIds:number[]=[];
+    while(pending.length){
+      const id=pending.pop()!;if(visited.has(id))continue;visited.add(id);scopeIds.push(id);
+      for(const linked of adjacency.get(id)!)if(!visited.has(linked))pending.push(linked);
+    }
+    scopeIds.sort((a,b)=>a-b);
+    grouped.set(scopeIds.join("+"),scopeIds.map(id=>byMasterId.get(id)!));
+  }
+  const cases = [...grouped].map(([scope, rows]) => {
+    const labelHints = rows.every(row => row.candidates.length === 0) ? [...inventory]
+      .filter(record => rows.some(row => reviewLabelKey(row.title) === reviewLabelKey(record.title)))
+      .sort((a, b) => compare(a.slug, b.slug))
+      .map(record => ({ calculatorKey: record.id, slug: record.slug, version: record.version, registryTitle: record.title,
+        registryCategory: record.category, riskClass: record.riskClass,
+        evidence: "NORMALIZED_LABEL_ONLY_NOT_AN_ALIAS_OR_DOMAIN_DECISION" as const })) : [];
+    const candidateSlugs = [...new Set(rows.flatMap(row => row.candidates.map(candidate => candidate.slug)))].sort(compare);
+    return {
+      reviewCaseId: `master-scope:${scope}`, masterIds: rows.map(row => row.masterId).sort((a,b) => a-b),
+      domains: [...new Set(rows.map(row => row.domain))].sort(compare), titles: rows.map(row => ({masterId:row.masterId,title:row.title})).sort((a,b)=>a.masterId-b.masterId),
+      evidenceClass: candidateSlugs.length ? "EXISTING_MULTI_CANDIDATE_SCOPE" as const
+        : labelHints.length > 1 ? "COMPETING_NORMALIZED_LABEL_HINTS" as const
+        : labelHints.length === 1 ? "NORMALIZED_LABEL_SCOPE_REVIEW" as const : "MISSING_SCOPE_OR_ALIAS_EVIDENCE" as const,
+      candidateSlugs, labelHints,
+      existingHold: rows.some(row => row.lifecycle.hold === "HOLD"),
+      decisionOwnerRole: "Authorized catalog identity authority with domain-qualified contract reviewer",
+      assignedReviewer: "UNKNOWN" as const,
+      requiredEvidence: ["master feature/input/output scope", "exact registry key/slug/version and source revision",
+        "domain-qualified identity or explicit alias decision with provenance", "source/methodology and specialist applicability decision",
+        ...(candidateSlugs.length ? ["compare every candidate and every coupled master scope before selection"] : ["inspect existing implementation contracts before declaring an engine absent"])],
+      identityDecision: "UNKNOWN" as const, aliasResolved: false as const, implementationAuthorized: false as const,
+    };
+  }).sort((a,b)=>a.masterIds[0]-b.masterIds[0]);
+  const domains = report.domainBatches.map(batch => ({
+    domain: batch.domain,
+    unresolvedMasterIds: selected.filter(row=>row.domain===batch.domain).map(row=>row.masterId),
+    // Cross-domain scopes deliberately reference the same case, not separate decisions.
+    reviewCaseIds: cases.filter(item=>item.domains.includes(batch.domain)).map(item=>item.reviewCaseId),
+    implementationAuthorized: false as const,
+  }));
+  return {
+    schemaVersion: 1,
+    purpose: "Refine evidence collection only; normalized labels never create aliases, candidate edges, missing-engine findings or approvals",
+    summary: { unresolvedMasterIds: selected.length, reviewCases: cases.length,
+      missingLinkageWithLabelHints: cases.filter(item=>item.candidateSlugs.length===0 && item.labelHints.length>0).reduce((n,item)=>n+item.masterIds.length,0),
+      missingLinkageWithoutLabelHints: cases.filter(item=>item.candidateSlugs.length===0 && item.labelHints.length===0).reduce((n,item)=>n+item.masterIds.length,0),
+      multiCandidateMasterIds: selected.filter(row=>row.candidates.length>1).length,
+      aliasesResolved: 0, approvedMappings: 0, provenMissingEngines: 0 },
+    protectedHistoryScopes: report.rows.filter(row=>row.lifecycle.hold === "HOLD").map(row=>({masterId:row.masterId,
+      candidateIdentities:row.candidates.map(candidate=>({calculatorKey:candidate.calculatorKey,slug:candidate.slug,version:candidate.version})),
+      disposition:"HOLD" as const, technicalHistoryDecision:"UNKNOWN" as const})),
+    domains, cases,
+  };
+}
