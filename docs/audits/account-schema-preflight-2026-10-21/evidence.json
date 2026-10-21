@@ -1,0 +1,61 @@
+{
+  "release": "HOLD",
+  "baselinePr": 1462,
+  "baselineHead": "03df667e85e672c6e20848a6cc168f122df2e1ca",
+  "externalWorkPg17Package": "NOT_AVAILABLE_IN_CURRENT_ATTACHMENTS_OR_WORKSPACE; not claimed as reviewed",
+  "reproduction": "PostgreSQL16.15: integer country_code NOT NULL DEFAULT7 and integer display_name accepted ready=true by baseline",
+  "contractSources": [
+    {
+      "path": "supabase/migrations/001_b3_accounts.sql",
+      "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+    },
+    {
+      "path": "supabase/migrations/009_country_preferences.sql",
+      "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+    },
+    {
+      "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+      "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+    },
+    {
+      "path": "supabase/migrations/038_client_account_billing_privileges.sql",
+      "sha256": "27a0ab173957d938d6b3a8ed2fe3d2dfe6280ecec6da0eb9aa4c6cf640b8e708"
+    }
+  ],
+  "descriptorSha256": "a59e230768cb49c866cebffecdd140d99b90038244e9af3e378dc27b1fe0f6bc",
+  "checks": {
+    "nodeTests": {
+      "passed": 23,
+      "status": "VERIFIED"
+    },
+    "postgres16": {
+      "version": "16.15",
+      "contractCases": 25,
+      "status": "VERIFIED"
+    },
+    "postgres17": {
+      "version": "17.11",
+      "contractCases": 25,
+      "status": "VERIFIED"
+    },
+    "existingBillingAcceptance": {
+      "nativeCases": 25,
+      "httpTests": 29,
+      "status": "VERIFIED_REUSED_THIS_BRANCH_BEFORE_FINAL_ADDITIONAL_CONTRACT_CASES"
+    },
+    "typecheck": "PASS",
+    "affectedLint": "PASS",
+    "webpackBuild": "PASS"
+  },
+  "productionCompatibility": "UNKNOWN",
+  "migrationOrderChanged": false,
+  "historicalMigrationsChanged": false,
+  "authorityChanges": 0,
+  "limitations": [
+    "Anonymous/public data does not attest protected account schema.",
+    "Descriptor equivalence is deliberately strict; unreviewed SQL/deparser/owner differences fail closed.",
+    "Auth helper access is checked, not authenticity of its deployed implementation.",
+    "No production mutations or migration application.",
+    "Missing Work package cannot supply production-schema equivalence."
+  ]
+}

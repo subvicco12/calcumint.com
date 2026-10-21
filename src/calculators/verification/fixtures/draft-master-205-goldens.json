@@ -1,0 +1,145 @@
+{
+  "reference": "Independent Python decimal.Context(prec=34, rounding=ROUND_HALF_EVEN); exact string operands",
+  "vectors": [
+    {
+      "input": {
+        "left": "0.1",
+        "right": "0.2",
+        "operation": "add"
+      },
+      "expected": {
+        "result": "0.3"
+      }
+    },
+    {
+      "input": {
+        "left": "1",
+        "right": "8",
+        "operation": "divide"
+      },
+      "expected": {
+        "result": "0.125"
+      }
+    },
+    {
+      "input": {
+        "left": "1",
+        "right": "3",
+        "operation": "divide"
+      },
+      "expected": {
+        "result": "0.3333333333333333333333333333333333"
+      }
+    },
+    {
+      "input": {
+        "left": "-1",
+        "right": "6",
+        "operation": "divide"
+      },
+      "expected": {
+        "result": "-0.1666666666666666666666666666666667"
+      }
+    },
+    {
+      "input": {
+        "left": "99999999999999999999999999999999995",
+        "right": "1",
+        "operation": "add"
+      },
+      "expected": {
+        "result": "100000000000000000000000000000000000"
+      }
+    },
+    {
+      "input": {
+        "left": "1.2345678901234567890123456789012345",
+        "right": "0",
+        "operation": "add"
+      },
+      "expected": {
+        "result": "1.234567890123456789012345678901234"
+      }
+    },
+    {
+      "input": {
+        "left": "1.2345678901234567890123456789012355",
+        "right": "0",
+        "operation": "add"
+      },
+      "expected": {
+        "result": "1.234567890123456789012345678901236"
+      }
+    },
+    {
+      "input": {
+        "left": "-1.2345678901234567890123456789012345",
+        "right": "0",
+        "operation": "add"
+      },
+      "expected": {
+        "result": "-1.234567890123456789012345678901234"
+      }
+    },
+    {
+      "input": {
+        "left": "99999999999999999999",
+        "right": "99999999999999999999",
+        "operation": "multiply"
+      },
+      "expected": {
+        "result": "9999999999999999999800000000000000000000"
+      }
+    },
+    {
+      "input": {
+        "left": "0.00000000000000000000000001",
+        "right": "0.00000000000000000000000002",
+        "operation": "multiply"
+      },
+      "expected": {
+        "result": "0.0000000000000000000000000000000000000000000000000002"
+      }
+    },
+    {
+      "input": {
+        "left": "123.45",
+        "right": "123.45",
+        "operation": "subtract"
+      },
+      "expected": {
+        "result": "0"
+      }
+    },
+    {
+      "input": {
+        "left": "-7.5",
+        "right": "2.5",
+        "operation": "divide"
+      },
+      "expected": {
+        "result": "-3"
+      }
+    },
+    {
+      "input": {
+        "left": "1",
+        "right": "7",
+        "operation": "divide"
+      },
+      "expected": {
+        "result": "0.1428571428571428571428571428571429"
+      }
+    },
+    {
+      "input": {
+        "left": "1",
+        "right": "9999999999999999999999999999999999999999",
+        "operation": "divide"
+      },
+      "expected": {
+        "result": "0.0000000000000000000000000000000000000001"
+      }
+    }
+  ]
+}
