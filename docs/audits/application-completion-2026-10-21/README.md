@@ -36,3 +36,7 @@ Ledger updates add bounded application evidence to existing PARTIAL rows without
 5. Future database/Neon transition is a separate approved phase. See docs/architecture/future-neon/READINESS.md; no connection/adapter/resource changes made.
 
 No production writes, migrations, merges, deployment, live payment activation, certification or publication changes occurred.
+
+## Final-head browser regression correction
+
+The initial PR CI exposed an obsolete assertion that BMI and Break-even must not offer exports. Replaced it with stronger shared account/export checks for all six reference calculators: JSON/CSV engine parity, actual PDF identity/version downloads, Free restrictions, invalid-result blocking and synthetic account recovery. Local Chromium acceptance passed all 36 journeys at 320px/1280px across Free/Pro/Business with zero issues. Mathematical, schedule and publication protections remain intact. Physical Android/TalkBack, live authentication and production persistence remain UNVERIFIED.
