@@ -5,6 +5,9 @@ import {requiresSignIn} from "@/lib/auth-recovery";
 import {saveHistoryAtomically} from "@/lib/account-persistence";
 import {requestAccountRecovery} from '@/lib/account-recovery';
 import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
+import {serializeCalculationPdf} from "@/lib/calculation-export-pdf";
+import {downloadPdfBytes} from "@/lib/download-pdf";
+import {calculatorRegistry} from "@/calculators/registry";
 import { serializeCalculationCsv } from "@/lib/calculation-export";
 import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -16,6 +19,7 @@ import type {ScenarioDisplayMetadata} from "@/lib/scenario-display-metadata";
 
 type Props = {
   scenarioDisplayMetadata?:ScenarioDisplayMetadata;
+  exportMethodology?:string;
   calculatorSlug: string;
   calculatorVersion: number;
   input: Record<string, unknown>;
@@ -62,7 +66,7 @@ export function CalculatorAccountActions(props:Props){
   return <AccountActionsSession key={JSON.stringify([props.calculatorSlug,props.calculatorVersion,authIdentity!==undefined,authIdentity])} {...props} observedAuthOwner={observedAuthOwner}/>;
 }
 
-function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output,scenarioDisplayMetadata,observedAuthOwner }: Props & {observedAuthOwner:{current:string|null|undefined}}) {
+function AccountActionsSession({ calculatorSlug, calculatorVersion, input, output,scenarioDisplayMetadata,exportMethodology,observedAuthOwner }: Props & {observedAuthOwner:{current:string|null|undefined}}) {
   const [signedIn, setSignedIn] = useState<boolean | null>(authConfigured ? null : false);
   const [favorite, setFavorite] = useState(false);
   const plan:CalcuMintPlan=useCalculatorPlan();
@@ -217,6 +221,22 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
     }
   }
 
+  function exportPdf() {
+    if (!snapshot || !entitlements.exports) return;
+    const reportAction=beginActionStatus("");
+    try {
+      const candidate=calculatorRegistry.getBySlug(snapshot.calculatorSlug);
+      const definition=candidate?.version===snapshot.calculatorVersion?candidate:undefined;
+      const bytes=serializeCalculationPdf(snapshot,{
+        ...(definition?{title:definition.title,sources:definition.sources,formulas:definition.formulas}:{}),
+        ...(scenarioDisplayMetadata?{displayMetadata:scenarioDisplayMetadata}:{}),
+        ...(exportMethodology?{methodology:exportMethodology}:{})
+      });
+      downloadPdfBytes(`${snapshot.calculatorSlug}-v${snapshot.calculatorVersion}.pdf`,bytes);
+      reportAction("PDF download requested. If your browser blocks it, allow downloads and retry; your calculation is preserved.");
+    } catch { reportAction("Could not download calculation. Try again.",true); }
+  }
+
   function retryAccountRead(){if(readRetryLock.current)return;readRetryLock.current=true;restoreRetryFocus.current=document.activeElement===retryButton.current;requestAccountRecovery();setReadFailure(false);setSignedIn(null);setReadAttempt(value=>value+1);}
 
   return (
@@ -231,6 +251,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         <>
           <button className="button secondary" type="button" onClick={exportCsv} disabled={!snapshot}>Export CSV</button>
           <button className="button secondary" type="button" onClick={exportJson} disabled={!snapshot}>Export JSON</button>
+          <button className="button secondary" type="button" onClick={exportPdf} disabled={!snapshot}>Export PDF</button>
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}

@@ -1,4 +1,5 @@
 import { copyCalculationData } from "./calculation-snapshot";
+export { serializeCalculationPdf, type CalculationPdfOptions } from './calculation-export-pdf';
 /** Export raw engine values; formatting and on-screen sampling do not affect CSV. */
 export function serializeCalculationCsv(input: Record<string, unknown>, output: Record<string, unknown>): string {
   ({input,output}=copyCalculationData(input,output));
