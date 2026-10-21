@@ -104,3 +104,5 @@ it('keeps captured export evidence unchanged when a scenario slot is replaced af
  expect(replaced[0].snapshot).toEqual(captures[0].snapshot);
  expect(Object.isFrozen(priorPayload.scenarios[1].output)).toBe(true);
 });
+
+it('captures supplied methodology immutably without requiring it for legacy sets',()=>{const rows=captureScenario([],'A',a,'',undefined,'Original method and limitations');expect(scenarioSetPayload(rows).scenarios[0].methodology).toBe('Original method and limitations');expect(scenarioSetPayload(captureScenario([],'A',a,'')).scenarios[0].methodology).toBeUndefined();expect(()=>captureScenario([],'A',a,'',undefined,5 as never)).toThrow();});

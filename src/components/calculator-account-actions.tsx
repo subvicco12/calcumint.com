@@ -257,7 +257,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
       {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
       </>}
-      <CalculatorScenarioWorkspace key={JSON.stringify([scenarioOwner!==undefined,scenarioOwner])} plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} download={downloadFile}/>
+      <CalculatorScenarioWorkspace key={JSON.stringify([scenarioOwner!==undefined,scenarioOwner])} plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} methodology={exportMethodology} download={downloadFile}/>
     </div>
   );
 }
