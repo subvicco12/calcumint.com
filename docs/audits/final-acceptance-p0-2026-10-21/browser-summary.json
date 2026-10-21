@@ -1,0 +1,646 @@
+{
+  "baseline": "c147cce2238b9f3b7fe56c3ec4ad44928c681d78",
+  "release": "HOLD",
+  "passed": true,
+  "journeys": [
+    {
+      "slug": "loan-emi-calculator",
+      "plan": "free",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "sip-calculator",
+      "plan": "free",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "SIP actual reverse solver and paid Goal Solver gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "plan": "free",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "mortgage-payment",
+      "plan": "free",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "aggregate-only mortgage explicitly disclosed",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "bmi-calculator",
+      "plan": "free",
+      "width": 320,
+      "checks": [
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "break-even-calculator",
+      "plan": "free",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "independent crossover/table vectors, target engine parity, invalid recovery and keyboard",
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "loan-emi-calculator",
+      "plan": "pro",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "loan-emi-calculator.json",
+        "loan-emi-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "sip-calculator",
+      "plan": "pro",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "SIP actual reverse solver and paid Goal Solver gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "sip-calculator.json",
+        "sip-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "plan": "pro",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "compound-interest-calculator.json",
+        "compound-interest-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "mortgage-payment",
+      "plan": "pro",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "aggregate-only mortgage explicitly disclosed",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "mortgage-payment.json",
+        "mortgage-payment.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "bmi-calculator",
+      "plan": "pro",
+      "width": 320,
+      "checks": [
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "break-even-calculator",
+      "plan": "pro",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "independent crossover/table vectors, target engine parity, invalid recovery and keyboard",
+        "scenario rows independently evaluated through registered engine",
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "loan-emi-calculator",
+      "plan": "business",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "loan-emi-calculator.json",
+        "loan-emi-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "sip-calculator",
+      "plan": "business",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "SIP actual reverse solver and paid Goal Solver gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "sip-calculator.json",
+        "sip-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "plan": "business",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "compound-interest-calculator.json",
+        "compound-interest-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "mortgage-payment",
+      "plan": "business",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "aggregate-only mortgage explicitly disclosed",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "mortgage-payment.json",
+        "mortgage-payment.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "bmi-calculator",
+      "plan": "business",
+      "width": 320,
+      "checks": [
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "break-even-calculator",
+      "plan": "business",
+      "width": 320,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "independent crossover/table vectors, target engine parity, invalid recovery and keyboard",
+        "scenario rows independently evaluated through registered engine",
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "loan-emi-calculator",
+      "plan": "free",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "sip-calculator",
+      "plan": "free",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "SIP actual reverse solver and paid Goal Solver gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "plan": "free",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "mortgage-payment",
+      "plan": "free",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "aggregate-only mortgage explicitly disclosed",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "bmi-calculator",
+      "plan": "free",
+      "width": 1280,
+      "checks": [
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "break-even-calculator",
+      "plan": "free",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "independent crossover/table vectors, target engine parity, invalid recovery and keyboard",
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "loan-emi-calculator",
+      "plan": "pro",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "loan-emi-calculator.json",
+        "loan-emi-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "sip-calculator",
+      "plan": "pro",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "SIP actual reverse solver and paid Goal Solver gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "sip-calculator.json",
+        "sip-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "plan": "pro",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "compound-interest-calculator.json",
+        "compound-interest-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "mortgage-payment",
+      "plan": "pro",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "aggregate-only mortgage explicitly disclosed",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "mortgage-payment.json",
+        "mortgage-payment.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "bmi-calculator",
+      "plan": "pro",
+      "width": 1280,
+      "checks": [
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "break-even-calculator",
+      "plan": "pro",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "independent crossover/table vectors, target engine parity, invalid recovery and keyboard",
+        "scenario rows independently evaluated through registered engine",
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "loan-emi-calculator",
+      "plan": "business",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "loan-emi-calculator.json",
+        "loan-emi-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "sip-calculator",
+      "plan": "business",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "SIP actual reverse solver and paid Goal Solver gating",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "sip-calculator.json",
+        "sip-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "plan": "business",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "paid authoritative schedule and scroll containment",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "compound-interest-calculator.json",
+        "compound-interest-calculator.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "mortgage-payment",
+      "plan": "business",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "scenario rows independently evaluated through registered engine",
+        "aggregate-only mortgage explicitly disclosed",
+        "actual JSON/CSV downloads match canonical engine fields",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels",
+        "pending recovery preserves user focus elsewhere",
+        "synthetic failed-read retry focus, logout revocation and sign-in recovery"
+      ],
+      "downloads": [
+        "mortgage-payment.json",
+        "mortgage-payment.csv"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "bmi-calculator",
+      "plan": "business",
+      "width": 1280,
+      "checks": [
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    },
+    {
+      "slug": "break-even-calculator",
+      "plan": "business",
+      "width": 1280,
+      "checks": [
+        "advanced mode parity and actual plan analysis gating",
+        "independent crossover/table vectors, target engine parity, invalid recovery and keyboard",
+        "scenario rows independently evaluated through registered engine",
+        "schedule and account exports not applicable",
+        "invalid input announced accessibly",
+        "invalid input blocks save/export then valid input recovers",
+        "keyboard focus traversal and field labels"
+      ],
+      "passed": true
+    }
+  ],
+  "extraChecks": [
+    {
+      "name": "keyed schedule/mobile/metadata/keyboard",
+      "width": 320,
+      "passed": true
+    },
+    {
+      "name": "keyed schedule/mobile/metadata/keyboard",
+      "width": 1280,
+      "passed": true
+    }
+  ],
+  "issues": [],
+  "unhandledExceptions": 0,
+  "downloadFiles": 32,
+  "browser": "Chromium headless via native CDP; synthetic local reviewer",
+  "limitations": [
+    "Headless Chromium viewport/touch emulation; no physical-device verification.",
+    "Only the Supabase browser transport and Next link are adapted. CalculatorInteractive, useCalculatorPlan, presentation and deterministic engines are actual source.",
+    "Real authentication and production persistence remain unverified.",
+    "Export clicks are paced 350 ms apart to avoid Chromium automatic-download burst throttling."
+  ],
+  "artifacts": "/workspace/review-artifacts/final-acceptance-p0-2026-10-21/browser"
+}
