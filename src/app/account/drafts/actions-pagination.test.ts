@@ -1,0 +1,21 @@
+import {beforeEach,expect,it,vi} from 'vitest';
+import {draftPreviewDefinitions} from '@/calculators/final-framework/draft-preview-catalog';
+const m=vi.hoisted(()=>({access:vi.fn(),rows:[] as Record<string,unknown>[],calls:[] as unknown[][],error:false}));
+vi.mock('@/lib/draft-account-access',()=>({requireDraftAccountAccess:m.access}));
+import {loadDraftHistoryPage,loadDraftWorkspace} from './actions';
+const slug=draftPreviewDefinitions[0].slug;
+const row=(n:number,owner='owner')=>({id:`123e4567-e89b-42d3-a456-${String(n).padStart(12,'0')}`,user_id:owner,calculator_slug:slug,calculator_version:1,created_at:'2026-10-20T12:00:00.123456Z',name:'Saved'});
+function client(){return {from:(table:string)=>{
+ let owner='',slugs:string[]=[],seek='',limit=0,id='';const q={select:()=>q,eq:(key:string,value:string)=>{m.calls.push(['eq',table,key,value]);if(key==='user_id')owner=value;if(key==='id')id=value;return q;},in:(key:string,value:string[])=>{slugs=value;m.calls.push(['in',key,value]);return q;},or:(value:string)=>{seek=value;m.calls.push(['or',value]);return q;},order:(key:string)=>{m.calls.push(['order',key]);return q;},limit:(value:number)=>{limit=value;return q;},maybeSingle:async()=>({data:table==='profiles'?{plan:'pro'}:m.rows.find(r=>r.user_id===owner&&r.id===id&&slugs.includes(String(r.calculator_slug))),error:m.error}),then:(resolve:(value:unknown)=>unknown)=>{let rows=m.rows.filter(r=>r.user_id===owner&&slugs.includes(String(r.calculator_slug))).sort((a,b)=>String(b.id).localeCompare(String(a.id)));if(seek){const boundary=seek.match(/id.lt.([^)]*)/)!;rows=rows.filter(r=>String(r.id)<boundary[1]);}return Promise.resolve({data:rows.slice(0,limit),error:m.error}).then(resolve);}};return q;}};}
+beforeEach(()=>{m.rows=[];m.calls=[];m.error=false;m.access.mockReset();m.access.mockImplementation(async(expected:string)=>{if(expected&&expected!=='owner')throw new Error('Draft access unavailable');return {user:{id:'owner'},supabase:client()};});});
+it('pages beyond 100 with stable ties, owner and fourteen-slug filtering before the limit',async()=>{
+ m.rows=Array.from({length:125},(_,i)=>row(i+1));m.rows.push(row(999,'foreign'),{...row(998),calculator_slug:'published'});
+ const ids:string[]=[];let cursor:string|null=null;do{const page=await loadDraftHistoryPage({expectedOwnerId:'owner',source:'history',cursor});ids.push(...page.records.map(r=>r.id));cursor=page.nextCursor;}while(cursor);
+ expect(ids).toHaveLength(125);expect(new Set(ids).size).toBe(125);expect(ids[0]).toBe(row(125).id);expect(ids.at(-1)).toBe(row(1).id);expect(m.calls).toContainEqual(['eq','calculation_history','user_id','owner']);expect(m.calls).toContainEqual(['order','id']);expect(m.calls.find(call=>call[0]==='in')?.[2]).toHaveLength(14);
+});
+it('loads an owned selected reference beyond the first page',async()=>{m.rows=Array.from({length:25},(_,i)=>row(i+1));const workspace=await loadDraftWorkspace('owner',{source:'history',id:row(1).id});expect(workspace.records.some(r=>r.id===row(1).id&&r.source==='history')).toBe(true);expect(workspace.pages.history.nextCursor).toBeTruthy();});
+it('denies changed owners and database failures without records',async()=>{await expect(loadDraftHistoryPage({expectedOwnerId:'foreign',source:'history'})).rejects.toThrow();m.error=true;await expect(loadDraftHistoryPage({expectedOwnerId:'owner',source:'scenario'})).rejects.toThrow('Saved draft unavailable');});
+it('rejects source reuse of a history cursor',async()=>{m.rows=Array.from({length:21},(_,i)=>row(i+1));const page=await loadDraftHistoryPage({expectedOwnerId:'owner',source:'history'});await expect(loadDraftHistoryPage({expectedOwnerId:'owner',source:'scenario',cursor:page.nextCursor})).rejects.toThrow('Invalid draft history cursor');});
+
+it('keeps colliding history and scenario identities separate',async()=>{m.rows=[row(1)];const workspace=await loadDraftWorkspace('owner');expect(workspace.records.map(r=>[r.id,r.source])).toEqual([[row(1).id,'history'],[row(1).id,'scenario']]);});
+it('rejects empty cursor and unsupported limits',async()=>{await expect(loadDraftHistoryPage({expectedOwnerId:'owner',source:'history',cursor:''})).rejects.toThrow('Invalid draft history cursor');await expect(loadDraftHistoryPage({expectedOwnerId:'owner',source:'history',limit:100 as 20})).rejects.toThrow();});

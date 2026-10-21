@@ -1,0 +1,1569 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-20",
+  "scope": "REPOSITORY_ONLY_NO_PRODUCTION_ACCESS",
+  "deployedState": "UNKNOWN",
+  "orderingRule": "Candidate: numeric prefix, empty suffix before alphabetic suffix, then exact filename ascending within duplicate prefix; preserve every historical filename. Not an authorized executor or timestamp mapping.",
+  "orderingAuthority": "OWNER_RECONCILIATION_REQUIRED",
+  "duplicatePrefixes": [
+    {
+      "prefix": "032",
+      "files": [
+        "032_atomic_reviewer_qa_audit.sql",
+        "032_business_builder_rls_auth_initplan.sql"
+      ]
+    },
+    {
+      "prefix": "033",
+      "files": [
+        "033_atomic_reviewer_assignment_audit.sql",
+        "033_pro_workspace_rls_auth_initplan.sql"
+      ]
+    },
+    {
+      "prefix": "034",
+      "files": [
+        "034_atomic_lifecycle_transition_audit.sql",
+        "034_billing_webhook_event_privileges.sql"
+      ]
+    },
+    {
+      "prefix": "035",
+      "files": [
+        "035_atomic_catalog_creation.sql",
+        "035_split_overlapping_write_policies.sql"
+      ]
+    }
+  ],
+  "candidateSequence": [
+    "001_b3_accounts.sql",
+    "002_b4_billing.sql",
+    "003_b5_business.sql",
+    "004_b6_builder.sql",
+    "005_b7_delivery.sql",
+    "006_b8_api_automation.sql",
+    "007_b9_ai.sql",
+    "008_b10_admin_factory.sql",
+    "008b_b10_alert_automation.sql",
+    "009_country_preferences.sql",
+    "010_b7_pro_workspace.sql",
+    "011_b8_free_save_quotas.sql",
+    "012_production_fk_indexes.sql",
+    "013_production_rpc_privilege_hardening_v2.sql",
+    "014_production_entitlement_rpc_sync.sql",
+    "016_final_certification_evidence_gate.sql",
+    "017_regulatory_rule_pack_evidence.sql",
+    "018_harden_rule_pack_required_metadata.sql",
+    "019_authoritative_lifecycle_enforcement.sql",
+    "020_post_certification_revalidation.sql",
+    "021_require_rule_pack_provenance.sql",
+    "022_harden_reviewer_waiver_authority.sql",
+    "023_structured_source_evidence.sql",
+    "024_reviewer_assignment_authority.sql",
+    "025_derived_source_count_authority.sql",
+    "026_publication_manifest_authority.sql",
+    "027_publication_trigger_privilege_hardening.sql",
+    "028_source_evidence_reviewer_index.sql",
+    "029_account_rls_auth_initplan.sql",
+    "030_billing_ai_rls_auth_initplan.sql",
+    "031_admin_identity_rls_auth_initplan.sql",
+    "032_atomic_reviewer_qa_audit.sql",
+    "032_business_builder_rls_auth_initplan.sql",
+    "033_atomic_reviewer_assignment_audit.sql",
+    "033_pro_workspace_rls_auth_initplan.sql",
+    "034_atomic_lifecycle_transition_audit.sql",
+    "034_billing_webhook_event_privileges.sql",
+    "035_atomic_catalog_creation.sql",
+    "035_split_overlapping_write_policies.sql",
+    "036_consolidate_ai_usage_read_policy.sql",
+    "037_builder_publish_business_entitlement.sql",
+    "038_client_account_billing_privileges.sql"
+  ],
+  "missingNumericPrefixes": [
+    "015"
+  ],
+  "inheritedEvidence": "docs/audits/ACCOUNT-MIGRATION-RECONCILIATION-2026-10-19.md (historical read-only findings; current deployed schema UNKNOWN)",
+  "migrations": [
+    {
+      "path": "supabase/migrations/001_b3_accounts.sql",
+      "name": "001_b3_accounts.sql",
+      "prefix": "001",
+      "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444",
+      "candidatePosition": 1,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.calculation_history",
+        "public.favorites",
+        "public.handle_new_user",
+        "public.profiles",
+        "public.user_preferences"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": {
+        "name": "b3_accounts",
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "status": "EXACT_MATCH",
+        "repositorySha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444",
+        "commentStrippedSha256": "9f029a38217cba36b3b0bd73b1b81a96321ebb81f1e01cddb32d42378dbe0815",
+        "ledgerSha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      }
+    },
+    {
+      "path": "supabase/migrations/002_b4_billing.sql",
+      "name": "002_b4_billing.sql",
+      "prefix": "002",
+      "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24",
+      "candidatePosition": 2,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.billing_customers",
+        "public.billing_webhook_events",
+        "public.calculation_history",
+        "public.enforce_free_favorite_limit",
+        "public.enforce_free_history_limit",
+        "public.favorites",
+        "public.profiles",
+        "public.subscriptions"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": {
+        "name": "b4_billing",
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "status": "EXACT_MATCH",
+        "repositorySha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24",
+        "commentStrippedSha256": "3fb3c756ef48f88772f4c53706ca62ee28e431ac330f04b819775c7ba02c6ab2",
+        "ledgerSha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      }
+    },
+    {
+      "path": "supabase/migrations/003_b5_business.sql",
+      "name": "003_b5_business.sql",
+      "prefix": "003",
+      "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5",
+      "candidatePosition": 3,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.accept_business_invitation",
+        "public.business_projects",
+        "public.client_workspaces",
+        "public.create_business_organization",
+        "public.has_org_role",
+        "public.is_org_member",
+        "public.org_role",
+        "public.organization_audit_log",
+        "public.organization_invitations",
+        "public.organization_members",
+        "public.organizations",
+        "public.profiles",
+        "public.shared_calculations"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/004_b6_builder.sql",
+      "name": "004_b6_builder.sql",
+      "prefix": "004",
+      "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899",
+      "candidatePosition": 4,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.create_custom_calculator",
+        "public.custom_calculator_runs",
+        "public.custom_calculator_versions",
+        "public.custom_calculators",
+        "public.has_org_role",
+        "public.is_org_member",
+        "public.organization_audit_log",
+        "public.organizations",
+        "public.profiles",
+        "public.publish_custom_calculator"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/005_b7_delivery.sql",
+      "name": "005_b7_delivery.sql",
+      "prefix": "005",
+      "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258",
+      "candidatePosition": 5,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.custom_calculators",
+        "public.embed_configs",
+        "public.embed_events",
+        "public.embed_leads",
+        "public.has_org_role",
+        "public.is_org_member",
+        "public.lead_consents",
+        "public.organizations",
+        "public.share_links"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/006_b8_api_automation.sql",
+      "name": "006_b8_api_automation.sql",
+      "prefix": "006",
+      "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5",
+      "candidatePosition": 6,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.api_usage_events",
+        "public.batch_calculation_jobs",
+        "public.business_api_keys",
+        "public.business_webhook_endpoints",
+        "public.consume_business_api_quota",
+        "public.custom_calculator_runs",
+        "public.custom_calculators",
+        "public.embed_leads",
+        "public.enqueue_business_webhook_event",
+        "public.has_org_role",
+        "public.is_org_member",
+        "public.organizations",
+        "public.profiles",
+        "public.queue_calculation_webhooks",
+        "public.queue_lead_webhooks",
+        "public.webhook_deliveries"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/007_b9_ai.sql",
+      "name": "007_b9_ai.sql",
+      "prefix": "007",
+      "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429",
+      "candidatePosition": 7,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.ai_usage_events",
+        "public.consume_ai_quota",
+        "public.finish_ai_usage",
+        "public.has_org_role",
+        "public.organization_members",
+        "public.organizations",
+        "public.profiles"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/008_b10_admin_factory.sql",
+      "name": "008_b10_admin_factory.sql",
+      "prefix": "008",
+      "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36",
+      "candidatePosition": 8,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.admin_alerts",
+        "public.calculator_bulk_jobs",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.calculator_review_events",
+        "public.enforce_calculator_publish_gate",
+        "public.has_platform_role",
+        "public.is_platform_admin",
+        "public.platform_admins",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/008b_b10_alert_automation.sql",
+      "name": "008b_b10_alert_automation.sql",
+      "prefix": "008b",
+      "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa",
+      "candidatePosition": 9,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "SUFFIX_ORDER_REQUIRES_OWNER_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "public.admin_alerts",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.has_platform_role",
+        "public.raise_failed_qa_alert",
+        "public.refresh_admin_review_alerts"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/009_country_preferences.sql",
+      "name": "009_country_preferences.sql",
+      "prefix": "009",
+      "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab",
+      "candidatePosition": 10,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "REPOSITORY_PRESENT_PRIOR_PRODUCTION_COLUMN_AND_LEDGER_ABSENT"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.user_preferences"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/010_b7_pro_workspace.sql",
+      "name": "010_b7_pro_workspace.sql",
+      "prefix": "010",
+      "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e",
+      "candidatePosition": 11,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.calculation_projects",
+        "public.profiles",
+        "public.saved_scenarios"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+      "name": "011_b8_free_save_quotas.sql",
+      "prefix": "011",
+      "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50",
+      "candidatePosition": 12,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "HISTORICAL_SQL_SYNTAX_INVALID"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql",
+        "002_b4_billing.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.calculation_history",
+        "public.enforce_calcumint_save_quotas",
+        "public.favorites",
+        "public.profiles"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/012_production_fk_indexes.sql",
+      "name": "012_production_fk_indexes.sql",
+      "prefix": "012",
+      "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2",
+      "candidatePosition": 13,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.batch_calculation_jobs",
+        "public.business_api_keys",
+        "public.business_projects",
+        "public.business_webhook_endpoints",
+        "public.calculator_bulk_jobs",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.calculator_review_events",
+        "public.client_workspaces",
+        "public.custom_calculator_runs",
+        "public.custom_calculator_versions",
+        "public.custom_calculators",
+        "public.embed_configs",
+        "public.embed_events",
+        "public.embed_leads",
+        "public.lead_consents",
+        "public.organization_audit_log",
+        "public.organization_invitations",
+        "public.organizations",
+        "public.share_links",
+        "public.shared_calculations",
+        "public.webhook_deliveries"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+      "name": "013_production_rpc_privilege_hardening_v2.sql",
+      "prefix": "013",
+      "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa",
+      "candidatePosition": 14,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "REVIEW_FUNCTION_EXECUTE_GRANTS_AND_DEFINER_OWNERS"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql",
+        "002_b4_billing.sql",
+        "003_b5_business.sql",
+        "004_b6_builder.sql",
+        "005_b7_delivery.sql",
+        "006_b8_api_automation.sql",
+        "007_b9_ai.sql",
+        "008_b10_admin_factory.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.accept_business_invitation",
+        "public.consume_ai_quota",
+        "public.create_business_organization",
+        "public.create_custom_calculator",
+        "public.finish_ai_usage",
+        "public.has_org_role",
+        "public.has_platform_role",
+        "public.is_org_member",
+        "public.is_platform_admin",
+        "public.org_role",
+        "public.publish_custom_calculator",
+        "public.refresh_admin_review_alerts",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+      "name": "014_production_entitlement_rpc_sync.sql",
+      "prefix": "014",
+      "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff",
+      "candidatePosition": 15,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "auth.uid",
+        "public.ai_usage_events",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.consume_ai_quota",
+        "public.create_business_organization",
+        "public.create_custom_calculator",
+        "public.custom_calculator_versions",
+        "public.custom_calculators",
+        "public.has_org_role",
+        "public.is_platform_admin",
+        "public.organization_audit_log",
+        "public.organization_members",
+        "public.organizations",
+        "public.profiles",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+      "name": "016_final_certification_evidence_gate.sql",
+      "prefix": "016",
+      "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e",
+      "candidatePosition": 16,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.is_platform_admin",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+      "name": "017_regulatory_rule_pack_evidence.sql",
+      "prefix": "017",
+      "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987",
+      "candidatePosition": 17,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.is_platform_admin",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+      "name": "018_harden_rule_pack_required_metadata.sql",
+      "prefix": "018",
+      "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66",
+      "candidatePosition": 18,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [
+        {
+          "line": 1,
+          "text": "-- Harden rulePackRequired parsing for databases where migration 017 is already applied."
+        }
+      ],
+      "dependencyCandidates": [
+        "017_regulatory_rule_pack_evidence.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.is_platform_admin",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+      "name": "019_authoritative_lifecycle_enforcement.sql",
+      "prefix": "019",
+      "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1",
+      "candidatePosition": 19,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "auth.uid",
+        "public.enforce_calculator_publish_gate",
+        "public.platform_admins",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/020_post_certification_revalidation.sql",
+      "name": "020_post_certification_revalidation.sql",
+      "prefix": "020",
+      "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1",
+      "candidatePosition": 20,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "auth.uid",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.enforce_calculator_publish_gate",
+        "public.enforce_qa_evidence_certification",
+        "public.platform_admins",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+      "name": "021_require_rule_pack_provenance.sql",
+      "prefix": "021",
+      "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc",
+      "candidatePosition": 21,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.is_platform_admin",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+      "name": "022_harden_reviewer_waiver_authority.sql",
+      "prefix": "022",
+      "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818",
+      "candidatePosition": 22,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "auth.uid",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.enforce_qa_evidence_authority",
+        "public.is_platform_admin",
+        "public.platform_admins",
+        "public.protect_active_ymyl_reviewer_authority",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/023_structured_source_evidence.sql",
+      "name": "023_structured_source_evidence.sql",
+      "prefix": "023",
+      "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01",
+      "candidatePosition": 23,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "auth.uid",
+        "auth.users",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.calculator_source_evidence",
+        "public.enforce_source_evidence_certification",
+        "public.has_platform_role",
+        "public.is_platform_admin",
+        "public.platform_admins",
+        "public.stamp_source_evidence_review",
+        "public.sync_source_evidence_count",
+        "public.validate_calculator_publish_gate"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+      "name": "024_reviewer_assignment_authority.sql",
+      "prefix": "024",
+      "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e",
+      "candidatePosition": 24,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "auth.uid",
+        "public.calculator_catalog_admin",
+        "public.enforce_reviewer_assignment_authority",
+        "public.platform_admins"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/025_derived_source_count_authority.sql",
+      "name": "025_derived_source_count_authority.sql",
+      "prefix": "025",
+      "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4",
+      "candidatePosition": 25,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [
+        {
+          "line": 3,
+          "text": "-- The migration 023 SECURITY DEFINER evidence-sync function remains the authoritative writer."
+        }
+      ],
+      "dependencyCandidates": [
+        "023_structured_source_evidence.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.role",
+        "public.calculator_catalog_admin",
+        "public.calculator_source_evidence",
+        "public.enforce_derived_source_count"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/026_publication_manifest_authority.sql",
+      "name": "026_publication_manifest_authority.sql",
+      "prefix": "026",
+      "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42",
+      "candidatePosition": 26,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.calculator_catalog_admin",
+        "public.list_published_calculator_manifest"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+      "name": "027_publication_trigger_privilege_hardening.sql",
+      "prefix": "027",
+      "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070",
+      "candidatePosition": 27,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.enforce_calculator_publish_gate",
+        "public.enforce_derived_source_count",
+        "public.enforce_qa_evidence_authority",
+        "public.enforce_qa_evidence_certification",
+        "public.enforce_reviewer_assignment_authority",
+        "public.enforce_source_evidence_certification",
+        "public.protect_active_ymyl_reviewer_authority",
+        "public.stamp_source_evidence_review",
+        "public.sync_source_evidence_count"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+      "name": "028_source_evidence_reviewer_index.sql",
+      "prefix": "028",
+      "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a",
+      "candidatePosition": 28,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.calculator_source_evidence"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+      "name": "029_account_rls_auth_initplan.sql",
+      "prefix": "029",
+      "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f",
+      "candidatePosition": 29,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "PRIOR_LEDGER_HASH_UNRESOLVED"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculation_history",
+        "public.favorites",
+        "public.profiles",
+        "public.user_preferences"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": {
+        "name": "account_rls_auth_initplan",
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "status": "UNRESOLVED_DIFFERENCE",
+        "repositorySha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f",
+        "commentStrippedSha256": "641991f92a3f1f638ef1237d2d0fa5de6e3e513c46a284a092cb59aca6fd4bb8",
+        "ledgerSha256": "b9e21c71f2ff4e4d097df066181256e9a36834d505b80e24e080530c267840f0"
+      }
+    },
+    {
+      "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+      "name": "030_billing_ai_rls_auth_initplan.sql",
+      "prefix": "030",
+      "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0",
+      "candidatePosition": 30,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "002_b4_billing.sql",
+        "007_b9_ai.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.ai_usage_events",
+        "public.billing_customers",
+        "public.subscriptions"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+      "name": "031_admin_identity_rls_auth_initplan.sql",
+      "prefix": "031",
+      "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4",
+      "candidatePosition": 31,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "008_b10_admin_factory.sql",
+        "022_harden_reviewer_waiver_authority.sql",
+        "023_structured_source_evidence.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculator_bulk_jobs",
+        "public.calculator_catalog_admin",
+        "public.calculator_review_events",
+        "public.calculator_source_evidence",
+        "public.has_platform_role",
+        "public.is_platform_admin",
+        "public.platform_admins"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+      "name": "032_atomic_reviewer_qa_audit.sql",
+      "prefix": "032",
+      "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1",
+      "candidatePosition": 32,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.calculator_review_events",
+        "public.platform_admins",
+        "public.record_calculator_qa_decision"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+      "name": "032_business_builder_rls_auth_initplan.sql",
+      "prefix": "032",
+      "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9",
+      "candidatePosition": 33,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.business_api_keys",
+        "public.business_projects",
+        "public.business_webhook_endpoints",
+        "public.client_workspaces",
+        "public.custom_calculator_versions",
+        "public.custom_calculators",
+        "public.embed_configs",
+        "public.has_org_role",
+        "public.organization_invitations",
+        "public.share_links",
+        "public.shared_calculations"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+      "name": "033_atomic_reviewer_assignment_audit.sql",
+      "prefix": "033",
+      "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8",
+      "candidatePosition": 34,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.assign_calculator_reviewer",
+        "public.calculator_catalog_admin",
+        "public.calculator_review_events",
+        "public.has_platform_role",
+        "public.is_active_review_capable_admin",
+        "public.platform_admins"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+      "name": "033_pro_workspace_rls_auth_initplan.sql",
+      "prefix": "033",
+      "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f",
+      "candidatePosition": 35,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "010_b7_pro_workspace.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculation_projects",
+        "public.profiles",
+        "public.saved_scenarios"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+      "name": "034_atomic_lifecycle_transition_audit.sql",
+      "prefix": "034",
+      "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90",
+      "candidatePosition": 36,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculator_catalog_admin",
+        "public.calculator_review_events",
+        "public.platform_admins",
+        "public.transition_calculator_with_audit"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+      "name": "034_billing_webhook_event_privileges.sql",
+      "prefix": "034",
+      "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4",
+      "candidatePosition": 37,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.billing_webhook_events"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": {
+        "name": "billing_webhook_event_privileges",
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "status": "COMMENT_STRIPPED_MATCH",
+        "repositorySha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4",
+        "commentStrippedSha256": "761759a22f2a52b165b4d31294b3ba4bac69feb7a3b420cacfb0278d4881a042",
+        "ledgerSha256": "761759a22f2a52b165b4d31294b3ba4bac69feb7a3b420cacfb0278d4881a042"
+      }
+    },
+    {
+      "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+      "name": "035_atomic_catalog_creation.sql",
+      "prefix": "035",
+      "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47",
+      "candidatePosition": 38,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculator_catalog_admin",
+        "public.calculator_qa_checks",
+        "public.calculator_review_events",
+        "public.create_catalog_calculator_with_audit",
+        "public.platform_admins"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+      "name": "035_split_overlapping_write_policies.sql",
+      "prefix": "035",
+      "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d",
+      "candidatePosition": 39,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [
+        "DUPLICATE_PREFIX_REQUIRES_EXACT_FILENAME_MANIFEST"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.calculator_qa_checks",
+        "public.embed_configs",
+        "public.has_org_role",
+        "public.has_platform_role",
+        "public.share_links"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+      "name": "036_consolidate_ai_usage_read_policy.sql",
+      "prefix": "036",
+      "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5",
+      "candidatePosition": 40,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [
+        {
+          "line": 4,
+          "text": "-- Keep auth.uid() scalar-initialized as established by migration 030."
+        }
+      ],
+      "dependencyCandidates": [
+        "030_billing_ai_rls_auth_initplan.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.ai_usage_events",
+        "public.has_org_role"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+      "name": "037_builder_publish_business_entitlement.sql",
+      "prefix": "037",
+      "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b",
+      "candidatePosition": 41,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "HISTORICAL_MIGRATION",
+      "ownerFlags": [],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.custom_calculator_versions",
+        "public.custom_calculators",
+        "public.enforce_custom_calculator_publication_entitlement",
+        "public.has_org_role",
+        "public.organization_audit_log",
+        "public.profiles",
+        "public.publish_custom_calculator"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    },
+    {
+      "path": "supabase/migrations/038_client_account_billing_privileges.sql",
+      "name": "038_client_account_billing_privileges.sql",
+      "prefix": "038",
+      "sha256": "27a0ab173957d938d6b3a8ed2fe3d2dfe6280ecec6da0eb9aa4c6cf640b8e708",
+      "candidatePosition": 42,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "REVIEW_ONLY_UNAPPLIED_PROPOSAL",
+        "REVIEW_EFFECTIVE_INHERITED_DEFAULT_AND_COLUMN_ACLS"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql",
+        "002_b4_billing.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.billing_customers",
+        "public.profiles",
+        "public.subscriptions",
+        "public.user_preferences"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "priorLedgerFingerprint": null
+    }
+  ],
+  "proposals": [
+    {
+      "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+      "name": "20261020-v1-legacy-save-quota-repair.sql",
+      "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION",
+        "VERSIONED_REVIEW_ARTIFACT_NOT_ASSIGNED_DEPLOYMENT_LEDGER_ID",
+        "MISSING_CONTRACT_ONLY_REFUSES_EXISTING_FUNCTION_OR_TRIGGERS",
+        "PRESERVES_LEGACY_NONATOMIC_QUOTA_BEHAVIOR"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql",
+        "002_b4_billing.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.calculation_history",
+        "public.enforce_calcumint_save_quotas",
+        "public.favorites",
+        "public.profiles"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+      "name": "20261021-v1-atomic-object-privileges.sql",
+      "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.apply_verified_billing_event_v1",
+        "public.assign_calculator_reviewer",
+        "public.atomic_account_plan",
+        "public.atomic_snapshot_valid",
+        "public.batch_request_receipts",
+        "public.billing_account_fences",
+        "public.billing_atomic_completions",
+        "public.capture_verified_embed_lead_v1",
+        "public.create_catalog_calculator_with_audit",
+        "public.embed_lead_receipts",
+        "public.guard_atomic_history",
+        "public.guard_atomic_workspace",
+        "public.is_active_review_capable_admin",
+        "public.membership_identity_fence_v1",
+        "public.organization_owner_fence_v1",
+        "public.read_billing_fence_v1",
+        "public.read_verified_batch_job_v1",
+        "public.read_verified_billing_completion_v1",
+        "public.record_calculator_qa_decision",
+        "public.save_calculation_history_atomic",
+        "public.save_project_scenario_atomic",
+        "public.submit_verified_batch_job_v1",
+        "public.transition_calculator_with_audit"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+      "name": "20261021-v1-authentic-account-security.sql",
+      "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.billing_customers",
+        "public.has_org_role",
+        "public.is_org_member",
+        "public.membership_identity_fence_v1",
+        "public.org_role",
+        "public.organization_members",
+        "public.organization_owner_fence_v1",
+        "public.organizations",
+        "public.profiles",
+        "public.subscriptions",
+        "public.user_preferences"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/API-RLS-HELPER-EXECUTE.sql",
+      "name": "API-RLS-HELPER-EXECUTE.sql",
+      "sha256": "11d26ff8339e614256fa2faab4c2c6f243ef1cdeec6d080d1ef08ff87f5c5ccf",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "003_b5_business.sql",
+        "006_b8_api_automation.sql",
+        "013_production_rpc_privilege_hardening_v2.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.has_org_role",
+        "public.is_org_member"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+      "name": "ATOMIC-ACCOUNT-HISTORY.sql",
+      "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql",
+        "002_b4_billing.sql",
+        "010_b7_pro_workspace.sql",
+        "011_b8_free_save_quotas.sql",
+        "029_account_rls_auth_initplan.sql",
+        "033_pro_workspace_rls_auth_initplan.sql",
+        "038_client_account_billing_privileges.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "public.atomic_account_plan",
+        "public.atomic_snapshot_valid",
+        "public.calculation_history",
+        "public.calculation_projects",
+        "public.guard_atomic_history",
+        "public.guard_atomic_workspace",
+        "public.profiles",
+        "public.save_calculation_history_atomic",
+        "public.save_project_scenario_atomic",
+        "public.saved_scenarios"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+      "name": "ATOMIC-API-QUOTA.sql",
+      "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [
+        {
+          "line": 1,
+          "text": "-- PROPOSAL ONLY: same request-based quota semantics/signature as migration 006."
+        }
+      ],
+      "dependencyCandidates": [
+        "003_b5_business.sql",
+        "006_b8_api_automation.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.api_usage_events",
+        "public.business_api_keys",
+        "public.consume_business_api_quota",
+        "public.profiles"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+      "name": "ATOMIC-BATCH-JOB.sql",
+      "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "003_b5_business.sql",
+        "006_b8_api_automation.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.api_usage_events",
+        "public.batch_calculation_jobs",
+        "public.batch_request_receipts",
+        "public.business_api_keys",
+        "public.custom_calculator_versions",
+        "public.custom_calculators",
+        "public.organizations",
+        "public.profiles",
+        "public.read_verified_batch_job_v1",
+        "public.submit_verified_batch_job_v1"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+      "name": "ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+      "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "001_b3_accounts.sql",
+        "002_b4_billing.sql",
+        "034_billing_webhook_event_privileges.sql",
+        "038_client_account_billing_privileges.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "auth.uid",
+        "auth.users",
+        "public.apply_verified_billing_event_v1",
+        "public.billing_account_fences",
+        "public.billing_atomic_completions",
+        "public.billing_customers",
+        "public.billing_webhook_events",
+        "public.profiles",
+        "public.read_billing_fence_v1",
+        "public.read_verified_billing_completion_v1",
+        "public.subscriptions"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [
+        {
+          "block": 1,
+          "sha256": "7a62826667624509c58728d98580c57bad7614b01159692fbe1980bf7c2acda5",
+          "startsAtLine": 19
+        }
+      ],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+      "name": "ATOMIC-EMBED-LEAD-CONSENT.sql",
+      "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "003_b5_business.sql",
+        "004_b6_builder.sql",
+        "005_b7_delivery.sql",
+        "006_b8_api_automation.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.capture_verified_embed_lead_v1",
+        "public.custom_calculators",
+        "public.embed_configs",
+        "public.embed_events",
+        "public.embed_lead_receipts",
+        "public.embed_leads",
+        "public.lead_consents",
+        "public.organizations"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    },
+    {
+      "path": "docs/architecture/proposals/MEMBERSHIP-ADMIN-FENCING.sql",
+      "name": "MEMBERSHIP-ADMIN-FENCING.sql",
+      "sha256": "441e03f864004c5abfadf6f0840e18938e793c9ce7b73c3af766d51bbfebb912",
+      "prefix": null,
+      "deployedState": "UNKNOWN",
+      "repositoryKind": "REVIEW_ONLY_PROPOSAL",
+      "ownerFlags": [
+        "UNAPPLIED_PROPOSAL_REQUIRES_SEPARATE_OWNER_ADOPTION"
+      ],
+      "explicitReferences": [],
+      "dependencyCandidates": [
+        "003_b5_business.sql"
+      ],
+      "dependencyAuthority": "MANUAL_BOUNDED_REVIEW_CANDIDATES_NOT_COMPLETE_GRAPH",
+      "qualifiedObjectReferences": [
+        "public.has_org_role",
+        "public.membership_identity_fence_v1",
+        "public.org_role",
+        "public.organization_members",
+        "public.organization_owner_fence_v1",
+        "public.organizations"
+      ],
+      "qualifiedObjectReferenceAuthority": "LEXICAL_ONLY_NOT_PARSED_DEPENDENCIES",
+      "sqlBlocks": [],
+      "hasLiteralAbortGuard": true,
+      "guardAuthority": "LEXICAL_INDICATOR_ONLY_NOT_EXECUTION_PROOF"
+    }
+  ]
+}
