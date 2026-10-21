@@ -77,6 +77,22 @@ try {
     if(snapshot.output.periodProjection){const last=snapshot.output.periodProjection.rows.at(-1);for(const key of Object.keys(canonical))if(key in last.values)assert.equal(last.values[key],canonical[key],'terminal projected output '+key);}
     if(slug==='mortgage-payment')assert.equal(snapshot.output.periodProjection,undefined,'mortgage export has no invented period rows');
     journey.downloads=[json.name,csv.name,pdf.name];journey.checks.push('actual JSON/CSV engine parity and PDF canonical identity/version downloads');
+    await js(`document.querySelector('[aria-label="Scenario workspace"] details').open=true`);
+    await click('Capture baseline A');
+    const firstValue=await js(`document.querySelector('.calculator-ui input').value`);
+    await inputFirst(String(Number(firstValue)+1));await click('Capture scenario B');await click('Capture scenario C');
+    const reportPrior=await readdir(journeyDownloads);
+    await click('Export scenario report JSON');const scenarioJson=await downloaded('.json',reportPrior),scenarioReport=JSON.parse(scenarioJson.content);
+    assert.deepEqual(scenarioReport.scenarios.map(row=>row.slot),['A','B','C'],'all three immutable captures in report');
+    assert.deepEqual(scenarioReport.scenarios[0].output,snapshot.output,'scenario baseline equals exported engine output');
+    for(const captured of scenarioReport.scenarios){const actual=await js(`window.__reference.oracle.evaluate(${JSON.stringify(captured.input)})`);for(const [key,value]of Object.entries(actual))assert.deepEqual(captured.output[key],value,'scenario report uses actual engine output');}
+    for(const metric of scenarioReport.comparison.metrics)for(const cell of metric.cells)if(cell.unavailable===null)assert.equal(cell.difference,cell.value-metric.cells[0].value,'report difference is captured subtraction');
+    await click('Export scenario report CSV');const scenarioCsv=await downloaded('.csv',reportPrior);assert(scenarioCsv.content.includes('differenceFromA'),'report CSV contains differences');
+    await click('Export scenario report PDF');const scenarioPdf=await downloaded('.pdf',reportPrior);assert(scenarioPdf.content.startsWith('%PDF-1.4'),'scenario genuine PDF');assert(scenarioPdf.content.includes('SCENARIO COMPARISON'),'scenario PDF report identity');assert(scenarioPdf.content.includes('PDF/UA conformance: UNVERIFIED'),'PDF access limitations explicit');
+    assert(!(await state()).overflow,'scenario reports contained at viewport');
+    assert(await js(`[...document.querySelectorAll('.calculator-scenarios svg')].every(svg=>svg.getAttribute('role')==='img'&&svg.getAttribute('aria-label')&&svg.getAttribute('aria-describedby'))`),'scenario charts have accessible alternatives');
+    await inputFirst(firstValue);journey.downloads.push(scenarioJson.name,scenarioCsv.name,scenarioPdf.name);journey.checks.push('all-six A/B/C engine/report parity, differences, charts, actual JSON/CSV/PDF downloads and narrow containment');
+
    }else if(accountSupported){assert(!advanced.buttons.some(b=>b.name==='Export JSON'||b.name==='Export CSV'||b.name==='Export PDF'),'free exports locked');}
 
    if(slug==='sip-calculator'){await click('Solve monthly contribution');await until(`document.querySelector('.result-box[role=status] strong')?.textContent===window.__reference.oracle.reverseContribution`,'SIP certified reverse solver');assert.equal((await state()).analysis.includes('Goal Solver'),paid,'SIP reverse Goal Solver plan gate');await click('Project future value');await until(`document.querySelector('.result-box[role=status] strong')?.textContent===window.__reference.oracle.expectedHeadline`,'SIP forward recovery');journey.checks.push('SIP actual reverse solver and paid Goal Solver gating');}

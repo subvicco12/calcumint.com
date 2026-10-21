@@ -67,4 +67,58 @@ describe('deterministic calculation PDF', () => {
     expect(() => serializeCalculationPdf(snapshot, { methodology: 1 } as never)).toThrow(/PDF text/);
     expect(() => serializeCalculationPdf(snapshot, { formulas: [{ expression: 'invented' }] } as never)).toThrow(/PDF formula/);
   });
+  it('renders vector charts with exact signed values and declared units', () => {
+    const pdf = decode(serializeCalculationPdf(snapshot, { charts: [{ title: 'Signed chart', unit: 'm', points: [{ label: 'negative', value: -3 }, { label: 'zero', value: -0 }, { label: 'tiny', value: 1e-300 }] }] }));
+    for (const text of ['Signed chart', 'negative = -3 [m]', 'zero = -0 [m]', 'tiny = 1e-300 [m]', 'Linear scale', ' re f']) expect(pdf).toContain(text);
+    expect(pdf).not.toContain('NaN');
+    expect(pdf).not.toMatch(/\d[eE][-+]\d+ 6 re f/);
+  });
+
+  it('renders complete wrapped tables with repeated headings on continuation pages', () => {
+    const rows = Array.from({ length: 130 }, (_, index) => [String(index), `row-${index}-` + 'x'.repeat(100)]);
+    const pdf = decode(serializeCalculationPdf(snapshot, { tables: [{ title: 'Schedule', columns: ['Period', 'Detail'], rows }] }));
+    expect(pdf).toContain('row-129-');
+    expect([...pdf.matchAll(/Schedule/g)].length).toBeGreaterThan(2);
+    expect([...pdf.matchAll(/Period/g)].length).toBeGreaterThan(2);
+    expect(pdf).toContain(' | ');
+  });
+
+  it('declares document title and language without claiming tagging or PDF/UA conformance', () => {
+    const pdf = decode(serializeCalculationPdf(snapshot, { title: 'Declared title', language: 'en-GB' }));
+    expect(pdf).toContain('/Lang (en-GB)');
+    expect(pdf).toContain('/Title (Declared title)');
+    expect(pdf).toContain('PDF/UA conformance: UNVERIFIED');
+    expect(pdf).not.toContain('/Marked true');
+    expect(pdf).not.toContain('/StructTreeRoot');
+  });
+
+  it.each([
+    { charts: [{ title: 'Bad', points: [{ label: 'a', value: '1' }] }] },
+    { charts: [{ title: 'Bad', unit: 3, points: [] }] },
+    { tables: [{ title: 'Bad', columns: ['a'], rows: [['a', 'b']] }] },
+    { tables: [{ title: 'Bad', columns: [], rows: [] }] },
+    { language: 'not a language!' },
+  ])('rejects invalid report sections: %s', options => {
+    expect(() => serializeCalculationPdf(snapshot, options as never)).toThrow();
+  });
+
+  it('places report and trust sections before a complete raw appendix', () => {
+    const pdf = decode(serializeCalculationPdf({ ...snapshot, output: { rows: Array.from({ length: 500 }, (_, i) => ({ value: i })) } }, { methodology: 'Trust method first', sources: [{ label: 'Trust source first' }], tables: [{ title: 'Comparison first', columns: ['Result'], rows: [['Summary']] }], charts: [{ title: 'Chart first', points: [{ label: 'result', value: 1 }] }] }));
+    const raw = pdf.indexOf('output["rows"][0]');
+    for (const text of ['Trust method first', 'Trust source first', 'Comparison first', 'Chart first', 'COMPLETE RAW APPENDIX']) expect(pdf.indexOf(text)).toBeLessThan(raw);
+    expect(pdf).toContain('output["rows"][499]["value"] = 499');
+    expect([...pdf.matchAll(/output\["rows"\]\[\d+\]\["value"\]/g)]).toHaveLength(500);
+  });
+
+  it('keeps continuation headings bounded for very long titles and column labels', () => {
+    const long = 'LONG'.repeat(1320);
+    const pdf = decode(serializeCalculationPdf(snapshot, { tables: [{ title: long, columns: [long + 'COLUMNTAIL', 'Second'], rows: Array.from({ length: 100 }, (_, i) => [String(i), `LAST-${i}`]) }], charts: [{ title: long + 'CHARTTAIL', points: Array.from({ length: 100 }, (_, i) => ({ label: `POINT-${i}`, value: i })) }] }));
+    const count = Number(/\/Type \/Pages \/Count (\d+)/.exec(pdf)![1]);
+    expect(count).toBeLessThan(20);
+    expect(pdf).toContain('COLUMNTAIL');
+    expect(pdf).toContain('CHARTTAIL');
+    expect(pdf).toContain('LAST-99');
+    expect(pdf).toContain('POINT-99 = 99');
+  });
+
 });
