@@ -96,6 +96,9 @@ try {
   await assert.rejects(sql(proposal), /PROPOSAL ONLY/);
   // Remove the guard only in this isolated container's stdin, never the document.
   await sql(proposal.replace(guard, ''));
+  await sql('CREATE DATABASE account_schema_contract;');
+  const { verifyAccountSchemaContract } = await import('./account-schema-contract-postgres.mjs');
+  await verifyAccountSchemaContract(text => command(['exec','-i',name,'psql','-h','127.0.0.1','-X','-qAt','-v','ON_ERROR_STOP=1','-U','postgres','-d','account_schema_contract'], text));
   await sql('CREATE DATABASE client_privileges;');
   await verifyClientPrivileges(text => command(['exec','-i',name,'psql','-h','127.0.0.1','-X','-qAt','-v','ON_ERROR_STOP=1','-U','postgres','-d','client_privileges'], text), proposal.replace(guard, ''));
   await sql('GRANT SELECT, INSERT ON public.billing_webhook_events TO service_role;');

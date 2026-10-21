@@ -54,6 +54,8 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Test fail-closed account schema preflight (offline)
         run: node --test tests/billing/account-schema-preflight.test.mjs tests/billing/migration-inventory.test.mjs tests/billing/migration-fingerprints.test.mjs
+      - name: Test account contract drift in isolated PostgreSQL 17
+        run: node tests/billing/account-schema-contract.postgres.mjs
       - name: Test guarded proposal in disposable offline PostgreSQL
         run: node tests/billing/atomic-postgres.mjs
       - name: Reconcile exact migration identities and combined release contracts
