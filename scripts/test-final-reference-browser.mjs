@@ -4,6 +4,13 @@ import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {startDraftPreview} from './draft-preview.mjs';
+// Independent decimal subtraction oracle using integer arithmetic, not the report helper.
+function decimalDifference(value,baseline){
+ const parts=n=>{const [mantissa,exponent='0']=String(n).toLowerCase().split('e');const fraction=mantissa.split('.')[1]?.length??0;return{coefficient:BigInt(mantissa.replace('.','')),exponent:Number(exponent)-fraction}};
+ const a=parts(value),b=parts(baseline),exponent=Math.min(a.exponent,b.exponent);
+ const coefficient=a.coefficient*10n**BigInt(a.exponent-exponent)-b.coefficient*10n**BigInt(b.exponent-exponent);
+ return Number(`${coefficient}e${exponent}`);
+}
 const artifacts=process.env.FINAL_REFERENCE_ARTIFACTS||'/workspace/review-artifacts/final-product-rc-2026-10-20/reference-browser';
 await mkdir(artifacts,{recursive:true});
 const downloads=path.join(artifacts,'browser-downloads');await rm(downloads,{recursive:true,force:true});await mkdir(downloads,{recursive:true});
@@ -86,7 +93,7 @@ try {
     assert.deepEqual(scenarioReport.scenarios.map(row=>row.slot),['A','B','C'],'all three immutable captures in report');
     assert.deepEqual(scenarioReport.scenarios[0].output,snapshot.output,'scenario baseline equals exported engine output');
     for(const captured of scenarioReport.scenarios){const actual=await js(`window.__reference.oracle.evaluate(${JSON.stringify(captured.input)})`);for(const [key,value]of Object.entries(actual))assert.deepEqual(captured.output[key],value,'scenario report uses actual engine output');}
-    for(const metric of scenarioReport.comparison.metrics)for(const cell of metric.cells)if(cell.unavailable===null)assert.equal(cell.difference,cell.value-metric.cells[0].value,'report difference is captured subtraction');
+    for(const metric of scenarioReport.comparison.metrics)for(const cell of metric.cells)if(cell.unavailable===null)assert.equal(cell.difference,decimalDifference(cell.value,metric.cells[0].value),'report difference equals independent canonical-decimal integer subtraction');
     await click('Export scenario report CSV');const scenarioCsv=await downloaded('.csv',reportPrior);assert(scenarioCsv.content.includes('differenceFromA'),'report CSV contains differences');
     await click('Export scenario report PDF');const scenarioPdf=await downloaded('.pdf',reportPrior);assert(scenarioPdf.content.startsWith('%PDF-1.4'),'scenario genuine PDF');assert(scenarioPdf.content.includes('SCENARIO COMPARISON'),'scenario PDF report identity');assert(scenarioPdf.content.includes('PDF/UA conformance: UNVERIFIED'),'PDF access limitations explicit');if(slug==='bmi-calculator')assert(scenarioPdf.content.includes('screening measure'),'BMI captured screening limitation retained');if(slug==='mortgage-payment')assert(scenarioPdf.content.includes('Property taxes'),'Mortgage captured excluded-cost warning retained');
     assert(!(await state()).overflow,'scenario reports contained at viewport');

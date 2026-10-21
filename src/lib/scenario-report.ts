@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import {scenarioSetPayload,type CapturedScenario,type ScenarioSlot} from './scenario-set';
 import {serializeCalculationCsv} from './calculation-export';
 
@@ -7,6 +8,8 @@ export type ScenarioReport=Readonly<{
  schemaVersion:1;captures:ReturnType<typeof scenarioSetPayload>;metrics:readonly ScenarioReportMetric[];
  charts:readonly Readonly<{field:string;title:string;unit?:string;points:readonly Readonly<{label:string;value:number}>[]}>[];
 }>;
+// 700 significant digits span the canonical decimal forms of all finite JS numbers.
+const ReportDecimal=Decimal.clone({precision:700});
 export const scenarioNumber=(value:number):string=>Object.is(value,-0)?'-0':String(value);
 /** Presentation-only differences; no engine re-evaluation, unit inference or historical mutation. */
 export function createScenarioReport(rows:readonly CapturedScenario[]):ScenarioReport {
@@ -20,7 +23,7 @@ export function createScenarioReport(rows:readonly CapturedScenario[]):ScenarioR
    const other=row.displayMetadata?.outputs[field];
    const same=context?.label===other?.label&&context?.unit===other?.unit;
    let unavailable:string|null=!Object.hasOwn(row.output,field)?'Not present in this snapshot':value===null?'Not a numeric value':!same?'Display context differs from baseline':typeof baseline.output[field]!=='number'?'No numeric baseline':null;
-   const difference=unavailable===null?value!-(baseline.output[field] as number):null;
+   const difference=unavailable===null?new ReportDecimal(value!).minus(baseline.output[field] as number).toNumber():null;
    if(difference!==null&&!Number.isFinite(difference))unavailable='Difference exceeds finite numeric range';
    return Object.freeze({slot:row.slot,...(other?{label:other.label,...(other.unit!==undefined?{unit:other.unit}:{})}:{}),value,difference:unavailable===null?difference:null,unavailable});
   });
