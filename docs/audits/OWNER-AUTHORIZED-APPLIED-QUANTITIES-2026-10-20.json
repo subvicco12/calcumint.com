@@ -1,0 +1,222 @@
+{
+  "release": "HOLD",
+  "ownerAuthorization": "Current user instruction authorizes only eligible non-YMYL unregistered DRAFT implementation; not blanket approval of 195 proposals.",
+  "sourcePackageSha256": "b43f1703b8fbea870ea14d7a61f19ec2ed998cdc9f6de7709ce9513a300bab38",
+  "eligibleIds": [
+    205,
+    232,
+    233,
+    435,
+    441,
+    481,
+    484,
+    487,
+    498,
+    529
+  ],
+  "eligibleCount": 10,
+  "counts": {
+    "EXCLUDED_FINANCIAL_OR_SPECIALIST": 173,
+    "BLOCKED_METHODOLOGY_OR_SCOPE": 50,
+    "ELIGIBLE_UNREGISTERED_DRAFT": 10,
+    "EXCLUDED_UNRESOLVED_CONTRACT": 4,
+    "EXCLUDED_EXISTING_OR_AMBIGUOUS_IDENTITY": 8
+  },
+  "thisBatchIds": [
+    481,
+    484,
+    487,
+    498,
+    529
+  ],
+  "rows": [
+    {
+      "masterId": 481,
+      "name": "Solar Panel Calculator",
+      "domain": "Energy & Environment",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "82ae7b61c3e5b7df1b1a1f168ea2d81ba38c2c05f68e93e2d84011c0c700954b",
+      "canonicalProposal": {
+        "action": "PROPOSE_NEW_OR_RESCOPED_CONTRACT_AFTER_APPROVAL",
+        "proposedKey": "energy.solar-panel-sizing",
+        "proposedSlug": "solar-panel-calculator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [
+          {
+            "key": "energy.solar-daily-energy",
+            "slug": "solar-daily-energy-calculator",
+            "version": 1,
+            "path": "src/calculators/energy/catalog-batch-1.ts",
+            "revision": "7f31398fa640f193a1bf199596f7024a1bc58028",
+            "presence": "CURRENT_REGISTERED_RELATED_CONTRACT_NOT_APPROVED_MASTER_BINDING",
+            "sourceSha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48"
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "masterId": 481,
+        "eligible": true,
+        "reason": "Existing solar-daily-energy only computes forward generation from supplied size. New explicit target sizing and integer panel ceiling are absent from current source and scoped all-ref history.",
+        "path": "src/calculators/energy/draft-master-481.ts",
+        "export": "solarPanelSizingDraftCalculator",
+        "status": "DRAFT_UNREGISTERED",
+        "version": 1,
+        "testCount": 30
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 484,
+      "name": "EV Charging Energy Calculator",
+      "domain": "Energy & Environment",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "08bdd200e0ac96846e4d61750aecaeab3dbd812c5ce7eb8b85b74432581c4f53",
+      "canonicalProposal": {
+        "action": "PROPOSE_NEW_OR_RESCOPED_CONTRACT_AFTER_APPROVAL",
+        "proposedKey": "energy.ev-charging-energy",
+        "proposedSlug": "ev-charging-energy-calculator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [
+          {
+            "key": "automotive.ev-charging-cost",
+            "slug": "ev-charging-cost-calculator",
+            "version": 1,
+            "path": "src/calculators/energy/catalog-batch-1.ts",
+            "revision": "7f31398fa640f193a1bf199596f7024a1bc58028",
+            "presence": "CURRENT_REGISTERED_RELATED_CONTRACT_NOT_APPROVED_MASTER_BINDING",
+            "sourceSha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48"
+          },
+          {
+            "key": "automotive.ev-trip-energy",
+            "slug": "ev-trip-energy-calculator",
+            "version": 1,
+            "path": "src/calculators/energy/catalog-batch-1.ts",
+            "revision": "7f31398fa640f193a1bf199596f7024a1bc58028",
+            "presence": "CURRENT_REGISTERED_RELATED_CONTRACT_NOT_APPROVED_MASTER_BINDING",
+            "sourceSha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48"
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "masterId": 484,
+        "eligible": true,
+        "reason": "Existing charging-cost engine computes money and trip-energy computes traction energy; neither returns explicit battery/wall/loss decomposition.",
+        "path": "src/calculators/energy/draft-master-484.ts",
+        "export": "evChargingEnergyDraftCalculator",
+        "status": "DRAFT_UNREGISTERED",
+        "version": 1,
+        "testCount": 17
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 487,
+      "name": "Rainwater Harvesting Calculator",
+      "domain": "Energy & Environment",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "56853a45752a13a0ac5e80df825d97bf07436112a017c7f6267b11291c22e24d",
+      "canonicalProposal": {
+        "action": "PROPOSE_NEW_OR_RESCOPED_CONTRACT_AFTER_APPROVAL",
+        "proposedKey": "energy.rainwater-harvesting",
+        "proposedSlug": "rainwater-harvesting-calculator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [
+          {
+            "key": "earth-science.rainfall-volume",
+            "slug": "rainfall-volume-calculator",
+            "version": 1,
+            "path": "src/calculators/earth-science/catalog-batch-1.ts",
+            "revision": "7f31398fa640f193a1bf199596f7024a1bc58028",
+            "presence": "CURRENT_REGISTERED_RELATED_CONTRACT_NOT_APPROVED_MASTER_BINDING",
+            "sourceSha256": "65b3ecdb748ac4dc042d98be0f413d7e5fbdab7378a73a8573848ed7cc641220"
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "masterId": 487,
+        "eligible": true,
+        "reason": "No current or scoped historical rainwater harvesting volume engine found. Explicit constant coefficient scalar volume contract is complete.",
+        "path": "src/calculators/energy/draft-master-487.ts",
+        "export": "rainwaterHarvestingDraftCalculator",
+        "status": "DRAFT_UNREGISTERED",
+        "version": 1,
+        "testCount": 23
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 498,
+      "name": "Ingredient Weight/Volume Converter",
+      "domain": "Food & Cooking",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "2873876cc78c941f28e94140f9cd4adda976d6b6b499ef355d9e0a4827897548",
+      "canonicalProposal": {
+        "action": "PROPOSE_NEW_OR_RESCOPED_CONTRACT_AFTER_APPROVAL",
+        "proposedKey": "food.ingredient-mass-volume",
+        "proposedSlug": "ingredient-weight-volume-converter",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": [
+          {
+            "key": "conversion.cooking-measurement",
+            "slug": "cooking-measurement-converter",
+            "version": 1,
+            "path": "src/calculators/conversion/catalog-batch-4.ts",
+            "revision": "7f31398fa640f193a1bf199596f7024a1bc58028",
+            "presence": "CURRENT_REGISTERED_RELATED_CONTRACT_NOT_APPROVED_MASTER_BINDING",
+            "sourceSha256": "4358ecb067e980b3f7070f470eaba300f95ca9025046297fa9bd6ddc95034883"
+          }
+        ]
+      },
+      "reviewEvidence": {
+        "masterId": 498,
+        "eligible": true,
+        "reason": "Existing cooking-volume conversion excludes mass-volume. Explicit user-supplied density conversion has complete directional scalar contract.",
+        "path": "src/calculators/food/draft-master-498.ts",
+        "export": "ingredientWeightVolumeDraftCalculator",
+        "status": "DRAFT_UNREGISTERED",
+        "version": 1,
+        "testCount": 17
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    },
+    {
+      "masterId": 529,
+      "name": "Power-to-Weight Ratio Calculator",
+      "domain": "Sports",
+      "eligibility": "ELIGIBLE_UNREGISTERED_DRAFT",
+      "reason": "Owner conditional authorization; distinct scoped identity, complete deterministic contract and independently verifiable goldens.",
+      "specificationSha256": "c798150ee8551c6785cfec2fa8dffd93bb9317820f52a8d57161fab75fd90392",
+      "canonicalProposal": {
+        "action": "PROPOSE_NEW_OR_RESCOPED_CONTRACT_AFTER_APPROVAL",
+        "proposedKey": "sports.power-weight-ratio",
+        "proposedSlug": "power-to-weight-ratio-calculator",
+        "status": "PROPOSAL_ONLY",
+        "existingBindings": []
+      },
+      "reviewEvidence": {
+        "masterId": 529,
+        "eligible": true,
+        "reason": "No current or scoped historical power/mass ratio engine found. Explicit measured power and mass scalar contract avoids fitness inference.",
+        "path": "src/calculators/sports/draft-master-529.ts",
+        "export": "powerWeightRatioDraftCalculator",
+        "status": "DRAFT_UNREGISTERED",
+        "version": 1,
+        "testCount": 17
+      },
+      "certification": "NOT_AUTHORIZED",
+      "publication": "NOT_AUTHORIZED"
+    }
+  ],
+  "integrationDependency": "PR #1452 exact math/conversion batch, c9d5939bf54281e8a5aca0446037a31369ba87a5; source PR preserved.",
+  "registeredAdded": 0,
+  "certifiedAdded": 0,
+  "publishedAdded": 0
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "releaseHold": true,
+  "sourceHead": "8956ac526450ba66eed536fcf74055403164221d",
+  "productionAccess": false,
+  "codeChanges": false,
+  "verification": {
+    "result": "PASS",
+    "testFiles": 24,
+    "tests": 125,
+    "files": [
+      {
+        "path": "src/components/reference-input-reconciliation.test.tsx",
+        "tests": 13
+      },
+      {
+        "path": "src/components/calculator-scenario-reference-integration.test.tsx",
+        "tests": 5
+      },
+      {
+        "path": "src/components/final-framework-combined-integration.test.tsx",
+        "tests": 14
+      },
+      {
+        "path": "src/components/calculator-search.test.tsx",
+        "tests": 5
+      },
+      {
+        "path": "src/components/final-analysis-reference-integration.test.tsx",
+        "tests": 10
+      },
+      {
+        "path": "src/app/public-discovery-integration.test.tsx",
+        "tests": 5
+      },
+      {
+        "path": "src/app/calculators/directory-search.test.tsx",
+        "tests": 7
+      },
+      {
+        "path": "src/calculators/final-framework/reference-six-schedule-parity.test.tsx",
+        "tests": 6
+      },
+      {
+        "path": "src/lib/final-certification-database-gate.test.ts",
+        "tests": 24
+      },
+      {
+        "path": "src/app/draft-publication-exclusion.test.tsx",
+        "tests": 2
+      },
+      {
+        "path": "src/lib/publication-manifest.test.ts",
+        "tests": 4
+      },
+      {
+        "path": "src/calculators/public-discovery-integrity.test.ts",
+        "tests": 3
+      },
+      {
+        "path": "src/calculators/search-index.test.ts",
+        "tests": 4
+      },
+      {
+        "path": "src/calculators/final-framework/reference-six-free-visualization-data.test.ts",
+        "tests": 2
+      },
+      {
+        "path": "src/calculators/final-framework/reference-six-renderer-data-compatibility.test.ts",
+        "tests": 1
+      },
+      {
+        "path": "src/calculators/publication-runtime-gate.test.ts",
+        "tests": 5
+      },
+      {
+        "path": "src/calculators/final-framework/renderer-trust-source-contract.test.ts",
+        "tests": 1
+      },
+      {
+        "path": "src/calculators/final-framework/mortgage-integration-contract.test.ts",
+        "tests": 6
+      },
+      {
+        "path": "src/calculators/final-framework/reference-six-route-renderer-integrity.test.ts",
+        "tests": 1
+      },
+      {
+        "path": "src/calculators/final-framework/certification-authority-boundary.test.ts",
+        "tests": 2
+      },
+      {
+        "path": "src/app/sitemap.test.ts",
+        "tests": 1
+      },
+      {
+        "path": "src/calculators/final-framework/structured-trust-fail-closed.test.ts",
+        "tests": 2
+      },
+      {
+        "path": "src/calculators/final-framework/renderer-schedule-accessibility.test.ts",
+        "tests": 1
+      },
+      {
+        "path": "src/calculators/final-framework/mortgage-parity-readiness.test.ts",
+        "tests": 1
+      }
+    ],
+    "log": "/tmp/final-rc-reference-discovery.log",
+    "logSha256": "f44ce9e787b5064ffa37727301ef808ac6f418e3439b85b18a7a0007c7453d85",
+    "browser": "Not run in this lane; root coordinates actual browser harness separately",
+    "limitation": "JSDOM workflow/exports are executed tests, not desktop/mobile visual evidence; static source assertions remain weaker than DOM tests"
+  },
+  "referenceSix": [
+    {
+      "calculator": "Loan / EMI",
+      "key": "finance.loan-analysis",
+      "slug": "loan-emi-calculator",
+      "technicalVersion": 1,
+      "presentationFamily": "amortization-debt",
+      "observedRepositoryReviewStatus": "certified",
+      "overallReleaseReadiness": "PARTIAL",
+      "engineRendererParity": "PASS across Free/Pro/Business in existing actual DOM workflow tests",
+      "simpleAdvancedMode": "PASS where applicable",
+      "inputValidationRecovery": "PASS within exercised scenarios; not exhaustive numeric certification",
+      "trust": "Methodology/source UI parity tested; authenticity/approval UNKNOWN",
+      "schedule": "Engine amortization checkpoints on paid plans; Free core composition retained",
+      "analytics": "Goal solver, scenarios, sensitivity on paid plans",
+      "exports": "JSON/CSV tested against engine; schedule retained",
+      "publicRoute": "Governed exact published identity/version required; live per-calculator DB evidence not refreshed in this run",
+      "specialistApproval": "UNKNOWN",
+      "publicationApproval": "UNKNOWN",
+      "deployment": "UNKNOWN",
+      "blockers": [
+        "Financial/source authority UNKNOWN; publication requires exact approved identity/version"
+      ]
+    },
+    {
+      "calculator": "SIP",
+      "key": "finance.sip",
+      "slug": "sip-calculator",
+      "technicalVersion": 1,
+      "presentationFamily": "growth-accumulation",
+      "observedRepositoryReviewStatus": "certified",
+      "overallReleaseReadiness": "PARTIAL",
+      "engineRendererParity": "PASS across Free/Pro/Business in existing actual DOM workflow tests",
+      "simpleAdvancedMode": "PASS where applicable",
+      "inputValidationRecovery": "PASS within exercised scenarios; not exhaustive numeric certification",
+      "trust": "Methodology/source UI parity tested; authenticity/approval UNKNOWN",
+      "schedule": "Governed monthly projection snapshots on paid plans; Free growth visualization retained",
+      "analytics": "Goal solver, scenarios, sensitivity on paid plans",
+      "exports": "JSON/CSV tested against engine and terminal projection",
+      "publicRoute": "Governed exact published identity/version required; live per-calculator DB evidence not refreshed in this run",
+      "specialistApproval": "UNKNOWN",
+      "publicationApproval": "UNKNOWN",
+      "deployment": "UNKNOWN",
+      "blockers": [
+        "Financial/source authority UNKNOWN; SIP v2 adoption is a separate decision"
+      ]
+    },
+    {
+      "calculator": "Compound Interest",
+      "key": "finance.compound-interest",
+      "slug": "compound-interest-calculator",
+      "technicalVersion": 1,
+      "presentationFamily": "growth-accumulation",
+      "observedRepositoryReviewStatus": "certified",
+      "overallReleaseReadiness": "PARTIAL",
+      "engineRendererParity": "PASS across Free/Pro/Business in existing actual DOM workflow tests",
+      "simpleAdvancedMode": "PASS where applicable",
+      "inputValidationRecovery": "PASS within exercised scenarios; not exhaustive numeric certification",
+      "trust": "Methodology/source UI parity tested; authenticity/approval UNKNOWN",
+      "schedule": "Governed projection snapshots on paid plans; Free composition retained",
+      "analytics": "Goal solver, scenarios, sensitivity on paid plans",
+      "exports": "JSON/CSV tested against engine and terminal projection",
+      "publicRoute": "Governed exact published identity/version required; live per-calculator DB evidence not refreshed in this run",
+      "specialistApproval": "UNKNOWN",
+      "publicationApproval": "UNKNOWN",
+      "deployment": "UNKNOWN",
+      "blockers": [
+        "Financial/source authority UNKNOWN"
+      ]
+    },
+    {
+      "calculator": "Mortgage",
+      "key": "finance.mortgage",
+      "slug": "mortgage-payment",
+      "technicalVersion": 1,
+      "presentationFamily": "amortization-debt",
+      "observedRepositoryReviewStatus": "certified",
+      "overallReleaseReadiness": "PARTIAL",
+      "engineRendererParity": "PASS across Free/Pro/Business in existing actual DOM workflow tests",
+      "simpleAdvancedMode": "PASS where applicable",
+      "inputValidationRecovery": "PASS within exercised scenarios; not exhaustive numeric certification",
+      "trust": "Methodology/source UI parity tested; authenticity/approval UNKNOWN",
+      "schedule": "BLOCKED: no authoritative period schedule; aggregate-only disclosure preserved",
+      "analytics": "Aggregate goal solver, scenarios, sensitivity on paid plans",
+      "exports": "Aggregate JSON/CSV, rate-analysis and property context tested; no invented period rows",
+      "publicRoute": "Governed exact published identity/version required; live per-calculator DB evidence not refreshed in this run",
+      "specialistApproval": "UNKNOWN",
+      "publicationApproval": "UNKNOWN",
+      "deployment": "UNKNOWN",
+      "blockers": [
+        "Financial specialist rounding/final-payment/terminal reconciliation decisions BLOCKED",
+        "Calculator-scoped golden record missing; inherited Loan Payment fixtures deliberately excluded",
+        "Code certified flag is not specialist/publication approval"
+      ]
+    },
+    {
+      "calculator": "BMI",
+      "key": "health.bmi",
+      "slug": "bmi-calculator",
+      "technicalVersion": 1,
+      "presentationFamily": "range-classification",
+      "observedRepositoryReviewStatus": "draft",
+      "overallReleaseReadiness": "PARTIAL",
+      "engineRendererParity": "PASS across Free/Pro/Business in existing actual DOM workflow tests",
+      "simpleAdvancedMode": "PASS where applicable",
+      "inputValidationRecovery": "PASS within exercised scenarios; not exhaustive numeric certification",
+      "trust": "Methodology/source UI parity tested; authenticity/approval UNKNOWN",
+      "schedule": "NOT_APPLICABLE: no schedule claimed",
+      "analytics": "NOT_APPLICABLE: no financial analytical controls",
+      "exports": "No account export path asserted by combined Reference Six fixture",
+      "publicRoute": "Governed exact published identity/version required; live per-calculator DB evidence not refreshed in this run",
+      "specialistApproval": "UNKNOWN",
+      "publicationApproval": "UNKNOWN",
+      "deployment": "UNKNOWN",
+      "blockers": [
+        "Clinical population/classification/rounding/source scope and calculator-scoped golden acceptance BLOCKED",
+        "DRAFT publication gate preserved"
+      ]
+    },
+    {
+      "calculator": "Break-even",
+      "key": "business.break-even",
+      "slug": "break-even-calculator",
+      "technicalVersion": 1,
+      "presentationFamily": "break-even-crossover",
+      "observedRepositoryReviewStatus": "draft",
+      "overallReleaseReadiness": "PARTIAL",
+      "engineRendererParity": "PASS across Free/Pro/Business in existing actual DOM workflow tests",
+      "simpleAdvancedMode": "PASS where applicable",
+      "inputValidationRecovery": "PASS within exercised scenarios; not exhaustive numeric certification",
+      "trust": "Methodology/source UI parity tested; authenticity/approval UNKNOWN",
+      "schedule": "NOT_APPLICABLE: no amortization/investment schedule claimed",
+      "analytics": "Goal solver, scenarios, sensitivity on paid plans",
+      "exports": "No account export path asserted by combined Reference Six fixture",
+      "publicRoute": "Governed exact published identity/version required; live per-calculator DB evidence not refreshed in this run",
+      "specialistApproval": "UNKNOWN",
+      "publicationApproval": "UNKNOWN",
+      "deployment": "UNKNOWN",
+      "blockers": [
+        "DRAFT publication gate preserved; no promotion authorized"
+      ]
+    }
+  ],
+  "discovery": {
+    "result": "PASS",
+    "coverage": [
+      "Real home/directory/category/detail/search/sitemap governed set intersection",
+      "DB failure distinct from authoritative empty set",
+      "Withdrawn/wrong-category/draft route blocked and canonical metadata removed",
+      "URL query propagation and invalid query handling",
+      "All 14 isolated DRAFT preview calculators excluded even with forged publication claims"
+    ],
+    "liveVisibility": "UNKNOWN; no production query or publication inference"
+  },
+  "externalAuthorityRequests": {
+    "waivers": 836,
+    "sourceReviews": 210,
+    "masterMappings": 540,
+    "holdDispositions": 12,
+    "specialistReviews": 38,
+    "state": "UNKNOWN; no authentic decisions introduced",
+    "holdRowsAreSubsetOfMappings": true
+  }
+}
