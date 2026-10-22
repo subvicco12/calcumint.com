@@ -4,7 +4,10 @@ import os from 'node:os';
 import path from 'node:path';
 export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=20000,executable=process.env.CHROMIUM_PATH||'/usr/bin/chromium',launchArgs=[]}={}){
  const profile=await mkdtemp(path.join(os.tmpdir(),'actual-next-chromium-'));let diagnostic='',seq=0,socket,scriptsResumeAt=0,scriptsHeld=false;const heldScripts=[];const pending=new Map(),errors=[],network=[];
- const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{stdio:['ignore','ignore','pipe']});child.stderr.on('data',v=>diagnostic+=v);
+ // Headless tests do not need a desktop session bus. An inherited/autolaunched bus
+ // can stall both Chromium startup and /json/new while D-Bus authentication waits.
+ // A valid unavailable Unix address fails immediately; only this child is isolated.
+ const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore','pipe']});child.stderr.on('data',v=>diagnostic+=v);
  const rejectPending=error=>{for(const entry of pending.values()){clearTimeout(entry.timer);entry.reject(error)}pending.clear()};
  let launchError;child.on('error',error=>{launchError=error});
  const exited=()=>!!launchError||child.exitCode!==null||child.signalCode!==null;

@@ -4,10 +4,30 @@ import {setTimeout as delay} from 'node:timers/promises';
 import {mkdtemp,writeFile,readFile,access,rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import net from 'node:net';
 import {startBrowser} from './cdp.mjs';
 
 // Preserve exact offline assertion failures in check annotations when private logs are inaccessible.
 function checkedTest(name,options,run){return test(name,options,async context=>{try{await run(context)}catch(error){if(process.env.GITHUB_ACTIONS==='true'){const escape=value=>String(value).replaceAll('%','%25').replaceAll('\r','%0D').replaceAll('\n','%0A');console.error(`::error title=${escape(name)}::${escape(error?.message||error)}`)}throw error}})}
+
+checkedTest('headless CDP startup does not depend on the inherited desktop session bus', {timeout:30000}, async()=>{
+ const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-session-bus-test-'));
+ const address=path.join(dir,'bus'),sockets=new Set();let connections=0;
+ // Accept but never authenticate: a real stalled D-Bus connection, not a timer-based mock.
+ const server=net.createServer(socket=>{connections++;sockets.add(socket);socket.on('close',()=>sockets.delete(socket))});
+ await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(address,resolve)});
+ const original=process.env.DBUS_SESSION_BUS_ADDRESS;
+ process.env.DBUS_SESSION_BUS_ADDRESS=`unix:path=${address}`;
+ let browser;
+ try{
+  browser=await startBrowser('http://127.0.0.1:1',[],{startupTimeoutMs:2000});
+  assert.equal(await browser.js('1+1'),2);
+  assert.equal(connections,0,'The headless child must not contact the inherited desktop bus');
+ }finally{
+  if(original===undefined)delete process.env.DBUS_SESSION_BUS_ADDRESS;else process.env.DBUS_SESSION_BUS_ADDRESS=original;
+  try{await browser?.close()}finally{for(const socket of sockets)socket.destroy();await new Promise(resolve=>server.close(resolve));await rm(dir,{recursive:true,force:true})}
+ }
+});
 
 checkedTest('Chromium startup uses its readiness file when stderr is quiet', {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-quiet-startup-test-'));
