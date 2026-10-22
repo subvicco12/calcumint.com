@@ -58,3 +58,5 @@ describe("Business API dashboard read recovery", () => {
     expect(html).not.toContain("temporarily unavailable");
   });
 });
+
+it("never reflects URL credential values",async()=>{const html=renderToStaticMarkup(await BusinessApiPage({searchParams:Promise.resolve({created:"forged-api-secret",webhookSecret:"forged-webhook-secret"})}));expect(html).not.toContain("forged-api-secret");expect(html).not.toContain("forged-webhook-secret");});

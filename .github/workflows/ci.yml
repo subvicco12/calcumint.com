@@ -52,6 +52,21 @@ jobs:
           node scripts/test-business-browser.mjs
         env:
           BUSINESS_BROWSER_ARTIFACTS: ${{ runner.temp }}/business-browser
+      - name: Pull pinned isolated database fixtures
+        run: |
+          docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+          docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+      - name: Isolated PostgreSQL HTTP security contract
+        run: node tests/next-runtime/security.mjs
+        env:
+          NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-security
+      - name: Actual Next.js Business runtime acceptance
+        run: |
+          export CHROMIUM_PATH="$(command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable)"
+          test -n "$CHROMIUM_PATH"
+          node scripts/test-next-runtime-browser.mjs
+        env:
+          NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-browser
       - name: Production build
         run: npm run build
         env:

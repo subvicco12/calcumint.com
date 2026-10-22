@@ -10,7 +10,7 @@ describe('deterministic calculation PDF', () => {
     const bytes = serializeCalculationPdf(snapshot, { title: 'Area (m²)', sources: [{ label: 'Source', url: 'https://example.test/ref', note: 'Declared reference' }], formulas: [{ id: 'area', expression: 'a × b', description: 'Declared formula' }], methodology: 'Existing method' });
     expect(serializeCalculationPdf(snapshot, { title: 'Area (m²)', sources: [{ label: 'Source', url: 'https://example.test/ref', note: 'Declared reference' }], formulas: [{ id: 'area', expression: 'a × b', description: 'Declared formula' }], methodology: 'Existing method' })).toEqual(bytes);
     const pdf = decode(bytes);
-    expect(pdf.startsWith('%PDF-1.4\n')).toBe(true);
+    expect(pdf.startsWith('%PDF-1.7\n')).toBe(true);
     expect(pdf.endsWith('%%EOF\n')).toBe(true);
     const xrefOffset = Number(/startxref\n(\d+)/.exec(pdf)![1]);
     expect(pdf.slice(xrefOffset, xrefOffset + 4)).toBe('xref');
@@ -83,13 +83,13 @@ describe('deterministic calculation PDF', () => {
     expect(pdf).toContain(' | ');
   });
 
-  it('declares document title and language without claiming tagging or PDF/UA conformance', () => {
+  it('declares document title and language with real tagging without claiming PDF/UA conformance', () => {
     const pdf = decode(serializeCalculationPdf(snapshot, { title: 'Declared title', language: 'en-GB' }));
     expect(pdf).toContain('/Lang (en-GB)');
     expect(pdf).toContain('/Title (Declared title)');
     expect(pdf).toContain('PDF/UA conformance: UNVERIFIED');
-    expect(pdf).not.toContain('/Marked true');
-    expect(pdf).not.toContain('/StructTreeRoot');
+    expect(pdf).toContain('/MarkInfo << /Marked true >>');
+    expect(pdf).toContain('/StructTreeRoot');
   });
 
   it.each([
@@ -121,4 +121,47 @@ describe('deterministic calculation PDF', () => {
     expect(pdf).toContain('POINT-99 = 99');
   });
 
+});
+
+describe('PDF logical structure', () => {
+  it('maps every MCID to its owning structure element on every page', () => {
+    const pdf = decode(serializeCalculationPdf(snapshot, { tables: [{ title: 'Long table', columns: ['Period', 'Detail'], rows: [['1', 'x'.repeat(10000)], ['2', 'tail']] }, { title: 'Empty', columns: ['Value'], rows: [] }], charts: [{ title: 'Chart', points: [{ label: 'Exact', value: 1e-20 }] }] }));
+    const objects = new Map([...pdf.matchAll(/(\d+) 0 obj\n([\s\S]*?)\nendobj/g)].map(match => [Number(match[1]), match[2]]));
+    const tree = [...objects.values()].find(value => value.includes('/Nums ['))!;
+    const parents = new Map([...tree.matchAll(/(\d+) \[([\d R]*)\]/g)].map(match => [Number(match[1]), [...match[2].matchAll(/(\d+) 0 R/g)].map(ref => Number(ref[1]))]));
+    const pages = [...objects.entries()].filter(([, value]) => value.includes('/Type /Page '));
+    expect(pages.length).toBeGreaterThan(4);
+    for (const [pageId, page] of pages) {
+      const key = Number(/\/StructParents (\d+)/.exec(page)![1]);
+      const stream = objects.get(Number(/\/Contents (\d+) 0 R/.exec(page)![1]))!;
+      const ids = [...stream.matchAll(/\/MCID (\d+)/g)].map(match => Number(match[1]));
+      expect(ids).toEqual(Array.from({ length: ids.length }, (_, i) => i));
+      expect(parents.get(key)).toHaveLength(ids.length);
+      for (const id of ids) expect(objects.get(parents.get(key)![id])).toContain(`/Pg ${pageId} 0 R /MCID ${id}`);
+      expect(stream).toContain('/Artifact << /Type /Pagination /Subtype /Header >> BDC');
+      expect(stream).toContain('/Artifact << /Type /Pagination /Subtype /Footer >> BDC');
+      expect([...stream.matchAll(/\b(?:BDC|BMC)\b/g)]).toHaveLength([...stream.matchAll(/\bEMC\b/g)].length);
+    }
+    for (const role of ['Document', 'H1', 'H2', 'P', 'Table', 'TR', 'TH', 'TD', 'Figure']) expect(pdf).toContain(`/S /${role} `);
+    // Backlinks and logical children agree independently of visual row fragments.
+    const elements = [...objects.entries()].filter(([, value]) => value.includes('/Type /StructElem '));
+    for (const [id, element] of elements) {
+      const parent = objects.get(Number(/\/P (\d+) 0 R/.exec(element)![1]))!;
+      expect(parent).toMatch(new RegExp(`/K \\[([^\\]]* )?${id} 0 R(?: |\\])`));
+      for (const ref of element.matchAll(/\/Pg (\d+) 0 R \/MCID (\d+)/g)) {
+        const page = objects.get(Number(ref[1]))!;
+        const key = Number(/\/StructParents (\d+)/.exec(page)![1]);
+        expect(parents.get(key)![Number(ref[2])]).toBe(id);
+      }
+    }
+    // A cell spanning many pages remains one TD in its original TR.
+    const longCell = elements.find(([, value]) => value.includes('/S /TD ') && [...value.matchAll(/\/MCID /g)].length > 100)!;
+    expect(longCell).toBeDefined();
+    expect(pdf).toContain('/IDTree ');
+    expect(pdf).toContain('/Scope /Column');
+    expect(pdf).toMatch(/\/Headers \[\(table-0-column-0\)\]/);
+    expect(pdf).toContain('/Alt (Chart; Exact = 1e-20)');
+    expect(pdf).toContain('no rows');
+    expect(pdf).not.toContain('Untagged PDF');
+  });
 });

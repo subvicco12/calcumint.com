@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { BusinessCredentialForm } from "@/components/business-credential-form";
+import { AccountSessionBoundary } from "@/components/account-session-boundary";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { apiScopes } from "@/lib/api/api-keys";
@@ -20,8 +22,8 @@ type PageProps = { searchParams: Promise<{ created?: string; webhookSecret?: str
 
 export const metadata = { title: "Business API" };
 
-export default async function BusinessApiPage({ searchParams }: PageProps) {
-  const { created, webhookSecret } = await searchParams;
+export default async function BusinessApiPage(_props: PageProps) {
+  void _props; // Legacy query parameters never carry or reveal credentials.
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Business API requires Supabase configuration.</h1></section>;
   const { data: { user } } = await supabase.auth.getUser();
@@ -43,14 +45,12 @@ export default async function BusinessApiPage({ searchParams }: PageProps) {
   ]);
 
   return (
-    <section className="container page-top business-page">
+    <AccountSessionBoundary ownerId={user.id}><section className="container page-top business-page">
       <div className="section-heading">
         <div><span className="eyebrow">Business automation</span><h1>API & webhooks</h1><p className="hero-copy">Connect CalcuMint to your software, n8n, Make, Zapier, Airtable, CRM or internal workflow.</p></div>
         <Link className="button secondary" href="/business">Business workspace</Link>
       </div>
 
-      {created && <div className="notice success-notice"><strong>Copy this API key now.</strong> It will not be shown again.<br/><code>{created}</code></div>}
-      {webhookSecret && <div className="notice success-notice"><strong>Copy this webhook signing secret now.</strong> It is encrypted at rest and will not be shown again.<br/><code>{webhookSecret}</code></div>}
 
       <div className="business-stats">
         <article className="card"><span className="eyebrow">Keys</span><h2>{keysError ? "Unavailable" : keys?.filter((key) => key.status === "active").length ?? 0}</h2><p>Active organization API credentials.</p></article>
@@ -64,14 +64,14 @@ export default async function BusinessApiPage({ searchParams }: PageProps) {
           {keysError ? <ReadUnavailable label="API key list"/> : keys?.length ? <ul>{keys.map((key) => <li key={key.id}><strong>{key.name}</strong> · <code>{key.key_prefix}…</code> · {key.status} · {key.rate_limit_per_minute}/min · {key.monthly_quota}/month{canAdmin && key.status === "active" ? <form action={revokeBusinessApiKey}><input type="hidden" name="keyId" value={key.id}/><button className="button secondary" type="submit">Revoke</button></form> : null}</li>)}</ul> : <p>No API keys yet.</p>}
         </article>
 
-        {!keysError && canAdmin && <form className="card form-stack" action={createBusinessApiKey}>
+        {!keysError && canAdmin && <BusinessCredentialForm ownerId={user.id} kind="API key" action={createBusinessApiKey}>
           <span className="eyebrow">New credential</span><h2>Create API key</h2>
           <label>Name<input name="name" required placeholder="Production automation"/></label>
           <fieldset><legend>Scopes</legend>{apiScopes.map((scope) => <label key={scope}><input type="checkbox" name="scopes" value={scope}/> {scope}</label>)}</fieldset>
           <label>Requests per minute<input type="number" name="rateLimit" min="1" max="5000" defaultValue="60"/></label>
           <label>Monthly request quota<input type="number" name="monthlyQuota" min="1" max="10000000" defaultValue="10000"/></label>
           <button className="button primary" type="submit">Create key</button>
-        </form>}
+        </BusinessCredentialForm>}
       </div>
 
       <div className="account-grid section">
@@ -80,13 +80,13 @@ export default async function BusinessApiPage({ searchParams }: PageProps) {
           {endpointsError ? <ReadUnavailable label="Webhook endpoint list"/> : endpoints?.length ? <ul>{endpoints.map((endpoint) => <li key={endpoint.id}><strong>{endpoint.name}</strong> · {endpoint.status}<br/><code>{endpoint.endpoint_url}</code>{canAdmin && endpoint.status === "active" ? <form action={disableWebhookEndpoint}><input type="hidden" name="endpointId" value={endpoint.id}/><button className="button secondary" type="submit">Disable</button></form> : null}</li>)}</ul> : <p>No webhook endpoints yet.</p>}
         </article>
 
-        {!endpointsError && canAdmin && <form className="card form-stack" action={createWebhookEndpoint}>
+        {!endpointsError && canAdmin && <BusinessCredentialForm ownerId={user.id} kind="webhook signing secret" action={createWebhookEndpoint}>
           <span className="eyebrow">Signed delivery</span><h2>Add webhook</h2>
           <label>Name<input name="webhookName" required placeholder="CRM automation"/></label>
           <label>HTTPS endpoint<input type="url" name="endpointUrl" required placeholder="https://example.com/calcumint-webhook"/></label>
           <fieldset><legend>Events</legend><label><input type="checkbox" name="eventTypes" value="calculation.completed"/> calculation.completed</label><label><input type="checkbox" name="eventTypes" value="lead.created"/> lead.created</label></fieldset>
           <button className="button primary" type="submit">Create webhook</button>
-        </form>}
+        </BusinessCredentialForm>}
       </div>
 
       <article className="card section">
@@ -95,6 +95,6 @@ export default async function BusinessApiPage({ searchParams }: PageProps) {
         <p><code>POST /api/v1/batch</code> — process 1–100 calculation rows per request.</p>
         <p className="muted">Authenticate with <code>Authorization: Bearer &lt;api-key&gt;</code>. API keys are scope-limited, rate-limited and monthly-quota metered. Webhooks use HMAC-SHA256 signatures, retry with exponential backoff and dead-letter after eight failed attempts.</p>
       </article>
-    </section>
+    </section></AccountSessionBoundary>
   );
 }
