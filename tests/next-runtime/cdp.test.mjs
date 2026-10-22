@@ -6,9 +6,12 @@ import os from 'node:os';
 import path from 'node:path';
 import net from 'node:net';
 import {startBrowser} from './cdp.mjs';
+import {verifySyntheticIdentityContinuity} from './identity-regression.mjs';
 
 // Preserve exact offline assertion failures in check annotations when private logs are inaccessible.
 function checkedTest(name,options,run){return test(name,options,async context=>{try{await run(context)}catch(error){if(process.env.GITHUB_ACTIONS==='true'){const escape=value=>String(value).replaceAll('%','%25').replaceAll('\r','%0D').replaceAll('\n','%0A');console.error(`::error title=${escape(name)}::${escape(error?.message||error)}`)}throw error}})}
+
+checkedTest('synthetic same-owner selection preserves SDK verification while owner replacement fails closed',{timeout:45000},verifySyntheticIdentityContinuity);
 
 checkedTest('headless CDP startup does not depend on the inherited desktop session bus', {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-session-bus-test-'));

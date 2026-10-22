@@ -70,6 +70,16 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
  // A visible SSR control can precede React's listener attachment. Send trusted edits only once hydrated.
  const field=async(selector,value)=>{await until(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});return !!e&&!e.matches(':disabled')&&Object.keys(e).some(k=>k.startsWith('__reactProps$'))})()`);await js(`document.querySelector(${JSON.stringify(selector)}).focus()`);await send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await send('Input.insertText',{text:String(value)})};
 
- return {send,js,until,visit,click,field,errors,network,delayScripts(ms){scriptsResumeAt=Date.now()+ms},holdScripts(){scriptsHeld=true;return async()=>{scriptsHeld=false;await Promise.all(heldScripts.splice(0).map(requestId=>send('Fetch.continueRequest',{requestId}))) }},text:()=>js('document.body.innerText'),async identity(cookie){await send('Network.clearBrowserCookies');if(cookie)await send('Network.setCookie',{...cookie,url:base,httpOnly:false,sameSite:'Lax'})},close};
+ return {send,js,until,visit,click,field,errors,network,delayScripts(ms){scriptsResumeAt=Date.now()+ms},holdScripts(){scriptsHeld=true;return async()=>{scriptsHeld=false;await Promise.all(heldScripts.splice(0).map(requestId=>send('Fetch.continueRequest',{requestId}))) }},text:()=>js('document.body.innerText'),async identity(cookie){
+  if(cookie){
+   const {cookies}=await send('Network.getCookies',{urls:[base]});
+   const session=cookies.filter(current=>current.name===cookie.name||current.name.startsWith(cookie.name+'.'));
+   // Selecting the identical fixture session must not create a logged-out gap
+   // underneath an in-flight SDK verification. Real replacements still clear it.
+   if(session.length===1&&session[0].name===cookie.name&&session[0].value===cookie.value)return;
+  }
+  await send('Network.clearBrowserCookies');
+  if(cookie)await send('Network.setCookie',{...cookie,url:base,httpOnly:false,sameSite:'Lax'});
+ },close};
  }catch(error){try{await close()}catch(cleanupError){throw new AggregateError([error,cleanupError],'Chromium startup and cleanup failed')}throw error}
 }
