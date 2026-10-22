@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, waitFor } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { PublicEmbedCalculator } from "./public-embed-calculator";
 
 vi.mock("next/image", () => ({ default: () => null }));
@@ -22,6 +23,20 @@ const props = {
 afterEach(() => { cleanup(); vi.unstubAllGlobals(); });
 
 describe("embedded calculator browser lifecycle", () => {
+  it("keeps SSR controls inert until handlers attach and uses a private POST fallback", () => {
+    const html = renderToStaticMarkup(<PublicEmbedCalculator {...props} definition={{...props.definition,fields:[{key:"x",label:"Quantity",defaultValue:2}] } as typeof props.definition}/>);
+    const container = document.createElement("div"); container.innerHTML = html;
+    expect(container.querySelector<HTMLInputElement>('input[type="number"]')?.disabled).toBe(true);
+    expect(container.querySelector<HTMLFieldSetElement>('.embed-lead-form fieldset')?.disabled).toBe(true);
+    expect(container.querySelector('form')?.getAttribute('method')).toBe('post');
+    expect(container.querySelector('.public-embed')?.getAttribute('aria-busy')).toBe('true');
+  });
+  it("enables the existing controls only after client handlers attach", () => {
+    vi.stubGlobal("fetch",vi.fn().mockResolvedValue({ok:true}));
+    const {container} = render(<PublicEmbedCalculator {...props}/>);
+    expect(container.querySelector<HTMLFieldSetElement>('.embed-lead-form fieldset')?.disabled).toBe(false);
+    expect(container.querySelector('.public-embed')?.getAttribute('aria-busy')).toBe('false');
+  });
   it("renews on focus and visibility resume with a single in-flight request", async () => {
     let finishRenewal!: (response: unknown) => void;
     const pending = new Promise<unknown>((resolve) => { finishRenewal = resolve; });

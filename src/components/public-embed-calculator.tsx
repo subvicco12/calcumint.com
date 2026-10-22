@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState, useRef } from "react";
+import { FormEvent, useEffect, useMemo, useState, useRef, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { runCustomCalculator, type CustomCalculatorDefinition } from "@/lib/builder/definition";
 
@@ -27,7 +27,11 @@ export function PublicEmbedCalculator(props: Props) {
   return <EmbedCalculatorScope key={scope} {...props}/>;
 }
 
+const subscribeReadiness = () => () => {};
+
 function EmbedCalculatorScope(props: Props) {
+  // SSR remains readable; editable controls activate only with their client handlers.
+  const interactive = useSyncExternalStore(subscribeReadiness, () => true, () => false);
   const initial = Object.fromEntries(props.definition.fields.map((field) => [field.key, String(field.defaultValue ?? field.min ?? 0)]));
   const [values, setValues] = useState<Record<string, string>>(initial);
   const [leadStatus, setLeadStatus] = useState("");
@@ -108,15 +112,16 @@ function EmbedCalculatorScope(props: Props) {
   }
 
   return (
-    <div className="public-embed" style={{ "--embed-accent": props.accentColor } as React.CSSProperties}>
+    <div className="public-embed" aria-busy={!interactive} style={{ "--embed-accent": props.accentColor } as React.CSSProperties}>
       {(props.companyName || props.logoUrl) && <header className="embed-brand">{props.logoUrl && <Image src={props.logoUrl} alt="" width={120} height={48} unoptimized />}<strong>{props.companyName}</strong></header>}
       <div className="field-grid">
-        {props.definition.fields.map((field) => <label className="field" key={field.key}><span>{field.label}</span><input type="number" inputMode="decimal" min={field.min ?? undefined} max={field.max ?? undefined} step={field.step ?? "any"} value={values[field.key] ?? ""} onChange={(event) => { setValues((current) => ({ ...current, [field.key]: event.target.value })); recordCalculation(); }} />{field.helpText && <small>{field.helpText}</small>}</label>)}
+        {props.definition.fields.map((field) => <label className="field" key={field.key}><span>{field.label}</span><input type="number" disabled={!interactive} inputMode="decimal" min={field.min ?? undefined} max={field.max ?? undefined} step={field.step ?? "any"} value={values[field.key] ?? ""} onChange={(event) => { setValues((current) => ({ ...current, [field.key]: event.target.value })); recordCalculation(); }} />{field.helpText && <small>{field.helpText}</small>}</label>)}
       </div>
       {evaluated.error ? <div className="notice error-notice">{evaluated.error}</div> : <div className="builder-results">{props.definition.outputs.map((output) => <div className="result-box" key={output.key}><span>{output.label}</span><strong>{formatValue(evaluated.result?.[output.key], output.format, output.decimals)}</strong></div>)}</div>}
       {props.ctaLabel && props.ctaUrl && <a className="button primary embed-cta" href={props.ctaUrl} target="_blank" rel="noreferrer" onClick={() => void fetch(`/api/embed/${props.publicKey}/events`, { method: "POST", headers: { "Content-Type": "application/json", "X-Embed-Session": sessionRef.current }, body: JSON.stringify({ type: "cta_click", sourceUrl: window.location.href }) })}>{props.ctaLabel}</a>}
       {!sessionAvailable && <p role="alert">{sessionMessage}</p>}
-      {props.leadCaptureEnabled && <form className="embed-lead-form" onSubmit={submitLead}><h3>Send me this result</h3>{props.leadFields.includes("name") && <label>Name<input name="name" required /></label>}{props.leadFields.includes("email") && <label>Email<input name="email" type="email" required /></label>}{props.leadFields.includes("phone") && <label>Phone<input name="phone" /></label>}{props.leadFields.includes("company") && <label>Company<input name="company" /></label>}<label className="consent-row"><input name="consent" type="checkbox" required /><span>{props.consentText}{props.privacyUrl && <> <a href={props.privacyUrl} target="_blank" rel="noreferrer">Privacy policy</a></>}</span></label><button className="button primary" type="submit" disabled={!sessionAvailable||submittingLead}>{submittingLead?"Submitting…":uncertainLead?"Retry original submission":"Submit"}</button>{leadStatus && <p aria-live="polite">{leadStatus}</p>}</form>}
+      {props.leadCaptureEnabled && <form className="embed-lead-form" method="post" onSubmit={submitLead}><h3>Send me this result</h3><fieldset disabled={!interactive} aria-label="Contact details and consent" style={{border:0,padding:0,margin:0,minWidth:0}}>{props.leadFields.includes("name") && <label>Name<input name="name" required /></label>}{props.leadFields.includes("email") && <label>Email<input name="email" type="email" required /></label>}{props.leadFields.includes("phone") && <label>Phone<input name="phone" /></label>}{props.leadFields.includes("company") && <label>Company<input name="company" /></label>}<label className="consent-row"><input name="consent" type="checkbox" required /><span>{props.consentText}{props.privacyUrl && <> <a href={props.privacyUrl} target="_blank" rel="noreferrer">Privacy policy</a></>}</span></label><button className="button primary" type="submit" disabled={!interactive||!sessionAvailable||submittingLead}>{submittingLead?"Submitting…":uncertainLead?"Retry original submission":"Submit"}</button></fieldset>{leadStatus && <p aria-live="polite">{leadStatus}</p>}</form>}
+      <noscript><p>Enable JavaScript to edit this calculator or submit your details.</p></noscript>
       {!props.hideCalcumintBrand && <footer className="embed-powered">Powered by CalcuMint</footer>}
     </div>
   );
