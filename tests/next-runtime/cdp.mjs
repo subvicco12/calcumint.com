@@ -2,12 +2,14 @@ import {spawn} from 'node:child_process';
 import {mkdtemp,readFile,rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import {startupDiagnostics} from './startup-diagnostics.mjs';
 export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=20000,executable=process.env.CHROMIUM_PATH||'/usr/bin/chromium',launchArgs=[]}={}){
+ const trace=startupDiagnostics(executable,{enabled:process.env.CDP_STARTUP_DIAGNOSTICS==='1'});trace.event('profile-start');
  const profile=await mkdtemp(path.join(os.tmpdir(),'actual-next-chromium-'));let diagnostic='',seq=0,socket,scriptsResumeAt=0,scriptsHeld=false;const heldScripts=[];const pending=new Map(),errors=[],network=[];
  // Headless tests do not need a desktop session bus. An inherited/autolaunched bus
  // can stall both Chromium startup and /json/new while D-Bus authentication waits.
  // A valid unavailable Unix address fails immediately; only this child is isolated.
- const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore','pipe']});child.stderr.on('data',v=>diagnostic+=v);
+ const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore','pipe']});trace.start(child.pid);child.stderr.on('data',v=>diagnostic+=v);child.once('exit',(code,signal)=>trace.event('process-exit',{code,signal}));
  const rejectPending=error=>{for(const entry of pending.values()){clearTimeout(entry.timer);entry.reject(error)}pending.clear()};
  let launchError;child.on('error',error=>{launchError=error});
  const exited=()=>!!launchError||child.exitCode!==null||child.signalCode!==null;
@@ -23,7 +25,7 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   finally{await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100})}
  })();
  try{
- const deadline=Date.now()+startupTimeoutMs;let endpoint;
+ const deadline=Date.now()+startupTimeoutMs;let endpoint;trace.event('readiness-wait',{startupTimeoutMs});
  while(Date.now()<deadline){
   if(launchError)throw launchError;
   if(exited())throw Error('Chromium exited before CDP startup: '+diagnostic);
@@ -36,7 +38,7 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
    if(match&&Number(match[1])>0&&Number(match[1])<=65535)endpoint=`ws://127.0.0.1:${match[1]}${match[2]}`;
   }catch(error){if(error.code!=='ENOENT')throw error}
   endpoint??=diagnostic.match(/DevTools listening on (ws:\/\/[^\s]+)\r?\n/)?.[1];
-  if(endpoint)break;
+  if(endpoint){trace.event('endpoint-ready');break;}
   await new Promise(r=>setTimeout(r,40));
  }
  if(!endpoint)throw Error('No Chromium CDP '+diagnostic);
@@ -45,14 +47,16 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   if(remaining<=0)throw Error('Chromium CDP startup timed out');
   return remaining;
  };
+ trace.event('target-create');
  const response=await fetch(`http://127.0.0.1:${new URL(endpoint).port}/json/new?about:blank`,{method:'PUT',signal:AbortSignal.timeout(setupTimeout())});
  if(!response.ok)throw Error(`Chromium CDP target creation failed: ${response.status}`);
- const target=await response.json();socket=new WebSocket(target.webSocketDebuggerUrl);
+ const target=await response.json();trace.event('target-ready');socket=new WebSocket(target.webSocketDebuggerUrl);
  await new Promise((resolve,reject)=>{
   const timer=setTimeout(()=>reject(Error('Chromium CDP WebSocket startup timed out')),setupTimeout());
   const finish=(error)=>{clearTimeout(timer);if(error)reject(error);else resolve()};
   socket.onopen=()=>finish();socket.onerror=()=>finish(Error('Chromium CDP WebSocket startup failed'));socket.onclose=()=>finish(Error('Chromium CDP WebSocket closed during startup'));
  });
+ trace.event('websocket-ready');
  socket.onclose=()=>rejectPending(Error('Chromium CDP connection closed'));
  socket.onerror=()=>rejectPending(Error('Chromium CDP connection failed'));
  const send=(method,params={},timeoutMs=method==='Page.navigate'?120000:30000)=>new Promise((resolve,reject)=>{
@@ -70,7 +74,8 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
  // A visible SSR control can precede React's listener attachment. Send trusted edits only once hydrated.
  const field=async(selector,value)=>{await until(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});return !!e&&!e.matches(':disabled')&&Object.keys(e).some(k=>k.startsWith('__reactProps$'))})()`);await js(`document.querySelector(${JSON.stringify(selector)}).focus()`);await send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await send('Input.insertText',{text:String(value)})};
 
- return {send,js,until,visit,click,field,errors,network,delayScripts(ms){scriptsResumeAt=Date.now()+ms},holdScripts(){scriptsHeld=true;return async()=>{scriptsHeld=false;await Promise.all(heldScripts.splice(0).map(requestId=>send('Fetch.continueRequest',{requestId}))) }},text:()=>js('document.body.innerText'),async identity(cookie){
+ trace.event('domains-ready');const startupTrace=await trace.finish(child.pid);if(process.env.CDP_STARTUP_DIAGNOSTICS==='1')console.error('CDP startup ready '+JSON.stringify(startupTrace));
+ return {startupTrace,send,js,until,visit,click,field,errors,network,delayScripts(ms){scriptsResumeAt=Date.now()+ms},holdScripts(){scriptsHeld=true;return async()=>{scriptsHeld=false;await Promise.all(heldScripts.splice(0).map(requestId=>send('Fetch.continueRequest',{requestId}))) }},text:()=>js('document.body.innerText'),async identity(cookie){
   if(cookie){
    const {cookies}=await send('Network.getCookies',{urls:[base]});
    const session=cookies.filter(current=>current.name===cookie.name||current.name.startsWith(cookie.name+'.'));
@@ -81,5 +86,5 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   await send('Network.clearBrowserCookies');
   if(cookie)await send('Network.setCookie',{...cookie,url:base,httpOnly:false,sameSite:'Lax'});
  },close};
- }catch(error){try{await close()}catch(cleanupError){throw new AggregateError([error,cleanupError],'Chromium startup and cleanup failed')}throw error}
+ }catch(error){trace.event('startup-failed',{name:error.name});error.startupTrace=await trace.finish(child.pid);if(process.env.CDP_STARTUP_DIAGNOSTICS==='1')console.error('CDP startup diagnostics '+JSON.stringify(error.startupTrace));try{await close()}catch(cleanupError){throw new AggregateError([error,cleanupError],'Chromium startup and cleanup failed')}throw error}
 }
