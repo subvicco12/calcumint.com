@@ -6,12 +6,12 @@ permissions:
   contents: read
 jobs:
   cold-start:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, google-chrome]
+        preload: [false, true]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -28,10 +28,20 @@ jobs:
           NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/cold-start-security
       - name: First browser launch with unchanged startup deadline
         env:
-          BROWSER_EXECUTABLE: ${{ matrix.browser }}
+          PRELOAD_BROWSER_ASSETS: ${{ matrix.preload }}
           CDP_STARTUP_DIAGNOSTICS: '1'
         run: |
-          export CHROMIUM_PATH="$(command -v "$BROWSER_EXECUTABLE")"
-          "$CHROMIUM_PATH" --version
+          export REAL_CHROMIUM_PATH="$(command -v chromium)"
+          "$REAL_CHROMIUM_PATH" --version
+          cat > "$RUNNER_TEMP/cold-browser.sh" <<'LAUNCHER'
+          #!/bin/sh
+          if [ "$PRELOAD_BROWSER_ASSETS" = true ]; then
+            browser_dir=$(dirname "$(readlink -f "$REAL_CHROMIUM_PATH")")
+            find "$browser_dir" -maxdepth 1 -type f -print0 | xargs -0 cat > /dev/null
+          fi
+          exec "$REAL_CHROMIUM_PATH" "$@"
+          LAUNCHER
+          chmod 700 "$RUNNER_TEMP/cold-browser.sh"
+          export CHROMIUM_PATH="$RUNNER_TEMP/cold-browser.sh"
           df -h /tmp /dev/shm
           node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs

@@ -5,11 +5,11 @@ import path from 'node:path';
 import {startupDiagnostics} from './startup-diagnostics.mjs';
 export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=20000,executable=process.env.CHROMIUM_PATH||'/usr/bin/chromium',launchArgs=[]}={}){
  const trace=startupDiagnostics(executable,{enabled:process.env.CDP_STARTUP_DIAGNOSTICS==='1'});trace.event('profile-start');
- const profile=await mkdtemp(path.join(os.tmpdir(),'actual-next-chromium-'));let diagnostic='',seq=0,socket,scriptsResumeAt=0,scriptsHeld=false;const heldScripts=[];const pending=new Map(),errors=[],network=[];
+ const profile=await mkdtemp(path.join(os.tmpdir(),'actual-next-chromium-'));trace.event('profile-created');let diagnostic='',seq=0,socket,scriptsResumeAt=0,scriptsHeld=false;const heldScripts=[];const pending=new Map(),errors=[],network=[];
  // Headless tests do not need a desktop session bus. An inherited/autolaunched bus
  // can stall both Chromium startup and /json/new while D-Bus authentication waits.
  // A valid unavailable Unix address fails immediately; only this child is isolated.
- const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore','pipe']});trace.start(child.pid);child.stderr.on('data',v=>diagnostic+=v);child.once('exit',(code,signal)=>trace.event('process-exit',{code,signal}));
+ const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore','pipe']});trace.start(child.pid);child.stderr.on('data',v=>{if(!diagnostic)trace.event('stderr-first');diagnostic+=v});child.once('exit',(code,signal)=>trace.event('process-exit',{code,signal}));
  const rejectPending=error=>{for(const entry of pending.values()){clearTimeout(entry.timer);entry.reject(error)}pending.clear()};
  let launchError;child.on('error',error=>{launchError=error});
  const exited=()=>!!launchError||child.exitCode!==null||child.signalCode!==null;
@@ -25,7 +25,8 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   finally{await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100})}
  })();
  try{
- const deadline=Date.now()+startupTimeoutMs;let endpoint;trace.event('readiness-wait',{startupTimeoutMs});
+ const deadline=Date.now()+startupTimeoutMs;let endpoint,readinessState;
+ const readiness=state=>{if(state!==readinessState){readinessState=state;trace.event('readiness-file',{state})}};trace.event('readiness-wait',{startupTimeoutMs});
  while(Date.now()<deadline){
   if(launchError)throw launchError;
   if(exited())throw Error('Chromium exited before CDP startup: '+diagnostic);
@@ -34,9 +35,10 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   // Ignore incomplete writes and never consume a partial stderr URL.
   try{
    const activePort=await readFile(path.join(profile,'DevToolsActivePort'),'utf8');
+   readiness('present');
    const match=activePort.match(/^(\d+)\r?\n(\/devtools\/browser\/[^\s]+)(?:\r?\n|$)/);
    if(match&&Number(match[1])>0&&Number(match[1])<=65535)endpoint=`ws://127.0.0.1:${match[1]}${match[2]}`;
-  }catch(error){if(error.code!=='ENOENT')throw error}
+  }catch(error){if(error.code!=='ENOENT')throw error;readiness('absent')}
   endpoint??=diagnostic.match(/DevTools listening on (ws:\/\/[^\s]+)\r?\n/)?.[1];
   if(endpoint){trace.event('endpoint-ready');break;}
   await new Promise(r=>setTimeout(r,40));
