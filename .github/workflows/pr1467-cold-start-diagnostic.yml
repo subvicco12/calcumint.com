@@ -1,7 +1,6 @@
 name: PR1467 isolated cold-start diagnostic
 on:
-  push:
-    branches: [diagnostics/pr1467-cold-start-20261022]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
