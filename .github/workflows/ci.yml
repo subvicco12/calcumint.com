@@ -40,6 +40,11 @@ jobs:
         run: node tests/next-runtime/security.mjs
         env:
           NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-security
+      - name: Isolated browser transport recovery
+        run: |
+          export CHROMIUM_PATH="$(command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable)"
+          test -n "$CHROMIUM_PATH"
+          node --test tests/next-runtime/cdp.test.mjs
       - name: Actual Next.js Business runtime acceptance
         run: |
           export CHROMIUM_PATH="$(command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable)"
