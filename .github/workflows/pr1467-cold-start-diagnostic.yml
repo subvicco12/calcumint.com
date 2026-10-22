@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        fixture: [image, pinned-package]
+        fixture: [image-stable, pinned-package]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -40,10 +40,18 @@ jobs:
           FIXTURE: ${{ matrix.fixture }}
           CDP_STARTUP_DIAGNOSTICS: '1'
         run: |
-          export CHROMIUM_PATH="$(command -v chromium)"
+          export CHROMIUM_PATH="$(command -v google-chrome)"
           if [ "$FIXTURE" = pinned-package ]; then
             export CHROMIUM_PATH="$RUNNER_TEMP/isolated-browser/opt/google/chrome/chrome"
           fi
           "$CHROMIUM_PATH" --version
           df -h /tmp /dev/shm
           node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs
+      - name: Record stable browser binary identity after first launch
+        if: always()
+        run: |
+          installed="$(dirname "$(readlink -f "$(command -v google-chrome)")")/chrome"
+          sha256sum "$installed"
+          if [ -f "$RUNNER_TEMP/isolated-browser/opt/google/chrome/chrome" ]; then
+            sha256sum "$RUNNER_TEMP/isolated-browser/opt/google/chrome/chrome"
+          fi
