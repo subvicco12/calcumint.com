@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        fixture: [image, materialized]
+        fixture: [image, pinned-package]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -26,19 +26,14 @@ jobs:
           node tests/next-runtime/security.mjs
         env:
           NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/cold-start-security
-      - name: Materialize identical isolated browser fixture when selected
+      - name: Provision checksum-pinned isolated browser when selected
         env:
           FIXTURE: ${{ matrix.fixture }}
         run: |
-          if [ "$FIXTURE" = materialized ]; then
-            timeout 60s python3 - <<'PYTHON'
-          import os, shutil, time
-          started=time.monotonic()
-          source=os.path.dirname(os.path.realpath(shutil.which('chromium')))
-          target=os.path.join(os.environ['RUNNER_TEMP'],'materialized-chromium')
-          shutil.copytree(source,target,symlinks=True)
-          print('Fixture materialization seconds:',round(time.monotonic()-started,3))
-          PYTHON
+          if [ "$FIXTURE" = pinned-package ]; then
+            curl --fail --silent --show-error --location --connect-timeout 15 --max-time 120 'https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_156.0.8078.47-1_amd64.deb' -o "$RUNNER_TEMP/browser.deb"
+            printf '%s  %s\n' '6c92cd22e90c6e3e255d782991543fa2091db8614e8536a971a7433a5c4d7ac8' "$RUNNER_TEMP/browser.deb" | sha256sum --check
+            timeout 120s dpkg-deb --extract "$RUNNER_TEMP/browser.deb" "$RUNNER_TEMP/isolated-browser"
           fi
       - name: First browser launch with unchanged startup deadline
         env:
@@ -46,8 +41,8 @@ jobs:
           CDP_STARTUP_DIAGNOSTICS: '1'
         run: |
           export CHROMIUM_PATH="$(command -v chromium)"
-          if [ "$FIXTURE" = materialized ]; then
-            export CHROMIUM_PATH="$RUNNER_TEMP/materialized-chromium/$(basename "$(readlink -f "$CHROMIUM_PATH")")"
+          if [ "$FIXTURE" = pinned-package ]; then
+            export CHROMIUM_PATH="$RUNNER_TEMP/isolated-browser/opt/google/chrome/chrome"
           fi
           "$CHROMIUM_PATH" --version
           df -h /tmp /dev/shm
