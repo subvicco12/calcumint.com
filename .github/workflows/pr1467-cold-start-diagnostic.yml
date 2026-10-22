@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        preload: [false, true]
+        fixture: [image, materialized]
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -26,22 +26,29 @@ jobs:
           node tests/next-runtime/security.mjs
         env:
           NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/cold-start-security
+      - name: Materialize identical isolated browser fixture when selected
+        env:
+          FIXTURE: ${{ matrix.fixture }}
+        run: |
+          if [ "$FIXTURE" = materialized ]; then
+            timeout 60s python3 - <<'PYTHON'
+          import os, shutil, time
+          started=time.monotonic()
+          source=os.path.dirname(os.path.realpath(shutil.which('chromium')))
+          target=os.path.join(os.environ['RUNNER_TEMP'],'materialized-chromium')
+          shutil.copytree(source,target,symlinks=True)
+          print('Fixture materialization seconds:',round(time.monotonic()-started,3))
+          PYTHON
+          fi
       - name: First browser launch with unchanged startup deadline
         env:
-          PRELOAD_BROWSER_ASSETS: ${{ matrix.preload }}
+          FIXTURE: ${{ matrix.fixture }}
           CDP_STARTUP_DIAGNOSTICS: '1'
         run: |
-          export REAL_CHROMIUM_PATH="$(command -v chromium)"
-          "$REAL_CHROMIUM_PATH" --version
-          cat > "$RUNNER_TEMP/cold-browser.sh" <<'LAUNCHER'
-          #!/bin/sh
-          if [ "$PRELOAD_BROWSER_ASSETS" = true ]; then
-            browser_dir=$(dirname "$(readlink -f "$REAL_CHROMIUM_PATH")")
-            find "$browser_dir" -maxdepth 1 -type f -print0 | xargs -0 cat > /dev/null
+          export CHROMIUM_PATH="$(command -v chromium)"
+          if [ "$FIXTURE" = materialized ]; then
+            export CHROMIUM_PATH="$RUNNER_TEMP/materialized-chromium/$(basename "$(readlink -f "$CHROMIUM_PATH")")"
           fi
-          exec "$REAL_CHROMIUM_PATH" "$@"
-          LAUNCHER
-          chmod 700 "$RUNNER_TEMP/cold-browser.sh"
-          export CHROMIUM_PATH="$RUNNER_TEMP/cold-browser.sh"
+          "$CHROMIUM_PATH" --version
           df -h /tmp /dev/shm
           node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs
