@@ -53,3 +53,7 @@ Node 22 and installed Chromium are used for sprint checks. `CHROMIUM_PATH` may s
 - [Ledger triage](ledger-triage.md): 424 unique records remain **55 VERIFIED / 331 PARTIAL / 20 BLOCKED / 18 UNKNOWN**. CSV SHA-256 remains `8b2ac855dcee0a6cb70451f9faf248e03162a695c962ec1349dd264c303e0779`. No ledger classification, source-review authority, certification or publication status is promoted.
 
 All fourteen unpublished DRAFT calculators, mathematical contracts and historical versions remain untouched. No new calculators, Neon migration, broad refactor, production writes/migrations, merges, deployments, live payments, certification or publication are authorized by this evidence. Green development checks would support a development candidate only. Real GoTrue/signup/refresh/revocation/provider and deployed operational acceptance remain separate unverified gates.
+
+## Hosted cold-start follow-up
+
+See [cold-start investigation and correction](cold-start-closure.md) for the reproduced hosted I/O stall, isolated diagnostic workflow IDs, rejected treatments and pinned browser fixture correction. Exact candidate CI conclusions remain a separate checkpoint.

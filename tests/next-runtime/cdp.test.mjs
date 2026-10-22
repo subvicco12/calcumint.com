@@ -103,7 +103,17 @@ checkedTest('failed startup terminates a launcher that never exposes CDP and rem
  const launcher=path.join(dir,'launcher.mjs'),evidence=path.join(dir,'child.json');
  await writeFile(launcher,`import {writeFileSync} from 'node:fs';writeFileSync(${JSON.stringify(evidence)},JSON.stringify({pid:process.pid,profile:process.argv.find(arg=>arg.startsWith('--user-data-dir=')).slice(16)}));setInterval(()=>{},1000);`);
  try{
-  await assert.rejects(startBrowser('http://127.0.0.1:1',[],{executable:process.execPath,launchArgs:[launcher],startupTimeoutMs:200}),/No Chromium CDP/);
+  await assert.rejects(startBrowser('http://127.0.0.1:1',[],{executable:process.execPath,launchArgs:[launcher],startupTimeoutMs:200}),error=>{
+   assert.match(error.message,/No Chromium CDP/);
+   assert(Array.isArray(error.startupTrace?.events),'Startup failure must retain bounded phase evidence');
+   const phases=error.startupTrace.events.map(event=>event.phase);
+   assert(phases.includes('readiness-wait'));
+   assert(error.startupTrace.events.some(event=>event.phase==='readiness-file'&&event.state==='absent'));
+   assert(phases.includes('startup-failed'));
+   assert(phases.includes('process-exit'),'Failed launch must still record process termination');
+   assert(!phases.includes('endpoint-ready'),'A never-ready launcher cannot be reported ready');
+   return true;
+  });
   const child=JSON.parse(await readFile(evidence,'utf8'));
   assert.throws(()=>process.kill(child.pid,0),{code:'ESRCH'});
   await assert.rejects(access(child.profile),{code:'ENOENT'});
