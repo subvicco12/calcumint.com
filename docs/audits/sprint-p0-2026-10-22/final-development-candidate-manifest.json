@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "scope": "Final Development Candidate evidence only; RELEASE HOLD",
+  "candidate": {
+    "repository": "subvicco12/calcumint.com",
+    "pr": 1467,
+    "frozenSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+    "draft": true,
+    "headAdvanced": false,
+    "applicationChanges": false,
+    "trackedPrimaryWorktreeClean": true,
+    "preexistingPrimaryUntracked": [
+      "next-env.d.ts"
+    ],
+    "evidenceBranch": "evidence/pr1467-final-stress-20261023"
+  },
+  "recordedAtUtc": "2026-10-22T19:50:00.412048+00:00",
+  "recordedAtIndia": "2026-10-23T01:20:00.412048+05:30",
+  "sprintStartedAtUtc": "2026-10-22T16:42:22Z",
+  "elapsedSinceRecordedH0Seconds": 11258,
+  "decision": {
+    "finalDevelopmentCandidate": "QUALIFIED_GO",
+    "basis": "Existing exact-head6/6 CI plus bounded stress replays with no application P0/P1 reproduced; no release approval",
+    "historicalStressObservation": "NOT_REPRODUCED; root cause unresolved; neither harness overload nor application defect established",
+    "releaseHold": true
+  },
+  "existingFrozenCi": [
+    {
+      "conclusion": "success",
+      "databaseId": 39827439740,
+      "headSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+      "status": "completed",
+      "workflowName": "CI"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39827439687,
+      "headSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+      "status": "completed",
+      "workflowName": "Offline catalog reconciliation evidence"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39827439576,
+      "headSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+      "status": "completed",
+      "workflowName": "Private DRAFT persistence PostgreSQL acceptance"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39827439447,
+      "headSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+      "status": "completed",
+      "workflowName": "Atomic embed PostgreSQL proposal"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39827439626,
+      "headSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+      "status": "completed",
+      "workflowName": "Atomic batch PostgreSQL proposal"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39827439579,
+      "headSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+      "status": "completed",
+      "workflowName": "Atomic billing PostgreSQL proposal"
+    }
+  ],
+  "independentWorkReview": {
+    "source": "User-provided summary in this task; underlying report not supplied",
+    "reportedQualifiedGoForCodeFreeze": true,
+    "reportedFocusedTests": "66/66",
+    "rerunByThisDiagnostic": false,
+    "unsupportedStatusPromotions": false
+  },
+  "diagnostics": {
+    "plannedReplays": 2,
+    "completedReplays": 2,
+    "rate": 4,
+    "journeyScope": "Unmodified frozen nine-journey prefix through invitation creation and acceptance",
+    "outcomes": [
+      "9/9 passed with pinnedChrome156",
+      "9/9 passed with historicalChromium154"
+    ],
+    "allCleanupPassed": true,
+    "historicalBrowserSubmitToInviteNavigationMs": 985,
+    "resourceCaveats": "Some CPU throttling measured; pressure files unavailable; observer scheduling effects documented",
+    "applicationDefectReproduced": false,
+    "harnessOverloadProven": false,
+    "historicalFailureReproduced": false,
+    "ciRerun": false,
+    "candidateCodeChanges": false
+  },
+  "ledger": {
+    "path": "docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv",
+    "records": 424,
+    "statusesBefore": {
+      "VERIFIED": 55,
+      "PARTIAL": 331,
+      "UNKNOWN": 18,
+      "BLOCKED": 20
+    },
+    "statusesAfter": {
+      "VERIFIED": 55,
+      "PARTIAL": 331,
+      "UNKNOWN": 18,
+      "BLOCKED": 20
+    },
+    "statusChanges": [],
+    "evidenceOnlyRowsUpdated": [
+      "BP-0553-0553",
+      "RC-head",
+      "RC-CI"
+    ],
+    "priorSha256": "8b2ac855dcee0a6cb70451f9faf248e03162a695c962ec1349dd264c303e0779",
+    "updatedSha256": "645b240586212d408f00d722ea1b7a70fcb27cdb495f74b7b4a3e7b777973ebf"
+  },
+  "artifacts": [
+    {
+      "path": "docs/audits/sprint-p0-2026-10-22/final-stress/README.md",
+      "sha256": "d9afee280ad06a8e8dae53fc826bfc26b1abd3a9422b5b58cf356cfdc91bb1bf",
+      "bytes": 5759
+    },
+    {
+      "path": "docs/audits/sprint-p0-2026-10-22/final-stress/build-invitation-diagnostic.py",
+      "sha256": "100337113566f1786fadf595c3ceebc3a45802c16838c9d44d7ede4893127a90",
+      "bytes": 9967
+    },
+    {
+      "path": "docs/audits/sprint-p0-2026-10-22/final-stress/run-4x-a.json",
+      "sha256": "023709e4a2dcce1c6b9d6efcece1f2427e1713b8fe8adb14da13ea23af1b9026",
+      "bytes": 163844
+    },
+    {
+      "path": "docs/audits/sprint-p0-2026-10-22/final-stress/run-4x-historical.json",
+      "sha256": "8c147c3be65143060bb7719fc341574cdc39155ad0a60d9d6eef958f14944597",
+      "bytes": 190039
+    }
+  ],
+  "remainingExternalGates": [
+    "Live isolated GoTrue/provider lifecycle and authenticated production-mode CSP",
+    "Deployed database/RLS equivalence, migration adoption/rollback and privileged-writer review",
+    "Authorized payment sandbox/activation decisions",
+    "Physical device/accessibility/PDF-standards and production performance evidence",
+    "Authoritative source/specialist decisions and operational approvals"
+  ],
+  "releaseActions": {
+    "productionWrites": false,
+    "migrations": false,
+    "merges": false,
+    "deployments": false,
+    "payments": false,
+    "certificationChanges": false,
+    "publicationChanges": false
+  },
+  "runtimeFixtures": {
+    "node": "22.23.4",
+    "pinnedBrowser": {
+      "version": "156.0.8078.47",
+      "packageSha256": "6c92cd22e90c6e3e255d782991543fa2091db8614e8536a971a7433a5c4d7ac8",
+      "binarySha256": "95dc9473b4f904cb3ab0800fc7206081fcae12abc094a088bd741a13f1747b72"
+    },
+    "historicalBrowser": {
+      "version": "154.0.8037.57",
+      "launcherSha256": "2c8d32d29dc6781c35ae196ea83299d507ac88fc339301abe74672feda299779"
+    },
+    "isolation": "Fresh source worktree, Next copy, browser profile and disposable database/provider per replay; sequential runs; no injected background load. Physical-host pressure telemetry unavailable."
+  }
+}

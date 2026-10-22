@@ -1,0 +1,6260 @@
+{
+  "frozenSha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+  "scope": "Original frozen journey sequence through invitation; observation-only injection, no forced cookie gaps",
+  "rate": 4,
+  "passed": true,
+  "journeys": [
+    {
+      "name": "Anonymous HTTP and malformed auth cookie fail closed",
+      "passed": true
+    },
+    {
+      "name": "Installed SDK rejects forged local JWT through HTTP auth verifier",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls owner",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls admin",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls manager",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls member",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls viewer",
+      "passed": true
+    },
+    {
+      "name": "Native Next server action persists project and client",
+      "passed": true
+    },
+    {
+      "name": "Native invitation creation and acceptance persist membership",
+      "passed": true
+    }
+  ],
+  "capability": {
+    "node": "v22.23.4",
+    "cpu": 4,
+    "memory": 35843637248,
+    "platform": "linux",
+    "release": "6.18.55"
+  },
+  "browser": {
+    "product": "Chrome/156.0.8078.47",
+    "source": "Checksum-pinned package executable independently verified after run"
+  },
+  "startupTrace": {
+    "events": [
+      {
+        "phase": "profile-start",
+        "elapsedMs": 0
+      },
+      {
+        "phase": "profile-created",
+        "elapsedMs": 2
+      },
+      {
+        "phase": "spawn",
+        "elapsedMs": 7,
+        "pid": 4695
+      },
+      {
+        "phase": "readiness-wait",
+        "elapsedMs": 7,
+        "startupTimeoutMs": 20000
+      },
+      {
+        "phase": "readiness-file",
+        "elapsedMs": 8,
+        "state": "absent"
+      },
+      {
+        "phase": "stderr-first",
+        "elapsedMs": 416
+      },
+      {
+        "phase": "readiness-file",
+        "elapsedMs": 2156,
+        "state": "present"
+      },
+      {
+        "phase": "endpoint-ready",
+        "elapsedMs": 2156
+      },
+      {
+        "phase": "target-create",
+        "elapsedMs": 2156
+      },
+      {
+        "phase": "target-ready",
+        "elapsedMs": 2475
+      },
+      {
+        "phase": "websocket-ready",
+        "elapsedMs": 2559
+      },
+      {
+        "phase": "domains-ready",
+        "elapsedMs": 2700
+      },
+      {
+        "phase": "cleanup-start",
+        "elapsedMs": 88257
+      },
+      {
+        "phase": "terminate",
+        "elapsedMs": 88259,
+        "signal": "SIGTERM"
+      },
+      {
+        "phase": "process-exit",
+        "elapsedMs": 88293,
+        "code": 0,
+        "signal": null
+      },
+      {
+        "phase": "profile-removed",
+        "elapsedMs": 88344
+      }
+    ]
+  },
+  "events": [
+    {
+      "type": "lifecycle",
+      "nodeMs": 29351,
+      "journey": "setup",
+      "name": "commit",
+      "timestamp": 3817.208661
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 29353,
+      "journey": "setup",
+      "name": "DOMContentLoaded",
+      "timestamp": 3817.20897
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 29357,
+      "journey": "setup",
+      "name": "load",
+      "timestamp": 3817.215737
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 29360,
+      "journey": "setup",
+      "name": "networkAlmostIdle",
+      "timestamp": 3817.215155
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 29361,
+      "journey": "setup",
+      "name": "networkIdle",
+      "timestamp": 3817.215155
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 29367,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed"
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 31129,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed",
+      "name": "networkAlmostIdle",
+      "timestamp": 3817.215155
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 31132,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed",
+      "name": "networkIdle",
+      "timestamp": 3817.215155
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 32373,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed",
+      "label": "journey-end",
+      "state": null,
+      "authRequests": 0
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 32373,
+      "journey": "Installed SDK rejects forged local JWT through HTTP auth verifier"
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 32588,
+      "journey": "Installed SDK rejects forged local JWT through HTTP auth verifier",
+      "label": "journey-end",
+      "state": null,
+      "authRequests": 2
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 32591,
+      "journey": "Installed SDK rejects forged local JWT through HTTP auth verifier",
+      "method": "Network.clearBrowserCookies"
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 32592,
+      "journey": "Installed SDK rejects forged local JWT through HTTP auth verifier",
+      "method": "Network.setCookie"
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 32594,
+      "journey": "RSC permission controls owner"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 32959,
+      "journey": "RSC permission controls owner",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 32988,
+      "journey": "RSC permission controls owner",
+      "name": "init",
+      "timestamp": 3821.064239
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 33001,
+      "journey": "RSC permission controls owner",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 33368,
+      "journey": "RSC permission controls owner",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3821.214822
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 33368,
+      "journey": "RSC permission controls owner",
+      "name": "firstPaint",
+      "timestamp": 3821.214822
+    },
+    {
+      "type": "browser",
+      "nodeMs": 33408,
+      "journey": "RSC permission controls owner",
+      "event": "state",
+      "browserMs": 787,
+      "timeOrigin": 1792697888960.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 33414,
+      "journey": "RSC permission controls owner",
+      "event": "navigation-timing",
+      "browserMs": 792,
+      "timeOrigin": 1792697888960.1,
+      "requestStart": 12.300000000279397,
+      "responseStart": 329.3000000002794,
+      "responseEnd": 334.39999999990687,
+      "domInteractive": 785,
+      "domContentLoaded": 785.1000000000931
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 33418,
+      "journey": "RSC permission controls owner",
+      "name": "DOMContentLoaded",
+      "timestamp": 3821.489115
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 33429,
+      "journey": "RSC permission controls owner",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3821.458099
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 33429,
+      "journey": "RSC permission controls owner",
+      "name": "firstContentfulPaint",
+      "timestamp": 3821.458099
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 33444,
+      "journey": "RSC permission controls owner",
+      "name": "firstImagePaint",
+      "timestamp": 3821.484849
+    },
+    {
+      "type": "browser",
+      "nodeMs": 36204,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 3580,
+      "timeOrigin": 1792697888960.1,
+      "duration": 2323,
+      "start": 1225
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 36386,
+      "journey": "RSC permission controls owner",
+      "name": "load",
+      "timestamp": 3824.461767
+    },
+    {
+      "type": "browser",
+      "nodeMs": 36388,
+      "journey": "RSC permission controls owner",
+      "event": "pageshow",
+      "browserMs": 3768,
+      "timeOrigin": 1792697888960.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 36398,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 3778,
+      "timeOrigin": 1792697888960.1,
+      "duration": 109,
+      "start": 3596
+    },
+    {
+      "type": "browser",
+      "nodeMs": 36576,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 3950,
+      "timeOrigin": 1792697888960.1,
+      "duration": 140,
+      "start": 3782
+    },
+    {
+      "type": "browser",
+      "nodeMs": 37196,
+      "journey": "RSC permission controls owner",
+      "event": "state",
+      "browserMs": 4575,
+      "timeOrigin": 1792697888960.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 37399,
+      "journey": "RSC permission controls owner",
+      "name": "networkAlmostIdle",
+      "timestamp": 3821.489204
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 37410,
+      "journey": "RSC permission controls owner",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3821.458099
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 38191,
+      "journey": "RSC permission controls owner",
+      "name": "networkIdle",
+      "timestamp": 3825.630589
+    },
+    {
+      "type": "browser",
+      "nodeMs": 39028,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 6373,
+      "timeOrigin": 1792697888960.1,
+      "duration": 177,
+      "start": 6193
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 39844,
+      "journey": "RSC permission controls owner",
+      "path": "/business/api",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 39866,
+      "journey": "RSC permission controls owner",
+      "name": "init",
+      "timestamp": 3827.943171
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 39871,
+      "journey": "RSC permission controls owner",
+      "path": "/business/api",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 40027,
+      "journey": "RSC permission controls owner",
+      "event": "state",
+      "browserMs": 3186,
+      "timeOrigin": 1792697893142.5,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 40036,
+      "journey": "RSC permission controls owner",
+      "event": "navigation-timing",
+      "browserMs": 3187,
+      "timeOrigin": 1792697893142.5,
+      "requestStart": 12.800000000279397,
+      "responseStart": 3028.7000000001863,
+      "responseEnd": 3035.8000000002794,
+      "domInteractive": 3175.5,
+      "domContentLoaded": 3175.9000000003725
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40039,
+      "journey": "RSC permission controls owner",
+      "name": "DOMContentLoaded",
+      "timestamp": 3828.0663
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40065,
+      "journey": "RSC permission controls owner",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3828.099469
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40071,
+      "journey": "RSC permission controls owner",
+      "name": "firstContentfulPaint",
+      "timestamp": 3828.099469
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40072,
+      "journey": "RSC permission controls owner",
+      "name": "firstPaint",
+      "timestamp": 3828.099469
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40073,
+      "journey": "RSC permission controls owner",
+      "name": "firstImagePaint",
+      "timestamp": 3828.099469
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40717,
+      "journey": "RSC permission controls owner",
+      "name": "networkAlmostIdle",
+      "timestamp": 3828.100313
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 40718,
+      "journey": "RSC permission controls owner",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3828.099469
+    },
+    {
+      "type": "browser",
+      "nodeMs": 44529,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 7723,
+      "timeOrigin": 1792697893142.5,
+      "duration": 2821,
+      "start": 4876
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 45265,
+      "journey": "RSC permission controls owner",
+      "name": "load",
+      "timestamp": 3833.310309
+    },
+    {
+      "type": "browser",
+      "nodeMs": 45265,
+      "journey": "RSC permission controls owner",
+      "event": "pageshow",
+      "browserMs": 8451,
+      "timeOrigin": 1792697893142.5,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 45281,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 8463,
+      "timeOrigin": 1792697893142.5,
+      "duration": 132,
+      "start": 7784
+    },
+    {
+      "type": "browser",
+      "nodeMs": 45304,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 8463,
+      "timeOrigin": 1792697893142.5,
+      "duration": 495,
+      "start": 7933
+    },
+    {
+      "type": "browser",
+      "nodeMs": 45723,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 8875,
+      "timeOrigin": 1792697893142.5,
+      "duration": 218,
+      "start": 8644
+    },
+    {
+      "type": "browser",
+      "nodeMs": 46411,
+      "journey": "RSC permission controls owner",
+      "event": "state",
+      "browserMs": 9607,
+      "timeOrigin": 1792697893142.5,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 46431,
+      "journey": "RSC permission controls owner",
+      "event": "long-task",
+      "browserMs": 9626,
+      "timeOrigin": 1792697893142.5,
+      "duration": 105,
+      "start": 9506
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 46443,
+      "journey": "RSC permission controls owner",
+      "label": "journey-end",
+      "state": {
+        "emailExists": false,
+        "emailLength": null,
+        "emailValid": null,
+        "emailDisabled": null,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": false,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 9
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 46443,
+      "journey": "RSC permission controls admin"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 46898,
+      "journey": "RSC permission controls admin",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 46961,
+      "journey": "RSC permission controls admin",
+      "name": "init",
+      "timestamp": 3834.993948
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 46971,
+      "journey": "RSC permission controls admin",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 47135,
+      "journey": "RSC permission controls admin",
+      "event": "state",
+      "browserMs": 668,
+      "timeOrigin": 1792697902803.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 47137,
+      "journey": "RSC permission controls admin",
+      "event": "navigation-timing",
+      "browserMs": 669,
+      "timeOrigin": 1792697902803.1,
+      "requestStart": 17.600000000093132,
+      "responseStart": 424.70000000018626,
+      "responseEnd": 429.5,
+      "domInteractive": 664,
+      "domContentLoaded": 664
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47137,
+      "journey": "RSC permission controls admin",
+      "name": "DOMContentLoaded",
+      "timestamp": 3835.208352
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47149,
+      "journey": "RSC permission controls admin",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3835.207364
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47149,
+      "journey": "RSC permission controls admin",
+      "name": "firstContentfulPaint",
+      "timestamp": 3835.207364
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47149,
+      "journey": "RSC permission controls admin",
+      "name": "firstPaint",
+      "timestamp": 3835.207364
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47149,
+      "journey": "RSC permission controls admin",
+      "name": "firstImagePaint",
+      "timestamp": 3835.207364
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47672,
+      "journey": "RSC permission controls admin",
+      "name": "networkAlmostIdle",
+      "timestamp": 3835.208406
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 47674,
+      "journey": "RSC permission controls admin",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3835.207364
+    },
+    {
+      "type": "browser",
+      "nodeMs": 53536,
+      "journey": "RSC permission controls admin",
+      "event": "long-task",
+      "browserMs": 7069,
+      "timeOrigin": 1792697902803.1,
+      "duration": 4624,
+      "start": 2375
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 53749,
+      "journey": "RSC permission controls admin",
+      "name": "load",
+      "timestamp": 3841.807059
+    },
+    {
+      "type": "browser",
+      "nodeMs": 53749,
+      "journey": "RSC permission controls admin",
+      "event": "pageshow",
+      "browserMs": 7271,
+      "timeOrigin": 1792697902803.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 53759,
+      "journey": "RSC permission controls admin",
+      "event": "long-task",
+      "browserMs": 7287,
+      "timeOrigin": 1792697902803.1,
+      "duration": 102,
+      "start": 7122
+    },
+    {
+      "type": "browser",
+      "nodeMs": 54342,
+      "journey": "RSC permission controls admin",
+      "event": "state",
+      "browserMs": 7858,
+      "timeOrigin": 1792697902803.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 55346,
+      "journey": "RSC permission controls admin",
+      "path": "/business/api",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 55380,
+      "journey": "RSC permission controls admin",
+      "name": "init",
+      "timestamp": 3843.451901
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 55381,
+      "journey": "RSC permission controls admin",
+      "path": "/business/api",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 55562,
+      "journey": "RSC permission controls admin",
+      "event": "state",
+      "browserMs": 1461,
+      "timeOrigin": 1792697910417.6,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 55563,
+      "journey": "RSC permission controls admin",
+      "event": "navigation-timing",
+      "browserMs": 1467,
+      "timeOrigin": 1792697910417.6,
+      "requestStart": 36.10000000009313,
+      "responseStart": 1248.1000000000931,
+      "responseEnd": 1291.6000000000931,
+      "domInteractive": 1446.1000000000931,
+      "domContentLoaded": 1446.1000000000931
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 55563,
+      "journey": "RSC permission controls admin",
+      "name": "DOMContentLoaded",
+      "timestamp": 3843.621445
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 55643,
+      "journey": "RSC permission controls admin",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3843.681569
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 55646,
+      "journey": "RSC permission controls admin",
+      "name": "firstContentfulPaint",
+      "timestamp": 3843.681569
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 55646,
+      "journey": "RSC permission controls admin",
+      "name": "firstPaint",
+      "timestamp": 3843.681569
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 55647,
+      "journey": "RSC permission controls admin",
+      "name": "firstImagePaint",
+      "timestamp": 3843.681569
+    },
+    {
+      "type": "browser",
+      "nodeMs": 55764,
+      "journey": "RSC permission controls admin",
+      "event": "long-task",
+      "browserMs": 1683,
+      "timeOrigin": 1792697910417.6,
+      "duration": 110,
+      "start": 1566
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 56275,
+      "journey": "RSC permission controls admin",
+      "name": "networkAlmostIdle",
+      "timestamp": 3843.719788
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 56276,
+      "journey": "RSC permission controls admin",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3843.681569
+    },
+    {
+      "type": "browser",
+      "nodeMs": 58445,
+      "journey": "RSC permission controls admin",
+      "event": "long-task",
+      "browserMs": 4364,
+      "timeOrigin": 1792697910417.6,
+      "duration": 1984,
+      "start": 2362
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 58528,
+      "journey": "RSC permission controls admin",
+      "name": "load",
+      "timestamp": 3846.601756
+    },
+    {
+      "type": "browser",
+      "nodeMs": 58529,
+      "journey": "RSC permission controls admin",
+      "event": "pageshow",
+      "browserMs": 4448,
+      "timeOrigin": 1792697910417.6,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 59280,
+      "journey": "RSC permission controls admin",
+      "event": "state",
+      "browserMs": 5203,
+      "timeOrigin": 1792697910417.6,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 59308,
+      "journey": "RSC permission controls admin",
+      "label": "journey-end",
+      "state": {
+        "emailExists": false,
+        "emailLength": null,
+        "emailValid": null,
+        "emailDisabled": null,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": false,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 16
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 59308,
+      "journey": "RSC permission controls manager"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 59999,
+      "journey": "RSC permission controls manager",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60031,
+      "journey": "RSC permission controls manager",
+      "name": "init",
+      "timestamp": 3848.10811
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 60034,
+      "journey": "RSC permission controls manager",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 60229,
+      "journey": "RSC permission controls manager",
+      "event": "state",
+      "browserMs": 883,
+      "timeOrigin": 1792697915681.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 60229,
+      "journey": "RSC permission controls manager",
+      "event": "navigation-timing",
+      "browserMs": 883,
+      "timeOrigin": 1792697915681.2,
+      "requestStart": 22.399999999906868,
+      "responseStart": 625.6000000000931,
+      "responseEnd": 630.5,
+      "domInteractive": 882.1000000000931,
+      "domContentLoaded": 882.1000000000931
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60230,
+      "journey": "RSC permission controls manager",
+      "name": "DOMContentLoaded",
+      "timestamp": 3848.300432
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60263,
+      "journey": "RSC permission controls manager",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3848.328487
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60263,
+      "journey": "RSC permission controls manager",
+      "name": "firstContentfulPaint",
+      "timestamp": 3848.328487
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60264,
+      "journey": "RSC permission controls manager",
+      "name": "firstPaint",
+      "timestamp": 3848.328487
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60264,
+      "journey": "RSC permission controls manager",
+      "name": "firstImagePaint",
+      "timestamp": 3848.328487
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60794,
+      "journey": "RSC permission controls manager",
+      "name": "networkAlmostIdle",
+      "timestamp": 3848.31668
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 60795,
+      "journey": "RSC permission controls manager",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3848.328487
+    },
+    {
+      "type": "browser",
+      "nodeMs": 63181,
+      "journey": "RSC permission controls manager",
+      "event": "long-task",
+      "browserMs": 3841,
+      "timeOrigin": 1792697915681.2,
+      "duration": 2199,
+      "start": 1618
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 63321,
+      "journey": "RSC permission controls manager",
+      "name": "load",
+      "timestamp": 3851.393892
+    },
+    {
+      "type": "browser",
+      "nodeMs": 63321,
+      "journey": "RSC permission controls manager",
+      "event": "pageshow",
+      "browserMs": 3980,
+      "timeOrigin": 1792697915681.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 63477,
+      "journey": "RSC permission controls manager",
+      "event": "long-task",
+      "browserMs": 4136,
+      "timeOrigin": 1792697915681.2,
+      "duration": 110,
+      "start": 3997
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 64084,
+      "journey": "RSC permission controls manager",
+      "path": "/business/api",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64189,
+      "journey": "RSC permission controls manager",
+      "name": "init",
+      "timestamp": 3852.266388
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 64194,
+      "journey": "RSC permission controls manager",
+      "path": "/business/api",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 64363,
+      "journey": "RSC permission controls manager",
+      "event": "state",
+      "browserMs": 638,
+      "timeOrigin": 1792697920031.7,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 64363,
+      "journey": "RSC permission controls manager",
+      "event": "navigation-timing",
+      "browserMs": 638,
+      "timeOrigin": 1792697920031.7,
+      "requestStart": 11.100000000093132,
+      "responseStart": 376.39999999990687,
+      "responseEnd": 385.70000000018626,
+      "domInteractive": 618.3000000002794,
+      "domContentLoaded": 618.3000000002794
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64366,
+      "journey": "RSC permission controls manager",
+      "name": "DOMContentLoaded",
+      "timestamp": 3852.406408
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64382,
+      "journey": "RSC permission controls manager",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3852.444032
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64382,
+      "journey": "RSC permission controls manager",
+      "name": "firstContentfulPaint",
+      "timestamp": 3852.444032
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64383,
+      "journey": "RSC permission controls manager",
+      "name": "firstPaint",
+      "timestamp": 3852.444032
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64386,
+      "journey": "RSC permission controls manager",
+      "name": "firstImagePaint",
+      "timestamp": 3852.444032
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64906,
+      "journey": "RSC permission controls manager",
+      "name": "networkAlmostIdle",
+      "timestamp": 3852.445837
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 64906,
+      "journey": "RSC permission controls manager",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3852.444032
+    },
+    {
+      "type": "browser",
+      "nodeMs": 67334,
+      "journey": "RSC permission controls manager",
+      "event": "long-task",
+      "browserMs": 3643,
+      "timeOrigin": 1792697920031.7,
+      "duration": 2300,
+      "start": 1312
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 67367,
+      "journey": "RSC permission controls manager",
+      "name": "load",
+      "timestamp": 3855.441976
+    },
+    {
+      "type": "browser",
+      "nodeMs": 67367,
+      "journey": "RSC permission controls manager",
+      "event": "pageshow",
+      "browserMs": 3675,
+      "timeOrigin": 1792697920031.7,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 67632,
+      "journey": "RSC permission controls manager",
+      "event": "long-task",
+      "browserMs": 3941,
+      "timeOrigin": 1792697920031.7,
+      "duration": 102,
+      "start": 3679
+    },
+    {
+      "type": "browser",
+      "nodeMs": 67633,
+      "journey": "RSC permission controls manager",
+      "event": "long-task",
+      "browserMs": 3941,
+      "timeOrigin": 1792697920031.7,
+      "duration": 122,
+      "start": 3793
+    },
+    {
+      "type": "browser",
+      "nodeMs": 68467,
+      "journey": "RSC permission controls manager",
+      "event": "state",
+      "browserMs": 4774,
+      "timeOrigin": 1792697920031.7,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 68485,
+      "journey": "RSC permission controls manager",
+      "event": "long-task",
+      "browserMs": 4793,
+      "timeOrigin": 1792697920031.7,
+      "duration": 112,
+      "start": 4663
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 68491,
+      "journey": "RSC permission controls manager",
+      "label": "journey-end",
+      "state": {
+        "emailExists": false,
+        "emailLength": null,
+        "emailValid": null,
+        "emailDisabled": null,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": false,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 23
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 68492,
+      "journey": "RSC permission controls member"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 68868,
+      "journey": "RSC permission controls member",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 68895,
+      "journey": "RSC permission controls member",
+      "name": "init",
+      "timestamp": 3856.972669
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 68897,
+      "journey": "RSC permission controls member",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 69009,
+      "journey": "RSC permission controls member",
+      "event": "state",
+      "browserMs": 492,
+      "timeOrigin": 1792697924857,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 69010,
+      "journey": "RSC permission controls member",
+      "event": "navigation-timing",
+      "browserMs": 493,
+      "timeOrigin": 1792697924857,
+      "requestStart": 16.90000000037253,
+      "responseStart": 333.3000000002794,
+      "responseEnd": 343.90000000037253,
+      "domInteractive": 465,
+      "domContentLoaded": 465
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69011,
+      "journey": "RSC permission controls member",
+      "name": "DOMContentLoaded",
+      "timestamp": 3857.085872
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69053,
+      "journey": "RSC permission controls member",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3857.123354
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69058,
+      "journey": "RSC permission controls member",
+      "name": "firstContentfulPaint",
+      "timestamp": 3857.123354
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69058,
+      "journey": "RSC permission controls member",
+      "name": "firstPaint",
+      "timestamp": 3857.123354
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69059,
+      "journey": "RSC permission controls member",
+      "name": "firstImagePaint",
+      "timestamp": 3857.123354
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69560,
+      "journey": "RSC permission controls member",
+      "name": "networkAlmostIdle",
+      "timestamp": 3857.098805
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 69564,
+      "journey": "RSC permission controls member",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3857.123354
+    },
+    {
+      "type": "browser",
+      "nodeMs": 71873,
+      "journey": "RSC permission controls member",
+      "event": "long-task",
+      "browserMs": 3357,
+      "timeOrigin": 1792697924857,
+      "duration": 2136,
+      "start": 1195
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72106,
+      "journey": "RSC permission controls member",
+      "name": "load",
+      "timestamp": 3860.18311
+    },
+    {
+      "type": "browser",
+      "nodeMs": 72107,
+      "journey": "RSC permission controls member",
+      "event": "pageshow",
+      "browserMs": 3591,
+      "timeOrigin": 1792697924857,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 72693,
+      "journey": "RSC permission controls member",
+      "path": "/business/api",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72731,
+      "journey": "RSC permission controls member",
+      "name": "init",
+      "timestamp": 3860.808328
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 72733,
+      "journey": "RSC permission controls member",
+      "path": "/business/api",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 72844,
+      "journey": "RSC permission controls member",
+      "event": "state",
+      "browserMs": 462,
+      "timeOrigin": 1792697928706.5,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 72844,
+      "journey": "RSC permission controls member",
+      "event": "navigation-timing",
+      "browserMs": 462,
+      "timeOrigin": 1792697928706.5,
+      "requestStart": 12.199999999720603,
+      "responseStart": 313.09999999962747,
+      "responseEnd": 317.29999999981374,
+      "domInteractive": 443.6999999997206,
+      "domContentLoaded": 443.79999999981374
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72845,
+      "journey": "RSC permission controls member",
+      "name": "DOMContentLoaded",
+      "timestamp": 3860.906655
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72910,
+      "journey": "RSC permission controls member",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3860.951919
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72910,
+      "journey": "RSC permission controls member",
+      "name": "firstContentfulPaint",
+      "timestamp": 3860.951919
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72914,
+      "journey": "RSC permission controls member",
+      "name": "firstPaint",
+      "timestamp": 3860.951919
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 72914,
+      "journey": "RSC permission controls member",
+      "name": "firstImagePaint",
+      "timestamp": 3860.951919
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 73467,
+      "journey": "RSC permission controls member",
+      "name": "networkAlmostIdle",
+      "timestamp": 3860.936997
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 73467,
+      "journey": "RSC permission controls member",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3860.951919
+    },
+    {
+      "type": "browser",
+      "nodeMs": 76954,
+      "journey": "RSC permission controls member",
+      "event": "long-task",
+      "browserMs": 4588,
+      "timeOrigin": 1792697928706.5,
+      "duration": 3282,
+      "start": 1287
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 76986,
+      "journey": "RSC permission controls member",
+      "name": "load",
+      "timestamp": 3865.062159
+    },
+    {
+      "type": "browser",
+      "nodeMs": 76986,
+      "journey": "RSC permission controls member",
+      "event": "pageshow",
+      "browserMs": 4621,
+      "timeOrigin": 1792697928706.5,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 77233,
+      "journey": "RSC permission controls member",
+      "event": "long-task",
+      "browserMs": 4867,
+      "timeOrigin": 1792697928706.5,
+      "duration": 101,
+      "start": 4622
+    },
+    {
+      "type": "browser",
+      "nodeMs": 77233,
+      "journey": "RSC permission controls member",
+      "event": "long-task",
+      "browserMs": 4867,
+      "timeOrigin": 1792697928706.5,
+      "duration": 115,
+      "start": 4735
+    },
+    {
+      "type": "browser",
+      "nodeMs": 77955,
+      "journey": "RSC permission controls member",
+      "event": "state",
+      "browserMs": 5588,
+      "timeOrigin": 1792697928706.5,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 77977,
+      "journey": "RSC permission controls member",
+      "label": "journey-end",
+      "state": {
+        "emailExists": false,
+        "emailLength": null,
+        "emailValid": null,
+        "emailDisabled": null,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": false,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 30
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 77978,
+      "journey": "RSC permission controls viewer"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 78317,
+      "journey": "RSC permission controls viewer",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 78345,
+      "journey": "RSC permission controls viewer",
+      "name": "init",
+      "timestamp": 3866.422096
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 78348,
+      "journey": "RSC permission controls viewer",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 78464,
+      "journey": "RSC permission controls viewer",
+      "event": "state",
+      "browserMs": 458,
+      "timeOrigin": 1792697934343.1,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 78464,
+      "journey": "RSC permission controls viewer",
+      "event": "navigation-timing",
+      "browserMs": 458,
+      "timeOrigin": 1792697934343.1,
+      "requestStart": 13.200000000186265,
+      "responseStart": 304.10000000009313,
+      "responseEnd": 318.70000000018626,
+      "domInteractive": 441,
+      "domContentLoaded": 441
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 78466,
+      "journey": "RSC permission controls viewer",
+      "name": "DOMContentLoaded",
+      "timestamp": 3866.53813
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 78525,
+      "journey": "RSC permission controls viewer",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3866.585481
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 78526,
+      "journey": "RSC permission controls viewer",
+      "name": "firstContentfulPaint",
+      "timestamp": 3866.585481
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 78540,
+      "journey": "RSC permission controls viewer",
+      "name": "firstPaint",
+      "timestamp": 3866.585481
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 78543,
+      "journey": "RSC permission controls viewer",
+      "name": "firstImagePaint",
+      "timestamp": 3866.585481
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 79011,
+      "journey": "RSC permission controls viewer",
+      "name": "networkAlmostIdle",
+      "timestamp": 3866.548187
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 79013,
+      "journey": "RSC permission controls viewer",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3866.585481
+    },
+    {
+      "type": "browser",
+      "nodeMs": 81231,
+      "journey": "RSC permission controls viewer",
+      "event": "long-task",
+      "browserMs": 3228,
+      "timeOrigin": 1792697934343.1,
+      "duration": 2021,
+      "start": 1183
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 81259,
+      "journey": "RSC permission controls viewer",
+      "name": "load",
+      "timestamp": 3869.335659
+    },
+    {
+      "type": "browser",
+      "nodeMs": 81260,
+      "journey": "RSC permission controls viewer",
+      "event": "pageshow",
+      "browserMs": 3258,
+      "timeOrigin": 1792697934343.1,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 82014,
+      "journey": "RSC permission controls viewer",
+      "path": "/business/api",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82093,
+      "journey": "RSC permission controls viewer",
+      "name": "init",
+      "timestamp": 3870.163688
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 82128,
+      "journey": "RSC permission controls viewer",
+      "path": "/business/api",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 82358,
+      "journey": "RSC permission controls viewer",
+      "event": "state",
+      "browserMs": 738,
+      "timeOrigin": 1792697937955.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 82359,
+      "journey": "RSC permission controls viewer",
+      "event": "navigation-timing",
+      "browserMs": 738,
+      "timeOrigin": 1792697937955.2,
+      "requestStart": 21,
+      "responseStart": 380.10000000009313,
+      "responseEnd": 408.10000000009313,
+      "domInteractive": 725.2000000001863,
+      "domContentLoaded": 726.1000000000931
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82362,
+      "journey": "RSC permission controls viewer",
+      "name": "DOMContentLoaded",
+      "timestamp": 3870.430749
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82374,
+      "journey": "RSC permission controls viewer",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3870.393839
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82376,
+      "journey": "RSC permission controls viewer",
+      "name": "firstPaint",
+      "timestamp": 3870.393839
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82411,
+      "journey": "RSC permission controls viewer",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3870.441594
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82412,
+      "journey": "RSC permission controls viewer",
+      "name": "firstContentfulPaint",
+      "timestamp": 3870.441594
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 82413,
+      "journey": "RSC permission controls viewer",
+      "name": "firstImagePaint",
+      "timestamp": 3870.441594
+    },
+    {
+      "type": "browser",
+      "nodeMs": 86212,
+      "journey": "RSC permission controls viewer",
+      "event": "long-task",
+      "browserMs": 4598,
+      "timeOrigin": 1792697937955.2,
+      "duration": 2497,
+      "start": 2076
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 86358,
+      "journey": "RSC permission controls viewer",
+      "name": "load",
+      "timestamp": 3874.434906
+    },
+    {
+      "type": "browser",
+      "nodeMs": 86359,
+      "journey": "RSC permission controls viewer",
+      "event": "pageshow",
+      "browserMs": 4745,
+      "timeOrigin": 1792697937955.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": true,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 86370,
+      "journey": "RSC permission controls viewer",
+      "event": "long-task",
+      "browserMs": 4754,
+      "timeOrigin": 1792697937955.2,
+      "duration": 103,
+      "start": 4604
+    },
+    {
+      "type": "browser",
+      "nodeMs": 87191,
+      "journey": "RSC permission controls viewer",
+      "event": "state",
+      "browserMs": 5576,
+      "timeOrigin": 1792697937955.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 87212,
+      "journey": "RSC permission controls viewer",
+      "label": "journey-end",
+      "state": {
+        "emailExists": false,
+        "emailLength": null,
+        "emailValid": null,
+        "emailDisabled": null,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": false,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 37
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 87228,
+      "journey": "Native Next server action persists project and client"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 87710,
+      "journey": "Native Next server action persists project and client",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 87746,
+      "journey": "Native Next server action persists project and client",
+      "name": "init",
+      "timestamp": 3875.821988
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 87748,
+      "journey": "Native Next server action persists project and client",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 87930,
+      "journey": "Native Next server action persists project and client",
+      "event": "state",
+      "browserMs": 688,
+      "timeOrigin": 1792697943578.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 87938,
+      "journey": "Native Next server action persists project and client",
+      "event": "navigation-timing",
+      "browserMs": 688,
+      "timeOrigin": 1792697943578.1,
+      "requestStart": 10.900000000372529,
+      "responseStart": 447.40000000037253,
+      "responseEnd": 454.70000000018626,
+      "domInteractive": 680.2000000001863,
+      "domContentLoaded": 680.2000000001863
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 87942,
+      "journey": "Native Next server action persists project and client",
+      "name": "DOMContentLoaded",
+      "timestamp": 3876.003374
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 87964,
+      "journey": "Native Next server action persists project and client",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3876.024563
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 87965,
+      "journey": "Native Next server action persists project and client",
+      "name": "firstContentfulPaint",
+      "timestamp": 3876.024563
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 87966,
+      "journey": "Native Next server action persists project and client",
+      "name": "firstPaint",
+      "timestamp": 3876.024563
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 87968,
+      "journey": "Native Next server action persists project and client",
+      "name": "firstImagePaint",
+      "timestamp": 3876.024563
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 88531,
+      "journey": "Native Next server action persists project and client",
+      "name": "networkAlmostIdle",
+      "timestamp": 3876.021001
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 88531,
+      "journey": "Native Next server action persists project and client",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3876.024563
+    },
+    {
+      "type": "browser",
+      "nodeMs": 90914,
+      "journey": "Native Next server action persists project and client",
+      "event": "long-task",
+      "browserMs": 3677,
+      "timeOrigin": 1792697943578.1,
+      "duration": 2332,
+      "start": 1321
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 91205,
+      "journey": "Native Next server action persists project and client",
+      "name": "load",
+      "timestamp": 3879.281856
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91209,
+      "journey": "Native Next server action persists project and client",
+      "event": "pageshow",
+      "browserMs": 3972,
+      "timeOrigin": 1792697943578.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": false,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91224,
+      "journey": "Native Next server action persists project and client",
+      "event": "long-task",
+      "browserMs": 3986,
+      "timeOrigin": 1792697943578.1,
+      "duration": 104,
+      "start": 3734
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91225,
+      "journey": "Native Next server action persists project and client",
+      "event": "long-task",
+      "browserMs": 3986,
+      "timeOrigin": 1792697943578.1,
+      "duration": 106,
+      "start": 3852
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 91459,
+      "journey": "Native Next server action persists project and client",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91471,
+      "journey": "Native Next server action persists project and client",
+      "event": "focus",
+      "browserMs": 4233,
+      "timeOrigin": 1792697943578.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91471,
+      "journey": "Native Next server action persists project and client",
+      "event": "state",
+      "browserMs": 4234,
+      "timeOrigin": 1792697943578.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91473,
+      "journey": "Native Next server action persists project and client",
+      "event": "focus",
+      "browserMs": 4236,
+      "timeOrigin": 1792697943578.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91824,
+      "journey": "Native Next server action persists project and client",
+      "event": "state",
+      "browserMs": 4586,
+      "timeOrigin": 1792697943578.1,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 91833,
+      "journey": "Native Next server action persists project and client",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "browser",
+      "nodeMs": 91950,
+      "journey": "Native Next server action persists project and client",
+      "event": "long-task",
+      "browserMs": 4711,
+      "timeOrigin": 1792697943578.1,
+      "duration": 375,
+      "start": 4230
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 92672,
+      "journey": "Native Next server action persists project and client",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 92682,
+      "journey": "Native Next server action persists project and client",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 93205,
+      "journey": "Native Next server action persists project and client",
+      "label": "journey-end",
+      "state": {
+        "emailExists": true,
+        "emailLength": 0,
+        "emailValid": false,
+        "emailDisabled": false,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": true,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": true
+      },
+      "authRequests": 45
+    },
+    {
+      "type": "journey-start",
+      "nodeMs": 93205,
+      "journey": "Native invitation creation and acceptance persist membership"
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 93780,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "path": "/business",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 93811,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "init",
+      "timestamp": 3881.888075
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 93812,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "path": "/business",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 93851,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "focus",
+      "browserMs": 346,
+      "timeOrigin": 1792697949837,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 93851,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "state",
+      "browserMs": 346,
+      "timeOrigin": 1792697949837,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 93989,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "state",
+      "browserMs": 490,
+      "timeOrigin": 1792697949837,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 93991,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "navigation-timing",
+      "browserMs": 490,
+      "timeOrigin": 1792697949837,
+      "requestStart": 7.100000000093132,
+      "responseStart": 277.3000000002794,
+      "responseEnd": 280.70000000018626,
+      "domInteractive": 484.40000000037253,
+      "domContentLoaded": 484.5
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 93992,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "DOMContentLoaded",
+      "timestamp": 3882.063026
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 93992,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3882.02192
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 93992,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstContentfulPaint",
+      "timestamp": 3882.02192
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 93992,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstPaint",
+      "timestamp": 3882.02192
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 93992,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstImagePaint",
+      "timestamp": 3882.02192
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 94529,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "networkAlmostIdle",
+      "timestamp": 3882.063144
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 94529,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstMeaningfulPaint",
+      "timestamp": 3882.02192
+    },
+    {
+      "type": "browser",
+      "nodeMs": 97324,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 3828,
+      "timeOrigin": 1792697949837,
+      "duration": 2720,
+      "start": 1075
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 97432,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "load",
+      "timestamp": 3885.509177
+    },
+    {
+      "type": "browser",
+      "nodeMs": 97437,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "pageshow",
+      "browserMs": 3939,
+      "timeOrigin": 1792697949837,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 97593,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 4093,
+      "timeOrigin": 1792697949837,
+      "duration": 133,
+      "start": 3947
+    },
+    {
+      "type": "browser",
+      "nodeMs": 97724,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 4226,
+      "timeOrigin": 1792697949837,
+      "duration": 105,
+      "start": 4096
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 97795,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "label": "before-email-edit",
+      "state": {
+        "emailExists": true,
+        "emailLength": 0,
+        "emailValid": false,
+        "emailDisabled": false,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": true,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 47
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98175,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "state",
+      "browserMs": 4679,
+      "timeOrigin": 1792697949837,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98196,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "focusin",
+      "browserMs": 4700,
+      "timeOrigin": 1792697949837,
+      "trusted": true,
+      "defaultPrevented": false,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": true,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 98243,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Input.insertText",
+      "textLength": 22
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98263,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "input",
+      "browserMs": 4766,
+      "timeOrigin": 1792697949837,
+      "trusted": true,
+      "defaultPrevented": false,
+      "emailExists": true,
+      "emailLength": 22,
+      "emailValid": true,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": true,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 98296,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "label": "after-email-edit",
+      "state": {
+        "emailExists": true,
+        "emailLength": 22,
+        "emailValid": true,
+        "emailDisabled": false,
+        "emailHiddenOrInert": false,
+        "emailFocused": true,
+        "documentFocused": true,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": true
+      },
+      "authRequests": 47
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 98325,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98349,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "change",
+      "browserMs": 4851,
+      "timeOrigin": 1792697949837,
+      "trusted": true,
+      "defaultPrevented": false,
+      "emailExists": true,
+      "emailLength": 22,
+      "emailValid": true,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98356,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "focusin",
+      "browserMs": 4855,
+      "timeOrigin": 1792697949837,
+      "trusted": true,
+      "defaultPrevented": false,
+      "emailExists": true,
+      "emailLength": 22,
+      "emailValid": true,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 98357,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98371,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "click",
+      "browserMs": 4870,
+      "timeOrigin": 1792697949837,
+      "trusted": true,
+      "defaultPrevented": false,
+      "emailExists": true,
+      "emailLength": 22,
+      "emailValid": true,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "browser",
+      "nodeMs": 98385,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "submit",
+      "browserMs": 4876,
+      "timeOrigin": 1792697949837,
+      "trusted": true,
+      "defaultPrevented": false,
+      "emailExists": true,
+      "emailLength": 22,
+      "emailValid": true,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 98541,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "label": "after-invitation-click",
+      "state": {
+        "emailExists": true,
+        "emailLength": 22,
+        "emailValid": true,
+        "emailDisabled": false,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": true,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": true
+      },
+      "authRequests": 47
+    },
+    {
+      "type": "browser",
+      "nodeMs": 99839,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "state",
+      "browserMs": 6322,
+      "timeOrigin": 1792697949837,
+      "emailExists": true,
+      "emailLength": 22,
+      "emailValid": true,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "browser",
+      "nodeMs": 100454,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "state",
+      "browserMs": 6957,
+      "timeOrigin": 1792697949837,
+      "emailExists": true,
+      "emailLength": 0,
+      "emailValid": false,
+      "emailDisabled": false,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": true
+    },
+    {
+      "type": "browser",
+      "nodeMs": 100542,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 7043,
+      "timeOrigin": 1792697949837,
+      "duration": 283,
+      "start": 6674
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 100631,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Network.clearBrowserCookies"
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 100643,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Network.setCookie"
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 101623,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "networkIdle",
+      "timestamp": 3888.138041
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 106124,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "InteractiveTime",
+      "timestamp": 3889.133348
+    },
+    {
+      "type": "document-response",
+      "nodeMs": 108242,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "path": "/business/invite/[redacted]",
+      "queryKeys": [],
+      "status": 200
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108266,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "init",
+      "timestamp": 3896.343692
+    },
+    {
+      "type": "frame-navigation",
+      "nodeMs": 108270,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "path": "/business/invite/[redacted]",
+      "queryKeys": []
+    },
+    {
+      "type": "browser",
+      "nodeMs": 108318,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "focus",
+      "browserMs": 7651,
+      "timeOrigin": 1792697957002.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 108318,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "state",
+      "browserMs": 7652,
+      "timeOrigin": 1792697957002.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 108319,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "focus",
+      "browserMs": 7652,
+      "timeOrigin": 1792697957002.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 108468,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "navigation-timing",
+      "browserMs": 7803,
+      "timeOrigin": 1792697957002.2,
+      "requestStart": 21.399999999906868,
+      "responseStart": 7568.399999999907,
+      "responseEnd": 7571.799999999814,
+      "domInteractive": 7800.299999999814,
+      "domContentLoaded": 7800.399999999907
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108473,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "DOMContentLoaded",
+      "timestamp": 3896.541943
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108509,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3896.463075
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108511,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstPaint",
+      "timestamp": 3896.463075
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108528,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstMeaningfulPaintCandidate",
+      "timestamp": 3896.560087
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108528,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstContentfulPaint",
+      "timestamp": 3896.560087
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 108529,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "firstImagePaint",
+      "timestamp": 3896.560087
+    },
+    {
+      "type": "browser",
+      "nodeMs": 113178,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 12516,
+      "timeOrigin": 1792697957002.2,
+      "duration": 2587,
+      "start": 9904
+    },
+    {
+      "type": "lifecycle",
+      "nodeMs": 113538,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "name": "load",
+      "timestamp": 3901.601598
+    },
+    {
+      "type": "browser",
+      "nodeMs": 113538,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "pageshow",
+      "browserMs": 12864,
+      "timeOrigin": 1792697957002.2,
+      "emailExists": false,
+      "emailLength": null,
+      "emailValid": null,
+      "emailDisabled": null,
+      "emailHiddenOrInert": false,
+      "emailFocused": false,
+      "documentFocused": true,
+      "visibility": "visible",
+      "checking": false,
+      "unavailable": false,
+      "sessionChanged": false,
+      "hydrated": false
+    },
+    {
+      "type": "browser",
+      "nodeMs": 113540,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 12874,
+      "timeOrigin": 1792697957002.2,
+      "duration": 105,
+      "start": 12574
+    },
+    {
+      "type": "browser",
+      "nodeMs": 113540,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 12876,
+      "timeOrigin": 1792697957002.2,
+      "duration": 100,
+      "start": 12748
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 113684,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 113992,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Input.dispatchMouseEvent"
+    },
+    {
+      "type": "browser",
+      "nodeMs": 114135,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 13473,
+      "timeOrigin": 1792697957002.2,
+      "duration": 308,
+      "start": 13030
+    },
+    {
+      "type": "browser",
+      "nodeMs": 114595,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 13928,
+      "timeOrigin": 1792697957002.2,
+      "duration": 106,
+      "start": 13708
+    },
+    {
+      "type": "browser",
+      "nodeMs": 114595,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "event": "long-task",
+      "browserMs": 13928,
+      "timeOrigin": 1792697957002.2,
+      "duration": 102,
+      "start": 13818
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 114855,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Network.clearBrowserCookies"
+    },
+    {
+      "type": "cdp-command",
+      "nodeMs": 114858,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "method": "Network.setCookie"
+    },
+    {
+      "type": "checkpoint",
+      "nodeMs": 114875,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "label": "journey-end",
+      "state": {
+        "emailExists": false,
+        "emailLength": null,
+        "emailValid": null,
+        "emailDisabled": null,
+        "emailHiddenOrInert": false,
+        "emailFocused": false,
+        "documentFocused": true,
+        "visibility": "visible",
+        "checking": false,
+        "unavailable": false,
+        "sessionChanged": false,
+        "hydrated": false
+      },
+      "authRequests": 57
+    }
+  ],
+  "resources": [
+    {
+      "nodeMs": 29364,
+      "journey": "setup",
+      "freeMemoryBytes": 33359511552,
+      "load": [
+        0.44,
+        0.17,
+        0.07
+      ],
+      "cpu": {
+        "usage_usec": 207959952,
+        "user_usec": 149504166,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10505,
+        "nr_throttled": 168,
+        "throttled_usec": 24506589,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2290237440\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 86381,
+        "majorFaults": 0,
+        "userTicks": 89,
+        "systemTicks": 157,
+        "threads": 34,
+        "rssPages": 31973,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 30370,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed",
+      "freeMemoryBytes": 33304068096,
+      "load": [
+        1.04,
+        0.31,
+        0.11
+      ],
+      "cpu": {
+        "usage_usec": 210590233,
+        "user_usec": 152134447,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10515,
+        "nr_throttled": 169,
+        "throttled_usec": 24506889,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2268102656\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 87049,
+        "majorFaults": 0,
+        "userTicks": 97,
+        "systemTicks": 158,
+        "threads": 34,
+        "rssPages": 32476,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 31371,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed",
+      "freeMemoryBytes": 33285840896,
+      "load": [
+        1.04,
+        0.31,
+        0.11
+      ],
+      "cpu": {
+        "usage_usec": 214314969,
+        "user_usec": 155859183,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10525,
+        "nr_throttled": 173,
+        "throttled_usec": 24561742,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2186047488\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 87053,
+        "majorFaults": 0,
+        "userTicks": 97,
+        "systemTicks": 158,
+        "threads": 34,
+        "rssPages": 32476,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 32371,
+      "journey": "Anonymous HTTP and malformed auth cookie fail closed",
+      "freeMemoryBytes": 33253756928,
+      "load": [
+        1.04,
+        0.31,
+        0.11
+      ],
+      "cpu": {
+        "usage_usec": 216421068,
+        "user_usec": 157965282,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10535,
+        "nr_throttled": 174,
+        "throttled_usec": 24597210,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2207522816\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 87170,
+        "majorFaults": 0,
+        "userTicks": 99,
+        "systemTicks": 158,
+        "threads": 34,
+        "rssPages": 32604,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 33371,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33232691200,
+      "load": [
+        1.04,
+        0.31,
+        0.11
+      ],
+      "cpu": {
+        "usage_usec": 219229403,
+        "user_usec": 160773617,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10545,
+        "nr_throttled": 174,
+        "throttled_usec": 24597210,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2284994560\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 88302,
+        "majorFaults": 0,
+        "userTicks": 114,
+        "systemTicks": 161,
+        "threads": 34,
+        "rssPages": 33239,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 34372,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33196498944,
+      "load": [
+        1.04,
+        0.31,
+        0.11
+      ],
+      "cpu": {
+        "usage_usec": 221187761,
+        "user_usec": 162731975,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10555,
+        "nr_throttled": 174,
+        "throttled_usec": 24597210,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2317168640\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 88627,
+        "majorFaults": 0,
+        "userTicks": 121,
+        "systemTicks": 164,
+        "threads": 34,
+        "rssPages": 33495,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 35373,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33175859200,
+      "load": [
+        1.04,
+        0.32,
+        0.12
+      ],
+      "cpu": {
+        "usage_usec": 222361537,
+        "user_usec": 163905751,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10565,
+        "nr_throttled": 174,
+        "throttled_usec": 24597210,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2329018368\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 88640,
+        "majorFaults": 0,
+        "userTicks": 126,
+        "systemTicks": 164,
+        "threads": 34,
+        "rssPages": 33207,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 36373,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33168801792,
+      "load": [
+        1.04,
+        0.32,
+        0.12
+      ],
+      "cpu": {
+        "usage_usec": 224090707,
+        "user_usec": 165634922,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10575,
+        "nr_throttled": 174,
+        "throttled_usec": 24597210,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2350923776\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 88695,
+        "majorFaults": 0,
+        "userTicks": 132,
+        "systemTicks": 164,
+        "threads": 34,
+        "rssPages": 33239,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 37373,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33177649152,
+      "load": [
+        1.04,
+        0.32,
+        0.12
+      ],
+      "cpu": {
+        "usage_usec": 226640591,
+        "user_usec": 168184805,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10585,
+        "nr_throttled": 174,
+        "throttled_usec": 24597210,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2363670528\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 89611,
+        "majorFaults": 0,
+        "userTicks": 144,
+        "systemTicks": 165,
+        "threads": 34,
+        "rssPages": 33719,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 38374,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33176743936,
+      "load": [
+        1.04,
+        0.32,
+        0.12
+      ],
+      "cpu": {
+        "usage_usec": 229956276,
+        "user_usec": 171500490,
+        "system_usec": 58455785,
+        "nice_usec": 0,
+        "nr_periods": 10595,
+        "nr_throttled": 176,
+        "throttled_usec": 24669961,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2386808832\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 89626,
+        "majorFaults": 0,
+        "userTicks": 150,
+        "systemTicks": 168,
+        "threads": 34,
+        "rssPages": 33719,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 39374,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33117859840,
+      "load": [
+        1.04,
+        0.32,
+        0.12
+      ],
+      "cpu": {
+        "usage_usec": 232865388,
+        "user_usec": 174316121,
+        "system_usec": 58549266,
+        "nice_usec": 0,
+        "nr_periods": 10605,
+        "nr_throttled": 179,
+        "throttled_usec": 24736915,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2460323840\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 89713,
+        "majorFaults": 0,
+        "userTicks": 162,
+        "systemTicks": 178,
+        "threads": 34,
+        "rssPages": 33783,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 40382,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33088380928,
+      "load": [
+        1.92,
+        0.51,
+        0.18
+      ],
+      "cpu": {
+        "usage_usec": 235781654,
+        "user_usec": 176933365,
+        "system_usec": 58848289,
+        "nice_usec": 0,
+        "nr_periods": 10615,
+        "nr_throttled": 180,
+        "throttled_usec": 24746241,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2527113216\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 90375,
+        "majorFaults": 0,
+        "userTicks": 179,
+        "systemTicks": 184,
+        "threads": 34,
+        "rssPages": 33973,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 41381,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33054130176,
+      "load": [
+        1.92,
+        0.51,
+        0.18
+      ],
+      "cpu": {
+        "usage_usec": 238025033,
+        "user_usec": 178847650,
+        "system_usec": 59177383,
+        "nice_usec": 0,
+        "nr_periods": 10625,
+        "nr_throttled": 180,
+        "throttled_usec": 24746241,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2565615616\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 90389,
+        "majorFaults": 0,
+        "userTicks": 192,
+        "systemTicks": 194,
+        "threads": 34,
+        "rssPages": 34005,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 42387,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33081135104,
+      "load": [
+        1.92,
+        0.51,
+        0.18
+      ],
+      "cpu": {
+        "usage_usec": 240496783,
+        "user_usec": 180738146,
+        "system_usec": 59758637,
+        "nice_usec": 0,
+        "nr_periods": 10635,
+        "nr_throttled": 180,
+        "throttled_usec": 24746241,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2528571392\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 90428,
+        "majorFaults": 0,
+        "userTicks": 205,
+        "systemTicks": 197,
+        "threads": 34,
+        "rssPages": 34005,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 43404,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33044508672,
+      "load": [
+        1.92,
+        0.51,
+        0.18
+      ],
+      "cpu": {
+        "usage_usec": 242543986,
+        "user_usec": 182355265,
+        "system_usec": 60188720,
+        "nice_usec": 0,
+        "nr_periods": 10645,
+        "nr_throttled": 182,
+        "throttled_usec": 24850637,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2527248384\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 90431,
+        "majorFaults": 0,
+        "userTicks": 221,
+        "systemTicks": 208,
+        "threads": 34,
+        "rssPages": 34005,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 44411,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33049542656,
+      "load": [
+        1.92,
+        0.51,
+        0.18
+      ],
+      "cpu": {
+        "usage_usec": 244118746,
+        "user_usec": 183720888,
+        "system_usec": 60397858,
+        "nice_usec": 0,
+        "nr_periods": 10655,
+        "nr_throttled": 182,
+        "throttled_usec": 24850637,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2513698816\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 90488,
+        "majorFaults": 0,
+        "userTicks": 234,
+        "systemTicks": 212,
+        "threads": 34,
+        "rssPages": 33950,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 45410,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33052348416,
+      "load": [
+        2.64,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 246300720,
+        "user_usec": 185487345,
+        "system_usec": 60813375,
+        "nice_usec": 0,
+        "nr_periods": 10665,
+        "nr_throttled": 182,
+        "throttled_usec": 24850637,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2517069824\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 91013,
+        "majorFaults": 0,
+        "userTicks": 252,
+        "systemTicks": 226,
+        "threads": 34,
+        "rssPages": 33915,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 46409,
+      "journey": "RSC permission controls owner",
+      "freeMemoryBytes": 33057423360,
+      "load": [
+        2.64,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 248104500,
+        "user_usec": 187033177,
+        "system_usec": 61071323,
+        "nice_usec": 0,
+        "nr_periods": 10675,
+        "nr_throttled": 182,
+        "throttled_usec": 24850637,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2520727552\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 91150,
+        "majorFaults": 0,
+        "userTicks": 262,
+        "systemTicks": 234,
+        "threads": 34,
+        "rssPages": 33946,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 47410,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33031667712,
+      "load": [
+        2.64,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 250744218,
+        "user_usec": 189298461,
+        "system_usec": 61445757,
+        "nice_usec": 0,
+        "nr_periods": 10685,
+        "nr_throttled": 182,
+        "throttled_usec": 24850637,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2583040000\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 92306,
+        "majorFaults": 0,
+        "userTicks": 278,
+        "systemTicks": 240,
+        "threads": 34,
+        "rssPages": 34284,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 48421,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 32995504128,
+      "load": [
+        2.64,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 253879035,
+        "user_usec": 191561988,
+        "system_usec": 62317046,
+        "nice_usec": 0,
+        "nr_periods": 10696,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2620432384\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 92308,
+        "majorFaults": 0,
+        "userTicks": 290,
+        "systemTicks": 246,
+        "threads": 34,
+        "rssPages": 34284,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 49484,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33007587328,
+      "load": [
+        2.64,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 256246062,
+        "user_usec": 193361537,
+        "system_usec": 62884524,
+        "nice_usec": 0,
+        "nr_periods": 10706,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2583101440\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 92481,
+        "majorFaults": 0,
+        "userTicks": 311,
+        "systemTicks": 255,
+        "threads": 34,
+        "rssPages": 34309,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 50613,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33017389056,
+      "load": [
+        2.51,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 258625934,
+        "user_usec": 195212977,
+        "system_usec": 63412956,
+        "nice_usec": 0,
+        "nr_periods": 10717,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2586374144\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 92567,
+        "majorFaults": 0,
+        "userTicks": 335,
+        "systemTicks": 269,
+        "threads": 34,
+        "rssPages": 34405,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 51615,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33032343552,
+      "load": [
+        2.51,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 260410599,
+        "user_usec": 196610361,
+        "system_usec": 63800237,
+        "nice_usec": 0,
+        "nr_periods": 10727,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2594443264\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 92567,
+        "majorFaults": 0,
+        "userTicks": 345,
+        "systemTicks": 271,
+        "threads": 34,
+        "rssPages": 34405,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 52614,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33029836800,
+      "load": [
+        2.51,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 261795224,
+        "user_usec": 197760145,
+        "system_usec": 64035078,
+        "nice_usec": 0,
+        "nr_periods": 10737,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2582609920\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 92568,
+        "majorFaults": 0,
+        "userTicks": 354,
+        "systemTicks": 272,
+        "threads": 34,
+        "rssPages": 34215,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 53615,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33032667136,
+      "load": [
+        2.51,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 263353476,
+        "user_usec": 199173841,
+        "system_usec": 64179635,
+        "nice_usec": 0,
+        "nr_periods": 10747,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2582876160\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 92766,
+        "majorFaults": 0,
+        "userTicks": 370,
+        "systemTicks": 275,
+        "threads": 34,
+        "rssPages": 34184,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 54616,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33025744896,
+      "load": [
+        2.51,
+        0.69,
+        0.24
+      ],
+      "cpu": {
+        "usage_usec": 265888914,
+        "user_usec": 201255531,
+        "system_usec": 64633383,
+        "nice_usec": 0,
+        "nr_periods": 10757,
+        "nr_throttled": 185,
+        "throttled_usec": 25304307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2606551040\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 93413,
+        "majorFaults": 0,
+        "userTicks": 388,
+        "systemTicks": 282,
+        "threads": 34,
+        "rssPages": 34507,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 55626,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 33026134016,
+      "load": [
+        2.55,
+        0.73,
+        0.26
+      ],
+      "cpu": {
+        "usage_usec": 268467343,
+        "user_usec": 203546838,
+        "system_usec": 64920505,
+        "nice_usec": 0,
+        "nr_periods": 10768,
+        "nr_throttled": 186,
+        "throttled_usec": 25329090,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2607607808\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 94100,
+        "majorFaults": 0,
+        "userTicks": 405,
+        "systemTicks": 289,
+        "threads": 34,
+        "rssPages": 34538,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 56626,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 32971706368,
+      "load": [
+        2.55,
+        0.73,
+        0.26
+      ],
+      "cpu": {
+        "usage_usec": 270973918,
+        "user_usec": 205408588,
+        "system_usec": 65565330,
+        "nice_usec": 0,
+        "nr_periods": 10778,
+        "nr_throttled": 186,
+        "throttled_usec": 25329090,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2646142976\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 95401,
+        "majorFaults": 0,
+        "userTicks": 417,
+        "systemTicks": 294,
+        "threads": 34,
+        "rssPages": 34542,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 57626,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 32954781696,
+      "load": [
+        2.55,
+        0.73,
+        0.26
+      ],
+      "cpu": {
+        "usage_usec": 272110158,
+        "user_usec": 206416774,
+        "system_usec": 65693383,
+        "nice_usec": 0,
+        "nr_periods": 10788,
+        "nr_throttled": 186,
+        "throttled_usec": 25329090,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2647461888\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 95402,
+        "majorFaults": 0,
+        "userTicks": 422,
+        "systemTicks": 294,
+        "threads": 34,
+        "rssPages": 34542,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 58627,
+      "journey": "RSC permission controls admin",
+      "freeMemoryBytes": 32958726144,
+      "load": [
+        2.55,
+        0.73,
+        0.26
+      ],
+      "cpu": {
+        "usage_usec": 273376879,
+        "user_usec": 207571961,
+        "system_usec": 65804918,
+        "nice_usec": 0,
+        "nr_periods": 10798,
+        "nr_throttled": 186,
+        "throttled_usec": 25329090,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2654056448\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 95565,
+        "majorFaults": 0,
+        "userTicks": 429,
+        "systemTicks": 294,
+        "threads": 34,
+        "rssPages": 34606,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 59632,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32984166400,
+      "load": [
+        2.55,
+        0.73,
+        0.26
+      ],
+      "cpu": {
+        "usage_usec": 275465351,
+        "user_usec": 209484519,
+        "system_usec": 65980831,
+        "nice_usec": 0,
+        "nr_periods": 10808,
+        "nr_throttled": 186,
+        "throttled_usec": 25329090,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2625843200\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 96803,
+        "majorFaults": 0,
+        "userTicks": 446,
+        "systemTicks": 297,
+        "threads": 34,
+        "rssPages": 34834,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 60632,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 33008480256,
+      "load": [
+        2.67,
+        0.78,
+        0.28
+      ],
+      "cpu": {
+        "usage_usec": 278607767,
+        "user_usec": 212133739,
+        "system_usec": 66474027,
+        "nice_usec": 0,
+        "nr_periods": 10818,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2626109440\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 97108,
+        "majorFaults": 0,
+        "userTicks": 461,
+        "systemTicks": 299,
+        "threads": 34,
+        "rssPages": 34609,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 61634,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32994803712,
+      "load": [
+        2.67,
+        0.78,
+        0.28
+      ],
+      "cpu": {
+        "usage_usec": 280239512,
+        "user_usec": 213450547,
+        "system_usec": 66788964,
+        "nice_usec": 0,
+        "nr_periods": 10828,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2612555776\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 97126,
+        "majorFaults": 0,
+        "userTicks": 467,
+        "systemTicks": 301,
+        "threads": 34,
+        "rssPages": 34571,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 62634,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32992681984,
+      "load": [
+        2.67,
+        0.78,
+        0.28
+      ],
+      "cpu": {
+        "usage_usec": 281387026,
+        "user_usec": 214498229,
+        "system_usec": 66888797,
+        "nice_usec": 0,
+        "nr_periods": 10838,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2609840128\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 97131,
+        "majorFaults": 0,
+        "userTicks": 471,
+        "systemTicks": 301,
+        "threads": 34,
+        "rssPages": 34571,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 63634,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32996089856,
+      "load": [
+        2.67,
+        0.78,
+        0.28
+      ],
+      "cpu": {
+        "usage_usec": 282714092,
+        "user_usec": 215726691,
+        "system_usec": 66987401,
+        "nice_usec": 0,
+        "nr_periods": 10848,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2615001088\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 97310,
+        "majorFaults": 0,
+        "userTicks": 476,
+        "systemTicks": 305,
+        "threads": 34,
+        "rssPages": 34568,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 64634,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32971100160,
+      "load": [
+        2.67,
+        0.78,
+        0.28
+      ],
+      "cpu": {
+        "usage_usec": 285389929,
+        "user_usec": 217952714,
+        "system_usec": 67437215,
+        "nice_usec": 0,
+        "nr_periods": 10858,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2670981120\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 99082,
+        "majorFaults": 0,
+        "userTicks": 493,
+        "systemTicks": 312,
+        "threads": 34,
+        "rssPages": 34648,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 65634,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32917573632,
+      "load": [
+        2.61,
+        0.8,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 287185684,
+        "user_usec": 219267268,
+        "system_usec": 67918416,
+        "nice_usec": 0,
+        "nr_periods": 10868,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2667409408\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 99085,
+        "majorFaults": 0,
+        "userTicks": 498,
+        "systemTicks": 315,
+        "threads": 34,
+        "rssPages": 34648,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 66635,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32887328768,
+      "load": [
+        2.61,
+        0.8,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 288317064,
+        "user_usec": 220294588,
+        "system_usec": 68022475,
+        "nice_usec": 0,
+        "nr_periods": 10878,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2668916736\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 99085,
+        "majorFaults": 0,
+        "userTicks": 500,
+        "systemTicks": 317,
+        "threads": 34,
+        "rssPages": 34648,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 67636,
+      "journey": "RSC permission controls manager",
+      "freeMemoryBytes": 32893853696,
+      "load": [
+        2.61,
+        0.8,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 289570189,
+        "user_usec": 221499021,
+        "system_usec": 68071168,
+        "nice_usec": 0,
+        "nr_periods": 10888,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2672136192\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 99222,
+        "majorFaults": 0,
+        "userTicks": 506,
+        "systemTicks": 318,
+        "threads": 34,
+        "rssPages": 34675,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 68635,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32901447680,
+      "load": [
+        2.61,
+        0.8,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 291108452,
+        "user_usec": 222814255,
+        "system_usec": 68294196,
+        "nice_usec": 0,
+        "nr_periods": 10898,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2693365760\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 99572,
+        "majorFaults": 0,
+        "userTicks": 512,
+        "systemTicks": 321,
+        "threads": 34,
+        "rssPages": 34739,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 69636,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32859848704,
+      "load": [
+        2.61,
+        0.8,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 293636831,
+        "user_usec": 224814346,
+        "system_usec": 68822484,
+        "nice_usec": 0,
+        "nr_periods": 10908,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2779021312\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 99960,
+        "majorFaults": 0,
+        "userTicks": 523,
+        "systemTicks": 325,
+        "threads": 34,
+        "rssPages": 34833,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 70638,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32881119232,
+      "load": [
+        2.48,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 294915569,
+        "user_usec": 225904400,
+        "system_usec": 69011168,
+        "nice_usec": 0,
+        "nr_periods": 10918,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2735624192\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 99986,
+        "majorFaults": 0,
+        "userTicks": 531,
+        "systemTicks": 325,
+        "threads": 34,
+        "rssPages": 34833,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 71638,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32870948864,
+      "load": [
+        2.48,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 296216492,
+        "user_usec": 227053847,
+        "system_usec": 69162644,
+        "nice_usec": 0,
+        "nr_periods": 10928,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2725744640\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 99989,
+        "majorFaults": 0,
+        "userTicks": 536,
+        "systemTicks": 325,
+        "threads": 34,
+        "rssPages": 34833,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 72639,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32870100992,
+      "load": [
+        2.48,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 297936282,
+        "user_usec": 228682170,
+        "system_usec": 69254111,
+        "nice_usec": 0,
+        "nr_periods": 10938,
+        "nr_throttled": 188,
+        "throttled_usec": 25357607,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2752950272\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 100423,
+        "majorFaults": 0,
+        "userTicks": 547,
+        "systemTicks": 325,
+        "threads": 34,
+        "rssPages": 34929,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 73641,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32807862272,
+      "load": [
+        2.48,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 300914211,
+        "user_usec": 231255520,
+        "system_usec": 69658690,
+        "nice_usec": 0,
+        "nr_periods": 10948,
+        "nr_throttled": 190,
+        "throttled_usec": 25456319,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2784432128\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 100710,
+        "majorFaults": 0,
+        "userTicks": 561,
+        "systemTicks": 327,
+        "threads": 34,
+        "rssPages": 34860,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 74643,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32815149056,
+      "load": [
+        2.48,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 302460788,
+        "user_usec": 232589572,
+        "system_usec": 69871215,
+        "nice_usec": 0,
+        "nr_periods": 10958,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2782875648\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 100744,
+        "majorFaults": 0,
+        "userTicks": 569,
+        "systemTicks": 329,
+        "threads": 34,
+        "rssPages": 34860,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 75641,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32820858880,
+      "load": [
+        2.37,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 303613931,
+        "user_usec": 233585351,
+        "system_usec": 70028580,
+        "nice_usec": 0,
+        "nr_periods": 10968,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2810519552\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 100754,
+        "majorFaults": 0,
+        "userTicks": 575,
+        "systemTicks": 330,
+        "threads": 34,
+        "rssPages": 34860,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 76642,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32822927360,
+      "load": [
+        2.37,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 304792660,
+        "user_usec": 234740713,
+        "system_usec": 70051947,
+        "nice_usec": 0,
+        "nr_periods": 10978,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2786725888\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 100757,
+        "majorFaults": 0,
+        "userTicks": 581,
+        "systemTicks": 330,
+        "threads": 34,
+        "rssPages": 34860,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 77642,
+      "journey": "RSC permission controls member",
+      "freeMemoryBytes": 32825659392,
+      "load": [
+        2.37,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 306058054,
+        "user_usec": 235961373,
+        "system_usec": 70096680,
+        "nice_usec": 0,
+        "nr_periods": 10988,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2790092800\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 100932,
+        "majorFaults": 0,
+        "userTicks": 587,
+        "systemTicks": 331,
+        "threads": 34,
+        "rssPages": 34889,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 78641,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32824971264,
+      "load": [
+        2.37,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 308305179,
+        "user_usec": 238020521,
+        "system_usec": 70284658,
+        "nice_usec": 0,
+        "nr_periods": 10998,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2819534848\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 101540,
+        "majorFaults": 0,
+        "userTicks": 606,
+        "systemTicks": 334,
+        "threads": 34,
+        "rssPages": 34869,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 79642,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32779624448,
+      "load": [
+        2.37,
+        0.81,
+        0.29
+      ],
+      "cpu": {
+        "usage_usec": 310215660,
+        "user_usec": 239454029,
+        "system_usec": 70761631,
+        "nice_usec": 0,
+        "nr_periods": 11008,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2829930496\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 101551,
+        "majorFaults": 0,
+        "userTicks": 613,
+        "systemTicks": 336,
+        "threads": 34,
+        "rssPages": 34869,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 80642,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32767479808,
+      "load": [
+        2.42,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 311354731,
+        "user_usec": 240526167,
+        "system_usec": 70828563,
+        "nice_usec": 0,
+        "nr_periods": 11018,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2831667200\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 101553,
+        "majorFaults": 0,
+        "userTicks": 616,
+        "systemTicks": 337,
+        "threads": 34,
+        "rssPages": 34834,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 81643,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32769392640,
+      "load": [
+        2.42,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 312708671,
+        "user_usec": 241725441,
+        "system_usec": 70983230,
+        "nice_usec": 0,
+        "nr_periods": 11028,
+        "nr_throttled": 191,
+        "throttled_usec": 25493709,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2840985600\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 101946,
+        "majorFaults": 0,
+        "userTicks": 623,
+        "systemTicks": 340,
+        "threads": 34,
+        "rssPages": 34954,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 82643,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32748449792,
+      "load": [
+        2.42,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 315633172,
+        "user_usec": 244386404,
+        "system_usec": 71246767,
+        "nice_usec": 0,
+        "nr_periods": 11038,
+        "nr_throttled": 192,
+        "throttled_usec": 25494860,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2867109888\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 102343,
+        "majorFaults": 0,
+        "userTicks": 644,
+        "systemTicks": 349,
+        "threads": 34,
+        "rssPages": 34951,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 83643,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32918388736,
+      "load": [
+        2.42,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 318877724,
+        "user_usec": 246712068,
+        "system_usec": 72165656,
+        "nice_usec": 0,
+        "nr_periods": 11048,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2685870080\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 102349,
+        "majorFaults": 0,
+        "userTicks": 651,
+        "systemTicks": 352,
+        "threads": 34,
+        "rssPages": 34951,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 84645,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32914440192,
+      "load": [
+        2.42,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 320100356,
+        "user_usec": 247785043,
+        "system_usec": 72315313,
+        "nice_usec": 0,
+        "nr_periods": 11058,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2648104960\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 102352,
+        "majorFaults": 0,
+        "userTicks": 659,
+        "systemTicks": 352,
+        "threads": 34,
+        "rssPages": 34951,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 85646,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32907812864,
+      "load": [
+        2.3,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 321262364,
+        "user_usec": 248927916,
+        "system_usec": 72334447,
+        "nice_usec": 0,
+        "nr_periods": 11068,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2650279936\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 102358,
+        "majorFaults": 0,
+        "userTicks": 665,
+        "systemTicks": 352,
+        "threads": 34,
+        "rssPages": 34951,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 86646,
+      "journey": "RSC permission controls viewer",
+      "freeMemoryBytes": 32923566080,
+      "load": [
+        2.3,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 322575693,
+        "user_usec": 250188715,
+        "system_usec": 72386977,
+        "nice_usec": 0,
+        "nr_periods": 11078,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2650677248\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 102509,
+        "majorFaults": 0,
+        "userTicks": 674,
+        "systemTicks": 352,
+        "threads": 34,
+        "rssPages": 35015,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 87646,
+      "journey": "Native Next server action persists project and client",
+      "freeMemoryBytes": 32934858752,
+      "load": [
+        2.3,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 324439195,
+        "user_usec": 251932598,
+        "system_usec": 72506596,
+        "nice_usec": 0,
+        "nr_periods": 11088,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2664689664\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 102860,
+        "majorFaults": 0,
+        "userTicks": 684,
+        "systemTicks": 354,
+        "threads": 34,
+        "rssPages": 34943,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 88646,
+      "journey": "Native Next server action persists project and client",
+      "freeMemoryBytes": 32905474048,
+      "load": [
+        2.3,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 327051499,
+        "user_usec": 253757494,
+        "system_usec": 73294005,
+        "nice_usec": 0,
+        "nr_periods": 11098,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2690326528\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 103195,
+        "majorFaults": 0,
+        "userTicks": 698,
+        "systemTicks": 359,
+        "threads": 34,
+        "rssPages": 35002,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 89648,
+      "journey": "Native Next server action persists project and client",
+      "freeMemoryBytes": 32899514368,
+      "load": [
+        2.3,
+        0.85,
+        0.31
+      ],
+      "cpu": {
+        "usage_usec": 328259956,
+        "user_usec": 254940385,
+        "system_usec": 73319571,
+        "nice_usec": 0,
+        "nr_periods": 11108,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2710290432\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 103216,
+        "majorFaults": 0,
+        "userTicks": 705,
+        "systemTicks": 359,
+        "threads": 34,
+        "rssPages": 34964,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 90648,
+      "journey": "Native Next server action persists project and client",
+      "freeMemoryBytes": 32898969600,
+      "load": [
+        2.2,
+        0.85,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 329504443,
+        "user_usec": 256065630,
+        "system_usec": 73438812,
+        "nice_usec": 0,
+        "nr_periods": 11118,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2690527232\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 103220,
+        "majorFaults": 0,
+        "userTicks": 711,
+        "systemTicks": 361,
+        "threads": 34,
+        "rssPages": 34964,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 91649,
+      "journey": "Native Next server action persists project and client",
+      "freeMemoryBytes": 32908951552,
+      "load": [
+        2.2,
+        0.85,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 330830662,
+        "user_usec": 257361155,
+        "system_usec": 73469507,
+        "nice_usec": 0,
+        "nr_periods": 11128,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2690326528\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 103733,
+        "majorFaults": 0,
+        "userTicks": 719,
+        "systemTicks": 362,
+        "threads": 34,
+        "rssPages": 34914,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 92649,
+      "journey": "Native Next server action persists project and client",
+      "freeMemoryBytes": 32903950336,
+      "load": [
+        2.2,
+        0.85,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 332697583,
+        "user_usec": 259026591,
+        "system_usec": 73670991,
+        "nice_usec": 0,
+        "nr_periods": 11138,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2696388608\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 104504,
+        "majorFaults": 0,
+        "userTicks": 725,
+        "systemTicks": 366,
+        "threads": 34,
+        "rssPages": 35424,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 93649,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32912162816,
+      "load": [
+        2.2,
+        0.85,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 334886399,
+        "user_usec": 260977707,
+        "system_usec": 73908691,
+        "nice_usec": 0,
+        "nr_periods": 11148,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2702991360\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 104636,
+        "majorFaults": 0,
+        "userTicks": 730,
+        "systemTicks": 368,
+        "threads": 34,
+        "rssPages": 35377,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 94649,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32858017792,
+      "load": [
+        2.2,
+        0.85,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 337485523,
+        "user_usec": 262979890,
+        "system_usec": 74505633,
+        "nice_usec": 0,
+        "nr_periods": 11158,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2732949504\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 105330,
+        "majorFaults": 0,
+        "userTicks": 742,
+        "systemTicks": 374,
+        "threads": 34,
+        "rssPages": 35428,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 95651,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32854188032,
+      "load": [
+        2.1,
+        0.86,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 338714674,
+        "user_usec": 264055095,
+        "system_usec": 74659579,
+        "nice_usec": 0,
+        "nr_periods": 11168,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2748469248\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 105373,
+        "majorFaults": 0,
+        "userTicks": 749,
+        "systemTicks": 374,
+        "threads": 34,
+        "rssPages": 35251,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 96651,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32842043392,
+      "load": [
+        2.1,
+        0.86,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 339932871,
+        "user_usec": 265068724,
+        "system_usec": 74864147,
+        "nice_usec": 0,
+        "nr_periods": 11178,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2735398912\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 105376,
+        "majorFaults": 0,
+        "userTicks": 755,
+        "systemTicks": 374,
+        "threads": 34,
+        "rssPages": 35251,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 97652,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32848687104,
+      "load": [
+        2.1,
+        0.86,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 341217637,
+        "user_usec": 266193821,
+        "system_usec": 75023815,
+        "nice_usec": 0,
+        "nr_periods": 11188,
+        "nr_throttled": 196,
+        "throttled_usec": 25691554,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2734657536\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 105609,
+        "majorFaults": 0,
+        "userTicks": 762,
+        "systemTicks": 376,
+        "threads": 34,
+        "rssPages": 35315,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 98653,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32847347712,
+      "load": [
+        2.1,
+        0.86,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 344446863,
+        "user_usec": 269377488,
+        "system_usec": 75069374,
+        "nice_usec": 0,
+        "nr_periods": 11198,
+        "nr_throttled": 201,
+        "throttled_usec": 26005079,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2749620224\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 106247,
+        "majorFaults": 0,
+        "userTicks": 770,
+        "systemTicks": 377,
+        "threads": 34,
+        "rssPages": 35725,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 99653,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32766083072,
+      "load": [
+        2.1,
+        0.86,
+        0.32
+      ],
+      "cpu": {
+        "usage_usec": 348457871,
+        "user_usec": 272899448,
+        "system_usec": 75558423,
+        "nice_usec": 0,
+        "nr_periods": 11208,
+        "nr_throttled": 211,
+        "throttled_usec": 26521938,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2860462080\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106252,
+        "majorFaults": 0,
+        "userTicks": 771,
+        "systemTicks": 377,
+        "threads": 34,
+        "rssPages": 35425,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 100653,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32554926080,
+      "load": [
+        2.41,
+        0.94,
+        0.35
+      ],
+      "cpu": {
+        "usage_usec": 352406165,
+        "user_usec": 276256120,
+        "system_usec": 76150044,
+        "nice_usec": 0,
+        "nr_periods": 11218,
+        "nr_throttled": 220,
+        "throttled_usec": 26909702,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3080998912\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 106572,
+        "majorFaults": 0,
+        "userTicks": 777,
+        "systemTicks": 378,
+        "threads": 34,
+        "rssPages": 35647,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 101653,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32410120192,
+      "load": [
+        2.41,
+        0.94,
+        0.35
+      ],
+      "cpu": {
+        "usage_usec": 356256688,
+        "user_usec": 279859792,
+        "system_usec": 76396895,
+        "nice_usec": 0,
+        "nr_periods": 11228,
+        "nr_throttled": 227,
+        "throttled_usec": 27299546,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3118129152\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106779,
+        "majorFaults": 0,
+        "userTicks": 784,
+        "systemTicks": 380,
+        "threads": 34,
+        "rssPages": 35711,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 102657,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32407797760,
+      "load": [
+        2.41,
+        0.94,
+        0.35
+      ],
+      "cpu": {
+        "usage_usec": 359373111,
+        "user_usec": 282923377,
+        "system_usec": 76449733,
+        "nice_usec": 0,
+        "nr_periods": 11238,
+        "nr_throttled": 231,
+        "throttled_usec": 27488713,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3087835136\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106784,
+        "majorFaults": 0,
+        "userTicks": 790,
+        "systemTicks": 381,
+        "threads": 34,
+        "rssPages": 35711,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 103657,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32380772352,
+      "load": [
+        2.41,
+        0.94,
+        0.35
+      ],
+      "cpu": {
+        "usage_usec": 362866389,
+        "user_usec": 286228960,
+        "system_usec": 76637429,
+        "nice_usec": 0,
+        "nr_periods": 11248,
+        "nr_throttled": 231,
+        "throttled_usec": 27488713,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3153874944\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106818,
+        "majorFaults": 0,
+        "userTicks": 794,
+        "systemTicks": 382,
+        "threads": 34,
+        "rssPages": 35534,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 104658,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32388059136,
+      "load": [
+        2.41,
+        0.94,
+        0.35
+      ],
+      "cpu": {
+        "usage_usec": 365376569,
+        "user_usec": 288677224,
+        "system_usec": 76699345,
+        "nice_usec": 0,
+        "nr_periods": 11258,
+        "nr_throttled": 232,
+        "throttled_usec": 27491865,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3158691840\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106818,
+        "majorFaults": 0,
+        "userTicks": 797,
+        "systemTicks": 384,
+        "threads": 34,
+        "rssPages": 35534,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 105660,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32632766464,
+      "load": [
+        2.78,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 369016981,
+        "user_usec": 292280838,
+        "system_usec": 76736142,
+        "nice_usec": 0,
+        "nr_periods": 11268,
+        "nr_throttled": 236,
+        "throttled_usec": 27667612,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2939572224\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 106827,
+        "majorFaults": 0,
+        "userTicks": 802,
+        "systemTicks": 386,
+        "threads": 34,
+        "rssPages": 35534,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 106660,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32578412544,
+      "load": [
+        2.78,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 371767798,
+        "user_usec": 294799002,
+        "system_usec": 76968796,
+        "nice_usec": 0,
+        "nr_periods": 11278,
+        "nr_throttled": 237,
+        "throttled_usec": 27737307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3012046848\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106849,
+        "majorFaults": 0,
+        "userTicks": 809,
+        "systemTicks": 387,
+        "threads": 34,
+        "rssPages": 35283,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 107661,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32465354752,
+      "load": [
+        2.78,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 373745565,
+        "user_usec": 296327623,
+        "system_usec": 77417942,
+        "nice_usec": 0,
+        "nr_periods": 11288,
+        "nr_throttled": 237,
+        "throttled_usec": 27737307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3131887616\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 106885,
+        "majorFaults": 0,
+        "userTicks": 812,
+        "systemTicks": 387,
+        "threads": 34,
+        "rssPages": 35219,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 108661,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32463519744,
+      "load": [
+        2.78,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 376109353,
+        "user_usec": 298419576,
+        "system_usec": 77689776,
+        "nice_usec": 0,
+        "nr_periods": 11298,
+        "nr_throttled": 237,
+        "throttled_usec": 27737307,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2999586816\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 107904,
+        "majorFaults": 0,
+        "userTicks": 825,
+        "systemTicks": 394,
+        "threads": 34,
+        "rssPages": 35661,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 109929,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32453197824,
+      "load": [
+        2.78,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 379544620,
+        "user_usec": 301065517,
+        "system_usec": 78479103,
+        "nice_usec": 0,
+        "nr_periods": 11311,
+        "nr_throttled": 245,
+        "throttled_usec": 28724065,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "3039518720\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 107906,
+        "majorFaults": 0,
+        "userTicks": 853,
+        "systemTicks": 406,
+        "threads": 34,
+        "rssPages": 35661,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 110932,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32528519168,
+      "load": [
+        2.64,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 381557219,
+        "user_usec": 302678343,
+        "system_usec": 78878875,
+        "nice_usec": 0,
+        "nr_periods": 11321,
+        "nr_throttled": 247,
+        "throttled_usec": 28826364,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2888531968\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "R",
+        "minorFaults": 107909,
+        "majorFaults": 0,
+        "userTicks": 861,
+        "systemTicks": 408,
+        "threads": 34,
+        "rssPages": 35661,
+        "waitChannel": "0"
+      }
+    },
+    {
+      "nodeMs": 111932,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32549470208,
+      "load": [
+        2.64,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 382710713,
+        "user_usec": 303723593,
+        "system_usec": 78987119,
+        "nice_usec": 0,
+        "nr_periods": 11331,
+        "nr_throttled": 247,
+        "throttled_usec": 28826364,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2887389184\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 107958,
+        "majorFaults": 0,
+        "userTicks": 865,
+        "systemTicks": 409,
+        "threads": 34,
+        "rssPages": 35547,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 112932,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32568127488,
+      "load": [
+        2.64,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 383903663,
+        "user_usec": 304788205,
+        "system_usec": 79115458,
+        "nice_usec": 0,
+        "nr_periods": 11341,
+        "nr_throttled": 247,
+        "throttled_usec": 28826364,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2889797632\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 107967,
+        "majorFaults": 0,
+        "userTicks": 871,
+        "systemTicks": 411,
+        "threads": 34,
+        "rssPages": 35579,
+        "waitChannel": "do_sys_poll"
+      }
+    },
+    {
+      "nodeMs": 113934,
+      "journey": "Native invitation creation and acceptance persist membership",
+      "freeMemoryBytes": 32615768064,
+      "load": [
+        2.64,
+        1.04,
+        0.39
+      ],
+      "cpu": {
+        "usage_usec": 385210901,
+        "user_usec": 306046849,
+        "system_usec": 79164052,
+        "nice_usec": 0,
+        "nr_periods": 11351,
+        "nr_throttled": 247,
+        "throttled_usec": 28826364,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuQuota": "400000 100000\n",
+      "memoryCurrent": "2862936064\n",
+      "memoryLimit": "34359738368\n",
+      "cpuPressure": null,
+      "ioPressure": null,
+      "browserProcess": {
+        "state": "S",
+        "minorFaults": 108461,
+        "majorFaults": 0,
+        "userTicks": 879,
+        "systemTicks": 412,
+        "threads": 34,
+        "rssPages": 35507,
+        "waitChannel": "do_sys_poll"
+      }
+    }
+  ],
+  "summary": {
+    "trustedInvitationInput": true,
+    "trustedInvitationSubmit": true,
+    "invalidInvitationEvents": 0,
+    "submitToInvitationNavigationMs": null,
+    "resourceSampleGapMaxMs": 1268,
+    "cpuCounterDeltas": {
+      "usage_usec": 177250949,
+      "nr_throttled": 79,
+      "throttled_usec": 4319775
+    },
+    "minimumFreeMemoryBytes": 32380772352,
+    "pressureUnavailable": true,
+    "browserExceptionCount": 0,
+    "forbiddenOutboundCount": 0,
+    "cookieMutationCommandCount": 6,
+    "syntheticVerifierRequestCount": 57
+  },
+  "cleanup": [
+    {
+      "name": "Chromium",
+      "passed": true
+    },
+    {
+      "name": "Next server",
+      "passed": true
+    },
+    {
+      "name": "synthetic identity HTTP server",
+      "passed": true
+    },
+    {
+      "name": "disposable PostgreSQL and PostgREST",
+      "passed": true
+    }
+  ],
+  "cleanupComplete": true,
+  "limitations": [
+    "Identity is a synthetic local JWT-verifying HTTP provider, NOT GoTrue. No real signup, password recovery, refresh rotation, email delivery, MFA or external identity-provider acceptance.",
+    "Test-copy development CSP adds unsafe-eval required by Next webpack dev hydration, and connect-src adds only the exact synthetic loopback identity origin; production CSP is unchanged.",
+    "Local development Next runtime; production deployment, CDN, TLS and external providers remain unverified.",
+    "API key creation is not attested exactly once; unknown outcomes require review and revocation before retry.",
+    "Injected database transport outages return explicit 503; successful database responses always come from real PostgREST/PostgreSQL."
+  ],
+  "rawSanitizedReportSha256": "cf18774e856e4590b94b331d6e903bb70ce55da2e88798b810e8c9e6c5444ab9",
+  "sanitization": "No URLs with token/query values, cookie values, JWTs, API keys, form values, process argv/environment or kernel addresses retained. Form validity, focus and lengths only. Missing pressure data is not proof of no I/O contention."
+}

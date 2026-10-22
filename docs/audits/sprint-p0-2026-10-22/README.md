@@ -57,3 +57,7 @@ All fourteen unpublished DRAFT calculators, mathematical contracts and historica
 ## Hosted cold-start follow-up
 
 See [cold-start investigation and correction](cold-start-closure.md) for the reproduced hosted I/O stall, isolated diagnostic workflow IDs, rejected treatments and pinned browser fixture correction. Exact candidate CI conclusions remain a separate checkpoint.
+
+## Final frozen-candidate stress evidence
+
+The evidence-only branch `evidence/pr1467-final-stress-20261023` retains the [Final Development Candidate manifest](final-development-candidate-manifest.json) and [bounded stress diagnostic](final-stress/README.md). Candidate code remains frozen at `b85e845ecd11856f963c9f32af9634b8e4738293`. Two isolated 4× nine-journey replays passed; the historical timeout remains unreproduced and causally unresolved. Ledger edits append scoped evidence only, with no classification promotions.
