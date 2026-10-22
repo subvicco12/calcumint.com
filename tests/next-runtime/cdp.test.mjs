@@ -20,7 +20,7 @@ checkedTest('headless CDP startup does not depend on the inherited desktop sessi
  process.env.DBUS_SESSION_BUS_ADDRESS=`unix:path=${address}`;
  let browser;
  try{
-  browser=await startBrowser('http://127.0.0.1:1',[],{startupTimeoutMs:2000});
+  browser=await startBrowser('http://127.0.0.1:1');
   assert.equal(await browser.js('1+1'),2);
   assert.equal(connections,0,'The headless child must not contact the inherited desktop bus');
  }finally{
@@ -46,7 +46,11 @@ checkedTest('Chromium startup uses its readiness file when stderr is quiet', {ti
  }finally{await browser?.close();await rm(dir,{recursive:true,force:true})}
 });
 
-checkedTest('failed target creation from a readiness file still cleans the child and profile', {timeout:30000}, async()=>{
+for(const {name,delayMs,startupTimeoutMs,expected} of [
+ {name:'failed target creation from a readiness file still cleans the child and profile',delayMs:0,startupTimeoutMs:1000,expected:/target creation failed: 503/},
+ {name:'target creation can use the remaining startup budget beyond five seconds',delayMs:5500,startupTimeoutMs:10000,expected:/target creation failed: 503/},
+ {name:'target creation still aborts at the shared startup deadline and cleans up',delayMs:10000,startupTimeoutMs:5000,expected:/operation was aborted due to timeout/}
+])checkedTest(name, {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-file-failure-test-'));
  const launcher=path.join(dir,'launcher.mjs'),evidence=path.join(dir,'child.json');
  await writeFile(launcher,`
@@ -55,11 +59,11 @@ checkedTest('failed target creation from a readiness file still cleans the child
   import path from 'node:path';
   const profile=process.argv.find(arg=>arg.startsWith('--user-data-dir=')).slice(16);
   writeFileSync(${JSON.stringify(evidence)},JSON.stringify({pid:process.pid,profile}));
-  const server=createServer((req,res)=>{res.writeHead(503);res.end('Target unavailable')});
+  const server=createServer((req,res)=>setTimeout(()=>{res.writeHead(503);res.end('Target unavailable')},${delayMs}));
   server.listen(0,'127.0.0.1',()=>writeFileSync(path.join(profile,'DevToolsActivePort'),server.address().port+'\\n/devtools/browser/test-browser\\n'));
  `);
  try{
-  await assert.rejects(startBrowser('http://127.0.0.1:1',[],{executable:process.execPath,launchArgs:[launcher],startupTimeoutMs:1000}),/target creation failed: 503/);
+  await assert.rejects(startBrowser('http://127.0.0.1:1',[],{executable:process.execPath,launchArgs:[launcher],startupTimeoutMs}),expected);
   const child=JSON.parse(await readFile(evidence,'utf8'));
   assert.throws(()=>process.kill(child.pid,0),{code:'ESRCH'});
   await assert.rejects(access(child.profile),{code:'ENOENT'});

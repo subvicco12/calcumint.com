@@ -40,7 +40,11 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   await new Promise(r=>setTimeout(r,40));
  }
  if(!endpoint)throw Error('No Chromium CDP '+diagnostic);
- const setupTimeout=()=>Math.max(1,Math.min(5000,deadline-Date.now()));
+ const setupTimeout=()=>{
+  const remaining=deadline-Date.now();
+  if(remaining<=0)throw Error('Chromium CDP startup timed out');
+  return remaining;
+ };
  const response=await fetch(`http://127.0.0.1:${new URL(endpoint).port}/json/new?about:blank`,{method:'PUT',signal:AbortSignal.timeout(setupTimeout())});
  if(!response.ok)throw Error(`Chromium CDP target creation failed: ${response.status}`);
  const target=await response.json();socket=new WebSocket(target.webSocketDebuggerUrl);
