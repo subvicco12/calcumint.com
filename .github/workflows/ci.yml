@@ -44,7 +44,7 @@ jobs:
         run: |
           export CHROMIUM_PATH="$(command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable)"
           test -n "$CHROMIUM_PATH"
-          node --test tests/next-runtime/cdp.test.mjs
+          node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs
       - name: Actual Next.js Business runtime acceptance
         run: |
           export CHROMIUM_PATH="$(command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable)"
