@@ -27,7 +27,8 @@ describe("embed session integration contracts", () => {
     expect(component).toContain("X-Embed-Session");
     expect(component).toContain("/session");
     expect(component).toContain("setSessionAvailable(false)");
-    expect(component).toMatch(/disabled=\{!sessionAvailable\s*\|\|\s*submittingLead\}/);
+    // Hydration readiness adds a guard; it must not replace either session or in-flight protection.
+    expect(component).toMatch(/disabled=\{!interactive\s*\|\|\s*!sessionAvailable\s*\|\|\s*submittingLead\}/);
     expect(component).toContain('addEventListener("visibilitychange", onResume)');
     expect(component).toContain('addEventListener("focus", onResume)');
     expect(component).toContain("renewalRef.current = pending");

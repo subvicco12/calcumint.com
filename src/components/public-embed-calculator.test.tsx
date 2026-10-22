@@ -28,6 +28,7 @@ describe("embedded calculator browser lifecycle", () => {
     const container = document.createElement("div"); container.innerHTML = html;
     expect(container.querySelector<HTMLInputElement>('input[type="number"]')?.disabled).toBe(true);
     expect(container.querySelector<HTMLFieldSetElement>('.embed-lead-form fieldset')?.disabled).toBe(true);
+    expect(container.querySelector<HTMLButtonElement>('.embed-lead-form button[type="submit"]')?.disabled).toBe(true);
     expect(container.querySelector('form')?.getAttribute('method')).toBe('post');
     expect(container.querySelector('.public-embed')?.getAttribute('aria-busy')).toBe('true');
   });
@@ -93,6 +94,8 @@ describe("embedded calculator browser lifecycle", () => {
     await waitFor(() => expect((getByRole("button", { name: "Submit" }) as HTMLButtonElement).disabled).toBe(true));
     expect(getByRole("alert").textContent).toContain("Reload");
     fireEvent.click(getByRole("button", { name: "Submit" }));
+    // A disabled control is not the only boundary: direct submit events must also fail closed.
+    await act(async () => { fireEvent.submit(getByRole("button", { name: "Submit" }).closest("form")!); });
     expect(fetchMock.mock.calls.some(([url]) => url.endsWith("/leads"))).toBe(false);
     expect(getByText("Embed session expired. Reload this calculator to continue submitting events or leads.")).toBeTruthy();
   });
@@ -108,6 +111,7 @@ describe("embedded calculator browser lifecycle", () => {
     const form=getByRole('button',{name:'Submit'}).closest('form')!;
     await act(async()=>{fireEvent.submit(form);fireEvent.submit(form);});
     expect(fetchMock.mock.calls.filter(([u])=>u.endsWith('/leads'))).toHaveLength(1);
+    expect((getByRole('button',{name:'Submitting…'}) as HTMLButtonElement).disabled).toBe(true);
     await act(async()=>{rejectLead(new Error('lost reply'));});
     expect(getByText(/outcome is unconfirmed/)).toBeTruthy();
     fireEvent.change(getByLabelText('Email'),{target:{value:'changed@example.com'}});
