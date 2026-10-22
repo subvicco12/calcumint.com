@@ -1,0 +1,12 @@
+.final-analysis{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.final-analysis .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.final-analysis .metric-card{min-width:0}
+.final-analysis .analysis-data{max-width:100%;overflow-x:auto;margin-top:12px}
+.final-analysis .analysis-data:focus-visible,.final-analysis summary:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.final-analysis .analysis-baseline{display:block;font-size:.75rem;color:var(--muted)}
+.final-analysis .analysis-details{margin-top:16px}
+.final-analysis summary{cursor:pointer;font-weight:700}
+.final-analysis meter{width:100%;height:14px}
+@media(max-width:560px){.final-analysis .metric-grid{grid-template-columns:1fr}}
+.final-analysis .analysis-pagination>div{display:flex;gap:8px;flex-wrap:wrap}
+.final-analysis .analysis-pagination button:focus-visible{outline:2px solid var(--brand);outline-offset:3px}

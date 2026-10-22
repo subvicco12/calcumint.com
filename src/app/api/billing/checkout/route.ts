@@ -7,7 +7,8 @@ import { publicEnv } from "@/lib/env";
 const requestSchema = z.object({
   plan: z.enum(["pro", "business"]).default("pro"),
   interval: z.enum(["monthly", "yearly"]),
-  confirmChange: z.boolean().optional().default(false)
+  confirmChange: z.boolean().optional().default(false),
+  expectedOwnerId: z.string().min(1).max(128).optional()
 });
 type PaddleTransaction = { id: string };
 type ExistingSubscription = { provider_subscription_id: string; plan: "pro" | "business"; billing_interval: "monthly" | "yearly" };
@@ -20,10 +21,12 @@ type PaddlePreview = {
 export async function POST(request: Request) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Accounts are not configured" }, { status: 503 });
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return NextResponse.json({ error: "Sign in required" }, { status: 401 });
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user) return NextResponse.json({ error: "Sign in required" }, { status: 401 });
   const parsed = requestSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: "Invalid billing selection" }, { status: 400 });
+  // Deny stale browser context; this binding never grants authentication or authority.
+  if (parsed.data.expectedOwnerId !== undefined && parsed.data.expectedOwnerId !== user.id) return NextResponse.json({ error: "Account context changed" }, { status: 409 });
   const { plan, interval, confirmChange } = parsed.data;
   const priceId = getPriceId(plan, interval);
   if (!priceId) return NextResponse.json({ error: `${plan === "business" ? "Business" : "Pro"} pricing is not configured` }, { status: 503 });

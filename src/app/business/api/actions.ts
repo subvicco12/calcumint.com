@@ -20,12 +20,20 @@ async function requireAdmin() {
   return { supabase, user, organizationId: String(membership.organization_id) };
 }
 
-export async function createBusinessApiKey(formData: FormData) {
+export type BusinessCredentialResult = { secret: string };
+
+async function verifyCredentialOwner(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>, expectedOwnerId: string, authorizedOwnerId: string) {
+  const { data: { user }, error } = await supabase.auth.getUser();
+  if (error || !user || !expectedOwnerId || user.id !== expectedOwnerId || user.id !== authorizedOwnerId) throw new Error("Account session changed");
+}
+
+export async function createBusinessApiKey(formData: FormData): Promise<BusinessCredentialResult> {
   const { supabase, user, organizationId } = await requireAdmin();
   const name = String(formData.get("name") ?? "").trim();
   const scopes = normalizeScopes(formData.getAll("scopes").map(String));
   if (name.length < 2 || name.length>120 || scopes.length === 0) throw new Error("Name and at least one valid scope are required");
   const rateLimit=Number(formData.get("rateLimit")??60),monthlyQuota=Number(formData.get("monthlyQuota")??10000);if(!Number.isInteger(rateLimit)||rateLimit<1||rateLimit>5000||!Number.isInteger(monthlyQuota)||monthlyQuota<1||monthlyQuota>10_000_000)throw new Error("Invalid API quota settings");
+  await verifyCredentialOwner(supabase, String(formData.get("expectedOwnerId") ?? ""), user.id);
   const generated = createApiKeySecret(process.env.NODE_ENV === "production" ? "cm_live" : "cm_test");
   const { error } = await supabase.from("business_api_keys").insert({
     organization_id: organizationId,
@@ -38,7 +46,8 @@ export async function createBusinessApiKey(formData: FormData) {
     created_by: user.id
   });
   if (error) throw new Error(error.message);
-  redirect(`/business/api?created=${encodeURIComponent(generated.secret)}`);
+  revalidatePath("/business/api");
+  return { secret: generated.secret };
 }
 
 export async function revokeBusinessApiKey(formData: FormData) {
@@ -50,7 +59,7 @@ export async function revokeBusinessApiKey(formData: FormData) {
   revalidatePath("/business/api");
 }
 
-export async function createWebhookEndpoint(formData: FormData) {
+export async function createWebhookEndpoint(formData: FormData): Promise<BusinessCredentialResult> {
   const { supabase, user, organizationId } = await requireAdmin();
   const encryptionKey = serverEnv.WEBHOOK_ENCRYPTION_KEY;
   if (!encryptionKey) throw new Error("Webhook encryption key is not configured");
@@ -62,6 +71,7 @@ export async function createWebhookEndpoint(formData: FormData) {
   if (parsedUrl.protocol !== "https:") throw new Error("Webhook endpoints must use HTTPS");
   const eventTypes = formData.getAll("eventTypes").map(String).filter((value) => ["calculation.completed", "lead.created"].includes(value));
   if (eventTypes.length === 0) throw new Error("Select at least one webhook event");
+  await verifyCredentialOwner(supabase, String(formData.get("expectedOwnerId") ?? ""), user.id);
   const secret = `whsec_${randomBytes(32).toString("base64url")}`;
   const { error } = await supabase.from("business_webhook_endpoints").insert({
     organization_id: organizationId,
@@ -72,7 +82,8 @@ export async function createWebhookEndpoint(formData: FormData) {
     created_by: user.id
   });
   if (error) throw new Error(error.message);
-  redirect(`/business/api?webhookSecret=${encodeURIComponent(secret)}`);
+  revalidatePath("/business/api");
+  return { secret };
 }
 
 export async function disableWebhookEndpoint(formData: FormData) {

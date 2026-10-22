@@ -5,6 +5,19 @@ import { canManageMembers, canManageProjects, type BusinessRole } from "@/lib/bu
 import { createClientWorkspace, createOrganization, createProject, inviteMember } from "./actions";
 import {getPlanEntitlements} from "@/lib/entitlements";
 
+// A failed read must remain distinct from a successful empty workspace.
+async function readWorkspace<T>(query: PromiseLike<T>): Promise<T | {data: null; error: unknown}> {
+  try { return await query; } catch (error) { return {data: null, error: error || true}; }
+}
+
+function ReadUnavailable({label, singular = false}: {label: string; singular?: boolean}) {
+  return <p role="status">{label} {singular ? "is" : "are"} temporarily unavailable. <Link href="/business" className="text-link">Retry workspace</Link></p>;
+}
+
+function WorkspaceUnavailable({label, singular = false}: {label: string; singular?: boolean}) {
+  return <section className="container page-top business-page"><span className="eyebrow">Business workspace</span><h1>Workspace temporarily unavailable.</h1><ReadUnavailable label={label} singular={singular}/></section>;
+}
+
 export const metadata = { title: "Business Workspace" };
 
 type PageProps = { searchParams: Promise<{ invite?: string }> };
@@ -19,7 +32,8 @@ export default async function BusinessPage({ searchParams }: PageProps) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: profile } = await supabase.from("profiles").select("plan,display_name").eq("id", user.id).maybeSingle();
+  const { data: profile, error: profileError } = await readWorkspace(supabase.from("profiles").select("plan,display_name").eq("id", user.id).maybeSingle());
+  if (profileError || !profile) return <WorkspaceUnavailable label="Plan details"/>;
   if (!getPlanEntitlements(profile?.plan).businessStudio) {
     return (
       <section className="container page-top">
@@ -31,7 +45,8 @@ export default async function BusinessPage({ searchParams }: PageProps) {
     );
   }
 
-  const { data: memberships } = await supabase.from("organization_members").select("organization_id,role,joined_at").eq("user_id", user.id).order("joined_at", { ascending: true }).limit(1);
+  const { data: memberships, error: membershipError } = await readWorkspace(supabase.from("organization_members").select("organization_id,role,joined_at").eq("user_id", user.id).order("joined_at", { ascending: true }).limit(1));
+  if (membershipError) return <WorkspaceUnavailable label="Workspace membership" singular/>;
   const membership = memberships?.[0];
 
   if (!membership) {
@@ -51,18 +66,20 @@ export default async function BusinessPage({ searchParams }: PageProps) {
 
   const organizationId = membership.organization_id as string;
   const role = membership.role as BusinessRole;
-  const [{ data: organization }, { data: members }, { data: projects }, { data: clients }, { data: audit }] = await Promise.all([
-    supabase.from("organizations").select("id,name,slug,created_at").eq("id", organizationId).single(),
-    supabase.from("organization_members").select("user_id,role,joined_at").eq("organization_id", organizationId).order("joined_at", { ascending: true }),
-    supabase.from("business_projects").select("id,name,description,status,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(12),
-    supabase.from("client_workspaces").select("id,name,client_reference,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(12),
-    supabase.from("organization_audit_log").select("id,action,entity_type,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(8)
+  const [{ data: organization, error: organizationError }, { data: members, error: membersError }, { data: projects, error: projectsError }, { data: clients, error: clientsError }, { data: audit, error: auditError }] = await Promise.all([
+    readWorkspace(supabase.from("organizations").select("id,name,slug,created_at").eq("id", organizationId).single()),
+    readWorkspace(supabase.from("organization_members").select("user_id,role,joined_at").eq("organization_id", organizationId).order("joined_at", { ascending: true })),
+    readWorkspace(supabase.from("business_projects").select("id,name,description,status,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(12)),
+    readWorkspace(supabase.from("client_workspaces").select("id,name,client_reference,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(12)),
+    readWorkspace(supabase.from("organization_audit_log").select("id,action,entity_type,created_at").eq("organization_id", organizationId).order("created_at", { ascending: false }).limit(8))
   ]);
+
+  if (organizationError || !organization) return <WorkspaceUnavailable label="Organization details"/>;
 
   return (
     <section className="container page-top business-page">
       <div className="section-heading">
-        <div><span className="eyebrow">Business workspace</span><h1>{organization?.name ?? "Organization"}</h1><p className="hero-copy">Role: {role} · {members?.length ?? 0}/5 included seats in use.</p></div>
+        <div><span className="eyebrow">Business workspace</span><h1>{organization?.name ?? "Organization"}</h1><p className="hero-copy">Role: {role} · {membersError ? "Seat usage unavailable" : `${members?.length ?? 0}/5 included seats in use.`}</p></div>
         <span className="status">Business active</span>
       </div>
 
@@ -73,16 +90,16 @@ export default async function BusinessPage({ searchParams }: PageProps) {
       )}
 
       <div className="business-stats">
-        <article className="card"><span className="eyebrow">Seats</span><h2>{members?.length ?? 0} / 5</h2><p>Owner, Admin, Manager, Member and Viewer roles are supported.</p></article>
-        <article className="card"><span className="eyebrow">Projects</span><h2>{projects?.length ?? 0}</h2><p>Shared containers for calculations and later templates.</p></article>
-        <article className="card"><span className="eyebrow">Clients</span><h2>{clients?.length ?? 0}</h2><p>Separate client-facing workspaces ready for branded reports.</p></article>
+        <article className="card"><span className="eyebrow">Seats</span><h2>{membersError ? "Unavailable" : `${members?.length ?? 0} / 5`}</h2><p>Owner, Admin, Manager, Member and Viewer roles are supported.</p></article>
+        <article className="card"><span className="eyebrow">Projects</span><h2>{projectsError ? "Unavailable" : projects?.length ?? 0}</h2><p>Latest 12 projects shown. Shared containers for calculations and templates.</p></article>
+        <article className="card"><span className="eyebrow">Clients</span><h2>{clientsError ? "Unavailable" : clients?.length ?? 0}</h2><p>Latest 12 client workspaces shown. Separate workspaces for client delivery.</p></article>
       </div>
 
       <div className="account-grid section">
         <article className="card">
           <span className="eyebrow">Team</span><h2>Members</h2>
-          <ul>{members?.map((member) => <li key={member.user_id}><code>{String(member.user_id).slice(0, 8)}…</code> — {member.role}</li>)}</ul>
-          {canManageMembers(role) && (
+          {membersError ? <ReadUnavailable label="Members"/> : <ul>{members?.map((member) => <li key={member.user_id}><code>{String(member.user_id).slice(0, 8)}…</code> — {member.role}</li>)}</ul>}
+          {!membersError && canManageMembers(role) && (
             <form className="form-stack compact-form" action={inviteMember}>
               <input type="hidden" name="organizationId" value={organizationId} />
               <label>Email<input type="email" name="email" required placeholder="colleague@example.com" /></label>
@@ -102,20 +119,20 @@ export default async function BusinessPage({ searchParams }: PageProps) {
       <div className="account-grid section">
         <article className="card">
           <span className="eyebrow">Shared work</span><h2>Projects</h2>
-          {projects?.length ? <ul>{projects.map((project) => <li key={project.id}><strong>{project.name}</strong> · {project.status}{project.description ? ` — ${project.description}` : ""}</li>)}</ul> : <p>No projects yet.</p>}
-          {canManageProjects(role) && <form className="form-stack compact-form" action={createProject}><input type="hidden" name="organizationId" value={organizationId} /><label>Project name<input name="name" required /></label><label>Description<input name="description" /></label><button className="button secondary" type="submit">Create project</button></form>}
+          {projectsError ? <ReadUnavailable label="Projects"/> : projects?.length ? <ul>{projects.map((project) => <li key={project.id}><strong>{project.name}</strong> · {project.status}{project.description ? ` — ${project.description}` : ""}</li>)}</ul> : <p>No projects yet.</p>}
+          {!projectsError && canManageProjects(role) && <form className="form-stack compact-form" action={createProject}><input type="hidden" name="organizationId" value={organizationId} /><label>Project name<input name="name" required /></label><label>Description<input name="description" /></label><button className="button secondary" type="submit">Create project</button></form>}
         </article>
 
         <article className="card">
           <span className="eyebrow">Client delivery</span><h2>Client workspaces</h2>
-          {clients?.length ? <ul>{clients.map((client) => <li key={client.id}><strong>{client.name}</strong>{client.client_reference ? ` — ${client.client_reference}` : ""}</li>)}</ul> : <p>No client workspaces yet.</p>}
-          {canManageProjects(role) && <form className="form-stack compact-form" action={createClientWorkspace}><input type="hidden" name="organizationId" value={organizationId} /><label>Client name<input name="name" required /></label><label>Reference<input name="reference" /></label><button className="button secondary" type="submit">Create client workspace</button></form>}
+          {clientsError ? <ReadUnavailable label="Client workspaces"/> : clients?.length ? <ul>{clients.map((client) => <li key={client.id}><strong>{client.name}</strong>{client.client_reference ? ` — ${client.client_reference}` : ""}</li>)}</ul> : <p>No client workspaces yet.</p>}
+          {!clientsError && canManageProjects(role) && <form className="form-stack compact-form" action={createClientWorkspace}><input type="hidden" name="organizationId" value={organizationId} /><label>Client name<input name="name" required /></label><label>Reference<input name="reference" /></label><button className="button secondary" type="submit">Create client workspace</button></form>}
         </article>
       </div>
 
       <article className="card section business-audit-card">
         <span className="eyebrow">Governance</span><h2>Recent audit activity</h2>
-        {audit?.length ? <ul>{audit.map((event) => <li key={event.id}><strong>{event.action}</strong> · {event.entity_type} · {new Date(event.created_at).toLocaleString()}</li>)}</ul> : <p>No audit events yet.</p>}
+        {auditError ? <ReadUnavailable label="Recent audit activity" singular/> : audit?.length ? <ul>{audit.map((event) => <li key={event.id}><strong>{event.action}</strong> · {event.entity_type} · {new Date(event.created_at).toLocaleString()}</li>)}</ul> : <p>No audit events yet.</p>}
       </article>
     </section>
   );
