@@ -1,5 +1,5 @@
 import {spawn} from 'node:child_process';
-import {mkdtemp,rm} from 'node:fs/promises';
+import {mkdtemp,readFile,rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=20000,executable=process.env.CHROMIUM_PATH||'/usr/bin/chromium',launchArgs=[]}={}){
@@ -20,7 +20,23 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   finally{await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100})}
  })();
  try{
- const deadline=Date.now()+startupTimeoutMs;let endpoint;while(Date.now()<deadline){if(launchError)throw launchError;if(exited())throw Error('Chromium exited before CDP startup: '+diagnostic);endpoint=diagnostic.match(/DevTools listening on (ws:\/\/\S+)/)?.[1];if(endpoint)break;await new Promise(r=>setTimeout(r,40))}if(!endpoint)throw Error('No Chromium CDP '+diagnostic);
+ const deadline=Date.now()+startupTimeoutMs;let endpoint;
+ while(Date.now()<deadline){
+  if(launchError)throw launchError;
+  if(exited())throw Error('Chromium exited before CDP startup: '+diagnostic);
+  // stderr is diagnostic output, not a readiness contract. Chromium also publishes
+  // its ephemeral debugging port in the unique profile, even with quiet logging.
+  // Ignore incomplete writes and never consume a partial stderr URL.
+  try{
+   const activePort=await readFile(path.join(profile,'DevToolsActivePort'),'utf8');
+   const match=activePort.match(/^(\d+)\r?\n(\/devtools\/browser\/[^\s]+)(?:\r?\n|$)/);
+   if(match&&Number(match[1])>0&&Number(match[1])<=65535)endpoint=`ws://127.0.0.1:${match[1]}${match[2]}`;
+  }catch(error){if(error.code!=='ENOENT')throw error}
+  endpoint??=diagnostic.match(/DevTools listening on (ws:\/\/[^\s]+)\r?\n/)?.[1];
+  if(endpoint)break;
+  await new Promise(r=>setTimeout(r,40));
+ }
+ if(!endpoint)throw Error('No Chromium CDP '+diagnostic);
  const setupTimeout=()=>Math.max(1,Math.min(5000,deadline-Date.now()));
  const response=await fetch(`http://127.0.0.1:${new URL(endpoint).port}/json/new?about:blank`,{method:'PUT',signal:AbortSignal.timeout(setupTimeout())});
  if(!response.ok)throw Error(`Chromium CDP target creation failed: ${response.status}`);
