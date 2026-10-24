@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "releaseHold": true,
+  "frozenPr1467Sha": "b85e845ecd11856f963c9f32af9634b8e4738293",
+  "verifiedCodeAndHarnessSha": "e327a84c45353d71ee485139e3851cecd396139b",
+  "branch": "engineering/final-product-20261024",
+  "applicationSourceSha": "08a180398fa3a96f2dc13a14426425b62d923ae4",
+  "unitSuiteSourceSha": "9584cd95ef0b4ed6039e580ec634eab03aa853c8",
+  "nativeRuntimeSourceSha": "0732b8b22e93bf098e8b2f47412ca2c5dece2e89",
+  "hostedCandidateCi": "NOT_RUN",
+  "results": {
+    "unitPassed": 4582,
+    "unitSkipped": 4,
+    "unitFilesPassed": 706,
+    "unitFilesSkipped": 2,
+    "referenceJourneysPassed": 36,
+    "nativeNextJourneysPassed": 25,
+    "securityChecksPassed": 8,
+    "transportTestsPassed": 12,
+    "downloadRegressionsPassed": 2,
+    "launchGuardsPassed": 45,
+    "certificationGuardsPassed": 15,
+    "webpackBuild": "PASS",
+    "typecheck": "PASS",
+    "lintErrors": 0,
+    "lintWarnings": 28
+  },
+  "ledger": {
+    "records": 424,
+    "statusCounts": {
+      "VERIFIED": 55,
+      "PARTIAL": 331,
+      "UNKNOWN": 18,
+      "BLOCKED": 20
+    },
+    "sha256": "6bea776d2721a99a1cc0d757929ab1ac9e957c0863ac2cba3ac408446df417c1",
+    "promotions": 0
+  },
+  "privateLocalArtifacts": [
+    {
+      "path": "/workspace/.pr1467/final-product/baseline-unit.log",
+      "sha256": "05c95ef78580498bdef3f5999c3bc0ba9336b3a447d9f3116a2baccf0b4060ed",
+      "bytes": 1123582
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/final-unit.log",
+      "sha256": "1d45292d27b8525959ef441652d06837e1e61643d51bf8d77a99b6e4cca281a6",
+      "bytes": 1499734
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/final-unit-verified.log",
+      "sha256": "61e1e146398704a1fbd70be7a2ccce14b8582f088fa0c13ea0ff0c2f853a2207",
+      "bytes": 1117741
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/launch.log",
+      "sha256": "438fa7fa38ffdb966db5c045726d47015c909755bbc2519e15092c3afc8100ce",
+      "bytes": 764
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/certification.log",
+      "sha256": "d8b2a98ba45b77fb134587f0197fb12ff4544a0f268b251f6cbcb05d37de606b",
+      "bytes": 698
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/transport.log",
+      "sha256": "916c07a68c01453a81f606ee9ef4a5407e194e775f514bb899dd8bff708950f1",
+      "bytes": 1226
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/security.log",
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7",
+      "bytes": 676
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/runtime.log",
+      "sha256": "60359cfef192d4aa4982eea2ef5d7c21f26020a503041a3948a3234fb4d66d20",
+      "bytes": 1730
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/runtime/next-runtime-report.json",
+      "sha256": "38d6d3b36c0c493ec40146f7aa6a0842e25e80ef75f03b49ec04551fa6dd64ca",
+      "bytes": 211033
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/build.log",
+      "sha256": "38402ae175057171933172d30c5e5d9f29618dbcd2190cedbc6ce021c324bf8c",
+      "bytes": 2731
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/typecheck-candidate.log",
+      "sha256": "396b3bd8c088fd40f15ee249c3c9954a4a22b831fa9cd53cfbe76ea236d3d29a",
+      "bytes": 253
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/lint.log",
+      "sha256": "5e414022372ddc751f0484de183a4164ce8c64e992c030ddd2e7dc664d493fb4",
+      "bytes": 5886
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/final-changed-lint.log",
+      "sha256": "45342ca54fc3787657ce6eb4dbe6d4510cbf68d24318d44416c0176ab31ebf4b",
+      "bytes": 208
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/download-regression.log",
+      "sha256": "812afec51ca9610e3018e2088a2d58c3966c73494108fed917f1ffdf2d2cf79f",
+      "bytes": 280
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/reference.log",
+      "sha256": "ebcf2cebd852040e57e5796a01a504b7ad706fa7574c2f4e5fe2f40e5874398d",
+      "bytes": 2259
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/reference-isolated.log",
+      "sha256": "e09ae20e4b1e638fff1cffd45d422a7710d3f16c47b449cf38a7f953a8110d1e",
+      "bytes": 1950
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/reference-completion.log",
+      "sha256": "cb478280c0a0289203751131b1a406632df78ad018bc24fbea0347c723a55eda",
+      "bytes": 816
+    },
+    {
+      "path": "/workspace/.pr1467/final-product/reference-completion-verified.log",
+      "sha256": "d0bd29783b8be9859a93a8073eb8ad1606f56e69c5f149145687387f07a524df",
+      "bytes": 1961
+    }
+  ],
+  "excludedFailedRuns": {
+    "final-unit.log": "Encoding/wrapping-specific assertion corrected without removing content requirement",
+    "reference.log": "Build-induced Vite reload and read-before-download-completion race",
+    "reference-completion.log": "Fixed port occupied by prior isolated runner; failed setup"
+  },
+  "productionOperations": []
+}
