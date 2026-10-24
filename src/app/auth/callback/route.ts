@@ -32,7 +32,9 @@ export async function GET(request: Request) {
       // Malformed return paths retain the safe account destination.
     }
   }
-  const failed = () => NextResponse.redirect(new URL("/login?error=Authentication%20callback%20failed.", origin));
+  const recovery=destination.pathname==="/login/reset";
+  if(recovery)destination=new URL("/login/reset",origin);
+  const failed = () => NextResponse.redirect(new URL(recovery?"/login/reset?invalid=1":"/login?error=Authentication%20callback%20failed.", origin));
   if (!code) return failed();
   try {
     const supabase = await createSupabaseServerClient({requireCookieWrites:true});

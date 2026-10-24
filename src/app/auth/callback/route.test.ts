@@ -27,3 +27,5 @@ it('does not expose returned provider details in the callback recovery URL',asyn
  state.exchange.mockResolvedValue({error:{message:'synthetic-sensitive-session-detail'}});
  const location=(await GET(request('/account'))).headers.get('location');expect(location).toContain('https://app.example.invalid/login?error=');expect(location).not.toContain('synthetic-sensitive-session-detail');
 });
+it('sends invalid recovery callbacks to a fixed safe link-unavailable state',async()=>{state.exchange.mockResolvedValue({error:{message:'private expired/replayed provider detail'}});expect((await GET(request('/login/reset'))).headers.get('location')).toBe('https://app.example.invalid/login/reset?invalid=1');});
+it('does not carry arbitrary recovery destination queries or fragments forward',async()=>{expect((await GET(request('/login/reset?next=https://outside.example.invalid#private'))).headers.get('location')).toBe('https://app.example.invalid/login/reset');});

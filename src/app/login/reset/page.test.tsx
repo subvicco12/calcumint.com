@@ -1,0 +1,11 @@
+import {renderToStaticMarkup} from 'react-dom/server';
+import {beforeEach,expect,it,vi} from 'vitest';
+const state=vi.hoisted(()=>({client:vi.fn(),verify:vi.fn()}));
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:state.client}));
+vi.mock('@/lib/password-recovery',()=>({verifiedPasswordRecovery:state.verify,PASSWORD_RECOVERY_INVALID:'This reset link is invalid or expired. Request a new link.'}));
+vi.mock('@/components/password-recovery-form',()=>({PasswordRecoveryForm:({ownerId,sessionId}:{ownerId:string;sessionId:string})=><div data-owner={ownerId} data-session={sessionId}>Recovery form</div>}));
+import ResetPasswordPage from './page';
+beforeEach(()=>{vi.resetAllMocks();state.client.mockResolvedValue({auth:{}});state.verify.mockResolvedValue({ownerId:'verified-owner',sessionId:'verified-session'});});
+it('renders completion only with a freshly verified recovery context',async()=>{const html=renderToStaticMarkup(await ResetPasswordPage({searchParams:Promise.resolve({})}));expect(html).toContain('data-owner="verified-owner"');expect(html).toContain('data-session="verified-session"');});
+it('does not reuse a prior session to display a form after a failed/replayed callback',async()=>{const html=renderToStaticMarkup(await ResetPasswordPage({searchParams:Promise.resolve({invalid:'1'})}));expect(html).toContain('Reset link unavailable');expect(html).not.toContain('Recovery form');expect(state.verify).not.toHaveBeenCalled();});
+it('shows safe new-link recovery instead of raw provider failures',async()=>{state.verify.mockRejectedValue(new Error('private-token-detail'));const html=renderToStaticMarkup(await ResetPasswordPage({searchParams:Promise.resolve({})}));expect(html).toContain('/login/forgot');expect(html).not.toContain('private-token');expect(html).not.toContain('Recovery form');});
