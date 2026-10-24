@@ -23,6 +23,27 @@ vi.mock("@/lib/env", () => ({
 type PaddleEvent = { name?: string; data?: {transaction_id?: unknown} };
 
 describe("PlanCheckoutButton", () => {
+  it.each([false,true])('reloads the SDK after a failed CDN request and explicit checkout remount (existing script: %s)', async existing => {
+    delete window.Paddle;
+    if(existing){const script=document.createElement('script');script.src='https://cdn.paddle.com/paddle/v2/paddle.js';document.head.appendChild(script);}
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({status:200,ok:true,json:async()=>({transactionId:'txn_retry'})}));
+    const {PlanCheckoutButton}=await import('./pro-checkout-button');
+    const view=render(<PlanCheckoutButton plan="pro" interval="monthly"/>);
+    fireEvent.click(screen.getByRole('button',{name:'Choose Pro monthly'}));
+    const selector='script[src="https://cdn.paddle.com/paddle/v2/paddle.js"]';
+    await waitFor(()=>expect(document.querySelector(selector)).not.toBeNull());
+    const failed=document.querySelector(selector)!;
+    fireEvent.error(failed);
+    await screen.findByRole('alert');
+    view.unmount();
+    render(<PlanCheckoutButton plan="pro" interval="monthly"/>);
+    fireEvent.click(screen.getByRole('button',{name:'Choose Pro monthly'}));
+    await waitFor(()=>{expect(document.querySelector(selector)).not.toBeNull();expect(document.querySelector(selector)).not.toBe(failed);});
+    const open=vi.fn();
+    window.Paddle={Environment:{set:vi.fn()},Initialize:vi.fn(),Checkout:{open}};
+    fireEvent.load(document.querySelector(selector)!);
+    await waitFor(()=>expect(open).toHaveBeenCalledWith({transactionId:'txn_retry',settings:{displayMode:'overlay',theme:'light'}}));
+  });
   beforeEach(() => {
     authState.owner='owner-a';authState.error=null;authState.callbacks.clear();
     vi.resetModules();

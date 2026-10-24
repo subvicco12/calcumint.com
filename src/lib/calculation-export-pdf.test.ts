@@ -42,9 +42,9 @@ describe('deterministic calculation PDF', () => {
 
   it('escapes PDF commands, controls and unsupported Unicode without silently changing the text', () => {
     const pdf = decode(serializeCalculationPdf({ ...snapshot, input: { text: ') Tj ET /evil (\\\nΩ😀' } }, { title: 'Ω\nReport' }));
-    expect(pdf).toContain('\\u03a9');
-    expect(pdf).toContain('\\u{1f600}');
-    expect(pdf).toContain('\\) Tj ET /evil \\(');
+    expect(pdf).toContain('<03a9> <03a9>');
+    expect(pdf).toContain('005c0075007b00310066003600300030007d');
+    expect(decode(serializeCalculationPdf({...snapshot,input:{text:') Tj ET /evil ('}}))).toContain('\\) Tj ET /evil \\(');
     expect(pdf).not.toContain('Ω');
     expect(pdf).toContain('explicit Unicode escapes');
   });

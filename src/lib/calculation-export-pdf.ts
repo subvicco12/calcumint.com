@@ -1,6 +1,7 @@
 import type { CalculatorFormula, CalculatorSource } from '@/calculators/types';
 import { createCalculationSnapshot, type CalculationSnapshot } from './calculation-snapshot';
 import { validateScenarioDisplayMetadata, type ScenarioDisplayMetadata } from './scenario-display-metadata';
+import {fontData,fontByteLength,unicodeGlyphs} from './pdf-font/dejavu-mono';
 
 export type CalculationPdfOptions = Readonly<{
   title?: string;
@@ -32,17 +33,18 @@ type Line = { text: string; heading?: boolean; node?: Structure; cells?: { text:
 const WIDTH = 88;
 const PAGE_LINES = 49;
 
-/** The standard PDF fonts cover Latin-1 units. Other characters remain explicit,
- * lossless Unicode escapes, rather than silently disappearing or changing units. */
+/** Embedded BMP glyphs retain readable currency/scientific labels. Characters
+ * absent from the bundled font remain explicit escapes instead of disappearing. */
 function printable(text: string): string {
   return Array.from(text, character => {
     const code = character.codePointAt(0)!;
-    if ((code >= 32 && code <= 126) || (code >= 160 && code <= 255)) return character;
+    if ((code >= 32 && code <= 126) || (code >= 160 && code <= 255) || (code > 255 && unicodeGlyphs[code])) return character;
     return code <= 65535 ? `\\u${code.toString(16).padStart(4, '0')}` : `\\u{${code.toString(16)}}`;
   }).join('');
 }
 
 function literal(text: string): string {
+  if (Array.from(text).some(character => character.charCodeAt(0)>255)) return `<feff${Array.from(text,character=>character.charCodeAt(0).toString(16).padStart(4,'0')).join('')}>`;
   return `(${Array.from(text, character => {
     const code = character.charCodeAt(0);
     if (code > 126) return `\\${code.toString(8).padStart(3, '0')}`;
@@ -88,7 +90,8 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
   add(`Calculator: ${captured.calculatorSlug} | Engine version: ${captured.calculatorVersion}`);
   add('Raw engine values: full numeric precision; no display rounding or sampled rows.');
   add('Units appear only where supplied by the calculation or bound display metadata.');
-  add('Characters outside Latin-1 and controls are shown as explicit Unicode escapes.');
+  add('Embedded Unicode glyphs are readable.');
+  add('Unsupported characters and controls use explicit Unicode escapes.');
   add('Tagged PDF; PDF/UA conformance: UNVERIFIED.');
   add('Text follows document order; charts include complete numeric text alternatives.');
   const field = (path: string, value: unknown) => {
@@ -211,6 +214,26 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
   // string offsets equal byte offsets in the mandatory cross-reference table.
   const objects: string[] = [];
   const reserve = () => { objects.push(''); return objects.length; };
+  const unicodeCharacters = [...new Set(lines.flatMap(line => Array.from(line.text + (line.cells?.map(cell=>cell.text).join('')??''))))];
+  const needsUnicode = unicodeCharacters.some(character=>character.charCodeAt(0)>255);
+  let unicodeFont: number | undefined;
+  if(needsUnicode){
+    const font=reserve(), descendant=reserve(), descriptor=reserve(), file=reserve(), mapping=reserve(), toUnicode=reserve();
+    unicodeFont=font;
+    const hex=(value:number)=>value.toString(16).padStart(4,'0');
+    const used=unicodeCharacters.map(character=>character.charCodeAt(0)).sort((a,b)=>a-b);
+    const gids=Array.from({length:used.at(-1)!+1},(_,code)=>hex(unicodeGlyphs[code]??0)).join('');
+    const fontHex=Array.from(atob(fontData),character=>character.charCodeAt(0).toString(16).padStart(2,'0')).join('')+'>';
+    objects[file-1]=`<< /Length ${fontHex.length} /Length1 ${fontByteLength} /Filter [/ASCIIHexDecode /FlateDecode] >>\nstream\n${fontHex}\nendstream`;
+    objects[mapping-1]=`<< /Length ${gids.length+1} /Filter /ASCIIHexDecode >>\nstream\n${gids}>\nendstream`;
+    const chunks=[];
+    for(let start=0;start<used.length;start+=100){const codes=used.slice(start,start+100);chunks.push(`${codes.length} beginbfchar\n${codes.map(code=>`<${hex(code)}> <${hex(code)}>`).join('\n')}\nendbfchar`);}
+    const cmap=`/CIDInit /ProcSet findresource begin\n12 dict begin\nbegincmap\n/CIDSystemInfo << /Registry (Adobe) /Ordering (UCS) /Supplement 0 >> def\n/CMapName /CalcuMintUnicode def\n/CMapType 2 def\n1 begincodespacerange\n<0000> <ffff>\nendcodespacerange\n${chunks.join('\n')}\nendcmap\nCMapName currentdict /CMap defineresource pop\nend\nend`;
+    objects[toUnicode-1]=`<< /Length ${cmap.length} >>\nstream\n${cmap}\nendstream`;
+    objects[descriptor-1]=`<< /Type /FontDescriptor /FontName /CMUNIV+CalcuMintUnicode /Flags 33 /FontBBox [-559 -375 718 1028] /ItalicAngle 0 /Ascent 929 /Descent -236 /CapHeight 729 /StemV 80 /FontFile2 ${file} 0 R >>`;
+    objects[descendant-1]=`<< /Type /Font /Subtype /CIDFontType2 /BaseFont /CMUNIV+CalcuMintUnicode /CIDSystemInfo << /Registry (Adobe) /Ordering (Identity) /Supplement 0 >> /FontDescriptor ${descriptor} 0 R /DW 602 /CIDToGIDMap ${mapping} 0 R >>`;
+    objects[font-1]=`<< /Type /Font /Subtype /Type0 /BaseFont /CMUNIV+CalcuMintUnicode /Encoding /Identity-H /DescendantFonts [${descendant} 0 R] /ToUnicode ${toUnicode} 0 R >>`;
+  }
   const catalog = reserve(), pageTree = reserve(), bodyFont = reserve(), headingFont = reserve(), info = reserve();
   objects[info - 1] = `<< /Title ${literal(printable(title))} /Creator (CalcuMint deterministic calculation report) >>`;
   objects[bodyFont - 1] = '<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>';
@@ -237,7 +260,11 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
       '0.75 0.82 0.82 RG 48 786 m 547 786 l S',
       'EMC',
       ...page.map((line, row) => {
-        const text = (value: string, x = 48) => `BT /${line.heading ? 'F2' : 'F1'} 9 Tf 0.10 0.13 0.15 rg ${x} ${763 - row * 14} Td ${literal(value)} Tj ET`;
+        const text = (value: string, x = 48) => {
+          const unicode=Array.from(value).some(character=>character.charCodeAt(0)>255);
+          const encoded=unicode?`<${Array.from(value,character=>character.charCodeAt(0).toString(16).padStart(4,'0')).join('')}>`:literal(value);
+          return `BT /${unicode?'F3':line.heading ? 'F2' : 'F1'} 9 Tf 0.10 0.13 0.15 rg ${x} ${763 - row * 14} Td ${encoded} Tj ET`;
+        };
         if (line.cells) return line.cells.map((cell, column) => {
           const x = 48 + column * (line.cellWidth! + 3) * 5.4;
           return (column ? marked(text(' | ', x - 16.2)) + '\n' : '') + marked(text(cell.text, x), cell.node);
@@ -252,7 +279,7 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
     ].join('\n');
     parentEntries.push(`${index} [${owners.map(id => `${id} 0 R`).join(' ')}]`);
     objects[streamId - 1] = `<< /Length ${commands.length} >>\nstream\n${commands}\nendstream`;
-    objects[pageId - 1] = `<< /Type /Page /Parent ${pageTree} 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${bodyFont} 0 R /F2 ${headingFont} 0 R >> >> /Contents ${streamId} 0 R /StructParents ${index} /Tabs /S >>`;
+    objects[pageId - 1] = `<< /Type /Page /Parent ${pageTree} 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${bodyFont} 0 R /F2 ${headingFont} 0 R ${unicodeFont?`/F3 ${unicodeFont} 0 R`:''} >> >> /Contents ${streamId} 0 R /StructParents ${index} /Tabs /S >>`;
     return pageId;
   });
   objects[catalog - 1] = `<< /Type /Catalog /Pages ${pageTree} 0 R /Lang ${literal(language)} /MarkInfo << /Marked true >> /StructTreeRoot ${structureRoot} 0 R /ViewerPreferences << /DisplayDocTitle true >> >>`;

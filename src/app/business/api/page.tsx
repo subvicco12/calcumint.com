@@ -61,7 +61,7 @@ export default async function BusinessApiPage(_props: PageProps) {
       <div className="account-grid section">
         <article className="card">
           <span className="eyebrow">Credentials</span><h2>API keys</h2>
-          {keysError ? <ReadUnavailable label="API key list"/> : keys?.length ? <ul>{keys.map((key) => <li key={key.id}><strong>{key.name}</strong> · <code>{key.key_prefix}…</code> · {key.status} · {key.rate_limit_per_minute}/min · {key.monthly_quota}/month{canAdmin && key.status === "active" ? <form action={revokeBusinessApiKey}><input type="hidden" name="keyId" value={key.id}/><button className="button secondary" type="submit">Revoke</button></form> : null}</li>)}</ul> : <p>No API keys yet.</p>}
+          {keysError ? <ReadUnavailable label="API key list"/> : keys?.length ? <ul>{keys.map((key) => <li key={key.id}><strong>{key.name}</strong> · <code>{key.key_prefix}…</code> · {key.status} · {key.rate_limit_per_minute}/min · {key.monthly_quota}/month{canAdmin && key.status === "active" ? <form action={revokeBusinessApiKey}><input type="hidden" name="expectedOwnerId" value={user.id}/><input type="hidden" name="keyId" value={key.id}/><button className="button secondary" type="submit">Revoke</button></form> : null}</li>)}</ul> : <p>No API keys yet.</p>}
         </article>
 
         {!keysError && canAdmin && <BusinessCredentialForm ownerId={user.id} kind="API key" action={createBusinessApiKey}>
@@ -77,7 +77,7 @@ export default async function BusinessApiPage(_props: PageProps) {
       <div className="account-grid section">
         <article className="card">
           <span className="eyebrow">Outbound automation</span><h2>Webhook endpoints</h2>
-          {endpointsError ? <ReadUnavailable label="Webhook endpoint list"/> : endpoints?.length ? <ul>{endpoints.map((endpoint) => <li key={endpoint.id}><strong>{endpoint.name}</strong> · {endpoint.status}<br/><code>{endpoint.endpoint_url}</code>{canAdmin && endpoint.status === "active" ? <form action={disableWebhookEndpoint}><input type="hidden" name="endpointId" value={endpoint.id}/><button className="button secondary" type="submit">Disable</button></form> : null}</li>)}</ul> : <p>No webhook endpoints yet.</p>}
+          {endpointsError ? <ReadUnavailable label="Webhook endpoint list"/> : endpoints?.length ? <ul>{endpoints.map((endpoint) => <li key={endpoint.id}><strong>{endpoint.name}</strong> · {endpoint.status}<br/><code>{endpoint.endpoint_url}</code>{canAdmin && endpoint.status === "active" ? <form action={disableWebhookEndpoint}><input type="hidden" name="expectedOwnerId" value={user.id}/><input type="hidden" name="endpointId" value={endpoint.id}/><button className="button secondary" type="submit">Disable</button></form> : null}</li>)}</ul> : <p>No webhook endpoints yet.</p>}
         </article>
 
         {!endpointsError && canAdmin && <BusinessCredentialForm ownerId={user.id} kind="webhook signing secret" action={createWebhookEndpoint}>
