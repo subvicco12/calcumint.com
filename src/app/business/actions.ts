@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import { createHash, randomBytes } from "node:crypto";
 import { revalidatePath } from "next/cache";
@@ -22,6 +24,8 @@ async function requireUser() {
 async function requireBusiness(supabase:Awaited<ReturnType<typeof createSupabaseServerClient>>,userId:string){if(!supabase)throw new Error("Supabase is not configured");const{data:profile}=await supabase.from("profiles").select("plan").eq("id",userId).maybeSingle();if(!getPlanEntitlements(profile?.plan).businessStudio)throw new Error("Business plan required");}
 
 export async function createOrganization(formData: FormData) {
+  requireProductCapability('businessWorkspace');
+
   const { supabase,user } = await requireUser();
   await requireBusiness(supabase,user.id);
   const name = String(formData.get("name") ?? "").trim().slice(0,120);
@@ -33,6 +37,8 @@ export async function createOrganization(formData: FormData) {
 }
 
 export async function inviteMember(formData: FormData) {
+  requireProductCapability('businessWorkspace');
+
   const { supabase, user } = await requireUser();
   await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
@@ -67,6 +73,8 @@ export async function inviteMember(formData: FormData) {
 }
 
 export async function createProject(formData: FormData) {
+  requireProductCapability('businessWorkspace');
+
   const { supabase, user } = await requireUser();
   await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
@@ -84,6 +92,8 @@ export async function createProject(formData: FormData) {
 }
 
 export async function createClientWorkspace(formData: FormData) {
+  requireProductCapability('businessWorkspace');
+
   const { supabase, user } = await requireUser();
   await requireBusiness(supabase,user.id);
   const organizationId = String(formData.get("organizationId") ?? "");
@@ -101,6 +111,8 @@ export async function createClientWorkspace(formData: FormData) {
 }
 
 export async function acceptInvitation(formData: FormData) {
+  requireProductCapability('businessWorkspace');
+
   const { supabase } = await requireUser();
   const token = String(formData.get("token") ?? "");
   if (!token) throw new Error("Invitation token is missing");

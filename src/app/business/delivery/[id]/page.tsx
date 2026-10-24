@@ -1,3 +1,5 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -6,6 +8,8 @@ import { createEmbedConfig, createShareLink } from "../actions";
 type PageProps = { params: Promise<{ id: string }>; searchParams: Promise<{ share?: string }> };
 
 export default async function DeliveryPage({ params, searchParams }: PageProps) {
+  if (!getProductPolicy().capabilities.embedsAndLeads) return <FeatureUnavailable/>;
+
   const { id } = await params;
   const { share } = await searchParams;
   const supabase = await createSupabaseServerClient();

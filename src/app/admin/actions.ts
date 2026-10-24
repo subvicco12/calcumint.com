@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -28,6 +30,8 @@ const createSchema = z.object({
 });
 
 export async function createCatalogCalculator(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user } = await requirePlatformAdmin();
   const input = createSchema.parse({
     calculatorKey: formData.get("calculatorKey"),
@@ -56,6 +60,8 @@ export async function createCatalogCalculator(formData: FormData) {
 
 
 export async function addCalculatorSourceEvidence(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user, role } = await requirePlatformAdmin();
   if (!(["owner", "admin", "reviewer"] as AdminRole[]).includes(role)) throw new Error("Reviewer permission required");
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
@@ -72,6 +78,8 @@ export async function addCalculatorSourceEvidence(formData: FormData) {
 }
 
 export async function updateQaCheck(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user, role } = await requirePlatformAdmin();
   if (!(["owner", "admin", "reviewer"] as AdminRole[]).includes(role)) throw new Error("Reviewer permission required");
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
@@ -92,6 +100,8 @@ export async function updateQaCheck(formData: FormData) {
 }
 
 export async function transitionCalculator(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user, role } = await requirePlatformAdmin();
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
   const target = z.enum(lifecycleStates).parse(formData.get("target")) as LifecycleState;
@@ -115,6 +125,8 @@ export async function transitionCalculator(formData: FormData) {
 }
 
 export async function assignReviewer(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user, role } = await requirePlatformAdmin();
   if (!(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Admin permission required");
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
@@ -132,6 +144,8 @@ const bulkItemSchema = z.object({
 });
 
 export async function importCalculatorInventory(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user, role } = await requirePlatformAdmin();
   if (!(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Admin permission required");
   const raw = String(formData.get("inventory") ?? "");

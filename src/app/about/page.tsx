@@ -1,3 +1,4 @@
+import {PublicReleaseNotice} from "@/components/public-release-notice";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -18,7 +19,7 @@ export default function AboutPage() {
     <main className="container page-stack">
       <header className="page-header">
         <p className="eyebrow">About CalcuMint</p>
-        <h1>Calculation tools built around verifiable math</h1>
+        <PublicReleaseNotice/><h1>Calculation tools built around verifiable math</h1>
         <p>
           CalcuMint is a universal calculation platform designed to make useful calculators easy to discover,
           understand and reuse without hiding the underlying method.

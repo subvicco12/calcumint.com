@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { buildProductionReadinessReport, summarizeReadiness } from "@/lib/launch/readiness";
 import { serverEnv } from "@/lib/env";
@@ -5,6 +6,8 @@ import { serverEnv } from "@/lib/env";
 export const dynamic = "force-dynamic";
 
 export function GET(request: Request) {
+  const disabled = disabledProductResponse('apiAndWebhooks'); if (disabled) return disabled;
+
   const secret = serverEnv.ADMIN_WORKER_SECRET;
   if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

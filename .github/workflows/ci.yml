@@ -60,6 +60,10 @@ jobs:
         env:
           NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-browser
           CDP_STARTUP_DIAGNOSTICS: '1'
+      - name: Anonymous public-only runtime acceptance
+        run: npm run test:public-only-browser
+        env:
+          PUBLIC_ONLY_ARTIFACTS: ${{ runner.temp }}/public-only-browser
       - name: Unit tests
         run: npm test
       - name: Launch certification

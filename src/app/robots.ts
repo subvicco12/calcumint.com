@@ -1,5 +1,8 @@
+import {getProductPolicy} from "@/lib/product-mode-server";
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
+
+export const dynamic = "force-dynamic";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
       disallow: [
+        ...(getProductPolicy().mode === "full" ? [] : ["/pricing", "/business-platform", "/ai", "/embed", "/share"]),
         "/account",
         "/account/",
         "/admin",

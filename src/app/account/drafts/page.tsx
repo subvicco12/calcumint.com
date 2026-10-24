@@ -1,11 +1,19 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import type {Metadata} from 'next';
 import Link from 'next/link';
 import {loadDraftWorkspace} from './actions';
 import {AccountSessionBoundary} from '@/components/account-session-boundary';
 import {AuthenticatedDraftWorkspace} from '@/components/authenticated-draft-workspace';
 export const dynamic='force-dynamic';
-export const metadata:Metadata={title:'Private DRAFT workspace',robots:{index:false,follow:false}};
+const fullMetadata:Metadata={title:'Private DRAFT workspace',robots:{index:false,follow:false}};
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 export default async function PrivateDraftPage({searchParams}:{searchParams?:Promise<{id?:string;source?:string}>}){
+  if (!getProductPolicy().capabilities.savedData) return <FeatureUnavailable/>;
+
  const query=await searchParams;
  let workspace:Awaited<ReturnType<typeof loadDraftWorkspace>>;
  try{workspace=await loadDraftWorkspace(undefined,query?.id&&(query.source==='history'||query.source==='scenario')?{id:query.id,source:query.source}:undefined);}

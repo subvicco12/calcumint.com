@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { paddleRequest } from "@/lib/billing/paddle";
@@ -10,6 +11,8 @@ type PortalSession = {
 };
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('proBilling'); if (disabled) return disabled;
+
   const supabase = await createSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Accounts are not configured" }, { status: 503 });
   const { data: { user } } = await supabase.auth.getUser();

@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { authenticateApiRequest, ApiAuthError } from "@/lib/api/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -6,6 +7,8 @@ import { customCalculatorSchema, runCustomCalculator } from "@/lib/builder/defin
 type RouteContext = { params: Promise<{ calculatorId: string }> };
 
 export async function POST(request: Request, { params }: RouteContext) {
+  const disabled = disabledProductResponse('apiAndWebhooks'); if (disabled) return disabled;
+
   try {
     const principal = await authenticateApiRequest(request, "calculations:run");
     const { calculatorId } = await params;

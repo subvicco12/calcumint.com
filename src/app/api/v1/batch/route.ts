@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { verifyApiRequest, ApiAuthError } from "@/lib/api/auth";
@@ -12,6 +13,8 @@ function storageError(code:string|undefined,requestId:string){if(code==='PT409')
 
 /** Read-only recovery never consumes another request unit or recreates a job. */
 export async function GET(request:Request){
+  const disabled = disabledProductResponse('apiAndWebhooks'); if (disabled) return disabled;
+
  const key=z.uuid().transform(value=>value.toLowerCase()).safeParse(request.headers.get('Idempotency-Key'));if(!key.success)return NextResponse.json({error:'A stable Idempotency-Key UUID is required'},{status:400});
  try{const principal=await verifyApiRequest(request,'calculations:batch');const admin=createSupabaseAdminClient();if(!admin)return unavailable(key.data);
   const reply=await admin.rpc('read_verified_batch_job_v1',{p_api_key_id:principal.keyId,p_key_hash:principal.keyHash,p_organization_id:principal.organizationId,p_request_id:key.data});
@@ -20,6 +23,8 @@ export async function GET(request:Request){
 }
 
 export async function POST(request:Request){
+  const disabled = disabledProductResponse('apiAndWebhooks'); if (disabled) return disabled;
+
  const key=z.uuid().transform(value=>value.toLowerCase()).safeParse(request.headers.get('Idempotency-Key'));if(!key.success)return NextResponse.json({error:'A stable Idempotency-Key UUID is required'},{status:400});
  try{
   const principal=await verifyApiRequest(request,'calculations:batch');

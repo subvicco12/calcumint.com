@@ -1,11 +1,19 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import type { Metadata } from "next";
 import { PricingSelector } from "@/components/pricing-selector";
 import { type BillingInterval } from "@/lib/billing/plans";
 import { subscriptionChangeMode, type PaidPlan } from "@/lib/billing/paddle";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export const metadata: Metadata = {title:"Pricing",description:"Compare CalcuMint Free, Pro and Business plans.",alternates:{canonical:"/pricing"},openGraph:{type:"website",title:"CalcuMint Pricing",description:"Compare CalcuMint Free, Pro and Business plans.",url:"/pricing"}};
+const fullMetadata: Metadata = {title:"Pricing",description:"Compare CalcuMint Free, Pro and Business plans.",alternates:{canonical:"/pricing"},openGraph:{type:"website",title:"CalcuMint Pricing",description:"Compare CalcuMint Free, Pro and Business plans.",url:"/pricing"}};
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 export default async function PricingPage() {
+  if (!getProductPolicy().capabilities.proBilling) return <FeatureUnavailable/>;
+
   const supabase = await createSupabaseServerClient();
   const user = supabase ? (await supabase.auth.getUser()).data.user : null;
   const { data: currentSubscription } = user && supabase ? await supabase.from("subscriptions").select("plan,billing_interval").eq("user_id", user.id).in("status", ["active", "trialing", "past_due"]).order("updated_at", { ascending: false }).limit(1).maybeSingle() : { data: null };

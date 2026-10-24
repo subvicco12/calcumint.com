@@ -1,3 +1,4 @@
+import {getProductPolicy} from "@/lib/product-mode-server";
 import type { MetadataRoute } from "next";
 import { listGovernedPublicCalculators, listPublicCategories } from "@/calculators/public-content";
 import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
@@ -30,5 +31,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly" as const,
     priority: 0.9
   }));
-  return [...staticEntries, ...categoryEntries, ...calculatorEntries];
+  return [...staticEntries.filter(entry => getProductPolicy().mode === "full" || ![`${siteConfig.url}/pricing`,`${siteConfig.url}/business-platform`].includes(entry.url)), ...categoryEntries, ...calculatorEntries];
 }

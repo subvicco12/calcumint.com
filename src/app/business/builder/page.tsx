@@ -1,9 +1,16 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createCustomCalculator } from "./actions";
 
-export const metadata = { title: "Custom Calculator Builder" };
+const fullMetadata = { title: "Custom Calculator Builder" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 const starterFields = JSON.stringify([
   { key: "revenue", label: "Revenue", type: "currency", required: true, min: 0, defaultValue: 10000 },
@@ -20,6 +27,8 @@ const starterCharts = JSON.stringify([
 ], null, 2);
 
 export default async function BuilderPage() {
+  if (!getProductPolicy().capabilities.calculatorBuilder) return <FeatureUnavailable/>;
+
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Builder requires Supabase configuration.</h1></section>;
   const { data: { user } } = await supabase.auth.getUser();

@@ -1,9 +1,11 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import {PASSWORD_RESET_UNCONFIRMED_NOTICE} from "@/lib/password-recovery";
 import {safeAuthErrorNotice,safeAuthConfirmationNotice} from "@/lib/auth-recovery";
 import type { Metadata } from "next";
 import { AuthPanel } from "@/components/auth-panel";
 
-export const metadata: Metadata = {
+const fullMetadata: Metadata = {
   title: "Log in or create an account",
   description: "Sign in to CalcuMint or create a free account to save calculations, favorites and regional preferences.",
   alternates: { canonical: "/login" },
@@ -15,6 +17,12 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 type Props={searchParams:Promise<{error?:string;message?:string;mode?:string}>};
-export default async function LoginPage({searchParams}:Props){const params=await searchParams;const {mode}=params;const error=safeAuthErrorNotice(params.error),message=safeAuthConfirmationNotice(params.message);return <section className="container page-top auth-page"><div className="auth-intro"><span className="eyebrow">Your CalcuMint account</span><h1>Calculate. Save. Pick up anywhere.</h1><p className="hero-copy">Create a free account to save calculations, favorite tools and keep your regional preferences synced across devices.</p></div>{error&&<p className="notice error-notice" role="alert">{error}</p>}{message&&<p id="auth-notice" tabIndex={-1} className={message===PASSWORD_RESET_UNCONFIRMED_NOTICE?"notice error-notice":"notice success-notice"} role={message===PASSWORD_RESET_UNCONFIRMED_NOTICE?"alert":"status"} aria-atomic="true">{message}</p>}<AuthPanel initialMode={mode==="signup"?"signup":"signin"}/></section>}
+export default async function LoginPage({searchParams}:Props){
+  if (!getProductPolicy().capabilities.accounts) return <FeatureUnavailable/>;
+const params=await searchParams;const {mode}=params;const error=safeAuthErrorNotice(params.error),message=safeAuthConfirmationNotice(params.message);return <section className="container page-top auth-page"><div className="auth-intro"><span className="eyebrow">Your CalcuMint account</span><h1>Calculate. Save. Pick up anywhere.</h1><p className="hero-copy">Create a free account to save calculations, favorite tools and keep your regional preferences synced across devices.</p></div>{error&&<p className="notice error-notice" role="alert">{error}</p>}{message&&<p id="auth-notice" tabIndex={-1} className={message===PASSWORD_RESET_UNCONFIRMED_NOTICE?"notice error-notice":"notice success-notice"} role={message===PASSWORD_RESET_UNCONFIRMED_NOTICE?"alert":"status"} aria-atomic="true">{message}</p>}<AuthPanel initialMode={mode==="signup"?"signup":"signin"}/></section>}

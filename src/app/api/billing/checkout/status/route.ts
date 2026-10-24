@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import {NextResponse} from 'next/server';
 import {z} from 'zod';
 import {createSupabaseServerClient} from '@/lib/supabase/server';
@@ -9,6 +10,8 @@ const reply=(body:object,status:number)=>NextResponse.json(body,{status,headers:
 
 /** Read-only reconciliation; no entitlement or publication authority is granted. */
 export async function GET(request:Request){
+  const disabled = disabledProductResponse('proBilling'); if (disabled) return disabled;
+
  const client=await createSupabaseServerClient();
  if(!client)return reply({verified:false},503);
  const auth=await client.auth.getUser();

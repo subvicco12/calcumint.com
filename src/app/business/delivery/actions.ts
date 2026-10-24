@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import { createHash, randomBytes } from "node:crypto";
 import { revalidatePath } from "next/cache";
@@ -15,6 +17,8 @@ async function requireUser() {
 }
 
 export async function createEmbedConfig(formData: FormData) {
+  requireProductCapability('embedsAndLeads');
+
   const { supabase, user } = await requireUser();
   const calculatorId = String(formData.get("calculatorId") ?? "");
   const organizationId = String(formData.get("organizationId") ?? "");
@@ -48,6 +52,8 @@ export async function createEmbedConfig(formData: FormData) {
 }
 
 export async function createShareLink(formData: FormData) {
+  requireProductCapability('embedsAndLeads');
+
   const { supabase, user } = await requireUser();
   const calculatorId = String(formData.get("calculatorId") ?? "");
   const organizationId = String(formData.get("organizationId") ?? "");

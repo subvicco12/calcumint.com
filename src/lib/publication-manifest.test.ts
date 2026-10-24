@@ -45,3 +45,13 @@ describe("publication availability evidence", () => {
     expect(bmi.reviewStatus).toBe("draft");
   });
 });
+it('restricts public-only mode after validating the complete manifest',async()=>{
+ vi.stubEnv('CALCUMINT_PRODUCT_MODE','public-only');
+ try {
+  const entries=['percentage-of-value-calculator','unit-conversion-calculator','loan-emi-calculator'].map(slug=>{const d=calculatorRegistry.getBySlug(slug)!;return {calculator_key:d.id,slug,version:d.version};});
+  state.rpc.mockResolvedValue({data:entries,error:null});
+  expect([...await getPublishedCalculatorSlugs()].sort()).toEqual(['percentage-of-value-calculator','unit-conversion-calculator']);
+  state.rpc.mockResolvedValue({data:[...entries,{...entries[2],version:99}],error:null});
+  expect(await getPublicationSnapshot()).toEqual({state:'unavailable',slugs:new Set()});
+ } finally {vi.unstubAllEnvs();}
+});

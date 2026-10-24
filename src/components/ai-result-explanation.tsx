@@ -1,4 +1,5 @@
 "use client";
+import {useProductCapabilities} from "./product-capabilities";
 
 import { useState } from "react";
 
@@ -10,7 +11,7 @@ type Props = {
   result: Record<string, unknown>;
 };
 
-export function AiResultExplanation(props: Props) {
+function EnabledAiResultExplanation(props: Props) {
   const [summary, setSummary] = useState("");
   const [points, setPoints] = useState<string[]>([]);
   const [message, setMessage] = useState("");
@@ -40,4 +41,9 @@ export function AiResultExplanation(props: Props) {
     {summary && <div className="notice"><strong>AI explanation</strong><p>{summary}</p>{points.length > 0 && <ul>{points.map((point) => <li key={point}>{point}</li>)}</ul>}</div>}
     {message && <p className="muted-copy">{message}</p>}
   </div>;
+}
+
+export function AiResultExplanation(props:Props) {
+  const capabilities=useProductCapabilities();
+  return capabilities.aiAssistant ? <EnabledAiResultExplanation {...props}/> : null;
 }

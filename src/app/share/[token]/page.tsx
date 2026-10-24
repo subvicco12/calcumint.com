@@ -1,3 +1,6 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import { createHash } from "node:crypto";
 import { notFound } from "next/navigation";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -6,9 +9,15 @@ import { CustomCalculatorPreview } from "@/components/custom-calculator-preview"
 
 type PageProps = { params: Promise<{ token: string }> };
 
-export const metadata = { robots: { index: false, follow: false } };
+const fullMetadata = { robots: { index: false, follow: false } };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function SharedCalculatorPage({ params }: PageProps) {
+  if (!getProductPolicy().capabilities.embedsAndLeads) return <FeatureUnavailable/>;
+
   const { token } = await params;
   const admin = createSupabaseAdminClient();
   if (!admin) return <main className="embed-shell"><p>Share service is not configured.</p></main>;

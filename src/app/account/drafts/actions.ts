@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import {z} from 'zod';
 import {isDeepStrictEqual} from 'node:util';
@@ -47,10 +49,14 @@ async function historyPage(account:Account,entry:DraftHistoryPageRequest){
  return {records,nextCursor:rows.length>limit&&last?encodeDraftHistoryCursor({v:1,owner:account.user.id,source,limit,createdAt:last.createdAt,id:last.id}):null};
 }
 export async function loadDraftHistoryPage(entry:DraftHistoryPageRequest){
+  requireProductCapability('savedData');
+
  const account=await requireDraftAccountAccess(z.string().min(1).parse(entry.expectedOwnerId));
  return historyPage(account,entry);
 }
 export async function loadDraftWorkspace(expectedOwnerId?:string,selectedReference?:{source:'history'|'scenario';id:string}){
+  requireProductCapability('savedData');
+
  const account=await requireDraftAccountAccess(expectedOwnerId);
  const profile=await account.supabase.from('profiles').select('plan').eq('id',account.user.id).maybeSingle();
  if(profile.error)throw new Error('Account plan unavailable');
@@ -69,6 +75,8 @@ export async function loadDraftWorkspace(expectedOwnerId?:string,selectedReferen
 }
 
 export async function saveDraftCalculation(entry:{expectedOwnerId:string;masterId:number;requestId:string;snapshot:unknown}){
+  requireProductCapability('savedData');
+
  // Validate/copy before any await; client objects cannot mutate the revision in flight.
  const validated=validateDraftPersistedCapture(entry.masterId,entry.snapshot);
  const requestId=uuid.parse(entry.requestId);
@@ -92,6 +100,8 @@ export async function saveDraftCalculation(entry:{expectedOwnerId:string;masterI
 }
 
 export async function reopenDraftCalculation(entry:{expectedOwnerId:string;source:'history'|'scenario';id:string}){
+  requireProductCapability('savedData');
+
  const source=z.enum(['history','scenario']).parse(entry.source);
  const id=uuid.parse(entry.id);
  const account=await requireDraftAccountAccess(z.string().min(1).parse(entry.expectedOwnerId));

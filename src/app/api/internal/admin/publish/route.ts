@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { serverEnv } from "@/lib/env";
@@ -21,6 +22,8 @@ async function raiseBlockedAlert(admin: NonNullable<ReturnType<typeof createSupa
 }
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('adminConsole'); if (disabled) return disabled;
+
   if (!authorized(request)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const admin = createSupabaseAdminClient();
   if (!admin) return NextResponse.json({ error: "Supabase service role is not configured" }, { status: 503 });

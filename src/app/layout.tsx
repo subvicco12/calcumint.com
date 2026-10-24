@@ -1,3 +1,6 @@
+import {getProductPolicy} from "@/lib/product-mode-server";
+import {ProductCapabilitiesProvider} from "@/components/product-capabilities";
+export const dynamic = "force-dynamic";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./account.css";
@@ -11,9 +14,11 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export function generateMetadata(): Metadata {
+  const title = getProductPolicy().mode === "full" ? "CalcuMint — Calculate Anything" : "CalcuMint — Public calculators";
+  return {
   metadataBase: new URL(siteConfig.url),
-  title: { default: "CalcuMint — Calculate Anything", template: "%s | CalcuMint" },
+  title: { default: title, template: "%s | CalcuMint" },
   description: siteConfig.description,
   applicationName: "CalcuMint",
   icons: {
@@ -26,17 +31,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "CalcuMint",
-    title: "CalcuMint — Calculate Anything",
+    title,
     description: siteConfig.description,
     url: siteConfig.url
   },
   robots:{index:true,follow:true},
   twitter: {
     card: "summary_large_image",
-    title: "CalcuMint — Calculate Anything",
+    title,
     description: siteConfig.description
   }
-};
+}; }
+
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -49,5 +55,5 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><div className="site-shell"><SiteHeader/><main id="main-content">{children}</main><SiteFooter/></div></body></html>;
+  return <html lang="en"><body><ProductCapabilitiesProvider capabilities={getProductPolicy().capabilities}><div className="site-shell"><SiteHeader/><main id="main-content">{children}</main><SiteFooter/></div></ProductCapabilitiesProvider></body></html>;
 }

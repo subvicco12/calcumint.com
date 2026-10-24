@@ -1,9 +1,12 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { serverEnv } from "@/lib/env";
 import { decryptWebhookSecret, nextWebhookRetry, webhookHeaders } from "@/lib/api/webhooks";
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('apiAndWebhooks'); if (disabled) return disabled;
+
   const workerSecret = serverEnv.WEBHOOK_WORKER_SECRET;
   const encryptionKey = serverEnv.WEBHOOK_ENCRYPTION_KEY;
   if (!workerSecret || !encryptionKey) return NextResponse.json({ error: "Webhook worker is not configured" }, { status: 503 });

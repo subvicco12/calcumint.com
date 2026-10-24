@@ -1,3 +1,4 @@
+import {getProductPolicy} from "@/lib/product-mode-server";
 import type { Metadata } from "next";
 import { MASTER_CALCULATOR_CATALOG_TOTAL } from "@/lib/master-catalog";
 import Link from "next/link";
@@ -8,7 +9,10 @@ import { listGovernedPublicCalculators, listPublicCategories } from "@/calculato
 import { getPublicationSnapshot } from "@/lib/publication-manifest";
 import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = { title: { absolute: "CalcuMint — Calculate Anything" }, description: siteConfig.description, alternates: { canonical: "/" }, openGraph: { type: "website", title: "CalcuMint — Calculate Anything", description: siteConfig.description, url: "/" } };
+export function generateMetadata(): Metadata {
+  const title = getProductPolicy().mode === "full" ? "CalcuMint — Calculate Anything" : "CalcuMint — Public calculators";
+  return { title: { absolute: title }, description: siteConfig.description, alternates: { canonical: "/" }, openGraph: { type: "website", title, description: siteConfig.description, url: "/" } }; }
+
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +23,7 @@ export default async function HomePage() {
   const categories = listPublicCategories().map((category) => ({ ...category, count: calculators.filter((item) => item.category === category.slug).length })).filter((category) => category.count > 0);
   const searchItems = buildPublicCalculatorSearchIndex(publishedSlugs);
   const featured = calculators.slice(0, 8);
+  if(getProductPolicy().mode !== 'full') return <section className="container page-top"><h1>CalcuMint public calculators</h1><p className="hero-copy">Percentage and unit conversion, with formulas, examples and sources. No account required.</p><p>Accounts, saves, exports, payments, AI and Business tools are unavailable in this release.</p><CalculatorSearch items={searchItems}/>{publication.state === 'unavailable' ? <p role="status">Calculator availability is temporarily unavailable. Please try again shortly.</p> : calculators.length === 0 ? <p role="status">No calculators are currently published. Please check back soon.</p> : <p>{calculators.length} published tools</p>}<div className="category-grid">{categories.map(category=><Link className="card" key={category.slug} href={`/calculators/${category.slug}`}><h2>{category.name}</h2><p>{category.count} published tools</p></Link>)}</div><div className="popular-grid">{calculators.map(item=><Link className="popular-card" key={item.slug} href={`/calculators/${item.category}/${item.slug}`}><strong>{calculatorRegistry.getBySlug(item.slug)?.title}</strong><span>{item.shortDescription}</span></Link>)}</div></section>;
   const websiteJsonLd = { "@context": "https://schema.org", "@type": "WebSite", "@id": `${siteConfig.url}/#website`, url: `${siteConfig.url}/`, name: "CalcuMint" };
   const organizationJsonLd = { "@context": "https://schema.org", "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: "CalcuMint", url: `${siteConfig.url}/`, logo: `${siteConfig.url}/brand/calcumint-logo.png`, email: "support@calcumint.com" };
 

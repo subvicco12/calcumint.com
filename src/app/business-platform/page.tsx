@@ -1,12 +1,18 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+const fullMetadata: Metadata = {
   title: "Business Calculator Platform",
   description: "Build, brand, share and automate calculators with team workspaces, embeds, API access, leads and client reporting on CalcuMint Business.",
   alternates: { canonical: "/business-platform" },
   openGraph: { type: "website", title: "CalcuMint Business Calculator Platform", description: "Build, brand, collaborate and automate with CalcuMint Business.", url: "/business-platform" }
 };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 const capabilities = [
   ["Build", "Create private or public calculators with the no-code builder, reusable templates, validation and controlled formula logic."],
@@ -16,6 +22,8 @@ const capabilities = [
 ];
 
 export default function BusinessPlatformPage() {
+  if (!getProductPolicy().capabilities.businessWorkspace) return <FeatureUnavailable/>;
+
   return <>
     <section className="container page-top"><span className="eyebrow">CalcuMint Business</span><h1>Build, brand, collaborate and automate calculators.</h1><p className="hero-copy">CalcuMint Business turns the verified calculation platform into a team workspace for organizations that need reusable calculators, branded experiences, integrations and repeatable client workflows.</p><div className="hero-actions"><Link className="button primary" href="/pricing">Compare Business pricing</Link><Link className="button secondary" href="/business">Open Business workspace</Link></div></section>
     <section className="container section"><div className="section-heading"><span className="eyebrow">Business capabilities</span><h2>More than a larger Pro plan</h2><p>Business is designed around organizational workflows: build calculation tools, control how they are presented, work with a team and connect results to downstream systems.</p></div><div className="card-grid">{capabilities.map(([title, description]) => <article className="card" key={title}><h3>{title}</h3><p>{description}</p></article>)}</div></section>

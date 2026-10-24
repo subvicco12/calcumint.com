@@ -1,3 +1,5 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -8,6 +10,8 @@ import { publishCustomCalculator, saveCustomCalculatorVersion } from "../actions
 type PageProps = { params: Promise<{ id: string }> };
 
 export default async function CustomCalculatorBuilderPage({ params }: PageProps) {
+  if (!getProductPolicy().capabilities.calculatorBuilder) return <FeatureUnavailable/>;
+
   const { id } = await params;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Builder requires Supabase configuration.</h1></section>;

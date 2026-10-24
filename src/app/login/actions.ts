@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import {isAuthRetryableFetchError} from "@supabase/supabase-js";
 import {z} from "zod";
@@ -32,6 +34,8 @@ async function authenticationRequest<T>(request: () => Promise<T>): Promise<T> {
 }
 
 export async function signIn(formData: FormData) {
+  requireProductCapability('accounts');
+
   const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (!supabase) loginError("Authentication is not configured yet.");
 
@@ -45,6 +49,8 @@ export async function signIn(formData: FormData) {
 }
 
 export async function signUp(formData: FormData) {
+  requireProductCapability('accounts');
+
   const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (!supabase) loginError("Authentication is not configured yet.");
 
@@ -66,6 +72,8 @@ export async function signUp(formData: FormData) {
 }
 
 export async function signInWithGoogle() {
+  requireProductCapability('accounts');
+
   const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (!supabase) loginError("Authentication is not configured yet.");
 
@@ -78,6 +86,8 @@ export async function signInWithGoogle() {
 }
 
 export async function signOut() {
+  requireProductCapability('accounts');
+
   const supabase = await authenticationRequest(() => createSupabaseServerClient({requireCookieWrites:true}));
   if (supabase) {
     const { error } = await authenticationRequest(() => supabase.auth.signOut());
@@ -88,6 +98,8 @@ export async function signOut() {
 
 
 export async function requestPasswordReset(_previous:PasswordRecoveryState,formData:FormData):Promise<PasswordRecoveryState> {
+  requireProductCapability('accounts');
+
   const email=formValue(formData,"email");
   if(!z.string().email().max(254).safeParse(email).success)return {status:"error",message:"Enter a valid email address."};
   try {
@@ -103,6 +115,8 @@ export async function requestPasswordReset(_previous:PasswordRecoveryState,formD
 }
 
 export async function completePasswordReset(_previous:PasswordRecoveryState,formData:FormData):Promise<PasswordRecoveryState> {
+  requireProductCapability('accounts');
+
   const password=passwordValue(formData),confirmation=passwordValue(formData,"confirmPassword");
   if(password.trim().length<8||password.length>1024)return {status:"error",message:"Use a password of at least 8 characters."};
   if(password!==confirmation)return {status:"error",message:"The passwords do not match."};

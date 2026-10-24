@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { signEmbedSession, verifyEmbedSession } from "@/lib/embeds/session";
@@ -6,6 +7,8 @@ type RouteProps = { params: Promise<{ key: string }> };
 
 /** Renew only an already-valid session; a public embed key alone is insufficient. */
 export async function POST(request: NextRequest, { params }: RouteProps) {
+  const disabled = disabledProductResponse('embedsAndLeads'); if (disabled) return disabled;
+
   const { key } = await params;
   const secret = process.env.EMBED_SESSION_SECRET ?? "";
   const claims = verifyEmbedSession(request.headers.get("x-embed-session"), secret);

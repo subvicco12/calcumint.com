@@ -1,3 +1,4 @@
+import {getProductPolicy} from "@/lib/product-mode-server";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -126,7 +127,7 @@ export default async function CalculatorPage({ params }: PageProps) {
             <p>Deterministic calculation logic, validated inputs and automated golden-vector tests.</p>
             <dl><div><dt>Risk class</dt><dd>{definition.riskClass}</dd></div><div><dt>Review status</dt><dd>{definition.reviewStatus}</dd></div><div><dt>Release</dt><dd>Final</dd></div></dl>
           </div>
-          <div className="upgrade-card"><span className="eyebrow">CalcuMint Pro</span><h3>No ads, unlimited saves and exports</h3><p>Core calculation stays public. Pro adds a cleaner professional workflow and premium convenience features.</p><Link className="button secondary" href="/pricing">Compare plans</Link></div>
+          {getProductPolicy().mode === "full" ? <div className="upgrade-card"><span className="eyebrow">CalcuMint Pro</span><h3>No ads, unlimited saves and exports</h3><p>Core calculation stays public. Pro adds a cleaner professional workflow and premium convenience features.</p><Link className="button secondary" href="/pricing">Compare plans</Link></div> : <p>Accounts, saves, exports, payments, AI and Business tools are unavailable in this release.</p>}
         </aside>
       </section>
     </>

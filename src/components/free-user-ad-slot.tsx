@@ -1,9 +1,10 @@
 "use client";
+import {useProductCapabilities} from "./product-capabilities";
 
 import { useEffect, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
-export function FreeUserAdSlot() {
+function EnabledFreeUserAdSlot() {
   const [showAds, setShowAds] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -76,4 +77,9 @@ export function FreeUserAdSlot() {
       />
     </aside>
   );
+}
+
+export function FreeUserAdSlot() {
+  const capabilities=useProductCapabilities();
+  return capabilities.ads ? <EnabledFreeUserAdSlot/> : null;
 }

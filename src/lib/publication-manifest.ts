@@ -1,3 +1,5 @@
+import {getProductPolicy} from "./product-mode-server";
+import {restrictPublishedSlugs} from "@/calculators/public-only-scope";
 import "server-only";
 import { cache } from "react";
 import { createClient } from "@supabase/supabase-js";
@@ -19,10 +21,10 @@ export const getPublicationSnapshot = cache(async (): Promise<PublicationSnapsho
     const { data, error } = await supabase.rpc("list_published_calculator_manifest");
     const manifest = parsePublishedCalculatorManifest(data);
     if (error || !manifest) return { state: "unavailable", slugs: new Set() };
-    return { state: "available", slugs: composePublishedCalculatorSlugs(
+    return { state: "available", slugs: restrictPublishedSlugs(getProductPolicy().mode, calculatorRegistry.list(), composePublishedCalculatorSlugs(
       calculatorRegistry.list(),
       manifest
-    ) };
+    )) };
   } catch {
     return { state: "unavailable", slugs: new Set() };
   }
