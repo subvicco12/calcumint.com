@@ -18,7 +18,7 @@ The private fixture uses actual CalculatorInteractive and account controls with 
 - Final `npm test`: 713 files passed, 2 files skipped; 4649 tests passed, 4 skipped; exit0. The first full run exposed the local issues described below; this final run has no failed tests.
 - `node tests/cidr-review/browser.mjs`: six journeys (320/1280 × Free/Pro/Business), four numerical boundaries and four invalid/recovery cases each, keyboard increment/Tab/Enter, disclosure visibility, no overflow, no unexpected network requests and no page errors; exit0.
 - `npm run typecheck`: exit0 after restoring the unchanged tracked tsconfig.
-- `npm run lint`: exit0, zero errors and28warnings on unchanged files.
+- `npm run lint`: exit0, zero errors and28pre-existing warnings on unchanged code (including four untouched sections within calculator-interactive.tsx; baseline lint messages compared equal).
 - `npm run build` (`next build --webpack`): exit0. Next-generated local tsconfig rewrites and next-env.d.ts are excluded from the candidate.
 - Offline composition against the previously verified209-row production snapshot:209 admitted, zero missing; CIDR still reviewed and excluded. This reuses existing read-only evidence, not a fresh DB query.
 - Raw local logs and execution rulings are retained in `/tmp/cidr-execution/` and the recovery packet. Independent exact-head review is required after the implementation commit; its report is delivered with the final head rather than claiming a hash from inside its own commit.
