@@ -27,7 +27,7 @@
     "test:atomic-history-postgres": "node tests/draft-preview/atomic-history.postgres.mjs",
     "test:draft-pagination-browser": "node scripts/test-draft-pagination-browser.mjs",
     "test:migration-contract": "node --test tests/migration-contract/inventory.test.mjs && node tests/migration-contract/combined.postgres.mjs",
-    "test:public-only-browser": "node --test tests/public-only/action-evidence.test.mjs && node scripts/test-public-only-browser.mjs"
+    "test:public-only-browser": "node --test tests/public-only/action-evidence.test.mjs tests/unit/server-only-config.test.mjs && node scripts/test-public-only-browser.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
