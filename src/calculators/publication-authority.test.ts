@@ -1,3 +1,5 @@
+import {calculatorRegistry} from './registry';
+import {cidrCalculator} from './technology-computing/catalog-batch-1';
 import { describe, expect, it } from "vitest";
 import type { CalculatorDefinition } from "./types";
 import { composePublishedCalculatorSlugs, isRepositoryPublicationEligible } from "./publication-authority";
@@ -38,4 +40,9 @@ describe("composed public publication authority", () => {
     expect(isRepositoryPublicationEligible({ ...definition, examples: [] })).toBe(false);
     expect(isRepositoryPublicationEligible({ ...definition, sources: [] })).toBe(false);
   });
+});
+
+it("keeps reviewed CIDR non-public even if a manifest claims its exact identity", () => {
+ expect(cidrCalculator.reviewStatus).toBe("reviewed");
+ expect(composePublishedCalculatorSlugs([calculatorRegistry.getBySlug(cidrCalculator.slug)!], [{calculator_key:cidrCalculator.id,slug:cidrCalculator.slug,version:cidrCalculator.version}]).has(cidrCalculator.slug)).toBe(false);
 });

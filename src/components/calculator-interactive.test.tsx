@@ -114,7 +114,7 @@ describe("Technology batch 1 UI validation",()=>{
   it("announces an invalid CIDR prefix",()=>{
     render(<CalculatorInteractive slug="cidr-calculator"/>);
     fireEvent.change(screen.getByLabelText("CIDR prefix"),{target:{value:"33"}});
-    expect(screen.getByRole("alert").textContent).toContain("Enter valid inputs");
+    expect(screen.getByRole("alert").textContent).toContain("Enter a whole-number CIDR prefix from 0 to 32.");
   });
 
   it("announces an invalid RAID topology",()=>{
