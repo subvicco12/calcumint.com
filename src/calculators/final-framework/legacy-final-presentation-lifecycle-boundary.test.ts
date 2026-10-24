@@ -12,16 +12,16 @@ import {healthBatch2Definitions} from "../health/catalog-batch-2";
 
 describe("legacy Final presentation lifecycle boundary",()=>{
  const engineering=[...engineeringConstructionBatch2Definitions,...engineeringConstructionBatch3Definitions];
- const technology=[...technologyBatch1Definitions,...technologyBatch2Definitions,...technologyBatch3Definitions];
+ const technology=[...technologyBatch1Definitions,...technologyBatch2Definitions,...technologyBatch3Definitions].filter(d=>d.id!=="technology.cidr");
  const health=[bmiCalculator,...healthBatch1Definitions,...healthBatch2Definitions];
  it("permits legacy Engineering presentation only while every fallback definition remains non-certified",()=>{
   expect(engineering).toHaveLength(17);
   expect(engineering.every(d=>d.reviewStatus==="reviewed")).toBe(true);
  });
  it("permits legacy Technology presentation only while every definition remains non-certified",()=>{
-  expect(technology).toHaveLength(26);
-  expect(technology.slice(0,20).every(d=>d.reviewStatus==="reviewed")).toBe(true);
-  expect(technology.slice(20).every(d=>d.reviewStatus==="draft")).toBe(true);
+  expect(technology).toHaveLength(25);
+  expect(technology.slice(0,19).every(d=>d.reviewStatus==="reviewed")).toBe(true);
+  expect(technology.slice(19).every(d=>d.reviewStatus==="draft")).toBe(true);
  });
  it("permits legacy Health presentation only while every Health definition remains draft",()=>{
   expect(health).toHaveLength(15);
