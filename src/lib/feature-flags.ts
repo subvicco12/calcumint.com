@@ -1,11 +1,2 @@
-export const featureFlags = {
-  calculatorEngine: true,
-  accounts: true,
-  proBilling: true,
-  businessWorkspace: true,
-  calculatorBuilder: true,
-  embedsAndLeads: true,
-  apiAndWebhooks: true,
-  aiAssistant: true,
-  adminConsole: true
-} as const;
+/** Server-owned flags. Browser UI receives an explicit capability snapshot. */
+export {getProductPolicy as getFeatureFlags} from './product-mode-server';

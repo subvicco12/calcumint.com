@@ -1,8 +1,10 @@
+import {resolveProductMode} from "@/lib/product-mode";
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { readableSessionCookies } from "@/lib/supabase/session-cookies";
 
 export async function proxy(request: NextRequest) {
+  if (resolveProductMode(process.env.CALCUMINT_PRODUCT_MODE) !== "full") return NextResponse.next({ request });
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) return NextResponse.next({ request });
