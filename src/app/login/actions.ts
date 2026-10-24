@@ -1,8 +1,8 @@
 "use server";
 
-import {isAuthApiError,isAuthRetryableFetchError} from "@supabase/supabase-js";
+import {isAuthRetryableFetchError} from "@supabase/supabase-js";
 import {z} from "zod";
-import {verifiedPasswordRecovery,PASSWORD_RECOVERY_SENT,PASSWORD_RECOVERY_INVALID,PASSWORD_RESET_COMPLETE_NOTICE,type PasswordRecoveryState} from "@/lib/password-recovery";
+import {verifiedPasswordRecovery,PASSWORD_RECOVERY_SENT,PASSWORD_RECOVERY_INVALID,PASSWORD_RESET_COMPLETE_NOTICE,PASSWORD_RESET_UNCONFIRMED_NOTICE,type PasswordRecoveryState} from "@/lib/password-recovery";
 import {authFailureMessage} from "@/lib/auth-recovery";
 import { redirect } from "next/navigation";
 import { publicEnv } from "@/lib/env";
@@ -95,12 +95,11 @@ export async function requestPasswordReset(_previous:PasswordRecoveryState,formD
     if(!supabase)return {status:"error",message:"Password reset is temporarily unavailable. Try again."};
     const callback=new URL("/auth/callback",new URL(publicEnv.NEXT_PUBLIC_SITE_URL).origin);
     callback.searchParams.set("next","/login/reset");
-    const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:callback.toString()});
-    // Account-specific provider errors (including account-specific throttling)
-    // must be indistinguishable from a successful request for an unknown email.
-    if(isAuthRetryableFetchError(error))return {status:"error",message:"Password reset is temporarily unavailable. Try again."};
+    // Even transport/SMTP failures can depend on account existence. Once the
+    // provider lookup starts, every outcome receives the same acknowledgment.
+    try{await supabase.auth.resetPasswordForEmail(email,{redirectTo:callback.toString()});}catch{/* Do not reveal account-dependent failures. */}
     return {status:"sent",message:PASSWORD_RECOVERY_SENT};
-  }catch(error){if(isAuthApiError(error))return {status:"sent",message:PASSWORD_RECOVERY_SENT};return {status:"error",message:"Password reset is temporarily unavailable. Try again."};}
+  }catch{return {status:"error",message:"Password reset is temporarily unavailable. Try again."};}
 }
 
 export async function completePasswordReset(_previous:PasswordRecoveryState,formData:FormData):Promise<PasswordRecoveryState> {
@@ -119,9 +118,12 @@ export async function completePasswordReset(_previous:PasswordRecoveryState,form
     if(isAuthRetryableFetchError(error))return {status:"uncertain",message:"The password update could not be confirmed. Sign in or request a new link before trying again."};
     if(error)return {status:"error",message:"The password could not be updated. Try again or request a new link."};
   }catch{return {status:"uncertain",message:"The password update could not be confirmed. Sign in or request a new link before trying again."};}
+  let notice=PASSWORD_RESET_COMPLETE_NOTICE;
   try {
     const {error}=await supabase.auth.signOut({scope:"global"});
-    if(error)throw error;
-  }catch{return {status:"updated",needsSignOut:true,message:"Your password has been updated, but sign-out could not be confirmed. Sign out before signing in again."};}
-  redirect(`/login?message=${encodeURIComponent(PASSWORD_RESET_COMPLETE_NOTICE)}#auth-notice`);
+    if(error)notice=PASSWORD_RESET_UNCONFIRMED_NOTICE;
+  }catch{notice=PASSWORD_RESET_UNCONFIRMED_NOTICE;}
+  // Cookie changes rerender the recovery page. Report completed mutation on a
+  // public, whitelisted notice even when sign-out has an unconfirmed outcome.
+  redirect(`/login?message=${encodeURIComponent(notice)}#auth-notice`);
 }

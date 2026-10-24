@@ -1,9 +1,10 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 
+export const PASSWORD_RESET_UNCONFIRMED_NOTICE = 'Your password has been updated, but sign-out could not be confirmed. Sign in with your new password, then sign out to end other sessions.';
 export const PASSWORD_RESET_COMPLETE_NOTICE = 'Your password has been updated. Sign in with your new password.';
 export const PASSWORD_RECOVERY_SENT = 'If an account exists for this email, a password reset link has been sent.';
 export const PASSWORD_RECOVERY_INVALID = 'This reset link is invalid or expired. Request a new link.';
-export type PasswordRecoveryState = {status:'idle'|'sent'|'error'|'updated'|'uncertain';message:string;needsSignOut?:boolean};
+export type PasswordRecoveryState = {status:'idle'|'sent'|'error'|'uncertain';message:string};
 
 /** Provider-signed recovery authority, never a decoded cookie or browser event. */
 export async function verifiedPasswordRecovery(client:Pick<SupabaseClient,'auth'>,now=Math.floor(Date.now()/1000)) {

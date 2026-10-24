@@ -1,4 +1,4 @@
-import {PASSWORD_RESET_COMPLETE_NOTICE} from "./password-recovery";
+import {PASSWORD_RESET_COMPLETE_NOTICE,PASSWORD_RESET_UNCONFIRMED_NOTICE} from "./password-recovery";
 import { isAuthApiError, isAuthRetryableFetchError, isAuthSessionMissingError } from "@supabase/supabase-js";
 
 export const AUTH_TEMPORARILY_UNAVAILABLE = "Authentication is temporarily unavailable. Try again.";
@@ -35,5 +35,5 @@ export function safeAuthErrorNotice(value: unknown): string | undefined {
   return allowedErrors.has(value) ? value : GENERIC_AUTH_FAILURE;
 }
 export function safeAuthConfirmationNotice(value: unknown): string | undefined {
-  return value === AUTH_CONFIRMATION_NOTICE || value === PASSWORD_RESET_COMPLETE_NOTICE ? value : undefined;
+  return value === AUTH_CONFIRMATION_NOTICE || value === PASSWORD_RESET_COMPLETE_NOTICE || value === PASSWORD_RESET_UNCONFIRMED_NOTICE ? value : undefined;
 }

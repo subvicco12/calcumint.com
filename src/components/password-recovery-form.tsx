@@ -2,7 +2,7 @@
 
 import {useActionState,useEffect,useId,useRef} from 'react';
 import Link from 'next/link';
-import {requestPasswordReset,completePasswordReset,signOut} from '@/app/login/actions';
+import {requestPasswordReset,completePasswordReset} from '@/app/login/actions';
 import type {PasswordRecoveryState} from '@/lib/password-recovery';
 import {AccountSessionBoundary} from './account-session-boundary';
 
@@ -11,7 +11,7 @@ export function PasswordRecoveryForm({ownerId,sessionId}:{ownerId?:string;sessio
   const [state,action,pending]=useActionState(reset?completePasswordReset:requestPasswordReset,{status:'idle',message:''} as PasswordRecoveryState);
   const notice=useRef<HTMLParagraphElement>(null),id=useId();
   useEffect(()=>{if(state.message)notice.current?.focus();},[state]);
-  const done=state.status==='updated'||state.status==='uncertain';
+  const done=state.status==='uncertain';
   const content=<>
     {state.message&&<p id={`${id}-notice`} ref={notice} tabIndex={-1} role={state.status==='error'||state.status==='uncertain'?'alert':'status'} aria-atomic="true">{state.message}</p>}
     {!done&&<form action={action} className="form-stack" aria-busy={pending}>
@@ -26,11 +26,10 @@ export function PasswordRecoveryForm({ownerId,sessionId}:{ownerId?:string;sessio
         <button className="button primary" type="submit" disabled={pending}>{pending?(reset?'Updating…':'Sending…'):(reset?'Update password':'Send reset link')}</button>
       </fieldset>
     </form>}
-    {state.needsSignOut&&<form action={signOut}><button className="button secondary" type="submit">Sign out</button></form>}
     {(reset||state.status==='sent')&&<p><Link href="/login/forgot" className="text-link">Request a new reset link</Link></p>}
     <p><Link href="/login" className="text-link">{done?'Sign in':'Back to sign in'}</Link></p>
   </>;
-  // Successful/uncertain mutation outcomes outlive local sign-out. Remove all
+  // Uncertain mutation outcomes must not repeat the update. Remove all
   // password controls and do not repeat an update whose outcome is unconfirmed.
   return reset&&!done?<AccountSessionBoundary ownerId={ownerId!}>{content}</AccountSessionBoundary>:content;
 }

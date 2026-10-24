@@ -1,3 +1,4 @@
+import {PASSWORD_RESET_UNCONFIRMED_NOTICE} from "@/lib/password-recovery";
 import {safeAuthErrorNotice,safeAuthConfirmationNotice} from "@/lib/auth-recovery";
 import type { Metadata } from "next";
 import { AuthPanel } from "@/components/auth-panel";
@@ -16,4 +17,4 @@ export const metadata: Metadata = {
 };
 
 type Props={searchParams:Promise<{error?:string;message?:string;mode?:string}>};
-export default async function LoginPage({searchParams}:Props){const params=await searchParams;const {mode}=params;const error=safeAuthErrorNotice(params.error),message=safeAuthConfirmationNotice(params.message);return <section className="container page-top auth-page"><div className="auth-intro"><span className="eyebrow">Your CalcuMint account</span><h1>Calculate. Save. Pick up anywhere.</h1><p className="hero-copy">Create a free account to save calculations, favorite tools and keep your regional preferences synced across devices.</p></div>{error&&<p className="notice error-notice" role="alert">{error}</p>}{message&&<p id="auth-notice" tabIndex={-1} className="notice success-notice" role="status" aria-atomic="true">{message}</p>}<AuthPanel initialMode={mode==="signup"?"signup":"signin"}/></section>}
+export default async function LoginPage({searchParams}:Props){const params=await searchParams;const {mode}=params;const error=safeAuthErrorNotice(params.error),message=safeAuthConfirmationNotice(params.message);return <section className="container page-top auth-page"><div className="auth-intro"><span className="eyebrow">Your CalcuMint account</span><h1>Calculate. Save. Pick up anywhere.</h1><p className="hero-copy">Create a free account to save calculations, favorite tools and keep your regional preferences synced across devices.</p></div>{error&&<p className="notice error-notice" role="alert">{error}</p>}{message&&<p id="auth-notice" tabIndex={-1} className={message===PASSWORD_RESET_UNCONFIRMED_NOTICE?"notice error-notice":"notice success-notice"} role={message===PASSWORD_RESET_UNCONFIRMED_NOTICE?"alert":"status"} aria-atomic="true">{message}</p>}<AuthPanel initialMode={mode==="signup"?"signup":"signin"}/></section>}
