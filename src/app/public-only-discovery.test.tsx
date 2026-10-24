@@ -16,3 +16,9 @@ it('public discovery and header advertise only current scope without account rea
  expect(urls.some(u=>u.endsWith('/pricing')||u.endsWith('/business-platform'))).toBe(false);
  expect(urls.filter(u=>u.includes('-calculator'))).toHaveLength(2);
 });
+it('qualifies company and legal descriptions of excluded full-product features',async()=>{
+ vi.stubEnv('CALCUMINT_PRODUCT_MODE','public-only');
+ for(const page of [await import('./about/page'),await import('./terms/page'),await import('./privacy/page')]){
+  expect(renderToStaticMarkup(page.default())).toContain('References below to these features describe the full product');
+ }
+});
