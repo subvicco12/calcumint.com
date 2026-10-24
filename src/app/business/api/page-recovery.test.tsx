@@ -60,3 +60,12 @@ describe("Business API dashboard read recovery", () => {
 });
 
 it("never reflects URL credential values",async()=>{const html=renderToStaticMarkup(await BusinessApiPage({searchParams:Promise.resolve({created:"forged-api-secret",webhookSecret:"forged-webhook-secret"})}));expect(html).not.toContain("forged-api-secret");expect(html).not.toContain("forged-webhook-secret");});
+
+it("binds revocation forms to the rendered account",async()=>{
+  state.tables.business_webhook_endpoints={data:[{id:"hook-1",name:"Existing webhook",endpoint_url:"https://example.com",status:"active"}],error:null};
+  const html=await render();
+  for(const target of ['name="keyId" value="key-1"','name="endpointId" value="hook-1"']){
+    const form=html.slice(html.lastIndexOf('<form',html.indexOf(target)),html.indexOf('</form>',html.indexOf(target)));
+    expect(form).toContain('name="expectedOwnerId" value="user-a"');
+  }
+});

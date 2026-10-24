@@ -51,9 +51,10 @@ export async function createBusinessApiKey(formData: FormData): Promise<Business
 }
 
 export async function revokeBusinessApiKey(formData: FormData) {
-  const { supabase, organizationId } = await requireAdmin();
+  const { supabase, user, organizationId } = await requireAdmin();
   const keyId = String(formData.get("keyId") ?? "");
   if (!keyId) throw new Error("API key is required");
+  await verifyCredentialOwner(supabase, String(formData.get("expectedOwnerId") ?? ""), user.id);
   const { error } = await supabase.from("business_api_keys").update({ status: "revoked", revoked_at: new Date().toISOString() }).eq("id", keyId).eq("organization_id", organizationId);
   if (error) throw new Error(error.message);
   revalidatePath("/business/api");
@@ -87,9 +88,10 @@ export async function createWebhookEndpoint(formData: FormData): Promise<Busines
 }
 
 export async function disableWebhookEndpoint(formData: FormData) {
-  const { supabase, organizationId } = await requireAdmin();
+  const { supabase, user, organizationId } = await requireAdmin();
   const endpointId = String(formData.get("endpointId") ?? "");
   if (!endpointId) throw new Error("Webhook endpoint is required");
+  await verifyCredentialOwner(supabase, String(formData.get("expectedOwnerId") ?? ""), user.id);
   const { error } = await supabase.from("business_webhook_endpoints").update({ status: "disabled", updated_at: new Date().toISOString() }).eq("id", endpointId).eq("organization_id", organizationId);
   if (error) throw new Error(error.message);
   revalidatePath("/business/api");
