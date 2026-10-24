@@ -1,3 +1,6 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -9,9 +12,15 @@ import { inspectCertificationEvidencePacket } from "@/calculators/certification-
 import { buildReviewerEvidencePrefill } from "@/lib/admin/reviewer-evidence-prefill";
 
 type PageProps = { params: Promise<{ id: string }> };
-export const metadata = { title: "Calculator Review" };
+const fullMetadata = { title: "Calculator Review" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function AdminCalculatorDetailPage({ params }: PageProps) {
+  if (!getProductPolicy().capabilities.adminConsole) return <FeatureUnavailable/>;
+
   const { id } = await params;
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Review workspace requires Supabase configuration.</h1></section>;

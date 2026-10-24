@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -39,6 +41,8 @@ function parseDefinition(formData: FormData) {
 }
 
 export async function createCustomCalculator(formData: FormData) {
+  requireProductCapability('calculatorBuilder');
+
   const { supabase } = await requireUser();
   const organizationId = String(formData.get("organizationId") ?? "");
   const definition = parseDefinition(formData);
@@ -57,6 +61,8 @@ export async function createCustomCalculator(formData: FormData) {
 }
 
 export async function saveCustomCalculatorVersion(formData: FormData) {
+  requireProductCapability('calculatorBuilder');
+
   const { supabase, user } = await requireUser();
   const calculatorId = String(formData.get("calculatorId") ?? "");
   const definition = parseDefinition(formData);
@@ -92,6 +98,8 @@ export async function saveCustomCalculatorVersion(formData: FormData) {
 }
 
 export async function publishCustomCalculator(formData: FormData) {
+  requireProductCapability('calculatorBuilder');
+
   const { supabase } = await requireUser();
   const calculatorId = String(formData.get("calculatorId") ?? "");
   const version = Number(formData.get("version"));

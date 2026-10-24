@@ -1,3 +1,4 @@
+import {getProductPolicy} from "./product-mode-server";
 const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://calcumint.com";
 
 function normalizeSiteUrl(value: string) {
@@ -7,5 +8,5 @@ function normalizeSiteUrl(value: string) {
 export const siteConfig = {
   name: "CalcuMint",
   url: normalizeSiteUrl(rawSiteUrl),
-  description: "A universal calculation platform for fast, accurate and understandable calculations across finance, math, business, science and everyday life."
+  get description() { return getProductPolicy().mode === "full" ? "A universal calculation platform for fast, accurate and understandable calculations across finance, math, business, science and everyday life." : "Anonymous percentage and unit-conversion calculators with formulas, examples and sources."; }
 } as const;

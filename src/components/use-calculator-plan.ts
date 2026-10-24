@@ -1,12 +1,15 @@
 "use client";
+import {useProductCapabilities} from "./product-capabilities";
 import {ACCOUNT_RECOVERY_EVENT} from '@/lib/account-recovery';
 import {useEffect,useState} from "react";
 import {createSupabaseBrowserClient} from "@/lib/supabase/browser";
 import {normalizePlan,type CalcuMintPlan} from "@/lib/entitlements";
 
 export function useCalculatorPlan():CalcuMintPlan{
+  const {accounts}=useProductCapabilities();
   const [plan,setPlan]=useState<CalcuMintPlan>("free");
   useEffect(()=>{
+    if(!accounts)return;
     let active=true,revision=0;
     let identity:string|null|undefined;
     const supabase=createSupabaseBrowserClient();
@@ -41,6 +44,6 @@ export function useCalculatorPlan():CalcuMintPlan{
       if(active&&identity===undefined&&initialRequest===revision)identify(error?null:data.user?.id??null);
     }).catch(()=>{if(active&&identity===undefined&&initialRequest===revision)identify(null);});
     return()=>{active=false;window.removeEventListener(ACCOUNT_RECOVERY_EVENT,retry);subscription?.unsubscribe();};
-  },[]);
-  return plan;
+  },[accounts]);
+  return accounts?plan:"free";
 }

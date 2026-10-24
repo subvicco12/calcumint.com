@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { deterministicCalculatorSearch } from "@/lib/ai/catalog";
@@ -9,6 +10,8 @@ import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
 const requestSchema = z.object({ query: z.string().trim().min(2).max(500) });
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('aiAssistant'); if (disabled) return disabled;
+
   try {
     const { query } = requestSchema.parse(await request.json());
     const publishedSlugs = await getPublishedCalculatorSlugs();

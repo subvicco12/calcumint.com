@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { isDeepStrictEqual } from "node:util";
@@ -14,6 +15,8 @@ const eventSchema = z.object({
 const unavailable = () => NextResponse.json({ error: "Could not synchronize billing; retry later" }, { status: 503 });
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('proBilling'); if (disabled) return disabled;
+
   const secret = serverEnv.PADDLE_WEBHOOK_SECRET;
   const admin = createSupabaseAdminClient();
   if (!secret || !admin) return NextResponse.json({ error: "Billing webhook is not configured" }, { status: 503 });

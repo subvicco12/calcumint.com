@@ -1,3 +1,6 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -6,13 +9,19 @@ import { calculatorRegistry } from "@/calculators/registry";
 import { buildReviewedEvidenceInventory } from "@/calculators/reviewed-evidence-inventory";
 import { summarizeReviewedEvidenceRemediation } from "@/calculators/reviewed-evidence-remediation-summary";
 
-export const metadata = { title: "Calculator Factory" };
+const fullMetadata = { title: "Calculator Factory" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 const bulkExample = JSON.stringify([
   { calculatorKey: "core:bmi", slug: "bmi-calculator", title: "BMI Calculator", category: "health", riskClass: "health" }
 ], null, 2);
 
 export default async function AdminCalculatorsPage() {
+  if (!getProductPolicy().capabilities.adminConsole) return <FeatureUnavailable/>;
+
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Calculator factory requires Supabase configuration.</h1></section>;
   const { data: { user } } = await supabase.auth.getUser();

@@ -1,3 +1,6 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -18,11 +21,17 @@ function WorkspaceUnavailable({label, singular = false}: {label: string; singula
   return <section className="container page-top business-page"><span className="eyebrow">Business workspace</span><h1>Workspace temporarily unavailable.</h1><ReadUnavailable label={label} singular={singular}/></section>;
 }
 
-export const metadata = { title: "Business Workspace" };
+const fullMetadata = { title: "Business Workspace" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 type PageProps = { searchParams: Promise<{ invite?: string }> };
 
 export default async function BusinessPage({ searchParams }: PageProps) {
+  if (!getProductPolicy().capabilities.businessWorkspace) return <FeatureUnavailable/>;
+
   const { invite } = await searchParams;
   const supabase = await createSupabaseServerClient();
   if (!supabase) {

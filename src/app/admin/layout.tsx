@@ -1,9 +1,17 @@
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+const fullMetadata: Metadata = {
   robots: { index: false, follow: false, nocache: true }
 };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  if (!getProductPolicy().capabilities.adminConsole) return <FeatureUnavailable/>;
+
   return children;
 }

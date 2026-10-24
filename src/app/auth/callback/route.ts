@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { publicEnv } from "@/lib/env";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -17,6 +18,8 @@ function redirectOrigin(request: Request): string {
 }
 
 export async function GET(request: Request) {
+  const disabled = disabledProductResponse('accounts'); if (disabled) return disabled;
+
   const url = new URL(request.url);
   const origin = redirectOrigin(request);
   const code = url.searchParams.get("code");

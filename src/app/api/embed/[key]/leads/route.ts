@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { z } from "zod";
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -7,6 +8,8 @@ import { publicLeadSchema } from "@/lib/embeds/schema";
 type RouteProps = { params: Promise<{ key: string }> };
 
 export async function POST(request: NextRequest, { params }: RouteProps) {
+  const disabled = disabledProductResponse('embedsAndLeads'); if (disabled) return disabled;
+
   const { key } = await params;
   const session = verifyEmbedSession(request.headers.get("x-embed-session"), process.env.EMBED_SESSION_SECRET ?? "");
   if (!session) return NextResponse.json({ error: "Embed session unavailable" }, { status: 403 });

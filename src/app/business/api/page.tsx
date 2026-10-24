@@ -1,3 +1,6 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { BusinessCredentialForm } from "@/components/business-credential-form";
 import { AccountSessionBoundary } from "@/components/account-session-boundary";
@@ -20,9 +23,15 @@ function AutomationUnavailable() {
 
 type PageProps = { searchParams: Promise<{ created?: string; webhookSecret?: string }> };
 
-export const metadata = { title: "Business API" };
+const fullMetadata = { title: "Business API" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function BusinessApiPage(_props: PageProps) {
+  if (!getProductPolicy().capabilities.apiAndWebhooks) return <FeatureUnavailable/>;
+
   void _props; // Legacy query parameters never carry or reveal credentials.
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Business API requires Supabase configuration.</h1></section>;

@@ -1,3 +1,6 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -8,9 +11,15 @@ import { issueEmbedSession } from "@/lib/embeds/session";
 
 type PageProps = { params: Promise<{ key: string }> };
 
-export const metadata = { robots: { index: false, follow: false } };
+const fullMetadata = { robots: { index: false, follow: false } };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function EmbedPage({ params }: PageProps) {
+  if (!getProductPolicy().capabilities.embedsAndLeads) return <FeatureUnavailable/>;
+
   const { key } = await params;
   const admin = createSupabaseAdminClient();
   if (!admin) return <main className="embed-shell"><p>Embed service is not configured.</p></main>;

@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { consumeAiAccess, finishAiUsage } from "@/lib/ai/access";
@@ -6,6 +7,8 @@ import { proposeBuilderDefinition } from "@/lib/ai/service";
 const requestSchema = z.object({ prompt: z.string().trim().min(10).max(5000) });
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('aiAssistant'); if (disabled) return disabled;
+
   let access: Awaited<ReturnType<typeof consumeAiAccess>> | null = null;
   try {
     const { prompt } = requestSchema.parse(await request.json());

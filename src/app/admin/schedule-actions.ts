@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -16,6 +18,8 @@ async function requireAdmin(roles: readonly string[]) {
 }
 
 export async function scheduleCalculatorPublication(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase, user } = await requireAdmin(["owner", "admin"]);
   const calculatorId = z.string().uuid().parse(formData.get("calculatorId"));
   const raw = String(formData.get("publishAt") ?? "");
@@ -33,6 +37,8 @@ export async function scheduleCalculatorPublication(formData: FormData) {
 }
 
 export async function refreshReviewAlerts() {
+  requireProductCapability('adminConsole');
+
   const { supabase } = await requireAdmin(["owner", "admin", "reviewer"]);
   const { error } = await supabase.rpc("refresh_admin_review_alerts");
   if (error) throw new Error(error.message);
@@ -40,6 +46,8 @@ export async function refreshReviewAlerts() {
 }
 
 export async function resolveAdminAlert(formData: FormData) {
+  requireProductCapability('adminConsole');
+
   const { supabase } = await requireAdmin(["owner", "admin", "reviewer"]);
   const alertId = z.string().uuid().parse(formData.get("alertId"));
   const { error } = await supabase.from("admin_alerts").update({ status: "resolved", resolved_at: new Date().toISOString() }).eq("id", alertId);

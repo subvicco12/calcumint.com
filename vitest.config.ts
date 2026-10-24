@@ -7,11 +7,13 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src")
+      "@": path.resolve(__dirname, "./src"),
+      "server-only": path.resolve(__dirname, "./tests/unit/server-only.ts")
     }
   },
   test: {
     environment: "node",
+    setupFiles: ["./tests/unit/full-product-context.tsx"],
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     coverage: {
       reporter: ["text", "json", "html"]

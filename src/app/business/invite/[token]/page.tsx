@@ -1,10 +1,19 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import { acceptInvitation } from "../../actions";
 
 type PageProps = { params: Promise<{ token: string }> };
 
-export const metadata = { title: "Accept Business Invitation" };
+const fullMetadata = { title: "Accept Business Invitation" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function AcceptBusinessInvitationPage({ params }: PageProps) {
+  if (!getProductPolicy().capabilities.businessWorkspace) return <FeatureUnavailable/>;
+
   const { token } = await params;
   return (
     <section className="container page-top">

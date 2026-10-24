@@ -1,4 +1,6 @@
 "use server";
+import {requireProductCapability} from '@/lib/product-mode-server';
+
 
 import { randomBytes } from "node:crypto";
 import { redirect } from "next/navigation";
@@ -28,6 +30,8 @@ async function verifyCredentialOwner(supabase: NonNullable<Awaited<ReturnType<ty
 }
 
 export async function createBusinessApiKey(formData: FormData): Promise<BusinessCredentialResult> {
+  requireProductCapability('apiAndWebhooks');
+
   const { supabase, user, organizationId } = await requireAdmin();
   const name = String(formData.get("name") ?? "").trim();
   const scopes = normalizeScopes(formData.getAll("scopes").map(String));
@@ -51,6 +55,8 @@ export async function createBusinessApiKey(formData: FormData): Promise<Business
 }
 
 export async function revokeBusinessApiKey(formData: FormData) {
+  requireProductCapability('apiAndWebhooks');
+
   const { supabase, user, organizationId } = await requireAdmin();
   const keyId = String(formData.get("keyId") ?? "");
   if (!keyId) throw new Error("API key is required");
@@ -61,6 +67,8 @@ export async function revokeBusinessApiKey(formData: FormData) {
 }
 
 export async function createWebhookEndpoint(formData: FormData): Promise<BusinessCredentialResult> {
+  requireProductCapability('apiAndWebhooks');
+
   const { supabase, user, organizationId } = await requireAdmin();
   const encryptionKey = serverEnv.WEBHOOK_ENCRYPTION_KEY;
   if (!encryptionKey) throw new Error("Webhook encryption key is not configured");
@@ -88,6 +96,8 @@ export async function createWebhookEndpoint(formData: FormData): Promise<Busines
 }
 
 export async function disableWebhookEndpoint(formData: FormData) {
+  requireProductCapability('apiAndWebhooks');
+
   const { supabase, user, organizationId } = await requireAdmin();
   const endpointId = String(formData.get("endpointId") ?? "");
   if (!endpointId) throw new Error("Webhook endpoint is required");

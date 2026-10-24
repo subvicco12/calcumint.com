@@ -56,3 +56,8 @@ describe("production readiness", () => {
     expect(report.checks.find((check) => check.id === "site:canonical-host")?.ok).toBe(false);
   });
 });
+
+it('public-only configuration cannot weaken any existing full-product prerequisite',()=>{
+ const keys=['NEXT_PUBLIC_SITE_URL','NEXT_PUBLIC_SUPABASE_URL','NEXT_PUBLIC_SUPABASE_ANON_KEY','SUPABASE_SERVICE_ROLE_KEY','PADDLE_API_KEY','PADDLE_WEBHOOK_SECRET','PADDLE_PRO_MONTHLY_PRICE_ID','PADDLE_PRO_YEARLY_PRICE_ID','PADDLE_BUSINESS_MONTHLY_PRICE_ID','PADDLE_BUSINESS_YEARLY_PRICE_ID','WEBHOOK_ENCRYPTION_KEY','WEBHOOK_WORKER_SECRET','AI_PROVIDER','AI_BASE_URL','AI_MODEL','AI_API_KEY','ADMIN_WORKER_SECRET','NEXT_PUBLIC_PADDLE_ENV'];
+ for(const key of keys)expect(buildProductionReadinessReport({...validEnv,CALCUMINT_PRODUCT_MODE:'public-only',[key]:undefined}).ready,key).toBe(false);
+});

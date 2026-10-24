@@ -1,11 +1,20 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { refreshReviewAlerts, resolveAdminAlert } from "./schedule-actions";
 
-export const metadata = { title: "Platform Admin" };
+const fullMetadata = { title: "Platform Admin" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function AdminPage() {
+  if (!getProductPolicy().capabilities.adminConsole) return <FeatureUnavailable/>;
+
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>Admin console requires Supabase configuration.</h1></section>;
   const { data: { user } } = await supabase.auth.getUser();

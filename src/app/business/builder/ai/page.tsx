@@ -1,11 +1,20 @@
+import type {Metadata} from "next";
+import {getProductPolicy} from '@/lib/product-mode-server';
+import {FeatureUnavailable} from '@/components/feature-unavailable';
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { BuilderAiAssistant } from "@/components/builder-ai-assistant";
 
-export const metadata = { title: "AI Builder Assistant" };
+const fullMetadata = { title: "AI Builder Assistant" };
+export function generateMetadata(): Metadata {
+  return getProductPolicy().mode === 'full' ? fullMetadata : {title:'Feature unavailable',robots:{index:false,follow:false}};
+}
+
 
 export default async function BuilderAiPage() {
+  if (!getProductPolicy().capabilities.aiAssistant) return <FeatureUnavailable/>;
+
   const supabase = await createSupabaseServerClient();
   if (!supabase) return <section className="container page-top"><h1>AI Builder requires Supabase configuration.</h1></section>;
   const { data: { user } } = await supabase.auth.getUser();

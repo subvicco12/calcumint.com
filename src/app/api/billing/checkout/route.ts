@@ -1,3 +1,4 @@
+import {disabledProductResponse} from '@/lib/product-route-guard';
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -19,6 +20,8 @@ type PaddlePreview = {
 };
 
 export async function POST(request: Request) {
+  const disabled = disabledProductResponse('proBilling'); if (disabled) return disabled;
+
   const supabase = await createSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Accounts are not configured" }, { status: 503 });
   const { data: { user }, error: authError } = await supabase.auth.getUser();

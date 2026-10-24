@@ -1,4 +1,5 @@
 "use client";
+import {useProductCapabilities} from "./product-capabilities";
 
 import Link from "next/link";
 import {requiresSignIn} from "@/lib/auth-recovery";
@@ -51,7 +52,7 @@ function downloadFile(filename: string, content: string, mime: string) {
 }
 
 
-export function CalculatorAccountActions(props:Props){
+function EnabledCalculatorAccountActions(props:Props){
   const [authIdentity,setAuthIdentity]=useState<string|null|undefined>(undefined);
   const observedAuthOwner=useRef<string|null|undefined>(undefined);
   useEffect(()=>{
@@ -260,4 +261,9 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
       <CalculatorScenarioWorkspace key={JSON.stringify([scenarioOwner!==undefined,scenarioOwner])} plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} methodology={exportMethodology} download={downloadFile}/>
     </div>
   );
+}
+
+export function CalculatorAccountActions(props:Props) {
+  const capabilities=useProductCapabilities();
+  return capabilities.savedData ? <EnabledCalculatorAccountActions {...props}/> : null;
 }
