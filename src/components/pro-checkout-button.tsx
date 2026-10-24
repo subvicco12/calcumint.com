@@ -44,14 +44,16 @@ function loadPaddle(): Promise<PaddleApi> {
     const existing = document.querySelector<HTMLScriptElement>('script[src="https://cdn.paddle.com/paddle/v2/paddle.js"]');
     if (existing) {
       existing.addEventListener("load", initialize, { once: true });
-      existing.addEventListener("error", () => reject(new Error("Paddle checkout could not be loaded")), { once: true });
+      existing.addEventListener("error", () => { existing.remove(); reject(new Error("Paddle checkout could not be loaded")); }, { once: true });
       return;
     }
     const script = document.createElement("script");
     script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
     script.async = true;
     script.addEventListener("load", initialize, { once: true });
-    script.addEventListener("error", () => reject(new Error("Paddle checkout could not be loaded")), { once: true });
+    // A failed element never emits load again. Remove it so a later explicit
+    // checkout attempt can fetch the SDK rather than await a spent event.
+    script.addEventListener("error", () => { script.remove(); reject(new Error("Paddle checkout could not be loaded")); }, { once: true });
     document.head.appendChild(script);
   });
   paddleReady = loading.catch((error: unknown): never => { paddleReady = null; paddleInitialized = false; paddleInstance = null; throw error; });
