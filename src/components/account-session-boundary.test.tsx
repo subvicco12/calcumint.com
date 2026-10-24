@@ -76,3 +76,19 @@ it('does not restore private focus after a newer account replaces a pending chec
  act(()=>{for(const callback of state.callbacks)callback('SIGNED_IN',{user:{id:'owner-b'}});});await act(async()=>state.pending[0](user('owner-a')));
  expect(input.isConnected).toBe(false);expect(document.activeElement).not.toBe(input);expect(screen.queryByText('Private account A')).toBeNull();
 });
+it('reverifies a same-owner refresh that interrupts initial identity verification without trusting its event',async()=>{
+ state.defer=true;render(<AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary>);
+ expect(state.pending).toHaveLength(1);
+ act(()=>{for(const callback of state.callbacks)callback('TOKEN_REFRESHED',{user:{id:'owner-a'}});});
+ await waitFor(()=>expect(state.pending).toHaveLength(2));
+ expect(screen.queryByRole('textbox')).toBeNull();
+ await act(async()=>state.pending[0]({data:{user:null},error:new DOMException('Authentication session changed. Retry.','AbortError')}));
+ expect(screen.queryByRole('textbox')).toBeNull();
+ await act(async()=>state.pending[1](user('owner-a')));expect(screen.getByRole('textbox')).toHaveProperty('value','Untouched');
+});
+it('a refresh event cannot restore hidden account data when fresh verification returns another owner',async()=>{
+ state.error=new Error('temporary verification failure');render(<AccountSessionBoundary ownerId="owner-a">{content}</AccountSessionBoundary>);
+ await screen.findByRole('button',{name:'Retry account verification'});state.error=null;state.owner='owner-b';
+ act(()=>{for(const callback of state.callbacks)callback('TOKEN_REFRESHED',{user:{id:'owner-a'}});});
+ await screen.findByRole('heading',{name:'Account session changed'});expect(screen.queryByText('Private account A')).toBeNull();
+});

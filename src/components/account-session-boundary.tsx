@@ -11,7 +11,7 @@ export function AccountSessionBoundary({ownerId,children}:{ownerId:string;childr
  const [view,setView]=useState<View>('checking'),[verification,setVerification]=useState<object|null>(null);
  const region=useRef<HTMLDivElement>(null),retry=useRef<()=>void>(()=>{}),retryButton=useRef<HTMLButtonElement>(null),restoreFocus=useRef<()=>void>(()=>{});
  useLayoutEffect(()=>{
-  let active=true,blocked=false,generation={};
+  let active=true,blocked=false,needsVerification=true,generation={};
   const client=createSupabaseBrowserClient();
   let focused:HTMLElement|null=null,selection:{start:number;end:number;direction:'forward'|'backward'|'none'|null}|null=null,retryIntent=false;
   function clearFocus(){focused=null;selection=null;retryIntent=false;}
@@ -27,6 +27,7 @@ export function AccountSessionBoundary({ownerId,children}:{ownerId:string;childr
    if(range&&(target instanceof HTMLInputElement||target instanceof HTMLTextAreaElement))target.setSelectionRange(range.start,range.end,range.direction??undefined);
   };
   function hide(){
+   needsVerification=true;
    const target=document.activeElement;
    if(target===retryButton.current)retryIntent=true;
    if(target instanceof HTMLElement&&region.current?.contains(target)){
@@ -40,7 +41,7 @@ export function AccountSessionBoundary({ownerId,children}:{ownerId:string;childr
   async function verify(background=false){
    if(!active||blocked)return;
    if(!background)hide();
-   const request=generation={};
+   const request=generation={};needsVerification=true;
    try{
     if(!client)throw new Error('Account unavailable');
     const auth=await client.auth.getUser();
@@ -49,7 +50,7 @@ export function AccountSessionBoundary({ownerId,children}:{ownerId:string;childr
     if(auth.data.user?.id!==ownerId){block();return;}
     if(region.current){region.current.hidden=false;region.current.inert=false;}
     // A new identity also commits focus recovery when checking/ready updates are batched.
-    setVerification(request);setView('ready');
+    needsVerification=false;setVerification(request);setView('ready');
    }catch(error){
     if(!active||blocked||request!==generation)return;
     if(requiresSignIn(error))block();else setView('unavailable');
@@ -58,7 +59,9 @@ export function AccountSessionBoundary({ownerId,children}:{ownerId:string;childr
   hide();void verify();
   const subscription=client?.auth.onAuthStateChange((event,session)=>{
    if(session?.user.id!==ownerId)block();
-   else if(event==='SIGNED_IN'||event==='USER_UPDATED')queueMicrotask(()=>void verify(true));
+   // Refresh can invalidate an in-flight /user response. Reverify hidden or
+   // pending data; a settled same-owner refresh still preserves the draft.
+   else if(event==='SIGNED_IN'||event==='USER_UPDATED'||(event==='TOKEN_REFRESHED'&&needsVerification))queueMicrotask(()=>void verify(true));
   }).data.subscription;
   const recheck=()=>{void verify();};
   const visibility=()=>{if(document.visibilityState==='visible')recheck();else hide();};
