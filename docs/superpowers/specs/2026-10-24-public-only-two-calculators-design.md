@@ -1,6 +1,6 @@
 # Approved two-calculator public-only candidate design
 
-Status: design approved; implementation plan awaiting coordinator review. RELEASE HOLD.
+Status: design and implementation plan approved; local implementation prepared for separate review. RELEASE HOLD.
 
 ## Authority and baseline
 
@@ -13,7 +13,7 @@ This approves preparation, not release. No external push or PR until the coordin
 
 On 2026-10-24 GitHub's newest-created PRs end at draft #1470, open and unmerged, head `engineering/password-recovery-20261024` at `6dbf723ec6c4d009816dbe3eb1f16cc22bc16a04`. Remote main remains `caffafe639350ca0c2c2cf33ae1f099294f5af54`. The isolated candidate is `/workspace/public-only-candidate`, branch `candidate/public-only-two-calculators-20261024`, based on that exact #1470 head. It preserves the frozen #1467–#1470 histories. This is a stacked development base, not a claim that the candidate is certified main.
 
-Inspected: B2-public-seo-platform, RELEASE-GOVERNANCE, FINAL-PRODUCT-ENGINEERING-2026-10-24 audit, prior password-recovery design/plan, CI and current routes. No AGENTS.md or repository .agents/skills files exist in this base; /workspace/.agents is empty. Existing document convention is docs/superpowers/specs and docs/superpowers/plans. Release governance contains no plan-review exemption; its sole-owner exception concerns independent release review only. The requested coordinator plan gate remains pending.
+Inspected: B2-public-seo-platform, RELEASE-GOVERNANCE, FINAL-PRODUCT-ENGINEERING-2026-10-24 audit, prior password-recovery design/plan, CI and current routes. No AGENTS.md or repository .agents/skills files exist in this base; /workspace/.agents is empty. Existing document convention is docs/superpowers/specs and docs/superpowers/plans. Release governance contains no plan-review exemption; its sole-owner exception concerns independent release review only. The coordinator subsequently supplied owner approval of the concrete plan and native execution; the plan gate is satisfied.
 
 ## Product contract
 
