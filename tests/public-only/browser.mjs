@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {assertNativeActionDenied,findKnownLoginAction} from './action-evidence.mjs';
 import {createServer} from 'node:http';
 import {mkdir,writeFile,readFile,readdir} from 'node:fs/promises';
 import path from 'node:path';
@@ -14,7 +15,8 @@ export async function runPublicOnlyBrowser(){
  const check=async(name,run)=>{await run();report.checks.push(name);console.log('PASS '+name);};
  try{
   for(const mode of ['public-only','invalid']){
-   app=await startNextRuntime({root,auth,db:{anonKey:'synthetic-anonymous',serviceKey:'synthetic-unused'},artifacts,productMode:mode});
+   const modeArtifacts=path.join(artifacts,mode);await mkdir(modeArtifacts,{recursive:true});
+   app=await startNextRuntime({root,auth,db:{anonKey:'synthetic-anonymous',serviceKey:'synthetic-unused'},artifacts:modeArtifacts,productMode:mode});
    browser=await startBrowser(app.url);
    await browser.identity({name:'sb-127-auth-token',value:'synthetic-stale-session'});
    for(const width of [320,1280]){
@@ -47,8 +49,21 @@ export async function runPublicOnlyBrowser(){
      const manifests=(await readdir(path.join(app.dir,'.next'),{recursive:true})).filter(file=>file.endsWith('/server-reference-manifest.json'));
      assert(manifests.length,'compiled action registry must exist');
      const registry=JSON.parse(await readFile(path.join(app.dir,'.next',manifests[0]),'utf8'));
-     const entries=Object.entries(registry.node||{});const action=entries.find(([,entry])=>Object.keys(entry.workers||{}).some(key=>key.includes('login')));
-     assert(action,'login action must be compiled');const r=await fetch(app.url+'/login',{method:'POST',headers:{'Next-Action':action[0],'Content-Type':'text/plain;charset=UTF-8',Origin:app.url},body:'[null,null]'});assert(r.status>=400);assert(!(await r.text()).includes('Unexpected provider operation'));
+     const actionId=findKnownLoginAction(registry);
+     const invoke=async(id,body)=>{
+      const logStart=app.logs().length,requestStart=requests.length;
+      const response=await fetch(app.url+'/login',{method:'POST',headers:{'Next-Action':id,'Content-Type':'text/plain;charset=UTF-8',Origin:app.url},body});
+      return {status:response.status,body:await response.text(),serverLog:app.logs().slice(logStart),providerRequests:requests.length-requestStart};
+     };
+     // Actual framework failures must fail the same assertion used for guard proof.
+     const unknownId='f'.repeat(42);assert(!registry.node[unknownId]);
+     for(const [name,id,body]of [['lookup',unknownId,'[]'],['decoding',actionId,'[']]){
+      const evidence=await invoke(id,body);assert(evidence.status>=400,`${name} must be a real HTTP failure`);
+      assert.equal(evidence.providerRequests,0);assert.throws(()=>assertNativeActionDenied(evidence),`${name} failure cannot prove the product guard`);
+     }
+     const evidence=await invoke(actionId,'[]');
+     report.nativeActionEvidence=assertNativeActionDenied(evidence);
+     report.nativeActionNegativeControls=['unknown-action lookup rejected as guard proof','malformed payload rejected as guard proof'];
     });
    }else assert.equal((await fetch(app.url+'/calculators/math/'+identities[0].slug)).status,404);
    assert.equal(browser.network.filter(r=>!r.allowed).length,0);assert.equal(browser.errors.length,0,JSON.stringify(browser.errors));
