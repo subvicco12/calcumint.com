@@ -19,3 +19,5 @@ it('does not echo query-supplied notices or infer successful confirmation from u
  expect(safeAuthConfirmationNotice('sensitive detail')).toBeUndefined();expect(safeAuthConfirmationNotice(AUTH_CONFIRMATION_NOTICE)).toBe(AUTH_CONFIRMATION_NOTICE);
  for(const value of [null,undefined,{},[],['sensitive'],0,''])expect(safeAuthErrorNotice(value)).toBeUndefined();
 });
+
+it('allows only the application-owned password reset success notice',()=>{expect(safeAuthConfirmationNotice('Your password has been updated. Sign in with your new password.')).toBe('Your password has been updated. Sign in with your new password.');expect(safeAuthConfirmationNotice('Provider password detail')).toBeUndefined();});

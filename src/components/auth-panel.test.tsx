@@ -57,3 +57,4 @@ it('retains current input when the already selected mode is activated again',()=
  fireEvent.click(screen.getByRole('tab',{name:'Sign in'}));
  expect((screen.getByLabelText('Email') as HTMLInputElement).value).toBe('synthetic@example.invalid');
 });
+it('offers password recovery as a named keyboard-accessible link from sign in',()=>{render(<AuthPanel/>);expect(screen.getByRole('link',{name:'Forgot password?'}).getAttribute('href')).toBe('/login/forgot');});

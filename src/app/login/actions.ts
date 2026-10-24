@@ -1,5 +1,8 @@
 "use server";
 
+import {isAuthRetryableFetchError} from "@supabase/supabase-js";
+import {z} from "zod";
+import {verifiedPasswordRecovery,PASSWORD_RECOVERY_SENT,PASSWORD_RECOVERY_INVALID,PASSWORD_RESET_COMPLETE_NOTICE,PASSWORD_RESET_UNCONFIRMED_NOTICE,type PasswordRecoveryState} from "@/lib/password-recovery";
 import {authFailureMessage} from "@/lib/auth-recovery";
 import { redirect } from "next/navigation";
 import { publicEnv } from "@/lib/env";
@@ -15,8 +18,8 @@ function loginError(message: string): never {
 }
 
 // Passwords are opaque credentials; normalize identity fields only.
-function passwordValue(formData: FormData): string {
-  const value = formData.get("password");
+function passwordValue(formData: FormData,key="password"): string {
+  const value = formData.get(key);
   return typeof value === "string" ? value : "";
 }
 
@@ -81,4 +84,46 @@ export async function signOut() {
     if (error) loginError("Could not sign out. Try again.");
   }
   redirect("/");
+}
+
+
+export async function requestPasswordReset(_previous:PasswordRecoveryState,formData:FormData):Promise<PasswordRecoveryState> {
+  const email=formValue(formData,"email");
+  if(!z.string().email().max(254).safeParse(email).success)return {status:"error",message:"Enter a valid email address."};
+  try {
+    const supabase=await createSupabaseServerClient({requireCookieWrites:true});
+    if(!supabase)return {status:"error",message:"Password reset is temporarily unavailable. Try again."};
+    const callback=new URL("/auth/callback",new URL(publicEnv.NEXT_PUBLIC_SITE_URL).origin);
+    callback.searchParams.set("next","/login/reset");
+    // Even transport/SMTP failures can depend on account existence. Once the
+    // provider lookup starts, every outcome receives the same acknowledgment.
+    try{await supabase.auth.resetPasswordForEmail(email,{redirectTo:callback.toString()});}catch{/* Do not reveal account-dependent failures. */}
+    return {status:"sent",message:PASSWORD_RECOVERY_SENT};
+  }catch{return {status:"error",message:"Password reset is temporarily unavailable. Try again."};}
+}
+
+export async function completePasswordReset(_previous:PasswordRecoveryState,formData:FormData):Promise<PasswordRecoveryState> {
+  const password=passwordValue(formData),confirmation=passwordValue(formData,"confirmPassword");
+  if(password.trim().length<8||password.length>1024)return {status:"error",message:"Use a password of at least 8 characters."};
+  if(password!==confirmation)return {status:"error",message:"The passwords do not match."};
+  let supabase;
+  try {
+    supabase=await createSupabaseServerClient({requireCookieWrites:true});
+    if(!supabase)throw new Error();
+    const context=await verifiedPasswordRecovery(supabase);
+    if(context.ownerId!==formValue(formData,"expectedOwnerId")||context.sessionId!==formValue(formData,"expectedSessionId"))throw new Error();
+  }catch{return {status:"error",message:PASSWORD_RECOVERY_INVALID};}
+  try {
+    const {error}=await supabase.auth.updateUser({password});
+    if(isAuthRetryableFetchError(error))return {status:"uncertain",message:"The password update could not be confirmed. Sign in or request a new link before trying again."};
+    if(error)return {status:"error",message:"The password could not be updated. Try again or request a new link."};
+  }catch{return {status:"uncertain",message:"The password update could not be confirmed. Sign in or request a new link before trying again."};}
+  let notice=PASSWORD_RESET_COMPLETE_NOTICE;
+  try {
+    const {error}=await supabase.auth.signOut({scope:"global"});
+    if(error)notice=PASSWORD_RESET_UNCONFIRMED_NOTICE;
+  }catch{notice=PASSWORD_RESET_UNCONFIRMED_NOTICE;}
+  // Cookie changes rerender the recovery page. Report completed mutation on a
+  // public, whitelisted notice even when sign-out has an unconfirmed outcome.
+  redirect(`/login?message=${encodeURIComponent(notice)}#auth-notice`);
 }
