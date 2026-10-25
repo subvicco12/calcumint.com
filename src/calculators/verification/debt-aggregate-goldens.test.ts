@@ -17,7 +17,10 @@ describe("independent debt aggregate vectors; no financial approval", () => {
       expect(definition.version).toBe(1);
       expect(definition.riskClass).toBe("financial");
       expect(definition.reviewStatus).toBe(status);
-      if (status === "draft") expect(definition.sources).toEqual([]);
+      if (definition.id === "finance.loan-comparison" || definition.id === "finance.loan-affordability") {
+        expect(definition.sources.length).toBeGreaterThan(0);
+        expect(definition.sources.every(source => source.url?.startsWith("https://") && source.note?.includes("pending"))).toBe(true);
+      } else if (status === "draft") expect(definition.sources).toEqual([]);
       else expect(definition.sources[0].url).toContain("consumerfinance.gov");
       expect(definition.goldenTests).toHaveLength(8);
       expect(new Set(definition.goldenTests!.map(vector => JSON.stringify(vector.input))).size).toBe(8);

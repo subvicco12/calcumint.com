@@ -50,7 +50,8 @@ it('CLI creates an owner-only per-run password without printing it and removes i
  // Close the shared fixture before a second Vite optimizer uses the same project cache.
  await server.close();
  const {spawn}=await import('node:child_process');const {readFile,stat}=await import('node:fs/promises');
- const child=spawn(process.execPath,['scripts/draft-preview.mjs'],{stdio:['ignore','pipe','pipe']});
+ const cliPort=await unusedPort();
+ const child=spawn(process.execPath,['scripts/draft-preview.mjs','--port='+cliPort],{stdio:['ignore','pipe','pipe']});
  let stdout='',closed=false;child.stdout.on('data',data=>{stdout+=data;});child.stderr.on('data',()=>{});
  const exit=new Promise<void>(resolve=>child.once('close',()=>{closed=true;resolve();}));
  try{
@@ -59,7 +60,7 @@ it('CLI creates an owner-only per-run password without printing it and removes i
   expect(Boolean(credentialPath)).toBe(true);const file=credentialPath!;const password=await readFile(file,'utf8');
   expect(password.length).toBeGreaterThanOrEqual(43);expect(stdout.includes(password)).toBe(false);
   expect((await stat(file)).mode&0o777).toBe(0o600);expect((await stat(path.dirname(file))).mode&0o777).toBe(0o700);
-  expect((await fetch('http://127.0.0.1:4179/tests/draft-preview/')).status).toBe(401);
+  expect((await fetch(`http://127.0.0.1:${cliPort}/tests/draft-preview/`)).status).toBe(401);
   child.kill('SIGTERM');await exit;
   await expect(stat(file)).rejects.toHaveProperty('code','ENOENT');await expect(stat(path.dirname(file))).rejects.toHaveProperty('code','ENOENT');
  }finally{if(!closed){child.kill('SIGTERM');await exit;}}

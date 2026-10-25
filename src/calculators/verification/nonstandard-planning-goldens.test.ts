@@ -11,12 +11,18 @@ const contracts = [
 describe("literal planning contract vectors, source and specialist evidence pending", () => {
   for (const [slug, id] of contracts) {
     const definition = calculatorRegistry.getBySlug(slug)!;
-    it(`${id}: preserves draft identity and missing source evidence`, () => {
+    it(`${id}: preserves draft identity and scoped source evidence`, () => {
       expect(definition.id).toBe(id);
       expect(definition.version).toBe(1);
       expect(definition.riskClass).toBe("financial");
       expect(definition.reviewStatus).toBe("draft");
-      expect(definition.sources).toEqual([]);
+      if (definition.id === "finance.rate-conversion" || definition.id === "finance.savings-goal") {
+        expect(definition.sources.length).toBeGreaterThan(0);
+        expect(definition.sources.every(source => source.url?.startsWith("https://") && source.note?.includes("pending"))).toBe(true);
+      } else {
+        expect(definition.sources.length).toBeGreaterThan(0);
+        expect(definition.sources.every(source => !source.url && source.label.startsWith("Internal") && source.note?.includes("not external"))).toBe(true);
+      }
       expect(definition.formulas.length).toBeGreaterThan(0);
       expect(definition.goldenTests).toHaveLength(6);
       expect(new Set(definition.goldenTests!.map(vector => JSON.stringify(vector.input))).size).toBe(6);

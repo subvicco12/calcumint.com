@@ -1,0 +1,3522 @@
+[
+  {
+    "masterId": 2,
+    "title": "Loan EMI Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "loan-emi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Fixed-rate fully amortizing monthly equal installments",
+    "inputSignature": "Exact registered input schema and example: loan-emi-calculator",
+    "outputSignature": "Versioned output record of loan-emi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No regulatory APR/fees or grace-period inference.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 3,
+    "title": "Amortization Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-emi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Complete month/payment/principal/interest/balance amortization schedule",
+    "inputSignature": "Exact registered input schema and example: loan-emi-calculator",
+    "outputSignature": "Versioned output record of loan-emi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Only the documented fixed-input model; broader product features are not implied.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 4,
+    "title": "Loan Payoff Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-emi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+    "inputSignature": "Exact registered input schema and example: loan-emi-calculator",
+    "outputSignature": "Versioned output record of loan-emi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Only the documented fixed-input model; broader product features are not implied.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 5,
+    "title": "Extra Payment Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-emi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+    "inputSignature": "Exact registered input schema and example: loan-emi-calculator",
+    "outputSignature": "Versioned output record of loan-emi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Only the documented fixed-input model; broader product features are not implied.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 6,
+    "title": "Personal Loan Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-payment-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-payment.ts"
+    ],
+    "formulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+    "inputSignature": "Exact registered input schema and example: loan-payment-calculator",
+    "outputSignature": "Versioned output record of loan-payment-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-payment.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 7,
+    "title": "Auto Loan Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-payment-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-payment.ts"
+    ],
+    "formulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+    "inputSignature": "Exact registered input schema and example: loan-payment-calculator",
+    "outputSignature": "Versioned output record of loan-payment-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-payment.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 8,
+    "title": "Student Loan Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-payment-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-payment.ts"
+    ],
+    "formulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+    "inputSignature": "Exact registered input schema and example: loan-payment-calculator",
+    "outputSignature": "Versioned output record of loan-payment-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-payment.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 9,
+    "title": "APR Calculator",
+    "classification": "UNSUPPORTED_MAPPING",
+    "engineSlugs": [
+      "effective-interest-rate-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/rate-conversion.ts"
+    ],
+    "formulaScope": "Regulatory APR requires fee-inclusive cash flows and prescribed timing; nominal/EAR conversion is not regulatory APR",
+    "inputSignature": "Cash flows, fees, timing, jurisdiction",
+    "outputSignature": "Regulatory APR with rule version",
+    "sourcePaths": [
+      "src/calculators/finance/rate-conversion.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No existing fee-inclusive APR contract; authoritative jurisdictional method required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 10,
+    "title": "Interest Rate Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Invert amortizing payment for rate or number of payment periods",
+    "inputSignature": "Principal, payment, remaining rate or term; convergence bounds",
+    "outputSignature": "Rate or loan term with infeasibility diagnostics",
+    "sourcePaths": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Existing reverse helper solves principal only, not these two target variables.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false,
+    "findingTiming": "BASELINE_BEFORE_PRIVATE_IMPLEMENTATION",
+    "resolvedByPrivateModel": "private-catalog-10"
+  },
+  {
+    "masterId": 11,
+    "title": "Loan Term Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "credit-card-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/credit-card-payoff.ts"
+    ],
+    "formulaScope": "Bounded fixed monthly payment payoff term simulation",
+    "inputSignature": "Exact registered input schema and example: credit-card-payoff-calculator",
+    "outputSignature": "Versioned output record of credit-card-payoff-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/credit-card-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Supplied monthly payment; horizon2400months, finalpartialpayment and0.005closure. No calendar dates or issuer minimum-payment policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 12,
+    "title": "Loan Amount Affordability Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-affordability-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-affordability.ts"
+    ],
+    "formulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+    "inputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+    "outputSignature": "Versioned output record of loan-affordability-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 13,
+    "title": "Debt-to-Income Ratio Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-affordability-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-affordability.ts"
+    ],
+    "formulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+    "inputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+    "outputSignature": "Versioned output record of loan-affordability-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 14,
+    "title": "Debt Payoff Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "debt-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/debt-payoff.ts"
+    ],
+    "formulaScope": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+    "inputSignature": "Exact registered input schema and example: debt-payoff-calculator",
+    "outputSignature": "Versioned output record of debt-payoff-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/debt-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Minimum payments supplied; no issuer minimum-payment schedule.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 15,
+    "title": "Debt Snowball Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "debt-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/debt-payoff.ts"
+    ],
+    "formulaScope": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+    "inputSignature": "Exact registered input schema and example: debt-payoff-calculator",
+    "outputSignature": "Versioned output record of debt-payoff-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/debt-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Minimum payments supplied; no issuer minimum-payment schedule.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 16,
+    "title": "Debt Avalanche Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "debt-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/debt-payoff.ts"
+    ],
+    "formulaScope": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+    "inputSignature": "Exact registered input schema and example: debt-payoff-calculator",
+    "outputSignature": "Versioned output record of debt-payoff-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/debt-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Minimum payments supplied; no issuer minimum-payment schedule.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 17,
+    "title": "Snowball vs Avalanche Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "debt-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/debt-payoff.ts"
+    ],
+    "formulaScope": "Compare existing same-input simulations under both strategy values",
+    "inputSignature": "debts[],extraMonthlyPayment; two strategy invocations",
+    "outputSignature": "Payoff/interest/order comparison",
+    "sourcePaths": [
+      "src/calculators/finance/debt-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Comparison wrapper needed; no new debt mathematics or automatic better-strategy recommendation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 19,
+    "title": "Credit Card Minimum Payment Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "credit-card-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/credit-card-payoff.ts"
+    ],
+    "formulaScope": "Issuer minimum-payment policy is distinct from supplied fixed monthly payment",
+    "inputSignature": "Issuer percent/floor/fees/date policy",
+    "outputSignature": "Minimum payments and payoff schedule",
+    "sourcePaths": [
+      "src/calculators/finance/credit-card-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No issuer policy or dates are supplied by master title; existing engine takes monthlyPayment as input.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 20,
+    "title": "Balance Transfer Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/finance/credit-card-payoff.ts"
+    ],
+    "formulaScope": "Balance transfer, consolidation and revolving credit need fee/rate/draw/repayment phases",
+    "inputSignature": "Product fees, promotional/draw periods, rate resets, timing",
+    "outputSignature": "Phase-aware balances/payoff/costs",
+    "sourcePaths": [
+      "src/calculators/finance/credit-card-payoff.ts",
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic fixed amortization is not a complete product model; source-backed product contract required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 21,
+    "title": "Debt Consolidation Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/finance/credit-card-payoff.ts"
+    ],
+    "formulaScope": "Balance transfer, consolidation and revolving credit need fee/rate/draw/repayment phases",
+    "inputSignature": "Product fees, promotional/draw periods, rate resets, timing",
+    "outputSignature": "Phase-aware balances/payoff/costs",
+    "sourcePaths": [
+      "src/calculators/finance/credit-card-payoff.ts",
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic fixed amortization is not a complete product model; source-backed product contract required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 22,
+    "title": "Home Equity Loan Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-payment-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-payment.ts"
+    ],
+    "formulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+    "inputSignature": "Exact registered input schema and example: loan-payment-calculator",
+    "outputSignature": "Versioned output record of loan-payment-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-payment.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 23,
+    "title": "HELOC Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/finance/credit-card-payoff.ts"
+    ],
+    "formulaScope": "Balance transfer, consolidation and revolving credit need fee/rate/draw/repayment phases",
+    "inputSignature": "Product fees, promotional/draw periods, rate resets, timing",
+    "outputSignature": "Phase-aware balances/payoff/costs",
+    "sourcePaths": [
+      "src/calculators/finance/credit-card-payoff.ts",
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic fixed amortization is not a complete product model; source-backed product contract required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 24,
+    "title": "Refinance Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-refinance-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-refinance.ts"
+    ],
+    "formulaScope": "Current/new fully amortizing loans, explicit refinance cost, payment savings and simple cash-flow break-even",
+    "inputSignature": "Exact registered input schema and example: loan-refinance-calculator",
+    "outputSignature": "Versioned output record of loan-refinance-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-refinance.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Not tax/insurance/cash-out/regulatory eligibility; break-even null if no positive monthly savings.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 25,
+    "title": "Payoff Date Goal Solver",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "credit-card-payoff-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/credit-card-payoff.ts"
+    ],
+    "formulaScope": "requiredMonthlyPaymentForTargetMonths delegates to existing amortization formula",
+    "inputSignature": "Balance, annualAPRPercent, target integer months1..2400",
+    "outputSignature": "Finite required monthly payment",
+    "sourcePaths": [
+      "src/calculators/finance/credit-card-payoff.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Helper exists; calendar payoff-date UI requires explicit date/day-count contract.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 27,
+    "title": "Mortgage Amortization Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-emi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Mortgage output amortization schedule",
+    "inputSignature": "Exact registered input schema and example: loan-emi-calculator",
+    "outputSignature": "Versioned output record of loan-emi-calculator",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Requires specialist version approval; jurisdiction/escrow rules are supplied only where supported.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 28,
+    "title": "Mortgage Payoff Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-prepayment-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-prepayment.ts"
+    ],
+    "formulaScope": "Remaining fixed-loan balance and lump-sum prepayment/foreclosure arithmetic",
+    "inputSignature": "Exact registered input schema and example: loan-prepayment-calculator",
+    "outputSignature": "Versioned output record of loan-prepayment-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-prepayment.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Not a complete mortgage escrow/insurance/penalty rules engine.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 29,
+    "title": "Mortgage Extra Payment Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-emi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-analysis.ts"
+    ],
+    "formulaScope": "Recurring extra monthly payment amortization",
+    "inputSignature": "Exact registered input schema and example: loan-emi-calculator",
+    "outputSignature": "Versioned output record of loan-emi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-analysis.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Lump-sum prepayment is a separate loan-prepayment contract; mortgage escrow/insurance omitted.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 30,
+    "title": "Mortgage Affordability Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-affordability-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-affordability.ts"
+    ],
+    "formulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+    "inputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+    "outputSignature": "Versioned output record of loan-affordability-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 31,
+    "title": "Down Payment Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Supplied-price down payment percentage/amount arithmetic",
+    "inputSignature": "percentage,value (price)",
+    "outputSignature": "result amount; remainder requires explicit subtraction adapter",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Does not decide required minimum down payment or lender eligibility; dedicated presentation adapter needed.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 32,
+    "title": "Rent vs Buy Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 33,
+    "title": "Refinance Break-even Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-refinance-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-refinance.ts"
+    ],
+    "formulaScope": "Current/new fully amortizing loans, explicit refinance cost, payment savings and simple cash-flow break-even",
+    "inputSignature": "Exact registered input schema and example: loan-refinance-calculator",
+    "outputSignature": "Versioned output record of loan-refinance-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-refinance.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Not tax/insurance/cash-out/regulatory eligibility; break-even null if no positive monthly savings.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 34,
+    "title": "Property Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 35,
+    "title": "Closing Cost Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 36,
+    "title": "Rental Property Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 37,
+    "title": "Rental Cash Flow Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Property supplied-total metrics: rental cash flow, NOI, capitalization rate, cash-on-cash, DSCR and gross-rent multiplier",
+    "inputSignature": "Effective gross income/operating expense or supplied NOI/debt service/cash invested/property value/gross annual rent",
+    "outputSignature": "Explicit scalar metric with consistent annual period/currency",
+    "sourcePaths": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic ROI/profit arithmetic does not expose these distinct input/output contracts; accounting inclusions must be explicit.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 38,
+    "title": "Net Operating Income Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Property supplied-total metrics: rental cash flow, NOI, capitalization rate, cash-on-cash, DSCR and gross-rent multiplier",
+    "inputSignature": "Effective gross income/operating expense or supplied NOI/debt service/cash invested/property value/gross annual rent",
+    "outputSignature": "Explicit scalar metric with consistent annual period/currency",
+    "sourcePaths": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic ROI/profit arithmetic does not expose these distinct input/output contracts; accounting inclusions must be explicit.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 39,
+    "title": "Cap Rate Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+    "inputSignature": "a numerator and nonzero b denominator in compatible period/currency",
+    "outputSignature": "result=a/b; percent outputs require explicit*100adapter",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 40,
+    "title": "Cash-on-Cash Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+    "inputSignature": "a numerator and nonzero b denominator in compatible period/currency",
+    "outputSignature": "result=a/b; percent outputs require explicit*100adapter",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 41,
+    "title": "DSCR Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+    "inputSignature": "a numerator and nonzero b denominator in compatible period/currency",
+    "outputSignature": "result=a/b; percent outputs require explicit*100adapter",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 42,
+    "title": "Gross Rent Multiplier Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+    "inputSignature": "a numerator and nonzero b denominator in compatible period/currency",
+    "outputSignature": "result=a/b; percent outputs require explicit*100adapter",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 43,
+    "title": "Rental ROI Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 44,
+    "title": "Vacancy Impact Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 45,
+    "title": "Property Appreciation Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Constant-rate property value growth is futureValue(PV,r,t)",
+    "inputSignature": "Exact registered input schema and example: investment-growth-calculator",
+    "outputSignature": "Versioned output record of investment-growth-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Excludes improvements, transactions, property tax and market forecast; family reuse only.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 46,
+    "title": "House Flipping Profit Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 47,
+    "title": "Renovation ROI Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "roi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Supplied renovation investment, final incremental value, costs and received income",
+    "inputSignature": "Exact registered input schema and example: roi-calculator",
+    "outputSignature": "Versioned output record of roi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "User must define increment attributable to renovation; no causal valuation model.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 48,
+    "title": "Investment Property Affordability Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 49,
+    "title": "Mortgage + Rental Combined Model",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Property cash-flow/tax/transaction/comparison product requires explicit inclusions and timeline",
+    "inputSignature": "Vacancy, financing, tax, appreciation, operating and transaction assumptions",
+    "outputSignature": "Cash flow/return/affordability/comparison with declared period",
+    "sourcePaths": [
+      "src/calculators/finance/mortgage.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No complete product-specific cash-flow contract in574registry; jurisdiction and accounting inclusions not established by title.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 52,
+    "title": "SIP Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "sip-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/sip.ts"
+    ],
+    "formulaScope": "Periodic contribution accumulation with explicit timing",
+    "inputSignature": "Exact registered input schema and example: sip-calculator",
+    "outputSignature": "Versioned output record of sip-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/sip.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Current registered version and legacy history remain distinct; SIPv2 specialist approval required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 54,
+    "title": "SWP Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "swp-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Monthly withdrawal simulation plus sustainableWithdrawal helper",
+    "inputSignature": "Exact registered input schema and example: swp-calculator",
+    "outputSignature": "Versioned output record of swp-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Fixed-return supplied assumptions; not safe-withdrawal recommendation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 55,
+    "title": "Fixed/Term Deposit Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "fixed-term-deposit-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/term-deposit.ts"
+    ],
+    "formulaScope": "Compound deposit maturity with supported compounding events",
+    "inputSignature": "Exact registered input schema and example: fixed-term-deposit-calculator",
+    "outputSignature": "Versioned output record of fixed-term-deposit-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/term-deposit.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Product term/tax/payout rules not inferred.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 57,
+    "title": "Investment Growth Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Future value and exact Fisher real-return relationship",
+    "inputSignature": "Exact registered input schema and example: investment-growth-calculator",
+    "outputSignature": "Versioned output record of investment-growth-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 58,
+    "title": "Savings Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/savings-goal.ts"
+    ],
+    "formulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+    "inputSignature": "Exact registered input schema and example: savings-goal-calculator",
+    "outputSignature": "Versioned output record of savings-goal-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Supplied goal/return/horizon only; no educational or retirement policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 59,
+    "title": "Future Value Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Future value and exact Fisher real-return relationship",
+    "inputSignature": "Exact registered input schema and example: investment-growth-calculator",
+    "outputSignature": "Versioned output record of investment-growth-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 60,
+    "title": "Present Value Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Existing exported presentValueFromFuture and cagr functions",
+    "inputSignature": "FV/rate/years or beginning/ending value/years",
+    "outputSignature": "PV or annualized return",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Helpers implemented/tested but distinct simple UI adapter and master scope binding still required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 61,
+    "title": "Periodic Payment Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/savings-goal.ts"
+    ],
+    "formulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+    "inputSignature": "Exact registered input schema and example: savings-goal-calculator",
+    "outputSignature": "Versioned output record of savings-goal-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Supplied goal/return/horizon only; no educational or retirement policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 62,
+    "title": "Required Rate of Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "cagr(beginningValue, targetValue, years) solves a lump-sum required annual rate",
+    "inputSignature": "Beginning positive value, nonnegative target, positive years",
+    "outputSignature": "Required annual rate percent",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No periodic-contribution inverse-rate solver or forecast; target-specific adapter required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 63,
+    "title": "Investment Duration Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "logarithm-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Lump-sum constant-rate duration: log_base(1+r)(target/initial)",
+    "inputSignature": "Exact registered input schema and example: logarithm-calculator",
+    "outputSignature": "Versioned output record of logarithm-calculator",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Requires positiveinitial/targetratio and1+r>0,not1 within logarithm schema; zero-rate feasibility and periodic contributions require separatepolicy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 65,
+    "title": "IRR Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/sip.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/advanced-math/catalog-batch-8.ts"
+    ],
+    "formulaScope": "Distinct investing contracts absent: inverse target rate/duration, cash-flow IRR/average return/DCA/comparison, bond valuation/yield, dividend return/growth, fund total return, payback and Rule72",
+    "inputSignature": "Explicit dated/periodic cash-flow, price/yield/dividend or accumulation inputs matching selected master",
+    "outputSignature": "Target-specific return/value/time result plus feasibility/ambiguity diagnostics",
+    "sourcePaths": [
+      "src/calculators/advanced-math/catalog-batch-8.ts",
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/finance/sip.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Existing scalar CAGR/ROI/FV or bounded cubic rootfinder is not a substitute for distinct cash-flow/valuation input contract. Dates/multiple-root conventions still need definition where applicable.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false,
+    "findingTiming": "BASELINE_BEFORE_PRIVATE_IMPLEMENTATION",
+    "resolvedByPrivateModel": "private-catalog-65"
+  },
+  {
+    "masterId": 66,
+    "title": "CAGR Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Existing exported presentValueFromFuture and cagr functions",
+    "inputSignature": "FV/rate/years or beginning/ending value/years",
+    "outputSignature": "PV or annualized return",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Helpers implemented/tested but distinct simple UI adapter and master scope binding still required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 67,
+    "title": "Average Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "mean-median-mode-range-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/statistics/catalog-batch-1.ts"
+    ],
+    "formulaScope": "Arithmetic mean of supplied period-return percentages",
+    "inputSignature": "Exact registered input schema and example: mean-median-mode-range-calculator",
+    "outputSignature": "Versioned output record of mean-median-mode-range-calculator",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/statistics/catalog-batch-1.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Only unweighted arithmetic average; geometric/time-weighted/money-weighted or annualized conventions not inferred.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 68,
+    "title": "Real Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Future value and exact Fisher real-return relationship",
+    "inputSignature": "Exact registered input schema and example: investment-growth-calculator",
+    "outputSignature": "Versioned output record of investment-growth-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 69,
+    "title": "Inflation-Adjusted Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Future value and exact Fisher real-return relationship",
+    "inputSignature": "Exact registered input schema and example: investment-growth-calculator",
+    "outputSignature": "Versioned output record of investment-growth-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 70,
+    "title": "Dollar-Cost Averaging Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "weighted-mean-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/statistics/catalog-batch-4.ts"
+    ],
+    "formulaScope": "DCA suppliedpurchase costbasis = weightedmean(price,units),totalWeight=units",
+    "inputSignature": "Exact registered input schema and example: weighted-mean-calculator",
+    "outputSignature": "Versioned output record of weighted-mean-calculator",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/statistics/catalog-batch-4.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Positive suppliedunits only; purchases/currency/fees/taxlots/live execution not inferred; periodicfuturevalue canreuseSIP family.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 71,
+    "title": "Lump Sum vs SIP Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "sip-calculator",
+      "compound-interest-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/sip.ts",
+      "src/calculators/finance/compound-interest.ts",
+      "src/calculators/scenarios.ts"
+    ],
+    "formulaScope": "Compare supplied lump-sum and periodic contribution models under explicit shared nominal monthly rate/timing",
+    "inputSignature": "Common horizon, nominalrate, upfrontcapital and periodiccontribution, explicittiming",
+    "outputSignature": "Two immutable model results and explicitdifference",
+    "sourcePaths": [
+      "src/calculators/finance/compound-interest.ts",
+      "src/calculators/finance/sip.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/scenarios.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No automatic budget/capital-equivalence assumption or investmentforecast; comparison adapter required.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 72,
+    "title": "Bond Yield Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/private-cashflow-rate.ts"
+    ],
+    "formulaScope": "New private periodic-cashflow inverse supplies the numeric yield basis for explicit bondcashflows",
+    "inputSignature": "Supplied periodiccashflows and explicitsignchanging yield bracket",
+    "outputSignature": "Selectedperiodyield, normalizedNPVresidual, signchanges and bracket-onlydiagnostic",
+    "sourcePaths": [
+      "src/calculators/private-cashflow-rate.ts",
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No automaticcoupon schedule, clean/dirtyprice, daycount, annualization or multiple-root selection; bondscope binding/specialist approval still required."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 73,
+    "title": "Bond Price Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "Bond suppliedcashflow price=sum presentValueFromFuture(abs(cashflow),yield,period)*sign",
+    "inputSignature": "Explicitcashflowamounts/times and supplieddiscountyield",
+    "outputSignature": "Presentvalue sum",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "ExistingPVhelper can discount suppliedcashflows; coupon scheduling/daycount/clean-dirty/convention still requires explicitcontract.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 74,
+    "title": "Dividend Yield Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+    "inputSignature": "a numerator and nonzero b denominator in compatible period/currency",
+    "outputSignature": "result=a/b; percent outputs require explicit*100adapter",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 75,
+    "title": "Dividend Growth Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "investment-growth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts"
+    ],
+    "formulaScope": "cagr(beginningDividend,endingDividend,years)",
+    "inputSignature": "Positive beginningdividend, nonnegative endingdividend, positiveyears",
+    "outputSignature": "Annual compound dividend growthpercent",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No reinvestment, dividendforecast or irregular exdates.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 76,
+    "title": "Mutual Fund Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "roi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+    "inputSignature": "Exact registered input schema and example: roi-calculator",
+    "outputSignature": "Versioned output record of roi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 77,
+    "title": "ETF Return Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "roi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/roi.ts"
+    ],
+    "formulaScope": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+    "inputSignature": "Exact registered input schema and example: roi-calculator",
+    "outputSignature": "Versioned output record of roi-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/roi.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 78,
+    "title": "Payback Period Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "solar-simple-payback-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/energy/catalog-batch-1.ts"
+    ],
+    "formulaScope": "Cost divided by constant positive annual cash savings",
+    "inputSignature": "Exact registered input schema and example: solar-simple-payback-calculator",
+    "outputSignature": "Versioned output record of solar-simple-payback-calculator",
+    "sourcePaths": [
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Simple undiscounted payback only; variable/negative cash-flow periods and discounted payback not supplied.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 79,
+    "title": "Rule of 72 Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Rule72 approximation: a=72,b=positiveannualratepercent",
+    "inputSignature": "Exact registered input schema and example: ratio-calculator",
+    "outputSignature": "Versioned output record of ratio-calculator",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "This is an approximation, not exact doublingtime; r=0undefined and negativegrowth outsidethis bounded interpretation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 80,
+    "title": "Retirement Corpus Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 81,
+    "title": "Retirement Savings Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 82,
+    "title": "Retirement Age Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 83,
+    "title": "Required Monthly Retirement Investment Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/savings-goal.ts"
+    ],
+    "formulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+    "inputSignature": "Exact registered input schema and example: savings-goal-calculator",
+    "outputSignature": "Versioned output record of savings-goal-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Supplied goal/return/horizon only; no educational or retirement policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 84,
+    "title": "Inflation-Adjusted Retirement Need Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 85,
+    "title": "Retirement Withdrawal Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 86,
+    "title": "Retirement Longevity Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 87,
+    "title": "Safe Withdrawal Rate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 88,
+    "title": "FIRE Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 89,
+    "title": "Coast FIRE Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 90,
+    "title": "Lean FIRE Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 91,
+    "title": "Fat FIRE Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 92,
+    "title": "Pension Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 93,
+    "title": "Retirement Income Gap Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Provided periodic income gap = suppliedneed - suppliedincome via aggregate subtraction adapter",
+    "inputSignature": "assets[] asneed; liabilities[] asincome; sameperiod",
+    "outputSignature": "netWorth usedasgap; dedicatedfieldlabels required",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic subtraction/ratio exists; dedicated naming/period/input adapter required, no benefits forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 94,
+    "title": "Retirement Replacement Ratio Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Supplied retirement income / preretirement income; explicit*100percentage adapter",
+    "inputSignature": "a income; b nonzero preretirementincome",
+    "outputSignature": "result ratio, not percentuntiladapter",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Generic subtraction/ratio exists; dedicated naming/period/input adapter required, no benefits forecast.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 95,
+    "title": "Required Minimum Distribution Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 96,
+    "title": "401(k) Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 97,
+    "title": "Roth IRA Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 98,
+    "title": "Traditional IRA Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [
+      "investment-growth-calculator",
+      "swp-calculator",
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts"
+    ],
+    "formulaScope": "Retirement projections can reuse supplied-return accumulation/withdrawal but policy-specific contract absent",
+    "inputSignature": "Horizon, inflation, risk/withdrawal rule, benefits/tax/account contribution rules and jurisdiction/year where relevant",
+    "outputSignature": "Corpus/age/longevity or policy-account-specific result",
+    "sourcePaths": [
+      "src/calculators/finance/investment-math.ts",
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/finance/swp.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Safe withdrawal, FIRE multipliers, pensions, RMD and retirement-account policy cannot be inferred from generic accumulation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 100,
+    "title": "Monthly Budget Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "formulaScope": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+    "inputSignature": "assets[] asfunds; liabilities[] asexpensebudget; nonnegative amounts",
+    "outputSignature": "totalAssets,totalLiabilities,netWorth asbudgetsurplus; relabelingadapterrequired",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 101,
+    "title": "50/30/20 Budget Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Supplied-base percentage amounts;50/30/20 uses three explicit50,30,20percent calls; commission uses suppliedrate",
+    "inputSignature": "percentage,value withinfiniteengine range",
+    "outputSignature": "result amount; allocationadaptermaycombine3results",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No definitionofnetincome, tiers,caps,clawbacks or legalpayroll rules; source-backed boundedarithmetic only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 102,
+    "title": "Savings Rate Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Savings/share = suppliedsavings/netincome (*100); salary/hourly = suppliedsalary/annualworkhours",
+    "inputSignature": "a numerator,b nonzero denominator; adapterrestricts income/workhours positive",
+    "outputSignature": "result ratio; percentageadapteronlywhereexplicit",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No chosenworkweeks, statutoryhours, tax or automatic savings definitions; suppliedtotals only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 104,
+    "title": "Housing Affordability Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-affordability-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-affordability.ts"
+    ],
+    "formulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+    "inputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+    "outputSignature": "Versioned output record of loan-affordability-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 105,
+    "title": "Vehicle Affordability Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "loan-affordability-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/loan-affordability.ts"
+    ],
+    "formulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+    "inputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+    "outputSignature": "Versioned output record of loan-affordability-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 106,
+    "title": "Education Savings Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "savings-goal-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/savings-goal.ts"
+    ],
+    "formulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+    "inputSignature": "Exact registered input schema and example: savings-goal-calculator",
+    "outputSignature": "Versioned output record of savings-goal-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/savings-goal.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Supplied goal/return/horizon only; no educational or retirement policy.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 107,
+    "title": "Wedding Budget Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "formulaScope": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+    "inputSignature": "assets[] asfunds; liabilities[] asexpensebudget; nonnegative amounts",
+    "outputSignature": "totalAssets,totalLiabilities,netWorth asbudgetsurplus; relabelingadapterrequired",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 108,
+    "title": "Vacation Budget Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "formulaScope": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+    "inputSignature": "assets[] asfunds; liabilities[] asexpensebudget; nonnegative amounts",
+    "outputSignature": "totalAssets,totalLiabilities,netWorth asbudgetsurplus; relabelingadapterrequired",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/finance/net-worth.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 109,
+    "title": "Cost of Living Comparison Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Budget allocation, savings share, expense categories, wage-period conversion/overtime/raise/commission arithmetic",
+    "inputSignature": "Expense/category scope, work hours, pay periods, overtime/commission policy or supplied percentages",
+    "outputSignature": "Budget or pay-period/percentage result",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Arithmetic primitives exist; product inputs/rules/currency/periods not fixed by title. Do not call generic percentage a full budget/payroll implementation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 110,
+    "title": "Salary to Hourly Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Savings/share = suppliedsavings/netincome (*100); salary/hourly = suppliedsalary/annualworkhours",
+    "inputSignature": "a numerator,b nonzero denominator; adapterrestricts income/workhours positive",
+    "outputSignature": "result ratio; percentageadapteronlywhereexplicit",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No chosenworkweeks, statutoryhours, tax or automatic savings definitions; suppliedtotals only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 111,
+    "title": "Hourly to Salary Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/core/draft-master-205.ts"
+    ],
+    "formulaScope": "Suppliedhourlypay * suppliedannualworkhours via existingdecimalmultiplication",
+    "inputSignature": "basicDraftCalculator decimalstrings left,right; operation=multiply",
+    "outputSignature": "Exactdecimal result within existingBasicv1contract",
+    "sourcePaths": [
+      "src/calculators/core/draft-master-205.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Privateexistingarithmetic basis only; no statutoryhours, taxes, overtime or paidleave inferred."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 112,
+    "title": "Overtime Pay Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Budget allocation, savings share, expense categories, wage-period conversion/overtime/raise/commission arithmetic",
+    "inputSignature": "Expense/category scope, work hours, pay periods, overtime/commission policy or supplied percentages",
+    "outputSignature": "Budget or pay-period/percentage result",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Arithmetic primitives exist; product inputs/rules/currency/periods not fixed by title. Do not call generic percentage a full budget/payroll implementation.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 113,
+    "title": "Raise Percentage Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-change-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Suppliedpositiveold/newpay percentage change",
+    "inputSignature": "old positivepay,next suppliedpay",
+    "outputSignature": "result percent",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No payroll or purchasingpower adjustment."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 114,
+    "title": "Purchasing Power Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "inflation-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/inflation.ts"
+    ],
+    "formulaScope": "Constant supplied inflation future cost and purchasing-power inverse",
+    "inputSignature": "Exact registered input schema and example: inflation-calculator",
+    "outputSignature": "Versioned output record of inflation-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/inflation.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No live CPI or jurisdiction index; uses explicit supplied annual rate.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 115,
+    "title": "Inflation Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "inflation-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/inflation.ts"
+    ],
+    "formulaScope": "Constant supplied inflation future cost and purchasing-power inverse",
+    "inputSignature": "Exact registered input schema and example: inflation-calculator",
+    "outputSignature": "Versioned output record of inflation-calculator",
+    "sourcePaths": [
+      "src/calculators/finance/inflation.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No live CPI or jurisdiction index; uses explicit supplied annual rate.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 116,
+    "title": "Tip Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "tip-amount-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "bill*percent/100",
+    "inputSignature": "Exact registered input schema and example: tip-amount-calculator",
+    "outputSignature": "Versioned output record of tip-amount-calculator",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Tip amount only; bill-with-tip and tip-split variants available separately.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 117,
+    "title": "Discount Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "discount-amount-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "original price*percent/100",
+    "inputSignature": "Exact registered input schema and example: discount-amount-calculator",
+    "outputSignature": "Versioned output record of discount-amount-calculator",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Amount vs remaining sale price differ; sale-price-calculator covers remainder; preserve percent and amount semantics.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 118,
+    "title": "Percent Off Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "discount-amount-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "original price*percent/100",
+    "inputSignature": "Exact registered input schema and example: discount-amount-calculator",
+    "outputSignature": "Versioned output record of discount-amount-calculator",
+    "sourcePaths": [
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/registry.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "Amount vs remaining sale price differ; sale-price-calculator covers remainder; preserve percent and amount semantics.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 119,
+    "title": "Commission Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Supplied-base percentage amounts;50/30/20 uses three explicit50,30,20percent calls; commission uses suppliedrate",
+    "inputSignature": "percentage,value withinfiniteengine range",
+    "outputSignature": "result amount; allocationadaptermaycombine3results",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No definitionofnetincome, tiers,caps,clawbacks or legalpayroll rules; source-backed boundedarithmetic only."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 120,
+    "title": "Income Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 121,
+    "title": "Take-Home Pay Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 122,
+    "title": "Gross-to-Net Salary Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 123,
+    "title": "Net-to-Gross Salary Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 124,
+    "title": "Payroll Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 125,
+    "title": "Sales Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 126,
+    "title": "GST Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 127,
+    "title": "VAT Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 128,
+    "title": "Capital Gains Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 129,
+    "title": "Dividend Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 130,
+    "title": "Self-Employment Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 131,
+    "title": "Freelancer Tax Reserve Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 132,
+    "title": "Corporate Tax Estimate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 133,
+    "title": "Property Tax Estimate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 134,
+    "title": "Tax Effective Rate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 135,
+    "title": "Tax Marginal Rate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 136,
+    "title": "Salary Sacrifice Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 137,
+    "title": "Bonus Tax Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/rule-packs.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "formulaScope": "Tax/payroll scope requires authoritative jurisdiction, effective-year rules, tax base and inclusions",
+    "inputSignature": "Country/region/year, taxable bases/deductions/brackets/caps or explicit supplied rate",
+    "outputSignature": "Tax/net/gross/effective/marginal rate result with rule version",
+    "sourcePaths": [
+      "src/calculators/core/percentage.ts",
+      "src/calculators/registry.ts",
+      "src/calculators/rule-packs.ts"
+    ],
+    "evidence": [
+      "Compared the actual registered schemas/calculations and the named exported helpers; numeric operator reuse alone is not domain identity approval."
+    ],
+    "limitations": [
+      "No tax risk-class engine registered. Multiplying by a supplied rate is not statutory income/GST/VAT/payroll policy; no rules may be fabricated.",
+      "Engineering scope finding only; publication/certification/owner identity authorization remains separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  }
+]

@@ -18,7 +18,13 @@ describe("literal debt payoff evidence; financial approval remains separate", ()
       expect(definition.version).toBe(1);
       expect(definition.riskClass).toBe("financial");
       expect(definition.reviewStatus).toBe(status);
-      if (status === "draft") expect(definition.sources).toEqual([]);
+      if (definition.id === "finance.loan-refinance" || definition.id === "finance.loan-prepayment") {
+        expect(definition.sources.length).toBeGreaterThan(0);
+        expect(definition.sources.every(source => source.url?.startsWith("https://") && source.note?.includes("pending"))).toBe(true);
+      } else if (status === "draft") {
+        expect(definition.sources.length).toBeGreaterThan(0);
+        expect(definition.sources.every(source => !source.url && source.label.startsWith("Internal") && source.note?.includes("not external"))).toBe(true);
+      }
       else expect(definition.sources.length).toBeGreaterThan(0);
       expect(definition.goldenTests).toHaveLength(count);
       expect(new Set(definition.goldenTests!.map(vector => JSON.stringify(vector.input))).size).toBe(count);
