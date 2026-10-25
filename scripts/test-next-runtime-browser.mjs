@@ -14,7 +14,7 @@ function annotateFailure(name,error){if(process.env.GITHUB_ACTIONS==='true'){con
 const progress=message=>{console.log(message);if(process.env.GITHUB_ACTIONS==='true')console.log('::notice::'+message.replaceAll('%','%25').replaceAll('\r','%0D').replaceAll('\n','%0A'))};
 const report={runtime:'Actual Next dev webpack, unchanged app source, RSC, React hydration, native server action forms, application CSS, real HTTP, installed Supabase SDK, disposable PostgreSQL + PostgREST',limitations:['Identity is a synthetic local JWT-verifying HTTP provider, NOT GoTrue. No real signup, password recovery, refresh rotation, email delivery, MFA or external identity-provider acceptance.','Test-copy development CSP adds unsafe-eval required by Next webpack dev hydration, and connect-src adds only the exact synthetic loopback identity origin; production CSP is unchanged.','Local development Next runtime; production deployment, CDN, TLS and external providers remain unverified.','API key creation is not attested exactly once; unknown outcomes require review and revocation before retry.','Injected database transport outages return explicit 503; successful database responses always come from real PostgREST/PostgreSQL.'],journeys:[]};let db,auth,app,browser;
 try{
- db=await startRuntimeDatabase();report.database=db.provenance;auth=await startAuthFixture(db);app=await startNextRuntime({root,auth,db,artifacts});browser=await startBrowser(app.url,[auth.url]);
+ db=await startRuntimeDatabase({accountHistory:true});report.database=db.provenance;auth=await startAuthFixture(db);app=await startNextRuntime({root,auth,db,artifacts});browser=await startBrowser(app.url,[auth.url]);
  const {js,until,visit,click,field}=browser;
  const rows=async(table,query='')=>{const r=await fetch(auth.url+'/rest/v1/'+table+'?'+query,{headers:{apikey:db.serviceKey,Authorization:'Bearer '+db.serviceKey}});assert.equal(r.status,200,await r.clone().text());return r.json()};
  const patch=async(table,query,value)=>{const r=await fetch(auth.url+'/rest/v1/'+table+'?'+query,{method:'PATCH',headers:{apikey:db.serviceKey,Authorization:'Bearer '+db.serviceKey,'content-type':'application/json'},body:JSON.stringify(value)});assert(r.ok,await r.text())};
@@ -46,7 +46,8 @@ try{
 
  await journey('Native browser stale-role failure offers safe workspace recovery',async()=>{await owner();await visit('/business');await until(`!!document.querySelector('input[name=name]')`);await js(`(()=>{const f=[...document.querySelectorAll('form')].find(f=>f.textContent.includes('Create project'));f.querySelector('[name=name]').value='Native rejected stale project'})()`);await patch('organization_members',`organization_id=eq.${db.orgId}&user_id=eq.${db.users.owner.id}`,{role:'viewer'});const errorsBefore=browser.errors.length;try{await click('Create project');await until(`!!document.querySelector('[role=alert]') || document.body.innerText.includes('Application error') || document.querySelector('nextjs-portal')?.shadowRoot?.textContent.includes('Error')`);report.nativeFailureEvidence={body:await browser.text(),overlay:await js(`document.querySelector('nextjs-portal')?.shadowRoot?.textContent||''`)};const added=browser.errors.slice(errorsBefore);report.expectedActionErrors=added.filter(e=>e.startsWith('Error: new row violates row-level security policy for table \"business_projects\"')&&e.includes('at createProject '));for(let i=browser.errors.length-1;i>=errorsBefore;i--)if(report.expectedActionErrors.includes(browser.errors[i]))browser.errors.splice(i,1);assert.equal((await rows('business_projects','name=eq.Native%20rejected%20stale%20project')).length,0);assert(await js(`!!document.querySelector('[role=alert]')`),'Native action failure needs accessible alert');assert(await has('Reload workspace'),'Native action failure needs explicit read-only recovery');await patch('organization_members',`organization_id=eq.${db.orgId}&user_id=eq.${db.users.owner.id}`,{role:'owner'});await click('Reload workspace');await until(`document.body.innerText.includes('Role: owner') && [...document.querySelectorAll('button')].some(e=>e.textContent.trim()==='Create project')`);assert.equal((await rows('business_projects','name=eq.Native%20rejected%20stale%20project')).length,0,'Read-only recovery must not replay write')}finally{await patch('organization_members',`organization_id=eq.${db.orgId}&user_id=eq.${db.users.owner.id}`,{role:'owner'})}});
  const historyId=randomUUID(),scenarioId=randomUUID();
- await db.sql(`INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data) VALUES('${historyId}','${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}');
+ await db.sql(`SET request.jwt.claim.sub='${db.users.owner.id}';
+ INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data) VALUES('${historyId}','${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}');
  INSERT INTO public.saved_scenarios(id,user_id,name,calculator_slug,calculator_version,input_data,output_data) VALUES('${scenarioId}','${db.users.owner.id}','Historical slope','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}');`);
  await journey('Owned historical saved records reopen without recalculation after downgrade',async()=>{
   await db.sql(`UPDATE public.profiles SET plan='free' WHERE id='${db.users.owner.id}';`);
@@ -65,7 +66,8 @@ try{
   await browser.identity(auth.cookie(db.users.outsider));await js(`window.dispatchEvent(new Event('focus'))`);await until(`document.body.innerText.includes('Account session changed')`);assert(!(await browser.text()).includes('1.999'));await owner();
  });
  await journey('Owned history browsing reaches older records without cursor gaps or cross-account leakage',async()=>{
-  await db.sql(`UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';
+  await db.sql(`SET request.jwt.claim.sub='${db.users.owner.id}';
+  UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';
   INSERT INTO public.calculation_history(user_id,calculator_slug,calculator_version,input_data,output_data,created_at)
   SELECT '${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}','2026-01-01T00:00:00.123456Z' FROM generate_series(1,25);
   UPDATE public.profiles SET plan='free' WHERE id='${db.users.owner.id}';`);
@@ -85,6 +87,65 @@ try{
   assert.equal(await js(`document.querySelector('[name=country]').form.querySelector('[name=expectedOwnerId]').value`),db.users.owner.id);
   await js(`(()=>{const e=document.querySelector('[name=country]');e.value='IN';e.dispatchEvent(new Event('change',{bubbles:true}))})()`);await click('Save preferences');await until(`document.body.innerText.includes('Request completed.')`);
   assert.equal(await db.sql(`SELECT country_code||':'||currency FROM public.user_preferences WHERE user_id='${db.users.owner.id}';`),'IN:INR');
+ });
+ const oldProject='aaaaaaaa-aaaa-4aaa-8aaa-000000000001',otherProject='aaaaaaaa-aaaa-4aaa-8aaa-000000000026';
+ await db.sql(`SET request.jwt.claim.sub='${db.users.owner.id}';
+ UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';
+ INSERT INTO public.calculation_projects(id,user_id,name,description,created_at,updated_at)
+ SELECT ('aaaaaaaa-aaaa-4aaa-8aaa-'||lpad(i::text,12,'0'))::uuid,'${db.users.owner.id}',CASE WHEN i=1 THEN 'native oldest project' ELSE 'native project '||i END,'Native local workflow fixture',CASE WHEN i=1 THEN '2020-01-01T00:00:00Z'::timestamptz ELSE '2026-01-01T00:00:00Z'::timestamptz+i*interval '1 second' END,CASE WHEN i=1 THEN '2020-01-01T00:00:00Z'::timestamptz ELSE '2026-01-01T00:00:00Z'::timestamptz+i*interval '1 second' END FROM generate_series(1,26) i;
+ INSERT INTO public.saved_scenarios(id,user_id,project_id,name,calculator_slug,calculator_version,input_data,output_data,created_at)
+ SELECT ('bbbbbbbb-bbbb-4bbb-8bbb-'||lpad(i::text,12,'0'))::uuid,'${db.users.owner.id}','${oldProject}','native scoped scenario '||i,'slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}','2021-01-01T00:00:00.123456Z'::timestamptz+i*interval '1 second' FROM generate_series(1,21) i;
+ INSERT INTO public.saved_scenarios(id,user_id,project_id,name,calculator_slug,calculator_version,input_data,output_data,created_at)
+ SELECT ('cccccccc-cccc-4ccc-8ccc-'||lpad(i::text,12,'0'))::uuid,'${db.users.owner.id}','${otherProject}','native other scenario '||i,'slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}','2026-01-01T00:00:00Z'::timestamptz+i*interval '1 second' FROM generate_series(1,25) i;`);
+ const readyProject=`!!document.querySelector('h1') && !document.body.innerText.includes('Verifying account session') && !!document.querySelector('nav[aria-label="Scenario pagination"]')`;
+ const scenarioLinks=()=>js(`[...document.querySelectorAll('a[href^="/account/saved?source=scenario"]')].map(e=>e.getAttribute('href'))`);
+ let projectNext,scenarioNext;
+ await journey('Native projects browse reaches project26 and scopes older scenario pagination',async()=>{
+  await owner();await visit('/account');await until(`document.body.innerText.includes('Calculation projects') && !document.body.innerText.includes('Verifying account session')`);
+  assert(!await js(`!!document.querySelector('a[href="/account/projects/${oldProject}"]')`));
+  await visit('/account/projects');await until(`!!document.querySelector('nav[aria-label="Project pagination"]') && !document.body.innerText.includes('Verifying account session')`);
+  assert.equal(await js(`document.querySelectorAll('a[href^="/account/projects/aaaaaaaa"]').length`),20);
+  assert(!await js(`!!document.querySelector('a[href="/account/projects/${oldProject}"]')`));
+  projectNext=await js(`[...document.querySelectorAll('a')].find(e=>e.textContent.trim()==='Next page').getAttribute('href')`);
+  await click('Next page');await until(`location.search.includes('cursor=') && !document.body.innerText.includes('Verifying account session')`);
+  assert.equal(await js(`document.querySelectorAll('a[href^="/account/projects/aaaaaaaa"]').length`),6);
+  await click('native oldest project');await until(readyProject);
+  const first=await scenarioLinks();assert.equal(first.length,20);assert(!(await browser.text()).includes('native other scenario'));
+  scenarioNext=await js(`[...document.querySelectorAll('a')].find(e=>e.textContent.trim()==='Next page').getAttribute('href')`);
+  await click('Next page');await until(`location.search.includes('cursor=') && ${readyProject}`);const second=await scenarioLinks();assert.equal(second.length,1);assert.equal(new Set([...first,...second]).size,21);assert((await browser.text()).includes('native scoped scenario 1'));
+ });
+ await journey('Native project cursor replay owner isolation and session boundary fail closed',async()=>{
+  assert(projectNext&&scenarioNext);
+  await visit(scenarioNext.replace(oldProject,otherProject));await until(`document.body.innerText.includes('Projects unavailable')`);assert.equal((await scenarioLinks()).length,0);
+  await browser.identity(auth.cookie(db.users.outsider));
+  for(const route of [projectNext,scenarioNext,`/account/projects/${oldProject}`]){await visit(route);await until(`document.body.innerText.includes('Projects unavailable')`);assert(!(await browser.text()).includes('native scoped scenario'));assert(!(await browser.text()).includes('native oldest project'));}
+  await owner();await visit(`/account/projects/${oldProject}`);await until(readyProject);assert.equal((await scenarioLinks()).length,20);
+  await browser.identity(auth.cookie(db.users.outsider));await js(`window.dispatchEvent(new Event('focus'))`);await until(`document.body.innerText.includes('Account session changed')`);assert(!(await browser.text()).includes('native scoped scenario'));await owner();
+ });
+ await journey('Native oldest history capture traverses project pages and preserves atomic snapshot',async()=>{
+  const oldest=await db.sql(`SELECT id FROM public.calculation_history WHERE user_id='${db.users.owner.id}' ORDER BY created_at ASC,id ASC LIMIT 1;`);assert.match(oldest,/^[0-9a-f-]{36}$/);
+  await owner();await visit(`/account/saved?source=history&id=${oldest}`);await until(`document.body.innerText.includes('Saved results') && !document.body.innerText.includes('Verifying account session')`);
+  assert((await browser.text()).includes('1.999'));await click('Choose a project for this calculation');await until(`!!document.querySelector('nav[aria-label="Project pagination"]') && !document.body.innerText.includes('Verifying account session')`);
+  assert.equal(await js(`new URL(location.href).searchParams.get('historyId')`),oldest);await click('Next page');await until(`location.search.includes('cursor=') && !document.body.innerText.includes('Verifying account session')`);assert.equal(await js(`new URL(location.href).searchParams.get('historyId')`),oldest);
+  await click('native oldest project');await until(`${readyProject} && !!document.querySelector('input[name=historyId]')`);
+  const form=await js(`(()=>{const f=document.querySelector('input[name=historyId]').form;return Object.fromEntries([...f.querySelectorAll('input[type=hidden]')].filter(e=>['expectedOwnerId','historyId','projectId','requestId'].includes(e.name)).map(e=>[e.name,e.value]))})()`);
+  assert.equal(form.expectedOwnerId,db.users.owner.id);assert.equal(form.historyId,oldest);assert.equal(form.projectId,oldProject);assert.match(form.requestId,/^[0-9a-f-]{36}$/);
+  await field('input[name=historyId] + label input[name=name]','native preserved old slope');await click('Save scenario');await until(`document.body.innerText.includes('Request completed.') && !!document.querySelector('a[href="/account/saved?source=scenario&id=${form.requestId}"]')`);
+  const saved=JSON.parse(await db.sql(`SELECT json_build_object('id',id,'user_id',user_id,'project_id',project_id,'name',name,'calculator_slug',calculator_slug,'calculator_version',calculator_version,'input_data',input_data,'output_data',output_data) FROM public.saved_scenarios WHERE id='${form.requestId}';`));
+  assert.deepEqual(saved,{id:form.requestId,user_id:db.users.owner.id,project_id:oldProject,name:'native preserved old slope',calculator_slug:'slope-calculator',calculator_version:1,input_data:{rise:6,run:3},output_data:{result:1.999}});
+  assert.equal(await db.sql(`SELECT count(*) FROM public.saved_scenarios WHERE user_id='${db.users.owner.id}' AND name='native preserved old slope';`),'1');
+  await visit(`/account/projects/${oldProject}`);await until(readyProject);assert(await js(`!!document.querySelector('a[href="/account/saved?source=scenario&id=${form.requestId}"]')`));
+  report.personalCapture={historyId:oldest,projectId:oldProject,requestId:form.requestId,acknowledgedRecords:1,exactHistoricalSnapshot:true};
+ });
+ await journey('Native downgraded account retains owned projects without paid scenario controls',async()=>{
+  await db.sql(`UPDATE public.profiles SET plan='free' WHERE id='${db.users.owner.id}';`);
+  try{await owner();await visit(`/account/projects/${oldProject}?historyId=${historyId}`);await until(readyProject);assert.equal((await scenarioLinks()).length,20);assert(!await has('Save scenario'));assert(!await has('Rename'));assert(await has('Remove scenario'));assert(await has('Delete project'));await visit('/account/projects');await until(`!!document.querySelector('nav[aria-label="Project pagination"]') && !document.body.innerText.includes('Verifying account session')`);assert.equal(await js(`document.querySelectorAll('a[href^="/account/projects/aaaaaaaa"]').length`),20);}finally{await db.sql(`UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';`);}
+ });
+ for(const [country,locale] of [['CA','en-CA'],['AU','en-AU']])await journey('Native regional locale survives full reload '+country,async()=>{
+  await owner();await visit('/account');await until(`!!document.querySelector('[name=country]') && !document.body.innerText.includes('Verifying account session')`);
+  await js(`(()=>{const e=document.querySelector('[name=country]');e.value=${JSON.stringify(country)};e.dispatchEvent(new Event('change',{bubbles:true}))})()`);await click('Save preferences');await until(`document.body.innerText.includes('Request completed.')`);
+  assert.equal(await db.sql(`SELECT country_code||':'||locale FROM public.user_preferences WHERE user_id='${db.users.owner.id}';`),country+':'+locale);
+  await visit('/account');await until(`!!document.querySelector('[name=locale]') && !document.body.innerText.includes('Verifying account session')`);assert.equal(await js(`document.querySelector('[name=locale]').value`),locale);assert.equal(await js(`document.querySelector('[name=country]').value`),country);
  });
  report.network=browser.network;report.browserErrors=browser.errors;report.authRequests=auth.requests;report.passed=report.journeys.every(j=>j.passed)&&browser.errors.length===0&&browser.network.every(n=>n.allowed);if(browser.errors.length){console.error('Browser exceptions: '+JSON.stringify(browser.errors));annotateFailure('Unexpected browser exceptions',browser.errors.join('\n'))}if(browser.network.some(n=>!n.allowed))console.error('Forbidden browser outbound requests');if(!report.passed)process.exitCode=1;
 }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;console.error(e);annotateFailure('Next runtime setup',e)}finally{
