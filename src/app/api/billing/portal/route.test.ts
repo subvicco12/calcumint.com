@@ -9,3 +9,9 @@ it('rejects a stale rendered owner before any billing read or provider operation
 it.each([undefined,42,''])('rejects missing or malformed owner %s before provider access',async owner=>{expect((await POST(request(owner))).status).toBe(400);expect(state.provider).not.toHaveBeenCalled();});
 it('fails closed when authentication returns both a user and an error',async()=>{state.error=new Error('synthetic auth failure');expect((await POST(request('owner-a'))).status).toBe(401);expect(state.query).not.toHaveBeenCalled();expect(state.provider).not.toHaveBeenCalled();});
 it.each(['overview','cancel','payment'])('preserves same-owner %s management',async action=>{const response=await POST(request('owner-a',action));expect(response.status).toBe(200);expect(await response.json()).toEqual({url:`https://synthetic.invalid/${action}`});expect(state.provider).toHaveBeenCalledTimes(2);});
+it('does not disclose provider diagnostics in a failed portal response',async()=>{
+ state.provider.mockRejectedValue(new Error('synthetic private customer detail'));
+ const response=await POST(request('owner-a'));
+ expect(response.status).toBe(502);
+ expect(await response.json()).toEqual({error:'Billing portal unavailable. Please retry from your account.'});
+});

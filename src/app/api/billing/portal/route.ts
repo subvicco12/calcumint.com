@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       : portal.urls.general.overview;
     if (!url) return NextResponse.json({ error: "Paddle did not return the requested portal link" }, { status: 502 });
     return NextResponse.json({ url });
-  } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Billing portal unavailable" }, { status: 502 });
+  } catch {
+    return NextResponse.json({ error: "Billing portal unavailable. Please retry from your account." }, { status: 502 });
   }
 }
