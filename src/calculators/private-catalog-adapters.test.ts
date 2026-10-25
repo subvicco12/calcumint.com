@@ -1,0 +1,8 @@
+import {expect,it} from 'vitest';
+import {privateCatalogAdapters} from './private-catalog-adapters';
+import {calculatorRegistry} from './registry';
+import {runCalculator} from './engine';
+it('provides12 distinct supplied-total adapters without registering or certifying them publicly',()=>{expect(privateCatalogAdapters).toHaveLength(12);for(const {definition:d} of privateCatalogAdapters){expect(d.reviewStatus).toBe('draft');expect(calculatorRegistry.getBySlug(d.slug)).toBeUndefined();expect(calculatorRegistry.getById(d.id)).toBeUndefined();}});
+it('matches independently hand-derived full example outputs for every adapter',()=>{for(const {definition:d} of privateCatalogAdapters)for(const e of d.examples)expect(runCalculator(d,e.input).output).toEqual(e.expected);});
+it('rejects zero denominators and impossible simple inventory, preserving negative income',()=>{const d=privateCatalogAdapters.find(x=>x.masterId===39)!.definition;expect(()=>runCalculator(d,{netOperatingIncome:10,propertyValue:0})).toThrow();expect(runCalculator(d,{netOperatingIncome:-20,propertyValue:100}).output).toEqual({capitalizationRatePercent:-20});const c=privateCatalogAdapters.find(x=>x.masterId===146)!.definition;expect(()=>runCalculator(c,{openingInventory:10,purchases:5,closingInventory:20})).toThrow();});
+it('rejects a changed ratio dependency instead of silently changing private v1 semantics',()=>{const ratio=calculatorRegistry.getBySlug('ratio-calculator')!;const version=ratio.version;try{ratio.version=version+1;expect(()=>runCalculator(privateCatalogAdapters.find(x=>x.masterId===39)!.definition,{netOperatingIncome:20,propertyValue:100})).toThrow();}finally{ratio.version=version;}});

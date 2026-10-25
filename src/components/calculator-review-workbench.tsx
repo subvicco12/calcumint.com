@@ -1,11 +1,11 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
-import {calculatorRegistry} from '@/calculators/registry';
+import {getReviewerCalculator} from '@/calculators/reviewer-definitions';
 import {reviewerFields,parseReviewerFields,calculateReviewerPreview} from '@/lib/calculator-review-preview';
 import {serializeCalculationJson,type CalculationSnapshot} from '@/lib/calculation-snapshot';
 import {serializeCalculationCsv,serializeCalculationPdf} from '@/lib/calculation-export';
 export function CalculatorReviewWorkbench({slug}:{slug:string}){
- const definition=calculatorRegistry.getBySlug(slug),example=definition&&reviewerFields(definition);
+ const definition=getReviewerCalculator(slug),example=definition&&reviewerFields(definition);
  const initial=()=>Object.fromEntries(Object.entries(example??{}).map(([key,value])=>[key,typeof value==='string'?value:JSON.stringify(value)]));
  const [draft,setDraft]=useState<Record<string,string>>(initial),[snapshot,setSnapshot]=useState<CalculationSnapshot>(),[error,setError]=useState<string>();
  const alert=useRef<HTMLParagraphElement>(null);useEffect(()=>{if(error)alert.current?.focus();},[error]);

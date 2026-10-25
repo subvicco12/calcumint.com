@@ -40,12 +40,15 @@ export async function startDraftPreview(port = 4179, {fixture} = {}) {
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)) {
   const fixture=process.argv.includes('--catalog')?'catalog':undefined;
-  const server=await startDraftPreview(4179,{fixture});
+  const portArgument=process.argv.find(value=>value.startsWith('--port='));
+  const port=portArgument?Number(portArgument.slice(7)):4179;
+  if(!Number.isInteger(port)||port<1||port>65535)throw new Error('Preview port must be an integer from1to65535');
+  const server=await startDraftPreview(port,{fixture});
   const directory=await mkdtemp(path.join(os.tmpdir(),'calcumint-private-preview-'));
   const credentialPath=path.join(directory,'reviewer-password');
   try {await writeFile(credentialPath,server.draftPreviewAccessToken,{mode:0o600,flag:'wx'});}
   catch(error){await server.close();await rm(directory,{recursive:true,force:true});throw error;}
-  console.log('Private synthetic reviewer preview: http://127.0.0.1:4179'+(fixture==='catalog'?'/tests/catalog-preview/':'/tests/draft-preview/'));
+  console.log('Private synthetic reviewer preview: http://127.0.0.1:'+port+(fixture==='catalog'?'/tests/catalog-preview/':'/tests/draft-preview/'));
   console.log(`Browser username: reviewer. Per-run password is in owner-only file: ${credentialPath}`);
   console.log('Read it only in your private local terminal; do not publish it or expose this port.');
   // Vite also handles SIGTERM and may exit after close; erase credentials first.

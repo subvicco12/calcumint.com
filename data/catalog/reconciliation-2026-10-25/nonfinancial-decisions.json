@@ -1,0 +1,3253 @@
+[
+  {
+    "masterId": 139,
+    "title": "Gross Margin Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "profit-margin-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Simple gross margin = (revenue-direct cost)/revenue*100",
+    "inputSignature": "revenue >= 1e-9; cost >= 0; same currency/period",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "LaunchSpec explicitly labels simple gross profit margin and computes (revenue-cost)/revenue*100; direct-cost interpretation matches gross margin.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "No accounting classification or multi-line income statement.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 140,
+    "title": "Net Margin Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Suppliednetincome/revenue, suppliedEBITDA/revenue, or suppliedLTV/CAC; percentage*100onlyfor margins",
+    "inputSignature": "a suppliednumerator,b nonzero denominator; dedicatedadapterlimitsdenominatorpositive",
+    "outputSignature": "result ratio; margins require explicitpercentageadapter",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "Existing profit-margin uses revenue minus direct cost, not net income after all expenses; tax/expense accounting must be specified.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Suppliedreportedaggregates only; no derivationofnetincome/EBITDA/LTV, accountingclassification, cohortforecast or automatedpolicy.",
+      "Engineeringfamilyreuse is not masteridentityapproval or publicationauthorization."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 141,
+    "title": "Markup Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "markup-price-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Selling price = cost*(1+markupPercent/100)",
+    "inputSignature": "cost>=0; percent finite",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Explicit markup-price engine; cost80,percent25 gives100.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Only price-from-markup; reverse markup percentage from selling price is not supplied.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 142,
+    "title": "Contribution Margin Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "break-even-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Unit contribution margin and contribution margin percent",
+    "inputSignature": "fixedCosts>=0; pricePerUnit>variableCostPerUnit>=0",
+    "outputSignature": "contributionMarginPerUnit; contributionMarginPercent (plus break-even outputs)",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/break-even.ts"
+    ],
+    "evidence": [
+      "Break-even calculate returns price-variableCost and that amount/price*100; golden/example includes20 and40%.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Requires extra fixedCosts input (zero usable); not total multi-product contribution.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 143,
+    "title": "Target Profit Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "target-profit-units-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Required units=(fixed costs+target profit)/(price-variable unit cost)",
+    "inputSignature": "fixedCosts,targetProfit>=0; price>variableCost>=0",
+    "outputSignature": "{value:required units,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Definition includes SBA source, zod refinement and golden750 for costs10000/profit5000/price50/variable30.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Target units only, not required revenue or optimizer.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 144,
+    "title": "Profit Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "margin-amount-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Simple gross profit amount=revenue-cost",
+    "inputSignature": "revenue,cost>=0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Launch definition explicitly returns amount remaining after direct cost.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Gross arithmetic only; unspecified Profit master may also require net profit, tax or operating expenses.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 145,
+    "title": "Revenue Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Revenue aggregation or price*quantity",
+    "inputSignature": "price,quantity or revenue lines",
+    "outputSignature": "total revenue",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Existing MRR is recurring customers*average revenue; generic multiplication is not a defined general revenue contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 146,
+    "title": "Cost of Goods Sold Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts#calculateNetWorth"
+    ],
+    "formulaScope": "openingInventory+purchases-closingInventory",
+    "inputSignature": "explicit nonnegative openingInventory,purchases,closingInventory; named entries",
+    "outputSignature": "COGS=netWorth from assets=[openingInventory,purchases],liabilities=[closingInventory]",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/net-worth.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "calculateNetWorth explicitly sums nonnegative asset entries and subtracts liability sum; supports negative net result and rejects nonfinite totals. Its independent goldens verify aggregate subtraction.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Two-decimal aggregate output; excludes freight/returns/manufacturing adjustments unless supplied; no inventory valuation policy.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 147,
+    "title": "Operating Margin Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator",
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/core/percentage.ts#percentageCalculator"
+    ],
+    "formulaScope": "100*(provided numerator/provided denominator)",
+    "inputSignature": "147: operatingIncome/revenue;154: netIncome/averageAssets;155: netIncome/averageEquity; finite numerator, strictly positive supplied denominator",
+    "outputSignature": "{result:percent}; ratio {a:numerator,b:denominator}->{result:q}, then percentage {percentage:10000,value:q}->{result:100*q}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/core/percentage.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Actual ratio-calculator accepts finite a and finite nonzero b, computes a/b; percentage engine scales a supplied proportion by100. Positive denominators and explicitly supplied numerator preserve signed returns.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "No earnings bridge, accounting classifications, averaging, negative-equity policy or automatic period matching; percentage adapter required.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 148,
+    "title": "EBITDA Margin Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Suppliednetincome/revenue, suppliedEBITDA/revenue, or suppliedLTV/CAC; percentage*100onlyfor margins",
+    "inputSignature": "a suppliednumerator,b nonzero denominator; dedicatedadapterlimitsdenominatorpositive",
+    "outputSignature": "result ratio; margins require explicitpercentageadapter",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "No EBITDA bridge or measure definition exists in business engines.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Suppliedreportedaggregates only; no derivationofnetincome/EBITDA/LTV, accountingclassification, cohortforecast or automatedpolicy.",
+      "Engineeringfamilyreuse is not masteridentityapproval or publicationauthorization."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 149,
+    "title": "Current Ratio Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Current ratio=current assets/current liabilities",
+    "inputSignature": "a=current assets>=0; b=current liabilities>0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Generic ratio explicitly computes a/b; supplying classified current assets and liabilities preserves exact ratio arithmetic.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Requires user-supplied classified totals; no balance-sheet classification or accounting policy.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 150,
+    "title": "Quick Ratio Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator",
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts#calculateNetWorth"
+    ],
+    "formulaScope": "(cash+marketableSecurities+receivables)/currentLiabilities",
+    "inputSignature": "nonnegative supplied liquid-asset totals; currentLiabilities>0; finite sum",
+    "outputSignature": "quickRatio; aggregate {assets:[{name,amount}],liabilities:[]} gives totalAssets, ratio {a:totalAssets,b:currentLiabilities}->{result}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/net-worth.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "calculateNetWorth sums up to200 nonnegative named values; ratio engine divides supplied numerator by denominator. No new mathematical function is needed.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Must explicitly select quick-asset components; not automatic exclusion of inventory/prepayments. Net-worth helper rounds monetary aggregate to2 decimals; preserve/document that precision or use raw ratio with supplied exact quickAssets.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 151,
+    "title": "Working Capital Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "margin-amount-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Working capital=current assets-current liabilities",
+    "inputSignature": "revenue field=current assets>=0; cost field=current liabilities>=0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Existing subtraction computes two nonnegative supplied monetary totals; working-capital alias is bounded to explicitly classified current totals.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Field relabeling needed; no asset/liability classification or period comparison.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 152,
+    "title": "Inventory Turnover Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Inventory turnover=COGS/supplied average inventory",
+    "inputSignature": "a=COGS>=0; b=explicit positive average inventory",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Existing division supports supplied positive denominator with no domain arithmetic change.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Average inventory must be supplied, not derived; period and days-in-inventory absent.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 153,
+    "title": "Receivables Turnover Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Receivables turnover=credit sales/supplied average receivables",
+    "inputSignature": "a=net credit sales>=0; b=explicit positive average receivables",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Existing division supports supplied positive denominator with no domain arithmetic change.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Average balance, credit-sales classification and period must be supplied; days-sales-outstanding absent.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 154,
+    "title": "Return on Assets Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator",
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/core/percentage.ts#percentageCalculator"
+    ],
+    "formulaScope": "100*(provided numerator/provided denominator)",
+    "inputSignature": "147: operatingIncome/revenue;154: netIncome/averageAssets;155: netIncome/averageEquity; finite numerator, strictly positive supplied denominator",
+    "outputSignature": "{result:percent}; ratio {a:numerator,b:denominator}->{result:q}, then percentage {percentage:10000,value:q}->{result:100*q}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/core/percentage.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Actual ratio-calculator accepts finite a and finite nonzero b, computes a/b; percentage engine scales a supplied proportion by100. Positive denominators and explicitly supplied numerator preserve signed returns.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "No earnings bridge, accounting classifications, averaging, negative-equity policy or automatic period matching; percentage adapter required.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 155,
+    "title": "Return on Equity Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator",
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/core/percentage.ts#percentageCalculator"
+    ],
+    "formulaScope": "100*(provided numerator/provided denominator)",
+    "inputSignature": "147: operatingIncome/revenue;154: netIncome/averageAssets;155: netIncome/averageEquity; finite numerator, strictly positive supplied denominator",
+    "outputSignature": "{result:percent}; ratio {a:numerator,b:denominator}->{result:q}, then percentage {percentage:10000,value:q}->{result:100*q}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/core/percentage.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Actual ratio-calculator accepts finite a and finite nonzero b, computes a/b; percentage engine scales a supplied proportion by100. Positive denominators and explicitly supplied numerator preserve signed returns.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "No earnings bridge, accounting classifications, averaging, negative-equity policy or automatic period matching; percentage adapter required.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 156,
+    "title": "Project Profitability Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Project profitability: margin vs ROI vs NPV",
+    "inputSignature": "project cash flows,costs,timing; selected metric",
+    "outputSignature": "profit/margin/NPV",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Gross margin and finance ROI exist but project scope does not state cash flow timing or required profitability metric.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 157,
+    "title": "Freelancer Hourly Rate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Freelancer required hourly rate",
+    "inputSignature": "target net income,overhead,tax assumptions,billable hours",
+    "outputSignature": "hourly rate",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Unit-price helper merely divides supplied total by quantity; no billable utilization/tax or income bridge.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 158,
+    "title": "Agency Pricing Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Agency pricing model",
+    "inputSignature": "labor costs,utilization,overhead,markup or target margin",
+    "outputSignature": "fee or hourly/project price",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Markup-price provides cost+percent only; agency utilization and pricing policy unspecified.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 159,
+    "title": "Discount Impact Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Discount impact on contribution/profit",
+    "inputSignature": "baseline price,cost,units,discount,demand assumptions",
+    "outputSignature": "before/after profit,required volume",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Sale-price computes discounted price only; no cost-volume profit impact.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 160,
+    "title": "Price Increase Impact Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Price increase impact on revenue/profit",
+    "inputSignature": "price,cost,volume,price change,demand assumptions",
+    "outputSignature": "before/after margin/revenue/profit",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Percentage-increase only changes a scalar; demand and cost-volume scope absent.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 161,
+    "title": "Unit Economics Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Unit economics contribution and acquisition economics",
+    "inputSignature": "unit revenue,cost,CAC,retention assumptions",
+    "outputSignature": "unit contribution and selected ratios",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "Separate break-even,ARPU,CAC primitives do not define a composite unit-economics output.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 162,
+    "title": "MRR Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "monthly-recurring-revenue-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "MRR=payingCustomers*averageMonthlyRevenuePerCustomer",
+    "inputSignature": "nonnegative integer payingCustomers<=1e9; nonnegative averageMonthlyRevenuePerCustomer<=1e15",
+    "outputSignature": "{value,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; example200*50=10000.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Excludes nonrecurring revenue.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 163,
+    "title": "ARR Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "annual-recurring-revenue-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "ARR=MRR*12",
+    "inputSignature": "monthlyRecurringRevenue>=0 <=1e15",
+    "outputSignature": "{value,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; golden10000*12=120000.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Annualized run rate, not recognized revenue.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 164,
+    "title": "MRR Growth Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-change-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "MRR percent change=(next-old)/abs(old)*100",
+    "inputSignature": "old:positive prior MRR; next:nonnegative current MRR",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Explicit launch formula matches nonnegative revenue growth with positive starting MRR.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Zero prior MRR excluded; no movement bridge.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 165,
+    "title": "MRR Movement Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts#calculateNetWorth"
+    ],
+    "formulaScope": "openingMRR+newMRR+expansionMRR+reactivationMRR-contractionMRR-churnMRR",
+    "inputSignature": "same-period nonnegative supplied movement amounts",
+    "outputSignature": "closingMRR=netWorth; total additions and losses available as helper totals",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/net-worth.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Existing aggregate sum/subtraction exactly computes supplied MRR bridge by assigning additions to assets and losses to liabilities.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Two-decimal monetary output; no automatic customer classification or reconciliation data import.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 166,
+    "title": "Churn Rate Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "customer-churn-rate-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Customer churn=lost/start*100",
+    "inputSignature": "customersAtStart>0; 0<=customersLost<=start",
+    "outputSignature": "{value:percent,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; golden25/500*100=5.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Customer churn only; revenue churn differs.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 167,
+    "title": "Retention Rate Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "customer-retention-rate-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Customer retention=(end-new)/start*100",
+    "inputSignature": "start>0; end>=new>=0",
+    "outputSignature": "{value:percent,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; golden(475-50)/500=85%.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Customer count retention, not revenue retention.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 169,
+    "title": "Gross Revenue Retention Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-revenue-retention-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "GRR from NRR with expansionRevenue fixed0",
+    "inputSignature": "beginningRecurringRevenue>0; churn+contraction<=beginning; expansionRevenue=0",
+    "outputSignature": "{value:GRR percent,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "NRR source/formula explicitly subtract churn and contraction and add expansion; bound expansion to0 recovers gross retention.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Adapter constraint required; unrestricted NRR is not GRR.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 170,
+    "title": "ARPU Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "average-revenue-per-user-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "ARPU=revenue/users",
+    "inputSignature": "revenue>=0; users>0; bounded1e15",
+    "outputSignature": "{value,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; golden12000/300=40.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Same measurement period.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 171,
+    "title": "ARPA Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "average-revenue-per-user-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Revenue per account=revenue/account count",
+    "inputSignature": "revenue>=0; users field bound to explicit positive account count",
+    "outputSignature": "{value,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "ARPU engine divides same-period revenue by supplied positive count; explicit account-count binding preserves arithmetic.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "User/account population must be stated; no account inference.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 173,
+    "title": "Customer Lifetime Value Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Customer LTV model",
+    "inputSignature": "ARPU,gross margin,churn or explicit cashflows",
+    "outputSignature": "LTV",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "No LTV engine or lifetime survival/cashflow model; ARPU and churn alone are separate outputs.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 174,
+    "title": "LTV:CAC Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "formulaScope": "Suppliednetincome/revenue, suppliedEBITDA/revenue, or suppliedLTV/CAC; percentage*100onlyfor margins",
+    "inputSignature": "a suppliednumerator,b nonzero denominator; dedicatedadapterlimitsdenominatorpositive",
+    "outputSignature": "result ratio; margins require explicitpercentageadapter",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts"
+    ],
+    "evidence": [
+      "CAC engine derives acquisition cost; generic ratio could divide supplied LTV/CAC but no LTV model choice defined.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Suppliedreportedaggregates only; no derivationofnetincome/EBITDA/LTV, accountingclassification, cohortforecast or automatedpolicy.",
+      "Engineeringfamilyreuse is not masteridentityapproval or publicationauthorization."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 175,
+    "title": "CAC Payback Period Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions"
+    ],
+    "formulaScope": "CAC/provided monthly gross profit per customer",
+    "inputSignature": "CAC>=0; supplied monthlyGrossProfitPerCustomer>0",
+    "outputSignature": "{result:months}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "ratio-calculator a/b directly supports explicit acquired-customer acquisition cost divided by supplied monthly gross contribution.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "No LTV, churn, gross-margin derivation, expansion or cohort inference; payback based on constant supplied monthly contribution.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 176,
+    "title": "SaaS Magic Number Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator",
+      "ratio-calculator",
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/core/percentage.ts#percentageCalculator"
+    ],
+    "formulaScope": "4*(currentQuarterRecurringRevenue-previousQuarterRecurringRevenue)/previousQuarterSalesMarketingSpend",
+    "inputSignature": "same-basis supplied quarterly recurring revenue totals>=0; prior-quarter spend>0",
+    "outputSignature": "annualized magic-number ratio",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/net-worth.ts",
+      "src/calculators/core/percentage.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Aggregate subtraction computes recurring revenue delta; ratio divides by supplied acquisition spend; percentage-of-value with400% multiplies by4. All operations already exist.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Must explicitly choose quarterly revenue versus ARR convention; cannot silently multiply an already annualized ARR delta by4; round aggregate to2 decimals limitation.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 177,
+    "title": "Rule of 40 Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Rule of40=growth%+profitability%",
+    "inputSignature": "growth rate,profitability rate with period/basis",
+    "outputSignature": "score",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "No business definition selecting EBITDA/free-cashflow/profitability basis.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 178,
+    "title": "Burn Rate Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "monthly-burn-rate-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Net monthly burn=max(0,outflow-inflow)",
+    "inputSignature": "monthlyCashOutflow/monthlyCashInflow nonnegative<=1e15",
+    "outputSignature": "{value,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; golden80000-50000=30000.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Does not expose gross burn; positive cash flow clamps zero.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 179,
+    "title": "Runway Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "cash-runway-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Months=cashBalance/monthlyBurnRate",
+    "inputSignature": "cashBalance>=0; monthlyBurnRate>0; <=1e15",
+    "outputSignature": "{value,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "Stripe source; golden300000/50000=6.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Constant positive burn only.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 180,
+    "title": "SaaS Gross Margin Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "profit-margin-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "SaaS gross margin=(recurring revenue-service COGS)/revenue*100",
+    "inputSignature": "revenue>0; cost=explicit service delivery COGS>=0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Simple gross profit margin definition permits explicit recurring revenue/direct service cost input binding.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "No SaaS cost allocation or accounting automation.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 181,
+    "title": "Subscription Pricing Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Subscription price model",
+    "inputSignature": "cost/customer,tier,usage,margin assumptions",
+    "outputSignature": "price",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Markup-price does not define tiers, recurring terms or price optimization.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 182,
+    "title": "Expansion Revenue Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts#calculateNetWorth"
+    ],
+    "formulaScope": "sum(explicit existing-customer expansion revenue entries)",
+    "inputSignature": "named nonnegative upsell/crosssell/seat-expansion revenue amounts,<=200",
+    "outputSignature": "expansionRevenue=totalAssets with no liabilities",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/net-worth.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Existing aggregate helper sums provided expansion amounts; does not infer their classification.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Two-decimal aggregate; no event ingestion, price-change attribution or account classification.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 183,
+    "title": "Cohort Retention Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator",
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/core/percentage.ts#percentageCalculator"
+    ],
+    "formulaScope": "100*retainedCohortMembers/startingCohortMembers independently for supplied cohort/period cells",
+    "inputSignature": "positive cohort baseline; retained count between0 and baseline for each supplied cell",
+    "outputSignature": "retention percentage per explicitly supplied cohort-period cell",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/core/percentage.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Existing ratio and percentage arithmetic can evaluate each supplied cohort cell; cohort matrix needs iteration/presentation adapter, not new numeric model.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "No cohort extraction/event identity, survival estimation, reactivation policy or revenue-retention inference.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 185,
+    "title": "Break-even ROAS Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ratio-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions"
+    ],
+    "formulaScope": "breakEvenRoasMultiple=1/providedContributionMarginFraction",
+    "inputSignature": "supplied net-of-all-nonad-variable-cost contribution margin fraction in(0,1]",
+    "outputSignature": "{result:ROAS multiple}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Existing a/b with a=1,b=positive supplied contribution margin fraction is exact reciprocal contribution relationship; no new solver.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "User supplies applicable contribution fraction; excludes fixed overhead, target profit, attribution/tax policy and margin derivation.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 186,
+    "title": "Marketing ROI Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "roi-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/roi.ts#calculateRoi"
+    ],
+    "formulaScope": "Simple marketing ROI=(attributed ending value-spend)/spend*100",
+    "inputSignature": "initialInvestment=marketing spend>0; finalValue=attributed gross return>=0; additionalCosts=0; incomeReceived=0; holdingMonths required",
+    "outputSignature": "roiPercent plus ancillary ROI outputs",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/finance/roi.ts",
+      "src/calculators/finance/roi.test.ts"
+    ],
+    "evidence": [
+      "calculateRoi computes gain/invested with independent planning goldens.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "User must define attribution and whether return is gross profit or revenue; not ROAS. Holding-period annualization is ancillary.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 187,
+    "title": "CPA Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "customer-acquisition-cost-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "CPA=attributed acquisition spend/acquisitions",
+    "inputSignature": "salesAndMarketingCost=spend>=0; newCustomers=acquisitions integer>0",
+    "outputSignature": "{value:cost/acquisition,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Existing CAC computes acquisition cost per new customer; same arithmetic when acquisition explicitly means new customer.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Non-customer actions require different count semantics; not automated attribution.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 188,
+    "title": "CPC Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "unit-price-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "CPC=cost/click count",
+    "inputSignature": "price=spend>=0; quantity=clicks>0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Unit-price explicitly divides total price by quantity; click count binding is arithmetic preserving.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "No bid auction or attribution model.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 189,
+    "title": "CPM Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "rate-per-thousand-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "CPM=spend/impressions*1000",
+    "inputSignature": "events=spend>=0; population=impressions>0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Explicit rate-per-thousand scaledRatio computes numerator/denominator*1000.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Labels need adaptation and nonnegative money/count binding.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 190,
+    "title": "CTR Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "conversion-rate-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "CTR=clicks/impressions*100",
+    "inputSignature": "conversions=clicks>=0; totalVisitors=impressions>0; clicks<=impressions",
+    "outputSignature": "{value:percent,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Rate engine validates numerator<=denominator and golden250/5000=5%.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Explicit event bindings; no unique-user CTR inferred.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 192,
+    "title": "Average Order Value Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "average-revenue-per-user-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "AOV=revenue/orders",
+    "inputSignature": "revenue>=0; users=positive order count",
+    "outputSignature": "{value:money/order,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "ARPU is same-period revenue/count; explicit count binding supports average order value arithmetic.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Refund/tax inclusion and order scope must be stated.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 193,
+    "title": "MER Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "roas-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "MER=total revenue/total marketing spend, with percent/100 presentation",
+    "inputSignature": "conversionValue=total revenue>=0; adSpend=total marketing spend>0",
+    "outputSignature": "{value:percentage,steps}; MER multiple=value/100",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/business/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "ROAS engine computes numerator/spend*100 and Google Ads source defines percent representation.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Requires total marketing rather than attributed ad scope and clear percent vs multiple; no attribution inference.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 194,
+    "title": "Ad Budget Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Required advertising budget",
+    "inputSignature": "target revenue or conversions,ROAS/CPA,period",
+    "outputSignature": "budget",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "ROAS engine consumes spend, no inverse target-budget solver or campaign allocation contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 195,
+    "title": "Target ROAS Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Target ROAS",
+    "inputSignature": "margin or target profit,ad spend/customer economics",
+    "outputSignature": "required ROAS",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Observed ROAS is not a target based on profit margin; objective and attribution basis absent.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 196,
+    "title": "Email Conversion Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "conversion-rate-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Email conversion percentage=conversions/selected email denominator*100",
+    "inputSignature": "conversions>=0; totalVisitors=explicit delivered/open/click denominator>0; conversions<=denominator",
+    "outputSignature": "{value:percent,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Actual conversion-rate engine arithmetic/refinement supports supplied event counts.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Delivered, opened or clicked denominator must be explicit; not selected by engine.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 197,
+    "title": "Affiliate Commission Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Fixed affiliate commission=commission percent*eligible sale value/100",
+    "inputSignature": "percentage finite; value finite (bind both nonnegative)",
+    "outputSignature": "{result:money}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "evidence": [
+      "Percentage engine includes BIPM source and signed/zero/identity goldens.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Fixed percentage only; excludes tiered, recurring, clawback and tax rules.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 198,
+    "title": "Marketplace Fee Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Marketplace fees",
+    "inputSignature": "platform,listing/payment/transaction rules,price,shipping,tax,currency",
+    "outputSignature": "fee breakdown",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "No platform fee schedules/rule packs; fixed percent helper cannot stand in for current platform terms.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 199,
+    "title": "Etsy Profit Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Etsy profit",
+    "inputSignature": "Etsy fee schedule,jurisdiction,listing/payment/advertising fees,COGS,shipping",
+    "outputSignature": "net profit breakdown",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Generic margin lacks Etsy fees, fixed fees and location-specific rules; no Etsy engine found.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 200,
+    "title": "Marketplace Profit Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Marketplace profit",
+    "inputSignature": "marketplace fee schedule,price,COGS,shipping,returns",
+    "outputSignature": "net profit",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Generic margin cannot infer platform fees or taxes; platform and fee model unspecified.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 201,
+    "title": "Promotion Profitability Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Promotion profitability",
+    "inputSignature": "baseline volume/price/cost,promotion,demand response",
+    "outputSignature": "profit uplift",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Sale-price and gross-margin omit promotion volume response and incremental cost.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 202,
+    "title": "Discount Profitability Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "sale-price-calculator",
+      "margin-amount-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions"
+    ],
+    "formulaScope": "discountedUnitPrice=price*(1-discount/100); discountedUnitContribution=discountedUnitPrice-variableUnitCost",
+    "inputSignature": "price,cost>=0; discount in[0,100]",
+    "outputSignature": "discounted unit price and contribution amount",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Existing sale-price formula followed by margin-amount subtraction directly computes bounded unit discount profitability.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "No demand response, aggregate volume, fixed costs or required-volume optimization; two existing calculations require adapter.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 203,
+    "title": "Shipping Profit Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Shipping profit",
+    "inputSignature": "customer shipping revenue,carrier/packaging/handling costs,allocation",
+    "outputSignature": "shipping contribution",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Margin-amount handles two aggregated values but no shipping cost or order allocation contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 204,
+    "title": "Return Rate Impact Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Return rate impact",
+    "inputSignature": "orders,return rate,refunds,recovery,reverse logistics",
+    "outputSignature": "profit/revenue impact",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/business/catalog-batch-1.ts",
+      "src/calculators/business/catalog-batch-2.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/business/break-even.ts",
+      "src/calculators/business/catalog-batch-1.test.ts",
+      "src/calculators/business/catalog-batch-2.test.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Conversion rate cannot model refunds, returned inventory or handling costs.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 207,
+    "title": "Percentage Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "percentage-of-value-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "(percentage/100)*value",
+    "inputSignature": "finite percentage,value",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/core/percentage.ts"
+    ],
+    "evidence": [
+      "BIPM source; golden20%of250=50, signed and zero goldens exist.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Percentage-of only. Percent change/increase/decrease are separate launch engines.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 254,
+    "title": "Root Finder Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "root-finder-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Bounded bisection for ax^3+bx^2+cx+d",
+    "inputSignature": "finite a,b,c,d,left,right; left<right; polynomial nonconstant; endpoint root or opposite endpoint signs",
+    "outputSignature": "{root,residual,iterations,bracket,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/advanced-math/catalog-batch-8.ts",
+      "src/calculators/master-identity-contract-evidence.ts",
+      "src/calculators/advanced-math/catalog-batch-8.test.ts",
+      "src/calculators/master-identity-contract-evidence.test.ts"
+    ],
+    "evidence": [
+      "Actual engine definition, source and golden x-1 on[0,2] =>root1 in1 iteration. master-identity-contract-evidence.ts records constant/no-sign-change rejected probes.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "At most cubic; max100 iterations; not arbitrary expression root finding or all roots.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 404,
+    "title": "Target Heart Rate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Target heart-rate zone",
+    "inputSignature": "age or measured max HR,resting HR,intensity,chosen method",
+    "outputSignature": "bpm range",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "No maximum-HR or Karvonen helper exported; calories-burned is MET energy, not heart rate.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 405,
+    "title": "Pregnancy Due Date Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Pregnancy due date",
+    "inputSignature": "LMP/conception/ultrasound date,cycle length,chosen dating method",
+    "outputSignature": "estimated due date/gestational age",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "Date arithmetic engines lack obstetric dating rules and pregnancy contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 406,
+    "title": "Pregnancy Weight Gain Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Pregnancy weight gain",
+    "inputSignature": "prepregnancy BMI,gestational week,single/multiple pregnancy,selected guideline",
+    "outputSignature": "recommended gain range",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "BMI and healthy-weight engines target adult BMI; no gestational guideline bands.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 407,
+    "title": "Ovulation Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Ovulation estimate",
+    "inputSignature": "LMP,cycle length,luteal assumptions",
+    "outputSignature": "estimated ovulation/fertile window",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "Date calculations do not supply cycle or ovulation model.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 408,
+    "title": "Conception Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Conception estimate",
+    "inputSignature": "due date/LMP/gestational age,dating basis",
+    "outputSignature": "estimated conception window",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "No conception/gestational dating helper; date subtraction alone lacks dating assumption.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 409,
+    "title": "GFR Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "GFR estimate",
+    "inputSignature": "creatinine,cystatin C,age,sex,units,equation version",
+    "outputSignature": "eGFR",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "No CKD-EPI/MDRD/helper with laboratory-unit or clinical equation contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 410,
+    "title": "Sleep Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Sleep schedule",
+    "inputSignature": "wake/bed time,age,sleep latency,selected scheduling model",
+    "outputSignature": "bed/wake recommendation",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "Private sleep-duration engine measures elapsed minutes only; no sleep-cycle or recommendation model.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 426,
+    "title": "Mass/Weight Converter",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "unit-conversion-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/units.ts#convertUnit",
+      "src/calculators/units.ts#getUnitFamily"
+    ],
+    "formulaScope": "Fixed mass conversion through kg",
+    "inputSignature": "finite value; fromUnit/toUnit in kg,g,lb,oz same family",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/core/unit-conversion.ts"
+    ],
+    "evidence": [
+      "units.ts mass factors kg1,g.001,lb.45359237,oz.028349523125; core schema enforces same family.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Weight here means mass; no force or gravity-dependent conversion.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 442,
+    "title": "Currency Converter",
+    "classification": "UNSUPPORTED_MAPPING",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Currency conversion requires explicit dated rate/provider and fee contract",
+    "inputSignature": "amount,fromCurrency,toCurrency,rate date and provider/explicit supplied rate",
+    "outputSignature": "converted amount and rate provenance",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/units.ts",
+      "src/calculators/core/unit-conversion.ts",
+      "src/calculators/conversion/catalog-batch-1.ts",
+      "src/calculators/units.test.ts",
+      "src/calculators/conversion/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Actual unit families are length,mass,volume,temperature plus physical conversion batches; none supports ISO currency codes or exchange-rate provenance.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "No currency engine/provider contract found; generic fixed-unit conversion must not be repurposed to invent FX.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 465,
+    "title": "EV vs Petrol/Diesel Cost Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "ev-charging-cost-calculator",
+      "road-trip-fuel-cost-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Compare supplied-distance EV charging energy cost and combustion trip fuel cost",
+    "inputSignature": "matched distance; explicitly supplied energy added/charging efficiency/tariff and fuel consumption/price",
+    "outputSignature": "two operating costs and comparison metrics",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/scenarios.ts",
+      "src/calculators/finance/planning-independent-goldens.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "EV charging definition includes batteryEnergyAddedKwh/efficiency*rate; road-trip-fuel-cost computes distance*consumption/100*price; compareScenarios returns both metric values and preferred scenario.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Adapter must align distance and battery energy assumptions; no depreciation, maintenance or purchase-cost claim. Comparison helper itself does not emit numeric delta.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 466,
+    "title": "Vehicle Total Cost of Ownership Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "net-worth-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/finance/net-worth.ts#calculateNetWorth"
+    ],
+    "formulaScope": "sum(provided ownership expense amounts)-provided resale proceeds",
+    "inputSignature": "<=200 nonnegative expense amounts and supplied resale proceeds for explicit horizon",
+    "outputSignature": "total modeled ownership cost from netWorth",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/finance/net-worth.ts",
+      "src/calculators/finance/planning-independent-goldens.ts"
+    ],
+    "evidence": [
+      "Existing named-value aggregate subtraction supports explicit purchase/financing/insurance/tax/maintenance/energy amounts less resale.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Supplied-total ledger only; no depreciation forecasting, loan amortization integration, double-count prevention or cost-per-distance adapter;2-decimal output.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 467,
+    "title": "Car Depreciation Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Car depreciation",
+    "inputSignature": "initial value,age/mileage,depreciation model/rates",
+    "outputSignature": "residual value/depreciation schedule",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Compound-interest can grow a balance but no vehicle depreciation curve or supplied-rate decrement contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 468,
+    "title": "Car Affordability Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Car affordability",
+    "inputSignature": "income,debts,budget,rate,term,down payment,vehicle running costs",
+    "outputSignature": "purchase budget/payment",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Existing loan-affordability DTI inverse supports loan budget, but no vehicle running-cost/insurance/ownership constraint.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 469,
+    "title": "Auto Lease Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Auto lease payment",
+    "inputSignature": "capitalized cost,residual,money factor,term,tax/fees",
+    "outputSignature": "lease payment and total",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Loan-payment is reducing-balance amortization; lease residual/depreciation+rent charge contract absent.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 470,
+    "title": "Lease vs Buy Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Lease vs buy",
+    "inputSignature": "lease terms,buy financing,resale,tax,ownership horizon",
+    "outputSignature": "comparative cash flows/costs",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "No lease engine or residual-value comparison; loan-comparison compares loans only.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 471,
+    "title": "New vs Used Car Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "New vs used purchase comparison",
+    "inputSignature": "vehicle prices,depreciation,maintenance,financing,horizon",
+    "outputSignature": "ownership cost difference",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Energy/fuel primitives omit vehicle age/repair/depreciation model.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 472,
+    "title": "Loan vs Cash Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Loan vs cash",
+    "inputSignature": "loan terms,cash opportunity return,costs,tax,horizon",
+    "outputSignature": "net cost/opportunity comparison",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Loan payment and investment growth are independent; no matched cash-flow opportunity-cost comparison contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 473,
+    "title": "Fuel Savings Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "road-trip-fuel-cost-calculator"
+    ],
+    "helperRefs": [
+      "src/calculators/scenarios.ts#compareScenarios",
+      "src/calculators/launch-portfolio.ts#launchDefinitions"
+    ],
+    "formulaScope": "baseline fuel trip cost versus replacement fuel trip cost; savings=baselineCost-newCost",
+    "inputSignature": "same distance; two supplied nonnegative L/100km and fuel prices",
+    "outputSignature": "two trip costs; optional margin-amount {result:savings}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/scenarios.ts",
+      "src/calculators/finance/planning-independent-goldens.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "Existing road-trip-fuel-cost formula evaluates each case; compareScenarios compares numeric cost; margin-amount can subtract two nonnegative supplied costs.",
+      "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+    ],
+    "limitations": [
+      "Constant fuel consumption/price only; no vehicle acquisition economics or future tariff forecasting.",
+      "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 477,
+    "title": "Electricity Cost Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "energy-cost-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Flat energy charge=energy*rate",
+    "inputSignature": "energy>=0; rate>=0",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/launch-portfolio.ts",
+      "src/calculators/launch-portfolio.test.ts"
+    ],
+    "evidence": [
+      "Launch engine explicitly computes energy consumption times unit tariff.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "No tiers, fixed charges or taxes. Appliance/home-energy engines add wattage-time variants.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 480,
+    "title": "Solar Payback Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "solar-simple-payback-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Undiscounted payback=netSystemCost/annualSavings",
+    "inputSignature": "netSystemCost>=0; annualSavings>0",
+    "outputSignature": "{value:years,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts"
+    ],
+    "evidence": [
+      "NREL context source; golden12000/1500=8.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "No degradation, discounting, maintenance or tariff model.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 485,
+    "title": "Carbon Footprint Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Carbon footprint",
+    "inputSignature": "activity quantities,location/year/emission factors,boundary",
+    "outputSignature": "CO2e breakdown",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "No emission factor dataset or greenhouse gas boundary contract; energy consumption is not emissions.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 488,
+    "title": "Heat Pump Savings Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Heat pump savings",
+    "inputSignature": "heating demand,old efficiency/fuel price,heat pump COP,electric tariff",
+    "outputSignature": "energy/cost savings/payback",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Energy-cost is scalar consumption*rate; no COP/heat demand and displaced-fuel model.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 491,
+    "title": "Heat Index Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Heat index",
+    "inputSignature": "temperature,relative humidity,units,NOAA applicability",
+    "outputSignature": "apparent temperature",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Earth-science implements dew point and wind chill, neither is heat index; full source/export scan finds no Rothfusz/Steadman equation.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "Searched implementation/export corpus for heat index, heatIndex, Rothfusz and Steadman; no apparent-temperature polynomial with humidity-dependent corrections exists. Magnus dew point and wind-chill equations are different functions. This confirms the NOAA heat-index model family is absent, not a domain-input adapter gap."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 493,
+    "title": "Air Density Calculator",
+    "classification": "ENGINE_CONTRACT_MATCH",
+    "engineSlugs": [
+      "air-density-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Dry-air rho=p/(287.05*(temperatureC+273.15))",
+    "inputSignature": "pressurePa>0 <=2e6; temperatureC[-100,100]",
+    "outputSignature": "{value:kg/m3,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/earth-science/catalog-batch-2.ts"
+    ],
+    "evidence": [
+      "NOAA source; golden101325Pa/15C gives1.225012.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Dry ideal gas, not humid air.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 494,
+    "title": "Altitude Pressure Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "barometric-pressure-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "P=P0*(1-2.25577e-5*h)^5.25588",
+    "inputSignature": "seaLevelPressurePa>0 <=200000; altitudeM[-1000,11000]",
+    "outputSignature": "{value:Pa,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/earth-science/catalog-batch-2.ts"
+    ],
+    "evidence": [
+      "NOAA source; goldenP0=101325,h1000 gives89874.560427.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Lower standard-atmosphere approximation; no weather/humidity profile.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 495,
+    "title": "Solar Position Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Solar position",
+    "inputSignature": "timestamp,latitude,longitude,time basis,refraction convention",
+    "outputSignature": "solar azimuth/elevation",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Astronomy implements orbital period/gravity/distance, not solar declination/hour-angle/azimuth pipeline; solar energy uses supplied peak sun hours.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "Searched implementation/export corpus for solar position, solarPosition, sunrise, sunset, declination and hour angle: no time/location solar ephemeris or horizon-event solver found. Supplied peakSunHours solar-energy multiplication and two-body orbital periods do not implement these coupled functions. Choice of ephemeris/refraction accuracy still needs scope agreement."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 502,
+    "title": "Cooking Time Adjustment Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Cooking time adjustment",
+    "inputSignature": "food geometry/mass,oven temperature,method,validated model",
+    "outputSignature": "adjusted cooking time",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Recipe scaling changes quantities; food source explicitly says quantity calculators do not determine safe cooking times.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 506,
+    "title": "Kitchen Unit Converter",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "cooking-measurement-converter"
+    ],
+    "helperRefs": [],
+    "formulaScope": "US kitchen volume conversion via millilitres",
+    "inputSignature": "finite value; ml,l,tsp_us,tbsp_us,fl_oz_us,cup_us,pint_us,quart_us,gallon_us",
+    "outputSignature": "{result:number}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/conversion/catalog-batch-4.ts",
+      "src/calculators/conversion/catalog-batch-4.test.ts"
+    ],
+    "evidence": [
+      "NIST sources; example1cup=236.58824ml; golden1cup=8fl_oz.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Volume only. Ingredient density and non-US cups not implied.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 507,
+    "title": "Travel Budget Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Travel budget",
+    "inputSignature": "trip duration,transport,lodging,food,activities,currency assumptions",
+    "outputSignature": "budget breakdown",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Cost-per-person divides a supplied total; trip fuel-cost covers fuel only; no expense aggregation contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 512,
+    "title": "Currency Travel Budget Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Currency travel budget",
+    "inputSignature": "multi-currency expenses,supplied/live FX,fees,budget scope",
+    "outputSignature": "converted trip budget",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Unit converter uses fixed physical-unit factors and has no currency/FX family; no travel budget contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 516,
+    "title": "GPA Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "GPA",
+    "inputSignature": "course credits,grades,grading scale,repeats/policy",
+    "outputSignature": "GPA",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Private weighted-grade accepts percent and weight, not grade points/credits or institution scale.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 522,
+    "title": "Race Time Predictor",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [
+      "src/calculators/launch-portfolio.ts#launchDefinitions",
+      "src/calculators/finance/net-worth.ts#calculateNetWorth",
+      "src/calculators/scenarios.ts#compareScenarios"
+    ],
+    "formulaScope": "Race time prediction",
+    "inputSignature": "known race distance/time,target distance,prediction model",
+    "outputSignature": "predicted race time",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "Pace engines time/distance assume constant pace; no Riegel exponent or calibrated race-performance prediction.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "No implementation of the described full domain model was found, but the inventory supplies no exact approved formula/model policy; this is not proof that new elementary mathematics is missing. Existing ratio, aggregate arithmetic and scenario primitives cover supplied totals."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 526,
+    "title": "Training Heart Rate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Training heart-rate zones",
+    "inputSignature": "max/resting HR,intensity,method",
+    "outputSignature": "bpm zones",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "Sports pace/speed and MET energy do not implement HR zone formula.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 527,
+    "title": "Golf Handicap Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Golf handicap",
+    "inputSignature": "score differentials,course/slope ratings,handicap system/rules",
+    "outputSignature": "handicap index",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "No WHS/USGA differential,round selection or adjustment contract.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 528,
+    "title": "Calories Burned by Exercise Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "calories-burned-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "Gross exercise kcal=MET*3.5*weightKg/200*minutes",
+    "inputSignature": "weightKg>0 <=1e6; MET[1,20]; minutes(0,1440]",
+    "outputSignature": "{value:kcal,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-2.test.ts"
+    ],
+    "evidence": [
+      "Health definition cites MET source and golden70kg,3.5MET,30min=128.625.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "User must supply MET; no exercise lookup or clinical prescription.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 530,
+    "title": "VO2 Max Estimate Calculator",
+    "classification": "SCOPE_DECISION_REQUIRED",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "VO2 max estimate",
+    "inputSignature": "test protocol and measured performance/HR variables",
+    "outputSignature": "ml/kg/min estimate",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/health/catalog-batch-2.ts",
+      "src/calculators/health/catalog-batch-1.ts",
+      "src/calculators/sports/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-518.ts",
+      "src/calculators/sports/draft-master-529.ts",
+      "src/calculators/health/catalog-batch-2.test.ts",
+      "src/calculators/health/catalog-batch-1.test.ts",
+      "src/calculators/sports/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-518.test.ts",
+      "src/calculators/sports/draft-master-529.test.ts"
+    ],
+    "evidence": [
+      "No Cooper/Rockport/HR ratio protocol or equation in sports/health families; power/mass draft explicitly excludes VO2 inference.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 535,
+    "title": "Sunrise/Sunset Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Sunrise/sunset",
+    "inputSignature": "date,latitude,longitude,timezone,horizon/refraction",
+    "outputSignature": "rise/set times,polar-day handling",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Astronomy orbital and distance engines contain no solar ephemeris/event-time solver.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "Searched implementation/export corpus for solar position, solarPosition, sunrise, sunset, declination and hour angle: no time/location solar ephemeris or horizon-event solver found. Supplied peakSunHours solar-energy multiplication and two-body orbital periods do not implement these coupled functions. Choice of ephemeris/refraction accuracy still needs scope agreement."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 536,
+    "title": "Solar Position Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Solar position",
+    "inputSignature": "timestamp,latitude,longitude,time basis,refraction convention",
+    "outputSignature": "solar azimuth/elevation",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Same distinct missing contract as495; shared title across domains does not establish an implementation.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "Searched implementation/export corpus for solar position, solarPosition, sunrise, sunset, declination and hour angle: no time/location solar ephemeris or horizon-event solver found. Supplied peakSunHours solar-energy multiplication and two-body orbital periods do not implement these coupled functions. Choice of ephemeris/refraction accuracy still needs scope agreement."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 537,
+    "title": "Air Pressure vs Altitude Calculator",
+    "classification": "FAMILY_VARIANT",
+    "engineSlugs": [
+      "barometric-pressure-calculator"
+    ],
+    "helperRefs": [],
+    "formulaScope": "P=P0*(1-2.25577e-5*h)^5.25588",
+    "inputSignature": "seaLevelPressurePa>0 <=200000; altitudeM[-1000,11000]",
+    "outputSignature": "{value:Pa,steps}",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/earth-science/catalog-batch-2.ts"
+    ],
+    "evidence": [
+      "NOAA source; goldenP0=101325,h1000 gives89874.560427.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+    ],
+    "limitations": [
+      "Lower standard-atmosphere approximation; no weather/humidity profile.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": false,
+    "publicationAuthorized": false
+  },
+  {
+    "masterId": 539,
+    "title": "Heat Index Calculator",
+    "classification": "MISSING_DISTINCT_CONTRACT",
+    "engineSlugs": [],
+    "helperRefs": [],
+    "formulaScope": "Heat index",
+    "inputSignature": "temperature,relative humidity,units,NOAA applicability",
+    "outputSignature": "apparent temperature",
+    "sourcePaths": [
+      "src/calculators/registry.ts",
+      "src/calculators/automotive/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-1.ts",
+      "src/calculators/energy/catalog-batch-2.ts",
+      "src/calculators/earth-science/catalog-batch-1.ts",
+      "src/calculators/astronomy/catalog-batch-1.ts",
+      "src/calculators/finance/loan-affordability.ts",
+      "src/calculators/food/catalog-batch-1.ts",
+      "src/calculators/travel/draft-master-517.ts",
+      "src/calculators/automotive/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-1.test.ts",
+      "src/calculators/energy/catalog-batch-2.test.ts",
+      "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "src/calculators/finance/loan-affordability.test.ts",
+      "src/calculators/food/catalog-batch-1.test.ts",
+      "src/calculators/travel/draft-master-517.test.ts"
+    ],
+    "evidence": [
+      "Same distinct missing heat-index contract as491; dew point/wind chill do not compute apparent-temperature heat index.",
+      "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution.",
+      "Searched implementation/export corpus for heat index, heatIndex, Rothfusz and Steadman; no apparent-temperature polynomial with humidity-dependent corrections exists. Magnus dew point and wind-chill equations are different functions. This confirms the NOAA heat-index model family is absent, not a domain-input adapter gap."
+    ],
+    "limitations": [
+      "Required signature describes the missing/undecided feature; it is not an implemented formula or approved master mapping.",
+      "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+    ],
+    "missingEngineConfirmed": true,
+    "publicationAuthorized": false
+  }
+]

@@ -1,0 +1,1810 @@
+[
+  {
+    "path": "src/calculators/launch-certification.ts",
+    "exports": [
+      "goldenMismatch",
+      "auditLaunchCertificationDefinitions",
+      "auditLaunchCertification",
+      "assertLaunchCertification"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-reconciliation.ts",
+    "exports": [
+      "reconcileMasterCatalog"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-mixed-coverage-report.ts",
+    "exports": [
+      "buildMixedReviewCoverageReport"
+    ]
+  },
+  {
+    "path": "src/calculators/public-content.ts",
+    "exports": [
+      "categoryContent",
+      "getCertificationCandidateContent",
+      "getPublicCalculatorContent",
+      "listPublicCalculators",
+      "listPublicCategories",
+      "getGovernedPublicCalculatorContent",
+      "listGovernedPublicCalculators"
+    ]
+  },
+  {
+    "path": "src/calculators/master-identity-crosswalk.ts",
+    "exports": [
+      "buildMasterIdentityCrosswalk",
+      "exportMasterIdentityCrosswalkCsv",
+      "buildIdentityEvidenceTriage"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-review-priority.ts",
+    "exports": [
+      "buildCatalogReviewPriority"
+    ]
+  },
+  {
+    "path": "src/calculators/units.ts",
+    "exports": [
+      "supportedUnits",
+      "convertUnit",
+      "getUnitFamily"
+    ]
+  },
+  {
+    "path": "src/calculators/publication-authority.ts",
+    "exports": [
+      "parsePublishedCalculatorManifest",
+      "isRepositoryPublicationEligible",
+      "composePublishedCalculatorSlugs"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-reconciliation-runner.ts",
+    "exports": [
+      "reconcileMasterCatalogCsv"
+    ]
+  },
+  {
+    "path": "src/calculators/launch-portfolio.ts",
+    "exports": [
+      "launchSpecs",
+      "launchDefinition",
+      "launchDefinitions",
+      "getLaunchSpec"
+    ]
+  },
+  {
+    "path": "src/calculators/reverse.ts",
+    "exports": [
+      "goalSeek"
+    ]
+  },
+  {
+    "path": "src/calculators/decimal-fraction-goldens.ts",
+    "exports": [
+      "decimalFractionVectors",
+      "decimalFractionGoldenTests"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-domain-audit.ts",
+    "exports": [
+      "MASTER_CATALOG_DOMAINS",
+      "auditCatalogDomainMappings"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-certification-queue.ts",
+    "exports": [
+      "buildCatalogCertificationQueue"
+    ]
+  },
+  {
+    "path": "src/calculators/reviewed-evidence-inventory.ts",
+    "exports": [
+      "buildReviewedEvidenceInventory"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-csv-ingestion.ts",
+    "exports": [
+      "parseMasterCatalogCsv"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-database-identity-audit.ts",
+    "exports": [
+      "auditDatabaseCatalogIdentities"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-mixed-review-queue.ts",
+    "exports": [
+      "buildMixedCategoryReviewQueue"
+    ]
+  },
+  {
+    "path": "src/calculators/implementation-inventory.ts",
+    "exports": [
+      "listCalculatorImplementationInventory",
+      "summarizeCalculatorImplementationInventory"
+    ]
+  },
+  {
+    "path": "src/calculators/reviewed-evidence-remediation-summary.ts",
+    "exports": [
+      "summarizeReviewedEvidenceRemediation"
+    ]
+  },
+  {
+    "path": "src/calculators/regulatory-metadata.ts",
+    "exports": [
+      "validateCalculatorRuleMetadata",
+      "serializeRuleMetadata",
+      "buildCatalogRegulatoryMetadata",
+      "resolveRegistryDefinition",
+      "buildVerifiedCatalogRegulatoryMetadata"
+    ]
+  },
+  {
+    "path": "src/calculators/public-route-readiness.ts",
+    "exports": [
+      "resolvePublicCalculatorRoute",
+      "buildPublicRouteReadinessReport"
+    ]
+  },
+  {
+    "path": "src/calculators/master-identity-contract-evidence.ts",
+    "exports": [
+      "buildMasterIdentityContractEvidence"
+    ]
+  },
+  {
+    "path": "src/calculators/calculator-completion-inventory.ts",
+    "exports": [
+      "buildCalculatorCompletionInventory"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-identity-candidate-report.ts",
+    "exports": [
+      "buildCatalogIdentityCandidateReport"
+    ]
+  },
+  {
+    "path": "src/calculators/engine.ts",
+    "exports": [
+      "runCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/authority-evidence.ts",
+    "exports": [
+      "authorityEvidenceSchema",
+      "auditAuthorityEvidence"
+    ]
+  },
+  {
+    "path": "src/calculators/registry.ts",
+    "exports": [
+      "calculatorRegistry"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-audited-reconciliation.ts",
+    "exports": [
+      "reconcileAuditedMasterCatalogCsv"
+    ]
+  },
+  {
+    "path": "src/calculators/search-ranking.ts",
+    "exports": [
+      "tokenizeCalculatorQuery",
+      "rankCalculatorSearchItems"
+    ]
+  },
+  {
+    "path": "src/calculators/sitemap-audit-helper.ts",
+    "exports": [
+      "sitemapEntriesForAudit"
+    ]
+  },
+  {
+    "path": "src/calculators/certification-evidence-packet.ts",
+    "exports": [
+      "inspectCertificationEvidencePacket",
+      "buildCertificationEvidencePacket"
+    ]
+  },
+  {
+    "path": "src/calculators/evidence-readiness-summary.ts",
+    "exports": [
+      "summarizeEvidenceReadiness"
+    ]
+  },
+  {
+    "path": "src/calculators/master-publication-audit.ts",
+    "exports": [
+      "buildMasterPublicationAudit",
+      "exportMasterPublicationAuditCsv"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-mixed-hold-adjudication.ts",
+    "exports": [
+      "buildMixedHoldAdjudicationReport"
+    ]
+  },
+  {
+    "path": "src/calculators/scenarios.ts",
+    "exports": [
+      "compareScenarios"
+    ]
+  },
+  {
+    "path": "src/calculators/rule-packs.ts",
+    "exports": [
+      "registerRulePack",
+      "listRulePacks",
+      "selectRulePack",
+      "clearRulePackRegistry"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-source-contract-evidence.ts",
+    "exports": [
+      "collectCatalogSourceContractEvidence"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-certification-queue-report.ts",
+    "exports": [
+      "buildCatalogCertificationQueueReport"
+    ]
+  },
+  {
+    "path": "src/calculators/precision.ts",
+    "exports": [
+      "roundTo",
+      "assertFiniteNumber"
+    ]
+  },
+  {
+    "path": "src/calculators/country-discovery.ts",
+    "exports": [
+      "listCertifiedCountryPriorities",
+      "getCountryDiscoveryProfile"
+    ]
+  },
+  {
+    "path": "src/calculators/search-index.ts",
+    "exports": [
+      "buildPublicCalculatorSearchIndex",
+      "findPublicCalculatorCandidates"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-publication-evidence.ts",
+    "exports": [
+      "reconcilePublicationEvidence"
+    ]
+  },
+  {
+    "path": "src/calculators/country-intelligence.ts",
+    "exports": [
+      "COUNTRY_PROFILES",
+      "resolveCountry",
+      "getCountryProfile",
+      "listWaveOneCountries"
+    ]
+  },
+  {
+    "path": "src/calculators/taxonomy.ts",
+    "exports": [
+      "registerCategory",
+      "registerJourney",
+      "listCategories",
+      "listJourneys",
+      "getJourney",
+      "clearTaxonomyRegistry",
+      "registerCoreTaxonomy"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-reconciliation-report.ts",
+    "exports": [
+      "buildCatalogReconciliationReport",
+      "exportCatalogReconciliationCsv"
+    ]
+  },
+  {
+    "path": "src/calculators/catalog-slug-review-ledger.ts",
+    "exports": [
+      "requireCompleteCatalogSlugReviewLedger",
+      "auditCatalogSlugReviewLedger"
+    ]
+  },
+  {
+    "path": "src/calculators/master-identity-proposals.ts",
+    "exports": [
+      "buildMasterIdentityProposals"
+    ]
+  },
+  {
+    "path": "src/calculators/sanitized-db-evidence.ts",
+    "exports": [
+      "sanitizedDbEvidenceSchema",
+      "evidencePayloadDigest",
+      "parseSanitizedDbEvidence",
+      "auditImportedIdentity",
+      "reconcileSanitizedDbEvidence"
+    ]
+  },
+  {
+    "path": "src/calculators/astronomy/catalog-batch-1.ts",
+    "exports": [
+      "orbitalPeriodCalculator",
+      "escapeVelocityCalculator",
+      "surfaceGravityCalculator",
+      "circularOrbitalVelocityCalculator",
+      "lightTravelTimeCalculator",
+      "astronomyBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/astronomy/catalog-batch-2.ts",
+    "exports": [
+      "astronomicalDistanceConverter",
+      "astronomyBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/astronomy/draft-master-531.ts",
+    "exports": [
+      "GRAVITY_REFERENCE_VERSION",
+      "planetaryGravityReferences",
+      "planetaryWeightCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/core/unit-conversion.ts",
+    "exports": [
+      "unitConversionCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/core/draft-master-232.ts",
+    "exports": [
+      "draftMaster232Calculator"
+    ]
+  },
+  {
+    "path": "src/calculators/core/percentage.ts",
+    "exports": [
+      "percentageCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/core/draft-exact-decimal.ts",
+    "exports": [
+      "parseDecimal",
+      "formatRational"
+    ]
+  },
+  {
+    "path": "src/calculators/core/draft-master-205.ts",
+    "exports": [
+      "basicDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/core/draft-master-233.ts",
+    "exports": [
+      "draftMaster233Calculator"
+    ]
+  },
+  {
+    "path": "src/calculators/core/draft-master-206.ts",
+    "exports": [
+      "scientificDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-10.ts",
+    "exports": [
+      "regularHeptagonalPrismVolume",
+      "regularHeptagonalPrismSurfaceArea",
+      "regularOctagonalPrismVolume",
+      "regularOctagonalPrismSurfaceArea",
+      "regularPolygonalPrismVolume",
+      "solidGeometryBatch10Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-6.ts",
+    "exports": [
+      "hollowCylinderVolume",
+      "hollowCylinderSurfaceArea",
+      "obliqueCylinderVolume",
+      "squarePyramidFrustumVolume",
+      "squarePyramidFrustumLateralArea",
+      "solidGeometryBatch6Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/geometry-batch-3.ts",
+    "exports": [
+      "regularPolygonExteriorAngle",
+      "regularPolygonDiagonalCount",
+      "regularPolygonApothem",
+      "regularPolygonCircumradius",
+      "annularSectorArea",
+      "geometryBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/slope-versioned-compatibility.ts",
+    "exports": [
+      "readPersistedSlopeHistoryRow",
+      "readVersionedSlopeSnapshot"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-2.ts",
+    "exports": [
+      "sphericalCapVolume",
+      "sphericalCapSurfaceArea",
+      "sphericalSectorVolume",
+      "cuboidSpaceDiagonal",
+      "capsuleVolume",
+      "solidGeometryBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-7.ts",
+    "exports": [
+      "sphericalShellVolume",
+      "sphericalShellSurfaceArea",
+      "rectangularPyramidVolume",
+      "triangularPyramidVolume",
+      "rectangularPyramidSurfaceArea",
+      "solidGeometryBatch7Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-5.ts",
+    "exports": [
+      "regularOctahedronSurfaceArea",
+      "triangularPrismVolume",
+      "triangularPrismSurfaceArea",
+      "regularDodecahedronVolume",
+      "regularIcosahedronVolume",
+      "solidGeometryBatch5Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/slope-legacy-compatibility.ts",
+    "exports": [
+      "calculateLegacySlopeCompatibility"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-9.ts",
+    "exports": [
+      "regularHexagonalPrismVolume",
+      "regularHexagonalPrismSurfaceArea",
+      "squarePrismVolume",
+      "squarePrismSurfaceArea",
+      "squarePrismSpaceDiagonal",
+      "solidGeometryBatch9Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-3.ts",
+    "exports": [
+      "cuboidSurfaceArea",
+      "hemisphereVolume",
+      "capsuleSurfaceArea",
+      "sphericalSegmentVolume",
+      "ellipsoidSurfaceAreaApprox",
+      "solidGeometryBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/geometry-batch-1.ts",
+    "exports": [
+      "rhombusArea",
+      "kiteArea",
+      "regularPentagonArea",
+      "regularHexagonArea",
+      "triangleInradius",
+      "geometryBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/geometry-batch-4.ts",
+    "exports": [
+      "triangleCircumradius",
+      "triangleExradiusA",
+      "triangleMedianA",
+      "triangleAngleBisectorA",
+      "triangleSideLawCosines",
+      "geometryBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/geometry-batch-5.ts",
+    "exports": [
+      "trapezoidCentroid",
+      "trapezoidMidsegment",
+      "parallelogramDiagonal",
+      "parallelogramHeight",
+      "rhombusSideFromDiagonals",
+      "geometryBatch5Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/geometry-batch-2.ts",
+    "exports": [
+      "chordLength",
+      "arcLength",
+      "circularSegmentArea",
+      "sectorPerimeter",
+      "regularPolygonInteriorAngle",
+      "geometryBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-reconciliation.ts",
+    "exports": [
+      "solidGeometryReconciliationManifest"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-1.ts",
+    "exports": [
+      "torusVolume",
+      "torusSurfaceArea",
+      "frustumVolume",
+      "frustumLateralArea",
+      "ellipsoidVolume",
+      "solidGeometryBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-8.ts",
+    "exports": [
+      "regularDodecahedronSurfaceArea",
+      "regularIcosahedronSurfaceArea",
+      "triangularPyramidSurfaceArea",
+      "regularPentagonalPrismVolume",
+      "regularPentagonalPrismSurfaceArea",
+      "solidGeometryBatch8Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/solid-geometry-batch-4.ts",
+    "exports": [
+      "squarePyramidVolume",
+      "squarePyramidLateralArea",
+      "regularTetrahedronVolume",
+      "regularTetrahedronSurfaceArea",
+      "regularOctahedronVolume",
+      "solidGeometryBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/geometry/catalog-completion.ts",
+    "exports": [
+      "triangleCalculator",
+      "rightTriangleCalculator",
+      "surfaceAreaCalculator",
+      "volumeCalculator",
+      "slopeCalculator",
+      "distanceCalculator",
+      "geometryCompletionDefinitions"
+    ]
+  },
+  {
+    "path": "src/calculators/chemistry/catalog-batch-1.ts",
+    "exports": [
+      "molarityCalculator",
+      "molalityCalculator",
+      "molesCalculator",
+      "dilutionCalculator",
+      "phCalculator",
+      "idealGasLawCalculator",
+      "gasDensityCalculator",
+      "percentCompositionCalculator",
+      "solutionConcentrationCalculator",
+      "stoichiometryCalculator",
+      "halfLifeCalculator",
+      "nernstEquationCalculator",
+      "beerLambertLawCalculator",
+      "titrationCalculator",
+      "chemistryBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/chemistry/molecular-weight.ts",
+    "exports": [
+      "molecularWeightCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-batch-9.ts",
+    "exports": [
+      "derivativeCalculator",
+      "integralCalculator",
+      "limitCalculator",
+      "advancedMathBatch9Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+    "exports": [
+      "polynomialCalculator",
+      "rootFinderCalculator",
+      "equationSolverCalculator",
+      "advancedMathBatch8Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-final.ts",
+    "exports": [
+      "matrixCalculator",
+      "functionPlotter3dCalculator",
+      "advancedMathFinalDefinitions"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/numerical-calculus.ts",
+    "exports": [
+      "derivativeAt",
+      "integrate",
+      "limitAt"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-batch-5.ts",
+    "exports": [
+      "linearEquationCalculator",
+      "quadraticFormulaCalculator",
+      "matrixDeterminantCalculator",
+      "advancedMathDefinitions"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+    "exports": [
+      "graphingCalculator",
+      "functionPlotter2dCalculator",
+      "seriesCalculator",
+      "advancedMathBatch10Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-batch-7.ts",
+    "exports": [
+      "rrefCalculator",
+      "vectorCalculator",
+      "sequenceCalculator",
+      "advancedMathBatch7Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/expression-engine.ts",
+    "exports": [
+      "parseExpression",
+      "evaluateExpression",
+      "compileExpression"
+    ]
+  },
+  {
+    "path": "src/calculators/advanced-math/catalog-batch-6.ts",
+    "exports": [
+      "systemOfEquationsCalculator",
+      "matrixInverseCalculator",
+      "complexNumberCalculator",
+      "advancedMathBatch6Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/health/bmi.ts",
+    "exports": [
+      "bmiCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/health/catalog-batch-1.ts",
+    "exports": [
+      "bmrCalculator",
+      "tdeeCalculator",
+      "calorieCalculator",
+      "bodyFatCalculator",
+      "idealWeightCalculator",
+      "healthyWeightCalculator",
+      "leanBodyMassCalculator",
+      "bodySurfaceAreaCalculator",
+      "macroCalculator",
+      "healthBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/health/catalog-batch-2.ts",
+    "exports": [
+      "proteinIntakeCalculator",
+      "carbohydrateIntakeCalculator",
+      "fatIntakeCalculator",
+      "caloriesBurnedCalculator",
+      "oneRepMaxCalculator",
+      "healthBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering-construction/catalog-batch-1.ts",
+    "exports": [
+      "concreteCalculator",
+      "squareFootageCalculator",
+      "paintCalculator",
+      "flooringCalculator",
+      "roofingCalculator",
+      "tileCalculator",
+      "drywallCalculator",
+      "lumberCalculator",
+      "engineeringConstructionBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+    "exports": [
+      "stairCalculator",
+      "fenceCalculator",
+      "deckingCalculator",
+      "gravelCalculator",
+      "asphaltCalculator",
+      "excavationCalculator",
+      "wallpaperCalculator",
+      "insulationCalculator",
+      "engineeringConstructionBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering-construction/catalog-batch-3.ts",
+    "exports": [
+      "poolVolumeCalculator",
+      "waterTankCalculator",
+      "pipeVolumeCalculator",
+      "electricalLoadCalculator",
+      "voltageDropCalculator",
+      "resistorCalculator",
+      "hvacBtuCalculator",
+      "solarPanelRequirementCalculator",
+      "batteryStorageCalculator",
+      "engineeringConstructionBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/conversion/catalog-batch-4.ts",
+    "exports": [
+      "cookingMeasurementConverter",
+      "conversionBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/conversion/catalog-batch-1.ts",
+    "exports": [
+      "lengthConverter",
+      "areaConverter",
+      "volumeConverter",
+      "temperatureConverter",
+      "speedConverter",
+      "conversionBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/conversion/draft-master-435.ts",
+    "exports": [
+      "draftMaster435Calculator"
+    ]
+  },
+  {
+    "path": "src/calculators/conversion/catalog-batch-2.ts",
+    "exports": [
+      "pressureConverter",
+      "energyConverter",
+      "powerConverter",
+      "timeConverter",
+      "angleConverter",
+      "conversionBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/conversion/catalog-batch-3.ts",
+    "exports": [
+      "dataStorageConverter",
+      "densityConverter",
+      "forceConverter",
+      "torqueConverter",
+      "frequencyConverter",
+      "conversionBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/conversion/draft-master-441.ts",
+    "exports": [
+      "draftMaster441Calculator"
+    ]
+  },
+  {
+    "path": "src/calculators/travel/draft-master-517.ts",
+    "exports": [
+      "weightedGradeCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/travel/catalog-batch-1.ts",
+    "exports": [
+      "hotelCostSplitCalculator",
+      "groupExpenseSplitCalculator",
+      "tipSplitCalculator",
+      "travelEverydayBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/travel/draft-master-518.ts",
+    "exports": [
+      "sleepDurationCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/travel/catalog-batch-2.ts",
+    "exports": [
+      "fuelTripCostCalculator",
+      "tripCostCalculator",
+      "travelEverydayBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/travel/catalog-batch-3.ts",
+    "exports": [
+      "householdUtilityCostCalculator",
+      "movingCostCalculator",
+      "travelEverydayBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/sip-high-precision-reference.ts",
+    "exports": [
+      "decimalRational",
+      "exactDeposits",
+      "exactCents",
+      "errorCentInterval",
+      "stableDiagnostic"
+    ]
+  },
+  {
+    "path": "src/calculators/date-time/catalog-batch-4.ts",
+    "exports": [
+      "timeZoneCalculator",
+      "countdownCalculator",
+      "dateTimeBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/date-time/catalog-batch-1.ts",
+    "exports": [
+      "ageCalculator",
+      "dateDifferenceCalculator",
+      "dateAddSubtractCalculator",
+      "dayCounterCalculator",
+      "dayOfWeekCalculator",
+      "dateTimeBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/date-time/catalog-batch-2.ts",
+    "exports": [
+      "timeDurationCalculator",
+      "hoursCalculator",
+      "weekNumberCalculator",
+      "businessDaysCalculator",
+      "timeCardCalculator",
+      "dateTimeBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/date-time/catalog-batch-3.ts",
+    "exports": [
+      "ninetyDayCalculator",
+      "thirtyDayCalculator",
+      "sixtyDayCalculator",
+      "dateTimeBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/business/break-even.ts",
+    "exports": [
+      "breakEvenCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/business/catalog-batch-1.ts",
+    "exports": [
+      "customerAcquisitionCostCalculator",
+      "monthlyRecurringRevenueCalculator",
+      "annualRecurringRevenueCalculator",
+      "customerChurnRateCalculator",
+      "conversionRateCalculator",
+      "targetProfitUnitsCalculator",
+      "businessGrowthBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/business/catalog-batch-2.ts",
+    "exports": [
+      "roasCalculator",
+      "arpuCalculator",
+      "customerRetentionRateCalculator",
+      "netRevenueRetentionCalculator",
+      "monthlyBurnRateCalculator",
+      "cashRunwayCalculator",
+      "businessGrowthBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/statistics/catalog-batch-4.ts",
+    "exports": [
+      "linearRegressionCalculator",
+      "weightedMeanCalculator",
+      "percentileCalculator",
+      "quartileCalculator",
+      "interquartileRangeCalculator",
+      "coefficientOfVariationCalculator",
+      "expectedValueCalculator",
+      "bayesTheoremCalculator",
+      "oddsCalculator",
+      "statisticsBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/statistics/catalog-batch-1.ts",
+    "exports": [
+      "meanMedianModeRangeCalculator",
+      "standardDeviationCalculator",
+      "varianceCalculator",
+      "zScoreCalculator",
+      "statisticsBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/statistics/catalog-batch-2.ts",
+    "exports": [
+      "confidenceIntervalCalculator",
+      "sampleSizeCalculator",
+      "probabilityCalculator",
+      "permutationCalculator",
+      "statisticsBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/statistics/catalog-batch-3.ts",
+    "exports": [
+      "combinationCalculator",
+      "binomialProbabilityCalculator",
+      "normalDistributionCalculator",
+      "correlationCalculator",
+      "statisticsBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/food/catalog-batch-1.ts",
+    "exports": [
+      "bakersPercentageCalculator",
+      "doughHydrationCalculator",
+      "ingredientFromBakersPercentCalculator",
+      "doughTotalWeightCalculator",
+      "doughPieceWeightCalculator",
+      "brineSaltCalculator",
+      "foodCookingBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/food/draft-master-498.ts",
+    "exports": [
+      "ingredientWeightVolumeDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/food/catalog-batch-2.ts",
+    "exports": [
+      "recipeScalingCalculator",
+      "servingSizeCalculator",
+      "nutritionScalingCalculator",
+      "coffeeRatioCalculator",
+      "waterToRiceRatioCalculator",
+      "foodCookingBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/food/catalog-batch-3.ts",
+    "exports": [
+      "cakePanConversionCalculator",
+      "foodCookingBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/physics/catalog-batch-4.ts",
+    "exports": [
+      "restitutionCalculator",
+      "solidDiskInertiaCalculator",
+      "pendulumPeriodCalculator",
+      "rotatingFrameCentrifugalCalculator",
+      "radiusOfGyrationCalculator",
+      "physicsMechanicsBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/physics/catalog-batch-1.ts",
+    "exports": [
+      "speedCalculator",
+      "velocityCalculator",
+      "accelerationCalculator",
+      "distanceTimeCalculator",
+      "forceCalculator",
+      "workCalculator",
+      "powerCalculator",
+      "kineticEnergyCalculator",
+      "potentialEnergyCalculator",
+      "physicsBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/physics/catalog-batch-5.ts",
+    "exports": [
+      "physicalPendulum",
+      "rollingKinetic",
+      "uniformRodInertia",
+      "angularKinematics",
+      "rollingSpeed",
+      "physicsMechanicsBatch5Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/physics/catalog-batch-2.ts",
+    "exports": [
+      "momentumCalculator",
+      "pressureCalculator",
+      "densityCalculator",
+      "frequencyCalculator",
+      "periodCalculator",
+      "wavelengthCalculator",
+      "physicsBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/physics/catalog-batch-3.ts",
+    "exports": [
+      "ohmsLawCalculator",
+      "electricalPowerCalculator",
+      "voltageCalculator",
+      "currentCalculator",
+      "resistanceCalculator",
+      "capacitanceCalculator",
+      "coulombForceCalculator",
+      "projectileMotionCalculator",
+      "freeFallCalculator",
+      "torqueCalculator",
+      "angularVelocityCalculator",
+      "physicsBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/automotive/catalog-batch-1.ts",
+    "exports": [
+      "travelTimeCalculator",
+      "roadTripFuelCalculator",
+      "roadTripFuelCostCalculator",
+      "litersPer100KmToMpgCalculator",
+      "usMpgToLitersPer100KmCalculator",
+      "costPerDistanceCalculator",
+      "automotiveTravelBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/automotive/catalog-batch-2.ts",
+    "exports": [
+      "fuelEconomyCalculator",
+      "gasMileageCalculator",
+      "tripFuelCalculator",
+      "automotiveCatalogBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/automotive/catalog-batch-3.ts",
+    "exports": [
+      "tireSizeCalculator",
+      "horsepowerCalculator",
+      "engineHorsepowerCalculator",
+      "automotiveEngineeringBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/numeric/exact-positive-product.ts",
+    "exports": [
+      "exactPositiveProduct"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/fluid-mechanics-batch-1.ts",
+    "exports": [
+      "reynoldsNumberCalculator",
+      "hydrostaticPressureCalculator",
+      "buoyancyCalculator",
+      "specificGravityCalculator",
+      "dynamicPressureCalculator",
+      "fluidMechanicsBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/fluid-mechanics-batch-2.ts",
+    "exports": [
+      "volumetricFlowRateCalculator",
+      "massFlowRateCalculator",
+      "pipeVelocityCalculator",
+      "kinematicViscosityCalculator",
+      "bernoulliPressureCalculator",
+      "fluidMechanicsBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/material-mechanics-batch-5.ts",
+    "exports": [
+      "hollowPolar",
+      "hollowTorsionalStress",
+      "hollowTwist",
+      "cantileverSlope",
+      "cantileverUdlDeflection",
+      "materialMechanicsBatch5Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/structural-mechanics-batch-4.ts",
+    "exports": [
+      "cantileverTipStiffness",
+      "simplySupportedCenterStiffness",
+      "bendingStrain",
+      "cantileverPointLoadRootCurvature",
+      "cantileverUdlRootCurvature",
+      "structuralMechanicsBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/structural-mechanics-batch-3.ts",
+    "exports": [
+      "leftReaction",
+      "pointLoadDeflectionAtLoad",
+      "cantileverPointMoment",
+      "cantileverUdlMoment",
+      "beamCurvature",
+      "structuralMechanicsBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/structural-mechanics-batch-2.ts",
+    "exports": [
+      "cantileverMomentSlope",
+      "flexuralRigidity",
+      "rectangularSectionModulus",
+      "circularSectionModulus",
+      "cantileverUdlSlope",
+      "structuralMechanicsBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/section-properties-batch-2.ts",
+    "exports": [
+      "quarterCircleArea",
+      "quarterCircleCentroid",
+      "ellipseArea",
+      "ellipseCentroidOffset",
+      "sectorArea",
+      "sectionPropertiesBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/fluid-mechanics-batch-3.ts",
+    "exports": [
+      "frictionFactorCalculator",
+      "darcyWeisbachCalculator",
+      "orificeFlowCalculator",
+      "machNumberCalculator",
+      "speedOfSoundCalculator",
+      "fluidMechanicsBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/structural-mechanics-batch-1.ts",
+    "exports": [
+      "ssCenterDeflection",
+      "ssUdlDeflection",
+      "ssCenterEndSlope",
+      "rectangularBending",
+      "circularBending",
+      "structuralMechanicsBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/material-mechanics-batch-3.ts",
+    "exports": [
+      "bendingStress",
+      "torsionalShear",
+      "cantileverDeflection",
+      "thermalExpansion",
+      "hookesLaw",
+      "materialMechanicsBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/material-mechanics-batch-1.ts",
+    "exports": [
+      "normalStress",
+      "engineeringStrain",
+      "youngsModulus",
+      "poissonsRatio",
+      "shearStress",
+      "materialMechanicsBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/material-mechanics-batch-4.ts",
+    "exports": [
+      "polarMomentSolidShaft",
+      "angleOfTwist",
+      "torsionalStiffness",
+      "shaftPower",
+      "helicalSpringDeflection",
+      "materialMechanicsBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/section-properties-batch-1.ts",
+    "exports": [
+      "compositeCentroid",
+      "triangleCentroid",
+      "semicircleArea",
+      "semicircleCentroid",
+      "annulusArea",
+      "sectionPropertiesBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/engineering/material-mechanics-batch-2.ts",
+    "exports": [
+      "bulkModulus",
+      "shearModulus",
+      "thermalStrain",
+      "factorOfSafety",
+      "axialDeformation",
+      "materialMechanicsBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-9.ts",
+    "exports": [
+      "cellConcentrationCalculator",
+      "biologyBatch9Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-4.ts",
+    "exports": [
+      "plantPopulationCalculator",
+      "biologyBatch4Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-1.ts",
+    "exports": [
+      "populationGrowthCalculator",
+      "doublingTimeCalculator",
+      "logisticGrowthRateCalculator",
+      "populationDensityCalculator",
+      "microscopeMagnificationCalculator",
+      "biologyBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-8.ts",
+    "exports": [
+      "dnaConcentrationCalculator",
+      "rnaConcentrationCalculator",
+      "biologyBatch8Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-5.ts",
+    "exports": [
+      "agriculturalYieldCalculator",
+      "biologyBatch5Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-2.ts",
+    "exports": [
+      "hardyWeinbergCalculator",
+      "biologyBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-10.ts",
+    "exports": [
+      "cellDilutionCalculator",
+      "biologyBatch10Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-7.ts",
+    "exports": [
+      "bacterialGrowthCalculator",
+      "biologyBatch7Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-3.ts",
+    "exports": [
+      "punnettSquareCalculator",
+      "biologyBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/biology/catalog-batch-6.ts",
+    "exports": [
+      "microbiologyDilutionCalculator",
+      "biologyBatch6Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+    "exports": [
+      "ipSubnetCalculator",
+      "cidrCalculator",
+      "bandwidthCalculator",
+      "downloadTimeCalculator",
+      "uploadTimeCalculator",
+      "dataTransferCalculator",
+      "storageConversionCalculator",
+      "raidCapacityCalculator",
+      "screenPpiCalculator",
+      "aspectRatioCalculator",
+      "technologyBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/technology-computing/catalog-batch-2.ts",
+    "exports": [
+      "resolutionCalculator",
+      "dpiCalculator",
+      "batteryRuntimeCalculator",
+      "upsRuntimeCalculator",
+      "powerSupplyCalculator",
+      "websiteBandwidthCalculator",
+      "cloudStorageCostCalculator",
+      "cloudDataTransferCostCalculator",
+      "base64SizeCalculator",
+      "passwordEntropyCalculator",
+      "technologyBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/technology-computing/catalog-batch-3.ts",
+    "exports": [
+      "videoFileSizeCalculator",
+      "audioFileSizeCalculator",
+      "videoBitrateCalculator",
+      "compressionRatioCalculator",
+      "databaseStorageCalculator",
+      "backupStorageCalculator",
+      "technologyBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/sports/catalog-batch-1.ts",
+    "exports": [
+      "runningPaceCalculator",
+      "cyclingSpeedCalculator",
+      "swimmingPaceCalculator",
+      "sportsBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/sports/draft-master-529.ts",
+    "exports": [
+      "powerWeightRatioDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/earth-science/catalog-batch-1.ts",
+    "exports": [
+      "dewPointCalculator",
+      "windChillCalculator",
+      "lapseRateCalculator",
+      "streamflowCalculator",
+      "rainfallVolumeCalculator",
+      "earthScienceBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/earth-science/catalog-batch-2.ts",
+    "exports": [
+      "barometricPressureCalculator",
+      "airDensityCalculator",
+      "geothermalGradientCalculator",
+      "porosityCalculator",
+      "hydraulicGradientCalculator",
+      "earthScienceBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/earth-science/catalog-batch-3.ts",
+    "exports": [
+      "darcyLawCalculator",
+      "rockDensityCalculator",
+      "earthquakeEnergyCalculator",
+      "seismicTravelTimeCalculator",
+      "specificDischargeCalculator",
+      "earthScienceBatch3Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/compound-interest.ts",
+    "exports": [
+      "compoundInterestCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/debt-aggregate-independent-goldens.ts",
+    "exports": [
+      "debtAggregateIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/public-content.ts",
+    "exports": [
+      "financePublicContent"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/recurring-deposit.ts",
+    "exports": [
+      "recurringDepositFutureValue",
+      "requiredMonthlyRecurringDeposit",
+      "recurringDepositCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-analysis.ts",
+    "exports": [
+      "paymentForLoan",
+      "maxPrincipalForPayment",
+      "loanAnalysisCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/investment-math.ts",
+    "exports": [
+      "futureValue",
+      "presentValueFromFuture",
+      "cagr",
+      "realReturnPercent",
+      "investmentMathCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/debt-payoff.ts",
+    "exports": [
+      "simulateDebtPayoff",
+      "debtPayoffCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/sip-v2-goldens.ts",
+    "exports": [
+      "sipV2Goldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/swp.ts",
+    "exports": [
+      "simulateSwp",
+      "sustainableMonthlyWithdrawal",
+      "swpCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/sip.ts",
+    "exports": [
+      "sipFutureValue",
+      "requiredMonthlySip",
+      "sipCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/sip-v2-candidate.ts",
+    "exports": [
+      "sipV2FutureValue",
+      "requiredMonthlySipV2",
+      "sipV2Candidate",
+      "sipV2PeriodSnapshots"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-payment.ts",
+    "exports": [
+      "loanPaymentCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/sip-independent-goldens.ts",
+    "exports": [
+      "sipIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/emergency-fund.ts",
+    "exports": [
+      "calculateEmergencyFund",
+      "emergencyFundCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-scenarios.ts",
+    "exports": [
+      "compareLoanRateSensitivity"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/roi.ts",
+    "exports": [
+      "calculateRoi",
+      "roiCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/inflation.ts",
+    "exports": [
+      "calculateInflation",
+      "inflationCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/recurring-deposit-independent-goldens.ts",
+    "exports": [
+      "recurringDepositIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/simple-interest.ts",
+    "exports": [
+      "calculateSimpleInterest",
+      "simpleInterestCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/savings-goal.ts",
+    "exports": [
+      "savingsFutureValue",
+      "requiredMonthlySavings",
+      "calculateSavingsGoal",
+      "savingsGoalCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-prepayment.ts",
+    "exports": [
+      "remainingLoanBalance",
+      "analyzeLoanPrepayment",
+      "loanPrepaymentCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/term-deposit-independent-goldens.ts",
+    "exports": [
+      "termDepositIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/compound-interest-independent-goldens.ts",
+    "exports": [
+      "compoundInterestIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/simple-interest-independent-goldens.ts",
+    "exports": [
+      "simpleInterestIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-affordability.ts",
+    "exports": [
+      "calculateLoanAffordability",
+      "loanAffordabilityCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/investment-cashflow-independent-goldens.ts",
+    "exports": [
+      "investmentCashflowIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/term-deposit.ts",
+    "exports": [
+      "termDepositFutureValue",
+      "termDepositCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-refinance.ts",
+    "exports": [
+      "compareLoanRefinance",
+      "loanRefinanceCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/step-up-sip.ts",
+    "exports": [
+      "stepUpSipFutureValue",
+      "requiredInitialStepUpSip",
+      "stepUpSipCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/debt-payoff-independent-goldens.ts",
+    "exports": [
+      "debtPayoffIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/net-worth.ts",
+    "exports": [
+      "calculateNetWorth",
+      "netWorthCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/mortgage.ts",
+    "exports": [
+      "mortgageCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/rate-conversion.ts",
+    "exports": [
+      "nominalToEffectivePercent",
+      "effectiveToNominalPercent",
+      "convertAnnualRate",
+      "rateConversionCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/credit-card-payoff.ts",
+    "exports": [
+      "requiredMonthlyPaymentForTargetMonths",
+      "simulateCreditCardPayoff",
+      "creditCardPayoffCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/planning-independent-goldens.ts",
+    "exports": [
+      "planningIndependentGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/finance/loan-comparison.ts",
+    "exports": [
+      "compareLoans",
+      "loanComparisonCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/energy/draft-master-484.ts",
+    "exports": [
+      "evChargingEnergyDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/energy/catalog-batch-1.ts",
+    "exports": [
+      "evChargingCostCalculator",
+      "evRangeCalculator",
+      "evTripEnergyCalculator",
+      "evChargingTimeCalculator",
+      "solarDailyEnergyCalculator",
+      "solarPaybackCalculator",
+      "energyEvBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/energy/catalog-batch-2.ts",
+    "exports": [
+      "applianceRunningCostCalculator",
+      "homeEnergyConsumptionCalculator",
+      "energyEnvironmentCatalogBatch1Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/energy/catalog-batch-3.ts",
+    "exports": [
+      "lightingEnergyCalculator",
+      "energyEnvironmentCatalogBatch2Definitions"
+    ]
+  },
+  {
+    "path": "src/calculators/energy/draft-master-487.ts",
+    "exports": [
+      "rainwaterHarvestingDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/energy/draft-master-481.ts",
+    "exports": [
+      "solarPanelSizingDraftCalculator"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/draft-master-435-goldens.ts",
+    "exports": [
+      "draftMaster435Goldens"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/pending-specialist-arithmetic.ts",
+    "exports": [
+      "mortgageArithmeticVectors",
+      "bmiArithmeticVectors"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/sip-high-precision-vectors.ts",
+    "exports": [
+      "sipHighPrecisionVectors"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/draft-master-233-goldens.ts",
+    "exports": [
+      "pcgGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/draft-master-441-goldens.ts",
+    "exports": [
+      "draftMaster441Goldens"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/draft-master-232-goldens.ts",
+    "exports": [
+      "bigNumberGoldens"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/sip-numerical-compatibility.ts",
+    "exports": [
+      "sipNumericalCompatibilityVectors"
+    ]
+  },
+  {
+    "path": "src/calculators/verification/fixtures/sip-inverse-independent.ts",
+    "exports": [
+      "sipInverseIndependentVectors"
+    ]
+  }
+]
