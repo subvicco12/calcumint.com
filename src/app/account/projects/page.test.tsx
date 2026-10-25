@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import {beforeEach,expect,it,vi} from 'vitest';
+import {readFileSync} from 'node:fs';
 import {renderToStaticMarkup} from 'react-dom/server';
 const state=vi.hoisted(()=>({plan:'pro',profileError:false,historySlug:'slope-calculator',filters:[] as string[],rows:[] as unknown[]}));
 vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:'owner-a'}},error:null})},from:(table:string)=>{const q={select:()=>q,eq:(k:string,v:string)=>{state.filters.push(`${table}:${k}:${v}`);return q;},order:()=>q,or:()=>q,limit:async()=>({data:state.rows,error:null}),maybeSingle:async()=>({data:table==='profiles'?{plan:state.plan}:table==='calculation_history'?{id:'22222222-2222-4222-8222-222222222222',calculator_slug:state.historySlug,calculator_version:7}:{id:'11111111-1111-4111-8111-111111111111',name:'Old project',description:null,created_at:'2026-10-20T12:00:00Z'},error:table==='profiles'&&state.profileError?{}:null})};return q;}})}));
@@ -17,3 +18,15 @@ it.each(['free','outage'])('retains owned project reads while hiding paid captur
 it('rejects private DRAFT capture handoffs without rendering capture controls',async()=>{state.historySlug='basic-calculator';const html=renderToStaticMarkup(await ProjectPage({params:Promise.resolve({id:project}),searchParams:Promise.resolve({historyId:history})}));expect(html).toContain('Projects unavailable');expect(html).not.toContain('Save scenario');});
 it('pages scenarios inside the project and keeps private reopen links on their guarded route',async()=>{state.rows=Array.from({length:21},(_,i)=>({id:`33333333-3333-4333-8333-${String(i+1).padStart(12,'0')}`,name:`Scenario ${i+1}`,calculator_slug:i===0?'basic-calculator':'slope-calculator',calculator_version:1,created_at:'2026-10-20T12:00:00.123456Z'}));const html=renderToStaticMarkup(await ProjectPage({params:Promise.resolve({id:project}),searchParams:Promise.resolve({historyId:history})}));expect(html).toContain('Scenario 20');expect(html).not.toContain('Scenario 21');expect(html).toContain('/account/drafts?source=scenario');expect(html).toContain(`historyId=${history}&amp;cursor=`);});
 it('fails closed for malformed project IDs and cursors',async()=>{const html=renderToStaticMarkup(await ProjectPage({params:Promise.resolve({id:'invalid'}),searchParams:Promise.resolve({})}));expect(html).toContain('Projects unavailable');expect(state.filters).toEqual([]);const bad=renderToStaticMarkup(await ProjectsPage({searchParams:Promise.resolve({cursor:'bad'})}));expect(bad).toContain('Projects unavailable');});
+it('treats invalid plan data as unavailable rather than a Free account',async()=>{
+ state.plan='invalid';const html=renderToStaticMarkup(await ProjectPage({params:Promise.resolve({id:project}),searchParams:Promise.resolve({historyId:history})}));
+ expect(html).toContain('Plan details are temporarily unavailable');expect(html).not.toContain('Saving scenarios requires Pro');expect(html).not.toContain('Delete project');
+});
+it.each(['projects','scenarios'])('preserves captured name casing under application CSS in %s',async kind=>{
+ const base={id:project,name:'eBay original',created_at:'2026-10-20T12:00:00Z'};
+ state.rows=[kind==='projects'?{...base,description:null}:{...base,calculator_slug:'slope-calculator',calculator_version:1}];
+ const html=renderToStaticMarkup(kind==='projects'?await ProjectsPage({searchParams:Promise.resolve({})}):await ProjectPage({params:Promise.resolve({id:project}),searchParams:Promise.resolve({})}));
+ const style=document.createElement('style'),container=document.createElement('div');style.textContent=readFileSync('src/app/globals.css','utf8');container.innerHTML=html;document.head.append(style);document.body.append(container);
+ try{expect(container.querySelector('li a')?.textContent).toBe('eBay original');expect(getComputedStyle(container.querySelector('li')!).textTransform).toBe('none');}
+ finally{container.remove();style.remove();}
+});

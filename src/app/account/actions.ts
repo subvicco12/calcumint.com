@@ -77,8 +77,13 @@ export async function saveCalculationHistory(entry: {
   return saveHistoryAtomically(supabase,requestId,snapshot,user.id);
 }
 
-export async function createCalculationProject(formData:FormData){const{supabase,user}=await requireFormUser(formData);const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.projects)throw new Error("Projects require Pro or Business");const name=String(formData.get("name")??"").trim().slice(0,120);const description=String(formData.get("description")??"").trim().slice(0,1000);if(!name)throw new Error("Project name is required");const{error}=await supabase.from("calculation_projects").insert({user_id:user.id,name,description:description||null});if(error)throw new Error("Could not create project");revalidatePath("/account");}
-export async function deleteCalculationProject(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("projectId")??"");if(!id)throw new Error("Project id is required");const{error}=await supabase.from("calculation_projects").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete project");revalidatePath("/account");}
+function revalidateProjectWorkspace(projectId?:string){
+ revalidatePath('/account');revalidatePath('/account/projects');
+ if(projectId)revalidatePath(`/account/projects/${encodeURIComponent(projectId)}`);
+ else revalidatePath('/account/projects/[id]','page');
+}
+export async function createCalculationProject(formData:FormData){const{supabase,user}=await requireFormUser(formData);const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.projects)throw new Error("Projects require Pro or Business");const name=String(formData.get("name")??"").trim().slice(0,120);const description=String(formData.get("description")??"").trim().slice(0,1000);if(!name)throw new Error("Project name is required");const{error}=await supabase.from("calculation_projects").insert({user_id:user.id,name,description:description||null});if(error)throw new Error("Could not create project");revalidateProjectWorkspace();}
+export async function deleteCalculationProject(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("projectId")??"");if(!id)throw new Error("Project id is required");const{error}=await supabase.from("calculation_projects").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete project");revalidateProjectWorkspace(id);}
 
 export async function saveProjectScenario(formData:FormData){
  const{supabase,user}=await requireFormUser(formData);
@@ -100,7 +105,7 @@ export async function saveProjectScenario(formData:FormData){
  const requestId=z.string().uuid().parse(formData.get("requestId")??randomUUID());
  const result=await supabase.rpc("save_project_scenario_atomic",{p_expected_owner_id:user.id,p_request_id:requestId,p_project_id:projectId,p_history_id:historyId,p_name:name});
  if(result.error||result.data!==requestId||!z.string().uuid().safeParse(result.data).success)throw new Error("Could not save scenario");
- revalidatePath("/account");
+ revalidateProjectWorkspace(projectId);
 }
-export async function updateProjectScenarioName(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("scenarioId")??"");const name=String(formData.get("name")??"").trim().slice(0,120);if(!id||!name)throw new Error("Scenario and name are required");const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.scenarios)throw new Error("Saved scenarios require Pro or Business");const{error}=await supabase.from("saved_scenarios").update({name,updated_at:new Date().toISOString()}).eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not rename scenario");revalidatePath("/account");}
-export async function deleteProjectScenario(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("scenarioId")??"");if(!id)throw new Error("Scenario id is required");const{error}=await supabase.from("saved_scenarios").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete scenario");revalidatePath("/account");}
+export async function updateProjectScenarioName(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("scenarioId")??"");const name=String(formData.get("name")??"").trim().slice(0,120);if(!id||!name)throw new Error("Scenario and name are required");const entitlements=await readAccountEntitlements(supabase,user.id);if(!entitlements.scenarios)throw new Error("Saved scenarios require Pro or Business");const{error}=await supabase.from("saved_scenarios").update({name,updated_at:new Date().toISOString()}).eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not rename scenario");revalidateProjectWorkspace();}
+export async function deleteProjectScenario(formData:FormData){const{supabase,user}=await requireFormUser(formData);const id=String(formData.get("scenarioId")??"");if(!id)throw new Error("Scenario id is required");const{error}=await supabase.from("saved_scenarios").delete().eq("id",id).eq("user_id",user.id);if(error)throw new Error("Could not delete scenario");revalidateProjectWorkspace();}

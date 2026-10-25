@@ -35,3 +35,8 @@ it('preserves the displayed case of captured scenario names under application CS
  try{expect(container.querySelector('li a')?.textContent).toBe('Historical slope');expect(getComputedStyle(container.querySelector('li')!).textTransform).toBe('none');}
  finally{container.remove();style.remove();}
 });
+it('offers older history records to project selection while retaining private reviewer handoffs',async()=>{
+ expect(await render()).toContain(`/account/projects?historyId=${row(1).id}`);
+ state.rows=[{...row(1),calculator_slug:'basic-calculator'}];
+ expect(await render()).not.toContain(`/account/projects?historyId=${row(1).id}`);
+});

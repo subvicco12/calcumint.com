@@ -19,3 +19,7 @@ it('retains private DRAFT reviewer access boundaries instead of opening their re
 it('escapes recorded text as data',async()=>{state.row={calculator_slug:'percentage-of-value-calculator',calculator_version:1,input_data:{note:'<script>alert(1)</script>'},output_data:{result:7}};const html=await render();expect(html).toContain('&lt;script&gt;');expect(html).not.toContain('<script>alert(1)</script>');});
 
 it('keeps owned retired calculator records readable without requiring current registry identity',async()=>{state.row={calculator_slug:'retired-definition',calculator_version:11,input_data:{pastInput:4},output_data:{pastResult:9}};const html=await render();expect(html).toContain('version 11');expect(html).toContain('retired-definition');expect(html).toContain('pastResult');});
+it('offers a project handoff for an owned history record without recomputing it',async()=>{
+ expect(await render()).toContain(`/account/projects?historyId=${id}`);
+ expect(await render('scenario')).not.toContain(`/account/projects?historyId=${id}`);
+});
