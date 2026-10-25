@@ -49,7 +49,7 @@ jobs:
       - name: Isolated browser transport recovery
         run: |
           test -x "$CHROMIUM_PATH"
-          node --test --test-reporter=spec tests/next-runtime/browser-fixture.test.mjs
+          node --test --test-reporter=spec tests/next-runtime/browser-fixture.test.mjs tests/next-runtime/owner-preview-readiness.test.mjs
           node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs
         env:
           CDP_STARTUP_DIAGNOSTICS: '1'

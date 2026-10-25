@@ -1,3 +1,4 @@
+import {ownerPreviewReadyScript} from './owner-preview-readiness.mjs';
 import assert from 'node:assert/strict';
 import {mkdir,readFile,unlink} from 'node:fs/promises';
 import path from 'node:path';
@@ -45,7 +46,7 @@ export async function verifyCalculatorReview({db,auth,browser,journey,artifacts}
  });
  const ownerCases=JSON.parse(await readFile(new URL('./owner-scope-cases.json',import.meta.url),'utf8'));
  for(const model of ownerCases)await journey('Owner-approved bounded calculator #'+model.masterId+' private modes and snapshots',async()=>{
-  if(model.masterId===44){await browser.visit('/account/calculators?q=Vacancy%20Impact%20Calculator');await browser.until(`document.body.innerText.includes('OWNER_APPROVED_BOUNDED_SCOPE_IMPLEMENTED_PRIVATE') && ${ready}`);await browser.click('Private scoped implementation: Vacancy Impact Calculator (identity and specialist approval pending)');}else await browser.visit('/account/calculators/'+model.slug);await browser.until(`!!document.querySelector('button[type="submit"]') && ${ready}`);
+  if(model.masterId===44){await browser.visit('/account/calculators?q=Vacancy%20Impact%20Calculator');await browser.until(`document.body.innerText.includes('OWNER_APPROVED_BOUNDED_SCOPE_IMPLEMENTED_PRIVATE') && ${ready}`);await browser.click('Private scoped implementation: Vacancy Impact Calculator (identity and specialist approval pending)');}else await browser.visit('/account/calculators/'+model.slug);await browser.until(`(${ownerPreviewReadyScript(model)}) && ${ready}`);
   for(let index=0;index<model.examples.length;index++){
    if(index){await browser.js(`(()=>{const s=[...document.querySelectorAll('select')].find(s=>s.labels?.[0]?.textContent.includes('Example and calculation mode'));s.value=${index};s.dispatchEvent(new Event('change',{bubbles:true}));})()`);await browser.until(`!document.querySelector('[aria-label="Complete engine output"]')`);assert(!await browser.js(`!![...document.querySelectorAll('button')].find(x=>x.textContent==='Download reviewer JSON')`));}
    await browser.click('Calculate preview');await browser.until(`!!document.querySelector('[aria-label="Complete engine output"]')`);

@@ -20,5 +20,5 @@ it('rejects nonzero sales, hourly-rate, rent and discounted-cashflow underflow',
  ];for(const [id,input] of cases)expect(()=>runCalculator(getReviewerCalculator('private-owner-'+id)!,input),`Unsupported nonzero underflow for ${id}`).toThrow();
 });
 
-it('keeps browser literals synchronized with authored examples, never generated actual outputs',()=>{expect(cases).toEqual(privateOwnerDefinitions.map(({masterId,definition:d})=>({masterId,slug:d.slug,examples:d.examples})));});
+it('keeps browser literals synchronized with authored examples, never generated actual outputs',()=>{expect(cases).toEqual(privateOwnerDefinitions.map(({masterId,definition:d})=>({masterId,slug:d.slug,title:d.title,examples:d.examples})));});
 it('fails closed if the reused trip engine is no longer its approved immutable v1',async()=>{const {tripCostCalculator}=await import('./travel/catalog-batch-2');const version=tripCostCalculator.version;try{tripCostCalculator.version=2;expect(()=>runCalculator(getReviewerCalculator('private-owner-507')!,{transportCost:1,lodgingCost:2,foodCost:3,otherCost:4})).toThrow();}finally{tripCostCalculator.version=version;}});
