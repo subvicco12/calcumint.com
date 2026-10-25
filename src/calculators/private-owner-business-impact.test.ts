@@ -5,7 +5,15 @@ const run=(id:number,input:unknown)=>privateOwnerBusinessImpact.find(b=>b.master
 describe('owner supplied business impacts',()=>{
  it('covers exactly eight approved identities',()=>expect(privateOwnerBusinessImpact.map(x=>x.masterId)).toEqual([44,159,160,194,195,200,201,203]));
  it('compares lost gross rent without net profit claims',()=>expect(run(44,{...context,potentialGrossRent:1000,beforeVacancyFraction:0.1,afterVacancyFraction:0.25})).toEqual({beforeLostRent:100,afterLostRent:250,changeLostRent:150}));
- for(const id of [159,160]) it(`compares independent volumes for ${id}`,()=>expect(run(id,{...context,unit:'item',before:{price:10,unitVariableCost:4,units:100},after:{price:8,unitVariableCost:3,units:150}})).toEqual({beforeRevenue:1000,afterRevenue:1200,revenueChange:200,beforeContribution:600,afterContribution:750,contributionChange:150}));
+ it(`compares independent discount volumes`,()=>expect(run(159,{...context,unit:'item',before:{price:10,unitVariableCost:4,units:100},after:{price:8,unitVariableCost:3,units:150}})).toEqual({beforeRevenue:1000,afterRevenue:1200,revenueChange:200,beforeContribution:600,afterContribution:750,contributionChange:150}));
+ it('compares independent price increase volumes',()=>expect(run(160,{...context,unit:'item',before:{price:10,unitVariableCost:4,units:100},after:{price:12,unitVariableCost:3,units:75}})).toEqual({beforeRevenue:1000,afterRevenue:900,revenueChange:-100,beforeContribution:600,afterContribution:675,contributionChange:75}));
+ for(const [id,afterPrice] of [[159,11],[160,9]]) it(`rejects opposite price direction for ${id}`,()=>expect(()=>run(id,{...context,unit:'item',before:{price:10,unitVariableCost:4,units:100},after:{price:afterPrice,unitVariableCost:3,units:150}})).toThrow());
+ for(const id of [159,160]) it(`allows unchanged prices for ${id}`,()=>expect(run(id,{...context,unit:'item',before:{price:10,unitVariableCost:4,units:100},after:{price:10,unitVariableCost:4,units:100}})).toEqual({beforeRevenue:1000,afterRevenue:1000,revenueChange:0,beforeContribution:600,afterContribution:600,contributionChange:0}));
+ it('rejects zero margin for profit per ad spend and accepts zero profit targets',()=>{
+ expect(()=>run(195,{...context,mode:'profit-ad-spend',contributionMarginFraction:0,targetProfitPerAdSpend:0})).toThrow();
+ expect(run(195,{...context,mode:'profit-ad-spend',contributionMarginFraction:0.5,targetProfitPerAdSpend:0})).toEqual({targetRoasMultiple:2});
+ expect(run(195,{...context,mode:'profit-revenue',contributionMarginFraction:0.5,targetProfitFraction:0})).toEqual({targetRoasMultiple:2});
+ });
  it('inverts a ROAS multiple',()=>expect(run(194,{...context,mode:'revenue-roas',targetAttributedRevenue:1200,targetRoasMultiple:3})).toEqual({requiredSpend:400}));
  it('uses supplied CPA and conversions',()=>expect(run(194,{...context,mode:'conversions-cpa',conversions:20,costPerAcquisition:7})).toEqual({requiredSpend:140}));
  it('solves a profit fraction of revenue',()=>expect(run(195,{...context,mode:'profit-revenue',contributionMarginFraction:0.5,targetProfitFraction:0.25})).toEqual({targetRoasMultiple:4}));
