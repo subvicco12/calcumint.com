@@ -1,10 +1,14 @@
 // @vitest-environment jsdom
 import {cleanup,fireEvent,render,screen} from '@testing-library/react';
-import {afterEach,expect,it} from 'vitest';
+import {afterEach,expect,it,vi} from 'vitest';
+import * as lookup from '@/calculators/reviewer-definitions';
+import {calculatorRegistry} from '@/calculators/registry';
 import {CalculatorReviewWorkbench} from './calculator-review-workbench';
-afterEach(cleanup);
+afterEach(()=>{cleanup();vi.restoreAllMocks();});
 it('calculates the real engine and removes stale output as soon as input changes',()=>{render(<CalculatorReviewWorkbench slug="power-calculator"/>);fireEvent.click(screen.getByRole('button',{name:'Calculate preview'}));expect(screen.getByLabelText('Complete engine output').textContent).toContain('50');fireEvent.change(screen.getByLabelText('time'),{target:{value:''}});expect(screen.queryByLabelText('Complete engine output')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Calculate preview'}));expect(screen.getByRole('alert')).toBeTruthy();expect(screen.queryByRole('button',{name:'Download reviewer JSON'})).toBeNull();});
 it('shows immutable version and real formula sources without certified/public claims',()=>{render(<CalculatorReviewWorkbench slug="power-calculator"/>);expect(screen.getByText(/Version 1/)).toBeTruthy();expect(screen.getByText('P=W/t')).toBeTruthy();expect(screen.getByLabelText('work')).toBeTruthy();});
 it('does not fabricate inputs or output for an unknown engine',()=>{render(<CalculatorReviewWorkbench slug="not-a-calculator"/>);expect(screen.queryByRole('button',{name:'Calculate preview'})).toBeNull();expect(screen.getByRole('alert')).toBeTruthy();});
 
 it('uses an explicitly private supplied-total adapter without a fabricated public identity',()=>{render(<CalculatorReviewWorkbench slug="private-catalog-39"/>);fireEvent.click(screen.getByRole('button',{name:'Calculate preview'}));expect(JSON.parse(screen.getByLabelText('Complete engine output').textContent!)).toEqual({capitalizationRatePercent:2});});
+
+it('switches an explicit example without preserving stale output or export controls',()=>{const base=calculatorRegistry.getBySlug('power-calculator')!;vi.spyOn(lookup,'getReviewerCalculator').mockReturnValue({...base,examples:[...base.examples,{label:'Alternate literal input',input:{work:200,time:10},expected:{value:20,steps:[]}}]});render(<CalculatorReviewWorkbench slug="power-calculator"/>);fireEvent.click(screen.getByRole('button',{name:'Calculate preview'}));expect(screen.getByLabelText('Complete engine output')).toBeTruthy();const choice=screen.getByRole('combobox',{name:'Example and calculation mode'});choice.focus();fireEvent.change(choice,{target:{value:'1'}});expect(screen.queryByLabelText('Complete engine output')).toBeNull();expect(screen.queryByRole('button',{name:'Download reviewer JSON'})).toBeNull();expect((screen.getByLabelText('work') as HTMLInputElement).value).toBe('200');expect(document.activeElement).toBe(choice);fireEvent.click(screen.getByRole('button',{name:'Calculate preview'}));expect(JSON.parse(screen.getByLabelText('Complete engine output').textContent!).value).toBe(20);});

@@ -1,0 +1,25 @@
+/** Offline evidence builder; never a runtime/publication authority. */
+import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {deepStrictEqual} from 'node:assert';
+import approval from '../../data/catalog/scope-policy-decisions-2026-10-25/owner-selections-2026-10-26.json';
+import historicalRegister from '../../data/catalog/scope-policy-decisions-2026-10-25/decision-register.json';
+import {privateOwnerDefinitions} from './private-owner-definitions';
+import {calculatorRegistry} from './registry';
+import {runCalculator} from './engine';
+const approvalPath='data/catalog/scope-policy-decisions-2026-10-25/owner-selections-2026-10-26.json';
+const digest=(path:string)=>({path,sha256:createHash('sha256').update(readFileSync(path)).digest('hex')});
+export function buildOwnerExecutionManifest(){
+ if(digest(approvalPath).sha256!=='2524458f92bf1f28d3740b5dc2f113d875e4b76071ccd93445d9ab147c6ce83b')throw Error('Owner authority differs from pinned approved commit');
+ const approvedIds=approval.selected.map(x=>x.masterId).sort((a,b)=>a-b);
+ deepStrictEqual(privateOwnerDefinitions.map(x=>x.masterId).sort((a,b)=>a-b),approvedIds);
+ const sourceFiles=['src/calculators/owner-model-support.ts','src/calculators/private-owner-business-core.ts','src/calculators/private-owner-business-impact.ts','src/calculators/private-owner-everyday.ts','src/calculators/private-owner-definitions.ts','src/calculators/travel/catalog-batch-2.ts','src/calculators/private-owner-business-core.test.ts','src/calculators/private-owner-business-impact.test.ts','src/calculators/private-owner-everyday.test.ts','src/calculators/private-owner-definitions.test.ts','tests/next-runtime/owner-scope-cases.json'];
+ const rows=privateOwnerDefinitions.map(({masterId,definition:d})=>{
+  const selected=approval.selected.find(x=>x.masterId===masterId)!;
+  if(selected.selection!=='OWNER_APPROVED_BOUNDED_SCOPE'||selected.certification!=='NOT_GRANTED'||selected.publication!=='NOT_GRANTED'||d.reviewStatus!=='draft'||calculatorRegistry.getBySlug(d.slug))throw Error('Scope/identity/publication boundary violated');
+  for(const e of d.examples)deepStrictEqual(runCalculator(d,e.input).output,e.expected);
+  return {masterId,title:selected.title,ownerScopeApproval:'EFFECTIVE',authorityCommit:'2a351a99fdcd3861beaed453db4ca11cccebb684',approvedFormula:selected.selectedFormula,approvedDomainPolicy:selected.selectedDomainPolicy,engineeringState:'IMPLEMENTED_PRIVATE',definition:{id:d.id,slug:d.slug,version:d.version,riskClass:d.riskClass,reviewStatus:d.reviewStatus},identityValidation:masterId===507?'MATCH_OWNER_SELECTED_TRIP_COST_V1_BOUNDED_CONTRACT':'PRIVATE_ENGINEERING_BINDING_CANONICAL_MAPPING_NOT_INFERRED',authoredExamples:d.examples,methodology:d.formulas,sources:d.sources,specialistApproval:'NOT_GRANTED',certificationAuthorized:false,publicationAuthorized:false,nextAction:masterId===507?'Retain verified selected-engine identity; obtain independent source/specialist/certification and authoritative lifecycle evidence before any future release.':'Validate proposed canonical identity and obtain source/specialist/certification/lifecycle evidence; owner bounded scope is already approved and needs no reselection.'};
+ });
+ const trip=calculatorRegistry.getBySlug('trip-cost-calculator');if(trip?.version!==1||trip.id!=='travel.trip-cost')throw Error('Owner-selected immutable trip v1 identity unavailable');
+ return {schemaVersion:1,engineeringBaseline:'3aaca30a04b922ae4acb6bcbf2976b7835b8eea8',ownerApprovalCommit:'2a351a99fdcd3861beaed453db4ca11cccebb684',supersession:'Explicit final owner approval governs. Historical sourceStatus/decision-register fields do not revoke it; the correction in the approved file supersedes the misleading retraction.',authorityEvidence:digest(approvalPath),historicalRegisterEvidence:digest('data/catalog/scope-policy-decisions-2026-10-25/decision-register.json'),ledgerEvidence:digest('docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv'),sourceEvidence:sourceFiles.map(digest),summary:{ownerApprovedProfiles:20,implementedOwnerProfiles:rows.length,remainingOwnerScopeSelectionsInBatch:0,supportedAuthoredExamples:rows.reduce((n,r)=>n+r.authoredExamples.length,0),newPrivateBoundedContracts:19,pinnedExistingEngineDelegations:1,publicRegistryDefinitions:calculatorRegistry.list().length,unchangedSpecialistScopeDecisions:historicalRegister.rows.filter(x=>x.classification==='SPECIALIST_REQUIRED').length,publicRegistrationsAdded:0,certificationAuthorizations:0,publicationAuthorizations:0},rejectedUnsupportedMappings:[9,442],releaseHold:true,limitations:['Owner product-scope approval is not specialist/formula/source certification or public lifecycle authority.','Raw numerical profiles use finite IEEE-754 arithmetic, compensated sums and explicit overflow/nonzero-underflow rejection; no invented financial rounding policy.','No inferred taxes, demand response, provider fees, FX feed, market/resale curve or clinical model.','All 70 specialist-dependent scope decisions remain unchanged outside this approved batch.'],rows};
+}
