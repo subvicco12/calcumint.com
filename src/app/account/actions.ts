@@ -28,6 +28,7 @@ async function requireFormUser(formData:FormData){
 
 export async function updatePreferences(formData: FormData) {
   const { supabase, user } = await requireUser();
+  if(formData.get('expectedOwnerId')!==user.id)throw new Error('Account context changed');
   const countryValue=String(formData.get("country")??"");
   const allowedCountries:readonly CountryCode[]=["IN","US","GB","CA","AU"];
   const country=allowedCountries.includes(countryValue as CountryCode)?countryValue as CountryCode:undefined;
