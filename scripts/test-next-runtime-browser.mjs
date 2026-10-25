@@ -64,6 +64,21 @@ try{
   await owner();await visit(`/account/saved?source=history&id=${historyId}`);await until(`document.body.innerText.includes('Saved results') && !document.body.innerText.includes('Verifying account session')`);
   await browser.identity(auth.cookie(db.users.outsider));await js(`window.dispatchEvent(new Event('focus'))`);await until(`document.body.innerText.includes('Account session changed')`);assert(!(await browser.text()).includes('1.999'));await owner();
  });
+ await journey('Owned history browsing reaches older records without cursor gaps or cross-account leakage',async()=>{
+  await db.sql(`UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';
+  INSERT INTO public.calculation_history(user_id,calculator_slug,calculator_version,input_data,output_data,created_at)
+  SELECT '${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}','2026-01-01T00:00:00.123456Z' FROM generate_series(1,25);
+  UPDATE public.profiles SET plan='free' WHERE id='${db.users.owner.id}';`);
+  await owner();await visit('/account/history');await until(`document.body.innerText.includes('Saved history') && !document.body.innerText.includes('Verifying account session')`);
+  const links=()=>js(`[...document.querySelectorAll('a[href^="/account/saved?source=history"]')].map(e=>e.getAttribute('href'))`);
+  const first=await links();assert.equal(first.length,20);
+  const next=await js(`[...document.querySelectorAll('a')].find(e=>e.textContent.trim()==='Next page').getAttribute('href')`);
+  await click('Next page');await until(`location.search.includes('cursor=') && !document.body.innerText.includes('Verifying account session')`);const second=await links();assert.equal(second.length,6);assert.equal(new Set([...first,...second]).size,26);
+  await visit(second[0]);await until(`document.body.innerText.includes('Saved results') && !document.body.innerText.includes('Verifying account session')`);assert((await browser.text()).includes('1.999'));
+  await visit('/account/history?source=scenario');await until(`document.body.innerText.includes('Historical slope') && !document.body.innerText.includes('Verifying account session')`);assert(await js(`!!document.querySelector('a[href="/account/saved?source=scenario&id=${scenarioId}"]')`));
+  await browser.identity(auth.cookie(db.users.outsider));await visit(next);await until(`!!document.querySelector('[role=status]') || document.body.innerText.includes('Saved history')`);assert(!(await browser.text()).includes('1.999'));assert.equal((await links()).length,0);await owner();
+  await db.sql(`UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';`);
+ });
  await journey('Native owner-bound regional preference form persists explicit country defaults',async()=>{
   await owner();await visit('/account');await until(`!!document.querySelector('[name=country]') && !document.body.innerText.includes('Verifying account session')`);
   assert.equal(await js(`document.querySelector('[name=country]').form.querySelector('[name=expectedOwnerId]').value`),db.users.owner.id);
