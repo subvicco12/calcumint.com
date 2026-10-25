@@ -7,6 +7,7 @@ import {startRuntimeDatabase} from '../tests/next-runtime/database.mjs';
 import {startAuthFixture} from '../tests/next-runtime/auth-fixture.mjs';
 import {startNextRuntime} from '../tests/next-runtime/server.mjs';
 import {startBrowser} from '../tests/next-runtime/cdp.mjs';
+import {verifyCalculatorReview} from '../tests/next-runtime/calculator-review.mjs';
 import {verifyProjectLayout} from '../tests/next-runtime/project-layout.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const artifacts=process.env.NEXT_RUNTIME_ARTIFACTS||'/tmp/calcumint-next-runtime';await mkdir(artifacts,{recursive:true});
@@ -152,6 +153,7 @@ try{
   await visit('/account');await until(`!!document.querySelector('[name=locale]') && !document.body.innerText.includes('Verifying account session')`);assert.equal(await js(`document.querySelector('[name=locale]').value`),locale);assert.equal(await js(`document.querySelector('[name=country]').value`),country);
  });
  await journey('Native project metadata remains readable with narrow layout and keyboard pagination',async()=>{report.projectLayout=await verifyProjectLayout({db,auth,browser});});
+ await verifyCalculatorReview({db,auth,browser,journey,artifacts});
  report.network=browser.network;report.browserErrors=browser.errors;report.authRequests=auth.requests;report.passed=report.journeys.every(j=>j.passed)&&browser.errors.length===0&&browser.network.every(n=>n.allowed);if(browser.errors.length){console.error('Browser exceptions: '+JSON.stringify(browser.errors));annotateFailure('Unexpected browser exceptions',browser.errors.join('\n'))}if(browser.network.some(n=>!n.allowed))console.error('Forbidden browser outbound requests');if(!report.passed)process.exitCode=1;
 }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;console.error(e);annotateFailure('Next runtime setup',e)}finally{
  report.cleanup=[];report.cleanupComplete=false;
