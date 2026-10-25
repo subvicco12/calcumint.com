@@ -5,7 +5,7 @@ import os from 'node:os';
 import net from 'node:net';
 export async function startNextRuntime({root,auth,db,artifacts}){
  const dir=await mkdtemp(path.join(os.tmpdir(),'calcumint-actual-next-'));
- for(const entry of ['src','public','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.ts','postcss.config.mjs']){try{await cp(path.join(root,entry),path.join(dir,entry),{recursive:true})}catch(e){if(e.code!=='ENOENT')throw e}}
+ for(const entry of ['src','data','public','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.ts','postcss.config.mjs']){try{await cp(path.join(root,entry),path.join(dir,entry),{recursive:true})}catch(e){if(e.code!=='ENOENT')throw e}}
  // Test-copy-only CSP deltas: exact loopback identity origin and Next dev webpack eval.
  const configPath=path.join(dir,'next.config.ts');const config=await readFile(configPath,'utf8');await writeFile(configPath,config.replace("connect-src 'self'","connect-src 'self' "+auth.url).replace("script-src 'self'", "script-src 'self' 'unsafe-eval'"));
  await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir');
