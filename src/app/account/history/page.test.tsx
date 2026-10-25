@@ -1,3 +1,5 @@
+// @vitest-environment jsdom
+import {readFileSync} from 'node:fs';
 import {beforeEach,expect,it,vi} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {decodeDraftHistoryCursor,encodeDraftHistoryCursor} from '@/lib/draft-history-pagination';
@@ -24,3 +26,12 @@ it('requires scenario names instead of inventing missing metadata',async()=>{exp
 it.each(['returned','rejected'])('isolates %s read errors with generic retry',async kind=>{if(kind==='returned')state.readError={message:'secret read'};else state.reject=true;const html=await render();expect(html).toContain('Saved history unavailable');expect(html).toContain('Retry saved history');expect(html).not.toContain('secret');});
 it('redirects missing sessions before any saved-record read',async()=>{state.user=null;await expect(render()).rejects.toThrow('LOGIN_REDIRECT');expect(state.table).toBe('');});
 it.each(['returned','rejected'])('isolates %s authentication errors',async kind=>{if(kind==='returned')state.error={message:'secret auth'};else state.authReject=true;const html=await render();expect(html).toContain('Account temporarily unavailable');expect(html).not.toContain('secret');expect(state.table).toBe('');});
+it('preserves the displayed case of captured scenario names under application CSS',async()=>{
+ state.rows=[{...row(1),name:'Historical slope'}];
+ const style=document.createElement('style'),container=document.createElement('div');
+ style.textContent=readFileSync('src/app/globals.css','utf8');
+ container.innerHTML=await render({source:'scenario'});
+ document.head.append(style);document.body.append(container);
+ try{expect(container.querySelector('li a')?.textContent).toBe('Historical slope');expect(getComputedStyle(container.querySelector('li')!).textTransform).toBe('none');}
+ finally{container.remove();style.remove();}
+});

@@ -70,6 +70,7 @@ try{
   SELECT '${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}','2026-01-01T00:00:00.123456Z' FROM generate_series(1,25);
   UPDATE public.profiles SET plan='free' WHERE id='${db.users.owner.id}';`);
   await owner();await visit('/account/history');await until(`document.body.innerText.includes('Saved history') && !document.body.innerText.includes('Verifying account session')`);
+  for(const width of [320,1280]){await browser.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});assert(await js('document.documentElement.scrollWidth<=innerWidth+1'),'Saved history horizontal overflow');}
   const links=()=>js(`[...document.querySelectorAll('a[href^="/account/saved?source=history"]')].map(e=>e.getAttribute('href'))`);
   const first=await links();assert.equal(first.length,20);
   const next=await js(`[...document.querySelectorAll('a')].find(e=>e.textContent.trim()==='Next page').getAttribute('href')`);
