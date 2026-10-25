@@ -45,6 +45,31 @@ try{
  await journey('Native revoke action invalidates real HTTP API key',async()=>{await owner();await visit('/business/api');await until(`document.body.innerText.includes('Actual runtime key')`);await click('Revoke');await until(`document.body.innerText.includes('revoked')`);assert.equal((await rows('business_api_keys',`id=eq.${key.id}`))[0].status,'revoked');assert.equal((await api(`/api/v1/custom/${db.calculatorId}/calculate`,{inputs:{x:2}})).status,401)});
 
  await journey('Native browser stale-role failure offers safe workspace recovery',async()=>{await owner();await visit('/business');await until(`!!document.querySelector('input[name=name]')`);await js(`(()=>{const f=[...document.querySelectorAll('form')].find(f=>f.textContent.includes('Create project'));f.querySelector('[name=name]').value='Native rejected stale project'})()`);await patch('organization_members',`organization_id=eq.${db.orgId}&user_id=eq.${db.users.owner.id}`,{role:'viewer'});const errorsBefore=browser.errors.length;try{await click('Create project');await until(`!!document.querySelector('[role=alert]') || document.body.innerText.includes('Application error') || document.querySelector('nextjs-portal')?.shadowRoot?.textContent.includes('Error')`);report.nativeFailureEvidence={body:await browser.text(),overlay:await js(`document.querySelector('nextjs-portal')?.shadowRoot?.textContent||''`)};const added=browser.errors.slice(errorsBefore);report.expectedActionErrors=added.filter(e=>e.startsWith('Error: new row violates row-level security policy for table \"business_projects\"')&&e.includes('at createProject '));for(let i=browser.errors.length-1;i>=errorsBefore;i--)if(report.expectedActionErrors.includes(browser.errors[i]))browser.errors.splice(i,1);assert.equal((await rows('business_projects','name=eq.Native%20rejected%20stale%20project')).length,0);assert(await js(`!!document.querySelector('[role=alert]')`),'Native action failure needs accessible alert');assert(await has('Reload workspace'),'Native action failure needs explicit read-only recovery');await patch('organization_members',`organization_id=eq.${db.orgId}&user_id=eq.${db.users.owner.id}`,{role:'owner'});await click('Reload workspace');await until(`document.body.innerText.includes('Role: owner') && [...document.querySelectorAll('button')].some(e=>e.textContent.trim()==='Create project')`);assert.equal((await rows('business_projects','name=eq.Native%20rejected%20stale%20project')).length,0,'Read-only recovery must not replay write')}finally{await patch('organization_members',`organization_id=eq.${db.orgId}&user_id=eq.${db.users.owner.id}`,{role:'owner'})}});
+ const historyId=randomUUID(),scenarioId=randomUUID();
+ await db.sql(`INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data) VALUES('${historyId}','${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}');
+ INSERT INTO public.saved_scenarios(id,user_id,name,calculator_slug,calculator_version,input_data,output_data) VALUES('${scenarioId}','${db.users.owner.id}','Historical slope','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}');`);
+ await journey('Owned historical saved records reopen without recalculation after downgrade',async()=>{
+  await db.sql(`UPDATE public.profiles SET plan='free' WHERE id='${db.users.owner.id}';`);
+  await owner();
+  for(const [source,id]of [['history',historyId],['scenario',scenarioId]]){
+   await visit(`/account/saved?source=${source}&id=${id}`);
+   await until(`document.body.innerText.includes('Saved results') && !document.body.innerText.includes('Verifying account session')`);
+   const text=await browser.text();assert(text.includes('version 1'));assert(text.includes('1.999'));assert(text.includes('"rise": 6'));assert(!text.includes('"x1"'));
+  }
+  await db.sql(`UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';`);
+ });
+ await journey('Saved record owner isolation and session boundary in actual Next runtime',async()=>{
+  await browser.identity(auth.cookie(db.users.outsider));await visit(`/account/saved?source=history&id=${historyId}`);
+  await until(`document.body.innerText.includes('Saved calculation unavailable')`);assert(!(await browser.text()).includes('1.999'));
+  await owner();await visit(`/account/saved?source=history&id=${historyId}`);await until(`document.body.innerText.includes('Saved results') && !document.body.innerText.includes('Verifying account session')`);
+  await browser.identity(auth.cookie(db.users.outsider));await js(`window.dispatchEvent(new Event('focus'))`);await until(`document.body.innerText.includes('Account session changed')`);assert(!(await browser.text()).includes('1.999'));await owner();
+ });
+ await journey('Native owner-bound regional preference form persists explicit country defaults',async()=>{
+  await owner();await visit('/account');await until(`!!document.querySelector('[name=country]') && !document.body.innerText.includes('Verifying account session')`);
+  assert.equal(await js(`document.querySelector('[name=country]').form.querySelector('[name=expectedOwnerId]').value`),db.users.owner.id);
+  await js(`(()=>{const e=document.querySelector('[name=country]');e.value='IN';e.dispatchEvent(new Event('change',{bubbles:true}))})()`);await click('Save preferences');await until(`document.body.innerText.includes('Request completed.')`);
+  assert.equal(await db.sql(`SELECT country_code||':'||currency FROM public.user_preferences WHERE user_id='${db.users.owner.id}';`),'IN:INR');
+ });
  report.network=browser.network;report.browserErrors=browser.errors;report.authRequests=auth.requests;report.passed=report.journeys.every(j=>j.passed)&&browser.errors.length===0&&browser.network.every(n=>n.allowed);if(browser.errors.length){console.error('Browser exceptions: '+JSON.stringify(browser.errors));annotateFailure('Unexpected browser exceptions',browser.errors.join('\n'))}if(browser.network.some(n=>!n.allowed))console.error('Forbidden browser outbound requests');if(!report.passed)process.exitCode=1;
 }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;console.error(e);annotateFailure('Next runtime setup',e)}finally{
  report.cleanup=[];report.cleanupComplete=false;
