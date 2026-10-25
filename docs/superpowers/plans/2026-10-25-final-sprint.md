@@ -20,19 +20,20 @@
 
 ## Task 1 — stale billing and preferences
 
-- [ ] Demonstrate stale/missing rendered-owner mutations with failing tests.
-- [ ] Bind billing portal requests and preferences forms to the rendered owner, verify on server before mutation, preserve accessible retry.
-- [ ] Run focused regression tests and commit independently.
+- [x] Demonstrate stale/missing rendered-owner mutations with failing tests.
+- [x] Bind billing portal requests and preferences forms to the rendered owner, verify on server before mutation, preserve accessible retry.
+- [x] Run focused regression tests and commit independently.
 
 ## Task 2 — immutable saved-work reader
 
-- [ ] Add failing account-link and reader tests for historical/current records, explicit ownership, invalid data, outage and all-plan owned reads.
-- [ ] Add `/account/saved` read-only reader and generic account links, preserving private DRAFT links and version identity.
-- [ ] Run focused tests; commit independently and integrate without changing mathematical code or ledger statuses.
+- [x] Add failing account-link and reader tests for historical/current records, explicit ownership, invalid data, outage and all-plan owned reads.
+- [x] Add `/account/saved` read-only reader and generic account links, preserving private DRAFT links and version identity.
+- [x] Close the next saved-work gap: `/account/history` browses older records with existing owner/source/page-size-bound keyset cursors, 20+1 metadata-only reads and preserved microsecond timestamp/id ordering. Invalid cursors or metadata return generic recovery; no mutation or engine execution.
+- [x] Run focused tests; commit independently and integrate without changing mathematical code or ledger statuses.
 
 ## Task 3 — integrated candidate
 
-- [ ] Review both lane diffs; run full unit, security, transport, runtime, certification guards, lint, typecheck and webpack build serializing resource-heavy checks.
-- [ ] Obtain independent integration review; correct only demonstrated findings.
+- [x] Review both lane diffs; run full unit, security, transport, runtime, certification guards, lint, typecheck and webpack build keeping the webpack build separate from native runtime acceptance.
+- [x] Obtain independent integration review; correct only demonstrated findings.
 - [ ] Push only the new engineering branch, open separate draft against PR #1470's branch, inspect exact-head hosted CI.
 - [ ] Report completed scope and remaining evidence-bound queue; do not claim complete external acceptance.
