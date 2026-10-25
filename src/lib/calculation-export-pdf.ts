@@ -35,22 +35,53 @@ const PAGE_LINES = 49;
 
 /** Embedded BMP glyphs retain readable currency/scientific labels. Characters
  * absent from the bundled font remain explicit escapes instead of disappearing. */
+const graphemes = typeof Intl.Segmenter==='function'?new Intl.Segmenter('en', {granularity:'grapheme'}):undefined;
+// Older browsers can still compose supported base/mark clusters; other shaping
+// remains outside the bundled font contract and is escaped below.
+const segments = (text:string) => graphemes?Array.from(graphemes.segment(text),({segment})=>segment):text.match(/\P{M}\p{M}*|\p{M}+/gu)??[];
+const renderedText = (text:string) => text.normalize('NFC');
+const renderedWidth = (text:string) => renderedText(text).length;
+const escapedCode = (code:number) => code <= 65535 ? `\\u${code.toString(16).padStart(4, '0')}` : `\\u{${code.toString(16)}}`;
+function supported(character:string){
+ const code=character.codePointAt(0)!;
+ return !/[\p{C}\p{M}]/u.test(character)&&((code>=32&&code<=126)||(code>=160&&code<=255)||(code>255&&Boolean(unicodeGlyphs[code])));
+}
 function printable(text: string): string {
-  return Array.from(text, character => {
+ if(/^[\x20-\x7e\xa0-\xac\xae-\xff]*$/.test(text))return text;
+ return segments(text).map(segment=>{
+  const composed=renderedText(segment);
+  // Preserve original code points for replacement text, using an existing glyph
+  // only when canonical composition eliminates the need for mark positioning.
+  if(composed!==segment&&Array.from(composed).every(supported))return segment;
+  return Array.from(segment, character => {
     const code = character.codePointAt(0)!;
-    if ((code >= 32 && code <= 126) || (code >= 160 && code <= 255) || (code > 255 && unicodeGlyphs[code])) return character;
-    return code <= 65535 ? `\\u${code.toString(16).padStart(4, '0')}` : `\\u{${code.toString(16)}}`;
+    return supported(character)?character:escapedCode(code);
   }).join('');
+ }).join('');
+}
+function wrapText(text:string,width:number):string[]{
+ if(renderedText(text)===text)return Array.from({length:Math.max(1,Math.ceil(text.length/width))},(_,index)=>text.slice(index*width,(index+1)*width));
+ const lines:string[]=[];let line='',length=0;
+ for(const segment of segments(text)){
+  const size=renderedWidth(segment);
+  if(length&&length+size>width){lines.push(line);line='';length=0;}
+  line+=segment;length+=size;
+ }
+ lines.push(line);return lines;
 }
 
 function literal(text: string): string {
-  if (Array.from(text).some(character => character.charCodeAt(0)>255)) return `<feff${Array.from(text,character=>character.charCodeAt(0).toString(16).padStart(4,'0')).join('')}>`;
+  if (unicodeText(text)) return `<feff${Array.from(text,character=>character.charCodeAt(0).toString(16).padStart(4,'0')).join('')}>`;
   return `(${Array.from(text, character => {
     const code = character.charCodeAt(0);
     if (code > 126) return `\\${code.toString(8).padStart(3, '0')}`;
     return /[\\()]/.test(character) ? `\\${character}` : character;
   }).join('')})`;
 }
+
+// PDFDocEncoding assigns 0xA0 to euro, while WinAnsi assigns it to a space.
+// Explicit Unicode is required to retain a nonbreaking space in either context.
+const unicodeText = (text:string) => Array.from(text).some(character=>character.charCodeAt(0)>255||character.charCodeAt(0)===160);
 
 function valueText(value: unknown): string {
   if (typeof value === 'number') return Object.is(value, -0) ? '-0' : String(value);
@@ -83,8 +114,7 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
   const add = (text: string, heading = false, artifact = false) => {
     const node = text && !artifact ? structure(heading ? (document.children.length ? 'H2' : 'H1') : 'P') : undefined;
     const visible = printable(text);
-    if (!visible) lines.push({ text: '', heading, node });
-    for (let start = 0; start < visible.length; start += WIDTH) lines.push({ text: visible.slice(start, start + WIDTH), heading, node });
+    for (const part of wrapText(visible,WIDTH)) lines.push({ text:part, heading, node });
   };
   add(title, true);
   add(`Calculator: ${captured.calculatorSlug} | Engine version: ${captured.calculatorVersion}`);
@@ -148,9 +178,9 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
         const tableLine = (cells: readonly string[], heading = false, nodes?: Structure[]) => {
           const wrapped = cells.map(cell => {
             const visible = printable(cell);
-            return Array.from({ length: Math.max(1, Math.ceil(visible.length / width)) }, (_, index) => visible.slice(index * width, (index + 1) * width));
+            return wrapText(visible,width);
           });
-          return Array.from({ length: Math.max(...wrapped.map(cell => cell.length)) }, (_, index) => ({ text: wrapped.map(cell => (cell[index] ?? '').padEnd(width)).join(' | '), heading, cells: nodes?.map((node, cell) => ({ node, text: wrapped[cell][index] ?? '' })), cellWidth: width }));
+          return Array.from({ length: Math.max(...wrapped.map(cell => cell.length)) }, (_, index) => ({ text: wrapped.map(cell => {const value=cell[index]??'';return value+' '.repeat(Math.max(0,width-renderedWidth(value)));}).join(' | '), heading, cells: nodes?.map((node, cell) => ({ node, text: wrapped[cell][index] ?? '' })), cellWidth: width }));
         };
 
         // Very long column labels remain complete but cannot consume the whole page.
@@ -166,10 +196,10 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
         });
         lines.push(...tableLine(columns, true, headerNodes));
         const repeat = () => {
-          pageBreak(); add(printable(table.title).slice(0, 60) + ' (continued)', true, true);
+          pageBreak(); add(wrapText(printable(table.title),60)[0] + ' (continued)', true, true);
           // Full labels remain at panel start; bounded continuation labels leave room for data.
           add('Columns continue in the same order as the full headings above.', false, true);
-          for (const header of tableLine(columns.map(label => printable(label).slice(0, width)), true)) add(header.text, true, true);
+          for (const header of tableLine(columns.map(label => wrapText(printable(label),width)[0]), true)) add(header.text, true, true);
         };
         if (!table.rows.length) add('(no rows)');
         table.rows.forEach(row => {
@@ -191,7 +221,7 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
       if (!isChart(chart)) throw new Error('Invalid PDF chart');
       const scale = chart.points.reduce((maximum, point) => Math.max(maximum, Math.abs(point.value)), 0);
       const header = (continued = false) => {
-        add(continued ? printable(chart.title).slice(0, 60) + ' (continued)' : chart.title, true, continued);
+        add(continued ? wrapText(printable(chart.title),60)[0] + ' (continued)' : chart.title, true, continued);
         add(continued ? `Linear scale unchanged: zero at center; full span +/-${valueText(scale)}.` : `Linear scale: zero at center; full span +/-${valueText(scale)}${chart.unit === undefined ? '' : ` [${chart.unit}]`}.`, false, continued);
         add('Bars use one shared scale. Tiny values may be invisible; exact values follow.', false, continued);
       };
@@ -214,8 +244,8 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
   // string offsets equal byte offsets in the mandatory cross-reference table.
   const objects: string[] = [];
   const reserve = () => { objects.push(''); return objects.length; };
-  const unicodeCharacters = [...new Set(lines.flatMap(line => Array.from(line.text + (line.cells?.map(cell=>cell.text).join('')??''))))];
-  const needsUnicode = unicodeCharacters.some(character=>character.charCodeAt(0)>255);
+  const unicodeCharacters = [...new Set(lines.flatMap(line => Array.from(renderedText(line.text + (line.cells?.map(cell=>cell.text).join('')??'')))))];
+  const needsUnicode = unicodeCharacters.some(unicodeText);
   let unicodeFont: number | undefined;
   if(needsUnicode){
     const font=reserve(), descendant=reserve(), descriptor=reserve(), file=reserve(), mapping=reserve(), toUnicode=reserve();
@@ -261,9 +291,11 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
       'EMC',
       ...page.map((line, row) => {
         const text = (value: string, x = 48) => {
-          const unicode=Array.from(value).some(character=>character.charCodeAt(0)>255);
-          const encoded=unicode?`<${Array.from(value,character=>character.charCodeAt(0).toString(16).padStart(4,'0')).join('')}>`:literal(value);
-          return `BT /${unicode?'F3':line.heading ? 'F2' : 'F1'} 9 Tf 0.10 0.13 0.15 rg ${x} ${763 - row * 14} Td ${encoded} Tj ET`;
+          const visible=renderedText(value);
+          const unicode=unicodeText(visible);
+          const encoded=unicode?`<${Array.from(visible,character=>character.charCodeAt(0).toString(16).padStart(4,'0')).join('')}>`:literal(visible);
+          const command=`BT /${unicode?'F3':line.heading ? 'F2' : 'F1'} 9 Tf 0.10 0.13 0.15 rg ${x} ${763 - row * 14} Td ${encoded} Tj ET`;
+          return visible===value?command:`/Span << /ActualText ${literal(value)} >> BDC\n${command}\nEMC`;
         };
         if (line.cells) return line.cells.map((cell, column) => {
           const x = 48 + column * (line.cellWidth! + 3) * 5.4;
