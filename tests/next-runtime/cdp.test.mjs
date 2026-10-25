@@ -13,6 +13,16 @@ function checkedTest(name,options,run){return test(name,options,async context=>{
 
 checkedTest('synthetic same-owner selection preserves SDK verification while owner replacement fails closed',{timeout:45000},verifySyntheticIdentityContinuity);
 
+checkedTest('trusted field edits wait for a visible non-inert account control and preserve outside focus data',{timeout:30000},async()=>{
+ let browser;
+ try{
+  browser=await startBrowser('http://127.0.0.1:1');
+  await browser.js(`(()=>{document.body.innerHTML='<input id="outside" value="keep outside"><div id="account" hidden inert><input id="target"></div>';const target=document.querySelector('#target');target['__reactProps$fixture']={};document.querySelector('#outside').focus();window.revealed=false;setTimeout(()=>{const account=document.querySelector('#account');account.hidden=false;account.inert=false;window.revealed=true},1200)})()`);
+  await browser.field('#target','captured name');
+  assert.deepEqual(await browser.js(`({target:document.querySelector('#target').value,outside:document.querySelector('#outside').value,revealed:window.revealed})`),{target:'captured name',outside:'keep outside',revealed:true});
+ }finally{await browser?.close()}
+});
+
 checkedTest('headless CDP startup does not depend on the inherited desktop session bus', {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-session-bus-test-'));
  const address=path.join(dir,'bus'),sockets=new Set();let connections=0;
