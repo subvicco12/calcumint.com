@@ -1,0 +1,786 @@
+[
+  {
+    "masterId": 145,
+    "slug": "private-owner-145",
+    "examples": [
+      {
+        "label": "Gross supplied sales",
+        "input": {
+          "currency": "USD",
+          "period": "2026",
+          "lines": [
+            {
+              "price": 12,
+              "quantity": 3
+            },
+            {
+              "price": 4,
+              "quantity": 5
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "2026",
+          "grossSales": 56
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 156,
+    "slug": "private-owner-156",
+    "examples": [
+      {
+        "label": "Profit only",
+        "input": {
+          "mode": "profit",
+          "currency": "USD",
+          "period": "Q1",
+          "revenue": 80,
+          "costs": 100
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "Q1",
+          "profit": -20
+        }
+      },
+      {
+        "label": "Profit margin",
+        "input": {
+          "mode": "margin",
+          "currency": "USD",
+          "period": "Q1",
+          "revenue": 80,
+          "costs": 60
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "Q1",
+          "profit": 20,
+          "marginPercent": 25
+        }
+      },
+      {
+        "label": "Dated NPV, explicit ACT365F",
+        "input": {
+          "mode": "dated-npv",
+          "currency": "USD",
+          "valuationDate": "2025-01-01",
+          "dayCount": "ACT365F",
+          "annualEffectiveRatePercent": 0,
+          "cashflows": [
+            {
+              "date": "2025-01-01",
+              "amount": -100
+            },
+            {
+              "date": "2026-01-01",
+              "amount": 120
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "dayCount": "ACT365F",
+          "valuationDate": "2025-01-01",
+          "npv": 20
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 157,
+    "slug": "private-owner-157",
+    "examples": [
+      {
+        "label": "Annual target per billable hour",
+        "input": {
+          "currency": "USD",
+          "annualPeriod": "2026",
+          "annualRevenueTarget": 90000,
+          "billableHours": 1500
+        },
+        "expected": {
+          "currency": "USD",
+          "annualPeriod": "2026",
+          "hourlyRevenue": 60
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 158,
+    "slug": "private-owner-158",
+    "examples": [
+      {
+        "label": "Cost plus markup",
+        "input": {
+          "mode": "markup",
+          "currency": "USD",
+          "period": "month",
+          "cost": 80,
+          "markupPercent": 25
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "month",
+          "price": 100
+        }
+      },
+      {
+        "label": "Target margin",
+        "input": {
+          "mode": "target-margin",
+          "currency": "USD",
+          "period": "month",
+          "cost": 80,
+          "targetMarginPercent": 20
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "month",
+          "price": 100
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 161,
+    "slug": "private-owner-161",
+    "examples": [
+      {
+        "label": "Unit contribution",
+        "input": {
+          "currency": "USD",
+          "unit": "order",
+          "costBoundary": "variable fulfillment",
+          "cohortPeriod": "October",
+          "unitRevenue": 50,
+          "unitCost": 30,
+          "mode": "contribution"
+        },
+        "expected": {
+          "currency": "USD",
+          "unit": "order",
+          "costBoundary": "variable fulfillment",
+          "cohortPeriod": "October",
+          "unitRevenue": 50,
+          "unitCost": 30,
+          "contribution": 20
+        }
+      },
+      {
+        "label": "Contribution divided by acquisition cost per declared unit",
+        "input": {
+          "currency": "USD",
+          "unit": "order",
+          "costBoundary": "variable fulfillment",
+          "cohortPeriod": "October",
+          "unitRevenue": 50,
+          "unitCost": 30,
+          "mode": "acquisition-ratio",
+          "acquisitionCostPerUnit": 10
+        },
+        "expected": {
+          "currency": "USD",
+          "unit": "order",
+          "costBoundary": "variable fulfillment",
+          "cohortPeriod": "October",
+          "unitRevenue": 50,
+          "unitCost": 30,
+          "contribution": 20,
+          "contributionToAcquisitionRatio": 2
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 177,
+    "slug": "private-owner-177",
+    "examples": [
+      {
+        "label": "Matching period supplied percentages",
+        "input": {
+          "growthPeriod": "2026",
+          "profitabilityPeriod": "2026",
+          "profitabilityBasis": "operating margin",
+          "growthPercent": 30,
+          "profitabilityPercent": -5
+        },
+        "expected": {
+          "period": "2026",
+          "profitabilityBasis": "operating margin",
+          "scorePercent": 25
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 181,
+    "slug": "private-owner-181",
+    "examples": [
+      {
+        "label": "Cost plus markup",
+        "input": {
+          "mode": "markup",
+          "currency": "USD",
+          "period": "month",
+          "cost": 80,
+          "markupPercent": 25
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "month",
+          "price": 100
+        }
+      },
+      {
+        "label": "Target margin",
+        "input": {
+          "mode": "target-margin",
+          "currency": "USD",
+          "period": "month",
+          "cost": 80,
+          "targetMarginPercent": 20
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "month",
+          "price": 100
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 44,
+    "slug": "private-owner-44",
+    "examples": [
+      {
+        "label": "Same monthly gross rent",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "potentialGrossRent": 1000,
+          "beforeVacancyFraction": 0.1,
+          "afterVacancyFraction": 0.25
+        },
+        "expected": {
+          "beforeLostRent": 100,
+          "afterLostRent": 250,
+          "changeLostRent": 150
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 159,
+    "slug": "private-owner-159",
+    "examples": [
+      {
+        "label": "Independently supplied prices, costs and volumes",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "unit": "item",
+          "before": {
+            "price": 10,
+            "unitVariableCost": 4,
+            "units": 100
+          },
+          "after": {
+            "price": 8,
+            "unitVariableCost": 3,
+            "units": 150
+          }
+        },
+        "expected": {
+          "beforeRevenue": 1000,
+          "afterRevenue": 1200,
+          "revenueChange": 200,
+          "beforeContribution": 600,
+          "afterContribution": 750,
+          "contributionChange": 150
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 160,
+    "slug": "private-owner-160",
+    "examples": [
+      {
+        "label": "Independently supplied prices, costs and volumes",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "unit": "item",
+          "before": {
+            "price": 10,
+            "unitVariableCost": 4,
+            "units": 100
+          },
+          "after": {
+            "price": 12,
+            "unitVariableCost": 3,
+            "units": 75
+          }
+        },
+        "expected": {
+          "beforeRevenue": 1000,
+          "afterRevenue": 900,
+          "revenueChange": -100,
+          "beforeContribution": 600,
+          "afterContribution": 675,
+          "contributionChange": 75
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 194,
+    "slug": "private-owner-194",
+    "examples": [
+      {
+        "label": "Revenue divided by ROAS multiple",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "mode": "revenue-roas",
+          "targetAttributedRevenue": 1200,
+          "targetRoasMultiple": 3
+        },
+        "expected": {
+          "requiredSpend": 400
+        }
+      },
+      {
+        "label": "Conversions times supplied CPA",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "mode": "conversions-cpa",
+          "conversions": 20,
+          "costPerAcquisition": 7
+        },
+        "expected": {
+          "requiredSpend": 140
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 195,
+    "slug": "private-owner-195",
+    "examples": [
+      {
+        "label": "Profit as fraction of revenue",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "mode": "profit-revenue",
+          "contributionMarginFraction": 0.5,
+          "targetProfitFraction": 0.25
+        },
+        "expected": {
+          "targetRoasMultiple": 4
+        }
+      },
+      {
+        "label": "Profit per ad spend",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "mode": "profit-ad-spend",
+          "contributionMarginFraction": 0.5,
+          "targetProfitPerAdSpend": 1
+        },
+        "expected": {
+          "targetRoasMultiple": 4
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 200,
+    "slug": "private-owner-200",
+    "examples": [
+      {
+        "label": "Declared itemized costs",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "salesProceeds": 100,
+          "fees": [
+            {
+              "name": "supplied fee",
+              "amount": 12
+            }
+          ],
+          "goodsCosts": [
+            {
+              "name": "goods",
+              "amount": 30
+            }
+          ],
+          "fulfillmentCosts": [
+            {
+              "name": "delivery",
+              "amount": 8
+            }
+          ]
+        },
+        "expected": {
+          "totalCosts": 50,
+          "profit": 50
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 201,
+    "slug": "private-owner-201",
+    "examples": [
+      {
+        "label": "Supplied contribution comparison",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "mode": "contribution",
+          "unit": "item",
+          "before": {
+            "revenue": 100,
+            "units": 10,
+            "costs": [
+              {
+                "name": "declared costs",
+                "amount": 60
+              }
+            ]
+          },
+          "promotion": {
+            "revenue": 150,
+            "units": 20,
+            "costs": [
+              {
+                "name": "declared costs",
+                "amount": 90
+              }
+            ]
+          }
+        },
+        "expected": {
+          "measure": "contribution",
+          "before": 40,
+          "promotion": 60,
+          "incremental": 20
+        }
+      },
+      {
+        "label": "Supplied profit comparison",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "mode": "profit",
+          "unit": "item",
+          "before": {
+            "revenue": 100,
+            "units": 10,
+            "costs": [
+              {
+                "name": "declared costs",
+                "amount": 60
+              }
+            ]
+          },
+          "promotion": {
+            "revenue": 150,
+            "units": 20,
+            "costs": [
+              {
+                "name": "declared costs",
+                "amount": 90
+              }
+            ]
+          }
+        },
+        "expected": {
+          "measure": "profit",
+          "before": 40,
+          "promotion": 60,
+          "incremental": 20
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 203,
+    "slug": "private-owner-203",
+    "examples": [
+      {
+        "label": "Supplied per-order shipping amounts",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "basis": "per-order",
+          "shippingRevenue": 10,
+          "carrier": 4,
+          "packaging": 1,
+          "handling": 2
+        },
+        "expected": {
+          "shippingContribution": 3
+        }
+      },
+      {
+        "label": "Supplied period shipping amounts",
+        "input": {
+          "currency": "USD",
+          "period": "2026-10",
+          "basis": "period",
+          "shippingRevenue": 10,
+          "carrier": 4,
+          "packaging": 1,
+          "handling": 2
+        },
+        "expected": {
+          "shippingContribution": 3
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 109,
+    "slug": "private-owner-109",
+    "examples": [
+      {
+        "label": "Matched monthly baskets",
+        "input": {
+          "currency": "USD",
+          "period": "month",
+          "first": [
+            {
+              "category": "rent",
+              "amount": 100
+            }
+          ],
+          "second": [
+            {
+              "category": "rent",
+              "amount": 125
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "month",
+          "firstTotal": 100,
+          "secondTotal": 125,
+          "difference": 25,
+          "percentage": 25
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 467,
+    "slug": "private-owner-467",
+    "examples": [
+      {
+        "label": "Straight-line supplied annual amount",
+        "input": {
+          "mode": "straightLine",
+          "currency": "USD",
+          "initial": 100,
+          "floor": 20,
+          "years": 3,
+          "annualAmount": 30
+        },
+        "expected": {
+          "currency": "USD",
+          "mode": "straightLine",
+          "schedule": [
+            {
+              "year": 1,
+              "value": 70
+            },
+            {
+              "year": 2,
+              "value": 40
+            },
+            {
+              "year": 3,
+              "value": 20
+            }
+          ]
+        }
+      },
+      {
+        "label": "Percentage decline supplied annual rate",
+        "input": {
+          "mode": "percentDecline",
+          "currency": "USD",
+          "initial": 100,
+          "floor": 20,
+          "years": 2,
+          "annualRatePercent": 50
+        },
+        "expected": {
+          "currency": "USD",
+          "mode": "percentDecline",
+          "schedule": [
+            {
+              "year": 1,
+              "value": 50
+            },
+            {
+              "year": 2,
+              "value": 25
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 471,
+    "slug": "private-owner-471",
+    "examples": [
+      {
+        "label": "Undiscounted supplied new and used scenarios",
+        "input": {
+          "new": {
+            "currency": "USD",
+            "startDate": "2026-01-01",
+            "endDate": "2027-01-01",
+            "cashflows": [
+              {
+                "date": "2026-01-01",
+                "kind": "purchase",
+                "amount": 100
+              }
+            ],
+            "terminalResale": {
+              "date": "2027-01-01",
+              "amount": 60
+            }
+          },
+          "used": {
+            "currency": "USD",
+            "startDate": "2026-01-01",
+            "endDate": "2027-01-01",
+            "cashflows": [
+              {
+                "date": "2026-01-01",
+                "kind": "purchase",
+                "amount": 50
+              }
+            ],
+            "terminalResale": {
+              "date": "2027-01-01",
+              "amount": 20
+            }
+          }
+        },
+        "expected": {
+          "currency": "USD",
+          "startDate": "2026-01-01",
+          "endDate": "2027-01-01",
+          "newCost": 40,
+          "usedCost": 30,
+          "difference": 10
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 512,
+    "slug": "private-owner-512",
+    "examples": [
+      {
+        "label": "Manual reporting currency per base unit",
+        "input": {
+          "reportingCurrency": "USD",
+          "lines": [
+            {
+              "date": "2026-01-01",
+              "baseCurrency": "EUR",
+              "quoteCurrency": "USD",
+              "amount": 10,
+              "rate": 2,
+              "direction": "reportingPerUnit"
+            }
+          ]
+        },
+        "expected": {
+          "reportingCurrency": "USD",
+          "lines": [
+            {
+              "date": "2026-01-01",
+              "baseCurrency": "EUR",
+              "quoteCurrency": "USD",
+              "amount": 10,
+              "rate": 2,
+              "direction": "reportingPerUnit",
+              "reportingAmount": 20
+            }
+          ],
+          "total": 20
+        }
+      },
+      {
+        "label": "Manual base units per reporting currency",
+        "input": {
+          "reportingCurrency": "USD",
+          "lines": [
+            {
+              "date": "2026-01-01",
+              "baseCurrency": "EUR",
+              "quoteCurrency": "USD",
+              "amount": 10,
+              "rate": 2,
+              "direction": "unitsPerReporting"
+            }
+          ]
+        },
+        "expected": {
+          "reportingCurrency": "USD",
+          "lines": [
+            {
+              "date": "2026-01-01",
+              "baseCurrency": "EUR",
+              "quoteCurrency": "USD",
+              "amount": 10,
+              "rate": 2,
+              "direction": "unitsPerReporting",
+              "reportingAmount": 5
+            }
+          ],
+          "total": 5
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 507,
+    "slug": "private-owner-507",
+    "examples": [
+      {
+        "label": "Reference example",
+        "input": {
+          "transportCost": 300,
+          "lodgingCost": 500,
+          "foodCost": 200,
+          "otherCost": 100
+        },
+        "expected": {
+          "value": 1100,
+          "steps": [
+            "Trip cost = 1100"
+          ]
+        }
+      }
+    ]
+  }
+]

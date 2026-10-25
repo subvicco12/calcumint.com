@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {amount,positive,label,finiteNumber,sumFinite,ownerModel,type OwnerBinding} from './owner-model-support';
+import {amount,positive,label,finiteNumber,sumFinite,multiplyFinite,divideFinite,ownerModel,type OwnerBinding} from './owner-model-support';
 
 // Every monetary quantity in a request shares this explicitly supplied currency and period.
 const context={currency:label,period:label};
@@ -10,10 +10,10 @@ const total=(entries:z.infer<typeof items>)=>sumFinite(entries.map(x=>x.amount))
 const scenario=z.object({price:amount,unitVariableCost:amount,units:amount}).strict();
 const comparisonSchema=z.object({...context,unit:label,before:scenario,after:scenario}).strict();
 function compare(input:z.infer<typeof comparisonSchema>){
- const beforeRevenue=finiteNumber(input.before.price*input.before.units);
- const afterRevenue=finiteNumber(input.after.price*input.after.units);
- const beforeContribution=finiteNumber((input.before.price-input.before.unitVariableCost)*input.before.units);
- const afterContribution=finiteNumber((input.after.price-input.after.unitVariableCost)*input.after.units);
+ const beforeRevenue=finiteNumber(multiplyFinite(input.before.price,input.before.units));
+ const afterRevenue=finiteNumber(multiplyFinite(input.after.price,input.after.units));
+ const beforeContribution=finiteNumber(multiplyFinite(input.before.price-input.before.unitVariableCost,input.before.units));
+ const afterContribution=finiteNumber(multiplyFinite(input.after.price-input.after.unitVariableCost,input.after.units));
  return {beforeRevenue,afterRevenue,revenueChange:finiteNumber(afterRevenue-beforeRevenue),beforeContribution,afterContribution,contributionChange:finiteNumber(afterContribution-beforeContribution)};
 }
 const comparisonInput={...sampleContext,unit:'item',before:{price:10,unitVariableCost:4,units:100},after:{price:8,unitVariableCost:3,units:150}};
@@ -30,12 +30,12 @@ const promoScenario=z.object({revenue:amount,units:amount,costs:items}).strict()
 const promotionSchema=z.object({...context,mode:z.enum(['contribution','profit']),unit:label,before:promoScenario,promotion:promoScenario}).strict();
 export const privateOwnerBusinessImpact:OwnerBinding[]=[
  ownerModel(44,z.object({...context,potentialGrossRent:amount,beforeVacancyFraction:fraction,afterVacancyFraction:fraction}).strict(),input=>{
- const beforeLostRent=finiteNumber(input.potentialGrossRent*input.beforeVacancyFraction);
- const afterLostRent=finiteNumber(input.potentialGrossRent*input.afterVacancyFraction);
+ const beforeLostRent=finiteNumber(multiplyFinite(input.potentialGrossRent,input.beforeVacancyFraction));
+ const afterLostRent=finiteNumber(multiplyFinite(input.potentialGrossRent,input.afterVacancyFraction));
  return {beforeLostRent,afterLostRent,changeLostRent:finiteNumber(afterLostRent-beforeLostRent)};
  },[{label:'Same monthly gross rent',input:{...sampleContext,potentialGrossRent:1000,beforeVacancyFraction:0.1,afterVacancyFraction:0.25},expected:{beforeLostRent:100,afterLostRent:250,changeLostRent:150}}],{expression:'lost rent = potential gross rent × vacancy fraction',description:'Gross rent loss comparison only; same supplied currency and rent period.'}),
  ...[159,160].map(id=>ownerModel(id,comparisonSchema.refine(input=>id===159?input.after.price<=input.before.price:input.after.price>=input.before.price,{message:id===159?'Discount price must not exceed original price':'Increased price must not be below original price',path:['after','price']}),compare,[{label:'Independently supplied prices, costs and volumes',input:id===159?comparisonInput:{...comparisonInput,after:{price:12,unitVariableCost:3,units:75}},expected:id===159?comparisonExpected:{beforeRevenue:1000,afterRevenue:900,revenueChange:-100,beforeContribution:600,afterContribution:675,contributionChange:75}}],{expression:'revenue = price × units; contribution = (price − unit variable cost) × units; change = after − before',description:'Discount mode requires after price ≤ before price; price increase mode requires after price ≥ before price. Both volumes are supplied independently. No demand response is inferred; contribution excludes unsupplied fixed costs.'})),
- ownerModel<z.infer<typeof adSchema>>(194,adSchema,input=>({requiredSpend:finiteNumber(input.mode==='revenue-roas'?input.targetAttributedRevenue/input.targetRoasMultiple:input.conversions*input.costPerAcquisition)}),[
+ ownerModel<z.infer<typeof adSchema>>(194,adSchema,input=>({requiredSpend:finiteNumber(input.mode==='revenue-roas'?divideFinite(input.targetAttributedRevenue,input.targetRoasMultiple):multiplyFinite(input.conversions,input.costPerAcquisition))}),[
  {label:'Revenue divided by ROAS multiple',input:{...sampleContext,mode:'revenue-roas',targetAttributedRevenue:1200,targetRoasMultiple:3},expected:{requiredSpend:400}},
  {label:'Conversions times supplied CPA',input:{...sampleContext,mode:'conversions-cpa',conversions:20,costPerAcquisition:7},expected:{requiredSpend:140}},
  ],{expression:'spend = attributed revenue / ROAS multiple OR conversions × CPA',description:'Explicit mode; period is the supplied attribution period. ROAS is currency revenue per currency spend; CPA is currency per conversion. No delivery guarantee.'}),

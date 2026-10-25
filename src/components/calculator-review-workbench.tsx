@@ -5,7 +5,8 @@ import {reviewerFields,parseReviewerFields,calculateReviewerPreview} from '@/lib
 import {serializeCalculationJson,type CalculationSnapshot} from '@/lib/calculation-snapshot';
 import {serializeCalculationCsv,serializeCalculationPdf} from '@/lib/calculation-export';
 export function CalculatorReviewWorkbench({slug}:{slug:string}){
- const definition=getReviewerCalculator(slug),example=definition&&reviewerFields(definition);
+ const [exampleIndex,setExampleIndex]=useState(0);
+ const definition=getReviewerCalculator(slug),example=definition&&reviewerFields(definition,exampleIndex);
  const initial=()=>Object.fromEntries(Object.entries(example??{}).map(([key,value])=>[key,typeof value==='string'?value:JSON.stringify(value)]));
  const [draft,setDraft]=useState<Record<string,string>>(initial),[snapshot,setSnapshot]=useState<CalculationSnapshot>(),[error,setError]=useState<string>();
  const alert=useRef<HTMLParagraphElement>(null);useEffect(()=>{if(error)alert.current?.focus();},[error]);
@@ -19,6 +20,7 @@ export function CalculatorReviewWorkbench({slug}:{slug:string}){
   }catch{setError('Export could not be completed. Retry or use the complete engine output.');}
  }
  return <section style={{minWidth:0,overflowWrap:'anywhere'}} aria-label="Engine contract preview"><h2>Engine contract preview</h2><p>Version {definition.version} · repository review state: {definition.reviewStatus}. These are engine inputs and raw outputs for authorized testing, not specialist approval or a public release.</p>
+ {definition.examples.length>1&&<label className="field">Example and calculation mode<select value={exampleIndex} onChange={e=>{const index=Number(e.target.value),fields=reviewerFields(definition,index);setExampleIndex(index);setDraft(Object.fromEntries(Object.entries(fields??{}).map(([key,value])=>[key,typeof value==='string'?value:JSON.stringify(value)])));setSnapshot(undefined);setError(undefined);}}>{definition.examples.map((e,index)=><option key={index} value={index}>{e.label}</option>)}</select></label>}
  {example?<form onSubmit={e=>{e.preventDefault();setSnapshot(undefined);setError(undefined);try{setSnapshot(calculateReviewerPreview(definition,parseReviewerFields(example,draft)));}catch{setError('Input does not satisfy this engine contract. Check every field and retry.');}}}>
  <div className="field-grid">{Object.entries(example).map(([key,value])=><label className="field" key={key}><span>{key}</span>{value!==null&&typeof value==='object'?<textarea aria-label={key} rows={5} value={draft[key]} maxLength={100000} onChange={e=>{setDraft({...draft,[key]:e.target.value});setSnapshot(undefined);setError(undefined);}}/>:<input aria-label={key} inputMode={typeof value==='number'?'decimal':'text'} value={draft[key]} maxLength={10000} onChange={e=>{setDraft({...draft,[key]:e.target.value});setSnapshot(undefined);setError(undefined);}}/>}<small>{typeof value==='number'?'Finite number; use the exact engine field units.':typeof value==='string'?'Text; exact engine choices and formats apply.':'JSON; preserve the engine structure.'}</small></label>)}</div><button type="submit">Calculate preview</button>{' '}<button type="button" onClick={()=>{setDraft(initial());setSnapshot(undefined);setError(undefined);}}>Reset example</button></form>:<p role="alert">No example-backed input form is available. A reviewed input adapter and example are required; no inputs or result have been fabricated.</p>}
  {error&&<p role="alert" tabIndex={-1} ref={alert}>{error}</p>}

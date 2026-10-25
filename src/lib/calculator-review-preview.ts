@@ -2,7 +2,7 @@ import type {CalculatorDefinition} from '@/calculators/types';
 import {runCalculator} from '@/calculators/engine';
 import {createCalculationSnapshot} from './calculation-snapshot';
 const record=(v:unknown):v is Record<string,unknown>=>v!==null&&typeof v==='object'&&!Array.isArray(v);
-export function reviewerFields(definition:CalculatorDefinition<unknown,unknown>){const input=definition.examples[0]?.input;return record(input)?structuredClone(input):undefined;}
+export function reviewerFields(definition:CalculatorDefinition<unknown,unknown>,exampleIndex=0){const input=definition.examples[exampleIndex]?.input;return record(input)?structuredClone(input):undefined;}
 /** Example types describe editing only; the authoritative schema still validates every calculation. */
 export function parseReviewerFields(example:Record<string,unknown>,draft:Record<string,string>){
  if(Object.keys(draft).some(key=>!Object.hasOwn(example,key)))throw Error('Unknown input field');

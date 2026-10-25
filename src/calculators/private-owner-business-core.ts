@@ -1,5 +1,5 @@
 import {z} from 'zod';
-import {ownerModel,amount,positive,label,finiteNumber,sumFinite,isoDay,type OwnerBinding} from './owner-model-support';
+import {ownerModel,amount,positive,label,finiteNumber,sumFinite,isoDay,multiplyFinite,divideFinite,type OwnerBinding} from './owner-model-support';
 
 const money={currency:label,period:label};
 const signed=z.number().finite();
@@ -15,7 +15,7 @@ const pricingSchema=z.discriminatedUnion('mode',[
  z.object({...money,mode:z.literal('markup'),cost:amount,markupPercent:amount}).strict(),
  z.object({...money,mode:z.literal('target-margin'),cost:positive,targetMarginPercent:amount.lt(100)}).strict(),
 ]);
-function price(input:z.infer<typeof pricingSchema>){return {currency:input.currency,period:input.period,price:finiteNumber(input.mode==='markup'?finiteNumber(input.cost*(1+input.markupPercent/100)):input.cost/(1-input.targetMarginPercent/100))};}
+function price(input:z.infer<typeof pricingSchema>){return {currency:input.currency,period:input.period,price:finiteNumber(input.mode==='markup'?multiplyFinite(input.cost,(1+input.markupPercent/100)):divideFinite(input.cost,(1-input.targetMarginPercent/100)))};}
 const unitCommon={currency:label,unit:label,costBoundary:label,cohortPeriod:label,unitRevenue:amount,unitCost:amount};
 const unitSchema=z.discriminatedUnion('mode',[
  z.object({...unitCommon,mode:z.literal('contribution')}).strict(),
@@ -28,7 +28,7 @@ const pricingExamples=[
 ];
 const unitExample={currency:'USD',unit:'order',costBoundary:'variable fulfillment',cohortPeriod:'October',unitRevenue:50,unitCost:30};
 export const privateOwnerBusinessCore:OwnerBinding[]=[
- ownerModel<z.infer<typeof salesSchema>>(145,salesSchema,input=>({currency:input.currency,period:input.period,grossSales:sumFinite(input.lines.map(x=>finiteNumber(x.price*x.quantity)))}),[
+ ownerModel<z.infer<typeof salesSchema>>(145,salesSchema,input=>({currency:input.currency,period:input.period,grossSales:sumFinite(input.lines.map(x=>multiplyFinite(x.price,x.quantity)))}),[
   {label:'Gross supplied sales',input:{currency:'USD',period:'2026',lines:[{price:12,quantity:3},{price:4,quantity:5}]},expected:{currency:'USD',period:'2026',grossSales:56}},
  ],{expression:'grossSales = Σ(price × quantity)',description:'Supplied gross sales in one declared currency and period; no recognition, tax or discount assumptions.'}),
  ownerModel<z.infer<typeof projectSchema>>(156,projectSchema,input=>{
@@ -38,7 +38,7 @@ export const privateOwnerBusinessCore:OwnerBinding[]=[
     const years=(isoDay(flow.date)-valuation)/86400000/365;
     const factor=finiteNumber(Math.pow(1+input.annualEffectiveRatePercent/100,years));
     if(factor===0)throw new RangeError('Discount factor underflow');
-    return finiteNumber(flow.amount/factor);
+    return divideFinite(flow.amount,factor);
    }));
    return {currency:input.currency,dayCount:input.dayCount,valuationDate:input.valuationDate,npv};
   }
@@ -49,13 +49,13 @@ export const privateOwnerBusinessCore:OwnerBinding[]=[
   {label:'Profit margin',input:{mode:'margin',currency:'USD',period:'Q1',revenue:80,costs:60},expected:{currency:'USD',period:'Q1',profit:20,marginPercent:25}},
   {label:'Dated NPV, explicit ACT365F',input:{mode:'dated-npv',currency:'USD',valuationDate:'2025-01-01',dayCount:'ACT365F',annualEffectiveRatePercent:0,cashflows:[{date:'2025-01-01',amount:-100},{date:'2026-01-01',amount:120}]},expected:{currency:'USD',dayCount:'ACT365F',valuationDate:'2025-01-01',npv:20}},
  ],{expression:'profit = revenue − costs; margin% = 100 × profit/revenue; NPV = Σ CF/(1+r)^((date−valuationDate)/365)',description:'User selects profit, margin or dated NPV. ACT365F uses actual UTC calendar days divided by 365, including signed dates before valuation; rate is annual effective and supplied as percent.'}),
- ownerModel<z.infer<typeof hourlySchema>>(157,hourlySchema,input=>({currency:input.currency,annualPeriod:input.annualPeriod,hourlyRevenue:finiteNumber(input.annualRevenueTarget/input.billableHours)}),[
+ ownerModel<z.infer<typeof hourlySchema>>(157,hourlySchema,input=>({currency:input.currency,annualPeriod:input.annualPeriod,hourlyRevenue:divideFinite(input.annualRevenueTarget,input.billableHours)}),[
   {label:'Annual target per billable hour',input:{currency:'USD',annualPeriod:'2026',annualRevenueTarget:90000,billableHours:1500},expected:{currency:'USD',annualPeriod:'2026',hourlyRevenue:60}},
  ],{expression:'hourlyRevenue = annualRevenueTarget/billableHours',description:'Supplied annual revenue target and annual billable capacity; no tax or utilization assumptions.'}),
  ownerModel<z.infer<typeof pricingSchema>>(158,pricingSchema,price,pricingExamples,{expression:'markup: cost × (1+markup%/100); target margin: cost/(1−margin%/100)',description:'Explicit cost-plus markup or target margin on supplied agency costs.'}),
  ownerModel<z.infer<typeof unitSchema>>(161,unitSchema,input=>{
   const contribution=finiteNumber(input.unitRevenue-input.unitCost);
-  return {currency:input.currency,unit:input.unit,costBoundary:input.costBoundary,cohortPeriod:input.cohortPeriod,unitRevenue:input.unitRevenue,unitCost:input.unitCost,contribution,...(input.mode==='acquisition-ratio'?{contributionToAcquisitionRatio:finiteNumber(contribution/input.acquisitionCostPerUnit)}:{})};
+  return {currency:input.currency,unit:input.unit,costBoundary:input.costBoundary,cohortPeriod:input.cohortPeriod,unitRevenue:input.unitRevenue,unitCost:input.unitCost,contribution,...(input.mode==='acquisition-ratio'?{contributionToAcquisitionRatio:divideFinite(contribution,input.acquisitionCostPerUnit)}:{})};
  },[
   {label:'Unit contribution',input:{...unitExample,mode:'contribution'},expected:{...unitExample,contribution:20}},
   {label:'Contribution divided by acquisition cost per declared unit',input:{...unitExample,mode:'acquisition-ratio',acquisitionCostPerUnit:10},expected:{...unitExample,contribution:20,contributionToAcquisitionRatio:2}},

@@ -11,7 +11,7 @@ describe('owner business scopes',()=>{
   expect(calc(156,{mode:'profit',currency:'USD',period:'Q1',revenue:80,costs:100})).toEqual({currency:'USD',period:'Q1',profit:-20});
   expect(calc(156,{mode:'margin',currency:'USD',period:'Q1',revenue:80,costs:60})).toEqual({currency:'USD',period:'Q1',profit:20,marginPercent:25});
  });
- it('discounts dated signed flows using explicit ACT365F annual effective rate',()=>expect(calc(156,{mode:'dated-npv',currency:'USD',valuationDate:'2025-01-01',dayCount:'ACT365F',annualEffectiveRatePercent:10,cashflows:[{date:'2025-01-01',amount:-100},{date:'2026-01-01',amount:121}]})).toEqual({currency:'USD',dayCount:'ACT365F',valuationDate:'2025-01-01',npv:9.999999999999986}));
+ it('discounts dated signed flows against the independent rational reference 121/(11/10)-100 = 10',()=>{const result=calc(156,{mode:'dated-npv',currency:'USD',valuationDate:'2025-01-01',dayCount:'ACT365F',annualEffectiveRatePercent:10,cashflows:[{date:'2025-01-01',amount:-100},{date:'2026-01-01',amount:121}]}) as {npv:number};expect(result).toMatchObject({currency:'USD',dayCount:'ACT365F',valuationDate:'2025-01-01'});expect(Math.abs(result.npv-10)).toBeLessThan(1e-12);});
  it('divides supplied annual target by hours',()=>expect(calc(157,{currency:'USD',annualPeriod:'2026',annualRevenueTarget:90000,billableHours:1500})).toEqual({currency:'USD',annualPeriod:'2026',hourlyRevenue:60}));
  it.each([158,181])('distinguishes markup from margin for %i',id=>{
   expect(calc(id,{mode:'markup',currency:'USD',period:'month',cost:80,markupPercent:25})).toEqual({currency:'USD',period:'month',price:100});

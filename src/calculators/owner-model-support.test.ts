@@ -7,3 +7,5 @@ it('constructs only approved private draft identities and preserves explicit non
 });
 it('rejects invalid arithmetic instead of returning nonfinite numbers',()=>{expect(()=>finiteNumber(Infinity)).toThrow();expect(()=>sumFinite([1e308,1e308])).toThrow();expect(sumFinite([100,20,-30])).toBe(90);});
 it('requires actual Gregorian UTC dates',()=>{expect(isoDay('2024-02-29')).toBe(Date.UTC(2024,1,29));expect(()=>isoDay('2023-02-29')).toThrow();expect(()=>isoDay('2024-01-01T00:00:00Z')).toThrow();});
+
+it('preserves small signed cashflows through large cancellation',()=>{expect(sumFinite([1e16,1,-1e16])).toBe(1);});

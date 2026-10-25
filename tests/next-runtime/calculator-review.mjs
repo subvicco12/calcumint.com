@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {mkdir,readFile} from 'node:fs/promises';
+import {mkdir,readFile,unlink} from 'node:fs/promises';
 import path from 'node:path';
 export async function verifyCalculatorReview({db,auth,browser,journey,artifacts}){
  const ready=`!document.body.innerText.includes('Verifying account session')`;
@@ -43,8 +43,26 @@ export async function verifyCalculatorReview({db,auth,browser,journey,artifacts}
   assert.deepEqual(outputs[0],outputs[1]);assert(Math.abs(outputs[0].heatIndexF-94.5969412)<1e-9);assert.deepEqual(outputs[2],outputs[3]);assert.equal(outputs[2].azimuthDegrees,null);assert.equal(outputs[4].status,'polar-night');assert.equal(outputs[4].sunriseUtc,null);assert.equal(outputs[4].sunsetUtc,null);
   await browser.visit('/account/calculators/private-scientific-491');await browser.until(`!!document.querySelector('[aria-label="temperature"]') && ${ready}`);await browser.field('[aria-label="temperature"]','70');await browser.click('Calculate preview');await browser.until(`document.querySelector('[aria-label="Complete engine output"]')?.textContent.includes('unsupported')`);const unsupported=JSON.parse(await browser.js(`document.querySelector('[aria-label="Complete engine output"]').textContent`));assert(!('heatIndexF' in unsupported));
  });
+ const ownerCases=JSON.parse(await readFile(new URL('./owner-scope-cases.json',import.meta.url),'utf8'));
+ for(const model of ownerCases)await journey('Owner-approved bounded calculator #'+model.masterId+' private modes and snapshots',async()=>{
+  if(model.masterId===44){await browser.visit('/account/calculators?q=Vacancy%20Impact%20Calculator');await browser.until(`document.body.innerText.includes('OWNER_APPROVED_BOUNDED_SCOPE_IMPLEMENTED_PRIVATE') && ${ready}`);await browser.click('Private scoped implementation: Vacancy Impact Calculator (identity and specialist approval pending)');}else await browser.visit('/account/calculators/'+model.slug);await browser.until(`!!document.querySelector('button[type="submit"]') && ${ready}`);
+  for(let index=0;index<model.examples.length;index++){
+   if(index){await browser.js(`(()=>{const s=[...document.querySelectorAll('select')].find(s=>s.labels?.[0]?.textContent.includes('Example and calculation mode'));s.value=${index};s.dispatchEvent(new Event('change',{bubbles:true}));})()`);await browser.until(`!document.querySelector('[aria-label="Complete engine output"]')`);assert(!await browser.js(`!![...document.querySelectorAll('button')].find(x=>x.textContent==='Download reviewer JSON')`));}
+   await browser.click('Calculate preview');await browser.until(`!!document.querySelector('[aria-label="Complete engine output"]')`);
+   const output=JSON.parse(await browser.js(`document.querySelector('[aria-label="Complete engine output"]').textContent`));assert.deepEqual(output,model.examples[index].expected,'Wrong bounded output for '+model.slug+' example '+index);
+  }
+  const downloads=path.join(artifacts,'owner-downloads');await mkdir(downloads,{recursive:true});await browser.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads});
+  for(const format of ['JSON','CSV','PDF']){
+   const target=path.join(downloads,'review-'+model.slug+'-v1.'+format.toLowerCase());await unlink(target).catch(error=>{if(error.code!=='ENOENT')throw error;});
+   await browser.click('Download reviewer '+format);let bytes;const deadline=Date.now()+45000;while(Date.now()<deadline){try{bytes=await readFile(target);if(bytes.length)break;}catch{}await new Promise(r=>setTimeout(r,60));}assert(bytes?.length,'Owner '+model.slug+' '+format+' export missing');
+   if(format==='JSON'){const snapshot=JSON.parse(bytes.toString());assert.equal(snapshot.calculatorSlug,model.slug);assert.equal(snapshot.calculatorVersion,1);assert.deepEqual(snapshot.input,model.examples.at(-1).input);assert.deepEqual(snapshot.output,model.examples.at(-1).expected);}
+   if(format==='CSV')assert(bytes.toString().includes('"output"'));
+   if(format==='PDF')assert(bytes.subarray(0,8).toString().startsWith('%PDF-1.7'));
+  }
+ });
  await journey('Private reviewer navigation rejects role revocation and account replacement',async()=>{
   await db.sql(`UPDATE public.platform_admins SET active=false WHERE user_id='${db.users.owner.id}';`);await browser.visit('/account/calculators/power-calculator');await browser.until(`document.body.innerText.includes('Reviewer access required')`);assert(!await browser.js(`!!document.querySelector('[aria-label="work"]')`));
+  await browser.visit('/account/calculators/private-owner-145');await browser.until(`document.body.innerText.includes('Reviewer access required')`);assert(!await browser.js("!!document.querySelector('form')"));
   await browser.identity(auth.cookie(db.users.outsider));await browser.visit('/account/calculators');await browser.until(`document.body.innerText.includes('Reviewer access required')`);
  });
 }

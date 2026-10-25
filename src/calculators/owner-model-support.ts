@@ -6,7 +6,10 @@ export const amount=z.number().finite().nonnegative();
 export const positive=z.number().finite().positive();
 export const label=z.string().trim().min(1).max(160);
 export function finiteNumber(value:number){if(!Number.isFinite(value))throw new RangeError('Result exceeds supported finite arithmetic');return value;}
-export function sumFinite(values:readonly number[]){return values.reduce((total,value)=>finiteNumber(total+finiteNumber(value)),0);}
+/** Neumaier compensation preserves small supplied cashflows during cancellation. */
+export function sumFinite(values:readonly number[]){let sum=0,correction=0;for(const value of values){finiteNumber(value);const next=finiteNumber(sum+value);correction=finiteNumber(correction+(Math.abs(sum)>=Math.abs(value)?(sum-next)+value:(value-next)+sum));sum=next;}return finiteNumber(sum+correction);}
+export function multiplyFinite(a:number,b:number){finiteNumber(a);finiteNumber(b);const value=finiteNumber(a*b);if(value===0&&a!==0&&b!==0)throw new RangeError('Nonzero result underflows supported arithmetic');return value;}
+export function divideFinite(a:number,b:number){finiteNumber(a);finiteNumber(b);if(b===0)throw new RangeError('Nonzero denominator required');const value=finiteNumber(a/b);if(value===0&&a!==0)throw new RangeError('Nonzero result underflows supported arithmetic');return value;}
 export function isoDay(value:string){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))throw new RangeError('Explicit YYYY-MM-DD required');const time=Date.parse(value+'T00:00:00Z');if(!Number.isFinite(time)||new Date(time).toISOString().slice(0,10)!==value)throw new RangeError('Valid Gregorian date required');return time;}
 function finiteOutput(value:unknown):void{if(typeof value==='number')finiteNumber(value);else if(Array.isArray(value))value.forEach(finiteOutput);else if(value&&typeof value==='object')Object.values(value).forEach(finiteOutput);}
 export function ownerModel<T>(masterId:number,schema:z.ZodType<T>,calculate:(input:T)=>unknown,examples:readonly CalculatorExample<T,unknown>[],method:{expression:string;description:string},riskClass:CalculatorRiskClass='financial'):OwnerBinding{
