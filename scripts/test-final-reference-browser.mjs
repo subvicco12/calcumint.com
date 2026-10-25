@@ -48,8 +48,9 @@ try {
   try{
    await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});
    journeyDownloads=path.join(downloads,label);await mkdir(journeyDownloads,{recursive:true});downloadEventStart=events.length;await send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:journeyDownloads,eventsEnabled:true});
-   await send('Page.navigate',{url:`http://127.0.0.1:4191/tests/release-candidate/?slug=${slug}&plan=${plan}`});
-   await until(`window.__reference&&document.querySelector('[data-testid=resolved-plan]')?.textContent===${JSON.stringify(plan)}&&!!document.querySelector('.calculator-ui .result-box[role=status] strong,.calculator-ui .result-hero strong')`,'reference source and actual plan '+label);
+   journey.navigation=await send('Page.navigate',{url:`http://127.0.0.1:4191/tests/release-candidate/?slug=${slug}&plan=${plan}`});
+   assert(!journey.navigation.errorText,'Reference navigation failed: '+journey.navigation.errorText);
+   await until(`new URL(location.href).searchParams.get('slug')===${JSON.stringify(slug)}&&window.__reference&&document.querySelector('[data-testid=resolved-plan]')?.textContent===${JSON.stringify(plan)}&&!!document.querySelector('.calculator-ui .result-box[role=status] strong,.calculator-ui .result-hero strong')`,'reference source and actual plan '+label);
    const accountSupported=slugs.includes(slug);const paid=plan!=='free';
    if(accountSupported)await until(`!![...document.querySelectorAll('button')].find(e=>e.textContent==='Save calculation')`,'actual account controls');
    const simple=await state();const expected=await js('window.__reference.oracle.expectedHeadline');assert.equal(simple.headline,expected,'headline matches actual registered engine');assert(!simple.overflow,'simple viewport overflow');
@@ -85,6 +86,8 @@ try {
     if(slug==='mortgage-payment')assert.equal(snapshot.output.periodProjection,undefined,'mortgage export has no invented period rows');
     journey.downloads=[json.name,csv.name,pdf.name];journey.checks.push('actual JSON/CSV engine parity and PDF canonical identity/version downloads');
     await js(`document.querySelector('[aria-label="Scenario workspace"] details').open=true`);
+    const unicodeNotes='Cafe\u0301; Prix\u00a0EUR; x\u0301; invisible \ufeff\u00ad';
+    await js(`(()=>{const el=document.querySelector('[aria-label="Scenario workspace"] textarea');Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set.call(el,${JSON.stringify(unicodeNotes)});el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));})()`);
     await click('Capture baseline A');
     const firstValue=await js(`document.querySelector('.calculator-ui input').value`);
     await inputFirst(String(Number(firstValue)+1));await click('Capture scenario B');await click('Capture scenario C');
@@ -92,10 +95,13 @@ try {
     await click('Export scenario report JSON');const scenarioJson=await downloaded('.json',reportPrior),scenarioReport=JSON.parse(scenarioJson.content);
     assert.deepEqual(scenarioReport.scenarios.map(row=>row.slot),['A','B','C'],'all three immutable captures in report');
     assert.deepEqual(scenarioReport.scenarios[0].output,snapshot.output,'scenario baseline equals exported engine output');
+    assert.equal(scenarioReport.scenarios[0].notes,unicodeNotes,'captured Unicode assumptions remain original in JSON');
     for(const captured of scenarioReport.scenarios){const actual=await js(`window.__reference.oracle.evaluate(${JSON.stringify(captured.input)})`);for(const [key,value]of Object.entries(actual))assert.deepEqual(captured.output[key],value,'scenario report uses actual engine output');}
     for(const metric of scenarioReport.comparison.metrics)for(const cell of metric.cells)if(cell.unavailable===null)assert.equal(cell.difference,decimalDifference(cell.value,metric.cells[0].value),'report difference equals independent canonical-decimal integer subtraction');
     await click('Export scenario report CSV');const scenarioCsv=await downloaded('.csv',reportPrior);assert(scenarioCsv.content.includes('differenceFromA'),'report CSV contains differences');
     await click('Export scenario report PDF');const scenarioPdf=await downloaded('.pdf',reportPrior);assert(scenarioPdf.content.startsWith('%PDF-1.7'),'scenario genuine PDF');assert(scenarioPdf.content.includes('/StructTreeRoot'),'scenario report tagging');assert(scenarioPdf.content.includes('SCENARIO COMPARISON'),'scenario PDF report identity');assert(scenarioPdf.content.includes('PDF/UA conformance: UNVERIFIED'),'PDF access limitations explicit');if(slug==='bmi-calculator')assert(scenarioPdf.content.includes('screening measure'),'BMI captured screening limitation retained');if(slug==='mortgage-payment')assert(scenarioPdf.content.includes('Property taxes'),'Mortgage captured excluded-cost warning retained');
+    assert(scenarioPdf.content.includes('/ActualText')&&scenarioPdf.content.includes('00430061006600650301'),'downloaded PDF retains original decomposed assumptions as replacement text');
+    assert(scenarioPdf.content.includes('<00a0> <00a0>'),'downloaded PDF maps nonbreaking spaces explicitly');
     assert(!(await state()).overflow,'scenario reports contained at viewport');
     assert(await js(`[...document.querySelectorAll('.calculator-scenarios svg')].every(svg=>svg.getAttribute('role')==='img'&&svg.getAttribute('aria-label')&&svg.getAttribute('aria-describedby'))`),'scenario charts have accessible alternatives');
     await inputFirst(firstValue);journey.downloads.push(scenarioJson.name,scenarioCsv.name,scenarioPdf.name);journey.checks.push('all-six A/B/C engine/report parity, differences, charts, actual JSON/CSV/PDF downloads and narrow containment');
@@ -122,7 +128,12 @@ try {
     await js(`window.__reference.synthetic.emit('SIGNED_IN','synthetic-reference-owner')`);await until(`document.querySelector('[data-testid=resolved-plan]').textContent===${JSON.stringify(plan)}&&!![...document.querySelectorAll('button')].find(e=>e.textContent==='Save calculation')`,'synthetic sign-in recovery');journey.checks.push('synthetic failed-read retry focus, logout revocation and sign-in recovery');
    }
    assert(!(await state()).overflow,'final viewport overflow');await screenshot(label);journey.passed=true;console.log('PASS journey '+label);
-  }catch(error){journey.passed=false;journey.error=String(error.stack||error);report.issues.push({label,error:journey.error});await screenshot(label+'-failure').catch(()=>{});console.error('FAIL journey '+label+': '+error.message);}
+  }catch(error){
+   journey.passed=false;journey.error=String(error.stack||error);
+   try{journey.failureState=await js(`({url:location.href,readyState:document.readyState,hasReference:!!window.__reference,plan:document.querySelector('[data-testid=resolved-plan]')?.textContent,body:document.body?.innerText.slice(-2000),resources:performance.getEntriesByType('resource').slice(-20).map(e=>({name:e.name,duration:e.duration}))})`);}catch{/* Preserve original assertion if diagnostics are unavailable. */}
+   journey.networkEvidence=events.filter(e=>['Network.responseReceived','Network.loadingFailed'].includes(e.method)).slice(-40).map(e=>({method:e.method,requestId:e.params.requestId,type:e.params.type,url:e.params.response?.url,status:e.params.response?.status,errorText:e.params.errorText,canceled:e.params.canceled}));
+   report.issues.push({label,error:journey.error});await screenshot(label+'-failure').catch(()=>{});console.error('FAIL journey '+label+': '+error.message);
+  }
  }
  for(const width of [320,1280]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});await send('Page.navigate',{url:'http://127.0.0.1:4191/tests/release-candidate/?probe=schedule'});await until(`!!document.querySelector('[aria-label="Metadata schedule probe"] table')`,'shared schedule fixture');await js(`document.querySelectorAll('details').forEach(e=>e.open=true)`);
