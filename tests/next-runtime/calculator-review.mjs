@@ -34,6 +34,15 @@ export async function verifyCalculatorReview({db,auth,browser,journey,artifacts}
   await browser.visit('/account/calculators/private-catalog-65');await browser.until(`!!document.querySelector('[aria-label="cashFlows"]') && ${ready}`);await browser.field('[aria-label="cashFlows"]','[-100,110]');await browser.click('Calculate preview');await browser.until(`!!document.querySelector('[aria-label="Complete engine output"]')`);const irr=JSON.parse(await browser.js(`document.querySelector('[aria-label="Complete engine output"]').textContent`));assert(Math.abs(irr.periodRatePercent-10)<1e-7);assert.equal(irr.selectedBracketOnly,true);
 
  });
+ await journey('Private scientific previews preserve duplicate identities, units and absent polar events',async()=>{
+  const outputs=[];
+  for(const id of [491,539,495,536,535]){
+   await browser.visit('/account/calculators/private-scientific-'+id);await browser.until(`!!document.querySelector('button[type="submit"]') && ${ready}`);await browser.click('Calculate preview');await browser.until(`!!document.querySelector('[aria-label="Complete engine output"]')`);
+   outputs.push(JSON.parse(await browser.js(`document.querySelector('[aria-label="Complete engine output"]').textContent`)));
+  }
+  assert.deepEqual(outputs[0],outputs[1]);assert(Math.abs(outputs[0].heatIndexF-94.5969412)<1e-9);assert.deepEqual(outputs[2],outputs[3]);assert.equal(outputs[2].azimuthDegrees,null);assert.equal(outputs[4].status,'polar-night');assert.equal(outputs[4].sunriseUtc,null);assert.equal(outputs[4].sunsetUtc,null);
+  await browser.visit('/account/calculators/private-scientific-491');await browser.until(`!!document.querySelector('[aria-label="temperature"]') && ${ready}`);await browser.field('[aria-label="temperature"]','70');await browser.click('Calculate preview');await browser.until(`document.querySelector('[aria-label="Complete engine output"]')?.textContent.includes('unsupported')`);const unsupported=JSON.parse(await browser.js(`document.querySelector('[aria-label="Complete engine output"]').textContent`));assert(!('heatIndexF' in unsupported));
+ });
  await journey('Private reviewer navigation rejects role revocation and account replacement',async()=>{
   await db.sql(`UPDATE public.platform_admins SET active=false WHERE user_id='${db.users.owner.id}';`);await browser.visit('/account/calculators/power-calculator');await browser.until(`document.body.innerText.includes('Reviewer access required')`);assert(!await browser.js(`!!document.querySelector('[aria-label="work"]')`));
   await browser.identity(auth.cookie(db.users.outsider));await browser.visit('/account/calculators');await browser.until(`document.body.innerText.includes('Reviewer access required')`);
