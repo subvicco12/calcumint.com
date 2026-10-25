@@ -43,3 +43,7 @@ it('links ordinary saved history and scenarios to their immutable record instead
  state.tables.saved_scenarios={data:[{id:'case',project_id:'project',calculator_slug:'slope-calculator',name:'Old scenario'}],error:null};
  const html=await render();expect(html).toContain('/account/saved?source=history&amp;id=old');expect(html).toContain('/account/saved?source=scenario&amp;id=case');
 });
+it('offers browsing beyond the recent saved calculation limits on every plan',async()=>{
+ state.tables.profiles={data:{plan:'free'},error:null};
+ expect(await render()).toContain('href="/account/history"');
+});
