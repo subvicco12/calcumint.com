@@ -1,0 +1,11 @@
+import {beforeEach,expect,it,vi} from 'vitest';
+const state=vi.hoisted(()=>({owner:'owner-a',error:null as unknown,query:vi.fn(),provider:vi.fn()}));
+vi.mock('@/lib/billing/paddle',()=>({paddleRequest:state.provider}));
+vi.mock('@/lib/supabase/server',()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:{id:state.owner}},error:state.error})},from:state.query})}));
+import {POST} from './route';
+beforeEach(()=>{state.owner='owner-a';state.error=null;state.query.mockReset();state.provider.mockReset().mockResolvedValue({urls:{general:{overview:'https://synthetic.invalid/overview'},subscriptions:[{id:'sub_a',cancel_subscription:'https://synthetic.invalid/cancel',update_subscription_payment_method:'https://synthetic.invalid/payment'}]}});state.query.mockImplementation((table:string)=>{const q={select:()=>q,eq:()=>q,in:()=>q,order:()=>q,limit:()=>q,maybeSingle:async()=>({data:table==='profiles'?{display_name:'Owner A'}:{provider_customer_id:'customer_a',provider_subscription_id:'sub_a'},error:null})};return q;});});
+const request=(expectedOwnerId:unknown,action='overview')=>new Request('https://synthetic.invalid/api/billing/portal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,expectedOwnerId})});
+it('rejects a stale rendered owner before any billing read or provider operation',async()=>{state.owner='owner-b';expect((await POST(request('owner-a'))).status).toBe(409);expect(state.query).not.toHaveBeenCalled();expect(state.provider).not.toHaveBeenCalled();});
+it.each([undefined,42,''])('rejects missing or malformed owner %s before provider access',async owner=>{expect((await POST(request(owner))).status).toBe(400);expect(state.provider).not.toHaveBeenCalled();});
+it('fails closed when authentication returns both a user and an error',async()=>{state.error=new Error('synthetic auth failure');expect((await POST(request('owner-a'))).status).toBe(401);expect(state.query).not.toHaveBeenCalled();expect(state.provider).not.toHaveBeenCalled();});
+it.each(['overview','cancel','payment'])('preserves same-owner %s management',async action=>{const response=await POST(request('owner-a',action));expect(response.status).toBe(200);expect(await response.json()).toEqual({url:`https://synthetic.invalid/${action}`});expect(state.provider).toHaveBeenCalledTimes(2);});

@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { paddleRequest } from "@/lib/billing/paddle";
@@ -12,11 +13,16 @@ type PortalSession = {
 export async function POST(request: Request) {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return NextResponse.json({ error: "Accounts are not configured" }, { status: 503 });
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return NextResponse.json({ error: "Sign in required" }, { status: 401 });
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user) return NextResponse.json({ error: "Sign in required" }, { status: 401 });
 
-  const body = await request.json().catch(() => ({})) as { action?: "overview" | "cancel" | "payment" };
-  const action = body.action ?? "overview";
+  const parsed = z.object({
+    action: z.enum(["overview", "cancel", "payment"]).default("overview"),
+    expectedOwnerId: z.string().min(1).max(128)
+  }).safeParse(await request.json().catch(() => null));
+  if (!parsed.success) return NextResponse.json({ error: "Invalid billing request" }, { status: 400 });
+  if (parsed.data.expectedOwnerId !== user.id) return NextResponse.json({ error: "Account context changed" }, { status: 409 });
+  const { action } = parsed.data;
   const [{ data: subscription, error }, { data: profile }] = await Promise.all([
     supabase.from("subscriptions")
       .select("provider_customer_id,provider_subscription_id,status")
