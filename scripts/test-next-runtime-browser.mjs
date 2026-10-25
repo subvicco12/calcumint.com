@@ -7,6 +7,7 @@ import {startRuntimeDatabase} from '../tests/next-runtime/database.mjs';
 import {startAuthFixture} from '../tests/next-runtime/auth-fixture.mjs';
 import {startNextRuntime} from '../tests/next-runtime/server.mjs';
 import {startBrowser} from '../tests/next-runtime/cdp.mjs';
+import {verifyProjectLayout} from '../tests/next-runtime/project-layout.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const artifacts=process.env.NEXT_RUNTIME_ARTIFACTS||'/tmp/calcumint-next-runtime';await mkdir(artifacts,{recursive:true});
 // Keep assertion diagnostics available through authenticated check annotations when log storage is inaccessible.
@@ -88,9 +89,10 @@ try{
   await js(`(()=>{const e=document.querySelector('[name=country]');e.value='IN';e.dispatchEvent(new Event('change',{bubbles:true}))})()`);await click('Save preferences');await until(`document.body.innerText.includes('Request completed.')`);
   assert.equal(await db.sql(`SELECT country_code||':'||currency FROM public.user_preferences WHERE user_id='${db.users.owner.id}';`),'IN:INR');
  });
- const oldProject='aaaaaaaa-aaaa-4aaa-8aaa-000000000001',otherProject='aaaaaaaa-aaaa-4aaa-8aaa-000000000026';
+ const oldProject='aaaaaaaa-aaaa-4aaa-8aaa-000000000001',otherProject='aaaaaaaa-aaaa-4aaa-8aaa-000000000026',oldHistory='dddddddd-dddd-4ddd-8ddd-000000000001';
  await db.sql(`SET request.jwt.claim.sub='${db.users.owner.id}';
  UPDATE public.profiles SET plan='business' WHERE id='${db.users.owner.id}';
+ INSERT INTO public.calculation_history(id,user_id,calculator_slug,calculator_version,input_data,output_data,created_at) VALUES('${oldHistory}','${db.users.owner.id}','slope-calculator',1,'{"rise":6,"run":3}','{"result":1.999}','2019-01-01T00:00:00Z');
  INSERT INTO public.calculation_projects(id,user_id,name,description,created_at,updated_at)
  SELECT ('aaaaaaaa-aaaa-4aaa-8aaa-'||lpad(i::text,12,'0'))::uuid,'${db.users.owner.id}',CASE WHEN i=1 THEN 'native oldest project' ELSE 'native project '||i END,'Native local workflow fixture',CASE WHEN i=1 THEN '2020-01-01T00:00:00Z'::timestamptz ELSE '2026-01-01T00:00:00Z'::timestamptz+i*interval '1 second' END,CASE WHEN i=1 THEN '2020-01-01T00:00:00Z'::timestamptz ELSE '2026-01-01T00:00:00Z'::timestamptz+i*interval '1 second' END FROM generate_series(1,26) i;
  INSERT INTO public.saved_scenarios(id,user_id,project_id,name,calculator_slug,calculator_version,input_data,output_data,created_at)
@@ -103,6 +105,8 @@ try{
  await journey('Native projects browse reaches project26 and scopes older scenario pagination',async()=>{
   await owner();await visit('/account');await until(`document.body.innerText.includes('Calculation projects') && !document.body.innerText.includes('Verifying account session')`);
   assert(!await js(`!!document.querySelector('a[href="/account/projects/${oldProject}"]')`));
+  assert(!(await browser.text()).toLowerCase().includes('native oldest project'));
+  assert(!await js(`!!document.querySelector('a[href="/account/saved?source=history&id=${oldHistory}"]')`));
   await visit('/account/projects');await until(`!!document.querySelector('nav[aria-label="Project pagination"]') && !document.body.innerText.includes('Verifying account session')`);
   assert.equal(await js(`document.querySelectorAll('a[href^="/account/projects/aaaaaaaa"]').length`),20);
   assert(!await js(`!!document.querySelector('a[href="/account/projects/${oldProject}"]')`));
@@ -123,7 +127,7 @@ try{
   await browser.identity(auth.cookie(db.users.outsider));await js(`window.dispatchEvent(new Event('focus'))`);await until(`document.body.innerText.includes('Account session changed')`);assert(!(await browser.text()).includes('native scoped scenario'));await owner();
  });
  await journey('Native oldest history capture traverses project pages and preserves atomic snapshot',async()=>{
-  const oldest=await db.sql(`SELECT id FROM public.calculation_history WHERE user_id='${db.users.owner.id}' ORDER BY created_at ASC,id ASC LIMIT 1;`);assert.match(oldest,/^[0-9a-f-]{36}$/);
+  const oldest=await db.sql(`SELECT id FROM public.calculation_history WHERE user_id='${db.users.owner.id}' ORDER BY created_at ASC,id ASC LIMIT 1;`);assert.equal(oldest,oldHistory);
   await owner();await visit(`/account/saved?source=history&id=${oldest}`);await until(`document.body.innerText.includes('Saved results') && !document.body.innerText.includes('Verifying account session')`);
   assert((await browser.text()).includes('1.999'));await click('Choose a project for this calculation');await until(`!!document.querySelector('nav[aria-label="Project pagination"]') && !document.body.innerText.includes('Verifying account session')`);
   assert.equal(await js(`new URL(location.href).searchParams.get('historyId')`),oldest);await click('Next page');await until(`location.search.includes('cursor=') && !document.body.innerText.includes('Verifying account session')`);assert.equal(await js(`new URL(location.href).searchParams.get('historyId')`),oldest);
@@ -147,6 +151,7 @@ try{
   assert.equal(await db.sql(`SELECT country_code||':'||locale FROM public.user_preferences WHERE user_id='${db.users.owner.id}';`),country+':'+locale);
   await visit('/account');await until(`!!document.querySelector('[name=locale]') && !document.body.innerText.includes('Verifying account session')`);assert.equal(await js(`document.querySelector('[name=locale]').value`),locale);assert.equal(await js(`document.querySelector('[name=country]').value`),country);
  });
+ await journey('Native project metadata remains readable with narrow layout and keyboard pagination',async()=>{report.projectLayout=await verifyProjectLayout({db,auth,browser});});
  report.network=browser.network;report.browserErrors=browser.errors;report.authRequests=auth.requests;report.passed=report.journeys.every(j=>j.passed)&&browser.errors.length===0&&browser.network.every(n=>n.allowed);if(browser.errors.length){console.error('Browser exceptions: '+JSON.stringify(browser.errors));annotateFailure('Unexpected browser exceptions',browser.errors.join('\n'))}if(browser.network.some(n=>!n.allowed))console.error('Forbidden browser outbound requests');if(!report.passed)process.exitCode=1;
 }catch(e){report.passed=false;report.error=e.stack;process.exitCode=1;console.error(e);annotateFailure('Next runtime setup',e)}finally{
  report.cleanup=[];report.cleanupComplete=false;
