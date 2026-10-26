@@ -1,0 +1,149 @@
+[
+  {
+    "masterId": 86,
+    "title": "Retirement Longevity Calculator",
+    "equation": "available_t = B_(t-1)*(1+r_t) for an explicitly selected end-period profile; paid_t=min(available_t,W_t); B_t=available_t-paid_t. exactZeroPeriod=min{t:B_t=0}; firstShortfallPeriod=min{t:available_t<W_t}. Report separately, or null within H.",
+    "definitions": [
+      "Keep exact-zero and first-shortfall distinct; neither is silently selected as the longevity meaning.",
+      "Finite H>=1; nonnegative available balances and scheduled withdrawals; per-period rates > -1. Beginning-period timing requires its own recurrence.",
+      "Final partial payment versus stop-before-payment, withdrawal growth, inflation, benefits and taxes still require policy selection."
+    ],
+    "questions": [
+      "Which named output defines longevity: first exact-zero closing balance, first scheduled-payment shortfall, or both?",
+      "Which timing, partial-final-payment and horizon rules are approved?"
+    ],
+    "evidence": "Existing finance/swp.ts v1 stops on exact zero. Independent 200/100/0 witness gives exact zero at 2, first shortfall at 3; no historical output edit.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  },
+  {
+    "masterId": 96,
+    "title": "401(k) Calculator",
+    "equation": "Maintain total asset buckets E(employee-owned) and U(employer-origin), each including its attributable returns and approved fees/flows. Total=E+U; vested=E+v_t*U only for a uniform approved vesting fraction v_t. Tranche-specific schedules require separate U_j and sum(v_jt*U_j).",
+    "definitions": [
+      "Record full employer contributions in total assets; vesting changes ownership entitlement, not whether assets exist.",
+      "Employee-owned and employer-origin buckets must follow approved timing, fee, withdrawal, forfeiture and vesting rules; do not apply a new vesting fraction to employee assets.",
+      "Vested balance is not necessarily currently accessible or penalty-free. Eligibility, statutory limits, tax year, match/true-up rules remain unresolved."
+    ],
+    "questions": [
+      "Approve total and vested outputs separately, contribution timing and tranche vesting schedules?",
+      "Which plan/year contribution limits, forfeiture and distribution restrictions apply?"
+    ],
+    "evidence": "Bookkeeping witness E=1000, U=100, v=.5: total1100, vested1050. A later vesting change to1 makes vested1100 without a new100 employer asset.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://www.irs.gov/retirement-plans/plan-sponsor/401k-plan-overview",
+      "https://www.irs.gov/retirement-plans/matching-contributions-help-you-save-more-for-retirement"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  },
+  {
+    "masterId": 173,
+    "title": "Customer Lifetime Value Calculator",
+    "equation": "CLV=sum(t=1..N){[p_t*(R_t-C_active_t)-C_unconditional_t]/(1+d)^t}-CAC_0.",
+    "definitions": [
+      "Finite integer N>=0; p_t in[0,1]; d>-1 per matching period; end-period cash flows; all money one explicit currency/basis.",
+      "R_t and C_active_t are conditional on activity; C_unconditional_t is an expected unconditional cohort-per-customer cost, not survival-weighted again.",
+      "Unconditional costs are still time-discounted. CAC is t0 exactly once and excluded from all recurring costs.",
+      "No steady-state/churn conversion or retention distribution is selected."
+    ],
+    "questions": [
+      "Which finite horizon, cohort and activity probabilities apply?",
+      "Which costs are conditional, unconditional or t0 acquisition, and what discount convention is approved?"
+    ],
+    "evidence": "p=.5,R=100,C_unconditional=20,d=0:30, not40; d=.1 yields300/11, not400/11. N=0 yields -CAC.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://brucehardie.com/notes/024/reconciling_clv_formulas.pdf"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  },
+  {
+    "masterId": 198,
+    "title": "Marketplace Fee Calculator",
+    "equation": "Profit=G-F-R+K-C_goods-C_fulfillment-C_other.",
+    "definitions": [
+      "G is gross receipts before refunds R; F is gross assessed fees before separate eligible fee credits K.",
+      "Choose a single gross or net convention; net receipts/fees cannot be debited/credited again. Each component appears once.",
+      "Platform, country, currency, account tier, schedule/effective date and fee-specific eligible bases remain unselected; Etsy evidence cannot establish a universal marketplace policy."
+    ],
+    "questions": [
+      "Which marketplace and effective schedule are selected?",
+      "Which refund/credit events and gross/net inputs are supplied versus derived by each rule?"
+    ],
+    "evidence": "G100,F12,R20,K2,goods40:30; equivalent net receipts80 and net fees10 also give30 without an extra refund or credit.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://www.etsy.com/legal/fees/"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  },
+  {
+    "masterId": 199,
+    "title": "Etsy Profit Calculator",
+    "equation": "Profit=G-R-(F_listing+F_transaction+F_processing+F_ad+F_regulatory+F_conversion)+K-C_goods-C_shipping-C_other.",
+    "definitions": [
+      "G before refunds; each F before eligible credits K; all inputs disjoint and in one reporting currency.",
+      "Seller-funded versus platform-covered refunds must be separately identified; do not automatically debit seller receipts for a platform-funded refund.",
+      "No rates or refund entitlements selected. Fee types have separately sourced shipping/tax/discount/currency bases; credits never assumed universal."
+    ],
+    "questions": [
+      "Which Etsy seller country, currency, effective fee revision and refund funding apply?",
+      "Approve each fee base and credit entitlement, and gross/net input convention?"
+    ],
+    "evidence": "Seller-funded R20 with G100,F12,goods40,K0 gives28 versus48 when the refund is omitted; credits require separate eligibility evidence.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://www.etsy.com/legal/fees/",
+      "https://www.etsy.com/legal/etsy-payments/"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  },
+  {
+    "masterId": 204,
+    "title": "Return Rate Impact Calculator",
+    "equation": "Profit(q)=N*(P-C_sale)-N*q*(R+H_incremental+F_incremental-V_recovered); impact=Profit(q2)-Profit(q1).",
+    "definitions": [
+      "N integer>=0, q in[0,1], consistent cohort and recognition period.",
+      "C_sale contains initial per-sale costs exactly once, including original processing fees if applicable. A retained original fee is not a new incremental return charge.",
+      "F_incremental contains only additional return-specific charges not in C_sale or H_incremental. Fee reversals are explicit signed adjustments, never invented.",
+      "V_recovered is separately valued inventory recovery, not cash revenue; gross recovery less separate H or net recovery without repeating the same costs. Accounting compliance remains unasserted."
+    ],
+    "questions": [
+      "Approve the sale/return cost boundary and separate cash versus inventory reporting?",
+      "Which recovery valuation, refund/fee events and recognition period apply?"
+    ],
+    "evidence": "N100,P50,C_sale33 including fee3,q=.1,R50,H5,V20,F_incremental0 gives1350. Repeating retained fee3 yields1320 and is excluded.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://standards.aasb.gov.au/node/4589"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  },
+  {
+    "masterId": 527,
+    "title": "Golf Handicap Calculator",
+    "equation": "Provisional dependency proposal only: source-approved eligible score differentials -> applicable differential-level adjustments -> source-defined record window/selection -> average -> source-defined rounding, caps and any remaining committee/index adjustments. For a verified eligible 20-record branch only, candidate selection is lowest8 of most recent20.",
+    "definitions": [
+      "A single 18-hole differential 113/slope*(adjustedGrossScore-courseRating-PCC) is not a Handicap Index.",
+      "Do not label this a complete or verified WHS2024 algorithm. Full adopted authority, revision, eligibility, short record sets, 9-hole handling, exceptional-score rules, cap eligibility, rounding and committee powers remain unverified.",
+      "Upstream live R&A report suggests differential adjustments precede selection; its date/revision is unpinned and full USGA2024 text was blocked. Exact round/cap/order must be confirmed from complete version-bound rules.",
+      "Synthetic selective-adjustment witness establishes noncommutativity only; it does not authorize an adjustment magnitude or policy."
+    ],
+    "questions": [
+      "Provide the complete adopted authority/revision and approve the full dependency/order for differentials, selection, rounding, caps and committee action?",
+      "Which eligible-round, short-history, 9-hole and exceptional-score branches are required?"
+    ],
+    "evidence": "Synthetic20 scores1..20 with ninth score changed9->0: selecting adjusted lowest8 gives3.5; selecting original8 before adjustment gives4.5. Not a normative golf fixture.",
+    "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+    "sourceBasis": [
+      "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+      "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm",
+      "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5"
+    ],
+    "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+  }
+]
