@@ -1,0 +1,1479 @@
+{
+  "cases": [
+    {
+      "masterId": 19,
+      "title": "Credit Card Minimum Payment Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "credit_finance"
+      ],
+      "candidateNotSelected": "M_t=min(D_t,issuerRule(statement_t)); B_next=D_t-M_t",
+      "questions": [
+        {
+          "questionId": "19-Q01",
+          "question": "For #19 Credit Card Minimum Payment Calculator, what exact policy is approved for: Issuer formula, percent/floor basis, interest/fees inclusion, due dates and payoff assumptions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "19-Q02",
+          "question": "For #19 Credit Card Minimum Payment Calculator, what exact policy is approved for: Actual issuer rule missing; no percent/floor default?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/data-research/credit-card-data/know-you-owe-credit-cards/credit-card-contract-definitions/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 20,
+      "title": "Balance Transfer Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "credit_finance"
+      ],
+      "candidateNotSelected": "B0=transfer+capitalizedFee; B_next=B_t+I_t+F_t-P_t; deltaCost=sum(old outflows)-sum(new outflows)",
+      "questions": [
+        {
+          "questionId": "20-Q01",
+          "question": "For #20 Balance Transfer Calculator, what exact policy is approved for: Fee capitalization, promotional duration, payment order and rate reset?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "20-Q02",
+          "question": "For #20 Balance Transfer Calculator, what exact policy is approved for: Promotion reset, allocation and loss-of-promotion conditions unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/ask-cfpb/what-is-a-balance-transfer-fee-can-a-balance-transfer-fee-be-charged-on-a-zero-percent-interest-rate-offer-en-53/",
+        "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+        "https://www.consumerfinance.gov/data-research/credit-card-data/know-you-owe-credit-cards/credit-card-contract-definitions/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 21,
+      "title": "Debt Consolidation Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "credit_finance"
+      ],
+      "candidateNotSelected": "Cost_s=sum_t(P_s,t+cashFees_s,t); savings=Cost_old-Cost_new",
+      "questions": [
+        {
+          "questionId": "21-Q01",
+          "question": "For #21 Debt Consolidation Calculator, what exact policy is approved for: Debt types, fees, payment policy and cost-comparison basis?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "21-Q02",
+          "question": "For #21 Debt Consolidation Calculator, what exact policy is approved for: Unequal horizons need residual liabilities/discounting; cannot infer consolidation eligibility?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 23,
+      "title": "HELOC Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "credit_finance"
+      ],
+      "candidateNotSelected": "B_next=B_t+draw_t+I_t+fee_t-P_t; I_t=sum_daily(balance_d*rate_d/dayBasis)",
+      "questions": [
+        {
+          "questionId": "23-Q01",
+          "question": "For #23 HELOC Calculator, what exact policy is approved for: Draw schedule, variable-rate/index/cap convention, repayment phase and fees?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "23-Q02",
+          "question": "For #23 HELOC Calculator, what exact policy is approved for: Index, margin, reset, caps, draw phase and repayment contract missing?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 32,
+      "title": "Rent vs Buy Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "PVcost_s=sum_t(outflow_s,t-inflow_s,t)/(1+d)^t; delta=PVcost_buy-PVcost_rent",
+      "questions": [
+        {
+          "questionId": "32-Q01",
+          "question": "For #32 Rent vs Buy Calculator, what exact policy is approved for: Discounting, tax treatment, financing, maintenance and terminal-sale inclusions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "32-Q02",
+          "question": "For #32 Rent vs Buy Calculator, what exact policy is approved for: Cash-flow accounting proposal only; no official universal rent-buy method selected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 34,
+      "title": "Property Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_property"
+      ],
+      "candidateNotSelected": "Tax=(billableAssessedValue-exemptions)*classRate-abatements",
+      "questions": [
+        {
+          "questionId": "34-Q01",
+          "question": "For #34 Property Tax Calculator, what exact policy is approved for: Assessed versus market value, exemptions, caps, levies and jurisdiction?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "34-Q02",
+          "question": "For #34 Property Tax Calculator, what exact policy is approved for: NYC form is illustrative; jurisdiction/year/class and assessment rules unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.nyc.gov/site/finance/property/property-calculating-your-annual-tax-blll.page"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 35,
+      "title": "Closing Cost Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "ClosingCosts=sum(allocated fee_i)+taxes+prepaids+initialEscrow-lenderCredits; cashToClose reconciled separately",
+      "questions": [
+        {
+          "questionId": "35-Q01",
+          "question": "For #35 Closing Cost Calculator, what exact policy is approved for: Buyer/seller scope, taxes, lender fees, escrows and prepaid-item treatment?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "35-Q02",
+          "question": "For #35 Closing Cost Calculator, what exact policy is approved for: Buyer/seller and financing allocations must be pinned; avoid double-counting deposits/down payment?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 36,
+      "title": "Rental Property Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "NOI=rent-vacancy-operatingExpenses; cashFlow=NOI-debtService-capex",
+      "questions": [
+        {
+          "questionId": "36-Q01",
+          "question": "For #36 Rental Property Calculator, what exact policy is approved for: Expense classification, financing, capex, depreciation and sale assumptions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "36-Q02",
+          "question": "For #36 Rental Property Calculator, what exact policy is approved for: NOI/capex classification proposed; taxable income differs from cash flow?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p527"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 43,
+      "title": "Rental ROI Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "cashOnCash=annualPreTaxCashFlow/initialCashInvested; holdingReturn=(sum cashDistributions+netExit-initialCash)/initialCash",
+      "questions": [
+        {
+          "questionId": "43-Q01",
+          "question": "For #43 Rental ROI Calculator, what exact policy is approved for: Return metric, leverage, sale proceeds, costs and annualization convention?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "43-Q02",
+          "question": "For #43 Rental ROI Calculator, what exact policy is approved for: Return definition not selected; annualized IRR is a different metric?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p527",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 46,
+      "title": "House Flipping Profit Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "profit=salePrice-purchase-rehab-holding-financing-buyCosts-sellCosts",
+      "questions": [
+        {
+          "questionId": "46-Q01",
+          "question": "For #46 House Flipping Profit Calculator, what exact policy is approved for: Fee/tax inclusions, finance timing, budget contingencies and return basis?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "46-Q02",
+          "question": "For #46 House Flipping Profit Calculator, what exact policy is approved for: Taxes and timing remain explicit; accounting identity is not market forecast?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 48,
+      "title": "Investment Property Affordability Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "paymentCapacity=budget-otherObligations-propertyOperatingCosts+eligibleRentalCredit; loan=paymentCapacity*(1-(1+i)^(-n))/i",
+      "questions": [
+        {
+          "questionId": "48-Q01",
+          "question": "For #48 Investment Property Affordability Calculator, what exact policy is approved for: Rental-income credit, debt obligations, reserves, operating costs and eligibility exclusions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "48-Q02",
+          "question": "For #48 Investment Property Affordability Calculator, what exact policy is approved for: No underwriting/approval claim; lender income credit, reserves and constraints missing?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 49,
+      "title": "Mortgage + Rental Combined Model",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "property_finance"
+      ],
+      "candidateNotSelected": "mortgageBalance_next=B*(1+i)-payment; propertyCash=rent-operating-capex-payment",
+      "questions": [
+        {
+          "questionId": "49-Q01",
+          "question": "For #49 Mortgage + Rental Combined Model, what exact policy is approved for: Mortgage schedule version, cash-flow alignment, operating inclusions and sale horizon?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "49-Q02",
+          "question": "For #49 Mortgage + Rental Combined Model, what exact policy is approved for: Period alignment, taxes and terminal liabilities must be reviewed?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p527",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 80,
+      "title": "Retirement Corpus Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "Corpus=sum_t(W_t-Benefit_t)/(1+r)^t+terminalBalance/(1+r)^N",
+      "questions": [
+        {
+          "questionId": "80-Q01",
+          "question": "For #80 Retirement Corpus Calculator, what exact policy is approved for: Withdrawal recurrence, horizon, inflation basis, taxes/benefits and terminal balance?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "80-Q02",
+          "question": "For #80 Retirement Corpus Calculator, what exact policy is approved for: Finite deterministic present value only; longevity and sequence risk not selected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 81,
+      "title": "Retirement Savings Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "B_n=B0*(1+i)^n+c*((1+i)^n-1)/i; i=0: B_n=B0+n*c",
+      "questions": [
+        {
+          "questionId": "81-Q01",
+          "question": "For #81 Retirement Savings Calculator, what exact policy is approved for: Whether the intended product is a generic savings projection or a rule-specific retirement account?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "81-Q02",
+          "question": "For #81 Retirement Savings Calculator, what exact policy is approved for: End-period contributions assumed; account-specific tax rules excluded unless selected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 82,
+      "title": "Retirement Age Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "n*=min{n in [0,H]: projectedBalance(n)>=approvedTarget(n)}",
+      "questions": [
+        {
+          "questionId": "82-Q01",
+          "question": "For #82 Retirement Age Calculator, what exact policy is approved for: Target corpus model, contribution/return timing and no-solution handling?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "82-Q02",
+          "question": "For #82 Retirement Age Calculator, what exact policy is approved for: Nonmonotonic targets need full scan; report none within horizon rather than guaranteed age?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 84,
+      "title": "Inflation-Adjusted Retirement Need Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "retirementSpending=currentSpending*(1+inflation)^years; corpus=approvedCorpus(retirementSpending,...)",
+      "questions": [
+        {
+          "questionId": "84-Q01",
+          "question": "For #84 Inflation-Adjusted Retirement Need Calculator, what exact policy is approved for: Spending basis, retirement horizon and downstream corpus/withdrawal policy?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "84-Q02",
+          "question": "For #84 Inflation-Adjusted Retirement Need Calculator, what exact policy is approved for: Nominal/real and downstream corpus method remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 85,
+      "title": "Retirement Withdrawal Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "B_next=B_t*(1+r_t)-W_t; W_t=W0*(1+g)^t (end-period scenario)",
+      "questions": [
+        {
+          "questionId": "85-Q01",
+          "question": "For #85 Retirement Withdrawal Calculator, what exact policy is approved for: Nominal/real withdrawals, indexation, depletion behavior and taxes/benefits?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "85-Q02",
+          "question": "For #85 Retirement Withdrawal Calculator, what exact policy is approved for: Beginning-period variant differs; taxes and depletion handling unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 88,
+      "title": "FIRE Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "target=annualSpending/suppliedWithdrawalFraction; date=first accumulation crossing target",
+      "questions": [
+        {
+          "questionId": "88-Q01",
+          "question": "For #88 FIRE Calculator, what exact policy is approved for: Withdrawal-rule authority, annual spending definition, tax/benefits and accumulation assumptions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "88-Q02",
+          "question": "For #88 FIRE Calculator, what exact policy is approved for: 4% is witness input, not endorsed safe rate; target authority missing?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 89,
+      "title": "Coast FIRE Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "coastBalance=futureApprovedTarget/(1+r)^years",
+      "questions": [
+        {
+          "questionId": "89-Q01",
+          "question": "For #89 Coast FIRE Calculator, what exact policy is approved for: Target corpus/withdrawal policy, inflation consistency and contributions after coast date?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "89-Q02",
+          "question": "For #89 Coast FIRE Calculator, what exact policy is approved for: No later contributions; nominal/real consistency and target authority required?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 90,
+      "title": "Lean FIRE Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "leanTarget=ownerSuppliedLeanAnnualSpending/suppliedWithdrawalFraction",
+      "questions": [
+        {
+          "questionId": "90-Q01",
+          "question": "For #90 Lean FIRE Calculator, what exact policy is approved for: Owner spending scenario plus financial review of the shared FIRE model?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "90-Q02",
+          "question": "For #90 Lean FIRE Calculator, what exact policy is approved for: Lean spending has no universal threshold; shared FIRE method remains pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 91,
+      "title": "Fat FIRE Calculator",
+      "reviewerBatch": "B02",
+      "requiredSpecialistGroups": [
+        "retirement_finance_numerical"
+      ],
+      "candidateNotSelected": "fatTarget=ownerSuppliedFatAnnualSpending/suppliedWithdrawalFraction",
+      "questions": [
+        {
+          "questionId": "91-Q01",
+          "question": "For #91 Fat FIRE Calculator, what exact policy is approved for: Owner spending scenario plus financial review of the shared FIRE model?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "91-Q02",
+          "question": "For #91 Fat FIRE Calculator, what exact policy is approved for: Fat spending has no universal threshold; shared FIRE method remains pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 95,
+      "title": "Required Minimum Distribution Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "retirement_finance_tax"
+      ],
+      "candidateNotSelected": "RMD=priorYearEndAdjustedBalance/applicableOfficialDivisor",
+      "questions": [
+        {
+          "questionId": "95-Q01",
+          "question": "For #95 Required Minimum Distribution Calculator, what exact policy is approved for: Required distribution rules, table, account balance date and exceptions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "95-Q02",
+          "question": "For #95 Required Minimum Distribution Calculator, what exact policy is approved for: Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "95-Q03",
+          "question": "For #95 Required Minimum Distribution Calculator, what exact policy is approved for: Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p590b"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 97,
+      "title": "Roth IRA Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "retirement_finance_tax"
+      ],
+      "candidateNotSelected": "B_next=B*(1+r)+eligibleRothContribution-fees-distributions; contribution<=yearEligibilityLimit(inputs)",
+      "questions": [
+        {
+          "questionId": "97-Q01",
+          "question": "For #97 Roth IRA Calculator, what exact policy is approved for: Income limits, contribution eligibility, qualified distributions and tax treatment?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "97-Q02",
+          "question": "For #97 Roth IRA Calculator, what exact policy is approved for: 2025 publication is candidate evidence only; tax year, MAGI, compensation and qualification gates missing?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p590a",
+        "https://www.irs.gov/publications/p590b",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 98,
+      "title": "Traditional IRA Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "retirement_finance_tax"
+      ],
+      "candidateNotSelected": "B_next=B*(1+r)+allowedTraditionalContribution-fees-distributions; deductibleAmount=yearRule(inputs)",
+      "questions": [
+        {
+          "questionId": "98-Q01",
+          "question": "For #98 Traditional IRA Calculator, what exact policy is approved for: Deductibility, income/plan coverage, contribution caps and distribution taxation?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "98-Q02",
+          "question": "For #98 Traditional IRA Calculator, what exact policy is approved for: Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p590a",
+        "https://www.irs.gov/publications/p590b",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 120,
+      "title": "Income Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "T=RulePack(taxableIncome(gross,adjustments),status,credits,taxYear)",
+      "questions": [
+        {
+          "questionId": "120-Q01",
+          "question": "For #120 Income Tax Calculator, what exact policy is approved for: Taxable base, deductions/credits, filing status and bracket/rate rules?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "120-Q02",
+          "question": "For #120 Income Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/income-tax-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 121,
+      "title": "Take-Home Pay Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "Net=Gross-employeeWithholding-employeeContributions-otherDeductions",
+      "questions": [
+        {
+          "questionId": "121-Q01",
+          "question": "For #121 Take-Home Pay Calculator, what exact policy is approved for: Pay frequency, withholding versus final liability, benefits and deductions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "121-Q02",
+          "question": "For #121 Take-Home Pay Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p15",
+        "https://www.irs.gov/publications/p15t"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 122,
+      "title": "Gross-to-Net Salary Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "Net(G)=G-W(G,payPeriod,employeeDeclarations)-C(G)-D(G)",
+      "questions": [
+        {
+          "questionId": "122-Q01",
+          "question": "For #122 Gross-to-Net Salary Calculator, what exact policy is approved for: Gross-pay inclusions, payroll deductions and withholding convention?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "122-Q02",
+          "question": "For #122 Gross-to-Net Salary Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p15",
+        "https://www.irs.gov/publications/p15t"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 123,
+      "title": "Net-to-Gross Salary Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll_numerical"
+      ],
+      "candidateNotSelected": "Find G in [Gmin,Gmax] with abs(Net(G)-targetNet)<=epsilon; report infeasible/nonunique roots",
+      "questions": [
+        {
+          "questionId": "123-Q01",
+          "question": "For #123 Net-to-Gross Salary Calculator, what exact policy is approved for: Forward tax/payroll model, inversion tolerance, discontinuities and search domain?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "123-Q02",
+          "question": "For #123 Net-to-Gross Salary Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p15",
+        "https://www.irs.gov/publications/p15t"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 124,
+      "title": "Payroll Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "EmployeeTax=sum(rate_i * eligibleBase_i subject to cap_i); employer contributions reported separately",
+      "questions": [
+        {
+          "questionId": "124-Q01",
+          "question": "For #124 Payroll Tax Calculator, what exact policy is approved for: Employee versus employer scope, contribution ceilings and benefits?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "124-Q02",
+          "question": "For #124 Payroll Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p15"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 125,
+      "title": "Sales Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "Tax=taxableExclusivePrice*r; inclusiveTax=inclusivePrice*r/(1+r)",
+      "questions": [
+        {
+          "questionId": "125-Q01",
+          "question": "For #125 Sales Tax Calculator, what exact policy is approved for: Taxability, exemptions, destination/origin sourcing and inclusive/exclusive prices?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "125-Q02",
+          "question": "For #125 Sales Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/taxable_receipt.htm"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 126,
+      "title": "GST Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "OutputGST=exclusiveTaxableSupplies*r; GSTportion=inclusivePrice*r/(1+r); netDue=outputGST-eligibleInputCredits+adjustments",
+      "questions": [
+        {
+          "questionId": "126-Q01",
+          "question": "For #126 GST Calculator, what exact policy is approved for: Jurisdiction, registration, supply classification, inclusive/exclusive basis and credits?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "126-Q02",
+          "question": "For #126 GST Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds/calculating-gst"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 127,
+      "title": "VAT Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "OutputVAT=sum(taxableExclusiveSupply_i*r_i); netVAT=outputVAT-allowedInputVAT+adjustments",
+      "questions": [
+        {
+          "questionId": "127-Q01",
+          "question": "For #127 VAT Calculator, what exact policy is approved for: Place of supply, exemptions/zero rates, registration and input credits?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "127-Q02",
+          "question": "For #127 VAT Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/vat-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 128,
+      "title": "Capital Gains Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "Gain=disposalProceeds-allowableBasis-allowableCosts; Tax=selectedGainRules(gains,losses,allowances,otherIncome,dates)",
+      "questions": [
+        {
+          "questionId": "128-Q01",
+          "question": "For #128 Capital Gains Tax Calculator, what exact policy is approved for: Cost basis, holding period, asset class, allowances and loss offsets?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "128-Q02",
+          "question": "For #128 Capital Gains Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/capital-gains-tax"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 129,
+      "title": "Dividend Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "DividendTax=T(otherIncome,classifiedDividends)-T(otherIncome,0)-allowedDividendCredits",
+      "questions": [
+        {
+          "questionId": "129-Q01",
+          "question": "For #129 Dividend Tax Calculator, what exact policy is approved for: Dividend type, residence, withholding and imputation/foreign credits?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "129-Q02",
+          "question": "For #129 Dividend Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/tax-on-dividends"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 130,
+      "title": "Self-Employment Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "SelfEmploymentContribution=selectedContributionRules(netEarnings,otherEmployment,thresholds,caps)",
+      "questions": [
+        {
+          "questionId": "130-Q01",
+          "question": "For #130 Self-Employment Tax Calculator, what exact policy is approved for: Employment status, net earnings base, social contributions and deductions?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "130-Q02",
+          "question": "For #130 Self-Employment Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/self-employed-national-insurance-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 131,
+      "title": "Freelancer Tax Reserve Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "Reserve=max(0,estimatedTotalLiability-creditedWithholding-priorPayments); perPeriodReserve=Reserve/remainingPeriods",
+      "questions": [
+        {
+          "questionId": "131-Q01",
+          "question": "For #131 Freelancer Tax Reserve Calculator, what exact policy is approved for: Estimate versus withholding target, profit base, prior payments and jurisdiction?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "131-Q02",
+          "question": "For #131 Freelancer Tax Reserve Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/income-tax-rates",
+        "https://www.gov.uk/self-employed-national-insurance-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 132,
+      "title": "Corporate Tax Estimate Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "Tax=selectedCorporateRules(accountingProfit+taxAdjustments,entity,period,associatedEntities,reliefs)",
+      "questions": [
+        {
+          "questionId": "132-Q01",
+          "question": "For #132 Corporate Tax Estimate Calculator, what exact policy is approved for: Entity type, residence, profit adjustments, size bands and reliefs?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "132-Q02",
+          "question": "For #132 Corporate Tax Estimate Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/corporation-tax-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 133,
+      "title": "Property Tax Estimate Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "EstimatedTax=sum_j(taxableAssessedValue_j*levyRate_j)+fixedAssessments-approvedCredits",
+      "questions": [
+        {
+          "questionId": "133-Q01",
+          "question": "For #133 Property Tax Estimate Calculator, what exact policy is approved for: Relation to master #34, assessment date, exemptions, caps and taxing authority?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "133-Q02",
+          "question": "For #133 Property Tax Estimate Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.tax.ny.gov/pit/property/learn/proptaxcalc.htm"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 135,
+      "title": "Tax Marginal Rate Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll_numerical"
+      ],
+      "candidateNotSelected": "FiniteDifferenceMarginalRate=100*(T(y+delta)-T(y))/delta, delta>0; statutoryBracketRate reported separately",
+      "questions": [
+        {
+          "questionId": "135-Q01",
+          "question": "For #135 Tax Marginal Rate Calculator, what exact policy is approved for: Statutory bracket versus effective marginal rate, benefit/credit phase-outs and boundary behavior?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "135-Q02",
+          "question": "For #135 Tax Marginal Rate Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/income-tax-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 136,
+      "title": "Salary Sacrifice Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "CashChange=Net_after(G-sacrifice,benefitRules)-Net_before(G); taxSaving=Tax_before-Tax_after",
+      "questions": [
+        {
+          "questionId": "136-Q01",
+          "question": "For #136 Salary Sacrifice Calculator, what exact policy is approved for: Jurisdiction, benefit type, contribution limits, employer treatment and eligibility?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "136-Q02",
+          "question": "For #136 Salary Sacrifice Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 137,
+      "title": "Bonus Tax Calculator",
+      "reviewerBatch": "B03",
+      "requiredSpecialistGroups": [
+        "tax_payroll"
+      ],
+      "candidateNotSelected": "IncrementalFinalTax=T(annualRegularIncome+bonus)-T(annualRegularIncome); bonusWithholding=selectedPayrollMethod(...)",
+      "questions": [
+        {
+          "questionId": "137-Q01",
+          "question": "For #137 Bonus Tax Calculator, what exact policy is approved for: Withholding versus annual liability, supplemental-pay method and aggregation rules?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "137-Q02",
+          "question": "For #137 Bonus Tax Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.irs.gov/publications/p15",
+        "https://www.irs.gov/publications/p15t"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 404,
+      "title": "Target Heart Rate Calculator",
+      "reviewerBatch": "B05",
+      "requiredSpecialistGroups": [
+        "exercise_clinical"
+      ],
+      "candidateNotSelected": "Candidate AHA profile: HRmax_est=220-age; target=[p_low*HRmax_est,p_high*HRmax_est]. Moderate p=[0.50,0.70], vigorous=[0.70,0.85].",
+      "questions": [
+        {
+          "questionId": "404-Q01",
+          "question": "For #404 Target Heart Rate Calculator, what exact policy is approved for: Age-based versus measured HR/HR reserve, population applicability and intensity bands?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "404-Q02",
+          "question": "For #404 Target Heart Rate Calculator, what exact policy is approved for: AHA2024-08-12 is review date, not verified publication date. Population limits, measured-HR/HRR versus age method and rounding remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "404-Q03",
+          "question": "For #404 Target Heart Rate Calculator, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.heart.org/en/healthy-living/exercise-and-physical-activity/fitness-basics/target-heart-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 406,
+      "title": "Pregnancy Weight Gain Calculator",
+      "reviewerBatch": "B06",
+      "requiredSpecialistGroups": [
+        "obstetric_clinical"
+      ],
+      "candidateNotSelected": "BMI=Wkg/Hm^2; select singleton total-gain band by prepregnancy BMI: <18.5 ->28–40 lb; 18.5 to <25 ->25–35; 25 to <30 ->15–25; >=30 ->11–20. No invented linear weekly trajectory.",
+      "questions": [
+        {
+          "questionId": "406-Q01",
+          "question": "For #406 Pregnancy Weight Gain Calculator, what exact policy is approved for: Guideline, BMI bands, gestational timing, plurality and special populations?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "406-Q02",
+          "question": "For #406 Pregnancy Weight Gain Calculator, what exact policy is approved for: Continuous cutpoints and weekly gestational trajectory unapproved; do not round BMI before classification. CDCconsumer chart limits obesity display39.9 while MMWR footnote uses>=30; reviewer must choose target population?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "406-Q03",
+          "question": "For #406 Pregnancy Weight Gain Calculator, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.cdc.gov/maternal-infant-health/pregnancy-weight/index.html",
+        "https://www.cdc.gov/mmwr/volumes/65/wr/mm6540a10.htm"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 407,
+      "title": "Ovulation Calculator",
+      "reviewerBatch": "B06",
+      "requiredSpecialistGroups": [
+        "obstetric_clinical"
+      ],
+      "candidateNotSelected": "Candidate approximate calendar model: nextMenses=LMP+cycleLength; ovulation≈nextMenses-14 days; possible fertile interval=[ovulation-5 days,ovulation+1 day].",
+      "questions": [
+        {
+          "questionId": "407-Q01",
+          "question": "For #407 Ovulation Calculator, what exact policy is approved for: Regular/irregular cycle applicability, luteal assumptions and window definition?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "407-Q02",
+          "question": "For #407 Ovulation Calculator, what exact policy is approved for: Fixed14days picks one point from approximate range; Jan15 is cycle-day15 when Jan1 is day1. Explicit counting policy and user-visible uncertainty needed; not evidence of exact ovulation?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "407-Q03",
+          "question": "For #407 Ovulation Calculator, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.acog.org/womens-health/faqs/fertility-awareness-based-methods-of-family-planning",
+        "https://www.hopkinsmedicine.org/health/wellness-and-prevention/calculating-your-monthly-fertility-window"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 410,
+      "title": "Sleep Calculator",
+      "reviewerBatch": "B08",
+      "requiredSpecialistGroups": [
+        "sleep_clinical"
+      ],
+      "candidateNotSelected": "Scheduling arithmetic: bedtime=wakeInstant-duration-sleepLatency; elapsedSleepOpportunity=wakeInstant-bedInstant. Age-specific duration guidance is a lookup, not a 90-minute-cycle law.",
+      "questions": [
+        {
+          "questionId": "410-Q01",
+          "question": "For #410 Sleep Calculator, what exact policy is approved for: Population, guideline/version, sleep latency, recommendation versus elapsed duration and uncertainty?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "410-Q02",
+          "question": "For #410 Sleep Calculator, what exact policy is approved for: No universal latency or90minute cycle justified. #518 only duration subtraction; age guidance and inverse scheduling absent. Named-timezone/DST and actual sleep versus opportunity policy needed?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "410-Q03",
+          "question": "For #410 Sleep Calculator, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.cdc.gov/sleep/about/index.html",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4434546/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 468,
+      "title": "Car Affordability Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "consumer_finance"
+      ],
+      "candidateNotSelected": "loanPaymentBudget=transportBudget-runningCosts; affordablePrincipal=A*(1-(1+i)^(-n))/i",
+      "questions": [
+        {
+          "questionId": "468-Q01",
+          "question": "For #468 Car Affordability Calculator, what exact policy is approved for: Budget constraint, income/debt basis, insurance/maintenance/tax costs and financing terms?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "468-Q02",
+          "question": "For #468 Car Affordability Calculator, what exact policy is approved for: No universal affordability percentage, lender approval or insurance estimate selected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 469,
+      "title": "Auto Lease Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "consumer_lease_finance_tax"
+      ],
+      "candidateNotSelected": "basePayment=((adjustedCapCost-residual)+totalRentCharge)/n; totalPayment=basePayment+periodTax+fees",
+      "questions": [
+        {
+          "questionId": "469-Q01",
+          "question": "For #469 Auto Lease Calculator, what exact policy is approved for: Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "469-Q02",
+          "question": "For #469 Auto Lease Calculator, what exact policy is approved for: Money factor formula must come from selected lease; cannot universally convert APR/2400?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "469-Q03",
+          "question": "For #469 Auto Lease Calculator, what exact policy is approved for: Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+        "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 470,
+      "title": "Lease vs Buy Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "consumer_lease_finance_tax"
+      ],
+      "candidateNotSelected": "PVcost_s=sum_t(netOutflow_s,t)/(1+d)^t; buying terminal proceeds net of debt; lease includes end charges",
+      "questions": [
+        {
+          "questionId": "470-Q01",
+          "question": "For #470 Lease vs Buy Calculator, what exact policy is approved for: Lease contract, financing, mileage/penalties, terminal value and discounting?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "470-Q02",
+          "question": "For #470 Lease vs Buy Calculator, what exact policy is approved for: Matched horizon, mileage, taxes, buyout, residual ownership and fees unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+        "https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 472,
+      "title": "Loan vs Cash Calculator",
+      "reviewerBatch": "B01",
+      "requiredSpecialistGroups": [
+        "consumer_finance_numerical"
+      ],
+      "candidateNotSelected": "NPV_s=sum_t(netOutflow_s,t)/(1+d)^t; delta=NPV_financed-NPV_cash",
+      "questions": [
+        {
+          "questionId": "472-Q01",
+          "question": "For #472 Loan vs Cash Calculator, what exact policy is approved for: Cash-flow dates, investment/discount convention, taxes, fees and horizon?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "472-Q02",
+          "question": "For #472 Loan vs Cash Calculator, what exact policy is approved for: Opportunity-return scenario not guaranteed; financing cash inflow/down payment and fees must reconcile?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/",
+        "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 485,
+      "title": "Carbon Footprint Calculator",
+      "reviewerBatch": "B09",
+      "requiredSpecialistGroups": [
+        "environmental_accounting"
+      ],
+      "candidateNotSelected": "CO2e=sum_i(activity_i*matchingFactor_i); if factors are gas masses, CO2e=sum_g(mass_g*selectedGWP_g)",
+      "questions": [
+        {
+          "questionId": "485-Q01",
+          "question": "For #485 Carbon Footprint Calculator, what exact policy is approved for: Factors/dataset license, GWP version, activity coverage, scopes and double counting?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "485-Q02",
+          "question": "For #485 Carbon Footprint Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 488,
+      "title": "Heat Pump Savings Calculator",
+      "reviewerBatch": "B10",
+      "requiredSpecialistGroups": [
+        "energy_engineering"
+      ],
+      "candidateNotSelected": "ExistingEnergy=Q_useful/eta; HeatPumpElectricity=Q_useful/SCOP+extraAuxiliaryOutsideSCOP; savings=ExistingEnergy*fuelTariff-HeatPumpElectricity*electricTariff",
+      "questions": [
+        {
+          "questionId": "488-Q01",
+          "question": "For #488 Heat Pump Savings Calculator, what exact policy is approved for: Annual heat boundary, seasonal performance, auxiliary use, tariffs and installation-cost scope?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "488-Q02",
+          "question": "For #488 Heat Pump Savings Calculator, what exact policy is approved for: Jurisdiction/effective rule pack and qualified reviewer approval remain unselected?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 516,
+      "title": "GPA Calculator",
+      "reviewerBatch": "B12",
+      "requiredSpecialistGroups": [
+        "academic_grading"
+      ],
+      "candidateNotSelected": "GPA=sum(eligibleUnits_i*policyGradePoints_i)/sum(eligibleUnits_i); denominator must be positive. Eligibility and point mapping belong to institution/version policy.",
+      "questions": [
+        {
+          "questionId": "516-Q01",
+          "question": "For #516 GPA Calculator, what exact policy is approved for: Institution/year scale, repeated courses, withdrawals, pass/fail, transfer credit and rounding?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "516-Q02",
+          "question": "For #516 GPA Calculator, what exact policy is approved for: Institution/academic year/eligible courses/repeats and final rounding unselected. Stanford4.3scale is one policy, not global normative GPA?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "516-Q03",
+          "question": "For #516 GPA Calculator, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://studentservices.stanford.edu/my-academics/evaluations-exams-grades/grades/how-do-i-calculate-my-grade-point-average-gpa"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 522,
+      "title": "Race Time Predictor",
+      "reviewerBatch": "B13",
+      "requiredSpecialistGroups": [
+        "sports_numerical_modeling"
+      ],
+      "candidateNotSelected": "Candidate Riegel power law: T2=T1*(D2/D1)^b; exponent b must be versioned/calibrated rather than universally assumed 1.06.",
+      "questions": [
+        {
+          "questionId": "522-Q01",
+          "question": "For #522 Race Time Predictor, what exact policy is approved for: Protocol/model, calibrated distances/population, exponent and uncertainty?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "522-Q02",
+          "question": "For #522 Race Time Predictor, what exact policy is approved for: Primary paper page2 supports generic exponent, not owner-selected/calibrated1.06for individuals. No validated uncertainty/domain chosen; mean pace must not replace predictor?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "522-Q03",
+          "question": "For #522 Race Time Predictor, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+        "https://rrtc.net/Articles/ARHE.pdf"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    },
+    {
+      "masterId": 526,
+      "title": "Training Heart Rate Calculator",
+      "reviewerBatch": "B05",
+      "requiredSpecialistGroups": [
+        "exercise_clinical"
+      ],
+      "candidateNotSelected": "Candidate AHA profile: HRmax_est=220-age; target=[p_low*HRmax_est,p_high*HRmax_est]. Moderate p=[0.50,0.70], vigorous=[0.70,0.85].",
+      "questions": [
+        {
+          "questionId": "526-Q01",
+          "question": "For #526 Training Heart Rate Calculator, what exact policy is approved for: Relation to #404, maximum-HR estimation, resting HR, zone boundaries and population?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "526-Q02",
+          "question": "For #526 Training Heart Rate Calculator, what exact policy is approved for: Depends on404model/identity choice; no independent HRR/training-zone thresholds established. Review date metadata correction also required?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        },
+        {
+          "questionId": "526-Q03",
+          "question": "For #526 Training Heart Rate Calculator, what exact policy is approved for: Qualified specialist review and separate owner mapping approval pending?",
+          "requiredAnswer": "Explicit selection or exclusion, authoritative clause/page, effective revision/date, applicable population/jurisdiction, boundary/rounding rules and independent expected cases. No inferred defaults."
+        }
+      ],
+      "sourceUrls": [
+        "https://www.heart.org/en/healthy-living/exercise-and-physical-activity/fitness-basics/target-heart-rates"
+      ],
+      "status": "PENDING",
+      "signoffRequired": "Qualified named reviewer per ID; owner scope/mapping remains separate."
+    }
+  ],
+  "caseCount": 54,
+  "qualifiedApprovalStatus": "PENDING"
+}
