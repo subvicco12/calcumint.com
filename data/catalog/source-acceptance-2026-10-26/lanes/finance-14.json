@@ -1,0 +1,2280 @@
+{
+  "schemaVersion": 1,
+  "lane": "finance-14",
+  "date": "2026-10-26",
+  "status": "EVIDENCE_GAP_PACKAGE_NOT_ACCEPTANCE",
+  "basis": {
+    "riskReassessment": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "technicalRegister": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "upstreamSources": "docs/audits/specialist-technical-review-2026-10-26/upstream/sources.json",
+    "historicalEngineeringBaseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+    "historicalRegisterSha256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976"
+  },
+  "networkConstraint": "Official-source HTTPS unavailable under managed proxy policy. No bypass or GitHub fetch proxy used. Central narrow public-source allowlist draft requires user review/publish; historical retrieval metadata is not current source verification.",
+  "releaseHold": true,
+  "qualifiedCasesChanged": false,
+  "cases": [
+    {
+      "masterId": 19,
+      "title": "Credit Card Minimum Payment Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "M_t=min(D_t,issuerRule(statement_t)); B_next=D_t-M_t",
+      "formulaSelected": false,
+      "domainAndUnits": "Statement debt D and payment M in one selected currency; D>=0; issuer percentage is a fraction and floor has currency units; interest/fee bases and statement interval UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.consumerfinance.gov/data-research/credit-card-data/know-you-owe-credit-cards/credit-card-contract-definitions/",
+          "title": "Credit card contract definitions",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "modified2023-02-10",
+          "historicalRevisionNote": "modified2023-02-10",
+          "historicalEvidenceId": "turn21view4",
+          "historicalScopeLimit": "US educational definitions; not an issuer minimum policy; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected issuer/card agreement minimum-payment clause including rounded percentage base, monetary floor, past-due/overlimit additions, accrued interest/fees, final-balance cap and payment due date; obtain official worked statement examples around floor crossover and final payoff.",
+      "preciseEvidenceGap": "Complete selected issuer statement/minimum-payment contract, effective revision, percentage/floor bases, interest/fees, due dates and independent official examples are missing; a generic consumer definitions page is insufficient.",
+      "unresolvedOwnerAndProductChoices": [
+        "Issuer formula, percent/floor basis, interest/fees inclusion, due dates and payoff assumptions.",
+        "Actual issuer rule missing; no percent/floor default."
+      ],
+      "historicalOutstandingDecisions": [
+        "Issuer formula, percent/floor basis, interest/fees inclusion, due dates and payoff assumptions.",
+        "Actual issuer rule missing; no percent/floor default."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Card issuer/product and governing law; statement revision/effective dates; delinquency and consumer-credit applicability.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[19]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "min(D(1000),max(D(25),D(\".02\")*1000))",
+          "actual": "25",
+          "expected": "25",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+          "additionalActuals": {
+            "nextBalance": "975"
+          }
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/credit-card-payoff.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "141b6990918f35b97ce7cb2070f8ef6ed9d5bdf8d3945af517214eed525a6b4b",
+              "observation": "Fixed supplied monthly payment and nominal APR/12; no issuer minimum rule, promotional phases, or statement daily accrual.",
+              "githubBlobSha": "8ec05f2d759ce5eb4e3c15a8f150075326ef8650",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/credit-card-payoff.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "M_t=min(D_t,issuerRule(statement_t)); B_next=D_t-M_t",
+      "units": "Statement debt D and payment M in one selected currency; D>=0; issuer percentage is a fraction and floor has currency units; interest/fee bases and statement interval UNKNOWN.",
+      "applicability": "Card issuer/product and governing law; statement revision/effective dates; delinquency and consumer-credit applicability.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.consumerfinance.gov/data-research/credit-card-data/know-you-owe-credit-cards/credit-card-contract-definitions/",
+          "title": "Credit card contract definitions",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "modified2023-02-10",
+          "historicalRevisionNote": "modified2023-02-10",
+          "historicalEvidenceId": "turn21view4",
+          "historicalScopeLimit": "US educational definitions; not an issuer minimum policy; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[19]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "min(D(1000),max(D(25),D(\".02\")*1000))",
+          "actual": "25",
+          "expected": "25",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+          "additionalActuals": {
+            "nextBalance": "975"
+          }
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/credit-card-payoff.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "141b6990918f35b97ce7cb2070f8ef6ed9d5bdf8d3945af517214eed525a6b4b",
+              "observation": "Fixed supplied monthly payment and nominal APR/12; no issuer minimum rule, promotional phases, or statement daily accrual.",
+              "githubBlobSha": "8ec05f2d759ce5eb4e3c15a8f150075326ef8650",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/credit-card-payoff.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Complete selected issuer statement/minimum-payment contract, effective revision, percentage/floor bases, interest/fees, due dates and independent official examples are missing; a generic consumer definitions page is insufficient.",
+        "Selected issuer/card agreement minimum-payment clause including rounded percentage base, monetary floor, past-due/overlimit additions, accrued interest/fees, final-balance cap and payment due date; obtain official worked statement examples around floor crossover and final payoff.",
+        "Issuer formula, percent/floor basis, interest/fees inclusion, due dates and payoff assumptions.",
+        "Actual issuer rule missing; no percent/floor default."
+      ]
+    },
+    {
+      "masterId": 20,
+      "title": "Balance Transfer Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "B0=transfer+capitalizedFee; B_next=B_t+I_t+F_t-P_t; deltaCost=sum(old outflows)-sum(new outflows)",
+      "formulaSelected": false,
+      "domainAndUnits": "Transfer, fees, interest, payments and costs in one currency; time-indexed statements; APR fraction/year requires selected accrual conversion; term positive; payment allocation among balances UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-balance-transfer-fee-can-a-balance-transfer-fee-be-charged-on-a-zero-percent-interest-rate-offer-en-53/",
+          "title": "What is a balance transfer fee?",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "reviewed2024-09-23; modified2024-09-25",
+          "historicalRevisionNote": "reviewed2024-09-23; modified2024-09-25",
+          "historicalEvidenceId": "turn21view3",
+          "historicalScopeLimit": "US; supports fee inclusion, not any specific offer; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+          "title": "What do I need to know about consolidating my credit card debt?",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "last reviewed2026-09-02",
+          "historicalRevisionNote": "last reviewed2026-09-02",
+          "historicalEvidenceId": "turn21view2",
+          "historicalScopeLimit": "US consumer debt; cost/fee considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.consumerfinance.gov/data-research/credit-card-data/know-you-owe-credit-cards/credit-card-contract-definitions/",
+          "title": "Credit card contract definitions",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "modified2023-02-10",
+          "historicalRevisionNote": "modified2023-02-10",
+          "historicalEvidenceId": "turn21view4",
+          "historicalScopeLimit": "US educational definitions; not an issuer minimum policy; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected promotional offer and card agreement clauses for percentage/minimum transfer fee, capitalization, promotional start/end, loss conditions, post-promotion APR, allocation across APR balances and comparison horizon; official cases at expiry and late payment.",
+      "preciseEvidenceGap": "Select and obtain the actual balance-transfer offer and card agreement: promotional duration/loss, fee capitalization, payment allocation and reset APR timing. A fixed-payment engine cannot establish these rules.",
+      "unresolvedOwnerAndProductChoices": [
+        "Fee capitalization, promotional duration, payment order and rate reset.",
+        "Promotion reset, allocation and loss-of-promotion conditions unselected."
+      ],
+      "historicalOutstandingDecisions": [
+        "Fee capitalization, promotional duration, payment order and rate reset.",
+        "Promotion reset, allocation and loss-of-promotion conditions unselected."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Issuer/product/offer and governing law; promotional effective dates and existing-debt baseline; consumer-credit disclosure applicability.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[20]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)+30-100",
+          "actual": "930",
+          "expected": "930",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/credit-card-payoff.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "141b6990918f35b97ce7cb2070f8ef6ed9d5bdf8d3945af517214eed525a6b4b",
+              "observation": "Fixed supplied monthly payment and nominal APR/12; no issuer minimum rule, promotional phases, or statement daily accrual.",
+              "githubBlobSha": "8ec05f2d759ce5eb4e3c15a8f150075326ef8650",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/credit-card-payoff.ts"
+            },
+            {
+              "path": "src/calculators/finance/loan-analysis.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+              "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+              "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "B0=transfer+capitalizedFee; B_next=B_t+I_t+F_t-P_t; deltaCost=sum(old outflows)-sum(new outflows)",
+      "units": "Transfer, fees, interest, payments and costs in one currency; time-indexed statements; APR fraction/year requires selected accrual conversion; term positive; payment allocation among balances UNKNOWN.",
+      "applicability": "Issuer/product/offer and governing law; promotional effective dates and existing-debt baseline; consumer-credit disclosure applicability.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-balance-transfer-fee-can-a-balance-transfer-fee-be-charged-on-a-zero-percent-interest-rate-offer-en-53/",
+          "title": "What is a balance transfer fee?",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "reviewed2024-09-23; modified2024-09-25",
+          "historicalRevisionNote": "reviewed2024-09-23; modified2024-09-25",
+          "historicalEvidenceId": "turn21view3",
+          "historicalScopeLimit": "US; supports fee inclusion, not any specific offer; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+          "title": "What do I need to know about consolidating my credit card debt?",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "last reviewed2026-09-02",
+          "historicalRevisionNote": "last reviewed2026-09-02",
+          "historicalEvidenceId": "turn21view2",
+          "historicalScopeLimit": "US consumer debt; cost/fee considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.consumerfinance.gov/data-research/credit-card-data/know-you-owe-credit-cards/credit-card-contract-definitions/",
+          "title": "Credit card contract definitions",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "modified2023-02-10",
+          "historicalRevisionNote": "modified2023-02-10",
+          "historicalEvidenceId": "turn21view4",
+          "historicalScopeLimit": "US educational definitions; not an issuer minimum policy; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[20]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)+30-100",
+          "actual": "930",
+          "expected": "930",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/credit-card-payoff.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "141b6990918f35b97ce7cb2070f8ef6ed9d5bdf8d3945af517214eed525a6b4b",
+              "observation": "Fixed supplied monthly payment and nominal APR/12; no issuer minimum rule, promotional phases, or statement daily accrual.",
+              "githubBlobSha": "8ec05f2d759ce5eb4e3c15a8f150075326ef8650",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/credit-card-payoff.ts"
+            },
+            {
+              "path": "src/calculators/finance/loan-analysis.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+              "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+              "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Select and obtain the actual balance-transfer offer and card agreement: promotional duration/loss, fee capitalization, payment allocation and reset APR timing. A fixed-payment engine cannot establish these rules.",
+        "Selected promotional offer and card agreement clauses for percentage/minimum transfer fee, capitalization, promotional start/end, loss conditions, post-promotion APR, allocation across APR balances and comparison horizon; official cases at expiry and late payment.",
+        "Fee capitalization, promotional duration, payment order and rate reset.",
+        "Promotion reset, allocation and loss-of-promotion conditions unselected."
+      ]
+    },
+    {
+      "masterId": 23,
+      "title": "HELOC Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "B_next=B_t+draw_t+I_t+fee_t-P_t; I_t=sum_daily(balance_d*rate_d/dayBasis)",
+      "formulaSelected": false,
+      "domainAndUnits": "Balance/draw/fee/payment in one currency; rate fraction/year and daily dayBasis positive; balances and credit limit constrained by contract; daily resets and draw versus repayment phases UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+          "title": "What you should know about Home Equity Lines of Credit (HELOC)",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view0",
+          "historicalScopeLimit": "US HELOC draw/repayment and variable-rate considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Actual HELOC agreement clauses naming index and publisher, observation/reset dates, margin, floors/caps, draw limit and schedule, daily balance/day count, interest-only versus amortizing phase, fees and balloon; official index series revision and phase-boundary examples.",
+      "preciseEvidenceGap": "Obtain the applicable HELOC contract/index source: draw phase, margin, caps, resets, fees and repayment schedule with effective dates and independent branch cases.",
+      "unresolvedOwnerAndProductChoices": [
+        "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+        "Index, margin, reset, caps, draw phase and repayment contract missing."
+      ],
+      "historicalOutstandingDecisions": [
+        "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+        "Index, margin, reset, caps, draw phase and repayment contract missing."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Lender/product, property jurisdiction, lien/credit rules, index observation vintage and contract effective period.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[23]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(10000)*D(\".06\")*30/360",
+          "actual": "50.00",
+          "expected": "50",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/loan-analysis.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+              "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+              "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "B_next=B_t+draw_t+I_t+fee_t-P_t; I_t=sum_daily(balance_d*rate_d/dayBasis)",
+      "units": "Balance/draw/fee/payment in one currency; rate fraction/year and daily dayBasis positive; balances and credit limit constrained by contract; daily resets and draw versus repayment phases UNKNOWN.",
+      "applicability": "Lender/product, property jurisdiction, lien/credit rules, index observation vintage and contract effective period.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+          "title": "What you should know about Home Equity Lines of Credit (HELOC)",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view0",
+          "historicalScopeLimit": "US HELOC draw/repayment and variable-rate considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[23]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(10000)*D(\".06\")*30/360",
+          "actual": "50.00",
+          "expected": "50",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/loan-analysis.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+              "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+              "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Obtain the applicable HELOC contract/index source: draw phase, margin, caps, resets, fees and repayment schedule with effective dates and independent branch cases.",
+        "Actual HELOC agreement clauses naming index and publisher, observation/reset dates, margin, floors/caps, draw limit and schedule, daily balance/day count, interest-only versus amortizing phase, fees and balloon; official index series revision and phase-boundary examples.",
+        "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+        "Index, margin, reset, caps, draw phase and repayment contract missing."
+      ]
+    },
+    {
+      "masterId": 34,
+      "title": "Property Tax Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "Tax=(billableAssessedValue-exemptions)*classRate-abatements",
+      "formulaSelected": false,
+      "domainAndUnits": "Assessment/exemption/abatement and tax in one currency; classRate fraction per selected tax year; ordering, negative taxable-base floor and assessment caps UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.nyc.gov/site/finance/property/property-calculating-your-annual-tax-blll.page",
+          "title": "Calculating Your Annual Property Tax",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view16",
+          "historicalScopeLimit": "NYC example only; class caps/exemptions/abatements require local rules; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected taxing authority annual levy/class rate and assessment rule clauses; market-to-assessed conversion, billable versus transitional value, exemption eligibility/order, abatements, caps and additional levies; official class/year bill examples.",
+      "preciseEvidenceGap": "Select taxing authority, jurisdiction, property class and year; obtain complete assessment, exemptions, caps and levy rules. An illustrative NYC form is not a global rule pack.",
+      "unresolvedOwnerAndProductChoices": [
+        "Assessed versus market value, exemptions, caps, levies and jurisdiction.",
+        "NYC form is illustrative; jurisdiction/year/class and assessment rules unselected."
+      ],
+      "historicalOutstandingDecisions": [
+        "Assessed versus market value, exemptions, caps, levies and jurisdiction.",
+        "NYC form is illustrative; jurisdiction/year/class and assessment rules unselected."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Tax authority/jurisdiction, parcel/property class, assessment and tax year, exemptions and levy effective dates. NYC is historical illustration only.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[34]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "(D(100000)-20000)*D(\".01\")-100",
+          "actual": "700.00",
+          "expected": "700",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "Tax=(billableAssessedValue-exemptions)*classRate-abatements",
+      "units": "Assessment/exemption/abatement and tax in one currency; classRate fraction per selected tax year; ordering, negative taxable-base floor and assessment caps UNKNOWN.",
+      "applicability": "Tax authority/jurisdiction, parcel/property class, assessment and tax year, exemptions and levy effective dates. NYC is historical illustration only.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.nyc.gov/site/finance/property/property-calculating-your-annual-tax-blll.page",
+          "title": "Calculating Your Annual Property Tax",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view16",
+          "historicalScopeLimit": "NYC example only; class caps/exemptions/abatements require local rules; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[34]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "(D(100000)-20000)*D(\".01\")-100",
+          "actual": "700.00",
+          "expected": "700",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Select taxing authority, jurisdiction, property class and year; obtain complete assessment, exemptions, caps and levy rules. An illustrative NYC form is not a global rule pack.",
+        "Selected taxing authority annual levy/class rate and assessment rule clauses; market-to-assessed conversion, billable versus transitional value, exemption eligibility/order, abatements, caps and additional levies; official class/year bill examples.",
+        "Assessed versus market value, exemptions, caps, levies and jurisdiction.",
+        "NYC form is illustrative; jurisdiction/year/class and assessment rules unselected."
+      ]
+    },
+    {
+      "masterId": 48,
+      "title": "Investment Property Affordability Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "paymentCapacity=budget-otherObligations-propertyOperatingCosts+eligibleRentalCredit; loan=paymentCapacity*(1-(1+i)^(-n))/i",
+      "formulaSelected": false,
+      "domainAndUnits": "Budget, obligations, costs and eligible rent in currency per same payment interval; i fraction/interval; n positive integer intervals; i=0 requires loan=paymentCapacity*n; negative capacity handling UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+          "title": "What you should know about Home Equity Lines of Credit (HELOC)",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view0",
+          "historicalScopeLimit": "US HELOC draw/repayment and variable-rate considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected lender underwriting guide clauses for qualifying rent/vacancy factor, debt-service or DTI constraint, reserves, LTV/down payment, operating expenses, eligibility exclusions and rate/term assumptions; independent rejection and binding-constraint cases.",
+      "preciseEvidenceGap": "Actual selected lender affordability/underwriting constraints, rental-income credit, debt, reserves and eligibility evidence are absent. Pure budget arithmetic must not be silently substituted for this identity or imply approval.",
+      "unresolvedOwnerAndProductChoices": [
+        "Rental-income credit, debt obligations, reserves, operating costs and eligibility exclusions.",
+        "No underwriting/approval claim; lender income credit, reserves and constraints missing."
+      ],
+      "historicalOutstandingDecisions": [
+        "Rental-income credit, debt obligations, reserves, operating costs and eligibility exclusions.",
+        "No underwriting/approval claim; lender income credit, reserves and constraints missing."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Lender/product, property jurisdiction/use, currency and underwriting effective date; actual approval meaning and regulated-advice applicability.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[48]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)*120",
+          "actual": "120000",
+          "expected": "120000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/loan-affordability.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a6e68cadb2660f359af1b516ffbc668f15c36e98e059ffdcbda3b75de4a43138",
+              "observation": "User selected gross-income DTI, floors available payment at zero, rounds results2dp; no property/car expense/rental credit or underwriting rules.",
+              "githubBlobSha": "8a9229cd8178ba7423d3662c3b740f51bd07e0b4",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-affordability.ts"
+            },
+            {
+              "path": "src/calculators/finance/loan-analysis.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+              "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+              "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "paymentCapacity=budget-otherObligations-propertyOperatingCosts+eligibleRentalCredit; loan=paymentCapacity*(1-(1+i)^(-n))/i",
+      "units": "Budget, obligations, costs and eligible rent in currency per same payment interval; i fraction/interval; n positive integer intervals; i=0 requires loan=paymentCapacity*n; negative capacity handling UNKNOWN.",
+      "applicability": "Lender/product, property jurisdiction/use, currency and underwriting effective date; actual approval meaning and regulated-advice applicability.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+          "title": "What you should know about Home Equity Lines of Credit (HELOC)",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view0",
+          "historicalScopeLimit": "US HELOC draw/repayment and variable-rate considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[48]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)*120",
+          "actual": "120000",
+          "expected": "120000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/loan-affordability.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a6e68cadb2660f359af1b516ffbc668f15c36e98e059ffdcbda3b75de4a43138",
+              "observation": "User selected gross-income DTI, floors available payment at zero, rounds results2dp; no property/car expense/rental credit or underwriting rules.",
+              "githubBlobSha": "8a9229cd8178ba7423d3662c3b740f51bd07e0b4",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-affordability.ts"
+            },
+            {
+              "path": "src/calculators/finance/loan-analysis.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+              "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+              "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Actual selected lender affordability/underwriting constraints, rental-income credit, debt, reserves and eligibility evidence are absent. Pure budget arithmetic must not be silently substituted for this identity or imply approval.",
+        "Selected lender underwriting guide clauses for qualifying rent/vacancy factor, debt-service or DTI constraint, reserves, LTV/down payment, operating expenses, eligibility exclusions and rate/term assumptions; independent rejection and binding-constraint cases.",
+        "Rental-income credit, debt obligations, reserves, operating costs and eligibility exclusions.",
+        "No underwriting/approval claim; lender income credit, reserves and constraints missing."
+      ]
+    },
+    {
+      "masterId": 88,
+      "title": "FIRE Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "target=annualSpending/suppliedWithdrawalFraction; date=first accumulation crossing target",
+      "formulaSelected": false,
+      "domainAndUnits": "Spending currency/year; withdrawal fraction positive per year; target currency; accumulation periods/rate/contributions matched; finite horizon and unreachable target explicit; no safe-rate default.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+          "title": "Savings Goal Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view10",
+          "historicalScopeLimit": "SEC education; savings inputs, not normative retirement target; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected withdrawal/target authority and exact spending, tax, benefits, inflation and accumulation conventions; evidence supporting any claimed withdrawal sustainability with horizon/population/risk. SEC accumulation tools do not supply that authority.",
+      "preciseEvidenceGap": "Provide the selected withdrawal-rule/target authority, annual spending definition, benefits/taxes and accumulation basis. The 4% witness is not an endorsed safety rule; a safe-rate claim requires qualified quantitative review.",
+      "unresolvedOwnerAndProductChoices": [
+        "Withdrawal-rule authority, annual spending definition, tax/benefits and accumulation assumptions.",
+        "4% is witness input, not endorsed safe rate; target authority missing."
+      ],
+      "historicalOutstandingDecisions": [
+        "Withdrawal-rule authority, annual spending definition, tax/benefits and accumulation assumptions.",
+        "4% is witness input, not endorsed safe rate; target authority missing."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Owner target model, jurisdiction/currency, nominal versus real basis, horizon and effective evidence vintage; advice/safety claim requires separate screening.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[88]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(40000)/D(\".04\")",
+          "actual": "1.0000E+6",
+          "expected": "1000000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "target=annualSpending/suppliedWithdrawalFraction; date=first accumulation crossing target",
+      "units": "Spending currency/year; withdrawal fraction positive per year; target currency; accumulation periods/rate/contributions matched; finite horizon and unreachable target explicit; no safe-rate default.",
+      "applicability": "Owner target model, jurisdiction/currency, nominal versus real basis, horizon and effective evidence vintage; advice/safety claim requires separate screening.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+          "title": "Savings Goal Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view10",
+          "historicalScopeLimit": "SEC education; savings inputs, not normative retirement target; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[88]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(40000)/D(\".04\")",
+          "actual": "1.0000E+6",
+          "expected": "1000000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Provide the selected withdrawal-rule/target authority, annual spending definition, benefits/taxes and accumulation basis. The 4% witness is not an endorsed safety rule; a safe-rate claim requires qualified quantitative review.",
+        "Selected withdrawal/target authority and exact spending, tax, benefits, inflation and accumulation conventions; evidence supporting any claimed withdrawal sustainability with horizon/population/risk. SEC accumulation tools do not supply that authority.",
+        "Withdrawal-rule authority, annual spending definition, tax/benefits and accumulation assumptions.",
+        "4% is witness input, not endorsed safe rate; target authority missing."
+      ]
+    },
+    {
+      "masterId": 90,
+      "title": "Lean FIRE Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "leanTarget=ownerSuppliedLeanAnnualSpending/suppliedWithdrawalFraction",
+      "formulaSelected": false,
+      "domainAndUnits": "Owner Lean spending currency/year divided by positive annual withdrawal fraction gives currency; shared FIRE accumulation domain applies; no universal Lean threshold.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Owner Lean spending-profile definition and shared FIRE target/withdrawal authority; tax/benefit/inflation scope and independent supplied-spending cases. Historical 20000 and 4% are synthetic inputs only.",
+      "preciseEvidenceGap": "Select the owner Lean spending profile and source the shared FIRE target/withdrawal policy. No universal Lean threshold or safety claim can be inferred from supplied-input multiplication.",
+      "unresolvedOwnerAndProductChoices": [
+        "Owner spending scenario plus financial review of the shared FIRE model.",
+        "Lean spending has no universal threshold; shared FIRE method remains pending."
+      ],
+      "historicalOutstandingDecisions": [
+        "Owner spending scenario plus financial review of the shared FIRE model.",
+        "Lean spending has no universal threshold; shared FIRE method remains pending."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Owner Lean profile and shared FIRE model; currency, jurisdiction, real/nominal base year and horizon UNKNOWN.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[90]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(20000)/D(\".04\")",
+          "actual": "5.000E+5",
+          "expected": "500000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "leanTarget=ownerSuppliedLeanAnnualSpending/suppliedWithdrawalFraction",
+      "units": "Owner Lean spending currency/year divided by positive annual withdrawal fraction gives currency; shared FIRE accumulation domain applies; no universal Lean threshold.",
+      "applicability": "Owner Lean profile and shared FIRE model; currency, jurisdiction, real/nominal base year and horizon UNKNOWN.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[90]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(20000)/D(\".04\")",
+          "actual": "5.000E+5",
+          "expected": "500000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Select the owner Lean spending profile and source the shared FIRE target/withdrawal policy. No universal Lean threshold or safety claim can be inferred from supplied-input multiplication.",
+        "Owner Lean spending-profile definition and shared FIRE target/withdrawal authority; tax/benefit/inflation scope and independent supplied-spending cases. Historical 20000 and 4% are synthetic inputs only.",
+        "Owner spending scenario plus financial review of the shared FIRE model.",
+        "Lean spending has no universal threshold; shared FIRE method remains pending."
+      ]
+    },
+    {
+      "masterId": 91,
+      "title": "Fat FIRE Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "fatTarget=ownerSuppliedFatAnnualSpending/suppliedWithdrawalFraction",
+      "formulaSelected": false,
+      "domainAndUnits": "Owner Fat spending currency/year divided by positive annual withdrawal fraction gives currency; shared FIRE accumulation domain applies; no universal Fat threshold.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Owner Fat spending-profile definition and shared FIRE target/withdrawal authority; tax/benefit/inflation scope and independent supplied-spending cases. Historical 80000 and 4% are synthetic inputs only.",
+      "preciseEvidenceGap": "Select the owner Fat spending profile and source the shared FIRE target/withdrawal policy. No universal Fat threshold or safety claim can be inferred from supplied-input multiplication.",
+      "unresolvedOwnerAndProductChoices": [
+        "Owner spending scenario plus financial review of the shared FIRE model.",
+        "Fat spending has no universal threshold; shared FIRE method remains pending."
+      ],
+      "historicalOutstandingDecisions": [
+        "Owner spending scenario plus financial review of the shared FIRE model.",
+        "Fat spending has no universal threshold; shared FIRE method remains pending."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Owner Fat profile and shared FIRE model; currency, jurisdiction, real/nominal base year and horizon UNKNOWN.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[91]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(80000)/D(\".04\")",
+          "actual": "2.0000E+6",
+          "expected": "2000000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "fatTarget=ownerSuppliedFatAnnualSpending/suppliedWithdrawalFraction",
+      "units": "Owner Fat spending currency/year divided by positive annual withdrawal fraction gives currency; shared FIRE accumulation domain applies; no universal Fat threshold.",
+      "applicability": "Owner Fat profile and shared FIRE model; currency, jurisdiction, real/nominal base year and horizon UNKNOWN.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[91]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(80000)/D(\".04\")",
+          "actual": "2.0000E+6",
+          "expected": "2000000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Select the owner Fat spending profile and source the shared FIRE target/withdrawal policy. No universal Fat threshold or safety claim can be inferred from supplied-input multiplication.",
+        "Owner Fat spending-profile definition and shared FIRE target/withdrawal authority; tax/benefit/inflation scope and independent supplied-spending cases. Historical 80000 and 4% are synthetic inputs only.",
+        "Owner spending scenario plus financial review of the shared FIRE model.",
+        "Fat spending has no universal threshold; shared FIRE method remains pending."
+      ]
+    },
+    {
+      "masterId": 92,
+      "title": "Pension Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "illustrativeAnnualDB=accrualFraction*referenceSalary*creditedYears; actualBenefit=planFormula(inputs)",
+      "formulaSelected": false,
+      "domainAndUnits": "Illustrative DB accrual fraction per credited year times reference salary currency/year times credited years gives annual benefit; years nonnegative; actual plan may be DB or DC and formula is unselected.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/faqs/retirement-plans-and-erisa",
+          "title": "FAQs about Retirement Plans and ERISA",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view6",
+          "historicalScopeLimit": "US ERISA informational page; actual plan required; prior quoted example not independently reverified by current follow-up.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Actual plan governing document and benefit formula clauses: salary averaging/definition, service credit, vesting, normal/early retirement ages, reductions, survivor options and COLA; plan amendments/effective dates and official participant examples.",
+      "preciseEvidenceGap": "Named plan/effective documents are required for benefit type, accrual, reference salary, vesting, retirement age, survivor reductions, COLA and actual official worked cases; generic ERISA information is not a plan contract.",
+      "unresolvedOwnerAndProductChoices": [
+        "Defined-benefit versus contribution plan, accrual, vesting, survivor and indexation rules.",
+        "Plan identity, vesting, retirement age, survivor reductions and COLA unselected."
+      ],
+      "historicalOutstandingDecisions": [
+        "Defined-benefit versus contribution plan, accrual, vesting, survivor and indexation rules.",
+        "Plan identity, vesting, retirement age, survivor reductions and COLA unselected."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Plan identity/type, participant cohort, governing jurisdiction, retirement date and amendment version. DOL ERISA education does not establish applicability to every plan.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[92]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(\".01\")*50000*30",
+          "actual": "15000.00",
+          "expected": "15000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "illustrativeAnnualDB=accrualFraction*referenceSalary*creditedYears; actualBenefit=planFormula(inputs)",
+      "units": "Illustrative DB accrual fraction per credited year times reference salary currency/year times credited years gives annual benefit; years nonnegative; actual plan may be DB or DC and formula is unselected.",
+      "applicability": "Plan identity/type, participant cohort, governing jurisdiction, retirement date and amendment version. DOL ERISA education does not establish applicability to every plan.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.dol.gov/agencies/ebsa/about-ebsa/our-activities/resource-center/faqs/retirement-plans-and-erisa",
+          "title": "FAQs about Retirement Plans and ERISA",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view6",
+          "historicalScopeLimit": "US ERISA informational page; actual plan required; prior quoted example not independently reverified by current follow-up.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[92]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(\".01\")*50000*30",
+          "actual": "15000.00",
+          "expected": "15000",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Named plan/effective documents are required for benefit type, accrual, reference salary, vesting, retirement age, survivor reductions, COLA and actual official worked cases; generic ERISA information is not a plan contract.",
+        "Actual plan governing document and benefit formula clauses: salary averaging/definition, service credit, vesting, normal/early retirement ages, reductions, survivor options and COLA; plan amendments/effective dates and official participant examples.",
+        "Defined-benefit versus contribution plan, accrual, vesting, survivor and indexation rules.",
+        "Plan identity, vesting, retirement age, survivor reductions and COLA unselected."
+      ]
+    },
+    {
+      "masterId": 95,
+      "title": "Required Minimum Distribution Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "RMD=priorYearEndAdjustedBalance/applicableOfficialDivisor",
+      "formulaSelected": false,
+      "domainAndUnits": "Prior-year-end adjusted account balance in selected currency divided by positive dimensionless official life-expectancy divisor gives annual distribution currency; account/age/date/table branch and rounding selected explicitly.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590b",
+          "title": "Publication 590-B (2025), Distributions from IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+          "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+          "historicalEvidenceId": "turn21view13",
+          "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Applicable publication edition clauses and official table/row keyed to distribution year, age and owner/beneficiary/spouse status; adjusted prior-year balance, aggregation/deadlines and exceptions; verify full example context for 100000/24.6. Whole-dollar example is approximate, not permission to under-distribute.",
+      "preciseEvidenceGap": "Complete applicable tax-year distribution rules, table/version, balance date, account type and exceptions, including inherited/spouse branches and rounding. An approximate whole-dollar example does not settle compliance.",
+      "unresolvedOwnerAndProductChoices": [
+        "Required distribution rules, table, account balance date and exceptions.",
+        "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+        "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute."
+      ],
+      "historicalOutstandingDecisions": [
+        "Required distribution rules, table, account balance date and exceptions.",
+        "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+        "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "US is historical source scope only; select account type, owner/beneficiary and spouse facts, distribution tax year and governing edition before adoption.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[95]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(100000)/D(\"24.6\")",
+          "actual": "4065.0406504065040650406504065040650406504065040650",
+          "expected": "4065.0406504065040650406504065040650406504065040650",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "RMD=priorYearEndAdjustedBalance/applicableOfficialDivisor",
+      "units": "Prior-year-end adjusted account balance in selected currency divided by positive dimensionless official life-expectancy divisor gives annual distribution currency; account/age/date/table branch and rounding selected explicitly.",
+      "applicability": "US is historical source scope only; select account type, owner/beneficiary and spouse facts, distribution tax year and governing edition before adoption.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590b",
+          "title": "Publication 590-B (2025), Distributions from IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+          "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+          "historicalEvidenceId": "turn21view13",
+          "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[95]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(100000)/D(\"24.6\")",
+          "actual": "4065.0406504065040650406504065040650406504065040650",
+          "expected": "4065.0406504065040650406504065040650406504065040650",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Complete applicable tax-year distribution rules, table/version, balance date, account type and exceptions, including inherited/spouse branches and rounding. An approximate whole-dollar example does not settle compliance.",
+        "Applicable publication edition clauses and official table/row keyed to distribution year, age and owner/beneficiary/spouse status; adjusted prior-year balance, aggregation/deadlines and exceptions; verify full example context for 100000/24.6. Whole-dollar example is approximate, not permission to under-distribute.",
+        "Required distribution rules, table, account balance date and exceptions.",
+        "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+        "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute."
+      ]
+    },
+    {
+      "masterId": 96,
+      "title": "401(k) Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "Maintain total asset buckets E(employee-owned) and U(employer-origin), each including its attributable returns and approved fees/flows. Total=E+U; vested=E+v_t*U only for a uniform approved vesting fraction v_t. Tranche-specific schedules require separate U_j and sum(v_jt*U_j).",
+      "formulaSelected": false,
+      "domainAndUnits": "E and U_j are currency asset buckets including attributable returns/fees/flows; vesting fractions v_jt in [0,1]; vested=E+sum(v_jt*U_j); contributions and returns require matched timing; total and vested differ.",
+      "historicalDomainAssessment": "UNKNOWN; see case-specific domainAndUnits",
+      "rounding": "UNKNOWN; currency precision and rounding stage not bound",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.irs.gov/retirement-plans/plan-sponsor/401k-plan-overview",
+          "title": "401(k) plan overview",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view15",
+          "historicalScopeLimit": "US; plan type, limits, vesting and matching depend on plan/year; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.irs.gov/retirement-plans/matching-contributions-help-you-save-more-for-retirement",
+          "title": "Matching contributions help you save more for retirement",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view14",
+          "historicalScopeLimit": "US illustrative match only; actual plan terms control; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Actual plan clauses for employee deferral limits, catch-up/eligibility and compensation, match tiers and true-up, vesting by contribution tranche/service, forfeiture and distribution restrictions; applicable year official limits; cases for 0/partial/full vesting and multiple tranches.",
+      "preciseEvidenceGap": "The corrected total/vested asset buckets still need selected plan/year contribution caps, catch-up rules, payroll/true-up timing, tranche vesting, forfeiture and tax/distribution treatment from complete official/plan sources.",
+      "unresolvedOwnerAndProductChoices": [
+        "Approve total and vested outputs separately, contribution timing and tranche vesting schedules?",
+        "Which plan/year contribution limits, forfeiture and distribution restrictions apply?"
+      ],
+      "historicalOutstandingDecisions": [
+        "Approve total and vested outputs separately, contribution timing and tranche vesting schedules?",
+        "Which plan/year contribution limits, forfeiture and distribution restrictions apply?"
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "US 401(k) is historical source scope; select employer plan, participant cohort, contribution year, amendments and currency. Generic IRS example proves no plan-specific entitlement.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[96]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(\".5\")*min(D(2000),D(\".05\")*30000)",
+          "actual": "750.000",
+          "expected": "750",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "Maintain total asset buckets E(employee-owned) and U(employer-origin), each including its attributable returns and approved fees/flows. Total=E+U; vested=E+v_t*U only for a uniform approved vesting fraction v_t. Tranche-specific schedules require separate U_j and sum(v_jt*U_j).",
+      "units": "E and U_j are currency asset buckets including attributable returns/fees/flows; vesting fractions v_jt in [0,1]; vested=E+sum(v_jt*U_j); contributions and returns require matched timing; total and vested differ.",
+      "applicability": "US 401(k) is historical source scope; select employer plan, participant cohort, contribution year, amendments and currency. Generic IRS example proves no plan-specific entitlement.",
+      "limits": "UNKNOWN; see case-specific domainAndUnits",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.irs.gov/retirement-plans/plan-sponsor/401k-plan-overview",
+          "title": "401(k) plan overview",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view15",
+          "historicalScopeLimit": "US; plan type, limits, vesting and matching depend on plan/year; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.irs.gov/retirement-plans/matching-contributions-help-you-save-more-for-retirement",
+          "title": "Matching contributions help you save more for retirement",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view14",
+          "historicalScopeLimit": "US illustrative match only; actual plan terms control; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[96]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(\".5\")*min(D(2000),D(\".05\")*30000)",
+          "actual": "750.000",
+          "expected": "750",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "The corrected total/vested asset buckets still need selected plan/year contribution caps, catch-up rules, payroll/true-up timing, tranche vesting, forfeiture and tax/distribution treatment from complete official/plan sources.",
+        "Actual plan clauses for employee deferral limits, catch-up/eligibility and compensation, match tiers and true-up, vesting by contribution tranche/service, forfeiture and distribution restrictions; applicable year official limits; cases for 0/partial/full vesting and multiple tranches.",
+        "Approve total and vested outputs separately, contribution timing and tranche vesting schedules?",
+        "Which plan/year contribution limits, forfeiture and distribution restrictions apply?"
+      ]
+    },
+    {
+      "masterId": 97,
+      "title": "Roth IRA Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "B_next=B*(1+r)+eligibleRothContribution-fees-distributions; contribution<=yearEligibilityLimit(inputs)",
+      "formulaSelected": false,
+      "domainAndUnits": "Balance/contributions/fees/distributions currency; r fraction per selected period >-1 for accumulation; eligible contribution nonnegative bounded by selected year/compensation/MAGI rules; tax and distribution branches UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590a",
+          "title": "Publication 590-A (2025), Contributions to IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition",
+          "historicalRevisionNote": "2025 tax-year edition",
+          "historicalEvidenceId": "turn21view12",
+          "historicalScopeLimit": "US 2025 contribution/deduction rules; not a 2026 rule pack; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590b",
+          "title": "Publication 590-B (2025), Distributions from IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+          "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+          "historicalEvidenceId": "turn21view13",
+          "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected-year Publication 590-A Roth contribution eligibility, compensation, MAGI and filing-status phase-out clauses; 590-B qualified-distribution ordering/holding-period/age and exception clauses; independent boundary cases. 2025 edition is not a 2026 rule pack.",
+      "preciseEvidenceGap": "Select tax year and obtain applicable Roth contribution/eligibility, compensation/MAGI, withdrawal and qualification rules with current official revisions and exception tests; the candidate publication alone is insufficient.",
+      "unresolvedOwnerAndProductChoices": [
+        "Income limits, contribution eligibility, qualified distributions and tax treatment.",
+        "2025 publication is candidate evidence only; tax year, MAGI, compensation and qualification gates missing."
+      ],
+      "historicalOutstandingDecisions": [
+        "Income limits, contribution eligibility, qualified distributions and tax treatment.",
+        "2025 publication is candidate evidence only; tax year, MAGI, compensation and qualification gates missing."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "US historical source scope only; owner tax year, filing status, compensation/MAGI, age and account history; rule edition/effective period UNKNOWN.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[97]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)*(1+D(\".05\"))+100",
+          "actual": "1150.00",
+          "expected": "1150",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "B_next=B*(1+r)+eligibleRothContribution-fees-distributions; contribution<=yearEligibilityLimit(inputs)",
+      "units": "Balance/contributions/fees/distributions currency; r fraction per selected period >-1 for accumulation; eligible contribution nonnegative bounded by selected year/compensation/MAGI rules; tax and distribution branches UNKNOWN.",
+      "applicability": "US historical source scope only; owner tax year, filing status, compensation/MAGI, age and account history; rule edition/effective period UNKNOWN.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590a",
+          "title": "Publication 590-A (2025), Contributions to IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition",
+          "historicalRevisionNote": "2025 tax-year edition",
+          "historicalEvidenceId": "turn21view12",
+          "historicalScopeLimit": "US 2025 contribution/deduction rules; not a 2026 rule pack; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590b",
+          "title": "Publication 590-B (2025), Distributions from IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+          "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+          "historicalEvidenceId": "turn21view13",
+          "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[97]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)*(1+D(\".05\"))+100",
+          "actual": "1150.00",
+          "expected": "1150",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Select tax year and obtain applicable Roth contribution/eligibility, compensation/MAGI, withdrawal and qualification rules with current official revisions and exception tests; the candidate publication alone is insufficient.",
+        "Selected-year Publication 590-A Roth contribution eligibility, compensation, MAGI and filing-status phase-out clauses; 590-B qualified-distribution ordering/holding-period/age and exception clauses; independent boundary cases. 2025 edition is not a 2026 rule pack.",
+        "Income limits, contribution eligibility, qualified distributions and tax treatment.",
+        "2025 publication is candidate evidence only; tax year, MAGI, compensation and qualification gates missing."
+      ]
+    },
+    {
+      "masterId": 98,
+      "title": "Traditional IRA Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "B_next=B*(1+r)+allowedTraditionalContribution-fees-distributions; deductibleAmount=yearRule(inputs)",
+      "formulaSelected": false,
+      "domainAndUnits": "Balance/contributions/fees/distributions currency; r fraction per period >-1; allowed contribution and deductible amount are distinct currency quantities; year/coverage/income/basis rules UNKNOWN.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590a",
+          "title": "Publication 590-A (2025), Contributions to IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition",
+          "historicalRevisionNote": "2025 tax-year edition",
+          "historicalEvidenceId": "turn21view12",
+          "historicalScopeLimit": "US 2025 contribution/deduction rules; not a 2026 rule pack; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590b",
+          "title": "Publication 590-B (2025), Distributions from IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+          "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+          "historicalEvidenceId": "turn21view13",
+          "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Selected-year 590-A contribution permission versus deduction phase-out clauses by compensation, filing status and plan coverage; 590-B basis and distribution taxation clauses; official phase-out/basis boundary examples. Do not infer deduction from contribution permission.",
+      "preciseEvidenceGap": "Select tax year and obtain Traditional IRA contribution eligibility, deductibility/plan coverage, basis and distribution rules. Deductibility must not be confused with permission to contribute.",
+      "unresolvedOwnerAndProductChoices": [
+        "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+        "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing."
+      ],
+      "historicalOutstandingDecisions": [
+        "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+        "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "US historical source scope only; owner tax year, filing status, compensation/MAGI, workplace coverage and nondeductible basis; edition/effective period UNKNOWN.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[98]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)+100",
+          "actual": "1100",
+          "expected": "1100",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "B_next=B*(1+r)+allowedTraditionalContribution-fees-distributions; deductibleAmount=yearRule(inputs)",
+      "units": "Balance/contributions/fees/distributions currency; r fraction per period >-1; allowed contribution and deductible amount are distinct currency quantities; year/coverage/income/basis rules UNKNOWN.",
+      "applicability": "US historical source scope only; owner tax year, filing status, compensation/MAGI, workplace coverage and nondeductible basis; edition/effective period UNKNOWN.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590a",
+          "title": "Publication 590-A (2025), Contributions to IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition",
+          "historicalRevisionNote": "2025 tax-year edition",
+          "historicalEvidenceId": "turn21view12",
+          "historicalScopeLimit": "US 2025 contribution/deduction rules; not a 2026 rule pack; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.irs.gov/publications/p590b",
+          "title": "Publication 590-B (2025), Distributions from IRAs",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+          "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+          "historicalEvidenceId": "turn21view13",
+          "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "title": "Compound Interest Calculator",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view9",
+          "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[98]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "D(1000)+100",
+          "actual": "1100",
+          "expected": "1100",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "path": "src/calculators/finance/savings-goal.ts",
+              "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+              "fetched": true,
+              "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+              "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+              "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+              "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Select tax year and obtain Traditional IRA contribution eligibility, deductibility/plan coverage, basis and distribution rules. Deductibility must not be confused with permission to contribute.",
+        "Selected-year 590-A contribution permission versus deduction phase-out clauses by compensation, filing status and plan coverage; 590-B basis and distribution taxation clauses; official phase-out/basis boundary examples. Do not infer deduction from contribution permission.",
+        "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+        "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing."
+      ]
+    },
+    {
+      "masterId": 469,
+      "title": "Auto Lease Calculator",
+      "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+      "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+      "proposedFormula": "basePayment=((adjustedCapCost-residual)+totalRentCharge)/n; totalPayment=basePayment+periodTax+fees",
+      "formulaSelected": false,
+      "domainAndUnits": "Adjusted cap cost, residual, total rent charge, tax and fees in same currency; n positive integer payments; base and period additions currency/payment; money factor dimensional convention and rounding stages contract-specific.",
+      "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+      "officialSources": [
+        {
+          "officialUrl": "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+          "title": "Vehicle Leasing: Description of Leasing Form, Page 1",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view7",
+          "historicalScopeLimit": "US lease disclosure arithmetic example, not current tax or lender policy; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+          "title": "Vehicle Leasing: Leasing vs. Buying: Monthly Payments",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "last update2003-05-05",
+          "historicalRevisionNote": "last update2003-05-05",
+          "historicalEvidenceId": "turn21view8",
+          "historicalScopeLimit": "Historical US educational comparison; no universal money factor conversion; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "requiredSourceClausesAndCases": "Actual lease disclosures/contract clauses for cap-cost reductions, residual, total rent charge or selected money-factor computation, payment timing, upfront/period tax/fee jurisdiction and rounding/residual reconciliation; official worked schedule. No universal APR/2400 conversion.",
+      "preciseEvidenceGap": "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+      "unresolvedOwnerAndProductChoices": [
+        "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+        "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+        "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment."
+      ],
+      "historicalOutstandingDecisions": [
+        "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+        "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+        "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment."
+      ],
+      "scopeJurisdictionAndLegalContractAmbiguity": "Lessor/product, vehicle lease jurisdiction/tax situs, currency and contract effective dates; historical US disclosure example is not current local tax policy.",
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedCurrency": "UNKNOWN",
+      "selectedEffectivePeriod": {
+        "from": "UNKNOWN",
+        "to": "UNKNOWN"
+      },
+      "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+      "priorIndependentWitness": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[469]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "(D(11745)/48).quantize(D(\".01\"),rounding=ROUND_HALF_UP)+D(\"12.25\")",
+          "actual": "256.94",
+          "expected": "256.94",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+          "additionalActuals": {
+            "unroundedBase": "244.6875"
+          }
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "engineBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+      "sourceReviewCompleted": false,
+      "qualifiedApprovalObtained": false,
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "candidateFormula": "basePayment=((adjustedCapCost-residual)+totalRentCharge)/n; totalPayment=basePayment+periodTax+fees",
+      "units": "Adjusted cap cost, residual, total rent charge, tax and fees in same currency; n positive integer payments; base and period additions currency/payment; money factor dimensional convention and rounding stages contract-specific.",
+      "applicability": "Lessor/product, vehicle lease jurisdiction/tax situs, currency and contract effective dates; historical US disclosure example is not current local tax policy.",
+      "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+      "sourceEvidence": [
+        {
+          "officialUrl": "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+          "title": "Vehicle Leasing: Description of Leasing Form, Page 1",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "UNKNOWN",
+          "historicalRevisionNote": "No publication/effective date established from retrieved content",
+          "historicalEvidenceId": "turn21view7",
+          "historicalScopeLimit": "US lease disclosure arithmetic example, not current tax or lender policy; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        },
+        {
+          "officialUrl": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+          "title": "Vehicle Leasing: Leasing vs. Buying: Monthly Payments",
+          "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+          "historicalReportedRevisionOrDate": "last update2003-05-05",
+          "historicalRevisionNote": "last update2003-05-05",
+          "historicalEvidenceId": "turn21view8",
+          "historicalScopeLimit": "Historical US educational comparison; no universal money factor conversion; retrieval does not establish current governing revision or endorse proposed formula.",
+          "newRetrievalPerformed": false,
+          "currentContentVerified": false,
+          "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+          "currentRevisionAndContentHash": "UNKNOWN"
+        }
+      ],
+      "independentNumericalEvidence": {
+        "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[469]",
+        "historicalResult": {
+          "method": "Independent Python decimal; precision50; not production engine execution",
+          "expression": "(D(11745)/48).quantize(D(\".01\"),rounding=ROUND_HALF_UP)+D(\"12.25\")",
+          "actual": "256.94",
+          "expected": "256.94",
+          "result": "PASS",
+          "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+          "additionalActuals": {
+            "unroundedBase": "244.6875"
+          }
+        },
+        "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+      },
+      "implementationBinding": {
+        "approvedCalculatorVersion": "UNKNOWN",
+        "approvedImplementationSha": "UNKNOWN",
+        "actualIdentityBindingEstablished": false,
+        "historicalStaticInspection": {
+          "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+          "files": [
+            {
+              "fetched": false,
+              "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+            }
+          ],
+          "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+        },
+        "newExecutionPerformed": false,
+        "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+      },
+      "remainingGaps": [
+        "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+        "Actual lease disclosures/contract clauses for cap-cost reductions, residual, total rent charge or selected money-factor computation, payment timing, upfront/period tax/fee jurisdiction and rounding/residual reconciliation; official worked schedule. No universal APR/2400 conversion.",
+        "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+        "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+        "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment."
+      ]
+    }
+  ]
+}

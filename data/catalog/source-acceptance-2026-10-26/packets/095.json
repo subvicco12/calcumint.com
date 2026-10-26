@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "masterId": 95,
+  "title": "Required Minimum Distribution Calculator",
+  "domain": "Retirement & Financial Independence",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/finance-14.json",
+    "laneSHA256": "e1a9e3f857350d36d6ecd7579fcbeee1d20ba037d6031da7b9795ccf94817dbc"
+  },
+  "analysis": {
+    "masterId": 95,
+    "title": "Required Minimum Distribution Calculator",
+    "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+    "proposedFormula": "RMD=priorYearEndAdjustedBalance/applicableOfficialDivisor",
+    "formulaSelected": false,
+    "domainAndUnits": "Prior-year-end adjusted account balance in selected currency divided by positive dimensionless official life-expectancy divisor gives annual distribution currency; account/age/date/table branch and rounding selected explicitly.",
+    "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+    "officialSources": [
+      {
+        "officialUrl": "https://www.irs.gov/publications/p590b",
+        "title": "Publication 590-B (2025), Distributions from IRAs",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+        "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+        "historicalEvidenceId": "turn21view13",
+        "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "requiredSourceClausesAndCases": "Applicable publication edition clauses and official table/row keyed to distribution year, age and owner/beneficiary/spouse status; adjusted prior-year balance, aggregation/deadlines and exceptions; verify full example context for 100000/24.6. Whole-dollar example is approximate, not permission to under-distribute.",
+    "preciseEvidenceGap": "Complete applicable tax-year distribution rules, table/version, balance date, account type and exceptions, including inherited/spouse branches and rounding. An approximate whole-dollar example does not settle compliance.",
+    "unresolvedOwnerAndProductChoices": [
+      "Required distribution rules, table, account balance date and exceptions.",
+      "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+      "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute."
+    ],
+    "historicalOutstandingDecisions": [
+      "Required distribution rules, table, account balance date and exceptions.",
+      "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+      "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute."
+    ],
+    "scopeJurisdictionAndLegalContractAmbiguity": "US is historical source scope only; select account type, owner/beneficiary and spouse facts, distribution tax year and governing edition before adoption.",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedCurrency": "UNKNOWN",
+    "selectedEffectivePeriod": {
+      "from": "UNKNOWN",
+      "to": "UNKNOWN"
+    },
+    "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+    "priorIndependentWitness": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[95]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "D(100000)/D(\"24.6\")",
+        "actual": "4065.0406504065040650406504065040650406504065040650",
+        "expected": "4065.0406504065040650406504065040650406504065040650",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "engineBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "fetched": false,
+            "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+    "sourceReviewCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "RMD=priorYearEndAdjustedBalance/applicableOfficialDivisor",
+    "units": "Prior-year-end adjusted account balance in selected currency divided by positive dimensionless official life-expectancy divisor gives annual distribution currency; account/age/date/table branch and rounding selected explicitly.",
+    "applicability": "US is historical source scope only; select account type, owner/beneficiary and spouse facts, distribution tax year and governing edition before adoption.",
+    "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "sourceEvidence": [
+      {
+        "officialUrl": "https://www.irs.gov/publications/p590b",
+        "title": "Publication 590-B (2025), Distributions from IRAs",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+        "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+        "historicalEvidenceId": "turn21view13",
+        "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "independentNumericalEvidence": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[95]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "D(100000)/D(\"24.6\")",
+        "actual": "4065.0406504065040650406504065040650406504065040650",
+        "expected": "4065.0406504065040650406504065040650406504065040650",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "implementationBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "fetched": false,
+            "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "remainingGaps": [
+      "Complete applicable tax-year distribution rules, table/version, balance date, account type and exceptions, including inherited/spouse branches and rounding. An approximate whole-dollar example does not settle compliance.",
+      "Applicable publication edition clauses and official table/row keyed to distribution year, age and owner/beneficiary/spouse status; adjusted prior-year balance, aggregation/deadlines and exceptions; verify full example context for 100000/24.6. Whole-dollar example is approximate, not permission to under-distribute.",
+      "Required distribution rules, table, account balance date and exceptions.",
+      "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+      "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute."
+    ]
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.irs.gov/publications/p590b"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(100000)/D(\"24.6\")",
+    "actual": "4065.0406504065040650406504065040650406504065040650",
+    "expected": "4065.0406504065040650406504065040650406504065040650",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete applicable tax-year distribution rules, table/version, balance date, account type and exceptions, including inherited/spouse branches and rounding. An approximate whole-dollar example does not settle compliance.",
+    "Applicable publication edition clauses and official table/row keyed to distribution year, age and owner/beneficiary/spouse status; adjusted prior-year balance, aggregation/deadlines and exceptions; verify full example context for 100000/24.6. Whole-dollar example is approximate, not permission to under-distribute.",
+    "Required distribution rules, table, account balance date and exceptions.",
+    "Example is owner IRA only; inherited accounts and spouse >10 years younger require different branch.",
+    "Official whole-dollar4065 example is approximate; exact quotient4065.04065...; cents rounding4065.04 is separate display policy, not authority to under-distribute.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

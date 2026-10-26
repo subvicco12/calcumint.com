@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "masterId": 488,
+  "title": "Heat Pump Savings Calculator",
+  "domain": "Energy & Environment",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 488,
+    "title": "Heat Pump Savings Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "ExistingEnergy=Q_useful/eta; HeatPumpElectricity=Q_useful/SCOP+extraAuxiliaryOutsideSCOP; savings=ExistingEnergy*fuelTariff-HeatPumpElectricity*electricTariff",
+    "units": "Q useful kWh/year; electricity/fuel kWh/year; tariffs currency/kWh; eta,SCOP dimensionless; savings currency/year.",
+    "applicability": {
+      "candidateDomain": "Q>=0;0<eta<=1 for conventional existing source;SCOP>0; nonnegative auxiliary outside SCOP only; same delivered heat boundary and period.",
+      "requiredChoices": [
+        "Annual heat boundary, seasonal performance, auxiliary use, tariffs and installation-cost scope.",
+        "Jurisdiction/effective rule pack and qualified reviewer approval remain unselected."
+      ],
+      "selected": false
+    },
+    "limits": "Zero heat; eta0/SCOP0 invalid; auxiliary100 reduces200 to175; existing heat pump requires another efficiency contract; tariffs/standing charges and achieved seasonal performance unselected.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "proposedEquation": "ExistingEnergy=Q_useful/eta; HeatPumpElectricity=Q_useful/SCOP+extraAuxiliaryOutsideSCOP; savings=ExistingEnergy*fuelTariff-HeatPumpElectricity*electricTariff",
+        "units": "Q kWh heat/year; input kWh/year; tariffs currency/kWh; eta and SCOP dimensionless",
+        "domainAndBoundaryFinding": "Q>=0,0<eta<=1 for conventional non-heat-pump source,SCOP>0; alternative existing heatpump needs a different efficiency contract. Add auxiliary only outside SCOP; witness100kWh extra lowers savings200 to175. Tariffs and physical delivery boundary unselected.",
+        "rounding": "Decimal precision40, exact comparison before rounding. No jurisdiction monetary rounding policy approved; round-half-up1.005->1.01 is illustrative only.",
+        "proposedContractRevisions": []
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps",
+            "title": "Air to Water Heat Pumps, section 1.4.1",
+            "primaryOpenReference": "turn23view18",
+            "action": "OPENED_PRIMARY_URL",
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "checkedAt": "2026-10-25T20:01:59Z",
+            "effectivePeriod": null,
+            "lastUpdatedOrDocumentDate": null,
+            "publicationDate": null,
+            "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+            "finding": "Section1.4.1 references BS EN14825:2022 average climate; SCOP heat/input ratio. Equipment/climate applicability unselected.",
+            "fullRulePackVerified": false
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps",
+            "catalogIds": [
+              488
+            ],
+            "observations": [
+              {
+                "url": "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps",
+                "title": "Air to Water Heat Pumps, section 1.4.1",
+                "primaryOpenReference": "turn23view18",
+                "action": "OPENED_PRIMARY_URL",
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "checkedAt": "2026-10-25T20:01:59Z",
+                "effectivePeriod": null,
+                "lastUpdatedOrDocumentDate": null,
+                "publicationDate": null,
+                "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+                "finding": "Section1.4.1 references BS EN14825:2022 average climate; SCOP heat/input ratio. Equipment/climate applicability unselected.",
+                "fullRulePackVerified": false
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "no_extra_aux",
+          "expression": "12000/F(\".8\")*F(\".08\")-12000/F(3)*F(\".25\")",
+          "expectedRational": "200",
+          "actualRational": "200",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "aux_outside_scop",
+          "expression": "12000/F(\".8\")*F(\".08\")-(12000/F(3)+100)*F(\".25\")",
+          "expectedRational": "175",
+          "actualRational": "175",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "zero_load",
+          "expression": "0/F(\".8\")*F(\".08\")-0/F(3)*F(\".25\")",
+          "expectedRational": "0",
+          "actualRational": "0",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072,
+            "observedIdLiterals": [
+              "primary"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072,
+            "observedIdLiterals": [
+              "primary"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/finance/net-worth.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+            "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57",
+            "bytes": 2945,
+            "observedIdLiterals": [
+              "finance.net-worth",
+              "net-worth",
+              "debt-assets"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+            "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57",
+            "bytes": 2945,
+            "observedIdLiterals": [
+              "finance.net-worth",
+              "net-worth",
+              "debt-assets"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/scenarios.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "8104271e70588344c724f9ad82f12c8b5175f6d2",
+            "sha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f",
+            "bytes": 2683,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "8104271e70588344c724f9ad82f12c8b5175f6d2",
+            "sha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f",
+            "bytes": 2683,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/registry.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+            "bytes": 21186,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+            "bytes": 21186,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/energy/catalog-batch-1.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "a6b10ac1c8595e8d82e8c2fe5a504371a383183c",
+            "sha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48",
+            "bytes": 5086,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "a6b10ac1c8595e8d82e8c2fe5a504371a383183c",
+            "sha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48",
+            "bytes": 5086,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/energy/catalog-batch-2.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "0e9101af3a6299ef66949474ff8f949a8dbcb144",
+            "sha256": "1eaba45a2f79407ad7828a98089d7b4c2d8ad5197fcb1b71138a3fc549366b67",
+            "bytes": 4188,
+            "observedIdLiterals": [
+              "energy.appliance-running-cost",
+              "appliance-energy",
+              "appliance-cost",
+              "energy.home-energy-consumption",
+              "home-energy",
+              "home-energy-cost"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "0e9101af3a6299ef66949474ff8f949a8dbcb144",
+            "sha256": "1eaba45a2f79407ad7828a98089d7b4c2d8ad5197fcb1b71138a3fc549366b67",
+            "bytes": 4188,
+            "observedIdLiterals": [
+              "energy.appliance-running-cost",
+              "appliance-energy",
+              "appliance-cost",
+              "energy.home-energy-consumption",
+              "home-energy",
+              "home-energy-cost"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/automotive/catalog-batch-1.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "4d6df6f3510d8193dd85cc35bf559b2c5084b017",
+            "sha256": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1",
+            "bytes": 4766,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "4d6df6f3510d8193dd85cc35bf559b2c5084b017",
+            "sha256": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1",
+            "bytes": 4766,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/travel/draft-master-517.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "aaffb41d922b462287454c100f3b57821068364f",
+            "sha256": "0e976b65c698c02acc0b11504634b940b2a2c3f54bdb3c6b79fe263992fd6c5f",
+            "bytes": 4610,
+            "observedIdLiterals": [
+              "education.weighted-grade",
+              "weighted-grade"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "aaffb41d922b462287454c100f3b57821068364f",
+            "sha256": "0e976b65c698c02acc0b11504634b940b2a2c3f54bdb3c6b79fe263992fd6c5f",
+            "bytes": 4610,
+            "observedIdLiterals": [
+              "education.weighted-grade",
+              "weighted-grade"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        }
+      ],
+      "historicalInspection": {
+        "repository": "subvicco12/calcumint.com",
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "action": "FETCHED_BASELINE_SOURCE_AND_INSPECTED_CONTRACT",
+        "files": [
+          {
+            "path": "src/calculators/launch-portfolio.ts",
+            "blobSha": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/launch-portfolio.ts",
+            "contentSha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+          },
+          {
+            "path": "src/calculators/finance/net-worth.ts",
+            "blobSha": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/net-worth.ts",
+            "contentSha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57"
+          },
+          {
+            "path": "src/calculators/scenarios.ts",
+            "blobSha": "8104271e70588344c724f9ad82f12c8b5175f6d2",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/scenarios.ts",
+            "contentSha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f"
+          },
+          {
+            "path": "src/calculators/registry.ts",
+            "blobSha": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/registry.ts",
+            "contentSha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+          },
+          {
+            "path": "src/calculators/energy/catalog-batch-1.ts",
+            "blobSha": "a6b10ac1c8595e8d82e8c2fe5a504371a383183c",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/energy/catalog-batch-1.ts",
+            "contentSha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48"
+          },
+          {
+            "path": "src/calculators/energy/catalog-batch-2.ts",
+            "blobSha": "0e9101af3a6299ef66949474ff8f949a8dbcb144",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/energy/catalog-batch-2.ts",
+            "contentSha256": "1eaba45a2f79407ad7828a98089d7b4c2d8ad5197fcb1b71138a3fc549366b67"
+          },
+          {
+            "path": "src/calculators/automotive/catalog-batch-1.ts",
+            "blobSha": "4d6df6f3510d8193dd85cc35bf559b2c5084b017",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/automotive/catalog-batch-1.ts",
+            "contentSha256": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1"
+          },
+          {
+            "path": "src/calculators/travel/draft-master-517.ts",
+            "blobSha": "aaffb41d922b462287454c100f3b57821068364f",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/travel/draft-master-517.ts",
+            "contentSha256": "0e976b65c698c02acc0b11504634b940b2a2c3f54bdb3c6b79fe263992fd6c5f"
+          }
+        ],
+        "finding": "Energy and automotive files evaluate supplied power/usage/efficiency/tariffs; no selected emissions factor registry or heatpump SCOP savings contract in inspected files. Net-worth sums nonnegative assets/liabilities and rounds currency2 decimals; compareScenarios invokes a caller-supplied calculate function, not the missing domain model.",
+        "limitations": "Bounded inspection of listed files; no whole-repository absence claim, no baseline TypeScript suite execution or approved mapping."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": true,
+      "originalCandidate": "ExistingEnergy=Q_useful/eta; HeatPumpElectricity=Q_useful/SCOP+extraAuxiliaryOutsideSCOP; savings=ExistingEnergy*fuelTariff-HeatPumpElectricity*electricTariff",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "masterId": 488,
+    "expression": "12000/0.8*0.08-12000/3*0.25",
+    "actual": "200.00",
+    "expected": "200",
+    "pass_": true
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

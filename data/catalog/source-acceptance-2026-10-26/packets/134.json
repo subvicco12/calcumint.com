@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "masterId": 134,
+  "title": "Tax Effective Rate Calculator",
+  "domain": "Tax & Payroll",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 134,
+    "title": "Tax Effective Rate Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "EffectiveRate=100*includedTaxLiability/definedPositiveIncomeBase",
+    "units": "Output percent; included tax liability and denominator income in same currency and tax period.",
+    "applicability": {
+      "candidateDomain": "Defined income strictly positive; tax numerator supplied from separately verified rule pack; negative tax/refund treatment requires explicit contract.",
+      "requiredChoices": [
+        "Gross versus taxable income denominator, liability scope and zero/negative-income handling.",
+        "Jurisdiction/effective rule pack and qualified reviewer approval remain unselected."
+      ],
+      "selected": false
+    },
+    "limits": "Income0 invalid; income<0 outside proposed ratio domain; tax0 gives0%; refund could yield negative percent only if selected; no tax liability computed here.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "proposedEquation": "EffectiveRate=100*includedTaxLiability/definedPositiveIncomeBase",
+        "units": "percent",
+        "domainAndBoundaryFinding": "Income denominator must be strictly positive; zero verified division error. Negative income requires a separate policy and cannot be silently shown as zero rate.",
+        "rounding": "Decimal precision40, exact comparison before rounding. No jurisdiction monetary rounding policy approved; round-half-up1.005->1.01 is illustrative only.",
+        "proposedContractRevisions": []
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://www.gov.uk/income-tax-rates",
+            "title": "Income Tax rates and Personal Allowances",
+            "primaryOpenReference": "turn23view0",
+            "action": "OPENED_PRIMARY_URL",
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "checkedAt": "2026-10-25T20:01:59Z",
+            "effectivePeriod": "2026-04-06 through 2027-04-05",
+            "lastUpdatedOrDocumentDate": null,
+            "publicationDate": null,
+            "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+            "finding": "Current year stated; Scotland differs; not a globally applicable pack.",
+            "fullRulePackVerified": false
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://www.gov.uk/income-tax-rates",
+            "catalogIds": [
+              120,
+              131,
+              134,
+              135
+            ],
+            "observations": [
+              {
+                "url": "https://www.gov.uk/income-tax-rates",
+                "title": "Income Tax rates and Personal Allowances",
+                "primaryOpenReference": "turn23view0",
+                "action": "OPENED_PRIMARY_URL",
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "checkedAt": "2026-10-25T20:01:59Z",
+                "effectivePeriod": "2026-04-06 through 2027-04-05",
+                "lastUpdatedOrDocumentDate": null,
+                "publicationDate": null,
+                "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+                "finding": "Current year stated; Scotland differs; not a globally applicable pack.",
+                "fullRulePackVerified": false
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "positive_base_percent",
+          "expression": "100*F(2000)/10000",
+          "expectedRational": "20",
+          "actualRational": "20",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "negative_tax_supplied",
+          "expression": "100*F(-500)/10000",
+          "expectedRational": "-5",
+          "actualRational": "-5",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "zero_tax",
+          "expression": "100*F(0)/10000",
+          "expectedRational": "0",
+          "actualRational": "0",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/rule-packs.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "ff4bf90d1f749ffb554c472c68aeb5fe46c2a950",
+            "sha256": "bf0b86932af7764777b1ebd0a66d475bd1e47918e4717e50d19ecfd478e8b628",
+            "bytes": 3541,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "ff4bf90d1f749ffb554c472c68aeb5fe46c2a950",
+            "sha256": "bf0b86932af7764777b1ebd0a66d475bd1e47918e4717e50d19ecfd478e8b628",
+            "bytes": 3541,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/core/percentage.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "ae31ae86ff2649fb1c0d0af61c6cf07340dcbfbd",
+            "sha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc",
+            "bytes": 1822,
+            "observedIdLiterals": [
+              "core.percentage-of-value",
+              "percentage-of-value"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "ae31ae86ff2649fb1c0d0af61c6cf07340dcbfbd",
+            "sha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc",
+            "bytes": 1822,
+            "observedIdLiterals": [
+              "core.percentage-of-value",
+              "percentage-of-value"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Percentage-of-value computes percentage/100*value and rounds12dp. This is not the tax/income ratio and supplies neither tax liability nor jurisdiction policy."
+        },
+        {
+          "path": "src/calculators/registry.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+            "bytes": 21186,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+            "bytes": 21186,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        }
+      ],
+      "historicalInspection": {
+        "repository": "subvicco12/calcumint.com",
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "action": "FETCHED_BASELINE_SOURCE_AND_INSPECTED_CONTRACT",
+        "files": [
+          {
+            "path": "src/calculators/rule-packs.ts",
+            "blobSha": "ff4bf90d1f749ffb554c472c68aeb5fe46c2a950",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/rule-packs.ts",
+            "contentSha256": "bf0b86932af7764777b1ebd0a66d475bd1e47918e4717e50d19ecfd478e8b628"
+          },
+          {
+            "path": "src/calculators/core/percentage.ts",
+            "blobSha": "ae31ae86ff2649fb1c0d0af61c6cf07340dcbfbd",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/core/percentage.ts",
+            "contentSha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc"
+          },
+          {
+            "path": "src/calculators/registry.ts",
+            "blobSha": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/registry.ts",
+            "contentSha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+          }
+        ],
+        "finding": "rule-packs.ts registers dated metadata; it contains no tax evaluation function/rates. percentageCalculator uses percentage points /100 and rounds12 decimals, not a jurisdiction rule pack. No tax engine slug bound in baseline record.",
+        "limitations": "Bounded inspection of listed files; no whole-repository absence claim, no baseline TypeScript suite execution or approved mapping."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": true,
+      "originalCandidate": "EffectiveRate=100*includedTaxLiability/definedPositiveIncomeBase",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.gov.uk/income-tax-rates"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "masterId": 134,
+    "expression": "100*2000/10000",
+    "actual": "20",
+    "expected": "20",
+    "pass_": true
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

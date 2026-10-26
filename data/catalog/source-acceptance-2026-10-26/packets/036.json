@@ -1,0 +1,324 @@
+{
+  "schemaVersion": 1,
+  "masterId": 36,
+  "title": "Rental Property Calculator",
+  "domain": "Mortgage & Property Finance",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 36,
+    "title": "Rental Property Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "NOI=rent-vacancy-operatingExpenses; cashFlow=NOI-debtService-capex",
+    "units": "Rent, vacancy loss, operating expenses, debt service and capex all currency per same period.",
+    "applicability": {
+      "candidateDomain": "Vacancy here is an amount, not a fraction; period aggregation and expense classes explicit; debt and capex excluded from this candidate NOI.",
+      "requiredChoices": [
+        "Expense classification, financing, capex, depreciation and sale assumptions.",
+        "NOI/capex classification proposed; taxable income differs from cash flow."
+      ],
+      "selected": false
+    },
+    "limits": "Zero rent; negative NOI/cash flow; no debt; tax depreciation and taxable income not inferred.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "equation": "NOI=rent-vacancy-operatingExpenses; cashFlow=NOI-debtService-capex",
+        "unitsAssessment": "Dimensionally consistent conditional cash arithmetic; income/spending and rates require matched periods; return outputs fractions vs percent explicitly distinguished.",
+        "domainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+        "roundingAssessment": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+        "exclusions": [
+          "NOI/capex classification proposed; taxable income differs from cash flow.",
+          "Expense classification, financing, capex, depreciation and sale assumptions."
+        ]
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://www.irs.gov/publications/p527",
+            "retrieved": true,
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "title": "Publication 527 (2025), Residential Rental Property",
+            "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+            "observedDateVersion": "2025 tax-year edition",
+            "browseEvidenceId": "turn21view11",
+            "limitations": "US rental taxation classification only; not an investment-return standard; retrieval does not establish current governing revision or endorse proposed formula.",
+            "error": null
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://www.irs.gov/publications/p527",
+            "catalogIds": [
+              36,
+              43,
+              49
+            ],
+            "observations": [
+              {
+                "url": "https://www.irs.gov/publications/p527",
+                "retrieved": true,
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "title": "Publication 527 (2025), Residential Rental Property",
+                "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+                "observedDateVersion": "2025 tax-year edition",
+                "browseEvidenceId": "turn21view11",
+                "limitations": "US rental taxation classification only; not an investment-return standard; retrieval does not establish current governing revision or endorse proposed formula.",
+                "error": null
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "annual",
+          "expression": "20000-1000-7000-8000-1000",
+          "expectedRational": "3000",
+          "actualRational": "3000",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "negative_cash",
+          "expression": "10000-1000-3000-8000-1000",
+          "expectedRational": "-3000",
+          "actualRational": "-3000",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "no_debt",
+          "expression": "20000-1000-7000",
+          "expectedRational": "12000",
+          "actualRational": "12000",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/finance/roi.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "ca95705dd3d5d94842c6fdc260d79eead2e64d75",
+            "sha256": "33b13a26a7539dbeac88a2aa764488520ee357787b66fed6c4effd5a7476c2c2",
+            "bytes": 3630,
+            "observedIdLiterals": [
+              "finance.roi",
+              "roi",
+              "annualized"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "ca95705dd3d5d94842c6fdc260d79eead2e64d75",
+            "sha256": "33b13a26a7539dbeac88a2aa764488520ee357787b66fed6c4effd5a7476c2c2",
+            "bytes": 3630,
+            "observedIdLiterals": [
+              "finance.roi",
+              "roi",
+              "annualized"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "calculateRoi divides gain by initialInvestment+additionalCosts; returns roi percent and geometric annualized return, currency2dp/return6dp. Distinct from annual pre-tax cash-on-cash and not a rental/flip item classifier."
+        },
+        {
+          "path": "src/calculators/finance/mortgage.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "85166726e8f4f751e4de9e5decd4c8f17a89287f",
+            "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+            "bytes": 989,
+            "observedIdLiterals": [
+              "finance.mortgage"
+            ],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "85166726e8f4f751e4de9e5decd4c8f17a89287f",
+            "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+            "bytes": 989,
+            "observedIdLiterals": [
+              "finance.mortgage"
+            ],
+            "declaredVersions": []
+          },
+          "observation": "Spreads loanPaymentCalculator, replaces identity and removes inherited goldenTests. Explicitly excludes property taxes, insurance, HOA and closing costs. Imported dependency inspected separately; no property cash-flow contract."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        },
+        {
+          "path": "src/calculators/finance/loan-payment.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "e19da610c943819370a8626a83765cf757587885",
+            "sha256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+            "bytes": 2097,
+            "observedIdLiterals": [
+              "finance.loan-payment",
+              "amortizing-loan-payment"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "e19da610c943819370a8626a83765cf757587885",
+            "sha256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+            "bytes": 2097,
+            "observedIdLiterals": [
+              "finance.loan-payment",
+              "amortizing-loan-payment"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Mortgage dependency: nominal annualPercent/100/12; zero-rate principal/term; rounds monthly payment to2dp before multiplying term; totals interest2dp. Source version1. Not a complete property contract."
+        }
+      ],
+      "historicalInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/roi.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "4a340b0ba427bb754fa93b006271ada5e26b7cbd5ed144526f83fe7fa1e57290",
+            "observation": "Simple invested-capital return and geometric annualization, output ROI6dp; no dated cash-flow IRR or rental expense taxonomy.",
+            "githubBlobSha": "ca95705dd3d5d94842c6fdc260d79eead2e64d75",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/roi.ts"
+          },
+          {
+            "path": "src/calculators/finance/mortgage.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "b9e6a365462d07425539088b780c57de5ebe3ea4ac20c2fd6d2b286ffcd6af97",
+            "observation": "Wrapper around loan-payment; expressly excludes tax, insurance, HOA, closing costs; dependency not fetched, so complete mortgage computation not executed.",
+            "githubBlobSha": "85166726e8f4f751e4de9e5decd4c8f17a89287f",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/mortgage.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": true,
+      "originalCandidate": "NOI=rent-vacancy-operatingExpenses; cashFlow=NOI-debtService-capex",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.irs.gov/publications/p527"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(20000)-1000-7000-8000-1000",
+    "actual": "3000",
+    "expected": "3000",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

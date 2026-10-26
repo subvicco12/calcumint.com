@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "masterId": 522,
+  "title": "Race Time Predictor",
+  "domain": "Sports",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/tax-other-23.json",
+    "laneSHA256": "eb29178eca32868d6b43c9c120f33d3a0c3a6fc1c36a83b4ea59421000f1944e"
+  },
+  "analysis": {
+    "masterId": 522,
+    "title": "Race Time Predictor",
+    "riskDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "qualifiedExternalReviewRequired": false,
+    "status": "BLOCKED_AUTHORITATIVE_SOURCE_AND_CONTRACT_CHOICES",
+    "currentCandidateFormula": "Candidate Riegel power law: T2=T1*(D2/D1)^b; exponent b must be versioned/calibrated rather than universally assumed 1.06.",
+    "candidateStatus": "PROPOSED_NOT_SELECTED_OR_ACCEPTED",
+    "units": "T1 and T2 in the same time unit; D1 and D2 in the same positive distance unit; exponent dimensionless",
+    "currentCandidateContract": "Power-law algebra/unit ratio correct; assumed1.06 witness52.1232880420561min reproduces binary value.",
+    "exactChoicesRequired": "Prediction model and revision, calibration exponent, supported distances and athlete population, performance conditions, validation/error interval and permitted claims",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedYearOrPeriod": "UNKNOWN",
+    "selectedProviderOrInstitution": "UNKNOWN",
+    "remainingOwnerAndContractChoices": [
+      "Protocol/model, calibrated distances/population, exponent and uncertainty.",
+      "Primary paper page2 supports generic exponent, not owner-selected/calibrated1.06for individuals. No validated uncertainty/domain chosen; mean pace must not replace predictor.",
+      "Qualified specialist review and separate owner mapping approval pending."
+    ],
+    "proposalCorrection": "NONE_RECORDED",
+    "priorityUnblockActions": [
+      {
+        "priority": "P0",
+        "action": "Owner selects and documents: Prediction model and revision, calibration exponent, supported distances and athlete population, performance conditions, validation/error interval and permitted claims. No inferred defaults or silent scope narrowing."
+      },
+      {
+        "priority": "P0",
+        "action": "Obtain complete authoritative source content through approved access after owner reviews/publishes the centrally saved narrow public-source allowlist draft, or supply a genuine authoritative extract with provenance; pin revision, clause, effective dates and content hash. Do not bypass the managed proxy."
+      },
+      {
+        "priority": "P1",
+        "action": "Resolve the ID-specific evidence gaps and source conflicts; obtain official boundary/exception examples, monetary/unit conventions and rounding order for the selected complete contract."
+      },
+      {
+        "priority": "P1",
+        "action": "Bind selected contract and source hash to the actual implementation version; independently execute authoritative expected cases and complete competent technical review plus applicable obligation/lifecycle checks."
+      }
+    ],
+    "currentSourceVerificationCompleted": false,
+    "sourceAcceptanceCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "Candidate Riegel power law: T2=T1*(D2/D1)^b; exponent b must be versioned/calibrated rather than universally assumed 1.06.",
+    "applicability": {
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedYearOrPeriod": "UNKNOWN",
+      "selectedProviderOrInstitution": "UNKNOWN",
+      "exactChoicesRequired": "Prediction model and revision, calibration exponent, supported distances and athlete population, performance conditions, validation/error interval and permitted claims"
+    },
+    "limits": "Power-law algebra/unit ratio correct; assumed1.06 witness52.1232880420561min reproduces binary value.",
+    "rounding": "UNKNOWN: model precision and output rounding not selected.",
+    "sourceEvidence": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+        "historicalObservation": {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+          "webReference": "turn22view4",
+          "primaryOpenStatus": "BIBLIOGRAPHIC_RECORD_READ",
+          "observedDate": {
+            "publication": "1981-05/1981-06"
+          },
+          "observedVersion": "Am Sci69(3):285–290",
+          "accessDate": "2026-10-25",
+          "applicabilityFinding": "Primary publication metadata only; no abstract/formula supplied by PubMed."
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+          "catalogIds": [
+            522
+          ],
+          "observations": [
+            {
+              "url": "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+              "webReference": "turn22view4",
+              "primaryOpenStatus": "BIBLIOGRAPHIC_RECORD_READ",
+              "observedDate": {
+                "publication": "1981-05/1981-06"
+              },
+              "observedVersion": "Am Sci69(3):285–290",
+              "accessDate": "2026-10-25",
+              "applicabilityFinding": "Primary publication metadata only; no abstract/formula supplied by PubMed."
+            }
+          ],
+          "verificationClass": "BIBLIOGRAPHIC_ONLY"
+        },
+        "knownRevision": "Am Sci69(3):285–290",
+        "knownEffectivePeriod": "UNKNOWN",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      },
+      {
+        "url": "https://rrtc.net/Articles/ARHE.pdf",
+        "historicalObservation": {
+          "url": "https://rrtc.net/Articles/ARHE.pdf",
+          "webReference": "turn22view5",
+          "primaryOpenStatus": "PDF_PAGE_2_VISUALLY_READ",
+          "observedDate": {
+            "publication": "1981-05/1981-06 per PubMed"
+          },
+          "observedVersion": "Primary paper reprint",
+          "accessDate": "2026-10-25",
+          "applicabilityFinding": "Power law t=a*x^b confirmed visually; endurance span~3.5to230min. Selected1.06 individual prediction calibration not verified."
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://rrtc.net/Articles/ARHE.pdf",
+          "catalogIds": [
+            522
+          ],
+          "observations": [
+            {
+              "url": "https://rrtc.net/Articles/ARHE.pdf",
+              "webReference": "turn22view5",
+              "primaryOpenStatus": "PDF_PAGE_2_VISUALLY_READ",
+              "observedDate": {
+                "publication": "1981-05/1981-06 per PubMed"
+              },
+              "observedVersion": "Primary paper reprint",
+              "accessDate": "2026-10-25",
+              "applicabilityFinding": "Power law t=a*x^b confirmed visually; endurance span~3.5to230min. Selected1.06 individual prediction calibration not verified."
+            }
+          ],
+          "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+        },
+        "knownRevision": "Primary paper reprint",
+        "knownEffectivePeriod": "UNKNOWN",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "historicalWitness": {
+        "method": "Python 3 decimal precision 50 / datetime calendar arithmetic",
+        "expression": "25*2**1.06",
+        "actual": "52.123288042056069547735570936345392003295886854795",
+        "registeredExpected": "52.12328804205607",
+        "kind": "SYNTHETIC_ARITHMETIC_WITNESS",
+        "tolerance": "1e-12",
+        "result": "MATCH_WITHIN_BINARY_FLOAT_TOLERANCE",
+        "modelExponentApproved": false
+      },
+      "scope": "Prior independent reference/synthetic arithmetic reproduction only; no actual TypeScript/production engine execution or source acceptance.",
+      "currentActualEngineExecuted": false,
+      "currentAuthoritativeExpectedCases": "UNKNOWN"
+    },
+    "implementationBinding": {
+      "approvedImplementationSha": "UNKNOWN",
+      "approvedCalculatorVersion": "UNKNOWN",
+      "rulePackRevision": "UNKNOWN",
+      "sourceHash": "UNKNOWN",
+      "historicalStaticComparison": {
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "finding": "Pinned sportsbatch1 provides running/swimming pace and cycling speed only. Running pace=time/distance is observed average, not Riegel prediction or handicap rules. Registry imports batch. No matching model found in inspected files; no exhaustive absence claim.",
+        "execution": "STATIC_SOURCE_INSPECTION_ONLY; no TypeScript engine tests executed",
+        "evidenceFile": "clinical-engine-evidence.json"
+      },
+      "currentActualEngineAcceptance": false
+    },
+    "remainingGaps": [
+      "Provide an explicitly selected/calibrated race-prediction model, distance/population domain and validation/error evidence. A generic exponent paper does not validate an arbitrary1.06 for individuals; training/safety claims escalate.",
+      "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+      "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+      "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified."
+    ],
+    "sourceReviewReady": false
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+      "https://rrtc.net/Articles/ARHE.pdf"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Python 3 decimal precision 50 / datetime calendar arithmetic",
+    "expression": "25*2**1.06",
+    "actual": "52.123288042056069547735570936345392003295886854795",
+    "registeredExpected": "52.12328804205607",
+    "kind": "SYNTHETIC_ARITHMETIC_WITNESS",
+    "tolerance": "1e-12",
+    "result": "MATCH_WITHIN_BINARY_FLOAT_TOLERANCE",
+    "modelExponentApproved": false
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Provide an explicitly selected/calibrated race-prediction model, distance/population domain and validation/error evidence. A generic exponent paper does not validate an arbitrary1.06 for individuals; training/safety claims escalate.",
+    "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+    "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+    "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}
