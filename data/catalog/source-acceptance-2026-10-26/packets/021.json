@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "masterId": 21,
+  "title": "Debt Consolidation Calculator",
+  "domain": "Loans & Credit",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 21,
+    "title": "Debt Consolidation Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "Cost_s=sum_t(P_s,t+cashFees_s,t); savings=Cost_old-Cost_new",
+    "units": "One currency over an explicitly equal horizon; payments and cash fees in currency; savings currency.",
+    "applicability": {
+      "candidateDomain": "Complete finite payment vectors; fees counted once; unequal maturity requires terminal liabilities or a selected discount comparison.",
+      "requiredChoices": [
+        "Debt types, fees, payment policy and cost-comparison basis.",
+        "Unequal horizons need residual liabilities/discounting; cannot infer consolidation eligibility."
+      ],
+      "selected": false
+    },
+    "limits": "Empty comparison, fee reversal of apparent savings, unequal horizons and remaining principal; no eligibility conclusion.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "equation": "Cost_s=sum_t(P_s,t+cashFees_s,t); savings=Cost_old-Cost_new",
+        "unitsAssessment": "Dimensionally consistent conditional cash arithmetic; income/spending and rates require matched periods; return outputs fractions vs percent explicitly distinguished.",
+        "domainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+        "roundingAssessment": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+        "exclusions": [
+          "Unequal horizons need residual liabilities/discounting; cannot infer consolidation eligibility.",
+          "Debt types, fees, payment policy and cost-comparison basis."
+        ]
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+            "retrieved": true,
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "title": "What do I need to know about consolidating my credit card debt?",
+            "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+            "observedDateVersion": "last reviewed2026-09-02",
+            "browseEvidenceId": "turn21view2",
+            "limitations": "US consumer debt; cost/fee considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+            "error": null
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+            "catalogIds": [
+              20,
+              21
+            ],
+            "observations": [
+              {
+                "url": "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+                "retrieved": true,
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "title": "What do I need to know about consolidating my credit card debt?",
+                "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+                "observedDateVersion": "last reviewed2026-09-02",
+                "browseEvidenceId": "turn21view2",
+                "limitations": "US consumer debt; cost/fee considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+                "error": null
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "equal_horizon",
+          "expression": "1200-(1100+50)",
+          "expectedRational": "50",
+          "actualRational": "50",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "fees_reverse_saving",
+          "expression": "1200-(1100+150)",
+          "expectedRational": "-50",
+          "actualRational": "-50",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "equal_cost",
+          "expression": "1200-(1100+100)",
+          "expectedRational": "0",
+          "actualRational": "0",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/finance/loan-analysis.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+            "sha256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef",
+            "bytes": 6198,
+            "observedIdLiterals": [
+              "finance.loan-analysis",
+              "amortizing-loan-payment",
+              "max-principal"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+            "sha256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef",
+            "bytes": 6198,
+            "observedIdLiterals": [
+              "finance.loan-analysis",
+              "amortizing-loan-payment",
+              "max-principal"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "paymentForLoan and maxPrincipalForPayment use nominal annualPercent/100/12; zero-rate branches; schedules stop at balance<=0.005, round each row to2dp then sum rounded payments/interest. Does not select debt-consolidation, rental or transport-budget contract."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        }
+      ],
+      "historicalInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/loan-analysis.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+            "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+            "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": true,
+      "originalCandidate": "Cost_s=sum_t(P_s,t+cashFees_s,t); savings=Cost_old-Cost_new",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(1200)-(1100+50)",
+    "actual": "50",
+    "expected": "50",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

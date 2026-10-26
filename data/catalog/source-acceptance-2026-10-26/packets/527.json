@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "masterId": 527,
+  "title": "Golf Handicap Calculator",
+  "domain": "Sports",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/tax-other-23.json",
+    "laneSHA256": "eb29178eca32868d6b43c9c120f33d3a0c3a6fc1c36a83b4ea59421000f1944e"
+  },
+  "analysis": {
+    "masterId": 527,
+    "title": "Golf Handicap Calculator",
+    "riskDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "qualifiedExternalReviewRequired": false,
+    "status": "BLOCKED_AUTHORITATIVE_SOURCE_AND_CONTRACT_CHOICES",
+    "currentCandidateFormula": "Provisional dependency proposal only: source-approved eligible score differentials -> applicable differential-level adjustments -> source-defined record window/selection -> average -> source-defined rounding, caps and any remaining committee/index adjustments. For a verified eligible 20-record branch only, candidate selection is lowest8 of most recent20.",
+    "candidateStatus": "PROPOSED_NOT_SELECTED_OR_ACCEPTED",
+    "units": "score differential and Handicap Index in handicap strokes; score/rating/PCC in compatible strokes; slope dimensionless; rounding policy UNKNOWN",
+    "currentCandidateContract": {
+      "equation": "Provisional dependency proposal only: source-approved eligible score differentials -> applicable differential-level adjustments -> source-defined record window/selection -> average -> source-defined rounding, caps and any remaining committee/index adjustments. For a verified eligible 20-record branch only, candidate selection is lowest8 of most recent20.",
+      "domainDefinitions": [
+        "A single 18-hole differential 113/slope*(adjustedGrossScore-courseRating-PCC) is not a Handicap Index.",
+        "Do not label this a complete or verified WHS2024 algorithm. Full adopted authority, revision, eligibility, short record sets, 9-hole handling, exceptional-score rules, cap eligibility, rounding and committee powers remain unverified.",
+        "Upstream live R&A report suggests differential adjustments precede selection; its date/revision is unpinned and full USGA2024 text was blocked. Exact round/cap/order must be confirmed from complete version-bound rules.",
+        "Synthetic selective-adjustment witness establishes noncommutativity only; it does not authorize an adjustment magnitude or policy."
+      ],
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    "exactChoicesRequired": "Adopting handicapping authority/institution and jurisdiction, complete adopted rule revision/effective dates, eligible scores, short histories, 9-hole branches, differential adjustments, selection, rounding, caps and committee powers",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedYearOrPeriod": "UNKNOWN",
+    "selectedProviderOrInstitution": "UNKNOWN",
+    "remainingOwnerAndContractChoices": [
+      "Provide the complete adopted authority/revision and approve the full dependency/order for differentials, selection, rounding, caps and committee action?",
+      "Which eligible-round, short-history, 9-hole and exceptional-score branches are required?"
+    ],
+    "proposalCorrection": {
+      "equation": "Provisional dependency proposal only: source-approved eligible score differentials -> applicable differential-level adjustments -> source-defined record window/selection -> average -> source-defined rounding, caps and any remaining committee/index adjustments. For a verified eligible 20-record branch only, candidate selection is lowest8 of most recent20.",
+      "definitions": [
+        "A single 18-hole differential 113/slope*(adjustedGrossScore-courseRating-PCC) is not a Handicap Index.",
+        "Do not label this a complete or verified WHS2024 algorithm. Full adopted authority, revision, eligibility, short record sets, 9-hole handling, exceptional-score rules, cap eligibility, rounding and committee powers remain unverified.",
+        "Upstream live R&A report suggests differential adjustments precede selection; its date/revision is unpinned and full USGA2024 text was blocked. Exact round/cap/order must be confirmed from complete version-bound rules.",
+        "Synthetic selective-adjustment witness establishes noncommutativity only; it does not authorize an adjustment magnitude or policy."
+      ],
+      "questions": [
+        "Provide the complete adopted authority/revision and approve the full dependency/order for differentials, selection, rounding, caps and committee action?",
+        "Which eligible-round, short-history, 9-hole and exceptional-score branches are required?"
+      ],
+      "evidence": "Synthetic20 scores1..20 with ninth score changed9->0: selecting adjusted lowest8 gives3.5; selecting original8 before adjustment gives4.5. Not a normative golf fixture.",
+      "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+      "sourceBasis": [
+        "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+        "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm",
+        "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5"
+      ],
+      "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+    },
+    "priorityUnblockActions": [
+      {
+        "priority": "P0",
+        "action": "Owner selects and documents: Adopting handicapping authority/institution and jurisdiction, complete adopted rule revision/effective dates, eligible scores, short histories, 9-hole branches, differential adjustments, selection, rounding, caps and committee powers. No inferred defaults or silent scope narrowing."
+      },
+      {
+        "priority": "P0",
+        "action": "Obtain complete authoritative source content through approved access after owner reviews/publishes the centrally saved narrow public-source allowlist draft, or supply a genuine authoritative extract with provenance; pin revision, clause, effective dates and content hash. Do not bypass the managed proxy."
+      },
+      {
+        "priority": "P1",
+        "action": "Resolve the ID-specific evidence gaps and source conflicts; obtain official boundary/exception examples, monetary/unit conventions and rounding order for the selected complete contract."
+      },
+      {
+        "priority": "P1",
+        "action": "Bind selected contract and source hash to the actual implementation version; independently execute authoritative expected cases and complete competent technical review plus applicable obligation/lifecycle checks."
+      }
+    ],
+    "currentSourceVerificationCompleted": false,
+    "sourceAcceptanceCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "Provisional dependency proposal only: source-approved eligible score differentials -> applicable differential-level adjustments -> source-defined record window/selection -> average -> source-defined rounding, caps and any remaining committee/index adjustments. For a verified eligible 20-record branch only, candidate selection is lowest8 of most recent20.",
+    "applicability": {
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedYearOrPeriod": "UNKNOWN",
+      "selectedProviderOrInstitution": "UNKNOWN",
+      "exactChoicesRequired": "Adopting handicapping authority/institution and jurisdiction, complete adopted rule revision/effective dates, eligible scores, short histories, 9-hole branches, differential adjustments, selection, rounding, caps and committee powers"
+    },
+    "limits": [
+      "A single 18-hole differential 113/slope*(adjustedGrossScore-courseRating-PCC) is not a Handicap Index.",
+      "Do not label this a complete or verified WHS2024 algorithm. Full adopted authority, revision, eligibility, short record sets, 9-hole handling, exceptional-score rules, cap eligibility, rounding and committee powers remain unverified.",
+      "Upstream live R&A report suggests differential adjustments precede selection; its date/revision is unpinned and full USGA2024 text was blocked. Exact round/cap/order must be confirmed from complete version-bound rules.",
+      "Synthetic selective-adjustment witness establishes noncommutativity only; it does not authorize an adjustment magnitude or policy."
+    ],
+    "rounding": "UNKNOWN: no approved version-bound rounding policy; obtain selected authoritative rule and rounding order.",
+    "sourceEvidence": [
+      {
+        "url": "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+        "historicalObservation": {
+          "url": "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+          "webReference": "turn20view8",
+          "primaryOpenStatus": "BLOCKED_403",
+          "observedDate": null,
+          "observedVersion": "2024 in URL; no full content obtained",
+          "accessDate": "2026-10-25",
+          "applicabilityFinding": "Version-bound complete2024rules not verified by open."
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+          "catalogIds": [
+            527
+          ],
+          "observations": [
+            {
+              "url": "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+              "webReference": "turn20view8",
+              "primaryOpenStatus": "BLOCKED_403",
+              "observedDate": null,
+              "observedVersion": "2024 in URL; no full content obtained",
+              "accessDate": "2026-10-25",
+              "applicabilityFinding": "Version-bound complete2024rules not verified by open."
+            }
+          ],
+          "verificationClass": "BLOCKED_OR_SUBSTANTIVE_CONTENT_UNVERIFIED"
+        },
+        "knownRevision": "2024 in URL; no full content obtained",
+        "knownEffectivePeriod": "UNKNOWN",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      },
+      {
+        "url": "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm",
+        "historicalObservation": {
+          "url": "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm",
+          "webReference": "turn20view9",
+          "primaryOpenStatus": "BLOCKED_403",
+          "observedDate": null,
+          "observedVersion": null,
+          "accessDate": "2026-10-25",
+          "applicabilityFinding": "No primary page content read; prior indexed differential not enough to confirm entire rule revision."
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm",
+          "catalogIds": [
+            527
+          ],
+          "observations": [
+            {
+              "url": "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm",
+              "webReference": "turn20view9",
+              "primaryOpenStatus": "BLOCKED_403",
+              "observedDate": null,
+              "observedVersion": null,
+              "accessDate": "2026-10-25",
+              "applicabilityFinding": "No primary page content read; prior indexed differential not enough to confirm entire rule revision."
+            }
+          ],
+          "verificationClass": "BLOCKED_OR_SUBSTANTIVE_CONTENT_UNVERIFIED"
+        },
+        "knownRevision": "UNKNOWN",
+        "knownEffectivePeriod": "UNKNOWN",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      },
+      {
+        "url": "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5",
+        "historicalObservation": {
+          "url": "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5",
+          "webReference": "turn26view0",
+          "primaryOpenStatus": "CONTENT_READ",
+          "observedDate": null,
+          "observedVersion": "Live rule5; date/revision not visible",
+          "accessDate": "2026-10-25",
+          "applicabilityFinding": "Lowest8of20 with prior exceptional/committee adjustments, round nearest tenth, then caps. Live page mentions9hole pairing, so cannot assume this is2024revision; version mismatch remains unresolved."
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5",
+          "catalogIds": [
+            527
+          ],
+          "observations": [
+            {
+              "url": "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5",
+              "webReference": "turn26view0",
+              "primaryOpenStatus": "CONTENT_READ",
+              "observedDate": null,
+              "observedVersion": "Live rule5; date/revision not visible",
+              "accessDate": "2026-10-25",
+              "applicabilityFinding": "Lowest8of20 with prior exceptional/committee adjustments, round nearest tenth, then caps. Live page mentions9hole pairing, so cannot assume this is2024revision; version mismatch remains unresolved."
+            }
+          ],
+          "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+        },
+        "knownRevision": "Live rule5; date/revision not visible",
+        "knownEffectivePeriod": "UNKNOWN",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "historicalWitness": {
+        "method": "Python 3 decimal precision 50 / datetime calendar arithmetic",
+        "expression": "113/130*(85-72-0)",
+        "actual": "11.300000000000000000000000000000000000000000000000",
+        "registeredExpected": "11.3",
+        "kind": "SYNTHETIC_ARITHMETIC_WITNESS",
+        "tolerance": "0",
+        "result": "MATCH_WITHIN_BINARY_FLOAT_TOLERANCE",
+        "indexProduced": false
+      },
+      "scope": "Prior independent reference/synthetic arithmetic reproduction only; no actual TypeScript/production engine execution or source acceptance.",
+      "currentActualEngineExecuted": false,
+      "currentAuthoritativeExpectedCases": "UNKNOWN"
+    },
+    "implementationBinding": {
+      "approvedImplementationSha": "UNKNOWN",
+      "approvedCalculatorVersion": "UNKNOWN",
+      "rulePackRevision": "UNKNOWN",
+      "sourceHash": "UNKNOWN",
+      "historicalStaticComparison": {
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "finding": "Pinned sportsbatch1 provides running/swimming pace and cycling speed only. Running pace=time/distance is observed average, not Riegel prediction or handicap rules. Registry imports batch. No matching model found in inspected files; no exhaustive absence claim.",
+        "execution": "STATIC_SOURCE_INSPECTION_ONLY; no TypeScript engine tests executed",
+        "evidenceFile": "clinical-engine-evidence.json"
+      },
+      "currentActualEngineAcceptance": false
+    },
+    "remainingGaps": [
+      "Obtain the complete adopted handicapping authority/revision and clauses for eligible rounds, score adjustments, record selection, rounding, caps and committee actions. The unpinned live R&A report and blocked USGA2024 text cannot establish a full rule pack.",
+      "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+      "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+      "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified."
+    ],
+    "sourceReviewReady": false
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.randa.org/en/roh/the-rules-of-handicapping/rule-5",
+      "https://www.usga.org/content/dam/usga/pdf/2024-revision/2024-Rules-of-Handicapping-USGA.pdf",
+      "https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Python 3 decimal precision 50 / datetime calendar arithmetic",
+    "expression": "113/130*(85-72-0)",
+    "actual": "11.300000000000000000000000000000000000000000000000",
+    "registeredExpected": "11.3",
+    "kind": "SYNTHETIC_ARITHMETIC_WITNESS",
+    "tolerance": "0",
+    "result": "MATCH_WITHIN_BINARY_FLOAT_TOLERANCE",
+    "indexProduced": false
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Obtain the complete adopted handicapping authority/revision and clauses for eligible rounds, score adjustments, record selection, rounding, caps and committee actions. The unpinned live R&A report and blocked USGA2024 text cannot establish a full rule pack.",
+    "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+    "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+    "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

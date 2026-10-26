@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "masterId": 204,
+  "title": "Return Rate Impact Calculator",
+  "domain": "E-commerce & Marketing",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 204,
+    "title": "Return Rate Impact Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "Profit(q)=N*(P-C_sale)-N*q*(R+H_incremental+F_incremental-V_recovered); impact=Profit(q2)-Profit(q1).",
+    "units": "N cohort sales count; q fraction returned; P,C_sale,R,H,F,V currency per sale/return; profit and impact currency.",
+    "applicability": {
+      "candidateDomain": "N integer>=0; q in[0,1]; same recognition period; initial costs once; incremental return fees separate; recovery valuation basis explicit.",
+      "requiredChoices": [
+        "Approve the sale/return cost boundary and separate cash versus inventory reporting?",
+        "Which recovery valuation, refund/fee events and recognition period apply?"
+      ],
+      "selected": false
+    },
+    "limits": "q0/q1; N0; recovered inventory not cash revenue; original retained processing fee not added again; impact sign defined q2 minusq1.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "equation": "Profit(q)=N*(P-C_sale)-N*q*(R+H_incremental+F_incremental-V_recovered); impact=Profit(q2)-Profit(q1).",
+        "domainDefinitions": [
+          "N integer>=0, q in[0,1], consistent cohort and recognition period.",
+          "C_sale contains initial per-sale costs exactly once, including original processing fees if applicable. A retained original fee is not a new incremental return charge.",
+          "F_incremental contains only additional return-specific charges not in C_sale or H_incremental. Fee reversals are explicit signed adjustments, never invented.",
+          "V_recovered is separately valued inventory recovery, not cash revenue; gross recovery less separate H or net recovery without repeating the same costs. Accounting compliance remains unasserted."
+        ],
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://standards.aasb.gov.au/node/4589",
+            "title": "AASB 15 Appendix B - Application guidance, B20-B27",
+            "primaryOpenReference": "turn23view16",
+            "action": "OPENED_PRIMARY_URL",
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "checkedAt": "2026-10-25T20:01:59Z",
+            "effectivePeriod": null,
+            "lastUpdatedOrDocumentDate": null,
+            "publicationDate": null,
+            "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+            "finding": "Compilation label AASB15_12-14_ACOMPjun24_01-27 verified; its effective period NOT established. B20-B27 principles illustrative only.",
+            "fullRulePackVerified": false
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://standards.aasb.gov.au/node/4589",
+            "catalogIds": [
+              204
+            ],
+            "observations": [
+              {
+                "url": "https://standards.aasb.gov.au/node/4589",
+                "title": "AASB 15 Appendix B - Application guidance, B20-B27",
+                "primaryOpenReference": "turn23view16",
+                "action": "OPENED_PRIMARY_URL",
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "checkedAt": "2026-10-25T20:01:59Z",
+                "effectivePeriod": null,
+                "lastUpdatedOrDocumentDate": null,
+                "publicationDate": null,
+                "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+                "finding": "Compilation label AASB15_12-14_ACOMPjun24_01-27 verified; its effective period NOT established. B20-B27 principles illustrative only.",
+                "fullRulePackVerified": false
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "rate_change",
+          "expression": "(2000-100*F(\".2\")*35)-(2000-100*F(\".1\")*35)",
+          "expectedRational": "-350",
+          "actualRational": "-350",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "full_return_profit",
+          "expression": "100*(50-30)-100*(50+5+0-20)",
+          "expectedRational": "-1500",
+          "actualRational": "-1500",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "no_sales",
+          "expression": "0*(50-30)-0*F(\".2\")*35",
+          "expectedRational": "0",
+          "actualRational": "0",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/business/catalog-batch-1.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "f53c37d45aeb2a4b6ccf2c7c6d02501885d8ccd6",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "f53c37d45aeb2a4b6ccf2c7c6d02501885d8ccd6",
+            "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c",
+            "bytes": 5888,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Bounded family inspection finds acquisition-cost, recurring revenue, churn and conversion arithmetic. These components do not establish a complete approved CLV cohort contract or incremental return-cost accounting mapping."
+        },
+        {
+          "path": "src/calculators/business/catalog-batch-2.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "c4cbeaef3926a272486e3573ff56369b1e358c26",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "c4cbeaef3926a272486e3573ff56369b1e358c26",
+            "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0",
+            "bytes": 5535,
+            "observedIdLiterals": [],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Bounded family inspection includes ROAS, retention and other supplied business metrics. Retention ratio is not an inferred lifetime survival distribution; no catalog mapping approved."
+        },
+        {
+          "path": "src/calculators/launch-portfolio.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072,
+            "observedIdLiterals": [
+              "primary"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+            "bytes": 52072,
+            "observedIdLiterals": [
+              "primary"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/finance/net-worth.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+            "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57",
+            "bytes": 2945,
+            "observedIdLiterals": [
+              "finance.net-worth",
+              "net-worth",
+              "debt-assets"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+            "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57",
+            "bytes": 2945,
+            "observedIdLiterals": [
+              "finance.net-worth",
+              "net-worth",
+              "debt-assets"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/scenarios.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "8104271e70588344c724f9ad82f12c8b5175f6d2",
+            "sha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f",
+            "bytes": 2683,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "8104271e70588344c724f9ad82f12c8b5175f6d2",
+            "sha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f",
+            "bytes": 2683,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/registry.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+            "bytes": 21186,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5",
+            "bytes": 21186,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "Listed family/registry/support candidate inspected as a possible reusable component; no catalog-ID-to-approved-contract mapping established. Historical bounded findings retained separately."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        }
+      ],
+      "historicalInspection": {
+        "repository": "subvicco12/calcumint.com",
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "action": "FETCHED_BASELINE_SOURCE_AND_INSPECTED_CONTRACT",
+        "files": [
+          {
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "blobSha": "f53c37d45aeb2a4b6ccf2c7c6d02501885d8ccd6",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/business/catalog-batch-1.ts",
+            "contentSha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c"
+          },
+          {
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "blobSha": "c4cbeaef3926a272486e3573ff56369b1e358c26",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/business/catalog-batch-2.ts",
+            "contentSha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0"
+          },
+          {
+            "path": "src/calculators/launch-portfolio.ts",
+            "blobSha": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/launch-portfolio.ts",
+            "contentSha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+          },
+          {
+            "path": "src/calculators/finance/net-worth.ts",
+            "blobSha": "f3d24edaf56837554fc44a0d31a582a5f2093820",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/net-worth.ts",
+            "contentSha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57"
+          },
+          {
+            "path": "src/calculators/scenarios.ts",
+            "blobSha": "8104271e70588344c724f9ad82f12c8b5175f6d2",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/scenarios.ts",
+            "contentSha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f"
+          },
+          {
+            "path": "src/calculators/registry.ts",
+            "blobSha": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/registry.ts",
+            "contentSha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+          }
+        ],
+        "finding": "Business batch1/2 implement acquisition cost, recurring revenue, churn/retention and ratios; no finite-cohort CLV or provider schedule in inspected files. Launch margin accepts supplied revenue-cost only. Net-worth sums nonnegative assets/liabilities and rounds currency2 decimals; compareScenarios invokes a caller-supplied calculate function, not the missing domain model.",
+        "limitations": "Bounded inspection of listed files; no whole-repository absence claim, no baseline TypeScript suite execution or approved mapping."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": false,
+      "originalCandidate": "Profit(q)=N*(P-C)-N*q*(refundPerReturn+returnHandling+nonrefundableFee-recoveredInventoryValue); impact=Profit(q2)-Profit(q1)",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://standards.aasb.gov.au/node/4589"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "masterId": 204,
+    "expression": "(2000-100*0.2*35)-(2000-100*0.1*35)",
+    "actual": "-350.0",
+    "expected": "-350",
+    "pass_": true
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

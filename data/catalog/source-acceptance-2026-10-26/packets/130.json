@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "masterId": 130,
+  "title": "Self-Employment Tax Calculator",
+  "domain": "Tax & Payroll",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/tax-other-23.json",
+    "laneSHA256": "eb29178eca32868d6b43c9c120f33d3a0c3a6fc1c36a83b4ea59421000f1944e"
+  },
+  "analysis": {
+    "masterId": 130,
+    "title": "Self-Employment Tax Calculator",
+    "riskDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "qualifiedExternalReviewRequired": false,
+    "status": "BLOCKED_AUTHORITATIVE_SOURCE_AND_CONTRACT_CHOICES",
+    "currentCandidateFormula": "SelfEmploymentContribution=selectedContributionRules(netEarnings,otherEmployment,thresholds,caps)",
+    "candidateStatus": "PROPOSED_NOT_SELECTED_OR_ACCEPTED",
+    "units": "currency/tax-year",
+    "currentCandidateContract": {
+      "proposedEquation": "SelfEmploymentContribution=selectedContributionRules(netEarnings,otherEmployment,thresholds,caps)",
+      "units": "currency/tax-year",
+      "domainAndBoundaryFinding": "Finite monetary inputs, explicit shared period/currency and rounding stage required; synthetic example tests only stated arithmetic.",
+      "rounding": "Decimal precision40, exact comparison before rounding. No jurisdiction monetary rounding policy approved; round-half-up1.005->1.01 is illustrative only.",
+      "proposedContractRevisions": []
+    },
+    "exactChoicesRequired": "Jurisdiction/tax year, self-employment status, net earnings definition, other employment, contribution class, thresholds, caps and deductible treatment",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedYearOrPeriod": "UNKNOWN",
+    "selectedProviderOrInstitution": "UNKNOWN",
+    "remainingOwnerAndContractChoices": [
+      "Employment status, net earnings base, social contributions and deductions.",
+      "Jurisdiction/effective rule pack and qualified reviewer approval remain unselected."
+    ],
+    "proposalCorrection": "NONE_RECORDED",
+    "priorityUnblockActions": [
+      {
+        "priority": "P0",
+        "action": "Owner selects and documents: Jurisdiction/tax year, self-employment status, net earnings definition, other employment, contribution class, thresholds, caps and deductible treatment. No inferred defaults or silent scope narrowing."
+      },
+      {
+        "priority": "P0",
+        "action": "Obtain complete authoritative source content through approved access after owner reviews/publishes the centrally saved narrow public-source allowlist draft, or supply a genuine authoritative extract with provenance; pin revision, clause, effective dates and content hash. Do not bypass the managed proxy."
+      },
+      {
+        "priority": "P1",
+        "action": "Resolve the ID-specific evidence gaps and source conflicts; obtain official boundary/exception examples, monetary/unit conventions and rounding order for the selected complete contract."
+      },
+      {
+        "priority": "P1",
+        "action": "Bind selected contract and source hash to the actual implementation version; independently execute authoritative expected cases and complete competent technical review plus applicable obligation/lifecycle checks."
+      }
+    ],
+    "currentSourceVerificationCompleted": false,
+    "sourceAcceptanceCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "SelfEmploymentContribution=selectedContributionRules(netEarnings,otherEmployment,thresholds,caps)",
+    "applicability": {
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedYearOrPeriod": "UNKNOWN",
+      "selectedProviderOrInstitution": "UNKNOWN",
+      "exactChoicesRequired": "Jurisdiction/tax year, self-employment status, net earnings definition, other employment, contribution class, thresholds, caps and deductible treatment"
+    },
+    "limits": "Finite monetary inputs, explicit shared period/currency and rounding stage required; synthetic example tests only stated arithmetic.",
+    "rounding": "Decimal precision40, exact comparison before rounding. No jurisdiction monetary rounding policy approved; round-half-up1.005->1.01 is illustrative only.",
+    "sourceEvidence": [
+      {
+        "url": "https://www.gov.uk/self-employed-national-insurance-rates",
+        "historicalObservation": {
+          "url": "https://www.gov.uk/self-employed-national-insurance-rates",
+          "title": "Self-employed National Insurance rates",
+          "primaryOpenReference": "turn23view9",
+          "action": "OPENED_PRIMARY_URL",
+          "result": "RETRIEVED_PRIMARY_PAGE",
+          "checkedAt": "2026-10-25T20:01:59Z",
+          "effectivePeriod": "2026-2027 tax year",
+          "lastUpdatedOrDocumentDate": null,
+          "publicationDate": null,
+          "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+          "finding": "Class 2/4 distinction; not a general income-tax calculation.",
+          "fullRulePackVerified": false
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://www.gov.uk/self-employed-national-insurance-rates",
+          "catalogIds": [
+            130,
+            131
+          ],
+          "observations": [
+            {
+              "url": "https://www.gov.uk/self-employed-national-insurance-rates",
+              "title": "Self-employed National Insurance rates",
+              "primaryOpenReference": "turn23view9",
+              "action": "OPENED_PRIMARY_URL",
+              "result": "RETRIEVED_PRIMARY_PAGE",
+              "checkedAt": "2026-10-25T20:01:59Z",
+              "effectivePeriod": "2026-2027 tax year",
+              "lastUpdatedOrDocumentDate": null,
+              "publicationDate": null,
+              "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+              "finding": "Class 2/4 distinction; not a general income-tax calculation.",
+              "fullRulePackVerified": false
+            }
+          ],
+          "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+        },
+        "knownRevision": "UNKNOWN",
+        "knownEffectivePeriod": "2026-2027 tax year",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "historicalWitness": {
+        "masterId": 130,
+        "expression": "10000*0.1",
+        "actual": "1000.0",
+        "expected": "1000",
+        "pass_": true
+      },
+      "scope": "Prior independent reference/synthetic arithmetic reproduction only; no actual TypeScript/production engine execution or source acceptance.",
+      "currentActualEngineExecuted": false,
+      "currentAuthoritativeExpectedCases": "UNKNOWN"
+    },
+    "implementationBinding": {
+      "approvedImplementationSha": "UNKNOWN",
+      "approvedCalculatorVersion": "UNKNOWN",
+      "rulePackRevision": "UNKNOWN",
+      "sourceHash": "UNKNOWN",
+      "historicalStaticComparison": {
+        "repository": "subvicco12/calcumint.com",
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "action": "FETCHED_BASELINE_SOURCE_AND_INSPECTED_CONTRACT",
+        "files": [
+          {
+            "path": "src/calculators/rule-packs.ts",
+            "blobSha": "ff4bf90d1f749ffb554c472c68aeb5fe46c2a950",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/rule-packs.ts",
+            "contentSha256": "bf0b86932af7764777b1ebd0a66d475bd1e47918e4717e50d19ecfd478e8b628"
+          },
+          {
+            "path": "src/calculators/core/percentage.ts",
+            "blobSha": "ae31ae86ff2649fb1c0d0af61c6cf07340dcbfbd",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/core/percentage.ts",
+            "contentSha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc"
+          },
+          {
+            "path": "src/calculators/registry.ts",
+            "blobSha": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/registry.ts",
+            "contentSha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+          }
+        ],
+        "finding": "rule-packs.ts registers dated metadata; it contains no tax evaluation function/rates. percentageCalculator uses percentage points /100 and rounds12 decimals, not a jurisdiction rule pack. No tax engine slug bound in baseline record.",
+        "limitations": "Bounded inspection of listed files; no whole-repository absence claim, no baseline TypeScript suite execution or approved mapping."
+      },
+      "currentActualEngineAcceptance": false
+    },
+    "remainingGaps": [
+      "Select jurisdiction/year, employment status, net-earnings base, social contributions and deductions with complete official eligibility/ceiling/boundary rules.",
+      "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+      "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+      "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified."
+    ],
+    "sourceReviewReady": false
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.gov.uk/self-employed-national-insurance-rates"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "masterId": 130,
+    "expression": "10000*0.1",
+    "actual": "1000.0",
+    "expected": "1000",
+    "pass_": true
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Select jurisdiction/year, employment status, net-earnings base, social contributions and deductions with complete official eligibility/ceiling/boundary rules.",
+    "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+    "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+    "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

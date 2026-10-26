@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "masterId": 82,
+  "title": "Retirement Age Calculator",
+  "domain": "Retirement & Financial Independence",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 82,
+    "title": "Retirement Age Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "n*=min{n in [0,H]: projectedBalance(n)>=approvedTarget(n)}",
+    "units": "Projected balance and target same currency/basis; n and H integer projection intervals; age offset needs selected interval conversion.",
+    "applicability": {
+      "candidateDomain": "Finite integer H>=0; search all n=0..H inclusive; no assumption target is monotonic; target and projection remain separate unapproved subcontracts.",
+      "requiredChoices": [
+        "Target corpus model, contribution/return timing and no-solution handling.",
+        "Nonmonotonic targets need full scan; report none within horizon rather than guaranteed age."
+      ],
+      "selected": false
+    },
+    "limits": "Already at target gives0; target first reached atH; none withinH yields no-solution; nonmonotonic target cannot use an unjustified binary search.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "equation": "n*=min{n in [0,H]: projectedBalance(n)>=approvedTarget(n)}",
+        "unitsAssessment": "Dimensionally consistent conditional cash arithmetic; income/spending and rates require matched periods; return outputs fractions vs percent explicitly distinguished.",
+        "domainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+        "roundingAssessment": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+        "exclusions": [
+          "Nonmonotonic targets need full scan; report none within horizon rather than guaranteed age.",
+          "Target corpus model, contribution/return timing and no-solution handling."
+        ]
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "retrieved": true,
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "title": "Savings Goal Calculator",
+            "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+            "observedDateVersion": "No publication/effective date established from retrieved content",
+            "browseEvidenceId": "turn21view10",
+            "limitations": "SEC education; savings inputs, not normative retirement target; retrieval does not establish current governing revision or endorse proposed formula.",
+            "error": null
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "catalogIds": [
+              81,
+              82,
+              88
+            ],
+            "observations": [
+              {
+                "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+                "retrieved": true,
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "title": "Savings Goal Calculator",
+                "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+                "observedDateVersion": "No publication/effective date established from retrieved content",
+                "browseEvidenceId": "turn21view10",
+                "limitations": "SEC education; savings inputs, not normative retirement target; retrieval does not establish current governing revision or endorse proposed formula.",
+                "error": null
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "first_crossing",
+          "expression": "next(n for n in range(6) if 100+10*n>=130)",
+          "expectedRational": "3",
+          "actualRational": "3",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "already_met",
+          "expression": "next(n for n in range(6) if 150>=130)",
+          "expectedRational": "0",
+          "actualRational": "0",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "none_in_horizon",
+          "expression": "next((n for n in range(3) if 100+10*n>=130),None)",
+          "expectedRational": null,
+          "actualRational": null,
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/finance/savings-goal.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+            "sha256": "9edbe2a841d15318a22917e1c8f27739951c7d926740070825c2dceb0439d7ea",
+            "bytes": 5270,
+            "observedIdLiterals": [
+              "finance.savings-goal",
+              "future-value",
+              "required-contribution",
+              "target-monthly-savings"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+            "sha256": "9edbe2a841d15318a22917e1c8f27739951c7d926740070825c2dceb0439d7ea",
+            "bytes": 5270,
+            "observedIdLiterals": [
+              "finance.savings-goal",
+              "future-value",
+              "required-contribution",
+              "target-monthly-savings"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "savingsFutureValue uses annualPercent/100/12 and end-month contributions; helper accepts months>=1; wrapper targetReached uses fv+0.005>=target and rounds money2dp. It is not an exact integer retirement-age search or institution/account policy."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        }
+      ],
+      "historicalInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/savings-goal.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+            "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+            "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": true,
+      "originalCandidate": "n*=min{n in [0,H]: projectedBalance(n)>=approvedTarget(n)}",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "(D(130)-100)/10",
+    "actual": "3",
+    "expected": "3",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

@@ -1,0 +1,9 @@
+# Source-based acceptance evidence
+
+Execute the59potential source-review cases from governancePR1481d1e9f7a with actual per-ID packets, independently reproducible numerical evidence and a70-row readiness register. Prioritize22bounded routes; parallelize37official-rule/model gaps; retain11qualified cases unchanged. No calculator mathematics, risk/source approvals, lifecycle, catalog, ledger or historical output edits.
+
+Current official HTTPS access is denied by the managed proxy. The supported narrow source-host allowlist draft has been saved for environment review/publication; it does not activate access. Continue local contract/units/rounding/numerical/source-binding analysis. Do not use alternative proxies, GitHub fetch relays or mirror a blocked official page. No source can become verified solely because a URL downloads successfully or a historical report says it was read.
+
+Each59packet must identify exact source URLs and known versus unknown revisions/effective dates; proposed formula/units/domain/limits/rounding; independent goldens and their scope; exact implementation binding or its gap; applicability/obligation choices and next action. A full70register references immutable prior evidence and retains qualified cases. Completeness requires substantive current source and applicability review, selected complete contract, approved rounding, version-bound implementation, independent actual-engine cases, obligation screening and independent review; absent evidence fails closed. Candidate arithmetic is progress but not certification readiness.
+
+Implement only independently demonstrated engine/integration defects; otherwise remain evidence-only. Add useful protected acquisition/replay tooling where needed, integrity/negative tests, independent review and exact-head CI. No certification/publication under an unadopted policy. RELEASE HOLD.

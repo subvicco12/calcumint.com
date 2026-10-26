@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "masterId": 198,
+  "title": "Marketplace Fee Calculator",
+  "domain": "E-commerce & Marketing",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/tax-other-23.json",
+    "laneSHA256": "eb29178eca32868d6b43c9c120f33d3a0c3a6fc1c36a83b4ea59421000f1944e"
+  },
+  "analysis": {
+    "masterId": 198,
+    "title": "Marketplace Fee Calculator",
+    "riskDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "qualifiedExternalReviewRequired": false,
+    "status": "BLOCKED_AUTHORITATIVE_SOURCE_AND_CONTRACT_CHOICES",
+    "currentCandidateFormula": "Profit=G-F-R+K-C_goods-C_fulfillment-C_other.",
+    "candidateStatus": "PROPOSED_NOT_SELECTED_OR_ACCEPTED",
+    "units": "currency/reporting-period; disjoint receipt, refund, gross-fee, eligible-credit and cost components in one currency",
+    "currentCandidateContract": {
+      "equation": "Profit=G-F-R+K-C_goods-C_fulfillment-C_other.",
+      "domainDefinitions": [
+        "G is gross receipts before refunds R; F is gross assessed fees before separate eligible fee credits K.",
+        "Choose a single gross or net convention; net receipts/fees cannot be debited/credited again. Each component appears once.",
+        "Platform, country, currency, account tier, schedule/effective date and fee-specific eligible bases remain unselected; Etsy evidence cannot establish a universal marketplace policy."
+      ],
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    "exactChoicesRequired": "Marketplace provider UNKNOWN/unselected, seller country, reporting currency, account tier, schedule revision/effective date, each fee-specific base and gross/net refund-credit convention",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedYearOrPeriod": "UNKNOWN",
+    "selectedProviderOrInstitution": "UNKNOWN",
+    "remainingOwnerAndContractChoices": [
+      "Which marketplace and effective schedule are selected?",
+      "Which refund/credit events and gross/net inputs are supplied versus derived by each rule?"
+    ],
+    "proposalCorrection": {
+      "equation": "Profit=G-F-R+K-C_goods-C_fulfillment-C_other.",
+      "definitions": [
+        "G is gross receipts before refunds R; F is gross assessed fees before separate eligible fee credits K.",
+        "Choose a single gross or net convention; net receipts/fees cannot be debited/credited again. Each component appears once.",
+        "Platform, country, currency, account tier, schedule/effective date and fee-specific eligible bases remain unselected; Etsy evidence cannot establish a universal marketplace policy."
+      ],
+      "questions": [
+        "Which marketplace and effective schedule are selected?",
+        "Which refund/credit events and gross/net inputs are supplied versus derived by each rule?"
+      ],
+      "evidence": "G100,F12,R20,K2,goods40:30; equivalent net receipts80 and net fees10 also give30 without an extra refund or credit.",
+      "status": "CORRECTED_PROPOSAL_ONLY_PENDING_QUALIFIED_REVIEW",
+      "sourceBasis": [
+        "https://www.etsy.com/legal/fees/"
+      ],
+      "authority": "ENGINEERING_ARITHMETIC_AND_CONTRACT_CLARITY_ONLY"
+    },
+    "priorityUnblockActions": [
+      {
+        "priority": "P0",
+        "action": "Owner selects and documents: Marketplace provider UNKNOWN/unselected, seller country, reporting currency, account tier, schedule revision/effective date, each fee-specific base and gross/net refund-credit convention. No inferred defaults or silent scope narrowing."
+      },
+      {
+        "priority": "P0",
+        "action": "Obtain complete authoritative source content through approved access after owner reviews/publishes the centrally saved narrow public-source allowlist draft, or supply a genuine authoritative extract with provenance; pin revision, clause, effective dates and content hash. Do not bypass the managed proxy."
+      },
+      {
+        "priority": "P1",
+        "action": "Resolve the ID-specific evidence gaps and source conflicts; obtain official boundary/exception examples, monetary/unit conventions and rounding order for the selected complete contract."
+      },
+      {
+        "priority": "P1",
+        "action": "Bind selected contract and source hash to the actual implementation version; independently execute authoritative expected cases and complete competent technical review plus applicable obligation/lifecycle checks."
+      }
+    ],
+    "currentSourceVerificationCompleted": false,
+    "sourceAcceptanceCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "Profit=G-F-R+K-C_goods-C_fulfillment-C_other.",
+    "applicability": {
+      "selectedJurisdiction": "UNKNOWN",
+      "selectedYearOrPeriod": "UNKNOWN",
+      "selectedProviderOrInstitution": "UNKNOWN",
+      "exactChoicesRequired": "Marketplace provider UNKNOWN/unselected, seller country, reporting currency, account tier, schedule revision/effective date, each fee-specific base and gross/net refund-credit convention"
+    },
+    "limits": [
+      "G is gross receipts before refunds R; F is gross assessed fees before separate eligible fee credits K.",
+      "Choose a single gross or net convention; net receipts/fees cannot be debited/credited again. Each component appears once.",
+      "Platform, country, currency, account tier, schedule/effective date and fee-specific eligible bases remain unselected; Etsy evidence cannot establish a universal marketplace policy."
+    ],
+    "rounding": "UNKNOWN: no approved version-bound rounding policy; obtain selected authoritative rule and rounding order.",
+    "sourceEvidence": [
+      {
+        "url": "https://www.etsy.com/legal/fees/",
+        "historicalObservation": {
+          "url": "https://www.etsy.com/legal/fees/",
+          "title": "Fees & Payments Policy",
+          "primaryOpenReference": "turn23view14",
+          "action": "OPENED_PRIMARY_URL",
+          "result": "RETRIEVED_PRIMARY_PAGE",
+          "checkedAt": "2026-10-25T20:01:59Z",
+          "effectivePeriod": null,
+          "lastUpdatedOrDocumentDate": "2026-10-05",
+          "publicationDate": null,
+          "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+          "finding": "Last-update date verified, not an effective-date assertion. Country/account conditions unselected.",
+          "fullRulePackVerified": false
+        },
+        "upstream55RetrievalReport": {
+          "url": "https://www.etsy.com/legal/fees/",
+          "catalogIds": [
+            198,
+            199
+          ],
+          "observations": [
+            {
+              "url": "https://www.etsy.com/legal/fees/",
+              "title": "Fees & Payments Policy",
+              "primaryOpenReference": "turn23view14",
+              "action": "OPENED_PRIMARY_URL",
+              "result": "RETRIEVED_PRIMARY_PAGE",
+              "checkedAt": "2026-10-25T20:01:59Z",
+              "effectivePeriod": null,
+              "lastUpdatedOrDocumentDate": "2026-10-05",
+              "publicationDate": null,
+              "applicability": "UNSELECTED_ILLUSTRATIVE_NOT_APPROVED",
+              "finding": "Last-update date verified, not an effective-date assertion. Country/account conditions unselected.",
+              "fullRulePackVerified": false
+            }
+          ],
+          "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+        },
+        "knownRevision": "2026-10-05",
+        "knownEffectivePeriod": "UNKNOWN",
+        "selectedApplicableRevision": "UNKNOWN",
+        "selectedEffectiveFrom": "UNKNOWN",
+        "selectedEffectiveTo": "UNKNOWN",
+        "currentVerification": "NOT_PERFORMED_PROXY_ACCESS_UNAVAILABLE",
+        "fullAuthoritativeTextLocallyAvailable": false,
+        "localEvidenceType": "Historical retrieval report only; this record does not contain an authoritative full-text extract."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "historicalWitness": {
+        "masterId": 198,
+        "expression": "100-(100*0.1+1)-40",
+        "actual": "49.0",
+        "expected": "49",
+        "pass_": true
+      },
+      "scope": "Prior independent reference/synthetic arithmetic reproduction only; no actual TypeScript/production engine execution or source acceptance.",
+      "currentActualEngineExecuted": false,
+      "currentAuthoritativeExpectedCases": "UNKNOWN"
+    },
+    "implementationBinding": {
+      "approvedImplementationSha": "UNKNOWN",
+      "approvedCalculatorVersion": "UNKNOWN",
+      "rulePackRevision": "UNKNOWN",
+      "sourceHash": "UNKNOWN",
+      "historicalStaticComparison": {
+        "repository": "subvicco12/calcumint.com",
+        "baselineSha": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+        "action": "FETCHED_BASELINE_SOURCE_AND_INSPECTED_CONTRACT",
+        "files": [
+          {
+            "path": "src/calculators/business/catalog-batch-1.ts",
+            "blobSha": "f53c37d45aeb2a4b6ccf2c7c6d02501885d8ccd6",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/business/catalog-batch-1.ts",
+            "contentSha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c"
+          },
+          {
+            "path": "src/calculators/business/catalog-batch-2.ts",
+            "blobSha": "c4cbeaef3926a272486e3573ff56369b1e358c26",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/business/catalog-batch-2.ts",
+            "contentSha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0"
+          },
+          {
+            "path": "src/calculators/launch-portfolio.ts",
+            "blobSha": "ca42438b0193ca6ecc205f4bbab748eef0772881",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/launch-portfolio.ts",
+            "contentSha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+          },
+          {
+            "path": "src/calculators/registry.ts",
+            "blobSha": "402358a2e5dfba14decdeb0a623c09ad7e73a674",
+            "displayUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/registry.ts",
+            "contentSha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+          }
+        ],
+        "finding": "Business batch1/2 implement acquisition cost, recurring revenue, churn/retention and ratios; no finite-cohort CLV or provider schedule in inspected files. Launch margin accepts supplied revenue-cost only.",
+        "limitations": "Bounded inspection of listed files; no whole-repository absence claim, no baseline TypeScript suite execution or approved mapping."
+      },
+      "currentActualEngineAcceptance": false
+    },
+    "remainingGaps": [
+      "Select the actual marketplace, country, currency, tier and complete current fee/refund/credit schedule. The corrected gross/net proposal does not allow Etsy rules to stand in for an unspecified marketplace.",
+      "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+      "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+      "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified."
+    ],
+    "sourceReviewReady": false
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.etsy.com/legal/fees/"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "masterId": 198,
+    "expression": "100-(100*0.1+1)-40",
+    "actual": "49.0",
+    "expected": "49",
+    "pass_": true
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Select the actual marketplace, country, currency, tier and complete current fee/refund/credit schedule. The corrected gross/net proposal does not allow Etsy rules to stand in for an unspecified marketplace.",
+    "Complete source clauses and immutable content hash, selected applicability, boundary/exception expected cases and prescribed rounding are not established by historical retrieval reports.",
+    "Exact implementation version/mapping and independent actual-engine comparison remain unbound; historical arithmetic witness is not acceptance.",
+    "Applicable legal/regulatory/contractual obligations and harm screening remain UNKNOWN; escalate if interpretation or mandated review is identified.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

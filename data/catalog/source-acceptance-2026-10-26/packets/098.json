@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "masterId": 98,
+  "title": "Traditional IRA Calculator",
+  "domain": "Retirement & Financial Independence",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/finance-14.json",
+    "laneSHA256": "e1a9e3f857350d36d6ecd7579fcbeee1d20ba037d6031da7b9795ccf94817dbc"
+  },
+  "analysis": {
+    "masterId": 98,
+    "title": "Traditional IRA Calculator",
+    "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+    "proposedFormula": "B_next=B*(1+r)+allowedTraditionalContribution-fees-distributions; deductibleAmount=yearRule(inputs)",
+    "formulaSelected": false,
+    "domainAndUnits": "Balance/contributions/fees/distributions currency; r fraction per period >-1; allowed contribution and deductible amount are distinct currency quantities; year/coverage/income/basis rules UNKNOWN.",
+    "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+    "officialSources": [
+      {
+        "officialUrl": "https://www.irs.gov/publications/p590a",
+        "title": "Publication 590-A (2025), Contributions to IRAs",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "2025 tax-year edition",
+        "historicalRevisionNote": "2025 tax-year edition",
+        "historicalEvidenceId": "turn21view12",
+        "historicalScopeLimit": "US 2025 contribution/deduction rules; not a 2026 rule pack; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      },
+      {
+        "officialUrl": "https://www.irs.gov/publications/p590b",
+        "title": "Publication 590-B (2025), Distributions from IRAs",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+        "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+        "historicalEvidenceId": "turn21view13",
+        "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      },
+      {
+        "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+        "title": "Compound Interest Calculator",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "UNKNOWN",
+        "historicalRevisionNote": "No publication/effective date established from retrieved content",
+        "historicalEvidenceId": "turn21view9",
+        "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "requiredSourceClausesAndCases": "Selected-year 590-A contribution permission versus deduction phase-out clauses by compensation, filing status and plan coverage; 590-B basis and distribution taxation clauses; official phase-out/basis boundary examples. Do not infer deduction from contribution permission.",
+    "preciseEvidenceGap": "Select tax year and obtain Traditional IRA contribution eligibility, deductibility/plan coverage, basis and distribution rules. Deductibility must not be confused with permission to contribute.",
+    "unresolvedOwnerAndProductChoices": [
+      "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+      "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing."
+    ],
+    "historicalOutstandingDecisions": [
+      "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+      "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing."
+    ],
+    "scopeJurisdictionAndLegalContractAmbiguity": "US historical source scope only; owner tax year, filing status, compensation/MAGI, workplace coverage and nondeductible basis; edition/effective period UNKNOWN.",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedCurrency": "UNKNOWN",
+    "selectedEffectivePeriod": {
+      "from": "UNKNOWN",
+      "to": "UNKNOWN"
+    },
+    "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+    "priorIndependentWitness": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[98]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "D(1000)+100",
+        "actual": "1100",
+        "expected": "1100",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "engineBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/savings-goal.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+            "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+            "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+    "sourceReviewCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "B_next=B*(1+r)+allowedTraditionalContribution-fees-distributions; deductibleAmount=yearRule(inputs)",
+    "units": "Balance/contributions/fees/distributions currency; r fraction per period >-1; allowed contribution and deductible amount are distinct currency quantities; year/coverage/income/basis rules UNKNOWN.",
+    "applicability": "US historical source scope only; owner tax year, filing status, compensation/MAGI, workplace coverage and nondeductible basis; edition/effective period UNKNOWN.",
+    "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "sourceEvidence": [
+      {
+        "officialUrl": "https://www.irs.gov/publications/p590a",
+        "title": "Publication 590-A (2025), Contributions to IRAs",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "2025 tax-year edition",
+        "historicalRevisionNote": "2025 tax-year edition",
+        "historicalEvidenceId": "turn21view12",
+        "historicalScopeLimit": "US 2025 contribution/deduction rules; not a 2026 rule pack; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      },
+      {
+        "officialUrl": "https://www.irs.gov/publications/p590b",
+        "title": "Publication 590-B (2025), Distributions from IRAs",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "2025 tax-year edition; includes2026 examples",
+        "historicalRevisionNote": "2025 tax-year edition; includes2026 examples",
+        "historicalEvidenceId": "turn21view13",
+        "historicalScopeLimit": "US IRA distribution rules; beneficiary/owner/table exceptions required; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      },
+      {
+        "officialUrl": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+        "title": "Compound Interest Calculator",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "UNKNOWN",
+        "historicalRevisionNote": "No publication/effective date established from retrieved content",
+        "historicalEvidenceId": "turn21view9",
+        "historicalScopeLimit": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "independentNumericalEvidence": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[98]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "D(1000)+100",
+        "actual": "1100",
+        "expected": "1100",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "implementationBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/savings-goal.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "9c2c48b2857b3cc0f4d3a13f7b0de1c237ff7b08ce403feea0ad7d702560430c",
+            "observation": "End-month contributions; nominal annual percent/12; finite domain, months1..1200, money outputs2dp and target tolerance0.005. Not account tax or retirement-target policy.",
+            "githubBlobSha": "cd07a175cc5399e8e1fe47a18ef70acee5dc269e",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/savings-goal.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "remainingGaps": [
+      "Select tax year and obtain Traditional IRA contribution eligibility, deductibility/plan coverage, basis and distribution rules. Deductibility must not be confused with permission to contribute.",
+      "Selected-year 590-A contribution permission versus deduction phase-out clauses by compensation, filing status and plan coverage; 590-B basis and distribution taxation clauses; official phase-out/basis boundary examples. Do not infer deduction from contribution permission.",
+      "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+      "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing."
+    ]
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+      "https://www.irs.gov/publications/p590a",
+      "https://www.irs.gov/publications/p590b"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(1000)+100",
+    "actual": "1100",
+    "expected": "1100",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Select tax year and obtain Traditional IRA contribution eligibility, deductibility/plan coverage, basis and distribution rules. Deductibility must not be confused with permission to contribute.",
+    "Selected-year 590-A contribution permission versus deduction phase-out clauses by compensation, filing status and plan coverage; 590-B basis and distribution taxation clauses; official phase-out/basis boundary examples. Do not infer deduction from contribution permission.",
+    "Deductibility, income/plan coverage, contribution caps and distribution taxation.",
+    "Contribution permission differs from deductibility; year, coverage, basis and distribution rules missing.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

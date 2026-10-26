@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "masterId": 32,
+  "title": "Rent vs Buy Calculator",
+  "domain": "Mortgage & Property Finance",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 32,
+    "title": "Rent vs Buy Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "PVcost_s=sum_t(outflow_s,t-inflow_s,t)/(1+d)^t; delta=PVcost_buy-PVcost_rent",
+    "units": "Currency at valuation date; d a fractional discount rate per cash-flow interval; t intervals.",
+    "applicability": {
+      "candidateDomain": "Finite horizon, d>-1; end/start timing, loan inflow, down payment, tax treatment, sale costs and terminal debt all selected explicitly.",
+      "requiredChoices": [
+        "Discounting, tax treatment, financing, maintenance and terminal-sale inclusions.",
+        "Cash-flow accounting proposal only; no official universal rent-buy method selected."
+      ],
+      "selected": false
+    },
+    "limits": "d=0; d=-1 invalid; negative net costs permissible; matched horizons; a terminal sale is an inflow, and residual debt reduces proceeds.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "equation": "PVcost_s=sum_t(outflow_s,t-inflow_s,t)/(1+d)^t; delta=PVcost_buy-PVcost_rent",
+        "unitsAssessment": "Dimensionally consistent conditional cash arithmetic; income/spending and rates require matched periods; return outputs fractions vs percent explicitly distinguished.",
+        "domainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+        "roundingAssessment": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+        "exclusions": [
+          "Cash-flow accounting proposal only; no official universal rent-buy method selected.",
+          "Discounting, tax treatment, financing, maintenance and terminal-sale inclusions."
+        ]
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+            "retrieved": true,
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "title": "Regulation Z section 1026.38 Closing Disclosure",
+            "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+            "observedDateVersion": "No publication/effective date established from retrieved content",
+            "browseEvidenceId": "turn21view5",
+            "limitations": "US covered mortgage disclosure classifications, not global tax schedule; retrieval does not establish current governing revision or endorse proposed formula.",
+            "error": null
+          },
+          {
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+            "retrieved": true,
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "title": "Compound Interest Calculator",
+            "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+            "observedDateVersion": "No publication/effective date established from retrieved content",
+            "browseEvidenceId": "turn21view9",
+            "limitations": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+            "error": null
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+            "catalogIds": [
+              32,
+              35,
+              46
+            ],
+            "observations": [
+              {
+                "url": "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+                "retrieved": true,
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "title": "Regulation Z section 1026.38 Closing Disclosure",
+                "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+                "observedDateVersion": "No publication/effective date established from retrieved content",
+                "browseEvidenceId": "turn21view5",
+                "limitations": "US covered mortgage disclosure classifications, not global tax schedule; retrieval does not establish current governing revision or endorse proposed formula.",
+                "error": null
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          },
+          {
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+            "catalogIds": [
+              32,
+              43,
+              48,
+              49,
+              80,
+              81,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              97,
+              98,
+              472
+            ],
+            "observations": [
+              {
+                "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+                "retrieved": true,
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "title": "Compound Interest Calculator",
+                "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+                "observedDateVersion": "No publication/effective date established from retrieved content",
+                "browseEvidenceId": "turn21view9",
+                "limitations": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+                "error": null
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "discounted_terminal",
+          "expression": "1000+(220-110)/F(\"1.1\")-100/F(\"1.1\")",
+          "expectedRational": "11100/11",
+          "actualRational": "11100/11",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "zero_discount",
+          "expression": "(120-80)-50",
+          "expectedRational": "-10",
+          "actualRational": "-10",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "equal_flows",
+          "expression": "100/F(\"1.1\")-100/F(\"1.1\")",
+          "expectedRational": "0",
+          "actualRational": "0",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/finance/investment-math.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "d6dbe27e676b3b314c3601ca6c0084b87d86b11d",
+            "sha256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e",
+            "bytes": 4752,
+            "observedIdLiterals": [
+              "finance.investment-math",
+              "future-value",
+              "real-return",
+              "present-value"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "d6dbe27e676b3b314c3601ca6c0084b87d86b11d",
+            "sha256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e",
+            "bytes": 4752,
+            "observedIdLiterals": [
+              "finance.investment-math",
+              "future-value",
+              "real-return",
+              "present-value"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "futureValue/presentValueFromFuture use annual percentage divided100 and exponent years; helpers permit zero years/nonnegative amount, schema requires positive years/amount; wrapper rounds currency2dp and real return4dp. Not a full retirement/rent-buy contract."
+        },
+        {
+          "path": "src/calculators/finance/mortgage.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "85166726e8f4f751e4de9e5decd4c8f17a89287f",
+            "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+            "bytes": 989,
+            "observedIdLiterals": [
+              "finance.mortgage"
+            ],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "85166726e8f4f751e4de9e5decd4c8f17a89287f",
+            "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+            "bytes": 989,
+            "observedIdLiterals": [
+              "finance.mortgage"
+            ],
+            "declaredVersions": []
+          },
+          "observation": "Spreads loanPaymentCalculator, replaces identity and removes inherited goldenTests. Explicitly excludes property taxes, insurance, HOA and closing costs. Imported dependency inspected separately; no property cash-flow contract."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        },
+        {
+          "path": "src/calculators/finance/loan-payment.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "e19da610c943819370a8626a83765cf757587885",
+            "sha256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+            "bytes": 2097,
+            "observedIdLiterals": [
+              "finance.loan-payment",
+              "amortizing-loan-payment"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "e19da610c943819370a8626a83765cf757587885",
+            "sha256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+            "bytes": 2097,
+            "observedIdLiterals": [
+              "finance.loan-payment",
+              "amortizing-loan-payment"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "Mortgage dependency: nominal annualPercent/100/12; zero-rate principal/term; rounds monthly payment to2dp before multiplying term; totals interest2dp. Source version1. Not a complete property contract."
+        }
+      ],
+      "historicalInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/investment-math.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "0b5e9ec6703491a485f0f9f1426a14a17523dd90c6312b808ff75972893683c6",
+            "observation": "Annual FV/PV helpers use fractional rate plus1 to power years; return greater than-100%; output2dp; no retirement corpus or safe rate.",
+            "githubBlobSha": "d6dbe27e676b3b314c3601ca6c0084b87d86b11d",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/investment-math.ts"
+          },
+          {
+            "path": "src/calculators/finance/mortgage.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "b9e6a365462d07425539088b780c57de5ebe3ea4ac20c2fd6d2b286ffcd6af97",
+            "observation": "Wrapper around loan-payment; expressly excludes tax, insurance, HOA, closing costs; dependency not fetched, so complete mortgage computation not executed.",
+            "githubBlobSha": "85166726e8f4f751e4de9e5decd4c8f17a89287f",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/mortgage.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": true,
+      "originalCandidate": "PVcost_s=sum_t(outflow_s,t-inflow_s,t)/(1+d)^t; delta=PVcost_buy-PVcost_rent",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+      "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(50)-(120-80)",
+    "actual": "10",
+    "expected": "10",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

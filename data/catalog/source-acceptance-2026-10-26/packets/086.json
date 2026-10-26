@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "masterId": 86,
+  "title": "Retirement Longevity Calculator",
+  "domain": "Retirement & Financial Independence",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "SOURCE_BASED_REVIEW_SUFFICIENT",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-22.json",
+    "laneSHA256": "b01afc48fc0e54dad0203c4196bc6b01e200fba478690da6fb08e7ad05420977"
+  },
+  "analysis": {
+    "masterId": 86,
+    "title": "Retirement Longevity Calculator",
+    "status": "CANDIDATE_REVIEW_ONLY_SOURCE_ACCEPTANCE_INCOMPLETE",
+    "evidenceComplete": false,
+    "candidateFormula": "available_t = B_(t-1)*(1+r_t) for an explicitly selected end-period profile; paid_t=min(available_t,W_t); B_t=available_t-paid_t. exactZeroPeriod=min{t:B_t=0}; firstShortfallPeriod=min{t:available_t<W_t}. Report separately, or null within H.",
+    "units": "Balances/withdrawals currency; r fraction per period; zero/shortfall outputs integer periods or null within horizon.",
+    "applicability": {
+      "candidateDomain": "Finite H>=1; nonnegative balances and withdrawals; r>-1; end-period available before payment; candidate pays min(available,W).",
+      "requiredChoices": [
+        "Which named output defines longevity: first exact-zero closing balance, first scheduled-payment shortfall, or both?",
+        "Which timing, partial-final-payment and horizon rules are approved?"
+      ],
+      "selected": false
+    },
+    "limits": "Exact-zero period2 versus first-shortfall period3 for200/100 at0%; partial third payment50 for250/100; initial zero and zero withdrawals need explicit definition.",
+    "rounding": {
+      "approvedPolicy": null,
+      "candidateWitnessArithmetic": "Exact fractions; all literals rational; no money/grade rounding or tolerance chosen. Values such as82/25 may be rendered3.28 without rounding.",
+      "observedHistoricalAssessment": {
+        "equation": "available_t = B_(t-1)*(1+r_t) for an explicitly selected end-period profile; paid_t=min(available_t,W_t); B_t=available_t-paid_t. exactZeroPeriod=min{t:B_t=0}; firstShortfallPeriod=min{t:available_t<W_t}. Report separately, or null within H.",
+        "domainDefinitions": [
+          "Keep exact-zero and first-shortfall distinct; neither is silently selected as the longevity meaning.",
+          "Finite H>=1; nonnegative available balances and scheduled withdrawals; per-period rates > -1. Beginning-period timing requires its own recurrence.",
+          "Final partial payment versus stop-before-payment, withdrawal growth, inflation, benefits and taxes still require policy selection."
+        ],
+        "status": "PROPOSED_NOT_APPROVED"
+      },
+      "requiredChoices": [
+        "Output precision, tie mode, intermediate versus final rounding, rate conversion and boundary comparisons must be explicitly selected; observed engine defaults are not approval."
+      ]
+    },
+    "sourceEvidence": [
+      {
+        "kind": "LOCAL_HISTORICAL_RETRIEVAL_REPORT_NOT_PRIMARY_FULLTEXT",
+        "evidencePath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+        "historicalObservations": [
+          {
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+            "retrieved": true,
+            "result": "RETRIEVED_PRIMARY_PAGE",
+            "title": "Compound Interest Calculator",
+            "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+            "observedDateVersion": "No publication/effective date established from retrieved content",
+            "browseEvidenceId": "turn21view9",
+            "limitations": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+            "error": null
+          }
+        ],
+        "upstreamOriginalObservations": [
+          {
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+            "catalogIds": [
+              32,
+              43,
+              48,
+              49,
+              80,
+              81,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89,
+              90,
+              91,
+              97,
+              98,
+              472
+            ],
+            "observations": [
+              {
+                "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+                "retrieved": true,
+                "result": "RETRIEVED_PRIMARY_PAGE",
+                "title": "Compound Interest Calculator",
+                "retrievalDate": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+                "observedDateVersion": "No publication/effective date established from retrieved content",
+                "browseEvidenceId": "turn21view9",
+                "limitations": "SEC education; supplied rate/compounding, not promised retirement return; retrieval does not establish current governing revision or endorse proposed formula.",
+                "error": null
+              }
+            ],
+            "verificationClass": "CONTENT_AVAILABLE_WITH_SCOPE_LIMITS"
+          }
+        ],
+        "newNetworkRetrieval": false,
+        "verifiedCurrentPrimaryFulltext": false,
+        "limitations": "Prior retrieval report and bibliographic context only. No new clause, fulltext snapshot, source hash, governing revision or product applicability established."
+      }
+    ],
+    "independentNumericalEvidence": {
+      "method": "Python fractions.Fraction; literal expected rationals; synthetic supplied-input candidate profiles",
+      "script": "data/catalog/source-acceptance-2026-10-26/lanes/bounded-witnesses.py",
+      "engineExecuted": false,
+      "cases": [
+        {
+          "case": "exact_zero_period",
+          "expression": "longevity(200,100,3)[0]",
+          "expectedRational": "2",
+          "actualRational": "2",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "shortfall_after_exact_zero",
+          "expression": "longevity(200,100,3)[1]",
+          "expectedRational": "3",
+          "actualRational": "3",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "partial_last_payment",
+          "expression": "longevity(250,100,3)[2]",
+          "expectedRational": "50",
+          "actualRational": "50",
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        },
+        {
+          "case": "none_within_horizon",
+          "expression": "longevity(1000,100,3)[1]",
+          "expectedRational": null,
+          "actualRational": null,
+          "result": "PASS",
+          "scope": "SYNTHETIC_CANDIDATE_ONLY_NOT_ENGINE_ACCEPTANCE"
+        }
+      ],
+      "limitations": "Tests proposed arithmetic/timing only; no actual product acceptance or approved scope. #84 corpus and #82 target submodels remain unbound; #516 source-like inputs are treated as supplied synthetic points here."
+    },
+    "implementationBinding": {
+      "status": "UNAPPROVED_CANDIDATE_COMPONENTS_STATIC_INSPECTION",
+      "baseline": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+      "reviewedHead": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+      "files": [
+        {
+          "path": "src/calculators/finance/swp.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "cb594a4621abc9d166baca51398778c549c84aec",
+            "sha256": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092",
+            "bytes": 5435,
+            "observedIdLiterals": [
+              "finance.swp",
+              "swp-cashflow",
+              "sustainable-monthly-withdrawal"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "cb594a4621abc9d166baca51398778c549c84aec",
+            "sha256": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092",
+            "bytes": 5435,
+            "observedIdLiterals": [
+              "finance.swp",
+              "swp-cashflow",
+              "sustainable-monthly-withdrawal"
+            ],
+            "declaredVersions": [
+              "1"
+            ]
+          },
+          "observation": "simulateSwp uses annualPercent/100/12, constant withdrawal and explicit beginning/end timing; caps paid amount at available balance and stops at exact zero; depletionMonth is exact zero, not a separately computed first shortfall. Wrapper currency2dp, version1. Contract mismatch is unresolved, not adjudicated defect."
+        },
+        {
+          "path": "src/calculators/precision.ts",
+          "baseline": {
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "reviewedHead": {
+            "ref": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+            "gitBlob": "2bed08d0b3d69aed036bc6b401d5c28c97154d35",
+            "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+            "bytes": 1429,
+            "observedIdLiterals": [],
+            "declaredVersions": []
+          },
+          "observation": "roundTo uses binary Number, default half-away-from-zero with scaled Number.EPSILON tie tolerance; integer short circuit; digits0..12. Observed implementation default is not an approved product rounding policy."
+        }
+      ],
+      "historicalInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/swp.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "5953dbcf0876cb86b8589e3783344fb75f2481e96b07ddb8276c6dceeb7c90be",
+            "observation": "Monthly nominal return annual percent/12; beginning/end timing; caps final withdrawal and marks depletion immediately at balance<=0; constant withdrawal; output2dp.",
+            "githubBlobSha": "cb594a4621abc9d166baca51398778c549c84aec",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/swp.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "actualCatalogEngineMappingApproved": false,
+      "productionEngineAcceptanceExecuted": false,
+      "absenceClaim": false,
+      "inspectionScope": "Static inspection of listed local source and exact baseline/head blob identities; no exhaustive repository absence claim, no engine execution. Raw identity and version metadata retained for each available file."
+    },
+    "remainingGaps": [
+      "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+      "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+      "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+      "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+      "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+      "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted."
+    ],
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "priorCandidateFormulaComparedWithUpstreamOriginal": {
+      "same": false,
+      "originalCandidate": "depletion=min{t: availableBalance_t<scheduledWithdrawal_t}; else not depleted within H",
+      "interpretation": "Any changed candidate in technical register remains a proposal, not policy selection."
+    }
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(250)-100-100",
+    "actual": "50",
+    "expected": "50",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+    "boundaryEvidence": {
+      "initial": "200",
+      "withdrawal": "100",
+      "rate": "0",
+      "availableAfterTwoPayments": "0",
+      "packetFirstShortfallPeriod": 3,
+      "inspectedSwpDepletionPeriod": 2,
+      "meaning": "Different depletion definitions; packet must reconcile exact-zero vs first shortfall. Not an implementation defect without approved policy."
+    },
+    "additionalActuals": {
+      "thirdPeriodShortfall": "50"
+    }
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Complete selected canonical identity and intended product contract; do not silently narrow to this mathematical candidate.",
+    "Obtain reviewable full primary text, exact clause/page, source bytes hash, revision/effective period and applicable jurisdiction/population; historical retrieval summaries do not satisfy this.",
+    "Select rounding, timing, units, inclusions/exclusions and all per-case required applicability choices.",
+    "Approve catalog-ID mapping to exact engine/version/dependencies; execute approved-case expectations against that engine and complete independent competent review.",
+    "Record legal/regulatory/contractual obligations and harm screening; unknown obligations block certification review.",
+    "Prospective risk policy remains unadopted; authoritative approval, certification and publication are not granted.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

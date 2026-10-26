@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "masterId": 469,
+  "title": "Auto Lease Calculator",
+  "domain": "Automotive & EV",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/finance-14.json",
+    "laneSHA256": "e1a9e3f857350d36d6ecd7579fcbeee1d20ba037d6031da7b9795ccf94817dbc"
+  },
+  "analysis": {
+    "masterId": 469,
+    "title": "Auto Lease Calculator",
+    "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+    "proposedFormula": "basePayment=((adjustedCapCost-residual)+totalRentCharge)/n; totalPayment=basePayment+periodTax+fees",
+    "formulaSelected": false,
+    "domainAndUnits": "Adjusted cap cost, residual, total rent charge, tax and fees in same currency; n positive integer payments; base and period additions currency/payment; money factor dimensional convention and rounding stages contract-specific.",
+    "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+    "officialSources": [
+      {
+        "officialUrl": "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+        "title": "Vehicle Leasing: Description of Leasing Form, Page 1",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "UNKNOWN",
+        "historicalRevisionNote": "No publication/effective date established from retrieved content",
+        "historicalEvidenceId": "turn21view7",
+        "historicalScopeLimit": "US lease disclosure arithmetic example, not current tax or lender policy; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      },
+      {
+        "officialUrl": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+        "title": "Vehicle Leasing: Leasing vs. Buying: Monthly Payments",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "last update2003-05-05",
+        "historicalRevisionNote": "last update2003-05-05",
+        "historicalEvidenceId": "turn21view8",
+        "historicalScopeLimit": "Historical US educational comparison; no universal money factor conversion; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "requiredSourceClausesAndCases": "Actual lease disclosures/contract clauses for cap-cost reductions, residual, total rent charge or selected money-factor computation, payment timing, upfront/period tax/fee jurisdiction and rounding/residual reconciliation; official worked schedule. No universal APR/2400 conversion.",
+    "preciseEvidenceGap": "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+    "unresolvedOwnerAndProductChoices": [
+      "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+      "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+      "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment."
+    ],
+    "historicalOutstandingDecisions": [
+      "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+      "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+      "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment."
+    ],
+    "scopeJurisdictionAndLegalContractAmbiguity": "Lessor/product, vehicle lease jurisdiction/tax situs, currency and contract effective dates; historical US disclosure example is not current local tax policy.",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedCurrency": "UNKNOWN",
+    "selectedEffectivePeriod": {
+      "from": "UNKNOWN",
+      "to": "UNKNOWN"
+    },
+    "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+    "priorIndependentWitness": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[469]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "(D(11745)/48).quantize(D(\".01\"),rounding=ROUND_HALF_UP)+D(\"12.25\")",
+        "actual": "256.94",
+        "expected": "256.94",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+        "additionalActuals": {
+          "unroundedBase": "244.6875"
+        }
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "engineBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "fetched": false,
+            "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+    "sourceReviewCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "basePayment=((adjustedCapCost-residual)+totalRentCharge)/n; totalPayment=basePayment+periodTax+fees",
+    "units": "Adjusted cap cost, residual, total rent charge, tax and fees in same currency; n positive integer payments; base and period additions currency/payment; money factor dimensional convention and rounding stages contract-specific.",
+    "applicability": "Lessor/product, vehicle lease jurisdiction/tax situs, currency and contract effective dates; historical US disclosure example is not current local tax policy.",
+    "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "sourceEvidence": [
+      {
+        "officialUrl": "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+        "title": "Vehicle Leasing: Description of Leasing Form, Page 1",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "UNKNOWN",
+        "historicalRevisionNote": "No publication/effective date established from retrieved content",
+        "historicalEvidenceId": "turn21view7",
+        "historicalScopeLimit": "US lease disclosure arithmetic example, not current tax or lender policy; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      },
+      {
+        "officialUrl": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+        "title": "Vehicle Leasing: Leasing vs. Buying: Monthly Payments",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "last update2003-05-05",
+        "historicalRevisionNote": "last update2003-05-05",
+        "historicalEvidenceId": "turn21view8",
+        "historicalScopeLimit": "Historical US educational comparison; no universal money factor conversion; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "independentNumericalEvidence": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[469]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "(D(11745)/48).quantize(D(\".01\"),rounding=ROUND_HALF_UP)+D(\"12.25\")",
+        "actual": "256.94",
+        "expected": "256.94",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+        "additionalActuals": {
+          "unroundedBase": "244.6875"
+        }
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "implementationBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "fetched": false,
+            "observation": "No applicable tax/plan/lease engine fetched or approved identity available; cannot establish absence across repository. Automotive batch inspected remotely contains travel/fuel functions only."
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "remainingGaps": [
+      "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+      "Actual lease disclosures/contract clauses for cap-cost reductions, residual, total rent charge or selected money-factor computation, payment timing, upfront/period tax/fee jurisdiction and rounding/residual reconciliation; official worked schedule. No universal APR/2400 conversion.",
+      "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+      "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+      "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment."
+    ]
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+      "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "(D(11745)/48).quantize(D(\".01\"),rounding=ROUND_HALF_UP)+D(\"12.25\")",
+    "actual": "256.94",
+    "expected": "256.94",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation",
+    "additionalActuals": {
+      "unroundedBase": "244.6875"
+    }
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+    "Actual lease disclosures/contract clauses for cap-cost reductions, residual, total rent charge or selected money-factor computation, payment timing, upfront/period tax/fee jurisdiction and rounding/residual reconciliation; official worked schedule. No universal APR/2400 conversion.",
+    "Money-factor convention, timing, cap-cost reductions, tax/fee treatment and rounding.",
+    "Money factor formula must come from selected lease; cannot universally convert APR/2400.",
+    "Base244.6875 rounds244.69 before adding12.25; totals over48 payments require residual/contract rounding policy, not blind multiplication of rounded payment.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

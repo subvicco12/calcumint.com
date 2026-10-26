@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "masterId": 23,
+  "title": "HELOC Calculator",
+  "domain": "Loans & Credit",
+  "status": "EVIDENCE_GAPS",
+  "evidenceComplete": false,
+  "sourceReviewDisposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+  "basis": {
+    "governanceCommit": "d1e9f7a35f54ac129b1faf6ed8ead8bcd8f93972",
+    "riskRegisterPath": "data/catalog/risk-review-2026-10-26/reassessment.json",
+    "riskRegisterSHA256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "technicalRegisterPath": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+    "technicalRegisterSHA256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "lanePath": "data/catalog/source-acceptance-2026-10-26/lanes/finance-14.json",
+    "laneSHA256": "e1a9e3f857350d36d6ecd7579fcbeee1d20ba037d6031da7b9795ccf94817dbc"
+  },
+  "analysis": {
+    "masterId": 23,
+    "title": "HELOC Calculator",
+    "disposition": "ADDITIONAL_AUTHORITATIVE_EVIDENCE_REQUIRED",
+    "acceptanceStatus": "BLOCKED_SOURCE_CONTENT_AND_CONTRACT_SELECTION",
+    "proposedFormula": "B_next=B_t+draw_t+I_t+fee_t-P_t; I_t=sum_daily(balance_d*rate_d/dayBasis)",
+    "formulaSelected": false,
+    "domainAndUnits": "Balance/draw/fee/payment in one currency; rate fraction/year and daily dayBasis positive; balances and credit limit constrained by contract; daily resets and draw versus repayment phases UNKNOWN.",
+    "historicalDomainAssessment": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "rounding": "Packet does not bind currency precision/rounding stage. Independent calculation uses Decimal50; lease rounds base half-up; others preserve exact witness precision.",
+    "officialSources": [
+      {
+        "officialUrl": "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+        "title": "What you should know about Home Equity Lines of Credit (HELOC)",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "UNKNOWN",
+        "historicalRevisionNote": "No publication/effective date established from retrieved content",
+        "historicalEvidenceId": "turn21view0",
+        "historicalScopeLimit": "US HELOC draw/repayment and variable-rate considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "requiredSourceClausesAndCases": "Actual HELOC agreement clauses naming index and publisher, observation/reset dates, margin, floors/caps, draw limit and schedule, daily balance/day count, interest-only versus amortizing phase, fees and balloon; official index series revision and phase-boundary examples.",
+    "preciseEvidenceGap": "Obtain the applicable HELOC contract/index source: draw phase, margin, caps, resets, fees and repayment schedule with effective dates and independent branch cases.",
+    "unresolvedOwnerAndProductChoices": [
+      "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+      "Index, margin, reset, caps, draw phase and repayment contract missing."
+    ],
+    "historicalOutstandingDecisions": [
+      "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+      "Index, margin, reset, caps, draw phase and repayment contract missing."
+    ],
+    "scopeJurisdictionAndLegalContractAmbiguity": "Lender/product, property jurisdiction, lien/credit rules, index observation vintage and contract effective period.",
+    "selectedJurisdiction": "UNKNOWN",
+    "selectedCurrency": "UNKNOWN",
+    "selectedEffectivePeriod": {
+      "from": "UNKNOWN",
+      "to": "UNKNOWN"
+    },
+    "legalOrContractualExternalReviewObligation": "UNKNOWN; no case-specific external signature mandate established is not an exemption",
+    "priorIndependentWitness": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[23]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "D(10000)*D(\".06\")*30/360",
+        "actual": "50.00",
+        "expected": "50",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "engineBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/loan-analysis.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+            "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+            "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "nextEvidenceAction": "After source network policy is approved and published, retrieve the listed official source directly, pin exact revision/content hash and clause; obtain the case-specific selected contract and official boundary cases described above. Reassess obligations before independent review.",
+    "sourceReviewCompleted": false,
+    "qualifiedApprovalObtained": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "candidateFormula": "B_next=B_t+draw_t+I_t+fee_t-P_t; I_t=sum_daily(balance_d*rate_d/dayBasis)",
+    "units": "Balance/draw/fee/payment in one currency; rate fraction/year and daily dayBasis positive; balances and credit limit constrained by contract; daily resets and draw versus repayment phases UNKNOWN.",
+    "applicability": "Lender/product, property jurisdiction, lien/credit rules, index observation vintage and contract effective period.",
+    "limits": "Nonnegative balances/budget assumptions not fully specified; n positive, divisor/withdrawal fraction positive; rate> -1 per period for power/discount equations; no-solution and horizon needed for searches.",
+    "sourceEvidence": [
+      {
+        "officialUrl": "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf",
+        "title": "What you should know about Home Equity Lines of Credit (HELOC)",
+        "historicalReportedRetrieval": "2026-10-25 (runtime environment date; requested package date2026-10-26)",
+        "historicalReportedRevisionOrDate": "UNKNOWN",
+        "historicalRevisionNote": "No publication/effective date established from retrieved content",
+        "historicalEvidenceId": "turn21view0",
+        "historicalScopeLimit": "US HELOC draw/repayment and variable-rate considerations; retrieval does not establish current governing revision or endorse proposed formula.",
+        "newRetrievalPerformed": false,
+        "currentContentVerified": false,
+        "exactClauseOrPageVerifiedThisTask": "UNKNOWN",
+        "currentRevisionAndContentHash": "UNKNOWN"
+      }
+    ],
+    "independentNumericalEvidence": {
+      "reference": "docs/audits/specialist-technical-review-2026-10-26/upstream/witnesses/finance.py#expr[23]",
+      "historicalResult": {
+        "method": "Independent Python decimal; precision50; not production engine execution",
+        "expression": "D(10000)*D(\".06\")*30/360",
+        "actual": "50.00",
+        "expected": "50",
+        "result": "PASS",
+        "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+      },
+      "notProven": "No governing source-clause completeness, selected contract, domain branch coverage, current-rule correctness, actual TypeScript execution, identity binding or approval. Synthetic except historical published arithmetic attribution for 95, 96 and 469; that attribution has not been newly source-verified."
+    },
+    "implementationBinding": {
+      "approvedCalculatorVersion": "UNKNOWN",
+      "approvedImplementationSha": "UNKNOWN",
+      "actualIdentityBindingEstablished": false,
+      "historicalStaticInspection": {
+        "method": "Static exact-ref source inspection only; no TypeScript execution, CI or exhaustive registry scan. Independent Decimal witness is not engine test.",
+        "files": [
+          {
+            "path": "src/calculators/finance/loan-analysis.ts",
+            "ref": "3aaca30a04b922ae4acb6bcbf2976b7835b8eea8",
+            "fetched": true,
+            "localEvidenceSha256": "a50fad7bd3a61bf84457aae7ad5c7982ba94899142d900d87af59c163895a5fd",
+            "observation": "Fixed nominal annual percent/12, zero-rate inverse, integer monthly term; schedule rounds displayed rows before totals. Does not supply fee, variable-rate or consolidation policy.",
+            "githubBlobSha": "21d7cf6d81f35d3528fc0ca48c31d93ca8da5596",
+            "sourceUrl": "https://github.com/subvicco12/calcumint.com/blob/3aaca30a04b922ae4acb6bcbf2976b7835b8eea8/src/calculators/finance/loan-analysis.ts"
+          }
+        ],
+        "conclusion": "Reusable numerical primitive does not establish catalog identity or full domain contract."
+      },
+      "newExecutionPerformed": false,
+      "availabilityConclusion": "Historical inspected primitives only where listed; no approved exact catalog contract binding established. A non-fetched engine is not proof of repository absence."
+    },
+    "remainingGaps": [
+      "Obtain the applicable HELOC contract/index source: draw phase, margin, caps, resets, fees and repayment schedule with effective dates and independent branch cases.",
+      "Actual HELOC agreement clauses naming index and publisher, observation/reset dates, margin, floors/caps, draw limit and schedule, daily balance/day count, interest-only versus amortizing phase, fees and balloon; official index series revision and phase-boundary examples.",
+      "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+      "Index, margin, reset, caps, draw phase and repayment contract missing."
+    ]
+  },
+  "currentSourceVerification": {
+    "status": "NOT_COMPLETED",
+    "normativeRevisionVerified": false,
+    "fullTextAndClauseVerified": false,
+    "sourceBodySHA256": null,
+    "sourceUrls": [
+      "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure_print.pdf"
+    ],
+    "historicalObservationsAreCurrentVerification": false
+  },
+  "priorIndependentArithmeticWitness": {
+    "method": "Independent Python decimal; precision50; not production engine execution",
+    "expression": "D(10000)*D(\".06\")*30/360",
+    "actual": "50.00",
+    "expected": "50",
+    "result": "PASS",
+    "exampleScope": "Published arithmetic only for95,96,469; other witnesses synthetic; not financial model validation"
+  },
+  "actualEngineGoldensAccepted": false,
+  "selectedContractApproved": false,
+  "approvedImplementationBinding": null,
+  "sourceReadinessReviewComplete": false,
+  "remainingGaps": [
+    "Obtain the applicable HELOC contract/index source: draw phase, margin, caps, resets, fees and repayment schedule with effective dates and independent branch cases.",
+    "Actual HELOC agreement clauses naming index and publisher, observation/reset dates, margin, floors/caps, draw limit and schedule, daily balance/day count, interest-only versus amortizing phase, fees and balloon; official index series revision and phase-boundary examples.",
+    "Draw schedule, variable-rate/index/cap convention, repayment phase and fees.",
+    "Index, margin, reset, caps, draw phase and repayment contract missing.",
+    "Current complete primary/official source text, exact governing revision, clause/page and snapshot hash have not been verified in this execution.",
+    "The complete intended formula/domain, units, limits, applicability and output/rounding policy must be selected explicitly; historical candidate choices are not approvals.",
+    "Approved catalog-to-implementation ID/version/full-SHA binding and independent actual-engine numerical/rounding/boundary tests remain required; a candidate arithmetic witness is not that acceptance.",
+    "Version-bound obligation/applicability screening and competent independent substantive source review remain required. UNKNOWN is not a legal/contractual exemption.",
+    "Prospective governance policy is unadopted; existing authenticated QA, source, lifecycle and publication authority must still be satisfied."
+  ],
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}
