@@ -1,0 +1,13 @@
+# Prospective risk-based calculator review
+
+Owner direction: replace blanket external specialist requirements where legally, technically and operationally appropriate. This authorizes preparation and review, not lifecycle changes or release. The complete Blueprint attachment is unavailable; its recorded requirements and immutable 424-row ledger are the available baseline.
+
+Use a prospective policy overlay and pure, offline review-readiness evaluator. Keep legacy application/database lifecycle, reviewer assignment, structured source evidence, QA checks and publication manifest enforcement unchanged. A review-ready result grants neither certification nor publication. Risk tiers describe actual intended claims and harms, not only the old financial/health/tax labels. Ordinary bounded arithmetic can be reviewed by competent engineering; rule-dependent cases require complete applicable official sources; unresolved high-consequence model or safety applicability retains qualified review. No absence-of-law inference.
+
+Alternatives considered: changing only prose cannot enforce the evidence standard; relaxing live YMYL/database gates would create mismatched enforcement and is outside this reviewed prospective amendment. A tested offline policy with explicit adoption prerequisites implements the requested review framework while retaining release protection.
+
+Artifacts: controlled Blueprint amendment with exact replaced requirements and exclusions; 70-row reassessment preserving source hashes/history, with exclusive dispositions and separate potential routes; pure TypeScript policy evaluator with schema validation and date/identity-bound evidence; tests including draft exclusion against matching database manifests and unchanged legacy gates. No mathematical implementations or legacy risk strings change.
+
+Minimum standard: selected complete contract, authoritative full-content versioned source and applicability, independent numerical/boundary/rounding tests, named competent independent technical reviewer, exact implementation identity/version/SHA, legal/contract applicability screening (unknown blocks), current rule packs where applicable, qualified review where retained. No specialist signature is manufactured. Clinical/training/pregnancy/renal and food-safety cases retain qualified applicability review under current insufficient evidence; #87 retains quantitative financial-risk review for a safety/success claim.
+
+Independent engineering/security review and one exact-head hosted checkpoint are required. Preserve all frozen branches, 540 IDs, 424 ledger statuses, histories and original14 DRAFTs. RELEASE HOLD.

@@ -22,3 +22,8 @@ A release PR may proceed without an independent reviewer only when all of the fo
 This exception cannot stand in for substantive specialist review for Health/YMYL, financial-risk, regulatory, or other calculators that require it. New calculators remain DRAFT until properly certified. Free, Pro and Business retain identical mathematical accuracy, and deterministic engines remain authoritative. Production build stays `next build --webpack`. Production owner identity requires an explicit authorized human selection; never infer or invent one.
 
 If an independent reviewer becomes available, return to the standard release process. If GitHub requires a review, obtain the required review and do not use this document as a bypass.
+## Prospective risk-based review amendment (26 October2026)
+
+The owner has directed a risk-based, authoritative-source review framework in place of blanket external specialist requirements where appropriate. The proposed controlled amendment is [Master Blueprint governance amendment](MASTER-BLUEPRINT-GOVERNANCE-AMENDMENT-2026-10-26.md). It defines when competent engineering-led source review is sufficient and when official rule evidence or qualified applicability/safety review remains mandatory. This is a prospective policy change, not an external-review waiver under the sole-owner release exception, and not a claim of historical specialist approval.
+
+The proposal and its70-case reassessment are pending independent engineering/security review and exact-head validation. Existing application/database QA, reviewer assignment, lifecycle and publication gates remain unchanged and effective; offline review readiness cannot satisfy them automatically. No release, certification or publication is authorized. RELEASE HOLD remains active.
