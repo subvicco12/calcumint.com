@@ -3,13 +3,13 @@ import {mkdtemp,readFile,rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {startupDiagnostics} from './startup-diagnostics.mjs';
-export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=20000,executable=process.env.CHROMIUM_PATH||'/usr/bin/chromium',launchArgs=[]}={}){
+export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=20000,executable=process.env.CHROMIUM_PATH||'/usr/bin/chromium',launchArgs=[],captureStderr=true}={}){
  const trace=startupDiagnostics(executable,{enabled:process.env.CDP_STARTUP_DIAGNOSTICS==='1'});trace.event('profile-start');
  const profile=await mkdtemp(path.join(os.tmpdir(),'actual-next-chromium-'));trace.event('profile-created');let diagnostic='',seq=0,socket,scriptsResumeAt=0,scriptsHeld=false;const heldScripts=[];const pending=new Map(),errors=[],network=[];
  // Headless tests do not need a desktop session bus. An inherited/autolaunched bus
  // can stall both Chromium startup and /json/new while D-Bus authentication waits.
  // A valid unavailable Unix address fails immediately; only this child is isolated.
- const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore','pipe']});trace.start(child.pid);child.stderr.on('data',v=>{if(!diagnostic)trace.event('stderr-first');diagnostic+=v});child.once('exit',(code,signal)=>trace.event('process-exit',{code,signal}));
+ const child=spawn(executable,[...launchArgs,'--headless','--no-sandbox','--disable-gpu','--disable-background-networking','--no-first-run','--remote-debugging-port=0',`--user-data-dir=${profile}`,'about:blank'],{env:{...process.env,DBUS_SESSION_BUS_ADDRESS:'unix:path=/dev/null'},stdio:['ignore','ignore',captureStderr?'pipe':'ignore']});trace.start(child.pid);child.stderr?.on('data',v=>{if(!diagnostic)trace.event('stderr-first');diagnostic+=v});child.once('exit',(code,signal)=>trace.event('process-exit',{code,signal}));
  const rejectPending=error=>{for(const entry of pending.values()){clearTimeout(entry.timer);entry.reject(error)}pending.clear()};
  let launchError;child.on('error',error=>{launchError=error});
  const exited=()=>!!launchError||child.exitCode!==null||child.signalCode!==null;
@@ -21,7 +21,7 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
  let closing;
  const close=()=>closing??= (async()=>{
   trace.event('cleanup-start');rejectPending(Error('Chromium CDP cleanup started'));
-  try{try{socket?.close()}catch{/* Process termination still runs if a connecting socket refuses close. */}if(!exited()){trace.event('terminate',{signal:'SIGTERM'});child.kill('SIGTERM');if(!await waitForExit(5000)){trace.event('terminate',{signal:'SIGKILL'});child.kill('SIGKILL');if(!await waitForExit(2000))throw Error('Chromium did not exit after SIGKILL')}}}
+  try{try{if(process.platform==='win32'&&socket?.readyState===WebSocket.OPEN){socket.send(JSON.stringify({id:++seq,method:'Browser.close'}));await waitForExit(5000);}socket?.close()}catch{/* Process termination still runs if a connecting socket refuses close. */}if(!exited()){trace.event('terminate',{signal:'SIGTERM'});child.kill('SIGTERM');if(!await waitForExit(5000)){trace.event('terminate',{signal:'SIGKILL'});child.kill('SIGKILL');if(!await waitForExit(2000))throw Error('Chromium did not exit after SIGKILL')}}}
   finally{await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});trace.event('profile-removed')}
  })();
  try{
@@ -38,7 +38,7 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
    readiness('present');
    const match=activePort.match(/^(\d+)\r?\n(\/devtools\/browser\/[^\s]+)(?:\r?\n|$)/);
    if(match&&Number(match[1])>0&&Number(match[1])<=65535)endpoint=`ws://127.0.0.1:${match[1]}${match[2]}`;
-  }catch(error){if(error.code!=='ENOENT')throw error;readiness('absent')}
+  }catch(error){if(!['ENOENT','EBUSY','EACCES'].includes(error.code))throw error;readiness('absent')}
   endpoint??=diagnostic.match(/DevTools listening on (ws:\/\/[^\s]+)\r?\n/)?.[1];
   if(endpoint){trace.event('endpoint-ready');break;}
   await new Promise(r=>setTimeout(r,40));
@@ -77,7 +77,7 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
  // Confirm actual focus before trusted edits; never send keystrokes to another field.
  const field=async(selector,value)=>{await until(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});if(!e||e.matches(':disabled')||e.closest('[hidden],[inert]')||!e.getClientRects().length||getComputedStyle(e).visibility==='hidden'||!Object.keys(e).some(k=>k.startsWith('__reactProps$')))return false;e.focus();return document.activeElement===e})()`);await send('Input.dispatchKeyEvent',{type:'keyDown',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'a',code:'KeyA',modifiers:2,windowsVirtualKeyCode:65});await send('Input.insertText',{text:String(value)});if(await js(`document.querySelector(${JSON.stringify(selector)})?.value`)!==String(value))throw Error('Trusted field edit did not reach '+selector);};
 
- trace.event('domains-ready');const startupTrace=await trace.finish(child.pid);
+ trace.event('domains-ready');const startupTrace=Object.assign(await trace.finish(child.pid),{pid:child.pid,profile});
  return {startupTrace,send,js,until,visit,click,field,errors,network,delayScripts(ms){scriptsResumeAt=Date.now()+ms},holdScripts(){scriptsHeld=true;return async()=>{scriptsHeld=false;await Promise.all(heldScripts.splice(0).map(requestId=>send('Fetch.continueRequest',{requestId}))) }},text:()=>js('document.body.innerText'),async identity(cookie){
   if(cookie){
    const {cookies}=await send('Network.getCookies',{urls:[base]});
@@ -90,7 +90,7 @@ export async function startBrowser(base,allowedOrigins=[],{startupTimeoutMs=2000
   if(cookie)await send('Network.setCookie',{...cookie,url:base,httpOnly:false,sameSite:'Lax'});
  },close};
  }catch(error){
-  trace.event('startup-failed',{name:error.name});error.startupTrace=await trace.finish(child.pid);
+  trace.event('startup-failed',{name:error.name});error.startupTrace=Object.assign(await trace.finish(child.pid),{pid:child.pid,profile});
   try{await close()}catch(cleanupError){const aggregate=new AggregateError([error,cleanupError],'Chromium startup and cleanup failed');aggregate.startupTrace=error.startupTrace;throw aggregate}
   finally{if(process.env.CDP_STARTUP_DIAGNOSTICS==='1')console.error('CDP startup diagnostics '+JSON.stringify(error.startupTrace))}
   throw error;

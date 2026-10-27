@@ -9,7 +9,7 @@ const hash=(p:string)=>createHash("sha256").update(readFileSync(p)).digest("hex"
 const read=()=>JSON.parse(readFileSync(`${dir}/engineering-register.json`,"utf8"));
 describe("source-driven engineering preserves the exact source/authority boundary",()=>{
  it("binds all50 exact input identities without inventing approvals",()=>{
-  const original=JSON.parse(execFileSync("python3",["scripts/verify-source-driven-evidence.py"],{encoding:"utf8"}));
+  const original=JSON.parse(execFileSync(process.execPath,["scripts/verify-source-driven-evidence.mjs"],{encoding:"utf8"}));
   const r=read();expect(r.rows.map((x:{masterId:number})=>x.masterId)).toEqual(original.ids);
   expect(r.input.zipSHA256).toBe("80226cfdf3d9bd2a5aba4d6e8ff4a49077d61533b20c459f0d54b3bba51797d5");
   expect(original).toMatchObject({rootManifestEntries:97,nestedManifestEntries:76,cases:50,sourceObservations:42,readableSourceObservations:31,retainedQualifiedCases:11,missingSourceCases:9});

@@ -4,6 +4,8 @@ import os from 'node:os';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {startDraftPreview} from './draft-preview.mjs';
+import {cleanupBrowser} from '../tests/next-runtime/browser-cleanup.mjs';
+import {waitForDocument} from '../tests/next-runtime/navigation-ready.mjs';
 // Independent decimal subtraction oracle using integer arithmetic, not the report helper.
 function decimalDifference(value,baseline){
  const parts=n=>{const [mantissa,exponent='0']=String(n).toLowerCase().split('e');const fraction=mantissa.split('.')[1]?.length??0;return{coefficient:BigInt(mantissa.replace('.','')),exponent:Number(exponent)-fraction}};
@@ -36,7 +38,7 @@ try {
  async function click(text){if(text.startsWith('Export ')){/* Chromium limits rapid download bursts; pace requests independently of DOM readiness. */const remaining=350-(Date.now()-lastDownloadRequest);if(remaining>0)await new Promise(resolve=>setTimeout(resolve,remaining));lastDownloadRequest=Date.now();}const point=await js(`(()=>{const b=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()===${JSON.stringify(text)});if(!b)throw Error('Missing button '+${JSON.stringify(text)});if(b.disabled)throw Error('Disabled button '+${JSON.stringify(text)});b.scrollIntoView({behavior:'instant',block:'center'});const r=b.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2}})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...point});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...point});}
  const slugs=['loan-emi-calculator','sip-calculator','compound-interest-calculator','mortgage-payment','bmi-calculator','break-even-calculator'];
  const headlines=new Map();
- await send('Runtime.enable');await send('Network.enable');await send('Network.setExtraHTTPHeaders',{headers:{Authorization:'Basic '+Buffer.from('reviewer:'+server.draftPreviewAccessToken).toString('base64')}});await send('Fetch.enable',{patterns:[{urlPattern:'*'}]});await send('Page.enable');await send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads,eventsEnabled:true});
+ await send('Runtime.enable');await send('Network.enable');await send('Network.setExtraHTTPHeaders',{headers:{Authorization:'Basic '+Buffer.from('reviewer:'+server.draftPreviewAccessToken).toString('base64')}});await send('Fetch.enable',{patterns:[{urlPattern:'*'}]});await send('Page.enable');await send('Page.setLifecycleEventsEnabled',{enabled:true});await send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:downloads,eventsEnabled:true});
  captureFailure=()=>screenshot('harness-failure');
  async function screenshot(name){await writeFile(path.join(artifacts,name+'.png'),Buffer.from((await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})).data,'base64'));}
  let journeyDownloads=downloads,downloadEventStart=events.length;
@@ -48,8 +50,11 @@ try {
   try{
    await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});
    journeyDownloads=path.join(downloads,label);await mkdir(journeyDownloads,{recursive:true});downloadEventStart=events.length;await send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:journeyDownloads,eventsEnabled:true});
+   const navigationStarted=Date.now();
    journey.navigation=await send('Page.navigate',{url:`http://127.0.0.1:4191/tests/release-candidate/?slug=${slug}&plan=${plan}`});
    assert(!journey.navigation.errorText,'Reference navigation failed: '+journey.navigation.errorText);
+   await waitForDocument(events,journey.navigation.loaderId);
+   journey.documentLoadMs=Date.now()-navigationStarted;
    await until(`new URL(location.href).searchParams.get('slug')===${JSON.stringify(slug)}&&window.__reference&&document.querySelector('[data-testid=resolved-plan]')?.textContent===${JSON.stringify(plan)}&&!!document.querySelector('.calculator-ui .result-box[role=status] strong,.calculator-ui .result-hero strong')`,'reference source and actual plan '+label);
    const accountSupported=slugs.includes(slug);const paid=plan!=='free';
    if(accountSupported)await until(`!![...document.querySelectorAll('button')].find(e=>e.textContent==='Save calculation')`,'actual account controls');
@@ -147,4 +152,4 @@ try {
  await writeFile(path.join(artifacts,'reference-browser-report.json'),JSON.stringify(report,null,2));
  console.log(`${report.passed?'PASS':'FAIL'} ${report.journeys.length} journeys; ${report.issues.length} issues; artifacts: ${artifacts}`);if(!report.passed)process.exitCode=1;
 }catch(error){report.passed=false;report.error=String(error.stack||error);await writeFile(path.join(artifacts,'reference-browser-report.json'),JSON.stringify(report,null,2));await captureFailure().catch(()=>{});throw error;}
-finally{socket?.close();browser.kill('SIGTERM');await server.close();await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});}
+finally{try{await cleanupBrowser(browser,socket,profile);}finally{await server.close();}}

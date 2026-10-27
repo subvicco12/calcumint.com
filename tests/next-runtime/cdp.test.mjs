@@ -25,7 +25,7 @@ checkedTest('trusted field edits wait for a visible non-inert account control an
 
 checkedTest('headless CDP startup does not depend on the inherited desktop session bus', {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-session-bus-test-'));
- const address=path.join(dir,'bus'),sockets=new Set();let connections=0;
+ const address=process.platform==='win32'?`\\\\.\\pipe\\calcumint-cdp-bus-${process.pid}`:path.join(dir,'bus'),sockets=new Set();let connections=0;
  // Accept but never authenticate: a real stalled D-Bus connection, not a timer-based mock.
  const server=net.createServer(socket=>{connections++;sockets.add(socket);socket.on('close',()=>sockets.delete(socket))});
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(address,resolve)});
@@ -44,17 +44,14 @@ checkedTest('headless CDP startup does not depend on the inherited desktop sessi
 
 checkedTest('Chromium startup uses its readiness file when stderr is quiet', {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-quiet-startup-test-'));
- const launcher=path.join(dir,'launcher.sh'),evidence=path.join(dir,'child.txt');
- // exec preserves the process identity, so cleanup must terminate Chromium itself.
- await writeFile(launcher,`browser=$1\nshift\nprintf '%s\\n' "$$" "$@" > ${JSON.stringify(evidence)}\nexec "$browser" "$@" 2>/dev/null\n`);
  let browser;
  try{
-  browser=await startBrowser('http://127.0.0.1:1',[],{executable:'/bin/sh',launchArgs:[launcher,process.env.CHROMIUM_PATH||'/usr/bin/chromium']});
+  browser=await startBrowser('http://127.0.0.1:1',[],{captureStderr:false});
   assert.equal(await browser.js('1+1'),2);
-  const [pid,...args]=(await readFile(evidence,'utf8')).trim().split('\n');
-  const profile=args.find(arg=>arg.startsWith('--user-data-dir=')).slice(16);
+  assert(!browser.startupTrace.events.some(event=>event.phase==='stderr-first'),'Readiness must succeed without captured stderr');
+  const {profile,pid}=browser.startupTrace;
   await browser.close();
-  assert.throws(()=>process.kill(Number(pid),0),{code:'ESRCH'});
+  assert.throws(()=>process.kill(pid,0),{code:'ESRCH'});
   await assert.rejects(access(profile),{code:'ENOENT'});
  }finally{await browser?.close();await rm(dir,{recursive:true,force:true})}
 });
@@ -111,7 +108,8 @@ checkedTest('CDP commands time out and cleanup rejects outstanding commands', {t
 checkedTest('failed startup terminates a launcher that never exposes CDP and removes its profile', {timeout:30000}, async()=>{
  const dir=await mkdtemp(path.join(os.tmpdir(),'cdp-no-endpoint-test-'));
  const launcher=path.join(dir,'launcher.mjs'),evidence=path.join(dir,'child.json');
- await writeFile(launcher,`import {writeFileSync} from 'node:fs';writeFileSync(${JSON.stringify(evidence)},JSON.stringify({pid:process.pid,profile:process.argv.find(arg=>arg.startsWith('--user-data-dir=')).slice(16)}));setInterval(()=>{},1000);`);
+ await writeFile(launcher,`import {writeFileSync} from 'node:fs';await new Promise(resolve=>setTimeout(resolve,1000));writeFileSync(${JSON.stringify(evidence)},JSON.stringify({pid:process.pid,profile:process.argv.find(arg=>arg.startsWith('--user-data-dir=')).slice(16)}));setInterval(()=>{},1000);`);
+ let child;
  try{
   await assert.rejects(startBrowser('http://127.0.0.1:1',[],{executable:process.execPath,launchArgs:[launcher],startupTimeoutMs:200}),error=>{
    assert.match(error.message,/No Chromium CDP/);
@@ -122,9 +120,14 @@ checkedTest('failed startup terminates a launcher that never exposes CDP and rem
    assert(phases.includes('startup-failed'));
    assert(phases.includes('process-exit'),'Failed launch must still record process termination');
    assert(!phases.includes('endpoint-ready'),'A never-ready launcher cannot be reported ready');
+   child=error.startupTrace;
+   assert(Number.isInteger(child.pid),'The parent must retain its actual spawned PID');
+   assert.equal(typeof child.profile,'string');
+   assert(phases.includes('profile-removed'),'Failed launch must record profile cleanup');
    return true;
   });
-  const child=JSON.parse(await readFile(evidence,'utf8'));
+  // The deadline can kill Node before its launcher executes. Parent-owned
+  // process/profile evidence must not depend on a child-written startup file.
   assert.throws(()=>process.kill(child.pid,0),{code:'ESRCH'});
   await assert.rejects(access(child.profile),{code:'ENOENT'});
  }finally{await rm(dir,{recursive:true,force:true})}

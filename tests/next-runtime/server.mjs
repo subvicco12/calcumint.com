@@ -8,7 +8,7 @@ export async function startNextRuntime({root,auth,db,artifacts}){
  for(const entry of ['src','data','public','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.ts','postcss.config.mjs']){try{await cp(path.join(root,entry),path.join(dir,entry),{recursive:true})}catch(e){if(e.code!=='ENOENT')throw e}}
  // Test-copy-only CSP deltas: exact loopback identity origin and Next dev webpack eval.
  const configPath=path.join(dir,'next.config.ts');const config=await readFile(configPath,'utf8');await writeFile(configPath,config.replace("connect-src 'self'","connect-src 'self' "+auth.url).replace("script-src 'self'", "script-src 'self' 'unsafe-eval'"));
- await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir');
+ await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),process.platform==='win32'?'junction':'dir');
  const port=await new Promise(r=>{const s=net.createServer();s.listen(0,'127.0.0.1',()=>{const p=s.address().port;s.close(()=>r(p))})});const url=`http://127.0.0.1:${port}`;
  const env={PATH:process.env.PATH,HOME:process.env.HOME,NODE_ENV:'development',NEXT_TELEMETRY_DISABLED:'1',NEXT_PUBLIC_SITE_URL:url,NEXT_PUBLIC_SUPABASE_URL:auth.url,NEXT_PUBLIC_SUPABASE_ANON_KEY:db.anonKey,SUPABASE_SERVICE_ROLE_KEY:db.serviceKey,EMBED_SESSION_SECRET:'local-only-embed-session-secret-000000000000',WEBHOOK_ENCRYPTION_KEY:'local-only-webhook-encryption-key-000000000',NEXT_PUBLIC_PADDLE_ENV:'sandbox'};
  const child=spawn(process.execPath,[path.join(root,'node_modules/next/dist/bin/next'),'dev','--webpack','--hostname','127.0.0.1','--port',String(port)],{cwd:dir,env,stdio:['ignore','pipe','pipe']});let logs='';child.stdout.on('data',c=>logs+=c);child.stderr.on('data',c=>logs+=c);

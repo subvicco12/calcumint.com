@@ -1,0 +1,909 @@
+{
+  "startingSHA": "902f1ef9266fd70bfa2e01abba66971a712f202d",
+  "releaseHold": true,
+  "canonicalCalculatorsAccepted": 0,
+  "componentSupportCases": [
+    {
+      "masterId": 21,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Debt Consolidation Calculator"
+    },
+    {
+      "masterId": 32,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Rent vs Buy Calculator"
+    },
+    {
+      "masterId": 36,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Rental Property Calculator"
+    },
+    {
+      "masterId": 43,
+      "contractIds": [
+        "private.supplied-ledger-comparison",
+        "private.supplied-ratio-percent"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Rental ROI Calculator"
+    },
+    {
+      "masterId": 46,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "House Flipping Profit Calculator"
+    },
+    {
+      "masterId": 49,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Mortgage + Rental Combined Model"
+    },
+    {
+      "masterId": 80,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Retirement Corpus Calculator"
+    },
+    {
+      "masterId": 81,
+      "contractIds": [
+        "private.supplied-balance-projection"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Retirement Savings Calculator"
+    },
+    {
+      "masterId": 84,
+      "contractIds": [
+        "private.supplied-balance-projection"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Inflation-Adjusted Retirement Need Calculator"
+    },
+    {
+      "masterId": 85,
+      "contractIds": [
+        "private.supplied-balance-projection"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Retirement Withdrawal Calculator"
+    },
+    {
+      "masterId": 86,
+      "contractIds": [
+        "private.supplied-balance-projection"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Retirement Longevity Calculator"
+    },
+    {
+      "masterId": 125,
+      "contractIds": [
+        "private.supplied-price-factor"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Sales Tax Calculator"
+    },
+    {
+      "masterId": 126,
+      "contractIds": [
+        "private.supplied-price-factor"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "GST Calculator"
+    },
+    {
+      "masterId": 127,
+      "contractIds": [
+        "private.supplied-price-factor"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "VAT Calculator"
+    },
+    {
+      "masterId": 134,
+      "contractIds": [
+        "private.supplied-ratio-percent"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Tax Effective Rate Calculator"
+    },
+    {
+      "masterId": 198,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Marketplace Fee Calculator"
+    },
+    {
+      "masterId": 199,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Etsy Profit Calculator"
+    },
+    {
+      "masterId": 468,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Car Affordability Calculator"
+    },
+    {
+      "masterId": 469,
+      "contractIds": [
+        "private.supplied-lease-base"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Auto Lease Calculator"
+    },
+    {
+      "masterId": 470,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Lease vs Buy Calculator"
+    },
+    {
+      "masterId": 472,
+      "contractIds": [
+        "private.supplied-ledger-comparison"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Loan vs Cash Calculator"
+    },
+    {
+      "masterId": 488,
+      "contractIds": [
+        "private.supplied-heat-balance"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "Heat Pump Savings Calculator"
+    },
+    {
+      "masterId": 516,
+      "contractIds": [
+        "private.supplied-weighted-mean"
+      ],
+      "canonicalScopeAdopted": false,
+      "publicationAuthorized": false,
+      "title": "GPA Calculator"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "src/calculators/private-supplied-contracts.ts",
+      "sha256": "9fcad868dc9b2d73940aa1731b1bf73db4d7dcd21662f230866deba6325c749c"
+    },
+    {
+      "path": "src/calculators/private-supplied-contracts.test.ts",
+      "sha256": "bd857584a63ebfa18b764c3a1e35a30bbf3317ccde44ed2e2b76e6a12f192067"
+    },
+    {
+      "path": "src/calculators/source-driven-components.ts",
+      "sha256": "1eb5fcf00acb670fbd04f6082a476d7bf2262a3bd88e20038617dccf3f72b7f3"
+    },
+    {
+      "path": "src/calculators/owner-model-support.ts",
+      "sha256": "5bf53feecb16417522eb17463639d7fc18e489ec1041382a0475b77378de1c8f"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "private.supplied-price-factor",
+      "slug": "private-supplied-price-factor",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0
+          },
+          "rate": {
+            "type": "number",
+            "minimum": 0
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "exclusive",
+              "inclusive"
+            ]
+          }
+        },
+        "required": [
+          "currency",
+          "period",
+          "amount",
+          "rate",
+          "mode"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-price-factor",
+          "expression": "exclusive: net=amount; inclusive: net=amount/(1+rate); tax=net*rate; gross=net+tax",
+          "description": "currency for supplied period; nonnegative supplied rate fraction. Explicit exclusive/inclusive price mode. Caller selects price base and rate; no jurisdiction, taxability or eligibility inferred. Unrounded algebra only, not a legal tax engine. Nonnegative finite amount/rate; finite intermediates; nonzero multiply/divide underflow rejected. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "currency": "USD",
+            "period": "month",
+            "amount": 100,
+            "rate": 0.15,
+            "mode": "exclusive"
+          },
+          "expected": {
+            "net": 100,
+            "tax": 15,
+            "gross": 115
+          }
+        }
+      ]
+    },
+    {
+      "id": "private.supplied-ledger-comparison",
+      "slug": "private-supplied-ledger-comparison",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "left": {
+            "type": "object",
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "period": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "horizon": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              },
+              "flows": {
+                "maxItems": 10000,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "at": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 10000
+                    },
+                    "outflow": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "at",
+                    "outflow"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "terminalDebt": {
+                "type": "number",
+                "minimum": 0
+              },
+              "terminalAsset": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "currency",
+              "period",
+              "horizon",
+              "flows",
+              "terminalDebt",
+              "terminalAsset"
+            ],
+            "additionalProperties": false
+          },
+          "right": {
+            "type": "object",
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "period": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "horizon": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              },
+              "flows": {
+                "maxItems": 10000,
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "at": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 10000
+                    },
+                    "outflow": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "at",
+                    "outflow"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "terminalDebt": {
+                "type": "number",
+                "minimum": 0
+              },
+              "terminalAsset": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "currency",
+              "period",
+              "horizon",
+              "flows",
+              "terminalDebt",
+              "terminalAsset"
+            ],
+            "additionalProperties": false
+          },
+          "discountRate": {
+            "type": "number",
+            "exclusiveMinimum": -1
+          }
+        },
+        "required": [
+          "left",
+          "right",
+          "discountRate"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-ledger-comparison",
+          "expression": "PV = sum(outflow[t] / (1+r)^t) + (terminalDebt-terminalAsset)/(1+r)^H; difference = left-right",
+          "description": "currency; fractional effective rate per declared period; integer period boundary. Caller supplies disjoint signed net cashflows; terminal asset/debt excluded from flows. Identical currency, period and finite horizon; no tax/provider/inclusion rules selected. Terminal asset is after selling costs before debt payoff; no automatic fee/refund assessment. 0..10000 periods and entries; rate > -1; finite intermediates; unrounded IEEE-754. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "left": {
+              "currency": "USD",
+              "period": "month",
+              "horizon": 0,
+              "flows": [
+                {
+                  "at": 0,
+                  "outflow": 10
+                }
+              ],
+              "terminalDebt": 0,
+              "terminalAsset": 0
+            },
+            "right": {
+              "currency": "USD",
+              "period": "month",
+              "horizon": 0,
+              "flows": [],
+              "terminalDebt": 0,
+              "terminalAsset": 0
+            },
+            "discountRate": 0
+          },
+          "expected": {
+            "left": 10,
+            "right": 0,
+            "difference": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "private.supplied-balance-projection",
+      "slug": "private-supplied-balance-projection",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "initial": {
+            "type": "number",
+            "minimum": 0
+          },
+          "timing": {
+            "type": "string",
+            "enum": [
+              "begin",
+              "end"
+            ]
+          },
+          "steps": {
+            "maxItems": 10000,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rate": {
+                  "type": "number",
+                  "exclusiveMinimum": -1
+                },
+                "cashflow": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "rate",
+                "cashflow"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "currency",
+          "period",
+          "initial",
+          "timing",
+          "steps"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-balance-projection",
+          "expression": "Apply supplied return before/after supplied cashflow; cap withdrawals at available balance",
+          "description": "currency; fractional effective return per explicit period. Explicit begin/end cashflow timing and every period return/cashflow supplied. Deposits positive; withdrawals capped at available balance. Zero/shortfall events within supplied horizon only; not retirement safety. 0..10000 steps; nonnegative initial balance; rates > -1; no annual/monthly conversion or inflation selection. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "currency": "USD",
+            "period": "month",
+            "initial": 100,
+            "timing": "end",
+            "steps": [
+              {
+                "rate": 0,
+                "cashflow": -100
+              }
+            ]
+          },
+          "expected": {
+            "balance": 0,
+            "exactZeroPeriod": 1,
+            "firstShortfallPeriod": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "private.supplied-ratio-percent",
+      "slug": "private-supplied-ratio-percent",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "numerator": {
+            "type": "number"
+          },
+          "denominator": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "required": [
+          "currency",
+          "period",
+          "numerator",
+          "denominator"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-ratio-percent",
+          "expression": "percent = numerator / denominator * 100",
+          "description": "percent from same-period, same-currency quantities. Caller defines and supplies numerator and strictly positive denominator. No statutory effective-rate or return-denominator definition. finite inputs/intermediates; unrounded IEEE-754. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "currency": "USD",
+            "period": "month",
+            "numerator": 25,
+            "denominator": 200
+          },
+          "expected": {
+            "percent": 12.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "private.supplied-lease-base",
+      "slug": "private-supplied-lease-base",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "capitalized": {
+            "type": "number",
+            "minimum": 0
+          },
+          "residual": {
+            "type": "number",
+            "minimum": 0
+          },
+          "rentCharge": {
+            "type": "number",
+            "minimum": 0
+          },
+          "payments": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000
+          }
+        },
+        "required": [
+          "currency",
+          "period",
+          "capitalized",
+          "residual",
+          "rentCharge",
+          "payments"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-lease-base",
+          "expression": "basePayment = (capitalized - residual + disclosedRentCharge) / payments",
+          "description": "currency per declared payment period. Disclosed total rent charge, capitalized cost, residual and payment count supplied. No inferred money factor, tax, fees or invoice rounding. 1..10000 payments; nonnegative components; finite intermediates. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "currency": "USD",
+            "period": "month",
+            "capitalized": 18800,
+            "residual": 12350,
+            "rentCharge": 5295,
+            "payments": 48
+          },
+          "expected": {
+            "basePayment": 244.6875
+          }
+        }
+      ]
+    },
+    {
+      "id": "private.supplied-heat-balance",
+      "slug": "private-supplied-heat-balance",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "period": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "usefulHeatKWh": {
+            "type": "number",
+            "minimum": 0
+          },
+          "baselineEfficiency": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1
+          },
+          "scop": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "baselinePricePerKWh": {
+            "type": "number",
+            "minimum": 0
+          },
+          "heatPumpPricePerKWh": {
+            "type": "number",
+            "minimum": 0
+          },
+          "auxiliaryKWh": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "currency",
+          "period",
+          "usefulHeatKWh",
+          "baselineEfficiency",
+          "scop",
+          "baselinePricePerKWh",
+          "heatPumpPricePerKWh",
+          "auxiliaryKWh"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-heat-balance",
+          "expression": "savings = usefulHeat / efficiency * baselinePrice - (usefulHeat / SCOP + externalAuxiliary) * electricityPrice",
+          "description": "currency per declared period from useful heat kWh and currency/kWh. Matched heat demand/system boundary/tariff period. Auxiliary electricity explicitly external to SCOP. No eligibility or installed savings claim. baseline efficiency (0,1]; SCOP > 0; nonnegative heat, prices and auxiliary kWh; finite intermediates. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "currency": "USD",
+            "period": "month",
+            "usefulHeatKWh": 10000,
+            "baselineEfficiency": 1,
+            "scop": 4,
+            "baselinePricePerKWh": 0.1,
+            "heatPumpPricePerKWh": 0.3,
+            "auxiliaryKWh": 100
+          },
+          "expected": {
+            "savings": 220
+          }
+        }
+      ]
+    },
+    {
+      "id": "private.supplied-weighted-mean",
+      "slug": "private-supplied-weighted-mean",
+      "version": 1,
+      "reviewStatus": "draft",
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "rows": {
+            "minItems": 1,
+            "maxItems": 10000,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "number"
+                },
+                "weight": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "value",
+                "weight"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "rows"
+        ],
+        "additionalProperties": false
+      },
+      "formulas": [
+        {
+          "id": "supplied-weighted-mean",
+          "expression": "mean = sum(value * weight) / sum(weight)",
+          "description": "dimensionless points weighted by caller-selected eligible units. Caller supplies eligible grade point mappings and weights. No institution, symbol, repeat, temporary grade or program policy inferred. 0..10000 rows; nonnegative weights with positive sum; finite intermediates. Unrounded IEEE-754 engineering values; no currency display rounding selected."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved supplied-arithmetic contract and provenance",
+          "note": "data/catalog/source-driven-2026-10-27/README.md; engineering-register.json. Source observations are not publisher-byte captures or normative acceptance. RELEASE HOLD."
+        }
+      ],
+      "independentExamples": [
+        {
+          "label": "Independent supplied-input arithmetic witness",
+          "input": {
+            "rows": [
+              {
+                "value": 4,
+                "weight": 1
+              },
+              {
+                "value": 0,
+                "weight": 1
+              }
+            ]
+          },
+          "expected": {
+            "mean": 2
+          }
+        }
+      ]
+    }
+  ],
+  "protectedHashes": {
+    "data/catalog/master-catalog-2026.csv": "3616153c285011c042bfe1ccf2b2244159649ce9a07ff7749504e35398cb0c90",
+    "docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv": "6bea776d2721a99a1cc0d757929ab1ac9e957c0863ac2cba3ac408446df417c1",
+    "data/catalog/risk-review-2026-10-26/reassessment.json": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "docs/audits/specialist-technical-review-2026-10-26/technical-register.json": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "docs/MASTER-BLUEPRINT-GOVERNANCE-AMENDMENT-2026-10-26.md": "40f789fb48755e8fcfe8a3decbc218e3744ce79022a24b3775b42c5bcae26add",
+    "src/calculators/certification-review-policy.ts": "9e9ef8336e722eb667676bd24f8a298254838d3ca01a8d76e83272e34382413e",
+    "src/lib/admin/publishing.ts": "be7ad3e0d51a083bcdec01126619025093113372ef41812b14f236895f69a8d6",
+    "src/calculators/publication-authority.ts": "2c31a8324056873803452c675ba170941f0ee661c3bc2adc8b8305d08f8e516c"
+  },
+  "repositoryHeadAtGeneration": "902f1ef9266fd70bfa2e01abba66971a712f202d"
+}

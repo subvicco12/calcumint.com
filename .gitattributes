@@ -1,0 +1,8 @@
+# Evidence hashes bind committed text bytes on every supported operating system.
+* text=auto eol=lf
+# Historical CSV evidence contains both LF and CRLF files; preserve committed bytes.
+*.csv -text
+*.zip binary
+*.png binary
+*.jpg binary
+*.pdf binary

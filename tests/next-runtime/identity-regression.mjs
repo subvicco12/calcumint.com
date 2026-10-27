@@ -20,7 +20,7 @@ export async function verifySyntheticIdentityContinuity(context){
  let auth,browser,server,selection,release=()=>{},releaseUser=()=>{};
  try{
   auth=await startAuthFixture(db);
-  await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),'dir');
+  await symlink(path.join(root,'node_modules'),path.join(dir,'node_modules'),process.platform==='win32'?'junction':'dir');
   const entry=path.join(dir,'entry.ts');
   await writeFile(entry,`import {createSupabaseBrowserClient} from ${JSON.stringify(path.join(root,'src/lib/supabase/browser.ts'))};
    const client=createSupabaseBrowserClient();
