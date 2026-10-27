@@ -23,7 +23,7 @@ Spec: owner's Windows Batch 01 QA Closure directive; preserve all protected iden
 - [x] Reproduce CDP transport; remove any demonstrated fixture assumption that child JavaScript must execute before the startup deadline, while preserving process/profile cleanup assertions.
 - [x] Run the trust cohort with normal Vitest settings; then every applicable unit file with controlled concurrency and separate QA evidence paths.
 - [x] Run offline Node/transport/browser guards serially, lint, typecheck and one webpack build. Keep all failures as evidence.
-- [ ] Review substantive changes and protected hashes against HEAD and historical manifests; stage only coherent implementation/docs, commit locally and record the implementation SHA.
+- [x] Review substantive changes and protected hashes against HEAD and historical manifests; stage only coherent implementation/docs, commit locally and record the implementation SHA (`589689e9a43ff8eecab72791bc8b4f81177a8ae6`).
 
 Owner archive generation follows the documentation receipt commit so the external archive can bind both existing Git SHAs without a self-referential report or archive hash. Its generated receipt/manifest/checksum record the final packaging result.
 

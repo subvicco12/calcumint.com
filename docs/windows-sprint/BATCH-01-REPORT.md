@@ -4,7 +4,7 @@ RELEASE HOLD remains active. No push, merge, deployment, production write, migra
 
 Starting branch: `engineering/windows-final-20261027`.
 Starting SHA: `902f1ef9266fd70bfa2e01abba66971a712f202d`.
-Ending implementation SHA: pending the requested QA-closure commit. The dated QA-closure section supersedes the earlier resume status below.
+Ending implementation SHA: `589689e9a43ff8eecab72791bc8b4f81177a8ae6` (local only). The dated QA-closure section supersedes the earlier resume status below.
 
 ## Baseline and independent PR reconciliation
 
@@ -151,7 +151,7 @@ Supplemental command: set `CALCUMINT_MASTER_CSV` to the existing `data/catalog/m
 
 ### Local commit and owner package
 
-All implementation checks above completed before staging. The requested engineering commit contains the preserved prior batch implementation plus these QA fixes and review documents; ignored raw evidence, tooling, caches, credentials and generated build output are excluded. The implementation SHA is recorded in a subsequent documentation-only receipt so the report can name an existing commit without a self-referential hash.
+All implementation checks above completed before staging. Local engineering commit **`589689e9a43ff8eecab72791bc8b4f81177a8ae6`**, `fix: complete Windows calculator integration and QA closure`, contains the preserved prior batch implementation plus these QA fixes and review documents: 41 files, 1,953 insertions and 51 deletions. Ignored raw evidence, tooling, caches, credentials and generated build output are excluded. `git status --short` was empty after this commit. This subsequent documentation-only receipt records that existing implementation SHA without a self-referential hash; it changes only this report and the plan, with no implementation change requiring repeated tests.
 
 Staging encountered an existing zero-byte worktree `index.lock` (created at 04:36:41 local time). Process inspection found no active Git process, and the file was older than five minutes. It was moved intact into QA evidence as `stale-index.lock`, with path/timestamps/process check recorded in `stale-index-lock.json`; nothing was discarded. Staging then succeeded and `git diff --cached --check` passed. The staged change is exactly 41 reviewed files (16 existing implementation/config files plus 25 new source/review files), with no catalog data, acceptance ledger, SQL migration, historical version, generated build, dependency, credential or raw evidence file staged.
 
@@ -163,7 +163,7 @@ The unavailable original Blueprint attachment; canonical mapping/model selection
 
 ## Next substantial implementation tasks
 
-1. Run pinned isolated database, RLS/transport and authenticated native Next journeys on an authorized Docker-capable Windows or Linux environment, using the exact reviewed head and preserved local changes.
+1. Run pinned isolated database, RLS/transport and authenticated native Next journeys on an authorized Docker-capable Windows or Linux environment, using the exact engineering commit listed above.
 2. Resolve per-ID full contract selections against substantive source clauses; then implement distinct calculator accounting/recurrences and actual-engine goldens for the selected 23-case profiles. Supplied ledger reuse alone cannot define these products.
 3. Complete source/provider/rule-pack gaps for the other 27 cases in the 50-case package and preserve the separate 9 missing-source/11 retained-qualified cohorts. Do not manufacture rates, eligibility, denominator definitions or safety models.
 4. Obtain genuine independent acceptance and the original Blueprint reconciliation before any later certification submission. Publication remains a separately authorized future action under RELEASE HOLD.
