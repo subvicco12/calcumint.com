@@ -1,0 +1,301 @@
+[
+  {
+    "masterId": 81,
+    "slug": "private-source-81",
+    "title": "Supplied Deposit Balance Projection (limited)",
+    "examples": [
+      {
+        "label": "End deposits: 100*1.1+10=120",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 100,
+          "timing": "end",
+          "steps": [
+            {
+              "rate": 0.1,
+              "deposit": 10
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 120
+        }
+      },
+      {
+        "label": "Begin deposits: (100+10)*1.1=121",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 100,
+          "timing": "begin",
+          "steps": [
+            {
+              "rate": 0.1,
+              "deposit": 10
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 121
+        }
+      },
+      {
+        "label": "Empty zero horizon",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 0,
+          "timing": "end",
+          "steps": []
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 0
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 85,
+    "slug": "private-source-85",
+    "title": "Supplied Withdrawal Balance Projection 85 (limited)",
+    "examples": [
+      {
+        "label": "Exact depletion then shortfall",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 10,
+          "timing": "end",
+          "steps": [
+            {
+              "rate": 0,
+              "withdrawal": 10
+            },
+            {
+              "rate": 0,
+              "withdrawal": 1
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 0,
+          "exactZeroPeriod": 1,
+          "firstShortfallPeriod": 2
+        }
+      },
+      {
+        "label": "Negative supplied return and begin timing",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 100,
+          "timing": "begin",
+          "steps": [
+            {
+              "rate": -0.5,
+              "withdrawal": 20
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 40,
+          "exactZeroPeriod": null,
+          "firstShortfallPeriod": null
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 86,
+    "slug": "private-source-86",
+    "title": "Supplied Withdrawal Balance Projection 86 (limited)",
+    "examples": [
+      {
+        "label": "Exact depletion then shortfall",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 10,
+          "timing": "end",
+          "steps": [
+            {
+              "rate": 0,
+              "withdrawal": 10
+            },
+            {
+              "rate": 0,
+              "withdrawal": 1
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 0,
+          "exactZeroPeriod": 1,
+          "firstShortfallPeriod": 2
+        }
+      },
+      {
+        "label": "Negative supplied return and begin timing",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "initial": 100,
+          "timing": "begin",
+          "steps": [
+            {
+              "rate": -0.5,
+              "withdrawal": 20
+            }
+          ]
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "endingBalance": 40,
+          "exactZeroPeriod": null,
+          "firstShortfallPeriod": null
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 126,
+    "slug": "private-source-126",
+    "title": "IRD Observed 2026-10-26 Supplied Price Algebra (illustrative)",
+    "examples": [
+      {
+        "label": "Observed exclusive 100",
+        "input": {
+          "sourceProfile": "IRD_OBSERVED_2026_10_26_PRICE_ONLY",
+          "rateFraction": 0.15,
+          "currency": "NZD",
+          "period": "observed price",
+          "amount": 100,
+          "mode": "exclusive"
+        },
+        "expected": {
+          "currency": "NZD",
+          "period": "observed price",
+          "net": 100,
+          "tax": 15,
+          "gross": 115
+        }
+      },
+      {
+        "label": "Observed inclusive 115",
+        "input": {
+          "sourceProfile": "IRD_OBSERVED_2026_10_26_PRICE_ONLY",
+          "rateFraction": 0.15,
+          "currency": "NZD",
+          "period": "observed price",
+          "amount": 115,
+          "mode": "inclusive"
+        },
+        "expected": {
+          "currency": "NZD",
+          "period": "observed price",
+          "net": 100,
+          "tax": 15,
+          "gross": 115
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 469,
+    "slug": "private-source-469",
+    "title": "Supplied Lease Disclosure Base Payment (illustrative)",
+    "examples": [
+      {
+        "label": "Unrounded disclosed base 11745/48",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "adjustedCapitalizedCost": 18800,
+          "residual": 12350,
+          "totalRentCharge": 5295,
+          "paymentCount": 48
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "basePayment": 244.6875
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 488,
+    "slug": "private-source-488",
+    "title": "Supplied Heat Balance Savings (limited)",
+    "examples": [
+      {
+        "label": "1200-(4000+100)/4=175",
+        "input": {
+          "currency": "USD",
+          "period": "supplied period",
+          "usefulHeatKWh": 12000,
+          "baselineEfficiency": 0.8,
+          "scop": 3,
+          "baselinePricePerKWh": 0.08,
+          "heatPumpPricePerKWh": 0.25,
+          "auxiliaryBoundary": "outside-SCOP",
+          "auxiliaryKWh": 100
+        },
+        "expected": {
+          "currency": "USD",
+          "period": "supplied period",
+          "savings": 175
+        }
+      }
+    ]
+  },
+  {
+    "masterId": 516,
+    "slug": "private-source-516",
+    "title": "Supplied Eligible Grade Point Mean (limited)",
+    "examples": [
+      {
+        "label": "Independent eligible mean 82/25",
+        "input": {
+          "policyId": "caller-example",
+          "policyVersion": "1",
+          "maxGradePoints": 4.3,
+          "rows": [
+            {
+              "points": 2.7,
+              "credits": 3
+            },
+            {
+              "points": 3.7,
+              "credits": 4
+            },
+            {
+              "points": 3.3,
+              "credits": 3
+            }
+          ]
+        },
+        "expected": {
+          "policyId": "caller-example",
+          "policyVersion": "1",
+          "maxGradePoints": 4.3,
+          "weightedMean": 3.28
+        }
+      }
+    ]
+  }
+]

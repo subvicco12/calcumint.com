@@ -1,3 +1,4 @@
+import {verifySourceCalculatorReview} from './source-calculator-review.mjs';
 import {ownerPreviewReadyScript} from './owner-preview-readiness.mjs';
 import assert from 'node:assert/strict';
 import {mkdir,readFile,unlink} from 'node:fs/promises';
@@ -61,9 +62,11 @@ export async function verifyCalculatorReview({db,auth,browser,journey,artifacts}
    if(format==='PDF')assert(bytes.subarray(0,8).toString().startsWith('%PDF-1.7'));
   }
  });
+ await verifySourceCalculatorReview({browser,journey,artifacts});
  await journey('Private reviewer navigation rejects role revocation and account replacement',async()=>{
   await db.sql(`UPDATE public.platform_admins SET active=false WHERE user_id='${db.users.owner.id}';`);await browser.visit('/account/calculators/power-calculator');await browser.until(`document.body.innerText.includes('Reviewer access required')`);assert(!await browser.js(`!!document.querySelector('[aria-label="work"]')`));
   await browser.visit('/account/calculators/private-owner-145');await browser.until(`document.body.innerText.includes('Reviewer access required')`);assert(!await browser.js("!!document.querySelector('form')"));
+  for(const id of [81,85,86,126,469,488,516]){await browser.visit('/account/calculators/private-source-'+id);await browser.until(`document.body.innerText.includes('Reviewer access required')`);assert(!await browser.js("!!document.querySelector('form')"));}
   await browser.identity(auth.cookie(db.users.outsider));await browser.visit('/account/calculators');await browser.until(`document.body.innerText.includes('Reviewer access required')`);
  });
 }
