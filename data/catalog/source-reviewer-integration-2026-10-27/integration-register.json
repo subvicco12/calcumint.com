@@ -1,0 +1,1096 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "902f1ef9266fd70bfa2e01abba66971a712f202d",
+  "basisPath": "data/catalog/source-driven-2026-10-27/engineering-register.json",
+  "basisSHA256": "5eb13eef4484fb708bb61e85b8ec9b6353e439489f35c97f328ed15b42dd0205",
+  "summary": {
+    "componentSupportedCases": 23,
+    "integratedPrivateBoundedProfiles": 7,
+    "notIntegratedContractBlockers": 16,
+    "fullCalculatorAcceptances": 0,
+    "certifications": 0,
+    "publications": 0
+  },
+  "releaseHold": true,
+  "files": {
+    "src/calculators/private-source-definitions.ts": "a3599348ace7ac108456c81fad7169fc5b81d245d9ca69b8cc0711aa3640cd08",
+    "src/calculators/source-driven-components.ts": "1eb5fcf00acb670fbd04f6082a476d7bf2262a3bd88e20038617dccf3f72b7f3",
+    "src/calculators/owner-model-support.ts": "5bf53feecb16417522eb17463639d7fc18e489ec1041382a0475b77378de1c8f",
+    "tests/next-runtime/source-scope-cases.json": "81bb83774d50cd88d2adea21ca4715f9c81cb7de5a5b5747c658be7808a23426"
+  },
+  "protectedHashes": {
+    "data/catalog/master-catalog-2026.csv": "3616153c285011c042bfe1ccf2b2244159649ce9a07ff7749504e35398cb0c90",
+    "docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv": "6bea776d2721a99a1cc0d757929ab1ac9e957c0863ac2cba3ac408446df417c1",
+    "data/catalog/risk-review-2026-10-26/reassessment.json": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e",
+    "docs/audits/specialist-technical-review-2026-10-26/technical-register.json": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976",
+    "docs/MASTER-BLUEPRINT-GOVERNANCE-AMENDMENT-2026-10-26.md": "40f789fb48755e8fcfe8a3decbc218e3744ce79022a24b3775b42c5bcae26add",
+    "src/calculators/certification-review-policy.ts": "9e9ef8336e722eb667676bd24f8a298254838d3ca01a8d76e83272e34382413e",
+    "src/lib/admin/publishing.ts": "be7ad3e0d51a083bcdec01126619025093113372ef41812b14f236895f69a8d6",
+    "src/calculators/publication-authority.ts": "2c31a8324056873803452c675ba170941f0ee661c3bc2adc8b8305d08f8e516c"
+  },
+  "rows": [
+    {
+      "masterId": 21,
+      "catalogTitle": "Debt Consolidation Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 9,
+          "url": "https://www.consumerfinance.gov/ask-cfpb/what-do-i-need-to-know-if-im-thinking-about-consolidating-my-credit-card-debt-en-1861/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "ecc2e96042e3247f2b5e95387c0682804cf03f90757836f62fa48cd119f76d9e",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "CFPB cost warnings do not establish the proposed comparison equation or complete fee/horizon/terminal accounting contract."
+    },
+    {
+      "masterId": 32,
+      "catalogTitle": "Rent vs Buy Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 12,
+          "url": "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "d8d4223fa1cf1242b64eb69b78c80620e694736e80351d8d46cccafe0230515c",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Rent/buy financing, opportunity costs, tax inclusions and terminal-sale method are not established by a generic cashflow comparison."
+    },
+    {
+      "masterId": 36,
+      "catalogTitle": "Rental Property Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Full tax/depreciation model, if retained, needs basis allocation, service date, GDS/ADS eligibility, mid-month tables/disposition and applicable tax-year review; building basis / 27.5 alone is insufficient.",
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 32,
+          "url": "https://www.irs.gov/publications/p527",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "7020b2e70f5c99bdb1f9f50787af09bc4fd1b241c1213b013ebbfed11118a029",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "NOI, vacancy, operating expense, capex/reserve and financing classifications remain unselected."
+    },
+    {
+      "masterId": 43,
+      "catalogTitle": "Rental ROI Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        },
+        {
+          "id": "supplied-ratio-percent",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Full tax/depreciation model, if retained, needs basis allocation, service date, GDS/ADS eligibility, mid-month tables/disposition and applicable tax-year review; building basis / 27.5 alone is insufficient.",
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 32,
+          "url": "https://www.irs.gov/publications/p527",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "7020b2e70f5c99bdb1f9f50787af09bc4fd1b241c1213b013ebbfed11118a029",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Return definition, initial investment denominator, period and cash-on-cash/total-return/IRR choice remain unresolved."
+    },
+    {
+      "masterId": 46,
+      "catalogTitle": "House Flipping Profit Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 12,
+          "url": "https://www.consumerfinance.gov/rules-policy/regulations/1026/38/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "d8d4223fa1cf1242b64eb69b78c80620e694736e80351d8d46cccafe0230515c",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Acquisition/rehab/holding/finance/sale accounting and payoff-principal treatment need a complete selected contract."
+    },
+    {
+      "masterId": 49,
+      "catalogTitle": "Mortgage + Rental Combined Model",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Full tax/depreciation model, if retained, needs basis allocation, service date, GDS/ADS eligibility, mid-month tables/disposition and applicable tax-year review; building basis / 27.5 alone is insufficient.",
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 32,
+          "url": "https://www.irs.gov/publications/p527",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "7020b2e70f5c99bdb1f9f50787af09bc4fd1b241c1213b013ebbfed11118a029",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Mortgage-rental amortization, financing cashflows, balance and sale settlement are not implemented by the generic ledger."
+    },
+    {
+      "masterId": 80,
+      "catalogTitle": "Retirement Corpus Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+        "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+        "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+        "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Illustrative SEC accumulation UI does not define finite retirement corpus, benefit netting or adequacy methodology."
+    },
+    {
+      "masterId": 81,
+      "catalogTitle": "Retirement Savings Calculator",
+      "components": [
+        {
+          "id": "supplied-balance-projection",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+        "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+        "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+        "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 28,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "3299433117d98c96e2907cc774d879c77fdbcd1e875bb80c1a9f6303f6505871",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.81",
+      "slug": "private-source-81",
+      "technicalVersion": 1,
+      "contractId": "supplied-deposit-projection",
+      "inputContract": {
+        "initial": "nonnegative currency",
+        "timing": [
+          "begin",
+          "end"
+        ],
+        "steps": "0..10000 records: rate effective fraction > -1 per supplied period; deposit nonnegative currency"
+      },
+      "outputFields": [
+        "currency",
+        "period",
+        "endingBalance"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    },
+    {
+      "masterId": 84,
+      "catalogTitle": "Inflation-Adjusted Retirement Need Calculator",
+      "components": [
+        {
+          "id": "supplied-balance-projection",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+        "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+        "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+        "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Inflated spending is not corpus; the intended inflation/nominal/real and dependent corpus contract remain unbound."
+    },
+    {
+      "masterId": 85,
+      "catalogTitle": "Retirement Withdrawal Calculator",
+      "components": [
+        {
+          "id": "supplied-balance-projection",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+        "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+        "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+        "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.85",
+      "slug": "private-source-85",
+      "technicalVersion": 1,
+      "contractId": "supplied-withdrawal-projection-85",
+      "inputContract": {
+        "initial": "nonnegative currency",
+        "timing": [
+          "begin",
+          "end"
+        ],
+        "steps": "0..10000 records: rate effective fraction > -1 per supplied period; withdrawal nonnegative currency"
+      },
+      "outputFields": [
+        "currency",
+        "period",
+        "endingBalance",
+        "exactZeroPeriod",
+        "firstShortfallPeriod"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    },
+    {
+      "masterId": 86,
+      "catalogTitle": "Retirement Longevity Calculator",
+      "components": [
+        {
+          "id": "supplied-balance-projection",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+        "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+        "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+        "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.86",
+      "slug": "private-source-86",
+      "technicalVersion": 1,
+      "contractId": "supplied-withdrawal-projection-86",
+      "inputContract": {
+        "initial": "nonnegative currency",
+        "timing": [
+          "begin",
+          "end"
+        ],
+        "steps": "0..10000 records: rate effective fraction > -1 per supplied period; withdrawal nonnegative currency"
+      },
+      "outputFields": [
+        "currency",
+        "period",
+        "endingBalance",
+        "exactZeroPeriod",
+        "firstShortfallPeriod"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    },
+    {
+      "masterId": 125,
+      "catalogTitle": "Sales Tax Calculator",
+      "components": [
+        {
+          "id": "supplied-price-factor",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+        "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+        "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 40,
+          "url": "https://www.tax.ny.gov/pubs_and_bulls/tg_bulletins/st/taxable_receipt.htm",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "8ef15857258c745c42ad1c210b7ca5373a19f68752b9126122064d4774268827",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Applicable delivery jurisdiction/date, taxability/base, discounts/rebates/shipping and prescribed rounding remain unselected."
+    },
+    {
+      "masterId": 126,
+      "catalogTitle": "GST Calculator",
+      "components": [
+        {
+          "id": "supplied-price-factor",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+        "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+        "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 29,
+          "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds/calculating-gst",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "06c09e82d2a8553afca1691583dc461808504ba01371492f7f6dce10e71da3b5",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.126",
+      "slug": "private-source-126",
+      "technicalVersion": 1,
+      "contractId": "ird-observed-2026-10-26-price-only",
+      "inputContract": {
+        "sourceProfile": "literal IRD_OBSERVED_2026_10_26_PRICE_ONLY",
+        "rateFraction": "literal0.15; explicit observation profile, not current law",
+        "currency": "literalNZD",
+        "amount": "nonnegative currency",
+        "mode": [
+          "exclusive",
+          "inclusive"
+        ]
+      },
+      "outputFields": [
+        "currency",
+        "period",
+        "net",
+        "tax",
+        "gross"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    },
+    {
+      "masterId": 127,
+      "catalogTitle": "VAT Calculator",
+      "components": [
+        {
+          "id": "supplied-price-factor",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "SOURCE_GAP",
+      "originalRemainingGaps": [
+        "SOURCE_GAP: arithmetic, product classification and credit entitlement are not established by the rates page.",
+        "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+        "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+        "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 26,
+          "url": "https://www.gov.uk/vat-rates",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "fbc101695dc97257d22ab42767e373aaeb69527ba5fa335e93c960a69d6d946b",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Applicable VAT rate/date/taxability and return/input-credit branches lack a complete selected source-bound contract."
+    },
+    {
+      "masterId": 134,
+      "catalogTitle": "Tax Effective Rate Calculator",
+      "components": [
+        {
+          "id": "supplied-ratio-percent",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED: jurisdiction/year/profile and output contract remain unselected.",
+        "SOURCE_GAP: preserve exact governing clauses/content provenance and obtain missing official boundary/exception/rounding evidence for selected profile.",
+        "Implementation mapping/full SHA, approved authoritative expected cases, actual engine execution and independent review remain pending; obligation applicability screening unresolved."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 23,
+          "url": "https://www.gov.uk/income-tax-rates",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "93714895c718cbcd5e0f4c29a0fc9a0cd6efac7974b89c0aa870ca05bfac948b",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Captured income-tax bands do not define the effective-tax numerator or denominator; generic ratio is not canonical acceptance."
+    },
+    {
+      "masterId": 198,
+      "catalogTitle": "Marketplace Fee Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "SOURCE_GAP",
+      "originalRemainingGaps": [
+        "OWNER_SELECTION_REQUIRED",
+        "ENGINEERING_RESOLVABLE"
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 16,
+          "url": "https://www.etsy.com/legal/fees/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "0f496af02f0395fc9d2a2d27286bdb51d89e25c225b6017d1d377bc54742df5b",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Selected marketplace/provider fee bases, refunds, credits and rule revision are not established by net cashflow arithmetic."
+    },
+    {
+      "masterId": 199,
+      "catalogTitle": "Etsy Profit Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "SOURCE_GAP",
+        "ENGINEERING_RESOLVABLE"
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 15,
+          "url": "https://www.etsy.com/legal/etsy-payments/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "e0ccf06164f490adc40a8ae3400241c56540c088ffd5c8d41b28febdc8194186",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 16,
+          "url": "https://www.etsy.com/legal/fees/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "0f496af02f0395fc9d2a2d27286bdb51d89e25c225b6017d1d377bc54742df5b",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Etsy seller/payment/country profile, different assessed bases, ads/refund treatment, effective dates and rounding remain unresolved."
+    },
+    {
+      "masterId": 468,
+      "catalogTitle": "Car Affordability Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 8,
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "28fb92282b355689029b48eea9c725a73f814e47e673a7c55b54a6ee00002ff1",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "A transport-budget/ownership-cost and loan-inverse contract is not provided by generic ledger reuse; no underwriting profile inferred."
+    },
+    {
+      "masterId": 469,
+      "catalogTitle": "Auto Lease Calculator",
+      "components": [
+        {
+          "id": "supplied-lease-base",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "SOURCE_GAP",
+      "originalRemainingGaps": [
+        "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 17,
+          "url": "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "4bdb30331e9e45fc007fbd13ade035093ca2f53b850b9ca10dbd55f9f67687a5",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 18,
+          "url": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "bbd6315cc56c2c92797ef4c2809edf3c634aa60f004545d97849bc731326944d",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.469",
+      "slug": "private-source-469",
+      "technicalVersion": 1,
+      "contractId": "supplied-lease-disclosure-base",
+      "inputContract": {
+        "adjustedCapitalizedCost": "nonnegative currency",
+        "residual": "nonnegative currency",
+        "totalRentCharge": "nonnegative total currency",
+        "paymentCount": "integer1..10000"
+      },
+      "outputFields": [
+        "currency",
+        "period",
+        "basePayment"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    },
+    {
+      "masterId": 470,
+      "catalogTitle": "Lease vs Buy Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 8,
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "28fb92282b355689029b48eea9c725a73f814e47e673a7c55b54a6ee00002ff1",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 18,
+          "url": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "bbd6315cc56c2c92797ef4c2809edf3c634aa60f004545d97849bc731326944d",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Matched lease/buy horizons, mileage/disposition charges, taxes and terminal equity/debt need a complete comparison contract."
+    },
+    {
+      "masterId": 472,
+      "catalogTitle": "Loan vs Cash Calculator",
+      "components": [
+        {
+          "id": "supplied-ledger-comparison",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "NOT_INTEGRATED_UNRESOLVED_CONTRACT",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "Owner has not selected complete intended product contract.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 8,
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-much-can-i-afford-to-borrow-for-a-car-or-auto-loan-en-751/",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "28fb92282b355689029b48eea9c725a73f814e47e673a7c55b54a6ee00002ff1",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 27,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "1946a97322a61fb02de924479b43d9fad7c81356f5e66e917fef9bf4baf89ab9",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "blockingReason": "Source compounding illustration does not select NPV timing, discount basis, financing inflows, taxes or guaranteed opportunity return."
+    },
+    {
+      "masterId": 488,
+      "catalogTitle": "Heat Pump Savings Calculator",
+      "components": [
+        {
+          "id": "supplied-heat-balance",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "SOURCE_GAP",
+        "ENGINEERING_RESOLVABLE"
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 2,
+          "url": "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "f7ee06f8bde3f4561789803cd0d5a0b924fd925d1232c17cbf05abc588dccd57",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.488",
+      "slug": "private-source-488",
+      "technicalVersion": 1,
+      "contractId": "supplied-heat-balance-outside-scop",
+      "inputContract": {
+        "usefulHeatKWh": "nonnegative useful heat for supplied period",
+        "baselineEfficiency": "fraction(0,1]",
+        "scop": "positive ratio of useful heat to supplied seasonal electricity",
+        "baselinePricePerKWh": "nonnegative currency/kWh",
+        "heatPumpPricePerKWh": "nonnegative currency/kWh",
+        "auxiliaryBoundary": "literaloutside-SCOP",
+        "auxiliaryKWh": "nonnegative electricity outside SCOP in same system/period"
+      },
+      "outputFields": [
+        "currency",
+        "period",
+        "savings"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    },
+    {
+      "masterId": 516,
+      "catalogTitle": "GPA Calculator",
+      "components": [
+        {
+          "id": "supplied-weighted-mean",
+          "version": "1.0.0",
+          "scope": "ARITHMETIC_REUSE_ONLY_NOT_FULL_CASE_ACCEPTANCE"
+        }
+      ],
+      "status": "PRIVATE_BOUNDED_PROFILE",
+      "canonicalBindingApproved": false,
+      "fullCalculatorAccepted": false,
+      "sourceComplete": false,
+      "qualifiedApproval": "PENDING",
+      "certificationAuthorized": false,
+      "publicationAuthorized": false,
+      "originalDecisionClassification": "OWNER_SELECTION_REQUIRED",
+      "originalRemainingGaps": [
+        "SOURCE_GAP",
+        "ENGINEERING_RESOLVABLE"
+      ],
+      "sourceEvidence": [
+        {
+          "ordinal": 7,
+          "url": "https://studentservices.stanford.edu/my-academics/evaluations-exams-grades/grades/how-do-i-calculate-my-grade-point-average-gpa",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "4021734a19308f76230810682f8c6198a835239ec76a6138b1a4a5f9a9410c00",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "calculatorId": "private.source.516",
+      "slug": "private-source-516",
+      "technicalVersion": 1,
+      "contractId": "supplied-policy-eligible-point-mean",
+      "inputContract": {
+        "policyId": "requiredtext1..64",
+        "policyVersion": "requiredtext1..64",
+        "maxGradePoints": "finitepositive",
+        "rows": "0..10000 already-eligible records; points in[0,maxGradePoints], credits nonnegative, positive totalcredits"
+      },
+      "outputFields": [
+        "policyId",
+        "policyVersion",
+        "maxGradePoints",
+        "weightedMean"
+      ],
+      "commonInputContract": {
+        "currency": "explicittext1..64 except profile126fixedNZD; not applicable516",
+        "period": "explicittext1..64 except516institutionalweights",
+        "unknownFields": "rejected",
+        "numericPolicy": "Unrounded IEEE754, finite/overflow/underflow guards and compensated sums; no prescribed display rounding adopted"
+      },
+      "applicability": "Explicit supplied-input educational/reviewer scenario only. No canonical contract adoption, current statutory rule, tax/account eligibility, retirement adequacy, installed performance or institutional mapping inferred.",
+      "remainingAcceptance": "Full per-calculator model/profile, authoritative publisher-byte/revision/applicability evidence and retained qualified/owner decisions remain pending."
+    }
+  ]
+}
