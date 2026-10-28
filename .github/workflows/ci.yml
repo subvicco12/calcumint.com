@@ -64,6 +64,10 @@ jobs:
         run: node tests/workflow-review/browser.mjs
         env:
           CALCUMINT_WORKFLOW_EVIDENCE: ${{ runner.temp }}/private-workflow-browser
+      - name: Source-bound profile and plan-parity browser acceptance
+        run: node tests/source-profile-review/browser.mjs
+        env:
+          CALCUMINT_SOURCE_PROFILE_EVIDENCE: ${{ runner.temp }}/source-profile-browser
       - name: Unit tests
         run: npm test
       - name: Launch certification
