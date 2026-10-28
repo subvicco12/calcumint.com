@@ -60,6 +60,10 @@ jobs:
         env:
           NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-browser
           CDP_STARTUP_DIAGNOSTICS: '1'
+      - name: Private supplied workflow browser acceptance
+        run: node tests/workflow-review/browser.mjs
+        env:
+          CALCUMINT_WORKFLOW_EVIDENCE: ${{ runner.temp }}/private-workflow-browser
       - name: Unit tests
         run: npm test
       - name: Launch certification

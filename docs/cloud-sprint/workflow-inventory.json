@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "68526b5377c762a4f8e5fe96bbd4d7f10510cec8",
+  "releaseHold": true,
+  "canonicalScopeAdopted": false,
+  "publicationAuthorized": false,
+  "workflows": [
+    {
+      "masterIdForEngineeringSupportOnly": 469,
+      "id": "private.workflow.disclosed-lease",
+      "version": 1,
+      "dependency": {
+        "id": "private.supplied-lease-base",
+        "version": 1
+      },
+      "limits": "Disclosed uniform per-payment addition; excludes upfront/end charges, tax computation and invoice rounding.",
+      "sourceEvidence": [
+        {
+          "ordinal": 17,
+          "url": "https://www.federalreserve.gov/pubs/leasing/formce/description.htm",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "4bdb30331e9e45fc007fbd13ade035093ca2f53b850b9ca10dbd55f9f67687a5",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        },
+        {
+          "ordinal": 18,
+          "url": "https://www.federalreserve.gov/pubs/leasing/resource/different/payments.htm",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "bbd6315cc56c2c92797ef4c2809edf3c634aa60f004545d97849bc731326944d",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "remainingGaps": [
+        "Obtain the selected actual lease money-factor convention, cap-cost reduction, timing, taxes/fees and rounding at payment and contract-total stages. APR/2400 is not a universally authorized conversion.",
+        "Qualified independent financial/tax/contract applicability review remains required where relevant; no case-specific legal exemption established.",
+        "Approved catalog ID/version/full-SHA/dependency mapping and actual engine boundary/rounding goldens absent.",
+        "Exact governing revision, source-byte hash and case-specific applicability remain unaccepted."
+      ],
+      "canonicalScopeAdopted": false,
+      "fullCalculatorAccepted": false
+    },
+    {
+      "masterIdForEngineeringSupportOnly": 488,
+      "id": "private.workflow.heat-costs",
+      "version": 1,
+      "dependency": {
+        "id": "private.supplied-heat-balance",
+        "version": 1
+      },
+      "limits": "Matched heat demand, system boundary and period; supplied auxiliary external to SCOP. No installed-performance or eligibility claim.",
+      "sourceEvidence": [
+        {
+          "ordinal": 2,
+          "url": "https://etl.energysecurity.gov.uk/products/heat-pumps/air-water-heat-pumps",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "f7ee06f8bde3f4561789803cd0d5a0b924fd925d1232c17cbf05abc588dccd57",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "remainingGaps": [
+        "SOURCE_GAP",
+        "ENGINEERING_RESOLVABLE"
+      ],
+      "canonicalScopeAdopted": false,
+      "fullCalculatorAccepted": false
+    },
+    {
+      "masterIdForEngineeringSupportOnly": 82,
+      "id": "private.workflow.target-trajectory",
+      "version": 1,
+      "dependency": {
+        "id": "private.supplied-balance-projection",
+        "version": 1
+      },
+      "limits": "Targets supplied at the same period boundaries as balances. No retirement age, target-selection, sustainability or normative timing decision.",
+      "sourceEvidence": [
+        {
+          "ordinal": 28,
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+          "classification": "RELEVANT_CONTENT_VERIFIED",
+          "observationRecordSHA256": "3299433117d98c96e2907cc774d879c77fdbcd1e875bb80c1a9f6303f6505871",
+          "publisherBodySHA256": null,
+          "normativeContractAccepted": false
+        }
+      ],
+      "remainingGaps": [
+        "OWNER_SELECTION_REQUIRED: complete product contract and all intended branches remain unapproved.",
+        "SOURCE_GAP: governing clause/version and scope-complete rule evidence remain incomplete.",
+        "QUALIFIED_REVIEW_REQUIRED: competent independent methodology and obligation/applicability review remain pending; no automatic exemption or mandatory external-signature assertion.",
+        "Approved catalog-to-engine/version/full-SHA binding and actual-engine boundary/rounding acceptance absent."
+      ],
+      "canonicalScopeAdopted": false,
+      "fullCalculatorAccepted": false
+    }
+  ],
+  "implementationSHA256": {
+    "src/calculators/private-scenario-workflows.ts": "6e96315b71e151519b996497f41f80fab21e4d58db173f7e9bfb5b2a29ddbfa7",
+    "src/calculators/private-scenario-workflows.test.ts": "2f692e9dc198c838044c92757a397b4dbeeac53ed81cf944092ab7a1783e3987",
+    "src/calculators/private-case-witnesses.test.ts": "ed7961708915a9f3a9fcf12dedaaa084df00fec2afa62c87fb6195a27f2a5b15",
+    "src/components/private-workflow-review.tsx": "ba6d21416e55a22138d4fa47e75886c75b8e10e91bb0ed56e46d8f678c515afc",
+    "src/components/private-workflow-review.test.tsx": "daf979fc46295459058c69c3fb5eb1cfa9b507187c0a72bae8aa7ce130356ed4",
+    "tests/workflow-review/browser.mjs": "029a3ade08caf7ba744f2357ac336555311ac7cf1db673b37e3c77bd6130cf92",
+    "tests/workflow-review/main.tsx": "c409e11e623ed8aac434ddac94688cbf6e4047a259a8144e60b1969f2b7a4588",
+    "tests/workflow-review/index.html": "346961fca0170291bee095a8a9d1dac3d2cef1f57f254da6e8be1010c6b66d90"
+  }
+}
