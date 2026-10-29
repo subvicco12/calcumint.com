@@ -72,6 +72,10 @@ jobs:
         run: node tests/financial-contract-review/browser.mjs
         env:
           CALCUMINT_FINANCIAL_EVIDENCE: ${{ runner.temp }}/financial-contract-browser
+      - name: Private final calculator discovery and immutable replay
+        run: node tests/final-private-workbench/browser.mjs
+        env:
+          CALCUMINT_WORKBENCH_EVIDENCE: ${{ runner.temp }}/final-private-workbench
       - name: Unit tests
         run: npm test
       - name: Launch certification
