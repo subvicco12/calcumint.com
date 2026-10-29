@@ -68,6 +68,10 @@ jobs:
         run: node tests/source-profile-review/browser.mjs
         env:
           CALCUMINT_SOURCE_PROFILE_EVIDENCE: ${{ runner.temp }}/source-profile-browser
+      - name: Private financial contracts and plan-parity browser acceptance
+        run: node tests/financial-contract-review/browser.mjs
+        env:
+          CALCUMINT_FINANCIAL_EVIDENCE: ${{ runner.temp }}/financial-contract-browser
       - name: Unit tests
         run: npm test
       - name: Launch certification
