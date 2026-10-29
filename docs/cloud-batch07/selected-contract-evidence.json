@@ -1,0 +1,1005 @@
+{
+  "baselineSHA": "c1d19ff55516f4a712a8a916fef28b5ddb9a7357",
+  "releaseHold": true,
+  "rows": [
+    {
+      "masterId": 139,
+      "title": "Gross Margin Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "profit-margin-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Simple gross margin = (revenue-direct cost)/revenue*100",
+      "inputSignature": "revenue >= 1e-9; cost >= 0; same currency/period",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "LaunchSpec explicitly labels simple gross profit margin and computes (revenue-cost)/revenue*100; direct-cost interpretation matches gross margin.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "No accounting classification or multi-line income statement.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 140,
+      "title": "Net Margin Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "formulaScope": "Suppliednetincome/revenue, suppliedEBITDA/revenue, or suppliedLTV/CAC; percentage*100onlyfor margins",
+      "inputSignature": "a suppliednumerator,b nonzero denominator; dedicatedadapterlimitsdenominatorpositive",
+      "outputSignature": "result ratio; margins require explicitpercentageadapter",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "evidence": [
+        "Existing profit-margin uses revenue minus direct cost, not net income after all expenses; tax/expense accounting must be specified.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Suppliedreportedaggregates only; no derivationofnetincome/EBITDA/LTV, accountingclassification, cohortforecast or automatedpolicy.",
+        "Engineeringfamilyreuse is not masteridentityapproval or publicationauthorization."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 141,
+      "title": "Markup Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "markup-price-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Selling price = cost*(1+markupPercent/100)",
+      "inputSignature": "cost>=0; percent finite",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Explicit markup-price engine; cost80,percent25 gives100.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Only price-from-markup; reverse markup percentage from selling price is not supplied.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 142,
+      "title": "Contribution Margin Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "break-even-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Unit contribution margin and contribution margin percent",
+      "inputSignature": "fixedCosts>=0; pricePerUnit>variableCostPerUnit>=0",
+      "outputSignature": "contributionMarginPerUnit; contributionMarginPercent (plus break-even outputs)",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/break-even.ts"
+      ],
+      "evidence": [
+        "Break-even calculate returns price-variableCost and that amount/price*100; golden/example includes20 and40%.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Requires extra fixedCosts input (zero usable); not total multi-product contribution.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 143,
+      "title": "Target Profit Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "target-profit-units-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Required units=(fixed costs+target profit)/(price-variable unit cost)",
+      "inputSignature": "fixedCosts,targetProfit>=0; price>variableCost>=0",
+      "outputSignature": "{value:required units,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-1.test.ts"
+      ],
+      "evidence": [
+        "Definition includes SBA source, zod refinement and golden750 for costs10000/profit5000/price50/variable30.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Target units only, not required revenue or optimizer.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 144,
+      "title": "Profit Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "margin-amount-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Simple gross profit amount=revenue-cost",
+      "inputSignature": "revenue,cost>=0",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Launch definition explicitly returns amount remaining after direct cost.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Gross arithmetic only; unspecified Profit master may also require net profit, tax or operating expenses.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 148,
+      "title": "EBITDA Margin Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "formulaScope": "Suppliednetincome/revenue, suppliedEBITDA/revenue, or suppliedLTV/CAC; percentage*100onlyfor margins",
+      "inputSignature": "a suppliednumerator,b nonzero denominator; dedicatedadapterlimitsdenominatorpositive",
+      "outputSignature": "result ratio; margins require explicitpercentageadapter",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "evidence": [
+        "No EBITDA bridge or measure definition exists in business engines.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Suppliedreportedaggregates only; no derivationofnetincome/EBITDA/LTV, accountingclassification, cohortforecast or automatedpolicy.",
+        "Engineeringfamilyreuse is not masteridentityapproval or publicationauthorization."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 149,
+      "title": "Current Ratio Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Current ratio=current assets/current liabilities",
+      "inputSignature": "a=current assets>=0; b=current liabilities>0",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Generic ratio explicitly computes a/b; supplying classified current assets and liabilities preserves exact ratio arithmetic.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Requires user-supplied classified totals; no balance-sheet classification or accounting policy.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 151,
+      "title": "Working Capital Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "margin-amount-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Working capital=current assets-current liabilities",
+      "inputSignature": "revenue field=current assets>=0; cost field=current liabilities>=0",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Existing subtraction computes two nonnegative supplied monetary totals; working-capital alias is bounded to explicitly classified current totals.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Field relabeling needed; no asset/liability classification or period comparison.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 152,
+      "title": "Inventory Turnover Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Inventory turnover=COGS/supplied average inventory",
+      "inputSignature": "a=COGS>=0; b=explicit positive average inventory",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Existing division supports supplied positive denominator with no domain arithmetic change.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Average inventory must be supplied, not derived; period and days-in-inventory absent.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 153,
+      "title": "Receivables Turnover Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Receivables turnover=credit sales/supplied average receivables",
+      "inputSignature": "a=net credit sales>=0; b=explicit positive average receivables",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Existing division supports supplied positive denominator with no domain arithmetic change.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Average balance, credit-sales classification and period must be supplied; days-sales-outstanding absent.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 164,
+      "title": "MRR Growth Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "percentage-change-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "MRR percent change=(next-old)/abs(old)*100",
+      "inputSignature": "old:positive prior MRR; next:nonnegative current MRR",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Explicit launch formula matches nonnegative revenue growth with positive starting MRR.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Zero prior MRR excluded; no movement bridge.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 165,
+      "title": "MRR Movement Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "net-worth-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/finance/net-worth.ts#calculateNetWorth"
+      ],
+      "formulaScope": "openingMRR+newMRR+expansionMRR+reactivationMRR-contractionMRR-churnMRR",
+      "inputSignature": "same-period nonnegative supplied movement amounts",
+      "outputSignature": "closingMRR=netWorth; total additions and losses available as helper totals",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/finance/net-worth.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "Existing aggregate sum/subtraction exactly computes supplied MRR bridge by assigning additions to assets and losses to liabilities.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "Two-decimal monetary output; no automatic customer classification or reconciliation data import.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 166,
+      "title": "Churn Rate Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "customer-churn-rate-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Customer churn=lost/start*100",
+      "inputSignature": "customersAtStart>0; 0<=customersLost<=start",
+      "outputSignature": "{value:percent,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-1.test.ts"
+      ],
+      "evidence": [
+        "Stripe source; golden25/500*100=5.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Customer churn only; revenue churn differs.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 167,
+      "title": "Retention Rate Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "customer-retention-rate-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Customer retention=(end-new)/start*100",
+      "inputSignature": "start>0; end>=new>=0",
+      "outputSignature": "{value:percent,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/business/catalog-batch-2.test.ts"
+      ],
+      "evidence": [
+        "Stripe source; golden(475-50)/500=85%.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Customer count retention, not revenue retention.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 169,
+      "title": "Gross Revenue Retention Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "net-revenue-retention-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "GRR from NRR with expansionRevenue fixed0",
+      "inputSignature": "beginningRecurringRevenue>0; churn+contraction<=beginning; expansionRevenue=0",
+      "outputSignature": "{value:GRR percent,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/business/catalog-batch-2.test.ts"
+      ],
+      "evidence": [
+        "NRR source/formula explicitly subtract churn and contraction and add expansion; bound expansion to0 recovers gross retention.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Adapter constraint required; unrestricted NRR is not GRR.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 171,
+      "title": "ARPA Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "average-revenue-per-user-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Revenue per account=revenue/account count",
+      "inputSignature": "revenue>=0; users field bound to explicit positive account count",
+      "outputSignature": "{value,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/business/catalog-batch-2.test.ts"
+      ],
+      "evidence": [
+        "ARPU engine divides same-period revenue by supplied positive count; explicit account-count binding preserves arithmetic.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "User/account population must be stated; no account inference.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 174,
+      "title": "LTV:CAC Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "formulaScope": "Suppliednetincome/revenue, suppliedEBITDA/revenue, or suppliedLTV/CAC; percentage*100onlyfor margins",
+      "inputSignature": "a suppliednumerator,b nonzero denominator; dedicatedadapterlimitsdenominatorpositive",
+      "outputSignature": "result ratio; margins require explicitpercentageadapter",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts"
+      ],
+      "evidence": [
+        "CAC engine derives acquisition cost; generic ratio could divide supplied LTV/CAC but no LTV model choice defined.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Suppliedreportedaggregates only; no derivationofnetincome/EBITDA/LTV, accountingclassification, cohortforecast or automatedpolicy.",
+        "Engineeringfamilyreuse is not masteridentityapproval or publicationauthorization."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 175,
+      "title": "CAC Payback Period Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts#launchDefinitions"
+      ],
+      "formulaScope": "CAC/provided monthly gross profit per customer",
+      "inputSignature": "CAC>=0; supplied monthlyGrossProfitPerCustomer>0",
+      "outputSignature": "{result:months}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "ratio-calculator a/b directly supports explicit acquired-customer acquisition cost divided by supplied monthly gross contribution.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "No LTV, churn, gross-margin derivation, expansion or cohort inference; payback based on constant supplied monthly contribution.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 176,
+      "title": "SaaS Magic Number Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "net-worth-calculator",
+        "ratio-calculator",
+        "percentage-of-value-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/finance/net-worth.ts#calculateNetWorth",
+        "src/calculators/core/percentage.ts#percentageCalculator"
+      ],
+      "formulaScope": "4*(currentQuarterRecurringRevenue-previousQuarterRecurringRevenue)/previousQuarterSalesMarketingSpend",
+      "inputSignature": "same-basis supplied quarterly recurring revenue totals>=0; prior-quarter spend>0",
+      "outputSignature": "annualized magic-number ratio",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/finance/net-worth.ts",
+        "src/calculators/core/percentage.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "Aggregate subtraction computes recurring revenue delta; ratio divides by supplied acquisition spend; percentage-of-value with400% multiplies by4. All operations already exist.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "Must explicitly choose quarterly revenue versus ARR convention; cannot silently multiply an already annualized ARR delta by4; round aggregate to2 decimals limitation.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 178,
+      "title": "Burn Rate Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "monthly-burn-rate-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Net monthly burn=max(0,outflow-inflow)",
+      "inputSignature": "monthlyCashOutflow/monthlyCashInflow nonnegative<=1e15",
+      "outputSignature": "{value,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/business/catalog-batch-2.test.ts"
+      ],
+      "evidence": [
+        "Stripe source; golden80000-50000=30000.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Does not expose gross burn; positive cash flow clamps zero.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 180,
+      "title": "SaaS Gross Margin Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "profit-margin-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "SaaS gross margin=(recurring revenue-service COGS)/revenue*100",
+      "inputSignature": "revenue>0; cost=explicit service delivery COGS>=0",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Simple gross profit margin definition permits explicit recurring revenue/direct service cost input binding.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "No SaaS cost allocation or accounting automation.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 182,
+      "title": "Expansion Revenue Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "net-worth-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/finance/net-worth.ts#calculateNetWorth"
+      ],
+      "formulaScope": "sum(explicit existing-customer expansion revenue entries)",
+      "inputSignature": "named nonnegative upsell/crosssell/seat-expansion revenue amounts,<=200",
+      "outputSignature": "expansionRevenue=totalAssets with no liabilities",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/finance/net-worth.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "Existing aggregate helper sums provided expansion amounts; does not infer their classification.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "Two-decimal aggregate; no event ingestion, price-change attribution or account classification.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 183,
+      "title": "Cohort Retention Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator",
+        "percentage-of-value-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts#launchDefinitions",
+        "src/calculators/core/percentage.ts#percentageCalculator"
+      ],
+      "formulaScope": "100*retainedCohortMembers/startingCohortMembers independently for supplied cohort/period cells",
+      "inputSignature": "positive cohort baseline; retained count between0 and baseline for each supplied cell",
+      "outputSignature": "retention percentage per explicitly supplied cohort-period cell",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/core/percentage.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "Existing ratio and percentage arithmetic can evaluate each supplied cohort cell; cohort matrix needs iteration/presentation adapter, not new numeric model.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "No cohort extraction/event identity, survival estimation, reactivation policy or revenue-retention inference.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 185,
+      "title": "Break-even ROAS Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "ratio-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts#launchDefinitions"
+      ],
+      "formulaScope": "breakEvenRoasMultiple=1/providedContributionMarginFraction",
+      "inputSignature": "supplied net-of-all-nonad-variable-cost contribution margin fraction in(0,1]",
+      "outputSignature": "{result:ROAS multiple}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "Existing a/b with a=1,b=positive supplied contribution margin fraction is exact reciprocal contribution relationship; no new solver.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "User supplies applicable contribution fraction; excludes fixed overhead, target profit, attribution/tax policy and margin derivation.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 186,
+      "title": "Marketing ROI Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "roi-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/finance/roi.ts#calculateRoi"
+      ],
+      "formulaScope": "Simple marketing ROI=(attributed ending value-spend)/spend*100",
+      "inputSignature": "initialInvestment=marketing spend>0; finalValue=attributed gross return>=0; additionalCosts=0; incomeReceived=0; holdingMonths required",
+      "outputSignature": "roiPercent plus ancillary ROI outputs",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/finance/roi.ts",
+        "src/calculators/finance/roi.test.ts"
+      ],
+      "evidence": [
+        "calculateRoi computes gain/invested with independent planning goldens.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "User must define attribution and whether return is gross profit or revenue; not ROAS. Holding-period annualization is ancillary.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 187,
+      "title": "CPA Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "customer-acquisition-cost-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "CPA=attributed acquisition spend/acquisitions",
+      "inputSignature": "salesAndMarketingCost=spend>=0; newCustomers=acquisitions integer>0",
+      "outputSignature": "{value:cost/acquisition,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-1.test.ts"
+      ],
+      "evidence": [
+        "Existing CAC computes acquisition cost per new customer; same arithmetic when acquisition explicitly means new customer.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Non-customer actions require different count semantics; not automated attribution.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 188,
+      "title": "CPC Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "unit-price-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "CPC=cost/click count",
+      "inputSignature": "price=spend>=0; quantity=clicks>0",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Unit-price explicitly divides total price by quantity; click count binding is arithmetic preserving.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "No bid auction or attribution model.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 189,
+      "title": "CPM Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "rate-per-thousand-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "CPM=spend/impressions*1000",
+      "inputSignature": "events=spend>=0; population=impressions>0",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "evidence": [
+        "Explicit rate-per-thousand scaledRatio computes numerator/denominator*1000.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Labels need adaptation and nonnegative money/count binding.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 190,
+      "title": "CTR Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "conversion-rate-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "CTR=clicks/impressions*100",
+      "inputSignature": "conversions=clicks>=0; totalVisitors=impressions>0; clicks<=impressions",
+      "outputSignature": "{value:percent,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-1.test.ts"
+      ],
+      "evidence": [
+        "Rate engine validates numerator<=denominator and golden250/5000=5%.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Explicit event bindings; no unique-user CTR inferred.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 192,
+      "title": "Average Order Value Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "average-revenue-per-user-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "AOV=revenue/orders",
+      "inputSignature": "revenue>=0; users=positive order count",
+      "outputSignature": "{value:money/order,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/business/catalog-batch-2.test.ts"
+      ],
+      "evidence": [
+        "ARPU is same-period revenue/count; explicit count binding supports average order value arithmetic.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Refund/tax inclusion and order scope must be stated.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 193,
+      "title": "MER Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "roas-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "MER=total revenue/total marketing spend, with percent/100 presentation",
+      "inputSignature": "conversionValue=total revenue>=0; adSpend=total marketing spend>0",
+      "outputSignature": "{value:percentage,steps}; MER multiple=value/100",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/business/catalog-batch-2.test.ts"
+      ],
+      "evidence": [
+        "ROAS engine computes numerator/spend*100 and Google Ads source defines percent representation.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Requires total marketing rather than attributed ad scope and clear percent vs multiple; no attribution inference.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 196,
+      "title": "Email Conversion Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "conversion-rate-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Email conversion percentage=conversions/selected email denominator*100",
+      "inputSignature": "conversions>=0; totalVisitors=explicit delivered/open/click denominator>0; conversions<=denominator",
+      "outputSignature": "{value:percent,steps}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-1.test.ts"
+      ],
+      "evidence": [
+        "Actual conversion-rate engine arithmetic/refinement supports supplied event counts.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Delivered, opened or clicked denominator must be explicit; not selected by engine.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 197,
+      "title": "Affiliate Commission Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "percentage-of-value-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "Fixed affiliate commission=commission percent*eligible sale value/100",
+      "inputSignature": "percentage finite; value finite (bind both nonnegative)",
+      "outputSignature": "{result:money}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/core/percentage.ts"
+      ],
+      "evidence": [
+        "Percentage engine includes BIPM source and signed/zero/identity goldens.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Fixed percentage only; excludes tiered, recurring, clawback and tax rules.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 202,
+      "title": "Discount Profitability Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "sale-price-calculator",
+        "margin-amount-calculator"
+      ],
+      "helperRefs": [
+        "src/calculators/launch-portfolio.ts#launchDefinitions"
+      ],
+      "formulaScope": "discountedUnitPrice=price*(1-discount/100); discountedUnitContribution=discountedUnitPrice-variableUnitCost",
+      "inputSignature": "price,cost>=0; discount in[0,100]",
+      "outputSignature": "discounted unit price and contribution amount",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/finance/planning-independent-goldens.ts"
+      ],
+      "evidence": [
+        "Existing sale-price formula followed by margin-amount subtraction directly computes bounded unit discount profitability.",
+        "Reuse finding concerns bounded supplied inputs and actual existing arithmetic functions; an adapter or renamed typed interface is not a missing mathematics engine."
+      ],
+      "limitations": [
+        "No demand response, aggregate volume, fixed costs or required-volume optimization; two existing calculations require adapter.",
+        "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    },
+    {
+      "masterId": 207,
+      "title": "Percentage Calculator",
+      "classification": "FAMILY_VARIANT",
+      "engineSlugs": [
+        "percentage-of-value-calculator"
+      ],
+      "helperRefs": [],
+      "formulaScope": "(percentage/100)*value",
+      "inputSignature": "finite percentage,value",
+      "outputSignature": "{result:number}",
+      "sourcePaths": [
+        "src/calculators/registry.ts",
+        "src/calculators/core/percentage.ts"
+      ],
+      "evidence": [
+        "BIPM source; golden20%of250=50, signed and zero goldens exist.",
+        "Inspected actual registered family imports, implementation schemas/calculations/source and authored golden/example fixtures; searched all non-test calculator implementation/helper exports (companion nonfinancial-source-export-audit.json). Tests are source evidence, not a claim of execution."
+      ],
+      "limitations": [
+        "Percentage-of only. Percent change/increase/decrease are separate launch engines.",
+        "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate."
+      ],
+      "missingEngineConfirmed": false,
+      "publicationAuthorized": false
+    }
+  ]
+}
