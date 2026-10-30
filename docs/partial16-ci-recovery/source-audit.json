@@ -1,0 +1,782 @@
+{
+  "schemaVersion": 1,
+  "archiveSHA256": "d49d5a60737546dc8208ff5d1cbfb68740b3e153da3ca56501a7966f290fc1c3",
+  "zipCRCVerified": true,
+  "memberHashesVerified": 53,
+  "nestedAuthority43MemberHashesVerified": 36,
+  "exact16Ids": [
+    9,
+    19,
+    20,
+    23,
+    95,
+    97,
+    98,
+    112,
+    120,
+    128,
+    129,
+    130,
+    132,
+    199,
+    204,
+    527
+  ],
+  "sourceDispositions": {
+    "SOURCE_RESOLVED_BOUNDED": 11,
+    "SOURCE_PARTIAL": 5
+  },
+  "candidateCount": 10,
+  "conditionalCandidateIds": [
+    9,
+    20,
+    23,
+    95,
+    97,
+    98,
+    112,
+    132,
+    199,
+    204
+  ],
+  "sourcePartialIds": [
+    19,
+    120,
+    128,
+    129,
+    130
+  ],
+  "sourceCaptureCounts": {
+    "listed": 48,
+    "verifiedDelivered": 15,
+    "omittedNotVerifiable": 33
+  },
+  "verifiedDeliveredCapturePaths": [
+    "candidate-evidence/native-source-binding.json",
+    "golf-captures/source-evidence.json",
+    "input-authority43/source-capture-index.json",
+    "input-authority43/source-provenance-index.json",
+    "ira-captures/hash-register.json",
+    "ira-captures/reused-source-10.md",
+    "ira-captures/reused-source-3.md",
+    "ira-captures/reused-source-4.md",
+    "ira-captures/reused-source-9.md",
+    "source-resolution-register-16.json",
+    "uk-capture-0.json",
+    "uk-capture-1.json",
+    "uk-capture-2.json",
+    "uk-capture-3.json",
+    "uk-capture-index.json"
+  ],
+  "omittedCapturePaths": [
+    "amend-retrieval.json",
+    "capture-0.json",
+    "capture-1.json",
+    "capture-2.json",
+    "capture-3.json",
+    "capture-hashes.json",
+    "golf-captures/source-0.json",
+    "golf-captures/source-0.md",
+    "golf-captures/source-1.json",
+    "legal-retrieval.json",
+    "processing-retrieval.json",
+    "refund-retrieval.json",
+    "reused-captures/finance-captures/source-0.json",
+    "reused-captures/finance-captures/source-1.json",
+    "reused-captures/finance-captures/source-10.json",
+    "reused-captures/finance-captures/source-2.json",
+    "reused-captures/finance-captures/source-3.json",
+    "reused-captures/finance-captures/source-4.json",
+    "reused-captures/finance-captures/source-5.json",
+    "reused-captures/finance-captures/source-6.json",
+    "reused-captures/finance-captures/source-7.json",
+    "reused-captures/finance-captures/source-8.json",
+    "reused-captures/finance-captures/source-9.json",
+    "reused-captures/uk-provenance.json",
+    "reused-captures/uk-resolution.json",
+    "reused-captures/uk-retrieval-observations.json",
+    "reused-captures/us-evidence/web-section-observation.json",
+    "roundsearch-retrieval.json",
+    "search-retrieval.json",
+    "source-0.md",
+    "source-1.md",
+    "source-2.md",
+    "source-3.md"
+  ],
+  "ukCaptureHashesVerified": 13,
+  "iraMarkdownHashesVerified": 4,
+  "hashMeaning": "Delivered extraction/structured-response/markdown hashes are verified. Omitted capture hashes cannot be verified here. Neither is a publisher-byte identity claim.",
+  "unchangedPolicyCohort": [
+    34,
+    48,
+    92,
+    121,
+    122,
+    123,
+    124,
+    131,
+    135,
+    137,
+    173,
+    198,
+    442
+  ],
+  "unchangedQualifiedCohort": [
+    87,
+    136,
+    404,
+    405,
+    406,
+    407,
+    408,
+    409,
+    410,
+    502,
+    522,
+    526,
+    530
+  ],
+  "component485Unchanged": true,
+  "candidates": [
+    {
+      "masterId": 9,
+      "title": "APR Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "Regular US closed-end single advance, two or more equal monthly end-period payments; already determined AF, or bounded simple unsecured loan fee construction",
+        "formula": "B0=AF; Bk=B(k-1)*(1+i)-P; solve Bn=0, equivalently AF=sum(P/(1+i)^k,k=1..n); APR percent=1200*i. Optional simple loan AF=principal+other financed non-finance-charge amounts-prepaid finance charges, avoiding double counting.",
+        "units": "USD; i decimal/month; APR percentage points/year",
+        "domain": "AF>0,P>0,n integer>=2; AF<=n*P for nonnegative rate; no odd periods, irregular payments, further advances, add-on/discount charges, mortgage/insurance/excluded fee classification. Monthly dates obey Appendix J b(3)(iv); first due one full month after finance charge begins. AF supplied legally classified; optional only creditor-imposed loan fee with no 1026.4 exclusion and no cash-comparable fee.",
+        "validation": "Reject missing AF classification, schedule mismatches, nonfinite/negative amounts, n<2 or AF>nP; no default fee classification. Strictly decreasing PV ensures unique nonnegative root; AF=nP gives zero.",
+        "rounding": "Carry sufficient precision to prove correct nearest 0.01 percentage-point APR by enclosing root until both interval endpoints round identically. Reject exact halfway or unresolved enclosure; tie mode is separate product policy. Mathematical recurrence derived from textual a(2), not unviewed raster equation."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Actuarial profile selection; general fee classifier, irregular calendar branches and exact-halfway display tie mode remain outside profile"
+        ]
+      },
+      "independentExampleSpecifications": {
+        "method": "Python fractions.Fraction; mathematical witness, no engine run",
+        "sourceExample": {
+          "source": "https://www.consumerfinance.gov/rules-policy/regulations/1026/18/",
+          "clause": "commentary 18(b)(3)1(i)",
+          "principal": "2500",
+          "separateLoanFee": "40",
+          "AF": "2460"
+        },
+        "synthetic": [
+          {
+            "AF": "2010000/10201",
+            "P": "100",
+            "n": 2,
+            "monthlyRate": "1/100",
+            "APRpercent": "12",
+            "roundedAPRpercent": "12.00",
+            "residualExact": "0"
+          }
+        ]
+      },
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 20,
+      "title": "Balance Transfer Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "LGC61498 documented transfer-fee component only; not a promotional payoff/comparison contract",
+        "formula": "fee=max(5,0.03*T) when supplied source-defined transfers-made-within-60-days predicate is true; otherwise max(5,0.05*T)",
+        "units": "USD transfer principal and fee",
+        "domain": "T positive whole USD; offer eligibility and source-defined within-60-days predicate externally established; no eligibility inference (source warns account may not be eligible). No synthetic merge with COL00040, no capitalization/accrual/allocation/calendar payoff promise.",
+        "validation": "Reject fractional-dollar T, unknown eligibility or unestablished transfer timing predicate; require actual offer match. Source predicate passed explicitly rather than invent posting/cutoff definition.",
+        "rounding": "For whole-dollar T percentage fee is exact cents; greater-of operation needs no rounding. Arbitrary-cent transfers remain outside profile."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Choose actual offer and compatible complete agreement before any payoff engine or product comparison; decide calendar cutoff from issuer account terms"
+        ]
+      },
+      "independentExampleSpecifications": {
+        "method": "Python fractions.Fraction; synthetic fee-only examples",
+        "synthetic": [
+          {
+            "transferUSD": 100,
+            "within60DaysOfOpening": true,
+            "feeUSD": "5"
+          },
+          {
+            "transferUSD": 1000,
+            "within60DaysOfOpening": true,
+            "feeUSD": "30"
+          },
+          {
+            "transferUSD": 1000,
+            "within60DaysOfOpening": false,
+            "feeUSD": "50"
+          },
+          {
+            "transferUSD": 167,
+            "within60DaysOfOpening": true,
+            "feeUSD": "501/100"
+          }
+        ]
+      },
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 23,
+      "title": "HELOC Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "Merrill/BofA disclosed Interest Only Option, during Draw Period, supplied accrued interest and unpaid fees only",
+        "formula": "minimum=accruedInterest+unpaidFees",
+        "units": "USD for one monthly statement",
+        "domain": "Explicit Interest Only Option, confirmed Draw Period; already lender-computed nonnegative cent interest and fees. No amortizing option, repayment phase, daily accrual generation, index/margin, draws or final payoff calculation.",
+        "validation": "Reject unknown option/phase, negative/fractional-cent amounts, request to compute interest or amortization; require supplied statement timing.",
+        "rounding": "Sum integer cents exactly; no intermediate or output rounding required."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Select actual lender/version and application scope; signed contract required for full HELOC projections"
+        ]
+      },
+      "independentExampleSpecifications": {
+        "method": "Python fractions.Fraction synthetic supplied-component checks",
+        "synthetic": [
+          {
+            "accruedInterestUSD": "125.37",
+            "unpaidFeesUSD": "5.02",
+            "minimumUSD": "13039/100"
+          },
+          {
+            "accruedInterestUSD": "0",
+            "unpaidFeesUSD": "0",
+            "minimumUSD": "0"
+          }
+        ]
+      },
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 95,
+      "title": "Required Minimum Distribution Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "2026 living original owner traditional IRA; age75 birthday in2026; TableIII applies; spouse sole beneficiary if any is not more than10years younger; owner already past first RMD year; no annuity, rollover-in-transit, recharacterization or other balance adjustment; single IRA; ordinary year deadline",
+        "applicability": "Pub590-B2025 explicitly states 2026 balance/year/table rule; no inferred blanket2026 extension",
+        "formula": "minimumDistributionExactUSD = adjustedBalanceAt2025Dec31 / 24.6; ordinary2026 deadline December31,2026",
+        "units": "balance USD exact cents; divisor24.6 years; output USD rational",
+        "validation": [
+          "Require living original owner; traditionalIRA; age75 in2026; verified TableIII spouse facts",
+          "Balance>=0 exact cents; no unmodeled adjustments, annuity, account aggregation, inherited or employer-plan branches",
+          "Reject unsupported year, age or account facts rather than extrapolate"
+        ],
+        "rounding": "Exact rational minimum output; no regulatory round-to-cent or tie rule claimed. Payment instruction and rounded displayed dollar amount outside this bounded numeric method. Preserve exact value and do not present rounded-down amount as satisfying distribution. A payment calculator remains policy-unresolved.",
+        "clauses": [
+          "590-B How Must You Figure Your Required Minimum Distribution?; IRA account balance; Applicable denominator; Distributions during your lifetime; TableIII AppendixB; Distributions by required beginning date"
+        ]
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Explicit owner selection of bounded profile and year; original full product branches remain available for separate specification",
+          "Approved masterId-to-engine/fullSHA/dependency identity binding",
+          "CI executes actual engine against independent source and synthetic fixtures plus rejection, boundary and precision tests; qualified applicability review and governance acceptance remain separate",
+          "Retain release hold; no production edits, certification, publication or acceptance ledger writes"
+        ],
+        "actualEngineAcceptance": false
+      },
+      "independentExampleSpecifications": [
+        {
+          "kind": "source example reproduced with Python fractions.Fraction",
+          "input": {
+            "balanceUSD": 100000,
+            "age": 75,
+            "year": 2026,
+            "spouseYoungerYears": 6
+          },
+          "publisherPrintedUSD": 4065,
+          "computedExactUSD": "500000/123",
+          "computedDecimalInformational": "4065.040650406504",
+          "comparison": "Publisher whole-dollar example is approximate, not evidence of approved payment rounding; exact division verified"
+        },
+        {
+          "kind": "synthetic exact control",
+          "balanceUSD": 24600,
+          "computedExactUSD": "1000"
+        }
+      ],
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 97,
+      "title": "Roth IRA Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "Taxyear2025 US original-owner single filer under50, direct regular Roth contribution only; taxable compensation nonnegative, verified Roth MAGI<150000; no otherIRA contributions, conversions, inherited accounts, excess contributions or spousal compensation; optional qualified distribution only where first Roth taxyear is at least5taxyears before distribution year and age>=59.5 on distribution date",
+        "formula": "contributionMaximumUSD=min(7000,taxableCompensationUSD); qualifiedDistributionTaxableUSD=0 when both five-taxyear and age59.5 tests true; otherwise reject distribution branch",
+        "units": "USD/taxyear; compensationUSD exact cents; taxyear integers and dates for age test",
+        "validation": [
+          "Require2025/single/under50/MAGI<150000/nootherIRA flags; reject unsupported branches",
+          "Require source-defined taxable compensation and Roth MAGI already legally determined; salary is not automatically MAGI",
+          "Require taxable compensation>=0; proposed contribution<=maximum and contribution deadline eligibility separately validated",
+          "For distribution require verified firstRoth contribution taxyear and attained age>=59.5; do not infer qualified status from age alone"
+        ],
+        "rounding": "No phaseout ratio or nearest rounding occurs in this bounded contribution formula; preserve exact cents. Qualified distribution tax amount exactly0. Worksheet2-2 is not invoked below threshold.",
+        "clauses": [
+          "590-A2025 Table2-1 single threshold; How Much Can Be Contributed; What Is Compensation; When Can You Make Contributions",
+          "590-B2025 What Are Qualified Distributions? age59.5 and five-taxyear tests"
+        ]
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Explicit owner selection of bounded profile and year; original full product branches remain available for separate specification",
+          "Approved masterId-to-engine/fullSHA/dependency identity binding",
+          "CI executes actual engine against independent source and synthetic fixtures plus rejection, boundary and precision tests; qualified applicability review and governance acceptance remain separate",
+          "Retain release hold; no production edits, certification, publication or acceptance ledger writes"
+        ],
+        "actualEngineAcceptance": false
+      },
+      "independentExampleSpecifications": [
+        {
+          "kind": "synthetic Python Fraction",
+          "compensationUSD": 4000,
+          "computedMaxUSD": "4000"
+        },
+        {
+          "kind": "synthetic boundary",
+          "compensationUSD": 200000,
+          "MAGIUSD": 149999,
+          "computedMaxUSD": 7000
+        },
+        {
+          "kind": "source worksheet diagnostic, OUTSIDE bounded profile",
+          "source": "590-A2025 Worksheet2-2 illustrated table",
+          "MAGIUSD": 151000,
+          "roundedRatioFromSource": "0.067",
+          "computedLine7USD": "469",
+          "computedLine8USD": 6540,
+          "publisherTableLine11USD": 6540,
+          "publisherProseConflict": "Prose uses MAGI150000 and result6530; table uses151000 and6540. Do not silently repair."
+        }
+      ],
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 98,
+      "title": "Traditional IRA Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "Taxyear2025 single original-owner traditionalIRA; under50; covered by employer plan; verified modifiedAGI nonnegative; no otherIRA contributions, spousal compensation, excess, basis or distribution branches; contribution itself already timely/eligible; received no Social Security benefits in2025 (explicit guard, not inferred from age)",
+        "formula": "contributionMax=min(7000,taxableCompensation); for MAGI<=79000 deductionMax=min(contributionUSD,adjustedCompensationUSD); for MAGI>=89000 deductionMax=0; between: phaseCap=max(200,ceilToNext10((89000-MAGI)*0.70)); deductionMax=min(phaseCap,adjustedCompensationUSD,contributionUSD); nondeductible=contributionUSD-deductionMax",
+        "units": "All moneyUSD exact cents; taxyear2025; ceiling output increments$10",
+        "validation": [
+          "Require single/under50/covered2025; contribution>=0 and<=contributionMax",
+          "Taxable compensation and adjusted worksheet1-2line5 compensation require separate verified inputs; reject negative or inconsistent data",
+          "MAGI is legally computed per Worksheet1-1, not presumed salary; reject other filing/coverage/year/exception branches",
+          "Require receivedSocialSecurityBenefits2025 == false; true or unknown is unsupported/rejected before Table1-2/Worksheet1-2; do not infer false from under50 age."
+        ],
+        "rounding": "Worksheet1-2line4 explicitly round upward to next multiple$10, then minimum$200; exact multiples unchanged, no nearest midpoint tie exists. Final min may retain cents from contribution/compensation inputs. No tax-return display rounding claimed.",
+        "clauses": [
+          "590-A2025 How Much Can Be Contributed; Table1-2; Worksheet1-2lines1-8; What Is Compensation; Worksheet1-1",
+          "590-A2025 Social Security Recipients and AppendixB worksheets: use AppendixB instead of Table1-2/Table1-3/Worksheet1-2 when stated conditions all apply"
+        ]
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Explicit owner selection of bounded profile and year; original full product branches remain available for separate specification",
+          "Approved masterId-to-engine/fullSHA/dependency identity binding",
+          "CI executes actual engine against independent source and synthetic fixtures plus rejection, boundary and precision tests; qualified applicability review and governance acceptance remain separate",
+          "Retain release hold; no production edits, certification, publication or acceptance ledger writes"
+        ],
+        "actualEngineAcceptance": false
+      },
+      "independentExampleSpecifications": [
+        {
+          "kind": "publisher rounding example reproduced Python Fraction",
+          "rawUSD": "611.40",
+          "computedUSD": 620,
+          "publisherUSD": 620
+        },
+        {
+          "kind": "synthetic phaseout",
+          "MAGIUSD": 85000,
+          "contributionUSD": 7000,
+          "adjustedCompensationUSD": 100000,
+          "computedDeductionUSD": 2800,
+          "expectedUSD": 2800
+        },
+        {
+          "kind": "synthetic high boundary",
+          "MAGIUSD": 89000,
+          "computedDeductionUSD": 0
+        },
+        {
+          "kind": "synthetic floor",
+          "MAGIUSD": 88999,
+          "rawUSD": ".70",
+          "computedPhaseCapUSD": 200
+        },
+        {
+          "kind": "synthetic rejection fixture",
+          "input": {
+            "taxYear": 2025,
+            "filingStatus": "single",
+            "age": 45,
+            "coveredByEmployerPlan": true,
+            "taxableCompensationUSD": 100000,
+            "traditionalContributionUSD": 7000,
+            "receivedSocialSecurityBenefits2025": true
+          },
+          "expected": "UNSUPPORTED_PROFILE_APPENDIX_B_REQUIRED",
+          "actualResearchGuardResult": "REJECT",
+          "reason": "Under50 age does not exclude SocialSecurity benefits; AppendixB branch is outside bounded contract"
+        }
+      ],
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 112,
+      "title": "Overtime Pay Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "FLSA covered nonexempt single straight-time hourly rate, fixed workweek; exact mathematical wages output",
+        "formula": "regularWages=r*min(h,40); overtimeWages=1.5*r*max(h-40,0); gross=regularWages+overtimeWages",
+        "units": "USD/hour, actual hours in one fixed recurring 168-hour workweek, USD exact rational output",
+        "domain": "h>=0,r>=applicable minimum; covered nonexempt employee established externally; single hourly rate; no bonuses, premiums, other includible remuneration, salaried straight-time-already-paid arrangement or special exceptions. Do not average weeks.",
+        "validation": "Reject unknown coverage/rate applicability or other remuneration; exact nonnegative decimal inputs parsed as rationals; calendar workweek supplied explicitly.",
+        "rounding": "Return exact rational gross, including fractional cents explicitly. No payroll cents disbursement claim. Cent payout conversion, intermediate-stage choice and tie mode are product/payroll policy, not an alleged missing Fact Sheet clause."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Owner selects exact-value estimator versus cents payroll output; fractional-cent disbursement rounding/reconciliation must be specified for payroll; employment jurisdiction/coverage review"
+        ]
+      },
+      "independentExampleSpecifications": {
+        "method": "Python fractions.Fraction; source and synthetic separately identified",
+        "sourceExample": {
+          "source": "https://www.dol.gov/agencies/whd/fact-sheets/23-flsa-overtime-pay",
+          "salaryFor45Hours": "405",
+          "regularRate": "9",
+          "additionalHalfTime": "45/2",
+          "gross": "855/2",
+          "note": "Official salary example verifies a different already-paid straight-time branch; not claimed as hourly-profile fixture"
+        },
+        "synthetic": [
+          {
+            "hourlyUSD": "20",
+            "hours": "40",
+            "grossExactUSD": "800",
+            "centExact": true
+          },
+          {
+            "hourlyUSD": "20",
+            "hours": "45",
+            "grossExactUSD": "950",
+            "centExact": true
+          },
+          {
+            "hourlyUSD": "20.01",
+            "hours": "41",
+            "grossExactUSD": "166083/200",
+            "centExact": false
+          },
+          {
+            "hourlyUSD": "20.01",
+            "hours": "40.5",
+            "grossExactUSD": "326163/400",
+            "centExact": false
+          }
+        ]
+      },
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 132,
+      "title": "Corporate Tax Estimate Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "FY2026 accounting period 1 April 2026 to 31 March 2027; UK resident ordinary non-ring-fence company, not a close investment-holding company; no associates; supplied correctly established taxable total profits N equal augmented profits A; no foreign distributions/reliefs/special regimes. Computational estimate only, no CT600 filing or collection amount.",
+        "formula": "N<=50000: 19*N/100; 50000<N<=250000: 25*N/100-(3/200)*(250000-N); N>250000:25*N/100; N=0 returns0 before division.",
+        "units": "GBP; exact rational decimal arithmetic; input N >=0 in GBP to at most two decimal places.",
+        "validation": [
+          "Explicit fixed 12-month period only; reject all short/straddling periods",
+          "Require N=A; otherwise use no result",
+          "Require supplied factual eligibility including no qualifying associates",
+          "Reject nonfinite/negative N or more than2 decimal places; eligibility computation not supplied by this calculator"
+        ],
+        "rounding": {
+          "governing": "CTM93220 prohibits rounding of arithmetic preceding CT600; retain exact decimal computation. No nearest-pound interpretation of manual examples.",
+          "displayPolicy": "Optional rounded display must be labeled estimate and expose exact computational amount; cannot be labeled CT600 or final collectible tax.",
+          "stillMissingForBroaderProduct": "Final payable/return decimal serialization and general short-period conventions."
+        },
+        "scopeBoundary": "This is an explicit ordinary computational estimate profile. Full catalog including augmented-profit differences, associates, short periods, foreign distributions and filing remains pending."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Only the explicit 12-month N=A no-associate computational estimate profile",
+          "Adopt exact arithmetic and make optional display rounding visibly separate",
+          "Implement and independently verify domain rejection, threshold boundaries, exact decimal cases; bind reviewed implementation/full SHA",
+          "No filing, final collection amount, deployment or full-product certification inferred"
+        ]
+      },
+      "independentExampleSpecifications": [
+        {
+          "masterId": 132,
+          "label": "FY2026 exact computational estimate",
+          "inputs": {
+            "N": "0",
+            "A": "0",
+            "associates": 0,
+            "period": "2026-04-01/2027-03-31"
+          },
+          "exactGBP": "0",
+          "decimalGBP": 0.0,
+          "exampleType": "synthetic independent arithmetic; not official expected tax",
+          "scope": "bounded estimate; exact arithmetic, no filing/collection rounding",
+          "engineExecution": false
+        },
+        {
+          "masterId": 132,
+          "label": "FY2026 exact computational estimate",
+          "inputs": {
+            "N": "50000",
+            "A": "50000",
+            "associates": 0,
+            "period": "2026-04-01/2027-03-31"
+          },
+          "exactGBP": "9500",
+          "decimalGBP": 9500.0,
+          "exampleType": "synthetic independent arithmetic; not official expected tax",
+          "scope": "bounded estimate; exact arithmetic, no filing/collection rounding",
+          "engineExecution": false
+        },
+        {
+          "masterId": 132,
+          "label": "FY2026 exact computational estimate",
+          "inputs": {
+            "N": "50000.01",
+            "A": "50000.01",
+            "associates": 0,
+            "period": "2026-04-01/2027-03-31"
+          },
+          "exactGBP": "190000053/20000",
+          "decimalGBP": 9500.00265,
+          "exampleType": "synthetic independent arithmetic; not official expected tax",
+          "scope": "bounded estimate; exact arithmetic, no filing/collection rounding",
+          "engineExecution": false
+        },
+        {
+          "masterId": 132,
+          "label": "FY2026 exact computational estimate",
+          "inputs": {
+            "N": "100000",
+            "A": "100000",
+            "associates": 0,
+            "period": "2026-04-01/2027-03-31"
+          },
+          "exactGBP": "22750",
+          "decimalGBP": 22750.0,
+          "exampleType": "synthetic independent arithmetic; not official expected tax",
+          "scope": "bounded estimate; exact arithmetic, no filing/collection rounding",
+          "engineExecution": false
+        },
+        {
+          "masterId": 132,
+          "label": "FY2026 exact computational estimate",
+          "inputs": {
+            "N": "250000",
+            "A": "250000",
+            "associates": 0,
+            "period": "2026-04-01/2027-03-31"
+          },
+          "exactGBP": "62500",
+          "decimalGBP": 62500.0,
+          "exampleType": "synthetic independent arithmetic; not official expected tax",
+          "scope": "bounded estimate; exact arithmetic, no filing/collection rounding",
+          "engineExecution": false
+        },
+        {
+          "masterId": 132,
+          "label": "FY2026 exact computational estimate",
+          "inputs": {
+            "N": "250000.01",
+            "A": "250000.01",
+            "associates": 0,
+            "period": "2026-04-01/2027-03-31"
+          },
+          "exactGBP": "25000001/400",
+          "decimalGBP": 62500.0025,
+          "exampleType": "synthetic independent arithmetic; not official expected tax",
+          "scope": "bounded estimate; exact arithmetic, no filing/collection rounding",
+          "engineExecution": false
+        },
+        {
+          "masterId": 132,
+          "label": "manual displayed example reproduced exactly",
+          "inputs": {
+            "N": 90000,
+            "A": 98000
+          },
+          "exactGBP": "999900/49",
+          "decimalGBP": 20406.122448979593,
+          "exampleType": "independent reproduction of source CTM03925 inputs; source displays20406, exact result differs",
+          "scope": "outside bounded N=A profile; diagnostic only",
+          "engineExecution": false
+        }
+      ],
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 199,
+      "title": "Etsy Profit Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "Current-observation Etsy US/USD unrounded scenario or supplied assessed-component reconciliation only",
+        "formula": "P=G-R-sum(assessedFeeComponents)+sum(eligibleAssessedCredits)-COGS-fulfillment-otherCosts. Optional unrounded indicative rates: transaction=.065*(item+shipping+giftwrap); processing=.03*(buyerGrossIncludingTax)+.25; listing=.20 per explicitly specified new listing.",
+        "unitsDomain": "USD; US seller and US bank; same listing/payment currency; explicitly no ad,FX,regulatory or other charges for rate illustration. Actual fees/credits must be supplied for billed-exact reconciliation. Distinguish seller receipts G from marketplace-collected buyer tax.",
+        "rounding": "Assessed ledger inputs in cents require exact integer-minor-unit arithmetic; indicative rates retain rational/decimal precision. User-selected display rounding remains product policy and must be labeled, never represented as Etsy fee assessment.",
+        "refund": "Specific Payments9B seller-funded recalculation and help instructions qualify the general service-fee nonrefundability statement for identified transaction/processing credits. Listing credit only on cancellation. Etsy-covered full refund has zero seller fee credit under9B. Other service fees remain outside inferred credit set.",
+        "date": "Only snapshot observed2026-10-30. Reused last-updated stamps are not universal effective-from dates. Historical/current invoice prediction unsupported.",
+        "refundInterpretationStatus": "Bounded implementation reading inferred from specific published clauses, not an Etsy legal precedence determination. Do not generalize to all service fees. Billed-exact credits supplied from ledger.",
+        "unresolvedOutsideBound": "Original broad full Etsy fee prediction scope remains SOURCE_PARTIAL outside this explicitly narrowed profile. Bounded disposition does not close rounding or historical-document gaps."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Adopt bounded contract and explicit unsupported-profile exclusions.",
+          "Bind mapped source and implementation SHA; test distinct transaction/processing tax bases, seller/Etsy funding, listing cancellation, credits exactly once.",
+          "Run actual engine CI with rational/cent fixtures; label illustrative estimates and fail closed on historical/billed-exact requests."
+        ]
+      },
+      "independentExampleSpecifications": [
+        {
+          "type": "synthetic, not official bill or source worked example",
+          "inputs": {
+            "item": 100,
+            "shipping": 10,
+            "marketplaceTax": 8,
+            "COGS": 40,
+            "fulfillment": 6
+          },
+          "expected": {
+            "transaction": "143/20",
+            "processing": "379/100",
+            "listing": "1/5",
+            "profit": "2643/50"
+          },
+          "reproducedPython": true,
+          "engineExecuted": false
+        }
+      ],
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    },
+    {
+      "masterId": 204,
+      "title": "Return Rate Impact Calculator",
+      "sourceDisposition": "SOURCE_RESOLVED_BOUNDED",
+      "boundedContract": {
+        "profile": "Ordinary non-insurance goods with return rights; operational supplied-cohort scenario plus separately identified AASB15 returns accounting quantities",
+        "formula": "Operational Profit=N*(P-Csale)-N*q*(R+Hincremental+Fincremental-Vrecovered). Simplified homogeneous initial accounting illustration: expected revenue=N*(1-q)*P; refund liability=N*q*P; recovery asset=N*q*(formerCarrying-recoveryCosts-valueDeterioration); recognised cost=N*formerCarrying-recoveryAsset.",
+        "unitsDomain": "Single currency/cohort; N nonnegative integer;0<=q<=1; finite supplied per-unit amounts, nonnegative inputs, recoveryCosts+valueDeterioration<=formerCarrying for simple recovery formula. Refund value R need not equal P in operational mode. Accounting illustration assumes full-price refunds, transferred goods, no other variable consideration/financing/insurance/warranty complexity; q is supplied estimate, not a forecast model.",
+        "rounding": "Exact decimal/rational intermediates; display/ledger rounding is explicit product choice. Source does not impose calculator tie rule.",
+        "period": "Apply December2022 compilation together with2022-9 for annual periods beginning on/after2026-07-01; amendment changes insurance scope Aus5.3, not B20–B27. Earlier period cannot be chosen from calendar date alone; require annual period start and early-adoption state.",
+        "accountingUpstreamConditions": "The accounting illustration requires upstream support for expected entitlement and the variable-consideration reversal constraint (B23 with56–58), not arbitrary q. At each reporting-period end refresh refund liability/expectations (B24) and remeasure recovery asset with expected recovery costs and value deterioration (B25). Supplied estimates must be documented; initial arithmetic alone is not compliance."
+      },
+      "exactConditions": {
+        "conditional": true,
+        "conditions": [
+          "Adopt selected bounded operational/accounting contract and reporting-period selector.",
+          "Bind B20–B27 and2022-9 evidence to implementation SHA.",
+          "CI checks q0/q1, returns vs same-item exchanges/warranties, recovery costs and deterioration, no double counting, separate liability/asset/revenue outputs.",
+          "No full statutory compliance or calibrated return forecast claim.",
+          "For accounting illustration require documented B23/56–58 variable-consideration assessment and period-end B24/B25 remeasurement inputs; reject claims of whole-standard compliance."
+        ]
+      },
+      "independentExampleSpecifications": [
+        {
+          "type": "synthetic independent exact arithmetic, not AASB published example",
+          "inputs": {
+            "N": 100,
+            "P": 10,
+            "Csale": 4,
+            "q": "1/10",
+            "R": 10,
+            "Hincremental": 1,
+            "Fincremental": 0,
+            "Vrecovered": 3
+          },
+          "expected": {
+            "operationalProfit": "520",
+            "accountingRevenue": "900",
+            "refundLiability": "100",
+            "recoveryAsset": "30",
+            "recognisedCost": "370"
+          },
+          "reproducedPython": true,
+          "engineExecuted": false
+        }
+      ],
+      "implementationAdmitted": false,
+      "reason": "Exact-head CI failed twice by timeout; packet owner adoption/mapping/applicability gates remain pending. No adoption inferred from an instruction to evaluate prerequisites."
+    }
+  ],
+  "nationalProfile527": {
+    "implementationAdmitted": false,
+    "conditions": {
+      "conditional": false,
+      "reason": "Do not advance immediately: Rule1.2 authorization/permitted-use and selected national profile remain explicit blockers, even though18hole numeric method is now supported.",
+      "conditions": [
+        "Required association/rights authorization and intended-profile decision",
+        "ExactheadCI success and immutable mapping/golden validation"
+      ]
+    },
+    "boundedMethod": {
+      "profile": "2024-rule18hole differential arithmetic from externally supplied validated adjusted gross score, official course/slope ratings and PCC; research method only, no issued Handicap Index",
+      "formula": "D=(adjustedGross-courseRating-PCC)*113/slope; returnedD=floor(10*D+1/2)/10",
+      "units": "strokes/differential; slope dimensionless",
+      "validation": [
+        "Finite exact-decimal inputs; slope strictly positive; official supplied ratings and already adjusted18hole gross score",
+        "PCC one of-1,0,1,2,3; source inputs not fabricated",
+        "Reject9hole/incomplete round/expected-score generation/full index requests in this component; retain them as full-product requirements"
+      ],
+      "rounding": "Nearest tenth; exact halfway values upward; negative examples-1.54->-1.5,-1.55->-1.5,-1.56->-1.6. Exact rational formula avoids binary tie drift.",
+      "effectivePeriod": "2024 edition method only; current national2026 adoption/discretionary policies remain unresolved",
+      "excludedClaims": [
+        "No WHS authorization, current national rulepack, verified scoring eligibility or official Handicap Index issuance"
+      ]
+    }
+  },
+  "implementationAdmitted": 0,
+  "canonicalAccepted": false,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}
