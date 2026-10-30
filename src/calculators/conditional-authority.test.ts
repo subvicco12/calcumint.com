@@ -1,0 +1,21 @@
+import {describe,it,expect} from 'vitest';
+import {conditionalExamples,exportConditional,importConditional,conditionalProfiles} from './conditional-authority';
+const output=(id:number,patch:Record<string,unknown>={})=>exportConditional({...conditionalExamples[id],...patch}).calculation.output;
+describe('source-bound private exact tax arithmetic',()=>{
+ it.each([['0','0'],['24600','1000'],['100000','500000/123'],['0.01','1/2460']])('95 exact quotient %s',(balance,expected)=>expect(output(95,{balanceUSD:balance}).exactRmdUSD).toBe(expected));
+ it.each([['4000','4000'],['200000','7000'],['0','0'],['6999.99','6999.99']])('97 exact contribution %s',(comp,expected)=>expect(output(97,{taxableCompensationUSD:comp}).contributionMaximumUSD).toBe(expected));
+ it.each([['79000','7000'],['79000.01','7000'],['80000','6300'],['88000','700'],['88714.28','210'],['88714.29','200'],['88999.99','200'],['89000','0']])('98 exact threshold %s',(magi,expected)=>expect(output(98,{magiUSD:magi}).deductionMaximumUSD).toBe(expected));
+ it('98 caps phaseout by exact supplied compensation and contribution',()=>{const o=output(98,{magiUSD:'88000',adjustedCompensationUSD:'600.25',contributionUSD:'500.01'});expect(o.deductionMaximumUSD).toBe('500.01');expect(o.nondeductibleWorksheetUSD).toBe('0');});
+ it('98 worksheet nondeductible does not count amounts above adjusted compensation',()=>{const o=output(98,{magiUSD:'89000',adjustedCompensationUSD:'500',contributionUSD:'700'});expect(o.nondeductibleWorksheetUSD).toBe('500');});
+ it.each([['0','0'],['50000','9500'],['50000.01','9500.00265'],['100000','22750'],['250000','62500'],['250000.01','62500.0025']])('132 exact estimate %s',(profits,expected)=>expect(output(132,{profitsNGBP:profits,augmentedProfitsAGBP:profits}).computationalTaxGBP).toBe(expected));
+ for(const id of [95,97,98,132]){
+  it(`${id} immutable replay and three-plan parity`,()=>{const s=exportConditional(conditionalExamples[id]);expect(Object.isFrozen(s)).toBe(true);expect(Object.isFrozen(s.calculation.output)).toBe(true);expect(importConditional(JSON.parse(JSON.stringify(s)))).toEqual(s);for(const plan of ['free','pro','business'] as const)expect(exportConditional(conditionalExamples[id],plan)).toEqual(s);});
+  it(`${id} rejects unknown keys and unsupported inputs`,()=>{for(const patch of [{extra:true},{evidenceReference:''},{taxYear:2024}])expect(()=>output(id,patch)).toThrow();const e={...conditionalExamples[id]};const field=Object.keys(e).find(k=>k.endsWith('USD')||k.endsWith('GBP'))!;for(const value of ['-1','1.001','NaN','Infinity','1e3',1,null,'1'.repeat(22)])expect(()=>output(id,{[field]:value})).toThrow();});
+  it(`${id} binds source, scope, input and actual output`,()=>{const s=exportConditional(conditionalExamples[id]);for(const [path,value] of [[['calculation','output'],{fake:'0'}],[['governance','publicationAuthorized'],true],[['source','files','0','sha256'],'fake'],[['calculation','calculatorVersion'],2]] as [string[],unknown][]){const fake=JSON.parse(JSON.stringify(s));let target=fake as Record<string,unknown>;for(const key of path.slice(0,-1))target=target[key] as Record<string,unknown>;target[path.at(-1)!]=value;expect(()=>importConditional(fake)).toThrow();}});
+ }
+ it.each([{taxYear:2025},{ageAtBirthday:74},{table:'II'},{spouseSoleBeneficiaryMoreThanTenYearsYounger:true},{unsupportedBalanceAdjustments:true}])('95 rejects unsupported applicability %j',p=>expect(()=>output(95,p)).toThrow());
+ it.each([{magiUSD:'150000'},{under50:false},{otherIraContributions:true},{timelyEligibleContribution:false}])('97 rejects unsupported eligibility %j',p=>expect(()=>output(97,p)).toThrow());
+ it.each([{receivedSocialSecurityBenefits2025:true},{receivedSocialSecurityBenefits2025:null},{employerCovered:false},{contributionUSD:'7000.01'},{adjustedCompensationUSD:'200001'}])('98 rejects unsupported facts %j',p=>expect(()=>output(98,p)).toThrow());
+ it.each([{associates:1},{periodEnd:'2027-03-30'},{augmentedProfitsAGBP:'100001'},{ordinaryNonRingFence:false},{closeInvestmentHolding:true}])('132 rejects unsupported facts %j',p=>expect(()=>output(132,p)).toThrow());
+ it('does not register these as canonical calculators',()=>expect(conditionalProfiles.map(x=>x.id)).toEqual([95,97,98,132]));
+});
