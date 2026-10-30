@@ -122,6 +122,12 @@ jobs:
           node tests/conditional-authority-review/browser.mjs
         env:
           CONDITIONAL_EVIDENCE: ${{ runner.temp }}/conditional-source-contracts
+      - name: Six captured-source contracts and immutable browser acceptance
+        run: |
+          python3 scripts/verify-remaining-six-source.py
+          node tests/remaining-authority-review/browser.mjs
+        env:
+          REMAINING_SIX_EVIDENCE: ${{ runner.temp }}/remaining-six-source-contracts
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
