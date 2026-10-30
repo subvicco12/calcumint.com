@@ -1,0 +1,125 @@
+{
+  "specificationId": "proposed.master485.uk-electricity.scope2.location-based.2026.1",
+  "specificationVersion": 1,
+  "specificationKind": "RESEARCH_SPEC_NOT_RUNTIME_TECHNICAL_VERSION",
+  "baselineEngineeringSHA": "f7912be103b596b5b8bf4a325667fd2e5a2cb30d",
+  "catalogId": 485,
+  "canonicalCalculatorAccepted": false,
+  "adopted": false,
+  "fullScopePreserved": true,
+  "inputContract": {
+    "requiredProfile": "uk-electricity-scope2-location-2026",
+    "requiredYear": 2026,
+    "requiredCountry": "UK",
+    "requiredActivity": "purchased_grid_electricity_owned_controlled_sites",
+    "requiredUnit": "kWh",
+    "kWh": "Finite nonnegative decimal string, pattern ^[0-9]+(?:\\.[0-9]+)?$; no binary float conversion; additional input fields rejected"
+  },
+  "sourceBindings": [
+    {
+      "url": "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026",
+      "publisher": "DESNZ",
+      "publicationDate": null,
+      "revision": "published11June2026; updated31July2026",
+      "effectivePeriod": null,
+      "clauses": "Details July correction; workbook guidance; UK activities2026",
+      "capturePath": "authority-43-20261030/technical-web-open1.json",
+      "contentCaptureSHA256": "ae42683f47b33264ccfc43891bb7952ccd94b8399f43efccab505f91b112eccf",
+      "publisherBytesSHA256": null,
+      "hashMeaning": "SHA256 of locally saved tool response or extracted text, not publisher original binary",
+      "limitation": null
+    },
+    {
+      "url": "https://assets.publishing.service.gov.uk/media/6a2940543b15d05a7ce3202e/2026-GHG-conversion-factors-methodology-report.pdf",
+      "publisher": "DESNZ",
+      "publicationDate": null,
+      "revision": "2026 Final Report",
+      "effectivePeriod": null,
+      "clauses": "Chapter3 electricity;3.23 WTT; Appendix2 electricity time series; OGLv3",
+      "capturePath": "authority-43-20261030/technical-source-3.txt",
+      "contentCaptureSHA256": "3b4d535399caac029990911c696f49fce78e1936e4c30977c470ff717c6e7fe1",
+      "publisherBytesSHA256": null,
+      "hashMeaning": "SHA256 of locally saved tool response or extracted text, not publisher original binary",
+      "limitation": "Full parsed152page document captured; tables/figures parsing is not binary fidelity certification"
+    },
+    {
+      "url": "https://assets.publishing.service.gov.uk/media/6a29392bade52dc0882218a8/ghg-conversion-factors-2026-full-set.xlsx",
+      "publisher": "DESNZ",
+      "publicationDate": null,
+      "revision": "Full setv1.0 year2026",
+      "effectivePeriod": null,
+      "clauses": "Introduction GWP; UK electricity guidance and2026 factor row; Whats new",
+      "capturePath": "authority-43-20261030/technical-extra-0.txt",
+      "contentCaptureSHA256": "2f57f59463ff0b2174ba94d991f73ef81e37f6f1ae2fd7ff35d61d1309389b2d",
+      "publisherBytesSHA256": null,
+      "hashMeaning": "SHA256 of locally saved tool response or extracted text, not publisher original binary",
+      "limitation": "Parsed workbook text; not original XLSX bytes or cell-coordinate validation"
+    },
+    {
+      "url": "https://assets.publishing.service.gov.uk/media/6a6c9748862aaf18d9c62ac9/ghg-conversion-factors-2026-flat-format-revised.xlsx",
+      "publisher": "DESNZ",
+      "publicationDate": null,
+      "revision": "Finalv1.2; internal updated2026-07-10; GOV publication31July2026",
+      "effectivePeriod": null,
+      "clauses": "Front page correction; row7_400_4000_5_1",
+      "capturePath": "authority-43-20261030/technical-extra-1.txt",
+      "contentCaptureSHA256": "6c1803e8cd9beca627b93a8b99f99ca41f5aca6b0aa5f8d6a1414433162c831c",
+      "publisherBytesSHA256": null,
+      "hashMeaning": "SHA256 of locally saved tool response or extracted text, not publisher original binary",
+      "limitation": "Preserve internal version date separately from GOV publication; blank values not zero"
+    }
+  ],
+  "factor": {
+    "id": "7_400_4000_5_1",
+    "value": "0.13096",
+    "unit": "kgCO2e/kWh",
+    "precision": "Published5decimals",
+    "version": "2026 fullv1.0 corroborated revisedflatv1.2"
+  },
+  "calculation": {
+    "kgCO2e": "exactDecimal(kWh)*exactDecimal(0.13096)",
+    "tonnesCO2e": "kgCO2e/1000",
+    "intermediateRounding": "NONE",
+    "output": "Exact decimal strings relative to published factor precision; not physical measurement accuracy claim",
+    "display": "Separate unadopted display precision/mode; keep exact product"
+  },
+  "unsupportedScope": [
+    "nonUK/non2026",
+    "market-based electricity",
+    "T&D/WTT Scope3",
+    "onsite generation",
+    "other footprint activities; remain full canonical backlog, not declared complete"
+  ],
+  "validation": [
+    {
+      "kWh": "0",
+      "kgCO2e": "0"
+    },
+    {
+      "kWh": "100",
+      "kgCO2e": "13.096",
+      "tonnesCO2e": "0.013096"
+    },
+    {
+      "kWh": "1000",
+      "kgCO2e": "130.96",
+      "tonnesCO2e": "0.13096"
+    }
+  ],
+  "mustReject": [
+    "negative/nonfinite quantity",
+    "wrong year/region/unit/boundary",
+    "missing/blank factor, never substitutezero",
+    "GWP multiplication of alreadyCO2e factor"
+  ],
+  "preimplementationDependencies": [
+    "Approve explicit component exposure and catalog/engine identity without reducing full footprint scope",
+    "Freeze original workbook binaries/native cell selection and hash beside parsed evidence; no original binary hash claimed here",
+    "Record source attribution/licence exclusions and competent applicability review",
+    "Select display policy and execute actual-engine independent vectors"
+  ],
+  "releaseHold": true,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "specificationContentSHA256": "084831055ef62fd70a652482bea25cb3beecc08d0059a71ca7cfa226ff5050c0"
+}

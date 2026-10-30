@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "componentId": "private.component.uk-electricity-scope2-location.2026",
+  "version": 1,
+  "relatedCatalogId": 485,
+  "canonicalCalculator": "Carbon Footprint Calculator",
+  "canonicalImplementationClass": "CONTRACT_BLOCKED",
+  "privateAuxiliaryComponentOnly": true,
+  "fullCalculatorComplete": false,
+  "canonicalMappingApproved": false,
+  "registryRegistration": false,
+  "sourceBinding": "docs/authority485/native-source-binding.json",
+  "nativeGateSatisfiedForSelectedFactor": true,
+  "applicability": "UK calendar2026 purchased grid electricity at organisation owned/controlled sites;Scope2/location-based",
+  "factor": {
+    "id": "7_400_4000_5_1",
+    "publishedValue": "0.13096",
+    "unit": "kgCO2e/kWh"
+  },
+  "quantity": "Nonnegative decimal string,max1024characters; no binary conversion.",
+  "output": "Exact canonical decimal kgCO2e and tonnesCO2e strings; no display rounding.",
+  "runtimeSource": "src/calculators/uk-2026-electricity.ts",
+  "privateUI": "src/components/uk-2026-electricity-review.tsx",
+  "resolutionNotes": [
+    "Native workbook/hash/cell requirement now satisfied for this component only.",
+    "Full household/company/lifecycle footprint,inventory boundary,additional activities and canonical mapping remain unselected.",
+    "Rounded display policy remains unadopted; exact strings are displayed unchanged.",
+    "Qualified applicability,reporting obligations and third-party/permitted-use review remain unresolved."
+  ],
+  "releaseHold": true,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "originalResearchRemainingRequirements": [
+    "Broad Carbon Footprint identity remains unselected; full household/company/lifecycle scope, inventory boundary, extra activities and display precision need owner choice",
+    "Original binary workbook hash and exact native cell-coordinate verification not obtained; parsed capture hashes genuine",
+    "Qualified applicability/obligation/license attribution review not granted; OGLv3 observed except third-party exclusions"
+  ],
+  "remainingFullProductRequirements": [
+    "Broad Carbon Footprint identity remains unselected; full household/company/lifecycle scope, inventory boundary, extra activities and display precision need owner choice",
+    "Qualified applicability/obligation/license attribution review not granted; OGLv3 observed except third-party exclusions"
+  ]
+}
