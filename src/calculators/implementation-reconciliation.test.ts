@@ -13,7 +13,7 @@ it('classifies scoped implementation separately from canonical authority and rej
 it('reconciles exact540 identities with current registry/private definitions and truthful lifecycle separation',()=>{
  const m=buildImplementationReconciliation();
  expect(m.rows).toHaveLength(540);expect(new Set(m.rows.map(r=>r.masterId)).size).toBe(540);
- expect(m.summary.classes).toEqual({REGISTERED_IMPLEMENTED:305,PRIVATE_COMPLETE:141,COMPONENT_ONLY:51,CONTRACT_BLOCKED:43,MISSING_ENGINE:0,UNKNOWN:0});
+ expect(m.summary.classes).toEqual({REGISTERED_IMPLEMENTED:305,PRIVATE_COMPLETE:192,COMPONENT_ONLY:0,CONTRACT_BLOCKED:43,MISSING_ENGINE:0,UNKNOWN:0});
  expect(m.engines).toHaveLength(574);
  for(const r of m.rows){
   expect(r.canonicalMappingApproved).toBe(false);expect(r.lifecycle.currentPublicPublication).toBe('UNKNOWN');expect(r.lifecycle.protectedCertification).toBe('UNKNOWN');expect(r.lifecycle.publicationAuthorized).toBe(false);
@@ -40,4 +40,8 @@ it('retains known historical example diagnostic discrepancies without relabeling
 it('records complete closed output schemas for the25 new private component contracts',()=>{
  const m=buildImplementationReconciliation();const contracts=m.rows.flatMap(r=>r.privateImplementations).filter(p=>p.family==='batch08-components');expect(contracts).toHaveLength(25);
  for(const p of contracts)expect(p).toMatchObject({outputContract:{type:'object',additionalProperties:false,required:expect.arrayContaining(['value','unit','dependencyRuns'])}});
+});
+it('records all51 remaining contracts as bounded private with closed outputs while keeping43blocked',()=>{
+ const m=buildImplementationReconciliation();expect(m.rows.flatMap(r=>r.privateImplementations).filter(p=>p.family==='batch09-remaining')).toHaveLength(51);expect(m.summary.classes).toEqual({REGISTERED_IMPLEMENTED:305,PRIVATE_COMPLETE:192,COMPONENT_ONLY:0,CONTRACT_BLOCKED:43,MISSING_ENGINE:0,UNKNOWN:0});
+ for(const p of m.rows.flatMap(r=>r.privateImplementations).filter(p=>p.family==='batch09-remaining'))expect(p).toMatchObject({outputContract:{additionalProperties:false,required:expect.arrayContaining(['value','unit','details','dependencyRuns','helperRuns'])}});
 });

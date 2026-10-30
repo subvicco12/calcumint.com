@@ -1,0 +1,39 @@
+# Bounded private mathematics
+
+These51 profiles complete the supplied scopes stated in their strict schemas and formulas. They do not complete or approve every canonical feature/input/output requirement. Existing unresolved source-version, provider, institution, jurisdiction and qualified applicability records are retained in the540-row manifest. No profile joins the public registry or gains lifecycle authority. RELEASE HOLD remains active.
+
+## Calendar target25
+
+The caller supplies the balance before the first modeled monthly interest period, nominal annual rate, first payment date, target payment date and one calendar rule. Dates are valid Gregorian `YYYY-MM-DD` in1900..2100. The horizon includes both payment dates: an equal first/target date isone payment period. Monthly periods number1..1200.
+
+`clamp-original-day` uses the original first-date day in each month, clamping only short months; January31 → February29 → March31 in2028. `end-of-month` requires the first date to be month end and selects each subsequent month end. The target must exactly match the selected rule. Calendar labeling does not change nominal annual interest/12 or introduce daily accrual, business-day holidays, origination dates or lender-specific payment rules.
+
+The original target-month helper supplies an unrounded level payment. The original credit-payoff engine executes that payment, including its0.005 closure tolerance, capped final payment, original2-decimal totals and2400-month internal limit. The new target limits this run to its selected horizon and rejects unsupported numerical annuity denominators or zero displayed payments. The exported raw payment is the modeled payment; its2-decimal display is not silently substituted back into the engine. Payment dates cover the actual payoff periods and may end before the selected target under inherited closure tolerance. This explicit caller-selected calendar is private scenario behavior, not approval of a canonical loan calendar.
+
+## Growth, savings and periodic cashflows
+
+45/57/59 reuse single-capital annual effective growth with supplied inflation.60 uses the original present-value helper.62/66/75 use the original CAGR helper on supplied beginning/ending values, without intervening flows.63 solves equality time through the original logarithm engine; initial equality gives0, while a zero return with unequal values or a negative solved time yields no future equality.67 is an unweighted arithmetic mean;68/69 use the raw Fisher helper.70 is supplied unit-weighted purchase cost, not an average of trade prices.71 compares an explicitly supplied lump sum with explicitly supplied recurring contributions at the same nominal monthly rate and timing; contributed amounts remain separately visible and may differ.
+
+58/61/83/106 use constant nominal annual return/12 and end-month contributions. The original savings engine computes the required unrounded contribution before displaying cents. A displayed rounded contribution is not a contractual funding guarantee. No tuition, benefit, retirement adequacy, forecast return, NAV, tax or provider schedule is inferred.
+
+72 solves one periodic cashflow yield in the caller's explicit bracket using the original private root solver. Time0 is the supplied investment cashflow; later entries are equally spaced periods. Multiple roots and roots outside the bracket may exist. No coupon schedule, accrued interest, clean/dirty price, day count, annualization or investment recommendation is selected.73 discounts supplied period1..n cashflows with the original PV helper and compensated summation.74 uses supplied dividend/price.47/76/77 reuse the original supplied holding-period ROI with separate costs/income; no causal renovation attribution, fee model, live quotes or reinvestment.78/480 use constant simple undiscounted payback;79 remains the Rule72 approximation.
+
+## Budget, household and income
+
+37/100/107/108 apply supplied disjoint funding/income and expense totals in one explicit currency and period; names must be unique and original net-worth2-decimal outputs are preserved.93 reports signed income gap, shortfall and surplus;94 is the supplied replacement ratio.101 allocates caller-defined net income50/30/20 with original12-decimal percentage rounding;102 is a supplied savings/income ratio.110/111 require explicit work hours;113 uses a positive old-pay base.114/115 apply constant supplied inflation, preserving2-decimal money/6-decimal percentage outputs.116 separates tip,total and equal raw per-person share;117/118 distinguish discount amount from remaining price.119 is one supplied fixed commission rate with original12-decimal rounding. No statutory work year, tax treatment, payroll tiers or recommended spending policy is introduced.
+
+## Transport, energy and physical models
+
+465 compares caller-supplied EV battery energy/charging efficiency with fuel consumption for the same positive distance; it does not infer trip energy or range.473 compares two fuel cost scenarios over the same distance and preserves signed savings.466 explicitly selects cash-purchase ownership: purchase plus disjoint whole-horizon operating costs minus supplied resale, with a separate annualized cost. Purchase principal, finance payments and resale are excluded from operating categories; no financing/depreciation-tax or resale forecast is modeled.477 is flat supplied energy×tariff without tier/fixed/tax/effective-date assumptions.
+
+494/537 reuse the original standard-atmosphere approximation over[-1000,11000] meters and supplied positive sea-level pressure up to200000Pa. They are not weather, humidity, navigation or safety models.528 computes the original gross supplied MET estimate, MET×3.5×kg/200×minutes. MET is caller supplied; no activity lookup, clinical applicability, individual physiological validity, weight-loss prescription or safety approval is implied. Its inherited numeric limits are not clinical evidence.
+
+## Precision, schemas and immutable evidence
+
+Named inputs and output surfaces are closed. Finite amounts are bounded0..1e12; positive monetary denominators are at least0.01, terms1..1200, ordinary modeled rates[-99,1000] and other declared domains are pinned in code. These are numerical scope limits, not guarantees of representability throughout every Cartesian combination. Unsupported native-engine or helper states fail closed. Existing rounding and raw binary arithmetic remain intact.
+
+Independent RED→GREEN tests demonstrated positive raw cost/yield/commission and tip/discount values disappearing through binary underflow. New wrapper preflights use existing finite multiply/divide guards, preserving true zeros and deliberate historical decimal rounding. Distinct raw CAGR/Fisher inputs whose result cancels tozero are rejected; genuine equal-input zero relationships remain valid. Historic engines/helpers were not changed.
+
+The whole export envelope is detached and deeply frozen, including methodology, source snapshot, dependency identities, helper bindings, inputs and outputs. The baseline source-tree fingerprint and three helper file hashes identify preserved source bytes; `sourceVersion:1` labels this private binding format, not new external source authority. Replay recomputes the selected private contract and compares every envelope field, rejecting altered identity, input, result, source binding, method or dependency. This is deterministic replay integrity, not a digital signature or proof that caller-supplied facts are authentic.
+
+Free/Pro/Business select the same exact calculation and export math. Private discovery provides all540 identities and only the51 new runnable profiles in this fixture. Its20-entry detached history is tab-local, with no account API or persistent storage. Browser plan selection is not subscription-provider acceptance. Historic fixtures, versions, ledger records and original14 private DRAFTs remain intact.

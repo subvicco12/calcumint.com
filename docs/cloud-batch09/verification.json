@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "bd0433f970819ed113553a5e71b6827d838f662b",
+  "baselineCI": {
+    "runId": 41001621530,
+    "conclusion": "success",
+    "verification": "User-supplied verified terminal receipt; no repeated baseline QA/CI polling"
+  },
+  "releaseHold": true,
+  "implementedIds": [
+    25,
+    37,
+    45,
+    47,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    83,
+    93,
+    94,
+    100,
+    101,
+    102,
+    106,
+    107,
+    108,
+    110,
+    111,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    465,
+    466,
+    473,
+    477,
+    480,
+    494,
+    528,
+    537
+  ],
+  "counts": {
+    "REGISTERED_IMPLEMENTED": 305,
+    "PRIVATE_COMPLETE": 192,
+    "COMPONENT_ONLY": 0,
+    "CONTRACT_BLOCKED": 43,
+    "MISSING_ENGINE": 0,
+    "UNKNOWN": 0
+  },
+  "canonicalMappingsApproved": 0,
+  "tests": {
+    "focused": {
+      "passed": 138,
+      "exitCode": 0
+    },
+    "independentNumerical": {
+      "passed": 68,
+      "allSelectedIds": 51
+    },
+    "fullUnit": {
+      "passed": 5722,
+      "skipped": 4,
+      "passedFiles": 777,
+      "skippedFiles": 2,
+      "workers": 1,
+      "exitCode": 0
+    },
+    "browser": {
+      "journeys": 306,
+      "identities": 51,
+      "plans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "widths": [
+        320,
+        1280
+      ],
+      "issues": 0,
+      "invalidCalendarRejected": true,
+      "exactSnapshotParity": true,
+      "exitCode": 0,
+      "limitations": [
+        "Synthetic Free/Pro/Business selection; no subscription/auth-provider acceptance.",
+        "Private supplied profiles and preserved original adapters only; no canonical, applicability or qualified acceptance."
+      ]
+    },
+    "security": {
+      "checks": 8,
+      "schemaPreflight": true,
+      "exitCode": 0,
+      "scope": "Disposable PostgreSQL17.6 and real PostgREST; production equivalence UNKNOWN"
+    },
+    "transport": {
+      "passed": 20,
+      "exitCode": 0
+    },
+    "launchGuards": {
+      "passed": 45,
+      "exitCode": 0
+    },
+    "certificationGuards": {
+      "passed": 15,
+      "exitCode": 0,
+      "certificationAuthorized": false
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 28,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "webpackBuild": {
+      "staticPages": 37,
+      "exitCode": 0
+    },
+    "manifestReproducibility": {
+      "exitCode": 0
+    }
+  },
+  "demonstratedDefects": [
+    "Independent binary underflow in cost/yield/commission:3 RED\u2192GREEN regressions",
+    "Author raw tip/discount underflow:RED\u2192GREEN",
+    "Distinct raw CAGR/Fisher inputs cancelled tozero:RED\u2192GREEN; genuine zero and deliberate original rounding preserved"
+  ],
+  "browserTransportCorrection": {
+    "initialCompletedJourneys": 44,
+    "failure": "Document-load timeout during repeated full registry module navigations; no page errors or forbidden network requests.",
+    "finalHarness": "Fresh page per viewport; verified Load example/Clear scenarios controls reset each profile/plan. All existing calculation/export/history/import/parity assertions retained; empty-history/stale-result assertions added. Final306journeys passed.",
+    "portIsolation": "New harness uses a nonzero OS-selected port because Vite treats0 asdefault5173; old fixtures unchanged."
+  },
+  "artifacts": [
+    {
+      "path": "docs/cloud-batch09/implementation-manifest.json",
+      "sha256": "a1507c8a47622231d854863b2e14dc2566b6dba56b07a87fa1885a470bf61642"
+    },
+    {
+      "path": "docs/cloud-batch09/implementation-manifest.csv",
+      "sha256": "c68468aa445ef80cfa36b5763da3466970fe4d7b84647411d70737a0a132e271"
+    },
+    {
+      "path": "docs/cloud-batch09/discovery.json",
+      "sha256": "e316f418319e300717ad2c964d2ea74c5755971b61be112de8cbc1a040d2d799"
+    },
+    {
+      "path": "docs/cloud-batch09/source-bindings.json",
+      "sha256": "7233e436366b9f32665f14af09cba1a21992c269fbd4413f4850fac0993241dd"
+    },
+    {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5"
+    },
+    {
+      "path": "docs/cloud-batch09/integrity.json",
+      "sha256": "8d22bd9ea75a1b2f0e6fe59bfd72c725d35ee2b9e4440e72118594a62c3d8451"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/focused-final.log",
+      "sha256": "9222ce43af25a2607da32837c464d08202ab38503a1be67718e3c41e1ca3939d"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/unit.log",
+      "sha256": "0f7f1de486d4458cb53b53b14a4b99dc0a9ff4b849507077913dea1dd86026b9"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/browser-final.log",
+      "sha256": "38d3f11302d8e79feb1edf8fd19f9ccfd00ee86b9d9b8fece91ad9b569a34dad"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/security.log",
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/transport.log",
+      "sha256": "c8cb75f74e4fdb37b4e6246a5352ed7042ed0b60c7d55a8e0a511d85e5ec51b8"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/launch.log",
+      "sha256": "f56250564ae796d539f8129cfa6a4fc6e30202737742d9ea7ff6bb35f05e93e7"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/certification.log",
+      "sha256": "b4988299e041274a71f7bf61e392b1b348321cfbdf9e6b13891c65f7e8fb4a00"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/lint-final.log",
+      "sha256": "8a1e18d1bc878e1a5330d4ad92d3202b733ebf804d8558048d845224fae63013"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/build.log",
+      "sha256": "31513a6c5bde2ad21a07751c1b88a1d85150ef525c929185040914799e543a82"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/reconciliation-check.log",
+      "sha256": "e9910d04c6c1f15f0a83f075407518258bcac2f007442df9c4c409d604ed11df"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/initial-red.log",
+      "sha256": "ef79561e55658ffbeb25eacbc1c4ad7dd0d1653a22c4e95e058f572b02ae2519"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/ui-inventory-red.log",
+      "sha256": "ac8faf4c71a35747314bf6b1ea98b23e376aff3cf3c7742f437741d98604a56f"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/source-binding-red.log",
+      "sha256": "8d8723f2143abd4d198c4c5ac0ce6986a7da2758e993e2f04f55525b6be3fdea"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/underflow-red.log",
+      "sha256": "1f74d734de000d0e75cdef2494d3279f40766e617559bd2241cd51bfdf5c5993"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/percentage-underflow-red.log",
+      "sha256": "a57ded63bc4ac090f59c749a3827c4314cf32e595611ba7cdb1ff285ea58cc4d"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/cancellation-red.log",
+      "sha256": "105efdfb4b0fe0591a8e2dbfa9c61f61b70dfd8782377caee41ea11afa73f308"
+    },
+    {
+      "path": "/workspace/work/cloud-batch09-evidence/browser.log",
+      "sha256": "599e426a79d7d79228348faf6856c941d997638a67b8fecbec9f3868a13ee691"
+    }
+  ],
+  "rawEvidenceDurability": "Local raw logs/downloads/screenshots are not claimed permanently hosted; committed code/tests, schemas, hashes and reports travel with the draft PR.",
+  "newHostedCI": "One bounded check after draft PR creation, reported separately; no watch/poll loop."
+}
