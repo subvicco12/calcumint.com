@@ -1,0 +1,691 @@
+{
+  "schemaVersion": 1,
+  "sourceArchiveSHA256": "d49d5a60737546dc8208ff5d1cbfb68740b3e153da3ca56501a7966f290fc1c3",
+  "engineeringBaseSHA": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+  "ownerScopeDirectionApplied": true,
+  "sourcePacketHistoricalFlagsPreserved": true,
+  "explanation": "Owner direction supersedes the missing blanket engineering-scope authorization. Historical packet flags remain historical; actual scope-specific source, mapping and applicability verification is not inferred. Proposed contracts are preparation only, not implemented engines.",
+  "caseCount": 10,
+  "implementationAdmitted": 0,
+  "rows": [
+    {
+      "masterId": 9,
+      "title": "APR Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "Exact classified amount-financed regular monthly actuarial APR; reject fee construction and irregular timing.",
+      "requiredInputsAndEvidence": [
+        "amountFinancedUSD: positive exact decimal",
+        "paymentUSD: positive exact decimal",
+        "paymentCount: integer >=2",
+        "monthly schedule: first payment exactly one full month after charge begins",
+        "classified amount-financed evidence and applicable rule-version reference"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "AF=nP -> APR 0.00",
+        "AF>nP rejects",
+        "n<2 rejects",
+        "root interval endpoints must agree at 0.01 percentage-point precision",
+        "unresolved/halfway root rejects; no assumed tie rule"
+      ],
+      "recordedSourceContract": {
+        "profile": "Regular US closed-end single advance, two or more equal monthly end-period payments; already determined AF, or bounded simple unsecured loan fee construction",
+        "formula": "B0=AF; Bk=B(k-1)*(1+i)-P; solve Bn=0, equivalently AF=sum(P/(1+i)^k,k=1..n); APR percent=1200*i. Optional simple loan AF=principal+other financed non-finance-charge amounts-prepaid finance charges, avoiding double counting.",
+        "units": "USD; i decimal/month; APR percentage points/year",
+        "domain": "AF>0,P>0,n integer>=2; AF<=n*P for nonnegative rate; no odd periods, irregular payments, further advances, add-on/discount charges, mortgage/insurance/excluded fee classification. Monthly dates obey Appendix J b(3)(iv); first due one full month after finance charge begins. AF supplied legally classified; optional only creditor-imposed loan fee with no 1026.4 exclusion and no cash-comparable fee.",
+        "validation": "Reject missing AF classification, schedule mismatches, nonfinite/negative amounts, n<2 or AF>nP; no default fee classification. Strictly decreasing PV ensures unique nonnegative root; AF=nP gives zero.",
+        "rounding": "Carry sufficient precision to prove correct nearest 0.01 percentage-point APR by enclosing root until both interval endpoints round identically. Reject exact halfway or unresolved enclosure; tie mode is separate product policy. Mathematical recurrence derived from textual a(2), not unviewed raster equation."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Actuarial profile selection; general fee classifier, irregular calendar branches and exact-halfway display tie mode remain outside profile"
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [
+        "Historical transaction-specific applicable rule version if required; no publisher formula document missing for this bounded textual recurrence"
+      ],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 20,
+      "title": "Balance Transfer Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "LGC61498 fee-only calculation on whole-dollar transfers; no payoff projection.",
+      "requiredInputsAndEvidence": [
+        "transferUSD: positive integer",
+        "offer identity/version: LGC61498 with verified applicability",
+        "source-defined within-60-days predicate: established true/false with evidence",
+        "eligibility: independently established"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "100 -> minimum fee 5",
+        "1000 -> 30 within predicate,50 otherwise",
+        "167 ->5.01 within predicate",
+        "fractional-dollar transfer rejects",
+        "unknown offer/eligibility/timing rejects"
+      ],
+      "recordedSourceContract": {
+        "profile": "LGC61498 documented transfer-fee component only; not a promotional payoff/comparison contract",
+        "formula": "fee=max(5,0.03*T) when supplied source-defined transfers-made-within-60-days predicate is true; otherwise max(5,0.05*T)",
+        "units": "USD transfer principal and fee",
+        "domain": "T positive whole USD; offer eligibility and source-defined within-60-days predicate externally established; no eligibility inference (source warns account may not be eligible). No synthetic merge with COL00040, no capitalization/accrual/allocation/calendar payoff promise.",
+        "validation": "Reject fractional-dollar T, unknown eligibility or unestablished transfer timing predicate; require actual offer match. Source predicate passed explicitly rather than invent posting/cutoff definition.",
+        "rounding": "For whole-dollar T percentage fee is exact cents; greater-of operation needs no rounding. Arbitrary-cent transfers remain outside profile."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Choose actual offer and compatible complete agreement before any payoff engine or product comparison; decide calendar cutoff from issuer account terms"
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [
+        "Compatible selected full offer/card agreement, daily balance/accrual, allocation, fee capitalization and transfer-date/cutoff definitions remain missing for full product; standalone mathematical fee component is documented"
+      ],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 23,
+      "title": "HELOC Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "Supplied statement-component sum for named interest-only draw option; no generated accrual.",
+      "requiredInputsAndEvidence": [
+        "accruedInterestUSD: nonnegative decimal USD string with at most two fractional digits; convert to integer cents internally",
+        "unpaidFeesUSD: nonnegative decimal USD string with at most two fractional digits; convert to integer cents internally",
+        "lender/version and statement-period evidence",
+        "confirmed Interest Only Option and Draw Period"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "125.37+5.02=130.39",
+        "zero+zero=zero",
+        "fractional-cent/negative components reject",
+        "unknown phase or option rejects",
+        "accrual/amortization requests reject"
+      ],
+      "recordedSourceContract": {
+        "profile": "Merrill/BofA disclosed Interest Only Option, during Draw Period, supplied accrued interest and unpaid fees only",
+        "formula": "minimum=accruedInterest+unpaidFees",
+        "units": "USD for one monthly statement",
+        "domain": "Explicit Interest Only Option, confirmed Draw Period; already lender-computed nonnegative cent interest and fees. No amortizing option, repayment phase, daily accrual generation, index/margin, draws or final payoff calculation.",
+        "validation": "Reject unknown option/phase, negative/fractional-cent amounts, request to compute interest or amortization; require supplied statement timing.",
+        "rounding": "Sum integer cents exactly; no intermediate or output rounding required."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Select actual lender/version and application scope; signed contract required for full HELOC projections"
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [
+        "Signed account contract and daily accrual, index/reset, repayment amortization, final balance rules missing only for full product"
+      ],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 95,
+      "title": "Required Minimum Distribution Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "2026 age75 original-owner traditional IRA TableIII exact quotient only; no payment instruction.",
+      "requiredInputsAndEvidence": [
+        "balanceUSD: nonnegative exact cents as of2025-12-31",
+        "living original owner and traditional IRA evidence",
+        "age75 in2026; verified TableIII spouse conditions",
+        "single IRA; no unsupported adjustments/annuity/aggregation"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "24600 /24.6=1000",
+        "100000 /24.6=500000/123, never claim4065 paid satisfies obligation",
+        "zero balance ->zero",
+        "other age/year/inherited account rejects",
+        "unknown spouse/table eligibility rejects"
+      ],
+      "recordedSourceContract": {
+        "profile": "2026 living original owner traditional IRA; age75 birthday in2026; TableIII applies; spouse sole beneficiary if any is not more than10years younger; owner already past first RMD year; no annuity, rollover-in-transit, recharacterization or other balance adjustment; single IRA; ordinary year deadline",
+        "applicability": "Pub590-B2025 explicitly states 2026 balance/year/table rule; no inferred blanket2026 extension",
+        "formula": "minimumDistributionExactUSD = adjustedBalanceAt2025Dec31 / 24.6; ordinary2026 deadline December31,2026",
+        "units": "balance USD exact cents; divisor24.6 years; output USD rational",
+        "validation": [
+          "Require living original owner; traditionalIRA; age75 in2026; verified TableIII spouse facts",
+          "Balance>=0 exact cents; no unmodeled adjustments, annuity, account aggregation, inherited or employer-plan branches",
+          "Reject unsupported year, age or account facts rather than extrapolate"
+        ],
+        "rounding": "Exact rational minimum output; no regulatory round-to-cent or tie rule claimed. Payment instruction and rounded displayed dollar amount outside this bounded numeric method. Preserve exact value and do not present rounded-down amount as satisfying distribution. A payment calculator remains policy-unresolved.",
+        "clauses": [
+          "590-B How Must You Figure Your Required Minimum Distribution?; IRA account balance; Applicable denominator; Distributions during your lifetime; TableIII AppendixB; Distributions by required beginning date"
+        ]
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Explicit owner selection of bounded profile and year; original full product branches remain available for separate specification",
+          "Approved masterId-to-engine/fullSHA/dependency identity binding",
+          "CI executes actual engine against independent source and synthetic fixtures plus rejection, boundary and precision tests; qualified applicability review and governance acceptance remain separate",
+          "Retain release hold; no production edits, certification, publication or acceptance ledger writes"
+        ],
+        "actualEngineAcceptance": false
+      },
+      "sourcePacketMissingPublisherDocuments": [],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 97,
+      "title": "Roth IRA Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "2025 unphased single under50 direct Roth contribution maximum only; defer distribution branch.",
+      "requiredInputsAndEvidence": [
+        "source-defined taxable compensationUSD: nonnegative exact cents",
+        "legally computed Roth MAGIUSD <150000",
+        "2025/single/under50 evidence",
+        "no other IRA contributions/conversions/excess/inherited/spousal branch",
+        "timely contribution eligibility evidence"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "compensation4000 ->4000",
+        "compensation200000,MAGI149999 ->7000",
+        "MAGI150000 rejects",
+        "other taxyear/filing status/age rejects",
+        "distribution and phaseout requests reject"
+      ],
+      "recordedSourceContract": {
+        "profile": "Taxyear2025 US original-owner single filer under50, direct regular Roth contribution only; taxable compensation nonnegative, verified Roth MAGI<150000; no otherIRA contributions, conversions, inherited accounts, excess contributions or spousal compensation; optional qualified distribution only where first Roth taxyear is at least5taxyears before distribution year and age>=59.5 on distribution date",
+        "formula": "contributionMaximumUSD=min(7000,taxableCompensationUSD); qualifiedDistributionTaxableUSD=0 when both five-taxyear and age59.5 tests true; otherwise reject distribution branch",
+        "units": "USD/taxyear; compensationUSD exact cents; taxyear integers and dates for age test",
+        "validation": [
+          "Require2025/single/under50/MAGI<150000/nootherIRA flags; reject unsupported branches",
+          "Require source-defined taxable compensation and Roth MAGI already legally determined; salary is not automatically MAGI",
+          "Require taxable compensation>=0; proposed contribution<=maximum and contribution deadline eligibility separately validated",
+          "For distribution require verified firstRoth contribution taxyear and attained age>=59.5; do not infer qualified status from age alone"
+        ],
+        "rounding": "No phaseout ratio or nearest rounding occurs in this bounded contribution formula; preserve exact cents. Qualified distribution tax amount exactly0. Worksheet2-2 is not invoked below threshold.",
+        "clauses": [
+          "590-A2025 Table2-1 single threshold; How Much Can Be Contributed; What Is Compensation; When Can You Make Contributions",
+          "590-B2025 What Are Qualified Distributions? age59.5 and five-taxyear tests"
+        ]
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Explicit owner selection of bounded profile and year; original full product branches remain available for separate specification",
+          "Approved masterId-to-engine/fullSHA/dependency identity binding",
+          "CI executes actual engine against independent source and synthetic fixtures plus rejection, boundary and precision tests; qualified applicability review and governance acceptance remain separate",
+          "Retain release hold; no production edits, certification, publication or acceptance ledger writes"
+        ],
+        "actualEngineAcceptance": false
+      },
+      "sourcePacketMissingPublisherDocuments": [],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": [
+        "Qualified-distribution five-taxyear/age tests; distribution branch not selected",
+        "Phaseout precision and2026 source-priority adoption; neither branch selected"
+      ]
+    },
+    {
+      "masterId": 98,
+      "title": "Traditional IRA Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "2025 single under50 employer-covered IRA deduction worksheet only, explicitly no Social Security benefits.",
+      "requiredInputsAndEvidence": [
+        "source-defined taxable compensationUSD and distinct adjusted Worksheet1-2line5 compensationUSD: nonnegative exact cents",
+        "Worksheet1-1 MAGIUSD: nonnegative exact cents, not salary by default",
+        "actual contributionUSD: nonnegative exact cents <=min(7000,taxableCompensation)",
+        "2025 single original-owner traditional IRA; under50; employer-covered evidence",
+        "no other IRA contributions, spousal compensation, excess, basis or distribution branch; contribution already timely and eligible",
+        "Social Security benefits received2025: explicitly false"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "MAGI79000 and89000 thresholds",
+        "next-$10 ceiling and minimum$200 where applicable",
+        "maximum deduction cannot exceed eligible contribution",
+        "true/unknown SocialSecurity rejects",
+        "salary-as-MAGI and unsupported contribution totals reject"
+      ],
+      "recordedSourceContract": {
+        "profile": "Taxyear2025 single original-owner traditionalIRA; under50; covered by employer plan; verified modifiedAGI nonnegative; no otherIRA contributions, spousal compensation, excess, basis or distribution branches; contribution itself already timely/eligible; received no Social Security benefits in2025 (explicit guard, not inferred from age)",
+        "formula": "contributionMax=min(7000,taxableCompensation); for MAGI<=79000 deductionMax=min(contributionUSD,adjustedCompensationUSD); for MAGI>=89000 deductionMax=0; between: phaseCap=max(200,ceilToNext10((89000-MAGI)*0.70)); deductionMax=min(phaseCap,adjustedCompensationUSD,contributionUSD); nondeductible=contributionUSD-deductionMax",
+        "units": "All moneyUSD exact cents; taxyear2025; ceiling output increments$10",
+        "validation": [
+          "Require single/under50/covered2025; contribution>=0 and<=contributionMax",
+          "Taxable compensation and adjusted worksheet1-2line5 compensation require separate verified inputs; reject negative or inconsistent data",
+          "MAGI is legally computed per Worksheet1-1, not presumed salary; reject other filing/coverage/year/exception branches",
+          "Require receivedSocialSecurityBenefits2025 == false; true or unknown is unsupported/rejected before Table1-2/Worksheet1-2; do not infer false from under50 age."
+        ],
+        "rounding": "Worksheet1-2line4 explicitly round upward to next multiple$10, then minimum$200; exact multiples unchanged, no nearest midpoint tie exists. Final min may retain cents from contribution/compensation inputs. No tax-return display rounding claimed.",
+        "clauses": [
+          "590-A2025 How Much Can Be Contributed; Table1-2; Worksheet1-2lines1-8; What Is Compensation; Worksheet1-1",
+          "590-A2025 Social Security Recipients and AppendixB worksheets: use AppendixB instead of Table1-2/Table1-3/Worksheet1-2 when stated conditions all apply"
+        ]
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Explicit owner selection of bounded profile and year; original full product branches remain available for separate specification",
+          "Approved masterId-to-engine/fullSHA/dependency identity binding",
+          "CI executes actual engine against independent source and synthetic fixtures plus rejection, boundary and precision tests; qualified applicability review and governance acceptance remain separate",
+          "Retain release hold; no production edits, certification, publication or acceptance ledger writes"
+        ],
+        "actualEngineAcceptance": false
+      },
+      "sourcePacketMissingPublisherDocuments": [],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 112,
+      "title": "Overtime Pay Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "Exact single-rate FLSA hourly wage estimate; no payroll cents or jurisdiction eligibility engine.",
+      "requiredInputsAndEvidence": [
+        "hourlyRateUSD: positive exact decimal",
+        "hours: exact decimal between0 and168 in a specified fixed workweek",
+        "externally established covered nonexempt status and applicable minimum rate",
+        "no bonuses,premiums or other includible remuneration"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "20*40 ->800",
+        "20*45 with1.5 overtime ->950",
+        "20.01*41 ->166083/200 exact",
+        "hours>168 rejects",
+        "unknown coverage/minimum or other remuneration rejects"
+      ],
+      "recordedSourceContract": {
+        "profile": "FLSA covered nonexempt single straight-time hourly rate, fixed workweek; exact mathematical wages output",
+        "formula": "regularWages=r*min(h,40); overtimeWages=1.5*r*max(h-40,0); gross=regularWages+overtimeWages",
+        "units": "USD/hour, actual hours in one fixed recurring 168-hour workweek, USD exact rational output",
+        "domain": "h>=0,r>=applicable minimum; covered nonexempt employee established externally; single hourly rate; no bonuses, premiums, other includible remuneration, salaried straight-time-already-paid arrangement or special exceptions. Do not average weeks.",
+        "validation": "Reject unknown coverage/rate applicability or other remuneration; exact nonnegative decimal inputs parsed as rationals; calendar workweek supplied explicitly.",
+        "rounding": "Return exact rational gross, including fractional cents explicitly. No payroll cents disbursement claim. Cent payout conversion, intermediate-stage choice and tie mode are product/payroll policy, not an alleged missing Fact Sheet clause."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Owner chooses bounded profile and output representation; no adoption inferred",
+          "Approve identity/version/full-SHA binding and source/applicability review",
+          "Independent CI actual engine checks must pass units, invalid input, boundary and output precision fixtures; no engine executed here",
+          "Owner selects exact-value estimator versus cents payroll output; fractional-cent disbursement rounding/reconciliation must be specified for payroll; employment jurisdiction/coverage review"
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [
+        "No publisher formula document missing for bounded exact-hourly estimator; full payroll needs applicable employment terms/state/local rules and remuneration facts"
+      ],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 132,
+      "title": "Corporate Tax Estimate Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "Exact FY2026 ordinary UK corporation-tax computational estimate, N=A and no associates.",
+      "requiredInputsAndEvidence": [
+        "profitsNGBP and augmentedProfitsAGBP: nonnegative exact cents, equal",
+        "period exactly2026-04-01/2027-03-31",
+        "UK-resident ordinary non-ring-fence company evidence",
+        "not close investment-holding; no associates or special regimes"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "0 ->0",
+        "50000 ->9500",
+        "50000.01 ->9500.00265",
+        "100000 ->22750",
+        "250000 ->62500",
+        "250000.01 ->62500.0025",
+        "N!=A,short period,associates reject",
+        "CT600/final-payment rounding requests reject"
+      ],
+      "recordedSourceContract": {
+        "profile": "FY2026 accounting period 1 April 2026 to 31 March 2027; UK resident ordinary non-ring-fence company, not a close investment-holding company; no associates; supplied correctly established taxable total profits N equal augmented profits A; no foreign distributions/reliefs/special regimes. Computational estimate only, no CT600 filing or collection amount.",
+        "formula": "N<=50000: 19*N/100; 50000<N<=250000: 25*N/100-(3/200)*(250000-N); N>250000:25*N/100; N=0 returns0 before division.",
+        "units": "GBP; exact rational decimal arithmetic; input N >=0 in GBP to at most two decimal places.",
+        "validation": [
+          "Explicit fixed 12-month period only; reject all short/straddling periods",
+          "Require N=A; otherwise use no result",
+          "Require supplied factual eligibility including no qualifying associates",
+          "Reject nonfinite/negative N or more than2 decimal places; eligibility computation not supplied by this calculator"
+        ],
+        "rounding": {
+          "governing": "CTM93220 prohibits rounding of arithmetic preceding CT600; retain exact decimal computation. No nearest-pound interpretation of manual examples.",
+          "displayPolicy": "Optional rounded display must be labeled estimate and expose exact computational amount; cannot be labeled CT600 or final collectible tax.",
+          "stillMissingForBroaderProduct": "Final payable/return decimal serialization and general short-period conventions."
+        },
+        "scopeBoundary": "This is an explicit ordinary computational estimate profile. Full catalog including augmented-profit differences, associates, short periods, foreign distributions and filing remains pending."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Only the explicit 12-month N=A no-associate computational estimate profile",
+          "Adopt exact arithmetic and make optional display rounding visibly separate",
+          "Implement and independently verify domain rejection, threshold boundaries, exact decimal cases; bind reviewed implementation/full SHA",
+          "No filing, final collection amount, deployment or full-product certification inferred"
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [
+        "For broader product only: authoritative final penny/return serialization contract; precise short-period day denominator and inclusive end-date/leap rules; full factual augmented-profit/control rules."
+      ],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": []
+    },
+    {
+      "masterId": 199,
+      "title": "Etsy Profit Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "Supplied assessed-ledger reconciliation only; defer all provider-rate and credit-eligibility prediction.",
+      "requiredInputsAndEvidence": [
+        "seller receipts excluding marketplace-remitted tax: decimal USD string with at most two fractional digits",
+        "refunds,costs,assessed fee and credit components: decimal USD strings with at most two fractional digits; integer cents internally",
+        "ledger provenance and unique component identifiers",
+        "explicit seller/Etsy refund funding and cancellation facts where applicable",
+        "complete included fee universe and no inferred fees/credits"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "profit=receipts-refunds-fees+credits-COGS-fulfillment-otherCosts",
+        "duplicate fee/credit identifiers reject",
+        "marketplace-collected tax excluded from seller receipts",
+        "missing ledger components reject",
+        "historical fee schedule/billed-exact prediction requests reject"
+      ],
+      "recordedSourceContract": {
+        "profile": "Current-observation Etsy US/USD unrounded scenario or supplied assessed-component reconciliation only",
+        "formula": "P=G-R-sum(assessedFeeComponents)+sum(eligibleAssessedCredits)-COGS-fulfillment-otherCosts. Optional unrounded indicative rates: transaction=.065*(item+shipping+giftwrap); processing=.03*(buyerGrossIncludingTax)+.25; listing=.20 per explicitly specified new listing.",
+        "unitsDomain": "USD; US seller and US bank; same listing/payment currency; explicitly no ad,FX,regulatory or other charges for rate illustration. Actual fees/credits must be supplied for billed-exact reconciliation. Distinguish seller receipts G from marketplace-collected buyer tax.",
+        "rounding": "Assessed ledger inputs in cents require exact integer-minor-unit arithmetic; indicative rates retain rational/decimal precision. User-selected display rounding remains product policy and must be labeled, never represented as Etsy fee assessment.",
+        "refund": "Specific Payments9B seller-funded recalculation and help instructions qualify the general service-fee nonrefundability statement for identified transaction/processing credits. Listing credit only on cancellation. Etsy-covered full refund has zero seller fee credit under9B. Other service fees remain outside inferred credit set.",
+        "date": "Only snapshot observed2026-10-30. Reused last-updated stamps are not universal effective-from dates. Historical/current invoice prediction unsupported.",
+        "refundInterpretationStatus": "Bounded implementation reading inferred from specific published clauses, not an Etsy legal precedence determination. Do not generalize to all service fees. Billed-exact credits supplied from ledger.",
+        "unresolvedOutsideBound": "Original broad full Etsy fee prediction scope remains SOURCE_PARTIAL outside this explicitly narrowed profile. Bounded disposition does not close rounding or historical-document gaps."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Adopt bounded contract and explicit unsupported-profile exclusions.",
+          "Bind mapped source and implementation SHA; test distinct transaction/processing tax bases, seller/Etsy funding, listing cancellation, credits exactly once.",
+          "Run actual engine CI with rational/cent fixtures; label illustrative estimates and fail closed on historical/billed-exact requests."
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [
+        "For a billed-exact predictor: official per-fee and refund-credit rounding/tie/sequence specification.",
+        "For historical predictor: archived operative fee schedules with effective-from/to dates and affected account/country coverage."
+      ],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": [
+        "Provider fee-rate schedules, historical effective dates and assessment rounding: no predictor selected",
+        "Automatic refund-credit eligibility interpretation: no inferred credits selected"
+      ]
+    },
+    {
+      "masterId": 204,
+      "title": "Return Rate Impact Calculator",
+      "engineeringPreparationAuthorized": true,
+      "ownerDirection": "Narrowest defensible source-supported private profile; implementation conditional on independent verification of all exact prerequisites.",
+      "proposedNarrowScope": "Supplied-cohort operational return-impact scenario only; defer governed accounting illustration.",
+      "requiredInputsAndEvidence": [
+        "N: nonnegative integer",
+        "q: exact decimal in[0,1], supplied scenario not forecast",
+        "single currency P,Csale,R,Hincremental,Fincremental,Vrecovered: nonnegative exact decimals",
+        "defined cohort and incremental costs; recovery valuation evidence",
+        "ordinary goods returns; no warranty/exchange/accounting compliance claims"
+      ],
+      "plannedAcceptanceCasesNotExecuted": [
+        "N100,P10,Csale4,q.1,R10,H1,F0,V3 ->520",
+        "q0 ->baseline profit",
+        "q1 ->all supplied-cohort returns",
+        "N0 ->zero",
+        "q outside[0,1],negative or mixed currencies reject",
+        "recovery value not labeled cash revenue",
+        "accounting revenue/liability/asset requests reject"
+      ],
+      "recordedSourceContract": {
+        "profile": "Ordinary non-insurance goods with return rights; operational supplied-cohort scenario plus separately identified AASB15 returns accounting quantities",
+        "formula": "Operational Profit=N*(P-Csale)-N*q*(R+Hincremental+Fincremental-Vrecovered). Simplified homogeneous initial accounting illustration: expected revenue=N*(1-q)*P; refund liability=N*q*P; recovery asset=N*q*(formerCarrying-recoveryCosts-valueDeterioration); recognised cost=N*formerCarrying-recoveryAsset.",
+        "unitsDomain": "Single currency/cohort; N nonnegative integer;0<=q<=1; finite supplied per-unit amounts, nonnegative inputs, recoveryCosts+valueDeterioration<=formerCarrying for simple recovery formula. Refund value R need not equal P in operational mode. Accounting illustration assumes full-price refunds, transferred goods, no other variable consideration/financing/insurance/warranty complexity; q is supplied estimate, not a forecast model.",
+        "rounding": "Exact decimal/rational intermediates; display/ledger rounding is explicit product choice. Source does not impose calculator tie rule.",
+        "period": "Apply December2022 compilation together with2022-9 for annual periods beginning on/after2026-07-01; amendment changes insurance scope Aus5.3, not B20–B27. Earlier period cannot be chosen from calendar date alone; require annual period start and early-adoption state.",
+        "accountingUpstreamConditions": "The accounting illustration requires upstream support for expected entitlement and the variable-consideration reversal constraint (B23 with56–58), not arbitrary q. At each reporting-period end refresh refund liability/expectations (B24) and remeasure recovery asset with expected recovery costs and value deterioration (B25). Supplied estimates must be documented; initial arithmetic alone is not compliance."
+      },
+      "recordedConditions": {
+        "conditional": true,
+        "conditions": [
+          "Adopt selected bounded operational/accounting contract and reporting-period selector.",
+          "Bind B20–B27 and2022-9 evidence to implementation SHA.",
+          "CI checks q0/q1, returns vs same-item exchanges/warranties, recovery costs and deterioration, no double counting, separate liability/asset/revenue outputs.",
+          "No full statutory compliance or calibrated return forecast claim.",
+          "For accounting illustration require documented B23/56–58 variable-consideration assessment and period-end B24/B25 remeasurement inputs; reject claims of whole-standard compliance."
+        ]
+      },
+      "sourcePacketMissingPublisherDocuments": [],
+      "remainingSourceAndApplicabilityActions": [
+        "Establish exact source revision, provenance and retained clauses for this selected bound; omitted source captures are not available merely because their hashes are listed.",
+        "Independently verify case-specific input/applicability evidence above; declarations alone do not constitute qualified review.",
+        "Bind new private engine ID/version/source/dependency hashes and obtain independent review.",
+        "Actual-engine independent goldens, negative/boundary tests, immutable export/replay, private browser acceptance and plan parity must pass before completion."
+      ],
+      "ciGate": {
+        "sha": "2a6067de2aa6f342d261ba80994bc6a0d8325ade",
+        "runId": 41100511302,
+        "observedStatus": "in_progress",
+        "conclusion": null
+      },
+      "status": "BLOCKED",
+      "implementationAdmitted": false,
+      "canonicalAcceptance": false,
+      "qualifiedApplicabilityVerified": false,
+      "publicationAuthorized": false,
+      "certificationAuthorized": false,
+      "recordedConditionsMeaning": "Historical packet conditions retained verbatim for traceability; conditions for omitted branches are deferred, not active prerequisites for this narrower proposal. Owner engineering preparation direction has been supplied; no redundant blanket approval requested.",
+      "deferredBranchConditions": [
+        "AASB reporting-period selector, B23/56-58 variable-consideration assessment and B24/B25 remeasurement: accounting illustration not selected"
+      ]
+    }
+  ],
+  "sourceLimit": {
+    "listed": 48,
+    "verifiedDelivered": 15,
+    "omittedNotVerifiable": 33
+  },
+  "preserved": {
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalPrivateDrafts": 14,
+    "fullProductAuthorityBlocked": 43,
+    "sourcePartialIds": [
+      19,
+      120,
+      128,
+      129,
+      130
+    ],
+    "nationalProfile527": "BLOCKED; rights/national adoption/eligibility unresolved",
+    "component485": "UNCHANGED"
+  },
+  "releaseHold": true,
+  "commonFutureVerificationRequirements": [
+    "Independent actual-engine expected values, not self-comparison to exported implementation helpers",
+    "Strict schemas reject unknown keys/units/years/profile flags and unsupported requests",
+    "Exact decimal/rational outputs; no invented monetary payout quantization",
+    "Immutable versioned source/methodology export and whole-result recomputation; reject altered input/output/source/version/governance metadata",
+    "Identical mathematical outputs across Free/Pro/Business",
+    "Authenticated private discovery/history/scenarios and accessible responsive browser journeys without public registration",
+    "No change to canonical acceptance, publication controls or historical engine versions"
+  ]
+}

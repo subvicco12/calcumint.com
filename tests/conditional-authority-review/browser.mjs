@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import {mkdir,mkdtemp,readFile,rename,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import net from 'node:net';
+import {startDraftPreview} from '../../scripts/draft-preview.mjs';
+import {startBrowser} from '../next-runtime/cdp.mjs';
+const root=path.resolve(process.env.CONDITIONAL_EVIDENCE||'/workspace/work/conditional-ten-evidence/browser');await mkdir(root,{recursive:true});const directory=await mkdtemp(path.join(root,'run-'));
+const report={journeys:[],limitations:['Private supplied-fact arithmetic only; no verified tax eligibility or canonical acceptance.']},references=new Map();let server,browser;
+try{
+ const reserve=net.createServer();await new Promise((resolve,reject)=>{reserve.once('error',reject);reserve.listen(0,'127.0.0.1',resolve);});const port=reserve.address().port;await new Promise((resolve,reject)=>reserve.close(e=>e?reject(e):resolve()));server=await startDraftPreview(port);const origin=`http://127.0.0.1:${port}`,headers={Authorization:'Basic '+Buffer.from('reviewer:'+server.draftPreviewAccessToken).toString('base64')};
+ for(const url of ['/tests/conditional-authority-review/','/src/calculators/conditional-authority.ts','/docs/conditional-ten/source-binding.json'])assert.equal((await fetch(origin+url)).status,401);
+ assert.equal((await fetch(origin+'/tests/conditional-authority-review/',{method:'POST',headers,body:'{}'})).status,405);assert.equal((await fetch(origin+'/tests/conditional-authority-review/',{headers:{...headers,Origin:'https://untrusted.invalid'}})).status,403);
+ browser=await startBrowser(origin);await browser.send('Network.setExtraHTTPHeaders',{headers});await browser.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:directory});const replay=await server.ssrLoadModule('/src/calculators/conditional-authority.ts');
+ const key=async(key,code,n)=>{await browser.send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:n});await browser.send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:n});};
+ const select=async(selector,index)=>{await browser.js(`document.querySelector(${JSON.stringify(selector)}).focus()`);await key('Home','Home',36);for(let i=0;i<index;i++)await key('ArrowDown','ArrowDown',40);await key('Tab','Tab',9);};
+ const expected={95:{exactRmdUSD:'500000/123',divisor:'24.6',ordinaryDeadline:'2026-12-31'},97:{contributionMaximumUSD:'7000'},98:{deductionMaximumUSD:'6300',nondeductibleWorksheetUSD:'700'},132:{computationalTaxGBP:'22750'}};
+ for(const width of [320,1280]){
+  await browser.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<400});await browser.visit('/tests/conditional-authority-review/');
+  for(const [profileIndex,id] of [95,97,98,132].entries())for(const [planIndex,plan] of ['free','pro','business'].entries()){
+   await select('#conditional-profile',profileIndex);await browser.until(`document.querySelector('#conditional-profile').value==='${id}'`);await browser.click('Load example');await browser.click('Clear scenarios');assert.equal(await browser.js('document.querySelector("[data-testid=conditional-history]").children.length'),0);await select('#conditional-plan',planIndex);await browser.until(`document.querySelector('#conditional-plan').value==='${plan}'`);
+   await browser.click('Calculate');await browser.until('!!document.querySelector("[data-testid=conditional-output]")');assert.deepEqual(JSON.parse(await browser.js('document.querySelector("[data-testid=conditional-output]").textContent')),expected[id]);await browser.click('Save scenario');await browser.click('Export JSON');
+   let snapshot;const file=path.join(directory,'conditional-private-v1.json'),end=Date.now()+10000;while(Date.now()<end){try{snapshot=JSON.parse(await readFile(file,'utf8'));break;}catch{await new Promise(r=>setTimeout(r,50));}}assert(snapshot,'Missing actual download');assert.deepEqual(replay.importConditional(snapshot),snapshot);if(references.has(id))assert.deepEqual(snapshot,references.get(id));else references.set(id,snapshot);await rename(file,path.join(directory,`${width}-${id}-${plan}.json`));
+   const invalid={...snapshot.calculation.input,currency:'EUR'};await browser.field('#conditional-input',JSON.stringify(invalid));assert.equal(await browser.js('!!document.querySelector("[data-testid=conditional-output]")'),false);await browser.click('Calculate');await browser.until('!!document.querySelector("[role=alert]")');await browser.click('Restore scenario 1');assert.equal(await browser.js('document.querySelector("#conditional-profile").value'),String(id));
+   await browser.field('#conditional-import',JSON.stringify(snapshot));await browser.click('Verify and restore snapshot');await browser.until('!!document.querySelector("[data-testid=conditional-output]")');
+   const forged=JSON.parse(JSON.stringify(snapshot));forged.governance.canonicalAccepted=true;await browser.field('#conditional-import',JSON.stringify(forged));await browser.click('Verify and restore snapshot');await browser.until('!!document.querySelector("[role=alert]")');assert.equal(await browser.js('!!document.querySelector("[data-testid=conditional-output]")'),false);await browser.click('Restore scenario 1');
+   assert.equal(await browser.js('document.documentElement.scrollWidth>innerWidth'),false);assert(await browser.js('["conditional-profile","conditional-plan","conditional-input","conditional-import"].every(id=>!!document.querySelector(`label[for="${id}"]`))'));assert(await browser.js('document.querySelector("[data-testid=conditional-governance]").textContent.includes("CONTRACT_BLOCKED")'));
+   report.journeys.push({id,plan,width,passed:true});
+  }
+ }
+ assert.deepEqual(browser.errors,[]);assert.deepEqual(browser.network.filter(n=>!n.allowed),[]);await writeFile(path.join(directory,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({journeys:report.journeys.length,issues:0,directory}));
+}catch(error){await writeFile(path.join(directory,'failure.json'),JSON.stringify({error:String(error),completed:report.journeys.length,pageErrors:browser?.errors},null,2)+'\n');throw error;}finally{await browser?.close();await server?.close();}
