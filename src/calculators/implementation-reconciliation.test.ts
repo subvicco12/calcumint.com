@@ -13,7 +13,7 @@ it('classifies scoped implementation separately from canonical authority and rej
 it('reconciles exact540 identities with current registry/private definitions and truthful lifecycle separation',()=>{
  const m=buildImplementationReconciliation();
  expect(m.rows).toHaveLength(540);expect(new Set(m.rows.map(r=>r.masterId)).size).toBe(540);
- expect(m.summary.classes).toEqual({REGISTERED_IMPLEMENTED:305,PRIVATE_COMPLETE:116,COMPONENT_ONLY:76,CONTRACT_BLOCKED:43,MISSING_ENGINE:0,UNKNOWN:0});
+ expect(m.summary.classes).toEqual({REGISTERED_IMPLEMENTED:305,PRIVATE_COMPLETE:141,COMPONENT_ONLY:51,CONTRACT_BLOCKED:43,MISSING_ENGINE:0,UNKNOWN:0});
  expect(m.engines).toHaveLength(574);
  for(const r of m.rows){
   expect(r.canonicalMappingApproved).toBe(false);expect(r.lifecycle.currentPublicPublication).toBe('UNKNOWN');expect(r.lifecycle.protectedCertification).toBe('UNKNOWN');expect(r.lifecycle.publicationAuthorized).toBe(false);
@@ -36,4 +36,8 @@ it('retains known historical example diagnostic discrepancies without relabeling
  expect(m.engines.filter(e=>e.historicalExampleDiagnostics.issues.length).map(e=>e.slug).sort()).toEqual(['derivative-calculator','integral-calculator','limit-calculator']);
  for(const e of m.engines.filter(e=>e.historicalExampleDiagnostics.issues.length))expect(e.historicalExampleDiagnostics.status).toBe('HISTORICAL_NOT_REATTESTED');
  expect(m.rows.some(r=>r.acceptanceEvidence.historicalDiagnosticIssues.length>0)).toBe(true);
+});
+it('records complete closed output schemas for the25 new private component contracts',()=>{
+ const m=buildImplementationReconciliation();const contracts=m.rows.flatMap(r=>r.privateImplementations).filter(p=>p.family==='batch08-components');expect(contracts).toHaveLength(25);
+ for(const p of contracts)expect(p).toMatchObject({outputContract:{type:'object',additionalProperties:false,required:expect.arrayContaining(['value','unit','dependencyRuns'])}});
 });

@@ -1,0 +1,1558 @@
+{
+  "baselineSHA": "5a6f2311bde292ac0c3799c01eb3bb316522f426",
+  "scope": "Preserved component evidence; private scope only, not canonical acceptance",
+  "rows": [
+    {
+      "masterId": 3,
+      "title": "Amortization Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Complete month/payment/principal/interest/balance amortization schedule",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Complete month/payment/principal/interest/balance amortization schedule",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-analysis.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-analysis",
+            "input": {
+              "principal": 1,
+              "annualRatePercent": 0,
+              "termMonths": 1,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-emi-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-emi-calculator",
+        "missing": [
+          "Only the documented fixed-input model; broader product features are not implied.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 4,
+      "title": "Loan Payoff Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-analysis.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-analysis",
+            "input": {
+              "principal": 1,
+              "annualRatePercent": 0,
+              "termMonths": 1,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-emi-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-emi-calculator",
+        "missing": [
+          "Only the documented fixed-input model; broader product features are not implied.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 5,
+      "title": "Extra Payment Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Extra monthly payments shorten payoff; returns payoffMonths, interest and savings",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-analysis.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-analysis",
+            "input": {
+              "principal": 1,
+              "annualRatePercent": 0,
+              "termMonths": 1,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-emi-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-emi-calculator",
+        "missing": [
+          "Only the documented fixed-input model; broader product features are not implied.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 6,
+      "title": "Personal Loan Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-payment.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-payment",
+            "input": {
+              "principal": 100000,
+              "annualRatePercent": 6,
+              "termMonths": 360
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-payment-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-payment-calculator",
+        "missing": [
+          "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 7,
+      "title": "Auto Loan Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-payment.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-payment",
+            "input": {
+              "principal": 100000,
+              "annualRatePercent": 6,
+              "termMonths": 360
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-payment-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-payment-calculator",
+        "missing": [
+          "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 8,
+      "title": "Student Loan Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-payment.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-payment",
+            "input": {
+              "principal": 100000,
+              "annualRatePercent": 6,
+              "termMonths": 360
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-payment-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-payment-calculator",
+        "missing": [
+          "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 11,
+      "title": "Loan Term Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Bounded fixed monthly payment payoff term simulation",
+          "engineSlugs": [
+            "credit-card-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/credit-card-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Bounded fixed monthly payment payoff term simulation",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 debt-payoff-independent-goldens.ts (credit)",
+            "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, credit literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/credit-card-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.credit-card-payoff",
+            "input": {
+              "balance": 201,
+              "annualAprPercent": 12,
+              "monthlyPayment": 102.01,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: credit-card-payoff-calculator",
+        "recordedOutputSignature": "Versioned output record of credit-card-payoff-calculator",
+        "missing": [
+          "Supplied monthly payment; horizon2400months, finalpartialpayment and0.005closure. No calendar dates or issuer minimum-payment policy.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 12,
+      "title": "Loan Amount Affordability Calculator",
+      "componentBindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-affordability.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-affordability",
+            "input": {
+              "grossMonthlyIncome": 1000,
+              "existingMonthlyDebt": 0,
+              "targetDtiPercent": 20,
+              "annualRatePercent": 0,
+              "termMonths": 10,
+              "downPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-affordability-calculator",
+        "missing": [
+          "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 13,
+      "title": "Debt-to-Income Ratio Calculator",
+      "componentBindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-affordability.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-affordability",
+            "input": {
+              "grossMonthlyIncome": 1000,
+              "existingMonthlyDebt": 0,
+              "targetDtiPercent": 20,
+              "annualRatePercent": 0,
+              "termMonths": 10,
+              "downPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-affordability-calculator",
+        "missing": [
+          "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 14,
+      "title": "Debt Payoff Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 debt-payoff-independent-goldens.ts (debt)",
+            "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, debt literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/debt-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.debt-payoff",
+            "input": {
+              "debts": [
+                {
+                  "name": "A",
+                  "balance": 100,
+                  "annualRatePercent": 12,
+                  "minimumPayment": 0
+                },
+                {
+                  "name": "B",
+                  "balance": 50,
+                  "annualRatePercent": 0,
+                  "minimumPayment": 0
+                }
+              ],
+              "extraMonthlyPayment": 151,
+              "strategy": "avalanche"
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: debt-payoff-calculator",
+        "recordedOutputSignature": "Versioned output record of debt-payoff-calculator",
+        "missing": [
+          "Minimum payments supplied; no issuer minimum-payment schedule.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 15,
+      "title": "Debt Snowball Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 debt-payoff-independent-goldens.ts (debt)",
+            "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, debt literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/debt-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.debt-payoff",
+            "input": {
+              "debts": [
+                {
+                  "name": "A",
+                  "balance": 100,
+                  "annualRatePercent": 12,
+                  "minimumPayment": 0
+                },
+                {
+                  "name": "B",
+                  "balance": 50,
+                  "annualRatePercent": 0,
+                  "minimumPayment": 0
+                }
+              ],
+              "extraMonthlyPayment": 151,
+              "strategy": "avalanche"
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: debt-payoff-calculator",
+        "recordedOutputSignature": "Versioned output record of debt-payoff-calculator",
+        "missing": [
+          "Minimum payments supplied; no issuer minimum-payment schedule.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 16,
+      "title": "Debt Avalanche Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Monthly debt simulation; strategy snowball/avalanche selected explicitly",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 debt-payoff-independent-goldens.ts (debt)",
+            "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, debt literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/debt-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.debt-payoff",
+            "input": {
+              "debts": [
+                {
+                  "name": "A",
+                  "balance": 100,
+                  "annualRatePercent": 12,
+                  "minimumPayment": 0
+                },
+                {
+                  "name": "B",
+                  "balance": 50,
+                  "annualRatePercent": 0,
+                  "minimumPayment": 0
+                }
+              ],
+              "extraMonthlyPayment": 151,
+              "strategy": "avalanche"
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: debt-payoff-calculator",
+        "recordedOutputSignature": "Versioned output record of debt-payoff-calculator",
+        "missing": [
+          "Minimum payments supplied; no issuer minimum-payment schedule.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 17,
+      "title": "Snowball vs Avalanche Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Compare existing same-input simulations under both strategy values",
+          "engineSlugs": [
+            "debt-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/debt-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Compare existing same-input simulations under both strategy values",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 debt-payoff-independent-goldens.ts (debt)",
+            "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, debt literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/debt-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.debt-payoff",
+            "input": {
+              "debts": [
+                {
+                  "name": "A",
+                  "balance": 100,
+                  "annualRatePercent": 12,
+                  "minimumPayment": 0
+                },
+                {
+                  "name": "B",
+                  "balance": 50,
+                  "annualRatePercent": 0,
+                  "minimumPayment": 0
+                }
+              ],
+              "extraMonthlyPayment": 151,
+              "strategy": "avalanche"
+            }
+          }
+        ],
+        "recordedInputSignature": "debts[],extraMonthlyPayment; two strategy invocations",
+        "recordedOutputSignature": "Payoff/interest/order comparison",
+        "missing": [
+          "Comparison wrapper needed; no new debt mathematics or automatic better-strategy recommendation.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 22,
+      "title": "Home Equity Loan Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Generic fixed-rate fully amortizing loan arithmetic",
+          "engineSlugs": [
+            "loan-payment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-payment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Generic fixed-rate fully amortizing loan arithmetic",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-payment.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-payment",
+            "input": {
+              "principal": 100000,
+              "annualRatePercent": 6,
+              "termMonths": 360
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-payment-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-payment-calculator",
+        "missing": [
+          "Personal/auto/student/home-equity product aliases are valid only for fixed-rate loans without subsidy, grace, fees or balloon; full product mapping unsupported.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 24,
+      "title": "Refinance Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Current/new fully amortizing loans, explicit refinance cost, payment savings and simple cash-flow break-even",
+          "engineSlugs": [
+            "loan-refinance-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-refinance.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Current/new fully amortizing loans, explicit refinance cost, payment savings and simple cash-flow break-even",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-refinance.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-refinance",
+            "input": {
+              "remainingBalance": 201,
+              "currentAnnualRatePercent": 12,
+              "currentRemainingMonths": 2,
+              "newAnnualRatePercent": 0,
+              "newTermMonths": 2,
+              "refinanceCosts": 1
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-refinance-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-refinance-calculator",
+        "missing": [
+          "Not tax/insurance/cash-out/regulatory eligibility; break-even null if no positive monthly savings.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 27,
+      "title": "Mortgage Amortization Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Mortgage output amortization schedule",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Mortgage output amortization schedule",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/finance/loan-analysis.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-analysis",
+            "input": {
+              "principal": 1,
+              "annualRatePercent": 0,
+              "termMonths": 1,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-emi-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-emi-calculator",
+        "missing": [
+          "Requires specialist version approval; jurisdiction/escrow rules are supplied only where supported.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 28,
+      "title": "Mortgage Payoff Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Remaining fixed-loan balance and lump-sum prepayment/foreclosure arithmetic",
+          "engineSlugs": [
+            "loan-prepayment-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-prepayment.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Remaining fixed-loan balance and lump-sum prepayment/foreclosure arithmetic",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-prepayment.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-prepayment",
+            "input": {
+              "principal": 100,
+              "annualRatePercent": 0,
+              "originalTermMonths": 4,
+              "paymentsMade": 1,
+              "lumpSumPrepayment": 25,
+              "prepaymentFee": 2
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-prepayment-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-prepayment-calculator",
+        "missing": [
+          "Not a complete mortgage escrow/insurance/penalty rules engine.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 29,
+      "title": "Mortgage Extra Payment Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Recurring extra monthly payment amortization",
+          "engineSlugs": [
+            "loan-emi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-analysis.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Recurring extra monthly payment amortization",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-analysis.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-analysis",
+            "input": {
+              "principal": 1,
+              "annualRatePercent": 0,
+              "termMonths": 1,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-emi-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-emi-calculator",
+        "missing": [
+          "Lump-sum prepayment is a separate loan-prepayment contract; mortgage escrow/insurance omitted.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 30,
+      "title": "Mortgage Affordability Calculator",
+      "componentBindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-affordability.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-affordability",
+            "input": {
+              "grossMonthlyIncome": 1000,
+              "existingMonthlyDebt": 0,
+              "targetDtiPercent": 20,
+              "annualRatePercent": 0,
+              "termMonths": 10,
+              "downPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-affordability-calculator",
+        "missing": [
+          "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 31,
+      "title": "Down Payment Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied-price down payment percentage/amount arithmetic",
+          "engineSlugs": [
+            "percentage-of-value-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/core/percentage.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied-price down payment percentage/amount arithmetic",
+        "sources": [
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Documents the internationally recognized percent symbol and its meaning as parts per hundred."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/core/percentage.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "core.percentage-of-value",
+            "input": {
+              "percentage": 20,
+              "value": 250
+            }
+          }
+        ],
+        "recordedInputSignature": "percentage,value (price)",
+        "recordedOutputSignature": "result amount; remainder requires explicit subtraction adapter",
+        "missing": [
+          "Does not decide required minimum down payment or lender eligibility; dedicated presentation adapter needed.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 33,
+      "title": "Refinance Break-even Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Current/new fully amortizing loans, explicit refinance cost, payment savings and simple cash-flow break-even",
+          "engineSlugs": [
+            "loan-refinance-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-refinance.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Current/new fully amortizing loans, explicit refinance cost, payment savings and simple cash-flow break-even",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-refinance.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-refinance",
+            "input": {
+              "remainingBalance": 201,
+              "currentAnnualRatePercent": 12,
+              "currentRemainingMonths": 2,
+              "newAnnualRatePercent": 0,
+              "newTermMonths": 2,
+              "refinanceCosts": 1
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-refinance-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-refinance-calculator",
+        "missing": [
+          "Not tax/insurance/cash-out/regulatory eligibility; break-even null if no positive monthly savings.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 104,
+      "title": "Housing Affordability Calculator",
+      "componentBindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-affordability.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-affordability",
+            "input": {
+              "grossMonthlyIncome": 1000,
+              "existingMonthlyDebt": 0,
+              "targetDtiPercent": 20,
+              "annualRatePercent": 0,
+              "termMonths": 10,
+              "downPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-affordability-calculator",
+        "missing": [
+          "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 105,
+      "title": "Vehicle Affordability Calculator",
+      "componentBindings": [
+        {
+          "evidence": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+          "engineSlugs": [
+            "loan-affordability-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/loan-affordability.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "DTI from debt/income and user-target debt capacity; inverse fixed-rate principal",
+        "sources": [
+          {
+            "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+            "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/",
+            "note": "Reference reused from the registered loan-payment calculator for fixed-rate amortization only. Does not validate fees, DTI thresholds, lender eligibility or jurisdiction-specific rules; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/loan-affordability.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.loan-affordability",
+            "input": {
+              "grossMonthlyIncome": 1000,
+              "existingMonthlyDebt": 0,
+              "targetDtiPercent": 20,
+              "annualRatePercent": 0,
+              "termMonths": 10,
+              "downPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: loan-affordability-calculator",
+        "recordedOutputSignature": "Versioned output record of loan-affordability-calculator",
+        "missing": [
+          "No lender approval, mortgage insurance, vehicle costs, statutory DTI threshold or product eligibility.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 426,
+      "title": "Mass/Weight Converter",
+      "componentBindings": [
+        {
+          "evidence": "Fixed mass conversion through kg",
+          "engineSlugs": [
+            "unit-conversion-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/units.ts#convertUnit",
+            "src/calculators/units.ts#getUnitFamily"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Fixed mass conversion through kg",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for units by quantity, including the exact international mile-to-kilometre relationship used by the verified example."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative reference for the International System of Units (SI)."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/core/unit-conversion.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "core.unit-conversion",
+            "input": {
+              "value": 1,
+              "fromUnit": "mi",
+              "toUnit": "km"
+            }
+          }
+        ],
+        "recordedInputSignature": "finite value; fromUnit/toUnit in kg,g,lb,oz same family",
+        "recordedOutputSignature": "{result:number}",
+        "missing": [
+          "Weight here means mass; no force or gravity-dependent conversion.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 506,
+      "title": "Kitchen Unit Converter",
+      "componentBindings": [
+        {
+          "evidence": "US kitchen volume conversion via millilitres",
+          "engineSlugs": [
+            "cooking-measurement-converter"
+          ],
+          "helperRefs": [],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "US kitchen volume conversion via millilitres",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference factors for U.S. customary fluid ounce, gallon, tablespoon and teaspoon volume units."
+          },
+          {
+            "label": "NIST Metric Kitchen \u2014 Cooking Measurement Equivalencies",
+            "url": "https://www.nist.gov/pml/owm/metric-si/metric-kitchen/metric-kitchen-cooking-measurement-equivalencies",
+            "note": "Cooking-oriented metric and U.S. customary capacity equivalencies; values are approximate for household cooking."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/conversion/catalog-batch-4.ts",
+          "src/calculators/conversion/catalog-batch-4.test.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "conversion.cooking-measurement",
+            "input": {
+              "value": 1,
+              "fromUnit": "cup_us",
+              "toUnit": "ml"
+            }
+          }
+        ],
+        "recordedInputSignature": "finite value; ml,l,tsp_us,tbsp_us,fl_oz_us,cup_us,pint_us,quart_us,gallon_us",
+        "recordedOutputSignature": "{result:number}",
+        "missing": [
+          "Volume only. Ingredient density and non-US cups not implied.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    }
+  ]
+}

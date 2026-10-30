@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "5a6f2311bde292ac0c3799c01eb3bb316522f426",
+  "baselineCI": {
+    "runId": 40918367925,
+    "conclusion": "success",
+    "verification": "User-supplied verified terminal receipt; no repeated baseline API poll"
+  },
+  "releaseHold": true,
+  "implementedIds": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    22,
+    24,
+    27,
+    28,
+    29,
+    30,
+    31,
+    33,
+    104,
+    105,
+    426,
+    506
+  ],
+  "counts": {
+    "REGISTERED_IMPLEMENTED": 305,
+    "PRIVATE_COMPLETE": 141,
+    "COMPONENT_ONLY": 51,
+    "CONTRACT_BLOCKED": 43,
+    "MISSING_ENGINE": 0,
+    "UNKNOWN": 0
+  },
+  "tests": {
+    "focused": {
+      "passed": 78,
+      "exitCode": 0
+    },
+    "fullUnit": {
+      "passed": 5592,
+      "skipped": 4,
+      "passedFiles": 774,
+      "skippedFiles": 2,
+      "workers": 1,
+      "exitCode": 0
+    },
+    "browser": {
+      "journeys": 150,
+      "planSelections": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "widths": [
+        320,
+        1280
+      ],
+      "issues": 0,
+      "extremeRateRejected": true,
+      "exitCode": 0,
+      "limitations": [
+        "Synthetic Free/Pro/Business selection; no subscription/auth-provider acceptance.",
+        "Private supplied profiles and preserved original adapters only; no canonical, applicability or qualified acceptance."
+      ]
+    },
+    "security": {
+      "checks": 8,
+      "schemaPreflight": true,
+      "exitCode": 0,
+      "scope": "Disposable PostgreSQL17.6 and real PostgREST; production equivalence UNKNOWN"
+    },
+    "transport": {
+      "passed": 20,
+      "exitCode": 0
+    },
+    "launchGuards": {
+      "passed": 45,
+      "exitCode": 0
+    },
+    "certificationGuards": {
+      "passed": 15,
+      "exitCode": 0,
+      "certificationAuthorized": false
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 28,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "webpackBuild": {
+      "staticPages": 37,
+      "exitCode": 0
+    },
+    "manifestReproducibility": {
+      "exitCode": 0
+    }
+  },
+  "demonstratedDefects": [
+    "Mutable metadata/dependency export references: independent RED\u2192GREEN deep-copy/freeze regression",
+    "Incorrect null refinance label: RED\u2192GREEN accessible UI regression",
+    "Extreme annuity denominator rounding toone and zero/incomplete schedules: RED\u2192GREEN private domain guards, old engines unchanged"
+  ],
+  "earlierRunLimitations": [
+    "Initial full run observed two newly added RED regressions during fixes.",
+    "Concurrent full run: unchanged final-rc-preview-security port5173 collision and draft-calculator-preview focus timing assertion; both passed82-test isolated rerun and full sequential5592-test run without assertion changes.",
+    "Initial browser run stopped after45 journeys while source was changing; final150-journey run passed.",
+    "Restricted transport native process startup failure; supported-permission20-test rerun passed.",
+    "First security process returned1 despite passed assertion report; unchanged disposable fixture rerun exited0 with eight checks and preflight."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/cloud-batch08/implementation-manifest.json",
+      "sha256": "80b8db44885c312cd93a6b7cbda913b3d2e179e45d7eb7fa0999038af12bee8a"
+    },
+    {
+      "path": "docs/cloud-batch08/implementation-manifest.csv",
+      "sha256": "8c842b796acd7603f553a96a1251c3bfa32adf23f110caf2cd567a612fe2b093"
+    },
+    {
+      "path": "docs/cloud-batch08/discovery.json",
+      "sha256": "425c5e54220aff69a558b7788ecf904135ae9f8d515dc044745d07d41f219717"
+    },
+    {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1"
+    },
+    {
+      "path": "docs/cloud-batch08/integrity.json",
+      "sha256": "7b60d8cc451f69219495442745358610cc3d8b7c65143e8bc8215cca9b1b5030"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/focused-final.log",
+      "sha256": "2d490c50d4fa5f04796af4b79f54c3fd19bcffd993491d314eae8476e85329b1"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/unit-isolated.log",
+      "sha256": "d31ff5d02fa0d18ec6a7d9546b828b839d2ac54ea21e146964f77197d0f23ab0"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/browser-verified.log",
+      "sha256": "6b22429635927248f0eed313f12e2d787dc5882c279ade7d94b7c6a6b69c01cc"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/security-final.log",
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/transport-final.log",
+      "sha256": "970352aeca31441be9a0f9ceb9b5ae4a3c8e58c23bd1b18781eb706de394527d"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/launch.log",
+      "sha256": "578397011eea5788be1a356e4fd1ab9f763f34c2a4e8ca25610cd86310216ec5"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/certification.log",
+      "sha256": "f8abf28231926563be9d8f31ef1bfb0fa422487904be46921201c62322b3307d"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/lint-verified.log",
+      "sha256": "be27695042aaf102f29e706cc887cca96778b71110b869204bbcf5e79b053af8"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/typecheck-verified.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/build-verified.log",
+      "sha256": "8b2b403cebeca199d1a94aa6d3267d03f542534ce129bb6dd734fd2f51595850"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/reconciliation-check.log",
+      "sha256": "864edc61ba7d32ec1942c32f8f268085b1744161f21dbdabbc352e28df062b28"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/retry-existing.log",
+      "sha256": "f65bba580eb09968da7f9f30d8f2ad27cf6b34c77aa037cdb4b38ca2d7639619"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/extreme-domain-red.log",
+      "sha256": "3529152eea3e1179532af790f88dde8f6aa00c97389218724f24463836753c76"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/unit.log",
+      "sha256": "2a8b7355632de23a99eefb931ac9c8fe251a02aaed9cbac245c76fdcb5c72470"
+    },
+    {
+      "path": "/workspace/work/cloud-batch08-evidence/unit-final.log",
+      "sha256": "6630295615b3f848f923a04a99a91042fc37f05844a8428d78dbd58df5d777d0"
+    }
+  ],
+  "rawEvidenceDurability": "Local logs/downloads/screenshots are not claimed permanently hosted. Committed source/tests, reports, schemas, hashes and independent review travel with the draft PR.",
+  "newHostedCI": "One bounded check after draft PR creation; report actual result separately, no watch/poll loop."
+}
