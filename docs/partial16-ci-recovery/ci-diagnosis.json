@@ -1,0 +1,30 @@
+{
+  "runId": 41076164193,
+  "headSHA": "9edc90078d6b356c5c2e5702daa4da68974a062d",
+  "status": "completed",
+  "conclusion": "cancelled",
+  "attempts": [
+    {
+      "attempt": 1,
+      "jobId": 124132802924,
+      "jobStartedAt": "2026-10-30T14:56:56Z",
+      "buildStartedAt": "2026-10-30T15:15:36Z",
+      "buildCancelledAt": "2026-10-30T15:16:59Z",
+      "failureAnnotation": "The job has exceeded the maximum execution time of 20m0s"
+    },
+    {
+      "attempt": 2,
+      "jobId": 124149002723,
+      "jobStartedAt": "2026-10-30T15:26:51Z",
+      "buildStartedAt": "2026-10-30T15:45:39Z",
+      "buildCancelledAt": "2026-10-30T15:47:04Z",
+      "failureAnnotation": "The job has exceeded the maximum execution time of 20m0s"
+    }
+  ],
+  "documentedCause": "Monolithic20-minute job budget exhausted during production build",
+  "manualConcurrencyOrInfrastructureCauseEstablished": false,
+  "originalHeadGate": "CANCELLED_NOT_SUCCESS",
+  "anotherOldHeadRerunRequested": false,
+  "repair": "Separate checks/build jobs retaining20-minute budgets and every old check; final requiredvalidate runsalways and requiresbothsuccess.",
+  "newHeadCI": "Pending one bounded check after draft PR; not a replacement success claim for old head."
+}

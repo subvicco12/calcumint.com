@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "parentSHA": "9edc90078d6b356c5c2e5702daa4da68974a062d",
+  "parentCI": "Cancelled by documented20-minute timeout on bothattempts; not successful",
+  "scope": "Related CI budget repair plus offline source-provenance/conditional-admission verification. No calculator implementation.",
+  "tests": {
+    "focusedNode": {
+      "passed": 53,
+      "failed": 0,
+      "skipped": 0,
+      "actualAggregateShellCombinations": 49,
+      "exitCode": 0
+    },
+    "sourceAuditReproducibility": {
+      "exitCode": 0
+    },
+    "workflowYAMLStructure": {
+      "parsedJobs": [
+        "checks",
+        "build",
+        "validate"
+      ],
+      "aggregateAlways": true,
+      "dependencies": [
+        "checks",
+        "build"
+      ],
+      "oldStepsPreserved": true,
+      "oldHeaderPreserved": true
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 28,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "webpackBuild": {
+      "staticPages": 37,
+      "exitCode": 0
+    }
+  },
+  "independentReview": {
+    "outstandingCriticalOrImportant": false,
+    "sourceAuditAnd53TestsExecuted": true,
+    "hostedWorkflowNotExecutedByReviewer": true,
+    "path": "docs/partial16-ci-recovery/INDEPENDENT-REVIEW.md"
+  },
+  "sourceAdmission": {
+    "conditionalCandidates": [
+      9,
+      20,
+      23,
+      95,
+      97,
+      98,
+      112,
+      132,
+      199,
+      204
+    ],
+    "sourcePartial": [
+      19,
+      120,
+      128,
+      129,
+      130
+    ],
+    "nationalProfile527Admitted": false,
+    "calculatorImplementationsAdmitted": 0,
+    "adoptionOrQualifiedApprovalInferred": false,
+    "omittedCaptureHashesNotVerifiable": 33
+  },
+  "artifacts": [
+    {
+      "path": "docs/partial16-ci-recovery/input/source-resolution-16.zip",
+      "sha256": "d49d5a60737546dc8208ff5d1cbfb68740b3e153da3ca56501a7966f290fc1c3"
+    },
+    {
+      "path": "docs/partial16-ci-recovery/source-audit.json",
+      "sha256": "ff946ae329dcb567d9d77d205d3396bfa16ea7b5911269b9943af2576485dbed"
+    },
+    {
+      "path": "docs/partial16-ci-recovery/ci-at-9edc900.yml",
+      "sha256": "d22ab2b07a19de267a0fb74d66b8017bd884788925397797c446654cb2db6cff"
+    },
+    {
+      "path": "docs/partial16-ci-recovery/ci-diagnosis.json",
+      "sha256": "1ff052d9842f02b0d4f17ec86c1b9ef43883c7c46c5255f1bc198f4fe5ddf78c"
+    },
+    {
+      "path": "docs/partial16-ci-recovery/integrity.json",
+      "sha256": "fd76ee081f8788c25d9f238a4184b97ff420a4e262f9e7bc04fb56a895480550"
+    },
+    {
+      "path": "scripts/verify-partial16-source.py",
+      "sha256": "27f6d399a3e91f72f4cbca12a42022ab505067d786c2a570097ba9fd03fdc8d8"
+    },
+    {
+      "path": "tests/ci-gate-recovery/workflow.test.mjs",
+      "sha256": "e8d2d8c35688d7cf4782e1283abe39b2cff8f0a544dbf2cb68d6eb2aefe6e39f"
+    },
+    {
+      "path": "tests/ci-gate-recovery/source-package.test.mjs",
+      "sha256": "78194a3245f4828e62f0bc7fff4cf23bf089e4cef94ee6f4541ca8a5664094eb"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/workspace/work/partial16-ci-evidence-tests.log",
+      "sha256": "d932fe99a6a7b19509b0c08f3d40e92758acdb3bd086631f922e5ff208f6b4d3"
+    },
+    {
+      "path": "/workspace/work/partial16-ci-evidence-source.log",
+      "sha256": "b43536f8abf8bf0286e3079692e04d7b7341b29a380deeb9c74587f7f52b6f87"
+    },
+    {
+      "path": "/workspace/work/partial16-ci-evidence-lint.log",
+      "sha256": "942418f3ee4ce28c5d1cce78ea86f610f284784fadac207c1177c3c3cc66ede6"
+    },
+    {
+      "path": "/workspace/work/partial16-ci-evidence-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "/workspace/work/partial16-ci-evidence-build.log",
+      "sha256": "9f9d489f7cae1beb2a5dea81271d470083e1a857e6601b2edd57dff9d5a65ec8"
+    }
+  ],
+  "limits": [
+    "No actual-engine numerical/browser evidence is claimed for unadmitted calculators.",
+    "Completed calculator QA was not repeated for unchanged code; every existing hosted QA command remains required.",
+    "New hosted CI must pass at its actual newSHA; this is not a success claim for old9edc900."
+  ],
+  "releaseHold": true
+}

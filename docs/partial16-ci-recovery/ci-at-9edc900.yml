@@ -1,0 +1,118 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: GrowthOS heartbeat syntax
+        run: node --check scripts/growthos-heartbeat.mjs
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Pull pinned isolated database fixtures
+        run: |
+          docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+          docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+      - name: Isolated PostgreSQL HTTP security contract
+        run: node tests/next-runtime/security.mjs
+        env:
+          NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-security
+      - name: Provision pinned isolated browser fixture
+        timeout-minutes: 4
+        run: |
+          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          "$browser" --version
+      - name: Isolated browser transport recovery
+        run: |
+          test -x "$CHROMIUM_PATH"
+          node --test --test-reporter=spec tests/next-runtime/browser-fixture.test.mjs tests/next-runtime/owner-preview-readiness.test.mjs
+          node --test --test-reporter=spec tests/next-runtime/cdp.test.mjs
+        env:
+          CDP_STARTUP_DIAGNOSTICS: '1'
+      - name: Actual Next.js Business runtime acceptance
+        run: |
+          test -x "$CHROMIUM_PATH"
+          node scripts/test-next-runtime-browser.mjs
+        env:
+          NEXT_RUNTIME_ARTIFACTS: ${{ runner.temp }}/next-runtime-browser
+          CDP_STARTUP_DIAGNOSTICS: '1'
+      - name: Private supplied workflow browser acceptance
+        run: node tests/workflow-review/browser.mjs
+        env:
+          CALCUMINT_WORKFLOW_EVIDENCE: ${{ runner.temp }}/private-workflow-browser
+      - name: Source-bound profile and plan-parity browser acceptance
+        run: node tests/source-profile-review/browser.mjs
+        env:
+          CALCUMINT_SOURCE_PROFILE_EVIDENCE: ${{ runner.temp }}/source-profile-browser
+      - name: Private financial contracts and plan-parity browser acceptance
+        run: node tests/financial-contract-review/browser.mjs
+        env:
+          CALCUMINT_FINANCIAL_EVIDENCE: ${{ runner.temp }}/financial-contract-browser
+      - name: Private final calculator discovery and immutable replay
+        run: node tests/final-private-workbench/browser.mjs
+        env:
+          CALCUMINT_WORKBENCH_EVIDENCE: ${{ runner.temp }}/final-private-workbench
+      - name: Full catalog engineering and private business acceptance
+        run: node tests/catalog-engineering-review/browser.mjs
+        env:
+          CALCUMINT_CATALOG_ENGINEERING_EVIDENCE: ${{ runner.temp }}/catalog-engineering
+      - name: Private loan and conversion contracts browser acceptance
+        run: node tests/component-engineering-review/browser.mjs
+        env:
+          CALCUMINT_COMPONENT_ENGINEERING_EVIDENCE: ${{ runner.temp }}/component-engineering
+      - name: Remaining private calculator contracts and calendar acceptance
+        run: node tests/remaining-engineering-review/browser.mjs
+        env:
+          CALCUMINT_REMAINING_ENGINEERING_EVIDENCE: ${{ runner.temp }}/remaining-engineering
+      - name: Native UK2026 electricity source and private component acceptance
+        run: |
+          python3 scripts/verify-uk-2026-electricity-source.py --check
+          node tests/uk-2026-electricity-review/browser.mjs
+        env:
+          CALCUMINT_ELECTRICITY_EVIDENCE: ${{ runner.temp }}/uk-2026-electricity
+      - name: Unit tests
+        run: npm test
+      - name: Launch certification
+        run: npm run test:launch
+      - name: Calculator and rule-pack certification
+        run: npm run test:certification
+      - name: Synthetic Reference Six browser acceptance
+        run: |
+          test -x "$CHROMIUM_PATH"
+          npm run test:final-reference-browser
+        env:
+          FINAL_REFERENCE_ARTIFACTS: ${{ runner.temp }}/final-reference-browser
+      - name: Isolated Business browser acceptance
+        run: |
+          test -x "$CHROMIUM_PATH"
+          node scripts/test-business-browser.mjs
+        env:
+          BUSINESS_BROWSER_ARTIFACTS: ${{ runner.temp }}/business-browser
+      - name: Production build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://calcumint.com
