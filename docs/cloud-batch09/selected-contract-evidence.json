@@ -1,0 +1,3078 @@
+{
+  "baselineSHA": "bd0433f970819ed113553a5e71b6827d838f662b",
+  "scope": "Existing51-case queue reused; source metadata not new applicability approval",
+  "rows": [
+    {
+      "masterId": 25,
+      "title": "Payoff Date Goal Solver",
+      "componentBindings": [
+        {
+          "evidence": "requiredMonthlyPaymentForTargetMonths delegates to existing amortization formula",
+          "engineSlugs": [
+            "credit-card-payoff-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/credit-card-payoff.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "requiredMonthlyPaymentForTargetMonths delegates to existing amortization formula",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 debt-payoff-independent-goldens.ts (credit)",
+            "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, credit literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/credit-card-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.credit-card-payoff",
+            "input": {
+              "balance": 201,
+              "annualAprPercent": 12,
+              "monthlyPayment": 102.01,
+              "extraMonthlyPayment": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Balance, annualAPRPercent, target integer months1..2400",
+        "recordedOutputSignature": "Finite required monthly payment",
+        "missing": [
+          "Helper exists; calendar payoff-date UI requires explicit date/day-count contract.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 37,
+      "title": "Rental Cash Flow Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Property supplied-total metrics: rental cash flow, NOI, capitalization rate, cash-on-cash, DSCR and gross-rent multiplier",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts",
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Property supplied-total metrics: rental cash flow, NOI, capitalization rate, cash-on-cash, DSCR and gross-rent multiplier",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (netWorth)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, netWorth literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/roi.ts",
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.net-worth",
+            "input": {
+              "assets": [
+                {
+                  "name": "asset0",
+                  "amount": 100
+                }
+              ],
+              "liabilities": [
+                {
+                  "name": "debt0",
+                  "amount": 25
+                }
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "Effective gross income/operating expense or supplied NOI/debt service/cash invested/property value/gross annual rent",
+        "recordedOutputSignature": "Explicit scalar metric with consistent annual period/currency",
+        "missing": [
+          "Generic ROI/profit arithmetic does not expose these distinct input/output contracts; accounting inclusions must be explicit.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 45,
+      "title": "Property Appreciation Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant-rate property value growth is futureValue(PV,r,t)",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant-rate property value growth is futureValue(PV,r,t)",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: investment-growth-calculator",
+        "recordedOutputSignature": "Versioned output record of investment-growth-calculator",
+        "missing": [
+          "Excludes improvements, transactions, property tax and market forecast; family reuse only.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 47,
+      "title": "Renovation ROI Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied renovation investment, final incremental value, costs and received income",
+          "engineSlugs": [
+            "roi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied renovation investment, final incremental value, costs and received income",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (roi)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, roi literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/roi.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.roi",
+            "input": {
+              "initialInvestment": 100,
+              "finalValue": 121,
+              "holdingMonths": 24,
+              "additionalCosts": 0,
+              "incomeReceived": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: roi-calculator",
+        "recordedOutputSignature": "Versioned output record of roi-calculator",
+        "missing": [
+          "User must define increment attributable to renovation; no causal valuation model.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 57,
+      "title": "Investment Growth Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Future value and exact Fisher real-return relationship",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Future value and exact Fisher real-return relationship",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: investment-growth-calculator",
+        "recordedOutputSignature": "Versioned output record of investment-growth-calculator",
+        "missing": [
+          "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 58,
+      "title": "Savings Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant monthly savings future value and reverse required monthly contribution",
+          "engineSlugs": [
+            "savings-goal-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/savings-goal.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "note": "Reference reused from the registered investment-math calculator for savings-goal planning with recurring contributions. Constant returns are hypothetical; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.savings-goal",
+            "input": {
+              "currentSavings": 0,
+              "targetAmount": 300,
+              "annualReturnPercent": 0,
+              "months": 3
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: savings-goal-calculator",
+        "recordedOutputSignature": "Versioned output record of savings-goal-calculator",
+        "missing": [
+          "Supplied goal/return/horizon only; no educational or retirement policy.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 59,
+      "title": "Future Value Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Future value and exact Fisher real-return relationship",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Future value and exact Fisher real-return relationship",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: investment-growth-calculator",
+        "recordedOutputSignature": "Versioned output record of investment-growth-calculator",
+        "missing": [
+          "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 60,
+      "title": "Present Value Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Existing exported presentValueFromFuture and cagr functions",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Existing exported presentValueFromFuture and cagr functions",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "FV/rate/years or beginning/ending value/years",
+        "recordedOutputSignature": "PV or annualized return",
+        "missing": [
+          "Helpers implemented/tested but distinct simple UI adapter and master scope binding still required.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 61,
+      "title": "Periodic Payment Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant monthly savings future value and reverse required monthly contribution",
+          "engineSlugs": [
+            "savings-goal-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/savings-goal.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "note": "Reference reused from the registered investment-math calculator for savings-goal planning with recurring contributions. Constant returns are hypothetical; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.savings-goal",
+            "input": {
+              "currentSavings": 0,
+              "targetAmount": 300,
+              "annualReturnPercent": 0,
+              "months": 3
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: savings-goal-calculator",
+        "recordedOutputSignature": "Versioned output record of savings-goal-calculator",
+        "missing": [
+          "Supplied goal/return/horizon only; no educational or retirement policy.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 62,
+      "title": "Required Rate of Return Calculator",
+      "componentBindings": [
+        {
+          "evidence": "cagr(beginningValue, targetValue, years) solves a lump-sum required annual rate",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "cagr(beginningValue, targetValue, years) solves a lump-sum required annual rate",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Beginning positive value, nonnegative target, positive years",
+        "recordedOutputSignature": "Required annual rate percent",
+        "missing": [
+          "No periodic-contribution inverse-rate solver or forecast; target-specific adapter required.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 63,
+      "title": "Investment Duration Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Lump-sum constant-rate duration: log_base(1+r)(target/initial)",
+          "engineSlugs": [
+            "logarithm-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Lump-sum constant-rate duration: log_base(1+r)(target/initial)",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-logarithm-calculator",
+            "input": {
+              "x": 100,
+              "base": 10
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: logarithm-calculator",
+        "recordedOutputSignature": "Versioned output record of logarithm-calculator",
+        "missing": [
+          "Requires positiveinitial/targetratio and1+r>0,not1 within logarithm schema; zero-rate feasibility and periodic contributions require separatepolicy.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 66,
+      "title": "CAGR Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Existing exported presentValueFromFuture and cagr functions",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Existing exported presentValueFromFuture and cagr functions",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "FV/rate/years or beginning/ending value/years",
+        "recordedOutputSignature": "PV or annualized return",
+        "missing": [
+          "Helpers implemented/tested but distinct simple UI adapter and master scope binding still required.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 67,
+      "title": "Average Return Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Arithmetic mean of supplied period-return percentages",
+          "engineSlugs": [
+            "mean-median-mode-range-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/statistics/catalog-batch-1.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Arithmetic mean of supplied period-return percentages",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic statistics engine"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/statistics/catalog-batch-1.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "statistics.summary",
+            "input": {
+              "values": [
+                1,
+                2,
+                2,
+                4
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: mean-median-mode-range-calculator",
+        "recordedOutputSignature": "Versioned output record of mean-median-mode-range-calculator",
+        "missing": [
+          "Only unweighted arithmetic average; geometric/time-weighted/money-weighted or annualized conventions not inferred.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 68,
+      "title": "Real Return Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Future value and exact Fisher real-return relationship",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Future value and exact Fisher real-return relationship",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: investment-growth-calculator",
+        "recordedOutputSignature": "Versioned output record of investment-growth-calculator",
+        "missing": [
+          "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 69,
+      "title": "Inflation-Adjusted Return Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Future value and exact Fisher real-return relationship",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Future value and exact Fisher real-return relationship",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: investment-growth-calculator",
+        "recordedOutputSignature": "Versioned output record of investment-growth-calculator",
+        "missing": [
+          "Nominal period/rate and inflation supplied; no asset-specific return forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 70,
+      "title": "Dollar-Cost Averaging Calculator",
+      "componentBindings": [
+        {
+          "evidence": "DCA suppliedpurchase costbasis = weightedmean(price,units),totalWeight=units",
+          "engineSlugs": [
+            "weighted-mean-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/statistics/catalog-batch-4.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "DCA suppliedpurchase costbasis = weightedmean(price,units),totalWeight=units",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic statistics engine"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/statistics/catalog-batch-4.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "statistics.weighted-mean",
+            "input": {
+              "values": [
+                10,
+                20
+              ],
+              "weights": [
+                1,
+                3
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: weighted-mean-calculator",
+        "recordedOutputSignature": "Versioned output record of weighted-mean-calculator",
+        "missing": [
+          "Positive suppliedunits only; purchases/currency/fees/taxlots/live execution not inferred; periodicfuturevalue canreuseSIP family.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 71,
+      "title": "Lump Sum vs SIP Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Compare supplied lump-sum and periodic contribution models under explicit shared nominal monthly rate/timing",
+          "engineSlugs": [
+            "sip-calculator",
+            "compound-interest-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/sip.ts",
+            "src/calculators/finance/compound-interest.ts",
+            "src/calculators/scenarios.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Compare supplied lump-sum and periodic contribution models under explicit shared nominal monthly rate/timing",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Dollar Cost Averaging",
+            "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+          },
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/compound-interest.ts",
+          "src/calculators/finance/sip.ts",
+          "src/calculators/registry.ts",
+          "src/calculators/scenarios.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.sip",
+            "input": {
+              "monthlyContribution": 10000,
+              "annualReturnPercent": 10,
+              "termMonths": 120,
+              "contributionTiming": "beginning"
+            }
+          },
+          {
+            "id": "finance.compound-interest",
+            "input": {
+              "principal": 10000,
+              "annualRatePercent": 5,
+              "years": 10,
+              "compoundsPerYear": 12
+            }
+          }
+        ],
+        "recordedInputSignature": "Common horizon, nominalrate, upfrontcapital and periodiccontribution, explicittiming",
+        "recordedOutputSignature": "Two immutable model results and explicitdifference",
+        "missing": [
+          "No automatic budget/capital-equivalence assumption or investmentforecast; comparison adapter required.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 72,
+      "title": "Bond Yield Calculator",
+      "componentBindings": [
+        {
+          "evidence": "New private periodic-cashflow inverse supplies the numeric yield basis for explicit bondcashflows",
+          "engineSlugs": [],
+          "helperRefs": [
+            "src/calculators/private-cashflow-rate.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "New private periodic-cashflow inverse supplies the numeric yield basis for explicit bondcashflows",
+        "sources": [],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/private-cashflow-rate.ts",
+          "src/calculators/finance/investment-math.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [],
+        "recordedInputSignature": "Supplied periodiccashflows and explicitsignchanging yield bracket",
+        "recordedOutputSignature": "Selectedperiodyield, normalizedNPVresidual, signchanges and bracket-onlydiagnostic",
+        "missing": [
+          "No automaticcoupon schedule, clean/dirtyprice, daycount, annualization or multiple-root selection; bondscope binding/specialist approval still required.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 73,
+      "title": "Bond Price Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Bond suppliedcashflow price=sum presentValueFromFuture(abs(cashflow),yield,period)*sign",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Bond suppliedcashflow price=sum presentValueFromFuture(abs(cashflow),yield,period)*sign",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Explicitcashflowamounts/times and supplieddiscountyield",
+        "recordedOutputSignature": "Presentvalue sum",
+        "missing": [
+          "ExistingPVhelper can discount suppliedcashflows; coupon scheduling/daycount/clean-dirty/convention still requires explicitcontract.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 74,
+      "title": "Dividend Yield Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+          "engineSlugs": [
+            "ratio-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied-total ratio for capitalization rate, cash-on-cash return, DSCR, GRM or dividend yield",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-ratio-calculator",
+            "input": {
+              "a": 12,
+              "b": 18
+            }
+          }
+        ],
+        "recordedInputSignature": "a numerator and nonzero b denominator in compatible period/currency",
+        "recordedOutputSignature": "result=a/b; percent outputs require explicit*100adapter",
+        "missing": [
+          "Domain naming, providedNOI/income/dividends and positive denominator validation need dedicated adapter; no property accounting or dividend forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 75,
+      "title": "Dividend Growth Calculator",
+      "componentBindings": [
+        {
+          "evidence": "cagr(beginningDividend,endingDividend,years)",
+          "engineSlugs": [
+            "investment-growth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/investment-math.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "cagr(beginningDividend,endingDividend,years)",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Compound Interest Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+          },
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.investment-math",
+            "input": {
+              "presentValue": 100000,
+              "annualReturnPercent": 10,
+              "years": 10,
+              "inflationPercent": 5
+            }
+          }
+        ],
+        "recordedInputSignature": "Positive beginningdividend, nonnegative endingdividend, positiveyears",
+        "recordedOutputSignature": "Annual compound dividend growthpercent",
+        "missing": [
+          "No reinvestment, dividendforecast or irregular exdates.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 76,
+      "title": "Mutual Fund Return Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+          "engineSlugs": [
+            "roi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (roi)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, roi literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/roi.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.roi",
+            "input": {
+              "initialInvestment": 100,
+              "finalValue": 121,
+              "holdingMonths": 24,
+              "additionalCosts": 0,
+              "incomeReceived": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: roi-calculator",
+        "recordedOutputSignature": "Versioned output record of roi-calculator",
+        "missing": [
+          "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 77,
+      "title": "ETF Return Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+          "engineSlugs": [
+            "roi-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/roi.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied aggregate fund/ETF return from initial/final value, distributions, explicit costs and holdingmonths",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (roi)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, roi literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/roi.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.roi",
+            "input": {
+              "initialInvestment": 100,
+              "finalValue": 121,
+              "holdingMonths": 24,
+              "additionalCosts": 0,
+              "incomeReceived": 0
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: roi-calculator",
+        "recordedOutputSignature": "Versioned output record of roi-calculator",
+        "missing": [
+          "No datedcashflow IRR, automaticreinvestment, livequotes or timeweightedreturn.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 78,
+      "title": "Payback Period Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Cost divided by constant positive annual cash savings",
+          "engineSlugs": [
+            "solar-simple-payback-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/energy/catalog-batch-1.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Cost divided by constant positive annual cash savings",
+        "sources": [
+          {
+            "label": "NREL \u2014 PVWatts Calculator",
+            "url": "https://pvwatts.nrel.gov/",
+            "note": "NREL PVWatts estimates photovoltaic energy production from system and location assumptions. This calculator uses a simplified user-supplied peak-sun-hours model, not a PVWatts simulation."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/energy/catalog-batch-1.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "energy.solar-simple-payback",
+            "input": {
+              "netSystemCost": 12000,
+              "annualSavings": 1500
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: solar-simple-payback-calculator",
+        "recordedOutputSignature": "Versioned output record of solar-simple-payback-calculator",
+        "missing": [
+          "Simple undiscounted payback only; variable/negative cash-flow periods and discounted payback not supplied.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 79,
+      "title": "Rule of 72 Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Rule72 approximation: a=72,b=positiveannualratepercent",
+          "engineSlugs": [
+            "ratio-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Rule72 approximation: a=72,b=positiveannualratepercent",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-ratio-calculator",
+            "input": {
+              "a": 12,
+              "b": 18
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: ratio-calculator",
+        "recordedOutputSignature": "Versioned output record of ratio-calculator",
+        "missing": [
+          "This is an approximation, not exact doublingtime; r=0undefined and negativegrowth outsidethis bounded interpretation.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 83,
+      "title": "Required Monthly Retirement Investment Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant monthly savings future value and reverse required monthly contribution",
+          "engineSlugs": [
+            "savings-goal-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/savings-goal.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "note": "Reference reused from the registered investment-math calculator for savings-goal planning with recurring contributions. Constant returns are hypothetical; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.savings-goal",
+            "input": {
+              "currentSavings": 0,
+              "targetAmount": 300,
+              "annualReturnPercent": 0,
+              "months": 3
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: savings-goal-calculator",
+        "recordedOutputSignature": "Versioned output record of savings-goal-calculator",
+        "missing": [
+          "Supplied goal/return/horizon only; no educational or retirement policy.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 93,
+      "title": "Retirement Income Gap Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Provided periodic income gap = suppliedneed - suppliedincome via aggregate subtraction adapter",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Provided periodic income gap = suppliedneed - suppliedincome via aggregate subtraction adapter",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (netWorth)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, netWorth literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/finance/net-worth.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.net-worth",
+            "input": {
+              "assets": [
+                {
+                  "name": "asset0",
+                  "amount": 100
+                }
+              ],
+              "liabilities": [
+                {
+                  "name": "debt0",
+                  "amount": 25
+                }
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "assets[] asneed; liabilities[] asincome; sameperiod",
+        "recordedOutputSignature": "netWorth usedasgap; dedicatedfieldlabels required",
+        "missing": [
+          "Generic subtraction/ratio exists; dedicated naming/period/input adapter required, no benefits forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 94,
+      "title": "Retirement Replacement Ratio Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied retirement income / preretirement income; explicit*100percentage adapter",
+          "engineSlugs": [
+            "ratio-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied retirement income / preretirement income; explicit*100percentage adapter",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/launch-portfolio.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-ratio-calculator",
+            "input": {
+              "a": 12,
+              "b": 18
+            }
+          }
+        ],
+        "recordedInputSignature": "a income; b nonzero preretirementincome",
+        "recordedOutputSignature": "result ratio, not percentuntiladapter",
+        "missing": [
+          "Generic subtraction/ratio exists; dedicated naming/period/input adapter required, no benefits forecast.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 100,
+      "title": "Monthly Budget Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (netWorth)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, netWorth literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/finance/net-worth.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.net-worth",
+            "input": {
+              "assets": [
+                {
+                  "name": "asset0",
+                  "amount": 100
+                }
+              ],
+              "liabilities": [
+                {
+                  "name": "debt0",
+                  "amount": 25
+                }
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "assets[] asfunds; liabilities[] asexpensebudget; nonnegative amounts",
+        "recordedOutputSignature": "totalAssets,totalLiabilities,netWorth asbudgetsurplus; relabelingadapterrequired",
+        "missing": [
+          "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 101,
+      "title": "50/30/20 Budget Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied-base percentage amounts;50/30/20 uses three explicit50,30,20percent calls; commission uses suppliedrate",
+          "engineSlugs": [
+            "percentage-of-value-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/core/percentage.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied-base percentage amounts;50/30/20 uses three explicit50,30,20percent calls; commission uses suppliedrate",
+        "sources": [
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Documents the internationally recognized percent symbol and its meaning as parts per hundred."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/core/percentage.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "core.percentage-of-value",
+            "input": {
+              "percentage": 20,
+              "value": 250
+            }
+          }
+        ],
+        "recordedInputSignature": "percentage,value withinfiniteengine range",
+        "recordedOutputSignature": "result amount; allocationadaptermaycombine3results",
+        "missing": [
+          "No definitionofnetincome, tiers,caps,clawbacks or legalpayroll rules; source-backed boundedarithmetic only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 102,
+      "title": "Savings Rate Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Savings/share = suppliedsavings/netincome (*100); salary/hourly = suppliedsalary/annualworkhours",
+          "engineSlugs": [
+            "ratio-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Savings/share = suppliedsavings/netincome (*100); salary/hourly = suppliedsalary/annualworkhours",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-ratio-calculator",
+            "input": {
+              "a": 12,
+              "b": 18
+            }
+          }
+        ],
+        "recordedInputSignature": "a numerator,b nonzero denominator; adapterrestricts income/workhours positive",
+        "recordedOutputSignature": "result ratio; percentageadapteronlywhereexplicit",
+        "missing": [
+          "No chosenworkweeks, statutoryhours, tax or automatic savings definitions; suppliedtotals only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 106,
+      "title": "Education Savings Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant monthly savings future value and reverse required monthly contribution",
+          "engineSlugs": [
+            "savings-goal-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/savings-goal.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant monthly savings future value and reverse required monthly contribution",
+        "sources": [
+          {
+            "label": "Investor.gov \u2014 Savings Goal Calculator",
+            "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator",
+            "note": "Reference reused from the registered investment-math calculator for savings-goal planning with recurring contributions. Constant returns are hypothetical; specialist methodology approval remains pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.savings-goal",
+            "input": {
+              "currentSavings": 0,
+              "targetAmount": 300,
+              "annualReturnPercent": 0,
+              "months": 3
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: savings-goal-calculator",
+        "recordedOutputSignature": "Versioned output record of savings-goal-calculator",
+        "missing": [
+          "Supplied goal/return/horizon only; no educational or retirement policy.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 107,
+      "title": "Wedding Budget Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (netWorth)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, netWorth literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/finance/net-worth.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.net-worth",
+            "input": {
+              "assets": [
+                {
+                  "name": "asset0",
+                  "amount": 100
+                }
+              ],
+              "liabilities": [
+                {
+                  "name": "debt0",
+                  "amount": 25
+                }
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "assets[] asfunds; liabilities[] asexpensebudget; nonnegative amounts",
+        "recordedOutputSignature": "totalAssets,totalLiabilities,netWorth asbudgetsurplus; relabelingadapterrequired",
+        "missing": [
+          "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 108,
+      "title": "Vacation Budget Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied same-period budgetfunds minus suppliedexpensecategory totals",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (netWorth)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, netWorth literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/finance/net-worth.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.net-worth",
+            "input": {
+              "assets": [
+                {
+                  "name": "asset0",
+                  "amount": 100
+                }
+              ],
+              "liabilities": [
+                {
+                  "name": "debt0",
+                  "amount": 25
+                }
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "assets[] asfunds; liabilities[] asexpensebudget; nonnegative amounts",
+        "recordedOutputSignature": "totalAssets,totalLiabilities,netWorth asbudgetsurplus; relabelingadapterrequired",
+        "missing": [
+          "No venue/travelprices, recommendedcategories, bankfeeds or forecast; suppliedledger arithmetic only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 110,
+      "title": "Salary to Hourly Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Savings/share = suppliedsavings/netincome (*100); salary/hourly = suppliedsalary/annualworkhours",
+          "engineSlugs": [
+            "ratio-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Savings/share = suppliedsavings/netincome (*100); salary/hourly = suppliedsalary/annualworkhours",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-ratio-calculator",
+            "input": {
+              "a": 12,
+              "b": 18
+            }
+          }
+        ],
+        "recordedInputSignature": "a numerator,b nonzero denominator; adapterrestricts income/workhours positive",
+        "recordedOutputSignature": "result ratio; percentageadapteronlywhereexplicit",
+        "missing": [
+          "No chosenworkweeks, statutoryhours, tax or automatic savings definitions; suppliedtotals only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 111,
+      "title": "Hourly to Salary Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Suppliedhourlypay * suppliedannualworkhours via existingdecimalmultiplication",
+          "engineSlugs": [],
+          "helperRefs": [
+            "src/calculators/core/draft-master-205.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Suppliedhourlypay * suppliedannualworkhours via existingdecimalmultiplication",
+        "sources": [],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/core/draft-master-205.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [],
+        "recordedInputSignature": "basicDraftCalculator decimalstrings left,right; operation=multiply",
+        "recordedOutputSignature": "Exactdecimal result within existingBasicv1contract",
+        "missing": [
+          "Privateexistingarithmetic basis only; no statutoryhours, taxes, overtime or paidleave inferred.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 113,
+      "title": "Raise Percentage Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Suppliedpositiveold/newpay percentage change",
+          "engineSlugs": [
+            "percentage-change-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Suppliedpositiveold/newpay percentage change",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-percentage-change-calculator",
+            "input": {
+              "old": 100,
+              "next": 125
+            }
+          }
+        ],
+        "recordedInputSignature": "old positivepay,next suppliedpay",
+        "recordedOutputSignature": "result percent",
+        "missing": [
+          "No payroll or purchasingpower adjustment.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 114,
+      "title": "Purchasing Power Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant supplied inflation future cost and purchasing-power inverse",
+          "engineSlugs": [
+            "inflation-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/inflation.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant supplied inflation future cost and purchasing-power inverse",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (inflation)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, inflation literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/inflation.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.inflation",
+            "input": {
+              "amount": 100,
+              "annualInflationPercent": 25,
+              "years": 1
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: inflation-calculator",
+        "recordedOutputSignature": "Versioned output record of inflation-calculator",
+        "missing": [
+          "No live CPI or jurisdiction index; uses explicit supplied annual rate.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 115,
+      "title": "Inflation Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Constant supplied inflation future cost and purchasing-power inverse",
+          "engineSlugs": [
+            "inflation-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/inflation.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Constant supplied inflation future cost and purchasing-power inverse",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (inflation)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, inflation literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/finance/inflation.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.inflation",
+            "input": {
+              "amount": 100,
+              "annualInflationPercent": 25,
+              "years": 1
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: inflation-calculator",
+        "recordedOutputSignature": "Versioned output record of inflation-calculator",
+        "missing": [
+          "No live CPI or jurisdiction index; uses explicit supplied annual rate.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 116,
+      "title": "Tip Calculator",
+      "componentBindings": [
+        {
+          "evidence": "bill*percent/100",
+          "engineSlugs": [
+            "tip-amount-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "bill*percent/100",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-tip-amount-calculator",
+            "input": {
+              "bill": 80,
+              "percent": 15
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: tip-amount-calculator",
+        "recordedOutputSignature": "Versioned output record of tip-amount-calculator",
+        "missing": [
+          "Tip amount only; bill-with-tip and tip-split variants available separately.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 117,
+      "title": "Discount Calculator",
+      "componentBindings": [
+        {
+          "evidence": "original price*percent/100",
+          "engineSlugs": [
+            "discount-amount-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "original price*percent/100",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-discount-amount-calculator",
+            "input": {
+              "price": 100,
+              "percent": 20
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: discount-amount-calculator",
+        "recordedOutputSignature": "Versioned output record of discount-amount-calculator",
+        "missing": [
+          "Amount vs remaining sale price differ; sale-price-calculator covers remainder; preserve percent and amount semantics.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 118,
+      "title": "Percent Off Calculator",
+      "componentBindings": [
+        {
+          "evidence": "original price*percent/100",
+          "engineSlugs": [
+            "discount-amount-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/launch-portfolio.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "original price*percent/100",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-discount-amount-calculator",
+            "input": {
+              "price": 100,
+              "percent": 20
+            }
+          }
+        ],
+        "recordedInputSignature": "Exact registered input schema and example: discount-amount-calculator",
+        "recordedOutputSignature": "Versioned output record of discount-amount-calculator",
+        "missing": [
+          "Amount vs remaining sale price differ; sale-price-calculator covers remainder; preserve percent and amount semantics.",
+          "Engineering scope finding only; publication/certification/owner identity authorization remains separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 119,
+      "title": "Commission Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Supplied-base percentage amounts;50/30/20 uses three explicit50,30,20percent calls; commission uses suppliedrate",
+          "engineSlugs": [
+            "percentage-of-value-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/core/percentage.ts"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Supplied-base percentage amounts;50/30/20 uses three explicit50,30,20percent calls; commission uses suppliedrate",
+        "sources": [
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Documents the internationally recognized percent symbol and its meaning as parts per hundred."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/core/percentage.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "core.percentage-of-value",
+            "input": {
+              "percentage": 20,
+              "value": 250
+            }
+          }
+        ],
+        "recordedInputSignature": "percentage,value withinfiniteengine range",
+        "recordedOutputSignature": "result amount; allocationadaptermaycombine3results",
+        "missing": [
+          "No definitionofnetincome, tiers,caps,clawbacks or legalpayroll rules; source-backed boundedarithmetic only.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 465,
+      "title": "EV vs Petrol/Diesel Cost Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Compare supplied-distance EV charging energy cost and combustion trip fuel cost",
+          "engineSlugs": [
+            "ev-charging-cost-calculator",
+            "road-trip-fuel-cost-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/scenarios.ts#compareScenarios"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Compare supplied-distance EV charging energy cost and combustion trip fuel cost",
+        "sources": [
+          {
+            "label": "U.S. Department of Energy \u2014 Alternative Fuels Data Center: Electric Vehicles",
+            "url": "https://afdc.energy.gov/vehicles/electric.html",
+            "note": "General EV energy-use and charging context. Actual consumption, charging losses, rates and range vary by vehicle, charger, conditions and tariff."
+          },
+          {
+            "label": "U.S. Department of Energy \u2014 FuelEconomy.gov",
+            "url": "https://www.fueleconomy.gov/feg/Find.do?action=sbs&id=0",
+            "note": "Vehicle fuel economy and operating cost depend on vehicle, route, speed, weather, driving style, fuel price and other conditions. These calculators use user-supplied averages rather than vehicle-specific ratings."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/scenarios.ts",
+          "src/calculators/finance/planning-independent-goldens.ts",
+          "src/calculators/energy/catalog-batch-1.ts",
+          "src/calculators/energy/catalog-batch-1.test.ts",
+          "src/calculators/automotive/catalog-batch-1.ts",
+          "src/calculators/automotive/catalog-batch-1.test.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "automotive.ev-charging-cost",
+            "input": {
+              "batteryEnergyAddedKwh": 50,
+              "electricityRatePerKwh": 0.2,
+              "chargingEfficiencyPercent": 90
+            }
+          },
+          {
+            "id": "automotive.road-trip-fuel-cost",
+            "input": {
+              "distanceKm": 500,
+              "fuelConsumptionLitersPer100Km": 8,
+              "fuelPricePerLiter": 1.5
+            }
+          }
+        ],
+        "recordedInputSignature": "matched distance; explicitly supplied energy added/charging efficiency/tariff and fuel consumption/price",
+        "recordedOutputSignature": "two operating costs and comparison metrics",
+        "missing": [
+          "Adapter must align distance and battery energy assumptions; no depreciation, maintenance or purchase-cost claim. Comparison helper itself does not emit numeric delta.",
+          "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 466,
+      "title": "Vehicle Total Cost of Ownership Calculator",
+      "componentBindings": [
+        {
+          "evidence": "sum(provided ownership expense amounts)-provided resale proceeds",
+          "engineSlugs": [
+            "net-worth-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/finance/net-worth.ts#calculateNetWorth"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "sum(provided ownership expense amounts)-provided resale proceeds",
+        "sources": [
+          {
+            "label": "Internal independent arithmetic \u2014 planning-independent-goldens.ts (netWorth)",
+            "note": "Internal repository source: src/calculators/finance/planning-independent-goldens.ts, netWorth literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/finance/net-worth.ts",
+          "src/calculators/finance/planning-independent-goldens.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "finance.net-worth",
+            "input": {
+              "assets": [
+                {
+                  "name": "asset0",
+                  "amount": 100
+                }
+              ],
+              "liabilities": [
+                {
+                  "name": "debt0",
+                  "amount": 25
+                }
+              ]
+            }
+          }
+        ],
+        "recordedInputSignature": "<=200 nonnegative expense amounts and supplied resale proceeds for explicit horizon",
+        "recordedOutputSignature": "total modeled ownership cost from netWorth",
+        "missing": [
+          "Supplied-total ledger only; no depreciation forecasting, loan amortization integration, double-count prevention or cost-per-distance adapter;2-decimal output.",
+          "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 473,
+      "title": "Fuel Savings Calculator",
+      "componentBindings": [
+        {
+          "evidence": "baseline fuel trip cost versus replacement fuel trip cost; savings=baselineCost-newCost",
+          "engineSlugs": [
+            "road-trip-fuel-cost-calculator"
+          ],
+          "helperRefs": [
+            "src/calculators/scenarios.ts#compareScenarios",
+            "src/calculators/launch-portfolio.ts#launchDefinitions"
+          ],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "baseline fuel trip cost versus replacement fuel trip cost; savings=baselineCost-newCost",
+        "sources": [
+          {
+            "label": "U.S. Department of Energy \u2014 FuelEconomy.gov",
+            "url": "https://www.fueleconomy.gov/feg/Find.do?action=sbs&id=0",
+            "note": "Vehicle fuel economy and operating cost depend on vehicle, route, speed, weather, driving style, fuel price and other conditions. These calculators use user-supplied averages rather than vehicle-specific ratings."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/scenarios.ts",
+          "src/calculators/finance/planning-independent-goldens.ts",
+          "src/calculators/automotive/catalog-batch-1.ts",
+          "src/calculators/automotive/catalog-batch-1.test.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "automotive.road-trip-fuel-cost",
+            "input": {
+              "distanceKm": 500,
+              "fuelConsumptionLitersPer100Km": 8,
+              "fuelPricePerLiter": 1.5
+            }
+          }
+        ],
+        "recordedInputSignature": "same distance; two supplied nonnegative L/100km and fuel prices",
+        "recordedOutputSignature": "two trip costs; optional margin-amount {result:savings}",
+        "missing": [
+          "Constant fuel consumption/price only; no vehicle acquisition economics or future tariff forecasting.",
+          "No master approval or publication authorization; supplied accounting totals are not derived or classified by these primitives.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 477,
+      "title": "Electricity Cost Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Flat energy charge=energy*rate",
+          "engineSlugs": [
+            "energy-cost-calculator"
+          ],
+          "helperRefs": [],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Flat energy charge=energy*rate",
+        "sources": [
+          {
+            "label": "CalcuMint deterministic formula review",
+            "note": "Standard mathematical/scientific identity reviewed for launch portfolio."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/launch-portfolio.test.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "launch-energy-cost-calculator",
+            "input": {
+              "energy": 100,
+              "rate": 0.2
+            }
+          }
+        ],
+        "recordedInputSignature": "energy>=0; rate>=0",
+        "recordedOutputSignature": "{result:number}",
+        "missing": [
+          "No tiers, fixed charges or taxes. Appliance/home-energy engines add wattage-time variants.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 480,
+      "title": "Solar Payback Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Undiscounted payback=netSystemCost/annualSavings",
+          "engineSlugs": [
+            "solar-simple-payback-calculator"
+          ],
+          "helperRefs": [],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Undiscounted payback=netSystemCost/annualSavings",
+        "sources": [
+          {
+            "label": "NREL \u2014 PVWatts Calculator",
+            "url": "https://pvwatts.nrel.gov/",
+            "note": "NREL PVWatts estimates photovoltaic energy production from system and location assumptions. This calculator uses a simplified user-supplied peak-sun-hours model, not a PVWatts simulation."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/energy/catalog-batch-1.ts",
+          "src/calculators/energy/catalog-batch-1.test.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "energy.solar-simple-payback",
+            "input": {
+              "netSystemCost": 12000,
+              "annualSavings": 1500
+            }
+          }
+        ],
+        "recordedInputSignature": "netSystemCost>=0; annualSavings>0",
+        "recordedOutputSignature": "{value:years,steps}",
+        "missing": [
+          "No degradation, discounting, maintenance or tariff model.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 494,
+      "title": "Altitude Pressure Calculator",
+      "componentBindings": [
+        {
+          "evidence": "P=P0*(1-2.25577e-5*h)^5.25588",
+          "engineSlugs": [
+            "barometric-pressure-calculator"
+          ],
+          "helperRefs": [],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "P=P0*(1-2.25577e-5*h)^5.25588",
+        "sources": [
+          {
+            "label": "NOAA/NWS \u2014 Atmospheric Science",
+            "url": "https://www.weather.gov/jetstream/",
+            "note": "Reference context for atmospheric pressure and density."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/earth-science/catalog-batch-2.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "earth-science.barometric-pressure",
+            "input": {
+              "seaLevelPressurePa": 101325,
+              "altitudeM": 1000
+            }
+          }
+        ],
+        "recordedInputSignature": "seaLevelPressurePa>0 <=200000; altitudeM[-1000,11000]",
+        "recordedOutputSignature": "{value:Pa,steps}",
+        "missing": [
+          "Lower standard-atmosphere approximation; no weather/humidity profile.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 528,
+      "title": "Calories Burned by Exercise Calculator",
+      "componentBindings": [
+        {
+          "evidence": "Gross exercise kcal=MET*3.5*weightKg/200*minutes",
+          "engineSlugs": [
+            "calories-burned-calculator"
+          ],
+          "helperRefs": [],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "Gross exercise kcal=MET*3.5*weightKg/200*minutes",
+        "sources": [
+          {
+            "label": "2024 Adult Compendium of Physical Activities",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10818145/",
+            "note": "MET values are standardized estimates of activity energy cost; calorie expenditure calculated from METs is an estimate and varies by activity and person."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/health/catalog-batch-2.ts",
+          "src/calculators/health/catalog-batch-2.test.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "health.calories-burned",
+            "input": {
+              "weightKg": 70,
+              "met": 3.5,
+              "minutes": 30
+            }
+          }
+        ],
+        "recordedInputSignature": "weightKg>0 <=1e6; MET[1,20]; minutes(0,1440]",
+        "recordedOutputSignature": "{value:kcal,steps}",
+        "missing": [
+          "User must supply MET; no exercise lookup or clinical prescription.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    },
+    {
+      "masterId": 537,
+      "title": "Air Pressure vs Altitude Calculator",
+      "componentBindings": [
+        {
+          "evidence": "P=P0*(1-2.25577e-5*h)^5.25588",
+          "engineSlugs": [
+            "barometric-pressure-calculator"
+          ],
+          "helperRefs": [],
+          "classification": "FAMILY_VARIANT_SUPPORT_ONLY"
+        }
+      ],
+      "methodologyEvidence": {
+        "declaredFormulaScope": "P=P0*(1-2.25577e-5*h)^5.25588",
+        "sources": [
+          {
+            "label": "NOAA/NWS \u2014 Atmospheric Science",
+            "url": "https://www.weather.gov/jetstream/",
+            "note": "Reference context for atmospheric pressure and density."
+          }
+        ],
+        "archivedSourceObservations": [],
+        "sourcePaths": [
+          "src/calculators/registry.ts",
+          "src/calculators/earth-science/catalog-batch-2.ts"
+        ],
+        "normativeVersionApplicability": "UNAPPROVED_OR_UNKNOWN",
+        "publisherBodyVerification": "NOT_INFERRED_FROM_METADATA"
+      },
+      "canonicalRequirements": {
+        "observedCandidateInputs": [
+          {
+            "id": "earth-science.barometric-pressure",
+            "input": {
+              "seaLevelPressurePa": 101325,
+              "altitudeM": 1000
+            }
+          }
+        ],
+        "recordedInputSignature": "seaLevelPressurePa>0 <=200000; altitudeM[-1000,11000]",
+        "recordedOutputSignature": "{value:Pa,steps}",
+        "missing": [
+          "Lower standard-atmosphere approximation; no weather/humidity profile.",
+          "Engineering reconciliation only; master scope binding, owner approval, specialist gates and publication remain separate.",
+          "Full canonical input/output/feature scope and exact ID-to-version mapping remain unapproved."
+        ]
+      },
+      "specialistRestrictions": {
+        "screening": "UNKNOWN",
+        "reviewerGroups": [],
+        "historicalQualifiedApproval": "UNKNOWN",
+        "qualifiedDecisionEvidence": null,
+        "notAnExemption": true
+      }
+    }
+  ]
+}
