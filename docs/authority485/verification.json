@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "f7912be103b596b5b8bf4a325667fd2e5a2cb30d",
+  "baselineCI": {
+    "runId": 41030930879,
+    "conclusion": "success",
+    "verification": "Exact-head API verification completed earlier in this task; not repolled"
+  },
+  "implementedComponent": "private.component.uk-electricity-scope2-location.2026",
+  "version": 1,
+  "relatedCatalogId": 485,
+  "canonicalClassUnchanged": "CONTRACT_BLOCKED",
+  "releaseHold": true,
+  "tests": {
+    "focused": {
+      "passed": 72,
+      "files": 5,
+      "exitCode": 0
+    },
+    "independentNumerical": {
+      "passed": 27
+    },
+    "nativeVerification": {
+      "sha256AndCRC": true,
+      "nativeCellsAndUnits": true,
+      "versionsAndDates": true,
+      "publishedVersusStoredPrecision": true,
+      "missingVsZero": true,
+      "reproducibilityCheck": true
+    },
+    "browser": {
+      "journeys": 18,
+      "quantities": 3,
+      "plans": [
+        "free",
+        "pro",
+        "business"
+      ],
+      "widths": [
+        320,
+        1280
+      ],
+      "issues": 0,
+      "exactSnapshotParity": true,
+      "securityChecks": [
+        "unauthenticated fixture401",
+        "unauthenticated source401",
+        "unauthenticated workbook401",
+        "unauthenticated proof401",
+        "POST405",
+        "foreign Origin403",
+        "authenticated pinned factor and missing/zero proof"
+      ],
+      "exitCode": 0
+    },
+    "security": {
+      "checks": 8,
+      "schemaPreflight": true,
+      "exitCode": 0,
+      "scope": "Disposable PostgreSQL17.6 and real PostgREST; production equivalence UNKNOWN"
+    },
+    "transport": {
+      "passed": 20,
+      "exitCode": 0
+    },
+    "launchGuards": {
+      "passed": 45,
+      "exitCode": 0
+    },
+    "certificationGuards": {
+      "passed": 15,
+      "exitCode": 0,
+      "certificationAuthorized": false
+    },
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 28,
+      "exitCode": 0
+    },
+    "typecheck": {
+      "exitCode": 0
+    },
+    "webpackBuild": {
+      "staticPages": 37,
+      "exitCode": 0
+    }
+  },
+  "review": {
+    "independent": true,
+    "outstandingCriticalOrImportant": false,
+    "path": "docs/authority485/INDEPENDENT-REVIEW.md",
+    "limits": "Native/cell and actual-engine/UI checks independently executed; browser/security/build campaigns not independently repeated."
+  },
+  "earlierRunLimits": [
+    "Native subprocess test initially failed with restricted python3 spawnEPERM; supported-permission72-test rerun passed without assertion changes.",
+    "Completed baseline/full Windows QA was not repeated; tests cover this additive component and applicable snapshot/security/transport/lifecycle guards."
+  ],
+  "artifacts": [
+    {
+      "path": "docs/authority485/native/ghg-conversion-factors-2026-flat-format-revised.xlsx",
+      "sha256": "a9a455ab396dae226d510c7be6233748416d490c41a5d20f3dc7a0c45feecd5e"
+    },
+    {
+      "path": "docs/authority485/native/ghg-conversion-factors-2026-full-set.xlsx",
+      "sha256": "b5c4f2f86cdc74707337b2fb013b44ded189a1b528f5e29ea99856ba65ae0205"
+    },
+    {
+      "path": "docs/authority485/native-source-binding.json",
+      "sha256": "c20bfdb9b8db1c8ead3ea6789c2add10f26f6b7363d0040cb0f0fe356014c5da"
+    },
+    {
+      "path": "docs/authority485/research-verification.json",
+      "sha256": "f7a93e92f56e0d3f3ea6ea89a439684face923e9f2ddc8aac9eb089c1636e5d8"
+    },
+    {
+      "path": "docs/authority485/integrity.json",
+      "sha256": "08509b062508263c5a1e9ee7da05231fc88a5f1a607694c8c97cd23235e17cb5"
+    },
+    {
+      "path": "docs/authority485/component-manifest.json",
+      "sha256": "e2a8741f4c594e39d0b6207960aec010593f6b2a2f5096811d60e2bd33cffa86"
+    },
+    {
+      "path": "docs/authority485/publication-extracted.json",
+      "sha256": "2a21acf9380dfc1fd40346240acb7f87b1a884dd6d1d11cf703eb05067a99a30"
+    },
+    {
+      "path": "docs/authority485/licence-extracted.json",
+      "sha256": "f82ff263013232817fb79761bfc7bbd88408407ff99d76120e6b1578779f2980"
+    },
+    {
+      "path": "src/calculators/uk-2026-electricity.ts",
+      "sha256": "b22c38e1e009f35571808462f133c8ab9cc8ea09c1fec3c2801a2c8d1335438e"
+    },
+    {
+      "path": "src/components/uk-2026-electricity-review.tsx",
+      "sha256": "1467c3ed1325a4416ec399498e75655ec8ef9c643cdb668c6a1462d9510c8c70"
+    },
+    {
+      "path": "scripts/verify-uk-2026-electricity-source.py",
+      "sha256": "ea4c9e67a300c73c9ae33b9e23b5e6d8c5dfcc741867d6754b3868361ebe5b45"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/workspace/work/authority485-evidence/initial-red.log",
+      "sha256": "ae1e323fe8cd649c20399dfb3bdc3dd54ba97273714039c6b51614b57c8e3189"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/ui-red.log",
+      "sha256": "809ef6bd5b856ad603bad8186c1a71225cb28858752aa5406b8ee1937598a869"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/focused.log",
+      "sha256": "47c6f97a8e7f7ff98fe8a6d9333761815bb2de079e15abaa063edb440f635fb6"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/focused-final.log",
+      "sha256": "a9d7a71628a035359a5f82bc91ad05bfee8194c1e691507f18b279ce469f0255"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/browser.log",
+      "sha256": "fa38acda223ac04282f04e25e74b65b01ccd90c794ffe1309a77d70c405bd607"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/security.log",
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/transport.log",
+      "sha256": "e54eb2febe632d184e8adb86050d6fe1cc71399c033bbc64336c1c6d678c2239"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/launch.log",
+      "sha256": "e962c9d766394e95a34f4e054e6859be59df9d921ca0870d97d8d0c6d6b76f54"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/certification.log",
+      "sha256": "f5814fa992da368705b7c2043fb6bfcc1da7b680ee624f6f5e1ef4db1ce3711d"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/lint.log",
+      "sha256": "22928c347d5d8f42bd520bf03984fd7a213a8049ccfd5e4ba2e9370361de92f5"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "/workspace/work/authority485-evidence/build.log",
+      "sha256": "e175de9174ed86d525291449c35a3f28ba9f02607573c0835bf314833ed49733"
+    }
+  ],
+  "sourceAuthenticityLimit": "Native user uploads corroborated against publisher filenames/links and matching workbook contents; no independently downloaded publisher checksum or digital signature claimed.",
+  "rawEvidenceDurability": "Local logs/browser downloads are not claimed permanently hosted. Native files,source verification,tests,hashes and reports are committed with this branch.",
+  "newHostedCI": "One bounded status check after draft PR; reported separately without watch/poll loop."
+}

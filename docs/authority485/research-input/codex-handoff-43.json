@@ -1,0 +1,1730 @@
+{
+  "candidateSHA": "f7912be103b596b5b8bf4a325667fd2e5a2cb30d",
+  "prohibited": "No production access/writes, merge, deployment, certification or publication. This research package does not approve pending policies or overwrite frozen engines.",
+  "rows": [
+    {
+      "masterId": 9,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/rate-conversion.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "US closed-end regular single-advance actuarial APR from already legally determined amount financed and positive scheduled equal monthly payments; full irregular/image equations and finance-charge classification unresolved",
+        "math": "AF=sum(P/(1+i)^k); APRpercent=1200*i; i>-1, AF>0, n integer>=1",
+        "units": "currency; monthly unit periods; percent/year",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "AppendixJ(b)(9)(ii) retains available decimals and correct2decimal APR; tie rule unknown",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "US jurisdiction, amount-financed fee classification, actuarial vs US Rule, date scope and rounding ties",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/rate-conversion.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 19,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/credit-card-payoff.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Single statement sample Chase COL00040 minimum, no pastdue or special financing; statement-supplied interest and latefees. Actual chosen card and rounding missing",
+        "math": "M=max(min(40,D),D/100+I+L) for bounded no-special/no-pastdue profile only",
+        "units": "USD statement balance; percent fraction; currency inputs",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Actual issuer/card/revision, special financing bases, statement rounding, due-date cutoffs and final-balance treatment",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/credit-card-payoff.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 20,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/credit-card-payoff.ts",
+        "src/calculators/finance/loan-analysis.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Named sample offer supplies promotional fees/rates; sample agreement compatibility not established. No complete approved allocation/capitalization/calendar contract",
+        "math": "fee=max(5,3*T/100) for eligible within60days; later max(5,T/20)",
+        "units": "USD; days since opening; monthly promotional term",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Actual offer and compatible agreement, allocation/capitalization and daily accrual; posting/reset dates and comparison horizon",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/credit-card-payoff.ts",
+          "src/calculators/finance/loan-analysis.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 23,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/credit-card-payoff.ts",
+        "src/calculators/finance/loan-analysis.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "BofA/Merrill disclosure supports phase/options; not complete signed HELOC contract",
+        "math": "draw interest-only minimum=accrued interest+unpaidfees; amortizing minimum>=100 subject to actual contract",
+        "units": "USD; monthly payments; 10year draw/20year repayment",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Lender/version, daily accrual/daycount, index/margin/reset, draws, term start/end, finalcap and amortizing formula conventions",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/credit-card-payoff.ts",
+          "src/calculators/finance/loan-analysis.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 34,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/mortgage.ts",
+        "src/calculators/finance/roi.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "No taxing authority/class/year selected; prior NYC example cannot govern global property tax",
+        "math": "tax=sum(selected taxable bases*selected levies)-selected credits; only conditional accounting identity",
+        "units": "local currency/year; authority valuation/class units",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Select jurisdiction, authority, class, year, assessment/exemptions/caps/levies; then obtain exact official rulepack",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/mortgage.ts",
+          "src/calculators/finance/roi.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 48,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/mortgage.ts",
+        "src/calculators/finance/roi.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Investment-property affordability definition and financing/tax/cost inclusions unselected",
+        "math": "No single canonical affordability equation established",
+        "units": "currency, horizon, financing periods unselected",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Choose cashflow, reserve/DSCR/debt/downpayment/maintenance/tax/income scope and financing jurisdiction",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/mortgage.ts",
+          "src/calculators/finance/roi.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 87,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/investment-math.ts",
+        "src/calculators/finance/savings-goal.ts",
+        "src/calculators/finance/swp.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Empirical safe-withdrawal methodology/population/asset paths/success criterion unselected; compound interest is not empirical safety evidence",
+        "math": "spending=w*initialCorpus is identity, not a safe-rate proof",
+        "units": "currency/year; withdrawal fraction; return/inflation timeline",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Select empirical study/version, sequence model, assets, fees/taxes/inflation, horizon/success criterion; obtain competent independent applicability/methodology review",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/finance/swp.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 92,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/investment-math.ts",
+        "src/calculators/finance/savings-goal.ts",
+        "src/calculators/finance/swp.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Named pension plan/formula/service/earnings/vesting/survivor/early-retirement contract absent; IRS RMD is not pension-benefit formula",
+        "math": "No canonical pension formula without selected plan",
+        "units": "plan currency; service/earnings periods; age",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Account/payroll output and intermediate rounding mode/stage UNKNOWN; examples use exact terminating arithmetic",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Select exact plan and governing benefit booklet/amendment; obtain service, compensation, vesting, reduction/COLA/survivor clauses",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/finance/swp.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 95,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/investment-math.ts",
+        "src/calculators/finance/savings-goal.ts",
+        "src/calculators/finance/swp.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Bounded 2026 original-owner traditional IRA TableIII profile supported; no complete inherited/spouse/plan/deadline/rounding contract selected",
+        "math": "RMD=BpriorDec31/d(age); age75 denominator24.6; age73 denominator26.5",
+        "units": "USD/year; age at birthday in distribution year; divisor years",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "No newly inferred engine/display rounding approval; preserve exact references; clause-specific IRS worksheet rounding requires separate implementation",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Choose account/year/owner-beneficiary/spouse facts and table; verify balance adjustments/aggregation/deadlines; approve precision/tie/payment rounding without underdistribution",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/finance/swp.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 97,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/investment-math.ts",
+        "src/calculators/finance/savings-goal.ts",
+        "src/calculators/finance/swp.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "2025 US original-owner Roth contribution and qualification branches now fully retrievable; full intended conversions/inherited/excess branches unselected;2026 typo unresolved",
+        "math": "2025 single MAGI>=165000 => directRothLimit0; otherwise implement Worksheet2-2 with combined IRA/compensation caps and prescribed rounding",
+        "units": "USD/taxyear; filingstatus; MAGI; age; dates",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "No newly inferred engine/display rounding approval; preserve exact references; clause-specific IRS worksheet rounding requires separate implementation",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Select taxyear and complete eligibility/conversion/distribution/worksheet-rounding branches; approve clause-specific source priority.2026 MFJ dollar upper bound now corroborated252000; other contract gaps retained.",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/finance/swp.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 98,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/finance/investment-math.ts",
+        "src/calculators/finance/savings-goal.ts",
+        "src/calculators/finance/swp.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "2025 contribution permission distinct from deduction; full rules captured but complete product branches and year unselected",
+        "math": "Allowed contribution=min(selected agecap,taxablecompensation)-otherIRAcontributions subject to detailed rules; deduction separate Table1-2/1-3 worksheet",
+        "units": "USD/taxyear; compensation/MAGI; age and plan coverage",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "No newly inferred engine/display rounding approval; preserve exact references; clause-specific IRS worksheet rounding requires separate implementation",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "Select taxyear, filing/coverage/MAGI/basis/distributions, source worksheet rounding and intended exceptions",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/finance/investment-math.ts",
+          "src/calculators/finance/savings-goal.ts",
+          "src/calculators/finance/swp.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 112,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/registry.ts"
+      ],
+      "specification": {
+        "boundedProfile": "Bounded FLSA covered nonexempt single straight-time hourly rate, one workweek, no other remuneration or exclusions; jurisdiction/exemption applicability remains separate",
+        "math": "gross=r*min(h,40)+(3/2)*r*max(h-40,0); salary45hour example requires different already-paid straight-time treatment",
+        "units": "USD/hour; actual hours per fixed168hour workweek; h>=0,r>=applicable minimum",
+        "domain": "Only stated input facts and clause-specific period; broader branch applicability UNKNOWN",
+        "rounding": "Integer-cent exact arithmetic examples only; fractional-cent payroll rounding mode, stage and reconciliation policy unresolved. Source completeness not established.",
+        "datesVsUnknown": "retrieved2026-10-30 is observation date; selected governing effective period remains pending unless example explicitly names year"
+      },
+      "remainingDependencies": [
+        "User selects bounded profile; qualified determination of coverage/exemption/state/local/union rules and remuneration; currency/tie rules for fractional cents",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "nextTasks": {
+        "condition": "After explicit profile selection and unresolved contract/applicability decisions; no implementation now",
+        "sourceFileCandidates": [
+          "src/calculators/core/percentage.ts",
+          "src/calculators/launch-portfolio.ts",
+          "src/calculators/registry.ts"
+        ],
+        "tasks": [
+          "Inspect source candidates at PR1492 SHA f7912be103b596b5b8bf4a325667fd2e5a2cb30d; candidates are not approved identity binding.",
+          "Encode selected clauses, units, dates and rejection behavior; preserve all intended branches or explicitly obtain scope decision.",
+          "Run actual selected engine against independent exact examples and threshold/date/rounding branches; record expected/actual and version hashes.",
+          "Retain RELEASE HOLD; no certification, publication or production writes."
+        ]
+      },
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 120,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "For proposed simple profile: P=max(0,12570-max(0,ANI-100000)/2); X=max(0,income-P); illustrative T=.20*min(X,37700)+.40*min(max(X-37700,0),87440)+.45*max(X-125140,0). This continuous pre-rounding expression is a candidate, not an approved statutory evaluator.",
+        "units": "GBP per tax/accounting year; rates dimensionless",
+        "domain": "England/Wales/Northern Ireland 2026/27 annual non-savings employment income; single resident individual, supplied eligible adjusted net income; no special reliefs",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "2026/27 liability rounding/stages and approved allowance/base treatment remain missing; 2024/25 guide cannot fill them.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #120, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #120 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #120 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 121,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "units": "USD per pay period, except W4 step3/4a/4b and annual table in USD/year; YTD bases in USD/calendar year",
+        "domain": "finite nonnegative values; signed corrections/refunds unsupported; cash gross must cover employee deductions or explicit insufficiency outcome",
+        "fit": {
+          "adjustedAnnual": "A=max(0,26*FIT_wages+W4_4a-W4_4b-8600)",
+          "tableColumns": [
+            "inclusiveLower",
+            "exclusiveUpper (null=infinity)",
+            "baseAnnualTax",
+            "marginalFraction"
+          ],
+          "standardSingleTable": [
+            [
+              0,
+              7500,
+              0,
+              "0"
+            ],
+            [
+              7500,
+              19900,
+              0,
+              "0.10"
+            ],
+            [
+              19900,
+              57900,
+              1240,
+              "0.12"
+            ],
+            [
+              57900,
+              113200,
+              5800,
+              "0.22"
+            ],
+            [
+              113200,
+              209275,
+              17966,
+              "0.24"
+            ],
+            [
+              209275,
+              263725,
+              41024,
+              "0.32"
+            ],
+            [
+              263725,
+              648100,
+              58448,
+              "0.35"
+            ],
+            [
+              648100,
+              null,
+              "192979.25",
+              "0.37"
+            ]
+          ],
+          "tentative": "Select unique lower<=A<upper. T=base+rate*(A-lower)",
+          "period": "F_raw=max(0,T/26-W4_step3/26)+W4_4c",
+          "sources": [
+            "US1",
+            "US2"
+          ]
+        },
+        "fica": {
+          "socialSecurity": "S_raw=0.062*min(SS_wages,max(0,184500-YTD_SS_wages_before))",
+          "medicare": "M_raw=0.0145*Medicare_wages",
+          "additionalMedicare": "AM_raw=0.009*(max(0,YTD_Medicare_before+Medicare_wages-200000)-max(0,YTD_Medicare_before-200000))",
+          "employer": "same S and M bases/rates; no employer AM; FUTA is separate and not supplied by this contract",
+          "ytd": "Same employer calendar-year wages; successor/common-paymaster applicability must be screened; never substitute all-employer employee return liability",
+          "sources": [
+            "US4"
+          ]
+        },
+        "net": "cashGross-F-S-M-AM-postTaxDeductions; all employee lines separately shown; no state/local zero assertion",
+        "rounding": {
+          "fit": "US3 permits consistent wage rounding and final nearest whole dollar (under .50 down, .50–.99 up). Selectable proposal: retain exact wages/intermediate rational arithmetic, round only final F_raw to whole USD, half up.",
+          "fica": "US6 recognizes nearest-cent payroll calculations and return fractions-of-cents adjustments. It does not specify an exact half-cent tie convention or compel cumulative-tax difference rounding. Proposed separate S/M/AM cent half-up is PRODUCT POLICY requiring approval, not IRS-prescribed tie rule.",
+          "intermediate": "No intermediate truncation inferred; rate decimals treated as exact rational",
+          "status": "Owner must select consistent allowed FIT approach and cent tie/line aggregation policy; no source claim that half-even/half-up is mandated for FICA"
+        }
+      },
+      "remainingDependencies": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "nextTasks": [
+        "After explicit contract adoption implement versioned forward withholding pack for 2026 profile, preserving decimal/rational intermediates; reject unsupported scope",
+        "Run independent table-boundary, W4-credit floor, annualization, SS-cap crossing, Medicare threshold crossing and rounding cases against actual mapped full-SHA engine; retain results",
+        "Keep RELEASE HOLD; no code changes, production access, merge, publication or certification authorized"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 122,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "units": "USD per pay period, except W4 step3/4a/4b and annual table in USD/year; YTD bases in USD/calendar year",
+        "domain": "finite nonnegative values; signed corrections/refunds unsupported; cash gross must cover employee deductions or explicit insufficiency outcome",
+        "fit": {
+          "adjustedAnnual": "A=max(0,26*FIT_wages+W4_4a-W4_4b-8600)",
+          "tableColumns": [
+            "inclusiveLower",
+            "exclusiveUpper (null=infinity)",
+            "baseAnnualTax",
+            "marginalFraction"
+          ],
+          "standardSingleTable": [
+            [
+              0,
+              7500,
+              0,
+              "0"
+            ],
+            [
+              7500,
+              19900,
+              0,
+              "0.10"
+            ],
+            [
+              19900,
+              57900,
+              1240,
+              "0.12"
+            ],
+            [
+              57900,
+              113200,
+              5800,
+              "0.22"
+            ],
+            [
+              113200,
+              209275,
+              17966,
+              "0.24"
+            ],
+            [
+              209275,
+              263725,
+              41024,
+              "0.32"
+            ],
+            [
+              263725,
+              648100,
+              58448,
+              "0.35"
+            ],
+            [
+              648100,
+              null,
+              "192979.25",
+              "0.37"
+            ]
+          ],
+          "tentative": "Select unique lower<=A<upper. T=base+rate*(A-lower)",
+          "period": "F_raw=max(0,T/26-W4_step3/26)+W4_4c",
+          "sources": [
+            "US1",
+            "US2"
+          ]
+        },
+        "fica": {
+          "socialSecurity": "S_raw=0.062*min(SS_wages,max(0,184500-YTD_SS_wages_before))",
+          "medicare": "M_raw=0.0145*Medicare_wages",
+          "additionalMedicare": "AM_raw=0.009*(max(0,YTD_Medicare_before+Medicare_wages-200000)-max(0,YTD_Medicare_before-200000))",
+          "employer": "same S and M bases/rates; no employer AM; FUTA is separate and not supplied by this contract",
+          "ytd": "Same employer calendar-year wages; successor/common-paymaster applicability must be screened; never substitute all-employer employee return liability",
+          "sources": [
+            "US4"
+          ]
+        },
+        "net": "cashGross-F-S-M-AM-postTaxDeductions; all employee lines separately shown; no state/local zero assertion",
+        "rounding": {
+          "fit": "US3 permits consistent wage rounding and final nearest whole dollar (under .50 down, .50–.99 up). Selectable proposal: retain exact wages/intermediate rational arithmetic, round only final F_raw to whole USD, half up.",
+          "fica": "US6 recognizes nearest-cent payroll calculations and return fractions-of-cents adjustments. It does not specify an exact half-cent tie convention or compel cumulative-tax difference rounding. Proposed separate S/M/AM cent half-up is PRODUCT POLICY requiring approval, not IRS-prescribed tie rule.",
+          "intermediate": "No intermediate truncation inferred; rate decimals treated as exact rational",
+          "status": "Owner must select consistent allowed FIT approach and cent tie/line aggregation policy; no source claim that half-even/half-up is mandated for FICA"
+        }
+      },
+      "remainingDependencies": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "nextTasks": [
+        "After explicit contract adoption implement versioned forward withholding pack for 2026 profile, preserving decimal/rational intermediates; reject unsupported scope",
+        "Run independent table-boundary, W4-credit floor, annualization, SS-cap crossing, Medicare threshold crossing and rounding cases against actual mapped full-SHA engine; retain results",
+        "Keep RELEASE HOLD; no code changes, production access, merge, publication or certification authorized"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 123,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "forward": {
+          "units": "USD per pay period, except W4 step3/4a/4b and annual table in USD/year; YTD bases in USD/calendar year",
+          "domain": "finite nonnegative values; signed corrections/refunds unsupported; cash gross must cover employee deductions or explicit insufficiency outcome",
+          "fit": {
+            "adjustedAnnual": "A=max(0,26*FIT_wages+W4_4a-W4_4b-8600)",
+            "tableColumns": [
+              "inclusiveLower",
+              "exclusiveUpper (null=infinity)",
+              "baseAnnualTax",
+              "marginalFraction"
+            ],
+            "standardSingleTable": [
+              [
+                0,
+                7500,
+                0,
+                "0"
+              ],
+              [
+                7500,
+                19900,
+                0,
+                "0.10"
+              ],
+              [
+                19900,
+                57900,
+                1240,
+                "0.12"
+              ],
+              [
+                57900,
+                113200,
+                5800,
+                "0.22"
+              ],
+              [
+                113200,
+                209275,
+                17966,
+                "0.24"
+              ],
+              [
+                209275,
+                263725,
+                41024,
+                "0.32"
+              ],
+              [
+                263725,
+                648100,
+                58448,
+                "0.35"
+              ],
+              [
+                648100,
+                null,
+                "192979.25",
+                "0.37"
+              ]
+            ],
+            "tentative": "Select unique lower<=A<upper. T=base+rate*(A-lower)",
+            "period": "F_raw=max(0,T/26-W4_step3/26)+W4_4c",
+            "sources": [
+              "US1",
+              "US2"
+            ]
+          },
+          "fica": {
+            "socialSecurity": "S_raw=0.062*min(SS_wages,max(0,184500-YTD_SS_wages_before))",
+            "medicare": "M_raw=0.0145*Medicare_wages",
+            "additionalMedicare": "AM_raw=0.009*(max(0,YTD_Medicare_before+Medicare_wages-200000)-max(0,YTD_Medicare_before-200000))",
+            "employer": "same S and M bases/rates; no employer AM; FUTA is separate and not supplied by this contract",
+            "ytd": "Same employer calendar-year wages; successor/common-paymaster applicability must be screened; never substitute all-employer employee return liability",
+            "sources": [
+              "US4"
+            ]
+          },
+          "net": "cashGross-F-S-M-AM-postTaxDeductions; all employee lines separately shown; no state/local zero assertion",
+          "rounding": {
+            "fit": "US3 permits consistent wage rounding and final nearest whole dollar (under .50 down, .50–.99 up). Selectable proposal: retain exact wages/intermediate rational arithmetic, round only final F_raw to whole USD, half up.",
+            "fica": "US6 recognizes nearest-cent payroll calculations and return fractions-of-cents adjustments. It does not specify an exact half-cent tie convention or compel cumulative-tax difference rounding. Proposed separate S/M/AM cent half-up is PRODUCT POLICY requiring approval, not IRS-prescribed tie rule.",
+            "intermediate": "No intermediate truncation inferred; rate decimals treated as exact rational",
+            "status": "Owner must select consistent allowed FIT approach and cent tie/line aggregation policy; no source claim that half-even/half-up is mandated for FICA"
+          }
+        },
+        "inverse": "Given fixed YTD/W4/bases relation and deductions, evaluate adopted forward N(g) on explicitly bounded integer cents. Return all matching candidates or selected least gross under adopted policy. No division by 1-tax-rate. Whole-dollar FIT creates downward net jumps; do not assume global monotonicity or use unchecked bisection.",
+        "domain": "gross interval, tax-base dependence on gross and target definition required",
+        "rounding": "Exactly same forward rounding; target cents/tolerance and tie policy unselected"
+      },
+      "remainingDependencies": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "nextTasks": [
+        "Only after #121/#122 forward approval: specify bounded integer-cent solver with all solutions/no-root detection; demonstrate handling FIT rounding jumps and reconcile every returned gross through exact approved forward pack",
+        "After explicit contract adoption implement versioned forward withholding pack for 2026 profile, preserving decimal/rational intermediates; reject unsupported scope",
+        "Run independent table-boundary, W4-credit floor, annualization, SS-cap crossing, Medicare threshold crossing and rounding cases against actual mapped full-SHA engine; retain results",
+        "Keep RELEASE HOLD; no code changes, production access, merge, publication or certification authorized"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 124,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "fica": {
+          "socialSecurity": "S_raw=0.062*min(SS_wages,max(0,184500-YTD_SS_wages_before))",
+          "medicare": "M_raw=0.0145*Medicare_wages",
+          "additionalMedicare": "AM_raw=0.009*(max(0,YTD_Medicare_before+Medicare_wages-200000)-max(0,YTD_Medicare_before-200000))",
+          "employer": "same S and M bases/rates; no employer AM; FUTA is separate and not supplied by this contract",
+          "ytd": "Same employer calendar-year wages; successor/common-paymaster applicability must be screened; never substitute all-employer employee return liability",
+          "sources": [
+            "US4"
+          ]
+        },
+        "units": "USD per pay period, except W4 step3/4a/4b and annual table in USD/year; YTD bases in USD/calendar year",
+        "rounding": {
+          "fit": "US3 permits consistent wage rounding and final nearest whole dollar (under .50 down, .50–.99 up). Selectable proposal: retain exact wages/intermediate rational arithmetic, round only final F_raw to whole USD, half up.",
+          "fica": "US6 recognizes nearest-cent payroll calculations and return fractions-of-cents adjustments. It does not specify an exact half-cent tie convention or compel cumulative-tax difference rounding. Proposed separate S/M/AM cent half-up is PRODUCT POLICY requiring approval, not IRS-prescribed tie rule.",
+          "intermediate": "No intermediate truncation inferred; rate decimals treated as exact rational",
+          "status": "Owner must select consistent allowed FIT approach and cent tie/line aggregation policy; no source claim that half-even/half-up is mandated for FICA"
+        },
+        "scope": "Employee and employer FICA components only; full payroll tax title still requires FUTA, state unemployment, applicable credits, jurisdictions and output selection"
+      },
+      "remainingDependencies": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "nextTasks": [
+        "After explicit contract adoption implement versioned forward withholding pack for 2026 profile, preserving decimal/rational intermediates; reject unsupported scope",
+        "Run independent table-boundary, W4-credit floor, annualization, SS-cap crossing, Medicare threshold crossing and rounding cases against actual mapped full-SHA engine; retain results",
+        "Keep RELEASE HOLD; no code changes, production access, merge, publication or certification authorized"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 128,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Given eligible gains G and lawful losses L, C=max(0,G-L-3000); b=max(0,37700-taxableOtherIncome); illustrative tax=.18*min(C,b)+.24*max(C-b,0). Eligibility, loss ordering and rounding must precede adoption.",
+        "units": "GBP per tax/accounting year; rates dimensionless",
+        "domain": "UK resident individual 2026/27 ordinary gains, supplied lawful gains/losses and taxable other income; exclude reliefs, trusts and carried interest",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "Current disposal-class/claim applicability and exact CGT input/component rounding contract not fully sourced; historical Tax Logic does not close 2026/27 stages.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #128, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #128 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #128 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 129,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Place all dividend income above ordinary income; personal allowance allocation must be lawful; dividend nil-rate allowance occupies band space. Apply 2026/27 rates only to non-zero-rate dividend slices after allocation. Exact general evaluator remains unapproved.",
+        "units": "GBP per tax/accounting year; rates dimensionless",
+        "domain": "UK resident individual 2026/27 ordinary UK dividends plus non-savings income; no savings/special reliefs and ANI below100000",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "Band ordering is supported, but complete current nil-rate allowance allocation and round-stage binding not established; do not subtract dividend allowance from band consumption.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #129, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #129 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #129 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 130,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Illustrative Class4=.06*min(max(profit-12570,0),37700)+.02*max(profit-50270,0); distinguish deemed-paid Class2 and optional voluntary Class2, and Income Tax.",
+        "units": "GBP per tax/accounting year; rates dimensionless",
+        "domain": "UK ordinary self-employed 2026/27 Class4 illustration using supplied eligible annual profits; Income Tax separate",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "Need current Class4 stage/rounding and exemption/aggregation/other-contribution interaction pack. Class1 nearest-penny rule cannot be transplanted to Class4.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #130, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #130 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #130 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 131,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Reserve=max(0,userSuppliedAnnualLiability-prepaidTax)+userSelectedBuffer; periodic target=Reserve/numberOfRemainingContributions. Formula is discretionary cash planning, not HMRC prescribed liability or payment-on-account schedule.",
+        "units": "GBP per explicit contribution/payroll period and tax year",
+        "domain": "User-entered annual UK freelancer reserve planning, separating supplied tax liability from prudential cash buffer",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "No statutory freelancer reserve percentage exists in these sources. Owner/user must select whether supplied-liability planning or estimated liability; liability estimator remains source-partial.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #131, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #131 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #131 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 132,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Let c=number of other qualifying associates, denominator1+c; full-year L=50000/(1+c), U=250000/(1+c). For eligible company, A<=L: .19*N; L<A<=U: .25*N-(3/200)*(U-A)*N/A; A>U: .25*N. Short periods reduce limits proportionately, but day convention not adopted. A=0 handled before division.",
+        "units": "GBP per tax/accounting year; rates dimensionless",
+        "domain": "User-selectable historical FY2025 twelve-month UK resident ordinary non-ring-fence company; supplied validated taxable and augmented profits and associates; current FY2026 remains unavailable",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "Missing adopted monetary rounding/return entry stages; current FY2026 explicit fraction/table binding and precise short-period day convention remain unverified. Control/augmented-profit factual applicability needs review.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #132, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #132 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #132 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 135,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Statutory band rate is not derivative of full liability. Candidate continuous marginal rate dT/dIncome includes PA taper (60% within100000–125140 under simple 40% band assumptions). Finite difference [T(y+h)-T(y)]/h requires explicit h, direction and rounding; not statutory rule.",
+        "units": "GBP per tax/accounting year; rates dimensionless",
+        "domain": "Explicitly selectable statutory band rate OR continuous economic marginal Income Tax illustration for simple EWNI2026/27 non-savings income; NI/benefits excluded",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "Output meaning unselected: statutory next-slice band versus effective incremental liability including allowance taper; rounded liability also creates discontinuities. Underlying current annual rounding pack is source-partial.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #135, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #135 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #135 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 136,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "formula": "Take-home change=Net(before)-Net(after), pension increment=eligible employer contribution; Net requires complete selected PAYE/Class1 computation. Pension contribution is not automatically take-home saving; employer NI recycling is a separately selected employer policy.",
+        "units": "GBP per explicit contribution/payroll period and tax year",
+        "domain": "UK registered pension prospective salary sacrifice comparison for selected2026/27 regular employee payroll; eligible employer contribution supplied; separate approved PAYE/Class1 pack required",
+        "rounding": {
+          "source": "See clause-specific newSources: SA return entry, Class1 exact-percentage and historical MTD stages are different contracts.",
+          "missing": "No blanket 12dp or universal half-up rule adopted. Current annual/PAYE applicability must be established where required.",
+          "discretion": "Display-only precision, reserve buffer, finite-difference step and employer NI recycling require visible user/owner selection, never replacement of statutory stages."
+        },
+        "sourceVersusDiscretion": "Rates and legal conditions are source facts; profile, output meaning and permitted planning policies remain proposed. Exact rational examples are independent analysis, not official tax determinations."
+      },
+      "remainingDependencies": [
+        "Arrangement legality/eligibility, NMW cash floor, contractual timing, pension limits and payroll consequences require qualified applicability determination; PAYE forward rules and pension-charge pack missing.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "nextTasks": [
+        "For #136, close the preciseBlocker using the stated missing authoritative clauses before implementing a tax evaluator.",
+        "After explicit profile/source/applicability decisions, specify #136 inputs, unsupported-scope validation and exact rounding stages; preserve all other catalog scope as unavailable.",
+        "Only after authorization, bind #136 to reviewed implementation/full SHA and run independent boundary, exception and rounding cases; retain failures."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 137,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/core/percentage.ts",
+        "src/calculators/registry.ts",
+        "src/calculators/rule-packs.ts"
+      ],
+      "specification": {
+        "supplemental": {
+          "profile": "Separately identified cash bonus, employer withheld regular FIT current or immediately preceding calendar year, annual common-control supplemental total including payment <=1,000,000; owner elects flat method",
+          "formula": "bonusFIT=0.22*bonusFITbase; apply covered FICA with prior YTD including earlier regular and supplemental wages",
+          "eligibility": "22% optional only when eligibility holds; no other flat percentage permitted. Unidentified combined payment uses regular-period total. No prior-year/current-year regular FIT requires aggregate method.",
+          "aggregate": "Add relevant regular wages and all prior supplemental payments in same payroll period; calculate regular-period FIT on total; subtract FIT withheld/to withhold on regular and preceding supplemental amounts. Choice of current/prior regular period where permitted must be recorded.",
+          "million": "Excess over calendar-year $1m supplemental wages is subject to 37% regardless of W4; common-control employer totals count. Mixed threshold payment needs separate under-threshold method selection; not silently 22% on all.",
+          "rounding": "22% raw amount exact; final withholding consistency under US3 needs explicit adoption; FICA ties remain policy",
+          "sources": [
+            "US5",
+            "US3",
+            "US4",
+            "US6"
+          ]
+        },
+        "fica": {
+          "socialSecurity": "S_raw=0.062*min(SS_wages,max(0,184500-YTD_SS_wages_before))",
+          "medicare": "M_raw=0.0145*Medicare_wages",
+          "additionalMedicare": "AM_raw=0.009*(max(0,YTD_Medicare_before+Medicare_wages-200000)-max(0,YTD_Medicare_before-200000))",
+          "employer": "same S and M bases/rates; no employer AM; FUTA is separate and not supplied by this contract",
+          "ytd": "Same employer calendar-year wages; successor/common-paymaster applicability must be screened; never substitute all-employer employee return liability",
+          "sources": [
+            "US4"
+          ]
+        },
+        "rounding": {
+          "fit": "US3 permits consistent wage rounding and final nearest whole dollar (under .50 down, .50–.99 up). Selectable proposal: retain exact wages/intermediate rational arithmetic, round only final F_raw to whole USD, half up.",
+          "fica": "US6 recognizes nearest-cent payroll calculations and return fractions-of-cents adjustments. It does not specify an exact half-cent tie convention or compel cumulative-tax difference rounding. Proposed separate S/M/AM cent half-up is PRODUCT POLICY requiring approval, not IRS-prescribed tie rule.",
+          "intermediate": "No intermediate truncation inferred; rate decimals treated as exact rational",
+          "status": "Owner must select consistent allowed FIT approach and cent tie/line aggregation policy; no source claim that half-even/half-up is mandated for FICA"
+        }
+      },
+      "remainingDependencies": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "nextTasks": [
+        "After explicit contract adoption implement versioned forward withholding pack for 2026 profile, preserving decimal/rational intermediates; reject unsupported scope",
+        "Run independent table-boundary, W4-credit floor, annualization, SS-cap crossing, Medicare threshold crossing and rounding cases against actual mapped full-SHA engine; retain results",
+        "Keep RELEASE HOLD; no code changes, production access, merge, publication or certification authorized"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 173,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/business/catalog-batch-1.test.ts",
+        "src/calculators/business/catalog-batch-2.test.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "specification": {
+        "profile": "Fader-Hardie2012 contractual supplied-margin scenario family, method revision proposedFH2012-profile1",
+        "formulas": {
+          "beginning_including_initial": "m*(1+d)/(1+d-r)",
+          "residual_after_initial": "m*r/(1+d-r)",
+          "end_period_first_contract": "m/(1+d-r)"
+        },
+        "domain": "m in selected currency/period;0<=r<=1;d>-1; convergence0<=r/(1+d)<1. At r0 limit use direct finite terms, not invalid geometric divisions. No noncontractual repeat-rate substitution.",
+        "rounding": "Source does not prescribe product rounding; retain exact/decimal intermediate, explicit user display contract pending.",
+        "exclusions": "No inferred distribution, constant-retention forecast or safety/valuation certification. Finite supplied probability/cashflow vectors remain the prior proposed engineering contract, not prescribed by these closed forms."
+      },
+      "remainingDependencies": [
+        "Owner selects model modes/cashflow basis and CAC inclusion convention; inputs and period explicit.",
+        "Approve mapping to exact canonical identity/technical version and rounding; empirical projection claims need separate applicability evidence."
+      ],
+      "nextTasks": [
+        "Prepare version-bound profile schema with required timingMode,period,currency and explicit probability/discount units.",
+        "After approved selection, verify geometric convergence, zero-retention, near-boundary denominator, full-versus-residual difference exactlym and acquisition cost counted once if separately approved.",
+        "Bind existing candidate source files at PR1492 before implementing; earlier bounded static absence is not current proof."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 198,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/business/break-even.ts",
+        "src/calculators/business/catalog-batch-1.test.ts",
+        "src/calculators/business/catalog-batch-2.test.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "specification": {
+        "formula": "FeeTotal=sum(separately assessed fee components); prior Profit=G-F-R+K-costs is a distinct supplied-component reconciliation candidate.",
+        "units": "Explicit currency/minor units, order versus listing/account-period fee basis.",
+        "revision": "Provider policy snapshot observed2026-10-30; last-update dates separate from effective periods.",
+        "rounding": "Provider per-fee rounding/tie policy not fully documented; no invented fee-assessment rounding.",
+        "exclusions": "Do not market supplied percentages as a complete marketplace rule pack; unknown applicability is not zero fee."
+      },
+      "remainingDependencies": [
+        "Select providers/country/account/effective profiles.",
+        "Choose gross/net/refund/credit conventions; preserve distinct per-fee bases and account charges.",
+        "Resolve provider rounding, effective-date change capture and governing clause conflicts before complete fee prediction."
+      ],
+      "nextTasks": [
+        "Do not implement current fees as universal constants. Define provider/date/profile key and fail-closed unsupported profiles.",
+        "After policy adoption/source completion, test listing/order/account-period charges separately, credits once and refund funding; add official expected provider cases."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 199,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/business/break-even.ts",
+        "src/calculators/business/catalog-batch-1.test.ts",
+        "src/calculators/business/catalog-batch-2.test.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "specification": {
+        "formula": "Profit=G-R-sum(F_listing,F_transaction,F_processing,F_ads,F_other)+eligibleCredits-COGS-fulfillment-otherCosts; proposed accounting reconciliation, not Etsy accounting certification.",
+        "boundedUSScenario": "For explicitly selected US seller/US bank/USD, noFX, one newlylisted item, no attributed ads, no other fee applicability unknown: transaction=.065*(item+shipping+giftwrap), processing=.03*(gross order including applicable tax)+.25; listing=.20. Only active after fee/profile/rounding decisions.",
+        "rounding": "None prescribed for complete selected fee contract; no cents/tie rule inferred.",
+        "refundRules": "Use selected seller-funded refund and recomputed eligible credits; Etsy-covered full refund fee-credit branch differs.",
+        "dates": "Fees last-update2026-10-05; Payments2026-07-31, not asserted effective-from dates."
+      },
+      "remainingDependencies": [
+        "Owner profile/ad/fee coverage selection; account-specific fee/tax applicability evidence.",
+        "Prescribed fee-assessment rounding/credit allocation and actual dated rule-pack evidence for historical estimates.",
+        "Resolve conflicting general/specific refund language with authoritative interpretation for affected fee types."
+      ],
+      "nextTasks": [
+        "Model transaction and processing bases separately; sales tax affects processing base even when outside US transaction base.",
+        "Retain persistent12% offsite qualification state; do not recalculate lifetime qualification from only current365-day revenue.",
+        "Do not combine account/deposit/FX charges with order fee without explicit allocation policy. Source official bill examples and then run actual mapped engine tests."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 204,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/business/catalog-batch-1.ts",
+        "src/calculators/business/catalog-batch-2.ts",
+        "src/calculators/launch-portfolio.ts",
+        "src/calculators/business/break-even.ts",
+        "src/calculators/business/catalog-batch-1.test.ts",
+        "src/calculators/business/catalog-batch-2.test.ts",
+        "src/calculators/launch-portfolio.test.ts"
+      ],
+      "specification": {
+        "standardRequirements": "Historical AASB15 B21/B23–B25 separates expected revenue/refund liability/recovery asset; former carrying amount less recovery costs/value deterioration. This is not equivalent to marking inventory recovery as cash revenue.",
+        "candidateOperationalFormula": "Profit(q)=N*(P-Csale)-N*q*(R+Hincremental+Fincremental-Vrecovered); candidate supplied-cohort operational model only, not complete statutory accounting.",
+        "units": "One selected currency/cohort/reporting period;N nonnegative integer,q[0,1]; refund/cost/recovery values separately defined.",
+        "rounding": "No mandatory calculator rounding established.",
+        "period": "December2022 compilation is for annual periods beginning2023-01-01 to before2026-07-01; later periods require applicable amendments."
+      },
+      "remainingDependencies": [
+        "Select complete operational versus statutory reporting contract and return/inventory recognition assumptions.",
+        "Review AASB2022-9/other applicable amendments for period from2026-07-01, and intended jurisdiction/accounting framework.",
+        "Approve recovery valuation, return handling, refund liability, expense/fee and rounding; qualified accounting applicability if compliance claimed."
+      ],
+      "nextTasks": [
+        "Keep cash refund, refund liability, revenue reduction and recovery asset separate outputs under governed accounting model; avoid double-counted retained fees and inventory recovery.",
+        "Implement selected operational formula only as explicit bounded mode after owner contract selection; preserve full canonical accounting requirements.",
+        "Bind selected standard compilation/amendments and underlying implementation SHA; test genuine returns versus same-item exchanges/warranty branches."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 404,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "Formula and units agree with AHA general guide; no rounding chosen. At age40 full50–85%chart agrees90–153.",
+      "remainingDependencies": [
+        "Select age-based versus measured maximum/HRR method; approve population/screening and medication/heart-condition handling.",
+        "Select 50–70% moderate and70–85% vigorous endpoint overlap policy, bpm display rounding, input bounds; no five-zone mapping established.",
+        "Age-based target-heart-rate estimates and training intensity need population applicability, screening, measured-HR/HRR alternatives and limitations. Current source/arithmetic does not settle those safety judgments; retain qualified clinical/exercise review."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 405,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "Calendar+280day witness correct; no calendar/timezone error demonstrated.",
+      "remainingDependencies": [
+        "Obstetric reviewer must choose governing revision and hierarchy, reliable LMP/regular-cycle eligibility, ultrasound/redating thresholds and ART embryo-age/date rules.",
+        "Retrieve full accepted redating table and latest reaffirmation; record discrepancy strictness, gestational-bin boundaries, dating uncertainty and calendar conventions.",
+        "Pregnancy due-date interpretation needs qualified obstetric applicability/redating review. Complete dating guidance is unavailable and LMP+280 alone cannot establish ultrasound, irregular-cycle or assisted-reproduction policy."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 406,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "BMI22.0385674931 and normal singleton25–35lb band correct; unit conversion dimensionally correct.",
+      "remainingDependencies": [
+        "Approve US singleton applicability, plurality-specific alternatives, adolescent/special populations and obesity inclusion.",
+        "Choose continuous BMI boundaries without preclassification rounding; weekly trajectory requires gestational anchor, first-trimester range and interpolation policy; table rates do not establish individual growth curve.",
+        "Pregnancy weight guidance needs qualified obstetric/nutrition applicability review of BMI cutpoints, plurality, gestational trajectory and special populations. Consumer chart versus underlying guideline scope remains unresolved."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 407,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "Declared elapsed-day model reproduces Jan15 and Jan10–16. Hopkins supports approximate12–14day prior-cycle estimate.",
+      "remainingDependencies": [
+        "Approve regular-cycle eligibility, measured cycle variability, fixed14-day assumption versus12–14-day interval and uncertainty display.",
+        "Choose elapsed-day versus cycle-day indexing, fertile-window endpoints and limitations; do not imply contraceptive effectiveness or individual confirmation.",
+        "Ovulation/fertile-window interpretation needs qualified reproductive-health review. A fixed14-day assumption and calendar witness do not establish individual timing, irregular-cycle applicability or validated uncertainty."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 408,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "EDD-266days arithmetic correct as inverse of conventional LMP+280 and+14reference.",
+      "remainingDependencies": [
+        "Approve dating input basis inherited from405 and independently supported uncertainty; exact conception/fertilization/intercourse/paternity cannot be inferred.",
+        "Define estimate interval only with evidence; ART requires recorded transfer/embryo information; no manufactured confidence range.",
+        "Conception dating needs qualified reproductive-health review and independently established uncertainty. Inverse calendar arithmetic cannot establish fertilization/intercourse date or paternity, and the approved dating basis is absent."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 409,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "All2021creatinine constants, min/max branches, sex factors and units match NIDDK; sample104.0490129932252179 mL/min/1.73m².",
+      "remainingDependencies": [
+        "Clinician selects creatinine-only versus combined equation, coefficient-profile applicability, adult population and exclusions/nonsteady-state handling.",
+        "Approve assay/units provenance, normalized versus absolute-GFR distinction, input plausibility, rounding and interpretation/critical-result policy; no arbitrary output clamp.",
+        "The candidate adult2021CKD-EPI arithmetic is supported, but renal applicability, coefficient profile, input assays/units, exclusions and result interpretation remain clinical judgments. Retain qualified clinician review; no arbitrary output clamp."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 410,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "Bed22:45Z for07:00Z wake minus8h and15min correct; bed-to-wake opportunity495min, desired sleep480min.",
+      "remainingDependencies": [
+        "Approve age/population guidance and distinction between sleep obtained and sleep opportunity; no universal90minute cycle or15minute latency.",
+        "Choose actual date/timezone/DST ambiguity behavior, overnight inversion, user-entered latency and output precision; other ages require separate guidance.",
+        "Sleep guidance and inverse scheduling need population/age applicability and the distinction between actual sleep and opportunity. A duration subtraction does not establish a universal latency/cycle or clinical recommendation; retain qualified sleep/health review under current evidence."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 442,
+      "status": "POLICY_DECISION_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/units.ts",
+        "src/calculators/core/unit-conversion.ts",
+        "src/calculators/conversion/catalog-batch-1.ts",
+        "src/calculators/units.test.ts",
+        "src/calculators/conversion/catalog-batch-1.test.ts"
+      ],
+      "specification": {
+        "math": "A_B=A_A*(r_B/r_A), r_EUR=1, r_C quoted C per EUR, same observation date; inverse=1/r_C",
+        "units": "input amount source currency; output target currency",
+        "domain": "finite nonnegative amounts, positive finite rates, supported currencies, one common date; missing/suspended/date mismatch reject",
+        "rounding": "ECB source precision preserved; consumer monetary output rounding is an unselected product policy, not prescribed by framework",
+        "nontransactional": true
+      },
+      "remainingDependencies": [
+        "Choose date exact or on-or-before and stale threshold",
+        "Choose output precision source/mode and fee treatment; no transaction quote claim"
+      ],
+      "nextTasks": [
+        "After profile choice fetch EXR series for both currencies with identical startPeriod/endPeriod, capture response/observation date/status and exact source bytes hash",
+        "Implement provider-independent decimal cross arithmetic and explicit missing-date/suspended-currency errors; bind to approved mapping and test actual engine"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 485,
+      "status": "SOURCE_RESOLVED",
+      "contractAvailability": "BOUNDED_SOURCE_SUPPORTED_SPECIFICATION_PENDING_ADOPTION_AND_BINDING",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/automotive/catalog-batch-1.ts",
+        "src/calculators/energy/catalog-batch-1.ts",
+        "src/calculators/energy/catalog-batch-2.ts",
+        "src/calculators/earth-science/catalog-batch-1.ts",
+        "src/calculators/astronomy/catalog-batch-1.ts",
+        "src/calculators/finance/loan-affordability.ts",
+        "src/calculators/food/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-517.ts",
+        "src/calculators/automotive/catalog-batch-1.test.ts",
+        "src/calculators/energy/catalog-batch-1.test.ts",
+        "src/calculators/energy/catalog-batch-2.test.ts",
+        "src/calculators/earth-science/catalog-batch-1.test.ts",
+        "src/calculators/astronomy/catalog-batch-1.test.ts",
+        "src/calculators/finance/loan-affordability.test.ts",
+        "src/calculators/food/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-517.test.ts"
+      ],
+      "specification": {
+        "boundedProfile": "UK2026 purchased grid electricity at organisation owned/controlled sites, Scope2 location-based component only",
+        "math": "kgCO2e=kWh*0.13096; tonnes=kg/1000",
+        "factorIdentifier": "7_400_4000_5_1",
+        "units": "kWh -> kgCO2e",
+        "domain": "finite nonnegative UK purchased grid electricity kWh in calendar2026; omit other activities; no full footprint claim",
+        "boundary": "Excludes T&D Scope3 and WTT, market-based, onsite generation, nonUK; gas component factors already CO2e, never multiply GWP twice",
+        "gwp": "full workbook Introduction states AR5 100year; use published combined factor",
+        "rounding": "retain published five-decimal factor and exact decimal product; display precision remains selectable; no publisher mandatory monetary-style rounding",
+        "revision": "fullv1.0 corroborates revisedflatv1.2"
+      },
+      "remainingDependencies": [
+        "Adopt bounded electricity component or commission full inventory profile",
+        "Choose display decimals with unrounded total retained; acknowledge attribution and permitted-use boundaries"
+      ],
+      "nextTasks": [
+        "Freeze original two XLSX bytes and selected factor row/native cells against captured parsedv1.0/v1.2; ensure blanks stay missing",
+        "After scope approval implement strict activity-unit/year/region/boundary matching and no GWP double conversion; compare actual engine with decimal vectors"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 502,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/automotive/catalog-batch-1.ts",
+        "src/calculators/energy/catalog-batch-1.ts",
+        "src/calculators/energy/catalog-batch-2.ts",
+        "src/calculators/earth-science/catalog-batch-1.ts",
+        "src/calculators/astronomy/catalog-batch-1.ts",
+        "src/calculators/finance/loan-affordability.ts",
+        "src/calculators/food/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-517.ts",
+        "src/calculators/automotive/catalog-batch-1.test.ts",
+        "src/calculators/energy/catalog-batch-1.test.ts",
+        "src/calculators/energy/catalog-batch-2.test.ts",
+        "src/calculators/earth-science/catalog-batch-1.test.ts",
+        "src/calculators/astronomy/catalog-batch-1.test.ts",
+        "src/calculators/finance/loan-affordability.test.ts",
+        "src/calculators/food/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-517.test.ts"
+      ],
+      "specification": "Official whole beef endpoint145F+3min confirmed; exact Celsius62.777... and table-rounded63C distinct.",
+      "remainingDependencies": [
+        "Food-safety reviewer selects food/cut, geometry, weight interval, appliance, starting state and validated calibration; no arbitrary temperature/mass scaling.",
+        "Approve thermometer endpoints/rest handling and approximate chart scope; obtain thermal model/validation for full requested adjustment or leave unsupported.",
+        "No validated food/geometry/appliance time-adjustment thermal model exists in the packet. Qualified food-safety applicability review and calibration are mandatory for the intended safe-cooking interpretation; endpoint temperatures are not a time predictor."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 522,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": {
+        "math": "t=a*x^b; normalizing identical b gives T2=T1*(D2/D1)^b",
+        "units": "Table1 t minutes and x km; ratio formula same time and distance units; b dimensionless",
+        "sourceCoefficients": {
+          "runningMen": {
+            "a": "2.299",
+            "b": "1.07732",
+            "distanceKm": "1.5–42.2",
+            "recordTimeMinutes": "3.5–129"
+          },
+          "runningWomen": {
+            "a": "2.598",
+            "b": "1.08283",
+            "distanceKm": "1.5–42.2"
+          }
+        },
+        "domain": "Historical world-record fit based on records to1Nov1979; paper endurance range about3.5–230min, excludes sprint and long-duration bends; record/population fit not individual validation",
+        "rounding": "No prescribed output rounding or confidence interval; selectable display only"
+      },
+      "remainingDependencies": [
+        "Historical model education or individual predictor?",
+        "Select event/population/calibration dataset and uncertainty standard through qualified reviewer"
+      ],
+      "nextTasks": [
+        "Verify Table1 visually against original reprint bytes before coefficient fixture adoption",
+        "Obtain independent sports performance applicability review and calibration validation; only then bind model/range/exponent and actual-engine vectors"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 526,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "Same AHA arithmetic as404is correct within explicit proposed profile.",
+      "remainingDependencies": [
+        "Qualified exercise reviewer resolves identity with404 and selects age-estimated/measured maximum or HRR, resting-HR protocol and exercise screening.",
+        "Adopt exact governing thresholds/version before any zones; ACSM indexed infographic not full verified source and cannot silently replace AHA bands.",
+        "Training-heart-rate zone selection depends on#404, resting/max-HR methodology, population screening and reviewed thresholds. Current evidence does not establish safe training prescription; retain qualified clinical/exercise applicability review."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 527,
+      "status": "SOURCE_PARTIAL",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": {
+        "verified": "Rule5.2b average lowest8 of latest20 including exceptional/committee adjustments, nearest tenth; max54.0; caps after Low Handicap Index established",
+        "math": "For base H and low L: if H-L>3 soft=L+3+0.5*(H-L-3); then hard min(soft,L+5). No cap on decreases",
+        "units": "handicap strokes; counts integer; dates for365day Low Handicap Index",
+        "domain": "Current R&A text only; jurisdiction/effective2026 national edition unselected",
+        "rounding": "nearest tenth in5.2; tie direction/intermediate/cap stages need complete selected national rule; no invented half-up default"
+      },
+      "remainingDependencies": [
+        "Name national association/current edition; authorize externally supplied PCC/expected data or obtain licensed method",
+        "Full index vs explicitly labelled partial educational calculation"
+      ],
+      "nextTasks": [
+        "Retrieve full authorized national2026 rules including5.1 image/formula and all tables; visually verify and capture revision",
+        "After source closure implement stateful score ordering,9holes,365day Low Index, exceptional reductions, caps and committee adjustments; test actual engine at thresholds"
+      ],
+      "actualEngineExecuted": false
+    },
+    {
+      "masterId": 530,
+      "status": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "contractAvailability": "CONDITIONAL_PROPOSAL_ONLY_NOT_IMPLEMENTATION_AUTHORITY",
+      "bindingCandidateSources": [
+        "src/calculators/registry.ts",
+        "src/calculators/health/catalog-batch-2.ts",
+        "src/calculators/health/catalog-batch-1.ts",
+        "src/calculators/sports/catalog-batch-1.ts",
+        "src/calculators/travel/draft-master-518.ts",
+        "src/calculators/sports/draft-master-529.ts",
+        "src/calculators/health/catalog-batch-2.test.ts",
+        "src/calculators/health/catalog-batch-1.test.ts",
+        "src/calculators/sports/catalog-batch-1.test.ts",
+        "src/calculators/travel/draft-master-518.test.ts",
+        "src/calculators/sports/draft-master-529.test.ts"
+      ],
+      "specification": "Primary absoluteL/min regression coefficients exactly match; sample3.0587L/min; dimensional relative conversion37.4626622969380587mL/kg/min.",
+      "remainingDependencies": [
+        "Approve original repeated-mile protocol, healthy30–69 population, fourth-quarter HR timing/measurement and screening/exclusions.",
+        "Keep absolute regression conversion distinct from independently fitted relative regression; select uncertainty/output rounding and obtain external validation for any protocol/population extension.",
+        "The Kline absolute regression/conversion arithmetic is supported, but protocol, healthy30–69 applicability, screening, fourth-quarter HR and uncertainty require qualified exercise/clinical review. Do not substitute a generic postwalk HR or separately fitted relative regression."
+      ],
+      "nextTasks": [
+        "Prepare version-bound input/output/schema and boundary fixtures only after explicit profile selection.",
+        "Capture accepted primary source revision and byte evidence where available; preserve inaccessible/unknown fields.",
+        "Bind catalog ID and dependency/full SHA, then independently test actual implementation when authorized; existing arithmetic does not approve mapping."
+      ],
+      "actualEngineExecuted": false
+    }
+  ]
+}

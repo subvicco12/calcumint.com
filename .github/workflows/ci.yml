@@ -88,6 +88,12 @@ jobs:
         run: node tests/remaining-engineering-review/browser.mjs
         env:
           CALCUMINT_REMAINING_ENGINEERING_EVIDENCE: ${{ runner.temp }}/remaining-engineering
+      - name: Native UK2026 electricity source and private component acceptance
+        run: |
+          python3 scripts/verify-uk-2026-electricity-source.py --check
+          node tests/uk-2026-electricity-review/browser.mjs
+        env:
+          CALCUMINT_ELECTRICITY_EVIDENCE: ${{ runner.temp }}/uk-2026-electricity
       - name: Unit tests
         run: npm test
       - name: Launch certification

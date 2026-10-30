@@ -1,0 +1,895 @@
+{
+  "status": "PENDING_NO_ADOPTION",
+  "meaning": "Owner may choose profile exposure/output policies; user-selectable methods are proposed where appropriate. Owner choice cannot replace missing facts, qualified competence, authoritative rules or identity acceptance.",
+  "rows": [
+    {
+      "masterId": 9,
+      "title": "APR Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "US jurisdiction, amount-financed fee classification, actuarial vs US Rule, date scope and rounding ties",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "US closed-end regular single-advance actuarial APR from already legally determined amount financed and positive scheduled equal monthly payments; full irregular/image equations and finance-charge classification unresolved",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 19,
+      "title": "Credit Card Minimum Payment Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Actual issuer/card/revision, special financing bases, statement rounding, due-date cutoffs and final-balance treatment",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Single statement sample Chase COL00040 minimum, no pastdue or special financing; statement-supplied interest and latefees. Actual chosen card and rounding missing",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 20,
+      "title": "Balance Transfer Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Actual offer and compatible agreement, allocation/capitalization and daily accrual; posting/reset dates and comparison horizon",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Named sample offer supplies promotional fees/rates; sample agreement compatibility not established. No complete approved allocation/capitalization/calendar contract",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 23,
+      "title": "HELOC Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Lender/version, daily accrual/daycount, index/margin/reset, draws, term start/end, finalcap and amortizing formula conventions",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "BofA/Merrill disclosure supports phase/options; not complete signed HELOC contract",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 34,
+      "title": "Property Tax Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Select jurisdiction, authority, class, year, assessment/exemptions/caps/levies; then obtain exact official rulepack",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "No taxing authority/class/year selected; prior NYC example cannot govern global property tax",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 48,
+      "title": "Investment Property Affordability Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Choose cashflow, reserve/DSCR/debt/downpayment/maintenance/tax/income scope and financing jurisdiction",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Investment-property affordability definition and financing/tax/cost inclusions unselected",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 87,
+      "title": "Safe Withdrawal Rate Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Select empirical study/version, sequence model, assets, fees/taxes/inflation, horizon/success criterion; obtain competent independent applicability/methodology review",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Empirical safe-withdrawal methodology/population/asset paths/success criterion unselected; compound interest is not empirical safety evidence",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 92,
+      "title": "Pension Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Select exact plan and governing benefit booklet/amendment; obtain service, compensation, vesting, reduction/COLA/survivor clauses",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Named pension plan/formula/service/earnings/vesting/survivor/early-retirement contract absent; IRS RMD is not pension-benefit formula",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 95,
+      "title": "Required Minimum Distribution Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Choose account/year/owner-beneficiary/spouse facts and table; verify balance adjustments/aggregation/deadlines; approve precision/tie/payment rounding without underdistribution",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Bounded 2026 original-owner traditional IRA TableIII profile supported; no complete inherited/spouse/plan/deadline/rounding contract selected",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 97,
+      "title": "Roth IRA Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Select taxyear and complete eligibility/conversion/distribution/worksheet-rounding branches; approve clause-specific source priority.2026 MFJ dollar upper bound now corroborated252000; other contract gaps retained.",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "2025 US original-owner Roth contribution and qualification branches now fully retrievable; full intended conversions/inherited/excess branches unselected;2026 typo unresolved",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 98,
+      "title": "Traditional IRA Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Select taxyear, filing/coverage/MAGI/basis/distributions, source worksheet rounding and intended exceptions",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "2025 contribution permission distinct from deduction; full rules captured but complete product branches and year unselected",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 112,
+      "title": "Overtime Pay Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "User selects bounded profile; qualified determination of coverage/exemption/state/local/union rules and remuneration; currency/tie rules for fractional cents",
+        "Owner scope/profile selection and approved masterID-to-version/fullSHA/dependency binding; independent actual-engine boundary/rounding goldens; authorized governance acceptance"
+      ],
+      "profiles": [
+        {
+          "label": "Bounded FLSA covered nonexempt single straight-time hourly rate, one workweek, no other remuneration or exclusions; jurisdiction/exemption applicability remains separate",
+          "userSelectable": true,
+          "ownerAdopted": false,
+          "originalFullScopePreserved": true
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 120,
+      "title": "Income Tax Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "2026/27 liability rounding/stages and approved allowance/base treatment remain missing; 2024/25 guide cannot fill them.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "England/Wales/Northern Ireland 2026/27 annual non-savings employment income; single resident individual, supplied eligible adjusted net income; no special reliefs",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 121,
+      "title": "Take-Home Pay Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "profiles": {
+        "id": "US-FED-2026-BIWEEKLY-W4-2020PLUS-SINGLE-STANDARD-PROPOSED",
+        "selection": "Selectable proposal only; owner has not adopted it",
+        "currency": "USD",
+        "payFrequency": "biweekly",
+        "periodsPerYear": 26,
+        "w4Vintage": "2020 or later valid W-4",
+        "filingStatus": "Single or Married Filing Separately",
+        "step2Checkbox": false,
+        "employment": "ordinary covered resident employee; one employer, no successor/acquisition, no tips, noncash benefits, special classes, exempt or lock-in cases",
+        "deductions": "Required explicit validated FIT/SS/Medicare taxable bases, cash gross and post-tax deductions; no deduction taxability inferred",
+        "output": "Federal-only wage withholding estimate, not total take-home pay or final income tax liability",
+        "unsupported": "Other W-4 vintages/statuses, state/local/foreign taxes, benefits classification and other frequencies remain unresolved in final catalog scope; return unsupported, never assume zero"
+      },
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 122,
+      "title": "Gross-to-Net Salary Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "profiles": {
+        "id": "US-FED-2026-BIWEEKLY-W4-2020PLUS-SINGLE-STANDARD-PROPOSED",
+        "selection": "Selectable proposal only; owner has not adopted it",
+        "currency": "USD",
+        "payFrequency": "biweekly",
+        "periodsPerYear": 26,
+        "w4Vintage": "2020 or later valid W-4",
+        "filingStatus": "Single or Married Filing Separately",
+        "step2Checkbox": false,
+        "employment": "ordinary covered resident employee; one employer, no successor/acquisition, no tips, noncash benefits, special classes, exempt or lock-in cases",
+        "deductions": "Required explicit validated FIT/SS/Medicare taxable bases, cash gross and post-tax deductions; no deduction taxability inferred",
+        "output": "Federal-only wage withholding estimate, not total take-home pay or final income tax liability",
+        "unsupported": "Other W-4 vintages/statuses, state/local/foreign taxes, benefits classification and other frequencies remain unresolved in final catalog scope; return unsupported, never assume zero"
+      },
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 123,
+      "title": "Net-to-Gross Salary Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "profiles": {
+        "id": "US-FED-2026-BIWEEKLY-W4-2020PLUS-SINGLE-STANDARD-PROPOSED",
+        "selection": "Selectable proposal only; owner has not adopted it",
+        "currency": "USD",
+        "payFrequency": "biweekly",
+        "periodsPerYear": 26,
+        "w4Vintage": "2020 or later valid W-4",
+        "filingStatus": "Single or Married Filing Separately",
+        "step2Checkbox": false,
+        "employment": "ordinary covered resident employee; one employer, no successor/acquisition, no tips, noncash benefits, special classes, exempt or lock-in cases",
+        "deductions": "Required explicit validated FIT/SS/Medicare taxable bases, cash gross and post-tax deductions; no deduction taxability inferred",
+        "output": "Federal-only wage withholding estimate, not total take-home pay or final income tax liability",
+        "unsupported": "Other W-4 vintages/statuses, state/local/foreign taxes, benefits classification and other frequencies remain unresolved in final catalog scope; return unsupported, never assume zero"
+      },
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 124,
+      "title": "Payroll Tax Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "profiles": {
+        "id": "US-FED-2026-BIWEEKLY-W4-2020PLUS-SINGLE-STANDARD-PROPOSED",
+        "selection": "Selectable proposal only; owner has not adopted it",
+        "currency": "USD",
+        "payFrequency": "biweekly",
+        "periodsPerYear": 26,
+        "w4Vintage": "2020 or later valid W-4",
+        "filingStatus": "Single or Married Filing Separately",
+        "step2Checkbox": false,
+        "employment": "ordinary covered resident employee; one employer, no successor/acquisition, no tips, noncash benefits, special classes, exempt or lock-in cases",
+        "deductions": "Required explicit validated FIT/SS/Medicare taxable bases, cash gross and post-tax deductions; no deduction taxability inferred",
+        "output": "Federal-only wage withholding estimate, not total take-home pay or final income tax liability",
+        "unsupported": "Other W-4 vintages/statuses, state/local/foreign taxes, benefits classification and other frequencies remain unresolved in final catalog scope; return unsupported, never assume zero"
+      },
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 128,
+      "title": "Capital Gains Tax Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Current disposal-class/claim applicability and exact CGT input/component rounding contract not fully sourced; historical Tax Logic does not close 2026/27 stages.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "UK resident individual 2026/27 ordinary gains, supplied lawful gains/losses and taxable other income; exclude reliefs, trusts and carried interest",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 129,
+      "title": "Dividend Tax Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Band ordering is supported, but complete current nil-rate allowance allocation and round-stage binding not established; do not subtract dividend allowance from band consumption.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "UK resident individual 2026/27 ordinary UK dividends plus non-savings income; no savings/special reliefs and ANI below100000",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 130,
+      "title": "Self-Employment Tax Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Need current Class4 stage/rounding and exemption/aggregation/other-contribution interaction pack. Class1 nearest-penny rule cannot be transplanted to Class4.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "UK ordinary self-employed 2026/27 Class4 illustration using supplied eligible annual profits; Income Tax separate",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 131,
+      "title": "Freelancer Tax Reserve Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "No statutory freelancer reserve percentage exists in these sources. Owner/user must select whether supplied-liability planning or estimated liability; liability estimator remains source-partial.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "User-entered annual UK freelancer reserve planning, separating supplied tax liability from prudential cash buffer",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 132,
+      "title": "Corporate Tax Estimate Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Missing adopted monetary rounding/return entry stages; current FY2026 explicit fraction/table binding and precise short-period day convention remain unverified. Control/augmented-profit factual applicability needs review.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "User-selectable historical FY2025 twelve-month UK resident ordinary non-ring-fence company; supplied validated taxable and augmented profits and associates; current FY2026 remains unavailable",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 135,
+      "title": "Tax Marginal Rate Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Output meaning unselected: statutory next-slice band versus effective incremental liability including allowance taper; rounded liability also creates discontinuities. Underlying current annual rounding pack is source-partial.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "Explicitly selectable statutory band rate OR continuous economic marginal Income Tax illustration for simple EWNI2026/27 non-savings income; NI/benefits excluded",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 136,
+      "title": "Salary Sacrifice Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Arrangement legality/eligibility, NMW cash floor, contractual timing, pension limits and payroll consequences require qualified applicability determination; PAYE forward rules and pension-charge pack missing.",
+        "Select jurisdiction/period and profile explicitly; confirm competent applicability review and current source stages before implementation.",
+        "Bind approved catalog ID, implementation version/full SHA and independent expected boundary cases; no canonical mapping or release adoption in this packet."
+      ],
+      "profiles": [
+        {
+          "profile": "UK registered pension prospective salary sacrifice comparison for selected2026/27 regular employee payroll; eligible employer contribution supplied; separate approved PAYE/Class1 pack required",
+          "status": "PROPOSED_USER_SELECTABLE_NOT_OWNER_ADOPTED",
+          "unsupported": "All other jurisdictions, years, income classes and special regimes remain unavailable; full catalog scope retained as unresolved, not deleted."
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 137,
+      "title": "Bonus Tax Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Adopt/revise bounded profile and federal-only output label without excluding unresolved final catalog scope",
+        "Qualified review of employee, wage-base, benefit/deduction and applicable employment class facts",
+        "Choose permitted consistent FIT rounding plus FICA cent-tie/line aggregation and insufficient-pay behavior",
+        "Approve exact full-SHA mapping and actual engine goldens; no canonical acceptance inferred"
+      ],
+      "profiles": {
+        "id": "US-FED-2026-BIWEEKLY-W4-2020PLUS-SINGLE-STANDARD-PROPOSED",
+        "selection": "Selectable proposal only; owner has not adopted it",
+        "currency": "USD",
+        "payFrequency": "biweekly",
+        "periodsPerYear": 26,
+        "w4Vintage": "2020 or later valid W-4",
+        "filingStatus": "Single or Married Filing Separately",
+        "step2Checkbox": false,
+        "employment": "ordinary covered resident employee; one employer, no successor/acquisition, no tips, noncash benefits, special classes, exempt or lock-in cases",
+        "deductions": "Required explicit validated FIT/SS/Medicare taxable bases, cash gross and post-tax deductions; no deduction taxability inferred",
+        "output": "Federal-only wage withholding estimate, not total take-home pay or final income tax liability",
+        "unsupported": "Other W-4 vintages/statuses, state/local/foreign taxes, benefits classification and other frequencies remain unresolved in final catalog scope; return unsupported, never assume zero"
+      },
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 173,
+      "title": "Customer Lifetime Value Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Owner selects model modes/cashflow basis and CAC inclusion convention; inputs and period explicit.",
+        "Approve mapping to exact canonical identity/technical version and rounding; empirical projection claims need separate applicability evidence."
+      ],
+      "profiles": [
+        "User selects contractual full-beginning, residual-beginning or full-end-period; no silent default.",
+        "Noncontractual/calibrated projections remain unavailable until appropriate model/evidence selected."
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 198,
+      "title": "Marketplace Fee Calculator",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Select providers/country/account/effective profiles.",
+        "Choose gross/net/refund/credit conventions; preserve distinct per-fee bases and account charges.",
+        "Resolve provider rounding, effective-date change capture and governing clause conflicts before complete fee prediction."
+      ],
+      "profiles": [
+        "Explicit provider selector; Etsy profile may reuse199 only after same country/currency/rule-pack applicability. Other providers unavailable until sourced."
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 199,
+      "title": "Etsy Profit Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Owner profile/ad/fee coverage selection; account-specific fee/tax applicability evidence.",
+        "Prescribed fee-assessment rounding/credit allocation and actual dated rule-pack evidence for historical estimates.",
+        "Resolve conflicting general/specific refund language with authoritative interpretation for affected fee types."
+      ],
+      "profiles": [
+        "Require seller country AND bank country AND payment currency, listing currency, date/policy snapshot, ad-qualification/attribution flags and refund funding.",
+        "Keep unknown account-specific/FX/tax branches unavailable, not silently zeroed."
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 204,
+      "title": "Return Rate Impact Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Select complete operational versus statutory reporting contract and return/inventory recognition assumptions.",
+        "Review AASB2022-9/other applicable amendments for period from2026-07-01, and intended jurisdiction/accounting framework.",
+        "Approve recovery valuation, return handling, refund liability, expense/fee and rounding; qualified accounting applicability if compliance claimed."
+      ],
+      "profiles": [
+        "User selects operational cash-impact scenario or explicitly approved accounting/reporting jurisdiction/period. Do not silently reuse one output as the other."
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 404,
+      "title": "Target Heart Rate Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Select age-based versus measured maximum/HRR method; approve population/screening and medication/heart-condition handling.",
+        "Select 50–70% moderate and70–85% vigorous endpoint overlap policy, bpm display rounding, input bounds; no five-zone mapping established.",
+        "Age-based target-heart-rate estimates and training intensity need population applicability, screening, measured-HR/HRR alternatives and limitations. Current source/arithmetic does not settle those safety judgments; retain qualified clinical/exercise review."
+      ],
+      "profiles": [
+        {
+          "description": "AHA general adult age-based %HRmax guide; measured maximum and HRR require separately sourced profiles",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 405,
+      "title": "Pregnancy Due Date Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Obstetric reviewer must choose governing revision and hierarchy, reliable LMP/regular-cycle eligibility, ultrasound/redating thresholds and ART embryo-age/date rules.",
+        "Retrieve full accepted redating table and latest reaffirmation; record discrepancy strictness, gestational-bin boundaries, dating uncertainty and calendar conventions.",
+        "Pregnancy due-date interpretation needs qualified obstetric applicability/redating review. Complete dating guidance is unavailable and LMP+280 alone cannot establish ultrasound, irregular-cycle or assisted-reproduction policy."
+      ],
+      "profiles": [
+        {
+          "description": "Provisional LMP280-calendar-day profile versus full obstetric LMP/ultrasound/ART dating",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 406,
+      "title": "Pregnancy Weight Gain Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Approve US singleton applicability, plurality-specific alternatives, adolescent/special populations and obesity inclusion.",
+        "Choose continuous BMI boundaries without preclassification rounding; weekly trajectory requires gestational anchor, first-trimester range and interpolation policy; table rates do not establish individual growth curve.",
+        "Pregnancy weight guidance needs qualified obstetric/nutrition applicability review of BMI cutpoints, plurality, gestational trajectory and special populations. Consumer chart versus underlying guideline scope remains unresolved."
+      ],
+      "profiles": [
+        {
+          "description": "IOM2009 singleton total-gain band; weekly-rate display as separately reviewed profile",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 407,
+      "title": "Ovulation Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Approve regular-cycle eligibility, measured cycle variability, fixed14-day assumption versus12–14-day interval and uncertainty display.",
+        "Choose elapsed-day versus cycle-day indexing, fertile-window endpoints and limitations; do not imply contraceptive effectiveness or individual confirmation.",
+        "Ovulation/fertile-window interpretation needs qualified reproductive-health review. A fixed14-day assumption and calendar witness do not establish individual timing, irregular-cycle applicability or validated uncertainty."
+      ],
+      "profiles": [
+        {
+          "description": "Approximate calendar fertility estimate from cycle/LMP, not exact ovulation",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 408,
+      "title": "Conception Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Approve dating input basis inherited from405 and independently supported uncertainty; exact conception/fertilization/intercourse/paternity cannot be inferred.",
+        "Define estimate interval only with evidence; ART requires recorded transfer/embryo information; no manufactured confidence range.",
+        "Conception dating needs qualified reproductive-health review and independently established uncertainty. Inverse calendar arithmetic cannot establish fertilization/intercourse date or paternity, and the approved dating basis is absent."
+      ],
+      "profiles": [
+        {
+          "description": "Conventional EDD minus266calendar days as labeled arithmetic reference only",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 409,
+      "title": "GFR Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Clinician selects creatinine-only versus combined equation, coefficient-profile applicability, adult population and exclusions/nonsteady-state handling.",
+        "Approve assay/units provenance, normalized versus absolute-GFR distinction, input plausibility, rounding and interpretation/critical-result policy; no arbitrary output clamp.",
+        "The candidate adult2021CKD-EPI arithmetic is supported, but renal applicability, coefficient profile, input assays/units, exclusions and result interpretation remain clinical judgments. Retain qualified clinician review; no arbitrary output clamp."
+      ],
+      "profiles": [
+        {
+          "description": "Adult2021 CKD-EPI creatinine normalized eGFR; combined-biomarker option separately selected",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 410,
+      "title": "Sleep Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Approve age/population guidance and distinction between sleep obtained and sleep opportunity; no universal90minute cycle or15minute latency.",
+        "Choose actual date/timezone/DST ambiguity behavior, overnight inversion, user-entered latency and output precision; other ages require separate guidance.",
+        "Sleep guidance and inverse scheduling need population/age applicability and the distinction between actual sleep and opportunity. A duration subtraction does not establish a universal latency/cycle or clinical recommendation; retain qualified sleep/health review under current evidence."
+      ],
+      "profiles": [
+        {
+          "description": "AASM2015 adult18–60 duration context plus user-supplied scheduling duration/latency",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 442,
+      "title": "Currency Converter",
+      "primaryDisposition": "POLICY_DECISION_REQUIRED",
+      "choices": [
+        "Choose date exact or on-or-before and stale threshold",
+        "Choose output precision source/mode and fee treatment; no transaction quote claim"
+      ],
+      "profiles": [
+        {
+          "name": "ECB dated reference informational cross converter; exact-date only",
+          "adopted": false
+        },
+        {
+          "name": "ECB informational last-available-on-or-before requested date with explicit observedDate and staleness limit",
+          "adopted": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 485,
+      "title": "Carbon Footprint Calculator",
+      "primaryDisposition": "SOURCE_RESOLVED",
+      "choices": [
+        "Adopt bounded electricity component or commission full inventory profile",
+        "Choose display decimals with unrounded total retained; acknowledge attribution and permitted-use boundaries"
+      ],
+      "profiles": [
+        {
+          "name": "UK2026 Scope2 purchased grid electricity component with explicitly labelled exclusions",
+          "adopted": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 502,
+      "title": "Cooking Time Adjustment Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Food-safety reviewer selects food/cut, geometry, weight interval, appliance, starting state and validated calibration; no arbitrary temperature/mass scaling.",
+        "Approve thermometer endpoints/rest handling and approximate chart scope; obtain thermal model/validation for full requested adjustment or leave unsupported.",
+        "No validated food/geometry/appliance time-adjustment thermal model exists in the packet. Qualified food-safety applicability review and calibration are mandatory for the intended safe-cooking interpretation; endpoint temperatures are not a time predictor."
+      ],
+      "profiles": [
+        {
+          "description": "Listed roasting-chart planning ranges only; full arbitrary time-adjustment model remains unsupported",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 522,
+      "title": "Race Time Predictor",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Historical model education or individual predictor?",
+        "Select event/population/calibration dataset and uncertainty standard through qualified reviewer"
+      ],
+      "profiles": [
+        {
+          "name": "Historical record-curve demonstrator using Table1 men coefficient",
+          "adopted": false
+        },
+        {
+          "name": "Personal power-law scenarios with user supplied b, explicitly unvalidated",
+          "adopted": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 526,
+      "title": "Training Heart Rate Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Qualified exercise reviewer resolves identity with404 and selects age-estimated/measured maximum or HRR, resting-HR protocol and exercise screening.",
+        "Adopt exact governing thresholds/version before any zones; ACSM indexed infographic not full verified source and cannot silently replace AHA bands.",
+        "Training-heart-rate zone selection depends on#404, resting/max-HR methodology, population screening and reviewed thresholds. Current evidence does not establish safe training prescription; retain qualified clinical/exercise applicability review."
+      ],
+      "profiles": [
+        {
+          "description": "AHA general %HRmax profile linked to404; HRR/training zones remain selectable only after evidence",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 527,
+      "title": "Golf Handicap Calculator",
+      "primaryDisposition": "SOURCE_PARTIAL",
+      "choices": [
+        "Name national association/current edition; authorize externally supplied PCC/expected data or obtain licensed method",
+        "Full index vs explicitly labelled partial educational calculation"
+      ],
+      "profiles": [
+        {
+          "name": "National WHS2024/2026 authorized rulepack after complete rules obtained",
+          "adopted": false
+        },
+        {
+          "name": "Educational cap-only example from supplied H,L, explicitly not Handicap Index issuance",
+          "adopted": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    },
+    {
+      "masterId": 530,
+      "title": "VO2 Max Estimate Calculator",
+      "primaryDisposition": "QUALIFIED_APPLICABILITY_REQUIRED",
+      "choices": [
+        "Approve original repeated-mile protocol, healthy30–69 population, fourth-quarter HR timing/measurement and screening/exclusions.",
+        "Keep absolute regression conversion distinct from independently fitted relative regression; select uncertainty/output rounding and obtain external validation for any protocol/population extension.",
+        "The Kline absolute regression/conversion arithmetic is supported, but protocol, healthy30–69 applicability, screening, fourth-quarter HR and uncertainty require qualified exercise/clinical review. Do not substitute a generic postwalk HR or separately fitted relative regression."
+      ],
+      "profiles": [
+        {
+          "description": "Kline1987 absolute L/min regression; separately labeled dimensional mL/kg/min conversion",
+          "selectableForReview": true,
+          "approved": false
+        }
+      ],
+      "approval": "PENDING",
+      "profileMayBeUserSelectable": true,
+      "unsupportedProfiles": "Unavailable with explicit reason; full product backlog preserved."
+    }
+  ]
+}
