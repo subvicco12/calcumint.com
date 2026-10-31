@@ -4,6 +4,7 @@ import {mkdir,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {createClient,AuthApiError} from '@supabase/supabase-js';
 import {startGoTrueFixture} from '../gotrue-runtime/fixture.mjs';
+import {createBoundedFetch} from './bounded-fetch.mjs';
 
 // Issued user tokens are only decoded and replayed unchanged. The fixture's
 // bootstrap anon/service keys are separate from the user JWTs under test.
@@ -16,10 +17,11 @@ const pass=name=>{checks.push(name);console.log('PASS '+name)};
 const claims=token=>JSON.parse(Buffer.from(token.split('.')[1],'base64url'));
 const hash=token=>createHash('sha256').update(token).digest('hex');
 const remaining=()=>{assert(Date.now()<deadline,'120-second campaign deadline exceeded');return deadline-Date.now()};
-const client=()=>createClient(db.url,db.anonKey,{auth:{autoRefreshToken:false,persistSession:false,detectSessionInUrl:false}});
+const boundedFetch=createBoundedFetch({deadline});
+const client=()=>createClient(db.url,db.anonKey,{global:{fetch:boundedFetch},auth:{autoRefreshToken:false,persistSession:false,detectSessionInUrl:false}});
 const ok=r=>{assert.equal(r.error,null);return r.data};
 async function probe(token,id,label){
- const response=await fetch(`${db.url}/rest/v1/profiles?select=id&id=eq.${id}`,{headers:{apikey:db.anonKey,authorization:'Bearer '+token},signal:AbortSignal.timeout(Math.min(5000,remaining()))});
+ const response=await boundedFetch(`${db.url}/rest/v1/profiles?select=id&id=eq.${id}`,{headers:{apikey:db.anonKey,authorization:'Bearer '+token},signal:AbortSignal.timeout(Math.min(5000,remaining()))});
  const body=await response.json();observations.push({label,at:new Date().toISOString(),tokenSha256:hash(token),status:response.status,body});return {status:response.status,body};
 }
 async function waitPast(exp){
@@ -71,6 +73,6 @@ try {
  const recoveredProbe=await probe(recovered.access_token,id,'refresh-recovered-access');assert.equal(recoveredProbe.status,200);assert.deepEqual(recoveredProbe.body,[{id}]);
  pass('Real GoTrue refresh after access expiry rotates refresh token and restores own-profile access');
  remaining();
- const sources=[];for(const source of ['tests/batch17-expiry/acceptance.mjs','tests/gotrue-runtime/fixture.mjs','tests/gotrue-runtime/schema.mjs'])sources.push({path:source,sha256:createHash('sha256').update(await readFile(new URL('../../'+source,import.meta.url))).digest('hex')});
+ const sources=[];for(const source of ['tests/batch17-expiry/acceptance.mjs','tests/batch17-expiry/bounded-fetch.mjs','tests/gotrue-runtime/fixture.mjs','tests/gotrue-runtime/schema.mjs'])sources.push({path:source,sha256:createHash('sha256').update(await readFile(new URL('../../'+source,import.meta.url))).digest('hex')});
  await writeFile(path.join(artifacts,'receipt.json'),JSON.stringify({status:'PASS',task:'AUTH-EXPIRY-BOUNDARY',startedAt:new Date(started).toISOString(),finishedAt:new Date().toISOString(),elapsedMs:Date.now()-started,naturalExpiryWaitMs:waitMs,deadlineSeconds:120,postgrestAllowedSkewSeconds:30,rejectionObservationAllowanceSeconds:5,jwtExpirySeconds:ttl,runtime:process.version,checks,originalClaims,logoutClaims,recoveredClaims,observations,sources,provenance:db.provenance,requests:db.requests,scope:'Local genuine GoTrue/PostgREST SDK campaign using selective unchanged application migrations. No hosted equivalence, production policy change, immediate JWT revocation, forged user tokens or clock manipulation.'},null,2));
 } catch(error){await writeFile(path.join(artifacts,'failure.json'),JSON.stringify({message:error.message,stack:error.stack,checks,observations},null,2));throw error;} finally {if(db)await db.close();}
