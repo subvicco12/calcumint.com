@@ -24,3 +24,11 @@ The fixture requires the local Docker socket and an isolated SDK-only window whe
 The receipt's `baseHead` is the supplied exact green PR1506 commit. `modelProvenance.sourceCommit` is an unchanged historical label emitted by the shared fixture; it is not the current checkout identity. The model's complete source hashes and guarded-bundle manifest identify the exercised inputs; the receipt verifier rehashes those model sources as well as the new issuance inputs.
 
 Fresh campaigns require `ISSUANCE_ARTIFACTS` outside the source checkout and write `receipt.json` there. The verifier accepts an explicit receipt path or that environment directory. The committed `issuance-receipt.json` remains byte-for-byte historical evidence from the original driver; its driver hash deliberately differs after the recorder change and it must not be verified as a current-driver run. Integrated acceptance records current source hashes in a separate fresh receipt.
+
+Verifier follow-up: the original verifier incorrectly accepted empty own/model source arrays. This was reproduced with a modified fresh receipt. It now requires the exact eight driver source paths and the complete model path inventory from unchanged trusted Batch16 provenance, rejects duplicate paths and malformed SHA256 values, and checks all ten acceptance names before reading receipt-derived paths. This proves complete binding to current repository bytes; it does not authenticate who produced an otherwise forgeable JSON receipt. CLI regression coverage uses a supplied genuine fresh receipt:
+
+```sh
+ISSUANCE_VALID_RECEIPT=/path/to/fresh/receipt.json node --test tests/batch17-issuance/verify-receipt.test.mjs
+```
+
+The hardening follow-up was measured separately: 2026-10-31T20:48:25Z through 2026-10-31T20:49:21Z,56seconds through completed verification, including tests. Positive fresh receipt verification and malformed/omitted/duplicate/hash-shape/path-escape/check-name negatives passed; ESLint and syntax checks passed. No SQL, genuine campaign, Docker, or historical receipt bytes changed. This follow-up is not included in the earlier258-second implementation window.
