@@ -1,10 +1,11 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';import {getPlanEntitlements,type CalcuMintPlan} from '@/lib/entitlements';import {recoverScenarioSetJson,MAX_SCENARIO_RECOVERY_BYTES} from '@/lib/scenario-set-recovery';import type {CapturedScenario} from '@/lib/scenario-set';
+import {useLayoutEffect,useRef,useState} from 'react';import {getPlanEntitlements,type CalcuMintPlan} from '@/lib/entitlements';import {recoverScenarioSetJson,MAX_SCENARIO_RECOVERY_BYTES} from '@/lib/scenario-set-recovery';import type {CapturedScenario} from '@/lib/scenario-set';
 export function ScenarioSetRecovery({plan,identity,onRecovered}:{plan:CalcuMintPlan;identity:{calculatorSlug:string;calculatorVersion:number}|null;onRecovered:(rows:readonly CapturedScenario[])=>void}){
  const [text,setText]=useState(''),[reading,setReading]=useState(false),[message,setMessage]=useState(''),[error,setError]=useState(false);const pending=useRef<FileReader|null>(null);const allowed=getPlanEntitlements(plan).scenarios;
  const slug=identity?.calculatorSlug,version=identity?.calculatorVersion;
- useEffect(()=>{
-  // A read belongs to the access and calculator context in which it started.
+ useLayoutEffect(()=>{
+  // Invalidate before any parent layout effect can deliver a queued completion.
+  // Passive cleanup is too late: a new context may already be committed.
   return ()=>{const r=pending.current;pending.current=null;r?.abort();};
  },[allowed,slug,version]);
  const context=JSON.stringify([allowed,slug,version]);const [previousContext,setPreviousContext]=useState(context);

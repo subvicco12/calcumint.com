@@ -10,3 +10,19 @@ it.each(['downgrade','identity'] as const)('aborts a pending read on %s and igno
 
 it('reports an unexpected read abort and preserves pasted text for a manual recovery retry',()=>{const readers:Reader[]=[];class Reader{result:string|null=null;onload:(()=>void)|null=null;onerror:(()=>void)|null=null;onabort:(()=>void)|null=null;constructor(){readers.push(this);}readAsText(){}abort(){}}vi.stubGlobal('FileReader',Reader);const onRecovered=vi.fn();render(<ScenarioSetRecovery plan="pro" identity={identity} onRecovered={onRecovered}/>);fireEvent.change(screen.getByLabelText('Exported scenario JSON'),{target:{value:text}});fireEvent.change(screen.getByLabelText('Scenario JSON file (maximum 8 MiB)'),{target:{files:[new File(['a'],'a.json')]}});act(()=>readers[0].onabort?.());expect(screen.getByRole('alert').textContent).toContain('retry');expect(screen.getByRole('alert').getAttribute('aria-live')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Verify and recover scenario set'}));expect(onRecovered).toHaveBeenCalledTimes(1);});
 it('keeps manual recovery available if the browser cannot construct a file reader',()=>{vi.stubGlobal('FileReader',class {constructor(){throw new Error('Unavailable');}});const onRecovered=vi.fn();render(<ScenarioSetRecovery plan="pro" identity={identity} onRecovered={onRecovered}/>);fireEvent.change(screen.getByLabelText('Exported scenario JSON'),{target:{value:text}});fireEvent.change(screen.getByLabelText('Scenario JSON file (maximum 8 MiB)'),{target:{files:[new File(['a'],'a.json')]}});expect(screen.getByRole('alert').textContent).toContain('retry');fireEvent.click(screen.getByRole('button',{name:'Verify and recover scenario set'}));expect(onRecovered).toHaveBeenCalledTimes(1);});
+it.each(['access','identity'] as const)('invalidates a pending read before parent layout effects in the %s context commit',transition=>{
+ const readers:Reader[]=[];
+ class Reader{result:string|null=null;onload:(()=>void)|null=null;onerror:(()=>void)|null=null;aborts=0;constructor(){readers.push(this);}readAsText(){}abort(){this.aborts++;}}
+ vi.stubGlobal('FileReader',Reader);
+ function Parent({changed}:{changed:boolean}){
+  React.useLayoutEffect(()=>{if(changed){readers[0].result=text;readers[0].onload?.();}},[changed]);
+  return <ScenarioSetRecovery plan={changed&&transition==='access'?'free':'pro'} identity={changed&&transition==='identity'?{...identity,calculatorVersion:2}:identity} onRecovered={vi.fn()}/>;
+ }
+ const view=render(<Parent changed={false}/>);
+ fireEvent.change(screen.getByLabelText('Exported scenario JSON'),{target:{value:'Retained before commit'}});
+ fireEvent.change(screen.getByLabelText('Scenario JSON file (maximum 8 MiB)'),{target:{files:[new File(['a'],'a.json')]}});
+ view.rerender(<Parent changed/>);
+ view.rerender(<Parent changed={false}/>);
+ expect((screen.getByLabelText('Exported scenario JSON') as HTMLTextAreaElement).value).toBe('Retained before commit');
+ expect(readers[0].aborts).toBe(1);
+});
