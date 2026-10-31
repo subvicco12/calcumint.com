@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "contractId": "private.canonical-calculus.247",
+  "source": {
+    "baselineSHA": "50f307c67e3a5e5d289d2b83e2a285029151f866",
+    "nativeBlueprintSHA256": "d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455",
+    "engineId": "private.canonical-calculus",
+    "technicalRevision": 3,
+    "presentationRevision": 1,
+    "files": {
+      "src/calculators/canonical-calculus.ts": "069be29c14c2a7ef3f3b98c87f7c6425096b59cd0c4e1f58504c948b708e0c6d",
+      "src/calculators/canonical-calculus-workflow.ts": "6b4ac2f65fffbf6f3bc731c768a0726250a299c8a8ca710685396a01bf4de24c",
+      "src/lib/canonical-calculus-history.ts": "aa0aa1eb7f82cc41b59b8edbcb75b26348e8364c1a08f38a009d01a19ca9f58b",
+      "src/components/canonical-calculus-workbench.tsx": "39c381c1453914807fe0aefc7d59f4a9775350764f6ba4b967b59be752e0fe7c",
+      "src/calculators/private-calculus-successor.ts": "a95cc6dce078040a3257d98825b0aefa81e681206585e3c04f25667044d8b895",
+      "src/calculators/advanced-math/expression-engine.ts": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24",
+      "src/calculators/exact-rational.ts": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a",
+      "src/calculators/completion-contracts.ts": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa",
+      "src/lib/calculation-snapshot.ts": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c",
+      "src/lib/entitlements.ts": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731",
+      "src/components/final-calculator-renderer.tsx": "95acb3ca32311c3e843371e2e39c3f74d311d99997706d866b1629957796e4b6",
+      "src/components/result-series-panel.tsx": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b",
+      "src/calculators/final-framework/types.ts": "b32ace6cd558c56d3036661fb00ec1b0692c93724d3a185fe9fd79136827f8e1",
+      "package-lock.json": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+    },
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  },
+  "governance": {
+    "relatedCatalogId": 247,
+    "engineId": "private.canonical-calculus",
+    "technicalRevision": 3,
+    "presentationRevision": 1,
+    "engineeringContract": "DEFINED_AND_TESTED_FOR_DECLARED_DOMAIN",
+    "canonicalAccepted": false,
+    "canonicalMappingApproved": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  },
+  "calculation": {
+    "calculatorSlug": "private-canonical-calculus-integral",
+    "calculatorVersion": 3,
+    "input": {
+      "calculation": {
+        "operation": "integral",
+        "expression": "x^2",
+        "lower": "0",
+        "upper": "1"
+      },
+      "plot": {
+        "enabled": true,
+        "radius": "1",
+        "samples": 17
+      }
+    },
+    "output": {
+      "core": {
+        "classification": "finite",
+        "value": "1/3",
+        "exact": {
+          "numerator": "1",
+          "denominator": "3"
+        },
+        "arithmetic": "exact-rational",
+        "method": "Exact polynomial power-rule antiderivative",
+        "warning": "Exact relative to supplied decimal literals; no display rounding."
+      },
+      "structured": {
+        "primaryResult": {
+          "id": "calculus-result",
+          "label": "Oriented integral",
+          "value": "1/3"
+        },
+        "metrics": [
+          {
+            "id": "classification",
+            "label": "Mathematical outcome",
+            "value": "finite"
+          },
+          {
+            "id": "arithmetic",
+            "label": "Arithmetic method",
+            "value": "exact-rational"
+          }
+        ],
+        "series": [
+          {
+            "id": "segment-0",
+            "label": "integral engine outcomes — segment1",
+            "points": [
+              {
+                "x": "0",
+                "y": 0,
+                "label": "0"
+              },
+              {
+                "x": "0.0625",
+                "y": 0.00008138020833333333,
+                "label": "1/12288"
+              },
+              {
+                "x": "0.125",
+                "y": 0.0006510416666666666,
+                "label": "1/1536"
+              },
+              {
+                "x": "0.1875",
+                "y": 0.002197265625,
+                "label": "0.002197265625"
+              },
+              {
+                "x": "0.25",
+                "y": 0.005208333333333333,
+                "label": "1/192"
+              },
+              {
+                "x": "0.3125",
+                "y": 0.010172526041666666,
+                "label": "125/12288"
+              },
+              {
+                "x": "0.375",
+                "y": 0.017578125,
+                "label": "0.017578125"
+              },
+              {
+                "x": "0.4375",
+                "y": 0.027913411458333332,
+                "label": "343/12288"
+              },
+              {
+                "x": "0.5",
+                "y": 0.041666666666666664,
+                "label": "1/24"
+              },
+              {
+                "x": "0.5625",
+                "y": 0.059326171875,
+                "label": "0.059326171875"
+              },
+              {
+                "x": "0.625",
+                "y": 0.08138020833333333,
+                "label": "125/1536"
+              },
+              {
+                "x": "0.6875",
+                "y": 0.10831705729166667,
+                "label": "1331/12288"
+              },
+              {
+                "x": "0.75",
+                "y": 0.140625,
+                "label": "0.140625"
+              },
+              {
+                "x": "0.8125",
+                "y": 0.17879231770833334,
+                "label": "2197/12288"
+              },
+              {
+                "x": "0.875",
+                "y": 0.22330729166666666,
+                "label": "343/1536"
+              },
+              {
+                "x": "0.9375",
+                "y": 0.274658203125,
+                "label": "0.274658203125"
+              },
+              {
+                "x": "1",
+                "y": 0.3333333333333333,
+                "label": "1/3"
+              }
+            ]
+          }
+        ],
+        "warnings": [
+          "Exact relative to supplied decimal literals; no display rounding.",
+          "Private engineering contract; no canonical acceptance, certification or publication.",
+          "x and function values are dimensionless; trigonometric arguments are radians.",
+          "Plot/table rows are actual engine operation outcomes at each coordinate, not a sampled proof or a graph of a different formula.",
+          "Chart numbers are display approximations. Stored engine strings in the table and headline are authoritative for this snapshot; analytic results retain binary64 precision."
+        ],
+        "scenarioVariables": [
+          "expression",
+          "lower",
+          "upper"
+        ],
+        "assumptions": [
+          "Expression and coordinates are supplied mathematical inputs; no physical, clinical, financial or jurisdictional applicability is inferred."
+        ],
+        "methodology": "Exact rational results use terminating decimal or reduced fraction strings; no invented rounding. Analytic fallback is explicitly binary64. Rational functions for exact derivatives and finite/directional/removable/pole limits; original derivative holes retained. Polynomial-only oriented integrals; no variable denominators/cancelled-hole integration. Nonrational derivative/continuous-limit methods delegate immutablev2. General transcendental removable limits, boundary analytic limits and non-polynomial integration remain unsupported engineering scope. No sampled proof, certified error bound, canonical acceptance, certification or publication.",
+        "sources": [
+          {
+            "label": "Polynomial power/quotient rules and exact vanishing-order theorem; independent implementation goldens."
+          },
+          {
+            "label": "Original CalcuMint Master Blueprint, SHA256 d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455"
+          }
+        ]
+      },
+      "rows": [
+        {
+          "id": "engine-point-0",
+          "coordinate": "0",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "0",
+            "exact": {
+              "numerator": "0",
+              "denominator": "1"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-1",
+          "coordinate": "0.0625",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.0625"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1/12288",
+            "exact": {
+              "numerator": "1",
+              "denominator": "12288"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.00008138020833333333,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-2",
+          "coordinate": "0.125",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.125"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1/1536",
+            "exact": {
+              "numerator": "1",
+              "denominator": "1536"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.0006510416666666666,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-3",
+          "coordinate": "0.1875",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.1875"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "0.002197265625",
+            "exact": {
+              "numerator": "9",
+              "denominator": "4096"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.002197265625,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-4",
+          "coordinate": "0.25",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.25"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1/192",
+            "exact": {
+              "numerator": "1",
+              "denominator": "192"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.005208333333333333,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-5",
+          "coordinate": "0.3125",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.3125"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "125/12288",
+            "exact": {
+              "numerator": "125",
+              "denominator": "12288"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.010172526041666666,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-6",
+          "coordinate": "0.375",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.375"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "0.017578125",
+            "exact": {
+              "numerator": "9",
+              "denominator": "512"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.017578125,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-7",
+          "coordinate": "0.4375",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.4375"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "343/12288",
+            "exact": {
+              "numerator": "343",
+              "denominator": "12288"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.027913411458333332,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-8",
+          "coordinate": "0.5",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.5"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1/24",
+            "exact": {
+              "numerator": "1",
+              "denominator": "24"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.041666666666666664,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-9",
+          "coordinate": "0.5625",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.5625"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "0.059326171875",
+            "exact": {
+              "numerator": "243",
+              "denominator": "4096"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.059326171875,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-10",
+          "coordinate": "0.625",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.625"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "125/1536",
+            "exact": {
+              "numerator": "125",
+              "denominator": "1536"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.08138020833333333,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-11",
+          "coordinate": "0.6875",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.6875"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1331/12288",
+            "exact": {
+              "numerator": "1331",
+              "denominator": "12288"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.10831705729166667,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-12",
+          "coordinate": "0.75",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.75"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "0.140625",
+            "exact": {
+              "numerator": "9",
+              "denominator": "64"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.140625,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-13",
+          "coordinate": "0.8125",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.8125"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2197/12288",
+            "exact": {
+              "numerator": "2197",
+              "denominator": "12288"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.17879231770833334,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-14",
+          "coordinate": "0.875",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.875"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "343/1536",
+            "exact": {
+              "numerator": "343",
+              "denominator": "1536"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.22330729166666666,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-15",
+          "coordinate": "0.9375",
+          "anchor": false,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "0.9375"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "0.274658203125",
+            "exact": {
+              "numerator": "1125",
+              "denominator": "4096"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.274658203125,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-16",
+          "coordinate": "1",
+          "anchor": true,
+          "input": {
+            "operation": "integral",
+            "expression": "x^2",
+            "lower": "0",
+            "upper": "1"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1/3",
+            "exact": {
+              "numerator": "1",
+              "denominator": "3"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact polynomial power-rule antiderivative",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 0.3333333333333333,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        }
+      ],
+      "reconciliation": {
+        "primary": "1/3",
+        "anchor": "1/3",
+        "rule": "Exact primary/anchor strings and classification agree"
+      },
+      "engineContract": {
+        "relatedCatalogIds": [
+          246,
+          247,
+          248
+        ],
+        "engineId": "private.canonical-calculus",
+        "version": 3,
+        "inputs": "Strict operation/expression/decimal-coordinate schemas; limit direction explicit. Decimal coefficients<=64digits/exponents±256; coordinates±1000000/18decimal places; each intermediate polynomial degree/power<=32; coefficient4096bits.",
+        "rounding": "Exact rational results use terminating decimal or reduced fraction strings; no invented rounding. Analytic fallback is explicitly binary64.",
+        "domain": "Rational functions for exact derivatives and finite/directional/removable/pole limits; original derivative holes retained. Polynomial-only oriented integrals; no variable denominators/cancelled-hole integration. Nonrational derivative/continuous-limit methods delegate immutablev2.",
+        "sources": "Algebraic differentiation and polynomial power rule; exact vanishing-order limit theorem. Internal derivations and independently authored exact goldens; not provider/regulatory rules.",
+        "limitations": "General transcendental removable limits, boundary analytic limits and non-polynomial integration remain unsupported engineering scope. No sampled proof, certified error bound, canonical acceptance, certification or publication."
+      }
+    }
+  }
+}

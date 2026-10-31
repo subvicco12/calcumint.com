@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "50f307c67e3a5e5d289d2b83e2a285029151f866",
+  "relatedCatalogIds": [
+    246,
+    247,
+    248
+  ],
+  "engineId": "private.canonical-calculus",
+  "technicalRevision": 3,
+  "presentationRevision": 1,
+  "canonicalAccepted": false,
+  "validation": [
+    {
+      "name": "full-unit-regression",
+      "command": "npm test -- --maxWorkers=1",
+      "result": "6075passed/4existing-skips; before the4new immutable browser-receipt guards were added",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-full-unit.log",
+      "logSHA256": "d433a7a28711ebe907ad63df932b42eb05ce0effa27bbe3dbea97547f439dacb"
+    },
+    {
+      "name": "focused-final-engine-workflow-history-and-receipts",
+      "command": "npx vitest run src/calculators/canonical-calculus*.test.ts src/lib/canonical-calculus-history.test.ts",
+      "result": "72passed",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-focused-final.log",
+      "logSHA256": "ba37f039b7f3c95348133af0b8076fd11c982390fb173073fa9ccb06a39b0732"
+    },
+    {
+      "name": "actual-node22-focused",
+      "command": "/tmp/calcumint-node22/node node_modules/vitest/vitest.mjs run [five calculus/history files]",
+      "result": "68passed on actualNode22.23.4",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-node22-focused-final.log",
+      "logSHA256": "c0620c223c8bfd0ce8219f2eac1c73384d407bac5629de08d9ea71c6f4995102"
+    },
+    {
+      "name": "actual-node22-browser-receipts",
+      "command": "/tmp/calcumint-node22/node node_modules/vitest/vitest.mjs run src/calculators/canonical-calculus-receipts.test.ts",
+      "result": "4passed on actualNode22.23.4",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-node22-receipts.log",
+      "logSHA256": "670baaa9a6bd65f2ef8440fcd1d35bfe9b125a602b6d92dfd9a9f3803387bd0f"
+    },
+    {
+      "name": "typed-private-browser",
+      "command": "node tests/canonical-calculus-workbench/browser.mjs",
+      "result": "20journeys/0issues;3operations\u00d73plans\u00d72widths plus2boundary/scenario/history/accessibility journeys; actual JSON downloads",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-browser-final.log",
+      "logSHA256": "feaad662f6a00698acf28047feaf5cf13f8dbfb22578efc388b1bfc853498745"
+    },
+    {
+      "name": "existing-canonical-inspector-browser",
+      "command": "node tests/canonical-acceptance-review/browser.mjs",
+      "result": "60journeys/0issues",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-inspector-browser.log",
+      "logSHA256": "0ada36873a917401224cd39f6bfa735b250b3c7493b54071425fa2ab00c6f2a4"
+    },
+    {
+      "name": "postgres17.6-postgrest-http-security",
+      "command": "NEXT_RUNTIME_ARTIFACTS=<isolated-dir> node tests/next-runtime/security.mjs",
+      "result": "8realHTTP/RLS checks + repository schema dependency preflight passed; production/GoTrue equivalenceUNKNOWN",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-security.log",
+      "logSHA256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "name": "transport-ci-runtime-guards",
+      "command": "node --test tests/next-runtime/cdp.test.mjs tests/next-runtime/navigation-ready.test.mjs tests/next-runtime/browser-fixture.test.mjs tests/windows-evidence.test.mjs tests/windows-browser-cleanup.test.mjs tests/ci-gate-recovery/*.test.mjs tests/blueprint-reconciliation/*.test.mjs",
+      "result": "77passed (20transport/cleanup +53CI +4runtime receipt guards)",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-transport-guards.log",
+      "logSHA256": "934c441edc5ec78d121f3b34a84cad80cd7dfffad93a1e17826a237e997f3fb9"
+    },
+    {
+      "name": "frozen-source-negative-and-isolation-guards",
+      "command": "node --test tests/canonical-calculus-workbench/frozen-source.test.mjs",
+      "result": "3passed",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-frozen-tests-final.log",
+      "logSHA256": "eb0e179c5c46f2575c859268c593d54e6824c26236ad9ac5d1e64b8374378180"
+    },
+    {
+      "name": "native-original-blueprint",
+      "command": "python3 scripts/reconcile-native-blueprint.py --check; python3 tests/blueprint-reconciliation/native.test.py",
+      "result": "CRC/SHA/1116paragraphs/33tables/540traces pass;5native parser tests pass",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-native.log",
+      "logSHA256": "59651fb21736a5fdc40bd786478a4d1f213a67c4974f629a5c79757593a1359d"
+    },
+    {
+      "name": "historical-canonical-artifact-node24",
+      "command": "node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check",
+      "result": "full frozen artifact byte comparison passed Node24.19.0",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-frozen-check-final.log",
+      "logSHA256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    {
+      "name": "historical-canonical-artifact-node22",
+      "command": "/tmp/calcumint-node22/node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check",
+      "result": "full frozen artifact byte comparison passed Node22.23.4",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-node22-frozen.log",
+      "logSHA256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    {
+      "name": "launch-guards",
+      "command": "npm run test:launch",
+      "result": "45passed; not launch authorization",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-launch.log",
+      "logSHA256": "a81a3d118dafca598d3906c5d195f10e13e3badec0d712e1fa0b682be420b4ed"
+    },
+    {
+      "name": "certification-guards",
+      "command": "npm run test:certification",
+      "result": "15passed; not calculator certification",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-certification.log",
+      "logSHA256": "a27430f834ba43422e40ffcfebe1310fae8c8f0eded875ba87546dff0b471826"
+    },
+    {
+      "name": "webpack-next-build",
+      "command": "npm run build",
+      "result": "next build --webpack passed;37static pages",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-build-final.log",
+      "logSHA256": "0c32a42f71458077ea84ded68f0dae8a244b7d90e7016de09ded1d344a658875"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "result": "passed/exit0",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-typecheck-final.log",
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "result": "passed/0errors;28existing warnings",
+      "localEvidenceLog": "/workspace/work/canonical-calculus-lint-final.log",
+      "logSHA256": "b1aaaf77c62edf8a9b9cac2a1c944478943362898a55c2cd5a11b9ea286c28aa"
+    }
+  ],
+  "actualBrowserArtifacts": [
+    "browser-acceptance.json",
+    "inspector-regression.json",
+    "security-acceptance.json"
+  ],
+  "limitations": [
+    "Private loopback/synthetic plan fixture; no real GoTrue acceptance.",
+    "Disposable PostgreSQL/PostgREST uses explicit platform auth/ACL models and proposals; production equivalence UNKNOWN.",
+    "Responsive/labels/keyboard checks do not establish complete WCAG/physical-device/screen-reader acceptance.",
+    "37historical authored-fixture mismatches/16identities remain recorded, not automatically classified as mathematical defects."
+  ],
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "sourceBindingSHA256": "3c8122e0726edd50a6cc254b79badc40046adf178ab629f4670de29057585b06",
+  "frozenBrowserReceiptSHA256": {
+    "docs/canonical-calculus/receipts/derivative-legacy-v2.json": "f0c1f75584d1163965a152c71d0164dc1ecc16a72aae483c98ec40d26b430281",
+    "docs/canonical-calculus/receipts/limit-v3.json": "25dd3a7754901ee639ee886ed159c9959b169fddba2dafe4465a22446bdd7910",
+    "docs/canonical-calculus/receipts/derivative-v3.json": "836b1829d44e21d6e5c92be754e36ee0fee1ee14eed296a44de602d00603fa81",
+    "docs/canonical-calculus/receipts/integral-v3.json": "0e545525399073cf723821d7ca9ab58aa0cba18fbc1c192b74856495c0ed040b"
+  },
+  "releaseHold": true
+}

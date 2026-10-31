@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "contractId": "private.canonical-calculus.248",
+  "source": {
+    "baselineSHA": "50f307c67e3a5e5d289d2b83e2a285029151f866",
+    "nativeBlueprintSHA256": "d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455",
+    "engineId": "private.canonical-calculus",
+    "technicalRevision": 3,
+    "presentationRevision": 1,
+    "files": {
+      "src/calculators/canonical-calculus.ts": "069be29c14c2a7ef3f3b98c87f7c6425096b59cd0c4e1f58504c948b708e0c6d",
+      "src/calculators/canonical-calculus-workflow.ts": "6b4ac2f65fffbf6f3bc731c768a0726250a299c8a8ca710685396a01bf4de24c",
+      "src/lib/canonical-calculus-history.ts": "aa0aa1eb7f82cc41b59b8edbcb75b26348e8364c1a08f38a009d01a19ca9f58b",
+      "src/components/canonical-calculus-workbench.tsx": "39c381c1453914807fe0aefc7d59f4a9775350764f6ba4b967b59be752e0fe7c",
+      "src/calculators/private-calculus-successor.ts": "a95cc6dce078040a3257d98825b0aefa81e681206585e3c04f25667044d8b895",
+      "src/calculators/advanced-math/expression-engine.ts": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24",
+      "src/calculators/exact-rational.ts": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a",
+      "src/calculators/completion-contracts.ts": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa",
+      "src/lib/calculation-snapshot.ts": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c",
+      "src/lib/entitlements.ts": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731",
+      "src/components/final-calculator-renderer.tsx": "95acb3ca32311c3e843371e2e39c3f74d311d99997706d866b1629957796e4b6",
+      "src/components/result-series-panel.tsx": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b",
+      "src/calculators/final-framework/types.ts": "b32ace6cd558c56d3036661fb00ec1b0692c93724d3a185fe9fd79136827f8e1",
+      "package-lock.json": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+    },
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  },
+  "governance": {
+    "relatedCatalogId": 248,
+    "engineId": "private.canonical-calculus",
+    "technicalRevision": 3,
+    "presentationRevision": 1,
+    "engineeringContract": "DEFINED_AND_TESTED_FOR_DECLARED_DOMAIN",
+    "canonicalAccepted": false,
+    "canonicalMappingApproved": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  },
+  "calculation": {
+    "calculatorSlug": "private-canonical-calculus-limit",
+    "calculatorVersion": 3,
+    "input": {
+      "calculation": {
+        "operation": "limit",
+        "expression": "(x^2-1)/(x-1)",
+        "x": "1",
+        "direction": "both"
+      },
+      "plot": {
+        "enabled": true,
+        "radius": "1",
+        "samples": 17
+      }
+    },
+    "output": {
+      "core": {
+        "classification": "finite",
+        "value": "2",
+        "exact": {
+          "numerator": "2",
+          "denominator": "1"
+        },
+        "arithmetic": "exact-rational",
+        "method": "Exact derivative-order cancellation; factorial factors cancel",
+        "warning": "Exact relative to supplied decimal literals; no display rounding."
+      },
+      "structured": {
+        "primaryResult": {
+          "id": "calculus-result",
+          "label": "Requested both limit",
+          "value": "2"
+        },
+        "metrics": [
+          {
+            "id": "classification",
+            "label": "Mathematical outcome",
+            "value": "finite"
+          },
+          {
+            "id": "arithmetic",
+            "label": "Arithmetic method",
+            "value": "exact-rational"
+          }
+        ],
+        "series": [
+          {
+            "id": "segment-0",
+            "label": "limit engine outcomes — segment1",
+            "points": [
+              {
+                "x": "0",
+                "y": 1,
+                "label": "1"
+              },
+              {
+                "x": "0.125",
+                "y": 1.125,
+                "label": "1.125"
+              },
+              {
+                "x": "0.25",
+                "y": 1.25,
+                "label": "1.25"
+              },
+              {
+                "x": "0.375",
+                "y": 1.375,
+                "label": "1.375"
+              },
+              {
+                "x": "0.5",
+                "y": 1.5,
+                "label": "1.5"
+              },
+              {
+                "x": "0.625",
+                "y": 1.625,
+                "label": "1.625"
+              },
+              {
+                "x": "0.75",
+                "y": 1.75,
+                "label": "1.75"
+              },
+              {
+                "x": "0.875",
+                "y": 1.875,
+                "label": "1.875"
+              },
+              {
+                "x": "1",
+                "y": 2,
+                "label": "2"
+              },
+              {
+                "x": "1.125",
+                "y": 2.125,
+                "label": "2.125"
+              },
+              {
+                "x": "1.25",
+                "y": 2.25,
+                "label": "2.25"
+              },
+              {
+                "x": "1.375",
+                "y": 2.375,
+                "label": "2.375"
+              },
+              {
+                "x": "1.5",
+                "y": 2.5,
+                "label": "2.5"
+              },
+              {
+                "x": "1.625",
+                "y": 2.625,
+                "label": "2.625"
+              },
+              {
+                "x": "1.75",
+                "y": 2.75,
+                "label": "2.75"
+              },
+              {
+                "x": "1.875",
+                "y": 2.875,
+                "label": "2.875"
+              },
+              {
+                "x": "2",
+                "y": 3,
+                "label": "3"
+              }
+            ]
+          }
+        ],
+        "warnings": [
+          "Exact relative to supplied decimal literals; no display rounding.",
+          "Private engineering contract; no canonical acceptance, certification or publication.",
+          "x and function values are dimensionless; trigonometric arguments are radians.",
+          "Plot/table rows are actual engine operation outcomes at each coordinate, not a sampled proof or a graph of a different formula.",
+          "Chart numbers are display approximations. Stored engine strings in the table and headline are authoritative for this snapshot; analytic results retain binary64 precision."
+        ],
+        "scenarioVariables": [
+          "expression",
+          "x",
+          "direction"
+        ],
+        "assumptions": [
+          "Expression and coordinates are supplied mathematical inputs; no physical, clinical, financial or jurisdictional applicability is inferred."
+        ],
+        "methodology": "Exact rational results use terminating decimal or reduced fraction strings; no invented rounding. Analytic fallback is explicitly binary64. Rational functions for exact derivatives and finite/directional/removable/pole limits; original derivative holes retained. Polynomial-only oriented integrals; no variable denominators/cancelled-hole integration. Nonrational derivative/continuous-limit methods delegate immutablev2. General transcendental removable limits, boundary analytic limits and non-polynomial integration remain unsupported engineering scope. No sampled proof, certified error bound, canonical acceptance, certification or publication.",
+        "sources": [
+          {
+            "label": "Polynomial power/quotient rules and exact vanishing-order theorem; independent implementation goldens."
+          },
+          {
+            "label": "Original CalcuMint Master Blueprint, SHA256 d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455"
+          }
+        ]
+      },
+      "rows": [
+        {
+          "id": "engine-point-0",
+          "coordinate": "0",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1",
+            "exact": {
+              "numerator": "1",
+              "denominator": "1"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-1",
+          "coordinate": "0.125",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.125",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.125",
+            "exact": {
+              "numerator": "9",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.125,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-2",
+          "coordinate": "0.25",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.25",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.25",
+            "exact": {
+              "numerator": "5",
+              "denominator": "4"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.25,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-3",
+          "coordinate": "0.375",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.375",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.375",
+            "exact": {
+              "numerator": "11",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.375,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-4",
+          "coordinate": "0.5",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.5",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.5",
+            "exact": {
+              "numerator": "3",
+              "denominator": "2"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.5,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-5",
+          "coordinate": "0.625",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.625",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.625",
+            "exact": {
+              "numerator": "13",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.625,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-6",
+          "coordinate": "0.75",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.75",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.75",
+            "exact": {
+              "numerator": "7",
+              "denominator": "4"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.75,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-7",
+          "coordinate": "0.875",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "0.875",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "1.875",
+            "exact": {
+              "numerator": "15",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 1.875,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-8",
+          "coordinate": "1",
+          "anchor": true,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2",
+            "exact": {
+              "numerator": "2",
+              "denominator": "1"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-9",
+          "coordinate": "1.125",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.125",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.125",
+            "exact": {
+              "numerator": "17",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.125,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-10",
+          "coordinate": "1.25",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.25",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.25",
+            "exact": {
+              "numerator": "9",
+              "denominator": "4"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.25,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-11",
+          "coordinate": "1.375",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.375",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.375",
+            "exact": {
+              "numerator": "19",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.375,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-12",
+          "coordinate": "1.5",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.5",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.5",
+            "exact": {
+              "numerator": "5",
+              "denominator": "2"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.5,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-13",
+          "coordinate": "1.625",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.625",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.625",
+            "exact": {
+              "numerator": "21",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.625,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-14",
+          "coordinate": "1.75",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.75",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.75",
+            "exact": {
+              "numerator": "11",
+              "denominator": "4"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.75,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-15",
+          "coordinate": "1.875",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "1.875",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "2.875",
+            "exact": {
+              "numerator": "23",
+              "denominator": "8"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 2.875,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        },
+        {
+          "id": "engine-point-16",
+          "coordinate": "2",
+          "anchor": false,
+          "input": {
+            "operation": "limit",
+            "expression": "(x^2-1)/(x-1)",
+            "x": "2",
+            "direction": "both"
+          },
+          "output": {
+            "classification": "finite",
+            "value": "3",
+            "exact": {
+              "numerator": "3",
+              "denominator": "1"
+            },
+            "arithmetic": "exact-rational",
+            "method": "Exact derivative-order cancellation; factorial factors cancel",
+            "warning": "Exact relative to supplied decimal literals; no display rounding."
+          },
+          "plotValue": 3,
+          "status": "ok",
+          "detail": "Exact relative to supplied decimal literals; no display rounding."
+        }
+      ],
+      "reconciliation": {
+        "primary": "2",
+        "anchor": "2",
+        "rule": "Exact primary/anchor strings and classification agree"
+      },
+      "engineContract": {
+        "relatedCatalogIds": [
+          246,
+          247,
+          248
+        ],
+        "engineId": "private.canonical-calculus",
+        "version": 3,
+        "inputs": "Strict operation/expression/decimal-coordinate schemas; limit direction explicit. Decimal coefficients<=64digits/exponents±256; coordinates±1000000/18decimal places; each intermediate polynomial degree/power<=32; coefficient4096bits.",
+        "rounding": "Exact rational results use terminating decimal or reduced fraction strings; no invented rounding. Analytic fallback is explicitly binary64.",
+        "domain": "Rational functions for exact derivatives and finite/directional/removable/pole limits; original derivative holes retained. Polynomial-only oriented integrals; no variable denominators/cancelled-hole integration. Nonrational derivative/continuous-limit methods delegate immutablev2.",
+        "sources": "Algebraic differentiation and polynomial power rule; exact vanishing-order limit theorem. Internal derivations and independently authored exact goldens; not provider/regulatory rules.",
+        "limitations": "General transcendental removable limits, boundary analytic limits and non-polynomial integration remain unsupported engineering scope. No sampled proof, certified error bound, canonical acceptance, certification or publication."
+      }
+    }
+  }
+}
