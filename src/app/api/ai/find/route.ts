@@ -4,28 +4,32 @@ import { deterministicCalculatorSearch } from "@/lib/ai/catalog";
 import { getAiProvider } from "@/lib/ai/provider";
 import { consumeAiAccess, finishAiUsage, getAiSession } from "@/lib/ai/access";
 import { findCalculatorWithAi } from "@/lib/ai/service";
-import { getPublishedCalculatorSlugs } from "@/lib/publication-manifest";
+import { getPublicationSnapshot } from "@/lib/publication-manifest";
+import { aiErrorResponse, onceAiFinalizer, parseAiRequest } from "@/lib/ai/request-errors";
 
 const requestSchema = z.object({ query: z.string().trim().min(2).max(500) });
 
 export async function POST(request: Request) {
   try {
-    const { query } = requestSchema.parse(await request.json());
-    const publishedSlugs = await getPublishedCalculatorSlugs();
-    if (!getAiProvider()) return NextResponse.json({ recommendations: deterministicCalculatorSearch(query, publishedSlugs), usedAi: false });
+    const { query } = await parseAiRequest(request, requestSchema);
+    const authority = await getPublicationSnapshot();
+    if (authority.state !== "available") return NextResponse.json({ error: "Calculator availability is temporarily unavailable. Please try again." }, { status: 503 });
+    const fallback = (warning?: string) => NextResponse.json({ recommendations: deterministicCalculatorSearch(query, authority.slugs), usedAi: false, ...(warning ? { warning } : {}) });
+    if (!getAiProvider()) return fallback();
     const session = await getAiSession();
-    if (!session) return NextResponse.json({ recommendations: deterministicCalculatorSearch(query, publishedSlugs), usedAi: false });
+    if (!session) return fallback();
 
     const access = await consumeAiAccess("finder");
+    const finalize = onceAiFinalizer<Parameters<typeof finishAiUsage>[1]>((usage, succeeded) => finishAiUsage(access, usage, succeeded));
     try {
       const result = await findCalculatorWithAi(query);
-      await finishAiUsage(access, result.usage, true);
+      await finalize(result.usage, true);
       return NextResponse.json({ recommendations: result.recommendations, usedAi: result.usedAi });
-    } catch (error) {
-      await finishAiUsage(access, undefined, false);
-      return NextResponse.json({ recommendations: deterministicCalculatorSearch(query, publishedSlugs), usedAi: false, warning: error instanceof Error ? error.message : "AI unavailable" });
+    } catch {
+      try { await finalize(undefined, false); } catch { /* Keep accounting diagnostics private. */ }
+      return fallback("AI ranking is temporarily unavailable. Showing verified catalog matches.");
     }
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Invalid request" }, { status: 400 });
+    return aiErrorResponse(error);
   }
 }

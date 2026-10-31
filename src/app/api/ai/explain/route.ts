@@ -1,3 +1,4 @@
+import { aiErrorResponse, onceAiFinalizer, parseAiRequest } from "@/lib/ai/request-errors";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { consumeAiAccess, finishAiUsage } from "@/lib/ai/access";
@@ -14,17 +15,18 @@ const requestSchema = z.object({
 
 export async function POST(request: Request) {
   let access: Awaited<ReturnType<typeof consumeAiAccess>> | null = null;
+  const finalize = onceAiFinalizer<Parameters<typeof finishAiUsage>[1]>(async (usage, succeeded) => {
+    if (access) await finishAiUsage(access, usage, succeeded);
+  });
   try {
-    const body = requestSchema.parse(await request.json());
+    const body = await parseAiRequest(request, requestSchema);
     const feature = body.scenarioQuestion ? "scenario" : "explain";
     access = await consumeAiAccess(feature);
     const explanation = await explainDeterministicResult(body);
-    await finishAiUsage(access, explanation.usage, true);
+    await finalize(explanation.usage, true);
     return NextResponse.json({ summary: explanation.summary, keyPoints: explanation.keyPoints, caveat: explanation.caveat });
   } catch (error) {
-    if (access) await finishAiUsage(access, undefined, false);
-    const message = error instanceof Error ? error.message : "AI explanation failed";
-    const status = /plan required|Sign in|limit/i.test(message) ? 403 : 400;
-    return NextResponse.json({ error: message }, { status });
+    try { if (access) await finalize(undefined, false); } catch { /* Keep accounting diagnostics private. */ }
+    return aiErrorResponse(error);
   }
 }
