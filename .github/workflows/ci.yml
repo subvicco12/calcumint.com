@@ -128,6 +128,8 @@ jobs:
           node tests/remaining-authority-review/browser.mjs
         env:
           REMAINING_SIX_EVIDENCE: ${{ runner.temp }}/remaining-six-source-contracts
+      - name: Fetch immutable native Blueprint candidate source
+        run: git fetch --no-tags --depth=1 origin 50f307c67e3a5e5d289d2b83e2a285029151f866
       - name: Original Blueprint scope and exact runtime receipts
         run: |
           python3 scripts/reconcile-native-blueprint.py --check
