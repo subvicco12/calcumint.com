@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "requirementsSHA256": "17a5b6d43e0d365043bdad9bd9e9ecee0a8bc0b74a2d8489269def1fe05cf0ae",
+  "sourceHashes": {
+    "docs/full-product-batch14/contract-evidence.json": "47dea34cc4a753ca43d616001c9beb73f4573330a925fa43f3dc560159476424",
+    "docs/full-product-batch14/requirements-540.json": "c11d4728c6b4439b45856951a93ed0302c149ede3d3b21c88dd24d19b32d0555",
+    "docs/software-closure/requirements-540.json": "454d29b6c51c6eef2c35e21a86cc65c9376b47d8434ff142bc24d92e3e224559",
+    "docs/validation-scale/evidence-540.json": "fc619d320732f0358f240b4aa368d95a049006b052261f5bd6cadc2d71a9283c",
+    "docs/blueprint-reconciliation/blueprint-to-540.json": "24aa0e34882bcc947ba9841e698ec4bf0e95335ccd082f70f3798f8f5db772fc",
+    "src/calculators/canonical-contract-vectors.ts": "5b6c2d87c5c077917e1d6cf8d649b7bbe2b022a613b9b9b446dd6be3398b47ae",
+    "src/calculators/scaled-contract-vectors.ts": "9f883b444a25ab2b4fa6529dd2c51078ac53dc420f8111206ce4c95de5afa37b",
+    "src/calculators/canonical-contract-validation.ts": "e76fcfe82952e2da74dc957df9ff65913e2ef81578edf0e17066e91e385174d1",
+    "src/calculators/scaled-contract-validation.ts": "f9a82e1bd659e6a09b5642c681d63be26e86f1d024fb682945f00640dc144566",
+    "src/lib/registered-snapshot-replay.test.ts": "6de801891c58415952d7d2d631532022007649d247b6ec93cbe84d79f3361bb8",
+    "src/lib/batch16-requirement-evidence.ts": "5d20294f99fcd10b23bf9e9a2dfc2b36384ac468cfadefe8f5a10d94bb99cbb1",
+    "scripts/batch16-requirement-evidence.ts": "b7754ad0237f94a6d9c498dcaf0bb75f367da6d57c1551285976763cf93f9c56"
+  },
+  "summary": {
+    "identities": 540,
+    "reviewRequired": 497,
+    "authorityBlocked": 43,
+    "exactLiveAdapters": 79,
+    "existingWitnessChecks": 1106,
+    "newIndependentWitnesses": 0,
+    "canonicalAccepted": 0,
+    "statuses": {
+      "VERIFIED": 553,
+      "PARTIAL": 1907,
+      "BLOCKED": 2438,
+      "UNKNOWN": 9395
+    }
+  },
+  "baseline": "1f1f32797b99f0760aeb55b5ff112ad6a8c50383",
+  "baselineHostedCI": "41232409178 FAILED; repair path, not a green baseline",
+  "meaning": "Exact per-requirement classification and live rerun of existing witnesses; zero new canonical acceptance or independent witnesses.",
+  "releaseHold": true
+}
