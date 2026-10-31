@@ -1,0 +1,162 @@
+{
+  "task": "DB-FULL-CAPTURE-TOOLING",
+  "status": "ENGINEERING_COMPLETE_AUTHENTIC_RECONCILIATION_BLOCKED",
+  "baseline": "36a90997d0c64f06ce6a7a86caa68ca177119eb5",
+  "recordedStartUTC": "2026-10-31T20:25:09+00:00",
+  "recordedEndUTC": "2026-10-31T20:36:22.955227+00:00",
+  "recordedElapsedSeconds": 673.955227,
+  "timingMeaning": "First explicit UTC observation through final verification/documentation, including intervening waits. Preliminary inspection before recordedStartUTC is untimed, so this is a measured lower bound, not invented human hours. Parent full-session start is 2026-10-31T20:22:48Z.",
+  "testScope": "14 scoped Node tests: new capture tooling + preserved Batch16 strict seven-table CLI compatibility; genuine existing isolated full-schema PostgreSQL/GoTrue fixture. No browser/new build/full unit suite.",
+  "offlineCommand": "/tmp/calcumint-node22/node --test tests/batch17-capture/capture.test.mjs tests/batch16-auth/schema-comparison.test.mjs",
+  "offlinePassed": 14,
+  "offlineFailed": 0,
+  "offlineTapSha256": "f9c92c5959747011e407ff79723034539af936b42559f13d5bd6699e2ed98e74",
+  "postgresCommand": "CAPTURE_ARTIFACTS=/tmp/batch17-capture-pg /tmp/calcumint-node22/node tests/batch17-capture/postgres.mjs",
+  "postgres": {
+    "task": "DB-FULL-CAPTURE-TOOLING",
+    "startUTC": "2026-10-31T20:35:30.383Z",
+    "endUTC": "2026-10-31T20:35:42.355Z",
+    "elapsedSeconds": 11.972,
+    "scope": "Genuine local PostgreSQL17.6, GoTrue75-migration full repository model; metadata SELECT only; explicit isolated index mutation/restoration, column ACL grant/revoke PG17 membership SET permission change/revoke, schema/sequence USAGE drift and unsupported-view rejection",
+    "counts": {
+      "roles": 20,
+      "types": 9,
+      "columns": 630,
+      "indexes": 234,
+      "schemas": 2,
+      "policies": 86,
+      "triggers": 435,
+      "functions": 92,
+      "relations": 68,
+      "sequences": 8,
+      "constraints": 321,
+      "effectLedger": 0,
+      "migrationLedger": 0,
+      "roleMemberships": 3,
+      "defaultPrivileges": 2,
+      "unsupportedObjects": 0,
+      "authMigrationLedger": 75,
+      "effectiveTableGrants": 1428,
+      "effectiveColumnGrants": 7560,
+      "effectiveSchemaGrants": 12,
+      "effectiveFunctionGrants": 276,
+      "effectiveSequenceGrants": 72
+    },
+    "baseline": {
+      "equal": false,
+      "catalogMatches": true,
+      "blockedSections": [
+        "effectLedger",
+        "migrationLedger"
+      ],
+      "differentSections": [],
+      "captureProvenanceVerified": false,
+      "adoptionAuthorized": false,
+      "productionEquivalence": "UNKNOWN"
+    },
+    "changed": {
+      "equal": false,
+      "catalogMatches": false,
+      "blockedSections": [
+        "effectLedger",
+        "migrationLedger"
+      ],
+      "differentSections": [
+        "indexes"
+      ],
+      "captureProvenanceVerified": false,
+      "adoptionAuthorized": false,
+      "productionEquivalence": "UNKNOWN"
+    },
+    "columnChanged": {
+      "equal": false,
+      "catalogMatches": false,
+      "blockedSections": [
+        "effectLedger",
+        "migrationLedger"
+      ],
+      "differentSections": [
+        "columns",
+        "effectiveColumnGrants"
+      ],
+      "captureProvenanceVerified": false,
+      "adoptionAuthorized": false,
+      "productionEquivalence": "UNKNOWN"
+    },
+    "membershipChanged": {
+      "equal": false,
+      "catalogMatches": false,
+      "blockedSections": [
+        "effectLedger",
+        "migrationLedger"
+      ],
+      "differentSections": [
+        "roleMemberships"
+      ],
+      "captureProvenanceVerified": false,
+      "adoptionAuthorized": false,
+      "productionEquivalence": "UNKNOWN"
+    },
+    "schemaChanged": {
+      "equal": false,
+      "catalogMatches": false,
+      "blockedSections": [
+        "effectLedger",
+        "migrationLedger"
+      ],
+      "differentSections": [
+        "effectiveSchemaGrants",
+        "schemas"
+      ],
+      "captureProvenanceVerified": false,
+      "adoptionAuthorized": false,
+      "productionEquivalence": "UNKNOWN"
+    },
+    "sequenceChanged": {
+      "equal": false,
+      "catalogMatches": false,
+      "blockedSections": [
+        "effectLedger",
+        "migrationLedger"
+      ],
+      "differentSections": [
+        "sequences",
+        "effectiveSequenceGrants"
+      ],
+      "captureProvenanceVerified": false,
+      "adoptionAuthorized": false,
+      "productionEquivalence": "UNKNOWN"
+    },
+    "unsupportedPresentBlocked": true,
+    "cleanup": "fixture close completed",
+    "hostedCaptureAvailable": false,
+    "adoptionAuthorized": false
+  },
+  "artifactHashes": {
+    "tests/batch17-capture/export.sql": "3703d7625a8863ca622090e1c396c97dcc733769afb95ea681cdadac15977d8e",
+    "tests/batch17-capture/descriptor.mjs": "0a71666f8e899b133231e8fc53a08598d1e0469b257b5fd0418c7d6c8de48184",
+    "tests/batch17-capture/capture.test.mjs": "48e5f9d0054cf17db4ad6e2de7ec9afac1882e5eeb6966cc2f119d83520b819c",
+    "tests/batch17-capture/cli.mjs": "0d0ce8fd303b21a3235031d094ddfff16d266d6a9706732268a45b011a11d242",
+    "tests/batch17-capture/postgres.mjs": "5bed29c5e7406979603365ccbd43a4687b5968fdcb3768a4fd0605d033c0f650",
+    "docs/full-product-batch17/capture-tooling.md": "9bc492f4fb318161341fb0a19f70c2b573de0e08d803a71539be97f142c5b9ea"
+  },
+  "localCaptureHashes": {
+    "before.json": "260b05b15cd35577532efb4be51f4fccb57f6f1ecd9078dc511bd64f62d3b380",
+    "after.json": "2ec992dfeb14cf582612c3432a1c1e12fbd10d767f312dcbef77c7fdad8a0803",
+    "restored.json": "260b05b15cd35577532efb4be51f4fccb57f6f1ecd9078dc511bd64f62d3b380"
+  },
+  "observedAndCorrectedFailures": [
+    "Initial missing implementation TDD failure; later missing reconcile and metadata-section tests failed before implementation.",
+    "Default sandbox Node subprocess spawn returned EPERM; approved require_escalated runs exercised actual CLI commands.",
+    "First PostgreSQL export found ambiguous text/char concatenation; explicit cast corrected, fixture closed.",
+    "Review example profiles.email does not exist in declared model; genuine ACL regression uses actual profiles.plan.",
+    "Schema-grant regression expected section order corrected to declared deterministic order; preceding fixture closed.",
+    "Malformed ledger attachment test failed before validation-before-write fix."
+  ],
+  "remainingBlocks": [
+    "Authorized authentic hosted capture unavailable; no hosted identity or DB URL guessed.",
+    "Historical migration/effect ledgers UNKNOWN; no source-file execution history invented.",
+    "Adoption and production equivalence remain blocked/UNKNOWN."
+  ],
+  "adoptionAuthorized": false
+}

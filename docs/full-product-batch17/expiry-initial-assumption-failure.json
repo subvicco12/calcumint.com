@@ -1,0 +1,49 @@
+{
+  "message": "Expected values to be strictly equal:\n\n200 !== 401\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n200 !== 401\n\n    at file:///workspace/work/batch17-expiry/tests/batch17-expiry/acceptance.mjs:57:55\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)",
+  "checks": [
+    "Global logout denies refresh while unchanged genuine access JWT still works before exp"
+  ],
+  "observations": [
+    {
+      "label": "before-expiry",
+      "at": "2026-10-31T20:27:16.085Z",
+      "tokenSha256": "e866a9b58775fe288dc4a025d309838e37a89a57ac59876c1911d93eae5f4521",
+      "status": 200,
+      "body": [
+        {
+          "id": "6deced9a-8dba-47cc-ada0-1e89886bcde8"
+        }
+      ]
+    },
+    {
+      "label": "immediate-post-logout",
+      "at": "2026-10-31T20:27:16.396Z",
+      "tokenSha256": "96d60fa81ef590a8863722ccabaa0834f7fa471a6284882a2e8c315efa14cb45",
+      "status": 200,
+      "body": [
+        {
+          "id": "de147c9c-2700-4975-aee2-838fffa32e5c"
+        }
+      ]
+    },
+    {
+      "label": "logout-refresh-denied",
+      "name": "AuthApiError",
+      "status": 400,
+      "code": "refresh_token_not_found",
+      "message": "Invalid Refresh Token: Refresh Token Not Found"
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:27:33.009Z",
+      "tokenSha256": "e866a9b58775fe288dc4a025d309838e37a89a57ac59876c1911d93eae5f4521",
+      "status": 200,
+      "body": [
+        {
+          "id": "6deced9a-8dba-47cc-ada0-1e89886bcde8"
+        }
+      ]
+    }
+  ]
+}

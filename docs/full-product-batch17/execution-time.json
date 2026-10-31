@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "sessionStartUTC": "2026-10-31T20:22:48+00:00",
+  "validatedEvidenceCheckpointUTC": "2026-10-31T20:58:55.449844+00:00",
+  "wallElapsedSeconds": 2167.45,
+  "wallElapsedHours": 0.6021,
+  "measurementMeaning": "Actual session wall-clock including parallel work, tests, waits and coordination through evidence assembly. Not human-equivalent or billing-grade labor hours. Final delivery overhead recorded separately.",
+  "originalEngineeringBudgetHours": [
+    12,
+    20
+  ],
+  "laneRecordedLowerBounds": [
+    {
+      "task": "BUS-ISSUANCE",
+      "originalMeasuredSeconds": 258,
+      "verifierFollowupMeasuredSeconds": 56,
+      "untimed": "Early investigation and recorder follow-up were not separately metered; covered by overall wall time."
+    },
+    {
+      "task": "DB-FULL-CAPTURE-TOOLING",
+      "recordedElapsedSeconds": 673.955227,
+      "untimed": "Preliminary source inspection before20:25:09Z."
+    },
+    {
+      "task": "AUTH-EXPIRY-BOUNDARY",
+      "originalMeasuredSeconds": 316,
+      "freshIntegratedCampaignSeconds": 49.596,
+      "freshNaturalWaitSeconds": 43.917,
+      "untimed": "Later transport-bound follow-up not separately labor-metered; covered by overall wall time."
+    }
+  ],
+  "parallelWindowsOverlap": true,
+  "doNotSumWithParentElapsed": true
+}

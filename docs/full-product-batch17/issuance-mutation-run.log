@@ -1,0 +1,22 @@
+PASS Unchanged proposal guard rejects execution with no function installed
+PASS Foreign owner, cross-tenant target, manager, Free admin and invalid invitation denied
+PASS Stored fields preserve normalized email, caller actor, role and exact 604800-second lifetime bounded by database clock
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+2 !== 1
+
+    at file:///workspace/work/batch17-issuance/tests/batch17-issuance/acceptance.mjs:65:44
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

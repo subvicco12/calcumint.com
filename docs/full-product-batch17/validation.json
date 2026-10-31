@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "pr": 1506,
+    "sha": "36a90997d0c64f06ce6a7a86caa68ca177119eb5",
+    "ciRun": 41236251352,
+    "conclusion": "success"
+  },
+  "runtime": "Node22.23.4",
+  "checks": [
+    {
+      "check": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 27.17,
+      "log": "/workspace/work/batch17-lint.log"
+    },
+    {
+      "check": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 5.01,
+      "log": "/workspace/work/batch17-typecheck.log"
+    },
+    {
+      "check": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 143.1,
+      "log": "/workspace/work/batch17-unit.log"
+    },
+    {
+      "check": "launch",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "exitCode": 0,
+      "seconds": 1.99,
+      "log": "/workspace/work/batch17-launch.log"
+    },
+    {
+      "check": "certification",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "exitCode": 0,
+      "seconds": 1.93,
+      "log": "/workspace/work/batch17-certification.log"
+    },
+    {
+      "check": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 29.52,
+      "log": "/workspace/work/batch17-build.log"
+    }
+  ],
+  "unitSummary": {
+    "passed": 6603,
+    "existingSkipped": 4,
+    "passedFiles": 832,
+    "skippedFiles": 2
+  },
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 28
+  },
+  "launchGuards": 45,
+  "certificationGuards": 15,
+  "finalHistoricalCiAndOfflineGuards": {
+    "passed": 2456,
+    "log": "/workspace/work/batch17-final-guards.log"
+  },
+  "newTaskOfflineSuite": {
+    "passed": 33,
+    "log": "/workspace/work/batch17-final-task-tests.log"
+  },
+  "sdkTransport": {
+    "passed": 3,
+    "log": "/workspace/work/batch17-transport.log"
+  },
+  "freshTaskCampaigns": {
+    "issuanceGroups": 10,
+    "captureRelations": 68,
+    "captureDriftRegressions": [
+      "indexes",
+      "columnACL/effectiveGrants",
+      "PG17roleSET",
+      "schemaUSAGE",
+      "sequenceUSAGE"
+    ],
+    "unsupportedViewRejected": true,
+    "expiryGroups": 3,
+    "expirySeconds": 15,
+    "postgrestAllowedSkewSeconds": 30,
+    "rejectionAllowanceSeconds": 5,
+    "expiryElapsedMs": 49596,
+    "naturalWaitMs": 43917,
+    "fixturesCleaned": true,
+    "receipts": [
+      "integrated-issuance-receipt.json",
+      "integrated-capture-receipt.json",
+      "integrated-expiry-receipt.json"
+    ]
+  },
+  "sharedFixtureRegressions": {
+    "genuineFullModelGroups": 29,
+    "nativeNextAccountGroups": 10,
+    "browserErrors": [],
+    "scope": "Existing default-lifetime behaviors rerun because optional shared fixture configuration changed; no production/app login policy changed."
+  },
+  "sourceHashes": {
+    ".github/workflows/ci.yml": "224d175f3e8ccfec64db3f0775f512ef0a58c2b71fdb5323408a8a31c641aa97",
+    "tests/batch17-capture/capture.test.mjs": "48e5f9d0054cf17db4ad6e2de7ec9afac1882e5eeb6966cc2f119d83520b819c",
+    "tests/batch17-capture/cli.mjs": "0d0ce8fd303b21a3235031d094ddfff16d266d6a9706732268a45b011a11d242",
+    "tests/batch17-capture/descriptor.mjs": "0a71666f8e899b133231e8fc53a08598d1e0469b257b5fd0418c7d6c8de48184",
+    "tests/batch17-capture/export.sql": "3703d7625a8863ca622090e1c396c97dcc733769afb95ea681cdadac15977d8e",
+    "tests/batch17-capture/postgres.mjs": "5bed29c5e7406979603365ccbd43a4687b5968fdcb3768a4fd0605d033c0f650",
+    "tests/batch17-expiry/README.md": "7aac3654dbfeecd3c08c148ee442fba47264e1d44c0b9b09f59f9c76c2f489a5",
+    "tests/batch17-expiry/acceptance.mjs": "70a80c417a798a34df06f9a1661636cc0700c8b0697d81ccb5d83bf6152c965b",
+    "tests/batch17-expiry/bounded-fetch.mjs": "879d646f18ee56fa3b9e9893811d7256e496a2da174afbed0c5138051f4d727b",
+    "tests/batch17-expiry/bounded-fetch.test.mjs": "8a961ccfec1b3eead3fabfb0393873c51442d00419d85d73946ad48f86a7c8dd",
+    "tests/batch17-expiry/config.test.mjs": "2fd3c04e9e9b47cc1a1f14f268a320cf86737e56b093739d116b7332efec6034",
+    "tests/batch17-issuance/acceptance.mjs": "0dc45b53ddbe9a0a5f94445b8d7429c6b86d8033b400d922b3eb62b73ad26417",
+    "tests/batch17-issuance/artifacts.mjs": "c394eefe17b4f990c5a0a58dce690f831aa74ca2ea2bdeb8f192b5fa6b39f2c1",
+    "tests/batch17-issuance/artifacts.test.mjs": "f29e49655298e7111975903a9b923b88e19c870d563b0b4976c9edb60c19c8a3",
+    "tests/batch17-issuance/review-only-issuance.sql": "728a02402c7b4398ce58cfbb8b9100c19c12d23790a80e6a08699df43d4e1300",
+    "tests/batch17-issuance/verify-receipt.mjs": "e91bc9b911d8b1cf52290a88a9ecdebae97cc2043b7aa603f89df280ecf78b07",
+    "tests/batch17-issuance/verify-receipt.test.mjs": "c5632a0183d8b27a055455fa7af52d00384ce76ec09ef6b288ae8c7ae2addfec",
+    "tests/full-product-batch17/workflow.test.mjs": "bb7cb82814f2ee9fdd5567912d15605626acfa9397ad510c44c73d9dfe9e02b7",
+    "tests/gotrue-runtime/fixture.mjs": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+  },
+  "verificationScope": "Full unit/typecheck/build on final shared fixture and unchanged application/math sources. Subsequent verifier-only omission/path hardening and CI ordering validated against the unchanged fresh genuine receipt plus33 offline checks; no SQL or runtime campaign driver changed afterward.",
+  "historicalReceipts": "Agent initial committed receipts retained unchanged. Fresh integrated receipts separately bind current runtime sources; no old hash rewritten to imply rerun.",
+  "preservation": "preservation.json",
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "hostedDeliveryCI": "One bounded exact-head observation after final push/PR; result in final response and external delivery record.",
+  "releaseHold": true
+}
