@@ -1,0 +1,26 @@
+{
+  "database": "Isolated pinned PostgreSQL17.6/PostgREST; no production metadata read or modified",
+  "gotrue": "UNAVAILABLE: localimageinventory contains onlypostgres/postgrest; checked-in authfixture explicitlysynthetic, notGoTrue",
+  "productionSchemaCompatibility": "UNKNOWN: repository fresh/model/proposal checks only; protectedcurrentproductionmetadata unavailable",
+  "fullBlueprint": "UNAVAILABLE: only424recordedrequirementrows; no verified original attachment hash",
+  "historicalRequirementCounts": {
+    "VERIFIED": 55,
+    "PARTIAL": 331,
+    "UNKNOWN": 18,
+    "BLOCKED": 20
+  },
+  "declaredFixtureMismatchEngines": 37,
+  "declaredFixtureMismatchIdentities": 16,
+  "fixtureMeaning": "Exact authored-fixture comparison; no implicit tolerance/array wildcard. These are not all adjudicated mathematical defects.",
+  "demonstratedNumericalDefects": [
+    {
+      "id": 248,
+      "diagnosis": "Legacy finite-sample estimator reports0 and Certified finite limit for a continuous narrow peak."
+    },
+    {
+      "id": 247,
+      "diagnosis": "Legacy sampled quadrature misses a narrow Gaussian; its reported estimated error is not a certified error bound."
+    }
+  ],
+  "releaseHold": true
+}
