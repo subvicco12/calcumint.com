@@ -1,0 +1,4411 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "b96b1ac89971cb8418d2389fbd7c9571a57491f1",
+  "releaseHold": true,
+  "files": [
+    {
+      "path": "data/catalog/calculator-completion-2026-10-25/inventory.json",
+      "sha256": "b41f97dfdfbb120d3683cddcd2cca16f498cd63892b2c02a4ed69d1022d254ec"
+    },
+    {
+      "path": "data/catalog/cloud-batch03-2026-10-28/manifest.json",
+      "sha256": "a262a21f06b2590c1e1cc5f25397022a1f5a9ae1ccdeaee04cccf1c90dcf7f7c"
+    },
+    {
+      "path": "data/catalog/crosswalk-2026-10-20/crosswalk.json",
+      "sha256": "6f894d6dc66abc2e9aff02f04fbf6d8d7c162cc14eff02f62f21bb5d86fc5b0a"
+    },
+    {
+      "path": "data/catalog/reconciliation-2026-10-25/financial-decisions.json",
+      "sha256": "4f7a94940dab4ff22a35e63d01f32a840c0c6f4fc9dffc73b222a1f266035168"
+    },
+    {
+      "path": "data/catalog/reconciliation-2026-10-25/manifest.json",
+      "sha256": "45c3e61803519d527718e9caf813d31a6e124724d4daa1c2e9b88dcb07461cc3"
+    },
+    {
+      "path": "data/catalog/reconciliation-2026-10-25/nonfinancial-decisions.json",
+      "sha256": "2fda65b4c594e7dc54716f989d261a019cc9dd5ac3a74218030d09fc0d7b302b"
+    },
+    {
+      "path": "data/catalog/risk-review-2026-10-26/reassessment.json",
+      "sha256": "89f00cbdff7a3acd1c5a2d1926bec3d7dd14699a66fd3ae19a43f012e2a62a4e"
+    },
+    {
+      "path": "data/catalog/scope-policy-decisions-2026-10-25/decision-register.json",
+      "sha256": "40a7037237c5e2995739bf0a7ee0ec257410c2bdd4c1136496392c95034c9796"
+    },
+    {
+      "path": "data/catalog/scope-policy-decisions-2026-10-25/owner-selections-2026-10-26.json",
+      "sha256": "2524458f92bf1f28d3740b5dc2f113d875e4b76071ccd93445d9ab147c6ce83b"
+    },
+    {
+      "path": "data/catalog/source-driven-2026-10-27/engineering-register.json",
+      "sha256": "5eb13eef4484fb708bb61e85b8ec9b6353e439489f35c97f328ed15b42dd0205"
+    },
+    {
+      "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "sha256": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6"
+    },
+    {
+      "path": "docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv",
+      "sha256": "6bea776d2721a99a1cc0d757929ab1ac9e957c0863ac2cba3ac408446df417c1"
+    },
+    {
+      "path": "docs/audits/specialist-technical-review-2026-10-26/technical-register.json",
+      "sha256": "30fce0c8ef21f14078e55206b13bd52455b42aa32648c64c2d7e2ce4a4769976"
+    },
+    {
+      "path": "docs/authority485/native-source-binding.json",
+      "sha256": "c20bfdb9b8db1c8ead3ea6789c2add10f26f6b7363d0040cb0f0fe356014c5da"
+    },
+    {
+      "path": "docs/blueprint-reconciliation/blueprint-to-540.json",
+      "sha256": "24aa0e34882bcc947ba9841e698ec4bf0e95335ccd082f70f3798f8f5db772fc"
+    },
+    {
+      "path": "docs/blueprint-reconciliation/input/master-blueprint.docx",
+      "sha256": "d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455"
+    },
+    {
+      "path": "docs/canonical-acceptance/canonical-discovery.json",
+      "sha256": "65e3ff0258ea7eb7922fdac3a2384ff85e29735d12671c18a5f339973cf948b6"
+    },
+    {
+      "path": "docs/canonical-calculus/INDEPENDENT-REVIEW.md",
+      "sha256": "403004cbb13a8ac23e5d8007787c48b544e47006f7c1783cd46f34adab2d28ff"
+    },
+    {
+      "path": "docs/canonical-calculus/REPORT.md",
+      "sha256": "78eb89f8b7ff2580032ad51a875d3192079d7d7366ed88a2446671ae2848d709"
+    },
+    {
+      "path": "docs/canonical-calculus/baseline-and-preservation.json",
+      "sha256": "e4b90e201cd4fb5af6115a8a27c1fe2c29ed2a76fd43ddb02d776e5732bfd10a"
+    },
+    {
+      "path": "docs/canonical-calculus/browser-acceptance.json",
+      "sha256": "1ddf478bbd30516073e0a622056aded6776dc983d8d7147b74fd194e9238ff01"
+    },
+    {
+      "path": "docs/canonical-calculus/engineering-overlay-540.json",
+      "sha256": "e3b816ce41b11bb14fdbd73dddbfd404c3bc0f589058b37a41a3ae1beb342ef1"
+    },
+    {
+      "path": "docs/canonical-calculus/inspector-regression.json",
+      "sha256": "26e3717ee58f932176ebb314b53e365670ec2cb19b0066928e79fd7fe00c5bbf"
+    },
+    {
+      "path": "docs/canonical-calculus/receipts/derivative-legacy-v2.json",
+      "sha256": "f0c1f75584d1163965a152c71d0164dc1ecc16a72aae483c98ec40d26b430281"
+    },
+    {
+      "path": "docs/canonical-calculus/receipts/derivative-v3.json",
+      "sha256": "836b1829d44e21d6e5c92be754e36ee0fee1ee14eed296a44de602d00603fa81"
+    },
+    {
+      "path": "docs/canonical-calculus/receipts/integral-v3.json",
+      "sha256": "0e545525399073cf723821d7ca9ab58aa0cba18fbc1c192b74856495c0ed040b"
+    },
+    {
+      "path": "docs/canonical-calculus/receipts/limit-v3.json",
+      "sha256": "25dd3a7754901ee639ee886ed159c9959b169fddba2dafe4465a22446bdd7910"
+    },
+    {
+      "path": "docs/canonical-calculus/security-acceptance.json",
+      "sha256": "a5679f21dfe34ed5710753aca0a9b062c331688d3026ef7575cb86785f4c318b"
+    },
+    {
+      "path": "docs/canonical-calculus/source-binding.json",
+      "sha256": "3c8122e0726edd50a6cc254b79badc40046adf178ab629f4670de29057585b06"
+    },
+    {
+      "path": "docs/canonical-calculus/validation.json",
+      "sha256": "f556d4a881052edc766ab77fee59f6b220c306ac722a5e8ac5148efe87509b6e"
+    },
+    {
+      "path": "docs/canonical-validation/evidence-540.json",
+      "sha256": "48952ff03778ad184682bf90be5122f0d356d834b858236ccf495d84fb9827c9"
+    },
+    {
+      "path": "docs/canonical-validation/source-binding.json",
+      "sha256": "f7f43fc406e050682c486255c8564a60a531e70e46dde287643c144f27d71a48"
+    },
+    {
+      "path": "docs/cloud-batch07/selected-contract-evidence.json",
+      "sha256": "4b8a3c2497db9642e08527e2c2f6fcf6d361572ef11d8d6edc602834f3c8b322"
+    },
+    {
+      "path": "docs/cloud-batch08/selected-contract-evidence.json",
+      "sha256": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1"
+    },
+    {
+      "path": "docs/cloud-batch09/selected-contract-evidence.json",
+      "sha256": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5"
+    },
+    {
+      "path": "docs/cloud-batch09/source-bindings.json",
+      "sha256": "7233e436366b9f32665f14af09cba1a21992c269fbd4413f4850fac0993241dd"
+    },
+    {
+      "path": "docs/conditional-ten/source-binding.json",
+      "sha256": "14d54cad157a855d73df27442daf09dc2dab029540d44be948f43aa68886b843"
+    },
+    {
+      "path": "docs/full-product-batch14/INDEPENDENT-REVIEW.md",
+      "sha256": "f864f01e25acb260577b501c2d5e157c3095668d975ee75ba2d3b867ff61c1c4"
+    },
+    {
+      "path": "docs/full-product-batch14/REPORT.md",
+      "sha256": "2ecf8a174e890d7a90fa612188a03e86184dc5846f43227e055081e3d3d048ba"
+    },
+    {
+      "path": "docs/full-product-batch14/baseline-ci-observation.json",
+      "sha256": "8208f3f7408eaa0c6956ef2f0808054387901f1bd5a80ad8a48fddfcdfee7ab8"
+    },
+    {
+      "path": "docs/full-product-batch14/blockers.md",
+      "sha256": "d868e36901c489a2b48ade4d2e70ec2d599de367eeb96135e7612b45a52912cc"
+    },
+    {
+      "path": "docs/full-product-batch14/ci-at-e2b4a3d.yml",
+      "sha256": "01b658cf519be67e640a257dee9077fad0fa08286c7627a26fe396265d3a474c"
+    },
+    {
+      "path": "docs/full-product-batch14/contract-evidence-notes.md",
+      "sha256": "2eaf53928516fc5d275c5258673ef79a06f3f954698500ad6381471fcd6afa3c"
+    },
+    {
+      "path": "docs/full-product-batch14/contract-evidence.json",
+      "sha256": "47dea34cc4a753ca43d616001c9beb73f4573330a925fa43f3dc560159476424"
+    },
+    {
+      "path": "docs/full-product-batch14/default-gotrue-receipt.json",
+      "sha256": "2f912c7e3f5e327dc17035ad0b37f7368d362453e676975b96b0f9208256d873"
+    },
+    {
+      "path": "docs/full-product-batch14/engineering-closure.json",
+      "sha256": "a4dcf47c47000f4eff7f25b25995fcaa4d31154dfca53b732e592561c2f26bcf"
+    },
+    {
+      "path": "docs/full-product-batch14/gotrue-full-schema-receipt.json",
+      "sha256": "c34bfb5ec0309cb183ff572f6d8c5de8ea146db063f4d9ae06fa9671a0ce7d75"
+    },
+    {
+      "path": "docs/full-product-batch14/gotrue-full-schema-scope.md",
+      "sha256": "9458ad71152568751a17b47465241671102f15398b58e445152d2eeb90615105"
+    },
+    {
+      "path": "docs/full-product-batch14/preservation.json",
+      "sha256": "3e9fe9c984d78e852a1b1e8d9138586f945d0b32938fbd2c314b1a6a253b39ec"
+    },
+    {
+      "path": "docs/full-product-batch14/private-accessibility-browser-receipt.json",
+      "sha256": "fba7530257bd6fad82fa607d7cab08a979f357ae42ae30a98b373a68e72bb68b"
+    },
+    {
+      "path": "docs/full-product-batch14/remaining-work-queue.json",
+      "sha256": "fd5358b3f27b1ce110758bb6276fe718497fd34dba723c3fa58e109ff74c6639"
+    },
+    {
+      "path": "docs/full-product-batch14/report-recovery-browser-receipt.json",
+      "sha256": "a10d0f7a09ccc97e544b5ba8725bcef6158ae768239b0993b440823bf727a890"
+    },
+    {
+      "path": "docs/full-product-batch14/requirements-540.json",
+      "sha256": "c11d4728c6b4439b45856951a93ed0302c149ede3d3b21c88dd24d19b32d0555"
+    },
+    {
+      "path": "docs/full-product-batch14/validation.json",
+      "sha256": "a2c821d384efbb2a9b7aca8f48df3156116bf35cdf469739503a23efc0c06f5a"
+    },
+    {
+      "path": "docs/remaining-six/source-binding.json",
+      "sha256": "481a2e05a6e89dcc8b30132129a4ffdaaf238d7222f39159bf3254957b21fc2a"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+    },
+    {
+      "path": "src/calculators/accounting-completion-contracts.ts",
+      "sha256": "f934a60876029aac97d282818a32c28b2109669484cdb111df4e7196cbc04242"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-10.test.ts",
+      "sha256": "db92f092cba583be02796ccaf5b5a616ed160ff12feb72bc565c24450217d1ab"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+      "sha256": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-5.test.ts",
+      "sha256": "3a5464288de072e3c43bb4ff33285686ec2d456431c026835769dcdfa1c49c93"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-5.ts",
+      "sha256": "e98001a65ed437da15dab7eaec36deef4b41d0d700ccc5a8c66a42f66b73679a"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-6.test.ts",
+      "sha256": "3b2b3a49b7d649585c167dd9b4bffe230ac84d4a55d9cd332779d1d34ed92be9"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-6.ts",
+      "sha256": "22b299e5a083fe842b26ac266fc0c7cd8489ea1161f118fc573cd8d145a97780"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-7-boundaries.test.ts",
+      "sha256": "f689cff4febc99e4663551e61bfd97cb8c5b54c5e32b265261b9b4b300184ccb"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-7.test.ts",
+      "sha256": "bf7dd868735a28d234670c739a9e9ffd669cfba3d5415c48ebd2e1b648505769"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-7.ts",
+      "sha256": "f904cd5773c1af7a309d3eec309e187d382e959312dcf42ab55d1b7d57a51583"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-8.test.ts",
+      "sha256": "19fb2cc01e0bf2fb5fa20c121cbd4d953e8dd006d9d788f926044a3a37c158b1"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-8.ts",
+      "sha256": "2ddc4c3dc3eba93c8f73480157646efe440adb8a4994db62c97ca0a5e979b9f8"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-9.test.ts",
+      "sha256": "89913051a2ec601be5e085fb71f3efb160e2b5eba119cc97b67bcdd7f1c66ca3"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-9.ts",
+      "sha256": "37e07d82438874849d13ec95a19ea2acc9d7b542aabe94a72de0c276eac5f855"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-final.test.ts",
+      "sha256": "53bee068dc21720c08f5c4ac6ee1504170c08fde9137d634c7634f23c66d1175"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-final.ts",
+      "sha256": "dd4526c7417726e2ec607c0fa304a1d159afff3f8c60511ba44d88080d2237d4"
+    },
+    {
+      "path": "src/calculators/advanced-math/expression-engine.test.ts",
+      "sha256": "e754bd9a14100c72bc9b212041e0d31fc4ad15326a3e0e4624c79858ba7af3c8"
+    },
+    {
+      "path": "src/calculators/advanced-math/expression-engine.ts",
+      "sha256": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24"
+    },
+    {
+      "path": "src/calculators/advanced-math/graph-example-fixtures.test.ts",
+      "sha256": "6d6977fd94a71e42489aab335de240b942fa5f0292939dff60d540e5b911415c"
+    },
+    {
+      "path": "src/calculators/advanced-math/graph-example-fixtures.ts",
+      "sha256": "c1e5490bf9fd7da179e5138d687f25938370481ea58a40753fd4413e606cd666"
+    },
+    {
+      "path": "src/calculators/advanced-math/numerical-calculus-independent-diagnostic.test.ts",
+      "sha256": "b6d127c2ed60ef4e713d90d29b689bbc482cc09da02fc1046025c5944aea7395"
+    },
+    {
+      "path": "src/calculators/advanced-math/numerical-calculus.test.ts",
+      "sha256": "fe886a65c7bdb3d7d376b877b2e42181005a959795798bba5fd0369ab5f99477"
+    },
+    {
+      "path": "src/calculators/advanced-math/numerical-calculus.ts",
+      "sha256": "e520eef484e8e9ac0da8205ac31141897ba202c7dd6de527176dfee096820555"
+    },
+    {
+      "path": "src/calculators/annual-heat-comparison.test.ts",
+      "sha256": "9585d7dc321d7aabc016cf654b0e1740be173e0ce3cb7e33dc343688e181e772"
+    },
+    {
+      "path": "src/calculators/annual-heat-comparison.ts",
+      "sha256": "72ef3dc816fe75385555ce1ce556b6f95a7bfc479d32899ca2d0171e1d6b4d48"
+    },
+    {
+      "path": "src/calculators/astronomy/astronomical-distance-direct-domain.test.ts",
+      "sha256": "531b6a633bc43b7268429d86dce036f31215791bde9f397a0c4a3248c20f6d97"
+    },
+    {
+      "path": "src/calculators/astronomy/astronomy-direct-domain-validation.test.ts",
+      "sha256": "ea1f9110ad1ccabc9e9a4d0260c367ed329e3fd87a8fa2a87669f5b578cf1486"
+    },
+    {
+      "path": "src/calculators/astronomy/astronomy-distance-numeric.test.ts",
+      "sha256": "19d6391a92906a7b27417f93c6a4d0265605b6de59a3878484ff79aeea849158"
+    },
+    {
+      "path": "src/calculators/astronomy/astronomy-finite-results.test.ts",
+      "sha256": "1051d7adb72d50104836c315a0a4ecb90e6bf0deb3b6f473e6050769cedc8b26"
+    },
+    {
+      "path": "src/calculators/astronomy/catalog-batch-1.test.ts",
+      "sha256": "7428faa1b9a69ba3530c4fbbcdcbfc0779ce05ee11e6b1ba53342ea2047fe529"
+    },
+    {
+      "path": "src/calculators/astronomy/catalog-batch-1.ts",
+      "sha256": "f4b488471dd6e09e520c18c1dd09172974c6cacf629f2dddf811b0a16c4fe578"
+    },
+    {
+      "path": "src/calculators/astronomy/catalog-batch-2.test.ts",
+      "sha256": "7c0f38234a852d678729dbe6ed1abacc5665bc9dc57723962e2c683446d3e509"
+    },
+    {
+      "path": "src/calculators/astronomy/catalog-batch-2.ts",
+      "sha256": "c48e38f86ae73fd65bdc88a53477abefa3d46c71fa24f72ddcdaf15564efd060"
+    },
+    {
+      "path": "src/calculators/astronomy/draft-master-531.test.ts",
+      "sha256": "db108f357b3fb97b2d8dd7e710a963ae1f948957d232da7c52f10a7c9188150b"
+    },
+    {
+      "path": "src/calculators/astronomy/draft-master-531.ts",
+      "sha256": "e579fb5bfa3804c226d9188fd4493d81603feab7f4b55a6f38899899e6a39504"
+    },
+    {
+      "path": "src/calculators/authority-evidence.test.ts",
+      "sha256": "87935c9e2eeb23e56b6af1ea5e7347e3aa5fe1d3d26782540c4f8f0dab2f500c"
+    },
+    {
+      "path": "src/calculators/authority-evidence.ts",
+      "sha256": "8a9911853b0b392a6e18a5bc05e0bf145e386cd0dc9996eebde036a3b4229601"
+    },
+    {
+      "path": "src/calculators/automotive/automotive-batch1-direct-domain.test.ts",
+      "sha256": "f52ff549c812c1122048dcbb88b9958561700569a261dfc44077bd83bfe9677e"
+    },
+    {
+      "path": "src/calculators/automotive/automotive-direct-domains.test.ts",
+      "sha256": "0338e076b875871e00104709f19e02af446ef81a220dabc111c7614e754d84c6"
+    },
+    {
+      "path": "src/calculators/automotive/automotive-economy-direct-domain.test.ts",
+      "sha256": "7b71903eeb0a8632e32a486fbffdef7e0ab9373ebfc0195c7f8a278843521834"
+    },
+    {
+      "path": "src/calculators/automotive/automotive-engineering-direct-domain.test.ts",
+      "sha256": "0b14b918eefc216f3fd16f8052fc12ac83fa61b8c30f1cb2d632f8d7d357f8fc"
+    },
+    {
+      "path": "src/calculators/automotive/automotive-engineering-direct-domains.test.ts",
+      "sha256": "d1fedeb5435ecc677e8e7e81489c0ec9e9fc7d6a834c7d1487d7cb30e4cc3e69"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-1.test.ts",
+      "sha256": "fb4ff0a1fc31c97f08bc2f27f5d135cb552122ee74ac8a79bb68b84f3f2942af"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-1.ts",
+      "sha256": "4826a3f6f02ca1beaec234c46d727c544e8d2f0c1f8c5767cd244c97764e7bd1"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-2.test.ts",
+      "sha256": "a43d6886d7e5fd83529488a67cbea9f1c6cfb2d251256a9ceb80830f0650df68"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-2.ts",
+      "sha256": "6b0463fd727ee335e73a9ef87193d38e2cbd222d57e6b641860d848eedf48632"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-3.test.ts",
+      "sha256": "27d212f3086b91b397c98facef6618509b0b0217252c035be8bbbe9f9de6dbaf"
+    },
+    {
+      "path": "src/calculators/automotive/catalog-batch-3.ts",
+      "sha256": "96bb0a427eceaca0fb7d22fdf43fda9cdc694de4e711249f4fe94c42cf77c144"
+    },
+    {
+      "path": "src/calculators/automotive/travel-direct-domain-validation.test.ts",
+      "sha256": "0679b930cfb6a9a2056fd3ed4a21f4abcf557196b2543d738335ddd06f3dc0bb"
+    },
+    {
+      "path": "src/calculators/biology/agricultural-yield-direct-domain.test.ts",
+      "sha256": "ec303991b81d2148d6fce6c0e04ba349e5dbc2de902fd610e6ab5a40f70baba2"
+    },
+    {
+      "path": "src/calculators/biology/bacterial-growth-direct-domain.test.ts",
+      "sha256": "df63211598d9f1882a513d31a6a8437c42f6302c9d8fb4dbfc76d9aa893f092d"
+    },
+    {
+      "path": "src/calculators/biology/biology-batch1-direct-schema.test.ts",
+      "sha256": "58cb6e70306994c39041e137dc9c8c3a1dd27c066f490a5723270c4347be2809"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-1.test.ts",
+      "sha256": "5c863ca69ca2e3565783d57515f95023b19bf4984f3ac6cedb10a480f38ca0b4"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-1.ts",
+      "sha256": "fa857a72b5aaa6e9cddcd1b29eaba332f376a57096aa93758dfc56ba385e4e41"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-10.test.ts",
+      "sha256": "1d2cea21f1b3b8b1da2fc2c873c4ad2b9de07905abe7d5243953f3d2e9ef0bc6"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-10.ts",
+      "sha256": "c7b339db13c5776937bb880a4ae8af1417306f3b84cfa35b1f59e4e9151c2da4"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-2.test.ts",
+      "sha256": "0f6696021c7c82679b57c0f7d3f280120a5065cd3759a473d028718759f59a68"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-2.ts",
+      "sha256": "779521e1f846f7909ab2a956a3278a3795c5d175996f6ac36777fdaaa2217545"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-3.test.ts",
+      "sha256": "b377bee0e55a6164b8d7bd613c4fabe6d2810d6f44e65c93781d2499e64d70d3"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-3.ts",
+      "sha256": "e689dbd9af8c05efd65beec6c7105db3a1813b46d397e92c383523755026b3f1"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-4.test.ts",
+      "sha256": "174d36060cfa326230b41d54d961dba5cfe6f34c14ff56a349389a411089647c"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-4.ts",
+      "sha256": "8966fbcbaa70951ac309f6311dafaaf2bc4f8382f8fbdb6ae00c701a9b17ef0b"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-5.test.ts",
+      "sha256": "5a49b705a1f165377e31b65d75a788c14fcb578fc2f11f751c024d781df1e44a"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-5.ts",
+      "sha256": "550fa7010e4c2387b3b4df70b3427cf9b0e75948583839baf354ae20a6214ba4"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-6.test.ts",
+      "sha256": "494faeaecc0f1fa25ce05d9711129ea9ca46eaae2235ae7a7a00b550a4b4f4f1"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-6.ts",
+      "sha256": "176aaa874707d02609dc6ad65d2e576e9ab4cc3a58339735f82cb6c9b33d1789"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-7.test.ts",
+      "sha256": "0061edb097a7522d40c8b4e838bc93698486ef9abc16647703e5a10abcbb890d"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-7.ts",
+      "sha256": "d2cfeb025471e82881a5a16e30d6cdbe05740898088b1b4af2e648096506dca7"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-8.test.ts",
+      "sha256": "fffbd467bfabc991c31c972f8a79b545bf58227a7af6e28952c22b41d7b8f5b4"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-8.ts",
+      "sha256": "f913c7dbbf7621781913fd963521dcee71e97d9cab124cae90c47659b6c6847c"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-9.test.ts",
+      "sha256": "9a1b1a948e1ce2e3d5314bdc9b18947058754fdb8bb65a316ed7c6e1d60e5108"
+    },
+    {
+      "path": "src/calculators/biology/catalog-batch-9.ts",
+      "sha256": "6e670ab5c4ec140f0119a1fff345f9d7ced192d2af47ab51027134cac9704ab8"
+    },
+    {
+      "path": "src/calculators/biology/cell-concentration-direct-domain.test.ts",
+      "sha256": "deb75ab354e7683dc3ce47020a165fb8199cfc7a15e5102dbb1d2b806c7162f0"
+    },
+    {
+      "path": "src/calculators/biology/cell-dilution-direct-domain.test.ts",
+      "sha256": "7ee9db2eff59f2fabd1cf60454368dfa842156791a5eb241b92c80be169ea47b"
+    },
+    {
+      "path": "src/calculators/biology/hardy-weinberg-direct-domain.test.ts",
+      "sha256": "bb9f6eee7c907198794fd6430b60d2fbd31d305cc2ac864521400f69da6e5ff7"
+    },
+    {
+      "path": "src/calculators/biology/microbiology-dilution-direct-domain.test.ts",
+      "sha256": "46638ccbbbab8c1022c11afcfbb1e0920fe22c087b9e3b80b9591c49b075da6c"
+    },
+    {
+      "path": "src/calculators/biology/nucleic-acid-direct-domain.test.ts",
+      "sha256": "0a61e70eb32193427c9f135848a7ca7e463b8c17d635b07b30a3c1abe5983500"
+    },
+    {
+      "path": "src/calculators/biology/plant-population-direct-domain.test.ts",
+      "sha256": "3815db131cc85e2efa82b67ea2d415be72a7dc7539f368ec2a61294b5a64f582"
+    },
+    {
+      "path": "src/calculators/biology/punnett-square-direct-domain.test.ts",
+      "sha256": "58e3c06d03b9257b855c55aea7eb4f4bff69c0a07510733d35338573f93ff29f"
+    },
+    {
+      "path": "src/calculators/business-contracts-independent.test.ts",
+      "sha256": "be291968b49da373a07e61170e10bc2795c71f1058297c139049d2ce1046500c"
+    },
+    {
+      "path": "src/calculators/business-contracts.test.ts",
+      "sha256": "d5d0ca6bef76f412e814921baebd21b9a55360b33217e6dd901709b0a588a9ea"
+    },
+    {
+      "path": "src/calculators/business-contracts.ts",
+      "sha256": "9f691d3bb52450655905d9c7aebfcae5b1d48a2a44285297a08d7a956b935722"
+    },
+    {
+      "path": "src/calculators/business/break-even.ts",
+      "sha256": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9"
+    },
+    {
+      "path": "src/calculators/business/catalog-batch-1.test.ts",
+      "sha256": "2ec8bfa741bc623b6f7ced71d15fa4392345108d12ca72555682e2ea0c930674"
+    },
+    {
+      "path": "src/calculators/business/catalog-batch-1.ts",
+      "sha256": "b4b61372219e7e117ddf968029e81f906ca201972283923fe968f5f55044939c"
+    },
+    {
+      "path": "src/calculators/business/catalog-batch-2.test.ts",
+      "sha256": "4b4669cef433893f3051a973964184fb923e99ff81b6088e35a99f7bd6461e71"
+    },
+    {
+      "path": "src/calculators/business/catalog-batch-2.ts",
+      "sha256": "0fe5e0b1af5c8b509287338f630183d587394bc61d38ce3fa1444e1325d6c2f0"
+    },
+    {
+      "path": "src/calculators/calculator-completion-inventory.test.ts",
+      "sha256": "6cc7a88887044dcb739e8bd51a510c3cb4e705f363af5ed71e75627fbf37c2ab"
+    },
+    {
+      "path": "src/calculators/calculator-completion-inventory.ts",
+      "sha256": "f4f7e6962ceb9602387d9bf63b8da8e06e63060994709f651afccfe21a65d0d1"
+    },
+    {
+      "path": "src/calculators/canonical-acceptance.test.ts",
+      "sha256": "a5524e44b6a1994e405a80044306e15229d807793b0ba1aaa8694f189262d11e"
+    },
+    {
+      "path": "src/calculators/canonical-acceptance.ts",
+      "sha256": "f6aefb1258ce1c58f7d041894af86b37c1c3f9972410bd483a44bc4af16951e8"
+    },
+    {
+      "path": "src/calculators/canonical-calculus-receipts.test.ts",
+      "sha256": "e728f0190b09b4f9e774a673eccf394e9c1ffad445f8bcc20b8e3529c2e05d88"
+    },
+    {
+      "path": "src/calculators/canonical-calculus-workflow.independent.test.ts",
+      "sha256": "a19e6a5179268cac0c673a9a80046b3e6d07501654be0623a60a8ca952232397"
+    },
+    {
+      "path": "src/calculators/canonical-calculus-workflow.test.ts",
+      "sha256": "036a1de07af032329b4508b5d692cadf62c766ccc220d13ae92f8b66f44a68e6"
+    },
+    {
+      "path": "src/calculators/canonical-calculus-workflow.ts",
+      "sha256": "6b4ac2f65fffbf6f3bc731c768a0726250a299c8a8ca710685396a01bf4de24c"
+    },
+    {
+      "path": "src/calculators/canonical-calculus.independent.test.ts",
+      "sha256": "5f6d36244a8ece90d87193c8b049b694da72db272c01fcec4ae40588b53b4ba3"
+    },
+    {
+      "path": "src/calculators/canonical-calculus.test.ts",
+      "sha256": "ecc9b8ca68c39a162646d20f3dce68d41d801b089cae56794ffe0fa4e1830cea"
+    },
+    {
+      "path": "src/calculators/canonical-calculus.ts",
+      "sha256": "069be29c14c2a7ef3f3b98c87f7c6425096b59cd0c4e1f58504c948b708e0c6d"
+    },
+    {
+      "path": "src/calculators/canonical-contract-adapters.ts",
+      "sha256": "428daf0ef527dd60b0b74ae07674bad904feb54afeafca9f3b2f79ecd09df467"
+    },
+    {
+      "path": "src/calculators/canonical-contract-evidence.test.ts",
+      "sha256": "b071969cfbf8b6902f5113a2ed4765c196b98c3365091dae2126dc78c4f802bf"
+    },
+    {
+      "path": "src/calculators/canonical-contract-evidence.ts",
+      "sha256": "55fc462a92dcbf0937370430d55706c2c9e3bd170601bedb6051162889513814"
+    },
+    {
+      "path": "src/calculators/canonical-contract-receipts.test.ts",
+      "sha256": "4f8e7e955c7e3650382fbc9b3bda82dfb1261810414376a000954aebdc629a62"
+    },
+    {
+      "path": "src/calculators/canonical-contract-validation.independent.test.ts",
+      "sha256": "19c3219998ef5a32ff1beed5044988a64120e254ec6a388ac106d4f89bd67909"
+    },
+    {
+      "path": "src/calculators/canonical-contract-validation.test.ts",
+      "sha256": "98dfd773832fa4a8aa5b0bd3b320b454a3b68e07c3dc78545fafe4e56573f27f"
+    },
+    {
+      "path": "src/calculators/canonical-contract-validation.ts",
+      "sha256": "e76fcfe82952e2da74dc957df9ff65913e2ef81578edf0e17066e91e385174d1"
+    },
+    {
+      "path": "src/calculators/canonical-contract-vectors.ts",
+      "sha256": "5b6c2d87c5c077917e1d6cf8d649b7bbe2b022a613b9b9b446dd6be3398b47ae"
+    },
+    {
+      "path": "src/calculators/canonical-evidence-packet.test.ts",
+      "sha256": "5905751866e2de547c5456c568ea79ebaec9d163e921f13b69df87cd328affe7"
+    },
+    {
+      "path": "src/calculators/canonical-evidence-packet.ts",
+      "sha256": "0726c2cbc5069459f8e95409bc3ca45ba82bfef132c9ca2c429053c153f562ff"
+    },
+    {
+      "path": "src/calculators/catalog-audited-reconciliation.test.ts",
+      "sha256": "32a48f1da0eb5b4fcc0551c9ca060965972cd62d90fcb450d0247cc969e6a0a8"
+    },
+    {
+      "path": "src/calculators/catalog-audited-reconciliation.ts",
+      "sha256": "840ded21df6e57bbc6d38bf0f80f5d3873881bcb583e1ddec3cdb78014480d2c"
+    },
+    {
+      "path": "src/calculators/catalog-certification-queue-report.test.ts",
+      "sha256": "abfac64b9d1b14be3ee2512e039d34016c444685a2aa93004a649474cae6c330"
+    },
+    {
+      "path": "src/calculators/catalog-certification-queue-report.ts",
+      "sha256": "a25071623d7b906721558e358ab92e2c8d4ee027d183f7f1c39875b97fe0cba4"
+    },
+    {
+      "path": "src/calculators/catalog-certification-queue.test.ts",
+      "sha256": "33d2bdb832dca8302020a368afe9818a8e24e2fccb8a058af3b2b2fc179a4125"
+    },
+    {
+      "path": "src/calculators/catalog-certification-queue.ts",
+      "sha256": "50f937b8e71bff12a4121b15d97b5b42d38a18a06c7b898eb30ba1a3a351e9bb"
+    },
+    {
+      "path": "src/calculators/catalog-committed-fixture.test.ts",
+      "sha256": "ff205a414a4f1a44f45fb79b01a68f64fc2f19e4b5415e5532fefe3dc44e08c5"
+    },
+    {
+      "path": "src/calculators/catalog-contract-reconciliation.test.ts",
+      "sha256": "ff6cc4a8eb40bc541d0437a2a7da51adf2d35674ee40ef1b766e507b2088a259"
+    },
+    {
+      "path": "src/calculators/catalog-contract-reconciliation.ts",
+      "sha256": "83dd0ecbf46527c51b24500e0213ac367a91be4185b1a69950126b5b635c92c4"
+    },
+    {
+      "path": "src/calculators/catalog-csv-ingestion.test.ts",
+      "sha256": "fc3f6b1c80e7a8c63318ef8d4bafeeb1b693043515d9b513848f267b49c1cdc5"
+    },
+    {
+      "path": "src/calculators/catalog-csv-ingestion.ts",
+      "sha256": "4005915f03063eb7578b73da2840743521855ad0ed5c1fc58c50b34350f9cf72"
+    },
+    {
+      "path": "src/calculators/catalog-database-identity-audit.test.ts",
+      "sha256": "65bb0b5af4c53d9c16e83590385173c4a9eb3963e60dc41b2a8564af4a68f830"
+    },
+    {
+      "path": "src/calculators/catalog-database-identity-audit.ts",
+      "sha256": "6a43edeba11638967c4df6bd49d5fec825cdd43ccead6e0b9caeca360b44a207"
+    },
+    {
+      "path": "src/calculators/catalog-domain-audit.test.ts",
+      "sha256": "3ce60ada1f856c3167fffff5a427ca1b9e5da56317ab788520a5cd98591fb5d3"
+    },
+    {
+      "path": "src/calculators/catalog-domain-audit.ts",
+      "sha256": "0f4a2f530f755047a30f5db41cb3a46e6cc02003c120e02081377054975ec50e"
+    },
+    {
+      "path": "src/calculators/catalog-full-evidence.test.ts",
+      "sha256": "085bff94c8fbf29f479801a1ec9f9acc82fff6aed672a230c96f6ecc1ed5c48c"
+    },
+    {
+      "path": "src/calculators/catalog-identity-candidate-report.test.ts",
+      "sha256": "1a432f1600e8523430305c172035bf19b1de1b09193c058c2d6d617ee3b5691f"
+    },
+    {
+      "path": "src/calculators/catalog-identity-candidate-report.ts",
+      "sha256": "6b1311841fc6557559c5685f42a499192d482c6a457a83616ca13d6ad475f97b"
+    },
+    {
+      "path": "src/calculators/catalog-inventory-export.test.ts",
+      "sha256": "f43ec49fdb243575e9fb08858a4582c4aa5b55916d3236a7205dc9254d5acad0"
+    },
+    {
+      "path": "src/calculators/catalog-master-integrity.test.ts",
+      "sha256": "f7ad17175ff437f7261f3b8fa50b1a23a89aae43268f69dafdbfa42c25c477d1"
+    },
+    {
+      "path": "src/calculators/catalog-mixed-coverage-report.test.ts",
+      "sha256": "e85f30ba15606863d55fcadac058e997bd2578395e1e463ff2c10332aa5170fe"
+    },
+    {
+      "path": "src/calculators/catalog-mixed-coverage-report.ts",
+      "sha256": "7247454895adb9495fa21d404c7a5984520f8b4f134ed1cd71cc8da379dc47f2"
+    },
+    {
+      "path": "src/calculators/catalog-mixed-hold-adjudication.test.ts",
+      "sha256": "6c5129d6af8b16c2cca8e950522dd543d24a80656c57a79b4516355880044c9d"
+    },
+    {
+      "path": "src/calculators/catalog-mixed-hold-adjudication.ts",
+      "sha256": "94cca2bae675cba58e9806d48cb9130b7c096a0394422a7c71821f1480aa8281"
+    },
+    {
+      "path": "src/calculators/catalog-mixed-review-queue.test.ts",
+      "sha256": "c732673c61d78b2e45649ecd427add6d9f978c76a8e28351152757650ffd0243"
+    },
+    {
+      "path": "src/calculators/catalog-mixed-review-queue.ts",
+      "sha256": "fb557d72524a5f2a8592bd0ac22aa94f398e4bfbfc0583072c0457c8e353d5be"
+    },
+    {
+      "path": "src/calculators/catalog-p1-math-independent-regression.test.ts",
+      "sha256": "b620d1b86816b56b898f4dc7e29ceb28d24379baaadc0f3389e8d74e8eb0f6fe"
+    },
+    {
+      "path": "src/calculators/catalog-per-slug-audit.test.ts",
+      "sha256": "d78f18c07d4a52fe3d65446f1b2b4605f00fa2be1115cdfffdb537ed7cfed34d"
+    },
+    {
+      "path": "src/calculators/catalog-publication-evidence.test.ts",
+      "sha256": "393a5a7275d8cc58e07d5e78362771fd2a54d94539f6fa1b373557902199a106"
+    },
+    {
+      "path": "src/calculators/catalog-publication-evidence.ts",
+      "sha256": "1da446dfaae4086db479fc828d064a94a2e824a5857e763e570bd02b8a7372ad"
+    },
+    {
+      "path": "src/calculators/catalog-reconciliation-report.test.ts",
+      "sha256": "0aff9cd0e41b8ed4192df032bc12dd71108e895ff42c7f4839ad47577e67f79c"
+    },
+    {
+      "path": "src/calculators/catalog-reconciliation-report.ts",
+      "sha256": "9b84d7ebd4c0c716dfc150290358814e3ac730cfc18b293fbfa98c32b0d64139"
+    },
+    {
+      "path": "src/calculators/catalog-reconciliation-runner.test.ts",
+      "sha256": "c227dbf5e09807b28218489faae90ef9f0875b74daae5fafde277c7088008d53"
+    },
+    {
+      "path": "src/calculators/catalog-reconciliation-runner.ts",
+      "sha256": "80a5fc0b8eaa1236f4e03f7cf5f2e21a48f9ff289056b1e87e5d4ce0f155fb25"
+    },
+    {
+      "path": "src/calculators/catalog-reconciliation.test.ts",
+      "sha256": "7548e406afe02dc3b46ea8b3370ef42798ac2345bc1591a3444911554be0d10c"
+    },
+    {
+      "path": "src/calculators/catalog-reconciliation.ts",
+      "sha256": "eabf6a2c240231e22534337009341b9cc46641006ff8bcf249bd59560170304c"
+    },
+    {
+      "path": "src/calculators/catalog-review-priority.test.ts",
+      "sha256": "e4fadbe53a3830192a7ba80b798bbfc075b0f07faedcce19e69c5294a2615b0b"
+    },
+    {
+      "path": "src/calculators/catalog-review-priority.ts",
+      "sha256": "f83f8a9a3f3ba14eac0c6336406d79148356e4ea0c16d7239bd6d78bd4089544"
+    },
+    {
+      "path": "src/calculators/catalog-reviewed-standard-evidence.test.ts",
+      "sha256": "ee95ed2dfaad9660c4e1891bd2013b6a3629969ab0905deb463850a5c13d0fc2"
+    },
+    {
+      "path": "src/calculators/catalog-shared-domain.test.ts",
+      "sha256": "ec117e91b98751dd4885f1d01156b8901d261e785a8f1056d1c795f3f32fe5d7"
+    },
+    {
+      "path": "src/calculators/catalog-slug-review-ledger.test.ts",
+      "sha256": "83f1488e21beddc2bde343678ce199b198c441f856199403047340e119cf67c7"
+    },
+    {
+      "path": "src/calculators/catalog-slug-review-ledger.ts",
+      "sha256": "d44f6103bb74a81055ca5292306820434bc3e005e4627c57d9828fc12f03a50a"
+    },
+    {
+      "path": "src/calculators/catalog-source-contract-evidence.test.ts",
+      "sha256": "d748f1cfc8c7fa17037cdec550f5486f59ce6b4766e4d3d46c623de9ad87ba3c"
+    },
+    {
+      "path": "src/calculators/catalog-source-contract-evidence.ts",
+      "sha256": "620dfb9609fbd4c6ab67351ecc8803e4fc53aabe64fa3a23de988579d8ce6b6b"
+    },
+    {
+      "path": "src/calculators/certification-evidence-packet.test.ts",
+      "sha256": "c435004dee219e57e140181c79c248bb66103e25c84eff16e46e1d81c3fac3b7"
+    },
+    {
+      "path": "src/calculators/certification-evidence-packet.ts",
+      "sha256": "e9040650a614da1188b7c1dca7894b38c5e8c546b3807d4790c8e3e550767965"
+    },
+    {
+      "path": "src/calculators/certification-evidence-source-deduplication.test.ts",
+      "sha256": "9961aa73195404c435df4788f0d78e0969dc0c65c9417c35b91c20b27fa33327"
+    },
+    {
+      "path": "src/calculators/certification-evidence-source-label-quality.test.ts",
+      "sha256": "e8358fb91105fcea812c4a3b8c0382bdd461036dc6c59a3cf9f37fa2188c4ff2"
+    },
+    {
+      "path": "src/calculators/certification-evidence-url-validity.test.ts",
+      "sha256": "f224c3f07359edb6127fde702886f9c0ca6de4cb6ba6d9eaf72a491df261338e"
+    },
+    {
+      "path": "src/calculators/certification-review-policy.test.ts",
+      "sha256": "77c0c98f917937963f40b1593542a43213f51648dd520985f55cfd15e97a5ee3"
+    },
+    {
+      "path": "src/calculators/certification-review-policy.ts",
+      "sha256": "9e9ef8336e722eb667676bd24f8a298254838d3ca01a8d76e83272e34382413e"
+    },
+    {
+      "path": "src/calculators/chemistry/catalog-batch-1.test.ts",
+      "sha256": "d00b66383fab4bdbd281243608548a4660a1cae8de18f850be69b5350a926027"
+    },
+    {
+      "path": "src/calculators/chemistry/catalog-batch-1.ts",
+      "sha256": "19e8295ff6dfa059e27fd565b9a0c923d2c4ebc6c314db4074329f98024eeb2e"
+    },
+    {
+      "path": "src/calculators/chemistry/chemistry-batch-1-direct-domain-validation.test.ts",
+      "sha256": "410d0cca035af6e552fe7f0e187376b95fba86d9e1ae96a1e0660d6c823302bd"
+    },
+    {
+      "path": "src/calculators/chemistry/molecular-weight.test.ts",
+      "sha256": "cbd09d3d1ca148f9a6b8532fcac2d8e7dc8c33502a4c242ab8833168401e9fe7"
+    },
+    {
+      "path": "src/calculators/chemistry/molecular-weight.ts",
+      "sha256": "a423344150d0042466ec7183c18cf7ff3b423d6dcb2f071cc7255d7943324772"
+    },
+    {
+      "path": "src/calculators/completion-contracts-independent.test.ts",
+      "sha256": "a5a3556b04e6f0900afcaaa43cea411e749f7a41aa0639d8a2a5bc6f4aa7fcc2"
+    },
+    {
+      "path": "src/calculators/completion-contracts.test.ts",
+      "sha256": "e1a579bdc1ddcbfaf1ad7607482b95eb02a0600f1c47005b66909f8255519c11"
+    },
+    {
+      "path": "src/calculators/completion-contracts.ts",
+      "sha256": "86a3ee18faee1a951c6d43b63762b9158497e2885fdde83bb9e310a80c1730aa"
+    },
+    {
+      "path": "src/calculators/completion-manifest.test.ts",
+      "sha256": "a5957281266e0fb06795b2beb20251cbba93d0cabeafbbe3c6ca7a73c138ab85"
+    },
+    {
+      "path": "src/calculators/completion-math.ts",
+      "sha256": "2069c86d5ef7d994664037b01c719a5764f84ec4624f090c4a9478d03233b0ed"
+    },
+    {
+      "path": "src/calculators/component-contracts-independent.test.ts",
+      "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+    },
+    {
+      "path": "src/calculators/component-contracts.test.ts",
+      "sha256": "40a157371cdd115e4720524f6fe918a29abac63e773c04574fc0beef39928c74"
+    },
+    {
+      "path": "src/calculators/component-contracts.ts",
+      "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+    },
+    {
+      "path": "src/calculators/conditional-authority.independent.test.ts",
+      "sha256": "5933ecf60b580a8cd6cfa948c6f0f463ff4b8f1d3723a599f46585a8a8dd868b"
+    },
+    {
+      "path": "src/calculators/conditional-authority.test.ts",
+      "sha256": "5e28466bd7d67e524db6682ef909d0fa4962929db666f3375fdaf2c0d9d24e51"
+    },
+    {
+      "path": "src/calculators/conditional-authority.ts",
+      "sha256": "caa90a092f24c63876fc24c28011e1737397f76ebdea5b3118fbbe0f4c5193c3"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1-direct-validation.test.ts",
+      "sha256": "0399f8397556e5237a686f443983e942dfc130785ee19215e8f32f59f7b68463"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1.test.ts",
+      "sha256": "8fea867836a9336035acf7858243f8f435318066b5b70c8564ccdcc7287da696"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1.ts",
+      "sha256": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2-direct-validation.test.ts",
+      "sha256": "051e783fbfdf8367131dd9032a7ba2a347cfba77440cfb7efc5a7f48f7eacb38"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.test.ts",
+      "sha256": "86c94de1d03fe89ee9b578674dc31fcd09a3674af22a795719c84164ea27acc3"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.ts",
+      "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3-direct-validation.test.ts",
+      "sha256": "006b49a55e0c3b66d58fba3bc7f82c242710b720289736ced59f3c8fb9f192cd"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.test.ts",
+      "sha256": "80d4fd8b65afe6cc669c73c6d61b526394ff0582dd50d1aeb2f09528ea5e82b1"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.ts",
+      "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-4-direct-validation.test.ts",
+      "sha256": "eb1b9329c7f6397d53bc01fb45b04a66a816335fecf12f99ee1c2a72990336d8"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-4.test.ts",
+      "sha256": "18a1a984804999337179b784e3a612a6e0ec5a5ac8af665a0edb8ccd0bf24efc"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-4.ts",
+      "sha256": "4358ecb067e980b3f7070f470eaba300f95ca9025046297fa9bd6ddc95034883"
+    },
+    {
+      "path": "src/calculators/conversion/cooking-volume-domain.test.ts",
+      "sha256": "f174fd4a3cad92a8a1ee2317a9583735bf10448e9a33a6d3ccfd7ef72b04d7f7"
+    },
+    {
+      "path": "src/calculators/conversion/draft-master-435.test.ts",
+      "sha256": "47f46a9fe56229fa31eb75a4a01a922089233098d61d18b4ea9989018730af79"
+    },
+    {
+      "path": "src/calculators/conversion/draft-master-435.ts",
+      "sha256": "657246a8a64e6f017729677d6d66a544eaeaaac6c6df42910776cc7f5776f7d3"
+    },
+    {
+      "path": "src/calculators/conversion/draft-master-441.test.ts",
+      "sha256": "d7107a66844c872c2d4327ab07aea24b5ea3b2e310ea478852e54e600fcf9d1a"
+    },
+    {
+      "path": "src/calculators/conversion/draft-master-441.ts",
+      "sha256": "c54b69c7e3b20dcaabaced2ba5d16faa085a5db4da23b030928bb9e08f76d944"
+    },
+    {
+      "path": "src/calculators/core/draft-exact-decimal.test.ts",
+      "sha256": "a2e8521e027fca2a0b27cf59279a29aa59e5bb3169998d6251b8ba0cd943ca4f"
+    },
+    {
+      "path": "src/calculators/core/draft-exact-decimal.ts",
+      "sha256": "b84e48d133781af98c4dafda12d7ed94ff77ef1b042745c1291b5b4ed90bd097"
+    },
+    {
+      "path": "src/calculators/core/draft-master-205.test.ts",
+      "sha256": "77b3dd45a656eec9b8850434ddad229b57f19c9dbf8bd732e1be71a59ad6becc"
+    },
+    {
+      "path": "src/calculators/core/draft-master-205.ts",
+      "sha256": "3d7116c77af22480d7a3b6e35baadb2248f05bf29bfbe5d79125c574036f4597"
+    },
+    {
+      "path": "src/calculators/core/draft-master-206.test.ts",
+      "sha256": "07b0c255f371a8f59f59cc95fa7369190a1d16a776618916009427eadec01ed6"
+    },
+    {
+      "path": "src/calculators/core/draft-master-206.ts",
+      "sha256": "2effabb91e59fef57c480f2c5179d97bd38c52780925f0b224448789735e8832"
+    },
+    {
+      "path": "src/calculators/core/draft-master-232.test.ts",
+      "sha256": "fd6a4fa7304fd96f8cd95009b7e7701367446dc0b66f94eff00f5620c87f1757"
+    },
+    {
+      "path": "src/calculators/core/draft-master-232.ts",
+      "sha256": "b3e1fd44dc7f018975a3be6b87ed941b017288445cc68a040f069db4c5752a64"
+    },
+    {
+      "path": "src/calculators/core/draft-master-233.test.ts",
+      "sha256": "3b919abc2941ef19e23acd4ea72b733484e7aaf5833a7364ae705f0eeb1c938d"
+    },
+    {
+      "path": "src/calculators/core/draft-master-233.ts",
+      "sha256": "f1f4ffad3db16c27d9b41a82db39cd1718989e7aaff07857bd8ba8fedb564c9b"
+    },
+    {
+      "path": "src/calculators/core/percentage.ts",
+      "sha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc"
+    },
+    {
+      "path": "src/calculators/core/unit-conversion.ts",
+      "sha256": "b323d7311c94a07c3da809af6293e775cf97e634e7c5f352fad0710a7a7e174a"
+    },
+    {
+      "path": "src/calculators/country-discovery.test.ts",
+      "sha256": "b7ccf12ebd87ecb8efe36217097da14dc9dd5c1a9f53292f52ab1228c730728b"
+    },
+    {
+      "path": "src/calculators/country-discovery.ts",
+      "sha256": "1f2462888721350537bef2a20345101166ea70057ad047cea55ee038de5b98bf"
+    },
+    {
+      "path": "src/calculators/country-intelligence.test.ts",
+      "sha256": "68bf25e019a3a3649b4093fd6b0d4e08e2c47658470fd79cbd40068ff4229ea5"
+    },
+    {
+      "path": "src/calculators/country-intelligence.ts",
+      "sha256": "47dabdfe98a9ecc90b57e93ed15936b2cddecdacdbab4a7301c5bc7c70b1baa2"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-1.test.ts",
+      "sha256": "ff59389b4a8a438ecb8065baa1d3ffa9c4103fc17c3ad9db97b0fb4d11da6b87"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-1.ts",
+      "sha256": "401d8eee881a349686bda1d26a05dd5cc594d93223f9a5597687705b70ee5c26"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-2-direct-validation.test.ts",
+      "sha256": "97506315265afd7f7671f7d56e7e31e4bd3da1bee23478ea78ed008a441f6269"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-2-overnight-direct-validation.test.ts",
+      "sha256": "3305ae4546c95d03c6797916ed3c03077bb666de7c5b702535a5a0e28e9118f8"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-2.test.ts",
+      "sha256": "b30191d0fe01644d516131e436b338c21a7b5ae2b7572704ad70dda29527af17"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-2.ts",
+      "sha256": "35797f610a32d13b76c2ea9115608c9d3b163cfa1ed11c319f615f3b3af3c63a"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-3.test.ts",
+      "sha256": "a51551d116de3edbbb7dbc4ab5f389c211764f4867130dcc35a0f064245d8c53"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-3.ts",
+      "sha256": "bcce15de3064a8bf0bf153147593398a9e160709bea680be96aebac6796ed268"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-4-direct-validation.test.ts",
+      "sha256": "54d321be8baab77a9490698512aafa11d20c8b2b8c7c41e0e5084b7d9eaeed57"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-4.test.ts",
+      "sha256": "0e5b68efe0e2ad10a452a81bb327eb1f8c84f2286baa49227346ad5904e54334"
+    },
+    {
+      "path": "src/calculators/date-time/catalog-batch-4.ts",
+      "sha256": "915d97086aff8dc1402e6aa99c561ea36d867b439eb806d27692ccccc4855169"
+    },
+    {
+      "path": "src/calculators/decimal-fraction-goldens.test.ts",
+      "sha256": "351e9d0f9730f482eb9f3e279cd62afa53501d874d0503beff75ea8d60a56f40"
+    },
+    {
+      "path": "src/calculators/decimal-fraction-goldens.ts",
+      "sha256": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-1.test.ts",
+      "sha256": "bb3197a3a5e873c69e002dbd93d9aac2a5a4192b0fa7febbf8a503002973f7bd"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-1.ts",
+      "sha256": "65b3ecdb748ac4dc042d98be0f413d7e5fbdab7378a73a8573848ed7cc641220"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-2.ts",
+      "sha256": "bc395d363a4564313798f487580145c4e5a94cf7dce3ea822290f5e14cd1c03f"
+    },
+    {
+      "path": "src/calculators/earth-science/catalog-batch-3.ts",
+      "sha256": "1aca52fae468bc5279cd7fb4f1c09806f48000c8582a4da091068bc2a60a0f0c"
+    },
+    {
+      "path": "src/calculators/earth-science/earth-science-batch2-direct-regression.test.ts",
+      "sha256": "b46b433a1027336eb5918c8b979d404c071002ed6ddb0c96e2e714ef64b93c5a"
+    },
+    {
+      "path": "src/calculators/earth-science/earth-science-batch3-direct-regression.test.ts",
+      "sha256": "108f5b48e84855b3b031749aeb23263f8389c7d576ac5d9b639baf2f65c82231"
+    },
+    {
+      "path": "src/calculators/earth-science/earth-science-direct-domain-validation.test.ts",
+      "sha256": "6f2762d79031062024959b8805c7a72c3102e21d7c14ad9cde045eda8956e046"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-1.test.ts",
+      "sha256": "1db5afd1757bfbd4118d3098850f18709eb1cf21cd4e4eca67af560db29c8321"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-1.ts",
+      "sha256": "43eab5317a4a9d92975d5a747d3c99f7105cbffc7f747d9909a3cd91f076fe48"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-2.test.ts",
+      "sha256": "82285a5b4c13ffe734eafcfda231fe274d49050c7386200e4ac86e95df96f22c"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-2.ts",
+      "sha256": "1eaba45a2f79407ad7828a98089d7b4c2d8ad5197fcb1b71138a3fc549366b67"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-3.test.ts",
+      "sha256": "a10c9acf3df92ee65af15b6d0f86be433717eba87e802fd3c0e2c17a2db5a348"
+    },
+    {
+      "path": "src/calculators/energy/catalog-batch-3.ts",
+      "sha256": "2a7cd952c5e0ed4619ec5fa254efc0d94e2d15ae94dc42d6adf972932f3e3ea0"
+    },
+    {
+      "path": "src/calculators/energy/draft-master-481.test.ts",
+      "sha256": "38cd0c91dd9066bd0485d002beddfdf01199c911ae235e754614004afafc69f1"
+    },
+    {
+      "path": "src/calculators/energy/draft-master-481.ts",
+      "sha256": "948c97fc98b424e0a9089f76605e74f7e09a3f7dcd267dfd4456a2acf6fe8185"
+    },
+    {
+      "path": "src/calculators/energy/draft-master-484.test.ts",
+      "sha256": "f974f9ce9c3669db99999dac914a408df159be96e1ab501580c26f754044b8a7"
+    },
+    {
+      "path": "src/calculators/energy/draft-master-484.ts",
+      "sha256": "d25dadb3da40a219c2829e0f4be5508ab9bbef85f14a88c08d6a4f203433fed4"
+    },
+    {
+      "path": "src/calculators/energy/draft-master-487.test.ts",
+      "sha256": "3045a0e5e3c25b4e7172032962a6d903696cf9124e8b5edaee1f899bd250a1ca"
+    },
+    {
+      "path": "src/calculators/energy/draft-master-487.ts",
+      "sha256": "5a4fd9016433463fd31eec0bc6cc86b899b5e4c2d6e50fb03c1f5731b94a0680"
+    },
+    {
+      "path": "src/calculators/energy/energy-direct-domain-validation.test.ts",
+      "sha256": "4a9aeaebf7d0def17845946697b362466f1af62ba0a0c27fe922ac8db543ac87"
+    },
+    {
+      "path": "src/calculators/energy/ev-solar-direct-domain-validation.test.ts",
+      "sha256": "4258387a907bc3a9c5bb18aec2f81fe70252e213ff9394b4aee60250d987474c"
+    },
+    {
+      "path": "src/calculators/energy/lighting-energy-direct-domain.test.ts",
+      "sha256": "764f9f1afeb20e083427a3437f2d9bf58a53f2b758d660c57f1c83f5b33538e1"
+    },
+    {
+      "path": "src/calculators/engine.test.ts",
+      "sha256": "e874116ef91b849806c2160894fd4abd3a37d7efe68895450e8c6de7f3d18407"
+    },
+    {
+      "path": "src/calculators/engine.ts",
+      "sha256": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-1.test.ts",
+      "sha256": "d290ce2bba156d5f9200ef5a0c0ebc06c139a4ce98bea9d42d154ccaddb7d842"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-1.ts",
+      "sha256": "5fffb904e82954a759e33f228e14fddf7a2d84a85845b20a946ff05cb3faaa1a"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-2.test.ts",
+      "sha256": "95eb9f8775cb8849c9447fbb2e3ccbe17d94e09d8ec3b47b1347e3abc4054843"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-2.ts",
+      "sha256": "ec16883a8b9a7c9766fa7eb67e13f441a80993da0eef811f475e696ad254f36b"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-3.test.ts",
+      "sha256": "2b2c2123c871b9780b8286aac82755c82d146c332e1cd367d16d37ed603c54bc"
+    },
+    {
+      "path": "src/calculators/engineering-construction/catalog-batch-3.ts",
+      "sha256": "c771e0b347e2150fa4144e0b1e1e11eb8d009eb0887dcc5eb35e53e1fe849c92"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-1-direct-validation.test.ts",
+      "sha256": "832e225f191b3e6ce1a619e4f70bd3e78cb895c0edac5e7207413f62fe36df94"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-1.ts",
+      "sha256": "9bd48e8dd909c9faf6c69dbb81803eed1944c75ca0b980acc8984bb942fd5ded"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-2-direct-validation.test.ts",
+      "sha256": "b24bbd54282a31dad1c7ec4f891f54b6bec15a74c6a405beee868b2e7cb30444"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-2.ts",
+      "sha256": "660b4dfa005344b24225c402e07272c7d90e4a8f107cb8421b2331281c7af022"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-3-direct-validation.test.ts",
+      "sha256": "7ff21ccbd73112ff58dc978ff92088c2b1d31db27f5d020189b0ce2518cdf74a"
+    },
+    {
+      "path": "src/calculators/engineering/fluid-mechanics-batch-3.ts",
+      "sha256": "725deec938a52e1e32f6cd95013a0c88183271fc9a9766d400060ac481a4b9a5"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-1-direct-validation.test.ts",
+      "sha256": "42143e587944d8df59ee4cb14746dd51adb7a6f4a7dab9ef64f4ebd615816c93"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-1.ts",
+      "sha256": "dc0a78ed532732f487aacdd31ef0b7d36257b5759374522f92c5f4fbdf4c3ae6"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-2-direct-validation.test.ts",
+      "sha256": "8151dc3e78013d00bc9b2a5dbe20e42d7e53a698fbb2a7c47d0aede553ec5fe1"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-2.ts",
+      "sha256": "8b535e4963599c320b286829e34c04aef55b21fc3eedbfdb4809fecbd2cb70a5"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-3-direct-validation.test.ts",
+      "sha256": "81ae6795e167af9a6fc787a26dd9e043ecbe037798e35821b25c449485a4a959"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-3.ts",
+      "sha256": "3607db69dd8720960876b256ad00957a3abb472fcb2d7b732f0e77d3e23495a4"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-4-direct-validation.test.ts",
+      "sha256": "305d360f9a1e319aa01b4eccef0dd0ffd3cd82f15468a0d6cd0282bd41a3aa16"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-4.ts",
+      "sha256": "9a7d38b8bf1f745ff9e893616ba6bcd29e01eade173fd081b61861e976db13a3"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-5-direct-validation.test.ts",
+      "sha256": "85654637915140be834526ab002040b58f6662c99727ad9312aae55034282066"
+    },
+    {
+      "path": "src/calculators/engineering/material-mechanics-batch-5.ts",
+      "sha256": "8240dc739a79259b953968c14edc8cb7dc29ba62ae6458fc7054427e8f056d03"
+    },
+    {
+      "path": "src/calculators/engineering/section-properties-batch-1.ts",
+      "sha256": "5a6f5f46a22ff20cfcf8a74ad1c9f2a7f756ed1e00871ece029a1d630f9fdda6"
+    },
+    {
+      "path": "src/calculators/engineering/section-properties-batch-2.ts",
+      "sha256": "3604ce9adcc57a4786a5d7f8b9c813621c299458d2d7f893bdd0bd03213fcbcd"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-1.ts",
+      "sha256": "bb17f0e5653cd51bc35fbf12b6b5d7ebab791316d8dd50c5ea452b89547fc19d"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-2.ts",
+      "sha256": "92f9e83ad926376cd53a657632700ac23a5eb98d5f07373e2540905cf616ea3e"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-3.ts",
+      "sha256": "345cec23cafd85385f59318278da6f1bbc945fc25a7032633f0394cd0dc0d9d3"
+    },
+    {
+      "path": "src/calculators/engineering/structural-mechanics-batch-4.ts",
+      "sha256": "8e452e2c2523375b165f093ec54146cd7c7eab0d24b6505248a1a42078cf6488"
+    },
+    {
+      "path": "src/calculators/engineering/structural-section-direct-validation.test.ts",
+      "sha256": "a7895277a155bbf1c93a0d78a3640fbf42bceac2afaca2f4b8fb062fda3b4493"
+    },
+    {
+      "path": "src/calculators/evidence-readiness-summary.test.ts",
+      "sha256": "4512c1312289bebc0338bcb9a6b69bbdc44f527b36a117191ec68c0c2f0b7223"
+    },
+    {
+      "path": "src/calculators/evidence-readiness-summary.ts",
+      "sha256": "19aa69827356aaaf80179c7036df6ed30e2a24cfeaa51f6abeecafc86f824f36"
+    },
+    {
+      "path": "src/calculators/exact-rational.ts",
+      "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a"
+    },
+    {
+      "path": "src/calculators/final-framework/acceleration-adapter.ts",
+      "sha256": "9f13afa70a7709bf99dbe11ce2c62a8b5b9dc703f40afbf4b224b0c839a9718b"
+    },
+    {
+      "path": "src/calculators/final-framework/acceleration-final-renderer-migration.test.ts",
+      "sha256": "0270531a52aac37a1ea656d8940b69d16cde0e3911706ffd434699d020cb996e"
+    },
+    {
+      "path": "src/calculators/final-framework/acceleration-post-migration-authority.test.ts",
+      "sha256": "c3320361efe01576426b3e061ab171ae1392b357a9e5e72ad4aa0217ad4baf85"
+    },
+    {
+      "path": "src/calculators/final-framework/acceleration-presentation.ts",
+      "sha256": "4b65b5e2ba357f35dadb74f2e1c84128df34a28c1d72f5e5e84e9197f63a5a96"
+    },
+    {
+      "path": "src/calculators/final-framework/acceleration-readiness.test.ts",
+      "sha256": "f5de11764ffb2bd0b57e4af671c55c1d2908ab163e962ca6427c43b07320df18"
+    },
+    {
+      "path": "src/calculators/final-framework/adapters.test.ts",
+      "sha256": "46e0d0ac0ff880dfbde7086d4a66f4066e12320c0bfc75e89dda753e37423eec"
+    },
+    {
+      "path": "src/calculators/final-framework/adapters.ts",
+      "sha256": "f4749489bbc133a9bb7ca4a89e1dff5809ec2d760979dea833473e10ffc2bfc7"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-analysis-reconciliation.test.ts",
+      "sha256": "d285a7146334b3584c8cfaa1337bea40b9bd6298239ed1bde2d29ec853678f7b"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-batch7-adapters.ts",
+      "sha256": "0268ede62643b6add7d72e435376d08558944e89cba244c72366c6a952144c99"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-batch7-final-renderer-migration.test.ts",
+      "sha256": "dc679e977fb4b40464d8fab7cd0aa5a0cb0380c8fdaa79ecfc31f1e67e512e03"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-batch7-presentations.ts",
+      "sha256": "a930c7a5f8fce885309669ce13446b79aa6be1fb2f72be62fd761be7e350cb13"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-calculus-adapters.ts",
+      "sha256": "0200a8fc0144a063d18650346efaa700b51f26295bfc159ecaaeed963543fd96"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-calculus-final-renderer-migration.test.ts",
+      "sha256": "7660226b26082cda0513318a5d9609eda3e3a91760958e0d3fc5af5ab5267ca0"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-calculus-presentations.ts",
+      "sha256": "c015db3bc76a592f98b9216d6f7b9c46e6b87abd9e80d2e024bc57163a97e0c4"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-polynomial-root-adapters.ts",
+      "sha256": "d0ba58578e7f30eb7ab44d105d7ba8612def841c072f4d0ca6fb3911bd513e9e"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-polynomial-root-final-renderer-migration.test.ts",
+      "sha256": "38afcdd5b57925ac364477e56b43a30f3a578f2157090153c1cbe3c0cbac5200"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-polynomial-root-presentations.ts",
+      "sha256": "83b8e2ec11dcb6c3ba23a8dbe0ef1c0f46a8905b69e9dc57eff6058a2e085200"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-visual-core-adapters.ts",
+      "sha256": "f9819631ed937ad8a324936cc4ff1ebe4863f7b97c26efe79322cddae258a576"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-visual-core-final-renderer-migration.test.ts",
+      "sha256": "026d3c3ed659deaf49420c7d67547708838dd3c5a5e7b785700a83e1ed3e9905"
+    },
+    {
+      "path": "src/calculators/final-framework/advanced-math-visual-core-presentations.ts",
+      "sha256": "ae7cc37218a8d4607d7714b7f79d2a06d18b7e1a3c3ae42d3f323e2c3b05ea2b"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis-baseline-contract.test.ts",
+      "sha256": "d10910669659ba4f174d82af1e76b04174a7a1470c4c281ec2a16a3c1cf2f20b"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis-inspection.ts",
+      "sha256": "c88bb307720647efda80b5bead689bedb226b3d146d1c364fd900dba3c48306e"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis-reference-golden-parity.test.tsx",
+      "sha256": "6f2dc5c0e6d2a1315a40805b4b2530dacc98b32e9c35913a10504de9d77d369e"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis-surface-policy.test.ts",
+      "sha256": "d1c10ba280e9ddf7e86ecce2997c672047c6bda20b0ef7f0cd7c34ba4b5fae55"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis-surface-policy.ts",
+      "sha256": "5fbc0ac497a44826163017f6b18ff743f8720a9ada9165678abc19d1fd9b1cc2"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis.test.ts",
+      "sha256": "cec83716ce5a3be70ad026bf7bd4179f018a8dc6808e24fd34b8ee1238847b4c"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis.ts",
+      "sha256": "225af2ddbba2bb3aa3f571acc8e4a8eb263f6b553e25fbc7db3bf69254185013"
+    },
+    {
+      "path": "src/calculators/final-framework/astronomy2-earth23-readiness.test.ts",
+      "sha256": "dda23df7098ead34c3abc65ba15076be2937fe68c1376a8c2235294e620485b5"
+    },
+    {
+      "path": "src/calculators/final-framework/battery-storage-certification-fixture.test.ts",
+      "sha256": "18cf01c7c388c83a31c3c407a475e7b7f73d1751eafb8cca1b338cbd9bbab942"
+    },
+    {
+      "path": "src/calculators/final-framework/binomial-probability-adapter.ts",
+      "sha256": "7a67de8f9d0783a34656e3306adb3d535e27993fd3c92e9f414e7b0fcd341f6f"
+    },
+    {
+      "path": "src/calculators/final-framework/biology-readiness.test.ts",
+      "sha256": "16e7e0e976b755b3f5d6f79c6ff4639f56577c0f6e100c9d8a89dd3e608d2149"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-analysis-separation.test.ts",
+      "sha256": "258241cf40b3d2a7bb866ff88d1d9a240ffc28977ba9305a1f5a0538ebcf870f"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-experience.test.ts",
+      "sha256": "1bc47742cd5df3a6a764fae18f7aeef28eec4c8f6a3376f67eae473e4319dba5"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-experience.ts",
+      "sha256": "53d3c17a3daa237fffc8c4b05f81701ef3b28a46fbf862323a0342e8ead82aa8"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-free-surface.test.ts",
+      "sha256": "20769dbdd9e13a5ec11720b5e218605ef03bc75b38439ece634dcb34d8b517d7"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-free-visualization-post-migration.test.ts",
+      "sha256": "bb9b9f03090a88a7dfb155eb9a88729c7c36cfc4b484c23b953d506ecbc6f9d2"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-post-migration-parity.test.ts",
+      "sha256": "3177cb3f727076d6995dadf3df37c05ad6a2dd106b4593168b430286293f39d3"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-presentation-equivalence.test.ts",
+      "sha256": "c1176a9d8e4f94fb884f071729941598f1ea1525d315d9913aec9cdc1af85df4"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-readiness.test.ts",
+      "sha256": "3769d4f30cd7383718527aeedffd9847e17889c83f55d1f11f5dc6bccd87db02"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-renderer-migration.test.ts",
+      "sha256": "31bcbe55fda5c617d3ae360770246e9d1da999902628259e92cf93c916a69b66"
+    },
+    {
+      "path": "src/calculators/final-framework/break-even-trust-evidence.test.ts",
+      "sha256": "7dbd74f9f835ec0b56d9afcd14bddb2fd3f3f7d399ce24910c1add346a293a0c"
+    },
+    {
+      "path": "src/calculators/final-framework/business-growth-readiness.test.ts",
+      "sha256": "1b7b25274635dbe33f7f08c5f2b60517dbe4d99d643de460c965b6bddb58784c"
+    },
+    {
+      "path": "src/calculators/final-framework/calculator-seo-trust.test.ts",
+      "sha256": "c0996ad9dc1d8fe398463be632ae890102124791ba6805487dc04fd92f882704"
+    },
+    {
+      "path": "src/calculators/final-framework/capability-presentation.test.ts",
+      "sha256": "edea7c9d2aa92fddff6d2d727310236413858cb1e9cb21cc4b6e3f3fa5acd0ba"
+    },
+    {
+      "path": "src/calculators/final-framework/capability-presentation.ts",
+      "sha256": "052187b7cf1d1b06aa6701f5ff7c9f80b7baa733add74242470a8e834e355ad4"
+    },
+    {
+      "path": "src/calculators/final-framework/certification-authority-boundary.test.ts",
+      "sha256": "be11e8657f38ac16398d6f8650e42983e25d879d1c68994258cd9e7ecad82a91"
+    },
+    {
+      "path": "src/calculators/final-framework/chemistry-numeric-adapter.ts",
+      "sha256": "c56e12089bb0c6eae7e2c809bfdffa3b6f7236f2b000d728e3d82529f3a2ff07"
+    },
+    {
+      "path": "src/calculators/final-framework/chemistry-numeric-final-renderer-migration.test.ts",
+      "sha256": "99937534dd486f456f8a36933a64ee9240aff41e503133a9287f1822ce2bb253"
+    },
+    {
+      "path": "src/calculators/final-framework/chemistry-numeric-presentation.ts",
+      "sha256": "53e99af4bb2512cf157b0cb9fce3e9cf844848eaf4963b8bc0853abeef3c0413"
+    },
+    {
+      "path": "src/calculators/final-framework/cidr-adapter.ts",
+      "sha256": "562807cc2c87a0badad5ab14965a2d276215065e17eb7a5f9b43ac574792b7c2"
+    },
+    {
+      "path": "src/calculators/final-framework/cidr-final-renderer-migration.test.ts",
+      "sha256": "70a2c0438bf1d622248813b5477f130b9c11ebc5fd216e903a7d11a2041f84f9"
+    },
+    {
+      "path": "src/calculators/final-framework/cidr-presentation.ts",
+      "sha256": "3a649ffc7d002330042015bd62aa6bd0b47fc67c75ace407f6558889a1749112"
+    },
+    {
+      "path": "src/calculators/final-framework/combination-adapter.ts",
+      "sha256": "54d32047a6190469ac01b6678a8b36aa20ed66137d0ef034183079c2ed15caaf"
+    },
+    {
+      "path": "src/calculators/final-framework/combination-presentation.ts",
+      "sha256": "c3aba35aaea5814254e8261ba46651ec6d96fde3a9890a2c052ed88348aaec62"
+    },
+    {
+      "path": "src/calculators/final-framework/complex-number-adapter.ts",
+      "sha256": "ce603f662b68655185907f9a9668bf8e9b12430852e00ee9d360845dc8bb40ed"
+    },
+    {
+      "path": "src/calculators/final-framework/complex-number-final-renderer-migration.test.ts",
+      "sha256": "64b6b2c005469b9a087350a75b4aaf01c9435622ff2a1926411b31fe5757ae5d"
+    },
+    {
+      "path": "src/calculators/final-framework/complex-number-post-migration-authority.test.ts",
+      "sha256": "bd4b12afcf87a3fac937104b109c39796f01a324cf30ee8e22f8e5406d548c4e"
+    },
+    {
+      "path": "src/calculators/final-framework/complex-number-presentation.ts",
+      "sha256": "c723cbb6afc057e19e015e1a88fb836d154c95d0c4d28f1b72b1bee6003bebff"
+    },
+    {
+      "path": "src/calculators/final-framework/complex-number-readiness.test.ts",
+      "sha256": "75bcbbc10dc81ad3bbb654fadca08e260841255aeeaf365bc973591f6ca1978f"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-analysis-separation.test.ts",
+      "sha256": "17e2da5746ff929eb7e2de796243c3fda1721d4981e28721f5e49aa1f63dc132"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-cross-plan-core.test.ts",
+      "sha256": "bb420098a9c1819a9b3b0db13835feb858f14870f9ccfcb18715f5f2f4c68cbd"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-final-parity.test.ts",
+      "sha256": "3395b6a00e41bfc73710ac189930007eba436fd1fa35f02ccb9ab628c142e56a"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-free-surface.test.ts",
+      "sha256": "f512a0243cd1997117768772dfa98a2ae4cc9775bc05ec1bd763e17132cf06cc"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-post-migration-analysis.test.ts",
+      "sha256": "b5bf12ce2ed074f2282afa32aa7ecb654947a0c9fa511f8328c8c0c1f5b73739"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-renderer-authority.test.ts",
+      "sha256": "a83bd5777345a58db592a778eaea30a3613da099e78c653dd30968814b4009e0"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-renderer-readiness.test.ts",
+      "sha256": "5d502debc68b97e6d7280255e84fb62dba567a94bdc11651080d377cf4cca447"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-renderer-wiring-contract.test.ts",
+      "sha256": "a660d2705d88ac2ff83b3b6fbb44ee3f508db65a590c9b9d8a6d81410450cebb"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-route-binding.test.ts",
+      "sha256": "0533e3e0d52a5b533eff492a3a999417747edf12c3fffba044a30d4d6ff22d64"
+    },
+    {
+      "path": "src/calculators/final-framework/compound-interest-trust-surface.test.ts",
+      "sha256": "0eff5cb2f468e97457201b8715da3e823c5939fc0e5ea5332bdaa985ac35e2f3"
+    },
+    {
+      "path": "src/calculators/final-framework/concrete-adapter.ts",
+      "sha256": "f975f4c6daf7f45c3c11aba7895b9c97398c09a8abc727057699fbdfa04e81cd"
+    },
+    {
+      "path": "src/calculators/final-framework/concrete-final-renderer-migration.test.ts",
+      "sha256": "9241347a97ab950b78aac66ce00863d7c85d668c022370df842481efea3d4038"
+    },
+    {
+      "path": "src/calculators/final-framework/concrete-post-migration-authority.test.ts",
+      "sha256": "8d1f1083777753e50653a20113bda0d8c86178bab2e0771f30e8c6ec83faf346"
+    },
+    {
+      "path": "src/calculators/final-framework/concrete-presentation.ts",
+      "sha256": "a86e198f2f4e6548f5a893f4f8e0a9697b861761ae98771ab0b34f385c666679"
+    },
+    {
+      "path": "src/calculators/final-framework/concrete-readiness.test.ts",
+      "sha256": "59dee1655c4018c9793c49609ea9da06f8d4fe1697c1b9ef72d10643906469fa"
+    },
+    {
+      "path": "src/calculators/final-framework/confidence-interval-adapter.ts",
+      "sha256": "78805f2a1f020e4269d3d032cfc252955c06200ec0ad797b85791d3a30e09622"
+    },
+    {
+      "path": "src/calculators/final-framework/conversion-datetime-wave2-readiness.test.ts",
+      "sha256": "dc4a915c991e06c4ed61c232ceb18c46d44c5dc47483ef08fc572203dae4144d"
+    },
+    {
+      "path": "src/calculators/final-framework/correlation-adapter.ts",
+      "sha256": "05e4396bb692968186bc34763b7f83649735ffd0250d2747184de36e2ea5ba1c"
+    },
+    {
+      "path": "src/calculators/final-framework/cross-plan-parity-expanded.test.ts",
+      "sha256": "0151f9f122fbce9e4bc5cd841a140419c187067fb16a95a9626ccab398c7c0f8"
+    },
+    {
+      "path": "src/calculators/final-framework/cross-plan-parity.test.ts",
+      "sha256": "553d59a7fc08b40b1f4280a271a6843458717db8c4284ffd8a9133f3e3732c14"
+    },
+    {
+      "path": "src/calculators/final-framework/density-adapter.ts",
+      "sha256": "311afd81b55d7b6628eb79e5787a7c2c1d7f7a51921ccf9c247589515bda66bb"
+    },
+    {
+      "path": "src/calculators/final-framework/density-final-renderer-migration.test.ts",
+      "sha256": "584f2e3fd9fcd7d8098d63f8cdf62e66e95fcf05d041d247feb8409563488ffa"
+    },
+    {
+      "path": "src/calculators/final-framework/density-post-migration-authority.test.ts",
+      "sha256": "e61abfb4c4e2b32bdafda3b3a2772c084473cc242ce3580521b38ac3459f8838"
+    },
+    {
+      "path": "src/calculators/final-framework/density-presentation.ts",
+      "sha256": "be1a9da654a32e827d77f9949e81c310fcb8f6a9fbc3ca925729b5024bad8be5"
+    },
+    {
+      "path": "src/calculators/final-framework/density-readiness.test.ts",
+      "sha256": "51d1a86d498244d7f29b3838074cd3950a01d500262ca1811a59de9768d7053a"
+    },
+    {
+      "path": "src/calculators/final-framework/distance-time-adapter.ts",
+      "sha256": "c84b6bd36be6e5cc2179e8c7087e3d1544bd79f2e6de2d55f1bf8a9bbb6afada"
+    },
+    {
+      "path": "src/calculators/final-framework/distance-time-final-renderer-migration.test.ts",
+      "sha256": "ec4ae12a806a1e340929025ed7c2446c341abdaa3fc794624d7fc1375299534e"
+    },
+    {
+      "path": "src/calculators/final-framework/distance-time-post-migration-authority.test.ts",
+      "sha256": "b81e84151d7ce0b1a18b36b91054df7f49191d173bd5bfdda74f59c06aaf8535"
+    },
+    {
+      "path": "src/calculators/final-framework/distance-time-presentation.ts",
+      "sha256": "e959a345c70d134697025469fb7c1ed9071310157410ad04c2654ae64776b5ea"
+    },
+    {
+      "path": "src/calculators/final-framework/distance-time-readiness.test.ts",
+      "sha256": "aa12a583ba6b6f32560e93cfc0c801186b641c5bcc2e5b7937844c6158e98cf4"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-applied-quantities.test.tsx",
+      "sha256": "5c5a3000335c6a52079079c3936627960f7b19dcaa9f917045a663e5f0fb96e7"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-applied-quantities.ts",
+      "sha256": "fd168b90a8e9b050b2d684b465b0875e80ad3c5d541e2cf0230e0c2f1c2e2a77"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-four-contracts.test.tsx",
+      "sha256": "bab208e4a29a364f49a321e328235659768e45add5de5fb7a320d7530a928e26"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-four-contracts.ts",
+      "sha256": "6528ac613964423f9d6b5ad65652a6e7ae3613d7a7a7cff56a2fdf1dc4d88466"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-math-conversion.test.tsx",
+      "sha256": "fb83e1c6a1dafbd628c09f2cec5b23f3373e21b1d81ae47dc4014b311b9d11da"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-math-conversion.ts",
+      "sha256": "80f209a92f7f8049f21900c94a99ab85a094b4a7be5316a664ac66977e213a73"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-persistence-acceptance.test.ts",
+      "sha256": "e2426cf8c3af6a9af66237277e7e8357b65c83e7ea75209add64872fc47ec401"
+    },
+    {
+      "path": "src/calculators/final-framework/draft-preview-catalog.ts",
+      "sha256": "1181252699e808db4068aaf6c1d128ac27800e370b7c856a1007e44725c0b282"
+    },
+    {
+      "path": "src/calculators/final-framework/drywall-adapter.ts",
+      "sha256": "d1783c0449cfd6923c346ea67b715d04ae234bd23517f9642ab78f836140aadb"
+    },
+    {
+      "path": "src/calculators/final-framework/drywall-final-renderer-migration.test.ts",
+      "sha256": "921765a7821378d56cc73352b7a72cb828cd6a48d194ef50e928750c7cdbe088"
+    },
+    {
+      "path": "src/calculators/final-framework/drywall-post-migration-authority.test.ts",
+      "sha256": "3d8aad341cdce1855e786ada118e61cd7599329282c3c2cc2804d153c411c356"
+    },
+    {
+      "path": "src/calculators/final-framework/drywall-presentation.ts",
+      "sha256": "2a26a6dd19586eadc109813d51a05be0d41cffd05e2a63e8ca9180cbf6f2dea8"
+    },
+    {
+      "path": "src/calculators/final-framework/drywall-readiness.test.ts",
+      "sha256": "77378078fd97b5c416931f483664fc793080e85a5a2d089d89d3002bbc6d4d0e"
+    },
+    {
+      "path": "src/calculators/final-framework/energy-candidate-readiness.test.ts",
+      "sha256": "1e571213e2d3dfd908d1b73e32424f2db497c82521e008408fc2448d6e536e1e"
+    },
+    {
+      "path": "src/calculators/final-framework/energy-final-renderer-migration.test.ts",
+      "sha256": "2a3ef9f6d5db4d9b084c81c2b264458fc0e231a3047cb56e9c55309a37663799"
+    },
+    {
+      "path": "src/calculators/final-framework/energy-physics-draft-readiness-inventory.test.ts",
+      "sha256": "886eeb2baeb3191bacb4d0eb26d2c50a244e0a65b902ea55cfc511cc5f92ebc9"
+    },
+    {
+      "path": "src/calculators/final-framework/engineering-batch23-final-contract-readiness.test.ts",
+      "sha256": "50f54333fffca6ac8fac6dc894bbb68b5e774c865580e2ffbc55e1ca10434be9"
+    },
+    {
+      "path": "src/calculators/final-framework/engineering-certification-candidate-audit.test.ts",
+      "sha256": "4ccc684f08ac9584ee31b928b03eec2eab3f92daeed2c86d17ae3d96e28e6f11"
+    },
+    {
+      "path": "src/calculators/final-framework/engineering-final-qa-applicability.test.ts",
+      "sha256": "209abf4d47cecf549b37ef770a87b5e7738ed22e6a510b1997f73995cddfc786"
+    },
+    {
+      "path": "src/calculators/final-framework/engineering-machine-verifiable-final-evidence.test.ts",
+      "sha256": "73d658bd43ea20ec88f3ffd4fad53dff39d06f19a92be29183e8fd235f5a0094"
+    },
+    {
+      "path": "src/calculators/final-framework/engineering-reviewed-certification-readiness.test.ts",
+      "sha256": "48dff8b057ea7042478076e12f3587ad5d537961618fd064995dbfeff1211b05"
+    },
+    {
+      "path": "src/calculators/final-framework/engineering-section-fluid-readiness.test.ts",
+      "sha256": "809aa907fe6a6d190eed3b9d1fe105e42931ce9c04dc71848f7e0a3baae176c3"
+    },
+    {
+      "path": "src/calculators/final-framework/entitlement-reconciliation.test.ts",
+      "sha256": "39321e6eda78c20af8b7396b2c67cb34ff131e1c2b9e4d82ab952619e7f72009"
+    },
+    {
+      "path": "src/calculators/final-framework/entitlements.ts",
+      "sha256": "3bf44e0595c1af5c13620e6349f1c056a4794db92174e397e6d3883c72cbea3c"
+    },
+    {
+      "path": "src/calculators/final-framework/final-framework.test.ts",
+      "sha256": "cdcd703dcec44b7d01ccf4e0a637162c62780112159a88a73b73b77efe67a804"
+    },
+    {
+      "path": "src/calculators/final-framework/final-renderer-accessibility.test.tsx",
+      "sha256": "d1b9a4868d4825251d717084786b8074716a1212c910c3c863de6c4db0769577"
+    },
+    {
+      "path": "src/calculators/final-framework/finance-readiness-assumptions.ts",
+      "sha256": "1d3974b0d5cc29dfa8c00c530641a40e1a9cb4e3659267562cf977835d8d97e8"
+    },
+    {
+      "path": "src/calculators/final-framework/finance-readiness-result.test.ts",
+      "sha256": "0b1fa7b91b3f00584708919a4b492d19b8d0b2e84c29141dfc183587a14fa471"
+    },
+    {
+      "path": "src/calculators/final-framework/finance-readiness-result.ts",
+      "sha256": "cccab6693b4fbf61a9614e9538282d814aa3f0615abcca100a3e93ec35d3ba41"
+    },
+    {
+      "path": "src/calculators/final-framework/flooring-adapter.ts",
+      "sha256": "395fc672a7c14f5bf6def36712185451bf854ebae8777ffd89c91e5c9b69c395"
+    },
+    {
+      "path": "src/calculators/final-framework/flooring-final-renderer-migration.test.ts",
+      "sha256": "bc74d22cbd3c755e44384882687d80b5ae1d91ec2e5f9ab82684624a8868713c"
+    },
+    {
+      "path": "src/calculators/final-framework/flooring-post-migration-authority.test.ts",
+      "sha256": "5231fe4d6f62072a3a200b7c9d5191ed14e710369384ff469bc8d71bcefd9958"
+    },
+    {
+      "path": "src/calculators/final-framework/flooring-presentation.ts",
+      "sha256": "d569c713aaf8e78bb82ffd5f326837f9b9d4b306d617bb6536bff622b48df96f"
+    },
+    {
+      "path": "src/calculators/final-framework/flooring-readiness.test.ts",
+      "sha256": "eb6b6b393f5e71dd601f1993c7fb94acc74750a7b646cc7d7bc12f0325bbf115"
+    },
+    {
+      "path": "src/calculators/final-framework/food-astronomy-earth-readiness.test.ts",
+      "sha256": "2fe35b1e6262ae445e80a9fb9fcf1b104d191f3bfeedad4f6e034557f72215f4"
+    },
+    {
+      "path": "src/calculators/final-framework/food23-source-readiness.test.ts",
+      "sha256": "35309132f11ce21b1f3402c2c7cc4092d7ad2d57d103472c65d48955e39427e2"
+    },
+    {
+      "path": "src/calculators/final-framework/force-adapter.ts",
+      "sha256": "84d41bb063b50296bf5716d6ea1d58e3230509e316cafa6dc28470388e342cb2"
+    },
+    {
+      "path": "src/calculators/final-framework/force-final-renderer-migration.test.ts",
+      "sha256": "e82537d2734f0c061ef6b537695515e638b129512fa4607dd5ee19a0bda6b466"
+    },
+    {
+      "path": "src/calculators/final-framework/force-post-migration-authority.test.ts",
+      "sha256": "9bdde2fd253ef87bb4a86c5b8d4806b86a4156e30a02f68f5bf53f3661959558"
+    },
+    {
+      "path": "src/calculators/final-framework/force-presentation.ts",
+      "sha256": "9baec72617f0d802f4499fa3540ae56f6b51b65a0df74a03c5d09d3877a096cb"
+    },
+    {
+      "path": "src/calculators/final-framework/force-readiness.test.ts",
+      "sha256": "7f3f33d80cd838686f9d39207f9419aa8ff55282c1fe233a38b2530bbf050be3"
+    },
+    {
+      "path": "src/calculators/final-framework/free-core-surface.test.ts",
+      "sha256": "7c5d9e3068d0f07ab74e26467a90932f545d302f00ce464e3958af43bcda64d4"
+    },
+    {
+      "path": "src/calculators/final-framework/frequency-adapter.ts",
+      "sha256": "d6c1409f7c8aabea886b7372c160a0e152aa8ec30b3f5b886f26600e888b0238"
+    },
+    {
+      "path": "src/calculators/final-framework/frequency-final-renderer-migration.test.ts",
+      "sha256": "31bcdb9ab2c2223c24992f8ab3a3ad6dabe1b886b0cb56cdd0b04af39d523911"
+    },
+    {
+      "path": "src/calculators/final-framework/frequency-post-migration-authority.test.ts",
+      "sha256": "aff888a71e893c90226ce77ee3880099979f1762861bc2a4c6c7b944868e5e8f"
+    },
+    {
+      "path": "src/calculators/final-framework/frequency-presentation.ts",
+      "sha256": "e22afcd9bfd81146ae377360f301649072245393819efbe5f92e9896e1830180"
+    },
+    {
+      "path": "src/calculators/final-framework/frequency-readiness.test.ts",
+      "sha256": "921a19e18ba078794d235bb300da6751b0d7473c03ea5cd2779862cd8e1b8307"
+    },
+    {
+      "path": "src/calculators/final-framework/geometry-core-adapters.ts",
+      "sha256": "9ce97c731eb0370035d7bb220d17129afe1f96258aef0f28b02843a449ed51d0"
+    },
+    {
+      "path": "src/calculators/final-framework/geometry-core-final-renderer-migration.test.ts",
+      "sha256": "9aca798a41c8459fe8a7847bf6abe53dd9e95294aa20c65c10cfe8ab1704f144"
+    },
+    {
+      "path": "src/calculators/final-framework/geometry-core-presentation.ts",
+      "sha256": "0c3ea904306b7d91ff219cc77d77d70bdbff39be25345a32a272ce446bbb5c74"
+    },
+    {
+      "path": "src/calculators/final-framework/input-governance.test.ts",
+      "sha256": "7c3a3941313671842d2b1006e08c9393bbc69644eba6e2f89601617da710f462"
+    },
+    {
+      "path": "src/calculators/final-framework/input-governance.ts",
+      "sha256": "9004f6e5b79a16a4531837733ae10e36af2314dbd71e18c6e21a900309ba84da"
+    },
+    {
+      "path": "src/calculators/final-framework/investment-period-presentations.ts",
+      "sha256": "8fa1c9ab3d34894260dab40277313214e7216b953df45163d5cc25268b599153"
+    },
+    {
+      "path": "src/calculators/final-framework/investment-periods.test.ts",
+      "sha256": "6b28099dc00b619b4eac73edbaae09c83becfd29de139617e02eecb10ea118a5"
+    },
+    {
+      "path": "src/calculators/final-framework/investment-periods.ts",
+      "sha256": "d2cfb48822b17ca40c91a35578f53e5c4cb31f8ae1a4e30cbcec6aecca331eba"
+    },
+    {
+      "path": "src/calculators/final-framework/kinetic-energy-adapter.ts",
+      "sha256": "9b237c7337c3f32a01eb39d8c9a5de51c3d6c3c1f65001376a9c4999077242fd"
+    },
+    {
+      "path": "src/calculators/final-framework/kinetic-energy-presentation.ts",
+      "sha256": "437f9ee2a70db66f3c9d86b73d52a04bd3afde984785ee64ad720930bb68f870"
+    },
+    {
+      "path": "src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts",
+      "sha256": "22159c30fac63178179a23651c06dd9c53536ee2b2d58da13665aaa8039bab71"
+    },
+    {
+      "path": "src/calculators/final-framework/legacy-final-presentation-lifecycle-boundary.test.ts",
+      "sha256": "6089c0fff239f5cee80ea5d2074944374ccec3548e17414026041c8799bd183e"
+    },
+    {
+      "path": "src/calculators/final-framework/legacy-final-presentation-shared-semantics.test.ts",
+      "sha256": "5f4f2a31b8bf2ad6edd2893bb981527521cf14b1d2683b8683afa6fe04544c27"
+    },
+    {
+      "path": "src/calculators/final-framework/linear-equation-adapter.ts",
+      "sha256": "3fa51ab13cbb1b904d19cf38de487c998dcb5fe0df7e3b56d77d917a968529fc"
+    },
+    {
+      "path": "src/calculators/final-framework/linear-equation-final-renderer-migration.test.ts",
+      "sha256": "9048af0eca7ec412cf43c427ec4265b1f2fc7e3aa56a842bb186d5ee91c5f2d8"
+    },
+    {
+      "path": "src/calculators/final-framework/linear-equation-post-migration-authority.test.ts",
+      "sha256": "638cbcc427e5c9de4c2c5f74c02da2cf8646fcb0cc2b5e6a0e6d56942d79ca9a"
+    },
+    {
+      "path": "src/calculators/final-framework/linear-equation-presentation.ts",
+      "sha256": "bc0faaa02b2b61360b7906976ea8548fbb7c403075ca0727d49f18a9af1d15ca"
+    },
+    {
+      "path": "src/calculators/final-framework/linear-equation-readiness.test.ts",
+      "sha256": "6c9659b1eb545f7c120c78ba56b580493be26f44039c0ea2e5466fc6c4a618f9"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-analysis-separation-readiness.test.ts",
+      "sha256": "2f7cf7ec1a72775ac6c6fa91f3ab1fe6825b2f5c451bd882d7a5fb43e7f62149"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-free-surface-readiness.test.ts",
+      "sha256": "2206587188d5e9940b8b7c5130467027589032651341e84026f8c23f9b195f5d"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-parity-readiness.test.ts",
+      "sha256": "2e9b1871042245b94142ed34b5361bd67ed54f992244a7b25db4ac6d1330ee7e"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-postmigration-authority.test.ts",
+      "sha256": "f41f66889747019efcab09ec683382d966fbcf4e2269239208130bef9f1d8053"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-postmigration-schedule-policy.test.ts",
+      "sha256": "fa35b009acca8d947d88425301bb99f036b4c2d756392904c379319132111d7e"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-renderer-authority-readiness.test.ts",
+      "sha256": "20c51a50954205d97de0decd964a1fc2c26f08a9e8a65690381e974e58d5d326"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-schedule-metadata.test.ts",
+      "sha256": "e5860d5247581412d9cb0333f2f2b5aea45c31c44d5c678c21be122ecff89f62"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-trust-readiness.test.ts",
+      "sha256": "8d8391fab4d2c58dad2d2345f8535156d6d6a5c45d8ae954c80700e3e83df2d3"
+    },
+    {
+      "path": "src/calculators/final-framework/loan-wiring-readiness.test.ts",
+      "sha256": "7a6ba232dbb7b8e7ddd3b23f39facf4206b63077748546e47ab8d59e950c3ab6"
+    },
+    {
+      "path": "src/calculators/final-framework/lumber-adapter.ts",
+      "sha256": "5fa450e272482d9929b4f6e56bf2c595e06a615d3226a9c8708ac0c8662ac1e4"
+    },
+    {
+      "path": "src/calculators/final-framework/lumber-final-renderer-migration.test.ts",
+      "sha256": "f348db456ef6415d47fb14e1fecaf8f3773d29c09bc3370ec17376ea7c9be455"
+    },
+    {
+      "path": "src/calculators/final-framework/lumber-post-migration-authority.test.ts",
+      "sha256": "dfc73d1108f7ba40bcfc43d1f4c1942558716d0e17b8dffa8c59e6d9ff98237e"
+    },
+    {
+      "path": "src/calculators/final-framework/lumber-presentation.ts",
+      "sha256": "1a5a4d38b66dc99abb724c961371b935b5954dc93e965dcf52153e539e4a4e69"
+    },
+    {
+      "path": "src/calculators/final-framework/lumber-readiness.test.ts",
+      "sha256": "ff17c945c409ea32ce2982643cf306fa206f022169a4fbc97eb55bfd9c5eeee0"
+    },
+    {
+      "path": "src/calculators/final-framework/material-mechanics-readiness.test.ts",
+      "sha256": "c4f0aa872299965dd4d82305bdcfb4ca4eb8c0d33caf5f387295d2fc937c1ed4"
+    },
+    {
+      "path": "src/calculators/final-framework/math-category-editorial-boundary.test.ts",
+      "sha256": "4a380fe8d8d4e1e22a6dd4213c90f2eb81df9615c28eb5ea13861bf5164c1a6d"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-determinant-adapter.ts",
+      "sha256": "4608c9c2aa2f3d71bcf62c7cd72259c0255ff413c7b5a33a3c22bc743c3ecb5f"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-determinant-final-renderer-migration.test.ts",
+      "sha256": "20cc45da9ebae712c039d0bc5a6b57107c4ec60fc9e374357b71d427e7721339"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-determinant-post-migration-authority.test.ts",
+      "sha256": "c1c48f3c8d2062c7f17feecb1ee6d5831d7f356ce0029781c3df6ac1a82bfdda"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-determinant-presentation.ts",
+      "sha256": "e0c8ee7177f6b5e5fa8595a59c354427bbdb33438af39c75adbc8a6c3962695e"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-determinant-readiness.test.ts",
+      "sha256": "07cd22cc0f4877b794b39433ac9651e325b86cc428e40272dc4f5c530bfbd31e"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-inverse-adapter.ts",
+      "sha256": "b0bdc5472ac67e4b5f6124cd728820ae4b642639d409da51e5651976595009e3"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-inverse-final-renderer-migration.test.ts",
+      "sha256": "08cdec8c2401bd954a1099f233d8a407fb934fd7f126600816ea90bc83dd837c"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-inverse-post-migration-authority.test.ts",
+      "sha256": "04e2b09baa05179ca5a087d14d005fb02870e363888abe4864d6c698c04d993f"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-inverse-presentation.ts",
+      "sha256": "fc35b065dc29da0740042a2070c82fc62e648d047f27ec2ba04070b7dc6e2553"
+    },
+    {
+      "path": "src/calculators/final-framework/matrix-inverse-readiness.test.ts",
+      "sha256": "c02649712719b7479e38da51917633aeaa465df649f5a057d63ddc05f5861ff4"
+    },
+    {
+      "path": "src/calculators/final-framework/mobile-responsive-contract.test.ts",
+      "sha256": "4c9f8bc0a1375119e8a617bd1c4f8297fb5c9fede7dcb9a8d2549c99c818db63"
+    },
+    {
+      "path": "src/calculators/final-framework/molality-adapter.ts",
+      "sha256": "e4ebb1ea0f419af492fc0b3e8dd52e7bd0dd44887536b140aae99872e989b103"
+    },
+    {
+      "path": "src/calculators/final-framework/molality-final-renderer-migration.test.ts",
+      "sha256": "6182ba62a5cf0348621123728a05c1b23db3d1305a31265b1fff6cebf6bad732"
+    },
+    {
+      "path": "src/calculators/final-framework/molality-presentation.ts",
+      "sha256": "3604de4cf9fa14116cf33185718c2bbaea9fefca7a913dbae63d927cb317dc92"
+    },
+    {
+      "path": "src/calculators/final-framework/molarity-adapter.ts",
+      "sha256": "dd7c935e53ad9f69171d465cefd69395ee3e14d25bd4204d3aa27def18c46dd4"
+    },
+    {
+      "path": "src/calculators/final-framework/molarity-final-renderer-migration.test.ts",
+      "sha256": "5202715b1d59f55964fcec50597e6824249d98d8a758ab87ea4c1f01a75d6c43"
+    },
+    {
+      "path": "src/calculators/final-framework/molarity-post-migration-authority.test.ts",
+      "sha256": "0ea4ac1559eef6fb6d7e762b6ae66af6b9ccab3999497c84238163baac3ca656"
+    },
+    {
+      "path": "src/calculators/final-framework/molarity-presentation.ts",
+      "sha256": "909dc6ea5b91d385007ba38409ce9dd4eb526a786aaadb5ffac73a28d290683d"
+    },
+    {
+      "path": "src/calculators/final-framework/molarity-readiness.test.ts",
+      "sha256": "d0911ff5ea86121ff7e41543d7077f8eda3162c3d2b3b9fb5d89b72120385e62"
+    },
+    {
+      "path": "src/calculators/final-framework/molecular-weight-adapter.ts",
+      "sha256": "8802c2de1a2fc14460f032db0f370ce5c8d0d7b645f66139425680f9f623656a"
+    },
+    {
+      "path": "src/calculators/final-framework/molecular-weight-final-renderer-migration.test.ts",
+      "sha256": "870557fddfc7c8d676791cc6bf1066ad9b09eea60d0334f9636f7c49b54b7ea8"
+    },
+    {
+      "path": "src/calculators/final-framework/molecular-weight-presentation.ts",
+      "sha256": "ff8aafca972021e929f565d054d65e9363fdd66cfe9b9c26f32b811f3acbeed0"
+    },
+    {
+      "path": "src/calculators/final-framework/momentum-adapter.ts",
+      "sha256": "a9b53da8f3ea06e70816b7c9717a2c549b469fcc8a33abc7a0ecc4516cd79787"
+    },
+    {
+      "path": "src/calculators/final-framework/momentum-final-renderer-migration.test.ts",
+      "sha256": "832e3fb2715f694e5095da318fe06741ad60d8dc3321bbd6ff93ddfd6b07f0a8"
+    },
+    {
+      "path": "src/calculators/final-framework/momentum-post-migration-authority.test.ts",
+      "sha256": "de6bae17c4d83365f4104c674889dd7fb4558fcc098dacb811eb9efe7d3a5ebe"
+    },
+    {
+      "path": "src/calculators/final-framework/momentum-presentation.ts",
+      "sha256": "c39412908acf856c16fdcad6c250f6badbfc81d150c7f889154ed3f57173743f"
+    },
+    {
+      "path": "src/calculators/final-framework/momentum-readiness.test.ts",
+      "sha256": "cb3bcab10f43ca89b418fbd33e6315929df77d5f9c70e092960d883f729b54a4"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-analysis-separation-readiness.test.ts",
+      "sha256": "a41feb6f47350b7fe531dcb52dce11ca23ad78950bb0a9b597dda31cc5431651"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-free-surface-readiness.test.ts",
+      "sha256": "3696b882ec6a69a5857d34ff0272f839f7b7439f2dde49e1c687d851c5e90474"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-integration-contract.test.ts",
+      "sha256": "507e3a52cf1654211f77eb1dce1f1c527d3f68c6823dee2e389c704a441b0568"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-parity-readiness.test.ts",
+      "sha256": "8e4f258f58cab727fe081c852cdd914936c8b558e430dd78fbb93a2730d0bb51"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-postmigration-analysis.test.ts",
+      "sha256": "bb4aafdeab5084279671b1371ad49b748f07272d66e418a3f6845ae5cdf5a7c8"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-postmigration-authority.test.ts",
+      "sha256": "b360c5e41336af52c47ac9f1a487c475309935c2420b176f4d9944278c58150a"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-postmigration-trust.test.ts",
+      "sha256": "333f062b0a5fe624a8af223776644c6daad3b1eaff0ec6927ff95c706d71df40"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-rate-analysis.test.ts",
+      "sha256": "5cc0d8ce51eb8b196cbd9f313349dd8f6a6f0bebab24afb16747c4c174b18bea"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-rate-analysis.ts",
+      "sha256": "250c05582df44869d3ec103339774465f61e35a7b649e6f13d6ae01a37605a7e"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-renderer-authority-readiness.test.ts",
+      "sha256": "c598abfc66bf5e896f39ea98598073e38774563f9fb9459ca1c6f756543ea9e1"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-specialist-package.test.ts",
+      "sha256": "265d84bbe3f24064003c6f5721e70e9cde1687ce8fe8eb725021f7819ab4db7f"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-trust-readiness.test.ts",
+      "sha256": "9c69917619f71dc0d87abc4c30ab4d189524ba8433c514b9b0f4ae323f2657f2"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-wiring-readiness.test.ts",
+      "sha256": "9905cfed8c75b0a6216e92a251a332f40260c39b496ae84fd644a029a14fd6c0"
+    },
+    {
+      "path": "src/calculators/final-framework/normal-distribution-adapter.ts",
+      "sha256": "ea8af236c276284c3ce6a81a3f9473dbbc5b3d144d9cc457c96ec32b581ca719"
+    },
+    {
+      "path": "src/calculators/final-framework/numeric-input.ts",
+      "sha256": "f36a7cb48bbe732ab9d9f3ade1f68fa7f104bc054fb6687a1aae282874f15227"
+    },
+    {
+      "path": "src/calculators/final-framework/paint-adapter.ts",
+      "sha256": "4411a653b4aa003a4e90056a46fec3cc275d544bab9b6c2253bf09ce77b081b5"
+    },
+    {
+      "path": "src/calculators/final-framework/paint-final-renderer-migration.test.ts",
+      "sha256": "f1731709eadd3f1e3dc5926a810db0111d5ca27c57d5bff4fbe39c50f45fd1bc"
+    },
+    {
+      "path": "src/calculators/final-framework/paint-post-migration-authority.test.ts",
+      "sha256": "dbcbc0fc005c9a7f51edd1d0de7537f3e7cb1f084c96bf91c22925c7d3db3d07"
+    },
+    {
+      "path": "src/calculators/final-framework/paint-presentation.ts",
+      "sha256": "6d67091c28f89e10b95ab4ad93abb3d55c1f382e38c149c5751c586cac658606"
+    },
+    {
+      "path": "src/calculators/final-framework/paint-readiness.test.ts",
+      "sha256": "1446017a40f898cf8554e2b6250a65da67705bdd59f9a4ad1e77cb283473fb5c"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-adapter.ts",
+      "sha256": "847089d234948b5c21a327acf93a76654341ae7e3a678f23cec08ffe2502cb65"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-cross-plan-authority.test.ts",
+      "sha256": "01ba1516ff667daf5955c3ed900dd953d7ff7f15af2611d88edacbb932803afb"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-final-contract.test.ts",
+      "sha256": "647b608ce071533ad1f475e15d7bd93a1548d888ac6c32fbc012704e3117709a"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-final-renderer-migration.test.ts",
+      "sha256": "96ee4a1ed400b634c780d75fc088dd6fb77ac58fabb54a8907cb2f10e782ef6b"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-presentation.ts",
+      "sha256": "c5896153204ffc2abe1f47ac36a01e3606d48be4c05ff11a3ea7725009b28f74"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-readiness.test.ts",
+      "sha256": "6d7f44c7042fdb95bc5fad9bfbe1030716bb97ca53181ef621bd5da5921d0262"
+    },
+    {
+      "path": "src/calculators/final-framework/percentage-renderer-migration-boundary.test.ts",
+      "sha256": "c85c1724091c161757344a37b7331961137d127bc26ee22bcf0bb42f4927fae2"
+    },
+    {
+      "path": "src/calculators/final-framework/period-adapter.ts",
+      "sha256": "0d434684b82ef49046a351fe2636d9082a20949bc51fd5b35cd5be1fac5ecaed"
+    },
+    {
+      "path": "src/calculators/final-framework/period-final-renderer-migration.test.ts",
+      "sha256": "36df45eeb9735516384ac3b1313f13be5c41c6481c4f7d7e9474875c1f7f123a"
+    },
+    {
+      "path": "src/calculators/final-framework/period-post-migration-authority.test.ts",
+      "sha256": "e002f7f5b574c1b35b9580c3d6da621e28412b9784b3fbdc5bfe7b438a5d8d03"
+    },
+    {
+      "path": "src/calculators/final-framework/period-presentation.ts",
+      "sha256": "6c649bcf6c03e5fe14336fe88cbec43a1c48b004dc26672b2da6706a2769303c"
+    },
+    {
+      "path": "src/calculators/final-framework/period-readiness.test.ts",
+      "sha256": "727744a74d4bcef78785ab254e49d5fbe0d90b8593c8af4f43df0300846f65d0"
+    },
+    {
+      "path": "src/calculators/final-framework/permutation-adapter.ts",
+      "sha256": "ff169fdffba2abb96554f2b730305d4045c60da04fbee0b2e83730bf167fca12"
+    },
+    {
+      "path": "src/calculators/final-framework/permutation-presentation.ts",
+      "sha256": "4863d26706332fac18bde9f7bd492ddf5d2efa23c9dc4aca6133ffb838b2adca"
+    },
+    {
+      "path": "src/calculators/final-framework/physics-batch1-route-uniqueness.test.ts",
+      "sha256": "8b654ecfcb78f8c5184b0d26433c0884f662e92db6525bed98a719fb58a66009"
+    },
+    {
+      "path": "src/calculators/final-framework/physics-batch3-adapter.ts",
+      "sha256": "9fe074dd1ed7dc02354ce385d8f30ebc0b373269e5900ea4944b245d96730dce"
+    },
+    {
+      "path": "src/calculators/final-framework/physics-batch3-final-renderer-migration.test.ts",
+      "sha256": "bf8fbb7422e4686bafe1e281d7f8953b6ece3c779da8ab235d0ab0cc83f3b624"
+    },
+    {
+      "path": "src/calculators/final-framework/physics-batch3-presentation.ts",
+      "sha256": "ba1b48d7e2f4d29d03757e9fcc234085a5867d744a49a9a2bf5b02771761e53f"
+    },
+    {
+      "path": "src/calculators/final-framework/physics4-energy-readiness.test.ts",
+      "sha256": "51d82763f8bde2dc8fdda270c3e82b94ea424d8b84463913753aab522960ef49"
+    },
+    {
+      "path": "src/calculators/final-framework/physics5-sports-automotive-readiness.test.ts",
+      "sha256": "bd5a253a98d82b2cdd10b14808bcb53e22460ab5ad8273a348c8318fc8297676"
+    },
+    {
+      "path": "src/calculators/final-framework/plane-geometry-readiness.test.ts",
+      "sha256": "d4e34dee7669342135d70d51c4fc030b844eafe62dab1f3ffd8ca558441372fe"
+    },
+    {
+      "path": "src/calculators/final-framework/portfolio-reconciliation.test.ts",
+      "sha256": "9549f3d60ec8b8617c64ee41815b97caefbea96f6f283deb888de48e4c10c231"
+    },
+    {
+      "path": "src/calculators/final-framework/potential-energy-adapter.ts",
+      "sha256": "59de42b0393ff392826edac59a52e23affae13ec161ff092a93b601cc7377443"
+    },
+    {
+      "path": "src/calculators/final-framework/potential-energy-presentation.ts",
+      "sha256": "7da62dfc82610b899f21e9b4faec624d530c839aa65518c8ca79874fc3a2fdd7"
+    },
+    {
+      "path": "src/calculators/final-framework/power-adapter.ts",
+      "sha256": "be607e3fbe9fcb6b8809a87876a7e961c4c4a4c091635453fa3eccfdeb2cb8b7"
+    },
+    {
+      "path": "src/calculators/final-framework/power-final-renderer-migration.test.ts",
+      "sha256": "b8c034e10f312fc44628211ced2feb3c2c6ad1f4d1bd2d4b7a8a42b5a5567c7a"
+    },
+    {
+      "path": "src/calculators/final-framework/power-post-migration-authority.test.ts",
+      "sha256": "b614666100e0336c818b0d051220f508f3dbdf1dff6c589b4b7e04d234ba8bba"
+    },
+    {
+      "path": "src/calculators/final-framework/power-presentation.ts",
+      "sha256": "f90bda77c9bbf23a265490f1e7f451dbb9bcb3b0c4df8b56b97a8a95294f6148"
+    },
+    {
+      "path": "src/calculators/final-framework/power-readiness.test.ts",
+      "sha256": "756ed1b753cd3b78ec5bef814fe0502b74e6bd0c741db15ec33911e79b1809bf"
+    },
+    {
+      "path": "src/calculators/final-framework/presentation-entitlement-alignment.test.ts",
+      "sha256": "d7014b23ccc5b99c5de8d6a8ee4c1d756cf534a061ad6237523324c6d7ddb301"
+    },
+    {
+      "path": "src/calculators/final-framework/presentation-families.test.ts",
+      "sha256": "125ba94d8a73726d612604a0c0df753d515578b01309a5b238ab7c94ca38ae29"
+    },
+    {
+      "path": "src/calculators/final-framework/presentation-families.ts",
+      "sha256": "49d3757fcc70950f7b4cfc20bba9fc1b21188c088289774488c25a7e5c032bff"
+    },
+    {
+      "path": "src/calculators/final-framework/presentation-family-compatibility.test.ts",
+      "sha256": "b274f847cdc78ddd857fb21e0b7bea8e606f382df96f16b1094267f3f37a7244"
+    },
+    {
+      "path": "src/calculators/final-framework/pressure-adapter.ts",
+      "sha256": "a15016f11ae044e97691b5b425bbf8cfe6678d371992ca41e51c38e5cde66898"
+    },
+    {
+      "path": "src/calculators/final-framework/pressure-final-renderer-migration.test.ts",
+      "sha256": "fb5c21376e92f8479b3ea35360e1e29013543752cfe77e6feb1c001416877a8c"
+    },
+    {
+      "path": "src/calculators/final-framework/pressure-post-migration-authority.test.ts",
+      "sha256": "20c72517724714e1d73561ac7b8f1a30c733a283e76a26e01ff8da3cf57327d5"
+    },
+    {
+      "path": "src/calculators/final-framework/pressure-presentation.ts",
+      "sha256": "9d100ab3562b01cfb6ccaf3ff116b8a110b3822c431eb7dece5163b65af294fe"
+    },
+    {
+      "path": "src/calculators/final-framework/pressure-readiness.test.ts",
+      "sha256": "04ca07f90379db13fa81595dc6bc764d2fe64752d40b1dc27bfa8958365af977"
+    },
+    {
+      "path": "src/calculators/final-framework/probability-adapter.ts",
+      "sha256": "8210aa8ba4c2846f6b0a2efcf1f4177457f6e0e195636901f11571706c8740ea"
+    },
+    {
+      "path": "src/calculators/final-framework/probability-combinatorics-final-renderer-migration.test.ts",
+      "sha256": "981132384b4b9ee2771bcdeb42a36bd739afb43c18ba8bdc2af8eeb2c93d68c7"
+    },
+    {
+      "path": "src/calculators/final-framework/probability-presentation.ts",
+      "sha256": "68c06ed93864f81314c407c4b702f1169f7651cc2a9670e9b3ac0ca766899d37"
+    },
+    {
+      "path": "src/calculators/final-framework/product-capabilities.test.ts",
+      "sha256": "30ec8c6e8cfd360f2c1e6cb044f7e31fba09e314064e3b3f628cd5a743399fb6"
+    },
+    {
+      "path": "src/calculators/final-framework/product-capabilities.ts",
+      "sha256": "9afc4fa5c40c5b3e9fe1cc2409348748dc6534accbe02331932f346322b966c1"
+    },
+    {
+      "path": "src/calculators/final-framework/public-discovery-consistency.test.ts",
+      "sha256": "763a2eb48c0dc80092fb0cfa1cf5909cc00779679154a0708042ece8c6695e9c"
+    },
+    {
+      "path": "src/calculators/final-framework/quadratic-formula-adapter.ts",
+      "sha256": "b113d41f9a516c67487f3002c5dd83053ee1285dbd40bf4de0d207b18e16003a"
+    },
+    {
+      "path": "src/calculators/final-framework/quadratic-formula-final-renderer-migration.test.ts",
+      "sha256": "d70d364f622def4bde792142cc4c4b0b10da3d31b621b90cdc17f36aaba7b30f"
+    },
+    {
+      "path": "src/calculators/final-framework/quadratic-formula-post-migration-authority.test.ts",
+      "sha256": "2680c1d727b07ba0578fcb61ea9b4fad7a735a53ed6fb2eaeb02ad22b84a3e0b"
+    },
+    {
+      "path": "src/calculators/final-framework/quadratic-formula-presentation.ts",
+      "sha256": "4a921b417a0f03cd21938c1b52418a6b3c8be59ced4e5d70f67f2edd5598b99d"
+    },
+    {
+      "path": "src/calculators/final-framework/quadratic-formula-readiness.test.ts",
+      "sha256": "1f73947e1ddfe71df40ed4d43c50aacc78838bed9360439c6bf6aadaa5fd6315"
+    },
+    {
+      "path": "src/calculators/final-framework/reconciliation-surfaces.test.ts",
+      "sha256": "bc3482b8c3449a88f0a61c141d855877abd27d2a06d3662c1d6fca7367a01a5d"
+    },
+    {
+      "path": "src/calculators/final-framework/reconciliation-validator.test.ts",
+      "sha256": "f536d92106645b1e57bcc203f4764905b4932c5bba82537024358ce1ffde2342"
+    },
+    {
+      "path": "src/calculators/final-framework/reconciliation.ts",
+      "sha256": "db20d64e5b95ba1e26c4215c1c2d54ef920ac85686438eab7c23f5ef91b75a9c"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-adapters-contract.test.ts",
+      "sha256": "89230f16a9371e9ecbac9d59eb1d9704c6482da6d321c49bcd5bdf1c528f5119"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-adapters.ts",
+      "sha256": "91cf583ef0d9c1862c335a205af49958f498d9165e12b3b900caac9ab371380b"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-presentations.ts",
+      "sha256": "3ca5c3660665d32f1197a8cb29841728a98577fbcabca8990babf7adfb337e67"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-analysis-contract.test.ts",
+      "sha256": "9bf390d30d2bdb8ef41fbef3fdf3f972d20e812046d3528e024ed37077e6d404"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-contract.test.ts",
+      "sha256": "b74e2337dea10edc62ea083572f4ad412fd9575c0c8d04acdb88065e10157b41"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-families.test.ts",
+      "sha256": "f5005de18fedc200f0f89ea14550c9750be2bb0cd497b9eca70adab430076ca2"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-family-semantics.test.ts",
+      "sha256": "20523b97cc2817fa89f8c62aae9464de60dc73d4d1447e930d04047d571eb4bc"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-framework-readiness-matrix.test.ts",
+      "sha256": "2d2a3c40b20d08bdd4444c523e4967794b8af6ec2f8d941a649c16571827ba6f"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-free-visualization-contract.test.ts",
+      "sha256": "4aeea0115a940766cf577f9f8105f2955ff365dd8545729fd020cc6c9546480a"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-free-visualization-data.test.ts",
+      "sha256": "4ea40cbe4b95bb054a5f5595864b5a5514488ff8b0782372b1a146bc364d5e72"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-migrated-renderer-convergence.test.ts",
+      "sha256": "5bd1b17e98e9ff912a48ad8fb136dd1d992f82929560ae0c79615cac40208583"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-presentation-readiness.test.ts",
+      "sha256": "4b48f5d62aea7a61b4b0012ce9b03e1d16b935c18da540a8df33837ea2720c86"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-renderer-authority.test.ts",
+      "sha256": "5a5dfeaaee60fea313d1deed749327384e2ce23b275aa5edbe994ad6449caa81"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-renderer-data-compatibility.test.ts",
+      "sha256": "055115c7937980a79bea22badcedb4c9d86015f0c12760fbcd6e0894947806d3"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-renderer-readiness.test.ts",
+      "sha256": "febcfc77331496ce62e50dd57a30508f7b1781e585351c1f21260c794d93d997"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-result-adapter-coverage.test.ts",
+      "sha256": "9315e16f3c68f747131fd03c35baf15a7c679dee9bd264fa80907c5272bae5db"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-route-binding.test.ts",
+      "sha256": "ec4603a0773b9dda19a4c79e3f4ce082ae7dcf3b3f2e0ddce11473a3076ec2bf"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-route-renderer-integrity.test.ts",
+      "sha256": "e8b633b812b9b1220cc9eec13606be80aa1be34ad322b745f12632db85424cc6"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-schedule-parity.test.tsx",
+      "sha256": "7641ffd7f7f61aa63769f046ed2e2a0b13d7c752866450e9b48df82f2997322d"
+    },
+    {
+      "path": "src/calculators/final-framework/reference-six-trust-completeness.test.ts",
+      "sha256": "829378741a2000ac5c4fbb897eacdf8d9e3bac8f670b1874824bd3d3ec32c154"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-rate-analysis.test.ts",
+      "sha256": "fb4c011ee2c5d16cf80a5320a3b13db5795a24054b7347b44f3e2fbaf1aff5a5"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-rate-analysis.ts",
+      "sha256": "97cebcf2a1efb21369667d5a2e5aea016bd63e5af05a4b3374a13a82b82295bc"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-value-result.test.ts",
+      "sha256": "65565da31c24c805ceba5704fa91d438a4310fb19d09c256ce661ebb50cab5a6"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-value-result.ts",
+      "sha256": "8f8657d8f9e150828aca4e7cf785d597ad9725ce632e3874cb0d03d20551a3c3"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-accessibility-contract.test.ts",
+      "sha256": "2fad3b27594f7f240b9ae17f7c7c6e70a5ff4a7ff0a0dc2c51229b4b45c990a6"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-authority.test.ts",
+      "sha256": "9de37ce2ffcc81cb24a8cad3ed0b0346663921c809664d7d63050e72f4c7a5d9"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-capability-policy.test.ts",
+      "sha256": "3122be79cb45eeba253658bba89561f80dc50bdc9adc48128d0bb34162d720cd"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-capability-policy.ts",
+      "sha256": "8ac480c4ed67f2ec6215a4436d7e2219b63ebf504c454a17a9ed723b2ec14f71"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-complete-trust.test.ts",
+      "sha256": "48f405154e13d173ae4cd90ce0068b3b70144c214fe335f7b54681d184e5e16f"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-display-parity.test.ts",
+      "sha256": "0dadd603c4ab47af81eb134c0865e9eee5a7504a987190be3da414a704a08bb7"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-display.test.ts",
+      "sha256": "bfef52056deedc3f1b587dd833bd6cd20f84bfe98290af49b478d04012e638ac"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-display.ts",
+      "sha256": "5e7af832955bddb26b080daab4261d0ba6d384c76a85164e545f0767fcb91ac3"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-explicit-presentation.test.ts",
+      "sha256": "fdf8ec0955472990bab47717d2aa33cf2ef0759e5f92f4ba1d36bc11f29ec6c2"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-free-visualization-semantics.test.ts",
+      "sha256": "4dbf47f6c00f95f69edcd807985970ef44c7e12249f1457d6ba24fc64803f80d"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-live-result-accessibility.test.ts",
+      "sha256": "03e35de799b7ea2b2252b4e5c4a6bf6d8ffe87331049a60e7f7c150fe8293e8f"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-metric-contract.test.ts",
+      "sha256": "c13815d45cadcdcc6c6d7dd9e444c6357cce2460881fdfa1e059e515b56065b0"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-schedule-accessibility.test.ts",
+      "sha256": "6eb17907e19ad10819bfde303f08e9ada4ccb6afbe75eca81a549797e5dff2e0"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-schedule-column-reconciliation.test.tsx",
+      "sha256": "df88fac67c79e02fd6a65b09b53d52fb42589b34a9b9ce090dd4600dcd8833f7"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-schedule-readiness.test.ts",
+      "sha256": "7765e4a98477db30cda53eba24929706269630a76b44e2988a9952ec03dd7319"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-trust-source-contract.test.ts",
+      "sha256": "e4f0f76c095411297bce42d3cc885f228d83f3ae242c20b36abcf00640248c15"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-trust-surface-contract.test.ts",
+      "sha256": "b26f8309935df6027aa9cd90e863f597a69f3f06f864147aa69576b924d6f6e4"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-trust-surface.test.ts",
+      "sha256": "83f6e2902e2d57ec05d386d42fb90f4d81c36cf433a4c8b10c6330743bda7fef"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-trust-surface.ts",
+      "sha256": "2695c622adb40733cc60b61dc45dfcefb1cb7e2bd7c06267a8cf88ada55ee96a"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-trust-ui-contract.test.ts",
+      "sha256": "76d675cf817b1d904aab663d04eb4b8da5ceb2d799cb39b68be1d3079329a55e"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-view-model.test.ts",
+      "sha256": "d77ab36ae01766a1dc9920ea3300caab2a3e0e1c00ae7cd2e232aeba3d3536c9"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-view-model.ts",
+      "sha256": "d1b0117dde6cdcf0f942ed977b87cc385bc85d623d0fcdf9e58f082b91492796"
+    },
+    {
+      "path": "src/calculators/final-framework/renderer-visual-data-contract.test.ts",
+      "sha256": "d9bbfe78d3455ea7bac70a57846bbe4d04a34fe9743e95b135edb4497362a5af"
+    },
+    {
+      "path": "src/calculators/final-framework/result-inspection.test.ts",
+      "sha256": "db1cc6f507de292a59c1aa97e15c29a79dc68f0e3ca020614fd7ea20ff0aa61b"
+    },
+    {
+      "path": "src/calculators/final-framework/result-inspection.ts",
+      "sha256": "0d10f74c3d5572a13e66db85ff3064a72bbe436860542b2d804bfe67b1848572"
+    },
+    {
+      "path": "src/calculators/final-framework/result-reconciliation.test.ts",
+      "sha256": "041c556852d8a2565c6de60686ada0d438aeba2eb4d04d7c50ae0d2cc3a48008"
+    },
+    {
+      "path": "src/calculators/final-framework/reviewed-certification-progression.test.ts",
+      "sha256": "23c51cb604d3b904082efa4754f14062835b42b2b6a0367b27a9a481b59b0ac2"
+    },
+    {
+      "path": "src/calculators/final-framework/roofing-adapter.ts",
+      "sha256": "645937a3d2f63f1c9cd9501c7f1ae505f287a0e4cccc1d166f1f19e7c0f4f487"
+    },
+    {
+      "path": "src/calculators/final-framework/roofing-final-renderer-migration.test.ts",
+      "sha256": "ce8190ae8c57364c019e382464c8799fa39d7d2354129ed877bad3c16689ca01"
+    },
+    {
+      "path": "src/calculators/final-framework/roofing-post-migration-authority.test.ts",
+      "sha256": "f0bd6ed97132255f872059ec38212751d233065e50a5cd42aa52389b4252bcde"
+    },
+    {
+      "path": "src/calculators/final-framework/roofing-presentation.ts",
+      "sha256": "cde9f2c955c187104cf1b78468eb0ff42b6237c2afac0657386142a5b9743ce5"
+    },
+    {
+      "path": "src/calculators/final-framework/roofing-readiness.test.ts",
+      "sha256": "12a5f9c53d616600134198bb33aacea8106faf1afebaa7faedd556091343daac"
+    },
+    {
+      "path": "src/calculators/final-framework/sample-size-adapter.ts",
+      "sha256": "a36d7b4cfb5d7fdf513ae275cbf7ae71285956b0f56265f2d4e0f9417dc1a0d8"
+    },
+    {
+      "path": "src/calculators/final-framework/schedule-contract.test.ts",
+      "sha256": "4e185121ab565ac62c3ed9dcea870f8b47afce6d1ec94ca6c8e492e5a0199cbf"
+    },
+    {
+      "path": "src/calculators/final-framework/schedule-contract.ts",
+      "sha256": "49e5b9aca48a755926a43326da6ee01423e63d68ac2932c6be18505bd1c98c37"
+    },
+    {
+      "path": "src/calculators/final-framework/schedule-metadata-integration.test.tsx",
+      "sha256": "5318f5519d195483d0f5a6bc39c737136b7088f1bdb912f00cca196491341479"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-analysis-readiness.test.ts",
+      "sha256": "19cf16428312e2831abb82dd7682ca2af41a9e50ecda218efe28216fd31928c4"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-free-growth-readiness.test.ts",
+      "sha256": "90365a040ea9a7044cbab24128fbae2581a4971d7965c5e1f39e0366dba2fcde"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-parity-readiness.test.ts",
+      "sha256": "b237c05853e2ac73ce33a4900eeebc97b07245698a15c82f094745261b26d41f"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-post-renderer-contract.test.ts",
+      "sha256": "fb3b82cca396db2457f87bb7d17c1c643ee887ac09c0bb1d2cdcb5731c83af61"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-post-renderer-wiring.test.ts",
+      "sha256": "aafd268fd45b3bb4c19e520e1d5b842de5ab642f9bf0fde34de51f23c3209cb3"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-renderer-authority.test.ts",
+      "sha256": "ffd07bab2210fd31d3d2d0c6d15fa8613001ef69dfbecfcfb61a0acb15f59313"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-reverse-final-renderer-migration.test.ts",
+      "sha256": "96280d706c9dd4951003635614fd2de8fb2518d2724c816f39539d3c3a5d951c"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-trust-readiness.test.ts",
+      "sha256": "501be05cfb75ff0ee08ac8a42117cfe7cdb033e49850c10b8d7f7ddf99f2cacd"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-v2-analytics.test.ts",
+      "sha256": "e17a60ee1a8f9fddff7f9381224bc43990c5221aed3e8e3e092cff8199ff2687"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-v2-analytics.ts",
+      "sha256": "ba0d13ae39b073870ef8818b5b25b9be3855dfe8d33b19347b68fb03f905378a"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-v2-projection.test.ts",
+      "sha256": "96716175d46422d1bc97999dd26f844bd0fdbac79efb2b630460729c7feb116d"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-v2-projection.ts",
+      "sha256": "1d3854aa6c25b3b8400ab0c54cdbc15b6bbdedd4abd1e5256b724c3384b6a053"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-versioned-draft.test.ts",
+      "sha256": "04319ca18ad50e740e6665692627e74ef6ef891f18106f3f2756bfb47a5b90f3"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-versioned-draft.ts",
+      "sha256": "37d5849120077af45d801c7aa2ff3153b39506660f1ac0f7510ce25cc64c03a8"
+    },
+    {
+      "path": "src/calculators/final-framework/sip-wiring-boundary.test.ts",
+      "sha256": "f872c9cb05a09d6ed40fda2bfd0c8ecfe695688faddbc2832bc8304d95a1db9a"
+    },
+    {
+      "path": "src/calculators/final-framework/solid-geometry-readiness.test.ts",
+      "sha256": "5dc6c4e2396e51851c4dea57304dfd71e78fe8597d215dc8fc0ba2253865357b"
+    },
+    {
+      "path": "src/calculators/final-framework/source-review-blocker-inventory.test.ts",
+      "sha256": "d66c72e1c8918da34479688c2dcd1bb463fcaffe3c2dd50f8f7f1910ce844a95"
+    },
+    {
+      "path": "src/calculators/final-framework/speed-adapter.ts",
+      "sha256": "341567c820608df17671c43a7537dde880f4bb8caa5a846e19cfafa8e7fb3e15"
+    },
+    {
+      "path": "src/calculators/final-framework/speed-final-renderer-migration.test.ts",
+      "sha256": "3ff4de74bc96c217d56fbdc574fd6f186220ade41f4e5464271bd06c3a89e512"
+    },
+    {
+      "path": "src/calculators/final-framework/speed-post-migration-authority.test.ts",
+      "sha256": "caff3faa78dd05061a00171e8bd8d5d1d4e610c3a3da1c6d488b078253d53ba3"
+    },
+    {
+      "path": "src/calculators/final-framework/speed-presentation.ts",
+      "sha256": "efb720ceaebadae08d8dc021df424bf9c7d6e01d95e1cb1520ddbb634dae704c"
+    },
+    {
+      "path": "src/calculators/final-framework/speed-readiness.test.ts",
+      "sha256": "d543837d0ab96534fcadea587e42bdd502174e88acf80eb246d390b69f3a621d"
+    },
+    {
+      "path": "src/calculators/final-framework/square-footage-adapter.ts",
+      "sha256": "bddb882911053a0e9d5b543594d3e8ff1fb2c6ccbd6dd8d4c91fc845770d4dda"
+    },
+    {
+      "path": "src/calculators/final-framework/square-footage-final-renderer-migration.test.ts",
+      "sha256": "a8b758fde880786894f110d89a9bf3f468dc16fb2184b19e1ef8799284447d92"
+    },
+    {
+      "path": "src/calculators/final-framework/square-footage-post-migration-authority.test.ts",
+      "sha256": "8290d4728bd36f3ef1a1d3988121fead93ad416638b4605df7b36f56fc2974ba"
+    },
+    {
+      "path": "src/calculators/final-framework/square-footage-presentation.ts",
+      "sha256": "6ea2636e607d292946ca63b63d1ce53318873237058cb9fcc44c6551f7f92d32"
+    },
+    {
+      "path": "src/calculators/final-framework/square-footage-readiness.test.ts",
+      "sha256": "f3e4c24ee07eab63c1aa04114c844eddb237b479ebc54ce5e8f6ae71d852c75d"
+    },
+    {
+      "path": "src/calculators/final-framework/standard-deviation-adapter.ts",
+      "sha256": "285e0744bc2e4ce3d0d14f5332210797f118164fc786a8af2a8941df1eef61cd"
+    },
+    {
+      "path": "src/calculators/final-framework/standard-deviation-final-renderer-migration.test.ts",
+      "sha256": "fedc5201b224b89daa063e76afe74533837813c2ad82aeb838acf89656bfc997"
+    },
+    {
+      "path": "src/calculators/final-framework/standard-deviation-post-migration-authority.test.ts",
+      "sha256": "89f2fbbe0696f5206f8108b863ca71105d08fbdaa85a51ccb9dd5ceb8a2afdb5"
+    },
+    {
+      "path": "src/calculators/final-framework/standard-deviation-presentation.ts",
+      "sha256": "e3e52326726b3df0f8ee56b3695fc1eca98b81b83e02da385c052a603bdd7e66"
+    },
+    {
+      "path": "src/calculators/final-framework/standard-deviation-readiness.test.ts",
+      "sha256": "ec364b30fb3d226c4b2256af5f203e5e038abe5645b6ccc10fef49593498c8dc"
+    },
+    {
+      "path": "src/calculators/final-framework/standard-draft-candidate-coverage.test.ts",
+      "sha256": "1cd290f4a4a51d5b55c9de9cd5b0a5437d3b45d7cfcf474c3c69c536cea3375f"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-batch4-adapter.ts",
+      "sha256": "f076f2d19d645e8e8a781ff9805fb3095c4a978d3bccdd710af1b07ca0dd48f8"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-batch4-final-renderer-migration.test.ts",
+      "sha256": "364b34aa672587a472ef71e349e476ec7e82ffc3a42e97eeb032ede162919511"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-batch4-presentation.ts",
+      "sha256": "3ed8fffcbac269b9c7bfe017c245ac64d6592a84b9541d63127e88d91e048af6"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-distribution-final-renderer-migration.test.ts",
+      "sha256": "dbff1fa5de582c697b13e3779c9164e601e3556ab34d26cf7ef4796fd37360f3"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-distribution-presentation.ts",
+      "sha256": "99857a88129c3a60d07ab7afd37712ff3ae8d99f5d62a8cc960b14138b5d5c9c"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-inference-final-renderer-migration.test.ts",
+      "sha256": "ccf5a3204cda7f1664bf430c29becf2229935650ebc8e6289abce0d2ddc55e1f"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-inference-presentation.ts",
+      "sha256": "9c5dde3ba3244654a4a6c14086cb97ed438a6ce8d6253cbde6c9ee9bf7963b06"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-summary-adapter.ts",
+      "sha256": "c614fd3d335801fd4560d66dcef42b77fd53ccf667edc6eb232cce339e58db78"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-summary-final-renderer-migration.test.ts",
+      "sha256": "e5c0c3f42810b9ccffdd2b9f119a5e3c007838fe2712ce9c1dce4877e78bf193"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-summary-post-migration-authority.test.ts",
+      "sha256": "6c14fc847e425edf67fd142caf674845118baed164409a74889f0946be4dae30"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-summary-presentation.ts",
+      "sha256": "7783593457a2adc8b82ea4b1e301315d03f2b4a3820a473b9d5b4046f2461a10"
+    },
+    {
+      "path": "src/calculators/final-framework/statistics-summary-readiness.test.ts",
+      "sha256": "7015b9919dad7c2ec49752cb9f34af588e2a2f49b9ade93a8417499867520d13"
+    },
+    {
+      "path": "src/calculators/final-framework/structural-mechanics-readiness.test.ts",
+      "sha256": "760755a3b51d2cd37ee8cbdcfe22e75420828cd9728c9ea089835e429cf5bc0e"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-presentation-reconciliation.test.ts",
+      "sha256": "81bb700f673d42f8f3cb8070e47cd075504e2867cda48731c054c8a79de191d0"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-result-cross-plan-parity.test.tsx",
+      "sha256": "f3c6aa20e86e14ebd81e577025f8787067a8434bc4e4dd300f40992e769443b1"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-result-interop.test.ts",
+      "sha256": "ae53b85e57ab1c21b12869a95d669560313f8edd977ce68066070bdb35fe52e9"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-result-interop.ts",
+      "sha256": "6b4766a142092d1a1b10be60ab88598e1d7facf88d9e0512ceafc2b8ac061be8"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-result.test.ts",
+      "sha256": "60fce9f3ea298c064e1e39c69015989bf45d9523e79819e821bfd589c4a1f2dd"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-result.ts",
+      "sha256": "b55023b8f31a42a556d4ff35c04c06cae2341d83e48997754321d255733e35f4"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-trust-fail-closed.test.ts",
+      "sha256": "6f26ab7337028495d490569a12ac0d5be00bd5229901479f214e9529cbc730d0"
+    },
+    {
+      "path": "src/calculators/final-framework/structured-trust-metadata.ts",
+      "sha256": "a625617c19a50edbac2da29c723d0fd830f1bf8d8acda9b87ca28b6789ea5180"
+    },
+    {
+      "path": "src/calculators/final-framework/system-equations-adapter.ts",
+      "sha256": "874be5dead1735e60bc86ffb8d42ace8c78d93d77eec8860d95edf6de2cc78c7"
+    },
+    {
+      "path": "src/calculators/final-framework/system-equations-final-renderer-migration.test.ts",
+      "sha256": "8b9411c8cea0b9cc0221c87d0f3f699c3d923eb8a18f43a300ef136db85f63d0"
+    },
+    {
+      "path": "src/calculators/final-framework/system-equations-post-migration-authority.test.ts",
+      "sha256": "101e6cffafd29946681987dac3107b5b691b1be819d7133b6a44d8852cde5096"
+    },
+    {
+      "path": "src/calculators/final-framework/system-equations-presentation.ts",
+      "sha256": "9525df3b22ab148fc881e46bb004d607a1f4eb979903af6112525c1c88fb766b"
+    },
+    {
+      "path": "src/calculators/final-framework/system-equations-readiness.test.ts",
+      "sha256": "6df37b3da7fc25e658a215e9c0e455086abd44962787f3c228ed097f3eb9d7b9"
+    },
+    {
+      "path": "src/calculators/final-framework/technical-version-trust.test.ts",
+      "sha256": "6267e94eb4fa77b8ad5fa7317177f08322985d7f804db6c8b9a46a7eee5bd009"
+    },
+    {
+      "path": "src/calculators/final-framework/technology-reviewed-certification-readiness.test.ts",
+      "sha256": "31a8033e3cbc67372523ec3d812a65f33d0b7777608b66d5201506b10c4d229a"
+    },
+    {
+      "path": "src/calculators/final-framework/tile-adapter.ts",
+      "sha256": "430419e480bf0eed54b62c2223a49e7ef9a614571ef24b1d93f120db76e304f4"
+    },
+    {
+      "path": "src/calculators/final-framework/tile-final-renderer-migration.test.ts",
+      "sha256": "50fc1c2e24a15c04c9e19634f8dc06a595641d8c0ee97b8f7ec3d8774fcf0d6c"
+    },
+    {
+      "path": "src/calculators/final-framework/tile-post-migration-authority.test.ts",
+      "sha256": "1bd081487530230539a66bdb8b6433d4af33b4635f74f040c4b401e3ce921212"
+    },
+    {
+      "path": "src/calculators/final-framework/tile-presentation.ts",
+      "sha256": "d7f19684d1c092301fddb5cedf6bc857a27cbddd5fea312513daa40d59c97bc3"
+    },
+    {
+      "path": "src/calculators/final-framework/tile-readiness.test.ts",
+      "sha256": "07aa5ba64ff5895ff5ea207f7a96ccdeadf37cc40b8975fc8417d951554fb3a6"
+    },
+    {
+      "path": "src/calculators/final-framework/travel-everyday-source-readiness.test.ts",
+      "sha256": "7594823475745a332f50bfffd4fed6326457cefc3101356aec48cb9f506ad479"
+    },
+    {
+      "path": "src/calculators/final-framework/trust-metadata.test.ts",
+      "sha256": "b6faf1b4259a3a9e0293abbc9f58f9304d2a144ad57ded7014935cba9142f673"
+    },
+    {
+      "path": "src/calculators/final-framework/trust-metadata.ts",
+      "sha256": "0dcd95c5367a36b24a4aef353f0beec7f457e2e56453a2f04044c87869695285"
+    },
+    {
+      "path": "src/calculators/final-framework/types.ts",
+      "sha256": "b32ace6cd558c56d3036661fb00ec1b0692c93724d3a185fe9fd79136827f8e1"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-adapter.ts",
+      "sha256": "8393cafec4da0455d2d7b7762b390ded627c933091b8dbc78291fcca30265c59"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-complete-ui-boundary.test.ts",
+      "sha256": "b3d4b5b6b1048565376d768dfded4c28829285434c5bacc7edaa7c5229e01371"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-cross-plan-authority.test.ts",
+      "sha256": "331ceae8b737386e3b8746eb1cadbc5988518c24151d162859c8834c21290f6e"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-final-contract.test.ts",
+      "sha256": "844465751ff3e33ec24a01cfe14fc0631b5226260c530185efdbeaaade2dd44f"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-final-renderer-migration.test.ts",
+      "sha256": "0950660bea171cf351c030c1c99b99c777b88d3e08f5c1cd96e980a05bdbaef4"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-presentation.ts",
+      "sha256": "84f5cbfa414e40c80d4e6cd18a9946b720148a8a3fde9abc51c679146f17f48e"
+    },
+    {
+      "path": "src/calculators/final-framework/unit-conversion-readiness.test.ts",
+      "sha256": "eb0b0aebcf4d7e735c02e40c1a4b4347214d2449463084305f1568c4f5729f6b"
+    },
+    {
+      "path": "src/calculators/final-framework/unpublished-candidate-matrix-evidence.test.ts",
+      "sha256": "4753a603d0368adf1ef1224376c56954ae4280751b13651f2e72c4e31fb897f0"
+    },
+    {
+      "path": "src/calculators/final-framework/variance-adapter.ts",
+      "sha256": "c5b989715e49be192b31d70344a5314946104caa8e88eab8b7772625d42617ba"
+    },
+    {
+      "path": "src/calculators/final-framework/variance-final-renderer-migration.test.ts",
+      "sha256": "c167fe3779830bfcd92761cbd5b39d3f8a251903d9d8051688023d1a932f3136"
+    },
+    {
+      "path": "src/calculators/final-framework/variance-post-migration-authority.test.ts",
+      "sha256": "156a45568dcb371bdf2ad17bed0cb44679a2dc5b6d91eb990f2507d213242825"
+    },
+    {
+      "path": "src/calculators/final-framework/variance-presentation.ts",
+      "sha256": "580762e61370eb2ff3ee6f263ed324c444e7c64e5bae4f80ad43ac876c8a013f"
+    },
+    {
+      "path": "src/calculators/final-framework/variance-readiness.test.ts",
+      "sha256": "960e29eae6f41be6953aab2156a62520ec3006f4d9e2fb698773e5d640d7629d"
+    },
+    {
+      "path": "src/calculators/final-framework/velocity-adapter.ts",
+      "sha256": "4f8b8fd857dc4ded5b120036f7dda05317d28a34bac6a0ae00ffd03451d26af5"
+    },
+    {
+      "path": "src/calculators/final-framework/velocity-final-renderer-migration.test.ts",
+      "sha256": "b1dd428f6aaab5bce6c2f36f7f9f6755c90fc046f71cf0a0dbdb36a0de93c358"
+    },
+    {
+      "path": "src/calculators/final-framework/velocity-post-migration-authority.test.ts",
+      "sha256": "ec90b90df95e2fe7d030f26ff482255d5f9d1caba007a5d83fdc79955582c917"
+    },
+    {
+      "path": "src/calculators/final-framework/velocity-presentation.ts",
+      "sha256": "b5f69a83820f95d750f156de11cf79a4fbab05406bac2ccd440d79798079aef3"
+    },
+    {
+      "path": "src/calculators/final-framework/velocity-readiness.test.ts",
+      "sha256": "9659b00f4343b21889648b379ff02166916a9ee2005199ac2cb8523b17ab86cb"
+    },
+    {
+      "path": "src/calculators/final-framework/visualization-data-fail-closed.test.ts",
+      "sha256": "8f5fdf975ea742e5f3a726f09a72d76b1005487f4a9acfecd87f4c24ccf5de27"
+    },
+    {
+      "path": "src/calculators/final-framework/wavelength-adapter.ts",
+      "sha256": "2f55bcdc72f41edb3562cd1f589376d0dad1af6882c53f440db12b48bb000805"
+    },
+    {
+      "path": "src/calculators/final-framework/wavelength-final-renderer-migration.test.ts",
+      "sha256": "65f181e120cbed9c2bf730739c4581af6ac011aa70782326d8a7e22e00846cc9"
+    },
+    {
+      "path": "src/calculators/final-framework/wavelength-post-migration-authority.test.ts",
+      "sha256": "a1a129eb47bf69bf575b7fe8888b99b8580f983c0573f65c981032431ac84fbd"
+    },
+    {
+      "path": "src/calculators/final-framework/wavelength-presentation.ts",
+      "sha256": "62d8515bdd05053bfb2943c2d5d1e1f01f54c6f69c18bb960a956c4dcefa79f7"
+    },
+    {
+      "path": "src/calculators/final-framework/wavelength-readiness.test.ts",
+      "sha256": "ba78b7d22be0d5618ae5b929e834f782aadcd2c6d81cfc016aecf7cb3acb3308"
+    },
+    {
+      "path": "src/calculators/final-framework/work-adapter.ts",
+      "sha256": "050e0329893e5e025596f55c314a5d0de94e3e1093c9f4f813d8d6637df98013"
+    },
+    {
+      "path": "src/calculators/final-framework/work-final-renderer-migration.test.ts",
+      "sha256": "200ce538813caa16a6f19ca531a16a0a9f4958f061341c4a12a8f642f60a0c04"
+    },
+    {
+      "path": "src/calculators/final-framework/work-post-migration-authority.test.ts",
+      "sha256": "e7a921b73e3db1d8d2698c03750c160bd1d4242c2c31780b8cc09729fc1d83c1"
+    },
+    {
+      "path": "src/calculators/final-framework/work-presentation.ts",
+      "sha256": "3fd930f072fca9eefc102f128a69a88cf5d276427199bcb16aa045e9ce1991fa"
+    },
+    {
+      "path": "src/calculators/final-framework/work-readiness.test.ts",
+      "sha256": "2653f59c5b6b9b3a090cf56deeaa7ad2e39a1436651c27614c70cac2009fd9d4"
+    },
+    {
+      "path": "src/calculators/final-framework/z-score-adapter.ts",
+      "sha256": "c7b1c127837bfb5ad599c24327680781aaef7ffe610076645516e4d0b9cbee1c"
+    },
+    {
+      "path": "src/calculators/final-framework/z-score-final-renderer-migration.test.ts",
+      "sha256": "0d7eaf47496ad358dd1048ff19e6fe99dbf305b8ca7d8465463fe16de08a3cd7"
+    },
+    {
+      "path": "src/calculators/final-framework/z-score-post-migration-authority.test.ts",
+      "sha256": "be9723f491d37290076497f50ffb172d0567f9fb068d9d13b2c2eb7276b038e0"
+    },
+    {
+      "path": "src/calculators/final-framework/z-score-presentation.ts",
+      "sha256": "2c8e5adc3ff81acb233c16f88f15ab6deb7539cd4b20630c291fec2a0aacef93"
+    },
+    {
+      "path": "src/calculators/final-framework/z-score-readiness.test.ts",
+      "sha256": "6bb6ea119f68cd05f226f9f9b7a9f4b52c1462f2f94c0fd577b91b2402df9907"
+    },
+    {
+      "path": "src/calculators/final-private-workbench.test.ts",
+      "sha256": "3ac4c756b7e13f1b6d1a1643616b94b4d4dbee66f9a30968ef449cf8a11ad1d5"
+    },
+    {
+      "path": "src/calculators/final-private-workbench.ts",
+      "sha256": "35602183cb944a47be7110a100545a5b71011419fa97b1a4fe8b64443ebcf8da"
+    },
+    {
+      "path": "src/calculators/finance/catalog-metadata.test.ts",
+      "sha256": "5829649cabef7721ccd6314de799f8c6e63a37bd5dbaff9d129946c79575a155"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest-independent-goldens.ts",
+      "sha256": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest.test.ts",
+      "sha256": "9a27c9647e5f862950db6ba9146fc6ec2431c92b14680377ee8cf5a38b6e9ef1"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest.ts",
+      "sha256": "758f8ef3e2ac43fb91e22b6b3e6f67734548fae3b38653e3ae3bcd29ca4a4c60"
+    },
+    {
+      "path": "src/calculators/finance/credit-card-payoff.test.ts",
+      "sha256": "d5584faa0d5b2e227e68965e39b54f4b9243a8b6df669635fc31170965bfa48c"
+    },
+    {
+      "path": "src/calculators/finance/credit-card-payoff.ts",
+      "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+    },
+    {
+      "path": "src/calculators/finance/debt-aggregate-independent-goldens.ts",
+      "sha256": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff-independent-goldens.ts",
+      "sha256": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff.test.ts",
+      "sha256": "b32e7d50578f1da97c2b17d8c6a14cab51f8067372bb5f47ee49d957a2220e42"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff.ts",
+      "sha256": "8d3a06f4ccf4368699afe331b049904fcbf30006ac8ffded0635315b377259b9"
+    },
+    {
+      "path": "src/calculators/finance/emergency-fund.test.ts",
+      "sha256": "b5034c8b8c844b029c711233f26a2df36e2dbfe48c244d2313741104aafbda3e"
+    },
+    {
+      "path": "src/calculators/finance/emergency-fund.ts",
+      "sha256": "8d23710209a00cb34bd5ef07d6f101a44ff0606bb8068c87ac5666b5d8fe944f"
+    },
+    {
+      "path": "src/calculators/finance/inflation.test.ts",
+      "sha256": "dd21ef654da57a617bbadf27c8a15596b4304564c03972a40a7939f80566bfdc"
+    },
+    {
+      "path": "src/calculators/finance/inflation.ts",
+      "sha256": "49c39abe7dbf306efe32fdeb38201e99b0602bf3111a791c883a816ff1bfa839"
+    },
+    {
+      "path": "src/calculators/finance/investment-cashflow-independent-goldens.ts",
+      "sha256": "91fedaf53ad6b4ad059fee5751f0820120bce453ec965d773ab4e0cb416d337f"
+    },
+    {
+      "path": "src/calculators/finance/investment-math.test.ts",
+      "sha256": "e2e834f306b61c7819751d7d1677855b206af5fcefdfdb21e60a102d89e16bdf"
+    },
+    {
+      "path": "src/calculators/finance/investment-math.ts",
+      "sha256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e"
+    },
+    {
+      "path": "src/calculators/finance/loan-affordability.test.ts",
+      "sha256": "6a19b9fc5e58ac9f7a4b8ff78f60c9717ca84aae5ad4631984688e577b321811"
+    },
+    {
+      "path": "src/calculators/finance/loan-affordability.ts",
+      "sha256": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36"
+    },
+    {
+      "path": "src/calculators/finance/loan-analysis.test.ts",
+      "sha256": "44ad470413706b638a09b8fbf8b7e9404951a617398cdffe0e890cdba44009bb"
+    },
+    {
+      "path": "src/calculators/finance/loan-analysis.ts",
+      "sha256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef"
+    },
+    {
+      "path": "src/calculators/finance/loan-comparison.test.ts",
+      "sha256": "79918375869933cf3c48c3f83cbe12f61644c4b437ab5dda536a536ba03e2bfd"
+    },
+    {
+      "path": "src/calculators/finance/loan-comparison.ts",
+      "sha256": "346a180bfa3b146de75a6787627ea6e1ae39d7963242e277a791aabcf7c0868c"
+    },
+    {
+      "path": "src/calculators/finance/loan-payment.ts",
+      "sha256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160"
+    },
+    {
+      "path": "src/calculators/finance/loan-prepayment.test.ts",
+      "sha256": "33e5323075cdea78a7dc55acd11f7d268a8f7291719e5f0d4d9271b53f94eb97"
+    },
+    {
+      "path": "src/calculators/finance/loan-prepayment.ts",
+      "sha256": "94c613d8333db7459df1718baae2c93b6f417938168fccb4e20451164d8f3a29"
+    },
+    {
+      "path": "src/calculators/finance/loan-refinance.test.ts",
+      "sha256": "812c87a8fcedc7f17d1e4a228bd00fe834fcd90683f0c615c966e539e547e072"
+    },
+    {
+      "path": "src/calculators/finance/loan-refinance.ts",
+      "sha256": "c056bacfc51a189210880dd3569ffd88b15f72293a66ebd2e48bcad3748e11fd"
+    },
+    {
+      "path": "src/calculators/finance/loan-scenarios.test.ts",
+      "sha256": "e4e64994833aa32d5a01a7dc7ea24aba2a028ccb877bedb705557917dc4e9e8c"
+    },
+    {
+      "path": "src/calculators/finance/loan-scenarios.ts",
+      "sha256": "6893954974c0d9ee1a6b7f6768680bf233bb9a042e60011dc75c10aaee2d0199"
+    },
+    {
+      "path": "src/calculators/finance/mortgage.ts",
+      "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd"
+    },
+    {
+      "path": "src/calculators/finance/net-worth.test.ts",
+      "sha256": "32bf3f58e8e2457338d53600b7e4405c0be4a7ffdf1a2b7011d93ceacb54af4b"
+    },
+    {
+      "path": "src/calculators/finance/net-worth.ts",
+      "sha256": "707072aa5877103f6d018ae6e00dc2ca05e4f7a18c6cf48dbd91fbd5b6387b57"
+    },
+    {
+      "path": "src/calculators/finance/planning-independent-goldens.ts",
+      "sha256": "5bf99dbe2cb5509ec95bbd03b9e992f5eed146228b7f5b3f5054100695cfb34d"
+    },
+    {
+      "path": "src/calculators/finance/public-content.ts",
+      "sha256": "6010d806b4f4e62989dfa597bd1e099c8c06b826a6b33b832ce48a910487c509"
+    },
+    {
+      "path": "src/calculators/finance/rate-conversion.test.ts",
+      "sha256": "d0015ef8d27b3ef2db8e81ebbfaa57509311ff3eb4d07743f2c97fa25ca70f03"
+    },
+    {
+      "path": "src/calculators/finance/rate-conversion.ts",
+      "sha256": "6e157a83c6344e7c6b709e9174c1fdf6d81bac5587b855d195ca11780d3e9608"
+    },
+    {
+      "path": "src/calculators/finance/recurring-deposit-independent-goldens.ts",
+      "sha256": "d94577bbe27131fa1464dbecb971284755c42b6864c3fca5bb3d3b18e02a510d"
+    },
+    {
+      "path": "src/calculators/finance/recurring-deposit.test.ts",
+      "sha256": "6439f98db77bb7d2ade4236712cfccf40aeb1cecc40b59eb3b40a5b365181692"
+    },
+    {
+      "path": "src/calculators/finance/recurring-deposit.ts",
+      "sha256": "1e0a39d9c34a8d814b2962b009f08ee9b61de65753aaf1e8f72477b5613d7e1e"
+    },
+    {
+      "path": "src/calculators/finance/roi.test.ts",
+      "sha256": "cd689d201119a2ebff3f2a1b1c298b787b4262cbb545d21f7aa973b5be193b78"
+    },
+    {
+      "path": "src/calculators/finance/roi.ts",
+      "sha256": "33b13a26a7539dbeac88a2aa764488520ee357787b66fed6c4effd5a7476c2c2"
+    },
+    {
+      "path": "src/calculators/finance/savings-goal.test.ts",
+      "sha256": "22a7f6bdb43ec5368d2ad94e97a33331cf0ccc61ab6139878a1c4170d5db731a"
+    },
+    {
+      "path": "src/calculators/finance/savings-goal.ts",
+      "sha256": "9edbe2a841d15318a22917e1c8f27739951c7d926740070825c2dceb0439d7ea"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest-independent-goldens.ts",
+      "sha256": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest.test.ts",
+      "sha256": "4eda3c3ef0f1002f19b76f092256a05c698c8676eac3d8bc218e87397aae492b"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest.ts",
+      "sha256": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773"
+    },
+    {
+      "path": "src/calculators/finance/sip-independent-goldens.ts",
+      "sha256": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89"
+    },
+    {
+      "path": "src/calculators/finance/sip-v2-candidate.test.ts",
+      "sha256": "ce694a2d84976bb2005329cc20e927d58b91b8733b64e4cb08037f6c75c60e4b"
+    },
+    {
+      "path": "src/calculators/finance/sip-v2-candidate.ts",
+      "sha256": "295afef32ba7b0d79363a8261045139d7011fc3c52711be1e5e8ae1f01a60d56"
+    },
+    {
+      "path": "src/calculators/finance/sip-v2-goldens.ts",
+      "sha256": "17a4ed0694c8ef6a817af8f8a0ce820032f3396479a614343bc5a2ef4a516199"
+    },
+    {
+      "path": "src/calculators/finance/sip.test.ts",
+      "sha256": "fb279bed945d2151ab516562608c8424355d97b3456f66f83d1a697505dae88a"
+    },
+    {
+      "path": "src/calculators/finance/sip.ts",
+      "sha256": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a"
+    },
+    {
+      "path": "src/calculators/finance/step-up-sip.test.ts",
+      "sha256": "19cbab57909d9c4d598d77cfcd6ab2a0c258d103cd3e92a91c44a9f9f5f5f499"
+    },
+    {
+      "path": "src/calculators/finance/step-up-sip.ts",
+      "sha256": "48409de2f3903a7022d26055f3bf7e6a2060b4901ff645dad60a5fd9d1e0e1f6"
+    },
+    {
+      "path": "src/calculators/finance/swp.test.ts",
+      "sha256": "f68f530174431839c6fbcb87b056d2df114e14c6734c490b3639d47bd844cafb"
+    },
+    {
+      "path": "src/calculators/finance/swp.ts",
+      "sha256": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092"
+    },
+    {
+      "path": "src/calculators/finance/term-deposit-independent-goldens.ts",
+      "sha256": "d911da3e25dddddf2f86bb999bc1ab9c640575fcad086687bbe2acc1e4fc7277"
+    },
+    {
+      "path": "src/calculators/finance/term-deposit.test.ts",
+      "sha256": "faafb83f723a399042bf0355c7b40c3ae21022726874365c56e5c5c81e6031dc"
+    },
+    {
+      "path": "src/calculators/finance/term-deposit.ts",
+      "sha256": "5d5667156843d9a8a64ee63bf4d6d9143f4ecf8a1ab1d1b78a32559732b2feef"
+    },
+    {
+      "path": "src/calculators/financial-contract-core.ts",
+      "sha256": "3cae37f855a8ef6f4b99424b20619936e94fd861dff4d00fb26ef748d3c72ab0"
+    },
+    {
+      "path": "src/calculators/financial-contracts-independent.test.ts",
+      "sha256": "39af2ba81f306d9734962033c1760cc8cdb131a30919b1eb712ea050da62329f"
+    },
+    {
+      "path": "src/calculators/financial-contracts.test.ts",
+      "sha256": "b72bc4918866ff8b0a26bdfb043e9b9eb6b8c8c7183cab65d8edd832c6a38604"
+    },
+    {
+      "path": "src/calculators/financial-contracts.ts",
+      "sha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a"
+    },
+    {
+      "path": "src/calculators/food/cake-pan-direct-domain.test.ts",
+      "sha256": "160795337a4107db6f6096cea97ae6d2531859a50644356eb79c89fa3e0eaf2c"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-1.test.ts",
+      "sha256": "5d93b9025f3ddb32032d2697ee956435483097295aefb54fdaf507ca3f172bea"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-1.ts",
+      "sha256": "46244d45761804666c6fc760d09a9a1465e1826112bc39aa4c27b94faf44b2b7"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-2.test.ts",
+      "sha256": "40fd7bdce36e6844b092c31cbe16780cc0f4c32928da034aa5e55ae77d67b511"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-2.ts",
+      "sha256": "5ad8babfdb2f307f0057ba2683e8c1459a7b422fb780f6c0cb37cd26b3d12740"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-3.test.ts",
+      "sha256": "978b89806339128bc9bfd77fffc88421058c8d5ee5c04dea4232a46e0dd3af67"
+    },
+    {
+      "path": "src/calculators/food/catalog-batch-3.ts",
+      "sha256": "d3deb7587f49b53721bc4a0d9aa47a0fae91185208d729516723c95361fb8c99"
+    },
+    {
+      "path": "src/calculators/food/draft-master-498.test.ts",
+      "sha256": "67d5710af75f6463ba258cab415fd4099bc6c6e1c423d8549d83b4e3d8bb4900"
+    },
+    {
+      "path": "src/calculators/food/draft-master-498.ts",
+      "sha256": "237d3e489d47967b9975e12ec425e0152d3484d46778464dcb7077fb884534a0"
+    },
+    {
+      "path": "src/calculators/food/food-cooking-direct-domain-validation.test.ts",
+      "sha256": "facae0d38263c39b2f69142a7584a6d87cf18cc170dbc15edf11d87cb5e1a299"
+    },
+    {
+      "path": "src/calculators/geometry/catalog-completion.test.ts",
+      "sha256": "8ac889b2562ced7525c0617b2f031fd7ae8d9569e31dbd40a800d53926c2f980"
+    },
+    {
+      "path": "src/calculators/geometry/catalog-completion.ts",
+      "sha256": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff"
+    },
+    {
+      "path": "src/calculators/geometry/coordinate-slope-contract.test.ts",
+      "sha256": "be319e5ba6ccc224d78f32be7378fc52a90dc42e8909cd929f4e76d07f47bc0e"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-1.ts",
+      "sha256": "62385ab4198d720da8e473a80a8e4a7eca513b7e1fd3e1e6b203a033fa22f340"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-2.ts",
+      "sha256": "5e63745210af76229b44f582cb6a115941c7bd5d9e1b89fb13ac5e889513c549"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-3.ts",
+      "sha256": "fd339ae67994186739fc699758a23438f45b0d1871e502c06eecdaa898c209ba"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-4.ts",
+      "sha256": "d5821b14e63d82f173d6c35130497b33813630aeb740919e4c5ef7e8fe472536"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-batch-5.ts",
+      "sha256": "cbf468d4ff6e92ad68440f7a5690019ec6081c9ae3f4a57a5747ca8baa370feb"
+    },
+    {
+      "path": "src/calculators/geometry/geometry-direct-domain-validation.test.ts",
+      "sha256": "49ba0631e8f09f4d83d38ea6ac5f04bc9c60c7af8625e74bf29a3e477b9fc591"
+    },
+    {
+      "path": "src/calculators/geometry/slope-legacy-compatibility.test.ts",
+      "sha256": "a2aa3fe1cc6859164a0552d3260c8fc93ac5e2c13cbd245a914bf95aa7e9a832"
+    },
+    {
+      "path": "src/calculators/geometry/slope-legacy-compatibility.ts",
+      "sha256": "6bc6217c393b43284996ceebb682b5ab10477c00e297e8dceaffa01b9eedbc88"
+    },
+    {
+      "path": "src/calculators/geometry/slope-registry-hold.test.ts",
+      "sha256": "6e1c39eb1e5b2a1abd9874daffdbfc53d668bec12964fbfe600e2650deb71ec7"
+    },
+    {
+      "path": "src/calculators/geometry/slope-snapshot-hold.test.ts",
+      "sha256": "19392fa178a0433f532265fcaf4189ea3fb5e7d0673338cd9937879b01f3e541"
+    },
+    {
+      "path": "src/calculators/geometry/slope-snapshot-version-contract.test.ts",
+      "sha256": "45e61a4388351b5498b507f7b7c18c5794b769527f5c59333594b4939afaaed5"
+    },
+    {
+      "path": "src/calculators/geometry/slope-versioned-compatibility.test.ts",
+      "sha256": "25b1030f2ec6e77ebaaedbe33898beb35c0cb5e66ad597dc75def14c1647e44c"
+    },
+    {
+      "path": "src/calculators/geometry/slope-versioned-compatibility.ts",
+      "sha256": "ef37c45cf7589c165f80de83603e63827439a25afb3603737762c2231a67b710"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-1.ts",
+      "sha256": "49560119c7f2cb1b92a8901315d8c75cdd22e0b447d4369afac804c7d42ddeee"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-10.ts",
+      "sha256": "d131c41863321bdada3278d42b95f943559bedf82e06b35a8370ef2ff79b56d6"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-2.ts",
+      "sha256": "706b5f85dfde3ecee7a8c3c5fc3cd1e126aaf324f8d79b263b53a20ac07a00f7"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-3-regression.test.ts",
+      "sha256": "ba2179175a768dac4405815fafa0f4506f37c04353c91a9ad98cb0c162e358d9"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-3.ts",
+      "sha256": "93e9da5c19eb47a80551b6d7f07ac4e11b0fd3adb0765b46cd0694c6c424ada0"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-4.ts",
+      "sha256": "06d7a130edbf28d191ce8fbb6fd3f8bf4ee08d55362c0978416392097d0cfe7c"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-5.ts",
+      "sha256": "c385851797bd77a8cadcb9b879a1acc15ff5b2b4afa46a07fafe37ad5db08df9"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-6.ts",
+      "sha256": "09bea83526af631c0b323e2846a2c31a42aef5474820995daf25eda72f1cf8c8"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-7-regression.test.ts",
+      "sha256": "47e446228ec126b4e4b5e6a2cda178ee87d26eecc84af7a9adbf704b88e5cd83"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-7.ts",
+      "sha256": "f03cc9143366a4cac73ff6eb98ee42f2f970e5969363a82b6365619f7b4d4add"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-8.ts",
+      "sha256": "99fd6e08e2a7754cde556e82158752e5cb840d1387fc94e57f0394db6d7f416f"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batch-9.ts",
+      "sha256": "904f9c1ddf10640d1be880c22844cdcd1f6a7f8cdddd6790638ee436ad0ca210"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-batches-6-10-direct-validation.test.ts",
+      "sha256": "0124efcabed3034f6de9800016f54b3c6cfd7d3e562cf31713745c7e7bbd5f1c"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-cross-batch.test.ts",
+      "sha256": "2e34201f66f055f1c622272b1b8300495e9cd6518d4bdf572ff451bdcd49a84f"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-direct-domain-validation.test.ts",
+      "sha256": "c439f7c6c054ecd5dad8f3c6d9f99a703c112cc0f1af5bd03e22e7eee5fc7248"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-explicit-batches.test.ts",
+      "sha256": "a29cb0eacf9cb67b88d478accdceba07a01ddf6b1b3fe1250c321e12fd0643e1"
+    },
+    {
+      "path": "src/calculators/geometry/solid-geometry-reconciliation.ts",
+      "sha256": "00cb298643ad8824b7c8fdc748abedfc7712075c70f5de2565f91ee40a0319ed"
+    },
+    {
+      "path": "src/calculators/health/bmi.ts",
+      "sha256": "e2597d2b3db50ce3a17c55d558f2b1f64ae48ce49a3815ee0c717127ee1105d6"
+    },
+    {
+      "path": "src/calculators/health/catalog-batch-1.test.ts",
+      "sha256": "fa175f9c7993d80c3a6daef822fa910aebc5f0186515959e533f3d471f80dda5"
+    },
+    {
+      "path": "src/calculators/health/catalog-batch-1.ts",
+      "sha256": "9ba383a5ebef9a107250c330c7697911c6b0fcf0ecc037455606351b0b43c9d4"
+    },
+    {
+      "path": "src/calculators/health/catalog-batch-2.test.ts",
+      "sha256": "5e9e206c1b36e5cd31d2714ccfaa936eb4b0d2225ecc3ad5471e16c1640e2f8d"
+    },
+    {
+      "path": "src/calculators/health/catalog-batch-2.ts",
+      "sha256": "33832771a7fa59c471a73600c742c0dfae79b8ce9b258aa56c7ecfe17fe52a56"
+    },
+    {
+      "path": "src/calculators/implementation-inventory.test.ts",
+      "sha256": "4c27e878e76e3db87658f6ccf9d6dc6658b2fba0edaa64f116ed230df654bd5c"
+    },
+    {
+      "path": "src/calculators/implementation-inventory.ts",
+      "sha256": "ab07b8f889ae0c306fec69cc6716b445d4c9bf903a1522d123079efbeb5d2fef"
+    },
+    {
+      "path": "src/calculators/implementation-reconciliation-independent.test.ts",
+      "sha256": "9dc605261de3132474389dfe74af40f4b231f79b8f930fc15618b14440d77f4f"
+    },
+    {
+      "path": "src/calculators/implementation-reconciliation.test.ts",
+      "sha256": "e7a7dd58d8f7cb0d46744dd575cce5fecddd183082e387ef94c2138692a7bf10"
+    },
+    {
+      "path": "src/calculators/implementation-reconciliation.ts",
+      "sha256": "4db61253c4a743ec53fd0b658cb48e6558f772de2f7c63038bb9968fcd4331d1"
+    },
+    {
+      "path": "src/calculators/index.ts",
+      "sha256": "e4e5f6961cf012e21e38cd032174008362228942a3527c216dcaaf463300ee71"
+    },
+    {
+      "path": "src/calculators/launch-certification-rigor.test.ts",
+      "sha256": "c08c3f4fb815c100543e4358e85f4185613907e2ff46b5b185dcebce9165d1ea"
+    },
+    {
+      "path": "src/calculators/launch-certification.test.ts",
+      "sha256": "3499c1e21774b9245424f68f6b5c2e847eb3da8c959f254794c2fbf87631e3e7"
+    },
+    {
+      "path": "src/calculators/launch-certification.ts",
+      "sha256": "4d743878395219f372ddc402fe345c3e80588cbc68240099cfe83bad2d9c4196"
+    },
+    {
+      "path": "src/calculators/launch-portfolio-boundaries.test.ts",
+      "sha256": "ed7878569585ea5f6b033aa6be0e6cd761f2da53994d03c835c38e97945b8b42"
+    },
+    {
+      "path": "src/calculators/launch-portfolio.test.ts",
+      "sha256": "28f3a36894e2ab62ed25f2a3f3875b21e5d00da6dee0fd6c936ceab6b9f8aa69"
+    },
+    {
+      "path": "src/calculators/launch-portfolio.ts",
+      "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+    },
+    {
+      "path": "src/calculators/master-identity-contract-evidence.test.ts",
+      "sha256": "88c39501bbd6c07fd7b9cd1e13a7c9017fdc2d0f9b0071d1e75822d418ce3f70"
+    },
+    {
+      "path": "src/calculators/master-identity-contract-evidence.ts",
+      "sha256": "524e80bbdb8b9c616b5d5a0a084b362a9102889a80af49bbb640efdb125e7aea"
+    },
+    {
+      "path": "src/calculators/master-identity-crosswalk-export.test.ts",
+      "sha256": "0366368a0b386815b57a6983e8c4eaad031b644e105f489dd1a74b780b2a4fb2"
+    },
+    {
+      "path": "src/calculators/master-identity-crosswalk.test.ts",
+      "sha256": "e6e2b0f0d704efe89262b801a92d230538d7a880402834b9c2d6e5389320c17e"
+    },
+    {
+      "path": "src/calculators/master-identity-crosswalk.ts",
+      "sha256": "75e0502d1229463f63f17e30c8e79d3e4b0a664da8e7cfdbd2803eff75fe3ef6"
+    },
+    {
+      "path": "src/calculators/master-identity-proposals.test.ts",
+      "sha256": "0a88c7dd6235b2857118e448a78d3301be916a3ea4de34d8e220458283849db7"
+    },
+    {
+      "path": "src/calculators/master-identity-proposals.ts",
+      "sha256": "9aefa70bbd01629dc914bc38296f1dcd64e7c09a355fa51b04e328915ffc1dff"
+    },
+    {
+      "path": "src/calculators/master-identity-triage.test.ts",
+      "sha256": "f122d638a75f60296ff1658ce52c309434e7f368092ecd848839a27506b4cbe8"
+    },
+    {
+      "path": "src/calculators/master-publication-audit-export.test.ts",
+      "sha256": "e852c130ed902596465850f1965692b1d23897edd9245ab5d582bbfd108dce33"
+    },
+    {
+      "path": "src/calculators/master-publication-audit.test.ts",
+      "sha256": "ae5ea863bf95900452da741f6a5133319046e52027bc502ffa3186c98c3d3351"
+    },
+    {
+      "path": "src/calculators/master-publication-audit.ts",
+      "sha256": "e23ac4bc23408d42bd83cf2647b405d9f7f7f5c656a66868ccbc20585279569f"
+    },
+    {
+      "path": "src/calculators/numeric/exact-positive-product.test.ts",
+      "sha256": "bfb9b0d9392b006ffcac6627fb78311b8d5cfcd8982a77a9b05922f75bca6d64"
+    },
+    {
+      "path": "src/calculators/numeric/exact-positive-product.ts",
+      "sha256": "6c7be9dc65ee41126b7e26112f46fe9fd762c9245f07f7ddd22ec9e199da1958"
+    },
+    {
+      "path": "src/calculators/owner-execution-manifest.test.ts",
+      "sha256": "2853707661602f75ff307656f28573024dcb3958be693dbe8a4fcce2d9be7f80"
+    },
+    {
+      "path": "src/calculators/owner-execution-manifest.ts",
+      "sha256": "e4f2e357f3b949a0f6109c2a99d8bfa275a53057f4961fa1808fecdf1a2da40f"
+    },
+    {
+      "path": "src/calculators/owner-model-support.test.ts",
+      "sha256": "f39716e55ef23a565415c1410753646e76ed2e662196683b1a88179fa5e9a121"
+    },
+    {
+      "path": "src/calculators/owner-model-support.ts",
+      "sha256": "5bf53feecb16417522eb17463639d7fc18e489ec1041382a0475b77378de1c8f"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-1.test.ts",
+      "sha256": "64fc7c7f98e940106128f004ee54ea197bb3efb08afe3cabfce9b53acae9f699"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-1.ts",
+      "sha256": "c3e93d1e67efe9a5a36316b8bc4c46d72ea131bb01fa8ddc058d6e4daf5f8432"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-2.test.ts",
+      "sha256": "3be63ab90a0ca327395f6257320712fd20567118538f9d2035407a31900608ce"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-2.ts",
+      "sha256": "9616404307a9e0bcf5cd3678c2720288e514a00c8faf79bdb3ef1af8845e036d"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-3-boundaries.test.ts",
+      "sha256": "363aede2311c0be875f3fe734c2c664a2d3e8638e8f663165724db33a495829e"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-3.test.ts",
+      "sha256": "c388554a55342438be31831998bc8340b69fa0cefdbd23f624ca555e65f1e3b1"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-3.ts",
+      "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-4-boundaries.test.ts",
+      "sha256": "ad417ddecff8207f40b820683af71de2a143f09dc688aef10974aac281ccfd37"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-4.ts",
+      "sha256": "ad1d13a5809b551edf42ed7a5b1bcccb9d51ec69cd18cc6354ddbc2891be26da"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-5-boundaries.test.ts",
+      "sha256": "ed0e1b7a17569d052091e3608a150a67cc003b8f00457d03fb95380fb15b3309"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-5.ts",
+      "sha256": "65365cfb3fddccd06e69f8afdcbf796eeea1b9c97502c15f407bef07bb17e7ed"
+    },
+    {
+      "path": "src/calculators/physics/mechanics-direct-domain-validation.test.ts",
+      "sha256": "5f160dbd2ad168fec8c4fda8c47f9825b6c29f722e88de3e09905698bd0c15a4"
+    },
+    {
+      "path": "src/calculators/physics/physics-batch-3-direct-domain-validation.test.ts",
+      "sha256": "6d6949c96631150637ff4a4f8c11fd50eccdc0c03da3613a5fe851a21195518c"
+    },
+    {
+      "path": "src/calculators/physics/physics-batch5-domain-regression.test.ts",
+      "sha256": "ba28525316e586764238526a79b8ea8a9df6920a2d7d3046c2b15cddbf72a54c"
+    },
+    {
+      "path": "src/calculators/precision.ts",
+      "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563"
+    },
+    {
+      "path": "src/calculators/private-calculus-successor.independent.test.ts",
+      "sha256": "0bc5f1f5801575ab80282efc7b5af36eeb62849dff9897f710ff9b83f04b9c39"
+    },
+    {
+      "path": "src/calculators/private-calculus-successor.test.ts",
+      "sha256": "d429e87dbc75fa7c4de5588c306b978883254b61fa29ee7d5759cc1ee1a96c90"
+    },
+    {
+      "path": "src/calculators/private-calculus-successor.ts",
+      "sha256": "a95cc6dce078040a3257d98825b0aefa81e681206585e3c04f25667044d8b895"
+    },
+    {
+      "path": "src/calculators/private-case-witnesses.test.ts",
+      "sha256": "ed7961708915a9f3a9fcf12dedaaa084df00fec2afa62c87fb6195a27f2a5b15"
+    },
+    {
+      "path": "src/calculators/private-cashflow-rate.test.ts",
+      "sha256": "8795b04870f60bcc988c805590d70aef30e380e11d184ba2f5fdfa8b661eca1b"
+    },
+    {
+      "path": "src/calculators/private-cashflow-rate.ts",
+      "sha256": "bb364b2a0ee4994699c81989193b159946eaca1b5c5591e62586e902e64f630e"
+    },
+    {
+      "path": "src/calculators/private-catalog-adapters.test.ts",
+      "sha256": "e3c61f19cfc4773043bb7696a292a920c007ccc1ad498003afd0ffc4033f5b70"
+    },
+    {
+      "path": "src/calculators/private-catalog-adapters.ts",
+      "sha256": "6e8eff73ef312a2e577783b112ee196832beae1adf9841b20c18ca993690e2b5"
+    },
+    {
+      "path": "src/calculators/private-loan-rate.test.ts",
+      "sha256": "739d9476e3bacb0e4eadc1cede79a134f1b16f1667422c7b22a0bae8f30a3829"
+    },
+    {
+      "path": "src/calculators/private-loan-rate.ts",
+      "sha256": "7a8ef4ec787b29dd67747eb0498b6ce9236eadfb6611fca21c0eb13e5777dd7e"
+    },
+    {
+      "path": "src/calculators/private-owner-business-core.test.ts",
+      "sha256": "874f0132fd714bbbcbb6826005cc0d766a61dda0f1cf741b30a24e5bdb0b4b5b"
+    },
+    {
+      "path": "src/calculators/private-owner-business-core.ts",
+      "sha256": "53d9f8922552b224d35d2e6da6f1ed58a2fabf3a6f5f0a18ddbe66870d88a467"
+    },
+    {
+      "path": "src/calculators/private-owner-business-impact.test.ts",
+      "sha256": "88b65206ac3152045599369a02bf43b695d7d217c995eca7a350a584ef002b61"
+    },
+    {
+      "path": "src/calculators/private-owner-business-impact.ts",
+      "sha256": "7b9926fa716c6faa2866e6f809db8fd02d31f3baf74651b46e6b5cb08362cb2d"
+    },
+    {
+      "path": "src/calculators/private-owner-definitions.test.ts",
+      "sha256": "fea746a8caecad58264f0bd38a6df3dbddeba41e839702dfb155846dccde073f"
+    },
+    {
+      "path": "src/calculators/private-owner-definitions.ts",
+      "sha256": "380b6745d25898f0fb9ffbf9282f6411140ab5e1abd0ec9457a7413e1513d5d5"
+    },
+    {
+      "path": "src/calculators/private-owner-everyday.test.ts",
+      "sha256": "0b4137ef5b14de8c8b82c5f6e950d9d7dd83fd26763a594f33bfdd60af4a7c1b"
+    },
+    {
+      "path": "src/calculators/private-owner-everyday.ts",
+      "sha256": "85a678fefd99d8f1e827b7f7bab2143c0279f5aa92ff5160432404501c14433e"
+    },
+    {
+      "path": "src/calculators/private-scenario-workflows.test.ts",
+      "sha256": "2f692e9dc198c838044c92757a397b4dbeeac53ed81cf944092ab7a1783e3987"
+    },
+    {
+      "path": "src/calculators/private-scenario-workflows.ts",
+      "sha256": "6e96315b71e151519b996497f41f80fab21e4d58db173f7e9bfb5b2a29ddbfa7"
+    },
+    {
+      "path": "src/calculators/private-scientific-definitions.test.ts",
+      "sha256": "35dc12afdb89c7ebb1c2d47bef02caa5189a16e190ab4993c8c2c6685b5ed947"
+    },
+    {
+      "path": "src/calculators/private-scientific-definitions.ts",
+      "sha256": "1715802fabf47c3aef14823e5c5d4932ce0b40e779c70844c798dd435dab7f6f"
+    },
+    {
+      "path": "src/calculators/private-supplied-contracts.test.ts",
+      "sha256": "bd857584a63ebfa18b764c3a1e35a30bbf3317ccde44ed2e2b76e6a12f192067"
+    },
+    {
+      "path": "src/calculators/private-supplied-contracts.ts",
+      "sha256": "9fcad868dc9b2d73940aa1731b1bf73db4d7dcd21662f230866deba6325c749c"
+    },
+    {
+      "path": "src/calculators/public-content.test.ts",
+      "sha256": "002580eae3e4ed05f28c791db68de4e86713f00d6999423ac43b0567e160ba5b"
+    },
+    {
+      "path": "src/calculators/public-content.ts",
+      "sha256": "75151eac4f4956f1f9754354dffc3659e80d71253928517cab60329cbb29db32"
+    },
+    {
+      "path": "src/calculators/public-discovery-integrity.test.ts",
+      "sha256": "0fd77ef5b5ea7a16569548c79f2e546f2d0b0639595ef6b06f53ebb0217f6334"
+    },
+    {
+      "path": "src/calculators/public-route-readiness.test.ts",
+      "sha256": "6904a43f0972249f47047d8c28d1a15d23c9a34bf81d9473859bd9008cb5a61b"
+    },
+    {
+      "path": "src/calculators/public-route-readiness.ts",
+      "sha256": "bc2f7da67d9c3d1303d95e480939bd75e96fa53aec995048b80ba6df62323d0b"
+    },
+    {
+      "path": "src/calculators/publication-authority.test.ts",
+      "sha256": "042e6172ca3943845f4b0c1bd27d0ceae0510d8be1059e5c549b918e662eb688"
+    },
+    {
+      "path": "src/calculators/publication-authority.ts",
+      "sha256": "2c31a8324056873803452c675ba170941f0ee661c3bc2adc8b8305d08f8e516c"
+    },
+    {
+      "path": "src/calculators/publication-readiness.test.ts",
+      "sha256": "38151f2a785cfd791008bdc646f655220dbdb64217e42998e879a30a8c2933e2"
+    },
+    {
+      "path": "src/calculators/publication-runtime-gate.test.ts",
+      "sha256": "2a54bfc570c5535d959d9b7e2a6334f983fc785b9c193fe6e2159447d36bc244"
+    },
+    {
+      "path": "src/calculators/registry.ts",
+      "sha256": "acfe4a797d5f28c146cacbd0f5d33e9f87192f54f716d7090683b626a8b7eeb5"
+    },
+    {
+      "path": "src/calculators/regulatory-metadata.test.ts",
+      "sha256": "2fdf79ff273c9a9f1ca6fd5231b4107525d86efa608f258fe1c353a776f92178"
+    },
+    {
+      "path": "src/calculators/regulatory-metadata.ts",
+      "sha256": "1b2b1c3a3178508b16010adc90a12c38a57d2e6f2104f53e18a3f1fc8c1a1dd6"
+    },
+    {
+      "path": "src/calculators/remaining-authority.independent.test.ts",
+      "sha256": "5256dde9599dacffdfafe3c74fc66ddfee9295a068685c41e457c78e0497938d"
+    },
+    {
+      "path": "src/calculators/remaining-authority.test.ts",
+      "sha256": "3d4573ea821aff6970c1dfe9442c735b362f0a1d4e27cc541a63542872b4af1c"
+    },
+    {
+      "path": "src/calculators/remaining-authority.ts",
+      "sha256": "76b61d1a062f82f7e1e15230fcf6279fc3dec3d152cf8a201b0dc7b0350b858a"
+    },
+    {
+      "path": "src/calculators/remaining-contracts-independent.test.ts",
+      "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+    },
+    {
+      "path": "src/calculators/remaining-contracts.test.ts",
+      "sha256": "2c89123e7baad154117e723f6af252cb49c63281325b7fe7815ccb3b496f019f"
+    },
+    {
+      "path": "src/calculators/remaining-contracts.ts",
+      "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+    },
+    {
+      "path": "src/calculators/retirement-contracts.ts",
+      "sha256": "87097a3cef9495f9dd699ab4afeae57de353ad5e18e73a5d5d0ed69b91709ec9"
+    },
+    {
+      "path": "src/calculators/reverse.test.ts",
+      "sha256": "707c5ad91d673b5b438fa251b95b4d5b42cc3a8682ad0b6a331ba6344f029d61"
+    },
+    {
+      "path": "src/calculators/reverse.ts",
+      "sha256": "d88fc73e8663b648fe9c469e522758257dcbf086774a76ab6e43cdee3d8fd5af"
+    },
+    {
+      "path": "src/calculators/reviewed-cohort-all-ready.test.ts",
+      "sha256": "3883020d2d1950d1fbefbb82b9a1e44fd54724b250a629a1f5dc0e03bc18618a"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-blocker-reasons.test.ts",
+      "sha256": "f4e35274d85d5c83da2cfb7a14520a07a34d691b5b8373ec34a7070a19d9ba16"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-blocker-report.test.ts",
+      "sha256": "1371bf34e6e80ab1998701366a27d2f0b8894a4d3382ddd73df507e254e60d20"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-inventory-determinism.test.ts",
+      "sha256": "0202a08d006ce13094a72847215c05634efe63f5b8cb959b0aad004a71edf08b"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-inventory.test.ts",
+      "sha256": "00a764b95e5b4868bfae6e0d78ae16e6332a29301442a33664052be14ebd89ed"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-inventory.ts",
+      "sha256": "b9d194d1a1edad7c6385d1d6801ce7fbd840c155e447e5af750c506250a57628"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-readiness-inventory.test.ts",
+      "sha256": "ac3a20f87beb30d6c33b3c588d09e843c9ca70553f5eb558a61b8666d0510aa0"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-ready-report.test.ts",
+      "sha256": "a97d7291e3783546b2f3559254bc3a4251a029c250b5d6777e5454f99748bbf3"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-remediation-summary.test.ts",
+      "sha256": "65b75f829e13f4d3f1aae520a39ca5345b6c3159e4d1d48350d1c78799459aaf"
+    },
+    {
+      "path": "src/calculators/reviewed-evidence-remediation-summary.ts",
+      "sha256": "2cd33f0ca4d40c1fac4992d0a9dac889f513958d4bfa3ba5dc96f2ee7c04099e"
+    },
+    {
+      "path": "src/calculators/reviewer-definitions.ts",
+      "sha256": "0610b89aa0536d59ba0c3aed29411cbb312591c8cd1d01d72187437a9812a5c3"
+    },
+    {
+      "path": "src/calculators/risk-review-reassessment.test.ts",
+      "sha256": "1fc215289c5aee277ae68544fcaf0737046e3580beb791221102cc7041bf4cbf"
+    },
+    {
+      "path": "src/calculators/rule-packs.test.ts",
+      "sha256": "ec9bd2462dad5232fa6df4ace0d56b8019c4ba80e832a185f36bf0219f4bf830"
+    },
+    {
+      "path": "src/calculators/rule-packs.ts",
+      "sha256": "bf0b86932af7764777b1ebd0a66d475bd1e47918e4717e50d19ecfd478e8b628"
+    },
+    {
+      "path": "src/calculators/sanitized-db-evidence-export.test.ts",
+      "sha256": "308cdd85df294516ec73cefcc28f1c83bc206bc6792e431b1f8cda0c490eb673"
+    },
+    {
+      "path": "src/calculators/sanitized-db-evidence.test.ts",
+      "sha256": "22f74e4341288e61f96543697ec8a64d72ec245a04cb823db9d495105c9d5d6a"
+    },
+    {
+      "path": "src/calculators/sanitized-db-evidence.ts",
+      "sha256": "29ad60593aed0489ce13f039723fab774f15507e228af4c47bc6410584f54b77"
+    },
+    {
+      "path": "src/calculators/scaled-contract-adapters.ts",
+      "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+    },
+    {
+      "path": "src/calculators/scaled-contract-evidence.test.ts",
+      "sha256": "c3796572ada87b32511c06478907f1653daff66b9559b804342aefa3b14f5afd"
+    },
+    {
+      "path": "src/calculators/scaled-contract-evidence.ts",
+      "sha256": "1e5c8512948b7fb2271fab105be7faacae742b1e9715b5c9943ff2b2d81d7076"
+    },
+    {
+      "path": "src/calculators/scaled-contract-receipts.test.ts",
+      "sha256": "2edf87d4203a58018577b35dcb2be2db4fbadc2b7df578d3882c82e1b4fed57c"
+    },
+    {
+      "path": "src/calculators/scaled-contract-validation.independent.test.ts",
+      "sha256": "404dc1b1573315da58821b11c5c73a3663e2c88c9fd21d4400fad44169a87bec"
+    },
+    {
+      "path": "src/calculators/scaled-contract-validation.test.ts",
+      "sha256": "880884f6aa4d6653d9d8e3c58315c2f164d75ba25577d9021a532b68eb5d8a0b"
+    },
+    {
+      "path": "src/calculators/scaled-contract-validation.ts",
+      "sha256": "f9a82e1bd659e6a09b5642c681d63be26e86f1d024fb682945f00640dc144566"
+    },
+    {
+      "path": "src/calculators/scaled-contract-vectors.ts",
+      "sha256": "9f883b444a25ab2b4fa6529dd2c51078ac53dc420f8111206ce4c95de5afa37b"
+    },
+    {
+      "path": "src/calculators/scenarios.test.ts",
+      "sha256": "e150f8ccdd7928dab892310a06cda1bed1454bf4659fe5487c7b2b22198a85b9"
+    },
+    {
+      "path": "src/calculators/scenarios.ts",
+      "sha256": "e6b4bedd3eadebecf6879d98e6147a0c4e009c04b2bbe8eb3c3ccfa4abb3b35f"
+    },
+    {
+      "path": "src/calculators/science/heat-index.test.ts",
+      "sha256": "c95e48e0ac4d62bd8ed165437561c83131c42e0e0e3a3e526e76b08e41e6c987"
+    },
+    {
+      "path": "src/calculators/science/heat-index.ts",
+      "sha256": "0b1cb068b607f4117353628342e05607bd1f7750947071eaff0012f12b729341"
+    },
+    {
+      "path": "src/calculators/science/solar-position.ts",
+      "sha256": "af95780ea2993b490bcc2fb45c6ce8fb1c08aed7a2ca36806fdd6123db9be9cd"
+    },
+    {
+      "path": "src/calculators/science/solar/PROVENANCE.md",
+      "sha256": "aab048b8b5aa10a2c98d2198f5a524bc1bf4b91de29555892cc4aa277bc89195"
+    },
+    {
+      "path": "src/calculators/science/solar/PVLIB-LICENSE",
+      "sha256": "a02e12ddaada3cf0d5dbdd8affdd577c2eec640758a95842a304f7513b8c0be4"
+    },
+    {
+      "path": "src/calculators/science/solar/generate-oracle.py",
+      "sha256": "2a1cbd1d644620816cc2b097b9cafd9d146d74b16f6c5484887c9a2f0d0b34ec"
+    },
+    {
+      "path": "src/calculators/science/solar/lib_irradproc.cpp.source",
+      "sha256": "2067a92386eb50e8dd9fe3f3148271ef03603d622bbb53f78051931c091b45b8"
+    },
+    {
+      "path": "src/calculators/science/solar/pvlib-spa.py.source",
+      "sha256": "ad7762ccca5fd9611ef9e2a9b1e37f95fe4c5b31628616b2ad3e84ea1e5f9202"
+    },
+    {
+      "path": "src/calculators/science/solar/solar.test.ts",
+      "sha256": "13706ae5eeef22904022da954e0134511cbf0a751760e7a08396dd9dbdf7dadd"
+    },
+    {
+      "path": "src/calculators/science/solar/spa-events-oracle.json",
+      "sha256": "0fd848a97c4870b52c5e8e640387ab74cc83c5d984eb6501d0660a3f24d8855c"
+    },
+    {
+      "path": "src/calculators/science/solar/spa-oracle.json",
+      "sha256": "b68513368ad898604b0d9a44351e33156df031151d017c23d216b9b781a16306"
+    },
+    {
+      "path": "src/calculators/science/sun-events.ts",
+      "sha256": "410a41a7207d7cbf12b25f6faad3ef0d307cffdf535964d56f15b50eeee8d962"
+    },
+    {
+      "path": "src/calculators/search-index.test.ts",
+      "sha256": "0605dade42522f676257767c73c9359f9c1801b37eaf7b00cf124225486b3e42"
+    },
+    {
+      "path": "src/calculators/search-index.ts",
+      "sha256": "04de3aea80e08101aaa5f958ad11cd2d9d95c0a7c688cff31841f7a2bca9032c"
+    },
+    {
+      "path": "src/calculators/search-ranking.test.ts",
+      "sha256": "2029580c2d7f7428d4c301d59d243e386b193fc7b137efd8be23c980060e53eb"
+    },
+    {
+      "path": "src/calculators/search-ranking.ts",
+      "sha256": "d1a02eb245f9ce7aa27bcb1fada206fb0735c6116f747054c0bedea57da5761b"
+    },
+    {
+      "path": "src/calculators/sitemap-audit-helper.ts",
+      "sha256": "3e4625c1674170bcf7b33e7ef0e77434116e4925c243cbe1dd0dbd50adc9149a"
+    },
+    {
+      "path": "src/calculators/six-standard-boundary-regression.test.ts",
+      "sha256": "fea5ad8bdb891e2db5486f0319542892ef272c994cdf52dc34b72dc4352cfb1b"
+    },
+    {
+      "path": "src/calculators/source-acceptance-evidence.test.ts",
+      "sha256": "9e507e33364953a3cdc0a5391004d66be100556238bfe5b700ac7677cedf3ea9"
+    },
+    {
+      "path": "src/calculators/source-bound-profiles.test.ts",
+      "sha256": "68eca1de7da3175014f82183f3e3608a3cc84be34e5231a9634dc35c901df432"
+    },
+    {
+      "path": "src/calculators/source-bound-profiles.ts",
+      "sha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d"
+    },
+    {
+      "path": "src/calculators/source-driven-components.test.ts",
+      "sha256": "e04816c9ffa4a458121bca4c76c7dff42aa594b5fd5a89df13894f691c60bb5b"
+    },
+    {
+      "path": "src/calculators/source-driven-components.ts",
+      "sha256": "1eb5fcf00acb670fbd04f6082a476d7bf2262a3bd88e20038617dccf3f72b7f3"
+    },
+    {
+      "path": "src/calculators/source-driven-evidence.test.ts",
+      "sha256": "e3ecbcb0cdde1dc8e42cac893d3fe9b046336a4c87adb48da15fa70fbc25a555"
+    },
+    {
+      "path": "src/calculators/source-driven-existing-engines.test.ts",
+      "sha256": "ddffd0a0b03efe1e78813a4b8219b81f8048738c55465e39fca374323e421e91"
+    },
+    {
+      "path": "src/calculators/source-profile-provenance.test.ts",
+      "sha256": "03c64824035f0ea259de9f632295d46461ba965b02cc3a8b9eb226f9d56ada05"
+    },
+    {
+      "path": "src/calculators/source-profile-snapshot.ts",
+      "sha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f"
+    },
+    {
+      "path": "src/calculators/sports/catalog-batch-1.test.ts",
+      "sha256": "ea3052d1db8b46319a67ba81f8537c4aa17e9275a6b8c2209107c6b5799d5dc0"
+    },
+    {
+      "path": "src/calculators/sports/catalog-batch-1.ts",
+      "sha256": "9b00fb4013c05f359657b95dd129cc272197e6e62cfc1d8c7580e80a4668f284"
+    },
+    {
+      "path": "src/calculators/sports/draft-master-529.test.ts",
+      "sha256": "13eeed3ee003ee398cb51fb597d0b75d4cdd419ed5e089e6c878c5afdd7529db"
+    },
+    {
+      "path": "src/calculators/sports/draft-master-529.ts",
+      "sha256": "6ca9094d07d9234742ec0656e94bc537830f8d79cca5e160cacd4f98e0a587e8"
+    },
+    {
+      "path": "src/calculators/sports/sports-direct-domain-validation.test.ts",
+      "sha256": "0140923bf2436f507158b8a7ed71d046326e37f17792a2b6fc4eb798fa2c2e32"
+    },
+    {
+      "path": "src/calculators/standard-risk-numeric-boundaries.test.ts",
+      "sha256": "6b728ba6360ba082b40c24c14f23db84c456e810fd3d6002701a20ad76ee0728"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-1.test.ts",
+      "sha256": "a4a09e456a117ffce4755b225424e72550d36f06f8ae342536176764ea888114"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-1.ts",
+      "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-2.test.ts",
+      "sha256": "300eb12d95d4d87d00d9464fea896da4bd689ef5a4d74b5972d19c962af1e13d"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-2.ts",
+      "sha256": "bd24af655137b795bf99b0e1427425bed6f49e34ea202f7f81231737c622979f"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-3.test.ts",
+      "sha256": "f20d4f379cff66dc5b340a33248d93f0c3976007b41932a3248260903d57be60"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-3.ts",
+      "sha256": "41df470fd871e6fd1779035805c1b96cb120c91aff7a3cce40bc7628e3c3dd8e"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-4-boundaries.test.ts",
+      "sha256": "a81cde934e5ecb6b327540929ead754aa9da004e4ac6007b162e8c80ea73ef89"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-4-probability-boundaries.test.ts",
+      "sha256": "49c3dbcd301796cfe5428688bb2cd60af2e72819e91c598f99071ceb69546c99"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-4.test.ts",
+      "sha256": "b6d4883b03f94706505563bccfe15f1465cee8a91f2d0e2518c31718ec55178f"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-4.ts",
+      "sha256": "b5f186fbbbeed527bf7f2734a3b53e02d2fcd2113fcef1b71092ef6d520e35f9"
+    },
+    {
+      "path": "src/calculators/statistics/statistics-batch3-domain-regression.test.ts",
+      "sha256": "262044ec24a6936c13b8f7385567c0844f05ab88c67151f09a9a2f5ec908c368"
+    },
+    {
+      "path": "src/calculators/taxonomy.test.ts",
+      "sha256": "95301a776cda1986ae0786b28ff900bfadcd4f1b5df8da0ce9bc6319f9062900"
+    },
+    {
+      "path": "src/calculators/taxonomy.ts",
+      "sha256": "1688c4cb0b61803427e90bf8785e780d7f56156883c528cbf1cf5b2add4fc88d"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-1-direct-validation.test.ts",
+      "sha256": "a214cd6d3ad8cc8e2b3ed94da382c3a3a656520b72a68f804504bdfbae485665"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-1.test.ts",
+      "sha256": "3a0d40187f22e261714a6aa1838f42a49c4cba84abedb3c3b063bf5a5785ad0c"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+      "sha256": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-2-direct-validation.test.ts",
+      "sha256": "b0d01decbb051368211f37181749bcee22581d5c31a8cd3eefe0d1371a8af303"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-2.test.ts",
+      "sha256": "4d58e958139a2aa8bd149f9e0029bbc7ff8fb3ba70344438896bf53aea1323af"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-2.ts",
+      "sha256": "d352f40f8aef2cbd22afd8c09e577f28fc4eda1b925a928ec65c1ea25f4393d7"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-3-direct-validation.test.ts",
+      "sha256": "af6cda3acf1af3066b9de60976dd4635ce6452c944333203f406f2330bc97358"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-3.test.ts",
+      "sha256": "e32e46249c0565e5bcf61b635f7dd339770d0687b6a390d58faaa355c2e32399"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-3.ts",
+      "sha256": "87794ca04801ddcff1b68ec740d0b5df16346d415aca6a041a07a9dc7615cd5f"
+    },
+    {
+      "path": "src/calculators/technology-computing/network-storage-contract.test.ts",
+      "sha256": "290d52e4c64fa4fb853d8d2bd1000993335ff6ec005fb04e45bc2426af9870f2"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-1.test.ts",
+      "sha256": "179c742406bb8c7a843c416c4066e141ad52ac00498a4d0870de366016f872c0"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-1.ts",
+      "sha256": "f2e7adc8729f0a28feaf615f18b7f9c56bb4db8a7f5f2ccd0b414d04a743cfee"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-2.test.ts",
+      "sha256": "75713c5340a9f8cdc4ab9cb3d5a255d2097adfcf65b288c6785710e24a37e358"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-2.ts",
+      "sha256": "b3b7afaaaaa14e37159c4b08c9116bb33b2417925b455e069ae77d9569e950ab"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-3.test.ts",
+      "sha256": "d3af923801458e632253da1781c127f8d9edea891f371992cdc5a49d41d81eca"
+    },
+    {
+      "path": "src/calculators/travel/catalog-batch-3.ts",
+      "sha256": "39ef5f34eb37931fdb2ec9e8e28c567191df073f628857c767452447b388c6c8"
+    },
+    {
+      "path": "src/calculators/travel/draft-master-517.test.ts",
+      "sha256": "ab712945743aadaf13fcd1d0e2f003b2f450059182a82458bc892778c4ce7c9b"
+    },
+    {
+      "path": "src/calculators/travel/draft-master-517.ts",
+      "sha256": "0e976b65c698c02acc0b11504634b940b2a2c3f54bdb3c6b79fe263992fd6c5f"
+    },
+    {
+      "path": "src/calculators/travel/draft-master-518.test.ts",
+      "sha256": "d0ce4134fe1bd1fe85d4ed318043b61c9591143005a80aab2725ffc226cb7160"
+    },
+    {
+      "path": "src/calculators/travel/draft-master-518.ts",
+      "sha256": "f848d972d550bf2ba11fce08f8241be32bda6ed29609fc854414500d50620e82"
+    },
+    {
+      "path": "src/calculators/travel/travel-everyday-direct-domain-validation.test.ts",
+      "sha256": "78abc8fe6f48e7ab753ca88f873acde6e2cb3eeff4ead295a5cb488d716c1321"
+    },
+    {
+      "path": "src/calculators/types.ts",
+      "sha256": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8"
+    },
+    {
+      "path": "src/calculators/ui-metadata.test.ts",
+      "sha256": "c5c37619450b94efe5b401d7accdad851e8e6cd170825c3889b93e16cd5de697"
+    },
+    {
+      "path": "src/calculators/uk-2026-electricity-independent.test.ts",
+      "sha256": "5790df9b26e5a48f5b8594581832d1be587ab7b5142303468bd8beb678e4aecd"
+    },
+    {
+      "path": "src/calculators/uk-2026-electricity-native.test.ts",
+      "sha256": "cfde7d1927d877baf61f2de2de9c8c8e64d6456a5b9186a9f7a94b4253bd7263"
+    },
+    {
+      "path": "src/calculators/uk-2026-electricity.test.ts",
+      "sha256": "87566a6495a6cc6b87e2d64f69faea7a2bc1536fc5ae431d19c07458d1c57ce4"
+    },
+    {
+      "path": "src/calculators/uk-2026-electricity.ts",
+      "sha256": "b22c38e1e009f35571808462f133c8ab9cc8ea09c1fec3c2801a2c8d1335438e"
+    },
+    {
+      "path": "src/calculators/units.test.ts",
+      "sha256": "355dd8431ba99d33912acf61462f8a22ed7f97bd03ef0aa7899ef6ff6da91139"
+    },
+    {
+      "path": "src/calculators/units.ts",
+      "sha256": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec"
+    },
+    {
+      "path": "src/calculators/verification/codex-a-numeric-defects.test.ts",
+      "sha256": "52f35244133e5ca87bf45e7c2cd8fd043d8f21fe9a7d45da19fb4d5ba7314e7d"
+    },
+    {
+      "path": "src/calculators/verification/codex-a-standard-risk-goldens.test.ts",
+      "sha256": "7e29dc90a91d6e3e30a70d3cb3007d9ad2529753116488db4ca10e6653cd2e9a"
+    },
+    {
+      "path": "src/calculators/verification/debt-aggregate-goldens.test.ts",
+      "sha256": "78a8144dfde4261dff55740b06fa14edda8317fdf7ea4a6255cc0d3f86c2b80e"
+    },
+    {
+      "path": "src/calculators/verification/debt-payoff-goldens.test.ts",
+      "sha256": "f143a5cef3638ed54d3ee626d892b0712686b330c61c13ddb95dc60d32fb35a7"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-205-goldens.json",
+      "sha256": "93cdaa1d63fda2d8ea7f0c874d6be422f76508280c55c60f7143369a6e6b4c7d"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-206-goldens-generate.py",
+      "sha256": "145e404998df136111777d9deafe9e6a03f8b110d3962568f80ac1419d432fea"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-206-goldens.json",
+      "sha256": "0812a36fa62b3017a2dde9cd8fd29213b12ffc15b46477ffe3cd281d36f17779"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-232-goldens.ts",
+      "sha256": "7acdb9ba1ba1b8d2d28c6882f45eb19f73aef622de1511a5d120b9cdf508bb7e"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-233-goldens.ts",
+      "sha256": "302b9a2eea3a516176465ae819e6375972e2865d502731f399c9555c9ef292dd"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-435-goldens.ts",
+      "sha256": "ca50eed27b5d2b795ec34d76faf6756fca2cd9381e72fa9e5716b8213540529b"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-441-goldens.ts",
+      "sha256": "dc045b53a9558f1ae80cc6e19fe2508f501f1ee0cf7fbe856bcf9f641bb04821"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/draft-master-531-goldens.json",
+      "sha256": "e4e40fb1902420fbe2fc28bab38895f5780ab92597eb2e0fd1b1695463a40612"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/pending-specialist-arithmetic.ts",
+      "sha256": "23b0e163d0db834788c64f1ecea77348950b3263ed49e90bc7b1ca5dfeaf2d82"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/sip-high-precision-vectors.ts",
+      "sha256": "853060039d287faa8d64a37ce8c214d5277e43ac8448c6f8e6b537e910089de7"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/sip-inverse-independent.ts",
+      "sha256": "6f25601e1a67bfd32c4bec3b6a3ce69b64ac1b452b8bb4e549ad987520331cb6"
+    },
+    {
+      "path": "src/calculators/verification/fixtures/sip-numerical-compatibility.ts",
+      "sha256": "20b64cd0e422a40503f1d57b8e83b1e1f84d2c5a566b1e06ce08ac7f405b03f0"
+    },
+    {
+      "path": "src/calculators/verification/investment-cashflow-goldens.test.ts",
+      "sha256": "7c1d97014ab663672682fcbe7b7678169b2713b929d91dfb4f587b3e732fa97c"
+    },
+    {
+      "path": "src/calculators/verification/nonstandard-accumulation-goldens.test.ts",
+      "sha256": "347d27c80af234ea1334be2c2da85285eb4dcb77b7df1a6934bc3deaa9af8626"
+    },
+    {
+      "path": "src/calculators/verification/nonstandard-planning-goldens.test.ts",
+      "sha256": "dd864c814e8a0ddee9bb00ed543ae294053d39f9ce88c7f4cf88e8dcbdc6d179"
+    },
+    {
+      "path": "src/calculators/verification/pending-specialist-arithmetic.test.ts",
+      "sha256": "02fb8ec90fb99859ec7cab2cf5e7fb241aba23ab00209350eea156d01dacd313"
+    },
+    {
+      "path": "src/calculators/verification/pending-specialist-mode-parity.test.tsx",
+      "sha256": "29d7718677c3bd94d2a124327f80529db58904fe4ecfe7ba3bd2f4d81caddfe5"
+    },
+    {
+      "path": "src/calculators/verification/sip-high-precision-reference.ts",
+      "sha256": "970ed4013e46273f24b65366346601546c30257a9dc803854f30083708a6c8a4"
+    },
+    {
+      "path": "src/calculators/verification/sip-high-precision.test.ts",
+      "sha256": "17e4bfa28c61a8ef27d65aedbd0da1529f65b87d2fd4e2a1d8978d5ba146b4a7"
+    },
+    {
+      "path": "src/calculators/verification/sip-inverse-independent.test.ts",
+      "sha256": "64490498fe9c7b980d02f8c5ff0e5326bfd0ceaa12a8198be81010ad51a70839"
+    },
+    {
+      "path": "src/calculators/verification/sip-numerical-compatibility.test.ts",
+      "sha256": "da6160212f028284cbb0a3a90bcc0980f4a7dc1b9007e222071916cc98c94bac"
+    },
+    {
+      "path": "src/calculators/verification/sip-numerical-recovery.test.tsx",
+      "sha256": "7fa300fcf4cc31f21eef0573167fe7b207f7e08b49e4f348a99839ae750ffe3c"
+    },
+    {
+      "path": "src/calculators/verification/sip-v2-history-parity.test.tsx",
+      "sha256": "fbc469a27c9cdef564eda148ebdd0f23bcdef7fd02e765210b086bdee53c8853"
+    },
+    {
+      "path": "src/calculators/worked-example-display.test.ts",
+      "sha256": "342578243acd565d91219eb7230a903e023269180582f8c08364f3c3db486836"
+    },
+    {
+      "path": "src/calculators/worked-example-model.test.ts",
+      "sha256": "982f6c37c1e4bf48bff2b2597676479d94193152f22613eb652466e974342bc7"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    }
+  ]
+}
