@@ -59,6 +59,37 @@ try{
  await denied(viewer.sdk.from('business_projects').insert({organization_id:org,name:'Viewer Project',created_by:viewer.id}));
  await denied(admin.sdk.from('business_projects').insert({organization_id:org,name:'Forged actor',created_by:owner.id}));
  pass('Business project member visibility, outsider isolation, viewer-write and forged-actor denial');
+ // Exercise the same membership and exact HEAD-count reads used by Business
+ // server-action preflights, against real JWT/RLS rather than injected roles.
+ const membership=await ok(owner.sdk.from('organization_members').select('role').eq('organization_id',org).eq('user_id',owner.id).maybeSingle());
+ assert.equal(membership.role,'owner');
+ assert.equal(await ok(outsider.sdk.from('organization_members').select('role').eq('organization_id',org).eq('user_id',outsider.id).maybeSingle()),null);
+ for(const [table,column,count] of [['organization_members','user_id',3],['organization_invitations','id',0]]){
+  let query=owner.sdk.from(table).select(column,{count:'exact',head:true}).eq('organization_id',org);
+  if(table==='organization_invitations')query=query.is('accepted_at',null).gt('expires_at',new Date().toISOString());
+  const result=await query;assert.equal(result.error,null);assert.equal(result.count,count);assert.equal(result.data,null);
+ }
+ pass('Actual JWT membership preflight and exact HEAD seat counts preserve organization boundaries');
+ const invitationRow={organization_id:org,email:outsider.email,role:'member',token_hash:randomUUID(),invited_by:viewer.id,expires_at:new Date(Date.now()+3600000).toISOString()};
+ await denied(viewer.sdk.from('organization_invitations').insert(invitationRow));
+ await denied(outsider.sdk.from('organization_invitations').insert({...invitationRow,invited_by:outsider.id}));
+ await ok(owner.sdk.from('organization_members').update({role:'manager'}).eq('organization_id',org).eq('user_id',viewer.id));
+ await denied(viewer.sdk.from('organization_invitations').insert(invitationRow));
+ const managerProject=(await ok(viewer.sdk.from('business_projects').insert({organization_id:org,name:'Manager Project',created_by:viewer.id}).select()))[0];
+ const managerWorkspace=(await ok(viewer.sdk.from('client_workspaces').insert({organization_id:org,name:'Manager Client',created_by:viewer.id}).select()))[0];
+ assert.equal(managerProject.organization_id,org);assert.equal(managerWorkspace.organization_id,org);
+ await ok(owner.sdk.from('organization_members').update({role:'member'}).eq('organization_id',org).eq('user_id',viewer.id));
+ await denied(viewer.sdk.from('business_projects').insert({organization_id:org,name:'Member Project',created_by:viewer.id}));
+ await denied(viewer.sdk.from('client_workspaces').insert({organization_id:org,name:'Member Client',created_by:viewer.id}));
+ assert.equal((await ok(viewer.sdk.from('client_workspaces').select('id'))).length,1);
+ assert.deepEqual(await ok(outsider.sdk.from('client_workspaces').select('id')),[]);
+ await ok(owner.sdk.from('organization_members').update({role:'viewer'}).eq('organization_id',org).eq('user_id',viewer.id));
+ pass('Genuine manager JWT creates projects and clients but cannot invite; member writes and outsider reads remain fenced');
+ const expiredToken=randomUUID();
+ await ok(owner.sdk.from('organization_invitations').insert({...invitationRow,invited_by:owner.id,token_hash:expiredToken,expires_at:new Date(Date.now()-60000).toISOString()}));
+ await denied(outsider.sdk.rpc('accept_business_invitation',{invite_token_hash:expiredToken}),/invalid or expired/);
+ assert.equal(await ok(outsider.sdk.from('organization_members').select('role').eq('organization_id',org).eq('user_id',outsider.id).maybeSingle()),null);
+ pass('Expired invitation cannot create membership for the matching authenticated recipient');
  const historyId=randomUUID(),args={p_request_id:historyId,p_calculator_slug:'slope-calculator',p_calculator_version:1,p_input_data:{rise:2,run:4},p_output_data:{slope:0.5},p_expected_owner_id:owner.id};
  assert.equal(await ok(owner.sdk.rpc('save_calculation_history_atomic',args)),historyId);
  assert.equal(await ok(owner.sdk.rpc('save_calculation_history_atomic',args)),historyId);

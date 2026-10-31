@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: GrowthOS heartbeat syntax
@@ -104,6 +106,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Pull pinned isolated database fixtures
@@ -182,6 +186,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Production build
@@ -221,6 +227,8 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
       - name: Pull pinned isolated database fixtures
@@ -264,7 +272,9 @@ jobs:
       - name: Batch14 identity and contract evidence preparation
         run: |
           node_modules/.bin/vite-node --config vitest.config.ts scripts/prepare-canonical-contract-evidence.ts --check
-          node scripts/full-product-batch14-evidence.mjs --check
+          git fetch --no-tags --depth=1 origin b96b1ac89971cb8418d2389fbd7c9571a57491f1
+          node scripts/check-batch14-evidence.mjs
+          node --test tests/full-product-batch14/historical-batch14-evidence.test.mjs
           node --test tests/full-product-batch14/workflow.test.mjs
       - name: Batch14 accessible private sensitivity and scenario report replay
         run: |
@@ -277,6 +287,15 @@ jobs:
         run: node tests/gotrue-full-schema/acceptance.mjs
         env:
           GOTRUE_FULL_ARTIFACTS: ${{ runner.temp }}/batch14-gotrue-full
+      - name: Software closure evidence and recovery lifecycle browser acceptance
+        run: |
+          node scripts/software-closure-evidence.mjs --check
+          node --test tests/software-closure/ci-workflow.test.mjs
+          node tests/calculus-recovery-workbench/browser.mjs
+          node tests/software-closure/recovery-browser.mjs
+        env:
+          SOFTWARE_CLOSURE_ARTIFACTS: ${{ runner.temp }}/software-closure
+          CALCULUS_RECOVERY_EVIDENCE: ${{ runner.temp }}/calculus-recovery
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]

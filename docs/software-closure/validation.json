@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "pr": 1504,
+    "sha": "b96b1ac89971cb8418d2389fbd7c9571a57491f1",
+    "ciRun": 41230166484,
+    "conclusion": "success"
+  },
+  "testedFeatureHead": "57b58045312da0d8724f3c543fe6461fe3529ce2",
+  "checks": [
+    {
+      "check": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 26.32,
+      "log": "/workspace/work/closure-lint.log"
+    },
+    {
+      "check": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 6.64,
+      "log": "/workspace/work/closure-typecheck.log"
+    },
+    {
+      "check": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 143.03,
+      "log": "/workspace/work/closure-unit.log"
+    },
+    {
+      "check": "launch",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "exitCode": 0,
+      "seconds": 2.07,
+      "log": "/workspace/work/closure-launch.log"
+    },
+    {
+      "check": "certification",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "exitCode": 0,
+      "seconds": 1.88,
+      "log": "/workspace/work/closure-certification.log"
+    },
+    {
+      "check": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 32.35,
+      "log": "/workspace/work/closure-build.log"
+    }
+  ],
+  "unitSummary": {
+    "passed": 6523,
+    "existingSkipped": 4,
+    "passedFiles": 827,
+    "skippedFiles": 2
+  },
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 28
+  },
+  "launchPassed": 45,
+  "certificationGuardPassed": 15,
+  "ciHistoricalGuards": {
+    "passed": 2417,
+    "log": "/workspace/work/closure-ci-guards.log",
+    "command": "node --test tests/ci-gate-recovery/*.test.mjs tests/full-product-batch14/workflow.test.mjs tests/full-product-batch14/historical-batch14-evidence.test.mjs tests/software-closure/ci-workflow.test.mjs"
+  },
+  "installedSdkTransport": {
+    "passed": 3,
+    "log": "/workspace/work/closure-transport.log"
+  },
+  "actualGotrue": {
+    "passedGroups": 19,
+    "receipt": "backend-closure-gotrue-receipt.json",
+    "harnessHashesIndependentlyVerified": true,
+    "scope": "Genuine isolated reviewed repository model; authentic hosted schema parity BLOCKED."
+  },
+  "browsers": {
+    "featureHead": "57b58045312da0d8724f3c543fe6461fe3529ce2",
+    "checks": [
+      {
+        "check": "calculus-browser",
+        "command": [
+          "node",
+          "tests/calculus-recovery-workbench/browser.mjs"
+        ],
+        "exitCode": 0,
+        "seconds": 5.86,
+        "log": "/workspace/work/closure-calculus-browser.log"
+      },
+      {
+        "check": "lifecycle-browser",
+        "command": [
+          "node",
+          "tests/software-closure/recovery-browser.mjs"
+        ],
+        "exitCode": 0,
+        "seconds": 3.54,
+        "log": "/workspace/work/closure-lifecycle-browser.log"
+      }
+    ],
+    "sourceHashes": {
+      "src/components/canonical-calculus-recovery-workbench.tsx": "cde909c1ca6e9536743fcedc3a3afe781c03cddc68dd4506db09683d4307faed",
+      "src/components/scenario-set-recovery.tsx": "6e44983e6b038686f398ad1393a1039bef0f45bc449ec56710f2006cb1cbb6a7",
+      "src/components/calculator-scenario-workspace.tsx": "1dd5954034bc9684f1832d59f6b07cc819dba9676bbc9ffd17872b9733c9e6f5",
+      "src/lib/scenario-set-recovery.ts": "13ad2c85bc926e8395095a7812c3be2dce2fbdd3f4f3e0a3424ccff0fc9d4a22",
+      "src/calculators/canonical-calculus-workflow.ts": "6b4ac2f65fffbf6f3bc731c768a0726250a299c8a8ca710685396a01bf4de24c",
+      "src/calculators/canonical-calculus.ts": "069be29c14c2a7ef3f3b98c87f7c6425096b59cd0c4e1f58504c948b708e0c6d",
+      "src/calculators/private-calculus-successor.ts": "a95cc6dce078040a3257d98825b0aefa81e681206585e3c04f25667044d8b895",
+      "tests/calculus-recovery-workbench/browser.mjs": "d9724e7b2e12a25c0d1913fc43b803aa271ac73b12c7c9ea3e77a5aff0889252",
+      "tests/calculus-recovery-workbench/main.tsx": "24b43dd21f6a3fbc4327fc2174556f9066e770a8c4d7bee6562be74c737e3938",
+      "tests/software-closure/recovery-browser.mjs": "60a128bd42dead1caaab84b9aa7944eb159165ff1b88ebd91fe07786bdad3c00",
+      "tests/software-closure/recovery/main.tsx": "8b2e6feec198e8a07ac54aab15ecb13388f2797cf7684b57830904372eb47d14",
+      "scripts/draft-preview.mjs": "fd36b5cc17abcffce316840b9434dffa6ea964d38d9aa7109e11277230e1a2b5",
+      "tests/next-runtime/cdp.mjs": "1d2fd3a3648b23fa47e0fc01fc1261ba6e1693f26f3b5cb3fa867fa72272e260",
+      "package-lock.json": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+    },
+    "unchangedDuringRuns": true,
+    "calculusJourneys": 6,
+    "lifecycleJourneys": 6,
+    "calculusReceipt": "integrated-calculus-browser-receipt.json",
+    "lifecycleReceipt": "integrated-recovery-browser-receipt.json",
+    "issues": 0,
+    "resourcePolicy": "No Docker/interface operations during either campaign; both servers and browsers cleaned."
+  },
+  "historicalSourceChecks": {
+    "v1": "PASS",
+    "v2": "PASS",
+    "calculus": "PASS",
+    "batch12Ledger": "PASS",
+    "frozenBatch14": "PASS;17 exact historical artifacts"
+  },
+  "preservation": {
+    "identities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlocked": 43,
+    "protectedFilesByteUnchanged": 1101,
+    "canonicalPromotions": 0
+  },
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "hostedDeliveryCI": "One bounded query after final push/PR; result in final delivery response. No queued or success inference from absent run.",
+  "releaseHold": true
+}

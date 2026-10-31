@@ -1,0 +1,47 @@
+{
+  "baseline": {
+    "pr": 1504,
+    "sha": "b96b1ac89971cb8418d2389fbd7c9571a57491f1",
+    "parent": "e2b4a3d2e65f3887ce1b53240f01847d9b4348f3",
+    "ci": 41230166484,
+    "conclusion": "success"
+  },
+  "releaseHold": true,
+  "strategy": "Substantial verified execution tranche within authorized 48-hour sprint; no claim that unattended future work or all canonical acceptance is complete.",
+  "lanes": {
+    "A": {
+      "worktree": "/workspace/work/closure-a",
+      "ownership": "New mathematical support and tests only; historical engines immutable; integration requires demonstrated usable path."
+    },
+    "B": {
+      "worktree": "/workspace/work/closure-b",
+      "ownership": "Business server actions and auth/backend regressions; tests/gotrue runtime acceptance."
+    },
+    "C": {
+      "worktree": "/workspace/work/closure-c",
+      "ownership": "Scenario workspace/recovery UI and focused browser/component regressions."
+    },
+    "D": {
+      "worktree": "/workspace/work/closure-d",
+      "ownership": "Current CI workflow and current CI regression guards; historical snapshots immutable."
+    }
+  },
+  "resourceLeases": {
+    "productionBuild": "root integration only",
+    "dockerAndBrowser": "Mutually exclusive across all worktrees; root coordinates."
+  },
+  "preservation": {
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlocked": 43,
+    "historicalEngines": "unchanged",
+    "canonicalPromotion": false
+  },
+  "evidenceReuse": [
+    "docs/full-product-batch14/requirements-540.json",
+    "docs/full-product-batch14/remaining-work-queue.json",
+    "docs/blueprint-reconciliation/blueprint-to-540.json",
+    "docs/audits/final-acceptance-p0-2026-10-21/acceptance-ledger.csv"
+  ]
+}

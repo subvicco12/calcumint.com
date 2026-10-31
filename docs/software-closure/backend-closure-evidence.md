@@ -1,0 +1,13 @@
+# Business backend closure evidence
+
+The invitation action previously treated unavailable exact seat counts as zero. Executable action tests reproduced this path before the fix (31 of the original 33 assertions failed). It now requires successful, nonnegative safe-integer counts for both active members and live pending invitations, and rejects failed profile entitlement reads even when profile data accompanies an error. This remains a preflight: it does not make invitation issuance or acceptance concurrency-safe.
+
+Business invitations now verify the signed-in user's membership in the requested organization at admin or owner level before reading capacity or inserting. Project and client-workspace creation verify manager-or-higher membership. These checks use the existing canonical role hierarchy; database RLS remains authoritative. Authentication errors reject mutations even when an auth response also includes a user. Invitation acceptance accepts only the existing generated 64-character lowercase hexadecimal token format, then passes its digest to the existing acceptance RPC.
+
+Validation used the locked dependency tree and Node 22. The targeted Business suite passed 80 tests in seven files; changed files passed ESLint; `tsc --noEmit --incremental false` passed. No production build ran in this lane.
+
+The accompanying `backend-closure-gotrue-receipt.json` records 19 passing checks through actual pinned GoTrue v2.197.0, PostgreSQL17.6 and PostgREST12.2.3. Three new checks cover actual JWT membership/exact HEAD-count queries, manager project/client writes with manager invitation and member write denials, and expired matching-recipient invitation rejection. The receipt retains the baseline source commit and exact SHA256 bindings for the tested harness worktree, plus safe HTTP operation paths/statuses. It does not assert that the tested uncommitted worktree equals its baseline commit.
+
+The historical Batch14 receipts and source bindings are untouched. Production SQL and migration files are untouched. This remains a disposable full repository model, not a captured hosted schema: authentic DDL/ACL/ledger parity is BLOCKED and production equivalence UNKNOWN. Concurrent invitation-seat admission, hosted gateway behavior, external providers, recovery delivery and revocation policy remain outside this evidence. RELEASE HOLD remains active.
+
+Documentation lookup was attempted through the connected Supabase docs tool and direct changelog retrieval. The tool required an unavailable link identifier; the configured shell network proxy was unreachable. The implementation introduces no new Supabase API: it checks existing `getUser`, `maybeSingle`, and exact-count results and preserves existing mutation calls.

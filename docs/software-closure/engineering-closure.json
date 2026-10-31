@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "b96b1ac89971cb8418d2389fbd7c9571a57491f1",
+  "releaseHold": true,
+  "features": [
+    {
+      "id": "business-fail-closed-mutations",
+      "status": "ENGINEERING_COMPLETE",
+      "scope": "Verified authentication/entitlement/organization role preflight; successful exact nonnegative seat counts; generated token format. RLS retained. Invitation concurrency not accepted.",
+      "catalogIds": [],
+      "globalProductWorkflow": true,
+      "evidence": [
+        "src/app/business/actions.test.ts",
+        "backend-closure-gotrue-receipt.json"
+      ]
+    },
+    {
+      "id": "scenario-import-lifecycle",
+      "status": "ENGINEERING_COMPLETE",
+      "scope": "Reader construction/read exceptions, unexpected abort, cancellation, context commit cleanup, late completion suppression and retry; native isolated file reads.",
+      "catalogIds": [
+        1,
+        2,
+        26,
+        50,
+        51,
+        52,
+        207,
+        388,
+        426
+      ],
+      "mappingStatus": "EXISTING_ENGINE_ASSOCIATIONS_ONLY",
+      "evidence": [
+        "src/components/scenario-set-recovery.test.tsx",
+        "recovery-browser-receipt.json"
+      ]
+    },
+    {
+      "id": "private-calculus-recovery-presentation",
+      "status": "ENGINEERING_COMPLETE",
+      "scope": "Discoverable private successor presentation: atomic rejected imports preserve verified result/export; edited or failed current inputs retain explicitly labelled prior result; native Enter, result/error focus including repeated identical errors; v2/v3 historical replay and all-plan core arithmetic unchanged. Original source-bound presentation retained.",
+      "catalogIds": [
+        246,
+        247,
+        248
+      ],
+      "mappingStatus": "RELATED_PRIVATE_CONTRACTS_NOT_CANONICAL_ACCEPTANCE",
+      "evidence": [
+        "src/components/canonical-calculus-recovery.test.tsx",
+        "lane-a-browser-receipt.json"
+      ]
+    },
+    {
+      "id": "ci-download-cache-and-immutable-replay",
+      "status": "ENGINEERING_COMPLETE",
+      "scope": "Four lockfile-keyed npm download caches; unconditional npm ci; exact original Batch14 evidence replay/tamper rejection; mandatory new browser steps; all four bounded jobs required. Hosted result reported separately.",
+      "catalogIds": [],
+      "globalProductWorkflow": true,
+      "evidence": [
+        "tests/ci-gate-recovery/npm-cache.test.mjs",
+        "tests/full-product-batch14/historical-batch14-evidence.test.mjs",
+        "tests/software-closure/ci-workflow.test.mjs"
+      ]
+    }
+  ],
+  "newAdapters": 0,
+  "newMathematicalVersions": 0,
+  "canonicalAcceptances": 0,
+  "preserved": {
+    "identities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlocked": 43
+  }
+}
