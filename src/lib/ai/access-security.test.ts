@@ -1,4 +1,5 @@
 import {beforeEach,expect,it,vi} from "vitest";
+import {createClient,AuthSessionMissingError,isAuthSessionMissingError} from "@supabase/supabase-js";
 const state=vi.hoisted(()=>({rpc:vi.fn(),explain:vi.fn(),find:vi.fn(),builder:vi.fn(),provider:vi.fn(),profileRead:vi.fn(),authError:null as unknown,profileError:null as unknown,anonymous:false,plan:"business"}));
 vi.mock("@/lib/supabase/server",()=>({createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:state.anonymous?null:{id:"synthetic-owner"}},error:state.authError})},from:()=>{state.profileRead();const query={select:()=>query,eq:()=>query,maybeSingle:async()=>({data:{plan:state.plan},error:state.profileError})};return query;},rpc:state.rpc})}));
 vi.mock("@/lib/ai/service",()=>({explainDeterministicResult:state.explain,findCalculatorWithAi:state.find,proposeBuilderDefinition:state.builder}));
@@ -43,3 +44,19 @@ for(const route of actualRoutes){
 it("preserves ordinary anonymous finder fallback without quota or provider use",async()=>{state.anonymous=true;const response=await find(aiRequest({query:"sip investment"}));expect(response.status).toBe(200);const body=await response.json();expect(body.usedAi).toBe(false);expect(body.recommendations).toHaveLength(1);expect(state.rpc).not.toHaveBeenCalled();expect(state.find).not.toHaveBeenCalled();expect(state.profileRead).not.toHaveBeenCalled();});
 it("preserves anonymous premium access denial",async()=>{state.anonymous=true;const response=await explain(aiRequest(actualRoutes[1].body));expect(response.status).toBe(403);expect(state.rpc).not.toHaveBeenCalled();expect(state.explain).not.toHaveBeenCalled();});
 it("preserves provider-disabled deterministic finder without consulting failed account data",async()=>{state.provider.mockReturnValue(null);state.authError={message:"private auth credentials"};state.profileError={message:"private profile credentials"};const response=await find(aiRequest({query:"sip investment"}));expect(response.status).toBe(200);const body=await response.json();expect(body.usedAi).toBe(false);expect(body.recommendations).toHaveLength(1);expect(state.rpc).not.toHaveBeenCalled();expect(state.find).not.toHaveBeenCalled();expect(state.profileRead).not.toHaveBeenCalled();});
+
+it("preserves actual SDK missing-session behavior without network, quota or provider calls",async()=>{
+ const transport=vi.fn(async()=>{throw new Error("Unexpected network access");});
+ const client=createClient("https://synthetic.invalid","synthetic-anon-key",{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:transport}});
+ const result=await client.auth.getUser();
+ expect(result.data.user).toBeNull();expect(isAuthSessionMissingError(result.error)).toBe(true);expect(transport).not.toHaveBeenCalled();
+ state.anonymous=true;state.authError=result.error;
+ const finder=await find(aiRequest(actualRoutes[0].body));expect(finder.status).toBe(200);const payload=await finder.json();expect(payload.usedAi).toBe(false);expect(payload.recommendations).toHaveLength(1);
+ for(const route of actualRoutes.slice(1)){const response=await route.post(aiRequest(route.body));expect(response.status).toBe(403);expect(await response.json()).toEqual({error:"Sign in to use AI-assisted features"});}
+ expect(state.rpc).not.toHaveBeenCalled();expect(state.profileRead).not.toHaveBeenCalled();expect(state.find).not.toHaveBeenCalled();expect(state.explain).not.toHaveBeenCalled();expect(state.builder).not.toHaveBeenCalled();expect(transport).not.toHaveBeenCalled();
+});
+it.each(["unexpected anonymous error","user with missing-session error"])("rejects %s despite anonymous compatibility",async kind=>{
+ state.anonymous=kind==="unexpected anonymous error";state.authError=state.anonymous?new Error("Auth session missing!"):new AuthSessionMissingError();
+ for(const route of actualRoutes){const response=await route.post(aiRequest(route.body));expect(response.status).toBe(503);expect(await response.json()).toEqual({error:"AI assistance is temporarily unavailable. Please try again."});}
+ expect(state.rpc).not.toHaveBeenCalled();expect(state.profileRead).not.toHaveBeenCalled();expect(state.find).not.toHaveBeenCalled();expect(state.explain).not.toHaveBeenCalled();expect(state.builder).not.toHaveBeenCalled();
+});

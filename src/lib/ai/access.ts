@@ -1,3 +1,4 @@
+import { isAuthSessionMissingError } from "@supabase/supabase-js";
 import { AiAccessError } from "./request-errors";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { canUseAiFeature, type AiFeature, type Plan } from "./policy";
@@ -6,7 +7,7 @@ export async function getAiSession() {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return null;
   const { data: { user }, error: authError } = await supabase.auth.getUser();
-  if (authError) throw new Error("AI session unavailable");
+  if (authError && !(user === null && isAuthSessionMissingError(authError))) throw new Error("AI session unavailable");
   if (!user) return null;
   const { data: profile, error: profileError } = await supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle();
   if (profileError) throw new Error("AI session unavailable");
