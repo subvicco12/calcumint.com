@@ -1,0 +1,25 @@
+{
+  "task": "BUS-ISSUANCE",
+  "exactQueueTask": "Prepare and test atomic invitation issuance/reservation successor preserving the current five-seat/pending semantics; characterize participating writers without activation.",
+  "status": "PREPARED_TESTED_REVIEW_ONLY_ADOPTION_BLOCKED",
+  "recordedImplementationStartUTC": "2026-10-31T20:25:34Z",
+  "recordedImplementationEndUTC": "2026-10-31T20:29:52Z",
+  "recordedElapsedSeconds": 258.0,
+  "timingScope": "Recorded implementation window includes code/docs, tests and SDK-window waits. Preliminary source investigation before timer creation was not timed; do not infer human-hour expenditure from this measured window.",
+  "finalGenuineCampaign": {
+    "startedAt": "2026-10-31T20:29:28.248Z",
+    "endedAt": "2026-10-31T20:29:37.412Z",
+    "elapsedSeconds": 9.164
+  },
+  "redEvidence": "quota-five-to-six in-memory mutation: synchronized distinct final-seat assertion fails actual2 expected1; isolated fixture cleaned",
+  "greenEvidence": "10 genuine acceptance groups; source/model provenance hash verification passes",
+  "testLimit": "No full unit suite/build/browser; review-only new artifact task.",
+  "activation": false,
+  "remaining": [
+    "Direct authenticated invitation insert bypasses quota",
+    "Direct membership/role/invitation mutation and privileged/external writers need common protocol disposition",
+    "Existing-member and owner role policy unresolved",
+    "Authentic hosted schema/ACL/migration evidence unavailable",
+    "Clock-source compatibility, deletion effects, deployment and rollback gates remain"
+  ]
+}

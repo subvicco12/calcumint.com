@@ -1,0 +1,28 @@
+# BUS-ISSUANCE writer and adoption boundaries
+
+Exact queue task: “Prepare and test atomic invitation issuance/reservation successor preserving the current five-seat/pending semantics; characterize participating writers without activation.” The 6–10 hours in the queue is an estimate, not elapsed execution time.
+
+The proposal is a new guarded review artifact. Neither `inviteMember` nor the historical migration sequence calls it. Unchanged SQL must reject before creating the function. Only the disposable fixture removes the guard in memory, after observing rejection. It separately proves the unchanged Batch16 successor guard before exercising that successor in memory. No Batch16 source or receipt is edited.
+
+| Writer | Actual repository authority | Organization admission lock | Disposition |
+|---|---|---|---|
+| Proposed `reserve_business_invitation` | Explicit authenticated execute; current caller profile Business and owner/admin membership | Yes | Review only; counts all members and live unaccepted invitations |
+| Batch16 proposed `accept_business_invitation` | Authenticated SECURITY DEFINER, email-bound invitation | Yes | Review only; retains original existing-member role behavior |
+| Active `inviteMember`, `src/app/business/actions.ts:48` | Server-authenticated caller; Business entitlement; owner/admin; direct table insert | No | Non-atomic count/insert remains active; must route through adopted protocol |
+| Active historical `accept_business_invitation`, migration003 | Authenticated SECURITY DEFINER inserts/upserts member, marks accepted, appends audit | No | Must reconcile adoption with Batch16 successor |
+| `create_business_organization`, migration014 overriding003 | Business caller; creates organization and initial owner membership | No | New organization creation is isolated from admissions to an existing organization; owner uniqueness race is separate |
+| Direct authenticated invitation INSERT | `invites_admin_insert` in003, identity optimization032: owner/admin and `invited_by=auth.uid()` | No | Genuine test demonstrates quota bypass; RLS does not require Business entitlement or reservation protocol |
+| Direct authenticated invitation DELETE | `invites_admin_delete` in003, owner/admin | No | Can release reservations; reconcile cancellation ordering and receipts |
+| Direct authenticated member UPDATE | `members_admin_update` in003 plus reviewed identity/owner fences | No | Role changes can race caller permission checks; identity immutability is not participation |
+| Direct authenticated member DELETE | `members_admin_delete` in003, owner/admin excluding owner | No | Releases seat; membership removal/auth demotion behavior requires shared protocol disposition |
+| Table owner, service_role/BYPASSRLS, superuser, privileged SQL and external integrations | Broad fixture defaults explicitly model elevated table grants; production privileges unknown | No | Can insert/update/delete either table and alter accepted/expiry/email/role. Must enumerate authentic effective grants and all external writers before adoption |
+| FK cascades from organization/auth user deletion |003 organization_id/user_id/invited_by FKs | No | Removes membership/reservations; preserve supported deletion effects and audit them |
+| Tests/fixture setup and migration/model bootstrap | Direct privileged SQL in repository tests; not deployed app behavior | No | Disposable setup only, never evidence that privileged production writers participate |
+
+Source search covered `src`, `supabase/migrations`, and `scripts`; repository tests contain additional deliberately privileged setup. This is a repository inventory, not proof of every hosted writer. Unknown external writers remain unknown. The receipt fingerprints the proposal, test and relevant authoritative sources.
+
+Five seats means `count(members) + count(invitations where accepted_at IS NULL and expires_at > reference_time)`. Expired unaccepted rows still retain the existing partial unique index on `(organization_id, lower(email)) WHERE accepted_at IS NULL`; expiry does not permit reissuing the same email until deletion. No deduplication, idempotent retry, existing-member rejection, owner eligibility rule, or owner demotion rule is invented. Same-request concurrent issuance retains duplicate rejection. Fields retain organization, normalized email, valid non-owner role, token hash, caller invited_by and seven-day expiry; token generation and SHA256 remain an application responsibility. Email delivery stays deferred.
+
+The review RPC binds both the authoritative quota predicate and new expiry to `clock_timestamp()` captured after the organization lock. Lifetime is exactly604800 elapsed seconds, preserving the active Node `7 * 24 * 60 * 60 * 1000` duration even across DST changes; SQL `interval '7 days'` would be calendar-time dependent. This deliberately moves the clock source from the existing application timestamps to the database for this new proposal only, preventing authenticated callers from forging the quota time or lifetime. The active action remains unchanged. Review this clock-source compatibility explicitly before adoption.
+
+Adoption remains blocked on authentic current schema/ACL/function/index/trigger/migration evidence, complete direct and privileged writer reconciliation, owner/existing-member role policy, review of the documented database-clock binding, effective function ownership and API exposure review, compatibility/deletion effects and deployment/rollback approval. The current public SECURITY DEFINER review surface is deliberately explicit and privilege-limited, but the final exposed/private wrapper choice requires review. None of these blockers permits installation in an active or production database.
