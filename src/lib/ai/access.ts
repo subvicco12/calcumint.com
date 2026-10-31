@@ -5,9 +5,11 @@ import { canUseAiFeature, type AiFeature, type Plan } from "./policy";
 export async function getAiSession() {
   const supabase = await createSupabaseServerClient();
   if (!supabase) return null;
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError) throw new Error("AI session unavailable");
   if (!user) return null;
-  const { data: profile } = await supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle();
+  const { data: profile, error: profileError } = await supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle();
+  if (profileError) throw new Error("AI session unavailable");
   const plan = (["free", "pro", "business"].includes(String(profile?.plan)) ? profile?.plan : "free") as Plan;
   return { supabase, user, plan };
 }
