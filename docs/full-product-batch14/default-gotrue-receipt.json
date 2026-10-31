@@ -1,0 +1,272 @@
+{
+  "checks": [
+    "Actual signup migrations/trigger create Free profile; editable metadata cannot elevate JWT role or plan",
+    "Actual password rejection",
+    "Real JWT PostgREST own history read/write; outsider isolation, foreign-owner and plan writes denied",
+    "Authenticated JWT cannot invoke GoTrue admin (explicit user bearer plus SDK denial)",
+    "Anon/service tokens without user subject cannot authenticate user; wrong-signature JWT rejected by PostgREST",
+    "Actual refresh rotates tokens; logout deletes auth.sessions and rejects revoked refresh",
+    "Measured limitation: signed access JWT accepted immediately after logout; elapsed expiry boundary not tested",
+    "Native Next login form authenticates through installed SDK and real GoTrue, displaying own account",
+    "Actual SSR cookie login survives browser reload without session injection",
+    "Native browser sign-out removes access to authenticated account"
+  ],
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "migrations": {
+      "001_b3_accounts": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444",
+      "002_b4_billing": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24",
+      "009_country_preferences": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab",
+      "010_b7_pro_workspace": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e",
+      "029_account_rls_auth_initplan": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+    },
+    "authUidOwner": "supabase_auth_admin",
+    "authMigrationCount": 75,
+    "scope": "Selective unchanged repository migrations; explicit isolated platform ACLs; no proposals; production equivalence UNKNOWN"
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_history",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_history",
+      "status": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/profiles",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_history",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/admin/users",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/admin/users",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/logout",
+      "status": 204
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/favorites",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/user_preferences",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/user_preferences",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/subscriptions",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/favorites",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/logout",
+      "status": 204
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/list_published_calculator_manifest",
+      "status": 404
+    }
+  ],
+  "browserErrors": [],
+  "scope": "Actual local GoTrue, PostgREST, installed SDK and Next dev browser; no production/mail acceptance"
+}

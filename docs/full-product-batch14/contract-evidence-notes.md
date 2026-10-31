@@ -1,0 +1,11 @@
+# Contract evidence preparation
+
+`contract-evidence.json` prepares exact master IDs 1–540 against the actual master CSV, current runtime registry, existing implementation reconciliation, Batch13 requirements and original Blueprint trace. It records 489 registered candidate associations, 79 immutable private adapter bindings, 192 identities with bounded private contracts, and zero canonical acceptances. All 489 recorded registered candidates currently match exact technical ID/slug/version; this does not approve their association with a master identity.
+
+The typed validator rejects ID, slug and immutable version mismatch, title aliases, duplicate runtime IDs/slugs, stale recorded associations, stale private adapter versions, changed source hashes and changed governance/applicability evidence. Revalidating a report recomputes its expected complete content from current source bytes. The content hash is an integrity aid, not a signature or external approval. The implementation source snapshot pins the existing inspected calculator source graph, including its literal JSON dependencies.
+
+Family variants remain proposed associations. Private and component contracts retain their bounded metadata and original requirements. Original Blueprint source/review restrictions are copied without asserting publisher verification, qualified approval, applicability or lifecycle authority. There are no engine, protected binding or historical artifact changes.
+
+Input JSON Schema is only the existing Zod structural projection. It cannot prove all refinements or complete canonical mathematics. Declared output keys come from authored examples; they are not complete output schemas or independent numerical acceptance. Unknown fields and restrictions stay unknown. Registered identity validity does not validate full product scope.
+
+Regenerate with `node_modules/.bin/vite-node --config vitest.config.ts scripts/prepare-canonical-contract-evidence.ts`; add `--check` to reject a stale export. Focused verification is `node_modules/.bin/vitest run src/lib/canonical-evidence-preparation.test.ts --maxWorkers=1 --minWorkers=1`. This evidence does not claim hosted CI success, production authentication, certification, publication or release approval.

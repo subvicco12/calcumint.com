@@ -7,7 +7,7 @@ export const images={postgres:'postgres:17.6-alpine@sha256:ef257d85f76e48da1c648
 const env={...process.env};for(const k of ['DOCKER_HOST','DOCKER_CONTEXT','DOCKER_TLS','DOCKER_TLS_VERIFY','DOCKER_CERT_PATH'])delete env[k];
 const docker=(args,input='')=>new Promise((resolve,reject)=>{const p=spawn('docker',['--host=unix:///var/run/docker.sock',...args],{env,stdio:['pipe','pipe','pipe'],timeout:30000});let out='',err='';p.stdout.on('data',x=>out+=x);p.stderr.on('data',x=>err+=x);p.on('error',reject);p.on('close',code=>code===0?resolve(out.trim()):reject(Error(`Docker ${args[0]} failed: ${err||out}`)));p.stdin.on('error',reject);p.stdin.end(input);});
 async function ready(check){const deadline=Date.now()+30000;for(;;){try{return await check()}catch(e){if(Date.now()>=deadline)throw e;await new Promise(r=>setTimeout(r,100));}}}
-export async function startGoTrueFixture(){
+export async function startGoTrueFixture({initializeSchema: schemaInitializer=initializeSchema}={}){
  const name='calcumint-gotrue-'+randomUUID(),containers=[];let network=false,gateway;
  const secret=randomBytes(48).toString('hex');
  const jwt=(role)=>{const enc=x=>Buffer.from(JSON.stringify(x)).toString('base64url');const h=enc({alg:'HS256',typ:'JWT'}),p=enc({role,iss:'local-only',exp:Math.floor(Date.now()/1000)+3600});return `${h}.${p}.${createHmac('sha256',secret).update(`${h}.${p}`).digest('base64url')}`;};
@@ -24,7 +24,7 @@ export async function startGoTrueFixture(){
   gateway=http.createServer();await new Promise(r=>gateway.listen(0,'127.0.0.1',r));const url=`http://127.0.0.1:${gateway.address().port}`;
   const auth=await run('-auth',images.gotrue,{GOTRUE_API_HOST:'0.0.0.0',GOTRUE_API_PORT:'9999',API_EXTERNAL_URL:url+'/auth/v1',GOTRUE_SITE_URL:'http://localhost:3000',GOTRUE_DB_DRIVER:'postgres',GOTRUE_DB_DATABASE_URL:'postgres://supabase_auth_admin@db:5432/postgres?sslmode=disable',GOTRUE_JWT_SECRET:secret,GOTRUE_JWT_AUD:'authenticated',GOTRUE_JWT_DEFAULT_GROUP_NAME:'authenticated',GOTRUE_JWT_ADMIN_ROLES:'service_role',GOTRUE_EXTERNAL_EMAIL_ENABLED:'true',GOTRUE_MAILER_AUTOCONFIRM:'true',GOTRUE_SECURITY_REFRESH_TOKEN_ROTATION_ENABLED:'true',GOTRUE_SECURITY_REFRESH_TOKEN_REUSE_INTERVAL:'0'});
   const authUrl=await address(auth,9999);const health=await ready(async()=>{const r=await fetch(authUrl+'/health',{signal:AbortSignal.timeout(2000)});assert.equal(r.status,200);return r.json()});assert.equal(health.version,'v2.197.0');
-  const schema=await initializeSchema(sql);
+  const schema=await schemaInitializer(sql);
   const rest=await run('-rest',images.postgrest,{PGRST_DB_URI:'postgres://postgres@db:5432/postgres',PGRST_DB_SCHEMAS:'public',PGRST_DB_ANON_ROLE:'anon',PGRST_JWT_SECRET:secret});const restUrl=await address(rest,3000);
   await ready(async()=>assert.equal((await fetch(restUrl+'/',{signal:AbortSignal.timeout(2000)})).status,200));
   const requests=[];
