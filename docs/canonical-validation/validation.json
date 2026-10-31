@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "a54f94cea4df160882a96308b661f6d6c12da837",
+  "sourceBinding": {
+    "schemaVersion": 1,
+    "baselineSHA": "a54f94cea4df160882a96308b661f6d6c12da837",
+    "technicalSourceTreeSHA256": "08b7111db6ea7ab06d40d8d3294451f586115287d29c4f6b4e63cf20e54cd692",
+    "boundFileCount": 433,
+    "excludedSelfReference": "docs/canonical-validation/source-binding.json",
+    "meaning": "Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.",
+    "canonicalAccepted": false,
+    "releaseHold": true
+  },
+  "checks": [
+    {
+      "name": "full-unit-regression",
+      "command": "npm test -- --maxWorkers=1",
+      "result": "6144passed/4existing skips;5additional governance/receipt guards added afterward and passed in final focused suite",
+      "localLog": "/workspace/work/validation-full-unit.log",
+      "logSHA256": "05d66b16eae11ad1d33ae3ac9665c85ce841e1ea51ee58524eada50ff743ab3e"
+    },
+    {
+      "name": "final-focused",
+      "command": "npx vitest run src/calculators/canonical-contract*.test.ts",
+      "result": "70passed incl8independent attacks and5additional governance/receipt guards",
+      "localLog": "/workspace/work/validation-focused-final.log",
+      "logSHA256": "38ae5e6e6fbbc7c1b84f673f8603ea4101541a518de4663a0c46eed8e1b5c168"
+    },
+    {
+      "name": "hosted-node22-focused",
+      "command": "/tmp/calcumint-node22/node node_modules/vitest/vitest.mjs run src/calculators/canonical-contract*.test.ts",
+      "result": "70passed on actualNode22.23.4",
+      "localLog": "/workspace/work/validation-node22-focused-final.log",
+      "logSHA256": "822cf5b621fed13e4ddb9221b40864850ae6e4af3333847e417586e94f4ac8e7"
+    },
+    {
+      "name": "per-id-actual-engine-evidence",
+      "command": "node scripts/canonical-validation-evidence.mjs --check",
+      "result": "540rows/28adapters/56goldens/28negatives/392checks;0canonical accepted;43authority blocked",
+      "localLog": "/workspace/work/validation-evidence-final.log",
+      "logSHA256": "ce6fc342c27fef064f870d4dc3fab29439ac41ec215b24be8e08a01d0850ccd5"
+    },
+    {
+      "name": "hosted-node22-manifest",
+      "command": "/tmp/calcumint-node22/node scripts/canonical-validation-evidence.mjs --check",
+      "result": "exact manifest bytes match actualNode22",
+      "localLog": "/workspace/work/validation-node22-evidence.log",
+      "logSHA256": "ce6fc342c27fef064f870d4dc3fab29439ac41ec215b24be8e08a01d0850ccd5"
+    },
+    {
+      "name": "technical-source-binding",
+      "command": "python3 scripts/canonical-validation-source.py --check",
+      "result": "passed; local first-party source+literalJSON lineage, not publisher authentication",
+      "localLog": "/workspace/work/validation-source-final.log",
+      "logSHA256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed"
+    },
+    {
+      "name": "private-contract-browser",
+      "command": "node tests/canonical-validation/browser.mjs",
+      "result": "66journeys/0issues diagnostic rerun; initial56journey blank-page reload timeout retained in browser-observation.json",
+      "localLog": "/workspace/work/validation-browser.log",
+      "logSHA256": "0d1e1691ab85e87d1d1fa556f0b4e7287500c6c75e551fdee0e216ae27c97450"
+    },
+    {
+      "name": "dedicated-workflow-browser",
+      "command": "node tests/canonical-validation/workflow-browser.mjs",
+      "result": "3journeys/0issues;discovery,ABC,downgrade21records,corrupt-storage retention",
+      "localLog": "/workspace/work/validation-workflow-browser.log",
+      "logSHA256": "0d1b3e1106e35654524b9cb11acf770469ee4c610a67f22c164ec3d6cd82385b"
+    },
+    {
+      "name": "disposable-postgres-postgrest-security",
+      "command": "NEXT_RUNTIME_ARTIFACTS=<local-artifacts> node tests/next-runtime/security.mjs",
+      "result": "8HTTP/RLS checks+repository schema preflight passed;production/GoTrue equivalenceUNKNOWN",
+      "localLog": "/workspace/work/validation-security.log",
+      "logSHA256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "name": "transport-ci-runtime-freeze-guards",
+      "command": "node --test [transport/CI/runtime/frozen-source files]",
+      "result": "80passed beforeCIstep relocation;53CIguards repeated after exact mandatory suffix update",
+      "localLog": "/workspace/work/validation-guards.log",
+      "logSHA256": "36077f0bc5aa4f29a75fc593701b6589237d35bc21e5d0d6ed7e8099d50e9480"
+    },
+    {
+      "name": "final-ci-guards",
+      "command": "node --test tests/ci-gate-recovery/*.test.mjs",
+      "result": "53passed, including exact original+newsteps and49actual fail-closed aggregate result combinations",
+      "localLog": "/workspace/work/validation-ci-guards-final.log",
+      "logSHA256": "c3b193c23b3dc8c7460b7bacba4f37ee532df043325924a8017aa80e42a16e09"
+    },
+    {
+      "name": "original-blueprint",
+      "command": "python3 scripts/reconcile-native-blueprint.py --check",
+      "result": "native source/1116paragraphs/33tables/540traces unchanged",
+      "localLog": "/workspace/work/validation-native.log",
+      "logSHA256": "c3f75d067768459b88d0b23025c439166fbd3c25a3971c0cedbc78dc7adb4b17"
+    },
+    {
+      "name": "historical-ledger-reproduction",
+      "command": "node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check",
+      "result": "complete immutable artifact byte reproduction passed",
+      "localLog": "/workspace/work/validation-frozen-evidence.log",
+      "logSHA256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    {
+      "name": "prior-calculus-source-binding",
+      "command": "python3 scripts/reconcile-canonical-calculus.py --check",
+      "result": "historical1499bindings/receipts unchanged",
+      "localLog": "/workspace/work/validation-calculus-binding.log",
+      "logSHA256": "6272b72c08906210ebb71ac2d30a211b3539da5dd4dfdfdf1ff619395c6690b1"
+    },
+    {
+      "name": "launch-guards",
+      "command": "npm run test:launch",
+      "result": "45passed; not launch authorization",
+      "localLog": "/workspace/work/validation-launch.log",
+      "logSHA256": "1282a3ecca5428aa57fd5b5c2d7abf310c6fc2d73a3dd29bd116bcb492fd26db"
+    },
+    {
+      "name": "certification-guards",
+      "command": "npm run test:certification",
+      "result": "15passed; not certification",
+      "localLog": "/workspace/work/validation-certification.log",
+      "logSHA256": "9fb4ac1097832de6671e920b8132e176bc98d915d152d3ef8bdd735b3473e3c7"
+    },
+    {
+      "name": "webpack-build",
+      "command": "npm run build",
+      "result": "next build --webpack passed;37staticpages",
+      "localLog": "/workspace/work/validation-build-final.log",
+      "logSHA256": "de9328012cd327432bb63848d644d1268ab8ff41c793f5c682b4d27583b90129"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "result": "passed",
+      "localLog": "/workspace/work/validation-typecheck-final.log",
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "result": "0errors/28existing warnings",
+      "localLog": "/workspace/work/validation-lint-final.log",
+      "logSHA256": "5f2e6e5ca13304d5dcc79923c616c6ada764e3718d0e3166cecf807ad26b4b61"
+    }
+  ],
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "browserLimitation": "browser-observation.json",
+  "receiptSHA256": {
+    "docs/canonical-validation/receipts/246-pro-320.json": "83d36c7ade27c40749b1b1b610331155451ef4419e80764b3588284dcbe2b9c7",
+    "docs/canonical-validation/receipts/426-pro-320.json": "e38cea1c357b554345a1dc01a0ea1229add7c32d7532cfa467d5ba5986aa6a4f",
+    "docs/canonical-validation/receipts/3-pro-320.json": "8c25d267a91989f8a1474f75e3248ff5f094dc4a61190980f3216ae3494b3974"
+  },
+  "canonicalAccepted": false,
+  "releaseHold": true
+}

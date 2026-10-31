@@ -1,0 +1,1 @@
+import {createRoot} from 'react-dom/client';import {CanonicalContractReview} from '../../src/components/canonical-contract-review';createRoot(document.getElementById('root')!).render(<CanonicalContractReview/>);

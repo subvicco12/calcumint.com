@@ -1,0 +1,14 @@
+import trace from '../../docs/blueprint-reconciliation/blueprint-to-540.json';
+import {canonicalContractAdapters,evaluateCanonicalContract} from './canonical-contract-adapters';
+import source from '../../docs/canonical-validation/source-binding.json';
+export function collectCanonicalContractEvidence(){
+ const evaluations=canonicalContractAdapters.map(a=>evaluateCanonicalContract(a.key));
+ if(evaluations.some(e=>!e.engineeringPassed))throw Error('Actual-engine validation failed: '+JSON.stringify(evaluations.filter(e=>!e.engineeringPassed)));
+ const rows=trace.rows.map(r=>{const report=evaluations.find(e=>e.catalogId===r.masterId),blocked=r.implementationClass==='CONTRACT_BLOCKED';return {masterId:r.masterId,title:r.title,implementationClass:r.implementationClass,disposition:blocked?'AUTHORITY_BLOCKED':'FULL_CONTRACT_REVIEW_REQUIRED',canonicalAccepted:false,priorEvidence:'docs/blueprint-reconciliation/blueprint-to-540.json#/rows/'+(r.masterId-1),requirements:report?[
+ ...['inputs','identity-version','goldens-and-rounding','plan-parity','versioned-replay','tamper-rejection','domain-negative'].map(requirement=>({requirement,status:'SATISFIED_FOR_RECORDED_PRIVATE_WITNESSES',checks:report.checks.filter(c=>c.requirement===requirement),limitation:'Recorded witnesses do not prove complete canonical product scope or exhaustive numerical-domain acceptance.'})),
+ {requirement:'source-provenance',status:'PARTIAL',checks:[],limitation:'Exact local technical source binding; inherited methodology preserved. Complete canonical mapping, governing publisher/application evidence and qualified applicability are not inferred.'},
+ {requirement:'history-scenarios-exports',status:'PARTIAL',checks:report.checks.filter(c=>c.requirement==='versioned-replay'),limitation:'Immutable deterministic replay and private review workflows only; not authenticated production account acceptance.'},
+ {requirement:'canonical-product-acceptance',status:'BLOCKED',checks:[],limitation:'Full canonical input/output/operator scope and review not approved.'}
+ ]:[{requirement:'full-product-acceptance',status:blocked?'BLOCKED':'NOT_ESTABLISHED_THIS_BATCH',checks:[],limitation:blocked?'Retain original authority and qualified-review blockers.':'Reuse original per-ID evidence; no new evaluation or acceptance inferred.'}],engineeringEvaluation:report??null,releaseHold:true};});
+ return {schemaVersion:1,baselineSHA:'a54f94cea4df160882a96308b661f6d6c12da837',sourceBinding:source,summary:{catalogIdentities:rows.length,evaluatedPrivateContracts:evaluations.length,witnessChecks:evaluations.reduce((s,e)=>s+e.checks.length,0),canonicalAccepted:0,reviewRequired:497,authorityBlocked:rows.filter(r=>r.implementationClass==='CONTRACT_BLOCKED').length,implementationCounts:Object.fromEntries(['REGISTERED_IMPLEMENTED','PRIVATE_COMPLETE','CONTRACT_BLOCKED'].map(c=>[c,rows.filter(r=>r.implementationClass===c).length]))},rows,releaseHold:true};
+}

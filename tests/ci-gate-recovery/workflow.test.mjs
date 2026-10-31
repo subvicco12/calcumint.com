@@ -9,7 +9,9 @@ test('all original checks remain byte-for-byte with20minute per-job budgets',()=
  const before=jobs(old),after=jobs(current);assert.deepEqual(Object.keys(after).sort(),['build','checks','validate']);
  const originalSteps=steps(before.validate),build=originalSteps.find(s=>s.startsWith('      - name: Production build\n'));assert(build);
  assert.deepEqual(steps(after.checks).slice(0,originalSteps.length-1),originalSteps.filter(s=>s!==build));
- assert.deepEqual(steps(after.build),[...originalSteps.slice(0,3),build]);
+ // Preserve every original byte and require the exact two additional verification steps.
+ const additions=["      - name: Provision pinned isolated browser for contract acceptance\n        timeout-minutes: 4\n        run: |\n          browser=$(sh scripts/install-ci-browser.sh \"$RUNNER_TEMP\")\n          echo \"CHROMIUM_PATH=$browser\" >> \"$GITHUB_ENV\"\n          \"$browser\" --version\n", "      - name: Reusable private canonical contract evidence and browser acceptance\n        run: |\n          python3 scripts/canonical-validation-source.py --check\n          node scripts/canonical-validation-evidence.mjs --check\n          node tests/canonical-validation/browser.mjs\n          node tests/canonical-validation/workflow-browser.mjs\n        env:\n          VALIDATION_EVIDENCE: ${{ runner.temp }}\n"];
+ assert.deepEqual(steps(after.build),[...originalSteps.slice(0,3),build,...additions]);
  for(const name of ['checks','build'])assert.match(after[name],/^    timeout-minutes: 20$/m);
  assert.equal(current.split('\njobs:')[0],old.split('\njobs:')[0],'Triggers,concurrency,permissions unchanged');
 });

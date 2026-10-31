@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "validationRevision": 1,
+  "adapterKey": "private.component.3",
+  "catalogId": 3,
+  "engineVersion": 1,
+  "sourceBinding": {
+    "schemaVersion": 1,
+    "baselineSHA": "a54f94cea4df160882a96308b661f6d6c12da837",
+    "technicalSourceTreeSHA256": "08b7111db6ea7ab06d40d8d3294451f586115287d29c4f6b4e63cf20e54cd692",
+    "boundFileCount": 433,
+    "excludedSelfReference": "docs/canonical-validation/source-binding.json",
+    "meaning": "Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.",
+    "canonicalAccepted": false,
+    "releaseHold": true
+  },
+  "artifact": {
+    "schemaVersion": 1,
+    "masterId": 3,
+    "profileId": "private.component.3",
+    "methodology": {
+      "formulas": [
+        {
+          "id": "component-3",
+          "expression": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility.",
+          "description": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility. Inputs bounded0..1e12; positive monetary amounts at least0.01. Unrepresentable annuity denominators and incomplete/zero-displayed-payment schedules are rejected. Strict closed named input. Output includes full actual immutable component runs. Private scope only; canonical requirements and specialist applicability remain unresolved. RELEASE HOLD."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Consumer Financial Protection Bureau — How mortgage lenders calculate monthly payments",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+        }
+      ]
+    },
+    "dependencies": [
+      {
+        "id": "finance.loan-analysis",
+        "slug": "loan-emi-calculator",
+        "version": 1
+      }
+    ],
+    "calculation": {
+      "calculatorSlug": "private-component-3",
+      "calculatorVersion": 1,
+      "input": {
+        "currency": "USD",
+        "scope": "supplied-fixed-monthly-no-policy",
+        "principal": 210,
+        "annualRatePercent": 120,
+        "termMonths": 2,
+        "extraMonthlyPayment": 0
+      },
+      "output": {
+        "monthlyPayment": 121,
+        "scheduledPayment": 121,
+        "totalPayment": 242,
+        "totalInterest": 32,
+        "payoffMonths": 2,
+        "interestSavedVsScheduled": 0,
+        "monthsSavedVsScheduled": 0,
+        "amortization": [
+          {
+            "month": 1,
+            "payment": 121,
+            "principal": 100,
+            "interest": 21,
+            "balance": 110
+          },
+          {
+            "month": 2,
+            "payment": 121,
+            "principal": 110,
+            "interest": 11,
+            "balance": 0
+          }
+        ],
+        "value": 121,
+        "unit": "currency/month",
+        "dependencyRuns": [
+          {
+            "calculatorId": "finance.loan-analysis",
+            "slug": "loan-emi-calculator",
+            "version": 1,
+            "input": {
+              "principal": 210,
+              "annualRatePercent": 120,
+              "termMonths": 2,
+              "extraMonthlyPayment": 0
+            },
+            "output": {
+              "monthlyPayment": 121,
+              "scheduledPayment": 121,
+              "totalPayment": 242,
+              "totalInterest": 32,
+              "payoffMonths": 2,
+              "interestSavedVsScheduled": 0,
+              "monthsSavedVsScheduled": 0,
+              "amortization": [
+                {
+                  "month": 1,
+                  "payment": 121,
+                  "principal": 100,
+                  "interest": 21,
+                  "balance": 110
+                },
+                {
+                  "month": 2,
+                  "payment": 121,
+                  "principal": 110,
+                  "interest": 11,
+                  "balance": 0
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "governance": {
+    "canonicalMappingApproved": false,
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  }
+}
