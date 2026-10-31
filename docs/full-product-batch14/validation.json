@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "e2b4a3d2e65f3887ce1b53240f01847d9b4348f3",
+  "baselineHostedCI": "CANCELLED, not green; see baseline-ci-observation.json",
+  "commands": [
+    {
+      "id": "unit",
+      "command": "npm test",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 6466,
+      "skipped": 4,
+      "logSHA256": "4007a81274b4f0f2c0081385f26bc0848a4d37a24efbcfb48d2ed1fd5b3542a1",
+      "summary": "-framework/mortgage-postmigration-trust.test.ts (1 test) 2ms\n \u2713 src/lib/business/builder-entitlement-security.test.ts (2 tests) 3ms\n \u2713 src/calculators/final-framework/reference-six-route-binding.test.ts (1 test) 2ms\n \u2713 src/app/sitemap.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/loan-postmigration-schedule-policy.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/analysis-surface-policy.test.ts (2 tests) 2ms\n \u2713 src/app/calculators/[category]/page.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/mortgage-trust-readiness.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/renderer-view-model.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/visualization-data-fail-closed.test.ts (1 test) 2ms\n \u2713 src/app/account/country-preference-migration.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/renderer-trust-surface.test.ts (1 test) 2ms\n \u2713 src/components/final-calculator-renderer.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/break-even-trust-evidence.test.ts (1 test) 2ms\n \u2193 src/calculators/catalog-full-evidence.test.ts (2 tests | 2 skipped)\n \u2193 src/calculators/catalog-inventory-export.test.ts (1 test | 1 skipped)\n\n Test Files  825 passed | 2 skipped (827)\n      Tests  6466 passed | 4 skipped (6470)\n   Start at  18:08:51\n   Duration  168.67s (transform 18.36s, setup 0ms, collect 167.84s, tests 115.23s, environment 36.44s, prepare 52.54s)\n\n"
+    },
+    {
+      "id": "typecheck",
+      "command": "npm run typecheck",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "summary": "\n> calcumint@0.1.0 typecheck\n> tsc --noEmit\n\n"
+    },
+    {
+      "id": "build",
+      "command": "npm run build (next build --webpack)",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "7bef2d1513894614b5f4aa80e3a9e66b7deae58d423a4a572cdeb7005a4a009f",
+      "summary": " (app)\n\u250c \u0192 /\n\u251c \u25cb /_not-found\n\u251c \u25cb /about\n\u251c \u25cb /acceptable-use\n\u251c \u25cb /account\n\u251c \u0192 /account/calculators\n\u251c \u0192 /account/calculators/[slug]\n\u251c \u0192 /account/drafts\n\u251c \u0192 /account/history\n\u251c \u0192 /account/projects\n\u251c \u0192 /account/projects/[id]\n\u251c \u0192 /account/saved\n\u251c \u25cb /admin\n\u251c \u25cb /admin/calculators\n\u251c \u0192 /admin/calculators/[id]\n\u251c \u25cb /ai\n\u251c \u0192 /api/ai/builder-assist\n\u251c \u0192 /api/ai/explain\n\u251c \u0192 /api/ai/find\n\u251c \u0192 /api/billing/checkout\n\u251c \u0192 /api/billing/checkout/status\n\u251c \u0192 /api/billing/portal\n\u251c \u0192 /api/billing/webhook\n\u251c \u0192 /api/embed/[key]/events\n\u251c \u0192 /api/embed/[key]/leads\n\u251c \u0192 /api/embed/[key]/session\n\u251c \u0192 /api/internal/admin/publish\n\u251c \u0192 /api/internal/readiness\n\u251c \u0192 /api/internal/webhooks/process\n\u251c \u0192 /api/v1/batch\n\u251c \u0192 /api/v1/custom/[calculatorId]/calculate\n\u251c \u25cb /apple-icon.png\n\u251c \u0192 /auth/callback\n\u251c \u0192 /business\n\u251c \u25cb /business-platform\n\u251c \u25cb /business/api\n\u251c \u25cb /business/builder\n\u251c \u0192 /business/builder/[id]\n\u251c \u25cb /business/builder/ai\n\u251c \u0192 /business/delivery/[id]\n\u251c \u0192 /business/invite/[token]\n\u251c \u0192 /calculators\n\u251c \u0192 /calculators/[category]\n\u251c \u0192 /calculators/[category]/[slug]\n\u251c \u25cb /contact\n\u251c \u25cb /cookie-policy\n\u251c \u25cb /data-deletion\n\u251c \u25cb /disclaimer\n\u251c \u0192 /embed/[key]\n\u251c \u0192 /health\n\u251c \u25cb /icon.png\n\u251c \u0192 /login\n\u251c \u25cb /login/forgot\n\u251c \u0192 /login/reset\n\u251c \u25cb /pricing\n\u251c \u25cb /privacy\n\u251c \u25cb /refund-policy\n\u251c \u25cb /robots.txt\n\u251c \u0192 /share/[token]\n\u251c \u0192 /sitemap.xml\n\u2514 \u25cb /terms\n\n\n\u0192 Proxy (Middleware)\n\n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n\n"
+    },
+    {
+      "id": "launch",
+      "command": "npm run test:launch",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 45,
+      "skipped": 0,
+      "logSHA256": "36d9cfe3860076833608e507a862bc3c9bafaaa35329aed1e72442d8fb172373",
+      "summary": "\n> calcumint@0.1.0 test:launch\n> vitest run src/calculators/launch-portfolio.test.ts src/lib/launch/readiness.test.ts src/lib/launch/hardening.test.ts\n\n\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/lib/launch/hardening.test.ts (7 tests) 7ms\n \u2713 src/lib/launch/readiness.test.ts (5 tests) 3ms\n \u2713 src/calculators/launch-portfolio.test.ts (33 tests) 54ms\n\n Test Files  3 passed (3)\n      Tests  45 passed (45)\n   Start at  18:25:06\n   Duration  2.09s (transform 1.19s, setup 0ms, collect 1.89s, tests 65ms, environment 0ms, prepare 243ms)\n\n"
+    },
+    {
+      "id": "certification",
+      "command": "npm run test:certification",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 15,
+      "skipped": 0,
+      "logSHA256": "703451f13d2878a6438b6a566b105b8520a4925cc3e93dfaf4123a1147fee218",
+      "summary": "\n> calcumint@0.1.0 test:certification\n> vitest run src/calculators/launch-certification.test.ts src/calculators/rule-packs.test.ts\n\n\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/calculators/rule-packs.test.ts (5 tests) 5ms\n \u2713 src/calculators/launch-certification.test.ts (10 tests) 72ms\n\n Test Files  2 passed (2)\n      Tests  15 passed (15)\n   Start at  18:25:08\n   Duration  1.68s (transform 896ms, setup 0ms, collect 1.44s, tests 77ms, environment 0ms, prepare 118ms)\n\n"
+    },
+    {
+      "id": "final-lint",
+      "command": "npm run lint",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "afc1d6b941acb3e6b3da077269a3445bbb0126af0434e379d1d5966b185dfc2a",
+      "summary": "                                                                  @typescript-eslint/no-unused-vars\n  311:551  warning  'input' is assigned a value but never used                                                                                                                                           @typescript-eslint/no-unused-vars\n\n/workspace/work/calcumint-full-product-batch12/src/components/custom-calculator-preview.tsx\n  21:43  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n/workspace/work/calcumint-full-product-batch12/src/components/pro-checkout-button.tsx\n  179:52  warning  Do not use `window.location.assign()` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination\n\n/workspace/work/calcumint-full-product-batch12/src/components/public-embed-calculator.test.tsx\n  44:43  warning  '_options' is defined but never used  @typescript-eslint/no-unused-vars\n\n\u2716 28 problems (0 errors, 28 warnings)\n\n"
+    },
+    {
+      "id": "final-ci-guards",
+      "command": "node --test CI+historical evidence guards",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 2415,
+      "skipped": 0,
+      "logSHA256": "4ff0b458d45bf62f62da7176ea7018c9b8844ab294eb3c254e5ebbb94f15de44",
+      "summary": "aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=unknown,sourceAcceptance=timed_out (1.741448ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=unknown,sourceAcceptance=empty (1.79906ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=unknown,sourceAcceptance=unknown (2.097273ms)\n\u2714 full-product job requires both functional browser campaigns and exact aggregate result (0.301463ms)\n\u2714 genuine-auth and private sensitivity are mandatory bounded sequential CI steps (0.993664ms)\n\u2714 immutable native evidence source is fetched before unchanged strict reconciliation (0.191428ms)\nfatal: Needed a single revision\n\u2714 runs full original Batch13 generator against exact captured sources (1967.321127ms)\n\u2714 rejects changed current historical artifact instead of checking only the archived copy (104.429139ms)\n\u2714 rejects extra current artifact membership (11.232016ms)\n\u2714 rejects missing current artifact membership (10.304801ms)\n\u2714 fails closed when exact historical Git capture is unavailable (8.51417ms)\n\u2714 bounded repartition preserves prior steps and strictly substitutes original-source historical replay (4.954779ms)\n\u2714 native and report acceptance remain mandatory after original evidence steps (0.533391ms)\n\u2139 tests 2415\n\u2139 suites 0\n\u2139 pass 2415\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 5575.807936\n"
+    },
+    {
+      "id": "technical-check",
+      "command": "prepare-canonical-contract-evidence.ts --check",
+      "passed": true,
+      "exitCode": 0,
+      "skipped": 0,
+      "logSHA256": "64d0f8010fb2e782b3f461ab91bcaadd5ff3b6dda37f0555e36a1165ed2b0ef7",
+      "summary": "{\"identities\":540,\"registeredCandidates\":489,\"rejectedCandidates\":0,\"privateAdapterBindings\":79,\"canonicalAccepted\":0}\n",
+      "recordCount": 540
+    },
+    {
+      "id": "final-ledger",
+      "command": "full-product-batch14-evidence.mjs --check",
+      "passed": true,
+      "exitCode": 0,
+      "skipped": 0,
+      "logSHA256": "8111eb263850d5dd2b5b7c8e9f10ec8b0ed51ef6dcbe90466f831cb7f2cf6e4f",
+      "summary": "{\"catalogIdentities\":540,\"implementationCounts\":{\"REGISTERED_IMPLEMENTED\":305,\"PRIVATE_COMPLETE\":192,\"CONTRACT_BLOCKED\":43},\"fullContractReviewRequired\":497,\"newCanonicalAcceptances\":0,\"technicalPreparedIdentities\":540,\"registeredCandidates\":489,\"technicalMismatches\":0,\"privateAdapterBindings\":79,\"proposedFamilyAssociations\":130,\"componentAssociatedRows\":145,\"privateAccessibilityProfiles\":70,\"reportRecoveryEngineAssociations\":9,\"functionalAffectedIds\":78}\n",
+      "recordCount": 540
+    },
+    {
+      "id": "report-green",
+      "command": "scenario-report/set/replay regression tests",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 21,
+      "skipped": 0,
+      "logSHA256": "aebdc5e8179bea3e9945fa058006f5f8a4a6a550cdef25f6a8d4cf96e055c9db",
+      "summary": "\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/lib/registered-recovery.independent.test.ts (5 tests) 30ms\n \u2713 src/lib/scenario-set-recovery.test.ts (2 tests) 18ms\n \u2713 src/components/scenario-set-recovery.test.tsx (3 tests) 156ms\n \u2713 src/lib/scenario-report-recovery.test.ts (11 tests) 30ms\n\n Test Files  4 passed (4)\n      Tests  21 passed (21)\n   Start at  18:06:39\n   Duration  2.01s (transform 1.68s, setup 0ms, collect 4.42s, tests 234ms, environment 332ms, prepare 258ms)\n\n"
+    }
+  ],
+  "browserCampaigns": {
+    "privateAccessibility": {
+      "passed": true,
+      "journeys": 8,
+      "receipt": "private-accessibility-browser-receipt.json"
+    },
+    "scenarioReportRecovery": {
+      "passed": true,
+      "journeys": 54,
+      "actualReportDownloads": 36,
+      "receipt": "report-recovery-browser-receipt.json"
+    },
+    "defaultGenuineGoTrue": {
+      "passed": true,
+      "checks": 10,
+      "runtime": "Node22.23.4",
+      "receipt": "default-gotrue-receipt.json"
+    },
+    "fullRepositoryModelGenuineGoTrue": {
+      "passed": true,
+      "checks": 16,
+      "runtime": "Node22.23.4",
+      "receipt": "gotrue-full-schema-receipt.json",
+      "authenticCapturedSchemaParity": "BLOCKED",
+      "productionEquivalence": "UNKNOWN"
+    }
+  },
+  "sourcePreservation": "preservation.json; original source bindings checked; archived Batch13 reproduction independently verified",
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "numericalEvidence": {
+    "immutableForwardEngineAssociations": [
+      1,
+      2,
+      26,
+      50,
+      51,
+      52,
+      207,
+      388,
+      426
+    ],
+    "actualEngineGoldenPairs": [
+      "Percentage50/100",
+      "Conversion100/200",
+      "Simple-interest200/400",
+      "Compound121/242",
+      "Loan/EMI/mortgage121/242",
+      "BMI20/25",
+      "Zero-rateSIP200/400"
+    ],
+    "newMathematicalVersions": 0,
+    "planParity": "Free/Pro/Business actual browser outputs unchanged",
+    "existingAdapters": 79,
+    "reusedWitnessChecks": 1106
+  },
+  "initialFailures": [
+    {
+      "scope": "Complete report JSON recovery rejected9 supported exports",
+      "resolution": "Original engine snapshots and derived comparison now verified;9original failing cases pass."
+    },
+    {
+      "scope": "Private keyboard/error accessibility",
+      "resolution": "Native Enter/focus/description/cleared status regressions pass."
+    },
+    {
+      "scope": "Raw evidence getters/toJSON/undefined/function additions",
+      "resolution": "Four RED cases now reject without invocation."
+    },
+    {
+      "scope": "Historical Batch13 current-source hash drift",
+      "resolution": "Original captured-source generator runs after strict14file artifact membership/byte checks; old artifacts unchanged."
+    },
+    {
+      "scope": "CI budget-boundary cancellation",
+      "resolution": "Four separately20minute mandatory jobs,7^4aggregatefailclosed;newhostedresultstillrequired."
+    }
+  ],
+  "hostedDeliveryCI": {
+    "status": "NOT_OBSERVED_AT_COMMIT_TIME",
+    "policy": "One bounded exact-head observation after draft PR; no indefinite monitoring. Final SHA/PR/status reported after push."
+  },
+  "releaseHold": true
+}

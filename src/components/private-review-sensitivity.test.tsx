@@ -22,3 +22,22 @@ it('uses independent zero-rate monthly payments and rejects blank or oversized s
  render(<ScaledContractReview/>);plan('pro');for(const [label,value] of [['Principal','1200'],['Annual rate percent','0'],['Term months','12']])fireEvent.change(screen.getByLabelText(label),{target:{value}});run();expect(screen.getByTestId('cv-value').textContent).toBe('100');candidates('1200,2400');preview();expect(within(screen.getByRole('table',{name:'Private sensitivity preview'})).getByText('200')).toBeTruthy();
  for(const value of ['','1200,',Array(26).fill('1200').join(','),'Infinity']){candidates(value);preview();expect(screen.getByRole('alert').textContent).toContain('Private sensitivity failed');expect(screen.getByTestId('cv-value').textContent).toBe('100');}
 });
+it('submits from the candidate field and links failed candidate validation for keyboard recovery',()=>{
+ render(<ScaledContractReview/>);plan('pro');run();
+ const input=screen.getByLabelText('Private candidate values (comma-separated, maximum 25)');
+ const form=input.closest('form');expect(form).not.toBeNull();
+ candidates('Infinity');fireEvent.submit(form!);
+ expect(input.getAttribute('aria-invalid')).toBe('true');
+ const error=screen.getByRole('alert');expect(input.getAttribute('aria-describedby')?.split(' ')).toContain(error.id);
+ expect(document.activeElement).toBe(input);
+ candidates('420');expect(input.getAttribute('aria-invalid')).toBeNull();fireEvent.submit(form!);
+ expect(screen.getByRole('table',{name:'Private sensitivity preview'})).toBeTruthy();
+});
+it('announces when edited or explicitly cleared sensitivity results are removed',()=>{
+ render(<ScaledContractReview/>);plan('pro');run();candidates('420');preview();
+ candidates('210');expect(within(screen.getByRole('region',{name:'Private what-if sensitivity'})).getByRole('status').textContent).toContain('cleared');
+ preview();fireEvent.click(screen.getByRole('button',{name:'Clear private sensitivity'}));
+ expect(document.activeElement).toBe(screen.getByLabelText('Private candidate values (comma-separated, maximum 25)'));
+ expect(within(screen.getByRole('region',{name:'Private what-if sensitivity'})).getByRole('status').textContent).toContain('cleared');
+ expect(screen.queryByRole('table',{name:'Private sensitivity preview'})).toBeNull();
+});
