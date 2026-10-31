@@ -128,6 +128,8 @@ jobs:
           node tests/remaining-authority-review/browser.mjs
         env:
           REMAINING_SIX_EVIDENCE: ${{ runner.temp }}/remaining-six-source-contracts
+      - name: Fetch immutable native Blueprint candidate source
+        run: git fetch --no-tags --depth=1 origin 50f307c67e3a5e5d289d2b83e2a285029151f866
       - name: Original Blueprint scope and exact runtime receipts
         run: |
           python3 scripts/reconcile-native-blueprint.py --check
@@ -203,6 +205,7 @@ jobs:
         run: |
           docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
           docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+          docker pull supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b
       - name: Provision pinned isolated browser fixture
         timeout-minutes: 4
         run: |
@@ -221,6 +224,20 @@ jobs:
         run: node tests/full-product-batch12/account-browser.mjs
         env:
           BATCH12_ACCOUNT_ARTIFACTS: ${{ runner.temp }}/batch12-account
+      - name: Exact Batch13 540-ID requirement deltas
+        run: |
+          node scripts/full-product-batch13-evidence.mjs --check
+          node --test tests/full-product-batch13/workflow.test.mjs
+      - name: Batch13 private sensitivity and module transport acceptance
+        run: |
+          node --test tests/next-runtime/cdp-network-diagnostics.test.mjs
+          node tests/full-product-batch13/private-browser.mjs
+        env:
+          BATCH13_PRIVATE_ARTIFACTS: ${{ runner.temp }}/batch13-private
+      - name: Genuine isolated GoTrue and schema acceptance
+        run: node tests/gotrue-runtime/acceptance.mjs
+        env:
+          GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch13-gotrue
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product]

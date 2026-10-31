@@ -1,7 +1,12 @@
 """Offline original-DOCX provenance, complete scope and catalog traceability. Never approves calculators."""
-import argparse,csv,hashlib,io,json,pathlib,re,zipfile
+import argparse,csv,hashlib,io,json,pathlib,re,zipfile,subprocess
 import xml.etree.ElementTree as ET
 ROOT=pathlib.Path('docs/blueprint-reconciliation')
+# Candidate references in the original matrix describe this immutable capture, not the current working tree.
+CANDIDATE_SOURCE_REF='50f307c67e3a5e5d289d2b83e2a285029151f866'
+def candidate_evidence(path):
+ raw=subprocess.check_output(['git','show',CANDIDATE_SOURCE_REF+':'+path],stderr=subprocess.PIPE)
+ return {'path':path,'exists':True,'sha256':hashlib.sha256(raw).hexdigest()}
 SOURCE_SHA='d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455'
 NS={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main','r':'http://schemas.openxmlformats.org/package/2006/relationships'}
 def sha(b):return hashlib.sha256(b).hexdigest()
@@ -72,7 +77,7 @@ def reconcile(path):
   covered.update(numbers);matches.append({'requirementId':row['requirementId'],'nativeParagraphIds':[ps[n-1]['paragraphId'] for n in numbers],'exactTextMatch':True,'historicalStatus':row['status'],'statusMeaning':'Retained historical scoped evidence, not new canonical acceptance.'})
  if len(matches)!=410 or len(non_bp)!=14 or len(covered)!=800:raise ValueError('Expected410native/14RC/800covered structure drift')
  omitted=[p for p in ps if p['nativeNonemptyOrdinal'] not in covered]
- groups=[{'groupId':name,'sourceParagraphIds':[f'BP-{n:04d}' for n in numbers],'sourceTextSHA256':sha('\n'.join(ps[n-1]['text'] for n in numbers).encode()),'repositoryCandidateEvidence':[{'path':p,'exists':pathlib.Path(p).exists(),'sha256':sha(pathlib.Path(p).read_bytes()) if pathlib.Path(p).is_file() else None} for p in paths],'scopeMeaning':'Architecture traceability, not per-ID formula approval or a requirement to render every optional field for every calculator.','acceptance':'NOT_INFERRED_FROM_REFERENCES'} for name,(numbers,paths) in GROUPS.items()]
+ groups=[{'groupId':name,'sourceParagraphIds':[f'BP-{n:04d}' for n in numbers],'sourceTextSHA256':sha('\n'.join(ps[n-1]['text'] for n in numbers).encode()),'repositoryCandidateEvidence':[candidate_evidence(p) for p in paths],'scopeMeaning':'Architecture traceability, not per-ID formula approval or a requirement to render every optional field for every calculator.','acceptance':'NOT_INFERRED_FROM_REFERENCES'} for name,(numbers,paths) in GROUPS.items()]
  base=json.loads(pathlib.Path('docs/canonical-acceptance/canonical-ledger.json').read_text());catalog=list(csv.DictReader(io.StringIO(pathlib.Path('data/catalog/master-catalog-2026.csv').read_text())))
  if len(base['rows'])!=540 or len(catalog)!=540 or len({int(r['master_id']) for r in catalog})!=540:raise ValueError('Exact540catalog required')
  rows=[]

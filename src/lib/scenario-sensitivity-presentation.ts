@@ -1,3 +1,4 @@
+import {recordedNumberDifference} from './recorded-number-difference';
 import type { CalculationSnapshot } from './calculation-snapshot';
 import type { SensitivityPoint } from './scenario-sensitivity';
 
@@ -17,7 +18,7 @@ export function presentSensitivityResults(
     const metrics = Object.entries(point.snapshot.output).flatMap(([field, value]) => {
       if (typeof value !== 'number' || !Number.isFinite(value)) return [];
       const original = baseline.output[field];
-      const difference = typeof original === 'number' && Number.isFinite(original) ? value - original : null;
+      const difference = typeof original === 'number' && Number.isFinite(original) ? recordedNumberDifference(value,original) : null;
       return [Object.freeze({
         field, value,
         baselineDifference: difference !== null && Number.isFinite(difference) ? difference : null,

@@ -1,22 +1,14 @@
 'use client';
 import {useMemo,useState} from 'react';
 import {createCalculationSnapshot,serializeCalculationJson,type CalculationSnapshot} from '@/lib/calculation-snapshot';
-import {serializeCalculationCsv,serializeCalculationPdf} from '@/lib/calculation-export';
+import {serializeCalculationSnapshotCsv as serializeSavedCalculationCsv,serializeCalculationPdf} from '@/lib/calculation-export';
 import {downloadPdfBytes} from '@/lib/download-pdf';
 import {getPlanEntitlements} from '@/lib/entitlements';
 import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-replay';
 import {useCalculatorPlan} from './use-calculator-plan';
 import {CalculatorScenarioWorkspace} from './calculator-scenario-workspace';
 
-/** Stored fields stay in their original sections; identity is additional CSV context. */
-export function serializeSavedCalculationCsv(snapshot:CalculationSnapshot):string{
- const saved=createCalculationSnapshot(snapshot),csv=serializeCalculationCsv(saved.input,saved.output);
- const quote=(value:string)=>`"${value.replaceAll('"','""')}"`;
- const text=(value:string)=>/^[\s]*[=+\-@]/u.test(value)?`'${value}`:value;
- const identity=[['identity','calculatorSlug',text(saved.calculatorSlug)],['identity','calculatorVersion',String(saved.calculatorVersion)]].map(row=>row.map(quote).join(',')).join('\n');
- const line=csv.indexOf('\n');
- return line<0?`${csv}\n${identity}`:`${csv.slice(0,line)}\n${identity}\n${csv.slice(line+1)}`;
-}
+export {serializeCalculationSnapshotCsv as serializeSavedCalculationCsv} from '@/lib/calculation-export';
 
 function downloadText(filename:string,content:string,mime:string){
  const url=URL.createObjectURL(new Blob([content],{type:mime})),anchor=document.createElement('a');
