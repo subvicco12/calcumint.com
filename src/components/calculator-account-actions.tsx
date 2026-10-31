@@ -71,6 +71,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   const [favorite, setFavorite] = useState(false);
   const plan:CalcuMintPlan=useCalculatorPlan();
   const [status, setStatus] = useState("");
+  const [statusContext,setStatusContext]=useState<string|null>(null);
   const [statusError,setStatusError]=useState(false);
   const [readFailure,setReadFailure]=useState(false);
   const [readAttempt,setReadAttempt]=useState(0);
@@ -79,11 +80,11 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   const saveLock=useRef(false),favoriteLock=useRef(false),readRetryLock=useRef(false),mounted=useRef(true);
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false};},[]);
   const statusRevision=useRef(0);
-  const report=(message:string,error=false)=>{if(mounted.current){setStatus(message);setStatusError(error);}};
-  function beginActionStatus(message:string){
+  const report=(message:string,error=false,context:string|null=null)=>{if(mounted.current){setStatus(message);setStatusError(error);setStatusContext(context);}};
+  function beginActionStatus(message:string,context:string|null=null){
     const revision=++statusRevision.current;
-    report(message);
-    return (nextMessage:string,error=false)=>{if(revision===statusRevision.current)report(nextMessage,error);};
+    report(message,false,context);
+    return (nextMessage:string,error=false)=>{if(revision===statusRevision.current)report(nextMessage,error,context);};
   }
   const accountOwner=useRef<string|null>(null);
   const [scenarioOwner,setScenarioOwner]=useState(observedAuthOwner.current);
@@ -179,7 +180,8 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
   async function saveHistory() {
     if(!snapshot||saveLock.current)return;
     const actionOwner=accountOwner.current,focusedElement=document.activeElement;
-    saveLock.current=true;setSaving(true);const reportAction=beginActionStatus("Saving calculation…");
+    const signature=JSON.stringify(snapshot);
+    saveLock.current=true;setSaving(true);const reportAction=beginActionStatus("Saving calculation…",signature);
     try{
       const supabase=createSupabaseBrowserClient();if(!supabase)throw new Error("Account unavailable");
       const auth=await supabase.auth.getUser();if(auth.error)throw auth.error;const user=auth.data.user;
@@ -189,7 +191,6 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         return;
       }
       if(user.id!==accountOwner.current){retryAccountRead();return;}
-      const signature=JSON.stringify(snapshot);
       if(!historyRequest.current||historyRequest.current.owner!==user.id||historyRequest.current.signature!==signature){
         historyRequest.current={owner:user.id,signature,id:crypto.randomUUID()};
       }
@@ -201,7 +202,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   function exportJson() {
     if (!snapshot || !entitlements.exports) return;
-    const reportAction=beginActionStatus("");
+    const reportAction=beginActionStatus("",JSON.stringify(snapshot));
     try {
       downloadFile(`${calculatorSlug}.json`, serializeCalculationJson(snapshot), "application/json");
       reportAction("");
@@ -212,7 +213,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   function exportCsv() {
     if (!snapshot || !entitlements.exports) return;
-    const reportAction=beginActionStatus("");
+    const reportAction=beginActionStatus("",JSON.stringify(snapshot));
     try {
       downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(snapshot.input, snapshot.output), "text/csv;charset=utf-8");
       reportAction("");
@@ -223,7 +224,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
 
   function exportPdf() {
     if (!snapshot || !entitlements.exports) return;
-    const reportAction=beginActionStatus("");
+    const reportAction=beginActionStatus("",JSON.stringify(snapshot));
     try {
       const candidate=calculatorRegistry.getBySlug(snapshot.calculatorSlug);
       const definition=candidate?.version===snapshot.calculatorVersion?candidate:undefined;
@@ -255,7 +256,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
         </>
       ) : <Link className="text-link" href="/pricing">Upgrade to Pro for exports and unlimited saves</Link>}
       {invalidData && <p role="alert">Calculation data is invalid. Enter valid inputs before saving or exporting.</p>}
-      {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{status}</span>}
+      {status && <span className="muted" role={statusError?"alert":"status"} aria-atomic="true">{statusContext&&statusContext!==(snapshot?JSON.stringify(snapshot):null)?"Previous calculation: ":""}{status}</span>}
       </>}
       <CalculatorScenarioWorkspace key={JSON.stringify([scenarioOwner!==undefined,scenarioOwner])} plan={plan} snapshot={snapshot} displayMetadata={scenarioDisplayMetadata} methodology={exportMethodology} download={downloadFile}/>
     </div>

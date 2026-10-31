@@ -187,9 +187,43 @@ jobs:
           node tests/validation-scale/workflow-browser.mjs
         env:
           SCALE_EVIDENCE: ${{ runner.temp }}
+  full-product:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Pull pinned isolated database fixtures
+        run: |
+          docker pull postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94
+          docker pull postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401
+      - name: Provision pinned isolated browser fixture
+        timeout-minutes: 4
+        run: |
+          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          "$browser" --version
+      - name: Exact 540-row engineering delta integrity
+        run: python3 scripts/full-product-batch12-evidence.py --check
+      - name: Private full-product functional acceptance
+        run: node tests/full-product-batch12/private-browser.mjs
+        env:
+          BATCH12_PRIVATE_ARTIFACTS: ${{ runner.temp }}/batch12-private
+      - name: Installed SDK synthetic fixture CORS acceptance
+        run: node --test tests/next-runtime/auth-fixture-cors.test.mjs
+      - name: Owned history exports and scenario recovery acceptance
+        run: node tests/full-product-batch12/account-browser.mjs
+        env:
+          BATCH12_ACCOUNT_ARTIFACTS: ${{ runner.temp }}/batch12-account
   validate:
     runs-on: ubuntu-latest
-    needs: [checks, build]
+    needs: [checks, build, full-product]
     if: ${{ always() }}
     timeout-minutes: 2
     steps:
@@ -197,6 +231,8 @@ jobs:
         env:
           CHECKS_RESULT: ${{ needs.checks.result }}
           BUILD_RESULT: ${{ needs.build.result }}
+          FULL_PRODUCT_RESULT: ${{ needs.full-product.result }}
         run: |
           test "$CHECKS_RESULT" = success
           test "$BUILD_RESULT" = success
+          test "$FULL_PRODUCT_RESULT" = success

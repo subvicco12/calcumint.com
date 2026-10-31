@@ -1,0 +1,298 @@
+{
+  "runtime": "Actual Next dev webpack, unchanged app source, RSC, React hydration, native server action forms, application CSS, real HTTP, installed Supabase SDK, disposable PostgreSQL + PostgREST",
+  "limitations": [
+    "Identity is a synthetic local JWT-verifying HTTP provider, NOT GoTrue. No real signup, password recovery, refresh rotation, email delivery, MFA or external identity-provider acceptance.",
+    "Test-copy development CSP adds unsafe-eval required by Next webpack dev hydration, and connect-src adds only the exact synthetic loopback identity origin; production CSP is unchanged.",
+    "Local development Next runtime; production deployment, CDN, TLS and external providers remain unverified.",
+    "API key creation is not attested exactly once; unknown outcomes require review and revocation before retry.",
+    "Injected database transport outages return explicit 503; successful database responses always come from real PostgREST/PostgreSQL."
+  ],
+  "journeys": [
+    {
+      "name": "Anonymous HTTP and malformed auth cookie fail closed",
+      "passed": true
+    },
+    {
+      "name": "Installed SDK rejects forged local JWT through HTTP auth verifier",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls owner",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls admin",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls manager",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls member",
+      "passed": true
+    },
+    {
+      "name": "RSC permission controls viewer",
+      "passed": true
+    },
+    {
+      "name": "Native Next server action persists project and client",
+      "passed": true
+    },
+    {
+      "name": "Native invitation creation and acceptance persist membership",
+      "passed": true
+    },
+    {
+      "name": "Native API key action keeps disclosure out of URLs logs and refreshed HTML",
+      "passed": true
+    },
+    {
+      "name": "Real Next client credential action rechecks stale role with generic recovery",
+      "passed": true
+    },
+    {
+      "name": "Actual calculation HTTP auth scope metering and quota",
+      "passed": true
+    },
+    {
+      "name": "Actual batch commit recovery conflict and owner isolation",
+      "passed": true
+    },
+    {
+      "name": "Real RSC outage and retry profiles",
+      "passed": true
+    },
+    {
+      "name": "Real RSC outage and retry organization_members",
+      "passed": true
+    },
+    {
+      "name": "Real RSC outage and retry business_projects",
+      "passed": true
+    },
+    {
+      "name": "Real RSC outage and retry business_api_keys",
+      "passed": true
+    },
+    {
+      "name": "Real RSC outage and retry api_usage_events",
+      "passed": true
+    },
+    {
+      "name": "Repeated synthetic owner selection preserves an in-flight SDK verification",
+      "passed": true
+    },
+    {
+      "name": "Delayed JavaScript keeps SSR embed controls safe until hydration",
+      "passed": true
+    },
+    {
+      "name": "Embed hydration consent persisted analytics and stale renewal",
+      "passed": true
+    },
+    {
+      "name": "Actual Next CSS and labeled forms 320",
+      "passed": true
+    },
+    {
+      "name": "Actual Next CSS and labeled forms 1280",
+      "passed": true
+    },
+    {
+      "name": "Native revoke action invalidates real HTTP API key",
+      "passed": true
+    },
+    {
+      "name": "Native browser stale-role failure offers safe workspace recovery",
+      "passed": true
+    },
+    {
+      "name": "Owned historical saved records reopen without recalculation after downgrade",
+      "passed": true
+    },
+    {
+      "name": "Saved record owner isolation and session boundary in actual Next runtime",
+      "passed": true
+    },
+    {
+      "name": "Owned history browsing reaches older records without cursor gaps or cross-account leakage",
+      "passed": true
+    },
+    {
+      "name": "Native owner-bound regional preference form persists explicit country defaults",
+      "passed": true
+    },
+    {
+      "name": "Native projects browse reaches project26 and scopes older scenario pagination",
+      "passed": true
+    },
+    {
+      "name": "Native project cursor replay owner isolation and session boundary fail closed",
+      "passed": true
+    },
+    {
+      "name": "Native oldest history capture traverses project pages and preserves atomic snapshot",
+      "passed": true
+    },
+    {
+      "name": "Native downgraded account retains owned projects without paid scenario controls",
+      "passed": true
+    },
+    {
+      "name": "Native regional locale survives full reload CA",
+      "passed": true
+    },
+    {
+      "name": "Native regional locale survives full reload AU",
+      "passed": true
+    },
+    {
+      "name": "Native project metadata remains readable with narrow layout and keyboard pagination",
+      "passed": true
+    },
+    {
+      "name": "Private calculator preview denies ordinary accounts before disclosing engine controls",
+      "passed": true
+    },
+    {
+      "name": "Native reviewer navigates master catalog candidates and calculates the real engine",
+      "passed": true
+    },
+    {
+      "name": "Native reviewer preview exports immutable real JSON CSV PDF and fits mobile",
+      "passed": true
+    },
+    {
+      "name": "Native reviewer private contracts use the pinned loan and ratio engines without public registration",
+      "passed": true
+    },
+    {
+      "name": "Private scientific previews preserve duplicate identities, units and absent polar events",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #145 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #156 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #157 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #158 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #161 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #177 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #181 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #44 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #159 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #160 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #194 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #195 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #200 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #201 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #203 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #109 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #467 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #471 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #512 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Owner-approved bounded calculator #507 private modes and snapshots",
+      "passed": true
+    },
+    {
+      "name": "Private reviewer navigation rejects role revocation and account replacement",
+      "passed": true
+    }
+  ],
+  "database": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "source": "repository migrations plus guarded proposals in disposable fixture; platform auth/ACL model; production equivalence UNKNOWN",
+    "proposals": [
+      "API-RLS-HELPER-EXECUTE.sql",
+      "MEMBERSHIP-ADMIN-FENCING.sql",
+      "ATOMIC-API-QUOTA.sql",
+      "ATOMIC-BATCH-JOB.sql",
+      "ATOMIC-EMBED-LEAD-CONSENT.sql"
+    ],
+    "accountHistoryProposal": {
+      "file": "ATOMIC-ACCOUNT-HISTORY.sql",
+      "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c",
+      "originalGuardRejected": true,
+      "scope": "Disposable native fixture only; only proposal guard removed; production remains unapplied"
+    }
+  },
+  "passed": true,
+  "cleanup": [
+    {
+      "name": "Chromium",
+      "passed": true
+    },
+    {
+      "name": "Next server",
+      "passed": true
+    },
+    {
+      "name": "synthetic identity HTTP server",
+      "passed": true
+    },
+    {
+      "name": "disposable PostgreSQL and PostgREST",
+      "passed": true
+    }
+  ],
+  "cleanupComplete": true
+}
