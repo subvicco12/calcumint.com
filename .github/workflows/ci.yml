@@ -178,6 +178,15 @@ jobs:
           node tests/canonical-validation/workflow-browser.mjs
         env:
           VALIDATION_EVIDENCE: ${{ runner.temp }}
+      - name: Expanded immutable validation revision and source acceptance
+        run: |
+          python3 scripts/scale-validation-source.py --check
+          python3 tests/validation-scale/source.test.py
+          node scripts/scale-validation-evidence.mjs --check
+          node tests/validation-scale/browser.mjs
+          node tests/validation-scale/workflow-browser.mjs
+        env:
+          SCALE_EVIDENCE: ${{ runner.temp }}
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build]

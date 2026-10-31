@@ -1,0 +1,1 @@
+import {createRoot} from 'react-dom/client';import {ScaledContractReview} from '../../src/components/scaled-contract-review';createRoot(document.getElementById('root')!).render(<ScaledContractReview/>);

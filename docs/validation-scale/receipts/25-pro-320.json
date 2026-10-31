@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "validationRevision": 2,
+  "adapterKey": "private.remaining.25",
+  "catalogId": 25,
+  "engineVersion": 1,
+  "sourceBinding": {
+    "schemaVersion": 1,
+    "baselineSHA": "448533b858e80d4eb90b2146e9dd8c5ba7d91fdb",
+    "technicalSourceTreeSHA256": "449e38c3ee46d751e086919d4d567c0d73eee972bfe492fd5a8aa39c40b2720d",
+    "boundFileCount": 439,
+    "excludedSelfReference": "docs/validation-scale/source-binding.json",
+    "meaning": "Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.",
+    "canonicalAccepted": false,
+    "releaseHold": true
+  },
+  "artifact": {
+    "schemaVersion": 1,
+    "sourceSnapshot": {
+      "baselineSHA": "bd0433f970819ed113553a5e71b6827d838f662b",
+      "sourceTreeSHA256": "ca625c17ecda23f0b8cc2177209405b86fa12fb86b84a1bd2851934c14363029",
+      "meaning": "Preserved original engine/helper source tree from verified baseline; sourceVersion1 is this private binding format, not new external authority.",
+      "helperFiles": [
+        {
+          "path": "src/calculators/finance/investment-math.ts",
+          "sha256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e"
+        },
+        {
+          "path": "src/calculators/finance/credit-card-payoff.ts",
+          "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+        },
+        {
+          "path": "src/calculators/private-cashflow-rate.ts",
+          "sha256": "bb364b2a0ee4994699c81989193b159946eaca1b5c5591e62586e902e64f630e"
+        }
+      ]
+    },
+    "masterId": 25,
+    "profileId": "private.remaining.25",
+    "methodology": {
+      "formulas": [
+        {
+          "id": "remaining-25",
+          "expression": "Caller-selected Gregorian monthly payment dates, inclusive first/target; restore original anchor after short months or select month end. Nominal annual rate/12, raw level payment helper; first payment follows one modeled interest period. No origination, business-day holiday, daily accrual or lender calendar inferred. Display rounds2 decimals; modeled payment stays raw. Closure0.005; reject numerical denominator loss or unsupported payoff horizon.",
+          "description": "Caller-selected Gregorian monthly payment dates, inclusive first/target; restore original anchor after short months or select month end. Nominal annual rate/12, raw level payment helper; first payment follows one modeled interest period. No origination, business-day holiday, daily accrual or lender calendar inferred. Display rounds2 decimals; modeled payment stays raw. Closure0.005; reject numerical denominator loss or unsupported payoff horizon. Finite amounts0..1e12; positive money at least0.01; closed I/O with original engine/helper traces. Schema ranges are not blanket numerical convergence or specialist applicability guarantees. No canonical mapping, provider/jurisdiction rule, certification or publication approved. RELEASE HOLD."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Internal independent arithmetic — debt-payoff-independent-goldens.ts (credit)",
+          "note": "Internal repository source: src/calculators/finance/debt-payoff-independent-goldens.ts, credit literal hand-derived contract vectors. Supports the worked example and stated mathematical model only; not external financial authority or independent specialist methodology approval. External source verification and specialist approval remain pending."
+        },
+        {
+          "label": "Preserved deterministic source helper",
+          "note": "src/calculators/finance/credit-card-payoff.ts; pinned original source contract, not external specialist approval."
+        }
+      ]
+    },
+    "dependencies": [
+      {
+        "id": "finance.credit-card-payoff",
+        "slug": "credit-card-payoff-calculator",
+        "version": 1
+      }
+    ],
+    "helpers": [
+      {
+        "path": "src/calculators/finance/credit-card-payoff.ts",
+        "sourceVersion": 1
+      }
+    ],
+    "calculation": {
+      "calculatorSlug": "private-remaining-25",
+      "calculatorVersion": 1,
+      "input": {
+        "scope": "supplied-mathematical-scenario",
+        "currency": "USD",
+        "balance": 210,
+        "annualAprPercent": 120,
+        "firstPaymentDate": "2028-01-30",
+        "targetPaymentDate": "2028-02-29",
+        "monthRule": "clamp-original-day"
+      },
+      "output": {
+        "value": 120.99999999999994,
+        "details": {
+          "targetMonths": 2,
+          "paymentDates": [
+            "2028-01-30",
+            "2028-02-29"
+          ],
+          "payoffDate": "2028-02-29",
+          "displayMonthlyPayment": 121,
+          "totalPaid": 242,
+          "totalInterest": 32
+        },
+        "unit": "currency/month",
+        "dependencyRuns": [
+          {
+            "calculatorId": "finance.credit-card-payoff",
+            "slug": "credit-card-payoff-calculator",
+            "version": 1,
+            "input": {
+              "balance": 210,
+              "annualAprPercent": 120,
+              "monthlyPayment": 120.99999999999994,
+              "extraMonthlyPayment": 0
+            },
+            "output": {
+              "payoffMonths": 2,
+              "totalInterest": 32,
+              "totalPaid": 242,
+              "effectiveMonthlyPayment": 121,
+              "firstMonthInterest": 21
+            }
+          }
+        ],
+        "helperRuns": [
+          {
+            "path": "src/calculators/finance/credit-card-payoff.ts",
+            "sourceVersion": 1,
+            "input": {
+              "balance": 210,
+              "annualAprPercent": 120,
+              "targetMonths": 2
+            },
+            "output": {
+              "value": 120.99999999999994
+            }
+          }
+        ]
+      }
+    }
+  },
+  "governance": {
+    "canonicalMappingApproved": false,
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  }
+}

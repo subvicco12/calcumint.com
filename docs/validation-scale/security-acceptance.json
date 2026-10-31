@@ -1,0 +1,50 @@
+{
+  "scope": "Disposable PostgreSQL17.6 and real PostgREST; production equivalence UNKNOWN",
+  "checks": [
+    {
+      "name": "PostgREST rejects wrong JWT signature",
+      "passed": true
+    },
+    {
+      "name": "Owner profile display update succeeds but plan update is denied",
+      "passed": true
+    },
+    {
+      "name": "RLS prevents cross-account project reads and writes through real HTTP",
+      "passed": true
+    },
+    {
+      "name": "Client roles cannot TRUNCATE tables or execute internal service RPC",
+      "passed": true
+    },
+    {
+      "name": "Membership role and organization identity fencing survives HTTP writes",
+      "passed": true
+    },
+    {
+      "name": "Identical concurrent HTTP lead requests persist one complete receipt",
+      "passed": true
+    },
+    {
+      "name": "Late consent failure rolls back the complete HTTP transaction and retry recovers",
+      "passed": true
+    },
+    {
+      "name": "Missing and inaccessible RPC signatures fail closed through HTTP",
+      "passed": true
+    }
+  ],
+  "database": {
+    "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+    "source": "repository migrations plus guarded proposals in disposable fixture; platform auth/ACL model; production equivalence UNKNOWN",
+    "proposals": [
+      "API-RLS-HELPER-EXECUTE.sql",
+      "MEMBERSHIP-ADMIN-FENCING.sql",
+      "ATOMIC-API-QUOTA.sql",
+      "ATOMIC-BATCH-JOB.sql",
+      "ATOMIC-EMBED-LEAD-CONSENT.sql"
+    ]
+  },
+  "passed": true
+}
