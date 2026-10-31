@@ -1,0 +1,13 @@
+# AUTH-EXPIRY-BOUNDARY — complete locally
+
+Exact task: “Add a bounded short-lifetime genuine fixture expiry/recovery campaign; preserve the explicitly characterized immediate post-logout JWT boundary.”
+
+Added a genuine 15-second GoTrue SDK campaign and optional fixture lifetime configuration. The absent option preserves the existing default environment, images and behavior. Ten invalid configurations fail before Docker side effects.
+
+Final execution: 2026-10-31 20:29:18.720 UTC to 20:30:07.247 UTC; 48.527 seconds total, including 43.773 seconds of measured natural expiry waiting and 4.754 seconds outside those waits. Process exited zero after successful fixture cleanup. Three campaign checks passed; configuration suite: 10/10, 76.977 milliseconds. Syntax and diff whitespace checks passed. No browser, full unit/build suite, paid provider or live database was used.
+
+The persisted genuine JWT was accepted before expiry. Its exact exp was 20:29:37 UTC; PostgREST rejected the unchanged bearer at 20:30:07.150 UTC with HTTP401/PGRST301/“JWT expired”, consistent with the pinned server source's 30-second allowed skew and within the enforced exp+35-second observation limit. Refresh after expiration rotated the genuine refresh token and restored own-profile access. Global logout deleted its actual session, denied refresh with authentic AuthApiError400/refresh_token_not_found, and preserved immediate pre-expiry JWT acceptance before eventual expiry rejection. No immediate access revocation was added or claimed.
+
+The initial exp+2 rejection assumption failed and is preserved in `expiry-initial-assumption-failure.json`. Official source verification explains it in `expiry-source-evidence.md`; `expiry-receipt.json` records the final pass and every post-exp acceptance. An intermediate diagnostic run passed in 49.108 seconds, with 44.458 seconds measured natural wait. Existing Batch16 sources/receipts remain unchanged.
+
+Work began 20:25:16 UTC. These measured minutes are elapsed activity, not the queue's estimated 2–4 engineering hours. Local selective-schema evidence does not establish hosted equivalence or change any production session policy. Public receipts exclude raw JWTs, refresh tokens and passwords; the private persisted session remains only in the local /tmp evidence directory with mode0600.

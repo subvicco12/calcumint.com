@@ -1,0 +1,718 @@
+{
+  "status": "PASS",
+  "task": "AUTH-EXPIRY-BOUNDARY",
+  "startedAt": "2026-10-31T20:29:18.720Z",
+  "finishedAt": "2026-10-31T20:30:07.247Z",
+  "elapsedMs": 48527,
+  "naturalExpiryWaitMs": 43773,
+  "deadlineSeconds": 120,
+  "postgrestAllowedSkewSeconds": 30,
+  "rejectionObservationAllowanceSeconds": 5,
+  "jwtExpirySeconds": 15,
+  "runtime": "v22.23.4",
+  "checks": [
+    "Global logout denies refresh while unchanged genuine access JWT still works before exp",
+    "Natural wall-clock expiry rejects the exact persisted access JWT and logged-out JWT in PostgREST",
+    "Real GoTrue refresh after access expiry rotates refresh token and restores own-profile access"
+  ],
+  "originalClaims": {
+    "sub": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d",
+    "aud": "authenticated",
+    "exp": 1793478577,
+    "iat": 1793478562,
+    "email": "expiry-158774d2-74c7-4e0b-825f-b5e1a361111b@example.invalid",
+    "phone": "",
+    "app_metadata": {
+      "provider": "email",
+      "providers": [
+        "email"
+      ]
+    },
+    "user_metadata": {
+      "email": "expiry-158774d2-74c7-4e0b-825f-b5e1a361111b@example.invalid",
+      "email_verified": true,
+      "phone_verified": false,
+      "sub": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+    },
+    "role": "authenticated",
+    "aal": "aal1",
+    "amr": [
+      {
+        "method": "password",
+        "timestamp": 1793478562
+      }
+    ],
+    "session_id": "6697ef31-4a15-432d-b8fc-40c5041048b0",
+    "is_anonymous": false
+  },
+  "logoutClaims": {
+    "sub": "5644c43c-1c17-43d0-b0d8-9e96685436d7",
+    "aud": "authenticated",
+    "exp": 1793478577,
+    "iat": 1793478562,
+    "email": "logout-75222811-1c17-4335-a6b2-117356d303e3@example.invalid",
+    "phone": "",
+    "app_metadata": {
+      "provider": "email",
+      "providers": [
+        "email"
+      ]
+    },
+    "user_metadata": {
+      "email": "logout-75222811-1c17-4335-a6b2-117356d303e3@example.invalid",
+      "email_verified": true,
+      "phone_verified": false,
+      "sub": "5644c43c-1c17-43d0-b0d8-9e96685436d7"
+    },
+    "role": "authenticated",
+    "aal": "aal1",
+    "amr": [
+      {
+        "method": "password",
+        "timestamp": 1793478562
+      }
+    ],
+    "session_id": "09d7a42e-9797-45f5-8739-299863d97637",
+    "is_anonymous": false
+  },
+  "recoveredClaims": {
+    "sub": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d",
+    "aud": "authenticated",
+    "exp": 1793478622,
+    "iat": 1793478607,
+    "email": "expiry-158774d2-74c7-4e0b-825f-b5e1a361111b@example.invalid",
+    "phone": "",
+    "app_metadata": {
+      "provider": "email",
+      "providers": [
+        "email"
+      ]
+    },
+    "user_metadata": {
+      "email": "expiry-158774d2-74c7-4e0b-825f-b5e1a361111b@example.invalid",
+      "email_verified": true,
+      "phone_verified": false,
+      "sub": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+    },
+    "role": "authenticated",
+    "aal": "aal1",
+    "amr": [
+      {
+        "method": "password",
+        "timestamp": 1793478562
+      }
+    ],
+    "session_id": "6697ef31-4a15-432d-b8fc-40c5041048b0",
+    "is_anonymous": false
+  },
+  "observations": [
+    {
+      "label": "before-expiry",
+      "at": "2026-10-31T20:29:22.892Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "immediate-post-logout",
+      "at": "2026-10-31T20:29:23.222Z",
+      "tokenSha256": "b0f9d89ff72be2ace84f588c148b8a1fd92bf0e506f8bd55cb195e0cb6049b42",
+      "status": 200,
+      "body": [
+        {
+          "id": "5644c43c-1c17-43d0-b0d8-9e96685436d7"
+        }
+      ]
+    },
+    {
+      "label": "logout-refresh-denied",
+      "name": "AuthApiError",
+      "status": 400,
+      "code": "refresh_token_not_found",
+      "message": "Invalid Refresh Token: Refresh Token Not Found"
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:39.008Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:40.013Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:41.018Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:42.022Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:43.026Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:44.030Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:45.033Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:46.038Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:47.044Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:48.048Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:49.053Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:50.057Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:51.062Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:52.090Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:53.094Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:54.098Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:55.102Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:56.107Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:57.111Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:58.115Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:29:59.119Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:00.123Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:01.127Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:02.130Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:03.135Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:04.139Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:05.143Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:06.147Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    },
+    {
+      "label": "expired-persisted-access",
+      "at": "2026-10-31T20:30:07.150Z",
+      "tokenSha256": "e24af7e55d0abddabb2d017f25cd4a973da5fb71ecd87fb5c15ebeab066bf714",
+      "status": 401,
+      "body": {
+        "code": "PGRST301",
+        "details": null,
+        "hint": null,
+        "message": "JWT expired"
+      }
+    },
+    {
+      "label": "expired-logged-out-access",
+      "at": "2026-10-31T20:30:07.152Z",
+      "tokenSha256": "b0f9d89ff72be2ace84f588c148b8a1fd92bf0e506f8bd55cb195e0cb6049b42",
+      "status": 401,
+      "body": {
+        "code": "PGRST301",
+        "details": null,
+        "hint": null,
+        "message": "JWT expired"
+      }
+    },
+    {
+      "label": "refresh-recovered-access",
+      "at": "2026-10-31T20:30:07.245Z",
+      "tokenSha256": "90e133eb87f517ee3c713ca0ab0de1cf067b131ea8322e4eaf2ee717e1ab8715",
+      "status": 200,
+      "body": [
+        {
+          "id": "2dc6e87d-7fbf-44e8-a7d7-34feb7d87b9d"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "tests/batch17-expiry/acceptance.mjs",
+      "sha256": "96a57a66094f63a1fca9a72808c54bc852e052857c15af0cd86c2c942c972ddd"
+    },
+    {
+      "path": "tests/gotrue-runtime/fixture.mjs",
+      "sha256": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+    },
+    {
+      "path": "tests/gotrue-runtime/schema.mjs",
+      "sha256": "d91a8c8b77db0ca23b6cd610fba9c11f7f361853af7927e0065edbc2f2f96211"
+    }
+  ],
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "migrations": {
+      "001_b3_accounts": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444",
+      "002_b4_billing": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24",
+      "009_country_preferences": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab",
+      "010_b7_pro_workspace": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e",
+      "029_account_rls_auth_initplan": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+    },
+    "authUidOwner": "supabase_auth_admin",
+    "authMigrationCount": 75,
+    "scope": "Selective unchanged repository migrations; explicit isolated platform ACLs; no proposals; production equivalence UNKNOWN"
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/logout",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    }
+  ],
+  "scope": "Local genuine GoTrue/PostgREST SDK campaign using selective unchanged application migrations. No hosted equivalence, production policy change, immediate JWT revocation, forged user tokens or clock manipulation."
+}
