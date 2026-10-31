@@ -128,6 +128,12 @@ jobs:
           node tests/remaining-authority-review/browser.mjs
         env:
           REMAINING_SIX_EVIDENCE: ${{ runner.temp }}/remaining-six-source-contracts
+      - name: Canonical ledger and analytical successor acceptance
+        run: |
+          node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check
+          node tests/canonical-acceptance-review/browser.mjs
+        env:
+          CANONICAL_EVIDENCE: ${{ runner.temp }}/canonical-acceptance
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
