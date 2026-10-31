@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "validationRevision": 2,
+  "adapterKey": "private.remaining.72",
+  "catalogId": 72,
+  "engineVersion": 1,
+  "sourceBinding": {
+    "schemaVersion": 1,
+    "baselineSHA": "448533b858e80d4eb90b2146e9dd8c5ba7d91fdb",
+    "technicalSourceTreeSHA256": "449e38c3ee46d751e086919d4d567c0d73eee972bfe492fd5a8aa39c40b2720d",
+    "boundFileCount": 439,
+    "excludedSelfReference": "docs/validation-scale/source-binding.json",
+    "meaning": "Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.",
+    "canonicalAccepted": false,
+    "releaseHold": true
+  },
+  "artifact": {
+    "schemaVersion": 1,
+    "sourceSnapshot": {
+      "baselineSHA": "bd0433f970819ed113553a5e71b6827d838f662b",
+      "sourceTreeSHA256": "ca625c17ecda23f0b8cc2177209405b86fa12fb86b84a1bd2851934c14363029",
+      "meaning": "Preserved original engine/helper source tree from verified baseline; sourceVersion1 is this private binding format, not new external authority.",
+      "helperFiles": [
+        {
+          "path": "src/calculators/finance/investment-math.ts",
+          "sha256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e"
+        },
+        {
+          "path": "src/calculators/finance/credit-card-payoff.ts",
+          "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+        },
+        {
+          "path": "src/calculators/private-cashflow-rate.ts",
+          "sha256": "bb364b2a0ee4994699c81989193b159946eaca1b5c5591e62586e902e64f630e"
+        }
+      ]
+    },
+    "masterId": 72,
+    "profileId": "private.remaining.72",
+    "methodology": {
+      "formulas": [
+        {
+          "id": "remaining-72",
+          "expression": "Supplied bond investment cashflow at time0 and equally spaced later cashflows, explicit sign-changing root bracket; one periodic yield root only. Original bisection helper residual<=1e-10. No coupon generation, day count, clean/dirty price, accrued interest, uniqueness or annualization inferred.",
+          "description": "Supplied bond investment cashflow at time0 and equally spaced later cashflows, explicit sign-changing root bracket; one periodic yield root only. Original bisection helper residual<=1e-10. No coupon generation, day count, clean/dirty price, accrued interest, uniqueness or annualization inferred. Finite amounts0..1e12; positive money at least0.01; closed I/O with original engine/helper traces. Schema ranges are not blanket numerical convergence or specialist applicability guarantees. No canonical mapping, provider/jurisdiction rule, certification or publication approved. RELEASE HOLD."
+        }
+      ],
+      "sources": [
+        {
+          "label": "Preserved deterministic source helper",
+          "note": "src/calculators/private-cashflow-rate.ts; pinned original source contract, not external specialist approval."
+        }
+      ]
+    },
+    "dependencies": [],
+    "helpers": [
+      {
+        "path": "src/calculators/private-cashflow-rate.ts",
+        "sourceVersion": 1
+      }
+    ],
+    "calculation": {
+      "calculatorSlug": "private-remaining-72",
+      "calculatorVersion": 1,
+      "input": {
+        "scope": "supplied-mathematical-scenario",
+        "currency": "USD",
+        "cashFlows": [
+          -100,
+          0,
+          121
+        ],
+        "lowerRatePercent": 0,
+        "upperRatePercent": 20,
+        "period": "year"
+      },
+      "output": {
+        "value": 9.999999999999996,
+        "details": {
+          "periodRatePercent": 9.999999999999996,
+          "normalizedResidual": 7.105427357601002e-17,
+          "signChanges": 1,
+          "selectedBracketOnly": true
+        },
+        "unit": "percent/selected period",
+        "dependencyRuns": [],
+        "helperRuns": [
+          {
+            "path": "src/calculators/private-cashflow-rate.ts",
+            "sourceVersion": 1,
+            "input": {
+              "cashFlows": [
+                -100,
+                0,
+                121
+              ],
+              "lowerRatePercent": 0,
+              "upperRatePercent": 20
+            },
+            "output": {
+              "periodRatePercent": 9.999999999999996,
+              "normalizedResidual": 7.105427357601002e-17,
+              "signChanges": 1,
+              "selectedBracketOnly": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  "governance": {
+    "canonicalMappingApproved": false,
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  }
+}

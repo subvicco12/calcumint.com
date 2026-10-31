@@ -1,0 +1,20 @@
+import {remainingContracts,remainingOutputSchemas,exportRemainingContract,importRemainingContract} from './remaining-contracts';
+import {canonicalContractAdapters,exportValidatedContract,importValidatedContract} from './canonical-contract-adapters';
+import {canonicalVectors} from './canonical-contract-vectors';
+import {type ContractAdapter,sameContractData} from './canonical-contract-validation';
+import {validateScaledContract} from './scaled-contract-validation';
+import {scaledVectors} from './scaled-contract-vectors';
+import {copyCalculationData} from '../lib/calculation-snapshot';
+import binding from '../../docs/validation-scale/source-binding.json';
+export const scaledContractAdapters:readonly ContractAdapter[]=Object.freeze(scaledVectors.map(v=>{const d=remainingContracts.find(d=>d.id==='private.remaining.'+v.id);if(!d)throw Error('Missing immutable remaining contract');return Object.freeze({key:d.id,catalogId:v.id,version:d.version,input:d.inputSchema,output:remainingOutputSchemas[v.id],methodology:d.formulas.map(f=>f.expression).join('; '),run:(i:unknown,p:'free'|'pro'|'business')=>exportRemainingContract(v.id,i,p),read:importRemainingContract,getInput:(a:unknown)=>(a as ReturnType<typeof exportRemainingContract>).calculation.input,getOutput:(a:unknown)=>(a as ReturnType<typeof exportRemainingContract>).calculation.output,getIdentity:(a:unknown)=>{const s=a as ReturnType<typeof exportRemainingContract>;return {key:s.profileId,catalogId:s.masterId,version:s.calculation.calculatorVersion};}});}));
+export const allContractAdapters:readonly ContractAdapter[]=Object.freeze([...canonicalContractAdapters,...scaledContractAdapters].sort((a,b)=>a.catalogId-b.catalogId));
+export const allContractVectors=Object.freeze([...canonicalVectors,...scaledVectors].sort((a,b)=>a.id-b.id));
+export function getScaledAdapter(key:string){const a=allContractAdapters.find(a=>a.key===key);if(!a)throw Error('Unsupported validation adapter');return a;}
+export function evaluateScaledContract(key:string){const a=scaledContractAdapters.find(a=>a.key===key);if(!a)throw Error('Select a revision2 adapter');const v=scaledVectors.find(v=>v.id===a.catalogId)!;return validateScaledContract(a,v.witnesses,v.invalid);}
+export function exportScaledContract(key:string,input:unknown,plan:'free'|'pro'|'business'='free'){
+ if(canonicalContractAdapters.some(a=>a.key===key))return exportValidatedContract(key,input,plan);
+ const a=getScaledAdapter(key),clean=copyCalculationData({input},{}).input.input;
+ return copyCalculationData({packet:{schemaVersion:1,validationRevision:2,adapterKey:key,catalogId:a.catalogId,engineVersion:a.version,sourceBinding:binding,artifact:a.run(clean,plan),governance:{canonicalMappingApproved:false,canonicalAccepted:false,certificationAuthorized:false,publicationAuthorized:false,releaseHold:true}}},{}).input.packet as ReturnType<typeof exportValidatedContract>;
+}
+export function importScaledContract(raw:unknown){const p=copyCalculationData({packet:raw},{}).input.packet as ReturnType<typeof exportScaledContract>;if(p?.validationRevision===1)return importValidatedContract(p);if(p?.validationRevision!==2||typeof p.adapterKey!=='string')throw Error('Unsupported validation revision');if(!scaledContractAdapters.some(a=>a.key===p.adapterKey))throw Error('Revision2 adapter required');const a=getScaledAdapter(p.adapterKey),artifact=a.read(p.artifact),expected=exportScaledContract(a.key,a.getInput(artifact));if(!sameContractData(p,expected))throw Error('Revision2 source/identity/version/governance/replay differs');return expected;}
+export function compareScaledScenarios(raw:readonly unknown[]){if(raw.length<2||raw.length>3)throw Error('Two or three complete scenarios');const packets=raw.map(importScaledContract);if(packets.some(p=>p.adapterKey!==packets[0].adapterKey))throw Error('Same immutable adapter required');return copyCalculationData({comparison:packets.map((p,i)=>({name:['A','B','C'][i],input:getScaledAdapter(p.adapterKey).getInput(p.artifact),output:getScaledAdapter(p.adapterKey).getOutput(p.artifact)}))},{}).input.comparison;}

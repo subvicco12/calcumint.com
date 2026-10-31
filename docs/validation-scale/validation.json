@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "baselineSHA": "448533b858e80d4eb90b2146e9dd8c5ba7d91fdb",
+  "relatedCatalogIds": [
+    25,
+    37,
+    45,
+    47,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    83,
+    93,
+    94,
+    100,
+    101,
+    102,
+    106,
+    107,
+    108,
+    110,
+    111,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    465,
+    466,
+    473,
+    477,
+    480,
+    494,
+    528,
+    537
+  ],
+  "sourceBinding": {
+    "schemaVersion": 1,
+    "baselineSHA": "448533b858e80d4eb90b2146e9dd8c5ba7d91fdb",
+    "technicalSourceTreeSHA256": "449e38c3ee46d751e086919d4d567c0d73eee972bfe492fd5a8aa39c40b2720d",
+    "boundFileCount": 439,
+    "excludedSelfReference": "docs/validation-scale/source-binding.json",
+    "meaning": "Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.",
+    "canonicalAccepted": false,
+    "releaseHold": true
+  },
+  "checks": [
+    {
+      "name": "full-unit-regression",
+      "command": "npm test -- --maxWorkers=1",
+      "result": "6259passed/4existing skips;5additional governance/receipt tests added afterward and passed in final focused suite",
+      "localLog": "/workspace/work/scale-full-unit.log",
+      "logSHA256": "597591377e97f63a6b3cab593afe21e483cc4a4bede1245cad6ba54d68d590f3"
+    },
+    {
+      "name": "final-focused",
+      "command": "npx vitest run src/calculators/scaled-contract*.test.ts",
+      "result": "115passed including6independent attacks and5additional governance/receipt guards",
+      "localLog": "/workspace/work/scale-focused-final.log",
+      "logSHA256": "149aa42349cdd0c52417db4122a4d915664b8a11d09cd0265fc9995409ea171f"
+    },
+    {
+      "name": "actual-node22-focused",
+      "command": "/tmp/calcumint-node22/node node_modules/vitest/vitest.mjs run src/calculators/scaled-contract*.test.ts",
+      "result": "115passed on actualNode22.23.4",
+      "localLog": "/workspace/work/scale-node22-focused-final.log",
+      "logSHA256": "6fc7da472e6c2914879e3ccc65d14a540790deec6859df7967ec0d377854d7d3"
+    },
+    {
+      "name": "scaled-actual-engine-manifest",
+      "command": "node scripts/scale-validation-evidence.mjs --check",
+      "result": "540rows/51newadapters/79total/102newgoldens/51newnegatives/714newchecks/1106cumulative;0canonical accepted",
+      "localLog": "/workspace/work/scale-evidence-final.log",
+      "logSHA256": "c51c972b2950e37c04ec22c69f75d684babb750ea5907eb6ab90258177f0fcf6"
+    },
+    {
+      "name": "actual-node22-manifest",
+      "command": "/tmp/calcumint-node22/node scripts/scale-validation-evidence.mjs --check",
+      "result": "exact manifest bytes match actualNode22",
+      "localLog": "/workspace/work/scale-node22-evidence.log",
+      "logSHA256": "c51c972b2950e37c04ec22c69f75d684babb750ea5907eb6ab90258177f0fcf6"
+    },
+    {
+      "name": "v1-closed-source-capture",
+      "command": "python3 scripts/canonical-validation-source.py --check",
+      "result": "original433-file root/metadata unchanged;alloriginaldependencybytes verified",
+      "localLog": "/workspace/work/scale-v1-source.log",
+      "logSHA256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed"
+    },
+    {
+      "name": "v2-closed-source-capture",
+      "command": "python3 scripts/scale-validation-source.py --check",
+      "result": "new439-file root/metadata frozen;alloriginaldependencybytes verified",
+      "localLog": "/workspace/work/scale-source-final.log",
+      "logSHA256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed"
+    },
+    {
+      "name": "source-compatibility-preimage-mutation",
+      "command": "python3 tests/validation-scale/source.test.py",
+      "result": "3passed;originalglobREDafteraddition;v1/v2additioncompatibility;oldmodification/preimagetamperfailclosed",
+      "localLog": "/workspace/work/scale-source-tests.log",
+      "logSHA256": "91ad9351487a3da4789efe7be52fad10cc3242751ba01b5e7c77b13a71459e79"
+    },
+    {
+      "name": "expanded-browser",
+      "command": "node tests/validation-scale/browser.mjs",
+      "result": "114passed/0issues;19families\u00d73plans\u00d72viewports;actualdownloads,replay,tamper,history,scenarios and accessible labels",
+      "localLog": "/workspace/work/scale-browser.log",
+      "logSHA256": "8f6df53668d475d2bd8a72a8d951ad1cc8da06b15fa177678e8afb0000a1ddf6"
+    },
+    {
+      "name": "cross-revision-workflow-browser",
+      "command": "node tests/validation-scale/workflow-browser.mjs",
+      "result": "3passed;v1historyread/copywithoutoverwrite;v2ABC/downgrade21/corruptretention",
+      "localLog": "/workspace/work/scale-workflow-browser.log",
+      "logSHA256": "af57137dcf36f4700448d6f7c19ee21e29fc09721a0a7e6cd91ccc12f705641b"
+    },
+    {
+      "name": "isolated-postgres-security",
+      "command": "NEXT_RUNTIME_ARTIFACTS=<isolated-artifacts> node tests/next-runtime/security.mjs",
+      "result": "8HTTP/RLS checks+schema preflight;disposablePostgreSQL17.6/PostgREST;notGoTrue/productionequivalence",
+      "localLog": "/workspace/work/scale-security.log",
+      "logSHA256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "name": "transport-runtime-ci-guards",
+      "command": "node --test [transport/CI/runtime/frozen-source files]",
+      "result": "80passed;53CIguards repeated after newexactmandatory suffix",
+      "localLog": "/workspace/work/scale-guards.log",
+      "logSHA256": "75fae7465478f0f97cdf255e70eb942fd170af6af9c75d57368b0512bd58d66d"
+    },
+    {
+      "name": "final-ci-guards",
+      "command": "node --test tests/ci-gate-recovery/*.test.mjs",
+      "result": "53passed;exactold4+prior2+new1steps;unchanged20minbudgets/bothjobsrequired/49actualfailclosedaggregatecombinations",
+      "localLog": "/workspace/work/scale-ci-guards-final.log",
+      "logSHA256": "9bcab91dba4b0f2c7474c82274e2f1a3121f8f2e7b9f79b56ce0ca5c65ec82a0"
+    },
+    {
+      "name": "original-blueprint",
+      "command": "python3 scripts/reconcile-native-blueprint.py --check",
+      "result": "originalsource/1116paragraphs/33tables/540traces preserved",
+      "localLog": "/workspace/work/scale-native.log",
+      "logSHA256": "c3f75d067768459b88d0b23025c439166fbd3c25a3971c0cedbc78dc7adb4b17"
+    },
+    {
+      "name": "prior-calculus-source",
+      "command": "python3 scripts/reconcile-canonical-calculus.py --check",
+      "result": "original1499sourcebinding/540overlay preserved",
+      "localLog": "/workspace/work/scale-calculus-source.log",
+      "logSHA256": "6272b72c08906210ebb71ac2d30a211b3539da5dd4dfdfdf1ff619395c6690b1"
+    },
+    {
+      "name": "frozen-canonical-ledger",
+      "command": "node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check",
+      "result": "fullhistoricalartifactreproduction passed",
+      "localLog": "/workspace/work/scale-frozen-ledger.log",
+      "logSHA256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    {
+      "name": "v1-evidence-ledger",
+      "command": "node scripts/canonical-validation-evidence.mjs --check",
+      "result": "shipped1500evidence bytes unchanged",
+      "localLog": "/workspace/work/scale-v1-evidence.log",
+      "logSHA256": "ce6fc342c27fef064f870d4dc3fab29439ac41ec215b24be8e08a01d0850ccd5"
+    },
+    {
+      "name": "launch-guards",
+      "command": "npm run test:launch",
+      "result": "45passed;notlaunchauthorization",
+      "localLog": "/workspace/work/scale-launch.log",
+      "logSHA256": "57b89d0431e53170505393c5317f3cae77b4ef80b7bab7eba9c14192eb08ed70"
+    },
+    {
+      "name": "certification-guards",
+      "command": "npm run test:certification",
+      "result": "15passed;notcertification",
+      "localLog": "/workspace/work/scale-certification.log",
+      "logSHA256": "c5dfb05ded4ecdcce36a5b8e6b3f8df979ea819c8b89ef7a8cb134d0d970882d"
+    },
+    {
+      "name": "webpack-build",
+      "command": "npm run build",
+      "result": "next build --webpack passed;37staticpages",
+      "localLog": "/workspace/work/scale-build.log",
+      "logSHA256": "95829e78c80f9bc466ec519094e7f5d9d5b1f4c1128f38274c122102418e423b"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "result": "passed",
+      "localLog": "/workspace/work/scale-typecheck-final.log",
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "result": "passed/0errors/28existingwarnings",
+      "localLog": "/workspace/work/scale-lint-final.log",
+      "logSHA256": "455fc323660166c396f0e601f72622ba2f8bc0bebbd68be14fe31559e6ab0af9"
+    }
+  ],
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "reloadInvestigation": "reload-investigation.json",
+  "frozenReceiptSHA256": {
+    "docs/validation-scale/receipts/72-pro-320.json": "0ab6dc9f4c751cc698807ad4d4da926f3007c51a4cc9f118e8d6d31b428df1b1",
+    "docs/validation-scale/receipts/528-pro-320.json": "6679a7092460a3ee7b70212a91e0bf3fc0c6491a9b122b7d25224be6dded78a9",
+    "docs/validation-scale/receipts/25-pro-320.json": "e107a1c285e38ea5bd1fdb560845da9996e8370d48c9c1a7f400f2d0cd12c24b"
+  },
+  "canonicalAccepted": false,
+  "releaseHold": true
+}
