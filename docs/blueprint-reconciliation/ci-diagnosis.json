@@ -1,0 +1,37 @@
+{
+  "baselinePR": 1497,
+  "baselineSHA": "7eff39b23a52953c028852d50d5571211a3f8a44",
+  "failedRun": 41162017661,
+  "buildJob": {
+    "id": 124421425168,
+    "conclusion": "success"
+  },
+  "checksJob": {
+    "id": 124421425408,
+    "conclusion": "failure",
+    "failedStep": "Canonical ledger and analytical successor acceptance",
+    "message": "Stale canonical artifact:canonical-ledger.json",
+    "precedingSteps": "Allsuccessfulincludingsecurity,unit6007/4skips,reference/business/sourcebrowseracceptance,lint,typecheck,certificationguards"
+  },
+  "aggregate": {
+    "id": 124425735742,
+    "conclusion": "failure",
+    "meaning": "Correctfailclosedbehavior;nosuccessmanufactured"
+  },
+  "independentReproduction": {
+    "node24": "v24.19.0",
+    "node22": "v22.23.4",
+    "primaryDerivativeBoth": 12.00000000028264,
+    "onlyOutputDifference": {
+      "pointIndex": 19,
+      "x": 2.9,
+      "node24y": 24.389,
+      "node22y": 24.388999999999996
+    },
+    "resultingAuditHashDifferences": 4,
+    "otherArtifactBytes": "identical"
+  },
+  "repair": "KeepfrozenNode24artifactsandaddexactNode22receiptprofile;verifyallbasehashes,4whitelistedpreimages,finalSHAandfullgeneratorbytecomparison.Unknownruntimefailsclosed.Nomathtoleranceorgoldenmodified.",
+  "engineeringGate": "1497exactheadremainsFAILED;noapplicationextension.NewdraftheadmustgenuinelypasshostedCI.",
+  "releaseHold": true
+}

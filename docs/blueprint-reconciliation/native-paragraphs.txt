@@ -1,0 +1,1116 @@
+BP-0001: CalcuMint
+BP-0002: FINAL MASTER BLUEPRINT& PRODUCT ARCHITECTURE
+BP-0003: Universal Calculation Intelligence Platform
+BP-0004: SINGLE SOURCE OF TRUTH — FINAL ARCHITECTURE BASELINEThis document is the governing product, calculator, entitlement, certification, publication, UX, platform, roadmap and catalogue architecture for CalcuMint. Future implementation must conform to it unless a change is explicitly approved, documented and incorporated into a later controlled revision.
+BP-0005: One Final calculator. One authoritative deterministic engine. Identical mathematical correctness for everyone. Free calculates; Pro analyzes and optimizes; Business collaborates, deploys and automates.
+BP-0006: Architecture date: 1 October 2026Status: FINAL / GOVERNING BASELINESupersedes fragmented V1/V2/V3 customer-facing product conceptsDoes not itself authorize production deployment or bypass certification
+BP-0007: 0. Document Control, Authority & Interpretation
+BP-0008: Item
+BP-0009: Governing rule
+BP-0010: Purpose
+BP-0011: Single future-reference specification for the complete CalcuMint product and calculator architecture.
+BP-0012: Authority
+BP-0013: Architecture baseline for product, engineering, UX, catalogue, entitlements, certification and publication decisions.
+BP-0014: Customer release terminology
+BP-0015: Every legitimately published calculator is a Final Calculator. No customer-facing V1/V2/V3 calculator release cycle.
+BP-0016: Technical revisions
+BP-0017: Immutable numeric/internal revisions remain available for auditability, certification, reproducibility and publication identity.
+BP-0018: Operational truth
+BP-0019: Repository definitions/tests/migrations and authoritative production database state control runtime certification/publication; this blueprint controls architecture and policy.
+BP-0020: Change rule
+BP-0021: Material changes require an explicit decision record and controlled blueprint revision. No silent architectural drift.
+BP-0022: Deployment authority
+BP-0023: This document is a build target, not production authorization. CI, certification, security, YMYL and publication gates remain mandatory.
+BP-0024: 0.1 Source hierarchy
+BP-0025: This Final Master Blueprint & Product Architecture is the architecture and product-policy authority.
+BP-0026: The Master Calculator Catalog is the governed portfolio/planning inventory and entitlement mapping.
+BP-0027: Certified repository calculator definitions and deterministic tests are the mathematical source of truth.
+BP-0028: Authoritative database lifecycle/publication records determine what is legitimately public.
+BP-0029: Current regulatory sources and certified rule packs govern jurisdiction-sensitive calculators.
+BP-0030: When a conflict is discovered, it must be reconciled explicitly; no source may be silently overwritten merely to make states appear consistent.
+BP-0031: 0.2 Locked product doctrine
+BP-0032: PERMANENT PRODUCT RULEFree calculates. Pro understands, compares, optimizes and remembers. Business builds, brands, collaborates and automates. Mathematical correctness is never a paid feature.
+BP-0033: One canonical calculator URL and identity; plans change capabilities, not formulas or page identity.
+BP-0034: Every public calculator must be certified and published through the governed lifecycle before it may be called Final.
+BP-0035: Final is a customer-facing product/completeness state; technical revision is an internal audit identity.
+BP-0036: Charts, schedules, exports, scenarios, sensitivity and AI explanations consume deterministic engine output and must not independently reimplement formulas.
+BP-0037: No plan may receive a more accurate mathematical answer than another plan.
+BP-0038: High-stakes financial, health, tax and other regulated calculators retain specialist/reviewer gates where required.
+BP-0039: Contents
+BP-0040: 1. Executive Decision & Product Vision
+BP-0041: 2. Final Product Doctrine: Final vs Technical Revision
+BP-0042: 3. Permanent System Architecture
+BP-0043: 4. Calculator Definition & Deterministic Compute Contract
+BP-0044: 5. Structured Calculation Result Contract
+BP-0045: 6. Presentation Architecture & Families
+BP-0046: 7. Universal Final Calculator UX
+BP-0047: 8. Free / Pro / Business Entitlement Architecture
+BP-0048: 9. Accuracy, Inputs & Paywall Guardrails
+BP-0049: 10. Advanced Analysis Architecture
+BP-0050: 11. Business Platform Architecture
+BP-0051: 12. Trust, Methodology & Technical Revision Disclosure
+BP-0052: 13. Certification, Publication & Governance
+BP-0053: 14. Regulated / YMYL / Global Rule-Pack Architecture
+BP-0054: 15. AI Architecture & Boundaries
+BP-0055: 16. Calculator Journeys, Discovery & SEO
+BP-0056: 17. Accessibility, Responsive UX & Performance
+BP-0057: 18. Security, Auth, Billing & Entitlement Enforcement
+BP-0058: 19. Data, Persistence, Projects & Auditability
+BP-0059: 20. API, Embed, Batch & Webhook Architecture
+BP-0060: 21. Reference Six Framework Validation
+BP-0061: 22. Domain Taxonomy & Portfolio Strategy
+BP-0062: 23. Calculator Factory & Scale Architecture
+BP-0063: 24. QA, Reconciliation & Definition of Done
+BP-0064: 25. Implementation Sequence & Production Protection
+BP-0065: 26. Decision Register
+BP-0066: 27. Research & Competitive Positioning
+BP-0067: Appendix A. Plan Entitlement Matrix
+BP-0068: Appendix B. Master Calculator Catalog (540-item planning inventory)
+BP-0069: Appendix C. Competitive Research Source Register
+BP-0070: Appendix D. Glossary & Architecture Invariants
+BP-0071: 1. Executive Decision & Product Vision
+BP-0072: CalcuMint will move directly from its certified deterministic calculation foundation to a Final Calculator Experience. There is no customer-facing V2/V3 calculator release cycle. Existing certified formulas remain authoritative unless a verified formula defect, methodology change or rule update requires a controlled technical revision and recertification.
+BP-0073: CalcuMint is a global calculation intelligence platform, not merely a directory of isolated tools. Its defensible value comes from deterministic trust, visual explanation, reverse solving, scenario modelling, sensitivity analysis, decision journeys, global rule packs, saved work, professional outputs, and Business deployment capabilities.
+BP-0074: 1.1 Product principles
+BP-0075: Principle
+BP-0076: Final interpretation
+BP-0077: Accuracy first
+BP-0078: Every public result is deterministic, tested, certified and reconciled across headline results, cards, charts, tables, scenarios and exports.
+BP-0079: Useful before monetized
+BP-0080: Free users receive a complete core calculation and useful basic visualization where appropriate.
+BP-0081: Analysis creates Pro value
+BP-0082: Pro monetizes analysis, Goal Solver, scenarios, sensitivity, persistence, exports and richer explanation—not correctness.
+BP-0083: Workflow creates Business value
+BP-0084: Business monetizes teams, clients, calculator builder, branding, embeds, API, batch, webhooks and governance.
+BP-0085: Quality over raw scale
+BP-0086: No mass publication of thin, uncertified or draft calculators merely to increase page count.
+BP-0087: Global by architecture
+BP-0088: Country/rule-sensitive calculators use explicit jurisdiction, rule-pack revision, effective dates, authoritative sources and review evidence.
+BP-0089: 2. Final Product Doctrine: Final vs Technical Revision
+BP-0090: The word Final is the public product state for a calculator that has passed all required gates. It is not a replacement for internal technical versioning. Internal revision identifiers remain immutable and auditable.
+BP-0091: Concept
+BP-0092: Meaning
+BP-0093: Customer visibility
+BP-0094: Final Calculator
+BP-0095: Certified, governed, publishable customer product experience.
+BP-0096: Prominent: Final / Formula verified / Rules verified as appropriate.
+BP-0097: Technical revision
+BP-0098: Immutable calculation-engine revision used for lineage and reproducibility.
+BP-0099: Methodology/audit detail only.
+BP-0100: Formula revision
+BP-0101: Internal change identity for formula or rounding changes.
+BP-0102: Methodology/audit detail where useful.
+BP-0103: Rule-pack revision
+BP-0104: Jurisdiction/effective-period rule identity.
+BP-0105: Visible for regulated tools where decision-relevant.
+BP-0106: Publication revision
+BP-0107: Exact governed published identity.
+BP-0108: Not product branding; audit/operations detail.
+BP-0109: 2.1 Update behavior
+BP-0110: A material improvement never creates “Calculator V2” for customers. It creates a new internal technical revision, runs the complete certification gate, and—only after approval—becomes the active published revision of the same Final Calculator at the same canonical URL. Previous revisions remain historical/auditable rather than silently mutating.
+BP-0111: CUSTOMER-FACING RULEDo not show “Version 1”, “V1”, “V2” or “V3” as the calculator product release. Use Final trust terminology. Numeric technical revision may be disclosed under Methodology for auditability.
+BP-0112: 3. Permanent System Architecture
+BP-0113: The permanent execution and presentation pipeline is:
+BP-0114: CalculatorDefinition → Certified Compute Engine → StructuredCalculationResult → PresentationDefinition → FinalCalculatorRenderer → EntitlementResolver
+BP-0115: Layer
+BP-0116: Responsibility
+BP-0117: CalculatorDefinition
+BP-0118: Typed inputs, units, validation, formulas, rounding, risk class, sources, jurisdiction metadata and immutable technical revision.
+BP-0119: Certified Compute Engine
+BP-0120: Pure deterministic computation. No network dependency and no plan-specific formula forks.
+BP-0121: StructuredCalculationResult
+BP-0122: Normalized headline result, metrics, series, composition, schedules, ranges, reverse targets, assumptions, warnings and metadata.
+BP-0123: PresentationDefinition
+BP-0124: Declares presentation family and which reusable visual/analysis components are mathematically meaningful.
+BP-0125: FinalCalculatorRenderer
+BP-0126: Consistent responsive experience rendered from contracts rather than bespoke pages.
+BP-0127: EntitlementResolver
+BP-0128: Centrally resolves Free/Pro/Business capabilities as active, previewed, locked or unavailable.
+BP-0129: Persistence/Workspace Services
+BP-0130: Save history, projects, scenarios, teams and audit state without changing computation.
+BP-0131: Business Delivery Services
+BP-0132: API, embed, batch, webhooks, branding and governance around the same certified engine.
+BP-0133: 3.1 Architectural invariant
+BP-0134: ONE ENGINE, THREE EXPERIENCESThe calculation result exists independently of subscription. Subscription controls additional analysis, persistence, collaboration and deployment capabilities around that result.
+BP-0135: 4. Calculator Definition & Deterministic Compute Contract
+BP-0136: Each calculator has a stable canonical calculator ID and slug.
+BP-0137: Inputs are typed and carry units, validation, defaults, precision and classification metadata.
+BP-0138: Formula logic is deterministic and testable without network access.
+BP-0139: Rounding policy is explicit and part of certification.
+BP-0140: Risk class and jurisdiction requirements are declared in metadata.
+BP-0141: Sources and methodology are part of the governed definition for source-dependent calculators.
+BP-0142: Internal technical revision is immutable for a released calculation identity.
+BP-0143: Plan/entitlement logic does not live inside the mathematical compute path.
+BP-0144: 4.1 Input classification
+BP-0145: Input class
+BP-0146: Meaning
+BP-0147: Entitlement rule
+BP-0148: Core
+BP-0149: Required to perform the basic calculation.
+BP-0150: Always available when calculator is available.
+BP-0151: Accuracy-required
+BP-0152: Needed for a materially correct answer in the user’s situation.
+BP-0153: Never paywalled.
+BP-0154: Jurisdiction-required
+BP-0155: Needed to select an applicable certified rule/rule pack.
+BP-0156: Never paywalled.
+BP-0157: Advanced-analysis
+BP-0158: Optional modelling depth such as alternative scenarios.
+BP-0159: May be Pro/Business.
+BP-0160: Business-workflow
+BP-0161: Organization/template/deployment controls.
+BP-0162: Business entitlement.
+BP-0163: 5. Structured Calculation Result Contract
+BP-0164: Contract field
+BP-0165: Purpose
+BP-0166: primaryResult
+BP-0167: Main answer displayed in the result hero.
+BP-0168: metrics[]
+BP-0169: Secondary KPI/result cards.
+BP-0170: series[]
+BP-0171: Deterministic time-series or ordered chart data.
+BP-0172: composition[]
+BP-0173: Part-to-whole data such as principal vs interest.
+BP-0174: schedule[]
+BP-0175: Amortization, annual progression, payment or period tables.
+BP-0176: ranges[]
+BP-0177: Reference bands/ranges for health, science or classification tools.
+BP-0178: reverseTargets[]
+BP-0179: Variables that can be solved backwards from a desired outcome.
+BP-0180: scenarioVariables[]
+BP-0181: Inputs eligible for A/B/C comparison.
+BP-0182: sensitivityVariables[]
+BP-0183: Inputs eligible for outcome sensitivity analysis.
+BP-0184: assumptions[]
+BP-0185: Assumptions materially affecting interpretation.
+BP-0186: warnings[]
+BP-0187: Validation, scope, jurisdiction or safety warnings.
+BP-0188: methodology
+BP-0189: Formula, rounding, technical revision, rule pack and review metadata.
+BP-0190: sources[]
+BP-0191: Authoritative references.
+BP-0192: journey[]
+BP-0193: Recommended next calculations in the user’s decision path.
+BP-0194: RECONCILIATION INVARIANTFor identical inputs, headline result, chart terminal value, schedule terminal value, scenario baseline and export value must agree within the calculator’s explicit rounding policy.
+BP-0195: 6. Presentation Architecture & Families
+BP-0196: Domain and presentation family are separate. Domain controls discovery, SEO, editorial taxonomy and journeys. Presentation family controls reusable UX and analysis behavior. This separation is required to scale without thousands of bespoke interfaces.
+BP-0197: Presentation family
+BP-0198: Typical behavior
+BP-0199: Simple scalar
+BP-0200: One principal result with concise supporting metrics.
+BP-0201: Growth / accumulation
+BP-0202: Timeline, contributions vs growth, goal/reverse solving.
+BP-0203: Amortization / debt
+BP-0204: Payment composition, balances, schedules, payoff scenarios.
+BP-0205: Composition
+BP-0206: Part-to-whole breakdowns and waterfall/breakdown views.
+BP-0207: Break-even / crossover
+BP-0208: Two-series crossover, target-profit and sensitivity.
+BP-0209: Range / classification
+BP-0210: Reference bands, ranges and classifications.
+BP-0211: Statistical distribution
+BP-0212: Distribution summaries, probabilities and statistical visuals.
+BP-0213: Comparison
+BP-0214: Alternatives/scenarios with aligned assumptions and outputs.
+BP-0215: Goal planning
+BP-0216: Target outcome, progress, reverse required input.
+BP-0217: Engineering quantity
+BP-0218: Quantity/material result, units, waste/allowance where applicable.
+BP-0219: Unit conversion
+BP-0220: Exact/defined conversion with unit semantics.
+BP-0221: Equation / solver
+BP-0222: Equation inputs, solution set, residual/verification.
+BP-0223: Graphing
+BP-0224: Function/series plot with domain/range and accessible summary.
+BP-0225: Time/date
+BP-0226: Durations, dates, calendars and timezone-aware rules where applicable.
+BP-0227: Rule-based / jurisdictional
+BP-0228: Certified rule-pack selection, effective period and source evidence.
+BP-0229: 6.1 Reusable component library
+BP-0230: Reusable component
+BP-0231: Primary use
+BP-0232: ResultHero
+BP-0233: Main result, units, concise interpretation and trust state.
+BP-0234: MetricCards
+BP-0235: Secondary outputs/KPIs.
+BP-0236: GrowthChart
+BP-0237: Investment, savings, debt balance or corpus over time.
+BP-0238: BreakdownChart
+BP-0239: Principal/interest, contribution/growth, tax/net composition.
+BP-0240: StackedPeriodChart
+BP-0241: Period-by-period composition.
+BP-0242: ComparisonBars
+BP-0243: Scenario A/B/C or discrete alternatives.
+BP-0244: RangeIndicator
+BP-0245: BMI/reference bands and classified ranges.
+BP-0246: BreakEvenChart
+BP-0247: Cost/revenue crossover and target-profit visualization.
+BP-0248: DistributionView
+BP-0249: Statistics/probability distributions where appropriate.
+BP-0250: ProgressView
+BP-0251: Goal completion and target progress.
+BP-0252: WaterfallView
+BP-0253: Gross-to-net, revenue-to-profit or deduction flows.
+BP-0254: ScheduleTable
+BP-0255: Amortization, progression, payments or detailed breakdown.
+BP-0256: ScenarioCompare
+BP-0257: Side-by-side assumptions and outcomes.
+BP-0258: SensitivityExplorer
+BP-0259: Outcome response to meaningful variables.
+BP-0260: GoalSolver
+BP-0261: Reverse solve from target outcome to required input.
+BP-0262: InsightPanel
+BP-0263: Deterministic explanation plus optional grounded AI interpretation.
+BP-0264: MethodologyPanel
+BP-0265: Formula, assumptions, rounding, revisions, sources and review date.
+BP-0266: 7. Universal Final Calculator UX
+BP-0267: Calculator identity, category, concise purpose and trust/certification state.
+BP-0268: Simple / Advanced input mode with units, currency, country/rule context where relevant.
+BP-0269: Calculate action with clear validation and accessible errors.
+BP-0270: Primary result hero.
+BP-0271: Three to six key result cards when meaningful.
+BP-0272: One useful Free visualization when the calculation benefits from visualization.
+BP-0273: Plain-language “What this means” interpretation.
+BP-0274: Advanced Analysis area with contextual Pro previews/controls.
+BP-0275: Detailed table/schedule where mathematically useful.
+BP-0276: Goal Solver / reverse calculation where supported.
+BP-0277: Scenario comparison and sensitivity where decision-relevant.
+BP-0278: Formula, assumptions, methodology, authoritative sources and technical-revision disclosure.
+BP-0279: Related calculators / Continue your calculation journey.
+BP-0280: MOBILE-FIRST RULEOn mobile, the answer appears before long explanations and before upgrade messaging. Charts are responsive, detailed schedules may begin summarized, and the page never requires horizontal page scrolling.
+BP-0281: 8. Free / Pro / Business Entitlement Architecture
+BP-0282: All plans use the same Final calculator and authoritative engine. Entitlements are feature capabilities, centrally resolved. They must not be scattered as ad-hoc plan checks through calculator-specific components.
+BP-0283: Capability
+BP-0284: Free
+BP-0285: Pro
+BP-0286: Business
+BP-0287: Certified core calculation
+BP-0288: Full
+BP-0289: Full
+BP-0290: Full
+BP-0291: Primary result & KPI cards
+BP-0292: Full
+BP-0293: Full
+BP-0294: Full
+BP-0295: Basic useful visualization
+BP-0296: Yes where applicable
+BP-0297: Yes
+BP-0298: Yes
+BP-0299: Formula / methodology
+BP-0300: Yes
+BP-0301: Yes
+BP-0302: Yes
+BP-0303: Detailed charts
+BP-0304: Limited
+BP-0305: Full
+BP-0306: Full
+BP-0307: Detailed schedules / tables
+BP-0308: Limited/basic
+BP-0309: Full
+BP-0310: Full
+BP-0311: Reverse solving / Goal Seek
+BP-0312: Selected/basic
+BP-0313: Full
+BP-0314: Full
+BP-0315: Scenario comparison
+BP-0316: Preview / locked
+BP-0317: Full
+BP-0318: Full
+BP-0319: Sensitivity analysis
+BP-0320: Preview / locked
+BP-0321: Full
+BP-0322: Full
+BP-0323: Saved history / favorites
+BP-0324: Limited
+BP-0325: Expanded
+BP-0326: Expanded
+BP-0327: Projects / goals
+BP-0328: Limited
+BP-0329: Yes
+BP-0330: Yes
+BP-0331: CSV / JSON / PDF outputs
+BP-0332: No/basic share
+BP-0333: Yes
+BP-0334: Yes
+BP-0335: AI result explanation
+BP-0336: Basic / limited
+BP-0337: Advanced
+BP-0338: Advanced
+BP-0339: Ads
+BP-0340: Yes
+BP-0341: No
+BP-0342: No
+BP-0343: Team / client workspace
+BP-0344: No
+BP-0345: No
+BP-0346: Yes
+BP-0347: Custom calculator builder
+BP-0348: No
+BP-0349: No
+BP-0350: Yes
+BP-0351: Branding / white-label / embed
+BP-0352: No
+BP-0353: No
+BP-0354: Yes
+BP-0355: API / batch / webhooks
+BP-0356: No
+BP-0357: No
+BP-0358: Yes
+BP-0359: Lead capture / governance
+BP-0360: No
+BP-0361: No
+BP-0362: Yes
+BP-0363: 8.1 Tier purpose
+BP-0364: Tier
+BP-0365: Product promise
+BP-0366: Primary monetized value
+BP-0367: Free
+BP-0368: Complete core calculation and useful interpretation.
+BP-0369: Advertising and acquisition; no reduction in correctness.
+BP-0370: Pro
+BP-0371: Understand, compare, optimize and remember.
+BP-0372: Advanced analysis, reverse solving, scenarios, sensitivity, persistence, exports, richer explanation, ad-free experience.
+BP-0373: Business
+BP-0374: Build, brand, collaborate, deploy and automate.
+BP-0375: Teams, clients, builder, embeds, API, batch, webhooks, branding and governance.
+BP-0376: 9. Accuracy, Inputs & Paywall Guardrails
+BP-0377: Mathematical correctness, required safety warnings, required assumptions and authoritative sources are never paid features.
+BP-0378: Any input required for correctness or jurisdiction selection remains available to Free users.
+BP-0379: Pro may add optional analytical variables, but not hide variables required for a materially correct core answer.
+BP-0380: Free visualizations must be useful, not intentionally misleading or truncated to create an accuracy disadvantage.
+BP-0381: Business limits may control throughput, collaboration and deployment—not formula quality.
+BP-0382: Entitlement tests must prove cross-plan equality of the authoritative primary calculation for identical inputs.
+BP-0383: 10. Advanced Analysis Architecture
+BP-0384: Capability
+BP-0385: Architecture rule
+BP-0386: Goal Solver / reverse solve
+BP-0387: Solve supported variables against a target using certified forward compute; verify the reverse solution by feeding it back into the forward engine.
+BP-0388: Scenario comparison
+BP-0389: Each scenario is a complete deterministic input set; baseline must equal the normal calculator for identical inputs.
+BP-0390: Sensitivity
+BP-0391: Sweep declared variables/ranges through the certified engine; never use an independent approximate formula unless explicitly certified.
+BP-0392: Detailed charts
+BP-0393: Consume structured deterministic series/composition outputs.
+BP-0394: Schedules/tables
+BP-0395: Derived from engine outputs and reconciled to headline totals/terminal values.
+BP-0396: Professional exports
+BP-0397: Serialize the same structured result and assumptions used on screen.
+BP-0398: AI explanation
+BP-0399: Grounded in structured result, methodology and assumptions; cannot create a competing numeric result.
+BP-0400: 11. Business Platform Architecture
+BP-0401: Business is not merely Pro with higher limits. It is the organizational and deployment layer around the same Final calculators.
+BP-0402: Organizations and workspaces
+BP-0403: Team members, roles and permissions
+BP-0404: Client/project spaces
+BP-0405: Shared calculations, scenarios and templates
+BP-0406: Custom calculator builder constrained to deterministic/auditable definitions
+BP-0407: Brand configuration and white-label presentation where permitted
+BP-0408: Embeddable calculators
+BP-0409: Authenticated API
+BP-0410: Batch calculation jobs
+BP-0411: Webhooks with idempotency and auditability
+BP-0412: Usage limits, quotas and metering
+BP-0413: Audit logs and governance controls
+BP-0414: Lead capture only where transparent and appropriate
+BP-0415: 12. Trust, Methodology & Technical Revision Disclosure
+BP-0416: Old presentation
+BP-0417: Final presentation
+BP-0418: Certified calculator · Version 1
+BP-0419: Formula verified / Final
+BP-0420: Technical version prominent
+BP-0421: Technical calculation revision under Methodology
+BP-0422: Generic regulated badge
+BP-0423: Rules verified · jurisdiction · effective period
+BP-0424: Unclear freshness
+BP-0425: Last reviewed date and source/rule metadata where relevant
+BP-0426: 12.1 Trust panel
+BP-0427: The prominent trust area communicates customer-relevant confidence: Final release state, Formula verified, deterministic calculation, and Rules verified where applicable. It does not market internal revision numbers as product releases.
+BP-0428: 12.2 Methodology panel
+BP-0429: Methodology retains formula, assumptions, rounding policy, technical calculation revision, rule-pack revision where applicable, review date, certification/source metadata and authoritative references. This preserves reproducibility without exposing V1/V2/V3 product branding.
+BP-0430: 13. Certification, Publication & Governance
+BP-0431: Gate
+BP-0432: Required evidence
+BP-0433: Formula
+BP-0434: Unit tests, golden vectors, boundary tests, explicit rounding.
+BP-0435: Reverse solve
+BP-0436: Target solution verified against forward computation.
+BP-0437: Visualization
+BP-0438: Chart points derive from deterministic output and reconcile with headline result.
+BP-0439: Schedule/table
+BP-0440: Totals and terminal values reconcile with engine result.
+BP-0441: Scenarios
+BP-0442: Baseline scenario equals normal calculator for identical inputs.
+BP-0443: Sensitivity
+BP-0444: Variables, ranges and outputs validated; no independent formula drift.
+BP-0445: Entitlements
+BP-0446: Free/Pro/Business boundaries tested centrally and on page.
+BP-0447: Editorial
+BP-0448: Worked example, assumptions, explanation, metadata and sources complete.
+BP-0449: Regulatory
+BP-0450: Current jurisdiction/rule pack and source evidence where applicable.
+BP-0451: UX
+BP-0452: Mobile portrait/landscape, desktop, validation and no horizontal overflow.
+BP-0453: Accessibility
+BP-0454: Keyboard, labels, semantic tables, chart alternatives and contrast.
+BP-0455: Performance
+BP-0456: Charts lazy-loaded where appropriate; interaction remains fast.
+BP-0457: SEO
+BP-0458: Canonical, metadata, indexability, structured content and no thin-page publication.
+BP-0459: Security
+BP-0460: No client-side entitlement trust; protected actions validated server-side.
+BP-0461: PUBLISH RULEA calculator is not Final merely because it renders. It becomes Final only when formula, result presentation, entitlement behavior, required metadata, risk-specific review and authoritative publication lifecycle all pass.
+BP-0462: 13.1 Lifecycle
+BP-0463: Draft → Review → Certified → Published Final. Publication remains fail-closed. Draft or uncertified calculators are excluded from public discovery. Certification and publication are separate governed acts.
+BP-0464: 13.2 Evidence integrity
+BP-0465: No fabricated QA evidence.
+BP-0466: No mass draft-to-certified promotion.
+BP-0467: No specialist/YMYL waiver by convenience.
+BP-0468: No direct database state manipulation that bypasses lifecycle controls.
+BP-0469: No public count target overrides certification quality.
+BP-0470: 14. Regulated / YMYL / Global Rule-Pack Architecture
+BP-0471: Country/rule-sensitive calculators declare jurisdiction, effective period, rule-pack revision, authoritative sources and review date.
+BP-0472: Formula/rule changes create versioned rule packs rather than silent mutation.
+BP-0473: Country-specific calculators remain unpublished/index-disabled until rule certification passes.
+BP-0474: Financial, health, tax and other designated high-risk calculators require applicable specialist/reviewer evidence before publication.
+BP-0475: Currency and units may be localized without altering mathematical correctness.
+BP-0476: AI remains assistive and may not override certified rule logic or required warnings.
+BP-0477: 15. AI Architecture & Boundaries
+BP-0478: Allowed
+BP-0479: Not allowed
+BP-0480: Find the appropriate certified calculator.
+BP-0481: Invent a competing mathematical answer.
+BP-0482: Explain deterministic results and assumptions.
+BP-0483: Replace the deterministic engine.
+BP-0484: Describe trade-offs and useful next scenarios.
+BP-0485: Hide uncertainty or required assumptions.
+BP-0486: Summarize structured result data.
+BP-0487: Override jurisdiction/rule metadata.
+BP-0488: Assist with user comprehension.
+BP-0489: Create execution/publication authority.
+BP-0490: The canonical flow is Certified Engine → Structured Result → AI Explanation. Never User Inputs → LLM → authoritative mathematical answer.
+BP-0491: 16. Calculator Journeys, Discovery & SEO
+BP-0492: Journeys are contextual and decision-oriented, not lists of category links. Every Final calculator should connect users to logical next calculations where relevant.
+BP-0493: Starting calculation
+BP-0494: Recommended journey
+BP-0495: Mortgage EMI
+BP-0496: Affordability → Extra Payment → Refinance → Rent vs Buy
+BP-0497: SIP
+BP-0498: Step-Up SIP → Investment Growth → Inflation → Retirement Corpus → SWP
+BP-0499: Debt Payoff
+BP-0500: Snowball vs Avalanche → Consolidation → Balance Transfer → Payoff Goal
+BP-0501: Break-even
+BP-0502: Margin → Target Profit → Pricing → ROI / ROAS
+BP-0503: Rental Property
+BP-0504: Mortgage → Cash Flow → Cap Rate → Cash-on-Cash → DSCR
+BP-0505: BMI
+BP-0506: BMR → Calorie Needs → related health calculators where appropriate
+BP-0507: 16.1 SEO invariants
+BP-0508: One canonical URL per calculator.
+BP-0509: No plan-specific duplicate calculator pages.
+BP-0510: No thin page publication solely for page-count growth.
+BP-0511: Indexability follows governed publication state.
+BP-0512: Unique explanatory content, methodology and sources accompany certified calculators.
+BP-0513: Structured metadata must not claim availability or certification that the lifecycle does not authorize.
+BP-0514: 17. Accessibility, Responsive UX & Performance
+BP-0515: Keyboard-operable inputs, controls, tabs, scenario tools and dialogs.
+BP-0516: Persistent labels and accessible validation/errors.
+BP-0517: Semantic tables with responsive alternatives.
+BP-0518: Charts require textual/summary alternatives and must not rely on color alone.
+BP-0519: No horizontal page scrolling on mobile.
+BP-0520: Result appears before long explanations and monetization messaging.
+BP-0521: Charts/advanced analysis may lazy-load when appropriate without delaying core calculation.
+BP-0522: Performance budgets must preserve fast input-to-result interaction.
+BP-0523: Reduced-motion and touch-friendly behavior where applicable.
+BP-0524: 18. Security, Auth, Billing & Entitlement Enforcement
+BP-0525: Area
+BP-0526: Baseline
+BP-0527: Frontend / app
+BP-0528: Next.js production web application on Hostinger.
+BP-0529: Source of truth
+BP-0530: GitHub repository subvicco12/calcumint.com; production branch main.
+BP-0531: Database / auth
+BP-0532: Supabase with RLS, server-controlled entitlements and production security review.
+BP-0533: Billing
+BP-0534: Paddle; remains sandbox until complete authenticated billing certification and explicit activation decision.
+BP-0535: Deployment
+BP-0536: GitHub-driven controlled deployment; no direct production experimentation.
+BP-0537: Calculator compute
+BP-0538: Typed/versioned deterministic definitions with pure compute and explicit rounding.
+BP-0539: Admin control
+BP-0540: Feature/plan/jurisdiction/workspace controls centrally manageable rather than hard-coded per calculator.
+BP-0541: AI
+BP-0542: Assistive discovery/explanation only; deterministic math remains authoritative.
+BP-0543: Never trust client-side plan state for protected actions.
+BP-0544: Server validates subscription/organization entitlements.
+BP-0545: RLS and workspace isolation apply to saved calculations/projects/business data.
+BP-0546: API/embed keys are scoped, revocable, rate-limited and auditable.
+BP-0547: Billing activation is a separate certified operational decision.
+BP-0548: 19. Data, Persistence, Projects & Auditability
+BP-0549: Saved calculations reference canonical calculator identity and exact technical revision used.
+BP-0550: Saved inputs, assumptions, result snapshot and relevant rule-pack identity are retained for reproducibility according to product/privacy policy.
+BP-0551: Projects group calculations without changing their mathematical engine.
+BP-0552: Scenario sets retain baseline and alternatives with explicit assumptions.
+BP-0553: Business workspaces add organization ownership, roles and audit trails.
+BP-0554: Material formula/rule changes do not silently rewrite historical saved results.
+BP-0555: 20. API, Embed, Batch & Webhook Architecture
+BP-0556: All delivery modes call the same certified engine contract as the web calculator.
+BP-0557: API response includes calculator identity, technical revision, inputs/assumptions, deterministic result and warnings appropriate to the endpoint.
+BP-0558: Batch execution is bounded, metered and idempotent where applicable.
+BP-0559: Embeds preserve certification/trust and cannot alter authoritative formula logic client-side.
+BP-0560: Webhooks are signed, retry-safe and auditable.
+BP-0561: Business branding may change presentation but not source/methodology integrity or mandatory risk disclosures.
+BP-0562: 21. Reference Six Framework Validation
+BP-0563: Calculator
+BP-0564: Domain
+BP-0565: What it validates
+BP-0566: Free baseline
+BP-0567: Pro layer
+BP-0568: Loan / EMI
+BP-0569: Loans & Credit
+BP-0570: Amortization and debt
+BP-0571: EMI + principal/interest + basic composition
+BP-0572: Full schedule, balance chart, extra payments, Goal Seek, scenarios
+BP-0573: SIP
+BP-0574: Investing & Wealth
+BP-0575: Recurring investment growth
+BP-0576: Corpus + contributions + growth visual
+BP-0577: Timeline, inflation, Step-Up, scenarios, target-corpus Goal Seek
+BP-0578: Compound Interest
+BP-0579: Investing & Wealth
+BP-0580: General accumulation
+BP-0581: Final balance + contributions + interest + growth visual
+BP-0582: Detailed periods, compounding comparison, sensitivity, reverse variables
+BP-0583: Mortgage
+BP-0584: Mortgage & Property Finance
+BP-0585: Complex consumer decision
+BP-0586: Payment + interest + repayment + composition
+BP-0587: Amortization, costs, refinance, extra payments, affordability scenarios
+BP-0588: BMI
+BP-0589: Health & Fitness
+BP-0590: Range-based non-finance UX
+BP-0591: BMI + accessible reference range
+BP-0592: Saved trends / related workflows where appropriate
+BP-0593: Break-even
+BP-0594: Business & Accounting
+BP-0595: Business decision modelling
+BP-0596: Break-even units/revenue + crossover chart
+BP-0597: Price/cost/volume sensitivity, target-profit Goal Seek, scenarios
+BP-0598: These six are internal framework references, not a customer-facing V2 release. They prove that the shared contracts support amortization, growth, general accumulation, complex consumer decisions, range-based UX and business crossover/sensitivity without calculator-specific architectural hacks.
+BP-0599: 21.1 Acceptance requirement
+BP-0600: All six must reconcile headline/chart/table/scenario outputs, behave correctly on mobile and desktop, preserve Free mathematical completeness, expose meaningful Pro differentiation, and retain Business as workflow/deployment capability rather than an accuracy upgrade.
+BP-0601: 22. Domain Taxonomy & Portfolio Strategy
+BP-0602: Domain
+BP-0603: Domain
+BP-0604: Domain
+BP-0605: Finance & Banking
+BP-0606: Loans & Credit
+BP-0607: Investing & Wealth
+BP-0608: Retirement & Financial Independence
+BP-0609: Tax & Payroll
+BP-0610: Personal Finance & Household Planning
+BP-0611: Business & Accounting
+BP-0612: SaaS & Startups
+BP-0613: E-commerce & Digital Marketing
+BP-0614: Real Estate Investment
+BP-0615: Construction & Home Improvement
+BP-0616: Math
+BP-0617: Advanced Math & Graphing
+BP-0618: Statistics & Probability
+BP-0619: Physics
+BP-0620: Chemistry
+BP-0621: Engineering
+BP-0622: Technology & Computing
+BP-0623: Health & Fitness
+BP-0624: Biology & Life Science
+BP-0625: Date & Time
+BP-0626: Conversion
+BP-0627: Automotive & EV
+BP-0628: Travel
+BP-0629: Food & Cooking
+BP-0630: Energy, Sustainability & Utilities
+BP-0631: Sports
+BP-0632: Education
+BP-0633: Everyday Life
+BP-0634: Specialist Professional Tools
+BP-0635: 22.1 Foundation strategy
+BP-0636: Portfolio counts are planning ranges, never publication quotas. The controlling rule is certification quality. The architecture targets approximately 250–400 high-quality certified calculators as the first mature foundation, then expands through governed factory processes.
+BP-0637: Stage
+BP-0638: Target
+BP-0639: Primary objective
+BP-0640: Foundation
+BP-0641: ~250–400 certified calculators
+BP-0642: High-value domains, Final UX, journeys, strong SEO and trust.
+BP-0643: Expansion 1
+BP-0644: ~750–1,000
+BP-0645: Broader domain coverage, more countries/rule packs, deeper Pro workflows.
+BP-0646: Expansion 2
+BP-0647: 2,000+
+BP-0648: Biology, earth/astronomy, specialist professional and deeper technical tools.
+BP-0649: Platform scale
+BP-0650: 5,000+ calculators/rule variants
+BP-0651: Factory-driven creation, governance, localization, APIs, embeds and business automation.
+BP-0652: 23. Calculator Factory & Scale Architecture
+BP-0653: Scale comes from reusable contracts and governed metadata, not copy-pasted pages. A calculator factory may accelerate definition scaffolding, tests, presentation mapping and editorial structure, but cannot bypass certification.
+BP-0654: Select catalog candidate and domain/presentation family.
+BP-0655: Define canonical ID/slug, inputs, units, risk class and sources.
+BP-0656: Implement pure deterministic compute and rounding policy.
+BP-0657: Create golden/boundary tests and worked examples.
+BP-0658: Map StructuredCalculationResult and presentation metadata.
+BP-0659: Declare reverse/scenario/sensitivity capabilities where mathematically supported.
+BP-0660: Apply entitlement capability metadata centrally.
+BP-0661: Complete editorial, methodology, accessibility, SEO and security evidence.
+BP-0662: Complete specialist/rule-pack review where required.
+BP-0663: Certify, publish through authoritative lifecycle, then expose in discovery.
+BP-0664: 24. QA, Reconciliation & Definition of Done
+BP-0665: 24.1 Final framework definition of done
+BP-0666: Reference Six render correctly on mobile and desktop.
+BP-0667: Free users receive complete core answers and useful basic presentation.
+BP-0668: Pro analytical capabilities are meaningful, consistent and centrally controlled.
+BP-0669: Business capabilities remain workflow/deployment features rather than accuracy upgrades.
+BP-0670: All visual/table/scenario/export outputs reconcile with certified deterministic results.
+BP-0671: No reference calculator exposes a structural gap requiring bespoke renderer architecture.
+BP-0672: Accessibility and performance are acceptable for production scale.
+BP-0673: CI and certification suites are green.
+BP-0674: Customer-facing release terminology is Final; numeric technical revisions are confined to Methodology/audit contexts.
+BP-0675: 24.2 Cross-plan parity test
+BP-0676: For a fixed calculator technical revision and identical accuracy-required inputs, Free, Pro and Business must produce the same authoritative primary result and required safety interpretation. Tests should compare engine outputs directly rather than relying only on rendered text.
+BP-0677: 25. Implementation Sequence & Production Protection
+BP-0678: 25.1 Controlled implementation sequence
+BP-0679: Freeze this blueprint as the governing implementation baseline.
+BP-0680: Develop only on an isolated Final Framework branch; keep production main unchanged during framework construction.
+BP-0681: Define typed StructuredCalculationResult, PresentationDefinition and capability/entitlement contracts.
+BP-0682: Build the reusable Final Calculator Renderer and component library.
+BP-0683: Implement the Reference Six without calculator-specific UI hacks wherever possible.
+BP-0684: Add deterministic Goal Solver, scenario and sensitivity interfaces around certified compute functions.
+BP-0685: Implement centralized Free/Pro/Business feature resolution and contextual previews.
+BP-0686: Run formula, reconciliation, entitlement, responsive, accessibility, performance, SEO and security QA.
+BP-0687: Review Reference Six visually/functionally before catalog migration.
+BP-0688: Map existing certified calculators to domains and presentation families; migrate by family.
+BP-0689: Certify every migrated calculator against the Final publish gate.
+BP-0690: Only after approval and green CI use controlled merge/deployment steps.
+BP-0691: Continue catalog expansion based on user value and decision journeys, never raw count.
+BP-0692: 25.2 Production protection rules
+BP-0693: No direct development on production.
+BP-0694: Production build remains next build --webpack unless an explicitly governed architecture change replaces it.
+BP-0695: No merge solely because UI looks complete; certification and CI evidence are required.
+BP-0696: No mass draft-to-certified promotion.
+BP-0697: No weakening of certified-only public gate or authoritative publication lifecycle.
+BP-0698: No Paddle production activation as part of calculator-framework work.
+BP-0699: No DNS/infrastructure change unless separately approved.
+BP-0700: No chart/table computation that bypasses certified engine.
+BP-0701: No plan tier receives a more accurate answer than another.
+BP-0702: No customer-facing V1/V2/V3 calculator release naming.
+BP-0703: 26. Decision Register
+BP-0704: Decision
+BP-0705: Status
+BP-0706: Direct foundation → Final Calculator Experience
+BP-0707: LOCKED
+BP-0708: No customer-facing V2/V3 calculator cycle
+BP-0709: LOCKED
+BP-0710: Every legitimately published calculator is customer-facing Final
+BP-0711: LOCKED
+BP-0712: Internal numeric technical revisions remain immutable/auditable
+BP-0713: LOCKED
+BP-0714: Preserve certified deterministic formulas unless controlled change required
+BP-0715: LOCKED
+BP-0716: Free mathematical accuracy equals Pro and Business
+BP-0717: LOCKED
+BP-0718: Free receives complete core calculation
+BP-0719: LOCKED
+BP-0720: Basic useful visualization Free where applicable
+BP-0721: LOCKED
+BP-0722: Pro = analysis / optimization / persistence / professional output
+BP-0723: LOCKED
+BP-0724: Business = deployment / collaboration / automation / governance
+BP-0725: LOCKED
+BP-0726: Accuracy-required inputs cannot be paywalled
+BP-0727: LOCKED
+BP-0728: Domain and Presentation Family are separate
+BP-0729: LOCKED
+BP-0730: Reference Six precede mass framework migration
+BP-0731: LOCKED
+BP-0732: Final requires certification + authoritative publication, not rendering alone
+BP-0733: LOCKED
+BP-0734: Regulated/YMYL specialist gates remain mandatory
+BP-0735: LOCKED
+BP-0736: AI is assistive; deterministic engine remains authoritative
+BP-0737: LOCKED
+BP-0738: One canonical URL per calculator across plans
+BP-0739: LOCKED
+BP-0740: No production deployment before QA, CI and required approval
+BP-0741: LOCKED
+BP-0742: Foundation planning target ~250–400 certified calculators
+BP-0743: LOCKED
+BP-0744: Catalog scale never overrides certification quality
+BP-0745: LOCKED
+BP-0746: 27. Research & Competitive Positioning
+BP-0747: The architecture is grounded first in CalcuMint project sources. Competitor research is used to identify capability patterns, not to copy product logic. The strongest opportunities identified in the supplied research are deterministic trust/certification, reverse solving, visual result intelligence, scenarios/sensitivity, persistence, Business builder/embed/API, global rule packs, decision journeys and mobile-first UX.
+BP-0748: Capability / theme
+BP-0749: CalcuMint target
+BP-0750: Priority
+BP-0751: Guardrail
+BP-0752: Deterministic trust & certification
+BP-0753: Versioned deterministic engine + golden/boundary tests + certified-only public gate
+BP-0754: Critical
+BP-0755: Never mass-promote draft calculators
+BP-0756: Multidirectional / reverse solving
+BP-0757: Goal Solver/reverse solving as reusable Pro capability
+BP-0758: High
+BP-0759: Reverse result must reconcile to forward engine
+BP-0760: Visual result intelligence
+BP-0761: Free basic visualization; advanced charts/sensitivity Pro
+BP-0762: High
+BP-0763: Charts must consume deterministic output
+BP-0764: Scenario comparison & sensitivity
+BP-0765: Reusable scenario compare + sensitivity engine
+BP-0766: High
+BP-0767: Baseline scenario must equal normal calculation
+BP-0768: Saved work / projects
+BP-0769: Pro history, projects, scenarios
+BP-0770: High
+BP-0771: Server-side entitlement enforcement
+BP-0772: Business builder
+BP-0773: Business custom builder + branding + embed
+BP-0774: High
+BP-0775: Generated calculator remains deterministic/auditable
+BP-0776: API / batch / webhooks
+BP-0777: Business API, batch jobs, webhooks, governance
+BP-0778: High
+BP-0779: Authentication, quotas, audit logs
+BP-0780: Global rule packs
+BP-0781: Country/jurisdiction/effective-date rule packs
+BP-0782: Critical
+BP-0783: Regulated calculators require authoritative sources + review date
+BP-0784: Calculator journeys
+BP-0785: Decision-oriented journeys across calculators
+BP-0786: High
+BP-0787: Journey links must stay relevant, not SEO-only
+BP-0788: AI explanation / finder
+BP-0789: AI Finder + result explanation grounded in structured deterministic output
+BP-0790: Medium
+BP-0791: AI never produces competing calculation result
+BP-0792: Mobile/touch UX
+BP-0793: Tablet/mobile-first responsive calculator experience
+BP-0794: High
+BP-0795: No horizontal overflow; accessible controls
+BP-0796: SEO content quality
+BP-0797: Unique editorial content per certified calculator
+BP-0798: Critical
+BP-0799: No thin pages; canonical URL per calculator
+BP-0800: Appendix A. Governing Plan Entitlement Matrix
+BP-0801: This appendix is a quick-reference entitlement baseline. Product packaging may adjust limits, quotas or commercial terms without changing the locked accuracy and capability principles.
+BP-0802: Capability
+BP-0803: Free
+BP-0804: Pro
+BP-0805: Business
+BP-0806: Certified core calculation
+BP-0807: Full
+BP-0808: Full
+BP-0809: Full
+BP-0810: Primary result & KPI cards
+BP-0811: Full
+BP-0812: Full
+BP-0813: Full
+BP-0814: Basic useful visualization
+BP-0815: Yes where applicable
+BP-0816: Yes
+BP-0817: Yes
+BP-0818: Formula / methodology
+BP-0819: Yes
+BP-0820: Yes
+BP-0821: Yes
+BP-0822: Detailed charts
+BP-0823: Limited
+BP-0824: Full
+BP-0825: Full
+BP-0826: Detailed schedules / tables
+BP-0827: Limited/basic
+BP-0828: Full
+BP-0829: Full
+BP-0830: Reverse solving / Goal Seek
+BP-0831: Selected/basic
+BP-0832: Full
+BP-0833: Full
+BP-0834: Scenario comparison
+BP-0835: Preview / locked
+BP-0836: Full
+BP-0837: Full
+BP-0838: Sensitivity analysis
+BP-0839: Preview / locked
+BP-0840: Full
+BP-0841: Full
+BP-0842: Saved history / favorites
+BP-0843: Limited
+BP-0844: Expanded
+BP-0845: Expanded
+BP-0846: Projects / goals
+BP-0847: Limited
+BP-0848: Yes
+BP-0849: Yes
+BP-0850: CSV / JSON / PDF outputs
+BP-0851: No/basic share
+BP-0852: Yes
+BP-0853: Yes
+BP-0854: AI result explanation
+BP-0855: Basic / limited
+BP-0856: Advanced
+BP-0857: Advanced
+BP-0858: Ads
+BP-0859: Yes
+BP-0860: No
+BP-0861: No
+BP-0862: Team / client workspace
+BP-0863: No
+BP-0864: No
+BP-0865: Yes
+BP-0866: Custom calculator builder
+BP-0867: No
+BP-0868: No
+BP-0869: Yes
+BP-0870: Branding / white-label / embed
+BP-0871: No
+BP-0872: No
+BP-0873: Yes
+BP-0874: API / batch / webhooks
+BP-0875: No
+BP-0876: No
+BP-0877: Yes
+BP-0878: Lead capture / governance
+BP-0879: No
+BP-0880: No
+BP-0881: Yes
+BP-0882: Appendix B. Master Calculator Catalog Governance
+BP-0883: The supplied Master Calculator Catalog contains 540 planning entries across 27 catalog domains in its snapshot. The catalog remains the governed portfolio inventory; this blueprint governs how every catalog item must be designed, entitled, certified and published. The catalog workbook is a controlled companion data asset rather than duplicated row-for-row here, preventing the architecture bible from silently diverging from the maintained inventory.
+BP-0884: Catalog domain
+BP-0885: Planning count
+BP-0886: Investing & Wealth
+BP-0887: 30
+BP-0888: Math
+BP-0889: 30
+BP-0890: Geometry
+BP-0891: 26
+BP-0892: Physics
+BP-0893: 26
+BP-0894: Engineering & Construction
+BP-0895: 25
+BP-0896: Loans & Credit
+BP-0897: 25
+BP-0898: Business & Accounting
+BP-0899: 24
+BP-0900: Mortgage & Property Finance
+BP-0901: 24
+BP-0902: Health & Fitness
+BP-0903: 23
+BP-0904: SaaS & Startups
+BP-0905: 22
+BP-0906: E-commerce & Marketing
+BP-0907: 21
+BP-0908: Personal Finance & Household
+BP-0909: 21
+BP-0910: Statistics & Probability
+BP-0911: 21
+BP-0912: Advanced Math & Graphing
+BP-0913: 20
+BP-0914: Conversion
+BP-0915: 20
+BP-0916: Technology & Computing
+BP-0917: 20
+BP-0918: Automotive & EV
+BP-0919: 19
+BP-0920: Energy & Environment
+BP-0921: 19
+BP-0922: Retirement & Financial Independence
+BP-0923: 19
+BP-0924: Tax & Payroll
+BP-0925: 18
+BP-0926: Chemistry
+BP-0927: 15
+BP-0928: Date & Time
+BP-0929: 15
+BP-0930: Travel & Everyday
+BP-0931: 14
+BP-0932: Biology & Life Science
+BP-0933: 12
+BP-0934: Food & Cooking
+BP-0935: 11
+BP-0936: Earth & Astronomy
+BP-0937: 10
+BP-0938: Sports
+BP-0939: 10
+BP-0940: CATALOG AUTHORITY RULEThe Master Calculator Catalog controls portfolio inventory and planning status. Repository definitions/tests control implemented mathematical behavior. Authoritative lifecycle/publication state controls what is public. No planning row becomes Final merely because it exists in the catalog.
+BP-0941: Appendix C. Competitive Research Source Register
+BP-0942: Website
+BP-0943: Source URL
+BP-0944: What It Supports
+BP-0945: Source Type
+BP-0946: Checked
+BP-0947: Calculator.net
+BP-0948: https://www.calculator.net/
+BP-0949: ~200 calculators; free/no registration; broad categories
+BP-0950: Official
+BP-0951: 2026-09-26
+BP-0952: Calculator.net
+BP-0953: https://www.calculator.net/about-us.html
+BP-0954: In-house development/testing; financial advisor review claim
+BP-0955: Official
+BP-0956: 2026-09-26
+BP-0957: Omni Calculator
+BP-0958: https://www.omnicalculator.com/
+BP-0959: 3,925 free calculators and category counts
+BP-0960: Official
+BP-0961: 2026-09-26
+BP-0962: Omni Calculator
+BP-0963: https://www.omnicalculator.com/reports/documentation
+BP-0964: Multidirectional variables, units/currency, charts/tables, share/embed/cite, articles/sources
+BP-0965: Official
+BP-0966: 2026-09-26
+BP-0967: Omni Calculator
+BP-0968: https://www.omnicalculator.com/mobile-app
+BP-0969: Android app, pinned/recent tools, 3700+ app library
+BP-0970: Official
+BP-0971: 2026-09-26
+BP-0972: Omni Calculator
+BP-0973: https://www.omnicalculator.com/stance-on-ai
+BP-0974: Human review + AI-assisted builder boundaries
+BP-0975: Official
+BP-0976: 2026-09-26
+BP-0977: GIGAcalculator
+BP-0978: https://www.gigacalculator.com/calculators/
+BP-0979: Category breadth, inline help, formulas/charts/supporting info
+BP-0980: Official
+BP-0981: 2026-09-26
+BP-0982: RapidTables
+BP-0983: https://www.rapidtables.com/
+BP-0984: Calculator, conversion and utility-tool breadth
+BP-0985: Official
+BP-0986: 2026-09-26
+BP-0987: RapidTables
+BP-0988: https://www.rapidtables.com/tools/
+BP-0989: Online utility and chart tools
+BP-0990: Official
+BP-0991: 2026-09-26
+BP-0992: Wolfram|Alpha
+BP-0993: https://www.wolframalpha.com/calculators
+BP-0994: Thousands of calculators and domain breadth
+BP-0995: Official
+BP-0996: 2026-09-26
+BP-0997: Wolfram|Alpha
+BP-0998: https://www.wolframalpha.com/pro/pricing
+BP-0999: Pro features/pricing: step-by-step, guided calculators, uploads, graphics/downloads
+BP-1000: Official
+BP-1001: 2026-09-26
+BP-1002: Symbolab
+BP-1003: https://www.symbolab.com/calculators
+BP-1004: Math, finance, physics calculator catalog
+BP-1005: Official
+BP-1006: 2026-09-26
+BP-1007: Symbolab
+BP-1008: https://www.symbolab.com/registration
+BP-1009: Pro pricing/features, AI chat, no ads, storage
+BP-1010: Official
+BP-1011: 2026-09-26
+BP-1012: Desmos
+BP-1013: https://help.desmos.com/hc/en-us/articles/4406040715149-Getting-Started-Desmos-Graphing-Calculator
+BP-1014: Graphing, points of interest, audio trace
+BP-1015: Official Help
+BP-1016: 2026-09-26
+BP-1017: Desmos
+BP-1018: https://help.desmos.com/hc/en-us/articles/4404602552205-Scientific-Calculator
+BP-1019: Scientific features, complex mode, accessibility
+BP-1020: Official Help
+BP-1021: 2026-09-26
+BP-1022: Mathway
+BP-1023: https://www.mathway.com/
+BP-1024: Subjects, free step-by-step positioning, app photo input, trial
+BP-1025: Official
+BP-1026: 2026-09-26
+BP-1027: Bankrate
+BP-1028: https://www.bankrate.com/calculators/
+BP-1029: Finance calculator breadth
+BP-1030: Official
+BP-1031: 2026-09-26
+BP-1032: Bankrate
+BP-1033: https://www.bankrate.com/mortgages/calculators/
+BP-1034: Mortgage calculators, comparison tools and amortization
+BP-1035: Official
+BP-1036: 2026-09-26
+BP-1037: Bankrate
+BP-1038: https://www.bankrate.com/advertising-disclosure/
+BP-1039: Advertiser/partner monetization disclosure
+BP-1040: Official
+BP-1041: 2026-09-26
+BP-1042: NerdWallet
+BP-1043: https://www.nerdwallet.com/finance/calculators
+BP-1044: Free calculator categories and breadth
+BP-1045: Official
+BP-1046: 2026-09-26
+BP-1047: NerdWallet
+BP-1048: https://www.nerdwallet.com/investing/calculators/retirement-calculator
+BP-1049: Advanced details, graph/summary, fact-checking, advisor CTA
+BP-1050: Official
+BP-1051: 2026-09-26
+BP-1052: NerdWallet
+BP-1053: https://www.nerdwallet.com/banking/calculators
+BP-1054: Partner compensation/advertising disclosure
+BP-1055: Official
+BP-1056: 2026-09-26
+BP-1057: SmartAsset
+BP-1058: https://smartasset.com/calculators
+BP-1059: Retirement/tax/investing/banking/home calculator categories
+BP-1060: Official
+BP-1061: 2026-09-26
+BP-1062: SmartAsset
+BP-1063: https://smartasset.com/taxes
+BP-1064: Tax tools + advisor matching
+BP-1065: Official
+BP-1066: 2026-09-26
+BP-1067: CalcuMint
+BP-1068: Project Master Architecture 2026
+BP-1069: Final architecture, tiers, certification, six references, roadmap
+BP-1070: Project source
+BP-1071: 2026-09-26
+BP-1072: CalcuMint
+BP-1073: Project Master Calculator Catalog 2026
+BP-1074: Approved calculator roadmap and portfolio status model
+BP-1075: Project source
+BP-1076: 2026-09-26
+BP-1077: Appendix D. Glossary & Architecture Invariants
+BP-1078: Term
+BP-1079: Definition
+BP-1080: Final Calculator
+BP-1081: A customer-facing calculator that has passed required certification and authoritative publication gates.
+BP-1082: Technical revision
+BP-1083: Immutable internal identifier for exact deterministic calculation lineage; not customer release branding.
+BP-1084: Certified Compute Engine
+BP-1085: Authoritative deterministic mathematical implementation.
+BP-1086: StructuredCalculationResult
+BP-1087: Normalized data contract consumed by UI, charts, exports, scenarios and AI explanation.
+BP-1088: Presentation Family
+BP-1089: Reusable UX/analysis behavior independent of discovery domain.
+BP-1090: Entitlement
+BP-1091: Capability access decision for Free, Pro or Business.
+BP-1092: Rule pack
+BP-1093: Versioned jurisdiction/effective-period rules and source metadata.
+BP-1094: YMYL
+BP-1095: High-stakes category requiring applicable specialist/reviewer governance.
+BP-1096: Reconciliation
+BP-1097: Proof that multiple presentations of the same calculation agree within rounding policy.
+BP-1098: Canonical URL
+BP-1099: Single public calculator route shared across plan experiences.
+BP-1100: Architecture invariants
+BP-1101: One Final calculator identity per canonical calculator URL.
+BP-1102: One authoritative deterministic calculation engine per technical revision.
+BP-1103: No customer-facing V1/V2/V3 calculator product releases.
+BP-1104: Internal technical revisions remain immutable and auditable.
+BP-1105: Free, Pro and Business mathematical correctness is identical.
+BP-1106: Accuracy-required inputs and safety information are never paywalled.
+BP-1107: Pro monetizes analytical depth and persistence.
+BP-1108: Business monetizes organizational workflow, integration and deployment.
+BP-1109: All derived views reconcile to deterministic output.
+BP-1110: AI cannot become the authoritative calculation engine.
+BP-1111: Certification and authoritative publication remain fail-closed.
+BP-1112: Risk-specific review gates cannot be bypassed for convenience.
+BP-1113: Catalog scale never outranks quality, certification or safety.
+BP-1114: Final Governing Statement
+BP-1115: Every published CalcuMint calculator is a Final Calculator powered by one certified deterministic calculation engine. Free, Pro and Business always receive identical mathematical correctness. Free provides the complete core calculation and useful interpretation; Pro adds advanced analysis, optimization, persistence and professional outputs; Business adds collaboration, deployment, integration, automation and governance. Technical revisions remain immutable internal audit identifiers and never become customer-facing V1/V2/V3 product releases.
+BP-1116: Future development, migration, certification, publication, monetization and scale decisions should be tested against this statement and the locked decisions in this blueprint.

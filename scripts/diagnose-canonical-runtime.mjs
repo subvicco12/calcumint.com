@@ -1,0 +1,6 @@
+import {createServer} from 'vite';
+import {mkdtemp,rm,writeFile} from 'node:fs/promises';
+import path from 'node:path';import os from 'node:os';import {createHash} from 'node:crypto';
+const destination=process.argv[2];if(!destination)throw Error('Explicit local diagnostic output required');const cacheDir=await mkdtemp(path.join(os.tmpdir(),'calcumint-runtime-probe-'));
+const server=await createServer({configFile:false,envFile:false,root:process.cwd(),cacheDir,resolve:{alias:{'@':path.join(process.cwd(),'src')}},server:{watch:null}});
+try{const m=await server.ssrLoadModule('/src/calculators/advanced-math/catalog-batch-9.ts');const d=m.derivativeCalculator;const input=d.examples[0].input,output=d.calculate(input,{});const report={runtime:{node:process.version,v8:process.versions.v8,platform:process.platform,arch:process.arch},slug:d.slug,version:d.version,input,output,outputSHA256:createHash('sha256').update(JSON.stringify(output)).digest('hex'),finiteDifferenceStep:Math.pow(Number.EPSILON,1/3)};await writeFile(destination,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({node:process.version,value:output.value,outputSHA256:report.outputSHA256}));}finally{await server.close();await rm(cacheDir,{recursive:true,force:true});}

@@ -1,0 +1,131 @@
+{
+  "baselinePR": 1497,
+  "baselineSHA": "7eff39b23a52953c028852d50d5571211a3f8a44",
+  "baselineHostedCI": {
+    "id": 41162017661,
+    "conclusion": "failure",
+    "failure": "Stalecanonicalartifact",
+    "allEarlierSteps": "success",
+    "notRelabelledSuccess": true
+  },
+  "nativeSource": {
+    "sha256": "d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455",
+    "bytes": 62891,
+    "crcMembersPassed": 19,
+    "nonemptyParagraphs": 1116,
+    "tables": 33,
+    "historicalExactMatches": 410,
+    "historicalNonNativeRecords": 14,
+    "previouslyUnrepresentedParagraphsRetained": 316,
+    "identityTraces": 540,
+    "canonicalAccepted": 0
+  },
+  "nativeTestsPassed": 5,
+  "runtimeAndCiGuardTestsPassed": 57,
+  "runtimeSpecificTestsPassedPerVersion": 4,
+  "actualRuntimesVerified": [
+    "v24.19.0",
+    "v22.23.4"
+  ],
+  "exactGeneratorChecks": "PASSbothruntimes;allbaseSHA/preimages/finalSHA/fullbytecomparisonsretained",
+  "repairedNode22Stage": {
+    "browserJourneysPassed": 60,
+    "actualArtifactCheck": "PASS",
+    "artifacts": "/workspace/work/canonical-acceptance-evidence/browser/run-1O1H3c"
+  },
+  "security": {
+    "isolatedPostgreSQL": "17.6",
+    "realPostgREST": true,
+    "httpRlsChecksPassed": 8,
+    "schemaPreflight": "PASS",
+    "productionAccess": false
+  },
+  "gotrue": "UNAVAILABLE;existingidentityfixtureissynthetic,notprovideracceptance",
+  "transportPassed": 20,
+  "launchGuardsPassed": 45,
+  "certificationGuardsPassed": 15,
+  "certificationGranted": false,
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 28,
+    "changedJavascriptFocused": "PASS"
+  },
+  "typecheckExitCode": 0,
+  "webpackBuild": {
+    "exitCode": 0,
+    "staticPages": 37
+  },
+  "applicationRegressionStrategy": "Allsrc/andhistoricalartifactbytesunchanged;reuse1497successfulapplication/6007unit-stepreceiptinstead ofrepeatingunaffectedbroadQA.Newheadhostedfullchecksremainmandatory.",
+  "independentReview": "NooutstandingCritical/Important;INDEPENDENT-REVIEW.md",
+  "initialRunNotes": [
+    "OnePythonexpectationusedaparaphraseofBP0883;correctedtoexactnativewording",
+    "RestrictedNoderunreportedonlyfile-levelresult;notcountedasindividualtests.Supportedsubprocessrunsverified4casesperruntime."
+  ],
+  "logs": {
+    "native-tests": {
+      "path": "/workspace/work/blueprint-native-tests.log",
+      "sha256": "0a8952ae5cf4c91f68e2bf3de61a55f9c95e67cf7659e433fccf5030fe702637"
+    },
+    "native-check": {
+      "path": "/workspace/work/blueprint-native-check.log",
+      "sha256": "c3f75d067768459b88d0b23025c439166fbd3c25a3971c0cedbc78dc7adb4b17"
+    },
+    "node-tests": {
+      "path": "/workspace/work/blueprint-node-tests.log",
+      "sha256": "b6a7a8b910fe0c47d3e691406a70c38ebb8aafa9d229c1e839eacf95673db136"
+    },
+    "node22-tests": {
+      "path": "/workspace/work/blueprint-node22-tests.log",
+      "sha256": "1e9cdfc4dcd5f88ed50dfc56a7bd985f91ba5e2801f4a2452d1fc8941235e551"
+    },
+    "runtime22-check": {
+      "path": "/workspace/work/blueprint-runtime22-check.log",
+      "sha256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    "runtime24-check": {
+      "path": "/workspace/work/blueprint-runtime24-check.log",
+      "sha256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    "repaired-stage-check": {
+      "path": "/workspace/work/blueprint-repaired-stage-check.log",
+      "sha256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038"
+    },
+    "repaired-stage-browser": {
+      "path": "/workspace/work/blueprint-repaired-stage-browser.log",
+      "sha256": "8e60e59418ba30e56dced89c8be73e56ac9c8f1510cb4fb2f1a20b45821b5d1d"
+    },
+    "lint": {
+      "path": "/workspace/work/blueprint-lint.log",
+      "sha256": "b7456a8ed76b57110f3aa43d95313ff3cf844faa0b54a1b2f5a5ddaa43bdf9aa"
+    },
+    "focused-lint": {
+      "path": "/workspace/work/blueprint-focused-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "typecheck": {
+      "path": "/workspace/work/blueprint-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    "build": {
+      "path": "/workspace/work/blueprint-build.log",
+      "sha256": "703024988dd29236d73bf0c087deef0840a863d37f3710210645ae4f37a12340"
+    },
+    "security": {
+      "path": "/workspace/work/blueprint-security.log",
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    "transport": {
+      "path": "/workspace/work/blueprint-transport.log",
+      "sha256": "fb6d373ccee59e79c40ca6f447d064e0ed784da454fd74fbed659a3dbf149505"
+    },
+    "launch": {
+      "path": "/workspace/work/blueprint-launch.log",
+      "sha256": "a22e1da50c6a6d391d56a5ce8df255d41bc0a1dd549e68b59f2eb064307948ec"
+    },
+    "certification": {
+      "path": "/workspace/work/blueprint-certification.log",
+      "sha256": "649d017c1625f6bac7eed06435147b73e333d1cf71c7602f159336b38a492e67"
+    }
+  },
+  "releaseHold": true
+}
