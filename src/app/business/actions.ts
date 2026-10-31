@@ -4,7 +4,7 @@ import { createHash, randomBytes } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { isBusinessRole, type BusinessRole } from "@/lib/business/permissions";
+import { BUSINESS_INCLUDED_SEATS, hasMinimumRole, isBusinessRole, type BusinessRole } from "@/lib/business/permissions";
 import {getPlanEntitlements} from "@/lib/entitlements";
 
 function slugify(value: string): string {
@@ -14,12 +14,25 @@ function slugify(value: string): string {
 async function requireUser() {
   const supabase = await createSupabaseServerClient();
   if (!supabase) throw new Error("Supabase is not configured");
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user }, error } = await supabase.auth.getUser();
+  if (error) throw new Error("Authentication could not be verified. Try again.");
   if (!user) redirect("/login");
   return { supabase, user };
 }
 
-async function requireBusiness(supabase:Awaited<ReturnType<typeof createSupabaseServerClient>>,userId:string){if(!supabase)throw new Error("Supabase is not configured");const{data:profile}=await supabase.from("profiles").select("plan").eq("id",userId).maybeSingle();if(!getPlanEntitlements(profile?.plan).businessStudio)throw new Error("Business plan required");}
+async function requireBusiness(supabase:Awaited<ReturnType<typeof createSupabaseServerClient>>,userId:string){if(!supabase)throw new Error("Supabase is not configured");const{data:profile,error}=await supabase.from("profiles").select("plan").eq("id",userId).maybeSingle();if(error||!getPlanEntitlements(profile?.plan).businessStudio)throw new Error("Business plan required");}
+
+async function requireOrganizationRole(supabase: NonNullable<Awaited<ReturnType<typeof createSupabaseServerClient>>>, userId: string, organizationId: string, minimum: BusinessRole) {
+  const { data: membership, error } = await supabase.from("organization_members")
+    .select("role").eq("organization_id", organizationId).eq("user_id", userId).maybeSingle();
+  if (error || !isBusinessRole(membership?.role) || !hasMinimumRole(membership.role, minimum)) {
+    throw new Error("Business organization permission required");
+  }
+}
+
+function isSeatCount(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 0;
+}
 
 export async function createOrganization(formData: FormData) {
   const { supabase,user } = await requireUser();
@@ -42,11 +55,17 @@ export async function inviteMember(formData: FormData) {
     throw new Error("Invalid invitation details");
   }
 
-  const [{ count: memberCount }, { count: pendingCount }] = await Promise.all([
+  await requireOrganizationRole(supabase, user.id, organizationId, "admin");
+  const [members, pending] = await Promise.all([
     supabase.from("organization_members").select("user_id", { count: "exact", head: true }).eq("organization_id", organizationId),
     supabase.from("organization_invitations").select("id", { count: "exact", head: true }).eq("organization_id", organizationId).is("accepted_at", null).gt("expires_at", new Date().toISOString())
   ]);
-  if ((memberCount ?? 0) + (pendingCount ?? 0) >= 5) throw new Error("The included five Business seats are already allocated or pending");
+  if (members.error || pending.error || !isSeatCount(members.count) || !isSeatCount(pending.count)) {
+    throw new Error("Unable to verify Business seat availability. Try again.");
+  }
+  // This is a UI preflight; the existing database acceptance function remains
+  // responsible for the member limit when invitations are redeemed.
+  if (members.count + pending.count >= BUSINESS_INCLUDED_SEATS) throw new Error("The included five Business seats are already allocated or pending");
 
   const token = randomBytes(32).toString("hex");
   const tokenHash = createHash("sha256").update(token).digest("hex");
@@ -73,6 +92,7 @@ export async function createProject(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim().slice(0,140);
   const description = String(formData.get("description") ?? "").trim().slice(0,2000);
   if (!organizationId || name.length < 2 || name.length>120 || description.length>1000) throw new Error("Enter a valid project name and description");
+  await requireOrganizationRole(supabase, user.id, organizationId, "manager");
   const { error } = await supabase.from("business_projects").insert({
     organization_id: organizationId,
     name,
@@ -90,6 +110,7 @@ export async function createClientWorkspace(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim().slice(0,140);
   const reference = String(formData.get("reference") ?? "").trim().slice(0,240);
   if (!organizationId || name.length < 2 || name.length>120 || reference.length>160) throw new Error("Enter a valid client workspace name and reference");
+  await requireOrganizationRole(supabase, user.id, organizationId, "manager");
   const { error } = await supabase.from("client_workspaces").insert({
     organization_id: organizationId,
     name,
@@ -103,7 +124,7 @@ export async function createClientWorkspace(formData: FormData) {
 export async function acceptInvitation(formData: FormData) {
   const { supabase } = await requireUser();
   const token = String(formData.get("token") ?? "");
-  if (!token) throw new Error("Invitation token is missing");
+  if (!/^[a-f0-9]{64}$/.test(token)) throw new Error("Enter a valid invitation token");
   const tokenHash = createHash("sha256").update(token).digest("hex");
   const { error } = await supabase.rpc("accept_business_invitation", { invite_token_hash: tokenHash });
   if (error) throw new Error(error.message);
