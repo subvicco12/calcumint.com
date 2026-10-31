@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "1f1f32797b99f0760aeb55b5ff112ad6a8c50383",
+  "releaseHold": true,
+  "implementedCalculatorEngineIds": [],
+  "historicalMathematicsChanged": false,
+  "boundedWitnessReevaluatedCatalogIds": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    22,
+    24,
+    25,
+    27,
+    28,
+    29,
+    30,
+    31,
+    33,
+    37,
+    45,
+    47,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    83,
+    93,
+    94,
+    100,
+    101,
+    102,
+    104,
+    105,
+    106,
+    107,
+    108,
+    110,
+    111,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    246,
+    247,
+    248,
+    426,
+    465,
+    466,
+    473,
+    477,
+    480,
+    494,
+    506,
+    528,
+    537
+  ],
+  "newIndependentNumericalWitnesses": 0,
+  "globalWorkflowClosures": [
+    {
+      "requirement": "finder-query-result-integrity-accessibility-recovery",
+      "status": "VERIFIED",
+      "scope": "Shared finder workflow over authoritative runtime published set; no per-ID mapping/publication inferred.",
+      "evidence": [
+        "src/components/ai-finder.test.tsx",
+        "integrated-finder-browser-receipt.json"
+      ]
+    },
+    {
+      "requirement": "ai-accounting-and-public-error-boundaries",
+      "status": "VERIFIED",
+      "scope": "Three actual route handlers; safe classified errors, positive quota receipts, one finalization attempt, no AI output after failed accounting, actual SDK anonymous semantics.",
+      "evidence": [
+        "src/app/api/ai/routes-security.test.ts",
+        "src/lib/ai/access-security.test.ts"
+      ]
+    },
+    {
+      "requirement": "business-browser-ci-gate",
+      "status": "VERIFIED",
+      "scope": "Correct synthetic membership response/scoping; all29 original journey assertions retained. Hosted new-head result separate.",
+      "evidence": [
+        "src/lib/business/browser-membership-fixture.test.ts",
+        "integrated-business-browser-receipt.json"
+      ]
+    },
+    {
+      "requirement": "full-reviewed-schema-native-account-acceptance",
+      "status": "VERIFIED",
+      "scope": "The existing10 genuine local auth/account checks now executed against41-table reviewed model; not full hosted parity/provider acceptance.",
+      "evidence": [
+        "full-schema-browser-receipt.json"
+      ]
+    },
+    {
+      "requirement": "schema-comparison-input-integrity",
+      "status": "VERIFIED",
+      "scope": "Strict declared seven-table descriptor shape and completeness; equality cannot prove capture provenance or full-schema/ledger parity.",
+      "evidence": [
+        "tests/batch16-auth/schema-comparison.test.mjs"
+      ]
+    }
+  ],
+  "preparedNotActivated": [
+    {
+      "requirement": "invitation-redemption-and-tenant-reference-integrity",
+      "status": "PARTIAL",
+      "activeApplicationRemediation": "BLOCKED",
+      "scope": "Three legacy model defects demonstrated; guarded successor corrects tested redemption races and tenant reference paths only in disposable model.",
+      "evidence": [
+        "auth-integrity-evidence.md",
+        "integrated-auth-integrity-receipt.json",
+        "tests/batch16-auth/review-only-business-integrity.sql"
+      ]
+    }
+  ],
+  "canonicalPromotion": false
+}
