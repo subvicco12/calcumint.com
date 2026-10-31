@@ -164,6 +164,20 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://calcumint.com
+      - name: Provision pinned isolated browser for contract acceptance
+        timeout-minutes: 4
+        run: |
+          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          "$browser" --version
+      - name: Reusable private canonical contract evidence and browser acceptance
+        run: |
+          python3 scripts/canonical-validation-source.py --check
+          node scripts/canonical-validation-evidence.mjs --check
+          node tests/canonical-validation/browser.mjs
+          node tests/canonical-validation/workflow-browser.mjs
+        env:
+          VALIDATION_EVIDENCE: ${{ runner.temp }}
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build]

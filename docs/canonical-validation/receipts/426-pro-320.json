@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationRevision": 1,
+  "adapterKey": "private.component.426",
+  "catalogId": 426,
+  "engineVersion": 1,
+  "sourceBinding": {
+    "schemaVersion": 1,
+    "baselineSHA": "a54f94cea4df160882a96308b661f6d6c12da837",
+    "technicalSourceTreeSHA256": "08b7111db6ea7ab06d40d8d3294451f586115287d29c4f6b4e63cf20e54cd692",
+    "boundFileCount": 433,
+    "excludedSelfReference": "docs/canonical-validation/source-binding.json",
+    "meaning": "Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.",
+    "canonicalAccepted": false,
+    "releaseHold": true
+  },
+  "artifact": {
+    "schemaVersion": 1,
+    "masterId": 426,
+    "profileId": "private.component.426",
+    "methodology": {
+      "formulas": [
+        {
+          "id": "component-426",
+          "expression": "Mass only: kg=1kg,g=0.001kg,lb=0.45359237kg,oz=0.028349523125kg. Source value*source factor/target factor; inherited12-decimal output rounding. Nonnegative quantities; mass is not gravitational force.",
+          "description": "Mass only: kg=1kg,g=0.001kg,lb=0.45359237kg,oz=0.028349523125kg. Source value*source factor/target factor; inherited12-decimal output rounding. Nonnegative quantities; mass is not gravitational force. Inputs bounded0..1e12; positive monetary amounts at least0.01. Unrepresentable annuity denominators and incomplete/zero-displayed-payment schedules are rejected. Strict closed named input. Output includes full actual immutable component runs. Private scope only; canonical requirements and specialist applicability remain unresolved. RELEASE HOLD."
+        }
+      ],
+      "sources": [
+        {
+          "label": "NIST Guide to the SI — conversion factors",
+          "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+          "note": "Reference conversion factors for units by quantity, including the exact international mile-to-kilometre relationship used by the verified example."
+        },
+        {
+          "label": "BIPM — SI Brochure, 9th edition",
+          "url": "https://www.bipm.org/en/publications/si-brochure",
+          "note": "Authoritative reference for the International System of Units (SI)."
+        }
+      ]
+    },
+    "dependencies": [
+      {
+        "id": "core.unit-conversion",
+        "slug": "unit-conversion-calculator",
+        "version": 1
+      }
+    ],
+    "calculation": {
+      "calculatorSlug": "private-component-426",
+      "calculatorVersion": 1,
+      "input": {
+        "value": 1,
+        "fromUnit": "lb",
+        "toUnit": "g",
+        "scope": "named-unit-conversion"
+      },
+      "output": {
+        "result": 453.59237,
+        "value": 453.59237,
+        "unit": "g",
+        "dependencyRuns": [
+          {
+            "calculatorId": "core.unit-conversion",
+            "slug": "unit-conversion-calculator",
+            "version": 1,
+            "input": {
+              "value": 1,
+              "fromUnit": "lb",
+              "toUnit": "g"
+            },
+            "output": {
+              "result": 453.59237
+            }
+          }
+        ]
+      }
+    }
+  },
+  "governance": {
+    "canonicalMappingApproved": false,
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  }
+}

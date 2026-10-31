@@ -1,0 +1,3 @@
+/** These actual browser packets must not be regenerated when a future validation revision changes. */
+import {it,expect} from 'vitest';import loan from '../../docs/canonical-validation/receipts/3-pro-320.json';import mass from '../../docs/canonical-validation/receipts/426-pro-320.json';import calculus from '../../docs/canonical-validation/receipts/246-pro-320.json';import {importValidatedContract} from './canonical-contract-adapters';
+it.each([{name:'loan',packet:loan},{name:'mass',packet:mass},{name:'calculus',packet:calculus}])('reopens immutable actual-browser $name source/version packet',({packet})=>{expect(importValidatedContract(packet)).toEqual(packet);expect(packet.governance.canonicalAccepted).toBe(false);});

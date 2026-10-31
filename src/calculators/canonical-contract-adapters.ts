@@ -1,0 +1,21 @@
+import {componentContracts,componentOutputSchemas,exportComponentContract,importComponentContract} from './component-contracts';
+import {canonicalWorkflowInputSchema,exportCanonicalCalculation,importCanonicalCalculation} from './canonical-calculus-workflow';
+import {canonicalCalculusOutputSchema,canonicalCalculusContract} from './canonical-calculus';
+import {canonicalVectors} from './canonical-contract-vectors';
+import {type ContractAdapter,validateContract,sameContractData} from './canonical-contract-validation';
+import {copyCalculationData} from '../lib/calculation-snapshot';
+import binding from '../../docs/canonical-validation/source-binding.json';
+const adapters:ContractAdapter[]=canonicalVectors.map(v=>{
+ if(v.id<246||v.id>248){const d=componentContracts.find(d=>d.id==='private.component.'+v.id);if(!d)throw Error('Unbound component');return {key:d.id,catalogId:v.id,version:d.version,input:d.inputSchema,output:componentOutputSchemas[v.id],methodology:d.formulas.map(f=>f.expression).join('; '),run:(i,p)=>exportComponentContract(v.id,i,p),read:importComponentContract,getOutput:a=>(a as ReturnType<typeof exportComponentContract>).calculation.output,getInput:a=>(a as ReturnType<typeof exportComponentContract>).calculation.input,getIdentity:a=>{const p=a as ReturnType<typeof exportComponentContract>;return {key:p.profileId,catalogId:p.masterId,version:p.calculation.calculatorVersion};}};}
+ return {key:'private.canonical-calculus.'+v.id,catalogId:v.id,version:3,input:canonicalWorkflowInputSchema,output:canonicalCalculusOutputSchema,methodology:canonicalCalculusContract.domain,run:(i,p)=>{const s=exportCanonicalCalculation(i,p);if(s.governance.relatedCatalogId!==v.id)throw Error('Wrong operation for selected identity');return s;},read:a=>{const s=importCanonicalCalculation(a);if(s.governance.relatedCatalogId!==v.id)throw Error('Wrong identity');return s;},getOutput:a=>(a as ReturnType<typeof exportCanonicalCalculation>).calculation.output.core,getInput:a=>(a as ReturnType<typeof exportCanonicalCalculation>).calculation.input,getIdentity:a=>{const p=a as ReturnType<typeof exportCanonicalCalculation>;return {key:p.contractId,catalogId:p.governance.relatedCatalogId,version:p.calculation.calculatorVersion};}};
+});
+export const canonicalContractAdapters:readonly ContractAdapter[]=Object.freeze(adapters.map(a=>Object.freeze(a)));
+export function getCanonicalAdapter(key:string){const a=canonicalContractAdapters.find(a=>a.key===key);if(!a)throw Error('Unsupported evidence adapter');return a;}
+export function evaluateCanonicalContract(key:string){const a=getCanonicalAdapter(key),v=canonicalVectors.find(v=>v.id===a.catalogId)!;return validateContract(a,v.witnesses,v.invalid);}
+export function exportValidatedContract(key:string,input:unknown,plan:'free'|'pro'|'business'='free'){
+ const a=getCanonicalAdapter(key);const clean=copyCalculationData({input},{}).input.input;
+ const packet={schemaVersion:1,validationRevision:1,adapterKey:key,catalogId:a.catalogId,engineVersion:a.version,sourceBinding:binding,artifact:a.run(clean,plan),governance:{canonicalMappingApproved:false,canonicalAccepted:false,certificationAuthorized:false,publicationAuthorized:false,releaseHold:true}};
+ return copyCalculationData({packet},{}).input.packet as typeof packet;
+}
+export function importValidatedContract(raw:unknown){const p=copyCalculationData({packet:raw},{}).input.packet as ReturnType<typeof exportValidatedContract>;if(!p||typeof p.adapterKey!=='string')throw Error('Missing adapter identity');const a=getCanonicalAdapter(p.adapterKey),artifact=a.read(p.artifact);const expected=exportValidatedContract(a.key,a.getInput(artifact));if(!sameContractData(p,expected))throw Error('Validation envelope/source/identity/version/governance mismatch');return expected;}
+export function compareValidatedScenarios(raw:readonly unknown[]){if(raw.length<2||raw.length>3)throw Error('Two or three complete scenarios required');const packets=raw.map(importValidatedContract);if(packets.some(p=>p.adapterKey!==packets[0].adapterKey))throw Error('Same immutable contract required');return copyCalculationData({comparison:packets.map((p,i)=>({name:['A','B','C'][i],input:getCanonicalAdapter(p.adapterKey).getInput(p.artifact),output:getCanonicalAdapter(p.adapterKey).getOutput(p.artifact)}))},{}).input.comparison;}
