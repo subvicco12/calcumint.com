@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "pr": 1506,
+    "sha": "36a90997d0c64f06ce6a7a86caa68ca177119eb5",
+    "ciRun": 41236251352,
+    "conclusion": "success"
+  },
+  "queueSource": {
+    "path": "docs/full-product-batch16/remaining-work-queue.json",
+    "sha256": "c1007ec6133a09e833a8a1fc89e63a3559a98a86a78e180175e2add2991a5902"
+  },
+  "tasks": [
+    {
+      "id": "BUS-ISSUANCE",
+      "task": "Prepare and test atomic invitation issuance/reservation successor preserving the current five-seat/pending semantics; characterize participating writers without activation.",
+      "hours": [
+        6,
+        10
+      ],
+      "evidence": "auth-integrity-evidence.md: issuance preflight remains non-atomic",
+      "sourceQueuePointer": "docs/full-product-batch16/remaining-work-queue.json#/independentlyExecutable/0",
+      "status": "INDEPENDENT_ENGINEERING_COMPLETE",
+      "ownership": [
+        "tests/batch17-issuance/",
+        "docs/full-product-batch17/issuance-*"
+      ],
+      "acceptanceCriteriaVerified": [
+        "Unmodified review guard rejects installation; only stripped test copy in disposable model.",
+        "Exact caller plan/role/tenant fences and normalized fields; trusted post-lock DB clock and604800second lifetime.",
+        "Synchronized final-seat and duplicate requests admit one; member/live-pending/expiry/acceptance rules preserve quota.",
+        "Direct/privileged writers are characterized blockers, never represented as reconciled or activated.",
+        "Fresh outside-source receipts and complete safe source/model verification, including omission/path attacks."
+      ],
+      "receipt": "integrated-issuance-receipt.json",
+      "activeApplicationActivation": false,
+      "remainingExternalOrPolicyGates": "See preserved conditional queue; completion does not authorize adoption or canonical acceptance."
+    },
+    {
+      "id": "DB-FULL-CAPTURE-TOOLING",
+      "task": "Expand metadata export/strict comparison from seven Business tables to full declared schema, indexes/trigger state and migration/effect ledger; add omission and compatibility tests.",
+      "hours": [
+        4,
+        6
+      ],
+      "evidence": "schema-evidence-request.json: required sections unavailable",
+      "sourceQueuePointer": "docs/full-product-batch16/remaining-work-queue.json#/independentlyExecutable/1",
+      "status": "INDEPENDENT_ENGINEERING_COMPLETE",
+      "ownership": [
+        "tests/batch17-capture/",
+        "docs/full-product-batch17/capture-*"
+      ],
+      "acceptanceCriteriaVerified": [
+        "Read-only repeatable metadata export covers declared41 public/27auth relations plus supporting schema/type/sequence/function/authorization metadata.",
+        "Column/schema/sequence grants and PG17 membership grantor/inherit/SET changes are visible.",
+        "Exact omissions/duplicates/incompatible or unsupported objects reject completeness; unknown migration/effect ledgers never produce equality.",
+        "Genuine index/column/membership/schema/sequence drift is detected; external capture provenance/adoption always remain unverified."
+      ],
+      "receipt": "integrated-capture-receipt.json",
+      "activeApplicationActivation": false,
+      "remainingExternalOrPolicyGates": "See preserved conditional queue; completion does not authorize adoption or canonical acceptance."
+    },
+    {
+      "id": "AUTH-EXPIRY-BOUNDARY",
+      "task": "Add a bounded short-lifetime genuine fixture expiry/recovery campaign; preserve the explicitly characterized immediate post-logout JWT boundary.",
+      "hours": [
+        2,
+        4
+      ],
+      "evidence": "integrated-auth-integrity-receipt.json: expiry not measured",
+      "sourceQueuePointer": "docs/full-product-batch16/remaining-work-queue.json#/independentlyExecutable/2",
+      "status": "INDEPENDENT_ENGINEERING_COMPLETE",
+      "ownership": [
+        "tests/batch17-expiry/",
+        "tests/gotrue-runtime/fixture.mjs",
+        "docs/full-product-batch17/expiry-*"
+      ],
+      "acceptanceCriteriaVerified": [
+        "Optional test TTL validates before Docker; absent option retains original fixture defaults.",
+        "Replay exact persisted genuine JWT before/after natural expiry; no forged user token or clock manipulation.",
+        "Respect official30second PostgREST skew and bound observed rejection toexp+35seconds; preserve immediate logout acceptance and refresh denial.",
+        "Real refresh after expiry restores own access; campaign-only SDK/raw response buffering preserves cancellation/request budgets."
+      ],
+      "receipt": "integrated-expiry-receipt.json",
+      "activeApplicationActivation": false,
+      "remainingExternalOrPolicyGates": "See preserved conditional queue; completion does not authorize adoption or canonical acceptance."
+    }
+  ],
+  "summary": {
+    "commissionedTasks": 3,
+    "independentEngineeringComplete": 3,
+    "independentContractBlocked": 0,
+    "remainingIndependentHours": [
+      0,
+      0
+    ],
+    "historicalOrAuthorityPromotions": 0
+  },
+  "releaseHold": true
+}

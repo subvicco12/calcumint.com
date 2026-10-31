@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "sourceQueue": "docs/full-product-batch16/remaining-work-queue.json",
+  "sourceQueueSHA256": "c1007ec6133a09e833a8a1fc89e63a3559a98a86a78e180175e2add2991a5902",
+  "completedTaskIds": [
+    "BUS-ISSUANCE",
+    "DB-FULL-CAPTURE-TOOLING",
+    "AUTH-EXPIRY-BOUNDARY"
+  ],
+  "independentlyExecutable": [],
+  "independentHoursTotal": [
+    0,
+    0
+  ],
+  "conditionalEngineering": [
+    {
+      "id": "BUS-ROLE-WRITERS",
+      "task": "Reconcile invite-to-existing-member/owner semantics and every direct writer with one admission protocol.",
+      "hours": [
+        4,
+        8
+      ],
+      "blockedBy": "Explicit role/owner policy disposition and complete writer/schema evidence."
+    },
+    {
+      "id": "DB-ADOPTION-COMPATIBILITY",
+      "task": "Compare authentic capture, read-only existing-reference audit and compatibility/delete-effect regressions; prepare reviewed adoption/rollback gates without applying them.",
+      "hours": [
+        4,
+        8
+      ],
+      "blockedBy": "Authorized authentic current capture and migration/effect dispositions."
+    },
+    {
+      "id": "AUTH-SESSION-POLICY",
+      "task": "Implement and test session-aware immediate access revocation only if that policy is selected.",
+      "hours": [
+        6,
+        10
+      ],
+      "blockedBy": "Owner selection of immediate revocation versus ordinary JWT-expiry semantics."
+    }
+  ],
+  "conditionalHoursTotal": [
+    14,
+    26
+  ],
+  "notEstimated": [
+    "Full canonical scope/mapping/domain/application review for497 identities: approved requirements are not yet established.",
+    "43 source/provider/policy/qualified-review decisions; exact requests in authority-requests-43.json.",
+    "Hosted provider/mail/MFA/OAuth/live billing and production adoption; unavailable evidence cannot be assigned an honest fixed duration."
+  ],
+  "estimateScope": "Zero hours remain in the commissioned three-task queue. Conditional14\u201326h require the listed inputs; no complete540-product estimate is inferred.",
+  "releaseHold": true
+}

@@ -316,6 +316,19 @@ jobs:
           BATCH16_FULL_SCHEMA: '1'
           GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch16-full-schema-browser
           BATCH16_FINDER_ARTIFACTS: ${{ runner.temp }}/batch16-finder
+      - name: Batch17 independent issuance capture and expiry acceptance
+        timeout-minutes: 5
+        run: |
+          node tests/batch17-issuance/acceptance.mjs
+          node tests/batch17-issuance/verify-receipt.mjs
+          node --test tests/batch17-issuance/*.test.mjs tests/batch17-capture/*.test.mjs tests/batch17-expiry/*.test.mjs tests/full-product-batch17/workflow.test.mjs
+          node tests/batch17-capture/postgres.mjs
+          node tests/batch17-expiry/acceptance.mjs
+        env:
+          ISSUANCE_ARTIFACTS: ${{ runner.temp }}/batch17-issuance
+          ISSUANCE_VALID_RECEIPT: ${{ runner.temp }}/batch17-issuance/receipt.json
+          CAPTURE_ARTIFACTS: ${{ runner.temp }}/batch17-capture
+          EXPIRY_ARTIFACTS: ${{ runner.temp }}/batch17-expiry
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]
