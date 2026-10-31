@@ -128,6 +128,11 @@ jobs:
           node tests/remaining-authority-review/browser.mjs
         env:
           REMAINING_SIX_EVIDENCE: ${{ runner.temp }}/remaining-six-source-contracts
+      - name: Original Blueprint scope and exact runtime receipts
+        run: |
+          python3 scripts/reconcile-native-blueprint.py --check
+          python3 tests/blueprint-reconciliation/native.test.py
+          node --test tests/blueprint-reconciliation/*.test.mjs
       - name: Canonical ledger and analytical successor acceptance
         run: |
           node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check

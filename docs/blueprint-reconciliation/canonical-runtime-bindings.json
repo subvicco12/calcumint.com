@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "7eff39b23a52953c028852d50d5571211a3f8a44",
+  "baseArtifactsSHA256": {
+    "canonical-ledger.json": "584c19e61e4b4a10b39f7fe72005db430023f4983d1d9461fca7f81500fa128f",
+    "canonical-ledger.csv": "1c5d168d79c5339e0d660ad5b14115bb943edf5d2cd39ddadbf267f444ce310e",
+    "canonical-discovery.json": "65e3ff0258ea7eb7922fdac3a2384ff85e29735d12671c18a5f339973cf948b6",
+    "work-queue.json": "e3719efb1bd8f9677964b56af2ac2b8e8885f7d665dca779e460705c02e33d41"
+  },
+  "supportedPlatform": "linux",
+  "supportedArch": "x64",
+  "profiles": {
+    "v24.19.0": {
+      "canonicalLedgerOutputSHA256": "584c19e61e4b4a10b39f7fe72005db430023f4983d1d9461fca7f81500fa128f",
+      "patches": []
+    },
+    "v22.23.4": {
+      "canonicalLedgerOutputSHA256": "0b61430eda100a0d2b2aea261f2d85cbf9648d0da953a79d8ce5e423682bfba5",
+      "patches": [
+        {
+          "path": [
+            "rows",
+            245,
+            "numericalEvidence",
+            0,
+            "cases",
+            0,
+            "outputSHA256"
+          ],
+          "expectedBefore": "66da1b5783c331218d6fac29052d88702434da04e3fcad4e50c2bd63cbb491ad",
+          "expectedAfter": "a43eb10689e30121a7565614a5f4916820a48b13c3ff12743aa73a38d9e8e88f"
+        },
+        {
+          "path": [
+            "rows",
+            245,
+            "numericalEvidence",
+            0,
+            "cases",
+            1,
+            "outputSHA256"
+          ],
+          "expectedBefore": "66da1b5783c331218d6fac29052d88702434da04e3fcad4e50c2bd63cbb491ad",
+          "expectedAfter": "a43eb10689e30121a7565614a5f4916820a48b13c3ff12743aa73a38d9e8e88f"
+        },
+        {
+          "path": [
+            "registeredAudit",
+            210,
+            "cases",
+            0,
+            "outputSHA256"
+          ],
+          "expectedBefore": "66da1b5783c331218d6fac29052d88702434da04e3fcad4e50c2bd63cbb491ad",
+          "expectedAfter": "a43eb10689e30121a7565614a5f4916820a48b13c3ff12743aa73a38d9e8e88f"
+        },
+        {
+          "path": [
+            "registeredAudit",
+            210,
+            "cases",
+            1,
+            "outputSHA256"
+          ],
+          "expectedBefore": "66da1b5783c331218d6fac29052d88702434da04e3fcad4e50c2bd63cbb491ad",
+          "expectedAfter": "a43eb10689e30121a7565614a5f4916820a48b13c3ff12743aa73a38d9e8e88f"
+        }
+      ]
+    }
+  },
+  "meaning": "Exact runtime-specific audit receipts, not numerical tolerances, canonical acceptance or alternate mathematical versions. Full generator byte comparisons remain mandatory.",
+  "releaseHold": true
+}
