@@ -13,11 +13,14 @@ The direct authenticated table INSERT remains able to bypass quota after the RPC
 Reproduce with exact dependencies and Node22:
 
 ```sh
+export ISSUANCE_ARTIFACTS="$(mktemp -d /tmp/issuance-evidence-XXXXXX)"
 node tests/batch17-issuance/acceptance.mjs
-node tests/batch17-issuance/verify-receipt.mjs
+node tests/batch17-issuance/verify-receipt.mjs "$ISSUANCE_ARTIFACTS/receipt.json"
 ISSUANCE_MUTATION=quota-six node tests/batch17-issuance/acceptance.mjs # must fail 2 !== 1
 ```
 
 The fixture requires the local Docker socket and an isolated SDK-only window when sharing a host with browser acceptance. Do not run Docker container changes alongside Chromium/Next browser campaigns. No builds or full unit suite were requested or run for this bounded review-only SQL task.
 
 The receipt's `baseHead` is the supplied exact green PR1506 commit. `modelProvenance.sourceCommit` is an unchanged historical label emitted by the shared fixture; it is not the current checkout identity. The model's complete source hashes and guarded-bundle manifest identify the exercised inputs; the receipt verifier rehashes those model sources as well as the new issuance inputs.
+
+Fresh campaigns require `ISSUANCE_ARTIFACTS` outside the source checkout and write `receipt.json` there. The verifier accepts an explicit receipt path or that environment directory. The committed `issuance-receipt.json` remains byte-for-byte historical evidence from the original driver; its driver hash deliberately differs after the recorder change and it must not be verified as a current-driver run. Integrated acceptance records current source hashes in a separate fresh receipt.

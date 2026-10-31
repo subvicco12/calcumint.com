@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {randomUUID,createHash} from 'node:crypto';
 import {createClient} from '@supabase/supabase-js';
 import {startGoTrueFixture,images} from '../gotrue-runtime/fixture.mjs';
+import path from 'node:path';
+import {artifactDirectory} from './artifacts.mjs';
 import {initializeFullSchema} from '../gotrue-full-schema/schema.mjs';
 const start=new Date(), checks=[], root=new URL('../../',import.meta.url), hash=x=>createHash('sha256').update(x).digest('hex');
+const artifacts=await artifactDirectory(process.env.ISSUANCE_ARTIFACTS);
 const proposalPath='tests/batch17-issuance/review-only-issuance.sql';
 const raw=await readFile(new URL(proposalPath,root),'utf8');
 const pass=name=>{checks.push(name);console.log('PASS '+name);};
@@ -88,7 +91,7 @@ try {
  // RLS direct insertion remains a bypass: it is characterized, never represented as participating.
  await ok(owner.sdk.from('organization_invitations').insert({organization_id:org,email:'direct@example.invalid',role:'member',token_hash:hash(randomUUID()),invited_by:owner.id,expires_at:new Date(Date.now()+86400000).toISOString()}));
  pass('CHARACTERIZED BLOCKER: existing authenticated direct insert bypasses reservation quota');
- const end=new Date();const sources=[];for(const p of [proposalPath,'tests/batch17-issuance/acceptance.mjs','tests/batch16-auth/review-only-business-integrity.sql','src/app/business/actions.ts','supabase/migrations/003_b5_business.sql','supabase/migrations/014_production_entitlement_rpc_sync.sql','supabase/migrations/032_business_builder_rls_auth_initplan.sql'])sources.push({path:p,sha256:hash(await readFile(new URL(p,root)))});
+ const end=new Date();const sources=[];for(const p of [proposalPath,'tests/batch17-issuance/artifacts.mjs','tests/batch17-issuance/acceptance.mjs','tests/batch16-auth/review-only-business-integrity.sql','src/app/business/actions.ts','supabase/migrations/003_b5_business.sql','supabase/migrations/014_production_entitlement_rpc_sync.sql','supabase/migrations/032_business_builder_rls_auth_initplan.sql'])sources.push({path:p,sha256:hash(await readFile(new URL(p,root)))});
  const receipt={status:'REVIEW_ONLY_PREPARED_GENUINE_LOCAL_TESTED_ADOPTION_BLOCKED',startedAt:start.toISOString(),endedAt:end.toISOString(),elapsedSeconds:(end-start)/1000,checks,images,node:process.version,sources,baseHead:'36a90997d0c64f06ce6a7a86caa68ca177119eb5',productionEquivalence:'UNKNOWN',activation:false,modelProvenance:db.provenance,requestSummary:db.requests.reduce((counts,r)=>{const key=r.method+' '+r.path+' '+r.status;counts[key]=(counts[key]||0)+1;return counts;},{})};
- await mkdir(new URL('docs/full-product-batch17/',root),{recursive:true});await writeFile(new URL('docs/full-product-batch17/issuance-receipt.json',root),JSON.stringify(receipt,null,2)+'\n');
+ await writeFile(path.join(artifacts,'receipt.json'),JSON.stringify(receipt,null,2)+'\n');
 } finally {if(db)await db.close();}

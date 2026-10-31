@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
+import path from 'node:path';
 import {createHash} from 'node:crypto';
 const root=new URL('../../',import.meta.url);
-const receipt=JSON.parse(await readFile(new URL('docs/full-product-batch17/issuance-receipt.json',root)));
+const receiptPath=process.argv[2]||(process.env.ISSUANCE_ARTIFACTS?path.join(process.env.ISSUANCE_ARTIFACTS,'receipt.json'):null);
+assert(receiptPath,'Pass a fresh receipt path or set ISSUANCE_ARTIFACTS');
+const receipt=JSON.parse(await readFile(receiptPath));
 assert.equal(receipt.activation,false);
 assert.equal(receipt.productionEquivalence,'UNKNOWN');
 assert.equal(receipt.checks.length,10);
