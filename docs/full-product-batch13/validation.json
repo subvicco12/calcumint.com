@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "ad803af8b6a7ce9fab14bce2eebf6cdcd3ee2930",
+  "baselineCI": {
+    "runId": 41221409375,
+    "conclusion": "failure",
+    "failedStep": "Original Blueprint scope and exact runtime receipts",
+    "error": "Stale native reconciliation:blueprint-to-540.json",
+    "otherJobs": {
+      "build": "success",
+      "full-product": "success",
+      "private-persistence": "success"
+    },
+    "localRepairCommit": "ababe89ba3e612e03f141294bacc2a978fbadf45"
+  },
+  "commands": [
+    {
+      "id": "final-unit",
+      "command": "npm test",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 6439,
+      "skipped": 4,
+      "logSHA256": "46edd8bfd6c72c204bca774ba64bf3f2dac080b498d27482c676b78d7ced35e8",
+      "summary": "test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/compound-interest-trust-surface.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/mortgage-renderer-authority-readiness.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/presentation-entitlement-alignment.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/compound-interest-cross-plan-core.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/analysis-surface-policy.test.ts (2 tests) 2ms\n \u2713 src/lib/admin-atomic-catalog-role-parity.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/visualization-data-fail-closed.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/mortgage-postmigration-trust.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/renderer-explicit-presentation.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/break-even-trust-evidence.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/reference-six-route-binding.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/loan-postmigration-schedule-policy.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/mortgage-trust-readiness.test.ts (1 test) 2ms\n \u2193 src/calculators/catalog-full-evidence.test.ts (2 tests | 2 skipped)\n \u2193 src/calculators/catalog-inventory-export.test.ts (1 test | 1 skipped)\n\n Test Files  823 passed | 2 skipped (825)\n      Tests  6439 passed | 4 skipped (6443)\n   Start at  17:24:38\n   Duration  157.10s (transform 16.94s, setup 0ms, collect 158.64s, tests 100.97s, environment 28.80s, prepare 51.78s)\n\n"
+    },
+    {
+      "id": "final-lint",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "afc1d6b941acb3e6b3da077269a3445bbb0126af0434e379d1d5966b185dfc2a",
+      "summary": " is assigned a value but never used                                                                                                                                   @typescript-eslint/no-unused-vars\n  311:551  warning  'input' is assigned a value but never used                                                                                                                                           @typescript-eslint/no-unused-vars\n\n/workspace/work/calcumint-full-product-batch12/src/components/custom-calculator-preview.tsx\n  21:43  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n/workspace/work/calcumint-full-product-batch12/src/components/pro-checkout-button.tsx\n  179:52  warning  Do not use `window.location.assign()` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination\n\n/workspace/work/calcumint-full-product-batch12/src/components/public-embed-calculator.test.tsx\n  44:43  warning  '_options' is defined but never used  @typescript-eslint/no-unused-vars\n\n\u2716 28 problems (0 errors, 28 warnings)\n\n"
+    },
+    {
+      "id": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "summary": "\n> calcumint@0.1.0 typecheck\n> tsc --noEmit\n\n"
+    },
+    {
+      "id": "build",
+      "command": "npm run build (next build --webpack)",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "4b3282f44f601e0c7514eb10661fea312acc1487d38444dacb4d69e32002b89c",
+      "summary": "g 4 workers (37/37) in 480ms\n  Finalizing page optimization ...\n  Collecting build traces ...\n\nRoute (app)\n\u250c \u0192 /\n\u251c \u25cb /_not-found\n\u251c \u25cb /about\n\u251c \u25cb /acceptable-use\n\u251c \u25cb /account\n\u251c \u0192 /account/calculators\n\u251c \u0192 /account/calculators/[slug]\n\u251c \u0192 /account/drafts\n\u251c \u0192 /account/history\n\u251c \u0192 /account/projects\n\u251c \u0192 /account/projects/[id]\n\u251c \u0192 /account/saved\n\u251c \u25cb /admin\n\u251c \u25cb /admin/calculators\n\u251c \u0192 /admin/calculators/[id]\n\u251c \u25cb /ai\n\u251c \u0192 /api/ai/builder-assist\n\u251c \u0192 /api/ai/explain\n\u251c \u0192 /api/ai/find\n\u251c \u0192 /api/billing/checkout\n\u251c \u0192 /api/billing/checkout/status\n\u251c \u0192 /api/billing/portal\n\u251c \u0192 /api/billing/webhook\n\u251c \u0192 /api/embed/[key]/events\n\u251c \u0192 /api/embed/[key]/leads\n\u251c \u0192 /api/embed/[key]/session\n\u251c \u0192 /api/internal/admin/publish\n\u251c \u0192 /api/internal/readiness\n\u251c \u0192 /api/internal/webhooks/process\n\u251c \u0192 /api/v1/batch\n\u251c \u0192 /api/v1/custom/[calculatorId]/calculate\n\u251c \u25cb /apple-icon.png\n\u251c \u0192 /auth/callback\n\u251c \u0192 /business\n\u251c \u25cb /business-platform\n\u251c \u25cb /business/api\n\u251c \u25cb /business/builder\n\u251c \u0192 /business/builder/[id]\n\u251c \u25cb /business/builder/ai\n\u251c \u0192 /business/delivery/[id]\n\u251c \u0192 /business/invite/[token]\n\u251c \u0192 /calculators\n\u251c \u0192 /calculators/[category]\n\u251c \u0192 /calculators/[category]/[slug]\n\u251c \u25cb /contact\n\u251c \u25cb /cookie-policy\n\u251c \u25cb /data-deletion\n\u251c \u25cb /disclaimer\n\u251c \u0192 /embed/[key]\n\u251c \u0192 /health\n\u251c \u25cb /icon.png\n\u251c \u0192 /login\n\u251c \u25cb /login/forgot\n\u251c \u0192 /login/reset\n\u251c \u25cb /pricing\n\u251c \u25cb /privacy\n\u251c \u25cb /refund-policy\n\u251c \u25cb /robots.txt\n\u251c \u0192 /share/[token]\n\u251c \u0192 /sitemap.xml\n\u2514 \u25cb /terms\n\n\n\u0192 Proxy (Middleware)\n\n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n\n"
+    },
+    {
+      "id": "launch",
+      "command": "npm run test:launch",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 45,
+      "skipped": 0,
+      "logSHA256": "c07539b6561b02cb087fcf9a6ed2fcf3be36270ecb7cc42e626345a5edcfdbc0",
+      "summary": "\n> calcumint@0.1.0 test:launch\n> vitest run src/calculators/launch-portfolio.test.ts src/lib/launch/readiness.test.ts src/lib/launch/hardening.test.ts\n\n\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/lib/launch/readiness.test.ts (5 tests) 6ms\n \u2713 src/lib/launch/hardening.test.ts (7 tests) 14ms\n \u2713 src/calculators/launch-portfolio.test.ts (33 tests) 73ms\n\n Test Files  3 passed (3)\n      Tests  45 passed (45)\n   Start at  17:31:29\n   Duration  2.34s (transform 1.34s, setup 0ms, collect 2.09s, tests 94ms, environment 1ms, prepare 255ms)\n\n"
+    },
+    {
+      "id": "certification",
+      "command": "npm run test:certification",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 15,
+      "skipped": 0,
+      "logSHA256": "70fbabae5205e3ae817aad7e15d459d7d164854ae6591ac2126a79ff18503540",
+      "summary": "\n> calcumint@0.1.0 test:certification\n> vitest run src/calculators/launch-certification.test.ts src/calculators/rule-packs.test.ts\n\n\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/calculators/rule-packs.test.ts (5 tests) 11ms\n \u2713 src/calculators/launch-certification.test.ts (10 tests) 93ms\n\n Test Files  2 passed (2)\n      Tests  15 passed (15)\n   Start at  17:31:32\n   Duration  2.17s (transform 1.16s, setup 0ms, collect 1.85s, tests 103ms, environment 0ms, prepare 132ms)\n\n"
+    },
+    {
+      "id": "security",
+      "command": "node tests/next-runtime/security.mjs",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 9,
+      "skipped": 0,
+      "logSHA256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7",
+      "summary": "PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL\nPASS PostgREST rejects wrong JWT signature\nPASS Owner profile display update succeeds but plan update is denied\nPASS RLS prevents cross-account project reads and writes through real HTTP\nPASS Client roles cannot TRUNCATE tables or execute internal service RPC\nPASS Membership role and organization identity fencing survives HTTP writes\nPASS Identical concurrent HTTP lead requests persist one complete receipt\nPASS Late consent failure rolls back the complete HTTP transaction and retry recovers\nPASS Missing and inaccessible RPC signatures fail closed through HTTP\n"
+    },
+    {
+      "id": "source",
+      "command": "original source bindings and79-adapter/1106-check evidence",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 1106,
+      "skipped": 0,
+      "logSHA256": "c51c972b2950e37c04ec22c69f75d684babb750ea5907eb6ab90258177f0fcf6",
+      "summary": "{\"catalogIdentities\":540,\"newPrivateAdapters\":51,\"evaluatedPrivateContracts\":79,\"newWitnessChecks\":714,\"cumulativeWitnessChecks\":1106,\"canonicalAccepted\":0,\"reviewRequired\":497,\"authorityBlocked\":43,\"implementationCounts\":{\"REGISTERED_IMPLEMENTED\":305,\"PRIVATE_COMPLETE\":192,\"CONTRACT_BLOCKED\":43}}\n"
+    },
+    {
+      "id": "guards",
+      "command": "CI recovery and frozen Blueprint tests",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 353,
+      "skipped": 0,
+      "logSHA256": "1ca611e6555619f440a064640dbf4a2ee7c91577361d09f598e1f1bab7e2d1fc",
+      "summary": "nknown,build=empty,fullProduct=failure (3.176546ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=cancelled (1.873055ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=skipped (2.066987ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=timed_out (2.147889ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=empty (12.840023ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=unknown (2.450094ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=success (2.388296ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=failure (2.50339ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=cancelled (2.661103ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=skipped (2.401036ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=timed_out (2.726546ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=empty (1.807305ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=unknown (1.761957ms)\n\u2714 full-product job requires both functional browser campaigns and exact aggregate result (0.379833ms)\n\u2139 tests 353\n\u2139 suites 0\n\u2139 pass 353\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1485.795976\n"
+    },
+    {
+      "id": "final-workflow",
+      "command": "mandatory final CI workflow guards",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 350,
+      "skipped": 0,
+      "logSHA256": "6168811e44d1a1447f833fbc9f26c3142baf9470ff9c4369ad388cdcfb983cf1",
+      "summary": "ed for checks=unknown,build=empty,fullProduct=skipped (1.693154ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=timed_out (2.402971ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=empty (1.696049ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=unknown (1.608096ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=success (1.606815ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=failure (1.640986ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=cancelled (1.586815ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=skipped (1.675097ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=timed_out (1.883466ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=empty (1.757241ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=unknown (1.776189ms)\n\u2714 full-product job requires both functional browser campaigns and exact aggregate result (0.460462ms)\n\u2714 genuine-auth and private sensitivity are mandatory bounded sequential CI steps (0.863517ms)\n\u2714 immutable native evidence source is fetched before unchanged strict reconciliation (0.138328ms)\n\u2139 tests 350\n\u2139 suites 0\n\u2139 pass 350\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 766.009024\n"
+    },
+    {
+      "id": "native",
+      "command": "native Blueprint provenance/Python regressions",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 5,
+      "skipped": 0,
+      "logSHA256": "6896fb48f9f1b76f4a2c453a2eb6567fb805ce9093b6604d781d71d81e533dfc",
+      "summary": "PASS originalDOCXCRC/SHA;1116paragraphs/33tables;410exacthistoricalmatches/14RCrecords;316additionalparagraphs preserved;540identitytraces;noacceptancepromoted\n.....\n----------------------------------------------------------------------\nRan 5 tests in 0.516s\n\nOK\n"
+    },
+    {
+      "id": "canonical",
+      "command": "frozen canonical acceptance reproduction",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": 0,
+      "logSHA256": "a2d8fa926248430e19a17fb4d06a72f81f194b558c0b2ee806fb1ae86b63f038",
+      "summary": "{\"catalogIdentities\":540,\"canonicalAccepted\":0,\"postBatch09BoundedProfiles\":11,\"newPrivateSuccessorProfiles\":3,\"legacyImplementationClasses\":{\"REGISTERED_IMPLEMENTED\":305,\"PRIVATE_COMPLETE\":192,\"COMPONENT_ONLY\":0,\"CONTRACT_BLOCKED\":43,\"MISSING_ENGINE\":0,\"UNKNOWN\":0},\"declaredFixtureMismatchIdentities\":16,\"registeredEnginesAudited\":574,\"currentPublications\":\"UNKNOWN\",\"releaseHold\":true}\n"
+    },
+    {
+      "id": "transport",
+      "command": "node --test browser-fixture/owner-preview-readiness/cdp/cdp-network-diagnostics tests",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 21,
+      "logSHA256": "5a99725ba616cf872d712e7dc716dd28e6295cad6858a97b9dbcb1d5beb5fc0d",
+      "summary": "p budget beyond five seconds (5603.157269ms)\n\u2714 target creation still aborts at the shared startup deadline and cleans up (5011.580172ms)\n\u2714 cleanup completes after Chromium has already exited (1299.504869ms)\n\u2714 CDP commands time out and cleanup rejects outstanding commands (423.764469ms)\n\u2714 failed startup terminates a launcher that never exposes CDP and removes its profile (215.06474ms)\n\u2714 directory submit and intermediate client-navigation states never satisfy owner calculation readiness (151.214722ms)\n\u2714 only the target path heading and real calculation control satisfy readiness (66.866299ms)\n\u2139 tests 21\n\u2139 suites 0\n\u2139 pass 21\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 16979.755382\n"
+    },
+    {
+      "id": "gotrue-ci-runtime",
+      "command": "GOTRUE_ARTIFACTS=<previously nonexistent path> Node22 tests/gotrue-runtime/acceptance.mjs",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 10,
+      "logSHA256": "1a44eb87443a19f1e49f18a3759e71bc30aa617f395f0656ccb0175358f82faa"
+    }
+  ],
+  "browserCampaigns": {
+    "newPrivate": {
+      "passed": true,
+      "journeys": 8,
+      "receipt": "private-browser-receipt.json"
+    },
+    "genuineGoTrue": {
+      "passed": true,
+      "checks": 10,
+      "processExitCode": 0,
+      "actualUpstreamRequests": 47,
+      "receipt": "gotrue-acceptance-receipt.json",
+      "scope": "Actual local GoTrue, PostgREST, installed SDK and Next dev browser; no production/mail acceptance",
+      "runtime": "Node v22.23.4 (CI target)",
+      "configuredEvidenceDirectoryCreated": true,
+      "originalReceiptSHA256": "b2cfcc02817dc80ee7d354930681aade15caa5ef3ef580a90d228383e0bcc697"
+    },
+    "serializedExistingScale": {
+      "passed": true,
+      "journeys": 114,
+      "receipt": "serialized-scale-receipt.json",
+      "assertionsAndTimeoutsUnchanged": true
+    },
+    "existingNextRuntime": {
+      "passed": true,
+      "journeys": 62,
+      "receipt": "next-runtime-receipt.json",
+      "syntheticIdentity": true
+    }
+  },
+  "numericalEvidence": {
+    "newAdapters": 0,
+    "reusedAdapters": 79,
+    "reusedWitnessChecks": 1106,
+    "eligiblePrivateProfiles": 70,
+    "eligibleNumericFields": 221,
+    "actualEngineExamples": [
+      "Loan zero-rate1200/12 gives100;2400/12 gives200 without changing baseline.",
+      "Two-period210/120percent annual gives121;420 gives242.",
+      "Down-payment12.5percent of400/1200 gives50/150;baseline800 gives100.",
+      "Percentage0.1 to0.3 gives recorded-decimal difference0.2.",
+      "1cm/3cm give0.01m/0.03m;difference0.02."
+    ],
+    "preserved": "Original engine values/versions unchanged; differences are presentation-only."
+  },
+  "independentReview": "INDEPENDENT-REVIEW.md",
+  "initialFailures": [
+    {
+      "scope": "baseline hosted CI",
+      "disposition": "Local source-capture repair; new hosted result still required."
+    },
+    {
+      "scope": "first full local suite6433 assertions passed but1unhandled URL cleanup error",
+      "disposition": "Existing test fixture now flushes delayed timers before restoring URL mock; final complete6439 suite has no unhandled errors."
+    },
+    {
+      "scope": "intermittent blank entry",
+      "disposition": "Current Chromium NETWORK_CHANGED reproduction controlled; original56journey failure remains historically unassigned."
+    }
+  ],
+  "hostedDeliveryCI": {
+    "status": "NOT_OBSERVED_AT_COMMIT_TIME",
+    "policy": "One bounded exact-head check after new draft PR; no polling. ExactSHA/PR/status reported after push."
+  },
+  "releaseHold": true
+}

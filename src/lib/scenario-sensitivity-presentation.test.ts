@@ -50,3 +50,19 @@ it('preserves candidate ordering and duplicate values without rounding presentat
  expect(presentation.map(row=>row.metrics[0].baselineDifference)).toEqual([25,-25,25,0]);
  expect(presentation.map(row=>row.metrics[0].value)).toEqual([75,25,75,50]);
 });
+
+it('uses the same recorded-decimal difference as scenario reports for actual percentage engine values',async()=>{
+ const {percentageCalculator}=await import('@/calculators/core/percentage');const {runCalculator}=await import('@/calculators/engine');const {captureScenario}=await import('./scenario-set');const {createScenarioReport}=await import('./scenario-report');
+ const input={percentage:10,value:1},baseline=createCalculationSnapshot({calculatorSlug:percentageCalculator.slug,calculatorVersion:1,input,output:runCalculator(percentageCalculator,input).output});
+ const points=calculateScenarioSensitivity(baseline,'percentage',[30]);expect(baseline.output.result).toBe(.1);expect(points[0].snapshot.output.result).toBe(.3);
+ const captures=captureScenario(captureScenario([],'A',baseline,''),'B',points[0].snapshot,'');
+ expect(createScenarioReport(captures).metrics[0].cells[1].difference).toBe(.2);
+ expect(presentSensitivityResults(baseline,points)[0].metrics[0].baselineDifference).toBe(.2);
+});
+
+it('keeps recorded-centimetre sensitivity differences consistent with scenario-report metres',async()=>{
+ const {unitConversionCalculator}=await import('@/calculators/core/unit-conversion');const {runCalculator}=await import('@/calculators/engine');const input={value:1,fromUnit:'cm',toUnit:'m'};
+ const baseline=createCalculationSnapshot({calculatorSlug:unitConversionCalculator.slug,calculatorVersion:1,input,output:runCalculator(unitConversionCalculator,input).output});
+ const points=calculateScenarioSensitivity(baseline,'value',[3]);expect(baseline.output.result).toBe(.01);expect(points[0].snapshot.output.result).toBe(.03);expect(presentSensitivityResults(baseline,points)[0].metrics[0].baselineDifference).toBe(.02);
+ expect(baseline.input).toEqual(input);expect(points[0].snapshot.input.toUnit).toBe('m');
+});

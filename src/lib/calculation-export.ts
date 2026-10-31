@@ -1,4 +1,4 @@
-import { copyCalculationData } from "./calculation-snapshot";
+import { createCalculationSnapshot,type CalculationSnapshot,copyCalculationData } from "./calculation-snapshot";
 export { serializeCalculationPdf, type CalculationPdfOptions } from './calculation-export-pdf';
 /** Export raw engine values; formatting and on-screen sampling do not affect CSV. */
 export function serializeCalculationCsv(input: Record<string, unknown>, output: Record<string, unknown>): string {
@@ -21,4 +21,14 @@ export function serializeCalculationCsv(input: Record<string, unknown>, output: 
   };
   const rows = [["section", "field", "value"], ...Object.entries(input).map(([key, value]) => ["input", text(key), text(value)]), ...Object.entries(output).map(([key, value]) => ["output", text(key), text(value)])];
   return rows.map(row => row.map(cell => `"${cell.replaceAll('"', '""')}"`).join(",")).join("\n");
+}
+
+/** Stored fields stay in their original sections; identity is additional CSV context. */
+export function serializeCalculationSnapshotCsv(snapshot:CalculationSnapshot):string{
+ const saved=createCalculationSnapshot(snapshot),csv=serializeCalculationCsv(saved.input,saved.output);
+ const quote=(value:string)=>`"${value.replaceAll('"','""')}"`;
+ const text=(value:string)=>/^[\s]*[=+\-@]/u.test(value)?`'${value}`:value;
+ const identity=[['identity','calculatorSlug',text(saved.calculatorSlug)],['identity','calculatorVersion',String(saved.calculatorVersion)]].map(row=>row.map(quote).join(',')).join('\n');
+ const line=csv.indexOf('\n');
+ return line<0?`${csv}\n${identity}`:`${csv.slice(0,line)}\n${identity}\n${csv.slice(line+1)}`;
 }

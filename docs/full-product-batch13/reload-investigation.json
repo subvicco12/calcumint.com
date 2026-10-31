@@ -1,0 +1,119 @@
+{
+  "scope": "Private engineering evidence only. RELEASE HOLD remains active; no canonical acceptance, certification, production writes, deployment or publication.",
+  "originalFailure": {
+    "completedJourneys": 56,
+    "symptom": "HTTP200 HTML, complete readyState, empty React root, no captured Runtime exception",
+    "cause": "Unassigned: original trace lacks module response/loadingFailed/console evidence."
+  },
+  "reproducedFailure": {
+    "sourceHead": "ad803af8b6a7ce9fab14bce2eebf6cdcd3ee2930",
+    "completedJourneys": 21,
+    "failedReload": {
+      "catalogId": 68,
+      "tier": "free",
+      "width": 320
+    },
+    "loadingFailures": [
+      {
+        "errorText": "net::ERR_NETWORK_CHANGED",
+        "type": "Script",
+        "canceled": false,
+        "count": 20
+      }
+    ],
+    "wallTimeStart": "2026-10-31T17:02:32.140Z",
+    "wallTimeEnd": "2026-10-31T17:02:32.143Z",
+    "runtimeExceptions": 0,
+    "fetchContinuationFailures": 0,
+    "dependencyProvenance": "Temporary source snapshot used preexisting main checkout dependencies; its lockfile differs from frozen source. This reproduction is followed by exact-lock verification.",
+    "conclusion": "Module transport failures explain this reproduction's absent mount; this does not retrospectively prove every historical blank mount has this cause."
+  },
+  "controlledExperiment": {
+    "transport": "Plain loopback HTTP page importing80 modules,100ms response delay; unchanged Chromium/CDP flags",
+    "treatment": "Create one temporary Docker internal network during module loading; remove after observation.",
+    "results": [
+      {
+        "index": 0,
+        "treatment": false,
+        "mounted": true,
+        "scriptNetworkChangedFailures": 0
+      },
+      {
+        "index": 1,
+        "treatment": true,
+        "mounted": false,
+        "scriptNetworkChangedFailures": 62
+      },
+      {
+        "index": 2,
+        "treatment": false,
+        "mounted": true,
+        "scriptNetworkChangedFailures": 0
+      },
+      {
+        "index": 3,
+        "treatment": true,
+        "mounted": false,
+        "scriptNetworkChangedFailures": 62
+      }
+    ],
+    "conclusion": "Docker host-network lifecycle changes can cause queued loopback script imports to fail with ERR_NETWORK_CHANGED and leave an empty root.",
+    "limitations": [
+      "Earlier80-module1500ms trial did not finish controls inside its observation interval and provides no valid mount comparison.",
+      "Six-module1500ms trial mounted all four navigations, so failures depend on request graph/timing.",
+      "Actual failing campaign overlaps auth-spike Docker disconnect/destroy events; exact Chromium notifier callback was not captured."
+    ]
+  },
+  "serializedVerification": {
+    "sourceHead": "ad803af8b6a7ce9fab14bce2eebf6cdcd3ee2930",
+    "dependencies": "Exact preserved package-lock installed via npm ci in isolated dependency directory.",
+    "conditions": "Docker/network-mutating agents explicitly paused; unchanged114 journey campaign assertions and timeouts.",
+    "journeysPassed": 114,
+    "issues": 0,
+    "report": "Private local artifact /tmp/scaled-validation-RAaDQN/report.json",
+    "scope": "Original114-journey campaign only; not verification of subsequent Batch13 product changes."
+  },
+  "operationalCorrection": "Serialize host network/interface mutations away from browser campaigns. Capture sanitized failures and fail immediately on confirmed uncanceled Script ERR_NETWORK_CHANGED; no retry, timeout extension, browser security flag or weakened assertion.",
+  "historicalDockerEvents": [
+    {
+      "action": "create",
+      "at": "2026-10-31T17:02:26.522Z"
+    },
+    {
+      "action": "connect",
+      "at": "2026-10-31T17:02:28.109Z"
+    },
+    {
+      "action": "connect",
+      "at": "2026-10-31T17:02:30.067Z"
+    },
+    {
+      "action": "disconnect",
+      "at": "2026-10-31T17:02:32.232Z"
+    },
+    {
+      "action": "disconnect",
+      "at": "2026-10-31T17:02:32.380Z"
+    },
+    {
+      "action": "destroy",
+      "at": "2026-10-31T17:02:32.510Z"
+    }
+  ],
+  "harnessDiagnostics": {
+    "changes": [
+      "Bounded request URL association and200-entry failure ring; only origin/path retained; no query, fragment, userinfo, headers, bodies or cookies.",
+      "Existing errors API, security assertions and timeout values preserved.",
+      "until rejects only confirmed Script net::ERR_NETWORK_CHANGED with canceled:false; no retry."
+    ],
+    "verification": {
+      "newRegressionTests": 6,
+      "combinedNewAndExistingCDPTestsPassed": 16,
+      "finalFocusedTestsPassed": 6,
+      "ownedFileESLint": "passed",
+      "sharedUntilMutationRegression": "Temporary copy with failfast removed fails the protocol-peer test as generic timeout; current shared helper passes.",
+      "initialTestsRedBeforeImplementation": 5
+    },
+    "manualExperiment": "tests/full-product-batch13/network-change-repro.mjs requires explicit --allow-network-mutation and exclusive network access; intentionally excluded from CI."
+  }
+}

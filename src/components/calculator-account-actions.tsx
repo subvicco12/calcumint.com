@@ -8,7 +8,7 @@ import {CalculatorScenarioWorkspace} from "./calculator-scenario-workspace";
 import {serializeCalculationPdf} from "@/lib/calculation-export-pdf";
 import {downloadPdfBytes} from "@/lib/download-pdf";
 import {calculatorRegistry} from "@/calculators/registry";
-import { serializeCalculationCsv } from "@/lib/calculation-export";
+import { serializeCalculationSnapshotCsv } from "@/lib/calculation-export";
 import { createCalculationSnapshot, serializeCalculationJson } from "@/lib/calculation-snapshot";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
@@ -215,7 +215,7 @@ function AccountActionsSession({ calculatorSlug, calculatorVersion, input, outpu
     if (!snapshot || !entitlements.exports) return;
     const reportAction=beginActionStatus("",JSON.stringify(snapshot));
     try {
-      downloadFile(`${calculatorSlug}.csv`, serializeCalculationCsv(snapshot.input, snapshot.output), "text/csv;charset=utf-8");
+      downloadFile(`${calculatorSlug}.csv`, serializeCalculationSnapshotCsv(snapshot), "text/csv;charset=utf-8");
       reportAction("");
     } catch {
       reportAction("Could not download calculation. Try again.",true);
