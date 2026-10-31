@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "profileId": "private-analytic-calculus-derivative",
+  "methodology": {
+    "derivative": "Forward analytic chain/product/quotient/power rules on the parsed expression tree; reject unsupported/nondifferentiable domains.",
+    "limit": "Direct evaluation only after recursive continuity-domain checks at the target; no finite-sample convergence proof. Removable singularities and one-sided/boundary domains are unsupported.",
+    "integral": "Parse and validate first, then form polynomial coefficients of degree<=32; evaluate the power-rule antiderivative at both bounds. Reject all non-polynomial integrands, including narrow Gaussians.",
+    "precision": "Binary64 evaluation; floating-point roundoff is not rigorously bounded. No certified numerical error estimate is emitted.",
+    "resources": "Expressions<=500characters; coordinates/bounds within±1000000; polynomial degree<=32.",
+    "mathematics": "Continuity of compositions on their open domains; analytic differentiation rules; polynomial power-rule antiderivative and Fundamental Theorem of Calculus.",
+    "excluded": "No arbitrary sampled-limit proof, numerical quadrature guarantee, symbolic removable-limit solver or full canonical scope acceptance."
+  },
+  "governance": {
+    "relatedCatalogId": 246,
+    "canonicalAccepted": false,
+    "canonicalMappingApproved": false,
+    "legacyV1Unchanged": true,
+    "reviewStatus": "private-draft",
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  },
+  "calculation": {
+    "calculatorSlug": "private-analytic-calculus-derivative",
+    "calculatorVersion": 2,
+    "input": {
+      "operation": "derivative",
+      "expression": "x^3",
+      "x": 2
+    },
+    "output": {
+      "value": 12,
+      "method": "analytic-differentiation",
+      "certifiedErrorBound": null
+    }
+  }
+}

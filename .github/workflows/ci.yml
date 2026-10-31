@@ -133,12 +133,21 @@ jobs:
           python3 scripts/reconcile-native-blueprint.py --check
           python3 tests/blueprint-reconciliation/native.test.py
           node --test tests/blueprint-reconciliation/*.test.mjs
+      - name: Fetch immutable canonical evidence source
+        run: git fetch --no-tags --depth=1 origin 7eff39b23a52953c028852d50d5571211a3f8a44
       - name: Canonical ledger and analytical successor acceptance
         run: |
           node scripts/canonical-acceptance-evidence.mjs docs/canonical-acceptance --check
           node tests/canonical-acceptance-review/browser.mjs
         env:
           CANONICAL_EVIDENCE: ${{ runner.temp }}/canonical-acceptance
+      - name: Declared-domain calculus source, replay and typed browser acceptance
+        run: |
+          python3 scripts/reconcile-canonical-calculus.py --check
+          node --test tests/canonical-calculus-workbench/frozen-source.test.mjs
+          node tests/canonical-calculus-workbench/browser.mjs
+        env:
+          CALCULUS_EVIDENCE: ${{ runner.temp }}/canonical-calculus
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
