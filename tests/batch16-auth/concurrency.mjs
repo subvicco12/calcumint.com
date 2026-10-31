@@ -1,0 +1,93 @@
+import assert from 'node:assert/strict';
+import {randomUUID,createHash} from 'node:crypto';
+import {BUSINESS_DESCRIPTOR_SQL,descriptorHash,compareDescriptors} from './schema-descriptor.mjs';
+import {readFile} from 'node:fs/promises';
+export async function runBatch16Auth({db,signup,ok,denied,pass}) {
+ const beforeDescriptor=JSON.parse(await db.sql(BUSINESS_DESCRIPTOR_SQL));
+ const owner=await signup('b16-owner'),other=await signup('b16-other'),member=await signup('b16-member'),a=await signup('b16-a'),b=await signup('b16-b');
+ await db.sql(`UPDATE public.profiles SET plan='business' WHERE id IN ('${owner.id}','${other.id}');`);
+ const org=await ok(owner.sdk.rpc('create_business_organization',{org_name:'Batch16 primary',org_slug:'b16-'+randomUUID()}));
+ const foreign=await ok(other.sdk.rpc('create_business_organization',{org_name:'Batch16 foreign',org_slug:'b16-'+randomUUID()}));
+ const invite=async(user,role='member')=>{const token=randomUUID();const row=(await ok(owner.sdk.from('organization_invitations').insert({organization_id:org,email:user.email,role,token_hash:token,invited_by:owner.id,expires_at:new Date(Date.now()+3600000).toISOString()}).select()))[0];return {token,id:row.id};};
+ const first=await invite(member,'admin');await ok(member.sdk.rpc('accept_business_invitation',{invite_token_hash:first.token}));
+ const tokenBefore=(await ok(member.sdk.auth.getSession())).session.access_token;
+ await ok(owner.sdk.from('organization_members').update({role:'viewer'}).eq('organization_id',org).eq('user_id',member.id));
+ await denied(member.sdk.from('business_projects').insert({organization_id:org,name:'Stale admin',created_by:member.id}));
+ await denied(member.sdk.from('organization_invitations').insert({organization_id:org,email:a.email,role:'member',token_hash:randomUUID(),invited_by:member.id,expires_at:new Date(Date.now()+3600000).toISOString()}));
+ assert.equal((await ok(member.sdk.auth.getSession())).session.access_token,tokenBefore);
+ await ok(owner.sdk.from('organization_members').delete().eq('organization_id',org).eq('user_id',member.id));
+ assert.deepEqual(await ok(member.sdk.from('organizations').select('id').eq('id',org)),[]);
+ await denied(member.sdk.from('business_projects').insert({organization_id:org,name:'Removed member',created_by:member.id}));
+ assert.equal((await ok(member.sdk.auth.getSession())).session.access_token,tokenBefore);
+ pass('Unrefreshed genuine JWT loses admin writes immediately on demotion and tenant visibility on membership deletion');
+ const revoked=await invite(member);await ok(owner.sdk.from('organization_invitations').delete().eq('id',revoked.id));
+ await denied(member.sdk.rpc('accept_business_invitation',{invite_token_hash:revoked.token}),/invalid or expired/);
+ await denied(other.sdk.from('organization_invitations').insert({organization_id:org,email:a.email,role:'admin',token_hash:randomUUID(),invited_by:other.id,expires_at:new Date(Date.now()+3600000).toISOString()}));
+ assert.deepEqual(await ok(other.sdk.from('organization_members').delete().eq('organization_id',org).select()),[]);
+ pass('Deleted invitation cannot be redeemed and foreign owner cannot issue invitations or delete another tenant memberships');
+ const session=(await ok(member.sdk.auth.getSession())).session;
+ await ok(member.sdk.auth.signOut({scope:'global'}));
+ await denied(member.sdk.auth.refreshSession({refresh_token:session.refresh_token}));
+ const stillSigned=await fetch(db.url+'/rest/v1/profiles?select=id&id=eq.'+member.id,{headers:{apikey:db.anonKey,Authorization:'Bearer '+session.access_token}});
+ assert.equal(stillSigned.status,200);assert.equal((await stillSigned.json())[0].id,member.id);
+ pass('Genuine global logout invalidates refresh token while issued JWT remains valid until expiry (characterized boundary)');
+ const foreignProject=(await ok(other.sdk.from('business_projects').insert({organization_id:foreign,name:'Foreign project',created_by:other.id}).select()))[0];
+ const foreignLink=await owner.sdk.from('client_workspaces').insert({organization_id:org,project_id:foreignProject.id,name:'Cross tenant reference',created_by:owner.id}).select();
+ assert.equal(foreignLink.error,null);assert.equal(foreignLink.data[0].project_id,foreignProject.id);
+ const foreignClient=(await ok(other.sdk.from('client_workspaces').insert({organization_id:foreign,name:'Foreign client',created_by:other.id}).select()))[0];
+ for(const refs of [{project_id:foreignProject.id},{client_workspace_id:foreignClient.id}])await ok(owner.sdk.from('shared_calculations').insert({organization_id:org,calculator_slug:'slope-calculator',calculator_version:1,created_by:owner.id,...refs}));
+ pass('CHARACTERIZED DEFECT: historical own-tenant client and shared rows accept foreign project or client UUIDs');
+ await ok(owner.sdk.from('client_workspaces').delete().eq('id',foreignLink.data[0].id));
+ // Local barrier pauses inserts after the historical seat read; no production code is instrumented.
+ const key=641603;
+ async function race(users,tokens,label){
+  await db.sql(`CREATE OR REPLACE FUNCTION public.batch16_insert_barrier() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.organization_id='${org}'::uuid THEN PERFORM pg_advisory_xact_lock(${key}); END IF; RETURN NEW; END $$; CREATE TRIGGER batch16_insert_barrier BEFORE INSERT ON public.organization_members FOR EACH ROW EXECUTE FUNCTION public.batch16_insert_barrier();`);
+  let holderError;const holder=db.sql(`SELECT pg_advisory_lock(${key});SELECT pg_sleep(25);`).catch(e=>{holderError=e;});
+  const until=async fn=>{const end=Date.now()+15000;while(Date.now()<end){if(await fn())return;await new Promise(r=>setTimeout(r,30));}throw Error('Barrier timeout '+label);};
+  try {
+   await until(async()=>Number(await db.sql(`SELECT count(*) FROM pg_locks WHERE locktype='advisory' AND objid=${key} AND granted;`))===1);
+   const requests=users.map((u,i)=>u.sdk.rpc('accept_business_invitation',{invite_token_hash:tokens[i]}).then(r=>r));
+   await until(async()=>Number(await db.sql(`SELECT count(*) FROM pg_stat_activity WHERE wait_event_type='Lock' AND query LIKE '%accept_business_invitation%' AND pid<>pg_backend_pid();`))>=2);
+   await db.sql(`SELECT pg_cancel_backend(pid) FROM pg_locks WHERE locktype='advisory' AND objid=${key} AND granted;`);
+   await holder;assert(holderError,'barrier must be explicitly released');return await Promise.all(requests);
+  } finally {await db.sql(`SELECT pg_cancel_backend(pid) FROM pg_locks WHERE locktype='advisory' AND objid=${key} AND granted;`);await holder;await db.sql('DROP TRIGGER batch16_insert_barrier ON public.organization_members;DROP FUNCTION public.batch16_insert_barrier();');}
+ }
+ // Three existing members plus owner gives one final seat.
+ await db.sql(`INSERT INTO public.organization_members(organization_id,user_id,role) VALUES ('${org}','${member.id}','viewer'),('${org}','${other.id}','viewer');`);
+ const spare=await signup('b16-spare');await db.sql(`INSERT INTO public.organization_members(organization_id,user_id,role) VALUES ('${org}','${spare.id}','viewer');`);
+ const ia=await invite(a),ib=await invite(b);
+ const before=await race([a,b],[ia.token,ib.token],'historical last seat');assert.equal(before.filter(r=>!r.error).length,2);
+ assert.equal(await db.sql(`SELECT count(*) FROM public.organization_members WHERE organization_id='${org}';`),'6');
+ pass('CHARACTERIZED DEFECT: two genuine JWT redemptions deterministically overbook historical final seat to six');
+ await db.sql(`DELETE FROM public.organization_members WHERE organization_id='${org}' AND user_id IN ('${a.id}','${b.id}');DELETE FROM public.organization_invitations WHERE organization_id='${org}';DELETE FROM public.shared_calculations WHERE organization_id='${org}';DELETE FROM public.client_workspaces WHERE organization_id='${org}';`);
+ await db.sql(`DELETE FROM public.organization_audit_log WHERE organization_id='${org}' AND actor_user_id='${a.id}' AND action='member.joined';`);
+ const duplicate=await invite(a);
+ const duplicateBefore=await race([a,a],[duplicate.token,duplicate.token],'historical duplicate redemption');
+ assert.equal(duplicateBefore.filter(r=>!r.error).length,2);
+ assert.equal(await db.sql(`SELECT count(*) FROM public.organization_audit_log WHERE organization_id='${org}' AND actor_user_id='${a.id}' AND action='member.joined';`),'2');
+ pass('CHARACTERIZED DEFECT: simultaneous same-token redemptions both succeed and duplicate joined audit');
+ await db.sql(`DELETE FROM public.organization_members WHERE organization_id='${org}' AND user_id='${a.id}';DELETE FROM public.organization_invitations WHERE organization_id='${org}';`);
+ const raw=await readFile(new URL('./review-only-business-integrity.sql',import.meta.url),'utf8');
+ await assert.rejects(db.sql(raw),/UNAPPLIED_BATCH16_BUSINESS_INTEGRITY/);
+ const proposalSha256=createHash('sha256').update(raw).digest('hex');
+ await db.sql(raw.replace(/DO \$proposal_guard\$[\s\S]*?\$proposal_guard\$;/,'-- isolated disposable model adoption only'));
+ pass('Guarded successor rejects unchanged execution and adopts only inside disposable model');
+ const ja=await invite(a),jb=await invite(b);
+ const after=await race([a,b],[ja.token,jb.token],'review final seat');assert.equal(after.filter(r=>!r.error).length,1);assert.equal(after.filter(r=>r.error&&/seat limit/.test(r.error.message)).length,1);
+ assert.equal(await db.sql(`SELECT count(*) FROM public.organization_members WHERE organization_id='${org}';`),'5');
+ pass('Isolated successor serializes genuine JWT last-seat redemption: exactly one success and one explicit denial');
+ await db.sql(`DELETE FROM public.organization_members WHERE organization_id='${org}' AND user_id IN ('${a.id}','${b.id}');DELETE FROM public.organization_invitations WHERE organization_id='${org}';DELETE FROM public.organization_audit_log WHERE organization_id='${org}' AND actor_user_id='${a.id}' AND action='member.joined';`);
+ const once=await invite(a);const duplicateAfter=await race([a,a],[once.token,once.token],'review duplicate redemption');
+ assert.equal(duplicateAfter.filter(r=>!r.error).length,1);assert.equal(duplicateAfter.filter(r=>r.error&&/invalid or expired/.test(r.error.message)).length,1);
+ assert.equal(await db.sql(`SELECT count(*) FROM public.organization_audit_log WHERE organization_id='${org}' AND actor_user_id='${a.id}' AND action='member.joined';`),'1');
+ pass('Isolated successor admits a same-token concurrent redemption once and records exactly one joined audit');
+ await denied(owner.sdk.from('client_workspaces').insert({organization_id:org,project_id:foreignProject.id,name:'Rejected foreign project',created_by:owner.id}),/foreign key/);
+ const localProject=(await ok(owner.sdk.from('business_projects').insert({organization_id:org,name:'Local project',created_by:owner.id}).select()))[0];
+ const localClient=(await ok(owner.sdk.from('client_workspaces').insert({organization_id:org,project_id:localProject.id,name:'Local client',created_by:owner.id}).select()))[0];assert.equal(localClient.project_id,localProject.id);
+ for(const refs of [{project_id:foreignProject.id},{client_workspace_id:foreignClient.id}])await denied(owner.sdk.from('shared_calculations').insert({organization_id:org,calculator_slug:'slope-calculator',calculator_version:1,created_by:owner.id,...refs}),/foreign key/);
+ await ok(owner.sdk.from('shared_calculations').insert({organization_id:org,calculator_slug:'slope-calculator',calculator_version:1,created_by:owner.id,project_id:localProject.id,client_workspace_id:localClient.id}));
+ pass('Isolated successor rejects foreign project/client references in clients and shared rows; same-tenant links remain valid');
+ const afterDescriptor=JSON.parse(await db.sql(BUSINESS_DESCRIPTOR_SQL));
+ assert.equal(compareDescriptors(beforeDescriptor,beforeDescriptor).equal,true);assert.equal(compareDescriptors(beforeDescriptor,afterDescriptor).equal,false);
+ return {status:'SOFTWARE_PREPARED_REVIEW_ONLY_APP_ACTIVATION_BLOCKED',runtime:process.version,proposalSha256,captureAvailable:false,hostedEquivalence:'UNKNOWN',beforeDescriptor,beforeSha256:descriptorHash(beforeDescriptor),afterDescriptor,afterSha256:descriptorHash(afterDescriptor),legacyDefects:['concurrent final-seat redemption creates six members','duplicate same-token redemption succeeds twice and duplicates audit','own-tenant rows accept foreign-tenant project/client references'],remaining:['concurrent invitation issuance preflight remains non-atomic','direct privileged/external membership writers do not share the proposal organization lock','owner-role transition and invite-to-existing-member policy requires disposition','logout access JWT remains valid until expiry; no session_id validation introduced','raw authorized hosted schema/capture unavailable; no hosted comparison executed','compatibility/data audit and deployment gates required before any adoption']};
+}
