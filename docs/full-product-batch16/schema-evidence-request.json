@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "authenticCurrentCapture": "BLOCKED_UNAVAILABLE",
+  "genuineProductionDrift": "UNKNOWN_NOT_COMPARED",
+  "runtimeEvidence": {
+    "configuredDatabaseSecrets": 0,
+    "configuredOutboundIdentities": 0,
+    "connectedProjectDiscovery": "Requires unavailable nonempty connection link identifier; no project assumed; no credential-file contents inspected."
+  },
+  "historicalCaptureMetadata": {
+    "path": "docs/audits/authentic-schema-remediation-2026-10-21/evidence.json",
+    "meaning": "Retained historical capture checksum/scope and previous test record; not authentic current raw bytes or present-day hosted equivalence."
+  },
+  "currentLocalEvidence": {
+    "path": "auth-integrity-receipt.json",
+    "scope": "Reviewed disposable repository model and seven-table Business descriptor. Local before/after proposed changes are not production drift."
+  },
+  "requiredSections": [
+    {
+      "section": "tables-and-owners",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "columns-and-defaults",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "constraints-and-validation",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "indexes-and-validity",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "triggers-and-enablement",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "function-identities-bodies-search-paths-owners-acls",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "rls-and-policies",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "effective-grants-and-role-memberships",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    },
+    {
+      "section": "migration-history-and-effect-ledger",
+      "currentAuthenticStatus": "BLOCKED",
+      "requestedEvidence": "Authorized read-only original metadata bytes with source/project identity, capture timestamp, exact scope and per-file SHA256; omissions explicit."
+    }
+  ],
+  "captureRequirements": [
+    "No application rows, passwords, access tokens, service keys or credential values. Protect raw schema artifacts; publish only reviewed metadata and digests.",
+    "Record original bytes and source authenticity separately from canonical JSON/hash equality. Observation time does not establish migration deployment time.",
+    "Preserve overloaded function signatures, owners, SECURITY DEFINER/search_path, effective ACLs and inherited roles; RLS enablement alone is insufficient.",
+    "Preserve duplicate historical migration filenames as distinct identities; compare actual applied history/effects against reviewed dispositions without applying migrations.",
+    "Include actual indexes, trigger enablement, constraint validation/delete effects and platform/auth schema coverage; the narrower Business descriptor does not claim those full-schema dimensions.",
+    "Comparison mismatches require reviewed classification; never infer safe adoption, current production compatibility or qualified approval from a local model."
+  ],
+  "readOnlyOnly": true,
+  "productionWritesAuthorized": false,
+  "releaseHold": true
+}

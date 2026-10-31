@@ -120,6 +120,13 @@ jobs:
           browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
           echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
           "$browser" --version
+      - name: Require independent PDF reader and renderer
+        run: |
+          if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends poppler-utils
+          fi
+          node scripts/assert-pdf-tools.mjs
       - name: Unit tests
         run: npm test
       - name: Launch certification
@@ -287,6 +294,7 @@ jobs:
         run: node tests/gotrue-full-schema/acceptance.mjs
         env:
           GOTRUE_FULL_ARTIFACTS: ${{ runner.temp }}/batch14-gotrue-full
+          BATCH16_AUTH: '1'
       - name: Software closure evidence and recovery lifecycle browser acceptance
         run: |
           node scripts/software-closure-evidence.mjs --check
@@ -296,6 +304,18 @@ jobs:
         env:
           SOFTWARE_CLOSURE_ARTIFACTS: ${{ runner.temp }}/software-closure
           CALCULUS_RECOVERY_EVIDENCE: ${{ runner.temp }}/calculus-recovery
+      - name: Batch16 requirement, schema comparison and finder acceptance
+        run: |
+          node_modules/.bin/vite-node --config vitest.config.ts scripts/batch16-requirement-evidence.ts --check
+          node scripts/batch16-contract-groups.mjs --check
+          node scripts/batch16-authority-requests.mjs --check
+          node --test tests/batch16-auth/schema-comparison.test.mjs tests/full-product-batch16/workflow.test.mjs
+          node tests/gotrue-runtime/acceptance.mjs
+          node tests/full-product-batch16/finder-browser.mjs
+        env:
+          BATCH16_FULL_SCHEMA: '1'
+          GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch16-full-schema-browser
+          BATCH16_FINDER_ARTIFACTS: ${{ runner.temp }}/batch16-finder
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]

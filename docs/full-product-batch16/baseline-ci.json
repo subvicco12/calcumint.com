@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "pr": 1505,
+  "sha": "1f1f32797b99f0760aeb55b5ff112ad6a8c50383",
+  "runId": 41232409178,
+  "conclusion": "failure",
+  "jobs": {
+    "build": "success",
+    "checks": "success",
+    "full-product": "success",
+    "source-acceptance": "failure",
+    "validate": "failure"
+  },
+  "failedStep": "Isolated Business browser acceptance",
+  "failedJourneys": [
+    "Actual project and client creation actions",
+    "Seat quota blocks invite without synthetic write"
+  ],
+  "rootCause": "Synthetic .maybeSingle membership read returned a collection instead of a scoped scalar row. Actual new application role gate denied it.",
+  "localRepair": "05dfbf4; original29 assertions retained, allpass; six shape/scope regressions (five red).",
+  "hostedUnitObservation": {
+    "passed": 6519,
+    "skipped": 8,
+    "additionalFourPdfSkips": "Independent Poppler-reader checks were conditional on unavailable tools; new CI prerequisite requires those tools."
+  },
+  "noSuccessManufactured": true,
+  "releaseHold": true
+}

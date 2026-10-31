@@ -1,9 +1,10 @@
+import { historicalWorkflowWithoutPdfTools } from '../ci-gate-recovery/pdf-tools-contract.mjs';
 import { historicalWorkflowWithoutNpmCache } from '../ci-gate-recovery/npm-cache-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
-const old=readFileSync('docs/partial16-ci-recovery/ci-at-9edc900.yml','utf8'),current=historicalWorkflowWithoutNpmCache(readFileSync('.github/workflows/ci.yml','utf8'));
+const old=readFileSync('docs/partial16-ci-recovery/ci-at-9edc900.yml','utf8'),current=historicalWorkflowWithoutPdfTools(historicalWorkflowWithoutNpmCache(readFileSync('.github/workflows/ci.yml','utf8')));
 const jobs=source=>Object.fromEntries([...source.split('\njobs:\n')[1].matchAll(/^  ([a-z][a-z-]*):\n([\s\S]*?)(?=^  [a-z][a-z-]*:\n|$(?![\s\S]))/gm)].map(m=>[m[1],m[2]]));
 const steps=job=>[...job.matchAll(/^      - ([\s\S]*?)(?=^      - |$(?![\s\S]))/gm)].map(m=>'      - '+m[1]);
 test('all original checks remain byte-for-byte with20minute per-job budgets',()=>{

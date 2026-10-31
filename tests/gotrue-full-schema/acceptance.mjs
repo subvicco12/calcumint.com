@@ -7,6 +7,7 @@ import path from 'node:path';
 import {createClient} from '@supabase/supabase-js';
 import {startGoTrueFixture} from '../gotrue-runtime/fixture.mjs';
 import {initializeFullSchema} from './schema.mjs';
+import {runBatch16Auth} from '../batch16-auth/concurrency.mjs';
 const artifacts=process.env.GOTRUE_FULL_ARTIFACTS||await mkdtemp(path.join(os.tmpdir(),'calcumint-gotrue-full-'));
 await mkdir(artifacts,{recursive:true});
 const checks=[];let db;
@@ -122,8 +123,9 @@ try{
  pass('Anonymous history visibility and authenticated-only RPC execution boundaries');
  assert.equal(await db.sql("SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND c.relkind='r' AND (has_table_privilege('anon',c.oid,'TRUNCATE') OR has_table_privilege('authenticated',c.oid,'TRUNCATE'));"),'0');
  pass('All41 public tables deny effective anonymous/authenticated TRUNCATE after reviewed adoption');
+ const batch16=process.env.BATCH16_AUTH==='1'?await runBatch16Auth({db,signup,ok,denied,pass}):undefined;
  const sourceCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
- const harnessSources=[];for(const file of ['tests/gotrue-runtime/fixture.mjs','tests/gotrue-full-schema/schema.mjs','tests/gotrue-full-schema/acceptance.mjs'])harnessSources.push({path:file,sha256:createHash('sha256').update(await readFile(file)).digest('hex')});
- await writeFile(path.join(artifacts,'acceptance.json'),JSON.stringify({sourceCommit,harnessSources,checks,provenance:db.provenance,requests:db.requests,limits:['No browser acceptance in this suite','No captured schema/ACL/ledger parity: raw owner artifact unavailable','Local privileged Business entitlement setup, no payment/provider transition','Review guards removed only inside disposable model, no production authorization']},null,2)+'\n');
+ const harnessSources=[];for(const file of ['tests/gotrue-runtime/fixture.mjs','tests/gotrue-full-schema/schema.mjs','tests/gotrue-full-schema/acceptance.mjs',...(process.env.BATCH16_AUTH==='1'?['tests/batch16-auth/concurrency.mjs','tests/batch16-auth/review-only-business-integrity.sql','tests/batch16-auth/schema-descriptor.mjs','tests/batch16-auth/compare-schema.mjs']:[])])harnessSources.push({path:file,sha256:createHash('sha256').update(await readFile(file)).digest('hex')});
+ await writeFile(path.join(artifacts,'acceptance.json'),JSON.stringify({sourceCommit,harnessSources,checks,batch16,provenance:db.provenance,requests:db.requests,limits:['No browser acceptance in this suite','No captured schema/ACL/ledger parity: raw owner artifact unavailable','Local privileged Business entitlement setup, no payment/provider transition','Review guards removed only inside disposable model, no production authorization']},null,2)+'\n');
  console.log(`${checks.length} checks passed; evidence ${artifacts}`);
 }catch(error){console.error(error);await writeFile(path.join(artifacts,'failure.json'),JSON.stringify({checks,error:error.message,provenance:db?.provenance},null,2));console.error('Failure evidence '+artifacts);process.exitCode=1;}finally{await db?.close();}

@@ -1,3 +1,4 @@
+import { aiErrorResponse, onceAiFinalizer, parseAiRequest } from "@/lib/ai/request-errors";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { consumeAiAccess, finishAiUsage } from "@/lib/ai/access";
@@ -7,16 +8,17 @@ const requestSchema = z.object({ prompt: z.string().trim().min(10).max(5000) });
 
 export async function POST(request: Request) {
   let access: Awaited<ReturnType<typeof consumeAiAccess>> | null = null;
+  const finalize = onceAiFinalizer<Parameters<typeof finishAiUsage>[1]>(async (usage, succeeded) => {
+    if (access) await finishAiUsage(access, usage, succeeded);
+  });
   try {
-    const { prompt } = requestSchema.parse(await request.json());
+    const { prompt } = await parseAiRequest(request, requestSchema);
     access = await consumeAiAccess("builder");
     const proposal = await proposeBuilderDefinition(prompt);
-    await finishAiUsage(access, proposal.usage, true);
+    await finalize(proposal.usage, true);
     return NextResponse.json({ definition: proposal.definition, notes: proposal.notes });
   } catch (error) {
-    if (access) await finishAiUsage(access, undefined, false);
-    const message = error instanceof Error ? error.message : "Builder assistance failed";
-    const status = /Business plan required|Sign in|limit/i.test(message) ? 403 : 400;
-    return NextResponse.json({ error: message }, { status });
+    try { if (access) await finalize(undefined, false); } catch { /* Keep accounting diagnostics private. */ }
+    return aiErrorResponse(error);
   }
 }

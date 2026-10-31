@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "baseline": {
+    "pr": 1505,
+    "sha": "1f1f32797b99f0760aeb55b5ff112ad6a8c50383",
+    "ciRun": 41232409178,
+    "conclusion": "failure",
+    "failedJob": "source-acceptance",
+    "failedStep": "Isolated Business browser acceptance",
+    "repair": "05dfbf4: scoped scalar maybeSingle fixture repair; application authorization/assertions unchanged",
+    "repairValidation": "Original29 journeys reproduced two failures, then all29 pass; six fixture regressions (five red before fix).",
+    "greenBaselineClaimed": false
+  },
+  "runtime": "Node v22.23.4",
+  "checks": [
+    {
+      "check": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "seconds": 27.14,
+      "log": "/workspace/work/batch16-lint.log"
+    },
+    {
+      "check": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 33.29,
+      "log": "/workspace/work/batch16-typecheck.log"
+    },
+    {
+      "check": "unit",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "seconds": 152.67,
+      "log": "/workspace/work/batch16-unit.log"
+    },
+    {
+      "check": "launch",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "exitCode": 0,
+      "seconds": 2.5,
+      "log": "/workspace/work/batch16-launch.log"
+    },
+    {
+      "check": "certification",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "exitCode": 0,
+      "seconds": 1.86,
+      "log": "/workspace/work/batch16-certification.log"
+    },
+    {
+      "check": "build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "seconds": 61.17,
+      "log": "/workspace/work/batch16-build.log"
+    }
+  ],
+  "unitSummary": {
+    "passed": 6603,
+    "existingSkipped": 4,
+    "passedFiles": 832,
+    "skippedFiles": 2
+  },
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 28
+  },
+  "launchGuards": 45,
+  "certificationGuards": 15,
+  "ciHistoricalAndSchemaGuards": {
+    "passed": 2423,
+    "log": "/workspace/work/batch16-final-guards.log"
+  },
+  "sdkTransport": {
+    "passed": 3,
+    "log": "/workspace/work/batch16-transport.log"
+  },
+  "independentPdf": {
+    "focusedTestsPassed": 10,
+    "skipped": 0,
+    "independentChecks": 4,
+    "tools": {
+      "independentPdfTools": {
+        "pdftotext": "pdftotext version 25.03.0",
+        "pdffonts": "pdffonts version 25.03.0",
+        "pdftoppm": "pdftoppm version 26.05.0",
+        "pdfinfo": "pdfinfo version 26.05.0"
+      }
+    },
+    "log": "/workspace/work/batch16-pdf-independent.log",
+    "hostedPrerequisite": "Allfour tools now mandatory before CI unit suite; independent assertions unchanged."
+  },
+  "genuineAuth": {
+    "checks": 29,
+    "receipt": "integrated-auth-integrity-receipt.json",
+    "allCurrentHarnessHashesVerified": true,
+    "characterizedLegacyDefects": [
+      "concurrent final-seat redemption creates six members",
+      "duplicate same-token redemption succeeds twice and duplicates audit",
+      "own-tenant rows accept foreign-tenant project/client references"
+    ],
+    "scope": "Reviewed local repository model plus unactivated integrity successor; no hosted parity."
+  },
+  "nativeAuthFullModel": {
+    "checks": 10,
+    "receipt": "full-schema-browser-receipt.json",
+    "allCurrentHarnessHashesVerified": true,
+    "scope": "Actual installed SDK/GoTrue/PostgREST/Next native login, account, reload and signout against reviewed41-table model. Default initializer unchanged."
+  },
+  "browsers": {
+    "featureHead": "145367857d6e85fbf4145a0d67fdbf7ab516c041",
+    "checks": [
+      {
+        "check": "business-browser",
+        "command": [
+          "node",
+          "scripts/test-business-browser.mjs"
+        ],
+        "exitCode": 0,
+        "seconds": 5.75,
+        "log": "/workspace/work/batch16-integrated-business-browser.log"
+      },
+      {
+        "check": "finder-browser",
+        "command": [
+          "node",
+          "tests/full-product-batch16/finder-browser.mjs"
+        ],
+        "exitCode": 0,
+        "seconds": 3.16,
+        "log": "/workspace/work/batch16-integrated-finder-browser.log"
+      }
+    ],
+    "sourceHashes": {
+      "src/components/ai-finder.tsx": "8ebe9c0e275e7d38e78e2cfdbbfd8a75011311ddd48320e0dd0008c3d6bde530",
+      "src/lib/ai/access.ts": "81c99dab0ae31af500feabbb258e96a75be5c62ce45b22a862135fd6ad58632f",
+      "src/lib/ai/request-errors.ts": "5f324b28514b86410c33897c4d04cfcc7f706247af13ffc05dbcdc755af1d2cb",
+      "src/app/api/ai/find/route.ts": "cc1ec975506d424db5a0ec0424c8b3b22736b52cd89360e9daf6f5cb1020238d",
+      "src/app/api/ai/explain/route.ts": "9f17bb1bfe8e513b31d123f6c14cfe73d419537bad0a7e87de03fcd00f832618",
+      "src/app/api/ai/builder-assist/route.ts": "466026d377289079645261817d2aa4d65b80d9647745c9e3df60b3c97bf45037",
+      "tests/full-product-batch16/finder-browser.mjs": "61a839913ec34786420be56cf953ad6eab70fbc1e3d78066289613e458651137",
+      "tests/full-product-batch16/finder/main.tsx": "8a3f5f3cc98ecd9c621ba9108df309b606b38dfa27f5dc6b9f9ec7f63afc1da2",
+      "tests/business-browser/transport.tsx": "bee0cacb35628c33226d38facb84f4eadf878b31edf10102d7ad4eca3b2a50e6",
+      "scripts/test-business-browser.mjs": "f68543c95dc3346d5ca98a68623fe63dad804f5b79d269beaec39c3d5cb5217a",
+      "src/app/business/actions.ts": "4a67f6674620f9105b9f1469eca9dc219cfc4c6150224f1d62aa550830816182",
+      "scripts/draft-preview.mjs": "fd36b5cc17abcffce316840b9434dffa6ea964d38d9aa7109e11277230e1a2b5",
+      "tests/next-runtime/cdp.mjs": "1d2fd3a3648b23fa47e0fc01fc1261ba6e1693f26f3b5cb3fa867fa72272e260",
+      "package-lock.json": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+    },
+    "unchangedDuringRuns": true,
+    "businessJourneys": 29,
+    "finderJourneys": 2,
+    "issues": 0,
+    "receipts": [
+      "integrated-business-browser-receipt.json",
+      "integrated-finder-browser-receipt.json"
+    ],
+    "sourceHashesVerified": true
+  },
+  "requirementSummary": {
+    "identities": 540,
+    "reviewRequired": 497,
+    "authorityBlocked": 43,
+    "exactLiveAdapters": 79,
+    "existingWitnessChecks": 1106,
+    "newIndependentWitnesses": 0,
+    "canonicalAccepted": 0,
+    "statuses": {
+      "VERIFIED": 553,
+      "PARTIAL": 1907,
+      "BLOCKED": 2438,
+      "UNKNOWN": 9395
+    }
+  },
+  "evidenceMeaning": "553 VERIFIED entries are rerun existing bounded witness dimensions; zero new numerical witnesses or canonical promotions. Full product dispositions remain separately PARTIAL/BLOCKED/UNKNOWN.",
+  "preservation": {
+    "identities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlocked": 43,
+    "protectedFilesByteUnchanged": 1101,
+    "newMathematicalVersions": 0,
+    "canonicalPromotions": 0,
+    "v1v2CalculusBindings": "PASS"
+  },
+  "verificationScope": "Full suite/typecheck/build cover final application sources; subsequent changes were separately checked CI/test harness/evidence tooling, with no later app or engine edits.",
+  "historicalReceiptPolicy": "Original auth-integrity-receipt.json remains historical; integrated receipt separately binds current harness bytes. No old receipt hash was rewritten to imply rerun.",
+  "hostedDeliveryCI": "One bounded observation after final push/PR; final delivery response records result. Baseline failure is not replaced by local success.",
+  "releaseHold": true
+}

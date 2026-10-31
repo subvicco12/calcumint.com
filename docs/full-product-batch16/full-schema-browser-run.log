@@ -1,0 +1,11 @@
+PASS Actual signup migrations/trigger create Free profile; editable metadata cannot elevate JWT role or plan
+PASS Actual password rejection
+PASS Real JWT PostgREST own history read/write; outsider isolation, foreign-owner and plan writes denied
+PASS Authenticated JWT cannot invoke GoTrue admin (explicit user bearer plus SDK denial)
+PASS Anon/service tokens without user subject cannot authenticate user; wrong-signature JWT rejected by PostgREST
+PASS Actual refresh rotates tokens; logout deletes auth.sessions and rejects revoked refresh
+PASS Measured limitation: signed access JWT accepted immediately after logout; elapsed expiry boundary not tested
+PASS Native Next login form authenticates through installed SDK and real GoTrue, displaying own account
+PASS Actual SSR cookie login survives browser reload without session injection
+PASS Native browser sign-out removes access to authenticated account
+10 checks passed; evidence /tmp/batch16-full-schema-browser

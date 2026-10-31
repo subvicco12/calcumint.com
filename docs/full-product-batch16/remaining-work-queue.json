@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "estimateBasis": "Task-specific engineering-hour ranges from demonstrated omissions; not calendar durations, commitments or a complete540-product estimate. External waiting time excluded.",
+  "independentlyExecutable": [
+    {
+      "id": "BUS-ISSUANCE",
+      "task": "Prepare and test atomic invitation issuance/reservation successor preserving the current five-seat/pending semantics; characterize participating writers without activation.",
+      "hours": [
+        6,
+        10
+      ],
+      "evidence": "auth-integrity-evidence.md: issuance preflight remains non-atomic"
+    },
+    {
+      "id": "DB-FULL-CAPTURE-TOOLING",
+      "task": "Expand metadata export/strict comparison from seven Business tables to full declared schema, indexes/trigger state and migration/effect ledger; add omission and compatibility tests.",
+      "hours": [
+        4,
+        6
+      ],
+      "evidence": "schema-evidence-request.json: required sections unavailable"
+    },
+    {
+      "id": "AUTH-EXPIRY-BOUNDARY",
+      "task": "Add a bounded short-lifetime genuine fixture expiry/recovery campaign; preserve the explicitly characterized immediate post-logout JWT boundary.",
+      "hours": [
+        2,
+        4
+      ],
+      "evidence": "integrated-auth-integrity-receipt.json: expiry not measured"
+    }
+  ],
+  "independentHoursTotal": [
+    12,
+    20
+  ],
+  "conditionalEngineering": [
+    {
+      "id": "BUS-ROLE-WRITERS",
+      "task": "Reconcile invite-to-existing-member/owner semantics and every direct writer with one admission protocol.",
+      "hours": [
+        4,
+        8
+      ],
+      "blockedBy": "Explicit role/owner policy disposition and complete writer/schema evidence."
+    },
+    {
+      "id": "DB-ADOPTION-COMPATIBILITY",
+      "task": "Compare authentic capture, read-only existing-reference audit and compatibility/delete-effect regressions; prepare reviewed adoption/rollback gates without applying them.",
+      "hours": [
+        4,
+        8
+      ],
+      "blockedBy": "Authorized authentic current capture and migration/effect dispositions."
+    },
+    {
+      "id": "AUTH-SESSION-POLICY",
+      "task": "Implement and test session-aware immediate access revocation only if that policy is selected.",
+      "hours": [
+        6,
+        10
+      ],
+      "blockedBy": "Owner selection of immediate revocation versus ordinary JWT-expiry semantics."
+    }
+  ],
+  "conditionalHoursTotal": [
+    14,
+    26
+  ],
+  "notEstimated": [
+    "Full canonical scope/mapping/domain/application review for497 identities: approved requirements are not yet established.",
+    "43 source/provider/policy/qualified-review decisions; exact requests in authority-requests-43.json.",
+    "Hosted provider/mail/MFA/OAuth/live billing and production adoption; unavailable evidence cannot be assigned an honest fixed duration."
+  ],
+  "releaseHold": true
+}
