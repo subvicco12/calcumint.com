@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "32df71008d69839b08bf23597cad462717b7b0c7",
+  "commands": [
+    {
+      "id": "unit",
+      "command": "npm test",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 6420,
+      "skipped": 4,
+      "logSHA256": "d6c27b2a63ebc0ef2c6a77131d2c1181eae46a16de2bb83d6a675225d159c754",
+      "summary": "ence-six-analysis-contract.test.ts (1 test) 5ms\n \u2713 src/calculators/final-framework/renderer-schedule-readiness.test.ts (2 tests) 3ms\n \u2713 src/calculators/final-framework/renderer-live-result-accessibility.test.ts (1 test) 4ms\n \u2713 src/calculators/final-framework/result-reconciliation.test.ts (2 tests) 2ms\n \u2713 src/calculators/final-framework/trust-metadata.test.ts (1 test) 5ms\n \u2713 src/calculators/final-framework/presentation-entitlement-alignment.test.ts (1 test) 3ms\n \u2713 src/app/account/country-preference-migration.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/renderer-trust-ui-contract.test.ts (1 test) 8ms\n \u2713 src/calculators/final-framework/renderer-explicit-presentation.test.ts (1 test) 11ms\n \u2713 src/calculators/final-framework/technical-version-trust.test.ts (2 tests) 3ms\n \u2713 src/app/calculators/[category]/page.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/renderer-trust-surface.test.ts (1 test) 3ms\n \u2713 src/calculators/final-framework/mortgage-parity-readiness.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/loan-postmigration-schedule-policy.test.ts (1 test) 9ms\n \u2713 src/calculators/final-framework/reference-six-route-binding.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/structured-trust-fail-closed.test.ts (2 tests) 2ms\n \u2713 src/calculators/final-framework/renderer-view-model.test.ts (1 test) 2ms\n \u2713 src/calculators/final-framework/break-even-trust-evidence.test.ts (1 test) 22ms\n \u2193 src/calculators/catalog-full-evidence.test.ts (2 tests | 2 skipped)\n \u2193 src/calculators/catalog-inventory-export.test.ts (1 test | 1 skipped)\n\n Test Files  819 passed | 2 skipped (821)\n      Tests  6420 passed | 4 skipped (6424)\n   Start at  16:13:48\n   Duration  195.14s (transform 17.19s, setup 0ms, collect 183.85s, tests 131.51s, environment 41.60s, prepare 64.30s)\n\n"
+    },
+    {
+      "id": "lint",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "afc1d6b941acb3e6b3da077269a3445bbb0126af0434e379d1d5966b185dfc2a",
+      "summary": "  react-hooks/exhaustive-deps\n  306:6    warning  'PhysicsKind' is defined but never used                                                                                                                                              @typescript-eslint/no-unused-vars\n  307:7    warning  'physicsConfig' is assigned a value but never used                                                                                                                                   @typescript-eslint/no-unused-vars\n  311:551  warning  'input' is assigned a value but never used                                                                                                                                           @typescript-eslint/no-unused-vars\n\n/workspace/work/calcumint-full-product-batch12/src/components/custom-calculator-preview.tsx\n  21:43  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\n\n/workspace/work/calcumint-full-product-batch12/src/components/pro-checkout-button.tsx\n  179:52  warning  Do not use `window.location.assign()` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination\n\n/workspace/work/calcumint-full-product-batch12/src/components/public-embed-calculator.test.tsx\n  44:43  warning  '_options' is defined but never used  @typescript-eslint/no-unused-vars\n\n\u2716 28 problems (0 errors, 28 warnings)\n\n"
+    },
+    {
+      "id": "typecheck",
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "summary": "\n> calcumint@0.1.0 typecheck\n> tsc --noEmit\n\n"
+    },
+    {
+      "id": "build",
+      "command": "npm run build (next build --webpack)",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": null,
+      "skipped": null,
+      "logSHA256": "d9d14396ee8246b4c5280cad53410cbf143d73309bf7513d367318de6eeaa918",
+      "summary": "eScript in 70s ...\n  Collecting page data using 4 workers ...\n  Generating static pages using 4 workers (0/37) ...\n  Generating static pages using 4 workers (9/37) \r\n  Generating static pages using 4 workers (18/37) \r\n  Generating static pages using 4 workers (27/37) \r\n\u2713 Generating static pages using 4 workers (37/37) in 504ms\n  Finalizing page optimization ...\n  Collecting build traces ...\n\nRoute (app)\n\u250c \u0192 /\n\u251c \u25cb /_not-found\n\u251c \u25cb /about\n\u251c \u25cb /acceptable-use\n\u251c \u25cb /account\n\u251c \u0192 /account/calculators\n\u251c \u0192 /account/calculators/[slug]\n\u251c \u0192 /account/drafts\n\u251c \u0192 /account/history\n\u251c \u0192 /account/projects\n\u251c \u0192 /account/projects/[id]\n\u251c \u0192 /account/saved\n\u251c \u25cb /admin\n\u251c \u25cb /admin/calculators\n\u251c \u0192 /admin/calculators/[id]\n\u251c \u25cb /ai\n\u251c \u0192 /api/ai/builder-assist\n\u251c \u0192 /api/ai/explain\n\u251c \u0192 /api/ai/find\n\u251c \u0192 /api/billing/checkout\n\u251c \u0192 /api/billing/checkout/status\n\u251c \u0192 /api/billing/portal\n\u251c \u0192 /api/billing/webhook\n\u251c \u0192 /api/embed/[key]/events\n\u251c \u0192 /api/embed/[key]/leads\n\u251c \u0192 /api/embed/[key]/session\n\u251c \u0192 /api/internal/admin/publish\n\u251c \u0192 /api/internal/readiness\n\u251c \u0192 /api/internal/webhooks/process\n\u251c \u0192 /api/v1/batch\n\u251c \u0192 /api/v1/custom/[calculatorId]/calculate\n\u251c \u25cb /apple-icon.png\n\u251c \u0192 /auth/callback\n\u251c \u0192 /business\n\u251c \u25cb /business-platform\n\u251c \u25cb /business/api\n\u251c \u25cb /business/builder\n\u251c \u0192 /business/builder/[id]\n\u251c \u25cb /business/builder/ai\n\u251c \u0192 /business/delivery/[id]\n\u251c \u0192 /business/invite/[token]\n\u251c \u0192 /calculators\n\u251c \u0192 /calculators/[category]\n\u251c \u0192 /calculators/[category]/[slug]\n\u251c \u25cb /contact\n\u251c \u25cb /cookie-policy\n\u251c \u25cb /data-deletion\n\u251c \u25cb /disclaimer\n\u251c \u0192 /embed/[key]\n\u251c \u0192 /health\n\u251c \u25cb /icon.png\n\u251c \u0192 /login\n\u251c \u25cb /login/forgot\n\u251c \u0192 /login/reset\n\u251c \u25cb /pricing\n\u251c \u25cb /privacy\n\u251c \u25cb /refund-policy\n\u251c \u25cb /robots.txt\n\u251c \u0192 /share/[token]\n\u251c \u0192 /sitemap.xml\n\u2514 \u25cb /terms\n\n\n\u0192 Proxy (Middleware)\n\n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n\n"
+    },
+    {
+      "id": "launch",
+      "command": "npm run test:launch",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 45,
+      "skipped": 0,
+      "logSHA256": "7d223021dd641f8b7e36554c910cced51d4e350e298733e3941d079e1f25e837",
+      "summary": "\n> calcumint@0.1.0 test:launch\n> vitest run src/calculators/launch-portfolio.test.ts src/lib/launch/readiness.test.ts src/lib/launch/hardening.test.ts\n\n\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/lib/launch/readiness.test.ts (5 tests) 12ms\n \u2713 src/lib/launch/hardening.test.ts (7 tests) 34ms\n \u2713 src/calculators/launch-portfolio.test.ts (33 tests) 161ms\n\n Test Files  3 passed (3)\n      Tests  45 passed (45)\n   Start at  16:14:29\n   Duration  7.55s (transform 3.91s, setup 0ms, collect 6.91s, tests 207ms, environment 0ms, prepare 707ms)\n\n"
+    },
+    {
+      "id": "certification",
+      "command": "npm run test:certification",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 15,
+      "skipped": 0,
+      "logSHA256": "6b96df438ff20fffed137969a95c4cc3498b96583b66a8d670f8d959763a6a30",
+      "summary": "\n> calcumint@0.1.0 test:certification\n> vitest run src/calculators/launch-certification.test.ts src/calculators/rule-packs.test.ts\n\n\n RUN  v3.2.7 /workspace/work/calcumint-full-product-batch12\n\n \u2713 src/calculators/rule-packs.test.ts (5 tests) 7ms\n \u2713 src/calculators/launch-certification.test.ts (10 tests) 215ms\n\n Test Files  2 passed (2)\n      Tests  15 passed (15)\n   Start at  16:14:38\n   Duration  5.50s (transform 2.70s, setup 0ms, collect 4.88s, tests 222ms, environment 0ms, prepare 269ms)\n\n"
+    },
+    {
+      "id": "ci-guards",
+      "command": "node --test tests/ci-gate-recovery/*.test.mjs",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 348,
+      "skipped": 0,
+      "logSHA256": "06f2a3db68d5a51589df2e096190b9ab91b609135a9a0ca7bb7ef1020d4a76cb",
+      "summary": "=timed_out,fullProduct=empty (7.768165ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=timed_out,fullProduct=unknown (6.611736ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=success (3.988309ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=failure (3.920076ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=cancelled (7.390016ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=skipped (9.971439ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=timed_out (5.558621ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=empty (3.239273ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=empty,fullProduct=unknown (4.011403ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=success (3.759976ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=failure (30.336641ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=cancelled (6.32884ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=skipped (5.261975ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=timed_out (3.445552ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=empty (9.102992ms)\n\u2714 actual aggregate shell fails closed for checks=unknown,build=unknown,fullProduct=unknown (7.883818ms)\n\u2714 full-product job requires both functional browser campaigns and exact aggregate result (0.414173ms)\n\u2139 tests 348\n\u2139 suites 0\n\u2139 pass 348\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 2330.055056\n"
+    },
+    {
+      "id": "transport",
+      "command": "node --test browser-fixture/owner-preview-readiness/cdp.test.mjs",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 15,
+      "skipped": 0,
+      "logSHA256": "fa76945c4cff09af0e2e118c404eeef914edb02b9c0a18ea79cc34c7c5713532",
+      "summary": "\u2714 Browser fixture download failure rejects and removes partial installation (70.46288ms)\n\u2714 Browser fixture checksum failure rejects and removes partial installation (32.092484ms)\n\u2714 Browser fixture extraction failure rejects and removes partial installation (86.488716ms)\n\u2714 synthetic same-owner selection preserves SDK verification while owner replacement fails closed (3825.028572ms)\n\u2714 trusted field edits wait for a visible non-inert account control and preserve outside focus data (1937.996774ms)\n\u2714 headless CDP startup does not depend on the inherited desktop session bus (596.008604ms)\n\u2714 Chromium startup uses its readiness file when stderr is quiet (629.036341ms)\n\u2714 failed target creation from a readiness file still cleans the child and profile (163.238844ms)\n\u2714 target creation can use the remaining startup budget beyond five seconds (5616.219722ms)\n\u2714 target creation still aborts at the shared startup deadline and cleans up (5019.879257ms)\n\u2714 cleanup completes after Chromium has already exited (1622.177638ms)\n\u2714 CDP commands time out and cleanup rejects outstanding commands (599.513688ms)\n\u2714 failed startup terminates a launcher that never exposes CDP and removes its profile (215.358193ms)\n\u2714 directory submit and intermediate client-navigation states never satisfy owner calculation readiness (201.43103ms)\n\u2714 only the target path heading and real calculation control satisfy readiness (25.496761ms)\n\u2139 tests 15\n\u2139 suites 0\n\u2139 pass 15\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 20737.502737\n"
+    },
+    {
+      "id": "security",
+      "command": "node tests/next-runtime/security.mjs",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 9,
+      "skipped": 0,
+      "logSHA256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7",
+      "summary": "PASS repo schema dependencies: auth trigger, membership helper, member/outsider builder RLS, profile plan ACL\nPASS PostgREST rejects wrong JWT signature\nPASS Owner profile display update succeeds but plan update is denied\nPASS RLS prevents cross-account project reads and writes through real HTTP\nPASS Client roles cannot TRUNCATE tables or execute internal service RPC\nPASS Membership role and organization identity fencing survives HTTP writes\nPASS Identical concurrent HTTP lead requests persist one complete receipt\nPASS Late consent failure rolls back the complete HTTP transaction and retry recovers\nPASS Missing and inaccessible RPC signatures fail closed through HTTP\n"
+    },
+    {
+      "id": "source",
+      "command": "immutable canonical/scale source and numerical evidence checks",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 1106,
+      "skipped": 0,
+      "logSHA256": "c51c972b2950e37c04ec22c69f75d684babb750ea5907eb6ab90258177f0fcf6",
+      "summary": "{\"catalogIdentities\":540,\"newPrivateAdapters\":51,\"evaluatedPrivateContracts\":79,\"newWitnessChecks\":714,\"cumulativeWitnessChecks\":1106,\"canonicalAccepted\":0,\"reviewRequired\":497,\"authorityBlocked\":43,\"implementationCounts\":{\"REGISTERED_IMPLEMENTED\":305,\"PRIVATE_COMPLETE\":192,\"CONTRACT_BLOCKED\":43}}\n"
+    },
+    {
+      "id": "fixture-cors",
+      "command": "node --test tests/next-runtime/auth-fixture-cors.test.mjs",
+      "passed": true,
+      "exitCode": 0,
+      "testCount": 3,
+      "scope": "Real browser CORS with installed SDK headers against synthetic fixture transport; no GoTrue or database acceptance inferred.",
+      "redEvidenceSHA256": "db58592a94c9fed188444ed8d42d8f6f46dd7780bf23584666f461e5c6f6be82",
+      "greenEvidenceSHA256": "0aa2c870c4dbb068b2ba8a2cbb824721396e5c0a6e9c2a9dcad5180f8cfcd495",
+      "sdkCountRedSHA256": "7e55db0a9e0d02143c370867ddadad7a2747fdd83158ddb02f3386b0e43cadde"
+    },
+    {
+      "id": "final-extra-guards",
+      "command": "node --test tests/ci-gate-recovery/*.test.mjs tests/next-runtime/auth-fixture-cors.test.mjs",
+      "exitCode": 0,
+      "passed": true,
+      "testCount": 351,
+      "logSHA256": "8bdc31a3ec59452099eb05b4a2b9ee5397ea9cf4167163729b8571b8997f2e62"
+    }
+  ],
+  "independentReview": {
+    "focusedTestsPassed": 135,
+    "document": "INDEPENDENT-REVIEW.md"
+  },
+  "browserCampaigns": {
+    "privateFunctional": {
+      "passed": true,
+      "journeys": 50,
+      "receipt": "private-browser-receipt.json",
+      "originalReceiptSHA256": "379d88b08d5299f720f63a90ed807791beba488aa27452ee64392516b8b1d32a"
+    },
+    "nativeOwnedAccount": {
+      "passed": true,
+      "journeys": 58,
+      "receipt": "account-browser-receipt.json",
+      "originalReceiptSHA256": "125e5f6654e982a658f1d38e49c05066c47821556d65ab48755648ce130a05cb",
+      "scope": "54 owned-record matrix cases, two bounded discovery-save-file-recovery cases, actual cross-owner RLS and transport/identity-denial recovery; synthetic identity is NOT GoTrue."
+    },
+    "existingScaleRegression": {
+      "status": "FAILED_INTERMITTENT_RELOAD_UNDER_INVESTIGATION",
+      "completedJourneysBeforeFailure": 56,
+      "detail": "HTTP200 readycomplete emptyReactroot, no pageexception; original assertions/timeouts unchanged. No application cause inferred.",
+      "instrumentedRerunPassed": true,
+      "instrumentedRerunJourneys": 114,
+      "assertionsAndTimeoutsUnchanged": true,
+      "receipt": "existing-scale-diagnostic-receipt.json",
+      "limitation": "Original failure retained as unresolved; diagnostic rerun does not prove a fix."
+    },
+    "existingNextRuntime": {
+      "passed": true,
+      "journeys": 62,
+      "receipt": "existing-next-runtime-receipt.json",
+      "originalReceiptSHA256": "9629734ea57005dfba7bed3d9a53c5c015dff917139ccb4a3fe667b054bec93e",
+      "finalSDKFixture": true
+    },
+    "existingScaleWorkflow": {
+      "passed": true,
+      "journeys": 3,
+      "checks": [
+        "discovery",
+        "scenarioABC",
+        "downgradeRetains21",
+        "corruptStorageRetained",
+        "originalV1StorageUnchanged",
+        "revision2History"
+      ]
+    }
+  },
+  "hostedDeliveryCI": {
+    "status": "NOT_OBSERVED_AT_COMMIT_TIME",
+    "policy": "One bounded status check after draft PR creation; no polling.",
+    "deliveryObservation": "Exact commit SHA, PR and hosted CI disposition are reported after push in the delivery response. This committed receipt records pre-push local verification and does not imply hosted success."
+  },
+  "numericalEvidence": {
+    "newAdapters": 0,
+    "reusedAdapters": 79,
+    "reusedWitnessChecks": 1106,
+    "newForwardEngineWitnesses": 9,
+    "examples": [
+      "25 percent of 200 = 50",
+      "1 m = 100 cm",
+      "simple interest:1000 at10 percent for2years gives200 interest/1200total",
+      "annual compound100 at10 percent for2years gives121",
+      "two periods principal210/120 percent annual gives121 payment,total242,interest32",
+      "BMI80kg/200cm gives20",
+      "zero-rate SIP100 for2months gives200",
+      "stored loan balances110,0;60-month zero-rate schedule terminatesat0",
+      "calendar2028-01-30/2028-02-29 clamp",
+      "exact integral x^2 from0to1 gives1/3;pole1/x retainsseparateplotsegments"
+    ]
+  },
+  "limits": [
+    "Synthetic identity is not GoTrue authentication acceptance.",
+    "Scope is isolated software acceptance; no production writes or canonical promotion."
+  ],
+  "releaseHold": true
+}
