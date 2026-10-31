@@ -1,20 +1,24 @@
 import assert from 'node:assert/strict';
-import {randomUUID} from 'node:crypto';
-import {mkdir,mkdtemp,writeFile} from 'node:fs/promises';
+import {randomUUID,createHash} from 'node:crypto';
+import {mkdir,mkdtemp,writeFile,readFile} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createClient} from '@supabase/supabase-js';
 import {startGoTrueFixture} from './fixture.mjs';
+import {initializeFullSchema} from '../gotrue-full-schema/schema.mjs';
 import {startNextRuntime} from '../next-runtime/server.mjs';
 import {startBrowser} from '../next-runtime/cdp.mjs';
 const root=fileURLToPath(new URL('../..',import.meta.url));
 const artifacts=process.env.GOTRUE_ARTIFACTS||await mkdtemp(path.join(os.tmpdir(),'calcumint-gotrue-evidence-'));
 await mkdir(artifacts,{recursive:true});
+const fullSchema=process.env.BATCH16_FULL_SCHEMA==='1';
 const checks=[];let db,next,browser;
 const pass=name=>{checks.push(name);console.log('PASS '+name)};
 try{
- db=await startGoTrueFixture();
+ db=await startGoTrueFixture(fullSchema?{initializeSchema:initializeFullSchema}:{});
+ const publicTableCount=Number(await db.sql("SELECT count(*) FROM pg_tables WHERE schemaname='public';"));
+ if(fullSchema)assert.equal(publicTableCount,41);
  const client=()=>createClient(db.url,db.anonKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
  const owner=client(),outsider=client(),password='Local-only-'+randomUUID();
  const email='owner-'+randomUUID()+'@example.invalid';
@@ -46,6 +50,7 @@ try{
  await browser.visit('/account');await browser.until('location.pathname==="/login" || document.body.innerText.includes("Sign in to continue")',120000);pass('Native browser sign-out removes access to authenticated account');
  assert(db.requests.some(r=>r.path==='/auth/v1/token'&&r.status===200));assert(db.requests.some(r=>r.path==='/auth/v1/logout'&&r.status===204));
  assert.deepEqual(browser.errors,[]);assert.deepEqual(browser.network.filter(n=>!n.allowed),[]);
- await writeFile(path.join(artifacts,'acceptance.json'),JSON.stringify({checks,provenance:db.provenance,requests:db.requests,browserErrors:browser.errors,scope:'Actual local GoTrue, PostgREST, installed SDK and Next dev browser; no production/mail acceptance'},null,2));
+ const harnessSources=[];for(const file of ['tests/gotrue-runtime/acceptance.mjs','tests/gotrue-runtime/fixture.mjs','tests/next-runtime/server.mjs','tests/next-runtime/cdp.mjs',...(fullSchema?['tests/gotrue-full-schema/schema.mjs']:['tests/gotrue-runtime/schema.mjs'])])harnessSources.push({path:file,sha256:createHash('sha256').update(await readFile(new URL('../../'+file,import.meta.url))).digest('hex')});
+ await writeFile(path.join(artifacts,'acceptance.json'),JSON.stringify({checks,harnessSources,runtime:process.version,schemaMode:fullSchema?'full41-reviewed-repository-model':'default-selective-repository-model',publicTableCount,provenance:db.provenance,requests:db.requests,browserErrors:browser.errors,scope:fullSchema?'Actual local GoTrue, PostgREST, installed SDK and native Next dev auth/account browser against full41 repository candidate plus locally adopted guarded review bundle; NOT authentic captured hosted schema equivalence, production/mail acceptance or publication authorization':'Actual local GoTrue, PostgREST, installed SDK and Next dev browser; no production/mail acceptance'},null,2));
  console.log(`${checks.length} checks passed; evidence ${artifacts}`);
 }catch(e){await writeFile(path.join(artifacts,'failure.json'),JSON.stringify({checks,error:e.message,provenance:db?.provenance,requests:db?.requests,browserErrors:browser?.errors},null,2));console.error(e);console.error('Failure evidence '+artifacts);process.exitCode=1;}finally{if(browser)await browser.close();if(next)await next.close();if(db)await db.close();}

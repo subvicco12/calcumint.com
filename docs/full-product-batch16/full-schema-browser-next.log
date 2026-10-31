@@ -1,0 +1,24 @@
+▲ Next.js 16.3.5 (webpack)
+- Local:         http://127.0.0.1:40685
+- Network:       http://127.0.0.1:40685
+✓ Ready in 419ms
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  · optimizePackageImports
+
+○ Compiling /login ...
+ GET /login 200 in 9.1s (next.js: 8.4s, proxy.ts: 326ms, application-code: 371ms)
+ GET /login 200 in 348ms (next.js: 5ms, proxy.ts: 274ms, application-code: 68ms)
+○ Compiling /account ...
+ GET /account 200 in 5.5s (next.js: 4.8s, proxy.ts: 75ms, application-code: 689ms)
+ POST /login 200 in 5.9s (next.js: 7ms, proxy.ts: 23ms, application-code: 5.9s)
+  └─ ƒ signIn({}) in 187ms app/login/actions.ts
+ GET /account 200 in 263ms (next.js: 12ms, proxy.ts: 144ms, application-code: 108ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /account 200 in 579ms (next.js: 8ms, proxy.ts: 78ms, application-code: 493ms)
+ GET / 200 in 1067ms (next.js: 749ms, proxy.ts: 14ms, application-code: 305ms)
+ POST /account 200 in 1183ms (next.js: 5ms, proxy.ts: 45ms, application-code: 1134ms)
+  └─ ƒ signOut() in 51ms app/login/actions.ts
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /account 200 in 186ms (next.js: 15ms, proxy.ts: 6ms, application-code: 164ms)
+[?25h
