@@ -22,3 +22,11 @@ test('apply refuses unreviewed existing target names and a different captured pr
  const b={...base(),columns:[],functions:[{id:'public.validate_calculator_publish_gate(uuid)',owner:'unreviewed-owner',definition:'unknown'}]};
  await assert.rejects(prepareApply(snapshot(b)),/owner mismatch/);
 });
+test('recovery refuses missing predecessor functions and changed existing privileges before SQL generation',()=>{
+ const a={...base(),functions:[{id:'public.existing()',definition:'same',owner:'postgres',acl:[]}]};
+ assert.throws(()=>prepareRollback(snapshot(a),snapshot(base())),/Preexisting function missing/);
+ for(const patch of [{owner:'other'},{acl:[{grantee:'PUBLIC',privilege:'EXECUTE'}]}]){
+  const b=structuredClone(a);Object.assign(b.functions[0],patch);
+  assert.throws(()=>prepareRollback(snapshot(a),snapshot(b)),/Existing function control drift/);
+ }
+});

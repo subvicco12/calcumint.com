@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,realpath} from 'node:fs/promises';
+import {resolve,relative,isAbsolute} from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {catalogSQL} from './catalog.mjs';
 export const sha=value=>createHash('sha256').update(value).digest('hex');
@@ -18,6 +20,18 @@ const assertion=hash=>`DO $metadata$ BEGIN IF ${fingerprintSQL} IS DISTINCT FROM
 const guard=name=>`BEGIN;\nSET LOCAL lock_timeout='3s';\nSET LOCAL statement_timeout='30s';\nDO $hold$ BEGIN RAISE EXCEPTION '${name}: no activation authority'; END $hold$;\nDO $isolation$ BEGIN IF current_setting('transaction_isolation') <> 'read committed' THEN RAISE EXCEPTION 'Correction bundle requires READ COMMITTED'; END IF; END $isolation$;\n`;
 // Source hashes authorize deterministic review composition only. The combined
 // guard cannot be removed through a CLI switch; tests remove it in memory.
+export async function verifySourceBindings(plan,root=fileURLToPath(new URL('../../../',import.meta.url))) {
+ const base=await realpath(root),seen=new Set(),verified=[];
+ for(const source of [...plan.sourceBindings,...plan.supplementarySourceBindings]){
+  assert(typeof source.path==='string'&&!isAbsolute(source.path)&&!source.path.split('/').includes('..'),'Unsafe source path');
+  assert(!seen.has(source.path),'Duplicate source: '+source.path);seen.add(source.path);
+  const target=await realpath(resolve(base,source.path)),rel=relative(base,target);
+  assert(rel&&!rel.startsWith('..')&&!isAbsolute(rel),'Source escapes repository');
+  const raw=await readFile(target,'utf8');assert.equal(sha(raw),source.sha256,'Source changed: '+source.path);
+  verified.push({...source,raw});
+ }
+ return verified;
+}
 export async function prepareApply(before) {
  check(before);
  const plan=JSON.parse(await readFile(new URL('plan.json',import.meta.url),'utf8'));
@@ -25,10 +39,11 @@ export async function prepareApply(before) {
  assert(!before.data.columns.some(c=>c.table==='public.user_preferences'&&c.name==='country_code'),'009 existing column requires separate compatibility decision');
  for(const f of before.data.functions)assert(![...newFunctions].some(id=>id.split('(')[0]===f.id.split('(')[0]),'Reviewed new function name already exists; no overwrite or overload inference');
  const predicate=before.data.functions.find(f=>f.id==='public.validate_calculator_publish_gate(uuid)');assert(predicate);assert.equal(predicate.owner,'postgres','Captured predicate owner mismatch');assert.equal(sha(predicate.definition),'18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c');
+ const verified=await verifySourceBindings(plan);
  const chunks=[];
  for(const source of plan.sourceBindings){
   assert(!source.path.startsWith('/')&&!source.path.split('/').includes('..'));
-  const raw=await readFile(new URL('../../../'+source.path,import.meta.url),'utf8');assert.equal(sha(raw),source.sha256,'Source changed: '+source.path);
+  const {raw}=verified.find(entry=>entry.path===source.path);
   const body=raw.replace(/DO (\$\w*\$) BEGIN\s*RAISE EXCEPTION[\s\S]*?END \1;/g,'-- constituent guard retained by outer unconditional hold')
    .replace(/^BEGIN;\s*$/gm,'').replace(/^COMMIT;\s*$/gm,'');
   chunks.push(`-- Exact source ${source.path} SHA256 ${source.sha256}\n${body}`);
@@ -48,6 +63,13 @@ function restoreClientACL(before,after) {
 export function prepareRollback(before,after) {
  check(before);check(after);assert.deepEqual(before.data.provider,after.data.provider,'Provider controls drifted');
  const oldFunctions=new Map(before.data.functions.map(f=>[f.id,f]));
+ for(const old of before.data.functions){
+  const current=after.data.functions.find(f=>f.id===old.id);
+  assert(current,'Preexisting function missing from recovery postimage: '+old.id);
+  assert.equal(current.owner,old.owner,'Existing function control drift');
+  assert.deepEqual(current.acl,old.acl,'Existing function control drift');
+ }
+
  for(const f of after.data.functions){const old=oldFunctions.get(f.id);if(!old)assert(newFunctions.has(f.id.replaceAll(', ',',')),'Unrelated new function outside correction scope');else if(old.definition!==f.definition){assert.equal(f.id,'public.validate_calculator_publish_gate(uuid)','Unrelated function changed');assert.equal(sha(f.definition),'ce53551431824e8560af44a235ebb312372e0c67641c196f3d8db1287c05709a','Unexpected predicate postimage');}}
  const oldTrigger=new Set(before.data.triggers.map(t=>t.table+':'+t.id));
  for(const t of after.data.triggers)if(!oldTrigger.has(t.table+':'+t.id))assert.equal(newTriggers.get(t.id),t.table,'Unrelated new trigger outside correction scope');
