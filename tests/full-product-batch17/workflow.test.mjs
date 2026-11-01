@@ -1,3 +1,4 @@
+import {requiredVerificationJobs,workflowJobs} from '../ci-gate-recovery/verification-jobs-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -15,7 +16,7 @@ test('the three exact independent task campaigns and receipt checks are mandator
  assert(product.indexOf('node tests/full-product-batch16/finder-browser.mjs')<product.indexOf(marker),'Prior browser cleanup precedes new Docker campaigns');
 });
 test('all original strict aggregate outcomes and job budgets remain intact',()=>{
- assert.match(workflow,/needs: \[checks, build, full-product, source-acceptance\]/);
+ assert(requiredVerificationJobs(workflow).includes('publication-factory'));
  for(const variable of ['CHECKS','BUILD','FULL_PRODUCT','SOURCE_ACCEPTANCE'])assert(workflow.includes(`test "$${variable}_RESULT" = success`));
- assert.equal((workflow.match(/^    timeout-minutes: 20$/gm)||[]).length,4);
+ const jobs=workflowJobs(workflow);for(const name of ['checks','build','full-product','source-acceptance'])assert.match(jobs[name],/^    timeout-minutes: 20$/m);assert.match(jobs['publication-factory'],/^    timeout-minutes: 12$/m);
 });

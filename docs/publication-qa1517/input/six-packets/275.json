@@ -1,0 +1,374 @@
+{
+  "masterId": 275,
+  "title": "Volume Calculator",
+  "engineId": "geometry.volume",
+  "version": 1,
+  "targetSHA": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+  "status": "PENDING",
+  "publicationEligible": false,
+  "releaseHold": true,
+  "canonicalScope": {
+    "boundedProfile": "Rectangular prism forward volume and surface area, raw steps, versioned account/scenario controls",
+    "fullProductAcceptance": false,
+    "unresolvedMandatoryFeatures": [
+      "Advanced steps",
+      "Reverse solve",
+      "Graphing scope and usefulness",
+      "Exports acceptance and tier entitlement",
+      "Pro analytics",
+      "Business team/client/embed/API/automation",
+      "Native Blueprint reconciliation"
+    ],
+    "noAutomaticScopeExclusion": true,
+    "presentationDefinition": "geometryCorePresentation declares no supported visualizations, goal solver, scenarios or sensitivity. Composed account/scenario workflow evidence is separate. Only Slope v2 supplies the two selected-coordinate points; no Volume coordinate plot is claimed. Metadata and bounded helper output do not establish full catalog analytics."
+  },
+  "mapping": {
+    "candidate": {
+      "engineId": "geometry.volume",
+      "immutableVersion": 1,
+      "slug": "volume-calculator",
+      "canonicalApproved": false,
+      "localCertifiedMetadataIsReleaseApproval": false,
+      "publicationAuthorized": false,
+      "enginePath": "src/calculators/geometry/catalog-completion.ts",
+      "engineGitBlobSHA1": "806c3f2358e3fdd556d3f286cf8ae5ae109a3deb",
+      "uiPath": "src/components/calculator-interactive.tsx",
+      "uiGitBlobSHA1": "8bc597be3b853a311746845645a452332d6adf37",
+      "workflowPath": "src/lib/batch21-six-calculators.ts",
+      "evidenceManifest": "first-six-20261101/geometry-evidence/manifest.json",
+      "rendererPath": "src/components/final-calculator-renderer.tsx",
+      "rendererGitBlobSHA1": "f5a032087a13b9a065bb43500a4b4ad837f497c0"
+    },
+    "exactHeadEngineBlob": "806c3f2358e3fdd556d3f286cf8ae5ae109a3deb",
+    "verifiedUnchangedFromPriorPacket": true,
+    "canonicalAccepted": false,
+    "discrepancies": [
+      "Candidate engine mathematical scope is narrower than complete catalog Free/Pro/Business scope.",
+      "Prior packet commit545037 is not target9b6; engine bytes verified unchanged, UI/version-decoder/renderer dependencies are retained prior evidence, not newly exact-head verified.",
+      "PR1517 cohort-76 and contracts-evidence contain neither master275 nor276; their152 browser journeys and new-input correction cannot be credited to these IDs."
+    ]
+  },
+  "sourceEditionApplicability": {
+    "references": [
+      {
+        "sourceId": "openstax-volume",
+        "url": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+        "publisher": "OpenStax / Rice University",
+        "editionRevision": "Prealgebra 2e",
+        "retrievedDate": "2026-11-01",
+        "retrievalMetadata": {
+          "og:image": [
+            "https://assets.openstax.org/oscms-prodcms/media/original_images/Prealgebra.jpeg",
+            "https://assets.openstax.org/oscms-prodcms/media/original_images/Prealgebra.jpeg"
+          ],
+          "title": "9.6 Solve Geometry Applications: Volume and Surface Area - Prealgebra 2e | OpenStax",
+          "citation_date": [
+            "Mar 11, 2020",
+            "Mar 11, 2020"
+          ],
+          "ogTitle": "9.6 Solve Geometry Applications: Volume and Surface Area - Prealgebra 2e | OpenStax",
+          "theme-color": [
+            "#f4d019",
+            "#f4d019"
+          ],
+          "ogUrl": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+          "citation_book_title": [
+            "Prealgebra 2e",
+            "Prealgebra 2e"
+          ],
+          "description": "This free textbook is an OpenStax resource written to increase student access to high-quality, peer-reviewed learning materials., This free textbook is an OpenStax resource written to increase student access to high-quality, peer-reviewed learning materials.",
+          "og:description": [
+            "This free textbook is an OpenStax resource written to increase student access to high-quality, peer-reviewed learning materials.",
+            "This free textbook is an OpenStax resource written to increase student access to high-quality, peer-reviewed learning materials."
+          ],
+          "citation_public_url": [
+            "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+            "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area"
+          ],
+          "og:url": [
+            "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+            "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area"
+          ],
+          "ogImage": "https://assets.openstax.org/oscms-prodcms/media/original_images/Prealgebra.jpeg",
+          "citation_language": [
+            "English",
+            "English"
+          ],
+          "og:title": [
+            "9.6 Solve Geometry Applications: Volume and Surface Area - Prealgebra 2e | OpenStax",
+            "9.6 Solve Geometry Applications: Volume and Surface Area - Prealgebra 2e | OpenStax"
+          ],
+          "citation_publisher": [
+            "OpenStax",
+            "OpenStax"
+          ],
+          "citation_author": [
+            "Lynn Marecek",
+            "MaryAnne Anthony-Smith",
+            "Andrea Honeycutt Mathis",
+            "Lynn Marecek",
+            "MaryAnne Anthony-Smith",
+            "Andrea Honeycutt Mathis"
+          ],
+          "language": "en",
+          "ogDescription": "This free textbook is an OpenStax resource written to increase student access to high-quality, peer-reviewed learning materials.",
+          "viewport": "width=device-width,initial-scale=1,shrink-to-fit=no",
+          "favicon": "https://openstax.org/favicon.ico",
+          "scrapeId": "01a19783-41fa-738b-8de5-9fbb03152088",
+          "sourceURL": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+          "url": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+          "statusCode": 200,
+          "contentType": "text/html",
+          "timezone": "America/New_York",
+          "proxyUsed": "basic",
+          "cacheState": "miss",
+          "indexId": "cdc95895-0132-453e-b076-cff91a1e25f7",
+          "creditsUsed": 1,
+          "concurrencyLimited": false
+        },
+        "clause": "Prealgebra 2e §9.6: Find Volume and Surface Area of Rectangular Solids; Figures 9.29–9.31",
+        "establishes": "Mathematical rectangular-solid volume and area only",
+        "operativePeriod": "Educational mathematical reference; no jurisdictional operative period imposed",
+        "evidence": "first-six-20261101/geometry-evidence/openstax-volume.json",
+        "coverage": "Full section returned, not search excerpt",
+        "contentSha256": "c27291cc9cae4feead81a12f8e64edae728f7d8c18ee977f555fd7fff10f20bc",
+        "hashScope": "Exact saved retrieval JSON bytes, not immutable publisher edition identifier"
+      },
+      {
+        "sourceId": "bipm-full",
+        "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf/2d2b50bf-f2b4-9661-f402-5f9d66e4b507?version=7.0&t=1780410776583&download=true",
+        "publisher": "BIPM",
+        "editionRevision": "9th edition v4.01 June 2026",
+        "retrievedDate": "2026-11-01",
+        "retrievalMetadata": {
+          "scrapeId": "01a19783-7c5e-7050-b8d2-e3f062392baa",
+          "sourceURL": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf/2d2b50bf-f2b4-9661-f402-5f9d66e4b507?version=7.0&t=1780410776583&download=true",
+          "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf/2d2b50bf-f2b4-9661-f402-5f9d66e4b507?version=7.0&t=1780410776583&download=true",
+          "statusCode": 200,
+          "numPages": 102,
+          "totalPages": 102,
+          "title": "SI Brochure - 9th ed./version 4.01 EN",
+          "contentType": "application/pdf",
+          "proxyUsed": "basic",
+          "cacheState": "miss",
+          "indexId": "d91557e2-38f3-4f47-b592-33e5c249093c",
+          "creditsUsed": 102,
+          "concurrencyLimited": false
+        },
+        "clause": "SI Brochure 9th edition v4.01 June 2026, §2.3.4 Derived units and §5.4.1 Quantity calculus",
+        "establishes": "Coherent area/volume dimensions and quantity-value conventions; no mandate for this product unit selector",
+        "operativePeriod": "Publisher current linked 2026 revision; not a local regulatory adoption determination",
+        "evidence": "first-six-20261101/geometry-evidence/bipm-full.json",
+        "coverage": "Entire English PDF parsed, 102/102 pages; parsed text retained, publisher PDF binary not retained",
+        "contentSha256": "955028a44a01883bce2a91e6ba60480ee7a8722097c8025cfb83a7a09ab3ef59",
+        "hashScope": "Exact saved retrieval JSON bytes, not immutable publisher edition identifier"
+      }
+    ],
+    "discrepancies": [
+      "OpenStax publication date and fetched copyright/retrieval date are distinct; neither latter date establishes a new textbook edition.",
+      "BIPM 9th edition2019 updated2026 / English text v4.01 June2026 is consistent: URL version7.0 is asset revision, not brochure edition.",
+      "Saved source hashes authenticate retrieval JSON/parsed text, not original publisher PDF binary."
+    ],
+    "finding": "Sources establish bounded educational mathematics and dimensional conventions; no jurisdictional operative rule or licensed-specialist mandate established. Full product and numerical policy acceptance remains pending."
+  },
+  "resolvedChoices": [
+    {
+      "choice": "V=lwh and SA=2(lw+lh+wh); area and volume carry squared/cubed linear units",
+      "basis": "Retained authentic publisher section and verified source bytes; do not ask owner to re-confirm mathematical fact."
+    },
+    {
+      "choice": "Source edition labels/date distinctions reconciled as above; source-established formula choice does not need owner reconfirmation.",
+      "basis": "Retained publisher metadata/text."
+    }
+  ],
+  "ownerChoices": [
+    {
+      "id": "OWNER-SIX-IDENTITY",
+      "masterIds": [
+        276,
+        283,
+        282,
+        275,
+        251,
+        235
+      ],
+      "decisionNeeded": "Accept or revise each exact masterID/engineID/version/sourceSHA association and complete catalog tier/feature contract. Six separate decisions are required even when review is coordinated.",
+      "proposal": "Retain current mapped candidates for focused review only; keep full-product requirements open until satisfied. Do not silently substitute a narrow core for the catalog product.",
+      "sourceFactNotForReconfirmation": "The workbook names and domains of the six IDs and the inspected engine tuples are evidence facts; approval of their complete product mapping is a separate authority decision.",
+      "status": "PENDING",
+      "decisionBy": null,
+      "decisionAt": null,
+      "doesNotGrantQAOrPublication": true
+    },
+    {
+      "id": "OWNER-GEOMETRY-CONTRACT",
+      "masterIds": [
+        276,
+        275
+      ],
+      "decisionNeeded": "Adopt unit/axis interpretation, permitted input envelope, shape coverage, rounding and representability policy, and exact reverse/visualization/export/tier features.",
+      "proposal": "Slopev2 must remain separate from historical rise/runv1. Volume dimensions and required shapes must be explicit; missing required branches stay open.",
+      "sourceFactNotForReconfirmation": "Two-point slope and undefined vertical slope, rectangular-solid V=lwh, and coherent SI volume dimensions are source-established facts, not owner-selected equations.",
+      "status": "PENDING",
+      "decisionBy": null,
+      "decisionAt": null,
+      "doesNotGrantQAOrPublication": true
+    }
+  ],
+  "existingQAevidence": {
+    "engine-tests": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/baseline/docs/full-product-batch21/six-contract-evidence.json",
+        "first-six-20261101/baseline/docs/full-product-batch21/validation.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established.",
+      "scope": "Reuse prior bounded engine/helper/UI/replay/synthetic-plan evidence only; no duplicate campaign requested; not full-product approval."
+    },
+    "formula-review": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/geometry-evidence/openstax-volume.json",
+        "first-six-20261101/geometry-evidence/bipm-full.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "sources": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/geometry-evidence/openstax-volume.json",
+        "first-six-20261101/geometry-evidence/bipm-full.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "methodology": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/geometry-evidence/openstax-volume.json",
+        "first-six-20261101/geometry-evidence/bipm-full.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "reverse-solve": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "visualization-reconciliation": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/geometry-evidence/geometry-core-presentation.ts"
+      ],
+      "gap": "No supported visualization declared; catalog graphing/usefulness reconciliation pending."
+    },
+    "schedule-reconciliation": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "scenario-reconciliation": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/baseline/docs/full-product-batch21/six-contract-evidence.json",
+        "first-six-20261101/baseline/docs/full-product-batch21/validation.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established.",
+      "scope": "Reuse prior bounded engine/helper/UI/replay/synthetic-plan evidence only; no duplicate campaign requested; not full-product approval."
+    },
+    "sensitivity-validation": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "entitlement-validation": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/baseline/docs/full-product-batch21/six-contract-evidence.json",
+        "first-six-20261101/baseline/docs/full-product-batch21/validation.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established.",
+      "scope": "Reuse prior bounded engine/helper/UI/replay/synthetic-plan evidence only; no duplicate campaign requested; not full-product approval."
+    },
+    "ux-responsive": {
+      "decision": "PENDING",
+      "evidence": [
+        "first-six-20261101/baseline/docs/full-product-batch21/six-contract-evidence.json",
+        "first-six-20261101/baseline/docs/full-product-batch21/validation.json"
+      ],
+      "gap": "Accountable exact-version qualified applicability/disposition not established.",
+      "scope": "Reuse prior bounded engine/helper/UI/replay/synthetic-plan evidence only; no duplicate campaign requested; not full-product approval."
+    },
+    "performance": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "security": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "seo-content": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    },
+    "accessibility": {
+      "decision": "PENDING",
+      "evidence": [],
+      "gap": "Accountable exact-version qualified applicability/disposition not established."
+    }
+  },
+  "missingProofTasks": [
+    "Reviewer bind source rectangular-prism clauses to exact v1 output keys and inherited surface-area implementation; do not infer all-solid acceptance.",
+    "Resolve common numerical unit requirement and user copy; approve display precision/tolerance/underflow policy before any added edge vectors.",
+    "Use existing 2x3x4 -> volume24/surface52 witnesses; after domain policy selection request independent very small, mixed-scale-rejection/conversion policy, and boundary goldens only for uncovered behavior.",
+    "Confirm required reverse-solve and graph/tier scope against native Blueprint; no silent omission.",
+    "Verify changed UI/dependency reachability at target9b6 before transferring prior evidence; specifically prove whether loss-aware input parser applies to this registered engine.",
+    "Return a competent review decision per15 core QA criteria, with justified applicability and retained scope; no default N/A or pass.",
+    "Supply genuine authenticated persistence/account and empirical accessibility proof where required; local synthetic fixture does not establish these."
+  ],
+  "reviewerCompetence": {
+    "identity": null,
+    "qualifiedDecision": null,
+    "neededCompetence": [
+      "Elementary coordinate/solid geometry",
+      "IEEE-754 floating point, rounding, underflow and cancellation",
+      "Typed input/output/version replay",
+      "Unit dimensional consistency",
+      "UI/accessibility and tier acceptance"
+    ],
+    "regulatedExternalSpecialistNeeded": "No source-established requirement for a licensed external specialist for this bounded generic educational profile. This is an applicability finding, not a waiver or an approved QA disposition. Owner must select accountable qualified reviewer and policy before release; regulated construction/accessibility/design claims would require a separate jurisdiction/scope review.",
+    "pending": "Reviewer name, competence evidence, independence policy, exact version/hash-bound disposition and applicable QA obligations"
+  },
+  "recommendedDecision": {
+    "disposition": "RETAIN_RELEASE_HOLD; REQUEST_TARGETED_SOURCE_BOUND_REVIEW",
+    "approval": false,
+    "reason": "Bounded mathematics is documented and engine bytes match; complete canonical scope, numeric acceptance and competent QA decisions are unestablished."
+  },
+  "candidateSHA": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+  "approval": "PENDING",
+  "qaApproved": false,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "currentCIConclusion": "FAILURE",
+  "newCampaignEvidenceApplicable": false,
+  "whyNoCampaignTransfer": "This master ID is not among the76 private profiles; the152 current campaign witnesses/journeys cannot be transferred.",
+  "sourceFactPolicy": "Publisher-established mathematics and metadata distinctions do not require owner reconfirmation. Reviewer source adoption/applicability and genuine product contract/mapping choices remain distinct.",
+  "priorProposedOwnerChoices": [
+    "Accept/revise exact masterID-to-engine/version/full-SHA and complete catalog scope; explicitly decide outstanding inverse/graph/export/analytics/business requirements.",
+    "Select applicable units/axis scale interpretation, precision/tolerance and tiny-number/underflow policy; source facts do not prescribe UI or numerical acceptance.",
+    "Assign named competent reviewer and independence policy; return exact-version criterion-by-criterion disposition and evidence."
+  ],
+  "reviewerSourceDecisionRouting": "A competent source/method reviewer should adopt exact archived source clauses/snapshot applicability and record their decision. Do not route publisher edition metadata or mathematical truths back to the owner for reconfirmation. Unknown patch chronology/effective dates remain unknown.",
+  "reviewerDecisionDraft": {
+    "decision": "PENDING_NOT_SIGNED",
+    "recommendedDisposition": "Accept identified source facts as evidence for the bounded formulas; defer complete canonical criterion approval pending the exact gaps in this packet.",
+    "reviewerIdentity": null,
+    "competenceEvidence": null,
+    "decisionEvidence": null,
+    "effect": "NO_QA_OR_LIFECYCLE_CHANGE"
+  },
+  "canonicalAccepted": false,
+  "reviewer": null
+}

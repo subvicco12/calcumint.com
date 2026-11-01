@@ -438,6 +438,16 @@ jobs:
           browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
           echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
           "$browser" --version
+      - name: PR1517 source-bound pending QA supplements
+        timeout-minutes: 3
+        run: |
+          trap 'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa1517-proofs.test.css' EXIT
+          node_modules/.bin/esbuild scripts/publication-qa1517/proofs.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.mjs
+          node .qa1517-proofs.mjs --check
+          node_modules/.bin/esbuild tests/publication-qa1517/proofs.test.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.test.mjs
+          node .qa1517-proofs.test.mjs
+          node scripts/publication-qa1517/decisions.mjs --check
+          node tests/publication-qa1517/decisions.test.mjs
       - name: Exact76 private input, history, scenarios and exports
         timeout-minutes: 6
         run: node tests/publication-factory/browser.mjs

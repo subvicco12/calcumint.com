@@ -1,3 +1,4 @@
+import {requiredVerificationJobs,aggregateVerificationContract} from './verification-jobs-contract.mjs';
 import { historicalWorkflowWithoutPdfTools } from '../ci-gate-recovery/pdf-tools-contract.mjs';
 import { historicalWorkflowWithoutNpmCache } from '../ci-gate-recovery/npm-cache-contract.mjs';
 import test from 'node:test';
@@ -8,7 +9,7 @@ const old=readFileSync('docs/partial16-ci-recovery/ci-at-9edc900.yml','utf8'),cu
 const jobs=source=>Object.fromEntries([...source.split('\njobs:\n')[1].matchAll(/^  ([a-z][a-z-]*):\n([\s\S]*?)(?=^  [a-z][a-z-]*:\n|$(?![\s\S]))/gm)].map(m=>[m[1],m[2]]));
 const steps=job=>[...job.matchAll(/^      - ([\s\S]*?)(?=^      - |$(?![\s\S]))/gm)].map(m=>'      - '+m[1]);
 test('all original checks remain byte-for-byte with20minute per-job budgets',()=>{
- const before=jobs(old),after=jobs(current);assert.deepEqual(Object.keys(after).sort(),['build','checks','full-product','source-acceptance','validate']);
+ const before=jobs(old),after=jobs(current);assert.deepEqual(Object.keys(after).sort(),[...requiredVerificationJobs(current),'validate'].sort());
  const originalSteps=steps(before.validate),build=originalSteps.find(s=>s.startsWith('      - name: Production build\n'));assert(build);
  assert.deepEqual([...steps(after.checks),...steps(after['source-acceptance']).slice(5)].slice(0,originalSteps.length-1),originalSteps.filter(s=>s!==build));
  // Preserve every original byte and require the exact three additional verification steps.
@@ -17,13 +18,13 @@ test('all original checks remain byte-for-byte with20minute per-job budgets',()=
  for(const name of ['checks','build','full-product','source-acceptance'])assert.match(after[name],/^    timeout-minutes: 20$/m);
  assert.equal(current.split('\njobs:')[0],old.split('\njobs:')[0],'Triggers,concurrency,permissions unchanged');
 });
-test('required validate runs after all four jobs,including skipped/cancelled/failure paths',()=>{
- const gate=jobs(current).validate;assert.match(gate,/SOURCE_ACCEPTANCE_RESULT: \$\{\{ needs\.source-acceptance\.result \}\}/);assert.match(gate,/^    needs: \[checks, build, full-product, source-acceptance\]$/m);assert.match(gate,/^    if: \$\{\{ always\(\) \}\}$/m);assert.match(gate,/CHECKS_RESULT: \$\{\{ needs\.checks\.result \}\}/);assert.match(gate,/BUILD_RESULT: \$\{\{ needs\.build\.result \}\}/);
-});
-for(const checks of ['success','failure','cancelled','skipped','timed_out','','unknown'])for(const build of ['success','failure','cancelled','skipped','timed_out','','unknown'])for(const fullProduct of ['success','failure','cancelled','skipped','timed_out','','unknown'])for(const sourceAcceptance of ['success','failure','cancelled','skipped','timed_out','','unknown'])test(`actual aggregate shell fails closed for checks=${checks||'empty'},build=${build||'empty'},fullProduct=${fullProduct||'empty'},sourceAcceptance=${sourceAcceptance||'empty'}`,()=>{
- const gate=jobs(current).validate;assert(gate,'Missing required aggregate');const block=gate.match(/        run: \|\n([\s\S]*)$/);assert(block,'Missing aggregate shell');const script=block[1].split('\n').filter(Boolean).map(s=>s.slice(10)).join('\n');
- const run=spawnSync('bash',['-e','-c',script],{env:{PATH:process.env.PATH,CHECKS_RESULT:checks,BUILD_RESULT:build,FULL_PRODUCT_RESULT:fullProduct,SOURCE_ACCEPTANCE_RESULT:sourceAcceptance},encoding:'utf8'});assert.ifError(run.error);assert.equal(run.status===0,checks==='success'&&build==='success'&&fullProduct==='success'&&sourceAcceptance==='success');
-});
+const aggregate=aggregateVerificationContract(current);
+test('required validate checks every workflow verification job including the publication factory',()=>{assert.equal(aggregate.names.length,Object.keys(jobs(current)).length-1);assert.equal(aggregate.bindings.length,aggregate.names.length);});
+const execute=env=>{const run=spawnSync('bash',['-e','-c',aggregate.script],{env:{PATH:process.env.PATH,...env},encoding:'utf8'});assert.ifError(run.error);return run.status===0;};
+const allSuccess=Object.fromEntries(aggregate.bindings.map(b=>[b.variable,'success']));
+test('actual aggregate succeeds only when every required job succeeds',()=>assert.equal(execute(allSuccess),true));
+for(const {job,variable}of aggregate.bindings)for(const status of ['failure','cancelled','skipped','timed_out','','unknown'])test(`actual aggregate refuses ${job}=${status||'empty'}`,()=>assert.equal(execute({...allSuccess,[variable]:status}),false));
+for(const {job,variable}of aggregate.bindings)test('aggregate rejects deletion of the '+job+' guard',()=>assert.throws(()=>aggregateVerificationContract(current.replace(`          test "$${variable}" = success\n`,''))));
 
 test('full-product job requires both functional browser campaigns and exact aggregate result',()=>{
  const j=jobs(current);for(const command of ['node tests/full-product-batch12/private-browser.mjs','node tests/full-product-batch12/account-browser.mjs'])assert(j['full-product'].includes(command));

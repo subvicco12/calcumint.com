@@ -1,0 +1,516 @@
+{
+  "masterId": 282,
+  "title": "Standard Deviation Calculator",
+  "version": 1,
+  "candidateCommit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+  "status": "PENDING",
+  "publicationEligible": false,
+  "canonicalAccepted": false,
+  "qaApproved": false,
+  "canonicalScope": {
+    "nativeRequirement": {
+      "masterId": 282,
+      "sourceSheet": "sheet2",
+      "nativeRow": 283,
+      "ID": "282",
+      "Domain": "Statistics & Probability",
+      "Calculator": "Standard Deviation Calculator",
+      "Portfolio Status": "Planned",
+      "Roadmap Phase": "Foundation / Expansion 1",
+      "Presentation Family": "Distribution / statistics",
+      "Presentation Level": "B — Analytical",
+      "Free Core": "Full certified core calculation",
+      "Free Visualization": "Distribution/summary visual",
+      "Pro Differentiation": "Detailed dataset outputs; advanced statistics; exports",
+      "Business Differentiation": "Pro analytics + team/client/embed/API/automation",
+      "Certification": "Required before publish",
+      "Customer Trust Label": "Formula verified after certification"
+    },
+    "proposedMathematics": {
+      "population": "μ=Σxi/N; σ²=Σ(xi−μ)²/N; σ=√σ²",
+      "sample": "x̄=Σxi/n; s²=Σ(xi−x̄)²/(n−1); s=√s²; n≥2",
+      "units": "Input/mean/standard deviation share compatible data units; variance has squared data units; count dimensionless. Engine has no unit conversion or unit metadata.",
+      "interpretation": "Sample variance is the n−1 estimator; sample standard deviation is its square root, not an asserted unbiased estimator of population SD. No distribution fitting, normality inference or confidence interval is computed.",
+      "sources": [
+        "NIST-SCALE",
+        "PSF-STATISTICS"
+      ]
+    },
+    "exactInputOutput": {
+      "input": {
+        "values": "number[] length 1..10000 inclusive; each finite IEEE-754 Number in [-1e100,+1e100]",
+        "kind": "required enum population|sample; no engine default"
+      },
+      "runtimeRestriction": "sample singleton passes schema but calculate throws ordinary Error('Sample statistics require at least two values'); population singleton allowed; empty, NaN, infinities/out-of-bound values rejected by schema",
+      "output": [
+        "count",
+        "mean",
+        "variance",
+        "standardDeviation",
+        "kind",
+        "steps"
+      ],
+      "primary": "standardDeviation",
+      "ui": "StatisticsDatasetTool in src/components/calculator-interactive.tsx; default raw '1, 2, 2, 4', population. parseDataset splits whitespace/comma/semicolon, filters empty tokens, Number converts, requires at least one and all finite. Thus repeated separators ignored, malformed nonnumeric text invalid. Engine still enforces cardinality/magnitude.",
+      "workflow": "Same native input/output supplied to CalculatorAccountActions; version 1; null output on parser/calculation failure. sixScenarioMetadata maps Dataset/Dataset type and count/mean/variance/sd; no automatic solver inferred."
+    },
+    "algorithmAndPrecision": {
+      "mean": "stableSum uses compensated summation with correction, divided by length; variance recomputes mean with same helper.",
+      "variance": "Two-pass centered deviations, ordinary left-to-right reduce sum of squares divided by N or n−1; SD Math.sqrt.",
+      "rounding": "No roundTo call/import in dispersion engine: raw binary64 values/steps retained. src/calculators/precision.ts is shared facility, not applied mathematical rounding contract here; supports digits 0..12 and default half-away-from-zero with epsilon tie tolerance when used.",
+      "domainLimit": "Schema bounds prevent ordinary magnitude overflow: sum ≤1e104, deviation magnitude ≤~2e100 and squared-deviation sum ≤~4e204, safely below binary64 overflow. This is a magnitude argument, not an accuracy proof. Arbitrarily tiny nonzero inputs are admitted; squared deviations may underflow to zero. Decimal input representation and cancellation for nearly equal large values remain accuracy limitations; no relative/absolute error guarantee established.",
+      "source": "NIST-STRD",
+      "openChoice": "Owner/reviewer must specify admissible precision/error envelope, tiny-value policy, units/labels, rounding stage/ties/display precision and independent oracle tolerances before applicability approval."
+    }
+  },
+  "canonicalMapping": {
+    "engineId": "statistics.standard-deviation",
+    "version": 1,
+    "slug": "standard-deviation-calculator",
+    "engineFile": "src/calculators/statistics/catalog-batch-1.ts",
+    "engineGitBlob": "32bcaac6edbe68d220109ce6f9cde62694bcf429",
+    "verifiedAtCommit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+    "engineContentUnchangedFromPR1514": true,
+    "mappingStatus": "EXACT_RUNTIME_CANDIDATE_NOT_CANONICAL_APPROVAL",
+    "approved": false,
+    "priorLedgerDisposition": "MISSING_CANONICAL_MAPPING",
+    "priorPacket": "first-six-20261101/packets/282.json",
+    "PR1517Cohort76IncludesId": false,
+    "PR1517IdentityReconciliationIncludesId": false,
+    "limitation": "Pinned engine identity confirmed; prior master-to-engine association retained as proposal. Absence from cohort/identity projection neither rejects nor approves full master mapping. Large readiness fetch returned empty content with blob metadata, not a readable row.",
+    "contentComparison": "Identical text after trailing-newline normalization; returned Git blob matches retained provenance exactly."
+  },
+  "sourceEditionApplicability": {
+    "status": "PENDING",
+    "scope": "Unweighted finite univariate descriptive population/sample variance and standard deviation only; no distribution fitting, inference or normality assertion.",
+    "editionDiscrepancy": "Prior floating /3 Python snapshot reports Python 3.15.2. New explicit /3.14 retrieval reports Python 3.14.10; they are separate captured editions and must not be silently relabelled. Metadata og:url still points /3 while request/sourceURL/url point /3.14.",
+    "resolution": "Retain original snapshot provenance; propose captured explicit /3.14 clauses for reviewer selection. Captured snapshot hash is stable; minor-version URL is mutable and patch-release chronology was not independently established. No exact patch effective date or publisher raw HTML hash asserted.",
+    "NIST": "Existing hash-bound Measures of Scale snapshot has no exposed edition date; supports sample n−1, SD square root and squared/original units, not population denominator. StRD supports numerical difficulty warning and independent certified-dataset methodology, not a claim that engine passed StRD.",
+    "PSF": "Four named population/sample dispersion clauses establish cardinality and denominator interpretation. Python implementation, Decimal/Fraction support, optional known-mean arguments and precision guarantees are outside this JS engine contract.",
+    "engineSourceGap": "Pinned engine source metadata names only CalcuMint deterministic statistics engine. Research references are not yet adopted runtime source metadata or source-review approval."
+  },
+  "resolvedSourceChoices": {
+    "status": "RECOMMENDED_NOT_ADOPTED",
+    "retain": [
+      {
+        "sourceId": "NIST-SCALE",
+        "url": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm",
+        "title": "NIST/SEMATECH e-Handbook of Statistical Methods, 1.3.5.6 Measures of Scale",
+        "publisher": "NIST/SEMATECH",
+        "revision": "No publication/revision date exposed by retrieved page; retrieval snapshot is hash bound, not invented edition",
+        "retrievedDate": "2026-11-01",
+        "contentSHA256": "f534c231c9a18207ae0dc8d977fe1b045afbeef94ae17c98e9f6a79895ba7aa8",
+        "hashScope": "Complete returned markdown UTF-8 bytes saved locally; not claimed origin-server HTML hash",
+        "clauses": [
+          "Definitions of Variability: variance; standard deviation; original/squared units",
+          "Scale, Variability, or Spread; robustness/tail discussion"
+        ],
+        "applicability": "Sample n−1 formula, SD square root and units; qualitative interpretation only. Markdown math omits radical formatting; accompanying prose explicitly establishes square root. No population denominator asserted from this source.",
+        "evidence": "first-six-20261101/stats-evidence/nist-measures-scale.md",
+        "metadata": "first-six-20261101/stats-evidence/nist-measures-scale.metadata.json"
+      },
+      {
+        "sourceId": "NIST-STRD",
+        "url": "https://www.itl.nist.gov/div898/strd/univ/backgroundinfo.html",
+        "title": "StRD Univariate Summary Statistics — Background Information",
+        "publisher": "NIST",
+        "revision": "No publication/revision date exposed by retrieved page; retrieval snapshot is hash bound, not invented edition",
+        "retrievedDate": "2026-11-01",
+        "contentSHA256": "6a9686ada9aaee77b98200104113d3f4e3cf87927b0e0968d18c481ad0126a01",
+        "hashScope": "Complete returned markdown UTF-8 bytes saved locally; not claimed origin-server HTML hash",
+        "clauses": [
+          "Error Types",
+          "Levels of Difficulty",
+          "Simple Remedial Action"
+        ],
+        "applicability": "Truncation/representation, cancellation and accumulation errors; centered-deviations method; passing reference datasets not general accuracy proof. No newly executed benchmark claim.",
+        "evidence": "first-six-20261101/stats-evidence/nist-strd-background.md",
+        "metadata": "first-six-20261101/stats-evidence/nist-strd-background.metadata.json"
+      }
+    ],
+    "proposedPython": {
+      "publisher": "Python Software Foundation",
+      "requestedURL": "https://docs.python.org/3.14/library/statistics.html",
+      "reportedTitle": "statistics — Mathematical statistics functions — Python 3.14.10 documentation",
+      "clauses": [
+        "statistics.pvariance",
+        "statistics.pstdev",
+        "statistics.variance",
+        "statistics.stdev"
+      ],
+      "retrievalFile": "publication-qa-1517-20261101/python-3.14-statistics-retrieval.json",
+      "markdownSHA256": "59a213917397f0585da5a8d377852465bb6e8e95a26fae71647eb43fab4a44d2",
+      "hashScope": "Returned markdown UTF-8 bytes, not origin HTML",
+      "retrievedDate": "2026-11-01"
+    },
+    "retainPriorPythonForProvenanceOnly": [
+      {
+        "sourceId": "PSF-STATISTICS",
+        "url": "https://docs.python.org/3/library/statistics.html",
+        "title": "statistics — Mathematical statistics functions",
+        "publisher": "Python Software Foundation",
+        "revision": "statistics — Mathematical statistics functions — Python 3.15.2 documentation",
+        "retrievedDate": "2026-11-01",
+        "contentSHA256": "9766d486d1f8c795dff1b09ca4d38c9e6efe441f22900cc02a2bc6a73c53b325",
+        "hashScope": "Complete returned markdown UTF-8 bytes saved locally; not claimed origin-server HTML hash",
+        "clauses": [
+          "statistics.pvariance",
+          "statistics.pstdev",
+          "statistics.variance",
+          "statistics.stdev"
+        ],
+        "applicability": "Official implementation documentation distinguishes finite population vs sample, N vs n−1, cardinality and square roots. Not authority for CalcuMint implementation or binary64 guarantee.",
+        "evidence": "first-six-20261101/stats-evidence/python-statistics.md",
+        "metadata": "first-six-20261101/stats-evidence/python-statistics.metadata.json"
+      }
+    ],
+    "excluded": [
+      {
+        "requestedURL": "https://www.itl.nist.gov/div898/software/dataplot/refman2/ch2/var.htm",
+        "result": "Redirected to generic NIST Information Technology Laboratory landing page; excluded as formula authority."
+      },
+      {
+        "requestedURL": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm",
+        "result": "Full page retrieved but concerns skewness/kurtosis; excluded from necessary source set because no advanced-statistics scope selected."
+      }
+    ]
+  },
+  "ownerChoices": [
+    {
+      "id": "OWNER-SIX-IDENTITY",
+      "masterIds": [
+        276,
+        283,
+        282,
+        275,
+        251,
+        235
+      ],
+      "decisionNeeded": "Accept or revise each exact masterID/engineID/version/sourceSHA association and complete catalog tier/feature contract. Six separate decisions are required even when review is coordinated.",
+      "proposal": "Retain current mapped candidates for focused review only; keep full-product requirements open until satisfied. Do not silently substitute a narrow core for the catalog product.",
+      "sourceFactNotForReconfirmation": "The workbook names and domains of the six IDs and the inspected engine tuples are evidence facts; approval of their complete product mapping is a separate authority decision.",
+      "status": "PENDING",
+      "decisionBy": null,
+      "decisionAt": null,
+      "doesNotGrantQAOrPublication": true
+    },
+    {
+      "id": "OWNER-STATISTICS-CONTRACT",
+      "masterIds": [
+        283,
+        282
+      ],
+      "decisionNeeded": "Specify population/sample selection/default/labels, admitted data envelope and precision, detailed dataset/visual outputs and advanced/tier/export scope.",
+      "proposal": "Expose the selected meaning explicitly; no claim that the current default population choice is prescribed by the source. Numerical precision changes require controlled technical revision where material.",
+      "sourceFactNotForReconfirmation": "Population denominatorn, sample denominatorn−1, standard deviation as square root, and original/squared units are source-established under the cited clauses; do not ask the owner to choose their mathematical truth.",
+      "status": "PENDING",
+      "decisionBy": null,
+      "decisionAt": null,
+      "doesNotGrantQAOrPublication": true
+    }
+  ],
+  "existingQAevidenceCriterionBindings": [
+    {
+      "criteria": [
+        "inputs",
+        "identity-version",
+        "goldens-and-rounding",
+        "engine-tests"
+      ],
+      "evidence": "PR1514 retained 15 bounded engine/helper tests, sample/population/boundary witnesses and exact unchanged engine blob",
+      "sufficiency": "Reusable bounded engine evidence; not full-domain numerical precision proof, not approved canonical contract.",
+      "candidateBinding": "Engine blob unchanged; supporting UI/workflow dependency diff still requires exact-candidate verification."
+    },
+    {
+      "criteria": [
+        "ux-responsive",
+        "accessibility",
+        "scenario-reconciliation",
+        "entitlement-validation"
+      ],
+      "evidence": "Retained 12 six-candidate UI tests, 8 snapshot/recovery tests, six JSON captures, 12 scenario journeys and 360/1440 local fixture evidence",
+      "sufficiency": "Prior evidence only; synthetic transport does not establish actual authenticated storage, complete tier scope or WCAG conformity. No new execution or PR1517 browser acceptance claimed."
+    },
+    {
+      "criteria": [
+        "formula-review",
+        "sources",
+        "methodology"
+      ],
+      "evidence": "Retained NIST/PSF hash-bound source captures plus focused Python /3.14 retrieval; direct pinned engine inspection",
+      "sufficiency": "Adequate to prepare descriptive formula/source review. Named competent reviewer must approve selected exact contract; definitions do not approve source edition, numerical envelope, scope or publication."
+    }
+  ],
+  "missingProofTasks": {
+    "status": "PENDING",
+    "targetedOnly": true,
+    "tasks": [
+      "Reviewer trace each selected source clause to these exact two identities and denominators; independently validate expected sample/population results and dimensional labels.",
+      "After precision/domain choice only, request uncovered independent oracle cases: tiny-value square underflow, large nearly constant represented datasets, cancellation/sign-mixed values and size-bound accumulation; first inspect existing coverage and add only absent cases.",
+      "After feature decision, request exact selected distribution/summary visual and detailed/advanced dataset acceptance; do not call absent histogram mandatory unless selected.",
+      "After entitlement decisions, request remaining actual-auth persistence/Free-Pro-Business feature evidence; local synthetic browser transport does not establish real authenticated storage or complete WCAG.",
+      "Source/display rounding policy verification only where selected policy exceeds completed witnesses; raw snapshot/version tamper and recovery evidence reused."
+    ],
+    "criterionRequestsRetained": [
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "engine-tests",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reuse exact PR21 unit/browser receipts; add only selected-contract operator, precision and boundary cases identified in the specialist technical packet. Supply actual expected/actual and full SHA for any new execution.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "formula-review",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Named competent reviewer reviews the exact unmodified engine/math/parser/domain, independent reference expectations and documented finite-precision limits. No CI-to-formula-approval inference.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "sources",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Adopt exact reference clauses/revisions and applicable mathematical interpretation, verify retained source evidence and hash scope; do not invent effective dates or raw publisher hashes.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "methodology",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Approve method, units, population/sample or sampling semantics, numerical tolerance/rounding, unsupported cases and user-visible claims; source definitions do not select product policy.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "reverse-solve",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Owner/reviewer identifies mathematically supported targets from native catalog/Blueprint; prove adopted inverse by exact forward engine or record an authorized, reasoned non-applicability disposition. No automatic waiver.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "visualization-reconciliation",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reconcile actual plots/raw tables/summary visual to exact engine output. Graph sample extrema are not global extrema; gaps only detect omitted samples. Statistics native visual obligation still needs disposition.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "schedule-reconciliation",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reconcile all applicable tables/dataset rows/steps; if a period schedule is irrelevant, an authorized reasoned applicability decision is required. Not every calculator needs a loan schedule.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "scenario-reconciliation",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reuse six exact-version local capture/import/export/recovery proofs; obtain missing genuine owner-isolated persistence/readback and adopted scenario compare scope. Synthetic transport is not genuine storage acceptance.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "sensitivity-validation",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Select decision-relevant variables and ranges, then sweep the approved forward engine; record authorized applicability if irrelevant. Do not invent a separate approximate engine.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "entitlement-validation",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reuse same-input/output plan invariance; separately demonstrate adopted full Free/Pro/Business feature gates, team/client/embed/API/automation requirements and server-side controls.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "ux-responsive",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reuse360/1440 local fixture journeys; close only chosen full-contract/edit/error/recovery gaps and real Next runtime evidence not covered by that fixture.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "performance",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Provide measured representative workload/runtime/device evidence with budget and outcomes, including maximal selected dataset/expression workload. No timing inherited from unrelated fixtures.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "security",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reuse existing controls; verify chosen parser/import/export/size boundaries and authorized server workflows. Expression evaluation is bounded parser syntax, not arbitrary code. No production writes.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "seo-content",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Prepare correct exact canonical title/route, source/method/version/limitations and availability metadata. No public discovery/indexing before authorized publication.",
+        "newExecutionClaimed": false
+      },
+      {
+        "masterId": 282,
+        "engineId": "statistics.standard-deviation",
+        "version": 1,
+        "commit": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+        "checkType": "accessibility",
+        "status": "PENDING",
+        "assignedReviewerId": null,
+        "decisionEvidence": null,
+        "request": "Reuse bounded local keyboard/label/error/viewports evidence; request missing task-specific text alternatives/raw tables, focus, reduced-motion/touch and required physical Android/TalkBack evidence. PDF/UA is separately validated if applicable; no conformity inferred.",
+        "newExecutionClaimed": false
+      }
+    ],
+    "additional": [
+      "Record exact-candidate dependency comparison for UI/parser/adapters/scenario helpers before transferring prior receipt coverage.",
+      "Obtain named qualified reviewer decision and owner canonical decision for the selected source/edition/applicability and full retained scope; evidence presence alone is not approval."
+    ]
+  },
+  "reviewerCompetence": {
+    "identity": null,
+    "status": "PENDING",
+    "competence": "Demonstrated descriptive-statistics competence in population/sample estimands, n−1 correction, dimensional units and scope of interpretation; numerical reviewer able to assess binary64 compensated mean, centered variance, representation/cancellation/accumulation/underflow and independent expected-value tolerance. Product/QA competence for catalog visuals, plan scope and exact-version replay.",
+    "specialist": "No external dataset/provider or regulated-domain specialist dependency is observed in this bounded descriptive-mathematics implementation. Formal authorized per-ID risk/obligation/applicability disposition remains PENDING; no legal or governance waiver is granted. Reassess if intended claims change.",
+    "legalWaiver": null
+  },
+  "recommendedDecision": {
+    "status": "PENDING",
+    "recommendation": "Retain release hold; route exact v1 proposal to descriptive-statistics and binary64 numerical review, with native visual/tier/workflow requirements intact.",
+    "evidenceSufficiency": "Mathematical definitions and unchanged engine implementation sufficiently evidenced for a focused review packet; full canonical contract and selected-domain proof remain incomplete.",
+    "qaApproval": "PENDING; no reviewer identity/signature, QA submission pass, qualified applicability disposition or publication authorization inferred."
+  },
+  "unchangedGates": {
+    "all43AuthorityIdentitiesUnchanged": true,
+    "qualifiedGatesUnchanged": true,
+    "riskApplicability": {
+      "recommendedRoute": "STANDARD_TECHNICAL_AND_SOURCE_REVIEW",
+      "externalProviderDependencyObservedForMathematics": false,
+      "explicitRegulatedSpecialistMandateRecorded": false,
+      "inheritedApplicabilityStatus": {
+        "status": "APPLICABILITY_ASSESSMENT_PENDING",
+        "screeningAsRecorded": "UNKNOWN",
+        "reviewerGroupsAsRecorded": [],
+        "qualifiedDecisionEvidence": null,
+        "explicitQualifiedExternalRequirement": false,
+        "noExemptionInferred": true
+      },
+      "formalApplicabilityDecision": "PENDING",
+      "meaning": "No external provider approval or licensed clinical/financial specialist requirement is observed for the described standard educational/descriptive arithmetic. This is a scoped research assessment, not an exemption, certification or a substitute for the authorized reviewer/QA record. Authenticated account/Business operations remain separate."
+    },
+    "noWaiver": true
+  },
+  "actionsPerformed": [
+    "Read retained packets and evidence",
+    "Read pinned PR1517 engine and identity projection",
+    "Focused official Python edition retrieval",
+    "Write research packet only"
+  ],
+  "prohibitedActionsPerformed": [],
+  "candidateSHA": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+  "approval": "PENDING",
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true,
+  "currentCIConclusion": "FAILURE",
+  "newCampaignEvidenceApplicable": false,
+  "whyNoCampaignTransfer": "This master ID is not among the76 private profiles; the152 current campaign witnesses/journeys cannot be transferred.",
+  "sourceFactPolicy": "Publisher-established mathematics and metadata distinctions do not require owner reconfirmation. Reviewer source adoption/applicability and genuine product contract/mapping choices remain distinct.",
+  "priorProposedOwnerChoices": {
+    "status": "PENDING",
+    "approvedBy": null,
+    "approvedAt": null,
+    "choices": [
+      "CANONICAL-282: select exact v1 candidate and complete I/O/operators/unit/domain/rounding/source revision contract; keep approval pending.",
+      "Choose population/sample explanatory labels and user selection policy; default population is existing product choice, not source mandate.",
+      "Specify distribution/summary visual (not necessarily histogram), detailed dataset outputs and exact advanced statistics scope; preserve Business team/client/embed/API/automation requirements.",
+      "Approve numerical tolerance and underflow/large-nearly-constant-data applicability; decide whether changes require a new immutable version.",
+      "Assign named qualified reviewer and lifecycle decision owner; no prefilled pass/waiver."
+    ],
+    "additional": [
+      "Choose and record source snapshot/revision and applicability, including proposed Python /3.14 snapshot vs retained /3.15.2 snapshot; neither is auto-adopted.",
+      "Adopt full native scope and denominator/domain/unit/rounding/precision contract for exact immutable v1 or require controlled new version."
+    ]
+  },
+  "reviewerSourceDecisionRouting": "A competent source/method reviewer should adopt exact archived source clauses/snapshot applicability and record their decision. Do not route publisher edition metadata or mathematical truths back to the owner for reconfirmation. Unknown patch chronology/effective dates remain unknown.",
+  "reviewerDecisionDraft": {
+    "decision": "PENDING_NOT_SIGNED",
+    "recommendedDisposition": "Accept identified source facts as evidence for the bounded formulas; defer complete canonical criterion approval pending the exact gaps in this packet.",
+    "reviewerIdentity": null,
+    "competenceEvidence": null,
+    "decisionEvidence": null,
+    "effect": "NO_QA_OR_LIFECYCLE_CHANGE"
+  },
+  "reviewer": null
+}

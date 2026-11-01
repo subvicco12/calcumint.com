@@ -1,3 +1,4 @@
+import {requiredVerificationJobs} from '../ci-gate-recovery/verification-jobs-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -11,6 +12,6 @@ test('software closure evidence and both recovery browsers remain mandatory afte
   assert.match(step, /^        run: \|\n          node scripts\/software-closure-evidence\.mjs --check\n          node --test tests\/software-closure\/ci-workflow\.test\.mjs\n          node tests\/calculus-recovery-workbench\/browser\.mjs\n          node tests\/software-closure\/recovery-browser\.mjs\n/);
   assert.doesNotMatch(step, /continue-on-error|\n        if:/);
   assert(fullProduct.indexOf('node tests/gotrue-full-schema/acceptance.mjs') < fullProduct.indexOf(marker));
-  assert.match(workflow, /needs: \[checks, build, full-product, source-acceptance\]/);
+  assert(requiredVerificationJobs(workflow).includes('publication-factory'));
   assert.match(workflow, /test "\$FULL_PRODUCT_RESULT" = success/);
 });

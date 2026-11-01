@@ -1,3 +1,4 @@
+import {requiredVerificationJobs} from '../ci-gate-recovery/verification-jobs-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -18,6 +19,6 @@ test('requirement evidence, exact authority requests, malformed-capture guards a
  assert(step.includes('node scripts/batch16-contract-groups.mjs --check'));
  assert(step.indexOf('node tests/gotrue-runtime/acceptance.mjs')<step.indexOf('node tests/full-product-batch16/finder-browser.mjs'),'Native auth browser and Docker cleanup precede finder module loading');
  assert(!/continue-on-error|\n        if:/.test(step));
- assert.match(workflow,/needs: \[checks, build, full-product, source-acceptance\]/);
+ assert(requiredVerificationJobs(workflow).includes('publication-factory'));
  for(const variable of ['CHECKS','BUILD','FULL_PRODUCT','SOURCE_ACCEPTANCE'])assert(workflow.includes(`test "$${variable}_RESULT" = success`));
 });
