@@ -1,0 +1,429 @@
+{
+  "baseline": "f37b0338e7647770ba2359cc4cdb0a8677adf211",
+  "decisionPreparation": "b1c606efd06930ae8363e98aa369298ed0c404aa",
+  "unit": {
+    "passed": 6603,
+    "skipped": 4
+  },
+  "calculusGroups": 9,
+  "exactNumericalWitnesses": 328,
+  "analyticLandmarks": 6,
+  "browserJourneys": 2,
+  "membershipGroups": 19,
+  "privilegeGroups": 5,
+  "adoptionGroups": 13,
+  "staticCiTests": 24,
+  "additionalFocusedSuite": 30,
+  "certificationTests": 15,
+  "launchTests": 45,
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 29
+  },
+  "typecheck": "PASS",
+  "webpackBuild": "PASS",
+  "protectedSourceGuards": "PASS v1 and v2",
+  "independentReview": {
+    "agent": "owner_security_review",
+    "result": "No remaining important issue in reviewed isolated scope",
+    "corrections": [
+      "organization identity fence",
+      "TRUNCATE refusal",
+      "direct invitation Business/input/member parity",
+      "country rollback lock before data checks"
+    ]
+  },
+  "receipts": {
+    "browser": {
+      "sha256": "f44d1d2a23e11a541b83fe44e4f75cfdd2a423caca7ad75c836fa5fa121b3ba9",
+      "receipt": {
+        "scope": "isolated private review",
+        "journeys": [
+          {
+            "width": 360,
+            "negativeEvenPole": true,
+            "rows": 17,
+            "segments": 2,
+            "chartTamperRejected": true,
+            "sourceTamperRejected": true,
+            "directionTamperRejected": true,
+            "labels": true,
+            "keyboardFocus": true,
+            "noHorizontalOverflow": true
+          },
+          {
+            "width": 1440,
+            "negativeEvenPole": true,
+            "rows": 17,
+            "segments": 2,
+            "chartTamperRejected": true,
+            "sourceTamperRejected": true,
+            "directionTamperRejected": true,
+            "labels": true,
+            "keyboardFocus": true,
+            "noHorizontalOverflow": true
+          }
+        ],
+        "fullDomainProof": false
+      }
+    },
+    "membership": {
+      "sha256": "698cfe3c60c77673066e11df0ced4b9454b67683c019c6d2d6c59517ad13df02",
+      "receipt": {
+        "status": "LOCAL_VERIFIED_GLOBAL_BLOCKED",
+        "checks": [
+          "Pre-candidate existing owner invitation redemption rejects without consumption or audit",
+          "Guard rejects execution; source guards accepted; GoTrue signup and organization bootstrap preserved",
+          "Issuance retains caller Business entitlement and organization authority",
+          "Deterministic direct-table versus RPC final-seat issuance: exactly one reservation",
+          "Downgraded owner direct POST and issuance RPC reject without effects; Business owner direct POST succeeds",
+          "Direct POST shares RPC token, role and canonical-email validation; duplicate lower-email reservation rejects",
+          "Concurrent duplicate token: one success, one rejection, one member.joined audit",
+          "Direct POST rejects existing owner and member invitations without added reservations, membership or audit",
+          "Active membership replay, owner demotion and user identity rewrite rejected",
+          "Admin and service organization owner/identity rewrites reject; authorized admin name update remains usable",
+          "Anon/authenticated/service SQL TRUNCATE of organizations, memberships, invitations and audit rejects with complete state unchanged",
+          "Last-seat redemption consumes reservation before membership insertion",
+          "Direct member insert versus reservation final-seat race serialized",
+          "Redemption versus revocation has one winner; later redemption rejects",
+          "Expiry equality rejects",
+          "Audit failure rolls back consumption and insertion",
+          "Service-role direct invitation and membership writes rejected",
+          "Unapproved superuser trigger bypass characterized; global invariant remains BLOCKED",
+          "Hash-guarded rollback restores captured acceptance and retains data; reinstallation rejects existing overcapacity"
+        ],
+        "provenance": {
+          "images": {
+            "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+            "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+            "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+          },
+          "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+          "autoconfirm": true,
+          "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+          "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+          "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+          "privateSourceVerified": false
+        },
+        "candidateSha256": "6a5e9f878b95ef395af1fe0123d511e297f19aea93107106e4e431f564a6591b",
+        "productionWrites": false,
+        "activation": false,
+        "limits": [
+          "auth provider email mutations and aliases not globally fenced",
+          "superuser can disable triggers",
+          "expiry observed after final lock, not at commit",
+          "deadlock victim may reject competing row-first table update/delete"
+        ]
+      }
+    },
+    "privileges": {
+      "sha256": "86f0e8ff0787d6aabbe848cb78ae04cbaaf2fded004cf25ed022bc10fcbb06b3",
+      "receipt": {
+        "status": "PASS_ENGINEERING_ONLY_ADOPTION_BLOCKED",
+        "checks": [
+          "Inherited pending allowance aborts and rolls back all ACL changes",
+          "Exact account and portal projections plus preference payload work; pending allowances and unused column denied",
+          "Anonymous ACL and cross-account RLS deny concrete requests",
+          "Captured helper EXECUTE is an RLS dependency; member and owner identities remain distinct",
+          "Captured organization RPC writes audit sequence in definer context with no client USAGE; service reads remain scoped"
+        ],
+        "provenance": {
+          "images": {
+            "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+            "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+            "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+          },
+          "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+          "autoconfirm": true,
+          "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+          "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+          "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+          "privateSourceVerified": false,
+          "compatibilityDescriptorSha256": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+          "compatibilitySourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+          "compatibilityPrivateSourceVerified": false,
+          "compatibilityScope": "Captured four account tables and effective table/column grants; local provider auth; no hosted ACL ancestry equivalence"
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/profiles",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/profiles",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/subscriptions",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/subscriptions",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/rest/v1/user_preferences",
+            "status": 200
+          },
+          {
+            "method": "PATCH",
+            "path": "/rest/v1/profiles",
+            "status": 403
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/billing_customers",
+            "status": 403
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/profiles",
+            "status": 403
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/profiles",
+            "status": 401
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/profiles",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/rest/v1/user_preferences",
+            "status": 403
+          },
+          {
+            "method": "POST",
+            "path": "/rest/v1/rpc/org_role",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/rest/v1/rpc/org_role",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/rest/v1/rpc/is_org_member",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/organization_members",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/organization_members",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/organization_members",
+            "status": 403
+          },
+          {
+            "method": "POST",
+            "path": "/rest/v1/rpc/create_business_organization",
+            "status": 200
+          },
+          {
+            "method": "POST",
+            "path": "/auth/v1/signup",
+            "status": 200
+          },
+          {
+            "method": "GET",
+            "path": "/rest/v1/profiles",
+            "status": 200
+          }
+        ],
+        "productionQueries": false,
+        "activation": false,
+        "sourceBindings": {
+          "docs/p0-decision-contracts/writers-acl.json": "d380d98ac4e177edba50f422dfb64b9f2448c39d3355688af919f4105a8261cf",
+          "docs/p0-decision-contracts/writers-acl.md": "3ddd12ed4c2b36a181b7f10db75c164229cebbf2fc17f4c8d9bc1d1a4df72248",
+          "tests/owner-p0/privileges/review-only.sql": "89d366c824428aac285f3cd5899fa63489d1c8ba100e91b5f66b166adb04e2a1",
+          "tests/owner-p0/privileges/acceptance.mjs": "a728dc84ee94a5c90a9a437ee26456c4054262fc7241490455bd012555570275",
+          "tests/hosted-remediation-closure/compatibility/initializer.mjs": "faee205a9af973fc10d44801e747b4a6cd3871fc2e0c83df3c82662164466662",
+          "tests/hosted-remediation-closure/compatibility/scoped-descriptor.json": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+          "tests/hosted-remediation-closure/compatibility/fixture-manifest.json": "a3ca957e46951aff631e425f78a4f876cb0ffc6d30935fa11dbccd695e67855e",
+          "src/app/account/page.tsx": "a9e22de55d32512d843cb1a2a39d5de02a9fa416bfca598c1c71d7fb363b7f5b",
+          "src/app/account/actions.ts": "dd3ce3722bbdb4b68e28b1405f9a320d63123a9c9ee932304abe1eee8daed822",
+          "src/app/api/billing/portal/route.ts": "9004247f51ac0fccf4c79b2f42121e71c35fa2633e9d4b5f8393286094ee080c",
+          "src/app/business/actions.ts": "4a67f6674620f9105b9f1469eca9dc219cfc4c6150224f1d62aa550830816182"
+        }
+      }
+    },
+    "adoption": {
+      "sha256": "a41632f728a4b65d088cad655c34ad29792a3a83a46ed4103efee82e11886e63",
+      "receipt": {
+        "scope": "Fourteen public target tables plus genuine local auth/provider metadata; isolated snapshot only, not production target/data acceptance",
+        "startUTC": "2026-11-01T09:04:06.176Z",
+        "endUTC": "2026-11-01T09:04:29.125Z",
+        "checks": [
+          "Composed guard prevents every constituent migration even when SQL client continues after errors",
+          "Unsupported snapshot isolation refuses before any correction",
+          "Full declared public/provider metadata fingerprint rejects incompatible target shape",
+          "Late failure rolls back all column, RPC, trigger and ACL changes atomically",
+          "Combined009032\u2013035 narrowed038 and exact-date/final-row/P0 corrections compile on hosted-shaped fixture with provider unchanged",
+          "Reapplication to changed postimage refuses instead of overwriting or pretending idempotent adoption",
+          "New membership protocol and narrowed caller privileges coexist with all reviewed admin/publication corrections under genuine auth",
+          "Membership reversal restores exact pre-membership metadata while retaining completed membership and audit rows",
+          "Rollback stays guarded and refuses to discard country data introduced after adoption",
+          "Country writer first: rollback waits for exclusive table lock then refuses the newly committed data",
+          "Rollback first: later authenticated country writer cannot commit into the disappearing column",
+          "Rollback restores exact semantic metadata preimage and all preexisting account/business rows without CASCADE",
+          "Rollback/reinstall preserves every visible semantic with explicit new physical attribute ordinal and fresh postimage binding"
+        ],
+        "plan": {
+          "schemaVersion": 1,
+          "engineeringAuthorized": true,
+          "activationAuthorized": false,
+          "releaseHold": true,
+          "sourceBindings": [
+            {
+              "path": "supabase/migrations/009_country_preferences.sql",
+              "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+            },
+            {
+              "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+              "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+            },
+            {
+              "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+              "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+            },
+            {
+              "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+              "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+            },
+            {
+              "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+              "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+            },
+            {
+              "path": "tests/owner-p0/privileges/review-only.sql",
+              "sha256": "89d366c824428aac285f3cd5899fa63489d1c8ba100e91b5f66b166adb04e2a1"
+            },
+            {
+              "path": "tests/hosted-schema-remediation/publication/review-only-correction.sql",
+              "sha256": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6"
+            },
+            {
+              "path": "tests/hosted-remediation-closure/publication/review-only-deferred-gate.sql",
+              "sha256": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c"
+            },
+            {
+              "path": "tests/p0-publication-business/publication/review-only-successor.sql",
+              "sha256": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0"
+            }
+          ],
+          "scope": "Reviewed public account/admin/publication correction sequence; membership successor separately guarded and validated",
+          "rollbackRisk": "Restoring known-defective predecessors is technical reversibility only, not approved safe production rollback; critical workflows must remain held",
+          "providerControls": "No auth schema, provider ownership, role memberships or service-role grants changed",
+          "supplementarySourceBindings": [
+            {
+              "path": "tests/owner-p0/membership/review-only-membership.sql",
+              "sha256": "6a5e9f878b95ef395af1fe0123d511e297f19aea93107106e4e431f564a6591b"
+            },
+            {
+              "path": "tests/owner-p0/membership/review-only-rollback.sql",
+              "sha256": "8341ef33055727dbc3e404c52bb9227a99bd00aae57cee901b54f71ed7cbcab2"
+            }
+          ]
+        },
+        "before": "895f6df9351a149fd9c825158af0ce38e79dad2ad6a89774efa7a8e8f9a57afd",
+        "after": "2b77eac4031599d0664c42ef8b64c904cf52554822c9fcb49df57d8ad713264c",
+        "restored": "895f6df9351a149fd9c825158af0ce38e79dad2ad6a89774efa7a8e8f9a57afd",
+        "reapplied": "901405bfae3cb1df5a069d94058dfca4f5e465e05d273b932cdb5ccc42b92aac",
+        "attributeOrdinalChange": {
+          "first": 6,
+          "reinstalled": 7
+        },
+        "applySha256": "b1941d8ca070e615425ad62ac7ce37417e872772ba9c62be564104caeb1ac923",
+        "rollbackSha256": "2eaa9e0f24bf3a9fa83c01176f4c91031d28db8019d5a0f37a4de7693fb78aee",
+        "provenance": {
+          "images": {
+            "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+            "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+            "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+          },
+          "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+          "autoconfirm": true,
+          "account": {
+            "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+            "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+            "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+            "privateSourceVerified": false,
+            "compatibilityDescriptorSha256": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+            "compatibilitySourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+            "compatibilityPrivateSourceVerified": false,
+            "compatibilityScope": "Captured four account tables and effective table/column grants; local provider auth; no hosted ACL ancestry equivalence"
+          },
+          "admin": {
+            "privateSourceVerified": false,
+            "scope": "Six captured admin tables, constraints, standalone indexes, policies, table/column grants and all scoped triggers; local pinned auth internals, no production data or provider equivalence",
+            "scopedSha256": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c",
+            "sourceCaptureSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0"
+          }
+        },
+        "productionWrites": false,
+        "activationAuthorized": false,
+        "rollbackWarning": "Restores known-defective predecessor only for isolated reversibility proof; real rollback requires held critical workflows, reviewed recovery and separate approval."
+      }
+    }
+  },
+  "logSha256": {
+    "owner-p0-target-lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owner-p0-certification.log": "676de2b92c0c0667d30a03bd86868ca5a5bf66b21a6b3f4bc44fb7bdd3334e60",
+    "owner-p0-adoption-final.log": "83a7ac6f4d21523d4b7519cec8e6261a2e8ce66207ce905a480706205e6018b1",
+    "owner-p0-adoption-ci.log": "83a7ac6f4d21523d4b7519cec8e6261a2e8ce66207ce905a480706205e6018b1",
+    "owner-p0-adoption-integrated.log": "aff66c3dafd1391c8ea99a79d6ea640164ff537a18492f7741d9e9ac1dc87673",
+    "owner-p0-focused-final.log": "9e11137f44a58d28e31bdc5eab1385068fdc96f4c4d3707f0ce5c1a62da05343",
+    "owner-p0-focused.log": "e1874d016db5ebee220727edf8b73d79e5575a59fa4225cd6ce4c6c765cd579f",
+    "owner-p0-ci-adoption.log": "aff66c3dafd1391c8ea99a79d6ea640164ff537a18492f7741d9e9ac1dc87673",
+    "owner-p0-lint-final.log": "fe4c20db217b467cf39f0b6c4193beaa291e9384839ce48ca42f71c2876fa84a",
+    "owner-p0-unit.log": "4a94a5ba036da3388db1705ca85629ef7ee52281568572b7a5a715d256ea580a",
+    "owner-p0-source-v1.log": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed",
+    "owner-p0-launch.log": "c69e6e73f84ee21bbf1d6e1fae0c9a9755e98a6f719112e2609c4f3e701e0e11",
+    "owner-p0-adoption.log": "5ddc34d2b8d0ee635c49c449714e7f76c8c07388ad77cbd16ccced8e02ab3677",
+    "owner-p0-target-lint-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "owner-p0-adoption-unit.log": "d33067e88b1ff36c42e1e9f8363bb408a9c7469b419134570c4158e2a40489eb",
+    "owner-p0-typecheck.log": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+    "owner-p0-calculus-final.log": "08befb62a9f431ca69861500de552e2a7bf5f44e97d85d3c97546fbd3c9e875c",
+    "owner-p0-build.log": "2083dfeb35289e15edbdf7504830ade5a4a5a6c8271323aae1d14a6059cff765",
+    "owner-p0-ci-membership.log": "ebdce86e51bfe2a27f6476f974f736d2ddbb6e659d66157c81243f2a445c914c",
+    "owner-p0-ci-browser.log": "47531faa136c7a10e36be4edd56807c6b8d6b7ed26faafc7c10bb8d399c13b5e",
+    "owner-p0-source-v2.log": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed",
+    "owner-p0-ci-privileges.log": "857f17334e6b535475c250ea709957cc3986c4fefb84da72c36b729cc27196c2",
+    "owner-p0-lint.log": "e2b6cfb089604553276fc8062957b62c12a21ddc650ee05819b195ae62e24c7f",
+    "owner-p0-ci-contracts.log": "4ba2d71086f82e5b4a50cac05cd67cf9db345f17f8107ff8a9be664cbdc01da9",
+    "owner-p0-ci-calculus.log": "2811d5e787316f18736e515cff0e260889f66722acc12c1f7b2f785c103d5cf8",
+    "owner-p0-adoption-concurrency.log": "ec0955ab7ea3b7f0f26477e5c24b157f0664a98ab8d6ede655c1dc39350d8f79"
+  },
+  "productionAcceptance": false
+}

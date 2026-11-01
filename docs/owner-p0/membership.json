@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "workstream": "B",
+  "decision": "Latest explicit user authorization supersedes earlier pending alternatives only for this isolated engineering successor",
+  "status": "LOCAL_VERIFIED_GLOBAL_CAPACITY_BLOCKED",
+  "activationAuthorized": false,
+  "productionWrites": false,
+  "historicalContractsModified": false,
+  "selected": {
+    "existingActiveMembership": "reject_without_upsert_or_added_seat",
+    "ownerDemotion": "reject",
+    "identityRewrite": "reject",
+    "capacity": "unique_active_users_plus_unique_lower_email_live_pending_excluding_active_email_matches",
+    "maxSeats": 5,
+    "replay": "reject_after_one_success",
+    "audit": "one member.joined per successful new join; failures rollback",
+    "expiry": "strictly later than wall clock after final organization and invitation locks",
+    "revocation": "shared organization lock linearizes DELETE before or after acceptance",
+    "organizationOwnerReferenceRewrite": "reject; explicit ownership transfer remains outside scope",
+    "truncate": "reject on four organization/membership/invitation/audit tables; privileged trigger-disable and DDL remain outside boundary",
+    "issuanceEntitlement": "Invitation INSERT shared trigger rechecks auth.uid/invited_by identity and Business plan after organization lock; acceptance UPDATE and member INSERT do not require recipient Business plan",
+    "directIssuanceParity": "Shared invitation INSERT trigger applies existing reserveRPC canonical lower(trim(email)), @ check, explicit approved invitation role, 64 lowercase hex token check, and active member email rejection after org lock; no provider alias assumptions"
+  },
+  "localChecks": [
+    "Pre-candidate existing owner invitation redemption rejects without consumption or audit",
+    "Guard rejects execution; source guards accepted; GoTrue signup and organization bootstrap preserved",
+    "Issuance retains caller Business entitlement and organization authority",
+    "Deterministic direct-table versus RPC final-seat issuance: exactly one reservation",
+    "Downgraded owner direct POST and issuance RPC reject without effects; Business owner direct POST succeeds",
+    "Direct POST shares RPC token, role and canonical-email validation; duplicate lower-email reservation rejects",
+    "Concurrent duplicate token: one success, one rejection, one member.joined audit",
+    "Direct POST rejects existing owner and member invitations without added reservations, membership or audit",
+    "Active membership replay, owner demotion and user identity rewrite rejected",
+    "Admin and service organization owner/identity rewrites reject; authorized admin name update remains usable",
+    "Anon/authenticated/service SQL TRUNCATE of organizations, memberships, invitations and audit rejects with complete state unchanged",
+    "Last-seat redemption consumes reservation before membership insertion",
+    "Direct member insert versus reservation final-seat race serialized",
+    "Redemption versus revocation has one winner; later redemption rejects",
+    "Expiry equality rejects",
+    "Audit failure rolls back consumption and insertion",
+    "Service-role direct invitation and membership writes rejected",
+    "Unapproved superuser trigger bypass characterized; global invariant remains BLOCKED",
+    "Hash-guarded rollback restores captured acceptance and retains data; reinstallation rejects existing overcapacity"
+  ],
+  "runtimeProvenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+    "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+    "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+    "privateSourceVerified": false
+  },
+  "receipt": "/workspace/work/owner-p0-ci/membership-parity/receipt.json",
+  "sourceBindings": [
+    {
+      "path": "tests/hosted-schema-remediation/invitations/scoped-descriptor.json",
+      "sha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e"
+    },
+    {
+      "path": "tests/hosted-schema-remediation/invitations/fixture-manifest.json",
+      "sha256": "568af04f361731ef1965a83592b9d559a27c359590fca7e60f951ff7d4bfdd6a"
+    },
+    {
+      "path": "tests/hosted-schema-remediation/invitations/initializer.mjs",
+      "sha256": "92ad60fff0202ecbae696fc10b93b74120a0546456a983d78d066debdf242ff0"
+    },
+    {
+      "path": "tests/p0-publication-business/business/review-only-acceptance.sql",
+      "sha256": "e4d6f1b9f7d8bae67ceffa4d153e452abb2d9bd22673342b186c53be7a380cd6"
+    },
+    {
+      "path": "tests/batch17-issuance/review-only-issuance.sql",
+      "sha256": "728a02402c7b4398ce58cfbb8b9100c19c12d23790a80e6a08699df43d4e1300"
+    },
+    {
+      "path": "docs/p0-decision-contracts/membership.json",
+      "sha256": "8dd9052d1b4d8d2587c191a241b3005d0942073f2a76c48c4cc3e3d811d29488"
+    },
+    {
+      "path": "tests/owner-p0/membership/acceptance.mjs",
+      "sha256": "bd1dc20e86b0e9bda6f8379e620aeb4c7540f6e5b4f72a950b06608675694555"
+    },
+    {
+      "path": "tests/owner-p0/membership/review-only-rollback.sql",
+      "sha256": "8341ef33055727dbc3e404c52bb9227a99bd00aae57cee901b54f71ed7cbcab2"
+    },
+    {
+      "path": "tests/owner-p0/membership/review-only-membership.sql",
+      "sha256": "6a5e9f878b95ef395af1fe0123d511e297f19aea93107106e4e431f564a6591b"
+    },
+    {
+      "path": "tests/batch17-issuance/artifacts.mjs",
+      "sha256": "c394eefe17b4f990c5a0a58dce690f831aa74ca2ea2bdeb8f192b5fa6b39f2c1"
+    }
+  ],
+  "participatingWriters": [
+    "captured authenticated direct organization_members and organization_invitations INSERT/UPDATE/DELETE via triggers",
+    "reserve_business_invitation RPC",
+    "accept_business_invitation RPC",
+    "revoke_business_invitation RPC",
+    "service_role public-table writes rejected",
+    "captured organizations UPDATE identity and owner reference changes rejected, including service_role; authorized name updates preserved",
+    "anon/authenticated/service_role SQL TRUNCATE rejected by statement triggers on organizations, organization_members, organization_invitations, organization_audit_log; twelve attempts verified unchanged full state"
+  ],
+  "remainingBlockers": [
+    "auth provider and privileged auth.users email writers are not fenced; alias-to-user equivalence unknown",
+    "superuser, table owner and trigger-disabling writers can bypass capacity",
+    "capture is a scoped historical source, not hosted-current whole-system equivalence",
+    "ownership transfer/cardinality is outside approved contract",
+    "no production deployment identity or activation authorized",
+    "external concurrent profiles.plan writers are outside the organization lock; no global commit-time entitlement invariant claimed"
+  ],
+  "rollbackStatus": "LOCAL_VERIFIED: inert guard rejects, eight function-body hashes accepted, original acceptance definition hash restored, candidate triggers removed, data retained, reinstall rejects overcapacity",
+  "receiptSha256": "698cfe3c60c77673066e11df0ced4b9454b67683c019c6d2d6c59517ad13df02",
+  "candidateSha256": "6a5e9f878b95ef395af1fe0123d511e297f19aea93107106e4e431f564a6591b",
+  "existingDataAdmission": "Protected organization/member/invitation table lock and occupied-seat audit rejects existing overcapacity; no data rewrite",
+  "verification": {
+    "command": "MEMBERSHIP_ARTIFACTS=/workspace/work/owner-p0-ci/membership-parity node tests/owner-p0/membership/acceptance.mjs",
+    "exitCode": 0,
+    "runtime": "v24.19.0",
+    "checks": 19,
+    "artifactValidation": "Shared artifactDirectory realpath-aware outside-source check before Docker; portable CI runner temp accepted; no optional private files"
+  }
+}

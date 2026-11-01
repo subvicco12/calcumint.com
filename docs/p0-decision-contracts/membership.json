@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "decisionId": "OPS-01-MEMBERSHIP",
+  "status": "PENDING",
+  "approvedBy": null,
+  "approvedAt": null,
+  "policyApproved": false,
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "oracleOnly": true,
+  "source": {
+    "packagePath": "grouped-owner-choices.json",
+    "sha256": "f42bdf5671a8e6f5c425e09551458a68417da149ea35c561bd9927d61d752040",
+    "recommendation": "Recommend no implicit owner demotion or user-identity rewrite; idempotent existing-member outcome; final-state valid expiry/revocation with shared writer fencing. These exact policies are proposed, not sourced approvals."
+  },
+  "sourceEstablished": {
+    "seatCeiling": 5,
+    "basis": [
+      "supabase/migrations/003_b5_business.sql",
+      "tests/batch17-issuance/review-only-issuance.sql"
+    ],
+    "notOwnerSelectableWithoutNewEvidence": "Do not invent a different included seat limit, provider behavior or authority.",
+    "invitationRoles": [
+      "admin",
+      "manager",
+      "member",
+      "viewer"
+    ]
+  },
+  "selected": null,
+  "alternatives": [
+    {
+      "id": "M-REJECT-EXISTING",
+      "status": "PROPOSED",
+      "existingOwner": "reject",
+      "existingMember": "reject",
+      "identityRewrite": "reject",
+      "capacity": "members",
+      "replay": "reject_without_new_effect",
+      "expiryPoint": "after_final_lock",
+      "audit": "new joins once; rejected calls write nothing"
+    },
+    {
+      "id": "M-IDEMPOTENT",
+      "status": "PROPOSED_RECOMMENDED_REVIEW_TARGET",
+      "existingOwner": "noop_preserve_owner",
+      "existingMember": "noop_preserve_role",
+      "identityRewrite": "reject",
+      "capacity": "members",
+      "replay": "return_prior_no_new_effect",
+      "expiryPoint": "after_final_lock",
+      "audit": "new member.joined once; existing invitation.accepted_noop once; replay no event"
+    },
+    {
+      "id": "M-IDEMPOTENT-RESERVATIONS",
+      "status": "PROPOSED",
+      "existingOwner": "noop_preserve_owner",
+      "existingMember": "noop_preserve_role",
+      "identityRewrite": "reject",
+      "capacity": "members_and_unique_live_reservations",
+      "replay": "return_prior_no_new_effect",
+      "expiryPoint": "after_final_lock",
+      "audit": "same as M-IDEMPOTENT",
+      "extraPrerequisite": "Verified reservation subject identity, email/provider normalization and every writer shares reservation fence"
+    },
+    {
+      "id": "M-IDEMPOTENT-COMMIT-CHECK",
+      "status": "PROPOSED",
+      "existingOwner": "noop_preserve_owner",
+      "existingMember": "noop_preserve_role",
+      "identityRewrite": "reject",
+      "capacity": "members",
+      "replay": "return_prior_no_new_effect",
+      "expiryPoint": "final_commit_check",
+      "audit": "same as M-IDEMPOTENT",
+      "extraPrerequisite": "Deferred deadline/revocation protocol and tested rollback at COMMIT; current P0 RPC does not implement this guarantee"
+    }
+  ],
+  "semantics": {
+    "expiryBoundary": "expiresAt must be strictly greater than chosen observation point; equality rejects",
+    "revocationOrdering": "revokedAt <= chosen point rejects; after-lock revocation waits for shared invitation fence and orders after admission if it commits first",
+    "newMember": "Issuance authority must be verified within the selected writer contract; recipient identity and token/email mapping must be verified. Recipient need not already be an owner/admin. New member consumes one unique seat; no implicit owner grant. Preserve the explicitly verified invitation role (admin/manager/member/viewer); no default member role or implicit owner invitation.",
+    "existingMember": "Recommended noop consumes no extra seat even at capacity; do not demote/promote implicitly; alternative rejects explicitly",
+    "roleChanges": "Explicit authorized membership role operation and dedicated ownership-transfer contract are separate unresolved choices",
+    "identityMutation": "No generic user_id rewrite recommended; remediation/migration authority remains separate",
+    "reservationIdentity": "Oracle input otherReservations counts only verified distinct live reservation subjects excluding the current consumed invitation and any existing member. It does not establish provider/email-to-user equivalence. Current reservation must not be counted twice.",
+    "ownerAuthority": "Single versus multiple owners, organizations.owner_user_id consistency and transfer authority remain pending; noop only preserves current owner",
+    "replayBoundary": "Define same invitation/token outcome explicitly; no double seat or member.joined event in any proposed branch"
+  },
+  "currentImplementationDifferences": [
+    "Captured and P0 acceptance upsert existing role while below capacity; proposed noop/reject alternatives are not implemented or approved",
+    "Current P0 rejects repeated redemption; recommended return-prior alternative would need new engineering",
+    "Current P0 capacity counts members; occupied-plus-pending reservations are separately guarded Batch17 proposal, not global invariant",
+    "Current P0 checks wall clock after last lock, not guaranteed valid at final COMMIT",
+    "Direct authenticated/service/provider writers remain unfenced"
+  ],
+  "requiredDecisionFields": [
+    "alternativeId",
+    "ownerTransferAuthority",
+    "singleOrMultipleOwnerInvariant",
+    "reservationIdentityIfSelected",
+    "roleMutationAuthority",
+    "revocationLinearization",
+    "replayAuditContract",
+    "participatingWriterBoundary",
+    "externalProviderEvidence"
+  ],
+  "acceptanceObligations": [
+    "Existing owner invite cannot silently demote owner",
+    "Existing member invitation at five members follows chosen explicit noop/reject semantics with zero extra seat",
+    "New distinct user at five members denied",
+    "Duplicate token/retry writes at most one joined audit; noop uses explicit separate event",
+    "Expiry/revocation tested before and after fence plus chosen final point",
+    "All mutations and audits roll back together on late failure",
+    "Direct and privileged writer concurrency is included or explicitly blocked"
+  ]
+}

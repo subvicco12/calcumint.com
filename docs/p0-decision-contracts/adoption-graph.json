@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 1,
+  "decisionId": "OPS-03-ADOPTION",
+  "status": "PENDING",
+  "approvedBy": null,
+  "approvedAt": null,
+  "baselineSha": "f37b0338e7647770ba2359cc4cdb0a8677adf211",
+  "releaseHold": true,
+  "activationAuthorized": false,
+  "sqlExecutionImplemented": false,
+  "nodes": [
+    {
+      "id": "CAPTURED_CATALOG_AUTH_SCHEMA",
+      "kind": "HISTORICAL_METADATA_FACT",
+      "dependencies": [],
+      "activationGates": [
+        "TARGET_SCHEMA"
+      ],
+      "sourceBindings": [
+        {
+          "path": "tests/hosted-remediation-closure/admin/scoped-descriptor.json",
+          "sha256": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c"
+        },
+        {
+          "path": "docs/authentic-schema-reconciliation/catalog-differences.json",
+          "sha256": "cb3312eba2e608e8e2f4b9fa6a2839fb0d9c68909d4d0bd32e6358c2f4c4abf0"
+        }
+      ],
+      "observedState": "Present in historical authenticated public/auth capture; scoped local reconstruction not fresh production equivalence",
+      "rollback": "Read-only fact; no SQL emitted"
+    },
+    {
+      "id": "M009",
+      "kind": "HISTORICAL_SOURCE_REVIEW_TARGET",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "GUARDED_BUNDLE",
+        "RECOVERY",
+        "CONCURRENCY",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PREFERENCES"
+      ],
+      "sourceBindings": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "observedState": "country_code absent in captured COMPLETE columns",
+      "precondition": "Fresh exact nullable column/type/allowed-values state and data review; source IF NOT EXISTS does not prove existing constraint compatibility",
+      "postcondition": "Explicit nullable IN/US/GB/CA/AU preference; NULL custom; no inferred locale/country",
+      "rollback": "Preserve already written country data; do not automatically DROP COLUMN. Choose backward-compatible app handling or reviewed export/restore."
+    },
+    {
+      "id": "M032",
+      "kind": "HISTORICAL_SOURCE_REVIEW_TARGET",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "GUARDED_BUNDLE",
+        "RECOVERY",
+        "CONCURRENCY",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE",
+        "WRITER_RECONCILIATION"
+      ],
+      "sourceBindings": [
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "observedState": "All target signatures absent in historical captured function scope",
+      "precondition": "Exact current signatures absent or separately reviewed definition/ACL preimages; table/RLS/helper/trigger compatibility established",
+      "postcondition": "Atomic invoker RPC effects and audit; helper033 narrowly definer; RLS/QA/lifecycle enforcement retained",
+      "rollback": "Drain/reconcile clients and in-flight writes; remove only newly introduced exact functions if safe and approved, preserve audit/history; never rewrite legacy outputs."
+    },
+    {
+      "id": "M033",
+      "kind": "HISTORICAL_SOURCE_REVIEW_TARGET",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "GUARDED_BUNDLE",
+        "RECOVERY",
+        "CONCURRENCY",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE",
+        "WRITER_RECONCILIATION"
+      ],
+      "sourceBindings": [
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "observedState": "All target signatures absent in historical captured function scope",
+      "precondition": "Exact current signatures absent or separately reviewed definition/ACL preimages; table/RLS/helper/trigger compatibility established",
+      "postcondition": "Atomic invoker RPC effects and audit; helper033 narrowly definer; RLS/QA/lifecycle enforcement retained",
+      "rollback": "Drain/reconcile clients and in-flight writes; remove only newly introduced exact functions if safe and approved, preserve audit/history; never rewrite legacy outputs."
+    },
+    {
+      "id": "M034",
+      "kind": "HISTORICAL_SOURCE_REVIEW_TARGET",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "GUARDED_BUNDLE",
+        "RECOVERY",
+        "CONCURRENCY",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE",
+        "WRITER_RECONCILIATION"
+      ],
+      "sourceBindings": [
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "observedState": "All target signatures absent in historical captured function scope",
+      "precondition": "Exact current signatures absent or separately reviewed definition/ACL preimages; table/RLS/helper/trigger compatibility established",
+      "postcondition": "Atomic invoker RPC effects and audit; helper033 narrowly definer; RLS/QA/lifecycle enforcement retained",
+      "rollback": "Drain/reconcile clients and in-flight writes; remove only newly introduced exact functions if safe and approved, preserve audit/history; never rewrite legacy outputs."
+    },
+    {
+      "id": "M035",
+      "kind": "HISTORICAL_SOURCE_REVIEW_TARGET",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "GUARDED_BUNDLE",
+        "RECOVERY",
+        "CONCURRENCY",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE",
+        "WRITER_RECONCILIATION"
+      ],
+      "sourceBindings": [
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "observedState": "All target signatures absent in historical captured function scope",
+      "precondition": "Exact current signatures absent or separately reviewed definition/ACL preimages; table/RLS/helper/trigger compatibility established",
+      "postcondition": "Atomic invoker RPC effects and audit; helper033 narrowly definer; RLS/QA/lifecycle enforcement retained",
+      "rollback": "Drain/reconcile clients and in-flight writes; remove only newly introduced exact functions if safe and approved, preserve audit/history; never rewrite legacy outputs."
+    },
+    {
+      "id": "M038",
+      "kind": "HISTORICAL_SOURCE_REVIEW_TARGET",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "GUARDED_BUNDLE",
+        "RECOVERY",
+        "CONCURRENCY",
+        "RELEASE_AUTHORITY",
+        "POLICY_ACL",
+        "WRITER_RECONCILIATION"
+      ],
+      "sourceBindings": [
+        {
+          "path": "supabase/migrations/038_client_account_billing_privileges.sql",
+          "sha256": "27a0ab173957d938d6b3a8ed2fe3d2dfe6280ecec6da0eb9aa4c6cf640b8e708"
+        },
+        {
+          "path": "docs/hosted-schema-remediation/effects-privileges.sql",
+          "sha256": "710e80cf39943ba274d2d64e58750af6790aa53a26a84950af0dd02d125a8378"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "observedState": "Captured four-table anonymous rights contradict intended postconditions",
+      "reviewArtifact": "docs/hosted-schema-remediation/effects-privileges.sql",
+      "precondition": "Fresh all inherited/table/column grants, role paths and dependent clients; retained display_name/billing allowances still pending",
+      "postcondition": "Only approved client allowlist, no anonymous or authenticated destructive rights, service/provider controls preserved; inherited leakage aborts",
+      "rollback": "Restore exact preimage direct/inherited ACL state only under reviewed policy, not blanket ALL grants; preserve provider ownership/default ACL controls."
+    },
+    {
+      "id": "PUB_DATE",
+      "kind": "GUARDED_REVIEW_PROPOSAL",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "RECOVERY",
+        "CONCURRENCY",
+        "WRITER_RECONCILIATION",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE"
+      ],
+      "sourceBindings": [
+        {
+          "path": "tests/hosted-schema-remediation/publication/review-only-correction.sql",
+          "sha256": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "guardMustRemainIntact": true,
+      "precondition": "Exact predicate predecessor UTF8 SHA18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c; PG17; source guard intact before any authorization",
+      "postcondition": "Exact corrected predicate SHAce53551431824e8560af44a235ebb312372e0c67641c196f3d8db1287c05709a; owner/ACL/config preserved",
+      "rollback": "Preserve captured validators and exact preimages. Additive objects may be removed only under approved recovery with critical workflows safely paused. Reinstating known-defective date/acceptance predecessors is not automatic safe rollback."
+    },
+    {
+      "id": "PUB_FINAL",
+      "kind": "GUARDED_REVIEW_PROPOSAL",
+      "dependencies": [
+        "PUB_DATE"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "RECOVERY",
+        "CONCURRENCY",
+        "WRITER_RECONCILIATION",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE"
+      ],
+      "sourceBindings": [
+        {
+          "path": "tests/hosted-remediation-closure/publication/review-only-deferred-gate.sql",
+          "sha256": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "guardMustRemainIntact": true,
+      "precondition": "Exact lifecycle/predicate hashes; original trigger enabled; new final-row objects absent",
+      "postcondition": "Final persisted critical UPDATE predicate checked; final-row function SHA3d456f8b31a3fd4f9586569beab9ce1e5bafbfc1cc67e28b56eaa39bbb7c3751",
+      "rollback": "Preserve captured validators and exact preimages. Additive objects may be removed only under approved recovery with critical workflows safely paused. Reinstating known-defective date/acceptance predecessors is not automatic safe rollback."
+    },
+    {
+      "id": "PUB_P0",
+      "kind": "GUARDED_REVIEW_PROPOSAL",
+      "dependencies": [
+        "PUB_FINAL"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "RECOVERY",
+        "CONCURRENCY",
+        "WRITER_RECONCILIATION",
+        "RELEASE_AUTHORITY",
+        "LEGACY_PUBLICATION",
+        "QUALIFIED_ACCEPTANCE"
+      ],
+      "sourceBindings": [
+        {
+          "path": "tests/p0-publication-business/publication/review-only-successor.sql",
+          "sha256": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "guardMustRemainIntact": true,
+      "precondition": "Exact prior final-row/lifecycle/predicate/QA/reviewer hashes and trigger definitions/enabled/event/deferral state; every new object absent",
+      "postcondition": "Draft-only INSERT; QA OLD parent + parent fences; all-critical final-row RC; reviewer SHARE + DELETE/active/role/identity coordination",
+      "rollback": "Preserve captured validators and exact preimages. Additive objects may be removed only under approved recovery with critical workflows safely paused. Reinstating known-defective date/acceptance predecessors is not automatic safe rollback."
+    },
+    {
+      "id": "BUS_ACCEPTANCE",
+      "kind": "GUARDED_REVIEW_PROPOSAL",
+      "dependencies": [
+        "CAPTURED_CATALOG_AUTH_SCHEMA"
+      ],
+      "activationGates": [
+        "TARGET_SCHEMA",
+        "RECOVERY",
+        "CONCURRENCY",
+        "WRITER_RECONCILIATION",
+        "RELEASE_AUTHORITY",
+        "POLICY_MEMBERSHIP",
+        "LEGACY_INVITATIONS"
+      ],
+      "sourceBindings": [
+        {
+          "path": "tests/p0-publication-business/business/review-only-acceptance.sql",
+          "sha256": "e4d6f1b9f7d8bae67ceffa4d153e452abb2d9bd22673342b186c53be7a380cd6"
+        }
+      ],
+      "executionAuthorized": false,
+      "sourceIsActivationArtifact": false,
+      "guardMustRemainIntact": true,
+      "precondition": "Exact captured acceptance SHA821394b78bacc681a73e19db068cbca9e08c7563adef322116c1fe7129a810c2 and scoped columns; RC only",
+      "postcondition": "Fresh locked invitation identity/revocation/expiry, one acceptance audit and atomic rollback for participating acceptance RPCs only",
+      "rollback": "Preserve captured validators and exact preimages. Additive objects may be removed only under approved recovery with critical workflows safely paused. Reinstating known-defective date/acceptance predecessors is not automatic safe rollback."
+    }
+  ],
+  "gates": [
+    {
+      "id": "TARGET_SCHEMA",
+      "status": "UNRESOLVED",
+      "requirement": "Fresh authenticated target metadata, ownership, RLS, grants, functions, triggers and migration effects; historical capture only is insufficient",
+      "evidence": null
+    },
+    {
+      "id": "LEGACY_PREFERENCES",
+      "status": "UNRESOLVED",
+      "requirement": "Audit current country column/type/constraint; existing allowed values or NULL and application upsert compatibility; never infer location",
+      "evidence": null
+    },
+    {
+      "id": "LEGACY_PUBLICATION",
+      "status": "UNRESOLVED",
+      "requirement": "Read-only audit every critical catalog parent, QA/source/reviewer reference and existing invalid row; no invented evidence or acceptance backfill",
+      "evidence": null
+    },
+    {
+      "id": "LEGACY_INVITATIONS",
+      "status": "UNRESOLVED",
+      "requirement": "Read-only audit duplicate tokens, pending identities, expiry, orphan refs, owner/member state, seats and existing audit anomalies",
+      "evidence": null
+    },
+    {
+      "id": "WRITER_RECONCILIATION",
+      "status": "UNRESOLVED",
+      "requirement": "Reconcile every direct/RPC/service/privileged/provider writer with agreed participation or fencing",
+      "evidence": null
+    },
+    {
+      "id": "POLICY_MEMBERSHIP",
+      "status": "UNRESOLVED",
+      "requirement": "OPS-01 explicit alternative, owner/identity/role/replay/reservation/timing decisions plus implementation matching selected policy",
+      "evidence": null
+    },
+    {
+      "id": "POLICY_ACL",
+      "status": "UNRESOLVED",
+      "requirement": "OPS-02 caller-specific least privilege; separate display_name UPDATE and billing SELECT decisions; provider controls retained",
+      "evidence": null
+    },
+    {
+      "id": "QUALIFIED_ACCEPTANCE",
+      "status": "UNRESOLVED",
+      "requirement": "Genuine source/version/applicability/reviewer and certification decision, not synthetic QA rows",
+      "evidence": null
+    },
+    {
+      "id": "RECOVERY",
+      "status": "UNRESOLVED",
+      "requirement": "Reviewed preimage/data recovery and rollback rehearsal preserving immutable history; no destructive drop/regrant default",
+      "evidence": null
+    },
+    {
+      "id": "CONCURRENCY",
+      "status": "UNRESOLVED",
+      "requirement": "Accepted RC/fencing/commit-order behavior, multi-row retry/deadlock handling, target workload and all participating writers",
+      "evidence": null
+    },
+    {
+      "id": "GUARDED_BUNDLE",
+      "status": "UNRESOLVED",
+      "requirement": "Separately prepared guarded adoption artifact with exact source/target/data preconditions; historical migration files are not activation commands",
+      "evidence": null
+    },
+    {
+      "id": "RELEASE_AUTHORITY",
+      "status": "UNRESOLVED",
+      "requirement": "OPS-03 separately signed activation/rollback authority; current RELEASE HOLD not lifted",
+      "evidence": null
+    }
+  ],
+  "activationOrdering": [
+    {
+      "before": "PUB_P0",
+      "after": "M032",
+      "reason": "Release safety before exposing admin mutations; not a SQL function-creation dependency"
+    },
+    {
+      "before": "PUB_P0",
+      "after": "M033",
+      "reason": "Release safety before exposing admin mutations; not a SQL function-creation dependency"
+    },
+    {
+      "before": "PUB_P0",
+      "after": "M034",
+      "reason": "Release safety before exposing admin mutations; not a SQL function-creation dependency"
+    },
+    {
+      "before": "PUB_P0",
+      "after": "M035",
+      "reason": "Release safety before exposing admin mutations; not a SQL function-creation dependency"
+    },
+    {
+      "before": "M009",
+      "after": "M038",
+      "reason": "Tested combined account sequence; 038 has no hard SQL dependency on009"
+    }
+  ],
+  "requiredDecisions": [
+    "OC-01-CALCULUS",
+    "OPS-01-MEMBERSHIP",
+    "OPS-02-WRITERS-ACL",
+    "OPS-03-ADOPTION"
+  ],
+  "notes": [
+    "Historical migration identities are distinct including duplicate numeric prefixes; matching names never prove effects",
+    "Current BUS_ACCEPTANCE preserves old existing-member upsert and rejects retry; recommended noop/return-prior alternatives would require new implementation and proof",
+    "All source/hash validation can establish review integrity only; owner answers cannot supply missing provider/source/qualified facts",
+    "Local CI success and scoped synthetic receipts never satisfy authentic target/data/recovery/qualified gates"
+  ]
+}

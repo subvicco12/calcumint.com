@@ -359,6 +359,20 @@ jobs:
         env:
           PUBLICATION_P0_ARTIFACTS: ${{ runner.temp }}/p0-publication
           INVITATION_ARTIFACTS: ${{ runner.temp }}/p0-business
+      - name: Owner-authorized isolated P0 implementation
+        timeout-minutes: 8
+        run: |
+          node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
+          node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/bundle.test.mjs
+          node tests/owner-p0/calculus/browser.mjs
+          node tests/owner-p0/membership/acceptance.mjs
+          node tests/owner-p0/privileges/acceptance.mjs
+          node tests/owner-p0/adoption/acceptance.mjs
+        env:
+          OWNER_CALCULUS_EVIDENCE: ${{ runner.temp }}/owner-calculus-browser
+          MEMBERSHIP_ARTIFACTS: ${{ runner.temp }}/owner-membership
+          OWNER_PRIVILEGES_ARTIFACTS: ${{ runner.temp }}/owner-privileges
+          ADOPTION_ARTIFACTS: ${{ runner.temp }}/owner-adoption
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]

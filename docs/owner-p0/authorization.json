@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "source": "Explicit owner authorization in the current user instruction; supplied file is the prior PENDING register, not a signed production approval",
+  "attachmentSha256": "a3378a708263d6a9f7746aa4f0390720d1836b5c50eb9bf612b80c6faee8e56d",
+  "attachmentEqualsPriorRegister": true,
+  "baselineSha": "f37b0338e7647770ba2359cc4cdb0a8677adf211",
+  "decisionPreparationSha": "b1c606efd06930ae8363e98aa369298ed0c404aa",
+  "baselineCi": {
+    "id": 41284592704,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "decisions": [
+    {
+      "id": "OC-01-CALCULUS",
+      "status": "ENGINEERING_DESIGN_AUTHORIZED",
+      "implementationScope": "isolated implementation and tests only"
+    },
+    {
+      "id": "OPS-01-MEMBERSHIP",
+      "status": "ENGINEERING_DESIGN_AUTHORIZED",
+      "implementationScope": "isolated implementation and tests only"
+    },
+    {
+      "id": "OPS-02-WRITERS-ACL",
+      "status": "ENGINEERING_DESIGN_AUTHORIZED",
+      "implementationScope": "isolated implementation and tests only"
+    },
+    {
+      "id": "OPS-03-ADOPTION",
+      "status": "ENGINEERING_DESIGN_AUTHORIZED",
+      "implementationScope": "isolated implementation and tests only"
+    }
+  ],
+  "instructionPrecedence": {
+    "duplicateMembership": "Latest explicit requirement rejects active existing membership; prior recommended noop/return-prior alternatives are not selected",
+    "capacity": "Active members plus valid pending reservations within included five seats",
+    "expiry": "Fresh final-lock observation is implemented; physical/deferred-COMMIT expiry guarantee not claimed",
+    "unresolvedAllowances": "Display-name UPDATE and billing-customer SELECT remain blocked per WorkstreamC, not inferred approved"
+  },
+  "canonicalRoutingAuthorized": false,
+  "qualifiedApplicabilityApproved": false,
+  "productionSqlAdoptionAuthorized": false,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "mergeAuthorized": false,
+  "deploymentAuthorized": false,
+  "paymentActivationAuthorized": false,
+  "releaseHold": true,
+  "historicalPendingRegisterUnchanged": true
+}
