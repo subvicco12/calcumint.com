@@ -101,10 +101,29 @@ try{
  pass('Anon/authenticated/service SQL TRUNCATE of organizations, memberships, invitations and audit rejects with complete state unchanged');
 
  await reset();await add([b,c,d]);const last=await issue(a);await ok(accept(a,last));assert.equal(await count(),'5');assert.equal(await db.sql(`SELECT public.owner_p0_occupied('${org}')`),'5');pass('Last-seat redemption consumes reservation before membership insertion');
- await reset();await add([b,c,d]);const memberRace=await race([()=>owner.sdk.from('organization_members').insert({organization_id:org,user_id:a.id,role:'member'}),()=>owner.sdk.from('organization_invitations').insert(row(e))]);assert.equal(memberRace.filter(r=>!r.error).length,1);assert.equal(await db.sql(`SELECT public.owner_p0_occupied('${org}')`),'5');pass('Direct member insert versus reservation final-seat race serialized');
+ await reset();await add([b,c,d]);const memberRace=await race([()=>owner.sdk.from('organization_members').insert({organization_id:org,user_id:a.id,role:'member'}),()=>owner.sdk.from('organization_invitations').insert(row(e))]);assert.equal(memberRace.filter(r=>!r.error).length,1);assert.match(memberRace[0].error?.message??'',/row-level security/);assert.equal(memberRace[1].error,null);assert.equal(await db.sql(`SELECT public.owner_p0_occupied('${org}')`),'5');pass('Captured RLS denies direct member INSERT while the permitted final-seat reservation succeeds; not two admitted writers');
  await reset();const revoke=await issue(a);const revoked=await race([()=>accept(a,revoke),()=>owner.sdk.rpc('revoke_business_invitation',{p_invitation_id:revoke.id})]);assert.equal(revoked.filter(r=>!r.error).length,1);await denied(accept(a,revoke));assert(['0','1'].includes(await audit()));pass('Redemption versus revocation has one winner; later redemption rejects');
  await reset();const expired=await issue(a);await db.sql(`UPDATE organization_invitations SET expires_at=clock_timestamp() WHERE id='${expired.id}'`);await denied(accept(a,expired));assert.equal(await audit(),'0');pass('Expiry equality rejects');
  await reset();const rollback=await issue(a);await db.sql("CREATE FUNCTION public.owner_p0_fail_audit() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'test audit rollback';END $$;CREATE TRIGGER owner_p0_fail_audit BEFORE INSERT ON organization_audit_log FOR EACH ROW EXECUTE FUNCTION public.owner_p0_fail_audit()");await denied(accept(a,rollback));assert.equal(await count(),'1');assert.equal(await db.sql(`SELECT accepted_at IS NULL FROM organization_invitations WHERE id='${rollback.id}'`),'t');await db.sql('DROP TRIGGER owner_p0_fail_audit ON organization_audit_log;DROP FUNCTION owner_p0_fail_audit()');pass('Audit failure rolls back consumption and insertion');
+ // Recovery must use the same token after the audit failure, not issue a new reservation.
+ await ok(accept(a,rollback));assert.equal(await count(),'2');assert.equal(await audit(),'1');
+ await denied(accept(a,rollback));assert.equal(await audit(),'1');
+ pass('Failed audit can retry the identical token exactly once with one membership and audit');
+ const knownState=await tableState();
+ await denied(service.from('organization_members').update({role:'admin'}).eq('organization_id',org).eq('user_id',a.id));
+ await denied(service.from('organization_members').delete().eq('organization_id',org).eq('user_id',a.id));
+ await denied(service.from('organization_invitations').update({role:'admin'}).eq('id',rollback.id));
+ await denied(service.from('organization_invitations').delete().eq('id',rollback.id));
+ assert.equal(await tableState(),knownState);
+ pass('Known service-role UPDATE and DELETE paths cannot bypass membership/invitation fences or alter audit');
+ const transactionBefore=await tableState();
+ await assert.rejects(db.sql(`BEGIN;SET LOCAL ROLE authenticated;SELECT set_config('request.jwt.claims','{"sub":"${owner.id}","role":"authenticated"}',true);UPDATE organization_members SET role='viewer' WHERE organization_id='${org}' AND user_id='${a.id}';SELECT 1/0;COMMIT;`),/division by zero/);
+ assert.equal(await tableState(),transactionBefore);
+ await ok(owner.sdk.from('organization_members').update({role:'viewer'}).eq('organization_id',org).eq('user_id',a.id));
+ assert.equal(await db.sql(`SELECT role FROM organization_members WHERE organization_id='${org}' AND user_id='${a.id}'`),'viewer');
+ assert.equal(await count(),'2');assert.equal(await audit(),'1');
+ pass('Authorized direct member UPDATE rolls back late failure and retries without leaked seat or duplicate audit');
+ await reset();
  await denied(service.from('organization_invitations').insert(row(a)));await denied(service.from('organization_members').insert({organization_id:org,user_id:a.id,role:'member'}));pass('Service-role direct invitation and membership writes rejected');
  await db.sql(`ALTER TABLE organization_members DISABLE TRIGGER owner_p0_capacity_check;INSERT INTO organization_members(organization_id,user_id,role) VALUES ${[a,b,c,d,e].map(u=>`('${org}','${u.id}','member')`).join(',')};ALTER TABLE organization_members ENABLE TRIGGER owner_p0_capacity_check`);assert.equal(await count(),'6');pass('Unapproved superuser trigger bypass characterized; global invariant remains BLOCKED');
  const rollbackSql=await readFile(new URL('review-only-rollback.sql',import.meta.url),'utf8');

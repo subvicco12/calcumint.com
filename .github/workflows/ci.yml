@@ -363,7 +363,7 @@ jobs:
         timeout-minutes: 8
         run: |
           node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
-          node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/bundle.test.mjs
+          node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs
           node tests/owner-p0/calculus/browser.mjs
           node tests/owner-p0/membership/acceptance.mjs
           node tests/owner-p0/privileges/acceptance.mjs
