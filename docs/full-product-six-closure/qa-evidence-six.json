@@ -1,0 +1,3792 @@
+{
+  "kind": "SIX_VERSION_SPECIFIC_QA_SUBMISSIONS_NOT_DECISIONS",
+  "baseline": "32c844b09ecc8c13d75968ef0aaa0b5211116786",
+  "sourceBindings": [
+    {
+      "path": "docs/full-product-batch22/six-evidence-packets.json",
+      "sha256": "145a962d253ca107e441438fa60c0999422089bb6d77f0c19f1c088e4ff20a59"
+    },
+    {
+      "path": "docs/full-product-batch21/lifecycle-preparation-17.json",
+      "sha256": "e7a0a5dd06e4c7c26bd38fe21b9f9c3e698f87d745edce63fa051d7b94663fd0"
+    },
+    {
+      "path": "docs/blueprint-reconciliation/native-paragraphs.txt",
+      "sha256": "3d8be41eaad37374ca71572f78126365df8a24e08c02130f0a992af497d5ac23"
+    },
+    {
+      "path": "docs/full-product-six-closure/numerical.json",
+      "sha256": "130113230acded7dddc6b767ba68c2dd77b34581e0d335b5b19c7c179a13841c"
+    },
+    {
+      "path": "docs/full-product-six-closure/sources.json",
+      "sha256": "889eddce4d771973552731afe755d33638343d0eca2dd46fa736e664f980485a"
+    },
+    {
+      "path": "docs/full-product-six-closure/browser.json",
+      "sha256": "82107a4a9b65de8afbc1c0fe18c4763335e23df3f18373650e9ce51084465028"
+    },
+    {
+      "path": "docs/full-product-batch22/preflight.json",
+      "sha256": "1f245a621f759c17559e4a5d4493379dc1e8b8bca373c2e1dddb68e0c14c2b14"
+    },
+    {
+      "path": "src/lib/six-candidate-numeric-safety.ts",
+      "sha256": "40447f903b7723e389e66941d8167b71b28c025692f6ee87779566d6c15972d1"
+    },
+    {
+      "path": "src/components/six-publication-boundaries.test.tsx",
+      "sha256": "3373b5d12c68841ba180e2d76dcdc6f499f25158f4ae7bcdfb24424471f4b491"
+    },
+    {
+      "path": "scripts/six-publication-closure/numerical.ts",
+      "sha256": "9fb06e858611884d2b0b0f9ffe126318ddb4059eedb896d8673e9f98e8f58196"
+    },
+    {
+      "path": "scripts/six-publication-closure/packets.mjs",
+      "sha256": "be488b92201e9e4280da10442d337caaa138caf1b0244b5cc913f93428d7ebcf"
+    },
+    {
+      "path": "tests/batch21-calculator-wave/browser.mjs",
+      "sha256": "42ead9e3ca6ccb3491230cde760a462f1bc9292e364a5fab97b363dbdccb836d"
+    },
+    {
+      "path": "docs/full-product-six-closure/boundary-browser.json",
+      "sha256": "b742a665282c78f3093163b325136a411f848f9057b21aafa824ea6ec4c56af9"
+    },
+    {
+      "path": "tests/six-publication-closure/boundary-browser.mjs",
+      "sha256": "a1a10582d70647307e5c8578e29d014294fb97f090d064c5a9ad311ec7227e22"
+    },
+    {
+      "path": "src/calculators/geometry/catalog-completion.ts",
+      "sha256": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-1.ts",
+      "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+      "sha256": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de"
+    },
+    {
+      "path": "src/calculators/advanced-math/expression-engine.ts",
+      "sha256": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24"
+    },
+    {
+      "path": "src/calculators/engine.ts",
+      "sha256": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6"
+    },
+    {
+      "path": "src/lib/batch21-snapshot-replay.ts",
+      "sha256": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8"
+    },
+    {
+      "path": "src/components/calculator-interactive.tsx",
+      "sha256": "ba2586177d83fff4df3655027e8ccb6224ee0a8a5728e4469e6b2e6953312917"
+    }
+  ],
+  "workPackage": {
+    "reportedReferences": 9,
+    "available": false,
+    "reason": "Separate Work decision package not found in repository/attachments/connected Pages; these four existing references are not attributed to it."
+  },
+  "summary": {
+    "proposedTargets": 6,
+    "pendingQaRequests": 90,
+    "softwareNumericalObservations": 48,
+    "misleadingZeroCallersCorrected": 4,
+    "browserJourneys": 12,
+    "underflowBrowserJourneys": 8,
+    "eligible": 0,
+    "canonicalPromotions": 0
+  },
+  "rows": [
+    {
+      "masterId": 276,
+      "engineId": "geometry.slope",
+      "slug": "slope-calculator",
+      "version": 2,
+      "proposedPublicUrl": "https://calcumint.com/calculators/geometry/slope-calculator",
+      "reviewTargetOnly": true,
+      "profile": "Two nonvertical coordinate points in v2, explicit dx/dy and finite slope; v1 rise/run remains historical.",
+      "canonicalDecisionNeeded": "Approve exact coordinate-point canonical scope and category/version mapping; do not rewrite v1 or infer certification from v2 routing.",
+      "reviewer": {
+        "identity": null,
+        "competenceEvidence": null,
+        "requiredReviewExpertise": "Coordinate geometry, signed/vertical lines, IEEE-754 arithmetic, immutable versioned history.",
+        "authority": "Proposed competence requirements for review; not an approved reviewer or claim of specialist/regulatory requirement.",
+        "approval": null,
+        "standardRiskDoesNotAutomaticallyRequireYmylReviewer": true
+      },
+      "numericalObservationCount": 7,
+      "precisionLossRefusedForNewCapture": true,
+      "historicalReplayPreserved": true,
+      "qaRequests": [
+        {
+          "checkType": "engine-tests",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "SOFTWARE_WITNESSES_VERIFIED",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Independent actual-engine values, boundaries, rejection, exact replay and tamper cases; not full-domain proof."
+        },
+        {
+          "checkType": "formula-review",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Mathematical witnesses and official explanatory references available; competent independent formula approval absent."
+        },
+        {
+          "checkType": "sources",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Four existing reference retrievals recorded; separate nine-reference Work package unavailable, source revisions/applicability unapproved."
+        },
+        {
+          "checkType": "methodology",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Bounded compute contract and numerical limits recorded; complete canonical rounding/methodology approval outstanding."
+        },
+        {
+          "checkType": "reverse-solve",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No exact applicable reverse-target contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "visualization-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual-source charts/tables and native downloads exercised; complete canonical feature/precision agreement awaits review."
+        },
+        {
+          "checkType": "schedule-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID schedule contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "scenario-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual UI capture/export/recovery and exact-engine report replay verified locally; authentic persistence not established."
+        },
+        {
+          "checkType": "sensitivity-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID sensitivity variables, domain, perturbation or acceptance contract supplied."
+        },
+        {
+          "checkType": "entitlement-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Existing exact six Free/Pro/Business artifact parity retained; not a full hosted entitlement audit."
+        },
+        {
+          "checkType": "ux-responsive",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "360/1440 local actual-source browser journeys pass; no physical-device or production-route acceptance inferred."
+        },
+        {
+          "checkType": "performance",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Maximum bounded dataset count and finite graph size exercised; approved SLO/load/production performance evidence absent."
+        },
+        {
+          "checkType": "security",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Historical/tamper/security guards and negative-only isolated gate evidence; no production authorization acceptance inferred."
+        },
+        {
+          "checkType": "seo-content",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_LIFECYCLE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Candidate routes remain historically absent; canonical content and hosted lifecycle approvals absent."
+        },
+        {
+          "checkType": "accessibility",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Labels, keyboard, overflow and error regions checked locally; empirical assistive-technology review outstanding."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "priorCanonicalRequirements": [
+        {
+          "requirementId": "inputs",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "identity-version",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "goldens-and-rounding",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "plan-parity",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "versioned-replay",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "tamper-rejection",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "domain-negative",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-identity-version-approval",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-input-output-feature-scope",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "full-domain-numerical-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "source-publisher-and-applicability",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "qualified-review",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "browser-interaction",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "charts",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "accessibility",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "performance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "authenticated-history",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "scenario-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "export-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "all-plan-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-product-acceptance",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-1",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/275/retainedCanonicalRequirements/0",
+              "sha256": "70013e8820de1664bd4d777990f92ebd8930e15ea395b24800ce61094337a7c4"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-2",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/275/retainedCanonicalRequirements/1",
+              "sha256": "3c2e802d352b04ac42c14d48a44b467921c1991dfec5bc7794abc3262b5d8058"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-3",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/275/retainedCanonicalRequirements/2",
+              "sha256": "705d15b5a5cb74954d8f7c2a77202d1e0311d49449130002447f4d0643a54809"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-4",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/275/retainedCanonicalRequirements/3",
+              "sha256": "f8afd68b8ee928b40ffc33152c01a6e3b7192553d9af141cf2adf3bbb133f59f"
+            }
+          ]
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "slope",
+          "masterIds": [
+            276
+          ],
+          "requestedUrl": "https://openstax.org/books/college-algebra/pages/4-1-linear-functions",
+          "returnedUrl": "https://openstax.org/books/college-algebra/pages/4-1-linear-functions",
+          "title": "4.1 Linear Functions - College Algebra | OpenStax",
+          "publisher": [
+            "OpenStax"
+          ],
+          "bookTitle": [
+            "College Algebra"
+          ],
+          "publicationDate": [
+            "Feb 13, 2015"
+          ],
+          "citationUrls": [
+            "https://openstax.org/books/college-algebra-2e/pages/4-1-linear-functions"
+          ],
+          "httpStatus": 200,
+          "provider": "Firecrawl",
+          "retrievalId": "01a197e0-a73c-710d-b286-144d6f41ed48",
+          "retrievedAt": "2026-11-01T16:16:34.762Z",
+          "retrievalJsonSha256": "31804a808790b77904e357cebd6050dd02ceaae4dcf7b3a7db085f672d083550",
+          "extractedMarkdownSha256": "3292820c75f0f0f5939d24523abfb24a27e1f96ea23ec2b262932a9ebfb5539e",
+          "rawReceiptPath": "/workspace/work/six-source-captures/slope.json",
+          "originalPublisherResponseBytesRetained": false,
+          "editionMetadataMismatch": true,
+          "sourceRevisionApproved": false,
+          "applicabilityApproved": false,
+          "contentUse": "Mathematical explanatory reference only; no parser, domain-cap, sampling, rounding or canonical product approval inferred. Full content retained outside repository; no textbook republication."
+        }
+      ],
+      "lifecycle": {
+        "productionWrites": false,
+        "proposalSource": "docs/full-product-batch21/lifecycle-preparation-17.json",
+        "negativePreflightSource": "docs/full-product-batch22/preflight.json",
+        "predecessorReceiptReused": true,
+        "hostedObservationAt": "2026-11-01 14:32:06.063402+00",
+        "gateOk": false,
+        "expectedVersionCheckedByOrchestrationOnly": true,
+        "correctionsInactive": true,
+        "remaining": "No hosted draft identity, reviewed source evidence, required QA decisions, reviewer approval or publication authorization established."
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 283,
+      "engineId": "statistics.variance",
+      "slug": "variance-calculator",
+      "version": 1,
+      "proposedPublicUrl": "https://calcumint.com/calculators/statistics/variance-calculator",
+      "reviewTargetOnly": true,
+      "profile": "Unweighted finite numerical dataset; explicit population/sample variance plus SD and mean.",
+      "canonicalDecisionNeeded": "Approve dataset/unit/precision scope and canonical output emphasis; no additional statistical estimators inferred.",
+      "reviewer": {
+        "identity": null,
+        "competenceEvidence": null,
+        "requiredReviewExpertise": "Descriptive statistics, variance denominators, floating-point numerical stability, squared units and methodology review.",
+        "authority": "Proposed competence requirements for review; not an approved reviewer or claim of specialist/regulatory requirement.",
+        "approval": null,
+        "standardRiskDoesNotAutomaticallyRequireYmylReviewer": true
+      },
+      "numericalObservationCount": 10,
+      "precisionLossRefusedForNewCapture": true,
+      "historicalReplayPreserved": true,
+      "qaRequests": [
+        {
+          "checkType": "engine-tests",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "SOFTWARE_WITNESSES_VERIFIED",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Independent actual-engine values, boundaries, rejection, exact replay and tamper cases; not full-domain proof."
+        },
+        {
+          "checkType": "formula-review",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Mathematical witnesses and official explanatory references available; competent independent formula approval absent."
+        },
+        {
+          "checkType": "sources",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Four existing reference retrievals recorded; separate nine-reference Work package unavailable, source revisions/applicability unapproved."
+        },
+        {
+          "checkType": "methodology",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Bounded compute contract and numerical limits recorded; complete canonical rounding/methodology approval outstanding."
+        },
+        {
+          "checkType": "reverse-solve",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No exact applicable reverse-target contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "visualization-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual-source charts/tables and native downloads exercised; complete canonical feature/precision agreement awaits review."
+        },
+        {
+          "checkType": "schedule-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID schedule contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "scenario-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual UI capture/export/recovery and exact-engine report replay verified locally; authentic persistence not established."
+        },
+        {
+          "checkType": "sensitivity-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID sensitivity variables, domain, perturbation or acceptance contract supplied."
+        },
+        {
+          "checkType": "entitlement-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Existing exact six Free/Pro/Business artifact parity retained; not a full hosted entitlement audit."
+        },
+        {
+          "checkType": "ux-responsive",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "360/1440 local actual-source browser journeys pass; no physical-device or production-route acceptance inferred."
+        },
+        {
+          "checkType": "performance",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Maximum bounded dataset count and finite graph size exercised; approved SLO/load/production performance evidence absent."
+        },
+        {
+          "checkType": "security",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Historical/tamper/security guards and negative-only isolated gate evidence; no production authorization acceptance inferred."
+        },
+        {
+          "checkType": "seo-content",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_LIFECYCLE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Candidate routes remain historically absent; canonical content and hosted lifecycle approvals absent."
+        },
+        {
+          "checkType": "accessibility",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Labels, keyboard, overflow and error regions checked locally; empirical assistive-technology review outstanding."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "priorCanonicalRequirements": [
+        {
+          "requirementId": "inputs",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "identity-version",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "goldens-and-rounding",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "plan-parity",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "versioned-replay",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "tamper-rejection",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "domain-negative",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-identity-version-approval",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-input-output-feature-scope",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "full-domain-numerical-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "source-publisher-and-applicability",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "qualified-review",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "browser-interaction",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "charts",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "accessibility",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "performance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "authenticated-history",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "scenario-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "export-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "all-plan-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-product-acceptance",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-1",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/282/retainedCanonicalRequirements/0",
+              "sha256": "70013e8820de1664bd4d777990f92ebd8930e15ea395b24800ce61094337a7c4"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-2",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/282/retainedCanonicalRequirements/1",
+              "sha256": "3c2e802d352b04ac42c14d48a44b467921c1991dfec5bc7794abc3262b5d8058"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-3",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/282/retainedCanonicalRequirements/2",
+              "sha256": "705d15b5a5cb74954d8f7c2a77202d1e0311d49449130002447f4d0643a54809"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-4",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/282/retainedCanonicalRequirements/3",
+              "sha256": "f8afd68b8ee928b40ffc33152c01a6e3b7192553d9af141cf2adf3bbb133f59f"
+            }
+          ]
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "dispersion",
+          "masterIds": [
+            282,
+            283
+          ],
+          "requestedUrl": "https://openstax.org/books/introductory-statistics/pages/2-7-measures-of-the-spread-of-the-data",
+          "returnedUrl": "https://openstax.org/books/introductory-statistics/pages/2-7-measures-of-the-spread-of-the-data",
+          "title": "2.7 Measures of the Spread of the Data - Introductory Statistics | OpenStax",
+          "publisher": [
+            "OpenStax"
+          ],
+          "bookTitle": [
+            "Introductory Statistics"
+          ],
+          "publicationDate": [
+            "Sep 19, 2013"
+          ],
+          "citationUrls": [
+            "https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data"
+          ],
+          "httpStatus": 200,
+          "provider": "Firecrawl",
+          "retrievalId": "01a197e0-a709-755b-9e65-6e0011183e65",
+          "retrievedAt": "2026-11-01T16:16:34.763Z",
+          "retrievalJsonSha256": "d4b759e16c8105b404ac467c6eab243c45071ac98217f5ef2109b1f4de1428dd",
+          "extractedMarkdownSha256": "b7fe776e4de2b93648437e21d88df64feeb2d37b76a5b171efac79eaaaa21a63",
+          "rawReceiptPath": "/workspace/work/six-source-captures/dispersion.json",
+          "originalPublisherResponseBytesRetained": false,
+          "editionMetadataMismatch": true,
+          "sourceRevisionApproved": false,
+          "applicabilityApproved": false,
+          "contentUse": "Mathematical explanatory reference only; no parser, domain-cap, sampling, rounding or canonical product approval inferred. Full content retained outside repository; no textbook republication."
+        }
+      ],
+      "lifecycle": {
+        "productionWrites": false,
+        "proposalSource": "docs/full-product-batch21/lifecycle-preparation-17.json",
+        "negativePreflightSource": "docs/full-product-batch22/preflight.json",
+        "predecessorReceiptReused": true,
+        "hostedObservationAt": "2026-11-01 14:32:06.063402+00",
+        "gateOk": false,
+        "expectedVersionCheckedByOrchestrationOnly": true,
+        "correctionsInactive": true,
+        "remaining": "No hosted draft identity, reviewed source evidence, required QA decisions, reviewer approval or publication authorization established."
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 282,
+      "engineId": "statistics.standard-deviation",
+      "slug": "standard-deviation-calculator",
+      "version": 1,
+      "proposedPublicUrl": "https://calcumint.com/calculators/statistics/standard-deviation-calculator",
+      "reviewTargetOnly": true,
+      "profile": "Unweighted finite numerical dataset; explicit population/sample denominator, count, mean, variance and SD.",
+      "canonicalDecisionNeeded": "Approve dataset/unit/precision scope, sample-size policy and required analysis; no grouped, weighted or inferential scope inferred.",
+      "reviewer": {
+        "identity": null,
+        "competenceEvidence": null,
+        "requiredReviewExpertise": "Descriptive statistics, population/sample denominators, floating-point numerical stability, squared/original units and methodology review.",
+        "authority": "Proposed competence requirements for review; not an approved reviewer or claim of specialist/regulatory requirement.",
+        "approval": null,
+        "standardRiskDoesNotAutomaticallyRequireYmylReviewer": true
+      },
+      "numericalObservationCount": 10,
+      "precisionLossRefusedForNewCapture": true,
+      "historicalReplayPreserved": true,
+      "qaRequests": [
+        {
+          "checkType": "engine-tests",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "SOFTWARE_WITNESSES_VERIFIED",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Independent actual-engine values, boundaries, rejection, exact replay and tamper cases; not full-domain proof."
+        },
+        {
+          "checkType": "formula-review",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Mathematical witnesses and official explanatory references available; competent independent formula approval absent."
+        },
+        {
+          "checkType": "sources",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Four existing reference retrievals recorded; separate nine-reference Work package unavailable, source revisions/applicability unapproved."
+        },
+        {
+          "checkType": "methodology",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Bounded compute contract and numerical limits recorded; complete canonical rounding/methodology approval outstanding."
+        },
+        {
+          "checkType": "reverse-solve",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No exact applicable reverse-target contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "visualization-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual-source charts/tables and native downloads exercised; complete canonical feature/precision agreement awaits review."
+        },
+        {
+          "checkType": "schedule-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID schedule contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "scenario-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual UI capture/export/recovery and exact-engine report replay verified locally; authentic persistence not established."
+        },
+        {
+          "checkType": "sensitivity-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID sensitivity variables, domain, perturbation or acceptance contract supplied."
+        },
+        {
+          "checkType": "entitlement-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Existing exact six Free/Pro/Business artifact parity retained; not a full hosted entitlement audit."
+        },
+        {
+          "checkType": "ux-responsive",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "360/1440 local actual-source browser journeys pass; no physical-device or production-route acceptance inferred."
+        },
+        {
+          "checkType": "performance",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Maximum bounded dataset count and finite graph size exercised; approved SLO/load/production performance evidence absent."
+        },
+        {
+          "checkType": "security",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Historical/tamper/security guards and negative-only isolated gate evidence; no production authorization acceptance inferred."
+        },
+        {
+          "checkType": "seo-content",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_LIFECYCLE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Candidate routes remain historically absent; canonical content and hosted lifecycle approvals absent."
+        },
+        {
+          "checkType": "accessibility",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Labels, keyboard, overflow and error regions checked locally; empirical assistive-technology review outstanding."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "priorCanonicalRequirements": [
+        {
+          "requirementId": "inputs",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "identity-version",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "goldens-and-rounding",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "plan-parity",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "versioned-replay",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "tamper-rejection",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "domain-negative",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-identity-version-approval",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-input-output-feature-scope",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "full-domain-numerical-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "source-publisher-and-applicability",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "qualified-review",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "browser-interaction",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "charts",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "accessibility",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "performance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "authenticated-history",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "scenario-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "export-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "all-plan-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-product-acceptance",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-1",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/281/retainedCanonicalRequirements/0",
+              "sha256": "70013e8820de1664bd4d777990f92ebd8930e15ea395b24800ce61094337a7c4"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-2",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/281/retainedCanonicalRequirements/1",
+              "sha256": "3c2e802d352b04ac42c14d48a44b467921c1991dfec5bc7794abc3262b5d8058"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-3",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/281/retainedCanonicalRequirements/2",
+              "sha256": "705d15b5a5cb74954d8f7c2a77202d1e0311d49449130002447f4d0643a54809"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-4",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/281/retainedCanonicalRequirements/3",
+              "sha256": "f8afd68b8ee928b40ffc33152c01a6e3b7192553d9af141cf2adf3bbb133f59f"
+            }
+          ]
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "dispersion",
+          "masterIds": [
+            282,
+            283
+          ],
+          "requestedUrl": "https://openstax.org/books/introductory-statistics/pages/2-7-measures-of-the-spread-of-the-data",
+          "returnedUrl": "https://openstax.org/books/introductory-statistics/pages/2-7-measures-of-the-spread-of-the-data",
+          "title": "2.7 Measures of the Spread of the Data - Introductory Statistics | OpenStax",
+          "publisher": [
+            "OpenStax"
+          ],
+          "bookTitle": [
+            "Introductory Statistics"
+          ],
+          "publicationDate": [
+            "Sep 19, 2013"
+          ],
+          "citationUrls": [
+            "https://openstax.org/books/introductory-statistics-2e/pages/2-7-measures-of-the-spread-of-the-data"
+          ],
+          "httpStatus": 200,
+          "provider": "Firecrawl",
+          "retrievalId": "01a197e0-a709-755b-9e65-6e0011183e65",
+          "retrievedAt": "2026-11-01T16:16:34.763Z",
+          "retrievalJsonSha256": "d4b759e16c8105b404ac467c6eab243c45071ac98217f5ef2109b1f4de1428dd",
+          "extractedMarkdownSha256": "b7fe776e4de2b93648437e21d88df64feeb2d37b76a5b171efac79eaaaa21a63",
+          "rawReceiptPath": "/workspace/work/six-source-captures/dispersion.json",
+          "originalPublisherResponseBytesRetained": false,
+          "editionMetadataMismatch": true,
+          "sourceRevisionApproved": false,
+          "applicabilityApproved": false,
+          "contentUse": "Mathematical explanatory reference only; no parser, domain-cap, sampling, rounding or canonical product approval inferred. Full content retained outside repository; no textbook republication."
+        }
+      ],
+      "lifecycle": {
+        "productionWrites": false,
+        "proposalSource": "docs/full-product-batch21/lifecycle-preparation-17.json",
+        "negativePreflightSource": "docs/full-product-batch22/preflight.json",
+        "predecessorReceiptReused": true,
+        "hostedObservationAt": "2026-11-01 14:32:06.063402+00",
+        "gateOk": false,
+        "expectedVersionCheckedByOrchestrationOnly": true,
+        "correctionsInactive": true,
+        "remaining": "No hosted draft identity, reviewed source evidence, required QA decisions, reviewer approval or publication authorization established."
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 275,
+      "engineId": "geometry.volume",
+      "slug": "volume-calculator",
+      "version": 1,
+      "proposedPublicUrl": "https://calcumint.com/calculators/geometry/volume-calculator",
+      "reviewTargetOnly": true,
+      "profile": "Positive rectangular-prism dimensions only; volume and surface area, compatible generic length units.",
+      "canonicalDecisionNeeded": "Decide whether Volume requires further solids, exact unit controls or reverse targets. No additional shape inferred from title.",
+      "reviewer": {
+        "identity": null,
+        "competenceEvidence": null,
+        "requiredReviewExpertise": "Solid geometry, dimensional analysis, IEEE-754 range/underflow, presentation and export precision.",
+        "authority": "Proposed competence requirements for review; not an approved reviewer or claim of specialist/regulatory requirement.",
+        "approval": null,
+        "standardRiskDoesNotAutomaticallyRequireYmylReviewer": true
+      },
+      "numericalObservationCount": 7,
+      "precisionLossRefusedForNewCapture": true,
+      "historicalReplayPreserved": true,
+      "qaRequests": [
+        {
+          "checkType": "engine-tests",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "SOFTWARE_WITNESSES_VERIFIED",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Independent actual-engine values, boundaries, rejection, exact replay and tamper cases; not full-domain proof."
+        },
+        {
+          "checkType": "formula-review",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Mathematical witnesses and official explanatory references available; competent independent formula approval absent."
+        },
+        {
+          "checkType": "sources",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Four existing reference retrievals recorded; separate nine-reference Work package unavailable, source revisions/applicability unapproved."
+        },
+        {
+          "checkType": "methodology",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Bounded compute contract and numerical limits recorded; complete canonical rounding/methodology approval outstanding."
+        },
+        {
+          "checkType": "reverse-solve",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No exact applicable reverse-target contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "visualization-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual-source charts/tables and native downloads exercised; complete canonical feature/precision agreement awaits review."
+        },
+        {
+          "checkType": "schedule-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID schedule contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "scenario-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Actual UI capture/export/recovery and exact-engine report replay verified locally; authentic persistence not established."
+        },
+        {
+          "checkType": "sensitivity-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "No per-ID sensitivity variables, domain, perturbation or acceptance contract supplied."
+        },
+        {
+          "checkType": "entitlement-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Existing exact six Free/Pro/Business artifact parity retained; not a full hosted entitlement audit."
+        },
+        {
+          "checkType": "ux-responsive",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "360/1440 local actual-source browser journeys pass; no physical-device or production-route acceptance inferred."
+        },
+        {
+          "checkType": "performance",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Maximum bounded dataset count and finite graph size exercised; approved SLO/load/production performance evidence absent."
+        },
+        {
+          "checkType": "security",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Historical/tamper/security guards and negative-only isolated gate evidence; no production authorization acceptance inferred."
+        },
+        {
+          "checkType": "seo-content",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_LIFECYCLE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Candidate routes remain historically absent; canonical content and hosted lifecycle approvals absent."
+        },
+        {
+          "checkType": "accessibility",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "src/lib/six-candidate-numeric-safety.ts",
+            "src/components/six-publication-boundaries.test.tsx",
+            "scripts/six-publication-closure/numerical.ts",
+            "scripts/six-publication-closure/packets.mjs",
+            "tests/batch21-calculator-wave/browser.mjs",
+            "docs/full-product-six-closure/boundary-browser.json",
+            "tests/six-publication-closure/boundary-browser.mjs",
+            "src/calculators/geometry/catalog-completion.ts",
+            "src/calculators/statistics/catalog-batch-1.ts",
+            "src/calculators/advanced-math/catalog-batch-10.ts",
+            "src/calculators/advanced-math/expression-engine.ts",
+            "src/calculators/engine.ts",
+            "src/lib/batch21-snapshot-replay.ts",
+            "src/components/calculator-interactive.tsx"
+          ],
+          "remaining": "Labels, keyboard, overflow and error regions checked locally; empirical assistive-technology review outstanding."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "priorCanonicalRequirements": [
+        {
+          "requirementId": "inputs",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "identity-version",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "goldens-and-rounding",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "plan-parity",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "versioned-replay",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "tamper-rejection",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "domain-negative",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-identity-version-approval",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-input-output-feature-scope",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "full-domain-numerical-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "source-publisher-and-applicability",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "qualified-review",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "browser-interaction",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "charts",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "accessibility",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "performance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "authenticated-history",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "scenario-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "export-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "all-plan-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-product-acceptance",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-1",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/274/retainedCanonicalRequirements/0",
+              "sha256": "70013e8820de1664bd4d777990f92ebd8930e15ea395b24800ce61094337a7c4"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-2",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/274/retainedCanonicalRequirements/1",
+              "sha256": "3c2e802d352b04ac42c14d48a44b467921c1991dfec5bc7794abc3262b5d8058"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-3",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/274/retainedCanonicalRequirements/2",
+              "sha256": "705d15b5a5cb74954d8f7c2a77202d1e0311d49449130002447f4d0643a54809"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-4",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/274/retainedCanonicalRequirements/3",
+              "sha256": "f8afd68b8ee928b40ffc33152c01a6e3b7192553d9af141cf2adf3bbb133f59f"
+            }
+          ]
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "prism",
+          "masterIds": [
+            275
+          ],
+          "requestedUrl": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+          "returnedUrl": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+          "title": "9.6 Solve Geometry Applications: Volume and Surface Area - Prealgebra 2e | OpenStax",
+          "publisher": [
+            "OpenStax"
+          ],
+          "bookTitle": [
+            "Prealgebra 2e"
+          ],
+          "publicationDate": [
+            "Mar 11, 2020"
+          ],
+          "citationUrls": [
+            "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area"
+          ],
+          "httpStatus": 200,
+          "provider": "Firecrawl",
+          "retrievalId": "01a197e0-a6ff-7259-bb37-af05f7bdcfd4",
+          "retrievedAt": "2026-11-01T16:16:34.762Z",
+          "retrievalJsonSha256": "a6f8aa9f925ff42a5013c1d612bebcfb457fbb95075aba520e21a8ab5d7b7630",
+          "extractedMarkdownSha256": "d7ae41405bceeb61092b61f4da6c1036ef16c2f59e35f897697a1c14588ec8ab",
+          "rawReceiptPath": "/workspace/work/six-source-captures/prism.json",
+          "originalPublisherResponseBytesRetained": false,
+          "editionMetadataMismatch": false,
+          "sourceRevisionApproved": false,
+          "applicabilityApproved": false,
+          "contentUse": "Mathematical explanatory reference only; no parser, domain-cap, sampling, rounding or canonical product approval inferred. Full content retained outside repository; no textbook republication."
+        }
+      ],
+      "lifecycle": {
+        "productionWrites": false,
+        "proposalSource": "docs/full-product-batch21/lifecycle-preparation-17.json",
+        "negativePreflightSource": "docs/full-product-batch22/preflight.json",
+        "predecessorReceiptReused": true,
+        "hostedObservationAt": "2026-11-01 14:32:06.063402+00",
+        "gateOk": false,
+        "expectedVersionCheckedByOrchestrationOnly": true,
+        "correctionsInactive": true,
+        "remaining": "No hosted draft identity, reviewed source evidence, required QA decisions, reviewer approval or publication authorization established."
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 251,
+      "engineId": "advanced-math.function-plotter-2d",
+      "slug": "function-plotter-2d",
+      "version": 1,
+      "proposedPublicUrl": "https://calcumint.com/calculators/advanced-math-graphing/function-plotter-2d",
+      "reviewTargetOnly": true,
+      "profile": "Same bounded real-function engine; independent identity remains a proposed review target.",
+      "canonicalDecisionNeeded": "Define the canonical distinction from Graphing and approve required controls/outputs; no distinction invented.",
+      "reviewer": {
+        "identity": null,
+        "competenceEvidence": null,
+        "requiredReviewExpertise": "Real-function plotting, restricted parser, discontinuity and sampled-extrema interpretation, chart accessibility.",
+        "authority": "Proposed competence requirements for review; not an approved reviewer or claim of specialist/regulatory requirement.",
+        "approval": null,
+        "standardRiskDoesNotAutomaticallyRequireYmylReviewer": true
+      },
+      "numericalObservationCount": 7,
+      "precisionLossRefusedForNewCapture": false,
+      "historicalReplayPreserved": true,
+      "qaRequests": [
+        {
+          "checkType": "engine-tests",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "SOFTWARE_WITNESSES_VERIFIED",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Independent actual-engine values, boundaries, rejection, exact replay and tamper cases; not full-domain proof."
+        },
+        {
+          "checkType": "formula-review",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Mathematical witnesses and official explanatory references available; competent independent formula approval absent."
+        },
+        {
+          "checkType": "sources",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Four existing reference retrievals recorded; separate nine-reference Work package unavailable, source revisions/applicability unapproved."
+        },
+        {
+          "checkType": "methodology",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Bounded compute contract and numerical limits recorded; complete canonical rounding/methodology approval outstanding."
+        },
+        {
+          "checkType": "reverse-solve",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "No exact applicable reverse-target contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "visualization-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Actual-source charts/tables and native downloads exercised; complete canonical feature/precision agreement awaits review."
+        },
+        {
+          "checkType": "schedule-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "No per-ID schedule contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "scenario-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Actual UI capture/export/recovery and exact-engine report replay verified locally; authentic persistence not established."
+        },
+        {
+          "checkType": "sensitivity-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "No per-ID sensitivity variables, domain, perturbation or acceptance contract supplied."
+        },
+        {
+          "checkType": "entitlement-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Existing exact six Free/Pro/Business artifact parity retained; not a full hosted entitlement audit."
+        },
+        {
+          "checkType": "ux-responsive",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "360/1440 local actual-source browser journeys pass; no physical-device or production-route acceptance inferred."
+        },
+        {
+          "checkType": "performance",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Maximum bounded dataset count and finite graph size exercised; approved SLO/load/production performance evidence absent."
+        },
+        {
+          "checkType": "security",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Historical/tamper/security guards and negative-only isolated gate evidence; no production authorization acceptance inferred."
+        },
+        {
+          "checkType": "seo-content",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_LIFECYCLE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Candidate routes remain historically absent; canonical content and hosted lifecycle approvals absent."
+        },
+        {
+          "checkType": "accessibility",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Labels, keyboard, overflow and error regions checked locally; empirical assistive-technology review outstanding."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "priorCanonicalRequirements": [
+        {
+          "requirementId": "inputs",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "identity-version",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "goldens-and-rounding",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "plan-parity",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "versioned-replay",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "tamper-rejection",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "domain-negative",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-identity-version-approval",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-input-output-feature-scope",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "full-domain-numerical-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "source-publisher-and-applicability",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "qualified-review",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "browser-interaction",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "charts",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "accessibility",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "performance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "authenticated-history",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "scenario-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "export-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "all-plan-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-product-acceptance",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-1",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/250/retainedCanonicalRequirements/0",
+              "sha256": "70013e8820de1664bd4d777990f92ebd8930e15ea395b24800ce61094337a7c4"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-2",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/250/retainedCanonicalRequirements/1",
+              "sha256": "3c2e802d352b04ac42c14d48a44b467921c1991dfec5bc7794abc3262b5d8058"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-3",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/250/retainedCanonicalRequirements/2",
+              "sha256": "705d15b5a5cb74954d8f7c2a77202d1e0311d49449130002447f4d0643a54809"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-4",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/250/retainedCanonicalRequirements/3",
+              "sha256": "f8afd68b8ee928b40ffc33152c01a6e3b7192553d9af141cf2adf3bbb133f59f"
+            }
+          ]
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "quadratic",
+          "masterIds": [
+            235,
+            251
+          ],
+          "requestedUrl": "https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions",
+          "returnedUrl": "https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions",
+          "title": "5.1 Quadratic Functions - College Algebra 2e | OpenStax",
+          "publisher": [
+            "OpenStax"
+          ],
+          "bookTitle": [
+            "College Algebra 2e"
+          ],
+          "publicationDate": [
+            "Dec 21, 2021"
+          ],
+          "citationUrls": [
+            "https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions"
+          ],
+          "httpStatus": 200,
+          "provider": "Firecrawl",
+          "retrievalId": "01a197e0-a777-776c-956f-afefe33dbf53",
+          "retrievedAt": "2026-11-01T16:16:34.760Z",
+          "retrievalJsonSha256": "31ab4a1459f32e4cb5bbe4c507e2ae0d10e8505628a70332039b8f3a8bc8aaed",
+          "extractedMarkdownSha256": "112248994046caeb43f97e2a029c2001e07dba487509bc09784c5c6c1f1c7cda",
+          "rawReceiptPath": "/workspace/work/six-source-captures/quadratic.json",
+          "originalPublisherResponseBytesRetained": false,
+          "editionMetadataMismatch": false,
+          "sourceRevisionApproved": false,
+          "applicabilityApproved": false,
+          "contentUse": "Mathematical explanatory reference only; no parser, domain-cap, sampling, rounding or canonical product approval inferred. Full content retained outside repository; no textbook republication."
+        }
+      ],
+      "lifecycle": {
+        "productionWrites": false,
+        "proposalSource": "docs/full-product-batch21/lifecycle-preparation-17.json",
+        "negativePreflightSource": "docs/full-product-batch22/preflight.json",
+        "predecessorReceiptReused": true,
+        "hostedObservationAt": "2026-11-01 14:32:06.063402+00",
+        "gateOk": false,
+        "expectedVersionCheckedByOrchestrationOnly": true,
+        "correctionsInactive": true,
+        "remaining": "No hosted draft identity, reviewed source evidence, required QA decisions, reviewer approval or publication authorization established."
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 235,
+      "engineId": "advanced-math.graphing",
+      "slug": "graphing-calculator",
+      "version": 1,
+      "proposedPublicUrl": "https://calcumint.com/calculators/advanced-math-graphing/graphing-calculator",
+      "reviewTargetOnly": true,
+      "profile": "Restricted single real f(x) expression, 81 grid positions, finite retained points, sampled extrema; not general symbolic, polar, parametric, implicit or multi-curve graphing.",
+      "canonicalDecisionNeeded": "Approve exact Graphing feature boundary separately from 2D Function Plotter; a shared engine does not settle canonical scope.",
+      "reviewer": {
+        "identity": null,
+        "competenceEvidence": null,
+        "requiredReviewExpertise": "Real-function mathematics, parser restrictions, numerical sampling, discontinuities and chart accessibility.",
+        "authority": "Proposed competence requirements for review; not an approved reviewer or claim of specialist/regulatory requirement.",
+        "approval": null,
+        "standardRiskDoesNotAutomaticallyRequireYmylReviewer": true
+      },
+      "numericalObservationCount": 7,
+      "precisionLossRefusedForNewCapture": false,
+      "historicalReplayPreserved": true,
+      "qaRequests": [
+        {
+          "checkType": "engine-tests",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "SOFTWARE_WITNESSES_VERIFIED",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Independent actual-engine values, boundaries, rejection, exact replay and tamper cases; not full-domain proof."
+        },
+        {
+          "checkType": "formula-review",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Mathematical witnesses and official explanatory references available; competent independent formula approval absent."
+        },
+        {
+          "checkType": "sources",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Four existing reference retrievals recorded; separate nine-reference Work package unavailable, source revisions/applicability unapproved."
+        },
+        {
+          "checkType": "methodology",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Bounded compute contract and numerical limits recorded; complete canonical rounding/methodology approval outstanding."
+        },
+        {
+          "checkType": "reverse-solve",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "No exact applicable reverse-target contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "visualization-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Actual-source charts/tables and native downloads exercised; complete canonical feature/precision agreement awaits review."
+        },
+        {
+          "checkType": "schedule-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "No per-ID schedule contract or approved nonapplicability decision supplied."
+        },
+        {
+          "checkType": "scenario-reconciliation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Actual UI capture/export/recovery and exact-engine report replay verified locally; authentic persistence not established."
+        },
+        {
+          "checkType": "sensitivity-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_SCOPE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "No per-ID sensitivity variables, domain, perturbation or acceptance contract supplied."
+        },
+        {
+          "checkType": "entitlement-validation",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Existing exact six Free/Pro/Business artifact parity retained; not a full hosted entitlement audit."
+        },
+        {
+          "checkType": "ux-responsive",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "360/1440 local actual-source browser journeys pass; no physical-device or production-route acceptance inferred."
+        },
+        {
+          "checkType": "performance",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Maximum bounded dataset count and finite graph size exercised; approved SLO/load/production performance evidence absent."
+        },
+        {
+          "checkType": "security",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Historical/tamper/security guards and negative-only isolated gate evidence; no production authorization acceptance inferred."
+        },
+        {
+          "checkType": "seo-content",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "BLOCKED_LIFECYCLE",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Candidate routes remain historically absent; canonical content and hosted lifecycle approvals absent."
+        },
+        {
+          "checkType": "accessibility",
+          "status": "pending",
+          "reviewer": null,
+          "decisionEvidence": null,
+          "evidenceDisposition": "PARTIAL",
+          "submissionReferences": [
+            "docs/full-product-six-closure/numerical.json",
+            "docs/full-product-six-closure/sources.json",
+            "docs/full-product-six-closure/browser.json",
+            "docs/full-product-batch22/preflight.json",
+            "docs/full-product-six-closure/boundary-browser.json"
+          ],
+          "remaining": "Labels, keyboard, overflow and error regions checked locally; empirical assistive-technology review outstanding."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "priorCanonicalRequirements": [
+        {
+          "requirementId": "inputs",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "identity-version",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "goldens-and-rounding",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "plan-parity",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "versioned-replay",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "tamper-rejection",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "domain-negative",
+          "status": "UNKNOWN",
+          "scope": "BOUNDED_ENGINE_WITNESSES",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-identity-version-approval",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-input-output-feature-scope",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "full-domain-numerical-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "source-publisher-and-applicability",
+          "status": "PARTIAL",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "qualified-review",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "browser-interaction",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "charts",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "accessibility",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "performance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "authenticated-history",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "scenario-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "export-workflows",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "all-plan-acceptance",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "canonical-product-acceptance",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": []
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-1",
+          "status": "BLOCKED",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/234/retainedCanonicalRequirements/0",
+              "sha256": "70013e8820de1664bd4d777990f92ebd8930e15ea395b24800ce61094337a7c4"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-2",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/234/retainedCanonicalRequirements/1",
+              "sha256": "3c2e802d352b04ac42c14d48a44b467921c1991dfec5bc7794abc3262b5d8058"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-3",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/234/retainedCanonicalRequirements/2",
+              "sha256": "705d15b5a5cb74954d8f7c2a77202d1e0311d49449130002447f4d0643a54809"
+            }
+          ]
+        },
+        {
+          "requirementId": "inherited-canonical-requirement-4",
+          "status": "UNKNOWN",
+          "scope": "FULL_PRODUCT_REQUIREMENT",
+          "evidence": [
+            {
+              "path": "docs/full-product-batch14/contract-evidence.json#/rows/234/retainedCanonicalRequirements/3",
+              "sha256": "f8afd68b8ee928b40ffc33152c01a6e3b7192553d9af141cf2adf3bbb133f59f"
+            }
+          ]
+        }
+      ],
+      "sourceReferences": [
+        {
+          "id": "quadratic",
+          "masterIds": [
+            235,
+            251
+          ],
+          "requestedUrl": "https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions",
+          "returnedUrl": "https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions",
+          "title": "5.1 Quadratic Functions - College Algebra 2e | OpenStax",
+          "publisher": [
+            "OpenStax"
+          ],
+          "bookTitle": [
+            "College Algebra 2e"
+          ],
+          "publicationDate": [
+            "Dec 21, 2021"
+          ],
+          "citationUrls": [
+            "https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions"
+          ],
+          "httpStatus": 200,
+          "provider": "Firecrawl",
+          "retrievalId": "01a197e0-a777-776c-956f-afefe33dbf53",
+          "retrievedAt": "2026-11-01T16:16:34.760Z",
+          "retrievalJsonSha256": "31ab4a1459f32e4cb5bbe4c507e2ae0d10e8505628a70332039b8f3a8bc8aaed",
+          "extractedMarkdownSha256": "112248994046caeb43f97e2a029c2001e07dba487509bc09784c5c6c1f1c7cda",
+          "rawReceiptPath": "/workspace/work/six-source-captures/quadratic.json",
+          "originalPublisherResponseBytesRetained": false,
+          "editionMetadataMismatch": false,
+          "sourceRevisionApproved": false,
+          "applicabilityApproved": false,
+          "contentUse": "Mathematical explanatory reference only; no parser, domain-cap, sampling, rounding or canonical product approval inferred. Full content retained outside repository; no textbook republication."
+        }
+      ],
+      "lifecycle": {
+        "productionWrites": false,
+        "proposalSource": "docs/full-product-batch21/lifecycle-preparation-17.json",
+        "negativePreflightSource": "docs/full-product-batch22/preflight.json",
+        "predecessorReceiptReused": true,
+        "hostedObservationAt": "2026-11-01 14:32:06.063402+00",
+        "gateOk": false,
+        "expectedVersionCheckedByOrchestrationOnly": true,
+        "correctionsInactive": true,
+        "remaining": "No hosted draft identity, reviewed source evidence, required QA decisions, reviewer approval or publication authorization established."
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    }
+  ],
+  "releaseHold": true,
+  "productionWrites": false,
+  "certificationPromotion": false
+}
