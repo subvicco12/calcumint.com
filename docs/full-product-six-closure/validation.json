@@ -1,0 +1,91 @@
+{
+  "baseline": {
+    "pr": 1515,
+    "sha": "32c844b09ecc8c13d75968ef0aaa0b5211116786",
+    "ci": 41318109963,
+    "conclusion": "success",
+    "exactHeadVerified": true
+  },
+  "productionValidation": {
+    "command": "npm run test:production",
+    "exitCode": 0,
+    "unitPassed": 7095,
+    "unitSkipped": 4,
+    "filesPassed": 843,
+    "filesSkipped": 2,
+    "launch": 45,
+    "certification": 15,
+    "typecheck": "PASS",
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 29
+    },
+    "webpack": "PASS",
+    "node": "v24.19.0",
+    "log": "/workspace/work/six-closure-production.log",
+    "logSha256": "811f96601119cd59cd6fff69b765f9294e7d031c1b81fac40783003f486bf047"
+  },
+  "focused": {
+    "red": {
+      "underflowFailures": 4,
+      "genuineZeroPassed": 3,
+      "logSha256": "76ecb2e12879103aafaada0645d8009767ab45549a130aed739cca1dd2ce0fba"
+    },
+    "green": {
+      "uiTests": 7,
+      "priorSixWorkflowTests": 12,
+      "priorSixReplayTests": 8
+    },
+    "historical": {
+      "tests": 26,
+      "includes": "Slope v1/v2 compatibility, original and six-candidate replay"
+    },
+    "securityContracts": 7,
+    "numericalObservations": 48,
+    "browser": {
+      "validSixJourneys": 12,
+      "underflowJourneys": 8,
+      "transport": "Synthetic isolated transport; actual source, controls, engines and exports. No production persistence/authentication acceptance."
+    },
+    "preflight": {
+      "receipt": "docs/full-product-batch22/preflight.json",
+      "sha256": "1f245a621f759c17559e4a5d4493379dc1e8b8bca373c2e1dddb68e0c14c2b14",
+      "reusedUnchanged": true,
+      "gateChecks": 7,
+      "allSixRefused": true,
+      "noNewActivation": true
+    }
+  },
+  "independentReview": {
+    "reviewer": "six_closure_review",
+    "importantFindings": 0,
+    "independentlyRunUiTests": 7,
+    "generatorCheck": "PASS",
+    "scope": "New numeric helper/caller diffs, native account capture boundary, numerical witnesses, QA packets, provenance and browser source. Code review does not constitute qualified mathematical/canonical approval."
+  },
+  "preservation": {
+    "protectedHashesVerified": 194,
+    "catalogIds": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlockers": 43,
+    "historicalEngineSourcesUnchanged": true,
+    "historicalReplaySourcesUnchanged": true
+  },
+  "workPackage": {
+    "available": false,
+    "reportedReferences": 9,
+    "pendingRequestsReused": 90
+  },
+  "eligibility": {
+    "newlyMeetingAllPrerequisites": 0,
+    "canonicalPromotions": 0,
+    "qaDecisionsCreated": 0
+  },
+  "deliveryCi": {
+    "recordedBeforeSubmission": true,
+    "policy": "One exact-head hosted CI check after draft creation; final disposition in delivery receipt/response"
+  },
+  "releaseHold": true,
+  "productionWrites": false
+}

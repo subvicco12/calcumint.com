@@ -399,6 +399,18 @@ jobs:
         env:
           BATCH22_BROWSER_RECEIPT: ${{ runner.temp }}/batch22-browser
           PREFLIGHT_ARTIFACTS: ${{ runner.temp }}/batch22-preflight
+      - name: Six proposed publication targets — numerical and workflow evidence
+        timeout-minutes: 5
+        run: |
+          node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check
+          node scripts/six-publication-closure/packets.mjs --check
+          node tests/batch21-calculator-wave/browser.mjs
+          node tests/six-publication-closure/boundary-browser.mjs
+        env:
+          BATCH21_BROWSER_SLUGS: graphing-calculator,function-plotter-2d,volume-calculator,slope-calculator,standard-deviation-calculator,variance-calculator
+          BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-workflows
+          BATCH21_SCENARIO_UI: '1'
+          SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]
