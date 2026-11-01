@@ -350,6 +350,15 @@ jobs:
           INVITATION_ARTIFACTS: ${{ runner.temp }}/closure-invitations
           COMPATIBILITY_ARTIFACTS: ${{ runner.temp }}/closure-compatibility
           ADMIN_CLOSURE_ARTIFACTS: ${{ runner.temp }}/closure-admin
+      - name: P0 publication and Business integrity safeguards
+        timeout-minutes: 5
+        run: |
+          node --test tests/p0-publication-business/cache/*.test.mjs
+          node tests/p0-publication-business/publication/acceptance.mjs
+          node tests/p0-publication-business/business/acceptance.mjs
+        env:
+          PUBLICATION_P0_ARTIFACTS: ${{ runner.temp }}/p0-publication
+          INVITATION_ARTIFACTS: ${{ runner.temp }}/p0-business
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]

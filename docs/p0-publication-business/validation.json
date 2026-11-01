@@ -1,0 +1,430 @@
+{
+  "baseline": {
+    "pr": 1509,
+    "sha": "e5c109887f2e146ea1d1ca08a595132e726aaf69",
+    "ciRun": 41273838660,
+    "ciConclusion": "failure",
+    "failedJob": 124751872146,
+    "failedStep": "Hosted remediation closure and authenticated compatibility",
+    "error": "PGRST204 country_code absent from schema cache after successful SELECT probe",
+    "repairBranch": "engineering/p0-publication-business-20261101",
+    "baselineGreenClaimed": false
+  },
+  "ciRepair": {
+    "file": "tests/hosted-remediation-closure/compatibility/acceptance.mjs",
+    "beforeSha256": "0d74fdc1be1e5a179e3fd067f4ce63ddcb2a6fc7334f5cb91d89837705214320",
+    "afterSha256": "40269183aaccce2b9aa13a39c97b79fc5b5d45979dffba38a0aaf6dd7d47b5f0",
+    "failure": "PGRST204 after false-positive SELECT schema-cache readiness",
+    "repair": "Authenticated cached OpenAPI column readiness, one total abort/deadline, unchanged strict write assertions",
+    "actualRegression": "SELECT succeeds before explicit NOTIFY while mutation cache lacks country_code; repaired workflow then passes",
+    "baselineGreenClaimed": false
+  },
+  "runtime": "v24.19.0",
+  "localChecks": {
+    "newPublication": 40,
+    "newBusiness": 8,
+    "repairedAccountCompatibility": 10,
+    "readinessCases": 4,
+    "focusedIncludingReadiness": 31,
+    "unitPassed": 6603,
+    "unitSkipped": 4,
+    "unitFilesPassed": 832,
+    "unitFilesSkipped": 2,
+    "certificationPassed": 15,
+    "launchPassed": 45,
+    "lintErrors": 0,
+    "lintExistingWarnings": 29,
+    "newHarnessWarnings": 0,
+    "typecheck": "PASS",
+    "webpackBuild": "PASS next build --webpack",
+    "protectedSourceBindings": [
+      "v1 PASS",
+      "v2 PASS"
+    ]
+  },
+  "selfContainedSequence": "PASS without HOSTED_DESCRIPTOR; committed sanitized fixtures only",
+  "receipts": {
+    "publication": {
+      "sha256": "a929c9a3b26d1a3e2c87cd2cd1a2b3a742f7f13f5c1cc2d8dc718279b48fc9b2",
+      "checks": [
+        {
+          "id": "baseline-insert-bypass",
+          "detail": "Actual owner JWT INSERT persists published without evidence"
+        },
+        {
+          "id": "final-row-rule-metadata",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "source-delete",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "qa-failure-alert-rollback",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "reviewer-demotion",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "baseline-reviewer-delete-bypass",
+          "detail": "Deleting reviewer membership invalidates persisted published parent"
+        },
+        {
+          "id": "baseline-reviewer-identity-bypass",
+          "detail": "Privileged identity rewrite removes OLD membership authority and leaves published parent invalid"
+        },
+        {
+          "id": "baseline-qa-move-bypass",
+          "detail": "Old published parent is invalid after committed QA reassignment"
+        },
+        {
+          "id": "baseline-reviewer-promotion-race",
+          "detail": "Deterministic two-session certification before reviewer deletion commits invalid final state"
+        },
+        {
+          "id": "successor-source-drift",
+          "detail": "Altered prior function or disabled prior trigger prevents successor installation"
+        },
+        {
+          "id": "successor-insert-lifecycle",
+          "detail": "Actual owner JWT rejects every non-draft INSERT without persisted side effects"
+        },
+        {
+          "id": "successor-reviewer-identity",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "successor-reviewer-delete",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "successor-qa-move",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "deferred-commit",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "explicit-rollback",
+          "detail": "Valid transient dependency writes roll back exactly"
+        },
+        {
+          "id": "concurrent-adverse-writes",
+          "detail": "Two simultaneous invalid dependency transactions both reject; complete persisted state unchanged"
+        },
+        {
+          "id": "valid-deferred-update",
+          "detail": "Valid dependency edit commits and final published predicate is true"
+        },
+        {
+          "id": "snapshot-isolation-failclosed",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "promotion-first-delete",
+          "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+        },
+        {
+          "id": "authority-first-delete",
+          "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+        },
+        {
+          "id": "promotion-first-deactivate",
+          "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+        },
+        {
+          "id": "authority-first-deactivate",
+          "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+        },
+        {
+          "id": "promotion-first-role",
+          "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+        },
+        {
+          "id": "authority-first-role",
+          "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+        },
+        {
+          "id": "promotion-first-identity",
+          "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+        },
+        {
+          "id": "authority-first-identity",
+          "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+        },
+        {
+          "id": "check-only-qa-promotion-race",
+          "detail": "Without parent fence, OLD-parent final check sees review while promotion sees old passed QA; both commit invalid certification"
+        },
+        {
+          "id": "promotion-first-qa",
+          "detail": "Observed dependency wait; after promotion commits, invalidating dependency transaction rejects and published evidence remains valid"
+        },
+        {
+          "id": "dependency-first-qa",
+          "detail": "Observed promotion wait; after draft/review dependency mutation commits, promotion revalidates missing evidence and rolls back"
+        },
+        {
+          "id": "promotion-first-source",
+          "detail": "Observed dependency wait; after promotion commits, invalidating dependency transaction rejects and published evidence remains valid"
+        },
+        {
+          "id": "dependency-first-source",
+          "detail": "Observed promotion wait; after draft/review dependency mutation commits, promotion revalidates missing evidence and rolls back"
+        },
+        {
+          "id": "qa-snapshot-isolation-failclosed",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "standard-snapshot-gap",
+          "detail": "YMYL-only isolation guard permits standard-risk certification from obsolete QA snapshot"
+        },
+        {
+          "id": "standard-snapshot-failclosed",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "standard-read-committed-positive",
+          "detail": "Standard-risk final validation succeeds with current evidence under supported isolation"
+        },
+        {
+          "id": "source-reparent",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "source-insert-update-positive",
+          "detail": "Captured source INSERT/label UPDATE/deletion-of-extra-source maintain derived count and valid final state"
+        },
+        {
+          "id": "qa-required-delete",
+          "detail": "Rejected transaction leaves complete persisted state unchanged"
+        },
+        {
+          "id": "qa-optional-insert-delete-positive",
+          "detail": "For standard risk, optional synthetic QA can be removed/reinserted while every required check remains valid"
+        }
+      ],
+      "scope": "Synthetic disposable PG17.6 plus real GoTrue JWT and captured six admin tables/all triggers; no canonical certification or hosted change",
+      "provenance": {
+        "images": {
+          "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+          "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+          "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        },
+        "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+        "autoconfirm": true,
+        "privateSourceVerified": false,
+        "scope": "Six captured admin tables, constraints, standalone indexes, policies, table/column grants and all scoped triggers; local pinned auth internals, no production data or provider equivalence",
+        "scopedSha256": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c",
+        "sourceCaptureSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0"
+      },
+      "sourceHashes": {
+        "dateProposal": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6",
+        "finalRowProposal": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c",
+        "successor": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0"
+      }
+    },
+    "business": {
+      "sha256": "d1b8c367ef54e97a43075ffdf470d5f2df156c18f022547a9f028f50b3a4825e",
+      "checks": [
+        "Default proposal guard rejects; exact captured source permits disposable installation",
+        "Repeatable-read transaction rejected before writes with membership invitation and audit unchanged",
+        "Revocation during proven organization-fence wait rejects without membership or audit",
+        "Expiry during proven fence wait rejects using wall-clock time",
+        "Expiry after actual invitation-row lock wait rejects using post-lock clock",
+        "Repeated redemption rejects and preserves one membership and one audit",
+        "Distinct invitation final-seat requests serialize through organization fence",
+        "Audit failure rolls back all effects; retry after removing fault succeeds once"
+      ],
+      "scope": "SAFEGUARD_VERIFIED_POLICY_BLOCKED",
+      "provenance": {
+        "images": {
+          "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+          "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+          "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        },
+        "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+        "autoconfirm": true,
+        "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+        "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+        "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+        "privateSourceVerified": false
+      },
+      "sourceHashes": [
+        {
+          "path": "acceptance.mjs",
+          "sha256": "94dc6d54928436b493bab9afe09b866facb3a4c6cdfbd07653c33d8712e252e7"
+        },
+        {
+          "path": "review-only-acceptance.sql",
+          "sha256": "e4d6f1b9f7d8bae67ceffa4d153e452abb2d9bd22673342b186c53be7a380cd6"
+        },
+        {
+          "path": "source-binding.json",
+          "sha256": "398a3625d806a19021983b6819f695a089b46e0140c6432127ffbe8ff6a15720"
+        },
+        {
+          "path": "../../hosted-schema-remediation/invitations/initializer.mjs",
+          "sha256": "92ad60fff0202ecbae696fc10b93b74120a0546456a983d78d066debdf242ff0"
+        },
+        {
+          "path": "../../hosted-schema-remediation/invitations/scoped-descriptor.json",
+          "sha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e"
+        },
+        {
+          "path": "../../gotrue-runtime/fixture.mjs",
+          "sha256": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+        }
+      ]
+    },
+    "compatibility": {
+      "sha256": "228bca69078493849fde9a567357308a166c430b26db51bfba23d73d49b24b54",
+      "checks": [
+        "Captured account country read/upsert fails before 009",
+        "Captured anonymous TRUNCATE succeeds despite RLS, rolled back",
+        "Unchanged review artifact abort guard rejects execution",
+        "Inherited grant forces transaction rollback preserving captured anonymous ACL",
+        "Successful country SELECT does not prove mutation schema-cache readiness",
+        "Disposable 009 + guarded 038 adoption is idempotent and preserves service-role grants",
+        "Captured billing SELECT policies retain own-row access and hide the other account",
+        "Real GoTrue authenticated PostgREST account read/upsert works; cross-user upsert denied and update hidden",
+        "Anonymous table/column ACLs cleared, actual TRUNCATE rejected, authenticated plan and billing writes denied",
+        "Service-role PostgREST still reads both synthetic accounts"
+      ],
+      "scope": "PASS_RUNTIME_POLICY_APPROVAL_BLOCKED",
+      "provenance": {
+        "images": {
+          "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+          "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+          "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        },
+        "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+        "autoconfirm": true,
+        "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+        "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+        "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+        "privateSourceVerified": false,
+        "compatibilityDescriptorSha256": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+        "compatibilitySourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+        "compatibilityPrivateSourceVerified": false,
+        "compatibilityScope": "Captured four account tables and effective table/column grants; local provider auth; no hosted ACL ancestry equivalence"
+      },
+      "sourceHashes": {
+        "supabase/migrations/009_country_preferences.sql": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab",
+        "supabase/migrations/038_client_account_billing_privileges.sql": "27a0ab173957d938d6b3a8ed2fe3d2dfe6280ecec6da0eb9aa4c6cf640b8e708",
+        "docs/hosted-schema-remediation/effects-privileges.sql": "710e80cf39943ba274d2d64e58750af6790aa53a26a84950af0dd02d125a8378",
+        "tests/hosted-remediation-closure/compatibility/initializer.mjs": "faee205a9af973fc10d44801e747b4a6cd3871fc2e0c83df3c82662164466662",
+        "tests/hosted-remediation-closure/compatibility/acceptance.mjs": "40269183aaccce2b9aa13a39c97b79fc5b5d45979dffba38a0aaf6dd7d47b5f0",
+        "tests/hosted-remediation-closure/compatibility/scoped-descriptor.json": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+        "tests/hosted-remediation-closure/compatibility/fixture-manifest.json": "a3ca957e46951aff631e425f78a4f876cb0ffc6d30935fa11dbccd695e67855e"
+      }
+    }
+  },
+  "sourceSha256": {
+    "tests/p0-publication-business/publication/acceptance.mjs": "a383df47db9fc59791c9584dbad63b7b9734f8aec123e5fbc40773d4fce4d59a",
+    "tests/p0-publication-business/publication/review-only-successor.sql": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0",
+    "tests/p0-publication-business/publication/sessions.mjs": "7b799bcd0dd4d70eb5b5f962718bff07365132b1d0a47f240389f55ae9c44c9c",
+    "tests/p0-publication-business/business/review-only-acceptance.sql": "e4d6f1b9f7d8bae67ceffa4d153e452abb2d9bd22673342b186c53be7a380cd6",
+    "tests/p0-publication-business/business/acceptance.mjs": "94dc6d54928436b493bab9afe09b866facb3a4c6cdfbd07653c33d8712e252e7",
+    "tests/p0-publication-business/business/source-binding.json": "398a3625d806a19021983b6819f695a089b46e0140c6432127ffbe8ff6a15720",
+    "tests/p0-publication-business/cache/readiness.test.mjs": "6fb38d290a0f9ed198a56054a002115449ce735f37b8912d92afb2c9103f6a9c",
+    "tests/p0-publication-business/cache/readiness.mjs": "216356ff9b5d73c8229abe490d4b06394d6c8cff030eb54f830191048505c17f",
+    "tests/hosted-remediation-closure/compatibility/acceptance.mjs": "40269183aaccce2b9aa13a39c97b79fc5b5d45979dffba38a0aaf6dd7d47b5f0",
+    ".github/workflows/ci.yml": "1b4b2c395be25ba05928ef8cb88dab65c2b40e593b05be3436a19dd7fd389318"
+  },
+  "externalLogs": {
+    "ci-final-cache": {
+      "bytes": 452,
+      "sha256": "ccd537135aca1096730c156749b2054dcfc1c13354e524e9d476f55c18a21dc7"
+    },
+    "ci-final-compatibility": {
+      "bytes": 814,
+      "sha256": "308f2eba2be1ca044b32ffbe566f6471e5104c90b30915018cbeafaa682172b8"
+    },
+    "ci-final-publication": {
+      "bytes": 1186,
+      "sha256": "1a0aa9b3f436d7e80c1f2f74d9490894e2b9758f38c359d98d1b6f4751301c6d"
+    },
+    "ci-final-business": {
+      "bytes": 673,
+      "sha256": "919fe62fba4febbc833a6fed2b280751adc024ad10d24545c4502cac18cc769f"
+    },
+    "unit": {
+      "bytes": 265447,
+      "sha256": "c6fce1da8a11f0f5e4ad81ece91ba0ba3c1953a953704fa283374cc3ee38813f"
+    },
+    "build": {
+      "bytes": 2309,
+      "sha256": "889c90d79245ec93c85b82be955ecb95a74f20428a8691af156db038184698c3"
+    },
+    "final-full-lint": {
+      "bytes": 6056,
+      "sha256": "fe4c20db217b467cf39f0b6c4193beaa291e9384839ce48ca42f71c2876fa84a"
+    },
+    "typecheck": {
+      "bytes": 45,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    "certification": {
+      "bytes": 499,
+      "sha256": "122867a8dc74913db6bb0426572fe8fe85b620308cf86b51abd88c54bf99a7b9"
+    },
+    "launch": {
+      "bytes": 565,
+      "sha256": "1ba8e5c101fdcb13464cdd5eb59d205a1f91deebff745f17602780d7f5d10b1f"
+    },
+    "focused": {
+      "bytes": 3142,
+      "sha256": "1354058a4ffe1e46a413e16cc05f47eab616dbeec3a7f2b702904be87a9bfa37"
+    },
+    "source-v1": {
+      "bytes": 80,
+      "sha256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed"
+    },
+    "source-v2": {
+      "bytes": 80,
+      "sha256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed"
+    },
+    "cache-red": {
+      "bytes": 1591,
+      "sha256": "a7f97fc08ab06fe392a5fc9ae2f08c1ca049d58ea35a1e5c5335ddff67cf71dd"
+    }
+  },
+  "failedCIJobResponse": {
+    "sha256": "f3d81a4d20979c8a3c254a8220bbe4bc3a26c4f036052675043f27c1135039f8",
+    "scope": "Serialized authenticated GitHub tool response stored privately outside Git"
+  },
+  "independentReview": {
+    "reviewer": "p0_review",
+    "disposition": "No remaining important code issue in tested scope; final documentation field corrected",
+    "issuesResolved": [
+      "Reviewer authority check-only race",
+      "Privileged reviewer identity rewrite",
+      "QA reparent/promotion coordination",
+      "Standard-risk repeatable-read stale QA snapshot",
+      "Nested matrix isolation description"
+    ],
+    "reviewLimit": "Reviewer performed static/offline checks and inspected receipts; root ran PostgreSQL/full regression",
+    "rootFinalChecks": "All final CI-equivalent commands exited0; source/receipt hashes verified"
+  },
+  "preservation": {
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlockers": 43,
+    "calculatorIdsChanged": [],
+    "applicationSourceChanged": false,
+    "historicalEngineOrEvidenceChanged": false,
+    "priorGuardedSqlChanged": false,
+    "newActiveMigrations": 0,
+    "productionQueries": 0,
+    "productionWrites": 0
+  },
+  "releaseHold": true,
+  "activationAuthorized": false,
+  "successorHostedCI": "One bounded observation after delivery; baseline FAILED and local PASS do not imply successor hosted success"
+}

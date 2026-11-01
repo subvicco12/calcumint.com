@@ -5,6 +5,7 @@ import {createClient} from '@supabase/supabase-js';
 import {startGoTrueFixture} from '../../gotrue-runtime/fixture.mjs';
 import {artifactDirectory} from '../../batch17-issuance/artifacts.mjs';
 import {initializeCompatibility} from './initializer.mjs';
+import {waitForCachedColumn} from '../../p0-publication-business/cache/readiness.mjs';
 const artifacts=await artifactDirectory(process.env.COMPATIBILITY_ARTIFACTS),checks=[];
 const pass=s=>{checks.push(s);console.log('PASS '+s);};
 const ok=async p=>{const r=await p;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
@@ -27,8 +28,17 @@ try{
  await db.sql('CREATE ROLE compatibility_inherited_writer;GRANT UPDATE ON public.subscriptions TO compatibility_inherited_writer;GRANT compatibility_inherited_writer TO authenticated;');
  await assert.rejects(db.sql(proposal),/Unexpected inherited billing UPDATE/);assert.equal(await db.sql("SELECT has_table_privilege('anon','public.user_preferences','TRUNCATE');"),'t');
  await db.sql('REVOKE compatibility_inherited_writer FROM authenticated;DROP OWNED BY compatibility_inherited_writer;DROP ROLE compatibility_inherited_writer;');pass('Inherited grant forces transaction rollback preserving captured anonymous ACL');
- await db.sql(proposal);await db.sql(proposal);await db.sql("NOTIFY pgrst, 'reload schema';");
- for(let attempt=0;attempt<100;attempt++){const r=await a.sdk.from('user_preferences').select('country_code');if(!r.error)break;if(attempt===99)throw Error(JSON.stringify(r.error));await new Promise(r=>setTimeout(r,50));}
+ await db.sql(proposal);await db.sql(proposal);
+ const {data:{session}}=await a.sdk.auth.getSession();assert(session?.access_token);
+ const schemaHeaders={apikey:db.anonKey,Authorization:'Bearer '+session.access_token};
+ // Demonstrate the CI defect before notifying: SQL projection sees the new
+ // column, yet the mutation parser's cached OpenAPI definition is still old.
+ await ok(a.sdk.from('user_preferences').select('country_code'));
+ const stale=await fetch(db.url+'/rest/v1/',{headers:{...schemaHeaders,Accept:'application/openapi+json'},signal:AbortSignal.timeout(5000)});assert.equal(stale.status,200);
+ assert(!Object.hasOwn((await stale.json()).definitions.user_preferences.properties,'country_code'));
+ pass('Successful country SELECT does not prove mutation schema-cache readiness');
+ await db.sql("NOTIFY pgrst, 'reload schema';");
+ await waitForCachedColumn({url:db.url+'/rest/v1/',headers:schemaHeaders,relation:'user_preferences',column:'country_code'});
  assert.equal(await grants(),before);pass('Disposable 009 + guarded 038 adoption is idempotent and preserves service-role grants');
  await ok(a.sdk.from('user_preferences').upsert(preference(a),{onConflict:'user_id'}));
  await ok(a.sdk.from('user_preferences').upsert(preference(a,'IN'),{onConflict:'user_id'}));

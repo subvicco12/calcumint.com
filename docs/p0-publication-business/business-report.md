@@ -1,0 +1,23 @@
+# Business acceptance safeguard (review only)
+
+Status: **BLOCKED for activation and global seat guarantees**. This batch adds no application changes or migrations. The new proposal only replaces captured `accept_business_invitation(text)` in a disposable test after deliberately removing its unconditional refusal guard. Its exact SHA-256 of the UTF-8 captured function definition and captured column signatures for organizations, memberships, invitations and audits must match. `source-binding.json` records SHA-256 provenance; the unchanged scoped initializer verifies its entire scoped descriptor against its checked-in manifest. This is scoped compatibility evidence, not a complete hosted-schema attestation.
+
+Acceptance reads an invitation to locate its organization, acquires the organization row fence, locks and re-reads that same invitation by id, organization and token, then checks accepted state and `clock_timestamp()` expiry after all lock waits. Thus deletion while waiting cannot produce membership from a stale PL/pgSQL row, and transaction-start `now()` cannot extend invitation lifetime. Membership, accepted timestamp and audit remain one transaction. Repeat redemption rejects rather than emitting another joined audit. Concurrent acceptance RPCs for distinct invitations share the organization fence. The function requires read committed isolation before any reads or writes: repeatable-read snapshots cannot establish this RPC-participant seat serialization after a lock wait. This does not constrain direct or privileged writers.
+
+The proposal preserves the captured membership upsert and capacity semantics, including existing-member role changes and rejection when the organization is already full. Those behaviors are observations, not newly approved owner or existing-member policy. No existing guarded SQL was edited; no Batch16/17 proposal was adopted.
+
+`business-matrix.json` inventories actual application callers, repository SQL writers, captured RLS policies, captured allowed modifying grants and their source hashes. Reuse the existing twelve invitation and eleven privileged-writer characterization checks documented in `docs/hosted-schema-remediation/invitations.md` and `docs/hosted-remediation-closure/invitations.md`; this batch does not rerun that historical work. Their direct issuance race, admin identity/owner mutations, service-role quota bypass and privileged concurrent membership insert remain relevant and unresolved.
+
+The new runtime suite uses actual pinned disposable GoTrue and PostgREST with the unchanged captured initializer. A persistent psql transaction holds the exact organization row, and `pg_stat_activity` proves RPC lock arrival before deletion, expiry or release. Expiry is proven by the database clock crossing the stored expiration. Audits and persisted memberships are asserted after each operation. Artifacts stay outside Git; fixture containers are removed in `finally`.
+
+Run on Node 24 with cached dependencies and local Docker:
+
+```sh
+INVITATION_ARTIFACTS=/tmp/p0-business-unique node tests/p0-publication-business/business/acceptance.mjs
+```
+
+The pending gates are explicit: owner reference versus membership authority, demotion and multiple owners; role/identity mutation and privileged inviter tenant affiliation; existing-member semantics; direct authenticated issuance and service-role/SQL/provider/cascade membership writers; concurrent plan changes; and email provider selection/delivery. These writers do not all acquire the organization fence, so neither persisted-member nor occupied-or-pending global five-seat invariants are established. Scoped fixtures cannot approve those decisions or authorize production activation.
+
+Verified 2026-11-01 on Node v24.19.0: all eight runtime checks passed. Coverage includes default refusal, intentionally wrong SHA-256 source/schema signature refusal, repeatable-read rejection with membership/invitation/audit unchanged, revocation during the organization-fence wait, expiry during both organization and actual invitation-row waits, repeated redemption, distinct-invitation final-seat serialization, and atomic audit-failure rollback followed by a successful retry. Outside-Git receipt: `/tmp/p0-business-20261101-final-lint/receipt.json`; its hash and all source hashes are recorded in the matrix. Captured UTF-8 function SHA-256: `821394b78bacc681a73e19db068cbca9e08c7563adef322116c1fe7129a810c2`. The private full descriptor was not supplied. No policy approval, activation or production writes occurred.
+
+Final cleanup removed unused second-organization and service-client setup; all eight runtime checks passed again with the final suite source. ESLint and Node syntax checks pass with no warnings.

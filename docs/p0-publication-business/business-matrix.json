@@ -1,0 +1,472 @@
+{
+  "status": "BLOCKED",
+  "scope": "Review-only acceptance safeguard; no application or active migration changes",
+  "capture": {
+    "path": "tests/hosted-schema-remediation/invitations/scoped-descriptor.json",
+    "sha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+    "sourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0"
+  },
+  "writers": [
+    {
+      "writer": "application invitation issuance",
+      "path": "src/app/business/actions.ts",
+      "sha256": "4a67f6674620f9105b9f1469eca9dc219cfc4c6150224f1d62aa550830816182",
+      "characterization": "inviteMember preflight then direct INSERT; separate HTTP statements, no organization fence"
+    },
+    {
+      "writer": "application acceptance",
+      "path": "src/app/business/actions.ts",
+      "sha256": "4a67f6674620f9105b9f1469eca9dc219cfc4c6150224f1d62aa550830816182",
+      "characterization": "accept_business_invitation RPC; inspect path inventory below"
+    },
+    {
+      "writer": "captured acceptance RPC",
+      "path": "supabase/migrations/003_b5_business.sql",
+      "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5",
+      "characterization": "SECURITY DEFINER membership upsert, accepted timestamp and joined audit; captured descriptor authoritative"
+    },
+    {
+      "writer": "organization creation",
+      "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+      "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff",
+      "characterization": "SECURITY DEFINER inserts organization and owner member"
+    },
+    {
+      "writer": "authenticated RLS writers",
+      "path": "supabase/migrations/003_b5_business.sql",
+      "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5",
+      "characterization": "invitation insert/delete; membership update/delete; organization update"
+    },
+    {
+      "writer": "service_role/table owner",
+      "path": "tests/hosted-remediation-closure/invitations/acceptance.mjs",
+      "sha256": "de2b64b819b1c339a58155e7109aae6eb1740567b6564e0bf0fa430a0259a691",
+      "characterization": "PostgREST service role invitation and member writes bypass RLS and quota; privileged SQL/provider cascade writers remain unfenced"
+    },
+    {
+      "writer": "conditional issuance proposal",
+      "path": "tests/batch17-issuance/review-only-issuance.sql",
+      "sha256": "728a02402c7b4398ce58cfbb8b9100c19c12d23790a80e6a08699df43d4e1300",
+      "characterization": "unapplied organization lock; direct writers bypass it"
+    },
+    {
+      "writer": "conditional prior redemption",
+      "path": "tests/batch16-auth/review-only-business-integrity.sql",
+      "sha256": "24199cb8691657621b2f8be31f8e1e355738c43bf6eb085caf06833de283320d",
+      "characterization": "unapplied organization lock and row recheck; now() expiry remains transaction-start time"
+    }
+  ],
+  "capturedPolicies": [
+    {
+      "id": "public.organization_invitations:invites_admin_delete",
+      "name": "invites_admin_delete",
+      "check": null,
+      "roles": [
+        "public"
+      ],
+      "using": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+      "command": "d",
+      "relation": "public.organization_invitations",
+      "permissive": true
+    },
+    {
+      "id": "public.organization_invitations:invites_admin_insert",
+      "name": "invites_admin_insert",
+      "check": "(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (invited_by = ( SELECT auth.uid() AS uid)))",
+      "roles": [
+        "public"
+      ],
+      "using": null,
+      "command": "a",
+      "relation": "public.organization_invitations",
+      "permissive": true
+    },
+    {
+      "id": "public.organization_invitations:invites_admin_select",
+      "name": "invites_admin_select",
+      "check": null,
+      "roles": [
+        "public"
+      ],
+      "using": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+      "command": "r",
+      "relation": "public.organization_invitations",
+      "permissive": true
+    },
+    {
+      "id": "public.organization_members:members_admin_delete",
+      "name": "members_admin_delete",
+      "check": null,
+      "roles": [
+        "public"
+      ],
+      "using": "(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (role <> 'owner'::text))",
+      "command": "d",
+      "relation": "public.organization_members",
+      "permissive": true
+    },
+    {
+      "id": "public.organization_members:members_admin_update",
+      "name": "members_admin_update",
+      "check": "((role <> 'owner'::text) OR (public.org_role(organization_id) = 'owner'::text))",
+      "roles": [
+        "public"
+      ],
+      "using": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+      "command": "w",
+      "relation": "public.organization_members",
+      "permissive": true
+    },
+    {
+      "id": "public.organization_members:members_org_select",
+      "name": "members_org_select",
+      "check": null,
+      "roles": [
+        "public"
+      ],
+      "using": "public.is_org_member(organization_id)",
+      "command": "r",
+      "relation": "public.organization_members",
+      "permissive": true
+    },
+    {
+      "id": "public.organizations:organizations_admin_update",
+      "name": "organizations_admin_update",
+      "check": "public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])",
+      "roles": [
+        "public"
+      ],
+      "using": "public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])",
+      "command": "w",
+      "relation": "public.organizations",
+      "permissive": true
+    },
+    {
+      "id": "public.organizations:organizations_member_select",
+      "name": "organizations_member_select",
+      "check": null,
+      "roles": [
+        "public"
+      ],
+      "using": "public.is_org_member(id)",
+      "command": "r",
+      "relation": "public.organizations",
+      "permissive": true
+    }
+  ],
+  "capturedWriterGrants": [
+    {
+      "id": "public.organization_invitations:anon:DELETE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organization_invitations:anon:INSERT",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organization_invitations:anon:TRUNCATE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organization_invitations:anon:UPDATE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organization_invitations:authenticated:DELETE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organization_invitations:authenticated:INSERT",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organization_invitations:authenticated:TRUNCATE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organization_invitations:authenticated:UPDATE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organization_invitations:service_role:DELETE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organization_invitations:service_role:INSERT",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organization_invitations:service_role:TRUNCATE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organization_invitations:service_role:UPDATE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_invitations",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organization_members:anon:DELETE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organization_members:anon:INSERT",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organization_members:anon:TRUNCATE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organization_members:anon:UPDATE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organization_members:authenticated:DELETE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organization_members:authenticated:INSERT",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organization_members:authenticated:TRUNCATE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organization_members:authenticated:UPDATE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organization_members:service_role:DELETE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organization_members:service_role:INSERT",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organization_members:service_role:TRUNCATE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organization_members:service_role:UPDATE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organization_members",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organizations:anon:DELETE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organizations:anon:INSERT",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organizations:anon:TRUNCATE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organizations:anon:UPDATE",
+      "role": "anon",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organizations:authenticated:DELETE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organizations:authenticated:INSERT",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organizations:authenticated:TRUNCATE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organizations:authenticated:UPDATE",
+      "role": "authenticated",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "UPDATE"
+    },
+    {
+      "id": "public.organizations:service_role:DELETE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "DELETE"
+    },
+    {
+      "id": "public.organizations:service_role:INSERT",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "INSERT"
+    },
+    {
+      "id": "public.organizations:service_role:TRUNCATE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "id": "public.organizations:service_role:UPDATE",
+      "role": "service_role",
+      "allowed": true,
+      "relation": "public.organizations",
+      "privilege": "UPDATE"
+    }
+  ],
+  "remainingGaps": [
+    "Owner reference versus owner membership authority, demotion, second owner and owner invitations require explicit policy",
+    "Existing-member redemption role changes and capacity rejection retained from captured code; no policy approval inferred",
+    "Admin membership identity rewrites and direct organization owner reference changes remain permitted by captured policy",
+    "Direct authenticated issuance/deletion and service_role/SQL/provider/cascade writers do not share acceptance fence; global occupied-or-pending and persisted member seat invariants BLOCKED",
+    "Role authorization, privileged inviter affiliation, plan downgrade writers and provider operations need reconciliation",
+    "Transactional email provider selection/delivery deferred by application; redirect token is not delivery acceptance",
+    "Full private descriptor not provided; scoped capture only, no current hosted equivalence"
+  ],
+  "priorCharacterization": [
+    "docs/hosted-schema-remediation/invitations.md",
+    "docs/hosted-remediation-closure/invitations.md"
+  ],
+  "productionWrites": false,
+  "activation": false,
+  "policyApproved": false,
+  "safeguardVerification": {
+    "status": "SAFEGUARD_VERIFIED_POLICY_BLOCKED",
+    "checks": [
+      "Default proposal guard rejects; exact captured source permits disposable installation",
+      "Repeatable-read transaction rejected before writes with membership invitation and audit unchanged",
+      "Revocation during proven organization-fence wait rejects without membership or audit",
+      "Expiry during proven fence wait rejects using wall-clock time",
+      "Expiry after actual invitation-row lock wait rejects using post-lock clock",
+      "Repeated redemption rejects and preserves one membership and one audit",
+      "Distinct invitation final-seat requests serialize through organization fence",
+      "Audit failure rolls back all effects; retry after removing fault succeeds once"
+    ],
+    "receiptPath": "/tmp/p0-business-20261101-final-lint/receipt.json",
+    "receiptSha256": "d1b8c367ef54e97a43075ffdf470d5f2df156c18f022547a9f028f50b3a4825e",
+    "node": "v24.19.0",
+    "sources": [
+      {
+        "path": "acceptance.mjs",
+        "sha256": "94dc6d54928436b493bab9afe09b866facb3a4c6cdfbd07653c33d8712e252e7"
+      },
+      {
+        "path": "review-only-acceptance.sql",
+        "sha256": "e4d6f1b9f7d8bae67ceffa4d153e452abb2d9bd22673342b186c53be7a380cd6"
+      },
+      {
+        "path": "source-binding.json",
+        "sha256": "398a3625d806a19021983b6819f695a089b46e0140c6432127ffbe8ff6a15720"
+      },
+      {
+        "path": "../../hosted-schema-remediation/invitations/initializer.mjs",
+        "sha256": "92ad60fff0202ecbae696fc10b93b74120a0546456a983d78d066debdf242ff0"
+      },
+      {
+        "path": "../../hosted-schema-remediation/invitations/scoped-descriptor.json",
+        "sha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e"
+      },
+      {
+        "path": "../../gotrue-runtime/fixture.mjs",
+        "sha256": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+      }
+    ],
+    "privateSourceVerified": false,
+    "isolationRequirement": "read committed; function rejects other isolation levels before any reads/writes",
+    "functionDefinitionSha256": "821394b78bacc681a73e19db068cbca9e08c7563adef322116c1fe7129a810c2"
+  }
+}
