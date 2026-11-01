@@ -1,0 +1,119 @@
+{
+  "baseline": {
+    "pr": 1516,
+    "sha": "c1c7371ac4f284ff7b6371a90fb3296c632396f9",
+    "ci": 41326234672,
+    "exactHeadConclusion": "success",
+    "pendingDuringOfflinePreparation": true,
+    "applicationIntegratedAfterSuccess": true
+  },
+  "production": {
+    "command": "npm run test:production",
+    "exitCode": 0,
+    "unitPassed": 7213,
+    "unitSkipped": 4,
+    "filesPassed": 847,
+    "filesSkipped": 2,
+    "launch": 45,
+    "certification": 15,
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 29
+    },
+    "typecheck": "PASS",
+    "webpack": "PASS",
+    "log": "/workspace/work/publication-factory-production-final.log",
+    "logSha256": "012087d64454eaf716201c37bbce9a74ea1be38c6f55b425f4c53fbd29852223",
+    "additionalFinalTypecheck": "PASS"
+  },
+  "functional": {
+    "cohort": 76,
+    "sharedInputPaths": 2,
+    "uiRed": {
+      "failures": 76,
+      "unchangedCohortCheckPassed": 1,
+      "logSha256": "85e7d8eadf7f892bf554660e4f0fedd87f5a23d7a9fafe9d1426f75b59aed647"
+    },
+    "uiGreen": 77,
+    "parserAndSelector": 35,
+    "nativeFormControl": {
+      "red": 3,
+      "green": 6,
+      "redSha256": "1215c4aa1ac9ff93fa9cce2328591005c286f2c2dcbd27bcf551cdcb54cb6265",
+      "greenSha256": "0760d2665800d3e9a3963a742e0144852669b5be3ee033727d1c98564cf819ac"
+    },
+    "retainedIndependentNumericalWitnesses": 152,
+    "plans": [
+      "free",
+      "pro",
+      "business"
+    ],
+    "mathematicalArtifactsEqual": true,
+    "browser": {
+      "identities": 76,
+      "journeys": 152,
+      "widths": [
+        360,
+        1440
+      ],
+      "sourceReceiptSha256": "b876eeee08276040e32d1dda4d583fdcb8a7d91bb773aad47b7fa69d7bb78676",
+      "localPrivateHistoryOnly": true,
+      "programmaticSelectChanges": true,
+      "productionOrAuthenticatedPersistenceClaimed": false
+    }
+  },
+  "offlineAcceptance": {
+    "factoryMutationTests": 10,
+    "identityAuthorityMutationTests": 8,
+    "securityContracts": 7,
+    "exactRegisterIdentities": 540,
+    "exactRequirementRecords": 14293,
+    "sourcePointerCandidateAndRiskJoins": true,
+    "deterministicChecks": "PASS",
+    "hostedShapedPublicationProtocol": {
+      "receipt": "docs/full-product-batch22/preflight.json",
+      "sha256": "1f245a621f759c17559e4a5d4493379dc1e8b8bca373c2e1dddb68e0c14c2b14",
+      "reusedUnchanged": true,
+      "scope": "Prior six standard templates; no approval or hosted-row acceptance for76privateprofiles",
+      "newLifecycleWrites": 0
+    }
+  },
+  "independentReview": {
+    "reviewer": "factory_review",
+    "importantFindingsCorrected": [
+      "Invalid empty publisher/date metadata cannot satisfy source preparation"
+    ],
+    "furtherImportantFindings": 0,
+    "doesNotConstituteQualifiedMathOrCanonicalReview": true
+  },
+  "preservation": {
+    "protectedSourceHashes": 194,
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlocks": 43,
+    "mathAndHistoricalReadersUnchanged": true,
+    "canonicalPromotions": 0
+  },
+  "hostedObservation": {
+    "source": "docs/publication-factory/hosted-count.json",
+    "publishedEngines": 209,
+    "approvedCanonicalLiveBindingsEstablished": 0
+  },
+  "publication": {
+    "newlyEligible": 0,
+    "newlyLiveApprovedCanonical": 0,
+    "authorizedWave": [],
+    "pendingCoreRiskQaSubmissions": 1207,
+    "unknownRulePackApplicabilityPreserved": true
+  },
+  "ciDelivery": {
+    "recordedBeforeSubmission": true,
+    "policy": "One exact-head hosted check after draft PR; no prolonged polling"
+  },
+  "releaseHold": true,
+  "productionWrites": false,
+  "integrationReview": {
+    "importantFindingCorrected": "Self-consistent forged candidate must match exact source register tuple"
+  }
+}

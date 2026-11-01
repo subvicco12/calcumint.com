@@ -1,0 +1,2458 @@
+{
+  "schemaVersion": 1,
+  "meaning": "Offline exact private candidate checks using existing independent per-ID witnesses. Shared software protocol only; no family evidence transfer or full-product acceptance.",
+  "sourceHashes": {
+    "docs/full-product-batch16/contract-groups.json": "d2bf92589bc83522518fbb19bf07f35a9867c7be2f46e698643a58f37534986f",
+    "docs/full-product-batch16/requirements-540.json": "17a5b6d43e0d365043bdad9bd9e9ecee0a8bc0b74a2d8489269def1fe05cf0ae",
+    "docs/calculator-first/publication-readiness-540.json": "17132cfb30e3493b03ed55feb3744bc92ee7052ebd5b7c570fe04e254de841de",
+    "src/lib/publication-factory-contracts.ts": "5750206843120bf0b98189f7928441607c250bb80326d4abc3d0cbd9ade783f7",
+    "src/lib/publication-factory-contracts-input.ts": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f",
+    "src/calculators/canonical-contract-vectors.ts": "5b6c2d87c5c077917e1d6cf8d649b7bbe2b022a613b9b9b446dd6be3398b47ae",
+    "src/calculators/scaled-contract-vectors.ts": "9f883b444a25ab2b4fa6529dd2c51078ac53dc420f8111206ce4c95de5afa37b",
+    "src/calculators/component-contracts.ts": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda",
+    "src/calculators/remaining-contracts.ts": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "src/calculators/canonical-contract-adapters.ts": "428daf0ef527dd60b0b74ae07674bad904feb54afeafca9f3b2f79ecd09df467",
+    "src/calculators/scaled-contract-adapters.ts": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+  },
+  "summary": {
+    "identities": 76,
+    "witnesses": 152,
+    "canonicalAccepted": 0,
+    "publicationAuthorized": 0
+  },
+  "rows": [
+    {
+      "masterId": 3,
+      "adapterKey": "private.component.3",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=3",
+        "sha256": "bdad979d0d566d75413215bf5a9326f8b7adc8f72347a6e7c08b58a75fe86de6"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/2",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/2",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "2b5485a5017f1288b582a20082b10c00902d6ef1c09f6b8b13f5a82b69924668",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "4f99c31b230040e287a7b0d08e790dc543ac3df7a66e429bb74a97d451072ddd",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 4,
+      "adapterKey": "private.component.4",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=4",
+        "sha256": "f930d4c8374034805965e876fd2447bfa1c52f3eda4393f67507c89c8fe25479"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/3",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/3",
+      "witnesses": [
+        {
+          "name": "interest-and-final-cap",
+          "inputSHA256": "c644649787ae7111bd7dbdb62711f9d74101ae490e00f4e5fc82b6878fb3fbf8",
+          "artifactSHA256": "29eca6b888c8692718b8bd4be664bea0bba6b8146c3dc56c1ffe859e864974fe",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "0a94f2c4f1b687706f4f45aaebc3e4d945cf22f246d1fb85c7cc682609e0cfa2",
+          "artifactSHA256": "8d855b56419222f238f5a88d9831d058218bd09a76c27f45860d121317f07dc5",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 5,
+      "adapterKey": "private.component.5",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=5",
+        "sha256": "f4a43cb84302a6c13ab284995ca46446434f113f6ff926816e18927bde80a695"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/4",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/4",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "2148f67f149ec0148bc9704af3b444069a2da6c9453cc18671cdff95f9228e35",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "9ea365558828976d9b4f6a9eadf0de2c7cb70f5086e49fcfe711c971a5719c60",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 6,
+      "adapterKey": "private.component.6",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=6",
+        "sha256": "a80776639e58cc3c82d6a1a2a2005fc28405244a5dd3039099d22b96ff1273e7"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/5",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/5",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "62afc67ab1b55c06a2aee7b5363af27618bcf21ab307deb871b70d6cc5b67beb",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "38d541301ec274b0a65c77f97d8f487fe33a0ebf00c9c1f720040a39b5cfcf02",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 7,
+      "adapterKey": "private.component.7",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=7",
+        "sha256": "7669cf348a6ea319e6ecd55dad925232548a91b741471a8449627a581495ab5b"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/6",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/6",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "efaed09c788be49b7c35a0055238801c9e84722dffa5490d27a794d497ce0f2c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "1b908d1d89b68803d54669685411b233a93b3e009d7c71b8c6a50bd73cde3856",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 8,
+      "adapterKey": "private.component.8",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=8",
+        "sha256": "42434ef9d22725dbc07b77fd2e0bde27ddabfd6370b2ae914d168075087305de"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/7",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/7",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "953065f2969eff5f7938754b7d67920daff1f802407faa0d3edaefa542e6c346",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "e30f85e2a8d1f280b7acb77cfcee822a409052abda09231bf971074f9239c592",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 11,
+      "adapterKey": "private.component.11",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=11",
+        "sha256": "611ca8faa00d5f33cddae0b62214582f3864f6654576d988aa34c1142f093da3"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/10",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/10",
+      "witnesses": [
+        {
+          "name": "interest-and-final-cap",
+          "inputSHA256": "c644649787ae7111bd7dbdb62711f9d74101ae490e00f4e5fc82b6878fb3fbf8",
+          "artifactSHA256": "253995ec3903774b58483e5395c1af410e56cff4fe0beea712db1ae0230ead77",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "0a94f2c4f1b687706f4f45aaebc3e4d945cf22f246d1fb85c7cc682609e0cfa2",
+          "artifactSHA256": "13f7bc40d2da46499b33428cd3e8a534430bb7e425c337911aed77136b52dda0",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 12,
+      "adapterKey": "private.component.12",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=12",
+        "sha256": "6f1795770ca9d5fa757f804db64371f1117a5ebcd861b006ebc13da68f6d0a3b"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/11",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/11",
+      "witnesses": [
+        {
+          "name": "positive-capacity",
+          "inputSHA256": "7f84f8ee518d05e7acdd72ba0afe6d1c0ff1e9ff0de240c0651a5be6bb5e48a9",
+          "artifactSHA256": "0c26114781709c96dd1fb799a7ab13fbd302e48f12a40539edbe462bc78c696e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-capacity",
+          "inputSHA256": "2ef99625a0ab7ff698c0070c99b830ced970941fb8465671c5db549200566b86",
+          "artifactSHA256": "0fbd44332564b83a6121445bc8bd9e98fc2c4f6d3f210dbaf0dbd80a588bf270",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 13,
+      "adapterKey": "private.component.13",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=13",
+        "sha256": "7f04222128056928af48722eba197c3a0b4691a84e5dc566efda0f361dd79fb8"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/12",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/12",
+      "witnesses": [
+        {
+          "name": "percent",
+          "inputSHA256": "6febba6a3f4386e7da1aaaceedd24a523087bd26ebf62eb03698a10bffa5046a",
+          "artifactSHA256": "d55db517827682fa89c61be1acee90669d6fdb3ac1eea1eb5a2126363359aabc",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero",
+          "inputSHA256": "898bea57cefb611953437a23406ec3a915bcdcd896bdce7a2bc9d94f4cb26ba3",
+          "artifactSHA256": "88b735587c456cb89c8e907ea379b84d636e35cfe9439b7fbbad586572d5ade8",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 14,
+      "adapterKey": "private.component.14",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=14",
+        "sha256": "1f69316d2d15b477982325cebc65de9da61389db0c816232d99cf9268b308373"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/13",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/13",
+      "witnesses": [
+        {
+          "name": "fixed-budget",
+          "inputSHA256": "843a43eab76df1bda4a6cead0201bc6fab232576fea054980f03f5431d909a7a",
+          "artifactSHA256": "b3c8508beea509ecb067ceba1f26456382ceec79f2a0a09606cdf062bdacdbca",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "single-zero-rate",
+          "inputSHA256": "47c0c12d79354f8d32743eb4ecb0ab93e75af1f2f3a7ddab54da9e5d614f2a63",
+          "artifactSHA256": "55392efa355b2f29d8ca32c51a3f769bd656f14bb17cbf2d1f21c93cfdf52a25",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 15,
+      "adapterKey": "private.component.15",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=15",
+        "sha256": "e5f171de8afff0ec53cb3d52ab5892a0ab2d94d6410908f7c78a684ef7e77f9d"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/14",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/14",
+      "witnesses": [
+        {
+          "name": "fixed-budget",
+          "inputSHA256": "843a43eab76df1bda4a6cead0201bc6fab232576fea054980f03f5431d909a7a",
+          "artifactSHA256": "e00259ec118a9720f9050932dc1d69fc83924036eb08de7836d751433e31a3bd",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "single-zero-rate",
+          "inputSHA256": "47c0c12d79354f8d32743eb4ecb0ab93e75af1f2f3a7ddab54da9e5d614f2a63",
+          "artifactSHA256": "c90eab17427fb6fce3f1771604dd2d1b6ccef4e25932f5b4bc207523319795c7",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 16,
+      "adapterKey": "private.component.16",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=16",
+        "sha256": "d7784c1a0a93db3b2dc48d1f511661a83fe379a4db20c23c6d61ea1eff5412d3"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/15",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/15",
+      "witnesses": [
+        {
+          "name": "fixed-budget",
+          "inputSHA256": "843a43eab76df1bda4a6cead0201bc6fab232576fea054980f03f5431d909a7a",
+          "artifactSHA256": "f1a9d84486994078df378295e9828f54242e4bbdccd75108066381348cd748e3",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "single-zero-rate",
+          "inputSHA256": "47c0c12d79354f8d32743eb4ecb0ab93e75af1f2f3a7ddab54da9e5d614f2a63",
+          "artifactSHA256": "f52c7db000ea1499fc4233df48e59a499e1843d241ce233030bbb3623ce99a06",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 17,
+      "adapterKey": "private.component.17",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=17",
+        "sha256": "33dc02d3d0aa5268e57f2dd245f22818b820adb83ac67507637b2c8a69c3688c"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/16",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/16",
+      "witnesses": [
+        {
+          "name": "fixed-budget",
+          "inputSHA256": "843a43eab76df1bda4a6cead0201bc6fab232576fea054980f03f5431d909a7a",
+          "artifactSHA256": "f60adca5206935f315aa12d0e6db6127d3216be743dc2c879ce4802ae6ce58a8",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "single-zero-rate",
+          "inputSHA256": "47c0c12d79354f8d32743eb4ecb0ab93e75af1f2f3a7ddab54da9e5d614f2a63",
+          "artifactSHA256": "2d5c191a3f0de70d5f9c1635895e26b1b82d36e4c2327380851ad2ce311d29e0",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 22,
+      "adapterKey": "private.component.22",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=22",
+        "sha256": "79ff3ffff689b8c4e856233e01a44f39507f12fae8311c5ece5f64635a89d841"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/21",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/21",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "0275384b681ce1ddb042294727f00ceadc46fa065e72ee9576391a1897fa9d9a",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "cb33dbc2736f5a97fc319f18c401e167a572446eaf04ccb6266ee60f6ffc2b00",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 24,
+      "adapterKey": "private.component.24",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=24",
+        "sha256": "4cb2e5771d8a5c63bad39626f326361ebd99653a2ee7c390c46470ba3fa551d7"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/23",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/23",
+      "witnesses": [
+        {
+          "name": "lifetime-and-break-even",
+          "inputSHA256": "709d7c37c0e2e278a66543534b6b56b48af057e8ba3a12d755d10ebc7ce441c8",
+          "artifactSHA256": "9a1d2184fa06336d592afdcea1755cfe52aef0ef59901b5f64f1da1bae97af5e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "no-savings",
+          "inputSHA256": "a4c693b9df58259f027f033ac4cfe7fae252ac50d5e68edd485f2be289d4c727",
+          "artifactSHA256": "e0fa1253bfa022df7450903dee3fbe6a50968a15c11cec98b697982b8111ae41",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 25,
+      "adapterKey": "private.remaining.25",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=25",
+        "sha256": "ccebd7f555fd904b1a7badd0fc08314f373daecbdc756b0379851820f6f85a26"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/24",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/24",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "9a2b01a581b011af62bcb0fd77535ed628f44fe69cf72a3745e6bb7842b0f198",
+          "artifactSHA256": "f7428b82c458a90ecb5dec790349c0919514e3234ae1ba86ed948581f1456077",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "22825fb1ff15a5912d82946d24177ebc28c106922eca2bc570227d19aabd0a9e",
+          "artifactSHA256": "0a116d4f6213a2ef2a34ab3dd95917889e3cfde7ae167ab0b44d863112a7ad17",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 27,
+      "adapterKey": "private.component.27",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=27",
+        "sha256": "d1478ee2e42f1e2ec75f08b472e16087c50961b1cbbb32b04dafc0cce6772c7b"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/26",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/26",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "e23e175f00cc42faf17a360d066aeafb281cf11844a98d0e5f74d2bd770a1b09",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "92f5b422de4fd39a2bc0a7b439141543e28a21087489293ea53c03a2cf015a4b",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 28,
+      "adapterKey": "private.component.28",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=28",
+        "sha256": "d32b93305fcc35043b161e71e65a9c2ed06fe09183ac17f1b60aa7b040452814"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/27",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/27",
+      "witnesses": [
+        {
+          "name": "interest-and-final-cap",
+          "inputSHA256": "c644649787ae7111bd7dbdb62711f9d74101ae490e00f4e5fc82b6878fb3fbf8",
+          "artifactSHA256": "1ec2009d8b9255ad54f4490e189add8387be017b28ddb3c3afbdfbd6b773bb25",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "0a94f2c4f1b687706f4f45aaebc3e4d945cf22f246d1fb85c7cc682609e0cfa2",
+          "artifactSHA256": "29259626599b33472ea6982f9ca1c766203aa298089e154d6ad3cd28a621165d",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 29,
+      "adapterKey": "private.component.29",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=29",
+        "sha256": "2ddc6d793eb44f972b8456cdecc66065f05115d0bdc1981b7a9859276e535fd5"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/28",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/28",
+      "witnesses": [
+        {
+          "name": "two-period-interest",
+          "inputSHA256": "248db5f6e3030c7c20c218b8b9b994fa87c6512181595b04e1a06ae1caddd3cd",
+          "artifactSHA256": "cc568915be30480ea1863fc23a184312342dc595a74cd6e4d265ee94c1797519",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-rate",
+          "inputSHA256": "02e911b3e4a1603c896b82d298897a9df864f29de394380cdb9fb885a3d5dc5e",
+          "artifactSHA256": "ad5a511337f78bbd5ce5ef4fa12b8f43fc6e6408afa5983fb779c525819155c4",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 30,
+      "adapterKey": "private.component.30",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=30",
+        "sha256": "471b586aa7459d39e350de6883993d387de4f0dd1f269285d47c08901e3cfbe4"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/29",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/29",
+      "witnesses": [
+        {
+          "name": "positive-capacity",
+          "inputSHA256": "7f84f8ee518d05e7acdd72ba0afe6d1c0ff1e9ff0de240c0651a5be6bb5e48a9",
+          "artifactSHA256": "a8954208ffe3b3fd644c3c26005d45d3813a422aaf887506ada1f7739d33a1cf",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-capacity",
+          "inputSHA256": "2ef99625a0ab7ff698c0070c99b830ced970941fb8465671c5db549200566b86",
+          "artifactSHA256": "fd62421eaa49e19fab680f1b88aafb41dc44a03da699ab57112307bc29be1706",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 31,
+      "adapterKey": "private.component.31",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=31",
+        "sha256": "529a00d3283881abf9576624d16fe2cd62efe3ec67bfdc800d611d192d683ad9"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/30",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/30",
+      "witnesses": [
+        {
+          "name": "percentage",
+          "inputSHA256": "d399a208090ba9208048b232c366d6e80cbe0d8302f3d1661ce5902f3a235c95",
+          "artifactSHA256": "d77ec6dfaa94034ec0afe9557bdbf368f9593590ae2b383badafce17dfe9f85e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-percent",
+          "inputSHA256": "5cfd3ccb0a837a67bc7369f6785aa7f3052508004f010c108a6de84d6ea5156f",
+          "artifactSHA256": "401255e2639d7aa08e0e840f1a6d16da3fef08d58c38e8938c1a92940dbc30cc",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 33,
+      "adapterKey": "private.component.33",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=33",
+        "sha256": "622a1d1541593045ce64b67434d9ec79b8faee8bf3a3e864636886def570fadc"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/32",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/32",
+      "witnesses": [
+        {
+          "name": "lifetime-and-break-even",
+          "inputSHA256": "709d7c37c0e2e278a66543534b6b56b48af057e8ba3a12d755d10ebc7ce441c8",
+          "artifactSHA256": "9b6ffe1ae4227111ccf6f8c26095bae920f4a75c9bcecab8cb6ab3cdf719e1e9",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "no-savings",
+          "inputSHA256": "a4c693b9df58259f027f033ac4cfe7fae252ac50d5e68edd485f2be289d4c727",
+          "artifactSHA256": "944ab0ea2d47b4832a69d1391dc736255f09e26a24ad1941231610dc9c88e725",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 37,
+      "adapterKey": "private.remaining.37",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=37",
+        "sha256": "19c64de93d60c938c5b5f5227be4454799802b753e1179bd60e959dbcf02cd0c"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/36",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/36",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "93a9288d249e2d5c6a630f06a15eeac5f20ff19e224eafc37b953b73eb250dc7",
+          "artifactSHA256": "eedcf56c822f6e004d29838371cbbfbf9507fb5c72eb6a36a0f1e2e99aaa940f",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5efc15158dc776d9108c6a180722167e0825c0a32ce3666d0b88b3abb1cba09a",
+          "artifactSHA256": "f727f690439d6b0070e2589e7aaab60b2b3db76020a553b6eead1170a42a961d",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 45,
+      "adapterKey": "private.remaining.45",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=45",
+        "sha256": "34c71e9ba1bf5bb1315115ca1863cae73bbc527f692af95d1ae4babfe0cabefd"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/44",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/44",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e91e82b5c3fb07fef64fa81b06ea0c382fd97a34b804b7269a2ebb6abd5fba78",
+          "artifactSHA256": "d1c4aa3f38634d4a7bdf5f4f9cd5dea6494eda55d7565f99a94ebc35687e7b2c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5e189b4f15ba62d9f443cd04ec8c35412784ecb55d30f46991990f6f6e8cf38f",
+          "artifactSHA256": "c4ece6a40c656c0d769266e1c35cbdd745f8779aafcec769c4a756d6a01f8063",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 47,
+      "adapterKey": "private.remaining.47",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=47",
+        "sha256": "362e6d14f6dabe7a4102f72440207017028d4b3d2f336b1d64458dc53419121a"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/46",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/46",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "a98d244121b50e47bb749c7883dd16b68bfb5e4978a3a5415bb319e2052812a6",
+          "artifactSHA256": "75bda55132aad065a2ced35be0adefccee6ed4b17a2e7047debc2799c1324287",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "243567890839e2e2e56ac8fbdee5a5e26c4e6b9ad095f684169e9775096c9704",
+          "artifactSHA256": "6dcb378501b088701ce33e6d772d5872facb711ac60fd7de7f0bff217e585b30",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 57,
+      "adapterKey": "private.remaining.57",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=57",
+        "sha256": "e3f6732e9358577a08d253513288842e1ddb63b7b73f09641977d1129f2c00ab"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/56",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/56",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e91e82b5c3fb07fef64fa81b06ea0c382fd97a34b804b7269a2ebb6abd5fba78",
+          "artifactSHA256": "21df4650d60e3cdecf04b3e9c8e0588fdcc70680b159a87586120b4a248c63c1",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5e189b4f15ba62d9f443cd04ec8c35412784ecb55d30f46991990f6f6e8cf38f",
+          "artifactSHA256": "554c7443f69eb8577b35c60c55102d83cd6025944dc0ed059881f1a9e0a0eaa5",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 58,
+      "adapterKey": "private.remaining.58",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=58",
+        "sha256": "c07f3a451dda96eca29a4a6bdceeba5ab5416d68af779d4d2b9a610b283c58f2"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/57",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/57",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "cb8e59cca7b09cae75755a7245b6f77e6476f55031cc0452b42f6614a625c7bd",
+          "artifactSHA256": "c89cb724d74f6ab2fa85865d301b5cd58a7640e166180beace62345dc5004848",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "c74033f9b84940e2a33752c83b11a23ba20631af4640bf8f22ea6d50adc4f25c",
+          "artifactSHA256": "e2a944916e4aa0fab936f1e88dcb54a5963d3c15b350131d9dfcbb13e2e45fab",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 59,
+      "adapterKey": "private.remaining.59",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=59",
+        "sha256": "a33eb42928e2ea2f99eb3f1b3e98f67a4c366186939337c00c96f93c5445df72"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/58",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/58",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e91e82b5c3fb07fef64fa81b06ea0c382fd97a34b804b7269a2ebb6abd5fba78",
+          "artifactSHA256": "5b7b542b2db3e2c4191f9900328d5922a7bf67f09aefb613bd153607b271c9dd",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5e189b4f15ba62d9f443cd04ec8c35412784ecb55d30f46991990f6f6e8cf38f",
+          "artifactSHA256": "b2cbc620b5525d6e59c1b0c061b87e51c1b96d510b84983ed32796ee1df954e2",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 60,
+      "adapterKey": "private.remaining.60",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=60",
+        "sha256": "91c9b8ada64609a95fc98af0a78bb02e8a4564d4bdda1762022ebeaceccc43e0"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/59",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/59",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "9bc523462a1704c8330d637b16cc87cc42b4cecf6b3cd56ae6618b87d7ad8cf8",
+          "artifactSHA256": "c2c65f4d743ecc2d13f08648c76cbcf749e8fb906dbb71444bedfe158068d4cd",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "c67d0722ac930960220470aa6501a0d7a889b4075dfbe10015278244cbc844c7",
+          "artifactSHA256": "5d3d9899ecadad638044ce2302bad08126ca2b7c86b956aa7132b128694a0895",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 61,
+      "adapterKey": "private.remaining.61",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=61",
+        "sha256": "94e4e3d40f23612fcd26019bf05d255d2dacdd49003449305b0ff6da781e2edd"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/60",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/60",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "71a2dc131e075bf7aae8e552f329b5ae8ad18c21c6a2d00f447466fa6fc35606",
+          "artifactSHA256": "dc6694a278cd4307cf9792b93db271edc59f662c61f8210e0a45594a9eeea984",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "ccae56989a82b5d1b5a43b17efe292e9039d85a88b6487da714b40e596c95645",
+          "artifactSHA256": "803fed5a843a0748bffcef60318c0dd0e9344edb1d06e97e341d07143c9de674",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 62,
+      "adapterKey": "private.remaining.62",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=62",
+        "sha256": "a977ee7e5e8e9178ff2dc5516d66eb89bf5c3bf524858b2bf711e6cc9613284e"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/61",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/61",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "80d510cb00fd281661d912670dcebf5438326542e33d915f312244abbad939f6",
+          "artifactSHA256": "65747b698a8c854525849adb0a1c0aa53278b29ae68b7606b506c2179909c348",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "7905b9e95c550a4573aca2de16d6143ee31cd3bf97370cf1902d8532664f271e",
+          "artifactSHA256": "3df8007d76f5a89b6a7e2bafe96d079b5e5d4fa303827311b895162f895a2087",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 63,
+      "adapterKey": "private.remaining.63",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=63",
+        "sha256": "7af9124a12ce110cf58e1324c6bf64a791b40c16b0ac55b92bc5684d412839f5"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/62",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/62",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "c0599587fdb02b0159654338e5a76ce25c35d1a1c7bdf20f28c76aea5bbaf2ae",
+          "artifactSHA256": "6a3550c0782b1447042df51398fefcf5d5095217e521eeb5177d61468d913d12",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "d55f2c9bf028ff3ba0c683a1d50b9f9ea0bd5f66c00178056efdb5a7dcbf74cb",
+          "artifactSHA256": "66d579ba172d4bda8b0335abf0469f0acc6043aaae36211aa07c70fae9299c7e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 66,
+      "adapterKey": "private.remaining.66",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=66",
+        "sha256": "06fe5347f33750aca95036d8dd4920bb06e0e124afa61681a5ab03b6be5818c6"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/65",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/65",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "80d510cb00fd281661d912670dcebf5438326542e33d915f312244abbad939f6",
+          "artifactSHA256": "e8a20282c2438a82ad6416d63bc8ea9b5b9d1f29c88bf4f483d29d2ebd37237e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "7905b9e95c550a4573aca2de16d6143ee31cd3bf97370cf1902d8532664f271e",
+          "artifactSHA256": "8c6523e32a44c88b4dec3a76edabe78b163fa8d9ecbe8b531ccc5fb35d85cae4",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 67,
+      "adapterKey": "private.remaining.67",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=67",
+        "sha256": "7a270c5403e6b2cd66aff06611ad19bc126e41d6dbfd96bb0de40e726f4a6c70"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/66",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/66",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "5670263c232b1716ceb961d491bfd9d98a150e5ef8b5a21efa4f5a1dada322fb",
+          "artifactSHA256": "0ce5b7f2481f7da768cb46811b42cec7b74f86ec3aaf9188e5ceca1bc58519d1",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "529b244b849e0cbe1990009f39bdf7338a910fb53b6f56a5d5fc0280c3f93922",
+          "artifactSHA256": "ef4dc67c335afc0ad83088f9cdd02ca45d12393a12bae78655308defc87f6513",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 68,
+      "adapterKey": "private.remaining.68",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=68",
+        "sha256": "d90e9836783fcf0f956462f05fa4e0ffce6743cc47ab37a310a0de8bcde32bed"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/67",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/67",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "38fe27e02d843b90c312aa975de2009caae00f6f4687485bda3fd11f40678676",
+          "artifactSHA256": "f370b58d2fe5ac128f2c567060cb99f09a3eb07e85c7b98620999f4ab04e24ce",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "772adf42a5912ad15091e431f83c94bfaed5658661000fe5142dd88e75428341",
+          "artifactSHA256": "1e86d2eb294e4515ba7408d63f97a1a538fc9072f21b058f312a3b08dc1b4ecf",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 69,
+      "adapterKey": "private.remaining.69",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=69",
+        "sha256": "809bc3b98f70fd5677b7bebdb553da8e1e0d2dd47259fb58379171ea20e8f595"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/68",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/68",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "38fe27e02d843b90c312aa975de2009caae00f6f4687485bda3fd11f40678676",
+          "artifactSHA256": "72ffe880f5e16190d5b94c3f27dc39a03949291eadf41ff11baff1e1b867bc30",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "772adf42a5912ad15091e431f83c94bfaed5658661000fe5142dd88e75428341",
+          "artifactSHA256": "dac51c6e4aeb74ffb551827ed263456ff9b31fec0565cefd8272733fab82768f",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 70,
+      "adapterKey": "private.remaining.70",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=70",
+        "sha256": "52955fc63cbbafe318d9b0e28989fdb133e709758cef0ad0a0efd327a5f78323"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/69",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/69",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "6b998fb0f0d0e65f757db3606398874abd8116793e02c315f9ab9f6e653958b0",
+          "artifactSHA256": "97f2d9ef90a7b9b8ee80533ae1ee8a699819e2f415aa070073b348c60184e080",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "d8e36e64a22c6eae1c6621160714b5323cb1bc5f2c484468b4da68851b95b734",
+          "artifactSHA256": "ae219ee8ed000986194281114182f545f604a4487912240f1530c147d5c22153",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 71,
+      "adapterKey": "private.remaining.71",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=71",
+        "sha256": "a4d3a8c93f9421b5293cd369fc2363a45776d8fda772e3cccaca9887fd011507"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/70",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/70",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "4d0c23550df693db4d55c74af45aa4dada1cd274dfb7e3e4c3f5ab7280b87948",
+          "artifactSHA256": "5feb86514cfea466fac18fede87a7f5b6d804c3c4ed8143475dd0f2b1779c682",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "ee6b06f0eea656a6def55e1a916ed257341385e85ea99d6852b19a3a1f4873b6",
+          "artifactSHA256": "ee1b4f70c4d8416a4a5bc4e98eed124024abef5dae70f8cc40b3bee00460ca22",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 72,
+      "adapterKey": "private.remaining.72",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=72",
+        "sha256": "c6c05ebdc86e4d566d8573e49c3c91f99d258938b5ba1cdaf43d7817779aac0e"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/71",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/71",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "eeb66a135e31d63b31ec286e17b44fd3522546ef9af45dcc88aef71366033f40",
+          "artifactSHA256": "fe3f0a3cc996b0c441cdc1daa8bc824c84e3a9fc2f59f2fd4a8c40ccdc64f017",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "05401591852a03a53bc35ac3ec59ba1ed7e54efcba5e3c49acec3b16fb6cf2d1",
+          "artifactSHA256": "14f95a6dcb2c78529ffe776e701f6346f27910f3072b12142014f511d0a8c4f1",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 73,
+      "adapterKey": "private.remaining.73",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=73",
+        "sha256": "d46970e20dffc8699942da0680b803c69a7a32812f0d1d52702eeb082e348fa1"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/72",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/72",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "d85332c1ebfead7602a328a6955311b5b9154652f4972538212f13217dc537c8",
+          "artifactSHA256": "8f1f3085ea403f161e73b1ce1c4d2d83fc6e94ecd77ee189ade872320b3c7729",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "704cf5fef6ea1804409f77e3c175f1d01357b5ddcc17013cde76b650d4531cd7",
+          "artifactSHA256": "b3d32e7f7b39217e63c5f160a20b612bb67f5207f353a3b2d0f31bf52bd52278",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 74,
+      "adapterKey": "private.remaining.74",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=74",
+        "sha256": "f7d11d20aa708656d3a7135b627605eb7fa781f0c2b083bb26f17f196d2196bd"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/73",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/73",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "019fe53408b5a72b2712bcfd4311da635b03d0e5ad1d2e63cab417d7b4eaf2ee",
+          "artifactSHA256": "cbebc1f142dec8b864d23547fb5ca47f705c42b2223f3b217829beb27972dae2",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "2848b679f039be6e5805b8a9afe255a7b44681cde76778b5e10b94bf0d486373",
+          "artifactSHA256": "5c7cd22e331edfec500645325611023d7e23cb4a064f292686440b83d880d123",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 75,
+      "adapterKey": "private.remaining.75",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=75",
+        "sha256": "22bb2a1f14f6854622065689739022999b6bf3cb3fe7bf573bb2e5b7d4076bd5"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/74",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/74",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "80d510cb00fd281661d912670dcebf5438326542e33d915f312244abbad939f6",
+          "artifactSHA256": "9264e9b36076c243b67129a98e4d8e71b54d48688a9e585396ddbd854ba31a17",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "7905b9e95c550a4573aca2de16d6143ee31cd3bf97370cf1902d8532664f271e",
+          "artifactSHA256": "66bca071b3fdbd4956782e6497ee20a1bd007a593b26607c398c831081736f2c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 76,
+      "adapterKey": "private.remaining.76",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=76",
+        "sha256": "c4825afd2bd7b0d6d84478d6c3562dac9c21f76e200c19fc9f10805138b84758"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/75",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/75",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "a98d244121b50e47bb749c7883dd16b68bfb5e4978a3a5415bb319e2052812a6",
+          "artifactSHA256": "93c6880b06a1c05c919d6a57e5a5aee6bfb5a77820b049e336654cd346bbb486",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "243567890839e2e2e56ac8fbdee5a5e26c4e6b9ad095f684169e9775096c9704",
+          "artifactSHA256": "3d2c65e58632faa072e75e3fde11f7a7e59dc847e9b2a1871a9f8f88cec98322",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 77,
+      "adapterKey": "private.remaining.77",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=77",
+        "sha256": "d001eced1696c04fbaed93bb9e4be6f3412c6561dee3322441944993642d9f63"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/76",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/76",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "a98d244121b50e47bb749c7883dd16b68bfb5e4978a3a5415bb319e2052812a6",
+          "artifactSHA256": "1102b5dfd591fefede9b72cde70137990e9e61fc1e0cd5a356702b8942cfbba9",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "243567890839e2e2e56ac8fbdee5a5e26c4e6b9ad095f684169e9775096c9704",
+          "artifactSHA256": "6869d1dd3dd1dde0a72ba4ee8800f9d96d973768b7dbfb65deeaa567e033e9c4",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 78,
+      "adapterKey": "private.remaining.78",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=78",
+        "sha256": "0815172645ae5f0ad63f1311d85846b48af31120674889e7b63e37d14367dc27"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/77",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/77",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e0c1dcb620a7366fe099bce5129ec85cd5794c6583e1f6b86e576d6c16ff0c41",
+          "artifactSHA256": "4a60ba87f0bed188772d7a763ce77fc067cd0d2b47cd2dcf01c90c3918af89c1",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "d0071c6f5d6f896e5136079b1fdec4407d09f1610136310db410ca4a95fcbc76",
+          "artifactSHA256": "0b17f7cfb722cdf5b16a3906ca2a12e89798885df818db8cb59681ebac390472",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 79,
+      "adapterKey": "private.remaining.79",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=79",
+        "sha256": "a225962f05cec4adcb9d4a9a974931ceef4cc3ca127da3b8df0fbdc63c73c98c"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/78",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/78",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "0b9a2266c05725774c37e9a9dd6b3f080dea5d5eebd38a8cf9b81914ad7d60f0",
+          "artifactSHA256": "d4ede178e33d54418db61c0667f48bb1778e1b12b19b9c2bb9e232f27bda4d11",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "6066b02dea3ee23794d19612b184ff3ef9594d3b5f21c56f2646a7f386cdb537",
+          "artifactSHA256": "8e97892806db6ac206a5cf9a32048942e510dd368dba64fa619dd6d8961319ed",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 83,
+      "adapterKey": "private.remaining.83",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=83",
+        "sha256": "86d57b89fed02e3eadb69b2ee9f91141bec944c78821ff68a25ce7f76a325e93"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/82",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/82",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "71a2dc131e075bf7aae8e552f329b5ae8ad18c21c6a2d00f447466fa6fc35606",
+          "artifactSHA256": "42930c5ac28cbf02e18432c59976a2424d196e8f0d03539d3b5d8e8cac081dd8",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "ccae56989a82b5d1b5a43b17efe292e9039d85a88b6487da714b40e596c95645",
+          "artifactSHA256": "37c974e01be98ee43e2e0978f85cf076335b2c4aa71a102ac2959c2860317102",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 93,
+      "adapterKey": "private.remaining.93",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=93",
+        "sha256": "965f548de69085a63984923ade60c71e9ba6cf94892a886398b23e0dd6b12c1d"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/92",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/92",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "d7af2e33fd18bdca075bf5a49dd1da551e6896a2fb4079ed8a22af75944e7181",
+          "artifactSHA256": "4d6994e1697fc0551358e9a92c50eeb64e0db4f91ccb271f18008674d85915f1",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "4ae4a236746e432da654f3da99a8086709a3330050f08300cc6628d719e847c5",
+          "artifactSHA256": "b9eefade76fffe033a47b88ca06213d74c0ce76db064b6c65cbdffdcfbefa51a",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 94,
+      "adapterKey": "private.remaining.94",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=94",
+        "sha256": "6c501fc7a35271dff147157feebf7ff94b785560b4b889f8ebf1f70952063fb3"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/93",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/93",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e848f202b4db790bd435c07268c8cee39e0339432e40e08f93588cb494d6a6e8",
+          "artifactSHA256": "e90300331091c1fd4884df619503f254bb14fe53dc6be4823a6d6e425b448663",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "1faf3c9491d3d0fd0dcd05e0e12f425dcb4867da7a4a3c6f7e754bf010184d85",
+          "artifactSHA256": "46d107d99eb8a875e850cfc892d28a801d308fc183a9e76d8c10b863ff457cf9",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 100,
+      "adapterKey": "private.remaining.100",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=100",
+        "sha256": "33095fb9fe56b3888943c5559b7b55e2da76013ed55a2bd79f05ad8207354206"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/99",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/99",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "93a9288d249e2d5c6a630f06a15eeac5f20ff19e224eafc37b953b73eb250dc7",
+          "artifactSHA256": "29f26fe242b7a7099b6a3f0d28f81f56b875d6165bc4a47fac2fc40c7684a9fd",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5efc15158dc776d9108c6a180722167e0825c0a32ce3666d0b88b3abb1cba09a",
+          "artifactSHA256": "60a093f39136417c4c082c1e631d802895f7a29909bd4268a4bb657b7c7af78e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 101,
+      "adapterKey": "private.remaining.101",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=101",
+        "sha256": "b00c6144bab6eaab99281e560e78b36d15b556112fae0f270b6a96725180d69a"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/100",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/100",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "712facb537552323fdee5f87a40787edb6aeebda5801ed9a9a1cb2b616b0d80a",
+          "artifactSHA256": "ea6bf1f5d5992a75840d318e88ae8231f119fcc8f38d4eb911800363e329800c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "b49c30e17b0158e4838be9949d009055a8a2ee4ceb0fbe30b352dcd99c551bca",
+          "artifactSHA256": "fb339add0504556b3af5870b3c8a0559448574bcf77a1dafec8d3e400e637853",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 102,
+      "adapterKey": "private.remaining.102",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=102",
+        "sha256": "480a6e7a63763a8b7f6eee51340f718b701894b2d2452295fa4c8f7208e25c29"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/101",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/101",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "14eb6ccf5729296152ae735a944c5141a496ebc0dc066e59a731377b0ff4c87a",
+          "artifactSHA256": "341d02a87b4f38129cc8ed7ea0b70a4e11f5622598975e5cbc63494b15bb4322",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "874b6e070b7bf1dd4009c00f403a91ad074fb6a92f5fb607e2690957d7d0ac90",
+          "artifactSHA256": "fea12d467f80ca666ba2b3abe0c5c3e4dcd7401ae68018ab443b67bd790fe4e3",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 104,
+      "adapterKey": "private.component.104",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=104",
+        "sha256": "e1b6554fa1d28316a2f4a90db9db06ed28b83824a7482f723085df50c1ea0af6"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/103",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/103",
+      "witnesses": [
+        {
+          "name": "positive-capacity",
+          "inputSHA256": "7f84f8ee518d05e7acdd72ba0afe6d1c0ff1e9ff0de240c0651a5be6bb5e48a9",
+          "artifactSHA256": "67b4ca67efb288b1ca661d5a3de7aae9e6358aa3c56f719ef084a672928aaed7",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-capacity",
+          "inputSHA256": "2ef99625a0ab7ff698c0070c99b830ced970941fb8465671c5db549200566b86",
+          "artifactSHA256": "24b570439e47bb482c6590a343a9ebae8f89fdc2589182a247a61c0fea5a649c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 105,
+      "adapterKey": "private.component.105",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=105",
+        "sha256": "929ce91649ab252061b3965d577d1021035a298249d863036f58f8329d302b4c"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/104",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/104",
+      "witnesses": [
+        {
+          "name": "positive-capacity",
+          "inputSHA256": "7f84f8ee518d05e7acdd72ba0afe6d1c0ff1e9ff0de240c0651a5be6bb5e48a9",
+          "artifactSHA256": "4bb91fc2546071c64ec62a5b5263673e3365f49f814ea87f640324949c8d24e4",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero-capacity",
+          "inputSHA256": "2ef99625a0ab7ff698c0070c99b830ced970941fb8465671c5db549200566b86",
+          "artifactSHA256": "32a4bd5ad3422dcd8c2e358a36f4f3b0227ef23c1f641936384c456acb804dcf",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 106,
+      "adapterKey": "private.remaining.106",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=106",
+        "sha256": "a213cb39d28e5106c75d6fa9f706a51cc466c52f8d3da8c62a5b7610e1eb7ad0"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/105",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/105",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "71a2dc131e075bf7aae8e552f329b5ae8ad18c21c6a2d00f447466fa6fc35606",
+          "artifactSHA256": "0e0871e3b44be8b659d58a37b5290c4b7dfa2fd3ba067eebfeac864dab862c66",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "ccae56989a82b5d1b5a43b17efe292e9039d85a88b6487da714b40e596c95645",
+          "artifactSHA256": "5b666e792e60dccaf884a733da4ec0dd365388a82f0b4d049a0e95f680085c86",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 107,
+      "adapterKey": "private.remaining.107",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=107",
+        "sha256": "f0caa35bd48ea68afb792758ab8fda916b82e095219ce3c6df813dc17411d15e"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/106",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/106",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "93a9288d249e2d5c6a630f06a15eeac5f20ff19e224eafc37b953b73eb250dc7",
+          "artifactSHA256": "ee62ec851690ea6d69f71722bccba634960ddd8a307b95c99590e5844fba66fa",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5efc15158dc776d9108c6a180722167e0825c0a32ce3666d0b88b3abb1cba09a",
+          "artifactSHA256": "7c901dc75d0e39a99c9393dc84cc8b1b6df64e385870d1ebc0ae2481a6086911",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 108,
+      "adapterKey": "private.remaining.108",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=108",
+        "sha256": "f25506972b9741c9bf840350b11abe86bcd26297ba763f9a6a04e0306a597e31"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/107",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/107",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "93a9288d249e2d5c6a630f06a15eeac5f20ff19e224eafc37b953b73eb250dc7",
+          "artifactSHA256": "8b1b4e2b5cd4fc23e18fbb54c11317ab7ff081552f9b0cf680ad277909c2c6b4",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5efc15158dc776d9108c6a180722167e0825c0a32ce3666d0b88b3abb1cba09a",
+          "artifactSHA256": "68fbc7c99640e518da0701d10162394a135460c802b1fe0cb0416254aa990f03",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 110,
+      "adapterKey": "private.remaining.110",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=110",
+        "sha256": "100dba0f6b97df5a3abf43c20d89082b1ea7bc02147fc0a636540675e3c7aafa"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/109",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/109",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "61943ffe02d77a32c310a4ffaf7cf1148d6385c8518d76574739b5d1932b63cc",
+          "artifactSHA256": "9210638ef93d6177dffc9df52f797f959d3567fe32ed28a8037a8defd99133cf",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "3eb5fd119990024de265103cd5a0c1e8579bf3ede48dfbc27163d3dd0c903a3a",
+          "artifactSHA256": "325796ff44ed9084da00baa134d1bd409c502367c2e6f91038bef201bbf8526d",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 111,
+      "adapterKey": "private.remaining.111",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=111",
+        "sha256": "4d29d8a6962db1337f5c83d228a3cad68d3f5fde395490a3821b8a83d60f62e8"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/110",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/110",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e078d7390ee0ed68e1cadec4c81916b5a5dd754dd1bfc470790654c42d2c7ede",
+          "artifactSHA256": "237ef8066303c923726579eb7c03e7d49fb295afdacb37b8ac4177e8dbb1ba07",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5f3c0b47936f636f62297b6a0fa486822420ee90996d5b4fccae90933da57ba0",
+          "artifactSHA256": "1b9ded44811a6cc8e057bc97e54c9b416809f7fb0ea406f836a6bcb6903c8016",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 113,
+      "adapterKey": "private.remaining.113",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=113",
+        "sha256": "5880a2ca86cb44c53c7131f2fd3b92a72e223eec7d226994a76f23dcd8ab39e8"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/112",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/112",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "33e8f6f17f116da0d231f5226d57955cf59ed1d030c03900dafc5cc52085348b",
+          "artifactSHA256": "8aafd636ccf712efa820d0877fee13389db1626938cbb99af43d70167c30dc3c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "a3c1c5f05dc2c1bef19a3999ea2b7b4bf473d2ca0b718d3c5bcbd04574c6f3a8",
+          "artifactSHA256": "13ab5c091eead0fa7964a5cccc3260a9d93b6110158a5d2fc7b7024c7f3c3f7f",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 114,
+      "adapterKey": "private.remaining.114",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=114",
+        "sha256": "1f01e1e26bd110f275ba002440c3f12eb32e8849c3fb13bb1c66e31454cc22b7"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/113",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/113",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "5fb4ecc8c3ca0880aea0832ec4f09613b92a5f2098e6ac2df0bf4fa2bead3b28",
+          "artifactSHA256": "4c4424761b791e96ce6e79b72ebeacadd0ea7994715bd4312cd09443c1c38e80",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "2862357b452ed65335a6b497960b7218de04ba9280a8c1fed11e9974aa934068",
+          "artifactSHA256": "7a16eb5ae50ef811ee15a82e4ee7be0e7c64d34d546672baed7c0eedbf4bc58e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 115,
+      "adapterKey": "private.remaining.115",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=115",
+        "sha256": "31afa77975e23eca2c04e7bed37b56d26e504523aa57b0bbee92e56cbe3342e2"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/114",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/114",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "5fb4ecc8c3ca0880aea0832ec4f09613b92a5f2098e6ac2df0bf4fa2bead3b28",
+          "artifactSHA256": "77e972dd3450ac9ed8d4e7de35e3670c64b2ecfb3b4a67221ebd2638c48a642c",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "2862357b452ed65335a6b497960b7218de04ba9280a8c1fed11e9974aa934068",
+          "artifactSHA256": "9eabf7daf5f8058f26a96824aaf97b3bd3f7b34af1fd0b67f7e408036cdc882e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 116,
+      "adapterKey": "private.remaining.116",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=116",
+        "sha256": "eb0cb1ae778641141b4120879d32d90ef18f756944f13ab981e097a6394d4052"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/115",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/115",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "c1bceca842e4e2a2dd46c4f359226800b05170698fcb404d5c79ee1b9a1a88b5",
+          "artifactSHA256": "6731ff8256b7efb450155f4421fd8c8f90eacf308f5ba4503298228768b2507f",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "5510782f9a21e8371c8ea44a0489d3324d9ff36fca1264a60d5a423f109d30c7",
+          "artifactSHA256": "a6c953361f7c9d67b5f3c40aa43a73b3b729b2050b17dc32767f96979c8ee968",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 117,
+      "adapterKey": "private.remaining.117",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=117",
+        "sha256": "80ef491a11800ecd702a5e60a3f1fd45b1d21d6a9f84ce726e0c9611cfffd508"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/116",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/116",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "d54bd652062a2e85c901d254b8030e54e530320141c248cba1623a3d51ff3ee0",
+          "artifactSHA256": "8779f36bf68981040707e7802fbf4d8ef785e39bb78e5b43b37697da47d312af",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "32290bbe33acc24070c5efcea66e883a93c4962e488090bf94c1cba5018bd113",
+          "artifactSHA256": "4c405533f7a20659168750e5ec48e9fa5d895c92e5479c8303fe039698870674",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 118,
+      "adapterKey": "private.remaining.118",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=118",
+        "sha256": "c26877a342fa5a85cf2c4d636252d25986ef6a4f1409b30d1c237b9796c0c9eb"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/117",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/117",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "d54bd652062a2e85c901d254b8030e54e530320141c248cba1623a3d51ff3ee0",
+          "artifactSHA256": "52189f99a3605cec938e4f40777e18c7e7b742b69380be15c6f40be4f12f5ab0",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "7f958f532240fa147ffd6a8ecda9b8178c48dea9a2301e7e527219f04dc6a97c",
+          "artifactSHA256": "d1a0ade96a3ca4ae904a86f70430756d09db32849562c3ec7956bb8d8c7d7bb6",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 119,
+      "adapterKey": "private.remaining.119",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=119",
+        "sha256": "dcf576b562a6f7e0b83f4eb0972e1fe1c9741fd9cbeb20850cc1066211537dec"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/118",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/118",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "379db2f67d7763916e0330911bcee902bc665ef51f1287327473b13d7c958e55",
+          "artifactSHA256": "c68f578cdf4f82f70741277545e7b719d917bd318ebcf67fab88e6a198fbaa8a",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "e09a382d2e07f0a52965d86205f9e0ed89350403d162fb22e17077679205f1fc",
+          "artifactSHA256": "6aae57c96535dbd965b3fef9350b7d11fb8a89ee416dd7c0febad9d9f34b473e",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 426,
+      "adapterKey": "private.component.426",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=426",
+        "sha256": "26a1baf971318018b5a81b424ac1bf4fe8c8c3a07dc1a459880722ccc0bf885a"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/425",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/425",
+      "witnesses": [
+        {
+          "name": "pound-to-grams",
+          "inputSHA256": "faf9ef25f13340e6dfd507535ba2c0593a0582a015d0cd92023792f346d63527",
+          "artifactSHA256": "c4605e152332218687cbbbe8ca6b32dafd2d39e323fbe89446484bb460146779",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "zero",
+          "inputSHA256": "dbc6db0a4eee52551981a5b9993b478c5a788e94d59d4ddeb057db62ede6c954",
+          "artifactSHA256": "ba1245e7b1fda5696a28e7f8f0fb115363ae73daf672b8bfd6aa11462696e30a",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 465,
+      "adapterKey": "private.remaining.465",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=465",
+        "sha256": "762146f71ec261275766b448d451feaafaefaaffe14b32907d4424196f7837b6"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/464",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/464",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "c9356a57732a422afd1f5baf0a69ad94f87c38d5c3e19b035ed9c92dfa80fba0",
+          "artifactSHA256": "320e30f279d20f16bbe3d2ae58611649920278c800bd349ca7a2d64b2ff4ec16",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "1195ea8067fe69d781194cb58d6c0c3bab8d1c494d359e74e1c92890d4519262",
+          "artifactSHA256": "0ef544653a81849378f3bbf9b798126185421808426be688571b81c521adff69",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 466,
+      "adapterKey": "private.remaining.466",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=466",
+        "sha256": "d6a316c06fa7de8f56d03174712f9975265121b689531e1adcf2c38c5982e6d4"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/465",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/465",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "fec5d8e5c4c7b14dfd03f47dfac4397aa1ee1f05c7ae16ebbedbd33884b5a3f8",
+          "artifactSHA256": "d66b1be07280f25fd9837ae02f006dd7455e864e465b62ea6813b7c141163e23",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "73a1e2f4e6b4011220cf30bfe4264e6fe5183022fd5901c7f0f7e02806e1ac02",
+          "artifactSHA256": "b944cef6b491c31275a1929cdc1a225f4f52e7b4843955b5cfcc58cf2c265522",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 473,
+      "adapterKey": "private.remaining.473",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=473",
+        "sha256": "c81ff42d1e137f71eac35f7ff7244d0ea73cdbdcbcb50986c48b9b6f7f047977"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/472",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/472",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "03f7f4b4f9eef1cd05e3efb695f116f03fdaac3673547da37764cb8f4d43b54a",
+          "artifactSHA256": "8a65129df643d551dcdc15bbb1cdd723422f7714bd670c7a8b3027ae9ab8c216",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "36bc08170aa0168609c6e60ec677a831c77659347283ce1dd3e7280fae17d523",
+          "artifactSHA256": "581840ea2329d9c77385c3a39c5f281fb30fa65ef881814655f78e991ac446cd",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 477,
+      "adapterKey": "private.remaining.477",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=477",
+        "sha256": "d8c3077258c3fc0d687ae685c2a5daedace8e71bc95762e51ca2df4760307750"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/476",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/476",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "c2abcc9c10953d618e10c0e9509a57e441d67a7ed593c1ed32d054b183abb18d",
+          "artifactSHA256": "b7f2f5190a459e9e4f5a8884eb5607eba0990b3f0d482ad8351740209fc108e8",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "077a1a13ee83ddcb63d7d678c39b7af79a21a9f9301b8af28cdd663f6dff8315",
+          "artifactSHA256": "5fef40d0c1a95b56c6ff173b53251ad059296404211e35fefda76462be3a8ae9",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 480,
+      "adapterKey": "private.remaining.480",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=480",
+        "sha256": "15bac620f7c6a06c10230023d9a76fe392e346f8e460efc0973705d321e6225a"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/479",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/479",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "e0c1dcb620a7366fe099bce5129ec85cd5794c6583e1f6b86e576d6c16ff0c41",
+          "artifactSHA256": "d78385636fec83d7b6a7b6a690b2075f9ea3cb3c76fdf6c27d676bd987085f7b",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "d0071c6f5d6f896e5136079b1fdec4407d09f1610136310db410ca4a95fcbc76",
+          "artifactSHA256": "650f33e1fb94c5a0fd339906df02694b1f93da4bdb1beb98adac8d8c2af5fe11",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 494,
+      "adapterKey": "private.remaining.494",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=494",
+        "sha256": "bf020a58507d04ea9ee37144dae1dce5db17e2583b3291491628129268d9077b"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/493",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/493",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "f66662c2321ca79b15371b35e781ed64d6aa31a630eaecf2ac8b877aa343e44c",
+          "artifactSHA256": "84250f821ebfef58ccdec8d932c404f6e541a2d10d9eccb676927b4eb73014a6",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "27766d17a866c1596bc23db58eb40d678e9c4c5657b4b67a1c6ea68f5b8170e1",
+          "artifactSHA256": "398d99a9dcbc1ebb12606daaffb12052cd15eea8b5adf144ed8eefff59133641",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 506,
+      "adapterKey": "private.component.506",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/canonical-contract-vectors.ts#masterId=506",
+        "sha256": "30a8b6f64fd2b9ce52b17a5e4b855de60606fcf4e480c284a4e072fa76eea14c"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/505",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/505",
+      "witnesses": [
+        {
+          "name": "two-cups",
+          "inputSHA256": "5e15608497274b46a4d9985c2ae82d988b8f057ea6a977254f928d7b22c5136c",
+          "artifactSHA256": "84db964cc4f72ad7fd26c667feac1ed1ccc88f3fb820bdab8b8119444126bec8",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity",
+          "inputSHA256": "f3fd59027b5f4c5136795493be122052370788d4319564bee4ef682e8984c8a6",
+          "artifactSHA256": "3b21740c536e45353817751cb4ceec28689e2a391840255ef84a03ea440a5739",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 528,
+      "adapterKey": "private.remaining.528",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=528",
+        "sha256": "026977ba9d49e28e02fa8993f47d0f00ec0a0f450cd7e4e104bc45368c127e92"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/527",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/527",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "3abdebb80af1295be64fdc93387ca79c3422322b9fc1bc837aba0a832b92e456",
+          "artifactSHA256": "26680e850090f9c204a7551fd3a367fc1cf8b7b934a3f3790d518232c7f04dec",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "c238ef8202b59fa48f17a57902966d7980f300387ce3b99f9f032a531358ab2b",
+          "artifactSHA256": "0142891f46be1d4f8c540d137bba0ebcfe9c6a9b230f93a1a8804a7558746819",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    },
+    {
+      "masterId": 537,
+      "adapterKey": "private.remaining.537",
+      "engineVersion": 1,
+      "vector": {
+        "path": "src/calculators/scaled-contract-vectors.ts#masterId=537",
+        "sha256": "c30eb092d7d8bbc35430b3a11bd13ba7efe6ad2184333adc06354bfc0ccf12fa"
+      },
+      "readinessPointer": "docs/calculator-first/publication-readiness-540.json#/rows/536",
+      "requirementPointer": "docs/full-product-batch16/requirements-540.json#/rows/536",
+      "witnesses": [
+        {
+          "name": "independent-methodology-witness",
+          "inputSHA256": "f66662c2321ca79b15371b35e781ed64d6aa31a630eaecf2ac8b877aa343e44c",
+          "artifactSHA256": "8b8d541ff948e097288dbeacdebc0477018be608320a1114e9658005255fb2d4",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        },
+        {
+          "name": "identity-loss-or-domain-boundary",
+          "inputSHA256": "27766d17a866c1596bc23db58eb40d678e9c4c5657b4b67a1c6ea68f5b8170e1",
+          "artifactSHA256": "fcf82552ba823186fa7c8e1368722a6b294c17d34275f197dc55ae76c6a8d795",
+          "goldenPassed": true,
+          "mathematicalArtifactPlanParity": true,
+          "originalArtifactReplay": true
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true
+    }
+  ],
+  "releaseHold": true
+}
