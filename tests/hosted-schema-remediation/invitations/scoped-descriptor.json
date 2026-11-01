@@ -1,0 +1,2072 @@
+{
+  "scope": "Captured invitation scoped fixture; no auth internals or application data",
+  "sections": {
+    "columns": {
+      "rows": [
+        {
+          "id": "public.organization_audit_log.action",
+          "acl": null,
+          "name": "action",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.actor_user_id",
+          "acl": null,
+          "name": "actor_user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 3,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 8,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.entity_id",
+          "acl": null,
+          "name": "entity_id",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 6,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.entity_type",
+          "acl": null,
+          "name": "entity_type",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.id",
+          "acl": null,
+          "name": "id",
+          "type": "bigint",
+          "default": null,
+          "notNull": true,
+          "identity": "d",
+          "position": 1,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.metadata",
+          "acl": null,
+          "name": "metadata",
+          "type": "jsonb",
+          "default": "'{}'::jsonb",
+          "notNull": true,
+          "identity": "",
+          "position": 7,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_audit_log.organization_id",
+          "acl": null,
+          "name": "organization_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.organization_audit_log",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.accepted_at",
+          "acl": null,
+          "name": "accepted_at",
+          "type": "timestamp with time zone",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 8,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 9,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.email",
+          "acl": null,
+          "name": "email",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.expires_at",
+          "acl": null,
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 7,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.id",
+          "acl": null,
+          "name": "id",
+          "type": "uuid",
+          "default": "gen_random_uuid()",
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.invited_by",
+          "acl": null,
+          "name": "invited_by",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 6,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.organization_id",
+          "acl": null,
+          "name": "organization_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.role",
+          "acl": null,
+          "name": "role",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_invitations.token_hash",
+          "acl": null,
+          "name": "token_hash",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.organization_invitations",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_members.joined_at",
+          "acl": null,
+          "name": "joined_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.organization_members",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_members.organization_id",
+          "acl": null,
+          "name": "organization_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.organization_members",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_members.role",
+          "acl": null,
+          "name": "role",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.organization_members",
+          "generated": ""
+        },
+        {
+          "id": "public.organization_members.user_id",
+          "acl": null,
+          "name": "user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.organization_members",
+          "generated": ""
+        },
+        {
+          "id": "public.organizations.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.organizations",
+          "generated": ""
+        },
+        {
+          "id": "public.organizations.id",
+          "acl": null,
+          "name": "id",
+          "type": "uuid",
+          "default": "gen_random_uuid()",
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.organizations",
+          "generated": ""
+        },
+        {
+          "id": "public.organizations.name",
+          "acl": null,
+          "name": "name",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.organizations",
+          "generated": ""
+        },
+        {
+          "id": "public.organizations.owner_user_id",
+          "acl": null,
+          "name": "owner_user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.organizations",
+          "generated": ""
+        },
+        {
+          "id": "public.organizations.slug",
+          "acl": null,
+          "name": "slug",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.organizations",
+          "generated": ""
+        },
+        {
+          "id": "public.organizations.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 6,
+          "relation": "public.organizations",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.display_name",
+          "acl": "{authenticated=w/postgres}",
+          "name": "display_name",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 2,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.id",
+          "acl": null,
+          "name": "id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.plan",
+          "acl": null,
+          "name": "plan",
+          "type": "text",
+          "default": "'free'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.currency",
+          "acl": null,
+          "name": "currency",
+          "type": "text",
+          "default": "'USD'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.locale",
+          "acl": null,
+          "name": "locale",
+          "type": "text",
+          "default": "'en'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.unit_system",
+          "acl": null,
+          "name": "unit_system",
+          "type": "text",
+          "default": "'metric'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.user_id",
+          "acl": null,
+          "name": "user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.user_preferences",
+          "generated": ""
+        }
+      ]
+    },
+    "constraints": {
+      "rows": [
+        {
+          "id": "public.organization_audit_log:organization_audit_log_actor_user_id_fkey",
+          "name": "organization_audit_log_actor_user_id_fkey",
+          "relation": "public.organization_audit_log",
+          "validated": true,
+          "definition": "FOREIGN KEY (actor_user_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+        },
+        {
+          "id": "public.organization_audit_log:organization_audit_log_organization_id_fkey",
+          "name": "organization_audit_log_organization_id_fkey",
+          "relation": "public.organization_audit_log",
+          "validated": true,
+          "definition": "FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.organization_audit_log:organization_audit_log_pkey",
+          "name": "organization_audit_log_pkey",
+          "relation": "public.organization_audit_log",
+          "validated": true,
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_invited_by_fkey",
+          "name": "organization_invitations_invited_by_fkey",
+          "relation": "public.organization_invitations",
+          "validated": true,
+          "definition": "FOREIGN KEY (invited_by) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_organization_id_fkey",
+          "name": "organization_invitations_organization_id_fkey",
+          "relation": "public.organization_invitations",
+          "validated": true,
+          "definition": "FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_pkey",
+          "name": "organization_invitations_pkey",
+          "relation": "public.organization_invitations",
+          "validated": true,
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_role_check",
+          "name": "organization_invitations_role_check",
+          "relation": "public.organization_invitations",
+          "validated": true,
+          "definition": "CHECK ((role = ANY (ARRAY['admin'::text, 'manager'::text, 'member'::text, 'viewer'::text])))"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_token_hash_key",
+          "name": "organization_invitations_token_hash_key",
+          "relation": "public.organization_invitations",
+          "validated": true,
+          "definition": "UNIQUE (token_hash)"
+        },
+        {
+          "id": "public.organization_members:organization_members_organization_id_fkey",
+          "name": "organization_members_organization_id_fkey",
+          "relation": "public.organization_members",
+          "validated": true,
+          "definition": "FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.organization_members:organization_members_pkey",
+          "name": "organization_members_pkey",
+          "relation": "public.organization_members",
+          "validated": true,
+          "definition": "PRIMARY KEY (organization_id, user_id)"
+        },
+        {
+          "id": "public.organization_members:organization_members_role_check",
+          "name": "organization_members_role_check",
+          "relation": "public.organization_members",
+          "validated": true,
+          "definition": "CHECK ((role = ANY (ARRAY['owner'::text, 'admin'::text, 'manager'::text, 'member'::text, 'viewer'::text])))"
+        },
+        {
+          "id": "public.organization_members:organization_members_user_id_fkey",
+          "name": "organization_members_user_id_fkey",
+          "relation": "public.organization_members",
+          "validated": true,
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.organizations:organizations_name_check",
+          "name": "organizations_name_check",
+          "relation": "public.organizations",
+          "validated": true,
+          "definition": "CHECK (((char_length(name) >= 2) AND (char_length(name) <= 120)))"
+        },
+        {
+          "id": "public.organizations:organizations_owner_user_id_fkey",
+          "name": "organizations_owner_user_id_fkey",
+          "relation": "public.organizations",
+          "validated": true,
+          "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+        },
+        {
+          "id": "public.organizations:organizations_pkey",
+          "name": "organizations_pkey",
+          "relation": "public.organizations",
+          "validated": true,
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "id": "public.organizations:organizations_slug_check",
+          "name": "organizations_slug_check",
+          "relation": "public.organizations",
+          "validated": true,
+          "definition": "CHECK ((slug ~ '^[a-z0-9][a-z0-9-]{1,62}$'::text))"
+        },
+        {
+          "id": "public.organizations:organizations_slug_key",
+          "name": "organizations_slug_key",
+          "relation": "public.organizations",
+          "validated": true,
+          "definition": "UNIQUE (slug)"
+        },
+        {
+          "id": "public.profiles:profiles_id_fkey",
+          "name": "profiles_id_fkey",
+          "relation": "public.profiles",
+          "validated": true,
+          "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.profiles:profiles_pkey",
+          "name": "profiles_pkey",
+          "relation": "public.profiles",
+          "validated": true,
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "id": "public.profiles:profiles_plan_check",
+          "name": "profiles_plan_check",
+          "relation": "public.profiles",
+          "validated": true,
+          "definition": "CHECK ((plan = ANY (ARRAY['free'::text, 'pro'::text, 'business'::text])))"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_pkey",
+          "name": "user_preferences_pkey",
+          "relation": "public.user_preferences",
+          "validated": true,
+          "definition": "PRIMARY KEY (user_id)"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_unit_system_check",
+          "name": "user_preferences_unit_system_check",
+          "relation": "public.user_preferences",
+          "validated": true,
+          "definition": "CHECK ((unit_system = ANY (ARRAY['metric'::text, 'us'::text])))"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_user_id_fkey",
+          "name": "user_preferences_user_id_fkey",
+          "relation": "public.user_preferences",
+          "validated": true,
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        }
+      ]
+    },
+    "relations": {
+      "rows": [
+        {
+          "id": "public.organization_audit_log",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "organization_audit_log",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.organization_invitations",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "organization_invitations",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.organization_members",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "organization_members",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.organizations",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "organizations",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.profiles",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=ardDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "profiles",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.user_preferences",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "user_preferences",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        }
+      ]
+    },
+    "policies": {
+      "rows": [
+        {
+          "id": "public.organization_audit_log:audit_member_select",
+          "name": "audit_member_select",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "public.is_org_member(organization_id)",
+          "command": "r",
+          "relation": "public.organization_audit_log",
+          "permissive": true
+        },
+        {
+          "id": "public.organization_invitations:invites_admin_delete",
+          "name": "invites_admin_delete",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+          "command": "d",
+          "relation": "public.organization_invitations",
+          "permissive": true
+        },
+        {
+          "id": "public.organization_invitations:invites_admin_insert",
+          "name": "invites_admin_insert",
+          "check": "(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (invited_by = ( SELECT auth.uid() AS uid)))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "a",
+          "relation": "public.organization_invitations",
+          "permissive": true
+        },
+        {
+          "id": "public.organization_invitations:invites_admin_select",
+          "name": "invites_admin_select",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+          "command": "r",
+          "relation": "public.organization_invitations",
+          "permissive": true
+        },
+        {
+          "id": "public.organization_members:members_admin_delete",
+          "name": "members_admin_delete",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (role <> 'owner'::text))",
+          "command": "d",
+          "relation": "public.organization_members",
+          "permissive": true
+        },
+        {
+          "id": "public.organization_members:members_admin_update",
+          "name": "members_admin_update",
+          "check": "((role <> 'owner'::text) OR (public.org_role(organization_id) = 'owner'::text))",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+          "command": "w",
+          "relation": "public.organization_members",
+          "permissive": true
+        },
+        {
+          "id": "public.organization_members:members_org_select",
+          "name": "members_org_select",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "public.is_org_member(organization_id)",
+          "command": "r",
+          "relation": "public.organization_members",
+          "permissive": true
+        },
+        {
+          "id": "public.organizations:organizations_admin_update",
+          "name": "organizations_admin_update",
+          "check": "public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])",
+          "roles": [
+            "public"
+          ],
+          "using": "public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])",
+          "command": "w",
+          "relation": "public.organizations",
+          "permissive": true
+        },
+        {
+          "id": "public.organizations:organizations_member_select",
+          "name": "organizations_member_select",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "public.is_org_member(id)",
+          "command": "r",
+          "relation": "public.organizations",
+          "permissive": true
+        },
+        {
+          "id": "public.profiles:profiles_select_own",
+          "name": "profiles_select_own",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = id)",
+          "command": "r",
+          "relation": "public.profiles",
+          "permissive": true
+        },
+        {
+          "id": "public.profiles:profiles_update_own",
+          "name": "profiles_update_own",
+          "check": "(( SELECT auth.uid() AS uid) = id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = id)",
+          "command": "w",
+          "relation": "public.profiles",
+          "permissive": true
+        },
+        {
+          "id": "public.user_preferences:preferences_insert_own",
+          "name": "preferences_insert_own",
+          "check": "(( SELECT auth.uid() AS uid) = user_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "a",
+          "relation": "public.user_preferences",
+          "permissive": true
+        },
+        {
+          "id": "public.user_preferences:preferences_select_own",
+          "name": "preferences_select_own",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = user_id)",
+          "command": "r",
+          "relation": "public.user_preferences",
+          "permissive": true
+        },
+        {
+          "id": "public.user_preferences:preferences_update_own",
+          "name": "preferences_update_own",
+          "check": "(( SELECT auth.uid() AS uid) = user_id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = user_id)",
+          "command": "w",
+          "relation": "public.user_preferences",
+          "permissive": true
+        }
+      ]
+    },
+    "triggers": {
+      "rows": [
+        {
+          "id": "auth.users:on_auth_user_created",
+          "name": "on_auth_user_created",
+          "enabled": "O",
+          "internal": false,
+          "relation": "auth.users",
+          "definition": "CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION public.handle_new_user()"
+        }
+      ]
+    },
+    "functions": {
+      "rows": [
+        {
+          "id": "public.accept_business_invitation(text)",
+          "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "definer": true,
+          "definition": "CREATE OR REPLACE FUNCTION public.accept_business_invitation(invite_token_hash text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare inv public.organization_invitations%rowtype;\ndeclare member_count integer;\nbegin\n  if auth.uid() is null then raise exception 'Authentication required'; end if;\n\n  select * into inv from public.organization_invitations\n  where token_hash = invite_token_hash and accepted_at is null and expires_at > now()\n  limit 1;\n  if inv.id is null then raise exception 'Invitation is invalid or expired'; end if;\n  if lower(inv.email) <> lower(coalesce((select email from auth.users where id = auth.uid()), '')) then\n    raise exception 'Invitation email does not match signed-in account';\n  end if;\n\n  select count(*) into member_count from public.organization_members where organization_id = inv.organization_id;\n  if member_count >= 5 then raise exception 'Included Business seat limit reached'; end if;\n\n  insert into public.organization_members(organization_id, user_id, role)\n  values (inv.organization_id, auth.uid(), inv.role)\n  on conflict (organization_id, user_id) do update set role = excluded.role;\n\n  update public.organization_invitations set accepted_at = now() where id = inv.id;\n  insert into public.organization_audit_log(organization_id, actor_user_id, action, entity_type, entity_id)\n  values (inv.organization_id, auth.uid(), 'member.joined', 'user', auth.uid()::text);\n  return inv.organization_id;\nend;\n$function$\n"
+        },
+        {
+          "id": "public.create_business_organization(text,text)",
+          "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "definer": true,
+          "definition": "CREATE OR REPLACE FUNCTION public.create_business_organization(org_name text, org_slug text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare new_id uuid;\nbegin\n  if auth.uid() is null then raise exception 'Authentication required'; end if;\n  if not exists(select 1 from public.profiles where id = auth.uid() and plan = 'business') then raise exception 'Business plan required'; end if;\n  if exists(select 1 from public.organization_members where user_id=auth.uid() and role='owner') then raise exception 'Business account already owns an organization'; end if;\n  insert into public.organizations(name, slug, owner_user_id) values (trim(org_name), lower(trim(org_slug)), auth.uid()) returning id into new_id;\n  insert into public.organization_members(organization_id, user_id, role) values (new_id, auth.uid(), 'owner');\n  insert into public.organization_audit_log(organization_id, actor_user_id, action, entity_type, entity_id) values (new_id, auth.uid(), 'organization.created', 'organization', new_id::text);\n  return new_id;\nend;\n$function$\n"
+        },
+        {
+          "id": "public.handle_new_user()",
+          "acl": "{postgres=X/postgres,service_role=X/postgres}",
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "definer": true,
+          "definition": "CREATE OR REPLACE FUNCTION public.handle_new_user()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\nbegin\n  insert into public.profiles (id, display_name, plan)\n  values (new.id, coalesce(new.raw_user_meta_data->>'display_name', new.raw_user_meta_data->>'full_name'), 'free')\n  on conflict (id) do nothing;\n\n  insert into public.user_preferences (user_id)\n  values (new.id)\n  on conflict (user_id) do nothing;\n\n  return new;\nend;\n$function$\n"
+        },
+        {
+          "id": "public.has_org_role(uuid,text[])",
+          "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "definer": true,
+          "definition": "CREATE OR REPLACE FUNCTION public.has_org_role(target_org uuid, allowed_roles text[])\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select coalesce(public.org_role(target_org) = any(allowed_roles), false);\n$function$\n"
+        },
+        {
+          "id": "public.is_org_member(uuid)",
+          "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "definer": true,
+          "definition": "CREATE OR REPLACE FUNCTION public.is_org_member(target_org uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select exists(\n    select 1 from public.organization_members m\n    where m.organization_id = target_org and m.user_id = auth.uid()\n  );\n$function$\n"
+        },
+        {
+          "id": "public.org_role(uuid)",
+          "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+          "owner": "postgres",
+          "config": [
+            "search_path=public"
+          ],
+          "definer": true,
+          "definition": "CREATE OR REPLACE FUNCTION public.org_role(target_org uuid)\n RETURNS text\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select m.role from public.organization_members m\n  where m.organization_id = target_org and m.user_id = auth.uid()\n  limit 1;\n$function$\n"
+        }
+      ]
+    },
+    "effectiveTableGrants": {
+      "rows": [
+        {
+          "id": "public.organization_audit_log:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_audit_log:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_audit_log:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_audit_log:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_audit_log:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_audit_log:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_audit_log:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_audit_log:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_audit_log:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_audit_log",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_invitations:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_invitations:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_invitations:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_invitations:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_invitations:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_invitations:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_invitations:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_invitations:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_invitations:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_invitations:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_invitations:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_invitations:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_invitations:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_invitations:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_invitations:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_invitations",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_members:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_members:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_members:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_members:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_members:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_members:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_members:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_members:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_members:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_members:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_members:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_members:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_members:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_members:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organization_members:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organization_members:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organization_members:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organization_members:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organization_members:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organization_members:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organization_members:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organization_members",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organizations:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organizations:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organizations:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organizations:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organizations:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organizations:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organizations:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organizations:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organizations:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organizations:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organizations:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organizations:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organizations:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organizations:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.organizations:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.organizations:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.organizations:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.organizations:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.organizations:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.organizations:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.organizations:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.organizations",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.profiles:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.profiles:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.profiles:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.profiles:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.profiles:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.profiles:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": false,
+          "relation": "public.profiles",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.profiles:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.profiles:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.profiles:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.user_preferences:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.user_preferences:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.user_preferences:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.user_preferences:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.user_preferences:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.user_preferences:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.user_preferences:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.user_preferences:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.user_preferences:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "UPDATE"
+        }
+      ]
+    },
+    "effectiveFunctionGrants": {
+      "rows": [
+        {
+          "id": "public.accept_business_invitation(text):anon",
+          "role": "anon",
+          "allowed": false,
+          "signature": "public.accept_business_invitation(text)"
+        },
+        {
+          "id": "public.accept_business_invitation(text):authenticated",
+          "role": "authenticated",
+          "allowed": true,
+          "signature": "public.accept_business_invitation(text)"
+        },
+        {
+          "id": "public.accept_business_invitation(text):service_role",
+          "role": "service_role",
+          "allowed": true,
+          "signature": "public.accept_business_invitation(text)"
+        },
+        {
+          "id": "public.create_business_organization(text,text):anon",
+          "role": "anon",
+          "allowed": false,
+          "signature": "public.create_business_organization(text,text)"
+        },
+        {
+          "id": "public.create_business_organization(text,text):authenticated",
+          "role": "authenticated",
+          "allowed": true,
+          "signature": "public.create_business_organization(text,text)"
+        },
+        {
+          "id": "public.create_business_organization(text,text):service_role",
+          "role": "service_role",
+          "allowed": true,
+          "signature": "public.create_business_organization(text,text)"
+        },
+        {
+          "id": "public.handle_new_user():anon",
+          "role": "anon",
+          "allowed": false,
+          "signature": "public.handle_new_user()"
+        },
+        {
+          "id": "public.handle_new_user():authenticated",
+          "role": "authenticated",
+          "allowed": false,
+          "signature": "public.handle_new_user()"
+        },
+        {
+          "id": "public.handle_new_user():service_role",
+          "role": "service_role",
+          "allowed": true,
+          "signature": "public.handle_new_user()"
+        },
+        {
+          "id": "public.has_org_role(uuid,text[]):anon",
+          "role": "anon",
+          "allowed": false,
+          "signature": "public.has_org_role(uuid,text[])"
+        },
+        {
+          "id": "public.has_org_role(uuid,text[]):authenticated",
+          "role": "authenticated",
+          "allowed": true,
+          "signature": "public.has_org_role(uuid,text[])"
+        },
+        {
+          "id": "public.has_org_role(uuid,text[]):service_role",
+          "role": "service_role",
+          "allowed": true,
+          "signature": "public.has_org_role(uuid,text[])"
+        },
+        {
+          "id": "public.is_org_member(uuid):anon",
+          "role": "anon",
+          "allowed": false,
+          "signature": "public.is_org_member(uuid)"
+        },
+        {
+          "id": "public.is_org_member(uuid):authenticated",
+          "role": "authenticated",
+          "allowed": true,
+          "signature": "public.is_org_member(uuid)"
+        },
+        {
+          "id": "public.is_org_member(uuid):service_role",
+          "role": "service_role",
+          "allowed": true,
+          "signature": "public.is_org_member(uuid)"
+        },
+        {
+          "id": "public.org_role(uuid):anon",
+          "role": "anon",
+          "allowed": false,
+          "signature": "public.org_role(uuid)"
+        },
+        {
+          "id": "public.org_role(uuid):authenticated",
+          "role": "authenticated",
+          "allowed": true,
+          "signature": "public.org_role(uuid)"
+        },
+        {
+          "id": "public.org_role(uuid):service_role",
+          "role": "service_role",
+          "allowed": true,
+          "signature": "public.org_role(uuid)"
+        }
+      ]
+    },
+    "indexes": {
+      "rows": [
+        {
+          "id": "public.organization_audit_log:organization_audit_log_actor_user_id_fk_idx",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": false,
+          "primary": false,
+          "relation": "public.organization_audit_log",
+          "definition": "CREATE INDEX organization_audit_log_actor_user_id_fk_idx ON public.organization_audit_log USING btree (actor_user_id)"
+        },
+        {
+          "id": "public.organization_audit_log:organization_audit_log_org_idx",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": false,
+          "primary": false,
+          "relation": "public.organization_audit_log",
+          "definition": "CREATE INDEX organization_audit_log_org_idx ON public.organization_audit_log USING btree (organization_id, created_at DESC)"
+        },
+        {
+          "id": "public.organization_audit_log:organization_audit_log_pkey",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": true,
+          "relation": "public.organization_audit_log",
+          "definition": "CREATE UNIQUE INDEX organization_audit_log_pkey ON public.organization_audit_log USING btree (id)"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_invited_by_fk_idx",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": false,
+          "primary": false,
+          "relation": "public.organization_invitations",
+          "definition": "CREATE INDEX organization_invitations_invited_by_fk_idx ON public.organization_invitations USING btree (invited_by)"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_pkey",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": true,
+          "relation": "public.organization_invitations",
+          "definition": "CREATE UNIQUE INDEX organization_invitations_pkey ON public.organization_invitations USING btree (id)"
+        },
+        {
+          "id": "public.organization_invitations:organization_invitations_token_hash_key",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": false,
+          "relation": "public.organization_invitations",
+          "definition": "CREATE UNIQUE INDEX organization_invitations_token_hash_key ON public.organization_invitations USING btree (token_hash)"
+        },
+        {
+          "id": "public.organization_invitations:organization_pending_invite_email_idx",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": false,
+          "relation": "public.organization_invitations",
+          "definition": "CREATE UNIQUE INDEX organization_pending_invite_email_idx ON public.organization_invitations USING btree (organization_id, lower(email)) WHERE (accepted_at IS NULL)"
+        },
+        {
+          "id": "public.organization_members:organization_members_pkey",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": true,
+          "relation": "public.organization_members",
+          "definition": "CREATE UNIQUE INDEX organization_members_pkey ON public.organization_members USING btree (organization_id, user_id)"
+        },
+        {
+          "id": "public.organization_members:organization_members_user_idx",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": false,
+          "primary": false,
+          "relation": "public.organization_members",
+          "definition": "CREATE INDEX organization_members_user_idx ON public.organization_members USING btree (user_id)"
+        },
+        {
+          "id": "public.organizations:organizations_owner_user_id_fk_idx",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": false,
+          "primary": false,
+          "relation": "public.organizations",
+          "definition": "CREATE INDEX organizations_owner_user_id_fk_idx ON public.organizations USING btree (owner_user_id)"
+        },
+        {
+          "id": "public.organizations:organizations_pkey",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": true,
+          "relation": "public.organizations",
+          "definition": "CREATE UNIQUE INDEX organizations_pkey ON public.organizations USING btree (id)"
+        },
+        {
+          "id": "public.organizations:organizations_slug_key",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": false,
+          "relation": "public.organizations",
+          "definition": "CREATE UNIQUE INDEX organizations_slug_key ON public.organizations USING btree (slug)"
+        },
+        {
+          "id": "public.profiles:profiles_pkey",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": true,
+          "relation": "public.profiles",
+          "definition": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_pkey",
+          "live": true,
+          "ready": true,
+          "valid": true,
+          "unique": true,
+          "primary": true,
+          "relation": "public.user_preferences",
+          "definition": "CREATE UNIQUE INDEX user_preferences_pkey ON public.user_preferences USING btree (user_id)"
+        }
+      ]
+    }
+  }
+}

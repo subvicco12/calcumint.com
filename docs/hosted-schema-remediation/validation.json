@@ -1,0 +1,160 @@
+{
+  "baseline": {
+    "pr": 1507,
+    "sha": "cab705d4f13e17a5ec0bb3450df704c9c226e817",
+    "reconciliationSha": "1a0b2265e9658a48227549efdac7f2d180d6b4dd",
+    "ci": {
+      "id": 41241865527,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  },
+  "runtime": "v24.19.0",
+  "publication": {
+    "scope": "Sanitized PostgreSQL17.6 fixture; exact captured publication function, minimal dependency tables and explicit auth stub; NOT GoTrue/provider, lifecycle certification or production acceptance",
+    "startUTC": "2026-11-01T03:55:57.710Z",
+    "endUTC": "2026-11-01T03:56:10.001Z",
+    "image": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+    "manifest": {
+      "signature": "public.validate_calculator_publish_gate(uuid)",
+      "beforeSha256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+      "afterSha256": "ce53551431824e8560af44a235ebb312372e0c67641c196f3d8db1287c05709a",
+      "replacementCount": 3,
+      "activationAuthorized": false,
+      "hostedDescriptorFileSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+      "nullGuardCount": 1
+    },
+    "checks": [
+      "Exact captured function rejects valid leap-day/ISO metadata before correction",
+      "Proposal abort guard prevents installation",
+      "Guard inside transaction also prevents installation when SQL client continues after errors",
+      "Only date literals and optional NULL check change; owner, SECURITY DEFINER, search_path and ACL preserved",
+      "Exact source hash rejects reapplication or changed predecessor",
+      "Valid dates no longer fail metadata, while missing QA remains blocked",
+      "Synthetic complete positive fixture passes predicate only, without lifecycle transition",
+      "Both required dates reject null, malformed, impossible, nonpadded and non-ASCII dates",
+      "Optional effectiveTo accepts equal/later real dates and rejects reversed, null and invalid periods",
+      "Source labels, source presence, jurisdiction and version requirements remain fail-closed",
+      "Qualified reviewer gate remains blocked without synthetic reviewer",
+      "Independent source evidence gate remains blocked",
+      "Nonadmin authorization remains blocked"
+    ],
+    "productionChanges": false,
+    "activationAuthorized": false
+  },
+  "invitations": {
+    "status": "CHARACTERIZED_HOSTED_SHAPED_INVITATIONS_POLICY_BLOCKED",
+    "checks": [
+      "Captured pending-email index rejects case-insensitive same-organization duplicates even expired; accepted-row email can be reused",
+      "Captured issuance RLS: concurrent final-seat reservations both succeed (six occupied-or-pending)",
+      "Captured distinct final-seat redemptions deterministically overbook to six members",
+      "Captured SECURITY DEFINER redemption changes existing owner role; owner policy disposition remains BLOCKED",
+      "Captured duplicate redemption succeeds twice and appends two audit records",
+      "Captured owner revocation prevents subsequent redemption",
+      "Captured existing member at full capacity is rejected before role update",
+      "Captured audit failure rolls back membership and accepted timestamp atomically",
+      "Privileged SQL writer bypasses invitation quota; no global seat invariant claimed",
+      "Unchanged conditional issuance proposal guard rejects execution",
+      "Conditional guarded issuance proposal rejects full quota and accepts available capacity on captured scoped schema",
+      "Conditional issuance proposal still permits authenticated direct-table quota bypass: adoption BLOCKED"
+    ],
+    "sources": [
+      {
+        "path": "initializer.mjs",
+        "sha256": "92ad60fff0202ecbae696fc10b93b74120a0546456a983d78d066debdf242ff0"
+      },
+      {
+        "path": "acceptance.mjs",
+        "sha256": "562b9e0522cdb04b23367fa49cd82b440b85a98dc6fb2a6ba2e3380958448b1f"
+      }
+    ],
+    "receiptSha256": "222910fbf8b2c0f8c92bdd2314a980c429415b44eb76e3f82621cd35421e4d86",
+    "scope": "Scoped captured public schema with isolated GoTrue/PostgREST auth; not full provider or production equivalence"
+  },
+  "tests": {
+    "unit": {
+      "passed": 6603,
+      "skipped": 4,
+      "filesPassed": 832,
+      "filesSkipped": 2
+    },
+    "focusedAndWorkflow": {
+      "passed": 24,
+      "failed": 0
+    },
+    "certification": {
+      "passed": 15,
+      "failed": 0
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 29,
+      "newHarnessWarnings": 0
+    },
+    "typecheck": "PASS",
+    "webpack": "NOT_RERUN: no application/engine/UI changes; existing next build --webpack preserved",
+    "browser": "NOT_RERUN: no UI changes; genuine isolated auth/REST concurrency exercised"
+  },
+  "independentReview": {
+    "reviewer": "hosted_remediation_review",
+    "disposition": "No remaining important defects after fixes",
+    "resolved": [
+      "Standalone invitation partial index reconstruction and behavioral test",
+      "Guard ordering assertion updated to stronger transaction protection",
+      "Outside-checkout artifact enforcement",
+      "Expected duplicate-denial test helper correction"
+    ],
+    "rootReceiptSourceHashesVerified": true
+  },
+  "externalLogs": {
+    "unit": {
+      "bytes": 266776,
+      "sha256": "139d84a3c24bb4ab3737d9879633bb26a605c6581c1a5a44af42279ec4c4823c"
+    },
+    "lint": {
+      "bytes": 6056,
+      "sha256": "fe4c20db217b467cf39f0b6c4193beaa291e9384839ce48ca42f71c2876fa84a"
+    },
+    "focused-final": {
+      "bytes": 2429,
+      "sha256": "89ff169a445796d552fec7723d779f74f2abb2e7c355d78a24d448fcd3dbccd5"
+    },
+    "certification": {
+      "bytes": 500,
+      "sha256": "dda1e109eae67cfe287401dbda8285d01a826a9baf3e51a72f5caaa5efb468c0"
+    },
+    "typecheck": {
+      "bytes": 45,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    "ci-guards": {
+      "bytes": 415,
+      "sha256": "e5f6c0a01a0c9de894a808a790a20aaf3f4701fac0231c6fa65986a2a4b2d5b0"
+    },
+    "new-lint": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "publication-null-red": {
+      "bytes": 1034,
+      "sha256": "a8d4e45e2526c20a7639a007ed9f2b52af978820c7059a8f2f5af0f92e749cc6"
+    },
+    "publication": {
+      "bytes": 3020,
+      "sha256": "9619dfe3fd0b93308f2e25c8113419948453a496bcfce0104bb7c14a89ab34cf"
+    }
+  },
+  "preservation": {
+    "productionWrites": 0,
+    "activeMigrationsAdded": 0,
+    "historicalEngineChanges": 0,
+    "originalReconciliationChanges": 0,
+    "authorityBlockers": 43,
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalPrivateDrafts": 14
+  },
+  "adoptionAuthorized": false,
+  "releaseHold": true,
+  "successorHostedCI": "Delivery observation after commit/PR only; never inferred from baseline success"
+}

@@ -329,6 +329,15 @@ jobs:
           ISSUANCE_VALID_RECEIPT: ${{ runner.temp }}/batch17-issuance/receipt.json
           CAPTURE_ARTIFACTS: ${{ runner.temp }}/batch17-capture
           EXPIRY_ARTIFACTS: ${{ runner.temp }}/batch17-expiry
+      - name: Hosted-schema-bound guarded remediation acceptance
+        timeout-minutes: 3
+        run: |
+          node --test tests/schema-reconciliation/*.test.mjs tests/hosted-schema-remediation/privileges/*.test.mjs
+          node tests/hosted-schema-remediation/publication/acceptance.mjs
+          node tests/hosted-schema-remediation/invitations/acceptance.mjs
+        env:
+          PUBLICATION_ARTIFACTS: ${{ runner.temp }}/hosted-publication
+          INVITATION_ARTIFACTS: ${{ runner.temp }}/hosted-invitations
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance]
