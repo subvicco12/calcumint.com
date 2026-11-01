@@ -1,0 +1,271 @@
+{
+  "baseline": {
+    "pr": 1508,
+    "sha": "782ab2e01157ac60ef572af6769ab01e82cb0312",
+    "reconciliationSha": "1a0b2265e9658a48227549efdac7f2d180d6b4dd",
+    "ci": {
+      "id": 41271308422,
+      "conclusion": "success",
+      "status": "completed"
+    }
+  },
+  "runtime": "v24.19.0",
+  "checks": {
+    "newRuntime": 38,
+    "focusedSecurityTransportWorkflow": 27,
+    "isolatedHttpSecurity": 8,
+    "unitPassed": 6603,
+    "unitSkipped": 4,
+    "unitFilesPassed": 832,
+    "unitFilesSkipped": 2,
+    "certificationPassed": 15,
+    "launchPassed": 45,
+    "lintErrors": 0,
+    "lintWarnings": 29,
+    "newHarnessWarnings": 0,
+    "typecheck": "PASS",
+    "build": "PASS next build --webpack",
+    "sourceBindingV1": "PASS",
+    "sourceBindingV2": "PASS"
+  },
+  "ciEquivalentAcceptance": {
+    "status": "PASS",
+    "privateInputsRequired": false,
+    "fixtures": "committed sanitized source-bound scopes",
+    "sequence": [
+      "publication",
+      "invitations",
+      "compatibility",
+      "admin"
+    ]
+  },
+  "receipts": {
+    "publication": {
+      "sha256": "99b3779884f007b8c2f9aab9eafe6c167daaa693e77fcf61d4d7e06b09933402",
+      "checks": [
+        "Unactivated SQL guard leaves exact predecessor intact",
+        "Hostile body and cosmetic predecessor drift both abort without overwriting drift",
+        "Injected postcondition mismatch rolls CREATE OR REPLACE back to predecessor",
+        "Exact predecessor installs exact successor once",
+        "Captured trigger rejects direct publication and incomplete certification atomically",
+        "Captured lifecycle role gates reject reviewer publication and scheduling",
+        "Synthetic owner transition sets timestamps; OLD-row gate visibility permits first invalid metadata mutation, then blocks subsequent sensitive update",
+        "Source-bound additive final-row proposal rejects invalid metadata immediately and at deferred commit, rolls back audit, retains valid scheduling"
+      ],
+      "scope": "Disposable synthetic PostgreSQL17.6 captured-trigger transition tests; not real catalog certification, approval or publication",
+      "provenance": {
+        "image": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+        "binding": {
+          "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+          "functionId": "public.enforce_calculator_publish_gate()",
+          "functionSha256": "a34469bd029214c7bae7d180174a02716dc072d7f7e40d40f98a24ef43958329",
+          "fixtureSha256": "98561ed3c14b65368c1aec026646173e565d0615ea29879bdbd47ef807b4eb96",
+          "triggerId": "public.calculator_catalog_admin:calculator_publish_gate_before_update",
+          "activationAuthorized": false
+        },
+        "sourceHashes": {
+          "capturedPredicate": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+          "guardedProposal": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6",
+          "capturedLifecycle": "98561ed3c14b65368c1aec026646173e565d0615ea29879bdbd47ef807b4eb96",
+          "finalRowProposal": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c"
+        }
+      },
+      "activationAuthorized": false
+    },
+    "invitations": {
+      "sha256": "40ae14e7481980bf24d397b315b29065eb9aefa8c4e5d9c0aa3e04de9e020485",
+      "checks": [
+        "Authenticated admin demotes owner membership while organizations.owner_user_id remains unchanged",
+        "Admin promotion to owner rejected; authenticated owner can create second owner",
+        "Authenticated admin rewrites membership user identity to arbitrary existing auth user",
+        "Admin cross-tenant membership move without destination authority rejected atomically",
+        "Authenticated admin sets organization owner foreign reference to nonmember from other tenant",
+        "Authenticated direct membership insert denied; service-role API inserts and deletes owner membership",
+        "Service-role API bypasses quota and invitation inviter tenant affiliation; six persisted memberships",
+        "Revocation after acceptance read while blocked on membership write still yields membership and audit with invitation deleted",
+        "Invitation wall-clock expiry during verified membership lock wait does not prevent acceptance",
+        "Concurrent privileged membership insert after acceptance count overbooks six persisted members",
+        "Concurrent auth deletion causes FK rejection and rolls back acceptance timestamp, membership and audit"
+      ],
+      "scope": "CHARACTERIZED_POLICY_BLOCKED",
+      "provenance": {
+        "images": {
+          "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+          "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+          "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        },
+        "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+        "autoconfirm": true,
+        "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+        "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+        "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+        "privateSourceVerified": false
+      },
+      "activationAuthorized": false
+    },
+    "compatibility": {
+      "sha256": "2a630a0eecab3c907d02f348a86c99ff426cfaff60956921558f57e2017708a2",
+      "checks": [
+        "Captured account country read/upsert fails before 009",
+        "Captured anonymous TRUNCATE succeeds despite RLS, rolled back",
+        "Unchanged review artifact abort guard rejects execution",
+        "Inherited grant forces transaction rollback preserving captured anonymous ACL",
+        "Disposable 009 + guarded 038 adoption is idempotent and preserves service-role grants",
+        "Captured billing SELECT policies retain own-row access and hide the other account",
+        "Real GoTrue authenticated PostgREST account read/upsert works; cross-user upsert denied and update hidden",
+        "Anonymous table/column ACLs cleared, actual TRUNCATE rejected, authenticated plan and billing writes denied",
+        "Service-role PostgREST still reads both synthetic accounts"
+      ],
+      "scope": "PASS_RUNTIME_POLICY_APPROVAL_BLOCKED",
+      "provenance": {
+        "images": {
+          "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+          "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+          "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        },
+        "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+        "autoconfirm": true,
+        "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+        "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+        "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+        "privateSourceVerified": false,
+        "compatibilityDescriptorSha256": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+        "compatibilitySourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+        "compatibilityPrivateSourceVerified": false,
+        "compatibilityScope": "Captured four account tables and effective table/column grants; local provider auth; no hosted ACL ancestry equivalence"
+      },
+      "activationAuthorized": false
+    },
+    "admin": {
+      "sha256": "f259d153d1bccd8dfbfe6f26790e364a7642418667e09704f09ffce6ae23c3a3",
+      "checks": [
+        "All five current captured missing signatures reproduced",
+        "In-memory source-bound compatibility transaction cannot activate with guard intact",
+        "Existing immutable migration bytes install only locally with invoker/definer identities preserved",
+        "Unaffiliated and editor creation denied by actual authenticated RPC",
+        "Creation atomically creates only synthetic draft, 15 pending checks and one audit",
+        "Reviewer decision succeeds while unauthorized and waiver decisions remain denied",
+        "Assignment helper validates target behind captured platform-admin self RLS",
+        "Incomplete certification is denied with no lifecycle or audit side effect",
+        "Concurrent expected-state transition has one winner and one persisted audit",
+        "Each of four RPCs rolls back catalog, QA, assignment and audit after late audit failure"
+      ],
+      "scope": "Conditional missing-migration compatibility; genuine isolated auth/RLS; only synthetic drafts/review, no successful certification/publication",
+      "provenance": {
+        "images": {
+          "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+          "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+          "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+        },
+        "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+        "autoconfirm": true,
+        "privateSourceVerified": false,
+        "scope": "Six captured admin tables, constraints, standalone indexes, policies, table/column grants and all scoped triggers; local pinned auth internals, no production data or provider equivalence",
+        "scopedSha256": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c",
+        "sourceCaptureSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0"
+      },
+      "activationAuthorized": false
+    }
+  },
+  "newSourceSha256": {
+    "tests/hosted-remediation-closure/admin/acceptance.mjs": "54ccf28ef4abc4441dab9d456853a655f0d4626c83903dab302d76df95ad5257",
+    "tests/hosted-remediation-closure/admin/initializer.mjs": "21fa03df8a74433bcf7ba9ad144badf7671a3e371414be4e2eb2d29af8a8e926",
+    "tests/hosted-remediation-closure/admin/manifest.json": "08f0b6bdb66ca11dd8a52f4ea95d7da17a16764c13d0145d22dc44af6a4c8c4d",
+    "tests/hosted-remediation-closure/admin/scoped-descriptor.json": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c",
+    "tests/hosted-remediation-closure/compatibility/acceptance.mjs": "0d74fdc1be1e5a179e3fd067f4ce63ddcb2a6fc7334f5cb91d89837705214320",
+    "tests/hosted-remediation-closure/compatibility/fixture-manifest.json": "a3ca957e46951aff631e425f78a4f876cb0ffc6d30935fa11dbccd695e67855e",
+    "tests/hosted-remediation-closure/compatibility/initializer.mjs": "faee205a9af973fc10d44801e747b4a6cd3871fc2e0c83df3c82662164466662",
+    "tests/hosted-remediation-closure/compatibility/scoped-descriptor.json": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+    "tests/hosted-remediation-closure/invitations/acceptance.mjs": "de2b64b819b1c339a58155e7109aae6eb1740567b6564e0bf0fa430a0259a691",
+    "tests/hosted-remediation-closure/publication/acceptance.mjs": "ea38c8bde2e8b02d9bb50cdd3af0032be1b46bada95fe07ae445a86812cae057",
+    "tests/hosted-remediation-closure/publication/captured-lifecycle.sql": "98561ed3c14b65368c1aec026646173e565d0615ea29879bdbd47ef807b4eb96",
+    "tests/hosted-remediation-closure/publication/review-only-deferred-gate.sql": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c",
+    "tests/hosted-remediation-closure/publication/source-binding.json": "9d0dc3b66c8d5e0103bea2c105526115e34ac1e082c8feea360dbd0fe66dd089"
+  },
+  "externalLogSha256": {
+    "unit": {
+      "sha256": "0ccfde10f80092706475316df7a6fefc1656add5d864c77b6f9a663bd1f7306e",
+      "bytes": 266082
+    },
+    "build": {
+      "sha256": "929f9b67f04829e8ad9c5e80d47f815bacb8d1cf3811b04af1fd900a587dd6bf",
+      "bytes": 2312
+    },
+    "final-full-lint": {
+      "sha256": "fe4c20db217b467cf39f0b6c4193beaa291e9384839ce48ca42f71c2876fa84a",
+      "bytes": 6056
+    },
+    "typecheck": {
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "bytes": 45
+    },
+    "certification": {
+      "sha256": "2ee107cc1e97c7e2c090ba365d90ce04f1b0f0b247e182037d0ba8534cbd4a22",
+      "bytes": 501
+    },
+    "launch": {
+      "sha256": "041824d7ba3ec5242ec0851bb66bd3e55fddde47b5bd6d21ceff1a0140355185",
+      "bytes": 567
+    },
+    "focused": {
+      "sha256": "30cc778755e57369b999786d6ab34df019a292db2a9698d7475b853b5feb3b29",
+      "bytes": 2806
+    },
+    "security": {
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7",
+      "bytes": 676
+    },
+    "source-v1": {
+      "sha256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed",
+      "bytes": 80
+    },
+    "source-v2": {
+      "sha256": "e07cd22978f436f014a6dda16965de10be3f337aec60021466a411e2f1ce2fed",
+      "bytes": 80
+    },
+    "ci-publication": {
+      "sha256": "9b2d50300f05c8eaee74a239ee72093f66887a1d70c3cb2a08482fccb3072379",
+      "bytes": 3422
+    },
+    "ci-invitations": {
+      "sha256": "032cd5cacd25429b861e3c7a0e45a4ab5fd905988a38a1188abd960d815b30a6",
+      "bytes": 1114
+    },
+    "ci-compatibility": {
+      "sha256": "af0f28724d32a3adcb59235c9b1abab14fea7b6677ad8d4946b51627a1ada839",
+      "bytes": 736
+    },
+    "ci-admin": {
+      "sha256": "49301f51da42b076e4496a625b20b92e53fb539eb449836b5e4c0770d3bd06cf",
+      "bytes": 831
+    }
+  },
+  "independentReview": {
+    "reviewer": "closure_independent_review",
+    "disposition": "No remaining blocking findings after CI private-input dependency fixed",
+    "resolved": [
+      "Compatibility private descriptor required by CI replaced with verified sanitized default",
+      "Admin optional full-source hash and selected-row verification added"
+    ],
+    "limitations": [
+      "Admin one-winner CAS race does not force overlapping lock contention",
+      "Publication UPDATE-only synthetic scope does not cover INSERT or dependency mutations"
+    ]
+  },
+  "preservation": {
+    "catalogIds": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlockers": 43,
+    "calculatorIdsChanged": [],
+    "historicalSourceChanges": false,
+    "previousReportsChanged": false,
+    "activeMigrationsAdded": 0,
+    "productionQueries": 0,
+    "productionWrites": 0,
+    "sourceBindingGuardRevisionsAltered": false
+  },
+  "releaseHold": true,
+  "adoptionAuthorized": false,
+  "successorHostedCI": "One bounded delivery observation after final commit/PR; baseline success does not imply successor success"
+}
