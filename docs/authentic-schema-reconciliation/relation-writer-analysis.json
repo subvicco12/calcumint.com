@@ -1,0 +1,52 @@
+{
+  "scope": "Read-only local analysis of the authenticated hosted descriptor supplied by root; no production query or write performed.",
+  "relations": [
+    {
+      "relations": [
+        "batch_request_receipts"
+      ],
+      "source": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+      "line": 8,
+      "introductionCommit": "f5712ba6811e9ed311df2ea95cfa02d3fbf4622e",
+      "sourceSha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6",
+      "classification": "model-only guarded proposal; hosted absence confirmed; intended deployment not established"
+    },
+    {
+      "relations": [
+        "billing_account_fences",
+        "billing_atomic_completions"
+      ],
+      "source": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+      "line": 24,
+      "introductionCommit": "bf7070f28a4b7c213d55c83ca70d2ef6bbe580ce",
+      "sourceSha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348",
+      "classification": "model-only guarded proposal; hosted absence confirmed; intended deployment not established"
+    },
+    {
+      "relations": [
+        "embed_lead_receipts"
+      ],
+      "source": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+      "line": 4,
+      "introductionCommit": "32d21ebcb10dc819c49f13118bde728bcfba03f6",
+      "sourceSha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5",
+      "classification": "model-only guarded proposal; hosted absence confirmed; intended deployment not established"
+    }
+  ],
+  "invitationAcceptance": {
+    "signature": "public.accept_business_invitation(text)",
+    "definitionSha256": "821394b78bacc681a73e19db068cbca9e08c7563adef322116c1fe7129a810c2",
+    "source": "supabase/migrations/003_b5_business.sql:145",
+    "bodyMatchesRepositoryExactly": true,
+    "owner": "postgres",
+    "securityDefiner": true,
+    "forceRls": false,
+    "effectiveExecute": {
+      "anon": false,
+      "authenticated": true,
+      "service_role": true
+    },
+    "classification": "confirmed hosted behavior, not inferred deployment of later proposals"
+  },
+  "noActivation": true
+}

@@ -1,0 +1,40 @@
+# Relation provenance and invitation writers
+
+Read-only analysis of the authenticated descriptor supplied by the root agent. No additional hosted queries, writes, acceptance execution or activation occurred. Private capture bodies and data counts are intentionally excluded. Hashes and source pointers are in `relation-writer-analysis.json`.
+
+## Four model-only relations
+
+The exact four relations are absent from the hosted relation catalog but present in the integration model. Their repository sources are guarded proposals, not confirmed intended hosted deployments:
+
+| Relations | Introduction/source | Evidence |
+| --- | --- | --- |
+| `batch_request_receipts` | `f5712ba6811e9ed311df2ea95cfa02d3fbf4622e`; `docs/architecture/proposals/ATOMIC-BATCH-JOB.sql:8` | Lines 1–7 explicitly prohibit production application and abort execution; lines 2–3 require every quota writer to share the key-lock contract. |
+| `billing_account_fences`, `billing_atomic_completions` | `bf7070f28a4b7c213d55c83ca70d2ef6bbe580ce`; `docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md:24` and `:28` | Heading and paragraph at line 3 explicitly state not approved/applied; SQL guard precedes creation. Every local billing writer must participate or invalidate the fence. |
+| `embed_lead_receipts` | `32d21ebcb10dc819c49f13118bde728bcfba03f6`; `docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql:4` | Lines 1–3 identify proposal only, outside deployment migrations, with an abort guard. |
+
+`tests/billing/authentic-security.postgres.mjs:60` explicitly loads and unguards these proposals into a fixture. `tests/migration-contract/combined.postgres.mjs:65` composes the same proposals. `scripts/build-authentic-upgrade-review.mjs:14` includes them in a review artifact whose line 37 aborts activation. These explain model inclusion; they do not establish hosted approval or an omitted deployment. Original proposal files and historical evidence remain unchanged. Do not create empty receipt tables or fabricate completion markers to make counts match.
+
+## Confirmed hosted invitation behavior
+
+The captured `public.accept_business_invitation(text)` function body exactly matches `supabase/migrations/003_b5_business.sql:145` through its terminator. Its definition hash is `821394b78bacc681a73e19db068cbca9e08c7563adef322116c1fe7129a810c2`. The descriptor proves postgres ownership, SECURITY DEFINER, public search path, authenticated/service_role EXECUTE and denied anon EXECUTE. Its affected public relations have RLS enabled but not forced; membership RLS does not constrain its owner-executed upsert.
+
+The function checks session identity, unaccepted/unexpired invitation, matching account email and current seat count. It then upserts the invitation role into `organization_members` (`003_b5_business.sql:167`), stamps acceptance (`:171`) and inserts an audit event (`:172`). The upsert can change an existing owner's membership to a non-owner invitation role. It does not update `organizations.owner_user_id`. This is a source-proven reachable behavior conditional on valid matching invitation and membership state, not evidence that it occurred for any production user.
+
+There is no invitation-row or organization-row lock in the captured body. Consequently, the count preflight does not by itself serialize concurrent acceptances. Concurrent same-invitation requests may both pass the pre-update check and append audit entries, and different invitations may exceed the seat bound. These are transaction interleavings supported by source, not production replay or a completed independent acceptance test.
+
+## Participating writers and policy boundaries
+
+- `src/app/business/actions.ts:48` creates invitations through authenticated direct INSERT after plan, admin, role and seat preflight; lines 66–67 correctly describe the count as a UI preflight. The insert occurs at line 73. Acceptance hashes the token then calls the hosted RPC at line 129.
+- Captured invitation INSERT policy matches `003_b5_business.sql:194` as modified by `032_business_builder_rls_auth_initplan.sql:4`: organization owner/admin plus `invited_by = auth.uid()`. It does not independently enforce paid plan or reserve seats. Role constraints at `003_b5_business.sql:26` exclude owner. There is no invitation UPDATE policy; ordinary authenticated direct UPDATE is therefore blocked by RLS despite broad table grants.
+- `create_business_organization(text,text)` is another confirmed postgres SECURITY DEFINER writer, creating organization/owner membership/audit (`003_b5_business.sql:115`). Include it when reviewing shared membership/ownership invariants.
+- Direct authenticated membership UPDATE is admitted by captured `members_admin_update` (`003_b5_business.sql:190`). Its OLD-row USING checks owner/admin authority but does not prohibit an admin selecting an owner row; its NEW-row check allows any non-owner role. Direct membership identity updates are also not fenced by a captured user trigger. Organization UPDATE similarly permits owner/admin (`:187`) without a captured owner-change trigger. These are conditional policy paths, not observed production edits.
+- Captured authenticated EXECUTE is true for `has_org_role`, `is_org_member` and `org_role`. Therefore a historic inference that revoked helper EXECUTE makes these hosted policies inert is false for this capture. The reviewed proposal `20261021-v1-authentic-account-security.sql:8` revokes `org_role` and `:16` grants entry helpers, while `:34` fences membership UPDATE and `:51`/`:65` installs identity/owner triggers. None of those later trigger names exists in the hosted trigger catalog. They are not a replacement acceptance RPC and do not add invitation/seat serialization or protect an owner role from the acceptance upsert.
+- Service-role direct table grants and privileged SQL remain participating writers. Catalog privileges establish capability only; deployed external privileged clients or their actual operations were not observed. An invariant shared across writers cannot be claimed without that inventory and an agreed participation boundary.
+
+## Conditional remediation and independent tests
+
+If the owner chooses to adopt an invitation invariant, first decide existing-owner invitation semantics and whether existing members consume another seat. Then review one organization-scoped serialization contract for invite creation, acceptance, membership changes and privileged writers. Lock/re-read invitation state in the transaction; verify expiry/email and current role after acquiring the agreed fence; atomically apply membership, acceptance and audit. Preserve the valid paid-plan and role semantics explicitly. Reconcile old membership-policy and owner triggers separately; policy fencing alone cannot fix a SECURITY DEFINER upsert.
+
+Before any separately authorized activation, run independent disposable-database tests against a sanitized hosted baseline: two sessions accepting the same invite; two different invites at the seat boundary; acceptance by an existing owner; expiry/revocation racing acceptance; membership identity and owner mutation as admin; direct REST invite insertion bypassing UI preflight; late-failure rollback across membership/acceptance/audit; service-role or other privileged writers racing the same organization. Verify all outcomes and persisted state, including denied writes, rather than matching generated SQL strings. These tests were specified here but not executed. Existing fixture tests (`tests/api-schema/membership.postgres.mjs:36`, `scripts/test-next-runtime-browser.mjs:34`) exercise selected proposal or happy paths and do not establish this full hosted concurrency contract.
+
+For the four atomic relation proposals, separately approve prerequisites, compatibility and every participating writer before treating their absence as deployment work. Reproduce approved adoption and rollback in an isolated baseline, without marking legacy receipts as successful atomic completions. No active migration or adoption is proposed by this report.

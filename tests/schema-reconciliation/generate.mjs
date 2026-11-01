@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {difference} from './compare.mjs';
+import {validate,MIGRATION_FILES} from '../batch17-capture/descriptor.mjs';
+const [modelPath,priv,out]=process.argv.slice(2);
+if (!modelPath || !priv || !out) throw Error('Usage: node generate.mjs MODEL_JSON PRIVATE_CAPTURE_DIRECTORY EXISTING_OUTPUT_DIRECTORY');
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));
+const unwrap=p=>{const obj=read(p);const s=obj.result;return JSON.parse(s.slice(s.indexOf('\n[')+1,s.lastIndexOf('\n</untrusted-data-')));};
+const hostPath=priv+'/hosted-descriptor.json',model=read(modelPath),host=read(hostPath);
+const write=(name,obj)=>fs.writeFileSync(out+'/'+name,JSON.stringify(obj,null,2)+'\n');
+const d=difference(model,host);write('catalog-differences.json',d);
+const extensionFunctions=unwrap(priv+'/extension-functions-response.json');
+const relocated=d.sections.functions.modelOnly.filter(id=>extensionFunctions.some(f=>f.extname==='pgcrypto'&&('public.'+f.signature.replace(/^extensions\./,''))===id));
+const migs=read(priv+'/hosted-migrations-response.json').migrations;
+const mapping=MIGRATION_FILES.map(file=>{const name=file.replace(/^\d+[a-z]?_/,'').replace(/\.sql$/,'');const matches=migs.filter(m=>m.name===name);return {file,name,hosted:matches,disposition:matches.length===1?'NAME_MATCH_ONLY_EFFECT_UNKNOWN':'UNKNOWN'};});
+write('migration-identities.json',{repositoryFiles:MIGRATION_FILES.length,hostedEntries:migs.length,mapping,hostedOnlyNames:migs.filter(m=>!mapping.some(x=>x.name===m.name)),fingerprints:unwrap(priv+'/migration-fingerprints-response.json'),statementEqualityVerified:false,migrationEffects:'UNKNOWN',warning:'Names and MD5 metadata fingerprints are not byte equality, complete effects or approval. No migration SQL executed.'});
+let rejection;try{validate(host,{allowUnavailableLedgers:true});rejection='UNEXPECTED_ACCEPTANCE';}catch(e){rejection=e.message;}
+const evidenceFiles=[modelPath,hostPath,...fs.readdirSync(priv).map(f=>priv+'/'+f)];const hashes=Object.fromEntries(evidenceFiles.map(p=>[p.split('/').pop(),{bytes:fs.statSync(p).size,sha256:createHash('sha256').update(fs.readFileSync(p)).digest('hex')}]));
+write('validation.json',{baseline:'cab705d4f13e17a5ec0bb3450df704c9c226e817',ci:{id:41241865527,status:'completed',conclusion:'success'},project:'zpwpstsvztyshcnwdfye',capture:'Authenticated Supabase execute_sql; unchanged Batch17 repeatable-read READ ONLY exporter; no application rows',rawEvidence:'Private outside repository; function bodies and irrelevant row estimates excluded',hashes,strictValidatorRejection:rejection,regexWitness:unwrap(priv+'/regex-witness-response.json'),extensions:unwrap(priv+'/extensions-response.json'),pgcryptoRelocatedSignatures:relocated,nonExtensionModelOnlyFunctions:d.sections.functions.modelOnly.filter(x=>!relocated.includes(x)),productionWrites:0,adoptionAuthorized:false,releaseHold:true});
+console.log(JSON.stringify({semanticTriggerDifferences:{modelOnly:d.semanticTriggers.modelOnly.length,hostedOnly:d.semanticTriggers.hostedOnly.length},relocated:relocated.length,unmapped:mapping.filter(x=>!x.hosted.length).map(x=>x.file),otherFunctions:d.sections.functions.modelOnly.filter(x=>!relocated.includes(x))},null,2));

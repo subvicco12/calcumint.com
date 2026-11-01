@@ -1,0 +1,32 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const root = new URL('../../../', import.meta.url);
+const report = JSON.parse(await readFile(new URL('docs/hosted-schema-remediation/effects-privileges.json',root),'utf8'));
+test('review proposal retains original transaction contents and aborts inside transaction', async () => {
+  const source=await readFile(new URL('supabase/migrations/038_client_account_billing_privileges.sql',root),'utf8');
+  const proposal=await readFile(new URL('docs/hosted-schema-remediation/effects-privileges.sql',root),'utf8');
+  assert.equal(createHash('sha256').update(source).digest('hex'),report.proposal.sourceMustMatchSha256);
+  const guard = "DO $blocked$ BEGIN RAISE EXCEPTION 'Offline hosted privilege proposal: production execution is not authorized'; END $blocked$;";
+  const sourceStart = proposal.indexOf('-- REVIEW REQUIRED: unapplied client-role least-privilege proposal.');
+  assert.ok(sourceStart > 0);
+  const relocatedBeginComment = '-- Transaction began before the unconditional abort guard.';
+  const originalContents = proposal.slice(sourceStart).replace(relocatedBeginComment, 'BEGIN;');
+  assert.equal(originalContents, source, 'only the BEGIN statement may be relocated; all original transaction contents must match');
+  const prefix = proposal.slice(0,sourceStart);
+  assert.equal(prefix, '-- OFFLINE REVIEW DRAFT. NOT APPROVED FOR APPLICATION.\n-- Exact source/capture SHA256 preconditions and remaining reviews: effects-privileges.json.\nBEGIN;\n' + guard + '\n\n');
+  assert.equal((proposal.match(/^BEGIN;$/gm) ?? []).length,1);
+  assert.equal((proposal.match(/^COMMIT;$/gm) ?? []).length,1);
+  assert.ok(proposal.indexOf('BEGIN;') < proposal.indexOf(guard));
+  assert.ok(proposal.indexOf(guard) < proposal.indexOf('REVOKE ALL PRIVILEGES'));
+  assert.equal(createHash('sha256').update(proposal).digest('hex'),report.proposal.artifactSha256);
+  assert.doesNotMatch(proposal,/ALTER\s+(?:ROLE|OWNER|DEFAULT\s+PRIVILEGES)/i);
+});
+test('all six unmatched migrations remain effect claims without applied-history assertion', () => {
+  assert.equal(report.unmatchedMigrationEffects.length,6);
+  assert.equal(report.unmatchedMigrationEffects.filter(x=>x.classification==='ABSENT_EFFECT').length,5);
+  assert.equal(report.unmatchedMigrationEffects.filter(x=>x.classification==='CONFLICTING_EFFECTIVE_GRANTS').length,1);
+  assert.equal(report.hostedOnlyHardening.metadataFingerprintMatches,true);
+  assert.equal(report.hostedOnlyHardening.authenticatedRegrants.length,13);
+});
