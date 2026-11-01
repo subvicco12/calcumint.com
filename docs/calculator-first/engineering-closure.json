@@ -1,0 +1,271 @@
+{
+  "affectedCalculators": [
+    {
+      "slug": "quadratic-formula-calculator",
+      "catalogIds": [
+        238
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.quadratic-formula",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "matrix-determinant-calculator",
+      "catalogIds": [
+        241
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.matrix-determinant",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "system-of-equations-solver",
+      "catalogIds": [
+        239
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.system-equations",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "matrix-inverse-calculator",
+      "catalogIds": [
+        242
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.matrix-inverse",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "complex-number-calculator",
+      "catalogIds": [
+        244
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.complex-number",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "vector-calculator",
+      "catalogIds": [
+        245
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.vector",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "sequence-calculator",
+      "catalogIds": [
+        249
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "advanced-math.sequence",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "z-score-calculator",
+      "catalogIds": [
+        284
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "statistics.z-score",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "confidence-interval-calculator",
+      "catalogIds": [
+        285
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "statistics.confidence-interval",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "sample-size-calculator",
+      "catalogIds": [
+        286
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "statistics.sample-size",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "probability-calculator",
+      "catalogIds": [
+        287
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "statistics.probability",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "binomial-probability-calculator",
+      "catalogIds": [
+        290
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "statistics.binomial-probability",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    },
+    {
+      "slug": "normal-distribution-calculator",
+      "catalogIds": [
+        291
+      ],
+      "immutableBindings": [
+        {
+          "engineId": "statistics.normal-distribution",
+          "version": 1
+        }
+      ],
+      "defect": "Blank required numeric input interpreted as zero",
+      "correction": "Use existing required finite-number parser; suppress result and account capture until valid",
+      "evidence": [
+        "src/components/calculator-first-required-inputs.test.tsx",
+        "tests/calculator-first/browser.mjs"
+      ],
+      "requirementDisposition": "PARTIAL: demonstrated UI validation/recovery and bounded browser/plan parity; no complete canonical acceptance",
+      "canonicalPromotion": false
+    }
+  ],
+  "calculatorCount": 13,
+  "changedInputConversions": 47,
+  "unitCases": 39,
+  "browserJourneys": 26,
+  "browserBlankFieldChecks": 90,
+  "mathEngineEdits": 0,
+  "publicationActions": 0
+}
