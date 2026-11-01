@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "engineeringAuthorized": true,
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "sourceBindings": [
+    {
+      "path": "supabase/migrations/009_country_preferences.sql",
+      "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+    },
+    {
+      "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+      "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+    },
+    {
+      "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+      "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+    },
+    {
+      "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+      "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+    },
+    {
+      "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+      "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+    },
+    {
+      "path": "tests/owner-p0/privileges/review-only.sql",
+      "sha256": "89d366c824428aac285f3cd5899fa63489d1c8ba100e91b5f66b166adb04e2a1"
+    },
+    {
+      "path": "tests/hosted-schema-remediation/publication/review-only-correction.sql",
+      "sha256": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6"
+    },
+    {
+      "path": "tests/hosted-remediation-closure/publication/review-only-deferred-gate.sql",
+      "sha256": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c"
+    },
+    {
+      "path": "tests/p0-publication-business/publication/review-only-successor.sql",
+      "sha256": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0"
+    }
+  ],
+  "scope": "Reviewed public account/admin/publication correction sequence; membership successor separately guarded and validated",
+  "rollbackRisk": "Restoring known-defective predecessors is technical reversibility only, not approved safe production rollback; critical workflows must remain held",
+  "providerControls": "No auth schema, provider ownership, role memberships or service-role grants changed",
+  "supplementarySourceBindings": [
+    {
+      "path": "tests/owner-p0/membership/review-only-membership.sql",
+      "sha256": "6a5e9f878b95ef395af1fe0123d511e297f19aea93107106e4e431f564a6591b"
+    },
+    {
+      "path": "tests/owner-p0/membership/review-only-rollback.sql",
+      "sha256": "8341ef33055727dbc3e404c52bb9227a99bd00aae57cee901b54f71ed7cbcab2"
+    }
+  ]
+}

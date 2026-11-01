@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "workstream": "A",
+  "status": "OWNER_APPROVED_ISOLATED_ENGINEERING_TARGETS",
+  "authorization": "User explicitly approved recommended bounded design targets for isolated engineering only on 2026-11-01. Historical PENDING decisions remain immutable.",
+  "decisionContract": "docs/p0-decision-contracts/calculus.json",
+  "targets": [
+    {
+      "profileId": "private.canonical-calculus.246",
+      "profileIdKind": "workflow contractId and adapter key; not engineId",
+      "engineId": "private.canonical-calculus",
+      "technicalRevision": 3,
+      "presentationRevision": 1,
+      "operation": "derivative",
+      "snapshotSlug": "private-canonical-calculus-derivative",
+      "snapshotVersion": 3,
+      "catalogId": 246
+    },
+    {
+      "profileId": "private.canonical-calculus.247",
+      "profileIdKind": "workflow contractId and adapter key; not engineId",
+      "engineId": "private.canonical-calculus",
+      "technicalRevision": 3,
+      "presentationRevision": 1,
+      "operation": "integral",
+      "snapshotSlug": "private-canonical-calculus-integral",
+      "snapshotVersion": 3,
+      "catalogId": 247
+    },
+    {
+      "profileId": "private.canonical-calculus.248",
+      "profileIdKind": "workflow contractId and adapter key; not engineId",
+      "engineId": "private.canonical-calculus",
+      "technicalRevision": 3,
+      "presentationRevision": 1,
+      "operation": "limit",
+      "snapshotSlug": "private-canonical-calculus-limit",
+      "snapshotVersion": 3,
+      "catalogId": 248
+    }
+  ],
+  "governance": {
+    "canonicalMappingApproved": false,
+    "canonicalAccepted": false,
+    "certificationAuthorized": false,
+    "publicationAuthorized": false,
+    "releaseHold": true
+  },
+  "historicalClosure": {
+    "files": 194,
+    "unchanged": true,
+    "receipt": "/tmp/owner-p0-calculus/source-hashes.json"
+  },
+  "newEvidence": {
+    "test": "tests/owner-p0/calculus/approved-targets.test.ts",
+    "groups": 9,
+    "independentOracle": "BigInt integer quotient derivative, polynomial antiderivative and hand-derived pole parity; no engine/parser/rational helper used by expected-value construction.",
+    "rationalDerivativeGoldens": 180,
+    "orientedIntegralGoldens": 64,
+    "poleClassifications": 72,
+    "removableLimits": 12,
+    "unitReceipt": "/tmp/owner-p0-calculus/unit-receipt.json",
+    "browserFixture": "tests/owner-p0/calculus/browser.mjs",
+    "browserStatus": "PASSED",
+    "analyticChainRuleLandmarks": 6,
+    "browserReceipt": "/tmp/owner-p0-calculus-browser/receipt.json",
+    "browserJourneys": 2,
+    "browserLimits": "Accessible labels, keyboard focus and responsive widths checked; no complete assistive-technology or WCAG audit. Two chart segments independently expected from workflow; engine table checked in browser."
+  },
+  "newClosedRequirements": [
+    "Exact ID/profile/engine/revision/presentation binding across 246/247/248",
+    "Independent signed quotient and decimal-rational oriented integral matrix",
+    "Independent shifted-pole parity and removable-limit matrix",
+    "Original-hole, identically undefined, oscillatory/boundary and unsupported integration rejection",
+    "Free/Pro/Business parity for exact and analytic branches",
+    "Actual-engine chart row reconciliation",
+    "Mixed v2/v3 history, unsupported v1 byte preservation, export lineage/output/row/source/revision/governance tamper rejection",
+    "Exact scenario deltas and no inferred analytic/nonfinite delta"
+  ],
+  "remainingProof": [
+    "Full parser/literal correspondence and every rational resource boundary theorem",
+    "Full analytic differentiability and open continuity domain proof",
+    "Rigorous binary64 roundoff and error envelopes or explicit acceptance of unbounded approximation policy",
+    "Complete catalog/Blueprint mandatory operator and domain coverage",
+    "Qualified independent canonical acceptance, certification, publication"
+  ],
+  "productionAccess": false
+}

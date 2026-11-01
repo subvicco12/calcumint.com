@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "status": "ENGINEERING_DESIGN_ONLY_ADOPTION_BLOCKED",
+  "productionQueries": false,
+  "activation": false,
+  "policyApproval": false,
+  "sourceBindings": {
+    "docs/p0-decision-contracts/writers-acl.json": "d380d98ac4e177edba50f422dfb64b9f2448c39d3355688af919f4105a8261cf",
+    "docs/p0-decision-contracts/writers-acl.md": "3ddd12ed4c2b36a181b7f10db75c164229cebbf2fc17f4c8d9bc1d1a4df72248",
+    "tests/owner-p0/privileges/review-only.sql": "89d366c824428aac285f3cd5899fa63489d1c8ba100e91b5f66b166adb04e2a1",
+    "tests/owner-p0/privileges/acceptance.mjs": "a728dc84ee94a5c90a9a437ee26456c4054262fc7241490455bd012555570275",
+    "tests/hosted-remediation-closure/compatibility/initializer.mjs": "faee205a9af973fc10d44801e747b4a6cd3871fc2e0c83df3c82662164466662",
+    "tests/hosted-remediation-closure/compatibility/scoped-descriptor.json": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+    "tests/hosted-remediation-closure/compatibility/fixture-manifest.json": "a3ca957e46951aff631e425f78a4f876cb0ffc6d30935fa11dbccd695e67855e",
+    "src/app/account/page.tsx": "a9e22de55d32512d843cb1a2a39d5de02a9fa416bfca598c1c71d7fb363b7f5b",
+    "src/app/account/actions.ts": "dd3ce3722bbdb4b68e28b1405f9a320d63123a9c9ee932304abe1eee8daed822",
+    "src/app/api/billing/portal/route.ts": "9004247f51ac0fccf4c79b2f42121e71c35fa2633e9d4b5f8393286094ee080c",
+    "src/app/business/actions.ts": "4a67f6674620f9105b9f1469eca9dc219cfc4c6150224f1d62aa550830816182"
+  },
+  "pendingAllowances": [
+    "profiles.display_name UPDATE",
+    "billing_customers SELECT"
+  ],
+  "blockers": [
+    "External writer identities and operations unknown",
+    "Fresh complete target ACL ancestry, roles, defaults, clients and data reconciliation required",
+    "Separate activation authorization required"
+  ],
+  "scope": "Captured account ACL narrowing and caller-specific compatibility; business helper boundary observations only. No global writer guarantee.",
+  "verification": {
+    "status": "PASS_ENGINEERING_ONLY_ADOPTION_BLOCKED",
+    "runtime": "Node v24.19.0",
+    "checks": [
+      "Inherited pending allowance aborts and rolls back all ACL changes",
+      "Exact account and portal projections plus preference payload work; pending allowances and unused column denied",
+      "Anonymous ACL and cross-account RLS deny concrete requests",
+      "Captured helper EXECUTE is an RLS dependency; member and owner identities remain distinct",
+      "Captured organization RPC writes audit sequence in definer context with no client USAGE; service reads remain scoped"
+    ],
+    "receipt": "/workspace/work/owner-p0-ci/privileges/receipt.json",
+    "privateSourceRequired": false,
+    "requests": [
+      {
+        "method": "POST",
+        "path": "/auth/v1/signup",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/auth/v1/signup",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/auth/v1/signup",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/subscriptions",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/subscriptions",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/user_preferences",
+        "status": 200
+      },
+      {
+        "method": "PATCH",
+        "path": "/rest/v1/profiles",
+        "status": 403
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/billing_customers",
+        "status": 403
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles",
+        "status": 403
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles",
+        "status": 401
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/user_preferences",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/org_role",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/org_role",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/is_org_member",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/organization_members",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/organization_members",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/organization_members",
+        "status": 403
+      },
+      {
+        "method": "POST",
+        "path": "/rest/v1/rpc/create_business_organization",
+        "status": 200
+      },
+      {
+        "method": "POST",
+        "path": "/auth/v1/signup",
+        "status": 200
+      },
+      {
+        "method": "GET",
+        "path": "/rest/v1/profiles",
+        "status": 200
+      }
+    ],
+    "provenance": {
+      "images": {
+        "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+        "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+        "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+      },
+      "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+      "autoconfirm": true,
+      "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+      "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+      "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+      "privateSourceVerified": false,
+      "compatibilityDescriptorSha256": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+      "compatibilitySourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+      "compatibilityPrivateSourceVerified": false,
+      "compatibilityScope": "Captured four account tables and effective table/column grants; local provider auth; no hosted ACL ancestry equivalence"
+    },
+    "artifactGuard": "Outside-source target validated before Docker; in-checkout override rejected before Docker"
+  }
+}
