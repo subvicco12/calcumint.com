@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "baselineSha": "f37b0338e7647770ba2359cc4cdb0a8677adf211",
+  "baselineCi": {
+    "id": 41284592704,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "approvalGranted": false,
+  "activationAuthorized": false,
+  "canonicalAccepted": false,
+  "releaseHold": true,
+  "decisions": [
+    {
+      "decisionId": "OC-01-CALCULUS",
+      "status": "PENDING",
+      "ownerAnswer": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "question": "Select exact successor review/routing targets and supported operators/domain for246\u2013248; keep legacyIntegral/Limitv1 defects recorded and historical replay isolated.",
+      "recommendationNotApproval": "Review the existing privatev3 candidates first because controlled correction must preserve history. This is not approval to route them publicly.",
+      "responsibleRole": "Owner/product + numerical reviewer",
+      "contracts": [
+        "calculus.json",
+        "calculus.md"
+      ],
+      "packagePointer": "grouped-owner-choices.json#/groups/0",
+      "scope": "Proposed review target or policy alternative only; no authority, routing or activation approval"
+    },
+    {
+      "decisionId": "OPS-01-MEMBERSHIP",
+      "status": "PENDING",
+      "ownerAnswer": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "question": "Decide existing owner/member invitation outcome, membership/owner identity mutation authority, duplicate-seat accounting, and revocation/expiry semantics at lock release.",
+      "recommendationNotApproval": "Recommend no implicit owner demotion or user-identity rewrite; idempotent existing-member outcome; final-state valid expiry/revocation with shared writer fencing. These exact policies are proposed, not sourced approvals.",
+      "responsibleRole": "Owner/security policy",
+      "contracts": [
+        "membership.json"
+      ],
+      "packagePointer": "grouped-owner-choices.json#/groups/8",
+      "scope": "Proposed review target or policy alternative only; no authority, routing or activation approval"
+    },
+    {
+      "decisionId": "OPS-02-WRITERS-ACL",
+      "status": "PENDING",
+      "ownerAnswer": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "question": "Identify all privileged writers/trusted RPCowners and approve retained display-name UPDATE and billingSELECT use cases before least-privilege adoption.",
+      "recommendationNotApproval": "Use least-privilege caller-specific grants, preserve provider-managed ownership and supported reads; no blanket revokes or production changes.",
+      "responsibleRole": "Owner/security + provider/external-writer owners",
+      "contracts": [
+        "writers-acl.json",
+        "writers-acl.md"
+      ],
+      "packagePointer": "grouped-owner-choices.json#/groups/9",
+      "scope": "Proposed review target or policy alternative only; no authority, routing or activation approval"
+    },
+    {
+      "decisionId": "OPS-03-ADOPTION",
+      "status": "PENDING",
+      "ownerAnswer": null,
+      "approvedBy": null,
+      "approvedAt": null,
+      "question": "Identify approved adoption targets009,032\u2013035,038 and guarded publication/date successors, with source/data preconditions and rollback.",
+      "recommendationNotApproval": "Retain proposals outside active migrations; no model-count-driven creation or forged migration-history markers.",
+      "responsibleRole": "Owner/release authority after compatibility and recovery review",
+      "contracts": [
+        "adoption-graph.json"
+      ],
+      "packagePointer": "grouped-owner-choices.json#/groups/10",
+      "scope": "Proposed review target or policy alternative only; no authority, routing or activation approval"
+    }
+  ]
+}

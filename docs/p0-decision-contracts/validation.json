@@ -1,0 +1,70 @@
+{
+  "baselineSha": "f37b0338e7647770ba2359cc4cdb0a8677adf211",
+  "baselinePr": 1510,
+  "baselineCi": {
+    "id": 41284592704,
+    "conclusion": "success",
+    "status": "completed"
+  },
+  "focusedValidation": {
+    "command": "node --test tests/p0-decision-contracts/*.test.mjs",
+    "passed": 18,
+    "failed": 0,
+    "scope": [
+      "exact source/dependency bindings",
+      "v3 profile/engine and v1 identity separation",
+      "four pending decision envelopes",
+      "membership alternatives and capacity/timing/role boundaries",
+      "adoption source drift, missing/cyclic dependencies and self-asserted evidence rejection"
+    ],
+    "engineExecution": false,
+    "databaseExecution": false,
+    "broadQaRepeated": false
+  },
+  "independentReview": {
+    "reviewer": "decision_review",
+    "status": "No remaining substantive findings within reviewed scope",
+    "fixed": [
+      "New invitation role now explicit and preserved; no hardcoded member default",
+      "Missing/self-asserted gate evidence remains unresolved and invalid",
+      "Exact OC-01-CALCULUS root and per-ID joins consistent"
+    ],
+    "reviewerReranFocusedTests": true
+  },
+  "logSha256": "4192f774fc3acbaeefe9be9433be96db9a9f1b1cf6ce75af38408bcfa309e11d",
+  "sourceSha256": {
+    "tests/p0-decision-contracts/adoption.mjs": "9a4933619dfd588eba333feadc9d36a58e212ba05793ddad524af885528fcbf2",
+    "tests/p0-decision-contracts/adoption.test.mjs": "9f6aa8ce49e1d9ea6911b438f375911e13803de3e0c9359397237ed9e93ea70e",
+    "tests/p0-decision-contracts/bindings.test.mjs": "158e04aaac5a58074a2672e7f90a8e2be8b6ad0218a4acccc79db3ace2cb957d",
+    "tests/p0-decision-contracts/membership-model.mjs": "26ba29bf2c5c486b1ae5955ba44f6bddf909d72bfb99f9f62a72357df4201f4c",
+    "tests/p0-decision-contracts/membership-model.test.mjs": "474fc39a9078fb1e88a47bbf06fd3f2e85a811db455c587d9c61af7f9a0fc46b"
+  },
+  "artifactSha256": {
+    "docs/p0-decision-contracts/OWNER-DECISIONS.md": "a3378a708263d6a9f7746aa4f0390720d1836b5c50eb9bf612b80c6faee8e56d",
+    "docs/p0-decision-contracts/REPORT.md": "885dfe392c8a3dcf24a58c04693fafb35806733cbc1d1e5aea4473c14ec5d550",
+    "docs/p0-decision-contracts/adoption-graph.json": "ee56a3ca81a60f3de6aeda5af43de25803afc3d33fdb69af152f7f9f19cf753f",
+    "docs/p0-decision-contracts/calculus.json": "9a04d74321a33a17a57e7525c5c448ca40f8937286d3c4ddf1f0754635d30718",
+    "docs/p0-decision-contracts/calculus.md": "71dcf7eaeeec15e9d0d029f437327211fb0c9f8796871ca1fe1463f9f6019388",
+    "docs/p0-decision-contracts/input-integrity.json": "5db8cfd8a9b33322936ed426d0bf869cd9462aa662128751e670e94e4cd3bca8",
+    "docs/p0-decision-contracts/membership.json": "8dd9052d1b4d8d2587c191a241b3005d0942073f2a76c48c4cc3e3d811d29488",
+    "docs/p0-decision-contracts/owner-register.json": "da4c323c973e3540b1429698dbc51f76dee3ab95434dfa1a76d85ebb43c4b976",
+    "docs/p0-decision-contracts/writers-acl.json": "d380d98ac4e177edba50f422dfb64b9f2448c39d3355688af919f4105a8261cf",
+    "docs/p0-decision-contracts/writers-acl.md": "3ddd12ed4c2b36a181b7f10db75c164229cebbf2fc17f4c8d9bc1d1a4df72248"
+  },
+  "preservation": {
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlockers": 43,
+    "historicalSourceOrEnginesChanged": false,
+    "applicationOrSqlChanged": false,
+    "productionQueries": 0,
+    "productionWrites": 0,
+    "newPrCreated": false
+  },
+  "allDecisionsPending": true,
+  "canonicalAccepted": false,
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "finalLogSha256": "abdf8529524710e8da13491cbd666985835d2904a3c247f61cf4b8d649977b5c"
+}
