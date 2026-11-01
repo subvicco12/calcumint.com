@@ -1,0 +1,76 @@
+{
+  "baseline": {
+    "sha": "9b6b4cfc846b942294cc44350c1338f1c0d1c09c",
+    "run": 41329771877,
+    "conclusion": "FAILURE",
+    "reproducedCacheContractFailures": 2
+  },
+  "sourceIntegrity": {
+    "zipCRC": "PASS",
+    "manifestFilesVerified": 208,
+    "uniqueSafeArchiveEntries": 209,
+    "baselineFilesByteMatched": 36,
+    "scope": "Full archive verified locally; retained immutable subset and repository pointers checked in CI."
+  },
+  "localValidation": {
+    "productionCommand": "npm run test:production",
+    "exitCode": 0,
+    "unitPassed": 7213,
+    "unitSkipped": 4,
+    "launchPassed": 45,
+    "certificationPassed": 15,
+    "lintErrors": 0,
+    "existingLintWarnings": 29,
+    "typecheck": "PASS",
+    "nextBuildWebpack": "PASS",
+    "productionLogSHA256": "d77e98031c3278420b66f72472e6d182c5a1e78dbed5b774e1b16253a0733fc1",
+    "ciContractTestsPassed": 56,
+    "proofTestsPassed": 4,
+    "proofNegativeMutations": 18,
+    "decisionTestsPassed": 4,
+    "scope": "Full production validation preceded final offline stress/report projection additions; final focused checks, typecheck and targeted lint cover those additions. No application or mathematical engine changed."
+  },
+  "newEvidence": {
+    "performanceFirstFixtures": 76,
+    "warmSamplesPerFixture": 30,
+    "declaredTermStressFixtures": 8,
+    "warmSamplesPerStressFixture": 5,
+    "sharedLocalSaveHandlerCases": 12,
+    "negativeRegistryBindings": 76,
+    "authenticatedOrHostedAcceptance": false
+  },
+  "dispositions": {
+    "pending": 1207,
+    "supplementedStillPending": 228,
+    "retainedPartial": 380,
+    "applicabilitySensitive": 304,
+    "mathReviewPending": 76,
+    "ymylReviewPending": 67,
+    "sourcePending": 76,
+    "ownerPending": 76,
+    "newApprovals": 0,
+    "newlyPublicationEligible": 0
+  },
+  "independentEngineeringReview": {
+    "result": "No blocking findings after corrections",
+    "resolved": [
+      "Reject ignored or ungated workflow job declarations",
+      "Validate supplemental proof invariants and source hashes in standalone queue builder"
+    ],
+    "stressExtensionReviewed": true,
+    "formalCalculatorApproval": false
+  },
+  "preservation": {
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlockers": 43,
+    "protectedSourceHashesUnchanged": 194,
+    "applicationMathematicsOrSQLChanges": false
+  },
+  "successorHostedCI": {
+    "status": "NOT_YET_SUBMITTED_AT_RECEIPT_CREATION",
+    "policy": "One bounded exact-head status check after draft PR creation; report actual result separately."
+  },
+  "releaseHold": true
+}
