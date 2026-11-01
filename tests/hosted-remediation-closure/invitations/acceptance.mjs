@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict';
+import {randomUUID,createHash} from 'node:crypto';
+import {spawn,execFileSync} from 'node:child_process';
+import {readFile,writeFile} from 'node:fs/promises';
+import {createClient} from '@supabase/supabase-js';
+import {startGoTrueFixture} from '../../gotrue-runtime/fixture.mjs';
+import {initializeHostedInvitations} from '../../hosted-schema-remediation/invitations/initializer.mjs';
+import {artifactDirectory} from '../../batch17-issuance/artifacts.mjs';
+const hash=x=>createHash('sha256').update(x).digest('hex'),checks=[];
+const pass=name=>{checks.push(name);console.log('PASS '+name);};
+const ok=async p=>{const r=await p;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
+const denied=async p=>{const r=await p;assert(r.error);return r.error;};
+assert(process.env.INVITATION_ARTIFACTS,'Outside-Git INVITATION_ARTIFACTS required');
+const artifacts=await artifactDirectory(process.env.INVITATION_ARTIFACTS);
+const env={...process.env};for(const k of ['DOCKER_HOST','DOCKER_CONTEXT','DOCKER_TLS','DOCKER_TLS_VERIFY','DOCKER_CERT_PATH'])delete env[k];
+const docker=args=>execFileSync('docker',['--host=unix:///var/run/docker.sock',...args],{env,encoding:'utf8'}).trim();
+let db,holder;
+try{
+ db=await startGoTrueFixture({initializeSchema:initializeHostedInvitations});
+ // PostgreSQL reads its own container hostname; match that exact Docker ID, never a newest-container heuristic.
+ const hostname=await db.sql("SELECT trim(pg_read_file('/etc/hostname'));");
+ const matches=docker(['ps','--no-trunc','--format','{{.ID}} {{.Names}}']).split('\n').filter(line=>line.split(' ')[0].startsWith(hostname)).map(line=>line.split(' ')[1]);assert.equal(matches.length,1);
+ holder=spawn('docker',['--host=unix:///var/run/docker.sock','exec','-i',matches[0],'psql','-h','127.0.0.1','-U','postgres','-X','-qAt','-v','ON_ERROR_STOP=1'],{env,stdio:['pipe','pipe','pipe']});
+ let output='',stderr='';holder.stdout.on('data',b=>output+=b);holder.stderr.on('data',b=>stderr+=b);
+ const until=async predicate=>{const end=Date.now()+15000;while(!await predicate()){assert(Date.now()<end,'Barrier deadline exceeded: '+stderr);await new Promise(r=>setImmediate(r));}};
+ const hold=async q=>{const marker=randomUUID();holder.stdin.write(q+`;SELECT '${marker}';\n`);await until(()=>output.includes(marker));};
+ const signup=async()=>{const sdk=createClient(db.url,db.anonKey,{auth:{persistSession:false,autoRefreshToken:false}}),email=randomUUID()+'@example.invalid';const r=await ok(sdk.auth.signUp({email,password:randomUUID()+'-Local'}));return {sdk,email,id:r.user.id};};
+ const owner=await signup(),admin=await signup(),member=await signup(),target=await signup(),other=await signup(),foreign=await signup();
+ await db.sql(`UPDATE profiles SET plan='business' WHERE id IN ('${owner.id}','${foreign.id}');`);
+ const org=await ok(owner.sdk.rpc('create_business_organization',{org_name:'Closure fixture',org_slug:randomUUID()}));
+ const org2=await ok(foreign.sdk.rpc('create_business_organization',{org_name:'Other tenant',org_slug:randomUUID()}));
+ const service=createClient(db.url,db.serviceKey,{auth:{persistSession:false,autoRefreshToken:false}});
+ const add=(u,role='viewer')=>db.sql(`INSERT INTO organization_members(organization_id,user_id,role) VALUES ('${org}','${u.id}','${role}');`);
+ const reset=async()=>{await db.sql(`DELETE FROM organization_invitations WHERE organization_id='${org}';DELETE FROM organization_members WHERE organization_id='${org}' AND user_id<>'${owner.id}';UPDATE organization_members SET role='owner' WHERE organization_id='${org}' AND user_id='${owner.id}';DELETE FROM organization_audit_log WHERE organization_id='${org}';UPDATE organizations SET owner_user_id='${owner.id}' WHERE id='${org}';`);};
+ const role=u=>db.sql(`SELECT role FROM organization_members WHERE organization_id='${org}' AND user_id='${u.id}';`);
+ const count=()=>db.sql(`SELECT count(*) FROM organization_members WHERE organization_id='${org}';`);
+ const issue=async(u,ttl=3600)=>{const token=hash(randomUUID());const r=(await ok(owner.sdk.from('organization_invitations').insert({organization_id:org,email:u.email,role:'member',token_hash:token,invited_by:owner.id,expires_at:new Date(Date.now()+ttl*1000).toISOString()}).select()))[0];return {token,id:r.id};};
+ const accept=(u,i)=>u.sdk.rpc('accept_business_invitation',{invite_token_hash:i.token});
+ const audit=()=>db.sql(`SELECT count(*) FROM organization_audit_log WHERE organization_id='${org}' AND action='member.joined';`);
+ await add(admin,'admin');await add(member);
+ await ok(admin.sdk.from('organization_members').update({role:'viewer'}).eq('organization_id',org).eq('user_id',owner.id));assert.equal(await role(owner),'viewer');assert.equal(await db.sql(`SELECT owner_user_id FROM organizations WHERE id='${org}';`),owner.id);
+ pass('Authenticated admin demotes owner membership while organizations.owner_user_id remains unchanged');await reset();
+ await add(admin,'admin');await add(member);
+ await denied(admin.sdk.from('organization_members').update({role:'owner'}).eq('organization_id',org).eq('user_id',member.id));assert.equal(await role(member),'viewer');
+ await ok(owner.sdk.from('organization_members').update({role:'owner'}).eq('organization_id',org).eq('user_id',member.id));assert.equal(await role(member),'owner');assert.equal(await db.sql(`SELECT count(*) FROM organization_members WHERE organization_id='${org}' AND role='owner';`),'2');pass('Admin promotion to owner rejected; authenticated owner can create second owner');await reset();
+ await add(admin,'admin');await add(member);
+ await ok(admin.sdk.from('organization_members').update({user_id:target.id}).eq('organization_id',org).eq('user_id',member.id));assert.equal(await role(member),'');assert.equal(await role(target),'viewer');pass('Authenticated admin rewrites membership user identity to arbitrary existing auth user');
+ await denied(admin.sdk.from('organization_members').update({organization_id:org2}).eq('organization_id',org).eq('user_id',target.id));assert.equal(await role(target),'viewer');assert.equal(await db.sql(`SELECT count(*) FROM organization_members WHERE organization_id='${org2}' AND user_id='${target.id}';`),'0');pass('Admin cross-tenant membership move without destination authority rejected atomically');
+ await ok(admin.sdk.from('organizations').update({owner_user_id:foreign.id}).eq('id',org));assert.equal(await db.sql(`SELECT owner_user_id FROM organizations WHERE id='${org}';`),foreign.id);assert.equal(await role(foreign),'');pass('Authenticated admin sets organization owner foreign reference to nonmember from other tenant');await reset();
+ await denied(owner.sdk.from('organization_members').insert({organization_id:org,user_id:target.id,role:'member'}));assert.equal(await role(target),'');
+ await ok(service.from('organization_members').insert({organization_id:org,user_id:target.id,role:'owner'}));assert.equal(await role(target),'owner');await ok(service.from('organization_members').delete().eq('organization_id',org).eq('user_id',target.id));assert.equal(await role(target),'');pass('Authenticated direct membership insert denied; service-role API inserts and deletes owner membership');
+ await add(admin);await add(member);await add(other);await add(foreign);
+ const privilegedToken=hash(randomUUID());await ok(service.from('organization_invitations').insert({organization_id:org,email:target.email,role:'admin',token_hash:privilegedToken,invited_by:foreign.id,expires_at:new Date(Date.now()+3600000).toISOString()}));assert.equal(await count(),'5');assert.equal(await db.sql(`SELECT count(*) FROM organization_invitations WHERE organization_id='${org}' AND invited_by='${foreign.id}';`),'1');
+ await ok(service.from('organization_members').insert({organization_id:org,user_id:target.id,role:'member'}));assert.equal(await count(),'6');pass('Service-role API bypasses quota and invitation inviter tenant affiliation; six persisted memberships');await reset();
+ // Explicit transaction locks and pg_stat_activity prove arrival before release. No sleep-based scheduling.
+ const beginBarrier=()=>hold('BEGIN;LOCK TABLE organization_members IN SHARE ROW EXCLUSIVE MODE');
+ const waiting=()=>until(async()=>Number(await db.sql("SELECT count(*) FROM pg_stat_activity WHERE wait_event_type='Lock' AND query LIKE '%accept_business_invitation%' AND pid<>pg_backend_pid();"))===1);
+ await beginBarrier();const revoke=await issue(target);const pendingRevoke=Promise.resolve(accept(target,revoke));await waiting();await ok(owner.sdk.from('organization_invitations').delete().eq('id',revoke.id));await hold('COMMIT');await ok(pendingRevoke);
+ assert.equal(await role(target),'member');assert.equal(await db.sql(`SELECT count(*) FROM organization_invitations WHERE id='${revoke.id}';`),'0');assert.equal(await audit(),'1');pass('Revocation after acceptance read while blocked on membership write still yields membership and audit with invitation deleted');await reset();
+ await beginBarrier();const expires=await issue(target,3);const pendingExpiry=Promise.resolve(accept(target,expires));await waiting();await until(async()=>await db.sql(`SELECT clock_timestamp()>expires_at FROM organization_invitations WHERE id='${expires.id}';`)==='t');await hold('COMMIT');await ok(pendingExpiry);
+ assert.equal(await role(target),'member');assert.equal(await db.sql(`SELECT accepted_at IS NOT NULL AND expires_at<clock_timestamp() FROM organization_invitations WHERE id='${expires.id}';`),'t');assert.equal(await audit(),'1');pass('Invitation wall-clock expiry during verified membership lock wait does not prevent acceptance');await reset();
+ await add(admin);await add(member);await add(other);await beginBarrier();const fill=await issue(target);const pendingFill=Promise.resolve(accept(target,fill));await waiting();await hold(`INSERT INTO organization_members(organization_id,user_id,role) VALUES ('${org}','${foreign.id}','viewer');COMMIT`);await ok(pendingFill);assert.equal(await count(),'6');assert.equal(await role(target),'member');assert.equal(await role(foreign),'viewer');assert.equal(await audit(),'1');pass('Concurrent privileged membership insert after acceptance count overbooks six persisted members');await reset();
+ // Force a late FK failure, demonstrating transaction rollback beyond previous audit-trigger test.
+ const rollback=await issue(target);await beginBarrier();const pendingRollback=Promise.resolve(accept(target,rollback));await waiting();await hold(`DELETE FROM auth.users WHERE id='${target.id}';COMMIT`);await denied(pendingRollback);assert.equal(await role(target),'');assert.equal(await count(),'1');assert.equal(await audit(),'0');assert.equal(await db.sql(`SELECT accepted_at IS NULL FROM organization_invitations WHERE id='${rollback.id}';`),'t');pass('Concurrent auth deletion causes FK rejection and rolls back acceptance timestamp, membership and audit');
+ holder.stdin.end();await new Promise((resolve,reject)=>holder.on('close',code=>code===0?resolve():reject(Error(stderr))));holder=null;
+ const sources=await Promise.all(['acceptance.mjs','../../hosted-schema-remediation/invitations/initializer.mjs','../../hosted-schema-remediation/invitations/scoped-descriptor.json','../../gotrue-runtime/fixture.mjs'].map(async name=>({path:name,sha256:hash(await readFile(new URL(name,import.meta.url)))})));
+ await writeFile(artifacts+'/receipt.json',JSON.stringify({status:'CHARACTERIZED_POLICY_BLOCKED',checks,provenance:db.provenance,sources,node:process.version,productionWrites:false,activation:false,policyApproved:false},null,2)+'\n');
+}finally{if(holder){holder.stdin.end('ROLLBACK;\n');holder.kill();}if(db)await db.close();}

@@ -1,0 +1,3656 @@
+{
+  "scope": {
+    "tables": [
+      "public.profiles",
+      "public.user_preferences",
+      "public.subscriptions",
+      "public.billing_customers"
+    ]
+  },
+  "sections": {
+    "columns": {
+      "status": "COMPLETE",
+      "count": 29,
+      "rows": [
+        {
+          "id": "public.billing_customers.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.billing_customers",
+          "generated": ""
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id",
+          "acl": null,
+          "name": "paddle_customer_id",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 2,
+          "relation": "public.billing_customers",
+          "generated": ""
+        },
+        {
+          "id": "public.billing_customers.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.billing_customers",
+          "generated": ""
+        },
+        {
+          "id": "public.billing_customers.user_id",
+          "acl": null,
+          "name": "user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.billing_customers",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.display_name",
+          "acl": "{authenticated=w/postgres}",
+          "name": "display_name",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 2,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.id",
+          "acl": null,
+          "name": "id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.plan",
+          "acl": null,
+          "name": "plan",
+          "type": "text",
+          "default": "'free'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.profiles.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.profiles",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.billing_interval",
+          "acl": null,
+          "name": "billing_interval",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 8,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end",
+          "acl": null,
+          "name": "cancel_at_period_end",
+          "type": "boolean",
+          "default": "false",
+          "notNull": true,
+          "identity": "",
+          "position": 12,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.created_at",
+          "acl": null,
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 15,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.current_period_end",
+          "acl": null,
+          "name": "current_period_end",
+          "type": "timestamp with time zone",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 11,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.current_period_start",
+          "acl": null,
+          "name": "current_period_start",
+          "type": "timestamp with time zone",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 10,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.id",
+          "acl": null,
+          "name": "id",
+          "type": "uuid",
+          "default": "gen_random_uuid()",
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.plan",
+          "acl": null,
+          "name": "plan",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 7,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.price_id",
+          "acl": null,
+          "name": "price_id",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 6,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.provider",
+          "acl": null,
+          "name": "provider",
+          "type": "text",
+          "default": "'paddle'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id",
+          "acl": null,
+          "name": "provider_customer_id",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 5,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id",
+          "acl": null,
+          "name": "provider_subscription_id",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval",
+          "acl": null,
+          "name": "scheduled_interval",
+          "type": "text",
+          "default": null,
+          "notNull": false,
+          "identity": "",
+          "position": 13,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.status",
+          "acl": null,
+          "name": "status",
+          "type": "text",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 9,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 14,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.subscriptions.user_id",
+          "acl": null,
+          "name": "user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.subscriptions",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.currency",
+          "acl": null,
+          "name": "currency",
+          "type": "text",
+          "default": "'USD'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 3,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.locale",
+          "acl": null,
+          "name": "locale",
+          "type": "text",
+          "default": "'en'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 2,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.unit_system",
+          "acl": null,
+          "name": "unit_system",
+          "type": "text",
+          "default": "'metric'::text",
+          "notNull": true,
+          "identity": "",
+          "position": 4,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.updated_at",
+          "acl": null,
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "default": "now()",
+          "notNull": true,
+          "identity": "",
+          "position": 5,
+          "relation": "public.user_preferences",
+          "generated": ""
+        },
+        {
+          "id": "public.user_preferences.user_id",
+          "acl": null,
+          "name": "user_id",
+          "type": "uuid",
+          "default": null,
+          "notNull": true,
+          "identity": "",
+          "position": 1,
+          "relation": "public.user_preferences",
+          "generated": ""
+        }
+      ]
+    },
+    "constraints": {
+      "status": "COMPLETE",
+      "count": 16,
+      "rows": [
+        {
+          "id": "public.billing_customers:billing_customers_paddle_customer_id_key",
+          "name": "billing_customers_paddle_customer_id_key",
+          "relation": "public.billing_customers",
+          "validated": true,
+          "definition": "UNIQUE (paddle_customer_id)"
+        },
+        {
+          "id": "public.billing_customers:billing_customers_pkey",
+          "name": "billing_customers_pkey",
+          "relation": "public.billing_customers",
+          "validated": true,
+          "definition": "PRIMARY KEY (user_id)"
+        },
+        {
+          "id": "public.billing_customers:billing_customers_user_id_fkey",
+          "name": "billing_customers_user_id_fkey",
+          "relation": "public.billing_customers",
+          "validated": true,
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.profiles:profiles_id_fkey",
+          "name": "profiles_id_fkey",
+          "relation": "public.profiles",
+          "validated": true,
+          "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.profiles:profiles_pkey",
+          "name": "profiles_pkey",
+          "relation": "public.profiles",
+          "validated": true,
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "id": "public.profiles:profiles_plan_check",
+          "name": "profiles_plan_check",
+          "relation": "public.profiles",
+          "validated": true,
+          "definition": "CHECK ((plan = ANY (ARRAY['free'::text, 'pro'::text, 'business'::text])))"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_billing_interval_check",
+          "name": "subscriptions_billing_interval_check",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "CHECK ((billing_interval = ANY (ARRAY['monthly'::text, 'yearly'::text])))"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_pkey",
+          "name": "subscriptions_pkey",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_plan_check",
+          "name": "subscriptions_plan_check",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "CHECK ((plan = ANY (ARRAY['pro'::text, 'business'::text])))"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_provider_check",
+          "name": "subscriptions_provider_check",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "CHECK ((provider = 'paddle'::text))"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_provider_subscription_id_key",
+          "name": "subscriptions_provider_subscription_id_key",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "UNIQUE (provider_subscription_id)"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_scheduled_interval_check",
+          "name": "subscriptions_scheduled_interval_check",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "CHECK ((scheduled_interval = ANY (ARRAY['monthly'::text, 'yearly'::text])))"
+        },
+        {
+          "id": "public.subscriptions:subscriptions_user_id_fkey",
+          "name": "subscriptions_user_id_fkey",
+          "relation": "public.subscriptions",
+          "validated": true,
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_pkey",
+          "name": "user_preferences_pkey",
+          "relation": "public.user_preferences",
+          "validated": true,
+          "definition": "PRIMARY KEY (user_id)"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_unit_system_check",
+          "name": "user_preferences_unit_system_check",
+          "relation": "public.user_preferences",
+          "validated": true,
+          "definition": "CHECK ((unit_system = ANY (ARRAY['metric'::text, 'us'::text])))"
+        },
+        {
+          "id": "public.user_preferences:user_preferences_user_id_fkey",
+          "name": "user_preferences_user_id_fkey",
+          "relation": "public.user_preferences",
+          "validated": true,
+          "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        }
+      ]
+    },
+    "relations": {
+      "status": "COMPLETE",
+      "count": 4,
+      "rows": [
+        {
+          "id": "public.billing_customers",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "billing_customers",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.profiles",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=ardDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "profiles",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.subscriptions",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "subscriptions",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        },
+        {
+          "id": "public.user_preferences",
+          "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+          "rls": true,
+          "kind": "r",
+          "name": "user_preferences",
+          "owner": "postgres",
+          "schema": "public",
+          "forceRls": false
+        }
+      ]
+    },
+    "policies": {
+      "status": "COMPLETE",
+      "count": 7,
+      "rows": [
+        {
+          "id": "public.billing_customers:billing_customers_select_own",
+          "name": "billing_customers_select_own",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = user_id)",
+          "command": "r",
+          "relation": "public.billing_customers",
+          "permissive": true
+        },
+        {
+          "id": "public.profiles:profiles_select_own",
+          "name": "profiles_select_own",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = id)",
+          "command": "r",
+          "relation": "public.profiles",
+          "permissive": true
+        },
+        {
+          "id": "public.profiles:profiles_update_own",
+          "name": "profiles_update_own",
+          "check": "(( SELECT auth.uid() AS uid) = id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = id)",
+          "command": "w",
+          "relation": "public.profiles",
+          "permissive": true
+        },
+        {
+          "id": "public.subscriptions:subscriptions_select_own",
+          "name": "subscriptions_select_own",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = user_id)",
+          "command": "r",
+          "relation": "public.subscriptions",
+          "permissive": true
+        },
+        {
+          "id": "public.user_preferences:preferences_insert_own",
+          "name": "preferences_insert_own",
+          "check": "(( SELECT auth.uid() AS uid) = user_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "a",
+          "relation": "public.user_preferences",
+          "permissive": true
+        },
+        {
+          "id": "public.user_preferences:preferences_select_own",
+          "name": "preferences_select_own",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = user_id)",
+          "command": "r",
+          "relation": "public.user_preferences",
+          "permissive": true
+        },
+        {
+          "id": "public.user_preferences:preferences_update_own",
+          "name": "preferences_update_own",
+          "check": "(( SELECT auth.uid() AS uid) = user_id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(( SELECT auth.uid() AS uid) = user_id)",
+          "command": "w",
+          "relation": "public.user_preferences",
+          "permissive": true
+        }
+      ]
+    },
+    "effectiveTableGrants": {
+      "status": "COMPLETE",
+      "count": 84,
+      "rows": [
+        {
+          "id": "public.billing_customers:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.billing_customers:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.billing_customers:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.billing_customers:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.billing_customers:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.billing_customers:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.billing_customers:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.billing_customers:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.billing_customers:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.billing_customers:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.billing_customers",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.profiles:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.profiles:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.profiles:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.profiles:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.profiles:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.profiles:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": false,
+          "relation": "public.profiles",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.profiles:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.profiles:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.profiles:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.profiles",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.subscriptions:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.subscriptions:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.subscriptions:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.subscriptions:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.subscriptions:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.subscriptions:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.subscriptions:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.subscriptions:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.subscriptions:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.subscriptions",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences:anon:DELETE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.user_preferences:anon:INSERT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences:anon:REFERENCES",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences:anon:SELECT",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences:anon:TRIGGER",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.user_preferences:anon:TRUNCATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.user_preferences:anon:UPDATE",
+          "role": "anon",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences:authenticated:DELETE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.user_preferences:authenticated:INSERT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences:authenticated:REFERENCES",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences:authenticated:SELECT",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences:authenticated:TRIGGER",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.user_preferences:authenticated:TRUNCATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.user_preferences:authenticated:UPDATE",
+          "role": "authenticated",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences:service_role:DELETE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "DELETE"
+        },
+        {
+          "id": "public.user_preferences:service_role:INSERT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences:service_role:REFERENCES",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences:service_role:SELECT",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences:service_role:TRIGGER",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRIGGER"
+        },
+        {
+          "id": "public.user_preferences:service_role:TRUNCATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "TRUNCATE"
+        },
+        {
+          "id": "public.user_preferences:service_role:UPDATE",
+          "role": "service_role",
+          "allowed": true,
+          "relation": "public.user_preferences",
+          "privilege": "UPDATE"
+        }
+      ]
+    },
+    "effectiveColumnGrants": {
+      "status": "COMPLETE",
+      "count": 348,
+      "rows": [
+        {
+          "id": "public.billing_customers.created_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.created_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.created_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.created_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.created_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.created_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.created_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.created_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.created_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.created_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.created_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.created_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.billing_customers.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.paddle_customer_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.billing_customers.paddle_customer_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.updated_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.updated_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.updated_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.updated_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.updated_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.updated_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.updated_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.updated_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.updated_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.updated_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.updated_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.updated_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.billing_customers.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.user_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.user_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.user_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.user_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.user_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.user_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.user_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.user_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.billing_customers.user_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.billing_customers.user_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.billing_customers.user_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.billing_customers.user_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.billing_customers.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.created_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.created_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.created_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.created_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.created_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.created_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.created_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.created_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.profiles.created_at",
+          "allowed": false,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.created_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.created_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.created_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.created_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.profiles.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.display_name:anon:INSERT",
+          "role": "anon",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.display_name:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.display_name:anon:SELECT",
+          "role": "anon",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.display_name:anon:UPDATE",
+          "role": "anon",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.display_name:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.display_name:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.display_name:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.display_name:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.display_name:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.display_name:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.display_name:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.display_name:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.profiles.display_name",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.id:anon:INSERT",
+          "role": "anon",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.id:anon:SELECT",
+          "role": "anon",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.profiles.id",
+          "allowed": false,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.profiles.id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.plan:anon:INSERT",
+          "role": "anon",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.plan:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.plan:anon:SELECT",
+          "role": "anon",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.plan:anon:UPDATE",
+          "role": "anon",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.plan:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.plan:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.plan:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.plan:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.profiles.plan",
+          "allowed": false,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.plan:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.plan:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.plan:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.plan:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.profiles.plan",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.updated_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.updated_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.updated_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.updated_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.updated_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.updated_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.updated_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.updated_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.profiles.updated_at",
+          "allowed": false,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.profiles.updated_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.profiles.updated_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.profiles.updated_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.profiles.updated_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.profiles.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.billing_interval:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.billing_interval",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.cancel_at_period_end:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.cancel_at_period_end",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.created_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.created_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.created_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.created_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.created_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.created_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.created_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.created_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.created_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.created_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.created_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.created_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.created_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.current_period_end:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_end",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.current_period_start:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.current_period_start",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.id:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.id:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.plan:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.plan:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.plan:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.plan:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.plan:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.plan:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.plan:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.plan:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.plan:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.plan:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.plan:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.plan:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.plan",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.price_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.price_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.price_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.price_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.price_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.price_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.price_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.price_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.price_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.price_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.price_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.price_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.price_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.provider",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider_customer_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_customer_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.provider_subscription_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.provider_subscription_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.scheduled_interval:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.scheduled_interval",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.status:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.status:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.status:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.status:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.status:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.status:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.status:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.status:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.status:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.status:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.status:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.status:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.status",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.updated_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.updated_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.updated_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.updated_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.updated_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.updated_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.updated_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.updated_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.updated_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.updated_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.updated_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.updated_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.user_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.user_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.user_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.user_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.user_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.user_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.user_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.user_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.subscriptions.user_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.subscriptions.user_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.subscriptions.user_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.subscriptions.user_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.subscriptions.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.currency:anon:INSERT",
+          "role": "anon",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.currency:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.currency:anon:SELECT",
+          "role": "anon",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.currency:anon:UPDATE",
+          "role": "anon",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.currency:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.currency:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.currency:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.currency:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.currency:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.currency:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.currency:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.currency:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.user_preferences.currency",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.locale:anon:INSERT",
+          "role": "anon",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.locale:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.locale:anon:SELECT",
+          "role": "anon",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.locale:anon:UPDATE",
+          "role": "anon",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.locale:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.locale:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.locale:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.locale:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.locale:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.locale:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.locale:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.locale:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.user_preferences.locale",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.unit_system:anon:INSERT",
+          "role": "anon",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.unit_system:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.unit_system:anon:SELECT",
+          "role": "anon",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.unit_system:anon:UPDATE",
+          "role": "anon",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.unit_system:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.unit_system:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.unit_system:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.unit_system:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.unit_system:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.unit_system:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.unit_system:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.unit_system:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.user_preferences.unit_system",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.updated_at:anon:INSERT",
+          "role": "anon",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.updated_at:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.updated_at:anon:SELECT",
+          "role": "anon",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.updated_at:anon:UPDATE",
+          "role": "anon",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.updated_at:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.updated_at:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.updated_at:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.updated_at:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.updated_at:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.updated_at:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.updated_at:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.updated_at:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.user_preferences.updated_at",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.user_id:anon:INSERT",
+          "role": "anon",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.user_id:anon:REFERENCES",
+          "role": "anon",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.user_id:anon:SELECT",
+          "role": "anon",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.user_id:anon:UPDATE",
+          "role": "anon",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.user_id:authenticated:INSERT",
+          "role": "authenticated",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.user_id:authenticated:REFERENCES",
+          "role": "authenticated",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.user_id:authenticated:SELECT",
+          "role": "authenticated",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.user_id:authenticated:UPDATE",
+          "role": "authenticated",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        },
+        {
+          "id": "public.user_preferences.user_id:service_role:INSERT",
+          "role": "service_role",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "INSERT"
+        },
+        {
+          "id": "public.user_preferences.user_id:service_role:REFERENCES",
+          "role": "service_role",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "REFERENCES"
+        },
+        {
+          "id": "public.user_preferences.user_id:service_role:SELECT",
+          "role": "service_role",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "SELECT"
+        },
+        {
+          "id": "public.user_preferences.user_id:service_role:UPDATE",
+          "role": "service_role",
+          "column": "public.user_preferences.user_id",
+          "allowed": true,
+          "privilege": "UPDATE"
+        }
+      ]
+    }
+  }
+}
