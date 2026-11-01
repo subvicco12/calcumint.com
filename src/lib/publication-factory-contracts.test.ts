@@ -1,0 +1,5 @@
+import {expect,it} from 'vitest';
+import {publicationFactoryContracts} from './publication-factory-contracts';
+import {allContractVectors,getScaledAdapter} from '@/calculators/scaled-contract-adapters';
+import requirements from '../../docs/full-product-batch16/requirements-540.json';
+it('selects 76 distinct exact private candidates, preserving their immutable version and individual vectors',()=>{expect(publicationFactoryContracts).toHaveLength(76);expect(new Set(publicationFactoryContracts.map(c=>c.masterId)).size).toBe(76);for(const c of publicationFactoryContracts){const row=requirements.rows.find(r=>r.masterId===c.masterId)!;expect(c.adapterKey).toBe(row.liveAdapter!.adapterKey);expect(c.engineVersion).toBe(1);expect(c.vector).toEqual(row.liveAdapter!.vector);expect(getScaledAdapter(c.adapterKey).catalogId).toBe(c.masterId);expect(allContractVectors.find(v=>v.id===c.masterId)?.witnesses.length).toBeGreaterThan(0);}expect(publicationFactoryContracts.some(c=>[246,247,248].includes(c.masterId))).toBe(false);});

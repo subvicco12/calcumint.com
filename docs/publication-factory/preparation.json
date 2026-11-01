@@ -1,0 +1,1634 @@
+{
+  "kind": "FAIL_CLOSED_LARGE_COHORT_PREPARATION",
+  "baseline": "c1c7371ac4f284ff7b6371a90fb3296c632396f9",
+  "summary": {
+    "catalogIdentities": 540,
+    "requirements": 14293,
+    "cohortIdentities": 76,
+    "retainedNumericalWitnesses": 152,
+    "technicalGroups": 46,
+    "largestTechnicalGroup": 8,
+    "pendingCoreAndRiskQaSubmissions": 1207,
+    "previouslyObservedLegacyBindings": 136,
+    "approvedCanonicalLiveBindings": 0,
+    "priorDispositions": {
+      "CERTIFICATION_BLOCKED": 12,
+      "ENGINEERING_BLOCKED": 335,
+      "AUTHORITY_BLOCKED": 43,
+      "LIVE_VERIFIED": 136,
+      "UNKNOWN": 14
+    },
+    "newlyPublicationEligible": 0,
+    "preparedForAuthorizedRelease": 0
+  },
+  "sourceHashes": {
+    "docs/calculator-first/publication-readiness-540.json": "17132cfb30e3493b03ed55feb3744bc92ee7052ebd5b7c570fe04e254de841de",
+    "docs/full-product-batch16/requirements-540.json": "17a5b6d43e0d365043bdad9bd9e9ecee0a8bc0b74a2d8489269def1fe05cf0ae",
+    "docs/full-product-batch14/contract-evidence.json": "47dea34cc4a753ca43d616001c9beb73f4573330a925fa43f3dc560159476424",
+    "docs/publication-factory/contracts-evidence.json": "69cfc49390feef93418e78c6da0d1c20b21310845466ffe73a4f09e47f6d5605",
+    "docs/cloud-batch08/selected-contract-evidence.json": "f899fd95bc21ae7aefdb04792bbe306c1d41f97a0a43a0b87d796a4e5bc1e0f1",
+    "docs/cloud-batch09/selected-contract-evidence.json": "d4f24e05fa5ef467407554843e5e2ba49d1a138bcb6166a62ec93486e95238b5",
+    "docs/publication-factory/identity-reconciliation.json": "8633ff8af1cf8bdb836accf4d7d9fff3411dad3b31a42f584bec7f89812ebd5f",
+    "docs/publication-factory/authority-action-packets.json": "7389c38e9bead6e64d4840f9afe9f62c7f75c58cb829bc3ccdd5bec0c536632a",
+    "docs/publication-factory/hosted-count.json": "b1dcca9e15e05bcc05e46b7758a6565f2fc83dc6ac8b3a4628e0e07d9dfb11a3",
+    "docs/full-product-batch22/preflight.json": "1f245a621f759c17559e4a5d4493379dc1e8b8bca373c2e1dddb68e0c14c2b14",
+    "docs/blueprint-reconciliation/blueprint-to-540.json": "24aa0e34882bcc947ba9841e698ec4bf0e95335ccd082f70f3798f8f5db772fc",
+    "src/lib/publication-factory-gates.ts": "93f4577d5bb1828a75f6b541ca25e8a271a827f6bcdc5d67f3ca0e9471d3201c",
+    "src/lib/publication-factory-contracts-input.ts": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f",
+    "src/components/contract-input-form.tsx": "133116b16d5bc75c8ac0fbf94532df7a403299147d832902ffcb164e90bec495",
+    "src/components/scaled-contract-review.tsx": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0",
+    "scripts/publication-factory/prepare.ts": "cced20779f10b42cf55c9bcbfd6efe01fc34642ce5b5469d3b00c7ffd59a65cd",
+    "tests/publication-factory/browser.mjs": "82fa7ef1a3e7e626f0be8ce9757be8a609ccd1f4fd8972a62858d4ce15a2c3d0",
+    "docs/publication-factory/browser.json": "b876eeee08276040e32d1dda4d583fdcb8a7d91bb773aad47b7fa69d7bb78676",
+    "docs/publication-factory/cohort-76.json": "556ea1751d60969e130fcf8119fde9ce59c7ab429ad40953aeeb55137a0f6daf"
+  },
+  "validation": {
+    "integrityVerified": true,
+    "registerCount": 540,
+    "requirementCount": 14293,
+    "errors": [],
+    "decisions": [
+      {
+        "masterId": 3,
+        "engineId": "private.component.3",
+        "slug": "private-component-3",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 4,
+        "engineId": "private.component.4",
+        "slug": "private-component-4",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 5,
+        "engineId": "private.component.5",
+        "slug": "private-component-5",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 6,
+        "engineId": "private.component.6",
+        "slug": "private-component-6",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 7,
+        "engineId": "private.component.7",
+        "slug": "private-component-7",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 8,
+        "engineId": "private.component.8",
+        "slug": "private-component-8",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 11,
+        "engineId": "private.component.11",
+        "slug": "private-component-11",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 12,
+        "engineId": "private.component.12",
+        "slug": "private-component-12",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 13,
+        "engineId": "private.component.13",
+        "slug": "private-component-13",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 14,
+        "engineId": "private.component.14",
+        "slug": "private-component-14",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 15,
+        "engineId": "private.component.15",
+        "slug": "private-component-15",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 16,
+        "engineId": "private.component.16",
+        "slug": "private-component-16",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 17,
+        "engineId": "private.component.17",
+        "slug": "private-component-17",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 22,
+        "engineId": "private.component.22",
+        "slug": "private-component-22",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 24,
+        "engineId": "private.component.24",
+        "slug": "private-component-24",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 25,
+        "engineId": "private.remaining.25",
+        "slug": "private-remaining-25",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 27,
+        "engineId": "private.component.27",
+        "slug": "private-component-27",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 28,
+        "engineId": "private.component.28",
+        "slug": "private-component-28",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 29,
+        "engineId": "private.component.29",
+        "slug": "private-component-29",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 30,
+        "engineId": "private.component.30",
+        "slug": "private-component-30",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 31,
+        "engineId": "private.component.31",
+        "slug": "private-component-31",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 33,
+        "engineId": "private.component.33",
+        "slug": "private-component-33",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 37,
+        "engineId": "private.remaining.37",
+        "slug": "private-remaining-37",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 45,
+        "engineId": "private.remaining.45",
+        "slug": "private-remaining-45",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 47,
+        "engineId": "private.remaining.47",
+        "slug": "private-remaining-47",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 57,
+        "engineId": "private.remaining.57",
+        "slug": "private-remaining-57",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 58,
+        "engineId": "private.remaining.58",
+        "slug": "private-remaining-58",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 59,
+        "engineId": "private.remaining.59",
+        "slug": "private-remaining-59",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 60,
+        "engineId": "private.remaining.60",
+        "slug": "private-remaining-60",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 61,
+        "engineId": "private.remaining.61",
+        "slug": "private-remaining-61",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 62,
+        "engineId": "private.remaining.62",
+        "slug": "private-remaining-62",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 63,
+        "engineId": "private.remaining.63",
+        "slug": "private-remaining-63",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 66,
+        "engineId": "private.remaining.66",
+        "slug": "private-remaining-66",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 67,
+        "engineId": "private.remaining.67",
+        "slug": "private-remaining-67",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 68,
+        "engineId": "private.remaining.68",
+        "slug": "private-remaining-68",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 69,
+        "engineId": "private.remaining.69",
+        "slug": "private-remaining-69",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 70,
+        "engineId": "private.remaining.70",
+        "slug": "private-remaining-70",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 71,
+        "engineId": "private.remaining.71",
+        "slug": "private-remaining-71",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 72,
+        "engineId": "private.remaining.72",
+        "slug": "private-remaining-72",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 73,
+        "engineId": "private.remaining.73",
+        "slug": "private-remaining-73",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 74,
+        "engineId": "private.remaining.74",
+        "slug": "private-remaining-74",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 75,
+        "engineId": "private.remaining.75",
+        "slug": "private-remaining-75",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 76,
+        "engineId": "private.remaining.76",
+        "slug": "private-remaining-76",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 77,
+        "engineId": "private.remaining.77",
+        "slug": "private-remaining-77",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 78,
+        "engineId": "private.remaining.78",
+        "slug": "private-remaining-78",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 79,
+        "engineId": "private.remaining.79",
+        "slug": "private-remaining-79",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 83,
+        "engineId": "private.remaining.83",
+        "slug": "private-remaining-83",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 93,
+        "engineId": "private.remaining.93",
+        "slug": "private-remaining-93",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 94,
+        "engineId": "private.remaining.94",
+        "slug": "private-remaining-94",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 100,
+        "engineId": "private.remaining.100",
+        "slug": "private-remaining-100",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 101,
+        "engineId": "private.remaining.101",
+        "slug": "private-remaining-101",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 102,
+        "engineId": "private.remaining.102",
+        "slug": "private-remaining-102",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 104,
+        "engineId": "private.component.104",
+        "slug": "private-component-104",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 105,
+        "engineId": "private.component.105",
+        "slug": "private-component-105",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 106,
+        "engineId": "private.remaining.106",
+        "slug": "private-remaining-106",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 107,
+        "engineId": "private.remaining.107",
+        "slug": "private-remaining-107",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 108,
+        "engineId": "private.remaining.108",
+        "slug": "private-remaining-108",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 110,
+        "engineId": "private.remaining.110",
+        "slug": "private-remaining-110",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 111,
+        "engineId": "private.remaining.111",
+        "slug": "private-remaining-111",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 113,
+        "engineId": "private.remaining.113",
+        "slug": "private-remaining-113",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 114,
+        "engineId": "private.remaining.114",
+        "slug": "private-remaining-114",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 115,
+        "engineId": "private.remaining.115",
+        "slug": "private-remaining-115",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 116,
+        "engineId": "private.remaining.116",
+        "slug": "private-remaining-116",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 117,
+        "engineId": "private.remaining.117",
+        "slug": "private-remaining-117",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 118,
+        "engineId": "private.remaining.118",
+        "slug": "private-remaining-118",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 119,
+        "engineId": "private.remaining.119",
+        "slug": "private-remaining-119",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 426,
+        "engineId": "private.component.426",
+        "slug": "private-component-426",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 465,
+        "engineId": "private.remaining.465",
+        "slug": "private-remaining-465",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 466,
+        "engineId": "private.remaining.466",
+        "slug": "private-remaining-466",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 473,
+        "engineId": "private.remaining.473",
+        "slug": "private-remaining-473",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 477,
+        "engineId": "private.remaining.477",
+        "slug": "private-remaining-477",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 480,
+        "engineId": "private.remaining.480",
+        "slug": "private-remaining-480",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 494,
+        "engineId": "private.remaining.494",
+        "slug": "private-remaining-494",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 506,
+        "engineId": "private.component.506",
+        "slug": "private-component-506",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 528,
+        "engineId": "private.remaining.528",
+        "slug": "private-remaining-528",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      },
+      {
+        "masterId": 537,
+        "engineId": "private.remaining.537",
+        "slug": "private-remaining-537",
+        "version": 1,
+        "preparationReady": false,
+        "preparationBlockers": [
+          "MISSING_SOURCE_PREPARATION",
+          "MISSING_QA_PREPARATION"
+        ],
+        "integrityErrors": [],
+        "authorityBlockers": [
+          "AUTHENTICATED_AUTHORITY_UNESTABLISHED"
+        ],
+        "publicationEligible": false
+      }
+    ]
+  },
+  "technicalGroups": [
+    {
+      "signature": "fd195be4ef25151f05000955c6cb5bcff6875e023322867f318eeb241b1c067e",
+      "masterIds": [
+        3,
+        5,
+        6,
+        7,
+        8,
+        22,
+        27,
+        29
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "ff7b2e6452070a3789ab050219958519043de6fecf4dc8fca317a9bdf27af1e0",
+      "masterIds": [
+        4,
+        11,
+        28
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "0d239898e616b19e62fd6d29343ee1f00cb813733bf445dfec72fbc341f23704",
+      "masterIds": [
+        12,
+        30,
+        104,
+        105
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "03f65736608d01dca57441c662df6547d6004deb0e02bd6d04c3ecf9da082b65",
+      "masterIds": [
+        13
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "4020329915e901c1a362b9c0bd4f83b96f22fa4bd2f7d57fc323ed2c3d517976",
+      "masterIds": [
+        14,
+        15,
+        16
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "5c2b2325e9ef463fa26eb9bece9b10b3a1dfcd18a935c8093bfc1f3557b3d90e",
+      "masterIds": [
+        17
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "3b9643eb8885726f918c2c9c26d4f318448b6384f423807ab287a82062d356a8",
+      "masterIds": [
+        24,
+        33
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "49e3045b38dade27baef499646e11bdaf3f0620242a087ddee9d20eedda740cc",
+      "masterIds": [
+        25
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "6d3bed02d71e0eb508d65315bbca6e287fa99c2212ed2aa37c6ee68dce26910c",
+      "masterIds": [
+        31
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "073bf441b84408a08d59b5dd6b7ba834bb1882d257eff37b4f3d05f112544b58",
+      "masterIds": [
+        37,
+        100,
+        107,
+        108
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "2682375581c275e0d4c6387286337f93cca7aeab4bca4200fab7bfb03485c314",
+      "masterIds": [
+        45,
+        57,
+        59
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "a68fcb66079e14198261139e28f49eea02b19a30fcfc6bf6b9f758dac3a5af79",
+      "masterIds": [
+        47,
+        76,
+        77
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "38f5999757b56b027f93c95cdab6eaabbdb4f784f64cffced879bf7a3667d52c",
+      "masterIds": [
+        58
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "048f8ab032fa7d229787238726815a50d1d00f18fa659110de8deb7a3b00a1b4",
+      "masterIds": [
+        60
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "494740fa09b076e23b6404403bcf15b5e2299f9821f73d097cba70ebe0794101",
+      "masterIds": [
+        61,
+        83,
+        106
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "860613d9cd3cf9b62c322194fa9212c1f68309b4dae626ece72b36a2b46c8331",
+      "masterIds": [
+        62,
+        66,
+        75
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "5a94922f2e9b429f0caa4e6e9f0f250879a183246b84b4fb11c97b3c5a414a62",
+      "masterIds": [
+        63
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "ecfd0748bdb2a179da93755717d6af76d0c2cd1fe2b7f55818deafcc60bb2058",
+      "masterIds": [
+        67
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "a2aa49f2db8ff20de086daa80bf10ea73d69bf43ec18f8f2ebd5ee35cd0292b4",
+      "masterIds": [
+        68,
+        69
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "33b9bac35c708156679323de30f67835a717de655a986e309df958d74693bfb9",
+      "masterIds": [
+        70
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "ff1c11c1d27384a9bc5510f3ad793459850f944c28d3acc104765ee5920e25f2",
+      "masterIds": [
+        71
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "91827dfc0b7fb0c51b0f65b609911a36d0f94f2b33ef6372571d4685b06a3e45",
+      "masterIds": [
+        72
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "d45c9f9f85b59bbbe9f6e6fcd1f6c21c2cc5fcdabdca4aaccf9dab305c8c79e6",
+      "masterIds": [
+        73
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "72d2cc61cd7bd89705ecd8c97867384939565840678a5184d38211c699aa19cd",
+      "masterIds": [
+        74
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "ecdb81047222355910505ac0997a1d5cfd699a4795bb3ab9cbc1e868c893c748",
+      "masterIds": [
+        78
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "958336d6064e40eb2a65ec47dcb8810298354653cdb82f3b8251283440335339",
+      "masterIds": [
+        79
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "91a9af45a8832ae187a32d0b41284451c61cfa90205060ebe8b6bc802196acdb",
+      "masterIds": [
+        93
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "4ed0be5af7be0de12d7b4260b76865fe092b54ed7bf38ac34d19736d0a9700da",
+      "masterIds": [
+        94
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "ae1503e61523a73be091d22437bb03a39af0adb5c33f21c18066ca24c96704fb",
+      "masterIds": [
+        101
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "8c87337d477557737a1852b64bbc76f2421d374129537e3b48d1e66d2545f8c5",
+      "masterIds": [
+        102
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "46df1dc71c326bfa9e9ad8cedf9db7c89d03f37aee82dfeb33211f4e81166bb5",
+      "masterIds": [
+        110
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "606919997ba275e81eb88fb0bd2cca965eb1a3d75a6f8c8b2ad6660535a7be18",
+      "masterIds": [
+        111
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "31b99df5c2ffb8f0aa5fefe1c275aa6d4c767da4ed33594490b4c95ccc6027da",
+      "masterIds": [
+        113
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "5e43940f300225767d822ad77ecd2466a32562dbf7b62345900ff5a25ba127c3",
+      "masterIds": [
+        114,
+        115
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "34c696b4d54dfe215f6c571a845f3266f8ab7658bc41f23680f3e84d2d52ded6",
+      "masterIds": [
+        116
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "0511ea5168c851456d35f3fcecc38fa9c6616b078dc37c93e91640884f5fc76b",
+      "masterIds": [
+        117,
+        118
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "13da789659278950bf28f143e23041c70e90beb2b39487ffbdb7534f454f16a0",
+      "masterIds": [
+        119
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "195291d203c22ab89e3a251631e1548752fe2726e4e77798eea31715e01bdf65",
+      "masterIds": [
+        426
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "fa562df4c4e5287b6cde8480160363fe01e138752f1971c15238e2f13833d53f",
+      "masterIds": [
+        465
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "07a92e0607cbc57c3e2ad83be36f36322e9d9d33b4bdac0de19919ce079d9c94",
+      "masterIds": [
+        466
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "c20a1721eec4bf7fc17c1d25a170686f0ef4ddd00420b4020a147e1651de58b9",
+      "masterIds": [
+        473
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "eef96deaa524f565d0448489b6c6f2e5ef305ae973a30728cf936b5c2d4e6d11",
+      "masterIds": [
+        477
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "05e9b3f773c668b99ebcfd68382634bbb045fe3eabb559c8046e2e1638b35367",
+      "masterIds": [
+        480
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "4727cb4d4834ed7a6a2473af33076e2c5572cda024cdc2a99dba8fd6e6ef651c",
+      "masterIds": [
+        494,
+        537
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "d287f79181a1bf0606b11261b267b95e5237f08e427ab3180c2f93824b4becd3",
+      "masterIds": [
+        506
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    },
+    {
+      "signature": "67bc417b94bd5f9897cd17f3f59ab885d53135c197d81cfb1cef02e66ded4d3a",
+      "masterIds": [
+        528
+      ],
+      "scope": "Exact observed mathematical schema/methodology/source-metadata projection only; all per-ID witnesses, canonical scope and source/reviewer decisions remain separate."
+    }
+  ],
+  "workflowCohortMeaning": "76 share loss-aware input and immutable artifact workflows; they are not one mathematical or canonical contract.",
+  "releaseWave": [],
+  "releaseOperations": {
+    "activationAuthorized": false,
+    "rollback": "No lifecycle changes executed. Any future authorized wave must supply exact predecessor/postimage hashes and an approved rollback before activation.",
+    "monitoring": "After separate authorization, verify exact per-ID hosted tuple and public URL, certificate/source/QA provenance and arithmetic version. Route existence alone cannot establish live canonical acceptance.",
+    "postReleaseVerification": "BLOCKED — no authorized wave exists; no publication or deployment probes are represented as a release."
+  },
+  "releaseHold": true,
+  "canonicalPromotion": false,
+  "productionWrites": false
+}
