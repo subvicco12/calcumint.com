@@ -1,0 +1,523 @@
+{
+  "scope": "Bounded actual registered engine engineering evidence; no canonical/source/qualified/publication approval",
+  "baseline": "9d82dcf2cd63cf64bf5ef37ff993158cda48e14c",
+  "releaseHold": true,
+  "implementationStatus": "BOUNDED_ENGINEERING_AND_BROWSER_VERIFIED_EXTERNAL_GATES_PENDING",
+  "originalBlueprintSHA256": "d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455",
+  "sharedTraceability": [
+    {
+      "groupId": "typed-compute-inputs-rounding",
+      "sourceParagraphIds": [
+        "BP-0136",
+        "BP-0137",
+        "BP-0138",
+        "BP-0139",
+        "BP-0140",
+        "BP-0141",
+        "BP-0142",
+        "BP-0143",
+        "BP-0144",
+        "BP-0145",
+        "BP-0146",
+        "BP-0147",
+        "BP-0148",
+        "BP-0149",
+        "BP-0150",
+        "BP-0151",
+        "BP-0152",
+        "BP-0153",
+        "BP-0154",
+        "BP-0155",
+        "BP-0156",
+        "BP-0157",
+        "BP-0158",
+        "BP-0159",
+        "BP-0160",
+        "BP-0161",
+        "BP-0162"
+      ],
+      "sourceTextSHA256": "4544e40137c152bd9390074415b19906dd87fca7c9ac3615a97d8561dc15b4e0",
+      "repositoryCandidateEvidence": [
+        {
+          "path": "src/calculators/types.ts",
+          "exists": true,
+          "sha256": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8"
+        },
+        {
+          "path": "src/calculators/engine.ts",
+          "exists": true,
+          "sha256": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6"
+        }
+      ],
+      "scopeMeaning": "Architecture traceability, not per-ID formula approval or a requirement to render every optional field for every calculator.",
+      "acceptance": "NOT_INFERRED_FROM_REFERENCES"
+    },
+    {
+      "groupId": "structured-result-and-reconciliation",
+      "sourceParagraphIds": [
+        "BP-0163",
+        "BP-0164",
+        "BP-0165",
+        "BP-0166",
+        "BP-0167",
+        "BP-0168",
+        "BP-0169",
+        "BP-0170",
+        "BP-0171",
+        "BP-0172",
+        "BP-0173",
+        "BP-0174",
+        "BP-0175",
+        "BP-0176",
+        "BP-0177",
+        "BP-0178",
+        "BP-0179",
+        "BP-0180",
+        "BP-0181",
+        "BP-0182",
+        "BP-0183",
+        "BP-0184",
+        "BP-0185",
+        "BP-0186",
+        "BP-0187",
+        "BP-0188",
+        "BP-0189",
+        "BP-0190",
+        "BP-0191",
+        "BP-0192",
+        "BP-0193",
+        "BP-0194"
+      ],
+      "sourceTextSHA256": "993df3ab05014439fa7c32e6cf28a0cb502b1f500b2c819cc005e9f86e6de7c9",
+      "repositoryCandidateEvidence": [
+        {
+          "path": "src/calculators/final-framework/types.ts",
+          "exists": true,
+          "sha256": "b32ace6cd558c56d3036661fb00ec1b0692c93724d3a185fe9fd79136827f8e1"
+        },
+        {
+          "path": "src/lib/calculation-snapshot.ts",
+          "exists": true,
+          "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+        }
+      ],
+      "scopeMeaning": "Architecture traceability, not per-ID formula approval or a requirement to render every optional field for every calculator.",
+      "acceptance": "NOT_INFERRED_FROM_REFERENCES"
+    },
+    {
+      "groupId": "presentation-and-shared-ux",
+      "sourceParagraphIds": [
+        "BP-0195",
+        "BP-0196",
+        "BP-0197",
+        "BP-0198",
+        "BP-0199",
+        "BP-0200",
+        "BP-0201",
+        "BP-0202",
+        "BP-0203",
+        "BP-0204",
+        "BP-0205",
+        "BP-0206",
+        "BP-0207",
+        "BP-0208",
+        "BP-0209",
+        "BP-0210",
+        "BP-0211",
+        "BP-0212",
+        "BP-0213",
+        "BP-0214",
+        "BP-0215",
+        "BP-0216",
+        "BP-0217",
+        "BP-0218",
+        "BP-0219",
+        "BP-0220",
+        "BP-0221",
+        "BP-0222",
+        "BP-0223",
+        "BP-0224",
+        "BP-0225",
+        "BP-0226",
+        "BP-0227",
+        "BP-0228",
+        "BP-0229",
+        "BP-0230",
+        "BP-0231",
+        "BP-0232",
+        "BP-0233",
+        "BP-0234",
+        "BP-0235",
+        "BP-0236",
+        "BP-0237",
+        "BP-0238",
+        "BP-0239",
+        "BP-0240",
+        "BP-0241",
+        "BP-0242",
+        "BP-0243",
+        "BP-0244",
+        "BP-0245",
+        "BP-0246",
+        "BP-0247",
+        "BP-0248",
+        "BP-0249",
+        "BP-0250",
+        "BP-0251",
+        "BP-0252",
+        "BP-0253",
+        "BP-0254",
+        "BP-0255",
+        "BP-0256",
+        "BP-0257",
+        "BP-0258",
+        "BP-0259",
+        "BP-0260",
+        "BP-0261",
+        "BP-0262",
+        "BP-0263",
+        "BP-0264",
+        "BP-0265",
+        "BP-0266",
+        "BP-0267",
+        "BP-0268",
+        "BP-0269",
+        "BP-0270",
+        "BP-0271",
+        "BP-0272",
+        "BP-0273",
+        "BP-0274",
+        "BP-0275",
+        "BP-0276",
+        "BP-0277",
+        "BP-0278",
+        "BP-0279",
+        "BP-0280"
+      ],
+      "sourceTextSHA256": "c70cfc6a5b5e0be911c0cd4af532340213c662502754149ac7e012f375a82b7f",
+      "repositoryCandidateEvidence": [
+        {
+          "path": "src/components/final-calculator-renderer.tsx",
+          "exists": true,
+          "sha256": "95acb3ca32311c3e843371e2e39c3f74d311d99997706d866b1629957796e4b6"
+        }
+      ],
+      "scopeMeaning": "Architecture traceability, not per-ID formula approval or a requirement to render every optional field for every calculator.",
+      "acceptance": "NOT_INFERRED_FROM_REFERENCES"
+    },
+    {
+      "groupId": "history-scenarios-exports",
+      "sourceParagraphIds": [
+        "BP-0548",
+        "BP-0549",
+        "BP-0550",
+        "BP-0551",
+        "BP-0552",
+        "BP-0553",
+        "BP-0554",
+        "BP-0555",
+        "BP-0556",
+        "BP-0557",
+        "BP-0558",
+        "BP-0559",
+        "BP-0560",
+        "BP-0561"
+      ],
+      "sourceTextSHA256": "d49c8a79314fff1c9bc15a05d87632c4913a7920efab5c8e7297e04ba24407fb",
+      "repositoryCandidateEvidence": [
+        {
+          "path": "src/lib/calculation-snapshot.ts",
+          "exists": true,
+          "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+        }
+      ],
+      "scopeMeaning": "Architecture traceability, not per-ID formula approval or a requirement to render every optional field for every calculator.",
+      "acceptance": "NOT_INFERRED_FROM_REFERENCES"
+    }
+  ],
+  "rows": [
+    {
+      "masterId": 235,
+      "title": "Graphing Calculator",
+      "candidate": [
+        {
+          "engineId": "advanced-math.graphing",
+          "version": 1,
+          "slug": "graphing-calculator",
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "sharedCatalogIds": [
+            235
+          ],
+          "exactCurrentBinding": true,
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "proposedUrl": "https://calcumint.com/calculators/advanced-math-graphing/graphing-calculator",
+          "lifecycle": "UNPUBLISHED_ABSENT",
+          "hostedIdentityMatches": false,
+          "httpStatus": 404,
+          "observedUrl": "https://calcumint.com/calculators/advanced-math-graphing/graphing-calculator",
+          "displayedVersion": null,
+          "liveVerified": false,
+          "codeReviewStatus": "certified",
+          "certificationSoftwareIssues": []
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "originalRequirementPointer": "docs/full-product-batch14/contract-evidence.json#/rows/234/retainedCanonicalRequirements",
+      "blueprintPointer": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/234",
+      "authorityPointer": "docs/calculator-first/publication-readiness-540.json#/rows/234"
+    },
+    {
+      "masterId": 251,
+      "title": "2D Function Plotter",
+      "candidate": [
+        {
+          "engineId": "advanced-math.function-plotter-2d",
+          "version": 1,
+          "slug": "function-plotter-2d",
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "sharedCatalogIds": [
+            251
+          ],
+          "exactCurrentBinding": true,
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "proposedUrl": "https://calcumint.com/calculators/advanced-math-graphing/function-plotter-2d",
+          "lifecycle": "UNPUBLISHED_ABSENT",
+          "hostedIdentityMatches": false,
+          "httpStatus": 404,
+          "observedUrl": "https://calcumint.com/calculators/advanced-math-graphing/function-plotter-2d",
+          "displayedVersion": null,
+          "liveVerified": false,
+          "codeReviewStatus": "certified",
+          "certificationSoftwareIssues": []
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "originalRequirementPointer": "docs/full-product-batch14/contract-evidence.json#/rows/250/retainedCanonicalRequirements",
+      "blueprintPointer": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/250",
+      "authorityPointer": "docs/calculator-first/publication-readiness-540.json#/rows/250"
+    },
+    {
+      "masterId": 275,
+      "title": "Volume Calculator",
+      "candidate": [
+        {
+          "engineId": "geometry.volume",
+          "version": 1,
+          "slug": "volume-calculator",
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "sharedCatalogIds": [
+            275
+          ],
+          "exactCurrentBinding": true,
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "proposedUrl": "https://calcumint.com/calculators/geometry/volume-calculator",
+          "lifecycle": "UNPUBLISHED_ABSENT",
+          "hostedIdentityMatches": false,
+          "httpStatus": 404,
+          "observedUrl": "https://calcumint.com/calculators/geometry/volume-calculator",
+          "displayedVersion": null,
+          "liveVerified": false,
+          "codeReviewStatus": "certified",
+          "certificationSoftwareIssues": []
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "originalRequirementPointer": "docs/full-product-batch14/contract-evidence.json#/rows/274/retainedCanonicalRequirements",
+      "blueprintPointer": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/274",
+      "authorityPointer": "docs/calculator-first/publication-readiness-540.json#/rows/274"
+    },
+    {
+      "masterId": 276,
+      "title": "Slope Calculator",
+      "candidate": [
+        {
+          "engineId": "geometry.slope",
+          "version": 2,
+          "slug": "slope-calculator",
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "sharedCatalogIds": [
+            276
+          ],
+          "exactCurrentBinding": true,
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "proposedUrl": "https://calcumint.com/calculators/geometry/slope-calculator",
+          "lifecycle": "UNPUBLISHED_ABSENT",
+          "hostedIdentityMatches": false,
+          "httpStatus": 404,
+          "observedUrl": "https://calcumint.com/calculators/geometry/slope-calculator",
+          "displayedVersion": null,
+          "liveVerified": false,
+          "codeReviewStatus": "certified",
+          "certificationSoftwareIssues": []
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "originalRequirementPointer": "docs/full-product-batch14/contract-evidence.json#/rows/275/retainedCanonicalRequirements",
+      "blueprintPointer": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/275",
+      "authorityPointer": "docs/calculator-first/publication-readiness-540.json#/rows/275"
+    },
+    {
+      "masterId": 282,
+      "title": "Standard Deviation Calculator",
+      "candidate": [
+        {
+          "engineId": "statistics.standard-deviation",
+          "version": 1,
+          "slug": "standard-deviation-calculator",
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "sharedCatalogIds": [
+            282
+          ],
+          "exactCurrentBinding": true,
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "proposedUrl": "https://calcumint.com/calculators/statistics/standard-deviation-calculator",
+          "lifecycle": "UNPUBLISHED_ABSENT",
+          "hostedIdentityMatches": false,
+          "httpStatus": 404,
+          "observedUrl": "https://calcumint.com/calculators/statistics/standard-deviation-calculator",
+          "displayedVersion": null,
+          "liveVerified": false,
+          "codeReviewStatus": "certified",
+          "certificationSoftwareIssues": []
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "originalRequirementPointer": "docs/full-product-batch14/contract-evidence.json#/rows/281/retainedCanonicalRequirements",
+      "blueprintPointer": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/281",
+      "authorityPointer": "docs/calculator-first/publication-readiness-540.json#/rows/281"
+    },
+    {
+      "masterId": 283,
+      "title": "Variance Calculator",
+      "candidate": [
+        {
+          "engineId": "statistics.variance",
+          "version": 1,
+          "slug": "variance-calculator",
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "sharedCatalogIds": [
+            283
+          ],
+          "exactCurrentBinding": true,
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "proposedUrl": "https://calcumint.com/calculators/statistics/variance-calculator",
+          "lifecycle": "UNPUBLISHED_ABSENT",
+          "hostedIdentityMatches": false,
+          "httpStatus": 404,
+          "observedUrl": "https://calcumint.com/calculators/statistics/variance-calculator",
+          "displayedVersion": null,
+          "liveVerified": false,
+          "codeReviewStatus": "certified",
+          "certificationSoftwareIssues": []
+        }
+      ],
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "originalRequirementPointer": "docs/full-product-batch14/contract-evidence.json#/rows/282/retainedCanonicalRequirements",
+      "blueprintPointer": "docs/blueprint-reconciliation/blueprint-to-540.json#/rows/282",
+      "authorityPointer": "docs/calculator-first/publication-readiness-540.json#/rows/282"
+    }
+  ],
+  "proofFiles": [
+    "src/lib/batch21-six-calculators.test.ts",
+    "src/lib/batch21-six-calculators.ts"
+  ],
+  "limits": [
+    "Graph segmentation detects only omitted samples on the existing 81-point grid; finite-point asymptotes are not inferred.",
+    "Prism compatible linear/square/cubic units are dimensional labels; no conversion or particular unit is inferred.",
+    "Raw engine values and versions are unchanged.",
+    "Optional slope series contains exactly the two supplied finite endpoints in supplied order; no infinite line or continuity scope is inferred.",
+    "Browser acceptance is a local source fixture with existing synthetic transport; new real authenticated storage acceptance remains unestablished.",
+    "Unrepresentable/underflowed or repeated sample grids make chart unavailable while raw engine results/table stay available."
+  ],
+  "baselineCI": {
+    "runId": 41302698955,
+    "conclusion": "success",
+    "evidence": "Root tool-verified exact-head baseline clearance"
+  },
+  "verification": {
+    "command": "./node_modules/.bin/vitest run src/lib/batch21-six-calculators.test.ts",
+    "testsPassed": 15,
+    "eslint": "PASS owned TypeScript files",
+    "browser": "PASS separate final-source Chromium receipts: six candidates both360/1440, actual versioned JSON exports and12scenario recovery UI journeys; synthetic transport only",
+    "protectedManifest": "docs/software-closure/preservation.json",
+    "ownedProtectedOverlap": []
+  },
+  "engineExceptionDifferences": [
+    "Schema-invalid inputs use CalculatorValidationError through runCalculator.",
+    "Statistics sample singleton passes schema cardinality then throws ordinary Error: Sample statistics require at least two values.",
+    "Graph valid schema with fewer than two finite samples throws ordinary Error from sampling.",
+    "Slope vertical input is rejected at schema refinement; finite-coordinate quotient overflow is rejected by calculate."
+  ],
+  "snapshotVerification": {
+    "scope": "Exact current immutable forward-engine agreement only; no history upgrade or full-domain/canonical acceptance",
+    "bindings": [
+      {
+        "slug": "graphing-calculator",
+        "version": 1
+      },
+      {
+        "slug": "function-plotter-2d",
+        "version": 1
+      },
+      {
+        "slug": "volume-calculator",
+        "version": 1
+      },
+      {
+        "slug": "slope-calculator",
+        "version": 2
+      },
+      {
+        "slug": "standard-deviation-calculator",
+        "version": 1
+      },
+      {
+        "slug": "variance-calculator",
+        "version": 1
+      }
+    ],
+    "wrapper": "src/lib/registered-snapshot-verification.ts",
+    "originalVerifierChanged": false,
+    "importHooks": [
+      "src/lib/scenario-set-recovery.ts",
+      "src/components/saved-calculation-actions.tsx"
+    ],
+    "focusedTests": {
+      "new": 8,
+      "originalReplay": 12,
+      "existingRecovery": 2,
+      "allPassed": true
+    },
+    "eslint": "PASS all5 touched replay/hook TypeScript files",
+    "limitations": [
+      "Serialized history/readback and actual local browser export/scenario recovery pass; no new genuine authenticated storage acceptance is inferred.",
+      "Replay/report artifact has no plan argument; these tests do not establish entitlement acceptance."
+    ]
+  },
+  "independentGraphWitness": {
+    "scope": "Graphing v1 and 2D Plotter v1, x^2 on [-5,5] only",
+    "expectedFormula": "integer n=-40..40: x=n/8, y=n*n/64",
+    "exactExpectedCoordinateValuePairs": 162,
+    "testsPassed": 15,
+    "fullDomainAcceptance": false
+  },
+  "currentProofFileHashes": {
+    "src/lib/batch21-six-calculators.test.ts": "489f49849026a7bb6cefe7751e2232e86e052cdfa010ac7d3c1ec377d4890dfe",
+    "src/lib/batch21-six-calculators.ts": "a74874a71ab4fd55d50258584b6e2d20dd77ea3cd83d8b2abd10f61f31c08fde",
+    "src/lib/batch21-snapshot-replay.ts": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8",
+    "src/lib/batch21-snapshot-replay.test.ts": "e3a0b0422629c527c1d9ba251c5c6e8c0c470cf31438e610b1cb136dff848df1",
+    "src/lib/registered-snapshot-verification.ts": "0dcee3abde355f775fb61bb63cb2b7d293e21e44b3be5ec2b85c7429ed5783c5"
+  }
+}

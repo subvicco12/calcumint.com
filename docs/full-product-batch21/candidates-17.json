@@ -1,0 +1,1608 @@
+{
+  "scope": "Ordered conditional release-review preparation for exactly 17 previously observed locally certified/content routes; no new inventory or production query",
+  "baseline": "9d82dcf2cd63cf64bf5ef37ff993158cda48e14c",
+  "releaseHold": true,
+  "productionPublicationAuthorized": false,
+  "eligibleToPublishCount": 0,
+  "uniqueCanonicalBindingsEstablished": 0,
+  "inputSha256": {
+    "docs/calculator-first/registry-snapshot.json": "8fa3983bbaaea16c6a86b7286be578ccc9c5f841950b49066f6ed7d8d9b588cd",
+    "docs/calculator-first/publication-readiness-540.json": "17132cfb30e3493b03ed55feb3744bc92ee7052ebd5b7c570fe04e254de841de",
+    "docs/calculator-first/release-wave-candidates.json": "77066ec036ccaab1c0cb499232ab429367d96ed15691559ba655a20e40686a92",
+    "docs/calculator-first/hosted-rows.json": "7d242130dfafbaffb5a93cbdef2fd63bf523e75733a5aaf2c4c82731600bd3ca",
+    "docs/calculator-first/hosted-qa.json": "9dd69aed78c550ebf48bce4d91f68fb55133dd9bd7443a6fa342a4a2deaecc4f",
+    "docs/calculator-first/hosted-source-evidence.json": "ff1d5c38240761aa2c29695226415a15908979aa94e155de1219f5342ca9f3bc",
+    "docs/calculator-first/unpublished-route-observations.json": "5c12e0ac549d9ffcb77709f48be63e0b4aeda81717c266ce5d42f5d344e4640c",
+    "docs/calculator-first/input-integrity.json": "a0b69211d66bea4c2bad738b37a1102a3cab54bf0579a01ec92e2d3ef2bcfc33",
+    "docs/calculator-first/preservation.json": "376fd8d91f8bf7dab648302b1488dab27760e14c961553937904e4fb16d69635",
+    "src/lib/admin/publishing.ts": "be7ad3e0d51a083bcdec01126619025093113372ef41812b14f236895f69a8d6",
+    "data/catalog/master-catalog-2026.csv": "3616153c285011c042bfe1ccf2b2244159649ce9a07ff7749504e35398cb0c90"
+  },
+  "preservation": {
+    "authorityBlocks": 43,
+    "privateDrafts": 14,
+    "historicalVersions": "Unchanged, including SIP and Slope; no lifecycle/source/approval changes"
+  },
+  "qaContract": {
+    "standard": [
+      "engine-tests",
+      "formula-review",
+      "sources",
+      "methodology",
+      "reverse-solve",
+      "visualization-reconciliation",
+      "schedule-reconciliation",
+      "scenario-reconciliation",
+      "sensitivity-validation",
+      "entitlement-validation",
+      "ux-responsive",
+      "performance",
+      "security",
+      "seo-content",
+      "accessibility"
+    ],
+    "financial": [
+      "engine-tests",
+      "formula-review",
+      "sources",
+      "methodology",
+      "reverse-solve",
+      "visualization-reconciliation",
+      "schedule-reconciliation",
+      "scenario-reconciliation",
+      "sensitivity-validation",
+      "entitlement-validation",
+      "ux-responsive",
+      "performance",
+      "security",
+      "seo-content",
+      "accessibility",
+      "ymyl-review"
+    ],
+    "conditionalRulePack": "Adds rule-pack-validation: standard16/financial17 only if applicability requires it; otherwise standard15/financial16. Missing metadata is not an applicability determination."
+  },
+  "existingPublishedEvidenceLimitations": {
+    "published": 209,
+    "qaPassed": 2299,
+    "qaWaived": 836,
+    "reviewedSourceRecords": 210,
+    "repositoryMethodology": 199,
+    "calculatorDefinition": 81,
+    "portfolioSeo": 118,
+    "officialNistBipmLabels": 11,
+    "meaning": "Counts are historical observation only. Reviewer booleans do not authenticate qualified competence or waiver rationale; reviewed source booleans/labels do not establish native publisher revision or applicability. No existing pass or waiver transfers to these 17 absent identities."
+  },
+  "rows": [
+    {
+      "reviewOrder": 1,
+      "engineId": "advanced-math.graphing",
+      "version": 1,
+      "slug": "graphing-calculator",
+      "url": "https://calcumint.com/calculators/advanced-math-graphing/graphing-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:10.703Z",
+      "riskClass": "standard",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 235,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/234/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/234",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "CalcuMint deterministic expression engine",
+          "note": "Restricted parser and finite numeric evaluator."
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Qualified-review applicability/competence decision absent; standard does not automatically require assigned YMYL reviewer",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 2,
+      "engineId": "advanced-math.function-plotter-2d",
+      "version": 1,
+      "slug": "function-plotter-2d",
+      "url": "https://calcumint.com/calculators/advanced-math-graphing/function-plotter-2d",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:11.191Z",
+      "riskClass": "standard",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 251,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/250/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/250",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "CalcuMint deterministic expression engine",
+          "note": "Restricted parser and finite numeric evaluator."
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Qualified-review applicability/competence decision absent; standard does not automatically require assigned YMYL reviewer",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 3,
+      "engineId": "geometry.volume",
+      "version": 1,
+      "slug": "volume-calculator",
+      "url": "https://calcumint.com/calculators/geometry/volume-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:11.699Z",
+      "riskClass": "standard",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 275,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/274/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/274",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "CalcuMint deterministic geometry engine"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Qualified-review applicability/competence decision absent; standard does not automatically require assigned YMYL reviewer",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 4,
+      "engineId": "geometry.slope",
+      "version": 2,
+      "slug": "slope-calculator",
+      "url": "https://calcumint.com/calculators/geometry/slope-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:12.167Z",
+      "riskClass": "standard",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 276,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/275/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/275",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "CalcuMint deterministic coordinate-geometry engine"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Qualified-review applicability/competence decision absent; standard does not automatically require assigned YMYL reviewer",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": "Preserve historical Slope v1; current candidate v2 is not retrospective migration approval"
+    },
+    {
+      "reviewOrder": 5,
+      "engineId": "statistics.standard-deviation",
+      "version": 1,
+      "slug": "standard-deviation-calculator",
+      "url": "https://calcumint.com/calculators/statistics/standard-deviation-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:12.651Z",
+      "riskClass": "standard",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 282,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/281/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/281",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "CalcuMint deterministic statistics engine"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Qualified-review applicability/competence decision absent; standard does not automatically require assigned YMYL reviewer",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 6,
+      "engineId": "statistics.variance",
+      "version": 1,
+      "slug": "variance-calculator",
+      "url": "https://calcumint.com/calculators/statistics/variance-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:13.154Z",
+      "riskClass": "standard",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 283,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/282/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/282",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "CalcuMint deterministic statistics engine"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Qualified-review applicability/competence decision absent; standard does not automatically require assigned YMYL reviewer",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 7,
+      "engineId": "finance.compound-interest",
+      "version": 1,
+      "slug": "compound-interest-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/compound-interest-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:05.242Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 51,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/50/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/50",
+          "disposition": "CERTIFICATION_BLOCKED"
+        },
+        {
+          "masterId": 71,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/70/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/70",
+          "disposition": "ENGINEERING_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Investor.gov \u2014 Compound Interest Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 8,
+      "engineId": "finance.loan-payment",
+      "version": 1,
+      "slug": "loan-payment-calculator",
+      "url": "https://calcumint.com/calculators/loans-mortgages/loan-payment-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:05.759Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 1,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/0/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/0",
+          "disposition": "CERTIFICATION_BLOCKED"
+        },
+        {
+          "masterId": 6,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/5/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/5",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 7,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/6/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/6",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 8,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/7/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/7",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 22,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/21/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/21",
+          "disposition": "ENGINEERING_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 9,
+      "engineId": "finance.mortgage",
+      "version": 1,
+      "slug": "mortgage-payment",
+      "url": "https://calcumint.com/calculators/loans-mortgages/mortgage-payment",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:06.255Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 26,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/25/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/25",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+        },
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 Principal and interest vs total monthly mortgage payment",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 10,
+      "engineId": "finance.loan-analysis",
+      "version": 1,
+      "slug": "loan-emi-calculator",
+      "url": "https://calcumint.com/calculators/loans-mortgages/loan-emi-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:06.759Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 2,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/1/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/1",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 3,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/2/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/2",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 4,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/3/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/3",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 5,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/4/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/4",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 27,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/26/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/26",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 29,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/28/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/28",
+          "disposition": "ENGINEERING_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 How mortgage lenders calculate monthly payments",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 11,
+      "engineId": "finance.term-deposit",
+      "version": 1,
+      "slug": "fixed-term-deposit-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/fixed-term-deposit-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:07.271Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 55,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/54/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/54",
+          "disposition": "ENGINEERING_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 How compound interest works",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+        },
+        {
+          "label": "CFPB Regulation DD Appendix A \u2014 Annual Percentage Yield Calculation",
+          "url": "https://www.consumerfinance.gov/rules-policy/regulations/1030/a/"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 12,
+      "engineId": "finance.recurring-deposit",
+      "version": 1,
+      "slug": "recurring-deposit-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/recurring-deposit-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:07.775Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 56,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/55/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/55",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Investor.gov \u2014 Compound Interest Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        },
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 How compound interest works",
+          "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 13,
+      "engineId": "finance.sip",
+      "version": 1,
+      "slug": "sip-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/sip-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:08.271Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 52,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/51/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/51",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 71,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/70/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/70",
+          "disposition": "ENGINEERING_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Investor.gov \u2014 Compound Interest Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        },
+        {
+          "label": "Investor.gov \u2014 Dollar Cost Averaging",
+          "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": "Preserve historical SIP v1 versus reference v2; current route candidate v1 is not a version-selection approval"
+    },
+    {
+      "reviewOrder": 14,
+      "engineId": "finance.step-up-sip",
+      "version": 1,
+      "slug": "step-up-sip-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/step-up-sip-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:08.755Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 53,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/52/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/52",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Investor.gov \u2014 Compound Interest Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        },
+        {
+          "label": "Investor.gov \u2014 Dollar Cost Averaging",
+          "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 15,
+      "engineId": "finance.investment-math",
+      "version": 1,
+      "slug": "investment-growth-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/investment-growth-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:09.255Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 45,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/44/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/44",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 57,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/56/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/56",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 59,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/58/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/58",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 60,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/59/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/59",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 62,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/61/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/61",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 66,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/65/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/65",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 68,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/67/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/67",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 69,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/68/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/68",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 73,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/72/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/72",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 75,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/74/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/74",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 80,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/79/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/79",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 81,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/80/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/80",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 82,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/81/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/81",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 84,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/83/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/83",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 85,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/84/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/84",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 86,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/85/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/85",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 87,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/86/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/86",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 88,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/87/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/87",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 89,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/88/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/88",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 90,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/89/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/89",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 91,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/90/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/90",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 92,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/91/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/91",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 95,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/94/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/94",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 96,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/95/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/95",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 97,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/96/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/96",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 98,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/97/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/97",
+          "disposition": "AUTHORITY_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Investor.gov \u2014 Compound Interest Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        },
+        {
+          "label": "Investor.gov \u2014 Savings Goal Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 16,
+      "engineId": "finance.swp",
+      "version": 1,
+      "slug": "swp-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/swp-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:09.725Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 54,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/53/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/53",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 80,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/79/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/79",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 81,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/80/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/80",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 82,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/81/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/81",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 84,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/83/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/83",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 85,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/84/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/84",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 86,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/85/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/85",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 87,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/86/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/86",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 88,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/87/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/87",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 89,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/88/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/88",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 90,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/89/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/89",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 91,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/90/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/90",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 92,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/91/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/91",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 95,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/94/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/94",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 96,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/95/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/95",
+          "disposition": "ENGINEERING_BLOCKED"
+        },
+        {
+          "masterId": 97,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/96/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/96",
+          "disposition": "AUTHORITY_BLOCKED"
+        },
+        {
+          "masterId": 98,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/97/candidates/1",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/97",
+          "disposition": "AUTHORITY_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Investor.gov \u2014 Compound Interest Calculator",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    },
+    {
+      "reviewOrder": 17,
+      "engineId": "finance.simple-interest",
+      "version": 1,
+      "slug": "simple-interest-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/simple-interest-calculator",
+      "httpStatus": 404,
+      "observedAt": "2026-11-01T11:14:10.215Z",
+      "riskClass": "financial",
+      "localReviewStatus": "certified",
+      "canonicalCandidates": [
+        {
+          "masterId": 50,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "canonicalMappingApproved": false,
+          "pointer": "docs/calculator-first/publication-readiness-540.json#/rows/49/candidates/0",
+          "requirementsPointer": "docs/full-product-batch16/requirements-540.json#/rows/49",
+          "disposition": "CERTIFICATION_BLOCKED"
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "eligibleToPublish": false,
+      "hostedLifecycle": "ABSENT",
+      "hostedQaRows": 0,
+      "missingRequiredQaChecks": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalQaCheck": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedSourceEvidenceRows": 0,
+      "localSourceMetadata": [
+        {
+          "label": "Consumer Financial Protection Bureau \u2014 Calculating loan payments (simple-interest formula)",
+          "url": "https://files.consumerfinance.gov/f/documents/cfpb_building_block_activities_calculating-loan-payments_worksheet.pdf"
+        }
+      ],
+      "sourceBlocker": "No hosted reviewed source binding. Establish publisher revision, exact formula/domain/version applicability and qualified review; local labels/URLs do not prove these.",
+      "reviewerBlocker": "Active review-capable assigned YMYL reviewer and qualified specialist decision absent",
+      "canonicalBlocker": "Exact immutable canonical ID/version/input-output-feature scope approval absent; family/support candidates cannot establish acceptance",
+      "lifecycleBlocker": "Prepare exact hosted draft identity and reviewed lifecycle/QA/source evidence; no hosted row to transition; no write authorized",
+      "historicalConstraint": null
+    }
+  ],
+  "reviewSequence": [
+    "Six standard candidates first; then eleven financial candidates",
+    "Resolve immutable canonical scope and version, source applicability and qualified-review decisions",
+    "Prepare per-ID acceptance evidence at linked original requirement pointers",
+    "If separately authorized later, create hosted draft and obtain exact QA/source/reviewer evidence; resolve conditional rule metadata",
+    "Obtain independent acceptance/canonical approval and separate release authorization after RELEASE HOLD; observe route/version after authorized release"
+  ],
+  "baselineCI": {
+    "id": 41302698955,
+    "status": "completed",
+    "conclusion": "success"
+  }
+}

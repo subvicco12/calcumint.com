@@ -4,7 +4,7 @@ import {createCalculationSnapshot,serializeCalculationJson,type CalculationSnaps
 import {serializeCalculationSnapshotCsv as serializeSavedCalculationCsv,serializeCalculationPdf} from '@/lib/calculation-export';
 import {downloadPdfBytes} from '@/lib/download-pdf';
 import {getPlanEntitlements} from '@/lib/entitlements';
-import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-replay';
+import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-verification';
 import {useCalculatorPlan} from './use-calculator-plan';
 import {CalculatorScenarioWorkspace} from './calculator-scenario-workspace';
 
