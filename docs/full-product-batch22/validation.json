@@ -1,0 +1,86 @@
+{
+  "baseline": {
+    "pr": 1514,
+    "sha": "5450378577fd8a5919e439a0d02044ac11dbfcd6",
+    "ci": 41309803934,
+    "conclusion": "success",
+    "verified": true
+  },
+  "focused": {
+    "interfaceUnitTests": 55,
+    "protectedPureRendererTests": 4,
+    "replayTests": {
+      "new": 11,
+      "existing": 20
+    },
+    "packetAdversarialTests": 9,
+    "historicalCalculusTests": 12,
+    "securityContractTests": 7,
+    "browser": {
+      "interfaces": 43,
+      "journeys": 86,
+      "blankChecks": 224,
+      "malformedChecks": 224,
+      "nonfiniteChecks": 448,
+      "validZeroChecks": 104,
+      "actualSnapshotDisabledChecks": 3584,
+      "physicsExactExportReplayJourneys": 22
+    },
+    "isolatedPreflight": {
+      "checks": 7,
+      "exitCode": 0,
+      "predicateSha256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+      "scope": "14 public tables reconstructed from captured descriptors with genuine pinned local PG17.6/GoTrue/PostgREST; not full production acceptance"
+    }
+  },
+  "independentReview": {
+    "reviewer": "b22_review",
+    "importantFindings": 0,
+    "finalTargetedTests": 66,
+    "conclusion": "No important defect found; exact source binding, pure renderer, native account artifacts, replay and fail-closed limitations reviewed."
+  },
+  "productionValidation": {
+    "status": "PASS",
+    "command": "npm run test:production",
+    "unit": {
+      "passed": 7088,
+      "skipped": 4,
+      "filesPassed": 842,
+      "filesSkipped": 2
+    },
+    "launch": 45,
+    "certification": 15,
+    "lint": {
+      "errors": 0,
+      "existingWarnings": 29
+    },
+    "typecheck": "PASS",
+    "webpack": "PASS",
+    "localNode": "v24.19.0",
+    "ciNode": "22",
+    "log": "/workspace/work/batch22-production-final.log",
+    "exitCode": 0,
+    "logSha256": "ae13c4c2b23e3630ba86bcea487315fd976541d20016fad3cc813d74edad6da8"
+  },
+  "preservation": {
+    "protectedSourceHashesVerified": 194,
+    "calculatorSourcesUnchanged": true,
+    "canonicalCatalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalPrivateDrafts": 14,
+    "authorityBlockers": 43,
+    "canonicalPromotions": 0,
+    "sqlSuccessorsActivated": 0
+  },
+  "receipts": {
+    "interfaceAuditSha256": "efc76f08ed274121ed8752e84717b6ba0aedfdf1698731f8096026e0f0aa0944",
+    "preflightSha256": "1f245a621f759c17559e4a5d4493379dc1e8b8bca373c2e1dddb68e0c14c2b14"
+  },
+  "newHostedCi": {
+    "status": "CHECK_AFTER_DRAFT_CREATION",
+    "recordedBeforeSubmission": true,
+    "policy": "one exact-head check after draft PR creation; final disposition in delivery receipt/PR response, no polling"
+  },
+  "releaseHold": true,
+  "productionWrites": false
+}

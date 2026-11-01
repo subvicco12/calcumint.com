@@ -1,0 +1,20 @@
+import {describe,it,expect} from 'vitest';
+import {createHash} from 'node:crypto';
+import {validatePublicationPackets,type PublicationPacket} from './batch22-publication-eligibility';
+const bytes=new TextEncoder().encode('original source');
+const sha=createHash('sha256').update(bytes).digest('hex');
+const identities=[{masterId:235,engineId:'advanced-math.graphing',slug:'graphing-calculator',version:1},{masterId:251,engineId:'advanced-math.function-plotter-2d',slug:'function-plotter-2d',version:1},{masterId:275,engineId:'geometry.volume',slug:'volume-calculator',version:1},{masterId:276,engineId:'geometry.slope',slug:'slope-calculator',version:2},{masterId:282,engineId:'statistics.standard-deviation',slug:'standard-deviation-calculator',version:1},{masterId:283,engineId:'statistics.variance',slug:'variance-calculator',version:1}];
+const pointers=Object.fromEntries(identities.map(i=>[i.masterId,['/rows/0']]));
+const packets=()=>identities.map(identity=>({...identity,sources:[{path:'source.json',sha256:sha,pointer:'/rows/0'}]}));
+const run=(rows:PublicationPacket[])=>validatePublicationPackets(rows,[{path:'source.json',sha256:sha,pointers}],{'source.json':bytes});
+describe('offline source-bound publication eligibility',()=>{
+ it('validates integrity while withholding authority even for local certified labels and asserted booleans',()=>{const rows=packets().map(p=>({...p,localReviewStatus:'certified',publicationAuthorized:true,canonicalAccepted:true}));const result=run(rows);expect(result.integrityVerified).toBe(true);expect(result.decisions).toHaveLength(6);expect(result.decisions.every(d=>!d.eligible&&d.blockers.includes('AUTHENTICATED_AUTHORITY_IMPORT_UNAVAILABLE'))).toBe(true);});
+ it('requires every mandatory pinned source reference for each identity',()=>{const rows=packets();const pins=[{path:'source.json',sha256:sha,pointers},{path:'second.json',sha256:sha,pointers}];const result=validatePublicationPackets(rows,pins,{'source.json':bytes,'second.json':bytes});expect(result.integrityVerified).toBe(false);expect(result.errors).toContain('MISSING_MANDATORY_SOURCE_REFERENCE');});
+ it('rejects duplicate identities rather than silently deduplicating',()=>{const rows=packets();rows[1]=rows[0];expect(run(rows).integrityVerified).toBe(false);});
+ it('rejects stale slope versions',()=>{const rows=packets();rows[3].version=1;expect(run(rows).integrityVerified).toBe(false);});
+ it('rejects source bytes changed underneath a declared digest',()=>{expect(validatePublicationPackets(packets(),[{path:'source.json',sha256:sha,pointers}],{'source.json':new TextEncoder().encode('substitute')}).integrityVerified).toBe(false);});
+ it('rejects substituted paths even with valid attacker supplied hashes',()=>{const rows=packets();rows[0].sources[0].path='other.json';expect(validatePublicationPackets(rows,[{path:'source.json',sha256:sha,pointers}],{'source.json':bytes,'other.json':bytes}).integrityVerified).toBe(false);});
+ it('rejects stale declared digests and empty references',()=>{const rows=packets();rows[0].sources[0].sha256='0'.repeat(64);expect(run(rows).integrityVerified).toBe(false);rows[0].sources=[];expect(run(rows).integrityVerified).toBe(false);});
+ it('rejects substituted source pointers inside the same verified raw file',()=>{const rows=packets();rows[0].sources[0].pointer='/rows/1';expect(run(rows).integrityVerified).toBe(false);});
+ it('rejects missing raw files and malformed JSON pointers',()=>{expect(validatePublicationPackets(packets(),[{path:'source.json',sha256:sha,pointers}],{}).integrityVerified).toBe(false);const rows=packets();rows[0].sources[0].pointer='arbitrary evidence';expect(run(rows).integrityVerified).toBe(false);});
+});
