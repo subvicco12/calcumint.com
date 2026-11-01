@@ -5,7 +5,7 @@ import {captureScenario,type CapturedScenario} from './scenario-set';
 import {validateScenarioDisplayMetadata,type ScenarioDisplayMetadata} from './scenario-display-metadata';
 import {serializeScenarioReportJson} from './scenario-report';
 import {sameRecordedJson} from './recorded-json-equality';
-import {verifyRegisteredSnapshot} from './registered-snapshot-replay';
+import {verifyRegisteredSnapshot} from './registered-snapshot-verification';
 const record=z.record(z.string(),z.unknown());
 const displayField=z.object({label:z.string().min(1).max(300),unit:z.string().max(120).optional()}).strict();
 const display=z.object({schemaVersion:z.literal(1),calculatorSlug:z.string().min(1).max(200),calculatorVersion:z.number().int().positive(),inputs:z.record(z.string(),displayField),outputs:z.record(z.string(),displayField)}).strict();
