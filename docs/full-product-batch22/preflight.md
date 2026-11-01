@@ -1,0 +1,13 @@
+# Batch 22 isolated publication preflight
+
+Final-source command passed with exit 0: `PREFLIGHT_ARTIFACTS=/workspace/work/batch22-preflight node tests/batch22-publication-preflight/acceptance.mjs`. The machine receipt, exact source hashes, UTC execution times and all six negative gate results are in [preflight.json](preflight.json). The raw receipt is outside the checkout at `/workspace/work/batch22-preflight/receipt.json`.
+
+The fixture reuses authenticated GoTrue/PostgREST and the captured compatibility/admin initializers: 14 public tables, pinned PostgreSQL 17.6, GoTrue 2.197.0 and PostgREST 12.2.3. Images are cached (`--pull=never`), containers use an internal Docker network and no published container ports. This scope does not establish full production data/provider acceptance.
+
+The six templates are the first six entries of Batch 21's lifecycle preparation: graphing, 2D function plotter, volume, slope, standard deviation and variance. They remain drafts with 90 pending QA rows, null reviewers, zero source evidence and zero QA decisions. A genuine fixture user supplies the required creation foreign key; no platform reviewer or approval is created. Captured pending-QA triggers require the isolated service-role claim during staging; gate evaluation uses a genuine service-role JWT through PostgREST.
+
+Verified refusals include absent calculator, pending QA and absent sources for every candidate, expected-version mismatch in orchestration, predicate hash drift and source byte hash drift. The captured gate accepts UUID only and cannot itself check an expected version. Its exact predicate SHA256 remains `18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c`.
+
+Draft staging rollback restores zero rows; retry then creates six drafts; duplicate staging refuses atomically and retains six. The original guarded correction bundle refuses application and retry with metadata unchanged. No guard is removed and no correction, publication transition, certified/published row, source approval, waiver or production change is executed. Correction adoption and its postimage rollback remain unactivated and are not claimed as tested here. Publication remains on hold.
+
+The current authenticated read-only [hosted gate capture](hosted-gate.json) has the exact same predicate SHA256 as the executed fixture. The [candidate-state capture](hosted-candidate-state.json) separately confirms all six actual catalog records absent, with no assigned reviewers, QA rows or sources. Exact capture-byte SHA256 bindings are recorded in `currentHostedSourceBindings` in preflight.json. This comparison changes documentation only; the acceptance source and executed receipt remain unchanged.

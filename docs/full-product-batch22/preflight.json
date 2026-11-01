@@ -1,0 +1,222 @@
+{
+  "kind": "NEGATIVE_ONLY_ISOLATED_PUBLICATION_PREFLIGHT",
+  "startedAt": "2026-11-01T14:29:45.669Z",
+  "completedAt": "2026-11-01T14:30:07.888Z",
+  "scope": "14 public tables reconstructed from captured descriptors with genuine pinned local PG17.6/GoTrue/PostgREST; not full production acceptance",
+  "preparationSha256": "e7a0a5dd06e4c7c26bd38fe21b9f9c3e698f87d745edce63fa051d7b94663fd0",
+  "predicateSha256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+  "metadataSha256": "895f6df9351a149fd9c825158af0ce38e79dad2ad6a89774efa7a8e8f9a57afd",
+  "checks": [
+    "Original correction bundle refuses initial application and retry with exact metadata unchanged",
+    "Predicate hash drift and source-byte hash drift refuse composition",
+    "Genuine service-role PostgREST gate refuses a missing record",
+    "Draft and pending-QA staging rollback leaves zero catalog rows",
+    "Retry after rollback stages six drafts; duplicate reapplication refuses atomically",
+    "All six authenticated gate calls refuse pending QA and absent sources; expected-version mismatch is detected before any transition",
+    "Final invariant: six drafts, 90 pending checks, null reviewers, zero sources/decisions/publication and unchanged metadata"
+  ],
+  "gates": [
+    {
+      "engineId": "advanced-math.graphing",
+      "version": 1,
+      "ok": false,
+      "failures": [
+        "At least one reviewed source evidence record is required",
+        "engine-tests must pass",
+        "formula-review must pass",
+        "sources must pass",
+        "methodology must pass",
+        "reverse-solve must pass",
+        "visualization-reconciliation must pass",
+        "schedule-reconciliation must pass",
+        "scenario-reconciliation must pass",
+        "sensitivity-validation must pass",
+        "entitlement-validation must pass",
+        "ux-responsive must pass",
+        "performance must pass",
+        "security must pass",
+        "seo-content must pass",
+        "accessibility must pass"
+      ]
+    },
+    {
+      "engineId": "advanced-math.function-plotter-2d",
+      "version": 1,
+      "ok": false,
+      "failures": [
+        "At least one reviewed source evidence record is required",
+        "engine-tests must pass",
+        "formula-review must pass",
+        "sources must pass",
+        "methodology must pass",
+        "reverse-solve must pass",
+        "visualization-reconciliation must pass",
+        "schedule-reconciliation must pass",
+        "scenario-reconciliation must pass",
+        "sensitivity-validation must pass",
+        "entitlement-validation must pass",
+        "ux-responsive must pass",
+        "performance must pass",
+        "security must pass",
+        "seo-content must pass",
+        "accessibility must pass"
+      ]
+    },
+    {
+      "engineId": "geometry.volume",
+      "version": 1,
+      "ok": false,
+      "failures": [
+        "At least one reviewed source evidence record is required",
+        "engine-tests must pass",
+        "formula-review must pass",
+        "sources must pass",
+        "methodology must pass",
+        "reverse-solve must pass",
+        "visualization-reconciliation must pass",
+        "schedule-reconciliation must pass",
+        "scenario-reconciliation must pass",
+        "sensitivity-validation must pass",
+        "entitlement-validation must pass",
+        "ux-responsive must pass",
+        "performance must pass",
+        "security must pass",
+        "seo-content must pass",
+        "accessibility must pass"
+      ]
+    },
+    {
+      "engineId": "geometry.slope",
+      "version": 2,
+      "ok": false,
+      "failures": [
+        "At least one reviewed source evidence record is required",
+        "engine-tests must pass",
+        "formula-review must pass",
+        "sources must pass",
+        "methodology must pass",
+        "reverse-solve must pass",
+        "visualization-reconciliation must pass",
+        "schedule-reconciliation must pass",
+        "scenario-reconciliation must pass",
+        "sensitivity-validation must pass",
+        "entitlement-validation must pass",
+        "ux-responsive must pass",
+        "performance must pass",
+        "security must pass",
+        "seo-content must pass",
+        "accessibility must pass"
+      ]
+    },
+    {
+      "engineId": "statistics.standard-deviation",
+      "version": 1,
+      "ok": false,
+      "failures": [
+        "At least one reviewed source evidence record is required",
+        "engine-tests must pass",
+        "formula-review must pass",
+        "sources must pass",
+        "methodology must pass",
+        "reverse-solve must pass",
+        "visualization-reconciliation must pass",
+        "schedule-reconciliation must pass",
+        "scenario-reconciliation must pass",
+        "sensitivity-validation must pass",
+        "entitlement-validation must pass",
+        "ux-responsive must pass",
+        "performance must pass",
+        "security must pass",
+        "seo-content must pass",
+        "accessibility must pass"
+      ]
+    },
+    {
+      "engineId": "statistics.variance",
+      "version": 1,
+      "ok": false,
+      "failures": [
+        "At least one reviewed source evidence record is required",
+        "engine-tests must pass",
+        "formula-review must pass",
+        "sources must pass",
+        "methodology must pass",
+        "reverse-solve must pass",
+        "visualization-reconciliation must pass",
+        "schedule-reconciliation must pass",
+        "scenario-reconciliation must pass",
+        "sensitivity-validation must pass",
+        "entitlement-validation must pass",
+        "ux-responsive must pass",
+        "performance must pass",
+        "security must pass",
+        "seo-content must pass",
+        "accessibility must pass"
+      ]
+    }
+  ],
+  "final": {
+    "qa": 90,
+    "drafts": 6,
+    "sources": 0,
+    "decisions": 0,
+    "otherLifecycle": 0
+  },
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "account": {
+      "scope": "Captured invitation-related tables, constraints, RLS, effective table/function grants and captured functions; hosted auth replaced by pinned local GoTrue. Not whole-hosted equivalence.",
+      "descriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+      "scopedDescriptorSha256": "bc77cb1af8f764ab230c0933dfd5910c07c6c2097f4fb15a4e4c11b1e3a7508e",
+      "privateSourceVerified": false,
+      "compatibilityDescriptorSha256": "214c21542e49b1fdfe83d8b91567cbd33c3967a22564c159e58a7b244a60b392",
+      "compatibilitySourceDescriptorSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0",
+      "compatibilityPrivateSourceVerified": false,
+      "compatibilityScope": "Captured four account tables and effective table/column grants; local provider auth; no hosted ACL ancestry equivalence"
+    },
+    "admin": {
+      "privateSourceVerified": false,
+      "scope": "Six captured admin tables, constraints, standalone indexes, policies, table/column grants and all scoped triggers; local pinned auth internals, no production data or provider equivalence",
+      "scopedSha256": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c",
+      "sourceCaptureSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0"
+    }
+  },
+  "correctionsApplied": false,
+  "publicationTransitionsExecuted": false,
+  "productionWrites": false,
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "limitations": [
+    "UUID-only captured predicate has no expected-version argument; version mismatch checked by orchestration assertion",
+    "No positive gate, approval, waiver, source reviewer or corrected postimage acceptance was invented",
+    "Guarded correction adoption/reversal remains unactivated; rollback/retry evidence concerns draft staging only"
+  ],
+  "command": "PREFLIGHT_ARTIFACTS=/workspace/work/batch22-preflight node tests/batch22-publication-preflight/acceptance.mjs",
+  "exitCode": 0,
+  "acceptanceSha256": "3ec1f49abe61be9f282e4bbee36e83feab72821e8717ccc663d6d3c7f574dddf",
+  "receiptPath": "/workspace/work/batch22-preflight/receipt.json",
+  "receiptSha256": "3eaf33bdfd1a34408d3bcf47f24c84031490fb3f1e471067fb746cfc67c559a6",
+  "currentHostedSourceBindings": [
+    {
+      "path": "docs/full-product-batch22/hosted-gate.json",
+      "sha256": "040054d7d955be11373a459d3dc96886e58e37b6b25001acaecdd833ce98c53e",
+      "method": "Authenticated Supabase MCP SELECT only",
+      "project": "zpwpstsvztyshcnwdfye"
+    },
+    {
+      "path": "docs/full-product-batch22/hosted-candidate-state.json",
+      "sha256": "ed082f38e9c1fab150ec089229f1580e8dc751bad580be36b8d2bc3021290412",
+      "method": "Authenticated read-only targeted SELECT against actual catalog/QA/source tables; reviewer assignment only, not qualification inferred",
+      "project": "zpwpstsvztyshcnwdfye"
+    }
+  ],
+  "currentHostedPredicateMatchesExecutedFixture": true,
+  "currentHostedCandidatesAbsent": 6,
+  "currentHostedBindingScope": "Read-only captured evidence comparison after isolated execution; acceptance source unchanged, no additional database writes or Docker run"
+}
