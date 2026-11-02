@@ -1,0 +1,3089 @@
+{
+  "reviewHead": "591969f7f1f968e8bf0a45d16defb2c1b59043d6",
+  "inputSha256": "9e8f6c75ce0e3de86afe3758060dcfcdbf2fdf88dfb10d0ab572514afd614a0d",
+  "scope": "Exact-head static inspection plus new focused31-row runtime validation. Production code unchanged; added one test file. All31 source-fixed applicable records retained without widening scope.",
+  "summary": {
+    "applicable": 31,
+    "unresolvedPreserved": 273,
+    "formalPendingPreserved": 1207,
+    "confirmedImplementationBugs": [],
+    "focusedTaskOrder": [
+      "P0 exact72 selected-root independent residual receipt",
+      "P0 exact25 date/payment inverse-forward receipt",
+      "P1 eight-adapter chart/schedule parameterized rendered reconciliation",
+      "P1 payoff minimal-period and DTI inverse rounding boundaries",
+      "P1 exact60/61/62/63/83 inverse residuals"
+    ],
+    "newRuntimeTests": {
+      "total": 31,
+      "passed": 31,
+      "failed": 0
+    }
+  },
+  "rows": [
+    {
+      "requestId": "private.component.3@1:visualization-reconciliation",
+      "engineId": "private.component.3",
+      "immutableVersion": 1,
+      "masterId": 3,
+      "title": "Amortization Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/2/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.3@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 436.0283979999999,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.3@1:schedule-reconciliation",
+      "engineId": "private.component.3",
+      "immutableVersion": 1,
+      "masterId": 3,
+      "title": "Amortization Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/2/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.3@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 157.0627340000001,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.4@1:reverse-solve",
+      "engineId": "private.component.4",
+      "immutableVersion": 1,
+      "masterId": 4,
+      "title": "Loan Payoff Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/3/privateContracts",
+          "text": "Supplied fixed monthly payment, nominal annual rate/12, interest before payments; no issuer minimum-payment model. Final partial payment capped at amount due. Closure0.005 and horizon2400 months. Nonamortizing or horizon-exceeding inputs rejected. Outputs retain original2-decimal totals; no calendar payoff dates or daily accrual."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 20,
+          "symbolOrLiteral": "[4,11,28]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/credit-card-payoff.ts",
+          "line": 24,
+          "symbolOrLiteral": "export function simulateCreditCardPayoff",
+          "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing bounded inverse quantity is payoffMonths from fixed supplied payment simulation; the private schema has no targetMonths goal-input. Helper requiredMonthlyPaymentForTargetMonths exists separately and is used by remaining25. Do not substitute that helper as proof for these exact adapters.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 31,
+            "symbolOrLiteral": "it.each([4,11,28])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Assert exact adapter payoffMonths with independent recurrence and minimal-period residual: balance after n closes within existing0.005 contract and after n-1 remains above it; cover payment<=interest, final partial payment and2400 horizon. Any new target-payment UI requires separate scope decision.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.4@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 6.05098099999941,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.5@1:visualization-reconciliation",
+      "engineId": "private.component.5",
+      "immutableVersion": 1,
+      "masterId": 5,
+      "title": "Extra Payment Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/4/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.5@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 147.8855110000004,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.5@1:schedule-reconciliation",
+      "engineId": "private.component.5",
+      "immutableVersion": 1,
+      "masterId": 5,
+      "title": "Extra Payment Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/4/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.5@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 90.71061699999973,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.6@1:visualization-reconciliation",
+      "engineId": "private.component.6",
+      "immutableVersion": 1,
+      "masterId": 6,
+      "title": "Personal Loan Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/5/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.6@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 124.83235200000036,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.6@1:schedule-reconciliation",
+      "engineId": "private.component.6",
+      "immutableVersion": 1,
+      "masterId": 6,
+      "title": "Personal Loan Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/5/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.6@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 161.96842900000047,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.7@1:visualization-reconciliation",
+      "engineId": "private.component.7",
+      "immutableVersion": 1,
+      "masterId": 7,
+      "title": "Auto Loan Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/6/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.7@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 218.54068800000005,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.7@1:schedule-reconciliation",
+      "engineId": "private.component.7",
+      "immutableVersion": 1,
+      "masterId": 7,
+      "title": "Auto Loan Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/6/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.7@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 125.19072799999958,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.8@1:visualization-reconciliation",
+      "engineId": "private.component.8",
+      "immutableVersion": 1,
+      "masterId": 8,
+      "title": "Student Loan Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/7/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.8@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 139.62417599999935,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.8@1:schedule-reconciliation",
+      "engineId": "private.component.8",
+      "immutableVersion": 1,
+      "masterId": 8,
+      "title": "Student Loan Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/7/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.8@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 97.87946700000066,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.11@1:reverse-solve",
+      "engineId": "private.component.11",
+      "immutableVersion": 1,
+      "masterId": 11,
+      "title": "Loan Term Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/10/privateContracts",
+          "text": "Supplied fixed monthly payment, nominal annual rate/12, interest before payments; no issuer minimum-payment model. Final partial payment capped at amount due. Closure0.005 and horizon2400 months. Nonamortizing or horizon-exceeding inputs rejected. Outputs retain original2-decimal totals; no calendar payoff dates or daily accrual."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 20,
+          "symbolOrLiteral": "[4,11,28]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/credit-card-payoff.ts",
+          "line": 24,
+          "symbolOrLiteral": "export function simulateCreditCardPayoff",
+          "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing bounded inverse quantity is payoffMonths from fixed supplied payment simulation; the private schema has no targetMonths goal-input. Helper requiredMonthlyPaymentForTargetMonths exists separately and is used by remaining25. Do not substitute that helper as proof for these exact adapters.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 31,
+            "symbolOrLiteral": "it.each([4,11,28])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Assert exact adapter payoffMonths with independent recurrence and minimal-period residual: balance after n closes within existing0.005 contract and after n-1 remains above it; cover payment<=interest, final partial payment and2400 horizon. Any new target-payment UI requires separate scope decision.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.11@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 2.208705999999438,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.12@1:reverse-solve",
+      "engineId": "private.component.12",
+      "immutableVersion": 1,
+      "masterId": 12,
+      "title": "Loan Amount Affordability Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/11/privateContracts",
+          "text": "Caller-selected DTI only: capacity=max(0,income*targetDTI/100-existingDebt); principal=capacity*(1-(1+r)^(-n))/r or capacity*n at zero rate. Purchase price adds supplied down payment. Monthly periods, nominal rate/12, outputs rounded2 decimals. Gross income and debt inclusion supplied by caller. No statutory or lender approval, taxes, housing operating costs or insurance inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 23,
+          "symbolOrLiteral": "[12,30,104,105]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/loan-affordability.ts",
+          "line": 11,
+          "symbolOrLiteral": "export function calculateLoanAffordability",
+          "sha256": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing inverse maximumLoanPrincipal uses maxPrincipalForPayment(capacity,rate,term); modeledPaymentAtMaximumPrincipal uses raw principal before two-decimal output rounding. Per-ID independent test already exercises nonzero rate and down payment.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 34,
+            "symbolOrLiteral": "it.each([12,30,104,105])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Round-trip each exact adapter principal through independent annuity payment at zero/nonzero rate; distinguish raw principal residual from rounded disclosed principal; cover zero-clipped capacity and rejected unresolved denominators. Use declared two-decimal output policy without inventing acceptance threshold.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.12@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 7.022689000000355,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.22@1:visualization-reconciliation",
+      "engineId": "private.component.22",
+      "immutableVersion": 1,
+      "masterId": 22,
+      "title": "Home Equity Loan Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/21/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.22@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 117.32123600000068,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.22@1:schedule-reconciliation",
+      "engineId": "private.component.22",
+      "immutableVersion": 1,
+      "masterId": 22,
+      "title": "Home Equity Loan Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/21/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.22@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 83.7099619999999,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.25@1:reverse-solve",
+      "engineId": "private.remaining.25",
+      "immutableVersion": 1,
+      "masterId": 25,
+      "title": "Payoff Date Goal Solver",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/24/privateContracts",
+          "text": "Caller-selected Gregorian monthly payment dates, inclusive first/target; restore original anchor after short months or select month end. Nominal annual rate/12, raw level payment helper; first payment follows one modeled interest period. No origination, business-day holiday, daily accrual or lender calendar inferred. Display rounds2 decimals; modeled payment stays raw. Closure0.005; reject numerical denominator loss or unsupported payoff horizon."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 35,
+          "symbolOrLiteral": "add(25,",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing date-goal inverse uses inclusive dates, raw requiredMonthlyPaymentForTargetMonths helper and forward payoff engine; details retain rounded display payment separately.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 35,
+            "symbolOrLiteral": "[25,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P0",
+        "action": "Independently forward-simulate raw solved payment through selected dates and verify earliest closure, display rounding, invalid alignment and leap/month-end cases.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.25@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 12.237495999999737,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.25@1:schedule-reconciliation",
+      "engineId": "private.remaining.25",
+      "immutableVersion": 1,
+      "masterId": 25,
+      "title": "Payoff Date Goal Solver",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/24/privateContracts",
+          "text": "Caller-selected Gregorian monthly payment dates, inclusive first/target; restore original anchor after short months or select month end. Nominal annual rate/12, raw level payment helper; first payment follows one modeled interest period. No origination, business-day holiday, daily accrual or lender calendar inferred. Display rounds2 decimals; modeled payment stays raw. Closure0.005; reject numerical denominator loss or unsupported payoff horizon."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 35,
+          "symbolOrLiteral": "add(25,",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 12,
+          "symbolOrLiteral": "function CalendarRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Calendar25 uses stored details.paymentDates only; engine slices dates to actual payoff count.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 35,
+            "symbolOrLiteral": "[25,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 7,
+            "symbolOrLiteral": "it('shows only actual calendar dates",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Validate all stored calendar dates/indexes through pagination for clamp-anchor restoration and month-end leap-year cases; do not infer settlement or payment amounts.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.25@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 36.31341500000053,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.27@1:visualization-reconciliation",
+      "engineId": "private.component.27",
+      "immutableVersion": 1,
+      "masterId": 27,
+      "title": "Mortgage Amortization Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/26/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.27@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 120.26428699999997,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.27@1:schedule-reconciliation",
+      "engineId": "private.component.27",
+      "immutableVersion": 1,
+      "masterId": 27,
+      "title": "Mortgage Amortization Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/26/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.27@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 176.02713200000017,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.28@1:reverse-solve",
+      "engineId": "private.component.28",
+      "immutableVersion": 1,
+      "masterId": 28,
+      "title": "Mortgage Payoff Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/27/privateContracts",
+          "text": "Supplied fixed monthly payment, nominal annual rate/12, interest before payments; no issuer minimum-payment model. Final partial payment capped at amount due. Closure0.005 and horizon2400 months. Nonamortizing or horizon-exceeding inputs rejected. Outputs retain original2-decimal totals; no calendar payoff dates or daily accrual."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 20,
+          "symbolOrLiteral": "[4,11,28]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/credit-card-payoff.ts",
+          "line": 24,
+          "symbolOrLiteral": "export function simulateCreditCardPayoff",
+          "sha256": "d593379c7972731b19ef6870a21abf7933550d0164b53b5de818d71128c01cbc"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing bounded inverse quantity is payoffMonths from fixed supplied payment simulation; the private schema has no targetMonths goal-input. Helper requiredMonthlyPaymentForTargetMonths exists separately and is used by remaining25. Do not substitute that helper as proof for these exact adapters.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 31,
+            "symbolOrLiteral": "it.each([4,11,28])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Assert exact adapter payoffMonths with independent recurrence and minimal-period residual: balance after n closes within existing0.005 contract and after n-1 remains above it; cover payment<=interest, final partial payment and2400 horizon. Any new target-payment UI requires separate scope decision.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.28@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 1.4383429999998043,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.29@1:visualization-reconciliation",
+      "engineId": "private.component.29",
+      "immutableVersion": 1,
+      "masterId": 29,
+      "title": "Mortgage Extra Payment Calculator",
+      "checkType": "visualization-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[105] (native paragraph ordinal 106; not BP reconciliation ID)",
+          "text": "One useful Free visualization when the calculation benefits from visualization."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/28/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/components/result-series-panel.tsx",
+          "line": 7,
+          "symbolOrLiteral": "export function ResultSeriesPanel",
+          "sha256": "ee4dc36d15f259a66e4fe9da8fcbd4c2766597e71cb2e56ff6a12d1b53d8b39b"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "All eight exact IDs share LoanRows; points are copied as {x:month,y:balance}, caller currency labels only. ResultSeriesPanel uses identical paged points for meters and accessible table.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 5,
+            "symbolOrLiteral": "it('shows actual loan rows",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific useful visualization/presentation selection and point/series/axis/unit/rounding reconciliation against original deterministic result.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Parameterize existing loan3 rendered test over this exact adapter; compare every chart meter raw value/x label and accessible data to stored amortization across pages, including final capped payment and caller currency. Keep display formatting distinct from engine rounding.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.29@1:visualization-reconciliation",
+        "status": "passed",
+        "durationMs": 178.72378599999956,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.29@1:schedule-reconciliation",
+      "engineId": "private.component.29",
+      "immutableVersion": 1,
+      "masterId": 29,
+      "title": "Mortgage Extra Payment Calculator",
+      "checkType": "schedule-reconciliation",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[108] (native paragraph ordinal 109; not BP reconciliation ID)",
+          "text": "Detailed table/schedule where mathematically useful."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/28/privateContracts",
+          "text": "Fixed nominal annual rate divided by12; interest before monthly payments. M=P*r/(1-(1+r)^(-n)), zero rate P/n. Full unrounded internal balance, rows rounded to2 decimals; totals sum displayed rounded rows. Balance closure0.005; at most termMonths1200. Final payment capped at amount due; monthlyPayment is requested, scheduledPayment is base. No fees, grace, subsidies, balloon, escrow, tax, insurance or lender eligibility."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 18,
+          "symbolOrLiteral": "[3,5,6,7,8,22,27,29]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/components/contract-result-details.tsx",
+          "line": 11,
+          "symbolOrLiteral": "function LoanRows",
+          "sha256": "8171248456d06053eb8e66b4c262c993dadf820c099f0ebdac0efdb0b8bae875"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Shared renderer pages actual month/payment/principal/interest/balance strings. Eight exact adapter engine tests cover early final capped payment; rendered paging test currently selects adapter3.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 28,
+            "symbolOrLiteral": "it.each([3,5,6,7,8,22,27,29])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          },
+          {
+            "path": "src/components/contract-result-details.test.tsx",
+            "line": 6,
+            "symbolOrLiteral": "it('pages every engine amortization row",
+            "sha256": "047f0b229de3b7b23a7fddd9c4bcbbfeda27315a9a8062eb61d447ae905883e4"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific table/schedule usefulness and complete rows/date/rounding/totals/terminal reconciliation, or an affirmative scoped nonapplicability determination.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "For this exact adapter, compare every rendered row and stored row on all pages; independently sum rounded payment/interest rows against totals and reconcile payoffMonths/final balance for zero/nonzero rate and early payoff.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.29@1:schedule-reconciliation",
+        "status": "passed",
+        "durationMs": 129.02942600000006,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.30@1:reverse-solve",
+      "engineId": "private.component.30",
+      "immutableVersion": 1,
+      "masterId": 30,
+      "title": "Mortgage Affordability Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/29/privateContracts",
+          "text": "Caller-selected DTI only: capacity=max(0,income*targetDTI/100-existingDebt); principal=capacity*(1-(1+r)^(-n))/r or capacity*n at zero rate. Purchase price adds supplied down payment. Monthly periods, nominal rate/12, outputs rounded2 decimals. Gross income and debt inclusion supplied by caller. No statutory or lender approval, taxes, housing operating costs or insurance inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 23,
+          "symbolOrLiteral": "[12,30,104,105]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/loan-affordability.ts",
+          "line": 11,
+          "symbolOrLiteral": "export function calculateLoanAffordability",
+          "sha256": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing inverse maximumLoanPrincipal uses maxPrincipalForPayment(capacity,rate,term); modeledPaymentAtMaximumPrincipal uses raw principal before two-decimal output rounding. Per-ID independent test already exercises nonzero rate and down payment.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 34,
+            "symbolOrLiteral": "it.each([12,30,104,105])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Round-trip each exact adapter principal through independent annuity payment at zero/nonzero rate; distinguish raw principal residual from rounded disclosed principal; cover zero-clipped capacity and rejected unresolved denominators. Use declared two-decimal output policy without inventing acceptance threshold.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.30@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 3.805757999999514,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.60@1:reverse-solve",
+      "engineId": "private.remaining.60",
+      "immutableVersion": 1,
+      "masterId": 60,
+      "title": "Present Value Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/59/privateContracts",
+          "text": "Single supplied future capital discounted by constant annual effective return: PV=FV/(1+r)^years. Raw original helper precision; no cash-flow dates, fees or taxes."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 42,
+          "symbolOrLiteral": "add(60,",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing closed-form present-value helper preserves raw precision and rejects underflow.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 38,
+            "symbolOrLiteral": "[60,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Independent FV(PV,r,t) round-trip with zero, negative and positive rates; zero FV, fractional horizon and explicit underflow rejection.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.60@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 5.945741999999882,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.61@1:reverse-solve",
+      "engineId": "private.remaining.61",
+      "immutableVersion": 1,
+      "masterId": 61,
+      "title": "Periodic Payment Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/60/privateContracts",
+          "text": "Constant supplied nominal annual return/12 with level end-month deposits. Reverse target uses original unrounded deposit for projection, then displays2 decimals; rounded displayed deposit is not a contractual guarantee. No education costs, benefits, retirement adequacy or forecast return inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 41,
+          "symbolOrLiteral": "[58,61,83,106]",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing end-month savings inverse uses unrounded contribution internally, two-decimal disclosed contribution.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 38,
+            "symbolOrLiteral": "[61,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Independent end-month annuity round-trip using raw helper contribution; test already-funded/zero rate/negative rate and disclose cent rounding separately.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.61@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 8.818521000000146,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.62@1:reverse-solve",
+      "engineId": "private.remaining.62",
+      "immutableVersion": 1,
+      "masterId": 62,
+      "title": "Required Rate of Return Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/61/privateContracts",
+          "text": "Single beginning and ending supplied values; CAGR=((ending/beginning)^(1/years)-1)*100, raw helper precision. No intervening distributions, periodic investment inverse, ex-dividend dates or market forecasts."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 43,
+          "symbolOrLiteral": "[62,66,75]",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing CAGR helper solves single lump-sum annual effective rate; raw precision, ending zero allowed.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 38,
+            "symbolOrLiteral": "[62,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Round-trip beginning*(1+solvedRate/100)^years to ending; zero ending, equal capital, fractional positive horizon and precision-loss guard.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.62@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 6.806231999999909,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.63@1:reverse-solve",
+      "engineId": "private.remaining.63",
+      "immutableVersion": 1,
+      "masterId": 63,
+      "title": "Investment Duration Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/62/privateContracts",
+          "text": "Single lump sum equality horizon=log(target/beginning)/log(1+r), annual effective return. Equal capital gives0; zero return with unequal target or negative time has no future equality. No deposits or target-at-least policy."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 44,
+          "symbolOrLiteral": "add(63,",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing logarithmic equality horizon explicitly returns already-equal, future-equality or no-future-equality.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 39,
+            "symbolOrLiteral": "[63,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Independent exponentiation round-trip for future equality; assert null for unreachable direction/zero return and zero for already equal.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.63@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 7.551937999999609,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.72@1:reverse-solve",
+      "engineId": "private.remaining.72",
+      "immutableVersion": 1,
+      "masterId": 72,
+      "title": "Bond Yield Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/71/privateContracts",
+          "text": "Supplied bond investment cashflow at time0 and equally spaced later cashflows, explicit sign-changing root bracket; one periodic yield root only. Original bisection helper residual<=1e-10. No coupon generation, day count, clean/dirty price, accrued interest, uniqueness or annualization inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 49,
+          "symbolOrLiteral": "add(72,",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/private-cashflow-rate.ts",
+          "line": 6,
+          "symbolOrLiteral": "export function solvePrivateCashflowRate",
+          "sha256": "bb364b2a0ee4994699c81989193b159946eaca1b5c5591e62586e902e64f630e"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing selected-bracket periodic cashflow root helper reports residual and signChanges; multiple roots allowed, no global uniqueness claim.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 44,
+            "symbolOrLiteral": "[72,",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          },
+          {
+            "path": "src/calculators/private-cashflow-rate.test.ts",
+            "line": 4,
+            "symbolOrLiteral": "it('reports only",
+            "sha256": "8795b04870f60bcc988c805590d70aef30e380e11d184ba2f5fdfa8b661eca1b"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P0",
+        "action": "Run exact72 envelope on independently derived10% and20% roots using disjoint brackets; recompute normalized NPV from original cashflows and test endpoint root, absent bracket and invalid factors. Existing helper threshold1e-10 is implementation policy, not newly approved normative threshold.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.72@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 7.8672740000001795,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.remaining.83@1:reverse-solve",
+      "engineId": "private.remaining.83",
+      "immutableVersion": 1,
+      "masterId": 83,
+      "title": "Required Monthly Retirement Investment Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/82/privateContracts",
+          "text": "Constant supplied nominal annual return/12 with level end-month deposits. Reverse target uses original unrounded deposit for projection, then displays2 decimals; rounded displayed deposit is not a contractual guarantee. No education costs, benefits, retirement adequacy or forecast return inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/remaining-contracts.ts",
+          "line": 41,
+          "symbolOrLiteral": "[58,61,83,106]",
+          "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing retirement-named bounded savings inverse shares61 implementation; no retirement adequacy is inferred.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/remaining-contracts-independent.test.ts",
+            "line": 48,
+            "symbolOrLiteral": "[83,savings,10]",
+            "sha256": "378afb7d9cd91818e2f39711cb601990038099c512cd91e00d54421d0893583f"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Independently validate this exact83 envelope and end-month annuity residual, zero contribution/already-funded and rounding; do not replace with61-only receipt.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.remaining.83@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 5.875084999999672,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.104@1:reverse-solve",
+      "engineId": "private.component.104",
+      "immutableVersion": 1,
+      "masterId": 104,
+      "title": "Housing Affordability Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/103/privateContracts",
+          "text": "Caller-selected DTI only: capacity=max(0,income*targetDTI/100-existingDebt); principal=capacity*(1-(1+r)^(-n))/r or capacity*n at zero rate. Purchase price adds supplied down payment. Monthly periods, nominal rate/12, outputs rounded2 decimals. Gross income and debt inclusion supplied by caller. No statutory or lender approval, taxes, housing operating costs or insurance inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 23,
+          "symbolOrLiteral": "[12,30,104,105]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/loan-affordability.ts",
+          "line": 11,
+          "symbolOrLiteral": "export function calculateLoanAffordability",
+          "sha256": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing inverse maximumLoanPrincipal uses maxPrincipalForPayment(capacity,rate,term); modeledPaymentAtMaximumPrincipal uses raw principal before two-decimal output rounding. Per-ID independent test already exercises nonzero rate and down payment.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 34,
+            "symbolOrLiteral": "it.each([12,30,104,105])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Round-trip each exact adapter principal through independent annuity payment at zero/nonzero rate; distinguish raw principal residual from rounded disclosed principal; cover zero-clipped capacity and rejected unresolved denominators. Use declared two-decimal output policy without inventing acceptance threshold.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.104@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 2.7618130000000747,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    },
+    {
+      "requestId": "private.component.105@1:reverse-solve",
+      "engineId": "private.component.105",
+      "immutableVersion": 1,
+      "masterId": 105,
+      "title": "Vehicle Affordability Calculator",
+      "checkType": "reverse-solve",
+      "applicabilityFinding": "APPLICABLE",
+      "authority": [
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[109] (native paragraph ordinal 110; not BP reconciliation ID)",
+          "text": "Goal Solver / reverse calculation where supported."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+          "pointer": "Document.paragraphs[239] (native ordinal240)",
+          "text": "All visual/table/scenario/export outputs reconcile with certified deterministic results."
+        },
+        {
+          "path": "/workspace/scratch/3ec853bd6442/qa-adjudication-1518/input1517/inputs/docs/full-product-batch14/contract-evidence.json",
+          "pointer": "/rows/104/privateContracts",
+          "text": "Caller-selected DTI only: capacity=max(0,income*targetDTI/100-existingDebt); principal=capacity*(1-(1+r)^(-n))/r or capacity*n at zero rate. Purchase price adds supplied down payment. Monthly periods, nominal rate/12, outputs rounded2 decimals. Gross income and debt inclusion supplied by caller. No statutory or lender approval, taxes, housing operating costs or insurance inferred."
+        }
+      ],
+      "exactBinding": [
+        {
+          "path": "src/calculators/component-contracts.ts",
+          "line": 23,
+          "symbolOrLiteral": "[12,30,104,105]",
+          "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+        },
+        {
+          "path": "src/calculators/finance/loan-affordability.ts",
+          "line": 11,
+          "symbolOrLiteral": "export function calculateLoanAffordability",
+          "sha256": "66da8c1e94eb65c63c2d3e98a0c64b3390f5791394ef1ad8ba263602599dcb36"
+        },
+        {
+          "path": "src/calculators/scaled-contract-adapters.ts",
+          "line": 14,
+          "symbolOrLiteral": "export function exportScaledContract",
+          "sha256": "fb31cbd91a9b0955944064daff8fd53f685c985d137f4f33da8cb607a602cc35"
+        },
+        {
+          "path": "src/components/scaled-contract-review.tsx",
+          "line": 29,
+          "symbolOrLiteral": "<ContractResultDetails",
+          "sha256": "fee93390a5ec5138c10c6dbff1f4bc9a833fbe1a777ec6377a21d00cf5b5c7f0"
+        }
+      ],
+      "staticFinding": "Existing inverse maximumLoanPrincipal uses maxPrincipalForPayment(capacity,rate,term); modeledPaymentAtMaximumPrincipal uses raw principal before two-decimal output rounding. Per-ID independent test already exercises nonzero rate and down payment.",
+      "existingProof": {
+        "inspectionOnly": true,
+        "testsExecutedByThisArtifact": false,
+        "references": [
+          {
+            "path": "src/calculators/component-contracts-independent.test.ts",
+            "line": 34,
+            "symbolOrLiteral": "it.each([12,30,104,105])",
+            "sha256": "a0e87240cc55d7575e4bde9be99be7ac40bee90e70e4d8a3829fdda71f81bfb5"
+          }
+        ],
+        "scope": "Existing assertion bodies inspected; bounded private engine evidence, not full criterion or canonical acceptance."
+      },
+      "missingProof": "Identity-specific supported target/output, inverse domain, uniqueness/no-solution policy, residual and inverse/forward round-trip evidence; exact version binding and qualified scope adjudication.",
+      "focusedNewEvidenceTask": {
+        "priority": "P1",
+        "action": "Round-trip each exact adapter principal through independent annuity payment at zero/nonzero rate; distinguish raw principal residual from rounded disclosed principal; cover zero-clipped capacity and rejected unresolved denominators. Use declared two-decimal output policy without inventing acceptance threshold.",
+        "implementationChangesRequired": false,
+        "meaning": "Validation/evidence work only; no implementation absence established."
+      },
+      "formalDecisionStatus": "PENDING",
+      "canonicalAccepted": false,
+      "publicationAuthorized": false,
+      "releaseHold": true,
+      "newRuntimeEvidence": {
+        "path": "new-tests-final.json",
+        "testFile": "src/lib/post1518-applicability-evidence.test.ts",
+        "assertionTitle": "private.component.105@1:reverse-solve",
+        "status": "passed",
+        "durationMs": 2.788032000000385,
+        "scope": "Focused exact-private-identity runtime evidence; does not establish full domain or canonical approval."
+      },
+      "remainingProofAfterNewReceipt": "Bounded validation above is supplied. Complete intended product scope, independent/accountable per-criterion review, canonical mapping and source/rule applicability remain pending; no full-domain or formal acceptance inferred."
+    }
+  ],
+  "unresolvedRequestIdsPreserved": [
+    "private.component.3@1:reverse-solve",
+    "private.component.3@1:sensitivity-validation",
+    "private.component.4@1:visualization-reconciliation",
+    "private.component.4@1:schedule-reconciliation",
+    "private.component.4@1:sensitivity-validation",
+    "private.component.5@1:reverse-solve",
+    "private.component.5@1:sensitivity-validation",
+    "private.component.6@1:reverse-solve",
+    "private.component.6@1:sensitivity-validation",
+    "private.component.7@1:reverse-solve",
+    "private.component.7@1:sensitivity-validation",
+    "private.component.8@1:reverse-solve",
+    "private.component.8@1:sensitivity-validation",
+    "private.component.11@1:visualization-reconciliation",
+    "private.component.11@1:schedule-reconciliation",
+    "private.component.11@1:sensitivity-validation",
+    "private.component.12@1:visualization-reconciliation",
+    "private.component.12@1:schedule-reconciliation",
+    "private.component.12@1:sensitivity-validation",
+    "private.component.13@1:reverse-solve",
+    "private.component.13@1:visualization-reconciliation",
+    "private.component.13@1:schedule-reconciliation",
+    "private.component.13@1:sensitivity-validation",
+    "private.component.14@1:reverse-solve",
+    "private.component.14@1:visualization-reconciliation",
+    "private.component.14@1:schedule-reconciliation",
+    "private.component.14@1:sensitivity-validation",
+    "private.component.15@1:reverse-solve",
+    "private.component.15@1:visualization-reconciliation",
+    "private.component.15@1:schedule-reconciliation",
+    "private.component.15@1:sensitivity-validation",
+    "private.component.16@1:reverse-solve",
+    "private.component.16@1:visualization-reconciliation",
+    "private.component.16@1:schedule-reconciliation",
+    "private.component.16@1:sensitivity-validation",
+    "private.component.17@1:reverse-solve",
+    "private.component.17@1:visualization-reconciliation",
+    "private.component.17@1:schedule-reconciliation",
+    "private.component.17@1:sensitivity-validation",
+    "private.component.22@1:reverse-solve",
+    "private.component.22@1:sensitivity-validation",
+    "private.component.24@1:reverse-solve",
+    "private.component.24@1:visualization-reconciliation",
+    "private.component.24@1:schedule-reconciliation",
+    "private.component.24@1:sensitivity-validation",
+    "private.remaining.25@1:visualization-reconciliation",
+    "private.remaining.25@1:sensitivity-validation",
+    "private.component.27@1:reverse-solve",
+    "private.component.27@1:sensitivity-validation",
+    "private.component.28@1:visualization-reconciliation",
+    "private.component.28@1:schedule-reconciliation",
+    "private.component.28@1:sensitivity-validation",
+    "private.component.29@1:reverse-solve",
+    "private.component.29@1:sensitivity-validation",
+    "private.component.30@1:visualization-reconciliation",
+    "private.component.30@1:schedule-reconciliation",
+    "private.component.30@1:sensitivity-validation",
+    "private.component.31@1:reverse-solve",
+    "private.component.31@1:visualization-reconciliation",
+    "private.component.31@1:schedule-reconciliation",
+    "private.component.31@1:sensitivity-validation",
+    "private.component.33@1:reverse-solve",
+    "private.component.33@1:visualization-reconciliation",
+    "private.component.33@1:schedule-reconciliation",
+    "private.component.33@1:sensitivity-validation",
+    "private.remaining.37@1:reverse-solve",
+    "private.remaining.37@1:visualization-reconciliation",
+    "private.remaining.37@1:schedule-reconciliation",
+    "private.remaining.37@1:sensitivity-validation",
+    "private.remaining.45@1:reverse-solve",
+    "private.remaining.45@1:visualization-reconciliation",
+    "private.remaining.45@1:schedule-reconciliation",
+    "private.remaining.45@1:sensitivity-validation",
+    "private.remaining.47@1:reverse-solve",
+    "private.remaining.47@1:visualization-reconciliation",
+    "private.remaining.47@1:schedule-reconciliation",
+    "private.remaining.47@1:sensitivity-validation",
+    "private.remaining.57@1:reverse-solve",
+    "private.remaining.57@1:visualization-reconciliation",
+    "private.remaining.57@1:schedule-reconciliation",
+    "private.remaining.57@1:sensitivity-validation",
+    "private.remaining.58@1:reverse-solve",
+    "private.remaining.58@1:visualization-reconciliation",
+    "private.remaining.58@1:schedule-reconciliation",
+    "private.remaining.58@1:sensitivity-validation",
+    "private.remaining.59@1:reverse-solve",
+    "private.remaining.59@1:visualization-reconciliation",
+    "private.remaining.59@1:schedule-reconciliation",
+    "private.remaining.59@1:sensitivity-validation",
+    "private.remaining.60@1:visualization-reconciliation",
+    "private.remaining.60@1:schedule-reconciliation",
+    "private.remaining.60@1:sensitivity-validation",
+    "private.remaining.61@1:visualization-reconciliation",
+    "private.remaining.61@1:schedule-reconciliation",
+    "private.remaining.61@1:sensitivity-validation",
+    "private.remaining.62@1:visualization-reconciliation",
+    "private.remaining.62@1:schedule-reconciliation",
+    "private.remaining.62@1:sensitivity-validation",
+    "private.remaining.63@1:visualization-reconciliation",
+    "private.remaining.63@1:schedule-reconciliation",
+    "private.remaining.63@1:sensitivity-validation",
+    "private.remaining.66@1:reverse-solve",
+    "private.remaining.66@1:visualization-reconciliation",
+    "private.remaining.66@1:schedule-reconciliation",
+    "private.remaining.66@1:sensitivity-validation",
+    "private.remaining.67@1:reverse-solve",
+    "private.remaining.67@1:visualization-reconciliation",
+    "private.remaining.67@1:schedule-reconciliation",
+    "private.remaining.67@1:sensitivity-validation",
+    "private.remaining.68@1:reverse-solve",
+    "private.remaining.68@1:visualization-reconciliation",
+    "private.remaining.68@1:schedule-reconciliation",
+    "private.remaining.68@1:sensitivity-validation",
+    "private.remaining.69@1:reverse-solve",
+    "private.remaining.69@1:visualization-reconciliation",
+    "private.remaining.69@1:schedule-reconciliation",
+    "private.remaining.69@1:sensitivity-validation",
+    "private.remaining.70@1:reverse-solve",
+    "private.remaining.70@1:visualization-reconciliation",
+    "private.remaining.70@1:schedule-reconciliation",
+    "private.remaining.70@1:sensitivity-validation",
+    "private.remaining.71@1:reverse-solve",
+    "private.remaining.71@1:visualization-reconciliation",
+    "private.remaining.71@1:schedule-reconciliation",
+    "private.remaining.71@1:sensitivity-validation",
+    "private.remaining.72@1:visualization-reconciliation",
+    "private.remaining.72@1:schedule-reconciliation",
+    "private.remaining.72@1:sensitivity-validation",
+    "private.remaining.73@1:reverse-solve",
+    "private.remaining.73@1:visualization-reconciliation",
+    "private.remaining.73@1:schedule-reconciliation",
+    "private.remaining.73@1:sensitivity-validation",
+    "private.remaining.74@1:reverse-solve",
+    "private.remaining.74@1:visualization-reconciliation",
+    "private.remaining.74@1:schedule-reconciliation",
+    "private.remaining.74@1:sensitivity-validation",
+    "private.remaining.75@1:reverse-solve",
+    "private.remaining.75@1:visualization-reconciliation",
+    "private.remaining.75@1:schedule-reconciliation",
+    "private.remaining.75@1:sensitivity-validation",
+    "private.remaining.76@1:reverse-solve",
+    "private.remaining.76@1:visualization-reconciliation",
+    "private.remaining.76@1:schedule-reconciliation",
+    "private.remaining.76@1:sensitivity-validation",
+    "private.remaining.77@1:reverse-solve",
+    "private.remaining.77@1:visualization-reconciliation",
+    "private.remaining.77@1:schedule-reconciliation",
+    "private.remaining.77@1:sensitivity-validation",
+    "private.remaining.78@1:reverse-solve",
+    "private.remaining.78@1:visualization-reconciliation",
+    "private.remaining.78@1:schedule-reconciliation",
+    "private.remaining.78@1:sensitivity-validation",
+    "private.remaining.79@1:reverse-solve",
+    "private.remaining.79@1:visualization-reconciliation",
+    "private.remaining.79@1:schedule-reconciliation",
+    "private.remaining.79@1:sensitivity-validation",
+    "private.remaining.83@1:visualization-reconciliation",
+    "private.remaining.83@1:schedule-reconciliation",
+    "private.remaining.83@1:sensitivity-validation",
+    "private.remaining.93@1:reverse-solve",
+    "private.remaining.93@1:visualization-reconciliation",
+    "private.remaining.93@1:schedule-reconciliation",
+    "private.remaining.93@1:sensitivity-validation",
+    "private.remaining.94@1:reverse-solve",
+    "private.remaining.94@1:visualization-reconciliation",
+    "private.remaining.94@1:schedule-reconciliation",
+    "private.remaining.94@1:sensitivity-validation",
+    "private.remaining.100@1:reverse-solve",
+    "private.remaining.100@1:visualization-reconciliation",
+    "private.remaining.100@1:schedule-reconciliation",
+    "private.remaining.100@1:sensitivity-validation",
+    "private.remaining.101@1:reverse-solve",
+    "private.remaining.101@1:visualization-reconciliation",
+    "private.remaining.101@1:schedule-reconciliation",
+    "private.remaining.101@1:sensitivity-validation",
+    "private.remaining.102@1:reverse-solve",
+    "private.remaining.102@1:visualization-reconciliation",
+    "private.remaining.102@1:schedule-reconciliation",
+    "private.remaining.102@1:sensitivity-validation",
+    "private.component.104@1:visualization-reconciliation",
+    "private.component.104@1:schedule-reconciliation",
+    "private.component.104@1:sensitivity-validation",
+    "private.component.105@1:visualization-reconciliation",
+    "private.component.105@1:schedule-reconciliation",
+    "private.component.105@1:sensitivity-validation",
+    "private.remaining.106@1:reverse-solve",
+    "private.remaining.106@1:visualization-reconciliation",
+    "private.remaining.106@1:schedule-reconciliation",
+    "private.remaining.106@1:sensitivity-validation",
+    "private.remaining.107@1:reverse-solve",
+    "private.remaining.107@1:visualization-reconciliation",
+    "private.remaining.107@1:schedule-reconciliation",
+    "private.remaining.107@1:sensitivity-validation",
+    "private.remaining.108@1:reverse-solve",
+    "private.remaining.108@1:visualization-reconciliation",
+    "private.remaining.108@1:schedule-reconciliation",
+    "private.remaining.108@1:sensitivity-validation",
+    "private.remaining.110@1:reverse-solve",
+    "private.remaining.110@1:visualization-reconciliation",
+    "private.remaining.110@1:schedule-reconciliation",
+    "private.remaining.110@1:sensitivity-validation",
+    "private.remaining.111@1:reverse-solve",
+    "private.remaining.111@1:visualization-reconciliation",
+    "private.remaining.111@1:schedule-reconciliation",
+    "private.remaining.111@1:sensitivity-validation",
+    "private.remaining.113@1:reverse-solve",
+    "private.remaining.113@1:visualization-reconciliation",
+    "private.remaining.113@1:schedule-reconciliation",
+    "private.remaining.113@1:sensitivity-validation",
+    "private.remaining.114@1:reverse-solve",
+    "private.remaining.114@1:visualization-reconciliation",
+    "private.remaining.114@1:schedule-reconciliation",
+    "private.remaining.114@1:sensitivity-validation",
+    "private.remaining.115@1:reverse-solve",
+    "private.remaining.115@1:visualization-reconciliation",
+    "private.remaining.115@1:schedule-reconciliation",
+    "private.remaining.115@1:sensitivity-validation",
+    "private.remaining.116@1:reverse-solve",
+    "private.remaining.116@1:visualization-reconciliation",
+    "private.remaining.116@1:schedule-reconciliation",
+    "private.remaining.116@1:sensitivity-validation",
+    "private.remaining.117@1:reverse-solve",
+    "private.remaining.117@1:visualization-reconciliation",
+    "private.remaining.117@1:schedule-reconciliation",
+    "private.remaining.117@1:sensitivity-validation",
+    "private.remaining.118@1:reverse-solve",
+    "private.remaining.118@1:visualization-reconciliation",
+    "private.remaining.118@1:schedule-reconciliation",
+    "private.remaining.118@1:sensitivity-validation",
+    "private.remaining.119@1:reverse-solve",
+    "private.remaining.119@1:visualization-reconciliation",
+    "private.remaining.119@1:schedule-reconciliation",
+    "private.remaining.119@1:sensitivity-validation",
+    "private.component.426@1:reverse-solve",
+    "private.component.426@1:visualization-reconciliation",
+    "private.component.426@1:schedule-reconciliation",
+    "private.component.426@1:sensitivity-validation",
+    "private.remaining.465@1:reverse-solve",
+    "private.remaining.465@1:visualization-reconciliation",
+    "private.remaining.465@1:schedule-reconciliation",
+    "private.remaining.465@1:sensitivity-validation",
+    "private.remaining.466@1:reverse-solve",
+    "private.remaining.466@1:visualization-reconciliation",
+    "private.remaining.466@1:schedule-reconciliation",
+    "private.remaining.466@1:sensitivity-validation",
+    "private.remaining.473@1:reverse-solve",
+    "private.remaining.473@1:visualization-reconciliation",
+    "private.remaining.473@1:schedule-reconciliation",
+    "private.remaining.473@1:sensitivity-validation",
+    "private.remaining.477@1:reverse-solve",
+    "private.remaining.477@1:visualization-reconciliation",
+    "private.remaining.477@1:schedule-reconciliation",
+    "private.remaining.477@1:sensitivity-validation",
+    "private.remaining.480@1:reverse-solve",
+    "private.remaining.480@1:visualization-reconciliation",
+    "private.remaining.480@1:schedule-reconciliation",
+    "private.remaining.480@1:sensitivity-validation",
+    "private.remaining.494@1:reverse-solve",
+    "private.remaining.494@1:visualization-reconciliation",
+    "private.remaining.494@1:schedule-reconciliation",
+    "private.remaining.494@1:sensitivity-validation",
+    "private.component.506@1:reverse-solve",
+    "private.component.506@1:visualization-reconciliation",
+    "private.component.506@1:schedule-reconciliation",
+    "private.component.506@1:sensitivity-validation",
+    "private.remaining.528@1:reverse-solve",
+    "private.remaining.528@1:visualization-reconciliation",
+    "private.remaining.528@1:schedule-reconciliation",
+    "private.remaining.528@1:sensitivity-validation",
+    "private.remaining.537@1:reverse-solve",
+    "private.remaining.537@1:visualization-reconciliation",
+    "private.remaining.537@1:schedule-reconciliation",
+    "private.remaining.537@1:sensitivity-validation"
+  ],
+  "testSourceSha256": "e42d072f62d57e9bce7f87aee374531e539a91ffadad421999a060aed7c5c1a1",
+  "finalStrengthening": "Returned rounded DTI principal and savings contribution are also forward-checked with explicit half-cent propagated residual bounds.",
+  "finalRuntimeReceipt": "new-tests-final.json"
+}

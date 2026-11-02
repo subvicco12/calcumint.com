@@ -1,0 +1,75 @@
+{
+  "baselineSHA": "591969f7f1f968e8bf0a45d16defb2c1b59043d6",
+  "environment": {
+    "node": "24.22.1",
+    "hostedNodeMajor": 22,
+    "isolation": "Separate clone and new branch; original environments not reused",
+    "npmCi": "PASS 477 packages, --ignore-scripts --no-audit --no-fund",
+    "fullRepositoryCheckout": true,
+    "productionCredentialsUsed": false
+  },
+  "checks": {
+    "focusedBaseline": {
+      "status": "PASS",
+      "tests": 31
+    },
+    "newFocusedFinal": {
+      "status": "PASS",
+      "tests": 33
+    },
+    "fullUnit": {
+      "status": "PASS",
+      "passed": 7246,
+      "skipped": 4,
+      "filesPassed": 849,
+      "filesSkipped": 2,
+      "command": "npm test -- --maxWorkers=2"
+    },
+    "certificationGuards": {
+      "status": "PASS",
+      "tests": 15,
+      "grantsCertification": false
+    },
+    "lint": {
+      "status": "PASS",
+      "errors": 0,
+      "existingWarnings": 29,
+      "changedFilesLint": "PASS no warnings"
+    },
+    "typecheck": {
+      "status": "PASS",
+      "command": "NODE_OPTIONS=--max-old-space-size=4096 npm run typecheck",
+      "earlierAttempts": [
+        "Default Node heap: JS OOM, exit134",
+        "6144MiB run while checks concurrent: memory killed, exit137"
+      ]
+    },
+    "build": {
+      "status": "PASS",
+      "command": "NODE_OPTIONS=--max-old-space-size=6144 NEXT_TELEMETRY_DISABLED=1 npm run build",
+      "productionBuildCommand": "next build --webpack",
+      "exitCode": 0,
+      "artifactsChecked": [
+        ".next/BUILD_ID",
+        ".next/prerender-manifest.json",
+        ".next/server/app-paths-manifest.json"
+      ],
+      "earlierAttempt": "Default heap: compilation succeeded then TypeScript heap OOM, exit1"
+    },
+    "browser": {
+      "status": "BLOCKED_ENVIRONMENT",
+      "command": "node tests/six-publication-closure/boundary-browser.mjs",
+      "pinnedChrome": "156.0.8078.47-1 checksum verified by existing installer",
+      "failure": "Chromium SIGSEGV before CDP readiness; no page journeys executed",
+      "retryPolicy": "No startup/security/timeout code changes or repeated browser loop"
+    },
+    "isolatedDatabaseHTTP": "NOT_RUN Docker unavailable; no production connection",
+    "independentReview": {
+      "status": "COMPLETE_WITHIN_TEST_EVIDENCE_SCOPE",
+      "findingResolved": "Actual returned rounded quantities now forward-checked within propagated half-cent bounds",
+      "specialistApproval": false
+    }
+  },
+  "newPublicationEligible": 0,
+  "releaseHold": true
+}
