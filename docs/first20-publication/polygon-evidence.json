@@ -1,0 +1,369 @@
+{
+  "kind": "UNREGISTERED_POLYGON_SUCCESSOR_ENGINEERING_WITNESSES_NOT_APPROVAL",
+  "masterId": 268,
+  "engineId": "launch-polygon-area-calculator",
+  "proposedVersion": 2,
+  "registeredVersion": 1,
+  "sourceHashes": {
+    "src/lib/first20/polygon-successor.ts": "4d16dc2d936dd21e26b4281750242139504fce5cbc95033e634617ff0e79c06a",
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+    "tests/first20-publication/polygon-oracle.py": "5e82f2b27d6df14afb65b57bdcbb422f58e5ed6d32d2f5ab56dafb3e4ad2360b",
+    "tests/first20-publication/polygon-oracle.json": "868d9f39d62dc26832dfb60333161303403f73205a48e5c6dbfe66011cbfa5ee"
+  },
+  "evaluations": [
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 3,
+        "side": 4
+      },
+      "reference": "6.92820323027550917410978536602348946777122101524152251222322791780773206763520014832458474702899430270250456566162681216",
+      "expectedFinite": true,
+      "nearestBinary64": 6.928203230275509,
+      "legacyOutput": 6.928203230275511,
+      "successorOutput": 6.928203230275511,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "2.635445517324074756888012927488665690077590185260426424495172478791459397658508347062473707314633020771228248681479929548255646124461549036e-16",
+      "ulpDistance": "3"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 4,
+        "side": 4
+      },
+      "reference": "16",
+      "expectedFinite": true,
+      "nearestBinary64": 16,
+      "legacyOutput": 16.000000000000004,
+      "successorOutput": 16.000000000000004,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "2.5e-16",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 5,
+        "side": 4
+      },
+      "reference": "27.5276384094234707641441916382177535905179867201631732673135153123819038753434597013190598622014038479020182740556933758",
+      "expectedFinite": true,
+      "nearestBinary64": 27.52763840942347,
+      "legacyOutput": 27.527638409423474,
+      "successorOutput": 27.527638409423474,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "1.1754934296339999328273374232527283594949545601442475197848830155318052458733524422131314032338510593515927779299959027093139428111126826558e-16",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 6,
+        "side": 4
+      },
+      "reference": "41.5692193816530550446587121961409368066273260914491350733393675068463924058112008899475084821739658162150273939697608725",
+      "expectedFinite": true,
+      "nearestBinary64": 41.569219381653056,
+      "legacyOutput": 41.569219381653056,
+      "successorOutput": 41.569219381653056,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "2.2981939570063407143322634206384295821258288830156444108432945177488576306295274000532622570734333233296926662834307585019098382353853289115e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 8,
+        "side": 4
+      },
+      "reference": "77.2548339959390415616540391747103385142295000120623383416537516157034393107874252432124010984845303275204430793891935043",
+      "expectedFinite": true,
+      "nearestBinary64": 77.25483399593904,
+      "legacyOutput": 77.25483399593904,
+      "successorOutput": 77.25483399593904,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "2.0214321336277803112232739291951046371223328913050313693337255949659913700010581826508148707591978957923891032317812697552187183878937261696e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 12,
+        "side": 4
+      },
+      "reference": "179.138438763306110089317424392281873613254652182898270146678735013692784811622401779895016964347931632430054787939521745",
+      "expectedFinite": true,
+      "nearestBinary64": 179.1384387633061,
+      "legacyOutput": 179.1384387633061,
+      "successorOutput": 179.1384387633061,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "5.6321342834315976115325261083638890317518500330111374678498024076978100398533643215995906639055002520359244634651246997339000906386668904693e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 1000,
+        "side": 4
+      },
+      "reference": "1273235.35594220178368674678174768568073109974690941223117336616856446060772485702705846981890090346006104660470819328405",
+      "expectedFinite": true,
+      "nearestBinary64": 1273235.3559422018,
+      "legacyOutput": 1273235.3559422018,
+      "successorOutput": 1273235.3559422018,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "1.2812441267922857281362800838230544174324682866113803170068570445012289721011222276287121414948359227218330121607322907631550242162122351153e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "ordinary",
+      "input": {
+        "sides": 9007199254740991,
+        "side": 4
+      },
+      "reference": "103297463879542154308402275642780.154516935446171186901934027336725691793797065079131880584282547391502265976218623126447",
+      "expectedFinite": true,
+      "nearestBinary64": 1.0329746387954215e+32,
+      "legacyOutput": 1.0329746387954215e+32,
+      "successorOutput": 1.0329746387954215e+32,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "4.1708693648731972142646342280482882044030679676642966206604180504861644137469091663249384674624826110661655652985607183967266378263192073524e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "reported-false-overflow",
+      "input": {
+        "sides": 3,
+        "side": 1e+154
+      },
+      "reference": "4.33012701892219355379374758721089351250017104565302711596987569055932409572334947317346691577159652590533202288503246647E+307",
+      "expectedFinite": true,
+      "nearestBinary64": 4.3301270189221936e+307,
+      "legacyOutput": null,
+      "successorOutput": 4.330127018922195e+307,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "3.339870276536974376890035926297320293946960285967604982519497694614552848832571955721036931974144781190679199127932054486615041747810101054e-16",
+      "ulpDistance": "3"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 3,
+        "side": 1.9859543645979834e+154
+      },
+      "reference": "1.70780847811919967747895984354792344783827926641316382109646979087535321771495870570862702796494837900459012962868800097E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781191996e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781192e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "1.8885082507122974893209054032935775674918107149904692981182351635051209630535407731328684485893844859329049547511619547883861079696280044106e-16",
+      "ulpDistance": "2"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 4,
+        "side": 1.3068314650784928e+154
+      },
+      "reference": "1.70780847811919991355853127609777433594992715140535606074853402007789758270758675193195219555100930118530488105033616452E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781191998e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781192e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "5.0615434828558609724713179020164875297325461625025057251636148156835288532850795468186155964663750135629632923606849865015812916288559421994e-17",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 5,
+        "side": 9.963113927047955e+153
+      },
+      "reference": "1.70780847811920001027606961857405957078888331841218965884393658133941474148650895914400008380037159683268940557139532162E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781192e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781192e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "6.0171089148655813888661793522013495092684787005959293652258191241222889184436532229056036449961480532806086535077437860071672407163516842788e-18",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 6,
+        "side": 8.107624742863741e+153
+      },
+      "reference": "1.70780847811920002420689016824730058705574095682653884799402151102270419201500448038835132132610389135999856504878025786E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781192e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781192002e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "1.0293490873482058905671951735401257028054486085285742537415660085963611508159150812976938558602977731217912102434626634631826442670773258701e-16",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 7,
+        "side": 6.855392942146327e+153
+      },
+      "reference": "1.70780847811919986441809893733192957685273448211042194945455424948592800923732730497230930918100423392218956737299555362E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781191998e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781192e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "7.9389406247698030201597514037646008598775612801401422931347068912006120243968155033026188519986908048463861678215005582532119007250803465635e-17",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 8,
+        "side": 5.947257492209026e+153
+      },
+      "reference": "1.70780847811919999892874166672873447897614290110434130048084417435549676534605711776338152707492274048170379392075615225E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781192e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781192002e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "1.1773642121434478804502110026375674692055283581880151023162166743490368096774714528990624915196876419048443911305353277694026926499021293157e-16",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 9,
+        "side": 5.256071417842424e+153
+      },
+      "reference": "1.70780847811919969290456683219171814477535094834815494114574562309727977943420762182960001120576716325727462401025884682E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781191996e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781191996e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "5.4399874472169747487133467874286057940008840439389168474320059307835663669012288122248629692100046309820152011894036387257515279652374908054e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 10,
+        "side": 4.711265698024141e+153
+      },
+      "reference": "1.70780847811919972023631016099691308316312168219158918919783154460490537198511123911744987124494316049762201584810869487E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781191996e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781191998e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "4.6705289768116392640909237155743237345650406280182601114872426774792471866325293779977056494364263035409177763971516702975537596372887802049e-17",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 11,
+        "side": 4.270225942672653e+153
+      },
+      "reference": "1.70780847811920001864076404311786106027808460378052680267774816297851339819045516731052794144926997769439659894020112288E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781192e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781191998e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "1.2802417065167970054551369159144049569996895333180741828703894526811786955584107538532263443662466818984503862335269670204556298571170633976e-16",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "near-finite-edge",
+      "input": {
+        "sides": 12,
+        "side": 3.905576792822729e+153
+      },
+      "reference": "1.70780847811919970355612675476957520555833458711076804346070744317992932273150725002704324716376110733476804283294289826E+308",
+      "expectedFinite": true,
+      "nearestBinary64": 1.7078084781191996e+308,
+      "legacyOutput": null,
+      "successorOutput": 1.7078084781191996e+308,
+      "legacyFalseOverflowCorrected": true,
+      "relativeError": "6.0636850139551585388222028938831439556674637421688360590284720916605104550952471965521241207625071658793664779279450435435827802785719106817e-17",
+      "ulpDistance": "0"
+    },
+    {
+      "label": "large-side-count-minimum-side",
+      "input": {
+        "sides": 9007199254740991,
+        "side": 1e-9
+      },
+      "reference": "6456091492471.38544846644772397577283894213214813273971338169154357247464628280399736355690462710746623521113980761086037",
+      "expectedFinite": true,
+      "nearestBinary64": 6456091492471.386,
+      "legacyOutput": 6456091492471.385,
+      "successorOutput": 6456091492471.385,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "6.9464078730443031480862355023942602290078530708911442449738496325771530447276908315582150099043114859540612424579365480670358042706632396341e-17",
+      "ulpDistance": "1"
+    },
+    {
+      "label": "minimum-side",
+      "input": {
+        "sides": 3,
+        "side": 1e-9
+      },
+      "reference": "4.33012701892219377319301975937714733279876628274616263687258741844577352579230329047046385045836785809485503522581793753E-19",
+      "expectedFinite": true,
+      "nearestBinary64": 4.330127018922194e-19,
+      "legacyOutput": 4.3301270189221952e-19,
+      "successorOutput": 4.3301270189221952e-19,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": "3.2950695764942422021559418078032565156073246516782397358436731397198187604010131185080196406752669149856157927251577249588295149222005940325e-16",
+      "ulpDistance": "3"
+    },
+    {
+      "label": "true-nonfinite",
+      "input": {
+        "sides": 3,
+        "side": 1e+308
+      },
+      "reference": "4.33012701892219332890009598237683027503695940417081913820245664740987801795069755825215353524905200192646059100213195844E+615",
+      "expectedFinite": false,
+      "nearestBinary64": null,
+      "legacyOutput": null,
+      "successorOutput": null,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": null,
+      "ulpDistance": null
+    },
+    {
+      "label": "true-nonfinite",
+      "input": {
+        "sides": 9007199254740991,
+        "side": 1e+154
+      },
+      "reference": "6.45609149247138512134861299641478457633616652253700531692071698017443920905034835950407131748239823672462025268163037044E+338",
+      "expectedFinite": false,
+      "nearestBinary64": null,
+      "legacyOutput": null,
+      "successorOutput": null,
+      "legacyFalseOverflowCorrected": false,
+      "relativeError": null,
+      "ulpDistance": null
+    }
+  ],
+  "summary": {
+    "cases": 23,
+    "legacyFalseOverflowsCorrected": 11,
+    "unrepresentableRejected": 2
+  },
+  "governingFullDomainToleranceApproved": false,
+  "engineeringFixtureRelativeBudget": "1e-14",
+  "publicationEligible": false,
+  "releaseHold": true
+}

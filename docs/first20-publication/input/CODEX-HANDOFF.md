@@ -1,0 +1,219 @@
+# Minimal Codex handoff — no source changes performed
+
+Baseline PR1520 `af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5`. Read-only dossier; engineering execution is a separate authorized task. Do not repeat540ID or42URL research. All original1,100requirements retained.
+
+## CODEX44-01 — DEMONSTRATED_SOFTWARE_DEFECT
+
+IDs:268
+
+{
+  "id": "CODEX44-01",
+  "catalogIds": [
+    268
+  ],
+  "classification": "DEMONSTRATED_SOFTWARE_DEFECT",
+  "independentlyExecutable": "Narrow correction proposal and regression specification are ready; source edits require separate engineering execution, not this read-only mission.",
+  "source": "src/calculators/launch-portfolio.ts regular polygon spec and launchDefinition finite-result wrapper",
+  "reproduction": {
+    "input": {
+      "sides": 3,
+      "side": 1e+154
+    },
+    "pinnedExpression": "sides*side*side/(4*Math.tan(Math.PI/sides))",
+    "observed": "Infinity; finite-result wrapper throws",
+    "independentReference": "sqrt(3)/4*(1e154)^2 = approximately4.330127018922193e307, finite",
+    "scope": "Bounded isolated expression, not end-to-end application test"
+  },
+  "task": "Add independent high-magnitude finite-result test and overflow-safe scaling/order; preserve truly unrepresentable rejection. Check ordinary and subnormal/large-side-count cases narrowly. Do not cap valid input solely to hide intermediate overflow.",
+  "versionRule": "Preserve v1 and saved history; apply existing controlled successor policy to any approved behavioral change.",
+  "doneWhen": "Actual mapped successor engine matches independent reference within approved tolerance; ordinary fixtures, domain failures and historical replay unchanged as required. No new publication authority."
+}
+
+## CODEX44-02 — DEMONSTRATED_METHOD_TEXT_ALIGNMENT_PENDING_POLICY
+
+IDs:214
+
+{
+  "id": "CODEX44-02",
+  "catalogIds": [
+    214
+  ],
+  "classification": "DEMONSTRATED_METHOD_TEXT_ALIGNMENT_PENDING_POLICY",
+  "dependency": "OC44-03 and competent numerical method decision",
+  "task": "Reproduce decimal0.4999999999999999,p0: literal declared round(decimal*10^p)/10^p=0 versus EPSILON implementation1. Bind reviewed semantics and align formula metadata/compute/display without silently changing historical v1. Include fraction representation assertions in actual engine/display/replay evidence, not only result numeric goldens.",
+  "doNotClaim": "No canonical mathematically correct rounding policy has been approved; this is an alignment defect, not permission to delete EPSILON speculatively."
+}
+
+## CODEX44-03 — SCOPE_AND_EVIDENCE_PREPARATION
+
+IDs:208,209,210,211,212,213,214,215,216,217,218,219,220,221,223,224,225,226,227,228,229,230,231,234,255,256,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,278,279,280
+
+{
+  "id": "CODEX44-03",
+  "catalogIds": [
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    234,
+    255,
+    256,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    278,
+    279,
+    280
+  ],
+  "classification": "SCOPE_AND_EVIDENCE_PREPARATION",
+  "task": "Create exact44 contract/ID/version/route/dependency/source-SHA mapping and per-ID feature applicability proposals from this dossier; preserve immutable v1 and catalog fields including217conflict. Consolidate shared requirements without deleting any1,100records.",
+  "dependency": "Owner/reviewer choices only where unsettled; sources determine mathematical facts."
+}
+
+## CODEX44-04 — CONDITIONAL_UI_IMPLEMENTATION
+
+IDs:208,209,210,211,212,213,214,215,216,217,218,219,220,221,223,224,225,226,227,228,229,230,231,234,255,256,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,278,279,280
+
+{
+  "id": "CODEX44-04",
+  "catalogIds": [
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    234,
+    255,
+    256,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    278,
+    279,
+    280
+  ],
+  "classification": "CONDITIONAL_UI_IMPLEMENTATION",
+  "dependency": "Approved per-ID Blueprint/catalog feature applicability and complete contract",
+  "task": "Reuse existing FinalCalculatorRenderer/result/presentation/entitlement architecture for applicable launch workflows. Current LaunchTool path only renders scalar Result+fields+account actions+AI explanation. Add approved units, meaningful visuals/cards/modes and error interpretation; do not rebuild correct engines or invent blanket charts/N_A."
+}
+
+## CODEX44-05 — MISSING_ACCEPTANCE_EVIDENCE_NOT_PROVEN_MISSING_SOFTWARE
+
+IDs:208,209,210,211,212,213,214,215,216,217,218,219,220,221,223,224,225,226,227,228,229,230,231,234,255,256,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,278,279,280
+
+{
+  "id": "CODEX44-05",
+  "catalogIds": [
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    234,
+    255,
+    256,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    278,
+    279,
+    280
+  ],
+  "classification": "MISSING_ACCEPTANCE_EVIDENCE_NOT_PROVEN_MISSING_SOFTWARE",
+  "task": "Execute version-bound independent actual-engine domain/rounding, plan parity, browser/action/ownership/tamper/history/scenario/export, accessibility and performance acceptance against approved contracts. Reuse existingfixtures and sharedharness; do not rerun broad540research or treat control journeys as44coverage. Implement only newly demonstrated gaps.",
+  "dependency": "Selected contracts and authorized isolated provider/accounts for genuine persistence; unavailable evidence stays blocked."
+}
+
+
+Use `next build --webpack` for any later authorized implementation validation. Do not treat CI/fixtures as canonical source/reviewer or publication authority. No database operations, certification, publication, merges, deployment or live payments. Preserve v1/historical saved work, all14privateDRAFTs and RELEASE HOLD.

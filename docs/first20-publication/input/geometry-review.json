@@ -1,0 +1,969 @@
+{
+  "kind": "BOUNDED_GEOMETRY_REVIEW_NOT_APPROVAL",
+  "baselineSHA": "af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5",
+  "pr": 1520,
+  "selectedCount": 20,
+  "inspectionBoundary": "Exact registered queue IDs in 255..280 only; pinned launch-portfolio definitions and bottom helpers; supplied extraction/readiness records; existing source captures. No full audit, no new cohort browsing, no deployed runtime/production-schema inspection.",
+  "excludedIdsInInterval": [
+    257,
+    258,
+    274,
+    275,
+    276,
+    277
+  ],
+  "sharedImplementation": {
+    "version": 1,
+    "riskClass": "standard",
+    "reviewStatus": "certified is observed implementation metadata, not canonical approval",
+    "input": "z.number().finite(), required per declared field; field min/max/int/disallow applied; dimensions permit zero except polygon side minimum 1e-9",
+    "refinements": "Bottom superRefine checks bounded count/probability/efficiency relationships, none adds geometry conditions. Polygon integer schema projection maximum is 9007199254740991; exact Zod dependency was not inspected.",
+    "output": "{result:number}; rejects nonfinite computed result; finite zero including underflow is not independently rejected. No unit selector, alternate input modes, explicit precision selector, or extra geometric outputs in this inspected engine. Their canonical necessity is unapproved.",
+    "examplesAndGoldens": "Default example expected is computed by same implementation, not independent evidence. Definition attempts to import per-ID/slug/v1 independent cases; imported corpus not part of this bounded read and coverage not established."
+  },
+  "sharedBlockers": [
+    "Exact candidate binding is not approved canonical ID/version association.",
+    "Complete canonical feature/input/output/domain requirements and full Blueprint reconciliation remain unapproved.",
+    "Zero/degenerate-dimension policy, compatible units and displayed result units, finite-range behavior, precision/rounding and alternate modes require explicit approved contract decisions.",
+    "Runtime source is generic CalcuMint deterministic formula review; publisher/body/edition applicability and qualified review are not established by metadata.",
+    "Independent numerical full-domain and browser acceptance remain unestablished; supplied readiness also leaves accessibility, performance, plan parity, authenticated history/scenarios/export and replay/tamper expectations unresolved.",
+    "Live legacy route, published lifecycle, and certified codeReviewStatus do not establish full contract readiness."
+  ],
+  "sourceReuse": [
+    {
+      "path": "six-full-contracts-20261102/input/source-captures/openstax-volume.json",
+      "url": "https://openstax.org/books/prealgebra-2e/pages/9-6-solve-geometry-applications-volume-and-surface-area",
+      "scope": "Existing OpenStax Prealgebra 2e section body discusses rectangular solids, sphere volume/surface area, cylinders and cones; relevant candidates 269..273. It explicitly treats cylinder height perpendicular to circular bases. Body capture contains duplicated rendered math text, so do not take malformed extracted numerals as acceptance vectors.",
+      "limitation": "Formula corroboration only; no approval of CalcuMint scope, runtime rounding/ranges, or applicability edition."
+    },
+    {
+      "path": "six-full-contracts-20261102/input/source-captures/dlmf.nist.gov-4.14.txt",
+      "url": "https://dlmf.nist.gov/4.14",
+      "scope": "Existing NIST DLMF trigonometric definitions/periodicity is background relevant to polygon tangent and angle/radian terminology.",
+      "limitation": "Not direct corroboration of polygon-area formula, degree conversion contract, or every elementary geometry formula."
+    }
+  ],
+  "demonstratedGaps": [
+    {
+      "masterId": 268,
+      "classification": "demonstrated_software_missing",
+      "input": {
+        "sides": 3,
+        "side": 1e+154
+      },
+      "evidence": "Node evaluation of exact pinned arithmetic n*s*s/(4*Math.tan(Math.PI/n)) returns Infinity; finite-result wrapper therefore throws. Reordered coefficient-times-side-times-side yields 4.330127018922195e307. Inputs meet observed integer/minimum constraints.",
+      "scope": "Bounded expression reproduction; not end-to-end application execution.",
+      "task": "For launch-polygon-area-calculator v1, add independent high-magnitude finite-result regression for sides=3, side=1e154; implement overflow-safe factor ordering/scaling for declared regular-polygon formula while retaining rejection of truly unrepresentable results and ordinary-case precision. Inspect underflow and large-side-count boundaries narrowly. Preserve existing version/history policy; approve any required version change separately."
+    }
+  ],
+  "conditionalTasks": [
+    {
+      "condition": "After canonical identity/version and scope decision",
+      "task": "For each candidate, record approved exact fields, shape assumptions, degenerate-zero policy, compatible input units/result dimensions, range/precision/rounding, explicit error behavior, and required output keys; decide radius/diameter, arbitrary triangle/polygon, solve-for-missing-side or unit conversion modes before implementation tasks. Do not classify these absent modes as defects without the decision."
+    },
+    {
+      "condition": "After approved contract/source applicability",
+      "task": "Bind precise publisher/section/edition evidence, independent normal/boundary/error vectors and required browser acceptance to each approved version; implement only approved deltas. Use shared geometry harness where appropriate, but do not let a shared harness certify individual contracts."
+    }
+  ],
+  "rankingBasis": "Engineering estimate of smallest observed formula/input/output surface and numerical burden, conditional on narrow observed scope being approved. Ranking is not a canonical simplicity ranking, approval or publication order. Shared blockers apply equally.",
+  "rankedIds": [
+    265,
+    262,
+    261,
+    259,
+    260,
+    266,
+    256,
+    255,
+    278,
+    264,
+    263,
+    270,
+    279,
+    280,
+    267,
+    273,
+    269,
+    271,
+    272,
+    268
+  ],
+  "rows": [
+    {
+      "masterId": 255,
+      "title": "Hypotenuse Calculator",
+      "engineId": "launch-hypotenuse-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "number",
+            "minimum": 0
+          },
+          "b": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "\u221a(a\u00b2 + b\u00b2)",
+          "description": "Apply the Pythagorean theorem and take the square root of the sum of the squared legs."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Right-triangle hypotenuse only; Math.hypot avoids naive squaring overflow.",
+      "rankForLikelySimplestFullContract": 8,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 256,
+      "title": "Triangle Area Calculator",
+      "engineId": "launch-triangle-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "base": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "base",
+          "height"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "base \u00d7 height / 2",
+          "description": "A triangle occupies half the area of a rectangle with the same base and height."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Base and perpendicular height only; retries multiplication after halving base if direct result nonfinite.",
+      "rankForLikelySimplestFullContract": 7,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 259,
+      "title": "Rectangle Area Calculator",
+      "engineId": "launch-rectangle-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "number",
+            "minimum": 0
+          },
+          "width": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "length",
+          "width"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "length \u00d7 width",
+          "description": "Multiply length by width to obtain square units."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Length \u00d7 width only.",
+      "rankForLikelySimplestFullContract": 4,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 260,
+      "title": "Rectangle Perimeter Calculator",
+      "engineId": "launch-rectangle-perimeter-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "number",
+            "minimum": 0
+          },
+          "width": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "length",
+          "width"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "2(length + width)",
+          "description": "Add length and width and multiply by two because each occurs twice around the boundary."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Perimeter from length and width only.",
+      "rankForLikelySimplestFullContract": 5,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 261,
+      "title": "Square Area Calculator",
+      "engineId": "launch-square-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "side": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "side"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "side\u00b2",
+          "description": "Multiply the side length by itself."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Side squared only.",
+      "rankForLikelySimplestFullContract": 3,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 262,
+      "title": "Square Perimeter Calculator",
+      "engineId": "launch-square-perimeter-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "side": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "side"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "4 \u00d7 side",
+          "description": "A square has four equal sides, so multiply one side by four."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Four times side only.",
+      "rankForLikelySimplestFullContract": 2,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 263,
+      "title": "Circle Area Calculator",
+      "engineId": "launch-circle-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "\u03c0r\u00b2",
+          "description": "Square the radius and multiply by pi."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Radius-to-area only; Math.PI precision.",
+      "rankForLikelySimplestFullContract": 11,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 264,
+      "title": "Circle Circumference Calculator",
+      "engineId": "launch-circle-circumference-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "2\u03c0r",
+          "description": "Multiply the radius by two and by pi."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Radius-to-circumference only; Math.PI precision.",
+      "rankForLikelySimplestFullContract": 10,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 265,
+      "title": "Circle Diameter Calculator",
+      "engineId": "launch-circle-diameter-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "2r",
+          "description": "The diameter spans two radii through the center."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Radius-to-diameter only.",
+      "rankForLikelySimplestFullContract": 1,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 266,
+      "title": "Parallelogram Area Calculator",
+      "engineId": "launch-parallelogram-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "base": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "base",
+          "height"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "base \u00d7 height",
+          "description": "Multiply base length by perpendicular height."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Base \u00d7 perpendicular height only.",
+      "rankForLikelySimplestFullContract": 6,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 267,
+      "title": "Trapezoid Area Calculator",
+      "engineId": "launch-trapezoid-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "number",
+            "minimum": 0
+          },
+          "b": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "a",
+          "b",
+          "height"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "(a + b) \u00d7 h / 2",
+          "description": "Add the parallel sides, multiply by the perpendicular height, then divide by two."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Both parallel sides and perpendicular height; fallback averages sides before multiplying when direct result nonfinite.",
+      "rankForLikelySimplestFullContract": 15,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 268,
+      "title": "Polygon Area Calculator",
+      "engineId": "launch-polygon-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "sides": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 9007199254740991
+          },
+          "side": {
+            "type": "number",
+            "minimum": 1e-09
+          }
+        },
+        "required": [
+          "sides",
+          "side"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "n \u00d7 s\u00b2 / (4 \u00d7 tan(\u03c0/n))",
+          "description": "For a regular polygon, multiply the number of sides by the squared side length and divide by four times tan(pi divided by the number of sides)."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Regular polygon only; integer side count >=3; side >=1e-9; no arbitrary vertices or irregular polygon inference. Demonstrated finite-result false overflow.",
+      "rankForLikelySimplestFullContract": 20,
+      "gapClassification": "demonstrated_software_missing",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 269,
+      "title": "Sphere Volume Calculator",
+      "engineId": "launch-sphere-volume-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "4\u03c0r\u00b3 / 3",
+          "description": "Cube the radius, multiply by pi and four, then divide by three."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Sphere radius only; fallback recomputes cubic product if direct result is nonfinite or nonzero radius loses result to zero.",
+      "rankForLikelySimplestFullContract": 17,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 270,
+      "title": "Sphere Surface Area Calculator",
+      "engineId": "launch-sphere-surface-area-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "4\u03c0r\u00b2",
+          "description": "Square the radius and multiply by four pi."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Sphere radius-to-total-surface-area only.",
+      "rankForLikelySimplestFullContract": 12,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 271,
+      "title": "Cylinder Volume Calculator",
+      "engineId": "launch-cylinder-volume-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius",
+          "height"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "\u03c0r\u00b2h",
+          "description": "Multiply the circular base area by cylinder height."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Cylinder radius and height; overflow/zero-loss fallback and zero-factor handling present.",
+      "rankForLikelySimplestFullContract": 18,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 272,
+      "title": "Cone Volume Calculator",
+      "engineId": "launch-cone-volume-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radius": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "radius",
+          "height"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "\u03c0r\u00b2h / 3",
+          "description": "A cone has one third the volume of a cylinder with the same base and height."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Cone radius and perpendicular height; overflow/zero-loss fallback and zero-factor handling present.",
+      "rankForLikelySimplestFullContract": 19,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 273,
+      "title": "Rectangular Prism Volume Calculator",
+      "engineId": "launch-rectangular-prism-volume-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "number",
+            "minimum": 0
+          },
+          "width": {
+            "type": "number",
+            "minimum": 0
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "length",
+          "width",
+          "height"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "length \u00d7 width \u00d7 height",
+          "description": "Multiply length, width and height using compatible units."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Three dimensions; fallback sorts factors after nonfinite or lost-zero direct result.",
+      "rankForLikelySimplestFullContract": 16,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 278,
+      "title": "Pythagorean Theorem Calculator",
+      "engineId": "launch-pythagorean-theorem-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "number",
+            "minimum": 0
+          },
+          "b": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "a",
+          "b"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "c = \u221a(a\u00b2 + b\u00b2)",
+          "description": "Square both perpendicular sides, add them, and take the principal square root to obtain the hypotenuse."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Hypotenuse from two perpendicular legs only; no solve-for-any-side mode.",
+      "rankForLikelySimplestFullContract": 9,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 279,
+      "title": "Degrees to Radians Calculator",
+      "engineId": "launch-degrees-to-radians-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "degrees": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "degrees"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "degrees \u00d7 \u03c0 / 180",
+          "description": "Multiply degrees by pi and divide by 180."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Signed finite degrees to radians; overflow fallback divides before multiplying.",
+      "rankForLikelySimplestFullContract": 13,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    },
+    {
+      "masterId": 280,
+      "title": "Radians to Degrees Calculator",
+      "engineId": "launch-radians-to-degrees-calculator",
+      "version": 1,
+      "inputSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "radians": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "radians"
+        ]
+      },
+      "formula": [
+        {
+          "id": "primary",
+          "expression": "radians \u00d7 180 / \u03c0",
+          "description": "Multiply radians by 180 and divide by pi."
+        }
+      ],
+      "output": {
+        "keys": [
+          "result"
+        ],
+        "type": "finite number",
+        "nonfiniteBehavior": "throws Error: Calculated result is outside the supported finite range",
+        "rounding": "No explicit output rounding in inspected definition"
+      },
+      "observedScope": "Signed finite radians to degrees; overflow fallback divides before multiplying.",
+      "rankForLikelySimplestFullContract": 14,
+      "gapClassification": "full_scope_unapproved_and_qa_source_gaps",
+      "canonicalMappingApproved": false,
+      "fullContractReady": false
+    }
+  ],
+  "releaseHold": true,
+  "fullContractReady": 0,
+  "boundedFollowupChecks": [
+    {
+      "masterId": 271,
+      "input": {
+        "radius": 1e+154,
+        "height": 1e-10
+      },
+      "observedLiteralResult": 3.141592653589793e+298,
+      "finding": "No demonstrated gap: complete pinned expression fallback recovers finite result after direct intermediate overflow."
+    },
+    {
+      "masterId": 272,
+      "input": {
+        "radius": 1e+154,
+        "height": 1e-10
+      },
+      "observedLiteralResult": 1.0471975511965978e+298,
+      "finding": "No demonstrated gap: complete pinned expression fallback recovers finite result."
+    },
+    {
+      "masterId": 272,
+      "input": {
+        "radius": 1e+154,
+        "height": 1
+      },
+      "observedLiteralResult": 1.0471975511965977e+308,
+      "finding": "No demonstrated gap: complete pinned expression fallback recovers finite result."
+    }
+  ]
+}

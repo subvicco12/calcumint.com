@@ -466,6 +466,15 @@ jobs:
           node tests/statistics-workbench/browser.mjs
         env:
           DECIMAL50_BROWSER_RECEIPT: ${{ runner.temp }}/decimal50-statistics-browser
+      - name: First20 exact-version evidence and private polygon successor acceptance
+        timeout-minutes: 4
+        run: |
+          node_modules/.bin/vite-node --config vitest.config.ts scripts/first20-publication/polygon-evidence.ts --check
+          node scripts/first20-publication/evidence.mjs --check
+          node tests/first20-publication/evidence.test.mjs
+          node tests/first20-publication/browser.mjs
+        env:
+          FIRST20_BROWSER_RECEIPT: ${{ runner.temp }}/first20-publication-browser
       - name: Exact76 private input, history, scenarios and exports
         timeout-minutes: 6
         run: node tests/publication-factory/browser.mjs

@@ -1,0 +1,744 @@
+{
+  "kind": "ISOLATED_EXACT_COMPUTE_EXPRESSIONS_NOT_ENGINE_OR_SCHEMA_ACCEPTANCE",
+  "tolerance": "Object.is or absolute difference <= abs(expected)*1e-12; no blanket scientific acceptance inferred",
+  "count": 70,
+  "mismatches": [],
+  "results": [
+    {
+      "masterId": 208,
+      "input": {
+        "old": 80,
+        "next": 100
+      },
+      "expected": 25,
+      "actual": 25,
+      "match": true
+    },
+    {
+      "masterId": 208,
+      "input": {
+        "old": -80,
+        "next": -100
+      },
+      "expected": -25,
+      "actual": -25,
+      "match": true
+    },
+    {
+      "masterId": 209,
+      "input": {
+        "value": 240,
+        "percent": 12.5
+      },
+      "expected": 270,
+      "actual": 270,
+      "match": true
+    },
+    {
+      "masterId": 209,
+      "input": {
+        "value": -8,
+        "percent": 25
+      },
+      "expected": -10,
+      "actual": -10,
+      "match": true
+    },
+    {
+      "masterId": 210,
+      "input": {
+        "value": 240,
+        "percent": 12.5
+      },
+      "expected": 210,
+      "actual": 210,
+      "match": true
+    },
+    {
+      "masterId": 210,
+      "input": {
+        "value": 8,
+        "percent": 100
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 211,
+      "input": {
+        "a": 7,
+        "b": 4
+      },
+      "expected": 1.75,
+      "actual": 1.75,
+      "match": true
+    },
+    {
+      "masterId": 211,
+      "input": {
+        "a": -1,
+        "b": 8
+      },
+      "expected": -0.125,
+      "actual": -0.125,
+      "match": true
+    },
+    {
+      "masterId": 212,
+      "input": {
+        "a": 3,
+        "b": 8
+      },
+      "expected": 0.375,
+      "actual": 0.375,
+      "match": true
+    },
+    {
+      "masterId": 212,
+      "input": {
+        "a": 0,
+        "b": 7
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 213,
+      "input": {
+        "numerator": -7,
+        "denominator": 8
+      },
+      "expected": -0.875,
+      "actual": -0.875,
+      "match": true
+    },
+    {
+      "masterId": 213,
+      "input": {
+        "numerator": 1,
+        "denominator": -8
+      },
+      "expected": -0.125,
+      "actual": -0.125,
+      "match": true
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 0
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true,
+      "fraction": "0/1",
+      "actualFraction": "0/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 1
+      },
+      "expected": 0.1,
+      "actual": 0.1,
+      "match": true,
+      "fraction": "1/10",
+      "actualFraction": "1/10"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 2
+      },
+      "expected": 0.13,
+      "actual": 0.13,
+      "match": true,
+      "fraction": "13/100",
+      "actualFraction": "13/100"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 3
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 4
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 5
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 6
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 7
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 8
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 9
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 10
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 11
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.125,
+        "precision": 12
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true,
+      "fraction": "1/8",
+      "actualFraction": "1/8"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": -0.125,
+        "precision": 2
+      },
+      "expected": -0.12,
+      "actual": -0.12,
+      "match": true,
+      "fraction": "-3/25",
+      "actualFraction": "-3/25"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.75,
+        "precision": 2
+      },
+      "expected": 0.75,
+      "actual": 0.75,
+      "match": true,
+      "fraction": "3/4",
+      "actualFraction": "3/4"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": -1.25,
+        "precision": 2
+      },
+      "expected": -1.25,
+      "actual": -1.25,
+      "match": true,
+      "fraction": "-5/4",
+      "actualFraction": "-5/4"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 1.005,
+        "precision": 2
+      },
+      "expected": 1.01,
+      "actual": 1.01,
+      "match": true,
+      "fraction": "101/100",
+      "actualFraction": "101/100"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": -0.5,
+        "precision": 0
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true,
+      "fraction": "0/1",
+      "actualFraction": "0/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0.5,
+        "precision": 0
+      },
+      "expected": 1,
+      "actual": 1,
+      "match": true,
+      "fraction": "1/1",
+      "actualFraction": "1/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 0,
+        "precision": 12
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true,
+      "fraction": "0/1",
+      "actualFraction": "0/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 9007199254740991,
+        "precision": 0
+      },
+      "expected": 9007199254740991,
+      "actual": 9007199254740991,
+      "match": true,
+      "fraction": "9007199254740991/1",
+      "actualFraction": "9007199254740991/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 9000,
+        "precision": 12
+      },
+      "expected": 9000,
+      "actual": 9000,
+      "match": true,
+      "fraction": "9000/1",
+      "actualFraction": "9000/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 9008,
+        "precision": 12
+      },
+      "expected": 9008,
+      "actual": 9008,
+      "match": true,
+      "fraction": "9008/1",
+      "actualFraction": "9008/1"
+    },
+    {
+      "masterId": 214,
+      "input": {
+        "decimal": 1e+21,
+        "precision": 0
+      },
+      "expected": 1e+21,
+      "actual": 1e+21,
+      "match": true,
+      "fraction": "1e+21/1",
+      "actualFraction": "1e+21/1"
+    },
+    {
+      "masterId": 215,
+      "input": {
+        "numerator": -3,
+        "denominator": 8
+      },
+      "expected": -0.375,
+      "actual": -0.375,
+      "match": true
+    },
+    {
+      "masterId": 215,
+      "input": {
+        "numerator": 0,
+        "denominator": 7
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 216,
+      "input": {
+        "a": -7,
+        "b": 3
+      },
+      "expected": -2,
+      "actual": -2,
+      "match": true
+    },
+    {
+      "masterId": 216,
+      "input": {
+        "a": 1e+308,
+        "b": 1e+308
+      },
+      "expected": 1e+308,
+      "actual": 1e+308,
+      "match": true
+    },
+    {
+      "masterId": 217,
+      "input": {
+        "a": -4,
+        "b": 5
+      },
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "masterId": 217,
+      "input": {
+        "a": 1e+308,
+        "b": 1e+308
+      },
+      "expected": 1e+308,
+      "actual": 1e+308,
+      "match": true
+    },
+    {
+      "masterId": 218,
+      "input": {
+        "x": -12
+      },
+      "expected": 144,
+      "actual": 144,
+      "match": true
+    },
+    {
+      "masterId": 218,
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 219,
+      "input": {
+        "x": -3
+      },
+      "expected": -27,
+      "actual": -27,
+      "match": true
+    },
+    {
+      "masterId": 219,
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 220,
+      "input": {
+        "x": 225
+      },
+      "expected": 15,
+      "actual": 15,
+      "match": true
+    },
+    {
+      "masterId": 220,
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 221,
+      "input": {
+        "x": -64
+      },
+      "expected": -4,
+      "actual": -4,
+      "match": true
+    },
+    {
+      "masterId": 221,
+      "input": {
+        "x": 0.125
+      },
+      "expected": 0.5,
+      "actual": 0.5,
+      "match": true
+    },
+    {
+      "masterId": 223,
+      "input": {
+        "base": 2,
+        "exponent": -3
+      },
+      "expected": 0.125,
+      "actual": 0.125,
+      "match": true
+    },
+    {
+      "masterId": 223,
+      "input": {
+        "base": -2,
+        "exponent": 3
+      },
+      "expected": -8,
+      "actual": -8,
+      "match": true
+    },
+    {
+      "masterId": 224,
+      "input": {
+        "x": 81,
+        "base": 3
+      },
+      "expected": 4,
+      "actual": 4.000000000000001,
+      "match": true
+    },
+    {
+      "masterId": 224,
+      "input": {
+        "x": 1,
+        "base": 2
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 225,
+      "input": {
+        "x": -8
+      },
+      "expected": -0.125,
+      "actual": -0.125,
+      "match": true
+    },
+    {
+      "masterId": 225,
+      "input": {
+        "x": 0.5
+      },
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "masterId": 226,
+      "input": {
+        "a": 29,
+        "b": 6
+      },
+      "expected": 5,
+      "actual": 5,
+      "match": true
+    },
+    {
+      "masterId": 226,
+      "input": {
+        "a": -29,
+        "b": 6
+      },
+      "expected": -5,
+      "actual": -5,
+      "match": true
+    },
+    {
+      "masterId": 227,
+      "input": {
+        "a": 12,
+        "b": 18
+      },
+      "expected": 36,
+      "actual": 36,
+      "match": true
+    },
+    {
+      "masterId": 227,
+      "input": {
+        "a": 1,
+        "b": 7
+      },
+      "expected": 7,
+      "actual": 7,
+      "match": true
+    },
+    {
+      "masterId": 228,
+      "input": {
+        "a": 48,
+        "b": 18
+      },
+      "expected": 6,
+      "actual": 6,
+      "match": true
+    },
+    {
+      "masterId": 228,
+      "input": {
+        "a": 1,
+        "b": 7
+      },
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "masterId": 229,
+      "input": {
+        "number": 12
+      },
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "masterId": 229,
+      "input": {
+        "number": 13
+      },
+      "expected": 13,
+      "actual": 13,
+      "match": true
+    },
+    {
+      "masterId": 230,
+      "input": {
+        "value": -1.25,
+        "decimals": 1
+      },
+      "expected": -1.2,
+      "actual": -1.2,
+      "match": true
+    },
+    {
+      "masterId": 230,
+      "input": {
+        "value": 0,
+        "decimals": 2
+      },
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "masterId": 231,
+      "input": {
+        "coefficient": 1.25,
+        "exponent": 3
+      },
+      "expected": 1250,
+      "actual": 1250,
+      "match": true
+    },
+    {
+      "masterId": 231,
+      "input": {
+        "coefficient": -2.5,
+        "exponent": -3
+      },
+      "expected": -0.0025,
+      "actual": -0.0025,
+      "match": true
+    },
+    {
+      "masterId": 234,
+      "input": {
+        "observed": 9,
+        "actual": 8
+      },
+      "expected": 12.5,
+      "actual": 12.5,
+      "match": true
+    },
+    {
+      "masterId": 234,
+      "input": {
+        "observed": -1e+308,
+        "actual": 1e+308
+      },
+      "expected": 200,
+      "actual": 200,
+      "match": true
+    }
+  ]
+}

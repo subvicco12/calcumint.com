@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "baselineSHA": "cac3becb8957c10452b3a66e882b8a3a1d7ec555",
+  "scope": "OBSERVED_LEGACY_POLICY_RECONCILIATION_NOT_PACKAGE_SELECTION_OR_APPROVAL",
+  "masterId": 214,
+  "observedCandidate": {
+    "id": "launch-decimal-to-fraction-calculator",
+    "slug": "decimal-to-fraction-calculator",
+    "version": 1,
+    "mappingBasis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+    "canonicalMappingApproved": false
+  },
+  "declaredFormula": "reduced round(decimal \u00d7 10^precision) / 10^precision",
+  "observedFormula": "scale = 10^precision; numerator = Math.round((decimal + Number.EPSILON) * scale); result = numerator / scale; fraction = GCD reduction of numerator and scale",
+  "observedDomain": {
+    "decimal": "finite binary64 Number",
+    "precision": "integer 0 through 12",
+    "overflow": "schema-valid scaling overflow rejected by finite-result guard",
+    "unsafeScaledIntegers": "not globally rejected; 9008 at precision 12 remains accepted",
+    "negativeZero": "numeric -0 retained for -0.5 at precision 0; formatted 0/1"
+  },
+  "conflicts": [
+    {
+      "kind": "CODEX44-02_DECLARATION_IMPLEMENTATION_ALIGNMENT",
+      "input": {
+        "decimal": 0.4999999999999999,
+        "precision": 0
+      },
+      "declaredFormulaBinary64Result": 0,
+      "actualResult": 1,
+      "actualFraction": "1/1"
+    },
+    {
+      "kind": "DECLARATION_OMITS_EPSILON",
+      "input": {
+        "decimal": 1.005,
+        "precision": 2
+      },
+      "declaredFormulaBinary64Result": 1,
+      "actualResult": 1.01,
+      "actualFraction": "101/100"
+    },
+    {
+      "kind": "TIE_POLICY_MUST_BE_EXPLICIT_NOT_INFERRED",
+      "input": {
+        "decimal": -0.125,
+        "precision": 2
+      },
+      "actualResult": -0.12,
+      "actualFraction": "-3/25",
+      "halfAwayFromZeroAlternative": -0.13,
+      "note": "No evidence found that Blueprint mandates half-away-from-zero. This is a policy distinction, not a demonstrated violation of an approved tie policy."
+    }
+  ],
+  "governingNativeClauses": {
+    "BP-0101": "Internal change identity for formula or rounding changes.",
+    "BP-0139": "Rounding policy is explicit and part of certification.",
+    "BP-0194": "Identical-input presentations reconcile within explicit rounding policy.",
+    "BP-0429": "Methodology retains formula, assumptions, rounding policy, technical revision, review and sources."
+  },
+  "requiredDecision": "OC44-03 remains pending: competent numerical review of exact decimal versus binary64, tie mode, signed zero, precision envelope and display/replay meaning; then exact identity/version/full-scope acceptance. EPSILON is observed compatibility, not authoritative mathematics. Changed numeric/domain behavior requires controlled immutable successor and recertification; preserve historical v1. Formula metadata alignment is policy-dependent.",
+  "referencesReused": [
+    {
+      "url": "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-math.round",
+      "basis": "Existing Oct15 contract pointer; not freshly retrieved or approval evidence"
+    },
+    {
+      "url": "https://tc39.es/ecma262/multipage/numbers-and-dates.html#sec-number.epsilon",
+      "basis": "Existing Oct15 contract pointer; not freshly retrieved or approval evidence"
+    }
+  ],
+  "verification": {
+    "command": "node_modules/.bin/vitest run src/lib/first20/fraction-policy.evidence.test.ts src/calculators/decimal-fraction-goldens.test.ts",
+    "filesPassed": 2,
+    "testsPassed": 32,
+    "productionBuildRun": false
+  },
+  "sourceSHA256": {
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+    "src/calculators/decimal-fraction-goldens.ts": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5",
+    "src/calculators/decimal-fraction-goldens.test.ts": "351e9d0f9730f482eb9f3e279cd62afa53501d874d0503beff75ea8d60a56f40",
+    "data/verification/codex-c-decimal-fraction-contract-2026-10-15.md": "f2800c5003bd678672c665b27401382281e8b38fbea5e94b17cab21b52e82a70",
+    "docs/blueprint-reconciliation/native-paragraphs.txt": "3d8be41eaad37374ca71572f78126365df8a24e08c02130f0a992af497d5ac23",
+    "docs/blueprint-reconciliation/blueprint-to-540.json": "24aa0e34882bcc947ba9841e698ec4bf0e95335ccd082f70f3798f8f5db772fc",
+    "docs/calculator-first/publication-readiness-540.json": "17132cfb30e3493b03ed55feb3744bc92ee7052ebd5b7c570fe04e254de841de",
+    "docs/full-product-batch22/publication-readiness-540.json": "67043bd4577b1611f357697cd770f8abdfd3205b5dbd4a2a6c8977930c9f3a9a",
+    "src/lib/first20/fraction-policy.evidence.test.ts": "b09f6c9dc7e724f1bcf51d49ec88975b1dde97c532bce3112b6304500fe67de1",
+    "/workspace/work/first20-readiness-input/minimal-codex-tasks.json": "7e5991675a0dd438d78929697c3d02824b0ab4a9c41921a486e7dc02e5c666bd",
+    "/workspace/work/first20-readiness-input/grouped-owner-choices.json": "76cbf100b6c893fb42757d664cebcc28c67f1f83306f28702c7152e298d1804b",
+    "/workspace/work/first20-readiness-input/OWNER-CHOICES.md": "d0f9e4d7d32c9f08906b1e2f282eb4faa2c2b7fcaa9557dbb35a9eb9fd8c4f94"
+  },
+  "canonicalAccepted": false,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "dossier": {
+    "zipSHA256": "dc6262919f06579e779cc59c4dfcda9f7db0bbdba2c56f586a81003577a412be",
+    "taskId": "CODEX44-02",
+    "policyDependency": "OC44-03 and competent numerical method decision",
+    "choiceStatus": "PENDING_NO_NEW_APPROVALS",
+    "first20Disposition": "Excluded from selected first20 wave; retain pending policy evidence"
+  }
+}
