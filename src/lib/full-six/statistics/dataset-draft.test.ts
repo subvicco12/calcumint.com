@@ -1,0 +1,9 @@
+import {describe,it,expect} from 'vitest';
+import {emptyStatisticsDraft,parseStatisticsDraft,draftFromStatisticsInput} from './dataset-draft';
+describe('dataset draft grammar',()=>{
+ it('rejects replay inputs with unrepresentable missing flags or nulls',()=>{for(const row of [{value:'100',missing:true},{value:null},{value:undefined},{value:'',missing:false}])expect(()=>draftFromStatisticsInput({mode:'population',encoding:'raw',missingPolicy:'omit',rows:[row,{value:'1'},{value:'3'}]})).toThrow('losslessly');});
+ it('bounds text before parsing and row allocation',()=>{expect(()=>parseStatisticsDraft({...emptyStatisticsDraft,mode:'population',text:'1'.repeat(2_000_001)})).toThrow('2000000');expect(()=>parseStatisticsDraft({...emptyStatisticsDraft,mode:'population',text:'1\n'.repeat(10000)})).toThrow('10000 rows');});
+ it('requires explicit mode and data',()=>{expect(()=>parseStatisticsDraft(emptyStatisticsDraft)).toThrow('Choose');expect(()=>parseStatisticsDraft({...emptyStatisticsDraft,mode:'sample'})).toThrow('dataset');});
+ it('preserves text and every missing row',()=>{const input=parseStatisticsDraft({...emptyStatisticsDraft,mode:'population',text:' 1.00\n\n2\n'});expect(input.rows).toEqual([{value:' 1.00'},{value:''},{value:'2'},{value:''}]);expect(input.missingPolicy).toBe('reject');});
+ it('rejects ambiguous delimiters and retains frequencies',()=>{expect(()=>parseStatisticsDraft({...emptyStatisticsDraft,mode:'sample',text:'1,000'})).toThrow('commas');expect(()=>parseStatisticsDraft({...emptyStatisticsDraft,mode:'sample',encoding:'frequency',text:'1,2,3'})).toThrow('exactly one');expect(parseStatisticsDraft({...emptyStatisticsDraft,mode:'sample',encoding:'frequency',text:'1.00,002\n',omitMissing:true}).rows).toEqual([{value:'1.00',frequency:'002'},{value:'',frequency:'1'}]);});
+});

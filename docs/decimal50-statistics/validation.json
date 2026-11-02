@@ -1,0 +1,112 @@
+{
+  "baseline": {
+    "pr": 1520,
+    "sha": "af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5",
+    "run": 41500002652,
+    "finalConclusion": "FAILURE",
+    "failure": "Full-product historical source packet comparison after intentional caller revision",
+    "localRepairVerified": true
+  },
+  "fullUnitSuite": {
+    "passed": 7431,
+    "skipped": 4,
+    "filesPassed": 863,
+    "filesSkipped": 2,
+    "launchPassed": 45,
+    "certificationGuardsPassed": 15,
+    "logSHA256": "2de7ced30049d559fbb01997022a17836d19a394b826e278eb2fa337893804d5"
+  },
+  "finalValidation": {
+    "lintErrors": 0,
+    "existingLintWarnings": 29,
+    "changedFilesLintErrors": 0,
+    "typecheckExitCode": 0,
+    "webpackBuildExitCode": 0,
+    "typecheckLogSHA256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+    "buildLogSHA256": "c4f58d17136365e41ea521d64c357ac0506151565fea30db7fd6526b2feaaae0",
+    "note": "Full production invocation passed unit/launch/certification but Next typecheck exposed a newly added oracle test-only control-flow typing error. Corrected it, reran 40 oracle cases, final typecheck, scoped lint and webpack build successfully; no successful single full-command exit is fabricated."
+  },
+  "focused": {
+    "workerLifecycleProtocolPassed": 17,
+    "uiDraftPassed": 13,
+    "previewServerPassed": 4,
+    "workerOracleCases": 40,
+    "independentMetricComparisons": 560,
+    "historicalRepairTestsPassed": 8,
+    "ciGuardTestsPassed": 57,
+    "sourceManifestCheck": "PASS",
+    "oldFullSixSourceCheck": "PASS",
+    "unchanged44QueueCheck": "PASS",
+    "pending1207RegisterCheck": "PASS"
+  },
+  "browser": {
+    "calculatorPlanViewportJourneys": 12,
+    "catalogIds": [
+      282,
+      283
+    ],
+    "plans": [
+      "free",
+      "pro",
+      "business"
+    ],
+    "widths": [
+      320,
+      1440
+    ],
+    "actualModuleWorkers": true,
+    "frequencyEffectiveN": 10000000,
+    "postedRowsCancelled": 10000,
+    "retryVariance": "1",
+    "largeStressEntry": "native DOM setter/input event; not trusted bulk paste",
+    "receipts": "browser.json",
+    "nativeTerminationCallAudit": "created==terminated"
+  },
+  "repairedCIStage": {
+    "numericalWitnesses": 48,
+    "currentSixBrowserJourneys": 12,
+    "currentBoundaryJourneys": 8,
+    "frozenArtifacts": 2,
+    "sourceBindings": 21,
+    "historicalSourceRef": "c1c7371ac4f284ff7b6371a90fb3296c632396f9",
+    "currentCallerRef": "af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5",
+    "originalGeneratorUnchanged": true,
+    "allFiveWorkersPreserved": true
+  },
+  "independentReview": {
+    "result": "No remaining substantive findings",
+    "verified": [
+      "Lossless missing-metadata replay rejection",
+      "Strict row/array shape rejection",
+      "Bounded lifecycle and capability transition handling",
+      "Preview authentication/origin/port behavior",
+      "Frozen historical checker and negative tests"
+    ],
+    "notFormalMathematicalApproval": true
+  },
+  "attempts": [
+    {
+      "kind": "browserHarness",
+      "failures": "Selector/readiness serialization; page-only auth left worker imports401; native auth fixed without guard/deadline changes."
+    },
+    {
+      "kind": "stressEntry",
+      "failure": "Trusted CDP Input.insertText stalled on10k multiline fixture; programmatic fixture entry is explicitly distinguished from paste acceptance."
+    },
+    {
+      "kind": "fullRegression",
+      "failure": "Vite port0 default5173 caused concurrent fixture collisions; fixed true ephemeral allocation and added independent-server credential regression."
+    },
+    {
+      "kind": "typecheck",
+      "failure": "Oracle callback response inferred never; corrected test capture container; final typecheck/build pass."
+    }
+  ],
+  "successorHostedCI": {
+    "statusAtReceiptCreation": "NOT_YET_SUBMITTED",
+    "policy": "One bounded exact-head status check after creating draft successor; report observed status separately."
+  },
+  "releaseHold": true,
+  "publicationEligible": 0,
+  "productionWrites": false
+}

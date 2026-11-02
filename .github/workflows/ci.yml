@@ -403,7 +403,9 @@ jobs:
         timeout-minutes: 5
         run: |
           node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check
-          node scripts/six-publication-closure/packets.mjs --check
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5
+          node scripts/check-historical-six-packets.mjs
+          node tests/statistics-workbench/historical-packets.test.mjs
           node tests/batch21-calculator-wave/browser.mjs
           node tests/six-publication-closure/boundary-browser.mjs
         env:
@@ -457,6 +459,13 @@ jobs:
           node tests/full-six/registered-input.browser.mjs
         env:
           FULL_SIX_BROWSER_RECEIPT: ${{ runner.temp }}/full-six-input-browser
+      - name: Private Decimal50 worker and statistics workflow acceptance
+        timeout-minutes: 3
+        run: |
+          node scripts/check-decimal50-statistics.mjs
+          node tests/statistics-workbench/browser.mjs
+        env:
+          DECIMAL50_BROWSER_RECEIPT: ${{ runner.temp }}/decimal50-statistics-browser
       - name: Exact76 private input, history, scenarios and exports
         timeout-minutes: 6
         run: node tests/publication-factory/browser.mjs
