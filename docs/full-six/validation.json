@@ -1,0 +1,103 @@
+{
+  "baseline": {
+    "pr": 1519,
+    "sha": "7cdffeed3d5a8789689aa5495277e28b780227dc",
+    "ciRun": 41420268580,
+    "ciConclusion": "SUCCESS"
+  },
+  "runtime": {
+    "node": "24.19.0",
+    "hostedNode": "22",
+    "differenceDisclosed": true
+  },
+  "mandatoryProduction": {
+    "command": "NODE_OPTIONS=--max-old-space-size=6144 npm run test:production",
+    "exitCode": 0,
+    "unitPassed": 7357,
+    "unitSkipped": 4,
+    "testFilesPassed": 857,
+    "testFilesSkipped": 2,
+    "launchPassed": 45,
+    "certificationGuardsPassed": 15,
+    "lintErrors": 0,
+    "existingLintWarnings": 29,
+    "typecheck": "PASS",
+    "nextBuildWebpack": "PASS",
+    "logSHA256": "db66b24c6be748b1b6f0e3c386671fda49962b2b74b8c94249c1136a9487a162"
+  },
+  "focused": {
+    "preIntegrationCallerTestsPassed": 413,
+    "decimalOracleSuitePassed": 45,
+    "sharedSnapshotAndWorkflowTestsPassed": 42,
+    "ciGuardTestsPassed": 57,
+    "registeredCandidateMutationTestsPassed": 7,
+    "sourceBindingCheck": "PASS",
+    "existing1207PendingDecisionCheck": "PASS"
+  },
+  "browser": {
+    "registeredLexemeJourneys": 18,
+    "plans": [
+      "free",
+      "pro",
+      "business"
+    ],
+    "widths": [
+      360,
+      1440
+    ],
+    "existingPercentageUnitJourneys": 4,
+    "receipts": [
+      "registered-input-browser.json",
+      "registered-recovery-browser.json"
+    ],
+    "scope": "Actual local UI/action controls with synthetic Supabase transport; no authentic account persistence, physical devices or specialist acceptance"
+  },
+  "independentReview": {
+    "result": "No remaining blocking findings in reviewed scope",
+    "resolved": [
+      "Finite artifact overflow/nonzero underflow validation",
+      "Producer/reader serialized size mismatch"
+    ],
+    "verifiedSnapshotTests": 13,
+    "verifiedMandatoryOracleWrapperTests": 45,
+    "historicalTreeRelocationReviewed": true,
+    "newApproval": false
+  },
+  "attempts": [
+    {
+      "log": "/workspace/work/owner-fullscope-production.log",
+      "result": "FAILED",
+      "reason": "Sandbox denied subprocesses/loopback; historical source-tree reconciliation also detected initial prototype placement. No assertions weakened. Source prototypes moved to explicitly manifested unregistered library and full command rerun with supported permissions."
+    },
+    {
+      "log": "/workspace/work/full-six-caller-browser.log",
+      "result": "BLOCKED",
+      "reason": "Default sandbox denied loopback listen; supported-permission run passed four journeys."
+    },
+    {
+      "log": "/workspace/work/full-six-lossy-browser.log",
+      "result": "FAILED",
+      "reason": "New harness incorrectly expected four Free actions. Corrected to exact existing Save-only Free / four Pro-Business controls, preserving invalid-action denial assertions; final18journeys passed."
+    }
+  ],
+  "preservation": {
+    "protectedSourcesUnchanged": 194,
+    "registeredCalculatorTreeUnchanged": true,
+    "catalogIdentities": 540,
+    "acceptanceRecords": 424,
+    "originalDrafts": 14,
+    "authorityBlockers": 43,
+    "pendingQADecisions": 1207
+  },
+  "publication": {
+    "newlyEligible": 0,
+    "newlyLive": 0,
+    "approvedReleaseWave": [],
+    "freshProductionObservation": false,
+    "releaseHold": true
+  },
+  "successorCI": {
+    "statusAtReceiptCreation": "NOT_YET_SUBMITTED",
+    "policy": "Check exact committed head once after draft PR creation; report actual status separately without polling or claiming green."
+  }
+}

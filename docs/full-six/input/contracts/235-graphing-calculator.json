@@ -1,0 +1,1268 @@
+{
+  "schemaVersion": 1,
+  "documentStatus": "COMPLETE_PROPOSAL_PENDING_APPROVAL",
+  "proposalRevision": "draft-20261102.1",
+  "identity": {
+    "catalogId": 235,
+    "title": "Graphing",
+    "engineId": "advanced-math.graphing",
+    "baselineImmutableVersion": 1,
+    "slug": "graphing-calculator",
+    "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+  },
+  "futureImplementationBinding": "Existing identity preserved. Material expanded semantics require an allocated immutable successor technical revision through existing policy, not silent overwrite of this baseline version.",
+  "sharedContract": {
+    "schemaVersion": 1,
+    "proposalId": "six-full-product-draft-20261102.1",
+    "status": "PROPOSED_PENDING_OWNER_SELECTION",
+    "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc",
+    "catalogIds": [
+      276,
+      283,
+      282,
+      275,
+      251,
+      235
+    ],
+    "releaseHold": true,
+    "requirements": [
+      {
+        "featureId": "SH-01",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Identity, contract and immutable technical lineage",
+        "authority": "Blueprint §§2–4,12,18,25; catalog exact six rows; explicit user scope",
+        "proposedRequirement": "Keep all six catalog IDs/slugs and baseline tuples. This proposed document revision is draft-20261102.1, not a new approval. Hash the selected complete contract. Expanded math/grammar/input/output/rounding semantics must use an allocated immutable successor technical revision; never overwrite recorded Slopev1/v2, other v1 results or snapshots. UI-only labels may change only if replay interpretation is preserved. Do not preallocate a certified successor by editing version fields.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Input packets/source bindings establish six baseline tuples; no complete successor contract approval.",
+        "acceptanceSpecification": "For every six identity replay at least one old snapshot before/after integration byte-for-byte at authoritative stored inputs/results/mode/version. Version mismatch is explicit; no latest-engine fallback. Same canonical URL and catalog ID; controlled successor version evidence.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-02",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Strict inputs and typed numerical outcomes",
+        "authority": "Blueprint §§4,7,13; numerical format/envelope is a proposal",
+        "proposedRequirement": "Accept complete signed decimal/scientific tokens only; no JS coercion of empty/whitespace/hex/Infinity/NaN, no partial parse. Preserve original normalized decimal strings and unit/mode IDs. Dataset grammar and expression grammar override single-scalar token grammar only as explicitly specified. Locale-aware UI may normalize a selected locale; ambiguous separators error. Return typed outcomes: finite result, vertical line, degenerate/underdetermined, no-solution, domain-error, precision-unavailable, budget-exhausted, cancelled. Never manufacture0 or a success result for error states.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Fresh calculator-interactive.tsx parseDataset uses split/Number; CoordinateSlopeTool rejects blanks; six-candidate-numeric-safety.ts has bounded caller-side underflow guards.",
+        "acceptanceSpecification": "Blank,invalid exponent,hex,malformed locale,nonfinite,overflow,subnormal/underflow and ambiguity cases; errors field-linked. No successful snapshot/save/export of invalid output. Every classification has text accessible without chart.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-03",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Shared precision and display policy",
+        "authority": "Blueprint §4/§13 requires explicit rounding; exact numeric choices are owner proposal",
+        "proposedRequirement": "Separate authoritative compute, raw serialization and display. Default display12significant digits, expanded15 for binary64 values; mark approximations. Exact integer/rational labels only when algebra proves them. Proposed ties-to-even for presentation, no intermediate display rounding in compute. Statistical Decimal50 raw strings may expose more exact audit digits, not false binary64 precision. Domain contracts specify the controlling per-domain envelope and budget: geometry uses1e-11 relative for nonzero well-conditioned results with exact zero/classification; statistics uses1e-40 relative Decimal results; graph scalar evaluation uses its explicit absolute/relative1e-12 policy. Do not silently substitute one budget for another. Other binary64 helper paths require a declared oracle-backed budget, proposed error <=max(8ULP(reference),1e-12*abs(reference)) for nonzero well-conditioned values; exact algebraic zeros stay zero and underflow of a nonzero result cannot silently pass. Ill-conditioned cases need proved bound, high precision fallback or typed precision refusal, not widened epsilon. Decimal statistics use their stricter100digit-oracle criterion. Plot/analysis error budgets are separate and must be reported.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Fresh renderer-display.ts uses max2fractiondigits for abs>=.01 and8significant below. Current engines and caller guards are bounded evidence, not this new numeric contract.",
+        "acceptanceSpecification": "Test display ties, scientific notation, negative zero, tiny/huge finite results and raw/full expansion; compare independent >=100digit oracle with declared condition envelopes. Do not infer 12correct digits from 12displayed digits. Label uncertainty when final digit is not stable.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-04",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Structured results and metadata",
+        "authority": "Blueprint §§5–7,12",
+        "proposedRequirement": "One version-bound result artifact drives hero,KPIs,steps,charts,tables,reverse/scenario/sensitivity and exports. Include catalog/engine/version, contract hash, input strings/units/modes, raw outputs or typed classification, algorithm revision, source references, assumptions,warnings,error/approximation metadata, numerical policy and plan-independent result digest. Avoid ad-hoc recomputation in chart/renderer/export. Optional metrics only when meaningful; no fabricated3–6cards.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Exact types.ts and batch21-six-calculators.ts provide structured outputs and scenario labels; typed classification, exact decimal strings and full new branches are unproven.",
+        "acceptanceSpecification": "Verify same artifact digest and raw values consumed by every supported view; deliberate tamper/mismatched ID/version must fail. Exhaustive discriminated outcome rendering.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-05",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Simple/Advanced inputs and guided explanations",
+        "authority": "Blueprint §7; layout specifics proposed",
+        "proposedRequirement": "Simple mode exposes complete accuracy-required forward inputs; Advanced adds optional analysis controls. Changing display mode never resets or changes hidden accuracy inputs. Default empty user-owned inputs; examples load only through explicit Use example with label. Calculate action, progress and cancel; preserve last valid result but mark it stale after edits. Show formula substitution, units, assumptions and what the result means before upgrade prompts.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Fresh UI exposes basic input components; proposed examples/stale-result and full modes not established across six.",
+        "acceptanceSpecification": "Switch Simple/Advanced with populated inputs; output unchanged. Clear example leaves no unannounced default. Keyboard calculate/error focus and recoverable cancel. Distinguish old/stale and current result.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-06",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Useful charts and equivalent tables",
+        "authority": "Blueprint §§6–7,10,13,17",
+        "proposedRequirement": "Every applicable six has a useful Free visual plus semantic data/table alternative. All chart values derive from the result artifact; graph approximation/reliability is explicit and no connection is drawn across a known invalid/unresolved segment. Show raw versus display distinction in tables. Virtualization/paging may limit displayed rows, never silently drop observations or exported rows. Use shared chart/table components, not six divergent renderers.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Slope adapter supplies endpoints only; prism adapter has scalar volume; graph grid81 samples, stats presentations and retained per-ID raw-table/fallback tests establish bounded behavior only.",
+        "acceptanceSpecification": "Per-ID hero/chart/table/replay reconciliation; table has caption,headers,units and gap status; identify full versus sampled rows. Test pathological graph intervals, weighted counts, solid diagram proportions. Color-independent legends/text equivalents.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-07",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Reverse solving and sensitivity through forward compute",
+        "authority": "Blueprint §§7,10,13; exact targets proposed in six contracts",
+        "proposedRequirement": "Use each contract’s declared reverse target and finite domain. Return all solutions under the selected branch policy, none, multiple/underdetermined or incomplete search; numeric candidates always fed back to the same forward engine. Residual <=max(contract absolute scale threshold,1e-10*target scale) unless stricter domain criterion; report both x-bracket width and residual for graph solvers. Sensitivity sweeps call the same forward pipeline with one explicit selected variable/parameter, fixed baseline and bounded range; discontinuities/invalid outcomes are retained, not interpolated into success.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Existing private sensitivity/scenario infrastructure and bounded receipts retained; all new six target/domain proofs not established.",
+        "acceptanceSpecification": "One feasible/infeasible/underdetermined reverse case per declared target and boundary; verify forward residual independently. Baseline sweep equals normal output. Root search cannot mistake a pole for a zero or claim exhaustive real roots from finite samples.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-08",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "History and immutable replay",
+        "authority": "Blueprint §§10,18",
+        "proposedRequirement": "Reuse existing authenticated ownership/scoped persistence. Save normalized exact inputs, modes, units, expression AST/grammar version, ranges, selected algorithm/error policy, selected outputs and source/contract/version hashes. Read-only replay displays recorded results; optional recalculate creates a new artifact and never overwrites saved history. Owner switch/logout/revocation hides prior-owner results; failed save does not imply saved success. Deduplicate only through existing idempotent save contract.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Fresh calculator-account-actions.tsx uses createCalculationSnapshot, current owner guards and saveHistoryAtomically; input package supplies bounded workflow tests. Complete new metadata/replay branches and genuine per-ID account proof remain pending.",
+        "acceptanceSpecification": "Two synthetic isolated owners: save,reload,logout,owner switch,denied read,failed network retry,duplicate save,stale version and unknown version. Do not use production credentials/data; retain exact snapshot and result receipts per ID.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-09",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Scenarios and sensitivity persistence",
+        "authority": "Blueprint §§10,18",
+        "proposedRequirement": "Reuse existing scenario workspace with complete version-bound input sets and labeled baseline. Copy scenario changes only intended fields; unit/mode changes visible. Compare only compatible outputs, label incompatible comparison. Persist exact sweep parameters and error states if saved. Never share mutable references between scenarios. Business organization ownership follows existing controls without new Business/billing scope.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "CalculatorAccountActions imports CalculatorScenarioWorkspace and sixScenarioMetadata; existing tests cover bounded paths, not all proposed modes.",
+        "acceptanceSpecification": "A/B/C scenario baseline equals primary calculation exactly at same version; modify one without changing others; restore/replay after new revision and account recovery. Selected unit conversions reconcile.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-10",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "JSON/CSV/PDF exports and accessible reports",
+        "authority": "Blueprint §§8,10,13,17",
+        "proposedRequirement": "Pro/Business use existing report transport. JSON includes complete typed artifact; CSV includes units,mode,revision,raw/display values,full selected table or explicit sampled status and safe text escaping; PDF includes same outputs,methodology,source/revision,assumptions and accessible textual chart alternatives. Unicode/math notation must map to selectable searchable text, fonts embedded as required; tag structure, logical reading order, tables/headers and metadata independently validated. A PDF button is not proof of exported bytes or PDF/UA. Free retains existing basic share/plain-text core result, no accuracy-relevant values hidden.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Fresh AccountActions has actual JSON/CSV/PDF serialization calls and error handling. Input reports export-control click/fallback proof; full per-ID exported-byte/source/Unicode/PDF-UA acceptance missing.",
+        "acceptanceSpecification": "Read actual downloaded bytes for all6; compare raw/digest/units/modes/source versions; malicious formula strings escaped for CSV spreadsheet opening, Unicode minus/superscripts/Greek preserved. Independent PDF reader and validator plus human reading-order check; no compliance claim from metadata/tag existence alone.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-11",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Free/Pro/Business parity and central capabilities",
+        "authority": "Blueprint §§8–11,24.2",
+        "proposedRequirement": "All supported forward core modes/shapes and inputs needed for correctness available on Free with same engine/domain/precision as Pro/Business. Free useful chart/basic table/basic selected reverse and existing limited saves; Pro full analytical tools,scenarios,sensitivity,expanded saves/projects and professional exports. Business inherits Pro and existing team/client/embed/API/batch/governance adapters. Exact quotas remain centrally configured existing policy; no new billing,seat or commercial policy work. Do not cap precision or statistically truncate data by tier. Advanced analysis access may differ; any operation offered on two plans gives identical authoritative output for identical inputs.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Blueprint and current AccountActions central entitlements are established; six complete new-mode cross-plan proof remains absent.",
+        "acceptanceSpecification": "Engine-level equality across plan capability contexts for every core mode; server-side denial for unavailable operations without changing compute; Free source/error/assumptions visible. No new billing task and no plan upgrade triggered in acceptance.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-12",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Accessibility and mobile",
+        "authority": "Blueprint §§7,13,17; WCAG targets/budgets below proposed acceptance policies",
+        "proposedRequirement": "Persistent labels,field errors linked by aria-describedby,error summary focus,keyboard operation for every control and nondrag alternatives. Chart/table/explanation equivalent; announcements concise/cancellable and do not stream every sample. No color-only state; reduced motion respected; focus visible and logical. Test320,360,390,768,1280px portrait/landscape,200%zoom/400%reflow. Proposed WCAG2.2AA audit target,44CSSpx preferred touch controls; at least24CSSpx minimum or applicable spacing exception separately reviewed. Math verbalized; not image-only. Physical Android/TalkBack evidence required where mandatory, not simulated by mobile viewport.",
+        "implementationStatus": "PROOF_MISSING",
+        "evidence": "Retained graph raw table/fallback/export-control and hosted UI tests support bounded paths only; physical6device workflows and independent complete accessibility review unavailable.",
+        "acceptanceSpecification": "PerID keyboard-only forward/reverse/scenario/export with focus recovery; desktop screenreader and physical Android/TalkBack tester receipts exactdevice/OS/browser; contrast/reflow/reducedmotion/orientation/manual chart tasks. Any criterion N/A needs explicit justified reviewer disposition, not automatic pass.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-13",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Measured performance and bounded computation",
+        "authority": "Blueprint §§13,17; numbers proposed product policy",
+        "proposedRequirement": "Keep numeric work off main thread when it exceeds interactive budget. Deterministic operation/sample/refinement caps; cancel stale requests. Propose warm scalar/math data10k result p95<=500ms; one standard function plot p95<=1000ms and allowed graph-analysis job<=2000ms on declared4xCPU-throttled browser. No main-thread task>50ms attributable to solver loops. Cold page field data target LCP<=2.5s,INP<=200ms,CLS<=0.1 at75thpercentile is a proposed launch target, not measured attainment. Synthetic20runs after5warmups with machine/browser dataset and memory report; physical and field data separate. Large jobs return partial budget status and preserve input.",
+        "implementationStatus": "PROOF_MISSING",
+        "evidence": "Exact-headCI success is not a measured per-ID performance distribution; no new performance run executed in this specification task.",
+        "acceptanceSpecification": "Measure fixedfixtures scalar,10kstats,allsolids,and graph discontinuities/solverworkload; record p50,p95,max,memory,HTML/JS payload,worker cancellation and cold/warm provenance; fail budget rather than hide long task. Retain timing variance; no performance claim from unexecuted spec.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-14",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Security and resource-safe expression/import/export",
+        "authority": "Blueprint §§13,17,20",
+        "proposedRequirement": "No eval/Function/dynamic code execution; expression AST only,whitelist names/operators,depth/token/budget caps,network-free deterministic computation. Treat pasted data and files as data; boundsize,numericcount,CSVcells. Escape display and spreadsheet formulas; sanitize shared labels. Account,scenario,export requests fail closed on invalid owner/role/quota and use existing endpoints. No new provider/domain/database permission changes.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Existing expression-engine parser is bounded AST; AccountActions current owner guards observed. New grammar,imports,analysis budgets and exported bytes need targeted negative acceptance.",
+        "acceptanceSpecification": "Prototype/property/member access,assignment,script/html,unicode confusables,deepnesting,hugetokens,adversarialsolver and CSVformula cases; verify no network/code execution and no freeze. Existing auth/RLS tests reused only for exact unchanged scope.",
+        "formalAcceptance": "PENDING"
+      },
+      {
+        "featureId": "SH-15",
+        "appliesTo": [
+          276,
+          283,
+          282,
+          275,
+          251,
+          235
+        ],
+        "title": "Source, competent review and lifecycle",
+        "authority": "Blueprint §§12–13,25; existing15QAcheck types",
+        "proposedRequirement": "Every formula/algorithm has source clause or explicit derivation and worked golden. Distinguish mathematical source facts from product operator/mode/shapelist/tolerances. Competent geometry/statistics/numericalanalysis reviewers assess applicable full contract and exact version/source/QA evidence; do not fabricate professional approval. Preserve all43authority blockers and11retainedspecialist requirements untouched. Existing15perID lifecycle QA checks remain pending unless actual authorized disposition occurs later. No assumption of approval from CI,metadata or these proposals.",
+        "implementationStatus": "PARTIAL",
+        "evidence": "Input lifecycle-publication-prerequisites.json and exact publishing.ts describe gates; existing90criteria all pending, bounded12source/formula findings ready for adjudication.",
+        "acceptanceSpecification": "PerID15criterion evidence and accountable assignment/disposition including conditional applicability,reverse/scenario/table/visual parity,security/SEO,a11y/performance. Only after separate authorized contract+QA and lifecycle decisions could review->certified->published proceed. This task performs none.",
+        "formalAcceptance": "PENDING"
+      }
+    ],
+    "precedence": [
+      "GoverningBlueprint and exactcatalogrows",
+      "Source-established equations/domainfacts",
+      "Selecteddomaincontract afterfutureapproval",
+      "Thisunapprovedsharedrecommendation"
+    ],
+    "conflictRule": "Domain numerical policy may choose Decimal50 for statistics and explicit domain budgets; conflicting generic binary64 serialization does not override decimal domain contract. Root consolidation must make disagreements explicit before engineering."
+  },
+  "domainContract": {
+    "contractRevision": "draft-20261102.1",
+    "status": "PROPOSED_NOT_APPROVED",
+    "baselineHead": "7cdffeed3d5a8789689aa5495277e28b780227dc",
+    "normativeText": "graph-contracts.md",
+    "historicalVersionRule": "Retain v1 baseline; allocate validated immutable successor technical version for material changes before execution; no new catalog ID needed.",
+    "precision": {
+      "arithmetic": "binary64 RN ties-to-even",
+      "oracle": "independent >=100-digit MPFR directed rounding",
+      "scalarAbs": 1e-12,
+      "scalarRel": 1e-12,
+      "rootBracketAbs": 1e-12,
+      "rootBracketRel": 1e-12,
+      "rootResidualAbs": 1e-12,
+      "rootResidualRel": 1e-12,
+      "integralAbs": 1e-10,
+      "integralRel": 1e-10,
+      "visualErrorCssPx": 0.5,
+      "defaultSigDigits": 12,
+      "expandedSigDigits": 15,
+      "raw": "shortest roundtrip decimal <=17 significant digits + signed-zero bit",
+      "noHiddenEpsilon": true,
+      "exactMeaning": "Rounded binary64 input values; mathematical pi/e enclosures. Separate decimal-input rounding certificate.",
+      "interpretation": "Empirically reviewed acceptance budgets; runtime bracket/error estimates are not formal proofs. Coverage sampled-incomplete except supported exact constant/special cases.",
+      "visualErrorMeaning": "Observed midpoint/quarter deviation <=0.5 CSSpx with AST domain guards; not uniform certified error."
+    },
+    "limits": {
+      "expressionUtf16": 500,
+      "numericTokenChars": 64,
+      "literalExponent": [
+        -308,
+        308
+      ],
+      "astNodes": 256,
+      "astDepth": 64,
+      "tokens": 512,
+      "xBounds": [
+        -1000000000.0,
+        1000000000.0
+      ],
+      "intermediateAbsMax": 1e+100,
+      "trigArgumentRadiansAbsMax": 1000000.0,
+      "expArgument": [
+        -700,
+        230
+      ],
+      "logArgumentMin": 1e-100,
+      "powerNegativeBaseIntegerExponentAbsMax": 1024,
+      "initialGrid": 81,
+      "graphDepth": 24,
+      "graphPointEvals": 32768,
+      "graphIntervalEvals": 128000,
+      "graphAstOps": 2000000,
+      "aggregateSixPointEvals": 131072,
+      "aggregateSixAstOps": 8000000,
+      "analysisIntervalNodes": 65536,
+      "analysisPointEvals": 1000000,
+      "analysisAstOps": 8000000,
+      "analysisDepth": 64,
+      "logicalViewport": [
+        800,
+        480
+      ],
+      "wallCutoffSeconds": 2
+    },
+    "statuses": [
+      "OK_NUMERIC",
+      "DOMAIN_DIV_ZERO",
+      "DOMAIN_INDETERMINATE",
+      "DOMAIN_UNDEFINED",
+      "RANGE_UNSUPPORTED",
+      "RANGE_UNDERFLOW",
+      "NUMERIC_UNCERTAIN",
+      "GRID_RESOLUTION",
+      "UNRESOLVED",
+      "BUDGET_EXHAUSTED",
+      "CANCELLED",
+      "IMPROPER_UNSUPPORTED",
+      "UNSUPPORTED_DERIVATIVE",
+      "NOT_ONE_TO_ONE",
+      "BOUNDED_ESTIMATE"
+    ],
+    "grammar": {
+      "number": "(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?",
+      "operators": [
+        "+",
+        "-",
+        "*",
+        "/",
+        "^"
+      ],
+      "leftAssociative": [
+        "+",
+        "-",
+        "*",
+        "/"
+      ],
+      "rightAssociative": [
+        "^"
+      ],
+      "unary": "power binds before leading sign; exponent accepts unary",
+      "functions": [
+        "sin",
+        "cos",
+        "tan",
+        "exp",
+        "ln",
+        "log",
+        "sqrt",
+        "abs"
+      ],
+      "constants": [
+        "pi",
+        "e"
+      ],
+      "explicitVariable": "x",
+      "parametricVariable": "t",
+      "polarVariable": "theta",
+      "optionalParameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "implicitMultiplication": false,
+      "caseInsensitiveNames": true,
+      "evaluation": "Whitelist AST only; no eval/Function/global lookup",
+      "literalExponentPolicy": "Every numeric token exponent, including zero literals, must be in [-308,308]; 0e0 is valid zero; 0e999 is RANGE_UNSUPPORTED."
+    },
+    "features": [
+      {
+        "featureId": "G-01",
+        "product": "both",
+        "tier": "Free",
+        "requirement": "Restricted grammar, precedence, finite full-match numeric input, bounded whitelist AST",
+        "authority": "SOURCE + RECOMMENDATION",
+        "evidenceStatus": "partial",
+        "evidence": "expression-engine.ts:tokenize/parseExpression/evaluateExpression; no depth/node/underflow guard"
+      },
+      {
+        "featureId": "G-02",
+        "product": "both",
+        "tier": "Free",
+        "requirement": "Binary64 reviewed numeric envelope, domain statuses, angle semantics and display/replay policy",
+        "authority": "BLUEPRINT P152/P154/P211; RECOMMENDATION",
+        "evidenceStatus": "partial",
+        "evidence": "expression-engine.ts:evaluateExpression finite guards only; renderer-display.ts differs from proposed policy"
+      },
+      {
+        "featureId": "G-03",
+        "product": "both",
+        "tier": "Free",
+        "requirement": "AST-domain-guarded adaptive explicit plot with cell/gap records and reconciled accessible table",
+        "authority": "BLUEPRINT P241/P242/P292/P463; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "catalog-batch-10.ts:sample fixed81; calculator-interactive.tsx:FunctionCurve joins surviving sampled-grid cells only"
+      },
+      {
+        "featureId": "A235-01",
+        "product": "235",
+        "tier": "Free",
+        "requirement": "Six explicit functions, numerical root candidates/intersections with explicit residual/bracket/coverage uncertainty",
+        "authority": "BLUEPRINT B Analytical full core; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphDef only one expression fixed sample output"
+      },
+      {
+        "featureId": "A235-02",
+        "product": "235",
+        "tier": "Free",
+        "requirement": "Symbolic derivative at point, verified local extrema and proper numerical finite integral",
+        "authority": "BLUEPRINT full core; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphDef no derivative/integral/critical-point branch; other calculus calculators are separate IDs"
+      },
+      {
+        "featureId": "A235-03",
+        "product": "235",
+        "tier": "Pro",
+        "requirement": "Derivative overlay and supported monotonic-branch numerical inverse solve",
+        "authority": "BLUEPRINT P394/P409/P410; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphDef/graphPresentation absent analysis schemas"
+      },
+      {
+        "featureId": "A235-04",
+        "product": "235",
+        "tier": "Pro",
+        "requirement": "Parametric x(t),y(t), polar r(theta), degree-mode with chain-rule semantics",
+        "authority": "RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "expression-engine.ts only x; graphDef only explicit expression"
+      },
+      {
+        "featureId": "A235-05",
+        "product": "235",
+        "tier": "Pro",
+        "requirement": "A/B/C complete analysis scenarios and parameter sensitivities with branch diagnostics",
+        "authority": "BLUEPRINT P411/P414; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphPresentation flags false; generic account scenario does not prove numeric adapters"
+      },
+      {
+        "featureId": "W-GRAPH-EXPORT",
+        "product": "both",
+        "tier": "Pro",
+        "requirement": "CSV/JSON/PDF raw/display reconciliation plus graph SVG/PNG",
+        "authority": "BLUEPRINT P419/P420; root shared workflow + graph adapter",
+        "evidenceStatus": "proof-gap-and-extension",
+        "evidence": "CalculatorAccountActions controls demonstrated enabled; no clicked exported bytes; SVG/PNG selected extension"
+      },
+      {
+        "featureId": "W-GRAPH-PERSIST",
+        "product": "both",
+        "tier": "Pro",
+        "requirement": "Real-user isolated history, immutable replay/hash and saved scenarios",
+        "authority": "BLUEPRINT P394; root shared workflow",
+        "evidenceStatus": "proof-gap",
+        "evidence": "synthetic account tests do not prove real auth/DB isolation/reload"
+      },
+      {
+        "featureId": "W-GRAPH-BUSINESS",
+        "product": "both",
+        "tier": "Business",
+        "requirement": "Organizations, roles, clients, templates, branding, embed, authenticated API, batch, idempotent webhooks, quotas/audit",
+        "authority": "BLUEPRINT P424-P437; root shared workflow",
+        "evidenceStatus": "unproven",
+        "evidence": "not established by bounded graph source or UI tests"
+      },
+      {
+        "featureId": "Q-GRAPH",
+        "product": "both",
+        "tier": "all",
+        "requirement": "Exact-head per-ID numerical, security, responsive, accessibility, reconciliation, entitlement and performance review",
+        "authority": "BLUEPRINT P455 onward",
+        "evidenceStatus": "pending",
+        "evidence": "retained packets criteria all pending; CI is evidence only"
+      }
+    ],
+    "tasks": [
+      {
+        "taskId": "G-T1",
+        "owner": "shared grammar/numeric owner",
+        "features": [
+          "G-01",
+          "G-02"
+        ],
+        "hoursLow": 60,
+        "hoursHigh": 90
+      },
+      {
+        "taskId": "G-T2",
+        "owner": "shared adaptive visual engine owner",
+        "features": [
+          "G-03"
+        ],
+        "hoursLow": 50,
+        "hoursHigh": 80
+      },
+      {
+        "taskId": "G-T3",
+        "owner": "#251 visual adapter/UX owner",
+        "features": [
+          "V251-01",
+          "V251-02"
+        ],
+        "hoursLow": 32,
+        "hoursHigh": 48
+      },
+      {
+        "taskId": "G-T4",
+        "owner": "#251 reverse UI owner; reuses G-T5",
+        "features": [
+          "V251-03"
+        ],
+        "hoursLow": 16,
+        "hoursHigh": 24
+      },
+      {
+        "taskId": "G-T5",
+        "owner": "#235 analysis owner; roots/intersections",
+        "features": [
+          "A235-01"
+        ],
+        "hoursLow": 50,
+        "hoursHigh": 80
+      },
+      {
+        "taskId": "G-T6",
+        "owner": "#235 analysis owner; derivative/extrema/inverse",
+        "features": [
+          "A235-02",
+          "A235-03"
+        ],
+        "hoursLow": 40,
+        "hoursHigh": 64
+      },
+      {
+        "taskId": "G-T7",
+        "owner": "#235 analysis owner; adaptive proper quadrature",
+        "features": [
+          "A235-02"
+        ],
+        "hoursLow": 32,
+        "hoursHigh": 56
+      },
+      {
+        "taskId": "G-T8",
+        "owner": "#235 mode owner",
+        "features": [
+          "A235-04"
+        ],
+        "hoursLow": 32,
+        "hoursHigh": 48
+      },
+      {
+        "taskId": "G-T9",
+        "owner": "per-ID scenario/sensitivity/export adapters",
+        "features": [
+          "V251-02",
+          "A235-05",
+          "W-GRAPH-EXPORT"
+        ],
+        "hoursLow": 40,
+        "hoursHigh": 64
+      },
+      {
+        "taskId": "G-T10",
+        "owner": "independent numeric/parser/graph QA",
+        "features": [
+          "Q-GRAPH"
+        ],
+        "hoursLow": 64,
+        "hoursHigh": 96
+      },
+      {
+        "taskId": "G-T11",
+        "owner": "browser/accessibility/performance QA",
+        "features": [
+          "Q-GRAPH"
+        ],
+        "hoursLow": 32,
+        "hoursHigh": 48
+      }
+    ],
+    "totalGraphDomainHours": [
+      448,
+      698
+    ],
+    "excludedDuplicateWork": "root shared authentication, persistence, delivery infrastructure and Business workflow; graph adapters only included here",
+    "fixtures": [
+      {
+        "id": "G-QA-0",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 0",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-1",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 1",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-2",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 2",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-3",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 3",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-4",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 4",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-5",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 5",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-6",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 6",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-7",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 7",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      },
+      {
+        "id": "G-QA-8",
+        "normativeSection": "graph-contracts.md QA fixture set and acceptance item 8",
+        "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+      }
+    ],
+    "sourceFiles": [
+      "code/fetched-extra-1.txt",
+      "code/fetched-extra-2.txt",
+      "code/fetched-extra-3.txt",
+      "code/fetched-extra-5.txt",
+      "code/calculator-interactive.tsx",
+      "input/packets/235.md",
+      "input/packets/251.md",
+      "input/provenance/exact-file-bindings.json",
+      "input/source-captures/dlmf.nist.gov-4.2.txt",
+      "input/source-captures/dlmf.nist.gov-4.14.txt"
+    ],
+    "unsupportedClaims": [
+      "current81-point sampler is complete graphing",
+      "generic all-root completeness",
+      "generic global-extrema completeness",
+      "certified scalar error from Math functions alone",
+      "continuous graph from midpoint agreement",
+      "quadrature difference proves integral error",
+      "export buttons prove bytes",
+      "synthetic auth proves real account isolation"
+    ],
+    "product": {
+      "masterId": 235,
+      "calculatorId": "advanced-math.graphing",
+      "baselineVersion": 1,
+      "slug": "graphing-calculator",
+      "role": "mathematical analysis workspace",
+      "catalogClass": "B Analytical"
+    },
+    "selectedModes": [
+      "explicit-real",
+      "parametric-Pro",
+      "polar-Pro"
+    ],
+    "angleMode": "radians default; degrees Pro mode",
+    "implicitMode": {
+      "selected": false,
+      "reason": "Excluded concrete scope; not required by title or supplied Blueprint",
+      "alternativeHours": [
+        80,
+        140
+      ]
+    },
+    "recommendedProfile": "robust-bounded-numerical; empirical oracle-reviewed tolerances and explicit coverage uncertainty; no formal full-coverage requirement",
+    "formalAlternative": {
+      "selected": false,
+      "incrementalHours": [
+        240,
+        400
+      ],
+      "scope": "outward interval elementary/curve/quadrature bounds, interval Newton uniqueness, exact rational polynomial degree20 completeness/multiplicity, proven inverse branches",
+      "authority": "RECOMMENDATION_ALTERNATIVE_NOT_BLUEPRINT"
+    },
+    "totalWithFormalAlternativeHours": [
+      688,
+      1098
+    ],
+    "initialState": {
+      "expressions": "empty",
+      "additionalFunctions": "absent",
+      "calculationTrigger": "explicit Calculate after valid user-supplied or explicitly selected example input",
+      "autoComputeInitial": false,
+      "useExample": {
+        "label": "Use example",
+        "expression": "x^2",
+        "domain": [
+          -5,
+          5
+        ],
+        "provenance": "example",
+        "autoCalculate": false
+      },
+      "illustrativeViewport": {
+        "x": [
+          -5,
+          5
+        ],
+        "y": "auto",
+        "curveBeforeInput": false
+      },
+      "initialResult": null,
+      "initialHistoryWrite": false,
+      "initialExportPayload": false,
+      "radians": "explicit disclosed recommended mode constant; not user expression",
+      "parametricPolarViewport": "illustrative [0,2*pi] radians/[0,360] degrees; no auto-executed expression"
+    }
+  },
+  "graphNormativeText": "contracts/GRAPH-GRAMMAR-AND-ANALYSIS.md",
+  "featureGaps": [
+    {
+      "catalogId": 235,
+      "featureId": "G-01",
+      "title": "G-01",
+      "authority": "SOURCE + RECOMMENDATION",
+      "status": "PARTIAL",
+      "originalStatus": "partial",
+      "requirement": "Restricted grammar, precedence, finite full-match numeric input, bounded whitelist AST",
+      "evidence": "expression-engine.ts:tokenize/parseExpression/evaluateExpression; no depth/node/underflow guard",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "G-01",
+        "product": "both",
+        "tier": "Free",
+        "requirement": "Restricted grammar, precedence, finite full-match numeric input, bounded whitelist AST",
+        "authority": "SOURCE + RECOMMENDATION",
+        "evidenceStatus": "partial",
+        "evidence": "expression-engine.ts:tokenize/parseExpression/evaluateExpression; no depth/node/underflow guard"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "G-02",
+      "title": "G-02",
+      "authority": "BLUEPRINT P152/P154/P211; RECOMMENDATION",
+      "status": "PARTIAL",
+      "originalStatus": "partial",
+      "requirement": "Binary64 reviewed numeric envelope, domain statuses, angle semantics and display/replay policy",
+      "evidence": "expression-engine.ts:evaluateExpression finite guards only; renderer-display.ts differs from proposed policy",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "G-02",
+        "product": "both",
+        "tier": "Free",
+        "requirement": "Binary64 reviewed numeric envelope, domain statuses, angle semantics and display/replay policy",
+        "authority": "BLUEPRINT P152/P154/P211; RECOMMENDATION",
+        "evidenceStatus": "partial",
+        "evidence": "expression-engine.ts:evaluateExpression finite guards only; renderer-display.ts differs from proposed policy"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "G-03",
+      "title": "G-03",
+      "authority": "BLUEPRINT P241/P242/P292/P463; RECOMMENDATION",
+      "status": "MISSING",
+      "originalStatus": "missing",
+      "requirement": "AST-domain-guarded adaptive explicit plot with cell/gap records and reconciled accessible table",
+      "evidence": "catalog-batch-10.ts:sample fixed81; calculator-interactive.tsx:FunctionCurve joins surviving sampled-grid cells only",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "G-03",
+        "product": "both",
+        "tier": "Free",
+        "requirement": "AST-domain-guarded adaptive explicit plot with cell/gap records and reconciled accessible table",
+        "authority": "BLUEPRINT P241/P242/P292/P463; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "catalog-batch-10.ts:sample fixed81; calculator-interactive.tsx:FunctionCurve joins surviving sampled-grid cells only"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "A235-01",
+      "title": "A235-01",
+      "authority": "BLUEPRINT B Analytical full core; RECOMMENDATION",
+      "status": "MISSING",
+      "originalStatus": "missing",
+      "requirement": "Six explicit functions, numerical root candidates/intersections with explicit residual/bracket/coverage uncertainty",
+      "evidence": "graphDef only one expression fixed sample output",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "A235-01",
+        "product": "235",
+        "tier": "Free",
+        "requirement": "Six explicit functions, numerical root candidates/intersections with explicit residual/bracket/coverage uncertainty",
+        "authority": "BLUEPRINT B Analytical full core; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphDef only one expression fixed sample output"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "A235-02",
+      "title": "A235-02",
+      "authority": "BLUEPRINT full core; RECOMMENDATION",
+      "status": "MISSING",
+      "originalStatus": "missing",
+      "requirement": "Symbolic derivative at point, verified local extrema and proper numerical finite integral",
+      "evidence": "graphDef no derivative/integral/critical-point branch; other calculus calculators are separate IDs",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "A235-02",
+        "product": "235",
+        "tier": "Free",
+        "requirement": "Symbolic derivative at point, verified local extrema and proper numerical finite integral",
+        "authority": "BLUEPRINT full core; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphDef no derivative/integral/critical-point branch; other calculus calculators are separate IDs"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "A235-03",
+      "title": "A235-03",
+      "authority": "BLUEPRINT P394/P409/P410; RECOMMENDATION",
+      "status": "MISSING",
+      "originalStatus": "missing",
+      "requirement": "Derivative overlay and supported monotonic-branch numerical inverse solve",
+      "evidence": "graphDef/graphPresentation absent analysis schemas",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "A235-03",
+        "product": "235",
+        "tier": "Pro",
+        "requirement": "Derivative overlay and supported monotonic-branch numerical inverse solve",
+        "authority": "BLUEPRINT P394/P409/P410; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphDef/graphPresentation absent analysis schemas"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "A235-04",
+      "title": "A235-04",
+      "authority": "RECOMMENDATION",
+      "status": "MISSING",
+      "originalStatus": "missing",
+      "requirement": "Parametric x(t),y(t), polar r(theta), degree-mode with chain-rule semantics",
+      "evidence": "expression-engine.ts only x; graphDef only explicit expression",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "A235-04",
+        "product": "235",
+        "tier": "Pro",
+        "requirement": "Parametric x(t),y(t), polar r(theta), degree-mode with chain-rule semantics",
+        "authority": "RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "expression-engine.ts only x; graphDef only explicit expression"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "A235-05",
+      "title": "A235-05",
+      "authority": "BLUEPRINT P411/P414; RECOMMENDATION",
+      "status": "MISSING",
+      "originalStatus": "missing",
+      "requirement": "A/B/C complete analysis scenarios and parameter sensitivities with branch diagnostics",
+      "evidence": "graphPresentation flags false; generic account scenario does not prove numeric adapters",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "A235-05",
+        "product": "235",
+        "tier": "Pro",
+        "requirement": "A/B/C complete analysis scenarios and parameter sensitivities with branch diagnostics",
+        "authority": "BLUEPRINT P411/P414; RECOMMENDATION",
+        "evidenceStatus": "missing",
+        "evidence": "graphPresentation flags false; generic account scenario does not prove numeric adapters"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "W-GRAPH-EXPORT",
+      "title": "W-GRAPH-EXPORT",
+      "authority": "BLUEPRINT P419/P420; root shared workflow + graph adapter",
+      "status": "PROOF_MISSING",
+      "originalStatus": "proof-gap-and-extension",
+      "requirement": "CSV/JSON/PDF raw/display reconciliation plus graph SVG/PNG",
+      "evidence": "CalculatorAccountActions controls demonstrated enabled; no clicked exported bytes; SVG/PNG selected extension",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "W-GRAPH-EXPORT",
+        "product": "both",
+        "tier": "Pro",
+        "requirement": "CSV/JSON/PDF raw/display reconciliation plus graph SVG/PNG",
+        "authority": "BLUEPRINT P419/P420; root shared workflow + graph adapter",
+        "evidenceStatus": "proof-gap-and-extension",
+        "evidence": "CalculatorAccountActions controls demonstrated enabled; no clicked exported bytes; SVG/PNG selected extension"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "W-GRAPH-PERSIST",
+      "title": "W-GRAPH-PERSIST",
+      "authority": "BLUEPRINT P394; root shared workflow",
+      "status": "PROOF_MISSING",
+      "originalStatus": "proof-gap",
+      "requirement": "Real-user isolated history, immutable replay/hash and saved scenarios",
+      "evidence": "synthetic account tests do not prove real auth/DB isolation/reload",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "W-GRAPH-PERSIST",
+        "product": "both",
+        "tier": "Pro",
+        "requirement": "Real-user isolated history, immutable replay/hash and saved scenarios",
+        "authority": "BLUEPRINT P394; root shared workflow",
+        "evidenceStatus": "proof-gap",
+        "evidence": "synthetic account tests do not prove real auth/DB isolation/reload"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "W-GRAPH-BUSINESS",
+      "title": "W-GRAPH-BUSINESS",
+      "authority": "BLUEPRINT P424-P437; root shared workflow",
+      "status": "UNKNOWN",
+      "originalStatus": "unproven",
+      "requirement": "Organizations, roles, clients, templates, branding, embed, authenticated API, batch, idempotent webhooks, quotas/audit",
+      "evidence": "not established by bounded graph source or UI tests",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "W-GRAPH-BUSINESS",
+        "product": "both",
+        "tier": "Business",
+        "requirement": "Organizations, roles, clients, templates, branding, embed, authenticated API, batch, idempotent webhooks, quotas/audit",
+        "authority": "BLUEPRINT P424-P437; root shared workflow",
+        "evidenceStatus": "unproven",
+        "evidence": "not established by bounded graph source or UI tests"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "Q-GRAPH",
+      "title": "Q-GRAPH",
+      "authority": "BLUEPRINT P455 onward",
+      "status": "UNKNOWN",
+      "originalStatus": "pending",
+      "requirement": "Exact-head per-ID numerical, security, responsive, accessibility, reconciliation, entitlement and performance review",
+      "evidence": "retained packets criteria all pending; CI is evidence only",
+      "sourceScope": "Bounded exact-head files and input receipts only; missing in target does not imply absent everywhere in repository.",
+      "formalAcceptance": "PENDING",
+      "originalDomainRecord": {
+        "featureId": "Q-GRAPH",
+        "product": "both",
+        "tier": "all",
+        "requirement": "Exact-head per-ID numerical, security, responsive, accessibility, reconciliation, entitlement and performance review",
+        "authority": "BLUEPRINT P455 onward",
+        "evidenceStatus": "pending",
+        "evidence": "retained packets criteria all pending; CI is evidence only"
+      }
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-01",
+      "title": "Identity, contract and immutable technical lineage",
+      "authority": "Blueprint §§2–4,12,18,25; catalog exact six rows; explicit user scope",
+      "status": "PARTIAL",
+      "requirement": "Keep all six catalog IDs/slugs and baseline tuples. This proposed document revision is draft-20261102.1, not a new approval. Hash the selected complete contract. Expanded math/grammar/input/output/rounding semantics must use an allocated immutable successor technical revision; never overwrite recorded Slopev1/v2, other v1 results or snapshots. UI-only labels may change only if replay interpretation is preserved. Do not preallocate a certified successor by editing version fields.",
+      "evidence": "Input packets/source bindings establish six baseline tuples; no complete successor contract approval.",
+      "acceptanceSpecification": "For every six identity replay at least one old snapshot before/after integration byte-for-byte at authoritative stored inputs/results/mode/version. Version mismatch is explicit; no latest-engine fallback. Same canonical URL and catalog ID; controlled successor version evidence.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-02",
+      "title": "Strict inputs and typed numerical outcomes",
+      "authority": "Blueprint §§4,7,13; numerical format/envelope is a proposal",
+      "status": "PARTIAL",
+      "requirement": "Accept complete signed decimal/scientific tokens only; no JS coercion of empty/whitespace/hex/Infinity/NaN, no partial parse. Preserve original normalized decimal strings and unit/mode IDs. Dataset grammar and expression grammar override single-scalar token grammar only as explicitly specified. Locale-aware UI may normalize a selected locale; ambiguous separators error. Return typed outcomes: finite result, vertical line, degenerate/underdetermined, no-solution, domain-error, precision-unavailable, budget-exhausted, cancelled. Never manufacture0 or a success result for error states.",
+      "evidence": "Fresh calculator-interactive.tsx parseDataset uses split/Number; CoordinateSlopeTool rejects blanks; six-candidate-numeric-safety.ts has bounded caller-side underflow guards.",
+      "acceptanceSpecification": "Blank,invalid exponent,hex,malformed locale,nonfinite,overflow,subnormal/underflow and ambiguity cases; errors field-linked. No successful snapshot/save/export of invalid output. Every classification has text accessible without chart.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-03",
+      "title": "Shared precision and display policy",
+      "authority": "Blueprint §4/§13 requires explicit rounding; exact numeric choices are owner proposal",
+      "status": "PARTIAL",
+      "requirement": "Separate authoritative compute, raw serialization and display. Default display12significant digits, expanded15 for binary64 values; mark approximations. Exact integer/rational labels only when algebra proves them. Proposed ties-to-even for presentation, no intermediate display rounding in compute. Statistical Decimal50 raw strings may expose more exact audit digits, not false binary64 precision. Domain contracts specify the controlling per-domain envelope and budget: geometry uses1e-11 relative for nonzero well-conditioned results with exact zero/classification; statistics uses1e-40 relative Decimal results; graph scalar evaluation uses its explicit absolute/relative1e-12 policy. Do not silently substitute one budget for another. Other binary64 helper paths require a declared oracle-backed budget, proposed error <=max(8ULP(reference),1e-12*abs(reference)) for nonzero well-conditioned values; exact algebraic zeros stay zero and underflow of a nonzero result cannot silently pass. Ill-conditioned cases need proved bound, high precision fallback or typed precision refusal, not widened epsilon. Decimal statistics use their stricter100digit-oracle criterion. Plot/analysis error budgets are separate and must be reported.",
+      "evidence": "Fresh renderer-display.ts uses max2fractiondigits for abs>=.01 and8significant below. Current engines and caller guards are bounded evidence, not this new numeric contract.",
+      "acceptanceSpecification": "Test display ties, scientific notation, negative zero, tiny/huge finite results and raw/full expansion; compare independent >=100digit oracle with declared condition envelopes. Do not infer 12correct digits from 12displayed digits. Label uncertainty when final digit is not stable.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-04",
+      "title": "Structured results and metadata",
+      "authority": "Blueprint §§5–7,12",
+      "status": "PARTIAL",
+      "requirement": "One version-bound result artifact drives hero,KPIs,steps,charts,tables,reverse/scenario/sensitivity and exports. Include catalog/engine/version, contract hash, input strings/units/modes, raw outputs or typed classification, algorithm revision, source references, assumptions,warnings,error/approximation metadata, numerical policy and plan-independent result digest. Avoid ad-hoc recomputation in chart/renderer/export. Optional metrics only when meaningful; no fabricated3–6cards.",
+      "evidence": "Exact types.ts and batch21-six-calculators.ts provide structured outputs and scenario labels; typed classification, exact decimal strings and full new branches are unproven.",
+      "acceptanceSpecification": "Verify same artifact digest and raw values consumed by every supported view; deliberate tamper/mismatched ID/version must fail. Exhaustive discriminated outcome rendering.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-05",
+      "title": "Simple/Advanced inputs and guided explanations",
+      "authority": "Blueprint §7; layout specifics proposed",
+      "status": "PARTIAL",
+      "requirement": "Simple mode exposes complete accuracy-required forward inputs; Advanced adds optional analysis controls. Changing display mode never resets or changes hidden accuracy inputs. Default empty user-owned inputs; examples load only through explicit Use example with label. Calculate action, progress and cancel; preserve last valid result but mark it stale after edits. Show formula substitution, units, assumptions and what the result means before upgrade prompts.",
+      "evidence": "Fresh UI exposes basic input components; proposed examples/stale-result and full modes not established across six.",
+      "acceptanceSpecification": "Switch Simple/Advanced with populated inputs; output unchanged. Clear example leaves no unannounced default. Keyboard calculate/error focus and recoverable cancel. Distinguish old/stale and current result.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-06",
+      "title": "Useful charts and equivalent tables",
+      "authority": "Blueprint §§6–7,10,13,17",
+      "status": "PARTIAL",
+      "requirement": "Every applicable six has a useful Free visual plus semantic data/table alternative. All chart values derive from the result artifact; graph approximation/reliability is explicit and no connection is drawn across a known invalid/unresolved segment. Show raw versus display distinction in tables. Virtualization/paging may limit displayed rows, never silently drop observations or exported rows. Use shared chart/table components, not six divergent renderers.",
+      "evidence": "Slope adapter supplies endpoints only; prism adapter has scalar volume; graph grid81 samples, stats presentations and retained per-ID raw-table/fallback tests establish bounded behavior only.",
+      "acceptanceSpecification": "Per-ID hero/chart/table/replay reconciliation; table has caption,headers,units and gap status; identify full versus sampled rows. Test pathological graph intervals, weighted counts, solid diagram proportions. Color-independent legends/text equivalents.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-07",
+      "title": "Reverse solving and sensitivity through forward compute",
+      "authority": "Blueprint §§7,10,13; exact targets proposed in six contracts",
+      "status": "PARTIAL",
+      "requirement": "Use each contract’s declared reverse target and finite domain. Return all solutions under the selected branch policy, none, multiple/underdetermined or incomplete search; numeric candidates always fed back to the same forward engine. Residual <=max(contract absolute scale threshold,1e-10*target scale) unless stricter domain criterion; report both x-bracket width and residual for graph solvers. Sensitivity sweeps call the same forward pipeline with one explicit selected variable/parameter, fixed baseline and bounded range; discontinuities/invalid outcomes are retained, not interpolated into success.",
+      "evidence": "Existing private sensitivity/scenario infrastructure and bounded receipts retained; all new six target/domain proofs not established.",
+      "acceptanceSpecification": "One feasible/infeasible/underdetermined reverse case per declared target and boundary; verify forward residual independently. Baseline sweep equals normal output. Root search cannot mistake a pole for a zero or claim exhaustive real roots from finite samples.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-08",
+      "title": "History and immutable replay",
+      "authority": "Blueprint §§10,18",
+      "status": "PARTIAL",
+      "requirement": "Reuse existing authenticated ownership/scoped persistence. Save normalized exact inputs, modes, units, expression AST/grammar version, ranges, selected algorithm/error policy, selected outputs and source/contract/version hashes. Read-only replay displays recorded results; optional recalculate creates a new artifact and never overwrites saved history. Owner switch/logout/revocation hides prior-owner results; failed save does not imply saved success. Deduplicate only through existing idempotent save contract.",
+      "evidence": "Fresh calculator-account-actions.tsx uses createCalculationSnapshot, current owner guards and saveHistoryAtomically; input package supplies bounded workflow tests. Complete new metadata/replay branches and genuine per-ID account proof remain pending.",
+      "acceptanceSpecification": "Two synthetic isolated owners: save,reload,logout,owner switch,denied read,failed network retry,duplicate save,stale version and unknown version. Do not use production credentials/data; retain exact snapshot and result receipts per ID.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-09",
+      "title": "Scenarios and sensitivity persistence",
+      "authority": "Blueprint §§10,18",
+      "status": "PARTIAL",
+      "requirement": "Reuse existing scenario workspace with complete version-bound input sets and labeled baseline. Copy scenario changes only intended fields; unit/mode changes visible. Compare only compatible outputs, label incompatible comparison. Persist exact sweep parameters and error states if saved. Never share mutable references between scenarios. Business organization ownership follows existing controls without new Business/billing scope.",
+      "evidence": "CalculatorAccountActions imports CalculatorScenarioWorkspace and sixScenarioMetadata; existing tests cover bounded paths, not all proposed modes.",
+      "acceptanceSpecification": "A/B/C scenario baseline equals primary calculation exactly at same version; modify one without changing others; restore/replay after new revision and account recovery. Selected unit conversions reconcile.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-10",
+      "title": "JSON/CSV/PDF exports and accessible reports",
+      "authority": "Blueprint §§8,10,13,17",
+      "status": "PARTIAL",
+      "requirement": "Pro/Business use existing report transport. JSON includes complete typed artifact; CSV includes units,mode,revision,raw/display values,full selected table or explicit sampled status and safe text escaping; PDF includes same outputs,methodology,source/revision,assumptions and accessible textual chart alternatives. Unicode/math notation must map to selectable searchable text, fonts embedded as required; tag structure, logical reading order, tables/headers and metadata independently validated. A PDF button is not proof of exported bytes or PDF/UA. Free retains existing basic share/plain-text core result, no accuracy-relevant values hidden.",
+      "evidence": "Fresh AccountActions has actual JSON/CSV/PDF serialization calls and error handling. Input reports export-control click/fallback proof; full per-ID exported-byte/source/Unicode/PDF-UA acceptance missing.",
+      "acceptanceSpecification": "Read actual downloaded bytes for all6; compare raw/digest/units/modes/source versions; malicious formula strings escaped for CSV spreadsheet opening, Unicode minus/superscripts/Greek preserved. Independent PDF reader and validator plus human reading-order check; no compliance claim from metadata/tag existence alone.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-11",
+      "title": "Free/Pro/Business parity and central capabilities",
+      "authority": "Blueprint §§8–11,24.2",
+      "status": "PARTIAL",
+      "requirement": "All supported forward core modes/shapes and inputs needed for correctness available on Free with same engine/domain/precision as Pro/Business. Free useful chart/basic table/basic selected reverse and existing limited saves; Pro full analytical tools,scenarios,sensitivity,expanded saves/projects and professional exports. Business inherits Pro and existing team/client/embed/API/batch/governance adapters. Exact quotas remain centrally configured existing policy; no new billing,seat or commercial policy work. Do not cap precision or statistically truncate data by tier. Advanced analysis access may differ; any operation offered on two plans gives identical authoritative output for identical inputs.",
+      "evidence": "Blueprint and current AccountActions central entitlements are established; six complete new-mode cross-plan proof remains absent.",
+      "acceptanceSpecification": "Engine-level equality across plan capability contexts for every core mode; server-side denial for unavailable operations without changing compute; Free source/error/assumptions visible. No new billing task and no plan upgrade triggered in acceptance.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-12",
+      "title": "Accessibility and mobile",
+      "authority": "Blueprint §§7,13,17; WCAG targets/budgets below proposed acceptance policies",
+      "status": "PROOF_MISSING",
+      "requirement": "Persistent labels,field errors linked by aria-describedby,error summary focus,keyboard operation for every control and nondrag alternatives. Chart/table/explanation equivalent; announcements concise/cancellable and do not stream every sample. No color-only state; reduced motion respected; focus visible and logical. Test320,360,390,768,1280px portrait/landscape,200%zoom/400%reflow. Proposed WCAG2.2AA audit target,44CSSpx preferred touch controls; at least24CSSpx minimum or applicable spacing exception separately reviewed. Math verbalized; not image-only. Physical Android/TalkBack evidence required where mandatory, not simulated by mobile viewport.",
+      "evidence": "Retained graph raw table/fallback/export-control and hosted UI tests support bounded paths only; physical6device workflows and independent complete accessibility review unavailable.",
+      "acceptanceSpecification": "PerID keyboard-only forward/reverse/scenario/export with focus recovery; desktop screenreader and physical Android/TalkBack tester receipts exactdevice/OS/browser; contrast/reflow/reducedmotion/orientation/manual chart tasks. Any criterion N/A needs explicit justified reviewer disposition, not automatic pass.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-13",
+      "title": "Measured performance and bounded computation",
+      "authority": "Blueprint §§13,17; numbers proposed product policy",
+      "status": "PROOF_MISSING",
+      "requirement": "Keep numeric work off main thread when it exceeds interactive budget. Deterministic operation/sample/refinement caps; cancel stale requests. Propose warm scalar/math data10k result p95<=500ms; one standard function plot p95<=1000ms and allowed graph-analysis job<=2000ms on declared4xCPU-throttled browser. No main-thread task>50ms attributable to solver loops. Cold page field data target LCP<=2.5s,INP<=200ms,CLS<=0.1 at75thpercentile is a proposed launch target, not measured attainment. Synthetic20runs after5warmups with machine/browser dataset and memory report; physical and field data separate. Large jobs return partial budget status and preserve input.",
+      "evidence": "Exact-headCI success is not a measured per-ID performance distribution; no new performance run executed in this specification task.",
+      "acceptanceSpecification": "Measure fixedfixtures scalar,10kstats,allsolids,and graph discontinuities/solverworkload; record p50,p95,max,memory,HTML/JS payload,worker cancellation and cold/warm provenance; fail budget rather than hide long task. Retain timing variance; no performance claim from unexecuted spec.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-14",
+      "title": "Security and resource-safe expression/import/export",
+      "authority": "Blueprint §§13,17,20",
+      "status": "PARTIAL",
+      "requirement": "No eval/Function/dynamic code execution; expression AST only,whitelist names/operators,depth/token/budget caps,network-free deterministic computation. Treat pasted data and files as data; boundsize,numericcount,CSVcells. Escape display and spreadsheet formulas; sanitize shared labels. Account,scenario,export requests fail closed on invalid owner/role/quota and use existing endpoints. No new provider/domain/database permission changes.",
+      "evidence": "Existing expression-engine parser is bounded AST; AccountActions current owner guards observed. New grammar,imports,analysis budgets and exported bytes need targeted negative acceptance.",
+      "acceptanceSpecification": "Prototype/property/member access,assignment,script/html,unicode confusables,deepnesting,hugetokens,adversarialsolver and CSVformula cases; verify no network/code execution and no freeze. Existing auth/RLS tests reused only for exact unchanged scope.",
+      "formalAcceptance": "PENDING"
+    },
+    {
+      "catalogId": 235,
+      "featureId": "SH-15",
+      "title": "Source, competent review and lifecycle",
+      "authority": "Blueprint §§12–13,25; existing15QAcheck types",
+      "status": "PARTIAL",
+      "requirement": "Every formula/algorithm has source clause or explicit derivation and worked golden. Distinguish mathematical source facts from product operator/mode/shapelist/tolerances. Competent geometry/statistics/numericalanalysis reviewers assess applicable full contract and exact version/source/QA evidence; do not fabricate professional approval. Preserve all43authority blockers and11retainedspecialist requirements untouched. Existing15perID lifecycle QA checks remain pending unless actual authorized disposition occurs later. No assumption of approval from CI,metadata or these proposals.",
+      "evidence": "Input lifecycle-publication-prerequisites.json and exact publishing.ts describe gates; existing90criteria all pending, bounded12source/formula findings ready for adjudication.",
+      "acceptanceSpecification": "PerID15criterion evidence and accountable assignment/disposition including conditional applicability,reverse/scenario/table/visual parity,security/SEO,a11y/performance. Only after separate authorized contract+QA and lifecycle decisions could review->certified->published proceed. This task performs none.",
+      "formalAcceptance": "PENDING"
+    }
+  ],
+  "acceptanceCases": [
+    {
+      "id": "G-QA-0",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 0",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-1",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 1",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-2",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 2",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-3",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 3",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-4",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 4",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-5",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 5",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-6",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 6",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-7",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 7",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    },
+    {
+      "id": "G-QA-8",
+      "normativeSection": "graph-contracts.md QA fixture set and acceptance item 8",
+      "executionStatus": "REQUIRED_NOT_NEWLY_EXECUTED"
+    }
+  ],
+  "approval": {
+    "status": "PENDING",
+    "owner": null,
+    "at": null
+  },
+  "actualEngineAcceptanceOfFullProposal": false,
+  "certificationAuthorized": false,
+  "publicationAuthorized": false,
+  "releaseHold": true
+}

@@ -11,7 +11,7 @@ import { buildMortgageRateAnalysis } from "@/calculators/final-framework/mortgag
 import { MortgageRateTotals } from "./mortgage-rate-totals";
 import { mortgageCalculator } from "@/calculators/finance/mortgage";
 import { CalculatorInputError } from "./calculator-input-error";
-import { requiredCalculatorNumber } from "@/calculators/final-framework/numeric-input";
+import { requiredCalculatorNumber } from "@/lib/registered-input-successor";
 import { FinanceReadinessResult } from "./finance-readiness-result";
 import { requiredFinanceNumber } from "@/calculators/final-framework/finance-readiness-result";
 

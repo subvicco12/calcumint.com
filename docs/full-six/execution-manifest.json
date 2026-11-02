@@ -1,0 +1,206 @@
+{
+  "baseline": "7cdffeed3d5a8789689aa5495277e28b780227dc",
+  "baselineCI": {
+    "id": 41420268580,
+    "result": "SUCCESS"
+  },
+  "authorization": {
+    "source": "Direct user instruction",
+    "approvedEngineeringTargets": [
+      "OWN-01",
+      "OWN-02",
+      "OWN-03",
+      "OWN-04",
+      "OWN-05",
+      "OWN-06",
+      "OWN-07",
+      "OWN-08"
+    ],
+    "approvalScope": "Isolated implementation/testing only; supplied proposal fields retained unchanged. No canonical, qualified, lifecycle or release approval."
+  },
+  "releaseHold": true,
+  "canonicalPromotion": false,
+  "publicationEligible": 0,
+  "registeredSuccessorsAllocated": 0,
+  "sourceHashes": {
+    "scripts/fast-publication-20261102/queue.mjs": "d7f8f0f319bc8ca6ddc0abd15d502830e2f2944853fd6b919df51afbbcd2a60c",
+    "scripts/full-six/check-evidence.mjs": "02adf09fbb92cb40efc3d531c7bd6ef18aa9fb538d5bfce43d44383d41f0752a",
+    "src/lib/full-six/format-policy.test.ts": "4bd1aa78848b87f33e8d24faf61210f2028021357cbbd522e7b010a7030c6151",
+    "src/lib/full-six/format-policy.ts": "0ceed7fcaa60c698551236bca7c212d762a10a0a0d83ebffdee1eae09d3e452d",
+    "src/lib/full-six/result-contract.ts": "5e72e996030b5d57a38b860929aad39527a03e6e3719daa64e48f29981b8bd52",
+    "src/lib/full-six/statistics-workflow.test.ts": "9f37b8cc356738c9c130a84c6af74071ad6447844551c68dae4567867fc9f114",
+    "src/lib/full-six/statistics-workflow.ts": "1470862fb122341976eccfce5729d2fe0283a52cf08a2c8304f29ae3bca7867f",
+    "src/lib/full-six/statistics/decimal-descriptive.acceptance.test.ts": "249abe153265d44a5089aec88e2ef0467387c0862ca077527bb80170077ac057",
+    "src/lib/full-six/statistics/decimal-descriptive.ts": "f4fafba24a89a5d99b5e171d79a169921402d1da675519f2cd747b17e4a242b5",
+    "src/lib/full-six/units.test.ts": "f289d5d074cf37fdf9d7ac31526a7d521b53930dc1b518ce23204470cb907a9e",
+    "src/lib/full-six/units.ts": "21e9cc456b27872432013500e76eeddebf5e0ede935695aeb8874e8b2072e3d2",
+    "tests/fast-publication-20261102/queue.test.mjs": "00ac163da24c47fa37cba51940cd8d077c0df4f0da137beb5639d1d68df9646d",
+    "tests/full-six/registered-input.browser.mjs": "b8610e521a1934f1048a676bc412e57d81d00ffc0d2b06d8c9e06425763f4bd5",
+    "tests/statistics/decimal-descriptive-fixtures.json": "5ccb572c0d3b7809062ee1ab83ce074ce0817483b034542bdcd00d47eaf85ce6",
+    "tests/statistics/decimal-descriptive-oracle.py": "dcc61b589ce9f8b1f2928ecc91e80975940baf7aaffd3dd1917ee1cbb1fd0363",
+    "tests/statistics/decimal-descriptive.config.ts": "97e2fc44e0e191d90497ea7bbfd65a83961c344ce143d555211caccd634fa9b6",
+    "tests/statistics/decimal-descriptive.test.ts": "937e322dc5a5678dc83d1d3e9f56f4ffbb662e1db03485d5bcaf911aa570ee8d",
+    "src/lib/full-six-snapshot.ts": "687aaf41aa4926b7817b28fdcc5b39af5315832a1659aacd75ce89d1c8004e30",
+    "src/lib/full-six-snapshot.test.ts": "d6205a8205a0aa4b7666c6e6b302aa31ae5cbefc39a1d0e873b1a0f75d7289aa",
+    "src/lib/registered-input-successor.ts": "509826a3de1c3cf91afcf992ebed422019bfc489fd387f250f6706ea18ad28d9",
+    "src/lib/registered-input-successor.test.ts": "114aa486727056f587e24aee6bc6a5fba27bf185db634d4d1a2aa40f0c0ba628",
+    "src/lib/registered-input-successor.actions.test.tsx": "c95c75a39d3bb0d6fddef5f438546f02ec46ad80c675421d964b381e89c624dc",
+    "src/lib/registered-input-successor.regression.test.tsx": "155a2c84c298159210a02299efe2e7fc26236078b114aa162470e9b32b80b85d",
+    "src/components/calculator-interactive.tsx": "3ebe8c6bf522dcc8dda9c11bc903655befe384a9f180e2c9dfaf859ff493f03a"
+  },
+  "requirements": [
+    {
+      "id": "SH-02-CURRENT-BINARY64-CALLER",
+      "status": "ENGINEERING_COMPLETE_SUBSCOPE",
+      "scope": "Refuse demonstrated lossy decimal drafts only at existing requiredCalculatorNumber caller sites; financial/direct Number sites and decimal-string statistics are separate. Actual text/actions/recovery validated; engines unchanged."
+    },
+    {
+      "id": "SH-T1",
+      "status": "PARTIAL",
+      "catalogIds": [
+        235,
+        251,
+        275,
+        276,
+        282,
+        283
+      ],
+      "completed": [
+        "strict experimental typed artifact protocol",
+        "Decimal-string-preserving half-even 12/15-significant display",
+        "explicit geometry dimension/unit conversion foundation"
+      ],
+      "remaining": [
+        "full per-domain outcomes and metadata integration",
+        "qualified numerical/source adoption review",
+        "public UI successor integration"
+      ]
+    },
+    {
+      "id": "ST-JOINT-01",
+      "status": "PARTIAL",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "completed": [
+        "raw/frequency population/sample exact decimal core",
+        "explicit mode and missing policies",
+        "bounded rows/frequencies/cardinality",
+        "independent oracle comparisons"
+      ],
+      "remaining": [
+        "import/CSV UI",
+        "omission confirmation",
+        "allocated immutable successor",
+        "worker/performance and full UX"
+      ]
+    },
+    {
+      "id": "ST-JOINT-02",
+      "status": "PARTIAL",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "completed": [
+        "type7 quartiles",
+        "IQR",
+        "raw MAD",
+        "mean absolute deviation"
+      ],
+      "remaining": [
+        "histogram/rational bins",
+        "contribution tables",
+        "transforms/reverse/sensitivity"
+      ]
+    },
+    {
+      "id": "SH-T2",
+      "status": "PARTIAL",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "completed": [
+        "exact contract/algorithm/identity source-bound artifacts",
+        "JSON serialization/read-only replay",
+        "separate actual-engine recomputation",
+        "tamper and rehashed output rejection",
+        "paired primary result/unit distinction"
+      ],
+      "remaining": [
+        "genuine authenticated per-ID persistence",
+        "scenario UI",
+        "CSV/PDF and independent PDF/assistive acceptance"
+      ]
+    },
+    {
+      "id": "FAST-PUBLICATION-44",
+      "status": "EVIDENCE_PREPARATION_ONLY",
+      "catalogIds": [
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        234,
+        255,
+        256,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        278,
+        279,
+        280
+      ],
+      "newEligibility": 0,
+      "remaining": "25 retained unmet requirements per ID; not a declaration that all 25 are missing software."
+    }
+  ],
+  "review": "Independent engineering review; two snapshot validation defects corrected and verified. Not formal calculator approval.",
+  "resourceLimits": {
+    "artifactDecimalAdjustedExponent": [
+      -1000,
+      1000
+    ],
+    "serializedSnapshotCharacters": 2000000,
+    "saveFailsBeforeSuccessIfTooLarge": true
+  },
+  "limitations": [
+    "Experimental full-six modules are explicitly outside the frozen registered-engine source tree and are not registered or routed.",
+    "Shared architecture is not full completion of SH-T1/SH-T2 or any canonical contract.",
+    "Historical ledger snapshots and all pending review dispositions are unchanged.",
+    "SHA256 integrity alone is not authentication or authority; replay verification separately recomputes actual statistics."
+  ]
+}

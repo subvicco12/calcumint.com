@@ -448,6 +448,15 @@ jobs:
           node .qa1517-proofs.test.mjs
           node scripts/publication-qa1517/decisions.mjs --check
           node tests/publication-qa1517/decisions.test.mjs
+      - name: Owner-authorized isolated full-six increment and registered input browser
+        timeout-minutes: 3
+        run: |
+          node scripts/full-six/check-evidence.mjs
+          node scripts/fast-publication-20261102/queue.mjs --check
+          node tests/fast-publication-20261102/queue.test.mjs
+          node tests/full-six/registered-input.browser.mjs
+        env:
+          FULL_SIX_BROWSER_RECEIPT: ${{ runner.temp }}/full-six-input-browser
       - name: Exact76 private input, history, scenarios and exports
         timeout-minutes: 6
         run: node tests/publication-factory/browser.mjs

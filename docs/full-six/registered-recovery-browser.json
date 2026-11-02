@@ -1,0 +1,78 @@
+{
+  "createdAt": "2026-11-02T18:11:24.647Z",
+  "cohort": [
+    "percentage-of-value-calculator",
+    "unit-conversion-calculator"
+  ],
+  "fullCohortSize": 159,
+  "journeys": [
+    {
+      "slug": "percentage-of-value-calculator",
+      "width": 360,
+      "initialRendererText": "Percentage result50MethodologyThe result is produced by the certified percentage-of-value deterministic calculator engine.SourcesBIPM — SI Brochure, 9th edition",
+      "fields": 3,
+      "blankChecks": 2,
+      "malformedChecks": 0,
+      "validZeroChecks": 2,
+      "recoveryParity": true,
+      "keyboard": true,
+      "labels": true,
+      "noHorizontalOverflow": true,
+      "actualSnapshotDisabledChecks": 8,
+      "scenarioCaptureExportRecover": false
+    },
+    {
+      "slug": "unit-conversion-calculator",
+      "width": 360,
+      "initialRendererText": "mi to km1.61 kmMethodologyThe result is produced by the certified deterministic unit-conversion engine.SourcesNIST Guide to the SI — conversion factorsBIPM — SI Brochure, 9th edition",
+      "fields": 1,
+      "blankChecks": 1,
+      "malformedChecks": 0,
+      "validZeroChecks": 1,
+      "recoveryParity": true,
+      "keyboard": true,
+      "labels": true,
+      "noHorizontalOverflow": true,
+      "actualSnapshotDisabledChecks": 4,
+      "scenarioCaptureExportRecover": false
+    },
+    {
+      "slug": "percentage-of-value-calculator",
+      "width": 1440,
+      "initialRendererText": "Percentage result50MethodologyThe result is produced by the certified percentage-of-value deterministic calculator engine.SourcesBIPM — SI Brochure, 9th edition",
+      "fields": 3,
+      "blankChecks": 2,
+      "malformedChecks": 0,
+      "validZeroChecks": 2,
+      "recoveryParity": true,
+      "keyboard": true,
+      "labels": true,
+      "noHorizontalOverflow": true,
+      "actualSnapshotDisabledChecks": 8,
+      "scenarioCaptureExportRecover": false
+    },
+    {
+      "slug": "unit-conversion-calculator",
+      "width": 1440,
+      "initialRendererText": "mi to km1.61 kmMethodologyThe result is produced by the certified deterministic unit-conversion engine.SourcesNIST Guide to the SI — conversion factorsBIPM — SI Brochure, 9th edition",
+      "fields": 1,
+      "blankChecks": 1,
+      "malformedChecks": 0,
+      "validZeroChecks": 1,
+      "recoveryParity": true,
+      "keyboard": true,
+      "labels": true,
+      "noHorizontalOverflow": true,
+      "actualSnapshotDisabledChecks": 4,
+      "scenarioCaptureExportRecover": false
+    }
+  ],
+  "limitations": [
+    "Local Vite source fixture with actual CalculatorInteractive, account actions, presentation, and deterministic engines.",
+    "Only Supabase browser transport and Next link use existing synthetic reference fixtures; plan is Pro to observe actual save/export enabled states and capture actual JSON export through a fixture Blob sink. No production persistence or real authentication acceptance.",
+    "Headless Chromium at emulated 360/1440 CSS-pixel widths; not physical devices or production Next runtime."
+  ],
+  "browserErrors": [],
+  "networkRequests": 1383,
+  "passed": true
+}

@@ -1,0 +1,825 @@
+{
+  "status": "PROPOSED_NOT_COMMISSIONED",
+  "ownerApprovalRequiredBeforeSourceImplementation": true,
+  "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc",
+  "taskCount": 28,
+  "exclusivePathOwnership": {
+    "src/calculators/full-six/result-contract.ts": "SH-T1",
+    "src/calculators/full-six/result-contract.test.ts": "SH-T1",
+    "src/calculators/full-six/format-policy.ts": "SH-T1",
+    "src/calculators/full-six/units.ts": "SH-T1",
+    "src/lib/full-six-snapshot.ts": "SH-T2",
+    "src/lib/full-six-report.ts": "SH-T2",
+    "src/lib/full-six-snapshot.test.ts": "SH-T2",
+    "src/lib/full-six-report.test.ts": "SH-T2",
+    "src/components/calculator-interactive.tsx": "SH-T3",
+    "src/calculators/registry.ts": "SH-T3",
+    "src/calculators/full-six/integration.ts": "SH-T3",
+    "src/components/full-six/calculator-shell.tsx": "SH-T3",
+    "src/components/full-six/integration.test.tsx": "SH-T3",
+    "tests/full-six/workflow.acceptance.ts": "SH-T4",
+    "tests/full-six/export-bytes.acceptance.ts": "SH-T4",
+    "tests/full-six/accessibility-performance.acceptance.ts": "SH-T4",
+    "docs/full-six/execution-manifest.json": "SH-T4",
+    "src/calculators/geometry/slope-final-contract.ts": "S276-ENGINE",
+    "src/calculators/geometry/slope-final-contract.test.ts": "S276-ENGINE",
+    "src/calculators/geometry/slope-final-presentation.ts": "S276-PRESENT",
+    "src/calculators/geometry/slope-final-result.ts": "S276-PRESENT",
+    "src/calculators/geometry/slope-final-analysis.ts": "S276-PRESENT",
+    "tests/geometry/s276-contract.acceptance.test.ts": "S276-QA",
+    "docs/geometry/s276-review-evidence.json": "S276-QA",
+    "src/calculators/geometry/volume-final-contract.ts": "V275-ENGINE",
+    "src/calculators/geometry/volume-solid-formulas.ts": "V275-ENGINE",
+    "src/calculators/geometry/volume-final-contract.test.ts": "V275-ENGINE",
+    "src/calculators/geometry/volume-final-presentation.ts": "V275-PRESENT",
+    "src/calculators/geometry/volume-final-result.ts": "V275-PRESENT",
+    "src/calculators/geometry/volume-final-analysis.ts": "V275-PRESENT",
+    "tests/geometry/v275-contract.acceptance.test.ts": "V275-QA",
+    "docs/geometry/v275-review-evidence.json": "V275-QA",
+    "src/calculators/statistics/dispersion-decimal.ts": "ST-JOINT-01",
+    "src/calculators/statistics/dispersion-decimal.test.ts": "ST-JOINT-01",
+    "tests/statistics/independent-decimal-oracle.py": "ST-JOINT-01",
+    "src/calculators/statistics/dispersion-result.ts": "ST-JOINT-02",
+    "src/calculators/statistics/dispersion-tables.ts": "ST-JOINT-02",
+    "src/calculators/statistics/dispersion-summaries.ts": "ST-JOINT-02",
+    "src/calculators/statistics/dispersion-analysis.ts": "ST-JOINT-03",
+    "src/calculators/statistics/dispersion-analysis.test.ts": "ST-JOINT-03",
+    "src/calculators/statistics/dispersion-workflow.ts": "ST-JOINT-04",
+    "src/calculators/statistics/dispersion-workflow.test.ts": "ST-JOINT-04",
+    "tests/statistics/full-dispersion.acceptance.ts": "ST-JOINT-05",
+    "docs/full-six/statistics-evidence.json": "ST-JOINT-05",
+    "src/calculators/statistics/variance-final-presentation.ts": "ST-283-ONLY",
+    "docs/full-six/283-editorial.json": "ST-283-ONLY",
+    "src/calculators/statistics/standard-deviation-final-presentation.ts": "ST-282-ONLY",
+    "docs/full-six/282-editorial.json": "ST-282-ONLY",
+    "src/calculators/advanced-math/graph-expression-vnext.ts": "G-T1",
+    "src/calculators/advanced-math/graph-expression-vnext.test.ts": "G-T1",
+    "src/calculators/advanced-math/adaptive-graph.ts": "G-T2",
+    "src/calculators/advanced-math/adaptive-graph.test.ts": "G-T2",
+    "src/calculators/advanced-math/plotter-final-result.ts": "G-T3",
+    "src/components/full-six/function-plotter-controls.tsx": "G-T3",
+    "src/components/full-six/plotter-target-controls.tsx": "G-T4",
+    "src/calculators/advanced-math/graph-roots-intersections.ts": "G-T5",
+    "src/calculators/advanced-math/graph-roots-intersections.test.ts": "G-T5",
+    "src/calculators/advanced-math/graph-derivatives-extrema.ts": "G-T6",
+    "src/calculators/advanced-math/graph-inverse.ts": "G-T6",
+    "src/calculators/advanced-math/graph-proper-integral.ts": "G-T7",
+    "src/calculators/advanced-math/graph-proper-integral.test.ts": "G-T7",
+    "src/calculators/advanced-math/parametric-polar.ts": "G-T8",
+    "src/components/full-six/graphing-analysis-controls.tsx": "G-T8",
+    "src/calculators/advanced-math/graph-workflow-adapters.ts": "G-T9",
+    "src/calculators/advanced-math/graph-workflow-adapters.test.ts": "G-T9",
+    "tests/advanced-math/graph-numerical.acceptance.ts": "G-T10",
+    "tests/advanced-math/graph-independent-oracle.py": "G-T10",
+    "tests/advanced-math/graph-visual-accessibility.acceptance.ts": "G-T11",
+    "docs/full-six/graph-visual-evidence.json": "G-T11"
+  },
+  "dependencyLayers": [
+    [
+      "SH-T1"
+    ],
+    [
+      "G-T1",
+      "S276-ENGINE",
+      "SH-T2",
+      "ST-JOINT-01",
+      "V275-ENGINE"
+    ],
+    [
+      "G-T2",
+      "G-T5",
+      "G-T7",
+      "S276-PRESENT",
+      "ST-JOINT-02",
+      "V275-PRESENT"
+    ],
+    [
+      "G-T3",
+      "G-T6",
+      "S276-QA",
+      "ST-JOINT-03",
+      "V275-QA"
+    ],
+    [
+      "G-T4",
+      "G-T8",
+      "ST-JOINT-04"
+    ],
+    [
+      "G-T10",
+      "G-T9",
+      "ST-JOINT-05"
+    ],
+    [
+      "G-T11",
+      "ST-282-ONLY",
+      "ST-283-ONLY"
+    ],
+    [
+      "SH-T3"
+    ],
+    [
+      "SH-T4"
+    ]
+  ],
+  "tasks": [
+    {
+      "taskId": "SH-T1",
+      "exclusiveOwner": "Shared result/numeric interface owner",
+      "catalogIds": [
+        276,
+        283,
+        282,
+        275,
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/full-six/result-contract.ts",
+        "src/calculators/full-six/result-contract.test.ts",
+        "src/calculators/full-six/format-policy.ts",
+        "src/calculators/full-six/units.ts"
+      ],
+      "deliverable": "After ownerselection,freeze typed result/precision/unit/replay interfaces and approved contracthashes. Reuse existing unit/formatter modules; new adapters preserve legacyformatter path. Statistics decimal strings and graph numerical status/error metadata must not be coerced into Number by sharedmetrics.",
+      "dependsOn": [],
+      "estimatePersonHours": [
+        16,
+        24
+      ],
+      "acceptance": "Cross-domain serialization/display/schema fixtures; zero/nonzero/typed errors; unit exponents and decimalstring preservation; no legacy UI precision drift.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "SH-T2",
+      "exclusiveOwner": "Shared workflow serialization owner",
+      "catalogIds": [
+        276,
+        283,
+        282,
+        275,
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/lib/full-six-snapshot.ts",
+        "src/lib/full-six-report.ts",
+        "src/lib/full-six-snapshot.test.ts",
+        "src/lib/full-six-report.test.ts"
+      ],
+      "deliverable": "Extend existing snapshot/report contracts with version/mode/unit/AST/transform/source/numeric metadata. Reuse existinghistory/scenario/exportservices; preserve allrawhistoricals. ReportCSV/JSON/PDF transport is not rebuilt. Bind derived Decimal transform provenance and rationaledges.",
+      "dependsOn": [
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        24,
+        40
+      ],
+      "acceptance": "Version mismatch/unknownversion explicit; no latestfallback; exportedbytes match artifact; oldsnapshot exactreplay; reporterror nofalse-success.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "SH-T3",
+      "exclusiveOwner": "Shared UI/capability integration owner",
+      "catalogIds": [
+        276,
+        283,
+        282,
+        275,
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/components/calculator-interactive.tsx",
+        "src/calculators/registry.ts",
+        "src/calculators/full-six/integration.ts",
+        "src/components/full-six/calculator-shell.tsx",
+        "src/components/full-six/integration.test.tsx"
+      ],
+      "deliverable": "Sole owner of monolithic UI/registry integration. Import domainmodules and existing sharedrenderer/controls; allocate successor technicalrevision only underexistingpolicy afterapproval. Centralfeaturecapabilities,emptyinitialstate/examples,staleoutput/cancel/focus and domainchartalternative wrappers. Do not register/privatepublish DRAFTs orchange existingcanonicalmappings without authorizedbinding.",
+      "dependsOn": [
+        "SH-T1",
+        "SH-T2",
+        "S276-PRESENT",
+        "V275-PRESENT",
+        "ST-JOINT-04",
+        "ST-283-ONLY",
+        "ST-282-ONLY",
+        "G-T3",
+        "G-T4",
+        "G-T8",
+        "G-T9"
+      ],
+      "estimatePersonHours": [
+        24,
+        40
+      ],
+      "acceptance": "Per-ID routing andprimaryparity; samecore acrossplans; no newbilling/Businessplatform scope; preserved source/registry/historyguards.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "SH-T4",
+      "exclusiveOwner": "Shared isolated workflow QA owner",
+      "catalogIds": [
+        276,
+        283,
+        282,
+        275,
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "tests/full-six/workflow.acceptance.ts",
+        "tests/full-six/export-bytes.acceptance.ts",
+        "tests/full-six/accessibility-performance.acceptance.ts",
+        "docs/full-six/execution-manifest.json"
+      ],
+      "deliverable": "Bind existing receipts to unchanged scope, then collect missingperID owner-isolation/replay/scenario/export-byte/crossplan/mobilekeyboard/performance evidence. Domainowners providechart/numeric fixtures; no duplicate implementation. Prepare device/independentPDFchecklist; genuine externalexecution remains blocker untiloccurs.",
+      "dependsOn": [
+        "SH-T3",
+        "S276-QA",
+        "V275-QA",
+        "ST-JOINT-05",
+        "G-T10",
+        "G-T11"
+      ],
+      "estimatePersonHours": [
+        24,
+        40
+      ],
+      "acceptance": "Actualexpected/actual,fullSHA/environment/versions,artifacthash andfailurelogs perID; sourcefacts cannot convert90formalPENDING decisionsintoPASS. No productioncredentials orwrites.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "S276-ENGINE",
+      "exclusiveOwner": "Geometry276owner",
+      "catalogIds": [
+        276
+      ],
+      "ownedPaths": [
+        "src/calculators/geometry/slope-final-contract.ts",
+        "src/calculators/geometry/slope-final-contract.test.ts"
+      ],
+      "deliverable": "New immutable registered definition with typed modes, exact decimal validation/classification, stable line representations, inverse solution sets and forward residual traces; do not edit catalog-completion.ts old revision.",
+      "dependsOn": [
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        24,
+        36
+      ],
+      "acceptance": "Slope-only engine and test; Volume engine isolated; root owns registry integration. Exact per-domain acceptance cases are in the bound proposedcontract; no source assumption promoted.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "S276-PRESENT",
+      "exclusiveOwner": "Geometry276owner",
+      "catalogIds": [
+        276
+      ],
+      "ownedPaths": [
+        "src/calculators/geometry/slope-final-presentation.ts",
+        "src/calculators/geometry/slope-final-result.ts",
+        "src/calculators/geometry/slope-final-analysis.ts"
+      ],
+      "deliverable": "Structured line graph clipping, rise/run triangle/labels, domain table, reverse/scenario/sweep adapters, units and feature metadata; root renderer consumes model.",
+      "dependsOn": [
+        "S276-ENGINE",
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        20,
+        28
+      ],
+      "acceptance": "Domain descriptors/adapters only; shared renderer/auth/API/export infrastructure root-owned. Exact per-domain acceptance cases are in the bound proposedcontract; no source assumption promoted.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "S276-QA",
+      "exclusiveOwner": "Geometry276owner",
+      "catalogIds": [
+        276
+      ],
+      "ownedPaths": [
+        "tests/geometry/s276-contract.acceptance.test.ts",
+        "docs/geometry/s276-review-evidence.json"
+      ],
+      "deliverable": "Per-feature oracle cases, regression/replay fixtures, dimension/degeneracy/error-classification checks, graph/table/scenario/export reconciliation adapters and exact-version review packet. Reuse retained evidence; collect only missing proof.",
+      "dependsOn": [
+        "S276-ENGINE",
+        "SH-T1",
+        "S276-PRESENT"
+      ],
+      "estimatePersonHours": [
+        16,
+        24
+      ],
+      "acceptance": "Geometry domain fixtures and per-ID evidence only; root owns shared auth/entitlement/security/accessibility/performance harnesses and lifecycle actions. Exact per-domain acceptance cases are in the bound proposedcontract; no source assumption promoted.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "V275-ENGINE",
+      "exclusiveOwner": "Geometry275owner",
+      "catalogIds": [
+        275
+      ],
+      "ownedPaths": [
+        "src/calculators/geometry/volume-final-contract.ts",
+        "src/calculators/geometry/volume-solid-formulas.ts",
+        "src/calculators/geometry/volume-final-contract.test.ts"
+      ],
+      "deliverable": "New immutable typed15-solid definition, parameterization/units, exact domain guards, stable forward/inverse formulas and bracketed cap root plus trace/residual; source applicability/derivation dossier for new solids.",
+      "dependsOn": [
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        36,
+        52
+      ],
+      "acceptance": "Volume-only formulas/tests; do not edit catalog-completion.ts historical implementation or root unit registry. Exact per-domain acceptance cases are in the bound proposedcontract; no source assumption promoted.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "V275-PRESENT",
+      "exclusiveOwner": "Geometry275owner",
+      "catalogIds": [
+        275
+      ],
+      "ownedPaths": [
+        "src/calculators/geometry/volume-final-presentation.ts",
+        "src/calculators/geometry/volume-final-result.ts",
+        "src/calculators/geometry/volume-final-analysis.ts"
+      ],
+      "deliverable": "All15 schematic geometry descriptors, accessible parameter/result tables, sweep/scenario/inverse adapters and feature metadata; root renderer consumes model.",
+      "dependsOn": [
+        "V275-ENGINE",
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        24,
+        36
+      ],
+      "acceptance": "No account/export/API renderer infrastructure edits; distinct from Slope domain files. Exact per-domain acceptance cases are in the bound proposedcontract; no source assumption promoted.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "V275-QA",
+      "exclusiveOwner": "Geometry275owner",
+      "catalogIds": [
+        275
+      ],
+      "ownedPaths": [
+        "tests/geometry/v275-contract.acceptance.test.ts",
+        "docs/geometry/v275-review-evidence.json"
+      ],
+      "deliverable": "Per-feature oracle cases, regression/replay fixtures, dimension/degeneracy/error-classification checks, graph/table/scenario/export reconciliation adapters and exact-version review packet. Reuse retained evidence; collect only missing proof.",
+      "dependsOn": [
+        "V275-ENGINE",
+        "SH-T1",
+        "V275-PRESENT"
+      ],
+      "estimatePersonHours": [
+        16,
+        24
+      ],
+      "acceptance": "Geometry domain fixtures and per-ID evidence only; root owns shared auth/entitlement/security/accessibility/performance harnesses and lifecycle actions. Exact per-domain acceptance cases are in the bound proposedcontract; no source assumption promoted.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-JOINT-01",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "ownedPaths": [
+        "src/calculators/statistics/dispersion-decimal.ts",
+        "src/calculators/statistics/dispersion-decimal.test.ts",
+        "tests/statistics/independent-decimal-oracle.py"
+      ],
+      "deliverable": "Statistics-only strict decimal normalization,34digit/exponent/frequency/missing schema and new-version Decimal50 centered algorithm with precision fallback plus independent rational/100digit oracle fixtures",
+      "dependsOn": [
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        32,
+        48
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-JOINT-02",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "ownedPaths": [
+        "src/calculators/statistics/dispersion-result.ts",
+        "src/calculators/statistics/dispersion-tables.ts",
+        "src/calculators/statistics/dispersion-summaries.ts"
+      ],
+      "deliverable": "Statistics result adapter, exact bins/counts and accessible row/contribution tables, robust/type7summaries; uses existing renderer/table components",
+      "dependsOn": [
+        "ST-JOINT-01"
+      ],
+      "estimatePersonHours": [
+        20,
+        32
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-JOINT-03",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "ownedPaths": [
+        "src/calculators/statistics/dispersion-analysis.ts",
+        "src/calculators/statistics/dispersion-analysis.test.ts"
+      ],
+      "deliverable": "Statistics target-scale solver and forward-validation adapters for shared A/B/C and sensitivity services",
+      "dependsOn": [
+        "ST-JOINT-01",
+        "ST-JOINT-02"
+      ],
+      "estimatePersonHours": [
+        12,
+        20
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-JOINT-04",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "ownedPaths": [
+        "src/calculators/statistics/dispersion-workflow.ts",
+        "src/calculators/statistics/dispersion-workflow.test.ts"
+      ],
+      "deliverable": "Statistics-specific decimal snapshot/export mappings, capability metadata and shared workflow integration fixtures only; excludes implementation of common history,CSV/JSON/PDF,auth/team/API/batch/webhook platform services owned by root",
+      "dependsOn": [
+        "ST-JOINT-02",
+        "ST-JOINT-03"
+      ],
+      "estimatePersonHours": [
+        8,
+        16
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-JOINT-05",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        282,
+        283
+      ],
+      "ownedPaths": [
+        "tests/statistics/full-dispersion.acceptance.ts",
+        "docs/full-six/statistics-evidence.json"
+      ],
+      "deliverable": "Statistics-only numerical-envelope,reconciliation,chart/table accessibility and workload evidence for both identities; common workflow/security/device suites remain root-owned dependencies",
+      "dependsOn": [
+        "ST-JOINT-04"
+      ],
+      "estimatePersonHours": [
+        20,
+        32
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-283-ONLY",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        283
+      ],
+      "ownedPaths": [
+        "src/calculators/statistics/variance-final-presentation.ts",
+        "docs/full-six/283-editorial.json"
+      ],
+      "deliverable": "Variance hero/squaredunit/editorial and separate per-ID evidence binding",
+      "dependsOn": [
+        "ST-JOINT-05"
+      ],
+      "estimatePersonHours": [
+        4,
+        6
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "ST-282-ONLY",
+      "exclusiveOwner": "Sharedstatisticsowner",
+      "catalogIds": [
+        282
+      ],
+      "ownedPaths": [
+        "src/calculators/statistics/standard-deviation-final-presentation.ts",
+        "docs/full-six/282-editorial.json"
+      ],
+      "deliverable": "SD hero/originalunit/editorial and separate per-ID evidence binding",
+      "dependsOn": [
+        "ST-JOINT-05"
+      ],
+      "estimatePersonHours": [
+        4,
+        6
+      ],
+      "acceptance": "Both separate identities use sameapproved statisticalkernel; all23fixturegroups perID plus strict100/200digit oracle,frequency/transform/rationaledge,planparity and legacyv1 replay. Root owns genericworkflow implementation.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T1",
+      "exclusiveOwner": "shared grammar/numeric owner",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/graph-expression-vnext.ts",
+        "src/calculators/advanced-math/graph-expression-vnext.test.ts"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features G-01,G-02 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "SH-T1"
+      ],
+      "estimatePersonHours": [
+        60,
+        90
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T2",
+      "exclusiveOwner": "shared adaptive visual engine owner",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/adaptive-graph.ts",
+        "src/calculators/advanced-math/adaptive-graph.test.ts"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features G-03 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T1"
+      ],
+      "estimatePersonHours": [
+        50,
+        80
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T3",
+      "exclusiveOwner": "#251 visual adapter/UX owner",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/plotter-final-result.ts",
+        "src/components/full-six/function-plotter-controls.tsx"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features V251-01,V251-02 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T2"
+      ],
+      "estimatePersonHours": [
+        32,
+        48
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T4",
+      "exclusiveOwner": "#251 reverse UI owner; reuses G-T5",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/components/full-six/plotter-target-controls.tsx"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features V251-03 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T5",
+        "G-T3"
+      ],
+      "estimatePersonHours": [
+        16,
+        24
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T5",
+      "exclusiveOwner": "#235 analysis owner; roots/intersections",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/graph-roots-intersections.ts",
+        "src/calculators/advanced-math/graph-roots-intersections.test.ts"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features A235-01 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T1"
+      ],
+      "estimatePersonHours": [
+        50,
+        80
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T6",
+      "exclusiveOwner": "#235 analysis owner; derivative/extrema/inverse",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/graph-derivatives-extrema.ts",
+        "src/calculators/advanced-math/graph-inverse.ts"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features A235-02,A235-03 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T5"
+      ],
+      "estimatePersonHours": [
+        40,
+        64
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T7",
+      "exclusiveOwner": "#235 analysis owner; adaptive proper quadrature",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/graph-proper-integral.ts",
+        "src/calculators/advanced-math/graph-proper-integral.test.ts"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features A235-02 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T1"
+      ],
+      "estimatePersonHours": [
+        32,
+        56
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T8",
+      "exclusiveOwner": "#235 mode owner",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/parametric-polar.ts",
+        "src/components/full-six/graphing-analysis-controls.tsx"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features A235-04 as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T2",
+        "G-T6"
+      ],
+      "estimatePersonHours": [
+        32,
+        48
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T9",
+      "exclusiveOwner": "per-ID scenario/sensitivity/export adapters",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "src/calculators/advanced-math/graph-workflow-adapters.ts",
+        "src/calculators/advanced-math/graph-workflow-adapters.test.ts"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features V251-02,A235-05,W-GRAPH-EXPORT as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T3",
+        "G-T4",
+        "G-T6",
+        "G-T7",
+        "G-T8",
+        "SH-T2"
+      ],
+      "estimatePersonHours": [
+        40,
+        64
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T10",
+      "exclusiveOwner": "independent numeric/parser/graph QA",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "tests/advanced-math/graph-numerical.acceptance.ts",
+        "tests/advanced-math/graph-independent-oracle.py"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features Q-GRAPH as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T5",
+        "G-T6",
+        "G-T7",
+        "G-T8"
+      ],
+      "estimatePersonHours": [
+        64,
+        96
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    },
+    {
+      "taskId": "G-T11",
+      "exclusiveOwner": "browser/accessibility/performance QA",
+      "catalogIds": [
+        251,
+        235
+      ],
+      "ownedPaths": [
+        "tests/advanced-math/graph-visual-accessibility.acceptance.ts",
+        "docs/full-six/graph-visual-evidence.json"
+      ],
+      "deliverable": "Implement/validate only recommended numerical-profile features Q-GRAPH as exactly specified in GRAPH-GRAMMAR-AND-ANALYSIS.md; reuse appropriate existing versioned parser,standalonecalculus and sharedvisual primitives after interface/quality check. Do not claim repository-wide absence or rebuild a CAS. Formal interval/all-root proof and implicit-curve alternative are not selected.",
+      "dependsOn": [
+        "G-T9",
+        "G-T10"
+      ],
+      "estimatePersonHours": [
+        32,
+        48
+      ],
+      "acceptance": "Exact grammar/domain/continuity/solver/errorbudget/typedpartial fixtures; derivative degreechainrule andnonsmooth cases; realdownload/status provenance. Graph-specificchart/analysisproof only; rootSH-T4 owns commonaccount/device/reportjourneys.",
+      "currentStatus": "PROPOSED_NOT_COMMISSIONED",
+      "noSourceEditsInThisTask": true
+    }
+  ],
+  "integrationRule": "OnlySH-T3 edits shared UI/registry; domainowners return stable modules/descriptors. Never parallel-editmonolith. Review exact fullresult snapshots before integratedevidence. NoemptyPR/proposal-onlycompletionclaim."
+}
