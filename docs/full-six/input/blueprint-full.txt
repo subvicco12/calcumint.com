@@ -1,0 +1,1160 @@
+P0: 
+P1: 
+P2: 
+P3: 
+P4: CalcuMint
+P5: FINAL MASTER BLUEPRINT& PRODUCT ARCHITECTURE
+P6: Universal Calculation Intelligence Platform
+P7: 
+P8: SINGLE SOURCE OF TRUTH — FINAL ARCHITECTURE BASELINEThis document is the governing product, calculator, entitlement, certification, publication, UX, platform, roadmap and catalogue architecture for CalcuMint. Future implementation must conform to it unless a change is explicitly approved, documented and incorporated into a later controlled revision.
+P9: 
+P10: One Final calculator. One authoritative deterministic engine. Identical mathematical correctness for everyone. Free calculates; Pro analyzes and optimizes; Business collaborates, deploys and automates.
+P11: 
+P12: Architecture date: 1 October 2026Status: FINAL / GOVERNING BASELINESupersedes fragmented V1/V2/V3 customer-facing product conceptsDoes not itself authorize production deployment or bypass certification
+P13: 
+P14: 0. Document Control, Authority & Interpretation
+P15: Item
+P16: Governing rule
+P17: Purpose
+P18: Single future-reference specification for the complete CalcuMint product and calculator architecture.
+P19: Authority
+P20: Architecture baseline for product, engineering, UX, catalogue, entitlements, certification and publication decisions.
+P21: Customer release terminology
+P22: Every legitimately published calculator is a Final Calculator. No customer-facing V1/V2/V3 calculator release cycle.
+P23: Technical revisions
+P24: Immutable numeric/internal revisions remain available for auditability, certification, reproducibility and publication identity.
+P25: Operational truth
+P26: Repository definitions/tests/migrations and authoritative production database state control runtime certification/publication; this blueprint controls architecture and policy.
+P27: Change rule
+P28: Material changes require an explicit decision record and controlled blueprint revision. No silent architectural drift.
+P29: Deployment authority
+P30: This document is a build target, not production authorization. CI, certification, security, YMYL and publication gates remain mandatory.
+P31: 
+P32: 0.1 Source hierarchy
+P33: This Final Master Blueprint & Product Architecture is the architecture and product-policy authority.
+P34: The Master Calculator Catalog is the governed portfolio/planning inventory and entitlement mapping.
+P35: Certified repository calculator definitions and deterministic tests are the mathematical source of truth.
+P36: Authoritative database lifecycle/publication records determine what is legitimately public.
+P37: Current regulatory sources and certified rule packs govern jurisdiction-sensitive calculators.
+P38: When a conflict is discovered, it must be reconciled explicitly; no source may be silently overwritten merely to make states appear consistent.
+P39: 0.2 Locked product doctrine
+P40: PERMANENT PRODUCT RULEFree calculates. Pro understands, compares, optimizes and remembers. Business builds, brands, collaborates and automates. Mathematical correctness is never a paid feature.
+P41: 
+P42: One canonical calculator URL and identity; plans change capabilities, not formulas or page identity.
+P43: Every public calculator must be certified and published through the governed lifecycle before it may be called Final.
+P44: Final is a customer-facing product/completeness state; technical revision is an internal audit identity.
+P45: Charts, schedules, exports, scenarios, sensitivity and AI explanations consume deterministic engine output and must not independently reimplement formulas.
+P46: No plan may receive a more accurate mathematical answer than another plan.
+P47: High-stakes financial, health, tax and other regulated calculators retain specialist/reviewer gates where required.
+P48: Contents
+P49: 1. Executive Decision & Product Vision
+P50: 2. Final Product Doctrine: Final vs Technical Revision
+P51: 3. Permanent System Architecture
+P52: 4. Calculator Definition & Deterministic Compute Contract
+P53: 5. Structured Calculation Result Contract
+P54: 6. Presentation Architecture & Families
+P55: 7. Universal Final Calculator UX
+P56: 8. Free / Pro / Business Entitlement Architecture
+P57: 9. Accuracy, Inputs & Paywall Guardrails
+P58: 10. Advanced Analysis Architecture
+P59: 11. Business Platform Architecture
+P60: 12. Trust, Methodology & Technical Revision Disclosure
+P61: 13. Certification, Publication & Governance
+P62: 14. Regulated / YMYL / Global Rule-Pack Architecture
+P63: 15. AI Architecture & Boundaries
+P64: 16. Calculator Journeys, Discovery & SEO
+P65: 17. Accessibility, Responsive UX & Performance
+P66: 18. Security, Auth, Billing & Entitlement Enforcement
+P67: 19. Data, Persistence, Projects & Auditability
+P68: 20. API, Embed, Batch & Webhook Architecture
+P69: 21. Reference Six Framework Validation
+P70: 22. Domain Taxonomy & Portfolio Strategy
+P71: 23. Calculator Factory & Scale Architecture
+P72: 24. QA, Reconciliation & Definition of Done
+P73: 25. Implementation Sequence & Production Protection
+P74: 26. Decision Register
+P75: 27. Research & Competitive Positioning
+P76: Appendix A. Plan Entitlement Matrix
+P77: Appendix B. Master Calculator Catalog (540-item planning inventory)
+P78: Appendix C. Competitive Research Source Register
+P79: Appendix D. Glossary & Architecture Invariants
+P80: 
+P81: 1. Executive Decision & Product Vision
+P82: CalcuMint will move directly from its certified deterministic calculation foundation to a Final Calculator Experience. There is no customer-facing V2/V3 calculator release cycle. Existing certified formulas remain authoritative unless a verified formula defect, methodology change or rule update requires a controlled technical revision and recertification.
+P83: CalcuMint is a global calculation intelligence platform, not merely a directory of isolated tools. Its defensible value comes from deterministic trust, visual explanation, reverse solving, scenario modelling, sensitivity analysis, decision journeys, global rule packs, saved work, professional outputs, and Business deployment capabilities.
+P84: 1.1 Product principles
+P85: Principle
+P86: Final interpretation
+P87: Accuracy first
+P88: Every public result is deterministic, tested, certified and reconciled across headline results, cards, charts, tables, scenarios and exports.
+P89: Useful before monetized
+P90: Free users receive a complete core calculation and useful basic visualization where appropriate.
+P91: Analysis creates Pro value
+P92: Pro monetizes analysis, Goal Solver, scenarios, sensitivity, persistence, exports and richer explanation—not correctness.
+P93: Workflow creates Business value
+P94: Business monetizes teams, clients, calculator builder, branding, embeds, API, batch, webhooks and governance.
+P95: Quality over raw scale
+P96: No mass publication of thin, uncertified or draft calculators merely to increase page count.
+P97: Global by architecture
+P98: Country/rule-sensitive calculators use explicit jurisdiction, rule-pack revision, effective dates, authoritative sources and review evidence.
+P99: 
+P100: 2. Final Product Doctrine: Final vs Technical Revision
+P101: The word Final is the public product state for a calculator that has passed all required gates. It is not a replacement for internal technical versioning. Internal revision identifiers remain immutable and auditable.
+P102: Concept
+P103: Meaning
+P104: Customer visibility
+P105: Final Calculator
+P106: Certified, governed, publishable customer product experience.
+P107: Prominent: Final / Formula verified / Rules verified as appropriate.
+P108: Technical revision
+P109: Immutable calculation-engine revision used for lineage and reproducibility.
+P110: Methodology/audit detail only.
+P111: Formula revision
+P112: Internal change identity for formula or rounding changes.
+P113: Methodology/audit detail where useful.
+P114: Rule-pack revision
+P115: Jurisdiction/effective-period rule identity.
+P116: Visible for regulated tools where decision-relevant.
+P117: Publication revision
+P118: Exact governed published identity.
+P119: Not product branding; audit/operations detail.
+P120: 
+P121: 2.1 Update behavior
+P122: A material improvement never creates “Calculator V2” for customers. It creates a new internal technical revision, runs the complete certification gate, and—only after approval—becomes the active published revision of the same Final Calculator at the same canonical URL. Previous revisions remain historical/auditable rather than silently mutating.
+P123: CUSTOMER-FACING RULEDo not show “Version 1”, “V1”, “V2” or “V3” as the calculator product release. Use Final trust terminology. Numeric technical revision may be disclosed under Methodology for auditability.
+P124: 
+P125: 3. Permanent System Architecture
+P126: The permanent execution and presentation pipeline is:
+P127: CalculatorDefinition → Certified Compute Engine → StructuredCalculationResult → PresentationDefinition → FinalCalculatorRenderer → EntitlementResolver
+P128: Layer
+P129: Responsibility
+P130: CalculatorDefinition
+P131: Typed inputs, units, validation, formulas, rounding, risk class, sources, jurisdiction metadata and immutable technical revision.
+P132: Certified Compute Engine
+P133: Pure deterministic computation. No network dependency and no plan-specific formula forks.
+P134: StructuredCalculationResult
+P135: Normalized headline result, metrics, series, composition, schedules, ranges, reverse targets, assumptions, warnings and metadata.
+P136: PresentationDefinition
+P137: Declares presentation family and which reusable visual/analysis components are mathematically meaningful.
+P138: FinalCalculatorRenderer
+P139: Consistent responsive experience rendered from contracts rather than bespoke pages.
+P140: EntitlementResolver
+P141: Centrally resolves Free/Pro/Business capabilities as active, previewed, locked or unavailable.
+P142: Persistence/Workspace Services
+P143: Save history, projects, scenarios, teams and audit state without changing computation.
+P144: Business Delivery Services
+P145: API, embed, batch, webhooks, branding and governance around the same certified engine.
+P146: 
+P147: 3.1 Architectural invariant
+P148: ONE ENGINE, THREE EXPERIENCESThe calculation result exists independently of subscription. Subscription controls additional analysis, persistence, collaboration and deployment capabilities around that result.
+P149: 
+P150: 4. Calculator Definition & Deterministic Compute Contract
+P151: Each calculator has a stable canonical calculator ID and slug.
+P152: Inputs are typed and carry units, validation, defaults, precision and classification metadata.
+P153: Formula logic is deterministic and testable without network access.
+P154: Rounding policy is explicit and part of certification.
+P155: Risk class and jurisdiction requirements are declared in metadata.
+P156: Sources and methodology are part of the governed definition for source-dependent calculators.
+P157: Internal technical revision is immutable for a released calculation identity.
+P158: Plan/entitlement logic does not live inside the mathematical compute path.
+P159: 4.1 Input classification
+P160: Input class
+P161: Meaning
+P162: Entitlement rule
+P163: Core
+P164: Required to perform the basic calculation.
+P165: Always available when calculator is available.
+P166: Accuracy-required
+P167: Needed for a materially correct answer in the user’s situation.
+P168: Never paywalled.
+P169: Jurisdiction-required
+P170: Needed to select an applicable certified rule/rule pack.
+P171: Never paywalled.
+P172: Advanced-analysis
+P173: Optional modelling depth such as alternative scenarios.
+P174: May be Pro/Business.
+P175: Business-workflow
+P176: Organization/template/deployment controls.
+P177: Business entitlement.
+P178: 
+P179: 5. Structured Calculation Result Contract
+P180: Contract field
+P181: Purpose
+P182: primaryResult
+P183: Main answer displayed in the result hero.
+P184: metrics[]
+P185: Secondary KPI/result cards.
+P186: series[]
+P187: Deterministic time-series or ordered chart data.
+P188: composition[]
+P189: Part-to-whole data such as principal vs interest.
+P190: schedule[]
+P191: Amortization, annual progression, payment or period tables.
+P192: ranges[]
+P193: Reference bands/ranges for health, science or classification tools.
+P194: reverseTargets[]
+P195: Variables that can be solved backwards from a desired outcome.
+P196: scenarioVariables[]
+P197: Inputs eligible for A/B/C comparison.
+P198: sensitivityVariables[]
+P199: Inputs eligible for outcome sensitivity analysis.
+P200: assumptions[]
+P201: Assumptions materially affecting interpretation.
+P202: warnings[]
+P203: Validation, scope, jurisdiction or safety warnings.
+P204: methodology
+P205: Formula, rounding, technical revision, rule pack and review metadata.
+P206: sources[]
+P207: Authoritative references.
+P208: journey[]
+P209: Recommended next calculations in the user’s decision path.
+P210: 
+P211: RECONCILIATION INVARIANTFor identical inputs, headline result, chart terminal value, schedule terminal value, scenario baseline and export value must agree within the calculator’s explicit rounding policy.
+P212: 
+P213: 6. Presentation Architecture & Families
+P214: Domain and presentation family are separate. Domain controls discovery, SEO, editorial taxonomy and journeys. Presentation family controls reusable UX and analysis behavior. This separation is required to scale without thousands of bespoke interfaces.
+P215: Presentation family
+P216: Typical behavior
+P217: Simple scalar
+P218: One principal result with concise supporting metrics.
+P219: Growth / accumulation
+P220: Timeline, contributions vs growth, goal/reverse solving.
+P221: Amortization / debt
+P222: Payment composition, balances, schedules, payoff scenarios.
+P223: Composition
+P224: Part-to-whole breakdowns and waterfall/breakdown views.
+P225: Break-even / crossover
+P226: Two-series crossover, target-profit and sensitivity.
+P227: Range / classification
+P228: Reference bands, ranges and classifications.
+P229: Statistical distribution
+P230: Distribution summaries, probabilities and statistical visuals.
+P231: Comparison
+P232: Alternatives/scenarios with aligned assumptions and outputs.
+P233: Goal planning
+P234: Target outcome, progress, reverse required input.
+P235: Engineering quantity
+P236: Quantity/material result, units, waste/allowance where applicable.
+P237: Unit conversion
+P238: Exact/defined conversion with unit semantics.
+P239: Equation / solver
+P240: Equation inputs, solution set, residual/verification.
+P241: Graphing
+P242: Function/series plot with domain/range and accessible summary.
+P243: Time/date
+P244: Durations, dates, calendars and timezone-aware rules where applicable.
+P245: Rule-based / jurisdictional
+P246: Certified rule-pack selection, effective period and source evidence.
+P247: 
+P248: 6.1 Reusable component library
+P249: Reusable component
+P250: Primary use
+P251: ResultHero
+P252: Main result, units, concise interpretation and trust state.
+P253: MetricCards
+P254: Secondary outputs/KPIs.
+P255: GrowthChart
+P256: Investment, savings, debt balance or corpus over time.
+P257: BreakdownChart
+P258: Principal/interest, contribution/growth, tax/net composition.
+P259: StackedPeriodChart
+P260: Period-by-period composition.
+P261: ComparisonBars
+P262: Scenario A/B/C or discrete alternatives.
+P263: RangeIndicator
+P264: BMI/reference bands and classified ranges.
+P265: BreakEvenChart
+P266: Cost/revenue crossover and target-profit visualization.
+P267: DistributionView
+P268: Statistics/probability distributions where appropriate.
+P269: ProgressView
+P270: Goal completion and target progress.
+P271: WaterfallView
+P272: Gross-to-net, revenue-to-profit or deduction flows.
+P273: ScheduleTable
+P274: Amortization, progression, payments or detailed breakdown.
+P275: ScenarioCompare
+P276: Side-by-side assumptions and outcomes.
+P277: SensitivityExplorer
+P278: Outcome response to meaningful variables.
+P279: GoalSolver
+P280: Reverse solve from target outcome to required input.
+P281: InsightPanel
+P282: Deterministic explanation plus optional grounded AI interpretation.
+P283: MethodologyPanel
+P284: Formula, assumptions, rounding, revisions, sources and review date.
+P285: 
+P286: 7. Universal Final Calculator UX
+P287: Calculator identity, category, concise purpose and trust/certification state.
+P288: Simple / Advanced input mode with units, currency, country/rule context where relevant.
+P289: Calculate action with clear validation and accessible errors.
+P290: Primary result hero.
+P291: Three to six key result cards when meaningful.
+P292: One useful Free visualization when the calculation benefits from visualization.
+P293: Plain-language “What this means” interpretation.
+P294: Advanced Analysis area with contextual Pro previews/controls.
+P295: Detailed table/schedule where mathematically useful.
+P296: Goal Solver / reverse calculation where supported.
+P297: Scenario comparison and sensitivity where decision-relevant.
+P298: Formula, assumptions, methodology, authoritative sources and technical-revision disclosure.
+P299: Related calculators / Continue your calculation journey.
+P300: MOBILE-FIRST RULEOn mobile, the answer appears before long explanations and before upgrade messaging. Charts are responsive, detailed schedules may begin summarized, and the page never requires horizontal page scrolling.
+P301: 
+P302: 8. Free / Pro / Business Entitlement Architecture
+P303: All plans use the same Final calculator and authoritative engine. Entitlements are feature capabilities, centrally resolved. They must not be scattered as ad-hoc plan checks through calculator-specific components.
+P304: Capability
+P305: Free
+P306: Pro
+P307: Business
+P308: Certified core calculation
+P309: Full
+P310: Full
+P311: Full
+P312: Primary result & KPI cards
+P313: Full
+P314: Full
+P315: Full
+P316: Basic useful visualization
+P317: Yes where applicable
+P318: Yes
+P319: Yes
+P320: Formula / methodology
+P321: Yes
+P322: Yes
+P323: Yes
+P324: Detailed charts
+P325: Limited
+P326: Full
+P327: Full
+P328: Detailed schedules / tables
+P329: Limited/basic
+P330: Full
+P331: Full
+P332: Reverse solving / Goal Seek
+P333: Selected/basic
+P334: Full
+P335: Full
+P336: Scenario comparison
+P337: Preview / locked
+P338: Full
+P339: Full
+P340: Sensitivity analysis
+P341: Preview / locked
+P342: Full
+P343: Full
+P344: Saved history / favorites
+P345: Limited
+P346: Expanded
+P347: Expanded
+P348: Projects / goals
+P349: Limited
+P350: Yes
+P351: Yes
+P352: CSV / JSON / PDF outputs
+P353: No/basic share
+P354: Yes
+P355: Yes
+P356: AI result explanation
+P357: Basic / limited
+P358: Advanced
+P359: Advanced
+P360: Ads
+P361: Yes
+P362: No
+P363: No
+P364: Team / client workspace
+P365: No
+P366: No
+P367: Yes
+P368: Custom calculator builder
+P369: No
+P370: No
+P371: Yes
+P372: Branding / white-label / embed
+P373: No
+P374: No
+P375: Yes
+P376: API / batch / webhooks
+P377: No
+P378: No
+P379: Yes
+P380: Lead capture / governance
+P381: No
+P382: No
+P383: Yes
+P384: 
+P385: 8.1 Tier purpose
+P386: Tier
+P387: Product promise
+P388: Primary monetized value
+P389: Free
+P390: Complete core calculation and useful interpretation.
+P391: Advertising and acquisition; no reduction in correctness.
+P392: Pro
+P393: Understand, compare, optimize and remember.
+P394: Advanced analysis, reverse solving, scenarios, sensitivity, persistence, exports, richer explanation, ad-free experience.
+P395: Business
+P396: Build, brand, collaborate, deploy and automate.
+P397: Teams, clients, builder, embeds, API, batch, webhooks, branding and governance.
+P398: 
+P399: 9. Accuracy, Inputs & Paywall Guardrails
+P400: Mathematical correctness, required safety warnings, required assumptions and authoritative sources are never paid features.
+P401: Any input required for correctness or jurisdiction selection remains available to Free users.
+P402: Pro may add optional analytical variables, but not hide variables required for a materially correct core answer.
+P403: Free visualizations must be useful, not intentionally misleading or truncated to create an accuracy disadvantage.
+P404: Business limits may control throughput, collaboration and deployment—not formula quality.
+P405: Entitlement tests must prove cross-plan equality of the authoritative primary calculation for identical inputs.
+P406: 10. Advanced Analysis Architecture
+P407: Capability
+P408: Architecture rule
+P409: Goal Solver / reverse solve
+P410: Solve supported variables against a target using certified forward compute; verify the reverse solution by feeding it back into the forward engine.
+P411: Scenario comparison
+P412: Each scenario is a complete deterministic input set; baseline must equal the normal calculator for identical inputs.
+P413: Sensitivity
+P414: Sweep declared variables/ranges through the certified engine; never use an independent approximate formula unless explicitly certified.
+P415: Detailed charts
+P416: Consume structured deterministic series/composition outputs.
+P417: Schedules/tables
+P418: Derived from engine outputs and reconciled to headline totals/terminal values.
+P419: Professional exports
+P420: Serialize the same structured result and assumptions used on screen.
+P421: AI explanation
+P422: Grounded in structured result, methodology and assumptions; cannot create a competing numeric result.
+P423: 
+P424: 11. Business Platform Architecture
+P425: Business is not merely Pro with higher limits. It is the organizational and deployment layer around the same Final calculators.
+P426: Organizations and workspaces
+P427: Team members, roles and permissions
+P428: Client/project spaces
+P429: Shared calculations, scenarios and templates
+P430: Custom calculator builder constrained to deterministic/auditable definitions
+P431: Brand configuration and white-label presentation where permitted
+P432: Embeddable calculators
+P433: Authenticated API
+P434: Batch calculation jobs
+P435: Webhooks with idempotency and auditability
+P436: Usage limits, quotas and metering
+P437: Audit logs and governance controls
+P438: Lead capture only where transparent and appropriate
+P439: 12. Trust, Methodology & Technical Revision Disclosure
+P440: Old presentation
+P441: Final presentation
+P442: Certified calculator · Version 1
+P443: Formula verified / Final
+P444: Technical version prominent
+P445: Technical calculation revision under Methodology
+P446: Generic regulated badge
+P447: Rules verified · jurisdiction · effective period
+P448: Unclear freshness
+P449: Last reviewed date and source/rule metadata where relevant
+P450: 
+P451: 12.1 Trust panel
+P452: The prominent trust area communicates customer-relevant confidence: Final release state, Formula verified, deterministic calculation, and Rules verified where applicable. It does not market internal revision numbers as product releases.
+P453: 12.2 Methodology panel
+P454: Methodology retains formula, assumptions, rounding policy, technical calculation revision, rule-pack revision where applicable, review date, certification/source metadata and authoritative references. This preserves reproducibility without exposing V1/V2/V3 product branding.
+P455: 13. Certification, Publication & Governance
+P456: Gate
+P457: Required evidence
+P458: Formula
+P459: Unit tests, golden vectors, boundary tests, explicit rounding.
+P460: Reverse solve
+P461: Target solution verified against forward computation.
+P462: Visualization
+P463: Chart points derive from deterministic output and reconcile with headline result.
+P464: Schedule/table
+P465: Totals and terminal values reconcile with engine result.
+P466: Scenarios
+P467: Baseline scenario equals normal calculator for identical inputs.
+P468: Sensitivity
+P469: Variables, ranges and outputs validated; no independent formula drift.
+P470: Entitlements
+P471: Free/Pro/Business boundaries tested centrally and on page.
+P472: Editorial
+P473: Worked example, assumptions, explanation, metadata and sources complete.
+P474: Regulatory
+P475: Current jurisdiction/rule pack and source evidence where applicable.
+P476: UX
+P477: Mobile portrait/landscape, desktop, validation and no horizontal overflow.
+P478: Accessibility
+P479: Keyboard, labels, semantic tables, chart alternatives and contrast.
+P480: Performance
+P481: Charts lazy-loaded where appropriate; interaction remains fast.
+P482: SEO
+P483: Canonical, metadata, indexability, structured content and no thin-page publication.
+P484: Security
+P485: No client-side entitlement trust; protected actions validated server-side.
+P486: 
+P487: PUBLISH RULEA calculator is not Final merely because it renders. It becomes Final only when formula, result presentation, entitlement behavior, required metadata, risk-specific review and authoritative publication lifecycle all pass.
+P488: 
+P489: 13.1 Lifecycle
+P490: Draft → Review → Certified → Published Final. Publication remains fail-closed. Draft or uncertified calculators are excluded from public discovery. Certification and publication are separate governed acts.
+P491: 13.2 Evidence integrity
+P492: No fabricated QA evidence.
+P493: No mass draft-to-certified promotion.
+P494: No specialist/YMYL waiver by convenience.
+P495: No direct database state manipulation that bypasses lifecycle controls.
+P496: No public count target overrides certification quality.
+P497: 14. Regulated / YMYL / Global Rule-Pack Architecture
+P498: Country/rule-sensitive calculators declare jurisdiction, effective period, rule-pack revision, authoritative sources and review date.
+P499: Formula/rule changes create versioned rule packs rather than silent mutation.
+P500: Country-specific calculators remain unpublished/index-disabled until rule certification passes.
+P501: Financial, health, tax and other designated high-risk calculators require applicable specialist/reviewer evidence before publication.
+P502: Currency and units may be localized without altering mathematical correctness.
+P503: AI remains assistive and may not override certified rule logic or required warnings.
+P504: 15. AI Architecture & Boundaries
+P505: Allowed
+P506: Not allowed
+P507: Find the appropriate certified calculator.
+P508: Invent a competing mathematical answer.
+P509: Explain deterministic results and assumptions.
+P510: Replace the deterministic engine.
+P511: Describe trade-offs and useful next scenarios.
+P512: Hide uncertainty or required assumptions.
+P513: Summarize structured result data.
+P514: Override jurisdiction/rule metadata.
+P515: Assist with user comprehension.
+P516: Create execution/publication authority.
+P517: 
+P518: The canonical flow is Certified Engine → Structured Result → AI Explanation. Never User Inputs → LLM → authoritative mathematical answer.
+P519: 16. Calculator Journeys, Discovery & SEO
+P520: Journeys are contextual and decision-oriented, not lists of category links. Every Final calculator should connect users to logical next calculations where relevant.
+P521: Starting calculation
+P522: Recommended journey
+P523: Mortgage EMI
+P524: Affordability → Extra Payment → Refinance → Rent vs Buy
+P525: SIP
+P526: Step-Up SIP → Investment Growth → Inflation → Retirement Corpus → SWP
+P527: Debt Payoff
+P528: Snowball vs Avalanche → Consolidation → Balance Transfer → Payoff Goal
+P529: Break-even
+P530: Margin → Target Profit → Pricing → ROI / ROAS
+P531: Rental Property
+P532: Mortgage → Cash Flow → Cap Rate → Cash-on-Cash → DSCR
+P533: BMI
+P534: BMR → Calorie Needs → related health calculators where appropriate
+P535: 
+P536: 16.1 SEO invariants
+P537: One canonical URL per calculator.
+P538: No plan-specific duplicate calculator pages.
+P539: No thin page publication solely for page-count growth.
+P540: Indexability follows governed publication state.
+P541: Unique explanatory content, methodology and sources accompany certified calculators.
+P542: Structured metadata must not claim availability or certification that the lifecycle does not authorize.
+P543: 17. Accessibility, Responsive UX & Performance
+P544: Keyboard-operable inputs, controls, tabs, scenario tools and dialogs.
+P545: Persistent labels and accessible validation/errors.
+P546: Semantic tables with responsive alternatives.
+P547: Charts require textual/summary alternatives and must not rely on color alone.
+P548: No horizontal page scrolling on mobile.
+P549: Result appears before long explanations and monetization messaging.
+P550: Charts/advanced analysis may lazy-load when appropriate without delaying core calculation.
+P551: Performance budgets must preserve fast input-to-result interaction.
+P552: Reduced-motion and touch-friendly behavior where applicable.
+P553: 18. Security, Auth, Billing & Entitlement Enforcement
+P554: Area
+P555: Baseline
+P556: Frontend / app
+P557: Next.js production web application on Hostinger.
+P558: Source of truth
+P559: GitHub repository subvicco12/calcumint.com; production branch main.
+P560: Database / auth
+P561: Supabase with RLS, server-controlled entitlements and production security review.
+P562: Billing
+P563: Paddle; remains sandbox until complete authenticated billing certification and explicit activation decision.
+P564: Deployment
+P565: GitHub-driven controlled deployment; no direct production experimentation.
+P566: Calculator compute
+P567: Typed/versioned deterministic definitions with pure compute and explicit rounding.
+P568: Admin control
+P569: Feature/plan/jurisdiction/workspace controls centrally manageable rather than hard-coded per calculator.
+P570: AI
+P571: Assistive discovery/explanation only; deterministic math remains authoritative.
+P572: 
+P573: Never trust client-side plan state for protected actions.
+P574: Server validates subscription/organization entitlements.
+P575: RLS and workspace isolation apply to saved calculations/projects/business data.
+P576: API/embed keys are scoped, revocable, rate-limited and auditable.
+P577: Billing activation is a separate certified operational decision.
+P578: 19. Data, Persistence, Projects & Auditability
+P579: Saved calculations reference canonical calculator identity and exact technical revision used.
+P580: Saved inputs, assumptions, result snapshot and relevant rule-pack identity are retained for reproducibility according to product/privacy policy.
+P581: Projects group calculations without changing their mathematical engine.
+P582: Scenario sets retain baseline and alternatives with explicit assumptions.
+P583: Business workspaces add organization ownership, roles and audit trails.
+P584: Material formula/rule changes do not silently rewrite historical saved results.
+P585: 20. API, Embed, Batch & Webhook Architecture
+P586: All delivery modes call the same certified engine contract as the web calculator.
+P587: API response includes calculator identity, technical revision, inputs/assumptions, deterministic result and warnings appropriate to the endpoint.
+P588: Batch execution is bounded, metered and idempotent where applicable.
+P589: Embeds preserve certification/trust and cannot alter authoritative formula logic client-side.
+P590: Webhooks are signed, retry-safe and auditable.
+P591: Business branding may change presentation but not source/methodology integrity or mandatory risk disclosures.
+P592: 21. Reference Six Framework Validation
+P593: Calculator
+P594: Domain
+P595: What it validates
+P596: Free baseline
+P597: Pro layer
+P598: Loan / EMI
+P599: Loans & Credit
+P600: Amortization and debt
+P601: EMI + principal/interest + basic composition
+P602: Full schedule, balance chart, extra payments, Goal Seek, scenarios
+P603: SIP
+P604: Investing & Wealth
+P605: Recurring investment growth
+P606: Corpus + contributions + growth visual
+P607: Timeline, inflation, Step-Up, scenarios, target-corpus Goal Seek
+P608: Compound Interest
+P609: Investing & Wealth
+P610: General accumulation
+P611: Final balance + contributions + interest + growth visual
+P612: Detailed periods, compounding comparison, sensitivity, reverse variables
+P613: Mortgage
+P614: Mortgage & Property Finance
+P615: Complex consumer decision
+P616: Payment + interest + repayment + composition
+P617: Amortization, costs, refinance, extra payments, affordability scenarios
+P618: BMI
+P619: Health & Fitness
+P620: Range-based non-finance UX
+P621: BMI + accessible reference range
+P622: Saved trends / related workflows where appropriate
+P623: Break-even
+P624: Business & Accounting
+P625: Business decision modelling
+P626: Break-even units/revenue + crossover chart
+P627: Price/cost/volume sensitivity, target-profit Goal Seek, scenarios
+P628: 
+P629: These six are internal framework references, not a customer-facing V2 release. They prove that the shared contracts support amortization, growth, general accumulation, complex consumer decisions, range-based UX and business crossover/sensitivity without calculator-specific architectural hacks.
+P630: 21.1 Acceptance requirement
+P631: All six must reconcile headline/chart/table/scenario outputs, behave correctly on mobile and desktop, preserve Free mathematical completeness, expose meaningful Pro differentiation, and retain Business as workflow/deployment capability rather than an accuracy upgrade.
+P632: 22. Domain Taxonomy & Portfolio Strategy
+P633: Domain
+P634: Domain
+P635: Domain
+P636: Finance & Banking
+P637: Loans & Credit
+P638: Investing & Wealth
+P639: Retirement & Financial Independence
+P640: Tax & Payroll
+P641: Personal Finance & Household Planning
+P642: Business & Accounting
+P643: SaaS & Startups
+P644: E-commerce & Digital Marketing
+P645: Real Estate Investment
+P646: Construction & Home Improvement
+P647: Math
+P648: Advanced Math & Graphing
+P649: Statistics & Probability
+P650: Physics
+P651: Chemistry
+P652: Engineering
+P653: Technology & Computing
+P654: Health & Fitness
+P655: Biology & Life Science
+P656: Date & Time
+P657: Conversion
+P658: Automotive & EV
+P659: Travel
+P660: Food & Cooking
+P661: Energy, Sustainability & Utilities
+P662: Sports
+P663: Education
+P664: Everyday Life
+P665: Specialist Professional Tools
+P666: 
+P667: 22.1 Foundation strategy
+P668: Portfolio counts are planning ranges, never publication quotas. The controlling rule is certification quality. The architecture targets approximately 250–400 high-quality certified calculators as the first mature foundation, then expands through governed factory processes.
+P669: Stage
+P670: Target
+P671: Primary objective
+P672: Foundation
+P673: ~250–400 certified calculators
+P674: High-value domains, Final UX, journeys, strong SEO and trust.
+P675: Expansion 1
+P676: ~750–1,000
+P677: Broader domain coverage, more countries/rule packs, deeper Pro workflows.
+P678: Expansion 2
+P679: 2,000+
+P680: Biology, earth/astronomy, specialist professional and deeper technical tools.
+P681: Platform scale
+P682: 5,000+ calculators/rule variants
+P683: Factory-driven creation, governance, localization, APIs, embeds and business automation.
+P684: 
+P685: 23. Calculator Factory & Scale Architecture
+P686: Scale comes from reusable contracts and governed metadata, not copy-pasted pages. A calculator factory may accelerate definition scaffolding, tests, presentation mapping and editorial structure, but cannot bypass certification.
+P687: Select catalog candidate and domain/presentation family.
+P688: Define canonical ID/slug, inputs, units, risk class and sources.
+P689: Implement pure deterministic compute and rounding policy.
+P690: Create golden/boundary tests and worked examples.
+P691: Map StructuredCalculationResult and presentation metadata.
+P692: Declare reverse/scenario/sensitivity capabilities where mathematically supported.
+P693: Apply entitlement capability metadata centrally.
+P694: Complete editorial, methodology, accessibility, SEO and security evidence.
+P695: Complete specialist/rule-pack review where required.
+P696: Certify, publish through authoritative lifecycle, then expose in discovery.
+P697: 24. QA, Reconciliation & Definition of Done
+P698: 24.1 Final framework definition of done
+P699: Reference Six render correctly on mobile and desktop.
+P700: Free users receive complete core answers and useful basic presentation.
+P701: Pro analytical capabilities are meaningful, consistent and centrally controlled.
+P702: Business capabilities remain workflow/deployment features rather than accuracy upgrades.
+P703: All visual/table/scenario/export outputs reconcile with certified deterministic results.
+P704: No reference calculator exposes a structural gap requiring bespoke renderer architecture.
+P705: Accessibility and performance are acceptable for production scale.
+P706: CI and certification suites are green.
+P707: Customer-facing release terminology is Final; numeric technical revisions are confined to Methodology/audit contexts.
+P708: 24.2 Cross-plan parity test
+P709: For a fixed calculator technical revision and identical accuracy-required inputs, Free, Pro and Business must produce the same authoritative primary result and required safety interpretation. Tests should compare engine outputs directly rather than relying only on rendered text.
+P710: 25. Implementation Sequence & Production Protection
+P711: 25.1 Controlled implementation sequence
+P712: Freeze this blueprint as the governing implementation baseline.
+P713: Develop only on an isolated Final Framework branch; keep production main unchanged during framework construction.
+P714: Define typed StructuredCalculationResult, PresentationDefinition and capability/entitlement contracts.
+P715: Build the reusable Final Calculator Renderer and component library.
+P716: Implement the Reference Six without calculator-specific UI hacks wherever possible.
+P717: Add deterministic Goal Solver, scenario and sensitivity interfaces around certified compute functions.
+P718: Implement centralized Free/Pro/Business feature resolution and contextual previews.
+P719: Run formula, reconciliation, entitlement, responsive, accessibility, performance, SEO and security QA.
+P720: Review Reference Six visually/functionally before catalog migration.
+P721: Map existing certified calculators to domains and presentation families; migrate by family.
+P722: Certify every migrated calculator against the Final publish gate.
+P723: Only after approval and green CI use controlled merge/deployment steps.
+P724: Continue catalog expansion based on user value and decision journeys, never raw count.
+P725: 25.2 Production protection rules
+P726: No direct development on production.
+P727: Production build remains next build --webpack unless an explicitly governed architecture change replaces it.
+P728: No merge solely because UI looks complete; certification and CI evidence are required.
+P729: No mass draft-to-certified promotion.
+P730: No weakening of certified-only public gate or authoritative publication lifecycle.
+P731: No Paddle production activation as part of calculator-framework work.
+P732: No DNS/infrastructure change unless separately approved.
+P733: No chart/table computation that bypasses certified engine.
+P734: No plan tier receives a more accurate answer than another.
+P735: No customer-facing V1/V2/V3 calculator release naming.
+P736: 26. Decision Register
+P737: Decision
+P738: Status
+P739: Direct foundation → Final Calculator Experience
+P740: LOCKED
+P741: No customer-facing V2/V3 calculator cycle
+P742: LOCKED
+P743: Every legitimately published calculator is customer-facing Final
+P744: LOCKED
+P745: Internal numeric technical revisions remain immutable/auditable
+P746: LOCKED
+P747: Preserve certified deterministic formulas unless controlled change required
+P748: LOCKED
+P749: Free mathematical accuracy equals Pro and Business
+P750: LOCKED
+P751: Free receives complete core calculation
+P752: LOCKED
+P753: Basic useful visualization Free where applicable
+P754: LOCKED
+P755: Pro = analysis / optimization / persistence / professional output
+P756: LOCKED
+P757: Business = deployment / collaboration / automation / governance
+P758: LOCKED
+P759: Accuracy-required inputs cannot be paywalled
+P760: LOCKED
+P761: Domain and Presentation Family are separate
+P762: LOCKED
+P763: Reference Six precede mass framework migration
+P764: LOCKED
+P765: Final requires certification + authoritative publication, not rendering alone
+P766: LOCKED
+P767: Regulated/YMYL specialist gates remain mandatory
+P768: LOCKED
+P769: AI is assistive; deterministic engine remains authoritative
+P770: LOCKED
+P771: One canonical URL per calculator across plans
+P772: LOCKED
+P773: No production deployment before QA, CI and required approval
+P774: LOCKED
+P775: Foundation planning target ~250–400 certified calculators
+P776: LOCKED
+P777: Catalog scale never overrides certification quality
+P778: LOCKED
+P779: 
+P780: 27. Research & Competitive Positioning
+P781: The architecture is grounded first in CalcuMint project sources. Competitor research is used to identify capability patterns, not to copy product logic. The strongest opportunities identified in the supplied research are deterministic trust/certification, reverse solving, visual result intelligence, scenarios/sensitivity, persistence, Business builder/embed/API, global rule packs, decision journeys and mobile-first UX.
+P782: Capability / theme
+P783: CalcuMint target
+P784: Priority
+P785: Guardrail
+P786: Deterministic trust & certification
+P787: Versioned deterministic engine + golden/boundary tests + certified-only public gate
+P788: Critical
+P789: Never mass-promote draft calculators
+P790: Multidirectional / reverse solving
+P791: Goal Solver/reverse solving as reusable Pro capability
+P792: High
+P793: Reverse result must reconcile to forward engine
+P794: Visual result intelligence
+P795: Free basic visualization; advanced charts/sensitivity Pro
+P796: High
+P797: Charts must consume deterministic output
+P798: Scenario comparison & sensitivity
+P799: Reusable scenario compare + sensitivity engine
+P800: High
+P801: Baseline scenario must equal normal calculation
+P802: Saved work / projects
+P803: Pro history, projects, scenarios
+P804: High
+P805: Server-side entitlement enforcement
+P806: Business builder
+P807: Business custom builder + branding + embed
+P808: High
+P809: Generated calculator remains deterministic/auditable
+P810: API / batch / webhooks
+P811: Business API, batch jobs, webhooks, governance
+P812: High
+P813: Authentication, quotas, audit logs
+P814: Global rule packs
+P815: Country/jurisdiction/effective-date rule packs
+P816: Critical
+P817: Regulated calculators require authoritative sources + review date
+P818: Calculator journeys
+P819: Decision-oriented journeys across calculators
+P820: High
+P821: Journey links must stay relevant, not SEO-only
+P822: AI explanation / finder
+P823: AI Finder + result explanation grounded in structured deterministic output
+P824: Medium
+P825: AI never produces competing calculation result
+P826: Mobile/touch UX
+P827: Tablet/mobile-first responsive calculator experience
+P828: High
+P829: No horizontal overflow; accessible controls
+P830: SEO content quality
+P831: Unique editorial content per certified calculator
+P832: Critical
+P833: No thin pages; canonical URL per calculator
+P834: 
+P835: 
+P836: Appendix A. Governing Plan Entitlement Matrix
+P837: This appendix is a quick-reference entitlement baseline. Product packaging may adjust limits, quotas or commercial terms without changing the locked accuracy and capability principles.
+P838: Capability
+P839: Free
+P840: Pro
+P841: Business
+P842: Certified core calculation
+P843: Full
+P844: Full
+P845: Full
+P846: Primary result & KPI cards
+P847: Full
+P848: Full
+P849: Full
+P850: Basic useful visualization
+P851: Yes where applicable
+P852: Yes
+P853: Yes
+P854: Formula / methodology
+P855: Yes
+P856: Yes
+P857: Yes
+P858: Detailed charts
+P859: Limited
+P860: Full
+P861: Full
+P862: Detailed schedules / tables
+P863: Limited/basic
+P864: Full
+P865: Full
+P866: Reverse solving / Goal Seek
+P867: Selected/basic
+P868: Full
+P869: Full
+P870: Scenario comparison
+P871: Preview / locked
+P872: Full
+P873: Full
+P874: Sensitivity analysis
+P875: Preview / locked
+P876: Full
+P877: Full
+P878: Saved history / favorites
+P879: Limited
+P880: Expanded
+P881: Expanded
+P882: Projects / goals
+P883: Limited
+P884: Yes
+P885: Yes
+P886: CSV / JSON / PDF outputs
+P887: No/basic share
+P888: Yes
+P889: Yes
+P890: AI result explanation
+P891: Basic / limited
+P892: Advanced
+P893: Advanced
+P894: Ads
+P895: Yes
+P896: No
+P897: No
+P898: Team / client workspace
+P899: No
+P900: No
+P901: Yes
+P902: Custom calculator builder
+P903: No
+P904: No
+P905: Yes
+P906: Branding / white-label / embed
+P907: No
+P908: No
+P909: Yes
+P910: API / batch / webhooks
+P911: No
+P912: No
+P913: Yes
+P914: Lead capture / governance
+P915: No
+P916: No
+P917: Yes
+P918: 
+P919: 
+P920: Appendix B. Master Calculator Catalog Governance
+P921: The supplied Master Calculator Catalog contains 540 planning entries across 27 catalog domains in its snapshot. The catalog remains the governed portfolio inventory; this blueprint governs how every catalog item must be designed, entitled, certified and published. The catalog workbook is a controlled companion data asset rather than duplicated row-for-row here, preventing the architecture bible from silently diverging from the maintained inventory.
+P922: Catalog domain
+P923: Planning count
+P924: Investing & Wealth
+P925: 30
+P926: Math
+P927: 30
+P928: Geometry
+P929: 26
+P930: Physics
+P931: 26
+P932: Engineering & Construction
+P933: 25
+P934: Loans & Credit
+P935: 25
+P936: Business & Accounting
+P937: 24
+P938: Mortgage & Property Finance
+P939: 24
+P940: Health & Fitness
+P941: 23
+P942: SaaS & Startups
+P943: 22
+P944: E-commerce & Marketing
+P945: 21
+P946: Personal Finance & Household
+P947: 21
+P948: Statistics & Probability
+P949: 21
+P950: Advanced Math & Graphing
+P951: 20
+P952: Conversion
+P953: 20
+P954: Technology & Computing
+P955: 20
+P956: Automotive & EV
+P957: 19
+P958: Energy & Environment
+P959: 19
+P960: Retirement & Financial Independence
+P961: 19
+P962: Tax & Payroll
+P963: 18
+P964: Chemistry
+P965: 15
+P966: Date & Time
+P967: 15
+P968: Travel & Everyday
+P969: 14
+P970: Biology & Life Science
+P971: 12
+P972: Food & Cooking
+P973: 11
+P974: Earth & Astronomy
+P975: 10
+P976: Sports
+P977: 10
+P978: 
+P979: CATALOG AUTHORITY RULEThe Master Calculator Catalog controls portfolio inventory and planning status. Repository definitions/tests control implemented mathematical behavior. Authoritative lifecycle/publication state controls what is public. No planning row becomes Final merely because it exists in the catalog.
+P980: 
+P981: 
+P982: Appendix C. Competitive Research Source Register
+P983: Website
+P984: Source URL
+P985: What It Supports
+P986: Source Type
+P987: Checked
+P988: Calculator.net
+P989: https://www.calculator.net/
+P990: ~200 calculators; free/no registration; broad categories
+P991: Official
+P992: 2026-09-26
+P993: Calculator.net
+P994: https://www.calculator.net/about-us.html
+P995: In-house development/testing; financial advisor review claim
+P996: Official
+P997: 2026-09-26
+P998: Omni Calculator
+P999: https://www.omnicalculator.com/
+P1000: 3,925 free calculators and category counts
+P1001: Official
+P1002: 2026-09-26
+P1003: Omni Calculator
+P1004: https://www.omnicalculator.com/reports/documentation
+P1005: Multidirectional variables, units/currency, charts/tables, share/embed/cite, articles/sources
+P1006: Official
+P1007: 2026-09-26
+P1008: Omni Calculator
+P1009: https://www.omnicalculator.com/mobile-app
+P1010: Android app, pinned/recent tools, 3700+ app library
+P1011: Official
+P1012: 2026-09-26
+P1013: Omni Calculator
+P1014: https://www.omnicalculator.com/stance-on-ai
+P1015: Human review + AI-assisted builder boundaries
+P1016: Official
+P1017: 2026-09-26
+P1018: GIGAcalculator
+P1019: https://www.gigacalculator.com/calculators/
+P1020: Category breadth, inline help, formulas/charts/supporting info
+P1021: Official
+P1022: 2026-09-26
+P1023: RapidTables
+P1024: https://www.rapidtables.com/
+P1025: Calculator, conversion and utility-tool breadth
+P1026: Official
+P1027: 2026-09-26
+P1028: RapidTables
+P1029: https://www.rapidtables.com/tools/
+P1030: Online utility and chart tools
+P1031: Official
+P1032: 2026-09-26
+P1033: Wolfram|Alpha
+P1034: https://www.wolframalpha.com/calculators
+P1035: Thousands of calculators and domain breadth
+P1036: Official
+P1037: 2026-09-26
+P1038: Wolfram|Alpha
+P1039: https://www.wolframalpha.com/pro/pricing
+P1040: Pro features/pricing: step-by-step, guided calculators, uploads, graphics/downloads
+P1041: Official
+P1042: 2026-09-26
+P1043: Symbolab
+P1044: https://www.symbolab.com/calculators
+P1045: Math, finance, physics calculator catalog
+P1046: Official
+P1047: 2026-09-26
+P1048: Symbolab
+P1049: https://www.symbolab.com/registration
+P1050: Pro pricing/features, AI chat, no ads, storage
+P1051: Official
+P1052: 2026-09-26
+P1053: Desmos
+P1054: https://help.desmos.com/hc/en-us/articles/4406040715149-Getting-Started-Desmos-Graphing-Calculator
+P1055: Graphing, points of interest, audio trace
+P1056: Official Help
+P1057: 2026-09-26
+P1058: Desmos
+P1059: https://help.desmos.com/hc/en-us/articles/4404602552205-Scientific-Calculator
+P1060: Scientific features, complex mode, accessibility
+P1061: Official Help
+P1062: 2026-09-26
+P1063: Mathway
+P1064: https://www.mathway.com/
+P1065: Subjects, free step-by-step positioning, app photo input, trial
+P1066: Official
+P1067: 2026-09-26
+P1068: Bankrate
+P1069: https://www.bankrate.com/calculators/
+P1070: Finance calculator breadth
+P1071: Official
+P1072: 2026-09-26
+P1073: Bankrate
+P1074: https://www.bankrate.com/mortgages/calculators/
+P1075: Mortgage calculators, comparison tools and amortization
+P1076: Official
+P1077: 2026-09-26
+P1078: Bankrate
+P1079: https://www.bankrate.com/advertising-disclosure/
+P1080: Advertiser/partner monetization disclosure
+P1081: Official
+P1082: 2026-09-26
+P1083: NerdWallet
+P1084: https://www.nerdwallet.com/finance/calculators
+P1085: Free calculator categories and breadth
+P1086: Official
+P1087: 2026-09-26
+P1088: NerdWallet
+P1089: https://www.nerdwallet.com/investing/calculators/retirement-calculator
+P1090: Advanced details, graph/summary, fact-checking, advisor CTA
+P1091: Official
+P1092: 2026-09-26
+P1093: NerdWallet
+P1094: https://www.nerdwallet.com/banking/calculators
+P1095: Partner compensation/advertising disclosure
+P1096: Official
+P1097: 2026-09-26
+P1098: SmartAsset
+P1099: https://smartasset.com/calculators
+P1100: Retirement/tax/investing/banking/home calculator categories
+P1101: Official
+P1102: 2026-09-26
+P1103: SmartAsset
+P1104: https://smartasset.com/taxes
+P1105: Tax tools + advisor matching
+P1106: Official
+P1107: 2026-09-26
+P1108: CalcuMint
+P1109: Project Master Architecture 2026
+P1110: Final architecture, tiers, certification, six references, roadmap
+P1111: Project source
+P1112: 2026-09-26
+P1113: CalcuMint
+P1114: Project Master Calculator Catalog 2026
+P1115: Approved calculator roadmap and portfolio status model
+P1116: Project source
+P1117: 2026-09-26
+P1118: 
+P1119: Appendix D. Glossary & Architecture Invariants
+P1120: Term
+P1121: Definition
+P1122: Final Calculator
+P1123: A customer-facing calculator that has passed required certification and authoritative publication gates.
+P1124: Technical revision
+P1125: Immutable internal identifier for exact deterministic calculation lineage; not customer release branding.
+P1126: Certified Compute Engine
+P1127: Authoritative deterministic mathematical implementation.
+P1128: StructuredCalculationResult
+P1129: Normalized data contract consumed by UI, charts, exports, scenarios and AI explanation.
+P1130: Presentation Family
+P1131: Reusable UX/analysis behavior independent of discovery domain.
+P1132: Entitlement
+P1133: Capability access decision for Free, Pro or Business.
+P1134: Rule pack
+P1135: Versioned jurisdiction/effective-period rules and source metadata.
+P1136: YMYL
+P1137: High-stakes category requiring applicable specialist/reviewer governance.
+P1138: Reconciliation
+P1139: Proof that multiple presentations of the same calculation agree within rounding policy.
+P1140: Canonical URL
+P1141: Single public calculator route shared across plan experiences.
+P1142: 
+P1143: Architecture invariants
+P1144: One Final calculator identity per canonical calculator URL.
+P1145: One authoritative deterministic calculation engine per technical revision.
+P1146: No customer-facing V1/V2/V3 calculator product releases.
+P1147: Internal technical revisions remain immutable and auditable.
+P1148: Free, Pro and Business mathematical correctness is identical.
+P1149: Accuracy-required inputs and safety information are never paywalled.
+P1150: Pro monetizes analytical depth and persistence.
+P1151: Business monetizes organizational workflow, integration and deployment.
+P1152: All derived views reconcile to deterministic output.
+P1153: AI cannot become the authoritative calculation engine.
+P1154: Certification and authoritative publication remain fail-closed.
+P1155: Risk-specific review gates cannot be bypassed for convenience.
+P1156: Catalog scale never outranks quality, certification or safety.
+P1157: Final Governing Statement
+P1158: Every published CalcuMint calculator is a Final Calculator powered by one certified deterministic calculation engine. Free, Pro and Business always receive identical mathematical correctness. Free provides the complete core calculation and useful interpretation; Pro adds advanced analysis, optimization, persistence and professional outputs; Business adds collaboration, deployment, integration, automation and governance. Technical revisions remain immutable internal audit identifiers and never become customer-facing V1/V2/V3 product releases.
+P1159: Future development, migration, certification, publication, monetization and scale decisions should be tested against this statement and the locked decisions in this blueprint.

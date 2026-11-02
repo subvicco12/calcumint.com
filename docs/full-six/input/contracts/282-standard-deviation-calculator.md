@@ -1,0 +1,516 @@
+# 282 — Standard Deviation: complete proposed contract
+
+Baseline `statistics.standard-deviation@1`, slug `standard-deviation-calculator`; PR1519 `7cdffeed3d5a8789689aa5495277e28b780227dc`. Proposal draft-20261102.1. **PENDING, not canonical approval. RELEASE HOLD.**
+
+This document includes the complete domain proposal and shared full-product requirements. Input source facts are not approval questions. Existing historical versions remain immutable; any material expanded implementation requires a controlled successor technical revision.
+
+# 282 — Standard Deviation Calculator: full proposed engineering contract
+
+**Proposed, pending owner selection and qualified review.** `statistics.standard-deviation@1`; canonical `/standard-deviation-calculator`; primary `standardDeviation`. No approval, source edit, certification or publication is created.
+
+This is a complete bounded product proposal. Shared statistics core is built once for both identities; individual source binding, headline, units and acceptance remain separate. Existing v1 behavior is evidence, not the full product boundary.
+
+## identityBinding
+
+**engineId:** statistics.standard-deviation
+
+**immutableVersion:** 1
+
+**slug:** standard-deviation-calculator
+
+**enginePath:** src/calculators/statistics/catalog-batch-1.ts
+
+**engineGitBlobSHA1:** 32bcaac6edbe68d220109ce6f9cde62694bcf429
+
+## targetCommit
+
+7cdffeed3d5a8789689aa5495277e28b780227dc
+
+## proposalStatus
+
+FULL_PROPOSED_CONTRACT_NOT_ACCEPTED_NOT_IMPLEMENTED_NOT_CERTIFIED
+
+## authority
+
+**blueprint:** blueprint-full.txt P8,32–46,150–211,286–300,302–418,697–735
+
+**catalog:** Native rows in input/packets/282.json and 283.json: analytical distribution/statistics; full certified Free core; distribution/summary visual; Pro detailed dataset outputs, advanced statistics, exports; Business team/client/embed/API/automation. This proposal supplies a bounded complete selection, not all possible statistical methods.
+
+**changes:** No source edits, publication, deployment or approvals. Material engine/domain/rounding changes require immutable revision governance; historical v1 replay remains bound to its original definition. Draft identity proposed-contract-draft-20261102.1 is linked to candidate v1, not a newly allocated runtime revision or catalog ID. Changed inputs, statistical modes or rounding require a new immutable technical revision allocated by existing policy before implementation; no automatic approval. New contract cannot be silently grafted onto a released v1.
+
+## sourceFixedFacts
+
+- For unweighted population N>=1: mean=sum(x)/N, M2=sum((x-mean)^2), variance=M2/N, SD=sqrt(variance).
+
+- For unweighted sample n>=2: sample variance=M2/(n-1), SD=sqrt(sample variance). Unbiasedness of sample variance assumes appropriate independent identical-distribution sampling and finite variance; sample SD is not generally unbiased for population SD.
+
+- Variance has squared units; SD, mean, extrema and quantiles original units; count is dimensionless. No normality follows from mean/variance/SD or histogram.
+
+- NIST StRD warns about input representation, cancellation and accumulation. Passing selected datasets is not a universal guarantee.
+
+## sources
+
+**status:** RECOMMENDED_NOT_ADOPTED
+
+### retain
+
+- **sourceId**: NIST-SCALE; **url**: https://www.itl.nist.gov/div898/handbook/eda/section3/eda356.htm; **title**: NIST/SEMATECH e-Handbook of Statistical Methods, 1.3.5.6 Measures of Scale; **publisher**: NIST/SEMATECH; **revision**: No publication/revision date exposed by retrieved page; retrieval snapshot is hash bound, not invented edition; **retrievedDate**: 2026-11-01; **contentSHA256**: f534c231c9a18207ae0dc8d977fe1b045afbeef94ae17c98e9f6a79895ba7aa8; **hashScope**: Complete returned markdown UTF-8 bytes saved locally; not claimed origin-server HTML hash; **clauses**: ["Definitions of Variability: variance; standard deviation; original/squared units", "Scale, Variability, or Spread; robustness/tail discussion"]; **applicability**: Sample n−1 formula, SD square root and units; qualitative interpretation only. Markdown math omits radical formatting; accompanying prose explicitly establishes square root. No population denominator asserted from this source.; **evidence**: first-six-20261101/stats-evidence/nist-measures-scale.md; **metadata**: first-six-20261101/stats-evidence/nist-measures-scale.metadata.json
+
+- **sourceId**: NIST-STRD; **url**: https://www.itl.nist.gov/div898/strd/univ/backgroundinfo.html; **title**: StRD Univariate Summary Statistics — Background Information; **publisher**: NIST; **revision**: No publication/revision date exposed by retrieved page; retrieval snapshot is hash bound, not invented edition; **retrievedDate**: 2026-11-01; **contentSHA256**: 6a9686ada9aaee77b98200104113d3f4e3cf87927b0e0968d18c481ad0126a01; **hashScope**: Complete returned markdown UTF-8 bytes saved locally; not claimed origin-server HTML hash; **clauses**: ["Error Types", "Levels of Difficulty", "Simple Remedial Action"]; **applicability**: Truncation/representation, cancellation and accumulation errors; centered-deviations method; passing reference datasets not general accuracy proof. No newly executed benchmark claim.; **evidence**: first-six-20261101/stats-evidence/nist-strd-background.md; **metadata**: first-six-20261101/stats-evidence/nist-strd-background.metadata.json
+
+### proposedPython
+
+**publisher:** Python Software Foundation
+
+**requestedURL:** https://docs.python.org/3.14/library/statistics.html
+
+**reportedTitle:** statistics — Mathematical statistics functions — Python 3.14.10 documentation
+
+#### clauses
+
+- statistics.pvariance
+
+- statistics.pstdev
+
+- statistics.variance
+
+- statistics.stdev
+
+**retrievalFile:** publication-qa-1517-20261101/python-3.14-statistics-retrieval.json
+
+**markdownSHA256:** 59a213917397f0585da5a8d377852465bb6e8e95a26fae71647eb43fab4a44d2
+
+**hashScope:** Returned markdown UTF-8 bytes, not origin HTML
+
+**retrievedDate:** 2026-11-01
+
+### retainPriorPythonForProvenanceOnly
+
+- **sourceId**: PSF-STATISTICS; **url**: https://docs.python.org/3/library/statistics.html; **title**: statistics — Mathematical statistics functions; **publisher**: Python Software Foundation; **revision**: statistics — Mathematical statistics functions — Python 3.15.2 documentation; **retrievedDate**: 2026-11-01; **contentSHA256**: 9766d486d1f8c795dff1b09ca4d38c9e6efe441f22900cc02a2bc6a73c53b325; **hashScope**: Complete returned markdown UTF-8 bytes saved locally; not claimed origin-server HTML hash; **clauses**: ["statistics.pvariance", "statistics.pstdev", "statistics.variance", "statistics.stdev"]; **applicability**: Official implementation documentation distinguishes finite population vs sample, N vs n−1, cardinality and square roots. Not authority for CalcuMint implementation or binary64 guarantee.; **evidence**: first-six-20261101/stats-evidence/python-statistics.md; **metadata**: first-six-20261101/stats-evidence/python-statistics.metadata.json
+
+### excluded
+
+- **requestedURL**: https://www.itl.nist.gov/div898/software/dataplot/refman2/ch2/var.htm; **result**: Redirected to generic NIST Information Technology Laboratory landing page; excluded as formula authority.
+
+- **requestedURL**: https://www.itl.nist.gov/div898/handbook/eda/section3/eda35b.htm; **result**: Full page retrieved but concerns skewness/kurtosis; excluded from necessary source set because no advanced-statistics scope selected.
+
+## ownerSelections
+
+- **id**: ST-CHOICE-MODE; **recommendation**: New calculations require explicit population or sample selection before Calculate; explain whole population versus observations used to estimate a larger population. No preselection for new work. Existing saved v1 population default is replayed explicitly, never relabelled sample.; **alternative**: Visible population default with confirmation may reduce friction but risks wrong estimand; sample default likewise cannot be source-prescribed.
+
+- **id**: ST-CHOICE-DATA; **recommendation**: Core raw observations plus integer frequency table; missing policy reject by default with explicit omit option and audit counts; one numeric variable and optional user unit label. All are Free accuracy-required inputs.; **alternative**: Raw-only is smaller but frequency import must then expand within the raw-row cap or be explicitly unsupported; the recommended frequency algorithm aggregates without materializing up to1e7 observations.
+
+- **id**: ST-CHOICE-WEIGHTS; **recommendation**: Frequency weights included; arbitrary reliability/analytic/survey weights excluded with explicit unsupported-weight error. Advanced robust spread/quantiles selected below satisfy advanced-statistics scope without inventing weighted inference.; **alternative**: Separate owner-approved extension may add nonnegative real analytic weights and population weighted descriptive variance M2w/W; an unbiased reliability estimator M2w/(W-W2/W) requires independent homoscedastic common-mean observations and appropriate fixed-weight model. Survey/design weights require design information and specialist method. None is a universal sample weighted divisor; no epsilon or automatic mode selection. These alternatives need additional source capture/review, tests and revision.
+
+- **id**: ST-CHOICE-ADVANCED; **recommendation**: Pro adds detailed contributions, order-statistics, exact declared quantiles, IQR, raw MAD, mean absolute deviation and transform/single-observation sensitivity, with identical core numbers across tiers. No hypothesis tests, fitted distributions, confidence intervals, regression, skewness/kurtosis or normality tests in this product.; **alternative**: Adding inferential outputs changes assumptions, required sources and QA and requires a separate explicitly bounded extension.
+
+- **id**: ST-CHOICE-NUM; **recommendation**: PROPOSED owner selection: production Decimal50 string pipeline; <=34significant decimal input digits, normalized adjusted decimal exponent -100..100; <=10000stored data rows, raw N<=10000, integer frequency total<=1e7. Exact input strings remain authoritative, decimal0.1/1.1 accepted. Raw canonical decimal result strings; default12significant digits, expanded15, half-even display only.; **alternative**: A binary64 fast path is permissible only if it proves the same1e-40relative raw-result budget and exact-decimal input semantics; otherwise Decimal fallback is mandatory. A binary64-only guarded domain would be a separately approved narrower alternative and cannot silently reject ordinary finite decimals. Decimal precision/domain choices are product/engineering policy, not source-fixed facts.
+
+## inputs
+
+### schema
+
+**mode:** required population|sample
+
+**encoding:** raw|frequency
+
+**observations:** Raw input1..10000observations; frequency input1..10000stored rows with positive frequency sum1..10000000effective observations; no frequency expansion in production.
+
+**values:** canonical signed finite decimal strings; ASCII grammar [+-]?(digits(.digits*)?|.digits)([eE][+-]?digits)?; trim outside only; at most128 characters/token; reject hex, Infinity, NaN, expressions, percent and unit suffixes; normalized significand<=34significant decimal digits and adjusted base10exponent -100..100 inclusive (zero has exponent0); leading/trailing coefficient zero normalization does not consume significant digits. Values such as0.1 and1.1 are valid exact decimal inputs. This34digit cap applies to manual/imported source values only; derived solver/transform observations use governed>=60digit internal precision and base-plus-transform provenance, not reparsing through the manual-input cap.
+
+**frequency:** Nonnegative integer decimal token <=10000000; zero-frequency row explicitly ignored and counted; negative/fractional/nonfinite rejected; positive total<=10000000 exact safe integer, at least1. Retain original token; no analytic/reliability/survey weights.
+
+**missingPolicy:** reject|omit; default reject; absent table cell, explicitly selected NA marker and blank data line are missing, never zero
+
+**unit:** optional plain text common unit label max40 characters, escaped on rendering; no conversion, mixed units, dates or currencies inferred
+
+**import:** Paste raw whitespace/comma/semicolon separated values, or upload UTF-8 CSV max1MiB with explicit delimiter/header/value/frequency-column preview. Quoted CSV cells decoded before decimal validation; locale decimal comma requires explicit locale mode and delimiter other than comma; no ambiguous autodetection. Blank standalone separators in raw paste are separators; empty CSV numeric cells are missing. Show row numbers and all invalid cells, no partial compute until errors resolved. Reject formulas as values; export neutralizes spreadsheet formula prefixes in text fields. No code execution or external data fetch.
+
+**normalization:** Keep original token, normalized exact decimal, canonical input order, frequency, omission reason and original row index. Preserve negative-zero source token but canonical mathematical zero; display zero without minus. No rounding before computation. Omit action reports imported/valid/omitted/zero-frequency rows and effective N; user confirms omission before result. All-missing => error. Removing missing values makes no claim about missingness bias.
+
+**envelope:** PROPOSED owner-selected decimal domain: <=34significant decimal digits/token, normalized adjusted base10exponent -100..100 inclusive, <=10000stored rows, raw N<=10000, frequency total<=1e7. Output intermediate exponents may exceed input bounds (e.g. variance1e200) and remain valid decimal strings. No arbitrary abs<=1e12 or minimum-spread restriction; distinct valid decimal values must not collapse through Number conversion. Use Decimal50 production string pipeline with exact centering/guard precision or proven equivalent. Binary64 fast path only with proved identical1e-40relative raw budget, otherwise Decimal fallback. Existing candidate v1 Number behavior/domain remains immutable historical evidence; new method requires a newly allocated technical revision before implementation.
+
+## calculation
+
+**frequency:** W=sum(f); mean=sum(f*x)/W; M2=sum(f*(x-mean)^2); population=M2/W; sample=M2/(W-1), W>=2. Integer frequencies mean literal replicated observations, not survey weights. Avoid material expansion; canonical deterministic weighted aggregation must reconcile to literal expansion.
+
+**algorithm:** One shared deterministic Decimal50 string pipeline computes both identities. Recommended stable centered two-pass algorithm: choose exact input anchor, form exact decimal differences without Number conversion, compute weighted mean and centered M2 using >=50decimal-significant-digit arithmetic and compensated/pairwise summation; use validated correctly rounded decimal sqrt. Exact centering/subtraction may require extra guard precision across the full exponent range; dynamically raise precision or use exact rational centered sums when50digits alone cannot prove the1e-40relative output budget. A claim that fixed50digits automatically guarantees this envelope is prohibited. Output canonical decimal strings, not Number-rounded intermediates. Library/algorithm selection is an engineering choice requiring version/license/source and numerical review; frontend cannot recompute privately. Current v1 compensated Number mean and ordinary square sum remain preserved under v1.
+
+**auxiliaryFree:** N, valid/omitted counts, mean, variance, SD, minimum, maximum, range; optional sum and centered M2 in methodology. Hero identity differs only which dispersion is primary. Show selected denominator and data unit.
+
+**advancedPro:** Sorted/frequency rows; per-row deviation, square deviation and frequency-weighted contribution with unrounded reconciliation; median; Q1/Q3/IQR via explicitly chosen Hyndman-Fan type7 linear interpolation h=(N-1)p, zero-based j=floor(h), q=x[j]+(h-j)*(x[j+1]-x[j]), p in{.25,.5,.75}; frequency ranks are expanded ranks without material expansion; median average central pair. Raw MAD=median(abs(x-median)); no1.4826 normal-consistency multiplier. Mean absolute deviation=sum(f*abs(x-mean))/N. These definitions are proposed product choices, not claimed mandated by retained NIST/PSF. Constant datasets all spreads0; quartiles singleton=value. No epsilon for tie/mode/category decisions.
+
+**unsupported:** Coefficient of variation omitted because arbitrary signed/offset units and nearzero means require further semantics. No normal overlays, normality pass/fail, 68-95-99.7 claims, significance, causal conclusions, outlier deletion or missing-value imputation.
+
+## numericalPolicy
+
+**reference:** Independent exact Fraction/rational implementation from original decimal strings for mean,M2,variance, quantiles and other rational summaries; independent >=100decimal-digit rational-square-root calculation for SD, repeated at200digits to confirm reference stability. Do not reuse production Decimal library/algorithm as the sole oracle. Bind oracle code/runtime/input/source hashes; NIST StRD background alone is not a dataset benchmark pass.
+
+**acceptance:** For every admitted nonzero raw decimal mean, variance,SD,MAD,AAD,IQR and nonzero quantile: abs(actual-reference)<=1e-40*abs(reference); reference zero outputs exactly0. Input tokens, counts, extrema, exact sums/frequencies and logical choices exact. Runtime precision must be increased or exact fallback used where Decimal50 cannot satisfy the budget; no silent out-of-budget result or Number underflow. Negative M2/variance, nonfinite decimal or computation failure => typed numerical failure, never epsilon clamping. This is a proposed release budget, not demonstrated current engine performance; new tests must cover full34digit/exponent/frequency envelope and difficult cancellation. Decimal domain policy and statistical formulas have different authority.
+
+**rounding:** Authoritative outputs serialize canonical decimal strings from the validated >=50digit path, stripped insignificant trailing zeros with explicit exponent where appropriate; no Number intermediary. Store exact decimal inputs and raw decimal results with precision/rounding context. Default display12significant digits, expanded15, decimal half-even; scientific notation for exponent<-6 or>=12. Raw export also binds technical revision and source/blob hashes. Historical v1 raw binary64 remains max17digit roundtrip, explicitly labeled its original revision; never convert new decimal results to17digits merely for compatibility.
+
+**reconciliation:** All hero/cards/chart/table/scenario/export views consume identical authoritative decimal strings and snapshot identity. Chart coordinates may be scaled to display Number only after exact bin/membership/result decisions; never feed that approximation back to engine. Rounded contribution rows disclose rounding residual; no fabricated last-row adjustment. Decimal SD squared agrees with variance within a separately proved bound<=3e-40relative for nonzero variance, exact0 at zero. Accuracy tolerances never decide population/sample,missingness,quantile ranks,bin membership or denominator.
+
+## structuredResult
+
+**primaryResult:** variance or SD with raw/display/unit
+
+**metrics:** count, mean, counterpart dispersion, minimum, maximum, range; organize additional counts in details to keep3–6 primary cards
+
+**series:** Histogram exact rational edges serialized as reduced numerator/denominator string pairs, display-only decimal approximations, integer counts and accessible bin table; optional ordered dot/strip summary for small datasets. No claim every edge is exactly finite decimal.
+
+**composition:** empty: squared deviation contributions are not probabilities; optional explicit M2 contribution table only
+
+**schedule:** datasetRows/contributions; no time schedule is meaningful. Record schedule criterion applicable to dataset tables, amortization schedule inapplicable with reason.
+
+**ranges:** observed min/max only, never normal/reference health bands
+
+**reverseTargets:** nonnegative scale factor for target dispersion and optional single-replacement feasibility below
+
+**scenarioVariables:** dataset, mode, frequency representation, missing policy and unit metadata; comparisons label differing N/mode
+
+**sensitivityVariables:** affine scale and selected observation replacement
+
+**assumptions:** user-selected statistical meaning, no inference, missing omissions, common unit, source/precision envelope
+
+**methodology:** exact definitions, denominator, numerical path, rounding, sources, review state and internal revision
+
+**journey:** counterpart variance/SD, mean/median/mode/range and z-score with explicit positive SD prerequisite; no implied inferential recommendation
+
+## visualTables
+
+**Free:** Useful deterministic histogram plus min/mean/max and dispersion summary and underlying bin-count table. Histogram bins k=min(20,ceil(sqrt(N))); equal-width from min to max; left-closed/right-open except final right-closed. Counts use exact comparison to certified edges, never fuzzy epsilon. Constant data one labeled bin at value with countN. Small datasets may use count/dot summary with same accessible table; no normal curve. Frequency uses f counts, omissions excluded explicitly. Binning is presentation choice, not estimator. Engine/result service emits edges/counts; chart cannot recompute privately. Histogram exact edges are rational min+j*(max-min)/k with integer j. Authoritative edge serialization is reduced numerator/positive-denominator string pair (plus decimal display approximation), because fractions such as1/3 have no finite exact decimal representation. Classify observations by exact rational comparison/cross-products, never rounded decimal or chart coordinates. Final-edge inclusion uses exact rational equality; bind edge definition and fraction values in exports/replay.
+
+**Pro:** Adjustable integer bin count1..100, detailed row contribution and sorted/frequency table, quartile/robust summary, table download and accessible chart navigation. Bin count does not alter any summary. Table pagination/virtualization preserves all rows, focus and export completeness. No identity-specific bespoke renderer.
+
+**claims:** Histogram appearance does not establish normality, probability density, population representativeness or outlier invalidity. No smoothing/fitting or automatic removal.
+
+## analysis
+
+**reverse:** Recommend target scale b>=0 for y=a+b*x with fixed user shift a and nonconstant baseline: b=sqrt(targetVariance/baseVariance) or b=targetSD/baseSD; target>=0; two signs mathematically possible without b>=0 restriction, declare chosen branch. Target0 => b0; baseline zero cannot reach positive dispersion by scaling; baseline0,target0 => infinitely many scales, return underdetermined not unique. Each result must be recomputed through forward engine and envelope checked; shift leaves dispersion invariant mathematically but may violate numerical envelope. No general reconstruction of unknown dataset from variance/SD. For irrational affine solutions, the34significant-digit cap applies only to manual/imported source values, never to generated transform values. Authoritative scenario stores base dataset decimal strings plus exact target/shift, chosen branch, transform definition, engine/revision and precision context. Compute scale and transformed observations at>=60significant digits internally with additional precision guard/escalation as needed; forward-computed target residual must meet1e-40relative for nonzero target and exactly0 for zero target. Report approximate scale, precision and signed absolute/relative forward residual; do not claim irrational scale is finite exact decimal. Full-precision derived observations are replayable auxiliaries; base-plus-transform is canonical. Flattening to34digits is explicitly lossy export and must not replace authoritative transform or silently migrate replay. Reject numerical precision failures without losing base inputs.
+
+**optionalSingleReplacement:** Not recommended in initial scope. If later selected, with n-1 fixed values, mean m of fixed values and within-fixed centered sum A, total M2=A+(n-1)/n*(t-m)^2; targetM2=den*targetVariance. If targetM2<A no solution; equal gives t=m; above gives two branches m±sqrt(n/(n-1)*(targetM2-A)). n>=2; sample/population denominator fixed; frequency case separately derived. No tolerance-based mathematical branch changes.
+
+**scenario:** A/B/C immutable snapshots, default baseline identical to current output; edit clone not original. Show mode,N,missing/frequency differences and raw/display absolute and percentage change (percentage unavailable when baseline0). Retain exact inputs/revision/source SHA and metadata; restore/export/import/recalculate only on same revision or explicit migration.
+
+**sensitivity:** Pro deterministic sweep b in{0,.5,1,1.5,2} for affine scale, shift fixed; variance scales b², SD abs(b). Selected observation sweep explicit min,max,steps2..101, others fixed; N/mode held fixed, re-run certified forward engine, show invalid points as gaps with reasons; no interpolation represented as solved values. No uncertainty or causal confidence interpretation.
+
+## workflowAndTiers
+
+**Free:** Full raw/frequency core, missing policy, mode, units, validation, hero/cards, histogram/basic table, methods/source/precision disclosure and safety interpretation; selected basic scale solver may be Free. History limited quota proposed10local snapshots; exact quota centrally configurable without math changes.
+
+**Pro:** Core plus robust/quantile detailed outputs, contributions, adjustable bins, full scale solver, A/B/C scenarios/sensitivity, expanded owner history/projects and CSV/JSON/PDF. Proposed1000saved snapshots; retention/quota configurable.
+
+**Business:** Pro plus role-scoped team/client projects, audit log, template builder exposing only certified fields, branded accessible embeds, authenticated API, bounded batch and signed webhooks with idempotency/retry. No arbitrary user formula replacement passed as certified statistics.
+
+**enforcement:** Central EntitlementResolver capabilities; authoritative server checks for persistence/export/team/API/batch/webhook, limits and ownership; locked preview uses illustrative labeled data only. Switching tiers leaves raw core and error interpretation identical; no hidden advanced accuracy inputs.
+
+**persistence:** Explicit save, no silent public data sharing; snapshot includes canonical input bytes, original tokens, omission choices, unit, mode, N, both raw dispersion values, method and version/source hashes. Owner isolation, reload, deletion, idempotency and old-version replay tested using genuine authenticated runtime. Do not claim synthetic mocks prove storage.
+
+**exports:** CSV full dataset/frequency/omissions metadata and contributions; JSON typed versioned complete snapshot; tagged accessible PDF summary, assumptions, source/revision and tables, with large dataset annex or clear complete companion CSV reference. Never silently truncate while claiming full export. Public share redacts dataset by default and requires explicit inclusion; exports escape text fields. Business API returns same snapshot with correlation IDs, structured errors and quotas; batch<=100datasets/job and <=100000stored rows/job and<=100000000effective frequency observations/job proposed, same per-dataset domain; webhooks carry result identity/hash and no unrequested raw data. Affine goal-solver exports retain authoritative base-plus-transform provenance, target, branch, >=60digit scale/derived values, precision context and measured residual. Optional flattened34digit CSV is explicitly labeled lossy and cannot substitute for authoritative snapshot. Histogram edges include exact rational numerator/denominator columns with decimal display labels.
+
+## uxAccessibility
+
+**flow:** Simple raw dataset and required mode; Advanced reveals frequency/import/missing/unit choices. Preserve edits on all errors and clear stale output/account-action payload before invalid recalc; recovery restores current valid snapshot. Mode changes recalculate explicitly. Result before explanations/upgrade on360px mobile. Canonical single URL per identity; numeric v1 only under methodology/audit, not customer product title; no Final/Formula verified before approved lifecycle.
+
+**a11y:** WCAG2.2AA target; named textarea, grouped mode radio/legend, frequency/import controls, linked inline errors/error summary and focus move to first invalid field; live region announces completion without excessive row announcements. Histogram has text summary and navigable data table; patterns/text not color-only; keyboard bin controls, visible focus,44px target preferred,320px reflow,200/400%zoom,no page horizontal scroll, reduced motion. Virtualized rows offer accessible nonvirtual table/export alternative. Test actual Android/TalkBack and desktop keyboard/screenreader; PDF accessibility needs separate validation.
+
+**performance:** Proposed budget:10000stored rows (including aggregate frequency total1e7, without expansion) histogram+core p95<=300ms compute and <=1sinteraction completion on recorded midrange mobile reference device; imports1MiB<=2s; sensitivity101*10000<=3s with worker/cancel; measure runtime/device, warm/cold,n>=30, memory<=50MiB incremental. These are proposed targets, not measured. No probabilistic sampling replacing exact core for speed.
+
+## reviewerAndGates
+
+**qualification:** Qualified mathematical review by named person competent in descriptive statistics, population/sample interpretation, numerical analysis, decimal precision/cancellation and independent rational-oracle design; binary64 expertise for historical replay/any proposed fast path. Separate product/accessibility/security expertise where needed. No invented mandatory credential, certification signature or external professional waiver; regulated use/inference changes require risk reassessment.
+
+**signoff:** Separate per-ID verdict despite joint engine, exact commit/blob/dependency/source capture and oracle hashes, chosen owner decisions, limitations, independence/conflict evidence and dated named decision. All15QA criteria dispositioned; no self-issued acceptance.
+
+**existingEvidence:** input/packets/{282,283}.json records retained15engine/helper witnesses, prior34tests/3files and completed zero-underflow refusal/recovery. previous-qa/six-triage.json specifies mocked account transport and no real auth/performance/WCAG proof. Historical receipts retain execution SHA. Packet records root-verified current CI41420268580 success; previous-qa/execution-summary.json older in-progress observation is historical, not a contradiction to silently overwrite.
+
+**holds:** Canonical mapping owner approval, method/source applicability, numerical and complete product implementation/proof, qualified review, exact current dependency binding and all certification/publication gates remain pending. Source facts are not owner-selectable mathematical truths.
+
+## sourceEditionDisposition
+
+**status:** PENDING
+
+**scope:** Unweighted finite univariate descriptive population/sample variance and standard deviation only; no distribution fitting, inference or normality assertion.
+
+**editionDiscrepancy:** Prior floating /3 Python snapshot reports Python 3.15.2. New explicit /3.14 retrieval reports Python 3.14.10; they are separate captured editions and must not be silently relabelled. Metadata og:url still points /3 while request/sourceURL/url point /3.14.
+
+**resolution:** Retain original snapshot provenance; propose captured explicit /3.14 clauses for reviewer selection. Captured snapshot hash is stable; minor-version URL is mutable and patch-release chronology was not independently established. No exact patch effective date or publisher raw HTML hash asserted.
+
+**NIST:** Existing hash-bound Measures of Scale snapshot has no exposed edition date; supports sample n−1, SD square root and squared/original units, not population denominator. StRD supports numerical difficulty warning and independent certified-dataset methodology, not a claim that engine passed StRD.
+
+**PSF:** Four named population/sample dispersion clauses establish cardinality and denominator interpretation. Python implementation, Decimal/Fraction support, optional known-mean arguments and precision guarantees are outside this JS engine contract.
+
+**engineSourceGap:** Pinned engine source metadata names only CalcuMint deterministic statistics engine. Research references are not yet adopted runtime source metadata or source-review approval.
+
+## featureGapMatrix
+
+- **featureId**: ST-CORE; **status**: PARTIAL; **evidence**: code/fetched-2.txt; src/calculators/statistics/catalog-batch-1.ts :: dataset, sample, stableSum, mean, variance, dispersion; **gap**: Current unweighted Number core exists; new Decimal50 string pipeline,34digit/exponent envelope, exact-decimal preservation and typed numerical failures missing.
+
+- **featureId**: ST-INPUT; **status**: PARTIAL; **evidence**: input/packets/282.json inspectedInputOutput.ui; src/components/calculator-interactive.tsx :: StatisticsDatasetTool, parseDataset; **gap**: Current Number parser and population default exist; explicit new-mode choice, CSV/locale preview, missing audit, frequency and unit contract missing.
+
+- **featureId**: ST-FREQ; **status**: MISSING; **evidence**: code/fetched-2.txt :: dispersion inputSchema accepts only values,kind; **gap**: No frequencies or weighting type; do not infer weighted support from repeated array values.
+
+- **featureId**: ST-UNITS; **status**: MISSING; **evidence**: code/fetched-2.txt :: DispersionOutput and dispersion; **gap**: No unit metadata or squared-unit rendering contract in engine.
+
+- **featureId**: ST-ADV; **status**: MISSING; **evidence**: code/fetched-2.txt :: DispersionOutput; meanMedianModeRangeCalculator is a different identity; **gap**: Dispersion has no quantiles/IQR/MAD/AAD or detailed contributions; separate summary engine does not prove shared-result integration.
+
+- **featureId**: ST-VIS; **status**: MISSING; **evidence**: input/packets/282.json softwareScopeGaps: dispersion supportedVisualizations:[]; **gap**: Native summary/distribution visual and bins not implemented in inspected dispersion presentation evidence.
+
+- **featureId**: ST-TABLE; **status**: MISSING; **evidence**: code/fetched-2.txt :: DispersionOutput.steps; **gap**: Three step strings do not implement dataset/frequency/contribution table.
+
+- **featureId**: ST-REVERSE; **status**: MISSING; **evidence**: code/fetched-2.txt :: dispersion; code/fetched-3.txt :: sixScenarioMetadata; **gap**: No certified target-scale solver; workflow metadata is not inverse implementation.
+
+- **featureId**: ST-SENS; **status**: MISSING; **evidence**: code/fetched-2.txt :: dispersion; input/packets/282.json criteria sensitivity-validation; **gap**: No selected transform/replacement sweep evidence.
+
+- **featureId**: ST-SCENARIO; **status**: PARTIAL; **evidence**: code/fetched-3.txt :: sixScenarioMetadata; src/lib/batch21-six-calculators.ts; packet inspectedInputOutput.workflow; **gap**: Dataset/mode and count/mean/variance/SD workflow metadata and local snapshot witnesses retained; full A/B/C selected scope and genuine persistence pending.
+
+- **featureId**: ST-EXPORT; **status**: PARTIAL; **evidence**: input/packets/282.json criteria scenario-reconciliation/security; previous-qa/six-triage.json globalRemainingEvidence; **gap**: Generic local snapshot/export-control witnesses are bounded; complete CSV/JSON/PDF bytes and selected advanced outputs missing proof.
+
+- **featureId**: ST-TIER; **status**: PROOF_MISSING; **evidence**: input/packets/282.json criteria entitlement-validation; previous-qa/six-triage.json; **gap**: Same-input parity retained; full adopted capability/server/team/API/batch/webhook gates not demonstrated.
+
+- **featureId**: ST-A11Y; **status**: PROOF_MISSING; **evidence**: input/packets/282.json criteria accessibility/ux-responsive/performance; **gap**: 360/1440 fixture evidence bounded; full runtime, detailed visual accessibility, physical Android and proposed budgets unproved.
+
+- **featureId**: ST-SOURCE; **status**: PARTIAL; **evidence**: code/fetched-2.txt :: dispersion.sources; input/source-edition-applicability-register.json; **gap**: Sources only CalcuMint engine in code; authoritative capture research retained, adoption/metadata integration pending.
+
+- **featureId**: ST-NUM-PROOF; **status**: PROOF_MISSING; **evidence**: input/packets/282.json algorithmAndPrecision/currentNumericalLimitation; previous-qa/six-triage.json; **gap**: New Decimal50 full-envelope1e-40budget requires independent rational/100digit SD proof, including decimal stiffness, extreme exponents,10000rows and1e7frequency. Existing binary64 underflow refusal is retained historical evidence, not proof for the new method.
+
+- **featureId**: ST-DISPLAY; **status**: PARTIAL; **evidence**: Root-reported root-extra0.json formatter capture (not locally present in this subtask); fresh code/calculator-interactive.tsx StatisticsDatasetTool line291; **gap**: Observed renderer max2fractiondigits for abs>=.01 and8significant for small values; differs from proposed12/15significant. Source path/hash of formatter must be bound in final dependency closure. Current population default and parser confirmed at UI blob c3c0beb44a5179a925bb44c64ea47109b82c8211.
+
+- **featureId**: ST-SERVER; **status**: UNKNOWN; **evidence**: previous-qa/six-triage.json testExecution.coverageLimitation; **gap**: Actual repository-wide Business infrastructure not exhaustively inspected; no claim all services absent. Selected contract integration/proof pending.
+
+## qaAcceptanceCases
+
+- **id**: ST-Q01; **input**: raw1,2,3 population; **expected**: N3 mean2 M2=2 variance2/3 SD=sqrt(2/3); hero differs by identity; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q02; **input**: raw1,2,3 sample; **expected**: variance1 SD1; denominator2; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q03; **input**: population[7] / sample[7]; **expected**: population variance0 SD0; sample typed NEED_TWO_OBSERVATIONS; empty invalid; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q04; **input**: raw1,2,2,4 population/sample; **expected**: mean2.25; M2=4.75; population variance19/16=1.1875; sample19/12; SD independent square roots; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q05; **input**: frequency value1 f2, value3 f1; **expected**: expanded[1,1,3]; mean5/3; M2=8/3; population8/9; sample4/3; compare literal expanded oracle; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q06; **input**: zero/negative/fractional frequencies; **expected**: zero row ignored/count disclosed; -1,.5 invalid; positive frequency total10000000 accepted,10000001 invalid; total0 invalid;10001stored frequency rows invalid.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q07; **input**: CSV1,blank,3; reject then omit; **expected**: reject missing row; explicit omission yieldsN2 mean2 variance1 population SD1; raw blank separators are not CSV missing cells; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q08; **input**: NaN,Infinity,0x10,1+2,1kg,1e999,empty; **expected**: typed parse/range errors preserve text; no Number coercion surprises; no stale export payload; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q09; **input**: 10000entries alternating-1,+1; **expected**: mean0 M2=10000 populationvariance1 SD1 sample10000/9999;10001entries invalid; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q10; **input**: [1000000000000,1000000000000.000000000000000001]; **expected**: Distinct31significant-digit decimal inputs remain distinct; exactgap1e-18; populationvariance2.5e-37 SD5e-19; samplevariance5e-37 SDsqrt(0.5)*1e-18 =7.07106781186547524400844362104849039284835937688474036588339869e-19 approximately. Reference root independently100/200digits; Number would collapse input pair.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q11; **input**: [0,0.00000095367431640625] and[1e-100,2e-100]; **expected**: Both admitted with no minimum gap. Firstpopulationvariance2^-42 SD2^-21; secondpopulationvariance2.5e-201 SD5e-101, samplevariance5e-201. Output exponent below input exponent bound remains valid.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q12; **input**: [0.1,0.2];[0.1,1.1];[-1e100,1e100];1e-101;1e101;35significant-digit token; **expected**: Firstmean0.15 populationvariance0.0025 SD0.05 samplevariance0.005 SDsqrt(0.005); secondmean0.6 populationvariance0.25 SD0.5 samplevariance0.5 SDsqrt(0.5); extremesmean0 populationvariance1e200 SD1e100. Lastthree rejected by proposed exponent/significand envelope; inputs preserved. Historicalv1 replay retains its original Number semantics.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q13; **input**: constant10000copies7; permutation of Q04; **expected**: constant every spread exactly0; nonconstant permutation raw numeric differences if any remain within certified tolerance and bins/counts identical; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q14; **input**: type7[1,2,3,4]; **expected**: Q1=1.75 median2.5 Q3=3.25 IQR1.5 rawMAD1 meanAAD1; frequency expansion same; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q15; **input**: bins2,[0,1,2]; **expected**: edges0,1,2; counts1,2; final right edge included; sumcounts3; constant[2,2] onecount2; bin changes never summary changes Additionalbins3,[0,1]=> exactedges0/1,1/3,2/3,1/1 andcounts1,0,1. Exact1/3edge cannot serialize as finite exact decimal; exact rational boundary comparison decides membership.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q16; **input**: Q02 targetSD2 scale solver; **expected**: b2; transformed[2,4,6]samplevariance4 SD2; targetvariance4 sameb2; baseline0 positive target infeasible; targetnegative invalid; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q17; **input**: affine shift/scale; **expected**: Q02 y=10-2*x variance4 SD2 mathematical negative-scale test; selected solver positive branch2; all forward results within envelope; sweep b0,.5,1,1.5,2 yields variance0,.25,1,2.25,4 SD0,.5,1,1.5,2; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q18; **input**: display tie and raw export; **expected**: Half-even12significant formatting1.234567890125=>1.23456789012 and1.234567890135=>1.23456789014; new canonical raw decimal strings preserve full validated precision and original input tokens, never17digit Number conversion; historicalv1 only retains17digit roundtrip.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q19; **input**: Free/Pro/Business same Q04; **expected**: deep identical core raw numeric strings, modes,errorcodes,units andmethodrevision; capabilities differ centrally only; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q20; **input**: history/export/auth/mobile/batch; **expected**: save->reload->same revision exact input/output hash; otherowner denied; unauthorizedserverexports/API rejected; CSV/JSON/PDF reconcile all rows;360px nooverflow; keyboard/screenreader controls; batchperitem same standalone result; idempotent webhook retries; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; reuse exact matching retained receipts with their original binding; **tolerance**: New decimal revision: relative1e-40 for nonzero raw outputs, exactzero/counts/bins/errors; independent rational variance and100/200digit SD oracle; historicalv1 receives its separately adopted legacy tolerance.
+
+- **id**: ST-Q21; **input**: frequency rows value0.1 f5000000,value0.3 f5000000; **expected**: N10000000 mean0.2 M2=100000 populationvariance0.01 SD0.1; samplevariance100000/9999999 and independent sqrt; no expanded1e7array; full precision budgets and workload measured.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; **tolerance**: relative1e-40nonzero; exactN/mean/M2where terminating
+
+- **id**: ST-Q22; **input**: [1.000000000000000000000000000000001e100,1e100] and[1e100,1e-100]; **expected**: First34significant-digit boundary admitted, exactgap1e67,populationvariance2.5e133 SD5e66; secondpopulationvariance=(1e100-1e-100)^2/4 andSD=(1e100-1e-100)/2 rational oracle. Test exact anchor subtraction/dynamic guard precision; do not infer fixed50digit proof from ordinary cases.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; **tolerance**: relative1e-40nonzero; zeroexact
+
+- **id**: ST-Q23; **input**: sample[1,2,3]; affine targetvariance2, shift0, nonnegative scale; **expected**: b=sqrt(2), transformed[sqrt(2),2sqrt(2),3sqrt(2)] mathematically; approximate b and derived values computed>=60digits with guard precision and independent100/200digit oracle. Forwardvariance agrees2 within relative1e-40; SD agrees sqrt(2). Save/reload/export/import preserves base-plus-transform/revision/precision and residual. No truncation through34digit manual schema. Explicitly lossy flattened34digit export cannot replace authoritative saved transform.; **execution**: REQUIRED_NOT_NEWLY_EXECUTED; **tolerance**: Targetvariance nonzero relative1e-40; exact provenance and manual-versus-derived classification; independent oracle checks scale and residual.
+
+## qaEvidenceRequirements
+
+- Every new case log records exact input strings, exact rational expected values/100digit roots, canonical raw decimal actual outputs, abs/relative decimal errors and precision used, pass threshold, oracle/source/runtime hash and full production dependency SHA. Historicalv1 separately retains17digit binary64 provenance.
+
+- Property tests: translation invariance and scale²/abs(scale), n/(n-1) sample/population variance ratio atfixedN, nonnegativity, constantzero, permutation stability within tolerance, frequency expansion equivalence; reject generated inputs outside declared envelope rather than weakening it.
+
+- All15criteria: engine tests, formula review, sources, methodology, reverse, visualization, schedule/dataset table, scenario, sensitivity, entitlement, UX, performance, security, SEO and accessibility need separate per-ID evidence or reasoned authorized applicability. No universal schedule or inference requirement is fabricated.
+
+- Actual source code and recorded unit/workflow receipts inspected; no new engine tests run in drafting task. Proposed exact expectations computed mathematically, not claimed actual observed outputs.
+
+## implementationTasks
+
+- **id**: ST-JOINT-01; **scope**: Statistics-only strict decimal normalization,34digit/exponent/frequency/missing schema and new-version Decimal50 centered algorithm with precision fallback plus independent rational/100digit oracle fixtures; **hours**: [32, 48]; **depends**: []
+
+- **id**: ST-JOINT-02; **scope**: Statistics result adapter, exact bins/counts and accessible row/contribution tables, robust/type7summaries; uses existing renderer/table components; **hours**: [20, 32]; **depends**: ["ST-JOINT-01"]
+
+- **id**: ST-JOINT-03; **scope**: Statistics target-scale solver and forward-validation adapters for shared A/B/C and sensitivity services; **hours**: [12, 20]; **depends**: ["ST-JOINT-01", "ST-JOINT-02"]
+
+- **id**: ST-JOINT-04; **scope**: Statistics-specific decimal snapshot/export mappings, capability metadata and shared workflow integration fixtures only; excludes implementation of common history,CSV/JSON/PDF,auth/team/API/batch/webhook platform services owned by root; **hours**: [8, 16]; **depends**: ["ST-JOINT-02", "ST-JOINT-03"]
+
+- **id**: ST-JOINT-05; **scope**: Statistics-only numerical-envelope,reconciliation,chart/table accessibility and workload evidence for both identities; common workflow/security/device suites remain root-owned dependencies; **hours**: [20, 32]; **depends**: ["ST-JOINT-04"]
+
+- **id**: ST-283-ONLY; **scope**: Variance hero/squaredunit/editorial and separate per-ID evidence binding; **hours**: [4, 6]; **depends**: ["ST-JOINT-05"]
+
+- **id**: ST-282-ONLY; **scope**: SD hero/originalunit/editorial and separate per-ID evidence binding; **hours**: [4, 6]; **depends**: ["ST-JOINT-05"]
+
+## effort
+
+Statistics-only shared implementation92–148personhours counted once for the pair; identity-specific4–6hours each => pair100–160hours. Qualified mathematical/numerical review additional12–20hours joint plus2–4per-ID. No generic workflow/platform implementation costs included: root owns reusable history/projects,export format engines,central entitlements,authentication,teams,API,batch/webhooks and cross-product accessibility/security suites. Those are explicit dependencies, not free implied capabilities; add root estimates once. Estimates require Decimal library/prototype and current component availability confirmation.
+
+
+
+# Shared full-product contract — proposed
+
+This is part of all6contracts. Source/Blueprint requirements and proposed numeric/resource policies are distinguished. No ownerapproval,engineacceptance orpublication authority is granted. Unrelated Business/billing implementation stays deferred; existing Business workflow contracts remain represented without new commercial work.
+
+## SH-01 — Identity, contract and immutable technical lineage
+
+Authority: Blueprint §§2–4,12,18,25; catalog exact six rows; explicit user scope
+
+Keep all six catalog IDs/slugs and baseline tuples. This proposed document revision is draft-20261102.1, not a new approval. Hash the selected complete contract. Expanded math/grammar/input/output/rounding semantics must use an allocated immutable successor technical revision; never overwrite recorded Slopev1/v2, other v1 results or snapshots. UI-only labels may change only if replay interpretation is preserved. Do not preallocate a certified successor by editing version fields.
+
+Baseline status: **PARTIAL**. Input packets/source bindings establish six baseline tuples; no complete successor contract approval.
+
+Acceptance: For every six identity replay at least one old snapshot before/after integration byte-for-byte at authoritative stored inputs/results/mode/version. Version mismatch is explicit; no latest-engine fallback. Same canonical URL and catalog ID; controlled successor version evidence.
+
+## SH-02 — Strict inputs and typed numerical outcomes
+
+Authority: Blueprint §§4,7,13; numerical format/envelope is a proposal
+
+Accept complete signed decimal/scientific tokens only; no JS coercion of empty/whitespace/hex/Infinity/NaN, no partial parse. Preserve original normalized decimal strings and unit/mode IDs. Dataset grammar and expression grammar override single-scalar token grammar only as explicitly specified. Locale-aware UI may normalize a selected locale; ambiguous separators error. Return typed outcomes: finite result, vertical line, degenerate/underdetermined, no-solution, domain-error, precision-unavailable, budget-exhausted, cancelled. Never manufacture0 or a success result for error states.
+
+Baseline status: **PARTIAL**. Fresh calculator-interactive.tsx parseDataset uses split/Number; CoordinateSlopeTool rejects blanks; six-candidate-numeric-safety.ts has bounded caller-side underflow guards.
+
+Acceptance: Blank,invalid exponent,hex,malformed locale,nonfinite,overflow,subnormal/underflow and ambiguity cases; errors field-linked. No successful snapshot/save/export of invalid output. Every classification has text accessible without chart.
+
+## SH-03 — Shared precision and display policy
+
+Authority: Blueprint §4/§13 requires explicit rounding; exact numeric choices are owner proposal
+
+Separate authoritative compute, raw serialization and display. Default display12significant digits, expanded15 for binary64 values; mark approximations. Exact integer/rational labels only when algebra proves them. Proposed ties-to-even for presentation, no intermediate display rounding in compute. Statistical Decimal50 raw strings may expose more exact audit digits, not false binary64 precision. Domain contracts specify the controlling per-domain envelope and budget: geometry uses1e-11 relative for nonzero well-conditioned results with exact zero/classification; statistics uses1e-40 relative Decimal results; graph scalar evaluation uses its explicit absolute/relative1e-12 policy. Do not silently substitute one budget for another. Other binary64 helper paths require a declared oracle-backed budget, proposed error <=max(8ULP(reference),1e-12*abs(reference)) for nonzero well-conditioned values; exact algebraic zeros stay zero and underflow of a nonzero result cannot silently pass. Ill-conditioned cases need proved bound, high precision fallback or typed precision refusal, not widened epsilon. Decimal statistics use their stricter100digit-oracle criterion. Plot/analysis error budgets are separate and must be reported.
+
+Baseline status: **PARTIAL**. Fresh renderer-display.ts uses max2fractiondigits for abs>=.01 and8significant below. Current engines and caller guards are bounded evidence, not this new numeric contract.
+
+Acceptance: Test display ties, scientific notation, negative zero, tiny/huge finite results and raw/full expansion; compare independent >=100digit oracle with declared condition envelopes. Do not infer 12correct digits from 12displayed digits. Label uncertainty when final digit is not stable.
+
+## SH-04 — Structured results and metadata
+
+Authority: Blueprint §§5–7,12
+
+One version-bound result artifact drives hero,KPIs,steps,charts,tables,reverse/scenario/sensitivity and exports. Include catalog/engine/version, contract hash, input strings/units/modes, raw outputs or typed classification, algorithm revision, source references, assumptions,warnings,error/approximation metadata, numerical policy and plan-independent result digest. Avoid ad-hoc recomputation in chart/renderer/export. Optional metrics only when meaningful; no fabricated3–6cards.
+
+Baseline status: **PARTIAL**. Exact types.ts and batch21-six-calculators.ts provide structured outputs and scenario labels; typed classification, exact decimal strings and full new branches are unproven.
+
+Acceptance: Verify same artifact digest and raw values consumed by every supported view; deliberate tamper/mismatched ID/version must fail. Exhaustive discriminated outcome rendering.
+
+## SH-05 — Simple/Advanced inputs and guided explanations
+
+Authority: Blueprint §7; layout specifics proposed
+
+Simple mode exposes complete accuracy-required forward inputs; Advanced adds optional analysis controls. Changing display mode never resets or changes hidden accuracy inputs. Default empty user-owned inputs; examples load only through explicit Use example with label. Calculate action, progress and cancel; preserve last valid result but mark it stale after edits. Show formula substitution, units, assumptions and what the result means before upgrade prompts.
+
+Baseline status: **PARTIAL**. Fresh UI exposes basic input components; proposed examples/stale-result and full modes not established across six.
+
+Acceptance: Switch Simple/Advanced with populated inputs; output unchanged. Clear example leaves no unannounced default. Keyboard calculate/error focus and recoverable cancel. Distinguish old/stale and current result.
+
+## SH-06 — Useful charts and equivalent tables
+
+Authority: Blueprint §§6–7,10,13,17
+
+Every applicable six has a useful Free visual plus semantic data/table alternative. All chart values derive from the result artifact; graph approximation/reliability is explicit and no connection is drawn across a known invalid/unresolved segment. Show raw versus display distinction in tables. Virtualization/paging may limit displayed rows, never silently drop observations or exported rows. Use shared chart/table components, not six divergent renderers.
+
+Baseline status: **PARTIAL**. Slope adapter supplies endpoints only; prism adapter has scalar volume; graph grid81 samples, stats presentations and retained per-ID raw-table/fallback tests establish bounded behavior only.
+
+Acceptance: Per-ID hero/chart/table/replay reconciliation; table has caption,headers,units and gap status; identify full versus sampled rows. Test pathological graph intervals, weighted counts, solid diagram proportions. Color-independent legends/text equivalents.
+
+## SH-07 — Reverse solving and sensitivity through forward compute
+
+Authority: Blueprint §§7,10,13; exact targets proposed in six contracts
+
+Use each contract’s declared reverse target and finite domain. Return all solutions under the selected branch policy, none, multiple/underdetermined or incomplete search; numeric candidates always fed back to the same forward engine. Residual <=max(contract absolute scale threshold,1e-10*target scale) unless stricter domain criterion; report both x-bracket width and residual for graph solvers. Sensitivity sweeps call the same forward pipeline with one explicit selected variable/parameter, fixed baseline and bounded range; discontinuities/invalid outcomes are retained, not interpolated into success.
+
+Baseline status: **PARTIAL**. Existing private sensitivity/scenario infrastructure and bounded receipts retained; all new six target/domain proofs not established.
+
+Acceptance: One feasible/infeasible/underdetermined reverse case per declared target and boundary; verify forward residual independently. Baseline sweep equals normal output. Root search cannot mistake a pole for a zero or claim exhaustive real roots from finite samples.
+
+## SH-08 — History and immutable replay
+
+Authority: Blueprint §§10,18
+
+Reuse existing authenticated ownership/scoped persistence. Save normalized exact inputs, modes, units, expression AST/grammar version, ranges, selected algorithm/error policy, selected outputs and source/contract/version hashes. Read-only replay displays recorded results; optional recalculate creates a new artifact and never overwrites saved history. Owner switch/logout/revocation hides prior-owner results; failed save does not imply saved success. Deduplicate only through existing idempotent save contract.
+
+Baseline status: **PARTIAL**. Fresh calculator-account-actions.tsx uses createCalculationSnapshot, current owner guards and saveHistoryAtomically; input package supplies bounded workflow tests. Complete new metadata/replay branches and genuine per-ID account proof remain pending.
+
+Acceptance: Two synthetic isolated owners: save,reload,logout,owner switch,denied read,failed network retry,duplicate save,stale version and unknown version. Do not use production credentials/data; retain exact snapshot and result receipts per ID.
+
+## SH-09 — Scenarios and sensitivity persistence
+
+Authority: Blueprint §§10,18
+
+Reuse existing scenario workspace with complete version-bound input sets and labeled baseline. Copy scenario changes only intended fields; unit/mode changes visible. Compare only compatible outputs, label incompatible comparison. Persist exact sweep parameters and error states if saved. Never share mutable references between scenarios. Business organization ownership follows existing controls without new Business/billing scope.
+
+Baseline status: **PARTIAL**. CalculatorAccountActions imports CalculatorScenarioWorkspace and sixScenarioMetadata; existing tests cover bounded paths, not all proposed modes.
+
+Acceptance: A/B/C scenario baseline equals primary calculation exactly at same version; modify one without changing others; restore/replay after new revision and account recovery. Selected unit conversions reconcile.
+
+## SH-10 — JSON/CSV/PDF exports and accessible reports
+
+Authority: Blueprint §§8,10,13,17
+
+Pro/Business use existing report transport. JSON includes complete typed artifact; CSV includes units,mode,revision,raw/display values,full selected table or explicit sampled status and safe text escaping; PDF includes same outputs,methodology,source/revision,assumptions and accessible textual chart alternatives. Unicode/math notation must map to selectable searchable text, fonts embedded as required; tag structure, logical reading order, tables/headers and metadata independently validated. A PDF button is not proof of exported bytes or PDF/UA. Free retains existing basic share/plain-text core result, no accuracy-relevant values hidden.
+
+Baseline status: **PARTIAL**. Fresh AccountActions has actual JSON/CSV/PDF serialization calls and error handling. Input reports export-control click/fallback proof; full per-ID exported-byte/source/Unicode/PDF-UA acceptance missing.
+
+Acceptance: Read actual downloaded bytes for all6; compare raw/digest/units/modes/source versions; malicious formula strings escaped for CSV spreadsheet opening, Unicode minus/superscripts/Greek preserved. Independent PDF reader and validator plus human reading-order check; no compliance claim from metadata/tag existence alone.
+
+## SH-11 — Free/Pro/Business parity and central capabilities
+
+Authority: Blueprint §§8–11,24.2
+
+All supported forward core modes/shapes and inputs needed for correctness available on Free with same engine/domain/precision as Pro/Business. Free useful chart/basic table/basic selected reverse and existing limited saves; Pro full analytical tools,scenarios,sensitivity,expanded saves/projects and professional exports. Business inherits Pro and existing team/client/embed/API/batch/governance adapters. Exact quotas remain centrally configured existing policy; no new billing,seat or commercial policy work. Do not cap precision or statistically truncate data by tier. Advanced analysis access may differ; any operation offered on two plans gives identical authoritative output for identical inputs.
+
+Baseline status: **PARTIAL**. Blueprint and current AccountActions central entitlements are established; six complete new-mode cross-plan proof remains absent.
+
+Acceptance: Engine-level equality across plan capability contexts for every core mode; server-side denial for unavailable operations without changing compute; Free source/error/assumptions visible. No new billing task and no plan upgrade triggered in acceptance.
+
+## SH-12 — Accessibility and mobile
+
+Authority: Blueprint §§7,13,17; WCAG targets/budgets below proposed acceptance policies
+
+Persistent labels,field errors linked by aria-describedby,error summary focus,keyboard operation for every control and nondrag alternatives. Chart/table/explanation equivalent; announcements concise/cancellable and do not stream every sample. No color-only state; reduced motion respected; focus visible and logical. Test320,360,390,768,1280px portrait/landscape,200%zoom/400%reflow. Proposed WCAG2.2AA audit target,44CSSpx preferred touch controls; at least24CSSpx minimum or applicable spacing exception separately reviewed. Math verbalized; not image-only. Physical Android/TalkBack evidence required where mandatory, not simulated by mobile viewport.
+
+Baseline status: **PROOF_MISSING**. Retained graph raw table/fallback/export-control and hosted UI tests support bounded paths only; physical6device workflows and independent complete accessibility review unavailable.
+
+Acceptance: PerID keyboard-only forward/reverse/scenario/export with focus recovery; desktop screenreader and physical Android/TalkBack tester receipts exactdevice/OS/browser; contrast/reflow/reducedmotion/orientation/manual chart tasks. Any criterion N/A needs explicit justified reviewer disposition, not automatic pass.
+
+## SH-13 — Measured performance and bounded computation
+
+Authority: Blueprint §§13,17; numbers proposed product policy
+
+Keep numeric work off main thread when it exceeds interactive budget. Deterministic operation/sample/refinement caps; cancel stale requests. Propose warm scalar/math data10k result p95<=500ms; one standard function plot p95<=1000ms and allowed graph-analysis job<=2000ms on declared4xCPU-throttled browser. No main-thread task>50ms attributable to solver loops. Cold page field data target LCP<=2.5s,INP<=200ms,CLS<=0.1 at75thpercentile is a proposed launch target, not measured attainment. Synthetic20runs after5warmups with machine/browser dataset and memory report; physical and field data separate. Large jobs return partial budget status and preserve input.
+
+Baseline status: **PROOF_MISSING**. Exact-headCI success is not a measured per-ID performance distribution; no new performance run executed in this specification task.
+
+Acceptance: Measure fixedfixtures scalar,10kstats,allsolids,and graph discontinuities/solverworkload; record p50,p95,max,memory,HTML/JS payload,worker cancellation and cold/warm provenance; fail budget rather than hide long task. Retain timing variance; no performance claim from unexecuted spec.
+
+## SH-14 — Security and resource-safe expression/import/export
+
+Authority: Blueprint §§13,17,20
+
+No eval/Function/dynamic code execution; expression AST only,whitelist names/operators,depth/token/budget caps,network-free deterministic computation. Treat pasted data and files as data; boundsize,numericcount,CSVcells. Escape display and spreadsheet formulas; sanitize shared labels. Account,scenario,export requests fail closed on invalid owner/role/quota and use existing endpoints. No new provider/domain/database permission changes.
+
+Baseline status: **PARTIAL**. Existing expression-engine parser is bounded AST; AccountActions current owner guards observed. New grammar,imports,analysis budgets and exported bytes need targeted negative acceptance.
+
+Acceptance: Prototype/property/member access,assignment,script/html,unicode confusables,deepnesting,hugetokens,adversarialsolver and CSVformula cases; verify no network/code execution and no freeze. Existing auth/RLS tests reused only for exact unchanged scope.
+
+## SH-15 — Source, competent review and lifecycle
+
+Authority: Blueprint §§12–13,25; existing15QAcheck types
+
+Every formula/algorithm has source clause or explicit derivation and worked golden. Distinguish mathematical source facts from product operator/mode/shapelist/tolerances. Competent geometry/statistics/numericalanalysis reviewers assess applicable full contract and exact version/source/QA evidence; do not fabricate professional approval. Preserve all43authority blockers and11retainedspecialist requirements untouched. Existing15perID lifecycle QA checks remain pending unless actual authorized disposition occurs later. No assumption of approval from CI,metadata or these proposals.
+
+Baseline status: **PARTIAL**. Input lifecycle-publication-prerequisites.json and exact publishing.ts describe gates; existing90criteria all pending, bounded12source/formula findings ready for adjudication.
+
+Acceptance: PerID15criterion evidence and accountable assignment/disposition including conditional applicability,reverse/scenario/table/visual parity,security/SEO,a11y/performance. Only after separate authorized contract+QA and lifecycle decisions could review->certified->published proceed. This task performs none.
+

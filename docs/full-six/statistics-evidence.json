@@ -1,0 +1,2487 @@
+{
+  "status": "ISOLATED_REUSABLE_CORE_SUBSET_VERIFIED_NOT_CANONICAL_NOT_CERTIFIED",
+  "baseline": "7cdffeed3d5a8789689aa5495277e28b780227dc",
+  "scope": {
+    "implemented": [
+      "ST-JOINT-01 manual raw/frequency schema, cardinality and missing policy",
+      "exact integer rational aggregation with Decimal50 final division/sqrt",
+      "ST-JOINT-02 subset: type7 quartiles, IQR, raw MAD, mean absolute deviation"
+    ],
+    "notImplemented": [
+      "CSV/import UI and omission confirmation",
+      "histogram rational bins and contribution tables",
+      "result identity adapter, allocated successor revision and registry",
+      "transforms/reverse/sensitivity",
+      "history, exports and application integration",
+      "performance certification, specialist review, publication and full-six acceptance"
+    ]
+  },
+  "api": "computeDecimalStatistics(DecimalStatisticsInput): DecimalStatisticsOutcome",
+  "precisionRationale": [
+    "All admitted nonzero input tokens have adjusted exponent >=-100 and <=34 significant digits; every value is an integer multiple of 1e-133. BigInt lattice conversion is exact, with finite bounded powers 0..233.",
+    "Sum, sum of squares, and N*sumSquares-sumSquared are exact BigInts. No subtraction is rounded, including cancellation yielding zero or a tiny positive dispersion. Counts <=10000000 remain exact safe integers.",
+    "Final nonzero rational division rounded to 50 significant decimal digits has relative error <=5e-50. Output exponents admitted by this finite domain remain inside Decimal minE/maxE +/-1000, including variance on the order of 1e-273 for near-identical tiny frequency data.",
+    "Decimal.js correctly rounded sqrt receives variance with <=5e-50 relative error; rounding plus propagated input error remains well below 1e-40. SD squared reconciliation uses 3e-40. This is an algorithm/error-budget rationale, not independent qualified numerical approval.",
+    "Exact canonical inputs, extrema and sum use direct integer decimal serialization without 50-digit rounding. Quantile ranks and MAD sorting use exact integer comparisons."
+  ],
+  "dependencies": {
+    "decimalJs": "10.6.0",
+    "license": "MIT",
+    "productionSourceSHA256": "f4fafba24a89a5d99b5e171d79a169921402d1da675519f2cd747b17e4a242b5",
+    "decimalImplementationSHA256": "6e99821f8204c5f611b56077e3fce056a1562d22bc341a1f4af01afe7e527d83"
+  },
+  "contracts": {
+    "standardDeviationSHA256": "795e1092bc2028862639615ef82c96941d96e3222eac679dfe24c25113f8a79b",
+    "varianceSHA256": "c38d9350101aae237395e3828a3ebafa57ed8a871c896ee2607ac7d85266a0b7",
+    "sharedSHA256": "b0cd637829cc93294d4be5e83ba430f18a2d9288f8a8c138482e8fc35bd89b3f"
+  },
+  "oracle": {
+    "description": "Python Fraction exact rationals, Decimal sqrt at 100 and 200 digits",
+    "runtime": "3.12.14",
+    "sourceSHA256": "dcc61b589ce9f8b1f2928ecc91e80975940baf7aaffd3dd1917ee1cbb1fd0363",
+    "fixtureSHA256": "5ccb572c0d3b7809062ee1ab83ce074ce0817483b034542bdcd00d47eaf85ce6",
+    "referenceStability": "100 and 200 digit references agree to relative 1e-95 or exact zero"
+  },
+  "verification": {
+    "command": "npx vitest run --config tests/statistics/decimal-descriptive.config.ts",
+    "testsPassed": 45,
+    "typecheck": "targeted tsc --noEmit --target es2022 --module esnext --moduleResolution bundler --esModuleInterop --resolveJsonModule --skipLibCheck source/test/config passed",
+    "fullBuildRun": false
+  },
+  "cases": [
+    {
+      "name": "ordinary",
+      "mode": "population",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "2"
+          },
+          {
+            "value": "4"
+          },
+          {
+            "value": "4"
+          },
+          {
+            "value": "4"
+          },
+          {
+            "value": "5"
+          },
+          {
+            "value": "5"
+          },
+          {
+            "value": "7"
+          },
+          {
+            "value": "9"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "40",
+        "mean": "5",
+        "centeredM2": "32",
+        "variance": "4",
+        "standardDeviation": "2",
+        "minimum": "2",
+        "maximum": "9",
+        "range": "7",
+        "q1": "4",
+        "median": "4.5",
+        "q3": "5.5",
+        "iqr": "1.5",
+        "rawMad": "0.5",
+        "meanAbsoluteDeviation": "1.5"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "40",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "32",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "4",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "9",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "7",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "4",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "4.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "5.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "1.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "1.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "ordinary",
+      "mode": "sample",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "2"
+          },
+          {
+            "value": "4"
+          },
+          {
+            "value": "4"
+          },
+          {
+            "value": "4"
+          },
+          {
+            "value": "5"
+          },
+          {
+            "value": "5"
+          },
+          {
+            "value": "7"
+          },
+          {
+            "value": "9"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "40",
+        "mean": "5",
+        "centeredM2": "32",
+        "variance": "4.5714285714285714285714285714285714285714285714286",
+        "standardDeviation": "2.1380899352993950774764278470380281724320113187307",
+        "minimum": "2",
+        "maximum": "9",
+        "range": "7",
+        "q1": "4",
+        "median": "4.5",
+        "q3": "5.5",
+        "iqr": "1.5",
+        "rawMad": "0.5",
+        "meanAbsoluteDeviation": "1.5"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "40",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "32",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "4.5714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714286",
+          "absolute": "2.85714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714285714e-50",
+          "relative": "6.2499999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999937499999999999999999999999999999999999999999999999609375e-51",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "9",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "7",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "4",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "4.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "5.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "1.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "1.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "2.1380899352993950774764278470380281724320113187307011121735688384685915178896794445581770829682168980005663364158582728831466087818081386243771668871724772099470863568427763610920571515602300731423222",
+          "absolute": "1.1121735688384685915178896794445581770829682168980005663364158582728831466087818081386243771668871724772099470863568427763610920571515602300731423222e-51",
+          "relative": "5.201715561523990749072995005188358489179279084776563852892239150042319391032759592059929715487712026087348598895481674448779374352297647512451260335714316472023529293676315712964666210655121173905287891951305280893748457e-52",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "decimal",
+      "mode": "population",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "0.1"
+          },
+          {
+            "value": "1.1"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "1.2",
+        "mean": "0.6",
+        "centeredM2": "0.5",
+        "variance": "0.25",
+        "standardDeviation": "0.5",
+        "minimum": "0.1",
+        "maximum": "1.1",
+        "range": "1",
+        "q1": "0.35",
+        "median": "0.6",
+        "q3": "0.85",
+        "iqr": "0.5",
+        "rawMad": "0.5",
+        "meanAbsoluteDeviation": "0.5"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "1.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "0.6",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "0.25",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "1.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "0.35",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "0.6",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "0.85",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "decimal",
+      "mode": "sample",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "0.1"
+          },
+          {
+            "value": "1.1"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "1.2",
+        "mean": "0.6",
+        "centeredM2": "0.5",
+        "variance": "0.5",
+        "standardDeviation": "0.70710678118654752440084436210484903928483593768847",
+        "minimum": "0.1",
+        "maximum": "1.1",
+        "range": "1",
+        "q1": "0.35",
+        "median": "0.6",
+        "q3": "0.85",
+        "iqr": "0.5",
+        "rawMad": "0.5",
+        "meanAbsoluteDeviation": "0.5"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "1.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "0.6",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "1.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "0.35",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "0.6",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "0.85",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "0.5",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "0.70710678118654752440084436210484903928483593768847403658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028574",
+          "absolute": "4.03658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028574e-51",
+          "relative": "5.7085979759598296739064279885668404700354332290591162940454255663320457677816564716486041672863858805227450702127259183306697277380463660298437986425649868797263012238782707978274590933788870802303590639369123108995008e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "tiny",
+      "mode": "population",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1e-100"
+          },
+          {
+            "value": "1.000000000000000000000000000000001e-100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000001",
+        "mean": "1.0000000000000000000000000000000005e-100",
+        "centeredM2": "5e-267",
+        "variance": "2.5e-267",
+        "standardDeviation": "5e-134",
+        "minimum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "maximum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000001",
+        "range": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "q1": "1.00000000000000000000000000000000025e-100",
+        "median": "1.0000000000000000000000000000000005e-100",
+        "q3": "1.00000000000000000000000000000000075e-100",
+        "iqr": "5e-134",
+        "rawMad": "5e-134",
+        "meanAbsoluteDeviation": "5e-134"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "2.000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "1.0000000000000000000000000000000005E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "5E-267",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "2.5E-267",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "1.000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "1E-133",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "1.00000000000000000000000000000000025E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "1.0000000000000000000000000000000005E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "1.00000000000000000000000000000000075E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "tiny",
+      "mode": "sample",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1e-100"
+          },
+          {
+            "value": "1.000000000000000000000000000000001e-100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000001",
+        "mean": "1.0000000000000000000000000000000005e-100",
+        "centeredM2": "5e-267",
+        "variance": "5e-267",
+        "standardDeviation": "7.0710678118654752440084436210484903928483593768847e-134",
+        "minimum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "maximum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000001",
+        "range": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "q1": "1.00000000000000000000000000000000025e-100",
+        "median": "1.0000000000000000000000000000000005e-100",
+        "q3": "1.00000000000000000000000000000000075e-100",
+        "iqr": "5e-134",
+        "rawMad": "5e-134",
+        "meanAbsoluteDeviation": "5e-134"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "2.000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "1.0000000000000000000000000000000005E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "5E-267",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "5E-267",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "1.000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "1E-133",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "1.00000000000000000000000000000000025E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "1.0000000000000000000000000000000005E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "1.00000000000000000000000000000000075E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "5E-134",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "7.0710678118654752440084436210484903928483593768847403658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028574E-134",
+          "absolute": "4.03658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028574e-184",
+          "relative": "5.7085979759598296739064279885668404700354332290591162940454255663320457677816564716486041672863858805227450702127259183306697277380463660298437986425649868797263012238782707978274590933788870802303590639369123108995008e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "tiny-frequency",
+      "mode": "population",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "1e-100",
+            "frequency": "9999999"
+          },
+          {
+            "value": "1.000000000000000000000000000000001e-100",
+            "frequency": "1"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000001",
+        "mean": "1.0000000000000000000000000000000000000001e-100",
+        "centeredM2": "9.999999e-267",
+        "variance": "9.999999e-274",
+        "standardDeviation": "3.1622775020544923707326540916477631417837298872835e-137",
+        "minimum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "maximum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000001",
+        "range": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "q1": "1e-100",
+        "median": "1e-100",
+        "q3": "1e-100",
+        "iqr": "0",
+        "rawMad": "0",
+        "meanAbsoluteDeviation": "1.9999998e-140"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "1.0000000000000000000000000000000000000001E-93",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "1.0000000000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "9.999999E-267",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "9.999999E-274",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "1.000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "1E-133",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "1.9999998E-140",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "3.1622775020544923707326540916477631417837298872834513416038054561387368284673651472392989665699061178846765104469937305788955611150788228255472199415843725520591323877624337396999802035974625000890159E-137",
+          "absolute": "4.86583961945438612631715326348527607010334300938821153234895530062694211044388849211771744527800584156274479408676122375662603000197964025374999109841e-187",
+          "relative": "1.538713669591966749090935788615434703581545405015778663380265212023924841216199465063640651271277894836240435447725498393350141021602170073306226701569262883773915883574460217071548427999035226915618230882246078278198466e-50",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "tiny-frequency",
+      "mode": "sample",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "1e-100",
+            "frequency": "9999999"
+          },
+          {
+            "value": "1.000000000000000000000000000000001e-100",
+            "frequency": "1"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000001",
+        "mean": "1.0000000000000000000000000000000000000001e-100",
+        "centeredM2": "9.999999e-267",
+        "variance": "1e-273",
+        "standardDeviation": "3.1622776601683793319988935444327185337195551393252e-137",
+        "minimum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "maximum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000001",
+        "range": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "q1": "1e-100",
+        "median": "1e-100",
+        "q3": "1e-100",
+        "iqr": "0",
+        "rawMad": "0",
+        "meanAbsoluteDeviation": "1.9999998e-140"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "1.0000000000000000000000000000000000000001E-93",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "1.0000000000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "9.999999E-267",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "1E-273",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "1.000000000000000000000000000000001E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "1E-133",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "1.9999998E-140",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "3.1622776601683793319988935444327185337195551393252168268575048527925944386392382213442481083793002951873472841528400551485488560304538800146905195967001539033449216571792599406591501534741133394841241E-137",
+          "absolute": "1.68268575048527925944386392382213442481083793002951873472841528400551485488560304538800146905195967001539033449216571792599406591501534741133394841241e-187",
+          "relative": "5.321119557843262263631443090904680374600824432248014157156674431037447544907293777836278613888633261536760071927809635310572852434352156501014236441580712267571020694504405954637226063315080914302581037924714606000769286e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "large-close",
+      "mode": "population",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1.000000000000000000000000000000001e100"
+          },
+          {
+            "value": "1e100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "20000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+        "mean": "1.0000000000000000000000000000000005e+100",
+        "centeredM2": "5e+133",
+        "variance": "2.5e+133",
+        "standardDeviation": "5e+66",
+        "minimum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "maximum": "10000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+        "range": "10000000000000000000000000000000000000000000000000000000000000000000",
+        "q1": "1.00000000000000000000000000000000025e+100",
+        "median": "1.0000000000000000000000000000000005e+100",
+        "q3": "1.00000000000000000000000000000000075e+100",
+        "iqr": "5e+66",
+        "rawMad": "5e+66",
+        "meanAbsoluteDeviation": "5e+66"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "20000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "10000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "10000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "10000000000000000000000000000000002500000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "10000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "10000000000000000000000000000000007500000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "large-close",
+      "mode": "sample",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1.000000000000000000000000000000001e100"
+          },
+          {
+            "value": "1e100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "20000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+        "mean": "1.0000000000000000000000000000000005e+100",
+        "centeredM2": "5e+133",
+        "variance": "5e+133",
+        "standardDeviation": "7.0710678118654752440084436210484903928483593768847e+66",
+        "minimum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "maximum": "10000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+        "range": "10000000000000000000000000000000000000000000000000000000000000000000",
+        "q1": "1.00000000000000000000000000000000025e+100",
+        "median": "1.0000000000000000000000000000000005e+100",
+        "q3": "1.00000000000000000000000000000000075e+100",
+        "iqr": "5e+66",
+        "rawMad": "5e+66",
+        "meanAbsoluteDeviation": "5e+66"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "20000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "10000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "10000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "10000000000000000000000000000000002500000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "10000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "10000000000000000000000000000000007500000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "7071067811865475244008443621048490392848359376884740365883398689953.6623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028574",
+          "absolute": "40365883398689953.6623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028574",
+          "relative": "5.7085979759598296739064279885668404700354332290591162940454255663320457677816564716486041672863858805227450702127259183306697277380463660298437986425649868797263012238782707978274590933788870802303590639369123108995008e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "mixed-range",
+      "mode": "population",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1e100"
+          },
+          {
+            "value": "1e-100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "mean": "5e+99",
+        "centeredM2": "5e+199",
+        "variance": "2.5e+199",
+        "standardDeviation": "5e+99",
+        "minimum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "maximum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "range": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+        "q1": "2.5e+99",
+        "median": "5e+99",
+        "q3": "7.5e+99",
+        "iqr": "5e+99",
+        "rawMad": "5e+99",
+        "meanAbsoluteDeviation": "5e+99"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "1e-100",
+          "relative": "1e-200",
+          "passed": true
+        },
+        "mean": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "49999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "1",
+          "relative": "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e-200",
+          "passed": true
+        },
+        "variance": {
+          "reference": "25000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+          "absolute": "1e-100",
+          "relative": "3.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999984e-200",
+          "passed": true
+        },
+        "median": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "7500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "mixed-range",
+      "mode": "sample",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1e100"
+          },
+          {
+            "value": "1e-100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "mean": "5e+99",
+        "centeredM2": "5e+199",
+        "variance": "5e+199",
+        "standardDeviation": "7.0710678118654752440084436210484903928483593768847e+99",
+        "minimum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "maximum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "range": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+        "q1": "2.5e+99",
+        "median": "5e+99",
+        "q3": "7.5e+99",
+        "iqr": "5e+99",
+        "rawMad": "5e+99",
+        "meanAbsoluteDeviation": "5e+99"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "1e-100",
+          "relative": "1e-200",
+          "passed": true
+        },
+        "mean": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "49999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "1",
+          "relative": "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e-200",
+          "passed": true
+        },
+        "variance": {
+          "reference": "49999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "1",
+          "relative": "2.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004e-200",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+          "absolute": "1e-100",
+          "relative": "3.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999984e-200",
+          "passed": true
+        },
+        "median": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "7500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "7071067811865475244008443621048490392848359376884740365883398689953662392310535194251937671638207863.6750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028573",
+          "absolute": "4.03658833986899536623923105351942519376716382078636750692311545614851246241802792536860632206074854996791570661133296375279637789997525057639103028573e+49",
+          "relative": "5.7085979759598296739064279885668404700354332290591162940454255663320457677816564716486041672863858805227450702127259183306697277380463660298437986425508447441025702733902539105853621125931903614765896639369123108995008e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "cancellation",
+      "mode": "population",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1e100"
+          },
+          {
+            "value": "1e-100"
+          },
+          {
+            "value": "-1e100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "mean": "3.3333333333333333333333333333333333333333333333333e-101",
+        "centeredM2": "2e+200",
+        "variance": "6.6666666666666666666666666666666666666666666666667e+199",
+        "standardDeviation": "8.1649658092772603273242802490196379732198249355223e+99",
+        "minimum": "-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "maximum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "range": "20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "q1": "-5e+99",
+        "median": "1e-100",
+        "q3": "5e+99",
+        "iqr": "1e+100",
+        "rawMad": "1e+100",
+        "meanAbsoluteDeviation": "6.6666666666666666666666666666666666666666666666667e+99"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "3.3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333E-101",
+          "absolute": "3.33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333e-151",
+          "relative": "9.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000000000000001e-51",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "2.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E+200",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666667",
+          "absolute": "3.33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333e+149",
+          "relative": "4.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999994999999999999999999999999999999999999999999999999975e-51",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "-5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "1e-100",
+          "relative": "1.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e-200",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666.6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666667",
+          "absolute": "3.33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333e+49",
+          "relative": "4.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999994999999999999999999999999999999999999999999999999975e-51",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "8164965809277260327324280249019637973219824935522233761442308557503201258191050088466198110348800782.7286486707553806304161962181994591911387526131707909285094297091584255885708254336842363725674116044",
+          "absolute": "6.62385576914424967987418089499115338018896511992172713513292446193695838037818005408088612473868292090714905702908415744114291745663157636274325883956e+49",
+          "relative": "8.112533382097009236575045880627541548875142803479642093401062180830367917899549237045466448455568126351114708689221386717631262755810671391462367376949749175713925022917288043878912132996414324635559384349319345945933815e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "cancellation",
+      "mode": "sample",
+      "input": {
+        "encoding": "raw",
+        "rows": [
+          {
+            "value": "1e100"
+          },
+          {
+            "value": "1e-100"
+          },
+          {
+            "value": "-1e100"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+        "mean": "3.3333333333333333333333333333333333333333333333333e-101",
+        "centeredM2": "2e+200",
+        "variance": "1e+200",
+        "standardDeviation": "1e+100",
+        "minimum": "-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "maximum": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "range": "20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "q1": "-5e+99",
+        "median": "1e-100",
+        "q3": "5e+99",
+        "iqr": "1e+100",
+        "rawMad": "1e+100",
+        "meanAbsoluteDeviation": "6.6666666666666666666666666666666666666666666666667e+99"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "3.3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333E-101",
+          "absolute": "3.33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333e-151",
+          "relative": "9.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000000000000001e-51",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "2.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E+200",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E+200",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "-10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "-5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "1E-100",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "5000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+          "absolute": "1e-100",
+          "relative": "1.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e-200",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666.6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666667",
+          "absolute": "3.33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333e+49",
+          "relative": "4.999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999994999999999999999999999999999999999999999999999999975e-51",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "frequency",
+      "mode": "population",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "0.1",
+            "frequency": "5000000"
+          },
+          {
+            "value": "0.3",
+            "frequency": "5000000"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "2000000",
+        "mean": "0.2",
+        "centeredM2": "100000",
+        "variance": "0.01",
+        "standardDeviation": "0.1",
+        "minimum": "0.1",
+        "maximum": "0.3",
+        "range": "0.2",
+        "q1": "0.1",
+        "median": "0.2",
+        "q3": "0.3",
+        "iqr": "0.2",
+        "rawMad": "0.1",
+        "meanAbsoluteDeviation": "0.1"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "2000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "100000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "0.01",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "0.3",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "0.3",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "frequency",
+      "mode": "sample",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "0.1",
+            "frequency": "5000000"
+          },
+          {
+            "value": "0.3",
+            "frequency": "5000000"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "2000000",
+        "mean": "0.2",
+        "centeredM2": "100000",
+        "variance": "0.010000001000000100000010000001000000100000010000001",
+        "standardDeviation": "0.1000000050000003750000312500027343752460937725586",
+        "minimum": "0.1",
+        "maximum": "0.3",
+        "range": "0.2",
+        "q1": "0.1",
+        "median": "0.2",
+        "q3": "0.3",
+        "iqr": "0.2",
+        "rawMad": "0.1",
+        "meanAbsoluteDeviation": "0.1"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "2000000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "100000",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "0.010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000",
+          "absolute": "1.00000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001000000100000010000001e-58",
+          "relative": "9.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999900000000000000000000000000000000000000000000000000000001e-57",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "0.3",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "0.3",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0.2",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "0.1",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "0.10000000500000037500003125000273437524609377255859584472675888063378143486743943820764246080076703444166706456966093061596234366570590090651484374260896988578320995745559022495528842194932398737474575",
+          "absolute": "4.15527324111936621856513256056179235753919923296555833293543033906938403765633429409909348515625739103011421679004254440977504471157805067601262525425e-51",
+          "relative": "4.155273033355698968505010528503589625410890196604696688530091334641237419525474301919498861771905205380153620262215270144616544743520872823386125647678779571943306456802769481074924744901427070573249454998779762209503814e-50",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "signed",
+      "mode": "population",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "-7.125",
+            "frequency": "3"
+          },
+          {
+            "value": "0",
+            "frequency": "1"
+          },
+          {
+            "value": "3.456",
+            "frequency": "4"
+          },
+          {
+            "value": "2.222",
+            "frequency": "2"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "-3.107",
+        "mean": "-0.3107",
+        "centeredM2": "208.9818421",
+        "variance": "20.89818421",
+        "standardDeviation": "4.5714531836167807352364590019953369673224964029802",
+        "minimum": "-7.125",
+        "maximum": "3.456",
+        "range": "10.581",
+        "q1": "-5.34375",
+        "median": "2.222",
+        "q3": "3.456",
+        "iqr": "8.79975",
+        "rawMad": "1.234",
+        "meanAbsoluteDeviation": "4.08858"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "-3.107",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "-0.3107",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "208.9818421",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "20.89818421",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "-7.125",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "3.456",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "10.581",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "-5.34375",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "2.222",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "3.456",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "8.79975",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "1.234",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "4.08858",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "4.5714531836167807352364590019953369673224964029801908835578742692473754243187441811517252708010239430357899418669538514721612078645624618911056085662979246736307137236964136558466784705773390893066717",
+          "absolute": "9.1164421257307526245756812558188482747291989760569642100581330461485278387921354375381088943914337020753263692862763035863441533215294226609106933283e-51",
+          "relative": "1.994210978338867899358560727510881720942382333226641533429256919200932701365514938105091132805857662626418171045546979042679159970418750413540450094250138674690677976976881924227669383562425924500410087563788150021077978e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "signed",
+      "mode": "sample",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "-7.125",
+            "frequency": "3"
+          },
+          {
+            "value": "0",
+            "frequency": "1"
+          },
+          {
+            "value": "3.456",
+            "frequency": "4"
+          },
+          {
+            "value": "2.222",
+            "frequency": "2"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "-3.107",
+        "mean": "-0.3107",
+        "centeredM2": "208.9818421",
+        "variance": "23.220204677777777777777777777777777777777777777778",
+        "standardDeviation": "4.818734759018987317826079297959917991524833577052",
+        "minimum": "-7.125",
+        "maximum": "3.456",
+        "range": "10.581",
+        "q1": "-5.34375",
+        "median": "2.222",
+        "q3": "3.456",
+        "iqr": "8.79975",
+        "rawMad": "1.234",
+        "meanAbsoluteDeviation": "4.08858"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "-3.107",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "mean": {
+          "reference": "-0.3107",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "208.9818421",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "variance": {
+          "reference": "23.220204677777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777778",
+          "absolute": "2.22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222e-49",
+          "relative": "9.570209449311768699353425787416771937814208787663854169845122635178456013810780740553152584159367977932088483586010078528253149128500288973192087677544689419693846214785566769582992397213633327428689465358967191228823996e-51",
+          "passed": true
+        },
+        "minimum": {
+          "reference": "-7.125",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "maximum": {
+          "reference": "3.456",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "range": {
+          "reference": "10.581",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q1": {
+          "reference": "-5.34375",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "median": {
+          "reference": "2.222",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "q3": {
+          "reference": "3.456",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "iqr": {
+          "reference": "8.79975",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "1.234",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "4.08858",
+          "absolute": "0",
+          "relative": "0",
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "4.8187347590189873178260792979599179915248335770520105681981884498539389953214913286786737278702839413550564029149581201363816746249680148605828186837034946662503153527684641565948432095557500224233390",
+          "absolute": "1.0568198188449853938995321491328678673727870283941355056402914958120136381674624968014860582818683703494666250315352768464156594843209555750022423339e-50",
+          "relative": "2.193147935496943574790444564551194596875962037622408835062413666974205006808247840437740995662512451381606084875038310618807629894041345683831693558954831502121293226643952651714691168410031254284495012028250829902934175e-51",
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "constant",
+      "mode": "population",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "-0.0",
+            "frequency": "4"
+          },
+          {
+            "value": "0e999",
+            "frequency": "7"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0",
+        "mean": "0",
+        "centeredM2": "0",
+        "variance": "0",
+        "standardDeviation": "0",
+        "minimum": "0",
+        "maximum": "0",
+        "range": "0",
+        "q1": "0",
+        "median": "0",
+        "q3": "0",
+        "iqr": "0",
+        "rawMad": "0",
+        "meanAbsoluteDeviation": "0"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "mean": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "variance": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "minimum": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "maximum": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "range": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "q1": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "median": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "q3": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        }
+      }
+    },
+    {
+      "name": "constant",
+      "mode": "sample",
+      "input": {
+        "encoding": "frequency",
+        "rows": [
+          {
+            "value": "-0.0",
+            "frequency": "4"
+          },
+          {
+            "value": "0e999",
+            "frequency": "7"
+          }
+        ]
+      },
+      "actual": {
+        "sum": "0",
+        "mean": "0",
+        "centeredM2": "0",
+        "variance": "0",
+        "standardDeviation": "0",
+        "minimum": "0",
+        "maximum": "0",
+        "range": "0",
+        "q1": "0",
+        "median": "0",
+        "q3": "0",
+        "iqr": "0",
+        "rawMad": "0",
+        "meanAbsoluteDeviation": "0"
+      },
+      "precision": 50,
+      "errors": {
+        "sum": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "mean": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "centeredM2": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "variance": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "minimum": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "maximum": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "range": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "q1": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "median": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "q3": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "iqr": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "rawMad": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "meanAbsoluteDeviation": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        },
+        "standardDeviation": {
+          "reference": "0",
+          "absolute": "0",
+          "relative": null,
+          "passed": true
+        }
+      }
+    }
+  ]
+}
