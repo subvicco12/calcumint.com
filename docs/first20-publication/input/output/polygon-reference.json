@@ -1,0 +1,11 @@
+{
+  "method": "Python Decimal100 exact equilateral identity sqrt(3)/4*s^2; not actual application engine",
+  "input": {
+    "sides": 3,
+    "side": "1e154"
+  },
+  "expected": "4.33012701892219323381861585376468091735701313452595157013951744862983254227200009270286546689312144E+307",
+  "finiteBinary64ReferenceExists": true,
+  "pinnedSourceLine": " pair(\"polygon-area-calculator\",\"Polygon Area Calculator\",\"geometry\",f(\"sides\",\"Number of sides\",6,3,{integer:true}),f(\"side\",\"Side length\",4,0.000000001),\"n \u00d7 s\u00b2 / (4 \u00d7 tan(\u03c0/n))\",\"Calculate the area of a regular polygon from its number of sides and side length.\",\"For a regular polygon, multiply the number of sides by the squared side length and divide by four times tan(pi divided by the number of sides).\",v=>v.sides*v.side*v.side/(4*Math.tan(Math.PI/v.sides)),[\"regular polygon\",\"regular polygon area\"]),",
+  "applicationEngineExecuted": false
+}

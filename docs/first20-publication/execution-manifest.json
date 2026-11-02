@@ -1,0 +1,130 @@
+{
+  "baseline": "cac3becb8957c10452b3a66e882b8a3a1d7ec555",
+  "baselineCI": {
+    "run": 41507851529,
+    "conclusion": "SUCCESS"
+  },
+  "catalogIds": [
+    209,
+    210,
+    218,
+    219,
+    220,
+    221,
+    225,
+    255,
+    256,
+    259,
+    260,
+    261,
+    262,
+    265,
+    266,
+    267,
+    273,
+    278,
+    279,
+    280
+  ],
+  "additionalInvestigationIds": [
+    214,
+    217,
+    268
+  ],
+  "releaseHold": true,
+  "canonicalPromotion": false,
+  "publicationEligible": 0,
+  "sourceHashes": {
+    "scripts/first20-publication/evidence.mjs": "f116f77beac8cc66a65e817f4c9844155730d7982a8ab9fdb7e987da7b4e8ce1",
+    "scripts/first20-publication/polygon-evidence.ts": "4b36aae06d8dd707dd247767988d19e02bc40c5fdf4cad91d6ec200bd115a15a",
+    "src/lib/first20/fraction-policy.evidence.test.ts": "b09f6c9dc7e724f1bcf51d49ec88975b1dde97c532bce3112b6304500fe67de1",
+    "src/lib/first20/polygon-oracle.test.ts": "43fed2cc48187eaf6afde6650d9ac82717538beafd3834611ee07e778200919d",
+    "src/lib/first20/polygon-successor.test.ts": "5e355b669604ffc3574cdb39cdb23566a91758a948696868c56242a7ea2b7b62",
+    "src/lib/first20/polygon-successor.ts": "4d16dc2d936dd21e26b4281750242139504fce5cbc95033e634617ff0e79c06a",
+    "src/lib/first20/preview-security.test.ts": "a54520f4db68a6d208e3151987667aa9356052e9160a0f5c828449abe8cb7484",
+    "src/lib/first20/wave1-witnesses.test.ts": "9c128a0d4c4c3ad671f3ac619f66db193da0bd4c7b0b14a3796dc6c3cc00bd34",
+    "src/lib/first20/wave1-witnesses.ts": "911e28b192f4b1cdab1259aee6cd4180bbe89257ee4bb7381ea48d1aaa167cb5",
+    "tests/first20-publication/account-observer.tsx": "d1793267dfe9b2f72616be8c22006c3be4a031953d8cf3cadb82976b090036f6",
+    "tests/first20-publication/browser.mjs": "775a6b96bc30037d673cc4f0a176482bf8705e03189b517a46d24f9ae0c39f05",
+    "tests/first20-publication/evidence.test.mjs": "3e308ee55c2f3fbc4ab4c3bc4625c48d2a1d8e0e0e8faebd14eee266ad41d902",
+    "tests/first20-publication/index.html": "acc3a325d65fa6b420371a80f8a7bc3ac2b6da73ef0fc6753421e1e96b1e824d",
+    "tests/first20-publication/main.tsx": "809225937be1ac9678dc96d3ca33ea3604a233afb0126cdbc92b6d1807f5bd2d",
+    "tests/first20-publication/polygon-oracle.json": "868d9f39d62dc26832dfb60333161303403f73205a48e5c6dbfe66011cbfa5ee",
+    "tests/first20-publication/polygon-oracle.py": "5e82f2b27d6df14afb65b57bdcbb422f58e5ed6d32d2f5ab56dafb3e4ad2360b",
+    "scripts/first20-preview.mjs": "8bce3264a50660263cfbb5bf9a97d9e8e47231c82844a2ffcb1d52eb52c2c7c7",
+    "docs/first20-publication/package-integrity.json": "aa82fdab15766e50f075fc01dd42d6d3d59756c48d69e3ce5868a7b4b5e5edb8",
+    "docs/first20-publication/polygon-evidence.json": "efd451f9db3fb4fdd3f0691de984fcf6d9662b9ca34d665e481a2f5e10da7a50",
+    "docs/first20-publication/wave1-numerical.json": "640d54d7b966293ce10de91bd42b23bb9e6e491e937b97182dbc029369124a13",
+    "docs/first20-publication/browser.json": "eb68cb9f4f6713ed23e33db1fd7899cc0ea4f3c48b3fe8a940cc71915f5c5cae"
+  },
+  "engineeringClosure": [
+    {
+      "id": "CODEX44-01",
+      "catalogIds": [
+        268
+      ],
+      "status": "STAGED_VERSION_SAFE_CORRECTION_NOT_ADOPTED",
+      "proposedVersion": 2,
+      "registeredVersion": 1,
+      "verifiedFalseOverflowCases": 11,
+      "fullDomainToleranceApproved": false,
+      "scope": "Regular-polygon numeric predecessor only; same schema/formula, accepted outputs unchanged."
+    },
+    {
+      "id": "CODEX44-02",
+      "catalogIds": [
+        214
+      ],
+      "status": "EVIDENCE_RECONCILED_POLICY_STILL_BLOCKED",
+      "decision": "OC44-03",
+      "formulaChanged": false
+    },
+    {
+      "id": "IDENTITY-217",
+      "catalogIds": [
+        217
+      ],
+      "status": "UNRESOLVED_PRESERVE_IDENTITY",
+      "decision": [
+        "OC44-07",
+        "OC44-01"
+      ],
+      "identityChanged": false
+    },
+    {
+      "id": "CODEX44-05-FIRST20",
+      "catalogIds": [
+        209,
+        210,
+        218,
+        219,
+        220,
+        221,
+        225,
+        255,
+        256,
+        259,
+        260,
+        261,
+        262,
+        265,
+        266,
+        267,
+        273,
+        278,
+        279,
+        280
+      ],
+      "status": "BOUNDED_ENGINEERING_SUPPLEMENTS_VERIFIED_NOT_FULL_CRITERIA",
+      "numericalBoundaryRejectionCases": 60,
+      "browserJourneys": 120,
+      "jsonExportReplayJourneys": 80,
+      "scenarioCaptureExportJourneys": 40,
+      "formalQaPassesAdded": 0
+    }
+  ],
+  "retainedRequirementCount": 1100,
+  "firstWaveRequirements": 500,
+  "currentRegisteredRoutingUnchanged": true,
+  "noNewAuthorityOrWaivers": true
+}

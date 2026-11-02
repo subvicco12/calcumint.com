@@ -1,0 +1,141 @@
+{
+  "kind": "READ_ONLY_WEIGHTED_IDENTITY_CONFLICT_NOT_APPROVAL",
+  "baseline": "cac3becb8957c10452b3a66e882b8a3a1d7ec555",
+  "masterId": 217,
+  "status": "UNRESOLVED_PRESERVE_IDENTITY",
+  "releaseHold": true,
+  "canonicalMappingApproved": false,
+  "publicationEligible": false,
+  "activationAuthorized": false,
+  "first20Membership": false,
+  "cohortEvidence": "ranked-review-cohorts.json wave1 excludes 217; wave3 includes 217",
+  "nativeCatalog": {
+    "masterId": 217,
+    "queueTitle": "Weighted Average Calculator",
+    "catalogSheet": "Master Catalog",
+    "catalogXmlSheet": "xl/worksheets/sheet2.xml",
+    "catalogExcelRow": 218,
+    "catalogRange": "A218:M218",
+    "catalogFields": {
+      "ID": "217",
+      "Domain": "Math",
+      "Calculator": "Weighted Average Calculator",
+      "Portfolio Status": "Planned",
+      "Roadmap Phase": "Foundation / Expansion 1",
+      "Presentation Family": "Range / health",
+      "Presentation Level": "B \u2014 Analytical",
+      "Free Core": "Full certified core calculation",
+      "Free Visualization": "Reference range indicator",
+      "Pro Differentiation": "History/trends where appropriate; advanced explanation",
+      "Business Differentiation": "Pro analytics + team/client/embed/API/automation",
+      "Certification": "Required before publish",
+      "Customer Trust Label": "Formula verified after certification"
+    },
+    "titleExactMatch": true,
+    "candidateIdentity": {
+      "engineId": "launch-weighted-average-two-values-calculator",
+      "version": 1,
+      "slug": "weighted-average-two-values-calculator",
+      "status": "RECORDED_CANDIDATE_NOT_APPROVED_CANONICAL_MAPPING"
+    },
+    "sourceSpecificMathScope": {
+      "status": "NOT_SPECIFIED_BY_CATALOG_OR_BLUEPRINT",
+      "requiredResearchAndContractDecision": "Weighted mean; allowable weight signs and zero-total weights; catalog presentation conflict.",
+      "interpretation": "Title-guided review questions, not source-approved feature additions. Existing certified repository definitions/tests control implemented math and must be reconciled before proposing scope changes."
+    },
+    "sharedRequirementsRef": "sharedRequirements",
+    "canonicalContractStatus": "PROPOSED_RECONCILIATION_NOT_APPROVED",
+    "ownerDecisionScope": "Approve exact ID\u2192engine/version mapping and controlled contract after repository/source/test reconciliation. Decide only genuine remaining mathematical/presentation ambiguities; shared Blueprint obligations are settled.",
+    "reviewCompetenciesRecommended": [
+      "Elementary arithmetic/algebra and numerical precision QA",
+      "Independent test-vector and boundary/domain review",
+      "Browser, accessibility, entitlement and output-reconciliation QA"
+    ],
+    "specialistGate": "No mandatory financial/medical/legal specialist inferred from Math/Geometry title. Risk-class/source applicability screening still required; apply specialist gates only if designated risk warrants them.",
+    "sourceConflict": "Catalog assigns Weighted Average to Range / health, B \u2014 Analytical with reference-range visualization and history/trends. Confirm suitability through explicit controlled reconciliation; do not silently replace with Math / solver.",
+    "publicationEligible": false,
+    "activationAuthorized": false
+  },
+  "sourceFiles": [
+    {
+      "path": "project_sources/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+      "sha256": "4dbc3ade32ad20413aec7533838b969ece4185d0b62641b581bffc6ccf5d2899"
+    },
+    {
+      "path": "project_sources/03-CalcuMint_Final_Master_Blueprint_and_Product_Architecture_2026.docx",
+      "sha256": "d9534dbcce0eb8a301beb5d1027a4bd50022ce863c30b461ae6f53fdf7724455"
+    },
+    {
+      "path": "publication44-20261103/input/registered-review-queue.json",
+      "sha256": "837f412a207eca0177cad69f0b21971e5c6091799e153ab03dfbd26d4d9770e5"
+    }
+  ],
+  "inputPackageSHA256": "dc6262919f06579e779cc59c4dfcda9f7db0bbdba2c56f586a81003577a412be",
+  "implementedContract": {
+    "path": "src/calculators/launch-portfolio.ts:31",
+    "id": "launch-weighted-average-two-values-calculator",
+    "slug": "weighted-average-two-values-calculator",
+    "version": 1,
+    "title": "Weighted Average Calculator",
+    "inputs": [
+      "a: Value A (default 80)",
+      "b: Value B (default 90)"
+    ],
+    "formula": "(a + 2b) / 3",
+    "scope": "Two values, fixed weights 1:2; no selectable weight or dataset mode established"
+  },
+  "bindingFinding": "Unique exact current candidate binding is observed, but canonical ID-to-engine/version mapping remains unapproved. Native catalog metadata does not specify a replacement formula.",
+  "authority": "Native Blueprint BP-0004 governs architecture; BP-0940 assigns catalog inventory/planning, repository definitions/tests implemented mathematics, authoritative lifecycle public state. Available native source supersedes historical missing-Blueprint claims for availability only.",
+  "pendingDecisions": [
+    {
+      "id": "OC44-07",
+      "decision": "Accountable owner must resolve whether native Range / health, B Analytical, reference-range/history-trend profile is intended. Preserve native record and document controlled correction if mathematical presentation is intended; if health claims are intended, perform applicable clinical/YMYL screening before contract approval.",
+      "status": "PENDING"
+    },
+    {
+      "id": "OC44-01",
+      "decision": "Specify complete weighted-average modes, dataset cardinality, selectable weights versus fixed 1:2, weight signs and zero-total behavior; approve exact ID/engine/version scope. Existing scalar v1 remains historical.",
+      "status": "PENDING"
+    }
+  ],
+  "accountableReviewRequirements": [
+    "Named product/catalog authority with dated decision, source references and controlled change record; no accountable reviewer identity supplied by these records.",
+    "Arithmetic/algebra and numerical precision reviewer plus independent boundary/domain vector review.",
+    "Risk/source applicability screening; qualified clinical/YMYL review only if intended claims warrant it, with no automatic exemption.",
+    "Browser/accessibility/entitlement/output reconciliation reviewer for approved presentation, plus separate certification/publication authority."
+  ],
+  "safeReversiblePreparation": [
+    "Preserve this conflict matrix, immutable v1 binding, hashes and unapproved alternatives for review.",
+    "Draft proposed contracts and independent vector specifications after scope decision; no registry, engine, caller, history, slug or lifecycle changes authorized here."
+  ],
+  "provenance": [
+    {
+      "path": "/workspace/work/first20-readiness-input/catalog-blueprint-reconciliation.json",
+      "sha256": "04f3509da857f22b3617860c419f40980224520cf8a901a3768358ef910b6fad"
+    },
+    {
+      "path": "/workspace/work/first20-readiness-input/OWNER-CHOICES.md",
+      "sha256": "d0f9e4d7d32c9f08906b1e2f282eb4faa2c2b7fcaa9557dbb35a9eb9fd8c4f94"
+    },
+    {
+      "path": "/workspace/work/first20-readiness-input/ranked-review-cohorts.json",
+      "sha256": "0491600bd32fe9ef967681b572282141a700a8971f7702d6c8d238db8497dadb"
+    },
+    {
+      "path": "/workspace/work/owner-fullscope-20261102/src/calculators/launch-portfolio.ts",
+      "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+    },
+    {
+      "path": "/workspace/work/owner-fullscope-20261102/docs/canonical-acceptance/canonical-ledger.json",
+      "sha256": "584c19e61e4b4a10b39f7fe72005db430023f4983d1d9461fca7f81500fa128f"
+    },
+    {
+      "path": "/workspace/work/owner-fullscope-20261102/docs/blueprint-reconciliation/native-blueprint.json",
+      "sha256": "5c61ee00bb99dac5ef1a9d761012d9503f2c3b3c03133909d2842e33e5bc3aa3"
+    },
+    {
+      "path": "/workspace/work/owner-fullscope-20261102/docs/fast-publication-20261102/registered-review-queue.json",
+      "sha256": "837f412a207eca0177cad69f0b21971e5c6091799e153ab03dfbd26d4d9770e5"
+    }
+  ]
+}

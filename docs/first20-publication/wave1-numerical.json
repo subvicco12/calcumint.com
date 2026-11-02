@@ -1,0 +1,1857 @@
+{
+  "scope": "Exact proposed wave1 20; evidence only; no canonical mapping approval or publication authorization",
+  "inputProvenance": [
+    "supplied publication-readiness-register-44.json candidate bindings version 1",
+    "supplied ranked-review-cohorts.json.wave1",
+    "supplied READ-ME.md and sourceSpecificMathScope: current repository definitions control implemented mathematics; title is not an approved extended contract"
+  ],
+  "engineSource": "src/calculators/launch-portfolio.ts launchDefinitions via runCalculator; source engines unchanged",
+  "references": "Per-case literal exact rational derivations; angle reference uses rounded pi/2 and 3*pi/2. No external source authority or competent review claimed.",
+  "reusedGoldens": "2026-10-15 goldens remain inherited engine metadata; these 60 witnesses are new, not replayed goldens",
+  "planLimit": "free/pro/business labels invoke identical engine context only; no authentication, entitlement, persistence or export endpoint is asserted",
+  "precisionLimit": "Relative tolerance 2e-15 for ordinary numerical witnesses. IEEE subnormal nonzero real results can round to zero; retained and explicitly reported. Full-domain exactness is not established.",
+  "bindings": [
+    {
+      "masterId": 209,
+      "slug": "percentage-increase-calculator",
+      "engineId": "launch-percentage-increase-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 210,
+      "slug": "percentage-decrease-calculator",
+      "engineId": "launch-percentage-decrease-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 218,
+      "slug": "square-calculator",
+      "engineId": "launch-square-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 219,
+      "slug": "cube-calculator",
+      "engineId": "launch-cube-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 220,
+      "slug": "square-root-calculator",
+      "engineId": "launch-square-root-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 221,
+      "slug": "cube-root-calculator",
+      "engineId": "launch-cube-root-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 225,
+      "slug": "reciprocal-calculator",
+      "engineId": "launch-reciprocal-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 255,
+      "slug": "hypotenuse-calculator",
+      "engineId": "launch-hypotenuse-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 256,
+      "slug": "triangle-area-calculator",
+      "engineId": "launch-triangle-area-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 259,
+      "slug": "rectangle-area-calculator",
+      "engineId": "launch-rectangle-area-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 260,
+      "slug": "rectangle-perimeter-calculator",
+      "engineId": "launch-rectangle-perimeter-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 261,
+      "slug": "square-area-calculator",
+      "engineId": "launch-square-area-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 262,
+      "slug": "square-perimeter-calculator",
+      "engineId": "launch-square-perimeter-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 265,
+      "slug": "circle-diameter-calculator",
+      "engineId": "launch-circle-diameter-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 266,
+      "slug": "parallelogram-area-calculator",
+      "engineId": "launch-parallelogram-area-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 267,
+      "slug": "trapezoid-area-calculator",
+      "engineId": "launch-trapezoid-area-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 273,
+      "slug": "rectangular-prism-volume-calculator",
+      "engineId": "launch-rectangular-prism-volume-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 278,
+      "slug": "pythagorean-theorem-calculator",
+      "engineId": "launch-pythagorean-theorem-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 279,
+      "slug": "degrees-to-radians-calculator",
+      "engineId": "launch-degrees-to-radians-calculator",
+      "version": 1
+    },
+    {
+      "masterId": 280,
+      "slug": "radians-to-degrees-calculator",
+      "engineId": "launch-radians-to-degrees-calculator",
+      "version": 1
+    }
+  ],
+  "witnesses": [
+    {
+      "id": "209-numerical",
+      "masterId": 209,
+      "kind": "numerical",
+      "input": {
+        "value": 64,
+        "percent": 37.5
+      },
+      "expected": 88,
+      "derivation": "64 + 64*3/8 = 88"
+    },
+    {
+      "id": "209-boundary",
+      "masterId": 209,
+      "kind": "boundary",
+      "input": {
+        "value": 0,
+        "percent": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "209-rejection",
+      "masterId": 209,
+      "kind": "rejection",
+      "input": {
+        "value": 1,
+        "percent": -1
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "210-numerical",
+      "masterId": 210,
+      "kind": "numerical",
+      "input": {
+        "value": 64,
+        "percent": 137.5
+      },
+      "expected": -24,
+      "derivation": "64 - 64*11/8 = -24; decreases above 100 remain in implemented domain"
+    },
+    {
+      "id": "210-boundary",
+      "masterId": 210,
+      "kind": "boundary",
+      "input": {
+        "value": 0,
+        "percent": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "210-rejection",
+      "masterId": 210,
+      "kind": "rejection",
+      "input": {
+        "value": 1,
+        "percent": -1
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "218-numerical",
+      "masterId": 218,
+      "kind": "numerical",
+      "input": {
+        "x": -1.25
+      },
+      "expected": 1.5625,
+      "derivation": "(-5/4)^2 = 25/16"
+    },
+    {
+      "id": "218-boundary",
+      "masterId": 218,
+      "kind": "boundary",
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "218-rejection",
+      "masterId": 218,
+      "kind": "rejection",
+      "input": {
+        "x": "1"
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "219-numerical",
+      "masterId": 219,
+      "kind": "numerical",
+      "input": {
+        "x": -1.5
+      },
+      "expected": -3.375,
+      "derivation": "(-3/2)^3 = -27/8"
+    },
+    {
+      "id": "219-boundary",
+      "masterId": 219,
+      "kind": "boundary",
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "219-rejection",
+      "masterId": 219,
+      "kind": "rejection",
+      "input": {
+        "x": "1"
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "220-numerical",
+      "masterId": 220,
+      "kind": "numerical",
+      "input": {
+        "x": 2.25
+      },
+      "expected": 1.5,
+      "derivation": "(3/2)^2 = 9/4; principal root 3/2"
+    },
+    {
+      "id": "220-boundary",
+      "masterId": 220,
+      "kind": "boundary",
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "220-rejection",
+      "masterId": 220,
+      "kind": "rejection",
+      "input": {
+        "x": -1
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "221-numerical",
+      "masterId": 221,
+      "kind": "numerical",
+      "input": {
+        "x": -15.625
+      },
+      "expected": -2.5,
+      "derivation": "(-5/2)^3 = -125/8"
+    },
+    {
+      "id": "221-boundary",
+      "masterId": 221,
+      "kind": "boundary",
+      "input": {
+        "x": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "221-rejection",
+      "masterId": 221,
+      "kind": "rejection",
+      "input": {
+        "x": "1"
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "225-numerical",
+      "masterId": 225,
+      "kind": "numerical",
+      "input": {
+        "x": -8
+      },
+      "expected": -0.125,
+      "derivation": "1/(-8) = -1/8"
+    },
+    {
+      "id": "225-boundary",
+      "masterId": 225,
+      "kind": "boundary",
+      "input": {
+        "x": 1
+      },
+      "expected": 1,
+      "derivation": "Zero excluded; unit reciprocal is exact domain anchor, no finite minimum magnitude exists"
+    },
+    {
+      "id": "225-rejection",
+      "masterId": 225,
+      "kind": "rejection",
+      "input": {
+        "x": 0
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "255-numerical",
+      "masterId": 255,
+      "kind": "numerical",
+      "input": {
+        "a": 5,
+        "b": 12
+      },
+      "expected": 13,
+      "derivation": "5^2+12^2 = 169 = 13^2"
+    },
+    {
+      "id": "255-boundary",
+      "masterId": 255,
+      "kind": "boundary",
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "255-rejection",
+      "masterId": 255,
+      "kind": "rejection",
+      "input": {
+        "a": -1,
+        "b": 2
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "256-numerical",
+      "masterId": 256,
+      "kind": "numerical",
+      "input": {
+        "base": 7.5,
+        "height": 2.4
+      },
+      "expected": 9,
+      "derivation": "(15/2)*(12/5)/2 = 9"
+    },
+    {
+      "id": "256-boundary",
+      "masterId": 256,
+      "kind": "boundary",
+      "input": {
+        "base": 0,
+        "height": 3
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "256-rejection",
+      "masterId": 256,
+      "kind": "rejection",
+      "input": {
+        "base": -1,
+        "height": 3
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "259-numerical",
+      "masterId": 259,
+      "kind": "numerical",
+      "input": {
+        "length": 3.5,
+        "width": 2.25
+      },
+      "expected": 7.875,
+      "derivation": "(7/2)*(9/4) = 63/8"
+    },
+    {
+      "id": "259-boundary",
+      "masterId": 259,
+      "kind": "boundary",
+      "input": {
+        "length": 0,
+        "width": 3
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "259-rejection",
+      "masterId": 259,
+      "kind": "rejection",
+      "input": {
+        "length": -1,
+        "width": 3
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "260-numerical",
+      "masterId": 260,
+      "kind": "numerical",
+      "input": {
+        "length": 3.5,
+        "width": 2.25
+      },
+      "expected": 11.5,
+      "derivation": "2*(7/2+9/4) = 23/2"
+    },
+    {
+      "id": "260-boundary",
+      "masterId": 260,
+      "kind": "boundary",
+      "input": {
+        "length": 0,
+        "width": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "260-rejection",
+      "masterId": 260,
+      "kind": "rejection",
+      "input": {
+        "length": -1,
+        "width": 3
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "261-numerical",
+      "masterId": 261,
+      "kind": "numerical",
+      "input": {
+        "side": 1.25
+      },
+      "expected": 1.5625,
+      "derivation": "(5/4)^2 = 25/16"
+    },
+    {
+      "id": "261-boundary",
+      "masterId": 261,
+      "kind": "boundary",
+      "input": {
+        "side": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "261-rejection",
+      "masterId": 261,
+      "kind": "rejection",
+      "input": {
+        "side": -1
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "262-numerical",
+      "masterId": 262,
+      "kind": "numerical",
+      "input": {
+        "side": 2.125
+      },
+      "expected": 8.5,
+      "derivation": "4*(17/8) = 17/2"
+    },
+    {
+      "id": "262-boundary",
+      "masterId": 262,
+      "kind": "boundary",
+      "input": {
+        "side": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "262-rejection",
+      "masterId": 262,
+      "kind": "rejection",
+      "input": {
+        "side": -1
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "265-numerical",
+      "masterId": 265,
+      "kind": "numerical",
+      "input": {
+        "radius": 2.125
+      },
+      "expected": 4.25,
+      "derivation": "2*(17/8) = 17/4"
+    },
+    {
+      "id": "265-boundary",
+      "masterId": 265,
+      "kind": "boundary",
+      "input": {
+        "radius": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "265-rejection",
+      "masterId": 265,
+      "kind": "rejection",
+      "input": {
+        "radius": -1
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "266-numerical",
+      "masterId": 266,
+      "kind": "numerical",
+      "input": {
+        "base": 2.5,
+        "height": 1.75
+      },
+      "expected": 4.375,
+      "derivation": "(5/2)*(7/4) = 35/8"
+    },
+    {
+      "id": "266-boundary",
+      "masterId": 266,
+      "kind": "boundary",
+      "input": {
+        "base": 0,
+        "height": 3
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "266-rejection",
+      "masterId": 266,
+      "kind": "rejection",
+      "input": {
+        "base": -1,
+        "height": 3
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "267-numerical",
+      "masterId": 267,
+      "kind": "numerical",
+      "input": {
+        "a": 2.5,
+        "b": 4.5,
+        "height": 3.25
+      },
+      "expected": 11.375,
+      "derivation": "(5/2+9/2)*(13/4)/2 = 91/8"
+    },
+    {
+      "id": "267-boundary",
+      "masterId": 267,
+      "kind": "boundary",
+      "input": {
+        "a": 0,
+        "b": 0,
+        "height": 3
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "267-rejection",
+      "masterId": 267,
+      "kind": "rejection",
+      "input": {
+        "a": -1,
+        "b": 2,
+        "height": 3
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "273-numerical",
+      "masterId": 273,
+      "kind": "numerical",
+      "input": {
+        "length": 1.5,
+        "width": 2.5,
+        "height": 3.5
+      },
+      "expected": 13.125,
+      "derivation": "(3/2)*(5/2)*(7/2) = 105/8"
+    },
+    {
+      "id": "273-boundary",
+      "masterId": 273,
+      "kind": "boundary",
+      "input": {
+        "length": 0,
+        "width": 2,
+        "height": 3
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "273-rejection",
+      "masterId": 273,
+      "kind": "rejection",
+      "input": {
+        "length": -1,
+        "width": 2,
+        "height": 3
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "278-numerical",
+      "masterId": 278,
+      "kind": "numerical",
+      "input": {
+        "a": 8,
+        "b": 15
+      },
+      "expected": 17,
+      "derivation": "8^2+15^2 = 289 = 17^2"
+    },
+    {
+      "id": "278-boundary",
+      "masterId": 278,
+      "kind": "boundary",
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "278-rejection",
+      "masterId": 278,
+      "kind": "rejection",
+      "input": {
+        "a": -1,
+        "b": 2
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "279-numerical",
+      "masterId": 279,
+      "kind": "numerical",
+      "input": {
+        "degrees": 270
+      },
+      "expected": 4.71238898038469,
+      "derivation": "3*pi/2 using independently rounded decimal pi reference"
+    },
+    {
+      "id": "279-boundary",
+      "masterId": 279,
+      "kind": "boundary",
+      "input": {
+        "degrees": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "279-rejection",
+      "masterId": 279,
+      "kind": "rejection",
+      "input": {
+        "degrees": "1"
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    },
+    {
+      "id": "280-numerical",
+      "masterId": 280,
+      "kind": "numerical",
+      "input": {
+        "radians": 1.5707963267948966
+      },
+      "expected": 90,
+      "derivation": "rounded pi/2 radians corresponds to 90 degrees"
+    },
+    {
+      "id": "280-boundary",
+      "masterId": 280,
+      "kind": "boundary",
+      "input": {
+        "radians": 0
+      },
+      "expected": 0,
+      "derivation": "Zero accepted by actual schema"
+    },
+    {
+      "id": "280-rejection",
+      "masterId": 280,
+      "kind": "rejection",
+      "input": {
+        "radians": "1"
+      },
+      "expected": null,
+      "derivation": "Actual schema rejects negative nonnegative field, prohibited zero, or numeric string without coercion"
+    }
+  ],
+  "evaluations": [
+    {
+      "id": "209-numerical",
+      "masterId": 209,
+      "accepted": true,
+      "result": 88,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-percentage-increase-calculator",
+        "slug": "percentage-increase-calculator",
+        "version": 1,
+        "input": {
+          "value": 64,
+          "percent": 37.5
+        },
+        "output": {
+          "result": 88
+        }
+      }
+    },
+    {
+      "id": "209-boundary",
+      "masterId": 209,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-percentage-increase-calculator",
+        "slug": "percentage-increase-calculator",
+        "version": 1,
+        "input": {
+          "value": 0,
+          "percent": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "209-rejection",
+      "masterId": 209,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "210-numerical",
+      "masterId": 210,
+      "accepted": true,
+      "result": -24,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-percentage-decrease-calculator",
+        "slug": "percentage-decrease-calculator",
+        "version": 1,
+        "input": {
+          "value": 64,
+          "percent": 137.5
+        },
+        "output": {
+          "result": -24
+        }
+      }
+    },
+    {
+      "id": "210-boundary",
+      "masterId": 210,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-percentage-decrease-calculator",
+        "slug": "percentage-decrease-calculator",
+        "version": 1,
+        "input": {
+          "value": 0,
+          "percent": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "210-rejection",
+      "masterId": 210,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "218-numerical",
+      "masterId": 218,
+      "accepted": true,
+      "result": 1.5625,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-calculator",
+        "slug": "square-calculator",
+        "version": 1,
+        "input": {
+          "x": -1.25
+        },
+        "output": {
+          "result": 1.5625
+        }
+      }
+    },
+    {
+      "id": "218-boundary",
+      "masterId": 218,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-calculator",
+        "slug": "square-calculator",
+        "version": 1,
+        "input": {
+          "x": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "218-rejection",
+      "masterId": 218,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "219-numerical",
+      "masterId": 219,
+      "accepted": true,
+      "result": -3.375,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-cube-calculator",
+        "slug": "cube-calculator",
+        "version": 1,
+        "input": {
+          "x": -1.5
+        },
+        "output": {
+          "result": -3.375
+        }
+      }
+    },
+    {
+      "id": "219-boundary",
+      "masterId": 219,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-cube-calculator",
+        "slug": "cube-calculator",
+        "version": 1,
+        "input": {
+          "x": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "219-rejection",
+      "masterId": 219,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "220-numerical",
+      "masterId": 220,
+      "accepted": true,
+      "result": 1.5,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-root-calculator",
+        "slug": "square-root-calculator",
+        "version": 1,
+        "input": {
+          "x": 2.25
+        },
+        "output": {
+          "result": 1.5
+        }
+      }
+    },
+    {
+      "id": "220-boundary",
+      "masterId": 220,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-root-calculator",
+        "slug": "square-root-calculator",
+        "version": 1,
+        "input": {
+          "x": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "220-rejection",
+      "masterId": 220,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "221-numerical",
+      "masterId": 221,
+      "accepted": true,
+      "result": -2.5,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-cube-root-calculator",
+        "slug": "cube-root-calculator",
+        "version": 1,
+        "input": {
+          "x": -15.625
+        },
+        "output": {
+          "result": -2.5
+        }
+      }
+    },
+    {
+      "id": "221-boundary",
+      "masterId": 221,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-cube-root-calculator",
+        "slug": "cube-root-calculator",
+        "version": 1,
+        "input": {
+          "x": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "221-rejection",
+      "masterId": 221,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "225-numerical",
+      "masterId": 225,
+      "accepted": true,
+      "result": -0.125,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-reciprocal-calculator",
+        "slug": "reciprocal-calculator",
+        "version": 1,
+        "input": {
+          "x": -8
+        },
+        "output": {
+          "result": -0.125
+        }
+      }
+    },
+    {
+      "id": "225-boundary",
+      "masterId": 225,
+      "accepted": true,
+      "result": 1,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-reciprocal-calculator",
+        "slug": "reciprocal-calculator",
+        "version": 1,
+        "input": {
+          "x": 1
+        },
+        "output": {
+          "result": 1
+        }
+      }
+    },
+    {
+      "id": "225-rejection",
+      "masterId": 225,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "255-numerical",
+      "masterId": 255,
+      "accepted": true,
+      "result": 13,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-hypotenuse-calculator",
+        "slug": "hypotenuse-calculator",
+        "version": 1,
+        "input": {
+          "a": 5,
+          "b": 12
+        },
+        "output": {
+          "result": 13
+        }
+      }
+    },
+    {
+      "id": "255-boundary",
+      "masterId": 255,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-hypotenuse-calculator",
+        "slug": "hypotenuse-calculator",
+        "version": 1,
+        "input": {
+          "a": 0,
+          "b": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "255-rejection",
+      "masterId": 255,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "256-numerical",
+      "masterId": 256,
+      "accepted": true,
+      "result": 9,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-triangle-area-calculator",
+        "slug": "triangle-area-calculator",
+        "version": 1,
+        "input": {
+          "base": 7.5,
+          "height": 2.4
+        },
+        "output": {
+          "result": 9
+        }
+      }
+    },
+    {
+      "id": "256-boundary",
+      "masterId": 256,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-triangle-area-calculator",
+        "slug": "triangle-area-calculator",
+        "version": 1,
+        "input": {
+          "base": 0,
+          "height": 3
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "256-rejection",
+      "masterId": 256,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "259-numerical",
+      "masterId": 259,
+      "accepted": true,
+      "result": 7.875,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-rectangle-area-calculator",
+        "slug": "rectangle-area-calculator",
+        "version": 1,
+        "input": {
+          "length": 3.5,
+          "width": 2.25
+        },
+        "output": {
+          "result": 7.875
+        }
+      }
+    },
+    {
+      "id": "259-boundary",
+      "masterId": 259,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-rectangle-area-calculator",
+        "slug": "rectangle-area-calculator",
+        "version": 1,
+        "input": {
+          "length": 0,
+          "width": 3
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "259-rejection",
+      "masterId": 259,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "260-numerical",
+      "masterId": 260,
+      "accepted": true,
+      "result": 11.5,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-rectangle-perimeter-calculator",
+        "slug": "rectangle-perimeter-calculator",
+        "version": 1,
+        "input": {
+          "length": 3.5,
+          "width": 2.25
+        },
+        "output": {
+          "result": 11.5
+        }
+      }
+    },
+    {
+      "id": "260-boundary",
+      "masterId": 260,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-rectangle-perimeter-calculator",
+        "slug": "rectangle-perimeter-calculator",
+        "version": 1,
+        "input": {
+          "length": 0,
+          "width": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "260-rejection",
+      "masterId": 260,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "261-numerical",
+      "masterId": 261,
+      "accepted": true,
+      "result": 1.5625,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-area-calculator",
+        "slug": "square-area-calculator",
+        "version": 1,
+        "input": {
+          "side": 1.25
+        },
+        "output": {
+          "result": 1.5625
+        }
+      }
+    },
+    {
+      "id": "261-boundary",
+      "masterId": 261,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-area-calculator",
+        "slug": "square-area-calculator",
+        "version": 1,
+        "input": {
+          "side": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "261-rejection",
+      "masterId": 261,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "262-numerical",
+      "masterId": 262,
+      "accepted": true,
+      "result": 8.5,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-perimeter-calculator",
+        "slug": "square-perimeter-calculator",
+        "version": 1,
+        "input": {
+          "side": 2.125
+        },
+        "output": {
+          "result": 8.5
+        }
+      }
+    },
+    {
+      "id": "262-boundary",
+      "masterId": 262,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-square-perimeter-calculator",
+        "slug": "square-perimeter-calculator",
+        "version": 1,
+        "input": {
+          "side": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "262-rejection",
+      "masterId": 262,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "265-numerical",
+      "masterId": 265,
+      "accepted": true,
+      "result": 4.25,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-circle-diameter-calculator",
+        "slug": "circle-diameter-calculator",
+        "version": 1,
+        "input": {
+          "radius": 2.125
+        },
+        "output": {
+          "result": 4.25
+        }
+      }
+    },
+    {
+      "id": "265-boundary",
+      "masterId": 265,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-circle-diameter-calculator",
+        "slug": "circle-diameter-calculator",
+        "version": 1,
+        "input": {
+          "radius": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "265-rejection",
+      "masterId": 265,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "266-numerical",
+      "masterId": 266,
+      "accepted": true,
+      "result": 4.375,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-parallelogram-area-calculator",
+        "slug": "parallelogram-area-calculator",
+        "version": 1,
+        "input": {
+          "base": 2.5,
+          "height": 1.75
+        },
+        "output": {
+          "result": 4.375
+        }
+      }
+    },
+    {
+      "id": "266-boundary",
+      "masterId": 266,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-parallelogram-area-calculator",
+        "slug": "parallelogram-area-calculator",
+        "version": 1,
+        "input": {
+          "base": 0,
+          "height": 3
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "266-rejection",
+      "masterId": 266,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "267-numerical",
+      "masterId": 267,
+      "accepted": true,
+      "result": 11.375,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-trapezoid-area-calculator",
+        "slug": "trapezoid-area-calculator",
+        "version": 1,
+        "input": {
+          "a": 2.5,
+          "b": 4.5,
+          "height": 3.25
+        },
+        "output": {
+          "result": 11.375
+        }
+      }
+    },
+    {
+      "id": "267-boundary",
+      "masterId": 267,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-trapezoid-area-calculator",
+        "slug": "trapezoid-area-calculator",
+        "version": 1,
+        "input": {
+          "a": 0,
+          "b": 0,
+          "height": 3
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "267-rejection",
+      "masterId": 267,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "273-numerical",
+      "masterId": 273,
+      "accepted": true,
+      "result": 13.125,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-rectangular-prism-volume-calculator",
+        "slug": "rectangular-prism-volume-calculator",
+        "version": 1,
+        "input": {
+          "length": 1.5,
+          "width": 2.5,
+          "height": 3.5
+        },
+        "output": {
+          "result": 13.125
+        }
+      }
+    },
+    {
+      "id": "273-boundary",
+      "masterId": 273,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-rectangular-prism-volume-calculator",
+        "slug": "rectangular-prism-volume-calculator",
+        "version": 1,
+        "input": {
+          "length": 0,
+          "width": 2,
+          "height": 3
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "273-rejection",
+      "masterId": 273,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "278-numerical",
+      "masterId": 278,
+      "accepted": true,
+      "result": 17,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-pythagorean-theorem-calculator",
+        "slug": "pythagorean-theorem-calculator",
+        "version": 1,
+        "input": {
+          "a": 8,
+          "b": 15
+        },
+        "output": {
+          "result": 17
+        }
+      }
+    },
+    {
+      "id": "278-boundary",
+      "masterId": 278,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-pythagorean-theorem-calculator",
+        "slug": "pythagorean-theorem-calculator",
+        "version": 1,
+        "input": {
+          "a": 0,
+          "b": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "278-rejection",
+      "masterId": 278,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "279-numerical",
+      "masterId": 279,
+      "accepted": true,
+      "result": 4.71238898038469,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-degrees-to-radians-calculator",
+        "slug": "degrees-to-radians-calculator",
+        "version": 1,
+        "input": {
+          "degrees": 270
+        },
+        "output": {
+          "result": 4.71238898038469
+        }
+      }
+    },
+    {
+      "id": "279-boundary",
+      "masterId": 279,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-degrees-to-radians-calculator",
+        "slug": "degrees-to-radians-calculator",
+        "version": 1,
+        "input": {
+          "degrees": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "279-rejection",
+      "masterId": 279,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    },
+    {
+      "id": "280-numerical",
+      "masterId": 280,
+      "accepted": true,
+      "result": 90,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-radians-to-degrees-calculator",
+        "slug": "radians-to-degrees-calculator",
+        "version": 1,
+        "input": {
+          "radians": 1.5707963267948966
+        },
+        "output": {
+          "result": 90
+        }
+      }
+    },
+    {
+      "id": "280-boundary",
+      "masterId": 280,
+      "accepted": true,
+      "result": 0,
+      "numericalPass": true,
+      "immutable": true,
+      "replayParity": true,
+      "planComputeParity": true,
+      "artifact": {
+        "calculatorId": "launch-radians-to-degrees-calculator",
+        "slug": "radians-to-degrees-calculator",
+        "version": 1,
+        "input": {
+          "radians": 0
+        },
+        "output": {
+          "result": 0
+        }
+      }
+    },
+    {
+      "id": "280-rejection",
+      "masterId": 280,
+      "accepted": false,
+      "rejectionPass": true,
+      "immutable": true,
+      "error": "Calculator input validation failed"
+    }
+  ],
+  "ieeeProbes": [
+    {
+      "masterId": 218,
+      "input": {
+        "x": 5e-324
+      },
+      "mathematicalNonzero": true,
+      "accepted": true,
+      "result": 0,
+      "underflowToZero": true
+    },
+    {
+      "masterId": 219,
+      "input": {
+        "x": 5e-324
+      },
+      "mathematicalNonzero": true,
+      "accepted": true,
+      "result": 0,
+      "underflowToZero": true
+    },
+    {
+      "masterId": 259,
+      "input": {
+        "length": 5e-324,
+        "width": 0.5
+      },
+      "mathematicalNonzero": true,
+      "accepted": true,
+      "result": 0,
+      "underflowToZero": true
+    },
+    {
+      "masterId": 225,
+      "input": {
+        "x": 5e-324
+      },
+      "mathematicalNonzero": true,
+      "accepted": false,
+      "error": "Calculated result is outside the supported finite range"
+    },
+    {
+      "masterId": 218,
+      "input": {
+        "x": 1.7976931348623157e+308
+      },
+      "mathematicalNonzero": true,
+      "accepted": false,
+      "error": "Calculated result is outside the supported finite range"
+    }
+  ],
+  "releaseHold": true,
+  "provenanceSha256": {
+    "publication-readiness-register-44.json": "f9377f378668aaf6626c59872d238757a7158851628dfbd97b3b1bb30e441ae1",
+    "ranked-review-cohorts.json": "0491600bd32fe9ef967681b572282141a700a8971f7702d6c8d238db8497dadb",
+    "READ-ME.md": "595e461e1c3a3b25dac66e0bd5cf59da432ece41f2ce9d715c3a1f69940b4669",
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+  }
+}
