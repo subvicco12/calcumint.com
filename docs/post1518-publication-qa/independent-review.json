@@ -1,0 +1,49 @@
+{
+  "reviewType": "Independent agent code and bounded evidence review; not specialist approval",
+  "baseline": "591969f7f1f968e8bf0a45d16defb2c1b59043d6",
+  "status": "no_unresolved_code_review_findings_in_bounded_scope",
+  "productionWrites": false,
+  "verification": {
+    "focusedCommand": "npx vitest run src/lib/post1518-applicability-evidence.test.ts src/components/post1518-six-workflow.test.tsx",
+    "passedTests": 33,
+    "passedFiles": 2,
+    "bindingUniqueIds": 31,
+    "bindingMatchesAssertionTitles": true,
+    "exactBindingHashesMatch": true,
+    "governanceFlagsPreserved": true,
+    "finalRerunPassedTests": 33,
+    "finalTestSourceSha256": "e42d072f62d57e9bce7f87aee374531e539a91ffadad421999a060aed7c5c1a1",
+    "fullCriteriaSourceMutation": false
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "id": "rounded-return-forward-residual",
+      "files": [
+        "src/lib/post1518-applicability-evidence.test.ts"
+      ],
+      "detail": "DTI and annuity tests check exact rounded expected outputs, but their forward residual checks currently reuse independently calculated raw candidates. This does not directly exercise the returned rounded output in the forward computation.",
+      "requiredChange": "DTI: forward(actual maximumLoanPrincipal) residual <= 0.005*abs(paymentFactor)+explicit floating epsilon. Annuity: abs(current*g+actual value*factor-target) <= 0.005*abs(factor)+explicit floating epsilon. Retain independent expected rounded checks.",
+      "status": "resolved",
+      "resolution": "Re-inspected actual returned-principal payment and actual returned-contribution future value assertions. Both propagate half-cent quantization with explicit floating allowances (1e-9 payment, 1e-8 future value); independently reran focused tests after the change: 33/33 passed."
+    },
+    {
+      "severity": "scope",
+      "id": "graph-export-scope",
+      "detail": "The graph workflows mount actual account actions with synthetic transport, validate raw output props and enabled export controls, then recover chart rendering. They do not click exports, reconcile generated files or prove real authenticated persistence."
+    }
+  ],
+  "positiveFindings": [
+    "All 31 applicable request IDs have distinct parameterized assertions and match the binding artifact exactly.",
+    "UI schedule and chart tests reconcile rendered data with adapter artifact; pagination traverses all rows. These are presentation reconciliation checks, not independent mathematical engine certification.",
+    "Payoff, present value, CAGR, time to target and selected IRR checks calculate independent forward conditions rather than assert unrelated snapshots.",
+    "IRR tests explicitly exercise both supplied brackets, normalized residual, sign changes, selected-bracket limitation and rejected bracket.",
+    "All 31 rows preserve formal pending status, canonical rejection/pending state, publication hold and no publication authorization.",
+    "Only two new test files were present in git status; production sources were unchanged."
+  ],
+  "limitations": [
+    "No domain specialist approval, canonical acceptance or full-domain numerical proof is supplied.",
+    "Source authority excerpts were not independently re-extracted from native documents in this review; source binding hashes and governance fields were checked.",
+    "The preserved unresolved request list and formal pending total were not re-adjudicated."
+  ]
+}
