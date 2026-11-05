@@ -1,0 +1,511 @@
+[
+  {
+    "catalogId": 208,
+    "engineId": "launch-percentage-change-calculator",
+    "slug": "percentage-change-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "old": -80,
+        "next": -100
+      },
+      "expected": -25,
+      "derivation": "(-100 - (-80)) / 80 * 100 = -25"
+    },
+    "boundary": {
+      "input": {
+        "old": 1,
+        "next": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "old": 0,
+      "next": 1
+    }
+  },
+  {
+    "catalogId": 211,
+    "engineId": "launch-ratio-calculator",
+    "slug": "ratio-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "a": 7,
+        "b": 8
+      },
+      "expected": 0.875,
+      "derivation": "7/8 = 0.875 exactly"
+    },
+    "boundary": {
+      "input": {
+        "a": 0,
+        "b": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "a": 1,
+      "b": 0
+    }
+  },
+  {
+    "catalogId": 212,
+    "engineId": "launch-proportion-calculator",
+    "slug": "proportion-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "a": 21,
+        "b": 8
+      },
+      "expected": 2.625,
+      "derivation": "21/8 = 2.625 exactly"
+    },
+    "boundary": {
+      "input": {
+        "a": 0,
+        "b": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "a": 1,
+      "b": 0
+    }
+  },
+  {
+    "catalogId": 213,
+    "engineId": "launch-fraction-calculator",
+    "slug": "fraction-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "numerator": 7,
+        "denominator": 16
+      },
+      "expected": 0.4375,
+      "derivation": "7/16 = 0.4375 exactly"
+    },
+    "boundary": {
+      "input": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "numerator": 1,
+      "denominator": 0
+    }
+  },
+  {
+    "catalogId": 215,
+    "engineId": "launch-fraction-to-decimal-calculator",
+    "slug": "fraction-to-decimal-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "numerator": -7,
+        "denominator": 8
+      },
+      "expected": -0.875,
+      "derivation": "-7/8 = -0.875 exactly"
+    },
+    "boundary": {
+      "input": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "numerator": 1,
+      "denominator": 0
+    }
+  },
+  {
+    "catalogId": 216,
+    "engineId": "launch-average-two-numbers-calculator",
+    "slug": "average-two-numbers-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "a": -12,
+        "b": 20
+      },
+      "expected": 4,
+      "derivation": "(-12+20)/2=4; two-value scope only"
+    },
+    "boundary": {
+      "input": {
+        "a": 0,
+        "b": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "b": 1
+    }
+  },
+  {
+    "catalogId": 228,
+    "engineId": "launch-gcf-calculator",
+    "slug": "gcf-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "a": 84,
+        "b": 126
+      },
+      "expected": 42,
+      "derivation": "84=2*42,126=3*42; coprime multipliers2,3"
+    },
+    "boundary": {
+      "input": {
+        "a": 1,
+        "b": 1
+      },
+      "expected": 1
+    },
+    "rejection": {
+      "a": 0,
+      "b": 1
+    }
+  },
+  {
+    "catalogId": 229,
+    "engineId": "launch-factor-calculator",
+    "slug": "factor-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "number": 91
+      },
+      "expected": 7,
+      "derivation": "91=7*13; not divisible by2,3,5"
+    },
+    "boundary": {
+      "input": {
+        "number": 2
+      },
+      "expected": 2
+    },
+    "rejection": {
+      "number": 1
+    }
+  },
+  {
+    "catalogId": 263,
+    "engineId": "launch-circle-area-calculator",
+    "slug": "circle-area-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "radius": 2
+      },
+      "expected": 12.566370614359172,
+      "derivation": "4*pi, using independent pi reference3.141592653589793238462643383279502884"
+    },
+    "boundary": {
+      "input": {
+        "radius": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "radius": -1
+    }
+  },
+  {
+    "catalogId": 264,
+    "engineId": "launch-circle-circumference-calculator",
+    "slug": "circle-circumference-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "radius": 3
+      },
+      "expected": 18.84955592153876,
+      "derivation": "6*pi with independent pi reference"
+    },
+    "boundary": {
+      "input": {
+        "radius": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "radius": -1
+    }
+  },
+  {
+    "catalogId": 269,
+    "engineId": "launch-sphere-volume-calculator",
+    "slug": "sphere-volume-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "radius": 3
+      },
+      "expected": 113.09733552923255,
+      "derivation": "36*pi with independent pi reference"
+    },
+    "boundary": {
+      "input": {
+        "radius": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "radius": -1
+    }
+  },
+  {
+    "catalogId": 270,
+    "engineId": "launch-sphere-surface-area-calculator",
+    "slug": "sphere-surface-area-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "radius": 2
+      },
+      "expected": 50.26548245743669,
+      "derivation": "16*pi with independent pi reference"
+    },
+    "boundary": {
+      "input": {
+        "radius": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "radius": -1
+    }
+  },
+  {
+    "catalogId": 271,
+    "engineId": "launch-cylinder-volume-calculator",
+    "slug": "cylinder-volume-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "radius": 3,
+        "height": 2
+      },
+      "expected": 56.548667764616276,
+      "derivation": "18*pi with independent pi reference"
+    },
+    "boundary": {
+      "input": {
+        "radius": 0,
+        "height": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "radius": -1,
+      "height": 2
+    }
+  },
+  {
+    "catalogId": 272,
+    "engineId": "launch-cone-volume-calculator",
+    "slug": "cone-volume-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "radius": 3,
+        "height": 2
+      },
+      "expected": 18.84955592153876,
+      "derivation": "6*pi with independent pi reference"
+    },
+    "boundary": {
+      "input": {
+        "radius": 0,
+        "height": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "radius": -1,
+      "height": 2
+    }
+  },
+  {
+    "catalogId": 223,
+    "engineId": "launch-exponent-calculator",
+    "slug": "exponent-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "base": -2,
+        "exponent": 5
+      },
+      "expected": -32,
+      "derivation": "(-2)^5=-32; negative fractional powers excluded by finite-result contract"
+    },
+    "boundary": {
+      "input": {
+        "base": 0,
+        "exponent": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "base": -1,
+      "exponent": 0.5
+    }
+  },
+  {
+    "catalogId": 224,
+    "engineId": "launch-logarithm-calculator",
+    "slug": "logarithm-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "x": 81,
+        "base": 3
+      },
+      "expected": 4,
+      "derivation": "3^4=81 and log_b(1)=0; base1 excluded"
+    },
+    "boundary": {
+      "input": {
+        "x": 1,
+        "base": 2
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "x": 2,
+      "base": 1
+    }
+  },
+  {
+    "catalogId": 226,
+    "engineId": "launch-remainder-calculator",
+    "slug": "remainder-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "a": -17,
+        "b": 5
+      },
+      "expected": -2,
+      "derivation": "-17=(-3)*5+(-2), truncation remainder retained"
+    },
+    "boundary": {
+      "input": {
+        "a": 0,
+        "b": 1
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "a": 1,
+      "b": 0
+    }
+  },
+  {
+    "catalogId": 227,
+    "engineId": "launch-lcm-calculator",
+    "slug": "lcm-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "a": 21,
+        "b": 6
+      },
+      "expected": 42,
+      "derivation": "21=3*7,6=2*3; lcm=2*3*7=42"
+    },
+    "boundary": {
+      "input": {
+        "a": 1,
+        "b": 1
+      },
+      "expected": 1
+    },
+    "rejection": {
+      "a": 0,
+      "b": 1
+    }
+  },
+  {
+    "catalogId": 231,
+    "engineId": "launch-scientific-notation-calculator",
+    "slug": "scientific-notation-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "coefficient": 1.25,
+        "exponent": -3
+      },
+      "expected": 0.00125,
+      "derivation": "1.25*10^-3=1/800"
+    },
+    "boundary": {
+      "input": {
+        "coefficient": 0,
+        "exponent": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "coefficient": 1,
+      "exponent": 10000
+    }
+  },
+  {
+    "catalogId": 234,
+    "engineId": "launch-percent-error-calculator",
+    "slug": "percent-error-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "observed": 105,
+        "actual": 100
+      },
+      "expected": 5,
+      "derivation": "|105-100|/100*100=5 percent"
+    },
+    "boundary": {
+      "input": {
+        "observed": 100,
+        "actual": 100
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "observed": 1,
+      "actual": 0
+    }
+  },
+  {
+    "catalogId": 230,
+    "engineId": "launch-rounding-calculator",
+    "slug": "rounding-calculator",
+    "version": 1,
+    "numerical": {
+      "input": {
+        "value": 12.345,
+        "decimals": 2
+      },
+      "expected": 12.35,
+      "derivation": "positive shifted1234.5 rounds to1235; /100=12.35; no new tie policy"
+    },
+    "boundary": {
+      "input": {
+        "value": 0,
+        "decimals": 0
+      },
+      "expected": 0
+    },
+    "rejection": {
+      "value": 1,
+      "decimals": -1
+    }
+  }
+]

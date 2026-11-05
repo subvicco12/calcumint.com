@@ -403,9 +403,9 @@ jobs:
         timeout-minutes: 5
         run: |
           node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check
-          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5
-          node scripts/check-historical-six-packets.mjs
-          node tests/statistics-workbench/historical-packets.test.mjs
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5
+          node scripts/check-calculator-closure-history.mjs
+          node --test tests/calculator-first-20261105/history-guard.test.mjs
           node tests/batch21-calculator-wave/browser.mjs
           node tests/six-publication-closure/boundary-browser.mjs
         env:
@@ -415,7 +415,7 @@ jobs:
           SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   publication-factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -453,7 +453,8 @@ jobs:
       - name: Owner-authorized isolated full-six increment and registered input browser
         timeout-minutes: 3
         run: |
-          node scripts/full-six/check-evidence.mjs
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5
+          node scripts/check-calculator-closure-history.mjs --full-six-only
           node scripts/fast-publication-20261102/queue.mjs --check
           node tests/fast-publication-20261102/queue.test.mjs
           node tests/full-six/registered-input.browser.mjs
@@ -475,6 +476,13 @@ jobs:
           node tests/first20-publication/browser.mjs
         env:
           FIRST20_BROWSER_RECEIPT: ${{ runner.temp }}/first20-publication-browser
+      - name: Registered launch history recovery and caller acceptance
+        timeout-minutes: 8
+        run: |
+          node_modules/.bin/vite-node --config vitest.config.ts scripts/calculator-first-20261105/numerical.ts --check
+          node tests/calculator-first-20261105/browser.mjs
+        env:
+          CALCULATOR_CLOSURE_RECEIPT: ${{ runner.temp }}/calculator-first-20261105-browser
       - name: Exact76 private input, history, scenarios and exports
         timeout-minutes: 6
         run: node tests/publication-factory/browser.mjs

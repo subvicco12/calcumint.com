@@ -1,0 +1,121 @@
+
+> calcumint@0.1.0 test
+> vitest run src/components/launch-caller-recovery.test.tsx src/components/ai-result-explanation.test.tsx
+
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+ ❯ src/components/ai-result-explanation.test.tsx (3 tests | 2 failed) 144ms
+   × never shows a completed explanation for inputs that have changed 123ms
+     → expected <p></p> to be null
+   × aborts obsolete requests and ignores their delayed results 10ms
+     → expected undefined to be true // Object.is equality
+   ✓ retains an explanation for equivalent rerenders 11ms
+ ❯ src/components/launch-caller-recovery.test.tsx (5 tests | 3 failed) 98ms
+   × uses the destination calculator defaults instead of a different calculator draft 71ms
+     → expected { a: 999, b: 18 } to deeply equal { a: 10, b: 20 }
+   ✓ keeps a draft during same-calculator rerenders 8ms
+   ✓ allows valid fractional values in native browser validity 7ms
+   × exposes source integer and maximum constraints without changing the engine 5ms
+     → expected '' to be '1' // Object.is equality
+   × links rejected required inputs to accessible field-specific errors and recovers valid zero 6ms
+     → expected null to be 'true' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/ai-result-explanation.test.tsx > never shows a completed explanation for inputs that have changed
+AssertionError: expected <p></p> to be null
+
+- Expected: 
+null
+
++ Received: 
+<p>
+  Twelve divided by three is four.
+</p>
+
+ ❯ src/components/ai-result-explanation.test.tsx:12:115
+     10|  vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()…
+     11|  const view=render(<AiResultExplanation {...first}/>);fireEvent.click(…
+     12|  view.rerender(<AiResultExplanation {...second}/>);expect(screen.query…
+       |                                                                                                                   ^
+     13| });
+     14| it('aborts obsolete requests and ignores their delayed results',async(…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  src/components/ai-result-explanation.test.tsx > aborts obsolete requests and ignores their delayed results
+AssertionError: expected undefined to be true // Object.is equality
+
+- Expected: 
+true
+
++ Received: 
+undefined
+
+ ❯ src/components/ai-result-explanation.test.tsx:18:76
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  src/components/launch-caller-recovery.test.tsx > uses the destination calculator defaults instead of a different calculator draft
+AssertionError: expected { a: 999, b: 18 } to deeply equal { a: 10, b: 20 }
+
+- Expected
++ Received
+
+  {
+-   "a": 10,
+-   "b": 20,
++   "a": 999,
++   "b": 18,
+  }
+
+ ❯ src/components/launch-caller-recovery.test.tsx:14:25
+     12|  fireEvent.change(screen.getByLabelText('First value'),{target:{value:…
+     13|  view.rerender(<CalculatorInteractive slug="average-two-numbers-calcul…
+     14|  expect(observed.input).toEqual({a:10,b:20});expect(observed.output).t…
+       |                         ^
+     15| });
+     16| it('keeps a draft during same-calculator rerenders',()=>{
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  src/components/launch-caller-recovery.test.tsx > exposes source integer and maximum constraints without changing the engine
+AssertionError: expected '' to be '1' // Object.is equality
+
+- Expected
++ Received
+
+- 1
+
+ ❯ src/components/launch-caller-recovery.test.tsx:26:21
+     24| it('exposes source integer and maximum constraints without changing th…
+     25|  render(<CalculatorInteractive slug="rounding-calculator"/>);const fie…
+     26|  expect(field.step).toBe('1');expect(field.max).toBe('12');
+       |                     ^
+     27|  fireEvent.change(field,{target:{value:'13'}});expect(field.validity.r…
+     28| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  src/components/launch-caller-recovery.test.tsx > links rejected required inputs to accessible field-specific errors and recovers valid zero
+AssertionError: expected null to be 'true' // Object.is equality
+
+- Expected: 
+"true"
+
++ Received: 
+null
+
+ ❯ src/components/launch-caller-recovery.test.tsx:31:81
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  5 failed | 3 passed (8)
+   Start at  16:07:11
+   Duration  2.98s (transform 1.42s, setup 0ms, collect 2.30s, tests 242ms, environment 975ms, prepare 140ms)
+

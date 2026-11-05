@@ -1,0 +1,929 @@
+{
+  "kind": "BOUNDED_ENGINEERING_WITNESSES_NOT_QA_APPROVAL",
+  "baseline": "4796b3d7679a06f0751cac8cfec687c88f386ae5",
+  "sourceHashes": {
+    "tests/calculator-first-20261105/witnesses.json": "4742ff6f64c763916892159ac6c2634cbd921b77332fb3a5e74323a6b07fa337",
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+    "src/components/registered-launch-tool.tsx": "9b205b88a1ddc8f421e7b278bd67e9028d8a17aad955be7b4034312054254aac",
+    "src/components/ai-result-explanation.tsx": "4e7e07d42e1dcd7b5b2c205d8d8aad1bb6215da00d14b1b6b1cfba63e05ef0db"
+  },
+  "relativeEngineeringWitnessBudget": "1e-14; no approved full-domain tolerance inferred",
+  "rows": [
+    {
+      "catalogId": 208,
+      "engineId": "launch-percentage-change-calculator",
+      "version": 1,
+      "slug": "percentage-change-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "old": -80,
+            "next": -100
+          },
+          "expected": -25,
+          "output": {
+            "result": -25
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "old": 1,
+            "next": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "old": 0,
+        "next": 1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 211,
+      "engineId": "launch-ratio-calculator",
+      "version": 1,
+      "slug": "ratio-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "a": 7,
+            "b": 8
+          },
+          "expected": 0.875,
+          "output": {
+            "result": 0.875
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "a": 0,
+            "b": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "a": 1,
+        "b": 0
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 212,
+      "engineId": "launch-proportion-calculator",
+      "version": 1,
+      "slug": "proportion-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "a": 21,
+            "b": 8
+          },
+          "expected": 2.625,
+          "output": {
+            "result": 2.625
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "a": 0,
+            "b": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "a": 1,
+        "b": 0
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 213,
+      "engineId": "launch-fraction-calculator",
+      "version": 1,
+      "slug": "fraction-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "numerator": 7,
+            "denominator": 16
+          },
+          "expected": 0.4375,
+          "output": {
+            "result": 0.4375
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "numerator": 1,
+        "denominator": 0
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 215,
+      "engineId": "launch-fraction-to-decimal-calculator",
+      "version": 1,
+      "slug": "fraction-to-decimal-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "numerator": -7,
+            "denominator": 8
+          },
+          "expected": -0.875,
+          "output": {
+            "result": -0.875
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "numerator": 0,
+            "denominator": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "numerator": 1,
+        "denominator": 0
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 216,
+      "engineId": "launch-average-two-numbers-calculator",
+      "version": 1,
+      "slug": "average-two-numbers-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "a": -12,
+            "b": 20
+          },
+          "expected": 4,
+          "output": {
+            "result": 4
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "a": 0,
+            "b": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "b": 1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 228,
+      "engineId": "launch-gcf-calculator",
+      "version": 1,
+      "slug": "gcf-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "a": 84,
+            "b": 126
+          },
+          "expected": 42,
+          "output": {
+            "result": 42
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "a": 1,
+            "b": 1
+          },
+          "expected": 1,
+          "output": {
+            "result": 1
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "a": 0,
+        "b": 1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 229,
+      "engineId": "launch-factor-calculator",
+      "version": 1,
+      "slug": "factor-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "number": 91
+          },
+          "expected": 7,
+          "output": {
+            "result": 7
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "number": 2
+          },
+          "expected": 2,
+          "output": {
+            "result": 2
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "number": 1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 263,
+      "engineId": "launch-circle-area-calculator",
+      "version": 1,
+      "slug": "circle-area-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "radius": 2
+          },
+          "expected": 12.566370614359172,
+          "output": {
+            "result": 12.566370614359172
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "radius": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "radius": -1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 264,
+      "engineId": "launch-circle-circumference-calculator",
+      "version": 1,
+      "slug": "circle-circumference-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "radius": 3
+          },
+          "expected": 18.84955592153876,
+          "output": {
+            "result": 18.84955592153876
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "radius": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "radius": -1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 269,
+      "engineId": "launch-sphere-volume-calculator",
+      "version": 1,
+      "slug": "sphere-volume-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "radius": 3
+          },
+          "expected": 113.09733552923255,
+          "output": {
+            "result": 113.09733552923255
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "radius": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "radius": -1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 270,
+      "engineId": "launch-sphere-surface-area-calculator",
+      "version": 1,
+      "slug": "sphere-surface-area-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "radius": 2
+          },
+          "expected": 50.26548245743669,
+          "output": {
+            "result": 50.26548245743669
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "radius": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "radius": -1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 271,
+      "engineId": "launch-cylinder-volume-calculator",
+      "version": 1,
+      "slug": "cylinder-volume-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "radius": 3,
+            "height": 2
+          },
+          "expected": 56.548667764616276,
+          "output": {
+            "result": 56.548667764616276
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "radius": 0,
+            "height": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "radius": -1,
+        "height": 2
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 272,
+      "engineId": "launch-cone-volume-calculator",
+      "version": 1,
+      "slug": "cone-volume-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "radius": 3,
+            "height": 2
+          },
+          "expected": 18.84955592153876,
+          "output": {
+            "result": 18.84955592153876
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "radius": 0,
+            "height": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "radius": -1,
+        "height": 2
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 223,
+      "engineId": "launch-exponent-calculator",
+      "version": 1,
+      "slug": "exponent-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "base": -2,
+            "exponent": 5
+          },
+          "expected": -32,
+          "output": {
+            "result": -32
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "base": 0,
+            "exponent": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "base": -1,
+        "exponent": 0.5
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 224,
+      "engineId": "launch-logarithm-calculator",
+      "version": 1,
+      "slug": "logarithm-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "x": 81,
+            "base": 3
+          },
+          "expected": 4,
+          "output": {
+            "result": 4.000000000000001
+          },
+          "absoluteError": 8.881784197001252e-16,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "x": 1,
+            "base": 2
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "x": 2,
+        "base": 1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 226,
+      "engineId": "launch-remainder-calculator",
+      "version": 1,
+      "slug": "remainder-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "a": -17,
+            "b": 5
+          },
+          "expected": -2,
+          "output": {
+            "result": -2
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "a": 0,
+            "b": 1
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "a": 1,
+        "b": 0
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 227,
+      "engineId": "launch-lcm-calculator",
+      "version": 1,
+      "slug": "lcm-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "a": 21,
+            "b": 6
+          },
+          "expected": 42,
+          "output": {
+            "result": 42
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "a": 1,
+            "b": 1
+          },
+          "expected": 1,
+          "output": {
+            "result": 1
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "a": 0,
+        "b": 1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 231,
+      "engineId": "launch-scientific-notation-calculator",
+      "version": 1,
+      "slug": "scientific-notation-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "coefficient": 1.25,
+            "exponent": -3
+          },
+          "expected": 0.00125,
+          "output": {
+            "result": 0.00125
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "coefficient": 0,
+            "exponent": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "coefficient": 1,
+        "exponent": 10000
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 234,
+      "engineId": "launch-percent-error-calculator",
+      "version": 1,
+      "slug": "percent-error-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "observed": 105,
+            "actual": 100
+          },
+          "expected": 5,
+          "output": {
+            "result": 5
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "observed": 100,
+            "actual": 100
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "observed": 1,
+        "actual": 0
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    },
+    {
+      "catalogId": 230,
+      "engineId": "launch-rounding-calculator",
+      "version": 1,
+      "slug": "rounding-calculator",
+      "witnesses": [
+        {
+          "kind": "numerical",
+          "input": {
+            "value": 12.345,
+            "decimals": 2
+          },
+          "expected": 12.35,
+          "output": {
+            "result": 12.35
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        },
+        {
+          "kind": "boundary",
+          "input": {
+            "value": 0,
+            "decimals": 0
+          },
+          "expected": 0,
+          "output": {
+            "result": 0
+          },
+          "absoluteError": 0,
+          "repeatedDeterministicRunsAgree": true,
+          "immutableReplay": true,
+          "tamperedOutputRejected": true
+        }
+      ],
+      "rejectedInput": {
+        "value": 1,
+        "decimals": -1
+      },
+      "canonicalAccepted": false,
+      "publicationEligible": false
+    }
+  ],
+  "counts": {
+    "identities": 21,
+    "numerical": 21,
+    "boundaries": 21,
+    "rejections": 21,
+    "newlyPublicationEligible": 0
+  },
+  "releaseHold": true
+}
