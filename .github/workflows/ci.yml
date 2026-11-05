@@ -415,7 +415,7 @@ jobs:
           SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   publication-factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 12
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -427,7 +427,6 @@ jobs:
         env:
           AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Preserve read-only production URL evidence
-        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: publication-fourday-routes-${{ github.event.pull_request.head.sha || github.sha }}
