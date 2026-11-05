@@ -13,7 +13,8 @@ trap cleanup EXIT
 trap 'exit 1' HUP INT TERM
 url='https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_156.0.8078.47-1_amd64.deb'
 checksum='6c92cd22e90c6e3e255d782991543fa2091db8614e8536a971a7433a5c4d7ac8'
-curl --fail --silent --show-error --location --connect-timeout 15 --max-time 120 "$url" -o "$archive"
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+sh "$script_dir/download-ci-artifact.sh" "$url" "$archive"
 if ! printf '%s  %s\n' "$checksum" "$archive" | sha256sum --check --status; then
   echo 'Pinned CI browser checksum mismatch' >&2
   exit 1

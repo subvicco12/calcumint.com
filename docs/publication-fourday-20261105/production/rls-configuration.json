@@ -1,0 +1,1162 @@
+{
+  "tables": [
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "schema": "public",
+      "force_rls": false,
+      "table_name": "calculator_catalog_admin",
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "schema": "public",
+      "force_rls": false,
+      "table_name": "calculator_qa_checks",
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "schema": "public",
+      "force_rls": false,
+      "table_name": "calculator_review_events",
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "schema": "public",
+      "force_rls": false,
+      "table_name": "calculator_source_evidence",
+      "rls_enabled": true
+    }
+  ],
+  "policies": [
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_catalog_admin",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalog_admin_read",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_catalog_admin",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalog_editor_insert",
+      "schemaname": "public",
+      "with_check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text, 'editor'::text]) AND (created_by = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text, 'editor'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_catalog_admin",
+      "permissive": "PERMISSIVE",
+      "policyname": "catalog_editor_update",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "permissive": "PERMISSIVE",
+      "policyname": "qa_admin_read",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "DELETE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "permissive": "PERMISSIVE",
+      "policyname": "qa_reviewer_delete",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "permissive": "PERMISSIVE",
+      "policyname": "qa_reviewer_insert",
+      "schemaname": "public",
+      "with_check": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])"
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "permissive": "PERMISSIVE",
+      "policyname": "qa_reviewer_update",
+      "schemaname": "public",
+      "with_check": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])"
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_review_events",
+      "permissive": "PERMISSIVE",
+      "policyname": "events_admin_insert",
+      "schemaname": "public",
+      "with_check": "(is_platform_admin() AND (actor_id = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_review_events",
+      "permissive": "PERMISSIVE",
+      "policyname": "events_admin_read",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "DELETE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "permissive": "PERMISSIVE",
+      "policyname": "source_evidence_admin_delete",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "permissive": "PERMISSIVE",
+      "policyname": "source_evidence_admin_read",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "permissive": "PERMISSIVE",
+      "policyname": "source_evidence_reviewer_insert",
+      "schemaname": "public",
+      "with_check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text]) AND (reviewed_by = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "permissive": "PERMISSIVE",
+      "policyname": "source_evidence_reviewer_update",
+      "schemaname": "public",
+      "with_check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text]) AND (reviewed_by = ( SELECT auth.uid() AS uid)))"
+    }
+  ],
+  "functions": [
+    {
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "proname": "list_published_calculator_manifest",
+      "arguments": "",
+      "volatility": "s",
+      "configuration": [
+        "search_path=public"
+      ],
+      "security_definer": true
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+      "proname": "validate_calculator_publish_gate",
+      "arguments": "p_calculator_id uuid",
+      "volatility": "v",
+      "configuration": [
+        "search_path=public"
+      ],
+      "security_definer": true
+    }
+  ],
+  "observed_at": "2026-11-05T17:20:02.809699+00:00",
+  "table_grants": [
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_catalog_admin",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_qa_checks",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_review_events",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "anon",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "authenticated",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "postgres",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "YES",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "DELETE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "INSERT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "REFERENCES"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "SELECT"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRIGGER"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "TRUNCATE"
+    },
+    {
+      "grantee": "service_role",
+      "grantor": "postgres",
+      "table_name": "calculator_source_evidence",
+      "is_grantable": "NO",
+      "table_schema": "public",
+      "privilege_type": "UPDATE"
+    }
+  ],
+  "function_grants": [
+    {
+      "grantee": "anon",
+      "is_grantable": "NO",
+      "routine_name": "list_published_calculator_manifest",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    },
+    {
+      "grantee": "authenticated",
+      "is_grantable": "NO",
+      "routine_name": "list_published_calculator_manifest",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    },
+    {
+      "grantee": "postgres",
+      "is_grantable": "YES",
+      "routine_name": "list_published_calculator_manifest",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    },
+    {
+      "grantee": "service_role",
+      "is_grantable": "NO",
+      "routine_name": "list_published_calculator_manifest",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    },
+    {
+      "grantee": "authenticated",
+      "is_grantable": "NO",
+      "routine_name": "validate_calculator_publish_gate",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    },
+    {
+      "grantee": "postgres",
+      "is_grantable": "YES",
+      "routine_name": "validate_calculator_publish_gate",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    },
+    {
+      "grantee": "service_role",
+      "is_grantable": "NO",
+      "routine_name": "validate_calculator_publish_gate",
+      "privilege_type": "EXECUTE",
+      "routine_schema": "public"
+    }
+  ]
+}

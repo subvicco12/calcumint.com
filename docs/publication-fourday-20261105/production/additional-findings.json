@@ -1,0 +1,142 @@
+{
+  "observed_at": "2026-11-05T17:02:54.619193+00:00",
+  "cohort_source": "docs/first20-publication/input/publication-readiness-register-44.json rows[].slug",
+  "qa_aggregate": [
+    {
+      "count": 484,
+      "cohort": "candidate44",
+      "status": "passed",
+      "nonempty_details": 484,
+      "details_with_http_url": 0,
+      "active_review_role_count": 484
+    },
+    {
+      "count": 176,
+      "cohort": "candidate44",
+      "status": "waived",
+      "nonempty_details": 176,
+      "details_with_http_url": 0,
+      "active_review_role_count": 176
+    },
+    {
+      "count": 1815,
+      "cohort": "other165",
+      "status": "passed",
+      "nonempty_details": 1815,
+      "details_with_http_url": 0,
+      "active_review_role_count": 1815
+    },
+    {
+      "count": 660,
+      "cohort": "other165",
+      "status": "waived",
+      "nonempty_details": 660,
+      "details_with_http_url": 0,
+      "active_review_role_count": 660
+    }
+  ],
+  "source_role_aggregate": [
+    {
+      "count": 44,
+      "cohort": "candidate44",
+      "active_review_role_count": 44
+    },
+    {
+      "count": 166,
+      "cohort": "other165",
+      "active_review_role_count": 166
+    }
+  ],
+  "cohort_uniformity": {
+    "candidate44_pattern_match": [
+      {
+        "check_type": "accessibility",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "engine-tests",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "entitlement-validation",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "formula-review",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "methodology",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "performance",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "reverse-solve",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "scenario-reconciliation",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "schedule-reconciliation",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "security",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "sensitivity-validation",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "seo-content",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "sources",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "ux-responsive",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      },
+      {
+        "check_type": "visualization-reconciliation",
+        "cohort_count": 44,
+        "same_details_as_square": 44
+      }
+    ],
+    "review_event_evidence_shape": null
+  },
+  "interpretation": [
+    "All3135 QA records have nonempty narrative details; none contain HTTP(S) URLs. They are not bare empty-status assertions. Narrative details include CI identifiers and repository SHA references, but artifact contents were not independently checked.",
+    "All660 QA records for44 candidates have narrative details, including176 documented waiver rationales. Shared rationale claims B11 contract excludes reverse solver,scenario,schedule,calculator-specific visualization. Such historical applicability claims do not establish canonical contract acceptance.",
+    "Current active role EXISTS is true for checked_by on all3135 QA records and reviewed_by on all210 source records, using platform_admins.active and role owner/admin/reviewer. No identities/UUIDs returned. This establishes current role membership only, not role membership at historical review time, independent review, or mathematical competence.",
+    "No standalone QA evidence URL column exists: QA has details only. Source evidence has label,url,source_kind,reviewed_by,reviewed_at. Review events have notes and metadata; raw event notes/metadata not read, so absence of evidence there is not claimed.",
+    "No canonical eligibility/classification upgrade follows from these records. Underlying CI artifacts,source contents and canonical waiver authorization remain unverified."
+  ],
+  "sample_slugs": [
+    "percentage-of-value-calculator",
+    "square-calculator",
+    "percentage-increase-calculator"
+  ]
+}

@@ -1,0 +1,23 @@
+full-product	Provision pinned isolated browser fixture	﻿2026-11-05T16:41:54.0034400Z ##[group]Run browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:41:54.0035058Z [36;1mbrowser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")[0m
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:41:54.0035511Z [36;1mecho "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"[0m
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:41:54.0035847Z [36;1m"$browser" --version[0m
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:41:54.0056852Z shell: /usr/bin/bash -e {0}
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:41:54.0057112Z ##[endgroup]
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:43:54.0208031Z curl: (28) Operation timed out after 120000 milliseconds with 11304960 out of 144849192 bytes received
+full-product	Provision pinned isolated browser fixture	2026-11-05T16:43:54.0291529Z ##[error]Process completed with exit code 28.
+validate	Require every verification job to succeed	﻿2026-11-05T16:51:48.5763870Z ##[group]Run test "$CHECKS_RESULT" = success
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5764390Z [36;1mtest "$CHECKS_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5764929Z [36;1mtest "$BUILD_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5765522Z [36;1mtest "$FULL_PRODUCT_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5765965Z [36;1mtest "$SOURCE_ACCEPTANCE_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5766454Z [36;1mtest "$PUBLICATION_FACTORY_RESULT" = success[0m
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5971741Z shell: /usr/bin/bash -e {0}
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5972335Z env:
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5972886Z   CHECKS_RESULT: success
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5973272Z   BUILD_RESULT: success
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5973656Z   FULL_PRODUCT_RESULT: failure
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5974023Z   SOURCE_ACCEPTANCE_RESULT: success
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5974401Z   PUBLICATION_FACTORY_RESULT: success
+validate	Require every verification job to succeed	2026-11-05T16:51:48.5975132Z ##[endgroup]
+validate	Require every verification job to succeed	2026-11-05T16:51:48.6111772Z ##[error]Process completed with exit code 1.
