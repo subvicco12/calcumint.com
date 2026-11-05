@@ -1,0 +1,182 @@
+{
+  "observed_at": "2026-11-05T16:55:11.60396+00:00",
+  "project_id": "zpwpstsvztyshcnwdfye",
+  "project_name": "CalcuMint",
+  "mode": "Read-only production governance metadata; BEGIN TRANSACTION READ ONLY and SELECT only. No auth/customer rows, keys, mutation functions or RPCs read/called.",
+  "catalog_count": 209,
+  "lifecycle_counts": [
+    {
+      "count": 209,
+      "lifecycle": "published"
+    }
+  ],
+  "version_counts": {
+    "1": 209
+  },
+  "risk_class_counts": {
+    "standard": 209
+  },
+  "catalog_reviewer_assigned_count": 0,
+  "certification_metadata_present_count": 0,
+  "canonical_metadata_present_count": 0,
+  "repository_source_present_count": 81,
+  "source_record_count": 210,
+  "source_kind_counts": {
+    "methodology": 199,
+    "official": 11
+  },
+  "source_domains": {
+    "github.com": 199,
+    "www.nist.gov": 9,
+    "www.bipm.org": 2
+  },
+  "source_reviewed_count": 210,
+  "source_reviewer_recorded_count": 210,
+  "qa_record_count": 3135,
+  "qa_counts": [
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "accessibility"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "engine-tests"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "entitlement-validation"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "formula-review"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "methodology"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "performance"
+    },
+    {
+      "count": 209,
+      "status": "waived",
+      "check_type": "reverse-solve"
+    },
+    {
+      "count": 209,
+      "status": "waived",
+      "check_type": "scenario-reconciliation"
+    },
+    {
+      "count": 209,
+      "status": "waived",
+      "check_type": "schedule-reconciliation"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "security"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "sensitivity-validation"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "seo-content"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "sources"
+    },
+    {
+      "count": 209,
+      "status": "passed",
+      "check_type": "ux-responsive"
+    },
+    {
+      "count": 209,
+      "status": "waived",
+      "check_type": "visualization-reconciliation"
+    }
+  ],
+  "qa_checker_recorded_count": 3135,
+  "review_event_count": 3,
+  "review_events": [
+    {
+      "id": 1,
+      "slug": "percentage-of-value-calculator",
+      "to_state": "review",
+      "created_at": "2026-09-30T00:34:03.970244+00:00",
+      "event_type": "lifecycle-transition",
+      "from_state": "draft",
+      "actor_recorded": true
+    },
+    {
+      "id": 2,
+      "slug": "percentage-of-value-calculator",
+      "to_state": "certified",
+      "created_at": "2026-09-30T00:34:03.970244+00:00",
+      "event_type": "lifecycle-transition",
+      "from_state": "review",
+      "actor_recorded": true
+    },
+    {
+      "id": 3,
+      "slug": "percentage-of-value-calculator",
+      "to_state": "published",
+      "created_at": "2026-09-30T00:34:03.970244+00:00",
+      "event_type": "lifecycle-transition",
+      "from_state": "certified",
+      "actor_recorded": true
+    }
+  ],
+  "manifest_predicate": "calculator_catalog_admin.lifecycle = 'published'; returns calculator_key,slug,version",
+  "observed_gate_definition": "At least one source evidence row; 15 required QA checks passed or waived. If rulePackRequired=true, also complete ruleMetadata and rule-pack-validation. Financial/health/tax additionally ymyl-review and active review-capable reviewer. All observed rows standard and rulePackRequired=false.",
+  "eligibility_recomputed_from_selected_records": {
+    "catalog_rows": 209,
+    "with_source_record": 209,
+    "with_all_15_qa_passed_or_waived": 209,
+    "rule_pack_required_true": 0,
+    "ymyl_risk_rows": 0,
+    "publication_predicate_satisfied": 209
+  },
+  "reliability": "Direct connected production metadata: initial catalog observation at 2026-11-05T16:55:11.60396+00:00; narrative details and current review-role evidence at 2026-11-05T17:02:54.619193+00:00. All3135 QA rows have nonempty narrative details, none contain HTTP(S) URLs. Bounded core percentage and simple-calculator narratives plus aggregated patterns and44-candidate equality were inspected, including waiver rationale. Narratives cite CI identifiers and repository SHA references; actual CI artifacts, source contents, historical authorization, reviewer qualifications, and canonical applicability were not independently verified. Raw receipts remain unchanged.",
+  "blockers_and_limits": [
+    "Current published lifecycle is established for 209 engine slugs only; it does not establish canonical calculator coverage or approval.",
+    "No canonical mapping/certification metadata found; repositorySource paths present for 81 rows do not establish authoritative canonical identity.",
+    "Only one calculator has recorded lifecycle transition history; absence for the remaining 208 prevents independent reconstruction of their certification transitions.",
+    "Four checks are waived for every calculator (reverse-solve,scenario-reconciliation,schedule-reconciliation,visualization-reconciliation). Narrative waiver rationales were inspected:44 candidates share per-type B11 contract exclusions. Independent canonical applicability and canonical waiver authorization remain unverified.",
+    "210 source rows carry review timestamps and nonnull reviewer references. Current active permitted review-role membership was verified for all210 source reviewers and3135 QA checkers using EXISTS booleans/aggregates only. Names, emails, auth/customer records, and reviewer UUIDs were not returned; historical authorization and reviewer qualification remain unknown.",
+    "No production writes, activation, scheduling, publication, or mutation/RPC calls occurred.",
+    "Raw review-event notes and metadata contents were not inspected; no absence of supporting evidence in those fields is claimed. QA has narrative details but no standalone evidence-URL column; separate source evidence URLs were recorded."
+  ],
+  "additional_evidence_observed_at": "2026-11-05T17:02:54.619193+00:00",
+  "qa_narrative_details": {
+    "nonempty_count": 3135,
+    "with_http_url_count": 0,
+    "candidate44_records": 660,
+    "candidate44_passed": 484,
+    "candidate44_waived": 176,
+    "candidate44_shared_details": "All44 share identical narrative details for each of15 check types; equality verified in additional receipts.",
+    "waiver_rationale_inspected": true,
+    "reference": "additional-evidence.json"
+  },
+  "current_review_role_checks": {
+    "observed_at": "2026-11-05T17:02:54.619193+00:00",
+    "predicate": "platform_admins.active and role in (owner,admin,reviewer), joined internally by reviewer/checker reference; only booleans and aggregates returned",
+    "qa_checker_active_review_role_count": 3135,
+    "source_reviewer_active_review_role_count": 210,
+    "limits": "Current role membership does not establish historical authorization, independent review, or mathematical competence."
+  }
+}

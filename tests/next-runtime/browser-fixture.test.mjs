@@ -37,3 +37,9 @@ exit 43
   await assert.rejects(access(marker),{code:'ENOENT'});
  }finally{await rm(dir,{recursive:true,force:true})}
 });
+
+test('browser transport recovers one truncated HTTP transfer and fails closed after bounded retry',()=>{
+ const root=fileURLToPath(new URL('../../',import.meta.url));
+ const result=spawnSync('python3',['-m','unittest','discover','-s','tests/publication-fourday/ci','-p','test_*.py'],{cwd:root,encoding:'utf8',timeout:15000});
+ assert.equal(result.error,undefined);assert.equal(result.status,0,result.stdout+result.stderr);
+});

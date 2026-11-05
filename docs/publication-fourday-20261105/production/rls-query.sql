@@ -1,0 +1,9 @@
+BEGIN TRANSACTION READ ONLY;
+SELECT jsonb_build_object(
+'observed_at',now(),
+'tables',(SELECT jsonb_agg(t) FROM (SELECT n.nspname AS schema,c.relname AS table_name,c.relrowsecurity AS rls_enabled,c.relforcerowsecurity AS force_rls,c.relacl::text AS acl FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND c.relname IN ('calculator_catalog_admin','calculator_source_evidence','calculator_qa_checks','calculator_review_events') ORDER BY c.relname)t),
+'policies',(SELECT jsonb_agg(t) FROM (SELECT schemaname,tablename,policyname,permissive,roles,cmd,qual,with_check FROM pg_policies WHERE schemaname='public' AND tablename IN ('calculator_catalog_admin','calculator_source_evidence','calculator_qa_checks','calculator_review_events') ORDER BY tablename,policyname)t),
+'table_grants',(SELECT jsonb_agg(t) FROM (SELECT table_schema,table_name,grantor,grantee,privilege_type,is_grantable FROM information_schema.table_privileges WHERE table_schema='public' AND table_name IN ('calculator_catalog_admin','calculator_source_evidence','calculator_qa_checks','calculator_review_events') ORDER BY table_name,grantee,privilege_type)t),
+'functions',(SELECT jsonb_agg(t) FROM (SELECT p.proname,pg_get_function_identity_arguments(p.oid) AS arguments,p.prosecdef AS security_definer,p.provolatile AS volatility,p.proconfig AS configuration,p.proacl::text AS acl FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname IN ('list_published_calculator_manifest','validate_calculator_publish_gate') ORDER BY p.proname)t),
+'function_grants',(SELECT jsonb_agg(t) FROM (SELECT routine_schema,routine_name,grantee,privilege_type,is_grantable FROM information_schema.routine_privileges WHERE routine_schema='public' AND routine_name IN ('list_published_calculator_manifest','validate_calculator_publish_gate') ORDER BY routine_name,grantee)t)
+) AS evidence; COMMIT;

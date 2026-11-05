@@ -415,10 +415,24 @@ jobs:
           SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   publication-factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 12
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      - name: Read-only production URL evidence (no release authority)
+        timeout-minutes: 5
+        run: |
+          python3 -m unittest discover -s tests/publication-fourday/routes -p 'test_*.py'
+          python3 tests/publication-fourday/routes/ci_probe.py --output "$RUNNER_TEMP/publication-fourday-routes/observations.json"
+        env:
+          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Preserve read-only production URL evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication-fourday-routes-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/publication-fourday-routes/observations.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Use Node.js 22
         uses: actions/setup-node@v5
         with:

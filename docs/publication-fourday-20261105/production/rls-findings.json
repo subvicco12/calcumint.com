@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-11-05T17:20:02.809699+00:00",
+  "scope": "Configuration inspection only for4 publication governance tables and2 previously captured publication functions. BEGIN TRANSACTION READ ONLY; metadata SELECT only.",
+  "facts": [
+    "All4 tables have relrowsecurity=true and relforcerowsecurity=false.",
+    "13 permissive policies target public role; all4 table SELECT policies require is_platform_admin(). Catalog INSERT/UPDATE include owner/admin/reviewer/editor role helper checks; QA mutations require owner/admin/reviewer; source deletion owner/admin, insert/update owner/admin/reviewer and reviewed_by=auth.uid(); review events INSERT requires is_platform_admin() and actor_id=auth.uid().",
+    "All4 table ACLs grant anon,authenticated,service_role SELECT/INSERT/UPDATE/DELETE/TRUNCATE/REFERENCES/TRIGGER plus ACL maintenance flag as captured; postgres holds owner grants. Broad table grants coexist with RLS policies; table ACL alone does not establish row access.",
+    "Both functions are SECURITY DEFINER with search_path=public. Manifest EXECUTE grantees:anon,authenticated,service_role,postgres; validate gate EXECUTE grantees:authenticated,service_role,postgres. No PUBLIC execute entry is present in either captured ACL.",
+    "Previously captured manifest definition selects only calculator_key,slug,version where lifecycle=published. Gate definition includes service_role/platform-admin guard."
+  ],
+  "limits": [
+    "Genuine authorization behavior under real anon/authenticated/privileged JWT contexts was not tested. No SET ROLE, JWT impersonation, RPC/function execution, write, or source-fetch performed.",
+    "Role helper definitions and inherited role privileges were not exhaustively inspected. Configuration metadata does not certify effective access isolation.",
+    "TRUNCATE privileges are present in table grants and TRUNCATE is outside row-level policy filtering; execution reachability through application/API or other role capabilities was not tested. No remediation attempted.",
+    "FORCE RLS=false is observed; owner/bypass behavior was not exercised. Security-definer functions can execute with owner privileges; body/grants are configuration evidence rather than caller authorization test evidence."
+  ]
+}
