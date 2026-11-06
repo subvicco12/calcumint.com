@@ -151,7 +151,8 @@ describe("Final Master database certification gate", () => {
 
   it("does not treat absent registry rule metadata as proof of non-applicability", () => {
     expect(adminActions).toContain("input.rulePackRequired || registryRegulatory.rulePackRequired");
-    expect(adminActions).toContain("item.rulePackRequired || registryRegulatory.rulePackRequired");
+    expect(adminActions).toContain("const draft = prepareCatalogDraft(input)");
+    expect(adminActions).toContain("const rows = parsed.map(prepareCatalogDraft)");
     expect(adminActions).not.toContain("registryRegulatory.matched ? { rulePackRequired: registryRegulatory.rulePackRequired");
   });
 

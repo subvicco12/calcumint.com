@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { canTransition, lifecycleStates, qaCheckTypes, requiredQaChecks, roleCanTransition, type AdminRole, type LifecycleState } from "@/lib/admin/publishing";
-import { buildVerifiedCatalogRegulatoryMetadata } from "@/calculators/regulatory-metadata";
+import { buildVerifiedCatalogRegulatoryMetadata, resolveRegistryDefinition } from "@/calculators/regulatory-metadata";
 
 async function requirePlatformAdmin() {
   const supabase = await createSupabaseServerClient();
@@ -27,8 +27,25 @@ const createSchema = z.object({
   rulePackRequired: z.boolean().default(false)
 });
 
+function prepareCatalogDraft(input: z.infer<typeof createSchema>) {
+  const identity = { id: input.calculatorKey, slug: input.slug };
+  const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata(identity);
+  const definition = resolveRegistryDefinition(identity);
+  if (!registryRegulatory.matched || !definition) throw new Error("Catalog identity must exactly match a registered calculator id and slug");
+  if (input.riskClass !== definition.riskClass) throw new Error("Calculator risk class must match the registered registry definition");
+  // The existing audited creation RPC defaults the table version to1. Refuse
+  // future successors until a version-aware database contract is adopted.
+  if (definition.version !== 1) throw new Error("Registered version requires a version-aware draft creation contract");
+  const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
+  const metadata = {
+    ...(registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired }),
+    engineBinding: { engineId: definition.id, slug: definition.slug, version: definition.version }
+  };
+  return { calculator_key: definition.id, slug: definition.slug, title: input.title, category: input.category, risk_class: definition.riskClass, metadata, version: definition.version };
+}
+
 export async function createCatalogCalculator(formData: FormData) {
-  const { supabase, user } = await requirePlatformAdmin();
+  const { supabase } = await requirePlatformAdmin();
   const input = createSchema.parse({
     calculatorKey: formData.get("calculatorKey"),
     slug: formData.get("slug"),
@@ -37,17 +54,14 @@ export async function createCatalogCalculator(formData: FormData) {
     riskClass: formData.get("riskClass"),
     rulePackRequired: formData.get("rulePackRequired") === "true"
   });
-  const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: input.calculatorKey, slug: input.slug });
-  if (!registryRegulatory.matched) throw new Error("Catalog identity must exactly match a registered calculator id and slug");
-  const effectiveRulePackRequired = input.rulePackRequired || registryRegulatory.rulePackRequired;
-  const regulatoryMetadata = registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired };
+  const draft = prepareCatalogDraft(input);
   const { error } = await supabase.rpc("create_catalog_calculator_with_audit", {
     p_calculator_key: input.calculatorKey,
     p_slug: input.slug,
     p_title: input.title,
     p_category: input.category,
-    p_risk_class: input.riskClass,
-    p_metadata: regulatoryMetadata
+    p_risk_class: draft.risk_class,
+    p_metadata: draft.metadata
   });
   if (error) throw new Error(error.message);
   revalidatePath("/admin");
@@ -132,28 +146,16 @@ const bulkItemSchema = z.object({
 });
 
 export async function importCalculatorInventory(formData: FormData) {
-  const { supabase, user, role } = await requirePlatformAdmin();
+  const { supabase, role } = await requirePlatformAdmin();
   if (!(["owner", "admin"] as AdminRole[]).includes(role)) throw new Error("Admin permission required");
   const raw = String(formData.get("inventory") ?? "");
   const parsed = z.array(bulkItemSchema).min(1).max(250).parse(JSON.parse(raw));
-  // Resolve and validate deterministic registry identities before creating a processing job.
-  // A conflicting id/slug must fail without leaving an orphaned job row behind.
-  const rows = parsed.map((item) => {
-    const registryRegulatory = buildVerifiedCatalogRegulatoryMetadata({ id: item.calculatorKey, slug: item.slug });
-    if (!registryRegulatory.matched) throw new Error(`Catalog identity must exactly match the registry: ${item.calculatorKey} / ${item.slug}`);
-    const effectiveRulePackRequired = item.rulePackRequired || registryRegulatory.rulePackRequired;
-    return { calculator_key: item.calculatorKey, slug: item.slug, title: item.title, category: item.category, risk_class: item.riskClass, metadata: registryRegulatory.rulePackRequired ? { rulePackRequired: true, ruleMetadata: registryRegulatory.ruleMetadata } : { rulePackRequired: effectiveRulePackRequired }, created_by: user.id };
-  });
-  const { data: job, error: jobError } = await supabase.from("calculator_bulk_jobs").insert({ job_type: "inventory-import", requested_by: user.id, status: "processing", payload: { count: parsed.length } }).select("id").single();
-  if (jobError) throw new Error(jobError.message);
-  const { data: inserted, error } = await supabase.from("calculator_catalog_admin").upsert(rows, { onConflict: "calculator_key", ignoreDuplicates: true }).select("id,risk_class,metadata");
-  if (error) {
-    await supabase.from("calculator_bulk_jobs").update({ status: "failed", error_message: error.message, completed_at: new Date().toISOString() }).eq("id", job.id);
-    throw new Error(error.message);
-  }
-  const checkRows = (inserted ?? []).flatMap((item) => requiredQaChecks(String(item.risk_class) as "standard" | "financial" | "health" | "tax", item.metadata?.rulePackRequired === true).map((checkType) => ({ calculator_id: item.id, check_type: checkType })));
-  if (checkRows.length) await supabase.from("calculator_qa_checks").upsert(checkRows, { onConflict: "calculator_id,check_type", ignoreDuplicates: true });
-  await supabase.from("calculator_bulk_jobs").update({ status: "completed", result: { received: parsed.length, inserted: inserted?.length ?? 0 }, completed_at: new Date().toISOString() }).eq("id", job.id);
+  // Validate the entire registry-bound request before the only mutation. The
+  // guarded invoker RPC commits drafts, pending QA, audits and job atomically.
+  // Missing adoption fails closed; never fall back to independent table writes.
+  const rows = parsed.map(prepareCatalogDraft);
+  const { error } = await supabase.rpc("prepare_catalog_inventory_drafts", { p_items: rows });
+  if (error) throw new Error(`Draft inventory preparation failed: ${error.message}`);
   revalidatePath("/admin");
   revalidatePath("/admin/calculators");
 }

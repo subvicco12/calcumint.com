@@ -485,6 +485,9 @@ jobs:
         env:
           SHORTEST_PUBLICATION_RECEIPT: ${{ runner.temp }}/shortest-publication-20
           AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Guarded atomic draft inventory acceptance
+        timeout-minutes: 3
+        run: node tests/sprint20-publication/acceptance.mjs
       - name: Preserve shortest publication cohort acceptance
         uses: actions/upload-artifact@v4
         with:
