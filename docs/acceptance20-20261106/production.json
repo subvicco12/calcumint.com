@@ -1,0 +1,623 @@
+{
+  "policies": [
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_catalog_admin",
+      "policyname": "catalog_admin_read",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_catalog_admin",
+      "policyname": "catalog_editor_insert",
+      "with_check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text, 'editor'::text]) AND (created_by = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text, 'editor'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_catalog_admin",
+      "policyname": "catalog_editor_update",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "policyname": "qa_admin_read",
+      "with_check": null
+    },
+    {
+      "cmd": "DELETE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "policyname": "qa_reviewer_delete",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "policyname": "qa_reviewer_insert",
+      "with_check": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])"
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_qa_checks",
+      "policyname": "qa_reviewer_update",
+      "with_check": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])"
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_review_events",
+      "policyname": "events_admin_insert",
+      "with_check": "(is_platform_admin() AND (actor_id = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_review_events",
+      "policyname": "events_admin_read",
+      "with_check": null
+    },
+    {
+      "cmd": "DELETE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "policyname": "source_evidence_admin_delete",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "is_platform_admin()",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "policyname": "source_evidence_admin_read",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "policyname": "source_evidence_reviewer_insert",
+      "with_check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text]) AND (reviewed_by = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text])",
+      "roles": [
+        "public"
+      ],
+      "tablename": "calculator_source_evidence",
+      "policyname": "source_evidence_reviewer_update",
+      "with_check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text, 'reviewer'::text]) AND (reviewed_by = ( SELECT auth.uid() AS uid)))"
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "((user_id = ( SELECT auth.uid() AS uid)) AND active)",
+      "roles": [
+        "public"
+      ],
+      "tablename": "platform_admins",
+      "policyname": "admins_read_self",
+      "with_check": null
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "storage-conversion-calculator",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "technology.storage-conversion",
+      "lifecycle": null,
+      "catalog_id": 374,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "bandwidth-calculator",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "technology.bandwidth",
+      "lifecycle": null,
+      "catalog_id": 370,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "download-time-calculator",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "technology.download-time",
+      "lifecycle": null,
+      "catalog_id": 371,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "upload-time-calculator",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "technology.upload-time",
+      "lifecycle": null,
+      "catalog_id": 372,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "data-transfer-calculator",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "technology.data-transfer",
+      "lifecycle": null,
+      "catalog_id": 373,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "time-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.time",
+      "lifecycle": null,
+      "catalog_id": 432,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "frequency-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.frequency",
+      "lifecycle": null,
+      "catalog_id": 440,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "data-storage-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.data-storage",
+      "lifecycle": null,
+      "catalog_id": 434,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "length-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.length",
+      "lifecycle": null,
+      "catalog_id": 423,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "area-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.area",
+      "lifecycle": null,
+      "catalog_id": 424,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "volume-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.volume",
+      "lifecycle": null,
+      "catalog_id": 425,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "speed-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.speed",
+      "lifecycle": null,
+      "catalog_id": 428,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "force-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.force",
+      "lifecycle": null,
+      "catalog_id": 438,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "density-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.density",
+      "lifecycle": null,
+      "catalog_id": 437,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "torque-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.torque",
+      "lifecycle": null,
+      "catalog_id": 439,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "pressure-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.pressure",
+      "lifecycle": null,
+      "catalog_id": 429,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "energy-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.energy",
+      "lifecycle": null,
+      "catalog_id": 430,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "power-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.power",
+      "lifecycle": null,
+      "catalog_id": 431,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "angle-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.angle",
+      "lifecycle": null,
+      "catalog_id": 433,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    },
+    {
+      "slug": "temperature-converter",
+      "qa_rows": 0,
+      "canonical": null,
+      "engine_id": "conversion.temperature",
+      "lifecycle": null,
+      "catalog_id": 427,
+      "risk_class": null,
+      "source_rows": 0,
+      "hosted_match": false,
+      "source_count": null,
+      "certification": null,
+      "hosted_version": null,
+      "expected_version": 1,
+      "reviewer_assigned": false,
+      "reviewer_active_capable": false
+    }
+  ],
+  "observed_at": "2026-11-06T03:44:56.489509+00:00",
+  "project_expected": "zpwpstsvztyshcnwdfye",
+  "governance_tables": [
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "relname": "calculator_catalog_admin",
+      "force_rls": false,
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "relname": "calculator_qa_checks",
+      "force_rls": false,
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "relname": "calculator_review_events",
+      "force_rls": false,
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "relname": "calculator_source_evidence",
+      "force_rls": false,
+      "rls_enabled": true
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "relname": "platform_admins",
+      "force_rls": false,
+      "rls_enabled": true
+    }
+  ],
+  "governance_triggers": [
+    {
+      "tgname": "calculator_catalog_derived_source_count",
+      "relname": "calculator_catalog_admin",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER calculator_catalog_derived_source_count BEFORE INSERT OR UPDATE OF source_count ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION enforce_derived_source_count()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "calculator_publish_gate_before_update",
+      "relname": "calculator_catalog_admin",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER calculator_publish_gate_before_update BEFORE UPDATE ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION enforce_calculator_publish_gate()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "calculator_reviewer_assignment_authority",
+      "relname": "calculator_catalog_admin",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER calculator_reviewer_assignment_authority BEFORE INSERT OR UPDATE OF reviewer_id ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION enforce_reviewer_assignment_authority()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "calculator_qa_certification_after_write",
+      "relname": "calculator_qa_checks",
+      "tgenabled": "O",
+      "definition": "CREATE CONSTRAINT TRIGGER calculator_qa_certification_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_qa_checks DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION enforce_qa_evidence_certification()",
+      "tgdeferrable": true,
+      "tginitdeferred": true
+    },
+    {
+      "tgname": "calculator_qa_evidence_authority_before_write",
+      "relname": "calculator_qa_checks",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER calculator_qa_evidence_authority_before_write BEFORE INSERT OR DELETE OR UPDATE ON public.calculator_qa_checks FOR EACH ROW EXECUTE FUNCTION enforce_qa_evidence_authority()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "qa_failed_alert_after_update",
+      "relname": "calculator_qa_checks",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER qa_failed_alert_after_update AFTER UPDATE ON public.calculator_qa_checks FOR EACH ROW EXECUTE FUNCTION raise_failed_qa_alert()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "calculator_source_evidence_certification_after_write",
+      "relname": "calculator_source_evidence",
+      "tgenabled": "O",
+      "definition": "CREATE CONSTRAINT TRIGGER calculator_source_evidence_certification_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_source_evidence DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION enforce_source_evidence_certification()",
+      "tgdeferrable": true,
+      "tginitdeferred": true
+    },
+    {
+      "tgname": "calculator_source_evidence_stamp_before_write",
+      "relname": "calculator_source_evidence",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER calculator_source_evidence_stamp_before_write BEFORE INSERT OR UPDATE ON public.calculator_source_evidence FOR EACH ROW EXECUTE FUNCTION stamp_source_evidence_review()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "calculator_source_evidence_sync_count_after_write",
+      "relname": "calculator_source_evidence",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER calculator_source_evidence_sync_count_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_source_evidence FOR EACH ROW EXECUTE FUNCTION sync_source_evidence_count()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    },
+    {
+      "tgname": "protect_active_ymyl_reviewer_authority_before_update",
+      "relname": "platform_admins",
+      "tgenabled": "O",
+      "definition": "CREATE TRIGGER protect_active_ymyl_reviewer_authority_before_update BEFORE UPDATE OF active, role ON public.platform_admins FOR EACH ROW EXECUTE FUNCTION protect_active_ymyl_reviewer_authority()",
+      "tgdeferrable": false,
+      "tginitdeferred": false
+    }
+  ],
+  "publication_functions": [
+    {
+      "proname": "enforce_calculator_publish_gate",
+      "arguments": "",
+      "definition": "CREATE OR REPLACE FUNCTION public.enforce_calculator_publish_gate()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  v_ok boolean;\n  v_failures text[];\n  v_role text;\n  v_gate_sensitive_change boolean;\nbegin\n  if new.publish_at is distinct from old.publish_at and auth.role() <> 'service_role' then\n    select role into v_role from public.platform_admins where user_id = auth.uid() and active;\n    if v_role not in ('owner','admin') or v_role is null then\n      raise exception 'Owner or admin required to schedule publication';\n    end if;\n  end if;\n\n  if new.lifecycle is distinct from old.lifecycle then\n    if not (\n      (old.lifecycle = 'draft' and new.lifecycle in ('review','archived')) or\n      (old.lifecycle = 'review' and new.lifecycle in ('draft','certified','archived')) or\n      (old.lifecycle = 'certified' and new.lifecycle in ('review','published','archived')) or\n      (old.lifecycle = 'published' and new.lifecycle in ('review','archived')) or\n      (old.lifecycle = 'archived' and new.lifecycle = 'draft')\n    ) then\n      raise exception 'Invalid lifecycle transition: % -> %', old.lifecycle, new.lifecycle;\n    end if;\n\n    if auth.role() <> 'service_role' then\n      select role into v_role from public.platform_admins where user_id = auth.uid() and active;\n      if v_role is null then raise exception 'Platform admin required'; end if;\n      if v_role = 'editor' and new.lifecycle not in ('draft','review') then\n        raise exception 'Editor cannot transition calculator to %', new.lifecycle;\n      end if;\n      if v_role = 'reviewer' and new.lifecycle = 'published' then\n        raise exception 'Reviewer cannot publish calculators';\n      end if;\n    end if;\n  end if;\n\n  v_gate_sensitive_change :=\n    new.lifecycle is distinct from old.lifecycle or\n    new.risk_class is distinct from old.risk_class or\n    new.source_count is distinct from old.source_count or\n    new.reviewer_id is distinct from old.reviewer_id or\n    new.metadata is distinct from old.metadata;\n\n  if new.lifecycle in ('certified','published') and v_gate_sensitive_change then\n    select ok, failures into v_ok, v_failures from public.validate_calculator_publish_gate(new.id);\n    if not v_ok then raise exception 'Publishing gate failed: %', array_to_string(v_failures, '; '); end if;\n  end if;\n\n  if new.lifecycle = 'published' and new.published_at is null then new.published_at := now(); end if;\n  new.updated_at := now();\n  return new;\nend;\n$function$\n",
+      "security_definer": true
+    },
+    {
+      "proname": "list_published_calculator_manifest",
+      "arguments": "",
+      "definition": "CREATE OR REPLACE FUNCTION public.list_published_calculator_manifest()\n RETURNS TABLE(calculator_key text, slug text, version integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select c.calculator_key, c.slug, c.version\n  from public.calculator_catalog_admin c\n  where c.lifecycle = 'published'\n  order by c.slug;\n$function$\n",
+      "security_definer": true
+    },
+    {
+      "proname": "validate_calculator_publish_gate",
+      "arguments": "p_calculator_id uuid",
+      "definition": "CREATE OR REPLACE FUNCTION public.validate_calculator_publish_gate(p_calculator_id uuid)\n RETURNS TABLE(ok boolean, failures text[])\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  v_calc public.calculator_catalog_admin%rowtype;\n  v_failures text[] := '{}';\n  v_required text[] := array[\n    'engine-tests','formula-review','sources','methodology',\n    'reverse-solve','visualization-reconciliation','schedule-reconciliation',\n    'scenario-reconciliation','sensitivity-validation','entitlement-validation',\n    'ux-responsive','performance','security','seo-content','accessibility'\n  ];\n  v_check text; v_status text; v_rule jsonb; v_source jsonb; v_date text;\n  v_reviewer_valid boolean; v_source_count integer;\nbegin\n  if auth.role() <> 'service_role' and not public.is_platform_admin() then raise exception 'Platform admin required'; end if;\n  select * into v_calc from public.calculator_catalog_admin where id = p_calculator_id;\n  if v_calc.id is null then return query select false, array['Calculator not found']; return; end if;\n\n  select count(*)::integer into v_source_count\n  from public.calculator_source_evidence where calculator_id = p_calculator_id;\n  if v_source_count < 1 then\n    v_failures := array_append(v_failures, 'At least one reviewed source evidence record is required');\n  end if;\n\n  if lower(trim(coalesce(v_calc.metadata ->> 'rulePackRequired', ''))) = 'true' then\n    v_required := array_append(v_required, 'rule-pack-validation');\n    if coalesce(jsonb_typeof(v_calc.metadata -> 'ruleMetadata'), '') <> 'array'\n       or coalesce(jsonb_array_length(v_calc.metadata -> 'ruleMetadata'), 0) = 0 then\n      v_failures := array_append(v_failures, 'Complete regulatory rule metadata is required');\n    else\n      for v_rule in select value from jsonb_array_elements(v_calc.metadata -> 'ruleMetadata') loop\n        if trim(coalesce(v_rule #>> '{jurisdiction,country}', '')) = ''\n           or trim(coalesce(v_rule ->> 'ruleVersion', '')) = ''\n           or coalesce(v_rule ->> 'effectiveFrom', '') !~ '^\\\\d{4}-\\\\d{2}-\\\\d{2}$'\n           or coalesce(v_rule ->> 'lastVerifiedAt', '') !~ '^\\\\d{4}-\\\\d{2}-\\\\d{2}$'\n           or coalesce(jsonb_typeof(v_rule -> 'officialSources'), '') <> 'array'\n           or coalesce(jsonb_array_length(v_rule -> 'officialSources'), 0) = 0 then\n          v_failures := array_append(v_failures, 'Regulatory rule metadata is incomplete'); exit;\n        end if;\n        foreach v_date in array array[v_rule ->> 'effectiveFrom', v_rule ->> 'lastVerifiedAt'] loop\n          begin\n            if to_char(v_date::date, 'YYYY-MM-DD') <> v_date then raise exception 'invalid date'; end if;\n          exception when others then\n            v_failures := array_append(v_failures, 'Regulatory rule metadata contains an invalid date'); exit;\n          end;\n        end loop;\n        if array_position(v_failures, 'Regulatory rule metadata contains an invalid date') is not null then exit; end if;\n        if v_rule ? 'effectiveTo' then\n          v_date := v_rule ->> 'effectiveTo';\n          begin\n            if v_date !~ '^\\\\d{4}-\\\\d{2}-\\\\d{2}$'\n               or to_char(v_date::date, 'YYYY-MM-DD') <> v_date\n               or v_date::date < (v_rule ->> 'effectiveFrom')::date then raise exception 'invalid effective period'; end if;\n          exception when others then\n            v_failures := array_append(v_failures, 'Regulatory rule metadata contains an invalid effective period'); exit;\n          end;\n        end if;\n        for v_source in select value from jsonb_array_elements(v_rule -> 'officialSources') loop\n          if jsonb_typeof(v_source) <> 'object'\n             or trim(coalesce(v_source ->> 'label', '')) = ''\n             or trim(coalesce(v_source ->> 'url', '')) = '' then\n            v_failures := array_append(v_failures, 'Regulatory official sources require labels and URLs'); exit;\n          end if;\n        end loop;\n        if array_position(v_failures, 'Regulatory official sources require labels and URLs') is not null then exit; end if;\n      end loop;\n    end if;\n  end if;\n\n  if v_calc.risk_class in ('financial','health','tax') then\n    v_required := array_append(v_required, 'ymyl-review');\n    select exists(\n      select 1 from public.platform_admins\n      where user_id = v_calc.reviewer_id and active and role in ('owner','admin','reviewer')\n    ) into v_reviewer_valid;\n    if not coalesce(v_reviewer_valid, false) then\n      v_failures := array_append(v_failures, 'Active review-capable YMYL reviewer is required');\n    end if;\n  end if;\n\n  foreach v_check in array v_required loop\n    select status into v_status from public.calculator_qa_checks\n    where calculator_id = p_calculator_id and check_type = v_check;\n    if coalesce(v_status, 'pending') not in ('passed','waived') then\n      v_failures := array_append(v_failures, format('%s must pass', v_check));\n    end if;\n  end loop;\n  return query select cardinality(v_failures) = 0, v_failures;\nend;\n$function$\n",
+      "security_definer": true
+    }
+  ],
+  "transaction_read_only": "on"
+}
