@@ -1,0 +1,72 @@
+{
+  "targetProject": "zpwpstsvztyshcnwdfye",
+  "observedAt": "2026-11-06 14:43:07.87206+00",
+  "observedReadOnly": "on",
+  "expectedOperator": "postgres",
+  "requiredIsolation": "READ COMMITTED",
+  "lockTimeout": "3s",
+  "statementTimeout": "30s",
+  "preimageSHA256": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+  "expectedPostimageSHA256": "4a56b22ab359c2990cb70a58b024b6a67009c9177c7b3dc2b8c7701d90c72951",
+  "postimageKind": "DERIVED_EXPECTED_NOT_OBSERVED_PRODUCTION",
+  "applySHA256": "5bb5242fcdde9948c05713f469ad9c472d8ae81cde5cb8f7c8f8b7497524241a",
+  "reverseSHA256": "96adea2382f2a195a755028ca7dc0bed4860a6ab5030671802a30017a63c7de8",
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "requires": [
+    "Explicit production SQL adoption and separately scoped recovery authority",
+    "Fresh exact target metadata verification and target-data audit",
+    "Quiescence/coordination of independent function/default-privilege DDL and privileged writers",
+    "No altered source files, unexpected target functions/overloads, disabled triggers or RLS drift",
+    "Independent exact-version canonical/source/QA and qualified applicability decisions before any certification/publication",
+    "Separate release-wave authorization; possession of this package does not lift RELEASE HOLD"
+  ],
+  "sources": [
+    {
+      "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+      "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+    },
+    {
+      "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+      "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+    },
+    {
+      "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+      "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+    },
+    {
+      "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+      "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+    },
+    {
+      "path": "docs/sprint20-publication/guarded/prepare-catalog-inventory-drafts.sql",
+      "sha256": "1bf012895fe18526908edfb620c130fb25b51de69da41e3e033a873d3aa95a63"
+    },
+    {
+      "path": "tests/hosted-schema-remediation/publication/review-only-correction.sql",
+      "sha256": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6"
+    },
+    {
+      "path": "tests/hosted-remediation-closure/publication/review-only-deferred-gate.sql",
+      "sha256": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c"
+    },
+    {
+      "path": "tests/p0-publication-business/publication/review-only-successor.sql",
+      "sha256": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0"
+    },
+    {
+      "path": "docs/adoption1528/package/new-trigger-privileges.sql",
+      "sha256": "19979dc8bed722b9b8ed05994201c554c5c17882f8f666bce4d3e74b667620c4"
+    }
+  ],
+  "tablePoliciesChanged": false,
+  "providerDefaultPrivilegesChanged": false,
+  "serviceRolePrivilegesPreserved": true,
+  "rollback": {
+    "guarded": true,
+    "noCascade": true,
+    "applicationRowsMutated": false,
+    "warning": "Restores known-defective predecessor for technical reversal only; hold critical workflows and re-audit actual postimage before separately authorized recovery."
+  },
+  "versionLimitation": "Publication predicate takes UUID only; exact engine/version/contract/source/QA binding remains an orchestration prerequisite and is not proved for every privileged writer."
+}

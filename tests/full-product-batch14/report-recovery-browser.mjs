@@ -2,19 +2,18 @@ import assert from 'node:assert/strict';
 import {mkdir,mkdtemp,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';import os from 'node:os';import net from 'node:net';import vm from 'node:vm';
 import ts from 'typescript';
+import {downloaded} from './download-completion.mjs';
 import {startDraftPreview} from '../../scripts/draft-preview.mjs';import {startBrowser} from '../next-runtime/cdp.mjs';
 const self=await readFile(new URL(import.meta.url),'utf8');const tree=ts.createSourceFile('browser.mjs',self,ts.ScriptTarget.Latest,true,ts.ScriptKind.JS);let compiled=0;
 function check(node){if(ts.isCallExpression(node)&&ts.isPropertyAccessExpression(node.expression)&&['js','until'].includes(node.expression.name.text)&&node.arguments[0]&&ts.isStringLiteralLike(node.arguments[0])){new vm.Script(node.arguments[0].text);compiled++;}ts.forEachChild(node,check);}check(tree);
 const cases=JSON.parse(await readFile(new URL('./scenario-report/cases.json',import.meta.url),'utf8'));
 const base=path.resolve(process.env.BATCH14_REPORT_ARTIFACTS||os.tmpdir());await mkdir(base,{recursive:true});const directory=await mkdtemp(path.join(base,'report-run-')),journeys=[];let browser,server;
-const pause=()=>new Promise(r=>setTimeout(r,60));
 try{
  const reserve=net.createServer();await new Promise((r,j)=>{reserve.once('error',j);reserve.listen(0,'127.0.0.1',r);});const port=reserve.address().port;await new Promise((r,j)=>reserve.close(e=>e?j(e):r()));server=await startDraftPreview(port);const origin=`http://127.0.0.1:${port}`;
  browser=await startBrowser(origin);await browser.send('Network.setExtraHTTPHeaders',{headers:{Authorization:'Basic '+Buffer.from('reviewer:'+server.draftPreviewAccessToken).toString('base64')}});
  async function click(name){await browser.click(name);}
  async function openSummary(text){const selector=`summary[data-browser-summary]`;await browser.js(`(()=>{const e=[...document.querySelectorAll('summary')].find(e=>e.textContent===${JSON.stringify(text)});if(!e)throw Error('Missing disclosure');e.setAttribute('data-browser-summary','');})()`);const point=await browser.js(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await browser.send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...point});await browser.send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...point});await browser.js('document.querySelector("[data-browser-summary]").removeAttribute("data-browser-summary")');}
  async function upload(file){const {root}=await browser.send('DOM.getDocument');const {nodeId}=await browser.send('DOM.querySelector',{nodeId:root.nodeId,selector:'input[type=file]'});await browser.send('DOM.setFileInputFiles',{nodeId,files:[file]});await browser.until('[...document.querySelectorAll("[role=status]")].some(e=>e.textContent.includes("File read."))');}
- async function downloaded(file){const end=Date.now()+10000;while(Date.now()<end){try{return await readFile(file,'utf8');}catch{await pause();}}throw Error('No actual report download '+file);}
  for(const width of [320,1280])for(const plan of ['free','pro','business'])for(let index=0;index<cases.length;index++){
   const [slug,input,key,a,field,b,c]=cases[index],caseDir=path.join(directory,`${width}-${plan}-${index}`);await mkdir(caseDir);await browser.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:caseDir});await browser.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});
   const nav=await browser.send('Page.navigate',{url:origin+`/tests/full-product-batch14/scenario-report/?case=${index}&plan=${plan}`});assert.equal(nav.errorText,undefined);await browser.until('document.querySelector("[data-testid=golden]")!==null');assert.equal(await browser.js('document.querySelector("[data-testid=golden]").textContent'),String(a));

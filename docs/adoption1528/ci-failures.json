@@ -1,0 +1,34 @@
+{
+  "run": 42197550649,
+  "head": "804028a913ee33021b14e67d0f40ee7893d896b6",
+  "conclusion": "failure",
+  "failedJobs": [
+    {
+      "name": "full-product",
+      "id": 127824476947,
+      "steps": [
+        "Batch14 accessible private sensitivity and scenario report replay"
+      ]
+    },
+    {
+      "name": "publication-factory",
+      "id": 127824477066,
+      "steps": [
+        "Guarded atomic draft inventory acceptance"
+      ]
+    },
+    {
+      "name": "validate",
+      "id": 127830412352,
+      "steps": [
+        "Require every verification job to succeed"
+      ]
+    }
+  ],
+  "verifiedCauses": {
+    "publication-factory": "Docker image not present: pinned postgres17.6; job did not provision its three fixture images",
+    "full-product": "SyntaxError Unexpected end of JSON input at report-recovery-browser.mjs JSON.parse; readable destination was empty before completed download"
+  },
+  "repairs": "Pinned runtime preparation in consuming job; bounded stable complete JSON download without temporary Chrome marker",
+  "blindRerunPerformed": false
+}
