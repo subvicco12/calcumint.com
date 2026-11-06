@@ -1,0 +1,19 @@
+{
+  "baseline": "2f088187dd395fd26262c32195b427258f44fa44",
+  "run": 42152003023,
+  "conclusion": "FAILURE",
+  "jobs": {
+    "checks": "SUCCESS",
+    "full-product": "SUCCESS",
+    "build": "SUCCESS",
+    "publication-factory": "SUCCESS",
+    "source-acceptance": "FAILURE",
+    "validate": "FAILURE"
+  },
+  "actualFailure": "Single candidate-workbench error-focus assertion observed BODY after alert mount but before passive effect focus",
+  "cause": "findByRole establishes rendered DOM, not completion of passive useEffect; the assertion raced scheduled focus under CI load",
+  "correction": "Wait for the same exact activeElement==alert assertion using bounded waitFor. No focus assertion deleted or target changed. No production UI/engine behavior modified.",
+  "samePatternObservedLocally": "Full integration run exposed an existing DraftCalculatorPreview failed-save focus assertion with the same BODY/alert race; only that test assertion now waits for the effect too.",
+  "verification": "85 focused candidate/DRAFT tests pass; final full integration passes7864/4skipped",
+  "sourceBinding": "PR1525 current source manifest updates only changed focus-test bytes and current workflow bytes; original browser receipt remains parent historical evidence, not relabeled. Original full-six source guards and old current-caller manifest remain unchanged."
+}

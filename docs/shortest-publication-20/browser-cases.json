@@ -1,0 +1,258 @@
+[
+  {
+    "catalogId": 423,
+    "engineId": "conversion.length",
+    "slug": "length-converter",
+    "version": 1,
+    "input": {
+      "value": -2.5,
+      "fromUnit": "yd",
+      "toUnit": "mm"
+    },
+    "expected": -2286,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 424,
+    "engineId": "conversion.area",
+    "slug": "area-converter",
+    "version": 1,
+    "input": {
+      "value": 3,
+      "fromUnit": "ft2",
+      "toUnit": "cm2"
+    },
+    "expected": 2787.0912,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 425,
+    "engineId": "conversion.volume",
+    "slug": "volume-converter",
+    "version": 1,
+    "input": {
+      "value": 2,
+      "fromUnit": "qt_us",
+      "toUnit": "ml"
+    },
+    "expected": 1892.705892,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 427,
+    "engineId": "conversion.temperature",
+    "slug": "temperature-converter",
+    "version": 1,
+    "input": {
+      "value": -40,
+      "fromUnit": "c",
+      "toUnit": "f"
+    },
+    "expected": -40,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 428,
+    "engineId": "conversion.speed",
+    "slug": "speed-converter",
+    "version": 1,
+    "input": {
+      "value": 3,
+      "fromUnit": "knot",
+      "toUnit": "m_s"
+    },
+    "expected": 1.5433333333333332,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 429,
+    "engineId": "conversion.pressure",
+    "slug": "pressure-converter",
+    "version": 1,
+    "input": {
+      "value": 2,
+      "fromUnit": "bar",
+      "toUnit": "pa"
+    },
+    "expected": 200000,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 430,
+    "engineId": "conversion.energy",
+    "slug": "energy-converter",
+    "version": 1,
+    "input": {
+      "value": 10,
+      "fromUnit": "cal",
+      "toUnit": "j"
+    },
+    "expected": 41.84,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 431,
+    "engineId": "conversion.power",
+    "slug": "power-converter",
+    "version": 1,
+    "input": {
+      "value": 0.002,
+      "fromUnit": "mw",
+      "toUnit": "w"
+    },
+    "expected": 2000,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 432,
+    "engineId": "conversion.time",
+    "slug": "time-converter",
+    "version": 1,
+    "input": {
+      "value": 1.5,
+      "fromUnit": "week",
+      "toUnit": "h"
+    },
+    "expected": 252,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 433,
+    "engineId": "conversion.angle",
+    "slug": "angle-converter",
+    "version": 1,
+    "input": {
+      "value": 100,
+      "fromUnit": "grad",
+      "toUnit": "deg"
+    },
+    "expected": 90,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 434,
+    "engineId": "conversion.data-storage",
+    "slug": "data-storage-converter",
+    "version": 1,
+    "input": {
+      "value": 2,
+      "fromUnit": "MiB",
+      "toUnit": "KB"
+    },
+    "expected": 2097.152,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 437,
+    "engineId": "conversion.density",
+    "slug": "density-converter",
+    "version": 1,
+    "input": {
+      "value": 2,
+      "fromUnit": "kg_l",
+      "toUnit": "kg_m3"
+    },
+    "expected": 2000,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 438,
+    "engineId": "conversion.force",
+    "slug": "force-converter",
+    "version": 1,
+    "input": {
+      "value": 250000,
+      "fromUnit": "dyn",
+      "toUnit": "n"
+    },
+    "expected": 2.5,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 439,
+    "engineId": "conversion.torque",
+    "slug": "torque-converter",
+    "version": 1,
+    "input": {
+      "value": 24,
+      "fromUnit": "lbf_in",
+      "toUnit": "lbf_ft"
+    },
+    "expected": 2,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 440,
+    "engineId": "conversion.frequency",
+    "slug": "frequency-converter",
+    "version": 1,
+    "input": {
+      "value": 0.125,
+      "fromUnit": "mhz",
+      "toUnit": "hz"
+    },
+    "expected": 125000,
+    "primaryKey": "result"
+  },
+  {
+    "catalogId": 370,
+    "engineId": "technology.bandwidth",
+    "slug": "bandwidth-calculator",
+    "version": 1,
+    "input": {
+      "dataMegabytes": 375,
+      "timeSeconds": 24
+    },
+    "expected": 125,
+    "primaryKey": "value"
+  },
+  {
+    "catalogId": 371,
+    "engineId": "technology.download-time",
+    "slug": "download-time-calculator",
+    "version": 1,
+    "input": {
+      "dataMegabytes": 375,
+      "bandwidthMbps": 125
+    },
+    "expected": 24,
+    "primaryKey": "value"
+  },
+  {
+    "catalogId": 372,
+    "engineId": "technology.upload-time",
+    "slug": "upload-time-calculator",
+    "version": 1,
+    "input": {
+      "dataMegabytes": 25,
+      "bandwidthMbps": 100
+    },
+    "expected": 2,
+    "primaryKey": "value"
+  },
+  {
+    "catalogId": 373,
+    "engineId": "technology.data-transfer",
+    "slug": "data-transfer-calculator",
+    "version": 1,
+    "input": {
+      "bandwidthMbps": 125,
+      "timeSeconds": 24
+    },
+    "expected": 375,
+    "primaryKey": "value"
+  },
+  {
+    "catalogId": 374,
+    "engineId": "technology.storage-conversion",
+    "slug": "storage-conversion-calculator",
+    "version": 1,
+    "input": {
+      "value": 3,
+      "fromUnit": "GiB",
+      "toUnit": "KiB"
+    },
+    "expected": 3145728,
+    "primaryKey": "value"
+  }
+]

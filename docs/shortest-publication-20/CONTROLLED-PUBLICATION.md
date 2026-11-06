@@ -1,0 +1,41 @@
+# Controlled publication procedure — inactive under RELEASE HOLD
+
+This is an operator acceptance procedure and an offline consistency checker, not an executable production release tool. No SQL successor, migration, production client, token, RPC write or grant change is included. The selected cohort is 15 immutable conversion engines and five immutable technology engines. A recorded candidate, local `reviewed`/`certified` label or test result is not canonical acceptance.
+
+## Eligibility and execution are separate
+
+A genuinely complete and certified calculator can be publication-eligible before RELEASE HOLD is lifted. The hold blocks production authorization and execution; it does not itself invalidate mathematical, source, QA or certification eligibility. This offline checker returns `eligibilityAssessment: NOT_ESTABLISHED_BY_UNSIGNED_OFFLINE_CAPTURE` because it cannot authenticate that assessment from caller-supplied bytes, not because the hold makes every calculator ineligible. Its `publicationEligible:false` means no affirmative eligibility is established here, not that external authentic acceptance has been disproved. `eligibilityBlockers` and `authorizationBlockers` are separate. Even an eligibility decision established through the authentic process still needs explicit wave-specific authority and the applicable hold lifted before any production action.
+
+## 1. Exact wave and authentic authority
+
+Use the selected20 register, exact engine/version/slug, full canonical contract and implementation/source hashes. Do not substitute a family component, private successor, shared title, changed formula or latest version. Obtain the genuine per-ID canonical, mathematical/source/applicability, QA and competent-review decisions. Preserve all original qualified-review requirements; a standard-risk label is not a universal specialist exemption. Owner authorization for engineering does not provide those acceptance decisions.
+
+Every mandatory QA type must have an exact-version decision and evidence. An existing owner/admin-approved waiver may be retained with its actual record, rationale, dates and authority; do not create a bulk N/A, synthetic pass, reviewer identity or historical approval. Determine rule-pack applicability explicitly before requiring or exempting its additional check. Mathematical equalities and unit definitions already established by governing sources are facts, not requests for owner reconfirmation.
+
+The `inspectPublication20Release` function consumes trusted independently sourced pins and original capture bytes. It checks SHA-256 before parsing, exact tuple/contract/schema/publication-definition hashes, capture time, source/review dates and any captured expiry, mandatory QA uniqueness and status, RLS and independent acceptance receipts. It reuses the existing publishing gate and lifecycle/role-transition functions. **It cannot affirm publication eligibility from unsigned offline captures and never authorizes production.** A null expiry encodes the absence of a captured expiry, not a new no-expiry policy or validity approval. Internally consistent or self-labeled authenticated captures cannot grant authority. Its TEST fixtures are not CalcuMint approvals or hosted evidence.
+
+## 2. Read-only exact-current production preflight
+
+Before any separately authorized production operation, capture current authenticated read-only metadata for the exact proposed wave using approved tooling. Pin the capture bytes, current schema and exact governing publication functions/triggers. Compare them with authenticated hosted evidence and guarded proposals by actual definitions/effects. Reject unknown source hash, identity/version mismatch, invalid/future/expired dates, missing reviewer authority, duplicated/conflicting QA, missing reviewed sources or stale capture. Preserve provider-managed permissions; do not infer real JWT/role reachability from grants/RLS flags alone.
+
+Verify all four publication-governance tables' RLS configuration and genuine caller authorization in an isolated hosted-shaped PostgreSQL/GoTrue/PostgREST fixture. Exercise unauthorized and cross-tenant denial, owner/admin/reviewer/editor boundaries, final persisted state, direct INSERT versus lifecycle transitions, dependent-source/QA/reviewer mutations, concurrent changes, rollback and retry. Reuse existing source-hash-bound guarded publication successors and acceptance. Do not activate them merely because this checklist references them. Any confirmed date-predicate, privilege or dependency gap retains its exact adoption/compatibility blocker.
+
+Capture current public routes, canonical tags/version, discovery and sitemap. An unpublished candidate should remain fail-closed; an unexpected HTTP200 is a discrepancy, not eligibility. A route404 alone does not distinguish every lifecycle cause. Record exact observation time and version, never relabel historical HTTP evidence as fresh.
+
+## 3. Explicit authorization boundary
+
+There is currently **no authorized production wave** and RELEASE HOLD remains active. For a genuinely complete proposed wave, present its exact IDs/immutable tuples, authentic acceptance records, required production operations, risk, rollback, monitoring and post-release checks to the owner/release authority. Obtain explicit wave-specific production authorization after all prerequisites are met. A JSON `releaseHold:false`, unsigned packet, code-agent review or this file cannot lift the hold.
+
+If the hosted row is absent, draft creation and source/QA/reviewer record writes are themselves production operations and require authorization; do not reduce the request to a certified→published toggle. Use protected application/operator paths and the then-current authenticated schema. Do not direct-INSERT published lifecycle state or bypass transition guards. Maintain per-record and audit provenance; never backfill fictitious historical approvals.
+
+## 4. Future controlled operation, only after authorization
+
+An authorized accountable operator must recheck exact pins and genuine approvals immediately before a small wave. Prepare protected draft identities if absent, then permitted draft→review→certified transitions through the authentic reviewed workflow. Confirm exact current database publication predicate, source/QA/reviewer dependencies, effective publication date and allowed caller. Only then execute owner/admin-authorized certified→published transitions for the explicitly authorized tuples. Reviewer/editor permission is not publication permission. Preserve concurrency/final-state validation and abort the whole intended unit on a failed precondition; do not weaken RLS/security or install guarded SQL as a shortcut.
+
+This repository increment includes no commands to perform these writes. It does not prove a production mutation path safe or an external policy decided.
+
+## 5. Immediate production smoke and rollback
+
+For every released tuple, compare the authenticated published manifest with the exact approved tuple; fetch the canonical URL and verify HTTP200, expected canonical tag/engine/version, accessible real controls, valid-zero and invalid-input recovery, required numerical witnesses and applicable mobile/keyboard behavior. Verify search/discovery and sitemap contain precisely the released URLs. Verify absent/blocked controls and unpublished tuples remain fail-closed. Test approved history/scenario/export/replay workflows and Free/Pro/Business mathematical parity at their actual authenticated entitlement contexts; synthetic plan selection is not real account acceptance.
+
+Record deployment/source SHA, lifecycle/audit IDs, timings and exact smoke outcomes. Monitor numerical errors, invalid output, authorization and visibility regressions. On a release discrepancy, stop further waves and follow the separately reviewed rollback plan: permitted review/archive/routing rollback without rewriting immutable engines or historical snapshots and without deleting evidence/audit. Do not blind-delete production rows or roll back unrelated/provider permissions. Verify the reversed visibility/manifests and retained history before any retry. A failed smoke or unresolved release gate returns the candidate to blocked status; never manufacture a pass to meet the four-day deadline.

@@ -1,0 +1,9 @@
+# Independent software review
+
+No remaining code-blocking finding in reviewed scope. Independently verified79Vitest cases,18original/new caller-history guard cases and4route-capture offline tests. Review covered exact20existingmetadata/versions,15newconversioninterfaces versus5preservedtechforms, strict/underflow/newcapturedenial, validzero, historicaloriginalarithmeticreplay, immutablepredecessorboundcaller/parser/engineproof, and unsignedofflinepreflightseparationofeligibilityversusreleaseauthority.
+
+One routecollector edge was corrected: missingstatusfrommalformedchildoutput previouslycouldreachcandidate_countsandraiseKeyError. StatusisnowrequiredandtheregressionprovesUNKNOWNfallback. This does not turn a capture failure into a QApass.
+
+CIrepair focusassertions nowwaitforpassiveeffectswhile checkingthesameexactactiveelement; no assertionsremoved. Original mathematicalsourceandfrozenevidence manifests/negativeguardsremainunchanged. ParentPR1525currentengineeringmanifestrefreshesonlyfocus-test/workflowbytes, notmath.
+
+No source/specialist/canonical/QA/publicationapproval follows from code review. The offlinepreflightchecks sourcehashes/pinsandsuppliedreceipts, not an executedauthenticatedhostedpredicate.
