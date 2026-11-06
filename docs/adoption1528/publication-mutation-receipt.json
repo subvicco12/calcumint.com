@@ -1,0 +1,185 @@
+{
+  "scope": "Synthetic disposable PG17.6 plus real GoTrue JWT and captured six admin tables/all triggers; no canonical certification or hosted change",
+  "checks": [
+    {
+      "id": "baseline-insert-bypass",
+      "detail": "Actual owner JWT INSERT persists published without evidence"
+    },
+    {
+      "id": "final-row-rule-metadata",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "source-delete",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "qa-failure-alert-rollback",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "reviewer-demotion",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "baseline-reviewer-delete-bypass",
+      "detail": "Deleting reviewer membership invalidates persisted published parent"
+    },
+    {
+      "id": "baseline-reviewer-identity-bypass",
+      "detail": "Privileged identity rewrite removes OLD membership authority and leaves published parent invalid"
+    },
+    {
+      "id": "baseline-qa-move-bypass",
+      "detail": "Old published parent is invalid after committed QA reassignment"
+    },
+    {
+      "id": "baseline-reviewer-promotion-race",
+      "detail": "Deterministic two-session certification before reviewer deletion commits invalid final state"
+    },
+    {
+      "id": "successor-source-drift",
+      "detail": "Altered prior function or disabled prior trigger prevents successor installation"
+    },
+    {
+      "id": "successor-insert-lifecycle",
+      "detail": "Actual owner JWT rejects every non-draft INSERT without persisted side effects"
+    },
+    {
+      "id": "successor-reviewer-identity",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "successor-reviewer-delete",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "successor-qa-move",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "deferred-commit",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "explicit-rollback",
+      "detail": "Valid transient dependency writes roll back exactly"
+    },
+    {
+      "id": "concurrent-adverse-writes",
+      "detail": "Two simultaneous invalid dependency transactions both reject; complete persisted state unchanged"
+    },
+    {
+      "id": "valid-deferred-update",
+      "detail": "Valid dependency edit commits and final published predicate is true"
+    },
+    {
+      "id": "snapshot-isolation-failclosed",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "promotion-first-delete",
+      "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+    },
+    {
+      "id": "authority-first-delete",
+      "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+    },
+    {
+      "id": "promotion-first-deactivate",
+      "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+    },
+    {
+      "id": "authority-first-deactivate",
+      "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+    },
+    {
+      "id": "promotion-first-role",
+      "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+    },
+    {
+      "id": "authority-first-role",
+      "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+    },
+    {
+      "id": "promotion-first-identity",
+      "detail": "FOR SHARE lock blocks authority mutation until certification commit; authority mutation rejects"
+    },
+    {
+      "id": "authority-first-identity",
+      "detail": "Authority mutation holds row lock; certification waits then revalidates and rolls back"
+    },
+    {
+      "id": "check-only-qa-promotion-race",
+      "detail": "Without parent fence, OLD-parent final check sees review while promotion sees old passed QA; both commit invalid certification"
+    },
+    {
+      "id": "promotion-first-qa",
+      "detail": "Observed dependency wait; after promotion commits, invalidating dependency transaction rejects and published evidence remains valid"
+    },
+    {
+      "id": "dependency-first-qa",
+      "detail": "Observed promotion wait; after draft/review dependency mutation commits, promotion revalidates missing evidence and rolls back"
+    },
+    {
+      "id": "promotion-first-source",
+      "detail": "Observed dependency wait; after promotion commits, invalidating dependency transaction rejects and published evidence remains valid"
+    },
+    {
+      "id": "dependency-first-source",
+      "detail": "Observed promotion wait; after draft/review dependency mutation commits, promotion revalidates missing evidence and rolls back"
+    },
+    {
+      "id": "qa-snapshot-isolation-failclosed",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "standard-snapshot-gap",
+      "detail": "YMYL-only isolation guard permits standard-risk certification from obsolete QA snapshot"
+    },
+    {
+      "id": "standard-snapshot-failclosed",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "standard-read-committed-positive",
+      "detail": "Standard-risk final validation succeeds with current evidence under supported isolation"
+    },
+    {
+      "id": "source-reparent",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "source-insert-update-positive",
+      "detail": "Captured source INSERT/label UPDATE/deletion-of-extra-source maintain derived count and valid final state"
+    },
+    {
+      "id": "qa-required-delete",
+      "detail": "Rejected transaction leaves complete persisted state unchanged"
+    },
+    {
+      "id": "qa-optional-insert-delete-positive",
+      "detail": "For standard risk, optional synthetic QA can be removed/reinserted while every required check remains valid"
+    }
+  ],
+  "sourceHashes": {
+    "dateProposal": "5caec753de00a9550c215bfd5d4c8db96124dce19dcffbedfd4edf8a28fe6fb6",
+    "finalRowProposal": "e84da335aba10aaac784197711915bb2858de9b5e717734053b757cfc517530c",
+    "successor": "7163e4949dd1bbfb7679621309e6a20eaad99f2b81b99184727868711ee1bcc0"
+  },
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "privateSourceVerified": false,
+    "scope": "Six captured admin tables, constraints, standalone indexes, policies, table/column grants and all scoped triggers; local pinned auth internals, no production data or provider equivalence",
+    "scopedSha256": "032d66eb52a0a1645c3955d92afa17fc0db36dffaaee330c9e75995725ba363c",
+    "sourceCaptureSha256": "a74a182badb8ece59b9771ffd2a78e75f2dd3c984f3a4935a381bbb44f68fed0"
+  },
+  "productionChanges": false,
+  "approval": false
+}

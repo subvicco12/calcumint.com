@@ -286,6 +286,7 @@ jobs:
       - name: Batch14 accessible private sensitivity and scenario report replay
         run: |
           node tests/full-product-batch14/private-accessibility-browser.mjs
+          node --test tests/full-product-batch14/download-completion.test.mjs
           node tests/full-product-batch14/report-recovery-browser.mjs
         env:
           BATCH14_PRIVATE_ACCESSIBILITY_ARTIFACTS: ${{ runner.temp }}/batch14-accessibility
@@ -485,9 +486,19 @@ jobs:
         env:
           SHORTEST_PUBLICATION_RECEIPT: ${{ runner.temp }}/shortest-publication-20
           AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Prepare pinned provisioning runtime
+        timeout-minutes: 4
+        run: |
+          node --test tests/sprint20-publication/ci-images.test.mjs
+          node --input-type=module -e 'import {images} from "./tests/gotrue-runtime/fixture.mjs"; import {execFileSync} from "node:child_process"; for (const image of Object.values(images)) execFileSync("docker", ["pull", image], {stdio:"inherit"});'
       - name: Guarded atomic draft inventory acceptance
         timeout-minutes: 3
         run: node tests/sprint20-publication/acceptance.mjs
+      - name: Exact hosted-schema adoption and reversal acceptance
+        timeout-minutes: 4
+        run: |
+          node --test tests/adoption1528/bundle.test.mjs
+          node tests/adoption1528/acceptance.mjs
       - name: Preserve shortest publication cohort acceptance
         uses: actions/upload-artifact@v4
         with:

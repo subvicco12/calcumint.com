@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {prepareApply,verifySourceBindings,sha} from './bundle.mjs';
+const capture=JSON.parse(await readFile(new URL('../../docs/adoption1528/target-metadata.json',import.meta.url),'utf8'));capture.sha256=sha(capture.raw);
+const altered=data=>({...capture,data,raw:JSON.stringify(data),sha256:sha(JSON.stringify(data))});
+test('Source hash drift refuses composition',async()=>{const plan=JSON.parse(await readFile(new URL('plan.json',import.meta.url),'utf8'));plan.sourceBindings[0].sha256='0'.repeat(64);await assert.rejects(verifySourceBindings(plan),/Source changed/);});
+test('Absent names include foreign overloads',async()=>{const data=structuredClone(capture.data);data.functions.push({id:'public.prepare_catalog_inventory_drafts(text)',definition:'foreign',owner:'postgres',acl:[]});await assert.rejects(prepareApply(altered(data)),/New function name already exists/);});
+test('Capture raw bytes cannot be relabeled or tampered',async()=>{await assert.rejects(prepareApply({...capture,raw:capture.raw+' '}));await assert.rejects(prepareApply({...capture,kind:'PRODUCTION_EXECUTION_AUTHORIZED'}));await assert.rejects(prepareApply({...capture,readOnly:'off'}));});
+test('Review SQL remains held and excludes unrelated correction scopes',async()=>{const result=await prepareApply(capture);assert.equal(result.activationAuthorized,false);assert(result.sql.indexOf('RAISE EXCEPTION \'UNAPPLIED_ADOPTION1528_APPLY')<result.sql.indexOf('LOCK TABLE'));assert(result.sql.indexOf('LOCK TABLE')<result.sql.indexOf('EXACT_METADATA_PRECONDITION'));assert(!/country_code|REVOKE ALL ON TABLE|organization_invitations/.test(result.sql));assert.equal((result.sql.match(/CREATE CONSTRAINT TRIGGER/g)||[]).length,4);});
