@@ -1,0 +1,2 @@
+import {build} from 'esbuild';import {mkdtemp,rm} from 'node:fs/promises';import os from 'node:os';import path from 'node:path';
+const dir=await mkdtemp(path.join(os.tmpdir(),'frequency440-numerics-'));try{const output=path.join(dir,'numerics.mjs');await build({entryPoints:['tests/frequency440-acceptance/numerics.ts'],bundle:true,platform:'node',format:'esm',outfile:output});await import(output);}finally{await rm(dir,{recursive:true,force:true});}

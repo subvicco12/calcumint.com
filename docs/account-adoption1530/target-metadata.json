@@ -1,0 +1,1395 @@
+{
+  "kind": "AUTHENTICATED_READ_ONLY_METADATA_CAPTURE",
+  "project": "zpwpstsvztyshcnwdfye",
+  "observedAt": "2026-11-06 16:26:45.321798+00",
+  "readOnly": "on",
+  "observedActor": "postgres",
+  "raw": "{\"major\": 17, \"columns\": [{\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.calculation_history\", \"default\": \"gen_random_uuid()\", \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [], \"name\": \"user_id\", \"type\": \"uuid\", \"table\": \"public.calculation_history\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"calculator_slug\", \"type\": \"text\", \"table\": \"public.calculation_history\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"calculator_version\", \"type\": \"integer\", \"table\": \"public.calculation_history\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"input_data\", \"type\": \"jsonb\", \"table\": \"public.calculation_history\", \"default\": \"'{}'::jsonb\", \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"output_data\", \"type\": \"jsonb\", \"table\": \"public.calculation_history\", \"default\": \"'{}'::jsonb\", \"notNull\": true, \"identity\": \"\", \"position\": 6}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.calculation_history\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 7}, {\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.calculation_projects\", \"default\": \"gen_random_uuid()\", \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [], \"name\": \"user_id\", \"type\": \"uuid\", \"table\": \"public.calculation_projects\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"name\", \"type\": \"text\", \"table\": \"public.calculation_projects\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"description\", \"type\": \"text\", \"table\": \"public.calculation_projects\", \"default\": null, \"notNull\": false, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.calculation_projects\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"updated_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.calculation_projects\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 6}, {\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.profiles\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [{\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"name\": \"display_name\", \"type\": \"text\", \"table\": \"public.profiles\", \"default\": null, \"notNull\": false, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"plan\", \"type\": \"text\", \"table\": \"public.profiles\", \"default\": \"'free'::text\", \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.profiles\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"updated_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.profiles\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.saved_scenarios\", \"default\": \"gen_random_uuid()\", \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [], \"name\": \"user_id\", \"type\": \"uuid\", \"table\": \"public.saved_scenarios\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"project_id\", \"type\": \"uuid\", \"table\": \"public.saved_scenarios\", \"default\": null, \"notNull\": false, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"calculator_slug\", \"type\": \"text\", \"table\": \"public.saved_scenarios\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"calculator_version\", \"type\": \"integer\", \"table\": \"public.saved_scenarios\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"name\", \"type\": \"text\", \"table\": \"public.saved_scenarios\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 6}, {\"acl\": [], \"name\": \"input_data\", \"type\": \"jsonb\", \"table\": \"public.saved_scenarios\", \"default\": \"'{}'::jsonb\", \"notNull\": true, \"identity\": \"\", \"position\": 7}, {\"acl\": [], \"name\": \"output_data\", \"type\": \"jsonb\", \"table\": \"public.saved_scenarios\", \"default\": \"'{}'::jsonb\", \"notNull\": true, \"identity\": \"\", \"position\": 8}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.saved_scenarios\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 9}, {\"acl\": [], \"name\": \"updated_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.saved_scenarios\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 10}], \"indexes\": [{\"id\": \"public.calculation_history_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX calculation_history_pkey ON public.calculation_history USING btree (id)\"}, {\"id\": \"public.calculation_history_user_created_idx\", \"valid\": true, \"definition\": \"CREATE INDEX calculation_history_user_created_idx ON public.calculation_history USING btree (user_id, created_at DESC)\"}, {\"id\": \"public.calculation_projects_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX calculation_projects_pkey ON public.calculation_projects USING btree (id)\"}, {\"id\": \"public.calculation_projects_user_updated_idx\", \"valid\": true, \"definition\": \"CREATE INDEX calculation_projects_user_updated_idx ON public.calculation_projects USING btree (user_id, updated_at DESC)\"}, {\"id\": \"public.profiles_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)\"}, {\"id\": \"public.saved_scenarios_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX saved_scenarios_pkey ON public.saved_scenarios USING btree (id)\"}, {\"id\": \"public.saved_scenarios_project_idx\", \"valid\": true, \"definition\": \"CREATE INDEX saved_scenarios_project_idx ON public.saved_scenarios USING btree (project_id, updated_at DESC)\"}, {\"id\": \"public.saved_scenarios_user_updated_idx\", \"valid\": true, \"definition\": \"CREATE INDEX saved_scenarios_user_updated_idx ON public.saved_scenarios USING btree (user_id, updated_at DESC)\"}], \"policies\": [{\"cmd\": \"DELETE\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"calculation_history\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"history_delete_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"INSERT\", \"qual\": null, \"roles\": [\"public\"], \"tablename\": \"calculation_history\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"history_insert_own\", \"schemaname\": \"public\", \"with_check\": \"(( SELECT auth.uid() AS uid) = user_id)\"}, {\"cmd\": \"SELECT\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"calculation_history\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"history_select_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"DELETE\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"calculation_projects\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"projects_delete_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"INSERT\", \"qual\": null, \"roles\": [\"public\"], \"tablename\": \"calculation_projects\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"projects_insert_own\", \"schemaname\": \"public\", \"with_check\": \"((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\\n   FROM public.profiles p\\n  WHERE ((p.id = ( SELECT auth.uid() AS uid)) AND (p.plan = ANY (ARRAY['pro'::text, 'business'::text]))))))\"}, {\"cmd\": \"SELECT\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"calculation_projects\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"projects_select_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"calculation_projects\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"projects_update_own\", \"schemaname\": \"public\", \"with_check\": \"((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\\n   FROM public.profiles p\\n  WHERE ((p.id = ( SELECT auth.uid() AS uid)) AND (p.plan = ANY (ARRAY['pro'::text, 'business'::text]))))))\"}, {\"cmd\": \"SELECT\", \"qual\": \"(( SELECT auth.uid() AS uid) = id)\", \"roles\": [\"public\"], \"tablename\": \"profiles\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"profiles_select_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"(( SELECT auth.uid() AS uid) = id)\", \"roles\": [\"public\"], \"tablename\": \"profiles\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"profiles_update_own\", \"schemaname\": \"public\", \"with_check\": \"(( SELECT auth.uid() AS uid) = id)\"}, {\"cmd\": \"DELETE\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"saved_scenarios\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"scenarios_delete_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"INSERT\", \"qual\": null, \"roles\": [\"public\"], \"tablename\": \"saved_scenarios\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"scenarios_insert_own\", \"schemaname\": \"public\", \"with_check\": \"((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\\n   FROM public.profiles profile\\n  WHERE ((profile.id = ( SELECT auth.uid() AS uid)) AND (profile.plan = ANY (ARRAY['pro'::text, 'business'::text]))))) AND ((project_id IS NULL) OR (EXISTS ( SELECT 1\\n   FROM public.calculation_projects p\\n  WHERE ((p.id = saved_scenarios.project_id) AND (p.user_id = ( SELECT auth.uid() AS uid)))))))\"}, {\"cmd\": \"SELECT\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"saved_scenarios\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"scenarios_select_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"(( SELECT auth.uid() AS uid) = user_id)\", \"roles\": [\"public\"], \"tablename\": \"saved_scenarios\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"scenarios_update_own\", \"schemaname\": \"public\", \"with_check\": \"((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\\n   FROM public.profiles profile\\n  WHERE ((profile.id = ( SELECT auth.uid() AS uid)) AND (profile.plan = ANY (ARRAY['pro'::text, 'business'::text]))))) AND ((project_id IS NULL) OR (EXISTS ( SELECT 1\\n   FROM public.calculation_projects p\\n  WHERE ((p.id = saved_scenarios.project_id) AND (p.user_id = ( SELECT auth.uid() AS uid)))))))\"}], \"provider\": [{\"id\": \"auth.role()\", \"acl\": [{\"grantee\": \"PUBLIC\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"dashboard_user\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"supabase_auth_admin\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"supabase_auth_admin\", \"definition\": \"CREATE OR REPLACE FUNCTION auth.role()\\n RETURNS text\\n LANGUAGE sql\\n STABLE\\nAS $function$\\n  select \\n  coalesce(\\n    nullif(current_setting('request.jwt.claim.role', true), ''),\\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'role')\\n  )::text\\n$function$\\n\"}, {\"id\": \"auth.uid()\", \"acl\": [{\"grantee\": \"PUBLIC\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"dashboard_user\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"supabase_auth_admin\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"supabase_auth_admin\", \"definition\": \"CREATE OR REPLACE FUNCTION auth.uid()\\n RETURNS uuid\\n LANGUAGE sql\\n STABLE\\nAS $function$\\n  select \\n  coalesce(\\n    nullif(current_setting('request.jwt.claim.sub', true), ''),\\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'sub')\\n  )::uuid\\n$function$\\n\"}], \"triggers\": [{\"id\": \"calculation_history_free_quota\", \"table\": \"public.calculation_history\", \"enabled\": \"O\", \"definition\": \"CREATE TRIGGER calculation_history_free_quota BEFORE INSERT ON public.calculation_history FOR EACH ROW EXECUTE FUNCTION public.enforce_calcumint_save_quotas()\"}, {\"id\": \"enforce_free_history_limit\", \"table\": \"public.calculation_history\", \"enabled\": \"O\", \"definition\": \"CREATE TRIGGER enforce_free_history_limit BEFORE INSERT ON public.calculation_history FOR EACH ROW EXECUTE FUNCTION public.enforce_free_history_limit()\"}], \"functions\": [{\"id\": \"public.enforce_calcumint_save_quotas()\", \"acl\": [{\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.enforce_calcumint_save_quotas()\\n RETURNS trigger\\n LANGUAGE plpgsql\\n SECURITY DEFINER\\n SET search_path TO 'public'\\nAS $function$\\ndeclare account_plan text; current_count bigint;\\nbegin\\n select coalesce(plan,'free') into account_plan from public.profiles where id=new.user_id;\\n if account_plan not in ('pro','business') then\\n  if tg_table_name='favorites' then select count(*) into current_count from public.favorites where user_id=new.user_id; if current_count>=10 then raise exception 'Free accounts can save up to 10 favorites'; end if;\\n  elsif tg_table_name='calculation_history' then select count(*) into current_count from public.calculation_history where user_id=new.user_id; if current_count>=20 then raise exception 'Free accounts can keep up to 20 calculations'; end if;\\n  end if;\\n end if; return new;\\nend $function$\\n\"}, {\"id\": \"public.enforce_free_history_limit()\", \"acl\": [{\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.enforce_free_history_limit()\\n RETURNS trigger\\n LANGUAGE plpgsql\\n SECURITY DEFINER\\n SET search_path TO 'public'\\nAS $function$\\ndeclare\\n  current_plan text;\\n  current_count integer;\\nbegin\\n  select plan into current_plan from public.profiles where id = new.user_id;\\n  if coalesce(current_plan, 'free') = 'free' then\\n    select count(*) into current_count from public.calculation_history where user_id = new.user_id;\\n    if current_count >= 20 then\\n      raise exception 'Free plan calculation history limit reached';\\n    end if;\\n  end if;\\n  return new;\\nend;\\n$function$\\n\"}], \"relations\": [{\"id\": \"public.calculation_history\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.calculation_projects\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.profiles\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.saved_scenarios\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}], \"constraints\": [{\"name\": \"calculation_history_calculator_version_check\", \"table\": \"public.calculation_history\", \"validated\": true, \"definition\": \"CHECK ((calculator_version > 0))\"}, {\"name\": \"calculation_history_pkey\", \"table\": \"public.calculation_history\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"calculation_history_user_id_fkey\", \"table\": \"public.calculation_history\", \"validated\": true, \"definition\": \"FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE\"}, {\"name\": \"calculation_projects_description_check\", \"table\": \"public.calculation_projects\", \"validated\": true, \"definition\": \"CHECK (((description IS NULL) OR (char_length(description) <= 1000)))\"}, {\"name\": \"calculation_projects_name_check\", \"table\": \"public.calculation_projects\", \"validated\": true, \"definition\": \"CHECK (((char_length(btrim(name)) >= 1) AND (char_length(btrim(name)) <= 120)))\"}, {\"name\": \"calculation_projects_pkey\", \"table\": \"public.calculation_projects\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"calculation_projects_user_id_fkey\", \"table\": \"public.calculation_projects\", \"validated\": true, \"definition\": \"FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE\"}, {\"name\": \"profiles_id_fkey\", \"table\": \"public.profiles\", \"validated\": true, \"definition\": \"FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE\"}, {\"name\": \"profiles_pkey\", \"table\": \"public.profiles\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"profiles_plan_check\", \"table\": \"public.profiles\", \"validated\": true, \"definition\": \"CHECK ((plan = ANY (ARRAY['free'::text, 'pro'::text, 'business'::text])))\"}, {\"name\": \"saved_scenarios_calculator_slug_check\", \"table\": \"public.saved_scenarios\", \"validated\": true, \"definition\": \"CHECK (((char_length(calculator_slug) >= 1) AND (char_length(calculator_slug) <= 160)))\"}, {\"name\": \"saved_scenarios_calculator_version_check\", \"table\": \"public.saved_scenarios\", \"validated\": true, \"definition\": \"CHECK ((calculator_version > 0))\"}, {\"name\": \"saved_scenarios_name_check\", \"table\": \"public.saved_scenarios\", \"validated\": true, \"definition\": \"CHECK (((char_length(btrim(name)) >= 1) AND (char_length(btrim(name)) <= 120)))\"}, {\"name\": \"saved_scenarios_pkey\", \"table\": \"public.saved_scenarios\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"saved_scenarios_project_id_fkey\", \"table\": \"public.saved_scenarios\", \"validated\": true, \"definition\": \"FOREIGN KEY (project_id) REFERENCES public.calculation_projects(id) ON DELETE CASCADE\"}, {\"name\": \"saved_scenarios_user_id_fkey\", \"table\": \"public.saved_scenarios\", \"validated\": true, \"definition\": \"FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE\"}], \"defaultAcls\": [{\"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"role\": \"postgres\", \"schema\": \"public\", \"objectType\": \"f\"}]}",
+  "data": {
+    "major": 17,
+    "columns": [
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.calculation_history",
+        "default": "gen_random_uuid()",
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "user_id",
+        "type": "uuid",
+        "table": "public.calculation_history",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "calculator_slug",
+        "type": "text",
+        "table": "public.calculation_history",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "calculator_version",
+        "type": "integer",
+        "table": "public.calculation_history",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "input_data",
+        "type": "jsonb",
+        "table": "public.calculation_history",
+        "default": "'{}'::jsonb",
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "output_data",
+        "type": "jsonb",
+        "table": "public.calculation_history",
+        "default": "'{}'::jsonb",
+        "notNull": true,
+        "identity": "",
+        "position": 6
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.calculation_history",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 7
+      },
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.calculation_projects",
+        "default": "gen_random_uuid()",
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "user_id",
+        "type": "uuid",
+        "table": "public.calculation_projects",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "name",
+        "type": "text",
+        "table": "public.calculation_projects",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "description",
+        "type": "text",
+        "table": "public.calculation_projects",
+        "default": null,
+        "notNull": false,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.calculation_projects",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "public.calculation_projects",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 6
+      },
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.profiles",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "name": "display_name",
+        "type": "text",
+        "table": "public.profiles",
+        "default": null,
+        "notNull": false,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "plan",
+        "type": "text",
+        "table": "public.profiles",
+        "default": "'free'::text",
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.profiles",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "public.profiles",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.saved_scenarios",
+        "default": "gen_random_uuid()",
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "user_id",
+        "type": "uuid",
+        "table": "public.saved_scenarios",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "project_id",
+        "type": "uuid",
+        "table": "public.saved_scenarios",
+        "default": null,
+        "notNull": false,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "calculator_slug",
+        "type": "text",
+        "table": "public.saved_scenarios",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "calculator_version",
+        "type": "integer",
+        "table": "public.saved_scenarios",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "name",
+        "type": "text",
+        "table": "public.saved_scenarios",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 6
+      },
+      {
+        "acl": [],
+        "name": "input_data",
+        "type": "jsonb",
+        "table": "public.saved_scenarios",
+        "default": "'{}'::jsonb",
+        "notNull": true,
+        "identity": "",
+        "position": 7
+      },
+      {
+        "acl": [],
+        "name": "output_data",
+        "type": "jsonb",
+        "table": "public.saved_scenarios",
+        "default": "'{}'::jsonb",
+        "notNull": true,
+        "identity": "",
+        "position": 8
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.saved_scenarios",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 9
+      },
+      {
+        "acl": [],
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "public.saved_scenarios",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 10
+      }
+    ],
+    "indexes": [
+      {
+        "id": "public.calculation_history_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX calculation_history_pkey ON public.calculation_history USING btree (id)"
+      },
+      {
+        "id": "public.calculation_history_user_created_idx",
+        "valid": true,
+        "definition": "CREATE INDEX calculation_history_user_created_idx ON public.calculation_history USING btree (user_id, created_at DESC)"
+      },
+      {
+        "id": "public.calculation_projects_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX calculation_projects_pkey ON public.calculation_projects USING btree (id)"
+      },
+      {
+        "id": "public.calculation_projects_user_updated_idx",
+        "valid": true,
+        "definition": "CREATE INDEX calculation_projects_user_updated_idx ON public.calculation_projects USING btree (user_id, updated_at DESC)"
+      },
+      {
+        "id": "public.profiles_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)"
+      },
+      {
+        "id": "public.saved_scenarios_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX saved_scenarios_pkey ON public.saved_scenarios USING btree (id)"
+      },
+      {
+        "id": "public.saved_scenarios_project_idx",
+        "valid": true,
+        "definition": "CREATE INDEX saved_scenarios_project_idx ON public.saved_scenarios USING btree (project_id, updated_at DESC)"
+      },
+      {
+        "id": "public.saved_scenarios_user_updated_idx",
+        "valid": true,
+        "definition": "CREATE INDEX saved_scenarios_user_updated_idx ON public.saved_scenarios USING btree (user_id, updated_at DESC)"
+      }
+    ],
+    "policies": [
+      {
+        "cmd": "DELETE",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_history",
+        "permissive": "PERMISSIVE",
+        "policyname": "history_delete_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_history",
+        "permissive": "PERMISSIVE",
+        "policyname": "history_insert_own",
+        "schemaname": "public",
+        "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_history",
+        "permissive": "PERMISSIVE",
+        "policyname": "history_select_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "DELETE",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_projects",
+        "permissive": "PERMISSIVE",
+        "policyname": "projects_delete_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_projects",
+        "permissive": "PERMISSIVE",
+        "policyname": "projects_insert_own",
+        "schemaname": "public",
+        "with_check": "((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\n   FROM public.profiles p\n  WHERE ((p.id = ( SELECT auth.uid() AS uid)) AND (p.plan = ANY (ARRAY['pro'::text, 'business'::text]))))))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_projects",
+        "permissive": "PERMISSIVE",
+        "policyname": "projects_select_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "calculation_projects",
+        "permissive": "PERMISSIVE",
+        "policyname": "projects_update_own",
+        "schemaname": "public",
+        "with_check": "((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\n   FROM public.profiles p\n  WHERE ((p.id = ( SELECT auth.uid() AS uid)) AND (p.plan = ANY (ARRAY['pro'::text, 'business'::text]))))))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) = id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "profiles_select_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "(( SELECT auth.uid() AS uid) = id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "profiles_update_own",
+        "schemaname": "public",
+        "with_check": "(( SELECT auth.uid() AS uid) = id)"
+      },
+      {
+        "cmd": "DELETE",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "saved_scenarios",
+        "permissive": "PERMISSIVE",
+        "policyname": "scenarios_delete_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "public"
+        ],
+        "tablename": "saved_scenarios",
+        "permissive": "PERMISSIVE",
+        "policyname": "scenarios_insert_own",
+        "schemaname": "public",
+        "with_check": "((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\n   FROM public.profiles profile\n  WHERE ((profile.id = ( SELECT auth.uid() AS uid)) AND (profile.plan = ANY (ARRAY['pro'::text, 'business'::text]))))) AND ((project_id IS NULL) OR (EXISTS ( SELECT 1\n   FROM public.calculation_projects p\n  WHERE ((p.id = saved_scenarios.project_id) AND (p.user_id = ( SELECT auth.uid() AS uid)))))))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "saved_scenarios",
+        "permissive": "PERMISSIVE",
+        "policyname": "scenarios_select_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "saved_scenarios",
+        "permissive": "PERMISSIVE",
+        "policyname": "scenarios_update_own",
+        "schemaname": "public",
+        "with_check": "((( SELECT auth.uid() AS uid) = user_id) AND (EXISTS ( SELECT 1\n   FROM public.profiles profile\n  WHERE ((profile.id = ( SELECT auth.uid() AS uid)) AND (profile.plan = ANY (ARRAY['pro'::text, 'business'::text]))))) AND ((project_id IS NULL) OR (EXISTS ( SELECT 1\n   FROM public.calculation_projects p\n  WHERE ((p.id = saved_scenarios.project_id) AND (p.user_id = ( SELECT auth.uid() AS uid)))))))"
+      }
+    ],
+    "provider": [
+      {
+        "id": "auth.role()",
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "dashboard_user",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "supabase_auth_admin",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "supabase_auth_admin",
+        "definition": "CREATE OR REPLACE FUNCTION auth.role()\n RETURNS text\n LANGUAGE sql\n STABLE\nAS $function$\n  select \n  coalesce(\n    nullif(current_setting('request.jwt.claim.role', true), ''),\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'role')\n  )::text\n$function$\n"
+      },
+      {
+        "id": "auth.uid()",
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "dashboard_user",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "supabase_auth_admin",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "supabase_auth_admin",
+        "definition": "CREATE OR REPLACE FUNCTION auth.uid()\n RETURNS uuid\n LANGUAGE sql\n STABLE\nAS $function$\n  select \n  coalesce(\n    nullif(current_setting('request.jwt.claim.sub', true), ''),\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'sub')\n  )::uuid\n$function$\n"
+      }
+    ],
+    "triggers": [
+      {
+        "id": "calculation_history_free_quota",
+        "table": "public.calculation_history",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER calculation_history_free_quota BEFORE INSERT ON public.calculation_history FOR EACH ROW EXECUTE FUNCTION public.enforce_calcumint_save_quotas()"
+      },
+      {
+        "id": "enforce_free_history_limit",
+        "table": "public.calculation_history",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER enforce_free_history_limit BEFORE INSERT ON public.calculation_history FOR EACH ROW EXECUTE FUNCTION public.enforce_free_history_limit()"
+      }
+    ],
+    "functions": [
+      {
+        "id": "public.enforce_calcumint_save_quotas()",
+        "acl": [
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.enforce_calcumint_save_quotas()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare account_plan text; current_count bigint;\nbegin\n select coalesce(plan,'free') into account_plan from public.profiles where id=new.user_id;\n if account_plan not in ('pro','business') then\n  if tg_table_name='favorites' then select count(*) into current_count from public.favorites where user_id=new.user_id; if current_count>=10 then raise exception 'Free accounts can save up to 10 favorites'; end if;\n  elsif tg_table_name='calculation_history' then select count(*) into current_count from public.calculation_history where user_id=new.user_id; if current_count>=20 then raise exception 'Free accounts can keep up to 20 calculations'; end if;\n  end if;\n end if; return new;\nend $function$\n"
+      },
+      {
+        "id": "public.enforce_free_history_limit()",
+        "acl": [
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.enforce_free_history_limit()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare\n  current_plan text;\n  current_count integer;\nbegin\n  select plan into current_plan from public.profiles where id = new.user_id;\n  if coalesce(current_plan, 'free') = 'free' then\n    select count(*) into current_count from public.calculation_history where user_id = new.user_id;\n    if current_count >= 20 then\n      raise exception 'Free plan calculation history limit reached';\n    end if;\n  end if;\n  return new;\nend;\n$function$\n"
+      }
+    ],
+    "relations": [
+      {
+        "id": "public.calculation_history",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.calculation_projects",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.profiles",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.saved_scenarios",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      }
+    ],
+    "constraints": [
+      {
+        "name": "calculation_history_calculator_version_check",
+        "table": "public.calculation_history",
+        "validated": true,
+        "definition": "CHECK ((calculator_version > 0))"
+      },
+      {
+        "name": "calculation_history_pkey",
+        "table": "public.calculation_history",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "calculation_history_user_id_fkey",
+        "table": "public.calculation_history",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "calculation_projects_description_check",
+        "table": "public.calculation_projects",
+        "validated": true,
+        "definition": "CHECK (((description IS NULL) OR (char_length(description) <= 1000)))"
+      },
+      {
+        "name": "calculation_projects_name_check",
+        "table": "public.calculation_projects",
+        "validated": true,
+        "definition": "CHECK (((char_length(btrim(name)) >= 1) AND (char_length(btrim(name)) <= 120)))"
+      },
+      {
+        "name": "calculation_projects_pkey",
+        "table": "public.calculation_projects",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "calculation_projects_user_id_fkey",
+        "table": "public.calculation_projects",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "profiles_id_fkey",
+        "table": "public.profiles",
+        "validated": true,
+        "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "profiles_pkey",
+        "table": "public.profiles",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "profiles_plan_check",
+        "table": "public.profiles",
+        "validated": true,
+        "definition": "CHECK ((plan = ANY (ARRAY['free'::text, 'pro'::text, 'business'::text])))"
+      },
+      {
+        "name": "saved_scenarios_calculator_slug_check",
+        "table": "public.saved_scenarios",
+        "validated": true,
+        "definition": "CHECK (((char_length(calculator_slug) >= 1) AND (char_length(calculator_slug) <= 160)))"
+      },
+      {
+        "name": "saved_scenarios_calculator_version_check",
+        "table": "public.saved_scenarios",
+        "validated": true,
+        "definition": "CHECK ((calculator_version > 0))"
+      },
+      {
+        "name": "saved_scenarios_name_check",
+        "table": "public.saved_scenarios",
+        "validated": true,
+        "definition": "CHECK (((char_length(btrim(name)) >= 1) AND (char_length(btrim(name)) <= 120)))"
+      },
+      {
+        "name": "saved_scenarios_pkey",
+        "table": "public.saved_scenarios",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "saved_scenarios_project_id_fkey",
+        "table": "public.saved_scenarios",
+        "validated": true,
+        "definition": "FOREIGN KEY (project_id) REFERENCES public.calculation_projects(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "saved_scenarios_user_id_fkey",
+        "table": "public.saved_scenarios",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      }
+    ],
+    "defaultAcls": [
+      {
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "role": "postgres",
+        "schema": "public",
+        "objectType": "f"
+      }
+    ]
+  }
+}

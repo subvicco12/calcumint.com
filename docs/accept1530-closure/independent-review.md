@@ -1,0 +1,5 @@
+# Independent software review
+
+Separate reviewer critical440_independent_review inspected the new bundle, actual-host fixture, concurrency/reversal, precision and genuine Next browser work without changing files or production. It reproduced one important verifier defect: added function/trigger/index definitions were not independently pinned. The correction requires complete source-derived postimage SHA and applies that check before commit. Three tamper tests failed with the check temporarily removed and passed after restoration. Reviewer confirmed seven bundle tests pass and no remaining important issue in the correction.
+
+Final review confirmed both composition orders, malformed legacy-data refusal and late reversal rollback, real GoTrue/Next history/Business server actions/export/tenant claims, scoped numeric/accessibility limitations, preserved five-job CI and bounded timeouts. It found no further important defects. This is software review, not competent mathematical/source/QA acceptance, specialist approval or production activation authority.

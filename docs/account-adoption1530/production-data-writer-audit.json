@@ -1,0 +1,73 @@
+{
+  "history": {
+    "count": 1,
+    "invalidShape": 0
+  },
+  "profiles": {
+    "count": 4,
+    "unknownPlan": 0
+  },
+  "readOnly": "on",
+  "scenarios": {
+    "count": 0,
+    "foreignProjectBinding": 0
+  },
+  "observedAt": "2026-11-06T16:27:43.607517+00:00",
+  "scopedLocks": 0,
+  "incomingForeignKeys": [
+    {
+      "name": "saved_scenarios_project_id_fkey",
+      "target": "public.calculation_projects",
+      "relation": "public.saved_scenarios",
+      "definition": "FOREIGN KEY (project_id) REFERENCES public.calculation_projects(id) ON DELETE CASCADE"
+    }
+  ],
+  "preparedTransactions": 0,
+  "functionReferenceCandidates": [
+    {
+      "owner": "postgres",
+      "signature": "public.consume_ai_quota(text)",
+      "definitionSHA256": "6bd00de93fe18cd73c747711c3e63091f9f8dd20967bae0398c65782f82ed71d"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.create_business_organization(text,text)",
+      "definitionSHA256": "1413358da63803f766a294e83a4fbaa4c30b4098aeb314e337d951971cdd8b75"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.create_custom_calculator(uuid,text,text,text,jsonb)",
+      "definitionSHA256": "b27e7698eb7220d1b1839eebccac05e74fed14d1f6900b27c8c4e1b6fa70878a"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.enforce_calcumint_save_quotas()",
+      "definitionSHA256": "ed5ba45cda0669a68660ccfc52bb140f7e6c115e097182aa1f939f3e098686d1"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.enforce_custom_calculator_publication_entitlement()",
+      "definitionSHA256": "caa535b3ebd9aad4f95cac4233b6a2250ff1f5614c87a0bd30741b0d5116a180"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.enforce_free_favorite_limit()",
+      "definitionSHA256": "1969696ea4a3a6c460f9f6a45b8475dd6ac5ef90c52d2c731a4b89c6648b9d04"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.enforce_free_history_limit()",
+      "definitionSHA256": "772b2f436c93efa715ba2e6ae2bd474df4f7ac3e5f656e0f5cc05170c718c37f"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.handle_new_user()",
+      "definitionSHA256": "3ad869ff5e4926935382ffadfe8c4bf40781e8a7c8338cb404fa467941fb9d99"
+    },
+    {
+      "owner": "postgres",
+      "signature": "public.publish_custom_calculator(uuid,integer)",
+      "definitionSHA256": "4ce5f1113991e00fb46117589f8af5cd7a6a433790e4f14069ddcba47b564c28"
+    }
+  ]
+}

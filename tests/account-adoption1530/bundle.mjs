@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';import {catalogSQL,tables,functionNames} from './catalog.mjs';
+export const sha=x=>createHash('sha256').update(x).digest('hex');
+const expectedPostimage='1b56153313fd6b8471658ac791834f634eb64d67bdd90bf6163a0d760b387249';
+const predecessor='af413dcb2f0806bcc29680f5c0a07cef138cc5948798f645e7ccc1f79288584a',source='docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql',sourceHash='18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c';
+const ids=['atomic_snapshot_valid(text,integer,jsonb,jsonb)','atomic_account_plan(uuid)','guard_atomic_history()','save_calculation_history_atomic(uuid,text,integer,jsonb,jsonb,uuid)','guard_atomic_workspace()','save_project_scenario_atomic(uuid,uuid,uuid,text,uuid)'].map(x=>'public.'+x);
+const triggers={atomic_history_guard:'calculation_history',atomic_scenario_guard:'saved_scenarios',atomic_project_guard:'calculation_projects'},index='public.calculation_history_user_created_id_idx';
+const ident=x=>'"'+x.replaceAll('"','""')+'"';
+function check(c){assert(c&&typeof c.raw==='string'&&c.data,'Invalid postimage/capture');assert.deepEqual(JSON.parse(c.raw),c.data);assert(['AUTHENTICATED_READ_ONLY_METADATA_CAPTURE','ISOLATED_FIXTURE'].includes(c.kind),'Invalid capture kind');if(c.kind!=='ISOLATED_FIXTURE')assert(c.readOnly==='on'&&c.project==='zpwpstsvztyshcnwdfye'&&c.observedActor==='postgres','Invalid read-only capture');}
+const assertion=hash=>`DO $exact$ BEGIN IF encode(sha256(convert_to((${catalogSQL})::text,'UTF8')),'hex') IS DISTINCT FROM '${hash}' THEN RAISE EXCEPTION 'ACCOUNT_EXACT_METADATA_MISMATCH'; END IF; END $exact$;`;
+const guard=direction=>`BEGIN; SET LOCAL search_path=pg_catalog; SET LOCAL lock_timeout='3s'; SET LOCAL statement_timeout='30s';\nDO $hold$ BEGIN RAISE EXCEPTION 'UNAPPLIED_ACCOUNT_ADOPTION1530_${direction}: no activation authority'; END $hold$;\nDO $owner$ BEGIN IF current_user<>'postgres' OR current_setting('transaction_isolation')<>'read committed' THEN RAISE EXCEPTION 'ACCOUNT_OPERATOR_OR_ISOLATION_MISMATCH'; END IF; END $owner$;\nLOCK TABLE ${[...tables].sort().map(t=>'public.'+ident(t)).join(',')} IN ACCESS EXCLUSIVE MODE;\n`;
+export async function snapshot(sql){const raw=await sql(`BEGIN; SET LOCAL search_path=pg_catalog; ${catalogSQL}; COMMIT;`);return{kind:'ISOLATED_FIXTURE',raw,data:JSON.parse(raw),sha256:sha(raw)};}
+export async function prepareApply(c,{sourceHash:claimed=sourceHash}={}){
+ check(c);assert.equal(sha(c.raw),predecessor,'Exact hosted predecessor changed');
+ for(const f of c.data.functions)assert(!functionNames.includes(f.id.slice(7).split('(')[0]),'Function name collision exists');
+ assert(!c.data.triggers.some(t=>t.id in triggers),'Trigger collision exists');assert(!c.data.indexes.some(i=>i.id===index),'Index collision exists');
+ const bytes=await readFile(source,'utf8');assert.equal(claimed,sourceHash,'Reviewed source hash');assert.equal(sha(bytes),sourceHash,'Reviewed source changed');
+ const hold=/DO \$proposal_guard\$ BEGIN\s*RAISE EXCEPTION 'UNAPPLIED_ATOMIC_ACCOUNT_HISTORY_PROPOSAL';\s*END \$proposal_guard\$;/;
+ assert.equal((bytes.match(/BEGIN;/g)||[]).length,1);assert(hold.test(bytes));const body=bytes.replace(/^BEGIN;$/m,'').replace(hold,'').replace(/^COMMIT;$/m,'');
+ const prerequisites=`DO $data$ BEGIN IF EXISTS(SELECT 1 FROM public.calculation_history WHERE calculator_slug IS NULL OR btrim(calculator_slug)='' OR calculator_version IS NULL OR calculator_version<1 OR jsonb_typeof(input_data) IS DISTINCT FROM 'object' OR jsonb_typeof(output_data) IS DISTINCT FROM 'object') OR EXISTS(SELECT 1 FROM public.saved_scenarios WHERE jsonb_typeof(input_data) IS DISTINCT FROM 'object' OR jsonb_typeof(output_data) IS DISTINCT FROM 'object') OR EXISTS(SELECT 1 FROM public.profiles WHERE plan IS NULL OR plan NOT IN('free','pro','business')) OR EXISTS(SELECT 1 FROM public.saved_scenarios s WHERE s.project_id IS NOT NULL AND NOT EXISTS(SELECT 1 FROM public.calculation_projects p WHERE p.id=s.project_id AND p.user_id=s.user_id)) THEN RAISE EXCEPTION 'ACCOUNT_LEGACY_DATA_PRECONDITION'; END IF; END $data$;`;
+ return {sql:[guard('APPLY'),assertion(predecessor),prerequisites,body,assertion(expectedPostimage),'COMMIT;'].join('\n')+'\n',preimage:predecessor,activationAuthorized:false,sourceBindings:{[source]:sourceHash}};
+}
+export function verifyPostimage(before,after){
+ check(before);check(after);assert.equal(sha(after.raw),expectedPostimage,'Exact source-derived postimage changed');assert.equal(sha(before.raw),predecessor,'Exact hosted predecessor changed');
+ for(const k of ['major','relations','columns','policies','constraints','provider','defaultAcls'])assert.deepEqual(after.data[k],before.data[k],'Out of scope postimage '+k);
+ for(const f of before.data.functions)assert.deepEqual(after.data.functions.find(x=>x.id===f.id),f,'Existing function drift');
+ const added=after.data.functions.filter(x=>!before.data.functions.some(y=>y.id===x.id));assert.deepEqual(added.map(x=>x.id.replaceAll(', ',',' )).sort(),[...ids].sort(),'New postimage function scope');
+ for(const f of added){assert.equal(f.owner,'postgres');assert(!f.acl.some(a=>['PUBLIC','anon'].includes(a.grantee)),'Client/public function ACL');const auth=f.acl.some(a=>a.grantee==='authenticated'&&a.privilege==='EXECUTE');assert.equal(auth,f.id.startsWith('public.save_'),'Only two public RPCs grant authenticated EXECUTE');}
+ for(const t of before.data.triggers)assert.deepEqual(after.data.triggers.find(x=>x.id===t.id&&x.table===t.table),t,'Existing trigger drift');
+ const next=after.data.triggers.filter(x=>!before.data.triggers.some(y=>y.id===x.id&&y.table===x.table));assert.equal(next.length,3);for(const t of next){assert.equal(t.table,'public.'+triggers[t.id]);assert.equal(t.enabled,'O');}
+ for(const i of before.data.indexes)assert.deepEqual(after.data.indexes.find(x=>x.id===i.id),i,'Existing index drift');assert.deepEqual(after.data.indexes.filter(x=>!before.data.indexes.some(y=>y.id===x.id)).map(x=>x.id),[index]);
+ return sha(after.raw);
+}
+export function bindPostimage(bundle,before,after){const hash=verifyPostimage(before,after);return{...bundle,expectedPostimage:hash,sql:bundle.sql.replace(/COMMIT;\s*$/,assertion(hash)+'\nCOMMIT;\n')};}
+export async function prepareReverse(before,after){const post=verifyPostimage(before,after);return{sql:[guard('REVERSE'),assertion(post),...Object.entries(triggers).map(([t,table])=>`DROP TRIGGER ${ident(t)} ON public.${ident(table)};`),`DROP INDEX ${index};`,...[...ids].reverse().map(id=>`DROP FUNCTION ${id};`),assertion(predecessor),'COMMIT;'].join('\n')+'\n',preimage:post,postimage:predecessor,activationAuthorized:false,warning:'Technical reversal removes new guards; retain writer hold and obtain separate recovery authority. No row deletion or CASCADE.'};}

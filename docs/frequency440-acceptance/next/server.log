@@ -1,0 +1,25 @@
+▲ Next.js 16.3.5 (webpack)
+- Local:         http://127.0.0.1:38115
+- Network:       http://127.0.0.1:38115
+✓ Ready in 318ms
+✓ Running next.config.ts took 36ms
+- Experiments (use with caution):
+  · optimizePackageImports
+
+○ Compiling /login ...
+ GET /login 200 in 6.1s (next.js: 5.5s, proxy.ts: 223ms, application-code: 315ms)
+ GET /isolated-frequency 200 in 3.4s (next.js: 2.8s, proxy.ts: 148ms, application-code: 474ms)
+ GET /account/history 200 in 2.6s (next.js: 1910ms, proxy.ts: 46ms, application-code: 616ms)
+ GET /account/saved?source=history&id=2ce8c69a-37df-49e2-a406-ce85861aa60e 200 in 1378ms (next.js: 638ms, proxy.ts: 40ms, application-code: 699ms)
+ GET /isolated-frequency 200 in 188ms (next.js: 27ms, proxy.ts: 55ms, application-code: 106ms)
+ GET /account/history 200 in 180ms (next.js: 19ms, proxy.ts: 40ms, application-code: 120ms)
+ GET /account/saved?source=history&id=8f2edd3e-0065-46e2-a09f-c44f12cf4f61 200 in 143ms (next.js: 2ms, proxy.ts: 41ms, application-code: 100ms)
+ GET /account 200 in 2.5s (next.js: 1667ms, proxy.ts: 40ms, application-code: 744ms)
+ POST /account 200 in 240ms (next.js: 3ms, proxy.ts: 38ms, application-code: 198ms)
+  └─ ƒ createCalculationProject({}) in 55ms app/account/actions.ts
+ GET /account/projects/34750f37-12c1-41fc-b10d-ee3512451c59?historyId=8f2edd3e-0065-46e2-a09f-c44f12cf4f61 200 in 1725ms (next.js: 1245ms, proxy.ts: 52ms, application-code: 427ms)
+ POST /account/projects/34750f37-12c1-41fc-b10d-ee3512451c59?historyId=8f2edd3e-0065-46e2-a09f-c44f12cf4f61 200 in 297ms (next.js: 30ms, proxy.ts: 37ms, application-code: 230ms)
+  └─ ƒ saveProjectScenario({}) in 77ms app/account/actions.ts
+ GET /account/saved?source=scenario&id=7f228c00-3636-4dbc-9a01-1336d600840b 200 in 524ms (next.js: 40ms, proxy.ts: 49ms, application-code: 434ms)
+ GET /account/saved?source=scenario&id=7f228c00-3636-4dbc-9a01-1336d600840b 200 in 129ms (next.js: 2ms, proxy.ts: 35ms, application-code: 92ms)
+[?25h
