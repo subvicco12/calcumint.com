@@ -42,7 +42,7 @@ Isolated genuine PostgreSQL17.6/GoTrue/PostgREST acceptance passed nine negative
 
 ## Precise outstanding decisions
 
-**Owner/product — #427 only:** choose algebraic C/F/K value conversion with explicit physical-use limitations (recommended as the least disruptive review target), or a physical absolute-temperature product refusing below0K with separately reviewed version-safe behavior. The equation and273.15 offset are facts. Neither governing row nor retained Blueprint resolves this product-domain choice. Interval conversion is not silently added as a requirement.
+**OWN-427 — APPROVED Option A:** the owner selects algebraic C/F/K temperature-value conversion as the canonical product scope for `conversion.temperature@1`. No physical-feasibility or below-absolute-zero restriction is added. The limitation is now visible beside the inputs and included in newly generated export methodology. See `owner-decisions.json` for the exact immutable source/version binding. This resolves the product-domain choice only; remaining workflow, source, precision, competent QA and publication obligations are unchanged. No repeat approval is needed. Interval conversion is not silently added as a requirement.
 
 **Competent reviewers, not owner arithmetic approval:** adjudicate per-ID source revision/body/factor applicability, precision/refusal contract, applicable analytical/batch features and exact QA dispositions. Assign competent math/metrology/technical QA reviewers; qualified-risk triage remains unresolved. No blanket specialist requirement or exemption is invented.
 

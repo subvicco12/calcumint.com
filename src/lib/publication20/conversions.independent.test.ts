@@ -1,5 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import {runCalculator} from '@/calculators/engine';
+import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-replay';
+import {validatePublication20Result} from './result-trust';
 import {conversionPublicationDefinitions} from './conversions';
 /** New cohort witnesses are literal expected results derived from unit definitions,
  * not the engine's worked examples. They do not grant applicability/source review. */
@@ -34,6 +36,7 @@ describe('exact existing-engine converter cohort acceptance',()=>{
   expect(Math.abs(actual-expected)).toBeLessThanOrEqual(Math.max(Number.MIN_VALUE*8,Math.abs(expected)*Number.EPSILON*8));
   expect(binding.outputUnit({value,fromUnit,toUnit})).toBe(toUnit);
  });
+ it.each([[-300,'c','k',-26.85],[-1,'k','c',-274.15],[-500,'f','k',-22.405555555555555]] as const)('preserves OWN-427 algebraic values below absolute zero: %s %s to %s',(value,fromUnit,toUnit,expected)=>{const entry=byId(427),input={value,fromUnit,toUnit},output=runCalculator(entry.definition,input).output;expect(output.result).toBeCloseTo(expected,12);expect(()=>validatePublication20Result(entry,input,output)).not.toThrow();expect(verifyRegisteredSnapshot({calculatorSlug:entry.definition.slug,calculatorVersion:1,input,output}).snapshot.output).toEqual(output);});
  it('makes every declared dropdown choice valid and zero-preserving for identity conversions',()=>{
   for(const binding of conversionPublicationDefinitions){
    const source=binding.fields.find(x=>x.key==='fromUnit')!,target=binding.fields.find(x=>x.key==='toUnit')!;

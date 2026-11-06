@@ -1,0 +1,39 @@
+{
+  "decisions": [
+    {
+      "id": "OWN-427",
+      "catalogId": 427,
+      "catalogTitle": "Temperature Converter",
+      "ownerLabel": "Temperature Conversion",
+      "status": "APPROVED_OPTION_A",
+      "authority": "Explicit owner message in this session; product scope only",
+      "recordedDate": "2026-11-06",
+      "decisionTimestamp": null,
+      "binding": {
+        "engineId": "conversion.temperature",
+        "version": 1,
+        "slug": "temperature-converter",
+        "engineSource": "src/calculators/conversion/catalog-batch-1.ts",
+        "engineSourceSHA256": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9",
+        "unitSource": "src/calculators/units.ts",
+        "unitSourceSHA256": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec",
+        "engineeringPredecessor": "7c5d45a8096016d392fbf1c654ac7ff24e1be323"
+      },
+      "approvedScope": "Algebraic C/F/K temperature-value conversion, without physical-feasibility or absolute-zero rejection",
+      "requiredDisclosure": "Algebraic conversion does not establish physical feasibility.",
+      "preservation": [
+        "Existing algebraic formulas and mathematical behavior",
+        "Registered historical engines, versions, saved calculations and replay",
+        "Existing source applicability, precision, competent QA, certification, RLS and publication requirements"
+      ],
+      "notGranted": [
+        "Mathematical certification",
+        "Specialist approval",
+        "Publication authorization",
+        "Production modification"
+      ],
+      "releaseHold": true,
+      "scopeObligationResolved": "Physical-domain versus algebraic-value product choice only; no claim of complete canonical contract or interval-conversion requirement"
+    }
+  ]
+}

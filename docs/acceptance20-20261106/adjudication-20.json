@@ -1638,17 +1638,23 @@
       "identityFacts": "VERIFIED_TITLE_DOMAIN_AND_RECORDED_EXACT_ENGINE_TUPLE_NOT_CANONICAL_ADOPTION",
       "scope": {
         "status": "PARTIAL",
-        "established": "Existing affine C/F/K value conversion imposes no physical absolute-temperature lower bound; supported numeric-range refusals still apply. No interval-conversion mode is established.",
+        "established": "Algebraic C/F/K temperature-value conversion, without physical-feasibility or absolute-zero rejection; supported numerical-range refusals still apply. No interval-conversion mode is required by this decision.",
         "remaining": [
           "Demonstrate authenticated history and applicable batch/advanced conversion; usefulness applicability requires adjudication",
           "Complete applicable Blueprint workflows and requirement-specific competent review",
           "No exhaustive unit set or universal precision tolerance is specified by the catalog; do not invent one"
-        ]
+        ],
+        "ownerDecision": {
+          "id": "OWN-427",
+          "status": "APPROVED_OPTION_A",
+          "evidence": "owner-decisions.json",
+          "resolvedObligation": "Algebraic temperature-value scope; no physical-feasibility rejection"
+        }
       },
       "source": {
         "factualCoverage": "PARTIAL_OR_UNVERIFIED_NATIVE_BODY",
         "formalApplicability": "PENDING",
-        "missing": "Fahrenheit source body and absolute-temperature product-domain decision"
+        "missing": "Fahrenheit governing source body and competent source-applicability adjudication; OWN-427 resolves product-domain scope only."
       },
       "precision": {
         "status": "PARTIAL",
@@ -1692,5 +1698,14 @@
       "publicationEligible": false,
       "releaseHold": true
     }
-  ]
+  ],
+  "scopeReassessment": {
+    "decision": "OWN-427",
+    "affectedIds": [
+      427
+    ],
+    "productDomainChoicesResolved": 1,
+    "completeCanonicalScopesNewlyEstablished": 0,
+    "newPublicationEligible": 0
+  }
 }
