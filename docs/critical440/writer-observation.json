@@ -1,0 +1,1498 @@
+{
+  "actor": "postgres",
+  "roles": [
+    {
+      "role": "anon",
+      "login": false,
+      "inherit": true,
+      "createDb": false,
+      "bypassRLS": false,
+      "superuser": false,
+      "createRole": false,
+      "replication": false
+    },
+    {
+      "role": "authenticated",
+      "login": false,
+      "inherit": true,
+      "createDb": false,
+      "bypassRLS": false,
+      "superuser": false,
+      "createRole": false,
+      "replication": false
+    },
+    {
+      "role": "authenticator",
+      "login": true,
+      "inherit": false,
+      "createDb": false,
+      "bypassRLS": false,
+      "superuser": false,
+      "createRole": false,
+      "replication": false
+    },
+    {
+      "role": "postgres",
+      "login": true,
+      "inherit": true,
+      "createDb": true,
+      "bypassRLS": true,
+      "superuser": false,
+      "createRole": true,
+      "replication": true
+    },
+    {
+      "role": "service_role",
+      "login": false,
+      "inherit": true,
+      "createDb": false,
+      "bypassRLS": true,
+      "superuser": false,
+      "createRole": false,
+      "replication": false
+    },
+    {
+      "role": "supabase_admin",
+      "login": true,
+      "inherit": true,
+      "createDb": true,
+      "bypassRLS": true,
+      "superuser": true,
+      "createRole": true,
+      "replication": true
+    },
+    {
+      "role": "supabase_auth_admin",
+      "login": true,
+      "inherit": false,
+      "createDb": false,
+      "bypassRLS": false,
+      "superuser": false,
+      "createRole": true,
+      "replication": false
+    },
+    {
+      "role": "supabase_etl_admin",
+      "login": true,
+      "inherit": true,
+      "createDb": false,
+      "bypassRLS": true,
+      "superuser": false,
+      "createRole": false,
+      "replication": true
+    },
+    {
+      "role": "supabase_read_only_user",
+      "login": true,
+      "inherit": true,
+      "createDb": false,
+      "bypassRLS": true,
+      "superuser": false,
+      "createRole": false,
+      "replication": false
+    }
+  ],
+  "activity": [
+    {
+      "state": "idle",
+      "usename": "authenticator",
+      "sessions": 7,
+      "wait_event": "ClientRead",
+      "backend_type": "client backend",
+      "wait_event_type": "Client",
+      "application_name": "PostgREST 14.5",
+      "oldest_xact_start": null,
+      "oldest_query_start": "2026-09-15T08:40:52.173244+00:00"
+    },
+    {
+      "state": "idle",
+      "usename": "pgbouncer",
+      "sessions": 1,
+      "wait_event": "ClientRead",
+      "backend_type": "client backend",
+      "wait_event_type": "Client",
+      "application_name": "",
+      "oldest_xact_start": null,
+      "oldest_query_start": "2026-11-06T15:30:33.966747+00:00"
+    },
+    {
+      "state": "idle",
+      "usename": "supabase_admin",
+      "sessions": 1,
+      "wait_event": "ClientRead",
+      "backend_type": "client backend",
+      "wait_event_type": "Client",
+      "application_name": "",
+      "oldest_xact_start": null,
+      "oldest_query_start": "2026-11-06T00:14:41.024201+00:00"
+    },
+    {
+      "state": "idle",
+      "usename": "supabase_admin",
+      "sessions": 1,
+      "wait_event": "ClientRead",
+      "backend_type": "client backend",
+      "wait_event_type": "Client",
+      "application_name": "postgres_exporter",
+      "oldest_xact_start": null,
+      "oldest_query_start": "2026-11-06T15:30:35.677306+00:00"
+    },
+    {
+      "state": null,
+      "usename": "supabase_admin",
+      "sessions": 1,
+      "wait_event": "Extension",
+      "backend_type": "pg_cron launcher",
+      "wait_event_type": "Extension",
+      "application_name": "pg_cron scheduler",
+      "oldest_xact_start": null,
+      "oldest_query_start": null
+    },
+    {
+      "state": "idle",
+      "usename": "postgres",
+      "sessions": 1,
+      "wait_event": "Extension",
+      "backend_type": "pg_net 0.20.4 worker",
+      "wait_event_type": "Extension",
+      "application_name": "pg_net 0.20.4",
+      "oldest_xact_start": null,
+      "oldest_query_start": null
+    }
+  ],
+  "readOnly": "on",
+  "observedAt": "2026-11-06T15:30:41.176672+00:00",
+  "relationRLS": [
+    {
+      "owner": "postgres",
+      "table": "admin_alerts",
+      "forced": false,
+      "enabled": true
+    },
+    {
+      "owner": "postgres",
+      "table": "calculator_bulk_jobs",
+      "forced": false,
+      "enabled": true
+    },
+    {
+      "owner": "postgres",
+      "table": "calculator_catalog_admin",
+      "forced": false,
+      "enabled": true
+    },
+    {
+      "owner": "postgres",
+      "table": "calculator_qa_checks",
+      "forced": false,
+      "enabled": true
+    },
+    {
+      "owner": "postgres",
+      "table": "calculator_review_events",
+      "forced": false,
+      "enabled": true
+    },
+    {
+      "owner": "postgres",
+      "table": "calculator_source_evidence",
+      "forced": false,
+      "enabled": true
+    },
+    {
+      "owner": "postgres",
+      "table": "platform_admins",
+      "forced": false,
+      "enabled": true
+    }
+  ],
+  "scopedLocks": null,
+  "cronExtension": null,
+  "eventTriggers": [
+    {
+      "name": "issue_graphql_placeholder",
+      "tags": [
+        "DROP EXTENSION"
+      ],
+      "event": "sql_drop",
+      "owner": "supabase_admin",
+      "enabled": "O",
+      "function": "extensions.set_graphql_placeholder()",
+      "definitionSHA256": "b0cadab880dc68f569b3e01057dc6f5acee9d05e122de6f4256130ae330bbcec"
+    },
+    {
+      "name": "issue_pg_cron_access",
+      "tags": [
+        "CREATE EXTENSION"
+      ],
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O",
+      "function": "extensions.grant_pg_cron_access()",
+      "definitionSHA256": "eb3fa2e82a0135bc04a6236f93331911861c91b45d72cba5d9c03c1be2c34b4c"
+    },
+    {
+      "name": "issue_pg_graphql_access",
+      "tags": [
+        "CREATE EXTENSION"
+      ],
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O",
+      "function": "extensions.grant_pg_graphql_access()",
+      "definitionSHA256": "9ec845adab4ba00bbf7740458b6c4461094697023f0f7adc693b373e2ea54f68"
+    },
+    {
+      "name": "issue_pg_net_access",
+      "tags": [
+        "CREATE EXTENSION"
+      ],
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O",
+      "function": "extensions.grant_pg_net_access()",
+      "definitionSHA256": "e38c4060751c9695123350596f1cb0d0c943015f3267a2a455d8efe02c711184"
+    },
+    {
+      "name": "pgrst_ddl_watch",
+      "tags": null,
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O",
+      "function": "extensions.pgrst_ddl_watch()",
+      "definitionSHA256": "2b4b5d702ddf70fbd1a05c9825f9f9016d5c0ef97dd3df5f5b012ea23d9b94b1"
+    },
+    {
+      "name": "pgrst_drop_watch",
+      "tags": null,
+      "event": "sql_drop",
+      "owner": "supabase_admin",
+      "enabled": "O",
+      "function": "extensions.pgrst_drop_watch()",
+      "definitionSHA256": "3a2696133853e17a0456cbfbb233a03815f50895492143e84df983b558d76593"
+    }
+  ],
+  "cronJobRelation": null,
+  "cronRunRelation": null,
+  "roleMemberships": [
+    {
+      "member": "authenticator",
+      "adminOption": false,
+      "grantedRole": "anon"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "anon"
+    },
+    {
+      "member": "supabase_realtime_admin",
+      "adminOption": false,
+      "grantedRole": "anon"
+    },
+    {
+      "member": "authenticator",
+      "adminOption": false,
+      "grantedRole": "authenticated"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "authenticated"
+    },
+    {
+      "member": "supabase_realtime_admin",
+      "adminOption": false,
+      "grantedRole": "authenticated"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "authenticator"
+    },
+    {
+      "member": "supabase_storage_admin",
+      "adminOption": false,
+      "grantedRole": "authenticator"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "pg_create_subscription"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "pg_monitor"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "pg_read_all_data"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "pg_signal_backend"
+    },
+    {
+      "member": "authenticator",
+      "adminOption": false,
+      "grantedRole": "service_role"
+    },
+    {
+      "member": "postgres",
+      "adminOption": true,
+      "grantedRole": "service_role"
+    },
+    {
+      "member": "supabase_realtime_admin",
+      "adminOption": false,
+      "grantedRole": "service_role"
+    },
+    {
+      "member": "postgres",
+      "adminOption": false,
+      "grantedRole": "supabase_privileged_role"
+    }
+  ],
+  "schemaPrivileges": [
+    {
+      "role": "anon",
+      "usage": true,
+      "create": false,
+      "schema": "auth"
+    },
+    {
+      "role": "authenticated",
+      "usage": true,
+      "create": false,
+      "schema": "auth"
+    },
+    {
+      "role": "postgres",
+      "usage": true,
+      "create": false,
+      "schema": "auth"
+    },
+    {
+      "role": "service_role",
+      "usage": true,
+      "create": false,
+      "schema": "auth"
+    },
+    {
+      "role": "anon",
+      "usage": true,
+      "create": false,
+      "schema": "public"
+    },
+    {
+      "role": "authenticated",
+      "usage": true,
+      "create": false,
+      "schema": "public"
+    },
+    {
+      "role": "postgres",
+      "usage": true,
+      "create": true,
+      "schema": "public"
+    },
+    {
+      "role": "service_role",
+      "usage": true,
+      "create": false,
+      "schema": "public"
+    }
+  ],
+  "incomingForeignKeys": [
+    {
+      "name": "admin_alerts_calculator_id_fkey",
+      "table": "public.admin_alerts",
+      "target": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE"
+    },
+    {
+      "name": "calculator_qa_checks_calculator_id_fkey",
+      "table": "public.calculator_qa_checks",
+      "target": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE"
+    },
+    {
+      "name": "calculator_review_events_calculator_id_fkey",
+      "table": "public.calculator_review_events",
+      "target": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE"
+    },
+    {
+      "name": "calculator_source_evidence_calculator_id_fkey",
+      "table": "public.calculator_source_evidence",
+      "target": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE"
+    }
+  ],
+  "gateDefinitionSHA256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+  "monitoringVisibility": {
+    "pgMonitor": true,
+    "pgReadAllStats": true
+  },
+  "preparedTransactions": {
+    "count": 0,
+    "oldest": null
+  },
+  "effectiveTablePrivileges": [
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "DELETE"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "INSERT"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "SELECT"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "service_role",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "UPDATE"
+    }
+  ],
+  "functionReferenceCandidates": [
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.enforce_calculator_publish_gate()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "a34469bd029214c7bae7d180174a02716dc072d7f7e40d40f98a24ef43958329",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.enforce_derived_source_count()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "438353f23c0ad0795ee5a6b11747bd0a4aaa467e55238746e69c0d77ffeceaff",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.enforce_qa_evidence_authority()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "a41f511dab62139a02357ec09a980526beb88010b41dd6bc0c4931fb5a8a82c9",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.enforce_qa_evidence_certification()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "f81afb4f7e3f13417dfd75e480cd0b32c283da7ba5696c911ec30fd0f05d8642",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.enforce_reviewer_assignment_authority()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "0c28a02d1c78779e9ba9a16c98a2b2284eb47893781e4999b418b16853529196",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.enforce_source_evidence_certification()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "9b3f138b498f3fc8a4adff920bbef71cac640d09f71e2fd9f88cafe89d44a90d",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.has_platform_role(text[])",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "f972d937da63ccbf0357ac96453507e5bb63af9e1afae1ac02fa58d897a4c613",
+      "authenticatedExecute": true
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.is_platform_admin()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "f65fe78699220583c0fda46a1a88d64fbe415915da437c0024d44ab0268cc06f",
+      "authenticatedExecute": true
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.list_published_calculator_manifest()",
+      "anonExecute": true,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "d397c73f0328194f47b565e7e2a15005aa96b198662ebb49062dd461cee9ee5d",
+      "authenticatedExecute": true
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.protect_active_ymyl_reviewer_authority()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "38f168b3648c9bca78e976989c1155a62fe7feafbc4a8125f9e35e9596b8ab50",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.raise_failed_qa_alert()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "a1530e8d12817251f4713233492d1067c0b2e925f6249abbdf7537c355c48ac5",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.refresh_admin_review_alerts()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "5ca100e12e991d3438117c33d8b8a77a5dd4d5d3790875b3c8ed078392e25b8f",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.sync_source_evidence_count()",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "2806a4607807d9c52aeb028ff24358f3b4722e350a01a795f08fbee1bd225406",
+      "authenticatedExecute": false
+    },
+    {
+      "owner": "postgres",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.validate_calculator_publish_gate(uuid)",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "definitionSHA256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+      "authenticatedExecute": true
+    }
+  ]
+}

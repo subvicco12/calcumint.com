@@ -2,10 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {callerPaths,verifyCallerSuccessor} from './caller-successor.mjs';
 const load=n=>JSON.parse(readFileSync(new URL('../../docs/p0-decision-contracts/'+n+'.json',import.meta.url)));
-test('all current mathematical dependency and caller source hashes match exact bytes',()=>{
+test('historical mathematical closure remains exact with explicit Git-bound draft caller successors',()=>{
  const files={...load('calculus').currentSourceClosure.files,...load('writers-acl').sourceBindings};
- for(const [path,sha]of Object.entries(files)){assert(!path.startsWith('/')&&!path.split('/').includes('..'));assert.equal(createHash('sha256').update(readFileSync(new URL('../../'+path,import.meta.url))).digest('hex'),sha,path);}
+ for(const [path,sha]of Object.entries(files)){assert(!path.startsWith('/')&&!path.split('/').includes('..'));const bytes=readFileSync(new URL('../../'+path,import.meta.url));if(callerPaths.includes(path)){verifyCallerSuccessor(path,bytes,sha);}else{assert.equal(createHash('sha256').update(bytes).digest('hex'),sha,path);}}
 });
 test('three profile keys bind one exact v3 engine with distinct operation and preserved v1 identity',()=>{
  const c=load('calculus');assert.deepEqual(c.contracts.map(x=>x.catalogId),[246,247,248]);

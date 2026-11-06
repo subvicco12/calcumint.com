@@ -1,0 +1,215 @@
+{
+  "kind": "READ_ONLY_ADOPTION_DEPENDENCY_ASSESSMENT",
+  "baselineMetadataSHA256": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+  "observedMetadataSHA256": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+  "metadataUnchanged": true,
+  "readOnly": true,
+  "observationWindow": {
+    "first": "2026-11-06T15:30:41.176672+00:00",
+    "last": "2026-11-06T15:53:42.846079+00:00"
+  },
+  "publishedCount": 209,
+  "catalogDigestUnchanged": true,
+  "passiveLocksAbsent": true,
+  "preparedTransactionsAbsent": true,
+  "clientPrivilegeRisks": [
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_alerts",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_bulk_jobs",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_catalog_admin",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_qa_checks",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_review_events",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "calculator_source_evidence",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "anon",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "platform_admins",
+      "allowed": true,
+      "privilege": "TRUNCATE"
+    }
+  ],
+  "serviceOnlyRefreshDependency": {
+    "owner": "postgres",
+    "settings": [
+      "search_path=public"
+    ],
+    "signature": "public.refresh_admin_review_alerts()",
+    "anonExecute": false,
+    "serviceExecute": true,
+    "securityDefiner": true,
+    "definitionSHA256": "5ca100e12e991d3438117c33d8b8a77a5dd4d5d3790875b3c8ed078392e25b8f",
+    "authenticatedExecute": false
+  },
+  "missingCandidateWorkflowDependencies": [
+    "save_calculation_history_atomic",
+    "save_project_scenario_atomic"
+  ],
+  "ddlQuiescenceVerified": false,
+  "completeWriterCoverage": false,
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "requires": [
+    "Named external scheduler/service-key/DDL operator reconciliation and captured deployment SHA",
+    "Explicit operator DDL/writer freeze with fresh source/ACL/RLS/dependency and data checks",
+    "Separately authorized source-bound adoption/recovery and qualification decisions"
+  ],
+  "limitations": [
+    "No locks or unchanged endpoint hashes do not prove absence of intervening writes or future DDL.",
+    "Lexical function references and logical roles do not identify every external or privileged writer.",
+    "Legacy relational consistency does not establish canonical/source/reviewer acceptance."
+  ]
+}

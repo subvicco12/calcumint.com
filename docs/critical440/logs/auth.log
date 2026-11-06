@@ -1,0 +1,9 @@
+PASS free: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay
+PASS pro: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay
+PASS business: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay
+PASS Free/Pro/Business mathematical artifacts are identical for each of twenty engines
+PASS Free twenty-history quota enforced; paid twenty-first history accepted
+PASS #440 immutable retry conflict, stale owner/account-switch denial, foreign read/update isolation
+PASS #440 Pro/Business atomic scenario exact retry/copy/replay; Free and foreign scenario denial
+PASS Entitlement revocation denies new paid workspace while existing owned scenario remains readable
+PASS SDK logout clears session and denies anonymous saves; revoked refresh rejected; retained JWT lifetime explicitly observed
