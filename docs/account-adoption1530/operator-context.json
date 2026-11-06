@@ -1,0 +1,89 @@
+{
+  "activity": [
+    {
+      "state": "idle",
+      "usename": "authenticator",
+      "sessions": 4,
+      "backend_type": "client backend",
+      "application_name": "PostgREST 14.5"
+    },
+    {
+      "state": "idle",
+      "usename": "pgbouncer",
+      "sessions": 1,
+      "backend_type": "client backend",
+      "application_name": ""
+    },
+    {
+      "state": "idle",
+      "usename": "supabase_admin",
+      "sessions": 1,
+      "backend_type": "client backend",
+      "application_name": ""
+    },
+    {
+      "state": "idle",
+      "usename": "supabase_admin",
+      "sessions": 1,
+      "backend_type": "client backend",
+      "application_name": "postgres_exporter"
+    },
+    {
+      "state": null,
+      "usename": "supabase_admin",
+      "sessions": 1,
+      "backend_type": "pg_cron launcher",
+      "application_name": "pg_cron scheduler"
+    },
+    {
+      "state": "idle",
+      "usename": "postgres",
+      "sessions": 1,
+      "backend_type": "pg_net 0.20.4 worker",
+      "application_name": "pg_net 0.20.4"
+    }
+  ],
+  "readOnly": "on",
+  "observedAt": "2026-11-06T16:44:34.029956+00:00",
+  "scopedLocks": null,
+  "authUserTriggers": [
+    {
+      "name": "on_auth_user_created",
+      "enabled": "O",
+      "function": "public.handle_new_user()",
+      "definition": "CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION public.handle_new_user()",
+      "functionSHA256": "3ad869ff5e4926935382ffadfe8c4bf40781e8a7c8338cb404fa467941fb9d99"
+    }
+  ],
+  "schemaPrivileges": [
+    {
+      "role": "anon",
+      "bypassRLS": false,
+      "superuser": false,
+      "usagePublic": true,
+      "createPublic": false
+    },
+    {
+      "role": "authenticated",
+      "bypassRLS": false,
+      "superuser": false,
+      "usagePublic": true,
+      "createPublic": false
+    },
+    {
+      "role": "postgres",
+      "bypassRLS": true,
+      "superuser": false,
+      "usagePublic": true,
+      "createPublic": true
+    },
+    {
+      "role": "service_role",
+      "bypassRLS": true,
+      "superuser": false,
+      "usagePublic": true,
+      "createPublic": false
+    }
+  ],
+  "preparedTransactions": 0
+}

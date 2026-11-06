@@ -1,0 +1,8 @@
+PASS Exact four-table hosted predecessor including column ACL and retained quota triggers reproduced on PG17.6
+PASS Held apply cannot activate even in continuing SQL client
+PASS Apply rollback is atomic; expected postimage binds exact new functions/index/triggers without altering RLS/grants
+PASS Concurrent last Free history slot has exactly one winner with retained quota triggers
+PASS Genuine JWT concurrent exact retry, conflicting retry and foreign owner/read denials
+PASS Business scenario copy/retry is immutable and cross-account denied
+PASS Injected late reversal failure rolls back every schema change and preserves saved rows
+PASS Exact reverse/reapply restores metadata, preserves rows and recovers same request; rollback authority remains separate

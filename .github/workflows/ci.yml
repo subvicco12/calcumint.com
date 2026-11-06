@@ -417,7 +417,7 @@ jobs:
           SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   publication-factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -511,6 +511,21 @@ jobs:
         env:
           CRITICAL440_AUTH_ARTIFACTS: ${{ runner.temp }}/critical440-auth
           CRITICAL440_AUDIT_ARTIFACTS: ${{ runner.temp }}/critical440-audit
+      - name: Hosted-bound account RPC adoption and precision acceptance
+        timeout-minutes: 4
+        run: |
+          node --test tests/account-adoption1530/bundle.test.mjs
+          node tests/account-adoption1530/acceptance.mjs
+          node tests/account-adoption1530/composition.mjs
+          node tests/frequency440-acceptance/run-numerics.mjs
+        env:
+          ACCOUNT1530_ARTIFACTS: ${{ runner.temp }}/account-adoption1530
+          FREQUENCY440_ARTIFACTS: ${{ runner.temp }}/frequency440
+      - name: Genuine Next frequency history and Business workflow
+        timeout-minutes: 6
+        run: node tests/frequency440-acceptance/next.mjs
+        env:
+          FREQUENCY440_NEXT_ARTIFACTS: ${{ runner.temp }}/frequency440-next
       - name: Preserve shortest publication cohort acceptance
         uses: actions/upload-artifact@v4
         with:
@@ -521,6 +536,9 @@ jobs:
             ${{ runner.temp }}/critical440-browser/receipt.json
             ${{ runner.temp }}/critical440-auth/receipt.json
             ${{ runner.temp }}/critical440-audit/privilege-receipt.json
+            ${{ runner.temp }}/account-adoption1530/
+            ${{ runner.temp }}/frequency440/
+            ${{ runner.temp }}/frequency440-next/
           if-no-files-found: error
           retention-days: 7
       - name: Approved six-candidate worker, workflow and replay acceptance
