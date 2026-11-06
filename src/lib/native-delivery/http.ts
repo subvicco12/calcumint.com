@@ -1,0 +1,2 @@
+import {NextResponse} from 'next/server';import {NativeDeliveryError} from './contract';import {ApiAuthError} from '@/lib/api/auth';
+export function nativeError(error:unknown){if(error instanceof NativeDeliveryError||error instanceof ApiAuthError)return NextResponse.json({error:error.message},{status:error.status,headers:{'Cache-Control':'no-store'}});return NextResponse.json({error:'Native delivery unavailable'},{status:503,headers:{'Cache-Control':'no-store'}});}

@@ -1,0 +1,200 @@
+✔ the three exact independent task campaigns and receipt checks are mandatory and bounded (1.13949ms)
+✖ all original strict aggregate outcomes and job budgets remain intact (7.607297ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.618988
+
+✖ failing tests:
+
+test at tests/full-product-batch17/workflow.test.mjs:18:1
+✖ all original strict aggregate outcomes and job budgets remain intact (7.607297ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^    timeout-minutes: 12$/m. Input:
+  
+  '    runs-on: ubuntu-latest\n' +
+    '    timeout-minutes: 18\n' +
+    '    steps:\n' +
+    '      - name: Checkout\n' +
+    '        uses: actions/checkout@v5\n' +
+    '      - name: Read-only production URL evidence (no release authority)\n' +
+    '        timeout-minutes: 5\n' +
+    '        run: |\n' +
+    "          python3 -m unittest discover -s tests/publication-fourday/routes -p 'test_*.py'\n" +
+    '          python3 tests/publication-fourday/routes/ci_probe.py --output "$RUNNER_TEMP/publication-fourday-routes/observations.json"\n' +
+    '        env:\n' +
+    '          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '      - name: Preserve read-only production URL evidence\n' +
+    '        uses: actions/upload-artifact@v4\n' +
+    '        with:\n' +
+    '          name: publication-fourday-routes-${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '          path: ${{ runner.temp }}/publication-fourday-routes/observations.json\n' +
+    '          if-no-files-found: error\n' +
+    '          retention-days: 7\n' +
+    '      - name: Use Node.js 22\n' +
+    '        uses: actions/setup-node@v5\n' +
+    '        with:\n' +
+    '          node-version: 22\n' +
+    '          cache: npm\n' +
+    '          cache-dependency-path: package-lock.json\n' +
+    '      - name: Install dependencies\n' +
+    '        run: npm ci --no-audit --no-fund\n' +
+    '      - name: Verify exact cohort, identity, authority and preparation evidence\n' +
+    '        run: |\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check\n' +
+    '          node scripts/publication-factory/identities.mjs --check\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/prepare.ts --check\n' +
+    '          node --experimental-strip-types tests/publication-factory/gates.test.ts\n' +
+    '          node tests/publication-factory/identities.test.mjs\n' +
+    '      - name: Provision pinned isolated browser fixture\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")\n' +
+    '          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"\n' +
+    '          "$browser" --version\n' +
+    '      - name: PR1517 source-bound pending QA supplements\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: |\n' +
+    "          trap 'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa1517-proofs.test.css' EXIT\n" +
+    '          node_modules/.bin/esbuild scripts/publication-qa1517/proofs.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.mjs\n' +
+    '          node .qa1517-proofs.mjs --check\n' +
+    '          node_modules/.bin/esbuild tests/publication-qa1517/proofs.test.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.test.mjs\n' +
+    '          node .qa1517-proofs.test.mjs\n' +
+    '          node scripts/publication-qa1517/decisions.mjs --check\n' +
+    '          node tests/publication-qa1517/decisions.test.mjs\n' +
+    '      - name: Owner-authorized isolated full-six increment and registered input browser\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: |\n' +
+    '          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44\n' +
+    '          node scripts/check-calculator-closure-history.mjs --full-six-only\n' +
+    '          node scripts/fast-publication-20261102/queue.mjs --check\n' +
+    '          node tests/fast-publication-20261102/queue.test.mjs\n' +
+    '          node tests/full-six/registered-input.browser.mjs\n' +
+    '        env:\n' +
+    '          FULL_SIX_BROWSER_RECEIPT: ${{ runner.temp }}/full-six-input-browser\n' +
+    '      - name: Shortest publication cohort actual UI, replay and guarded release preparation\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          node scripts/check-shortest-publication20.mjs\n' +
+    '          node --test tests/shortest-publication-20/caller-lineage.test.mjs\n' +
+    "          python3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'\n" +
+    '          python3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"\n' +
+    '          node tests/shortest-publication-20/browser.mjs\n' +
+    '          node tests/critical440-browser/acceptance.mjs\n' +
+    '        env:\n' +
+    '          SHORTEST_PUBLICATION_RECEIPT: ${{ runner.temp }}/shortest-publication-20\n' +
+    '          CRITICAL440_BROWSER_ARTIFACTS: ${{ runner.temp }}/critical440-browser\n' +
+    '          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '      - name: Prepare pinned provisioning runtime\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          node --test tests/sprint20-publication/ci-images.test.mjs\n' +
+    `          node --input-type=module -e 'import {images} from "./tests/gotrue-runtime/fixture.mjs"; import {execFileSync} from "node:child_process"; for (const image of Object.values(images)) execFileSync("docker", ["pull", image], {stdio:"inherit"});'\n` +
+    '      - name: Guarded atomic draft inventory acceptance\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: node tests/sprint20-publication/acceptance.mjs\n' +
+    '      - name: Exact hosted-schema adoption and reversal acceptance\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          node --test tests/adoption1528/bundle.test.mjs\n' +
+    '          node tests/adoption1528/acceptance.mjs\n' +
+    '      - name: Current twenty genuine authenticated workflows\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          node --test tests/critical440-audit/preflight.test.mjs\n' +
+    '          node tests/critical440-auth/acceptance.mjs\n' +
+    '          node tests/critical440-audit/privileges.mjs\n' +
+    '        env:\n' +
+    '          CRITICAL440_AUTH_ARTIFACTS: ${{ runner.temp }}/critical440-auth\n' +
+    '          CRITICAL440_AUDIT_ARTIFACTS: ${{ runner.temp }}/critical440-audit\n' +
+    '      - name: Hosted-bound account RPC adoption and precision acceptance\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          node --test tests/account-adoption1530/bundle.test.mjs\n' +
+    '          node tests/account-adoption1530/acceptance.mjs\n' +
+    '          node tests/account-adoption1530/composition.mjs\n' +
+    '          node tests/frequency440-acceptance/run-numerics.mjs\n' +
+    '        env:\n' +
+    '          ACCOUNT1530_ARTIFACTS: ${{ runner.temp }}/account-adoption1530\n' +
+    '          FREQUENCY440_ARTIFACTS: ${{ runner.temp }}/frequency440\n' +
+    '      - name: Genuine Next frequency history and Business workflow\n' +
+    '        timeout-minutes: 6\n' +
+    '        run: node tests/frequency440-acceptance/next.mjs\n' +
+    '        env:\n' +
+    '          FREQUENCY440_NEXT_ARTIFACTS: ${{ runner.temp }}/frequency440-next\n' +
+    '      - name: Preserve shortest publication cohort acceptance\n' +
+    '        uses: actions/upload-artifact@v4\n' +
+    '        with:\n' +
+    '          name: shortest-publication-20-${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '          path: |\n' +
+    '            ${{ runner.temp }}/shortest-publication-20/receipt.json\n' +
+    '            ${{ runner.temp }}/shortest-publication-20/production-routes.json\n' +
+    '            ${{ runner.temp }}/critical440-browser/receipt.json\n' +
+    '            ${{ runner.temp }}/critical440-auth/receipt.json\n' +
+    '            ${{ runner.temp }}/critical440-audit/privilege-receipt.json\n' +
+    '            ${{ runner.temp }}/account-adoption1530/\n' +
+    '            ${{ runner.temp }}/frequency440/\n' +
+    '            ${{ runner.temp }}/frequency440-next/\n' +
+    '          if-no-files-found: error\n' +
+    '          retention-days: 7\n' +
+    '      - name: Approved six-candidate worker, workflow and replay acceptance\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: |\n' +
+    '          node scripts/check-six-candidate-evidence.mjs\n' +
+    '          node --test tests/full-six-candidate/preview.test.mjs\n' +
+    '          node tests/full-six-candidate/browser.mjs\n' +
+    '        env:\n' +
+    '          SIX_CANDIDATE_BROWSER_RECEIPT: ${{ runner.temp }}/six-candidate-closure\n' +
+    '      - name: Preserve exact six-candidate acceptance receipt\n' +
+    '        uses: actions/upload-artifact@v4\n' +
+    '        with:\n' +
+    '          name: six-candidate-closure-${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '          path: ${{ runner.temp }}/six-candidate-closure/receipt.json\n' +
+    '          if-no-files-found: error\n' +
+    '          retention-days: 7\n' +
+    '      - name: Private Decimal50 worker and statistics workflow acceptance\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: |\n' +
+    '          node scripts/check-decimal50-statistics.mjs\n' +
+    '          node tests/statistics-workbench/browser.mjs\n' +
+    '        env:\n' +
+    '          DECIMAL50_BROWSER_RECEIPT: ${{ runner.temp }}/decimal50-statistics-browser\n' +
+    '      - name: First20 exact-version evidence and private polygon successor acceptance\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/first20-publication/polygon-evidence.ts --check\n' +
+    '          node scripts/first20-publication/evidence.mjs --check\n' +
+    '          node tests/first20-publication/evidence.test.mjs\n' +
+    '          node tests/first20-publication/browser.mjs\n' +
+    '        env:\n' +
+    '          FIRST20_BROWSER_RECEIPT: ${{ runner.temp }}/first20-publication-browser\n' +
+    '      - name: Registered launch history recovery and caller acceptance\n' +
+    '        timeout-minutes: 8\n' +
+    '        run: |\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/calculator-first-20261105/numerical.ts --check\n' +
+    '          node tests/calculator-first-20261105/browser.mjs\n' +
+    '        env:\n' +
+    '          CALCULATOR_CLOSURE_RECEIPT: ${{ runner.temp }}/calculator-first-20261105-browser\n' +
+    '      - name: Exact76 private input, history, scenarios and exports\n' +
+    '        timeout-minutes: 6\n' +
+    '        run: node tests/publication-factory/browser.mjs\n' +
+    '        env:\n' +
+    '          PUBLICATION_FACTORY_BROWSER_ARTIFACTS: ${{ runner.temp }}/publication-factory-browser\n'
+  
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/full-product-batch17/workflow.test.mjs:21:169)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '    runs-on: ubuntu-latest\n    timeout-minutes: 18\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v5\n      - name: Read-only production URL evidence (no release authority)\n        timeout-minutes: 5\n        run: |\n          python3 -m unittest discover -s tests/publication-fourday/routes -p \'test_*.py\'\n          python3 tests/publication-fourday/routes/ci_probe.py --output "$RUNNER_TEMP/publication-fourday-routes/observations.json"\n        env:\n          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n      - name: Preserve read-only production URL evidence\n        uses: actions/upload-artifact@v4\n        with:\n          name: publication-fourday-routes-${{ github.event.pull_request.head.sha || github.sha }}\n          path: ${{ runner.temp }}/publication-fourday-routes/observations.json\n          if-no-files-found: error\n          retention-days: 7\n      - name: Use Node.js 22\n        uses: actions/setup-node@v5\n        with:\n          node-version: 22\n          cache: npm\n          cache-dependency-path: package-lock.json\n      - name: Install dependencies\n        run: npm ci --no-audit --no-fund\n      - name: Verify exact cohort, identity, authority and preparation evidence\n        run: |\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check\n          node scripts/publication-factory/identities.mjs --check\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/prepare.ts --check\n          node --experimental-strip-types tests/publication-factory/gates.test.ts\n          node tests/publication-factory/identities.test.mjs\n      - name: Provision pinned isolated browser fixture\n        timeout-minutes: 4\n        run: |\n          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")\n          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"\n          "$browser" --version\n      - name: PR1517 source-bound pending QA supplements\n        timeout-minutes: 3\n        run: |\n          trap \'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa1517-proofs.test.css\' EXIT\n          node_modules/.bin/esbuild scripts/publication-qa1517/proofs.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.mjs\n          node .qa1517-proofs.mjs --check\n          node_modules/.bin/esbuild tests/publication-qa1517/proofs.test.ts --bundle --platform=node --format=esm --packages=external --outfile=.qa1517-proofs.test.mjs\n          node .qa1517-proofs.test.mjs\n          node scripts/publication-qa1517/decisions.mjs --check\n          node tests/publication-qa1517/decisions.test.mjs\n      - name: Owner-authorized isolated full-six increment and registered input browser\n        timeout-minutes: 3\n        run: |\n          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44\n          node scripts/check-calculator-closure-history.mjs --full-six-only\n          node scripts/fast-publication-20261102/queue.mjs --check\n          node tests/fast-publication-20261102/queue.test.mjs\n          node tests/full-six/registered-input.browser.mjs\n        env:\n          FULL_SIX_BROWSER_RECEIPT: ${{ runner.temp }}/full-six-input-browser\n      - name: Shortest publication cohort actual UI, replay and guarded release preparation\n        timeout-minutes: 4\n        run: |\n          node scripts/check-shortest-publication20.mjs\n          node --test tests/shortest-publication-20/caller-lineage.test.mjs\n          python3 -m unittest discover -s tests/shortest-publication-20 -p \'test_*.py\'\n          python3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"\n          node tests/shortest-publication-20/browser.mjs\n          node tests/critical440-browser/acceptance.mjs\n        env:\n          SHORTEST_PUBLICATION_RECEIPT: ${{ runner.temp }}/shortest-publication-20\n          CRITICAL440_BROWSER_ARTIFACTS: ${{ runner.temp }}/critical440-browser\n          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n      - name: Prepare pinned provisioning runtime\n        timeout-minutes: 4\n        run: |\n          node --test tests/sprint20-publication/ci-images.test.mjs\n          node --input-type=module -e \'import {images} from "./tests/gotrue-runtime/fixture.mjs"; import {execFileSync} from "node:child_process"; for (const image of Object.values(images)) execFileSync("docker", ["pull", image], {stdio:"inherit"});\'\n      - name: Guarded atomic draft inventory acceptance\n        timeout-minutes: 3\n        run: node tests/sprint20-publication/acceptance.mjs\n      - name: Exact hosted-schema adoption and reversal acceptance\n        timeout-minutes: 4\n        run: |\n          node --test tests/adoption1528/bundle.test.mjs\n          node tests/adoption1528/acceptance.mjs\n      - name: Current twenty genuine authenticated workflows\n        timeout-minutes: 4\n        run: |\n          node --test tests/critical440-audit/preflight.test.mjs\n          node tests/critical440-auth/acceptance.mjs\n          node tests/critical440-audit/privileges.mjs\n        env:\n          CRITICAL440_AUTH_ARTIFACTS: ${{ runner.temp }}/critical440-auth\n          CRITICAL440_AUDIT_ARTIFACTS: ${{ runner.temp }}/critical440-audit\n      - name: Hosted-bound account RPC adoption and precision acceptance\n        timeout-minutes: 4\n        run: |\n          node --test tests/account-adoption1530/bundle.test.mjs\n          node tests/account-adoption1530/acceptance.mjs\n          node tests/account-adoption1530/composition.mjs\n          node tests/frequency440-acceptance/run-numerics.mjs\n        env:\n          ACCOUNT1530_ARTIFACTS: ${{ runner.temp }}/account-adoption1530\n          FREQUENCY440_ARTIFACTS: ${{ runner.temp }}/frequency440\n      - name: Genuine Next frequency history and Business workflow\n        timeout-minutes: 6\n        run: node tests/frequency440-acceptance/next.mjs\n        env:\n          FREQUENCY440_NEXT_ARTIFACTS: ${{ runner.temp }}/frequency440-next\n      - name: Preserve shortest publication cohort acceptance\n        uses: actions/upload-artifact@v4\n        with:\n          name: shortest-publication-20-${{ github.event.pull_request.head.sha || github.sha }}\n          path: |\n            ${{ runner.temp }}/shortest-publication-20/receipt.json\n            ${{ runner.temp }}/shortest-publication-20/production-routes.json\n            ${{ runner.temp }}/critical440-browser/receipt.json\n            ${{ runner.temp }}/critical440-auth/receipt.json\n            ${{ runner.temp }}/critical440-audit/privilege-receipt.json\n            ${{ runner.temp }}/account-adoption1530/\n            ${{ runner.temp }}/frequency440/\n            ${{ runner.temp }}/frequency440-next/\n          if-no-files-found: error\n          retention-days: 7\n      - name: Approved six-candidate worker, workflow and replay acceptance\n        timeout-minutes: 3\n        run: |\n          node scripts/check-six-candidate-evidence.mjs\n          node --test tests/full-six-candidate/preview.test.mjs\n          node tests/full-six-candidate/browser.mjs\n        env:\n          SIX_CANDIDATE_BROWSER_RECEIPT: ${{ runner.temp }}/six-candidate-closure\n      - name: Preserve exact six-candidate acceptance receipt\n        uses: actions/upload-artifact@v4\n        with:\n          name: six-candidate-closure-${{ github.event.pull_request.head.sha || github.sha }}\n          path: ${{ runner.temp }}/six-candidate-closure/receipt.json\n          if-no-files-found: error\n          retention-days: 7\n      - name: Private Decimal50 worker and statistics workflow acceptance\n        timeout-minutes: 3\n        run: |\n          node scripts/check-decimal50-statistics.mjs\n          node tests/statistics-workbench/browser.mjs\n        env:\n          DECIMAL50_BROWSER_RECEIPT: ${{ runner.temp }}/decimal50-statistics-browser\n      - name: First20 exact-version evidence and private polygon successor acceptance\n        timeout-minutes: 4\n        run: |\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/first20-publication/polygon-evidence.ts --check\n          node scripts/first20-publication/evidence.mjs --check\n          node tests/first20-publication/evidence.test.mjs\n          node tests/first20-publication/browser.mjs\n        env:\n          FIRST20_BROWSER_RECEIPT: ${{ runner.temp }}/first20-publication-browser\n      - name: Registered launch history recovery and caller acceptance\n        timeout-minutes: 8\n        run: |\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/calculator-first-20261105/numerical.ts --check\n          node tests/calculator-first-20261105/browser.mjs\n        env:\n          CALCULATOR_CLOSURE_RECEIPT: ${{ runner.temp }}/calculator-first-20261105-browser\n      - name: Exact76 private input, history, scenarios and exports\n        timeout-minutes: 6\n        run: node tests/publication-factory/browser.mjs\n        env:\n          PUBLICATION_FACTORY_BROWSER_ARTIFACTS: ${{ runner.temp }}/publication-factory-browser\n',
+    expected: /^    timeout-minutes: 12$/m,
+    operator: 'match',
+    diff: 'simple'
+  }

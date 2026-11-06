@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checks": [
+    "Captured hosted count-then-insert quota deterministically overshoots1 with two writers held after counting",
+    "Existing guarded atomic successor serializes the same quota callers without changing grants/RLS/objects",
+    "Guarded reverse/rollback/reapply preserve usage and both quota/account adoption orders compose without metadata drift"
+  ],
+  "preimage": "da204f0359df6e85adfe10d8ae6f15896ed35cb03a92fd5cbe03e22d87d10dda",
+  "derivedPostimage": "8dc9fa3596e1a1f8a430f7630cacc6e9144365d8a88b0621c42ba80fb96cc8d4",
+  "oldFunctionSHA256": "a214e33bf53148d2d57fc9caef8c393ae1d6ce0ab47de301174920c0a37859a3",
+  "expectedFunctionSHA256": "51d70f9e682f87017cccd782b9cf944da4bf2790c8472c322472122b4e1f9a69",
+  "source": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+  "sourceSHA256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436",
+  "applySHA256": "063a5381f239442040836efe90b4487b7a6d929811793b0b500a7a71068524a1",
+  "reverseSHA256": "028f096c45329bb14a3c3a052d718333d63769aebddcba253d35857e202bebd2",
+  "activationAuthorized": false,
+  "releaseHold": true,
+  "limits": [
+    "Only one existing function changed in a disposable five-table hosted-shaped fixture",
+    "Sequence/provider/operator and external direct usage-writer reconciliation remain external preconditions",
+    "Technical reversal restores known-unsafe count-then-insert behavior; hold native API until separately authorized adoption/recovery",
+    "Barrier sessions and data were synthetic local fixtures, no production calls or writes"
+  ]
+}

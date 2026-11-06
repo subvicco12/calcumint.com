@@ -1,0 +1,1732 @@
+{
+  "kind": "DERIVED_ISOLATED_POSTIMAGE",
+  "raw": "{\"major\": 17, \"columns\": [{\"acl\": [], \"name\": \"id\", \"type\": \"bigint\", \"table\": \"public.api_usage_events\", \"default\": null, \"notNull\": true, \"identity\": \"d\", \"position\": 1}, {\"acl\": [], \"name\": \"api_key_id\", \"type\": \"uuid\", \"table\": \"public.api_usage_events\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"organization_id\", \"type\": \"uuid\", \"table\": \"public.api_usage_events\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"request_kind\", \"type\": \"text\", \"table\": \"public.api_usage_events\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"units\", \"type\": \"integer\", \"table\": \"public.api_usage_events\", \"default\": \"1\", \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"request_id\", \"type\": \"uuid\", \"table\": \"public.api_usage_events\", \"default\": \"gen_random_uuid()\", \"notNull\": true, \"identity\": \"\", \"position\": 6}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.api_usage_events\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 7}, {\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.business_api_keys\", \"default\": \"gen_random_uuid()\", \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [], \"name\": \"organization_id\", \"type\": \"uuid\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"name\", \"type\": \"text\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"key_prefix\", \"type\": \"text\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"key_hash\", \"type\": \"text\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"scopes\", \"type\": \"jsonb\", \"table\": \"public.business_api_keys\", \"default\": \"'[]'::jsonb\", \"notNull\": true, \"identity\": \"\", \"position\": 6}, {\"acl\": [], \"name\": \"status\", \"type\": \"text\", \"table\": \"public.business_api_keys\", \"default\": \"'active'::text\", \"notNull\": true, \"identity\": \"\", \"position\": 7}, {\"acl\": [], \"name\": \"rate_limit_per_minute\", \"type\": \"integer\", \"table\": \"public.business_api_keys\", \"default\": \"60\", \"notNull\": true, \"identity\": \"\", \"position\": 8}, {\"acl\": [], \"name\": \"monthly_quota\", \"type\": \"integer\", \"table\": \"public.business_api_keys\", \"default\": \"10000\", \"notNull\": true, \"identity\": \"\", \"position\": 9}, {\"acl\": [], \"name\": \"created_by\", \"type\": \"uuid\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 10}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.business_api_keys\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 11}, {\"acl\": [], \"name\": \"last_used_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": false, \"identity\": \"\", \"position\": 12}, {\"acl\": [], \"name\": \"revoked_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.business_api_keys\", \"default\": null, \"notNull\": false, \"identity\": \"\", \"position\": 13}, {\"acl\": [], \"name\": \"organization_id\", \"type\": \"uuid\", \"table\": \"public.organization_members\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [], \"name\": \"user_id\", \"type\": \"uuid\", \"table\": \"public.organization_members\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"role\", \"type\": \"text\", \"table\": \"public.organization_members\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"joined_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.organization_members\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.organizations\", \"default\": \"gen_random_uuid()\", \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [], \"name\": \"name\", \"type\": \"text\", \"table\": \"public.organizations\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"slug\", \"type\": \"text\", \"table\": \"public.organizations\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"owner_user_id\", \"type\": \"uuid\", \"table\": \"public.organizations\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.organizations\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 5}, {\"acl\": [], \"name\": \"updated_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.organizations\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 6}, {\"acl\": [], \"name\": \"id\", \"type\": \"uuid\", \"table\": \"public.profiles\", \"default\": null, \"notNull\": true, \"identity\": \"\", \"position\": 1}, {\"acl\": [{\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"name\": \"display_name\", \"type\": \"text\", \"table\": \"public.profiles\", \"default\": null, \"notNull\": false, \"identity\": \"\", \"position\": 2}, {\"acl\": [], \"name\": \"plan\", \"type\": \"text\", \"table\": \"public.profiles\", \"default\": \"'free'::text\", \"notNull\": true, \"identity\": \"\", \"position\": 3}, {\"acl\": [], \"name\": \"created_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.profiles\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 4}, {\"acl\": [], \"name\": \"updated_at\", \"type\": \"timestamp with time zone\", \"table\": \"public.profiles\", \"default\": \"now()\", \"notNull\": true, \"identity\": \"\", \"position\": 5}], \"indexes\": [{\"id\": \"public.api_usage_events_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX api_usage_events_pkey ON public.api_usage_events USING btree (id)\"}, {\"id\": \"public.api_usage_key_time_idx\", \"valid\": true, \"definition\": \"CREATE INDEX api_usage_key_time_idx ON public.api_usage_events USING btree (api_key_id, created_at DESC)\"}, {\"id\": \"public.api_usage_org_time_idx\", \"valid\": true, \"definition\": \"CREATE INDEX api_usage_org_time_idx ON public.api_usage_events USING btree (organization_id, created_at DESC)\"}, {\"id\": \"public.business_api_keys_created_by_fk_idx\", \"valid\": true, \"definition\": \"CREATE INDEX business_api_keys_created_by_fk_idx ON public.business_api_keys USING btree (created_by)\"}, {\"id\": \"public.business_api_keys_key_hash_key\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX business_api_keys_key_hash_key ON public.business_api_keys USING btree (key_hash)\"}, {\"id\": \"public.business_api_keys_org_idx\", \"valid\": true, \"definition\": \"CREATE INDEX business_api_keys_org_idx ON public.business_api_keys USING btree (organization_id, created_at DESC)\"}, {\"id\": \"public.business_api_keys_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX business_api_keys_pkey ON public.business_api_keys USING btree (id)\"}, {\"id\": \"public.organization_members_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX organization_members_pkey ON public.organization_members USING btree (organization_id, user_id)\"}, {\"id\": \"public.organization_members_user_idx\", \"valid\": true, \"definition\": \"CREATE INDEX organization_members_user_idx ON public.organization_members USING btree (user_id)\"}, {\"id\": \"public.organizations_owner_user_id_fk_idx\", \"valid\": true, \"definition\": \"CREATE INDEX organizations_owner_user_id_fk_idx ON public.organizations USING btree (owner_user_id)\"}, {\"id\": \"public.organizations_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX organizations_pkey ON public.organizations USING btree (id)\"}, {\"id\": \"public.organizations_slug_key\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX organizations_slug_key ON public.organizations USING btree (slug)\"}, {\"id\": \"public.profiles_pkey\", \"valid\": true, \"definition\": \"CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)\"}], \"policies\": [{\"cmd\": \"SELECT\", \"qual\": \"public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text, 'manager'::text])\", \"roles\": [\"public\"], \"tablename\": \"api_usage_events\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"usage_org_read\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"INSERT\", \"qual\": null, \"roles\": [\"public\"], \"tablename\": \"business_api_keys\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"api_keys_admin_insert\", \"schemaname\": \"public\", \"with_check\": \"(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (created_by = ( SELECT auth.uid() AS uid)))\"}, {\"cmd\": \"SELECT\", \"qual\": \"public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])\", \"roles\": [\"public\"], \"tablename\": \"business_api_keys\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"api_keys_admin_read\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])\", \"roles\": [\"public\"], \"tablename\": \"business_api_keys\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"api_keys_admin_update\", \"schemaname\": \"public\", \"with_check\": \"public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])\"}, {\"cmd\": \"DELETE\", \"qual\": \"(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (role <> 'owner'::text))\", \"roles\": [\"public\"], \"tablename\": \"organization_members\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"members_admin_delete\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])\", \"roles\": [\"public\"], \"tablename\": \"organization_members\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"members_admin_update\", \"schemaname\": \"public\", \"with_check\": \"((role <> 'owner'::text) OR (public.org_role(organization_id) = 'owner'::text))\"}, {\"cmd\": \"SELECT\", \"qual\": \"public.is_org_member(organization_id)\", \"roles\": [\"public\"], \"tablename\": \"organization_members\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"members_org_select\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])\", \"roles\": [\"public\"], \"tablename\": \"organizations\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"organizations_admin_update\", \"schemaname\": \"public\", \"with_check\": \"public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])\"}, {\"cmd\": \"SELECT\", \"qual\": \"public.is_org_member(id)\", \"roles\": [\"public\"], \"tablename\": \"organizations\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"organizations_member_select\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"SELECT\", \"qual\": \"(( SELECT auth.uid() AS uid) = id)\", \"roles\": [\"public\"], \"tablename\": \"profiles\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"profiles_select_own\", \"schemaname\": \"public\", \"with_check\": null}, {\"cmd\": \"UPDATE\", \"qual\": \"(( SELECT auth.uid() AS uid) = id)\", \"roles\": [\"public\"], \"tablename\": \"profiles\", \"permissive\": \"PERMISSIVE\", \"policyname\": \"profiles_update_own\", \"schemaname\": \"public\", \"with_check\": \"(( SELECT auth.uid() AS uid) = id)\"}], \"provider\": [{\"id\": \"auth.role()\", \"acl\": [{\"grantee\": \"PUBLIC\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"dashboard_user\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"supabase_auth_admin\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"supabase_auth_admin\", \"definition\": \"CREATE OR REPLACE FUNCTION auth.role()\\n RETURNS text\\n LANGUAGE sql\\n STABLE\\nAS $function$\\n  select \\n  coalesce(\\n    nullif(current_setting('request.jwt.claim.role', true), ''),\\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'role')\\n  )::text\\n$function$\\n\"}, {\"id\": \"auth.uid()\", \"acl\": [{\"grantee\": \"PUBLIC\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"dashboard_user\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"supabase_auth_admin\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"supabase_auth_admin\", \"definition\": \"CREATE OR REPLACE FUNCTION auth.uid()\\n RETURNS uuid\\n LANGUAGE sql\\n STABLE\\nAS $function$\\n  select \\n  coalesce(\\n    nullif(current_setting('request.jwt.claim.sub', true), ''),\\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'sub')\\n  )::uuid\\n$function$\\n\"}], \"triggers\": [], \"functions\": [{\"id\": \"public.consume_business_api_quota(uuid)\", \"acl\": [{\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.consume_business_api_quota(p_api_key_id uuid)\\n RETURNS boolean\\n LANGUAGE plpgsql\\n SECURITY DEFINER\\n SET search_path TO 'pg_catalog', 'public'\\nAS $function$\\nDECLARE\\n  api_key public.business_api_keys%ROWTYPE;\\n  owner_plan text;\\n  month_units bigint;\\n  minute_units bigint;\\nBEGIN\\n  -- Counts must take a fresh statement snapshot after waiting on the key lock.\\n  IF current_setting('transaction_isolation') IS DISTINCT FROM 'read committed' THEN\\n    RAISE EXCEPTION 'Quota contract requires READ COMMITTED';\\n  END IF;\\n  -- Serialize every debit for this key before inspecting either usage window.\\n  SELECT * INTO api_key FROM public.business_api_keys WHERE id=p_api_key_id FOR UPDATE;\\n  IF NOT FOUND OR api_key.status IS DISTINCT FROM 'active' THEN RETURN false; END IF;\\n  SELECT plan INTO owner_plan FROM public.profiles WHERE id=api_key.created_by FOR SHARE;\\n  IF NOT FOUND OR owner_plan IS DISTINCT FROM 'business' THEN RETURN false; END IF;\\n  SELECT coalesce(sum(units),0) INTO month_units FROM public.api_usage_events\\n    WHERE api_key_id=p_api_key_id AND created_at >= date_trunc('month',now());\\n  IF month_units >= api_key.monthly_quota THEN RETURN false; END IF;\\n  SELECT coalesce(sum(units),0) INTO minute_units FROM public.api_usage_events\\n    WHERE api_key_id=p_api_key_id AND created_at >= now()-interval '1 minute';\\n  IF minute_units >= api_key.rate_limit_per_minute THEN RETURN false; END IF;\\n  INSERT INTO public.api_usage_events(api_key_id,organization_id,request_kind,units)\\n    VALUES(api_key.id,api_key.organization_id,'request',1);\\n  RETURN true;\\nEND $function$\\n\"}, {\"id\": \"public.consume_native_business_api_quota_v1(uuid)\", \"acl\": [{\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.consume_native_business_api_quota_v1(p_api_key_id uuid)\\n RETURNS boolean\\n LANGUAGE plpgsql\\n SET search_path TO 'pg_catalog'\\nAS $function$\\nBEGIN\\n IF encode(sha256(convert_to(pg_get_functiondef('public.consume_business_api_quota(uuid)'::regprocedure),'UTF8')),'hex')\\n   IS DISTINCT FROM '51d70f9e682f87017cccd782b9cf944da4bf2790c8472c322472122b4e1f9a69' THEN\\n  RAISE EXCEPTION 'NATIVE_QUOTA_ADOPTION_REQUIRED';\\n END IF;\\n RETURN public.consume_business_api_quota(p_api_key_id);\\nEND $function$\\n\"}, {\"id\": \"public.has_org_role(uuid, text[])\", \"acl\": [{\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.has_org_role(target_org uuid, allowed_roles text[])\\n RETURNS boolean\\n LANGUAGE sql\\n STABLE SECURITY DEFINER\\n SET search_path TO 'public'\\nAS $function$\\n  select coalesce(public.org_role(target_org) = any(allowed_roles), false);\\n$function$\\n\"}, {\"id\": \"public.is_org_member(uuid)\", \"acl\": [{\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.is_org_member(target_org uuid)\\n RETURNS boolean\\n LANGUAGE sql\\n STABLE SECURITY DEFINER\\n SET search_path TO 'public'\\nAS $function$\\n  select exists(\\n    select 1 from public.organization_members m\\n    where m.organization_id = target_org and m.user_id = auth.uid()\\n  );\\n$function$\\n\"}, {\"id\": \"public.org_role(uuid)\", \"acl\": [{\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"owner\": \"postgres\", \"definition\": \"CREATE OR REPLACE FUNCTION public.org_role(target_org uuid)\\n RETURNS text\\n LANGUAGE sql\\n STABLE SECURITY DEFINER\\n SET search_path TO 'public'\\nAS $function$\\n  select m.role from public.organization_members m\\n  where m.organization_id = target_org and m.user_id = auth.uid()\\n  limit 1;\\n$function$\\n\"}], \"relations\": [{\"id\": \"public.api_usage_events\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.business_api_keys\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.organization_members\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.organizations\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}, {\"id\": \"public.profiles\", \"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"UPDATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"DELETE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"INSERT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"MAINTAIN\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"REFERENCES\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"SELECT\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRIGGER\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"TRUNCATE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"UPDATE\"}], \"rls\": true, \"kind\": \"r\", \"owner\": \"postgres\", \"forceRls\": false}], \"constraints\": [{\"name\": \"api_usage_events_api_key_id_fkey\", \"table\": \"public.api_usage_events\", \"validated\": true, \"definition\": \"FOREIGN KEY (api_key_id) REFERENCES public.business_api_keys(id) ON DELETE CASCADE\"}, {\"name\": \"api_usage_events_organization_id_fkey\", \"table\": \"public.api_usage_events\", \"validated\": true, \"definition\": \"FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE\"}, {\"name\": \"api_usage_events_pkey\", \"table\": \"public.api_usage_events\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"api_usage_events_units_check\", \"table\": \"public.api_usage_events\", \"validated\": true, \"definition\": \"CHECK ((units > 0))\"}, {\"name\": \"business_api_keys_created_by_fkey\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"FOREIGN KEY (created_by) REFERENCES auth.users(id)\"}, {\"name\": \"business_api_keys_key_hash_key\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"UNIQUE (key_hash)\"}, {\"name\": \"business_api_keys_monthly_quota_check\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"CHECK (((monthly_quota >= 1) AND (monthly_quota <= 10000000)))\"}, {\"name\": \"business_api_keys_name_check\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"CHECK (((char_length(name) >= 2) AND (char_length(name) <= 120)))\"}, {\"name\": \"business_api_keys_organization_id_fkey\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE\"}, {\"name\": \"business_api_keys_pkey\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"business_api_keys_rate_limit_per_minute_check\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"CHECK (((rate_limit_per_minute >= 1) AND (rate_limit_per_minute <= 5000)))\"}, {\"name\": \"business_api_keys_status_check\", \"table\": \"public.business_api_keys\", \"validated\": true, \"definition\": \"CHECK ((status = ANY (ARRAY['active'::text, 'revoked'::text])))\"}, {\"name\": \"organization_members_organization_id_fkey\", \"table\": \"public.organization_members\", \"validated\": true, \"definition\": \"FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE\"}, {\"name\": \"organization_members_pkey\", \"table\": \"public.organization_members\", \"validated\": true, \"definition\": \"PRIMARY KEY (organization_id, user_id)\"}, {\"name\": \"organization_members_role_check\", \"table\": \"public.organization_members\", \"validated\": true, \"definition\": \"CHECK ((role = ANY (ARRAY['owner'::text, 'admin'::text, 'manager'::text, 'member'::text, 'viewer'::text])))\"}, {\"name\": \"organization_members_user_id_fkey\", \"table\": \"public.organization_members\", \"validated\": true, \"definition\": \"FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE\"}, {\"name\": \"organizations_name_check\", \"table\": \"public.organizations\", \"validated\": true, \"definition\": \"CHECK (((char_length(name) >= 2) AND (char_length(name) <= 120)))\"}, {\"name\": \"organizations_owner_user_id_fkey\", \"table\": \"public.organizations\", \"validated\": true, \"definition\": \"FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE RESTRICT\"}, {\"name\": \"organizations_pkey\", \"table\": \"public.organizations\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"organizations_slug_check\", \"table\": \"public.organizations\", \"validated\": true, \"definition\": \"CHECK ((slug ~ '^[a-z0-9][a-z0-9-]{1,62}$'::text))\"}, {\"name\": \"organizations_slug_key\", \"table\": \"public.organizations\", \"validated\": true, \"definition\": \"UNIQUE (slug)\"}, {\"name\": \"profiles_id_fkey\", \"table\": \"public.profiles\", \"validated\": true, \"definition\": \"FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE\"}, {\"name\": \"profiles_pkey\", \"table\": \"public.profiles\", \"validated\": true, \"definition\": \"PRIMARY KEY (id)\"}, {\"name\": \"profiles_plan_check\", \"table\": \"public.profiles\", \"validated\": true, \"definition\": \"CHECK ((plan = ANY (ARRAY['free'::text, 'pro'::text, 'business'::text])))\"}], \"defaultAcls\": [{\"acl\": [{\"grantee\": \"anon\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"authenticated\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"postgres\", \"grantable\": false, \"privilege\": \"EXECUTE\"}, {\"grantee\": \"service_role\", \"grantable\": false, \"privilege\": \"EXECUTE\"}], \"role\": \"postgres\", \"schema\": \"public\", \"objectType\": \"f\"}]}",
+  "data": {
+    "major": 17,
+    "columns": [
+      {
+        "acl": [],
+        "name": "id",
+        "type": "bigint",
+        "table": "public.api_usage_events",
+        "default": null,
+        "notNull": true,
+        "identity": "d",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "api_key_id",
+        "type": "uuid",
+        "table": "public.api_usage_events",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "organization_id",
+        "type": "uuid",
+        "table": "public.api_usage_events",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "request_kind",
+        "type": "text",
+        "table": "public.api_usage_events",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "units",
+        "type": "integer",
+        "table": "public.api_usage_events",
+        "default": "1",
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "request_id",
+        "type": "uuid",
+        "table": "public.api_usage_events",
+        "default": "gen_random_uuid()",
+        "notNull": true,
+        "identity": "",
+        "position": 6
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.api_usage_events",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 7
+      },
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.business_api_keys",
+        "default": "gen_random_uuid()",
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "organization_id",
+        "type": "uuid",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "name",
+        "type": "text",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "key_prefix",
+        "type": "text",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "key_hash",
+        "type": "text",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "scopes",
+        "type": "jsonb",
+        "table": "public.business_api_keys",
+        "default": "'[]'::jsonb",
+        "notNull": true,
+        "identity": "",
+        "position": 6
+      },
+      {
+        "acl": [],
+        "name": "status",
+        "type": "text",
+        "table": "public.business_api_keys",
+        "default": "'active'::text",
+        "notNull": true,
+        "identity": "",
+        "position": 7
+      },
+      {
+        "acl": [],
+        "name": "rate_limit_per_minute",
+        "type": "integer",
+        "table": "public.business_api_keys",
+        "default": "60",
+        "notNull": true,
+        "identity": "",
+        "position": 8
+      },
+      {
+        "acl": [],
+        "name": "monthly_quota",
+        "type": "integer",
+        "table": "public.business_api_keys",
+        "default": "10000",
+        "notNull": true,
+        "identity": "",
+        "position": 9
+      },
+      {
+        "acl": [],
+        "name": "created_by",
+        "type": "uuid",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 10
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.business_api_keys",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 11
+      },
+      {
+        "acl": [],
+        "name": "last_used_at",
+        "type": "timestamp with time zone",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": false,
+        "identity": "",
+        "position": 12
+      },
+      {
+        "acl": [],
+        "name": "revoked_at",
+        "type": "timestamp with time zone",
+        "table": "public.business_api_keys",
+        "default": null,
+        "notNull": false,
+        "identity": "",
+        "position": 13
+      },
+      {
+        "acl": [],
+        "name": "organization_id",
+        "type": "uuid",
+        "table": "public.organization_members",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "user_id",
+        "type": "uuid",
+        "table": "public.organization_members",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "role",
+        "type": "text",
+        "table": "public.organization_members",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "joined_at",
+        "type": "timestamp with time zone",
+        "table": "public.organization_members",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.organizations",
+        "default": "gen_random_uuid()",
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [],
+        "name": "name",
+        "type": "text",
+        "table": "public.organizations",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "slug",
+        "type": "text",
+        "table": "public.organizations",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "owner_user_id",
+        "type": "uuid",
+        "table": "public.organizations",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.organizations",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      },
+      {
+        "acl": [],
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "public.organizations",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 6
+      },
+      {
+        "acl": [],
+        "name": "id",
+        "type": "uuid",
+        "table": "public.profiles",
+        "default": null,
+        "notNull": true,
+        "identity": "",
+        "position": 1
+      },
+      {
+        "acl": [
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "name": "display_name",
+        "type": "text",
+        "table": "public.profiles",
+        "default": null,
+        "notNull": false,
+        "identity": "",
+        "position": 2
+      },
+      {
+        "acl": [],
+        "name": "plan",
+        "type": "text",
+        "table": "public.profiles",
+        "default": "'free'::text",
+        "notNull": true,
+        "identity": "",
+        "position": 3
+      },
+      {
+        "acl": [],
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "public.profiles",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 4
+      },
+      {
+        "acl": [],
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "public.profiles",
+        "default": "now()",
+        "notNull": true,
+        "identity": "",
+        "position": 5
+      }
+    ],
+    "indexes": [
+      {
+        "id": "public.api_usage_events_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX api_usage_events_pkey ON public.api_usage_events USING btree (id)"
+      },
+      {
+        "id": "public.api_usage_key_time_idx",
+        "valid": true,
+        "definition": "CREATE INDEX api_usage_key_time_idx ON public.api_usage_events USING btree (api_key_id, created_at DESC)"
+      },
+      {
+        "id": "public.api_usage_org_time_idx",
+        "valid": true,
+        "definition": "CREATE INDEX api_usage_org_time_idx ON public.api_usage_events USING btree (organization_id, created_at DESC)"
+      },
+      {
+        "id": "public.business_api_keys_created_by_fk_idx",
+        "valid": true,
+        "definition": "CREATE INDEX business_api_keys_created_by_fk_idx ON public.business_api_keys USING btree (created_by)"
+      },
+      {
+        "id": "public.business_api_keys_key_hash_key",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX business_api_keys_key_hash_key ON public.business_api_keys USING btree (key_hash)"
+      },
+      {
+        "id": "public.business_api_keys_org_idx",
+        "valid": true,
+        "definition": "CREATE INDEX business_api_keys_org_idx ON public.business_api_keys USING btree (organization_id, created_at DESC)"
+      },
+      {
+        "id": "public.business_api_keys_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX business_api_keys_pkey ON public.business_api_keys USING btree (id)"
+      },
+      {
+        "id": "public.organization_members_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX organization_members_pkey ON public.organization_members USING btree (organization_id, user_id)"
+      },
+      {
+        "id": "public.organization_members_user_idx",
+        "valid": true,
+        "definition": "CREATE INDEX organization_members_user_idx ON public.organization_members USING btree (user_id)"
+      },
+      {
+        "id": "public.organizations_owner_user_id_fk_idx",
+        "valid": true,
+        "definition": "CREATE INDEX organizations_owner_user_id_fk_idx ON public.organizations USING btree (owner_user_id)"
+      },
+      {
+        "id": "public.organizations_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX organizations_pkey ON public.organizations USING btree (id)"
+      },
+      {
+        "id": "public.organizations_slug_key",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX organizations_slug_key ON public.organizations USING btree (slug)"
+      },
+      {
+        "id": "public.profiles_pkey",
+        "valid": true,
+        "definition": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)"
+      }
+    ],
+    "policies": [
+      {
+        "cmd": "SELECT",
+        "qual": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text, 'manager'::text])",
+        "roles": [
+          "public"
+        ],
+        "tablename": "api_usage_events",
+        "permissive": "PERMISSIVE",
+        "policyname": "usage_org_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "public"
+        ],
+        "tablename": "business_api_keys",
+        "permissive": "PERMISSIVE",
+        "policyname": "api_keys_admin_insert",
+        "schemaname": "public",
+        "with_check": "(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (created_by = ( SELECT auth.uid() AS uid)))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+        "roles": [
+          "public"
+        ],
+        "tablename": "business_api_keys",
+        "permissive": "PERMISSIVE",
+        "policyname": "api_keys_admin_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+        "roles": [
+          "public"
+        ],
+        "tablename": "business_api_keys",
+        "permissive": "PERMISSIVE",
+        "policyname": "api_keys_admin_update",
+        "schemaname": "public",
+        "with_check": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])"
+      },
+      {
+        "cmd": "DELETE",
+        "qual": "(public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text]) AND (role <> 'owner'::text))",
+        "roles": [
+          "public"
+        ],
+        "tablename": "organization_members",
+        "permissive": "PERMISSIVE",
+        "policyname": "members_admin_delete",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "public.has_org_role(organization_id, ARRAY['owner'::text, 'admin'::text])",
+        "roles": [
+          "public"
+        ],
+        "tablename": "organization_members",
+        "permissive": "PERMISSIVE",
+        "policyname": "members_admin_update",
+        "schemaname": "public",
+        "with_check": "((role <> 'owner'::text) OR (public.org_role(organization_id) = 'owner'::text))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "public.is_org_member(organization_id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "organization_members",
+        "permissive": "PERMISSIVE",
+        "policyname": "members_org_select",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])",
+        "roles": [
+          "public"
+        ],
+        "tablename": "organizations",
+        "permissive": "PERMISSIVE",
+        "policyname": "organizations_admin_update",
+        "schemaname": "public",
+        "with_check": "public.has_org_role(id, ARRAY['owner'::text, 'admin'::text])"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "public.is_org_member(id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "organizations",
+        "permissive": "PERMISSIVE",
+        "policyname": "organizations_member_select",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) = id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "profiles_select_own",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "(( SELECT auth.uid() AS uid) = id)",
+        "roles": [
+          "public"
+        ],
+        "tablename": "profiles",
+        "permissive": "PERMISSIVE",
+        "policyname": "profiles_update_own",
+        "schemaname": "public",
+        "with_check": "(( SELECT auth.uid() AS uid) = id)"
+      }
+    ],
+    "provider": [
+      {
+        "id": "auth.role()",
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "dashboard_user",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "supabase_auth_admin",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "supabase_auth_admin",
+        "definition": "CREATE OR REPLACE FUNCTION auth.role()\n RETURNS text\n LANGUAGE sql\n STABLE\nAS $function$\n  select \n  coalesce(\n    nullif(current_setting('request.jwt.claim.role', true), ''),\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'role')\n  )::text\n$function$\n"
+      },
+      {
+        "id": "auth.uid()",
+        "acl": [
+          {
+            "grantee": "PUBLIC",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "dashboard_user",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "supabase_auth_admin",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "supabase_auth_admin",
+        "definition": "CREATE OR REPLACE FUNCTION auth.uid()\n RETURNS uuid\n LANGUAGE sql\n STABLE\nAS $function$\n  select \n  coalesce(\n    nullif(current_setting('request.jwt.claim.sub', true), ''),\n    (nullif(current_setting('request.jwt.claims', true), '')::jsonb ->> 'sub')\n  )::uuid\n$function$\n"
+      }
+    ],
+    "triggers": [],
+    "functions": [
+      {
+        "id": "public.consume_business_api_quota(uuid)",
+        "acl": [
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.consume_business_api_quota(p_api_key_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\nDECLARE\n  api_key public.business_api_keys%ROWTYPE;\n  owner_plan text;\n  month_units bigint;\n  minute_units bigint;\nBEGIN\n  -- Counts must take a fresh statement snapshot after waiting on the key lock.\n  IF current_setting('transaction_isolation') IS DISTINCT FROM 'read committed' THEN\n    RAISE EXCEPTION 'Quota contract requires READ COMMITTED';\n  END IF;\n  -- Serialize every debit for this key before inspecting either usage window.\n  SELECT * INTO api_key FROM public.business_api_keys WHERE id=p_api_key_id FOR UPDATE;\n  IF NOT FOUND OR api_key.status IS DISTINCT FROM 'active' THEN RETURN false; END IF;\n  SELECT plan INTO owner_plan FROM public.profiles WHERE id=api_key.created_by FOR SHARE;\n  IF NOT FOUND OR owner_plan IS DISTINCT FROM 'business' THEN RETURN false; END IF;\n  SELECT coalesce(sum(units),0) INTO month_units FROM public.api_usage_events\n    WHERE api_key_id=p_api_key_id AND created_at >= date_trunc('month',now());\n  IF month_units >= api_key.monthly_quota THEN RETURN false; END IF;\n  SELECT coalesce(sum(units),0) INTO minute_units FROM public.api_usage_events\n    WHERE api_key_id=p_api_key_id AND created_at >= now()-interval '1 minute';\n  IF minute_units >= api_key.rate_limit_per_minute THEN RETURN false; END IF;\n  INSERT INTO public.api_usage_events(api_key_id,organization_id,request_kind,units)\n    VALUES(api_key.id,api_key.organization_id,'request',1);\n  RETURN true;\nEND $function$\n"
+      },
+      {
+        "id": "public.consume_native_business_api_quota_v1(uuid)",
+        "acl": [
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.consume_native_business_api_quota_v1(p_api_key_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog'\nAS $function$\nBEGIN\n IF encode(sha256(convert_to(pg_get_functiondef('public.consume_business_api_quota(uuid)'::regprocedure),'UTF8')),'hex')\n   IS DISTINCT FROM '51d70f9e682f87017cccd782b9cf944da4bf2790c8472c322472122b4e1f9a69' THEN\n  RAISE EXCEPTION 'NATIVE_QUOTA_ADOPTION_REQUIRED';\n END IF;\n RETURN public.consume_business_api_quota(p_api_key_id);\nEND $function$\n"
+      },
+      {
+        "id": "public.has_org_role(uuid, text[])",
+        "acl": [
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.has_org_role(target_org uuid, allowed_roles text[])\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select coalesce(public.org_role(target_org) = any(allowed_roles), false);\n$function$\n"
+      },
+      {
+        "id": "public.is_org_member(uuid)",
+        "acl": [
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.is_org_member(target_org uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select exists(\n    select 1 from public.organization_members m\n    where m.organization_id = target_org and m.user_id = auth.uid()\n  );\n$function$\n"
+      },
+      {
+        "id": "public.org_role(uuid)",
+        "acl": [
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "owner": "postgres",
+        "definition": "CREATE OR REPLACE FUNCTION public.org_role(target_org uuid)\n RETURNS text\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select m.role from public.organization_members m\n  where m.organization_id = target_org and m.user_id = auth.uid()\n  limit 1;\n$function$\n"
+      }
+    ],
+    "relations": [
+      {
+        "id": "public.api_usage_events",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.business_api_keys",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.organization_members",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.organizations",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      },
+      {
+        "id": "public.profiles",
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "UPDATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "DELETE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "INSERT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "MAINTAIN"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "REFERENCES"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "SELECT"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRIGGER"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "TRUNCATE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "UPDATE"
+          }
+        ],
+        "rls": true,
+        "kind": "r",
+        "owner": "postgres",
+        "forceRls": false
+      }
+    ],
+    "constraints": [
+      {
+        "name": "api_usage_events_api_key_id_fkey",
+        "table": "public.api_usage_events",
+        "validated": true,
+        "definition": "FOREIGN KEY (api_key_id) REFERENCES public.business_api_keys(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "api_usage_events_organization_id_fkey",
+        "table": "public.api_usage_events",
+        "validated": true,
+        "definition": "FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "api_usage_events_pkey",
+        "table": "public.api_usage_events",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "api_usage_events_units_check",
+        "table": "public.api_usage_events",
+        "validated": true,
+        "definition": "CHECK ((units > 0))"
+      },
+      {
+        "name": "business_api_keys_created_by_fkey",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "FOREIGN KEY (created_by) REFERENCES auth.users(id)"
+      },
+      {
+        "name": "business_api_keys_key_hash_key",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "UNIQUE (key_hash)"
+      },
+      {
+        "name": "business_api_keys_monthly_quota_check",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "CHECK (((monthly_quota >= 1) AND (monthly_quota <= 10000000)))"
+      },
+      {
+        "name": "business_api_keys_name_check",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "CHECK (((char_length(name) >= 2) AND (char_length(name) <= 120)))"
+      },
+      {
+        "name": "business_api_keys_organization_id_fkey",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "business_api_keys_pkey",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "business_api_keys_rate_limit_per_minute_check",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "CHECK (((rate_limit_per_minute >= 1) AND (rate_limit_per_minute <= 5000)))"
+      },
+      {
+        "name": "business_api_keys_status_check",
+        "table": "public.business_api_keys",
+        "validated": true,
+        "definition": "CHECK ((status = ANY (ARRAY['active'::text, 'revoked'::text])))"
+      },
+      {
+        "name": "organization_members_organization_id_fkey",
+        "table": "public.organization_members",
+        "validated": true,
+        "definition": "FOREIGN KEY (organization_id) REFERENCES public.organizations(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "organization_members_pkey",
+        "table": "public.organization_members",
+        "validated": true,
+        "definition": "PRIMARY KEY (organization_id, user_id)"
+      },
+      {
+        "name": "organization_members_role_check",
+        "table": "public.organization_members",
+        "validated": true,
+        "definition": "CHECK ((role = ANY (ARRAY['owner'::text, 'admin'::text, 'manager'::text, 'member'::text, 'viewer'::text])))"
+      },
+      {
+        "name": "organization_members_user_id_fkey",
+        "table": "public.organization_members",
+        "validated": true,
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "organizations_name_check",
+        "table": "public.organizations",
+        "validated": true,
+        "definition": "CHECK (((char_length(name) >= 2) AND (char_length(name) <= 120)))"
+      },
+      {
+        "name": "organizations_owner_user_id_fkey",
+        "table": "public.organizations",
+        "validated": true,
+        "definition": "FOREIGN KEY (owner_user_id) REFERENCES auth.users(id) ON DELETE RESTRICT"
+      },
+      {
+        "name": "organizations_pkey",
+        "table": "public.organizations",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "organizations_slug_check",
+        "table": "public.organizations",
+        "validated": true,
+        "definition": "CHECK ((slug ~ '^[a-z0-9][a-z0-9-]{1,62}$'::text))"
+      },
+      {
+        "name": "organizations_slug_key",
+        "table": "public.organizations",
+        "validated": true,
+        "definition": "UNIQUE (slug)"
+      },
+      {
+        "name": "profiles_id_fkey",
+        "table": "public.profiles",
+        "validated": true,
+        "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "profiles_pkey",
+        "table": "public.profiles",
+        "validated": true,
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "profiles_plan_check",
+        "table": "public.profiles",
+        "validated": true,
+        "definition": "CHECK ((plan = ANY (ARRAY['free'::text, 'pro'::text, 'business'::text])))"
+      }
+    ],
+    "defaultAcls": [
+      {
+        "acl": [
+          {
+            "grantee": "anon",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "authenticated",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "postgres",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          },
+          {
+            "grantee": "service_role",
+            "grantable": false,
+            "privilege": "EXECUTE"
+          }
+        ],
+        "role": "postgres",
+        "schema": "public",
+        "objectType": "f"
+      }
+    ]
+  }
+}

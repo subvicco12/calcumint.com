@@ -1,0 +1,98 @@
+{
+  "readOnly": "on",
+  "relations": [
+    {
+      "rls": true,
+      "name": "api_usage_events",
+      "owner": "postgres",
+      "forced": false,
+      "columns": [
+        "id",
+        "api_key_id",
+        "organization_id",
+        "request_kind",
+        "units",
+        "request_id",
+        "created_at"
+      ]
+    },
+    {
+      "rls": true,
+      "name": "business_api_keys",
+      "owner": "postgres",
+      "forced": false,
+      "columns": [
+        "id",
+        "organization_id",
+        "name",
+        "key_prefix",
+        "key_hash",
+        "scopes",
+        "status",
+        "rate_limit_per_minute",
+        "monthly_quota",
+        "created_by",
+        "created_at",
+        "last_used_at",
+        "revoked_at"
+      ]
+    },
+    {
+      "rls": true,
+      "name": "organization_members",
+      "owner": "postgres",
+      "forced": false,
+      "columns": [
+        "organization_id",
+        "user_id",
+        "role",
+        "joined_at"
+      ]
+    },
+    {
+      "rls": true,
+      "name": "organizations",
+      "owner": "postgres",
+      "forced": false,
+      "columns": [
+        "id",
+        "name",
+        "slug",
+        "owner_user_id",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "rls": true,
+      "name": "profiles",
+      "owner": "postgres",
+      "forced": false,
+      "columns": [
+        "id",
+        "display_name",
+        "plan",
+        "created_at",
+        "updated_at"
+      ]
+    }
+  ],
+  "observedAt": "2026-11-06T17:25:13.573721+00:00",
+  "scopedLocks": 0,
+  "quotaFunctions": [
+    {
+      "owner": "postgres",
+      "sha256": "a214e33bf53148d2d57fc9caef8c393ae1d6ce0ab47de301174920c0a37859a3",
+      "settings": [
+        "search_path=public"
+      ],
+      "signature": "public.consume_business_api_quota(uuid)",
+      "definition": "CREATE OR REPLACE FUNCTION public.consume_business_api_quota(p_api_key_id uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\ndeclare v_key public.business_api_keys%rowtype;\ndeclare v_month_count bigint;\ndeclare v_minute_count bigint;\nbegin\n  select * into v_key from public.business_api_keys where id = p_api_key_id and status = 'active';\n  if v_key.id is null then return false; end if;\n\n  select coalesce(sum(units),0) into v_month_count from public.api_usage_events\n  where api_key_id = p_api_key_id and created_at >= date_trunc('month', now());\n  if v_month_count >= v_key.monthly_quota then return false; end if;\n\n  select coalesce(sum(units),0) into v_minute_count from public.api_usage_events\n  where api_key_id = p_api_key_id and created_at >= now() - interval '1 minute';\n  if v_minute_count >= v_key.rate_limit_per_minute then return false; end if;\n\n  insert into public.api_usage_events(api_key_id, organization_id, request_kind, units)\n  values (v_key.id, v_key.organization_id, 'request', 1);\n  return true;\nend;\n$function$\n",
+      "anonExecute": false,
+      "serviceExecute": true,
+      "securityDefiner": true,
+      "authenticatedExecute": false
+    }
+  ],
+  "preparedTransactions": 0
+}
