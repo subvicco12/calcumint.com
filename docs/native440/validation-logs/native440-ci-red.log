@@ -14,7 +14,7 @@
 test at tests/full-product-batch17/workflow.test.mjs:18:1
 ✖ all original strict aggregate outcomes and job budgets remain intact (7.607297ms)
   AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^    timeout-minutes: 12$/m. Input:
-  
+
   '    runs-on: ubuntu-latest\n' +
     '    timeout-minutes: 18\n' +
     '    steps:\n' +
@@ -183,7 +183,7 @@ test at tests/full-product-batch17/workflow.test.mjs:18:1
     '        run: node tests/publication-factory/browser.mjs\n' +
     '        env:\n' +
     '          PUBLICATION_FACTORY_BROWSER_ARTIFACTS: ${{ runner.temp }}/publication-factory-browser\n'
-  
+
       at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/full-product-batch17/workflow.test.mjs:21:169)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1382:25)
