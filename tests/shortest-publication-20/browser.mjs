@@ -32,5 +32,15 @@ try{
   const numbers=Object.entries(bad).filter(([,value])=>typeof value==='number');await browser.js('[...document.querySelectorAll(".calculator-ui .field-grid input")].forEach((e,i)=>e.id="underflow-field-"+i)');for(const [i,[,value]]of numbers.entries())await browser.field('#underflow-field-'+i,String(value));for(const key of ['fromUnit','toUnit'])if(bad[key])await chooseUnit(key,bad[key]);await browser.until(snap+'.output===null');
   assert.equal(await browser.js('[...document.querySelectorAll(".account-actions button")].find(b=>b.textContent.trim()==="Save calculation")?.disabled'),true);assert.equal(await browser.js('[...document.querySelectorAll(".account-actions button")].find(b=>b.textContent.trim()==="Export JSON")?.disabled'),true);await enter(v,v.input);report.underflowRefusals.push({catalogId:id,input:bad,newCaptureDenied:true,recovered:true,historicalVersionUnchanged:true});
  }
+ report.subnormalRefusals=[];
+ for(const v of vectors){
+  await browser.send('Page.navigate',{url:origin+`/tests/shortest-publication-20/?id=${v.catalogId}&plan=pro`});await browser.until('document.querySelector("#plan")?.textContent==="pro"&&'+ready);
+  await browser.js('[...document.querySelectorAll(".calculator-ui .field-grid input")].forEach((e,i)=>e.id="precision-field-"+i)');
+  await browser.field('#precision-field-0','1e-323');await browser.until(snap+'.output===null');
+  assert.equal(await browser.js('document.querySelector("#precision-field-0").value'),'1e-323');
+  for(const label of ['Save calculation','Export JSON'])assert.equal(await browser.js('[...document.querySelectorAll(".account-actions button")].find(b=>b.textContent.trim()==='+JSON.stringify(label)+')?.disabled'),true);
+  assert.equal(await browser.js('!!document.querySelector("[role=alert]")'),true);
+  await enter(v,v.input);report.subnormalRefusals.push({catalogId:v.catalogId,inputPreserved:true,newCaptureDenied:true,recovered:true});
+ }
  assert.deepEqual(browser.errors,[]);report.passed=true;await writeFile(path.join(directory,'receipt.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,journeys:report.journeys.length,directory}));
 }catch(e){await writeFile(path.join(directory,'failure.txt'),String(e));if(browser)try{await writeFile(path.join(directory,'failure.png'),Buffer.from((await browser.send('Page.captureScreenshot',{format:'png'},5000)).data,'base64'));}catch{}throw e;}finally{await browser?.close();await fixture?.close();}

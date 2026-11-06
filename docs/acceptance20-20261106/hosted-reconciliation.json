@@ -1,0 +1,147 @@
+{
+  "kind": "READ_ONLY_PRODUCTION_METADATA_AND_ISOLATED_NEGATIVE_ACCEPTANCE",
+  "observedAt": "2026-11-06T03:44:56.489509+00:00",
+  "readOnly": "on",
+  "candidateCount": 20,
+  "exactHostedMatches": 0,
+  "functions": [
+    {
+      "name": "enforce_calculator_publish_gate",
+      "sha256": "a34469bd029214c7bae7d180174a02716dc072d7f7e40d40f98a24ef43958329",
+      "capturedMatch": true,
+      "capturedSha256": [
+        "a34469bd029214c7bae7d180174a02716dc072d7f7e40d40f98a24ef43958329"
+      ]
+    },
+    {
+      "name": "list_published_calculator_manifest",
+      "sha256": "d397c73f0328194f47b565e7e2a15005aa96b198662ebb49062dd461cee9ee5d",
+      "capturedMatch": false,
+      "capturedSha256": []
+    },
+    {
+      "name": "validate_calculator_publish_gate",
+      "sha256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c",
+      "capturedMatch": true,
+      "capturedSha256": [
+        "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c"
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "name": "calculator_catalog_derived_source_count",
+      "definition": "CREATE TRIGGER calculator_catalog_derived_source_count BEFORE INSERT OR UPDATE OF source_count ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION enforce_derived_source_count()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER calculator_catalog_derived_source_count BEFORE INSERT OR UPDATE OF source_count ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION public.enforce_derived_source_count()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_publish_gate_before_update",
+      "definition": "CREATE TRIGGER calculator_publish_gate_before_update BEFORE UPDATE ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION enforce_calculator_publish_gate()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER calculator_publish_gate_before_update BEFORE UPDATE ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION public.enforce_calculator_publish_gate()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_reviewer_assignment_authority",
+      "definition": "CREATE TRIGGER calculator_reviewer_assignment_authority BEFORE INSERT OR UPDATE OF reviewer_id ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION enforce_reviewer_assignment_authority()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER calculator_reviewer_assignment_authority BEFORE INSERT OR UPDATE OF reviewer_id ON public.calculator_catalog_admin FOR EACH ROW EXECUTE FUNCTION public.enforce_reviewer_assignment_authority()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_qa_certification_after_write",
+      "definition": "CREATE CONSTRAINT TRIGGER calculator_qa_certification_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_qa_checks DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION enforce_qa_evidence_certification()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE CONSTRAINT TRIGGER calculator_qa_certification_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_qa_checks DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.enforce_qa_evidence_certification()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_qa_evidence_authority_before_write",
+      "definition": "CREATE TRIGGER calculator_qa_evidence_authority_before_write BEFORE INSERT OR DELETE OR UPDATE ON public.calculator_qa_checks FOR EACH ROW EXECUTE FUNCTION enforce_qa_evidence_authority()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER calculator_qa_evidence_authority_before_write BEFORE INSERT OR DELETE OR UPDATE ON public.calculator_qa_checks FOR EACH ROW EXECUTE FUNCTION public.enforce_qa_evidence_authority()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "qa_failed_alert_after_update",
+      "definition": "CREATE TRIGGER qa_failed_alert_after_update AFTER UPDATE ON public.calculator_qa_checks FOR EACH ROW EXECUTE FUNCTION raise_failed_qa_alert()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER qa_failed_alert_after_update AFTER UPDATE ON public.calculator_qa_checks FOR EACH ROW EXECUTE FUNCTION public.raise_failed_qa_alert()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_source_evidence_certification_after_write",
+      "definition": "CREATE CONSTRAINT TRIGGER calculator_source_evidence_certification_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_source_evidence DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION enforce_source_evidence_certification()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE CONSTRAINT TRIGGER calculator_source_evidence_certification_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_source_evidence DEFERRABLE INITIALLY DEFERRED FOR EACH ROW EXECUTE FUNCTION public.enforce_source_evidence_certification()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_source_evidence_stamp_before_write",
+      "definition": "CREATE TRIGGER calculator_source_evidence_stamp_before_write BEFORE INSERT OR UPDATE ON public.calculator_source_evidence FOR EACH ROW EXECUTE FUNCTION stamp_source_evidence_review()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER calculator_source_evidence_stamp_before_write BEFORE INSERT OR UPDATE ON public.calculator_source_evidence FOR EACH ROW EXECUTE FUNCTION public.stamp_source_evidence_review()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "calculator_source_evidence_sync_count_after_write",
+      "definition": "CREATE TRIGGER calculator_source_evidence_sync_count_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_source_evidence FOR EACH ROW EXECUTE FUNCTION sync_source_evidence_count()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER calculator_source_evidence_sync_count_after_write AFTER INSERT OR DELETE OR UPDATE ON public.calculator_source_evidence FOR EACH ROW EXECUTE FUNCTION public.sync_source_evidence_count()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    },
+    {
+      "name": "protect_active_ymyl_reviewer_authority_before_update",
+      "definition": "CREATE TRIGGER protect_active_ymyl_reviewer_authority_before_update BEFORE UPDATE OF active, role ON public.platform_admins FOR EACH ROW EXECUTE FUNCTION protect_active_ymyl_reviewer_authority()",
+      "capturedMatch": false,
+      "capturedDefinition": "CREATE TRIGGER protect_active_ymyl_reviewer_authority_before_update BEFORE UPDATE OF active, role ON public.platform_admins FOR EACH ROW EXECUTE FUNCTION public.protect_active_ymyl_reviewer_authority()",
+      "normalizedCapturedMatch": true,
+      "difference": "pg_get_triggerdef search_path schema qualification"
+    }
+  ],
+  "isolatedChecks": 9,
+  "isolatedFinal": {
+    "qa": 300,
+    "drafts": 20,
+    "sources": 0,
+    "decisions": 0,
+    "otherLifecycle": 0
+  },
+  "guardedSuccessorsActivated": false,
+  "publicationEligibleEstablished": 0,
+  "limitations": [
+    "Fresh production inspection is metadata-only; no production runtime mutation or authorization acceptance attempted",
+    "Isolated runtime uses pinned genuine GoTrue/PostgREST plus reconstructed captured scoped tables; no full provider equivalence",
+    "Anon read denied by missing function EXECUTE ACL42501; authenticated non-admin may return zero rows; see exact receipt",
+    "Synthetic300 pending QA rows are gate-negative fixtures, not reviewer decisions or evidence approvals"
+  ],
+  "retainedDefects": [
+    {
+      "id": "publication-date-pattern",
+      "evidence": "Fresh predicate equals captured beforeSha25618ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c; existing reviewed correction afterSha256ce53551431824e8560af44a235ebb312372e0c67641c196f3d8db1287c05709a remains unactivated",
+      "classification": "CONFIRMED_RETAINED_PREDECESSOR_DEFECT_REUSE_EXISTING_TEST_EVIDENCE"
+    },
+    {
+      "id": "publication-direct-insert",
+      "evidence": "Only calculator_publish_gate_before_update lifecycle trigger present; existing p0-publication-business baseline-insert-bypass receipt reproduces owner-JWT published INSERT without evidence in captured isolated schema",
+      "classification": "CONFIRMED_RETAINED_PREDECESSOR_DEFECT_REUSE_EXISTING_TEST_EVIDENCE"
+    },
+    {
+      "id": "final-persisted-state-and-dependency-mutations",
+      "evidence": "No calculator_publish_gate_final_row trigger or dependency successor triggers in fresh returned governance set; existing closure/P0 tests characterize OLD-row visibility, reviewer DELETE/identity mutation and QA old-parent movement",
+      "classification": "RETAINED_GUARDED_SUCCESSOR_ACTIVATION_BLOCKER_NOT_PRODUCTION_EXPLOIT_TESTED"
+    }
+  ],
+  "manifestFunctionComparison": "Not included in six-table scoped admin fixture; exact returned SHA recorded, no drift conclusion inferred"
+}

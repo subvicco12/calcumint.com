@@ -1,0 +1,95 @@
+{
+  "baseline": "be075e04676992c5e99f7e62f642280242af2954",
+  "baselineCI": {
+    "run": 42156917482,
+    "status": "COMPLETED",
+    "conclusion": "SUCCESS"
+  },
+  "checks": {
+    "newPrecisionTests": {
+      "passed": 22,
+      "redBeforeFix": true,
+      "scope": "Actual immutable engines plus exact IEEE754 integer witness; caller-only refusal"
+    },
+    "exportAcceptance": {
+      "passed": 40,
+      "skipped": 0,
+      "independentReader": "Poppler and separate CSV parser",
+      "limitations": "Comparison PDF fields asserted are bounded; no formal PDF/UA claim"
+    },
+    "browser": {
+      "passed": true,
+      "planViewportJourneys": 60,
+      "falseZeroRefusals": 6,
+      "subnormalRefusalRecovery": 20,
+      "transport": "SYNTHETIC_NOT_HOSTED_ACCOUNT_ACCEPTANCE"
+    },
+    "isolatedHostedPreflight": {
+      "passedGroups": 9,
+      "engineVersions": 20,
+      "pendingQA": 300,
+      "positiveReleaseAcceptance": false
+    },
+    "lint": {
+      "passed": true,
+      "errors": 0,
+      "existingWarnings": 29
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "webpackBuild": {
+      "passed": true
+    },
+    "launch": {
+      "passed": 45
+    },
+    "certification": {
+      "passed": 15
+    },
+    "httpSecurity": {
+      "passed": true
+    },
+    "historyAndSourceGuards": {
+      "passed": true,
+      "fullSixRetainedFiles": 25,
+      "fullSixSourceBindings": 24,
+      "callerBindings": 18,
+      "currentSourceBindings": 33,
+      "callerLineageNegativeTests": 8
+    },
+    "fullUnit": {
+      "passed": 7926,
+      "skipped": 4,
+      "skippedScope": "Existing source-dependent tests; new Poppler tests ran without skips",
+      "testFilesPassed": 895,
+      "testFilesSkipped": 2,
+      "seconds": 337.09
+    }
+  },
+  "independentReview": {
+    "softwareReviewer": "Independent accept20_review agent; not mathematical or specialist approval",
+    "focusedTestsPassed": 70,
+    "blockingFindings": 0,
+    "minorFinding": "Corrected #427 scope wording to distinguish physical lower bound from numerical refusal envelope",
+    "coverageLimit": "Comparison PDF does not independently assert every field"
+  },
+  "preservation": {
+    "engineFilesChanged": false,
+    "historicalReplayChanged": false,
+    "catalogChanged": false,
+    "acceptanceLedgerChanged": false,
+    "productionWrites": false,
+    "publicationOrCertificationPromotions": 0,
+    "releaseHold": true
+  },
+  "receiptHashes": {
+    "lint": "b55d19f2b4702c268a3e6e922313f96a4a1de79d4ef8f9e10d25f8389a905b52",
+    "typecheck": "429c71c33cc900d088c920daa7938ab13fcf520d87d3e854e1cbda93178d84b5",
+    "build": "1ff7e5d747f8d1c4aee75146641c152d6e3d3424948b46380bee801e2ae3ed3b",
+    "launch": "315a6853eb4a46a432cca5b449dcb9095c782f5cbfb15e61a9a84e48bdb8dafc",
+    "certification": "5171f8ce8c0312416534115c171d2cfbe2b2b213d9f416790c23fd62ead76fe6",
+    "security": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7",
+    "unit": "9c360a6361647960cb2d765e7b8ba1ff9c37f021a1b76fe8e6ad32e243a75529"
+  }
+}
