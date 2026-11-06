@@ -363,6 +363,7 @@ jobs:
       - name: Owner-authorized isolated P0 implementation
         timeout-minutes: 8
         run: |
+          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6
           node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
           node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs
           node tests/owner-p0/calculus/browser.mjs
@@ -483,8 +484,10 @@ jobs:
           python3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'
           python3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"
           node tests/shortest-publication-20/browser.mjs
+          node tests/critical440-browser/acceptance.mjs
         env:
           SHORTEST_PUBLICATION_RECEIPT: ${{ runner.temp }}/shortest-publication-20
+          CRITICAL440_BROWSER_ARTIFACTS: ${{ runner.temp }}/critical440-browser
           AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Prepare pinned provisioning runtime
         timeout-minutes: 4
@@ -499,6 +502,15 @@ jobs:
         run: |
           node --test tests/adoption1528/bundle.test.mjs
           node tests/adoption1528/acceptance.mjs
+      - name: Current twenty genuine authenticated workflows
+        timeout-minutes: 4
+        run: |
+          node --test tests/critical440-audit/preflight.test.mjs
+          node tests/critical440-auth/acceptance.mjs
+          node tests/critical440-audit/privileges.mjs
+        env:
+          CRITICAL440_AUTH_ARTIFACTS: ${{ runner.temp }}/critical440-auth
+          CRITICAL440_AUDIT_ARTIFACTS: ${{ runner.temp }}/critical440-audit
       - name: Preserve shortest publication cohort acceptance
         uses: actions/upload-artifact@v4
         with:
@@ -506,6 +518,9 @@ jobs:
           path: |
             ${{ runner.temp }}/shortest-publication-20/receipt.json
             ${{ runner.temp }}/shortest-publication-20/production-routes.json
+            ${{ runner.temp }}/critical440-browser/receipt.json
+            ${{ runner.temp }}/critical440-auth/receipt.json
+            ${{ runner.temp }}/critical440-audit/privilege-receipt.json
           if-no-files-found: error
           retention-days: 7
       - name: Approved six-candidate worker, workflow and replay acceptance

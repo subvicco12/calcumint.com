@@ -1,0 +1,3338 @@
+{
+  "passed": true,
+  "sourceCommit": "3adaaf89ad24331a2175d9d137dfcd8f3ced1da8",
+  "checks": [
+    "free: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay",
+    "pro: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay",
+    "business: twenty actual v1 engine snapshots saved, exact request retry, owned read and registered replay",
+    "Free/Pro/Business mathematical artifacts are identical for each of twenty engines",
+    "Free twenty-history quota enforced; paid twenty-first history accepted",
+    "#440 immutable retry conflict, stale owner/account-switch denial, foreign read/update isolation",
+    "#440 Pro/Business atomic scenario exact retry/copy/replay; Free and foreign scenario denial",
+    "Entitlement revocation denies new paid workspace while existing owned scenario remains readable",
+    "SDK logout clears session and denies anonymous saves; revoked refresh rejected; retained JWT lifetime explicitly observed"
+  ],
+  "artifacts": [
+    {
+      "plan": "free",
+      "catalogId": 423,
+      "id": "ac814b7f-1151-4e9c-ab7f-d41a80ab89b1",
+      "snapshot": {
+        "calculatorSlug": "length-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": -2.5,
+          "fromUnit": "yd",
+          "toUnit": "mm"
+        },
+        "output": {
+          "result": -2286
+        }
+      },
+      "sha256": "60709fd1309a5b1fb4f27135d94f1f9fcaec249c70643ebac161b1cf86bfb306"
+    },
+    {
+      "plan": "free",
+      "catalogId": 424,
+      "id": "1f815f30-4fed-4651-841e-ab0c907314a5",
+      "snapshot": {
+        "calculatorSlug": "area-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "ft2",
+          "toUnit": "cm2"
+        },
+        "output": {
+          "result": 2787.0912
+        }
+      },
+      "sha256": "73fa40f2fe2a98500bb4ba1fc26b261b06b2221d9fd167da2a928b742e5ebc24"
+    },
+    {
+      "plan": "free",
+      "catalogId": 425,
+      "id": "a9fbe8a7-6a2d-42e6-bec4-b6dc5dc97318",
+      "snapshot": {
+        "calculatorSlug": "volume-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "qt_us",
+          "toUnit": "ml"
+        },
+        "output": {
+          "result": 1892.7058920000002
+        }
+      },
+      "sha256": "8e826fef506d6a47fd297e0a5764aeb4ab17a6977b9445386b96d175ce23d7f1"
+    },
+    {
+      "plan": "free",
+      "catalogId": 427,
+      "id": "faeb9de8-9ee8-456d-9985-a3d1a759e9a7",
+      "snapshot": {
+        "calculatorSlug": "temperature-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": -40,
+          "fromUnit": "c",
+          "toUnit": "f"
+        },
+        "output": {
+          "result": -40
+        }
+      },
+      "sha256": "cdd29eac6832b90860d2e9136aa48f4cc5dfbf997dc53a01a5adcae49226e0d2"
+    },
+    {
+      "plan": "free",
+      "catalogId": 428,
+      "id": "e28da522-c612-4b96-a933-825af5f368ff",
+      "snapshot": {
+        "calculatorSlug": "speed-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "knot",
+          "toUnit": "m_s"
+        },
+        "output": {
+          "result": 1.5433333333333334
+        }
+      },
+      "sha256": "7f6981d91625cca2a897c681f7ffbee2cd8f184ee8753463e311862e7731535d"
+    },
+    {
+      "plan": "free",
+      "catalogId": 429,
+      "id": "3603fc72-4b47-4bbb-b203-2d5f76961074",
+      "snapshot": {
+        "calculatorSlug": "pressure-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "bar",
+          "toUnit": "pa"
+        },
+        "output": {
+          "result": 200000
+        }
+      },
+      "sha256": "0483694474dfb1d0417a635a7dcca68a1631737a1949d0b56a5520efcdae0844"
+    },
+    {
+      "plan": "free",
+      "catalogId": 430,
+      "id": "13e4b437-05c2-441e-b002-7d3928810bff",
+      "snapshot": {
+        "calculatorSlug": "energy-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 10,
+          "fromUnit": "cal",
+          "toUnit": "j"
+        },
+        "output": {
+          "result": 41.84
+        }
+      },
+      "sha256": "125c9d2005d4b13be1b840addee3069aacd4fecd04053b4ee24b9ab590bbe518"
+    },
+    {
+      "plan": "free",
+      "catalogId": 431,
+      "id": "755dcdb5-ffbd-4892-bce0-775f0b8cd431",
+      "snapshot": {
+        "calculatorSlug": "power-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 0.002,
+          "fromUnit": "mw",
+          "toUnit": "w"
+        },
+        "output": {
+          "result": 2000
+        }
+      },
+      "sha256": "5690a58416d92b23637a0672d9c828ebf433cd7d0046109d8e73b6e2c8b20928"
+    },
+    {
+      "plan": "free",
+      "catalogId": 432,
+      "id": "6ed18ef7-b0b3-47a4-9333-b929a0628e55",
+      "snapshot": {
+        "calculatorSlug": "time-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 1.5,
+          "fromUnit": "week",
+          "toUnit": "h"
+        },
+        "output": {
+          "result": 252
+        }
+      },
+      "sha256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726"
+    },
+    {
+      "plan": "free",
+      "catalogId": 433,
+      "id": "73d59d89-ab59-4359-833f-fa1b9515b8bc",
+      "snapshot": {
+        "calculatorSlug": "angle-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 100,
+          "fromUnit": "grad",
+          "toUnit": "deg"
+        },
+        "output": {
+          "result": 90
+        }
+      },
+      "sha256": "2e598e7e1c6c334ef0facdfd249929e410d60332ed23f37511f8ccb380adbd2f"
+    },
+    {
+      "plan": "free",
+      "catalogId": 434,
+      "id": "b97fcfff-38c6-4604-b8aa-fff061872653",
+      "snapshot": {
+        "calculatorSlug": "data-storage-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "MiB",
+          "toUnit": "KB"
+        },
+        "output": {
+          "result": 2097.152
+        }
+      },
+      "sha256": "8c0ce4821d8672b19ff67fc8684262e01b94bf501d4cb977b2fa1b276cc9845a"
+    },
+    {
+      "plan": "free",
+      "catalogId": 437,
+      "id": "9f273b90-30a8-40bf-9d7c-5ae5fde718d2",
+      "snapshot": {
+        "calculatorSlug": "density-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "kg_l",
+          "toUnit": "kg_m3"
+        },
+        "output": {
+          "result": 2000
+        }
+      },
+      "sha256": "f10dcdeff80cbc6de7521005bd1869f8bb1462e896fec486ef16cf962e9d67df"
+    },
+    {
+      "plan": "free",
+      "catalogId": 438,
+      "id": "816eeab5-0ba9-4e61-97a3-16567e56a31e",
+      "snapshot": {
+        "calculatorSlug": "force-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 250000,
+          "fromUnit": "dyn",
+          "toUnit": "n"
+        },
+        "output": {
+          "result": 2.5
+        }
+      },
+      "sha256": "52d4e2f877a00da6ff7628b43c9b3dc8e64301b59d4d4f785ff49b7424e09dcd"
+    },
+    {
+      "plan": "free",
+      "catalogId": 439,
+      "id": "cb7153f8-a390-4a80-8eb9-23e6b42d191a",
+      "snapshot": {
+        "calculatorSlug": "torque-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 24,
+          "fromUnit": "lbf_in",
+          "toUnit": "lbf_ft"
+        },
+        "output": {
+          "result": 2
+        }
+      },
+      "sha256": "21e844649aeb733e81a3fa9bfb89e0864c3b9e3a838eac271eb341d7da2c065d"
+    },
+    {
+      "plan": "free",
+      "catalogId": 440,
+      "id": "5411258b-2c45-4933-b2ca-d889ea5f6ea8",
+      "snapshot": {
+        "calculatorSlug": "frequency-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 0.125,
+          "fromUnit": "mhz",
+          "toUnit": "hz"
+        },
+        "output": {
+          "result": 125000
+        }
+      },
+      "sha256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0"
+    },
+    {
+      "plan": "free",
+      "catalogId": 370,
+      "id": "eeb63b61-0f81-4861-b86c-5b6611f8fe9c",
+      "snapshot": {
+        "calculatorSlug": "bandwidth-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 375,
+          "timeSeconds": 24
+        },
+        "output": {
+          "value": 125,
+          "steps": [
+            "Bandwidth = 125"
+          ]
+        }
+      },
+      "sha256": "0c1ef4fe124abe0424ff22570bd2a94bc96f5891159c59bb12c4266a9ceda418"
+    },
+    {
+      "plan": "free",
+      "catalogId": 371,
+      "id": "70ae54d9-74e0-475d-b3fe-9baae15c8d37",
+      "snapshot": {
+        "calculatorSlug": "download-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 375,
+          "bandwidthMbps": 125
+        },
+        "output": {
+          "value": 24,
+          "steps": [
+            "Download Time = 24"
+          ]
+        }
+      },
+      "sha256": "edd6bff6efaaad84e48f9cc42697b20cb40d04ec5faac5fa3ab0f289d4b07083"
+    },
+    {
+      "plan": "free",
+      "catalogId": 372,
+      "id": "ea7283b7-c0e6-4bc4-80d1-42c868b145e8",
+      "snapshot": {
+        "calculatorSlug": "upload-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 25,
+          "bandwidthMbps": 100
+        },
+        "output": {
+          "value": 2,
+          "steps": [
+            "Upload Time = 2"
+          ]
+        }
+      },
+      "sha256": "f02c79ac9e4c000dd785b42452fc4f6ce363aeb50ad5571276313034860039b3"
+    },
+    {
+      "plan": "free",
+      "catalogId": 373,
+      "id": "506e2ca1-ead8-464a-8f56-f615bed57d74",
+      "snapshot": {
+        "calculatorSlug": "data-transfer-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "bandwidthMbps": 125,
+          "timeSeconds": 24
+        },
+        "output": {
+          "value": 375,
+          "steps": [
+            "Data Transfer = 375"
+          ]
+        }
+      },
+      "sha256": "80e40f8ff9af2f3ab4385ebe0b20029806e29203892b3c8059683f0a7438ae06"
+    },
+    {
+      "plan": "free",
+      "catalogId": 374,
+      "id": "105e1ac3-5ac3-4d3c-bfc5-d35885d08c43",
+      "snapshot": {
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "GiB",
+          "toUnit": "KiB"
+        },
+        "output": {
+          "value": 3145728,
+          "steps": [
+            "Storage Conversion = 3145728"
+          ]
+        }
+      },
+      "sha256": "96e7c7cd1749a8e763f201a21e0f703ad01a33afec2cd04d607d778c524f385c"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 423,
+      "id": "482cbfe0-3252-492a-8cfe-f42b3a0d3c18",
+      "snapshot": {
+        "calculatorSlug": "length-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": -2.5,
+          "fromUnit": "yd",
+          "toUnit": "mm"
+        },
+        "output": {
+          "result": -2286
+        }
+      },
+      "sha256": "60709fd1309a5b1fb4f27135d94f1f9fcaec249c70643ebac161b1cf86bfb306"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 424,
+      "id": "cae7a899-73df-4e4e-95d0-1e4a72ff1f92",
+      "snapshot": {
+        "calculatorSlug": "area-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "ft2",
+          "toUnit": "cm2"
+        },
+        "output": {
+          "result": 2787.0912
+        }
+      },
+      "sha256": "73fa40f2fe2a98500bb4ba1fc26b261b06b2221d9fd167da2a928b742e5ebc24"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 425,
+      "id": "9f86e553-dc4f-40da-8b86-a5ae18217484",
+      "snapshot": {
+        "calculatorSlug": "volume-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "qt_us",
+          "toUnit": "ml"
+        },
+        "output": {
+          "result": 1892.7058920000002
+        }
+      },
+      "sha256": "8e826fef506d6a47fd297e0a5764aeb4ab17a6977b9445386b96d175ce23d7f1"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 427,
+      "id": "566fa250-625d-4ef0-b7c4-2a3c4d160eb7",
+      "snapshot": {
+        "calculatorSlug": "temperature-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": -40,
+          "fromUnit": "c",
+          "toUnit": "f"
+        },
+        "output": {
+          "result": -40
+        }
+      },
+      "sha256": "cdd29eac6832b90860d2e9136aa48f4cc5dfbf997dc53a01a5adcae49226e0d2"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 428,
+      "id": "57878c40-6897-4d32-8037-b5c0db454c90",
+      "snapshot": {
+        "calculatorSlug": "speed-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "knot",
+          "toUnit": "m_s"
+        },
+        "output": {
+          "result": 1.5433333333333334
+        }
+      },
+      "sha256": "7f6981d91625cca2a897c681f7ffbee2cd8f184ee8753463e311862e7731535d"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 429,
+      "id": "8fd3a480-ef6d-49ca-abbf-8d1a8510562e",
+      "snapshot": {
+        "calculatorSlug": "pressure-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "bar",
+          "toUnit": "pa"
+        },
+        "output": {
+          "result": 200000
+        }
+      },
+      "sha256": "0483694474dfb1d0417a635a7dcca68a1631737a1949d0b56a5520efcdae0844"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 430,
+      "id": "e12586e9-aef6-469e-a235-cf9450facf88",
+      "snapshot": {
+        "calculatorSlug": "energy-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 10,
+          "fromUnit": "cal",
+          "toUnit": "j"
+        },
+        "output": {
+          "result": 41.84
+        }
+      },
+      "sha256": "125c9d2005d4b13be1b840addee3069aacd4fecd04053b4ee24b9ab590bbe518"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 431,
+      "id": "cbcadc86-3374-4871-97bf-a1874bc14181",
+      "snapshot": {
+        "calculatorSlug": "power-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 0.002,
+          "fromUnit": "mw",
+          "toUnit": "w"
+        },
+        "output": {
+          "result": 2000
+        }
+      },
+      "sha256": "5690a58416d92b23637a0672d9c828ebf433cd7d0046109d8e73b6e2c8b20928"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 432,
+      "id": "ddaa28ef-5865-472a-8c01-1447eab28a82",
+      "snapshot": {
+        "calculatorSlug": "time-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 1.5,
+          "fromUnit": "week",
+          "toUnit": "h"
+        },
+        "output": {
+          "result": 252
+        }
+      },
+      "sha256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 433,
+      "id": "812aeace-b415-4451-94b2-c34e8132c563",
+      "snapshot": {
+        "calculatorSlug": "angle-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 100,
+          "fromUnit": "grad",
+          "toUnit": "deg"
+        },
+        "output": {
+          "result": 90
+        }
+      },
+      "sha256": "2e598e7e1c6c334ef0facdfd249929e410d60332ed23f37511f8ccb380adbd2f"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 434,
+      "id": "fb6936cd-cc6e-4679-805f-f5dbbbe82791",
+      "snapshot": {
+        "calculatorSlug": "data-storage-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "MiB",
+          "toUnit": "KB"
+        },
+        "output": {
+          "result": 2097.152
+        }
+      },
+      "sha256": "8c0ce4821d8672b19ff67fc8684262e01b94bf501d4cb977b2fa1b276cc9845a"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 437,
+      "id": "1a0a7b21-43d4-40cc-89f0-0174174c9722",
+      "snapshot": {
+        "calculatorSlug": "density-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "kg_l",
+          "toUnit": "kg_m3"
+        },
+        "output": {
+          "result": 2000
+        }
+      },
+      "sha256": "f10dcdeff80cbc6de7521005bd1869f8bb1462e896fec486ef16cf962e9d67df"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 438,
+      "id": "bb1073d9-8325-4f3b-88f0-a7475aa3cf1a",
+      "snapshot": {
+        "calculatorSlug": "force-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 250000,
+          "fromUnit": "dyn",
+          "toUnit": "n"
+        },
+        "output": {
+          "result": 2.5
+        }
+      },
+      "sha256": "52d4e2f877a00da6ff7628b43c9b3dc8e64301b59d4d4f785ff49b7424e09dcd"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 439,
+      "id": "474dfb1c-edb4-4ad1-a10b-ca6c86994cd3",
+      "snapshot": {
+        "calculatorSlug": "torque-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 24,
+          "fromUnit": "lbf_in",
+          "toUnit": "lbf_ft"
+        },
+        "output": {
+          "result": 2
+        }
+      },
+      "sha256": "21e844649aeb733e81a3fa9bfb89e0864c3b9e3a838eac271eb341d7da2c065d"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 440,
+      "id": "fc8d3cf3-808c-45e8-96ba-4116660aec11",
+      "snapshot": {
+        "calculatorSlug": "frequency-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 0.125,
+          "fromUnit": "mhz",
+          "toUnit": "hz"
+        },
+        "output": {
+          "result": 125000
+        }
+      },
+      "sha256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 370,
+      "id": "b0ec9edb-c22b-490e-8588-e6fd9302bfb8",
+      "snapshot": {
+        "calculatorSlug": "bandwidth-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 375,
+          "timeSeconds": 24
+        },
+        "output": {
+          "value": 125,
+          "steps": [
+            "Bandwidth = 125"
+          ]
+        }
+      },
+      "sha256": "0c1ef4fe124abe0424ff22570bd2a94bc96f5891159c59bb12c4266a9ceda418"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 371,
+      "id": "1120a226-e33b-4a17-8d68-b05062389ba2",
+      "snapshot": {
+        "calculatorSlug": "download-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 375,
+          "bandwidthMbps": 125
+        },
+        "output": {
+          "value": 24,
+          "steps": [
+            "Download Time = 24"
+          ]
+        }
+      },
+      "sha256": "edd6bff6efaaad84e48f9cc42697b20cb40d04ec5faac5fa3ab0f289d4b07083"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 372,
+      "id": "f76fd75c-e19c-4667-8590-3e9378b2b9d9",
+      "snapshot": {
+        "calculatorSlug": "upload-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 25,
+          "bandwidthMbps": 100
+        },
+        "output": {
+          "value": 2,
+          "steps": [
+            "Upload Time = 2"
+          ]
+        }
+      },
+      "sha256": "f02c79ac9e4c000dd785b42452fc4f6ce363aeb50ad5571276313034860039b3"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 373,
+      "id": "ef1f13c5-4bd7-470e-b7bb-4f048fe66d31",
+      "snapshot": {
+        "calculatorSlug": "data-transfer-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "bandwidthMbps": 125,
+          "timeSeconds": 24
+        },
+        "output": {
+          "value": 375,
+          "steps": [
+            "Data Transfer = 375"
+          ]
+        }
+      },
+      "sha256": "80e40f8ff9af2f3ab4385ebe0b20029806e29203892b3c8059683f0a7438ae06"
+    },
+    {
+      "plan": "pro",
+      "catalogId": 374,
+      "id": "0d0daa9a-aedb-4036-aa46-4cdaea8ec0e5",
+      "snapshot": {
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "GiB",
+          "toUnit": "KiB"
+        },
+        "output": {
+          "value": 3145728,
+          "steps": [
+            "Storage Conversion = 3145728"
+          ]
+        }
+      },
+      "sha256": "96e7c7cd1749a8e763f201a21e0f703ad01a33afec2cd04d607d778c524f385c"
+    },
+    {
+      "plan": "business",
+      "catalogId": 423,
+      "id": "288585aa-8190-47d0-a70c-9408fd091fbe",
+      "snapshot": {
+        "calculatorSlug": "length-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": -2.5,
+          "fromUnit": "yd",
+          "toUnit": "mm"
+        },
+        "output": {
+          "result": -2286
+        }
+      },
+      "sha256": "60709fd1309a5b1fb4f27135d94f1f9fcaec249c70643ebac161b1cf86bfb306"
+    },
+    {
+      "plan": "business",
+      "catalogId": 424,
+      "id": "94f6d820-cda4-44a4-b7a4-a1fe3f9a655c",
+      "snapshot": {
+        "calculatorSlug": "area-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "ft2",
+          "toUnit": "cm2"
+        },
+        "output": {
+          "result": 2787.0912
+        }
+      },
+      "sha256": "73fa40f2fe2a98500bb4ba1fc26b261b06b2221d9fd167da2a928b742e5ebc24"
+    },
+    {
+      "plan": "business",
+      "catalogId": 425,
+      "id": "fbb1f3a0-95f8-4389-b817-be8d3909ffde",
+      "snapshot": {
+        "calculatorSlug": "volume-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "qt_us",
+          "toUnit": "ml"
+        },
+        "output": {
+          "result": 1892.7058920000002
+        }
+      },
+      "sha256": "8e826fef506d6a47fd297e0a5764aeb4ab17a6977b9445386b96d175ce23d7f1"
+    },
+    {
+      "plan": "business",
+      "catalogId": 427,
+      "id": "874471a6-7b47-485a-9eda-b4c72e3c977e",
+      "snapshot": {
+        "calculatorSlug": "temperature-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": -40,
+          "fromUnit": "c",
+          "toUnit": "f"
+        },
+        "output": {
+          "result": -40
+        }
+      },
+      "sha256": "cdd29eac6832b90860d2e9136aa48f4cc5dfbf997dc53a01a5adcae49226e0d2"
+    },
+    {
+      "plan": "business",
+      "catalogId": 428,
+      "id": "51a940c9-942d-4e6e-9dea-ce29ff74d6de",
+      "snapshot": {
+        "calculatorSlug": "speed-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "knot",
+          "toUnit": "m_s"
+        },
+        "output": {
+          "result": 1.5433333333333334
+        }
+      },
+      "sha256": "7f6981d91625cca2a897c681f7ffbee2cd8f184ee8753463e311862e7731535d"
+    },
+    {
+      "plan": "business",
+      "catalogId": 429,
+      "id": "cc0b597f-6504-4fc0-a729-8fc0a74adcd5",
+      "snapshot": {
+        "calculatorSlug": "pressure-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "bar",
+          "toUnit": "pa"
+        },
+        "output": {
+          "result": 200000
+        }
+      },
+      "sha256": "0483694474dfb1d0417a635a7dcca68a1631737a1949d0b56a5520efcdae0844"
+    },
+    {
+      "plan": "business",
+      "catalogId": 430,
+      "id": "d7e73975-e90a-4b12-81d7-8ec812a18b01",
+      "snapshot": {
+        "calculatorSlug": "energy-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 10,
+          "fromUnit": "cal",
+          "toUnit": "j"
+        },
+        "output": {
+          "result": 41.84
+        }
+      },
+      "sha256": "125c9d2005d4b13be1b840addee3069aacd4fecd04053b4ee24b9ab590bbe518"
+    },
+    {
+      "plan": "business",
+      "catalogId": 431,
+      "id": "8759d181-e9b1-4f97-a051-7aaf4f0298f2",
+      "snapshot": {
+        "calculatorSlug": "power-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 0.002,
+          "fromUnit": "mw",
+          "toUnit": "w"
+        },
+        "output": {
+          "result": 2000
+        }
+      },
+      "sha256": "5690a58416d92b23637a0672d9c828ebf433cd7d0046109d8e73b6e2c8b20928"
+    },
+    {
+      "plan": "business",
+      "catalogId": 432,
+      "id": "04bb1706-479d-4df8-8abe-342de5ce49a7",
+      "snapshot": {
+        "calculatorSlug": "time-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 1.5,
+          "fromUnit": "week",
+          "toUnit": "h"
+        },
+        "output": {
+          "result": 252
+        }
+      },
+      "sha256": "8591d89b42f10cc9f7c8325ade7b261ae1f8276dc647adf69a0acc11a1796726"
+    },
+    {
+      "plan": "business",
+      "catalogId": 433,
+      "id": "591bd40c-f83b-40fb-9288-a51a3fdbb834",
+      "snapshot": {
+        "calculatorSlug": "angle-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 100,
+          "fromUnit": "grad",
+          "toUnit": "deg"
+        },
+        "output": {
+          "result": 90
+        }
+      },
+      "sha256": "2e598e7e1c6c334ef0facdfd249929e410d60332ed23f37511f8ccb380adbd2f"
+    },
+    {
+      "plan": "business",
+      "catalogId": 434,
+      "id": "28a3d9de-cee0-47a3-9a9d-850701d43534",
+      "snapshot": {
+        "calculatorSlug": "data-storage-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "MiB",
+          "toUnit": "KB"
+        },
+        "output": {
+          "result": 2097.152
+        }
+      },
+      "sha256": "8c0ce4821d8672b19ff67fc8684262e01b94bf501d4cb977b2fa1b276cc9845a"
+    },
+    {
+      "plan": "business",
+      "catalogId": 437,
+      "id": "74a6b43d-96ee-40d9-8112-9107e6e24026",
+      "snapshot": {
+        "calculatorSlug": "density-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 2,
+          "fromUnit": "kg_l",
+          "toUnit": "kg_m3"
+        },
+        "output": {
+          "result": 2000
+        }
+      },
+      "sha256": "f10dcdeff80cbc6de7521005bd1869f8bb1462e896fec486ef16cf962e9d67df"
+    },
+    {
+      "plan": "business",
+      "catalogId": 438,
+      "id": "6fb0e9b7-5890-4e5c-8385-6a17bd80e479",
+      "snapshot": {
+        "calculatorSlug": "force-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 250000,
+          "fromUnit": "dyn",
+          "toUnit": "n"
+        },
+        "output": {
+          "result": 2.5
+        }
+      },
+      "sha256": "52d4e2f877a00da6ff7628b43c9b3dc8e64301b59d4d4f785ff49b7424e09dcd"
+    },
+    {
+      "plan": "business",
+      "catalogId": 439,
+      "id": "74975ee2-24cc-4999-bfc1-044a87a8b607",
+      "snapshot": {
+        "calculatorSlug": "torque-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 24,
+          "fromUnit": "lbf_in",
+          "toUnit": "lbf_ft"
+        },
+        "output": {
+          "result": 2
+        }
+      },
+      "sha256": "21e844649aeb733e81a3fa9bfb89e0864c3b9e3a838eac271eb341d7da2c065d"
+    },
+    {
+      "plan": "business",
+      "catalogId": 440,
+      "id": "514394d3-9762-4a6c-94fa-2fec74df8a94",
+      "snapshot": {
+        "calculatorSlug": "frequency-converter",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 0.125,
+          "fromUnit": "mhz",
+          "toUnit": "hz"
+        },
+        "output": {
+          "result": 125000
+        }
+      },
+      "sha256": "9320db36bf31588e3e8785c7131b97b3072cb963cd9552dd65797bda3a8c94c0"
+    },
+    {
+      "plan": "business",
+      "catalogId": 370,
+      "id": "68bb0601-26a3-4986-bc1d-da734b62f8e0",
+      "snapshot": {
+        "calculatorSlug": "bandwidth-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 375,
+          "timeSeconds": 24
+        },
+        "output": {
+          "value": 125,
+          "steps": [
+            "Bandwidth = 125"
+          ]
+        }
+      },
+      "sha256": "0c1ef4fe124abe0424ff22570bd2a94bc96f5891159c59bb12c4266a9ceda418"
+    },
+    {
+      "plan": "business",
+      "catalogId": 371,
+      "id": "a4d3c50a-a8ca-4b61-9643-375df32ac014",
+      "snapshot": {
+        "calculatorSlug": "download-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 375,
+          "bandwidthMbps": 125
+        },
+        "output": {
+          "value": 24,
+          "steps": [
+            "Download Time = 24"
+          ]
+        }
+      },
+      "sha256": "edd6bff6efaaad84e48f9cc42697b20cb40d04ec5faac5fa3ab0f289d4b07083"
+    },
+    {
+      "plan": "business",
+      "catalogId": 372,
+      "id": "35262443-0c3b-401a-b9f1-db07a1ccc493",
+      "snapshot": {
+        "calculatorSlug": "upload-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 25,
+          "bandwidthMbps": 100
+        },
+        "output": {
+          "value": 2,
+          "steps": [
+            "Upload Time = 2"
+          ]
+        }
+      },
+      "sha256": "f02c79ac9e4c000dd785b42452fc4f6ce363aeb50ad5571276313034860039b3"
+    },
+    {
+      "plan": "business",
+      "catalogId": 373,
+      "id": "fd06e374-422e-4ba8-bd3e-cf9d89311bb1",
+      "snapshot": {
+        "calculatorSlug": "data-transfer-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "bandwidthMbps": 125,
+          "timeSeconds": 24
+        },
+        "output": {
+          "value": 375,
+          "steps": [
+            "Data Transfer = 375"
+          ]
+        }
+      },
+      "sha256": "80e40f8ff9af2f3ab4385ebe0b20029806e29203892b3c8059683f0a7438ae06"
+    },
+    {
+      "plan": "business",
+      "catalogId": 374,
+      "id": "c36878ff-5f7b-4d3d-86a4-9aa8fba5cc80",
+      "snapshot": {
+        "calculatorSlug": "storage-conversion-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "value": 3,
+          "fromUnit": "GiB",
+          "toUnit": "KiB"
+        },
+        "output": {
+          "value": 3145728,
+          "steps": [
+            "Storage Conversion = 3145728"
+          ]
+        }
+      },
+      "sha256": "96e7c7cd1749a8e763f201a21e0f703ad01a33afec2cd04d607d778c524f385c"
+    }
+  ],
+  "negativeReceipts": [
+    {
+      "code": "P0001",
+      "message": "SCENARIO_PLAN_REQUIRED"
+    },
+    {
+      "code": "42501",
+      "message": "SCENARIO_WRITE_REJECTED"
+    },
+    {
+      "code": "42501",
+      "message": "SCENARIO_WRITE_REJECTED"
+    },
+    {
+      "code": "P0001",
+      "message": "SCENARIO_PLAN_REQUIRED"
+    }
+  ],
+  "sources": [
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/AuthAdminApi.js",
+      "sha256": "8e879ad1a0f0ad11923dc1b7bedd7e522532a298025c3fae52669419d342421a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/AuthClient.js",
+      "sha256": "f9dbb30bd5c6511db0c98a24f1f9b077aa2d080505427c93dea757d97d981568"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/GoTrueAdminApi.js",
+      "sha256": "bd8c28a4dfaf0c06fd107250b1a5d3156a7d085fd4cd3a7ae953b7be2e2833f6"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/GoTrueClient.js",
+      "sha256": "3e831952d18c01fe2d9cc802b76af6ba86355adc60f33edff3325779ed9e3ef5"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/index.js",
+      "sha256": "a43ea0c523b8f4f8b8d59bc3b16b9ec9158cad05de53ffc92238fceb26d8bcfd"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/base64url.js",
+      "sha256": "1d97eac773480a5e06ba408f4d746e59b4269a6b8afd22aaad75f5773c7cf9d7"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/constants.js",
+      "sha256": "9218c8a8da3825083fcb3b105a8c52c1c5a542a865f5abf2ab5185b7b4beabf9"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/errors.js",
+      "sha256": "3cf62e517139e8e2092891eb990ea32b25b95678a52a63b4b911ec08e363f77a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/fetch.js",
+      "sha256": "50fa4e318e07a49de1179256e3fa3dc927a6a46664386f0baed30ef80f3c1d0b"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/helpers.js",
+      "sha256": "e9b82e7663b66ba154d7eddf388047461e0019359d1df50274aa43adbd560678"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/local-storage.js",
+      "sha256": "a3c6841d8c4dc24a2c0ac1d238b42a278c7ac05d18a7571db91c3fc140e42d93"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/locks.js",
+      "sha256": "d9ebad87448eb4aa3f1db2453f313377e19c6c144824f502154bcf3b0cd851c3"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/polyfills.js",
+      "sha256": "0b5600e6e4cda1f029ec448d93857062731b850424d3b465fa7dae4e5921ae7e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/types.js",
+      "sha256": "4ba1cf76d3e6b838ad40f6b4ef88845ee054726ddd1f42ebfcdfa9efa23cef43"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/version.js",
+      "sha256": "1def3472b0673feb364044cbad8229e06e1a9edfb6a5f06dfdbdbe5a8a986a06"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/web3/ethereum.js",
+      "sha256": "839a33e8225db3da724f25bea5d1b127ba30cb4c272cab30dd9700232ada431d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/webauthn.errors.js",
+      "sha256": "40cb9a8d5f58c798e4b1ea47774ba29e59a9efb455c6edd4d05c8a38c762cd78"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/auth-js/dist/main/lib/webauthn.js",
+      "sha256": "016e06c91127c337b8d0536df280cd57c66c07ec236436a39b8b7083ac308db3"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/functions-js/dist/main/FunctionsClient.js",
+      "sha256": "f8a4f5ab75ae570a108ba4a7aa1a30dc58ca62af8d48fb0f9a2dc7e0ea1ca1e1"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/functions-js/dist/main/helper.js",
+      "sha256": "323d5529b134ddf92d2bce3ffb1c1707d483325f182fd2665d59564ca6bb933e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/functions-js/dist/main/index.js",
+      "sha256": "41f4ff1b0f36c0ccc0a0e0fbd6428f2654dafbe1fd3e3dd89a8736166ac5c4f5"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/functions-js/dist/main/types.js",
+      "sha256": "c599ec73696bd9a251cc206407bdc5a9b2fbda1b12d97ceb9868b2a060dbb514"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/phoenix/priv/static/phoenix.cjs.js",
+      "sha256": "0b9d4a6280454132320c6ea886355f4d34059213ecc6697f43d7e836c98920aa"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/postgrest-js/dist/index.mjs",
+      "sha256": "1bed557508b6bc15f77eb4c78bc6fdd620abdf7d1ad39b670df92d83547cc538"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimeChannel.js",
+      "sha256": "fe8bc4667cb634ba665b28b6ae9b1d966f40dcd6d726dd0849ccd1a8d0fb509d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimeClient.js",
+      "sha256": "015dd0b89c4bda020ddbe829c6338c8ad965bf364076988391c20c827a5c60d1"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimePostgresFilterBuilder.js",
+      "sha256": "87b125bf675a17e13e706d65a3d579c18633dccf5630abd0fde2ff09d5fed7de"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/RealtimePresence.js",
+      "sha256": "a2687fc9777849d24b7ec2b45b5191b7a2a06c4b19b4dc2ccb8c25f31679246d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/index.js",
+      "sha256": "c9b62a4332542a15618a2d2442760c5d2d5ef59f494765f98a297baeb9335582"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/constants.js",
+      "sha256": "4998f76316a28ee16dce3c3346845be0e9ddde85559f34eb6a3c307732fcca35"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/normalizeChannelError.js",
+      "sha256": "fcea2bd55b4f6c749cc0f9daf956b4d0db126d096656ff8149bb517648475efa"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/serializer.js",
+      "sha256": "d71a6f611f1fd578287b89f510a9e8a6b9dc7048085065e607769b7eed7f1945"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/transformers.js",
+      "sha256": "c6050fcfa7e19d3f5b7f0cc3e7e40e899aa753a75e10d268252be968e9fc7062"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/version.js",
+      "sha256": "1def3472b0673feb364044cbad8229e06e1a9edfb6a5f06dfdbdbe5a8a986a06"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/lib/websocket-factory.js",
+      "sha256": "cb05e6f4ab46ee28118d7baecd0ff6c6116e1a538f4896bb7d4d1de1b60ab1a9"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/channelAdapter.js",
+      "sha256": "07b9e487385763cfa10b923113e76872c0ff1b67b3542b7027261045edf0c875"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/presenceAdapter.js",
+      "sha256": "568992f5fe7333a3a80ea4e13bfa147759e762f699d9e76b7aa5ee2a58ec981f"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/realtime-js/dist/main/phoenix/socketAdapter.js",
+      "sha256": "7db2e3463f86fbaa76f347159403c053ba0ffce5e0c8553708698c2ea534c630"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/storage-js/dist/index.mjs",
+      "sha256": "f34162d316d3c45187d18bb3aa38361eae1fd52ce10cb0a3fd29b1a4f333c79e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/supabase-js/dist/index.mjs",
+      "sha256": "3379e7d01b41287fdf65e7a590969c92888ea3522c43ab765390eff262c93cb7"
+    },
+    {
+      "path": "../batch13-deps/node_modules/@supabase/supabase-js/dist/tracingRegistry.mjs",
+      "sha256": "1682402eb4078c171f9b70e9a8e52c17eeefee593d94b167059c354ba74eac8f"
+    },
+    {
+      "path": "../batch13-deps/node_modules/iceberg-js/dist/index.mjs",
+      "sha256": "15ed0530ab67a7bfb541eb2cea764023c159312b7f1888e42c029840fafd381d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/tslib/tslib.es6.mjs",
+      "sha256": "0929993220938091ede542d688b0fdb87dad99a7e77678e1983c32d18a503339"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/index.js",
+      "sha256": "32e7efd49a94a765f6d10a1a0a3c02c50c246def17c80c6f0225f85525d98505"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/checks.js",
+      "sha256": "7543391a9ad5e7df287bbfecaa79844d46af44c75c1de0d43a411d65795d9dd1"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/coerce.js",
+      "sha256": "fb2efe3b6eacc475c77cbb571b5fb8650d92a10f316dc869e49b722973d83c3c"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/compat.js",
+      "sha256": "0e948b101771cc0e7b753e54b3f5b486929d3db9bd4c09d98fe4ce86271bcf7b"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/deep-partial.js",
+      "sha256": "0abffcc9838e04dc6f091229c1d522fbfd43aab9563316b52d3eb8ff2bacf26d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/errors.js",
+      "sha256": "d32f7c1ef8e2c70072f6f0ec8ba7081bbc331353cc3a7cb4429e5ece91409543"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/external.js",
+      "sha256": "c6b584ae70ba4e7132b2cd78c23ea4ecedc9828abf999edee312372e1fb453d6"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/from-json-schema.js",
+      "sha256": "31dc999a26cb6928f5e99ea564d648567e85cf9aa47565198fb6186dbd6c070e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/in-out.js",
+      "sha256": "34370913842ff02d14a9796b11c5ec2af160bdb35a7148edc286e9a9c6fb5c17"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/iso.js",
+      "sha256": "deaa026b7c5302e59719f401248e7866691d8d8a892884dd2b6868b1cb7252d8"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/parse.js",
+      "sha256": "11941573401bbef138842c7a523dff554873343fccbf0e8b0a144259d2d703f1"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/classic/schemas.js",
+      "sha256": "2bf4a631a18f734a9a7ab7fc11bcf919214774d2235a312dcec0dd53d0324c32"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/api.js",
+      "sha256": "03ae6016abc9585e3f3481d6b8d775a95ae4ee65badbde73ca1ed953ff14c0e7"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/checks.js",
+      "sha256": "bc42543274218aa7ef72192b3218d2a4a399e53df8de240a04d9ff275096f563"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/compile.js",
+      "sha256": "df28853593428e5a2a8729b09f43baf0998eaae7f1e37797993035187833b054"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/core.js",
+      "sha256": "c7ce485c97263e42568d16b11bb4a90133221c7e807498a9273d70f41ba16ef6"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/doc.js",
+      "sha256": "be4c1b1a1ad247cc70f360a572060edd7e0cea24252c3a319f33d247899c5643"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/errors.js",
+      "sha256": "a0c95ef2f7085b5bc2931f7b566f524b26a0360c8df741e3f87f923745cf9792"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/index.js",
+      "sha256": "2a0e452323aa5b75b7d7de4879289e2579b9dd2d6af291c0416ba6806ca2199d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/json-schema-generator.js",
+      "sha256": "beaeab6faa654e99e443b8a9f5d8a4adc08cd8226f92a0cd32477a58ecfa1807"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/json-schema-processors.js",
+      "sha256": "b6d2aee72212c076b9cde38da6333591c76a24eb049a4ee4e7bd2b7825d8b817"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/json-schema.js",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/memoizer.js",
+      "sha256": "18a3188c51229d9189a5408b0b7fbc3e121b55c2b4c3c406d79cb9b77e7ad964"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/parse.js",
+      "sha256": "fb05b91ec260f3f484f7c00a177b6126ceb8fd1b09dc90b1200afdffd4d98efd"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/regexes.js",
+      "sha256": "24fc98f6fc9175e50ff29d28b040e3b4ac5650de19914d45ee27b853d367ecc6"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/registries.js",
+      "sha256": "f04d4b2c0bc5b4ac2d6610ea34edf2e5260eade18f20976b79916dcdbeb9fa4d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/schemas.js",
+      "sha256": "e632b655441418f0593153abc6809fd81cf3e0782d810622d0a4fa50ef6e182e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/to-json-schema.js",
+      "sha256": "85b883eb8f05e9f060c71a39fce7df9345b566af29d5bc9c8fa477fe616a051d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/util.js",
+      "sha256": "728f52b496620336775eafcdb91c0a574380086e53f215b55c58eedc1422c49c"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/versions.js",
+      "sha256": "63b38035ff5e2a5a5cfe5665e271af72b0cf9791e770dccf5e99d977064fb96c"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/core/visit.js",
+      "sha256": "a804062900869e09ea0b975cfa569fd3c70dc33bad7fc30b63872d451cae29f7"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ar.js",
+      "sha256": "eec4016c2b3063ae929617d90ec609e4c425e60c97a954d3a24de0f457b6ec97"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/az.js",
+      "sha256": "5bd03646b9d18b73e71356cd28937e4e6413b806bb23e14689cc88f6f65ff3a6"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/be.js",
+      "sha256": "f969afea5d9800a71958a621658943b85a2576a2bfefdd5dea70afc4924d4af4"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/bg.js",
+      "sha256": "96741333a790320e05aef7286b5b709a4a7c48cfffc50fc5e6acff5b505275e9"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/bn.js",
+      "sha256": "6d8227b52a6864465b7c52a9ef7e09d261d904ec8a619932e15dd9f9f826e8dd"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ca.js",
+      "sha256": "67f6f38b59a6e3ee81cc5155480465331dd9a142b2471a495503a81dafba0684"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ckb.js",
+      "sha256": "bdb9ef0cfda4009f8892585a1780fff863cd409931d6f89394c271042c131137"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/cs.js",
+      "sha256": "4ffa0e484ad1842a2c0e5c7f2dfe9160155ff5be4b95ab6e524d3a30a2210488"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/da.js",
+      "sha256": "29addcd60e88422bed9ed78c6c864220a15c06b31fdb4ab7ad4f87be4098e6ae"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/de.js",
+      "sha256": "f344eb96ba18d9db907f3f9c95897ce2590ab0cde1553c023daffbb1cb5ef6f4"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/el.js",
+      "sha256": "fdea833aa0a8c381d26216db1521dd7fbc4dccb6d3aa50f9a585ffb975df91eb"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/en.js",
+      "sha256": "d5930e10d137b048b37823e168e4177947e1f696ada8419c71bb0d32da4333c0"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/eo.js",
+      "sha256": "97797bd22319ecc3f2044da6c305f1114b851803697029ffce2b66644757da3a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/es.js",
+      "sha256": "12e762b921b1e3fdb8e265d2b554de81ce9706ceb23a81527f48ae2dddf355db"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/fa.js",
+      "sha256": "60e7eeff4c000c85f8420168374344305d3c2110a5f91a2fb672b2a2381eeddf"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/fi.js",
+      "sha256": "1e72af4193e564cd37dce4a850dc18bc1bcd6ca280f29e9f5f8c6bbab6a2cad9"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/fr-CA.js",
+      "sha256": "a2ca0451ff943766bb6a88b392b25447462a1d3ed75c1adda5ddb0bc474bcd42"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/fr.js",
+      "sha256": "477345d6401d0e4f07794b1a2cff8b78953723f1fc8cfaeb6b660c19be47125a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/gu.js",
+      "sha256": "b1921ac6b4158e6360a8da6099df8bbf2d7bce7c1cf381d5a5e47aa0c74874d2"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/he.js",
+      "sha256": "1cfff31fac19616d900d1f3febd9690ea87711e13b5be299326ebfd3f33aad4d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/hi.js",
+      "sha256": "c31e466c2a31dc10ba6a288e1aebf429a6e9566a26918d0240aae058693f6329"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/hr.js",
+      "sha256": "ff2bebef0761f2d6095103d58484e3b95551bc51d56770db8f161b8e0e0ec941"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/hu.js",
+      "sha256": "9816c21ee0b3be9d973f9e033e9587a608f2d35dd1b984d415b88e03242b0189"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/hy.js",
+      "sha256": "daf6d0c590d9b061759598ba9f7f97041e2874c7a58da2c64b86f152840d68fa"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/id.js",
+      "sha256": "e5c23bb0b6f696fa936bafd7969e64738504cf7a5be3ec04b24ae899d4912b58"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/index.js",
+      "sha256": "7ea85250d1e7bd9459cda61f38c78757a410d561a5421bb3f08019bba79c9849"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/is.js",
+      "sha256": "1cce1285bbf55c8a76303fea0be0fb6d39fbd0ece833137ea23a22f406ac1ae1"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/it.js",
+      "sha256": "096b497df6c5fe7de4422482b7733e764e4b344e8d7f768a7289556687acdb82"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ja.js",
+      "sha256": "2a6bbbd6dbd573687b22f35873a13cdf730c07423b4ab114e5a8b12d8777146d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ka.js",
+      "sha256": "baf3204123cf4246df654fd1948b6c8da6917e7a06e470aeeaf7c1eaa7003628"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/kh.js",
+      "sha256": "78c3d1991041bb8c8fc0f7c5d745aae422d4c2e4e8f30bae44f3fef4765900a8"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/km.js",
+      "sha256": "e61079f14070dfa9c7b2047eb79f5bea6d4e845f192756d103c121bbd63ee18a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/kn.js",
+      "sha256": "884b1b68a1ca02fe9a774b8de9cbfa3486892eea36192699120f57b31f0a1f42"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ko.js",
+      "sha256": "11fcef61a2f23e010bf0f569d71be0d49524afc97f3072cc03fdc6fe3ea2f14d"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/lt.js",
+      "sha256": "d2e67a35a3c6e7241a9eb9c5851e4b5b651ac8b23278854862e6055829946c48"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/mk.js",
+      "sha256": "64ddd914c432ba5690d0686bff6603651ce886a891f84823d7dc766c9c980cd1"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ms.js",
+      "sha256": "94faf0d306ffa2a4f95e57f3e53060d27220a639b9cb529f00d1d01b6270f045"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ne.js",
+      "sha256": "6da69989b702ae15baa27b799b6b2b32fd011ba3980a190dd0eccfc9233083d6"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/nl.js",
+      "sha256": "296ced8be508c5f9e82b562049d2974882029bcd5b2ab4ade14401b33ec99909"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/nn.js",
+      "sha256": "bae9756817629db30841eb54a27ed9b3c71c2a4208314d8d070be624bd2e9359"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/no.js",
+      "sha256": "f358e5586940350ee25a05db184565d23eb1c66903e182ebec812172f31cb55a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ota.js",
+      "sha256": "66ed8c3ce00b2e9971ed5a17f002937405d8cdfeb399ebe012db9d2317f42146"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/pl.js",
+      "sha256": "b7f82cf9f747785beeec05cd31d3d7493c52bd3647598924141568f148c07222"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ps.js",
+      "sha256": "1c15b81fcce0cdc59dbcca18df5c4ecf4e176fc3fb7668207b9ba54df43cce46"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/pt-BR.js",
+      "sha256": "abc52db767b9dd938954776728ea7480cdcab569a5a17664f60e5a2c1d63e60b"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/pt.js",
+      "sha256": "93a820f60d571607bf34b69198f5b24617475584c0b22c0f8d160fcdef096a46"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ro.js",
+      "sha256": "54751d2866171c9c7ce1a72868dec09efa54d1b2b67401767594c5b360aca38a"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ru.js",
+      "sha256": "40a019b53bd1684fd4b750db87021520dd5d710f714010c0a594e5bcf5787478"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/sk.js",
+      "sha256": "ae7c49242e70149434c9051dd00209afbd517d98ba54c13692371a5340b616da"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/sl.js",
+      "sha256": "490ca48f8aae3aed660758b32856d49a9fc5c7e255dad220e75abaef8c35140b"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/sv.js",
+      "sha256": "448f36996bb0d159489b34ad7d86df03e520a13e43b1c98ea2fb18d7ed4a3c95"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ta.js",
+      "sha256": "8b6e1bc033fdaefb1acfc7edf88c9f53c3a50cc892066effdab306103e994d42"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/tg.js",
+      "sha256": "9a5c9a3b18b8ccded28d66033575b22d823df17a7afa8bb9a733f31fe071462f"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/th.js",
+      "sha256": "913cc4962ddf5cb54ed694d04b7008493ef401d3333b26426b32f4890712574e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/tk.js",
+      "sha256": "445abfed18c5a9d79143b02c9cf9c171b41fb5dff8ffc2cb59b7aef7203e5a7f"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/tr.js",
+      "sha256": "bca07607a27f518f19877dd9c2235fada9c73eb56896f0f6e274781fab71d64e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ua.js",
+      "sha256": "9391169ffbc72f777a83230b6ffcc3f4cf46ab5945ec540de9ef4609dca1f4cc"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/uk.js",
+      "sha256": "1e59ba41296aeb5b6142a6e5ed84712931e33e54ab0b9ae5d83faf436fc3d968"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/ur.js",
+      "sha256": "d37ed2c93408e0a6b6e1cd290117a6f0e9d7b2c83509cd34b502e1dd94899c87"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/uz.js",
+      "sha256": "2cbe07635b03064ffad0bfcc98d2d570f3264b9cd3e22bbd5c160cd0343f7872"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/vi.js",
+      "sha256": "15939adaf263e0869c602d4b34c206178a235b8bec11c8207ccd3fa50de3a141"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/yo.js",
+      "sha256": "88b33f6527c1a2faaf159568330cf727c448dc468eac72142a6fb24f8714ac1e"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/zh-CN.js",
+      "sha256": "8fc02f2bd4d92f46b24b8d82da0ee95c962fc80c14dd7dd469500e14de08d320"
+    },
+    {
+      "path": "../batch13-deps/node_modules/zod/v4/locales/zh-TW.js",
+      "sha256": "01d9b119e318d8b9f1a8fa720d06424457429425a61d0730984b750e6a5edf7d"
+    },
+    {
+      "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "sha256": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6"
+    },
+    {
+      "path": "src/app/account/actions.ts",
+      "sha256": "dd3ce3722bbdb4b68e28b1405f9a320d63123a9c9ee932304abe1eee8daed822"
+    },
+    {
+      "path": "src/calculators/advanced-math/catalog-batch-10.ts",
+      "sha256": "78370a3240b98b4339d88fdaa95cf57ff963f7b780b0956d6fc541909a0f93de"
+    },
+    {
+      "path": "src/calculators/advanced-math/expression-engine.ts",
+      "sha256": "52af6dda5267eeeeb34830776a054e1ad1e5051560e99f2483bd7879bedf3d24"
+    },
+    {
+      "path": "src/calculators/advanced-math/graph-example-fixtures.ts",
+      "sha256": "c1e5490bf9fd7da179e5138d687f25938370481ea58a40753fd4413e606cd666"
+    },
+    {
+      "path": "src/calculators/business/break-even.ts",
+      "sha256": "7f9cc4da38039323d768d4576c3054d151706aaf4c3734d1f0fe2045754ec5f9"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-1.ts",
+      "sha256": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-2.ts",
+      "sha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467"
+    },
+    {
+      "path": "src/calculators/conversion/catalog-batch-3.ts",
+      "sha256": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+    },
+    {
+      "path": "src/calculators/core/percentage.ts",
+      "sha256": "abb6d4dfce62afce867ceaa5ea209ec3f9f6ba885016ecd9b5aed452668b21cc"
+    },
+    {
+      "path": "src/calculators/core/unit-conversion.ts",
+      "sha256": "b323d7311c94a07c3da809af6293e775cf97e634e7c5f352fad0710a7a7e174a"
+    },
+    {
+      "path": "src/calculators/decimal-fraction-goldens.ts",
+      "sha256": "29a5f87e07817fed990d1efa116b4daf1c06b3c91bd00114eee15e6dde406bc5"
+    },
+    {
+      "path": "src/calculators/engine.ts",
+      "sha256": "41da900c997cdf101aa4d45d336d6319772ddddd0f254c24cb413ff3553b67c6"
+    },
+    {
+      "path": "src/calculators/final-framework/adapters.ts",
+      "sha256": "f4749489bbc133a9bb7ca4a89e1dff5809ec2d760979dea833473e10ffc2bfc7"
+    },
+    {
+      "path": "src/calculators/final-framework/analysis.ts",
+      "sha256": "225af2ddbba2bb3aa3f571acc8e4a8eb263f6b553e25fbc7db3bf69254185013"
+    },
+    {
+      "path": "src/calculators/final-framework/investment-periods.ts",
+      "sha256": "d2cfb48822b17ca40c91a35578f53e5c4cb31f8ae1a4e30cbcec6aecca331eba"
+    },
+    {
+      "path": "src/calculators/final-framework/mortgage-rate-analysis.ts",
+      "sha256": "250c05582df44869d3ec103339774465f61e35a7b649e6f13d6ae01a37605a7e"
+    },
+    {
+      "path": "src/calculators/final-framework/registered-rate-analysis.ts",
+      "sha256": "97cebcf2a1efb21369667d5a2e5aea016bd63e5af05a4b3374a13a82b82295bc"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest-independent-goldens.ts",
+      "sha256": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8"
+    },
+    {
+      "path": "src/calculators/finance/compound-interest.ts",
+      "sha256": "758f8ef3e2ac43fb91e22b6b3e6f67734548fae3b38653e3ae3bcd29ca4a4c60"
+    },
+    {
+      "path": "src/calculators/finance/debt-aggregate-independent-goldens.ts",
+      "sha256": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109"
+    },
+    {
+      "path": "src/calculators/finance/debt-payoff-independent-goldens.ts",
+      "sha256": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277"
+    },
+    {
+      "path": "src/calculators/finance/loan-analysis.ts",
+      "sha256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef"
+    },
+    {
+      "path": "src/calculators/finance/loan-payment.ts",
+      "sha256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160"
+    },
+    {
+      "path": "src/calculators/finance/mortgage.ts",
+      "sha256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest-independent-goldens.ts",
+      "sha256": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036"
+    },
+    {
+      "path": "src/calculators/finance/simple-interest.ts",
+      "sha256": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773"
+    },
+    {
+      "path": "src/calculators/finance/sip-independent-goldens.ts",
+      "sha256": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89"
+    },
+    {
+      "path": "src/calculators/finance/sip.ts",
+      "sha256": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a"
+    },
+    {
+      "path": "src/calculators/geometry/catalog-completion.ts",
+      "sha256": "784b527d4380facf78f20092642a70001e83c259d1916f78af44e996a3d344ff"
+    },
+    {
+      "path": "src/calculators/geometry/slope-versioned-compatibility.ts",
+      "sha256": "ef37c45cf7589c165f80de83603e63827439a25afb3603737762c2231a67b710"
+    },
+    {
+      "path": "src/calculators/health/bmi.ts",
+      "sha256": "e2597d2b3db50ce3a17c55d558f2b1f64ae48ce49a3815ee0c717127ee1105d6"
+    },
+    {
+      "path": "src/calculators/launch-portfolio.ts",
+      "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+    },
+    {
+      "path": "src/calculators/physics/catalog-batch-3.ts",
+      "sha256": "b5c1870d729cbbd32db6eac439c7b6aa2b90f54c3677879bf0a05120a5f0faf6"
+    },
+    {
+      "path": "src/calculators/precision.ts",
+      "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563"
+    },
+    {
+      "path": "src/calculators/statistics/catalog-batch-1.ts",
+      "sha256": "172db736ce7c991e0b11cf99612578d7c25374bda0f95e009167e9fa887ba52f"
+    },
+    {
+      "path": "src/calculators/technology-computing/catalog-batch-1.ts",
+      "sha256": "31f347fc286cc0b22cd888b9f53719e4733ffa17ab8323aa4f6dc5bc497079f6"
+    },
+    {
+      "path": "src/calculators/types.ts",
+      "sha256": "a8b9a16ab7d9c63e3918ae93587aace30c5d322a006226cce3d945022ba8b2d8"
+    },
+    {
+      "path": "src/calculators/units.ts",
+      "sha256": "74e92b7afeb83f53e31e0eed710e5afecb8716df0735556c8fac229793d142ec"
+    },
+    {
+      "path": "src/lib/account-persistence.ts",
+      "sha256": "09316cd9df4ab359a3d20ac921e1c908f0e3b48831977149800262c16a01ad9e"
+    },
+    {
+      "path": "src/lib/auth-recovery.ts",
+      "sha256": "b13709c6c6e1b03164eea4e892c1cc60a426d7c7f5fa8e0c88510190e69fc3a8"
+    },
+    {
+      "path": "src/lib/batch21-snapshot-replay.ts",
+      "sha256": "bbdfd0512ed1b790753c62e01e287bc7d648729179b39bf1182d387845cdcef8"
+    },
+    {
+      "path": "src/lib/batch22-physics-replay.ts",
+      "sha256": "97c42822733670f5a215fa5ce51ef929ae1b902ec163d3ec676aa43586d1ef43"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    },
+    {
+      "path": "src/lib/entitlements.ts",
+      "sha256": "16227499beb299e6cf02c2f8485b5804294c97e4da446ac7934b55aedbd1f731"
+    },
+    {
+      "path": "src/lib/launch-snapshot-verification.ts",
+      "sha256": "1418dcda1a71424f34062787ad62bb716e1e96d24fc18d3b45de834affcd196f"
+    },
+    {
+      "path": "src/lib/password-recovery.ts",
+      "sha256": "219a1cea057af6b4c1ca3815cc03c9a9986eeed2f70db7a60264fd16ab7f20cb"
+    },
+    {
+      "path": "src/lib/persisted-calculation.ts",
+      "sha256": "ccc7470275310c92e3cb518afee76a5dd3553e3b52396b4937263bf18c19d914"
+    },
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+    },
+    {
+      "path": "src/lib/publication20/index.ts",
+      "sha256": "b6b25b6307770a8a3185fe5b72366bdb139d31d33aa7b82a850e7deeab0afd0e"
+    },
+    {
+      "path": "src/lib/publication20/network.ts",
+      "sha256": "18ba9ac37cdb9f2634388bde49cff591186e9ed48160aacf340fb19a75432976"
+    },
+    {
+      "path": "src/lib/recorded-json-equality.ts",
+      "sha256": "59fda934bec9e573c970d5a451b3d3e3ba14292838a9c6544cafbd10e71f0fcc"
+    },
+    {
+      "path": "src/lib/registered-snapshot-replay.ts",
+      "sha256": "4d6a168ff5072e1ad0f2cfb051a69750d6a2fb0f360164038597fb24ed0128d6"
+    },
+    {
+      "path": "src/lib/registered-snapshot-verification.ts",
+      "sha256": "a6ce5fdb736ccd748c99b703169ad5d931aea9ccb8460feb2b3cbab80a68bda6"
+    },
+    {
+      "path": "tests/critical440-auth/acceptance.mjs",
+      "sha256": "10b0d96c8b8c49f77371805a6c95016799b82d22bec18de1042ee00b6b369ef3"
+    },
+    {
+      "path": "tests/critical440-auth/adapter.ts",
+      "sha256": "f6815b6c5d215ef425173a12d28ce2e06d2d76de4869a1fa58c3ac4ca797e263"
+    },
+    {
+      "path": "tests/gotrue-full-schema/schema.mjs",
+      "sha256": "0185b1e41bb8e810296636cc633974ac4897e412cc597814a91b405c11019726"
+    },
+    {
+      "path": "tests/gotrue-runtime/fixture.mjs",
+      "sha256": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387"
+    }
+  ],
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Full repository candidate model plus locally adopted guarded review bundle; NOT raw historical-chain success or authentic captured production equivalence",
+    "authMigrationCount": 75,
+    "authUidOwner": "supabase_auth_admin",
+    "schemaCoverage": {
+      "tables": [
+        "admin_alerts",
+        "ai_usage_events",
+        "api_usage_events",
+        "batch_calculation_jobs",
+        "batch_request_receipts",
+        "billing_account_fences",
+        "billing_atomic_completions",
+        "billing_customers",
+        "billing_webhook_events",
+        "business_api_keys",
+        "business_projects",
+        "business_webhook_endpoints",
+        "calculation_history",
+        "calculation_projects",
+        "calculator_bulk_jobs",
+        "calculator_catalog_admin",
+        "calculator_qa_checks",
+        "calculator_review_events",
+        "calculator_source_evidence",
+        "client_workspaces",
+        "custom_calculator_runs",
+        "custom_calculator_versions",
+        "custom_calculators",
+        "embed_configs",
+        "embed_events",
+        "embed_lead_receipts",
+        "embed_leads",
+        "favorites",
+        "lead_consents",
+        "organization_audit_log",
+        "organization_invitations",
+        "organization_members",
+        "organizations",
+        "platform_admins",
+        "profiles",
+        "saved_scenarios",
+        "share_links",
+        "shared_calculations",
+        "subscriptions",
+        "user_preferences",
+        "webhook_deliveries"
+      ],
+      "policies": 86,
+      "publicFunctions": 88,
+      "tablesWithoutRls": null
+    },
+    "appliedHistoricalSources": [
+      "001_b3_accounts.sql",
+      "002_b4_billing.sql",
+      "003_b5_business.sql",
+      "004_b6_builder.sql",
+      "005_b7_delivery.sql",
+      "006_b8_api_automation.sql",
+      "007_b9_ai.sql",
+      "008_b10_admin_factory.sql",
+      "008b_b10_alert_automation.sql",
+      "010_b7_pro_workspace.sql",
+      "012_production_fk_indexes.sql",
+      "013_production_rpc_privilege_hardening_v2.sql",
+      "014_production_entitlement_rpc_sync.sql",
+      "016_final_certification_evidence_gate.sql",
+      "017_regulatory_rule_pack_evidence.sql",
+      "018_harden_rule_pack_required_metadata.sql",
+      "019_authoritative_lifecycle_enforcement.sql",
+      "020_post_certification_revalidation.sql",
+      "021_require_rule_pack_provenance.sql",
+      "022_harden_reviewer_waiver_authority.sql",
+      "023_structured_source_evidence.sql",
+      "024_reviewer_assignment_authority.sql",
+      "025_derived_source_count_authority.sql",
+      "026_publication_manifest_authority.sql",
+      "027_publication_trigger_privilege_hardening.sql",
+      "028_source_evidence_reviewer_index.sql",
+      "029_account_rls_auth_initplan.sql",
+      "030_billing_ai_rls_auth_initplan.sql",
+      "031_admin_identity_rls_auth_initplan.sql",
+      "032_business_builder_rls_auth_initplan.sql",
+      "033_pro_workspace_rls_auth_initplan.sql",
+      "034_billing_webhook_event_privileges.sql",
+      "035_split_overlapping_write_policies.sql",
+      "036_consolidate_ai_usage_read_policy.sql",
+      "037_builder_publish_business_entitlement.sql"
+    ],
+    "deferredToBundle": [
+      "009_country_preferences.sql",
+      "038_client_account_billing_privileges.sql",
+      "032_atomic_reviewer_qa_audit.sql",
+      "033_atomic_reviewer_assignment_audit.sql",
+      "034_atomic_lifecycle_transition_audit.sql",
+      "035_atomic_catalog_creation.sql"
+    ],
+    "legacy011": "unchanged broken source fingerprinted; existing missing-contract repair adopted only locally",
+    "sources": [
+      {
+        "path": "docs/audits/migration-contract-2026-10-20/inventory.json",
+        "sha256": "67e0cf0d7ee790de5de7cfa348f5b18ac20359dfca670ee8c1fb4870703e784b"
+      },
+      {
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      },
+      {
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      },
+      {
+        "path": "supabase/migrations/003_b5_business.sql",
+        "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5"
+      },
+      {
+        "path": "supabase/migrations/004_b6_builder.sql",
+        "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899"
+      },
+      {
+        "path": "supabase/migrations/005_b7_delivery.sql",
+        "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258"
+      },
+      {
+        "path": "supabase/migrations/006_b8_api_automation.sql",
+        "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5"
+      },
+      {
+        "path": "supabase/migrations/007_b9_ai.sql",
+        "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429"
+      },
+      {
+        "path": "supabase/migrations/008_b10_admin_factory.sql",
+        "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36"
+      },
+      {
+        "path": "supabase/migrations/008b_b10_alert_automation.sql",
+        "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa"
+      },
+      {
+        "path": "supabase/migrations/010_b7_pro_workspace.sql",
+        "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e"
+      },
+      {
+        "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+        "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50"
+      },
+      {
+        "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+        "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2"
+      },
+      {
+        "path": "supabase/migrations/012_production_fk_indexes.sql",
+        "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2"
+      },
+      {
+        "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+        "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa"
+      },
+      {
+        "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+        "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff"
+      },
+      {
+        "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+        "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e"
+      },
+      {
+        "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+        "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987"
+      },
+      {
+        "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+        "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66"
+      },
+      {
+        "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+        "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1"
+      },
+      {
+        "path": "supabase/migrations/020_post_certification_revalidation.sql",
+        "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1"
+      },
+      {
+        "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+        "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc"
+      },
+      {
+        "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+        "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818"
+      },
+      {
+        "path": "supabase/migrations/023_structured_source_evidence.sql",
+        "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01"
+      },
+      {
+        "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+        "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e"
+      },
+      {
+        "path": "supabase/migrations/025_derived_source_count_authority.sql",
+        "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4"
+      },
+      {
+        "path": "supabase/migrations/026_publication_manifest_authority.sql",
+        "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42"
+      },
+      {
+        "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+        "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070"
+      },
+      {
+        "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+        "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a"
+      },
+      {
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+      },
+      {
+        "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+        "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0"
+      },
+      {
+        "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+        "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4"
+      },
+      {
+        "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+        "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9"
+      },
+      {
+        "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+        "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f"
+      },
+      {
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4"
+      },
+      {
+        "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+        "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d"
+      },
+      {
+        "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+        "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5"
+      },
+      {
+        "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+        "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b"
+      }
+    ],
+    "bundle": {
+      "reviewVersion": "20261021.v1",
+      "deploymentVersion": null,
+      "productionExecutionAuthorized": false,
+      "requires": [
+        "owner dispositions for historical differences and external writers",
+        "trusted postgres ownership",
+        "reviewed write pause, timeouts, backup and restore plan",
+        "exact metadata freshness and schema/ledger preconditions"
+      ],
+      "excludes": [
+        "011 missing-only repair",
+        "historical029 replay",
+        "global default ACL changes",
+        "production execution"
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+          "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+        },
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        },
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        },
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        },
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+          "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+          "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+          "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+          "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+          "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+          "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a"
+        }
+      ],
+      "sha256": "07dda25c047f8e75059402f561c5e4988322f60ed40faaa23aa87740c36534a4"
+    },
+    "productionEquivalence": "UNKNOWN",
+    "captureAvailable": false
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/logout",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/token",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    }
+  ],
+  "limits": [
+    "Disposable internal Docker repository candidate schema; production equivalence UNKNOWN",
+    "Real Supabase SDK / GoTrue JWT / PostgREST / PG17.6 and actual persistence/validation helpers; not full Next server-action or browser acceptance",
+    "Privileged local plan setup only, no billing-provider claims",
+    "Logout revokes refresh token; existing stateless access JWT remains valid until expiry",
+    "No production environment or credentials used; no public certification or release authorization"
+  ]
+}
