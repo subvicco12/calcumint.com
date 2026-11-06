@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "kind": "VERSION_SAFE_ADOPTION_DECISIONS_NO_ACTIVATION",
+  "baseline": "2c89a0d774c771d10dd0d910c2d0bd4a614d0c39",
+  "calculus": [
+    {
+      "catalogId": 247,
+      "frozenLegacy": {
+        "engineId": "advanced-math.integral",
+        "version": 1,
+        "defect": "Narrow Gaussian missed and reported integral/error0",
+        "immutability": "Preserve exact v1 stored inputs/outputs and diagnostics; no source rewrite, replay upgrade or latest-version fallback"
+      },
+      "proposedTarget": {
+        "profileId": "private.canonical-calculus.247",
+        "profileIdKind": "workflow contractId and adapter key; not engineId",
+        "engineId": "private.canonical-calculus",
+        "technicalRevision": 3,
+        "presentationRevision": 1,
+        "operation": "integral",
+        "snapshotSlug": "private-canonical-calculus-integral",
+        "snapshotVersion": 3,
+        "engineeringAuthorization": "docs/owner-p0/authorization.json",
+        "fullDomainAndCanonicalDecision": "PENDING",
+        "canonicalRoutingAuthorized": false,
+        "evidencePointer": "docs/p0-decision-contracts/calculus.json#/contracts/1"
+      },
+      "alreadyImplementedRemedy": "Privatev3 rejects unsupported nonpolynomial quadrature and implements bounded rational/polynomial integration",
+      "existingProof": "297 supported polynomial witnesses and prior328 independent expected values/classifications plus analytic landmarks; finite examples do not constitute full-domain proof",
+      "sourceHashes": {
+        "src/calculators/canonical-calculus.ts": "069be29c14c2a7ef3f3b98c87f7c6425096b59cd0c4e1f58504c948b708e0c6d",
+        "src/calculators/canonical-calculus-workflow.ts": "6b4ac2f65fffbf6f3bc731c768a0726250a299c8a8ca710685396a01bf4de24c",
+        "src/calculators/canonical-calculus.independent.test.ts": "5f6d36244a8ece90d87193c8b049b694da72db272c01fcec4ae40588b53b4ba3",
+        "src/calculators/advanced-math/numerical-calculus-independent-diagnostic.test.ts": "b6d127c2ed60ef4e713d90d29b689bbc482cc09da02fc1046025c5944aea7395",
+        "src/lib/canonical-calculus-history.ts": "aa0aa1eb7f82cc41b59b8edbcb75b26348e8364c1a08f38a009d01a19ca9f58b",
+        "src/lib/canonical-calculus-history.test.ts": "707899fbb91929fb1cd1ba02591fe2aaca3227af3ef6046f501308960107b286",
+        "tests/owner-p0/calculus/supported-domain-witnesses.ts": "65c91e381d771992a6cbd2ce76ec648ad6d27c8d357bb75847d291d1641044cf",
+        "docs/owner-p0/calculus.md": "81ba387afb6deec9eb149797a31c4de7ae36ee013604633d143a9f2826dcad25",
+        "docs/conditional-closure/REPORT.md": "0732b59c591b571668b8988157db05f5a0bf053176c49d3a9a8f193c0f2bbf12"
+      },
+      "activeAcceptanceDecisions": [
+        "Adopt exact canonical operators/grammar/domain and output contract, or require wider missing mathematics explicitly",
+        "Qualified mathematical assessment of parser/literal correspondence, exact rational algorithms, resource/error bounds and analytic binary64 dependency where applicable",
+        "Accept/reject documented limitations and numerical refusal behavior at exact source hashes",
+        "Approve controlled version routing/adoption only after full contract/QA/source/reviewer gates; historical snapshots remain on their exact engines"
+      ],
+      "adoptionPreflight": [
+        "Verify legacy/review target immutable identities and source hashes; reject mismatch or implicit alias",
+        "Replay representative unchanged v1/v2 snapshots; verify mixed-version history/scenarios and exact unsupported-version refusal",
+        "Verify successor independent numerical, singularity, nonconvergence/refusal, parity, chart and tamper-replay evidence",
+        "Obtain named competent independent signed approval and exact full-scope decision",
+        "Prepare protected lifecycle record and rollback to previous routing only after separate production authority; never delete audit/history"
+      ],
+      "rollback": "Revert successor routing to prior routing without rewriting persisted snapshots; retain exact per-snapshot version dispatch. No SQL activation or routing change is prepared as an active migration.",
+      "canonicalRoutingAuthorized": false,
+      "canonicalAccepted": false,
+      "certificationApproved": false,
+      "publicationApproved": false
+    },
+    {
+      "catalogId": 248,
+      "frozenLegacy": {
+        "engineId": "advanced-math.limit",
+        "version": 1,
+        "defect": "Continuous exp(-x^2/1e-20) at0 reported0 instead of1",
+        "immutability": "Preserve exact v1 stored inputs/outputs and diagnostics; no source rewrite, replay upgrade or latest-version fallback"
+      },
+      "proposedTarget": {
+        "profileId": "private.canonical-calculus.248",
+        "profileIdKind": "workflow contractId and adapter key; not engineId",
+        "engineId": "private.canonical-calculus",
+        "technicalRevision": 3,
+        "presentationRevision": 1,
+        "operation": "limit",
+        "snapshotSlug": "private-canonical-calculus-limit",
+        "snapshotVersion": 3,
+        "engineeringAuthorization": "docs/owner-p0/authorization.json",
+        "fullDomainAndCanonicalDecision": "PENDING",
+        "canonicalRoutingAuthorized": false,
+        "evidencePointer": "docs/p0-decision-contracts/calculus.json#/contracts/2"
+      },
+      "alreadyImplementedRemedy": "Privatev3 returns continuous analytic landmark1 through immutable analyticv2 dependency; exact rational/pole/removable branches retained",
+      "existingProof": "297 supported polynomial witnesses and prior328 independent expected values/classifications plus analytic landmarks; finite examples do not constitute full-domain proof",
+      "sourceHashes": {
+        "src/calculators/canonical-calculus.ts": "069be29c14c2a7ef3f3b98c87f7c6425096b59cd0c4e1f58504c948b708e0c6d",
+        "src/calculators/canonical-calculus-workflow.ts": "6b4ac2f65fffbf6f3bc731c768a0726250a299c8a8ca710685396a01bf4de24c",
+        "src/calculators/canonical-calculus.independent.test.ts": "5f6d36244a8ece90d87193c8b049b694da72db272c01fcec4ae40588b53b4ba3",
+        "src/calculators/advanced-math/numerical-calculus-independent-diagnostic.test.ts": "b6d127c2ed60ef4e713d90d29b689bbc482cc09da02fc1046025c5944aea7395",
+        "src/lib/canonical-calculus-history.ts": "aa0aa1eb7f82cc41b59b8edbcb75b26348e8364c1a08f38a009d01a19ca9f58b",
+        "src/lib/canonical-calculus-history.test.ts": "707899fbb91929fb1cd1ba02591fe2aaca3227af3ef6046f501308960107b286",
+        "tests/owner-p0/calculus/supported-domain-witnesses.ts": "65c91e381d771992a6cbd2ce76ec648ad6d27c8d357bb75847d291d1641044cf",
+        "docs/owner-p0/calculus.md": "81ba387afb6deec9eb149797a31c4de7ae36ee013604633d143a9f2826dcad25",
+        "docs/conditional-closure/REPORT.md": "0732b59c591b571668b8988157db05f5a0bf053176c49d3a9a8f193c0f2bbf12"
+      },
+      "activeAcceptanceDecisions": [
+        "Adopt exact canonical operators/grammar/domain and output contract, or require wider missing mathematics explicitly",
+        "Qualified mathematical assessment of parser/literal correspondence, exact rational algorithms, resource/error bounds and analytic binary64 dependency where applicable",
+        "Accept/reject documented limitations and numerical refusal behavior at exact source hashes",
+        "Approve controlled version routing/adoption only after full contract/QA/source/reviewer gates; historical snapshots remain on their exact engines"
+      ],
+      "adoptionPreflight": [
+        "Verify legacy/review target immutable identities and source hashes; reject mismatch or implicit alias",
+        "Replay representative unchanged v1/v2 snapshots; verify mixed-version history/scenarios and exact unsupported-version refusal",
+        "Verify successor independent numerical, singularity, nonconvergence/refusal, parity, chart and tamper-replay evidence",
+        "Obtain named competent independent signed approval and exact full-scope decision",
+        "Prepare protected lifecycle record and rollback to previous routing only after separate production authority; never delete audit/history"
+      ],
+      "rollback": "Revert successor routing to prior routing without rewriting persisted snapshots; retain exact per-snapshot version dispatch. No SQL activation or routing change is prepared as an active migration.",
+      "canonicalRoutingAuthorized": false,
+      "canonicalAccepted": false,
+      "certificationApproved": false,
+      "publicationApproved": false
+    }
+  ],
+  "sixStandardReviewTargets": [
+    {
+      "catalogId": 235,
+      "baselineIdentity": {
+        "catalogId": 235,
+        "title": "Graphing",
+        "engineId": "advanced-math.graphing",
+        "baselineImmutableVersion": 1,
+        "slug": "graphing-calculator",
+        "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+      },
+      "contractPath": "docs/full-six/input/contracts/235-graphing-calculator.json",
+      "contractSHA256": "9c3803eb6bec645c33cc58e1217747cbcc96fd45c6069cbc8b59dc1b49a4b54c",
+      "engineeringAuthorization": "OWN01\u201308 already approved for isolated implementation/testing only",
+      "experimentalRevision": "Implementation lane must bind its actual exact revision/source hashes after integration; no certified registered version allocated by this decision package",
+      "newRegisteredVersionAllocated": false,
+      "canonicalAdoptionAuthorized": false,
+      "existingBaselinePreservation": "Historical baseline identity/version/results retained; expanded implementation must not overwrite registered historical math."
+    },
+    {
+      "catalogId": 251,
+      "baselineIdentity": {
+        "catalogId": 251,
+        "title": "2D Function Plotter",
+        "engineId": "advanced-math.function-plotter-2d",
+        "baselineImmutableVersion": 1,
+        "slug": "function-plotter-2d",
+        "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+      },
+      "contractPath": "docs/full-six/input/contracts/251-function-plotter-2d.json",
+      "contractSHA256": "ab779603eca3296ceca3969c40dcb98a1ac52e460543e5332c7d4f8380fdd36b",
+      "engineeringAuthorization": "OWN01\u201308 already approved for isolated implementation/testing only",
+      "experimentalRevision": "Implementation lane must bind its actual exact revision/source hashes after integration; no certified registered version allocated by this decision package",
+      "newRegisteredVersionAllocated": false,
+      "canonicalAdoptionAuthorized": false,
+      "existingBaselinePreservation": "Historical baseline identity/version/results retained; expanded implementation must not overwrite registered historical math."
+    },
+    {
+      "catalogId": 275,
+      "baselineIdentity": {
+        "catalogId": 275,
+        "title": "Volume",
+        "engineId": "geometry.volume",
+        "baselineImmutableVersion": 1,
+        "slug": "volume-calculator",
+        "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+      },
+      "contractPath": "docs/full-six/input/contracts/275-volume-calculator.json",
+      "contractSHA256": "a9be3bde09866ecbf67edb8b9173348dd11d7539fbf62cb51feb75a030b2b277",
+      "engineeringAuthorization": "OWN01\u201308 already approved for isolated implementation/testing only",
+      "experimentalRevision": "Implementation lane must bind its actual exact revision/source hashes after integration; no certified registered version allocated by this decision package",
+      "newRegisteredVersionAllocated": false,
+      "canonicalAdoptionAuthorized": false,
+      "existingBaselinePreservation": "Historical baseline identity/version/results retained; expanded implementation must not overwrite registered historical math."
+    },
+    {
+      "catalogId": 276,
+      "baselineIdentity": {
+        "catalogId": 276,
+        "title": "Slope",
+        "engineId": "geometry.slope",
+        "baselineImmutableVersion": 2,
+        "slug": "slope-calculator",
+        "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+      },
+      "contractPath": "docs/full-six/input/contracts/276-slope-calculator.json",
+      "contractSHA256": "5ddec75953d204593797c092350296196a71b88d661e09e37ad64eb4f2022378",
+      "engineeringAuthorization": "OWN01\u201308 already approved for isolated implementation/testing only",
+      "experimentalRevision": "Implementation lane must bind its actual exact revision/source hashes after integration; no certified registered version allocated by this decision package",
+      "newRegisteredVersionAllocated": false,
+      "canonicalAdoptionAuthorized": false,
+      "existingBaselinePreservation": "Historical baseline identity/version/results retained; expanded implementation must not overwrite registered historical math."
+    },
+    {
+      "catalogId": 282,
+      "baselineIdentity": {
+        "catalogId": 282,
+        "title": "Standard Deviation",
+        "engineId": "statistics.standard-deviation",
+        "baselineImmutableVersion": 1,
+        "slug": "standard-deviation-calculator",
+        "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+      },
+      "contractPath": "docs/full-six/input/contracts/282-standard-deviation-calculator.json",
+      "contractSHA256": "795e1092bc2028862639615ef82c96941d96e3222eac679dfe24c25113f8a79b",
+      "engineeringAuthorization": "OWN01\u201308 already approved for isolated implementation/testing only",
+      "experimentalRevision": "Implementation lane must bind its actual exact revision/source hashes after integration; no certified registered version allocated by this decision package",
+      "newRegisteredVersionAllocated": false,
+      "canonicalAdoptionAuthorized": false,
+      "existingBaselinePreservation": "Historical baseline identity/version/results retained; expanded implementation must not overwrite registered historical math."
+    },
+    {
+      "catalogId": 283,
+      "baselineIdentity": {
+        "catalogId": 283,
+        "title": "Variance",
+        "engineId": "statistics.variance",
+        "baselineImmutableVersion": 1,
+        "slug": "variance-calculator",
+        "baselineSHA": "7cdffeed3d5a8789689aa5495277e28b780227dc"
+      },
+      "contractPath": "docs/full-six/input/contracts/283-variance-calculator.json",
+      "contractSHA256": "c38d9350101aae237395e3828a3ebafa57ed8a871c896ee2607ac7d85266a0b7",
+      "engineeringAuthorization": "OWN01\u201308 already approved for isolated implementation/testing only",
+      "experimentalRevision": "Implementation lane must bind its actual exact revision/source hashes after integration; no certified registered version allocated by this decision package",
+      "newRegisteredVersionAllocated": false,
+      "canonicalAdoptionAuthorized": false,
+      "existingBaselinePreservation": "Historical baseline identity/version/results retained; expanded implementation must not overwrite registered historical math."
+    }
+  ],
+  "noProductionWrites": true,
+  "noRegisteredVersionAllocation": true,
+  "releaseHold": true,
+  "implementedPrivateCandidates": {
+    "protocol": "six-candidate-private-1",
+    "implementationRevision": "six-private-workflows-20261106.1",
+    "catalogIds": [
+      235,
+      251,
+      275,
+      276,
+      282,
+      283
+    ],
+    "exactSourceManifest": "docs/publication-candidate-closure/implementation-manifest.json",
+    "notARegisteredVersion": true,
+    "canonicalRoutingAuthorized": false
+  }
+}

@@ -1,0 +1,12 @@
+import {describe,it,expect} from 'vitest';
+import {compileFullGraphExpression,evaluateFullGraphExpression,GraphComputeError} from './graph-expression';
+const run=(source:string,x=0,angleMode:'radians'|'degrees'='radians')=>evaluateFullGraphExpression(compileFullGraphExpression(source),x,{angleMode});
+describe('experimental graph grammar and scalar boundaries',()=>{
+ it.each([['-2^2',-4],['(-2)^2',4],['2^-2',.25],['2^3^2',512],['8/4/2',1],['1e-3+.5',.501],['SIN(pi/2)',1],['(-2)^3',-8],['sqrt(0)',0]])('independent algebraic landmark %s',(s,n)=>expect(run(s)).toBe(n));
+ it.each(['2x','2(x)','sin x','x=1','Math.sin(x)','x[0]','NaN','Infinity','0x10','1_000','1e','',' ','y','x\u00a0+1','\u2212x','x\u200b'])('rejects unsupported grammar %s',s=>expect(()=>compileFullGraphExpression(s)).toThrow(GraphComputeError));
+ it.each([['ln(0)','DOMAIN_ERROR'],['sqrt(-1)','DOMAIN_ERROR'],['1/0','DOMAIN_DIV_ZERO'],['0^0','DOMAIN_INDETERMINATE'],['0^-1','DOMAIN_DIV_ZERO'],['(-1)^.5','DOMAIN_ERROR'],['exp(231)','RANGE_UNSUPPORTED'],['exp(-701)','RANGE_UNSUPPORTED'],['1e-308*1e-308','RANGE_UNDERFLOW']])('typed rejection %s',(s,code)=>{try{run(s);throw Error('accepted');}catch(e){expect(e).toBeInstanceOf(GraphComputeError);expect((e as GraphComputeError).code).toBe(code);}});
+ it('enforces literal exponent, token and AST budgets before recursive evaluation',()=>{for(const s of ['0e999','1e-999','1'.repeat(65),'('.repeat(65)+'x'+')'.repeat(65),'-'.repeat(70)+'x',Array(130).fill('x').join('+')])expect(()=>compileFullGraphExpression(s)).toThrow(GraphComputeError);});
+ it('retains exact structural cancellation, preserves signed zero and refuses ill-conditioning',()=>{expect(run('x-x',1e9)).toBe(0);expect(Object.is(run('-0'),-0)).toBe(true);expect(()=>run('(x+1)-x',1e9)).not.toThrow();expect(()=>run('(x+1e-8)-x',1e9)).toThrow(/uncertain/i);});
+ it('degree mode and parameter nodes do not textual-replace identifiers',()=>{expect(run('sin(90)',0,'degrees')).toBe(1);const ast=compileFullGraphExpression('a*x+b',{parameters:['a','b']});expect(evaluateFullGraphExpression(ast,2,{parameters:{a:3,b:4}})).toBe(10);expect(()=>compileFullGraphExpression('a*x')).toThrow();});
+ it('has bounded cancellation and operation accounting',()=>{const budget={operations:0,maxOperations:1,cancelled:()=>false};expect(()=>evaluateFullGraphExpression(compileFullGraphExpression('x+1'),1,{budget})).toThrow(/budget/i);expect(()=>evaluateFullGraphExpression(compileFullGraphExpression('x'),1,{budget:{operations:0,maxOperations:100,cancelled:()=>true}})).toThrow(/cancelled/i);});
+});

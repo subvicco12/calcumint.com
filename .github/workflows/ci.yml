@@ -474,6 +474,21 @@ jobs:
           node tests/full-six/registered-input.browser.mjs
         env:
           FULL_SIX_BROWSER_RECEIPT: ${{ runner.temp }}/full-six-input-browser
+      - name: Approved six-candidate worker, workflow and replay acceptance
+        timeout-minutes: 3
+        run: |
+          node scripts/check-six-candidate-evidence.mjs
+          node --test tests/full-six-candidate/preview.test.mjs
+          node tests/full-six-candidate/browser.mjs
+        env:
+          SIX_CANDIDATE_BROWSER_RECEIPT: ${{ runner.temp }}/six-candidate-closure
+      - name: Preserve exact six-candidate acceptance receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: six-candidate-closure-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/six-candidate-closure/receipt.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Private Decimal50 worker and statistics workflow acceptance
         timeout-minutes: 3
         run: |
