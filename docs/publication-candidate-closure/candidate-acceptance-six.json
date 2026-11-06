@@ -1,0 +1,1378 @@
+{
+  "kind": "COMPLETE_ASSEMBLED_CANDIDATE_PACKET_WITH_EXPLICIT_UNMET_PREREQUISITES_NOT_COMPLETE_ACCEPTANCE",
+  "sourceManifest": "implementation-manifest.json",
+  "baseline": "2c89a0d774c771d10dd0d910c2d0bd4a614d0c39",
+  "rows": [
+    {
+      "catalogId": 235,
+      "engineId": "advanced-math.graphing",
+      "baselineVersion": 1,
+      "implementationRevision": "six-private-workflows-20261106.1",
+      "exactBinding": "src/lib/full-six/candidate/bindings.ts",
+      "contractScope": "docs/full-six/input/contracts",
+      "mathematicalEvidence": [
+        "src/lib/full-six/graph-expression.test.ts",
+        "src/lib/full-six/graph-plot.test.ts",
+        "src/lib/full-six/graph-oracle.test.ts",
+        "src/lib/full-six/graph-derivative.test.ts"
+      ],
+      "sourceEvidence": {
+        "existingPacket": "docs/full-product-batch22/six-evidence-packets.json#catalogId=235",
+        "existingLocalMetadata": [
+          {
+            "label": "CalcuMint deterministic expression engine",
+            "note": "Restricted parser and finite numeric evaluator."
+          }
+        ],
+        "publisherApplicabilityAndQualifiedAdoption": "PENDING_EXACT_REVIEW; no new publisher authentication or source approval invented"
+      },
+      "qa": [
+        {
+          "type": "engine-tests",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "src/lib/full-six/graph-expression.test.ts",
+            "src/lib/full-six/graph-plot.test.ts",
+            "src/lib/full-six/graph-oracle.test.ts",
+            "src/lib/full-six/graph-derivative.test.ts"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "formula-review",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sources",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "methodology",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "reverse-solve",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "visualization-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "schedule-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "scenario-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sensitivity-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "entitlement-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "ux-responsive",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "performance",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "security",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "seo-content",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "accessibility",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "reviewer": {
+        "identity": null,
+        "qualificationAssessment": null,
+        "approval": null,
+        "existingCompetenceRequest": "docs/post1518-publication-qa/six-owner-reviewer-decisions.json#masterId=235",
+        "softwareAgentReviewOnly": "Independent code review is not a hosted QA/reviewer identity or mathematical certification."
+      },
+      "lifecycle": {
+        "capturedState": "ABSENT_NOVEMBER5",
+        "newHostedRowCreated": false,
+        "preflight": "Reverify exact persisted identity/version/source/QA/reviewer/dependency state before any future authorized write. No direct INSERT-as-published. Draft\u2192review\u2192certified\u2192published requires real approvals, predicate success, authorized caller and wave-specific release authority.",
+        "sqlProposalsActivated": false
+      },
+      "fullScopeComplete": false,
+      "publicationEligible": false,
+      "publicationAuthorized": false
+    },
+    {
+      "catalogId": 251,
+      "engineId": "advanced-math.function-plotter-2d",
+      "baselineVersion": 1,
+      "implementationRevision": "six-private-workflows-20261106.1",
+      "exactBinding": "src/lib/full-six/candidate/bindings.ts",
+      "contractScope": "docs/full-six/input/contracts",
+      "mathematicalEvidence": [
+        "src/lib/full-six/graph-expression.test.ts",
+        "src/lib/full-six/graph-plot.test.ts",
+        "src/lib/full-six/graph-oracle.test.ts"
+      ],
+      "sourceEvidence": {
+        "existingPacket": "docs/full-product-batch22/six-evidence-packets.json#catalogId=251",
+        "existingLocalMetadata": [
+          {
+            "label": "CalcuMint deterministic expression engine",
+            "note": "Restricted parser and finite numeric evaluator."
+          }
+        ],
+        "publisherApplicabilityAndQualifiedAdoption": "PENDING_EXACT_REVIEW; no new publisher authentication or source approval invented"
+      },
+      "qa": [
+        {
+          "type": "engine-tests",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "src/lib/full-six/graph-expression.test.ts",
+            "src/lib/full-six/graph-plot.test.ts",
+            "src/lib/full-six/graph-oracle.test.ts"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "formula-review",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sources",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "methodology",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "reverse-solve",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "visualization-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "schedule-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "scenario-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sensitivity-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "entitlement-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "ux-responsive",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "performance",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "security",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "seo-content",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "accessibility",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "reviewer": {
+        "identity": null,
+        "qualificationAssessment": null,
+        "approval": null,
+        "existingCompetenceRequest": "docs/post1518-publication-qa/six-owner-reviewer-decisions.json#masterId=251",
+        "softwareAgentReviewOnly": "Independent code review is not a hosted QA/reviewer identity or mathematical certification."
+      },
+      "lifecycle": {
+        "capturedState": "ABSENT_NOVEMBER5",
+        "newHostedRowCreated": false,
+        "preflight": "Reverify exact persisted identity/version/source/QA/reviewer/dependency state before any future authorized write. No direct INSERT-as-published. Draft\u2192review\u2192certified\u2192published requires real approvals, predicate success, authorized caller and wave-specific release authority.",
+        "sqlProposalsActivated": false
+      },
+      "fullScopeComplete": false,
+      "publicationEligible": false,
+      "publicationAuthorized": false
+    },
+    {
+      "catalogId": 275,
+      "engineId": "geometry.volume",
+      "baselineVersion": 1,
+      "implementationRevision": "six-private-workflows-20261106.1",
+      "exactBinding": "src/lib/full-six/candidate/bindings.ts",
+      "contractScope": "docs/full-six/input/contracts",
+      "mathematicalEvidence": [
+        "src/lib/full-six/volume.test.ts"
+      ],
+      "sourceEvidence": {
+        "existingPacket": "docs/full-product-batch22/six-evidence-packets.json#catalogId=275",
+        "existingLocalMetadata": [
+          {
+            "label": "CalcuMint deterministic geometry engine"
+          }
+        ],
+        "publisherApplicabilityAndQualifiedAdoption": "PENDING_EXACT_REVIEW; no new publisher authentication or source approval invented"
+      },
+      "qa": [
+        {
+          "type": "engine-tests",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "src/lib/full-six/volume.test.ts"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "formula-review",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sources",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "methodology",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "reverse-solve",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "visualization-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "schedule-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "scenario-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sensitivity-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "entitlement-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "ux-responsive",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "performance",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "security",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "seo-content",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "accessibility",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "reviewer": {
+        "identity": null,
+        "qualificationAssessment": null,
+        "approval": null,
+        "existingCompetenceRequest": "docs/post1518-publication-qa/six-owner-reviewer-decisions.json#masterId=275",
+        "softwareAgentReviewOnly": "Independent code review is not a hosted QA/reviewer identity or mathematical certification."
+      },
+      "lifecycle": {
+        "capturedState": "ABSENT_NOVEMBER5",
+        "newHostedRowCreated": false,
+        "preflight": "Reverify exact persisted identity/version/source/QA/reviewer/dependency state before any future authorized write. No direct INSERT-as-published. Draft\u2192review\u2192certified\u2192published requires real approvals, predicate success, authorized caller and wave-specific release authority.",
+        "sqlProposalsActivated": false
+      },
+      "fullScopeComplete": false,
+      "publicationEligible": false,
+      "publicationAuthorized": false
+    },
+    {
+      "catalogId": 276,
+      "engineId": "geometry.slope",
+      "baselineVersion": 2,
+      "implementationRevision": "six-private-workflows-20261106.1",
+      "exactBinding": "src/lib/full-six/candidate/bindings.ts",
+      "contractScope": "docs/full-six/input/contracts",
+      "mathematicalEvidence": [
+        "src/lib/full-six/slope.test.ts",
+        "src/lib/full-six/slope.independent.test.ts"
+      ],
+      "sourceEvidence": {
+        "existingPacket": "docs/full-product-batch22/six-evidence-packets.json#catalogId=276",
+        "existingLocalMetadata": [
+          {
+            "label": "CalcuMint deterministic coordinate-geometry engine"
+          }
+        ],
+        "publisherApplicabilityAndQualifiedAdoption": "PENDING_EXACT_REVIEW; no new publisher authentication or source approval invented"
+      },
+      "qa": [
+        {
+          "type": "engine-tests",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "src/lib/full-six/slope.test.ts",
+            "src/lib/full-six/slope.independent.test.ts"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "formula-review",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sources",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "methodology",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "reverse-solve",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "visualization-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "schedule-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "scenario-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sensitivity-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "entitlement-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "ux-responsive",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "performance",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "security",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "seo-content",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "accessibility",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "reviewer": {
+        "identity": null,
+        "qualificationAssessment": null,
+        "approval": null,
+        "existingCompetenceRequest": "docs/post1518-publication-qa/six-owner-reviewer-decisions.json#masterId=276",
+        "softwareAgentReviewOnly": "Independent code review is not a hosted QA/reviewer identity or mathematical certification."
+      },
+      "lifecycle": {
+        "capturedState": "ABSENT_NOVEMBER5",
+        "newHostedRowCreated": false,
+        "preflight": "Reverify exact persisted identity/version/source/QA/reviewer/dependency state before any future authorized write. No direct INSERT-as-published. Draft\u2192review\u2192certified\u2192published requires real approvals, predicate success, authorized caller and wave-specific release authority.",
+        "sqlProposalsActivated": false
+      },
+      "fullScopeComplete": false,
+      "publicationEligible": false,
+      "publicationAuthorized": false
+    },
+    {
+      "catalogId": 282,
+      "engineId": "statistics.standard-deviation",
+      "baselineVersion": 1,
+      "implementationRevision": "six-private-workflows-20261106.1",
+      "exactBinding": "src/lib/full-six/candidate/bindings.ts",
+      "contractScope": "docs/full-six/input/contracts",
+      "mathematicalEvidence": [
+        "src/lib/full-six/statistics/advanced.test.ts",
+        "src/lib/full-six/statistics/advanced-oracle.test.ts"
+      ],
+      "sourceEvidence": {
+        "existingPacket": "docs/full-product-batch22/six-evidence-packets.json#catalogId=282",
+        "existingLocalMetadata": [
+          {
+            "label": "CalcuMint deterministic statistics engine"
+          }
+        ],
+        "publisherApplicabilityAndQualifiedAdoption": "PENDING_EXACT_REVIEW; no new publisher authentication or source approval invented"
+      },
+      "qa": [
+        {
+          "type": "engine-tests",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "src/lib/full-six/statistics/advanced.test.ts",
+            "src/lib/full-six/statistics/advanced-oracle.test.ts"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "formula-review",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sources",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "methodology",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "reverse-solve",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "visualization-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "schedule-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "scenario-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sensitivity-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "entitlement-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "ux-responsive",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "performance",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "security",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "seo-content",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "accessibility",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "reviewer": {
+        "identity": null,
+        "qualificationAssessment": null,
+        "approval": null,
+        "existingCompetenceRequest": "docs/post1518-publication-qa/six-owner-reviewer-decisions.json#masterId=282",
+        "softwareAgentReviewOnly": "Independent code review is not a hosted QA/reviewer identity or mathematical certification."
+      },
+      "lifecycle": {
+        "capturedState": "ABSENT_NOVEMBER5",
+        "newHostedRowCreated": false,
+        "preflight": "Reverify exact persisted identity/version/source/QA/reviewer/dependency state before any future authorized write. No direct INSERT-as-published. Draft\u2192review\u2192certified\u2192published requires real approvals, predicate success, authorized caller and wave-specific release authority.",
+        "sqlProposalsActivated": false
+      },
+      "fullScopeComplete": false,
+      "publicationEligible": false,
+      "publicationAuthorized": false
+    },
+    {
+      "catalogId": 283,
+      "engineId": "statistics.variance",
+      "baselineVersion": 1,
+      "implementationRevision": "six-private-workflows-20261106.1",
+      "exactBinding": "src/lib/full-six/candidate/bindings.ts",
+      "contractScope": "docs/full-six/input/contracts",
+      "mathematicalEvidence": [
+        "src/lib/full-six/statistics/advanced.test.ts",
+        "src/lib/full-six/statistics/advanced-oracle.test.ts"
+      ],
+      "sourceEvidence": {
+        "existingPacket": "docs/full-product-batch22/six-evidence-packets.json#catalogId=283",
+        "existingLocalMetadata": [
+          {
+            "label": "CalcuMint deterministic statistics engine"
+          }
+        ],
+        "publisherApplicabilityAndQualifiedAdoption": "PENDING_EXACT_REVIEW; no new publisher authentication or source approval invented"
+      },
+      "qa": [
+        {
+          "type": "engine-tests",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "src/lib/full-six/statistics/advanced.test.ts",
+            "src/lib/full-six/statistics/advanced-oracle.test.ts"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "formula-review",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sources",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "methodology",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "reverse-solve",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "visualization-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "schedule-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "scenario-reconciliation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "sensitivity-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "entitlement-validation",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "ux-responsive",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "performance",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "security",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "seo-content",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        },
+        {
+          "type": "accessibility",
+          "decision": "PENDING_ADJUDICATION",
+          "approvedBy": null,
+          "approvedAt": null,
+          "waiverOrNa": null,
+          "engineeringEvidencePointers": [
+            "tests/full-six-candidate/browser.mjs",
+            "src/components/full-six/candidate-workbench.test.tsx",
+            "src/lib/full-six/candidate/workflow.test.ts",
+            "tests/full-six-candidate/preview.test.mjs"
+          ],
+          "scopeLimitation": "Only the implemented experimental branches and specific witnesses are proven; not a full QA check or a signed qualified decision."
+        }
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "reviewer": {
+        "identity": null,
+        "qualificationAssessment": null,
+        "approval": null,
+        "existingCompetenceRequest": "docs/post1518-publication-qa/six-owner-reviewer-decisions.json#masterId=283",
+        "softwareAgentReviewOnly": "Independent code review is not a hosted QA/reviewer identity or mathematical certification."
+      },
+      "lifecycle": {
+        "capturedState": "ABSENT_NOVEMBER5",
+        "newHostedRowCreated": false,
+        "preflight": "Reverify exact persisted identity/version/source/QA/reviewer/dependency state before any future authorized write. No direct INSERT-as-published. Draft\u2192review\u2192certified\u2192published requires real approvals, predicate success, authorized caller and wave-specific release authority.",
+        "sqlProposalsActivated": false
+      },
+      "fullScopeComplete": false,
+      "publicationEligible": false,
+      "publicationAuthorized": false
+    }
+  ],
+  "releaseWave": [],
+  "newEligible": 0,
+  "releaseHold": true
+}

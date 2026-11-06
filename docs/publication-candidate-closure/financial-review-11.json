@@ -1,0 +1,1511 @@
+{
+  "schemaVersion": 1,
+  "kind": "EXACT_VERSION_FINANCIAL_QUALIFIED_REVIEW_REQUESTS",
+  "baseline": "2c89a0d774c771d10dd0d910c2d0bd4a614d0c39",
+  "scope": "Eleven already-implemented unpublished engine versions; existing QA and source facts reused. No approval/certification/lifecycle mutation.",
+  "sourceHashes": {
+    "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+    "src/lib/admin/publishing.ts": "be7ad3e0d51a083bcdec01126619025093113372ef41812b14f236895f69a8d6",
+    "docs/publication-fourday-20261105/catalog/actionable-batches.json": "57a6855a7148d5fb0cf19eb1a70df9c60ed3d9132f8825ec9d000c188b38802c",
+    "docs/calculator-first/publication-readiness-540.json": "17132cfb30e3493b03ed55feb3744bc92ee7052ebd5b7c570fe04e254de841de",
+    "docs/full-six/REPORT.md": "3390dc21f81696749c67bcc6681035a045fe17d59f88f48d8b3da697e2708513",
+    "docs/full-six/package-integrity.json": "c5afa339f47612aaf36ee4b9829491e0ba07d72858b042b5f3b05b739ea66545"
+  },
+  "roundingAuthority": {
+    "path": "src/calculators/precision.ts",
+    "sha256": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+    "mode": "half-away-from-zero default with4EPSILON scaled tolerance; integral values unchanged; no new rounding policy approval inferred"
+  },
+  "rows": [
+    {
+      "engineId": "finance.compound-interest",
+      "version": 1,
+      "slug": "compound-interest-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/compound-interest-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/compound-interest.ts",
+      "sourceSHA256": "758f8ef3e2ac43fb91e22b6b3e6f67734548fae3b38653e3ae3bcd29ca4a4c60",
+      "directIdentityCandidates": [
+        51
+      ],
+      "allCatalogAssociations": [
+        {
+          "masterId": 51,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "sharedCatalogIds": [
+            51
+          ],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 71,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [
+            51
+          ],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "A=P(1+r/n)^(n*t); interest=rounded(A)-P",
+        "timingAndDomain": "Fixed nominal annual percentage /100/n; n integer1..365; t years0..200; annual rate[-99.999999,1000],principal>=0. No variable-rate cashflow or provider APY inferred.",
+        "rounding": "futureValue roundTo(2), then totalInterest roundTo(roundedFutureValue-principal,2).",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Determine nominal versus effective rate disclosures, negative-rate domain, original complete #51 scope, and whether #71 is only shared mathematics. An Investor.gov URL is not a rate schedule or guarantee."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/compound-interest.test.ts",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/compound-interest-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/compound-interest.ts": "758f8ef3e2ac43fb91e22b6b3e6f67734548fae3b38653e3ae3bcd29ca4a4c60",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/compound-interest-independent-goldens.ts": "636f1be17ad0b4597ec0a05cfe0d6f558575cb2b8ebd49a531a80366cbc7bdd8",
+          "src/calculators/finance/compound-interest.test.ts": "9a27c9647e5f862950db6ba9146fc6ec2431c92b14680377ee8cf5a38b6e9ef1",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts": "7c1d97014ab663672682fcbe7b7678169b2713b929d91dfb4f587b3e732fa97c"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.loan-payment",
+      "version": 1,
+      "slug": "loan-payment-calculator",
+      "url": "https://calcumint.com/calculators/loans-mortgages/loan-payment-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/loan-payment.ts",
+      "sourceSHA256": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+      "directIdentityCandidates": [
+        1
+      ],
+      "allCatalogAssociations": [
+        {
+          "masterId": 1,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "sharedCatalogIds": [
+            1
+          ],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 6,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [
+            1
+          ],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 7,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [
+            1
+          ],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 8,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [
+            1
+          ],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 22,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [
+            1
+          ],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "M=P*r/(1-(1+r)^(-n)); r=annualRatePercent/100/12; zero rate M=P/n",
+        "timingAndDomain": "Monthly end-period amortizing payment; principal>0, annual nominal rate0..1000,termMonths integer1..1200. No daily accrual, origination fees, APR, taxes or provider conventions.",
+        "rounding": "monthlyPayment roundTo(2); totalPayment=roundTo(rounded monthlyPayment*termMonths,2); totalInterest=roundTo(totalPayment-principal,2). This aggregate is not a cashflow ledger.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Adjudicate the rounded-payment aggregate contract for #1; associations6/7/8/22 are support, not accepted full calculators. Specify legal disclosure/APR scope separately if required."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/verification/debt-aggregate-goldens.test.ts",
+          "src/lib/registered-snapshot-replay.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/debt-aggregate-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/loan-payment.ts": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/debt-aggregate-independent-goldens.ts": "b430852558318dc73083fdb8acf62fb5e2f7e7c54e98b35f0cf1a188d5303109",
+          "src/calculators/verification/debt-aggregate-goldens.test.ts": "78a8144dfde4261dff55740b06fa14edda8317fdf7ea4a6255cc0d3f86c2b80e",
+          "src/lib/registered-snapshot-replay.test.ts": "6de801891c58415952d7d2d631532022007649d247b6ec93cbe84d79f3361bb8"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.mortgage",
+      "version": 1,
+      "slug": "mortgage-payment",
+      "url": "https://calcumint.com/calculators/loans-mortgages/mortgage-payment",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/mortgage.ts",
+      "sourceSHA256": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+      "directIdentityCandidates": [
+        26
+      ],
+      "allCatalogAssociations": [
+        {
+          "masterId": 26,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "sharedCatalogIds": [
+            26
+          ],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "Inherited fixed-rate loan-payment principal-and-interest equations only",
+        "timingAndDomain": "Same nominal-rate/monthly contract as finance.loan-payment. Property tax, homeowners/mortgage insurance, HOA and closing costs are explicitly excluded.",
+        "rounding": "Inherited loan-payment aggregate rounding. goldenTests intentionally undefined; do not import a loan certification by inheritance.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": "Loan-payment source metadata also inherited",
+        "exactOutstandingQuestion": "Decide full #26 product scope against Blueprint: generic P&I component is not automatically a full mortgage product; authenticate applicable local charges/rules only if included. Existing P&I tests must not be duplicated or treated as full acceptance."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/lib/registered-snapshot-replay.test.ts",
+          "src/lib/registered-recovery.independent.test.ts",
+          "src/lib/scenario-report-recovery.test.ts",
+          "src/components/mortgage-release-integration.test.tsx"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/loan-payment.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/mortgage.ts": "8f4c7b87637df8e401582493a7ae3ec94b9a252ac08bee0cce00f825bb5d21bd",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/loan-payment.ts": "4393094b6ed6141e9498fb824bd2ba469142c5fe8d54f2d145997fb4d391b160",
+          "src/lib/registered-snapshot-replay.test.ts": "6de801891c58415952d7d2d631532022007649d247b6ec93cbe84d79f3361bb8",
+          "src/lib/registered-recovery.independent.test.ts": "515ec8307807e19bcbe8106a98f7f31c3eaa0fcd4b1a8ae4eb5c347ed56e4b2d",
+          "src/lib/scenario-report-recovery.test.ts": "4a62e5c581e98eca861592029b7cd19d53f848a50a7679d20910b509acee196b",
+          "src/components/mortgage-release-integration.test.tsx": "7a5ef3f0e72485b5a5d13e10cab9529d5c1256ea01f4a1f990bc4525a1e36a47"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.loan-analysis",
+      "version": 1,
+      "slug": "loan-emi-calculator",
+      "url": "https://calcumint.com/calculators/loans-mortgages/loan-emi-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/loan-analysis.ts",
+      "sourceSHA256": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef",
+      "directIdentityCandidates": [],
+      "allCatalogAssociations": [
+        {
+          "masterId": 2,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 3,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 4,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 5,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 27,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 29,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "Scheduled M=P*r/(1-(1+r)^(-n)); each month interest=balance*r, payment=min(M+extra,balance+interest)",
+        "timingAndDomain": "Monthly interest before payment; extra>=0; principal>0; annualRate0..1000; termMonths1..1200. Internal balance tracked binary64; stops when balance<=0.005 or term exhausted.",
+        "rounding": "Per-row payment/principal/interest/balance rounded2; totals sum rounded row payments/interest and round2; monthlyPayment reports scheduledRaw+extra round2.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Select exact canonical identity among2/3/4/5/27/29; no shared amortization evidence transfers complete acceptance. Review final-balance tolerance and whether rounded report totals reconcile to adopted account convention."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/loan-analysis.test.ts",
+          "src/calculators/verification/debt-payoff-goldens.test.ts",
+          "src/lib/registered-snapshot-replay.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/debt-payoff-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/loan-analysis.ts": "92d37f5d5219b794d4dde2fa48d77a605fa344501964ae853549981ff81746ef",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/debt-payoff-independent-goldens.ts": "a71ef994534e2ffa35c2d4bba721ddf2b39e67674f69fdf340fb9d944faa7277",
+          "src/calculators/finance/loan-analysis.test.ts": "44ad470413706b638a09b8fbf8b7e9404951a617398cdffe0e890cdba44009bb",
+          "src/calculators/verification/debt-payoff-goldens.test.ts": "f143a5cef3638ed54d3ee626d892b0712686b330c61c13ddb95dc60d32fb35a7",
+          "src/lib/registered-snapshot-replay.test.ts": "6de801891c58415952d7d2d631532022007649d247b6ec93cbe84d79f3361bb8"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.term-deposit",
+      "version": 1,
+      "slug": "fixed-term-deposit-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/fixed-term-deposit-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/term-deposit.ts",
+      "sourceSHA256": "5d5667156843d9a8a64ee63bf4d6d9143f4ecf8a1ab1d1b78a32559732b2feef",
+      "directIdentityCandidates": [],
+      "allCatalogAssociations": [
+        {
+          "masterId": 55,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "A=P(1+r/m)^(m*termMonths/12); effectiveAnnualYield=(1+r/m)^m-1",
+        "timingAndDomain": "Generic nominal compounding; principal>0, rate0..1000,month1..1200,m in1/2/4/12/365; fractional compounding exponent permitted. No institution-specific calendar/day-count, APY disclosure, penalty or tax rule.",
+        "rounding": "maturity rounded2; interest=round2(rounded maturity-principal); effectiveAnnualYieldPercent rounded4.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/",
+          "https://www.consumerfinance.gov/rules-policy/regulations/1030/a/"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "#55 association is not accepted identity. CFPB RegDD AppendixA applicability, annualization/day-count and specific provider conventions need qualified review; do not label generic effective yield a legally compliant APY."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/term-deposit.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/term-deposit-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/term-deposit.ts": "5d5667156843d9a8a64ee63bf4d6d9143f4ecf8a1ab1d1b78a32559732b2feef",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/term-deposit-independent-goldens.ts": "d911da3e25dddddf2f86bb999bc1ab9c640575fcad086687bbe2acc1e4fc7277",
+          "src/calculators/finance/term-deposit.test.ts": "faafb83f723a399042bf0355c7b40c3ae21022726874365c56e5c5c81e6031dc"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.recurring-deposit",
+      "version": 1,
+      "slug": "recurring-deposit-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/recurring-deposit-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/recurring-deposit.ts",
+      "sourceSHA256": "1e0a39d9c34a8d814b2962b009f08ee9b61de65753aaf1e8f72477b5613d7e1e",
+      "directIdentityCandidates": [
+        56
+      ],
+      "allCatalogAssociations": [
+        {
+          "masterId": 56,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "sharedCatalogIds": [
+            56
+          ],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "FV=D*((1+i)^n-1)/i, multiplied by(1+i) for beginning timing; i=annualInterestPercent/100/12; zero rate D*n",
+        "timingAndDomain": "Equal monthly deposits; beginning/end explicit, default beginning; nominal monthly growth, no institutional quarterly-crediting assumptions.",
+        "rounding": "Maturity round2, depositedAmount round2(D*n), interestEarned round2(rounded maturity-rounded deposits).",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "https://www.consumerfinance.gov/ask-cfpb/how-does-compound-interest-work-en-1683/"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Review #56 full contract and applicable institution/jurisdiction conventions; require certified rule pack only if such applicability is actually established, not inferred from title."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/recurring-deposit.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/recurring-deposit-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/recurring-deposit.ts": "1e0a39d9c34a8d814b2962b009f08ee9b61de65753aaf1e8f72477b5613d7e1e",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/recurring-deposit-independent-goldens.ts": "d94577bbe27131fa1464dbecb971284755c42b6864c3fca5bb3d3b18e02a510d",
+          "src/calculators/finance/recurring-deposit.test.ts": "6439f98db77bb7d2ade4236712cfccf40aeb1cecc40b59eb3b40a5b365181692"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.sip",
+      "version": 1,
+      "slug": "sip-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/sip-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/sip.ts",
+      "sourceSHA256": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a",
+      "directIdentityCandidates": [],
+      "allCatalogAssociations": [
+        {
+          "masterId": 52,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 71,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "FV=PMT*((1+r)^n-1)/r*timingFactor; r=annualReturnPercent/100/12; beginning factor1+r; zero rate PMT*n",
+        "timingAndDomain": "Equal monthly contributions, explicit beginning/end, default beginning; deterministic constant assumed return, no guarantee. Historicalv1 differs from reference/privatev2.",
+        "rounding": "Future value round2; investedAmount round2(PMT*n); estimatedGain round2(roundedFV-roundedinvested). Preserve exact historical v1 behavior and outputs.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Resolve direct identity among52/71 and review risk/disclosure and nominal-return timing. Do not replace SIPv1 byv2, inherit v2 precision claims, or imply investment-return predictability."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/sip.test.ts",
+          "src/calculators/verification/sip-numerical-compatibility.test.ts",
+          "src/calculators/verification/sip-v2-history-parity.test.tsx",
+          "src/calculators/verification/sip-inverse-independent.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/sip-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/sip.ts": "d829448f8d9fa930b5744dcf0128e7ea5e7139c2306e23df83cf622ce134310a",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/sip-independent-goldens.ts": "a8ebbac118762b2860d137cb4282f508b510c34912486c8d7082ad365b297a89",
+          "src/calculators/finance/sip.test.ts": "fb279bed945d2151ab516562608c8424355d97b3456f66f83d1a697505dae88a",
+          "src/calculators/verification/sip-numerical-compatibility.test.ts": "da6160212f028284cbb0a3a90bcc0980f4a7dc1b9007e222071916cc98c94bac",
+          "src/calculators/verification/sip-v2-history-parity.test.tsx": "fbc469a27c9cdef564eda148ebdd0f23bcdef7fd02e765210b086bdee53c8853",
+          "src/calculators/verification/sip-inverse-independent.test.ts": "64490498fe9c7b980d02f8c5ff0e5326bfd0ceaa12a8198be81010ad51a70839"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.step-up-sip",
+      "version": 1,
+      "slug": "step-up-sip-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/step-up-sip-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/step-up-sip.ts",
+      "sourceSHA256": "48409de2f3903a7022d26055f3bf7e6a2060b4901ff645dad60a5fd9d1e0e1f6",
+      "directIdentityCandidates": [
+        53
+      ],
+      "allCatalogAssociations": [
+        {
+          "masterId": 53,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "sharedCatalogIds": [
+            53
+          ],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "At month m: contribution=initialMonthly*(1+annualStepUp/100)^floor((m-1)/12); balance=(balance+contribution)*(1+r) beginning, or balance*(1+r)+contribution end",
+        "timingAndDomain": "Monthly nominal annual return/12; step-up after each12monthly contributions; explicit beginning/end with beginning default.",
+        "rounding": "Final futureValue,investedAmount,finalMonthlyContribution rounded2; gain round2(rounded future-roundedinvested). Simulation uses unrounded monthly growth/contributions until outputs.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Review #53 complete escalation/timing/return assumptions; publisher compound-interest sources do not establish a provider promise, future growth or step-up schedule applicability."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/step-up-sip.test.ts",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/investment-cashflow-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/step-up-sip.ts": "48409de2f3903a7022d26055f3bf7e6a2060b4901ff645dad60a5fd9d1e0e1f6",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/investment-cashflow-independent-goldens.ts": "91fedaf53ad6b4ad059fee5751f0820120bce453ec965d773ab4e0cb416d337f",
+          "src/calculators/finance/step-up-sip.test.ts": "19cbab57909d9c4d598d77cfcd6ab2a0c258d103cd3e92a91c44a9f9f5f5f499",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts": "7c1d97014ab663672682fcbe7b7678169b2713b929d91dfb4f587b3e732fa97c"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.investment-math",
+      "version": 1,
+      "slug": "investment-growth-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/investment-growth-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/investment-math.ts",
+      "sourceSHA256": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e",
+      "directIdentityCandidates": [],
+      "allCatalogAssociations": [
+        {
+          "masterId": 45,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 57,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 59,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 60,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 62,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 66,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 68,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 69,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 73,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 75,
+          "basis": "FAMILY_VARIANT",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 80,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 81,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 82,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 84,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 85,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 86,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 87,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 88,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 89,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 90,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 91,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 92,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 95,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 96,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 97,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 98,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "FV=PV*(1+r)^t; realRate=(1+nominal)/(1+inflation)-1; realFuture=PV*(1+realRate)^t",
+        "timingAndDomain": "Annual effective deterministic growth; years>0..200; nominal and inflation>-100% with declared schema bounds; not a stochastic forecast, retirement suitability or tax model.",
+        "rounding": "nominal futureValue and inflationAdjustedFutureValue rounded2; realAnnualReturnPercent rounded4. No intermediary display rounding.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Shared component has26candidate associations, including authority-sensitive retirement/tax cases; review each exact adopted product independently, not a26-ID certification transfer."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/investment-math.test.ts",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/investment-cashflow-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/investment-math.ts": "a16d2dc25d157c6253741d45bd1168ed63331835303e1e73cc260abdf365079e",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/investment-cashflow-independent-goldens.ts": "91fedaf53ad6b4ad059fee5751f0820120bce453ec965d773ab4e0cb416d337f",
+          "src/calculators/finance/investment-math.test.ts": "e2e834f306b61c7819751d7d1677855b206af5fcefdfdb21e60a102d89e16bdf",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts": "7c1d97014ab663672682fcbe7b7678169b2713b929d91dfb4f587b3e732fa97c"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.swp",
+      "version": 1,
+      "slug": "swp-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/swp-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/swp.ts",
+      "sourceSHA256": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092",
+      "directIdentityCandidates": [],
+      "allCatalogAssociations": [
+        {
+          "masterId": 54,
+          "basis": "ENGINE_CONTRACT_MATCH",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 80,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 81,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 82,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 84,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 85,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 86,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 87,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 88,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 89,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 90,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 91,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 92,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 95,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 96,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 97,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        },
+        {
+          "masterId": 98,
+          "basis": "SCOPE_DECISION_REQUIRED",
+          "identityCandidate": false,
+          "sharedCatalogIds": [],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "Monthly nominal return/12 applied before end withdrawal or after beginning withdrawal; withdrawal=min(request,balance)",
+        "timingAndDomain": "Initial corpus>0, withdrawal>=0,termMonths1..1200, annualReturnPercent[-99,1000], explicit beginning/end defaultend; stops on depletion; deterministic constant return, no sustainable-rate or sequence-risk guarantee.",
+        "rounding": "Ending corpus and total withdrawn rounded2; depletionMonth integer/null; uses unrounded running balance. Reverse sustainableMonthlyWithdrawal uses explicit small-rate branch abs(r)<1e-12.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Review direct #54/full strategy scope and17support associations; do not equate deterministic corpus amortization to safe-withdrawal, pension, tax or portfolio suitability acceptance."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/swp.test.ts",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/investment-cashflow-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/swp.ts": "05c71cdb936b1b564b4a225e650739b2d1c1b36344fbf12aa4dec2793ffc1092",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/investment-cashflow-independent-goldens.ts": "91fedaf53ad6b4ad059fee5751f0820120bce453ec965d773ab4e0cb416d337f",
+          "src/calculators/finance/swp.test.ts": "f68f530174431839c6fbcb87b056d2df114e14c6734c490b3639d47bd844cafb",
+          "src/calculators/verification/investment-cashflow-goldens.test.ts": "7c1d97014ab663672682fcbe7b7678169b2713b929d91dfb4f587b3e732fa97c"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    },
+    {
+      "engineId": "finance.simple-interest",
+      "version": 1,
+      "slug": "simple-interest-calculator",
+      "url": "https://calcumint.com/calculators/finance-investment/simple-interest-calculator",
+      "riskClass": "financial",
+      "sourcePath": "src/calculators/finance/simple-interest.ts",
+      "sourceSHA256": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773",
+      "directIdentityCandidates": [
+        50
+      ],
+      "allCatalogAssociations": [
+        {
+          "masterId": 50,
+          "basis": "RECORDED_CANDIDATE_NOT_CANONICAL_MAPPING",
+          "identityCandidate": true,
+          "sharedCatalogIds": [
+            50
+          ],
+          "canonicalMappingApproved": false
+        }
+      ],
+      "canonicalMappingApproved": false,
+      "qualifiedReviewStatus": "NOT_APPROVED_REQUEST_ONLY",
+      "mathematicalContractInspected": {
+        "formula": "interest=P*(annualRatePercent/100)*years; total=P+interest",
+        "timingAndDomain": "Noncompounding simple interest, same unspecified currency unit for principal/interest/total; all inputs finite nonnegative; fractional years allowed; no legal day-count or jurisdiction rules.",
+        "rounding": "interest and unrounded total independently roundTo(2). No explicit currency metadata is established by the generic schema.",
+        "moneyUnits": "Consistent input/output currency only; generic numerical schema does not establish USD, legal currency conventions or provider policy.",
+        "binary64Disclosure": "JavaScript binary64 historical engine; roundTo half-away tolerance is preserved, not replaced by Decimal50 half-even."
+      },
+      "sourceReview": {
+        "declaredUrls": [
+          "https://files.consumerfinance.gov/f/documents/cfpb_building_block_activities_calculating-loan-payments_worksheet.pdf"
+        ],
+        "urlMetadataOnly": "Declared source URLs are retained provenance, not proof of publisher revision/applicability. Reuse captured publisher bytes where available; request missing exact capture/revision only.",
+        "mortgageInheritance": null,
+        "exactOutstandingQuestion": "Review #50 full input/output/time basis and currency presentation; CFPB educational worksheet supports formula scope, not every legal loan convention, disclosure or tax rule."
+      },
+      "existingEvidence": {
+        "tests": [
+          "src/calculators/finance/simple-interest.test.ts",
+          "src/lib/registered-snapshot-replay.test.ts"
+        ],
+        "goldenDependenciesOrInheritedEngine": [
+          "src/calculators/finance/simple-interest-independent-goldens.ts"
+        ],
+        "claim": "Existing scoped tests, not freshly executed here and not complete canonical QA acceptance.",
+        "sourceHashes": {
+          "src/calculators/finance/simple-interest.ts": "602ea32c413f5ed632bb697b4f1583aaa70f4ebe68fadf6a6dac0ae5ef82c773",
+          "src/calculators/precision.ts": "859d54c9e77a132991117376672af4a8c61630c5cff398272abdca8919cba563",
+          "src/calculators/finance/simple-interest-independent-goldens.ts": "e7380cbb67f037566961e3ca278a4194c9b26dc9aec3a128ea90a08b4ec44036",
+          "src/calculators/finance/simple-interest.test.ts": "4eda3c3ef0f1002f19b76f092256a05c698c8676eac3d8bc218e87397aae492b",
+          "src/lib/registered-snapshot-replay.test.ts": "6de801891c58415952d7d2d631532022007649d247b6ec93cbe84d79f3361bb8"
+        }
+      },
+      "reviewerCommission": {
+        "competence": "Fixed-income/cashflow numerical methods and applicable financial consumer disclosures; additional local tax/provider/institution expertise only where the adopted product requires it.",
+        "identityRole": "Assigned active review-capable YMYL reviewer; record verified identity, competence, independence/conflict disposition, date and scope. Platform role is not competence.",
+        "requiredDecision": "Signed exact-version decision on formula, units, rounding, timing, independent witness results, boundary behavior, full feature scope, source revision/applicability and any justified N/A. No blanket family approval.",
+        "acceptanceOutcome": null
+      },
+      "requiredQaTypes": [
+        "engine-tests",
+        "formula-review",
+        "sources",
+        "methodology",
+        "reverse-solve",
+        "visualization-reconciliation",
+        "schedule-reconciliation",
+        "scenario-reconciliation",
+        "sensitivity-validation",
+        "entitlement-validation",
+        "ux-responsive",
+        "performance",
+        "security",
+        "seo-content",
+        "accessibility",
+        "ymyl-review"
+      ],
+      "conditionalRulePack": {
+        "type": "rule-pack-validation",
+        "requiredIf": "Reviewed applicability establishes rulePackRequired=true",
+        "applicability": "UNDETERMINED; do not infer exemption from absent metadata"
+      },
+      "hostedEvidenceInRetainedCapture": {
+        "date": "2026-11-05",
+        "identity": "ABSENT",
+        "qaRows": 0,
+        "reviewedSourceRows": 0,
+        "notFreshProductionQuery": true
+      },
+      "publicationPrerequisites": [
+        "Complete exact adopted canonical contract/engine/version; preserve historical versions",
+        "Reviewed source revision/applicability and actual QA decisions at exact source hashes",
+        "Competent assigned YMYL reviewer and independent signed limitations",
+        "Protected hosted draft identity creation and permitted review/certification lifecycle after separate authorization",
+        "Exact current persisted-state preflight, fail-closed gates and separate wave-specific release authorization"
+      ],
+      "eligible": false,
+      "productionActionAuthorized": false
+    }
+  ],
+  "eligibleCount": 0,
+  "reviewerApprovalCount": 0,
+  "releaseHold": true
+}
