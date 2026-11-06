@@ -1,0 +1,30 @@
+{
+  "readOnly": "on",
+  "observedAt": "2026-11-06T09:28:55.066951+00:00",
+  "bulkPrepareRpc": null,
+  "draftCreateRpc": null,
+  "bulkJobPolicies": [
+    {
+      "name": "jobs_admin_insert",
+      "check": "(has_platform_role(ARRAY['owner'::text, 'admin'::text]) AND (requested_by = ( SELECT auth.uid() AS uid)))",
+      "roles": [
+        "public"
+      ],
+      "using": null,
+      "command": "INSERT"
+    },
+    {
+      "name": "jobs_admin_read",
+      "check": null,
+      "roles": [
+        "public"
+      ],
+      "using": "is_platform_admin()",
+      "command": "SELECT"
+    }
+  ],
+  "governedLifecycleCounts": {
+    "published": 209
+  },
+  "publicationManifestDefinition": "CREATE OR REPLACE FUNCTION public.list_published_calculator_manifest()\n RETURNS TABLE(calculator_key text, slug text, version integer)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'public'\nAS $function$\n  select c.calculator_key, c.slug, c.version\n  from public.calculator_catalog_admin c\n  where c.lifecycle = 'published'\n  order by c.slug;\n$function$\n"
+}

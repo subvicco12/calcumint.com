@@ -9,7 +9,7 @@ import { summarizeReviewedEvidenceRemediation } from "@/calculators/reviewed-evi
 export const metadata = { title: "Calculator Factory" };
 
 const bulkExample = JSON.stringify([
-  { calculatorKey: "core:bmi", slug: "bmi-calculator", title: "BMI Calculator", category: "health", riskClass: "health" }
+  { calculatorKey: "health.bmi", slug: "bmi-calculator", title: "BMI Calculator", category: "health", riskClass: "health" }
 ], null, 2);
 
 export default async function AdminCalculatorsPage() {
@@ -47,8 +47,8 @@ export default async function AdminCalculatorsPage() {
     <div className="account-grid section">
       <form className="card form-stack" action={createCatalogCalculator}>
         <span className="eyebrow">New governed record</span><h2>Add calculator</h2>
-        <label>Calculator key<input name="calculatorKey" required placeholder="core:percentage"/></label>
-        <label>Slug<input name="slug" required pattern="[a-z0-9-]+" placeholder="percentage-calculator"/></label>
+        <label>Calculator key<input name="calculatorKey" required placeholder="core.percentage-of-value"/></label>
+        <label>Slug<input name="slug" required pattern="[a-z0-9-]+" placeholder="percentage-of-value-calculator"/></label>
         <label>Title<input name="title" required placeholder="Percentage Calculator"/></label>
         <label>Category<input name="category" required placeholder="math"/></label>
         <label>Risk class<select name="riskClass" defaultValue="standard"><option value="standard">Standard</option><option value="financial">Financial</option><option value="health">Health</option><option value="tax">Tax</option></select></label>
@@ -56,7 +56,7 @@ export default async function AdminCalculatorsPage() {
       </form>
 
       {canBulk ? <form className="card form-stack" action={importCalculatorInventory}>
-        <span className="eyebrow">Production factory</span><h2>Bulk inventory import</h2><p>Import or seed up to 250 calculator records in one governed job. Existing calculator keys are left unchanged.</p>
+        <span className="eyebrow">Production factory</span><h2>Bulk inventory import</h2><p>Prepare up to 250 registered calculator drafts atomically. Compatible existing records and approvals are preserved; missing pending checks can be repaired only on drafts. This requires the separately reviewed database preparation contract; no certification or publication occurs.</p>
         <label>Inventory JSON<textarea name="inventory" rows={14} defaultValue={bulkExample} spellCheck={false}/></label>
         <button className="button primary" type="submit">Run inventory import</button>
       </form> : <article className="card"><span className="eyebrow">Bulk factory</span><h2>Admin permission required</h2><p>Your role can work with individual calculator records, but only Owner/Admin can run bulk inventory jobs.</p></article>}

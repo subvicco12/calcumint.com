@@ -1,0 +1,113 @@
+{
+  "baseline": "a94a963d9e6b4b189ed864905d34b366c7d90c01",
+  "fullScopeImplementationsCompleted": 0,
+  "canonicalApprovals": 0,
+  "newPublicationEligible": 0,
+  "productionPublications": 0,
+  "releaseHold": true,
+  "sourceReviewerDecisionsModified": false,
+  "requirements": [
+    {
+      "id": "C20-NAV",
+      "catalogIds": [
+        370,
+        371,
+        372,
+        373,
+        374
+      ],
+      "status": "VERIFIED_SOFTWARE",
+      "behavior": "Exact-identity remount clears hidden or semantically incompatible fields"
+    },
+    {
+      "id": "C20-PLAN",
+      "catalogIds": [
+        370,
+        371,
+        372,
+        373,
+        374
+      ],
+      "status": "VERIFIED_SOFTWARE",
+      "behavior": "Current plan controls result capability presentation without mathematical differences"
+    },
+    {
+      "id": "C20-UNITS",
+      "catalogIds": [
+        370,
+        371,
+        372,
+        373,
+        374
+      ],
+      "status": "VERIFIED_SOFTWARE",
+      "behavior": "Declared and selected source/target units retained by actual caller scenario/export metadata"
+    },
+    {
+      "id": "C20-ANALYTICAL-TABLE",
+      "catalogIds": [
+        370,
+        371,
+        372,
+        373,
+        374
+      ],
+      "status": "VERIFIED_SOFTWARE_SUBSCOPE",
+      "behavior": "Valid paid results provide accessible raw input/output reconciliation and existing scope/formula explanations"
+    },
+    {
+      "id": "PUB-DRAFT-BINDING",
+      "catalogIds": [
+        370,
+        371,
+        372,
+        373,
+        374,
+        423,
+        424,
+        425,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        437,
+        438,
+        439,
+        440
+      ],
+      "status": "VERIFIED_SOFTWARE_SHARED_FACTORY",
+      "behavior": "Registry risk cannot be downgraded; exactv1binding required; future unsupported versions refuse; rule-pack requirement preserved"
+    },
+    {
+      "id": "PUB-DRAFT-ATOMIC",
+      "catalogIds": [
+        370,
+        371,
+        372,
+        373,
+        374,
+        423,
+        424,
+        425,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        437,
+        438,
+        439,
+        440
+      ],
+      "status": "VERIFIED_ISOLATED_CONDITIONAL_ADOPTION",
+      "behavior": "One invoker transaction stages drafts/pendingQA/audits/completedjob; idempotent retry, conflict refusal and rollback; proposal unactivated"
+    }
+  ]
+}
