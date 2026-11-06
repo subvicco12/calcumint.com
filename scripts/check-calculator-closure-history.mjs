@@ -1,8 +1,9 @@
 /** Frozen packet tests run against their exact predecessor caller. The new caller is separately hash-bound. */
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {lstatSync,mkdirSync,mkdtempSync,readFileSync,rmSync,symlinkSync,writeFileSync} from 'node:fs';
+import {existsSync,lstatSync,mkdirSync,mkdtempSync,readFileSync,rmSync,symlinkSync,writeFileSync} from 'node:fs';
 import path from 'node:path';
+import {verifyPublication20CallerLineage} from './publication20-caller-lineage.mjs';
 import os from 'node:os';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -31,7 +32,12 @@ export function verifyCallerSuccessor(directory=root){
  if(!hashes||JSON.stringify(Object.keys(hashes).sort())!==JSON.stringify(expectedPaths))throw Error('Caller successor binding membership differs');
  for(const name of expectedPaths){
   if(!/^[a-f0-9]{64}$/.test(hashes[name])||originalGuardHashes[name]&&hashes[name]!==originalGuardHashes[name])throw Error('Frozen guard hash differs: '+name);
-  if(createHash('sha256').update(readSafe(directory,name)).digest('hex')!==hashes[name])throw Error('Caller successor hash differs: '+name);
+  const current=readSafe(directory,name);
+  if(createHash('sha256').update(current).digest('hex')!==hashes[name]){
+   if(name!==caller||!existsSync(path.join(directory,'docs/shortest-publication-20/caller-lineage.json')))throw Error('Caller successor hash differs: '+name);
+   const next=verifyPublication20CallerLineage(directory);
+   if(createHash('sha256').update(next.predecessorCallerBytes).digest('hex')!==hashes[name])throw Error('Caller predecessor hash differs: '+name);
+  }
  }
  return {callerSuccessorVerified:true,bindingsVerified:expectedPaths.length};
 }

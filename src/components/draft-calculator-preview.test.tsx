@@ -107,7 +107,7 @@ it('preserves the capture after a failed account save',async()=>{
  render(<DraftCalculatorPreview persistence={account({plan:'free',save:vi.fn(async()=>{throw Error('atomic quota unavailable');})})}/>);
  fireEvent.click(screen.getByRole('button',{name:'Calculate'}));const before=document.querySelector('.result-box')!.textContent;
  fireEvent.click(screen.getByRole('button',{name:'Save to account'}));await waitFor(()=>expect(screen.getByRole('alert').textContent).toContain('not confirmed'));
- expect(document.querySelector('.result-box')!.textContent).toBe(before);expect(screen.queryByText(/atomic quota enforcement/)).toBeNull();expect(document.activeElement).toBe(screen.getByRole('alert'));
+ expect(document.querySelector('.result-box')!.textContent).toBe(before);expect(screen.queryByText(/atomic quota enforcement/)).toBeNull();await waitFor(()=>expect(document.activeElement).toBe(screen.getByRole('alert')));
 });
 it('ignores pending account responses after account and calculator switches',async()=>{
  let resolve!:(value:{id:string})=>void;const persistence=account({save:vi.fn(()=>new Promise<{id:string}>(yes=>{resolve=yes;}))});

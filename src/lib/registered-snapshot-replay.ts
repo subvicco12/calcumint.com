@@ -1,5 +1,6 @@
 /** Explicit verification only. Never rewrite history, change versions or grant lifecycle approval. */
 import {z} from 'zod';
+import {publication20Definitions} from './publication20';
 import type {CalculatorDefinition} from '@/calculators/types';
 import {percentageCalculator} from '@/calculators/core/percentage';
 import {unitConversionCalculator} from '@/calculators/core/unit-conversion';
@@ -16,12 +17,12 @@ import {loanPaymentCalculator} from '@/calculators/finance/loan-payment';
 import {sipPeriodResult,compoundPeriodResult,investmentPeriodExport} from '@/calculators/final-framework/investment-periods';
 import {sipRegisteredRateAnalysis,compoundRegisteredRateAnalysis,loanRegisteredRateAnalysis,registeredRateExport} from '@/calculators/final-framework/registered-rate-analysis';
 import {buildMortgageRateAnalysis} from '@/calculators/final-framework/mortgage-rate-analysis';
-export const registeredReplaySlugs=Object.freeze(['mortgage-payment','bmi-calculator','sip-calculator','loan-emi-calculator','loan-payment-calculator','percentage-of-value-calculator','simple-interest-calculator','compound-interest-calculator','unit-conversion-calculator']);
+export const registeredReplaySlugs=Object.freeze(['mortgage-payment','bmi-calculator','sip-calculator','loan-emi-calculator','loan-payment-calculator','percentage-of-value-calculator','simple-interest-calculator','compound-interest-calculator','unit-conversion-calculator',...publication20Definitions.map(row=>row.definition.slug)]);
 const shape=z.object({calculatorSlug:z.string().min(1).max(200),calculatorVersion:z.number().int().positive(),input:z.record(z.string(),z.unknown()),output:z.record(z.string(),z.unknown())}).strict();
 export function verifyRegisteredSnapshot(raw:unknown):Readonly<{snapshot:CalculationSnapshot;engineId:string;engineVersion:number;scope:string}>{
  const clean=copyCalculationData({value:raw},{}).input.value,snapshot=createCalculationSnapshot(shape.parse(clean));
  if(!registeredReplaySlugs.includes(snapshot.calculatorSlug))throw Error('Exact-engine verification is unavailable for this recorded contract; original history remains readable.');
- const definitions=[percentageCalculator,unitConversionCalculator,simpleInterestCalculator,bmiCalculator,mortgageCalculator,sipCalculator,loanAnalysisCalculator,loanPaymentCalculator,compoundInterestCalculator] as unknown as readonly CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>[];
+ const definitions=[percentageCalculator,unitConversionCalculator,simpleInterestCalculator,bmiCalculator,mortgageCalculator,sipCalculator,loanAnalysisCalculator,loanPaymentCalculator,compoundInterestCalculator,...publication20Definitions.map(row=>row.definition)] as unknown as readonly CalculatorDefinition<Record<string,unknown>,Record<string,unknown>>[];
  const definition=definitions.find(d=>d.slug===snapshot.calculatorSlug);
  if(!definition||definition.version!==snapshot.calculatorVersion)throw Error('This historical engine version is not in the replay allowlist; no upgrade is applied.');
  const input=definition.inputSchema.parse(snapshot.input) as Record<string,unknown>;

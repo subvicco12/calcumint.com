@@ -1,0 +1,1029 @@
+{
+  "kind": "RANKED_CONDITIONAL_PUBLICATION_PATH_NOT_A_NEW_540_INVENTORY",
+  "baseline": "2f088187dd395fd26262c32195b427258f44fa44",
+  "selectedIds": [
+    374,
+    370,
+    371,
+    372,
+    373,
+    432,
+    440,
+    434,
+    423,
+    424,
+    425,
+    428,
+    438,
+    437,
+    439,
+    429,
+    430,
+    431,
+    433,
+    427
+  ],
+  "sourceFiles": [
+    "docs/publication-fourday-20261105/catalog/actionable-batches.json",
+    "docs/publication-fourday-20261105/catalog/normalized-540-base.json",
+    "docs/calculator-first/registry-snapshot.json"
+  ],
+  "counts": {
+    "selected": 20,
+    "newInterfaces": 15,
+    "existingInterfacesPreservedAndHardened": 5,
+    "newEngineFormulas": 0,
+    "newFullScopeAccepted": 0,
+    "newCanonicalAccepted": 0,
+    "newPublicationEligible": 0,
+    "newFullScopeImplementationsEstablished": 0
+  },
+  "rows": [
+    {
+      "rank": 1,
+      "catalogId": 374,
+      "catalogTitle": "Storage Conversion Calculator",
+      "catalogDomain": "Technology & Computing",
+      "engineId": "technology.storage-conversion",
+      "version": 1,
+      "slug": "storage-conversion-calculator",
+      "candidateUrl": "https://calcumint.com/calculators/technology-computing/storage-conversion-calculator",
+      "localReviewLabel": "reviewed",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "EXISTING_TECHNOLOGY_FORM",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "EXISTING_FORM_PRESERVED_WITH_STRICT_CALLER_GUARD",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Binary IEC storage only; existing form preserved, strictly positive values.",
+        "sources": [
+          {
+            "label": "NIST \u2014 Binary prefixes",
+            "url": "https://physics.nist.gov/cuu/Units/binary.html",
+            "note": "IEC binary prefixes distinguish 1024-based units such as MiB and GiB from decimal SI MB and GB."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 2,
+      "catalogId": 370,
+      "catalogTitle": "Bandwidth Calculator",
+      "catalogDomain": "Technology & Computing",
+      "engineId": "technology.bandwidth",
+      "version": 1,
+      "slug": "bandwidth-calculator",
+      "candidateUrl": "https://calcumint.com/calculators/technology-computing/bandwidth-calculator",
+      "localReviewLabel": "reviewed",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "EXISTING_TECHNOLOGY_FORM",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "EXISTING_FORM_PRESERVED_WITH_STRICT_CALLER_GUARD",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Ideal decimal MB/Mbps bandwidth; no provider/overhead guarantee.",
+        "sources": [
+          {
+            "label": "RFC 1547 \u2014 octet terminology",
+            "url": "https://www.rfc-editor.org/rfc/rfc1547",
+            "note": "RFC 1547 defines an octet as eight bits. CalcuMint uses that unit relationship for its idealized MB/Mbps transfer-rate arithmetic; protocol overhead, latency and congestion are intentionally outside these simple estimates."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 3,
+      "catalogId": 371,
+      "catalogTitle": "Download Time Calculator",
+      "catalogDomain": "Technology & Computing",
+      "engineId": "technology.download-time",
+      "version": 1,
+      "slug": "download-time-calculator",
+      "candidateUrl": "https://calcumint.com/calculators/technology-computing/download-time-calculator",
+      "localReviewLabel": "reviewed",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "EXISTING_TECHNOLOGY_FORM",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "EXISTING_FORM_PRESERVED_WITH_STRICT_CALLER_GUARD",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Ideal download time; constant declared Mbps, no delivery guarantee.",
+        "sources": [
+          {
+            "label": "RFC 1547 \u2014 octet terminology",
+            "url": "https://www.rfc-editor.org/rfc/rfc1547",
+            "note": "RFC 1547 defines an octet as eight bits. CalcuMint uses that unit relationship for its idealized MB/Mbps transfer-rate arithmetic; protocol overhead, latency and congestion are intentionally outside these simple estimates."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 4,
+      "catalogId": 372,
+      "catalogTitle": "Upload Time Calculator",
+      "catalogDomain": "Technology & Computing",
+      "engineId": "technology.upload-time",
+      "version": 1,
+      "slug": "upload-time-calculator",
+      "candidateUrl": "https://calcumint.com/calculators/technology-computing/upload-time-calculator",
+      "localReviewLabel": "reviewed",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "EXISTING_TECHNOLOGY_FORM",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "EXISTING_FORM_PRESERVED_WITH_STRICT_CALLER_GUARD",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Ideal upload time; constant declared Mbps, no delivery guarantee.",
+        "sources": [
+          {
+            "label": "RFC 1547 \u2014 octet terminology",
+            "url": "https://www.rfc-editor.org/rfc/rfc1547",
+            "note": "RFC 1547 defines an octet as eight bits. CalcuMint uses that unit relationship for its idealized MB/Mbps transfer-rate arithmetic; protocol overhead, latency and congestion are intentionally outside these simple estimates."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 5,
+      "catalogId": 373,
+      "catalogTitle": "Data Transfer Calculator",
+      "catalogDomain": "Technology & Computing",
+      "engineId": "technology.data-transfer",
+      "version": 1,
+      "slug": "data-transfer-calculator",
+      "candidateUrl": "https://calcumint.com/calculators/technology-computing/data-transfer-calculator",
+      "localReviewLabel": "reviewed",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "EXISTING_TECHNOLOGY_FORM",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "EXISTING_FORM_PRESERVED_WITH_STRICT_CALLER_GUARD",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Ideal transferred decimal MB; no protocol-overhead model.",
+        "sources": [
+          {
+            "label": "RFC 1547 \u2014 octet terminology",
+            "url": "https://www.rfc-editor.org/rfc/rfc1547",
+            "note": "RFC 1547 defines an octet as eight bits. CalcuMint uses that unit relationship for its idealized MB/Mbps transfer-rate arithmetic; protocol overhead, latency and congestion are intentionally outside these simple estimates."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 6,
+      "catalogId": 432,
+      "catalogTitle": "Time Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.time",
+      "version": 1,
+      "slug": "time-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/time-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Fixed seconds/day/week durations, not calendar or timezone arithmetic.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 7,
+      "catalogId": 440,
+      "catalogTitle": "Frequency Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.frequency",
+      "version": 1,
+      "slug": "frequency-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/frequency-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "SI frequency prefixes, not angular frequency.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 8,
+      "catalogId": 434,
+      "catalogTitle": "Data Storage Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.data-storage",
+      "version": 1,
+      "slug": "data-storage-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/data-storage-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Case-sensitive decimal KB/MB and binary KiB/MiB/GiB; distinct from374.",
+        "sources": [
+          {
+            "label": "IEC 80000-13 \u2014 binary prefixes",
+            "url": "https://www.iec.ch/prefixes-binary-multiples",
+            "note": "Reference for binary prefixes used for digital information."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 9,
+      "catalogId": 423,
+      "catalogTitle": "Length Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.length",
+      "version": 1,
+      "slug": "length-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/length-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "International length units; no survey-foot ambiguity.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative reference for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 10,
+      "catalogId": 424,
+      "catalogTitle": "Area Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.area",
+      "version": 1,
+      "slug": "area-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/area-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Squared international length, acre/hectare applicability.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative reference for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 11,
+      "catalogId": 425,
+      "catalogTitle": "Volume Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.volume",
+      "version": 1,
+      "slug": "volume-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/volume-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Explicit US liquid gallon/quart; no Imperial substitution.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative reference for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 12,
+      "catalogId": 428,
+      "catalogTitle": "Speed Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.speed",
+      "version": 1,
+      "slug": "speed-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/speed-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "International nautical mile/knots and fixed speed-unit conversion.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative reference for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 13,
+      "catalogId": 438,
+      "catalogTitle": "Force Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.force",
+      "version": 1,
+      "slug": "force-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/force-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Conventional standard-gravity lbf and SI force unit meanings.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 14,
+      "catalogId": 437,
+      "catalogTitle": "Density Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.density",
+      "version": 1,
+      "slug": "density-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/density-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Existing lb/ft3 factor precision; no material/temperature model.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 15,
+      "catalogId": 439,
+      "catalogTitle": "Torque Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.torque",
+      "version": 1,
+      "slug": "torque-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/torque-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Existing pound-force inch/foot factors and precision.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 16,
+      "catalogId": 429,
+      "catalogTitle": "Pressure Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.pressure",
+      "version": 1,
+      "slug": "pressure-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/pressure-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Existing rounded psi factor; standard atmosphere; no gauge offset.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 17,
+      "catalogId": 430,
+      "catalogTitle": "Energy Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.energy",
+      "version": 1,
+      "slug": "energy-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/energy-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Thermochemical calorie4.184J; no nutrition model.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 18,
+      "catalogId": 431,
+      "catalogTitle": "Power Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.power",
+      "version": 1,
+      "slug": "power-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/power-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Mechanical horsepower, not metric/electrical horsepower.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 19,
+      "catalogId": 433,
+      "catalogTitle": "Angle Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.angle",
+      "version": 1,
+      "slug": "angle-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/angle-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NONZERO_TO_ZERO_UNDERFLOW_NOT_REFUSED_AT_CALLER",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "NEW_FALSE_ZERO_CAPTURE_REFUSED; ORIGINAL_V1_UNCHANGED",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Existing host Math.PI radians; no arbitrary precision guarantee.",
+        "sources": [
+          {
+            "label": "NIST Guide to the SI \u2014 conversion factors",
+            "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+            "note": "Reference conversion factors for SI and accepted non-SI units."
+          },
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative definitions for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    },
+    {
+      "rank": 20,
+      "catalogId": 427,
+      "catalogTitle": "Temperature Converter",
+      "catalogDomain": "Conversion",
+      "engineId": "conversion.temperature",
+      "version": 1,
+      "slug": "temperature-converter",
+      "candidateUrl": "https://calcumint.com/calculators/unit-conversions/temperature-converter",
+      "localReviewLabel": "draft",
+      "rankingBasis": "Existing form first; then reusable converter form and source/precision/applicability complexity. Conditional engineering/review ranking, not approval or unsupported hours.",
+      "before": {
+        "interface": "MISSING_CONVERTER_DISPATCH",
+        "inputOutputTrust": "NO_SCALAR_UI; AFFINE_ZERO_IS_VALID",
+        "exactReplay": "NOT_IN_REGISTERED_FORWARD_ALLOWLIST"
+      },
+      "after": {
+        "interface": "SHARED_EXISTING_ENGINE_INTERFACE_IMPLEMENTED",
+        "underflow": "LEGITIMATE_AFFINE_ZERO_PRESERVED; NO_HISTORICAL_DOMAIN_REWRITE",
+        "replay": "EXACT_EXISTING_VERSION_ARITHMETIC_ADDED; NO_LATEST_FALLBACK"
+      },
+      "establishedFacts": {
+        "titleAndDomainMatch": true,
+        "recordedSingleCandidate": true,
+        "formalCanonicalAdoption": false,
+        "declaredScope": "Existing affine value conversion accepts all finite inputs, not intervals or an approved physical-domain restriction.",
+        "sources": [
+          {
+            "label": "BIPM \u2014 SI Brochure, 9th edition",
+            "url": "https://www.bipm.org/en/publications/si-brochure",
+            "note": "Authoritative reference for SI units and prefixes."
+          }
+        ]
+      },
+      "remainingBlockers": [
+        "Full canonical contract and offered tier/workflow acceptance not established by current-v1 interface tests",
+        "Exact publisher revision/body/factor applicability review; URLs alone do not prove it",
+        "Competent per-ID mathematical/source and required QA decisions; no automatic specialist exemption",
+        "Current hosted exact identity/source/QA/reviewer/lifecycle acceptance; capture absent onNovember5, not queried anew",
+        "Separate production-write and wave-specific release authorization after eligibility; HOLD not an eligibility test"
+      ],
+      "qualifiedReview": "Standard math/metrology/technical competence assessment; local standard risk does not mandate financial YMYL but does not supply approval.",
+      "fullScopeAccepted": false,
+      "canonicalAccepted": false,
+      "publicationEligibleEstablished": false
+    }
+  ],
+  "releaseHold": true
+}
