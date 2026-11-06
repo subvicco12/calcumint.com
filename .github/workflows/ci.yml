@@ -526,6 +526,15 @@ jobs:
         run: node tests/frequency440-acceptance/next.mjs
         env:
           FREQUENCY440_NEXT_ARTIFACTS: ${{ runner.temp }}/frequency440-next
+      - name: Native registered Business API and embed acceptance
+        timeout-minutes: 6
+        run: |
+          node --test tests/native440/quota-bindings.test.mjs tests/full-product-batch17/workflow.test.mjs
+          node tests/native440/quota.mjs
+          node tests/native440/acceptance.mjs
+        env:
+          NATIVE440_QUOTA_ARTIFACTS: ${{ runner.temp }}/native440-quota
+          NATIVE440_ARTIFACTS: ${{ runner.temp }}/native440
       - name: Preserve shortest publication cohort acceptance
         uses: actions/upload-artifact@v4
         with:
@@ -539,6 +548,8 @@ jobs:
             ${{ runner.temp }}/account-adoption1530/
             ${{ runner.temp }}/frequency440/
             ${{ runner.temp }}/frequency440-next/
+            ${{ runner.temp }}/native440/
+            ${{ runner.temp }}/native440-quota/
           if-no-files-found: error
           retention-days: 7
       - name: Approved six-candidate worker, workflow and replay acceptance

@@ -15,8 +15,8 @@ test('the three exact independent task campaigns and receipt checks are mandator
  assert(!/continue-on-error|\n        if:/.test(step));
  assert(product.indexOf('node tests/full-product-batch16/finder-browser.mjs')<product.indexOf(marker),'Prior browser cleanup precedes new Docker campaigns');
 });
-test('all original strict aggregate outcomes and job budgets remain intact',()=>{
+test('strict aggregate outcomes and bounded native acceptance budget remain intact',()=>{
  assert(requiredVerificationJobs(workflow).includes('publication-factory'));
  for(const variable of ['CHECKS','BUILD','FULL_PRODUCT','SOURCE_ACCEPTANCE'])assert(workflow.includes(`test "$${variable}_RESULT" = success`));
- const jobs=workflowJobs(workflow);for(const name of ['checks','build','full-product','source-acceptance'])assert.match(jobs[name],/^    timeout-minutes: 20$/m);assert.match(jobs['publication-factory'],/^    timeout-minutes: 12$/m);
+ const jobs=workflowJobs(workflow);for(const name of ['checks','build','full-product','source-acceptance'])assert.match(jobs[name],/^    timeout-minutes: 20$/m);const nativeStep=jobs['publication-factory'].split('      - name: Genuine Next frequency history and Business workflow\n')[1];assert(nativeStep,'Native authenticated acceptance stays mandatory');const minutes=Number(nativeStep.match(/^        timeout-minutes: (\d+)$/m)?.[1]);assert.equal(minutes,6);assert.match(jobs['publication-factory'],new RegExp('^    timeout-minutes: '+(12+minutes)+'$','m'));
 });

@@ -1,0 +1,3 @@
+PASS Captured hosted count-then-insert quota deterministically overshoots1 with two writers held after counting
+PASS Existing guarded atomic successor serializes the same quota callers without changing grants/RLS/objects
+PASS Guarded reverse/rollback/reapply preserve usage and both quota/account adoption orders compose without metadata drift

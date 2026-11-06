@@ -1,0 +1,15 @@
+{
+  "releaseHold": true,
+  "executionAuthorized": false,
+  "reviewReady": true,
+  "nodes": [
+    {"id":"writer-ddl-freeze","status":"BLOCKED","requires":["named external/service-key writers","provider controls","drained transactions","approved operator window"]},
+    {"id":"account-atomic-rpcs","status":"GUARDED_UNACTIVATED","artifact":"docs/account-adoption1530/package","requires":["writer-ddl-freeze","fresh exact source/metadata and target-data matches"]},
+    {"id":"publication-successors","status":"GUARDED_UNACTIVATED","artifact":"docs/adoption1528/package","requires":["writer-ddl-freeze","source/reviewer/QA/lifecycle decisions"]},
+    {"id":"atomic-quota-readiness","status":"GUARDED_UNACTIVATED","artifact":"docs/native440/quota","requires":["writer-ddl-freeze","exact pinned preimage/postimage","provider/sequence privileges"]},
+    {"id":"native-delivery-runtime","status":"NOT_DEPLOYED","requires":["atomic-quota-readiness","approved EMBED_SESSION_SECRET provisioning","canonical origin","separate deployment authority"]},
+    {"id":"440-publication","status":"BLOCKED","requires":["canonical full-scope adjudication","formal source applicability","competent exact-version QA","required certification and lifecycle approvals","publication-successors","native-delivery-runtime","separate release authorization"]}
+  ],
+  "independentReviewIsCertification": false,
+  "newlyEligible": 0
+}

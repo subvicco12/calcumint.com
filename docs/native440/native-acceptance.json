@@ -1,0 +1,898 @@
+{
+  "passed": true,
+  "checks": [
+    "Actual Next native API requires genuine scoped Business key and real publication gate denies unapproved440",
+    "Actual authenticated grant issuance denies unapproved publication, foreign organization and cross-origin POST",
+    "Conditional native API executes exact originalv1 engine with strict decimal provenance and domain refusal",
+    "Native quota readiness rejects missing or source-drifted metering without unsafe fallback",
+    "Real authenticated Owner/Admin grant, conditional server-side native embed parity and same-origin calculation denial",
+    "Embed page enforces permitted ancestor CSP, frame/referrer context and preserves base CSP",
+    "Actual native iframe renders320px, calculates on server and retains version/methodology/source disclosure",
+    "Native ancestor CSP blocks an unrelated top-level host nesting the otherwise allowed parent",
+    "Committed issuer removal, Business downgrade and API key revocation deny subsequent delivery"
+  ],
+  "applicationBaseline": "566b09595d6796087dc835cd1d2eb8651e22f932",
+  "publicationTransport": {
+    "realSourceSHA256": "a6cff7abd772c51999d6a32116d6b592f55338d1b4fdd4c30e0f9187b15bcfd8",
+    "syntheticSHA256": "a085e8bc86ad2b28e0dfb94c2a91bb567eb50b445a8ca8abb879ab9d5cae4f3a",
+    "productionDefaultDenied": true,
+    "positivePath": "Explicitly synthetic publication decision in disposableNextcopy only; no certification records or repository status changed"
+  },
+  "response": {
+    "catalogId": 440,
+    "engineId": "conversion.frequency",
+    "slug": "frequency-converter",
+    "version": 1,
+    "enteredValue": "0.01001",
+    "input": {
+      "value": 0.01001,
+      "fromUnit": "hz",
+      "toUnit": "khz"
+    },
+    "output": {
+      "result": 0.00001001
+    },
+    "methodology": [
+      {
+        "id": "conversion",
+        "expression": "target = source × (source hertz / target hertz)",
+        "description": "Converts with a direct ratio of fixed base-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling."
+      }
+    ],
+    "sources": [
+      {
+        "label": "NIST Guide to the SI — conversion factors",
+        "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9",
+        "note": "Reference conversion factors for SI and accepted non-SI units."
+      },
+      {
+        "label": "BIPM — SI Brochure, 9th edition",
+        "url": "https://www.bipm.org/en/publications/si-brochure",
+        "note": "Authoritative definitions for SI units and prefixes."
+      }
+    ],
+    "limitations": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Scalar cycle frequency only; no angular-frequency or spectral model.",
+    "warnings": [
+      "Binary64 values; subnormal input/output and overflow are refused. Display rounding does not change stored results. JSON represents signed zero as zero; enteredValue retains the submitted decimal text."
+    ]
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/create_business_organization",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/business_api_keys",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/business_api_keys",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/consume_native_business_api_quota_v1",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organizations",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/business_api_keys",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_api_keys",
+      "status": 200
+    }
+  ],
+  "fixture": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Full repository candidate model plus locally adopted guarded review bundle; NOT raw historical-chain success or authentic captured production equivalence",
+    "authMigrationCount": 75,
+    "authUidOwner": "supabase_auth_admin",
+    "schemaCoverage": {
+      "tables": [
+        "admin_alerts",
+        "ai_usage_events",
+        "api_usage_events",
+        "batch_calculation_jobs",
+        "batch_request_receipts",
+        "billing_account_fences",
+        "billing_atomic_completions",
+        "billing_customers",
+        "billing_webhook_events",
+        "business_api_keys",
+        "business_projects",
+        "business_webhook_endpoints",
+        "calculation_history",
+        "calculation_projects",
+        "calculator_bulk_jobs",
+        "calculator_catalog_admin",
+        "calculator_qa_checks",
+        "calculator_review_events",
+        "calculator_source_evidence",
+        "client_workspaces",
+        "custom_calculator_runs",
+        "custom_calculator_versions",
+        "custom_calculators",
+        "embed_configs",
+        "embed_events",
+        "embed_lead_receipts",
+        "embed_leads",
+        "favorites",
+        "lead_consents",
+        "organization_audit_log",
+        "organization_invitations",
+        "organization_members",
+        "organizations",
+        "platform_admins",
+        "profiles",
+        "saved_scenarios",
+        "share_links",
+        "shared_calculations",
+        "subscriptions",
+        "user_preferences",
+        "webhook_deliveries"
+      ],
+      "policies": 86,
+      "publicFunctions": 88,
+      "tablesWithoutRls": null
+    },
+    "appliedHistoricalSources": [
+      "001_b3_accounts.sql",
+      "002_b4_billing.sql",
+      "003_b5_business.sql",
+      "004_b6_builder.sql",
+      "005_b7_delivery.sql",
+      "006_b8_api_automation.sql",
+      "007_b9_ai.sql",
+      "008_b10_admin_factory.sql",
+      "008b_b10_alert_automation.sql",
+      "010_b7_pro_workspace.sql",
+      "012_production_fk_indexes.sql",
+      "013_production_rpc_privilege_hardening_v2.sql",
+      "014_production_entitlement_rpc_sync.sql",
+      "016_final_certification_evidence_gate.sql",
+      "017_regulatory_rule_pack_evidence.sql",
+      "018_harden_rule_pack_required_metadata.sql",
+      "019_authoritative_lifecycle_enforcement.sql",
+      "020_post_certification_revalidation.sql",
+      "021_require_rule_pack_provenance.sql",
+      "022_harden_reviewer_waiver_authority.sql",
+      "023_structured_source_evidence.sql",
+      "024_reviewer_assignment_authority.sql",
+      "025_derived_source_count_authority.sql",
+      "026_publication_manifest_authority.sql",
+      "027_publication_trigger_privilege_hardening.sql",
+      "028_source_evidence_reviewer_index.sql",
+      "029_account_rls_auth_initplan.sql",
+      "030_billing_ai_rls_auth_initplan.sql",
+      "031_admin_identity_rls_auth_initplan.sql",
+      "032_business_builder_rls_auth_initplan.sql",
+      "033_pro_workspace_rls_auth_initplan.sql",
+      "034_billing_webhook_event_privileges.sql",
+      "035_split_overlapping_write_policies.sql",
+      "036_consolidate_ai_usage_read_policy.sql",
+      "037_builder_publish_business_entitlement.sql"
+    ],
+    "deferredToBundle": [
+      "009_country_preferences.sql",
+      "038_client_account_billing_privileges.sql",
+      "032_atomic_reviewer_qa_audit.sql",
+      "033_atomic_reviewer_assignment_audit.sql",
+      "034_atomic_lifecycle_transition_audit.sql",
+      "035_atomic_catalog_creation.sql"
+    ],
+    "legacy011": "unchanged broken source fingerprinted; existing missing-contract repair adopted only locally",
+    "sources": [
+      {
+        "path": "docs/audits/migration-contract-2026-10-20/inventory.json",
+        "sha256": "67e0cf0d7ee790de5de7cfa348f5b18ac20359dfca670ee8c1fb4870703e784b"
+      },
+      {
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      },
+      {
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      },
+      {
+        "path": "supabase/migrations/003_b5_business.sql",
+        "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5"
+      },
+      {
+        "path": "supabase/migrations/004_b6_builder.sql",
+        "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899"
+      },
+      {
+        "path": "supabase/migrations/005_b7_delivery.sql",
+        "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258"
+      },
+      {
+        "path": "supabase/migrations/006_b8_api_automation.sql",
+        "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5"
+      },
+      {
+        "path": "supabase/migrations/007_b9_ai.sql",
+        "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429"
+      },
+      {
+        "path": "supabase/migrations/008_b10_admin_factory.sql",
+        "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36"
+      },
+      {
+        "path": "supabase/migrations/008b_b10_alert_automation.sql",
+        "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa"
+      },
+      {
+        "path": "supabase/migrations/010_b7_pro_workspace.sql",
+        "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e"
+      },
+      {
+        "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+        "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50"
+      },
+      {
+        "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+        "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2"
+      },
+      {
+        "path": "supabase/migrations/012_production_fk_indexes.sql",
+        "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2"
+      },
+      {
+        "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+        "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa"
+      },
+      {
+        "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+        "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff"
+      },
+      {
+        "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+        "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e"
+      },
+      {
+        "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+        "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987"
+      },
+      {
+        "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+        "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66"
+      },
+      {
+        "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+        "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1"
+      },
+      {
+        "path": "supabase/migrations/020_post_certification_revalidation.sql",
+        "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1"
+      },
+      {
+        "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+        "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc"
+      },
+      {
+        "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+        "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818"
+      },
+      {
+        "path": "supabase/migrations/023_structured_source_evidence.sql",
+        "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01"
+      },
+      {
+        "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+        "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e"
+      },
+      {
+        "path": "supabase/migrations/025_derived_source_count_authority.sql",
+        "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4"
+      },
+      {
+        "path": "supabase/migrations/026_publication_manifest_authority.sql",
+        "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42"
+      },
+      {
+        "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+        "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070"
+      },
+      {
+        "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+        "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a"
+      },
+      {
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+      },
+      {
+        "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+        "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0"
+      },
+      {
+        "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+        "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4"
+      },
+      {
+        "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+        "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9"
+      },
+      {
+        "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+        "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f"
+      },
+      {
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4"
+      },
+      {
+        "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+        "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d"
+      },
+      {
+        "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+        "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5"
+      },
+      {
+        "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+        "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b"
+      }
+    ],
+    "bundle": {
+      "reviewVersion": "20261021.v1",
+      "deploymentVersion": null,
+      "productionExecutionAuthorized": false,
+      "requires": [
+        "owner dispositions for historical differences and external writers",
+        "trusted postgres ownership",
+        "reviewed write pause, timeouts, backup and restore plan",
+        "exact metadata freshness and schema/ledger preconditions"
+      ],
+      "excludes": [
+        "011 missing-only repair",
+        "historical029 replay",
+        "global default ACL changes",
+        "production execution"
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+          "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+        },
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        },
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        },
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        },
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+          "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+          "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+          "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+          "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+          "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+          "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a"
+        }
+      ],
+      "sha256": "07dda25c047f8e75059402f561c5e4988322f60ed40faaa23aa87740c36534a4"
+    },
+    "productionEquivalence": "UNKNOWN",
+    "captureAvailable": false
+  },
+  "limits": [
+    "New native paths exercised through genuine GoTrue, Business keys/scopes/quota, Next routes and iframe; positive publication authority remains synthetic and unapproved",
+    "Origin restriction is browser framing policy, not proof against a stolen bearer grant or a nonbrowser client forging headers",
+    "No production/provider/version approval, no global writer integrity or in-flight revocation guarantee"
+  ],
+  "releaseHold": true,
+  "newPublicationEligible": 0
+}

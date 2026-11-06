@@ -1,0 +1,4 @@
+{
+  "error": "Error: Docker exec failed: ERROR:  function public.org_role(uuid) does not exist\nLINE 7:   select coalesce(public.org_role(target_org) = any(allowed_...\n                          ^\nHINT:  No function matches the given name and argument types. You might need to add explicit type casts.\n\n    at ChildProcess.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/gotrue-runtime/fixture.mjs:8:336)\n    at ChildProcess.emit (node:events:509:28)\n    at maybeClose (node:internal/child_process:1141:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:306:5)",
+  "checks": []
+}

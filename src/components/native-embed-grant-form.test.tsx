@@ -1,0 +1,4 @@
+// @vitest-environment jsdom
+import {afterEach,it,expect,vi} from 'vitest';import {render,screen,fireEvent,cleanup,act} from '@testing-library/react';import {NativeEmbedGrantForm} from './native-embed-grant-form';
+afterEach(()=>{cleanup();vi.unstubAllGlobals();});
+it('does not display a grant for an origin edited while issuance is pending',async()=>{let resolve!:(r:Response)=>void;vi.stubGlobal('fetch',vi.fn(()=>new Promise<Response>(r=>{resolve=r;})));render(<NativeEmbedGrantForm organizationId="00000000-0000-4000-8000-000000000001"/>);fireEvent.change(screen.getByLabelText('Allowed embed origin'),{target:{value:'https://a.example'}});fireEvent.click(screen.getByRole('button',{name:'Create native embed grant'}));fireEvent.change(screen.getByLabelText('Allowed embed origin'),{target:{value:'https://b.example'}});await act(async()=>{resolve(new Response(JSON.stringify({embedUrl:'https://local/embed/native/old'})));});expect(screen.queryByText(/old/)).toBeNull();});

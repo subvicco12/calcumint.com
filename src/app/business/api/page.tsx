@@ -1,3 +1,4 @@
+import {NativeEmbedGrantForm} from '@/components/native-embed-grant-form';
 import Link from "next/link";
 import { BusinessCredentialForm } from "@/components/business-credential-form";
 import { AccountSessionBoundary } from "@/components/account-session-boundary";
@@ -95,6 +96,6 @@ export default async function BusinessApiPage(_props: PageProps) {
         <p><code>POST /api/v1/batch</code> — process 1–100 calculation rows per request.</p>
         <p className="muted">Authenticate with <code>Authorization: Bearer &lt;api-key&gt;</code>. API keys are scope-limited, rate-limited and monthly-quota metered. Webhooks use HMAC-SHA256 signatures, retry with exponential backoff and dead-letter after eight failed attempts.</p>
       </article>
-    </section></AccountSessionBoundary>
+    <NativeEmbedGrantForm organizationId={String(membership.organization_id)}/></section></AccountSessionBoundary>
   );
 }
