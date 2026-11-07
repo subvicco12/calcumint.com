@@ -1,0 +1,35 @@
+✖ historical mathematical closure remains exact with explicit Git-bound draft caller successors (45.720867ms)
+✔ three profile keys bind one exact v3 engine with distinct operation and preserved v1 identity (0.99777ms)
+✔ exact four decisions remain unanswered and cannot inherit package recommendations as approval (0.276994ms)
+✔ byte-integrity evidence does not claim publisher authentication or owner authority (0.285431ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 128.300043
+
+✖ failing tests:
+
+test at tests/p0-decision-contracts/bindings.test.mjs:7:1
+✖ historical mathematical closure remains exact with explicit Git-bound draft caller successors (45.720867ms)
+  AssertionError [ERR_ASSERTION]: src/app/business/api/page.tsx
+  + actual - expected
+
+  + 'b55c1948dfceddc58bfa671421f97b5c3d384a212e8f3e7e7559aba95347887d'
+  - '9139a6fb155ae56b37b3b48738faf50197d1e3c5b1f7872391b53f495b2dcbc4'
+
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/p0-decision-contracts/bindings.test.mjs:9:258)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'b55c1948dfceddc58bfa671421f97b5c3d384a212e8f3e7e7559aba95347887d',
+    expected: '9139a6fb155ae56b37b3b48738faf50197d1e3c5b1f7872391b53f495b2dcbc4',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
