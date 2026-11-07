@@ -1,0 +1,46 @@
+{
+  "baseline": {
+    "pr": 1532,
+    "sha": "a681043567729358d852badbd8b7c2e377c205cb",
+    "ci": 42268307389,
+    "conclusion": "FAILURE"
+  },
+  "results": {
+    "unit": {
+      "passed": 8011,
+      "existingSkipped": 4,
+      "exitCode": 0,
+      "unhandledErrors": 0
+    },
+    "focusedPassed": 30,
+    "nodeBindingAndCIGuards": 43,
+    "isolatedMeteringGroups": 8,
+    "productionNextBrowserHTTPGroups": 11,
+    "launchPassed": 45,
+    "certificationPassed": 15,
+    "lint": "PASS 0errors;29warnings at full run, including one subsequently removed owned harness unused variable; final owned lint clean",
+    "typecheck": "PASS",
+    "webpack": "PASS",
+    "independentEngineeringReview": "Two read-only rounds; no blocking findings. Not competent certification."
+  },
+  "initialFullRunDefect": {
+    "assertionsPassed": 8011,
+    "unhandledErrors": 1,
+    "cause": "Existing calculus export test delayed URL cleanup outlived test URL mock",
+    "fix": "Test-only explicit timer drain before restoring globals; all existing assertions retained",
+    "rerun": "8011 passed4 skipped exit0 no unhandled errors"
+  },
+  "reusedEvidence": [
+    "634 frequency numerical witnesses",
+    "6 precision refusals",
+    "authenticated history/projects/scenarios",
+    "immutable exports/replay",
+    "original guarded quota/account/publication packages"
+  ],
+  "authorityFixture": "Native publication gate/composer and CSP unmodified; synthetic lower repository reader and local manifest RPC only",
+  "newCanonicalComplete": 0,
+  "newPublicationEligible": 0,
+  "newPublished": 0,
+  "releaseHold": true,
+  "productionWrites": false
+}

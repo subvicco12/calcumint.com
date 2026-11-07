@@ -1,0 +1,8 @@
+PASS Shared configured key limit, durable exact attribution and idempotent retry/conflict
+PASS Native API and embed share the existing quota lock under concurrent last-slot requests
+PASS Concurrent duplicate redemption produces one debit and one durable audit
+PASS Audit persistence failure rolls back the quota debit atomically
+PASS Cross-tenant attribution, revoked/expired grants and Business downgrade fail closed
+PASS RLS and caller privileges deny direct grant/audit access and metering RPC to untrusted roles
+PASS A committed revocation wins against waiting redemption with no quota or audit debit
+PASS Source-bound disable retains audit, denies calls, and isolated re-enable preserves current authority checks

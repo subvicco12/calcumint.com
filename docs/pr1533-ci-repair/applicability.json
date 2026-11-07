@@ -1,0 +1,50 @@
+{
+  "performance": {
+    "calculateToVisibleResultMs": 129,
+    "scope": "Four local production-iframe calculations, including keyboard submission; observed samples only, no remote latency or SLO claim",
+    "samplesMs": [
+      129,
+      98,
+      85,
+      103
+    ]
+  },
+  "reducedMotion": {
+    "matches": true,
+    "scrollBehavior": "auto",
+    "maxTransitionSeconds": 0.00001,
+    "maxAnimationSeconds": 0.00001
+  },
+  "contrast": [
+    {
+      "text": "Frequency Converter",
+      "foreground": "rgb(16, 33, 31)",
+      "background": "rgb(247, 251, 250)",
+      "ratio": 15.987585494581351
+    },
+    {
+      "text": "Value",
+      "foreground": "rgb(16, 33, 31)",
+      "background": "rgb(247, 251, 250)",
+      "ratio": 15.987585494581351
+    },
+    {
+      "text": "Converted value0.003 khzFixed-unit scalar conversi",
+      "foreground": "rgb(16, 33, 31)",
+      "background": "rgb(247, 251, 250)",
+      "ratio": 15.987585494581351
+    }
+  ],
+  "accessibility": {
+    "keyboardRecovery": true,
+    "scope": "Chromium accessibility tree of native 440 production iframe only: heading, named value/unit controls, calculation button and live result status; 320px overflow check",
+    "passed": true,
+    "fullWCAGAudit": false
+  },
+  "excluded": [
+    "engine634 witness rerun",
+    "Other calculator routes",
+    "Production traffic and remote latency",
+    "Screen-reader user testing"
+  ]
+}

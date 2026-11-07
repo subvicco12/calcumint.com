@@ -1,0 +1,118 @@
+2026-11-07T02:25:44.0375806Z ##[group]Run node --test tests/native440/quota-bindings.test.mjs tests/full-product-batch17/workflow.test.mjs
+2026-11-07T02:25:44.0376706Z [36;1mnode --test tests/native440/quota-bindings.test.mjs tests/full-product-batch17/workflow.test.mjs[0m
+2026-11-07T02:25:44.0377307Z [36;1mnode tests/native440/quota.mjs[0m
+2026-11-07T02:25:44.0377585Z [36;1mnode tests/native440-remediation/embed.postgres.mjs[0m
+2026-11-07T02:25:44.0377870Z [36;1mnode tests/native440/acceptance.mjs[0m
+2026-11-07T02:25:44.0394857Z shell: /usr/bin/bash -e {0}
+2026-11-07T02:25:44.0395062Z env:
+2026-11-07T02:25:44.0395374Z   CHROMIUM_PATH: /home/runner/work/_temp/calcumint-ci-browser.p2fdjU/opt/google/chrome/chrome
+2026-11-07T02:25:44.0395800Z   NATIVE440_QUOTA_ARTIFACTS: /home/runner/work/_temp/native440-quota
+2026-11-07T02:25:44.0396131Z   NATIVE440_ARTIFACTS: /home/runner/work/_temp/native440
+2026-11-07T02:25:44.0396686Z   EMBED_METER_ARTIFACTS: /home/runner/work/_temp/native440-meter
+2026-11-07T02:25:44.0396997Z ##[endgroup]
+2026-11-07T02:25:44.0793985Z TAP version 13
+2026-11-07T02:25:44.1107897Z # Subtest: the three exact independent task campaigns and receipt checks are mandatory and bounded
+2026-11-07T02:25:44.1127441Z ok 1 - the three exact independent task campaigns and receipt checks are mandatory and bounded
+2026-11-07T02:25:44.1128406Z   ---
+2026-11-07T02:25:44.1128885Z   duration_ms: 0.916824
+2026-11-07T02:25:44.1129396Z   type: 'test'
+2026-11-07T02:25:44.1129855Z   ...
+2026-11-07T02:25:44.1130630Z # Subtest: strict aggregate outcomes and bounded native acceptance budget remain intact
+2026-11-07T02:25:44.1131725Z ok 2 - strict aggregate outcomes and bounded native acceptance budget remain intact
+2026-11-07T02:25:44.1132453Z   ---
+2026-11-07T02:25:44.1132883Z   duration_ms: 2.070808
+2026-11-07T02:25:44.1133348Z   type: 'test'
+2026-11-07T02:25:44.1133765Z   ...
+2026-11-07T02:25:44.1235208Z # Subtest: accepts exact captured predecessor and reviewed sources
+2026-11-07T02:25:44.1236829Z ok 3 - accepts exact captured predecessor and reviewed sources
+2026-11-07T02:25:44.1237994Z   ---
+2026-11-07T02:25:44.1238272Z   duration_ms: 6.538358
+2026-11-07T02:25:44.1238558Z   type: 'test'
+2026-11-07T02:25:44.1238823Z   ...
+2026-11-07T02:25:44.1240596Z # Subtest: rejects rewritten functions even with matching raw
+2026-11-07T02:25:44.1241679Z ok 4 - rejects rewritten functions even with matching raw
+2026-11-07T02:25:44.1242096Z   ---
+2026-11-07T02:25:44.1247028Z   duration_ms: 1.615486
+2026-11-07T02:25:44.1247534Z   type: 'test'
+2026-11-07T02:25:44.1248132Z   ...
+2026-11-07T02:25:44.1248846Z # Subtest: rejects rewritten policies even with matching raw
+2026-11-07T02:25:44.1249646Z ok 5 - rejects rewritten policies even with matching raw
+2026-11-07T02:25:44.1250227Z   ---
+2026-11-07T02:25:44.1250654Z   duration_ms: 1.345497
+2026-11-07T02:25:44.1251129Z   type: 'test'
+2026-11-07T02:25:44.1251542Z   ...
+2026-11-07T02:25:44.1252124Z # Subtest: rejects rewritten relations even with matching raw
+2026-11-07T02:25:44.1252947Z ok 6 - rejects rewritten relations even with matching raw
+2026-11-07T02:25:44.1253552Z   ---
+2026-11-07T02:25:44.1253973Z   duration_ms: 1.364716
+2026-11-07T02:25:44.1254443Z   type: 'test'
+2026-11-07T02:25:44.1254874Z   ...
+2026-11-07T02:25:44.1255466Z # Subtest: rejects rewritten columns even with matching raw
+2026-11-07T02:25:44.1256216Z ok 7 - rejects rewritten columns even with matching raw
+2026-11-07T02:25:44.1256963Z   ---
+2026-11-07T02:25:44.1257382Z   duration_ms: 0.728086
+2026-11-07T02:25:44.1257843Z   type: 'test'
+2026-11-07T02:25:44.1258258Z   ...
+2026-11-07T02:25:44.1258744Z # Subtest: rejects rewritten defaultAcls even with matching raw
+2026-11-07T02:25:44.1259271Z ok 8 - rejects rewritten defaultAcls even with matching raw
+2026-11-07T02:25:44.1259649Z   ---
+2026-11-07T02:25:44.1259943Z   duration_ms: 1.132433
+2026-11-07T02:25:44.1260257Z   type: 'test'
+2026-11-07T02:25:44.1260546Z   ...
+2026-11-07T02:25:44.1260960Z # Subtest: rejects false provenance and arbitrary postimage
+2026-11-07T02:25:44.1261832Z ok 9 - rejects false provenance and arbitrary postimage
+2026-11-07T02:25:44.1262212Z   ---
+2026-11-07T02:25:44.1262520Z   duration_ms: 0.518697
+2026-11-07T02:25:44.1262837Z   type: 'test'
+2026-11-07T02:25:44.1263250Z   ...
+2026-11-07T02:25:44.1269358Z # Subtest: rejects changed proposal and wrapper bytes
+2026-11-07T02:25:44.1270860Z ok 10 - rejects changed proposal and wrapper bytes
+2026-11-07T02:25:44.1271260Z   ---
+2026-11-07T02:25:44.1271519Z   duration_ms: 3.528352
+2026-11-07T02:25:44.1271823Z   type: 'test'
+2026-11-07T02:25:44.1272086Z   ...
+2026-11-07T02:25:44.1330244Z 1..10
+2026-11-07T02:25:44.1330541Z # tests 10
+2026-11-07T02:25:44.1337019Z # suites 0
+2026-11-07T02:25:44.1337254Z # pass 10
+2026-11-07T02:25:44.1337486Z # fail 0
+2026-11-07T02:25:44.1337712Z # cancelled 0
+2026-11-07T02:25:44.1337954Z # skipped 0
+2026-11-07T02:25:44.1338115Z # todo 0
+2026-11-07T02:25:44.1338306Z # duration_ms 66.412207
+2026-11-07T02:25:47.2661725Z PASS Captured hosted count-then-insert quota deterministically overshoots1 with two writers held after counting
+2026-11-07T02:25:47.9432183Z PASS Existing guarded atomic successor serializes the same quota callers without changing grants/RLS/objects
+2026-11-07T02:25:48.9451574Z PASS Guarded reverse/rollback/reapply preserve usage and both quota/account adoption orders compose without metadata drift
+2026-11-07T02:25:54.8588838Z PASS Shared configured key limit, durable exact attribution and idempotent retry/conflict
+2026-11-07T02:25:55.0777606Z PASS Native API and embed share the existing quota lock under concurrent last-slot requests
+2026-11-07T02:25:55.4518626Z PASS Concurrent duplicate redemption produces one debit and one durable audit
+2026-11-07T02:25:55.7110937Z PASS Audit persistence failure rolls back the quota debit atomically
+2026-11-07T02:25:56.1272305Z PASS Cross-tenant attribution, revoked/expired grants and Business downgrade fail closed
+2026-11-07T02:25:56.3263377Z PASS RLS and caller privileges deny direct grant/audit access and metering RPC to untrusted roles
+2026-11-07T02:25:56.9938277Z PASS A committed revocation wins against waiting redemption with no quota or audit debit
+2026-11-07T02:25:57.3457328Z PASS Source-bound disable retains audit, denies calls, and isolated re-enable preserves current authority checks
+2026-11-07T02:27:20.4041344Z PASS Actual Next native API requires genuine scoped Business key and real publication gate denies unapproved440
+2026-11-07T02:27:20.5892663Z PASS Actual authenticated grant issuance denies unapproved publication, foreign organization and cross-origin POST
+2026-11-07T02:27:20.8687497Z PASS Real native gate composes lower repository reader with exact hosted engine, slug and version identity
+2026-11-07T02:27:20.9246710Z PASS Conditional native API executes exact originalv1 engine with strict decimal provenance and domain refusal
+2026-11-07T02:27:21.1180000Z PASS Native quota readiness rejects missing or source-drifted metering without unsafe fallback
+2026-11-07T02:27:21.9111541Z node:internal/modules/run_main:123
+2026-11-07T02:27:21.9193224Z     triggerUncaughtException(
+2026-11-07T02:27:21.9193481Z     ^
+2026-11-07T02:27:21.9193576Z
+2026-11-07T02:27:21.9193905Z AssertionError [ERR_ASSERTION]: {"status":503,"body":{"error":"Embed audit unavailable"}}
+2026-11-07T02:27:21.9194205Z
+2026-11-07T02:27:21.9194276Z 503 !== 200
+2026-11-07T02:27:21.9194375Z
+2026-11-07T02:27:21.9194656Z     at file:///home/runner/work/calcumint.com/calcumint.com/tests/native440/acceptance.mjs:24:881
+2026-11-07T02:27:21.9195184Z     at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+2026-11-07T02:27:21.9195531Z   generatedMessage: false,
+2026-11-07T02:27:21.9195744Z   code: 'ERR_ASSERTION',
+2026-11-07T02:27:21.9195936Z   actual: 503,
+2026-11-07T02:27:21.9196109Z   expected: 200,
+2026-11-07T02:27:21.9196521Z   operator: 'strictEqual',
+2026-11-07T02:27:21.9196723Z   diff: 'simple'
+2026-11-07T02:27:21.9196889Z }
+2026-11-07T02:27:21.9196978Z
+2026-11-07T02:27:21.9197050Z Node.js v22.23.4
+2026-11-07T02:27:21.9206920Z ##[error]Process completed with exit code 1.

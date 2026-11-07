@@ -12,7 +12,7 @@ beforeEach(() => {
  vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => setTimeout(() => callback(0), 0));
  vi.stubGlobal('cancelAnimationFrame', clearTimeout);
 });
-afterEach(() => {cleanup();vi.unstubAllGlobals();vi.restoreAllMocks();});
+afterEach(() => {cleanup();if(vi.isFakeTimers()){vi.runOnlyPendingTimers();vi.useRealTimers();}vi.unstubAllGlobals();vi.restoreAllMocks();});
 function change(label:string,value:string){fireEvent.change(screen.getByLabelText(label),{target:{value}});}
 function click(name:string){fireEvent.click(screen.getByRole('button',{name}));}
 async function start(){render(<CanonicalCalculusRecoveryWorkbench/>);change('Synthetic review plan','pro');click('Calculate');await waitFor(()=>expect((screen.getByRole('button',{name:'Save history'}) as HTMLButtonElement).disabled).toBe(false));}
@@ -48,7 +48,7 @@ it.each([2,3])('retains revision %s exactly through failed import and export',as
  await start();change('Calculation JSON (internal revisions2 or3)',JSON.stringify(artifact));click('Verify and restore calculation');
  const forged={...artifact,calculation:{...artifact.calculation,calculatorVersion:99}};
  change('Calculation JSON (internal revisions2 or3)',JSON.stringify(forged));click('Verify and restore calculation');
- click('Export immutable JSON');expect(JSON.parse(await blob!.text())).toEqual(artifact);
+ vi.useFakeTimers();click('Export immutable JSON');expect(JSON.parse(await blob!.text())).toEqual(artifact);expect(vi.getTimerCount()).toBe(1);vi.advanceTimersByTime(1000);expect(vi.getTimerCount()).toBe(0);
 });
 
 it.each(['free','pro','business'])('submits exact decimal inputs with result and error focus on %s',async plan=>{

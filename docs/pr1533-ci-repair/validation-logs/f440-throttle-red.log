@@ -1,0 +1,27 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/native-delivery/embed-request.test.ts [ src/lib/native-delivery/embed-request.test.ts ]
+Error: Cannot find module './embed-request' imported from '/workspace/work/owner-fullscope-20261102/src/lib/native-delivery/embed-request.test.ts'
+ ❯ src/lib/native-delivery/embed-request.test.ts:2:1
+
+
+Caused by: Error: Failed to load url ./embed-request (resolved id: ./embed-request) in /workspace/work/owner-fullscope-20261102/src/lib/native-delivery/embed-request.test.ts. Does the file exist?
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  09:07:56
+   Duration  514ms (transform 76ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 91ms)
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

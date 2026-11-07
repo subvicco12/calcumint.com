@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "Shared configured key limit, durable exact attribution and idempotent retry/conflict",
+    "Native API and embed share the existing quota lock under concurrent last-slot requests",
+    "Concurrent duplicate redemption produces one debit and one durable audit",
+    "Audit persistence failure rolls back the quota debit atomically",
+    "Cross-tenant attribution, revoked/expired grants and Business downgrade fail closed",
+    "RLS and caller privileges deny direct grant/audit access and metering RPC to untrusted roles",
+    "A committed revocation wins against waiting redemption with no quota or audit debit",
+    "Source-bound disable retains audit, denies calls, and isolated re-enable preserves current authority checks"
+  ],
+  "functionSHA256": "33edec8eeba2e57626ce21537576e9ccffc8d4a4186aa70a827a629bcde55dcd",
+  "limits": "Synthetic isolated candidate schema; existing commercial key values reused, no production equivalence or global external-writer claim",
+  "productionWrites": false
+}

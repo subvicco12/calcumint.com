@@ -363,7 +363,7 @@ jobs:
       - name: Owner-authorized isolated P0 implementation
         timeout-minutes: 8
         run: |
-          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6
+          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f
           node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
           node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs
           node tests/owner-p0/calculus/browser.mjs
@@ -529,12 +529,14 @@ jobs:
       - name: Native registered Business API and embed acceptance
         timeout-minutes: 6
         run: |
-          node --test tests/native440/quota-bindings.test.mjs tests/full-product-batch17/workflow.test.mjs
+          node --test tests/native440/quota-bindings.test.mjs tests/native440/schema-readiness.test.mjs tests/full-product-batch17/workflow.test.mjs
           node tests/native440/quota.mjs
+          node tests/native440-remediation/embed.postgres.mjs
           node tests/native440/acceptance.mjs
         env:
           NATIVE440_QUOTA_ARTIFACTS: ${{ runner.temp }}/native440-quota
           NATIVE440_ARTIFACTS: ${{ runner.temp }}/native440
+          EMBED_METER_ARTIFACTS: ${{ runner.temp }}/native440-meter
       - name: Preserve shortest publication cohort acceptance
         uses: actions/upload-artifact@v4
         with:
@@ -550,6 +552,7 @@ jobs:
             ${{ runner.temp }}/frequency440-next/
             ${{ runner.temp }}/native440/
             ${{ runner.temp }}/native440-quota/
+            ${{ runner.temp }}/native440-meter/
           if-no-files-found: error
           retention-days: 7
       - name: Approved six-candidate worker, workflow and replay acceptance

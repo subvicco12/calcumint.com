@@ -1,0 +1,18 @@
+{
+  "sqlTableExists": true,
+  "grantPOST": {
+    "status": 503,
+    "body": {
+      "error": "Embed audit unavailable"
+    }
+  },
+  "lowerREST": [
+    {
+      "method": "POST",
+      "path": "/rest/v1/native_embed_grants",
+      "status": 404
+    }
+  ],
+  "rows": 0,
+  "scope": "Single intentional negative Owner issuance before schema reload; later Admin issuance is independent"
+}
