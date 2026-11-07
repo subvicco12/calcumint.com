@@ -1,0 +1,100 @@
+{
+  "kind": "SOURCE_BOUND_HELD_ADOPTION_GRAPH",
+  "baseline": "f0d974b9e0a95415a4ef96a6e40ca0386e634eb9",
+  "releaseHold": true,
+  "activationAuthorized": false,
+  "files": [
+    {
+      "path": "docs/adoption1528/package/guarded-target-apply.sql",
+      "sha256": "5bb5242fcdde9948c05713f469ad9c472d8ae81cde5cb8f7c8f8b7497524241a",
+      "guarded": true
+    },
+    {
+      "path": "docs/adoption1528/package/guarded-target-reverse.sql",
+      "sha256": "96adea2382f2a195a755028ca7dc0bed4860a6ab5030671802a30017a63c7de8",
+      "guarded": true
+    },
+    {
+      "path": "docs/publication540-shared/database/guarded-target-apply.sql",
+      "sha256": "a24cc0bb763bb6f829eaff6823320ecda4dcab46c75e89d79d2f95b1dfd50d6f",
+      "guarded": true
+    },
+    {
+      "path": "docs/publication540-shared/database/guarded-target-reverse.sql",
+      "sha256": "951d6f72afc18cb5976457d0056fe6b4264a0439e9162e4a98b03d8212e9ad83",
+      "guarded": true
+    },
+    {
+      "path": "docs/native440/quota/guarded-apply.sql",
+      "sha256": "063a5381f239442040836efe90b4487b7a6d929811793b0b500a7a71068524a1",
+      "guarded": true
+    },
+    {
+      "path": "docs/native440/quota/guarded-reverse.sql",
+      "sha256": "028f096c45329bb14a3c3a052d718333d63769aebddcba253d35857e202bebd2",
+      "guarded": true
+    }
+  ],
+  "nodes": [
+    {
+      "id": "restore-authenticated-read-only-access",
+      "status": "BLOCKED_CONNECTOR_PERMISSION"
+    },
+    {
+      "id": "fresh-preimage-data-writers-freeze-recovery",
+      "requires": [
+        "restore-authenticated-read-only-access"
+      ],
+      "status": "EXTERNAL_OPERATOR_PREREQUISITES",
+      "scope": "No empty lock view proves DDL/writer quiescence."
+    },
+    {
+      "id": "existing-core-draft-qa-audit-lifecycle",
+      "requires": [
+        "fresh-preimage-data-writers-freeze-recovery"
+      ],
+      "status": "EXISTING_GUARDED_TESTED_UNACTIVATED",
+      "source": "docs/adoption1528/operator-preconditions.json"
+    },
+    {
+      "id": "new-atomic-batch-addon",
+      "requires": [
+        "existing-core-draft-qa-audit-lifecycle"
+      ],
+      "status": "NEW_GUARDED_TESTED_UNACTIVATED",
+      "derivedPreimage": "eebfc0554185341b14cfe4a563d4210730b326549f20576513c57ca512b13361",
+      "derivedPostimage": "e3464ae49077a732c00f0ed7a9466c3e2157ec0d3057c88d7035c4e269803538",
+      "projection": "Complete scoped core catalog plus all addon overload definitions/owner/ACLs; differs from original core-only projection",
+      "reverse": "Drop only exact addon; preserve data/audits; does not reverse committed publication transitions."
+    },
+    {
+      "id": "optional-native-quota-readiness",
+      "requires": [
+        "fresh-preimage-data-writers-freeze-recovery"
+      ],
+      "status": "EXISTING_GUARDED_TESTED_UNACTIVATED",
+      "source": "docs/native440/adoption-dependencies.json",
+      "requiredFor": "Governed native API/embed only where applicable, not all ordinary calculator routes"
+    },
+    {
+      "id": "independent-exact-version-source-canonical-qa-review",
+      "status": "PENDING_REAL_PER_ID_AUTHORITY",
+      "requires": []
+    },
+    {
+      "id": "separate-production-and-release-authorization",
+      "requires": [
+        "new-atomic-batch-addon",
+        "independent-exact-version-source-canonical-qa-review"
+      ],
+      "status": "NOT_GRANTED",
+      "note": "No executor or automatic approval; repository DRAFT/publication gates must independently pass."
+    }
+  ],
+  "rollbackLimits": [
+    "Statement/transaction failures tested all-or-nothing in isolation.",
+    "DDL reversal preserves every application row and audit.",
+    "Post-release withdrawal/recovery requires fresh state, original audited lifecycle paths and separate operator authorization; no blind old-manifest overwrite.",
+    "Known defective predecessors remain held after reversal."
+  ]
+}

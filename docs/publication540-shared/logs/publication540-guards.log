@@ -1,0 +1,110 @@
+✔ all mandatory jobs reuse npm downloads while always installing the exact lockfile (4.660791ms)
+✔ historical comparison accepts only the exact reviewed cache substitution (7.657155ms)
+✔ cache mutation is rejected for checks (2.908906ms)
+✔ cache mutation is rejected for build (2.730532ms)
+✔ cache mutation is rejected for full-product (2.759172ms)
+✔ cache mutation is rejected for source-acceptance (2.884852ms)
+✔ cache mutation is rejected for publication-factory (3.594667ms)
+✔ unrecognized or ungated extra jobs cannot evade derived coverage (4.544043ms)
+✔ a future correctly cached and gated job is derived without a stale ordinal count (5.796279ms)
+✔ all original checks remain byte-for-byte with20minute per-job budgets (5.060927ms)
+✔ required validate checks every workflow verification job including the publication factory (0.581965ms)
+✔ actual aggregate succeeds only when every required job succeeds (5.684396ms)
+✔ actual aggregate refuses checks=failure (4.047311ms)
+✔ actual aggregate refuses checks=cancelled (4.060569ms)
+✔ actual aggregate refuses checks=skipped (4.928374ms)
+✔ actual aggregate refuses checks=timed_out (4.529736ms)
+✔ actual aggregate refuses checks=empty (5.491391ms)
+✔ actual aggregate refuses checks=unknown (4.189978ms)
+✔ actual aggregate refuses build=failure (4.127482ms)
+✔ actual aggregate refuses build=cancelled (3.474477ms)
+✔ actual aggregate refuses build=skipped (3.362864ms)
+✔ actual aggregate refuses build=timed_out (2.833845ms)
+✔ actual aggregate refuses build=empty (8.011502ms)
+✔ actual aggregate refuses build=unknown (3.676962ms)
+✔ actual aggregate refuses full-product=failure (3.562489ms)
+✔ actual aggregate refuses full-product=cancelled (4.095545ms)
+✔ actual aggregate refuses full-product=skipped (4.835204ms)
+✔ actual aggregate refuses full-product=timed_out (5.878839ms)
+✔ actual aggregate refuses full-product=empty (5.580511ms)
+✔ actual aggregate refuses full-product=unknown (7.268519ms)
+✔ actual aggregate refuses source-acceptance=failure (4.84684ms)
+✔ actual aggregate refuses source-acceptance=cancelled (3.780627ms)
+✔ actual aggregate refuses source-acceptance=skipped (3.882564ms)
+✔ actual aggregate refuses source-acceptance=timed_out (3.835197ms)
+✔ actual aggregate refuses source-acceptance=empty (5.41879ms)
+✔ actual aggregate refuses source-acceptance=unknown (6.562958ms)
+✔ actual aggregate refuses publication-factory=failure (3.879143ms)
+✔ actual aggregate refuses publication-factory=cancelled (3.461484ms)
+✔ actual aggregate refuses publication-factory=skipped (3.488919ms)
+✔ actual aggregate refuses publication-factory=timed_out (4.811702ms)
+✔ actual aggregate refuses publication-factory=empty (4.626901ms)
+✔ actual aggregate refuses publication-factory=unknown (2.656286ms)
+✔ aggregate rejects deletion of the checks guard (2.965757ms)
+✔ aggregate rejects deletion of the build guard (1.128509ms)
+✔ aggregate rejects deletion of the full-product guard (1.165738ms)
+✔ aggregate rejects deletion of the source-acceptance guard (1.001055ms)
+✔ aggregate rejects deletion of the publication-factory guard (1.321651ms)
+✔ full-product job requires both functional browser campaigns and exact aggregate result (0.664422ms)
+✖ the three exact independent task campaigns and receipt checks are mandatory and bounded (10.437179ms)
+✔ strict aggregate outcomes and bounded native acceptance budget remain intact (2.498173ms)
+✔ waits for cached tables, every grant/usage column and RPC signature using GET only (2.857302ms)
+✔ bounds missing-schema waiting and reports absent cache contract (2.455236ms)
+✔ fails immediately on HTTP 400 (0.625236ms)
+✔ fails immediately on HTTP 401 (0.338428ms)
+✔ fails immediately on HTTP 403 (0.366243ms)
+✔ fails immediately on HTTP 404 (0.335634ms)
+✔ fails immediately on HTTP 500 (0.422732ms)
+✔ does not hide transport failures (0.352804ms)
+✔ rejects hosted destinations (0.361074ms)
+✔ binds exact original math/parser and append-only UI successor (124.42325ms)
+✔ rejects changed source even when a new metadata hash claims it is authorized (59.739282ms)
+✔ rejects an altered original evidence manifest (28.611705ms)
+✔ rejects wrong predecessor identity (5.797442ms)
+✔ rejects release authority promotion (10.049546ms)
+✔ rejects source member omission and traversal substitution (4.919422ms)
+✔ rejects unbound caller edits (60.325096ms)
+✔ rejects symlinked dependencies (142.269983ms)
+✔ rejects unbound shared batch dependency src/components/publication20-batch.tsx (74.394857ms)
+✔ rejects unbound shared batch dependency src/lib/publication20/batch.ts (94.605662ms)
+✔ rejects presentation successor tamper src/components/publication20-tool.tsx (91.020744ms)
+✔ rejects symlinked presentation successor src/components/publication20-tool.tsx (71.433915ms)
+✔ rejects rewritten presentation historical claim src/components/publication20-tool.tsx (90.789301ms)
+✔ rejects presentation successor tamper src/components/publication20-batch.tsx (93.256539ms)
+✔ rejects symlinked presentation successor src/components/publication20-batch.tsx (59.056885ms)
+✔ rejects rewritten presentation historical claim src/components/publication20-batch.tsx (65.666095ms)
+✔ rejects presentation successor tamper src/lib/frequency-presentation.ts (128.930527ms)
+✔ rejects symlinked presentation successor src/lib/frequency-presentation.ts (128.851439ms)
+✔ retains twenty original bindings with one supplemental presentation binding (144.965882ms)
+✔ requires independent successor Git object bytes even when current file matches its pinned SHA (15.662462ms)
+✔ requires exact predecessor path object even when historical SHA claim is unchanged (6.02865ms)
+✔ full shortest-publication guard binds the current verifier and preserves historical caller claims (355.230575ms)
+ℹ tests 81
+ℹ suites 0
+ℹ pass 80
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1736.046918
+
+✖ failing tests:
+
+test at tests/full-product-batch17/workflow.test.mjs:6:1
+✖ the three exact independent task campaigns and receipt checks are mandatory and bounded (10.437179ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert(!/continue-on-error|\n        if:/.test(step))
+
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/full-product-batch17/workflow.test.mjs:15:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

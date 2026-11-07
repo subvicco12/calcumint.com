@@ -1,0 +1,45 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+ ❯ src/lib/publication-batch-plan.test.ts (18 tests | 1 failed) 61ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > prepares the exact SQL interface deterministically while retaining all authority gates 25ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > keeps actual original DRAFT registry definitions blocked 2ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > requires actual artifact bytes rather than hashes alone 2ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects wrong or missing implementation and contract bytes 2ms
+   × exact-version atomic batch snapshot preparation, never authority > refuses a snapshot whose JSON numbers cannot round-trip exactly 8ms
+     → expected true to be false // Object.is equality
+   ✓ exact-version atomic batch snapshot preparation, never authority > preserves full persisted text without trimming it 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects bytes changed after independent pinning 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects a self-consistent wrong immutable version without preparing a partial wave 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects duplicate canonical catalogId 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects duplicate canonical engineId 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects duplicate canonical slug 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects absent identity, missing snapshots and mismatched source/QA parents 3ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects a false captured gate even when all item labels claim certified 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects missing applicable QA and unknown rule-pack applicability 2ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects caller/clock/schema and existing manifest ambiguity 4ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > rejects prepublished candidate and not-yet-effective date 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > cannot promote external approval booleans into authority 1ms
+   ✓ exact-version atomic batch snapshot preparation, never authority > fails closed on malformed inputs and resource bounds 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/publication-batch-plan.test.ts > exact-version atomic batch snapshot preparation, never authority > refuses a snapshot whose JSON numbers cannot round-trip exactly
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ src/lib/publication-batch-plan.test.ts:24:401
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 17 passed (18)
+   Start at  18:08:15
+   Duration  1.75s (transform 853ms, setup 0ms, collect 1.36s, tests 61ms, environment 0ms, prepare 88ms)

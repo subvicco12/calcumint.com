@@ -1,0 +1,21 @@
+# All 540 catalog identities and actual published engine observations
+
+The November 7 CI capture verifies HTTP 200 and the server-rendered calculator surface for all 209 exact hosted-snapshot engine/version tuples. All 17 recorded unpublished candidate routes return 404. This is actual fresh public GET evidence, independent of canonical approval counts. It does not establish browser calculation behavior, numerical acceptance or authority to publish.
+
+The current Supabase metadata refresh was rejected by the connector before SQL execution. `current-readonly-query.sql` contains the explicit BEGIN READ ONLY / ROLLBACK query and `current-readonly-receipt.json` records the permission denial. Current hosted catalog changes therefore remain UNKNOWN. The retained authoritative November 5 catalog has 209 published tuples; the November 7 route capture pins the exact same catalog SHA256. Do not call this a fresh November 7 database export.
+
+`reconciliation-540.json` contains every catalog identity, candidate engine and immutable version, exact hosted tuple matches, route observations, private candidate records, requirements, blockers and source pointers. There are 489 candidate association rows: 187 catalog IDs have at least one hosted candidate and 353 have none. None is an approved canonical mapping. Fourteen identities have shared candidate bindings; the retained seven ambiguity groups remain explicit. A catalog ID without a hosted candidate is not automatically a missing implementation or an unpublished complete product.
+
+The engineering evidence labels are 305 REGISTERED_IMPLEMENTED, 192 PRIVATE_COMPLETE and 43 CONTRACT_BLOCKED. They do not establish 497 full canonical products. No affirmative MISSING_ENGINE/COMPONENT_ONLY label is present in this retained implementation partition; this does not prove zero genuinely missing functionality. Full canonical implementation remains unestablished for all 540 pending adopted complete contracts. Partial bounded source cases, legacy numerical defects and private candidate restrictions remain attached per row. The original 14,293 requirements remain: 553 VERIFIED, 1,907 PARTIAL, 2,438 BLOCKED and 9,395 UNKNOWN.
+
+First feasible scopes are retained as conditional engineering/evidence work, with zero new eligibility inferred:
+
+- Existing public closure44: all 44 exact tuples are already published; reconcile accepted scope, replay and outstanding policy/runtime issues. These are maintenance/adoption packets, never 44 new publications.
+- Conditional new17: all 17 exact tuples and slugs are absent from the retained hosted catalog and their fresh CI routes return 404. Their candidate associations touch 52 IDs, with only 12 labeled identity candidates. Resolve exact scope/mapping, complete acceptance and applicability before any later release request.
+- Registered absent queue: 365 of the 574 unique registry engine/version tuples are absent from the retained hosted catalog. This is a reusable inventory, not 365 accepted canonical calculators or a promised delivery batch.
+
+All 540 retain canonical ID/version/full-contract adoption blockers. The 43 retained authority cases, 16 partial source cases and 56 targeted decision packets are overlapping review scopes, not a complete or disjoint count of necessary owner decisions. The secondary engineering view C484/D2/E54 is preserved in source evidence; it must not replace the full-contract review boundary.
+
+Reproduce from the repository root with `python scripts/publication540-shared/reconcile_catalog.py`. Verify with `python -m unittest discover -s tests/publication540-shared -p 'reconcile_test.py'`. This work performs no production writes, certification, publication, merge, broad source research, application changes or builds.
+
+Route provenance: CI run 42394728062, artifact 13583405684, capture 2026-11-07T17:08:24.279895+00:00, head f0d974b9e0a95415a4ef96a6e40ca0386e634eb9. ZIP SHA256 `3b4bad1ade329863c766658f590f06b051e00e194e00b8c26c478be2aca7b6ae` was verified after supported artifact download. The artifact reports checkout SHA 313144f2dff11a16bb46b5b112f7284e160f6e4f separately from its head SHA; both are preserved in raw observations. Source-file hashes and row pointers are embedded in the reconciliation.

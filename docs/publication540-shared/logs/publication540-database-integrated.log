@@ -1,0 +1,10 @@
+PASS Exact package holds, operator/isolation, metadata drift, overload, late failure and reapply refusals; exact postimage
+PASS Genuine JWT reviewer/editor/outsider/anon and service role denied; no effects
+PASS Missing predecessor EXECUTE fails without privilege escalation or effects
+PASS Wrong immutable version, duplicates, reviewer, metadata, QA and source drift refuse atomically
+PASS Second audit failure rolls back first lifecycle and audit
+PASS Authoritative mid-batch gate denial rolls back first lifecycle/audit
+PASS Conflicting evidence writer triggers bounded timeout with no effects and releases batch locks
+PASS Opposite input order concurrent batches yield one success and one stale refusal without duplicate audits
+PASS Exact reverse rejects addon ACL drift before removal
+PASS Held reversal and injected reversal failure preserve rows; successful removal restores predecessor metadata

@@ -1,0 +1,62 @@
+{
+  "releaseHold": true,
+  "blockers": [
+    {
+      "id": "CURRENT_HOSTED_ACCESS",
+      "affectedCatalogIds": 540,
+      "state": "BLOCKED_PERMISSION",
+      "evidence": "catalog/current-readonly-receipt.json",
+      "nextAction": "Restore authorized read-only Supabase connector access, then repeat exact scoped metadata/data capture; no credentials in chat."
+    },
+    {
+      "id": "CANONICAL_FULL_CONTRACT_AND_EXACT_MAPPING",
+      "affectedCatalogIds": 540,
+      "state": "PENDING_ADJUDICATION",
+      "note": "187 IDs have hosted candidates, not187 canonically approved products. 305 registered /192 private labels do not prove full scope."
+    },
+    {
+      "id": "AUTHORITY_RETAINED",
+      "affectedCatalogIds": 43,
+      "state": "BLOCKED_EXTERNAL_AUTHORITY"
+    },
+    {
+      "id": "ABSENT_REGISTERED_TUPLES",
+      "affectedEngineVersionTuples": 365,
+      "state": "CONDITIONAL_NOT_MISSING_ENGINES",
+      "note": "Historical and shared bindings remain distinct; not365 new calculators."
+    },
+    {
+      "id": "AUDITED_DRAFT_QA_LIFECYCLE_ADOPTION",
+      "affectedCurrentStagingCatalogIds": 20,
+      "affectedUnpublishedLocalCandidateVersions": 17,
+      "potentialRegisteredAbsentTuples": 365,
+      "state": "GUARDED_TESTED_UNACTIVATED",
+      "note": "Scope/source/certification prerequisites must independently pass. No assumption all tuples are currently compatible."
+    },
+    {
+      "id": "ATOMIC_EXACT_VERSION_BATCH",
+      "affectedPotentialBatchItems": 100,
+      "state": "ENGINEERING_TESTED_GUARDED",
+      "note": "100 is a resource bound per transaction, no commercial entitlement. New snapshot/gate/audit checks close prefix commit/version gap."
+    },
+    {
+      "id": "WRITERS_DDL_QUIESCENCE_AND_RECOVERY",
+      "affectedPotentialPublicationWaves": "ALL",
+      "state": "EXTERNAL_OPERATOR_BLOCKER",
+      "requires": [
+        "Named participating and privileged writers",
+        "DDL freeze and transaction drain",
+        "Fresh preimages/provider/ACL/RLS/role compatibility",
+        "Recovery/retention/backup restore and separately authorized rollback",
+        "Explicit adoption and release authority"
+      ]
+    },
+    {
+      "id": "QUOTA_SAFETY",
+      "state": "EXISTING_GUARDED_TESTED_UNACTIVATED",
+      "affectedDelivery": "Shared governed native Business API/embed consumers, not prerequisite for ordinary standard routes unless applicable",
+      "source": "docs/native440/adoption-dependencies.json"
+    }
+  ],
+  "countsOverlap": true
+}

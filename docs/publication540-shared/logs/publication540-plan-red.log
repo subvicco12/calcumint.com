@@ -1,0 +1,26 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/publication-batch-plan.test.ts [ src/lib/publication-batch-plan.test.ts ]
+Error: Cannot find module './publication-batch-plan' imported from '/workspace/work/owner-fullscope-20261102/src/lib/publication-batch-plan.test.ts'
+ ❯ src/lib/publication-batch-plan.test.ts:5:1
+      3| import {calculatorRegistry} from '@/calculators/registry';
+      4| import {requiredQaChecks} from '@/lib/admin/publishing';
+      5| import {preparePublicationBatch} from './publication-batch-plan';
+       | ^
+      6|
+      7| const hash=(s:string)=>createHash('sha256').update(s).digest('hex');
+
+Caused by: Error: Failed to load url ./publication-batch-plan (resolved id: ./publication-batch-plan) in /workspace/work/owner-fullscope-20261102/src/lib/publication-batch-plan.test.ts. Does the file exist?
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  18:01:34
+   Duration  4.99s (transform 2.13s, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 818ms)

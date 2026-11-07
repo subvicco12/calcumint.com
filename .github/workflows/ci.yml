@@ -593,6 +593,23 @@ jobs:
           node tests/calculator-first-20261105/browser.mjs
         env:
           CALCULATOR_CLOSURE_RECEIPT: ${{ runner.temp }}/calculator-first-20261105-browser
+      - name: Shared exact-version atomic publication batch acceptance
+        timeout-minutes: 3
+        run: |
+          python3 -m unittest discover -s tests/publication540-shared -p 'reconcile_test.py'
+          node --test tests/publication540-shared/workflow.test.mjs
+          node tests/publication540-shared/database.mjs
+      - name: Preserve held batch adoption acceptance
+        uses: actions/upload-artifact@v4
+        with:
+          name: publication540-shared-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            docs/publication540-shared/database/receipt.json
+            docs/publication540-shared/database/source-bindings.json
+            docs/publication540-shared/database/guarded-target-apply.sql
+            docs/publication540-shared/database/guarded-target-reverse.sql
+          if-no-files-found: error
+          retention-days: 7
       - name: Exact76 private input, history, scenarios and exports
         timeout-minutes: 6
         run: node tests/publication-factory/browser.mjs
