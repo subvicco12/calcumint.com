@@ -363,7 +363,7 @@ jobs:
       - name: Owner-authorized isolated P0 implementation
         timeout-minutes: 8
         run: |
-          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555
+          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7
           node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
           node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs
           node tests/owner-p0/calculus/browser.mjs
@@ -405,7 +405,7 @@ jobs:
         timeout-minutes: 5
         run: |
           node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check
-          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7
           node scripts/check-calculator-closure-history.mjs
           node --test tests/calculator-first-20261105/history-guard.test.mjs
           node tests/batch21-calculator-wave/browser.mjs
@@ -469,7 +469,7 @@ jobs:
       - name: Owner-authorized isolated full-six increment and registered input browser
         timeout-minutes: 3
         run: |
-          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7
           node scripts/check-calculator-closure-history.mjs --full-six-only
           node scripts/fast-publication-20261102/queue.mjs --check
           node tests/fast-publication-20261102/queue.test.mjs
@@ -599,12 +599,21 @@ jobs:
           python3 -m unittest discover -s tests/publication540-shared -p 'reconcile_test.py'
           node --test tests/publication540-shared/workflow.test.mjs
           node tests/publication540-shared/database.mjs
+      - name: Composed publication adoption runbook and N1 lineage
+        timeout-minutes: 3
+        run: |
+          node scripts/adoption1535/inventory.mjs --check
+          node scripts/adoption1535/package.mjs --check
+          node --test tests/adoption1535/*.test.mjs
+          node scripts/adoption1535/package.mjs --rehearse
       - name: Preserve held batch adoption acceptance
         uses: actions/upload-artifact@v4
         with:
           name: publication540-shared-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             docs/publication540-shared/database/receipt.json
+            docs/adoption1535/package/rehearsal.json
+            docs/adoption1535/writer-inventory.json
             docs/publication540-shared/database/source-bindings.json
             docs/publication540-shared/database/guarded-target-apply.sql
             docs/publication540-shared/database/guarded-target-reverse.sql

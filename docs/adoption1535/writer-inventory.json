@@ -1,0 +1,141 @@
+{
+  "kind": "KNOWN_REPOSITORY_WRITER_PATHS_NOT_EXTERNAL_ROSTER",
+  "writers": [
+    {
+      "id": "catalog-create",
+      "path": "src/app/admin/actions.ts",
+      "line": 58,
+      "sourceSHA256": "ccaa94152b33b7daf64ddc531f6e103ffb2daf2b45825ab1f0fc954f6b3fe247",
+      "authorization": "authenticated platform admin; authoritative RPC and RLS",
+      "transactionBoundary": "single RPC, hosted absent",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "catalog-bulk",
+      "path": "src/app/admin/actions.ts",
+      "line": 157,
+      "sourceSHA256": "ccaa94152b33b7daf64ddc531f6e103ffb2daf2b45825ab1f0fc954f6b3fe247",
+      "authorization": "authenticated owner/admin",
+      "transactionBoundary": "single RPC, hosted absent",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "source-insert",
+      "path": "src/app/admin/actions.ts",
+      "line": 81,
+      "sourceSHA256": "ccaa94152b33b7daf64ddc531f6e103ffb2daf2b45825ab1f0fc954f6b3fe247",
+      "authorization": "authenticated owner/admin/reviewer",
+      "transactionBoundary": "direct INSERT with trigger dependencies",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "qa-decision",
+      "path": "src/app/admin/actions.ts",
+      "line": 100,
+      "sourceSHA256": "ccaa94152b33b7daf64ddc531f6e103ffb2daf2b45825ab1f0fc954f6b3fe247",
+      "authorization": "authenticated owner/admin/reviewer; waiver owner/admin",
+      "transactionBoundary": "single RPC, hosted absent",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "reviewer-assignment",
+      "path": "src/app/admin/actions.ts",
+      "line": 136,
+      "sourceSHA256": "ccaa94152b33b7daf64ddc531f6e103ffb2daf2b45825ab1f0fc954f6b3fe247",
+      "authorization": "authenticated owner/admin",
+      "transactionBoundary": "single RPC, hosted absent",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "lifecycle-transition",
+      "path": "src/app/admin/actions.ts",
+      "line": 123,
+      "sourceSHA256": "ccaa94152b33b7daf64ddc531f6e103ffb2daf2b45825ab1f0fc954f6b3fe247",
+      "authorization": "authenticated active platform admin with target role checks",
+      "transactionBoundary": "single RPC, hosted absent",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "publication-schedule",
+      "path": "src/app/admin/schedule-actions.ts",
+      "line": 29,
+      "sourceSHA256": "35165cb7fd2ff526fc25a5858761dead1c5e9f57e43f2ae25e2ad98502eff5a9",
+      "authorization": "authenticated owner/admin",
+      "transactionBoundary": "schedule UPDATE and audit INSERT are separate requests; outside new batch",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "scheduled-service-publisher",
+      "path": "src/app/api/internal/admin/publish/route.ts",
+      "line": 49,
+      "sourceSHA256": "389c0143f78deddca9ea9f9feda38a531453d6e7846ac826bb4464ef89af3cdd",
+      "authorization": "ADMIN_WORKER_SECRET plus SUPABASE_SERVICE_ROLE_KEY",
+      "transactionBoundary": "direct privileged UPDATE; outside owner/admin batch RPC; scheduler identity unknown",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "review-alert-refresh",
+      "path": "src/app/admin/schedule-actions.ts",
+      "line": 37,
+      "sourceSHA256": "35165cb7fd2ff526fc25a5858761dead1c5e9f57e43f2ae25e2ad98502eff5a9",
+      "authorization": "authenticated owner/admin/reviewer",
+      "transactionBoundary": "writes admin_alerts through existing function",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "alert-resolve",
+      "path": "src/app/admin/schedule-actions.ts",
+      "line": 45,
+      "sourceSHA256": "35165cb7fd2ff526fc25a5858761dead1c5e9f57e43f2ae25e2ad98502eff5a9",
+      "authorization": "authenticated owner/admin/reviewer",
+      "transactionBoundary": "direct target-table UPDATE",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    },
+    {
+      "id": "platform-owner-bootstrap",
+      "path": "scripts/bootstrap-platform-owner.mjs",
+      "line": 53,
+      "sourceSHA256": "2a9043c9fd188a746b375f774a775d4128561f0fca3a3e18131af3d4f8ec6c8e",
+      "authorization": "manual service-role CLI; actual credential holder not supplied",
+      "transactionBoundary": "privileged authority-table path, not permission to run",
+      "freezeOwner": null,
+      "pauseDrainResumeEvidence": null,
+      "freezeEstablished": false
+    }
+  ],
+  "externalWriterIdentityEstablished": false,
+  "ddlFreezeEstablished": false,
+  "releaseHold": true,
+  "productionWrites": false,
+  "unknowns": [
+    "Deployed application SHA and enabled scheduler/worker versions",
+    "Service-key holders, manual SQL users and external jobs",
+    "Provider/event-trigger and independent DDL/default-ACL writers",
+    "Control-plane pause/drain/resume and recovery signoffs"
+  ],
+  "limits": [
+    "Literal source references are not complete dynamic/privileged writer discovery.",
+    "Database role/session names do not identify human or service credential custodians.",
+    "Zero locks or prepared transactions never establishes a freeze."
+  ]
+}

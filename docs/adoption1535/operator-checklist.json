@@ -1,0 +1,104 @@
+{
+  "baseline": "ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7",
+  "engineeringReviewPacketReady": true,
+  "conditionalChangeReviewCanStart": true,
+  "executionAuthorizationRequestReady": false,
+  "controlledExecutionAuthorized": false,
+  "productionWrites": false,
+  "releaseHold": true,
+  "observedSoftwareEvidence": {
+    "exactCoreMetadataMatch": true,
+    "observedAt": "2026-11-07 18:54:09.811998+00",
+    "corePreimage": "56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1",
+    "published": 209,
+    "missingHostedRpcNames": [
+      "create_catalog_calculator_with_audit",
+      "record_calculator_qa_decision",
+      "assign_calculator_reviewer",
+      "transition_calculator_with_audit",
+      "prepare_catalog_inventory_drafts"
+    ],
+    "missingBatchAddon": true,
+    "isolatedRehearsalChecks": 15,
+    "knownRepositoryWriterPaths": 11,
+    "literalDatabaseReferenceCandidates": 13,
+    "incomingForeignKeys": 4,
+    "providerEventTriggers": 6
+  },
+  "controls": [
+    {
+      "id": "deployed-source-compatibility",
+      "responsible": "Deployment operator",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Provide actual deployed application SHA and reconcile every deployed participating writer/RPC client."
+    },
+    {
+      "id": "named-writer-roster",
+      "responsible": "Application, DB/provider and scheduler/service-key custodians",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Name every repository and external/privileged writer and its owner, credential identity and pause/drain/resume control; no secret values."
+    },
+    {
+      "id": "operator-and-window",
+      "responsible": "Owner/change authority and operations",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Name adoption operator, independent observer and recovery operator; propose scoped change interval and abort/signoff responsibilities."
+    },
+    {
+      "id": "freeze-control-plan",
+      "responsible": "DB/provider and all participating writer custodians",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Supply supported DDL/writer pause, drain, independent DDL/default-ACL control and recovery plan. Actual freeze only in an approved window."
+    },
+    {
+      "id": "backup-and-restore",
+      "responsible": "Recovery/backup custodian",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Record recoverable checkpoint ID/time, restore authority, tested restore receipt, preservation invariants and retention."
+    },
+    {
+      "id": "runtime-custody",
+      "responsible": "Deployment/security/DB custodians",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Complete applicable vault/configuration references and readiness evidence, no values; native/Business secrets conditional."
+    },
+    {
+      "id": "adoption-reversal-authority",
+      "responsible": "Owner/change authority",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Separately approve exact activation and recovery artifacts/bytes after review; current files remain held."
+    },
+    {
+      "id": "per-id-release-acceptance",
+      "responsible": "Competent source/formula/product QA and applicable specialist reviewers",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Approve exact canonical identities/full contracts/source applicability/precision and all applicable QA; no AI signature substitution."
+    },
+    {
+      "id": "certification-and-release",
+      "responsible": "Catalog/lifecycle and release authorities",
+      "actualIdentity": null,
+      "evidenceRef": null,
+      "status": "PENDING_EXTERNAL_EVIDENCE",
+      "nextAction": "Separate actual certified records and wave permission; no source/QA/specialist exemption inferred."
+    }
+  ],
+  "timing": "Planning/capability/custodian/recovery evidence precedes a ready-to-execute authorization request; actual production freeze/drain is an execution-time condition in the separately approved interval.",
+  "firstEligibleCohort": []
+}

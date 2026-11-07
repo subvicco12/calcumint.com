@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "startedAt": "2026-11-07T19:14:09.111Z",
+  "finishedAt": "2026-11-07T19:14:25.454Z",
+  "durationMs": 16343,
+  "checks": [
+    "Exact captured provider hook bodies and event registrations installed before core; extension-only hook tags do not match package DDL",
+    "Cold PostgREST cache confirms addon absent after automatic drop callback before composed adoption",
+    "Default unconditional hold aborts transaction even when client continues",
+    "Operator and isolation context refuse",
+    "Column, every addon overload and provider ACL drift refuse without partial core adoption",
+    "Failure after core and after addon rolls back entire composition; transactional hook notifications expose no aborted RPC",
+    "Complete postimage exact and duplicate application refused",
+    "Committed composed DDL automatically discovers new atomic RPC through exact provider NOTIFY hooks with genuine owner JWT and no manual reload",
+    "Combined genuine JWT reviewer/nonadmin/anon bulk denial",
+    "Historical RED: caller jobs UPDATE still leaves old processing row unchanged",
+    "Exact selected20 current-v1 identities create pending-only drafts and retry without duplicate audit",
+    "Concurrent identical selected20 requests serialize without duplicate rows",
+    "Injected QA and audit failures roll back entire composed batch",
+    "Composed assignment, audited QA failure/alert and review transition RPCs execute under genuine JWTs",
+    "Composed direct-published INSERT and unready certification refuse; all209 synthetic published sentinels preserved",
+    "Core genuine JWT runtime succeeds without manual schema-cache signaling",
+    "Late reverse failure restores complete core plus addon postimage and every row",
+    "Reverse rejects addon ACL drift",
+    "Whole reversal, reapplication and recovery preserve all209 synthetic published rows and all application rows"
+  ],
+  "activationAuthorized": false,
+  "productionWrites": false,
+  "formalAcceptance": false,
+  "syntheticPublished": 209,
+  "localPreimage": "b930471d73fbc3f9e4edc55654d0f3ab5ef2b2003aa8d4fb90ff6fe634142e24",
+  "localPostimage": "31ca06bc375e1e4a657dd50bb7684ce61e44f07d007dae89a840e92d0dcd8ff2",
+  "localApplySHA256": "fdc4933ac81d008df3a986b38d8fb1f25b01ab7cfb7a1ea881d204e3e53c7677",
+  "localReverseSHA256": "ad4dac67302c9476366906fe0dacbdbfa6af9b962b469bb167bdf2f38ca515d3",
+  "providerHooks": {
+    "bodySHA256": {
+      "pgrst_ddl_watch": "2b4b5d702ddf70fbd1a05c9825f9f9016d5c0ef97dd3df5f5b012ea23d9b94b1",
+      "pgrst_drop_watch": "3a2696133853e17a0456cbfbb233a03815f50895492143e84df983b558d76593"
+    },
+    "unchangedThroughEveryTransition": true,
+    "coldCacheBeforeComposition": {
+      "status": 404,
+      "body": {
+        "code": "PGRST202",
+        "details": "Searched for the function public.publish_calculator_batch_with_audit_v1 with parameter p_items or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.",
+        "hint": "Perhaps you meant to call the function public.transition_calculator_with_audit",
+        "message": "Could not find the function public.publish_calculator_batch_with_audit_v1(p_items) in the schema cache"
+      }
+    },
+    "abortedDDLCache": {
+      "status": 404,
+      "body": {
+        "code": "PGRST202",
+        "details": "Searched for the function public.publish_calculator_batch_with_audit_v1 with parameter p_items or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.",
+        "hint": "Perhaps you meant to call the function public.validate_calculator_publish_gate",
+        "message": "Could not find the function public.publish_calculator_batch_with_audit_v1(p_items) in the schema cache"
+      }
+    },
+    "automaticRPCDiscovery": {
+      "status": 400,
+      "body": {
+        "code": "P0001",
+        "details": null,
+        "hint": null,
+        "message": "Technical batch bound 1..100"
+      }
+    },
+    "manualReloadsSuppressed": 1,
+    "localRole": "supabase_admin SUPERUSER created only in fixture; target role attributes not reproduced",
+    "excludedHooks": "Four extension-only callbacks are not invoked or reconstructed; package performs no extension operations"
+  },
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Isolated reconstruction of seven-table captured metadata; synthetic rows only; authentic provider internals outside uid/role not represented",
+    "sourceObservedAt": "2026-11-06 14:43:07.87206+00",
+    "productionWrites": false
+  }
+}

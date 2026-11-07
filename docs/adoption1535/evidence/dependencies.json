@@ -1,0 +1,433 @@
+{
+  "actor": "postgres",
+  "read_only": "on",
+  "observed_at": "2026-11-07T18:56:17.521114+00:00",
+  "event_triggers": [
+    {
+      "name": "issue_graphql_placeholder",
+      "event": "sql_drop",
+      "owner": "supabase_admin",
+      "enabled": "O"
+    },
+    {
+      "name": "issue_pg_cron_access",
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O"
+    },
+    {
+      "name": "issue_pg_graphql_access",
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O"
+    },
+    {
+      "name": "issue_pg_net_access",
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O"
+    },
+    {
+      "name": "pgrst_ddl_watch",
+      "event": "ddl_command_end",
+      "owner": "supabase_admin",
+      "enabled": "O"
+    },
+    {
+      "name": "pgrst_drop_watch",
+      "event": "sql_drop",
+      "owner": "supabase_admin",
+      "enabled": "O"
+    }
+  ],
+  "session_groups": [
+    {
+      "count": 4,
+      "state": "idle",
+      "usename": "authenticator",
+      "transactions": 0,
+      "application_name": "PostgREST 14.5"
+    },
+    {
+      "count": 1,
+      "state": "idle",
+      "usename": "pgbouncer",
+      "transactions": 0,
+      "application_name": ""
+    },
+    {
+      "count": 1,
+      "state": "idle",
+      "usename": "postgres",
+      "transactions": 0,
+      "application_name": "pg_net 0.20.4"
+    },
+    {
+      "count": 1,
+      "state": "idle",
+      "usename": "supabase_admin",
+      "transactions": 0,
+      "application_name": ""
+    },
+    {
+      "count": 1,
+      "state": null,
+      "usename": "supabase_admin",
+      "transactions": 0,
+      "application_name": "pg_cron scheduler"
+    },
+    {
+      "count": 1,
+      "state": "idle",
+      "usename": "supabase_admin",
+      "transactions": 0,
+      "application_name": "postgres_exporter"
+    }
+  ],
+  "role_capabilities": [
+    {
+      "role": "anon",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "authenticated",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "authenticator",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "dashboard_user",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_checkpoint",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_create_subscription",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_database_owner",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": true
+    },
+    {
+      "role": "pg_execute_server_program",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_maintain",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_monitor",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_read_all_data",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_read_all_settings",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_read_all_stats",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_read_server_files",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_signal_backend",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_stat_scan_tables",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_use_reserved_connections",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_write_all_data",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pg_write_server_files",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "pgbouncer",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "postgres",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": true,
+      "public_create": true
+    },
+    {
+      "role": "service_role",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": true,
+      "public_create": false
+    },
+    {
+      "role": "supabase_admin",
+      "can_login": true,
+      "superuser": true,
+      "bypass_rls": true,
+      "public_create": true
+    },
+    {
+      "role": "supabase_auth_admin",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "supabase_etl_admin",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": true,
+      "public_create": false
+    },
+    {
+      "role": "supabase_privileged_role",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "supabase_read_only_user",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": true,
+      "public_create": false
+    },
+    {
+      "role": "supabase_realtime_admin",
+      "can_login": false,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "supabase_replication_admin",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    },
+    {
+      "role": "supabase_storage_admin",
+      "can_login": true,
+      "superuser": false,
+      "bypass_rls": false,
+      "public_create": false
+    }
+  ],
+  "incoming_foreign_keys": [
+    {
+      "name": "admin_alerts_calculator_id_fkey",
+      "to_table": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE",
+      "from_table": "public.admin_alerts"
+    },
+    {
+      "name": "calculator_qa_checks_calculator_id_fkey",
+      "to_table": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE",
+      "from_table": "public.calculator_qa_checks"
+    },
+    {
+      "name": "calculator_review_events_calculator_id_fkey",
+      "to_table": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE",
+      "from_table": "public.calculator_review_events"
+    },
+    {
+      "name": "calculator_source_evidence_calculator_id_fkey",
+      "to_table": "public.calculator_catalog_admin",
+      "definition": "FOREIGN KEY (calculator_id) REFERENCES public.calculator_catalog_admin(id) ON DELETE CASCADE",
+      "from_table": "public.calculator_source_evidence"
+    }
+  ],
+  "prepared_transactions": 0,
+  "requested_rpc_overloads": [],
+  "literal_table_reference_candidates": [
+    {
+      "name": "enforce_calculator_publish_gate",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "a34469bd029214c7bae7d180174a02716dc072d7f7e40d40f98a24ef43958329"
+    },
+    {
+      "name": "enforce_derived_source_count",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "438353f23c0ad0795ee5a6b11747bd0a4aaa467e55238746e69c0d77ffeceaff"
+    },
+    {
+      "name": "enforce_qa_evidence_authority",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "a41f511dab62139a02357ec09a980526beb88010b41dd6bc0c4931fb5a8a82c9"
+    },
+    {
+      "name": "enforce_qa_evidence_certification",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "f81afb4f7e3f13417dfd75e480cd0b32c283da7ba5696c911ec30fd0f05d8642"
+    },
+    {
+      "name": "enforce_reviewer_assignment_authority",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "0c28a02d1c78779e9ba9a16c98a2b2284eb47893781e4999b418b16853529196"
+    },
+    {
+      "name": "enforce_source_evidence_certification",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "9b3f138b498f3fc8a4adff920bbef71cac640d09f71e2fd9f88cafe89d44a90d"
+    },
+    {
+      "name": "has_platform_role",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "text[]",
+      "security_definer": true,
+      "definition_sha256": "f972d937da63ccbf0357ac96453507e5bb63af9e1afae1ac02fa58d897a4c613"
+    },
+    {
+      "name": "is_platform_admin",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "f65fe78699220583c0fda46a1a88d64fbe415915da437c0024d44ab0268cc06f"
+    },
+    {
+      "name": "list_published_calculator_manifest",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "d397c73f0328194f47b565e7e2a15005aa96b198662ebb49062dd461cee9ee5d"
+    },
+    {
+      "name": "protect_active_ymyl_reviewer_authority",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "38f168b3648c9bca78e976989c1155a62fe7feafbc4a8125f9e35e9596b8ab50"
+    },
+    {
+      "name": "refresh_admin_review_alerts",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "5ca100e12e991d3438117c33d8b8a77a5dd4d5d3790875b3c8ed078392e25b8f"
+    },
+    {
+      "name": "sync_source_evidence_count",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "",
+      "security_definer": true,
+      "definition_sha256": "2806a4607807d9c52aeb028ff24358f3b4722e350a01a795f08fbee1bd225406"
+    },
+    {
+      "name": "validate_calculator_publish_gate",
+      "owner": "postgres",
+      "schema": "public",
+      "signature": "uuid",
+      "security_definer": true,
+      "definition_sha256": "18ed27d139a24b73176838618ac99469418053d85b4020d1a4a1481cd3e6334c"
+    }
+  ]
+}

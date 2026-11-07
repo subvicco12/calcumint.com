@@ -1,3 +1,4 @@
+import {verifyN1PublicationBinding,n1PublicationSupplementalPath} from './n1-publication-lineage.mjs';
 import {verifyFrequencyPresentationBinding,frequencyPresentationSupplementalPath} from './frequency-presentation-lineage.mjs';
 import {readFileSync,lstatSync} from 'node:fs';
 import path from 'node:path';
@@ -18,9 +19,10 @@ export function verifyPublication20CallerLineage(directory){
  if(hash(oldCaller)!==m.predecessorCallerSHA256||hash(oldManifest)!==m.predecessorManifestSHA256||!safe(directory,priorManifest).equals(oldManifest))throw Error('Original predecessor source/manifest hash differs');
  for(const name of expectedPaths){
   const bytes=safe(directory,name);
-  if(!verifyFrequencyPresentationBinding(name,bytes,m.sourceHashes[name],git)&&(!/^[a-f0-9]{64}$/.test(m.sourceHashes[name])||hash(bytes)!==m.sourceHashes[name]))throw Error('Caller source hash differs: '+name);
+  if(!verifyN1PublicationBinding(name,bytes,m.sourceHashes[name],git)&&!verifyFrequencyPresentationBinding(name,bytes,m.sourceHashes[name],git)&&(!/^[a-f0-9]{64}$/.test(m.sourceHashes[name])||hash(bytes)!==m.sourceHashes[name]))throw Error('Caller source hash differs: '+name);
   if((name.startsWith('src/calculators/')||['src/lib/registered-input-successor.ts','src/lib/publication-factory-contracts-input.ts'].includes(name))&&!bytes.equals(git(['show',predecessor+':'+name])))throw Error('Frozen engine/parser predecessor differs: '+name);
  }
  verifyFrequencyPresentationBinding(frequencyPresentationSupplementalPath,safe(directory,frequencyPresentationSupplementalPath),undefined,git);
- return {predecessorCallerBytes:oldCaller,currentCallerSHA256:m.sourceHashes[caller],sourceBindings:expectedPaths.length,supplementalSourceBindings:1};
+ verifyN1PublicationBinding(n1PublicationSupplementalPath,safe(directory,n1PublicationSupplementalPath),undefined,git);
+ return {predecessorCallerBytes:oldCaller,currentCallerSHA256:m.sourceHashes[caller],sourceBindings:expectedPaths.length,supplementalSourceBindings:2};
 }

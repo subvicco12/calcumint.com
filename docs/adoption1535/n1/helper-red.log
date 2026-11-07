@@ -1,0 +1,26 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/n1-publication-methodology.test.ts [ src/lib/n1-publication-methodology.test.ts ]
+Error: Cannot find module './n1-publication-methodology' imported from '/workspace/work/owner-fullscope-20261102/src/lib/n1-publication-methodology.test.ts'
+ ❯ src/lib/n1-publication-methodology.test.ts:2:1
+      1| import {expect,it} from 'vitest';
+      2| import {n1PublicationMethodology} from './n1-publication-methodology';
+       | ^
+      3| import {createCalculationSnapshot} from './calculation-snapshot';
+      4| import {captureScenario,scenarioSetPayload} from './scenario-set';
+
+Caused by: Error: Failed to load url ./n1-publication-methodology (resolved id: ./n1-publication-methodology) in /workspace/work/owner-fullscope-20261102/src/lib/n1-publication-methodology.test.ts. Does the file exist?
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22907:33
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  18:48:58
+   Duration  334ms (transform 35ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 66ms)
+

@@ -1,5 +1,6 @@
 'use client';
 import {useId,useMemo,useState} from 'react';
+import {n1PublicationMethodology} from '@/lib/n1-publication-methodology';
 import {frequencyPresentationUnit} from '@/lib/frequency-presentation';
 import {runCalculator} from '@/calculators/engine';
 import {getPublication20Definition} from '@/lib/publication20';
@@ -30,7 +31,8 @@ function ConversionSession({entry}:{entry:Publication20Definition}){
  else error='Correct the fields identified above. Blank, malformed or lossy numeric values cannot be calculated.';
  const unit=entry.outputUnit(input),primary=output?.[entry.primaryKey];
  const presentationUnit=(code:string)=>frequencyPresentationUnit(definition.slug,definition.version,code);
- const methodology=[entry.catalogId===427?entry.scope:'Fixed-unit value conversion using the selected source and target units.',...definition.formulas.map(f=>`${f.description}\n${f.expression}`)].join('\n\n');
+ const baseMethodology=[entry.catalogId===427?entry.scope:'Fixed-unit value conversion using the selected source and target units.',...definition.formulas.map(f=>`${f.description}\n${f.expression}`)].join('\n\n');
+ const methodology=n1PublicationMethodology(entry.catalogId,definition.version,baseMethodology,entry.scope);
  const result=output?{primaryResult:{id:'result',label:'Converted value',value:primary as number,unit},methodology,sources:definition.sources}:null;
  const displayBase=result?scenarioMetadataForResult(definition,input,output!,result,{inputs:Object.fromEntries(entry.fields.map(f=>[f.key,f.label])),outputs:{[entry.primaryKey]:'result'}}):undefined;
  const display=displayBase?{...displayBase,inputs:{...displayBase.inputs,value:{label:'Value',unit:String(input.fromUnit)}}}:undefined;
