@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {mkdtemp,cp,symlink,rm,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';import os from 'node:os';import net from 'node:net';
@@ -10,6 +11,7 @@ export async function startProductionRuntime({root,auth,db,artifacts}){
  const registryPath=path.join(dir,'src/calculators/registry.ts'),registry=await readFile(registryPath,'utf8');
  const reader='const fixtureRead=(d:RegistryCalculator|undefined):RegistryCalculator|undefined=>d?.id==="conversion.frequency"?{...d,reviewStatus:"certified"}:d;\n';
  await writeFile(registryPath,registry.replace('export const calculatorRegistry=',reader+'export const calculatorRegistry=').replace('=>definitions,getBySlug:', '=>definitions.map(d=>fixtureRead(d)!),getBySlug:').replace('=>bySlug.get(slug)', '=>fixtureRead(bySlug.get(slug))').replace('=>byId.get(id)', '=>fixtureRead(byId.get(id))'));
+ const builtSources={};for(const entry of ['src/lib/native-delivery/publication.ts','src/lib/native-delivery/metering.ts','src/lib/native-delivery/embed-request.ts','src/app/api/native-embed/[grant]/calculate/route.ts','src/components/native-frequency-embed.tsx','next.config.ts'])builtSources[entry]=createHash('sha256').update(await readFile(path.join(dir,entry))).digest('hex');await writeFile(path.join(artifacts,'build-source-sha256.json'),JSON.stringify(builtSources,null,2)+'\n');
  const actualPort=await new Promise(resolve=>{const s=net.createServer();s.listen(0,'127.0.0.1',()=>{const p=s.address().port;s.close(()=>resolve(p))})});
  const url=`http://127.0.0.1:${actualPort}`;
  if(new URL(auth.url).hostname!=='127.0.0.1')throw Error('Local-only fixture URL required');

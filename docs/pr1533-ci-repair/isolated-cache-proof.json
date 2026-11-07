@@ -1,0 +1,176 @@
+{
+  "sqlExists": "t",
+  "cold": {
+    "status": 404,
+    "body": {
+      "code": "42P01",
+      "details": null,
+      "hint": null,
+      "message": "relation \"public.native_embed_grants\" does not exist"
+    }
+  },
+  "before": {
+    "status": 200,
+    "body": []
+  },
+  "rejectedInsert": {
+    "status": 404,
+    "body": {}
+  },
+  "beforeOpenapiTable": null,
+  "readiness": {
+    "elapsedMs": 484,
+    "attempts": 2,
+    "observations": [
+      {
+        "elapsedMs": 267,
+        "missing": [
+          "path:native_embed_grants",
+          "native_embed_grants.id",
+          "native_embed_grants.organization_id",
+          "native_embed_grants.issuer_id",
+          "native_embed_grants.api_key_id",
+          "native_embed_grants.token_hash",
+          "native_embed_grants.allowed_origin",
+          "native_embed_grants.catalog_id",
+          "native_embed_grants.engine_id",
+          "native_embed_grants.technical_version",
+          "native_embed_grants.issued_at",
+          "native_embed_grants.expires_at",
+          "native_embed_grants.revoked_at",
+          "path:native_embed_usage",
+          "native_embed_usage.grant_id",
+          "native_embed_usage.request_id",
+          "native_embed_usage.organization_id",
+          "native_embed_usage.issuer_id",
+          "native_embed_usage.api_key_id",
+          "native_embed_usage.catalog_id",
+          "native_embed_usage.engine_id",
+          "native_embed_usage.technical_version",
+          "native_embed_usage.request_hash",
+          "native_embed_usage.result_hash",
+          "native_embed_usage.created_at",
+          "native_embed_usage.units"
+        ]
+      },
+      {
+        "elapsedMs": 484,
+        "missing": []
+      }
+    ],
+    "method": "GET OpenAPI cached table columns and exact RPC arguments"
+  },
+  "after": {
+    "status": 200,
+    "body": []
+  },
+  "rpc": {
+    "status": 404,
+    "body": {
+      "code": "PGRST202",
+      "details": "Searched for the function public.consume_native_embed_v1 with parameters p_grant_id, p_request_hash, p_request_id, p_result_hash, but no matches were found in the schema cache.",
+      "hint": "Perhaps you meant to call the function public.capture_verified_embed_lead_v1",
+      "message": "Could not find the function public.consume_native_embed_v1(p_grant_id, p_request_hash, p_request_id, p_result_hash) in the schema cache"
+    }
+  },
+  "openapiRPC": {
+    "get": {
+      "parameters": [
+        {
+          "format": "uuid",
+          "in": "query",
+          "name": "p_grant_id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "format": "uuid",
+          "in": "query",
+          "name": "p_request_id",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "format": "text",
+          "in": "query",
+          "name": "p_request_hash",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "format": "text",
+          "in": "query",
+          "name": "p_result_hash",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "produces": [
+        "application/json",
+        "application/vnd.pgrst.object+json;nulls=stripped",
+        "application/vnd.pgrst.object+json"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        }
+      },
+      "tags": [
+        "(rpc) consume_native_embed_v1"
+      ]
+    },
+    "post": {
+      "parameters": [
+        {
+          "in": "body",
+          "name": "args",
+          "required": true,
+          "schema": {
+            "properties": {
+              "p_grant_id": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "p_request_hash": {
+                "format": "text",
+                "type": "string"
+              },
+              "p_request_id": {
+                "format": "uuid",
+                "type": "string"
+              },
+              "p_result_hash": {
+                "format": "text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "p_grant_id",
+              "p_request_id",
+              "p_request_hash",
+              "p_result_hash"
+            ],
+            "type": "object"
+          }
+        },
+        {
+          "$ref": "#/parameters/preferParams"
+        }
+      ],
+      "produces": [
+        "application/json",
+        "application/vnd.pgrst.object+json;nulls=stripped",
+        "application/vnd.pgrst.object+json"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        }
+      },
+      "tags": [
+        "(rpc) consume_native_embed_v1"
+      ]
+    }
+  },
+  "scope": "Unchanged pinned Docker PostgREST with local-only schema adoption; GET readiness requests plus one negative INSERT returns404{} while table exists and cached definition absent, with zero persisted rows; no application build"
+}

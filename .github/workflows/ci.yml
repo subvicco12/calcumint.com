@@ -529,7 +529,7 @@ jobs:
       - name: Native registered Business API and embed acceptance
         timeout-minutes: 6
         run: |
-          node --test tests/native440/quota-bindings.test.mjs tests/full-product-batch17/workflow.test.mjs
+          node --test tests/native440/quota-bindings.test.mjs tests/native440/schema-readiness.test.mjs tests/full-product-batch17/workflow.test.mjs
           node tests/native440/quota.mjs
           node tests/native440-remediation/embed.postgres.mjs
           node tests/native440/acceptance.mjs
