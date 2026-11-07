@@ -1,3 +1,4 @@
+import {frequencyPresentationUnit} from './frequency-presentation';
 import {recordedNumberDifference} from './recorded-number-difference';
 import {scenarioSetPayload,type CapturedScenario,type ScenarioSlot} from './scenario-set';
 import {serializeCalculationCsv} from './calculation-export';
@@ -40,11 +41,12 @@ export function serializeScenarioReportJson(rows:readonly CapturedScenario[]):st
 }
 export function serializeScenarioReportCsv(rows:readonly CapturedScenario[]):string {
  const {captures,metrics}=createScenarioReport(rows);
+ const unit=(value:string)=>frequencyPresentationUnit(captures.calculatorSlug,captures.calculatorVersion,value);
  const output:Record<string,unknown>={capturedScenarios:captures.scenarios};
  metrics.forEach((metric,index)=>{
   output[`metric[${index}].field`]=metric.field;output[`metric[${index}].label`]=metric.label;
-  if(metric.unit!==undefined)output[`metric[${index}].unit`]=metric.unit;
-  for(const cell of metric.cells){const path=`metric[${index}].${cell.slot}`;output[`${path}.label`]=cell.label??null;output[`${path}.unit`]=cell.unit??null;output[`${path}.value`]=cell.value;output[`${path}.differenceFromA`]=cell.difference;output[`${path}.unavailable`]=cell.unavailable;}
+  if(metric.unit!==undefined)output[`metric[${index}].unit`]=unit(metric.unit);
+  for(const cell of metric.cells){const path=`metric[${index}].${cell.slot}`;output[`${path}.label`]=cell.label??null;output[`${path}.unit`]=cell.unit===undefined?null:unit(cell.unit);output[`${path}.value`]=cell.value;output[`${path}.differenceFromA`]=cell.difference;output[`${path}.unavailable`]=cell.unavailable;}
  });
  return serializeCalculationCsv({schemaVersion:1,calculatorSlug:captures.calculatorSlug,calculatorVersion:captures.calculatorVersion,baseline:'A'},output);
 }

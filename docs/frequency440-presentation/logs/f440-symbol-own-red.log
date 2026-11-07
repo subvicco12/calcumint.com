@@ -1,0 +1,30 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+ ❯ src/lib/frequency-presentation.test.ts (3 tests | 1 failed) 68ms
+   ✓ uses correct SI case for exact frequencyv1 while preserving other identities and codes 11ms
+   ✓ adds HTTP display symbols without modifying immutable payload or numerical audit digest inputs 13ms
+   × preserves unknown historical unit text without reading inherited object properties 42ms
+     → expected [Function Object] to be 'constructor' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/frequency-presentation.test.ts > preserves unknown historical unit text without reading inherited object properties
+AssertionError: expected [Function Object] to be 'constructor' // Object.is equality
+
+- Expected:
+"constructor"
+
++ Received:
+[Function Object]
+
+ ❯ src/lib/frequency-presentation.test.ts:6:215
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  16:43:44
+   Duration  2.40s (transform 540ms, setup 0ms, collect 1.27s, tests 68ms, environment 0ms, prepare 294ms)

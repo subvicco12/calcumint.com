@@ -1,0 +1,38 @@
+{
+  "baseline": "761b850479ea36b2b4ebf8039664d8400c762555",
+  "unit": {
+    "passed": 8026,
+    "existingSkipped": 4,
+    "receipt": "logs/f440-si-unit-verified.log"
+  },
+  "nodeGuards": {
+    "passed": 73,
+    "receipt": "logs/f440-si-guards-verified.log"
+  },
+  "launch": {
+    "passed": 45
+  },
+  "certification": {
+    "passed": 15
+  },
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 28
+  },
+  "typecheck": "PASS",
+  "webpackBuild": "PASS",
+  "productionMode": {
+    "groupsPassed": 13,
+    "workflowAssertions": 11,
+    "durationMs": 230751,
+    "receipt": "evidence/receipt.json",
+    "sourceLimit": "evidence/snapshot-limits.json",
+    "qualification": "Local disposable build precedes only unknown-code own-property fallback correction. Final-source unit/build pass; exact-head hosted acceptance still required."
+  },
+  "independentEngineeringReview": {
+    "result": "NO_BLOCKING_ISSUES",
+    "formalCompetentAcceptance": false
+  },
+  "hostedSuccessorCI": "PENDING_EXACT_HEAD",
+  "releaseHold": true
+}

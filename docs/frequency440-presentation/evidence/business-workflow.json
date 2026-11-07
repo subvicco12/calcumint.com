@@ -1,0 +1,218 @@
+{
+  "passed": true,
+  "checks": [
+    "Owner created client workspace through genuine Next server-action form",
+    "Owner created existing Business project through genuine Next server-action form",
+    "Viewer management controls hidden and forged action denied; separate authenticated Business tenant denied with no rows and RLS read empty",
+    "Existing Admin team view exposes current roles and genuine invitation form creates a pending Member invitation",
+    "Conditional public #440 route renders immutable-engine example 2.4 GHz to2400 MHz worked example",
+    "Authenticated Business user saved exact #440 raw unit IDs and numerical result through existing personal-history application action",
+    "Actual public calculator export buttons produce unchanged raw JSON, CSV SI presentation rows alongside raw unit IDs, and PDF SI unit text; Blob capture verifies generated artifacts, not download completion",
+    "Existing Business A/B scenario workflow captures immutable raw #440 inputs/output independently of SI labels",
+    "Actual scenario JSON export retains immutable raw unit IDs, version, metadata and numerical values despite SI display",
+    "Existing authenticated account calculation-project form and atomic saved-scenario form preserve the original #440 history snapshot exactly",
+    "A Business team Viewer cannot access another owner personal calculation-project or scenario; Business membership does not transfer personal ownership"
+  ],
+  "viewerActionStatus": 500,
+  "crossTenantActionStatus": 500,
+  "history": {
+    "id": "d1bb6cd3-10fe-4ad7-bb8a-8512fe5364ac",
+    "calculator_slug": "frequency-converter",
+    "calculator_version": 1,
+    "input_data": {
+      "value": 0.01001,
+      "toUnit": "khz",
+      "fromUnit": "hz"
+    },
+    "output_data": {
+      "result": 0.00001001
+    }
+  },
+  "snapshots": [
+    {
+      "label": "Complete snapshot A (baseline)",
+      "data": {
+        "input": {
+          "value": 0.01001,
+          "fromUnit": "hz",
+          "toUnit": "khz"
+        },
+        "output": {
+          "result": 0.00001001
+        },
+        "displayMetadata": {
+          "schemaVersion": 1,
+          "calculatorSlug": "frequency-converter",
+          "calculatorVersion": 1,
+          "inputs": {
+            "value": {
+              "label": "Value",
+              "unit": "hz"
+            },
+            "fromUnit": {
+              "label": "From unit"
+            },
+            "toUnit": {
+              "label": "To unit"
+            }
+          },
+          "outputs": {
+            "result": {
+              "label": "Converted value",
+              "unit": "khz"
+            }
+          }
+        }
+      }
+    },
+    {
+      "label": "Complete snapshot B",
+      "data": {
+        "input": {
+          "value": 2,
+          "fromUnit": "hz",
+          "toUnit": "khz"
+        },
+        "output": {
+          "result": 0.002
+        },
+        "displayMetadata": {
+          "schemaVersion": 1,
+          "calculatorSlug": "frequency-converter",
+          "calculatorVersion": 1,
+          "inputs": {
+            "value": {
+              "label": "Value",
+              "unit": "hz"
+            },
+            "fromUnit": {
+              "label": "From unit"
+            },
+            "toUnit": {
+              "label": "To unit"
+            }
+          },
+          "outputs": {
+            "result": {
+              "label": "Converted value",
+              "unit": "khz"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "savedScenario": {
+    "id": "7cbc14fb-29fb-45eb-a9e4-2c94235b284f",
+    "project_id": "24bc7480-3bb0-42df-aa1d-443ae5dee5b7",
+    "calculator_slug": "frequency-converter",
+    "calculator_version": 1,
+    "input_data": {
+      "value": 0.01001,
+      "toUnit": "khz",
+      "fromUnit": "hz"
+    },
+    "output_data": {
+      "result": 0.00001001
+    }
+  },
+  "calculationJson": {
+    "calculatorSlug": "frequency-converter",
+    "calculatorVersion": 1,
+    "input": {
+      "value": 0.01001,
+      "fromUnit": "hz",
+      "toUnit": "khz"
+    },
+    "output": {
+      "result": 0.00001001
+    }
+  },
+  "calculationCsv": "\"section\",\"field\",\"value\"\n\"identity\",\"calculatorSlug\",\"frequency-converter\"\n\"identity\",\"calculatorVersion\",\"1\"\n\"presentation\",\"fromUnit\",\"Hz\"\n\"presentation\",\"toUnit\",\"kHz\"\n\"input\",\"value\",\"0.01001\"\n\"input\",\"fromUnit\",\"hz\"\n\"input\",\"toUnit\",\"khz\"\n\"output\",\"result\",\"0.00001001\"",
+  "scenarioJson": {
+    "schemaVersion": 1,
+    "calculatorSlug": "frequency-converter",
+    "calculatorVersion": 1,
+    "baseline": "A",
+    "scenarios": [
+      {
+        "slot": "A",
+        "notes": "",
+        "methodology": "Fixed-unit value conversion using the selected source and target units.\n\nConverts with a direct ratio of fixed base-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling.\ntarget = source × (source hertz / target hertz)",
+        "input": {
+          "value": 0.01001,
+          "fromUnit": "hz",
+          "toUnit": "khz"
+        },
+        "output": {
+          "result": 0.00001001
+        },
+        "displayMetadata": {
+          "schemaVersion": 1,
+          "calculatorSlug": "frequency-converter",
+          "calculatorVersion": 1,
+          "inputs": {
+            "value": {
+              "label": "Value",
+              "unit": "hz"
+            },
+            "fromUnit": {
+              "label": "From unit"
+            },
+            "toUnit": {
+              "label": "To unit"
+            }
+          },
+          "outputs": {
+            "result": {
+              "label": "Converted value",
+              "unit": "khz"
+            }
+          }
+        }
+      },
+      {
+        "slot": "B",
+        "notes": "",
+        "methodology": "Fixed-unit value conversion using the selected source and target units.\n\nConverts with a direct ratio of fixed base-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling.\ntarget = source × (source hertz / target hertz)",
+        "input": {
+          "value": 2,
+          "fromUnit": "hz",
+          "toUnit": "khz"
+        },
+        "output": {
+          "result": 0.002
+        },
+        "displayMetadata": {
+          "schemaVersion": 1,
+          "calculatorSlug": "frequency-converter",
+          "calculatorVersion": 1,
+          "inputs": {
+            "value": {
+              "label": "Value",
+              "unit": "hz"
+            },
+            "fromUnit": {
+              "label": "From unit"
+            },
+            "toUnit": {
+              "label": "To unit"
+            }
+          },
+          "outputs": {
+            "result": {
+              "label": "Converted value",
+              "unit": "khz"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "transport": "Same-origin loopback proxy to genuine isolated GoTrue/PostgREST; production CSP enforced unchanged",
+  "gaps": [
+    "Business project/client creation and role boundaries exercised; source exposes no cross-link UI between personal calculation_projects/saved_scenarios and Business business_projects/client_workspaces",
+    "Team view and role management boundaries exercised; invitation email delivery and external client delivery not claimed",
+    "No production certification or publication approval; lower registry/host manifest readers remain explicit disposable fixtures"
+  ]
+}

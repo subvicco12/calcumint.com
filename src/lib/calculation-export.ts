@@ -1,3 +1,4 @@
+import {frequencyPresentationUnit} from './frequency-presentation';
 import { createCalculationSnapshot,type CalculationSnapshot,copyCalculationData } from "./calculation-snapshot";
 export { serializeCalculationPdf, type CalculationPdfOptions } from './calculation-export-pdf';
 /** Export raw engine values; formatting and on-screen sampling do not affect CSV. */
@@ -28,7 +29,8 @@ export function serializeCalculationSnapshotCsv(snapshot:CalculationSnapshot):st
  const saved=createCalculationSnapshot(snapshot),csv=serializeCalculationCsv(saved.input,saved.output);
  const quote=(value:string)=>`"${value.replaceAll('"','""')}"`;
  const text=(value:string)=>/^[\s]*[=+\-@]/u.test(value)?`'${value}`:value;
- const identity=[['identity','calculatorSlug',text(saved.calculatorSlug)],['identity','calculatorVersion',String(saved.calculatorVersion)]].map(row=>row.map(quote).join(',')).join('\n');
+ const presentation=['fromUnit','toUnit'].flatMap(key=>{const raw=saved.input[key];if(typeof raw!=='string')return [];const unit=frequencyPresentationUnit(saved.calculatorSlug,saved.calculatorVersion,raw);return unit===raw?[]:[['presentation',key,unit]];});
+ const identity=[['identity','calculatorSlug',text(saved.calculatorSlug)],['identity','calculatorVersion',String(saved.calculatorVersion)],...presentation].map(row=>row.map(quote).join(',')).join('\n');
  const line=csv.indexOf('\n');
  return line<0?`${csv}\n${identity}`:`${csv.slice(0,line)}\n${identity}\n${csv.slice(line+1)}`;
 }

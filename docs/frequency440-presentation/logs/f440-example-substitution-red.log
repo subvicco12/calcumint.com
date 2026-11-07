@@ -1,0 +1,102 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+ ❯ src/components/frequency-worked-example.test.tsx (1 test | 1 failed) 79ms
+   × renders the unchanged v1 engine example with explicit inputs, formula and independently expected result 77ms
+     → Unable to find an element with the text: GHz denotes 10^9 Hz; MHz denotes 10^6 Hz. The source-to-target factor for this example is 1000.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mdata-frequency-worked-example[39m=[32m"conversion.frequency@1"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mInput: [0m
+        [0m2.4[0m
+        [0m [0m
+        [0mGHz[0m
+        [0m → [0m
+        [0mMHz[0m
+      [36m</p>[39m
+      [36m<p>[39m
+        [36m<code>[39m
+          [0mtarget = source × (source hertz / target hertz)[0m
+        [36m</code>[39m
+      [36m</p>[39m
+      [36m<p>[39m
+        [0mResult: [0m
+        [0m2400[0m
+        [0m [0m
+        [0mMHz[0m
+      [36m</p>[39m
+      [36m<p>[39m
+        [0mCalculation engine: [0m
+        [0mconversion.frequency[0m
+        [0m, version [0m
+        [0m1[0m
+        [0m.[0m
+      [36m</p>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/frequency-worked-example.test.tsx > renders the unchanged v1 engine example with explicit inputs, formula and independently expected result
+TestingLibraryElementError: Unable to find an element with the text: GHz denotes 10^9 Hz; MHz denotes 10^6 Hz. The source-to-target factor for this example is 1000.. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mdata-frequency-worked-example[39m=[32m"conversion.frequency@1"[39m
+    [36m>[39m
+      [36m<p>[39m
+        [0mInput: [0m
+        [0m2.4[0m
+        [0m [0m
+        [0mGHz[0m
+        [0m → [0m
+        [0mMHz[0m
+      [36m</p>[39m
+      [36m<p>[39m
+        [36m<code>[39m
+          [0mtarget = source × (source hertz / target hertz)[0m
+        [36m</code>[39m
+      [36m</p>[39m
+      [36m<p>[39m
+        [0mResult: [0m
+        [0m2400[0m
+        [0m [0m
+        [0mMHz[0m
+      [36m</p>[39m
+      [36m<p>[39m
+        [0mCalculation engine: [0m
+        [0mconversion.frequency[0m
+        [0m, version [0m
+        [0m1[0m
+        [0m.[0m
+      [36m</p>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/frequency-worked-example.test.tsx:11:16
+      9|  expect(screen.getByText('Input: 2.4 GHz → MHz')).toBeTruthy();
+     10|  expect(screen.getByText('Result: 2400 MHz')).toBeTruthy();
+     11|  expect(screen.getByText('GHz denotes 10^9 Hz; MHz denotes 10^6 Hz. Th…
+       |                ^
+     12|  expect(screen.getByText('Substitution: 2.4 × 1000 = 2400 MHz')).toBeT…
+     13|  expect(screen.getByText(frequencyConverter.formulas[0].expression)).t…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  16:35:04
+   Duration  1.92s (transform 176ms, setup 0ms, collect 503ms, tests 79ms, environment 628ms, prepare 135ms)

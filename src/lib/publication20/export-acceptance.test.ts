@@ -13,6 +13,7 @@ import {createScenarioReport,serializeScenarioReportCsv,serializeScenarioReportJ
 import {serializeScenarioReportPdf} from '../scenario-report-pdf';
 import {recoverScenarioSetJson} from '../scenario-set-recovery';
 import {verifyRegisteredSnapshot} from '../registered-snapshot-replay';
+import {frequencyPresentationUnit} from '../frequency-presentation';
 import type {ScenarioDisplayMetadata} from '../scenario-display-metadata';
 
 // An independent RFC4180 field reader; does not reuse export implementation.
@@ -39,6 +40,7 @@ describe('twenty exact registered versions: CSV, independent PDF and local A/B r
   // Explicit captured presentation fixture, using cohort-declared units. This
   // tests serializers; browser metadata provenance remains separate evidence.
   const metadata:ScenarioDisplayMetadata={schemaVersion:1,calculatorSlug:a.calculatorSlug,calculatorVersion:a.calculatorVersion,inputs:Object.fromEntries(entry.fields.map(field=>[field.key,{label:field.label,...(field.kind==='number'?{unit:field.key==='value'&&typeof input.fromUnit==='string'?input.fromUnit:field.unit??''}:{})}])),outputs:{[entry.primaryKey]:{label:'Recorded result',unit}}};
+  const humanUnit=frequencyPresentationUnit(a.calculatorSlug,a.calculatorVersion,unit);
   const rows=captureScenario(captureScenario([],'A',a,'Baseline, "exact"',metadata),'B',b,'Changed numeric input',metadata);
   it(`${entry.catalogId} CSV raw identity/fields and A/B comparison/recovery reject tamper`,()=>{
    expect(a.calculatorVersion).toBe(1);expect(verifyRegisteredSnapshot(a).engineId).toBe(entry.definition.id);
@@ -51,7 +53,7 @@ describe('twenty exact registered versions: CSV, independent PDF and local A/B r
    expect(metric.cells[1].difference).toBe(new Decimal(String(b.output[entry.primaryKey])).minus(String(a.output[entry.primaryKey])).toNumber());
    expect(metric.cells.every(cell=>cell.unavailable===null)).toBe(true);expect(report.charts.find(chart=>chart.field===entry.primaryKey)?.unit).toBe(unit);
    const comparison=readCsv(serializeScenarioReportCsv(rows)),index=report.metrics.indexOf(metric);
-   expect(cell(comparison,'input','calculatorSlug')).toBe(a.calculatorSlug);expect(cell(comparison,'output',`metric[${index}].unit`)).toBe(unit);
+   expect(cell(comparison,'input','calculatorSlug')).toBe(a.calculatorSlug);expect(cell(comparison,'output',`metric[${index}].unit`)).toBe(humanUnit);
    const captured=JSON.parse(cell(comparison,'output','capturedScenarios'));expect(captured[0].notes).toBe('Baseline, "exact"');expect(captured[1].input).toEqual(b.input);expect(captured[1].output).toEqual(b.output);
    const encoded=serializeScenarioReportJson(rows),identity={calculatorSlug:a.calculatorSlug,calculatorVersion:1};expect(recoverScenarioSetJson(encoded,identity)).toEqual(rows);
    const forged=JSON.parse(encoded);forged.scenarios[1].output[entry.primaryKey]+=1;expect(()=>recoverScenarioSetJson(JSON.stringify(forged),identity)).toThrow();
@@ -70,8 +72,8 @@ describe('twenty exact registered versions: CSV, independent PDF and local A/B r
   it.skipIf(!popplerAvailable)(`${entry.catalogId} Poppler reads calculation and A/B PDF raw values, units and immutable version`,()=>{
    const title=`Catalog ${entry.catalogId}: exact registered export`;
    const text=pdfText(serializeCalculationPdf(a,{title,displayMetadata:metadata,sources:entry.definition.sources,formulas:entry.definition.formulas}));
-   expect(text).toContain(title);expect(text).toContain(a.calculatorSlug);expect(text).toContain(`output["${entry.primaryKey}"] = ${String(a.output[entry.primaryKey])}`);expect(text).toContain(`[${unit}]`);expect(text).toMatch(/version[^\n]*1/i);
-   const comparison=pdfText(serializeScenarioReportPdf(rows));expect(comparison).toContain('SCENARIO COMPARISON');expect(comparison).toContain(a.calculatorSlug);expect(comparison).toContain(`[${unit}]`);expect(comparison).toContain(String(b.output[entry.primaryKey]));expect(comparison).toContain(JSON.stringify('Baseline, "exact"'));expect(comparison).toContain('PDF/UA conformance: UNVERIFIED');
+   expect(text).toContain(title);expect(text).toContain(a.calculatorSlug);expect(text).toContain(`output["${entry.primaryKey}"] = ${String(a.output[entry.primaryKey])}`);expect(text).toContain(`[${humanUnit}]`);expect(text).toMatch(/version[^\n]*1/i);
+   const comparison=pdfText(serializeScenarioReportPdf(rows));expect(comparison).toContain('SCENARIO COMPARISON');expect(comparison).toContain(a.calculatorSlug);expect(comparison).toContain(`[${humanUnit}]`);expect(comparison).toContain(String(b.output[entry.primaryKey]));expect(comparison).toContain(JSON.stringify('Baseline, "exact"'));expect(comparison).toContain('PDF/UA conformance: UNVERIFIED');
   });
  }
 });

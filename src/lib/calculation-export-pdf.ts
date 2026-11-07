@@ -1,3 +1,4 @@
+import {frequencyPresentationUnit} from './frequency-presentation';
 import type { CalculatorFormula, CalculatorSource } from '@/calculators/types';
 import { createCalculationSnapshot, type CalculationSnapshot } from './calculation-snapshot';
 import { validateScenarioDisplayMetadata, type ScenarioDisplayMetadata } from './scenario-display-metadata';
@@ -92,6 +93,7 @@ function valueText(value: unknown): string {
  * authority as CSV/JSON. No recalculation, display rounding, sampling or network I/O. */
 export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: CalculationPdfOptions = {}): Uint8Array {
   const captured = createCalculationSnapshot(snapshot);
+  const unit=(code:string)=>frequencyPresentationUnit(captured.calculatorSlug,captured.calculatorVersion,code);
   // Copy and validate the entire options domain before reading any display fields.
   const metadata = createCalculationSnapshot({ ...captured, input: {}, output: options as Record<string, unknown> }).output;
   const display = metadata.displayMetadata === undefined ? undefined : validateScenarioDisplayMetadata(metadata.displayMetadata, captured);
@@ -138,7 +140,8 @@ export function serializeCalculationPdf(snapshot: CalculationSnapshot, options: 
     if (!Object.keys(captured[group]).length) add('(empty record)');
     for (const [key, value] of Object.entries(captured[group])) {
       const label = mapping?.[key];
-      if (label) add(`${label.label}${label.unit === undefined ? '' : ` [${label.unit}]`}`, true);
+      if (label) add(`${label.label}${label.unit === undefined ? '' : ` [${unit(label.unit)}]`}`, true);
+      if(group==='input'&&(key==='fromUnit'||key==='toUnit')&&typeof value==='string'&&unit(value)!==value) add(`${key}: ${unit(value)} (raw unit ID follows)`);
       field(`${group}[${JSON.stringify(key)}]`, value);
     }
   }

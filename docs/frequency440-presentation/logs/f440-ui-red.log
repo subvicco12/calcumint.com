@@ -1,0 +1,1861 @@
+
+ RUN  v3.2.7 /workspace/work/owner-fullscope-20261102
+
+ ❯ src/components/publication20-batch.test.tsx (4 tests | 1 failed) 441ms
+   ✓ captures raw rows, selects one into existing workflow and denies stale exports 210ms
+   ✓ denies stale unit captures and refuses any partial export 59ms
+   ✓ announces processed validity and names per-row keyboard actions 45ms
+   × presents SI symbols while selecting original frequency unit IDs 125ms
+     → Unable to find an accessible element with the role "columnheader" and name "Entered value (MHz)"
+
+Here are the accessible roles:
+
+  region:
+
+  Name "Batch conversion":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Batch conversion"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Batch conversion":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Batch values, one per line":
+  [36m<textarea[39m
+    [33mmaxlength[39m=[32m"65536"[39m
+  [36m/>[39m
+
+  Name "Batch replay JSON":
+  [36m<textarea[39m
+    [33mmaxlength[39m=[32m"524288"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Calculate batch":
+  [36m<button[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Export batch JSON":
+  [36m<button[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Use row 1 in calculator":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Use row 1 in calculator"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Validate batch replay":
+  [36m<button[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<p[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "Batch conversion results":
+  [36m<table[39m
+    [33mclass[39m=[32m"schedule-table"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  caption:
+
+  Name "Batch conversion results":
+  [36m<caption />[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Row Entered value (mhz) Stored result (khz) Status Action":
+  [36m<tr />[39m
+
+  Name "1 1 1000 Valid Use in calculator":
+  [36m<tr />[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Row":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Entered value (mhz)":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Stored result (khz)":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Status":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Action":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowheader:
+
+  Name "1":
+  [36m<th[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "1":
+  [36m<td[39m
+    [33mstyle[39m=[32m"overflow-wrap: anywhere;"[39m
+  [36m/>[39m
+
+  Name "1000":
+  [36m<td />[39m
+
+  Name "Valid":
+  [36m<td />[39m
+
+  Name "Use in calculator":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "":
+  [36m<details />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-label[39m=[32m"Batch conversion"[39m
+    [36m>[39m
+      [36m<h3>[39m
+        [0mBatch conversion[0m
+      [36m</h3>[39m
+      [36m<p>[39m
+        [0mConvert 1–100 values using the selected [0m
+        [0mmhz[0m
+        [0m to [0m
+        [0mkhz[0m
+        [0m units. Engineering limits: 4096 characters per row and 64 KiB input. Correct every row before exporting. Use a row in the calculator to save it through your account workflow.[0m
+      [36m</p>[39m
+      [36m<label>[39m
+        [0mBatch values, one per line[0m
+        [36m<textarea[39m
+          [33mmaxlength[39m=[32m"65536"[39m
+        [36m>[39m
+          [0m1[0m
+        [36m</textarea>[39m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCalculate batch[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mExport batch JSON[0m
+      [36m</button>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0m1[0m
+        [0m rows processed: [0m
+        [0m1[0m
+        [0m valid, [0m
+        [0m0[0m
+        [0m invalid. Correct invalid rows before exporting.[0m
+      [36m</p>[39m
+      [36m<table[39m
+        [33mclass[39m=[32m"schedule-table"[39m
+      [36m>[39m
+        [36m<caption>[39m
+          [0mBatch conversion results[0m
+        [36m</caption>[39m
+        [36m<thead>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mRow[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mEntered value ([0m
+              [0mmhz[0m
+              [0m)[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mStored result ([0m
+              [0mkhz[0m
+              [0m)[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mStatus[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mAction[0m
+            [36m</th>[39m
+          [36m</tr>[39m
+        [36m</thead>[39m
+        [36m<tbody>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"row"[39m
+            [36m>[39m
+              [0m1[0m
+            [36m</th>[39m
+            [36m<td[39m
+              [33mstyle[39m=[32m"overflow-wrap: anywhere;"[39m
+            [36m>[39m
+              [0m1[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0m1000[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0mValid[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Use row 1 in calculator"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mUse in calculator[0m
+              [36m</button>[39m
+            [36m</td>[39m
+          [36m</tr>[39m
+        [36m</tbody>[39m
+      [36m</table>[39m
+      [36m<details>[39m
+        [36m<summary>[39m
+          [0mReplay batch JSON[0m
+        [36m</summary>[39m
+        [36m<p>[39m
+          [0mUnsigned replay checks numeric integrity against the existing v1 engine. It does not authenticate the author or establish source approval. JSON represents signed zero as zero. Replay engineering limit: 512 KiB.[0m
+        [36m</p>[39m
+        [36m<label>[39m
+          [0mBatch replay JSON[0m
+          [36m<textarea[39m
+            [33mmaxlength[39m=[32m"524288"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mValidate batch replay[0m
+        [36m</button>[39m
+      [36m</details>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ src/components/publication20-tool.test.tsx (13 tests | 1 failed) 1691ms
+   ✓ exact existing converter interfaces > wires all15 immutable engines, methodology, sources and account/scenario units on free  590ms
+   ✓ exact existing converter interfaces > wires all15 immutable engines, methodology, sources and account/scenario units on pro  414ms
+   ✓ exact existing converter interfaces > wires all15 immutable engines, methodology, sources and account/scenario units on business 212ms
+   ✓ exact existing converter interfaces > refuses blank, malformed, nonfinite and lossy drafts immediately, then recovers genuine zero 104ms
+   ✓ exact existing converter interfaces > refuses a nonzero linear input that the old engine underflows to zero without changing that engine 38ms
+   ✓ exact existing converter interfaces > accepts legitimate affine zero and updates the selected output unit for scenario metadata 23ms
+   ✓ exact existing converter interfaces > discloses OWN-427 algebraic scope visibly and preserves below-absolute-zero conversion 20ms
+   ✓ exact existing converter interfaces > resets state across exact converter identities and retains unknown slug refusal 19ms
+   ✓ exact existing converter interfaces > keeps existing technology controls while rejecting lossy decimal entry and positive underflow 20ms
+   ✓ keeps #440 single math and raw precision with bounded batch entitlement on free 31ms
+   ✓ keeps #440 single math and raw precision with bounded batch entitlement on pro 61ms
+   ✓ keeps #440 single math and raw precision with bounded batch entitlement on business 48ms
+   × uses SI frequency symbols for human labels while retaining original account unit IDs 107ms
+     → Unable to find an accessible element with the role "option" and name "Hz"
+
+Here are the accessible roles:
+
+  textbox:
+
+  Name "Value":
+  [36m<input[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mdata-publication20-field[39m=[32m"value"[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mtype[39m=[32m"text"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "From unit":
+  [36m<select[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mdata-publication20-field[39m=[32m"fromUnit"[39m
+  [36m/>[39m
+
+  Name "To unit":
+  [36m<select[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mdata-publication20-field[39m=[32m"toUnit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "hz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"hz"[39m
+  [36m/>[39m
+
+  Name "khz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"khz"[39m
+  [36m/>[39m
+
+  Name "mhz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"mhz"[39m
+  [36m/>[39m
+
+  Name "ghz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"ghz"[39m
+  [36m/>[39m
+
+  Name "hz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"hz"[39m
+  [36m/>[39m
+
+  Name "khz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"khz"[39m
+  [36m/>[39m
+
+  Name "mhz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"mhz"[39m
+  [36m/>[39m
+
+  Name "ghz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"ghz"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  region:
+
+  Name "Calculation result":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Calculation result"[39m
+    [33mclass[39m=[32m"final-result"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<div[39m
+    [33maria-atomic[39m=[32m"true"[39m
+    [33maria-live[39m=[32m"polite"[39m
+    [33mclass[39m=[32m"result-hero"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  strong:
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Advanced Analysis":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Compare plans":
+  [36m<a[39m
+    [33mclass[39m=[32m"text-link"[39m
+    [33mhref[39m=[32m"/pricing"[39m
+  [36m/>[39m
+
+  Name "NIST Guide to the SI — conversion factors":
+  [36m<a[39m
+    [33mclass[39m=[32m"text-link"[39m
+    [33mhref[39m=[32m"https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "BIPM — SI Brochure, 9th edition":
+  [36m<a[39m
+    [33mclass[39m=[32m"text-link"[39m
+    [33mhref[39m=[32m"https://www.bipm.org/en/publications/si-brochure"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "":
+  [36m<details[39m
+    [33mclass[39m=[32m"result-methodology"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<details[39m
+    [33mclass[39m=[32m"result-methodology"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<details />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul />[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "Conversion reconciliation":
+  [36m<table[39m
+    [33mclass[39m=[32m"schedule-table"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  caption:
+
+  Name "Conversion reconciliation":
+  [36m<caption />[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Field Recorded value Unit":
+  [36m<tr />[39m
+
+  Name "Input value 1 hz":
+  [36m<tr />[39m
+
+  Name "Stored result 0.001 khz":
+  [36m<tr />[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Field":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Recorded value":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Unit":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowheader:
+
+  Name "Input value":
+  [36m<th[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  Name "Stored result":
+  [36m<th[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "1":
+  [36m<td />[39m
+
+  Name "hz":
+  [36m<td />[39m
+
+  Name "0.001":
+  [36m<td />[39m
+
+  Name "khz":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Account capture fixture":
+  [36m<button />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"calculator-ui"[39m
+      [33mdata-publication20-slug[39m=[32m"frequency-converter"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"field-grid"[39m
+      [36m>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"field"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mValue[0m
+            [36m</span>[39m
+            [36m<input[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mdata-publication20-field[39m=[32m"value"[39m
+              [33minputmode[39m=[32m"decimal"[39m
+              [33mmaxlength[39m=[32m"4096"[39m
+              [33mrequired[39m=[32m""[39m
+              [33mtype[39m=[32m"text"[39m
+              [33mvalue[39m=[32m"1"[39m
+            [36m/>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"field"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFrom unit[0m
+            [36m</span>[39m
+            [36m<select[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mdata-publication20-field[39m=[32m"fromUnit"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"hz"[39m
+              [36m>[39m
+                [0mhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"khz"[39m
+              [36m>[39m
+                [0mkhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"mhz"[39m
+              [36m>[39m
+                [0mmhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"ghz"[39m
+              [36m>[39m
+                [0mghz[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"field"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mTo unit[0m
+            [36m</span>[39m
+            [36m<select[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mdata-publication20-field[39m=[32m"toUnit"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"hz"[39m
+              [36m>[39m
+                [0mhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"khz"[39m
+              [36m>[39m
+                [0mkhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"mhz"[39m
+              [36m>[39m
+                [0mmhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"ghz"[39m
+              [36m>[39m
+                [0mghz[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mdata-publication20-result[39m=[32m"0.001"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"Calculation result"[39m
+          [33mclass[39m=[32m"final-result"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mclass[39m=[32m"result-hero"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mConverted value[0m
+            [36m</span>[39m
+            [36m<strong>[39m
+              [0m0.001 khz[0m
+            [36m</strong>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"pro-analysis"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"result-panel-heading"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"eyebrow"[39m
+                [36m>[39m
+                  [0mCalcuMint Pro[0m
+                [36m</span>[39m
+                [36m<h3>[39m
+                  [0mAdvanced Analysis[0m
+                [36m</h3>[39m
+              [36m</div>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"text-link"[39m
+                [33mhref[39m=[32m"/pricing"[39m
+              [36m>[39m
+                [0mCompare plans[0m
+              [36m</a>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"locked-feature-grid"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mAdvanced charts[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mExplore the result across time and assumptions.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mScenario comparison[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mCompare multiple assumptions side by side.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mSensitivity analysis[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mSee which assumptions change the outcome most.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mGoal Solver[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mSolve backwards from the outcome you want.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"result-methodology"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mResult methodology[0m
+            [36m</summary>[39m
+            [36m<p>[39m
+              [0mFixed-unit value conversion using the selected source and target units.
+
+Converts with a direct ratio of fixed base-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling.
+target = source × (source hertz / target hertz)[0m
+            [36m</p>[39m
+          [36m</details>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"result-methodology"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mSources[0m
+            [36m</summary>[39m
+            [36m<ul>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"text-link"[39m
+                  [33mhref[39m=[32m"https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9"[39m
+                  [33mrel[39m=[32m"noopener noreferrer"[39m
+                  [33mtarget[39m=[32m"_blank"[39m
+                [36m>[39m
+                  [0mNIST Guide to the SI — conversion factors[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"text-link"[39m
+                  [33mhref[39m=[32m"https://www.bipm.org/en/publications/si-brochure"[39m
+                  [33mrel[39m=[32m"noopener noreferrer"[39m
+                  [33mtarget[39m=[32m"_blank"[39m
+                [36m>[39m
+                  [0mBIPM — SI Brochure, 9th edition[0m
+                [36m</a>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+          [36m</details>[39m
+        [36m</section>[39m
+        [36m<p>[39m
+          [0mThe headline may be rounded; the raw table and exports retain the stored value.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<table[39m
+        [33mclass[39m=[32m"schedule-table"[39m
+      [36m>[39m
+        [36m<caption>[39m
+          [0mConversion reconciliation[0m
+        [36m</caption>[39m
+        [36m<thead>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mField[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mRecorded value[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mUnit[0m
+            [36m</th>[39m
+          [36m</tr>[39m
+        [36m</thead>[39m
+        [36m<tbody>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"row"[39m
+            [36m>[39m
+              [0mInput value[0m
+            [36m</th>[39m
+            [36m<td>[39m
+              [0m1[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0mhz[0m
+            [36m</td>[39m
+          [36m</tr>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"row"[39m
+            [36m>[39m
+              [0mStored result[0m
+            [36m</th>[39m
+            [36m<td>[39m
+              [0m0.001[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0mkhz[0m
+            [36m</td>[39m
+          [36m</tr>[39m
+        [36m</tbody>[39m
+      [36m</table>[39m
+      [36m<details>[39m
+        [36m<summary>[39m
+          [0mScope and limitations[0m
+        [36m</summary>[39m
+        [36m<p>[39m
+          [0mFixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Scalar cycle frequency only; no angular-frequency or spectral model.[0m
+        [36m</p>[39m
+      [36m</details>[39m
+      [36m<button>[39m
+        [0mAccount capture fixture[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/frequency-worked-example.test.tsx [ src/components/frequency-worked-example.test.tsx ]
+Error: Failed to resolve import "./frequency-worked-example" from "src/components/frequency-worked-example.test.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /workspace/work/owner-fullscope-20261102/src/components/frequency-worked-example.test.tsx:5:37
+  3  |  import { render, screen } from "@testing-library/react";
+  4  |  import { frequencyConverter } from "@/calculators/conversion/catalog-batch-3";
+  5  |  import { FrequencyWorkedExample } from "./frequency-worked-example";
+     |                                          ^
+  6  |  it("renders the unchanged v1 engine example with explicit inputs, formula and independently expected result", () => {
+  7  |    const before = JSON.stringify(frequencyConverter.examples);
+ ❯ TransformPluginContext._formatLog ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:29250:43
+ ❯ TransformPluginContext.error ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:29247:14
+ ❯ normalizeUrl ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:27370:18
+ ❯ ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:27428:32
+ ❯ TransformPluginContext.transform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:27396:4
+ ❯ EnvironmentPluginContainer.transform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:29048:14
+ ❯ loadAndTransform ../batch13-deps/node_modules/vite/dist/node/chunks/config.js:22914:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/publication20-batch.test.tsx > presents SI symbols while selecting original frequency unit IDs
+TestingLibraryElementError: Unable to find an accessible element with the role "columnheader" and name "Entered value (MHz)"
+
+Here are the accessible roles:
+
+  region:
+
+  Name "Batch conversion":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Batch conversion"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Batch conversion":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Batch values, one per line":
+  [36m<textarea[39m
+    [33mmaxlength[39m=[32m"65536"[39m
+  [36m/>[39m
+
+  Name "Batch replay JSON":
+  [36m<textarea[39m
+    [33mmaxlength[39m=[32m"524288"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Calculate batch":
+  [36m<button[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Export batch JSON":
+  [36m<button[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Use row 1 in calculator":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Use row 1 in calculator"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "Validate batch replay":
+  [36m<button[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<p[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "Batch conversion results":
+  [36m<table[39m
+    [33mclass[39m=[32m"schedule-table"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  caption:
+
+  Name "Batch conversion results":
+  [36m<caption />[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Row Entered value (mhz) Stored result (khz) Status Action":
+  [36m<tr />[39m
+
+  Name "1 1 1000 Valid Use in calculator":
+  [36m<tr />[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Row":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Entered value (mhz)":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Stored result (khz)":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Status":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Action":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowheader:
+
+  Name "1":
+  [36m<th[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "1":
+  [36m<td[39m
+    [33mstyle[39m=[32m"overflow-wrap: anywhere;"[39m
+  [36m/>[39m
+
+  Name "1000":
+  [36m<td />[39m
+
+  Name "Valid":
+  [36m<td />[39m
+
+  Name "Use in calculator":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "":
+  [36m<details />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<section[39m
+      [33maria-label[39m=[32m"Batch conversion"[39m
+    [36m>[39m
+      [36m<h3>[39m
+        [0mBatch conversion[0m
+      [36m</h3>[39m
+      [36m<p>[39m
+        [0mConvert 1–100 values using the selected [0m
+        [0mmhz[0m
+        [0m to [0m
+        [0mkhz[0m
+        [0m units. Engineering limits: 4096 characters per row and 64 KiB input. Correct every row before exporting. Use a row in the calculator to save it through your account workflow.[0m
+      [36m</p>[39m
+      [36m<label>[39m
+        [0mBatch values, one per line[0m
+        [36m<textarea[39m
+          [33mmaxlength[39m=[32m"65536"[39m
+        [36m>[39m
+          [0m1[0m
+        [36m</textarea>[39m
+      [36m</label>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mCalculate batch[0m
+      [36m</button>[39m
+      [36m<button[39m
+        [33mtype[39m=[32m"button"[39m
+      [36m>[39m
+        [0mExport batch JSON[0m
+      [36m</button>[39m
+      [36m<p[39m
+        [33mrole[39m=[32m"status"[39m
+      [36m>[39m
+        [0m1[0m
+        [0m rows processed: [0m
+        [0m1[0m
+        [0m valid, [0m
+        [0m0[0m
+        [0m invalid. Correct invalid rows before exporting.[0m
+      [36m</p>[39m
+      [36m<table[39m
+        [33mclass[39m=[32m"schedule-table"[39m
+      [36m>[39m
+        [36m<caption>[39m
+          [0mBatch conversion results[0m
+        [36m</caption>[39m
+        [36m<thead>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mRow[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mEntered value ([0m
+              [0mmhz[0m
+              [0m)[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mStored result ([0m
+              [0mkhz[0m
+              [0m)[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mStatus[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mAction[0m
+            [36m</th>[39m
+          [36m</tr>[39m
+        [36m</thead>[39m
+        [36m<tbody>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"row"[39m
+            [36m>[39m
+              [0m1[0m
+            [36m</th>[39m
+            [36m<td[39m
+              [33mstyle[39m=[32m"overflow-wrap: anywhere;"[39m
+            [36m>[39m
+              [0m1[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0m1000[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0mValid[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Use row 1 in calculator"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mUse in calculator[0m
+              [36m</button>[39m
+            [36m</td>[39m
+          [36m</tr>[39m
+        [36m</tbody>[39m
+      [36m</table>[39m
+      [36m<details>[39m
+        [36m<summary>[39m
+          [0mReplay batch JSON[0m
+        [36m</summary>[39m
+        [36m<p>[39m
+          [0mUnsigned replay checks numeric integrity against the existing v1 engine. It does not authenticate the author or establish source approval. JSON represents signed zero as zero. Replay engineering limit: 512 KiB.[0m
+        [36m</p>[39m
+        [36m<label>[39m
+          [0mBatch replay JSON[0m
+          [36m<textarea[39m
+            [33mmaxlength[39m=[32m"524288"[39m
+          [36m/>[39m
+        [36m</label>[39m
+        [36m<button[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mValidate batch replay[0m
+        [36m</button>[39m
+      [36m</details>[39m
+    [36m</section>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/publication20-batch.test.tsx:10:383
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/components/publication20-tool.test.tsx > uses SI frequency symbols for human labels while retaining original account unit IDs
+TestingLibraryElementError: Unable to find an accessible element with the role "option" and name "Hz"
+
+Here are the accessible roles:
+
+  textbox:
+
+  Name "Value":
+  [36m<input[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mdata-publication20-field[39m=[32m"value"[39m
+    [33minputmode[39m=[32m"decimal"[39m
+    [33mmaxlength[39m=[32m"4096"[39m
+    [33mrequired[39m=[32m""[39m
+    [33mtype[39m=[32m"text"[39m
+    [33mvalue[39m=[32m"1"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  combobox:
+
+  Name "From unit":
+  [36m<select[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mdata-publication20-field[39m=[32m"fromUnit"[39m
+  [36m/>[39m
+
+  Name "To unit":
+  [36m<select[39m
+    [33maria-invalid[39m=[32m"false"[39m
+    [33mdata-publication20-field[39m=[32m"toUnit"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  option:
+
+  Name "hz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"hz"[39m
+  [36m/>[39m
+
+  Name "khz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"khz"[39m
+  [36m/>[39m
+
+  Name "mhz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"mhz"[39m
+  [36m/>[39m
+
+  Name "ghz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"ghz"[39m
+  [36m/>[39m
+
+  Name "hz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"hz"[39m
+  [36m/>[39m
+
+  Name "khz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"khz"[39m
+  [36m/>[39m
+
+  Name "mhz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"mhz"[39m
+  [36m/>[39m
+
+  Name "ghz":
+  [36m<option[39m
+    [33mvalue[39m=[32m"ghz"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  region:
+
+  Name "Calculation result":
+  [36m<section[39m
+    [33maria-label[39m=[32m"Calculation result"[39m
+    [33mclass[39m=[32m"final-result"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<div[39m
+    [33maria-atomic[39m=[32m"true"[39m
+    [33maria-live[39m=[32m"polite"[39m
+    [33mclass[39m=[32m"result-hero"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  strong:
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  Name "":
+  [36m<strong />[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Advanced Analysis":
+  [36m<h3 />[39m
+
+  --------------------------------------------------
+  link:
+
+  Name "Compare plans":
+  [36m<a[39m
+    [33mclass[39m=[32m"text-link"[39m
+    [33mhref[39m=[32m"/pricing"[39m
+  [36m/>[39m
+
+  Name "NIST Guide to the SI — conversion factors":
+  [36m<a[39m
+    [33mclass[39m=[32m"text-link"[39m
+    [33mhref[39m=[32m"https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  Name "BIPM — SI Brochure, 9th edition":
+  [36m<a[39m
+    [33mclass[39m=[32m"text-link"[39m
+    [33mhref[39m=[32m"https://www.bipm.org/en/publications/si-brochure"[39m
+    [33mrel[39m=[32m"noopener noreferrer"[39m
+    [33mtarget[39m=[32m"_blank"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  group:
+
+  Name "":
+  [36m<details[39m
+    [33mclass[39m=[32m"result-methodology"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<details[39m
+    [33mclass[39m=[32m"result-methodology"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<details />[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  list:
+
+  Name "":
+  [36m<ul />[39m
+
+  --------------------------------------------------
+  listitem:
+
+  Name "":
+  [36m<li />[39m
+
+  Name "":
+  [36m<li />[39m
+
+  --------------------------------------------------
+  table:
+
+  Name "Conversion reconciliation":
+  [36m<table[39m
+    [33mclass[39m=[32m"schedule-table"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  caption:
+
+  Name "Conversion reconciliation":
+  [36m<caption />[39m
+
+  --------------------------------------------------
+  rowgroup:
+
+  Name "":
+  [36m<thead />[39m
+
+  Name "":
+  [36m<tbody />[39m
+
+  --------------------------------------------------
+  row:
+
+  Name "Field Recorded value Unit":
+  [36m<tr />[39m
+
+  Name "Input value 1 hz":
+  [36m<tr />[39m
+
+  Name "Stored result 0.001 khz":
+  [36m<tr />[39m
+
+  --------------------------------------------------
+  columnheader:
+
+  Name "Field":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Recorded value":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  Name "Unit":
+  [36m<th[39m
+    [33mscope[39m=[32m"col"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  rowheader:
+
+  Name "Input value":
+  [36m<th[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  Name "Stored result":
+  [36m<th[39m
+    [33mscope[39m=[32m"row"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  cell:
+
+  Name "1":
+  [36m<td />[39m
+
+  Name "hz":
+  [36m<td />[39m
+
+  Name "0.001":
+  [36m<td />[39m
+
+  Name "khz":
+  [36m<td />[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Account capture fixture":
+  [36m<button />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"calculator-ui"[39m
+      [33mdata-publication20-slug[39m=[32m"frequency-converter"[39m
+    [36m>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"field-grid"[39m
+      [36m>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"field"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mValue[0m
+            [36m</span>[39m
+            [36m<input[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mdata-publication20-field[39m=[32m"value"[39m
+              [33minputmode[39m=[32m"decimal"[39m
+              [33mmaxlength[39m=[32m"4096"[39m
+              [33mrequired[39m=[32m""[39m
+              [33mtype[39m=[32m"text"[39m
+              [33mvalue[39m=[32m"1"[39m
+            [36m/>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"field"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFrom unit[0m
+            [36m</span>[39m
+            [36m<select[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mdata-publication20-field[39m=[32m"fromUnit"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"hz"[39m
+              [36m>[39m
+                [0mhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"khz"[39m
+              [36m>[39m
+                [0mkhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"mhz"[39m
+              [36m>[39m
+                [0mmhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"ghz"[39m
+              [36m>[39m
+                [0mghz[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+        [36m<div>[39m
+          [36m<label[39m
+            [33mclass[39m=[32m"field"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mTo unit[0m
+            [36m</span>[39m
+            [36m<select[39m
+              [33maria-invalid[39m=[32m"false"[39m
+              [33mdata-publication20-field[39m=[32m"toUnit"[39m
+            [36m>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"hz"[39m
+              [36m>[39m
+                [0mhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"khz"[39m
+              [36m>[39m
+                [0mkhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"mhz"[39m
+              [36m>[39m
+                [0mmhz[0m
+              [36m</option>[39m
+              [36m<option[39m
+                [33mvalue[39m=[32m"ghz"[39m
+              [36m>[39m
+                [0mghz[0m
+              [36m</option>[39m
+            [36m</select>[39m
+          [36m</label>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+      [36m<div[39m
+        [33mdata-publication20-result[39m=[32m"0.001"[39m
+      [36m>[39m
+        [36m<section[39m
+          [33maria-label[39m=[32m"Calculation result"[39m
+          [33mclass[39m=[32m"final-result"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33maria-atomic[39m=[32m"true"[39m
+            [33maria-live[39m=[32m"polite"[39m
+            [33mclass[39m=[32m"result-hero"[39m
+            [33mrole[39m=[32m"status"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mConverted value[0m
+            [36m</span>[39m
+            [36m<strong>[39m
+              [0m0.001 khz[0m
+            [36m</strong>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"pro-analysis"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"result-panel-heading"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"eyebrow"[39m
+                [36m>[39m
+                  [0mCalcuMint Pro[0m
+                [36m</span>[39m
+                [36m<h3>[39m
+                  [0mAdvanced Analysis[0m
+                [36m</h3>[39m
+              [36m</div>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"text-link"[39m
+                [33mhref[39m=[32m"/pricing"[39m
+              [36m>[39m
+                [0mCompare plans[0m
+              [36m</a>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"locked-feature-grid"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mAdvanced charts[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mExplore the result across time and assumptions.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mScenario comparison[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mCompare multiple assumptions side by side.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mSensitivity analysis[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mSee which assumptions change the outcome most.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"locked-feature"[39m
+              [36m>[39m
+                [36m<span[39m
+                  [33maria-hidden[39m=[32m"true"[39m
+                [36m>[39m
+                  [0m🔒[0m
+                [36m</span>[39m
+                [36m<strong>[39m
+                  [0mGoal Solver[0m
+                [36m</strong>[39m
+                [36m<small>[39m
+                  [0mSolve backwards from the outcome you want.[0m
+                [36m</small>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"result-methodology"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mResult methodology[0m
+            [36m</summary>[39m
+            [36m<p>[39m
+              [0mFixed-unit value conversion using the selected source and target units.
+
+Converts with a direct ratio of fixed base-unit factors, avoiding lossy output rounding and unnecessary intermediate scaling.
+target = source × (source hertz / target hertz)[0m
+            [36m</p>[39m
+          [36m</details>[39m
+          [36m<details[39m
+            [33mclass[39m=[32m"result-methodology"[39m
+          [36m>[39m
+            [36m<summary>[39m
+              [0mSources[0m
+            [36m</summary>[39m
+            [36m<ul>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"text-link"[39m
+                  [33mhref[39m=[32m"https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9"[39m
+                  [33mrel[39m=[32m"noopener noreferrer"[39m
+                  [33mtarget[39m=[32m"_blank"[39m
+                [36m>[39m
+                  [0mNIST Guide to the SI — conversion factors[0m
+                [36m</a>[39m
+              [36m</li>[39m
+              [36m<li>[39m
+                [36m<a[39m
+                  [33mclass[39m=[32m"text-link"[39m
+                  [33mhref[39m=[32m"https://www.bipm.org/en/publications/si-brochure"[39m
+                  [33mrel[39m=[32m"noopener noreferrer"[39m
+                  [33mtarget[39m=[32m"_blank"[39m
+                [36m>[39m
+                  [0mBIPM — SI Brochure, 9th edition[0m
+                [36m</a>[39m
+              [36m</li>[39m
+            [36m</ul>[39m
+          [36m</details>[39m
+        [36m</section>[39m
+        [36m<p>[39m
+          [0mThe headline may be rounded; the raw table and exports retain the stored value.[0m
+        [36m</p>[39m
+      [36m</div>[39m
+      [36m<table[39m
+        [33mclass[39m=[32m"schedule-table"[39m
+      [36m>[39m
+        [36m<caption>[39m
+          [0mConversion reconciliation[0m
+        [36m</caption>[39m
+        [36m<thead>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mField[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mRecorded value[0m
+            [36m</th>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"col"[39m
+            [36m>[39m
+              [0mUnit[0m
+            [36m</th>[39m
+          [36m</tr>[39m
+        [36m</thead>[39m
+        [36m<tbody>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"row"[39m
+            [36m>[39m
+              [0mInput value[0m
+            [36m</th>[39m
+            [36m<td>[39m
+              [0m1[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0mhz[0m
+            [36m</td>[39m
+          [36m</tr>[39m
+          [36m<tr>[39m
+            [36m<th[39m
+              [33mscope[39m=[32m"row"[39m
+            [36m>[39m
+              [0mStored result[0m
+            [36m</th>[39m
+            [36m<td>[39m
+              [0m0.001[0m
+            [36m</td>[39m
+            [36m<td>[39m
+              [0mkhz[0m
+            [36m</td>[39m
+          [36m</tr>[39m
+        [36m</tbody>[39m
+      [36m</table>[39m
+      [36m<details>[39m
+        [36m<summary>[39m
+          [0mScope and limitations[0m
+        [36m</summary>[39m
+        [36m<p>[39m
+          [0mFixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Scalar cycle frequency only; no angular-frequency or spectral model.[0m
+        [36m</p>[39m
+      [36m</details>[39m
+      [36m<button>[39m
+        [0mAccount capture fixture[0m
+      [36m</button>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../batch13-deps/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../batch13-deps/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/components/publication20-tool.test.tsx:27:184
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  3 failed (3)
+      Tests  2 failed | 15 passed (17)
+   Start at  16:29:53
+   Duration  5.84s (transform 2.16s, setup 0ms, collect 4.00s, tests 2.13s, environment 1.67s, prepare 339ms)

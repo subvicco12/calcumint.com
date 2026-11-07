@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FrequencyWorkedExample } from "@/components/frequency-worked-example";
 import { CalculatorInteractive } from "@/components/calculator-interactive";
 import { FreeUserAdSlot } from "@/components/free-user-ad-slot";
 import { calculatorRegistry } from "@/calculators/registry";
@@ -90,7 +91,7 @@ export default async function CalculatorPage({ params }: PageProps) {
             </section>
             <section className="content-section">
               <h2>Worked example</h2>
-              {definition.examples.map((example) => <p key={example.label}><strong>{example.label}</strong> is a verified test case used by the calculation engine.</p>)}
+              {definition.id === "conversion.frequency" && definition.slug === "frequency-converter" && definition.version === 1 ? <FrequencyWorkedExample /> : definition.examples.map((example) => <p key={example.label}><strong>{example.label}</strong> is a verified test case used by the calculation engine.</p>)}
             </section>
             <section className="content-section">
               <h2>Assumptions and limitations</h2>

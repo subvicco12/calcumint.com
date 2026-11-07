@@ -1,0 +1,63 @@
+✖ binds exact original math/parser and append-only UI successor (75.904898ms)
+✔ rejects changed source even when a new metadata hash claims it is authorized (44.553556ms)
+✔ rejects an altered original evidence manifest (24.636419ms)
+✔ rejects wrong predecessor identity (8.026588ms)
+✔ rejects release authority promotion (6.704996ms)
+✔ rejects source member omission and traversal substitution (5.813491ms)
+✔ rejects unbound caller edits (78.647843ms)
+✖ rejects symlinked dependencies (73.676634ms)
+✔ rejects unbound shared batch dependency src/components/publication20-batch.tsx (74.991301ms)
+✔ rejects unbound shared batch dependency src/lib/publication20/batch.ts (70.110977ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 8
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 613.355823
+
+✖ failing tests:
+
+test at tests/shortest-publication-20/caller-lineage.test.mjs:12:1
+✖ binds exact original math/parser and append-only UI successor (75.904898ms)
+  Error: Caller source hash differs: src/components/publication20-batch.tsx
+      at verifyPublication20CallerLineage (file:///workspace/work/owner-fullscope-20261102/scripts/publication20-caller-lineage.mjs:20:93)
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:12:87)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests/shortest-publication-20/caller-lineage.test.mjs:19:1
+✖ rejects symlinked dependencies (73.676634ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /symlink/. Input:
+
+  'Error: Caller source hash differs: src/components/publication20-batch.tsx'
+
+      at file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:19:180
+      at fixture (file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:10:443)
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:19:43)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Caller source hash differs: src/components/publication20-batch.tsx
+        at verifyPublication20CallerLineage (file:///workspace/work/owner-fullscope-20261102/scripts/publication20-caller-lineage.mjs:20:93)
+        at file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:19:191
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:19:180
+        at fixture (file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:10:443)
+        at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/shortest-publication-20/caller-lineage.test.mjs:19:43)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1382:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:960:18),
+    expected: /symlink/,
+    operator: 'throws',
+    diff: 'simple'
+  }
