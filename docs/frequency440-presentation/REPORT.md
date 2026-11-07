@@ -37,3 +37,7 @@ Production adoption: **BLOCKED**. Retained Nov7 read-only evidence matched scope
 New canonical acceptance0; newly publication-eligible0; newly published0. Registry review status and publication gates remain unchanged. No production writes, migrations, merge, deployment, certification promotion, payment activation or publication. RELEASE HOLD active.
 
 Exact successor SHA, final hosted CI conclusion and verified Drive artifacts are recorded in the delivery checkpoint, avoiding a self-referential source commit.
+
+## Hosted integration correction
+
+Initial successor bacaf365 CI42394156514 exposed stale CURRENT sourceHashes for the reviewed verifier, UI and tests in the shortest-publication implementation manifest. The full check-shortest-publication20 guard reproduced the same failure locally before correction. Only current bindings were refreshed; historical caller-lineage.json and the independently pinned predecessor/successor Git identities remain unchanged. A new child-process integration regression executes the complete guard and asserts unchanged cohort/zero-approval/release-hold boundaries. All22 lineage/integration checks pass. Initial failure and red/green receipts are retained. Independent engineering review supports this correction; no application, engine, SQL or authorization behavior changed in it.

@@ -13,3 +13,11 @@ test('requires independent successor Git object bytes even when current file mat
 test('requires exact predecessor path object even when historical SHA claim is unchanged',()=>{
  assert.throws(()=>verifyFrequencyPresentationBinding(name,bytes,claim,args=>args[0]==='rev-parse'&&args[1].includes(':')?Buffer.from('0'.repeat(40)):git(args)),/predecessor binding/);
 });
+
+test('full shortest-publication guard binds the current verifier and preserves historical caller claims',()=>{
+ const receipt=JSON.parse(execFileSync(process.execPath,['scripts/check-shortest-publication20.mjs'],{encoding:'utf8'}));
+ assert.equal(receipt.identities,20);
+ assert.equal(receipt.publicationEligible,0);
+ assert.equal(receipt.canonicalAccepted,0);
+ assert.equal(receipt.releaseHold,true);
+});
