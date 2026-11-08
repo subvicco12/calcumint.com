@@ -570,16 +570,21 @@ jobs:
       - name: Approved six-candidate worker, workflow and replay acceptance
         timeout-minutes: 3
         run: |
-          node scripts/check-six-candidate-evidence.mjs
+          node --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs
+          node scripts/check-current-six-candidate-evidence.mjs
           node --test tests/full-six-candidate/preview.test.mjs
           node tests/full-six-candidate/browser.mjs
+          node tests/product-completion-20261108/browser.mjs
         env:
           SIX_CANDIDATE_BROWSER_RECEIPT: ${{ runner.temp }}/six-candidate-closure
+          PRODUCT_COMPLETION_BROWSER: ${{ runner.temp }}/six-candidate-closure/product-completion
       - name: Preserve exact six-candidate acceptance receipt
         uses: actions/upload-artifact@v4
         with:
           name: six-candidate-closure-${{ github.event.pull_request.head.sha || github.sha }}
-          path: ${{ runner.temp }}/six-candidate-closure/receipt.json
+          path: |
+            ${{ runner.temp }}/six-candidate-closure/receipt.json
+            ${{ runner.temp }}/six-candidate-closure/product-completion/
           if-no-files-found: error
           retention-days: 7
       - name: Private Decimal50 worker and statistics workflow acceptance
