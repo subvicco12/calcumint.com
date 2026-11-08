@@ -669,6 +669,16 @@ jobs:
         env:
           COHORT_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-browser-report.json
           COHORT_BUSINESS_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-business-browser-report.json
+      - name: Preserve calculator sprint boundary evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-sprint-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/calculator-sprint-cohort-browser-report.json
+            ${{ runner.temp }}/calculator-sprint-cohort-business-browser-report.json
+          if-no-files-found: warn
+          retention-days: 7
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance, publication-factory]
