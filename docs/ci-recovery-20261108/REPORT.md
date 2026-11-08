@@ -16,6 +16,10 @@ Run **42482430273** at65b1f89503dbcdc71bdc3e9b7040418f9028c178 finished with che
 
 The unchanged18-journey browser suite also reproduced a missing established comparison caption in the new statistics table. That caption is restored with the incompatibility warnings intact. All18existing and4newnativejourneys pass. The final local sweep passes **31/31 evidence-check commands** and **82 combined lineage/corpus tests**. No historical packet was rewritten. The next exact-head aggregate must still be observed successful; it is not inferred from these local checks.
 
+## Separate owner-calculus configuration
+
+Run **42483921802** atb2a53d9d26d596aa792cbd6f211eaa8b9c5931d0 finished with four required jobs SUCCESS; full-product reached a separate owner-calculus Vitest configuration not included in the default src-only unit suite. Its raw financial hash assertion is now composed with exact financial provenance before fallback. All194original contract entries remain checked; nine new negatives reject reversion, tampering, false claims and missing Git evidence. The exact configuration passes **21/21 tests**, and all **seven explicit vite-node evidence checks pass**. Typecheck passes after this test-only change. Aggregate remains a required final exact-head observation, not an inferred approval.
+
 ## Real calculator functionality
 
 **#282 Standard Deviation / #283 Variance, private experimental workflow:** close shared contract SH-09's scenario compatibility gap. Display estimand, units, encoding and effective observation count. Withhold direct comparison when units, population/sample estimands or exact identity/version/contract differ. Retain captures, exact independent restore, compatible retry and squared variance/M2 units. Four native bounded-worker keyboard journeys passed across Pro/Business and320/1440 widths. No mathematical engine, output, snapshot, saved history, registered version or entitlement was changed. This is not full-scope canonical completion.

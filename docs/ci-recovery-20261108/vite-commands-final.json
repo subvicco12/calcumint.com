@@ -1,0 +1,37 @@
+[
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/prepare-canonical-contract-evidence.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-00.log"
+  },
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/batch16-requirement-evidence.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-01.log"
+  },
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-02.log"
+  },
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-03.log"
+  },
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/prepare.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-04.log"
+  },
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/first20-publication/polygon-evidence.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-05.log"
+  },
+  {
+    "command": "node_modules/.bin/vite-node --config vitest.config.ts scripts/calculator-first-20261105/numerical.ts --check",
+    "exit": 0,
+    "log": "vite-evidence-06.log"
+  }
+]
