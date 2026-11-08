@@ -29,16 +29,21 @@ const bindings=[
   {
     "path": ".github/workflows/ci.yml",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "154d28f5d879856b02636c192ea2a81f334e7836",
+    "successorRef": "a342492a6da420b64a2cf63aa2ef8d8496633def",
     "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
-    "successorBlob": "d5f2177aefa880af46cdf37d9f67dd12d26d8332",
+    "successorBlob": "f7ab19ff8905da2544d01165acaffd7f596aab14",
     "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
-    "successorSHA256": "e7b9610f21acc7eef52c032a034b2af89e72eeef62b0e3037ec4dbaa59b865df",
+    "successorSHA256": "28c35736999fd50d6e5f4cab98c56cc08d2c73eff39e1ea8da74c682d312d951",
     "intermediateSources": [
       {
         "ref": "fb2531218dbf71e1116dbc90fc17367692213bdc",
         "blob": "81f68542a0757edffc604a30f8ad99df8d00b65d",
         "sha256": "68e4dc64f8edcea69bdc1c56d3666f82f1ed1d113954dc548801293ea0daacfa"
+      },
+      {
+        "ref": "154d28f5d879856b02636c192ea2a81f334e7836",
+        "blob": "d5f2177aefa880af46cdf37d9f67dd12d26d8332",
+        "sha256": "e7b9610f21acc7eef52c032a034b2af89e72eeef62b0e3037ec4dbaa59b865df"
       }
     ]
   }

@@ -1,0 +1,39 @@
+✔ admits exact guard successor and frozen historical source: src/calculators/finance/compound-interest.ts (36.397643ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/finance/compound-interest.ts (54.999656ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/finance/compound-interest.ts (70.159978ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/finance/loan-payment.ts (35.997678ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/finance/loan-payment.ts (50.474688ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/finance/loan-payment.ts (68.643309ms)
+✔ admits exact guard successor and frozen historical source: src/calculators/precision.ts (37.54433ms)
+✔ rejects changed or reverted current bytes and false historical claim: src/calculators/precision.ts (44.830575ms)
+✔ rejects missing or substituted predecessor and successor objects: src/calculators/precision.ts (60.349384ms)
+✔ unknown and unsafe paths cannot invoke the successor exception (0.510865ms)
+✔ frozen comparison admits only exact financial successors and still rejects unrelated edits (109.363287ms)
+✔ both publication caller comparisons accept exact pinned precision successor (176.144986ms)
+✔ admits exact committed successor: src/calculators/finance/compound-interest.test.ts (26.541886ms)
+✔ rejects uncommitted successor tamper: src/calculators/finance/compound-interest.test.ts (25.079375ms)
+✔ rejects rewritten historical claim: src/calculators/finance/compound-interest.test.ts (0.208088ms)
+✔ rejects silent predecessor reversion: src/calculators/finance/compound-interest.test.ts (24.541344ms)
+✔ rejects unavailable or replaced Git provenance: src/calculators/finance/compound-interest.test.ts (0.269004ms)
+✔ rejects corrupted source object: src/calculators/finance/compound-interest.test.ts (8.766677ms)
+✔ admits exact committed successor: src/components/full-six/candidate-workbench.tsx (39.152844ms)
+✔ rejects uncommitted successor tamper: src/components/full-six/candidate-workbench.tsx (40.919401ms)
+✔ rejects rewritten historical claim: src/components/full-six/candidate-workbench.tsx (0.218372ms)
+✔ rejects silent predecessor reversion: src/components/full-six/candidate-workbench.tsx (40.141395ms)
+✔ rejects unavailable or replaced Git provenance: src/components/full-six/candidate-workbench.tsx (0.248661ms)
+✔ rejects corrupted source object: src/components/full-six/candidate-workbench.tsx (9.336143ms)
+✔ admits exact committed successor: .github/workflows/ci.yml (41.930693ms)
+✔ rejects uncommitted successor tamper: .github/workflows/ci.yml (39.4633ms)
+✔ rejects rewritten historical claim: .github/workflows/ci.yml (0.167052ms)
+✔ rejects silent predecessor reversion: .github/workflows/ci.yml (42.951888ms)
+✔ rejects unavailable or replaced Git provenance: .github/workflows/ci.yml (0.277698ms)
+✔ rejects corrupted source object: .github/workflows/ci.yml (8.053782ms)
+✔ does not admit any unrelated engine, UI or unsafe path (0.280307ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 877.100499

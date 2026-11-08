@@ -1,0 +1,248 @@
+{
+  "applicationUnit": {
+    "passed": 8113,
+    "skipped": 4,
+    "log": "logs/unit-delivery.log"
+  },
+  "lineageNode": {
+    "passed": 38,
+    "log": "logs/lineage-delivery.log"
+  },
+  "statisticsReportsFocused": {
+    "passed": 35,
+    "log": "logs/statistics-reports-focused.log"
+  },
+  "nativeStatisticsBrowser": {
+    "journeys": 6,
+    "log": "logs/statistics-native-browser-final.log"
+  },
+  "existingSixBrowser": {
+    "journeys": 18,
+    "log": "logs/all-six-browser.log"
+  },
+  "genuineIsolatedAuth": {
+    "checks": 10,
+    "log": "logs/gotrue-isolated.log",
+    "limitation": "Access JWT remains valid until expiry after logout."
+  },
+  "postgresSecurity": {
+    "checks": 9,
+    "log": "logs/security-postgres.log"
+  },
+  "transport": {
+    "passed": 16,
+    "log": "logs/transport.log"
+  },
+  "launch": {
+    "passed": 45,
+    "log": "logs/launch.log"
+  },
+  "certification": {
+    "passed": 15,
+    "log": "logs/certification.log"
+  },
+  "lint": {
+    "errors": 0,
+    "existingWarnings": 28,
+    "log": "logs/lint-delivery.log"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "log": "logs/typecheck-delivery.log"
+  },
+  "productionBuild": {
+    "command": "next build --webpack",
+    "status": "PASS",
+    "log": "logs/build-delivery-webpack.log"
+  },
+  "inventory": {
+    "rows": 540,
+    "status": "PASS",
+    "command": "python scripts/product-completion-20261108/inventory.py --check"
+  },
+  "independentReview": {
+    "reviewers": "Separate engineering agents; not certification authorities",
+    "status": "No unresolved blocking findings on reviewed changes",
+    "correctedFindings": [
+      "CSV/PDF async cancellation race",
+      "Known predecessor reversion bypass through fallback binding acceptance"
+    ],
+    "limitations": [
+      "PDF/UA conformance not certified",
+      "Full-domain mathematical correctness not certified"
+    ]
+  },
+  "hostedCI": {
+    "originalHead": "af92e4f4fc2a024d50fb2c71271b09e221b2c6fe",
+    "originalRun": 42473503234,
+    "originalConclusion": "FAILURE",
+    "delivery": "Exact successor result recorded in external SHA-bound checkpoint after push"
+  },
+  "receipts": [
+    {
+      "path": "logs/all-six-browser.log",
+      "bytes": 832,
+      "sha256": "239f20c22e986e99f554a36fb19aa64b96562c70c8325b4fd3cdb1857beabfb7"
+    },
+    {
+      "path": "logs/batch16-history-check.log",
+      "bytes": 237,
+      "sha256": "dcb35ca94c0f31fe69c30fe4d2de7a10e20d22b2cb40d1563ee53135c74de0a1"
+    },
+    {
+      "path": "logs/build-delivery-webpack.log",
+      "bytes": 2450,
+      "sha256": "63128f3ad38f924c1f9f40898b78814dd4f8fadbdf8d3e9eeb307adb8f61aae6"
+    },
+    {
+      "path": "logs/build-webpack.log",
+      "bytes": 2450,
+      "sha256": "5aeb2a36135125d206e02a3eb253320b6194f281ffff8e80f36e76bcff90a92b"
+    },
+    {
+      "path": "logs/certification.log",
+      "bytes": 605,
+      "sha256": "682924f46c658ed09c54e57e999858c78c959ef44536ace08f0cebdef5c57d77"
+    },
+    {
+      "path": "logs/financial-lineage.log",
+      "bytes": 1497,
+      "sha256": "62e2c35ef9caf1ad06e1fd4efbd90361ba1b3b3a8223e5024ae230176ceb74c5"
+    },
+    {
+      "path": "logs/financial-scenario-focused.log",
+      "bytes": 1387,
+      "sha256": "9082abcc81062ed33f1de3c7d4719173ccf38efa4abd096fa66b18e037424d26"
+    },
+    {
+      "path": "logs/frozen-six-reproduction.log",
+      "bytes": 508,
+      "sha256": "c80dddf36eda852374f8e4f123f57d08e4218267bbd9798bac66b7a746cefc63"
+    },
+    {
+      "path": "logs/gotrue-isolated.log",
+      "bytes": 965,
+      "sha256": "5b9368eae927473455f12011c99e9efbbb4e81e9932dfd178bb66f87b8740b8a"
+    },
+    {
+      "path": "logs/historical-current-focused.log",
+      "bytes": 1539,
+      "sha256": "535fe2fb07f625dd2397623e4f6e5d570d8fe776b9e0f265b9171b31bc0d48a5"
+    },
+    {
+      "path": "logs/historical-final-focused.log",
+      "bytes": 861,
+      "sha256": "400a434568c53b8630b499b5c15e6018bf37f993bba5af03ac51fe20f2277fc9"
+    },
+    {
+      "path": "logs/inventory-check.log",
+      "bytes": 194,
+      "sha256": "fc4dce4f15ef70894aeaff4c6ef11addaebe1cc61cfeca2c5f5b386d4c6a2365"
+    },
+    {
+      "path": "logs/inventory-regenerate.log",
+      "bytes": 2616,
+      "sha256": "69148aa282724015262b4f995c144bdc2db67775ef9e8454575598a92af2780d"
+    },
+    {
+      "path": "logs/launch.log",
+      "bytes": 565,
+      "sha256": "d45e190d01d5fe6474aef7a29cfebf95e79946744f31b1e7399ea47b4caa9b20"
+    },
+    {
+      "path": "logs/lineage-all.log",
+      "bytes": 3294,
+      "sha256": "9fd6d42ddfc7a761f538af042a3af15a89f8d1b65c96d4cc36a80af4d1de3a22"
+    },
+    {
+      "path": "logs/lineage-delivery.log",
+      "bytes": 4157,
+      "sha256": "0f0d9cb800bf80578e18172bfd8321dde2d8950aa728a15fb06a98c4f8673d29"
+    },
+    {
+      "path": "logs/lineage-final.log",
+      "bytes": 3934,
+      "sha256": "cd307b9e051a0349aad71631fbb8d70f2b0b9d96a9139cf9d61e3703b59f9ad0"
+    },
+    {
+      "path": "logs/lint-delivery.log",
+      "bytes": 5891,
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "path": "logs/lint-final.log",
+      "bytes": 5891,
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "path": "logs/lint.log",
+      "bytes": 5891,
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "path": "logs/security-postgres.log",
+      "bytes": 676,
+      "sha256": "e49b2b8c9a6e0e339ca94741c008f0317daf40d90c636de0124a863cd42eadb7"
+    },
+    {
+      "path": "logs/six-current-binding.log",
+      "bytes": 133,
+      "sha256": "0b763944e9469a30b5b1ee3627c7fe1965df94d317481caeecf7a15d94da3583"
+    },
+    {
+      "path": "logs/source-lineage-bootstrap.log",
+      "bytes": 339,
+      "sha256": "2ce6d43d884ae9cf95eb63c7d314185526e0f660ee4f5b166354ad25e9d6bc98"
+    },
+    {
+      "path": "logs/statistics-native-browser-final.log",
+      "bytes": 88,
+      "sha256": "8c6b89a1427d987a780af31d40b9e5afc852ee2ae3a1f352b5a2bab00586bc56"
+    },
+    {
+      "path": "logs/statistics-native-browser.log",
+      "bytes": 85,
+      "sha256": "9dc3c0fcf7f65e75d581dc173177591e3b3679303c862b21344bd910666eee78"
+    },
+    {
+      "path": "logs/statistics-reports-focused.log",
+      "bytes": 990,
+      "sha256": "04bd66abd8f1b45a16fcb9be102c7407e780142a72cc6007939f03812da940d7"
+    },
+    {
+      "path": "logs/transport.log",
+      "bytes": 1676,
+      "sha256": "6f589162d798da6a7cb5e408323bc3e4faa3be180fcda3d00fbed866149bac56"
+    },
+    {
+      "path": "logs/typecheck-delivery.log",
+      "bytes": 45,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "logs/typecheck-final.log",
+      "bytes": 45,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "logs/typecheck.log",
+      "bytes": 1193,
+      "sha256": "7947403d2032c2cf0dd9ff184507a31291210404373d47c8695d9abc3e0f7ff5"
+    },
+    {
+      "path": "logs/unit-delivery.log",
+      "bytes": 276138,
+      "sha256": "237ffbcb96967e02317a5e0986f315235b3f015c883183a1cc882b5bed353a34"
+    },
+    {
+      "path": "logs/unit-final.log",
+      "bytes": 278703,
+      "sha256": "04354a9d36210e2a1d273b07a9257e13d78ecab357bb276e8d59d17632ff5ae3"
+    },
+    {
+      "path": "logs/unit-full.log",
+      "bytes": 285824,
+      "sha256": "c8b40fa162cd3700e9d2232bb6902caec2f0a1925cb6a347562060b84ad7c045"
+    }
+  ]
+}
