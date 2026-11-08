@@ -1,0 +1,202 @@
+✖ software closure evidence and both recovery browsers remain mandatory after prior acceptance (7.45057ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.342327
+
+✖ failing tests:
+
+test at tests/software-closure/ci-workflow.test.mjs:6:1
+✖ software closure evidence and both recovery browsers remain mandatory after prior acceptance (7.45057ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /continue-on-error|\n        if:/. Input:
+
+  '        run: |\n' +
+    '          node scripts/software-closure-evidence.mjs --check\n' +
+    '          node --test tests/software-closure/ci-workflow.test.mjs\n' +
+    '          node tests/calculus-recovery-workbench/browser.mjs\n' +
+    '          node tests/software-closure/recovery-browser.mjs\n' +
+    '        env:\n' +
+    '          SOFTWARE_CLOSURE_ARTIFACTS: ${{ runner.temp }}/software-closure\n' +
+    '          CALCULUS_RECOVERY_EVIDENCE: ${{ runner.temp }}/calculus-recovery\n' +
+    '      - name: Batch16 requirement, schema comparison and finder acceptance\n' +
+    '        run: |\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/batch16-requirement-evidence.ts --check\n' +
+    '          node scripts/batch16-contract-groups.mjs --check\n' +
+    '          node scripts/batch16-authority-requests.mjs --check\n' +
+    '          node --test tests/batch16-auth/schema-comparison.test.mjs tests/full-product-batch16/workflow.test.mjs\n' +
+    '          node tests/gotrue-runtime/acceptance.mjs\n' +
+    '          node tests/full-product-batch16/finder-browser.mjs\n' +
+    '        env:\n' +
+    "          BATCH16_FULL_SCHEMA: '1'\n" +
+    '          GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch16-full-schema-browser\n' +
+    '          BATCH16_FINDER_ARTIFACTS: ${{ runner.temp }}/batch16-finder\n' +
+    '      - name: Batch17 independent issuance capture and expiry acceptance\n' +
+    '        timeout-minutes: 5\n' +
+    '        run: |\n' +
+    '          node tests/batch17-issuance/acceptance.mjs\n' +
+    '          node tests/batch17-issuance/verify-receipt.mjs\n' +
+    '          node --test tests/batch17-issuance/*.test.mjs tests/batch17-capture/*.test.mjs tests/batch17-expiry/*.test.mjs tests/full-product-batch17/workflow.test.mjs\n' +
+    '          node tests/batch17-capture/postgres.mjs\n' +
+    '          node tests/batch17-expiry/acceptance.mjs\n' +
+    '        env:\n' +
+    '          ISSUANCE_ARTIFACTS: ${{ runner.temp }}/batch17-issuance\n' +
+    '          ISSUANCE_VALID_RECEIPT: ${{ runner.temp }}/batch17-issuance/receipt.json\n' +
+    '          CAPTURE_ARTIFACTS: ${{ runner.temp }}/batch17-capture\n' +
+    '          EXPIRY_ARTIFACTS: ${{ runner.temp }}/batch17-expiry\n' +
+    '      - name: Hosted-schema-bound guarded remediation acceptance\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: |\n' +
+    '          node --test tests/schema-reconciliation/*.test.mjs tests/hosted-schema-remediation/privileges/*.test.mjs\n' +
+    '          node tests/hosted-schema-remediation/publication/acceptance.mjs\n' +
+    '          node tests/hosted-schema-remediation/invitations/acceptance.mjs\n' +
+    '        env:\n' +
+    '          PUBLICATION_ARTIFACTS: ${{ runner.temp }}/hosted-publication\n' +
+    '          INVITATION_ARTIFACTS: ${{ runner.temp }}/hosted-invitations\n' +
+    '      - name: Hosted remediation closure and authenticated compatibility\n' +
+    '        timeout-minutes: 5\n' +
+    '        run: |\n' +
+    '          node tests/hosted-remediation-closure/publication/acceptance.mjs\n' +
+    '          node tests/hosted-remediation-closure/invitations/acceptance.mjs\n' +
+    '          node tests/hosted-remediation-closure/compatibility/acceptance.mjs\n' +
+    '          node tests/hosted-remediation-closure/admin/acceptance.mjs\n' +
+    '        env:\n' +
+    '          PUBLICATION_CLOSURE_ARTIFACTS: ${{ runner.temp }}/closure-publication\n' +
+    '          INVITATION_ARTIFACTS: ${{ runner.temp }}/closure-invitations\n' +
+    '          COMPATIBILITY_ARTIFACTS: ${{ runner.temp }}/closure-compatibility\n' +
+    '          ADMIN_CLOSURE_ARTIFACTS: ${{ runner.temp }}/closure-admin\n' +
+    '      - name: P0 publication and Business integrity safeguards\n' +
+    '        timeout-minutes: 5\n' +
+    '        run: |\n' +
+    '          node --test tests/p0-publication-business/cache/*.test.mjs\n' +
+    '          node tests/p0-publication-business/publication/acceptance.mjs\n' +
+    '          node tests/p0-publication-business/business/acceptance.mjs\n' +
+    '        env:\n' +
+    '          PUBLICATION_P0_ARTIFACTS: ${{ runner.temp }}/p0-publication\n' +
+    '          INVITATION_ARTIFACTS: ${{ runner.temp }}/p0-business\n' +
+    '      - name: Owner-authorized isolated P0 implementation\n' +
+    '        timeout-minutes: 8\n' +
+    '        run: |\n' +
+    '          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7\n' +
+    '          node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts\n' +
+    '          node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs\n' +
+    '          node tests/owner-p0/calculus/browser.mjs\n' +
+    '          node tests/owner-p0/membership/acceptance.mjs\n' +
+    '          node tests/owner-p0/privileges/acceptance.mjs\n' +
+    '          node tests/owner-p0/adoption/acceptance.mjs\n' +
+    '        env:\n' +
+    '          OWNER_CALCULUS_EVIDENCE: ${{ runner.temp }}/owner-calculus-browser\n' +
+    '          MEMBERSHIP_ARTIFACTS: ${{ runner.temp }}/owner-membership\n' +
+    '          OWNER_PRIVILEGES_ARTIFACTS: ${{ runner.temp }}/owner-privileges\n' +
+    '          ADOPTION_ARTIFACTS: ${{ runner.temp }}/owner-adoption\n' +
+    '      - name: Calculator-first publication evidence and browser acceptance\n' +
+    '        timeout-minutes: 6\n' +
+    '        run: |\n' +
+    '          node scripts/calculator-first/snapshot-registry.mjs --check\n' +
+    '          node scripts/calculator-first/generate-register.mjs --check\n' +
+    '          node tests/calculator-first/browser.mjs\n' +
+    '        env:\n' +
+    '          CALCULATOR_FIRST_BROWSER_RECEIPT: ${{ runner.temp }}/calculator-first-browser\n' +
+    '      - name: Batch21 calculator wave exact evidence and browser acceptance\n' +
+    '        timeout-minutes: 20\n' +
+    '        run: |\n' +
+    '          node --test tests/batch21-calculator-wave/failure-diagnostics.test.mjs tests/batch21-calculator-wave/journey-readiness.test.mjs tests/batch21-calculator-wave/journey-lifecycle.test.mjs\n' +
+    '          node scripts/batch21-calculator-wave/evidence.mjs --check\n' +
+    '          node tests/batch21-calculator-wave/browser.mjs\n' +
+    '        env:\n' +
+    '          BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/batch21-browser\n' +
+    "          BATCH21_SCENARIO_UI: '1'\n" +
+    '      - name: Preserve Batch21 primary failure and browser evidence\n' +
+    '        if: always()\n' +
+    '        uses: actions/upload-artifact@v4\n' +
+    '        with:\n' +
+    '          name: batch21-browser-${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '          path: |\n' +
+    '            ${{ runner.temp }}/batch21-browser/report.json\n' +
+    '            ${{ runner.temp }}/batch21-browser/*.png\n' +
+    '          if-no-files-found: warn\n' +
+    '      - name: Batch22 publication packets, live interface evidence and isolated preflight\n' +
+    '        timeout-minutes: 20\n' +
+    '        run: |\n' +
+    '          node scripts/batch22-publication/packets.mjs --check\n' +
+    '          node scripts/batch22-publication/evidence.mjs --check\n' +
+    '          node tests/batch22-live-interfaces/browser.mjs\n' +
+    '          node tests/batch22-publication-preflight/acceptance.mjs\n' +
+    '        env:\n' +
+    '          BATCH22_BROWSER_RECEIPT: ${{ runner.temp }}/batch22-browser\n' +
+    '          PREFLIGHT_ARTIFACTS: ${{ runner.temp }}/batch22-preflight\n' +
+    '      - name: Six proposed publication targets — numerical and workflow evidence\n' +
+    '        timeout-minutes: 5\n' +
+    '        run: |\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check\n' +
+    '          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7\n' +
+    '          node scripts/check-calculator-closure-history.mjs\n' +
+    '          node --test tests/calculator-first-20261105/history-guard.test.mjs\n' +
+    '          node tests/batch21-calculator-wave/browser.mjs\n' +
+    '          node tests/six-publication-closure/boundary-browser.mjs\n' +
+    '        env:\n' +
+    '          BATCH21_BROWSER_SLUGS: graphing-calculator,function-plotter-2d,volume-calculator,slope-calculator,standard-deviation-calculator,variance-calculator\n' +
+    '          BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-workflows\n' +
+    "          BATCH21_SCENARIO_UI: '1'\n" +
+    '          SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries\n' +
+    '  publication-factory:\n' +
+    '    runs-on: ubuntu-latest\n' +
+    '    timeout-minutes: 18\n' +
+    '    steps:\n' +
+    '      - name: Checkout\n' +
+    '        uses: actions/checkout@v5\n' +
+    '      - name: Read-only production URL evidence (no release authority)\n' +
+    '        timeout-minutes: 5\n' +
+    '        run: |\n' +
+    "          python3 -m unittest discover -s tests/publication-fourday/routes -p 'test_*.py'\n" +
+    '          python3 tests/publication-fourday/routes/ci_probe.py --output "$RUNNER_TEMP/publication-fourday-routes/observations.json"\n' +
+    '        env:\n' +
+    '          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '      - name: Preserve read-only production URL evidence\n' +
+    '        uses: actions/upload-artifact@v4\n' +
+    '        with:\n' +
+    '          name: publication-fourday-routes-${{ github.event.pull_request.head.sha || github.sha }}\n' +
+    '          path: ${{ runner.temp }}/publication-fourday-routes/observations.json\n' +
+    '          if-no-files-found: error\n' +
+    '          retention-days: 7\n' +
+    '      - name: Use Node.js 22\n' +
+    '        uses: actions/setup-node@v5\n' +
+    '        with:\n' +
+    '          node-version: 22\n' +
+    '          cache: npm\n' +
+    '          cache-dependency-path: package-lock.json\n' +
+    '      - name: Install dependencies\n' +
+    '        run: npm ci --no-audit --no-fund\n' +
+    '      - name: Verify exact cohort, identity, authority and preparation evidence\n' +
+    '        run: |\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check\n' +
+    '          node scripts/publication-factory/identities.mjs --check\n' +
+    '          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/prepare.ts --check\n' +
+    '          node --experimental-strip-types tests/publication-factory/gates.test.ts\n' +
+    '          node tests/publication-factory/identities.test.mjs\n' +
+    '      - name: Provision pinned isolated browser fixture\n' +
+    '        timeout-minutes: 4\n' +
+    '        run: |\n' +
+    '          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")\n' +
+    '          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"\n' +
+    '          "$browser" --version\n' +
+    '      - name: PR1517 source-bound pending QA supplements\n' +
+    '        timeout-minutes: 3\n' +
+    '        run: |\n' +
+    "          trap 'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa"... 9396 more characters
+
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/software-closure/ci-workflow.test.mjs:13:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '        run: |\n          node scripts/software-closure-evidence.mjs --check\n          node --test tests/software-closure/ci-workflow.test.mjs\n          node tests/calculus-recovery-workbench/browser.mjs\n          node tests/software-closure/recovery-browser.mjs\n        env:\n          SOFTWARE_CLOSURE_ARTIFACTS: ${{ runner.temp }}/software-closure\n          CALCULUS_RECOVERY_EVIDENCE: ${{ runner.temp }}/calculus-recovery\n      - name: Batch16 requirement, schema comparison and finder acceptance\n        run: |\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/batch16-requirement-evidence.ts --check\n          node scripts/batch16-contract-groups.mjs --check\n          node scripts/batch16-authority-requests.mjs --check\n          node --test tests/batch16-auth/schema-comparison.test.mjs tests/full-product-batch16/workflow.test.mjs\n          node tests/gotrue-runtime/acceptance.mjs\n          node tests/full-product-batch16/finder-browser.mjs\n        env:\n          BATCH16_FULL_SCHEMA: \'1\'\n          GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch16-full-schema-browser\n          BATCH16_FINDER_ARTIFACTS: ${{ runner.temp }}/batch16-finder\n      - name: Batch17 independent issuance capture and expiry acceptance\n        timeout-minutes: 5\n        run: |\n          node tests/batch17-issuance/acceptance.mjs\n          node tests/batch17-issuance/verify-receipt.mjs\n          node --test tests/batch17-issuance/*.test.mjs tests/batch17-capture/*.test.mjs tests/batch17-expiry/*.test.mjs tests/full-product-batch17/workflow.test.mjs\n          node tests/batch17-capture/postgres.mjs\n          node tests/batch17-expiry/acceptance.mjs\n        env:\n          ISSUANCE_ARTIFACTS: ${{ runner.temp }}/batch17-issuance\n          ISSUANCE_VALID_RECEIPT: ${{ runner.temp }}/batch17-issuance/receipt.json\n          CAPTURE_ARTIFACTS: ${{ runner.temp }}/batch17-capture\n          EXPIRY_ARTIFACTS: ${{ runner.temp }}/batch17-expiry\n      - name: Hosted-schema-bound guarded remediation acceptance\n        timeout-minutes: 3\n        run: |\n          node --test tests/schema-reconciliation/*.test.mjs tests/hosted-schema-remediation/privileges/*.test.mjs\n          node tests/hosted-schema-remediation/publication/acceptance.mjs\n          node tests/hosted-schema-remediation/invitations/acceptance.mjs\n        env:\n          PUBLICATION_ARTIFACTS: ${{ runner.temp }}/hosted-publication\n          INVITATION_ARTIFACTS: ${{ runner.temp }}/hosted-invitations\n      - name: Hosted remediation closure and authenticated compatibility\n        timeout-minutes: 5\n        run: |\n          node tests/hosted-remediation-closure/publication/acceptance.mjs\n          node tests/hosted-remediation-closure/invitations/acceptance.mjs\n          node tests/hosted-remediation-closure/compatibility/acceptance.mjs\n          node tests/hosted-remediation-closure/admin/acceptance.mjs\n        env:\n          PUBLICATION_CLOSURE_ARTIFACTS: ${{ runner.temp }}/closure-publication\n          INVITATION_ARTIFACTS: ${{ runner.temp }}/closure-invitations\n          COMPATIBILITY_ARTIFACTS: ${{ runner.temp }}/closure-compatibility\n          ADMIN_CLOSURE_ARTIFACTS: ${{ runner.temp }}/closure-admin\n      - name: P0 publication and Business integrity safeguards\n        timeout-minutes: 5\n        run: |\n          node --test tests/p0-publication-business/cache/*.test.mjs\n          node tests/p0-publication-business/publication/acceptance.mjs\n          node tests/p0-publication-business/business/acceptance.mjs\n        env:\n          PUBLICATION_P0_ARTIFACTS: ${{ runner.temp }}/p0-publication\n          INVITATION_ARTIFACTS: ${{ runner.temp }}/p0-business\n      - name: Owner-authorized isolated P0 implementation\n        timeout-minutes: 8\n        run: |\n          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7\n          node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts\n          node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs\n          node tests/owner-p0/calculus/browser.mjs\n          node tests/owner-p0/membership/acceptance.mjs\n          node tests/owner-p0/privileges/acceptance.mjs\n          node tests/owner-p0/adoption/acceptance.mjs\n        env:\n          OWNER_CALCULUS_EVIDENCE: ${{ runner.temp }}/owner-calculus-browser\n          MEMBERSHIP_ARTIFACTS: ${{ runner.temp }}/owner-membership\n          OWNER_PRIVILEGES_ARTIFACTS: ${{ runner.temp }}/owner-privileges\n          ADOPTION_ARTIFACTS: ${{ runner.temp }}/owner-adoption\n      - name: Calculator-first publication evidence and browser acceptance\n        timeout-minutes: 6\n        run: |\n          node scripts/calculator-first/snapshot-registry.mjs --check\n          node scripts/calculator-first/generate-register.mjs --check\n          node tests/calculator-first/browser.mjs\n        env:\n          CALCULATOR_FIRST_BROWSER_RECEIPT: ${{ runner.temp }}/calculator-first-browser\n      - name: Batch21 calculator wave exact evidence and browser acceptance\n        timeout-minutes: 20\n        run: |\n          node --test tests/batch21-calculator-wave/failure-diagnostics.test.mjs tests/batch21-calculator-wave/journey-readiness.test.mjs tests/batch21-calculator-wave/journey-lifecycle.test.mjs\n          node scripts/batch21-calculator-wave/evidence.mjs --check\n          node tests/batch21-calculator-wave/browser.mjs\n        env:\n          BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/batch21-browser\n          BATCH21_SCENARIO_UI: \'1\'\n      - name: Preserve Batch21 primary failure and browser evidence\n        if: always()\n        uses: actions/upload-artifact@v4\n        with:\n          name: batch21-browser-${{ github.event.pull_request.head.sha || github.sha }}\n          path: |\n            ${{ runner.temp }}/batch21-browser/report.json\n            ${{ runner.temp }}/batch21-browser/*.png\n          if-no-files-found: warn\n      - name: Batch22 publication packets, live interface evidence and isolated preflight\n        timeout-minutes: 20\n        run: |\n          node scripts/batch22-publication/packets.mjs --check\n          node scripts/batch22-publication/evidence.mjs --check\n          node tests/batch22-live-interfaces/browser.mjs\n          node tests/batch22-publication-preflight/acceptance.mjs\n        env:\n          BATCH22_BROWSER_RECEIPT: ${{ runner.temp }}/batch22-browser\n          PREFLIGHT_ARTIFACTS: ${{ runner.temp }}/batch22-preflight\n      - name: Six proposed publication targets — numerical and workflow evidence\n        timeout-minutes: 5\n        run: |\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check\n          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7\n          node scripts/check-calculator-closure-history.mjs\n          node --test tests/calculator-first-20261105/history-guard.test.mjs\n          node tests/batch21-calculator-wave/browser.mjs\n          node tests/six-publication-closure/boundary-browser.mjs\n        env:\n          BATCH21_BROWSER_SLUGS: graphing-calculator,function-plotter-2d,volume-calculator,slope-calculator,standard-deviation-calculator,variance-calculator\n          BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-workflows\n          BATCH21_SCENARIO_UI: \'1\'\n          SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries\n  publication-factory:\n    runs-on: ubuntu-latest\n    timeout-minutes: 18\n    steps:\n      - name: Checkout\n        uses: actions/checkout@v5\n      - name: Read-only production URL evidence (no release authority)\n        timeout-minutes: 5\n        run: |\n          python3 -m unittest discover -s tests/publication-fourday/routes -p \'test_*.py\'\n          python3 tests/publication-fourday/routes/ci_probe.py --output "$RUNNER_TEMP/publication-fourday-routes/observations.json"\n        env:\n          AUDIT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n      - name: Preserve read-only production URL evidence\n        uses: actions/upload-artifact@v4\n        with:\n          name: publication-fourday-routes-${{ github.event.pull_request.head.sha || github.sha }}\n          path: ${{ runner.temp }}/publication-fourday-routes/observations.json\n          if-no-files-found: error\n          retention-days: 7\n      - name: Use Node.js 22\n        uses: actions/setup-node@v5\n        with:\n          node-version: 22\n          cache: npm\n          cache-dependency-path: package-lock.json\n      - name: Install dependencies\n        run: npm ci --no-audit --no-fund\n      - name: Verify exact cohort, identity, authority and preparation evidence\n        run: |\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/contracts-evidence.ts --check\n          node scripts/publication-factory/identities.mjs --check\n          node_modules/.bin/vite-node --config vitest.config.ts scripts/publication-factory/prepare.ts --check\n          node --experimental-strip-types tests/publication-factory/gates.test.ts\n          node tests/publication-factory/identities.test.mjs\n      - name: Provision pinned isolated browser fixture\n        timeout-minutes: 4\n        run: |\n          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")\n          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"\n          "$browser" --version\n      - name: PR1517 source-bound pending QA supplements\n        timeout-minutes: 3\n        run: |\n          trap \'rm -f .qa1517-proofs.mjs .qa1517-proofs.css .qa1517-proofs.test.mjs .qa'... 9396 more characters,
+    expected: /continue-on-error|\n        if:/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }

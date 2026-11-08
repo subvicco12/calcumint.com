@@ -6,7 +6,7 @@ const workflow=readFileSync('.github/workflows/ci.yml','utf8');
 test('the three exact independent task campaigns and receipt checks are mandatory and bounded',()=>{
  const product=workflow.split('\n  full-product:\n')[1].split('\n  validate:\n')[0];
  const marker='      - name: Batch17 independent issuance capture and expiry acceptance\n';
- assert.equal(product.split(marker).length,2);const step=product.split(marker)[1];
+ assert.equal(product.split(marker).length,2);const step=product.split(marker)[1].split('\n      - name:')[0];
  assert.match(step,/^        timeout-minutes: 5\n/);
  for(const command of ['node --test tests/batch17-issuance/*.test.mjs tests/batch17-capture/*.test.mjs tests/batch17-expiry/*.test.mjs tests/full-product-batch17/workflow.test.mjs','node tests/batch17-issuance/acceptance.mjs','node tests/batch17-issuance/verify-receipt.mjs','node tests/batch17-capture/postgres.mjs','node tests/batch17-expiry/acceptance.mjs'])assert(step.includes(command),command);
  for(const variable of ['ISSUANCE_ARTIFACTS','CAPTURE_ARTIFACTS','EXPIRY_ARTIFACTS'])assert.match(step,new RegExp(`          ${variable}: \\$\\{\\{ runner.temp \\}\\}/batch17-`));

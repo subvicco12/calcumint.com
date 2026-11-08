@@ -1,0 +1,27 @@
+{
+  "baseline": "6d2960c2fac7817741b08877ebd3b611720923b7",
+  "passed": true,
+  "checks": [
+    "Exact440 and432 singleton drafts contain pending QA and cannot publish; fallback not implicitly selected",
+    "Actual JWT role/RLS and exact immutable-version singleton refusals preserve lifecycle and audit",
+    "Late singleton audit failure rolls back publication and is safely retryable",
+    "Concurrent singleton retry commits exactly one publication/audit and leaves432 DRAFT",
+    "Real anonymous authority manifest exposes exact published440 only; audited withdrawal removes it and preserves records"
+  ],
+  "syntheticApprovalsOnly": true,
+  "productionWrites": false,
+  "publicationEligible": false,
+  "sourcePinsVerified": true,
+  "provenance": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Isolated reconstruction of seven-table captured metadata; synthetic rows only; authentic provider internals outside uid/role not represented",
+    "sourceObservedAt": "2026-11-06 14:43:07.87206+00",
+    "productionWrites": false
+  }
+}

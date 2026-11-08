@@ -5,6 +5,9 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createServer} from 'vite';
 import {startBrowser} from '../next-runtime/cdp.mjs';
+import {captureFailureScreenshot,instrumentBrowser} from './failure-diagnostics.mjs';
+import {journeyReadyExpression} from './journey-readiness.mjs';
+import {createJourneyLifecycle} from './journey-lifecycle.mjs';
 
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const directory=process.env.BATCH21_BROWSER_RECEIPT||'/workspace/work/batch21-browser';
@@ -21,7 +24,10 @@ const fullCohort=[...candidates,...dedicated,...launch,...extra];
 const cohort=process.env.BATCH21_BROWSER_SLUGS?process.env.BATCH21_BROWSER_SLUGS.split(','):fullCohort;
 const authorization='Basic '+Buffer.from('reviewer:'+randomBytes(32).toString('base64url')).toString('base64');
 const report={createdAt:new Date().toISOString(),cohort,fullCohortSize:fullCohort.length,journeys:[],limitations:['Local Vite source fixture with actual CalculatorInteractive, account actions, presentation, and deterministic engines.','Only Supabase browser transport and Next link use existing synthetic reference fixtures; plan is Pro to observe actual save/export enabled states and capture actual JSON export through a fixture Blob sink. No production persistence or real authentication acceptance.','Headless Chromium at emulated 360/1440 CSS-pixel widths; not physical devices or production Next runtime.']};
-let server,browser;
+let server,browser,lifecycle;
+let retiredNetworkRequests=0;
+let journey;
+const operationTrace=[];
 const key=async(key,code,n,modifiers=0)=>{await browser.send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:n,modifiers});await browser.send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:n,modifiers});};
 try{
  server=await createServer({configFile:false,envFile:false,root,publicDir:false,appType:'custom',cacheDir:path.join(directory,'vite-cache'),
@@ -29,7 +35,7 @@ try{
   define:{'process.env.NEXT_PUBLIC_SUPABASE_URL':JSON.stringify('https://synthetic.invalid'),'process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY':JSON.stringify('synthetic-reference-fixture')},
   esbuild:{jsx:'automatic'},optimizeDeps:{noDiscovery:true,include:['react','react-dom/client','react/jsx-runtime','react/jsx-dev-runtime','decimal.js','zod']},
   server:{host:'127.0.0.1',port:0,hmr:false,cors:false,fs:{strict:true,allow:[root],deny:['**/.env','**/.env.*','**/.git/**','**/.aws/**','**/.codex/**']}},
-  plugins:[{name:'calculator-first-local-browser',resolveId(id){if(id==='/calculator-first-entry.tsx')return '\0calculator-first-entry.tsx';},load(id){if(id==='\0calculator-first-entry.tsx')return `import {createElement as h} from 'react';import {createRoot} from 'react-dom/client';import {CalculatorInteractive} from '/src/components/calculator-interactive';import {useCalculatorPlan} from '/src/components/use-calculator-plan';import {synthetic} from '/tests/release-candidate/synthetic-client';import {verifyBatch21Snapshot} from '/src/lib/batch21-snapshot-replay';window.__verifyBatch21Snapshot=verifyBatch21Snapshot;import '/src/app/globals.css';window.__synthetic=synthetic;window.__downloads=[];URL.createObjectURL=blob=>{blob.text().then(text=>window.__downloads.push({type:blob.type,text}));return 'blob:local-fixture'};const slug=new URLSearchParams(location.search).get('slug');function App(){const plan=useCalculatorPlan();return h('main',{className:'container',style:{padding:'1rem',maxWidth:1100,margin:'auto'}},h('h1',null,'Local calculator acceptance'),h('output',{id:'plan'},plan),h(CalculatorInteractive,{slug}))}createRoot(document.getElementById('root')).render(h(App));`;},configureServer(s){s.middlewares.use(async(req,res,next)=>{
+  plugins:[{name:'calculator-first-local-browser',resolveId(id){if(id==='/calculator-first-entry.tsx')return '\0calculator-first-entry.tsx';},load(id){if(id==='\0calculator-first-entry.tsx')return `import {createElement as h} from 'react';import {createRoot} from 'react-dom/client';import {CalculatorInteractive} from '/src/components/calculator-interactive';import {useCalculatorPlan} from '/src/components/use-calculator-plan';import {synthetic} from '/tests/release-candidate/synthetic-client';import {verifyBatch21Snapshot} from '/src/lib/batch21-snapshot-replay';window.__verifyBatch21Snapshot=verifyBatch21Snapshot;import '/src/app/globals.css';window.__synthetic=synthetic;window.__downloads=[];URL.createObjectURL=blob=>{blob.text().then(text=>window.__downloads.push({type:blob.type,text}));return 'blob:local-fixture'};const slug=new URLSearchParams(location.search).get('slug');function App(){const plan=useCalculatorPlan();return h('main',{'data-calculator-slug':slug,className:'container',style:{padding:'1rem',maxWidth:1100,margin:'auto'}},h('h1',null,'Local calculator acceptance'),h('output',{id:'plan'},plan),h(CalculatorInteractive,{slug}))}createRoot(document.getElementById('root')).render(h(App));`;},configureServer(s){s.middlewares.use(async(req,res,next)=>{
    const host=`127.0.0.1:${s.httpServer.address().port}`;
    if(req.headers.host!==host||(req.headers.origin&&req.headers.origin!==`http://${host}`)){res.statusCode=403;res.end();return;}
    const received=Buffer.from(req.headers.authorization||''),expected=Buffer.from(authorization);if(received.length!==expected.length||!timingSafeEqual(received,expected)){res.statusCode=401;res.end();return;}
@@ -39,16 +45,19 @@ try{
  await server.listen();const origin=`http://127.0.0.1:${server.httpServer.address().port}`;
  assert.equal((await fetch(origin+'/?slug=probability-calculator')).status,401);
  const fixture=await fetch(origin+'/?slug=probability-calculator',{headers:{Authorization:authorization}});assert.equal(fixture.status,200);assert.match(await fixture.text(),/calculator-first-entry/);
- browser=await startBrowser(origin);await browser.send('Network.setExtraHTTPHeaders',{headers:{Authorization:authorization}});
+ lifecycle=createJourneyLifecycle({maxJourneys:20,async create(){browser=instrumentBrowser(await startBrowser(origin),()=>journey,operationTrace);await browser.send('Network.setExtraHTTPHeaders',{headers:{Authorization:authorization}});return browser;},async verify(instance){assert.deepEqual(instance.errors,[]);assert.deepEqual(instance.network.filter(r=>!r.allowed),[]);retiredNetworkRequests+=instance.network.length;}});
  const baseline=new Map();
  const validExpression='!!document.querySelector(".final-calculator-renderer")||!!document.querySelector(".result-box strong")&&document.querySelector(".result-box strong").textContent!=="Enter valid inputs"';
  const actionsExpression='[...document.querySelectorAll(".account-actions button")].filter(b=>/^(Save calculation|Export CSV|Export JSON|Export PDF)$/.test(b.textContent.trim())).map(b=>({label:b.textContent.trim(),disabled:b.disabled}))';
  const invalid=async()=>{await browser.until('!('+validExpression+')');const actions=await browser.js(actionsExpression);if(actions.length){assert.equal(actions.length,4);assert(actions.every(b=>b.disabled));}return actions.length;};
  for(const width of (process.env.BATCH21_BROWSER_WIDTHS||'360,1440').split(',').map(Number))for(const slug of cohort){
-  console.log(JSON.stringify({slug,width}));
+  journey={slug,width};
+  await lifecycle.run(journey,async()=>{
+  console.log(JSON.stringify(journey));
   await browser.send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===360});
-  await browser.send('Page.navigate',{url:origin+`/?slug=${slug}&plan=pro`});
-  await browser.until('document.querySelector("#plan")?.textContent==="pro"&&!!document.querySelector(".calculator-ui")');
+  const url=origin+`/?slug=${slug}&plan=pro`;
+  await browser.send('Page.navigate',{url});
+  await browser.until(journeyReadyExpression(url,slug));
   await browser.until(validExpression);
   if(candidates.includes(slug)||stats4.includes(slug))await browser.until('[...document.querySelectorAll(".account-actions button")].some(b=>b.textContent.trim()==="Export JSON"&&!b.disabled)');
   const result=()=>browser.js('document.querySelector(".final-calculator-renderer")?.textContent??document.querySelector(".result-box")?.textContent');
@@ -118,9 +127,10 @@ try{
   assert.deepEqual(await browser.js('window.__synthetic.writes'),[],'Acceptance performs no persistence writes');
   if(candidates.includes(slug))await writeFile(path.join(directory,`${slug}-${width}.png`),Buffer.from((await browser.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})).data,'base64'));
   report.journeys.push({slug,width,initialRendererText:initial,fields:fields.length,blankChecks,malformedChecks,validZeroChecks:zeroChecks,recoveryParity:true,keyboard:true,labels:true,noHorizontalOverflow:true,actualSnapshotDisabledChecks:accountChecks,scenarioCaptureExportRecover:candidates.includes(slug)&&process.env.BATCH21_SCENARIO_UI==='1'});
+  });
  }
  assert.deepEqual(browser.errors,[]);assert.deepEqual(browser.network.filter(r=>!r.allowed),[]);
- report.browserErrors=browser.errors;report.networkRequests=browser.network.length;report.passed=true;
+ report.browserErrors=browser.errors;report.networkRequests=retiredNetworkRequests+browser.network.length;report.browserSessionJourneyLimit=20;report.passed=true;
  await writeFile(path.join(directory,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({directory,journeys:report.journeys.length,blankChecks:report.journeys.reduce((n,j)=>n+j.blankChecks,0),passed:true}));
-} catch(error){report.passed=false;report.error=String(error.stack||error);report.browserErrors=browser?.errors;report.network=browser?.network;await writeFile(path.join(directory,'report.json'),JSON.stringify(report,null,2)+'\n');if(browser)await writeFile(path.join(directory,'failure.png'),Buffer.from((await browser.send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true})).data,'base64'));throw error;
-} finally {await browser?.close();await server?.close();}
+} catch(error){report.operationFailures=operationTrace;report.failedJourney=journey;report.passed=false;report.error=String(error.stack||error);report.browserErrors=browser?.errors;report.network=browser?.network;console.error(report.error);await writeFile(path.join(directory,'report.json'),JSON.stringify(report,null,2)+'\n');await captureFailureScreenshot(browser,bytes=>writeFile(path.join(directory,'failure.png'),bytes),report);await writeFile(path.join(directory,'report.json'),JSON.stringify(report,null,2)+'\n');throw error;
+} finally {if(lifecycle)await lifecycle.close();else await browser?.close();await server?.close();}

@@ -1,0 +1,5 @@
+PASS Exact440 and432 singleton drafts contain pending QA and cannot publish; fallback not implicitly selected
+PASS Actual JWT role/RLS and exact immutable-version singleton refusals preserve lifecycle and audit
+PASS Late singleton audit failure rolls back publication and is safely retryable
+PASS Concurrent singleton retry commits exactly one publication/audit and leaves432 DRAFT
+PASS Real anonymous authority manifest exposes exact published440 only; audited withdrawal removes it and preserves records

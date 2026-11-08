@@ -1,0 +1,67 @@
+{
+  "baseline": "6d2960c2fac7817741b08877ebd3b611720923b7",
+  "baselineCI": {
+    "id": 42405500802,
+    "conclusion": "failure",
+    "failedVerificationJob": "full-product",
+    "otherRequiredVerificationJobsPassed": 4
+  },
+  "focusedNodeGuardsPassed": 144,
+  "applicationRouteDiscoverySitemapTestsPassed": 4,
+  "isolatedSingletonGroupsPassed": 5,
+  "lint": "passed",
+  "typecheck": "passed",
+  "newPublicationEligible": 0,
+  "productionWrites": false,
+  "releaseHold": true,
+  "independentEngineeringReview": "no blockers; not competent certification",
+  "finalPinnedBrowser": {
+    "passed": true,
+    "browser": "Chrome156.0.8078.47",
+    "journeys": 318,
+    "blankChecks": 652,
+    "networkRequests": 110208,
+    "browserErrors": 0,
+    "maxJourneysPerSession": 20,
+    "failureRetries": 0
+  },
+  "successorCI": "pending",
+  "applicationRouteDiscoverySitemapRegressionTestsPassed": 15,
+  "newApplicationCompositionTestsPassed": 4,
+  "firstSuccessorCI": {
+    "sha": "e40e4f6f3e56859e72059d840c244319ece67eb2",
+    "run": 42440827448,
+    "failedJob": "full-product",
+    "failedStep": "Exact Batch13 540-ID requirement deltas",
+    "cause": "Overbroad workflowguard rejected artifact-only always condition",
+    "correctedTests": [
+      "tests/full-product-batch13/workflow.test.mjs",
+      "tests/full-product-batch16/workflow.test.mjs"
+    ],
+    "expandedGuardTestsPassed": 78
+  },
+  "allWorkflowTestFilesIncluded": 8,
+  "historicalAdmission": {
+    "priorSHA": "815fa75177ff4348b64502d6745a8fc294c65fed",
+    "run": 42441559122,
+    "otherRequiredJobsPassed": 4,
+    "hostedBatch21JourneysPassed": 318,
+    "blockedStep": "Six proposed publication targets \u2014 numerical and workflow evidence",
+    "reason": "Correct refusal of unadmitted browser successor",
+    "fullHistoricalWrapper": "passed",
+    "fullSixOnly": "passed",
+    "unchangedHistoricalNegativeTestsPassed": 8,
+    "newLineageTestsPassed": 20,
+    "independentEngineeringReview": "no blockers; no certification"
+  },
+  "nativeRecordedDownload": {
+    "priorSHA": "8fbffcac9391851102bb29bc1b8ca096de16d46c",
+    "run": 42443455982,
+    "failedJob": "publication-factory",
+    "assertion": "Completed recorded json download",
+    "targetedRealBrowserAndBoundednessTestsPassed": 2,
+    "genuineNextChecksPassed": 5,
+    "historicalCause": "inferred; deterministic disabled-click harness gap reproduced",
+    "applicationChanges": false
+  }
+}

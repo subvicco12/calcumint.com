@@ -1,0 +1,146 @@
+{
+  "baseline": "6d2960c2fac7817741b08877ebd3b611720923b7",
+  "originalCiRun": "42405500802",
+  "browser": "Google Chrome 156.0.8078.47",
+  "productionWrites": false,
+  "originalCiPrimaryCause": "Not established: original Batch21 receipt unavailable. Local matching symptom sequence was hydration Runtime.evaluate timeout followed by screenshot Internal error.",
+  "verifiedCorrections": [
+    "Preserve primary acceptance failure when diagnostic screenshot fails.",
+    "Bind hydration readiness to exact requested URL, completed document load and mounted calculator slug.",
+    "Retire browser sessions deterministically after 20 successful independent journeys; assert errors/network before retirement; abort failures without replay."
+  ],
+  "focusedTests": {
+    "diagnostics": 4,
+    "readiness": 2,
+    "lifecycle": 3,
+    "passed": 9
+  },
+  "evidence": [
+    {
+      "path": "/tmp/pr1536-ci-failure-extract.log",
+      "bytes": 14393,
+      "sha256": "ec6d2ce221f3d1738fa1dfca8f2355cf4c65bcb7210c556fa230a1e3884a0d07"
+    },
+    {
+      "path": "/tmp/pr1536-browser-red.log",
+      "bytes": 13128,
+      "sha256": "f5a9a9ef6e370c2c5cc70c039a5ab1bec4401d923b134f38458ce8ca472de1e8"
+    },
+    {
+      "path": "/tmp/pr1536-baseline-report.json",
+      "bytes": 12926333,
+      "sha256": "bd8d3139353b856ec0269edcad40fb7b12bbf7dd95b3b6a1f6ce3234072412df"
+    },
+    {
+      "path": "/tmp/pr1536-pinned-browser.log",
+      "bytes": 3426,
+      "sha256": "6862c96e7e1c6a179ee5a667ddb49d449c538219878e95005c579678e1ccb577"
+    },
+    {
+      "path": "/tmp/pr1536-pinned-browser/report.json",
+      "bytes": 1570251,
+      "sha256": "b994134ebb79d328396e7681f75c21f7eb549286c9f189b81c0a45d3cca822ac"
+    },
+    {
+      "path": "/tmp/pr1536-pinned-quiescent.log",
+      "bytes": 6807,
+      "sha256": "772801f35a87b355f341433de904e7bdc24979d4f47c330085a951ece9ee8137"
+    },
+    {
+      "path": "/tmp/pr1536-pinned-quiescent/report.json",
+      "bytes": 5692469,
+      "sha256": "ab134dcf42cfe328525d4bdb99877eb76fd7c319b3b887178db8e00344a1b2c3"
+    },
+    {
+      "path": "/tmp/pr1536-instrumented.log",
+      "bytes": 15545,
+      "sha256": "f4e1155a32481b42c5fbb601b8377d7f9511b32bba4fee07e1f391f832b9a590"
+    },
+    {
+      "path": "/tmp/pr1536-instrumented/report.json",
+      "bytes": 155499,
+      "sha256": "e4e7e30c8148557609fac84021aa86478e6eb2a79246a6c8cf1df9019e4038c3"
+    },
+    {
+      "path": "/tmp/pr1536-chrome-renderer.log",
+      "bytes": 179891,
+      "sha256": "c1e4f8ff1a586a382637b21dd4ef44b5d6d369fc483d45fc20123b2063e27adc"
+    },
+    {
+      "path": "/tmp/pr1536-renderer-resources.jsonl",
+      "bytes": 98286,
+      "sha256": "40f2db545073c11c8de2b593acd939f35ba04834267b55759fdfd206172558eb"
+    },
+    {
+      "path": "/tmp/pr1536-diagnostic-red.log",
+      "bytes": 1928,
+      "sha256": "0e02e0c5307ccab97faed6527b65defee4dc549c9df480b9a1483aa8a21e7b0e"
+    },
+    {
+      "path": "/tmp/pr1536-diagnostic-green.log",
+      "bytes": 460,
+      "sha256": "1a30b9d1a2b7bf08f1ac5d84ac3b47ae9b1891d3b773bf31f4da89b7586db54e"
+    },
+    {
+      "path": "/tmp/pr1536-readiness-red.log",
+      "bytes": 2071,
+      "sha256": "7c223cc9ed18aad88c7c655851e9e3a1192962fa136b8b7cbff037baf6b9bdb0"
+    },
+    {
+      "path": "/tmp/pr1536-readiness-green.log",
+      "bytes": 294,
+      "sha256": "1985d8875fb34f8c2d7d587b96b9eaa3990c21a04f9ac9a924471e01c7567ab7"
+    },
+    {
+      "path": "/tmp/pr1536-final-pinned.log",
+      "bytes": 15317,
+      "sha256": "309dcdf8311f9356822256ee21a2fdb78521f68556943eec3476e1d973a1ba5f"
+    },
+    {
+      "path": "/tmp/pr1536-final-pinned/report.json",
+      "bytes": 14087423,
+      "sha256": "92c1a99825cd69e37a0ad7bfb6af95ba1a015d204b177ed1bb94cdc3516689a2"
+    },
+    {
+      "path": "/tmp/pr1536-lifecycle-red.log",
+      "bytes": 2412,
+      "sha256": "03a06ed4a6309f7f24de45bf4c001b7b57faabde57abc75cd4457fe388dde765"
+    },
+    {
+      "path": "/tmp/pr1536-lifecycle-pinned.log",
+      "bytes": 15549,
+      "sha256": "673b3fd8dc5a5e54b2f726f94ea2bf6844d0b18bbdf5a3ebcb846e427eb8dd1a"
+    },
+    {
+      "path": "/tmp/pr1536-lifecycle-pinned/report.json",
+      "bytes": 155535,
+      "sha256": "53d6fda14d295f862966acd7ab32ed39c116a2c183b9afa7382006314c90eb0a"
+    }
+  ],
+  "finalFullRun": {
+    "passed": true,
+    "exitCode": 0,
+    "browser": "Google Chrome 156.0.8078.47",
+    "scenarioUi": true,
+    "widths": [
+      360,
+      1440
+    ],
+    "cohortSize": 159,
+    "journeys": 318,
+    "blankChecks": 652,
+    "networkRequests": 110208,
+    "browserErrors": [],
+    "sessionJourneyLimit": 20,
+    "receipt": "/tmp/pr1536-lifecycle-pinned/report.json"
+  },
+  "sourceSha256": {
+    "tests/batch21-calculator-wave/browser.mjs": "f3a0f846466e1ef7cb58ed04724351202e873a0d1c6926e49167364141887b60",
+    "tests/batch21-calculator-wave/failure-diagnostics.mjs": "e74969be1d5e048464d6021214d61a39359a54cc65a029790873f0fc100f5221",
+    "tests/batch21-calculator-wave/failure-diagnostics.test.mjs": "a89c62bfa979413a7d9a1a09d4e61b5dd343dfe4bdbd86d8565e473cfd0a65a6",
+    "tests/batch21-calculator-wave/journey-lifecycle.mjs": "e942f81e4c42890782236c529737897eeb529e3c05e31614325c2311ab4b4d47",
+    "tests/batch21-calculator-wave/journey-lifecycle.test.mjs": "af52c39e29510ad9327730a15c80069d867cb004cb058767a436d54b796f6b73",
+    "tests/batch21-calculator-wave/journey-readiness.mjs": "7a90c6fd87a5b294b50723d9923aa395b8e6bf05d21db4b11c88fbb48cd95fcc",
+    "tests/batch21-calculator-wave/journey-readiness.test.mjs": "ab342d6275e5c9c3f593948bd4287100e15a55e7ade3f928267de219cac55580"
+  }
+}

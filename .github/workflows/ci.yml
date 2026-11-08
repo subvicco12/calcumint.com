@@ -363,7 +363,7 @@ jobs:
       - name: Owner-authorized isolated P0 implementation
         timeout-minutes: 8
         run: |
-          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7
+          git fetch --no-tags --depth=1 origin b1c606efd06930ae8363e98aa369298ed0c404aa 804028a913ee33021b14e67d0f40ee7893d896b6 a9f17d4f010355eb490318c3a868d445bf38f72f 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 6d2960c2fac7817741b08877ebd3b611720923b7 815fa75177ff4348b64502d6745a8fc294c65fed
           node_modules/.bin/vitest run --config tests/owner-p0/calculus/vitest.config.mts
           node --test tests/p0-decision-contracts/*.test.mjs tests/owner-p0/authorization.test.mjs tests/owner-p0/privileges/contract.test.mjs tests/owner-p0/adoption/*.test.mjs
           node tests/owner-p0/calculus/browser.mjs
@@ -386,11 +386,21 @@ jobs:
       - name: Batch21 calculator wave exact evidence and browser acceptance
         timeout-minutes: 20
         run: |
+          node --test tests/batch21-calculator-wave/failure-diagnostics.test.mjs tests/batch21-calculator-wave/journey-readiness.test.mjs tests/batch21-calculator-wave/journey-lifecycle.test.mjs
           node scripts/batch21-calculator-wave/evidence.mjs --check
           node tests/batch21-calculator-wave/browser.mjs
         env:
           BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/batch21-browser
           BATCH21_SCENARIO_UI: '1'
+      - name: Preserve Batch21 primary failure and browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch21-browser-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/batch21-browser/report.json
+            ${{ runner.temp }}/batch21-browser/*.png
+          if-no-files-found: warn
       - name: Batch22 publication packets, live interface evidence and isolated preflight
         timeout-minutes: 20
         run: |
@@ -405,7 +415,7 @@ jobs:
         timeout-minutes: 5
         run: |
           node_modules/.bin/vite-node --config vitest.config.ts scripts/six-publication-closure/numerical.ts --check
-          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 6d2960c2fac7817741b08877ebd3b611720923b7 815fa75177ff4348b64502d6745a8fc294c65fed
           node scripts/check-calculator-closure-history.mjs
           node --test tests/calculator-first-20261105/history-guard.test.mjs
           node tests/batch21-calculator-wave/browser.mjs
@@ -469,7 +479,7 @@ jobs:
       - name: Owner-authorized isolated full-six increment and registered input browser
         timeout-minutes: 3
         run: |
-          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7
+          git fetch --no-tags --depth=1 origin c1c7371ac4f284ff7b6371a90fb3296c632396f9 af94b00cee5e8ef53e2b6ecdf1501c6b45cbaee5 4796b3d7679a06f0751cac8cfec687c88f386ae5 2f088187dd395fd26262c32195b427258f44fa44 761b850479ea36b2b4ebf8039664d8400c762555 ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7 6d2960c2fac7817741b08877ebd3b611720923b7 815fa75177ff4348b64502d6745a8fc294c65fed
           node scripts/check-calculator-closure-history.mjs --full-six-only
           node scripts/fast-publication-20261102/queue.mjs --check
           node tests/fast-publication-20261102/queue.test.mjs
@@ -523,7 +533,9 @@ jobs:
           FREQUENCY440_ARTIFACTS: ${{ runner.temp }}/frequency440
       - name: Genuine Next frequency history and Business workflow
         timeout-minutes: 6
-        run: node tests/frequency440-acceptance/next.mjs
+        run: |
+          node --test tests/next-runtime/recorded-download.test.mjs
+          node tests/frequency440-acceptance/next.mjs
         env:
           FREQUENCY440_NEXT_ARTIFACTS: ${{ runner.temp }}/frequency440-next
       - name: Native registered Business API and embed acceptance
@@ -604,8 +616,9 @@ jobs:
         run: |
           node scripts/adoption1535/inventory.mjs --check
           node scripts/adoption1535/package.mjs --check
-          node --test tests/adoption1535/*.test.mjs
+          node --test tests/adoption1535/*.test.mjs tests/first-pilot1536/*.test.mjs
           node scripts/adoption1535/package.mjs --rehearse
+          node tests/first-pilot1536/singleton.mjs
       - name: Preserve held batch adoption acceptance
         uses: actions/upload-artifact@v4
         with:
