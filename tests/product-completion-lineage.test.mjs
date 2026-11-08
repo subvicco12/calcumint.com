@@ -32,3 +32,9 @@ test('integrated checker rejects unrelated source tamper without new approval',(
  const path='src/calculators/core/percentage.ts',bytes=readFileSync(path),claim=createHash('sha256').update(bytes).digest('hex');
  assert.throws(()=>verifyCurrentCandidateBinding(path,claim,()=>Buffer.from('tamper'),git),/source binding changed/);
 });
+for(const dependency of ['src/lib/full-six/candidate/scenario-comparison.ts','src/components/full-six/candidate-scenario-comparison.tsx']){
+ test('workbench binding rejects supplemental comparison tamper: '+dependency,()=>{
+  const path='src/components/full-six/candidate-workbench.tsx',claim=createHash('sha256').update(git(['show',old+':'+path])).digest('hex');
+  assert.throws(()=>verifyCompletionBinding(path,readFileSync(path),claim,git,name=>name===dependency?Buffer.from('tamper'):readFileSync(name)),/supplemental source bytes differ/);
+ });
+}
