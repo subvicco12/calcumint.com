@@ -49,11 +49,11 @@ const bindings=[
   {
     "path": ".github/workflows/ci.yml",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "606c44e09799a89922e4c575d24a7798d33ee33b",
+    "successorRef": "b2d72aa66293b752739b7924745a57a51c4b5acb",
     "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
-    "successorBlob": "360179f221fee30409658eb9be1bba63864a3729",
+    "successorBlob": "2e146967e59f77ab662dab1b18d60db5e852d823",
     "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
-    "successorSHA256": "1b34d38604e057d2e28e650fd3806fc66b6d38c5fcfa46d08f36eef4ec4318e3",
+    "successorSHA256": "934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9",
     "intermediateSources": [
       {
         "ref": "fb2531218dbf71e1116dbc90fc17367692213bdc",
@@ -89,6 +89,11 @@ const bindings=[
         "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
         "blob": "d3538f2cfd277b6877efc083ecef59a17ec3554f",
         "sha256": "4c50fb082caac20a87df605934d693632be91b5194282467161b596a5b7a2cdb"
+      },
+      {
+        "ref": "606c44e09799a89922e4c575d24a7798d33ee33b",
+        "blob": "360179f221fee30409658eb9be1bba63864a3729",
+        "sha256": "1b34d38604e057d2e28e650fd3806fc66b6d38c5fcfa46d08f36eef4ec4318e3"
       }
     ]
   },
@@ -180,6 +185,35 @@ const bindings=[
         "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
         "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
         "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      }
+    ]
+  },
+  {
+    "path": "src/components/remaining-engineering-review.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+    "predecessorBlob": "d10fdb101386fded8fcda14ccf8898a704602d16",
+    "successorBlob": "100f4c18dfeac8f26fca189e84c161f3162c1505",
+    "predecessorSHA256": "35dc0885d2445eea44fb2294641186537ba9e4c8d88f5d02c13ee8d04b5a047a",
+    "successorSHA256": "1b50b9a87edb78f05bc4bcd86cd81737317b08875867a34c0bdea54c27f7296d",
+    "supplementalSources": [
+      {
+        "path": "src/lib/final-private-snapshot-text.ts",
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
+        "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+      },
+      {
+        "path": "src/lib/publication-factory-contracts-input.ts",
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+        "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      },
+      {
+        "path": "src/calculators/remaining-contracts.ts",
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "753681899f66682c982c8241efb2c04d21b5c864",
+        "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
       }
     ]
   }

@@ -68,7 +68,8 @@
     "previousPrivateExactGridRevisionChanged": false,
     "preview": "Separate source/candidate artifacts, output-change flag, adoptionAuthorized=false and no allocated version. Cross-revision replay and relabelling into registered history rejected. Unsupported precision throws without rewriting old captures.",
     "persistence": "No migrations, registry, routing, saved-history or lifecycle changes",
-    "caveat": "Valid retained baseline captures/source preserved; not a blanket assertion every previously invalid direct-call capture replays after earlier safety changes."
+    "caveat": "Valid retained baseline captures/source preserved; not a blanket assertion every previously invalid direct-call capture replays after earlier safety changes.",
+    "registeredReplayScopeClarification": "Private slugs/envelopes are not registered. Mismatched outputs relabelled as old version fail registered replay. Coincident outputs may reproduce a valid old result, but never carry new-revision authority."
   },
   "sourceBindings": [
     {
