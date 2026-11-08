@@ -4,6 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {verifyCompletionBinding} from '../scripts/product-completion-lineage.mjs';
+import {verifyCurrentCandidateBinding} from '../scripts/check-current-six-candidate-evidence.mjs';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
 const old='a955cdad7019a645b7ed2950299d0603ba1784a7';
 for(const path of ['src/calculators/finance/compound-interest.test.ts','src/components/full-six/candidate-workbench.tsx','.github/workflows/ci.yml']){
@@ -19,4 +20,15 @@ for(const path of ['src/calculators/finance/compound-interest.test.ts','src/comp
 }
 test('does not admit any unrelated engine, UI or unsafe path',()=>{
  for(const path of ['src/calculators/registry.ts','src/calculators/finance/loan-payment.ts','../outside'])assert.equal(verifyCompletionBinding(path,Buffer.from('anything'),'0'.repeat(64),()=>{throw Error('Must not read Git for an unknown path');}),false);
+});
+for(const path of ['src/calculators/finance/compound-interest.ts','src/components/full-six/candidate-workbench.tsx','.github/workflows/ci.yml']){
+ test('integrated checker rejects a predecessor reversion even with its valid old hash: '+path,()=>{
+  const historical=git(['show',old+':'+path]);
+  const claim=createHash('sha256').update(historical).digest('hex');
+  assert.throws(()=>verifyCurrentCandidateBinding(path,claim,()=>historical,git),/current successor differs/);
+ });
+}
+test('integrated checker rejects unrelated source tamper without new approval',()=>{
+ const path='src/calculators/core/percentage.ts',bytes=readFileSync(path),claim=createHash('sha256').update(bytes).digest('hex');
+ assert.throws(()=>verifyCurrentCandidateBinding(path,claim,()=>Buffer.from('tamper'),git),/source binding changed/);
 });

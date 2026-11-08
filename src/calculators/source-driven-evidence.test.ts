@@ -10,7 +10,8 @@ const read=()=>JSON.parse(readFileSync(`${dir}/engineering-register.json`,"utf8"
 // Keep the original source claims: only the exact Git-bound financial guard
 // successor may differ. This is lineage verification, not renewed acceptance.
 function verifyRetainedBinding(path:string,sha:string){
- if(hash(path)===sha)return;
+ const guarded=['src/calculators/precision.ts','src/calculators/finance/loan-payment.ts','src/calculators/finance/compound-interest.ts'].includes(path);
+ if(!guarded&&hash(path)===sha)return;
  execFileSync(process.execPath,["scripts/financial-safety-lineage.mjs","--verify",path,sha],{stdio:["ignore","pipe","pipe"]});
 }
 describe("source-driven engineering preserves the exact source/authority boundary",()=>{
