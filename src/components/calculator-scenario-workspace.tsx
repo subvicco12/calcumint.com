@@ -1,4 +1,5 @@
 "use client";
+import {requiredCalculatorNumber} from '@/lib/registered-input-successor';
 import {useMemo,useRef,useState} from 'react';
 import {getPlanEntitlements,type CalcuMintPlan} from '@/lib/entitlements';
 import type {ScenarioDisplayMetadata} from '@/lib/scenario-display-metadata';
@@ -35,14 +36,14 @@ export function CalculatorScenarioWorkspace({plan,snapshot,displayMetadata,metho
   if(!captured)return;
   try{
    const values=edits[slot];
-   const edited=values?Object.fromEntries(Object.entries(captured.snapshot.input).map(([key,original])=>{const text=values[key]??String(original);if(!text.trim())throw new Error('Complete inputs required');return [key,typeof original==='number'?Number(text):text];})):captured.snapshot.input;
+   const edited=values?Object.fromEntries(Object.entries(captured.snapshot.input).map(([key,original])=>{const text=values[key];if(text===undefined)return [key,original];if(!text.trim())throw new Error('Complete inputs required');return [key,typeof original==='number'?requiredCalculatorNumber(text):text];})):captured.snapshot.input;
    const updated=reevaluateScenario(captured.snapshot,eligibleScenarioContract(captured.snapshot),edited);
    // Preview is separate: never rewrite or export the historical captured slot.
    setPreview({slot,snapshot:updated});
    setError(false);setMessage(`Previewed scenario ${slot} using its registered deterministic engine. Captured history and exports are unchanged.`);
   }catch{setPreview(null);setSensitivity(null);setError(true);setMessage('Re-evaluation unavailable for this calculator or input. Historical captures remain unchanged.');}
  }
- function runSensitivity(slot:ScenarioSlot){if(!permitted)return;const captured=rows.find(row=>row.slot===slot);if(!captured)return;try{const field=sensitivityField[slot]??eligibleSensitivityFields(captured.snapshot)[0]??'';const text=sensitivityValues[slot]??'';const parts=text.split(',').map(value=>value.trim());if(!text.trim()||parts.some(value=>!value))throw new Error('Candidate values required');const values=parts.map(Number);const points=calculateScenarioSensitivity(captured.snapshot,field,values);setSensitivity({slot,field,points});setError(false);setMessage(`Sensitivity preview for scenario ${slot}; captured evidence and exports remain unchanged.`);}catch{setSensitivity(null);setError(true);setMessage('Sensitivity unavailable. Supply 1–25 valid numeric values for a supported field; captured history is unchanged.');}}
+ function runSensitivity(slot:ScenarioSlot){if(!permitted)return;const captured=rows.find(row=>row.slot===slot);if(!captured)return;try{const field=sensitivityField[slot]??eligibleSensitivityFields(captured.snapshot)[0]??'';const text=sensitivityValues[slot]??'';const parts=text.split(',').map(value=>value.trim());if(!text.trim()||parts.some(value=>!value))throw new Error('Candidate values required');const values=parts.map(requiredCalculatorNumber);const points=calculateScenarioSensitivity(captured.snapshot,field,values);setSensitivity({slot,field,points});setError(false);setMessage(`Sensitivity preview for scenario ${slot}; captured evidence and exports remain unchanged.`);}catch{setSensitivity(null);setError(true);setMessage('Sensitivity unavailable. Supply 1–25 valid numeric values for a supported field; captured history is unchanged.');}}
  function exportSet(format:'json'|'csv'){
   if(!permitted||!entitlements.exports||!rows.length)return;
   let filename:string,content:string;
