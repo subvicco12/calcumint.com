@@ -49,11 +49,11 @@ const bindings=[
   {
     "path": ".github/workflows/ci.yml",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "df82f28340d58e058d17e74937cd512283ccaed6",
+    "successorRef": "606c44e09799a89922e4c575d24a7798d33ee33b",
     "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
-    "successorBlob": "7cfa77dd804d48a3b5d2027127af0812e931c7d2",
+    "successorBlob": "360179f221fee30409658eb9be1bba63864a3729",
     "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
-    "successorSHA256": "988d90c87c69ab09aab0748124471381341dd1fe7e50c62ef957f1e64563a36e",
+    "successorSHA256": "1b34d38604e057d2e28e650fd3806fc66b6d38c5fcfa46d08f36eef4ec4318e3",
     "intermediateSources": [
       {
         "ref": "fb2531218dbf71e1116dbc90fc17367692213bdc",
@@ -74,6 +74,21 @@ const bindings=[
         "ref": "e5542ff7e60351e46a352cebd12210b498d5ad00",
         "blob": "2b83bd30acf6dfd091f8a7532b5b97ad6ecfd476",
         "sha256": "b8c9d0eece648d72f20390b0a33b3f02ef972c7ec880a91a97f7ece4f2e27c8f"
+      },
+      {
+        "ref": "df82f28340d58e058d17e74937cd512283ccaed6",
+        "blob": "7cfa77dd804d48a3b5d2027127af0812e931c7d2",
+        "sha256": "988d90c87c69ab09aab0748124471381341dd1fe7e50c62ef957f1e64563a36e"
+      },
+      {
+        "ref": "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+        "blob": "8953c23d35cc88e660816276eb652ab6fb68d6e5",
+        "sha256": "f963ba821baac73c93bbf16915e27c344c5db022c7b4e11420505778c172007c"
+      },
+      {
+        "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
+        "blob": "d3538f2cfd277b6877efc083ecef59a17ec3554f",
+        "sha256": "4c50fb082caac20a87df605934d693632be91b5194282467161b596a5b7a2cdb"
       }
     ]
   },
@@ -112,6 +127,61 @@ const bindings=[
     "successorBlob": "73c1243e04d84f3988002568700fb44ebc0e3152",
     "predecessorSHA256": "e3ecbcb0cdde1dc8e42cac893d3fe9b046336a4c87adb48da15fa70fbc25a555",
     "successorSHA256": "ca068fa7bd87f3119a8aaeb6bc86995d3cc05281f338bfcc51e3e9aa717525a0"
+  },
+  {
+    "path": "src/components/final-private-workbench.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+    "predecessorBlob": "77cb5fe21d87bdf04d1ed1ab8ff1e7138961b140",
+    "successorBlob": "eb3e3c7e611bcf9ae7e67d9fa0a41ea9adff43e9",
+    "predecessorSHA256": "40dba7f7c7699f6634a1cfe53c8370c8137f235f877b46d645d442ec2006e626",
+    "successorSHA256": "81ec299c787f73ffa374717320f84b6e22b4ecbf9e2377c2d2ea83f4e8b41367",
+    "supplementalSources": [
+      {
+        "path": "src/lib/final-private-snapshot-text.ts",
+        "ref": "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+        "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
+        "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+      },
+      {
+        "path": "src/lib/publication-factory-contracts-input.ts",
+        "ref": "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+        "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+        "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      }
+    ]
+  },
+  {
+    "path": "src/calculators/completion-manifest.test.ts",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+    "predecessorBlob": "68a6abff3d86e1435188ca3bc13046ec33078de1",
+    "successorBlob": "689cf37cb434ad7749bb4e91e87fb5bb21afb842",
+    "predecessorSHA256": "a5957281266e0fb06795b2beb20251cbba93d0cabeafbbe3c6ca7a73c138ab85",
+    "successorSHA256": "0c54ae0dbe7dc8d61dc5faf7d2420e39870415f3874e43544e3fb8f031c26f25"
+  },
+  {
+    "path": "src/components/catalog-engineering-review.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "b6b1a72127d40712f0d3c212188d8ca84063721b",
+    "predecessorBlob": "c1a16424bfbc813f8cd2dd66f0018804c11866d0",
+    "successorBlob": "f79a506706fde50d489d5f33d8f81c6d4705ba08",
+    "predecessorSHA256": "e010d1e134c239cb6bb583365a442c64415f687233f94fd08088c4959936eb20",
+    "successorSHA256": "12b7cff0408cf72462529a5e9dd154757ba9b0f33af05e8cc2e92cbee5b81cbe",
+    "supplementalSources": [
+      {
+        "path": "src/lib/final-private-snapshot-text.ts",
+        "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
+        "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
+        "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+      },
+      {
+        "path": "src/lib/publication-factory-contracts-input.ts",
+        "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
+        "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+        "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      }
+    ]
   }
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);

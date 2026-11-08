@@ -1,0 +1,205 @@
+{
+  "kind": "BOUNDED_29_PRIVATE_PROFILE_SHARED_SERIALIZED_BOUNDARY_REPAIR_NOT_CANONICAL_ACCEPTANCE",
+  "productionWrites": false,
+  "cohort": [
+    {
+      "masterId": 21,
+      "title": "Debt Consolidation Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 32,
+      "title": "Rent vs Buy Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 35,
+      "title": "Closing Cost Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 36,
+      "title": "Rental Property Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 43,
+      "title": "Rental ROI Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 46,
+      "title": "House Flipping Profit Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 49,
+      "title": "Mortgage + Rental Combined Model",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 80,
+      "title": "Retirement Corpus Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 81,
+      "title": "Retirement Savings Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 82,
+      "title": "Retirement Age Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 84,
+      "title": "Inflation-Adjusted Retirement Need Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 85,
+      "title": "Retirement Withdrawal Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 86,
+      "title": "Retirement Longevity Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 88,
+      "title": "FIRE Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 89,
+      "title": "Coast FIRE Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 90,
+      "title": "Lean FIRE Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 91,
+      "title": "Fat FIRE Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 96,
+      "title": "401(k) Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 125,
+      "title": "Sales Tax Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 126,
+      "title": "GST Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 127,
+      "title": "VAT Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 133,
+      "title": "Property Tax Estimate Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 134,
+      "title": "Tax Effective Rate Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 468,
+      "title": "Car Affordability Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 469,
+      "title": "Auto Lease Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 470,
+      "title": "Lease vs Buy Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 472,
+      "title": "Loan vs Cash Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 488,
+      "title": "Heat Pump Savings Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "masterId": 516,
+      "title": "GPA Calculator",
+      "classificationUnchanged": "PARTIALLY_IMPLEMENTED"
+    }
+  ],
+  "governingRequirements": [
+    {
+      "id": "BP-0137",
+      "text": "Inputs are typed and carry units, validation, defaults, precision and classification metadata."
+    },
+    {
+      "id": "BP-0549",
+      "text": "Saved calculations reference canonical calculator identity and exact technical revision used."
+    },
+    {
+      "id": "BP-0550",
+      "text": "Saved inputs, assumptions, result snapshot and relevant rule-pack identity are retained for reproducibility according to product/privacy policy."
+    },
+    {
+      "id": "BP-0194",
+      "text": "For identical inputs, headline result, chart terminal value, schedule terminal value, scenario baseline and export value must agree within the calculator\u2019s explicit rounding policy."
+    },
+    {
+      "id": "BP-0676",
+      "text": "For a fixed calculator technical revision and identical accuracy-required inputs, Free, Pro and Business must produce the same authoritative primary result and required safety interpretation. Tests should compare engine outputs directly rather than relying only on rendered text."
+    }
+  ],
+  "rootCause": "JSON.parse discarded raw numeric digits before the existing identity/version replay validator. New scenarios likewise reached numeric engines after lossy token conversion.",
+  "reproduction": {
+    "rawRevision": "1.0000000000000001",
+    "oldParsedRevision": 1,
+    "rawMasterId": "81.000000000000001",
+    "oldParsedMasterId": 81,
+    "oldResult": "Existing replay verifier accepts already-rounded canonical snapshot; all29 profile revision cases reproduced.",
+    "afterResult": "Raw snapshot boundary rejects digit loss before existing replay validator. Numeric new scenarios use existing strict input parser."
+  },
+  "verification": {
+    "red": "32 failed /31 passed before production fix",
+    "newRegressionTests": 97,
+    "existingWorkbenchTests": 44,
+    "existingParserTests": 34,
+    "browserReport": "cohort-browser-report.json",
+    "goldenOracle": "100*(1+0.1)+10 =120; saved/restored unchanged",
+    "compatibility": [
+      "All29 canonical snapshots restore unchanged",
+      "Canonical5e-324 subnormal snapshot preserved",
+      "2.1MB canonical padded snapshot preserved",
+      "8MB snapshot and1MB newinput size limits preserved",
+      "Quoted exact decimal strings and rational quantities untouched"
+    ],
+    "crossPlanArtifactParity": "All29 profiles: strict-parsed identical example input; actual engine payload.calculation input/output/slug/version identical for Free, Pro and Business."
+  },
+  "remainingScope": "No engine/math/registry/SQL/CI changes. No complete/certified count promotion. Per-ID full mathematical, jurisdiction, applicability, source-version and qualification gaps remain. Private supplied profiles do not establish live/public acceptance.",
+  "sourceHashes": {
+    "src/components/final-private-workbench.tsx": "81ec299c787f73ffa374717320f84b6e22b4ecbf9e2377c2d2ea83f4e8b41367",
+    "src/lib/final-private-snapshot-text.ts": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2",
+    "src/lib/publication-factory-contracts-input.ts": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f",
+    "docs/blueprint-reconciliation/native-paragraphs.txt": "3d8be41eaad37374ca71572f78126365df8a24e08c02130f0a992af497d5ac23"
+  }
+}
