@@ -586,7 +586,7 @@ jobs:
           fi
           node scripts/assert-pdf-tools.mjs
           python3 scripts/product-completion-20261108/inventory.py --check
-          node --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs
+          node --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs
           node scripts/check-current-six-candidate-evidence.mjs
           node --test tests/full-six-candidate/preview.test.mjs
           node tests/full-six-candidate/browser.mjs
