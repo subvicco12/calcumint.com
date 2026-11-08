@@ -1,5 +1,5 @@
 {
-  "sourceCodeCommit": "685aefc70066d3f95562b3c90b9af58ab857812c",
+  "sourceCodeCommit": "df82f28340d58e058d17e74937cd512283ccaed6",
   "fullUnit": {
     "passed": 8129,
     "skipped": 4,
@@ -67,6 +67,16 @@
       "sha256": "0186b68841a1c1c232e186123ede6b4eb6fb8de58945c6e2696fa3843622764c"
     },
     {
+      "path": "logs/ci-recovery-complete-corpus.log",
+      "bytes": 4822,
+      "sha256": "4677f56158d8ac8d74a390a02e11995d2491032fee35d64734247a5db903d811"
+    },
+    {
+      "path": "logs/ci-recovery-corpus-lint.log",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
       "path": "logs/ci-recovery-final-scoped-lint.log",
       "bytes": 1,
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
@@ -107,6 +117,11 @@
       "sha256": "dca9f945ddf3f6d5827f65bad3e6179e1cb665ecef92b113977e676648dfcce6"
     },
     {
+      "path": "logs/ci-recovery-lineage-corpus-final.log",
+      "bytes": 8846,
+      "sha256": "d5082231ed7e502f96b1dfb8bb721071499a10b38cab7a2920a8ae38a0b4c4a1"
+    },
+    {
       "path": "logs/ci-recovery-lineage-final.log",
       "bytes": 5764,
       "sha256": "529cb733d12003dc3f5178aa53971d4764abdc1cf2fd2b646f27f01e576ad94d"
@@ -122,14 +137,34 @@
       "sha256": "74b821339eb7e1c1de1b3c2518a64bc77894bd023c4de7a68890ece736171045"
     },
     {
+      "path": "logs/ci-recovery-scenarios-focused-final.log",
+      "bytes": 510,
+      "sha256": "258f7ca573522c78b5f38fb89959fa47557014b346eb22800ef190fb23b3f1de"
+    },
+    {
       "path": "logs/ci-recovery-shortest.log",
       "bytes": 123,
       "sha256": "09f256baf207af1229f689037db6dfc9a73acc3bc27cadf5ef918a0cdcfb2cdf"
     },
     {
+      "path": "logs/ci-recovery-six-browser-final.log",
+      "bytes": 835,
+      "sha256": "c019827839ff94bf9daeded080747c96d3489a871f7ed7fdb248953a90169590"
+    },
+    {
+      "path": "logs/ci-recovery-six-browser-reproduction.log",
+      "bytes": 745,
+      "sha256": "a09a4deed9731239c02a725c82acb383838a354759d63eea24969f3a657eb78b"
+    },
+    {
       "path": "logs/ci-recovery-six.log",
       "bytes": 133,
       "sha256": "0b763944e9469a30b5b1ee3627c7fe1965df94d317481caeecf7a15d94da3583"
+    },
+    {
+      "path": "logs/ci-recovery-statistics-scenarios-final.log",
+      "bytes": 76,
+      "sha256": "eb61402b9301433010303dd091efb726deeaaada72e73232ab8e28e635840eb2"
     },
     {
       "path": "logs/ci-recovery-timeout-fixed.log",
@@ -162,9 +197,19 @@
       "sha256": "306d7439da626dbdc715aca7b6f0850eec958db7e3cfbb996eb3e204879d5e0c"
     },
     {
+      "path": "logs/ci-recovery-witness-fetch.log",
+      "bytes": 1713,
+      "sha256": "20ffb9ebd142f9f3c1828ca633d2c6d57965db41dae36c0fd1b0f9e4e2ea8baa"
+    },
+    {
       "path": "logs/ci-recovery-workflows.log",
       "bytes": 4408,
       "sha256": "052e5723ce3184591c8f7ffab856223aacdbcbf6a31dc3ba13989c3ac36ff568"
+    },
+    {
+      "path": "logs/independent-final-ci82-review.log",
+      "bytes": 8734,
+      "sha256": "aaec015f1371383775912058d8847e8f6209293e24cfb55eb9300d9f16fc8be7"
     },
     {
       "path": "logs/independent-p0-binding-review.log",
@@ -197,5 +242,28 @@
       "sha256": "a9f62df8d71a4588a479b51d34634e06731ec7edc117e8dcdc003fb18a3aab8e"
     }
   ],
-  "receiptFormatting": "New log copies normalize trailing whitespace only; failed raw attempts remain under /tmp."
+  "receiptFormatting": "New log copies normalize trailing whitespace only; failed raw attempts remain under /tmp.",
+  "lineageAndCorpusNode": {
+    "passed": 82,
+    "log": "logs/ci-recovery-lineage-corpus-final.log"
+  },
+  "softwarePreservation": {
+    "protectedOriginalFiles": 1101,
+    "tests": 26,
+    "historicalPackets": "BYTE_IDENTICAL"
+  },
+  "existingSixNativeBrowser": {
+    "journeys": 18,
+    "passed": true,
+    "receipt": "existing-six-browser-receipt.json"
+  },
+  "evidenceCheckCommands": {
+    "passed": 31,
+    "failed": 0,
+    "details": "evidence-commands-final.json"
+  },
+  "realDepthOneBootstrap": {
+    "result": "PASS",
+    "details": "shallow-bootstrap.json"
+  }
 }

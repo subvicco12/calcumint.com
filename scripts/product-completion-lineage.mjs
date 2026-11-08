@@ -40,20 +40,20 @@ const bindings=[
       },
       {
         "path": "src/components/full-six/candidate-scenario-comparison.tsx",
-        "ref": "e5542ff7e60351e46a352cebd12210b498d5ad00",
-        "blob": "a41456a8ceb632bfe0dad64beb7f5e37c7539652",
-        "sha256": "5346ef207b92e7cb21fb489c4f9576e93f823620841ba8d17978f72e871b7e7f"
+        "ref": "df82f28340d58e058d17e74937cd512283ccaed6",
+        "blob": "d1c1ef2fd3905dc6776a700da9a34d17e9b477c9",
+        "sha256": "e3eb52da0ddbcc3ff2aea0a6c2d005197f3d0b68e2ce844e0c5067fa06b7bf9d"
       }
     ]
   },
   {
     "path": ".github/workflows/ci.yml",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "e5542ff7e60351e46a352cebd12210b498d5ad00",
+    "successorRef": "df82f28340d58e058d17e74937cd512283ccaed6",
     "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
-    "successorBlob": "2b83bd30acf6dfd091f8a7532b5b97ad6ecfd476",
+    "successorBlob": "7cfa77dd804d48a3b5d2027127af0812e931c7d2",
     "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
-    "successorSHA256": "b8c9d0eece648d72f20390b0a33b3f02ef972c7ec880a91a97f7ece4f2e27c8f",
+    "successorSHA256": "988d90c87c69ab09aab0748124471381341dd1fe7e50c62ef957f1e64563a36e",
     "intermediateSources": [
       {
         "ref": "fb2531218dbf71e1116dbc90fc17367692213bdc",
@@ -69,6 +69,11 @@ const bindings=[
         "ref": "a342492a6da420b64a2cf63aa2ef8d8496633def",
         "blob": "f7ab19ff8905da2544d01165acaffd7f596aab14",
         "sha256": "28c35736999fd50d6e5f4cab98c56cc08d2c73eff39e1ea8da74c682d312d951"
+      },
+      {
+        "ref": "e5542ff7e60351e46a352cebd12210b498d5ad00",
+        "blob": "2b83bd30acf6dfd091f8a7532b5b97ad6ecfd476",
+        "sha256": "b8c9d0eece648d72f20390b0a33b3f02ef972c7ec880a91a97f7ece4f2e27c8f"
       }
     ]
   },
