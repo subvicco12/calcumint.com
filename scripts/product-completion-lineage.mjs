@@ -274,6 +274,99 @@ const bindings=[
       "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
     }
   ]
+},
+{
+  "path": "src/components/private-workflow-review.tsx",
+  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+  "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+  "predecessorBlob": "6201412990f6315d0213dd6fc948998d174ae817",
+  "successorBlob": "39a03f562600c68906a8b90ea3d47076f9edb4dc",
+  "predecessorSHA256": "ba6d21416e55a22138d4fa47e75886c75b8e10e91bb0ed56e46d8f678c515afc",
+  "successorSHA256": "b80d107171eaf3fc3b020f0b35166171702a1ee39a09f81d3809258eee1dc7fe",
+  "supplementalSources": [
+    {
+      "path": "src/calculators/private-scenario-workflows.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "1b5222e7a6a643a45c7daea19faca737911d8747",
+      "sha256": "6e96315b71e151519b996497f41f80fab21e4d58db173f7e9bfb5b2a29ddbfa7"
+    },
+    {
+      "path": "src/calculators/private-supplied-contracts.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "7082f58262a70db0949d261ec7fc6e0ed8ca90a3",
+      "sha256": "9fcad868dc9b2d73940aa1731b1bf73db4d7dcd21662f230866deba6325c749c"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    }
+  ]
+},
+{
+  "path": "src/components/source-profile-review.tsx",
+  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+  "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+  "predecessorBlob": "2b7a6ef8e244bd88b966c286ae598f072a32b689",
+  "successorBlob": "d35f5b7af8e07ce1bb6483d9c03ee177aca7a788",
+  "predecessorSHA256": "c4e2d0611c43541d07b5e15a1cfb39479b112b6b970bc037a7bd6530c2475fdd",
+  "successorSHA256": "708b84db803aa78c0ebe223015d4dc6a632b2a056b5d0a2c7c1454bcf248477b",
+  "supplementalSources": [
+    {
+      "path": "src/calculators/source-profile-snapshot.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "bbb35255770a9d0904bf67830040f4d9bc06981c",
+      "sha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f"
+    },
+    {
+      "path": "src/calculators/source-bound-profiles.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "8858406d2fe7df744d9e1653a4800bf5e8710ec8",
+      "sha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d"
+    },
+    {
+      "path": "src/calculators/exact-rational.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "30bfe208ccf03c8898decd6c81c9ee2e3d365ff8",
+      "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    }
+  ]
+},
+{
+  "path": "src/components/financial-contract-review.tsx",
+  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+  "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+  "predecessorBlob": "7785e258494c7a3bdc1bba6700d7a452e71ca4fe",
+  "successorBlob": "a61bd0e0a35e0c6dc2ce62146db69bbf1626d294",
+  "predecessorSHA256": "22662ca9f8fd95e16a170ec9a2ca942a6c29d61a2d1cbc9e3f66656377f4d5fd",
+  "successorSHA256": "833effd06789d7636a27d6b7b069c1e928cb42b61d68d7bb0810640caa63285d",
+  "supplementalSources": [
+    {
+      "path": "src/calculators/financial-contracts.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+      "sha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a"
+    },
+    {
+      "path": "src/calculators/financial-contract-core.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "af727f5083e1784b98c0e2097caecea24da544f4",
+      "sha256": "3cae37f855a8ef6f4b99424b20619936e94fd861dff4d00fb26ef748d3c72ab0"
+    },
+    {
+      "path": "src/lib/calculation-snapshot.ts",
+      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+      "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+    }
+  ]
 }
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);

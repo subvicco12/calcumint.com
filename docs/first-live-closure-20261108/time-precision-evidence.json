@@ -1,0 +1,357 @@
+{
+  "recordedAtUtc": "2026-11-08T19:13:40.945292+00:00",
+  "command": "node tests/first-live-closure-20261108/time-precision-bound.mjs",
+  "exitCode": 0,
+  "rawLogPath": "/tmp/first-live-time-precision.log",
+  "rawLogSha256": "0b3c3f3ec779e4186896c7121af10ebcaf7d9780cc2267a5bf640f9bb276b6df",
+  "result": {
+    "kind": "TIME_V1_FIXED_FACTOR_BINARY64_SCOPED_PRECISION",
+    "source": "src/calculators/conversion/catalog-batch-2.ts",
+    "sourceSha256": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+    "scriptSha256": "8c22fcc3d78620dbfb9a7ea177f06abe29053fd9d57f5776da1cf0507d12a680",
+    "engineId": "conversion.time",
+    "engineVersion": 1,
+    "operationOrder": "Same-unit identity first; otherwise ratio=fl(sourceFactor/targetFactor), result=fl(suppliedNumber*ratio).",
+    "exactSuppliedNumberScope": "For every nonzero finite binary64 x with 2^-970 <= abs(x) <= 2^990 and all 36 unit pairs, relative forward error against x times the exact fixed-unit factor ratio is <= the reported global bound. Zero is exact; identity returns every finite x exactly.",
+    "normalFiniteArgument": "Every stored ratio is strictly between 2^-30 and 2^30. Thus exact multiplication magnitude for scoped x is strictly between 2^-1000 and 2^1020, safely normal and finite; the rounded product remains normal and finite. All factors and ratio divisions are normal and finite.",
+    "factors": {
+      "s": "1",
+      "ms": "1/1000",
+      "min": "60",
+      "h": "3600",
+      "day": "86400",
+      "week": "604800"
+    },
+    "storedMillisecondFactor": "1152921504606847/1152921504606846976",
+    "millisecondRelativeRepresentationError": "3/144115188075855872",
+    "unitRoundoff": "1/9007199254740992",
+    "globalRelativeBound": "2839537344511234057510998784344067/11692013098647223345629478661730264157247460343808",
+    "globalRelativeBoundFormula": "(1 + 3/2^57)*(1 + 2^-53)^2 - 1 < 3*2^-53",
+    "rawDecimalInput": "The bound above starts from the supplied Number, not an exact decimal text. If decimal text parsing is separately correctly rounded to a normal finite Number within scope with relative error <=2^-53, the bound against the exact decimal input is (1+epsilon)*(1+u)^3-1 <4u. Decimal underflow, overflow, parsing policy and arbitrary decimal accuracy are not covered.",
+    "conditionalRawDecimalRelativeBound": "37268291751938029038583352866846298841180941582339/105312291668557186697918027683670432318895095400549111254310977536",
+    "coefficientPairsAudited": 36,
+    "actualEngineNonzeroWitnesses": 648,
+    "zeroChecks": 72,
+    "extremeIdentityChecks": 24,
+    "excludedBoundaryObservations": {
+      "nonzeroUnderflow": {
+        "input": 5e-324,
+        "fromUnit": "s",
+        "toUnit": "week",
+        "result": 0,
+        "note": "Engine returns zero; callers must apply the existing nonzero-to-zero refusal. Outside this relative-error contract."
+      },
+      "overflow": {
+        "input": 1.7976931348623157e+308,
+        "fromUnit": "week",
+        "toUnit": "ms",
+        "result": "throws outside supported finite range"
+      }
+    },
+    "witnessMagnitudes": [
+      "1.0020841800044864e-292",
+      "1.0020841800044866e-292",
+      "3.054936363499605e-151",
+      "0.1",
+      "1",
+      "3.141592653589793",
+      "3.273390607896142e+150",
+      "1.0463951242053391e+298",
+      "1.0463951242053392e+298"
+    ],
+    "pairs": [
+      {
+        "fromUnit": "s",
+        "toUnit": "s",
+        "exactRatio": "1/1",
+        "observedRatio": "1/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "s",
+        "toUnit": "ms",
+        "exactRatio": "1000/1",
+        "observedRatio": "1000/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "s",
+        "toUnit": "min",
+        "exactRatio": "1/60",
+        "observedRatio": "4803839602528529/288230376151711744",
+        "relativeRatioError": "1/72057594037927936",
+        "relativeOutputBound": "81064793292668929/649037107316853453566312041152512"
+      },
+      {
+        "fromUnit": "s",
+        "toUnit": "h",
+        "exactRatio": "1/3600",
+        "observedRatio": "5124095576030431/18446744073709551616",
+        "relativeRatioError": "1/1152921504606846976",
+        "relativeOutputBound": "1161928703861587969/10384593717069655257060992658440192"
+      },
+      {
+        "fromUnit": "s",
+        "toUnit": "day",
+        "exactRatio": "1/86400",
+        "observedRatio": "6832127434707241/590295810358705651712",
+        "relativeRatioError": "229/4611686018427387904",
+        "relativeOutputBound": "6674334647763075301/41538374868278621028243970633760768"
+      },
+      {
+        "fromUnit": "s",
+        "toUnit": "week",
+        "exactRatio": "1/604800",
+        "observedRatio": "7808145639665419/4722366482869645213696",
+        "relativeRatioError": "1543/36893488147419103232",
+        "relativeOutputBound": "50791596597484455431/332306998946228968225951765070086144"
+      },
+      {
+        "fromUnit": "ms",
+        "toUnit": "s",
+        "exactRatio": "1/1000",
+        "observedRatio": "1152921504606847/1152921504606846976",
+        "relativeRatioError": "3/144115188075855872",
+        "relativeOutputBound": "171136785840078851/1298074214633706907132624082305024"
+      },
+      {
+        "fromUnit": "ms",
+        "toUnit": "ms",
+        "exactRatio": "1/1",
+        "observedRatio": "1/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "ms",
+        "toUnit": "min",
+        "exactRatio": "1/60000",
+        "observedRatio": "2459565876494607/147573952589676412928",
+        "relativeRatioError": "221/4611686018427387904",
+        "relativeOutputBound": "6602277053725147357/41538374868278621028243970633760768"
+      },
+      {
+        "fromUnit": "ms",
+        "toUnit": "h",
+        "exactRatio": "1/3600000",
+        "observedRatio": "5247073869855161/18889465931478580854784",
+        "relativeRatioError": "9803/147573952589676412928",
+        "relativeOutputBound": "235871526883902367307/1329227995784915872903807060280344576"
+      },
+      {
+        "fromUnit": "ms",
+        "toUnit": "day",
+        "exactRatio": "1/86400000",
+        "observedRatio": "6996098493140215/604462909807314587353088",
+        "relativeRatioError": "11087/590295810358705651712",
+        "relativeOutputBound": "690158628496019041103/5316911983139663491615228241121378304"
+      },
+      {
+        "fromUnit": "ms",
+        "toUnit": "week",
+        "exactRatio": "1/604800000",
+        "observedRatio": "7995541135017389/4835703278458516698824704",
+        "relativeRatioError": "164429/4722366482869645213696",
+        "relativeOutputBound": "6203411249127451951693/42535295865117307932921825928971026432"
+      },
+      {
+        "fromUnit": "min",
+        "toUnit": "s",
+        "exactRatio": "60/1",
+        "observedRatio": "60/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "min",
+        "toUnit": "ms",
+        "exactRatio": "60000/1",
+        "observedRatio": "60000/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "min",
+        "toUnit": "min",
+        "exactRatio": "1/1",
+        "observedRatio": "1/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "min",
+        "toUnit": "h",
+        "exactRatio": "1/60",
+        "observedRatio": "4803839602528529/288230376151711744",
+        "relativeRatioError": "1/72057594037927936",
+        "relativeOutputBound": "81064793292668929/649037107316853453566312041152512"
+      },
+      {
+        "fromUnit": "min",
+        "toUnit": "day",
+        "exactRatio": "1/1440",
+        "observedRatio": "6405119470038039/9223372036854775808",
+        "relativeRatioError": "11/288230376151711744",
+        "relativeOutputBound": "387309567953862667/2596148429267413814265248164610048"
+      },
+      {
+        "fromUnit": "min",
+        "toUnit": "week",
+        "exactRatio": "1/10080",
+        "observedRatio": "3660068268593165/36893488147419103232",
+        "relativeRatioError": "1/1152921504606846976",
+        "relativeOutputBound": "1161928703861587969/10384593717069655257060992658440192"
+      },
+      {
+        "fromUnit": "h",
+        "toUnit": "s",
+        "exactRatio": "3600/1",
+        "observedRatio": "3600/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "h",
+        "toUnit": "ms",
+        "exactRatio": "3600000/1",
+        "observedRatio": "3600000/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "h",
+        "toUnit": "min",
+        "exactRatio": "60/1",
+        "observedRatio": "60/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "h",
+        "toUnit": "h",
+        "exactRatio": "1/1",
+        "observedRatio": "1/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "h",
+        "toUnit": "day",
+        "exactRatio": "1/24",
+        "observedRatio": "6004799503160661/144115188075855872",
+        "relativeRatioError": "1/18014398509481984",
+        "relativeOutputBound": "27021597764222977/162259276829213363391578010288128"
+      },
+      {
+        "fromUnit": "h",
+        "toUnit": "week",
+        "exactRatio": "1/168",
+        "observedRatio": "857828500451523/144115188075855872",
+        "relativeRatioError": "1/18014398509481984",
+        "relativeOutputBound": "27021597764222977/162259276829213363391578010288128"
+      },
+      {
+        "fromUnit": "day",
+        "toUnit": "s",
+        "exactRatio": "86400/1",
+        "observedRatio": "86400/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "day",
+        "toUnit": "ms",
+        "exactRatio": "86400000/1",
+        "observedRatio": "86400000/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "day",
+        "toUnit": "min",
+        "exactRatio": "1440/1",
+        "observedRatio": "1440/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "day",
+        "toUnit": "h",
+        "exactRatio": "24/1",
+        "observedRatio": "24/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "day",
+        "toUnit": "day",
+        "exactRatio": "1/1",
+        "observedRatio": "1/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "day",
+        "toUnit": "week",
+        "exactRatio": "1/7",
+        "observedRatio": "2573485501354569/18014398509481984",
+        "relativeRatioError": "1/18014398509481984",
+        "relativeOutputBound": "27021597764222977/162259276829213363391578010288128"
+      },
+      {
+        "fromUnit": "week",
+        "toUnit": "s",
+        "exactRatio": "604800/1",
+        "observedRatio": "604800/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "week",
+        "toUnit": "ms",
+        "exactRatio": "604800000/1",
+        "observedRatio": "604800000/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "week",
+        "toUnit": "min",
+        "exactRatio": "10080/1",
+        "observedRatio": "10080/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "week",
+        "toUnit": "h",
+        "exactRatio": "168/1",
+        "observedRatio": "168/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "week",
+        "toUnit": "day",
+        "exactRatio": "7/1",
+        "observedRatio": "7/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      },
+      {
+        "fromUnit": "week",
+        "toUnit": "week",
+        "exactRatio": "1/1",
+        "observedRatio": "1/1",
+        "relativeRatioError": "0/1",
+        "relativeOutputBound": "1/9007199254740992"
+      }
+    ],
+    "method": "Expected factors and every binary64 value decoded independently to exact BigInt rational quantities. Ratio coefficient audit and forward-error comparisons use exact integer cross products, no production arithmetic for expected quantities and no tolerance epsilon.",
+    "limitations": "Scoped numerical derivation plus finite engine witnesses, not full-schema acceptance, source applicability review, competent reviewer approval, canonical adoption, certification or publication authority. Subnormal nonidentity outputs and overflow are outside the relative contract.",
+    "competentApproval": false,
+    "canonicalAdoptionAuthorized": false
+  }
+}
