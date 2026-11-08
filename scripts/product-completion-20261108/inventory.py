@@ -91,7 +91,7 @@ assert [r['masterId'] for r in rows]==list(range(1,541))
 assert sum(counts.values())==540
 csv_buffer=io.StringIO(newline='')
 fields=['masterId','title','domain','classification','jurisdiction','fullMathematicalCompleteness','classificationReason']
-w=csv.DictWriter(csv_buffer,fieldnames=fields,extrasaction='ignore');w.writeheader();w.writerows(rows)
+w=csv.DictWriter(csv_buffer,fieldnames=fields,extrasaction='ignore',lineterminator='\n');w.writeheader();w.writerows(rows)
 outputs={'inventory-540.json':json.dumps(result,indent=2,ensure_ascii=False)+'\n','inventory-540.csv':csv_buffer.getvalue(),'inventory-summary.json':json.dumps(summary,indent=2)+'\n'}
 if args.check:
  for name,content in outputs.items():
