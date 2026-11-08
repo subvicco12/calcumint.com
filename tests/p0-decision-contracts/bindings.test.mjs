@@ -2,11 +2,44 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {verifyFinancialSafetyBinding} from '../../scripts/financial-safety-lineage.mjs';
 import {callerPaths,verifyCallerSuccessor} from './caller-successor.mjs';
 const load=n=>JSON.parse(readFileSync(new URL('../../docs/p0-decision-contracts/'+n+'.json',import.meta.url)));
-test('historical mathematical closure remains exact with explicit Git-bound draft caller successors',()=>{
- const files={...load('calculus').currentSourceClosure.files,...load('writers-acl').sourceBindings};
- for(const [path,sha]of Object.entries(files)){assert(!path.startsWith('/')&&!path.split('/').includes('..'));const bytes=readFileSync(new URL('../../'+path,import.meta.url));if(callerPaths.includes(path)){verifyCallerSuccessor(path,bytes,sha);}else{assert.equal(createHash('sha256').update(bytes).digest('hex'),sha,path);}}
+const files={...load('calculus').currentSourceClosure.files,...load('writers-acl').sourceBindings};
+const root=new URL('../../',import.meta.url);
+const git=args=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe']});
+const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+function verifyDecisionBinding(path,bytes,sha,readGit=git){
+ assert(!path.startsWith('/')&&!path.split('/').includes('..'));
+ // A known successor must never fall through to historical-byte equality:
+ // reversion to the valid old hash is not the approved current implementation.
+ if(verifyFinancialSafetyBinding(path,bytes,sha,readGit))return;
+ if(callerPaths.includes(path)){verifyCallerSuccessor(path,bytes,sha);return;}
+ assert.equal(hash(bytes),sha,path);
+}
+test('historical mathematical closure remains exact with explicit Git-bound caller and financial successors',()=>{
+ for(const [path,sha]of Object.entries(files))verifyDecisionBinding(path,readFileSync(new URL('../../'+path,import.meta.url)),sha);
+});
+for(const path of ['src/calculators/finance/compound-interest.ts','src/calculators/finance/loan-payment.ts','src/calculators/precision.ts']){
+ test(path+': decision binding rejects valid predecessor reversion before hash fallback',()=>{
+  const predecessor=git(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+path]);
+  assert.equal(hash(predecessor),files[path]);
+  assert.throws(()=>verifyDecisionBinding(path,predecessor,files[path]),/current successor differs/);
+ });
+ test(path+': decision binding rejects tamper and rewritten historical claim',()=>{
+  const current=readFileSync(new URL('../../'+path,import.meta.url));const tampered=Buffer.concat([current,Buffer.from('\n//tampered')]);
+  assert.throws(()=>verifyDecisionBinding(path,tampered,files[path]),/current successor differs/);
+  assert.throws(()=>verifyDecisionBinding(path,tampered,hash(tampered)),/historical claim differs/);
+ });
+ test(path+': decision binding requires exact immutable source context',()=>{
+  const current=readFileSync(new URL('../../'+path,import.meta.url));
+  assert.throws(()=>verifyDecisionBinding(path,current,files[path],()=>{throw Error('missing exact source');}),/missing exact source/);
+  assert.throws(()=>verifyDecisionBinding(path,current,files[path],()=>Buffer.from('0'.repeat(40))),/unavailable/);
+ });
+}
+test('unknown mathematical closure entries retain strict hash equality',()=>{
+ assert.throws(()=>verifyDecisionBinding('src/unknown.ts',Buffer.from('changed'),'0'.repeat(64)),/src\/unknown.ts/);
 });
 test('three profile keys bind one exact v3 engine with distinct operation and preserved v1 identity',()=>{
  const c=load('calculus');assert.deepEqual(c.contracts.map(x=>x.catalogId),[246,247,248]);
