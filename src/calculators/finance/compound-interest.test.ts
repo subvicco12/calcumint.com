@@ -18,5 +18,15 @@ describe("compound interest calculator",()=>{
   it("rejects an annual rate at or below the supported -100% boundary",()=>{
     expect(()=>runCalculator(compoundInterestCalculator,{principal:1000,annualRatePercent:-100,years:1,compoundsPerYear:1})).toThrow();
   });
+  it("enforces all schema bounds on direct calls",()=>{
+    const valid={principal:1000,annualRatePercent:5,years:1,compoundsPerYear:12};
+    for(const input of [
+      {...valid,annualRatePercent:1001},
+      {...valid,annualRatePercent:-100},
+      {...valid,years:201},
+      {...valid,compoundsPerYear:366},
+      {...valid,compoundsPerYear:0}
+    ]) expect(()=>compoundInterestCalculator.calculate(input,{})).toThrow();
+  });
   it("rejects unsafe direct calculator calls",()=>{expect(()=>compoundInterestCalculator.calculate({principal:Number.NaN,annualRatePercent:5,years:1,compoundsPerYear:12},{})).toThrow();expect(()=>compoundInterestCalculator.calculate({principal:1000,annualRatePercent:5,years:1,compoundsPerYear:12.5},{})).toThrow();expect(()=>compoundInterestCalculator.calculate({principal:1000,annualRatePercent:5,years:Number.POSITIVE_INFINITY,compoundsPerYear:12},{})).toThrow();});
 });
