@@ -310,6 +310,7 @@ jobs:
           node --test tests/software-closure/ci-workflow.test.mjs
           node tests/calculus-recovery-workbench/browser.mjs
           node tests/software-closure/recovery-browser.mjs
+          node --test tests/software-closure/preservation.test.mjs
         env:
           SOFTWARE_CLOSURE_ARTIFACTS: ${{ runner.temp }}/software-closure
           CALCULUS_RECOVERY_EVIDENCE: ${{ runner.temp }}/calculus-recovery

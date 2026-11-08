@@ -1,11 +1,26 @@
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
+import {verifyCompletionBinding} from './product-completion-lineage.mjs';
 
+const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+/** Keep historical claims immutable while independently checking exact current successors. */
+export function verifyPreservedSource(name,current,historical,git){
+ const claim=hash(historical);
+ // Verify registered transitions before equality, so valid old bytes cannot bypass reversion checks.
+ if(verifyFinancialSafetyBinding(name,current,claim,git)||verifyCompletionBinding(name,current,claim,git))return claim;
+ if(!current.equals(historical))throw Error(`Protected source changed: ${name}`);
+ return claim;
+}
+
+export async function checkSoftwareClosure(){
 const baseline='b96b1ac89971cb8418d2389fbd7c9571a57491f1';
 const directory='docs/software-closure';
 const check=process.argv.includes('--check');
-const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:32*1024*1024});
 const original=path=>execFileSync('git',['show',`${baseline}:${path}`],{maxBuffer:32*1024*1024});
 const ledgerPath='docs/full-product-batch14/requirements-540.json';
 const bytes=await readFile(ledgerPath);
@@ -17,14 +32,14 @@ for(const path of ['docs/validation-scale/v1-source-files.json','docs/validation
  const manifest=JSON.parse(await readFile(path,'utf8'));
  for(const file of Array.isArray(manifest)?manifest:Object.keys(manifest.files??manifest))protectedFiles.add(typeof file==='string'?file:file.path);
 }
-// Capture the complete unchanged historical corpus; compare bytes, never rebaseline it.
+// Capture the original historical corpus. Exact successor verification is separate; never rebaseline its hashes.
 for(const file of execFileSync('git',['ls-tree','-r','--name-only',baseline,'src/calculators','docs/full-product-batch14','docs/canonical-calculus'],{encoding:'utf8'}).trim().split('\n'))if(file)protectedFiles.add(file);
 const preserved=[];
 for(const path of [...protectedFiles].sort()){
  if(!path)throw Error('Unknown preservation manifest format');
  const current=await readFile(path);
- if(!current.equals(original(path)))throw Error(`Protected source changed: ${path}`);
- preserved.push({path,sha256:hash(current)});
+ const historical=original(path);
+ preserved.push({path,sha256:verifyPreservedSource(path,current,historical,git)});
 }
 const related=new Set([246,247,248]);
 const recovery=new Set([1,2,26,50,51,52,207,388,426]);
@@ -41,3 +56,6 @@ for(const [name,value]of Object.entries(products)){
  if(check){if(await readFile(path,'utf8')!==text)throw Error(`Stale sprint evidence: ${name}`);}else await writeFile(path,text);
 }
 console.log(JSON.stringify({identities:rows.length,classes,protectedFiles:preserved.length,canonicalPromotions:0}));
+
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))await checkSoftwareClosure();

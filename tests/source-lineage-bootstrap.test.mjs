@@ -8,6 +8,7 @@ test('reuses verified revisions without redundant network fetch',()=>{
 test('fetches only exact missing commits and re-verifies them',()=>{
  const available=new Set(),fetches=[];
  const result=fetchSourceLineage(args=>{if(args[0]==='fetch'){assert.deepEqual(args.slice(0,4),['fetch','--no-tags','--depth=1','origin']);for(const ref of args.slice(4)){assert.match(ref,/^[a-f0-9]{40}$/);available.add(ref);}fetches.push(args);return Buffer.from('');}const ref=args[2].slice(0,40);if(!available.has(ref))throw Error('missing');return Buffer.from(ref);});
+ for(const ref of ['7eff39b23a52953c028852d50d5571211a3f8a44','2f088187dd395fd26262c32195b427258f44fa44'])assert(fetches[0].slice(4).includes(ref),'Historical financial witness must be fetched: '+ref);
  assert.equal(fetches.length,1);assert.equal(result.fetched,result.sourceRevisions);assert.equal(result.productionWrites,false);
 });
 test('fails closed on absent or substituted revisions after fetch',()=>{

@@ -6,7 +6,7 @@ import {mkdtemp, mkdir, writeFile, rm} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {verifyFinancialSafetyBinding} from '../scripts/financial-safety-lineage.mjs';
+import {verifyFinancialSafetyBinding,financialHistoricalWitnessRefs} from '../scripts/financial-safety-lineage.mjs';
 import {assertFrozenCurrentFiles} from '../scripts/frozen-canonical-source.mjs';
 import {verifyPublication20CallerLineage} from '../scripts/publication20-caller-lineage.mjs';
 const repository=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -15,12 +15,13 @@ const successor='af92e4f4fc2a024d50fb2c71271b09e221b2c6fe';
 const files=['src/calculators/finance/compound-interest.ts','src/calculators/finance/loan-payment.ts','src/calculators/precision.ts'];
 const git=args=>execFileSync('git',args,{cwd:repository,stdio:['ignore','pipe','pipe']});
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
+test('retains both exact historical financial witness revisions',()=>assert.deepEqual(financialHistoricalWitnessRefs,['7eff39b23a52953c028852d50d5571211a3f8a44','2f088187dd395fd26262c32195b427258f44fa44']));
 for(const name of files){
  const historical=git(['show',predecessor+':'+name]);
  const current=git(['show',successor+':'+name]);
  const claim=hash(historical);
  test('admits exact guard successor and frozen historical source: '+name,()=>{
-  for(const ref of ['7eff39b23a52953c028852d50d5571211a3f8a44','2f088187dd395fd26262c32195b427258f44fa44'])assert.deepEqual(git(['show',ref+':'+name]),historical);
+  for(const ref of financialHistoricalWitnessRefs)assert.deepEqual(git(['show',ref+':'+name]),historical);
   assert.equal(verifyFinancialSafetyBinding(name,current,claim,git),true);
  });
  test('rejects changed or reverted current bytes and false historical claim: '+name,()=>{

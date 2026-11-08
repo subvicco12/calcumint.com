@@ -89,6 +89,24 @@ const bindings=[
     "successorBlob": "38e2fc0045f9d53f29c14e9d1f3f1153fff274c2",
     "predecessorSHA256": "aaf61d46b2bfbc317642b3f18f88289230dda610334744835fc632511b563be3",
     "successorSHA256": "2daa2a1cc7a64dc065accbbc5964796302926ea6d1dcf45c2c315902176f7978"
+  },
+  {
+    "path": "src/calculators/source-acceptance-evidence.test.ts",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "685aefc70066d3f95562b3c90b9af58ab857812c",
+    "predecessorBlob": "28ebceb093778a2e1e2153529a7f0ba4dcbb615f",
+    "successorBlob": "4e3c70a83144ab6b4d6aa34417ec9de656b87045",
+    "predecessorSHA256": "9e507e33364953a3cdc0a5391004d66be100556238bfe5b700ac7677cedf3ea9",
+    "successorSHA256": "559b719ccb62849b6c91a9215efb7ea6841d4bbc8144cc55e3fab82179618fa0"
+  },
+  {
+    "path": "src/calculators/source-driven-evidence.test.ts",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "fdd2e943328e175cb40b29cb546391bec2e06f3d",
+    "predecessorBlob": "292d0863e5a1c81510ff7c0ffe911f8b03d951be",
+    "successorBlob": "73c1243e04d84f3988002568700fb44ebc0e3152",
+    "predecessorSHA256": "e3ecbcb0cdde1dc8e42cac893d3fe9b046336a4c87adb48da15fa70fbc25a555",
+    "successorSHA256": "ca068fa7bd87f3119a8aaeb6bc86995d3cc05281f338bfcc51e3e9aa717525a0"
   }
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);
