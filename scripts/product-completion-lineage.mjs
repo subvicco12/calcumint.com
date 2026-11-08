@@ -245,7 +245,36 @@ const bindings=[
         "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
       }
     ]
-  }
+  },
+{
+  "path": "src/components/component-engineering-review.tsx",
+  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+  "successorRef": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+  "predecessorBlob": "a75cfab7c0bdd523275afd86b0b8ffc67c6a8522",
+  "successorBlob": "d05f80a40e2e9869e12173dd842d0ecb2fc001a8",
+  "predecessorSHA256": "2964a31b596030a2dde40ea8633603dcdfb3f8f523b63ba4f2715824a0550929",
+  "successorSHA256": "6c9ea935a9e4ff3951372ae836ad5ece3825e2cf8bde50dca15f99e984eb0835",
+  "supplementalSources": [
+    {
+      "path": "src/lib/final-private-snapshot-text.ts",
+      "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+      "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
+      "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+    },
+    {
+      "path": "src/lib/publication-factory-contracts-input.ts",
+      "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+      "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+      "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+    },
+    {
+      "path": "src/calculators/component-contracts.ts",
+      "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+      "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+      "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+    }
+  ]
+}
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);
 const hash=b=>createHash('sha256').update(b).digest('hex');

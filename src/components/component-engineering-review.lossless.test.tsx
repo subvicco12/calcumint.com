@@ -27,12 +27,14 @@ describe('25 component private review numeric text boundaries',()=>{
   expect(screen.queryByTestId('component-result')).toBeNull();expect(screen.getByRole('alert')).toBeTruthy();
  });
  it('preserves detached history, canonical downloads, quoted digits and all-plan math after refusal',async()=>{
+  vi.useFakeTimers({toFake:['setTimeout','clearTimeout']});
   let artifact:NodeBlob|undefined;
-  vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(b:NodeBlob)=>{artifact=b;return 'blob:component';},revokeObjectURL:()=>{}});
+  const revoke=vi.fn();
+  vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(b:NodeBlob)=>{artifact=b;return 'blob:component';},revokeObjectURL:revoke});
   vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementation(()=>{});
   render(<ComponentEngineeringReview/>);click('Calculate');
   const output=screen.getByTestId('component-output').textContent;click('Save scenario');click('Export JSON');
-  const bytes=await artifact!.text();expect(JSON.parse(bytes)).toEqual(exportComponentContract(3,componentExamples[3]));
+  const bytes=await artifact!.text();expect(revoke).not.toHaveBeenCalled();vi.advanceTimersByTime(1000);expect(revoke).toHaveBeenCalledExactlyOnceWith('blob:component');expect(JSON.parse(bytes)).toEqual(exportComponentContract(3,componentExamples[3]));
   change('Scenario JSON',lossy(JSON.stringify(componentExamples[3])));click('Calculate');
   expect(screen.queryByTestId('component-result')).toBeNull();
   click('Restore scenario 1');expect(screen.getByTestId('component-output').textContent).toBe(output);
