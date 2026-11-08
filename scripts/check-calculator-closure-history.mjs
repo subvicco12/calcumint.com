@@ -3,6 +3,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {existsSync,lstatSync,mkdirSync,mkdtempSync,readFileSync,rmSync,symlinkSync,writeFileSync} from 'node:fs';
 import path from 'node:path';
+import {batch21BrowserPath,verifyBatch21BrowserLineage} from './batch21-browser-lineage.mjs';
 import {verifyPublication20CallerLineage} from './publication20-caller-lineage.mjs';
 import os from 'node:os';
 import {fileURLToPath} from 'node:url';
@@ -50,18 +51,22 @@ export function checkCalculatorClosureHistory({fullSixOnly=false}={}){
  if(!git(['show',m.baseline+':'+caller]).equals(oldCaller))throw Error('Baseline caller does not equal the recorded predecessor');
  const artifact='docs/full-product-six-closure';
  const packet=JSON.parse(readSafe(root,artifact+'/qa-evidence-six.json'));
+ const browserBindings=packet.sourceBindings.filter(b=>b.path===batch21BrowserPath);
+ if(browserBindings.length!==1)throw Error('Batch21 frozen binding membership differs');
+ const browserLineage=verifyBatch21BrowserLineage(root,browserBindings[0].sha256);
  const fullSix=JSON.parse(readSafe(root,fullSixManifest)),integrity=JSON.parse(readSafe(root,'docs/full-six/package-integrity.json'));
  const temp=mkdtempSync(path.join(os.tmpdir(),'calculator-frozen-predecessor-'));
  try{
   symlinkSync(git(['rev-parse','--absolute-git-dir']).toString().trim(),path.join(temp,'.git'),'dir');
   const paths=[...packet.sourceBindings.map(b=>b.path),artifact+'/qa-evidence-six.json',artifact+'/eligibility-six.json',guard,tests,fullSixGuard,fullSixManifest,'docs/full-six/package-integrity.json',...Object.keys(fullSix.sourceHashes),...Object.keys(integrity.retainedFiles).map(name=>'docs/full-six/input/'+name)];
-  for(const name of new Set(paths)){const bytes=name===caller?oldCaller:readSafe(root,name);const dest=path.join(temp,name);mkdirSync(path.dirname(dest),{recursive:true});writeFileSync(dest,bytes);}
+  for(const name of new Set(paths)){const bytes=name===caller?oldCaller:name===batch21BrowserPath?browserLineage.predecessorBrowserBytes:readSafe(root,name);const dest=path.join(temp,name);mkdirSync(path.dirname(dest),{recursive:true});writeFileSync(dest,bytes);}
   const options={cwd:temp,maxBuffer:128*1024*1024,stdio:['pipe','pipe','pipe']};
   const frozenFullSix=JSON.parse(execFileSync(process.execPath,[fullSixGuard],options).toString());
-  if(fullSixOnly)return {...verified,frozenFullSix,scope:'Original full-six guard and 24 source bindings, including the exact predecessor caller; current caller verified separately. No acceptance promotion.'};
+  if(fullSixOnly)return {...verified,browserSuccessorRef:browserLineage.browserSuccessorRef,browserPredecessorRef:browserLineage.browserPredecessorRef,browserBindingsVerified:browserLineage.browserBindingsVerified,frozenFullSix,scope:'Original full-six guard and 24 source bindings, including the exact predecessor caller; current caller and four-file Batch21 browser successor verified separately. No acceptance promotion.'};
   const frozen=JSON.parse(execFileSync(process.execPath,[guard],options).toString());
-  const negativeTests=execFileSync(process.execPath,['--test',tests],options).toString();
-  return {...verified,frozenSourceRef:m.frozenSixSourceRef,historicalCallerRef:m.callerPredecessorRef,frozen,frozenFullSix,originalHistoricalNegativeTests:negativeTests,scope:'Original guards and frozen 21-source/two-packet evidence run unchanged in an exact predecessor fixture. The current caller is a separately bound successor, never asserted equal to historical source. No certification or publication authority.'};
+  const testEnv={...process.env};delete testEnv.NODE_TEST_CONTEXT;
+  const negativeTests=execFileSync(process.execPath,['--test','--test-reporter=tap',tests],{...options,env:testEnv}).toString();
+  return {...verified,browserSuccessorRef:browserLineage.browserSuccessorRef,browserPredecessorRef:browserLineage.browserPredecessorRef,browserBindingsVerified:browserLineage.browserBindingsVerified,frozenSourceRef:m.frozenSixSourceRef,historicalCallerRef:m.callerPredecessorRef,frozen,frozenFullSix,originalHistoricalNegativeTests:negativeTests,scope:'Original guards and frozen 21-source/two-packet evidence run unchanged in an exact predecessor fixture. The current caller and four-file Batch21 browser harness are separately bound successors, never asserted equal to historical source. No certification or publication authority.'};
  }finally{rmSync(temp,{recursive:true,force:true});}
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))console.log(JSON.stringify(checkCalculatorClosureHistory({fullSixOnly:process.argv.includes('--full-six-only')})));
