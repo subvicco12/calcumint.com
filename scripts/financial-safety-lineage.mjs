@@ -30,6 +30,7 @@ const bindings=[
     "successorSHA256": "139319afc73ef22c45dd46ef94b56b85f3442ed57b239cd6a0e59f92cd68643a"
   }
 ];
+export const financialSafetySourceRefs=Object.freeze([predecessor,successor]);
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export function verifyFinancialSafetyBinding(name,bytes,originalClaim,git){
  const binding=bindings.find(b=>b.path===name);

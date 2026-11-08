@@ -43,6 +43,7 @@ const bindings=[
     ]
   }
 ];
+export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref)]))]);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function verifyCompletionBinding(name,bytes,claim,git){
  const b=bindings.find(x=>x.path===name);if(!b)return false;
