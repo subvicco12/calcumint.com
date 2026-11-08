@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {verifyCapturedSource} from './receipt-source-path.mjs';
 const read=async path=>JSON.parse(await readFile(path,'utf8'));
 async function verifyReceipt(path){
  const receipt=await read(path);
@@ -11,7 +12,7 @@ async function verifyReceipt(path){
  assert.deepEqual(receipt.artifacts.map(a=>[a.catalogId,a.engineId,a.plan,a.snapshot.calculatorVersion]),[[432,'conversion.time','pro',1],[432,'conversion.time','business',1],[440,'conversion.frequency','pro',1],[440,'conversion.frequency','business',1]]);
  for(const artifact of receipt.artifacts){assert.equal(createHash('sha256').update(JSON.stringify(artifact.snapshot)).digest('hex'),artifact.sha256);assert.equal(artifact.snapshot.calculatorSlug,artifact.catalogId===432?'time-converter':'frequency-converter');assert.equal(artifact.snapshot.output.result,artifact.catalogId===432?252:125000);}
  assert.equal(receipt.negativeReceipts.length,24);
- for(const binding of receipt.sources)assert.equal(createHash('sha256').update(await readFile(binding.path)).digest('hex'),binding.sha256,binding.path);
+ for(const binding of receipt.sources)await verifyCapturedSource(binding);
  const matrix=await read('docs/acceptance-closure-20261108/first-two-acceptance-matrix.json');
  for(const row of matrix.rows){assert.equal(row.canonicalAccepted,false);assert.equal(row.fullyAccepted,false);assert.equal(row.publicationEligible,false);assert.equal(row.competentDecision.status,'PENDING');assert.equal(row.competentDecision.reviewerName,null);assert.equal(row.newAuthenticatedScenarioExecution,'PASS_SCOPED_CANDIDATE_FIXTURE');}
 }

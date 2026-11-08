@@ -22,6 +22,14 @@ New revision: `private-financial-decimal-rounding-20261108.1`; registered succes
 
 See financial-review-packet.json. Proposed decimal interpretation, two-decimal monetary-unit applicability, work/precision refusal domain, timing, final residual-payment policy and canonical routing require competent financial/canonical decisions. The private core has no plan-dependent math; new registered plan/UI adoption is not claimed. Supported-result engineering proof is not a claim every schema-valid input is supported or that full #1/#51 Blueprint requirements are complete.
 
+## Exact-head CI portability recovery
+
+Initial hosted run **42506638644** at11b7a54 completed with checks, build, source-acceptance and full-product SUCCESS; publication-factory and aggregate correctly FAILED. Its new genuine auth campaign passed, but the retained-source verifier tried to open `../batch13-deps/node_modules/...`, a historical Cloud-cache location absent in a clean runner. This is a verifier portability defect, not a formula/auth failure.
+
+The successor maps only that exact historical prefix to canonical `node_modules/`, rejects unknown aliases/traversal/absolute paths, and still requires every original SHA256. The original receipt and lockfile remain byte-identical to their immutable capture. All10installed package versions match the lockfile; all195old and actual hosted source hashes are identical after this explicit path mapping. No producer, math, auth behavior, recorded hash or approval was changed. Six targeted tests cover clean-checkout files, tampering and preserved source evidence. Post-repair100combined source/corpus checks,59new/retained Node checks, lint and typecheck passed. Final exact-head CI remains required.
+
+The hosted auth receipt records actual merge checkoutbc79fb0cc82c4f725790deea0d34c1cc556916b0, not the associated PR head11b7a54. Authenticated Git object retrieval proves both have the same tree9edde0db25f290975eb601596067c1aa6be9359e. The delivery checkpoint distinguishes checkout identity from associated head and verifies final source equivalence; no SHA is relabelled.
+
 ## Current production facts, read-only
 
 Fresh authenticated Supabase observation **2026-11-08 16:42:51 UTC**: five audited core/preparation RPCs plus the batch addon have no public overloads. No signatures/ACLs can be affirmed for absent functions. Seven scoped tables grant four roles effective write/TRUNCATE privileges; RLS does not protect TRUNCATE. This is capability evidence, not proof anon/authenticated can access particular rows. Zero sampled transactions/prepared transactions/waiting locks is not a freeze.

@@ -130,6 +130,41 @@
       "scope": "Mandatory final local check",
       "archiveLog": "logs/acceptance-closure-webpack.log",
       "sha256": "f7287515e9b9f27d6f3a243fb2588df91ef05030ce1d56b92ec959ed5efae596"
+    },
+    {
+      "command": "node --test [acceptance closure and retained calculator sprint cases]",
+      "result": {
+        "passed": 59
+      },
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-all-node.log",
+      "sha256": "9d5e1df4a56fad678a8f3bf3b766b32f5f363f3c84104ee6f41f2bd157242e01"
+    },
+    {
+      "command": "node --test [closure and exact financial/product/bootstrap/software source groups]",
+      "result": {
+        "passed": 100
+      },
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-source-guards.log",
+      "sha256": "a585b02bca832628d57d825c6a0af4a1e585550e3656399371ee924f15ab27c1"
+    },
+    {
+      "command": "npm run lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-full-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS",
+      "scope": "Post-verifier-portability correction; no application/math/auth source changed",
+      "archiveLog": "logs/acceptance-relocation-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
     }
   ],
   "otherEvidence": {
@@ -173,5 +208,27 @@
   "newCanonicalAcceptances": 0,
   "newPublicationEligible": 0,
   "productionWrites": false,
-  "releaseHold": true
+  "releaseHold": true,
+  "failedHostedAttempts": [
+    {
+      "run": 42506638644,
+      "head": "11b7a54b033cc54d0ff8ad3d0d7ba29bdb4bb8e6",
+      "conclusion": "failure",
+      "passedJobs": [
+        "checks",
+        "build",
+        "source-acceptance",
+        "full-product"
+      ],
+      "failedJobs": [
+        "publication-factory",
+        "validate"
+      ],
+      "cause": "Retained receipt verifier attempted historical Cloud cache path absent in clean checkout; exact ENOENT retained in failure excerpt",
+      "repair": "Explicit original-cache-prefix relocation with mandatory original per-file hashes, safe path checks and original receipt+lock immutability; producer/math/auth unchanged",
+      "evidence": "ci-42506638644-recovery.json",
+      "genuineHostedAuthPassed": true
+    }
+  ],
+  "checkoutIdentityNote": "Hosted default PR merge checkout can differ from event head; final checkpoint verifies actual checkout tree equals associated exact PR-head tree. Do not relabel receipt sourceCommit."
 }
