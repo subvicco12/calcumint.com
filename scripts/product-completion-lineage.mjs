@@ -100,11 +100,32 @@ const bindings=[
   {
     "path": "scripts/publication20-caller-lineage.mjs",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "40097d77fb84dca53207534d528e7ed8f888b99a",
+    "successorRef": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
     "predecessorBlob": "7ece608dadea02c3c668623d80931c2598829e99",
-    "successorBlob": "a9a69fed092d47e1e1273a79c3c520fb4ae32716",
+    "successorBlob": "1a5fd17ea04218060de9d1fe3952bc23561297d6",
     "predecessorSHA256": "64368f3b10b838bea51ee4a53f4b0e89b0b2828654ef84f2cd9e68825344367e",
-    "successorSHA256": "1541d7d337eaa27545276cd29a09220a78b4a0cfb41660fd31f89699fa372722"
+    "successorSHA256": "e1282ad0141bb46fa87a7bab6fc8ad2dcc78e83b02d6b2c6f3b23b04fc7f8d06",
+    "intermediateSources": [
+      {
+        "ref": "40097d77fb84dca53207534d528e7ed8f888b99a",
+        "blob": "a9a69fed092d47e1e1273a79c3c520fb4ae32716",
+        "sha256": "1541d7d337eaa27545276cd29a09220a78b4a0cfb41660fd31f89699fa372722"
+      }
+    ],
+    "supplementalSources": [
+      {
+        "path": "scripts/n1-publication-lineage.mjs",
+        "ref": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+        "blob": "066bbf558aeaba1bf74072a7984ad4913918dc62",
+        "sha256": "4a6f9418054eb4df0248d1171e695bd57d1e58d94d6edbcc14cc68493ef0370e"
+      },
+      {
+        "path": "scripts/frequency-presentation-lineage.mjs",
+        "ref": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+        "blob": "0c93293d0a3653bcc6411bad26ad9111ea88806c",
+        "sha256": "be6ce5031756352037cfa7b5e8c3a34ad2208df8e8a360d07f4b550c1766a92e"
+      }
+    ]
   },
   {
     "path": "scripts/check-shortest-publication20.mjs",
@@ -246,128 +267,268 @@ const bindings=[
       }
     ]
   },
-{
-  "path": "src/components/component-engineering-review.tsx",
-  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-  "successorRef": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
-  "predecessorBlob": "a75cfab7c0bdd523275afd86b0b8ffc67c6a8522",
-  "successorBlob": "d05f80a40e2e9869e12173dd842d0ecb2fc001a8",
-  "predecessorSHA256": "2964a31b596030a2dde40ea8633603dcdfb3f8f523b63ba4f2715824a0550929",
-  "successorSHA256": "6c9ea935a9e4ff3951372ae836ad5ece3825e2cf8bde50dca15f99e984eb0835",
-  "supplementalSources": [
-    {
-      "path": "src/lib/final-private-snapshot-text.ts",
-      "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
-      "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
-      "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
-    },
-    {
-      "path": "src/lib/publication-factory-contracts-input.ts",
-      "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
-      "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
-      "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
-    },
-    {
-      "path": "src/calculators/component-contracts.ts",
-      "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
-      "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
-      "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
-    }
-  ]
-},
-{
-  "path": "src/components/private-workflow-review.tsx",
-  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-  "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-  "predecessorBlob": "6201412990f6315d0213dd6fc948998d174ae817",
-  "successorBlob": "39a03f562600c68906a8b90ea3d47076f9edb4dc",
-  "predecessorSHA256": "ba6d21416e55a22138d4fa47e75886c75b8e10e91bb0ed56e46d8f678c515afc",
-  "successorSHA256": "b80d107171eaf3fc3b020f0b35166171702a1ee39a09f81d3809258eee1dc7fe",
-  "supplementalSources": [
-    {
-      "path": "src/calculators/private-scenario-workflows.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "1b5222e7a6a643a45c7daea19faca737911d8747",
-      "sha256": "6e96315b71e151519b996497f41f80fab21e4d58db173f7e9bfb5b2a29ddbfa7"
-    },
-    {
-      "path": "src/calculators/private-supplied-contracts.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "7082f58262a70db0949d261ec7fc6e0ed8ca90a3",
-      "sha256": "9fcad868dc9b2d73940aa1731b1bf73db4d7dcd21662f230866deba6325c749c"
-    },
-    {
-      "path": "src/lib/calculation-snapshot.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
-      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
-    }
-  ]
-},
-{
-  "path": "src/components/source-profile-review.tsx",
-  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-  "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-  "predecessorBlob": "2b7a6ef8e244bd88b966c286ae598f072a32b689",
-  "successorBlob": "d35f5b7af8e07ce1bb6483d9c03ee177aca7a788",
-  "predecessorSHA256": "c4e2d0611c43541d07b5e15a1cfb39479b112b6b970bc037a7bd6530c2475fdd",
-  "successorSHA256": "708b84db803aa78c0ebe223015d4dc6a632b2a056b5d0a2c7c1454bcf248477b",
-  "supplementalSources": [
-    {
-      "path": "src/calculators/source-profile-snapshot.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "bbb35255770a9d0904bf67830040f4d9bc06981c",
-      "sha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f"
-    },
-    {
-      "path": "src/calculators/source-bound-profiles.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "8858406d2fe7df744d9e1653a4800bf5e8710ec8",
-      "sha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d"
-    },
-    {
-      "path": "src/calculators/exact-rational.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "30bfe208ccf03c8898decd6c81c9ee2e3d365ff8",
-      "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a"
-    },
-    {
-      "path": "src/lib/calculation-snapshot.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
-      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
-    }
-  ]
-},
-{
-  "path": "src/components/financial-contract-review.tsx",
-  "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-  "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-  "predecessorBlob": "7785e258494c7a3bdc1bba6700d7a452e71ca4fe",
-  "successorBlob": "a61bd0e0a35e0c6dc2ce62146db69bbf1626d294",
-  "predecessorSHA256": "22662ca9f8fd95e16a170ec9a2ca942a6c29d61a2d1cbc9e3f66656377f4d5fd",
-  "successorSHA256": "833effd06789d7636a27d6b7b069c1e928cb42b61d68d7bb0810640caa63285d",
-  "supplementalSources": [
-    {
-      "path": "src/calculators/financial-contracts.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
-      "sha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a"
-    },
-    {
-      "path": "src/calculators/financial-contract-core.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "af727f5083e1784b98c0e2097caecea24da544f4",
-      "sha256": "3cae37f855a8ef6f4b99424b20619936e94fd861dff4d00fb26ef748d3c72ab0"
-    },
-    {
-      "path": "src/lib/calculation-snapshot.ts",
-      "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
-      "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
-      "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
-    }
-  ]
-}
+  {
+    "path": "src/components/component-engineering-review.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+    "predecessorBlob": "a75cfab7c0bdd523275afd86b0b8ffc67c6a8522",
+    "successorBlob": "d05f80a40e2e9869e12173dd842d0ecb2fc001a8",
+    "predecessorSHA256": "2964a31b596030a2dde40ea8633603dcdfb3f8f523b63ba4f2715824a0550929",
+    "successorSHA256": "6c9ea935a9e4ff3951372ae836ad5ece3825e2cf8bde50dca15f99e984eb0835",
+    "supplementalSources": [
+      {
+        "path": "src/lib/final-private-snapshot-text.ts",
+        "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+        "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
+        "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+      },
+      {
+        "path": "src/lib/publication-factory-contracts-input.ts",
+        "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+        "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+        "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      },
+      {
+        "path": "src/calculators/component-contracts.ts",
+        "ref": "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+        "blob": "6a3a8d163727db6b2b754b24f31338d4543623a5",
+        "sha256": "a82cc28e5cf744095fcdc4ff209a80a7f6a34b702ef22c363998a02e94652bda"
+      }
+    ]
+  },
+  {
+    "path": "src/components/private-workflow-review.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+    "predecessorBlob": "6201412990f6315d0213dd6fc948998d174ae817",
+    "successorBlob": "39a03f562600c68906a8b90ea3d47076f9edb4dc",
+    "predecessorSHA256": "ba6d21416e55a22138d4fa47e75886c75b8e10e91bb0ed56e46d8f678c515afc",
+    "successorSHA256": "b80d107171eaf3fc3b020f0b35166171702a1ee39a09f81d3809258eee1dc7fe",
+    "supplementalSources": [
+      {
+        "path": "src/calculators/private-scenario-workflows.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "1b5222e7a6a643a45c7daea19faca737911d8747",
+        "sha256": "6e96315b71e151519b996497f41f80fab21e4d58db173f7e9bfb5b2a29ddbfa7"
+      },
+      {
+        "path": "src/calculators/private-supplied-contracts.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "7082f58262a70db0949d261ec7fc6e0ed8ca90a3",
+        "sha256": "9fcad868dc9b2d73940aa1731b1bf73db4d7dcd21662f230866deba6325c749c"
+      },
+      {
+        "path": "src/lib/calculation-snapshot.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+        "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+      }
+    ]
+  },
+  {
+    "path": "src/components/source-profile-review.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+    "predecessorBlob": "2b7a6ef8e244bd88b966c286ae598f072a32b689",
+    "successorBlob": "d35f5b7af8e07ce1bb6483d9c03ee177aca7a788",
+    "predecessorSHA256": "c4e2d0611c43541d07b5e15a1cfb39479b112b6b970bc037a7bd6530c2475fdd",
+    "successorSHA256": "708b84db803aa78c0ebe223015d4dc6a632b2a056b5d0a2c7c1454bcf248477b",
+    "supplementalSources": [
+      {
+        "path": "src/calculators/source-profile-snapshot.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "bbb35255770a9d0904bf67830040f4d9bc06981c",
+        "sha256": "119f57f1468bd2d05fd2ea2e37e64621eaffff4a9bcfc0aeaa87ce89077da97f"
+      },
+      {
+        "path": "src/calculators/source-bound-profiles.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "8858406d2fe7df744d9e1653a4800bf5e8710ec8",
+        "sha256": "f704f2e5d54097847da282ed0d3e97cb846dcb55d6d82cb5c3b07cb07d4a748d"
+      },
+      {
+        "path": "src/calculators/exact-rational.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "30bfe208ccf03c8898decd6c81c9ee2e3d365ff8",
+        "sha256": "cccb4e1366200c799eb82f3542d4f90ecfc0341d8678db29f93d347f39af806a"
+      },
+      {
+        "path": "src/lib/calculation-snapshot.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+        "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+      }
+    ]
+  },
+  {
+    "path": "src/components/financial-contract-review.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+    "predecessorBlob": "7785e258494c7a3bdc1bba6700d7a452e71ca4fe",
+    "successorBlob": "a61bd0e0a35e0c6dc2ce62146db69bbf1626d294",
+    "predecessorSHA256": "22662ca9f8fd95e16a170ec9a2ca942a6c29d61a2d1cbc9e3f66656377f4d5fd",
+    "successorSHA256": "833effd06789d7636a27d6b7b069c1e928cb42b61d68d7bb0810640caa63285d",
+    "supplementalSources": [
+      {
+        "path": "src/calculators/financial-contracts.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "20799a7374b2d35e4ce34793582f6753ac118c78",
+        "sha256": "d1d17ba463325175ce1214eb3d695bb998f492767b82c5bace76beecda501d2a"
+      },
+      {
+        "path": "src/calculators/financial-contract-core.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "af727f5083e1784b98c0e2097caecea24da544f4",
+        "sha256": "3cae37f855a8ef6f4b99424b20619936e94fd861dff4d00fb26ef748d3c72ab0"
+      },
+      {
+        "path": "src/lib/calculation-snapshot.ts",
+        "ref": "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+        "blob": "1a2cab16a52d88249fc33103881d6873a1da3f92",
+        "sha256": "8e390f0e23bf4b91b95889c5f94083b0342c0683a1d8895b6939ee05b68af73c"
+      }
+    ]
+  },
+  {
+    "path": "src/components/publication20-tool.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+    "predecessorBlob": "c1a8be2fbd29ec3b5e822fad3b4ca93878e60fa0",
+    "successorBlob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
+    "predecessorSHA256": "4c5ad7ad371345c640f420e5fc5492ef4df7b2ada11468f54e74cf31cc07e589",
+    "successorSHA256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5",
+    "supplementalSources": [
+      {
+        "path": "src/components/final-calculator-renderer.tsx",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "f5a032087a13b9a065bb43500a4b4ad837f497c0",
+        "sha256": "95acb3ca32311c3e843371e2e39c3f74d311d99997706d866b1629957796e4b6"
+      },
+      {
+        "path": "src/calculators/final-framework/unit-conversion-presentation.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "679ee3f381d13762979699d4c781eb1cfa598eda",
+        "sha256": "84f5cbfa414e40c80d4e6cd18a9946b720148a8a3fde9abc51c679146f17f48e"
+      },
+      {
+        "path": "src/calculators/final-framework/renderer-display.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "ced3c075199b6e166661195afad525b8a2ebc174",
+        "sha256": "5e7af832955bddb26b080daab4261d0ba6d384c76a85164e545f0767fcb91ac3"
+      },
+      {
+        "path": "src/calculators/final-framework/renderer-trust-surface.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "e28e049d9b4ad884cd43f742236f0b495e2f61a4",
+        "sha256": "2695c622adb40733cc60b61dc45dfcefb1cb7e2bd7c06267a8cf88ada55ee96a"
+      },
+      {
+        "path": "src/calculators/final-framework/result-inspection.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "dba73a796ae5d4e0e67e77166023eaf90f347d6d",
+        "sha256": "0d10f74c3d5572a13e66db85ff3064a72bbe436860542b2d804bfe67b1848572"
+      },
+      {
+        "path": "src/calculators/final-framework/analysis-surface-policy.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "054c8d38c60c8df33989b26280d4985e66b47677",
+        "sha256": "5fbc0ac497a44826163017f6b18ff743f8720a9ada9165678abc19d1fd9b1cc2"
+      },
+      {
+        "path": "src/lib/n1-publication-methodology.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "8e05a821decc75f066f4f77d60c89409915b2130",
+        "sha256": "45758a400444cb578cef0ea20b1640d1f06b7eb1c18b3ac9f2092cec1da1a9dd"
+      },
+      {
+        "path": "src/lib/frequency-presentation.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "b2be37990725e83dfbedce4ebc3dcef3b874677e",
+        "sha256": "b9c0015f7a6ca30426c2963a10384c05cc99b3cd5d08dc1d1782af48ddfabb05"
+      },
+      {
+        "path": "src/lib/publication20/conversions.ts",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "e5eb250090125c4c1746628ebaeb0ade9eb2de4c",
+        "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+      }
+    ]
+  },
+  {
+    "path": "src/components/publication20-tool.test.tsx",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+    "predecessorBlob": "dd859012e464accaf4b45bfcb0902b6f7711927c",
+    "successorBlob": "abf86ca5e7ce69579a509ed9707a661e3da23f80",
+    "predecessorSHA256": "cda92b43f598f64ec5bb113c080d53979f8af611aded35633fc63b502dbda091",
+    "successorSHA256": "a8e3c3ef7de15439c464b8bec21206360ecf53b985335f0671933285be37401c",
+    "supplementalSources": [
+      {
+        "path": "src/components/publication20-tool.tsx",
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
+        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+      }
+    ]
+  },
+  {
+    "path": "tests/adoption1535/lineage.test.mjs",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+    "predecessorBlob": "4520c58b720a69f3f60682c8e5eeb4554e3dca3a",
+    "successorBlob": "80dbfecae5fa1aa7083f9f814905e7b61bb150a7",
+    "predecessorSHA256": "a5690cee2d5a2341dde8a0f4aef8524a0519821aba2c4883ff642509bdc0fe6a",
+    "successorSHA256": "10325a313d476a298b2a6096e06296673e51336dc774d03f4a570065d4b546c7",
+    "supplementalSources": [
+      {
+        "path": "scripts/publication20-caller-lineage.mjs",
+        "ref": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+        "blob": "1a5fd17ea04218060de9d1fe3952bc23561297d6",
+        "sha256": "e1282ad0141bb46fa87a7bab6fc8ad2dcc78e83b02d6b2c6f3b23b04fc7f8d06"
+      },
+      {
+        "path": "scripts/n1-publication-lineage.mjs",
+        "ref": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+        "blob": "066bbf558aeaba1bf74072a7984ad4913918dc62",
+        "sha256": "4a6f9418054eb4df0248d1171e695bd57d1e58d94d6edbcc14cc68493ef0370e"
+      },
+      {
+        "path": "src/components/publication20-tool.tsx",
+        "ref": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
+        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+      }
+    ]
+  },
+  {
+    "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
+    "predecessorBlob": "4db35005636145474cb7e53c75a0faeae9dd596f",
+    "successorBlob": "3f435b99d732c75082508e8d0a8daa0e2081631c",
+    "predecessorSHA256": "2c6296e886bc8a58f60b6c8c4ecd7e942301a6dc5479f43aa3cd3b21df1afb03",
+    "successorSHA256": "c7963a31a40b4b49324b7c7d6d722577beba66c4bb0033a7af24859add6725f6",
+    "supplementalSources": [
+      {
+        "path": "scripts/publication20-caller-lineage.mjs",
+        "ref": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
+        "blob": "1a5fd17ea04218060de9d1fe3952bc23561297d6",
+        "sha256": "e1282ad0141bb46fa87a7bab6fc8ad2dcc78e83b02d6b2c6f3b23b04fc7f8d06"
+      },
+      {
+        "path": "scripts/n1-publication-lineage.mjs",
+        "ref": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
+        "blob": "066bbf558aeaba1bf74072a7984ad4913918dc62",
+        "sha256": "4a6f9418054eb4df0248d1171e695bd57d1e58d94d6edbcc14cc68493ef0370e"
+      },
+      {
+        "path": "src/components/publication20-tool.tsx",
+        "ref": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
+        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
+        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+      }
+    ]
+  }
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);
 const hash=b=>createHash('sha256').update(b).digest('hex');

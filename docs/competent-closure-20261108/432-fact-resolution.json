@@ -1,0 +1,40 @@
+{
+  "kind": "432_TECHNICALLY_DECIDABLE_FACTS_AND_REMAINING_REVIEW_NOT_APPROVAL",
+  "identity": {
+    "masterId": 432,
+    "engineId": "conversion.time",
+    "version": 1,
+    "slug": "time-converter"
+  },
+  "sourceEvidence": "docs/first-live-closure-20261108/time-source-capture.json",
+  "precisionEvidence": "docs/first-live-closure-20261108/time-precision-evidence.json",
+  "factsClosed": [
+    {
+      "id": "FIXED_WEEK",
+      "finding": "NativeUCUM2.2 machine-readable definitions/table establish wk7d,d24h,h60min,min60s, hence604800s for the existing fixed-duration contract. No calendar,time-zone or leap-second computation inferred."
+    },
+    {
+      "id": "MILLISECOND",
+      "finding": "Stored factor exactly1152921504606847/2^60; relative representation error3/2^57. Existing ratio-first normal-finite derivation includes it, with separately conditional decimal parsing bound."
+    },
+    {
+      "id": "PROSE_CONSISTENCY",
+      "finding": "UCUM prose864000s conflicts with its table/essence24h and retained BIPM86400s day. Preserve publisher bytes; no arithmetic ambiguity within the explicit machine-readable/table definition chain. A reviewer must record exact clause/revision applicability and disposition of this editorial inconsistency; no new owner scope choice or v1factor rewrite is justified."
+    }
+  ],
+  "proofLimits": "Reuse36coefficient audits and744numerical/zero/identity checks. Not full-domain execution or decimal output correct-rounding proof; retain underflow/overflow hypotheses and old historical behavior.",
+  "currentUIRegression": "Final scalar renderer migration included432 in3plans/mobile/desktop with retained literal252h witness, captures and exports; no math change.",
+  "genuineRemainingDecisions": [
+    "Exact source revision/clause applicability adoption and editorial discrepancy disposition",
+    "Accept/reject/defer bounded precision/capture-domain methodology with hypotheses",
+    "Actual competent independent QA/signature and canonical contract adoption",
+    "Hosted exact draft creation/assignment and separate certification/publication authority"
+  ],
+  "appointmentEvidence": "reviewer-appointment-counts.json",
+  "disposition": "IMPLEMENTED_REVIEW_PENDING",
+  "engineeringGo": "GO_FOR_SCOPED_TECHNICAL_REVIEW; no claim full canonical acceptance",
+  "certificationGo": "NO_GO",
+  "publicationEligible": false,
+  "releaseHold": true,
+  "productionWrites": false
+}

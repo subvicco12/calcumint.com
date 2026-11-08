@@ -1,0 +1,42 @@
+{
+  "kind": "EXACT_CANDIDATE_REVIEWER_ASSIGNMENT_OBSERVATION",
+  "rows": [
+    {
+      "observed_at": "2026-11-08 19:39:18.609605+00",
+      "read_only": "on",
+      "master_id": 432,
+      "engine_id": "conversion.time",
+      "slug": "time-converter",
+      "version": 1,
+      "exact_candidate_count": 0,
+      "assigned_candidate_count": 0,
+      "assigned_without_platform_role_count": 0,
+      "active_review_capable_assignment_count": 0,
+      "assigned_role_states": []
+    },
+    {
+      "observed_at": "2026-11-08 19:39:18.609634+00",
+      "read_only": "on",
+      "master_id": 440,
+      "engine_id": "conversion.frequency",
+      "slug": "frequency-converter",
+      "version": 1,
+      "exact_candidate_count": 0,
+      "assigned_candidate_count": 0,
+      "assigned_without_platform_role_count": 0,
+      "active_review_capable_assignment_count": 0,
+      "assigned_role_states": []
+    }
+  ],
+  "readOnly": true,
+  "identityCollected": false,
+  "interpretation": "Neither exact tuple has a hosted catalog row at this observation; therefore neither has a hosted catalog reviewer assignment. This is stronger and narrower than prior role counts; no claim that no competent authorized reviewer exists, no current session or competence inference.",
+  "minimumAppointmentAction": "Identify an actual competent independent eligible reviewer and document identity, competence, independence and authorized appointment in the review record. Because exact hosted catalog rows are absent, existing assign_calculator_reviewer cannot target these tuples until separately authorized exact draft catalog creation/adoption occurs; then owner/admin may assign an active owner/admin/reviewer through audited workflow. Do not create rows or assign during read-only work.",
+  "engineeringGo": "GO_FOR_EXISTING_AUTHORIZED_OFFLINE_ENGINEERING_AND_REVIEW_PREPARATION; retained implementation has no new demonstrated defect in this observation.",
+  "certificationGo": "NO_GO; actual source/formula/precision/canonical-QA decisions and exact-version adoption remain pending. Missing hosted row is not canonical acceptance.",
+  "ordinaryReviewRoute": "Competent independent engineering/source review; no newly imposed blanket human-only or external-specialist requirement.",
+  "certificationGranted": false,
+  "publicationAuthorized": false,
+  "productionWrites": false,
+  "releaseHold": true
+}
