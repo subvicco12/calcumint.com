@@ -1,5 +1,7 @@
 'use client';
 import {useState} from 'react';
+import {parsePublicationFactoryInput} from '../lib/publication-factory-contracts-input';
+import {parseFinalPrivateSnapshotText} from '../lib/final-private-snapshot-text';
 import inventory from '../../docs/cloud-batch08/discovery.json';
 import {componentContracts,componentExamples,exportComponentContract,importComponentContract} from '../calculators/component-contracts';
 type Snapshot=ReturnType<typeof exportComponentContract>;
@@ -13,9 +15,9 @@ export function ComponentEngineeringReview(){
  const invalidate=()=>{setSnapshot(null);setError('');};
  function choose(n:number){setId(n);setInput(componentExamples[n]?json(componentExamples[n]):'');invalidate();}
  function find(q:string,c=filter){setSearch(q);setFilter(c);const visible=inventory.rows.filter(r=>matches(r,q)&&(c==='ALL'||r.implementationClass===c));if(!visible.some(r=>r.masterId===id))choose(visible[0]?.masterId??-1);}
- function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportComponentContract(id,JSON.parse(input),plan));}catch{setError('Check the required supplied loan or named-unit scope, units, denominators, membership, identities and numerical bounds.');}}
+ function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportComponentContract(id,parsePublicationFactoryInput(input),plan));}catch{setError('Check the required supplied loan or named-unit scope, units, denominators, membership, identities and numerical bounds.');}}
  function restore(s:Snapshot){setSearch('');setFilter('ALL');setId(s.masterId);setInput(json(s.calculation.input));setSnapshot(s);setError('');}
- function replay(){invalidate();try{if(importText.length>8_000_000)throw Error('Snapshot size limit');restore(importComponentContract(JSON.parse(importText)));}catch{setError('Snapshot must match its selected identity, evidence, dependency versions and actual engine output.');}}
+ function replay(){invalidate();try{if(importText.length>8_000_000)throw Error('Snapshot size limit');restore(importComponentContract(parseFinalPrivateSnapshotText(importText)));}catch{setError('Snapshot must match its selected identity, evidence, dependency versions and actual engine output.');}}
  function download(){if(!snapshot)return;const url=URL.createObjectURL(new Blob([json(snapshot)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`private-component-${snapshot.masterId}-v1.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  const headline=(s:Snapshot)=>s.calculation.output.value===null?'No positive monthly payment savings':String(s.calculation.output.value);
  return <main style={{maxWidth:1000,margin:'auto',padding:16,fontFamily:'system-ui',overflowWrap:'anywhere'}}>
