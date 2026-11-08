@@ -500,7 +500,7 @@ jobs:
         timeout-minutes: 4
         run: |
           node scripts/check-shortest-publication20.mjs
-          node --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs
+          node --test tests/shortest-publication-20/caller-lineage.test.mjs tests/shortest-publication-20/frequency-presentation-lineage.test.mjs tests/shortest-publication-20/completion-lineage.test.mjs
           python3 -m unittest discover -s tests/shortest-publication-20 -p 'test_*.py'
           python3 scripts/shortest-publication-routes.py --output "$RUNNER_TEMP/shortest-publication-20/production-routes.json"
           node tests/shortest-publication-20/browser.mjs

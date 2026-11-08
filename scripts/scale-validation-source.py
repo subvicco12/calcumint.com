@@ -10,7 +10,9 @@ if hashlib.sha256(json.dumps(records,sort_keys=True,separators=(',',':')).encode
 paths=[r/x['path'] for x in records]
 for x,p in zip(records,paths):
  if not p.resolve().is_relative_to(r):raise SystemExit('Frozen v2 dependency differs: '+x['path'])
- if hashlib.sha256(p.read_bytes()).hexdigest()!=x['sha256']:
+ # Known successors must be checked even if bytes were reverted to the old hash.
+ known_successor=x['path'] in {'src/calculators/finance/compound-interest.ts','src/calculators/finance/loan-payment.ts','src/calculators/precision.ts'}
+ if known_successor or hashlib.sha256(p.read_bytes()).hexdigest()!=x['sha256']:
   result=subprocess.run(['node',str(r/'scripts/financial-safety-lineage.mjs'),'--verify',x['path'],x['sha256']],capture_output=True,text=True)
   if result.returncode:raise SystemExit('Frozen v2 dependency differs: '+x['path'])
 value={'schemaVersion':1,'baselineSHA':'448533b858e80d4eb90b2146e9dd8c5ba7d91fdb','technicalSourceTreeSHA256':hashlib.sha256(json.dumps(records,sort_keys=True,separators=(',',':')).encode()).hexdigest(),'boundFileCount':len(records),'excludedSelfReference':'docs/validation-scale/source-binding.json','meaning':'Exact local technical source capture; not authenticated publisher bytes, canonical mapping or qualified applicability approval.','canonicalAccepted':False,'releaseHold':True}

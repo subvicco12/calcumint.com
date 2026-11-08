@@ -3,6 +3,7 @@ import {useEffect,useRef,useState} from 'react';
 import {createStatisticsPdfReport} from '@/lib/full-six/candidate/statistics-pdf-report';
 import {downloadPdfBytes} from '@/lib/download-pdf';
 import {createStatisticsCsvReport} from '@/lib/full-six/candidate/statistics-report';
+import {CandidateStatisticsScenarioComparison} from './candidate-scenario-comparison';
 import {CandidateCharts} from './candidate-charts';
 import {getPlanEntitlements} from '@/lib/entitlements';
 import {fullVolumeSolids,fullVolumeParameterNames,type FullVolumeSolid} from '@/lib/full-six/volume';
@@ -58,6 +59,7 @@ function SlopeInverseFields({input,edit,described}:{input:Data;edit:(v:Data)=>vo
 }
 
 function ScenarioComparison({a,b}:{a:CandidateArtifact;b:CandidateArtifact}){
+ if(a.catalogId===282||a.catalogId===283)return <CandidateStatisticsScenarioComparison a={a} b={b}/>;
  function metrics(a:CandidateArtifact):Record<string,unknown>{const o=a.output;if(o.values&&typeof o.values==='object')return {status:o.status,...o.values as Data};if(o.volume&&typeof o.volume==='object')return {status:o.status,...o.volume as Data};const summary=o.summary as Data|undefined;if(summary?.metrics)return {status:o.status,...summary.metrics as Data};return {status:o.status,curves:Array.isArray(o.curves)?o.curves.length:0,coverage:o.coverage??''};}
  const am=metrics(a),bm=metrics(b),keys=[...new Set([...Object.keys(am),...Object.keys(bm)])];return <table className="w-full"><caption>Scenario comparison; exact recorded result text</caption><thead><tr><th>Metric</th><th>A</th><th>B</th></tr></thead><tbody>{keys.map(k=><tr key={k}><th scope="row">{k}</th><td className="break-all">{String(am[k]??'unavailable')}</td><td className="break-all">{String(bm[k]??'unavailable')}</td></tr>)}</tbody></table>;
 }
