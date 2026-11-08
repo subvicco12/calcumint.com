@@ -533,7 +533,9 @@ jobs:
           FREQUENCY440_ARTIFACTS: ${{ runner.temp }}/frequency440
       - name: Genuine Next frequency history and Business workflow
         timeout-minutes: 6
-        run: node tests/frequency440-acceptance/next.mjs
+        run: |
+          node --test tests/next-runtime/recorded-download.test.mjs
+          node tests/frequency440-acceptance/next.mjs
         env:
           FREQUENCY440_NEXT_ARTIFACTS: ${{ runner.temp }}/frequency440-next
       - name: Native registered Business API and embed acceptance
