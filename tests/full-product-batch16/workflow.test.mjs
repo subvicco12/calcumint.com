@@ -13,7 +13,7 @@ test('Batch16 extends the existing genuine auth suite instead of duplicating Doc
 test('requirement evidence, exact authority requests, malformed-capture guards and native finder are mandatory',()=>{
  const product=workflow.split('\n  full-product:\n')[1].split('\n  validate:\n')[0];
  const marker='      - name: Batch16 requirement, schema comparison and finder acceptance\n';
- assert.equal(product.split(marker).length,2);const step=product.split(marker)[1];
+ assert.equal(product.split(marker).length,2);const step=product.split(marker)[1].split('\n      - name:')[0];
  for(const command of ['node_modules/.bin/vite-node --config vitest.config.ts scripts/batch16-requirement-evidence.ts --check','node scripts/batch16-authority-requests.mjs --check','node --test tests/batch16-auth/schema-comparison.test.mjs tests/full-product-batch16/workflow.test.mjs','node tests/gotrue-runtime/acceptance.mjs','node tests/full-product-batch16/finder-browser.mjs'])assert(step.includes(command),command);
  assert.match(step,/BATCH16_FULL_SCHEMA: '1'/);
  assert(step.includes('node scripts/batch16-contract-groups.mjs --check'));

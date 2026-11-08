@@ -1,0 +1,51 @@
+✖ genuine-auth and private sensitivity are mandatory bounded sequential CI steps (1.921303ms)
+✔ immutable native evidence source is fetched before unchanged strict reconciliation (0.372174ms)
+✔ Batch16 extends the existing genuine auth suite instead of duplicating Docker campaigns (1.183734ms)
+✖ requirement evidence, exact authority requests, malformed-capture guards and native finder are mandatory (14.983054ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 2
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.267371
+
+✖ failing tests:
+
+test at tests/full-product-batch13/workflow.test.mjs:3:1
+✖ genuine-auth and private sensitivity are mandatory bounded sequential CI steps (1.921303ms)
+  AssertionError [ERR_ASSERTION]: New acceptance may not be skipped, ignored or backgrounded
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/full-product-batch13/workflow.test.mjs:6:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/full-product-batch16/workflow.test.mjs:13:1
+✖ requirement evidence, exact authority requests, malformed-capture guards and native finder are mandatory (14.983054ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert(!/continue-on-error|\n        if:/.test(step))
+
+      at TestContext.<anonymous> (file:///workspace/work/owner-fullscope-20261102/tests/full-product-batch16/workflow.test.mjs:21:2)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
