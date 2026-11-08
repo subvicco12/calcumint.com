@@ -1,0 +1,35 @@
+# Minimum safe singleton publication path
+
+Review only, baseline `6d2960c2fac7817741b08877ebd3b611720923b7`. RELEASE HOLD remains active. Eligible/authorized/newly live: **0/0/0**. No production call, protected SQL edit or build was performed for this assessment.
+
+Prefer **#440 `conversion.frequency@1`**, slug `frequency-converter`, route `/calculators/unit-conversions/frequency-converter`. Fallback **#432 `conversion.time@1`**, slug `time-converter`, route `/calculators/unit-conversions/time-converter`, requires its own complete acceptance and release selection. Neither fallback substitution nor certification is approved. Both existing engine definitions are DRAFT, standard risk and version 1. Frequency is scalar cycle frequency in hz/khz/mhz/ghz; time is fixed durations, not calendar/timezone/leap-second computation. Sources: `src/calculators/conversion/catalog-batch-{2,3}.ts`, `src/lib/publication20/conversions.ts`.
+
+## Required core and optional scope
+
+The minimum product is one accepted ordinary calculator route using the existing engine, content, audited lifecycle, source/QA/reviewer integrity, corrected publication gate and exact immutable identity/version/evidence binding. Genuine per-ID competent decisions, actual certification, compatible deployed registry certification, and separate operator/release authority remain required. No new wrapper, mathematical implementation or owner product question is necessary.
+
+Multi-item publication, staging the other 19 drafts and native API/embed/account/membership/billing/quota delivery are optional product scope. Native secrets and packages become dependencies only when the independently accepted delivery contract calls for them. The existing privileged scheduler still requires a named custodian and approved pause/drain control even for an ordinary route.
+
+**Artifact boundary:** the existing reviewed package that includes exact-snapshot singleton publication safety is the held adoption1535 composition: adoption1528 seven-table core followed by publication540 exact-snapshot atomic batch addon in one transaction. Its reverse is addon then core. A singleton can use the exact-snapshot batch without staging other IDs. The core bundles draft bulk preparation, audited032–035 RPCs, date/final-row/insert/dependency corrections and trigger-helper privilege correction. A bundled bulk RPC does not require bulk product publication. Do not remove constituent SQL or unconditional holds from pinned artifacts.
+
+Batch cardinality is optional; exact snapshot/version safety is required. The legacy UUID-only transition lacks expected engine/version and complete evidence comparison (`docs/adoption1528/REPORT.md`; `docs/publication540-shared/REPORT.md`). A reduced core-only operational path would need separately reviewed equivalent binding, writer serialization, artifact generation and rehearsal. No such reduced executor is established here. Reusing the existing composition avoids inventing one, but does not authorize its activation.
+
+Infrastructure-only adoption review may proceed in parallel with competent calculator review after its own operator/schema/freeze/recovery prerequisites. Installing guarded capabilities does not approve or authorize calculator lifecycle writes, certification, code promotion or publication.
+
+## Existing acceptance and recovery contract
+
+`src/lib/publication-manifest.ts` calls `list_published_calculator_manifest` with public client configuration and fails closed on unavailable/invalid authority. `src/calculators/publication-authority.ts` requires a certified repository definition with formulas/examples/sources and exact matching key/slug/version; manifest publication alone cannot expose either DRAFT engine. Existing governed content exists for both slugs (`src/calculators/public-content.ts`). `src/lib/public-calculator-route.ts` shares the request-scoped authority decision with route metadata/rendering. The calculator route returns404 unless ready. Calculator index/category and dynamic sitemap consume governed published content. No routing replacement is required.
+
+Before any later authorized operation, retain a fresh exact selected catalog UUID/state and source/QA/reviewer/contract/implementation binding, complete manifest and all existing209 tuple/route invariants. After publication require the single authorized tuple addition, canonical HTTP200/render and numerical/browser acceptance, correct metadata, discovery/category/index/sitemap agreement, and continued exclusion of the nonselected draft. Preserve all209 existing route/discovery/sitemap surfaces and catalog/source/QA/audit/job/history invariants. Counts must be derived from fresh state;209 is retained evidence, not a new production measurement.
+
+Uncommitted failures roll back atomically. After interruption capture metadata read-only before deciding whether predecessor, full postimage or unknown drift exists. Held DDL reversal preserves application rows/audits and restores known-defective predecessors; keep critical writers held. **DDL reversal does not withdraw a committed publication.** Post-publication withdrawal requires fresh exact state, original audited lifecycle paths and separately scoped authority. Never blindly restore an old manifest.
+
+## Missing prerequisites and evidence limits
+
+`docs/adoption1535/operator-checklist.json` still records no actual identities or evidence references for deployed-source compatibility, writer roster, operator/window, freeze controls, backup/restore, runtime custody, adoption/reversal authority, per-ID acceptance and certification/release. Actual deployed SHA, enabled scheduler, external privileged writers, role/provider compatibility and recoverable tested restore remain unproven. Planning and custody evidence precede authorization; actual freeze/drain occurs only in the approved window. Fresh source/schema/data reconciliation is required then.
+
+The later1535 retained core capture at2026-11-07 18:54:09.811998+00 matches predecessor hash `56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1`,209published; the following dependency capture reports missing core RPCs and batch RPC. This supersedes the earlier540 inability to refresh metadata as retained evidence, without proving present access or current production state. Derived addon postimages and synthetic209-sentinel rehearsal are not observed production adoption or real approvals. The checklist has been reconciled from15 to the retained19-check provider-hook receipt; this changes no acceptance or activation disposition.
+
+The exact machine-readable requirements and evidence paths are in `minimum-path.json`. This assessment reuses retained evidence and performs no fresh production acceptance.
+
+Latest independent Work matrix `CalcuMint_N1_ee3d0a70_20261108_N1-EXACT-VERSION-MATRIX.json`, SHA256 `818b6861780f35172afbf8bb9ffabe96b68a2de96427935119e4c25897c32846`, retains `fullyAcceptedSubset: []` and recommends440 with432 fallback after gates. Recommendation supplies no acceptance or activation authority. Its local attachment path is recorded in JSON.

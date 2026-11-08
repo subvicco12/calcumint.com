@@ -386,11 +386,21 @@ jobs:
       - name: Batch21 calculator wave exact evidence and browser acceptance
         timeout-minutes: 20
         run: |
+          node --test tests/batch21-calculator-wave/failure-diagnostics.test.mjs tests/batch21-calculator-wave/journey-readiness.test.mjs tests/batch21-calculator-wave/journey-lifecycle.test.mjs
           node scripts/batch21-calculator-wave/evidence.mjs --check
           node tests/batch21-calculator-wave/browser.mjs
         env:
           BATCH21_BROWSER_RECEIPT: ${{ runner.temp }}/batch21-browser
           BATCH21_SCENARIO_UI: '1'
+      - name: Preserve Batch21 primary failure and browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch21-browser-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/batch21-browser/report.json
+            ${{ runner.temp }}/batch21-browser/*.png
+          if-no-files-found: warn
       - name: Batch22 publication packets, live interface evidence and isolated preflight
         timeout-minutes: 20
         run: |
@@ -604,8 +614,9 @@ jobs:
         run: |
           node scripts/adoption1535/inventory.mjs --check
           node scripts/adoption1535/package.mjs --check
-          node --test tests/adoption1535/*.test.mjs
+          node --test tests/adoption1535/*.test.mjs tests/first-pilot1536/*.test.mjs
           node scripts/adoption1535/package.mjs --rehearse
+          node tests/first-pilot1536/singleton.mjs
       - name: Preserve held batch adoption acceptance
         uses: actions/upload-artifact@v4
         with:
