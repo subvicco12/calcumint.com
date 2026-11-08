@@ -4,7 +4,7 @@ import {Blob as NodeBlob} from 'node:buffer';
 import {cleanup,fireEvent,render,screen} from '@testing-library/react';
 import {RemainingEngineeringReview} from './remaining-engineering-review';
 import {remainingExamples,exportRemainingContract} from '../calculators/remaining-contracts';
-afterEach(()=>{cleanup();vi.restoreAllMocks();vi.unstubAllGlobals();});
+afterEach(()=>{if(vi.isFakeTimers()){vi.runOnlyPendingTimers();vi.useRealTimers();}cleanup();vi.restoreAllMocks();vi.unstubAllGlobals();});
 const click=(name:string)=>fireEvent.click(screen.getByRole('button',{name}));
 const change=(label:string,value:string)=>fireEvent.change(screen.getByLabelText(label),{target:{value}});
 const lossy=(text:string)=>text.replace(/-?\d+(?:\.\d+)?(?=[,}\]])/,n=>Number(n)===0?'1e-400':n+(n.includes('.')?'00000000000000000001':'.00000000000000000001'));
@@ -27,11 +27,12 @@ describe('51 remaining private review numeric text boundaries',()=>{
   expect(screen.queryByTestId('remaining-result')).toBeNull();expect(screen.getByRole('alert')).toBeTruthy();
  });
  it('exports actual snapshot bytes and restores quoted digits and canonical historical subnormals',async()=>{
+  vi.useFakeTimers({toFake:['setTimeout','clearTimeout']});
   let artifact:NodeBlob|undefined;
   vi.stubGlobal('Blob',NodeBlob);vi.stubGlobal('URL',{createObjectURL:(b:NodeBlob)=>{artifact=b;return 'blob:shared';},revokeObjectURL:()=>{}});
   vi.spyOn(HTMLAnchorElement.prototype,'click').mockImplementation(()=>{});
   render(<RemainingEngineeringReview/>);change('Find catalog identity','477');click('Calculate');click('Export JSON');
-  const bytes=await artifact!.text();change('Snapshot JSON',bytes);click('Verify and restore snapshot');
+  const bytes=await artifact!.text();vi.advanceTimersByTime(1000);change('Snapshot JSON',bytes);click('Verify and restore snapshot');
   expect(screen.getByTestId('remaining-result').textContent).toBe('20');
   const historical=exportRemainingContract(477,{...remainingExamples[477],currency:'9007199254740993',energyKwh:5e-324,tariffPerKwh:1});
   change('Snapshot JSON',JSON.stringify(historical));click('Verify and restore snapshot');
