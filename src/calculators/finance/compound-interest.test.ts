@@ -1,8 +1,12 @@
 import { describe,expect,it } from "vitest";
 import { runCalculator } from "../engine";
 import { compoundInterestCalculator } from "./compound-interest";
+import { compoundInterestIndependentGoldens } from "./compound-interest-independent-goldens";
 
 describe("compound interest calculator",()=>{
+  it.each(compoundInterestIndependentGoldens)("preserves independent golden: $label", ({input, expected})=>{
+    expect(compoundInterestCalculator.calculate(input, {})).toEqual(expected);
+  });
   it("matches the documented monthly compounding example",()=>{
     const result=runCalculator(compoundInterestCalculator,{principal:10000,annualRatePercent:5,years:10,compoundsPerYear:12}).output;
     expect(result).toEqual({futureValue:16470.09,totalInterest:6470.09});

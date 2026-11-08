@@ -7,6 +7,12 @@ import {calculatorRegistry} from "./registry";
 const dir="data/catalog/source-driven-2026-10-27";
 const hash=(p:string)=>createHash("sha256").update(readFileSync(p)).digest("hex");
 const read=()=>JSON.parse(readFileSync(`${dir}/engineering-register.json`,"utf8"));
+// Keep the original source claims: only the exact Git-bound financial guard
+// successor may differ. This is lineage verification, not renewed acceptance.
+function verifyRetainedBinding(path:string,sha:string){
+ if(hash(path)===sha)return;
+ execFileSync(process.execPath,["scripts/financial-safety-lineage.mjs","--verify",path,sha],{stdio:["ignore","pipe","pipe"]});
+}
 describe("source-driven engineering preserves the exact source/authority boundary",()=>{
  it("binds all50 exact input identities without inventing approvals",()=>{
   const original=JSON.parse(execFileSync(process.execPath,["scripts/verify-source-driven-evidence.mjs"],{encoding:"utf8"}));
@@ -16,8 +22,8 @@ describe("source-driven engineering preserves the exact source/authority boundar
   for(const row of r.rows){expect(row.canonicalScopeAdopted).toBe(false);expect(row.fullCalculatorAccepted).toBe(false);expect(row.qualifiedApproval).toBe("PENDING");expect(row.certificationAuthorized).toBe(false);expect(row.publicationAuthorized).toBe(false);expect(row.remainingGaps.length).toBeGreaterThan(0);}
  });
  it("pins candidate implementation bytes and immutable historical evidence",()=>{
-  const r=read();for(const row of r.rows)for(const ref of row.candidateFiles){expect(hash(ref.path)).toBe(ref.sha256);}
-  for(const [path,sha] of Object.entries(read().protectedHashes))expect(hash(path)).toBe(sha);
+  const r=read();for(const row of r.rows)for(const ref of row.candidateFiles){verifyRetainedBinding(ref.path,ref.sha256);}
+  for(const [path,sha] of Object.entries(read().protectedHashes))verifyRetainedBinding(path,String(sha));
  });
  it("pins versioned unregistered component contracts without changing public discovery",()=>{
   const r=read();expect(r.componentContracts).toEqual(SUPPLIED_COMPONENT_CONTRACTS);

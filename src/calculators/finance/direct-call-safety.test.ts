@@ -28,15 +28,32 @@ describe("financial direct-call safety", () => {
   });
 
   it("fails closed when a schema-valid loan produces a nonfinite total", () => {
+    // The monthly amount is finite; accumulation across the full term overflows.
+    const monthlyPayment = 1e308 * 0.005 / (1 - 1.005 ** -1200);
+    expect(Number.isFinite(monthlyPayment)).toBe(true);
+    expect(monthlyPayment * 1200).toBe(Number.POSITIVE_INFINITY);
     expect(() => loanPaymentCalculator.calculate({
-      principal: 1e308, annualRatePercent: 0, termMonths: 1200
-    }, {})).toThrow();
+      principal: 1e308, annualRatePercent: 6, termMonths: 1200
+    }, {})).toThrow("Total loan payment exceeds supported numeric range");
   });
 
-  it("fails closed on extreme compound-interest rounding and interest", () => {
+  it("fails closed when compound-interest growth exceeds the finite range", () => {
+    expect(1e308 * 2 ** 10).toBe(Number.POSITIVE_INFINITY);
     expect(() => compoundInterestCalculator.calculate({
+      principal: 1e308, annualRatePercent: 100, years: 10, compoundsPerYear: 1
+    }, {})).toThrow("Future value exceeds supported numeric range");
+  });
+
+  it("preserves a finite large zero-rate loan without overflowing decimal scaling", () => {
+    expect(loanPaymentCalculator.calculate({
+      principal: 1e308, annualRatePercent: 0, termMonths: 1200
+    }, {})).toEqual({ monthlyPayment: 8.333333333333333e304, totalPayment: 1e308, totalInterest: 0 });
+  });
+
+  it("preserves finite large compound-interest losses without overflowing decimal scaling", () => {
+    expect(compoundInterestCalculator.calculate({
       principal: 1e308, annualRatePercent: -50, years: 10, compoundsPerYear: 1
-    }, {})).toThrow();
+    }, {})).toEqual({ futureValue: 9.765625e304, totalInterest: -9.990234375e307 });
   });
 
   it("rejects nonfinite rounding inputs without changing ordinary rounding", () => {
