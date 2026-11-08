@@ -1,0 +1,1000 @@
+{
+  "kind": "INDEPENDENT_PYTHON_DECIMAL_SHORTEST_ROUNDTRIP_PROPOSAL_WITNESSES",
+  "inputInterpretation": "Decimal(Number.toString()) for each finite Number; shortest round-trip spelling, not exact binary rational. Proposed private contract; requires financial competent review before adoption.",
+  "oracle": "Python Decimal precision1000 for direct decimal rounding; Python Fraction integer formula evaluation/quotient-remainder cents and exact root identities; no production helper used",
+  "roundingCaseComparison": "Exact equality to the binary64 Number obtained from the independently rounded decimal literal; no epsilon or relative-tolerance waiver",
+  "cases": [
+    {
+      "input": "0",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "0",
+        "floor": "0",
+        "ceil": "0",
+        "truncate": "0"
+      }
+    },
+    {
+      "input": "0",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "0.00",
+        "floor": "0.00",
+        "ceil": "0.00",
+        "truncate": "0.00"
+      }
+    },
+    {
+      "input": "0",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "0E-12",
+        "floor": "0E-12",
+        "ceil": "0E-12",
+        "truncate": "0E-12"
+      }
+    },
+    {
+      "input": "-0",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-0",
+        "floor": "-0",
+        "ceil": "-0",
+        "truncate": "-0"
+      }
+    },
+    {
+      "input": "-0",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-0.00",
+        "floor": "-0.00",
+        "ceil": "-0.00",
+        "truncate": "-0.00"
+      }
+    },
+    {
+      "input": "-0",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-0E-12",
+        "floor": "-0E-12",
+        "ceil": "-0E-12",
+        "truncate": "-0E-12"
+      }
+    },
+    {
+      "input": "0.004999999999999999",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "0",
+        "floor": "0",
+        "ceil": "1",
+        "truncate": "0"
+      }
+    },
+    {
+      "input": "0.004999999999999999",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "0.00",
+        "floor": "0.00",
+        "ceil": "0.01",
+        "truncate": "0.00"
+      }
+    },
+    {
+      "input": "0.004999999999999999",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "0.005000000000",
+        "floor": "0.004999999999",
+        "ceil": "0.005000000000",
+        "truncate": "0.004999999999"
+      }
+    },
+    {
+      "input": "-0.004999999999999999",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-0",
+        "floor": "-1",
+        "ceil": "-0",
+        "truncate": "-0"
+      }
+    },
+    {
+      "input": "-0.004999999999999999",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-0.00",
+        "floor": "-0.01",
+        "ceil": "-0.00",
+        "truncate": "-0.00"
+      }
+    },
+    {
+      "input": "-0.004999999999999999",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-0.005000000000",
+        "floor": "-0.005000000000",
+        "ceil": "-0.004999999999",
+        "truncate": "-0.004999999999"
+      }
+    },
+    {
+      "input": "1.0049999999999992",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "1",
+        "floor": "1",
+        "ceil": "2",
+        "truncate": "1"
+      }
+    },
+    {
+      "input": "1.0049999999999992",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "1.00",
+        "floor": "1.00",
+        "ceil": "1.01",
+        "truncate": "1.00"
+      }
+    },
+    {
+      "input": "1.0049999999999992",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "1.005000000000",
+        "floor": "1.004999999999",
+        "ceil": "1.005000000000",
+        "truncate": "1.004999999999"
+      }
+    },
+    {
+      "input": "-1.0049999999999992",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-1",
+        "floor": "-2",
+        "ceil": "-1",
+        "truncate": "-1"
+      }
+    },
+    {
+      "input": "-1.0049999999999992",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-1.00",
+        "floor": "-1.01",
+        "ceil": "-1.00",
+        "truncate": "-1.00"
+      }
+    },
+    {
+      "input": "-1.0049999999999992",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-1.005000000000",
+        "floor": "-1.005000000000",
+        "ceil": "-1.004999999999",
+        "truncate": "-1.004999999999"
+      }
+    },
+    {
+      "input": "1.005",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "1",
+        "floor": "1",
+        "ceil": "2",
+        "truncate": "1"
+      }
+    },
+    {
+      "input": "1.005",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "1.01",
+        "floor": "1.00",
+        "ceil": "1.01",
+        "truncate": "1.00"
+      }
+    },
+    {
+      "input": "1.005",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "1.005000000000",
+        "floor": "1.005000000000",
+        "ceil": "1.005000000000",
+        "truncate": "1.005000000000"
+      }
+    },
+    {
+      "input": "-1.005",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-1",
+        "floor": "-2",
+        "ceil": "-1",
+        "truncate": "-1"
+      }
+    },
+    {
+      "input": "-1.005",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-1.01",
+        "floor": "-1.01",
+        "ceil": "-1.00",
+        "truncate": "-1.00"
+      }
+    },
+    {
+      "input": "-1.005",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-1.005000000000",
+        "floor": "-1.005000000000",
+        "ceil": "-1.005000000000",
+        "truncate": "-1.005000000000"
+      }
+    },
+    {
+      "input": "10000000000000.244",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "10000000000000",
+        "floor": "10000000000000",
+        "ceil": "10000000000001",
+        "truncate": "10000000000000"
+      }
+    },
+    {
+      "input": "10000000000000.244",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "10000000000000.24",
+        "floor": "10000000000000.24",
+        "ceil": "10000000000000.25",
+        "truncate": "10000000000000.24"
+      }
+    },
+    {
+      "input": "10000000000000.244",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "10000000000000.244000000000",
+        "floor": "10000000000000.244000000000",
+        "ceil": "10000000000000.244000000000",
+        "truncate": "10000000000000.244000000000"
+      }
+    },
+    {
+      "input": "10000000000000.246",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "10000000000000",
+        "floor": "10000000000000",
+        "ceil": "10000000000001",
+        "truncate": "10000000000000"
+      }
+    },
+    {
+      "input": "10000000000000.246",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "10000000000000.25",
+        "floor": "10000000000000.24",
+        "ceil": "10000000000000.25",
+        "truncate": "10000000000000.24"
+      }
+    },
+    {
+      "input": "10000000000000.246",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "10000000000000.246000000000",
+        "floor": "10000000000000.246000000000",
+        "ceil": "10000000000000.246000000000",
+        "truncate": "10000000000000.246000000000"
+      }
+    },
+    {
+      "input": "-10000000000000.246",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-10000000000000",
+        "floor": "-10000000000001",
+        "ceil": "-10000000000000",
+        "truncate": "-10000000000000"
+      }
+    },
+    {
+      "input": "-10000000000000.246",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-10000000000000.25",
+        "floor": "-10000000000000.25",
+        "ceil": "-10000000000000.24",
+        "truncate": "-10000000000000.24"
+      }
+    },
+    {
+      "input": "-10000000000000.246",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-10000000000000.246000000000",
+        "floor": "-10000000000000.246000000000",
+        "ceil": "-10000000000000.246000000000",
+        "truncate": "-10000000000000.246000000000"
+      }
+    },
+    {
+      "input": "12000000000000.25",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "12000000000000",
+        "floor": "12000000000000",
+        "ceil": "12000000000001",
+        "truncate": "12000000000000"
+      }
+    },
+    {
+      "input": "12000000000000.25",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "12000000000000.25",
+        "floor": "12000000000000.25",
+        "ceil": "12000000000000.25",
+        "truncate": "12000000000000.25"
+      }
+    },
+    {
+      "input": "12000000000000.25",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "12000000000000.250000000000",
+        "floor": "12000000000000.250000000000",
+        "ceil": "12000000000000.250000000000",
+        "truncate": "12000000000000.250000000000"
+      }
+    },
+    {
+      "input": "45035996273704.96",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "45035996273705",
+        "floor": "45035996273704",
+        "ceil": "45035996273705",
+        "truncate": "45035996273704"
+      }
+    },
+    {
+      "input": "45035996273704.96",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "45035996273704.96",
+        "floor": "45035996273704.96",
+        "ceil": "45035996273704.96",
+        "truncate": "45035996273704.96"
+      }
+    },
+    {
+      "input": "45035996273704.96",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "45035996273704.960000000000",
+        "floor": "45035996273704.960000000000",
+        "ceil": "45035996273704.960000000000",
+        "truncate": "45035996273704.960000000000"
+      }
+    },
+    {
+      "input": "5e-324",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "0",
+        "floor": "0",
+        "ceil": "1",
+        "truncate": "0"
+      }
+    },
+    {
+      "input": "5e-324",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "0.00",
+        "floor": "0.00",
+        "ceil": "0.01",
+        "truncate": "0.00"
+      }
+    },
+    {
+      "input": "5e-324",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "0E-12",
+        "floor": "0E-12",
+        "ceil": "1E-12",
+        "truncate": "0E-12"
+      }
+    },
+    {
+      "input": "-5e-324",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-0",
+        "floor": "-1",
+        "ceil": "-0",
+        "truncate": "-0"
+      }
+    },
+    {
+      "input": "-5e-324",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-0.00",
+        "floor": "-0.01",
+        "ceil": "-0.00",
+        "truncate": "-0.00"
+      }
+    },
+    {
+      "input": "-5e-324",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-0E-12",
+        "floor": "-1E-12",
+        "ceil": "-0E-12",
+        "truncate": "-0E-12"
+      }
+    },
+    {
+      "input": "1.7976931348623157e308",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "floor": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "ceil": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "truncate": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    {
+      "input": "1.7976931348623157e308",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00",
+        "floor": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00",
+        "ceil": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00",
+        "truncate": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.00"
+      }
+    },
+    {
+      "input": "1.7976931348623157e308",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000",
+        "floor": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000",
+        "ceil": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000",
+        "truncate": "179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000"
+      }
+    },
+    {
+      "input": "0.5",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "1",
+        "floor": "0",
+        "ceil": "1",
+        "truncate": "0"
+      }
+    },
+    {
+      "input": "-0.5",
+      "digits": 0,
+      "expected": {
+        "half-away-from-zero": "-1",
+        "floor": "-1",
+        "ceil": "-0",
+        "truncate": "-0"
+      }
+    },
+    {
+      "input": "0.05",
+      "digits": 1,
+      "expected": {
+        "half-away-from-zero": "0.1",
+        "floor": "0.0",
+        "ceil": "0.1",
+        "truncate": "0.0"
+      }
+    },
+    {
+      "input": "-0.05",
+      "digits": 1,
+      "expected": {
+        "half-away-from-zero": "-0.1",
+        "floor": "-0.1",
+        "ceil": "-0.0",
+        "truncate": "-0.0"
+      }
+    },
+    {
+      "input": "0.005",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "0.01",
+        "floor": "0.00",
+        "ceil": "0.01",
+        "truncate": "0.00"
+      }
+    },
+    {
+      "input": "-0.005",
+      "digits": 2,
+      "expected": {
+        "half-away-from-zero": "-0.01",
+        "floor": "-0.01",
+        "ceil": "-0.00",
+        "truncate": "-0.00"
+      }
+    },
+    {
+      "input": "0.0005",
+      "digits": 3,
+      "expected": {
+        "half-away-from-zero": "0.001",
+        "floor": "0.000",
+        "ceil": "0.001",
+        "truncate": "0.000"
+      }
+    },
+    {
+      "input": "-0.0005",
+      "digits": 3,
+      "expected": {
+        "half-away-from-zero": "-0.001",
+        "floor": "-0.001",
+        "ceil": "-0.000",
+        "truncate": "-0.000"
+      }
+    },
+    {
+      "input": "0.00005",
+      "digits": 4,
+      "expected": {
+        "half-away-from-zero": "0.0001",
+        "floor": "0.0000",
+        "ceil": "0.0001",
+        "truncate": "0.0000"
+      }
+    },
+    {
+      "input": "-0.00005",
+      "digits": 4,
+      "expected": {
+        "half-away-from-zero": "-0.0001",
+        "floor": "-0.0001",
+        "ceil": "-0.0000",
+        "truncate": "-0.0000"
+      }
+    },
+    {
+      "input": "0.000005",
+      "digits": 5,
+      "expected": {
+        "half-away-from-zero": "0.00001",
+        "floor": "0.00000",
+        "ceil": "0.00001",
+        "truncate": "0.00000"
+      }
+    },
+    {
+      "input": "-0.000005",
+      "digits": 5,
+      "expected": {
+        "half-away-from-zero": "-0.00001",
+        "floor": "-0.00001",
+        "ceil": "-0.00000",
+        "truncate": "-0.00000"
+      }
+    },
+    {
+      "input": "0.0000005",
+      "digits": 6,
+      "expected": {
+        "half-away-from-zero": "0.000001",
+        "floor": "0.000000",
+        "ceil": "0.000001",
+        "truncate": "0.000000"
+      }
+    },
+    {
+      "input": "-0.0000005",
+      "digits": 6,
+      "expected": {
+        "half-away-from-zero": "-0.000001",
+        "floor": "-0.000001",
+        "ceil": "-0.000000",
+        "truncate": "-0.000000"
+      }
+    },
+    {
+      "input": "0.00000005",
+      "digits": 7,
+      "expected": {
+        "half-away-from-zero": "1E-7",
+        "floor": "0E-7",
+        "ceil": "1E-7",
+        "truncate": "0E-7"
+      }
+    },
+    {
+      "input": "-0.00000005",
+      "digits": 7,
+      "expected": {
+        "half-away-from-zero": "-1E-7",
+        "floor": "-1E-7",
+        "ceil": "-0E-7",
+        "truncate": "-0E-7"
+      }
+    },
+    {
+      "input": "0.000000005",
+      "digits": 8,
+      "expected": {
+        "half-away-from-zero": "1E-8",
+        "floor": "0E-8",
+        "ceil": "1E-8",
+        "truncate": "0E-8"
+      }
+    },
+    {
+      "input": "-0.000000005",
+      "digits": 8,
+      "expected": {
+        "half-away-from-zero": "-1E-8",
+        "floor": "-1E-8",
+        "ceil": "-0E-8",
+        "truncate": "-0E-8"
+      }
+    },
+    {
+      "input": "0.0000000005",
+      "digits": 9,
+      "expected": {
+        "half-away-from-zero": "1E-9",
+        "floor": "0E-9",
+        "ceil": "1E-9",
+        "truncate": "0E-9"
+      }
+    },
+    {
+      "input": "-0.0000000005",
+      "digits": 9,
+      "expected": {
+        "half-away-from-zero": "-1E-9",
+        "floor": "-1E-9",
+        "ceil": "-0E-9",
+        "truncate": "-0E-9"
+      }
+    },
+    {
+      "input": "0.00000000005",
+      "digits": 10,
+      "expected": {
+        "half-away-from-zero": "1E-10",
+        "floor": "0E-10",
+        "ceil": "1E-10",
+        "truncate": "0E-10"
+      }
+    },
+    {
+      "input": "-0.00000000005",
+      "digits": 10,
+      "expected": {
+        "half-away-from-zero": "-1E-10",
+        "floor": "-1E-10",
+        "ceil": "-0E-10",
+        "truncate": "-0E-10"
+      }
+    },
+    {
+      "input": "0.000000000005",
+      "digits": 11,
+      "expected": {
+        "half-away-from-zero": "1E-11",
+        "floor": "0E-11",
+        "ceil": "1E-11",
+        "truncate": "0E-11"
+      }
+    },
+    {
+      "input": "-0.000000000005",
+      "digits": 11,
+      "expected": {
+        "half-away-from-zero": "-1E-11",
+        "floor": "-1E-11",
+        "ceil": "-0E-11",
+        "truncate": "-0E-11"
+      }
+    },
+    {
+      "input": "0.0000000000005",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "1E-12",
+        "floor": "0E-12",
+        "ceil": "1E-12",
+        "truncate": "0E-12"
+      }
+    },
+    {
+      "input": "-0.0000000000005",
+      "digits": 12,
+      "expected": {
+        "half-away-from-zero": "-1E-12",
+        "floor": "-1E-12",
+        "ceil": "-0E-12",
+        "truncate": "-0E-12"
+      }
+    }
+  ],
+  "engineCases": [
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "100000",
+        "annualRatePercent": "6",
+        "termMonths": 360
+      },
+      "expected": {
+        "monthlyPayment": "599.55",
+        "totalPayment": "215838.00",
+        "totalInterest": "115838.00"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "1000",
+        "annualRatePercent": "1e-12",
+        "termMonths": 12
+      },
+      "expected": {
+        "monthlyPayment": "83.33",
+        "totalPayment": "999.96",
+        "totalInterest": "-0.04"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "1",
+        "annualRatePercent": "0",
+        "termMonths": 3
+      },
+      "expected": {
+        "monthlyPayment": "0.33",
+        "totalPayment": "0.99",
+        "totalInterest": "-0.01"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "12000000000000.25",
+        "annualRatePercent": "0",
+        "termMonths": 1
+      },
+      "expected": {
+        "monthlyPayment": "12000000000000.25",
+        "totalPayment": "12000000000000.25",
+        "totalInterest": "0.00"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "1.0049999999999992",
+        "annualRatePercent": "0",
+        "termMonths": 1
+      },
+      "expected": {
+        "monthlyPayment": "1.00",
+        "totalPayment": "1.00",
+        "totalInterest": "0.00"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "0.03",
+        "annualRatePercent": "200",
+        "termMonths": 1
+      },
+      "expected": {
+        "monthlyPayment": "0.04",
+        "totalPayment": "0.04",
+        "totalInterest": "0.01"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "0.39",
+        "annualRatePercent": "200",
+        "termMonths": 2
+      },
+      "expected": {
+        "monthlyPayment": "0.25",
+        "totalPayment": "0.50",
+        "totalInterest": "0.11"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "loan",
+      "input": {
+        "principal": "1.17",
+        "annualRatePercent": "200",
+        "termMonths": 2
+      },
+      "expected": {
+        "monthlyPayment": "0.74",
+        "totalPayment": "1.48",
+        "totalInterest": "0.31"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "10000",
+        "annualRatePercent": "5",
+        "years": 10,
+        "compoundsPerYear": 12
+      },
+      "expected": {
+        "futureValue": "16470.09",
+        "totalInterest": "6470.09"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "0",
+        "annualRatePercent": "1000",
+        "years": 200,
+        "compoundsPerYear": 365
+      },
+      "expected": {
+        "futureValue": "0.00",
+        "totalInterest": "0.00"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "1.0049999999999992",
+        "annualRatePercent": "0",
+        "years": 0,
+        "compoundsPerYear": 1
+      },
+      "expected": {
+        "futureValue": "1.00",
+        "totalInterest": "0.00"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "1000",
+        "annualRatePercent": "-12",
+        "years": 2,
+        "compoundsPerYear": 12
+      },
+      "expected": {
+        "futureValue": "785.68",
+        "totalInterest": "-214.32"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "1e-300",
+        "annualRatePercent": "1000",
+        "years": 100,
+        "compoundsPerYear": 365
+      },
+      "expected": {
+        "futureValue": "282956321174420940649667286231136565874094455968921238313027481222032613488177514894530551261717438814547627376037931387826315505.04",
+        "totalInterest": "282956321174420940649667286231136565874094455968921238313027481222032613488177514894530551261717438814547627376037931387826315505.04"
+      },
+      "comparison": "reject unrepresentable rounded decimal Number"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "233.28",
+        "annualRatePercent": "100",
+        "years": 1,
+        "compoundsPerYear": 6
+      },
+      "expected": {
+        "futureValue": "588.25",
+        "totalInterest": "354.97"
+      },
+      "comparison": "exact rational cent result; exact decimal Number output"
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "0.01",
+        "annualRatePercent": "125",
+        "years": "0.5",
+        "compoundsPerYear": 1
+      },
+      "expected": {
+        "futureValue": "0.02",
+        "totalInterest": "0.01"
+      },
+      "comparison": "exact rational root identity and cent result",
+      "rootIdentity": {
+        "root": "1.5",
+        "exponent": "0.5"
+      }
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "0.01",
+        "annualRatePercent": "-75",
+        "years": "0.5",
+        "compoundsPerYear": 1
+      },
+      "expected": {
+        "futureValue": "0.01",
+        "totalInterest": "0.00"
+      },
+      "comparison": "exact rational root identity and cent result",
+      "rootIdentity": {
+        "root": "0.5",
+        "exponent": "0.5"
+      }
+    },
+    {
+      "engine": "compound",
+      "input": {
+        "principal": "0.01",
+        "annualRatePercent": "-96.875",
+        "years": "0.2",
+        "compoundsPerYear": 1
+      },
+      "expected": {
+        "futureValue": "0.01",
+        "totalInterest": "0.00"
+      },
+      "comparison": "exact rational root identity and cent result",
+      "rootIdentity": {
+        "root": "0.5",
+        "exponent": "0.2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,556 @@
+{
+  "kind": "BOUNDED_APPLICATION_DEFECT_CLOSURE_NOT_FULL_PRODUCT_ACCEPTANCE",
+  "releaseHold": true,
+  "newEngineeringCompleteFullProducts": 0,
+  "newCanonicalAcceptances": 0,
+  "publicationEligible": false,
+  "changedProfileCount": 51,
+  "historicalEngineOrFormulaChanged": false,
+  "productFile": "src/components/remaining-engineering-review.tsx",
+  "testFile": "src/components/remaining-engineering-review.lossless.test.tsx",
+  "red": {
+    "tests": 55,
+    "failed": 55,
+    "meaning": "Original two JSON.parse callsites; no parser/engine changes"
+  },
+  "verificationCommand": "node_modules/.bin/vitest run src/components/remaining-engineering-review.lossless.test.tsx src/components/remaining-engineering-review.test.tsx --maxWorkers=1",
+  "sourceSHA256": {
+    "src/components/remaining-engineering-review.tsx": "1b50b9a87edb78f05bc4bcd86cd81737317b08875867a34c0bdea54c27f7296d",
+    "src/components/remaining-engineering-review.lossless.test.tsx": "746b6b811e3af7653c19fec130f32b179dc16000bdef319a42c82a552174f3e7",
+    "src/calculators/remaining-contracts.ts": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f",
+    "src/lib/publication-factory-contracts-input.ts": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f",
+    "src/lib/final-private-snapshot-text.ts": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+  },
+  "rows": [
+    {
+      "masterId": 25,
+      "title": "Payoff Date Goal Solver",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/24",
+      "inheritedRowSHA256": "727a8bfce234b2b5eec15dd110e703c85b3b1ca0d8dcdbd2654d7fbe834a77f7",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 37,
+      "title": "Rental Cash Flow Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/36",
+      "inheritedRowSHA256": "d0118b72fb2983798fa0a3c96688786b05f3d416b7777c69f3758c8ad6e09d7d",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 45,
+      "title": "Property Appreciation Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/44",
+      "inheritedRowSHA256": "4f294d2ccf7405f521903c6ee4f299a69ba1adba1b494d07d89a87ce3b875a77",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 47,
+      "title": "Renovation ROI Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/46",
+      "inheritedRowSHA256": "1d739b5473ed8dd85dbd67c4b656cd84b7908fc327a4dc3ed9ddcaf08c4594e4",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 57,
+      "title": "Investment Growth Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/56",
+      "inheritedRowSHA256": "5a21887f192764eddc6468cfcd918b63ee2b531b77d1994302c855c247c6b043",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 58,
+      "title": "Savings Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/57",
+      "inheritedRowSHA256": "c1965b3f149499b19e4e1bc01162471ba21650bf0b2088fa9232a2d47f2a4617",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 59,
+      "title": "Future Value Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/58",
+      "inheritedRowSHA256": "ed9d196316c09639cbf40ca2630717f564b56c06a19f9fdf407980e742ac0558",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 60,
+      "title": "Present Value Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/59",
+      "inheritedRowSHA256": "0bd2332cf72e3423ffeac26a36469ae8ad4477b7edbab36fbba79d2e200f4c55",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 61,
+      "title": "Periodic Payment Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/60",
+      "inheritedRowSHA256": "f8e146337ef75303c2f7ad3cd27d3c3ba15b94b624152d0158f877946392c28f",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 62,
+      "title": "Required Rate of Return Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/61",
+      "inheritedRowSHA256": "68995c04b786e2a63d1d53ffa5193e5c00b6d41581a0b737257898f3b61bafcd",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 63,
+      "title": "Investment Duration Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/62",
+      "inheritedRowSHA256": "ee8c9351d3696744f70aab89a01fbe6cc5d2cc25ba13a9347b55baebd3d38515",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 66,
+      "title": "CAGR Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/65",
+      "inheritedRowSHA256": "339d8a4bb62f13410c5f8d62ccc7f2e298a1faca135f1fb6de927468a39b2bbe",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 67,
+      "title": "Average Return Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/66",
+      "inheritedRowSHA256": "e3fc729214d8c897f85ad9374f28f9dd8663a4aa761a04d0b84a98853f51099d",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 68,
+      "title": "Real Return Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/67",
+      "inheritedRowSHA256": "6c794d10d3c7c255711fd128502129711b7e0e6774e564ebe96ef1b532425043",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 69,
+      "title": "Inflation-Adjusted Return Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/68",
+      "inheritedRowSHA256": "41f7ec21401007007e1db59d2bd1ddcc05cc6b7d2ec79518874cdb2970e5906d",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 70,
+      "title": "Dollar-Cost Averaging Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/69",
+      "inheritedRowSHA256": "35fe767781074662479969c0751b837c50d9ecc75b57ac448adebe4aff05e96a",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 71,
+      "title": "Lump Sum vs SIP Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/70",
+      "inheritedRowSHA256": "25ee9a42f22572722412e1d68c46fc7b7d013a0c022e70bb3241ef3f492c2a11",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 72,
+      "title": "Bond Yield Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/71",
+      "inheritedRowSHA256": "facc21fa3b3cf4b1a1a49e05c25cbb330a9db1405e5f16d13ceba904008265a6",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 73,
+      "title": "Bond Price Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/72",
+      "inheritedRowSHA256": "b494900c6aa9451ed5741b4ea4daf063fb09f1b47f02c2939efaa8ccabfb17e6",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 74,
+      "title": "Dividend Yield Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/73",
+      "inheritedRowSHA256": "a97695bb7bacdcfbe8456ba0c853c56a6f3c230903af2a48ebd903e212e2cb0a",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 75,
+      "title": "Dividend Growth Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/74",
+      "inheritedRowSHA256": "ed60b171c38dbf5fbcba6d2425e2b775debdc9d935853769276f919bbe9da7c7",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 76,
+      "title": "Mutual Fund Return Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/75",
+      "inheritedRowSHA256": "9b2638108cc58eefe312e54b0e14b6760542953bf73b15acf68c88009d03506c",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 77,
+      "title": "ETF Return Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/76",
+      "inheritedRowSHA256": "6265f495c0fa2d3c25ef5c531275021fe347de7655c3c24223446a6471a5fe7e",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 78,
+      "title": "Payback Period Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/77",
+      "inheritedRowSHA256": "a51e9b56a8ae0ce94232105fb175763374ab656673b60ce53d2aabf4a7075210",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 79,
+      "title": "Rule of 72 Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/78",
+      "inheritedRowSHA256": "09c261738d0d19eccb3ec2910351ea98ca57a26517cf2dcf22ce7d185b231961",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 83,
+      "title": "Required Monthly Retirement Investment Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/82",
+      "inheritedRowSHA256": "7d61656f09dde9b24d2142119d96ff43885a8c0ac6dee95cf7eb5c70412cd99a",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 93,
+      "title": "Retirement Income Gap Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/92",
+      "inheritedRowSHA256": "b519755db90a4870014dc54bc2b1e7bfa681932333a6363b17c74fdfb0d27bab",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 94,
+      "title": "Retirement Replacement Ratio Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/93",
+      "inheritedRowSHA256": "c6c88e69fa2a08272dd3f77bf35b019074a418b96834306d6915d9f8f21cd83c",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 100,
+      "title": "Monthly Budget Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/99",
+      "inheritedRowSHA256": "e381a63ea5974effbe14aeacbf9e6eb176acaab6c4bce3c69aae78f1201b1519",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 101,
+      "title": "50/30/20 Budget Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/100",
+      "inheritedRowSHA256": "cdf4fa24d75ba6b72dbeb36f60df77070a4e416542491878ef3109d4c3feed75",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 102,
+      "title": "Savings Rate Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/101",
+      "inheritedRowSHA256": "0946ca5d451738b53a23cb5743b971be494a73c923e994265b1c799562d0fc77",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 106,
+      "title": "Education Savings Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/105",
+      "inheritedRowSHA256": "61a23959d19f4754fe6d974c2f2ed2aca1a0b2de5b0828180ac6317a6fee5e5e",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 107,
+      "title": "Wedding Budget Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/106",
+      "inheritedRowSHA256": "9d5f4fc1ab74916b7a8d96b5cf78b3a6aa17ec7bf651352cba14beacb4926057",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 108,
+      "title": "Vacation Budget Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/107",
+      "inheritedRowSHA256": "94c9c2159cd225efc12df26b439173c94da3fd977f95a7686783ebe317bf545b",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 110,
+      "title": "Salary to Hourly Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/109",
+      "inheritedRowSHA256": "8784daba8a6313e174edbc2194ee29b49850a7babb571574ea2f617fde3d6e57",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 111,
+      "title": "Hourly to Salary Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/110",
+      "inheritedRowSHA256": "125655a7e2efed0961a978ca04805a19a37b6c4adac71343ccc4ddb79b305663",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 113,
+      "title": "Raise Percentage Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/112",
+      "inheritedRowSHA256": "1a5e58ea6075e5dd4bca6d5108ef2fef39365455f2ee0f303c7547e92d4c4579",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 114,
+      "title": "Purchasing Power Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/113",
+      "inheritedRowSHA256": "71b39b6df25d80f489aa11c456a1e3bba35ad7984de8614b944e4677df28479c",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 115,
+      "title": "Inflation Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/114",
+      "inheritedRowSHA256": "91a702656734fea25c3375c1c16b418da837190b08673513be689c4be4f95a0d",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 116,
+      "title": "Tip Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/115",
+      "inheritedRowSHA256": "e406165e6f88f9cb739880aa045d1014e6201c25073566ce1cea607ffdafec33",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 117,
+      "title": "Discount Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/116",
+      "inheritedRowSHA256": "3bf944adc11949957371fbf4bd24239681d779d288cc865806d6294108ccb2e9",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 118,
+      "title": "Percent Off Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/117",
+      "inheritedRowSHA256": "a7e375ef97e99c2a0ed4ebebaf113001d087f07e147f9a50d85fb5106b60a49f",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 119,
+      "title": "Commission Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/118",
+      "inheritedRowSHA256": "50043912938ffe28b34afdff0f70fd8cc9e53bebf80d0e84766378e8a08b6706",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 465,
+      "title": "EV vs Petrol/Diesel Cost Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/464",
+      "inheritedRowSHA256": "91e02aa6248644c35064ef2b0a8a32a77a428c8f6437ccd2de5a5e314f9296cf",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 466,
+      "title": "Vehicle Total Cost of Ownership Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/465",
+      "inheritedRowSHA256": "0d12f196a00939ce9db25395ec5c0b7558d7c4b30d5d67d59d3eda972438dbaf",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 473,
+      "title": "Fuel Savings Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/472",
+      "inheritedRowSHA256": "a61e619018cb46dd0e7f8930921041a64e5c036bcfc0f06a32744b03ceaa9667",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 477,
+      "title": "Electricity Cost Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/476",
+      "inheritedRowSHA256": "2cd0f98891b4a898310934b84cb2d9d1b3c149a255ddd160efa4db533f9c0f4d",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 480,
+      "title": "Solar Payback Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/479",
+      "inheritedRowSHA256": "a7f37d2cc95fe4601edf1364ae31e0a4bd0ff228c6d7f58d03a4c75273a30ce0",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 494,
+      "title": "Altitude Pressure Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/493",
+      "inheritedRowSHA256": "54791aa830a634634177c508deffaebed459431dca231bd2aa435e6f8923dfa1",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 528,
+      "title": "Calories Burned by Exercise Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/527",
+      "inheritedRowSHA256": "73b0a6947bee354c0e08e042ba22355abb55c489857ed910a70cf974d24bab1c",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    },
+    {
+      "masterId": 537,
+      "title": "Air Pressure vs Altitude Calculator",
+      "inheritedDisposition": "PARTIALLY_IMPLEMENTED",
+      "inheritedLedgerPointer": "docs/calculator-sprint-20261108/requirements-540.json#/rows/536",
+      "inheritedRowSHA256": "1e982122d4d8bcbe295e8eaf0719314eff400b3597a26e5a3db931dfa081f949",
+      "newEvidence": "UI valid example succeeds; lossy raw numeric token refused before calculation; no result/export control; raw text retained",
+      "canonicalAccepted": false,
+      "fullEngineeringCompletionEstablished": false
+    }
+  ],
+  "green": {
+    "testFiles": 2,
+    "passed": 60,
+    "failed": 0,
+    "newTests": 56,
+    "originalRegressionTests": 4
+  },
+  "nativeBrowser": {
+    "passed": true,
+    "journeys": 57,
+    "individualInputBoundaries": 51,
+    "widthPlanJourneys": 6,
+    "actualDownloads": 6,
+    "pageErrors": 0,
+    "unexpectedNetwork": 0,
+    "report": "docs/acceptance-closure-20261108/shared-browser-report.json",
+    "runner": "tests/acceptance-closure-20261108/shared-browser.mjs",
+    "runnerSHA256": "c4225e0a9aea7f665031ca474f700621b8e1a71f557cf02f0ac54ea71d134ed8",
+    "reportSHA256": "9d8a280ac43f9a49f591823862fdbca411bfdfe265fe1b8954b568e643469db0"
+  }
+}

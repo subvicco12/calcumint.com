@@ -679,6 +679,27 @@ jobs:
             ${{ runner.temp }}/calculator-sprint-cohort-business-browser-report.json
           if-no-files-found: warn
           retention-days: 7
+      - name: Exact financial successor and first-two authenticated acceptance closure
+        timeout-minutes: 4
+        run: |
+          python3 scripts/acceptance-closure-20261108/financial-witnesses.py --check
+          node tests/acceptance-closure-20261108/first-two-auth.mjs
+          node --test tests/acceptance-closure-20261108/*.test.mjs
+          node tests/acceptance-closure-20261108/shared-browser.mjs
+        env:
+          FIRST_TWO_AUTH_RECEIPT: ${{ runner.temp }}/acceptance-closure
+          FIRST_TWO_FRESH_RECEIPT: ${{ runner.temp }}/acceptance-closure/first-two-auth-receipt.json
+          SHARED_BROWSER_REPORT: ${{ runner.temp }}/acceptance-closure/shared-browser-report.json
+      - name: Preserve exact-head acceptance closure receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: acceptance-closure-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/acceptance-closure/
+            docs/acceptance-closure-20261108/financial-rounding-witnesses.json
+          if-no-files-found: warn
+          retention-days: 7
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance, publication-factory]
