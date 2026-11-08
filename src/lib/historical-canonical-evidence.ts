@@ -4,7 +4,6 @@ import {execFileSync} from 'node:child_process';
 import {readFileSync} from 'node:fs';
 import {copyCalculationData} from './calculation-snapshot';
 import {prepareCanonicalContractEvidence,type CanonicalContractEvidence} from './canonical-evidence-preparation';
-// @ts-expect-error The shared Git verifier is an intentionally native ESM script.
 import {verifyFinancialSafetyBinding} from '../../scripts/financial-safety-lineage.mjs';
 const revision='a955cdad7019a645b7ed2950299d0603ba1784a7';
 const artifact='docs/full-product-batch14/contract-evidence.json';
