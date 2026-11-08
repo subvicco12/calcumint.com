@@ -45,7 +45,7 @@ it.each(['edit','cancel','recalculate','entitlement-loss'] as const)('does not s
  if(action==='entitlement-loss')view.rerender(<CandidateWorkbench catalogId={283} plan="free" createRunner={()=>r} download={save}/>);
  let complete:((a:ReturnType<typeof calculateCandidate>)=>void)|undefined;
  if(action==='recalculate'){
-  r.run=vi.fn(()=>new Promise(resolve=>{complete=resolve;}));
+  r.run=vi.fn(()=>new Promise<ReturnType<typeof calculateCandidate>>(resolve=>{complete=resolve;}));
   fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
   expect(r.run).toHaveBeenCalledOnce();
  }

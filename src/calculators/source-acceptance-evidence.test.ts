@@ -7,12 +7,23 @@ const dir="data/catalog/source-acceptance-2026-10-26";
 const read=(p:string)=>JSON.parse(readFileSync(p,"utf8"));
 const hash=(b:string|Buffer)=>createHash("sha256").update(b).digest("hex");
 type Row={masterId:number;title:string;domain:string;status:string;packetPath:string|null;packetSHA256:string|null;historicalQualifiedApprovalStatus:string;certificationAuthorized:boolean;publicationAuthorized:boolean};
+const guardedFinancialPaths=new Set(['src/calculators/precision.ts','src/calculators/finance/loan-payment.ts','src/calculators/finance/compound-interest.ts']);
+function inspectedHistoricalBytes(path:string,bytesFor:(p:string)=>Buffer){
+ const current=bytesFor(path);
+ if(!guardedFinancialPaths.has(path))return current;
+ // Packet claims refer to the retained source, not a new review of the guard
+ // successor. Verify current bytes independently before inspecting that history.
+ expect(current.equals(readFileSync(path))).toBe(true);
+ const historical=execFileSync('git',['show',`a955cdad7019a645b7ed2950299d0603ba1784a7:${path}`],{stdio:['ignore','pipe','pipe']});
+ execFileSync(process.execPath,['scripts/financial-safety-lineage.mjs','--verify',path,hash(historical)],{stdio:['ignore','pipe','pipe']});
+ return historical;
+}
 function inspectSourceBindings(value:unknown,bytesFor:(p:string)=>Buffer){
  if(Array.isArray(value)){for(const item of value)inspectSourceBindings(item,bytesFor);return;}
  if(!value||typeof value!=="object")return;
  const obj=value as Record<string,unknown>;
  if(typeof obj.path==="string"&&obj.path.startsWith("src/")){
-  expect(obj.path.split("/")).not.toContain("..");const bytes=bytesFor(obj.path);
+  expect(obj.path.split("/")).not.toContain("..");const bytes=inspectedHistoricalBytes(obj.path,bytesFor);
   const gitBlob=createHash("sha1").update(Buffer.concat([Buffer.from(`blob ${bytes.length}\0`),bytes])).digest("hex");
   for(const key of ["githubBlobSha","blobSha"]){if(typeof obj[key]==="string")expect(obj[key]).toBe(gitBlob);}
   for(const key of ["localEvidenceSha256","contentSha256"]){if(typeof obj[key]==="string")expect([hash(bytes),hash(Buffer.concat([bytes,Buffer.from("\n")]))]).toContain(obj[key]);}
@@ -55,7 +66,7 @@ describe("source acceptance evidence is complete in coverage and fail-closed in 
  });
  it("rejects stale referenced lane, source-index and inspected implementation evidence",()=>{
   const register=read(`${dir}/readiness-register.json`);
-  for(const path of [`${dir}/lanes/finance-14.json`,`${dir}/source-index.json`,"src/calculators/finance/credit-card-payoff.ts"]){
+  for(const path of [`${dir}/lanes/finance-14.json`,`${dir}/source-index.json`,"src/calculators/finance/credit-card-payoff.ts","src/calculators/precision.ts"]){
    const corrupt=(p:string)=>p===path?Buffer.from(readFileSync(p,"utf8")+" "):readFileSync(p);
    expect(()=>assertSnapshot(register,corrupt)).toThrow();
   }

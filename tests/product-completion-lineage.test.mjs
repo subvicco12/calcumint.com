@@ -6,7 +6,7 @@ import {readFileSync} from 'node:fs';
 import {verifyCompletionBinding} from '../scripts/product-completion-lineage.mjs';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe']});
 const old='a955cdad7019a645b7ed2950299d0603ba1784a7';
-for(const path of ['src/calculators/finance/compound-interest.test.ts','src/components/full-six/candidate-workbench.tsx']){
+for(const path of ['src/calculators/finance/compound-interest.test.ts','src/components/full-six/candidate-workbench.tsx','.github/workflows/ci.yml']){
  const historical=git(['show',old+':'+path]);
  const claim=createHash('sha256').update(historical).digest('hex');
  const current=readFileSync(path);

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdir,readFile,writeFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import {setTimeout as delay} from 'node:timers/promises';
 import {startSixCandidatePreview} from '../../scripts/full-six-candidate-preview.mjs';
 import {startBrowser} from '../next-runtime/cdp.mjs';
@@ -26,7 +27,7 @@ try{
   const result=await browser.js('document.querySelector("[data-primary-result]").textContent');
   if(parity.has(id))assert.equal(result,parity.get(id));else parity.set(id,result);
   assert.equal(await browser.js('document.documentElement.scrollWidth<=innerWidth+1'),true);
-  if(plan==='free'){assert.equal(await browser.js('!!'+button('Export statistics CSV')),false);report.journeys.push({id,plan,denied:true,result});continue;}
+  if(plan==='free'){for(const label of ['Export statistics CSV','Export statistics PDF'])assert.equal(await browser.js('!!'+button(label)),false);report.journeys.push({id,plan,denied:true,result});continue;}
   const planDownloads=path.join(downloads,`${id}-${plan}`);await mkdir(planDownloads,{recursive:true});
   await browser.send('Browser.setDownloadBehavior',{behavior:'allow',downloadPath:planDownloads,eventsEnabled:true});
   await click('Export statistics CSV');const file=path.join(planDownloads,`private-${id}-statistics.csv`);
@@ -36,10 +37,19 @@ try{
   assert(text.includes('/output/contributions/2/weightedSquaredDeviation/numerator'));
   assert(text.includes('"implementation-binding","/implementationRevision","string","six-private-workflows-20261106.1"'));
   assert(text.includes('Import value column as text'));
+  await click('Export statistics PDF');const pdfFile=path.join(planDownloads,`private-${id}-statistics.pdf`),pdf=await completed(pdfFile);
+  assert(pdf.subarray(0,8).toString().startsWith('%PDF-1.7'));
+  const extracted=execFileSync('pdftotext',['-layout',pdfFile,'-'],{encoding:'utf8',stdio:['ignore','pipe','pipe']});
+  assert(extracted.includes('PRIVATE EXPERIMENTAL STATISTICS'));
+  assert(extracted.includes(`private-candidate-statistics-${id}`));
+  assert(extracted.includes('All stored observations'));assert(extracted.includes('PDF/UA conformance: UNVERIFIED'));
+  const info=execFileSync('pdfinfo',[pdfFile],{encoding:'utf8',stdio:['ignore','pipe','pipe']});assert.match(info,/Tagged:\s+yes/);
+  await writeFile(path.join(planDownloads,'pdf-extracted.txt'),extracted);await writeFile(path.join(planDownloads,'pdf-info.txt'),info);
   await browser.field('[data-field="unit"]','cm');
   assert.equal(await browser.js(button('Export statistics CSV')+'.disabled'),true,'Edited result cannot be exported');
+  assert.equal(await browser.js(button('Export statistics PDF')+'.disabled'),true,'Edited PDF cannot be exported');
   await click('Use example');await click('Calculate');await browser.until(ready,25000);
-  report.journeys.push({id,plan,result,nativeCompletedBytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),staleDenied:true,recovered:true});
+  report.journeys.push({id,plan,result,nativeCompletedBytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),pdf:{completedBytes:pdf.length,sha256:createHash('sha256').update(pdf).digest('hex'),independentPopplerRead:true,logicalTags:true,pdfUaAcceptance:'UNVERIFIED'},staleDenied:true,recovered:true});
  }
  assert.deepEqual(browser.errors,[]);report.passed=true;await writeFile(path.join(output,'receipt.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:true,journeys:report.journeys.length,output}));
 }catch(error){await writeFile(path.join(output,'failure.txt'),String(error));if(browser)try{await writeFile(path.join(output,'failure.png'),Buffer.from((await browser.send('Page.captureScreenshot',{format:'png'},5000)).data,'base64'));}catch{}throw error;}

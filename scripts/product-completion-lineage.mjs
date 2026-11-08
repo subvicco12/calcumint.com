@@ -18,6 +18,15 @@ const bindings=[
     "successorBlob": "8b2af39e33be7eb65be3728f72c74dc26b159526",
     "predecessorSHA256": "b83e078d3d5a5701d29673c30548a9fff35f155d23d6d6f6f3019a5c3ebf37d8",
     "successorSHA256": "dd73799575a00c1a02fd8b138f0611c58525fc94f534cf89110fd75c0138f4db"
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
+    "successorRef": "fb2531218dbf71e1116dbc90fc17367692213bdc",
+    "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
+    "successorBlob": "81f68542a0757edffc604a30f8ad99df8d00b65d",
+    "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
+    "successorSHA256": "68e4dc64f8edcea69bdc1c56d3666f82f1ed1d113954dc548801293ea0daacfa"
   }
 ];
 const hash=b=>createHash('sha256').update(b).digest('hex');

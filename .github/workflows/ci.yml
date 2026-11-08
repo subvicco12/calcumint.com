@@ -570,6 +570,12 @@ jobs:
       - name: Approved six-candidate worker, workflow and replay acceptance
         timeout-minutes: 3
         run: |
+          if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends poppler-utils
+          fi
+          node scripts/assert-pdf-tools.mjs
+          python3 scripts/product-completion-20261108/inventory.py --check
           node --test tests/financial-safety-lineage.test.mjs tests/product-completion-lineage.test.mjs
           node scripts/check-current-six-candidate-evidence.mjs
           node --test tests/full-six-candidate/preview.test.mjs
