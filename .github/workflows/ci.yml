@@ -659,6 +659,14 @@ jobs:
         run: node tests/publication-factory/browser.mjs
         env:
           PUBLICATION_FACTORY_BROWSER_ARTIFACTS: ${{ runner.temp }}/publication-factory-browser
+      - name: Calculator sprint shared boundary and version-safe private finance evidence
+        timeout-minutes: 4
+        run: |
+          node_modules/.bin/vitest run --config tests/calculator-sprint-20261108/cohort.vitest.config.ts
+          node --test tests/calculator-sprint-20261108/*.test.mjs
+          node tests/calculator-sprint-20261108/cohort-browser.mjs
+        env:
+          COHORT_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-browser-report.json
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance, publication-factory]
