@@ -216,6 +216,35 @@ const bindings=[
         "sha256": "604a4cd8b166888a9a4a84e153e543a2d81ba7631411b337554a3ab08157c32f"
       }
     ]
+  },
+  {
+    "path": "src/components/remaining-engineering-review.lossless.test.tsx",
+    "predecessorRef": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+    "successorRef": "91b19c36521943a5423c37f2754480e654f884f5",
+    "predecessorBlob": "fb82caccd4f2979a3563730b2811f88426b61ba6",
+    "successorBlob": "59b98ae6587aac6a48610bee268f1f69a6fc5f52",
+    "predecessorSHA256": "746b6b811e3af7653c19fec130f32b179dc16000bdef319a42c82a552174f3e7",
+    "successorSHA256": "1b01187c20de99aeff324f45532088423ed4fa1a540ca512742058d7b0d15304",
+    "supplementalSources": [
+      {
+        "path": "src/components/remaining-engineering-review.tsx",
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "100f4c18dfeac8f26fca189e84c161f3162c1505",
+        "sha256": "1b50b9a87edb78f05bc4bcd86cd81737317b08875867a34c0bdea54c27f7296d"
+      },
+      {
+        "path": "src/lib/final-private-snapshot-text.ts",
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "24b01e628505fda5127b6de8f33563c7bab0f3c3",
+        "sha256": "f23931b6e7f8ad3d8236b0e23bdf275bb521f9e3cac103cdaf2114249df106e2"
+      },
+      {
+        "path": "src/lib/publication-factory-contracts-input.ts",
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
+        "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      }
+    ]
   }
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);

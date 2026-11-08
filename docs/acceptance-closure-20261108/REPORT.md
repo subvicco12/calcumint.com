@@ -30,6 +30,12 @@ The successor maps only that exact historical prefix to canonical `node_modules/
 
 The hosted auth receipt records actual merge checkoutbc79fb0cc82c4f725790deea0d34c1cc556916b0, not the associated PR head11b7a54. Authenticated Git object retrieval proves both have the same tree9edde0db25f290975eb601596067c1aa6be9359e. The delivery checkpoint distinguishes checkout identity from associated head and verifies final source equivalence; no SHA is relabelled.
 
+## Asynchronous test-cleanup recovery
+
+Run **42508601317** at4b632c4 passed checks, build, full-product and publication-factory, including the repaired receipt verification and all57native journeys. Source-acceptance correctly failed despite8,288passing assertions because a download cleanup timer ran after the JSDOM URL mock was restored. The aggregate remained failure; no unhandled error was ignored.
+
+A controlled reproduction kept the worker alive for1.1seconds:57assertions passed but the original test emitted1unhandled exception and exited1. The test-only successor91b19c36521943a5423c37f2754480e654f884f5 advances/drains bounded fake timers while the mock still exists and restores real timers before global teardown. The identical reproduction now exits0 without unhandled errors; all60focused UI tests pass. No production component, assertion, timeout or error policy changed. Originalb2dtest bytes and source hashes are retained, with exact Git/source successor admission rather than an expected-hash replacement. See shared-test-timer-successor.json and unit-url-timer-reproduction.txt. Final clean full-suite and exact-head CI results are recorded in validation/checkpoint.
+
 ## Current production facts, read-only
 
 Fresh authenticated Supabase observation **2026-11-08 16:42:51 UTC**: five audited core/preparation RPCs plus the batch addon have no public overloads. No signatures/ACLs can be affirmed for absent functions. Seven scoped tables grant four roles effective write/TRUNCATE privileges; RLS does not protect TRUNCATE. This is capability evidence, not proof anon/authenticated can access particular rows. Zero sampled transactions/prepared transactions/waiting locks is not a freeze.
@@ -61,3 +67,5 @@ See validation.json for actual checks and known failed intermediate attempts; re
 The next numerical work is qualified work-domain expansion/worker integration only where the complete contract requires it; no additional wrappers or blind formula generation. Competent decisions for #432/#440 and exact operator source/deployment/preimage/freeze/recovery/custody evidence are the first-publication critical path. A whole540 deadline cannot be inferred from test counts or new private profile coverage.
 
 No production writes, grants/RLS/SQL activation, merge, deployment, live billing, certification or publication. **RELEASE HOLD remains active.**
+
+Final timer-successor validation: complete unit suite8,288PASS,4existingSKIP,no unhandled errors;104source checks and63new/retained Node checksPASS. Lint0errors/28existingwarnings,typecheck,45launch,15certification,21owner-calculus and next build --webpackPASS. Exact-head hosted conclusion remains separately recorded in the final checkpoint.

@@ -165,6 +165,100 @@
       "scope": "Post-verifier-portability correction; no application/math/auth source changed",
       "archiveLog": "logs/acceptance-relocation-typecheck.log",
       "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "command": "vitest run [controlled held-worker reproduction and focused remaining UI]",
+      "result": {
+        "reproductionPassed": 57,
+        "unhandledErrors": 0,
+        "focusedUIPassed": 60
+      },
+      "scope": "No temporary reproduction test retained in src; exact recipe and raw red/green logs retained in archive",
+      "archiveLogs": [
+        "logs/acceptance-url-timer-reproduction-red.log",
+        "logs/acceptance-url-timer-reproduction-green.log",
+        "logs/acceptance-url-timer-focused-green.log"
+      ]
+    },
+    {
+      "command": "Post-timer-fix unit-full",
+      "result": {
+        "passed": 8288,
+        "skippedExisting": 4,
+        "unhandledErrors": 0
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-unit-full.log",
+      "sha256": "d596559c31f51c8d221ab5c3158da2c96cd0f2dc22139e44f9894fc23a614cd5"
+    },
+    {
+      "command": "Post-timer-fix source-guards",
+      "result": {
+        "passed": 104
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-source-guards.log",
+      "sha256": "13522782b1a343bdf543e7eebfc0de80464a660d817e5da933170f01bb27276b"
+    },
+    {
+      "command": "Post-timer-fix all-node",
+      "result": {
+        "passed": 63
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-all-node.log",
+      "sha256": "3a6c134308c3e17d9048d061ebc09904fb0aa85f9ed3305dfeb6b3e0da096391"
+    },
+    {
+      "command": "Post-timer-fix lint",
+      "result": {
+        "errors": 0,
+        "existingWarnings": 28
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-lint.log",
+      "sha256": "bb308ecafc155f5bef71526621327627f27daa47e6c1cf88d5de22c71a8ece04"
+    },
+    {
+      "command": "Post-timer-fix typecheck",
+      "result": "PASS",
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-typecheck.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "command": "Post-timer-fix launch",
+      "result": {
+        "passed": 45
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-launch.log",
+      "sha256": "446d165c5300b8b17bf54f6c7c2a25023d04601d8f63a5dae14ee20fbb5fa99f"
+    },
+    {
+      "command": "Post-timer-fix certification",
+      "result": {
+        "passed": 15
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-certification.log",
+      "sha256": "1860c971f26b0d467662a215526ed8cb6c19c8ce63732617b376dd892b6bb8e5"
+    },
+    {
+      "command": "Post-timer-fix owner-calculus",
+      "result": {
+        "passed": 21
+      },
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-owner-calculus.log",
+      "sha256": "fcb97bf05eae52c623bcd83113184dbc80dde748d463a89d0ec6a6d69210b550"
+    },
+    {
+      "command": "Post-timer-fix webpack",
+      "result": "PASS: next build --webpack",
+      "scope": "Final timer successor capture91b19c3; no production math or application change",
+      "archiveLog": "logs/acceptance-timer-webpack.log",
+      "sha256": "336da55331e118a531c00a40968d3692cf374a915eb6b0ad76f973944744ee37"
     }
   ],
   "otherEvidence": {
@@ -228,7 +322,38 @@
       "repair": "Explicit original-cache-prefix relocation with mandatory original per-file hashes, safe path checks and original receipt+lock immutability; producer/math/auth unchanged",
       "evidence": "ci-42506638644-recovery.json",
       "genuineHostedAuthPassed": true
+    },
+    {
+      "run": 42508601317,
+      "associatedHeadSHA": "4b632c4b99da383895cbfb06465e60e4f5b3d401",
+      "conclusion": "failure",
+      "passedJobs": [
+        "checks",
+        "build",
+        "full-product",
+        "publication-factory"
+      ],
+      "failedJobs": [
+        "source-acceptance",
+        "validate"
+      ],
+      "unitAssertionsPassed": 8288,
+      "existingSkipped": 4,
+      "unhandledErrors": 1,
+      "error": "TypeError: URL.revokeObjectURL is not a function",
+      "cause": "Test download timer fired after its JSDOM URL stub was removed",
+      "sourceChange": "Test lifecycle only; advance/drain bounded fake timers while URL stub remains, restore real timers before unstub",
+      "successorCapture": "91b19c36521943a5423c37f2754480e654f884f5",
+      "reproductionRed": "57 assertions passed,1unhandled,exit1",
+      "reproductionGreen": "57 assertions passed,no unhandled,exit0",
+      "focusedUI": "60PASS",
+      "productionSourceChanged": false,
+      "errorPolicyRelaxed": false,
+      "oldEvidenceHashesReplaced": false,
+      "newApproval": false,
+      "excerptLog": "logs/acceptance-ci-42508601317-unit-failure-excerpt.log"
     }
   ],
-  "checkoutIdentityNote": "Hosted default PR merge checkout can differ from event head; final checkpoint verifies actual checkout tree equals associated exact PR-head tree. Do not relabel receipt sourceCommit."
+  "checkoutIdentityNote": "Hosted default PR merge checkout can differ from event head; final checkpoint verifies actual checkout tree equals associated exact PR-head tree. Do not relabel receipt sourceCommit.",
+  "testTimerSuccessor": "shared-test-timer-successor.json"
 }

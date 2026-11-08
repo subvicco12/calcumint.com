@@ -99,3 +99,11 @@ for(const name of ['src/components/remaining-engineering-review.tsx','.github/wo
  test('rejects unauthorized source bytes: '+name,()=>assert.throws(()=>verifyCompletionBinding(name,Buffer.from('unauthorized'),claim,git),/current successor differs/));
  test('rejects missing provenance: '+name,()=>assert.throws(()=>verifyCompletionBinding(name,readFileSync(name),claim,()=>{throw Error('Missing immutable source');}),/Missing immutable source/));
 }
+const timerName='src/components/remaining-engineering-review.lossless.test.tsx';
+const timerOriginal=git(['show','b2d72aa66293b752739b7924745a57a51c4b5acb:'+timerName]),timerClaim=hash(timerOriginal);
+test('preserves original UI evidence hash while admitting exact timer-safe test successor',()=>{
+ const retained=JSON.parse(readFileSync('docs/acceptance-closure-20261108/shared-workflow-evidence.json'));assert.equal(retained.sourceSHA256[timerName],timerClaim);assert.equal(verifyCompletionBinding(timerName,readFileSync(timerName),timerClaim,git),true);
+});
+test('rejects old timer-unsafe test reversion',()=>assert.throws(()=>verifyCompletionBinding(timerName,timerOriginal,timerClaim,git),/current successor differs/));
+test('rejects modified timer-safe source',()=>assert.throws(()=>verifyCompletionBinding(timerName,Buffer.from('unauthorized'),timerClaim,git),/current successor differs/));
+test('requires exact timer-safe source revision',()=>assert.throws(()=>verifyCompletionBinding(timerName,readFileSync(timerName),timerClaim,()=>{throw Error('Missing immutable source');}),/Missing immutable source/));
