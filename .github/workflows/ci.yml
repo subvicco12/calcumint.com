@@ -665,8 +665,10 @@ jobs:
           node_modules/.bin/vitest run --config tests/calculator-sprint-20261108/cohort.vitest.config.ts
           node --test tests/calculator-sprint-20261108/*.test.mjs
           node tests/calculator-sprint-20261108/cohort-browser.mjs
+          node tests/calculator-sprint-20261108/cohort-business-browser.mjs
         env:
           COHORT_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-browser-report.json
+          COHORT_BUSINESS_BROWSER_REPORT: ${{ runner.temp }}/calculator-sprint-cohort-business-browser-report.json
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance, publication-factory]

@@ -2,6 +2,8 @@
 import {useState} from 'react';
 import inventory from '../../docs/cloud-batch07/discovery.json';
 import {businessContracts,businessExamples,exportBusinessContract,importBusinessContract} from '../calculators/business-contracts';
+import {parsePublicationFactoryInput} from '../lib/publication-factory-contracts-input';
+import {parseFinalPrivateSnapshotText} from '../lib/final-private-snapshot-text';
 type Snapshot=ReturnType<typeof exportBusinessContract>;
 const json=(v:unknown)=>JSON.stringify(v,null,2);
 const matches=(r:{masterId:number;title:string;domain:string},q:string)=>/^\d+$/.test(q.trim())?String(r.masterId)===q.trim():`${r.masterId} ${r.title} ${r.domain}`.toLowerCase().includes(q.trim().toLowerCase());
@@ -13,9 +15,9 @@ export function CatalogEngineeringReview(){
  const invalidate=()=>{setSnapshot(null);setError('');};
  function choose(n:number){setId(n);setInput(businessExamples[n]?json(businessExamples[n]):'');invalidate();}
  function find(q:string,c=filter){setSearch(q);setFilter(c);const visible=inventory.rows.filter(r=>matches(r,q)&&(c==='ALL'||r.implementationClass===c));if(!visible.some(r=>r.masterId===id))choose(visible[0]?.masterId??-1);}
- function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportBusinessContract(id,JSON.parse(input),plan));}catch{setError('Check the required supplied business scope, units, denominators, membership, identities and numerical bounds.');}}
+ function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportBusinessContract(id,parsePublicationFactoryInput(input),plan));}catch{setError('Check the required supplied business scope, units, denominators, membership, identities and numerical bounds.');}}
  function restore(s:Snapshot){setSearch('');setFilter('ALL');setId(s.masterId);setInput(json(s.calculation.input));setSnapshot(s);setError('');}
- function replay(){invalidate();try{if(importText.length>8_000_000)throw Error('Snapshot size limit');restore(importBusinessContract(JSON.parse(importText)));}catch{setError('Snapshot must match its selected identity, evidence, dependency versions and actual engine output.');}}
+ function replay(){invalidate();try{restore(importBusinessContract(parseFinalPrivateSnapshotText(importText)));}catch{setError('Snapshot must match its selected identity, evidence, dependency versions and actual engine output.');}}
  function download(){if(!snapshot)return;const url=URL.createObjectURL(new Blob([json(snapshot)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`private-business-${snapshot.masterId}-v1.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
  const headline=(s:Snapshot)=>s.calculation.output.value===null?'Undefined for zero base':String(s.calculation.output.value);
  return <main style={{maxWidth:1000,margin:'auto',padding:16,fontFamily:'system-ui',overflowWrap:'anywhere'}}>
