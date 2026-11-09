@@ -101,7 +101,7 @@ const bindings=[
   {
     "path": "scripts/publication20-caller-lineage.mjs",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+    "successorRef": "719a104663c10154ad945051a6dd54093fc4b284",
     "predecessorBlob": "7ece608dadea02c3c668623d80931c2598829e99",
     "successorBlob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
     "predecessorSHA256": "64368f3b10b838bea51ee4a53f4b0e89b0b2828654ef84f2cd9e68825344367e",
@@ -131,6 +131,11 @@ const bindings=[
         "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
         "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
         "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
+      },
+      {
+        "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+        "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
+        "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
       }
     ],
     "supplementalSources": [
@@ -148,21 +153,21 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
-        "blob": "af6c6de02ed7e94436468a1449aac1731e56a693",
-        "sha256": "4484ea7b8a58d61d91ec293c247d6faccfe618fda0d1f9f79fa00f535b10d577"
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "ff22a6d41358e1fcf36e3222c54b063e814e09dd",
+        "sha256": "4a77494bdf40c8f42d15acfc52df7e7875e53c60c40a508000e07269490f3f82"
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
-        "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
-        "blob": "face5ee39c088fd3573accae5fe495fb0616a4a9",
-        "sha256": "a53f826c7f3a4a04e48f3b07b5e13b85189821fada62352001da2409aa4c18e3"
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "a12994a4457c43c2f47afe12d989b662743b64ae",
+        "sha256": "8db922ae4e5f2d3b60876712011afdb7697e3538e09c9276370fe49e9642d363"
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
-        "blob": "8dd2eaffbd34f6e9a36909e5ff246434e3161e4e",
-        "sha256": "4622fdaa504df00c5f1315767289fd11a4050e1394c29fd9e378a62d9fe1eed7"
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "458a634626cc28ccb9f5d535a80922d72aa9a84e",
+        "sha256": "e3f5b6b7b186cb11ecbe55179afbf4b2f344c8ed778669621224184c698845f3"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
@@ -205,6 +210,24 @@ const bindings=[
         "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
         "blob": "9360ae0bdca742bbb09e50d75a11f69f2786ce24",
         "sha256": "8e4055e6003608b05e780401b0f851756aac203b16dba4e67fdd362d939c3b21"
+      },
+      {
+        "path": "tests/acceptance-closure-20261108/receipt-source-path.d.mts",
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "f048163a3036de24f9e0ad0ee5f2bb8cc8d679f3",
+        "sha256": "503fd703fd97941bd54e2a24d0fd685dfe5e62ec35988d140fa2f76928b1aa00"
+      },
+      {
+        "path": "tests/cohort22-closure-20261109/caller-source.test.mjs",
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "46c908d748ca29182c7e870d40389576b22fbdb1",
+        "sha256": "3eabc923719592830bd17128b74e0d5b566d25531947b0e67ebcc2b60927d845"
+      },
+      {
+        "path": "src/lib/execution-recovery-evidence.test.ts",
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "cadac0ef0ea1fc167654bf1f96e458267f839504",
+        "sha256": "9f66ede2fc1dd97a2e8631c1b6f813f4eb30e52221f6e385c755cc261a75092a"
       }
     ]
   },
@@ -1640,23 +1663,54 @@ const bindings=[
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+    "successorRef": "719a104663c10154ad945051a6dd54093fc4b284",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
-    "successorBlob": "af6c6de02ed7e94436468a1449aac1731e56a693",
+    "successorBlob": "ff22a6d41358e1fcf36e3222c54b063e814e09dd",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
-    "successorSHA256": "4484ea7b8a58d61d91ec293c247d6faccfe618fda0d1f9f79fa00f535b10d577",
+    "successorSHA256": "4a77494bdf40c8f42d15acfc52df7e7875e53c60c40a508000e07269490f3f82",
     "supplementalSources": [
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
-        "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
-        "blob": "a8d13371138a634f26c35d2f3f81bf25633f6c4f",
-        "sha256": "57605fc5d7a70fa51658950cff9bf9ef5555edf1682ca8271941ee3f49974780"
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "a12994a4457c43c2f47afe12d989b662743b64ae",
+        "sha256": "8db922ae4e5f2d3b60876712011afdb7697e3538e09c9276370fe49e9642d363"
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
         "ref": "7086b85437b025225f5736fb6b849415e518dc08",
         "blob": "145e126cb85a52fa64396b74a5d30fe23d325e68",
         "sha256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8"
+      },
+      {
+        "path": "tests/acceptance-closure-20261108/receipt-source-path.d.mts",
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "f048163a3036de24f9e0ad0ee5f2bb8cc8d679f3",
+        "sha256": "503fd703fd97941bd54e2a24d0fd685dfe5e62ec35988d140fa2f76928b1aa00"
+      },
+      {
+        "path": "tests/cohort22-closure-20261109/caller-source.test.mjs",
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "46c908d748ca29182c7e870d40389576b22fbdb1",
+        "sha256": "3eabc923719592830bd17128b74e0d5b566d25531947b0e67ebcc2b60927d845"
+      },
+      {
+        "path": "src/lib/execution-recovery-evidence.test.ts",
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "cadac0ef0ea1fc167654bf1f96e458267f839504",
+        "sha256": "9f66ede2fc1dd97a2e8631c1b6f813f4eb30e52221f6e385c755cc261a75092a"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "56763645c091743508c1b7a163c7c59dcb7f4b7d",
+        "blob": "ef3c87fa0c649ca276a26ebafcc4bf7fe8acdec1",
+        "sha256": "37fc960bff233089d8ffe66c85bc113723d8fd9b3551b48792f7c72686e9186a"
+      }
+    ],
+    "intermediateSources": [
+      {
+        "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+        "blob": "af6c6de02ed7e94436468a1449aac1731e56a693",
+        "sha256": "4484ea7b8a58d61d91ec293c247d6faccfe618fda0d1f9f79fa00f535b10d577"
       }
     ]
   },
