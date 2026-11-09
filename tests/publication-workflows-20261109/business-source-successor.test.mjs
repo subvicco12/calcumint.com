@@ -46,8 +46,8 @@ const independentlyReviewedSources=Object.freeze([
   },
   {
     "path": "src/app/business/api/page.tsx",
-    "blob": "49609b0fe469029b1ad0896da4a850cb6823b337",
-    "sha256": "b40b03b4f1eb40ca58f8ca680580bdb07c91be4c5e1bc5cbf595ad5033ba3236"
+    "blob": "5fe101433c97dd6b26ca1747e0d64345b33fbc84",
+    "sha256": "61db8cf167d1c727e1cae52f33c35e5e62b799cd30b3c8c0c66288c99fa056c3"
   },
   {
     "path": "src/app/business/page.tsx",
@@ -191,4 +191,14 @@ for(const [path,claim] of Object.entries(claims)){
 for(const source of independentlyReviewedSources)test('current Business proof rejects dependency drift '+source.path,()=>{
  const path='src/app/business/api/page.tsx';
  assert.throws(()=>verifyCallerSuccessor(path,source.path===path?Buffer.from('tamper'):read(path),claims[path],name=>name===source.path?Buffer.from('tamper'):read(name)),/current target bytes differ/);
+});
+
+test('automation integration rejects the previously reviewed valid66 API page without rewriting its source packet',()=>{
+ const path='src/app/business/api/page.tsx';
+ const packetBytes=read('docs/publication-workflows-20261109/source-successors/business/source-capture.json');
+ assert.equal(hash(packetBytes),'4626d70e90e65d3164925e8adcb0386e4779941cc324ba33d886dda0423d65a9');
+ const old=JSON.parse(packetBytes).records.find(row=>row.path===path);
+ const previous=read('tests/publication-workflows-20261109/fixtures/business-api-66a8.fixture');
+ assert.equal(hash(previous),old.sha256);
+ assert.throws(()=>verifyCallerSuccessor(path,previous,claims[path]),/current target bytes differ/);
 });
