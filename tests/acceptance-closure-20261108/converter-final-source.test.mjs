@@ -74,9 +74,21 @@ test('appointment absence is explicitly observed with privileged read-only visib
  assert.deepEqual(r.rows.map(x=>x.master_id),[432,440]);for(const row of r.rows){assert.equal(row.read_only,'on');assert.equal(row.observed_actor,'postgres');assert.equal(row.actor_bypass_rls,true);assert.equal(row.exact_candidate_count,0);assert.equal(row.assigned_candidate_count,0);}
 });
 
-test('current guard evolution independently preserves historical stages and exact captured targets',()=>{
+// The original cohort comparisons run against the exact retained metadata stage,
+// whose bytes are still available at the already-governed00651 application capture.
+// Current evolution is independently and completely checked below.
+const retainedCohortRef='00651cc382be5dcbd596882071787fd6702c13d3';
+const parseBindings=source=>JSON.parse(source.slice(source.indexOf('const bindings=')+'const bindings='.length,source.indexOf('\n];\nexport const completionSourceRefs')+2));
+function readRetainedCohortSource(name,encoding){
+ const lineage='scripts/product-completion-lineage.mjs',source=git(['show',retainedCohortRef+':'+lineage]);
+ if(name===lineage)return encoding==='utf8'?source.toString():source;
+ const rows=parseBindings(source.toString()),row=rows.find(row=>row.path===name),dep=rows.flatMap(row=>row.supplementalSources??[]).find(dep=>dep.path===name);
+ const ref=row?.successorRef??dep?.ref;assert(ref,'Missing exact retained cohort source '+name);
+ const bytes=git(['show',ref+':'+name]);return encoding==='utf8'?bytes.toString():bytes;
+}
+test('retained cohort guard evolution preserves historical stages and exact captured targets',()=>{
  const name='scripts/product-completion-lineage.mjs',base='a7a656f71b04b50192485a49b0b56b3fa6bd86b9';
- const old=git(['show',base+':'+name]).toString(),now=readFileSync(name,'utf8');
+ const old=git(['show',base+':'+name]).toString(),now=readRetainedCohortSource(name,'utf8');
  const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
  const before=parse(old),after=parse(now),capture=json('docs/execution-recovery-20261109/source-successors/guard-capture.json').capture;
  const forwarding=json('docs/execution-recovery-20261109/source-successors/reader-forwarding/capture.json');
@@ -90,14 +102,14 @@ test('current guard evolution independently preserves historical stages and exac
   assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
   const target=b.path==='scripts/publication20-caller-lineage.mjs'?cohort.guardCapture:b.path==='scripts/check-shortest-publication20.mjs'?forwarding.wrapperCapture:capture;
   assert.equal(a.successorRef,target);assert.equal(git(['rev-parse',target+':'+a.path]).toString().trim(),a.successorBlob);
-  const bytes=git(['show',target+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
+  const bytes=git(['show',target+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readRetainedCohortSource(a.path).equals(bytes));
   // Old dependency facts remain exact historical Git proof, not rewritten claims.
   for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}
-  for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}
+  for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readRetainedCohortSource(dep.path).equals(bytes));}
  }
  assert.deepEqual(after.filter(row=>!before.some(old=>old.path===row.path)).map(row=>row.path).sort(),['src/components/calculator-interactive.tsx','src/lib/registered-snapshot-verification.ts','tests/acceptance-closure-20261108/receipt-source-path.mjs','scripts/check-current-six-candidate-evidence.mjs','src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts'].sort());
  assert.equal(now.slice(now.indexOf('export const completionSourceRefs')),old.slice(old.indexOf('export const completionSourceRefs')));
- const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readFileSync(guard).equals(git(['show',cohort.guardCapture+':'+guard])));
+ const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readRetainedCohortSource(guard).equals(git(['show',cohort.guardCapture+':'+guard])));
  // Independently retain all stages present immediately before the reader-forwarding repair.
  const previous=parse(git(['show',forwarding.wrapperCapture+':'+name]).toString());
  for(const b of previous){const a=after.find(row=>row.path===b.path);assert(a);
@@ -106,27 +118,27 @@ test('current guard evolution independently preserves historical stages and exac
    assert.deepEqual(a.supplementalSources.slice(0,b.supplementalSources.length),b.supplementalSources);
    const extra=a.supplementalSources.slice(b.supplementalSources.length);
    assert.deepEqual(extra.map(dep=>dep.path).sort(),['src/components/technology-worked-example.tsx','src/lib/presentation-entitlements.ts','src/lib/technology-capture-trust.ts'].sort());
-   for(const dep of extra){assert.equal(dep.ref,cohort.helperCapture);assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}
+   for(const dep of extra){assert.equal(dep.ref,cohort.helperCapture);assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readRetainedCohortSource(dep.path).equals(bytes));}
    assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
    assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
    assert.equal(a.successorRef,cohort.uiCapture);assert.equal(git(['rev-parse',a.successorRef+':'+a.path]).toString().trim(),a.successorBlob);
-   const bytes=git(['show',a.successorRef+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));continue;
+   const bytes=git(['show',a.successorRef+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readRetainedCohortSource(a.path).equals(bytes));continue;
   }
   if(b.path==='tests/acceptance-closure-20261108/receipt-source-path.mjs'){
    for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);
    assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
    assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
    assert.equal(a.successorRef,cohort.guardCapture);assert.equal(git(['rev-parse',a.successorRef+':'+a.path]).toString().trim(),a.successorBlob);
-   const bytes=git(['show',a.successorRef+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
+   const bytes=git(['show',a.successorRef+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readRetainedCohortSource(a.path).equals(bytes));
    for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}
-   for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}continue;
+   for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readRetainedCohortSource(dep.path).equals(bytes));}continue;
   }
   if(!['scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs'].includes(b.path)){assert.deepEqual(a,b);continue;}for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}}
 });
 
-test('inventory test stays exact while its current caller dependency advances with preserved history',()=>{
+test('retained cohort inventory evolution preserves its exact caller dependency history',()=>{
  const capture=json('docs/cohort22-closure-20261109/source-successors/methodology-revision.json');
- const s=readFileSync('scripts/product-completion-lineage.mjs','utf8'),rows=JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
+ const s=readRetainedCohortSource('scripts/product-completion-lineage.mjs','utf8'),rows=JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
  const current=rows.find(row=>row.path===capture.inventoryBefore.path),old=capture.inventoryBefore;
  assert.equal(old.path,'src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts');
  const beforeSource=git(['show',capture.inventoryBaselineCapture+':scripts/product-completion-lineage.mjs']).toString();
@@ -137,6 +149,38 @@ test('inventory test stays exact while its current caller dependency advances wi
  for(const [index,dep] of current.supplementalSources.entries()){
   const historical=old.supplementalSources[index];assert.equal(git(['rev-parse',historical.ref+':'+historical.path]).toString().trim(),historical.blob);assert.equal(hash(git(['show',historical.ref+':'+historical.path])),historical.sha256);
   if(dep.path==='src/components/calculator-interactive.tsx')assert.equal(dep.ref,capture.uiCapture);else assert.deepEqual(dep,historical);
-  assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));
+  assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readRetainedCohortSource(dep.path).equals(bytes));
  }
+});
+
+function proveCurrentSourceEvolution(rows,read=readFileSync,sourceGit=git){
+ const evidence=json('docs/first-five-20261109/ci-recovery/source-evolution/capture.json');
+ const name='scripts/product-completion-lineage.mjs',captured=sourceGit(['show',evidence.capture+':'+name]).toString(),expected=parseBindings(captured);
+ const guard=evidence.guardPath,guardBytes=sourceGit(['show',evidence.capture+':'+guard]);
+ assert.equal(hash(guardBytes),evidence.guardSHA256);assert.equal(sourceGit(['rev-parse',evidence.capture+':'+guard]).toString().trim(),evidence.guardBlob);assert(read(guard).equals(guardBytes));
+ const consumers=expected.filter(row=>(row.supplementalSources??[]).some(dep=>dep.path===guard));assert.deepEqual(consumers.map(row=>row.path),evidence.guardConsumers);
+ // Exactly one current test-source dependency advances. Every other metadata field
+ // is byte-for-byte the adopted main-ancestor capture, including all older stages.
+ for(const row of consumers)for(const dep of row.supplementalSources)if(dep.path===guard)Object.assign(dep,{ref:evidence.capture,blob:evidence.guardBlob,sha256:evidence.guardSHA256});
+ assert.deepEqual(rows,expected);
+ const retained=parseBindings(sourceGit(['show',retainedCohortRef+':'+name]).toString());
+ for(const before of retained){const after=rows.find(row=>row.path===before.path);assert(after);
+  for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(after[key],before[key]);
+  assert.deepEqual((after.intermediateSources??[]).slice(0,(before.intermediateSources??[]).length),before.intermediateSources??[]);
+  if(after.successorRef!==before.successorRef)assert(after.intermediateSources.some(stage=>stage.ref===before.successorRef&&stage.blob===before.successorBlob&&stage.sha256===before.successorSHA256));
+  for(const dep of before.supplementalSources??[]){assert.equal(sourceGit(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(sourceGit(['show',dep.ref+':'+dep.path])),dep.sha256);}
+ }
+ assert.deepEqual(rows.filter(row=>!retained.some(old=>old.path===row.path)).map(row=>row.path),['tests/full-product-batch17/workflow.test.mjs']);
+ for(const row of rows){
+  for(const stage of [{ref:row.predecessorRef,blob:row.predecessorBlob,sha256:row.predecessorSHA256},{ref:row.successorRef,blob:row.successorBlob,sha256:row.successorSHA256},...row.intermediateSources??[]]){assert.equal(sourceGit(['rev-parse',stage.ref+':'+row.path]).toString().trim(),stage.blob);assert.equal(hash(sourceGit(['show',stage.ref+':'+row.path])),stage.sha256);}
+  assert(read(row.path).equals(sourceGit(['show',row.successorRef+':'+row.path])));
+  for(const dep of row.supplementalSources??[]){assert.equal(sourceGit(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=sourceGit(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(read(dep.path).equals(bytes));}
+ }
+ const previous=sourceGit(['show','a7a656f71b04b50192485a49b0b56b3fa6bd86b9:'+name]).toString(),current=read(name).toString();assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),previous.slice(previous.indexOf('export const completionSourceRefs')));
+}
+test('current first-five source evolution requires exact adopted rows, source bytes and every retained stage',()=>proveCurrentSourceEvolution(parseBindings(readFileSync('scripts/product-completion-lineage.mjs','utf8'))));
+test('current first-five evolution rejects metadata reversion, same-target dependency drift and missing provenance',()=>{
+ const rows=parseBindings(readFileSync('scripts/product-completion-lineage.mjs','utf8')),reverted=structuredClone(rows),workflow=reverted.find(row=>row.path==='.github/workflows/ci.yml');workflow.successorRef='b2d72aa66293b752739b7924745a57a51c4b5acb';assert.throws(()=>proveCurrentSourceEvolution(reverted));
+ assert.throws(()=>proveCurrentSourceEvolution(rows,name=>name==='src/components/calculator-interactive.tsx'?Buffer.from('tampered current caller'):readFileSync(name)));
+ assert.throws(()=>proveCurrentSourceEvolution(rows,readFileSync,()=>{throw Error('Missing exact evolution provenance');}),/Missing exact evolution provenance/);
 });
