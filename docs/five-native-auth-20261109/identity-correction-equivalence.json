@@ -1,0 +1,17 @@
+{
+  "scope": "Identity-only re-sanitization of the exact retained actual run; no workflow/build rerun and no changed acceptance claims. Original sanitized packet remains byte-identical.",
+  "rawReceiptSHA256": "3d8adaafc5fa8af3eeef9171e741993fec836d1192e621e6d3f2db14a6157f2d",
+  "originalSanitizedPacketSHA256": "ebae3e3ce9838d1d9a90f1722ebbfed08035ed67091b940c0e00546581619cf0",
+  "identityCorrectedPacketSHA256": "596209b75ad721203f4664bd88d8896c4bac61a78a8d5b37a6d0109594694720",
+  "sanitizerSource": "tests/five-native-auth-20261109/evidence-sanitizer.mjs",
+  "sanitizerCodeSHA256": "3d3402dfdfa3f6c580b861e1aad3cbca4dd06b1a7e674e2cc2a68307e50dc024",
+  "equivalence": "Applying the original sanitizer to the identity-corrected receipt reproduces original receipt.json byte-for-byte.",
+  "canonicalIdentity": {
+    "slug": "base64-size-calculator",
+    "engineId": "technology.base64-size",
+    "methodologyId": "base64-size-calculator"
+  },
+  "timingFieldNormalization": "Preserves original committed observedPostClickJourneyMs label for the same measured value; raw historical calculateToVisibleMs label was corrected before initial commit.",
+  "releaseHold": true,
+  "newPublicationEligible": 0
+}
