@@ -4,7 +4,7 @@ import {verifyCompletionBinding} from '../../scripts/product-completion-lineage.
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 const currentCaller='src/components/calculator-interactive.tsx';
-const knownCallerRefs=['a7a656f71b04b50192485a49b0b56b3fa6bd86b9','7086b85437b025225f5736fb6b849415e518dc08','811bbd67bfcc635808101a351fa15eb133331369','3c2b768ecc9e6e0821df8e74c779d134e99c4f48','56763645c091743508c1b7a163c7c59dcb7f4b7d'];
+const knownCallerRefs=['a7a656f71b04b50192485a49b0b56b3fa6bd86b9','7086b85437b025225f5736fb6b849415e518dc08','811bbd67bfcc635808101a351fa15eb133331369','3c2b768ecc9e6e0821df8e74c779d134e99c4f48','56763645c091743508c1b7a163c7c59dcb7f4b7d','d1ea2fd979fa02e1d107e48aedcba72086115f6e'];
 const sourceGit=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 const sourceHash=bytes=>createHash('sha256').update(bytes).digest('hex');
 /** Known historical receipt claims are not claims of current execution. Require exact current proof. */

@@ -700,11 +700,11 @@ const bindings=[
   {
     "path": "src/components/calculator-interactive.tsx",
     "predecessorRef": "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
-    "successorRef": "56763645c091743508c1b7a163c7c59dcb7f4b7d",
+    "successorRef": "d1ea2fd979fa02e1d107e48aedcba72086115f6e",
     "predecessorBlob": "eda303b5e09abb3ab1ac4147b431fb455d3a2c9d",
-    "successorBlob": "ef3c87fa0c649ca276a26ebafcc4bf7fe8acdec1",
+    "successorBlob": "13ec2a7c55d2b7bda3e5a732f92ae46b29966e7a",
     "predecessorSHA256": "46903cd272e5e8a9b7ff37e338a6d9e149bf8956c4d5bed7afec7f9539d2c123",
-    "successorSHA256": "37fc960bff233089d8ffe66c85bc113723d8fd9b3551b48792f7c72686e9186a",
+    "successorSHA256": "00961551ea2a8d7e5750a67741f1b64f23d8e5b3237bc6e5b229d43b10fc85de",
     "supplementalSources": [
       {
         "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
@@ -1196,6 +1196,11 @@ const bindings=[
         "ref": "3c2b768ecc9e6e0821df8e74c779d134e99c4f48",
         "blob": "f6b335e7176496c06b613274080c3869f52be1e1",
         "sha256": "4d0052350bab20261b7e6ef2f6c5718a6a3b3dfbf2c239b4e15e92140bd472eb"
+      },
+      {
+        "ref": "56763645c091743508c1b7a163c7c59dcb7f4b7d",
+        "blob": "ef3c87fa0c649ca276a26ebafcc4bf7fe8acdec1",
+        "sha256": "37fc960bff233089d8ffe66c85bc113723d8fd9b3551b48792f7c72686e9186a"
       }
     ]
   },
@@ -1701,9 +1706,9 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-interactive.tsx",
-        "ref": "56763645c091743508c1b7a163c7c59dcb7f4b7d",
-        "blob": "ef3c87fa0c649ca276a26ebafcc4bf7fe8acdec1",
-        "sha256": "37fc960bff233089d8ffe66c85bc113723d8fd9b3551b48792f7c72686e9186a"
+        "ref": "d1ea2fd979fa02e1d107e48aedcba72086115f6e",
+        "blob": "13ec2a7c55d2b7bda3e5a732f92ae46b29966e7a",
+        "sha256": "00961551ea2a8d7e5750a67741f1b64f23d8e5b3237bc6e5b229d43b10fc85de"
       }
     ],
     "intermediateSources": [
@@ -1761,9 +1766,9 @@ const bindings=[
     "supplementalSources": [
       {
         "path": "src/components/calculator-interactive.tsx",
-        "ref": "56763645c091743508c1b7a163c7c59dcb7f4b7d",
-        "blob": "ef3c87fa0c649ca276a26ebafcc4bf7fe8acdec1",
-        "sha256": "37fc960bff233089d8ffe66c85bc113723d8fd9b3551b48792f7c72686e9186a"
+        "ref": "d1ea2fd979fa02e1d107e48aedcba72086115f6e",
+        "blob": "13ec2a7c55d2b7bda3e5a732f92ae46b29966e7a",
+        "sha256": "00961551ea2a8d7e5750a67741f1b64f23d8e5b3237bc6e5b229d43b10fc85de"
       },
       {
         "path": "src/calculators/final-framework/technology-scalar-presentation.ts",

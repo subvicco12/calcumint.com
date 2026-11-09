@@ -80,7 +80,7 @@ test('current guard evolution independently preserves historical stages and exac
  const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
  const before=parse(old),after=parse(now),capture=json('docs/execution-recovery-20261109/source-successors/guard-capture.json').capture;
  const forwarding=json('docs/execution-recovery-20261109/source-successors/reader-forwarding/capture.json');
- const cohort=json('docs/cohort22-closure-20261109/source-successors/capture.json');
+ const cohort=json('docs/cohort22-closure-20261109/source-successors/type-import-cleanup.json');
  const evolved=['scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs','tests/shortest-publication-20/caller-lineage.test.mjs','tests/adoption1535/lineage.test.mjs'];
  for(const b of before){
   const a=after.find(row=>row.path===b.path);assert(a);
@@ -125,11 +125,11 @@ test('current guard evolution independently preserves historical stages and exac
 });
 
 test('inventory test stays exact while its current caller dependency advances with preserved history',()=>{
- const capture=json('docs/cohort22-closure-20261109/source-successors/capture.json');
+ const capture=json('docs/cohort22-closure-20261109/source-successors/type-import-cleanup.json');
  const s=readFileSync('scripts/product-completion-lineage.mjs','utf8'),rows=JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
  const current=rows.find(row=>row.path===capture.inventoryBefore.path),old=capture.inventoryBefore;
  assert.equal(old.path,'src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts');
- const beforeSource=git(['show',capture.uiCapture+':scripts/product-completion-lineage.mjs']).toString();
+ const beforeSource=git(['show',capture.inventoryBaselineCapture+':scripts/product-completion-lineage.mjs']).toString();
  const beforeRows=JSON.parse(beforeSource.slice(beforeSource.indexOf('const bindings=')+'const bindings='.length,beforeSource.indexOf('\n];\nexport const completionSourceRefs')+2));
  assert.deepEqual(old,beforeRows.find(row=>row.path===old.path));
  assert.deepEqual({...current,supplementalSources:old.supplementalSources},old);
