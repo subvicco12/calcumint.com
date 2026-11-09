@@ -1,0 +1,50 @@
+CalcuMint | Calculation report
+
+
+DPI Calculator
+Calculator: dpi-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Pixels
+input["pixels"] = 3000
+Length (in) [in]
+input["lengthInches"] = 10
+
+
+RESULTS
+Linear density [DPI]
+output["value"] = 300
+output["steps"][0] = "DPI = 300"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.dpi@1\u000a\u000aLinear pixel/dot density from a sup
+plied pixel count and physical length.\u000aDPI = pixels ÷ length inches
+
+
+DECLARED FORMULAS
+dpi-calculator: DPI = pixels ÷ length inches
+Linear pixel/dot density from a supplied pixel count and physical length.
+
+
+SOURCES
+NIST — Nominal Resolution
+https://www.nist.gov/glossary-term/28116
+NIST defines nominal image resolution as the number of pixels per unit distance (for exa
+mple ppi or ppmm). The CalcuMint DPI calculator reports the supplied linear pixel-count-
+per-inch ratio and does not treat printer dots and display pixels as interchangeable con
+cepts.
+
+
+
+
+Engine v1 | Page 1 of 1
+

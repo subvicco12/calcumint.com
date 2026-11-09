@@ -1,0 +1,52 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import path from 'node:path';
+import {startShortestPublicationPreview} from '../../scripts/shortest-publication-preview.mjs';
+import {startBrowser} from '../next-runtime/cdp.mjs';
+const rows=JSON.parse(await readFile('tests/execution-recovery-20261109/technology-cases.json','utf8')).rows;
+const hazards=JSON.parse(await readFile('docs/cohort22-closure-20261109/technology/hazard-witnesses.json','utf8')).cases;
+const target=path.resolve(process.env.COHORT22_BROWSER_REPORT||'/tmp/cohort22-browser.json');await mkdir(path.dirname(target),{recursive:true});
+const report={kind:'EXISTING19_WORKED_EXAMPLE_AND_PRECISION_CAPTURE_NATIVE_ACCEPTANCE',releaseHold:true,productionWrites:false,syntheticAccountTransport:true,canonicalAcceptance:false,publicationEligible:0,journeys:[],precisionRefusals:[],limitations:['Actual source UI/engines and keyboard; synthetic account transport, not genuine authenticated browser or production acceptance.','A/B inputs differ; retained prior actual GoTrue/API history evidence is a separate scope.','Recorded durations are test observation, not production performance qualification.']};
+let fixture,browser;
+try{
+ fixture=await startShortestPublicationPreview();browser=await startBrowser(fixture.origin);await browser.send('Network.setExtraHTTPHeaders',{headers:{Authorization:fixture.authorization}});
+ async function button(label){await browser.js(`(()=>{const e=[...document.querySelectorAll('#recovery-technology button')].find(e=>e.textContent.trim()===${JSON.stringify(label)});if(!e||e.disabled)throw Error('Button unavailable');e.scrollIntoView({block:'center'});e.focus()})()`);await browser.send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r'});await browser.send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});}
+ for(const plan of ['free','pro','business']){
+  await browser.send('Emulation.setDeviceMetricsOverride',{width:320,height:1000,deviceScaleFactor:1,mobile:true});await browser.visit('/tests/shortest-publication-20/?id=370&plan='+plan);await browser.until(`document.querySelector('#plan')?.textContent===${JSON.stringify(plan)}&&!!window.__first20Snapshot?.output`);
+  await browser.js("(async()=>{const x=await import('/tests/execution-recovery-20261109/browser-entry.tsx');window.__cohort22Mount=x.mountTechnology;})()");
+  for(const row of rows){
+   const start=Date.now();await browser.js('window.__shortestDownloads=[];window.__cohort22Mount('+JSON.stringify(row.slug)+')');await browser.until(`window.__first20Snapshot?.calculatorSlug===${JSON.stringify(row.slug)}&&!!document.querySelector('#recovery-technology section[aria-label="Worked example"] output')&&!!window.__first20Snapshot.output`);
+   const baseline=await browser.js('window.__first20Snapshot');assert.equal(baseline.calculatorVersion,row.version);assert(Math.abs(baseline.output.value-row.expected)<1e-12*Math.max(1,Math.abs(row.expected)));
+   assert.equal(Number(await browser.js("document.querySelector('#recovery-technology [aria-label=\"Worked example result\"]').textContent")),row.expected);
+   const first=await browser.js("document.querySelector('#recovery-technology input[data-technology-field]').getAttribute('data-technology-field')"),selector='#recovery-technology input[data-technology-field='+first+']';
+   const original=Number(await browser.js('document.querySelector('+JSON.stringify(selector)+').value'));
+   await browser.field(selector,String(row.masterId===368?25:original*2));await browser.until('!!window.__first20Snapshot.output');
+   const alternate=await browser.js('window.__first20Snapshot');assert.notEqual(alternate.output.value,baseline.output.value);
+   let saved;
+   if(plan!=='free'){
+    await browser.js("document.querySelector('#recovery-technology .calculator-scenarios > details').open=true");await button('Capture baseline A');await browser.until("document.querySelector('#recovery-technology').textContent.includes('Capture notes:')");
+   }
+   await browser.field(selector,'');await browser.until("window.__first20Snapshot.output===null&&!!document.querySelector('#recovery-technology [role=alert]')");await button('Use worked example');await browser.until('!!window.__first20Snapshot.output');assert.deepEqual(await browser.js('window.__first20Snapshot'),baseline);
+   if(plan!=='free'){
+    await button('Capture scenario B');await button('Export scenario set JSON');await browser.until('window.__shortestDownloads.length===1');
+    saved=await browser.js('JSON.parse(window.__shortestDownloads.at(-1).text)');const collection=saved.scenarios??saved.rows;assert.equal(collection.length,2);const serial=JSON.stringify(collection);assert(serial.includes(JSON.stringify(alternate.output.value)));assert(serial.includes(JSON.stringify(baseline.output.value)));
+    await button('Export JSON');await browser.until('window.__shortestDownloads.length===2');const packet=await browser.js('JSON.parse(window.__shortestDownloads.at(-1).text)');assert.deepEqual(packet,baseline);assert.deepEqual((await browser.js('window.__shortestReplay('+JSON.stringify(packet)+')')).snapshot,baseline);
+    assert.equal(await browser.js(`(()=>{const p=${JSON.stringify(packet)};p.output.value+=1;try{window.__shortestReplay(p);return false}catch{return true}})()`),true);
+   }else{assert.equal(await browser.js("[...document.querySelectorAll('#recovery-technology button')].some(e=>e.textContent.trim()==='Export JSON')"),false);}
+   for(const witness of hazards.filter(w=>w.masterId===row.masterId)){
+    for(const [key,value]of Object.entries(witness.input))await browser.field('#recovery-technology [data-technology-field='+key+']',String(value));
+    await browser.until("window.__first20Snapshot.output===null&&!!document.querySelector('#recovery-technology [role=alert]')");assert.match(await browser.js("document.querySelector('#recovery-technology [role=alert]').textContent"),/precision|range/i);
+    await button('Use worked example');await browser.until('!!window.__first20Snapshot.output');assert.deepEqual(await browser.js('window.__first20Snapshot'),baseline);report.precisionRefusals.push({masterId:row.masterId,plan,input:witness.input,originalVersion:row.version,recovered:true});
+   }
+   if(saved){const before=await browser.js('window.__shortestDownloads.length');await button('Export scenario set JSON');await browser.until('window.__shortestDownloads.length==='+String(before+1));const after=await browser.js('JSON.parse(window.__shortestDownloads.at(-1).text)');assert.deepEqual(after.scenarios??after.rows,saved.scenarios??saved.rows);}
+   for(const size of [[320,1000],[820,480],[1280,900]]){await browser.send('Emulation.setDeviceMetricsOverride',{width:size[0],height:size[1],deviceScaleFactor:1,mobile:size[0]<1000});assert.equal(await browser.js('document.documentElement.scrollWidth>innerWidth+1'),false);}
+   await browser.send('Emulation.setDeviceMetricsOverride',{width:320,height:1000,deviceScaleFactor:1,mobile:true});
+   report.journeys.push({masterId:row.masterId,version:row.version,plan,engineExample:true,keyboardRecovery:true,distinctABPreserved:!!saved,jsonReplayTamper:plan!=='free',portraitLandscapeDesktopNoOverflow:true,elapsedMs:Date.now()-start});
+  }
+ }
+ assert.equal(report.journeys.length,57);assert.equal(report.precisionRefusals.length,30);assert.deepEqual(browser.errors,[]);assert.deepEqual(browser.network.filter(r=>!r.allowed),[]);report.passed=true;
+}catch(error){report.passed=false;report.error=String(error);report.pageErrors=browser?.errors;throw error;}finally{
+ report.sourceHashes={};for(const name of ['src/components/calculator-interactive.tsx','src/components/technology-worked-example.tsx','src/lib/technology-capture-trust.ts','src/lib/presentation-entitlements.ts','src/lib/technology-snapshot-verification.ts','src/lib/registered-snapshot-verification.ts','tests/cohort22-closure-20261109/browser.mjs'])report.sourceHashes[name]=createHash('sha256').update(await readFile(name)).digest('hex');await writeFile(target,JSON.stringify(report,null,2)+'\n');await browser?.close();await fixture?.close();
+}
+console.log(JSON.stringify({report:target,journeys:report.journeys.length,refusals:report.precisionRefusals.length,passed:report.passed}));

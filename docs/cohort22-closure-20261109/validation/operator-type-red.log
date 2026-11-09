@@ -1,0 +1,30 @@
+✔ complete synthetic integrity remains blocked, absent facts remain incomplete (21.592882ms)
+✔ reviewed source mismatch and stale bytes refuse (11.968877ms)
+✔ traversal and symlink escape refuse without reading outside evidence root (4.260517ms)
+✔ reference mismatch, missing file, secret declaration and timestamp omissions refuse (3.276432ms)
+✖ rejects array/object deployed source rather than coercing JSON to a SHA string (8.735745ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 155.713387
+
+✖ failing tests:
+
+test at tests/execution-recovery-20261109/cohort22-attestation.test.mjs:14:1
+✖ rejects array/object deployed source rather than coercing JSON to a SHA string (8.735745ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async file:///workspace/work/product-completion-20261108/tests/execution-recovery-20261109/cohort22-attestation.test.mjs:15:60
+      at async fixture (file:///workspace/work/product-completion-20261108/tests/execution-recovery-20261109/cohort22-attestation.test.mjs:9:584)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Exact deployed SHA/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

@@ -1,0 +1,52 @@
+CalcuMint | Calculation report
+
+
+Battery Runtime Calculator
+Calculator: battery-runtime-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Capacity (Wh) [Wh]
+input["capacityWh"] = 1000
+Load (W) [W]
+input["loadWatts"] = 200
+Efficiency (%) [%]
+input["efficiencyPercent"] = 90
+
+
+RESULTS
+Battery runtime [hours]
+output["value"] = 4.5
+output["steps"][0] = "Battery Runtime = 4.5"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.battery-runtime@1\u000a\u000aIdealized battery runti
+me from energy capacity, load and explicit efficiency.\u000aRuntime (h) = capacity Wh ×
+efficiency ÷ load W
+
+
+DECLARED FORMULAS
+battery-runtime-calculator: Runtime (h) = capacity Wh × efficiency ÷ load W
+Idealized battery runtime from energy capacity, load and explicit efficiency.
+
+
+SOURCES
+NIST Handbook 44 — watthour definition
+https://www.nist.gov/document/2026-nist-handbook-44-appendix-d
+NIST defines the watthour (Wh) as the practical unit of electric energy expended in one
+hour when average power is one watt; runtime here remains an idealized energy/load estim
+ate with explicit efficiency.
+
+
+
+
+Engine v1 | Page 1 of 1
+

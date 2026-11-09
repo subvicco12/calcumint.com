@@ -1,0 +1,50 @@
+CalcuMint | Calculation report
+
+
+Password Entropy Calculator
+Calculator: password-entropy-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Length
+input["length"] = 16
+Character pool size
+input["characterPoolSize"] = 94
+
+
+RESULTS
+Theoretical entropy [bits]
+output["value"] = 104.8734216268422
+output["steps"][0] = "Password Entropy = 104.8734216268422"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.password-entropy@1\u000a\u000aTheoretical entropy fo
+r uniformly random independent characters drawn from the supplied pool; not an estimate
+for human-chosen passwords.\u000aEntropy bits = length × log2(character pool size)
+
+
+DECLARED FORMULAS
+password-entropy-calculator: Entropy bits = length × log2(character pool size)
+Theoretical entropy for uniformly random independent characters drawn from the supplied
+pool; not an estimate for human-chosen passwords.
+
+
+SOURCES
+NIST SP 800-63B — Passwords
+https://pages.nist.gov/800-63-4/sp800-63b/passwords/
+NIST cautions that entropy for user-chosen passwords is difficult to estimate; this calc
+ulator is only the theoretical uniform-random model.
+
+
+
+
+Engine v1 | Page 1 of 1
+

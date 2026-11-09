@@ -9,7 +9,7 @@ export async function inspectPacket(packet,directory){
  assert(packet&&typeof packet==='object'&&!Array.isArray(packet),'Packet object required');
  assert.deepEqual(Object.keys(packet).sort(),['deployedSource','evidence','records','reviewedSource']);
  assert.equal(packet.reviewedSource,reviewedSource,'Reviewed source binding mismatch');
- assert(packet.deployedSource===null||/^[a-f0-9]{40}$/.test(packet.deployedSource),'Exact deployed SHA or explicit null required');
+ assert(packet.deployedSource===null||(typeof packet.deployedSource==='string'&&/^[a-f0-9]{40}$/.test(packet.deployedSource)),'Exact deployed SHA or explicit null required');
  const assessment=assess(packet.records);assert(Array.isArray(packet.evidence),'Evidence list required');
  const base=await realpath(directory),seen=new Set();
  for(const item of packet.evidence){

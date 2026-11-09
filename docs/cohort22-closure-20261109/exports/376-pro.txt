@@ -1,0 +1,51 @@
+CalcuMint | Calculation report
+
+
+Screen PPI Calculator
+Calculator: screen-ppi-calculator | Engine version: 1
+Raw engine values: full numeric precision; no display rounding or sampled rows.
+Units appear only where supplied by the calculation or bound display metadata.
+Embedded Unicode glyphs are readable.
+Unsupported characters and controls use explicit Unicode escapes.
+Tagged PDF; PDF/UA conformance: UNVERIFIED.
+Text follows document order; charts include complete numeric text alternatives.
+
+
+INPUTS
+Width (pixels) [pixels]
+input["widthPixels"] = 1920
+Height (pixels) [pixels]
+input["heightPixels"] = 1080
+Diagonal (in) [in]
+input["diagonalInches"] = 15.6
+
+
+RESULTS
+Pixel density [PPI]
+output["value"] = 141.21199808219862
+output["steps"][0] = "Screen PPI = 141.21199808219862"
+
+
+METHODOLOGY
+Deterministic calculation using the reviewed Technology & Computing engine.\u000aTechnic
+al calculation revision: technology.screen-ppi@1\u000a\u000aPixel density from pixel dim
+ensions and physical diagonal size.\u000aPPI = √(width² + height²) ÷ diagonal inches
+
+
+DECLARED FORMULAS
+screen-ppi-calculator: PPI = √(width² + height²) ÷ diagonal inches
+Pixel density from pixel dimensions and physical diagonal size.
+
+
+SOURCES
+NIST — image resolution terminology
+https://www.nist.gov/glossary-term/28116
+NIST defines nominal image resolution as pixels per unit distance (for example ppi or pp
+mm). CalcuMint derives the screen pixel diagonal geometrically from supplied horizontal
+and vertical pixel dimensions, then divides by the supplied physical diagonal in inches.
+
+
+
+
+Engine v1 | Page 1 of 1
+
