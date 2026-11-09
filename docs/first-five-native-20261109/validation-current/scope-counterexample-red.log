@@ -1,0 +1,22 @@
+PASS Actual registered outputs, immutable duplicate POST/outbox and read-only recovery with inherited request quotas
+PASS Concurrent duplicate submissions create one immutable job/event while preserving existing per-POST quota policy
+PASS Native job and existing API share the same configured last-slot quota under concurrency
+PASS Job/quota/immutable outbox commit atomically and roll back together on audit failure
+PASS Current publication withdrawal, batch-scope removal and Business downgrade deny new submissions and recovery
+PASS Exact five/version and inherited1–100 row bounds reject unsupported jobs
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Missing expected rejection.
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///tmp/calcumint-first-five-native-20261109/tests/first-five-native-20261109/jobs.postgres.mjs:23:190 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: /authority unavailable/,
+  operator: 'rejects',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
