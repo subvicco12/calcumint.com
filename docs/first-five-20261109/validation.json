@@ -91,7 +91,7 @@
     "allFiveJobsAndAggregatePreserved": true,
     "frozenSourceClaimsPreserved": true
   },
-  "hostedExactHeadCI": "NEW_SUCCESSOR_REQUIRES_NEW_EXACT_HEAD_RUN",
+  "hostedExactHeadCI": "FINAL_SOURCE_SUCCESSOR_REQUIRES_NEW_EXACT_HEAD_RUN",
   "newEngineeringComplete": 0,
   "newCanonicalAccepted": 0,
   "newPublicationEligible": 0,
@@ -138,6 +138,26 @@
     "validation/crossed-source-node-red.log": {
       "sha256": "33cf34b982c2fa962ed958cd24c3dd8e10596b3e222ba45def9e51b912393335",
       "bytes": 8629
+    },
+    "validation/final-source-lint.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "validation/final-source-prepush.log": {
+      "sha256": "7432926221d558f5a5d1600f35b30028daa35ee198c504953edf186a62e8ba4b",
+      "bytes": 788
+    },
+    "validation/final-source-typecheck.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "validation/fixed-anchor-green.log": {
+      "sha256": "940d4db094801f21aaea42856cdc8997634a6d19ec30142d725248a274c6a7b4",
+      "bytes": 344
+    },
+    "validation/fixed-anchor-red.log": {
+      "sha256": "b0e49d8db6b5588cbc364e581846372e43bc18106319122847d216dda5fc8af4",
+      "bytes": 2160
     },
     "validation/focused-twelve.log": {
       "sha256": "c7c29bdbcc4119cfdda742eda30ae29fd66899b3929157c62a54ecf1fc6bab1d",
@@ -239,5 +259,30 @@
     "typecheckExitCode": 0,
     "historicalValidationBytesUnchanged": true,
     "lintExitCode": 0
+  },
+  "sourceEvolutionRecovery": {
+    "failedRun": 42661598619,
+    "job": "publication-factory",
+    "failingFile": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
+    "failures": "Two stale current-metadata expectations",
+    "localRetainedAcceptanceTestsPassed": 91,
+    "localRetainedIsFreshCampaign": false,
+    "repairedGuardCasesPassed": 27,
+    "freshShallowSourceRevisions": 55,
+    "freshShallowGuardCasesPassed": 27,
+    "historicalComparisonsExecute": true,
+    "immutableAdoptedMetadataSnapshotPinned": true,
+    "sourceCodeCapture": "f41f3255facac47406be9c94912edade5cce760f",
+    "independentReviewCounterexample": "Manual historical proof accepted coupled predecessor redirection; log/script retained, not acceptance",
+    "independentMandatoryFixedAnchor": "tests/first-five-20261109/accepted-evolution-guard.mjs",
+    "fixedAnchorCasesPassed": 2,
+    "fixedAnchorBeforeRepairRequirementFailed": true,
+    "globalSourceAcceptanceGateRequired": true,
+    "finalMandatoryUnitTestsPassed": 5,
+    "newMandatoryNodeChecks": 21,
+    "additionalFailFastSourceChecks": 27,
+    "typecheckExitCode": 0,
+    "lintExitCode": 0,
+    "productionChanges": false
   }
 }
