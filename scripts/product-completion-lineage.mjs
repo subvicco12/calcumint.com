@@ -168,9 +168,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "4467b5960ce73cd7851332f7248e4d2673dad70b",
-        "blob": "958188aab571cadcdb1e5d27af618a25355da9ab",
-        "sha256": "b1f1c087026cd35877878533384cd17c2c14b2dfb6b69882727ad27d437be293"
+        "ref": "47c1297eee9ff8e61620c29957f4d55a014614e0",
+        "blob": "aa4fe52e54d9e128746d57b9b9c67dd559efe701",
+        "sha256": "4687e8dd24f12ae54df04722559d215b40cc44b9111b3e7fa5b46a54f9ae5413"
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -180,9 +180,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "f41f3255facac47406be9c94912edade5cce760f",
-        "blob": "741df068f39832a6a6c64581d08a2ac2459a5342",
-        "sha256": "369bb6a02a04aaf3f3a6b319c26ff8550e6fd0a4cb9fa0478f129f4e88262d19"
+        "ref": "47c1297eee9ff8e61620c29957f4d55a014614e0",
+        "blob": "dcca9ed780ea0c67c3182698620107369143ac5c",
+        "sha256": "e22d64ddbaf8adb492dd1a9957d5fcc3c9f1a0b6a02291989de6e47d70442807"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
@@ -1209,15 +1209,39 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-analysis.tsx",
-        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
-        "blob": "918f939b3d1f92ee815dcf8937628f971ec00055",
-        "sha256": "59ec341b97cb9f6ece1735636dd192fa4ab045ac7f7d7ee8fdaba415c0258af8"
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "406075b3231eb21a899261ac57e81b679db03537",
+        "sha256": "52951de9c42770e75613a4e4803fcd5b3f1b6c8a5d4de2a9bc2fbf8e52650022"
       },
       {
         "path": "src/components/technology-five-analysis.test.tsx",
         "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
         "blob": "80a1dc9577a8802cf64436f34fc8f243c6575e9b",
         "sha256": "daa068fb778878430f85e635a0687478c5a2627f275d257efc7ca44bde65b876"
+      },
+      {
+        "path": "src/lib/technology-five-batch.ts",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "9f2a487ffd55bdc74440dd6440df7df007d1bdd2",
+        "sha256": "5e894682ca6b12f58c9ec0eb52b3ce5a0a3395683e434bb7df4c7de7e72cb03f"
+      },
+      {
+        "path": "src/lib/technology-five-batch.test.ts",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "8137e891c77652b2d1c2932a5d52d1f62a8b2c22",
+        "sha256": "62378531a9e42660fdac42a08c63347c6ec6631140f5edf0b85bff6c522b2a70"
+      },
+      {
+        "path": "src/components/technology-five-batch.tsx",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "e462dd8acda589ae065fcf3727d031c1daeaaa23",
+        "sha256": "d0dbaffa0ebdb55bfa884e25ba413592aa65901d3e99700c5dca426f36bbc5eb"
+      },
+      {
+        "path": "src/components/technology-five-batch.test.tsx",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "5848f6a3e0c27af125ef4f1949e89de8261bfe0e",
+        "sha256": "969f2894029f3ce7b93ed762f29d350d7a686cb36685ffb1e8f289b76bcd022b"
       }
     ],
     "intermediateSources": [
@@ -1717,11 +1741,11 @@ const bindings=[
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "4467b5960ce73cd7851332f7248e4d2673dad70b",
+    "successorRef": "47c1297eee9ff8e61620c29957f4d55a014614e0",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
-    "successorBlob": "958188aab571cadcdb1e5d27af618a25355da9ab",
+    "successorBlob": "aa4fe52e54d9e128746d57b9b9c67dd559efe701",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
-    "successorSHA256": "b1f1c087026cd35877878533384cd17c2c14b2dfb6b69882727ad27d437be293",
+    "successorSHA256": "4687e8dd24f12ae54df04722559d215b40cc44b9111b3e7fa5b46a54f9ae5413",
     "supplementalSources": [
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -1780,6 +1804,11 @@ const bindings=[
         "ref": "eecc1b853e2ca6c160c999442d78836993565a83",
         "blob": "2fa3ee8dee5d0b26deb5123ffe5f310afedb8eec",
         "sha256": "afaf384c94b5981ccae3b062d158aaa1215da69d209c60316739f653d69d9410"
+      },
+      {
+        "ref": "4467b5960ce73cd7851332f7248e4d2673dad70b",
+        "blob": "958188aab571cadcdb1e5d27af618a25355da9ab",
+        "sha256": "b1f1c087026cd35877878533384cd17c2c14b2dfb6b69882727ad27d437be293"
       }
     ]
   },
@@ -1889,6 +1918,47 @@ const bindings=[
         "ref": "98fc0bfcba9379bee299450c4f73ca49d346921e",
         "blob": "4b866780342b99baeea24383ae2b527b811ef1c2",
         "sha256": "af5cf0a70f1477868d16d6b31e2bbac5a7bb27fa36880b04587a901935924e80"
+      }
+    ]
+  },
+  {
+    "path": "src/components/technology-five-analysis.tsx",
+    "predecessorRef": "00651cc382be5dcbd596882071787fd6702c13d3",
+    "predecessorBlob": "918f939b3d1f92ee815dcf8937628f971ec00055",
+    "predecessorSHA256": "59ec341b97cb9f6ece1735636dd192fa4ab045ac7f7d7ee8fdaba415c0258af8",
+    "successorRef": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+    "successorBlob": "406075b3231eb21a899261ac57e81b679db03537",
+    "successorSHA256": "52951de9c42770e75613a4e4803fcd5b3f1b6c8a5d4de2a9bc2fbf8e52650022",
+    "supplementalSources": [
+      {
+        "path": "src/lib/technology-five-analysis.ts",
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "b892dafbbc6a564e5954512d4cd16f84abb24279",
+        "sha256": "3313a27f4956e195532da03185d1f61a3e9861456edc1bc64a3ca924a5fde99e"
+      },
+      {
+        "path": "src/lib/technology-five-batch.ts",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "9f2a487ffd55bdc74440dd6440df7df007d1bdd2",
+        "sha256": "5e894682ca6b12f58c9ec0eb52b3ce5a0a3395683e434bb7df4c7de7e72cb03f"
+      },
+      {
+        "path": "src/lib/technology-five-batch.test.ts",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "8137e891c77652b2d1c2932a5d52d1f62a8b2c22",
+        "sha256": "62378531a9e42660fdac42a08c63347c6ec6631140f5edf0b85bff6c522b2a70"
+      },
+      {
+        "path": "src/components/technology-five-batch.tsx",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "e462dd8acda589ae065fcf3727d031c1daeaaa23",
+        "sha256": "d0dbaffa0ebdb55bfa884e25ba413592aa65901d3e99700c5dca426f36bbc5eb"
+      },
+      {
+        "path": "src/components/technology-five-batch.test.tsx",
+        "ref": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+        "blob": "5848f6a3e0c27af125ef4f1949e89de8261bfe0e",
+        "sha256": "969f2894029f3ce7b93ed762f29d350d7a686cb36685ffb1e8f289b76bcd022b"
       }
     ]
   }
