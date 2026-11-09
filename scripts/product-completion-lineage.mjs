@@ -180,7 +180,7 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "47c1297eee9ff8e61620c29957f4d55a014614e0",
+        "ref": "d416617b5c0533fe5d4d8a3f9fa5b15b9b539cbb",
         "blob": "dcca9ed780ea0c67c3182698620107369143ac5c",
         "sha256": "e22d64ddbaf8adb492dd1a9957d5fcc3c9f1a0b6a02291989de6e47d70442807"
       },
@@ -1929,6 +1929,18 @@ const bindings=[
     "successorRef": "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
     "successorBlob": "406075b3231eb21a899261ac57e81b679db03537",
     "successorSHA256": "52951de9c42770e75613a4e4803fcd5b3f1b6c8a5d4de2a9bc2fbf8e52650022",
+    "intermediateSources": [
+      {
+        "ref": "f41f3255facac47406be9c94912edade5cce760f",
+        "blob": "918f939b3d1f92ee815dcf8937628f971ec00055",
+        "sha256": "59ec341b97cb9f6ece1735636dd192fa4ab045ac7f7d7ee8fdaba415c0258af8"
+      },
+      {
+        "ref": "9fe66f65cd7da2536f9f2f21d32fbc771bee0892",
+        "blob": "918f939b3d1f92ee815dcf8937628f971ec00055",
+        "sha256": "59ec341b97cb9f6ece1735636dd192fa4ab045ac7f7d7ee8fdaba415c0258af8"
+      }
+    ],
     "supplementalSources": [
       {
         "path": "src/lib/technology-five-analysis.ts",

@@ -6,7 +6,7 @@ import {execFileSync} from 'node:child_process';
 const fixed=Object.freeze([
   {
     "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-    "ref": "47c1297eee9ff8e61620c29957f4d55a014614e0",
+    "ref": "d416617b5c0533fe5d4d8a3f9fa5b15b9b539cbb",
     "blob": "dcca9ed780ea0c67c3182698620107369143ac5c",
     "sha256": "e22d64ddbaf8adb492dd1a9957d5fcc3c9f1a0b6a02291989de6e47d70442807"
   },
@@ -18,12 +18,12 @@ const fixed=Object.freeze([
   },
   {
     "path": "tests/publication-workflows-20261109/current-source-evolution.mjs",
-    "ref": "47c1297eee9ff8e61620c29957f4d55a014614e0",
-    "blob": "6f64fddb2e2c58b4361ec56a4708957e2eea1e12",
-    "sha256": "4fa65930c20893a208df4eb36c7f9c4f9a5583f14c41ac5b4c4ef7f3e1537d3d"
+    "ref": "d416617b5c0533fe5d4d8a3f9fa5b15b9b539cbb",
+    "blob": "1dced0218259ad5d0f91727d32725b9840a30e5f",
+    "sha256": "0be9b9b964b987c559afac3ab58702d9d2b11dc8e7aa34a35b0def8e068142ce"
   }
 ]);
-const captureSHA256='e5d8c79a4195305c77a852e473933f0a69a5cd4d749ff55ebcc45d5527f8f230';
+const captureSHA256='3bb206c3f8f546275ab277d53880be34cfe29084001505f076604264481e97f2';
 const hash=value=>createHash('sha256').update(value).digest('hex');
 const sourceGit=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 export function assertAcceptedCurrentSourceGuard(capture,read=readFileSync,git=sourceGit){
