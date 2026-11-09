@@ -11,3 +11,5 @@ Artifact containment, regular-file/size/hash boundaries and exact CSV/PDF fields
 Source guards found crossed dependency pins and unavailable isolated-source provenance before delivery. Both were corrected through exact integration-byte captures while preserving historical records; no integrity equality, mandatory job or child budget was waived. The cumulative CI job budget correction preserves every other workflow byte.
 
 Full-engineering-complete/canonical/certified/publication-added counts remainzero; required native K software, full-contract disposition and remaining comprehensive QA are explicit, not described as mere signatures.
+
+A separate narrow review of the final Batch17 budget recovery found no material defect or weakening. Exact historical18/current00651 binding, native6/four20/allfive aggregate, self-boundf516 test bytes, stale/rewrite refusal and retained33(notfresh) evidence were checked. No further production/workflow change was needed.

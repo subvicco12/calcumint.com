@@ -13,8 +13,8 @@ it('binds all15 actual analytical browser journeys without authenticated or prod
  for(const row of receipt.journeys){expect(row.primarySnapshotUnchanged).toBe(true);expect(row.independentSamples).toBe(true);expect(row.accessibleRegionAndTable).toBe(true);expect(row.viewportNoOverflow).toBe(true);expect(row.keyboardTargetRecovery).toBe(row.plan!=='free');}
  for(const [path,sha256] of Object.entries(receipt.sourceHashes))await expect(verifyCapturedSource({path,sha256:String(sha256)})).resolves.toBe(path);
 },60000);
-it('runs all seventeen new exact-source and unchanged-verification CI budget checks in mandatory unit discovery',()=>{
- const env={...process.env};delete env.NODE_TEST_CONTEXT;const output=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/first-five-20261109/source-lineage.test.mjs','tests/first-five-20261109/crossed-dependency-source.test.mjs','tests/first-five-20261109/workflow-budget.test.mjs','tests/first-five-20261109/artifact-file.test.mjs','tests/first-five-20261109/lineage-portability.test.mjs'],{encoding:'utf8',env,timeout:45000,maxBuffer:2000000});expect(output).toContain('# tests 17');expect(output).toContain('# fail 0');
+it('runs all nineteen new exact-source and unchanged-verification CI budget checks in mandatory unit discovery',()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;const output=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/first-five-20261109/source-lineage.test.mjs','tests/first-five-20261109/crossed-dependency-source.test.mjs','tests/first-five-20261109/workflow-budget.test.mjs','tests/first-five-20261109/artifact-file.test.mjs','tests/first-five-20261109/lineage-portability.test.mjs','tests/ci-gate-recovery/batch17-budget-successor.test.mjs'],{encoding:'utf8',env,timeout:45000,maxBuffer:2000000});expect(output).toContain('# tests 19');expect(output).toContain('# fail 0');
 },60000);
 
 it('binds fifteen genuine authenticated existing-route journeys and independently reads fifty native completed downloads',async()=>{
