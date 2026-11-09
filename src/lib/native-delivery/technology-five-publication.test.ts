@@ -1,0 +1,7 @@
+import {it,expect,vi,beforeEach} from 'vitest';
+const state=vi.hoisted(()=>({published:new Set<string>(),definition:undefined as unknown}));
+vi.mock('server-only',()=>({}));vi.mock('@/lib/publication-manifest',()=>({getPublishedCalculatorSlugs:async()=>state.published}));vi.mock('@/calculators/registry',()=>({calculatorRegistry:{getBySlug:()=>state.definition}}));
+import {requireTechnologyFivePublication} from './technology-five-publication';
+const valid={id:'technology.base64-size',slug:'base64-size-calculator',version:1,reviewStatus:'certified',formulas:[{}],examples:[{}],sources:[{}]};beforeEach(()=>{state.published=new Set();state.definition={...valid};});
+it('requires both exact repository certified identity and current hosted publication',async()=>{await expect(requireTechnologyFivePublication(386,1)).rejects.toMatchObject({status:404});state.published.add(valid.slug);await expect(requireTechnologyFivePublication(386,1)).resolves.toMatchObject({catalogId:386});for(const patch of [{reviewStatus:'reviewed'},{id:'technology.bandwidth'},{version:2},{sources:[]}]){state.definition={...valid,...patch};await expect(requireTechnologyFivePublication(386,1)).rejects.toMatchObject({status:404});}});
+it('unknown or mismatched version cannot use another published tuple',async()=>{state.published.add(valid.slug);for(const [id,version] of [[440,1],[386,2],[369,1]])await expect(requireTechnologyFivePublication(id,version)).rejects.toMatchObject({status:404});});
