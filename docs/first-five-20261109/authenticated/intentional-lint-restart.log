@@ -1,0 +1,30 @@
+PASS free:#386 native save, Free export/scenario gates
+PASS free:#386 owned native history/replay
+PASS free:#370 native save, Free export/scenario gates
+PASS free:#370 owned native history/replay
+PASS free:#371 native save, Free export/scenario gates
+PASS free:#371 owned native history/replay
+PASS free:#372 native save, Free export/scenario gates
+PASS free:#372 owned native history/replay
+PASS free:#373 native save, Free export/scenario gates
+PASS free:#373 owned native history/replay
+PASS pro:#386 immutable native A/B, actual JSON download/recovery and strict tamper rejection
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: Timed out !!document.querySelector("input[name=name]"); body: This site can’t be reached
+
+127.0.0.1 refused to connect.
+
+Try:
+
+Checking the connection
+Checking the proxy and the firewall
+ERR_CONNECTION_REFUSED
+Reload
+Details
+    at Object.until (file:///workspace/work/product-completion-20261108/tests/next-runtime/cdp.mjs:74:280)
+    at async file:///workspace/work/product-completion-20261108/tests/first-five-20261109/authenticated-browser.mjs:83:75
+
+Node.js v24.19.0
