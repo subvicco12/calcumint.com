@@ -50,11 +50,11 @@ const bindings=[
   {
     "path": ".github/workflows/ci.yml",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+    "successorRef": "00651cc382be5dcbd596882071787fd6702c13d3",
     "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
-    "successorBlob": "2e146967e59f77ab662dab1b18d60db5e852d823",
+    "successorBlob": "5f1156c52ae6926860a61d529faaed825661bba4",
     "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
-    "successorSHA256": "934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9",
+    "successorSHA256": "39703e767294bee42f65f6495f2f9c3c8807c2f237cef79d1a48659196aca243",
     "intermediateSources": [
       {
         "ref": "fb2531218dbf71e1116dbc90fc17367692213bdc",
@@ -95,6 +95,11 @@ const bindings=[
         "ref": "606c44e09799a89922e4c575d24a7798d33ee33b",
         "blob": "360179f221fee30409658eb9be1bba63864a3729",
         "sha256": "1b34d38604e057d2e28e650fd3806fc66b6d38c5fcfa46d08f36eef4ec4318e3"
+      },
+      {
+        "ref": "b2d72aa66293b752739b7924745a57a51c4b5acb",
+        "blob": "2e146967e59f77ab662dab1b18d60db5e852d823",
+        "sha256": "934bf945aa864691a3fba7307484a7996eaf407f49b61f83c98c281780a420c9"
       }
     ]
   },
@@ -163,9 +168,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "eecc1b853e2ca6c160c999442d78836993565a83",
-        "blob": "2fa3ee8dee5d0b26deb5123ffe5f310afedb8eec",
-        "sha256": "afaf384c94b5981ccae3b062d158aaa1215da69d209c60316739f653d69d9410"
+        "ref": "5dc04a0b91d807f72843d3d5c8cc868c26a35e07",
+        "blob": "958188aab571cadcdb1e5d27af618a25355da9ab",
+        "sha256": "b1f1c087026cd35877878533384cd17c2c14b2dfb6b69882727ad27d437be293"
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -710,11 +715,11 @@ const bindings=[
   {
     "path": "src/components/calculator-interactive.tsx",
     "predecessorRef": "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
-    "successorRef": "955e2ed5df93e646275c4d94d33548cac5925380",
+    "successorRef": "00651cc382be5dcbd596882071787fd6702c13d3",
     "predecessorBlob": "eda303b5e09abb3ab1ac4147b431fb455d3a2c9d",
-    "successorBlob": "b5977fef07773c4eda98f1bb430c698681f45ab3",
+    "successorBlob": "5fc7d34fee30fec986f1b7169925e2dc1169a5b6",
     "predecessorSHA256": "46903cd272e5e8a9b7ff37e338a6d9e149bf8956c4d5bed7afec7f9539d2c123",
-    "successorSHA256": "ae8462ecc006a8125c42f3ed92627e7cb39a9b73bb4cd9e92a1c9eb869def435",
+    "successorSHA256": "8f033f08da04fddfcedf6a230dc4a93aaff97d9c8f69b20bf4e1be0341ddebb6",
     "supplementalSources": [
       {
         "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
@@ -1189,6 +1194,30 @@ const bindings=[
         "ref": "3c2b768ecc9e6e0821df8e74c779d134e99c4f48",
         "blob": "c167228a6cf2b5fce861d7abd3b913c6af592e1f",
         "sha256": "364a0d58de1a63828128a8407e0a4ff58d2ae750ba72f11431124c8e12e3e408"
+      },
+      {
+        "path": "src/lib/technology-five-analysis.ts",
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "b892dafbbc6a564e5954512d4cd16f84abb24279",
+        "sha256": "3313a27f4956e195532da03185d1f61a3e9861456edc1bc64a3ca924a5fde99e"
+      },
+      {
+        "path": "src/lib/technology-five-analysis.test.ts",
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "21e7e892e09d78f0088161e5f183ae8968f84197",
+        "sha256": "09ddbc3ef8d987dbd54d306731934a9062cb6131851f2c093ea90202b35f5e1e"
+      },
+      {
+        "path": "src/components/technology-five-analysis.tsx",
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "918f939b3d1f92ee815dcf8937628f971ec00055",
+        "sha256": "59ec341b97cb9f6ece1735636dd192fa4ab045ac7f7d7ee8fdaba415c0258af8"
+      },
+      {
+        "path": "src/components/technology-five-analysis.test.tsx",
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "80a1dc9577a8802cf64436f34fc8f243c6575e9b",
+        "sha256": "daa068fb778878430f85e635a0687478c5a2627f275d257efc7ca44bde65b876"
       }
     ],
     "intermediateSources": [
@@ -1216,6 +1245,11 @@ const bindings=[
         "ref": "d1ea2fd979fa02e1d107e48aedcba72086115f6e",
         "blob": "13ec2a7c55d2b7bda3e5a732f92ae46b29966e7a",
         "sha256": "00961551ea2a8d7e5750a67741f1b64f23d8e5b3237bc6e5b229d43b10fc85de"
+      },
+      {
+        "ref": "955e2ed5df93e646275c4d94d33548cac5925380",
+        "blob": "b5977fef07773c4eda98f1bb430c698681f45ab3",
+        "sha256": "ae8462ecc006a8125c42f3ed92627e7cb39a9b73bb4cd9e92a1c9eb869def435"
       }
     ]
   },
