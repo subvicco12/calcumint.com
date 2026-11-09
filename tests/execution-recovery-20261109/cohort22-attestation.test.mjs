@@ -1,0 +1,13 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,writeFile,symlink,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createHash} from 'node:crypto';
+import {inspectPacket,reviewedSource} from './cohort22-attestation.mjs';
+import {requirements} from './operations-preflight.mjs';
+async function fixture(run){const root=await mkdtemp(join(tmpdir(),'cohort22-attestation-'));try{const bytes='Synthetic nonsecret evidence only';await writeFile(join(root,'proof.md'),bytes);const packet={reviewedSource,deployedSource:'a'.repeat(40),records:Object.fromEntries(requirements.map(k=>[k,{responsibleParty:'Synthetic unit-test custodian',evidenceRef:'receipt:test-'+k}])),evidence:requirements.map(k=>({requirement:k,evidenceRef:'receipt:test-'+k,observedAt:'2026-11-09T00:00:00Z',nonSecret:true,path:'proof.md',sha256:createHash('sha256').update(bytes).digest('hex')}))};await run(packet,root);}finally{await rm(root,{recursive:true,force:true});}}
+test('complete synthetic integrity remains blocked, absent facts remain incomplete',()=>fixture(async(p,r)=>{const x=await inspectPacket(p,r);assert.equal(x.status,'BLOCKED_PENDING_INDEPENDENT_OPERATOR_ADJUDICATION');assert.equal(x.adoptionGo,false);assert.equal(x.productionExecutionAuthorized,false);assert.equal((await inspectPacket({reviewedSource,deployedSource:null,records:{},evidence:[]},r)).status,'BLOCKED_INCOMPLETE_PACKET');}));
+test('reviewed source mismatch and stale bytes refuse',()=>fixture(async(p,r)=>{await assert.rejects(inspectPacket({...p,reviewedSource:'b'.repeat(40)},r),/binding mismatch/);await writeFile(join(r,'proof.md'),'Changed');await assert.rejects(inspectPacket(p,r),/Stale/);}));
+test('traversal and symlink escape refuse without reading outside evidence root',()=>fixture(async(p,r)=>{p.evidence[0].path='../outside';await assert.rejects(inspectPacket(p,r),/traversal/);const outside=await mkdtemp(join(tmpdir(),'cohort22-outside-'));try{await writeFile(join(outside,'outside.md'),'Outside');await symlink(join(outside,'outside.md'),join(r,'escape.md'));p.evidence[0].path='escape.md';await assert.rejects(inspectPacket(p,r),/escapes/);}finally{await rm(outside,{recursive:true,force:true});}}));
+test('reference mismatch, missing file, secret declaration and timestamp omissions refuse',()=>fixture(async(p,r)=>{const original={...p.evidence[0]};for(const [change,pattern] of [[{evidenceRef:'receipt:wrong'},/reference mismatch/],[{path:'absent.md'},/ENOENT/],[{nonSecret:false},/nonsecret/],[{observedAt:null},/timestamp/]]){p.evidence[0]={...original,...change};await assert.rejects(inspectPacket(p,r),pattern);}}));
