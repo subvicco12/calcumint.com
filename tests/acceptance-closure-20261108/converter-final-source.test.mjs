@@ -1,3 +1,4 @@
+import {assertCurrentSourceEvolution,retainedSourceRef} from '../publication-workflows-20261109/current-source-evolution.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,mkdtempSync,mkdirSync,copyFileSync,writeFileSync,symlinkSync,rmSync} from 'node:fs';
@@ -153,7 +154,7 @@ test('retained cohort inventory evolution preserves its exact caller dependency 
  }
 });
 
-function proveCurrentSourceEvolution(rows,read=readFileSync,sourceGit=git){
+function proveRetainedSourceEvolution(rows,read=readFileSync,sourceGit=git){
  const evidence=json('docs/first-five-20261109/ci-recovery/source-evolution/capture.json');
  const name='scripts/product-completion-lineage.mjs',captured=sourceGit(['show',evidence.capture+':'+name]).toString(),expected=parseBindings(captured);
  assert.equal(hash(Buffer.from(captured)),'61d41da20bcb497e2c8d3825af55a327dac30af75843edc6ae6902c404d430b4','Exact adopted598 metadata snapshot required');
@@ -178,6 +179,14 @@ function proveCurrentSourceEvolution(rows,read=readFileSync,sourceGit=git){
   for(const dep of row.supplementalSources??[]){assert.equal(sourceGit(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=sourceGit(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(read(dep.path).equals(bytes));}
  }
  const previous=sourceGit(['show','a7a656f71b04b50192485a49b0b56b3fa6bd86b9:'+name]).toString(),current=read(name).toString();assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),previous.slice(previous.indexOf('export const completionSourceRefs')));
+}
+// Current bytes require a complete exact successor proof. The unchanged historical
+// assertions above additionally run on the exact retained source tree, preserving
+// the f41 guard's adopted598 hash, predecessor expectations and verifier tail.
+function proveCurrentSourceEvolution(rows,read=readFileSync,sourceGit=git){
+ assertCurrentSourceEvolution(rows,read,sourceGit);
+ const retained=name=>sourceGit(['show',retainedSourceRef+':'+name]);
+ proveRetainedSourceEvolution(parseBindings(retained('scripts/product-completion-lineage.mjs').toString()),retained,sourceGit);
 }
 test('current first-five source evolution requires exact adopted rows, source bytes and every retained stage',()=>proveCurrentSourceEvolution(parseBindings(readFileSync('scripts/product-completion-lineage.mjs','utf8'))));
 test('current first-five evolution rejects metadata reversion, same-target dependency drift and missing provenance',()=>{

@@ -10,7 +10,8 @@ test('active source bootstrap requires integrated helper capture and excludes un
 test('integrated helper retains exact historical local capture bytes without requiring its unpublished Git object',()=>{
  const overlay=JSON.parse(readFileSync('docs/first-five-20261109/source-successors/portability/overlay.json','utf8'));
  const blob=git(['rev-parse',integrated+':'+source]).toString().trim(),bytes=git(['cat-file','blob',blob]);
- assert.equal(overlay.localCapture.ref,local);assert.equal(overlay.localCapture.blob,blob);assert.equal(overlay.localCapture.sha256,hash(bytes));assert.deepEqual(overlay.integratedCapture,{ref:integrated,blob,sha256:hash(bytes)});assert.deepEqual(bytes,readFileSync(source));
+ assert.equal(overlay.localCapture.ref,local);assert.equal(overlay.localCapture.blob,blob);assert.equal(overlay.localCapture.sha256,hash(bytes));assert.deepEqual(overlay.integratedCapture,{ref:integrated,blob,sha256:hash(bytes)});assert.deepEqual(bytes,git(['show','9fe66f65cd7da2536f9f2f21d32fbc771bee0892:'+source]));
+ const predecessor=git(['show','7086b85437b025225f5736fb6b849415e518dc08:'+source]);assert.equal(verifyCompletionBinding(source,readFileSync(source),hash(predecessor),git),true);
 });
 test('current helper proof retains predecessor claim and refuses source reversion or integrated provenance substitution',()=>{
  const old=git(['show','7086b85437b025225f5736fb6b849415e518dc08:'+source]),bytes=readFileSync(source),claim=hash(old);

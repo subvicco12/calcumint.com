@@ -28,6 +28,12 @@ export async function verifyCapturedSource(binding,read=readFile){
   const {completionBindingDependencies}=await import('../../scripts/product-completion-lineage.mjs');
   const target=new Map(await Promise.all(completionBindingDependencies(path).map(async name=>[name,await read(name)])));
   verifyCapturedCurrentCaller(binding,name=>name===path?bytes:target.get(name));
+ }else if(path==='src/components/technology-five-analysis.tsx'){
+  const historical=sourceHash(sourceGit(['show','00651cc382be5dcbd596882071787fd6702c13d3:'+path]));
+  const {completionBindingDependencies}=await import('../../scripts/product-completion-lineage.mjs');
+  const target=new Map(await Promise.all(completionBindingDependencies(path).map(async name=>[name,await read(name)])));
+  if(binding.sha256!==historical&&binding.sha256!==sourceHash(bytes))throw Error('Captured analysis historical claim differs');
+  if(verifyCompletionBinding(path,bytes,historical,sourceGit,name=>target.get(name))!==true)throw Error('Exact analysis successor required');
  }else if(path==='src/lib/registered-snapshot-verification.ts'){
   const old='a7a656f71b04b50192485a49b0b56b3fa6bd86b9',current='7086b85437b025225f5736fb6b849415e518dc08';
   const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});

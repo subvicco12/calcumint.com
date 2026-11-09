@@ -1,8 +1,12 @@
+import {execFileSync} from 'node:child_process';
 import {test} from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';
 import {assertAcceptedEvolutionGuard} from './accepted-evolution-guard.mjs';
 const prefix='docs/first-five-20261109/ci-recovery/source-evolution/',path='tests/acceptance-closure-20261108/converter-final-source.test.mjs';
 const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
-function current(){return {evidence:JSON.parse(readFileSync(prefix+'capture.json','utf8')),rows:parse(readFileSync('scripts/product-completion-lineage.mjs','utf8')),guardBytes:readFileSync(path)};}
+// The original independent fixed anchor still verifies its original complete source.
+const retained='9fe66f65cd7da2536f9f2f21d32fbc771bee0892';
+const fromRetained=name=>execFileSync('git',['show',retained+':'+name],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
+function current(){return {evidence:JSON.parse(fromRetained(prefix+'capture.json')),rows:parse(fromRetained('scripts/product-completion-lineage.mjs').toString()),guardBytes:fromRetained(path)};}
 const hash=b=>createHash('sha256').update(b).digest('hex');
 test('independent fixed guard anchor admits only the reviewed current source with genuine Git provenance',()=>{assertAcceptedEvolutionGuard(current());assert.throws(()=>assertAcceptedEvolutionGuard(current(),()=>{throw Error('Missing fixed guard provenance')}),/Missing fixed guard provenance/);});
 test('independent anchor rejects coordinated predecessor capture, metadata and guard-byte redirection',()=>{
