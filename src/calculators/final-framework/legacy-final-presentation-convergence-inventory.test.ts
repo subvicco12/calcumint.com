@@ -1,6 +1,6 @@
 import {describe,expect,it} from 'vitest';
 import fs from 'node:fs';import path from 'node:path';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';
-const historicalExpected=['BmiReferenceTool','TechnologyTool','HealthTool','EngineeringTool'] as const;
+const historicalExpected=["BmiReferenceTool","TechnologyTool","HealthTool","EngineeringTool"] as const;
 const sourcePath='src/components/calculator-interactive.tsx';
 const legacyCallers=(source:string)=>[...source.matchAll(/function\s+(\w+)\([^]*?(?=function\s+\w+\(|$)/g)].filter(match=>match[0].includes('<FinalResultPresentation')).map(match=>match[1]);
 describe('legacy Final presentation convergence inventory',()=>{
