@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 export const retainedSourceRef='9fe66f65cd7da2536f9f2f21d32fbc771bee0892';
-export const applicationSourceRef='29d21bc6ded3f2ac85fb9c64464ab3c25836e689';
+export const applicationSourceRef='b282c57cc6b1e72adf7435fac1e849b2bdddd85a';
 export const evolutionCapturePath='docs/publication-workflows-20261109/source-successors/capture.json';
 const lineage='scripts/product-completion-lineage.mjs';
 const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';
@@ -38,7 +38,7 @@ export function assertCurrentSourceEvolution(rows,read=readFileSync,sourceGit=gi
  const analysisCurrent=capture.changedDependencies[0].current;
  assert.equal(analysisCurrent.path,analysis);
  const oldAnalysis=capture.changedDependencies[0].predecessor;
- assert.deepEqual(capture.analysisBinding,{path:analysis,predecessorRef:oldAnalysis.ref,predecessorBlob:oldAnalysis.blob,predecessorSHA256:oldAnalysis.sha256,successorRef:analysisCurrent.ref,successorBlob:analysisCurrent.blob,successorSHA256:analysisCurrent.sha256,supplementalSources:capture.addedSources});
+ assert.deepEqual(capture.analysisBinding,{path:analysis,predecessorRef:oldAnalysis.ref,predecessorBlob:oldAnalysis.blob,predecessorSHA256:oldAnalysis.sha256,successorRef:analysisCurrent.ref,successorBlob:analysisCurrent.blob,successorSHA256:analysisCurrent.sha256,supplementalSources:[currentCaller.supplementalSources.find(dep=>dep.path==='src/lib/technology-five-analysis.ts'),...capture.addedSources]});
  expected.push(capture.analysisBinding);
  const oldHelper=expected.find(row=>row.path===receiptHelper);
  assert.deepEqual(capture.helperPredecessor,{ref:oldHelper.successorRef,blob:oldHelper.successorBlob,sha256:oldHelper.successorSHA256});
