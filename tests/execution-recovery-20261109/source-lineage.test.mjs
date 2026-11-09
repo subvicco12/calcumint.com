@@ -1,3 +1,4 @@
+import '../cohort22-closure-20261109/caller-source.test.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';

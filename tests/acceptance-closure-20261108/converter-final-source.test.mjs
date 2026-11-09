@@ -80,8 +80,7 @@ test('current guard evolution independently preserves historical stages and exac
  const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
  const before=parse(old),after=parse(now),capture=json('docs/execution-recovery-20261109/source-successors/guard-capture.json').capture;
  const forwarding=json('docs/execution-recovery-20261109/source-successors/reader-forwarding/capture.json');
- const membership=json('docs/execution-recovery-20261109/source-successors/presentation-membership/capture.json');
- const convergence=json('docs/execution-recovery-20261109/source-successors/convergence-inventory/capture.json');
+ const cohort=json('docs/cohort22-closure-20261109/source-successors/capture.json');
  const evolved=['scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs','tests/shortest-publication-20/caller-lineage.test.mjs','tests/adoption1535/lineage.test.mjs'];
  for(const b of before){
   const a=after.find(row=>row.path===b.path);assert(a);
@@ -89,7 +88,7 @@ test('current guard evolution independently preserves historical stages and exac
   for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);
   assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
   assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
-  const target=b.path==='scripts/publication20-caller-lineage.mjs'?convergence.guardCapture:b.path==='scripts/check-shortest-publication20.mjs'?forwarding.wrapperCapture:capture;
+  const target=b.path==='scripts/publication20-caller-lineage.mjs'?cohort.guardCapture:b.path==='scripts/check-shortest-publication20.mjs'?forwarding.wrapperCapture:capture;
   assert.equal(a.successorRef,target);assert.equal(git(['rev-parse',target+':'+a.path]).toString().trim(),a.successorBlob);
   const bytes=git(['show',target+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
   // Old dependency facts remain exact historical Git proof, not rewritten claims.
@@ -98,17 +97,46 @@ test('current guard evolution independently preserves historical stages and exac
  }
  assert.deepEqual(after.filter(row=>!before.some(old=>old.path===row.path)).map(row=>row.path).sort(),['src/components/calculator-interactive.tsx','src/lib/registered-snapshot-verification.ts','tests/acceptance-closure-20261108/receipt-source-path.mjs','scripts/check-current-six-candidate-evidence.mjs','src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts'].sort());
  assert.equal(now.slice(now.indexOf('export const completionSourceRefs')),old.slice(old.indexOf('export const completionSourceRefs')));
- const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readFileSync(guard).equals(git(['show',convergence.guardCapture+':'+guard])));
+ const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readFileSync(guard).equals(git(['show',cohort.guardCapture+':'+guard])));
  // Independently retain all stages present immediately before the reader-forwarding repair.
  const previous=parse(git(['show',forwarding.wrapperCapture+':'+name]).toString());
  for(const b of previous){const a=after.find(row=>row.path===b.path);assert(a);
   if(b.path==='src/components/calculator-interactive.tsx'){
    for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);
-   assert.deepEqual(a.supplementalSources,b.supplementalSources);
+   assert.deepEqual(a.supplementalSources.slice(0,b.supplementalSources.length),b.supplementalSources);
+   const extra=a.supplementalSources.slice(b.supplementalSources.length);
+   assert.deepEqual(extra.map(dep=>dep.path).sort(),['src/components/technology-worked-example.tsx','src/lib/presentation-entitlements.ts','src/lib/technology-capture-trust.ts'].sort());
+   for(const dep of extra){assert.equal(dep.ref,cohort.helperCapture);assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}
    assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
    assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
-   assert.equal(a.successorRef,membership.uiCapture);assert.equal(git(['rev-parse',a.successorRef+':'+a.path]).toString().trim(),a.successorBlob);
+   assert.equal(a.successorRef,cohort.uiCapture);assert.equal(git(['rev-parse',a.successorRef+':'+a.path]).toString().trim(),a.successorBlob);
    const bytes=git(['show',a.successorRef+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));continue;
   }
+  if(b.path==='tests/acceptance-closure-20261108/receipt-source-path.mjs'){
+   for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);
+   assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
+   assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
+   assert.equal(a.successorRef,cohort.guardCapture);assert.equal(git(['rev-parse',a.successorRef+':'+a.path]).toString().trim(),a.successorBlob);
+   const bytes=git(['show',a.successorRef+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
+   for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}
+   for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}continue;
+  }
   if(!['scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs'].includes(b.path)){assert.deepEqual(a,b);continue;}for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}}
+});
+
+test('inventory test stays exact while its current caller dependency advances with preserved history',()=>{
+ const capture=json('docs/cohort22-closure-20261109/source-successors/capture.json');
+ const s=readFileSync('scripts/product-completion-lineage.mjs','utf8'),rows=JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
+ const current=rows.find(row=>row.path===capture.inventoryBefore.path),old=capture.inventoryBefore;
+ assert.equal(old.path,'src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts');
+ const beforeSource=git(['show',capture.uiCapture+':scripts/product-completion-lineage.mjs']).toString();
+ const beforeRows=JSON.parse(beforeSource.slice(beforeSource.indexOf('const bindings=')+'const bindings='.length,beforeSource.indexOf('\n];\nexport const completionSourceRefs')+2));
+ assert.deepEqual(old,beforeRows.find(row=>row.path===old.path));
+ assert.deepEqual({...current,supplementalSources:old.supplementalSources},old);
+ assert.equal(current.supplementalSources.length,old.supplementalSources.length);
+ for(const [index,dep] of current.supplementalSources.entries()){
+  const historical=old.supplementalSources[index];assert.equal(git(['rev-parse',historical.ref+':'+historical.path]).toString().trim(),historical.blob);assert.equal(hash(git(['show',historical.ref+':'+historical.path])),historical.sha256);
+  if(dep.path==='src/components/calculator-interactive.tsx')assert.equal(dep.ref,capture.uiCapture);else assert.deepEqual(dep,historical);
+  assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));
+ }
 });
