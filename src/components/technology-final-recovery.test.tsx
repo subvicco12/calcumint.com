@@ -6,7 +6,7 @@ import {runCalculator} from '@/calculators/engine';
 import {createCalculationSnapshot,serializeCalculationJson} from '@/lib/calculation-snapshot';
 import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-verification';
 import type {ScenarioDisplayMetadata} from '@/lib/scenario-display-metadata';
-import {cleanup,render,screen,fireEvent} from '@testing-library/react';
+import {cleanup,render,screen,fireEvent,within} from '@testing-library/react';
 const state=vi.hoisted(()=>({plan:'free',snapshot:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:Record<string,unknown>|null;scenarioDisplayMetadata?:ScenarioDisplayMetadata;exportMethodology?:string}}));
 vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
 vi.mock('./calculator-account-actions',()=>({CalculatorAccountActions:(p:NonNullable<typeof state.snapshot>)=>{state.snapshot=p;return null;}}));
@@ -46,7 +46,7 @@ for(const plan of ['free','pro','business'])for(const row of cases.rows){
   const immutable=runCalculator(definition,captured.input);expect(captured.output).toEqual(immutable.output);
   expect(screen.getByText('Methodology',{selector:'summary'}).parentElement?.textContent).toContain(definition.formulas[0].expression);
   expect(captured.exportMethodology).toContain(definition.formulas[0].expression);
-  for(const source of definition.sources){if(source.url)expect(screen.getByRole('link',{name:source.label}).getAttribute('href')).toBe(source.url);if(source.note)expect(screen.getByText(source.note)).toBeTruthy();}
+  for(const source of definition.sources){if(source.url)expect(within(screen.getByRole('region',{name:'Calculation result'})).getByRole('link',{name:source.label}).getAttribute('href')).toBe(source.url);if(source.note)expect(within(screen.getByText('Applicability and limitations',{selector:'summary'}).parentElement!).getByText(source.note)).toBeTruthy();}
   const snapshot=createCalculationSnapshot({calculatorSlug:row.slug,calculatorVersion:row.version,input:captured.input,output:captured.output!});
   expect(verifyRegisteredSnapshot(JSON.parse(serializeCalculationJson(snapshot))).snapshot).toEqual(snapshot);
   expect(()=>verifyRegisteredSnapshot({...snapshot,output:{...snapshot.output,value:row.expected+1}})).toThrow();

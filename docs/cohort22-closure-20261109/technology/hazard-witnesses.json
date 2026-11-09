@@ -1,0 +1,211 @@
+{
+  "kind": "TARGETED_ACTUAL_UNCHANGED_ENGINE_HAZARD_WITNESSES",
+  "baseline": "ddca21413199632fa7256967fffdded928a2a9de",
+  "engineFilesUnchanged": true,
+  "execution": "Actual engine schemas and calculate functions imported with vite-node; package resolution aliases retained cached zod only; no substituted arithmetic.",
+  "oracleBoundary": "PPI equal inputs simplify algebraically to sqrt2 (irrational approximation shown); battery/UPS efficiency numeric value equals load numeric value so ideal is exact supplied binary64 capacity/100. Other expectations assert positivity/refusal, not an invented representable result below supported range.",
+  "cases": [
+    {
+      "masterId": 376,
+      "engineId": "technology.screen-ppi",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "widthPixels": 1e-200,
+        "heightPixels": 1e-200,
+        "diagonalInches": 1e-200
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Screen PPI = 0"
+        ]
+      },
+      "independentIdentity": "sqrt(2)",
+      "expectedApprox": 1.4142135623730951,
+      "independentOracleDecimal100": "1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641573"
+    },
+    {
+      "masterId": 376,
+      "engineId": "technology.screen-ppi",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "widthPixels": 1e-160,
+        "heightPixels": 1e-160,
+        "diagonalInches": 1e-160
+      },
+      "actual": {
+        "value": 1.4142056902605666,
+        "steps": [
+          "Screen PPI = 1.4142056902605666"
+        ]
+      },
+      "independentIdentity": "sqrt(2)",
+      "expectedApprox": 1.4142135623730951,
+      "independentOracleDecimal100": "1.414213562373095048801688724209698078569671875376948073176679737990732478462107038850387534327641573"
+    },
+    {
+      "masterId": 377,
+      "engineId": "technology.aspect-ratio",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "width": 1e-300,
+        "height": 1e+100
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Aspect Ratio = 0"
+        ]
+      },
+      "independentIdentity": "positive exact ratio; unsupported final underflow must refuse",
+      "expectedApprox": null
+    },
+    {
+      "masterId": 378,
+      "engineId": "technology.resolution",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "widthPixels": 1e-200,
+        "heightPixels": 1e-200
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Resolution = 0"
+        ]
+      },
+      "independentIdentity": "positive exact product; unsupported final underflow must refuse",
+      "expectedApprox": null
+    },
+    {
+      "masterId": 379,
+      "engineId": "technology.dpi",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "pixels": 1e-300,
+        "lengthInches": 1e+100
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "DPI = 0"
+        ]
+      },
+      "independentIdentity": "positive exact ratio; unsupported final underflow must refuse",
+      "expectedApprox": null
+    },
+    {
+      "masterId": 380,
+      "engineId": "technology.battery-runtime",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "capacityWh": 1e-300,
+        "efficiencyPercent": 1e-100,
+        "loadWatts": 1e-100
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Battery Runtime = 0"
+        ]
+      },
+      "independentIdentity": "capacityWh/100 because supplied efficiencyPercent===loadWatts",
+      "expectedApprox": 1e-302,
+      "independentOracleExactRational": {
+        "n": "6032057205060441",
+        "d": "603205720506044084884212454315773567705025225174850578179661506496162234449372729337097357813826574370822542501440083716481354049997906317910591959776695102219335509170789603485068403905907918039678834910609558429008744607641377146894047724155067075314551760293122439242402954742999382412988923515814561436497294131200"
+      }
+    },
+    {
+      "masterId": 381,
+      "engineId": "technology.ups-runtime",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "batteryWh": 1e-300,
+        "efficiencyPercent": 1e-100,
+        "loadWatts": 1e-100
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "UPS Runtime = 0"
+        ]
+      },
+      "independentIdentity": "batteryWh/100 because supplied efficiencyPercent===loadWatts",
+      "expectedApprox": 1e-302,
+      "independentOracleExactRational": {
+        "n": "6032057205060441",
+        "d": "603205720506044084884212454315773567705025225174850578179661506496162234449372729337097357813826574370822542501440083716481354049997906317910591959776695102219335509170789603485068403905907918039678834910609558429008744607641377146894047724155067075314551760293122439242402954742999382412988923515814561436497294131200"
+      }
+    },
+    {
+      "masterId": 383,
+      "engineId": "technology.website-bandwidth",
+      "version": 2,
+      "parsed": true,
+      "input": {
+        "pageSizeMb": 1e-200,
+        "monthlyPageViews": 1e-200
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Website Bandwidth = 0"
+        ]
+      },
+      "independentIdentity": "positive exact product/1000; unsupported final underflow must refuse",
+      "expectedApprox": null
+    },
+    {
+      "masterId": 384,
+      "engineId": "technology.cloud-storage-cost",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "storageGb": 1e-200,
+        "pricePerGbMonth": 1e-200
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Cloud Storage Cost = 0"
+        ]
+      },
+      "independentIdentity": "positive exact product; unsupported final underflow must refuse",
+      "expectedApprox": null
+    },
+    {
+      "masterId": 385,
+      "engineId": "technology.cloud-data-transfer-cost",
+      "version": 1,
+      "parsed": true,
+      "input": {
+        "transferGb": 1e-200,
+        "pricePerGb": 1e-200
+      },
+      "actual": {
+        "value": 0,
+        "steps": [
+          "Cloud Data Transfer Cost = 0"
+        ]
+      },
+      "independentIdentity": "positive exact product; unsupported final underflow must refuse",
+      "expectedApprox": null
+    }
+  ],
+  "fullDomainProof": false,
+  "newApproval": false,
+  "schemaDependency": {
+    "path": "/workspace/work/batch13-deps/node_modules/zod/package.json",
+    "version": "4.6.5",
+    "packageMetadataSha256": "a046ed85fa09571dba539fee9ef236152d12dabd1f229b014ec3bd2ebaad9000",
+    "scope": "Retained cache resolution; not a new install or broad dependency attestation."
+  }
+}
