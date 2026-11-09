@@ -79,20 +79,25 @@ test('current guard evolution independently preserves historical stages and exac
  const old=git(['show',base+':'+name]).toString(),now=readFileSync(name,'utf8');
  const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
  const before=parse(old),after=parse(now),capture=json('docs/execution-recovery-20261109/source-successors/guard-capture.json').capture;
- const evolved=['scripts/publication20-caller-lineage.mjs','tests/shortest-publication-20/caller-lineage.test.mjs','tests/adoption1535/lineage.test.mjs'];
+ const forwarding=json('docs/execution-recovery-20261109/source-successors/reader-forwarding/capture.json');
+ const evolved=['scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs','tests/shortest-publication-20/caller-lineage.test.mjs','tests/adoption1535/lineage.test.mjs'];
  for(const b of before){
   const a=after.find(row=>row.path===b.path);assert(a);
   if(!evolved.includes(b.path)){assert.deepEqual(a,b);continue;}
   for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);
   assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
   assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
-  assert.equal(a.successorRef,capture);assert.equal(git(['rev-parse',capture+':'+a.path]).toString().trim(),a.successorBlob);
-  const bytes=git(['show',capture+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
+  const target=b.path==='scripts/publication20-caller-lineage.mjs'?forwarding.capture:b.path==='scripts/check-shortest-publication20.mjs'?forwarding.wrapperCapture:capture;
+  assert.equal(a.successorRef,target);assert.equal(git(['rev-parse',target+':'+a.path]).toString().trim(),a.successorBlob);
+  const bytes=git(['show',target+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
   // Old dependency facts remain exact historical Git proof, not rewritten claims.
   for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}
   for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}
  }
- assert.deepEqual(after.filter(row=>!before.some(old=>old.path===row.path)).map(row=>row.path).sort(),['src/components/calculator-interactive.tsx','src/lib/registered-snapshot-verification.ts','tests/acceptance-closure-20261108/receipt-source-path.mjs'].sort());
+ assert.deepEqual(after.filter(row=>!before.some(old=>old.path===row.path)).map(row=>row.path).sort(),['src/components/calculator-interactive.tsx','src/lib/registered-snapshot-verification.ts','tests/acceptance-closure-20261108/receipt-source-path.mjs','scripts/check-current-six-candidate-evidence.mjs'].sort());
  assert.equal(now.slice(now.indexOf('export const completionSourceRefs')),old.slice(old.indexOf('export const completionSourceRefs')));
- const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readFileSync(guard).equals(git(['show',capture+':'+guard])));
+ const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readFileSync(guard).equals(git(['show',forwarding.capture+':'+guard])));
+ // Independently retain all stages present immediately before the reader-forwarding repair.
+ const previous=parse(git(['show',forwarding.wrapperCapture+':'+name]).toString());
+ for(const b of previous){const a=after.find(row=>row.path===b.path);assert(a);if(!['scripts/publication20-caller-lineage.mjs','scripts/check-shortest-publication20.mjs'].includes(b.path)){assert.deepEqual(a,b);continue;}for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}}
 });

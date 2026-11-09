@@ -25,7 +25,7 @@ for(const path of ['src/calculators/finance/compound-interest.ts','src/component
  test('integrated checker rejects a predecessor reversion even with its valid old hash: '+path,()=>{
   const historical=git(['show',old+':'+path]);
   const claim=createHash('sha256').update(historical).digest('hex');
-  assert.throws(()=>verifyCurrentCandidateBinding(path,claim,()=>historical,git),/current successor differs/);
+  assert.throws(()=>verifyCurrentCandidateBinding(path,claim,name=>name===path?historical:readFileSync(name),git),/current successor differs/);
  });
 }
 test('integrated checker rejects unrelated source tamper without new approval',()=>{
