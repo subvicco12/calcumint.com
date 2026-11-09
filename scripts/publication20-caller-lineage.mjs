@@ -21,7 +21,14 @@ export function verifyPublication20CallerLineage(directory){
  if(hash(oldCaller)!==m.predecessorCallerSHA256||hash(oldManifest)!==m.predecessorManifestSHA256||!safe(directory,priorManifest).equals(oldManifest))throw Error('Original predecessor source/manifest hash differs');
  for(const name of expectedPaths){
   const bytes=safe(directory,name);
-  if(name==='src/components/publication20-tool.tsx'){
+  if(name===caller){
+   try{
+    if(verifyCompletionBinding(name,bytes,m.sourceHashes[name],git,p=>safe(directory,p))!==true)throw Error('Current technology caller source hash succession unavailable');
+   }catch(error){
+    if(error instanceof Error&&error.message==='Completion current successor differs')throw Error('Caller source hash differs: '+name,{cause:error});
+    throw error;
+   }
+  }else if(name==='src/components/publication20-tool.tsx'){
    // Preserve the original frequency->N1 proof on its exact historical bytes.
    const historical=git(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+name]);
    if(verifyN1PublicationBinding(name,historical,m.sourceHashes[name],git)!==true)throw Error('Historical converter source chain unavailable');

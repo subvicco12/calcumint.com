@@ -5,7 +5,7 @@ import path from 'node:path';
 import os from 'node:os';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {verifyCompletionBinding} from '../../scripts/product-completion-lineage.mjs';
+import {completionBindingDependencies,verifyCompletionBinding} from '../../scripts/product-completion-lineage.mjs';
 import {verifyN1PublicationBinding} from '../../scripts/n1-publication-lineage.mjs';
 import {verifyPublication20CallerLineage} from '../../scripts/publication20-caller-lineage.mjs';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
@@ -27,7 +27,7 @@ for(const dep of finalBinding.supplementalSources)test('current Final proof reje
 function copiedTree(){
  const root=mkdtempSync(path.join(os.tmpdir(),'converter-final-target-'));
  const manifest='docs/shortest-publication-20/caller-lineage.json';
- const names=new Set([manifest,'docs/calculator-first-20261105/execution-manifest.json','src/lib/frequency-presentation.ts','src/lib/n1-publication-methodology.ts',...Object.keys(JSON.parse(readFileSync(manifest)).sourceHashes),...finalBinding.supplementalSources.map(d=>d.path)]);
+ const names=new Set([...completionBindingDependencies('src/components/calculator-interactive.tsx'),manifest,'docs/calculator-first-20261105/execution-manifest.json','src/lib/frequency-presentation.ts','src/lib/n1-publication-methodology.ts',...Object.keys(JSON.parse(readFileSync(manifest)).sourceHashes),...finalBinding.supplementalSources.map(d=>d.path)]);
  for(const name of names){const p=path.join(root,name);mkdirSync(path.dirname(p),{recursive:true});copyFileSync(name,p);}
  symlinkSync(git(['rev-parse','--absolute-git-dir']).toString().trim(),path.join(root,'.git'),'dir');return root;
 }
@@ -64,7 +64,7 @@ test('native renderer proof distinguishes13partial targets and2regressions witho
  const packet=json(dir+'440-reviewer-decision.json');assert.equal(packet.certificationGo,'NO_GO');assert.equal(packet.publicationGo,'NO_GO');assert(Object.values(packet.goNoGoFields).every(v=>v===null));
 });
 test('all older source bindings and verifier logic remain intact except explicit checker successor',()=>{
- const old=git(['show','9c0b5dc3e3aec18ed03fb6849562ebddc854db06:scripts/product-completion-lineage.mjs']).toString(),now=readFileSync('scripts/product-completion-lineage.mjs','utf8');
+ const old=git(['show','9c0b5dc3e3aec18ed03fb6849562ebddc854db06:scripts/product-completion-lineage.mjs']).toString(),now=git(['show','a7a656f71b04b50192485a49b0b56b3fa6bd86b9:scripts/product-completion-lineage.mjs']).toString();
  const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));const before=parse(old),after=parse(now);
  for(const b of before){const a=after.find(x=>x.path===b.path);assert(a);if(b.path==='scripts/publication20-caller-lineage.mjs'){for(const key of ['predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);assert(a.intermediateSources.some(x=>x.ref===b.successorRef&&x.blob===b.successorBlob&&x.sha256===b.successorSHA256));}else assert.deepEqual(a,b);}
  assert.equal(now.slice(now.indexOf('export const completionSourceRefs')),old.slice(old.indexOf('export const completionSourceRefs')));
@@ -72,4 +72,27 @@ test('all older source bindings and verifier logic remain intact except explicit
 test('appointment absence is explicitly observed with privileged read-only visibility',()=>{
  const r=json(dir+'reviewer-appointment-counts.json');assert.equal(r.readOnly,true);assert.equal(r.identityCollected,false);assert.equal(r.certificationGranted,false);assert.equal(r.publicationAuthorized,false);
  assert.deepEqual(r.rows.map(x=>x.master_id),[432,440]);for(const row of r.rows){assert.equal(row.read_only,'on');assert.equal(row.observed_actor,'postgres');assert.equal(row.actor_bypass_rls,true);assert.equal(row.exact_candidate_count,0);assert.equal(row.assigned_candidate_count,0);}
+});
+
+test('current guard evolution independently preserves historical stages and exact captured targets',()=>{
+ const name='scripts/product-completion-lineage.mjs',base='a7a656f71b04b50192485a49b0b56b3fa6bd86b9';
+ const old=git(['show',base+':'+name]).toString(),now=readFileSync(name,'utf8');
+ const parse=s=>JSON.parse(s.slice(s.indexOf('const bindings=')+'const bindings='.length,s.indexOf('\n];\nexport const completionSourceRefs')+2));
+ const before=parse(old),after=parse(now),capture=json('docs/execution-recovery-20261109/source-successors/guard-capture.json').capture;
+ const evolved=['scripts/publication20-caller-lineage.mjs','tests/shortest-publication-20/caller-lineage.test.mjs','tests/adoption1535/lineage.test.mjs'];
+ for(const b of before){
+  const a=after.find(row=>row.path===b.path);assert(a);
+  if(!evolved.includes(b.path)){assert.deepEqual(a,b);continue;}
+  for(const key of ['path','predecessorRef','predecessorBlob','predecessorSHA256'])assert.equal(a[key],b[key]);
+  assert.deepEqual(a.intermediateSources.slice(0,(b.intermediateSources??[]).length),b.intermediateSources??[]);
+  assert(a.intermediateSources.some(row=>row.ref===b.successorRef&&row.blob===b.successorBlob&&row.sha256===b.successorSHA256));
+  assert.equal(a.successorRef,capture);assert.equal(git(['rev-parse',capture+':'+a.path]).toString().trim(),a.successorBlob);
+  const bytes=git(['show',capture+':'+a.path]);assert.equal(hash(bytes),a.successorSHA256);assert(readFileSync(a.path).equals(bytes));
+  // Old dependency facts remain exact historical Git proof, not rewritten claims.
+  for(const dep of b.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);assert.equal(hash(git(['show',dep.ref+':'+dep.path])),dep.sha256);}
+  for(const dep of a.supplementalSources??[]){assert.equal(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim(),dep.blob);const bytes=git(['show',dep.ref+':'+dep.path]);assert.equal(hash(bytes),dep.sha256);assert(readFileSync(dep.path).equals(bytes));}
+ }
+ assert.deepEqual(after.filter(row=>!before.some(old=>old.path===row.path)).map(row=>row.path).sort(),['src/components/calculator-interactive.tsx','src/lib/registered-snapshot-verification.ts','tests/acceptance-closure-20261108/receipt-source-path.mjs'].sort());
+ assert.equal(now.slice(now.indexOf('export const completionSourceRefs')),old.slice(old.indexOf('export const completionSourceRefs')));
+ const guard='tests/acceptance-closure-20261108/converter-final-source.test.mjs';assert(readFileSync(guard).equals(git(['show',capture+':'+guard])));
 });

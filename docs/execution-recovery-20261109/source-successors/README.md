@@ -1,0 +1,9 @@
+# Exact technology caller and outer replay succession
+
+Historical packet JSON and every calculator engine remain unchanged. The current source target is7086b85437b025225f5736fb6b849415e518dc08; predecessor review target is a7a656f71b04b50192485a49b0b56b3fa6bd86b9. New explicit caller/outer-verifier bindings require exact Git commit/blob/SHA and same-target source dependencies. The original inner replay module is captured unchanged, not replaced. The unpublished workflow step is restored to exact a7a bytes by explicit root direction; the existing workflow source binding is unchanged. No new CI step is claimed.
+
+The caller proof is required even if the presented bytes match the legitimate historical hash, so reverting the caller cannot silently succeed. The receipt helper accepts only the retained predecessor claim or exact captured current claim for the one named outer-verifier path, then requires current successor proof in either case. It preloads all dependencies through the supplied asynchronous target reader before calling the unchanged synchronous verifier. Other receipts retain raw-hash checking and original cache/path validation.
+
+The dependency-name accessor is placed before the bindings literal; the original source-reference builder and verification tail remain byte-identical. It adds no acceptance route. All legacy authority decisions remain unsigned and all certification/publication holds remain effective.
+
+New tests initially failed against the missing succession functionality, then passed8 focused checks for actual caller composition, retained/fresh claim acceptance, unknown claim denial, valid historical reversion, current tamper, missing provenance and target dependency drift. Existing target-copy fixtures now include the full captured dependencies before intended negative mutations; their original assertions remain intact pending explicit review of any diagnostic wording or append-only workflow assertion adaptation.

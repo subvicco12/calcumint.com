@@ -700,27 +700,6 @@ jobs:
             docs/acceptance-closure-20261108/financial-rounding-witnesses.json
           if-no-files-found: warn
           retention-days: 7
-      - name: Recovered execution and isolated calculator workflow acceptance
-        timeout-minutes: 8
-        run: |
-          node scripts/recovery-reviewer440.mjs
-          node --test tests/recovery-reviewer440/*.test.mjs tests/execution-recovery-20261109/operations-preflight.test.mjs tests/execution-recovery-20261109/source-lineage.test.mjs
-          node tests/execution-recovery-20261109/converter-workspace-evidence.mjs --check
-          node tests/execution-recovery-20261109/operations-restore.mjs
-          node tests/execution-recovery-20261109/technology-browser.mjs
-          node tests/execution-recovery-20261109/converter-workspace-browser.mjs
-        env:
-          OPERATIONS_REPORT: ${{ runner.temp }}/execution-recovery/operations-restore.json
-          RECOVERY_TECHNOLOGY_REPORT: ${{ runner.temp }}/execution-recovery/technology-browser.json
-          RECOVERY_CONVERTER_BROWSER_REPORT: ${{ runner.temp }}/execution-recovery/converter-workspace-browser.json
-      - name: Preserve execution recovery receipts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: execution-recovery-${{ github.event.pull_request.head.sha || github.sha }}
-          path: ${{ runner.temp }}/execution-recovery/
-          if-no-files-found: warn
-          retention-days: 7
   validate:
     runs-on: ubuntu-latest
     needs: [checks, build, full-product, source-acceptance, publication-factory]

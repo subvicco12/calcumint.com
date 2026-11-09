@@ -1,3 +1,4 @@
+import {completionBindingDependencies} from '../../scripts/product-completion-lineage.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -25,7 +26,7 @@ for(const name of [tool,n1PublicationSupplementalPath]){
   const dir=mkdtempSync(path.join(os.tmpdir(),'n1-lineage-'));
   try{
    const m='docs/shortest-publication-20/caller-lineage.json';
-   for(const p of [...JSON.parse(readFileSync('docs/competent-closure-20261108/converter-source-successors.json')).bindings[0].supplementalSources.map(x=>x.path),m,'docs/calculator-first-20261105/execution-manifest.json','src/lib/frequency-presentation.ts',n1PublicationSupplementalPath,...Object.keys(JSON.parse(readFileSync(m)).sourceHashes)]){
+   for(const p of [...completionBindingDependencies('src/components/calculator-interactive.tsx'),...JSON.parse(readFileSync('docs/competent-closure-20261108/converter-source-successors.json')).bindings[0].supplementalSources.map(x=>x.path),m,'docs/calculator-first-20261105/execution-manifest.json','src/lib/frequency-presentation.ts',n1PublicationSupplementalPath,...Object.keys(JSON.parse(readFileSync(m)).sourceHashes)]){
     const dest=path.join(dir,p);mkdirSync(path.dirname(dest),{recursive:true});copyFileSync(p,dest);
    }
    symlinkSync(git(['rev-parse','--absolute-git-dir']).toString().trim(),path.join(dir,'.git'),'dir');
