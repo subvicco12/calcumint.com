@@ -168,7 +168,7 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "5dc04a0b91d807f72843d3d5c8cc868c26a35e07",
+        "ref": "4467b5960ce73cd7851332f7248e4d2673dad70b",
         "blob": "958188aab571cadcdb1e5d27af618a25355da9ab",
         "sha256": "b1f1c087026cd35877878533384cd17c2c14b2dfb6b69882727ad27d437be293"
       },
@@ -1717,7 +1717,7 @@ const bindings=[
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "5dc04a0b91d807f72843d3d5c8cc868c26a35e07",
+    "successorRef": "4467b5960ce73cd7851332f7248e4d2673dad70b",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
     "successorBlob": "958188aab571cadcdb1e5d27af618a25355da9ab",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
