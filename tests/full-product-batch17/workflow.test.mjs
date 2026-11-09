@@ -7,6 +7,9 @@ import {createHash} from 'node:crypto';
 import {verifyCompletionBinding} from '../../scripts/product-completion-lineage.mjs';
 const workflowPath='.github/workflows/ci.yml',retainedWorkflowRef='b2d72aa66293b752739b7924745a57a51c4b5acb',reviewedWorkflowRef='00651cc382be5dcbd596882071787fd6702c13d3';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
+const ownPath='tests/full-product-batch17/workflow.test.mjs';
+const retainedOwnClaim=JSON.parse(readFileSync('docs/full-product-batch17/validation.json','utf8')).sourceHashes[ownPath];
+assert.equal(verifyCompletionBinding(ownPath,readFileSync(ownPath),retainedOwnClaim,git),true,'Exact current test successor required for retained validation claim');
 const workflow=readFileSync('.github/workflows/ci.yml','utf8');
 test('the three exact independent task campaigns and receipt checks are mandatory and bounded',()=>{
  const product=workflow.split('\n  full-product:\n')[1].split('\n  validate:\n')[0];
