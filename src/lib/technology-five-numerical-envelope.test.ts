@@ -17,7 +17,7 @@ it('qualifies exact registered binary64 outputs against an independent rational 
   for(const a of values)for(const b of values){
    const input=definition.id==='technology.bandwidth'?{dataMegabytes:a,timeSeconds:b}:definition.id==='technology.data-transfer'?{bandwidthMbps:a,timeSeconds:b}:{dataMegabytes:a,bandwidthMbps:b};
    const exact=definition.id==='technology.data-transfer'?div(mul(rational(a),rational(b)),{n:8n,d:1n}):div(mul(rational(a),{n:8n,d:1n}),rational(b));
-   let output:{value:number;steps:readonly string[]};try{output=runCalculator(definition,input as never).output;}catch(error){expect(String(error)).toContain('outside the supported finite range');const max=rational(Number.MAX_VALUE);expect(exact.n*max.d>max.n*exact.d).toBe(true);refused++;continue;}
+   let output:{value:number;steps:readonly string[]};try{output=runCalculator(definition as typeof bandwidthCalculator,input as never).output;}catch(error){expect(String(error)).toContain('outside the supported finite range');const max=rational(Number.MAX_VALUE);expect(exact.n*max.d>max.n*exact.d).toBe(true);refused++;continue;}
    try{validatePublication20Result(entry,input,output);}catch(error){expect(String(error)).toMatch(/underflows|subnormal/);refused++;continue;}checkHalfUlp(output.value,exact);accepted++;
   }
  }
@@ -25,9 +25,9 @@ it('qualifies exact registered binary64 outputs against an independent rational 
 });
 it('preserves independently specified literal witnesses and rejects invalid schema inputs without rewriting the engine',()=>{
  const inputs=[{dataMegabytes:25,timeSeconds:4},{dataMegabytes:25,bandwidthMbps:50},{dataMegabytes:25,bandwidthMbps:50},{bandwidthMbps:50,timeSeconds:4}];
- const expected=[50,4,4,25];definitions.forEach((definition,i)=>{expect(definition.version).toBe(1);expect(runCalculator(definition,inputs[i] as never).output.value).toBe(expected[i]);for(const invalid of [0,-1,NaN,Infinity,1e101]){const key=Object.keys(inputs[i])[0];expect(()=>runCalculator(definition,{...inputs[i],[key]:invalid} as never)).toThrow();}});
+ const expected=[50,4,4,25];definitions.forEach((definition,i)=>{expect(definition.version).toBe(1);expect(runCalculator(definition as typeof bandwidthCalculator,inputs[i] as never).output.value).toBe(expected[i]);for(const invalid of [0,-1,NaN,Infinity,1e101]){const key=Object.keys(inputs[i])[0];expect(()=>runCalculator(definition as typeof bandwidthCalculator,{...inputs[i],[key]:invalid} as never)).toThrow();}});
 });
 it('retains exact historical subnormal-input behavior while refusing it only at the current capture boundary',()=>{
  const input={dataMegabytes:Number.MIN_VALUE,timeSeconds:1},definition=bandwidthCalculator,entry=getPublication20Definition(definition.slug)!;
- const output=runCalculator(definition,input).output;expect(output.value).toBe(Number.MIN_VALUE*8);expect(()=>validatePublication20Result(entry,input,output)).toThrow(/subnormal/);expect(runCalculator(definition,input).output).toEqual(output);
+ const output=runCalculator(definition as typeof bandwidthCalculator,input).output;expect(output.value).toBe(Number.MIN_VALUE*8);expect(()=>validatePublication20Result(entry,input,output)).toThrow(/subnormal/);expect(runCalculator(definition as typeof bandwidthCalculator,input).output).toEqual(output);
 });

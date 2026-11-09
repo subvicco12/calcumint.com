@@ -1,0 +1,31 @@
+✔ complete synthetic integrity remains blocked, absent facts remain incomplete (21.35209ms)
+✔ reviewed source mismatch and stale bytes refuse (5.309607ms)
+✔ traversal and symlink escape refuse without reading outside evidence root (3.3677ms)
+✔ reference mismatch, missing file, secret declaration and timestamp omissions refuse (3.479479ms)
+✔ rejects array/object deployed source rather than coercing JSON to a SHA string (1.575307ms)
+✖ requires genuine UTC calendar timestamps without normalizing invalid dates and preserves fractional syntax (6.851612ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.166961
+
+✖ failing tests:
+
+test at tests/execution-recovery-20261109/cohort22-attestation.test.mjs:17:1
+✖ requires genuine UTC calendar timestamps without normalizing invalid dates and preserves fractional syntax (6.851612ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async file:///tmp/calcumint-first-five-operations-time-20261109/tests/execution-recovery-20261109/cohort22-attestation.test.mjs:19:39
+      at async fixture (file:///tmp/calcumint-first-five-operations-time-20261109/tests/execution-recovery-20261109/cohort22-attestation.test.mjs:9:584)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /timestamp/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
