@@ -44,8 +44,8 @@ const currentSources=Object.freeze([
   },
   {
     "path": "src/app/business/api/page.tsx",
-    "blob": "49609b0fe469029b1ad0896da4a850cb6823b337",
-    "sha256": "b40b03b4f1eb40ca58f8ca680580bdb07c91be4c5e1bc5cbf595ad5033ba3236"
+    "blob": "5fe101433c97dd6b26ca1747e0d64345b33fbc84",
+    "sha256": "61db8cf167d1c727e1cae52f33c35e5e62b799cd30b3c8c0c66288c99fa056c3"
   },
   {
     "path": "src/app/business/page.tsx",
