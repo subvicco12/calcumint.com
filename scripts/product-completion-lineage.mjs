@@ -549,6 +549,12 @@ const bindings=[
         "ref": "4c67272e2c6b7ddcbdf59398b02e066c34456e78",
         "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
         "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+      },
+      {
+        "path": "docs/calculator-sprint-20261108/first-two-packet.json",
+        "ref": "9c0b5dc3e3aec18ed03fb6849562ebddc854db06",
+        "blob": "9df9d88c76524664f006759aee92d65de8504dd8",
+        "sha256": "d034b179e5255b18d0ec7b0fba5c80d57c92b7c638c95acb709c1162f11df363"
       }
     ]
   }

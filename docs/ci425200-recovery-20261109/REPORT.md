@@ -9,3 +9,7 @@ The fix preserves the packet and historical hash/byte count. Only the exact know
 Exactred reproduced;7focused packet tests,191combined current/retained sourceguards and targetedlint passed. Independent engineering review found no blocking weakness; this is not competent source/QA certification. Test successor capture4c67272e2c6b7ddcbdf59398b02e066c34456e78 and its predecessor are included in the existing exact-source bootstrap list. Final hostedCI disposition is recorded separately; local passes do not imply hosted success.
 
 All13converter migrations,432/440evidence,historicalengines,540identities,424acceptance records,14DRAFTs and43authority blockers remain unchanged. Full-canonical disposition remains0certified,2reviewpending,495partial/unproven,43identity/scopeblocked. Newlypublicationeligible0. RELEASE HOLD active; no production action.
+
+## Hosted shallow-checkout correction
+
+Run42554346210 passed the original repaired step and all four other mandatory jobs, but the later retained comparison lacked commit9c0b5dc in its shallow checkout. The local full-history checkout masked that dependency. Added an exact same-packet capture at9c so the existing immutable-ref bootstrap fetches it. Its Git blob and SHA are independently verified; older bindings and verifier logic stay identical. A real isolated shallow repository demonstrated missing-before/available-after bootstrap. Missing-ref regression reproduced red, then33focused checks passed; independent review found no important issue. See shallow-bootstrap.json. Final rerun status remains separate.
