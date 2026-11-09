@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "Exact five catalog/engine/version tuple constraints reject cross-engine substitution",
+    "Shared configured key limit, durable exact attribution and idempotent retry/conflict",
+    "Native API and embed share the existing quota lock under concurrent last-slot requests",
+    "Different five identities share one configured last-slot quota under concurrency",
+    "Concurrent duplicate redemption produces one debit and one durable audit",
+    "Audit persistence failure rolls back the quota debit atomically",
+    "Cross-tenant attribution, revoked/expired grants and Business downgrade fail closed",
+    "RLS and caller privileges deny direct grant/audit access and metering RPC to untrusted roles",
+    "A committed revocation wins against waiting redemption with no quota or audit debit"
+  ],
+  "functionSHA256": "4509d20ece8f0930201ce2a07429e6744670da0d389a165b7f2380146a95e5fd",
+  "limits": "Synthetic isolated candidate schema; existing commercial key values reused, no production equivalence or global external-writer claim",
+  "productionWrites": false
+}
