@@ -16,7 +16,7 @@ const ids=[370,371,372,373,374,423,424,425,427,428,429,430,431,432,433,434,437,4
 if(JSON.stringify([...manifest.selectedIds].sort((a,b)=>a-b))!==JSON.stringify(ids)||manifest.releaseHold!==true||manifest.newCanonicalAccepted!==0||manifest.newPublicationEligible!==0||manifest.newFullScopeAccepted!==0)throw Error('Cohort/authority boundary changed');
 export function verifyShortestSourceBinding(file,expected,read=readFileSync,readGit=git){
  const bytes=read(file);
- if(verifyCompletionBinding(file,bytes,expected,readGit))return;
+ if(verifyCompletionBinding(file,bytes,expected,readGit,read))return;
  if(createHash('sha256').update(bytes).digest('hex')!==expected)throw Error('Source binding differs: '+file);
 }
 for(const [file,expected]of Object.entries(manifest.sourceHashes))verifyShortestSourceBinding(file,expected);

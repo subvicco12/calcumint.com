@@ -14,7 +14,7 @@ for(const name of ['implementation-manifest.json','financial-review-11.json','su
 export function verifyCurrentCandidateBinding(path,expected,read=readFileSync,readGit=git){
  const bytes=read(path);
  // Known successors must not silently revert just because the old hash matches.
- if(verifyFinancialSafetyBinding(path,bytes,expected,readGit)||verifyCompletionBinding(path,bytes,expected,readGit))return;
+ if(verifyFinancialSafetyBinding(path,bytes,expected,readGit)||verifyCompletionBinding(path,bytes,expected,readGit,read))return;
  if(createHash('sha256').update(bytes).digest('hex')===expected)return;
  throw Error('Candidate source binding changed: '+path);
 }
