@@ -9,7 +9,8 @@ import {createCalculationSnapshot,type CalculationSnapshot} from '@/lib/calculat
 import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-verification';
 const definitions=[bandwidthCalculator,downloadTimeCalculator,uploadTimeCalculator,dataTransferCalculator,base64SizeCalculator] as const;
 const fields:Record<string,readonly string[]>={'technology.bandwidth':['dataMegabytes','timeSeconds'],'technology.download-time':['dataMegabytes','bandwidthMbps'],'technology.upload-time':['dataMegabytes','bandwidthMbps'],'technology.data-transfer':['bandwidthMbps','timeSeconds'],'technology.base64-size':['inputBytes']};
-export function technologyFiveBatchFields(id:string):readonly string[]{if(!fields[id])throw Error('Unsupported five-calculator batch identity');return fields[id];}
+export function technologyFiveBatchFields(id:string):readonly string[]{if(!Object.hasOwn(fields,id))throw Error('Unsupported five-calculator batch identity');return fields[id];}
+export function technologyFiveBatchResultUnit(id:string):string{technologyFiveBatchFields(id);return id==='technology.bandwidth'?'Mbps':id==='technology.data-transfer'?'MB':id==='technology.base64-size'?'encoded bytes':'seconds';}
 export type TechnologyFiveBatch=Readonly<{schemaVersion:1;engineId:string;version:1;rows:readonly Readonly<{raw:string;snapshot?:CalculationSnapshot;error?:string}>[]}>;
 /** Local bounded evaluation, not a metered server job or publication authority. */
 export function evaluateTechnologyFiveBatch(id:string,draft:string):TechnologyFiveBatch{
@@ -31,7 +32,7 @@ export function serializeTechnologyFiveBatch(batch:TechnologyFiveBatch):string{c
 export function technologyFiveBatchCsv(batch:TechnologyFiveBatch):string{
  complete(batch);const checked=replayTechnologyFiveBatch(JSON.stringify(batch));const keys=technologyFiveBatchFields(checked.engineId);
  const quote=(x:unknown)=>'"'+String(x).replaceAll('"','""')+'"';
- return [['row','calculator_id','calculator_slug','calculator_version',...keys,'result'],...checked.rows.map((r,index)=>[index+1,checked.engineId,r.snapshot!.calculatorSlug,r.snapshot!.calculatorVersion,...keys.map(k=>r.snapshot!.input[k]),r.snapshot!.output.value])].map(row=>row.map(quote).join(',')).join('\r\n');
+ return [['row','calculator_id','calculator_slug','calculator_version',...keys,'result','result_unit'],...checked.rows.map((r,index)=>[index+1,checked.engineId,r.snapshot!.calculatorSlug,r.snapshot!.calculatorVersion,...keys.map(k=>r.snapshot!.input[k]),r.snapshot!.output.value,technologyFiveBatchResultUnit(checked.engineId)])].map(row=>row.map(quote).join(',')).join('\r\n');
 }
 /** Verifies unsigned numerical consistency only; not authenticated provenance. */
 export function replayTechnologyFiveBatch(bytes:string):TechnologyFiveBatch{
