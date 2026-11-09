@@ -1,0 +1,3830 @@
+{
+  "passed": true,
+  "kind": "FIVE_BUSINESS_SHARING_GENUINE_ISOLATED_SOFTWARE_ACCEPTANCE",
+  "testedBaseline": "8cf2a5e04ad1a7bf771c6ac8fd6a0979d5ba15de",
+  "sourceHashes": {
+    "src/lib/business/technology-five-sharing.ts": "c3bfc92d9931e6b52917ebe31a32e30e351aa363fcc2c229a0f88ed46cc95a18",
+    "src/lib/business/technology-five-sharing-server.ts": "a87c59dffe1b61d9374533e10dfadee1c0d6758fb723ebd1ea4b105bac7abc43",
+    "src/components/technology-five-share-form.tsx": "d3bc5ebf5a2025d865f6b914bf180e3f06542d3e75a03424d0180caefc993f83",
+    "src/app/api/business/technology-five-shares/route.ts": "424b0bb4b18285f0ddc5c2595ce44c1333f3769336a7d77dd79f5f543aabea02",
+    "src/app/business/projects/[id]/page.tsx": "bdea058c785677064749bcfc78c550e9e1c038fe86f156db005ab37c249584c9",
+    "src/app/business/shared/[id]/page.tsx": "8f07cc794b9e0ca02e602286b952e0f04cb0972360ac6f2a68c41976e222fac9",
+    "src/app/business/page.tsx": "9dd6577974cfd09cb821d9e3aaf26725ccc89b5f47fa58773010a1dd3f4d4911",
+    "src/app/business/api/page.tsx": "b40b03b4f1eb40ca58f8ca680580bdb07c91be4c5e1bc5cbf595ad5033ba3236",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/components/account-session-boundary.tsx": "ca131c33a083c5b10f7eca6828c998eaf88cc3c254c583346aa3e48b40f3c3d5",
+    "docs/first-five-full-contract-20261109/sharing/review-only-sharing.sql": "c9d61f252ee6e25043836231f9cb45c0ef6fa7bdbfb41dba2d8fad8bc7a07da2",
+    "tests/first-five-full-contract-20261109/sharing-authenticated.mjs": "963e5b2b83c12ba0b1750f66ffc1d433ecd983550bd7c14d9c4e6219140c57f2"
+  },
+  "copiedSourceHashes": {
+    "src/lib/business/technology-five-sharing.ts": "c3bfc92d9931e6b52917ebe31a32e30e351aa363fcc2c229a0f88ed46cc95a18",
+    "src/lib/business/technology-five-sharing-server.ts": "a87c59dffe1b61d9374533e10dfadee1c0d6758fb723ebd1ea4b105bac7abc43",
+    "src/components/technology-five-share-form.tsx": "d3bc5ebf5a2025d865f6b914bf180e3f06542d3e75a03424d0180caefc993f83",
+    "src/app/api/business/technology-five-shares/route.ts": "424b0bb4b18285f0ddc5c2595ce44c1333f3769336a7d77dd79f5f543aabea02",
+    "src/app/business/projects/[id]/page.tsx": "bdea058c785677064749bcfc78c550e9e1c038fe86f156db005ab37c249584c9",
+    "src/app/business/shared/[id]/page.tsx": "8f07cc794b9e0ca02e602286b952e0f04cb0972360ac6f2a68c41976e222fac9",
+    "src/app/business/page.tsx": "9dd6577974cfd09cb821d9e3aaf26725ccc89b5f47fa58773010a1dd3f4d4911",
+    "src/app/business/api/page.tsx": "b40b03b4f1eb40ca58f8ca680580bdb07c91be4c5e1bc5cbf595ad5033ba3236",
+    "src/components/saved-calculation-actions.tsx": "eb10109b0dfc8a73b0ed4043d35da898cd11a3eace9e711755d8de5179928529",
+    "src/components/account-session-boundary.tsx": "ca131c33a083c5b10f7eca6828c998eaf88cc3c254c583346aa3e48b40f3c3d5"
+  },
+  "checks": [
+    "NEW guarded sharing proposal refuses activation unchanged",
+    "Five exact snapshots: genuine SDK/server verifier -> service-only atomic RPC, concurrent idempotency and one audit each",
+    "Authenticated direct writes/RPC denied; least-privilege service ACL and immutable administrative row trigger verified",
+    "Foreign organization project and client bindings rejected without adopting held integrity repair",
+    "Atomic RPC independently rejects foreign projects/viewer actors/downgraded actors and owner plan; live read capability closes on owner downgrade",
+    "Member positive capture, viewer write denial and foreign-tenant RLS read denial",
+    "Five actual native project/client captures, shared detail exact replay and fifteen completed JSON/CSV/PDF exports at 360px",
+    "Genuine Member and Viewer read all five owned-team snapshots; completed recorded exports and viewer UI write refusal",
+    "Foreign genuine account denied every actual shared-record page",
+    "Membership revocation refuses new reads/shares for all five; prior exported files are not retroactively revoked"
+  ],
+  "rows": [
+    {
+      "slug": "base64-size-calculator",
+      "version": 1,
+      "input": {
+        "inputBytes": 1000
+      },
+      "output": {
+        "value": 1336,
+        "steps": [
+          "Base64 Size = 1336"
+        ]
+      }
+    },
+    {
+      "slug": "bandwidth-calculator",
+      "version": 1,
+      "input": {
+        "dataMegabytes": 100,
+        "timeSeconds": 10
+      },
+      "output": {
+        "value": 80,
+        "steps": [
+          "Bandwidth = 80"
+        ]
+      }
+    },
+    {
+      "slug": "download-time-calculator",
+      "version": 1,
+      "input": {
+        "dataMegabytes": 100,
+        "bandwidthMbps": 80
+      },
+      "output": {
+        "value": 10,
+        "steps": [
+          "Download Time = 10"
+        ]
+      }
+    },
+    {
+      "slug": "upload-time-calculator",
+      "version": 1,
+      "input": {
+        "dataMegabytes": 100,
+        "bandwidthMbps": 80
+      },
+      "output": {
+        "value": 10,
+        "steps": [
+          "Upload Time = 10"
+        ]
+      }
+    },
+    {
+      "slug": "data-transfer-calculator",
+      "version": 1,
+      "input": {
+        "bandwidthMbps": 80,
+        "timeSeconds": 10
+      },
+      "output": {
+        "value": 100,
+        "steps": [
+          "Data Transfer = 100"
+        ]
+      }
+    }
+  ],
+  "native": [
+    {
+      "slug": "base64-size-calculator",
+      "version": 1,
+      "href": "/business/shared/4549f8d0-753a-4a3b-a393-202418de142b"
+    },
+    {
+      "slug": "bandwidth-calculator",
+      "version": 1,
+      "href": "/business/shared/e585455e-8130-4bf7-b36c-197434d6a408"
+    },
+    {
+      "slug": "download-time-calculator",
+      "version": 1,
+      "href": "/business/shared/4c425397-6bd3-4c6a-90e5-685a8840d51d"
+    },
+    {
+      "slug": "upload-time-calculator",
+      "version": 1,
+      "href": "/business/shared/63390450-c4a7-41ba-98c0-b01172f98425"
+    },
+    {
+      "slug": "data-transfer-calculator",
+      "version": 1,
+      "href": "/business/shared/3cb545a1-8e6c-4bb7-b418-6ba7eedc60a0"
+    }
+  ],
+  "exports": [
+    {
+      "tag": "owner:base64-size-calculator",
+      "file": "downloads/invocation-RsuJJA/228ff220-b670-4443-adf9-367cae32b133",
+      "filename": "base64-size-calculator-v1.json",
+      "bytes": 201,
+      "sha256": "8d8512dd053e2964c327a02445a71ab041a4799679fb3ea138e89ea904dd80a9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "suggestedFilename": "base64-size-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "totalBytes": 201,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "totalBytes": 201,
+          "receivedBytes": 201,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "totalBytes": 201,
+          "receivedBytes": 201,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "totalBytes": 201,
+          "receivedBytes": 201,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "totalBytes": 201,
+          "receivedBytes": 201,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "228ff220-b670-4443-adf9-367cae32b133",
+          "totalBytes": 201,
+          "receivedBytes": 201,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-RsuJJA/228ff220-b670-4443-adf9-367cae32b133"
+        }
+      ]
+    },
+    {
+      "tag": "owner:base64-size-calculator",
+      "file": "downloads/invocation-EPQS1b/3f8475de-4021-434d-be18-84b4bfaa3737",
+      "filename": "base64-size-calculator-v1.csv",
+      "bytes": 209,
+      "sha256": "345cb9ab695e984ecf813154c14a62e7c7fa50c47eb371cdad4e549e4d96f6f1",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "suggestedFilename": "base64-size-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "totalBytes": 209,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "totalBytes": 209,
+          "receivedBytes": 209,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "totalBytes": 209,
+          "receivedBytes": 209,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "totalBytes": 209,
+          "receivedBytes": 209,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "totalBytes": 209,
+          "receivedBytes": 209,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "3f8475de-4021-434d-be18-84b4bfaa3737",
+          "totalBytes": 209,
+          "receivedBytes": 209,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-EPQS1b/3f8475de-4021-434d-be18-84b4bfaa3737"
+        }
+      ]
+    },
+    {
+      "tag": "owner:base64-size-calculator",
+      "file": "downloads/invocation-104PCU/1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+      "filename": "base64-size-calculator-v1.pdf",
+      "bytes": 395191,
+      "sha256": "76ad006153a7d5f646dac9902e82cca38f4111856894b50ec1c70d9d8f26fc78",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "suggestedFilename": "base64-size-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "totalBytes": 395191,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "totalBytes": 395191,
+          "receivedBytes": 395191,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "totalBytes": 395191,
+          "receivedBytes": 395191,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "totalBytes": 395191,
+          "receivedBytes": 395191,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "totalBytes": 395191,
+          "receivedBytes": 395191,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1",
+          "totalBytes": 395191,
+          "receivedBytes": 395191,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-104PCU/1b7eb67a-0e5e-465e-9a60-2f5943fb7ad1"
+        }
+      ]
+    },
+    {
+      "tag": "owner:bandwidth-calculator",
+      "file": "downloads/invocation-uxlruX/1078dadc-862e-4ef0-bf38-276cd86b4b50",
+      "filename": "bandwidth-calculator-v1.json",
+      "bytes": 218,
+      "sha256": "565d8a2ba7537e77f8660ea019186f4e38be27105a7abc8c8f24b9e8c3dd2873",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "suggestedFilename": "bandwidth-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "totalBytes": 218,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "totalBytes": 218,
+          "receivedBytes": 218,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "totalBytes": 218,
+          "receivedBytes": 218,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "totalBytes": 218,
+          "receivedBytes": 218,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "totalBytes": 218,
+          "receivedBytes": 218,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1078dadc-862e-4ef0-bf38-276cd86b4b50",
+          "totalBytes": 218,
+          "receivedBytes": 218,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-uxlruX/1078dadc-862e-4ef0-bf38-276cd86b4b50"
+        }
+      ]
+    },
+    {
+      "tag": "owner:bandwidth-calculator",
+      "file": "downloads/invocation-UUNs7f/22b4404a-5c88-441d-bb1c-16ef3335f16f",
+      "filename": "bandwidth-calculator-v1.csv",
+      "bytes": 230,
+      "sha256": "2356930dbcb8999cf22553a37a8ffd112dd96d10d84998ae05f0b11254393cc6",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "suggestedFilename": "bandwidth-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "totalBytes": 230,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "totalBytes": 230,
+          "receivedBytes": 230,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "totalBytes": 230,
+          "receivedBytes": 230,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "totalBytes": 230,
+          "receivedBytes": 230,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "totalBytes": 230,
+          "receivedBytes": 230,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "22b4404a-5c88-441d-bb1c-16ef3335f16f",
+          "totalBytes": 230,
+          "receivedBytes": 230,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-UUNs7f/22b4404a-5c88-441d-bb1c-16ef3335f16f"
+        }
+      ]
+    },
+    {
+      "tag": "owner:bandwidth-calculator",
+      "file": "downloads/invocation-pMxrBp/4ccc263d-696a-4660-9f18-41b2589fc555",
+      "filename": "bandwidth-calculator-v1.pdf",
+      "bytes": 395359,
+      "sha256": "a1ef9790ccedfcfbc3f61019f55d9e312203227d48bfdb368300c9f88d9f4c4d",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "suggestedFilename": "bandwidth-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "totalBytes": 395359,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "totalBytes": 395359,
+          "receivedBytes": 395359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "totalBytes": 395359,
+          "receivedBytes": 395359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "totalBytes": 395359,
+          "receivedBytes": 395359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "totalBytes": 395359,
+          "receivedBytes": 395359,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "4ccc263d-696a-4660-9f18-41b2589fc555",
+          "totalBytes": 395359,
+          "receivedBytes": 395359,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-pMxrBp/4ccc263d-696a-4660-9f18-41b2589fc555"
+        }
+      ]
+    },
+    {
+      "tag": "owner:download-time-calculator",
+      "file": "downloads/invocation-XCuqWg/31d71d57-235a-4247-93fc-e736493c2d33",
+      "filename": "download-time-calculator-v1.json",
+      "bytes": 228,
+      "sha256": "4368263a040ed9974d9be11e0d883431f79c94bb2f7ae106d27ea84c991aa3f2",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "suggestedFilename": "download-time-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "totalBytes": 228,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "totalBytes": 228,
+          "receivedBytes": 228,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "totalBytes": 228,
+          "receivedBytes": 228,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "totalBytes": 228,
+          "receivedBytes": 228,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "totalBytes": 228,
+          "receivedBytes": 228,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "31d71d57-235a-4247-93fc-e736493c2d33",
+          "totalBytes": 228,
+          "receivedBytes": 228,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-XCuqWg/31d71d57-235a-4247-93fc-e736493c2d33"
+        }
+      ]
+    },
+    {
+      "tag": "owner:download-time-calculator",
+      "file": "downloads/invocation-NamMap/de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+      "filename": "download-time-calculator-v1.csv",
+      "bytes": 240,
+      "sha256": "9ff0b951a90da3f6a0f8c99ed90c4f70e217a114b1dfe37ad4b766d00332ccda",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "suggestedFilename": "download-time-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "totalBytes": 240,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "de5fce76-dc55-44ed-8ce3-28f72bf1c9fc",
+          "totalBytes": 240,
+          "receivedBytes": 240,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-NamMap/de5fce76-dc55-44ed-8ce3-28f72bf1c9fc"
+        }
+      ]
+    },
+    {
+      "tag": "owner:download-time-calculator",
+      "file": "downloads/invocation-9uRk8f/b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+      "filename": "download-time-calculator-v1.pdf",
+      "bytes": 395387,
+      "sha256": "c71c500ebe2683ee2813e03d3cd3c4791313c25ff46018174d5d5dbd630f28a4",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "suggestedFilename": "download-time-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "totalBytes": 395387,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "totalBytes": 395387,
+          "receivedBytes": 395387,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "totalBytes": 395387,
+          "receivedBytes": 395387,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "totalBytes": 395387,
+          "receivedBytes": 395387,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "totalBytes": 395387,
+          "receivedBytes": 395387,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "b5d2f0da-86f4-40d2-9a0b-b33218b7a429",
+          "totalBytes": 395387,
+          "receivedBytes": 395387,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-9uRk8f/b5d2f0da-86f4-40d2-9a0b-b33218b7a429"
+        }
+      ]
+    },
+    {
+      "tag": "owner:upload-time-calculator",
+      "file": "downloads/invocation-YpfReZ/f6f452d4-766e-4fac-bd25-689342fe8d75",
+      "filename": "upload-time-calculator-v1.json",
+      "bytes": 224,
+      "sha256": "c3f694e4aaedef739d65c7b1f9ec62baf16fb38ed49c5cca5f8addbbc1b234bb",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "suggestedFilename": "upload-time-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "totalBytes": 224,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "totalBytes": 224,
+          "receivedBytes": 224,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "totalBytes": 224,
+          "receivedBytes": 224,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "totalBytes": 224,
+          "receivedBytes": 224,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "totalBytes": 224,
+          "receivedBytes": 224,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "f6f452d4-766e-4fac-bd25-689342fe8d75",
+          "totalBytes": 224,
+          "receivedBytes": 224,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-YpfReZ/f6f452d4-766e-4fac-bd25-689342fe8d75"
+        }
+      ]
+    },
+    {
+      "tag": "owner:upload-time-calculator",
+      "file": "downloads/invocation-mlaEfT/1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+      "filename": "upload-time-calculator-v1.csv",
+      "bytes": 236,
+      "sha256": "6f756e449c4400a5d320c08e0b673d45c855bb408ac128fc69f243f75cb0cdc9",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "suggestedFilename": "upload-time-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "totalBytes": 236,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "totalBytes": 236,
+          "receivedBytes": 236,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "totalBytes": 236,
+          "receivedBytes": 236,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "totalBytes": 236,
+          "receivedBytes": 236,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "totalBytes": 236,
+          "receivedBytes": 236,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "1e1292cd-4b02-44d0-af1a-3fa006f9494a",
+          "totalBytes": 236,
+          "receivedBytes": 236,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-mlaEfT/1e1292cd-4b02-44d0-af1a-3fa006f9494a"
+        }
+      ]
+    },
+    {
+      "tag": "owner:upload-time-calculator",
+      "file": "downloads/invocation-btl1oR/36500799-977f-4222-8291-b8eb60feeca4",
+      "filename": "upload-time-calculator-v1.pdf",
+      "bytes": 395367,
+      "sha256": "a5ac4078c77c7e591bbd5b525092a8fb22f43a766374a34c090cfdbd8ab74363",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "suggestedFilename": "upload-time-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "totalBytes": 395367,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "totalBytes": 395367,
+          "receivedBytes": 395367,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "totalBytes": 395367,
+          "receivedBytes": 395367,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "totalBytes": 395367,
+          "receivedBytes": 395367,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "totalBytes": 395367,
+          "receivedBytes": 395367,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "36500799-977f-4222-8291-b8eb60feeca4",
+          "totalBytes": 395367,
+          "receivedBytes": 395367,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-btl1oR/36500799-977f-4222-8291-b8eb60feeca4"
+        }
+      ]
+    },
+    {
+      "tag": "owner:data-transfer-calculator",
+      "file": "downloads/invocation-39tex9/14e65081-1bd2-4c54-852a-54421aa1705f",
+      "filename": "data-transfer-calculator-v1.json",
+      "bytes": 227,
+      "sha256": "9080e44c3c62415fa135c94568f068b2c1183fdf9524347b77cf82040c999bdc",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "suggestedFilename": "data-transfer-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "totalBytes": 227,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "14e65081-1bd2-4c54-852a-54421aa1705f",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-39tex9/14e65081-1bd2-4c54-852a-54421aa1705f"
+        }
+      ]
+    },
+    {
+      "tag": "owner:data-transfer-calculator",
+      "file": "downloads/invocation-1BsAXj/9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+      "filename": "data-transfer-calculator-v1.csv",
+      "bytes": 239,
+      "sha256": "70dd5524df78debbe8ff935f8e5f1cc9cf9c488c8f0bd3ef253e6f38ba412f34",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "suggestedFilename": "data-transfer-calculator-v1.csv"
+        },
+        {
+          "event": "progress",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "totalBytes": 239,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "9595c632-4ea8-470b-8ca7-d05dc19e3a65",
+          "totalBytes": 239,
+          "receivedBytes": 239,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-1BsAXj/9595c632-4ea8-470b-8ca7-d05dc19e3a65"
+        }
+      ]
+    },
+    {
+      "tag": "owner:data-transfer-calculator",
+      "file": "downloads/invocation-TBigHW/6a824151-bddb-4677-a37e-79b61394b5bd",
+      "filename": "data-transfer-calculator-v1.pdf",
+      "bytes": 395386,
+      "sha256": "031b696c760f0e7e159cf8c1f20cb5790e790e9a4b0f8d753baa733368732210",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "suggestedFilename": "data-transfer-calculator-v1.pdf"
+        },
+        {
+          "event": "progress",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "totalBytes": 395386,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "totalBytes": 395386,
+          "receivedBytes": 395386,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "totalBytes": 395386,
+          "receivedBytes": 395386,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "totalBytes": 395386,
+          "receivedBytes": 395386,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "totalBytes": 395386,
+          "receivedBytes": 395386,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6a824151-bddb-4677-a37e-79b61394b5bd",
+          "totalBytes": 395386,
+          "receivedBytes": 395386,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-TBigHW/6a824151-bddb-4677-a37e-79b61394b5bd"
+        }
+      ]
+    },
+    {
+      "tag": "member:shared-member-export",
+      "file": "downloads/invocation-CzdCCC/6af9b161-35a3-4f57-9068-145890356480",
+      "filename": "data-transfer-calculator-v1.json",
+      "bytes": 227,
+      "sha256": "9080e44c3c62415fa135c94568f068b2c1183fdf9524347b77cf82040c999bdc",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "suggestedFilename": "data-transfer-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "totalBytes": 227,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "6af9b161-35a3-4f57-9068-145890356480",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-CzdCCC/6af9b161-35a3-4f57-9068-145890356480"
+        }
+      ]
+    },
+    {
+      "tag": "viewer:shared-member-export",
+      "file": "downloads/invocation-JysQAF/34455aa7-b21a-4422-9eee-bc2c50870db9",
+      "filename": "data-transfer-calculator-v1.json",
+      "bytes": 227,
+      "sha256": "9080e44c3c62415fa135c94568f068b2c1183fdf9524347b77cf82040c999bdc",
+      "events": [
+        {
+          "event": "begin",
+          "frameId": "1C2BC6DFE5DB4CB9571A657F536D9CA2",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "suggestedFilename": "data-transfer-calculator-v1.json"
+        },
+        {
+          "event": "progress",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "totalBytes": 227,
+          "receivedBytes": 0,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "inProgress"
+        },
+        {
+          "event": "progress",
+          "guid": "34455aa7-b21a-4422-9eee-bc2c50870db9",
+          "totalBytes": 227,
+          "receivedBytes": 227,
+          "state": "completed",
+          "filePath": "/tmp/calcumint-five-sharing-20261109/docs/first-five-full-contract-20261109/sharing/authenticated/downloads/invocation-JysQAF/34455aa7-b21a-4422-9eee-bc2c50870db9"
+        }
+      ]
+    }
+  ],
+  "fixture": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Full repository candidate model plus locally adopted guarded review bundle; NOT raw historical-chain success or authentic captured production equivalence",
+    "authMigrationCount": 75,
+    "authUidOwner": "supabase_auth_admin",
+    "schemaCoverage": {
+      "tables": [
+        "admin_alerts",
+        "ai_usage_events",
+        "api_usage_events",
+        "batch_calculation_jobs",
+        "batch_request_receipts",
+        "billing_account_fences",
+        "billing_atomic_completions",
+        "billing_customers",
+        "billing_webhook_events",
+        "business_api_keys",
+        "business_projects",
+        "business_webhook_endpoints",
+        "calculation_history",
+        "calculation_projects",
+        "calculator_bulk_jobs",
+        "calculator_catalog_admin",
+        "calculator_qa_checks",
+        "calculator_review_events",
+        "calculator_source_evidence",
+        "client_workspaces",
+        "custom_calculator_runs",
+        "custom_calculator_versions",
+        "custom_calculators",
+        "embed_configs",
+        "embed_events",
+        "embed_lead_receipts",
+        "embed_leads",
+        "favorites",
+        "lead_consents",
+        "organization_audit_log",
+        "organization_invitations",
+        "organization_members",
+        "organizations",
+        "platform_admins",
+        "profiles",
+        "saved_scenarios",
+        "share_links",
+        "shared_calculations",
+        "subscriptions",
+        "user_preferences",
+        "webhook_deliveries"
+      ],
+      "policies": 86,
+      "publicFunctions": 88,
+      "tablesWithoutRls": null
+    },
+    "appliedHistoricalSources": [
+      "001_b3_accounts.sql",
+      "002_b4_billing.sql",
+      "003_b5_business.sql",
+      "004_b6_builder.sql",
+      "005_b7_delivery.sql",
+      "006_b8_api_automation.sql",
+      "007_b9_ai.sql",
+      "008_b10_admin_factory.sql",
+      "008b_b10_alert_automation.sql",
+      "010_b7_pro_workspace.sql",
+      "012_production_fk_indexes.sql",
+      "013_production_rpc_privilege_hardening_v2.sql",
+      "014_production_entitlement_rpc_sync.sql",
+      "016_final_certification_evidence_gate.sql",
+      "017_regulatory_rule_pack_evidence.sql",
+      "018_harden_rule_pack_required_metadata.sql",
+      "019_authoritative_lifecycle_enforcement.sql",
+      "020_post_certification_revalidation.sql",
+      "021_require_rule_pack_provenance.sql",
+      "022_harden_reviewer_waiver_authority.sql",
+      "023_structured_source_evidence.sql",
+      "024_reviewer_assignment_authority.sql",
+      "025_derived_source_count_authority.sql",
+      "026_publication_manifest_authority.sql",
+      "027_publication_trigger_privilege_hardening.sql",
+      "028_source_evidence_reviewer_index.sql",
+      "029_account_rls_auth_initplan.sql",
+      "030_billing_ai_rls_auth_initplan.sql",
+      "031_admin_identity_rls_auth_initplan.sql",
+      "032_business_builder_rls_auth_initplan.sql",
+      "033_pro_workspace_rls_auth_initplan.sql",
+      "034_billing_webhook_event_privileges.sql",
+      "035_split_overlapping_write_policies.sql",
+      "036_consolidate_ai_usage_read_policy.sql",
+      "037_builder_publish_business_entitlement.sql"
+    ],
+    "deferredToBundle": [
+      "009_country_preferences.sql",
+      "038_client_account_billing_privileges.sql",
+      "032_atomic_reviewer_qa_audit.sql",
+      "033_atomic_reviewer_assignment_audit.sql",
+      "034_atomic_lifecycle_transition_audit.sql",
+      "035_atomic_catalog_creation.sql"
+    ],
+    "legacy011": "unchanged broken source fingerprinted; existing missing-contract repair adopted only locally",
+    "sources": [
+      {
+        "path": "docs/audits/migration-contract-2026-10-20/inventory.json",
+        "sha256": "67e0cf0d7ee790de5de7cfa348f5b18ac20359dfca670ee8c1fb4870703e784b"
+      },
+      {
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      },
+      {
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      },
+      {
+        "path": "supabase/migrations/003_b5_business.sql",
+        "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5"
+      },
+      {
+        "path": "supabase/migrations/004_b6_builder.sql",
+        "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899"
+      },
+      {
+        "path": "supabase/migrations/005_b7_delivery.sql",
+        "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258"
+      },
+      {
+        "path": "supabase/migrations/006_b8_api_automation.sql",
+        "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5"
+      },
+      {
+        "path": "supabase/migrations/007_b9_ai.sql",
+        "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429"
+      },
+      {
+        "path": "supabase/migrations/008_b10_admin_factory.sql",
+        "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36"
+      },
+      {
+        "path": "supabase/migrations/008b_b10_alert_automation.sql",
+        "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa"
+      },
+      {
+        "path": "supabase/migrations/010_b7_pro_workspace.sql",
+        "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e"
+      },
+      {
+        "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+        "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50"
+      },
+      {
+        "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+        "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2"
+      },
+      {
+        "path": "supabase/migrations/012_production_fk_indexes.sql",
+        "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2"
+      },
+      {
+        "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+        "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa"
+      },
+      {
+        "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+        "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff"
+      },
+      {
+        "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+        "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e"
+      },
+      {
+        "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+        "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987"
+      },
+      {
+        "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+        "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66"
+      },
+      {
+        "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+        "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1"
+      },
+      {
+        "path": "supabase/migrations/020_post_certification_revalidation.sql",
+        "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1"
+      },
+      {
+        "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+        "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc"
+      },
+      {
+        "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+        "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818"
+      },
+      {
+        "path": "supabase/migrations/023_structured_source_evidence.sql",
+        "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01"
+      },
+      {
+        "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+        "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e"
+      },
+      {
+        "path": "supabase/migrations/025_derived_source_count_authority.sql",
+        "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4"
+      },
+      {
+        "path": "supabase/migrations/026_publication_manifest_authority.sql",
+        "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42"
+      },
+      {
+        "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+        "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070"
+      },
+      {
+        "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+        "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a"
+      },
+      {
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+      },
+      {
+        "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+        "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0"
+      },
+      {
+        "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+        "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4"
+      },
+      {
+        "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+        "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9"
+      },
+      {
+        "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+        "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f"
+      },
+      {
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4"
+      },
+      {
+        "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+        "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d"
+      },
+      {
+        "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+        "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5"
+      },
+      {
+        "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+        "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b"
+      }
+    ],
+    "bundle": {
+      "reviewVersion": "20261021.v1",
+      "deploymentVersion": null,
+      "productionExecutionAuthorized": false,
+      "requires": [
+        "owner dispositions for historical differences and external writers",
+        "trusted postgres ownership",
+        "reviewed write pause, timeouts, backup and restore plan",
+        "exact metadata freshness and schema/ledger preconditions"
+      ],
+      "excludes": [
+        "011 missing-only repair",
+        "historical029 replay",
+        "global default ACL changes",
+        "production execution"
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+          "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+        },
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        },
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        },
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        },
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+          "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+          "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+          "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+          "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+          "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+          "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a"
+        }
+      ],
+      "sha256": "07dda25c047f8e75059402f561c5e4988322f60ed40faaa23aa87740c36534a4"
+    },
+    "productionEquivalence": "UNKNOWN",
+    "captureAvailable": false
+  },
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/create_business_organization",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/create_business_organization",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/business_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/client_workspaces",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/business_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/client_workspaces",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 403
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/share_technology_five_snapshot",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/technology_five_sharing_capability",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/business_projects",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/client_workspaces",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/organization_members",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/auth/v1/user",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/technology_five_shared_snapshots",
+      "status": 200
+    }
+  ],
+  "limits": [
+    "New guarded SQL adopted ONLY in disposable candidate repository fixture; no held integrity repair adoption or production equivalence",
+    "Server-only trusted service-role RPC; authenticated clients cannot submit direct storage writes",
+    "Actor and organization owner both retain existing Business entitlement checks; no commercial seat policy change",
+    "Membership enforced on each read/share; no live push revocation or retroactive recall of exported bytes",
+    "Client categorization is an authenticated team workspace relation, not a public client portal or delivered-email assertion",
+    "Existing calculation revisions/history and old shared table/RLS remain unchanged",
+    "No canonical/source/specialist/publication approval"
+  ]
+}
