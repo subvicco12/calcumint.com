@@ -1,0 +1,40 @@
+{
+  "failedHead": "4573902dde62f607ba33acd24e16837805559e02",
+  "failedRun": 42520030056,
+  "failedJob": 128851290458,
+  "failedStep": "Calculator sprint shared boundary and version-safe private finance evidence",
+  "failingAssertion": "every current source and retained evidence byte binding still matches",
+  "exactFile": "src/components/publication20-tool.tsx",
+  "expected": "4c5ad7ad371345c640f420e5fc5492ef4df7b2ada11468f54e74cf31cc07e589",
+  "actual": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5",
+  "authorizedChange": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061: existingFinalRenderer migration, no mathematical/input/output changes",
+  "rootCause": "Retained packet integrity test still treated historical sharedCurrentBindings as literal current bytes instead of using already-established immutable successor proof. Other guards already verified the migration.",
+  "correction": "Knowncaller validates originala955 hash+size, then currentCompletionBinding exact95ad successor+9dependencies. Allotherbindings preserve hash+size; packet byte-pinned457. No hash/revision/approval records replaced.",
+  "historicalPacketSHA256": "d034b179e5255b18d0ec7b0fba5c80d57c92b7c638c95acb709c1162f11df363",
+  "localChecks": [
+    {
+      "log": "/tmp/ci425200-reproduction-red.log",
+      "result": "Exactfailure reproduced"
+    },
+    {
+      "log": "/tmp/ci425200-reproduction-green.log",
+      "passed": 7
+    },
+    {
+      "log": "/tmp/ci425200-focused-green.log",
+      "passed": 191
+    },
+    {
+      "log": "/tmp/ci425200-focused-lint.log",
+      "result": "PASS"
+    }
+  ],
+  "independentReview": "Delegated independent read-only review found no blockingguardweakening; notsource/certification approval",
+  "applicationCodeChanged": false,
+  "historicalEvidenceChanged": false,
+  "registryOrMathChanged": false,
+  "workflowChanged": false,
+  "newApproval": false,
+  "productionWrites": false,
+  "releaseHold": true
+}
