@@ -1,0 +1,47 @@
+
+ RUN  v3.2.7 /tmp/calcumint-five-sharing-20261109
+
+ ❯ src/components/technology-five-share-form.test.tsx (5 tests | 1 failed) 264ms
+   ✓ submits a verified immutable history copy and preserves request identity across schema-unavailable retry 191ms
+   ✓ rejects forged JSON locally and retains the editable source 32ms
+   ✓ shows viewers their read/export role without offering a shared write 3ms
+   ✓ resets private draft and client selection when project context changes 15ms
+   × loads an exact shared template as a separate editable copy without altering its source 21ms
+     → expected { …(4) } to deeply equal { …(4) }
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-five-share-form.test.tsx > loads an exact shared template as a separate editable copy without altering its source
+AssertionError: expected { …(4) } to deeply equal { …(4) }
+
+- Expected
++ Received
+
+  {
+    "calculatorSlug": "base64-size-calculator",
+    "calculatorVersion": 1,
+    "input": {
+-     "inputBytes": 1003,
++     "inputBytes": 1000,
+    },
+    "output": {
+      "steps": [
+-       "Base64 Size = 1340",
++       "Base64 Size = 1336",
+      ],
+-     "value": 1340,
++     "value": 1336,
+    },
+  }
+
+ ❯ src/components/technology-five-share-form.test.tsx:11:430
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 4 passed (5)
+   Start at  19:09:35
+   Duration  2.00s (transform 505ms, setup 0ms, collect 899ms, tests 264ms, environment 456ms, prepare 90ms)
+

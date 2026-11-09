@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "bandwidth-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "timeSeconds": 10,
+        "dataMegabytes": 100
+      },
+      "output": {
+        "steps": [
+          "Bandwidth = 80"
+        ],
+        "value": 80
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "timeSeconds": 10,
+        "dataMegabytes": 200
+      },
+      "output": {
+        "steps": [
+          "Bandwidth = 160"
+        ],
+        "value": 160
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 80,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 160,
+            "difference": 80,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}
