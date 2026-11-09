@@ -156,6 +156,7 @@ test('retained cohort inventory evolution preserves its exact caller dependency 
 function proveCurrentSourceEvolution(rows,read=readFileSync,sourceGit=git){
  const evidence=json('docs/first-five-20261109/ci-recovery/source-evolution/capture.json');
  const name='scripts/product-completion-lineage.mjs',captured=sourceGit(['show',evidence.capture+':'+name]).toString(),expected=parseBindings(captured);
+ assert.equal(hash(Buffer.from(captured)),'61d41da20bcb497e2c8d3825af55a327dac30af75843edc6ae6902c404d430b4','Exact adopted598 metadata snapshot required');
  const guard=evidence.guardPath,guardBytes=sourceGit(['show',evidence.capture+':'+guard]);
  assert.equal(hash(guardBytes),evidence.guardSHA256);assert.equal(sourceGit(['rev-parse',evidence.capture+':'+guard]).toString().trim(),evidence.guardBlob);assert(read(guard).equals(guardBytes));
  const consumers=expected.filter(row=>(row.supplementalSources??[]).some(dep=>dep.path===guard));assert.deepEqual(consumers.map(row=>row.path),evidence.guardConsumers);
