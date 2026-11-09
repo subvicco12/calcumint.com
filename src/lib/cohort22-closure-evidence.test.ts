@@ -15,8 +15,8 @@ it('binds57 actual source browser journeys,30refusals and distinct A/B without a
  for(const row of data.journeys){expect(row.engineExample).toBe(true);expect(row.keyboardRecovery).toBe(true);expect(row.portraitLandscapeDesktopNoOverflow).toBe(true);expect(row.distinctABPreserved).toBe(row.plan!=='free');expect(row.jsonReplayTamper).toBe(row.plan!=='free');}
  for(const [path,hash]of Object.entries(data.sourceHashes)){if(path==='src/components/calculator-interactive.tsx')expect(verifyCapturedCurrentCaller({path,sha256:String(hash)})).toBe(path);else expect(createHash('sha256').update(readFileSync(path)).digest('hex')).toBe(hash);}
 });
-it('executes operator packet negatives including deployed-SHA JSON type confusion',()=>{
- const env={...process.env};delete env.NODE_TEST_CONTEXT;const out=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/execution-recovery-20261109/cohort22-attestation.test.mjs'],{env,encoding:'utf8',timeout:20000,maxBuffer:1000000});expect(out).toContain('# tests 5');expect(out).toContain('# fail 0');
+it('executes current operator negatives including retained SHA-type and successor calendar refusal',()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;const out=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/execution-recovery-20261109/cohort22-attestation.test.mjs'],{env,encoding:'utf8',timeout:20000,maxBuffer:1000000});expect(out).toContain('# tests 6');expect(out).toContain('# fail 0');
 });
 
 it('independently reads38 retained PDF and CSV export byte records with exact identity/version/value',()=>{

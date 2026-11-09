@@ -436,7 +436,9 @@ jobs:
           SIX_BOUNDARY_BROWSER_RECEIPT: ${{ runner.temp }}/six-publication-boundaries
   publication-factory:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    # Run42648534309 exhausted18min after152 successful journeys; retain every
+    # acceptance step and its own tighter timeout within a bounded25min job.
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v5
