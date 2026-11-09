@@ -649,11 +649,11 @@ const bindings=[
   {
     "path": "src/components/calculator-interactive.tsx",
     "predecessorRef": "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
-    "successorRef": "7086b85437b025225f5736fb6b849415e518dc08",
+    "successorRef": "811bbd67bfcc635808101a351fa15eb133331369",
     "predecessorBlob": "eda303b5e09abb3ab1ac4147b431fb455d3a2c9d",
-    "successorBlob": "68ba0847e88f64dde70f0cadd9b023a700fee935",
+    "successorBlob": "0e2929a7e2d8eac6065e3797372fab8d8c42daa3",
     "predecessorSHA256": "46903cd272e5e8a9b7ff37e338a6d9e149bf8956c4d5bed7afec7f9539d2c123",
-    "successorSHA256": "91e5cc8ac9e1fdf11ed5b617b6ad3604fcb43b9b862d26a1510f59716e79bc3e",
+    "successorSHA256": "43b49715779e5b3eb5f4046aa72bd078d3ba239614b879164bce96ca0e54a419",
     "supplementalSources": [
       {
         "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
@@ -1110,6 +1110,13 @@ const bindings=[
         "ref": "7086b85437b025225f5736fb6b849415e518dc08",
         "blob": "dd368ceb52d75eb3998241a001b9e533373146c5",
         "sha256": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+      }
+    ],
+    "intermediateSources": [
+      {
+        "ref": "7086b85437b025225f5736fb6b849415e518dc08",
+        "blob": "68ba0847e88f64dde70f0cadd9b023a700fee935",
+        "sha256": "91e5cc8ac9e1fdf11ed5b617b6ad3604fcb43b9b862d26a1510f59716e79bc3e"
       }
     ]
   },

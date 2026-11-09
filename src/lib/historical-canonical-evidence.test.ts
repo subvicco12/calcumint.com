@@ -42,3 +42,26 @@ describe('historical Batch16 retains fresh witness comparison',()=>{
   expect(()=>validateHistoricalBatch16Report(caller)).toThrow('transition');
  });
 });
+
+
+describe('exact supplemental technology presentation preserves historical membership',()=>{
+ it('rejects missing, duplicate, unknown and stale supplemental membership without rewriting historical412',()=>{
+  const current=preparation.prepareCanonicalContractEvidence();
+  const name='src/calculators/final-framework/technology-scalar-presentation.ts';
+  expect(current.implementationSourceSnapshot.files).toHaveLength(413);
+  expect(original.implementationSourceSnapshot.files).toHaveLength(412);
+  expect(validateHistoricalCanonicalEvidence(original)).toEqual(original);
+  const spy=vi.spyOn(preparation,'prepareCanonicalContractEvidence');
+  try{
+   for(const mutate of [
+    (rows:typeof current.implementationSourceSnapshot.files)=>rows.filter(row=>row.path!==name),
+    (rows:typeof current.implementationSourceSnapshot.files)=>[...rows,rows.find(row=>row.path===name)!],
+    (rows:typeof current.implementationSourceSnapshot.files)=>[...rows,{path:'src/calculators/unreviewed.ts',sha256:'0'.repeat(64)}],
+    (rows:typeof current.implementationSourceSnapshot.files)=>rows.map(row=>row.path===name?{...row,sha256:'0'.repeat(64)}:row),
+   ]){
+    const altered=structuredClone(current);altered.implementationSourceSnapshot.files=mutate(altered.implementationSourceSnapshot.files);spy.mockReturnValue(altered);
+    expect(()=>validateHistoricalCanonicalEvidence(original)).toThrow(/membership|supplemental/);
+   }
+  }finally{spy.mockRestore();}
+ });
+});

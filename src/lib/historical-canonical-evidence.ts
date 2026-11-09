@@ -18,7 +18,21 @@ export function validateHistoricalCanonicalEvidence(raw:unknown):CanonicalContra
  if(JSON.stringify(clean)!==JSON.stringify(original))throw Error('Historical canonical evidence differs from original artifact');
  const current=prepareCanonicalContractEvidence();
  const oldFiles=original.implementationSourceSnapshot.files;
- const files=current.implementationSourceSnapshot.files.map((file,index)=>{
+ // The current tree includes one explicitly captured presentation-only addition.
+ // Preserve the original412-file membership; never ignore arbitrary new sources.
+ const supplemental={path:'src/calculators/final-framework/technology-scalar-presentation.ts',
+  ref:'7086b85437b025225f5736fb6b849415e518dc08',blob:'d0d4a738021a84e08984bad3b45333c57a8030e1',
+  sha256:'bb82638b8347e696e9276fa5e9b062696b1808d3fe8ff82a001538af7c0d5330'};
+ const currentFiles=current.implementationSourceSnapshot.files;
+ const expectedPaths=[...oldFiles.map(file=>file.path),supplemental.path].sort();
+ if(JSON.stringify(currentFiles.map(file=>file.path))!==JSON.stringify(expectedPaths))throw Error('Historical canonical source membership differs');
+ if(git(['rev-parse','--verify',supplemental.ref+'^{commit}']).toString().trim()!==supplemental.ref||
+    git(['rev-parse',supplemental.ref+':'+supplemental.path]).toString().trim()!==supplemental.blob)throw Error('Historical canonical supplemental provenance differs');
+ const supplementalBytes=git(['cat-file','blob',supplemental.blob]);
+ if(hash(supplementalBytes.toString())!==supplemental.sha256||
+    currentFiles.find(file=>file.path===supplemental.path)?.sha256!==supplemental.sha256||
+    !readFileSync(supplemental.path).equals(supplementalBytes))throw Error('Historical canonical supplemental source differs');
+ const files=currentFiles.filter(file=>file.path!==supplemental.path).map((file,index)=>{
   const old=oldFiles[index];
   if(!old||old.path!==file.path)throw Error('Historical canonical source membership differs');
   const admitted=verifyFinancialSafetyBinding(file.path,readFileSync(file.path),old.sha256,git);
