@@ -5,6 +5,15 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {assess,requirements} from './operations-preflight.mjs';
 export const reviewedSource='ddca21413199632fa7256967fffdded928a2a9de';
+function genuineUtcTimestamp(value){
+ if(typeof value!=='string')return false;
+ const match=/^(\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d)(?:\.\d+)?Z$/.exec(value);
+ if(!match)return false;
+ const time=Date.parse(value);
+ // Date.parse normalizes impossible calendar days and 24:00; reject that rollover.
+ // Compare whole seconds only so genuine submillisecond fractions remain accepted.
+ return Number.isFinite(time)&&new Date(time).toISOString().slice(0,19)===match[1];
+}
 export async function inspectPacket(packet,directory){
  assert(packet&&typeof packet==='object'&&!Array.isArray(packet),'Packet object required');
  assert.deepEqual(Object.keys(packet).sort(),['deployedSource','evidence','records','reviewedSource']);
@@ -17,7 +26,7 @@ export async function inspectPacket(packet,directory){
   assert(requirements.includes(item.requirement)&&!seen.has(item.requirement),'Unknown/duplicate requirement');seen.add(item.requirement);
   assert.equal(item.evidenceRef,packet.records[item.requirement]?.evidenceRef,'Evidence reference mismatch');
   assert.equal(item.nonSecret,true,'Only declared nonsecret evidence permitted');
-  assert(typeof item.observedAt==='string'&&/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/.test(item.observedAt)&&Number.isFinite(Date.parse(item.observedAt)),'Explicit ISO UTC observation timestamp required');
+  assert(genuineUtcTimestamp(item.observedAt),'Explicit valid ISO UTC observation timestamp required');
   assert(typeof item.path==='string'&&item.path&&!isAbsolute(item.path)&&!item.path.split(/[\\/]/).includes('..'),'Relative path without traversal required');
   const file=await realpath(resolve(base,item.path)),rel=relative(base,file);
   assert(rel&&!isAbsolute(rel)&&!rel.split(/[\\/]/).includes('..'),'Evidence escapes declared directory');

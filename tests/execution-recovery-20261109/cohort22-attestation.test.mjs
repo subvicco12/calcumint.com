@@ -14,3 +14,11 @@ test('reference mismatch, missing file, secret declaration and timestamp omissio
 test('rejects array/object deployed source rather than coercing JSON to a SHA string',()=>fixture(async(p,r)=>{
  for(const deployedSource of [['a'.repeat(40)],{},42,true])await assert.rejects(inspectPacket({...p,deployedSource},r),/Exact deployed SHA/);
 }));
+test('requires genuine UTC calendar timestamps without normalizing invalid dates and preserves fractional syntax',()=>fixture(async(p,r)=>{
+ for(const observedAt of ['2026-02-30T12:00:00Z','2026-02-29T12:00:00Z','2100-02-29T12:00:00Z','2026-04-31T12:00:00Z','2026-11-09T24:00:00Z','2026-11-09T12:00:60Z']){
+  p.evidence[0].observedAt=observedAt;await assert.rejects(inspectPacket(p,r),/timestamp/);
+ }
+ for(const observedAt of ['2024-02-29T12:00:00Z','2000-02-29T12:00:00.123456789Z','2026-11-09T23:59:59.1Z','2026-11-09T00:00:00.000Z']){
+  p.evidence[0].observedAt=observedAt;const result=await inspectPacket(p,r);assert.equal(result.adoptionGo,false);assert.equal(result.productionExecutionAuthorized,false);assert.equal(p.evidence[0].observedAt,observedAt);
+ }
+}));
