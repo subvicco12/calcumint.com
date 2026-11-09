@@ -97,6 +97,6 @@ export default async function BusinessApiPage(_props: PageProps) {
         <p><code>POST /api/v1/batch</code> — process 1–100 calculation rows per request.</p>
         <p className="muted">Authenticate with <code>Authorization: Bearer &lt;api-key&gt;</code>. API keys are scope-limited, rate-limited and monthly-quota metered. Webhooks use HMAC-SHA256 signatures, retry with exponential backoff and dead-letter after eight failed attempts.</p>
       </article>
-    <NativeEmbedGrantForm organizationId={String(membership.organization_id)}/>{canAdmin&&<TechnologyFiveDelivery organizationId={organizationId} keys={keys??[]}/>}</section></AccountSessionBoundary>
+    <NativeEmbedGrantForm organizationId={String(membership.organization_id)}/>{canAdmin&&<TechnologyFiveDelivery organizationId={organizationId} keys={keys??[]} webhooks={(endpoints??[]).filter(endpoint=>endpoint.status==='active'&&Array.isArray(endpoint.event_types)&&endpoint.event_types.includes('calculation.completed'))}/>}</section></AccountSessionBoundary>
   );
 }
