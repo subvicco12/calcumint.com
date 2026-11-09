@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "engineId": "technology.upload-time",
+  "version": 1,
+  "rows": [
+    {
+      "raw": "100,10",
+      "snapshot": {
+        "calculatorSlug": "upload-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 100,
+          "bandwidthMbps": 10
+        },
+        "output": {
+          "value": 80,
+          "steps": [
+            "Upload Time = 80"
+          ]
+        }
+      }
+    },
+    {
+      "raw": "100,20",
+      "snapshot": {
+        "calculatorSlug": "upload-time-calculator",
+        "calculatorVersion": 1,
+        "input": {
+          "dataMegabytes": 100,
+          "bandwidthMbps": 20
+        },
+        "output": {
+          "value": 40,
+          "steps": [
+            "Upload Time = 40"
+          ]
+        }
+      }
+    }
+  ]
+}
