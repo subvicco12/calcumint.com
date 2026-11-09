@@ -9,7 +9,7 @@ import {scenarioMetadataForResult} from "@/lib/scenario-display-metadata";
 import { calculatorRegistry } from "@/calculators/registry";
 import {TechnologyInputField} from './technology-input-field';
 import {technologyScalarPresentation} from '@/calculators/final-framework/technology-scalar-presentation';
-import {registeredValueResult,type RegisteredValueDefinition} from "@/calculators/final-framework/registered-value-result";
+import {registeredValueResult} from "@/calculators/final-framework/registered-value-result";
 import {loanRegisteredRateAnalysis,sipRegisteredRateAnalysis,compoundRegisteredRateAnalysis,registeredRateExport} from "@/calculators/final-framework/registered-rate-analysis";
 import {UnavailableRateAnalysis} from "./unavailable-rate-analysis";
 import { buildMortgageRateAnalysis } from "@/calculators/final-framework/mortgage-rate-analysis";
