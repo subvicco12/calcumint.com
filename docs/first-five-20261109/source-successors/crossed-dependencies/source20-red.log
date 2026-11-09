@@ -1,0 +1,74 @@
+✔ exact known UI receipt claim requires current successor 811bbd67bfcc635808101a351fa15eb133331369 (1468.263066ms)
+✔ exact known UI receipt claim requires current successor 3c2b768ecc9e6e0821df8e74c779d134e99c4f48 (1994.304634ms)
+✔ exact known UI receipt claim requires current successor 56763645c091743508c1b7a163c7c59dcb7f4b7d (2049.264395ms)
+✔ exact known UI receipt claim requires current successor d1ea2fd979fa02e1d107e48aedcba72086115f6e (1890.672534ms)
+✔ exact known UI receipt claim requires current successor 955e2ed5df93e646275c4d94d33548cac5925380 (1518.262987ms)
+✔ known old UI claim cannot allow old valid caller bytes or invented claims (1783.839905ms)
+✔ same target UI dependency drift refused src/lib/technology-capture-trust.ts (3434.277111ms)
+✔ same target UI dependency drift refused src/lib/presentation-entitlements.ts (2914.30311ms)
+✔ same target UI dependency drift refused src/components/technology-worked-example.tsx (3329.519959ms)
+✔ exact567 caller byte reversion is refused despite legitimate retained receipt claim (1609.036224ms)
+✔ exactd1 caller byte reversion is refused despite legitimate retained receipt claim (1436.822551ms)
+✔ current actual caller retains original20 binding contract through exact successor (2023.824284ms)
+✔ retained and fresh outer receipt claims require exact current captured source (3761.453961ms)
+✔ exact capture and hard predecessor refusal src/components/calculator-interactive.tsx (4011.604244ms)
+✔ target-tree dependency refusal src/components/calculator-interactive.tsx src/lib/technology-snapshot-verification.ts (1148.821078ms)
+✔ target-tree dependency refusal src/components/calculator-interactive.tsx src/calculators/technology-computing/catalog-batch-2.ts (614.787755ms)
+✔ exact capture and hard predecessor refusal src/lib/registered-snapshot-verification.ts (3539.898332ms)
+✔ target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/lib/technology-snapshot-verification.ts (1012.989983ms)
+✔ target-tree dependency refusal src/lib/registered-snapshot-verification.ts src/calculators/technology-computing/catalog-batch-2.ts (693.53613ms)
+file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850
+  if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
+                                                                     ^
+
+Error: Completion supplemental source bytes differ: src/components/calculator-interactive.tsx
+    at verifyCompletionBinding (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850:70)
+    at verifyPreservedSource (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:14:59)
+    at checkSoftwareClosure (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:42:30)
+    at async file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:61:84
+
+Node.js v24.19.0
+✖ retained software closure reproduces unchanged historical preservation packets (3482.388892ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 43748.931737
+
+✖ failing tests:
+
+test at tests/execution-recovery-20261109/source-lineage.test.mjs:26:1
+✖ retained software closure reproduces unchanged historical preservation packets (3482.388892ms)
+  Error: Command failed: /opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/software-closure-evidence.mjs --check
+  file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850
+    if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);
+                                                                       ^
+  
+  Error: Completion supplemental source bytes differ: src/components/calculator-interactive.tsx
+      at verifyCompletionBinding (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850:70)
+      at verifyPreservedSource (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:14:59)
+      at checkSoftwareClosure (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:42:30)
+      at async file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:61:84
+  
+  Node.js v24.19.0
+  
+      at genericNodeError (node:internal/errors:985:15)
+      at wrappedFn (node:internal/errors:539:14)
+      at checkExecSyncError (node:child_process:942:11)
+      at execFileSync (node:child_process:978:15)
+      at TestContext.<anonymous> (file:///tmp/calcumint-first-five-lineage-dependency-20261109/tests/execution-recovery-20261109/source-lineage.test.mjs:29:26)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12) {
+    status: 1,
+    signal: null,
+    output: [ null, '', "file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850\n  if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);\n                                                                     ^\n\nError: Completion supplemental source bytes differ: src/components/calculator-interactive.tsx\n    at verifyCompletionBinding (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850:70)\n    at verifyPreservedSource (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:14:59)\n    at checkSoftwareClosure (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:42:30)\n    at async file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:61:84\n\nNode.js v24.19.0\n" ],
+    pid: 532505,
+    stdout: '',
+    stderr: "file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850\n  if(hash(source)!==dep.sha256||!read(dep.path).equals(source))throw Error('Completion supplemental source bytes differ: '+dep.path);\n                                                                     ^\n\nError: Completion supplemental source bytes differ: src/components/calculator-interactive.tsx\n    at verifyCompletionBinding (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/product-completion-lineage.mjs:1850:70)\n    at verifyPreservedSource (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:14:59)\n    at checkSoftwareClosure (file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:42:30)\n    at async file:///tmp/calcumint-first-five-lineage-dependency-20261109/scripts/software-closure-evidence.mjs:61:84\n\nNode.js v24.19.0\n"
+  }

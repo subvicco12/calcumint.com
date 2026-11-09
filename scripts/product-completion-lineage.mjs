@@ -1717,11 +1717,11 @@ const bindings=[
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "eecc1b853e2ca6c160c999442d78836993565a83",
+    "successorRef": "5dc04a0b91d807f72843d3d5c8cc868c26a35e07",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
-    "successorBlob": "2fa3ee8dee5d0b26deb5123ffe5f310afedb8eec",
+    "successorBlob": "958188aab571cadcdb1e5d27af618a25355da9ab",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
-    "successorSHA256": "afaf384c94b5981ccae3b062d158aaa1215da69d209c60316739f653d69d9410",
+    "successorSHA256": "b1f1c087026cd35877878533384cd17c2c14b2dfb6b69882727ad27d437be293",
     "supplementalSources": [
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -1755,9 +1755,9 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-interactive.tsx",
-        "ref": "955e2ed5df93e646275c4d94d33548cac5925380",
-        "blob": "b5977fef07773c4eda98f1bb430c698681f45ab3",
-        "sha256": "ae8462ecc006a8125c42f3ed92627e7cb39a9b73bb4cd9e92a1c9eb869def435"
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "5fc7d34fee30fec986f1b7169925e2dc1169a5b6",
+        "sha256": "8f033f08da04fddfcedf6a230dc4a93aaff97d9c8f69b20bf4e1be0341ddebb6"
       }
     ],
     "intermediateSources": [
@@ -1775,6 +1775,11 @@ const bindings=[
         "ref": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
         "blob": "1116e05689573c5cafc12f2556de536c19bb288c",
         "sha256": "444ab171a5c28eff1b4d66a3a333562e29692641a6e2df4a7e653d7cacb72421"
+      },
+      {
+        "ref": "eecc1b853e2ca6c160c999442d78836993565a83",
+        "blob": "2fa3ee8dee5d0b26deb5123ffe5f310afedb8eec",
+        "sha256": "afaf384c94b5981ccae3b062d158aaa1215da69d209c60316739f653d69d9410"
       }
     ]
   },
@@ -1825,9 +1830,9 @@ const bindings=[
     "supplementalSources": [
       {
         "path": "src/components/calculator-interactive.tsx",
-        "ref": "955e2ed5df93e646275c4d94d33548cac5925380",
-        "blob": "b5977fef07773c4eda98f1bb430c698681f45ab3",
-        "sha256": "ae8462ecc006a8125c42f3ed92627e7cb39a9b73bb4cd9e92a1c9eb869def435"
+        "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
+        "blob": "5fc7d34fee30fec986f1b7169925e2dc1169a5b6",
+        "sha256": "8f033f08da04fddfcedf6a230dc4a93aaff97d9c8f69b20bf4e1be0341ddebb6"
       },
       {
         "path": "src/calculators/final-framework/technology-scalar-presentation.ts",
