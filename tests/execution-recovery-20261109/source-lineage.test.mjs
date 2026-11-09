@@ -22,3 +22,10 @@ for(const name of [caller,outer]){
  test('exact capture and hard predecessor refusal '+name,()=>{assert.equal(verifyCompletionBinding(name,current,claim,git),true);assert.throws(()=>verifyCompletionBinding(name,historical,claim,git),/current successor/);assert.throws(()=>verifyCompletionBinding(name,Buffer.from('tamper'),claim,git));assert.throws(()=>verifyCompletionBinding(name,current,claim,()=>{throw Error('missing provenance');}),/missing provenance/);});
  for(const dep of ['src/lib/technology-snapshot-verification.ts','src/calculators/technology-computing/catalog-batch-2.ts'])test('target-tree dependency refusal '+name+' '+dep,()=>assert.throws(()=>verifyCompletionBinding(name,current,claim,git,p=>p===dep?Buffer.from('target drift'):readFileSync(p)),/supplemental source bytes differ/));
 }
+test('retained software closure reproduces unchanged historical preservation packets',()=>{
+ const paths=['docs/software-closure/requirements-540.json','docs/software-closure/preservation.json'];
+ const before=paths.map(name=>readFileSync(name));
+ const result=JSON.parse(execFileSync(process.execPath,['scripts/software-closure-evidence.mjs','--check'],{encoding:'utf8',timeout:45000,maxBuffer:8*1024*1024}));
+ assert.equal(result.identities,540);assert.equal(result.canonicalPromotions,0);assert.equal(result.classes.CONTRACT_BLOCKED,43);
+ paths.forEach((name,index)=>assert.deepEqual(readFileSync(name),before[index]));
+});

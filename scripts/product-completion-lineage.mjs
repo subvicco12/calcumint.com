@@ -1649,6 +1649,36 @@ const bindings=[
         "sha256": "d32d67b95091149c2d5b1d579fa8d7b41043a3f0bc474d633081e51dfb8132b1"
       }
     ]
+  },
+  {
+    "path": "src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts",
+    "predecessorRef": "b96b1ac89971cb8418d2389fbd7c9571a57491f1",
+    "successorRef": "811bbd67bfcc635808101a351fa15eb133331369",
+    "predecessorBlob": "c47012a0ab012abef4e35a4658ac2a216de0eaf2",
+    "successorBlob": "72270f4f15aef62d97f4a0103b5f8a16556e5575",
+    "predecessorSHA256": "22159c30fac63178179a23651c06dd9c53536ee2b2d58da13665aaa8039bab71",
+    "successorSHA256": "f41be82f704527f80aaa6b75facc43579c0b109ea88be6d6cdc82b72d358e1f5",
+    "intermediateSources": [
+      {
+        "ref": "7086b85437b025225f5736fb6b849415e518dc08",
+        "blob": "7e0017d9c4c7e2bc3ecde6539d1120a31be0072f",
+        "sha256": "d28487f25da2e0931f3f5eb9b57dab4fd57e3a225d44d09fbe2516ee456f760d"
+      }
+    ],
+    "supplementalSources": [
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "811bbd67bfcc635808101a351fa15eb133331369",
+        "blob": "0e2929a7e2d8eac6065e3797372fab8d8c42daa3",
+        "sha256": "43b49715779e5b3eb5f4046aa72bd078d3ba239614b879164bce96ca0e54a419"
+      },
+      {
+        "path": "src/calculators/final-framework/technology-scalar-presentation.ts",
+        "ref": "7086b85437b025225f5736fb6b849415e518dc08",
+        "blob": "d0d4a738021a84e08984bad3b45333c57a8030e1",
+        "sha256": "bb82638b8347e696e9276fa5e9b062696b1808d3fe8ff82a001538af7c0d5330"
+      }
+    ]
   }
 ];
 export const completionSourceRefs=Object.freeze([...new Set(bindings.flatMap(b=>[b.predecessorRef,b.successorRef,...(b.intermediateSources??[]).map(m=>m.ref),...(b.supplementalSources??[]).map(m=>m.ref)]))]);

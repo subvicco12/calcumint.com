@@ -13,7 +13,8 @@ const guarded=[
  'src/calculators/finance/loan-payment.ts',
  'src/calculators/precision.ts',
  'src/calculators/source-acceptance-evidence.test.ts',
- 'src/calculators/source-driven-evidence.test.ts'
+ 'src/calculators/source-driven-evidence.test.ts',
+ 'src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts'
 ];
 for(const name of guarded){
  const historical=git(['show',`${baseline}:${name}`]),current=readFileSync(name);
