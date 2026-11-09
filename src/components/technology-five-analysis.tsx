@@ -1,5 +1,6 @@
 'use client';
 import {useId,useState} from 'react';
+import {TechnologyFiveBatchPanel} from './technology-five-batch';
 import {analyzeTechnologyFive,solveTechnologyFive} from '@/lib/technology-five-analysis';
 import {requiredCalculatorNumber} from '@/lib/registered-input-successor';
 import {canUseFinalCapability,resolveFinalCapability} from '@/calculators/final-framework/product-capabilities';
@@ -37,6 +38,7 @@ export function TechnologyFiveAnalysis({id,input,plan}:{id:string;input:Record<s
    <button type='submit'>Solve target</button>
    {currentAttempt?.error&&<p role='alert'>{currentAttempt.error}</p>}{currentAttempt?.message&&<p role='status'>{currentAttempt.message}</p>}
   </form>:<p>Goal solving is available with an active goal-solver capability.</p>}
+  <TechnologyFiveBatchPanel key={id} id={id}/>
   <p>Technical calculation revision: {analysis.id}@{analysis.version}. Analysis does not alter the current calculation or saved snapshots.</p>
  </section>;
 }
