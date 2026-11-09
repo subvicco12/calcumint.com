@@ -101,7 +101,7 @@ const bindings=[
   {
     "path": "scripts/publication20-caller-lineage.mjs",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "719a104663c10154ad945051a6dd54093fc4b284",
+    "successorRef": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
     "predecessorBlob": "7ece608dadea02c3c668623d80931c2598829e99",
     "successorBlob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
     "predecessorSHA256": "64368f3b10b838bea51ee4a53f4b0e89b0b2828654ef84f2cd9e68825344367e",
@@ -136,6 +136,11 @@ const bindings=[
         "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
         "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
         "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
+      },
+      {
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
+        "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
       }
     ],
     "supplementalSources": [
@@ -153,9 +158,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
-        "blob": "ff22a6d41358e1fcf36e3222c54b063e814e09dd",
-        "sha256": "4a77494bdf40c8f42d15acfc52df7e7875e53c60c40a508000e07269490f3f82"
+        "ref": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
+        "blob": "1116e05689573c5cafc12f2556de536c19bb288c",
+        "sha256": "444ab171a5c28eff1b4d66a3a333562e29692641a6e2df4a7e653d7cacb72421"
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -165,9 +170,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
-        "blob": "458a634626cc28ccb9f5d535a80922d72aa9a84e",
-        "sha256": "e3f5b6b7b186cb11ecbe55179afbf4b2f344c8ed778669621224184c698845f3"
+        "ref": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
+        "blob": "436884f8520f30d9ca8f3c3fee4594b7a5bdc5d1",
+        "sha256": "c62b5c6f77b67a5c509ea0802b6acc7cac59b96fbbb80fc834faaa65f40e52ae"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
@@ -219,9 +224,9 @@ const bindings=[
       },
       {
         "path": "tests/cohort22-closure-20261109/caller-source.test.mjs",
-        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
-        "blob": "46c908d748ca29182c7e870d40389576b22fbdb1",
-        "sha256": "3eabc923719592830bd17128b74e0d5b566d25531947b0e67ebcc2b60927d845"
+        "ref": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
+        "blob": "5a87486357e6b626b5e4b3e69456dc72318355eb",
+        "sha256": "18dd776622b3c96c9dce5ce769faedf929df9dee7be0a02ec5c6db486a183f95"
       },
       {
         "path": "src/lib/execution-recovery-evidence.test.ts",
@@ -1668,11 +1673,11 @@ const bindings=[
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "719a104663c10154ad945051a6dd54093fc4b284",
+    "successorRef": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
-    "successorBlob": "ff22a6d41358e1fcf36e3222c54b063e814e09dd",
+    "successorBlob": "1116e05689573c5cafc12f2556de536c19bb288c",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
-    "successorSHA256": "4a77494bdf40c8f42d15acfc52df7e7875e53c60c40a508000e07269490f3f82",
+    "successorSHA256": "444ab171a5c28eff1b4d66a3a333562e29692641a6e2df4a7e653d7cacb72421",
     "supplementalSources": [
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -1694,9 +1699,9 @@ const bindings=[
       },
       {
         "path": "tests/cohort22-closure-20261109/caller-source.test.mjs",
-        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
-        "blob": "46c908d748ca29182c7e870d40389576b22fbdb1",
-        "sha256": "3eabc923719592830bd17128b74e0d5b566d25531947b0e67ebcc2b60927d845"
+        "ref": "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
+        "blob": "5a87486357e6b626b5e4b3e69456dc72318355eb",
+        "sha256": "18dd776622b3c96c9dce5ce769faedf929df9dee7be0a02ec5c6db486a183f95"
       },
       {
         "path": "src/lib/execution-recovery-evidence.test.ts",
@@ -1716,6 +1721,11 @@ const bindings=[
         "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
         "blob": "af6c6de02ed7e94436468a1449aac1731e56a693",
         "sha256": "4484ea7b8a58d61d91ec293c247d6faccfe618fda0d1f9f79fa00f535b10d577"
+      },
+      {
+        "ref": "719a104663c10154ad945051a6dd54093fc4b284",
+        "blob": "ff22a6d41358e1fcf36e3222c54b063e814e09dd",
+        "sha256": "4a77494bdf40c8f42d15acfc52df7e7875e53c60c40a508000e07269490f3f82"
       }
     ]
   },
