@@ -38,7 +38,7 @@ export function assertCurrentSourceEvolution(rows,read=readFileSync,sourceGit=gi
  const analysisCurrent=capture.changedDependencies[0].current;
  assert.equal(analysisCurrent.path,analysis);
  const oldAnalysis=capture.changedDependencies[0].predecessor;
- assert.deepEqual(capture.analysisBinding,{path:analysis,predecessorRef:oldAnalysis.ref,predecessorBlob:oldAnalysis.blob,predecessorSHA256:oldAnalysis.sha256,successorRef:analysisCurrent.ref,successorBlob:analysisCurrent.blob,successorSHA256:analysisCurrent.sha256,supplementalSources:[currentCaller.supplementalSources.find(dep=>dep.path==='src/lib/technology-five-analysis.ts'),...capture.addedSources]});
+ assert.deepEqual(capture.analysisBinding,{path:analysis,predecessorRef:oldAnalysis.ref,predecessorBlob:oldAnalysis.blob,predecessorSHA256:oldAnalysis.sha256,successorRef:analysisCurrent.ref,successorBlob:analysisCurrent.blob,successorSHA256:analysisCurrent.sha256,intermediateSources:[{ref:retainedSourceRef,blob:oldAnalysis.blob,sha256:oldAnalysis.sha256}],supplementalSources:[currentCaller.supplementalSources.find(dep=>dep.path==='src/lib/technology-five-analysis.ts'),...capture.addedSources]});
  expected.push(capture.analysisBinding);
  const oldHelper=expected.find(row=>row.path===receiptHelper);
  assert.deepEqual(capture.helperPredecessor,{ref:oldHelper.successorRef,blob:oldHelper.successorBlob,sha256:oldHelper.successorSHA256});
