@@ -72,6 +72,18 @@
       "sha256": "061513cf68d520367ac066a02cf5470834c8630a28eb8bf16c5ed67aefd0d75a",
       "bytes": 281476
     },
+    "docs/execution-recovery-20261109/validation/hosted-fix-bridge.log": {
+      "sha256": "1c91a76b415938a701978d7aceab4e9858ada7a89d57511bdaad8c469c6b14ee",
+      "bytes": 426
+    },
+    "docs/execution-recovery-20261109/validation/hosted-fix-lint.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/execution-recovery-20261109/validation/hosted-initial-software-closure-failure.log": {
+      "sha256": "74a643dd19dcc8f682a6a3610a342a213b9ab00ac3b9f277ebf27f26aac0990b",
+      "bytes": 2099
+    },
     "docs/execution-recovery-20261109/validation/initial-full-unit-failures.log": {
       "sha256": "fa389ba2d754c277b2b61d3cdfa14b3e9694f636bfb55416cb19bd805c51ea05",
       "bytes": 327053
@@ -84,6 +96,14 @@
       "sha256": "3aa0e3c5790eac52f09a68e17e01e29635a40ccd0f3c323a5e225c545e84083d",
       "bytes": 5891
     },
+    "docs/execution-recovery-20261109/validation/preservation-final-shallow-bootstrap.log": {
+      "sha256": "661fc8bb1d19c9eb7c840235ba7806a7f541a8b34644f003a74e64562dd0b707",
+      "bytes": 80
+    },
+    "docs/execution-recovery-20261109/validation/preservation-final-shallow.log": {
+      "sha256": "a4973ce2474bfa5790bd9d53b9b5057a899cdf69ad247519691b5c2e3767b44e",
+      "bytes": 2271
+    },
     "docs/execution-recovery-20261109/validation/region-green.log": {
       "sha256": "0a77d580c526d893785660d8375c13ba7920a43dd0febc2421aa84adde15a70f",
       "bytes": 420
@@ -95,6 +115,14 @@
     "docs/execution-recovery-20261109/validation/shortest20.log": {
       "sha256": "09f256baf207af1229f689037db6dfc9a73acc3bc27cadf5ef918a0cdcfb2cdf",
       "bytes": 123
+    },
+    "docs/execution-recovery-20261109/validation/software-closure-green.log": {
+      "sha256": "6f55ba9131c9c69962198ac933aaf23ea19f7c6569e3a9ed7f759455b4a18e04",
+      "bytes": 151
+    },
+    "docs/execution-recovery-20261109/validation/software-closure-red.log": {
+      "sha256": "cf9fcb28c7b29c31ed33faa02275ee589c0773ebc2890c0fd3f3973f3f945d43",
+      "bytes": 713
     },
     "docs/execution-recovery-20261109/validation/typecheck.log": {
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -115,5 +143,26 @@
     "vitestReceiptBridgeTests": 5,
     "vitestReceiptBridgeFailures": 0,
     "noProductionApplicationSourceChangedAfterFullUnitAndBuild": true
+  },
+  "initialHostedCI": {
+    "sourceSHA": "0b1964a5d361f11a350bb0f6b09f9aac4e4b6413",
+    "run": 42603066530,
+    "failedJob": "full-product",
+    "failedStep": "Software closure evidence and recovery lifecycle browser acceptance",
+    "actualCause": "Missing exact successor admission for changed legacy Final inventory test; historical packets remain unchanged",
+    "localReproduction": true
+  },
+  "preservationRepair": {
+    "sourceCapture": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+    "metadataCapture": "153945bd9b9bda8eb78b5bbd4b5cfb9d79f5c4c0",
+    "focusedNodeTestsPassed": 238,
+    "receiptBridgeTestsPassed": 5,
+    "protectedFiles": 1101,
+    "historicalPacketsChanged": false,
+    "workflowOrAppOrMathematicalSourceChanged": false,
+    "independentEngineeringReview": "NO_BLOCKING_FINDING_WITHIN_SCOPED_REVIEW",
+    "freshShallowExactRefsFetched": 37,
+    "freshShallowNodeTestsPassed": 21,
+    "freshShallowNodeFailures": 0
   }
 }

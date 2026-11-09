@@ -28,6 +28,8 @@ Independent review also exposed a source-verifier defect: two wrappers failed to
 - Private proposal UI:nine native browser journeys, three identities × three synthetic display plans. Browser-local state only; no authenticated account persistence claim.
 - Mathematical defaults use independently specified literal witnesses. Original core golden and historical source packets are reused. Passing shared checks is not individual full Blueprint proof.
 
+The first hosted run42603066530 at0b1964a passed source-acceptance and build, but the full-product preservation guard rejected the changed legacy inventory test because its exact successor was not registered there. The failure was reproduced locally. The original software-closure packets stay byte-identical; a strict inventory-test successor and reversion/tamper/missing-Git negatives repair the missing admission. The complete preservation check now also runs through mandatory unit discovery. Corrected exact-head CI is recorded in the external final checkpoint.
+
 Initial failed tests and superseded pre-region browser receipts are retained and distinguished from final evidence. New receipt checks run through ordinary mandatory unit discovery. No historical packet is rewritten to hide a changed source.
 
 ## Acceptance disposition

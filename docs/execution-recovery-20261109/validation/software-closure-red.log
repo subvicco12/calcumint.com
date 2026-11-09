@@ -1,0 +1,10 @@
+file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15
+ if(!current.equals(historical))throw Error(`Protected source changed: ${name}`);
+                                      ^
+
+Error: Protected source changed: src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts
+    at verifyPreservedSource (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:15:39)
+    at checkSoftwareClosure (file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:42:30)
+    at async file:///workspace/work/product-completion-20261108/scripts/software-closure-evidence.mjs:61:84
+
+Node.js v24.19.0
