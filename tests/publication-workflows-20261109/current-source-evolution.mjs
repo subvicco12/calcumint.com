@@ -44,6 +44,9 @@ export function assertCurrentSourceEvolution(rows,read=readFileSync,sourceGit=gi
  assert.deepEqual(capture.helperPredecessor,{ref:oldHelper.successorRef,blob:oldHelper.successorBlob,sha256:oldHelper.successorSHA256});
  oldHelper.intermediateSources.push(capture.helperPredecessor);
  Object.assign(oldHelper,{successorRef:capture.helperCurrent.ref,successorBlob:capture.helperCurrent.blob,successorSHA256:capture.helperCurrent.sha256});
+ const helperConsumers=expected.filter(row=>(row.supplementalSources??[]).some(dep=>dep.path===receiptHelper));
+ assert.deepEqual(helperConsumers.map(row=>row.path),['scripts/publication20-caller-lineage.mjs']);
+ for(const row of helperConsumers)for(const dependency of row.supplementalSources)if(dependency.path===receiptHelper){assert.deepEqual(dependency,{path:receiptHelper,...capture.helperPredecessor});Object.assign(dependency,{path:receiptHelper,...capture.helperCurrent});}
  const guarded=expected.filter(row=>(row.supplementalSources??[]).some(dep=>dep.path===guard));
  assert.deepEqual(guarded.map(row=>row.path),['scripts/publication20-caller-lineage.mjs']);
  for(const row of guarded)for(const dependency of row.supplementalSources)if(dependency.path===guard){assert.deepEqual(dependency,capture.guardPredecessor);Object.assign(dependency,capture.guardCurrent);}
