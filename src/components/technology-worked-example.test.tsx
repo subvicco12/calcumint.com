@@ -4,7 +4,7 @@ import {cleanup,render,screen,fireEvent,within} from '@testing-library/react';
 import cases from '../../tests/execution-recovery-20261109/technology-cases.json';
 import hazards from '../../docs/cohort22-closure-20261109/technology/hazard-witnesses.json';
 import {calculatorRegistry} from '@/calculators/registry';
-const state=vi.hoisted(()=>({plan:'free',snapshot:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:{value:number}|null}}));
+const state=vi.hoisted(()=>({plan:'free',snapshot:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:{value:number}|null;exportMethodology?:string}}));
 vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
 vi.mock('./calculator-account-actions',()=>({CalculatorAccountActions:(p:NonNullable<typeof state.snapshot>)=>{state.snapshot=p;return null;}}));
 import {CalculatorInteractive} from './calculator-interactive';
@@ -15,6 +15,7 @@ for(const plan of ['free','pro','business'])for(const row of cases.rows)it(`#${r
  expect(within(panel).getByRole('table',{name:'Worked example inputs'})).toBeTruthy();
  expect(within(panel).getByText(String(row.expected),{exact:true})).toBeTruthy();
  expect(within(panel).getByText('Source references')).toBeTruthy();
+ const definition=calculatorRegistry.getBySlug(row.slug)!;expect(screen.getByText('Methodology',{selector:'summary'}).parentElement?.textContent).toContain('Technical calculation revision: '+definition.id+'@'+row.version);expect(state.snapshot?.exportMethodology).toContain('Technical calculation revision: '+definition.id+'@'+row.version);
  for(const source of calculatorRegistry.getBySlug(row.slug)!.sources){if(source.url)expect(within(panel).getByRole('link',{name:source.label}).getAttribute('href')).toBe(source.url);if(source.note)expect(within(panel).getByText(source.note)).toBeTruthy();}
  if(plan==='free')expect(screen.queryByRole('table',{name:'Input and output reconciliation'})).toBeNull();else expect(screen.getByRole('table',{name:'Input and output reconciliation'})).toBeTruthy();
  const field=view.container.querySelector('input')!;fireEvent.change(field,{target:{value:''}});expect(state.snapshot?.output).toBeNull();
