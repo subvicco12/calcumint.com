@@ -59,6 +59,8 @@ The original five-row34-clause mapping remains the governing association invento
 
 ## Decision
 
+Post-review correction: actual SSR exposed that the Business API page loaded webhook endpoints but omitted the Technology delivery component's webhook prop. Source1f0f81732c1d69963413ffadad45ff3a27a42086 fixes this one runtime line, passing only current-organization active endpoints with an array subscription containing calculation.completed, inside the unchanged Owner/Admin boundary. Independent source review accepts the correction; the new two SSR checks plus existing ten focused cases support this wiring. Previous API/worker receipts remain valid for their tested sources, but were not proof that the earlier dashboard selector was wired. The original66a8 source packet is preserved; active exact-source admission must use the separately reviewed one-page successor and reject old-page reversion. This adds no schema/math/policy change and does not turn final CI green.
+
 All five are **ENGINEERING_COMPLETE_CANDIDATE_PENDING_FINAL_CI**, for their explicit immutable current contracts. No demonstrated B/J/K implementation or concrete named QA proof remains missing after the reviewed evidence. The remaining engineering gate is the exact final full regression/CI checkpoint.
 
 The previous local full run is **not green**:8841 passed,4 skipped,5 failed due to an ambiguous target-input selector after batch textareas were added. Independent review confirmed the fix narrows selection to the named Target calculation form and accessible target label; all original numeric/refusal/recovery/snapshot assertions remain. Focused5 passed. That does not relabel the old full run; final mandatory CI must supply actual full green.
