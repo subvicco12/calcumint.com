@@ -1,0 +1,743 @@
+{
+  "kind": "INDEPENDENT_NATIVE_UCUM_RATIONAL_PRIVATE_FACTOR_WITNESSES",
+  "sourceArchiveSha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b",
+  "nativeEssenceSha256": "dfccea1b5dc284245ebae97edd1dc03c45864da4e87df55bc9851797b4fd0b61",
+  "oracleScriptSha256": "cfb8abddc6e486277e44df1515e4cd6b9aa26e5840f12525604fb4e8333c6463",
+  "legacySourceSha256": {
+    "src/calculators/conversion/catalog-batch-1.ts": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9",
+    "src/calculators/conversion/catalog-batch-2.ts": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+    "src/calculators/conversion/catalog-batch-3.ts": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+  },
+  "factors": {
+    "pressure": {
+      "pa": {
+        "n": "1",
+        "d": "1",
+        "nearest": 1.0,
+        "bits": "3ff0000000000000"
+      },
+      "kpa": {
+        "n": "1000",
+        "d": "1",
+        "nearest": 1000.0,
+        "bits": "408f400000000000"
+      },
+      "mpa": {
+        "n": "1000000",
+        "d": "1",
+        "nearest": 1000000.0,
+        "bits": "412e848000000000"
+      },
+      "bar": {
+        "n": "100000",
+        "d": "1",
+        "nearest": 100000.0,
+        "bits": "40f86a0000000000"
+      },
+      "atm": {
+        "n": "101325",
+        "d": "1",
+        "nearest": 101325.0,
+        "bits": "40f8bcd000000000"
+      },
+      "psi": {
+        "n": "8896443230521",
+        "d": "1290320000",
+        "nearest": 6894.757293168362,
+        "bits": "40baeec1ddf70f99"
+      }
+    },
+    "density": {
+      "kg_m3": {
+        "n": "1",
+        "d": "1",
+        "nearest": 1.0,
+        "bits": "3ff0000000000000"
+      },
+      "g_cm3": {
+        "n": "1000",
+        "d": "1",
+        "nearest": 1000.0,
+        "bits": "408f400000000000"
+      },
+      "kg_l": {
+        "n": "1000",
+        "d": "1",
+        "nearest": 1000.0,
+        "bits": "408f400000000000"
+      },
+      "lb_ft3": {
+        "n": "28349523125",
+        "d": "1769802912",
+        "nearest": 16.018463373960138,
+        "bits": "403004ba04035526"
+      }
+    },
+    "torque": {
+      "n_m": {
+        "n": "1",
+        "d": "1",
+        "nearest": 1.0,
+        "bits": "3ff0000000000000"
+      },
+      "kn_m": {
+        "n": "1000",
+        "d": "1",
+        "nearest": 1000.0,
+        "bits": "408f400000000000"
+      },
+      "lbf_ft": {
+        "n": "3389544870828501",
+        "d": "2500000000000000",
+        "nearest": 1.3558179483314003,
+        "bits": "3ff5b16e29369c65"
+      },
+      "lbf_in": {
+        "n": "1129848290276167",
+        "d": "10000000000000000",
+        "nearest": 0.1129848290276167,
+        "bits": "3fbcec92e19e25dc"
+      }
+    }
+  },
+  "pairs": [
+    {
+      "engine": "pressure",
+      "fromUnit": "pa",
+      "toUnit": "pa",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "pa",
+      "toUnit": "kpa",
+      "ratio": {
+        "n": "1",
+        "d": "1000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "pa",
+      "toUnit": "mpa",
+      "ratio": {
+        "n": "1",
+        "d": "1000000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "pa",
+      "toUnit": "bar",
+      "ratio": {
+        "n": "1",
+        "d": "100000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "pa",
+      "toUnit": "atm",
+      "ratio": {
+        "n": "1",
+        "d": "101325"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "pa",
+      "toUnit": "psi",
+      "ratio": {
+        "n": "1290320000",
+        "d": "8896443230521"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "kpa",
+      "toUnit": "pa",
+      "ratio": {
+        "n": "1000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "kpa",
+      "toUnit": "kpa",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "kpa",
+      "toUnit": "mpa",
+      "ratio": {
+        "n": "1",
+        "d": "1000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "kpa",
+      "toUnit": "bar",
+      "ratio": {
+        "n": "1",
+        "d": "100"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "kpa",
+      "toUnit": "atm",
+      "ratio": {
+        "n": "40",
+        "d": "4053"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "kpa",
+      "toUnit": "psi",
+      "ratio": {
+        "n": "1290320000000",
+        "d": "8896443230521"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "mpa",
+      "toUnit": "pa",
+      "ratio": {
+        "n": "1000000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "mpa",
+      "toUnit": "kpa",
+      "ratio": {
+        "n": "1000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "mpa",
+      "toUnit": "mpa",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "mpa",
+      "toUnit": "bar",
+      "ratio": {
+        "n": "10",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "mpa",
+      "toUnit": "atm",
+      "ratio": {
+        "n": "40000",
+        "d": "4053"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "mpa",
+      "toUnit": "psi",
+      "ratio": {
+        "n": "1290320000000000",
+        "d": "8896443230521"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "bar",
+      "toUnit": "pa",
+      "ratio": {
+        "n": "100000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "bar",
+      "toUnit": "kpa",
+      "ratio": {
+        "n": "100",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "bar",
+      "toUnit": "mpa",
+      "ratio": {
+        "n": "1",
+        "d": "10"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "bar",
+      "toUnit": "bar",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "bar",
+      "toUnit": "atm",
+      "ratio": {
+        "n": "4000",
+        "d": "4053"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "bar",
+      "toUnit": "psi",
+      "ratio": {
+        "n": "129032000000000",
+        "d": "8896443230521"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "atm",
+      "toUnit": "pa",
+      "ratio": {
+        "n": "101325",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "atm",
+      "toUnit": "kpa",
+      "ratio": {
+        "n": "4053",
+        "d": "40"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "atm",
+      "toUnit": "mpa",
+      "ratio": {
+        "n": "4053",
+        "d": "40000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "atm",
+      "toUnit": "bar",
+      "ratio": {
+        "n": "4053",
+        "d": "4000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "atm",
+      "toUnit": "atm",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "atm",
+      "toUnit": "psi",
+      "ratio": {
+        "n": "18677382000000",
+        "d": "1270920461503"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "psi",
+      "toUnit": "pa",
+      "ratio": {
+        "n": "8896443230521",
+        "d": "1290320000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "psi",
+      "toUnit": "kpa",
+      "ratio": {
+        "n": "8896443230521",
+        "d": "1290320000000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "psi",
+      "toUnit": "mpa",
+      "ratio": {
+        "n": "8896443230521",
+        "d": "1290320000000000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "psi",
+      "toUnit": "bar",
+      "ratio": {
+        "n": "8896443230521",
+        "d": "129032000000000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "psi",
+      "toUnit": "atm",
+      "ratio": {
+        "n": "1270920461503",
+        "d": "18677382000000"
+      }
+    },
+    {
+      "engine": "pressure",
+      "fromUnit": "psi",
+      "toUnit": "psi",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_m3",
+      "toUnit": "kg_m3",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_m3",
+      "toUnit": "g_cm3",
+      "ratio": {
+        "n": "1",
+        "d": "1000"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_m3",
+      "toUnit": "kg_l",
+      "ratio": {
+        "n": "1",
+        "d": "1000"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_m3",
+      "toUnit": "lb_ft3",
+      "ratio": {
+        "n": "1769802912",
+        "d": "28349523125"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "g_cm3",
+      "toUnit": "kg_m3",
+      "ratio": {
+        "n": "1000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "g_cm3",
+      "toUnit": "g_cm3",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "g_cm3",
+      "toUnit": "kg_l",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "g_cm3",
+      "toUnit": "lb_ft3",
+      "ratio": {
+        "n": "14158423296",
+        "d": "226796185"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_l",
+      "toUnit": "kg_m3",
+      "ratio": {
+        "n": "1000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_l",
+      "toUnit": "g_cm3",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_l",
+      "toUnit": "kg_l",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "kg_l",
+      "toUnit": "lb_ft3",
+      "ratio": {
+        "n": "14158423296",
+        "d": "226796185"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "lb_ft3",
+      "toUnit": "kg_m3",
+      "ratio": {
+        "n": "28349523125",
+        "d": "1769802912"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "lb_ft3",
+      "toUnit": "g_cm3",
+      "ratio": {
+        "n": "226796185",
+        "d": "14158423296"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "lb_ft3",
+      "toUnit": "kg_l",
+      "ratio": {
+        "n": "226796185",
+        "d": "14158423296"
+      }
+    },
+    {
+      "engine": "density",
+      "fromUnit": "lb_ft3",
+      "toUnit": "lb_ft3",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "n_m",
+      "toUnit": "n_m",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "n_m",
+      "toUnit": "kn_m",
+      "ratio": {
+        "n": "1",
+        "d": "1000"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "n_m",
+      "toUnit": "lbf_ft",
+      "ratio": {
+        "n": "2500000000000000",
+        "d": "3389544870828501"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "n_m",
+      "toUnit": "lbf_in",
+      "ratio": {
+        "n": "10000000000000000",
+        "d": "1129848290276167"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "kn_m",
+      "toUnit": "n_m",
+      "ratio": {
+        "n": "1000",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "kn_m",
+      "toUnit": "kn_m",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "kn_m",
+      "toUnit": "lbf_ft",
+      "ratio": {
+        "n": "2500000000000000000",
+        "d": "3389544870828501"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "kn_m",
+      "toUnit": "lbf_in",
+      "ratio": {
+        "n": "10000000000000000000",
+        "d": "1129848290276167"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_ft",
+      "toUnit": "n_m",
+      "ratio": {
+        "n": "3389544870828501",
+        "d": "2500000000000000"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_ft",
+      "toUnit": "kn_m",
+      "ratio": {
+        "n": "3389544870828501",
+        "d": "2500000000000000000"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_ft",
+      "toUnit": "lbf_ft",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_ft",
+      "toUnit": "lbf_in",
+      "ratio": {
+        "n": "12",
+        "d": "1"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_in",
+      "toUnit": "n_m",
+      "ratio": {
+        "n": "1129848290276167",
+        "d": "10000000000000000"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_in",
+      "toUnit": "kn_m",
+      "ratio": {
+        "n": "1129848290276167",
+        "d": "10000000000000000000"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_in",
+      "toUnit": "lbf_ft",
+      "ratio": {
+        "n": "1",
+        "d": "12"
+      }
+    },
+    {
+      "engine": "torque",
+      "fromUnit": "lbf_in",
+      "toUnit": "lbf_in",
+      "ratio": {
+        "n": "1",
+        "d": "1"
+      }
+    }
+  ],
+  "positiveWitnessMagnitudes": [
+    1.0020841800044864e-292,
+    1.0020841800044866e-292,
+    3.054936363499605e-151,
+    0.1,
+    1,
+    3.141592653589793,
+    3.273390607896142e+150,
+    1.0463951242053391e+298,
+    1.0463951242053392e+298
+  ],
+  "signedNonzeroCases": 1224,
+  "unitRoundoff": {
+    "n": "1",
+    "d": "9007199254740992"
+  },
+  "gamma4": {
+    "n": "1",
+    "d": "2251799813685247"
+  },
+  "retainedInternationalAcre": {
+    "n": "316160658",
+    "d": "78125"
+  },
+  "approval": false,
+  "scope": "Exact source-factor relationships and finite numerical witnesses only; supplied Number interpretation; no canonical version allocation, applicability approval or publication authority."
+}
