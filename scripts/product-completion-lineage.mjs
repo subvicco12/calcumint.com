@@ -180,9 +180,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "eecc1b853e2ca6c160c999442d78836993565a83",
-        "blob": "8b9f6d8e91d5bd81c7d76c213d4114c47c50d8ef",
-        "sha256": "f691f81005523e3973113308c889dd4dea5288b41c6ee2a594bccc61f89471dd"
+        "ref": "f41f3255facac47406be9c94912edade5cce760f",
+        "blob": "741df068f39832a6a6c64581d08a2ac2459a5342",
+        "sha256": "369bb6a02a04aaf3f3a6b319c26ff8550e6fd0a4cb9fa0478f129f4e88262d19"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
