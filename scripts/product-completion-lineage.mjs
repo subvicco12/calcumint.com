@@ -101,7 +101,7 @@ const bindings=[
   {
     "path": "scripts/publication20-caller-lineage.mjs",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
+    "successorRef": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
     "predecessorBlob": "7ece608dadea02c3c668623d80931c2598829e99",
     "successorBlob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
     "predecessorSHA256": "64368f3b10b838bea51ee4a53f4b0e89b0b2828654ef84f2cd9e68825344367e",
@@ -124,6 +124,11 @@ const bindings=[
       },
       {
         "ref": "80d18305104a9db4a015ea26199f8b916370467c",
+        "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
+        "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
+      },
+      {
+        "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
         "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
         "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
       }
@@ -149,15 +154,15 @@ const bindings=[
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
-        "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
-        "blob": "a8d13371138a634f26c35d2f3f81bf25633f6c4f",
-        "sha256": "57605fc5d7a70fa51658950cff9bf9ef5555edf1682ca8271941ee3f49974780"
+        "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+        "blob": "face5ee39c088fd3573accae5fe495fb0616a4a9",
+        "sha256": "a53f826c7f3a4a04e48f3b07b5e13b85189821fada62352001da2409aa4c18e3"
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
-        "blob": "18fcc4189b2d7bd827e906312756175432f5aec5",
-        "sha256": "cbbcf20eb375463e2e0d8a2cf0cb60058cc6490ef1b018fb80175867789e1632"
+        "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+        "blob": "8dd2eaffbd34f6e9a36909e5ff246434e3161e4e",
+        "sha256": "4622fdaa504df00c5f1315767289fd11a4050e1394c29fd9e378a62d9fe1eed7"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
@@ -194,6 +199,12 @@ const bindings=[
         "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
         "blob": "012aa638c12ba66bd62e1ab2a842de55e1c4367b",
         "sha256": "cdf1417a7e36277f4bc97f3df9062d6cee4c2df3b5d16a6973210de5f2f35996"
+      },
+      {
+        "path": "tests/software-closure/preservation.test.mjs",
+        "ref": "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+        "blob": "9360ae0bdca742bbb09e50d75a11f69f2786ce24",
+        "sha256": "8e4055e6003608b05e780401b0f851756aac203b16dba4e67fdd362d939c3b21"
       }
     ]
   },
