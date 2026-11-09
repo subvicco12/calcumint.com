@@ -101,7 +101,7 @@ const bindings=[
   {
     "path": "scripts/publication20-caller-lineage.mjs",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "80d18305104a9db4a015ea26199f8b916370467c",
+    "successorRef": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
     "predecessorBlob": "7ece608dadea02c3c668623d80931c2598829e99",
     "successorBlob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
     "predecessorSHA256": "64368f3b10b838bea51ee4a53f4b0e89b0b2828654ef84f2cd9e68825344367e",
@@ -119,6 +119,11 @@ const bindings=[
       },
       {
         "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+        "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
+        "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
+      },
+      {
+        "ref": "80d18305104a9db4a015ea26199f8b916370467c",
         "blob": "64e9c37928d3a211fb080a9d0bec12d6ec6f3183",
         "sha256": "f742e161e6eb256e7265a290e2fd46980d7816aa3ea6936384f295112b333f0e"
       }
@@ -150,9 +155,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "80d18305104a9db4a015ea26199f8b916370467c",
-        "blob": "0d1bbeea5a3b06875da27cb874cf6e399a8ba4f5",
-        "sha256": "09d311c2c253d0b6f75d3074052f5c3e1d5a97a594f0ba5fe0011629ade5274c"
+        "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
+        "blob": "18fcc4189b2d7bd827e906312756175432f5aec5",
+        "sha256": "cbbcf20eb375463e2e0d8a2cf0cb60058cc6490ef1b018fb80175867789e1632"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
@@ -177,6 +182,18 @@ const bindings=[
         "ref": "80d18305104a9db4a015ea26199f8b916370467c",
         "blob": "fc1cb0e2caabcd7ca814d3f2305833e802f23ef5",
         "sha256": "af234ca45348e71d04d046af11de30db5119f84f0f71191ed4c413d300559468"
+      },
+      {
+        "path": "src/lib/historical-canonical-evidence.ts",
+        "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
+        "blob": "927042ce5578c3c72bb4c6e8eec0ded1ce3a623e",
+        "sha256": "72b594a5b95767afc89d1f6ab5421104a24e3030fdc4c020be0495d60c321b2d"
+      },
+      {
+        "path": "src/lib/historical-canonical-evidence.test.ts",
+        "ref": "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
+        "blob": "012aa638c12ba66bd62e1ab2a842de55e1c4367b",
+        "sha256": "cdf1417a7e36277f4bc97f3df9062d6cee4c2df3b5d16a6973210de5f2f35996"
       }
     ]
   },
