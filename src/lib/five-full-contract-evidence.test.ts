@@ -1,0 +1,2 @@
+import {it,expect} from 'vitest';import {execFileSync} from 'node:child_process';
+it('verifies all five finite native batch receipts and every exact downloaded JSON/CSV field',()=>{const log=execFileSync(process.execPath,['tests/five-full-contract-20261109/verify-batch.mjs'],{encoding:'utf8',timeout:90000});expect(JSON.parse(log)).toEqual({passed:true,journeys:15,nativeDownloads:30,productionAcceptance:false});},95000);
