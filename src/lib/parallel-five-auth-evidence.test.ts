@@ -22,10 +22,10 @@ describe('parallel five genuine authenticated successful-scope evidence',()=>{
   expect(fifth.comparisons.map((r:{catalogId:number})=>r.catalogId)).toEqual([387]);
   expect([...four.rows,...fifth.rows].length).toBe(15);
   for(const id of [369,375,380,381,387])expect([...four.rows,...fifth.rows].filter((r:{catalogId:number})=>r.catalogId===id).map((r:{role:string})=>r.role)).toEqual(['owner','admin','member']);
-  const successor=json('test-only-successor/binding.json');
-  for(const file of testOnlySuccessorPaths){const row=successor.rows.find((r:{path:string})=>r.path===file),bytes=readFileSync(file);await expect(assertTestOnlySuccessor(file,row.f042.sha256,Buffer.concat([bytes,Buffer.from('\n// unrelated drift')]))).rejects.toThrow();await expect(assertTestOnlySuccessor(file,'0'.repeat(64),bytes)).rejects.toThrow();}
-  await expect(assertTestOnlySuccessor('src/lib/other.test.ts','0'.repeat(64),Buffer.from(''))).rejects.toThrow('Only two exact test successors');
-  const result=await verifyComposition();expect(result.downloads).toBe(95);expect(result.testOnlySuccessors).toBe(2);expect(result.priorFailedRunPromoted).toBe(false);const output=result.summary;
+  expect(testOnlySuccessorPaths).toHaveLength(6);
+  for(const file of testOnlySuccessorPaths){const recorded=source.currentBlobBindings[file].recordedBuildSourceSHA256,bytes=readFileSync(file);await expect(assertTestOnlySuccessor(file,recorded,Buffer.concat([bytes,Buffer.from('\n// unrelated drift')]))).rejects.toThrow();await expect(assertTestOnlySuccessor(file,'0'.repeat(64),bytes)).rejects.toThrow();}
+  await expect(assertTestOnlySuccessor('src/lib/other.test.ts','0'.repeat(64),Buffer.from(''))).rejects.toThrow('Only six exact test successors');
+  const result=await verifyComposition();expect(result.downloads).toBe(95);expect(result.testOnlySuccessors).toBe(6);expect(result.priorFailedRunPromoted).toBe(false);const output=result.summary;
   expect(output).toContain('95 complete native download bytes');expect(output).toContain('failed earlier whole-run remains failed');
  });
 });
