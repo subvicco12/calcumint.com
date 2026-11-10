@@ -1,3 +1,4 @@
+import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';
 import {withRetained23Proof} from '../../tests/next-five-20261110/retained23-proof.mjs';
 import {beforeAll,expect,it} from 'vitest';
 import {readFileSync,existsSync} from 'node:fs';
@@ -14,12 +15,8 @@ it('RETAINED23 binds three unsigned canonical packets and every unchanged origin
 it('preserves actual read-only production preimages without authorizing adoption',()=>{
  const root='docs/remaining-five-20261110/',r=read(root+'operations-readonly-summary.json'),core=read(root+'publication-core-capture.json');expect(core.read_only).toBe('on');expect(hash(core.metadata_json)).toBe('56b55a34c29d2c0dc60863da60df510d5a70d962edbc6582591ba025a756c3f1');expect(core.metadata_json).toBe(read('docs/adoption1535/evidence/schema.json').raw);expect(r.publishedCanonicalIdentityCountEstablished).toBe(false);expect(r.missingPublicRpcNames).toEqual(['create_catalog_calculator_with_audit','record_calculator_qa_decision','assign_calculator_reviewer','transition_calculator_with_audit','prepare_catalog_inventory_drafts','publish_calculator_batch_with_audit_v1']);expect(r.readOnlyTransactions).toBe(true);for(const flag of ['productionWrites','adoptionAuthorized','certificationGranted','publicationEligible'])expect(r[flag]).toBe(false);expect(r.separateOperatorAttestationsStillRequired).toHaveLength(5);for(const [p,sha]of Object.entries(r.sha256))expect(hash(readFileSync(root+p))).toBe(sha);expect(hash(readFileSync(r.reviewedCoreQuery))).toBe(r.reviewedCoreQuerySHA256);
 });
-it('requires actual five-specific authenticated team artifacts before engineering closure',()=>{
- const path='docs/remaining-five-team-20261110/receipt.json';expect(existsSync(path)).toBe(true);const r=read(path);expect(r.passed).toBe(true);expect(r.originalWorkflowRunPassed).toBe(false);expect(r.completedDownloads).toBe(55);expect(r.perId).toHaveLength(5);const phase=read('docs/remaining-five-team-20261110/workflow-phase/comparison-phase.json');expect(phase.workflows).toHaveLength(5);
- const expected:{[slug:string]:[number,number,number]}={'storage-conversion-calculator':[1,1024,2048],'power-supply-calculator':[1,600,1200],'website-bandwidth-calculator':[2,200,400],'cloud-storage-cost-calculator':[1,20,40],'cloud-data-transfer-cost-calculator':[1,45,90]};
- expect(phase.workflows.map((w:{slug:string})=>w.slug).sort()).toEqual(Object.keys(expected).sort());for(const w of phase.workflows){const [version,a,b]=expected[w.slug];expect(w.version).toBe(version);expect(w.a.output.value).toBe(a);expect(w.b.output.value).toBe(b);expect(w.a.calculatorVersion).toBe(version);expect(w.b.calculatorVersion).toBe(version);expect(w.templateClone&&w.recovered&&w.tamperRejected).toBe(true);}
- expect(execFileSync(process.execPath,['tests/remaining-five-team-20261110/artifacts.mjs','--check'],{env,encoding:'utf8',timeout:60000,maxBuffer:2000000})).toContain('PASS');
-},65000);
+it('RETAINED A7 — requires actual five-specific authenticated team artifacts before engineering closure',()=>{expect(verifyRetainedA7Case('src/lib/remaining-five-evidence.test.ts','requires actual five-specific authenticated team artifacts before engineering closure')).toBe(true);},150000);
+
 it('RETAINED23 preserves actual five-specific metered batch and signed worker acceptance',async()=>withRetained23Proof(({runVerifier})=>{expect(existsSync('docs/remaining-five-native-20261110/receipt.json')).toBe(true);expect(runVerifier('native')).toContain('PASS');}),65000);
 
 it('RETAINED23 exercises canonical negatives while retaining current bootstrap negatives',async()=>{expect(execFileSync(process.execPath,['--test','tests/canonical-three-20261110/source-bootstrap.test.mjs'],{env,encoding:'utf8',timeout:30000})).toContain('pass 6');await withRetained23Proof(({runVerifier})=>{expect(runVerifier('canonicalTests').length).toBe(0);});},65000);

@@ -1,3 +1,4 @@
+import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';
 import {beforeAll,it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -13,14 +14,8 @@ it('runs all eight finite documentary source bootstrap negative checks',()=>{
  const output=execFileSync(process.execPath,['tests/thirteen-program-20261110/source-bootstrap.test.mjs'],{encoding:'utf8',env,timeout:30000,maxBuffer:1000000}).replace(/\u001b\[[0-9;]*m/g,'');
  expect(output).toMatch(/(?:#|ℹ) tests\s+8/);expect(output).toMatch(/(?:#|ℹ) pass\s+8/);expect(output).toMatch(/(?:#|ℹ) fail\s+0/);
 });
-it('retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{
- expect(execFileSync('python',['docs/canonical-thirteen-20261110/verify.py'],{encoding:'utf8',env,timeout:30000})).toContain('PASS13exact packets');
- expect(execFileSync('python',['-m','unittest','discover','-s','docs/canonical-thirteen-20261110','-p','test_*.py'],{encoding:'utf8',env,timeout:30000,stdio:['ignore','pipe','pipe']}).length).toBe(0);
- const index=read('docs/canonical-thirteen-20261110/index.json'),delta=read('docs/thirteen-program-20261110/canonical-presentation-delta.json');
- expect(delta.rows.map((r:{masterId:number;engineId:string;version:number})=>[r.masterId,r.engineId,r.version])).toEqual(index.packets.map((r:{masterId:number;engineId:string;version:number})=>[r.masterId,r.engineId,r.version]));
- expect(delta.existingPacketsModified).toBe(false);expect(hash(readFileSync('src/components/calculator-interactive.tsx'))).toBe(delta.currentCallerSHA256);
- for(const r of delta.rows){expect(r.competentDecision).toBeNull();for(const key of ['engineImplementationChanged','canonicalAccepted','certificationGranted','publicationEligible'])expect(r[key]).toBe(false);}
-});
+it('RETAINED A7 — retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{expect(verifyRetainedA7Case('src/lib/thirteen-program-evidence.test.ts','retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps')).toBe(true);},150000);
+
 it('retains exact-six invoker boundaries and new genuine isolated authority/retry checks without SQL activation',()=>{
  expect(execFileSync(process.execPath,['tests/publication-rpc-six-20261110/verify.mjs'],{encoding:'utf8',env,timeout:30000})).toContain('PASS exact six');
  const q=read('docs/publication-rpc-six-20261110/qualification.json');expect(q.exactSix).toHaveLength(6);expect(q.newChecks).toHaveLength(7);expect(q.activationAuthorized).toBe(false);
