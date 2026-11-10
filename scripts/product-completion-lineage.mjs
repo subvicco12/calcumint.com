@@ -365,11 +365,11 @@ const bindings=[
   {
     "path": "src/components/catalog-engineering-review.tsx",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "b6b1a72127d40712f0d3c212188d8ca84063721b",
+    "successorRef": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
     "predecessorBlob": "c1a16424bfbc813f8cd2dd66f0018804c11866d0",
-    "successorBlob": "f79a506706fde50d489d5f33d8f81c6d4705ba08",
+    "successorBlob": "7fd8ee287cb05baea756f76639d5da9d8492057d",
     "predecessorSHA256": "e010d1e134c239cb6bb583365a442c64415f687233f94fd08088c4959936eb20",
-    "successorSHA256": "12b7cff0408cf72462529a5e9dd154757ba9b0f33af05e8cc2e92cbee5b81cbe",
+    "successorSHA256": "aefd1a3896b2dec7b65a248cf863b953c1e89c2d745d08df7cbe37e38a54f5b3",
     "supplementalSources": [
       {
         "path": "src/lib/final-private-snapshot-text.ts",
@@ -382,6 +382,55 @@ const bindings=[
         "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
         "blob": "1e3f689af1f5e5e4069a2c611791d812a6cd0003",
         "sha256": "d0c5d00cc0c5d024420f11f21c27534f5b38dc681cbd53d22e750eb4a8dd281f"
+      },
+      {
+        "path": "src/components/parallel-completion-integration.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "55d74d274f658443453461c8c37c07cddddde618",
+        "sha256": "3452fd9961bd32b2fb9c578162ed4da3b350e500bfa78e84104d7b9dc29f9dd4"
+      },
+      {
+        "path": "src/components/parallel-guided-business-evidence.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "c02141ce81b93ac5f02c1bb89094f4e808e1d41f",
+        "sha256": "89c15c204e4ce4ea9484c735141a7f85e02fe2bc0297e5316ac8bbb0b930c645"
+      },
+      {
+        "path": "src/components/specialist-general-20261110-business-input.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "14674af3689d1a59e30a16681a517d35c74195a3",
+        "sha256": "aa913519a890a953d47b4515cb12ec1d83c913ba6e446ba102943d0acced15d2"
+      },
+      {
+        "path": "src/lib/finance-cohort-20261110-annuity.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "6e66fe59ee7a08ab779021fecf2b765e1a37067d",
+        "sha256": "2935e66dc51bc997c89c17f3a616a208d47b041e8b5dec342c97cd3861adc49e"
+      },
+      {
+        "path": "src/lib/parallel-finance-qualification.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "670a6e22351eb44c925f6ba50a2acf1d85fa0fa4",
+        "sha256": "bec9018b9fb417419b1edbb297d087a830f9b6f795a158d83ae3326bb5ece5d4"
+      },
+      {
+        "path": "src/lib/parallel-readiness-evidence.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "81d9126f601663e3c440b566b20fb4112b4e2c00",
+        "sha256": "0d9034cb913aebc163ff310ab9a70d4e1b9e84633e07e68f8eace398e1dab990"
+      },
+      {
+        "path": "src/lib/specialist-general-20261110-business-input.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "5489fff91141eec20649eaccc1f73823624f2027",
+        "sha256": "9b1d7909b33a4d2b7048d365b9bc37ab5487f9a4d4c327e6fc7af01e1270e7de"
+      }
+    ],
+    "intermediateSources": [
+      {
+        "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
+        "blob": "f79a506706fde50d489d5f33d8f81c6d4705ba08",
+        "sha256": "12b7cff0408cf72462529a5e9dd154757ba9b0f33af05e8cc2e92cbee5b81cbe"
       }
     ]
   },
@@ -568,11 +617,11 @@ const bindings=[
   {
     "path": "src/components/publication20-tool.tsx",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+    "successorRef": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
     "predecessorBlob": "c1a8be2fbd29ec3b5e822fad3b4ca93878e60fa0",
-    "successorBlob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
+    "successorBlob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
     "predecessorSHA256": "4c5ad7ad371345c640f420e5fc5492ef4df7b2ada11468f54e74cf31cc07e589",
-    "successorSHA256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5",
+    "successorSHA256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02",
     "supplementalSources": [
       {
         "path": "src/components/final-calculator-renderer.tsx",
@@ -627,6 +676,31 @@ const bindings=[
         "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
         "blob": "e5eb250090125c4c1746628ebaeb0ade9eb2de4c",
         "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+      },
+      {
+        "path": "src/components/converter-cohort-20261110-examples.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "379f1265a13539923cf6940ca133d2ee7cc4ffec",
+        "sha256": "a8a1bd507958034117b192729d737ae70752487fbe8e9cf8f64e071607bf1023"
+      },
+      {
+        "path": "src/components/parallel-converters-evidence.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "b87fbbcddff99fad931a79e71c12fa38cbea9895",
+        "sha256": "1b533de27ff8a9ab1f545a8f6e8b97a099abe3458a6b6d6d9c147ef655d554c9"
+      },
+      {
+        "path": "src/lib/converter-cohort-20261110.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "83bb23b30c8d3cefea8c644ec10c8760ac54c136",
+        "sha256": "9f39796be584514de0b8f580a684df4f1314b211f92f3c584dea3222ed5244f5"
+      }
+    ],
+    "intermediateSources": [
+      {
+        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
+        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
       }
     ]
   },
@@ -641,9 +715,9 @@ const bindings=[
     "supplementalSources": [
       {
         "path": "src/components/publication20-tool.tsx",
-        "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
-        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
-        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
       }
     ]
   },
@@ -670,9 +744,9 @@ const bindings=[
       },
       {
         "path": "src/components/publication20-tool.tsx",
-        "ref": "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
-        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
-        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
       }
     ],
     "intermediateSources": [
@@ -706,9 +780,9 @@ const bindings=[
       },
       {
         "path": "src/components/publication20-tool.tsx",
-        "ref": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
-        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
-        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
       }
     ],
     "intermediateSources": [
@@ -736,9 +810,9 @@ const bindings=[
       },
       {
         "path": "src/components/publication20-tool.tsx",
-        "ref": "4c67272e2c6b7ddcbdf59398b02e066c34456e78",
-        "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
-        "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
       },
       {
         "path": "docs/calculator-sprint-20261108/first-two-packet.json",
@@ -1191,9 +1265,9 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "7086b85437b025225f5736fb6b849415e518dc08",
-        "blob": "145e126cb85a52fa64396b74a5d30fe23d325e68",
-        "sha256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8"
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
+        "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
       },
       {
         "path": "src/lib/scenario-display-metadata.ts",
@@ -1404,6 +1478,78 @@ const bindings=[
         "ref": "5c3d38e9454b9dbeb9b8d1220ea8b68532fa4e01",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/app/api/business/technology-five-shares/route.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "c79d519d89b28126e35f02c63bc1531f98614f92",
+        "sha256": "14b78e888973182d1f0b3bc8c5b9078f7fe8818948cacf7674e3351f4018794a"
+      },
+      {
+        "path": "src/app/business/projects/[id]/page.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
+        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+      },
+      {
+        "path": "src/app/business/projects/[id]/page.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e10077a017b7215f49789db7782a7419635d065c",
+        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+      },
+      {
+        "path": "src/components/technology-five-share-form.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
+        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e8758f162963a63e65ac2746d07f0b50f94edde5",
+        "sha256": "0337b9b88ade20d62099911fe1e799e8d7239ba0a83885f79e1a973ceed10672"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
+        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-five-catalog.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
+        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-five-contract.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
+        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-five-publication.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "743d71ac91891ffcdb41d1017eb925a4664e24e4",
+        "sha256": "aa4bbb70f4da137b081718b3dbc3453e4906c9330dbade179b8aa8bb630b6aa3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-native-schema.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
+        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-next-composition.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "1939e5cd6261505d30b07143cd79da035b751c1b",
+        "sha256": "b34138e4006fb27130ea80a2f54fe7688f9edd3fdee41fffcf4f9f1a6cc66625"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-next-five-composition.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "4258a08d23002eed23d677cafbe8ffa82f36143d",
+        "sha256": "f60e7e35c8e4b76e790081ce9f4d24fc07082246af1f31e9876e2eefbcff8d4d"
       }
     ],
     "intermediateSources": [
@@ -1497,11 +1643,11 @@ const bindings=[
   {
     "path": "src/lib/registered-snapshot-verification.ts",
     "predecessorRef": "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
-    "successorRef": "7086b85437b025225f5736fb6b849415e518dc08",
+    "successorRef": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
     "predecessorBlob": "df44d2b717ec5ed647360cfbdb955c9b814b211b",
-    "successorBlob": "145e126cb85a52fa64396b74a5d30fe23d325e68",
+    "successorBlob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
     "predecessorSHA256": "a6ce5fdb736ccd748c99b703169ad5d931aea9ccb8460feb2b3cbab80a68bda6",
-    "successorSHA256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8",
+    "successorSHA256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c",
     "supplementalSources": [
       {
         "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
@@ -1952,6 +2098,25 @@ const bindings=[
         "ref": "7086b85437b025225f5736fb6b849415e518dc08",
         "blob": "dd368ceb52d75eb3998241a001b9e533373146c5",
         "sha256": "b564e5ff97f9dad6c934e6a2eb0977871b2ee3f0b36a23325f1715b241114273"
+      },
+      {
+        "path": "src/lib/technology-cidr-snapshot-verification.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "62fc5da2d11eee138bb3b5631e6183386e6e5a10",
+        "sha256": "e8b9ce90da7f73435336d879a5ad66528b0ab7e2571eeab884e564d36b1d4fe3"
+      },
+      {
+        "path": "src/lib/technology-cidr-snapshot-verification.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "266ace55e8cd40eb1d3d9141e684fc30d3c0208b",
+        "sha256": "d045b50ed69dd3c906a7d7a622f9df63630e56860812c676b3869eccc6a7aec9"
+      }
+    ],
+    "intermediateSources": [
+      {
+        "ref": "7086b85437b025225f5736fb6b849415e518dc08",
+        "blob": "145e126cb85a52fa64396b74a5d30fe23d325e68",
+        "sha256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8"
       }
     ]
   },
@@ -1972,9 +2137,9 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "7086b85437b025225f5736fb6b849415e518dc08",
-        "blob": "145e126cb85a52fa64396b74a5d30fe23d325e68",
-        "sha256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8"
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
+        "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.d.mts",

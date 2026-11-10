@@ -54,8 +54,8 @@ const currentSources=Object.freeze([
   },
   {
     "path": "src/app/business/projects/[id]/page.tsx",
-    "blob": "8639153d02a282d86462c1889feb2815d77c4ad8",
-    "sha256": "ea32badd3a5e4049963747ea018f5b399bb9a1953053dab03d88150f14423db4"
+    "blob": "e10077a017b7215f49789db7782a7419635d065c",
+    "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
   },
   {
     "path": "src/app/business/shared/[id]/page.tsx",
@@ -89,8 +89,8 @@ const currentSources=Object.freeze([
   },
   {
     "path": "src/components/technology-five-share-form.tsx",
-    "blob": "8fcded87df1e3772e944203656088093ea5b5b9a",
-    "sha256": "0928d46624a3764c7e141e0984b26f3f93dc132522441e7c179b63f81ffc7444"
+    "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
+    "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
   },
   {
     "path": "src/components/technology-five-shared-comparison.tsx",
@@ -124,8 +124,8 @@ const currentSources=Object.freeze([
   },
   {
     "path": "src/lib/business/technology-next-sharing.ts",
-    "blob": "5e5ea359d83c158d1a321c35f4bb53bb02c79ce4",
-    "sha256": "e4c40c9d4eb571c265d7024d3b95888c13b10714a98b421bfbe93930c7bc30ab"
+    "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
+    "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
   },
   {
     "path": "src/lib/draft-history-pagination.ts",
@@ -134,13 +134,13 @@ const currentSources=Object.freeze([
   },
   {
     "path": "src/lib/native-delivery/technology-five-catalog.ts",
-    "blob": "a1f1e07b6ae9b544f4743c99d559b857772ad802",
-    "sha256": "fcc6b45bae08481719169304e78b09c93c4c7d5eb516b22fb003dbf7a45afcfd"
+    "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
+    "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
   },
   {
     "path": "src/lib/native-delivery/technology-five-contract.ts",
-    "blob": "adbdc167575c5dbf969c412c80f6fd0dfc3824f6",
-    "sha256": "893eddce635142c343a5b0a050b13c526eede4644fa11f30c0939c5f6da7b15d"
+    "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
+    "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
   },
   {
     "path": "src/lib/native-delivery/technology-five-embed-request.ts",
@@ -194,8 +194,8 @@ const currentSources=Object.freeze([
   },
   {
     "path": "src/lib/native-delivery/technology-native-schema.ts",
-    "blob": "288f61953cf42c53668973c36eea6de4c15d5d84",
-    "sha256": "473de779e987cf101311ff5b1d189c818b8101b625216c9e1109a9c57823ea32"
+    "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
+    "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
   },
   {
     "path": "src/lib/native-delivery/technology-next-catalog.ts",

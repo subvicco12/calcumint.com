@@ -6,8 +6,8 @@ import {createHash} from 'node:crypto';
 const fixed=Object.freeze([
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
-    "blob": "df031b9c5d0a405d05ff62e91fcd5361a271a7a2",
-    "sha256": "f4e0bdb72c94ecf8a266e61ef4895db3ba6fb1e5723e58a83ae88809230d7fe8"
+    "blob": "ae7fcf2a5f34d72e857d19ce0a89d2c2bb58c719",
+    "sha256": "aa9ae56751728b3eb86f921081e10b49b5c970fd7fbee728a5f2740c6bce631d"
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.d.mts",
@@ -21,8 +21,8 @@ const fixed=Object.freeze([
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
-    "blob": "b69535858d3a1a1c66096f405786f36a8b4a6f9a",
-    "sha256": "a7f5984b90e99bc2242c5e47fca151d104cbcd9af0157636d98ddca1c9dfe63d"
+    "blob": "e4d210f944f4a7cf536251fefbf3b63762ab7804",
+    "sha256": "0828a5d837eb8c4b3254e153e83d09c811fddac2d63923aeffc9ac43b5c1804c"
   },
   {
     "path": "tests/publication-workflows-20261109/business-source-successor.test.mjs",
