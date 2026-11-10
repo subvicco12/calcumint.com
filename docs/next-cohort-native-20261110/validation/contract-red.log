@@ -1,0 +1,71 @@
+
+ RUN  v3.2.7 /tmp/calcumint-next-cohort-native-20261110
+
+ ❯ src/lib/native-delivery/technology-next-contract.test.ts (16 tests | 9 failed) 16ms
+   ✓ declares exactly the approved eight tuples and no new engine versions or scopes 2ms
+   × delivers exact unchanged registered output 374 8ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 377 1ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 378 1ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 379 0ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 382 0ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 383 0ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 384 0ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × delivers exact unchanged registered output 385 1ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   × retains actual zero and noninteger domain semantics instead of narrowing original engines 1ms
+     → Provide the exact supported Technology identity/version and decimal-string inputs
+   ✓ refuses old version, unoffered units, lossy provenance and underflow {"catalogId":383,"version":1,"input":{"pageSizeMb":"2","monthlyPageViews":"100"}} 1ms
+   ✓ refuses old version, unoffered units, lossy provenance and underflow {"catalogId":374,"version":1,"input":{"value":"1","fromUnit":"GB","toUnit":"MiB"}} 0ms
+   ✓ refuses old version, unoffered units, lossy provenance and underflow {"catalogId":374,"version":1,"input":{"value":"1","fromUnit":"GiB","toUnit":"MB"}} 0ms
+   ✓ refuses old version, unoffered units, lossy provenance and underflow {"catalogId":379,"version":1,"input":{"pixels":3000,"lengthInches":"10"}} 0ms
+   ✓ refuses old version, unoffered units, lossy provenance and underflow {"catalogId":377,"version":1,"input":{"width":"9007199254740993","height":"1"}} 0ms
+   ✓ refuses old version, unoffered units, lossy provenance and underflow {"catalogId":378,"version":1,"input":{"widthPixels":"1e-200","heightPixels":"1e-200"}} 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 374
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 377
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 378
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 379
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 382
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 383
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 384
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > delivers exact unchanged registered output 385
+Error: Provide the exact supported Technology identity/version and decimal-string inputs
+ ❯ runTechnologyFiveCalculation src/lib/native-delivery/technology-five-contract.ts:20:83
+     18| /** Pure deterministic delivery contract only. Routes separately requi…
+     19| export function runTechnologyFiveCalculation(raw:unknown){
+     20|  const parsed=technologyFiveRequestSchema.safeParse(raw);if(!parsed.su…
+       |                                                                                   ^
+     21|  const identity=technologyFiveIdentity(parsed.data.catalogId,parsed.da…
+     22|  if(!definition||definition.id!==identity.engineId||definition.version…
+ ❯ src/lib/native-delivery/technology-next-contract.test.ts:4:98
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/9]⎯
+
+ FAIL  src/lib/native-delivery/technology-next-contract.test.ts > retains actual zero and noninteger domain semantics instead of narrowing original engines
+Error: Provide the exact supported Technology identity/version and decimal-string inputs
+ ❯ runTechnologyFiveCalculation src/lib/native-delivery/technology-five-contract.ts:20:83
+     18| /** Pure deterministic delivery contract only. Routes separately requi…
+     19| export function runTechnologyFiveCalculation(raw:unknown){
+     20|  const parsed=technologyFiveRequestSchema.safeParse(raw);if(!parsed.su…
+       |                                                                                   ^
+     21|  const identity=technologyFiveIdentity(parsed.data.catalogId,parsed.da…
+     22|  if(!definition||definition.id!==identity.engineId||definition.version…
+ ❯ src/lib/native-delivery/technology-next-contract.test.ts:5:204
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/9]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  9 failed | 7 passed (16)
+   Start at  03:22:54
+   Duration  1.71s (transform 892ms, setup 0ms, collect 1.40s, tests 16ms, environment 0ms, prepare 69ms)
+
