@@ -1,0 +1,5 @@
+import {it,expect} from 'vitest';
+import {validateTechnologyNextCapture} from './technology-next-capture-trust';
+it('refuses subnormal inputs despite a normal finite product',()=>{expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:1e-320,heightPixels:1e100},{value:1e-220})).toThrow(/input/);});
+it('preserves genuine zero, fractional and large binary64 quantity results',()=>{expect(()=>validateTechnologyNextCapture('technology.cloud-storage-cost',{storageGb:0,pricePerGbMonth:0.02},{value:0})).not.toThrow();expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:0.5,heightPixels:1e100},{value:5e99})).not.toThrow();});
+it('retains original result and false-zero refusals',()=>{for(const value of [NaN,Infinity,1e-320,0])expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:1,heightPixels:1},{value})).toThrow();expect(()=>validateTechnologyNextCapture('technology.resolution',{widthPixels:NaN,heightPixels:1},{value:1})).toThrow();});
