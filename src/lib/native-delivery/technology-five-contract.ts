@@ -7,6 +7,7 @@ import {getPublication20Definition} from '@/lib/publication20';
 import {validatePublication20Result} from '@/lib/publication20/result-trust';
 import {NativeDeliveryError} from './contract';
 import {technologyNextRequestSchema,runTechnologyNextCalculation} from './technology-next-contract';
+import {technologyNextFiveRequestSchema,runTechnologyNextFiveCalculation} from './technology-next-five-contract';
 import {technologyFiveIdentity} from './technology-five-catalog';
 const decimal=z.string().min(1).max(4096),transfer=z.object({dataMegabytes:decimal,bandwidthMbps:decimal}).strict();
 export const technologyFiveLegacyRequestSchema=z.discriminatedUnion('catalogId',[
@@ -16,9 +17,10 @@ export const technologyFiveLegacyRequestSchema=z.discriminatedUnion('catalogId',
  z.object({catalogId:z.literal(373),version:z.literal(1),input:z.object({bandwidthMbps:decimal,timeSeconds:decimal}).strict()}).strict(),
  z.object({catalogId:z.literal(386),version:z.literal(1),input:z.object({inputBytes:decimal}).strict()}).strict()
 ]);
-export const technologyFiveRequestSchema=z.union([technologyFiveLegacyRequestSchema,technologyNextRequestSchema]);
+export const technologyFiveRequestSchema=z.union([technologyFiveLegacyRequestSchema,technologyNextRequestSchema,technologyNextFiveRequestSchema]);
 /** Pure deterministic delivery contract only. Routes separately require actual publication and Business authority. */
 export function runTechnologyFiveCalculation(raw:unknown){
+ const nextFive=technologyNextFiveRequestSchema.safeParse(raw);if(nextFive.success)return runTechnologyNextFiveCalculation(nextFive.data);
  const next=technologyNextRequestSchema.safeParse(raw);if(next.success)return runTechnologyNextCalculation(next.data);
  const parsed=technologyFiveLegacyRequestSchema.safeParse(raw);if(!parsed.success)throw new NativeDeliveryError(422,'Provide the exact supported Technology identity/version and decimal-string inputs');
  const identity=technologyFiveIdentity(parsed.data.catalogId,parsed.data.version)!;const definition=calculatorRegistry.getBySlug(identity.slug);

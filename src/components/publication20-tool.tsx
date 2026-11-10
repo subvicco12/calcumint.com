@@ -11,6 +11,7 @@ import {scenarioMetadataForResult} from '@/lib/scenario-display-metadata';
 import {useCalculatorPlan} from './use-calculator-plan';
 import {CalculatorAccountActions} from './calculator-account-actions';
 import {Publication20Batch} from './publication20-batch';
+import {ConverterWorkedExamples} from './converter-cohort-20261110-examples';
 import {FinalCalculatorRenderer} from './final-calculator-renderer';
 import {unitConversionPresentation} from '@/calculators/final-framework/unit-conversion-presentation';
 
@@ -42,6 +43,7 @@ function ConversionSession({entry}:{entry:Publication20Definition}){
   <div className="field-grid">{entry.fields.map(field=>{const message=fieldErrors.get(field.key),errorId=`${prefix}-${field.key}-error`;return <div key={field.key}><label className="field"><span>{field.label}</span>{field.kind==='select'?<select data-publication20-field={field.key} value={draft[field.key]??''} aria-invalid={Boolean(message)} aria-describedby={message?errorId:undefined} onChange={e=>setDraft(d=>({...d,[field.key]:e.target.value}))}>{field.options?.map(value=><option key={value} value={value}>{presentationUnit(value)}</option>)}</select>:<input data-publication20-field={field.key} type="text" inputMode="decimal" maxLength={4096} required value={draft[field.key]??''} aria-invalid={Boolean(message)} aria-describedby={message?errorId:undefined} onChange={e=>setDraft(d=>({...d,[field.key]:e.target.value}))}/>}</label>{message&&<p id={errorId} className="muted-copy">{message}</p>}</div>;})}</div>
   {result?<><div data-publication20-result={String(primary)}><FinalCalculatorRenderer result={{...result,primaryResult:{...result.primaryResult,unit:presentationUnit(unit)}}} plan={plan} presentation={unitConversionPresentation}/><p>The headline may be rounded; the raw table and exports retain the stored value.</p></div><table className="schedule-table"><caption>Conversion reconciliation</caption><thead><tr><th scope="col">Field</th><th scope="col">Recorded value</th><th scope="col">Unit</th></tr></thead><tbody><tr><th scope="row">Input value</th><td>{String(input.value)}</td><td>{presentationUnit(String(input.fromUnit))}</td></tr><tr><th scope="row">Stored result</th><td>{Object.is(primary,-0)?'-0':String(primary)}</td><td>{presentationUnit(unit)}</td></tr></tbody></table><details><summary>Scope and limitations</summary><p>{entry.scope}</p></details></>:<div role="alert" aria-live="polite"><strong>Enter valid inputs.</strong> {error}</div>}
   {(plan==='pro'||plan==='business')&&<Publication20Batch slug={definition.slug} fromUnit={String(input.fromUnit)} toUnit={String(input.toUnit)} onSelect={(value,fromUnit,toUnit)=>setDraft(d=>({...d,value,fromUnit,toUnit}))}/>}
+  <ConverterWorkedExamples slug={definition.slug} onUse={example=>setDraft({...example})}/>
   <CalculatorAccountActions calculatorSlug={definition.slug} calculatorVersion={definition.version} input={input} output={output} scenarioDisplayMetadata={display} exportMethodology={output?methodology:undefined}/>
  </div>;
 }
