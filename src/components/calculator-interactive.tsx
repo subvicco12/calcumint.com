@@ -91,7 +91,7 @@ import {matrixInverseResult} from "@/calculators/final-framework/matrix-inverse-
 import {matrixInversePresentation} from "@/calculators/final-framework/matrix-inverse-presentation";
 import {complexNumberResult} from "@/calculators/final-framework/complex-number-adapter";
 import {complexNumberPresentation} from "@/calculators/final-framework/complex-number-presentation";
-import { useMemo,useState } from "react";
+import { useId,useMemo,useState } from "react";
 import { runCalculator } from "@/calculators/engine";
 import { molarityCalculator,molalityCalculator,molesCalculator,dilutionCalculator,phCalculator,idealGasLawCalculator,gasDensityCalculator,percentCompositionCalculator,solutionConcentrationCalculator,stoichiometryCalculator,halfLifeCalculator,nernstEquationCalculator,beerLambertLawCalculator,titrationCalculator } from "@/calculators/chemistry/catalog-batch-1";
 import { molecularWeightCalculator } from "@/calculators/chemistry/molecular-weight";
@@ -367,10 +367,12 @@ function ChemistryNumericTool({kind}:{kind:ChemistryNumericKind}){const config=c
 function MolecularWeightTool(){const[formula,setFormula]=useState("H2O");let output:{value:number;steps:readonly string[]}|null=null;try{if(!formula.trim())throw new Error("Missing formula");output=runCalculator(molecularWeightCalculator,{formula}).output}catch{output=null}return <div className="calculator-ui"><label className="field"><span>Chemical formula</span><input type="text" value={formula} onChange={event=>setFormula(event.target.value)} placeholder="e.g. H2O or Ca(OH)2"/></label>{output?<FinalCalculatorRenderer result={molecularWeightResult(output)} presentation={molecularWeightPresentation}/>:<div role="alert" aria-live="assertive"><Result value={null}/></div>}<CalculatorAccountActions calculatorSlug={molecularWeightCalculator.slug} calculatorVersion={1} input={{formula}} output={output}/></div>}
 
 function CidrTool() {
+ const prefixFeedbackId=useId();
  const plan=useCalculatorPlan();
  const [prefix, setPrefix] = useState("24");
  const input = {prefixLength: requiredCalculatorNumber(prefix)};
- const fieldError=!Number.isFinite(input.prefixLength)?'CIDR prefix: enter a complete finite decimal without losing entered digits.':undefined;
+ const prefixInstruction='Enter a whole-number CIDR prefix from 0 to 32.';
+ const fieldError=!Number.isFinite(input.prefixLength)?'CIDR prefix: enter a complete finite decimal without losing entered digits.':!Number.isInteger(input.prefixLength)||input.prefixLength<0||input.prefixLength>32?prefixInstruction:undefined;
  let output: {value: number; steps: readonly string[]} | null = null;
  try {
   if (fieldError) throw new Error(fieldError);
@@ -378,12 +380,12 @@ function CidrTool() {
  } catch { output = null; }
  const result = output ? cidrResult(output) : null;
  return <div className="calculator-ui">
-  <TechnologyInputField fieldKey="prefixLength" label="CIDR prefix" value={prefix} step={1} error={fieldError} onChange={setPrefix}/>
+  <label className="field"><span>CIDR prefix</span><input data-technology-field="prefixLength" inputMode="numeric" type="number" min={0} max={32} step={1} value={prefix} aria-invalid={fieldError?true:undefined} aria-describedby={fieldError?prefixFeedbackId:undefined} onChange={event=>setPrefix(event.target.value)}/>{fieldError&&<small id={prefixFeedbackId}>{fieldError}</small>}</label>
   {result ? <FinalCalculatorRenderer plan={plan} result={result} presentation={cidrPresentation}/> :
-   <div role="alert" aria-live="assertive">{fieldError??'Enter a whole-number CIDR prefix from 0 to 32.'}</div>}
+   <div role="alert" aria-live="assertive">{prefixInstruction}{fieldError&&fieldError!==prefixInstruction?' '+fieldError:null}</div>}
   <p>Total IPv4 address count only; this does not calculate usable hosts, network ranges, IPv6, or routability.</p>
   {output&&<TechnologyBoundedAnalysis id={cidrCalculator.id} input={input} plan={plan}/>}
-  <section aria-label="Worked example"><h3>Worked example</h3><p>A /24 prefix gives 2^(32 − 24) = 256 total IPv4 addresses.</p><button type="button" onClick={()=>setPrefix('24')}>Use worked example</button></section>
+  <section aria-label="Worked example"><h3>Worked example</h3><p>A /24 prefix gives 2^(32 − 24) = 256 addresses.</p><button type="button" onClick={()=>setPrefix('24')}>Use worked example</button></section>
   <CalculatorAccountActions exportMethodology={result?.methodology}
    scenarioDisplayMetadata={output && result ? scenarioMetadataForResult(cidrCalculator, input, output, result,
     {inputs: {prefixLength: "CIDR prefix"}, outputs: {value: "result"}}) : undefined}

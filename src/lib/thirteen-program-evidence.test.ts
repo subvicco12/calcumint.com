@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const hash=(b:Buffer|string)=>createHash('sha256').update(b).digest('hex');
-const env={...process.env,PYTHONDONTWRITEBYTECODE:'1'};delete env.NODE_TEST_CONTEXT;
+const env:NodeJS.ProcessEnv={...process.env,PYTHONDONTWRITEBYTECODE:'1'};delete env.NODE_TEST_CONTEXT;
 it('retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{
  expect(execFileSync('python',['docs/canonical-thirteen-20261110/verify.py'],{encoding:'utf8',env,timeout:30000})).toContain('PASS13exact packets');
  expect(execFileSync('python',['-m','unittest','discover','-s','docs/canonical-thirteen-20261110','-p','test_*.py'],{encoding:'utf8',env,timeout:30000,stdio:['ignore','pipe','pipe']}).length).toBe(0);
