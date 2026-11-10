@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "website-bandwidth-calculator",
+  "calculatorVersion": 2,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "pageSizeMb": 2,
+        "monthlyPageViews": 100000
+      },
+      "output": {
+        "steps": [
+          "Website Bandwidth = 200"
+        ],
+        "value": 200
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "pageSizeMb": 4,
+        "monthlyPageViews": 100000
+      },
+      "output": {
+        "steps": [
+          "Website Bandwidth = 400"
+        ],
+        "value": 400
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 200,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 400,
+            "difference": 200,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

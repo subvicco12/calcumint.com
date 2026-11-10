@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "website-bandwidth-calculator",
+  "calculatorVersion": 2,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "pageSizeMb": 2,
+        "monthlyPageViews": 100000
+      },
+      "output": {
+        "steps": [
+          "Website Bandwidth = 200"
+        ],
+        "value": 200
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "pageSizeMb": 4,
+        "monthlyPageViews": 100000
+      },
+      "output": {
+        "steps": [
+          "Website Bandwidth = 400"
+        ],
+        "value": 400
+      }
+    }
+  ]
+}
