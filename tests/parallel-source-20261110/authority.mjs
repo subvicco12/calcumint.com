@@ -3,24 +3,24 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision5.json",
-    "blob": "b1feaf819706bd9185648e41498e882fe97df3b0",
-    "sha256": "c8d6fde33ce1271ab2983c69356462a8afb2fd54ca28029b5ca385c1db92efae"
+    "path": "docs/parallel-source-20261110/capture-revision6.json",
+    "blob": "768ceb4912df239a898e277c70db34552105bd9f",
+    "sha256": "4d3d80b78f690e84fd762a8bd161552f15b2cfb383d70d5c72a0043286e46aa1"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "3de2629de4e1fc11ffddaf1d0acdc16bc4999232",
-    "sha256": "9d84dd2c4c7e3eca73ac989d71baf9ebace07b4f49b7898bde8a9ec091901c5a"
+    "blob": "25209c76d6de421e7786652b09cf76e10e8e391b",
+    "sha256": "fe46cbc13160f7bff9ddcd040ca101caaf3575e11f65f572ed9c39556b06faa5"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
-    "blob": "706e1eb6ed287230a4a1f2a3798d6873a5d3d650",
-    "sha256": "cc2e776a31149f5ed2cc8f814c5deef9fb99bee603999e9f855a4d07abe09bf2"
+    "blob": "f1606d1b7e8a9fe1f437477d899c6b3175fbdf2f",
+    "sha256": "f8c26450aaa067ff22dda8058c7ecd9bb6a80ca2b2e847835dcb9eeb5ed805c0"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-probe.mjs",
-    "blob": "38a1cba957f841183a12b488a671552e3f2b11b3",
-    "sha256": "792763590592d1fe0f56d199738e4589e62160764b6a38ef146d8ea658e44f7a"
+    "blob": "5aa7324b1bef1c902c3b2c2b878a1da5bac58527",
+    "sha256": "a172e54eb4ded89123ccaff6123e0621d7314429a9b81ddea1863fd337100479"
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
@@ -56,6 +56,11 @@ export const accepted=Object.freeze([
     "path": "tests/next-cohort-20261110/source/runtime-current-anchor.mjs",
     "blob": "ba39b2aa5a9dee6b460d5cc56be8a1f283c094fd",
     "sha256": "60c357deba6b555f2250f6cf9e3241b6acbfcb8cc0a08e3debc0c7540e30a7c4"
+  },
+  {
+    "path": "tests/parallel-source-20261110/git-reader.mjs",
+    "blob": "e9dc4584e049af4f72bbc0e52c2a12d40da6d87c",
+    "sha256": "0a87c6d2ef8fd64c149bec26695f972eee8424e5698575b183d29562c20556e9"
   }
 ]);
 export function verifyParallelAuthority(read,git){
