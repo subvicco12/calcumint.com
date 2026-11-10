@@ -6,8 +6,8 @@ import {createHash} from 'node:crypto';
 const fixed=Object.freeze([
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
-    "blob": "4b488298de35c71ed419be2be3b2e30f6e747075",
-    "sha256": "fca71854793c8f3b20b78353235e189b60fb126c2612b36db99237600608e5d2"
+    "blob": "df031b9c5d0a405d05ff62e91fcd5361a271a7a2",
+    "sha256": "f4e0bdb72c94ecf8a266e61ef4895db3ba6fb1e5723e58a83ae88809230d7fe8"
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.d.mts",
@@ -21,13 +21,13 @@ const fixed=Object.freeze([
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
-    "blob": "3d736175a89005d6aa8335eba0bded7ffd35f157",
-    "sha256": "380491a4aa852e55ef55af81e48c961b6ec4cb99e79d5a97d561c10ca89860c3"
+    "blob": "b69535858d3a1a1c66096f405786f36a8b4a6f9a",
+    "sha256": "a7f5984b90e99bc2242c5e47fca151d104cbcd9af0157636d98ddca1c9dfe63d"
   },
   {
     "path": "tests/publication-workflows-20261109/business-source-successor.test.mjs",
-    "blob": "67a22430a96d2ab5c3e7c2be3e001d2d9448f6b3",
-    "sha256": "05643023df5023cb75569b53ee22808567059c9b48381641e41e16bf2e44d369"
+    "blob": "df8dc9b033debd3a8158ed201f3b9a51de760eae",
+    "sha256": "fdf83c6a8a479cb57cbc497a562a4cd8dda91ce2b414be9eb5b15cf427e61e44"
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
