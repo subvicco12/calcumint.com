@@ -26,7 +26,7 @@ it('keeps actual operator identities, attestations and release authority unassig
  const m=read('docs/operational-thirteen-20261110/evidence-manifest.json');for(const row of m.evidence){const bytes=readFileSync(row.path);expect(bytes.length).toBe(row.bytes);expect(hash(bytes)).toBe(row.sha256);expect(hash(execFileSync('git',['show',row.sourceCommit+':'+row.path],{maxBuffer:4000000}))).toBe(row.sha256);}
 });
 it('requires fresh actual-five caller, plan parity, accessibility and native personal export bytes',()=>{
- const base='docs/next-five-20261110/',r=read(base+'browser.json');expect(r.passed).toBe(true);expect(r.genuineAuthenticatedAcceptance).toBe(false);expect(r.productionAcceptance).toBe(false);expect(r.newScopedEngineeringComplete).toBe(0);
+ const base='docs/next-five-current-20261110/',r=read(base+'browser.json');expect(r.passed).toBe(true);expect(r.genuineAuthenticatedAcceptance).toBe(false);expect(r.productionAcceptance).toBe(false);expect(r.newScopedEngineeringComplete).toBe(0);
  expect(r.journeys).toHaveLength(15);expect(r.downloads).toHaveLength(15);
  const expected=new Map([[369,256],[375,2000],[380,4.5],[381,1.8],[387,104.8734216268422]]);
  for(const [path,sha]of Object.entries(r.sourceHashes))expect(hash(readFileSync(path))).toBe(sha);
@@ -40,9 +40,17 @@ it('requires fresh actual-five caller, plan parity, accessibility and native per
  }
 },60000);
 it('requires fresh inherited-eight caller regression without relabelling prior native authentication receipts',()=>{
- const r=read('docs/next-five-20261110/inherited-eight/browser.json');expect(r.passed).toBe(true);expect(r.syntheticAccountTransport).toBe(true);expect(r.productionAcceptance).toBe(false);expect(r.journeys).toHaveLength(24);expect(r.downloads).toHaveLength(48);
+ const r=read('docs/next-five-current-20261110/inherited-eight/browser.json');expect(r.passed).toBe(true);expect(r.syntheticAccountTransport).toBe(true);expect(r.productionAcceptance).toBe(false);expect(r.journeys).toHaveLength(24);expect(r.downloads).toHaveLength(48);
  for(const [path,sha]of Object.entries(r.sourceHashes))expect(hash(readFileSync(path))).toBe(sha);
- for(const d of r.downloads){expect(d.file.includes('..')).toBe(false);const p='docs/next-five-20261110/inherited-eight/'+d.file,b=readFileSync(p);expect(b.length).toBe(d.bytes);expect(hash(b)).toBe(d.sha256);expect(hash(execFileSync('git',['show','HEAD:'+p]))).toBe(d.sha256);}
+ for(const d of r.downloads){expect(d.file.includes('..')).toBe(false);const p='docs/next-five-current-20261110/inherited-eight/'+d.file,b=readFileSync(p);expect(b.length).toBe(d.bytes);expect(hash(b)).toBe(d.sha256);expect(hash(execFileSync('git',['show','HEAD:'+p]))).toBe(d.sha256);}
+});
+it('preserves the earlier R4 UI evidence as historical exact Git evidence, never as proof of the corrected caller',()=>{
+ const ref='531d677e0cca42d7259d4a2440057ccc74daea86';
+ for(const base of ['docs/next-five-20261110/','docs/next-five-20261110/inherited-eight/']){
+  const path=base+'browser.json',raw=readFileSync(path),r=JSON.parse(raw.toString());expect(raw.equals(execFileSync('git',['show',ref+':'+path]))).toBe(true);expect(r.passed).toBe(true);
+  for(const [path,sha]of Object.entries(r.sourceHashes))expect(hash(execFileSync('git',['show',ref+':'+path]))).toBe(sha);
+  for(const d of r.downloads){const path=base+d.file;expect(hash(readFileSync(path))).toBe(d.sha256);expect(hash(execFileSync('git',['show',ref+':'+path]))).toBe(d.sha256);}
+ }
 });
 it('keeps the540 canonical rows unchanged and the thirteen-complete engineering overlay separate from five partial advances',()=>{
  const r=read('docs/thirteen-program-20261110/requirements-540.json'),parent=read(r.parentLedger);
