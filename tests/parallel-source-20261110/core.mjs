@@ -6,8 +6,9 @@ import {resolve,isAbsolute} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {retainedA7Proof,sourceGit,baselineRef} from './baseline-runtime.mjs';
 import {verifyParallelAuthority} from './authority.mjs';
+import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
-export const capturePath='docs/parallel-source-20261110/capture-revision2.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision3.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -29,6 +30,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  git=currentGit(git);
  verifyParallelAuthority(read,git);
  const capture=JSON.parse(read(capturePath));assert.equal(capture.baselineRef,baselineRef);assert.equal(capture.appRef,appRef);assert.equal(capture.productionWrites,false);assert.equal(capture.historicalRecordsEdited,false);
+ ensureParallelSources(capture);
  const baseline=retainedA7Proof();assert.deepEqual(capture.retainedReads,baseline.rows,'Original R5 read closure differs');
  const appPaths=git(['diff','--name-only',baselineRef,appRef,'--','src']).toString().trim().split('\n');assert.equal(appPaths.length,27);assert.deepEqual(capture.applicationSources.map(r=>r.path),appPaths);
  for(const row of capture.applicationSources){assert.equal(row.ref,appRef);sourceRecord(row,read,git);}
