@@ -1,0 +1,46 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/components/technology-next-five-integration.test.tsx (16 tests | 16 failed) 1418ms
+   × CIDR refuses lossy entered prefixes and recovers without changing immutable revision 64ms
+     → expected { value: 256, steps: [ 'CIDR = 256' ] } to be null
+   × free cidr-calculator integrates original-engine relationship samples without changing the captured calculation 79ms
+     → Unable to find an accessible element with the role "region" and name "Analysis"
+
+Here are the accessible roles:
+
+  spinbutton:
+
+  Name "CIDR prefix":
+  [36m<input[39m
+    [33minputmode[39m=[32m"numeric"[39m
+    [33mmin[39m=[32m"0"[39m
+    [33mstep[39m=[32m"1"[39m
+    [33mtype[39m=[32m"number"[39m
+    [33mvalue[39m=[32m"24"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  status:
+
+  Name "":
+  [36m<div[39m
+    [33maria-atomic[39m=[32m"true"[39m
+    [33maria-live[39m=[32m"polite"[39m
+    [33mclass[39m=[32m"result-box"[39m
+    [33mrole[39m=[32m"status"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  strong:
+
+  Name "":
+  [36m<strong />[39m
+
+  ------------------
+[Repeated DOM diagnostics omitted from this summary; no assertion result omitted.]
+ Test Files  1 failed (1)
+      Tests  16 failed (16)
+   Start at  14:16:31
+   Duration  5.29s (transform 2.17s, setup 0ms, collect 3.15s, tests 1.42s, environment 310ms, prepare 82ms)
+
