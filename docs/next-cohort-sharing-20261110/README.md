@@ -1,0 +1,11 @@
+# Next cohort sharing and personal workflow evidence
+
+The exact candidate tuples are 374@1, 377@1, 378@1, 379@1, 382@1, 383@2, 384@1 and 385@1. The original five sharing table, guarded proposal and recorded revisions are retained. Website bandwidth version 1 is refused by the new sharing contract.
+
+`pg/receipt.json` records genuine disposable GoTrue/PostgreSQL acceptance of the new sibling table and guarded atomic RPC for all eight tuples, role/tenant/client boundaries, idempotency and least privilege. This proposal remains outside active migrations and deliberately refuses adoption unchanged. SQL trusts the server to verify registered snapshots; its authority fixture does not independently establish mathematical validity.
+
+`personal/receipt.json` records 24 genuine existing-route personal journeys across Free, Pro and Business and 64 completed native downloads: 48 recorded JSON/CSV/PDF files and 16 local scenario-set JSON files. Hashes were captured from the actual temporary Next source copy. `personal-artifacts.mjs --check` independently checks retained download lifecycle, file bytes and exact exported identity/version/value. All 64 committed Git blobs were compared to those download hashes. This packet predates the new storage recovery and DPI presentation successors; it remains evidence for its recorded source, not a claim that changed callers were exercised.
+
+The storage recovery successor restores recorded IEC unit metadata only to working copies, refuses contradictory unit metadata, and leaves comparison differences unavailable across differing target units. Imported files and original recorded comparison checks remain unchanged. Exact historical snapshot replay retains its earlier reader; new shared captures use the stricter current normal-input policy.
+
+Genuine priority 377/378/379 team UI and narrow current 374/379 personal acceptance are separate receipts when present. No receipt authorizes production activation, changes historical mathematics, approves a canonical source or constitutes specialist certification. Client workspace categorization is an authenticated team relation, not a public client portal; exported bytes cannot be recalled by membership revocation.
