@@ -8,6 +8,10 @@ const env:NodeJS.ProcessEnv={...process.env,PYTHONDONTWRITEBYTECODE:'1'};delete 
 it('retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{
  expect(execFileSync('python',['docs/canonical-thirteen-20261110/verify.py'],{encoding:'utf8',env,timeout:30000})).toContain('PASS13exact packets');
  expect(execFileSync('python',['-m','unittest','discover','-s','docs/canonical-thirteen-20261110','-p','test_*.py'],{encoding:'utf8',env,timeout:30000,stdio:['ignore','pipe','pipe']}).length).toBe(0);
+ const index=read('docs/canonical-thirteen-20261110/index.json'),delta=read('docs/thirteen-program-20261110/canonical-presentation-delta.json');
+ expect(delta.rows.map((r:{masterId:number;engineId:string;version:number})=>[r.masterId,r.engineId,r.version])).toEqual(index.packets.map((r:{masterId:number;engineId:string;version:number})=>[r.masterId,r.engineId,r.version]));
+ expect(delta.existingPacketsModified).toBe(false);expect(hash(readFileSync('src/components/calculator-interactive.tsx'))).toBe(delta.currentCallerSHA256);
+ for(const r of delta.rows){expect(r.competentDecision).toBeNull();for(const key of ['engineImplementationChanged','canonicalAccepted','certificationGranted','publicationEligible'])expect(r[key]).toBe(false);}
 });
 it('retains exact-six invoker boundaries and new genuine isolated authority/retry checks without SQL activation',()=>{
  expect(execFileSync(process.execPath,['tests/publication-rpc-six-20261110/verify.mjs'],{encoding:'utf8',env,timeout:30000})).toContain('PASS exact six');
