@@ -71,8 +71,13 @@ const independentlyReviewedSources=Object.freeze([
   },
   {
     "path": "src/components/calculator-interactive.tsx",
-    "blob": "4ab46f5b42589e89099eba00068295d57e8f4ed6",
-    "sha256": "a1e28af69cb2ee1b5e3cafcc66111b9baba3ae8f09e4287968e1f6fcb6c17a87"
+    "blob": "45e102f0d97e8db360dc2a09efcb0e3867df8275",
+    "sha256": "af625bb001afe2cc52eea383f6e6462a5eb728b74de321f84d436611729ea5ad"
+  },
+  {
+    "path": "src/components/technology-five-analysis.tsx",
+    "blob": "29fdf234270b65f76100f2b15f27bd9e6a706a61",
+    "sha256": "137ff472c20404e12e1e402c9c994cc75559f8f59bc54f70a8dd3bd6920fbc72"
   },
   {
     "path": "src/components/technology-five-delivery.tsx",
@@ -96,8 +101,8 @@ const independentlyReviewedSources=Object.freeze([
   },
   {
     "path": "src/components/technology-next-analysis.tsx",
-    "blob": "10b2c2aa3e55ac9f4427ac50b675588641f48ae7",
-    "sha256": "557567f999e2e4e026a93eacd92c78289926e2a7a67f2766639e9bab0bd40ae6"
+    "blob": "c40931952b18569fc25cf643d1568c148fb35468",
+    "sha256": "4c1bb64adc75daf2e4702d75ab90525167e0666f780edef2476c7e35e4f87c61"
   },
   {
     "path": "src/components/technology-next-batch.tsx",
