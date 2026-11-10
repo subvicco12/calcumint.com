@@ -1,0 +1,17 @@
+PASS Six exact runtime signatures are invoker functions with anon EXECUTE denied and authenticated granted
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: publish_calculator_batch_with_audit_v1
+    at file:///tmp/calcumint-publication-rpc-six-20261110/tests/publication-rpc-six-20261110/acceptance.mjs:28:140
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'Incomplete immutable binding',
+  expected: /permission|admin|owner/i,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.19.0
