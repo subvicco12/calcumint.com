@@ -1,0 +1,97 @@
+{
+  "kind": "PRECISE_LOCAL_VALIDATION_CHECKPOINT_NOT_HOSTED_CI",
+  "baseline": "1ec63cd11626df15063546c7e5bfedecec33f6ee",
+  "applicationSource": "2d0e2622292930d1992813998608d933ddf5024e",
+  "local": {
+    "freshUIJourneys": 24,
+    "freshUIArtifacts": 48,
+    "freshMobileBoundaries": 4,
+    "freshNativeAuthenticatedIdentities": 8,
+    "freshTargetedPersonalJourneys": 6,
+    "freshPersonalArtifacts": 20,
+    "canonicalPacketsUnsigned": 5,
+    "retainedClauses": 170,
+    "sourceChecks": 97,
+    "runtimeSourceChecks": 175,
+    "evidenceVitestChecks": 7,
+    "lint": {
+      "errors": 0,
+      "warnings": 31
+    },
+    "typecheck": "PASS",
+    "webpackBuild": "PASS",
+    "fullUnit": {
+      "status": "FAILED_BEFORE_RETAINED_CLAIM_CORRECTION",
+      "passed": 8968,
+      "failed": 1,
+      "skipped": 4,
+      "durationSeconds": 491.71,
+      "failure": "Exact old five batch historical Analysis hash b282 was not admitted before unchanged current-source proof; corrected by3cc17e80 and reviewed df2aa061 pins.",
+      "finalHeadFullRegression": "REQUIRED_HOSTED_CI_NOT_STARTED"
+    },
+    "retainedFiveBatchAfterCorrection": {
+      "status": "PASS",
+      "journeys": 15,
+      "nativeDownloads": 30
+    },
+    "finalCorrectedFocused": {
+      "passed": 14,
+      "failed": 0,
+      "sourceChildChecks": 40,
+      "sourceChildSeconds": 41.135,
+      "durationSeconds": 47.61
+    },
+    "finalLint": {
+      "errors": 0,
+      "warnings": 31
+    },
+    "finalTypecheck": "PASS",
+    "launchTestsPassed": 45,
+    "certificationTestsPassed": 15
+  },
+  "failuresPreserved": [
+    "original8967pass-1missing-artifactfail-4skip",
+    "revision3first37pass-2exactcurrentcallerallowlistfail",
+    "restricted-runtimewebpackshowConfigfailure",
+    "interruptedfullsuitebeforefinalsourcepins",
+    "full8968pass-1retainedb282claimfail-4skip"
+  ],
+  "hostedFinalCI": "NOT_STARTED",
+  "canonicalApproval": false,
+  "certification": false,
+  "publicationEligibleCount": 0,
+  "releaseHold": true,
+  "validationFileSHA256": {
+    "docs/next-cohort-20261110/validation/canonical-five-final.log": "8982e72cdd5d26999995837cce173eab2ce83f26249ab5bfe6551968cca8eaf2",
+    "docs/next-cohort-20261110/validation/current-artifacts-root.log": "bac4705406bdc17057defe63c124d2ee6e92f6a7309e5b5fe3ec33dd1ec06751",
+    "docs/next-cohort-20261110/validation/dpi-presentation-green.log": "95886911893f61e13bb0b9deb4d4878955d4d9aa0e89cb633acce9f17658c60d",
+    "docs/next-cohort-20261110/validation/dpi-presentation-red.log": "7cb8466c309dadbada4ee602a4b3098b64b5483cbafe30d1b627ce3429e3eca5",
+    "docs/next-cohort-20261110/validation/final-all-lint.log": "cd1a4c048ceee6a6d1211e931b75ed1dc87e8df8674bc1c896d52ab063f3d2bb",
+    "docs/next-cohort-20261110/validation/final-all-typecheck.log": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+    "docs/next-cohort-20261110/validation/final-certification.log": "434dd10b1515a28b8b3b7f0c5056b603a6f8d7b1618fb79598f40f13c5cdf7b7",
+    "docs/next-cohort-20261110/validation/final-corrected-focused.log": "c05783f29cb5a9b3ddefaddd1be640fea6c4288711afb8259e34ba42cc02de09",
+    "docs/next-cohort-20261110/validation/final-launch.log": "1ee9b61fdb4cc204a8a4efc1a1027d6a36274a66fe15c35c36aea98b726f3a51",
+    "docs/next-cohort-20261110/validation/final-lint.log": "cd1a4c048ceee6a6d1211e931b75ed1dc87e8df8674bc1c896d52ab063f3d2bb",
+    "docs/next-cohort-20261110/validation/final-responsive-webpack.log": "c7d39ed1b7042f9ecd34dee25699ce70fd50f1ac2e4bfe3a7c77b9261572dbd1",
+    "docs/next-cohort-20261110/validation/final-typecheck.log": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+    "docs/next-cohort-20261110/validation/focused.log": "0925e819d6fd148f010c91596b52053ebff8e43937c04a2187b962b6bf7e4c31",
+    "docs/next-cohort-20261110/validation/fresh-current-evidence-vitest.log": "47ad4c3da6c1d2d9b9044555e4a54ec2107f2d459344a47be63c5c931c8a539f",
+    "docs/next-cohort-20261110/validation/full-unit-before-retained-claim-correction.log.gz": "c9b92dbc74c580ebff81814cc31e47dcf063960e4d27ad7bec3a188b60ed1cbb",
+    "docs/next-cohort-20261110/validation/goal-boundary-green.log": "cf5dcc46a8515296804dbdc66c4560625baa88350291bc4662b6dd83792ddb08",
+    "docs/next-cohort-20261110/validation/goal-boundary-red.log": "2fa4777997c81055aa38d7f616088f9a7ec999608656be7e711ecdd14a247dbb",
+    "docs/next-cohort-20261110/validation/independent-concurrent-source-39.log": "9213bf6deff695535a1ddc130675d58fc52de06fb9aa1ddbf7be61ff68c5dea8",
+    "docs/next-cohort-20261110/validation/interrupted-before-final-pins.log.gz": "caeb9a9a6f481e240c069720526c284a4b83daeb46f1e96713f01749f08a7eb7",
+    "docs/next-cohort-20261110/validation/lint-before-sharing.log": "5ba86db916fac8b5cbeac3d41ec400de2f60420ba56e2279367b7fdc21ea5a81",
+    "docs/next-cohort-20261110/validation/lint-dpi.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/next-cohort-20261110/validation/local-full-before-responsive-fix.log.gz": "9d31b03df75b15fb001e8cef015888535229269084080e76a66c1a61f7d73734",
+    "docs/next-cohort-20261110/validation/personal-artifacts-root.log": "12e03d30be7d12361ea4a6d23dae501750341da758afa124359fd625135bcf3b",
+    "docs/next-cohort-20261110/validation/primary-boundary-red.log": "1876e241e96cb0f6c48424e413992313085cc1fc4059862f1ab22215d3a57571",
+    "docs/next-cohort-20261110/validation/restricted-webpack-failure.log.gz": "d8325c8ed9c5a364f8da5b8d0749f880fb682ef4fcc68f9ee536988e8e93b86e",
+    "docs/next-cohort-20261110/validation/retained-five-batch-correction.log": "deccfe4d43246103996d88c1501bb671bac834c08e9edda8ee982104dbf8de3b",
+    "docs/next-cohort-20261110/validation/review-corrections-green.log": "6d3d6e81e5ee19525e52acfc79a4a1f386f27baefcafd6750a157b05db467194",
+    "docs/next-cohort-20261110/validation/team-artifacts-root.log": "92ae32a928353f2f662f21c69c0210188229de610e95fbe9e0bc794d5d386810",
+    "docs/next-cohort-20261110/validation/typecheck-before-sharing.log": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+    "docs/next-cohort-20261110/validation/typecheck-dpi.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/next-cohort-20261110/validation/webpack-final.log": "a1ccd1fce433de0e762ade3c8653c43e6349d91695d25c5c223fde0e6aa33fba"
+  }
+}
