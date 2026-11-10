@@ -8,7 +8,7 @@ import {retainedA7Proof,sourceGit,baselineRef} from './baseline-runtime.mjs';
 import {verifyParallelAuthority} from './authority.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
-export const capturePath='docs/parallel-source-20261110/capture-revision8.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision9.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -44,7 +44,10 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  // Every byte observed by the old complete proof remains guarded in the new view.
  for(const row of baseline.rows)assert(all.some(r=>r.path===row.path),'Unbound original current source: '+row.path);
  const metadata='scripts/product-completion-lineage.mjs',old=git(['show',baselineRef+':'+metadata]).toString(),current=read(metadata).toString();
- assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),old.slice(old.indexOf('export const completionSourceRefs')),'Completion executable guard changed');
+ const historicalTail=old.slice(old.indexOf('export const completionSourceRefs'));
+ const insertion=" if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);";
+ assert.equal(historicalTail.split(insertion).length,2,'Exact unchanged guard insertion preimage required');
+ assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
  const before=parseRows(old),after=parseRows(current);assert.deepEqual(after.map(r=>r.path),before.map(r=>r.path));if(suppliedRows)assert.deepEqual(suppliedRows,after,'Only the reviewed parallel source rows are admitted');
  const apps=new Map(capture.applicationSources.map(r=>[r.path,r])),evolutions=new Map([...apps,...capture.guardSources.map(r=>[r.path,r])]);
  const allowedExtras=new Map(apps);

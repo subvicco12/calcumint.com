@@ -1,4 +1,4 @@
-import {describe,it,expect} from 'vitest';
+import {beforeAll,describe,it,expect} from 'vitest';
 import {verifyComposition} from '../../tests/parallel-five-20261110/verify-composition.mjs';
 import {assertTestOnlySuccessor,testOnlySuccessorPaths} from '../../tests/parallel-five-20261110/test-only-successor.mjs';
 import {readFileSync} from 'node:fs';
@@ -7,6 +7,10 @@ const directory='docs/parallel-five-20261110/authenticated';
 const json=(file:string)=>JSON.parse(readFileSync(directory+'/'+file,'utf8'));
 const sha=(file:string)=>createHash('sha256').update(readFileSync(file)).digest('hex');
 describe('parallel five genuine authenticated successful-scope evidence',()=>{
+ let composition: Awaited<ReturnType<typeof verifyComposition>>;
+ // Source qualification and reading all95 native artifacts are bounded setup,
+ // separate from the unchanged five-second assertion/error-refusal case.
+ beforeAll(async()=>{composition=await verifyComposition();},30000);
  it('binds the original application, honest completed scopes and all native disk artifacts',async()=>{
   const receipt=json('receipt.json'),source=json('final-source-version.json'),four=json('prior/sharing/completed-four-checkpoint.json'),fifth=json('sharing/receipt.json');
   expect(receipt.kind).toBe('BOUNDED_SUCCESSFUL_SCOPE_COMPOSITION_NOT_FAILED_RUN_PROMOTION');
@@ -25,7 +29,7 @@ describe('parallel five genuine authenticated successful-scope evidence',()=>{
   expect(testOnlySuccessorPaths).toHaveLength(6);
   for(const file of testOnlySuccessorPaths){const recorded=source.currentBlobBindings[file].recordedBuildSourceSHA256,bytes=readFileSync(file);await expect(assertTestOnlySuccessor(file,recorded,Buffer.concat([bytes,Buffer.from('\n// unrelated drift')]))).rejects.toThrow();await expect(assertTestOnlySuccessor(file,'0'.repeat(64),bytes)).rejects.toThrow();}
   await expect(assertTestOnlySuccessor('src/lib/other.test.ts','0'.repeat(64),Buffer.from(''))).rejects.toThrow('Only six exact test successors');
-  const result=await verifyComposition();expect(result.downloads).toBe(95);expect(result.testOnlySuccessors).toBe(6);expect(result.priorFailedRunPromoted).toBe(false);const output=result.summary;
+  const result=composition;expect(result.downloads).toBe(95);expect(result.testOnlySuccessors).toBe(6);expect(result.priorFailedRunPromoted).toBe(false);const output=result.summary;
   expect(output).toContain('95 complete native download bytes');expect(output).toContain('failed earlier whole-run remains failed');
  });
 });
