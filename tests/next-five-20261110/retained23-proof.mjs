@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,readFileSync,rmSync,lstatSync,realpathSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join,resolve,relative,isAbsolute} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -35,7 +35,10 @@ export async function withRetained23Proof(callback){
  assert(entries.length>0,'Retained namespace source objects unavailable');
  for(const entry of entries){
   const match=/^100(?:644|755) blob ([0-9a-f]{40})\t(.+)$/.exec(entry);assert(match,'Unexpected retained object');
-  const bytes=readFileSync(join(repository,match[2]));
+  const target=join(repository,match[2]),stat=lstatSync(target);
+  assert(stat.isFile()&&!stat.isSymbolicLink(),'Retained current evidence must remain a regular file: '+match[2]);
+  assert.equal(realpathSync(target),join(realpathSync(repository),match[2]),'Retained current evidence path was redirected');
+  const bytes=readFileSync(target);
   const actual=createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
   assert.equal(actual,match[1],'Retained current evidence/producer changed: '+match[2]);
  }
