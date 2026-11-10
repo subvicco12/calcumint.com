@@ -45,6 +45,8 @@ for row in ledger['rows']:
  if ident in BASE_COMPLETE:row['engineeringAssessment']='SCOPED_CURRENT_CONTRACT_ENGINEERING_COMPLETE_AT_GREEN_BASELINE_3c9fc6bd';row['engineeringEvidence']='docs/remaining-five-20261110/baseline-ci.json'
  elif ident in IDS:row['engineeringAssessment']='SCOPED_CURRENT_CONTRACT_CANDIDATE_PENDING_FINAL_EXACT_HEAD_CI';row['engineeringEvidence']='docs/remaining-five-20261110/acceptance-5.json'
  else:row['engineeringAssessment']='INHERITED_NOT_REASSESSED_THIS_CONTINUATION'
+legacy_keys=['baselineEngineeringCompleteIds','engineeringCandidates','newEngineeringCandidates','partialAdditionalCohort','otherIdentitiesNotReassessed','inheritedEngineeringCandidates']
+ledger['inheritedPriorEngineeringOverlay']={'sourceSHA':BASE,'sourceLedger':prior_path,'fields':{key:ledger.pop(key)for key in legacy_keys if key in ledger}}
 ledger.update(kind='UNCHANGED_540_CANONICAL_DISPOSITIONS_WITH_NEW_FIVE_SCOPED_ENGINEERING_CANDIDATES',baselineSHA=BASE,parentLedger=prior_path,parentSHA256=sha(prior_path),counts=counts,baselineScopedEngineeringCompleteIds=BASE_COMPLETE,newScopedEngineeringCandidates=IDS,engineeringOverlayBeforeFinalCI={'baselineScopedComplete':8,'newScopedCandidates':5,'otherNotReassessed':527},newCanonicalAcceptance=0,newCertification=0,newPublicationEligibility=0)
 write('requirements-540.json',ledger)
 print(json.dumps({'rows':540,'canonicalCounts':counts,'baselineScopedComplete':8,'newScopedCandidatesPendingFinalCI':IDS,'potentialScopedTotalAfterSuccessfulCI':13,'newCanonicalApprovals':0,'newPublicationEligible':0}))

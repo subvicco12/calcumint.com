@@ -45,3 +45,7 @@ After the identified closure-test count correction, actual required validation a
 ## Closure-test finding resolved
 
 Subsequently read root's current remaining-five-evidence.test.ts: its credential check now requires exact `pass 2`, preserving the actual two-test guard and counterfactual. Independently compared the credential-guard source with this reviewed worktree; bytes are unchanged. Root's retained `/tmp/remaining-five-evidence-final-green.log` records the entire current evidence module passing7/7tests,1file, at09:55:58 in2.42seconds. This reviewer inspected that log and corrected assertion; it did not execute the tests. **The previously reported closure-count blocker is resolved.** Full mandatory validation and exact-head CI remain separate pending checkpoints; no canonical or operational approval follows.
+
+## Subsequent ledger-only review
+
+The source-review lane independently compared the metadata cleanup against the committed d1b9 checkpoint: all540row values and canonicalcounts remain identical; six legacy parent fields retain their exact values under an explicit sourceSHA/parent-ledger section. Root added all-six absence/value/provenance assertions and reports focused7/7plus lint passing. This attributed finite review does not change any canonical or release decision.
