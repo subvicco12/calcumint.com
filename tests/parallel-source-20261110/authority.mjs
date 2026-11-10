@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision6.json",
-    "blob": "768ceb4912df239a898e277c70db34552105bd9f",
-    "sha256": "4d3d80b78f690e84fd762a8bd161552f15b2cfb383d70d5c72a0043286e46aa1"
+    "path": "docs/parallel-source-20261110/capture-revision7.json",
+    "blob": "eb5f798f1605e11f2ef4727ea6da2e8c142b4aa5",
+    "sha256": "11a93bde1123e83508e0517a7f08d3dcf816c780481632527065f81474834841"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "25209c76d6de421e7786652b09cf76e10e8e391b",
-    "sha256": "fe46cbc13160f7bff9ddcd040ca101caaf3575e11f65f572ed9c39556b06faa5"
+    "blob": "5004589bcc9287f7719ec7d5f0ed253e9c3988ad",
+    "sha256": "e2775c86b0be2f2a15a4705063452f844071fbdccef181fea0548e1e679e0c73"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -59,8 +59,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/git-reader.mjs",
-    "blob": "e9dc4584e049af4f72bbc0e52c2a12d40da6d87c",
-    "sha256": "0a87c6d2ef8fd64c149bec26695f972eee8424e5698575b183d29562c20556e9"
+    "blob": "63cc7f45199ef14cdf6b0f41dcce5a4ee33681e7",
+    "sha256": "8e1ff2753ee0710c68ac44e5c45e15009b0d9af1877c81aaff21296fbd06b9a7"
   }
 ]);
 export function verifyParallelAuthority(read,git){
