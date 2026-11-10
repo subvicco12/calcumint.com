@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "cidr-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "prefixLength": 24
+      },
+      "output": {
+        "steps": [
+          "CIDR = 256"
+        ],
+        "value": 256
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "prefixLength": 23
+      },
+      "output": {
+        "steps": [
+          "CIDR = 512"
+        ],
+        "value": 512
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "value",
+        "cells": [
+          {
+            "slot": "A",
+            "value": 256,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "value": 512,
+            "difference": 256,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": []
+  }
+}

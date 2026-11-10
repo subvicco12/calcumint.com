@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "cidr-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Counts total IPv4 addresses as 2^(32 − prefix length), including reserved addresses; not usable hosts. CIDR = 256\n\nIPv4 address count represented by a CIDR prefix length.\nAddresses = 2^(32 − prefix length)",
+      "input": {
+        "prefixLength": 24
+      },
+      "output": {
+        "value": 256,
+        "steps": [
+          "CIDR = 256"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "cidr-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "prefixLength": {
+            "label": "CIDR prefix"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "CIDR addresses",
+            "unit": "addresses"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Counts total IPv4 addresses as 2^(32 − prefix length), including reserved addresses; not usable hosts. CIDR = 512\n\nIPv4 address count represented by a CIDR prefix length.\nAddresses = 2^(32 − prefix length)",
+      "input": {
+        "prefixLength": 23
+      },
+      "output": {
+        "value": 512,
+        "steps": [
+          "CIDR = 512"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "cidr-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "prefixLength": {
+            "label": "CIDR prefix"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "CIDR addresses",
+            "unit": "addresses"
+          }
+        }
+      }
+    }
+  ]
+}

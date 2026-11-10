@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "battery-runtime-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.battery-runtime@1\n\nIdealized battery runtime from energy capacity, load and explicit efficiency.\nRuntime (h) = capacity Wh × efficiency ÷ load W",
+      "input": {
+        "capacityWh": 1000,
+        "loadWatts": 200,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "value": 4.5,
+        "steps": [
+          "Battery Runtime = 4.5"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "battery-runtime-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "capacityWh": {
+            "label": "Capacity (Wh)",
+            "unit": "Wh"
+          },
+          "loadWatts": {
+            "label": "Load (W)",
+            "unit": "W"
+          },
+          "efficiencyPercent": {
+            "label": "Efficiency (%)",
+            "unit": "%"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Battery runtime",
+            "unit": "hours"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.battery-runtime@1\n\nIdealized battery runtime from energy capacity, load and explicit efficiency.\nRuntime (h) = capacity Wh × efficiency ÷ load W",
+      "input": {
+        "capacityWh": 2000,
+        "loadWatts": 200,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "value": 9,
+        "steps": [
+          "Battery Runtime = 9"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "battery-runtime-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "capacityWh": {
+            "label": "Capacity (Wh)",
+            "unit": "Wh"
+          },
+          "loadWatts": {
+            "label": "Load (W)",
+            "unit": "W"
+          },
+          "efficiencyPercent": {
+            "label": "Efficiency (%)",
+            "unit": "%"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Battery runtime",
+            "unit": "hours"
+          }
+        }
+      }
+    }
+  ]
+}

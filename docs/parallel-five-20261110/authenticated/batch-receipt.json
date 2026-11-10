@@ -1,0 +1,511 @@
+{
+  "passed": true,
+  "producerSHA256": "a1e072675936b84eada6c91f4a3ac7f0eda4758bf2cf2903f213c686526fb64a",
+  "observations": [
+    {
+      "catalogId": 369,
+      "engineId": "technology.cidr",
+      "version": 1,
+      "requestId": "2f518ad0-e4d5-4b21-ad79-8d28a48e6e6a",
+      "jobId": "c04ec6b8-dfcc-4175-b94d-35a236678583",
+      "inputRows": [
+        {
+          "prefixLength": "24"
+        },
+        {
+          "prefixLength": "-1"
+        }
+      ],
+      "rows": [
+        {
+          "ok": true,
+          "index": 0,
+          "result": {
+            "slug": "cidr-calculator",
+            "unit": "addresses",
+            "input": {
+              "prefixLength": 24
+            },
+            "title": "CIDR Calculator",
+            "output": {
+              "steps": [
+                "CIDR = 256"
+              ],
+              "value": 256
+            },
+            "sources": [
+              {
+                "url": "https://www.rfc-editor.org/rfc/rfc4632",
+                "note": "CIDR uses an IPv4 prefix length from 0 through 32; a prefix describes a power-of-two-sized block from one through 2^32 addresses.",
+                "label": "RFC 4632 — Classless Inter-domain Routing (CIDR)"
+              }
+            ],
+            "version": 1,
+            "engineId": "technology.cidr",
+            "warnings": [
+              "Registered raw binary64 engine and exact immutable technical revision; refused precision is not rounded into acceptance. No canonical/source certification or publication approval. JSON represents signed zero as zero."
+            ],
+            "catalogId": 369,
+            "limitations": "Total IPv4 address count only for integer prefix0..32. No network/broadcast/host ranges, IPv6 or routability inference.",
+            "methodology": [
+              {
+                "id": "cidr-calculator",
+                "expression": "Addresses = 2^(32 − prefix length)",
+                "description": "IPv4 address count represented by a CIDR prefix length."
+              }
+            ],
+            "enteredInput": {
+              "prefixLength": "24"
+            }
+          }
+        },
+        {
+          "ok": false,
+          "error": "Inputs violate the original domain or current capture precision boundary",
+          "index": 1
+        }
+      ],
+      "acceptedPostUnits": 2,
+      "getUsageDelta": 0,
+      "duplicateJobAndEvent": true,
+      "conflict409": true,
+      "configuredQuota429": true,
+      "crossTenantGet404": true,
+      "crossTenantEndpointPost403": true,
+      "wrongScope403": true,
+      "signedAutomation": {
+        "eventId": "c04ec6b8-dfcc-4175-b94d-35a236678583",
+        "retries": 2,
+        "bodySHA256": "26683c923c9cf8908319dc49b00ec35ccc887f7825f5d8cadc21aa74553ab432",
+        "exactCatalogEngineVersion": true,
+        "exactEnteredInputsAndStoredRows": true,
+        "hmacVerified": true,
+        "failedThenDelivered": true,
+        "additionalApiUnits": 0
+      },
+      "revokedGetAndPost401": true
+    },
+    {
+      "catalogId": 375,
+      "engineId": "technology.raid-capacity",
+      "version": 1,
+      "requestId": "ad4d1c99-7036-4b4b-9abd-af2d19fdcfd3",
+      "jobId": "6e9de7bf-16be-4a8a-8abe-fd71750284ab",
+      "inputRows": [
+        {
+          "diskCount": "4",
+          "diskSizeGb": "1000",
+          "raidLevel": "10"
+        },
+        {
+          "diskCount": "-1",
+          "diskSizeGb": "1000",
+          "raidLevel": "10"
+        }
+      ],
+      "rows": [
+        {
+          "ok": true,
+          "index": 0,
+          "result": {
+            "slug": "raid-capacity-calculator",
+            "unit": "GB",
+            "input": {
+              "diskCount": 4,
+              "raidLevel": "10",
+              "diskSizeGb": 1000
+            },
+            "title": "RAID Capacity Calculator",
+            "output": {
+              "steps": [
+                "RAID Capacity = 2000"
+              ],
+              "value": 2000
+            },
+            "sources": [
+              {
+                "url": "https://www.snia.org/sites/default/files/DPCO/Data%20Protection%20BP%20White%20Paper%20Final%20v1_0.pdf",
+                "note": "SNIA describes RAID 0 striping, RAID 1 mirroring, RAID 5 distributed parity, RAID 6 dual parity, and RAID 10 striping plus mirroring. CalcuMint reports simplified nominal usable capacity and separately documents that vendor/filesystem overhead is excluded.",
+                "label": "SNIA — Data Protection Best Practices: RAID levels"
+              }
+            ],
+            "version": 1,
+            "engineId": "technology.raid-capacity",
+            "warnings": [
+              "Registered raw binary64 engine and exact immutable technical revision; refused precision is not rounded into acceptance. No canonical/source certification or publication approval. JSON represents signed zero as zero."
+            ],
+            "catalogId": 375,
+            "limitations": "Nominal equal-size capacity-only v1 model. Level1 reports one disk capacity;5 requires3disks,6 requires4,10 requires even count>=4. No vendor/filesystem/rebuild guarantee.",
+            "methodology": [
+              {
+                "id": "raid-capacity-calculator",
+                "expression": "Usable capacity = RAID-level-specific disk count × disk size",
+                "description": "Simplified nominal RAID usable capacity; RAID 5 requires at least 3 disks, RAID 6 at least 4, and RAID 10 an even disk count of at least 4. Vendor/filesystem overhead is not modeled."
+              }
+            ],
+            "enteredInput": {
+              "diskCount": "4",
+              "raidLevel": "10",
+              "diskSizeGb": "1000"
+            }
+          }
+        },
+        {
+          "ok": false,
+          "error": "Inputs violate the original domain or current capture precision boundary",
+          "index": 1
+        }
+      ],
+      "acceptedPostUnits": 2,
+      "getUsageDelta": 0,
+      "duplicateJobAndEvent": true,
+      "conflict409": true,
+      "configuredQuota429": true,
+      "crossTenantGet404": true,
+      "crossTenantEndpointPost403": true,
+      "wrongScope403": true,
+      "signedAutomation": {
+        "eventId": "6e9de7bf-16be-4a8a-8abe-fd71750284ab",
+        "retries": 2,
+        "bodySHA256": "763e7fec810360c8360ea3d584d81ba8e069103746b70d3aefff9f8d385d8c05",
+        "exactCatalogEngineVersion": true,
+        "exactEnteredInputsAndStoredRows": true,
+        "hmacVerified": true,
+        "failedThenDelivered": true,
+        "additionalApiUnits": 0
+      },
+      "revokedGetAndPost401": true
+    },
+    {
+      "catalogId": 380,
+      "engineId": "technology.battery-runtime",
+      "version": 1,
+      "requestId": "351a87aa-7fee-4e87-a402-471209309574",
+      "jobId": "218d2ac4-9dd5-4e40-bbd8-c83acd63906c",
+      "inputRows": [
+        {
+          "capacityWh": "1000",
+          "loadWatts": "200",
+          "efficiencyPercent": "90"
+        },
+        {
+          "capacityWh": "-1",
+          "loadWatts": "200",
+          "efficiencyPercent": "90"
+        }
+      ],
+      "rows": [
+        {
+          "ok": true,
+          "index": 0,
+          "result": {
+            "slug": "battery-runtime-calculator",
+            "unit": "hours",
+            "input": {
+              "loadWatts": 200,
+              "capacityWh": 1000,
+              "efficiencyPercent": 90
+            },
+            "title": "Battery Runtime Calculator",
+            "output": {
+              "steps": [
+                "Battery Runtime = 4.5"
+              ],
+              "value": 4.5
+            },
+            "sources": [
+              {
+                "url": "https://www.nist.gov/document/2026-nist-handbook-44-appendix-d",
+                "note": "NIST defines the watthour (Wh) as the practical unit of electric energy expended in one hour when average power is one watt; runtime here remains an idealized energy/load estimate with explicit efficiency.",
+                "label": "NIST Handbook 44 — watthour definition"
+              }
+            ],
+            "version": 1,
+            "engineId": "technology.battery-runtime",
+            "warnings": [
+              "Registered raw binary64 engine and exact immutable technical revision; refused precision is not rounded into acceptance. No canonical/source certification or publication approval. JSON represents signed zero as zero."
+            ],
+            "catalogId": 380,
+            "limitations": "Ideal supplied Wh times efficiency fraction divided by W. No chemistry/discharge or manufacturer curve; unsupported input/intermediate/output precision is refused for new captures.",
+            "methodology": [
+              {
+                "id": "battery-runtime-calculator",
+                "expression": "Runtime (h) = capacity Wh × efficiency ÷ load W",
+                "description": "Idealized battery runtime from energy capacity, load and explicit efficiency."
+              }
+            ],
+            "enteredInput": {
+              "loadWatts": "200",
+              "capacityWh": "1000",
+              "efficiencyPercent": "90"
+            }
+          }
+        },
+        {
+          "ok": false,
+          "error": "Inputs violate the original domain or current capture precision boundary",
+          "index": 1
+        }
+      ],
+      "acceptedPostUnits": 2,
+      "getUsageDelta": 0,
+      "duplicateJobAndEvent": true,
+      "conflict409": true,
+      "configuredQuota429": true,
+      "crossTenantGet404": true,
+      "crossTenantEndpointPost403": true,
+      "wrongScope403": true,
+      "signedAutomation": {
+        "eventId": "218d2ac4-9dd5-4e40-bbd8-c83acd63906c",
+        "retries": 2,
+        "bodySHA256": "a8fa8f0e77849c9912410c70fecf24b97a37e70a990f858fe5e7dba2163be532",
+        "exactCatalogEngineVersion": true,
+        "exactEnteredInputsAndStoredRows": true,
+        "hmacVerified": true,
+        "failedThenDelivered": true,
+        "additionalApiUnits": 0
+      },
+      "revokedGetAndPost401": true
+    },
+    {
+      "catalogId": 381,
+      "engineId": "technology.ups-runtime",
+      "version": 1,
+      "requestId": "ffce79c9-87d4-4918-86d8-faafdb2272d7",
+      "jobId": "eae08eac-ed6a-4dcd-8f04-31572de50bbb",
+      "inputRows": [
+        {
+          "batteryWh": "600",
+          "loadWatts": "300",
+          "efficiencyPercent": "90"
+        },
+        {
+          "batteryWh": "-1",
+          "loadWatts": "300",
+          "efficiencyPercent": "90"
+        }
+      ],
+      "rows": [
+        {
+          "ok": true,
+          "index": 0,
+          "result": {
+            "slug": "ups-runtime-calculator",
+            "unit": "hours",
+            "input": {
+              "batteryWh": 600,
+              "loadWatts": 300,
+              "efficiencyPercent": 90
+            },
+            "title": "UPS Runtime Calculator",
+            "output": {
+              "steps": [
+                "UPS Runtime = 1.8"
+              ],
+              "value": 1.8
+            },
+            "sources": [
+              {
+                "url": "https://www.nist.gov/document/2026-nist-handbook-44-appendix-d",
+                "note": "NIST defines the watthour (Wh) as the practical unit of electric energy expended in one hour when average power is one watt; runtime here remains an idealized energy/load estimate with explicit efficiency.",
+                "label": "NIST Handbook 44 — watthour definition"
+              }
+            ],
+            "version": 1,
+            "engineId": "technology.ups-runtime",
+            "warnings": [
+              "Registered raw binary64 engine and exact immutable technical revision; refused precision is not rounded into acceptance. No canonical/source certification or publication approval. JSON represents signed zero as zero."
+            ],
+            "catalogId": 381,
+            "limitations": "Ideal supplied battery Wh times efficiency fraction divided by W. No manufacturer curve, ratedVA or inferred power factor; unsupported precision is refused for new captures.",
+            "methodology": [
+              {
+                "id": "ups-runtime-calculator",
+                "expression": "Runtime (h) = battery Wh × efficiency ÷ load W",
+                "description": "Simplified UPS runtime from battery energy, load and explicit efficiency."
+              }
+            ],
+            "enteredInput": {
+              "batteryWh": "600",
+              "loadWatts": "300",
+              "efficiencyPercent": "90"
+            }
+          }
+        },
+        {
+          "ok": false,
+          "error": "Inputs violate the original domain or current capture precision boundary",
+          "index": 1
+        }
+      ],
+      "acceptedPostUnits": 2,
+      "getUsageDelta": 0,
+      "duplicateJobAndEvent": true,
+      "conflict409": true,
+      "configuredQuota429": true,
+      "crossTenantGet404": true,
+      "crossTenantEndpointPost403": true,
+      "wrongScope403": true,
+      "signedAutomation": {
+        "eventId": "eae08eac-ed6a-4dcd-8f04-31572de50bbb",
+        "retries": 2,
+        "bodySHA256": "8872bb4650e4b03e32deede5b2a3eda978eeb960ef1ddbf5689c7824af9df6d7",
+        "exactCatalogEngineVersion": true,
+        "exactEnteredInputsAndStoredRows": true,
+        "hmacVerified": true,
+        "failedThenDelivered": true,
+        "additionalApiUnits": 0
+      },
+      "revokedGetAndPost401": true
+    },
+    {
+      "catalogId": 387,
+      "engineId": "technology.password-entropy",
+      "version": 1,
+      "requestId": "95c9f81a-24ab-4b82-9f51-ecb9f04667c7",
+      "jobId": "e578f3d3-259d-4886-a668-9e7f58e4a6dd",
+      "inputRows": [
+        {
+          "length": "16",
+          "characterPoolSize": "94"
+        },
+        {
+          "length": "-1",
+          "characterPoolSize": "94"
+        }
+      ],
+      "rows": [
+        {
+          "ok": true,
+          "index": 0,
+          "result": {
+            "slug": "password-entropy-calculator",
+            "unit": "bits",
+            "input": {
+              "length": 16,
+              "characterPoolSize": 94
+            },
+            "title": "Password Entropy Calculator",
+            "output": {
+              "steps": [
+                "Password Entropy = 104.8734216268422"
+              ],
+              "value": 104.8734216268422
+            },
+            "sources": [
+              {
+                "url": "https://pages.nist.gov/800-63-4/sp800-63b/passwords/",
+                "note": "NIST cautions that entropy for user-chosen passwords is difficult to estimate; this calculator is only the theoretical uniform-random model.",
+                "label": "NIST SP 800-63B — Passwords"
+              }
+            ],
+            "version": 1,
+            "engineId": "technology.password-entropy",
+            "warnings": [
+              "Registered raw binary64 engine and exact immutable technical revision; refused precision is not rounded into acceptance. No canonical/source certification or publication approval. JSON represents signed zero as zero."
+            ],
+            "catalogId": 387,
+            "limitations": "Theoretical independent uniformly random symbols only: length times log2(pool). No human-password strength, crack time, hashrate or profitability. Registered Math.log2/binary64 convention; no exact-real entropy claim.",
+            "methodology": [
+              {
+                "id": "password-entropy-calculator",
+                "expression": "Entropy bits = length × log2(character pool size)",
+                "description": "Theoretical entropy for uniformly random independent characters drawn from the supplied pool; not an estimate for human-chosen passwords."
+              }
+            ],
+            "enteredInput": {
+              "length": "16",
+              "characterPoolSize": "94"
+            }
+          }
+        },
+        {
+          "ok": false,
+          "error": "Inputs violate the original domain or current capture precision boundary",
+          "index": 1
+        }
+      ],
+      "acceptedPostUnits": 2,
+      "getUsageDelta": 0,
+      "duplicateJobAndEvent": true,
+      "conflict409": true,
+      "configuredQuota429": true,
+      "crossTenantGet404": true,
+      "crossTenantEndpointPost403": true,
+      "wrongScope403": true,
+      "signedAutomation": {
+        "eventId": "e578f3d3-259d-4886-a668-9e7f58e4a6dd",
+        "retries": 2,
+        "bodySHA256": "bac97a1722c3d8bfbc8f277e9ba83a080b80e885c14830cf2d442fb66c06b500",
+        "exactCatalogEngineVersion": true,
+        "exactEnteredInputsAndStoredRows": true,
+        "hmacVerified": true,
+        "failedThenDelivered": true,
+        "additionalApiUnits": 0
+      },
+      "revokedGetAndPost401": true
+    }
+  ],
+  "workerSources": {
+    "src/lib/native-delivery/technology-five-webhook-worker.ts": {
+      "source": "9ea8e2235cce7924a58fffee2eaa8c5e71f4c0090fb80f3ced4ec734d15ecea1",
+      "copy": "9ea8e2235cce7924a58fffee2eaa8c5e71f4c0090fb80f3ced4ec734d15ecea1",
+      "equal": true
+    },
+    "src/lib/native-delivery/technology-five-webhook-storage.ts": {
+      "source": "4eff39b848cfbbd1f8680ffcf8c8f53b0cece568f46c1f63e3a1235ecdd87b73",
+      "copy": "4eff39b848cfbbd1f8680ffcf8c8f53b0cece568f46c1f63e3a1235ecdd87b73",
+      "equal": true
+    },
+    "src/lib/native-delivery/technology-five-webhook-transport.ts": {
+      "source": "9771e81edd8c3d3761339e7eebfab36b68cc448807662e526e1ea21b3635f43d",
+      "copy": "9771e81edd8c3d3761339e7eebfab36b68cc448807662e526e1ea21b3635f43d",
+      "equal": true
+    },
+    "src/lib/native-delivery/authorization.ts": {
+      "source": "ae132c56b44174a4dd0e04c6f7540ce31fa72ddbae0a8810ddd02d62dca7ed1f",
+      "copy": "ae132c56b44174a4dd0e04c6f7540ce31fa72ddbae0a8810ddd02d62dca7ed1f",
+      "equal": true
+    },
+    "src/lib/native-delivery/technology-five-publication.ts": {
+      "source": "82dac8f425f19b052626230a58fdfd3a077def95710f676c7a3c5bfa253ccda6",
+      "copy": "82dac8f425f19b052626230a58fdfd3a077def95710f676c7a3c5bfa253ccda6",
+      "equal": true
+    },
+    "src/lib/native-delivery/technology-five-catalog.ts": {
+      "source": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d",
+      "copy": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d",
+      "equal": true
+    },
+    "src/lib/native-delivery/technology-next-catalog.ts": {
+      "source": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+      "copy": "6e6c0cdca34a7d084c3baeaa64e639aba790853ca2ef0ecfa17faae800369cc6",
+      "equal": true
+    },
+    "src/lib/api/webhooks.ts": {
+      "source": "0a75c8431836094c883d2a264f268cc830c528f0d80dbed7acf700e33852c502",
+      "copy": "0a75c8431836094c883d2a264f268cc830c528f0d80dbed7acf700e33852c502",
+      "equal": true
+    },
+    "src/lib/api/auth.ts": {
+      "source": "23eef47ea55064508a0cdf3c1c10122150546f4de84a6e5af4237a37264ec391",
+      "copy": "23eef47ea55064508a0cdf3c1c10122150546f4de84a6e5af4237a37264ec391",
+      "equal": true
+    },
+    "src/lib/supabase/admin.ts": {
+      "source": "5c7442ff03ff0080836d7cf9212edd8df1ec31883d4d9757a53cc855914a9d92",
+      "copy": "5c7442ff03ff0080836d7cf9212edd8df1ec31883d4d9757a53cc855914a9d92",
+      "equal": true
+    },
+    "src/lib/env.ts": {
+      "source": "4dd36d25e0be3f7a62d2a75b4a927d433180d7f860285adc65494626c790d559",
+      "copy": "4dd36d25e0be3f7a62d2a75b4a927d433180d7f860285adc65494626c790d559",
+      "equal": true
+    }
+  },
+  "workerBundleSHA256": "7754d98b1bd633aa97d95c93c9286d8866dbe9cd34e383f06918c0511bea4d57",
+  "scope": "Actual production HTTP batch routes and source webhook worker with real isolated GoTrue/PostgREST/Postgres. Explicit local HTTP receiver transport and synthetic lower publication reader only.",
+  "productionWrites": false,
+  "certificationGranted": false,
+  "releaseHold": true
+}

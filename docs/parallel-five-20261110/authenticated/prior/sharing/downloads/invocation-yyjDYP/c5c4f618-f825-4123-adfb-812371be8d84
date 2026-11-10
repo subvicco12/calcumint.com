@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "battery-runtime-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "loadWatts": 200,
+        "capacityWh": 1000,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "Battery Runtime = 4.5"
+        ],
+        "value": 4.5
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "loadWatts": 200,
+        "capacityWh": 2000,
+        "efficiencyPercent": 90
+      },
+      "output": {
+        "steps": [
+          "Battery Runtime = 9"
+        ],
+        "value": 9
+      }
+    }
+  ]
+}

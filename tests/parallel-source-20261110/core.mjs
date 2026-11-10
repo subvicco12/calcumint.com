@@ -9,6 +9,12 @@ import {verifyParallelAuthority} from './authority.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const capturePath='docs/parallel-source-20261110/capture-revision2.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
+const immutableCaches=new WeakMap();
+function currentGit(source){
+ const head=source(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[0-9a-f]{40}$/);
+ let cache=immutableCaches.get(source);if(!cache){cache=new Map();immutableCaches.set(source,cache);}
+ return args=>{const exact=args.map(a=>a.startsWith('HEAD:')?head+a.slice(4):a);if(exact.some(a=>a==='HEAD'||a.startsWith('HEAD^')))return source(exact);const key=JSON.stringify(exact);if(!cache.has(key))cache.set(key,source(exact));return cache.get(key);};
+}
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
 function sourceRecord(record,read,git){
  assert.equal(typeof record.path,'string');assert(!isAbsolute(record.path)&&!record.path.split('/').includes('..'));
@@ -20,6 +26,7 @@ function sourceRecord(record,read,git){
  assert(read(record.path).equals(expected),'Current target source differs; Independent current target bytes differ: '+record.path);
 }
 export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRows){
+ git=currentGit(git);
  verifyParallelAuthority(read,git);
  const capture=JSON.parse(read(capturePath));assert.equal(capture.baselineRef,baselineRef);assert.equal(capture.appRef,appRef);assert.equal(capture.productionWrites,false);assert.equal(capture.historicalRecordsEdited,false);
  const baseline=retainedA7Proof();assert.deepEqual(capture.retainedReads,baseline.rows,'Original R5 read closure differs');

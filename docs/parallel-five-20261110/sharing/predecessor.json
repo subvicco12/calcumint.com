@@ -1,0 +1,95 @@
+{
+  "functions": [
+    {
+      "signature": "technology_next_sharing_capability(uuid)",
+      "definition": "CREATE OR REPLACE FUNCTION public.technology_next_sharing_capability(target_org uuid)\n RETURNS text\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\n SELECT CASE WHEN auth.uid() IS NOT NULL AND EXISTS(\n  SELECT 1 FROM public.organization_members m JOIN public.organizations o ON o.id=m.organization_id\n  JOIN public.profiles owner_plan ON owner_plan.id=o.owner_user_id\n  JOIN public.profiles actor_plan ON actor_plan.id=m.user_id\n  WHERE m.organization_id=target_org AND m.user_id=auth.uid()\n  AND m.role IN('owner','admin','manager','member','viewer') AND owner_plan.plan='business' AND actor_plan.plan='business'\n ) THEN 'technology-next-sharing-private-1' ELSE NULL END;\n$function$\n",
+      "sha256": "75e50600b2492787ed8a4acb1886a4f68d055dc9b58f2673ead5b81bbe35e717"
+    },
+    {
+      "signature": "technology_next_shared_immutable()",
+      "definition": "CREATE OR REPLACE FUNCTION public.technology_next_shared_immutable()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\nBEGIN RAISE EXCEPTION 'Shared snapshots are immutable; capture a new request'; END $function$\n",
+      "sha256": "b4ab3327e7aab84127c562ff6bd7763308e229c24c4142ebc041f7e193443f18"
+    },
+    {
+      "signature": "share_technology_next_snapshot(uuid,jsonb)",
+      "definition": "CREATE OR REPLACE FUNCTION public.share_technology_next_snapshot(actor_id uuid, request_payload jsonb)\n RETURNS uuid\n LANGUAGE plpgsql\n SET search_path TO 'pg_catalog', 'public'\nAS $function$\nDECLARE org uuid; project uuid; client uuid; req uuid; item jsonb; existing public.technology_next_shared_snapshots%rowtype; result uuid; role_name text;\nBEGIN\n IF current_user<>'service_role' THEN RAISE EXCEPTION 'Server verified sharing required'; END IF;\n IF jsonb_typeof(request_payload) IS DISTINCT FROM 'object' OR octet_length(request_payload::text)>65536\n OR (SELECT count(*) FROM jsonb_object_keys(request_payload))<>6\n OR NOT request_payload ?& ARRAY['organizationId','projectId','clientWorkspaceId','requestId','title','snapshot'] THEN RAISE EXCEPTION 'Invalid sharing request'; END IF;\n IF jsonb_typeof(request_payload->'title') IS DISTINCT FROM 'string'\n OR jsonb_typeof(request_payload->'clientWorkspaceId') NOT IN('string','null') THEN RAISE EXCEPTION 'Invalid sharing request'; END IF;\n org:=(request_payload->>'organizationId')::uuid;project:=(request_payload->>'projectId')::uuid;\n client:=(request_payload->>'clientWorkspaceId')::uuid;req:=(request_payload->>'requestId')::uuid;item:=request_payload->'snapshot';\n IF actor_id IS NULL OR org IS NULL OR project IS NULL OR req IS NULL THEN RAISE EXCEPTION 'Sharing identity required'; END IF;\n PERFORM 1 FROM public.organizations WHERE id=org FOR UPDATE;\n IF NOT FOUND THEN RAISE EXCEPTION 'Organization unavailable'; END IF;\n SELECT m.role INTO role_name FROM public.organization_members m WHERE m.organization_id=org AND m.user_id=actor_id FOR SHARE;\n IF role_name IS NULL OR role_name NOT IN('owner','admin','manager','member') THEN RAISE EXCEPTION 'Sharing role required'; END IF;\n PERFORM 1 FROM public.profiles p WHERE p.id=actor_id AND p.plan='business' FOR SHARE;\n IF NOT FOUND THEN RAISE EXCEPTION 'Business plan required'; END IF;\n PERFORM 1 FROM public.profiles p JOIN public.organizations o ON o.owner_user_id=p.id WHERE o.id=org AND p.plan='business' FOR SHARE OF p;\n IF NOT FOUND THEN RAISE EXCEPTION 'Business organization required'; END IF;\n PERFORM 1 FROM public.business_projects WHERE id=project AND organization_id=org AND status='active' FOR SHARE;\n IF NOT FOUND THEN RAISE EXCEPTION 'Project unavailable'; END IF;\n IF client IS NOT NULL THEN\n  PERFORM 1 FROM public.client_workspaces WHERE id=client AND organization_id=org AND (project_id IS NULL OR project_id=project) FOR SHARE;\n  IF NOT FOUND THEN RAISE EXCEPTION 'Client workspace unavailable'; END IF;\n END IF;\n IF jsonb_typeof(item) IS DISTINCT FROM 'object' OR (SELECT count(*) FROM jsonb_object_keys(item))<>4\n OR NOT item ?& ARRAY['calculatorSlug','calculatorVersion','input','output'] OR jsonb_typeof(item->'calculatorVersion') IS DISTINCT FROM 'number'\n OR NOT ((item->>'calculatorSlug'='website-bandwidth-calculator' AND item->'calculatorVersion'='2'::jsonb) OR (item->>'calculatorSlug'<>'website-bandwidth-calculator' AND item->'calculatorVersion'='1'::jsonb))\n OR jsonb_typeof(item->'calculatorSlug') IS DISTINCT FROM 'string'\n OR item->>'calculatorSlug' NOT IN('storage-conversion-calculator','aspect-ratio-calculator','resolution-calculator','dpi-calculator','power-supply-calculator','website-bandwidth-calculator','cloud-storage-cost-calculator','cloud-data-transfer-cost-calculator')\n OR jsonb_typeof(item->'input') IS DISTINCT FROM 'object' OR jsonb_typeof(item->'output') IS DISTINCT FROM 'object'\n OR char_length(request_payload->>'title') NOT BETWEEN 1 AND 240 THEN RAISE EXCEPTION 'Unsupported shared snapshot'; END IF;\n SELECT * INTO existing FROM public.technology_next_shared_snapshots s\n WHERE s.organization_id=org AND s.created_by=actor_id AND s.request_id=req;\n IF FOUND THEN\n  IF existing.request_payload IS DISTINCT FROM request_payload THEN RAISE EXCEPTION 'Sharing request conflicts with original snapshot'; END IF;\n  RETURN existing.id;\n END IF;\n INSERT INTO public.technology_next_shared_snapshots(organization_id,project_id,client_workspace_id,created_by,request_id,title,calculator_slug,calculator_version,input_data,output_data,request_payload)\n VALUES(org,project,client,actor_id,req,request_payload->>'title',item->>'calculatorSlug',(item->>'calculatorVersion')::integer,item->'input',item->'output',request_payload) RETURNING id INTO result;\n INSERT INTO public.organization_audit_log(organization_id,actor_user_id,action,entity_type,entity_id,metadata)\n VALUES(org,actor_id,'technology-next.snapshot.shared','technology-next-shared-snapshot',result::text,jsonb_build_object('calculatorSlug',item->>'calculatorSlug','calculatorVersion',(item->>'calculatorVersion')::integer,'projectId',project,'clientWorkspaceId',client));\n RETURN result;\nEND $function$\n",
+      "sha256": "dc127841824e0ba8f5c082f31c09c523084888d8a86807a276843a16f81c0e7c"
+    }
+  ],
+  "constraints": [
+    {
+      "name": "technology_next_identity",
+      "definition": "CHECK ((((calculator_slug = 'website-bandwidth-calculator'::text) AND (calculator_version = 2)) OR ((calculator_slug <> 'website-bandwidth-calculator'::text) AND (calculator_version = 1))))",
+      "sha256": "7142fe4f9bbf30a88fc53abb3c805cb936a9b9682d8f1c9f89050813451fbb15"
+    },
+    {
+      "name": "technology_next_shared_snapsh_client_workspace_id_organiza_fkey",
+      "definition": "FOREIGN KEY (client_workspace_id, organization_id) REFERENCES client_workspaces(id, organization_id) ON DELETE RESTRICT",
+      "sha256": "8d08007fc45dbb5c4c24490572ad4a731198a95c5b9e18fba0a41ee22bbc53d5"
+    },
+    {
+      "name": "technology_next_shared_snapsh_organization_id_created_by_re_key",
+      "definition": "UNIQUE (organization_id, created_by, request_id)",
+      "sha256": "2bd62a375e9346ee8dd58655bf7527be55627b59fd50b10bac266e40fd1343b4"
+    },
+    {
+      "name": "technology_next_shared_snapshot_project_id_organization_id_fkey",
+      "definition": "FOREIGN KEY (project_id, organization_id) REFERENCES business_projects(id, organization_id) ON DELETE RESTRICT",
+      "sha256": "5d7196983f7f3291f902a88906fee813460006323339413b2b518fce44d986cb"
+    },
+    {
+      "name": "technology_next_shared_snapshots_calculator_slug_check",
+      "definition": "CHECK ((calculator_slug = ANY (ARRAY['storage-conversion-calculator'::text, 'aspect-ratio-calculator'::text, 'resolution-calculator'::text, 'dpi-calculator'::text, 'power-supply-calculator'::text, 'website-bandwidth-calculator'::text, 'cloud-storage-cost-calculator'::text, 'cloud-data-transfer-cost-calculator'::text])))",
+      "sha256": "0ed37a5ba04ae1beec212f54945cbb9bf1dba0603a0f5efd6967c3142db06d14"
+    },
+    {
+      "name": "technology_next_shared_snapshots_created_by_fkey",
+      "definition": "FOREIGN KEY (created_by) REFERENCES auth.users(id) ON DELETE RESTRICT",
+      "sha256": "449c33b77cecbf758650c7bd90a4155b8c1a300e5d186bc47d2743bc85fa9b8f"
+    },
+    {
+      "name": "technology_next_shared_snapshots_input_data_check",
+      "definition": "CHECK ((jsonb_typeof(input_data) = 'object'::text))",
+      "sha256": "9a46309ef6f31ac3376ec060f4948677a15e1b2d54e25d92ff0866e622d6cbc0"
+    },
+    {
+      "name": "technology_next_shared_snapshots_organization_id_fkey",
+      "definition": "FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE RESTRICT",
+      "sha256": "2f9addcdd9d1e069954a53471202703fa2d13fd2931d316c9fa9d708ce1cfa10"
+    },
+    {
+      "name": "technology_next_shared_snapshots_output_data_check",
+      "definition": "CHECK ((jsonb_typeof(output_data) = 'object'::text))",
+      "sha256": "bb1e357ef76c12b4d88d7c07a3308ca2378389a81f51d7ecc89a0dbcd07f3865"
+    },
+    {
+      "name": "technology_next_shared_snapshots_pkey",
+      "definition": "PRIMARY KEY (id)",
+      "sha256": "8c8464f42472e42ee190fc91ca8db79b5351d3a4609040516578d229c56f6fa5"
+    },
+    {
+      "name": "technology_next_shared_snapshots_request_payload_check",
+      "definition": "CHECK ((octet_length((request_payload)::text) <= 65536))",
+      "sha256": "8916617c7b9ef1b7c428447303e423afaddc98347927e5f06c9084ba7110319b"
+    },
+    {
+      "name": "technology_next_shared_snapshots_title_check",
+      "definition": "CHECK (((char_length(title) >= 1) AND (char_length(title) <= 240)))",
+      "sha256": "dc065b5e20eb4d212aaaba88c0a05f660659b0c414db4f20205886c336417450"
+    }
+  ],
+  "policies": [
+    {
+      "schemaname": "public",
+      "tablename": "technology_next_shared_snapshots",
+      "policyname": "technology_next_shared_member_read",
+      "permissive": "PERMISSIVE",
+      "roles": [
+        "authenticated"
+      ],
+      "cmd": "SELECT",
+      "qual": "(technology_next_sharing_capability(organization_id) = 'technology-next-sharing-private-1'::text)",
+      "with_check": null
+    }
+  ]
+}
