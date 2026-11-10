@@ -16,7 +16,7 @@ export function CatalogEngineeringReview(){
  const row=inventory.rows.find(r=>r.masterId===id),definition=businessContracts.find(d=>d.id===`private.business.${id}`);
  const invalidate=()=>{setSnapshot(null);setError('');};
  let guidedInput:Record<string,unknown>|null=null;
- if(supportsGuidedBusiness(id)&&input.length<=1_000_000){try{guidedInput=parsePublicationFactoryInput(input);}catch{/* Invalid JSON remains editable; it cannot seed a guided calculation. */}}
+ if(supportsGuidedBusiness(id)&&input.length<=1_000_000){try{const parsed=parsePublicationFactoryInput(input);if(parsed&&typeof parsed==='object'&&!Array.isArray(parsed))guidedInput=parsed as Record<string,unknown>;}catch{/* Invalid JSON remains editable; it cannot seed a guided calculation. */}}
  function choose(n:number){setGuidedRevision(n=>n+1);setId(n);setInput(businessExamples[n]?json(businessExamples[n]):'');invalidate();}
  function find(q:string,c=filter){setSearch(q);setFilter(c);const visible=inventory.rows.filter(r=>matches(r,q)&&(c==='ALL'||r.implementationClass===c));if(!visible.some(r=>r.masterId===id))choose(visible[0]?.masterId??-1);}
  function calculate(){invalidate();try{if(input.length>1_000_000)throw Error('Scenario size limit');setSnapshot(exportBusinessContract(id,parsePublicationFactoryInput(input),plan));}catch{setError('Check the required supplied business scope, units, denominators, membership, identities and numerical bounds.');}}
