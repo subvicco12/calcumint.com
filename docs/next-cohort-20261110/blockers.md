@@ -17,3 +17,13 @@ This continuation does not replace the existing operator or reviewer packages. N
 The canonical Drive protocol/index was reread through authenticated access. The index is explicitly a2026-11-05 discovery snapshot, not a live assignment register or an approval authority. Neither an old zero-assignment observation nor a search result proves that no qualified human exists.
 
 Shortest first-live critical path remains #440 competent acceptance plus operator evidence in parallel, followed by separately authorized compatible adoption/deployment and protected certification/publication. New engineering can continue while these gates remain pending. Newly publication-eligible calculators established by this sprint:0. RELEASE HOLD remains active.
+
+## Final continuation checkpoint —2026-11-10
+
+For377/378/379 there is no remaining demonstrated current-contract application defect after the capture/domain, DPI context and scientific-value mobile containment corrections. Their engineering status remains **CANDIDATE_PENDING_FINAL_VALIDATION**, not complete: revision3 literal source admission/focused guards, fresh full-current source-bound genuine native8/personal6 results, final full regression and all exact-head CI jobs/aggregate remain pending at this written checkpoint. Root will retain actual results; the earlier8967pass/4skip/1fail run is not relabelled green. Its missing retained source fixture was restored, but the rerun remains a separate required observation.
+
+For374/382/383v2/384/385, individual genuine team/template/comparison UI acceptance is still an actual engineering evidence gap. Shared backend8/individual personal acceptance and priority-three team proof do not close those five individual workflows. Source/applicability decisions alone do not explain these remaining software-proof gaps.
+
+The rejected conditional stale-source verifier proposal was not executed. New direct full-current source-bound acceptance is the safe replacement; retained authentic receipts and their original source expectations remain immutable. No source guard bypass or historical re-signing is authorized. Formal canonical/source/competent decisions for all eight and the unsigned first five remain unapproved regardless of eventual engineering green.
+
+No fresh production RPC/schema, reviewer appointment, writer roster, backup, credential or deployment observation was made for this report. Previously dated absence/preimage/role-count evidence remains dated, not current attestation. Actual authorized parties must provide the facts and actions in the table above. Existing #440 appointment handoff remains the minimum unchanged first-live reviewer action; this continuation appoints nobody and grants no lifecycle approval.

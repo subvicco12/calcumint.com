@@ -1,0 +1,41 @@
+# Next technology cohort — conditional engineering checkpoint
+
+Continuation of PR1538 from green baseline1ec63cd11626df15063546c7e5bfedecec33f6ee, CI42693180061 (retained baseline-ci.json). This report does **not** declare the continuation's final exact-head CI green. Frozen application source is2d0e2622292930d1992813998608d933ddf5024e; source-successor revision3 code isfc4fee08, with final reviewed literal admission, tests and CI pending at this report checkpoint. Runtime changes are isolated from canonical decisions and held proposals remain outside active migrations.
+
+| Exact contract | Current engineering disposition |
+|---|---|
+|377 technology.aspect-ratio@1|Candidate for current-contract ENGINEERING_COMPLETE only after final validation|
+|378 technology.resolution@1|Candidate for current-contract ENGINEERING_COMPLETE only after final validation|
+|379 technology.dpi@1|Candidate for current-contract ENGINEERING_COMPLETE only after final validation|
+|374 storage@1;382 power supply@1;383 website bandwidth@2;384 storage cost@1;385 transfer cost@1|PARTIAL: individual genuine team/template/comparison UI acceptance remains missing|
+
+Canonical540 dispositions remain0complete/certified,2implemented/review-pending,495partial/unproven,43identity/scope-blocked. No status for the other identities is invented. Newly certified or publication-eligible calculators:0. These software candidates are not canonical acceptance, a competent-source signature, certification or deployment authorization.
+
+## Scope and implementation
+
+All eight retain original supplied-input engines, schemas and technical versions. Storage offers only B/KiB/MiB/GiB/TiB; aspect is numeric width/height; resolution retains positive fractional dimensions; DPI is supplied pixels/inches; power supply uses user-selected headroom0–500percent; website383 is decimal SI monthly transfer at existing version2; cloud costs multiply supplied quantities/prices without provider tiers/tax/currency policy. No named aspect reduction, hardware recommendation, physical printer/display equivalence or old383v1 upgrade is inferred.
+
+The new companion reuses original engines for relationship samples/tables, sensitivity, bounded forward-verified goals and local100row batch/JSON/CSV replay. It preserves row refusals and prevents partial exports. Central plan capabilities govern advanced presentation while primary accuracy stays identical. Current capture refuses positive subnormal inputs/output and false-zero/unsupported precision; historical replay remains immutable. A demonstrated unit-basis website inverse underflow and primary-validation wiring mismatch were corrected with retained RED→GREEN regressions. Zero-price goals now represent zero separately from the supported normal interval rather than imply one unique inverse.
+
+Current DPI display now consistently says Linear pixel density/pixels per inch in primary, reconciliation and new scenario/export context. Original engine output/steps/version and historical stored display metadata remain unchanged. Recorded storage enums determine scenario units; comparisons separate differing target units and reject conflicting imported metadata. Recovery verifies original comparison bytes before enriching only a separate working copy.
+
+Native composition adds only the exact eight tuples to the original-five namespace;383@2 alone admits version2. Existing issuer/key/current owner+actor Business authority, repository+hosted publication gates, quota, persisted signed origin-bound grants, RPC-only jobs/outbox/audit and worker protections remain. New tuple/disable SQL is held and exact-preimage bound. Shared sibling storage independently fences member role/current actor+owner plans/tenant project+client, immutable idempotent requests and exact registered replay. Original-five default routes/readers remain explicit; cohort=next is narrowly selected and unknown query forms refuse.
+
+## Observed acceptance, with source limits
+
+- Retained native127 scoped tests and actual PostgreSQL9 boundary checks plus5 supplemental fault/lease checks. Exact frozen SQL/predecessor and prior record/source preservation were independently reviewed. Synthetic lower publication availability and fixture result records are disclosed; SQL checks do not claim mathematical or production qualification.
+- Genuine isolated original-eight personal24journeys/64native files; new current-caller storage/DPI6journeys/20files cover the affected caller/unit-context changes. Original receipts keep original source hashes. Fresh current native8 and personal6 proof against full direct current-source pins is running at this checkpoint; its outcome must be recorded separately, not predicted here.
+- Genuine priority-three team templates and A/B comparisons,26completed native files, Member/Viewer reads, plan/tenant/write negatives, tamper/recovery and live permission revocation. Actual JSON inputs/outputs and exact stored artifact hashes were independently inspected. The other five do not inherit these individual UI proofs.
+- Local browser24journeys/48JSON+CSV files cover the eight across3plans; account transport is explicitly synthetic in that UI lane. It does not substitute for genuine authentication proof.
+- A later actual320px scientific-value probe exposed mobile overflow missed by ordinary examples. Final app2d corrects containment without truncating values or altering calculations. Four final probes in docs/next-cohort-ui-20261110/boundary/final.json (checkpoint6a882788) replace no prior evidence; before/diagnostic/intermediate receipts are preserved.
+- Independent artifact review verified26/64/20file hashes and actual three A/B JSON records. Its parallel sandbox PDF verifier attempts timed out honestly; root then reproduced the exact PDF successfully and ran all three actual verifiers serially with supported permissions, allPASS. Retained logs are validation/team-artifacts-root.log, personal-artifacts-root.log and current-artifacts-root.log. No timeout/assertion was relaxed.
+
+These are finite source-bound isolated observations, not production equivalence, an exhaustive numerical/device universe, a WCAG/PDF-UA certificate or an operating capacity SLA.
+
+## Source integrity and final validation still pending
+
+A proposed conditional stale-auth-source admission was rejected by automatic review and was not executed. The safer chosen path is new genuine full-current verification against all direct current source pins, plus explicit retained historical views for original immutable receipts. Old source expectations are not waived or silently re-signed. Revision3 preserves prior captures/logs and actual intermediate Git objects; its independent fixed anchor must bind the separately committed reviewed code rather than arbitrary mutable HEAD.
+
+The retained full local run is **not green**:8967passed,4skipped,1failed (8972total), as recorded in validation/local-full-before-responsive-fix.log.gz. The failed source-integrity child was diagnosed as a missing retained fixture artifact; restoring it and revising source admission do not retroactively pass that run. The later final-source full regression and all required CI jobs/aggregate must run and succeed. Root will append their exact commands, source SHA, counts and genuine CI evidence at the final checkpoint. No final validation success is claimed here.
+
+Independent reviews are INDEPENDENT-REVIEW.md, review-root.md, review-native.md and review-native-sql.md. The first-five exact-v1 canonical review packets remain unsigned in docs/canonical-five-20261110 (170retained clause associations). Actual source/applicability/risk/precision/competence decisions and operator custody/freeze/recovery/deployment attestations are separate blockers detailed in blockers.md. #440 appointment action is unchanged. RELEASE HOLD remains active; no production query/write, migration activation, merge, deployment or publication is authorized by this report.
