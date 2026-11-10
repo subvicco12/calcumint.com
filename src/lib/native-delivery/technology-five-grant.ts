@@ -1,7 +1,8 @@
+import {technologyNativeTupleShape,isTechnologyNativeTuple} from './technology-native-schema';
 import {createHmac,timingSafeEqual} from 'node:crypto';import {z} from 'zod';import {NativeDeliveryError} from './contract';import {technologyFiveIdentity} from './technology-five-catalog';
 import {nativeOriginSchema} from './grant';
 
-const claims=z.object({purpose:z.literal('calcumint-technology-five-embed-v1'),grantId:z.uuid(),apiKeyId:z.uuid(),organizationId:z.uuid(),issuerId:z.uuid(),catalogId:z.union([z.literal(370),z.literal(371),z.literal(372),z.literal(373),z.literal(386)]),version:z.literal(1),allowedOrigin:nativeOriginSchema,issuedAt:z.number().int().nonnegative(),expiresAt:z.number().int().positive()}).strict();
+const claims=z.object({purpose:z.literal('calcumint-technology-five-embed-v1'),grantId:z.uuid(),apiKeyId:z.uuid(),organizationId:z.uuid(),issuerId:z.uuid(),...technologyNativeTupleShape,allowedOrigin:nativeOriginSchema,issuedAt:z.number().int().nonnegative(),expiresAt:z.number().int().positive()}).strict().refine(isTechnologyNativeTuple,'Unsupported exact Technology tuple');
 export type TechnologyFiveEmbedGrant=z.infer<typeof claims>;
 function signature(body:string,secret:string){if(secret.length<32)throw new NativeDeliveryError(503,'Embed service unavailable');return createHmac('sha256',secret).update(body).digest();}
 export function issueTechnologyFiveGrant(input:Omit<TechnologyFiveEmbedGrant,'purpose'|'issuedAt'|'expiresAt'|'catalogId'|'version'>&{catalogId:number;version:number},secret:string,now=Math.floor(Date.now()/1000)){if(!technologyFiveIdentity(input.catalogId,input.version))throw new NativeDeliveryError(422,'Unsupported exact Technology identity/version');const data=claims.parse({...input,purpose:'calcumint-technology-five-embed-v1',issuedAt:now,expiresAt:now+3600});const body=Buffer.from(JSON.stringify(data)).toString('base64url');return body+'.'+signature(body,secret).toString('base64url');}
