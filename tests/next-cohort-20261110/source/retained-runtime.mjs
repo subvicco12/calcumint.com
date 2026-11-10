@@ -33,8 +33,8 @@ const sources=Object.freeze([
   {
     "path": "src/components/calculator-interactive.tsx",
     "priorSHA256": "8f033f08da04fddfcedf6a230dc4a93aaff97d9c8f69b20bf4e1be0341ddebb6",
-    "currentBlob": "8dd7607740d9bbaa3033a5708554ac53e452cc67",
-    "currentSHA256": "b2ba543cacf4a9b617addcab427cb875b82a2d4f8eb37bf029130b57356a5ef8"
+    "currentBlob": "f21d8bb8b627639c0d55782478b786b1a763748d",
+    "currentSHA256": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755"
   },
   {
     "path": "src/components/technology-five-analysis.tsx",
@@ -155,8 +155,8 @@ const currentContext=Object.freeze([
   },
   {
     "path": "src/components/calculator-interactive.tsx",
-    "blob": "8dd7607740d9bbaa3033a5708554ac53e452cc67",
-    "sha256": "b2ba543cacf4a9b617addcab427cb875b82a2d4f8eb37bf029130b57356a5ef8"
+    "blob": "f21d8bb8b627639c0d55782478b786b1a763748d",
+    "sha256": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755"
   },
   {
     "path": "src/components/technology-five-analysis.tsx",
