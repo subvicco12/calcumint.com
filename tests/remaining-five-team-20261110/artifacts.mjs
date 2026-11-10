@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile} from 'node:fs/promises';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {readBoundedArtifact} from '../first-five-20261109/artifact-file.mjs';
+assert(process.argv.length===2||(process.argv.length===3&&process.argv[2]==='--check'));
+const root=path.resolve('docs/remaining-five-team-20261110'),hash=b=>createHash('sha256').update(b).digest('hex');
+function csv(text){const rows=[];let row=[],field='',quoted=false;for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){row.push(field);field='';}else if(c==='\n'&&!quoted){row.push(field);rows.push(row);row=[];field='';}else if(c!=='\r'||quoted)field+=c;}assert(!quoted);if(field||row.length){row.push(field);rows.push(row);}return rows;}
+const expected={'storage-conversion-calculator':[1024,2048],'power-supply-calculator':[600,1200],'website-bandwidth-calculator':[200,400],'cloud-storage-cost-calculator':[20,40],'cloud-data-transfer-cost-calculator':[45,90]};const version=slug=>slug==='website-bandwidth-calculator'?2:1;
+const receipts=[],checks=[];
+for(const name of ['remaining']){
+ const directory=root,raw=await readFile(directory+'/receipt.json'),r=JSON.parse(raw);assert.equal(r.passed,true);assert.equal(r.rows.length,5);assert.equal(r.native.length,5);
+ for(const [p,h] of Object.entries(r.copiedSourceHashes))assert.equal(h,r.sourceHashes[p]);
+ const producer='tests/remaining-five-team-20261110/workflows.mjs';assert.equal(hash(await readFile(producer)),r.sourceHashes[producer]);
+ assert.equal(r.exports.length,55);
+ for(const item of r.exports){
+  const bytes=await readBoundedArtifact(directory,item.file,item.bytes);assert.equal(hash(bytes),item.sha256);
+  const begins=item.events.filter(e=>e.event==='begin'),ends=item.events.filter(e=>e.state==='completed');assert.equal(begins.length,1);assert.equal(ends.length,1);assert.equal(begins[0].guid,ends[0].guid);assert.equal(begins[0].suggestedFilename,item.filename);assert.equal(ends[0].receivedBytes,item.bytes);assert.equal(ends[0].totalBytes,item.bytes);for(const event of item.events)assert(!Object.hasOwn(event,'url'));
+  const slug=item.tag.startsWith('comparison:')?item.tag.split(':')[1]:item.tag.split(':')[1];
+  assert(Object.hasOwn(expected,slug));const pair=expected[slug];
+  if(!item.tag.startsWith('comparison:')){
+   const recorded=r.rows.find(row=>row.slug===slug);
+   if(item.filename.endsWith('.json'))assert.deepEqual(JSON.parse(bytes),{calculatorSlug:slug,calculatorVersion:version(slug),input:recorded.input,output:recorded.output});
+   if(item.filename.endsWith('.csv')){const rows=csv(bytes.toString());for(const row of [['identity','calculatorSlug',slug],['identity','calculatorVersion',String(version(slug))],['output','value',String(pair[0])]])assert(rows.some(actual=>JSON.stringify(actual)===JSON.stringify(row)));}
+  }else{
+   const w=r.workflows.find(w=>w.slug===slug);assert(w);assert.equal(w.a.output.value,pair[0]);assert.equal(w.b.output.value,pair[1]);
+   if(item.filename.endsWith('.json')){const report=JSON.parse(bytes);assert.equal(report.calculatorSlug,slug);assert.equal(report.calculatorVersion,version(slug));assert.deepEqual(report.scenarios.map(s=>({slot:s.slot,input:s.input,output:s.output})),[{slot:'A',input:w.a.input,output:w.a.output},{slot:'B',input:w.b.input,output:w.b.output}]);}
+   if(item.filename.endsWith('.csv')){const rows=csv(bytes.toString()),lookup=(section,field)=>rows.find(r=>r[0]===section&&r[1]===field)?.[2];assert.equal(lookup('input','calculatorSlug'),slug);assert.equal(lookup('input','calculatorVersion'),String(version(slug)));const captures=JSON.parse(lookup('output','capturedScenarios'));assert.deepEqual(captures.map(s=>[s.slot,s.output.value]),[['A',pair[0]],['B',pair[1]]]);const metric=rows.find(r=>r[0]==='output'&&/^metric\[\d+\]\.field$/.test(r[1])&&r[2]==='value')[1].replace(/\.field$/,'');assert.equal(lookup('output',metric+'.A.value'),String(pair[0]));assert.equal(lookup('output',metric+'.B.value'),String(pair[1]));assert.equal(lookup('output',metric+'.B.differenceFromA'),String(pair[1]-pair[0]));}
+  }
+  if(item.filename.endsWith('.pdf')){
+   const text=execFileSync('pdftotext',['-layout','-','-'],{input:bytes,encoding:'utf8',timeout:10000,maxBuffer:1024*1024}),compact=text.replace(/\s+/g,'');assert(compact.includes('Calculator:'+slug+'|Engineversion:'));assert.deepEqual([...compact.matchAll(/Engineversion:(\d+)/g)].map(m=>Number(m[1])),[version(slug)]);
+   if(item.tag.startsWith('comparison:'))for(let i=0;i<2;i++){const escaped='output\\["capturedScenarios"\\]\\['+i+'\\]\\["output"\\]\\["value"\\]=(-?\\d+(?:\\.\\d+)?(?:e[+-]?\\d+)?)';assert.deepEqual([...compact.matchAll(new RegExp(escaped,'g'))].map(m=>Number(m[1])),[pair[i]],'Complete scenario PDF raw value');}
+   else assert.deepEqual([...text.matchAll(/^\s*output\["value"\]\s*=\s*([^\r\n]+)\s*$/gm)].map(m=>m[1].trim()),[String(pair[0])]);
+  }
+  checks.push({scope:name,file:item.file,sha256:item.sha256,tag:item.tag});
+ }
+ if(name==='remaining'){assert.equal(r.layouts.length,10);for(const slug of Object.keys(expected))for(const [stage,width] of [['template',360],['comparison',320]]){const rows=r.layouts.filter(row=>row.slug===slug&&row.stage===stage);assert.equal(rows.length,1);assert.equal(rows[0].configuredWidth,width);assert.equal(rows[0].innerWidth,width);assert.equal(rows[0].scrollWidth,width);}
+ assert.equal(r.workflows.length,5);for(const w of r.workflows){assert.equal(w.version,version(w.slug));assert(w.templateClone&&w.recovered&&w.tamperRejected);assert.deepEqual(w.values,expected[w.slug].map(String));}}
+ receipts.push({scope:name,sha256:hash(raw),exports:r.exports.length,rawLogSha256:hash(await readFile(directory+'/raw.log')),producerSha256:r.sourceHashes[producer]});
+}
+const report=JSON.stringify({passed:true,kind:'BOUNDED_BUSINESS_SHARING_ARTIFACT_CHECK',receipts,completedDownloads:55,finalNativeTemplateClones:5,finalNativeComparisons:5,verifierSha256:hash(await readFile('tests/remaining-five-team-20261110/artifacts.mjs')),readerSha256:hash(await readFile('tests/first-five-20261109/artifact-file.mjs')),checks,limits:['Finite disposable candidate-schema proof, not production equivalence or canonical/source approval','Current copied source hashes bind the remaining374/382/383v2/384/385 team template/comparison UI only; prior three receipts remain separate']},null,2)+'\n';
+if(process.argv[2]==='--check')assert.equal(await readFile(root+'/verification.json','utf8'),report);else await writeFile(root+'/verification.json',report);
+console.log('PASS 55 completed native files; five remaining current template clones/comparisons/recoveries; exact JSON/CSV/PDF identities/version/values; source-copy/producer hashes');
