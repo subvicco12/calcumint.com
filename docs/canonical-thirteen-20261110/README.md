@@ -71,3 +71,5 @@ PYTHONDONTWRITEBYTECODE=1 python docs/canonical-thirteen-20261110/test_packets.p
 ```
 
 The standalone checker verifies exact Git/native/receipt/CI hashes, all13packet hashes,442clauses,8retained packets and their complete namespaces,117unsigned normalized cells,55actual team file hashes/sizes and31native/11worker current source bindings. Four focused tests reject missing packets/wrong383version, fabricated authority/promotions and dropped or invented normalization dimensions. This is documentary integrity only; no heavy build/application suite/browser/Docker or provider/production query runs in this lane.
+
+Integration scope: the 31-source native receipt is checked against exact retained Git23f2860c, the nominated packet review target. It does not attest a later changed calculator caller. Current caller succession and fresh UI proofs are separate in the next-five/source overlay; no old receipt or expected hash is rewritten.

@@ -91,7 +91,9 @@ def verify_all():
             target=p.parent/file;assert target.resolve()==target and target.is_file();data=target.read_bytes();assert len(data)==item['bytes'] and sha(data)==item['sha256']
     native=load(ROOT/'docs/remaining-five-native-20261110/receipt.json')
     for file,binding in native['workerSources'].items():assert sha((ROOT/file).read_bytes())==binding['source']==binding['copy']
-    for file,binding in load(ROOT/'docs/remaining-five-native-20261110/build-source-sha256.json').items():assert sha((ROOT/file).read_bytes())==binding['source']
+    # These packets nominate the exact retained23 review target. The old native
+    # receipt proves that Git snapshot, not a later caller; current R4/UI proof is separate.
+    for file,binding in load(ROOT/'docs/remaining-five-native-20261110/build-source-sha256.json').items():assert sha(git('show',CHECKPOINT+':'+file))==binding['source']
     return True
 if __name__=='__main__':
-    verify_all();print('PASS13exact packets/8byte-preserved+5new;442clauses;102recorded decisions/117normalized UNAPPROVED cells; exact23 Git+officialCI42797848774+55teamfiles+31native/11worker bindings. No approval/adoption determination.')
+    verify_all();print('PASS13exact packets/8byte-preserved+5new;442clauses;102recorded decisions/117normalized UNAPPROVED cells; exact23 Git+officialCI42797848774+55teamfiles+retained23 31native/11worker bindings. No approval/adoption determination.')
