@@ -42,7 +42,7 @@ Source integrity, genuine isolated execution and independently checked artifact 
 
 ## Final integrated evidence readback
 
-This appendix supersedes the earlier **pending new-harness result** only; it does not rewrite earlier observations or transform failed campaigns into passing runs. Read-only review used integrated canonical packet commit `510aec99`, native evidence lane `5b383…` and team packet `953dc7fc`. No application, guard or source-binding data was edited or advanced by this review. No new browser, authentication, Docker, production-build or hosted-database execution was performed here.
+This appendix supersedes the earlier **pending new-harness result** only; it does not rewrite earlier observations or transform failed campaigns into passing runs. Read-only review used integrated canonical packet commit `510aec99f0364275444caf6833c62d44768c0f94`, native evidence commit `b383fc51ad0baf4c1c60f973fc98ed9630c7d3dc` and team packet `953dc7fc6ac9a17c7850f8c839d8dedf3a23940d`. No application, guard or source-binding data was edited or advanced by this review. No new browser, authentication, Docker, production-build or hosted-database execution was performed here.
 
 ### Three unsigned canonical review targets
 
