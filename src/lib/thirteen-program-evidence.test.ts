@@ -56,9 +56,17 @@ it('preserves the earlier R4 UI evidence as historical exact Git evidence, never
   for(const d of r.downloads){const path=base+d.file;expect(hash(readFileSync(path))).toBe(d.sha256);expect(hash(execFileSync('git',['show',ref+':'+path]))).toBe(d.sha256);}
  }
 });
-it('keeps the540 canonical rows unchanged and the thirteen-complete engineering overlay separate from five partial advances',()=>{
+it('keeps the540 canonical fields unchanged and the thirteen-complete engineering overlay separate from five partial advances',()=>{
  const r=read('docs/thirteen-program-20261110/requirements-540.json'),parent=read(r.parentLedger);
- expect(r.rows).toEqual(parent.rows);expect(r.rows).toHaveLength(540);expect(new Set(r.rows.map((x:{masterId:number})=>x.masterId)).size).toBe(540);
+ expect(r.rows).toHaveLength(540);expect(new Set(r.rows.map((x:{masterId:number})=>x.masterId)).size).toBe(540);
+ for(let i=0;i<540;i++){
+  const row=r.rows[i],prior=parent.rows[i];
+  if([369,375,380,381,387].includes(row.masterId)){
+   const {inheritedEngineeringAssessment,currentEngineeringEvidence,currentEngineeringBlockers,...retained}=row;
+   expect(inheritedEngineeringAssessment).toBe(prior.engineeringAssessment);expect(row.engineeringAssessment).toBe('BOUNDED_PARTIAL_ADVANCED_NOT_FULL_ENGINEERING_COMPLETE');expect(currentEngineeringEvidence).toMatch(/^docs\/next-five-20261110\/acceptance-five.json#\/rows\/[0-4]$/);expect(currentEngineeringBlockers).toHaveLength(4);
+   expect({...retained,engineeringAssessment:inheritedEngineeringAssessment}).toEqual(prior);
+  }else expect(row).toEqual(prior);
+ }
  expect(hash(readFileSync(r.parentLedger))).toBe(r.parentSHA256);
  expect(r.counts).toEqual({COMPLETE_AND_CERTIFIED:0,IMPLEMENTED_REVIEW_PENDING:2,IMPLEMENTED_TEST_GAPS:0,PARTIALLY_IMPLEMENTED:495,NOT_IMPLEMENTED:0,IDENTITY_OR_SCOPE_BLOCKED:43});
  expect(r.scopedEngineeringCompleteIds).toEqual([370,371,372,373,374,377,378,379,382,383,384,385,386]);expect(r.newScopedEngineeringCompleteIds).toEqual([]);expect(r.additionalPartialIds).toEqual([369,375,380,381,387]);
