@@ -7,42 +7,42 @@ const independentGit=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe
 const fixed=Object.freeze([
   {
     "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-    "ref": "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
+    "ref": "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
     "blob": "7c69021c8cf584823d96c0cfa26a4b7b7c5c8a3d",
     "sha256": "122ac5c5db0884964a7a319ea8f2e62212019cea6088379464dd04bb5a510721"
   },
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-    "ref": "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
-    "blob": "4e1d47d7f762de30c2bff1994cda40becaff6cd1",
-    "sha256": "02c2a9cafb9401f5ad8449344dd59bb7e86081cd9d43c55acdf62014acb5da35"
+    "ref": "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
+    "blob": "2bfc56c5025f131bf1c0b0002b192ec3f2d9b771",
+    "sha256": "c83edf26f67fa5462021257e416ece81a91733f6aa899c030ea517b940d7e58a"
   },
   {
     "path": "tests/next-cohort-20261110/source/current-caller-stage.mjs",
-    "ref": "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
-    "blob": "0edef7e0182b25b094a5396292fba8e1ecab3117",
-    "sha256": "043e5dd66a1650695ccee8353389eb30730c5f99fc993515cc5630fabae1abaa"
+    "ref": "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
+    "blob": "cbd01f8d2fea6a6c5971a3665b43b218d958d15e",
+    "sha256": "99fbaef2af372be6588a4e77a62160970723981bf1c458d060a5cd535b247f3d"
   },
   {
     "path": "tests/publication-workflows-20261109/source-evolution.test.mjs",
-    "ref": "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
+    "ref": "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
     "blob": "7fd4f8575858836e7bb3eaa3d4fcd68715dba84e",
     "sha256": "405f1536d959a4e3bd2d42ad0db44bc5a87f3d8571cde8b054bdba1e72d3ed6e"
   },
   {
     "path": "tests/first-five-20261109/crossed-dependency-source.test.mjs",
-    "ref": "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
+    "ref": "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
     "blob": "9ce252f0af27da8700b3990cd8e443548229f114",
     "sha256": "d512b20bd0074d20ac8d525d7766ecbbaf5379fb42184346a90a53b89763ab2e"
   },
   {
     "path": "tests/next-cohort-20261110/source/caller-stage.test.mjs",
-    "ref": "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
-    "blob": "e47a127a511bbdaab9f61eeabfa00fe782c89df7",
-    "sha256": "cc18149e7d7d27871b0244a25d5e0b341e484580ae5d1d085c0eac03cb622ae0"
+    "ref": "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
+    "blob": "bf6c597ec9d5c56a6dadc92370bc784f4fe46953",
+    "sha256": "e62b3e1098c69cb23753ed834706edd4c3d908841f843f613329260f645241f0"
   }
 ]);
-const captureSHA256='ac4c5551dd3d9029a998672d6f7a1d6f7034d504518285610f2b72a0aba963a8';
+const captureSHA256='0433050bb117e6a6bb622b71965d1e98f8f4f0d47706131147825e6ceaa99102';
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function verifyFixedCallerStageAnchor(capture,read=readFileSync,git=independentGit){
  assert.equal(hash(JSON.stringify(capture)),captureSHA256,'Fixed next caller capture differs');
