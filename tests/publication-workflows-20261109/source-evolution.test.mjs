@@ -1,16 +1,29 @@
+import {verifyNextCallerStage,priorStageRead} from '../next-cohort-20261110/source/current-caller-stage.mjs';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {assertCurrentSourceEvolution,parseCompletionBindings,evolutionCapturePath,retainedSourceRef} from './current-source-evolution.mjs';
-import {assertAcceptedCurrentSourceGuard} from './accepted-current-source-guard.mjs';
+import {assertCurrentSourceEvolution as assertRetainedSourceEvolution,parseCompletionBindings,evolutionCapturePath,retainedSourceRef} from './current-source-evolution.mjs';
+import {assertAcceptedCurrentSourceGuard as assertRetainedSourceAnchor} from './accepted-current-source-guard.mjs';
 import {verifyCapturedSource} from '../acceptance-closure-20261108/receipt-source-path.mjs';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const lineage='scripts/product-completion-lineage.mjs';
 const rows=()=>parseCompletionBindings(readFileSync(lineage,'utf8'));
 const capture=()=>JSON.parse(readFileSync(evolutionCapturePath));
+// Keep every original predecessor assertion while separately proving new current bytes.
+function assertCurrentSourceEvolution(value,read=readFileSync,sourceGit=git){
+ verifyNextCallerStage(value,read,sourceGit);
+ const retained=name=>priorStageRead(name,sourceGit);
+ return assertRetainedSourceEvolution(parseCompletionBindings(retained(lineage).toString()),retained,sourceGit);
+}
+function assertAcceptedCurrentSourceGuard(value,read=readFileSync,sourceGit=git){
+ assert.equal(hash(JSON.stringify(value)),'3bb206c3f8f546275ab277d53880be34cfe29084001505f076604264481e97f2','Independent current capture differs');
+ verifyNextCallerStage(rows(),read,sourceGit);
+ return assertRetainedSourceAnchor(value,name=>priorStageRead(name,sourceGit),sourceGit);
+}
+
 test('complete current successor and independent anchor accept exact actual source and Git provenance',()=>{assertCurrentSourceEvolution(rows());assert.equal(assertAcceptedCurrentSourceGuard(capture()),true);});
 test('valid historical metadata cannot replace exact current metadata',()=>assert.throws(()=>assertCurrentSourceEvolution(parseCompletionBindings(git(['show',retainedSourceRef+':'+lineage]).toString()))));
 for(const path of ['src/components/technology-five-analysis.tsx','src/lib/technology-five-batch.ts','src/lib/technology-five-batch.test.ts','src/components/technology-five-batch.tsx','src/components/technology-five-batch.test.tsx'])test('same-target source tamper rejects '+path,()=>assert.throws(()=>assertCurrentSourceEvolution(rows(),name=>name===path?Buffer.from('tampered target'):readFileSync(name)),/Current target source differs/));

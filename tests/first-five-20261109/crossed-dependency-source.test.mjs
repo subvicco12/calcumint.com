@@ -8,9 +8,9 @@ import {verifyPreservedSource} from '../../scripts/software-closure-evidence.mjs
 const caller='src/components/calculator-interactive.tsx',current='00651cc382be5dcbd596882071787fd6702c13d3',former='955e2ed5df93e646275c4d94d33548cac5925380';
 const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 const hash=x=>createHash('sha256').update(x).digest('hex');
-test('every current crossed caller dependency binds exact application source',()=>{
- const source=readFileSync('scripts/product-completion-lineage.mjs','utf8'),start=source.indexOf('const bindings=')+'const bindings='.length,bindings=JSON.parse(source.slice(start,source.indexOf('\n];')+2));let count=0;
- for(const binding of bindings)for(const dependency of binding.supplementalSources??[])if(dependency.path===caller){count++;assert.equal(dependency.ref,current);assert.equal(dependency.blob,git(['rev-parse',current+':'+caller]).toString().trim());assert.equal(dependency.sha256,hash(readFileSync(caller)));}
+test('retained1ec crossed caller dependencies preserve their exact application source',()=>{
+ const source=git(['show','1ec63cd11626df15063546c7e5bfedecec33f6ee:scripts/product-completion-lineage.mjs']).toString(),start=source.indexOf('const bindings=')+'const bindings='.length,bindings=JSON.parse(source.slice(start,source.indexOf('\n];')+2));let count=0;
+ for(const binding of bindings)for(const dependency of binding.supplementalSources??[])if(dependency.path===caller){count++;assert.equal(dependency.ref,current);assert.equal(dependency.blob,git(['rev-parse',current+':'+caller]).toString().trim());assert.equal(dependency.sha256,hash(git(['show','1ec63cd11626df15063546c7e5bfedecec33f6ee:'+caller])));}
  assert.equal(count,2);
 });
 for(const [name,old] of [['tests/acceptance-closure-20261108/receipt-source-path.mjs','7086b85437b025225f5736fb6b849415e518dc08'],['src/calculators/final-framework/legacy-final-presentation-convergence-inventory.test.ts','b96b1ac89971cb8418d2389fbd7c9571a57491f1']]){

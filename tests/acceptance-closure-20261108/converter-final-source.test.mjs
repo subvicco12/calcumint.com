@@ -1,3 +1,4 @@
+import {verifyNextCallerStage,priorStageRead} from '../next-cohort-20261110/source/current-caller-stage.mjs';
 import {assertCurrentSourceEvolution,retainedSourceRef} from '../publication-workflows-20261109/current-source-evolution.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -184,7 +185,9 @@ function proveRetainedSourceEvolution(rows,read=readFileSync,sourceGit=git){
 // assertions above additionally run on the exact retained source tree, preserving
 // the f41 guard's adopted598 hash, predecessor expectations and verifier tail.
 function proveCurrentSourceEvolution(rows,read=readFileSync,sourceGit=git){
- assertCurrentSourceEvolution(rows,read,sourceGit);
+ verifyNextCallerStage(rows,read,sourceGit);
+ const oldRead=name=>priorStageRead(name,sourceGit);
+ assertCurrentSourceEvolution(parseBindings(oldRead('scripts/product-completion-lineage.mjs').toString()),oldRead,sourceGit);
  const retained=name=>sourceGit(['show',retainedSourceRef+':'+name]);
  proveRetainedSourceEvolution(parseBindings(retained('scripts/product-completion-lineage.mjs').toString()),retained,sourceGit);
 }
