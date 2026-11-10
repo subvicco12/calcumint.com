@@ -1,0 +1,5 @@
+PASS Injected protected function source mismatch refuses the successor and rolls back without additional DDL or row changes
+PASS Injected predecessor constraint mismatch refuses the successor and rolls back without additional DDL or row changes
+PASS Restored exact predecessors permit isolated adoption; a second adoption refuses with the adopted schema and rows intact
+PASS The intact disable hold rejects before changing a seeded queued event, active lease or durable attempt
+PASS Isolated disable cancels queued and leased events, clears leases, terminates unfinished attempts, revokes grants and retains every job/audit identity

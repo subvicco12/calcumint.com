@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "checks": [
+    "Injected protected function source mismatch refuses the successor and rolls back without additional DDL or row changes",
+    "Injected predecessor constraint mismatch refuses the successor and rolls back without additional DDL or row changes",
+    "Restored exact predecessors permit isolated adoption; a second adoption refuses with the adopted schema and rows intact",
+    "The intact disable hold rejects before changing a seeded queued event, active lease or durable attempt",
+    "Isolated disable cancels queued and leased events, clears leases, terminates unfinished attempts, revokes grants and retains every job/audit identity"
+  ],
+  "observations": {
+    "functionMismatch": {
+      "target": "public.technology_five_require_publication_v1(integer,integer)",
+      "beforeSHA256": "2a22f0b8f9069b19ecfd6dea6606308d1c1e5191c9334149ffa2e190cd336ff8",
+      "afterSHA256": "2a22f0b8f9069b19ecfd6dea6606308d1c1e5191c9334149ffa2e190cd336ff8",
+      "noAdditionalSchemaOrRowChange": true
+    },
+    "constraintMismatch": {
+      "target": "technology_five_embed_grants_technical_version_check",
+      "beforeSHA256": "a4e456be08f78ace94827b522d41971a47e732ee836b80b8b61d916a778f65d4",
+      "afterSHA256": "a4e456be08f78ace94827b522d41971a47e732ee836b80b8b61d916a778f65d4",
+      "noAdditionalSchemaOrRowChange": true
+    },
+    "reapply": {
+      "beforeSHA256": "e71ac6cdbd92ceac247cc2478dbc11a7a394b820af1b3498fb7fa9bbc566739d",
+      "afterSHA256": "e71ac6cdbd92ceac247cc2478dbc11a7a394b820af1b3498fb7fa9bbc566739d",
+      "refused": true
+    },
+    "disable": {
+      "queuedBefore": 1,
+      "leasedBefore": 1,
+      "attemptsBefore": 1,
+      "cancelledAfter": 2,
+      "leasesCleared": true,
+      "unfinishedAttemptsFailed": 1,
+      "grantRevoked": true,
+      "immutableIdentitySHA256": "2e0cbaf0f30816a97d65add3d2573e5347c9db7e3c7bfd12775d0b0b95d86455",
+      "immutableIdentityAfterSHA256": "2e0cbaf0f30816a97d65add3d2573e5347c9db7e3c7bfd12775d0b0b95d86455",
+      "dispatchAndCompletionDenied": true
+    }
+  },
+  "sqlSources": {
+    "docs/next-cohort-native-20261110/contract-successor.sql": "aafbbc87dca61581fc68cc6aa1af65022b478879b8c91c4d791fdbba3f36917a",
+    "docs/next-cohort-native-20261110/contract-disable.sql": "b48994306135b103d6d162d45bb94f0b79b7860671e466db2e3004d018494e04"
+  },
+  "producerSHA256": "2c35e47f3401992e9091fcd1dcb3919287779a84d92133392ad93d9df401ae1a",
+  "scope": "Supplemental fault injection and live-lease disable proof in disposable candidate PostgreSQL; synthetic lower publication and fixture results only, no network dispatch or HTTP recall claim.",
+  "existingPacketsEdited": false,
+  "productionWrites": false,
+  "sqlActivated": false,
+  "certificationGranted": false
+}
