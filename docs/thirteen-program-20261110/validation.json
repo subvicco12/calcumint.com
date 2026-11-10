@@ -47,7 +47,7 @@
     381,
     387
   ],
-  "hostedCI": "NOT_STARTED_AT_THIS_REPOSITORY_CHECKPOINT",
+  "hostedCI": "SUCCESSOR_NOT_STARTED_AT_THIS_REPOSITORY_CHECKPOINT",
   "releaseHold": true,
   "productionWrites": false,
   "logs": [
@@ -70,6 +70,31 @@
       "path": "docs/thirteen-program-20261110/validation/cidr-regression-green.log",
       "bytes": 381,
       "sha256": "e457b48ed3e9554ebcb5a0a08f817ca90417388e5aa7a9498232d4289380ebfc"
+    },
+    {
+      "path": "docs/thirteen-program-20261110/validation/cold-bootstrap8-negatives-green.log",
+      "bytes": 750,
+      "sha256": "1cae2534490450101ee093dd8cb3a9a97c88a034198e19724277b30615c77fff"
+    },
+    {
+      "path": "docs/thirteen-program-20261110/validation/cold-bootstrap8-program-tests-green.log",
+      "bytes": 777,
+      "sha256": "129fdd4f9a187199e2e6eed2439197fa88100d43d85da85941040e04fd5993b7"
+    },
+    {
+      "path": "docs/thirteen-program-20261110/validation/cold-fix-lint-green.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/thirteen-program-20261110/validation/cold-fix-typecheck-green.log",
+      "bytes": 45,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    {
+      "path": "docs/thirteen-program-20261110/validation/exact-head-ci-first-source-acceptance-failed.log",
+      "bytes": 415237,
+      "sha256": "cebeeb49fbf5fff8121c2e1b067c81c7707337d3a5b9278cb02f630be4559191"
     },
     {
       "path": "docs/thirteen-program-20261110/validation/full-unit-final-green.log",
@@ -126,5 +151,25 @@
       "bytes": 2793,
       "sha256": "57bf6de5cdb958356a6b9fdc4b4b4920c7bd47e57db70750ca5d3c3f4531673f"
     }
-  ]
+  ],
+  "firstHostedAttempt": {
+    "sourceSHA": "3531d59a62538caed6e0173cefa60abbb7905a05",
+    "runId": 42848070369,
+    "sourceJob": "UNIT_FAILURE_TWO_UNFETCHED_DOCUMENTARY_COMMITS",
+    "passed": 9025,
+    "failed": 2,
+    "skipped": 4,
+    "diagnosis": "Exact40d3c8e0 and531d677e missing from cold checkout; all content assertions preserved",
+    "otherMandatoryJobs": "checks/build/full-product/publication-factory all SUCCESS; aggregate FAILURE as designed"
+  },
+  "coldSourceFix": {
+    "fixedLiteralRevisions": 2,
+    "negativeCasesPassed": 8,
+    "focusedProgramTestsPassed": 8,
+    "genuineHttpsShallow": true,
+    "actualFetches": 2,
+    "warmFetches": 0,
+    "evidenceHashesChanged": false,
+    "appOrR5OrWorkflowChanged": false
+  }
 }

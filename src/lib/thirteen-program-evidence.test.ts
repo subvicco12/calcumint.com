@@ -1,10 +1,18 @@
-import {it,expect} from 'vitest';
+import {beforeAll,it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const hash=(b:Buffer|string)=>createHash('sha256').update(b).digest('hex');
 const env:NodeJS.ProcessEnv={...process.env,PYTHONDONTWRITEBYTECODE:'1'};delete env.NODE_TEST_CONTEXT;
+beforeAll(()=>{
+ const result=JSON.parse(execFileSync(process.execPath,['tests/thirteen-program-20261110/source-bootstrap.mjs'],{encoding:'utf8',env,timeout:130000,maxBuffer:1000000}));
+ expect(result.sourceCommits).toEqual(['40d3c8e03125b9075a273805b6760066ad828b8f','531d677e0cca42d7259d4a2440057ccc74daea86']);expect(result.sourceRevisions).toBe(2);expect(result.productionWrites).toBe(false);
+},140000);
+it('runs all eight finite documentary source bootstrap negative checks',()=>{
+ const output=execFileSync(process.execPath,['tests/thirteen-program-20261110/source-bootstrap.test.mjs'],{encoding:'utf8',env,timeout:30000,maxBuffer:1000000}).replace(/\u001b\[[0-9;]*m/g,'');
+ expect(output).toMatch(/(?:#|ℹ) tests\s+8/);expect(output).toMatch(/(?:#|ℹ) pass\s+8/);expect(output).toMatch(/(?:#|ℹ) fail\s+0/);
+});
 it('retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{
  expect(execFileSync('python',['docs/canonical-thirteen-20261110/verify.py'],{encoding:'utf8',env,timeout:30000})).toContain('PASS13exact packets');
  expect(execFileSync('python',['-m','unittest','discover','-s','docs/canonical-thirteen-20261110','-p','test_*.py'],{encoding:'utf8',env,timeout:30000,stdio:['ignore','pipe','pipe']}).length).toBe(0);
