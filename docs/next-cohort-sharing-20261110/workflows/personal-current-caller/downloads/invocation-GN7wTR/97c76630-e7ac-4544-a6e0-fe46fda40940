@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "dpi-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.dpi@1\n\nLinear pixel/dot density from a supplied pixel count and physical length.\nDPI = pixels ÷ length inches",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "value": 300,
+        "steps": [
+          "DPI = 300"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "dpi-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "pixels": {
+            "label": "Pixels"
+          },
+          "lengthInches": {
+            "label": "Length (in)",
+            "unit": "in"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Linear pixel density",
+            "unit": "pixels/inch"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "methodology": "Deterministic calculation using the reviewed Technology & Computing engine.\nTechnical calculation revision: technology.dpi@1\n\nLinear pixel/dot density from a supplied pixel count and physical length.\nDPI = pixels ÷ length inches",
+      "input": {
+        "pixels": 6000,
+        "lengthInches": 10
+      },
+      "output": {
+        "value": 600,
+        "steps": [
+          "DPI = 600"
+        ]
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "dpi-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "pixels": {
+            "label": "Pixels"
+          },
+          "lengthInches": {
+            "label": "Length (in)",
+            "unit": "in"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Linear pixel density",
+            "unit": "pixels/inch"
+          }
+        }
+      }
+    }
+  ]
+}

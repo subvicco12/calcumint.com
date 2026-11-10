@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "calculatorSlug": "dpi-calculator",
+  "calculatorVersion": 1,
+  "baseline": "A",
+  "scenarios": [
+    {
+      "slot": "A",
+      "notes": "",
+      "input": {
+        "pixels": 3000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 300"
+        ],
+        "value": 300
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "dpi-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "pixels": {
+            "label": "Pixels",
+            "unit": "pixels"
+          },
+          "lengthInches": {
+            "label": "Length",
+            "unit": "in"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Linear pixel density",
+            "unit": "pixels/inch"
+          }
+        }
+      }
+    },
+    {
+      "slot": "B",
+      "notes": "",
+      "input": {
+        "pixels": 6000,
+        "lengthInches": 10
+      },
+      "output": {
+        "steps": [
+          "DPI = 600"
+        ],
+        "value": 600
+      },
+      "displayMetadata": {
+        "schemaVersion": 1,
+        "calculatorSlug": "dpi-calculator",
+        "calculatorVersion": 1,
+        "inputs": {
+          "pixels": {
+            "label": "Pixels",
+            "unit": "pixels"
+          },
+          "lengthInches": {
+            "label": "Length",
+            "unit": "in"
+          }
+        },
+        "outputs": {
+          "value": {
+            "label": "Linear pixel density",
+            "unit": "pixels/inch"
+          }
+        }
+      }
+    }
+  ],
+  "comparison": {
+    "schemaVersion": 1,
+    "metrics": [
+      {
+        "field": "value",
+        "label": "Linear pixel density",
+        "unit": "pixels/inch",
+        "cells": [
+          {
+            "slot": "A",
+            "label": "Linear pixel density",
+            "unit": "pixels/inch",
+            "value": 300,
+            "difference": 0,
+            "unavailable": null
+          },
+          {
+            "slot": "B",
+            "label": "Linear pixel density",
+            "unit": "pixels/inch",
+            "value": 600,
+            "difference": 300,
+            "unavailable": null
+          }
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "field": "value",
+        "title": "Linear pixel density",
+        "unit": "pixels/inch",
+        "points": [
+          {
+            "label": "A",
+            "value": 300
+          },
+          {
+            "label": "B",
+            "value": 600
+          }
+        ]
+      }
+    ]
+  }
+}
