@@ -6,8 +6,8 @@ import {createHash} from 'node:crypto';
 const fixed=Object.freeze([
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
-    "blob": "dd0cef005e31d0567b64aafbf498d18fc9a4232a",
-    "sha256": "e09764879e8d45646d765a1e066cbbfc6d491117c13d5ed17e149edeb4fa8c9d"
+    "blob": "689593a733c1e9db67f127aed4bc670515f6eb2e",
+    "sha256": "a7e58306f34707d719c36d0c2cfd6892d5761c48879709fa11ec88a85be1e8aa"
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.d.mts",
@@ -21,18 +21,18 @@ const fixed=Object.freeze([
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
-    "blob": "8cf3de37a387eb22382bb8f2e86238e0128f070d",
-    "sha256": "f958f56d98319a0ba3eef2d38ad71fa579f4ed917678dbf5138597a5533c3f6a"
+    "blob": "6d64ecd1ce4f244c0d488a0eac5e180d6e6183b1",
+    "sha256": "32a75168c713fa0a196cec15419a3ac19fd87bd92946eff0d11a14e080ca68ce"
   },
   {
     "path": "tests/publication-workflows-20261109/business-source-successor.test.mjs",
-    "blob": "ef618bc590b1e671e00ba1e899254eae9b446fc5",
-    "sha256": "826eace4f196c2e77e0683c3b84795e2f69fca2a91be00ccff0a4850063395c8"
+    "blob": "370b4714116b3cd63d574d34cb0ab752bf8a8df2",
+    "sha256": "834021691433f99d292554538682d4e0cce58d1f5bc75810794c6e380ff71aa6"
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
-    "blob": "33e0c86f0df255853d5bb05d1fa3cc3931bf67dd",
-    "sha256": "aed56a74064891892520f0e7f2610796bebdea569f72f469729764b3bc546bd5"
+    "blob": "36af9595c81f7b69619e5392b5b7d5dc612149bf",
+    "sha256": "6195b73331f1247961200eb39d9ad68278bbd17409b4231d4b0e6170045f5d49"
   }
 ]);
 const sourceGit=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
