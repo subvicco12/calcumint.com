@@ -6,14 +6,14 @@ import {verifyParallelSource,capturePath,parseRows} from './core.mjs';
 import {sourceGit} from './baseline-runtime.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'8b6205f0278cd4f674d9ece1d0e289da791475e5',sha256:'62dabb6c450e2e288a68b7b5700bc262235ed71fb252e84d49e877c95dc17199'};
+const expectedAuthority={blob:'590e430f758f726ac669a80076382d3f65f1bfcc',sha256:'08831384fb8a72b053f374675e55108da73720c05be0e3f6ce889b7868ab8596'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
 test('actual current execution passes while unchanged R5 executes at literal A7',()=>assert.equal(verifyParallelSource(),true));
 const capture=JSON.parse(readFileSync(capturePath));
 for(const record of capture.applicationSources)test('current source reader rejects changed exact app bytes '+record.path,()=>assert.throws(()=>verifyParallelSource(name=>name===record.path?Buffer.from('plausible changed implementation'):readFileSync(name)),/Current target source differs|Independent current target bytes differ/));
-for(const path of ['tests/parallel-source-20261110/core.mjs','tests/parallel-source-20261110/bootstrap.mjs','tests/parallel-source-20261110/baseline-probe.mjs','tests/parallel-source-20261110/historical-tests.mjs','scripts/product-completion-lineage.mjs'])test('no-op validator cannot nominate itself '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('export function verify(){return true}'):readFileSync(name)),/Independent current target bytes differ/));
+for(const path of ['tests/parallel-source-20261110/core.mjs','tests/parallel-source-20261110/bootstrap.mjs','tests/parallel-source-20261110/baseline-probe.mjs','tests/parallel-source-20261110/historical-tests.mjs','tests/parallel-source-20261110/git-reader.mjs','scripts/product-completion-lineage.mjs'])test('no-op validator cannot nominate itself '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('export function verify(){return true}'):readFileSync(name)),/Independent current target bytes differ/));
 test('a closed asynchronous-style target map supplies every current byte without a workspace fallback',()=>{
  const names=new Set([...capture.currentSources,...capture.applicationSources].map(r=>r.path));names.add(capturePath);const target=new Map([...names].map(p=>[p,readFileSync(p)])),seen=new Set();
  assert.equal(verifyParallelSource(path=>{seen.add(path);assert(target.has(path),'Undeclared reader dependency '+path);return target.get(path);}),true);
