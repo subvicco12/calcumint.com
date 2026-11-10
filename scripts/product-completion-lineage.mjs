@@ -1,6 +1,7 @@
 /** Exact test/presentation successors; no mathematical or certification approval. */
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
+import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 export const completionBindingDependencies=name=>Object.freeze((bindings.find(row=>row.path===name)?.supplementalSources??[]).map(row=>row.path));
 const bindings=[
   {
@@ -4041,6 +4042,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 export function verifyCompletionBinding(name,bytes,claim,git,read=readFileSync){
  const b=bindings.find(x=>x.path===name);if(!b)return false;
  if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);
+ git=completionGitReader(git);
  for(const dep of b.supplementalSources??[]){
   if(git(['rev-parse','--verify',dep.ref+'^{commit}']).toString().trim()!==dep.ref)throw Error('Completion supplemental source revision unavailable');
   if(git(['rev-parse',dep.ref+':'+dep.path]).toString().trim()!==dep.blob)throw Error('Completion supplemental source object differs');

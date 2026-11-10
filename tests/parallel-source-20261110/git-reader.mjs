@@ -61,3 +61,12 @@ export function makeGitReader(invoke){
  };
  return reader;
 }
+
+// Completion checks share immutable Git objects only for the identical supplied
+// transport. Current target reads are outside this reader; symbolic HEAD stays live.
+const completionReaders=new WeakMap();
+export function completionGitReader(invoke){
+ let reader=completionReaders.get(invoke);
+ if(!reader){reader=makeGitReader(invoke);completionReaders.set(invoke,reader);completionReaders.set(reader,reader);}
+ return reader;
+}
