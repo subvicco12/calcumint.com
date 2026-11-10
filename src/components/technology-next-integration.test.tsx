@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import {afterEach,it,expect,vi} from 'vitest';
 import {render,screen,within,cleanup,fireEvent} from '@testing-library/react';
-const state=vi.hoisted(()=>({plan:'business',snapshot:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:{value:number}|null}}));
+const state=vi.hoisted(()=>({plan:'business',snapshot:null as null|{calculatorSlug:string;calculatorVersion:number;input:Record<string,unknown>;output:{value:number}|null;scenarioDisplayMetadata?:{outputs:Record<string,{label:string;unit?:string}>}}}));
 vi.mock('./use-calculator-plan',()=>({useCalculatorPlan:()=>state.plan}));
 vi.mock('./calculator-account-actions',()=>({CalculatorAccountActions:(p:NonNullable<typeof state.snapshot>)=>{state.snapshot=p;return null;}}));
 import {CalculatorInteractive} from './calculator-interactive';
@@ -16,3 +16,5 @@ for(const [slug,value,target] of rows)it(slug+' integrates live analysis and goa
  const field=document.querySelector('input[data-technology-field]')!;fireEvent.change(field,{target:{value:''}});expect(state.snapshot?.output).toBeNull();expect(screen.queryByRole('form',{name:'Target calculation'})).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Use worked example'}));expect(state.snapshot).toEqual(before);expect(screen.getByRole('form',{name:'Target calculation'})).toBeTruthy();
 });
 it('refuses a subnormal primary input with a normal product and recovers without saving it',()=>{render(<CalculatorInteractive slug='resolution-calculator'/>);fireEvent.change(screen.getByLabelText('Height (pixels)'),{target:{value:'1e100'}});fireEvent.change(screen.getByLabelText('Width (pixels)'),{target:{value:'1e-320'}});expect(state.snapshot?.output).toBeNull();expect(screen.getByRole('alert')).toBeTruthy();expect(screen.queryByRole('region',{name:'Analysis'})).toBeNull();fireEvent.click(screen.getByRole('button',{name:'Use worked example'}));expect(state.snapshot?.output?.value).toBe(2073600);});
+
+it("presents current DPI in pixels per inch consistently in primary and new export/scenario metadata",()=>{render(<CalculatorInteractive slug="dpi-calculator"/>);expect(within(screen.getByRole("region",{name:"Calculation result"})).getByText("300 pixels/inch")).toBeTruthy();expect(state.snapshot?.scenarioDisplayMetadata?.outputs.value).toEqual({label:"Linear pixel density",unit:"pixels/inch"});expect(state.snapshot?.calculatorVersion).toBe(1);expect(state.snapshot?.output).toEqual({value:300,steps:["DPI = 300"]});});
