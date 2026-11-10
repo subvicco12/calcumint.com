@@ -45,7 +45,7 @@ export function makeGitReader(invoke){
  reader.preloadBlobs=ids=>{
   if(!Array.isArray(ids)||ids.some(id=>typeof id!=='string'||!objectId.test(id)))throw Error('Full immutable Git blob identities required');
   const pending=[...new Set(ids)].filter(id=>!blobs.has(id));if(!pending.length)return;
-  const output=bytes(invoke(['cat-file','--batch'],{input:Buffer.from(pending.join('\n')+'\n'),stdio:['pipe','pipe','pipe'],maxBuffer:128*1024*1024}));
+  const output=bytes(invoke(['cat-file','--batch'],{input:Buffer.from(pending.join('\n')+'\n'),stdio:['pipe','pipe','pipe'],maxBuffer:128*1024*1024,timeout:30000}));
   const loaded=new Map();let offset=0;
   for(const expected of pending){
    const newline=output.indexOf(10,offset);if(newline<0)throw Error('Truncated Git batch header');
