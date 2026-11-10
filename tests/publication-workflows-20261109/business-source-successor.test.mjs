@@ -71,8 +71,8 @@ const independentlyReviewedSources=Object.freeze([
   },
   {
     "path": "src/components/calculator-interactive.tsx",
-    "blob": "45e102f0d97e8db360dc2a09efcb0e3867df8275",
-    "sha256": "af625bb001afe2cc52eea383f6e6462a5eb728b74de321f84d436611729ea5ad"
+    "blob": "8dd7607740d9bbaa3033a5708554ac53e452cc67",
+    "sha256": "b2ba543cacf4a9b617addcab427cb875b82a2d4f8eb37bf029130b57356a5ef8"
   },
   {
     "path": "src/components/technology-five-analysis.tsx",
