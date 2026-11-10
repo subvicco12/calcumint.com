@@ -11,3 +11,12 @@ The original full-unit failure was separately reproduced at exact af601: 34/35 c
 Automatic review rejected a proposed auth historical-hash exception before any edit. That rejected approach was not executed; root instead prepared fresh current authentication/UI proof with direct source hashes. Original authentic receipts, producers and checkers remain untouched.
 
 No production writes, historical mathematical changes, certification, canonical approval or publication eligibility are established here. RELEASE HOLD remains active.
+
+Exact focused commands (run from the isolated source worktree):
+
+```sh
+node --test --test-reporter=spec tests/acceptance-closure-20261108/converter-final-source.test.mjs tests/publication-workflows-20261109/source-evolution.test.mjs tests/first-five-20261109/crossed-dependency-source.test.mjs tests/first-five-20261109/lineage-portability.test.mjs tests/first-five-20261109/source-lineage.test.mjs tests/source-lineage-bootstrap.test.mjs tests/next-cohort-20261110/source/caller-stage.test.mjs tests/next-cohort-20261110/source/current-anchor.test.mjs tests/next-cohort-20261110/source/retained-stage1.test.mjs
+node --test --test-reporter=spec tests/p0-decision-contracts/business-current-source.test.mjs tests/publication-workflows-20261109/business-source-successor.test.mjs tests/p0-decision-contracts/next-cohort-runtime-successor.test.mjs
+```
+
+No fresh revision-three shallow-fetch test has been run in this lane. Earlier revision-two local shallow evidence remains explicitly scoped to its original snapshot; remote final-head bootstrap and hosted CI remain root integration checks.
