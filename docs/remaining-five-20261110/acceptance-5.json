@@ -1,0 +1,1926 @@
+{
+  "kind": "FIVE_INDIVIDUAL_SCOPED_ENGINEERING_CANDIDATES_NOT_CANONICAL_ACCEPTANCE",
+  "baselineSHA": "3c9fc6bdcedf053d2315470f8c0ee549d53bd5de",
+  "rows": [
+    {
+      "masterId": 374,
+      "title": "Storage Conversion Calculator",
+      "engineId": "technology.storage-conversion",
+      "slug": "storage-conversion-calculator",
+      "version": 1,
+      "offeredContract": "Positive-value binary IEC conversion among B/KiB/MiB/GiB/TiB; no inferred decimal/bit units.",
+      "nativeCatalog": {
+        "sheet": "Master Catalog (native sheet2.xml)",
+        "row": 375,
+        "cells": {
+          "A375": "374",
+          "B375": "Technology & Computing",
+          "C375": "Storage Conversion Calculator",
+          "D375": "Planned",
+          "E375": "Foundation / Expansion 1",
+          "F375": "Technical / engineering",
+          "G375": "B \u2014 Analytical",
+          "H375": "Full certified core calculation",
+          "I375": "Relationship/result visual when useful",
+          "J375": "Advanced variables; tables; unit analysis; scenarios",
+          "K375": "Pro analytics + team/client/embed/API/automation",
+          "L375": "Required before publish",
+          "M375": "Formula verified after certification",
+          "N375": "",
+          "O375": "",
+          "P375": "",
+          "Q375": "",
+          "R375": "",
+          "S375": "",
+          "T375": "",
+          "U375": "",
+          "V375": "",
+          "W375": "",
+          "X375": "",
+          "Y375": "",
+          "Z375": ""
+        }
+      },
+      "before": "PARTIAL_INDIVIDUAL_BUSINESS_TEAM_UI_EVIDENCE_MISSING",
+      "afterBeforeFinalCI": "SCOPED_CURRENT_CONTRACT_ENGINEERING_CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "engineeringCompleteEstablishedBeforeFinalCI": false,
+      "appOrEngineSourceChanged": false,
+      "individualTeam": {
+        "catalogId": 374,
+        "slug": "storage-conversion-calculator",
+        "version": 1,
+        "scope": "IEC GiB to MiB; output context MiB",
+        "teamWorkflowEvidenceComplete": true,
+        "remainingWithinThisTeamWorkflowScope": [],
+        "canonicalCompletionClaimed": false,
+        "templateClone": true,
+        "comparisonRecoveryTamper": true,
+        "ownerRecordedFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "scenarioReportFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "adminMemberViewerNativeJson": true,
+        "freeProDenied": true,
+        "foreignTenantDenied": true,
+        "membershipRevocation": true,
+        "downloadCount": 11
+      },
+      "individualNativeBatchAndAutomation": {
+        "catalogId": 374,
+        "engineId": "technology.storage-conversion",
+        "version": 1,
+        "requestId": "23b72ddc-fc00-459b-8a8e-d006da738686",
+        "jobId": "b0ec56cf-2ccd-40d1-af5f-958800f6aee3",
+        "inputRows": [
+          {
+            "value": "1",
+            "fromUnit": "GiB",
+            "toUnit": "MiB"
+          },
+          {
+            "value": "1",
+            "fromUnit": "GiB",
+            "toUnit": "GB"
+          }
+        ],
+        "rows": [
+          {
+            "ok": true,
+            "index": 0,
+            "result": {
+              "slug": "storage-conversion-calculator",
+              "unit": "MiB",
+              "input": {
+                "value": 1,
+                "toUnit": "MiB",
+                "fromUnit": "GiB"
+              },
+              "title": "Storage Conversion Calculator",
+              "output": {
+                "steps": [
+                  "Storage Conversion = 1024"
+                ],
+                "value": 1024
+              },
+              "sources": [
+                {
+                  "url": "https://physics.nist.gov/cuu/Units/binary.html",
+                  "note": "IEC binary prefixes distinguish 1024-based units such as MiB and GiB from decimal SI MB and GB.",
+                  "label": "NIST \u2014 Binary prefixes"
+                }
+              ],
+              "version": 1,
+              "engineId": "technology.storage-conversion",
+              "warnings": [
+                "Raw binary64 numeric result; not an exact-integer or full real-arithmetic claim. Original registered binary64 engine and exact technical version; unsupported decimal provenance and refused result domains are not rounded into acceptance. JSON encodes signed zero as zero; enteredInput retains original decimal strings."
+              ],
+              "catalogId": 374,
+              "limitations": "Positive-value IEC binary storage conversion among B, KiB, MiB, GiB and TiB only. Decimal/bit units are not offered.",
+              "methodology": [
+                {
+                  "id": "storage-conversion-calculator",
+                  "expression": "Converted value = input bytes \u00f7 target-unit bytes",
+                  "description": "Binary IEC storage-unit conversion using 1024-based multiples."
+                }
+              ],
+              "enteredInput": {
+                "value": "1",
+                "toUnit": "MiB",
+                "fromUnit": "GiB"
+              }
+            }
+          },
+          {
+            "ok": false,
+            "error": "Provide the exact supported Technology identity/version and decimal-string inputs",
+            "index": 1
+          }
+        ],
+        "acceptedPostUnits": 2,
+        "getUsageDelta": 0,
+        "duplicateJobAndEvent": true,
+        "conflict409": true,
+        "configuredQuota429": true,
+        "crossTenantGet404": true,
+        "crossTenantEndpointPost403": true,
+        "wrongScope403": true,
+        "signedAutomation": {
+          "eventId": "b0ec56cf-2ccd-40d1-af5f-958800f6aee3",
+          "retries": 2,
+          "bodySHA256": "e45d375e703b70ec4293c933f5fce3b3e04c4d4968c9aa4a2bc287a64e6a3a15",
+          "exactCatalogEngineVersion": true,
+          "exactEnteredInputsAndStoredRows": true,
+          "hmacVerified": true,
+          "failedThenDelivered": true,
+          "additionalApiUnits": 0
+        },
+        "revokedGetAndPost401": true
+      },
+      "criteria": [
+        {
+          "clauseId": "identity-full-contract",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "B-core-inputs-accuracy",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-forward-math-rounding",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-structured-result",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "I-useful-visual",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-advanced-variables",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-tables-unit-analysis",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-goal-inverse",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-scenarios",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-sensitivity",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-organizations-roles",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-client-project-share-template",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-api-exact-delivery",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-embed-exact-delivery",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-bounded-batch",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-automation-webhooks",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-quota-metering-audit",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-brand-builder",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "K-lead-capture",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "central-entitlement-primary-parity",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "history-exact-replay",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "exports-reconciliation",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "editorial-methodology-source",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "SOURCE_PROVENANCE_AND_COMPETENT_REVIEW",
+          "status": "TECHNICAL_METHOD_REFERENCES_BOUND_FORMAL_APPLICABILITY_PENDING"
+        },
+        {
+          "clauseId": "source-risk-rule-applicability",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "qa-formula-input-refusal",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-responsive-input-recovery",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-accessibility",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-performance",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-seo-discovery",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_GUARDS_PLUS_OPERATOR_LIFECYCLE_DEPENDENCY",
+          "status": "UNCHANGED_FAIL_CLOSED_PUBLICATION_FILTERS_RETAINED_NO_PRODUCTION_VISIBILITY_CLAIM"
+        },
+        {
+          "clauseId": "qa-security-protected-actions",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "ai-boundary",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "certification-lifecycle",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ops-recovery-custody-deployment",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ci-and-evidence-integrity",
+          "nativeSource": "Master Catalog!G375:M375",
+          "classification": "FINAL_VALIDATION_PENDING",
+          "status": "NEW_FOCUSED_EVIDENCE_AVAILABLE_FINAL_EXACT_HEAD_CI_REQUIRED"
+        }
+      ],
+      "remainingAuthority": [
+        "Exact offered input/output/feature scope and applicability against native catalog/Blueprint remains per-ID adjudication, not inferred from title alone.",
+        "Actual competent source/formula/precision/QA decisions and canonical adoption are not established by retained scoped receipts."
+      ],
+      "evidenceLimits": [
+        "Team proof is two separately authenticated disposable development-runtime fixtures, not one uninterrupted successful original run.",
+        "Native batch proof uses actual production-built routes and genuine isolated Auth/PostgREST; lower publication availability is synthetic.",
+        "Signed webhook delivery uses a controlled local HTTP lower transport; no public HTTPS receiver qualification is claimed.",
+        "Retained old24personal journeys remain historical; current source/math/history bindings and separately current UI/browser receipts supplement them without relabelling execution.",
+        "Canonical full scope, formal source applicability, risk/precision/QA competent decisions and production operator attestations remain pending."
+      ],
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 382,
+      "title": "Power Supply Calculator",
+      "engineId": "technology.power-supply",
+      "slug": "power-supply-calculator",
+      "version": 1,
+      "offeredContract": "Supplied systemW*(1+userHeadroom/100) planning wattage; no hardware recommendation standard.",
+      "nativeCatalog": {
+        "sheet": "Master Catalog (native sheet2.xml)",
+        "row": 383,
+        "cells": {
+          "A383": "382",
+          "B383": "Technology & Computing",
+          "C383": "Power Supply Calculator",
+          "D383": "Planned",
+          "E383": "Foundation / Expansion 1",
+          "F383": "Technical / engineering",
+          "G383": "B \u2014 Analytical",
+          "H383": "Full certified core calculation",
+          "I383": "Relationship/result visual when useful",
+          "J383": "Advanced variables; tables; unit analysis; scenarios",
+          "K383": "Pro analytics + team/client/embed/API/automation",
+          "L383": "Required before publish",
+          "M383": "Formula verified after certification",
+          "N383": "",
+          "O383": "",
+          "P383": "",
+          "Q383": "",
+          "R383": "",
+          "S383": "",
+          "T383": "",
+          "U383": "",
+          "V383": "",
+          "W383": "",
+          "X383": "",
+          "Y383": "",
+          "Z383": ""
+        }
+      },
+      "before": "PARTIAL_INDIVIDUAL_BUSINESS_TEAM_UI_EVIDENCE_MISSING",
+      "afterBeforeFinalCI": "SCOPED_CURRENT_CONTRACT_ENGINEERING_CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "engineeringCompleteEstablishedBeforeFinalCI": false,
+      "appOrEngineSourceChanged": false,
+      "individualTeam": {
+        "catalogId": 382,
+        "slug": "power-supply-calculator",
+        "version": 1,
+        "scope": "Supplied load plus supplied20percent headroom; no hardware recommendation",
+        "teamWorkflowEvidenceComplete": true,
+        "remainingWithinThisTeamWorkflowScope": [],
+        "canonicalCompletionClaimed": false,
+        "templateClone": true,
+        "comparisonRecoveryTamper": true,
+        "ownerRecordedFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "scenarioReportFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "adminMemberViewerNativeJson": true,
+        "freeProDenied": true,
+        "foreignTenantDenied": true,
+        "membershipRevocation": true,
+        "downloadCount": 11
+      },
+      "individualNativeBatchAndAutomation": {
+        "catalogId": 382,
+        "engineId": "technology.power-supply",
+        "version": 1,
+        "requestId": "8fcb93ca-3001-43ac-a377-762ef50a292e",
+        "jobId": "cab4e807-13f3-4680-9e43-5a5da274a07b",
+        "inputRows": [
+          {
+            "systemLoadWatts": "500",
+            "headroomPercent": "20"
+          },
+          {
+            "systemLoadWatts": "500",
+            "headroomPercent": "501"
+          }
+        ],
+        "rows": [
+          {
+            "ok": true,
+            "index": 0,
+            "result": {
+              "slug": "power-supply-calculator",
+              "unit": "W",
+              "input": {
+                "headroomPercent": 20,
+                "systemLoadWatts": 500
+              },
+              "title": "Power Supply Calculator",
+              "output": {
+                "steps": [
+                  "Power Supply = 600"
+                ],
+                "value": 600
+              },
+              "sources": [
+                {
+                  "url": "https://www.nist.gov/pml/special-publication-330/sp-330-appendix-1",
+                  "note": "NIST defines the watt as a unit of power. The calculator applies only the user-selected headroom to a supplied load; it does not encode a mandatory PSU-sizing standard or recommend a hardware model.",
+                  "label": "NIST SP 330 \u2014 watt (unit of power)"
+                }
+              ],
+              "version": 1,
+              "engineId": "technology.power-supply",
+              "warnings": [
+                "Raw binary64 numeric result; not an exact-integer or full real-arithmetic claim. Original registered binary64 engine and exact technical version; unsupported decimal provenance and refused result domains are not rounded into acceptance. JSON encodes signed zero as zero; enteredInput retains original decimal strings."
+              ],
+              "catalogId": 382,
+              "limitations": "Supplied system load plus user-selected headroom from0 to500percent; no mandatory PSU-sizing standard or hardware recommendation.",
+              "methodology": [
+                {
+                  "id": "power-supply-calculator",
+                  "expression": "Required W = system load \u00d7 (1 + headroom %)",
+                  "description": "Planning wattage from measured/estimated system load plus explicit headroom; not a PSU model recommendation."
+                }
+              ],
+              "enteredInput": {
+                "headroomPercent": "20",
+                "systemLoadWatts": "500"
+              }
+            }
+          },
+          {
+            "ok": false,
+            "error": "Inputs are outside the original supported domain or current capture precision boundary",
+            "index": 1
+          }
+        ],
+        "acceptedPostUnits": 2,
+        "getUsageDelta": 0,
+        "duplicateJobAndEvent": true,
+        "conflict409": true,
+        "configuredQuota429": true,
+        "crossTenantGet404": true,
+        "crossTenantEndpointPost403": true,
+        "wrongScope403": true,
+        "signedAutomation": {
+          "eventId": "cab4e807-13f3-4680-9e43-5a5da274a07b",
+          "retries": 2,
+          "bodySHA256": "a5cf60142c4cb5d2dc4935d0bfeabb94b9938e5b7935279819daf7e7dc632f69",
+          "exactCatalogEngineVersion": true,
+          "exactEnteredInputsAndStoredRows": true,
+          "hmacVerified": true,
+          "failedThenDelivered": true,
+          "additionalApiUnits": 0
+        },
+        "revokedGetAndPost401": true
+      },
+      "criteria": [
+        {
+          "clauseId": "identity-full-contract",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "B-core-inputs-accuracy",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-forward-math-rounding",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-structured-result",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "I-useful-visual",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-advanced-variables",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-tables-unit-analysis",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-goal-inverse",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-scenarios",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-sensitivity",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-organizations-roles",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-client-project-share-template",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-api-exact-delivery",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-embed-exact-delivery",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-bounded-batch",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-automation-webhooks",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-quota-metering-audit",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-brand-builder",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "K-lead-capture",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "central-entitlement-primary-parity",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "history-exact-replay",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "exports-reconciliation",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "editorial-methodology-source",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "SOURCE_PROVENANCE_AND_COMPETENT_REVIEW",
+          "status": "TECHNICAL_METHOD_REFERENCES_BOUND_FORMAL_APPLICABILITY_PENDING"
+        },
+        {
+          "clauseId": "source-risk-rule-applicability",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "qa-formula-input-refusal",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-responsive-input-recovery",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-accessibility",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-performance",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-seo-discovery",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_GUARDS_PLUS_OPERATOR_LIFECYCLE_DEPENDENCY",
+          "status": "UNCHANGED_FAIL_CLOSED_PUBLICATION_FILTERS_RETAINED_NO_PRODUCTION_VISIBILITY_CLAIM"
+        },
+        {
+          "clauseId": "qa-security-protected-actions",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "ai-boundary",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "certification-lifecycle",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ops-recovery-custody-deployment",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ci-and-evidence-integrity",
+          "nativeSource": "Master Catalog!G383:M383",
+          "classification": "FINAL_VALIDATION_PENDING",
+          "status": "NEW_FOCUSED_EVIDENCE_AVAILABLE_FINAL_EXACT_HEAD_CI_REQUIRED"
+        }
+      ],
+      "remainingAuthority": [
+        "Exact offered input/output/feature scope and applicability against native catalog/Blueprint remains per-ID adjudication, not inferred from title alone.",
+        "Actual competent source/formula/precision/QA decisions and canonical adoption are not established by retained scoped receipts."
+      ],
+      "evidenceLimits": [
+        "Team proof is two separately authenticated disposable development-runtime fixtures, not one uninterrupted successful original run.",
+        "Native batch proof uses actual production-built routes and genuine isolated Auth/PostgREST; lower publication availability is synthetic.",
+        "Signed webhook delivery uses a controlled local HTTP lower transport; no public HTTPS receiver qualification is claimed.",
+        "Retained old24personal journeys remain historical; current source/math/history bindings and separately current UI/browser receipts supplement them without relabelling execution.",
+        "Canonical full scope, formal source applicability, risk/precision/QA competent decisions and production operator attestations remain pending."
+      ],
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 383,
+      "title": "Website Bandwidth Calculator",
+      "engineId": "technology.website-bandwidth",
+      "slug": "website-bandwidth-calculator",
+      "version": 2,
+      "offeredContract": "v2 decimal monthlyGB=pageMB*pageviews/1000; no caching/CDN/provider model; no v1 upgrade.",
+      "nativeCatalog": {
+        "sheet": "Master Catalog (native sheet2.xml)",
+        "row": 384,
+        "cells": {
+          "A384": "383",
+          "B384": "Technology & Computing",
+          "C384": "Website Bandwidth Calculator",
+          "D384": "Planned",
+          "E384": "Foundation / Expansion 1",
+          "F384": "Technical / engineering",
+          "G384": "B \u2014 Analytical",
+          "H384": "Full certified core calculation",
+          "I384": "Relationship/result visual when useful",
+          "J384": "Advanced variables; tables; unit analysis; scenarios",
+          "K384": "Pro analytics + team/client/embed/API/automation",
+          "L384": "Required before publish",
+          "M384": "Formula verified after certification",
+          "N384": "",
+          "O384": "",
+          "P384": "",
+          "Q384": "",
+          "R384": "",
+          "S384": "",
+          "T384": "",
+          "U384": "",
+          "V384": "",
+          "W384": "",
+          "X384": "",
+          "Y384": "",
+          "Z384": ""
+        }
+      },
+      "before": "PARTIAL_INDIVIDUAL_BUSINESS_TEAM_UI_EVIDENCE_MISSING",
+      "afterBeforeFinalCI": "SCOPED_CURRENT_CONTRACT_ENGINEERING_CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "engineeringCompleteEstablishedBeforeFinalCI": false,
+      "appOrEngineSourceChanged": false,
+      "individualTeam": {
+        "catalogId": 383,
+        "slug": "website-bandwidth-calculator",
+        "version": 2,
+        "scope": "Decimal SI MB to GB per month at registered revision2 only",
+        "teamWorkflowEvidenceComplete": true,
+        "remainingWithinThisTeamWorkflowScope": [],
+        "canonicalCompletionClaimed": false,
+        "templateClone": true,
+        "comparisonRecoveryTamper": true,
+        "ownerRecordedFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "scenarioReportFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "adminMemberViewerNativeJson": true,
+        "freeProDenied": true,
+        "foreignTenantDenied": true,
+        "membershipRevocation": true,
+        "downloadCount": 11
+      },
+      "individualNativeBatchAndAutomation": {
+        "catalogId": 383,
+        "engineId": "technology.website-bandwidth",
+        "version": 2,
+        "requestId": "9da827a4-3bcb-4023-bf8b-8e4da2f9e93e",
+        "jobId": "bbe32f1a-a1cc-4cd1-9f80-f2824eb94721",
+        "inputRows": [
+          {
+            "pageSizeMb": "2",
+            "monthlyPageViews": "100000"
+          },
+          {
+            "pageSizeMb": "2",
+            "monthlyPageViews": "-1"
+          }
+        ],
+        "rows": [
+          {
+            "ok": true,
+            "index": 0,
+            "result": {
+              "slug": "website-bandwidth-calculator",
+              "unit": "GB/month",
+              "input": {
+                "pageSizeMb": 2,
+                "monthlyPageViews": 100000
+              },
+              "title": "Website Bandwidth Calculator",
+              "output": {
+                "steps": [
+                  "Website Bandwidth = 200"
+                ],
+                "value": 200
+              },
+              "sources": [
+                {
+                  "url": "https://physics.nist.gov/cuu/Units/binary.html",
+                  "note": "NIST distinguishes decimal SI MB and GB (powers of 10) from IEC binary MiB and GiB (powers of 2).",
+                  "label": "NIST \u2014 SI and binary prefixes"
+                }
+              ],
+              "version": 2,
+              "engineId": "technology.website-bandwidth",
+              "warnings": [
+                "Raw binary64 numeric result; not an exact-integer or full real-arithmetic claim. Original registered binary64 engine and exact technical version; unsupported decimal provenance and refused result domains are not rounded into acceptance. JSON encodes signed zero as zero; enteredInput retains original decimal strings."
+              ],
+              "catalogId": 383,
+              "limitations": "Version2 decimal SI MB times monthly page views divided by1000. Caching, bots, CDN behavior and provider models are excluded; historical version1 is not upgraded.",
+              "methodology": [
+                {
+                  "id": "website-bandwidth-calculator",
+                  "expression": "Monthly GB = page MB \u00d7 page views \u00f7 1000",
+                  "description": "Estimated monthly transfer using decimal SI megabytes and gigabytes; caching, bots and CDN behavior are not modeled."
+                }
+              ],
+              "enteredInput": {
+                "pageSizeMb": "2",
+                "monthlyPageViews": "100000"
+              }
+            }
+          },
+          {
+            "ok": false,
+            "error": "Inputs are outside the original supported domain or current capture precision boundary",
+            "index": 1
+          }
+        ],
+        "acceptedPostUnits": 2,
+        "getUsageDelta": 0,
+        "duplicateJobAndEvent": true,
+        "conflict409": true,
+        "configuredQuota429": true,
+        "crossTenantGet404": true,
+        "crossTenantEndpointPost403": true,
+        "wrongScope403": true,
+        "signedAutomation": {
+          "eventId": "bbe32f1a-a1cc-4cd1-9f80-f2824eb94721",
+          "retries": 2,
+          "bodySHA256": "b6cdfe9972fc0f92e210d377dd1e7ef434702671046be1fa6c0bfb7d06ceed7e",
+          "exactCatalogEngineVersion": true,
+          "exactEnteredInputsAndStoredRows": true,
+          "hmacVerified": true,
+          "failedThenDelivered": true,
+          "additionalApiUnits": 0
+        },
+        "revokedGetAndPost401": true
+      },
+      "criteria": [
+        {
+          "clauseId": "identity-full-contract",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "B-core-inputs-accuracy",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-forward-math-rounding",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-structured-result",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "I-useful-visual",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-advanced-variables",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-tables-unit-analysis",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-goal-inverse",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-scenarios",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-sensitivity",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-organizations-roles",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-client-project-share-template",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-api-exact-delivery",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-embed-exact-delivery",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-bounded-batch",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-automation-webhooks",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-quota-metering-audit",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-brand-builder",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "K-lead-capture",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "central-entitlement-primary-parity",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "history-exact-replay",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "exports-reconciliation",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "editorial-methodology-source",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "SOURCE_PROVENANCE_AND_COMPETENT_REVIEW",
+          "status": "TECHNICAL_METHOD_REFERENCES_BOUND_FORMAL_APPLICABILITY_PENDING"
+        },
+        {
+          "clauseId": "source-risk-rule-applicability",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "qa-formula-input-refusal",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-responsive-input-recovery",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-accessibility",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-performance",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-seo-discovery",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_GUARDS_PLUS_OPERATOR_LIFECYCLE_DEPENDENCY",
+          "status": "UNCHANGED_FAIL_CLOSED_PUBLICATION_FILTERS_RETAINED_NO_PRODUCTION_VISIBILITY_CLAIM"
+        },
+        {
+          "clauseId": "qa-security-protected-actions",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "ai-boundary",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "certification-lifecycle",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ops-recovery-custody-deployment",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ci-and-evidence-integrity",
+          "nativeSource": "Master Catalog!G384:M384",
+          "classification": "FINAL_VALIDATION_PENDING",
+          "status": "NEW_FOCUSED_EVIDENCE_AVAILABLE_FINAL_EXACT_HEAD_CI_REQUIRED"
+        }
+      ],
+      "remainingAuthority": [
+        "Exact offered input/output/feature scope and applicability against native catalog/Blueprint remains per-ID adjudication, not inferred from title alone.",
+        "Actual competent source/formula/precision/QA decisions and canonical adoption are not established by retained scoped receipts."
+      ],
+      "evidenceLimits": [
+        "Team proof is two separately authenticated disposable development-runtime fixtures, not one uninterrupted successful original run.",
+        "Native batch proof uses actual production-built routes and genuine isolated Auth/PostgREST; lower publication availability is synthetic.",
+        "Signed webhook delivery uses a controlled local HTTP lower transport; no public HTTPS receiver qualification is claimed.",
+        "Retained old24personal journeys remain historical; current source/math/history bindings and separately current UI/browser receipts supplement them without relabelling execution.",
+        "Canonical full scope, formal source applicability, risk/precision/QA competent decisions and production operator attestations remain pending."
+      ],
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 384,
+      "title": "Cloud Storage Cost Calculator",
+      "engineId": "technology.cloud-storage-cost",
+      "slug": "cloud-storage-cost-calculator",
+      "version": 1,
+      "offeredContract": "Provider-neutral supplied storageGB*pricePerGBMonth scalar cost; no inferred tiers/allowances/tax/rounding policy.",
+      "nativeCatalog": {
+        "sheet": "Master Catalog (native sheet2.xml)",
+        "row": 385,
+        "cells": {
+          "A385": "384",
+          "B385": "Technology & Computing",
+          "C385": "Cloud Storage Cost Calculator",
+          "D385": "Planned",
+          "E385": "Foundation / Expansion 1",
+          "F385": "Technical / engineering",
+          "G385": "B \u2014 Analytical",
+          "H385": "Full certified core calculation",
+          "I385": "Relationship/result visual when useful",
+          "J385": "Advanced variables; tables; unit analysis; scenarios",
+          "K385": "Pro analytics + team/client/embed/API/automation",
+          "L385": "Required before publish",
+          "M385": "Formula verified after certification",
+          "N385": "",
+          "O385": "",
+          "P385": "",
+          "Q385": "",
+          "R385": "",
+          "S385": "",
+          "T385": "",
+          "U385": "",
+          "V385": "",
+          "W385": "",
+          "X385": "",
+          "Y385": "",
+          "Z385": ""
+        }
+      },
+      "before": "PARTIAL_INDIVIDUAL_BUSINESS_TEAM_UI_EVIDENCE_MISSING",
+      "afterBeforeFinalCI": "SCOPED_CURRENT_CONTRACT_ENGINEERING_CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "engineeringCompleteEstablishedBeforeFinalCI": false,
+      "appOrEngineSourceChanged": false,
+      "individualTeam": {
+        "catalogId": 384,
+        "slug": "cloud-storage-cost-calculator",
+        "version": 1,
+        "scope": "Supplied currency units per month; no inferred currency/provider/tier",
+        "teamWorkflowEvidenceComplete": true,
+        "remainingWithinThisTeamWorkflowScope": [],
+        "canonicalCompletionClaimed": false,
+        "templateClone": true,
+        "comparisonRecoveryTamper": true,
+        "ownerRecordedFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "scenarioReportFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "adminMemberViewerNativeJson": true,
+        "freeProDenied": true,
+        "foreignTenantDenied": true,
+        "membershipRevocation": true,
+        "downloadCount": 11
+      },
+      "individualNativeBatchAndAutomation": {
+        "catalogId": 384,
+        "engineId": "technology.cloud-storage-cost",
+        "version": 1,
+        "requestId": "d1212f9c-a39e-46f0-8a33-d3e13d0861f0",
+        "jobId": "1b1f7691-1ab0-47be-8191-d134e2f30044",
+        "inputRows": [
+          {
+            "storageGb": "1000",
+            "pricePerGbMonth": "0.02"
+          },
+          {
+            "storageGb": "1000",
+            "pricePerGbMonth": "-1"
+          }
+        ],
+        "rows": [
+          {
+            "ok": true,
+            "index": 0,
+            "result": {
+              "slug": "cloud-storage-cost-calculator",
+              "unit": "currency units/month",
+              "input": {
+                "storageGb": 1000,
+                "pricePerGbMonth": 0.02
+              },
+              "title": "Cloud Storage Cost Calculator",
+              "output": {
+                "steps": [
+                  "Cloud Storage Cost = 20"
+                ],
+                "value": 20
+              },
+              "sources": [
+                {
+                  "url": "https://www.nist.gov/publications/nist-sp-1181-unit-pricing-guide-best-practice-approach-unit-pricing-2025-ed",
+                  "note": "NIST documents unit pricing as expressing price relative to a unit quantity. These provider-neutral estimators multiply a user-supplied quantity by a user-supplied unit price; provider tiers and allowances remain outside the calculation.",
+                  "label": "NIST SP 1181 \u2014 Unit Pricing Guide"
+                }
+              ],
+              "version": 1,
+              "engineId": "technology.cloud-storage-cost",
+              "warnings": [
+                "Raw binary64 numeric result; not an exact-integer or full real-arithmetic claim. Original registered binary64 engine and exact technical version; unsupported decimal provenance and refused result domains are not rounded into acceptance. JSON encodes signed zero as zero; enteredInput retains original decimal strings."
+              ],
+              "catalogId": 384,
+              "limitations": "Provider-neutral supplied quantity times supplied unit price. Currency identity, provider tiers, allowances, tax and provider rounding policies are not inferred.",
+              "methodology": [
+                {
+                  "id": "cloud-storage-cost-calculator",
+                  "expression": "Monthly cost = storage GB \u00d7 price per GB-month",
+                  "description": "Provider-neutral monthly storage estimate using a user-supplied unit price."
+                }
+              ],
+              "enteredInput": {
+                "storageGb": "1000",
+                "pricePerGbMonth": "0.02"
+              }
+            }
+          },
+          {
+            "ok": false,
+            "error": "Inputs are outside the original supported domain or current capture precision boundary",
+            "index": 1
+          }
+        ],
+        "acceptedPostUnits": 2,
+        "getUsageDelta": 0,
+        "duplicateJobAndEvent": true,
+        "conflict409": true,
+        "configuredQuota429": true,
+        "crossTenantGet404": true,
+        "crossTenantEndpointPost403": true,
+        "wrongScope403": true,
+        "signedAutomation": {
+          "eventId": "1b1f7691-1ab0-47be-8191-d134e2f30044",
+          "retries": 2,
+          "bodySHA256": "66fe75fd30effa39f1b334b79eb3b5bf946ac2dc0cc527c52e2ee0315034c905",
+          "exactCatalogEngineVersion": true,
+          "exactEnteredInputsAndStoredRows": true,
+          "hmacVerified": true,
+          "failedThenDelivered": true,
+          "additionalApiUnits": 0
+        },
+        "revokedGetAndPost401": true
+      },
+      "criteria": [
+        {
+          "clauseId": "identity-full-contract",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "B-core-inputs-accuracy",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-forward-math-rounding",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-structured-result",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "I-useful-visual",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-advanced-variables",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-tables-unit-analysis",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-goal-inverse",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-scenarios",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-sensitivity",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-organizations-roles",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-client-project-share-template",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-api-exact-delivery",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-embed-exact-delivery",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-bounded-batch",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-automation-webhooks",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-quota-metering-audit",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-brand-builder",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "K-lead-capture",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "central-entitlement-primary-parity",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "history-exact-replay",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "exports-reconciliation",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "editorial-methodology-source",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "SOURCE_PROVENANCE_AND_COMPETENT_REVIEW",
+          "status": "TECHNICAL_METHOD_REFERENCES_BOUND_FORMAL_APPLICABILITY_PENDING"
+        },
+        {
+          "clauseId": "source-risk-rule-applicability",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "qa-formula-input-refusal",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-responsive-input-recovery",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-accessibility",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-performance",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-seo-discovery",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_GUARDS_PLUS_OPERATOR_LIFECYCLE_DEPENDENCY",
+          "status": "UNCHANGED_FAIL_CLOSED_PUBLICATION_FILTERS_RETAINED_NO_PRODUCTION_VISIBILITY_CLAIM"
+        },
+        {
+          "clauseId": "qa-security-protected-actions",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "ai-boundary",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "certification-lifecycle",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ops-recovery-custody-deployment",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ci-and-evidence-integrity",
+          "nativeSource": "Master Catalog!G385:M385",
+          "classification": "FINAL_VALIDATION_PENDING",
+          "status": "NEW_FOCUSED_EVIDENCE_AVAILABLE_FINAL_EXACT_HEAD_CI_REQUIRED"
+        }
+      ],
+      "remainingAuthority": [
+        "Exact offered input/output/feature scope and applicability against native catalog/Blueprint remains per-ID adjudication, not inferred from title alone.",
+        "Actual competent source/formula/precision/QA decisions and canonical adoption are not established by retained scoped receipts."
+      ],
+      "evidenceLimits": [
+        "Team proof is two separately authenticated disposable development-runtime fixtures, not one uninterrupted successful original run.",
+        "Native batch proof uses actual production-built routes and genuine isolated Auth/PostgREST; lower publication availability is synthetic.",
+        "Signed webhook delivery uses a controlled local HTTP lower transport; no public HTTPS receiver qualification is claimed.",
+        "Retained old24personal journeys remain historical; current source/math/history bindings and separately current UI/browser receipts supplement them without relabelling execution.",
+        "Canonical full scope, formal source applicability, risk/precision/QA competent decisions and production operator attestations remain pending."
+      ],
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false
+    },
+    {
+      "masterId": 385,
+      "title": "Cloud Data Transfer Cost Calculator",
+      "engineId": "technology.cloud-data-transfer-cost",
+      "slug": "cloud-data-transfer-cost-calculator",
+      "version": 1,
+      "offeredContract": "Provider-neutral supplied transferGB*pricePerGB scalar cost; no inferred provider tiers/allowances.",
+      "nativeCatalog": {
+        "sheet": "Master Catalog (native sheet2.xml)",
+        "row": 386,
+        "cells": {
+          "A386": "385",
+          "B386": "Technology & Computing",
+          "C386": "Cloud Data Transfer Cost Calculator",
+          "D386": "Planned",
+          "E386": "Foundation / Expansion 1",
+          "F386": "Technical / engineering",
+          "G386": "B \u2014 Analytical",
+          "H386": "Full certified core calculation",
+          "I386": "Relationship/result visual when useful",
+          "J386": "Advanced variables; tables; unit analysis; scenarios",
+          "K386": "Pro analytics + team/client/embed/API/automation",
+          "L386": "Required before publish",
+          "M386": "Formula verified after certification",
+          "N386": "",
+          "O386": "",
+          "P386": "",
+          "Q386": "",
+          "R386": "",
+          "S386": "",
+          "T386": "",
+          "U386": "",
+          "V386": "",
+          "W386": "",
+          "X386": "",
+          "Y386": "",
+          "Z386": ""
+        }
+      },
+      "before": "PARTIAL_INDIVIDUAL_BUSINESS_TEAM_UI_EVIDENCE_MISSING",
+      "afterBeforeFinalCI": "SCOPED_CURRENT_CONTRACT_ENGINEERING_CANDIDATE_PENDING_EXACT_HEAD_CI",
+      "engineeringCompleteEstablishedBeforeFinalCI": false,
+      "appOrEngineSourceChanged": false,
+      "individualTeam": {
+        "catalogId": 385,
+        "slug": "cloud-data-transfer-cost-calculator",
+        "version": 1,
+        "scope": "Supplied currency units per transfer; no inferred recurring period/provider/tier",
+        "teamWorkflowEvidenceComplete": true,
+        "remainingWithinThisTeamWorkflowScope": [],
+        "canonicalCompletionClaimed": false,
+        "templateClone": true,
+        "comparisonRecoveryTamper": true,
+        "ownerRecordedFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "scenarioReportFormats": [
+          "JSON",
+          "CSV",
+          "PDF"
+        ],
+        "adminMemberViewerNativeJson": true,
+        "freeProDenied": true,
+        "foreignTenantDenied": true,
+        "membershipRevocation": true,
+        "downloadCount": 11
+      },
+      "individualNativeBatchAndAutomation": {
+        "catalogId": 385,
+        "engineId": "technology.cloud-data-transfer-cost",
+        "version": 1,
+        "requestId": "9704fc19-65e4-4943-afce-ccda2bd7dab7",
+        "jobId": "620bf1bd-80a4-4c29-b4cf-16b3310c2db7",
+        "inputRows": [
+          {
+            "transferGb": "500",
+            "pricePerGb": "0.09"
+          },
+          {
+            "transferGb": "500",
+            "pricePerGb": "-1"
+          }
+        ],
+        "rows": [
+          {
+            "ok": true,
+            "index": 0,
+            "result": {
+              "slug": "cloud-data-transfer-cost-calculator",
+              "unit": "currency units",
+              "input": {
+                "pricePerGb": 0.09,
+                "transferGb": 500
+              },
+              "title": "Cloud Data Transfer Cost Calculator",
+              "output": {
+                "steps": [
+                  "Cloud Data Transfer Cost = 45"
+                ],
+                "value": 45
+              },
+              "sources": [
+                {
+                  "url": "https://www.nist.gov/publications/nist-sp-1181-unit-pricing-guide-best-practice-approach-unit-pricing-2025-ed",
+                  "note": "NIST documents unit pricing as expressing price relative to a unit quantity. These provider-neutral estimators multiply a user-supplied quantity by a user-supplied unit price; provider tiers and allowances remain outside the calculation.",
+                  "label": "NIST SP 1181 \u2014 Unit Pricing Guide"
+                }
+              ],
+              "version": 1,
+              "engineId": "technology.cloud-data-transfer-cost",
+              "warnings": [
+                "Raw binary64 numeric result; not an exact-integer or full real-arithmetic claim. Original registered binary64 engine and exact technical version; unsupported decimal provenance and refused result domains are not rounded into acceptance. JSON encodes signed zero as zero; enteredInput retains original decimal strings."
+              ],
+              "catalogId": 385,
+              "limitations": "Provider-neutral supplied transfer quantity times supplied unit price; no provider tier, allowance, tax or currency identity model.",
+              "methodology": [
+                {
+                  "id": "cloud-data-transfer-cost-calculator",
+                  "expression": "Transfer cost = transfer GB \u00d7 price per GB",
+                  "description": "Provider-neutral transfer estimate using a user-supplied price; tiers and free allowances are not modeled."
+                }
+              ],
+              "enteredInput": {
+                "pricePerGb": "0.09",
+                "transferGb": "500"
+              }
+            }
+          },
+          {
+            "ok": false,
+            "error": "Inputs are outside the original supported domain or current capture precision boundary",
+            "index": 1
+          }
+        ],
+        "acceptedPostUnits": 2,
+        "getUsageDelta": 0,
+        "duplicateJobAndEvent": true,
+        "conflict409": true,
+        "configuredQuota429": true,
+        "crossTenantGet404": true,
+        "crossTenantEndpointPost403": true,
+        "wrongScope403": true,
+        "signedAutomation": {
+          "eventId": "620bf1bd-80a4-4c29-b4cf-16b3310c2db7",
+          "retries": 2,
+          "bodySHA256": "fe3d6bc3a09fdc2767e901bd74816b0858bbc775284836d7b2720d3744b0fe60",
+          "exactCatalogEngineVersion": true,
+          "exactEnteredInputsAndStoredRows": true,
+          "hmacVerified": true,
+          "failedThenDelivered": true,
+          "additionalApiUnits": 0
+        },
+        "revokedGetAndPost401": true
+      },
+      "criteria": [
+        {
+          "clauseId": "identity-full-contract",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "B-core-inputs-accuracy",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-forward-math-rounding",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "B-structured-result",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "I-useful-visual",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-advanced-variables",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-tables-unit-analysis",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-goal-inverse",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-scenarios",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "J-sensitivity",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-organizations-roles",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-client-project-share-template",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "GENUINE_INDIVIDUAL_ENGINEERING_EVIDENCE_NOT_APPROVAL",
+          "status": "EXPLICIT_TWO_FIXTURE_WORKFLOW_ROLES_HISTORY_COMPARISON_RECOVERY_EXPORT_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-api-exact-delivery",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-embed-exact-delivery",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-bounded-batch",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-automation-webhooks",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-quota-metering-audit",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "K-brand-builder",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "K-lead-capture",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "central-entitlement-primary-parity",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "history-exact-replay",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "exports-reconciliation",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "editorial-methodology-source",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "SOURCE_PROVENANCE_AND_COMPETENT_REVIEW",
+          "status": "TECHNICAL_METHOD_REFERENCES_BOUND_FORMAL_APPLICABILITY_PENDING"
+        },
+        {
+          "clauseId": "source-risk-rule-applicability",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "qa-formula-input-refusal",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-responsive-input-recovery",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-accessibility",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-performance",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "qa-seo-discovery",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_GUARDS_PLUS_OPERATOR_LIFECYCLE_DEPENDENCY",
+          "status": "UNCHANGED_FAIL_CLOSED_PUBLICATION_FILTERS_RETAINED_NO_PRODUCTION_VISIBILITY_CLAIM"
+        },
+        {
+          "clauseId": "qa-security-protected-actions",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "ENGINEERING_AND_QA_NOT_APPROVAL",
+          "status": "IMPLEMENTATION_AND_SCOPED_ISOLATED_EVIDENCE_AVAILABLE"
+        },
+        {
+          "clauseId": "ai-boundary",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "certification-lifecycle",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ops-recovery-custody-deployment",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "COMPETENT_REVIEW_SOURCE_APPLICABILITY_OR_OPERATOR_AUTHORITY",
+          "status": "AUTHORITY_OR_OPERATIONAL_DECISION_PENDING"
+        },
+        {
+          "clauseId": "ci-and-evidence-integrity",
+          "nativeSource": "Master Catalog!G386:M386",
+          "classification": "FINAL_VALIDATION_PENDING",
+          "status": "NEW_FOCUSED_EVIDENCE_AVAILABLE_FINAL_EXACT_HEAD_CI_REQUIRED"
+        }
+      ],
+      "remainingAuthority": [
+        "Exact offered input/output/feature scope and applicability against native catalog/Blueprint remains per-ID adjudication, not inferred from title alone.",
+        "Actual competent source/formula/precision/QA decisions and canonical adoption are not established by retained scoped receipts."
+      ],
+      "evidenceLimits": [
+        "Team proof is two separately authenticated disposable development-runtime fixtures, not one uninterrupted successful original run.",
+        "Native batch proof uses actual production-built routes and genuine isolated Auth/PostgREST; lower publication availability is synthetic.",
+        "Signed webhook delivery uses a controlled local HTTP lower transport; no public HTTPS receiver qualification is claimed.",
+        "Retained old24personal journeys remain historical; current source/math/history bindings and separately current UI/browser receipts supplement them without relabelling execution.",
+        "Canonical full scope, formal source applicability, risk/precision/QA competent decisions and production operator attestations remain pending."
+      ],
+      "canonicalAccepted": false,
+      "certificationGranted": false,
+      "publicationEligible": false
+    }
+  ],
+  "sourceHashes": {
+    "docs/next-cohort-20261110/requirements-540.json": "843234bddb06f26607372cb41d3b51e70590b293b0d94e9f392d5f2a4648436d",
+    "docs/next-cohort-20261110/acceptance-8.json": "7243cfe39b43e76a37e88ed290f3c10db6d5fb655330b9bc5b7c927ca331c71c",
+    "docs/remaining-five-team-20261110/receipt.json": "a9341e311b0aaf23f16dce22ca298091fc6d8bac764b9fc8390e93a789d020a4",
+    "docs/remaining-five-native-20261110/receipt.json": "6cbcbf0485f733110517c7db3f9d54389c5c4f57d2c040ffb2c1510c6aba0040",
+    "docs/canonical-three-20261110/evidence-manifest.json": "88d4dcc64a328f48a1553e5447401e006db9aca42fe398e5d7aa0115cfbbd9e9",
+    "docs/remaining-five-20261110/baseline-ci.json": "e6fe9ab70ebc3f355eb003b9cf20331c494319ffaa3d313183faa8733048f97a",
+    "docs/remaining-five-20261110/operations-readonly-summary.json": "b5e28ed28dc871267f0aff595fed61bfb34ec7250a567c025fd1d2a233399c1f",
+    "docs/remaining-five-20261110/hosting-build-metadata.json": "c28c9e31d13d2a58e0dc2b9ac83c3bf81e51b04eaf28b9d985aedb9b6bb5f476"
+  },
+  "baselineScopedEngineeringComplete": [
+    370,
+    371,
+    372,
+    373,
+    377,
+    378,
+    379,
+    386
+  ],
+  "newScopedCandidatesPendingFinalCI": [
+    374,
+    382,
+    383,
+    384,
+    385
+  ],
+  "newCanonicalAcceptance": 0,
+  "newCertification": 0,
+  "newPublicationEligible": 0,
+  "releaseHold": true
+}
