@@ -180,9 +180,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
-        "blob": "7c69021c8cf584823d96c0cfa26a4b7b7c5c8a3d",
-        "sha256": "122ac5c5db0884964a7a319ea8f2e62212019cea6088379464dd04bb5a510721"
+        "ref": "f2e9e1c030ef736c7fa567bbf6310a6b37bd6112",
+        "blob": "3d63ab1a8326355b3f433d1bdb79f2330ec280df",
+        "sha256": "3bf8990468f7a9cf55465aad7e029e359147940d2dbeada159158a28c7c8fef9"
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
@@ -252,21 +252,21 @@ const bindings=[
       },
       {
         "path": "tests/publication-workflows-20261109/source-evolution.test.mjs",
-        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
-        "blob": "7fd4f8575858836e7bb3eaa3d4fcd68715dba84e",
-        "sha256": "405f1536d959a4e3bd2d42ad0db44bc5a87f3d8571cde8b054bdba1e72d3ed6e"
+        "ref": "f2e9e1c030ef736c7fa567bbf6310a6b37bd6112",
+        "blob": "3d63ab1a8326355b3f433d1bdb79f2330ec280df",
+        "sha256": "3bf8990468f7a9cf55465aad7e029e359147940d2dbeada159158a28c7c8fef9"
       },
       {
         "path": "tests/first-five-20261109/crossed-dependency-source.test.mjs",
-        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
-        "blob": "9ce252f0af27da8700b3990cd8e443548229f114",
-        "sha256": "d512b20bd0074d20ac8d525d7766ecbbaf5379fb42184346a90a53b89763ab2e"
+        "ref": "f2e9e1c030ef736c7fa567bbf6310a6b37bd6112",
+        "blob": "3d63ab1a8326355b3f433d1bdb79f2330ec280df",
+        "sha256": "3bf8990468f7a9cf55465aad7e029e359147940d2dbeada159158a28c7c8fef9"
       },
       {
         "path": "tests/next-five-20261110/source/current-proof.mjs",
-        "ref": "cb90a94fbe1827c1be494edd55549dff72d24405",
-        "blob": "79ba518669e2f810b6db8a528a84adcd41a587a0",
-        "sha256": "14a23b2ed85129fa3ff302f77a5d0f19043f9c591a6188cc768a9dcda98e08ea"
+        "ref": "f2e9e1c030ef736c7fa567bbf6310a6b37bd6112",
+        "blob": "82d2b9f5d7e2f34e456853fabecf09494daf5767",
+        "sha256": "9e2f8d19eefcce788c2303472c0a130f400fac7519cc51bfd506dfdaeff16715"
       },
       {
         "path": "tests/next-five-20261110/source/retained-r3-stage.mjs",
