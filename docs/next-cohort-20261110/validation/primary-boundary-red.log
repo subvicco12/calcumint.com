@@ -1,0 +1,42 @@
+
+ RUN  v3.2.7 /workspace/work/product-completion-20261108
+
+ ❯ src/components/technology-next-integration.test.tsx (9 tests | 1 failed) 837ms
+   ✓ storage-conversion-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 236ms
+   ✓ aspect-ratio-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 98ms
+   ✓ resolution-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 82ms
+   ✓ dpi-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 71ms
+   ✓ power-supply-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 83ms
+   ✓ website-bandwidth-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 83ms
+   ✓ cloud-storage-cost-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 70ms
+   ✓ cloud-data-transfer-cost-calculator integrates live analysis and goal refusal/recovery without altering versioned snapshots 67ms
+   × refuses a subnormal primary input with a normal product and recovers without saving it 44ms
+     → expected { value: 9.999888671826831e-221, …(1) } to be null
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/components/technology-next-integration.test.tsx > refuses a subnormal primary input with a normal product and recovers without saving it
+AssertionError: expected { value: 9.999888671826831e-221, …(1) } to be null
+
+- Expected: 
+null
+
++ Received: 
+{
+  "steps": [
+    "Resolution = 9.999888671826831e-221",
+  ],
+  "value": 9.999888671826831e-221,
+}
+
+ ❯ src/components/technology-next-integration.test.tsx:18:359
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  03:30:45
+   Duration  4.72s (transform 1.96s, setup 0ms, collect 2.99s, tests 837ms, environment 423ms, prepare 93ms)
+
