@@ -168,9 +168,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "f138afe75921df854064e666b9332c60040d0f0b",
-        "blob": "4b092d455e4d5e079d9881a486d184e97f97e501",
-        "sha256": "443c9ca758f59e44498b96808fcd66436cd2efe05b95865272adc83bff66981e"
+        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
+        "blob": "688615271a1d0fc76efe5efa440f290d4c8a4f92",
+        "sha256": "91c98790a4b42062698cbf94eb460d3d4cf8c414db686568b2e719e0b41ba277"
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -180,7 +180,7 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/converter-final-source.test.mjs",
-        "ref": "f138afe75921df854064e666b9332c60040d0f0b",
+        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
         "blob": "7c69021c8cf584823d96c0cfa26a4b7b7c5c8a3d",
         "sha256": "122ac5c5db0884964a7a319ea8f2e62212019cea6088379464dd04bb5a510721"
       },
@@ -246,19 +246,19 @@ const bindings=[
       },
       {
         "path": "tests/next-cohort-20261110/source/current-caller-stage.mjs",
-        "ref": "f138afe75921df854064e666b9332c60040d0f0b",
+        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
         "blob": "b2fe64fd1170a947bcd6f9e75b3f2e967898c698",
         "sha256": "95b5c47d9b88f9b202045b0113a5c1d8b3298e2592ac47091767cdd09b316c17"
       },
       {
         "path": "tests/publication-workflows-20261109/source-evolution.test.mjs",
-        "ref": "f138afe75921df854064e666b9332c60040d0f0b",
+        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
         "blob": "7fd4f8575858836e7bb3eaa3d4fcd68715dba84e",
         "sha256": "405f1536d959a4e3bd2d42ad0db44bc5a87f3d8571cde8b054bdba1e72d3ed6e"
       },
       {
         "path": "tests/first-five-20261109/crossed-dependency-source.test.mjs",
-        "ref": "f138afe75921df854064e666b9332c60040d0f0b",
+        "ref": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
         "blob": "9ce252f0af27da8700b3990cd8e443548229f114",
         "sha256": "d512b20bd0074d20ac8d525d7766ecbbaf5379fb42184346a90a53b89763ab2e"
       }
@@ -1872,11 +1872,11 @@ const bindings=[
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "f138afe75921df854064e666b9332c60040d0f0b",
+    "successorRef": "3cc17e80924a502a67d8696e60ad6592ec631f4a",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
-    "successorBlob": "4b092d455e4d5e079d9881a486d184e97f97e501",
+    "successorBlob": "688615271a1d0fc76efe5efa440f290d4c8a4f92",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
-    "successorSHA256": "443c9ca758f59e44498b96808fcd66436cd2efe05b95865272adc83bff66981e",
+    "successorSHA256": "91c98790a4b42062698cbf94eb460d3d4cf8c414db686568b2e719e0b41ba277",
     "supplementalSources": [
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
