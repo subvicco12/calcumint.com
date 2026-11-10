@@ -1,24 +1,3 @@
-import {test} from 'node:test';
-import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
-import {readFile} from 'node:fs/promises';
-import {createHash} from 'node:crypto';
-import {verifyNextCallerStage,priorStageRead,parseStageRows,stageGit,newCallerDependencies,stageCapturePath,callerAppRef} from './current-caller-stage.mjs';
-import {verifyCapturedCurrentCaller,verifyCapturedSource} from '../../acceptance-closure-20261108/receipt-source-path.mjs';
-const metadata='scripts/product-completion-lineage.mjs',caller='src/components/calculator-interactive.tsx';
-const rows=()=>parseStageRows(readFileSync(metadata,'utf8'));
-const hash=b=>createHash('sha256').update(b).digest('hex');
-test('reviewed next caller stage accepts complete current bytes and preserves every predecessor',()=>verifyNextCallerStage(rows()));
-test('valid prior metadata cannot replace reviewed current stage',()=>assert.throws(()=>verifyNextCallerStage(parseStageRows(priorStageRead(metadata).toString()))));
-for(const path of newCallerDependencies)test('current stage rejects target dependency drift '+path,()=>assert.throws(()=>verifyNextCallerStage(rows(),name=>name===path?Buffer.from('tampered next target'):readFileSync(name)),/target source differs|target bytes differ/));
-test('exact new and retained caller claims both require actual current source',()=>{for(const bytes of [priorStageRead(caller),stageGit(['show','6a8f10cb628b6f2735b184c1ca17c92b947b1b52:'+caller]),stageGit(['show',callerAppRef+':'+caller])])assert.equal(verifyCapturedCurrentCaller({path:caller,sha256:hash(bytes)}),caller);});
-test('valid old caller bytes are not an allowed current reversion',()=>{const old=priorStageRead(caller);assert.throws(()=>verifyCapturedCurrentCaller({path:caller,sha256:hash(old)},name=>name===caller?old:readFileSync(name)),/current successor/);});
-test('new async caller claim checks new dependencies through its supplied target reader',async()=>{const claim={path:caller,sha256:hash(readFileSync(caller))};await assert.rejects(verifyCapturedSource(claim,async name=>name===newCallerDependencies[1]?Buffer.from('async target drift'):readFile(name)),/supplemental source bytes differ/);});
-test('missing source provenance cannot be replaced by plausible current bytes',()=>assert.throws(()=>verifyNextCallerStage(rows(),readFileSync,()=>{throw Error('Missing next-stage provenance');}),/Missing next-stage provenance/));
-test('current caller metadata retains old d416 and1ec executable proof revisions',()=>{const row=rows().find(row=>row.path===caller);for(const ref of ['d416617b5c0533fe5d4d8a3f9fa5b15b9b539cbb','1ec63cd11626df15063546c7e5bfedecec33f6ee'])assert(row.intermediateSources.some(stage=>stage.ref===ref));});
-test('arbitrary unknown caller claim is not source authority',()=>assert.throws(()=>verifyCapturedCurrentCaller({path:caller,sha256:'0'.repeat(64)}),/historical claim differs/));
-test('stage capture claims no historical rewrite or production operation',()=>{const c=JSON.parse(readFileSync(stageCapturePath));assert.equal(c.historicalRecordsEdited,false);assert.equal(c.productionWrites,false);});
-
-test('responsive correction preserves legacy five analysis source while refusing its valid old reversion',async()=>{const path='src/components/technology-five-analysis.tsx',old=priorStageRead(path),claim={path,sha256:hash(stageGit(['show','00651cc382be5dcbd596882071787fd6702c13d3:'+path]))};assert.equal(await verifyCapturedSource(claim),path);await assert.rejects(verifyCapturedSource(claim,async name=>name===path?old:readFile(name)),/current successor/);});
-
-test('exact b282 batch analysis claim remains historical and cannot hide current target drift',async()=>{const path='src/components/technology-five-analysis.tsx',claim={path,sha256:hash(stageGit(['show','b282c57cc6b1e72adf7435fac1e849b2bdddd85a:'+path]))};assert.equal(await verifyCapturedSource(claim),path);await assert.rejects(verifyCapturedSource({...claim,sha256:'0'.repeat(64)}),/historical claim differs/);await assert.rejects(verifyCapturedSource(claim,async name=>name===path?priorStageRead(path):readFile(name)),/current successor/);await assert.rejects(verifyCapturedSource(claim,async name=>name==='src/lib/technology-five-analysis.ts'?Buffer.from('current dependency drift'):readFile(name)),/supplemental source bytes differ/);});
+/** Original assertions execute unchanged in literal A7, after fresh current R6 qualification. */
+import {registerRetainedA7Tests} from '../../parallel-source-20261110/historical-tests.mjs';
+registerRetainedA7Tests(import.meta.url);

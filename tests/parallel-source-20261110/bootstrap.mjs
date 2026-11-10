@@ -8,7 +8,9 @@ const invoke=args=>execFileSync('git',['-c','protocol.file.allow=never','-c','pr
 let ready=false;
 export function ensureParallelSources(capture,git=invoke){
  assert.equal(capture.baselineRef,'a7bab5b5534d51cea25ba5ffe4aa9b3630176909');assert.equal(capture.appRef,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.match(capture.codeRef,/^[0-9a-f]{40}$/);
- const selected=new Set([capture.baselineRef,capture.appRef,capture.codeRef]);
+ assert.equal(capture.guardSources.length,4);assert.equal(new Set(capture.guardSources.map(r=>r.ref)).size,1);
+ for(const row of capture.guardSources)assert.match(row.ref,/^[0-9a-f]{40}$/);
+ const selected=new Set([capture.baselineRef,capture.appRef,capture.codeRef,...capture.guardSources.map(r=>r.ref)]);
  for(const row of [...capture.currentSources,...capture.applicationSources])assert(selected.has(row.ref),'Unreviewed source revision outside approved three-commit capture');
  if(git===invoke&&ready)return true;
  const urls=git(['remote','get-url','--all','origin']).toString().trim().split('\n');assert(urls.length===1&&allowed.has(urls[0]),'Exact HTTPS CalcuMint repository origin required');
