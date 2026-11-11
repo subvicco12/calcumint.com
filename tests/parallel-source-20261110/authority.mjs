@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision16.json",
-    "blob": "32486f6a8936af2cc1ff020b49b69e6d3c6976a4",
-    "sha256": "d25f17579a0a3ad8306cc6de230d2b5dd70bd7339f2880b8677da5fe8358254b"
+    "path": "docs/parallel-source-20261110/capture-revision17.json",
+    "blob": "132764dc8245619ef1f965dc9cdfdbc0dec1566b",
+    "sha256": "c9348bf3682cc8e005dde9054ec4850088e99f6f4ab14dfc178c6e7272ce3f65"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "0eec9c19cf25d55c04188b096942831f9475b93e",
-    "sha256": "d68cde30b734cb3e32dc958c8afcc3759e95dbb54990278330aaa66c7dd92724"
+    "blob": "f6d4972375c8d2337053cf40daace12ade985b94",
+    "sha256": "c3266b18eafe962be1b5aedebf7f8bc9d96b509a16635c0b80e5a3daa41e4d4d"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
