@@ -1,4 +1,4 @@
-import {assertNamedApplicationSuccessor,assertSevenTestSuccessor,sevenTestPaths} from '../../parallel-source-20261110/core.mjs';
+import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -483,19 +483,21 @@ export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
  const head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
  let objects=immutableObjects.get(sourceGit);if(!objects){objects=new Map();immutableObjects.set(sourceGit,objects);}
  const immutable=args=>{const key=JSON.stringify(args);if(!objects.has(key))objects.set(key,sourceGit(args));return objects.get(key);};
+ let admitted;
  for(const row of currentContext){const currentObject=immutable(['rev-parse',head+':'+row.path]).toString().trim();const blob=immutable(['cat-file','blob',row.blob]);assert.equal(hash(blob),row.sha256,'Retained evidence current context Git bytes differ: '+row.path);
-  if(currentObject!==row.blob){try{if(sevenTestPaths.includes(row.path))assertSevenTestSuccessor(row.path,row.sha256,read(row.path),read,sourceGit);else assertNamedApplicationSuccessor(row.path,row.sha256,read(row.path),read,sourceGit);}catch(cause){throw new Error('Retained evidence current context target differs: '+row.path,{cause});}}
+  if(currentObject!==row.blob){try{admitted??=proveNamedCurrentContext(read,sourceGit);assert.equal(admitted.get(row.path)?.recordedSHA256,row.sha256,'Only the exact recorded context claim may advance');}catch(cause){throw new Error('Retained evidence current context target differs: '+row.path,{cause});}}
   else assert(read(row.path).equals(blob),'Retained evidence current context target differs: '+row.path);
  }
+ return admitted??new Map();
 }
 export function retainedRuntimeBytes(path,read=readFileSync,sourceGit=git){
  const row=sources.find(source=>source.path===path);
  if(!row)return read(path);
- verifyCurrentRuntimeContext(read,sourceGit);
+ const admitted=verifyCurrentRuntimeContext(read,sourceGit);
  const current=read(path);
  const blob=sourceGit(['cat-file','blob',row.currentBlob]);assert.equal(hash(blob),row.currentSHA256,'Retained evidence current Git bytes differ: '+path);
  if(sourceGit(['rev-parse','HEAD:'+path]).toString().trim()===row.currentBlob)assert(current.equals(blob),'Retained evidence current target bytes differ: '+path);
- else assertNamedApplicationSuccessor(path,row.currentSHA256,current,read,sourceGit);
+ else {const proof=admitted.get(path);assert.equal(proof?.recordedSHA256,row.currentSHA256,'Exact retained runtime source claim required');assert(current.equals(sourceGit(['cat-file','blob',proof.current.blob])),'Retained evidence current target bytes differ: '+path);}
  const predecessor=sourceGit(['show',prior+':'+path]);assert.equal(hash(predecessor),row.priorSHA256,'Retained evidence predecessor bytes differ: '+path);
  return predecessor;
 }

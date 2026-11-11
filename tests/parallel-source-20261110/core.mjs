@@ -10,7 +10,7 @@ import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision25.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision26.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -72,6 +72,12 @@ export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSy
  verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git);sevenTestSuccession(capture,read,git);
  const row=capture.sevenTestSuccessors.find(r=>r.path===file);assert.equal(claim,row.predecessor.sha256,'Exact immutable test predecessor claim required');
  return {successorGit:sevenTestRef,successorSHA256:row.current.sha256,testOnly:true};
+}
+/** One invocation proves all named current bytes; callers must not retain this proof across reads. */
+export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){
+ git=currentGit(git);verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git);
+ const rows=new Map([...applicationSuccession(capture,read,git),...sevenTestSuccession(capture,read,git)]);
+ return new Map([...rows].map(([path,row])=>{const original=capture.sevenTestSuccessors.find(r=>r.path===path)?.predecessor??row.historical;return[path,{current:row.current,recordedSHA256:original?.sha256}];}));
 }
 export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){
  git=currentGit(git);
