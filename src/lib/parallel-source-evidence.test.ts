@@ -1,54 +1,66 @@
 import {it,expect} from 'vitest';
-import {execFileSync} from 'node:child_process';
+import {execFile,type ExecFileOptions} from 'node:child_process';
 import {mkdtempSync,readFileSync,rmSync,readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
-it('executes fresh current-source, full-authority, reader, reversion and nomination negatives',()=>{
+// Await the same bounded child commands without starving Vitest's worker RPC loop.
+function runNode(args:string[],options:ExecFileOptions&{stdio?:'inherit'}):Promise<string>{
+ const {stdio,...childOptions}=options;
+ return new Promise((resolve,reject)=>{
+  const child=execFile(process.execPath,args,{...childOptions,encoding:'utf8',...(stdio==='inherit'?{maxBuffer:Infinity}:{})},(error,stdout,stderr)=>{
+   if(error)reject(Object.assign(error,{stdout,stderr}));else resolve(stdout);
+  });
+  if(stdio==='inherit'){child.stdout?.pipe(process.stdout);child.stderr?.pipe(process.stderr);}
+ });
+}
+it('executes fresh current-source, full-authority, reader, reversion and nomination negatives',async()=>{
  const directory=mkdtempSync(join(tmpdir(),'calcumint-r6-cases-')),output=join(directory,'cases.tap'),env={...process.env};delete env.NODE_TEST_CONTEXT;
+ let eventLoopTicks=0;const heartbeat=setInterval(()=>{eventLoopTicks++;},10);
  try{
-  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+output,'tests/parallel-source-20261110/current.test.mjs','tests/parallel-source-20261110/git-reader.test.mjs','tests/parallel-source-20261110/retained-vitest.test.mjs','tests/parallel-source-20261110/source-object-lock.test.mjs','tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs','tests/parallel-source-20261110/historical-group.test.mjs'],{env,stdio:'inherit',timeout:150000});
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+output,'tests/parallel-source-20261110/current.test.mjs','tests/parallel-source-20261110/git-reader.test.mjs','tests/parallel-source-20261110/retained-vitest.test.mjs','tests/parallel-source-20261110/source-object-lock.test.mjs','tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs','tests/parallel-source-20261110/historical-group.test.mjs'],{env,stdio:'inherit',timeout:150000});
+  expect(eventLoopTicks).toBeGreaterThan(0);
   const tap=readFileSync(output,'utf8');expect(tap).toMatch(/# tests 60\b/);expect(tap).toMatch(/# pass 60\b/);expect(tap).toMatch(/# fail 0\b/);
- }finally{rmSync(directory,{recursive:true,force:true});}
+ }finally{clearInterval(heartbeat);rmSync(directory,{recursive:true,force:true});}
 },160000);
 
-it('executes the actual shortest-publication CI consumer with current immutable graph edges',()=>{
+it('executes the actual shortest-publication CI consumer with current immutable graph edges',async()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- const output=execFileSync(process.execPath,['scripts/check-shortest-publication20.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
+ const output=await runNode(['scripts/check-shortest-publication20.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  expect(JSON.parse(output)).toMatchObject({identities:20,callerBindings:20,canonicalAccepted:0,publicationEligible:0,releaseHold:true});
  const directory=mkdtempSync(join(tmpdir(),'calcumint-shortest-current-')),report=join(directory,'cases.tap');
  try{
-  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/shortest-publication-20/caller-lineage.test.mjs','tests/shortest-publication-20/frequency-presentation-lineage.test.mjs','tests/shortest-publication-20/completion-lineage.test.mjs'],{env,stdio:'inherit',timeout:60000});
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/shortest-publication-20/caller-lineage.test.mjs','tests/shortest-publication-20/frequency-presentation-lineage.test.mjs','tests/shortest-publication-20/completion-lineage.test.mjs'],{env,stdio:'inherit',timeout:60000});
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 36\b/);expect(tap).toMatch(/# pass 36\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
 
-it('executes the actual six-candidate CI lineage consumer with exact tamper refusals',()=>{
+it('executes the actual six-candidate CI lineage consumer with exact tamper refusals',async()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
  const directory=mkdtempSync(join(tmpdir(),'calcumint-six-lineage-')),report=join(directory,'cases.tap');
  try{
-  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/financial-safety-lineage.test.mjs','tests/product-completion-lineage.test.mjs','tests/source-lineage-bootstrap.test.mjs'],{env,stdio:'inherit',timeout:60000});
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/financial-safety-lineage.test.mjs','tests/product-completion-lineage.test.mjs','tests/source-lineage-bootstrap.test.mjs'],{env,stdio:'inherit',timeout:60000});
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 43\b/);expect(tap).toMatch(/# pass 43\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
 
-it('executes the actual first20 publication manifest consumer and successor refusal cases',()=>{
+it('executes the actual first20 publication manifest consumer and successor refusal cases',async()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- const result=execFileSync(process.execPath,['scripts/first20-publication/evidence.mjs','--check'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
+ const result=await runNode(['scripts/first20-publication/evidence.mjs','--check'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
  expect(JSON.parse(result)).toMatchObject({firstWave:20,formalQaPassesAdded:0,newFullCriterionAcceptances:0,newlyPublicationEligible:0});
  const directory=mkdtempSync(join(tmpdir(),'calcumint-first20-manifest-')),report=join(directory,'cases.tap');
  try{
-  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/first20-publication/evidence.test.mjs','tests/first20-publication/source-admission.test.mjs'],{env,stdio:'inherit',timeout:60000});
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/first20-publication/evidence.test.mjs','tests/first20-publication/source-admission.test.mjs'],{env,stdio:'inherit',timeout:60000});
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 22\b/);expect(tap).toMatch(/# pass 22\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
 
-it('executes the actual calculator-sprint source consumers with strict Git refusal diagnostics',()=>{
+it('executes the actual calculator-sprint source consumers with strict Git refusal diagnostics',async()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
  const sourceDirectory='tests/calculator-sprint-20261108',files=readdirSync(sourceDirectory).filter(name=>name.endsWith('.test.mjs')).sort().map(name=>sourceDirectory+'/'+name);
  expect(files).toHaveLength(5);
  const directory=mkdtempSync(join(tmpdir(),'calcumint-sprint-current-')),report=join(directory,'cases.tap');
  try{
-  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,...files],{env,stdio:'inherit',timeout:60000});
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,...files],{env,stdio:'inherit',timeout:60000});
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 32\b/);expect(tap).toMatch(/# pass 32\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
