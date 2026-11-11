@@ -169,9 +169,9 @@ const bindings=[
       },
       {
         "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
-        "ref": "881c62c140d881b8c7fe70ce9bd5dcc187b54c32",
-        "blob": "3174d105ffdd9e859332be1dbdbd9905e9b0e15c",
-        "sha256": "5f28555b14cd4632943841268d935793845e892123b39cff369bbcee2e65b6f5"
+        "ref": "71f285544bd85b46e51da109897c12bfff7b798f",
+        "blob": "4384404c2300dd53428ce95c7308020c6acfd9da",
+        "sha256": "3288af2f5b62ef1ebc7ea39e8ada8ba4c7ad7ebe6a776e173b97a7672efbf8e0"
       },
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -434,15 +434,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/converter-cohort-20261110-examples.tsx",
@@ -464,9 +464,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -476,9 +476,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -488,15 +488,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -506,9 +506,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -587,6 +587,96 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/components/catalog-engineering-review.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "7fd8ee287cb05baea756f76639d5da9d8492057d",
+        "sha256": "aefd1a3896b2dec7b65a248cf863b953c1e89c2d745d08df7cbe37e38a54f5b3"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -594,6 +684,11 @@ const bindings=[
         "ref": "b6b1a72127d40712f0d3c212188d8ca84063721b",
         "blob": "f79a506706fde50d489d5f33d8f81c6d4705ba08",
         "sha256": "12b7cff0408cf72462529a5e9dd154757ba9b0f33af05e8cc2e92cbee5b81cbe"
+      },
+      {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "7fd8ee287cb05baea756f76639d5da9d8492057d",
+        "sha256": "aefd1a3896b2dec7b65a248cf863b953c1e89c2d745d08df7cbe37e38a54f5b3"
       }
     ]
   },
@@ -866,15 +961,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -902,9 +997,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -914,9 +1009,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/finance-cohort-20261110-annuity.ts",
@@ -926,15 +1021,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -944,9 +1039,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -1043,6 +1138,96 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/components/publication20-tool.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -1050,6 +1235,11 @@ const bindings=[
         "ref": "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
         "blob": "9bfad6e34e158f6e6e86a1f3405d539abb66e63b",
         "sha256": "3e09bccce11aa71a0057d9617d12199ecc0185a133bffed5a4a90799e08719c5"
+      },
+      {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
       }
     ]
   },
@@ -1076,15 +1266,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -1124,9 +1314,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -1136,9 +1326,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -1154,15 +1344,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -1172,9 +1362,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -1271,6 +1461,90 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ]
   },
@@ -1309,15 +1583,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -1357,9 +1631,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -1369,9 +1643,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -1387,15 +1661,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -1405,9 +1679,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -1504,6 +1778,90 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -1549,15 +1907,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -1597,9 +1955,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -1609,9 +1967,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -1627,15 +1985,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -1645,9 +2003,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -1744,6 +2102,90 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -1794,15 +2236,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -1842,9 +2284,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -1854,9 +2296,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -1872,15 +2314,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -1890,9 +2332,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -1989,17 +2431,101 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ]
   },
   {
     "path": "src/components/calculator-interactive.tsx",
     "predecessorRef": "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
-    "successorRef": "5c3d38e9454b9dbeb9b8d1220ea8b68532fa4e01",
+    "successorRef": "25b56970c05aaffaad2dd856809aaf077ab70554",
     "predecessorBlob": "eda303b5e09abb3ab1ac4147b431fb455d3a2c9d",
-    "successorBlob": "f21d8bb8b627639c0d55782478b786b1a763748d",
+    "successorBlob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
     "predecessorSHA256": "46903cd272e5e8a9b7ff37e338a6d9e149bf8956c4d5bed7afec7f9539d2c123",
-    "successorSHA256": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755",
+    "successorSHA256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142",
     "supplementalSources": [
       {
         "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
@@ -2657,21 +3183,21 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -2681,21 +3207,21 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -2705,9 +3231,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -2804,6 +3330,90 @@ const bindings=[
         "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
         "blob": "266ace55e8cd40eb1d3d9141e684fc30d3c0208b",
         "sha256": "d045b50ed69dd3c906a7d7a622f9df63630e56860812c676b3869eccc6a7aec9"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -2891,6 +3501,11 @@ const bindings=[
         "ref": "7a50c124fd46f0f356affd8defde535ab7c2594c",
         "blob": "8dd7607740d9bbaa3033a5708554ac53e452cc67",
         "sha256": "b2ba543cacf4a9b617addcab427cb875b82a2d4f8eb37bf029130b57356a5ef8"
+      },
+      {
+        "ref": "5c3d38e9454b9dbeb9b8d1220ea8b68532fa4e01",
+        "blob": "f21d8bb8b627639c0d55782478b786b1a763748d",
+        "sha256": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755"
       }
     ]
   },
@@ -3373,15 +3988,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -3427,9 +4042,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -3439,9 +4054,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -3457,15 +4072,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -3475,9 +4090,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -3556,6 +4171,96 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/lib/registered-snapshot-verification.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
+        "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/calculator-interactive.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -3563,17 +4268,22 @@ const bindings=[
         "ref": "7086b85437b025225f5736fb6b849415e518dc08",
         "blob": "145e126cb85a52fa64396b74a5d30fe23d325e68",
         "sha256": "7a288d92b16613f4208b43de2ef7b2b52d2c111a4457b1677e7b0df9a9031cf8"
+      },
+      {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
+        "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
       }
     ]
   },
   {
     "path": "tests/acceptance-closure-20261108/receipt-source-path.mjs",
     "predecessorRef": "7086b85437b025225f5736fb6b849415e518dc08",
-    "successorRef": "881c62c140d881b8c7fe70ce9bd5dcc187b54c32",
+    "successorRef": "71f285544bd85b46e51da109897c12bfff7b798f",
     "predecessorBlob": "9a01a45f92397de7ca5b9c05b6d466990c5dc3a4",
-    "successorBlob": "3174d105ffdd9e859332be1dbdbd9905e9b0e15c",
+    "successorBlob": "4384404c2300dd53428ce95c7308020c6acfd9da",
     "predecessorSHA256": "693e7d370154642bc9de8e40c80e3b684da291f318dc9d3fcc6cc714c5e50339",
-    "successorSHA256": "5f28555b14cd4632943841268d935793845e892123b39cff369bbcee2e65b6f5",
+    "successorSHA256": "3288af2f5b62ef1ebc7ea39e8ada8ba4c7ad7ebe6a776e173b97a7672efbf8e0",
     "supplementalSources": [
       {
         "path": "tests/execution-recovery-20261109/source-lineage.test.mjs",
@@ -3607,9 +4317,9 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-interactive.tsx",
-        "ref": "5c3d38e9454b9dbeb9b8d1220ea8b68532fa4e01",
-        "blob": "f21d8bb8b627639c0d55782478b786b1a763748d",
-        "sha256": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
       },
       {
         "path": "src/app/api/business/technology-five-shares/route.test.ts",
@@ -3619,15 +4329,15 @@ const bindings=[
       },
       {
         "path": "src/app/business/projects/[id]/page.test.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "afd6bfc41e6e9c9b11828fc9ba3bfb088abeae11",
-        "sha256": "f0635df7a7fa341835e14aae0022f03f4396a9a14233fa2c60f1a7b09f32e6ef"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
       },
       {
         "path": "src/app/business/projects/[id]/page.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e10077a017b7215f49789db7782a7419635d065c",
-        "sha256": "91b2546a1469aa40bec4a042f21aa4560ca2c1bc0bef1a30d6013d3ddc970b2e"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
       },
       {
         "path": "src/components/catalog-engineering-review.tsx",
@@ -3673,9 +4383,9 @@ const bindings=[
       },
       {
         "path": "src/components/technology-five-share-form.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "972a48ec512bf44ba9960365c1254f1b7d26ae3a",
-        "sha256": "7ed40e28d9dbbba689e9fd71c5b935dffad49fc490f2249f8daf0a9c9cd3404d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
       },
       {
         "path": "src/lib/business/technology-next-sharing.test.ts",
@@ -3685,9 +4395,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/technology-next-sharing.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "748efaed09ddac09f65d8013859a7e8bf432b672",
-        "sha256": "55fb98218fd867a88344fcaee43f546f010515f18114ac14e6d5f0c4d938545f"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
       },
       {
         "path": "src/lib/converter-cohort-20261110.ts",
@@ -3703,15 +4413,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-five-catalog.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "064f6559f6282267cf87152b0873a30ef09e3cbc",
-        "sha256": "9c043fbdb5cca8dbd3bc79ebc2356225551719b03e4dd495321ca7019d4a460d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
       },
       {
         "path": "src/lib/native-delivery/technology-five-contract.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "ed0ffd6908e681409d245ca360ebc0e0d5d00e3d",
-        "sha256": "1df758ea71a6f86e4db51290e959ee305c8a426b497ba87ad97f7230f72c25cf"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
       },
       {
         "path": "src/lib/native-delivery/technology-five-publication.test.ts",
@@ -3721,9 +4431,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/technology-native-schema.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "a884b7b019a69336f719cbde80ef52c69d7aef72",
-        "sha256": "e1a7d88868b956857b9b66a5ed5a37066716ce42fd5f61d170a4e665853d008d"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
       },
       {
         "path": "src/lib/native-delivery/technology-next-composition.test.ts",
@@ -3814,6 +4524,84 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ],
     "intermediateSources": [
@@ -3876,6 +4664,11 @@ const bindings=[
         "ref": "cb90a94fbe1827c1be494edd55549dff72d24405",
         "blob": "64060b94b70930054535db085c0f87100204b549",
         "sha256": "91f271a96272ad6e7e73fda5f6bd31db936667ee1c9315bd0650a7242db6e7c8"
+      },
+      {
+        "ref": "881c62c140d881b8c7fe70ce9bd5dcc187b54c32",
+        "blob": "3174d105ffdd9e859332be1dbdbd9905e9b0e15c",
+        "sha256": "5f28555b14cd4632943841268d935793845e892123b39cff369bbcee2e65b6f5"
       }
     ]
   },
@@ -3926,15 +4719,255 @@ const bindings=[
     "supplementalSources": [
       {
         "path": "src/components/calculator-interactive.tsx",
-        "ref": "5c3d38e9454b9dbeb9b8d1220ea8b68532fa4e01",
-        "blob": "f21d8bb8b627639c0d55782478b786b1a763748d",
-        "sha256": "c6296c137d66ab2a731f9144ab58efb3cb2f25dce2f7f31223b0b9a508d93755"
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
+        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
       },
       {
         "path": "src/calculators/final-framework/technology-scalar-presentation.ts",
         "ref": "7086b85437b025225f5736fb6b849415e518dc08",
         "blob": "d0d4a738021a84e08984bad3b45333c57a8030e1",
         "sha256": "bb82638b8347e696e9276fa5e9b062696b1808d3fe8ff82a001538af7c0d5330"
+      },
+      {
+        "path": "src/app/api/business/technology-five-shares/route.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "c79d519d89b28126e35f02c63bc1531f98614f92",
+        "sha256": "14b78e888973182d1f0b3bc8c5b9078f7fe8818948cacf7674e3351f4018794a"
+      },
+      {
+        "path": "src/app/business/projects/[id]/page.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "59da93901d69fbd098b3375a200ce146c338cd14",
+        "sha256": "9be52d2b0d355af640c13ab570de7bd6d31b0c3d5072c16e64a980e769b91eb1"
+      },
+      {
+        "path": "src/app/business/projects/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "b8a56f164382b7fb577486d9d1872a4fb2ba131a",
+        "sha256": "4b0880a530c807da3456e2fca24c69f95a97a9e3a44eae5a463d8647d0810cc6"
+      },
+      {
+        "path": "src/components/catalog-engineering-review.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "7fd8ee287cb05baea756f76639d5da9d8492057d",
+        "sha256": "aefd1a3896b2dec7b65a248cf863b953c1e89c2d745d08df7cbe37e38a54f5b3"
+      },
+      {
+        "path": "src/components/converter-cohort-20261110-examples.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "379f1265a13539923cf6940ca133d2ee7cc4ffec",
+        "sha256": "a8a1bd507958034117b192729d737ae70752487fbe8e9cf8f64e071607bf1023"
+      },
+      {
+        "path": "src/components/parallel-completion-integration.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "55d74d274f658443453461c8c37c07cddddde618",
+        "sha256": "3452fd9961bd32b2fb9c578162ed4da3b350e500bfa78e84104d7b9dc29f9dd4"
+      },
+      {
+        "path": "src/components/parallel-converters-evidence.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "b87fbbcddff99fad931a79e71c12fa38cbea9895",
+        "sha256": "1b533de27ff8a9ab1f545a8f6e8b97a099abe3458a6b6d6d9c147ef655d554c9"
+      },
+      {
+        "path": "src/components/parallel-guided-business-evidence.test.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "c02141ce81b93ac5f02c1bb89094f4e808e1d41f",
+        "sha256": "89c15c204e4ce4ea9484c735141a7f85e02fe2bc0297e5316ac8bbb0b930c645"
+      },
+      {
+        "path": "src/components/publication20-tool.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
+        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
+      },
+      {
+        "path": "src/components/specialist-general-20261110-business-input.tsx",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "14674af3689d1a59e30a16681a517d35c74195a3",
+        "sha256": "aa913519a890a953d47b4515cb12ec1d83c913ba6e446ba102943d0acced15d2"
+      },
+      {
+        "path": "src/components/technology-five-share-form.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "1cfe5b44e1f70dfa30c89ac2bda83a1731854a06",
+        "sha256": "6ecf584339b646ac295392899fb60233cf32e024685a15b5043ccb76f25afbb0"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "e8758f162963a63e65ac2746d07f0b50f94edde5",
+        "sha256": "0337b9b88ade20d62099911fe1e799e8d7239ba0a83885f79e1a973ceed10672"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "60e453548c3ca7aea8ad8e460fabf5f5c27a8da6",
+        "sha256": "bff278fa961a04528c7ccaf9cc2a052133953461c6d947d98a7a39883a41d53d"
+      },
+      {
+        "path": "src/lib/converter-cohort-20261110.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "83bb23b30c8d3cefea8c644ec10c8760ac54c136",
+        "sha256": "9f39796be584514de0b8f580a684df4f1314b211f92f3c584dea3222ed5244f5"
+      },
+      {
+        "path": "src/lib/finance-cohort-20261110-annuity.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "6e66fe59ee7a08ab779021fecf2b765e1a37067d",
+        "sha256": "2935e66dc51bc997c89c17f3a616a208d47b041e8b5dec342c97cd3861adc49e"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-five-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "6985de633ebf2d261bf8b406710a51ed0571e9e5",
+        "sha256": "90c0cd59c7867108851740eb94e9c2d024c23e42f20568fb6c7dc46a4612fad3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-five-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "507ecc70b5a2f3e67a045673e27f86f19573355e",
+        "sha256": "78acf0db463e97b271541c4701cecec8d432cbc60709d18ec0ef4e5b3c6529e1"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-five-publication.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "743d71ac91891ffcdb41d1017eb925a4664e24e4",
+        "sha256": "aa4bbb70f4da137b081718b3dbc3453e4906c9330dbade179b8aa8bb630b6aa3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-native-schema.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "70c8a98c929ca768e03e5be903b5402c48de8f7d",
+        "sha256": "4bcfb642b2a7b9b194d412d250cf1c32fec763e0d8b42f3ff22202d6533c2d86"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-next-composition.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "1939e5cd6261505d30b07143cd79da035b751c1b",
+        "sha256": "b34138e4006fb27130ea80a2f54fe7688f9edd3fdee41fffcf4f9f1a6cc66625"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-next-five-composition.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "4258a08d23002eed23d677cafbe8ffa82f36143d",
+        "sha256": "f60e7e35c8e4b76e790081ce9f4d24fc07082246af1f31e9876e2eefbcff8d4d"
+      },
+      {
+        "path": "src/lib/parallel-finance-qualification.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "670a6e22351eb44c925f6ba50a2acf1d85fa0fa4",
+        "sha256": "bec9018b9fb417419b1edbb297d087a830f9b6f795a158d83ae3326bb5ece5d4"
+      },
+      {
+        "path": "src/lib/parallel-readiness-evidence.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "81d9126f601663e3c440b566b20fb4112b4e2c00",
+        "sha256": "0d9034cb913aebc163ff310ab9a70d4e1b9e84633e07e68f8eace398e1dab990"
+      },
+      {
+        "path": "src/lib/registered-snapshot-verification.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
+        "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
+      },
+      {
+        "path": "src/lib/specialist-general-20261110-business-input.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "5489fff91141eec20649eaccc1f73823624f2027",
+        "sha256": "9b1d7909b33a4d2b7048d365b9bc37ab5487f9a4d4c327e6fc7af01e1270e7de"
+      },
+      {
+        "path": "src/lib/technology-cidr-snapshot-verification.test.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "62fc5da2d11eee138bb3b5631e6183386e6e5a10",
+        "sha256": "e8b9ce90da7f73435336d879a5ad66528b0ab7e2571eeab884e564d36b1d4fe3"
+      },
+      {
+        "path": "src/lib/technology-cidr-snapshot-verification.ts",
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "blob": "266ace55e8cd40eb1d3d9141e684fc30d3c0208b",
+        "sha256": "d045b50ed69dd3c906a7d7a622f9df63630e56860812c676b3869eccc6a7aec9"
+      },
+      {
+        "path": "src/app/business/shared/[id]/page.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
+        "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
+      },
+      {
+        "path": "src/components/technology-final-two-analysis.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "faca71887e6458a619bba2ab754d704e919c721a",
+        "sha256": "b260a9d6283c4aeff143629c705398030705c7df33bd1e2fba9d7acca0d12a58"
+      },
+      {
+        "path": "src/components/technology-final-two-integration.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "2245fc5f238805cea5e2bfde8fcef34e042476bb",
+        "sha256": "d7bf8e9e640aa73960581da4e4d2f0a5668ae1ea1b70de4bc3e963c9b00bf05c"
+      },
+      {
+        "path": "src/components/technology-five-delivery.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "e7cfd2cccfe9ff196d73ab9f069efd66b8fd3c5e",
+        "sha256": "9bf265a846218b7547c1aad2957e2a7a0d5a7292019adeca875c06fc472944b4"
+      },
+      {
+        "path": "src/components/technology-five-embed.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "260ae7f06c106b2b2550b5ab2d7f34997b7c60cb",
+        "sha256": "d819e5e63eb478769df1ce18443f7857e10314b12cb02f46d695de231c780b6d"
+      },
+      {
+        "path": "src/components/technology-next-native.test.tsx",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "3ff5f59e10a07a58feb89c4ac5355cb428d5042a",
+        "sha256": "8b18d22fe110534fb5eed43d3d05bcbc338cc209c9b0061c0ac0620c11996aa8"
+      },
+      {
+        "path": "src/lib/business/technology-final-two-sharing-access.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "07b580652d8ab1436fc716540a1faae22eb0be8f",
+        "sha256": "fd1322dfdfe76d3c1b50b1ab033ce18cd726a7bb72483694f3025fdd8a841785"
+      },
+      {
+        "path": "src/lib/business/technology-next-sharing-server.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "8d0b389e414296cfb24c1d83dc4c7ad1212c89fb",
+        "sha256": "dd796b6bbababa7cd337bc9d566c8b71d65bbdae153f897f7ab2c6c4cf36288a"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-catalog.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "ef7e45f9e18e136dfec1ee17d999cc031566cf7b",
+        "sha256": "30c2cf6fa1f5655ec185e38432f35e20c8cdca7edf9a6c7d0feea77ef69007e3"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-composition.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "c87310d0f6019142a088343593b7309aee8cfcd0",
+        "sha256": "c20ff74a80ccccdafc582a395a1b90c94af4bd36db7afb0ec335d5ad229c2758"
+      },
+      {
+        "path": "src/lib/native-delivery/technology-final-two-contract.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d0db4fd7c48563ab52fc25d2a578f6f1ebe0b3e8",
+        "sha256": "7547c563e897c98e18a9d10f398adf5bc4385ea326a700d2045f83cc87a23019"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.test.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "d8b0adb9a2414dc3155c92db7c105bbcb0957f45",
+        "sha256": "73ddf67b94071f1e1cfdce7134c3b3d04cbc58cdc553fc0ff849eb0a882bcd45"
+      },
+      {
+        "path": "src/lib/technology-final-two-analysis.ts",
+        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
+        "blob": "a5dc4e02b35902bb52407da9781abb464b6f9fd4",
+        "sha256": "eece00e4ddd3898f4a21537ed283dcd43100efdf14b657cb2a51c38678a35336"
       }
     ]
   },

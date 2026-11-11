@@ -17,9 +17,9 @@ it('executes fresh current-source, full-authority, reader, reversion and nominat
  const directory=mkdtempSync(join(tmpdir(),'calcumint-r6-cases-')),output=join(directory,'cases.tap'),env={...process.env};delete env.NODE_TEST_CONTEXT;
  let eventLoopTicks=0;const heartbeat=setInterval(()=>{eventLoopTicks++;},10);
  try{
-  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+output,'tests/parallel-source-20261110/current.test.mjs','tests/parallel-source-20261110/git-reader.test.mjs','tests/parallel-source-20261110/retained-vitest.test.mjs','tests/parallel-source-20261110/source-object-lock.test.mjs','tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs','tests/parallel-source-20261110/historical-group.test.mjs'],{env,stdio:'inherit',timeout:150000});
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+output,'tests/parallel-source-20261110/application-successor.test.mjs','tests/parallel-source-20261110/current.test.mjs','tests/parallel-source-20261110/git-reader.test.mjs','tests/parallel-source-20261110/retained-vitest.test.mjs','tests/parallel-source-20261110/source-object-lock.test.mjs','tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs','tests/parallel-source-20261110/historical-group.test.mjs'],{env,stdio:'inherit',timeout:150000});
   expect(eventLoopTicks).toBeGreaterThan(0);
-  const tap=readFileSync(output,'utf8');expect(tap).toMatch(/# tests 60\b/);expect(tap).toMatch(/# pass 60\b/);expect(tap).toMatch(/# fail 0\b/);
+  const tap=readFileSync(output,'utf8');expect(tap).toMatch(/# tests 67\b/);expect(tap).toMatch(/# pass 67\b/);expect(tap).toMatch(/# fail 0\b/);
  }finally{clearInterval(heartbeat);rmSync(directory,{recursive:true,force:true});}
 },160000);
 
