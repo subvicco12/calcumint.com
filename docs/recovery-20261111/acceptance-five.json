@@ -1,0 +1,130 @@
+{
+  "sourceQualifiedHead": "c715d0ee695c3224c4c34ffa0de56ff5e8d65033",
+  "applicationGit": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+  "canonicalCounts": {
+    "COMPLETE_AND_CERTIFIED": 0,
+    "IMPLEMENTED_REVIEW_PENDING": 2,
+    "PARTIALLY_IMPLEMENTED": 495,
+    "IDENTITY_OR_SCOPE_BLOCKED": 43
+  },
+  "engineeringOverlay": {
+    "previousConfirmed": 13,
+    "localAcceptancePassed": 5,
+    "awaitingExactHeadHostedCI": 5,
+    "newConfirmedBeforeHostedCI": 0,
+    "totalAfterHostedCIQualification": 18
+  },
+  "releaseHold": true,
+  "newPublicationEligible": 0,
+  "rows": [
+    {
+      "catalogId": 369,
+      "engineId": "technology.cidr",
+      "version": 1,
+      "slug": "cidr-calculator",
+      "offeredScope": "IPv4 total address count only; no network/host/broadcast/range/IPv6/routability inference",
+      "localEngineeringAcceptance": "PASS",
+      "hostedCI": "PENDING_NOT_STARTED",
+      "canonicalScopeApproval": "PENDING",
+      "competentAcceptance": "UNAPPROVED",
+      "certified": false,
+      "publicationEligible": false,
+      "evidence": [
+        "docs/recovery-20261111/validation.json",
+        "docs/recovery-20261111/sql/RESULT.json",
+        "docs/parallel-five-20261110/authenticated/receipt.json",
+        "docs/parallel-completion-20261110/review-targets-five.json"
+      ]
+    },
+    {
+      "catalogId": 375,
+      "engineId": "technology.raid-capacity",
+      "version": 1,
+      "slug": "raid-capacity-calculator",
+      "offeredScope": "Nominal equal-size capacity-only model; level1 returns one disk capacity;5>=3,6>=4,10even>=4; no vendor/filesystem/rebuild guarantees",
+      "localEngineeringAcceptance": "PASS",
+      "hostedCI": "PENDING_NOT_STARTED",
+      "canonicalScopeApproval": "PENDING",
+      "competentAcceptance": "UNAPPROVED",
+      "certified": false,
+      "publicationEligible": false,
+      "evidence": [
+        "docs/recovery-20261111/validation.json",
+        "docs/recovery-20261111/sql/RESULT.json",
+        "docs/parallel-five-20261110/authenticated/receipt.json",
+        "docs/parallel-completion-20261110/review-targets-five.json"
+      ]
+    },
+    {
+      "catalogId": 380,
+      "engineId": "technology.battery-runtime",
+      "version": 1,
+      "slug": "battery-runtime-calculator",
+      "offeredScope": "Ideal suppliedWh*efficiencyFraction/loadW inhours; no chemistry/discharge/vendor curve",
+      "localEngineeringAcceptance": "PASS",
+      "hostedCI": "PENDING_NOT_STARTED",
+      "canonicalScopeApproval": "PENDING",
+      "competentAcceptance": "UNAPPROVED",
+      "certified": false,
+      "publicationEligible": false,
+      "evidence": [
+        "docs/recovery-20261111/validation.json",
+        "docs/recovery-20261111/sql/RESULT.json",
+        "docs/parallel-five-20261110/authenticated/receipt.json",
+        "docs/parallel-completion-20261110/review-targets-five.json"
+      ]
+    },
+    {
+      "catalogId": 381,
+      "engineId": "technology.ups-runtime",
+      "version": 1,
+      "slug": "ups-runtime-calculator",
+      "offeredScope": "Ideal supplied batteryWh*efficiencyFraction/loadW inhours; no vendor runtime/ratedVA/powerfactor inference",
+      "localEngineeringAcceptance": "PASS",
+      "hostedCI": "PENDING_NOT_STARTED",
+      "canonicalScopeApproval": "PENDING",
+      "competentAcceptance": "UNAPPROVED",
+      "certified": false,
+      "publicationEligible": false,
+      "evidence": [
+        "docs/recovery-20261111/validation.json",
+        "docs/recovery-20261111/sql/RESULT.json",
+        "docs/parallel-five-20261110/authenticated/receipt.json",
+        "docs/parallel-completion-20261110/review-targets-five.json"
+      ]
+    },
+    {
+      "catalogId": 387,
+      "engineId": "technology.password-entropy",
+      "version": 1,
+      "slug": "password-entropy-calculator",
+      "offeredScope": "Theoretical independent uniform-random symbols, length*log2(poolSize), bits; no human password strength/cracktime/hashrate/profitability",
+      "localEngineeringAcceptance": "PASS",
+      "hostedCI": "PENDING_NOT_STARTED",
+      "canonicalScopeApproval": "PENDING",
+      "competentAcceptance": "UNAPPROVED",
+      "certified": false,
+      "publicationEligible": false,
+      "evidence": [
+        "docs/recovery-20261111/validation.json",
+        "docs/recovery-20261111/sql/RESULT.json",
+        "docs/parallel-five-20261110/authenticated/receipt.json",
+        "docs/parallel-completion-20261110/review-targets-five.json"
+      ]
+    }
+  ],
+  "canonicalLedger": {
+    "path": "docs/parallel-completion-20261110/requirements-540.json",
+    "sha256": "97ed9e60be00588e38a44e6f5c87c9728df337084e4bad847b41ef98e424291e",
+    "rows": 540,
+    "counts": {
+      "COMPLETE_AND_CERTIFIED": 0,
+      "IMPLEMENTED_REVIEW_PENDING": 2,
+      "IMPLEMENTED_TEST_GAPS": 0,
+      "PARTIALLY_IMPLEMENTED": 495,
+      "NOT_IMPLEMENTED": 0,
+      "IDENTITY_OR_SCOPE_BLOCKED": 43
+    },
+    "classificationUnchanged": true
+  }
+}

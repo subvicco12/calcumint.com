@@ -1,0 +1,109 @@
+{
+  "status": "PASS",
+  "sourceHead": "c715d0ee695c3224c4c34ffa0de56ff5e8d65033",
+  "startedAt": "2026-11-11T03:07:28.005778+00:00",
+  "checks": [
+    {
+      "name": "unit",
+      "command": [
+        "npm",
+        "test",
+        "--",
+        "--maxWorkers=2"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-validation/unit.log",
+      "exitCode": 0,
+      "durationSeconds": 522.611441821,
+      "sha256": "0d453e4bf5aac50366381c4fe119f7f422601443f477dac26b5dfda5ecd6fc9e",
+      "retainedLog": "docs/recovery-20261111/validation/unit.log"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-validation/lint.log",
+      "exitCode": 0,
+      "durationSeconds": 43.470695331,
+      "sha256": "ccd2d8479d8f5ad9f44bde515ceee31f491b672a07d3d841c42ac9d36955b757",
+      "retainedLog": "docs/recovery-20261111/validation/lint.log"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-validation/typecheck.log",
+      "exitCode": 0,
+      "durationSeconds": 8.20230956499995,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "retainedLog": "docs/recovery-20261111/validation/typecheck.log"
+    },
+    {
+      "name": "launch",
+      "command": [
+        "npm",
+        "run",
+        "test:launch"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-validation/launch.log",
+      "exitCode": 0,
+      "durationSeconds": 2.6486482520000436,
+      "sha256": "57986c6426ad4341a2785d2ae5481c0dcf164c1cdf299b14af82bc5f695eea75",
+      "retainedLog": "docs/recovery-20261111/validation/launch.log"
+    },
+    {
+      "name": "certification",
+      "command": [
+        "npm",
+        "run",
+        "test:certification"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-validation/certification.log",
+      "exitCode": 0,
+      "durationSeconds": 2.672949631999927,
+      "sha256": "0a36415273f6202b03a23d8f5569cc8d928ae7e701241973d7b85a7aa0622abb",
+      "retainedLog": "docs/recovery-20261111/validation/certification.log"
+    },
+    {
+      "name": "webpack",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/recovery-validation/webpack.log",
+      "exitCode": 0,
+      "durationSeconds": 32.16070354500005,
+      "sha256": "36741a88440c505ae2af8fd9f04416b010b203e20fbafa7fd0d5e163f69d0cbf",
+      "retainedLog": "docs/recovery-20261111/validation/webpack.log"
+    }
+  ],
+  "finishedAt": "2026-11-11T03:17:39.781163+00:00",
+  "headAtEnd": "c715d0ee695c3224c4c34ffa0de56ff5e8d65033",
+  "focused": {
+    "passed": 67,
+    "log": "docs/recovery-20261111/validation/focused.log",
+    "actualDownloadsIndependentlyVerified": 95,
+    "nodeSourceAndTransportCases": 50
+  },
+  "unit": {
+    "passed": 9126,
+    "skipped": 4,
+    "failed": 0,
+    "filesPassed": 1006,
+    "filesSkipped": 2
+  },
+  "lintWarnings": 36,
+  "productionWrites": false
+}
