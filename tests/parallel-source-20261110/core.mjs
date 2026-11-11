@@ -63,6 +63,8 @@ export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes
 }
 export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,git=sourceGit){
  assert(['src/components/technology-five-delivery.test.tsx','src/components/technology-next-native.test.tsx'].includes(file),'Only two named native test successors');
+ // Reject malformed supplied bytes before expensive full-graph proof; successful claims still prove every edge below.
+ assert(currentBytes.equals(git(['show',applicationSuccessorRef+':'+file])),'Current final-two scope test differs from exact reviewed Git');
  verifyParallelAuthority(readFileSync,git);const capture=JSON.parse(readFileSync(capturePath));ensureParallelSources(capture,git);
  const row=applicationSuccession(capture,readFileSync,git).get(file);assert(row?.parent);const prior='a1014a3914977af8a8d9e85aa2bf08269fccf504';
  assert.equal(git(['rev-parse','--verify',prior+'^{commit}']).toString().trim(),prior);assert(intermediateBytes.equals(git(['show',prior+':'+file])),'Original exact A101 test stage must remain proved');
