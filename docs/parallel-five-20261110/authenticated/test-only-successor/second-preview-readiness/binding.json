@@ -1,0 +1,39 @@
+{
+  "kind": "FINITE_TWO_TEST_ONLY_PREVIEW_READINESS_SUCCESSORS_NOT_APPLICATION_ACCEPTANCE",
+  "baselineGit": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+  "successorGit": "d7eb23e22d2357af838b6d4ba983971090ed8713",
+  "transformation": "exact-whole-file-replacement",
+  "scope": "Move only private second fixture startup and authenticated readiness into original30ssetup; preserve default5s cases and security expectations; cleanup both fixtures",
+  "rows": [
+    {
+      "path": "src/lib/calculator-closure-preview-security.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "sha256": "356e834e7b29b58741efeb55d5d356db4934b8e0abf178291ae733ad212e7f81",
+        "blob": "1306d9b0576e9f273e15d2908df4110a9e7ea892",
+        "archive": "calculator-closure-baseline.fixture"
+      },
+      "successor": {
+        "ref": "d7eb23e22d2357af838b6d4ba983971090ed8713",
+        "sha256": "0956cfddbef2b5451725370e132d827a2e264c021c6244decba15d93259a93c2",
+        "blob": "820e612f38780ec4fd0424a4b7f2ae71e9f9c1ef",
+        "archive": "calculator-closure-successor.fixture"
+      }
+    },
+    {
+      "path": "src/lib/first20/preview-security.test.ts",
+      "baseline": {
+        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+        "sha256": "a54520f4db68a6d208e3151987667aa9356052e9160a0f5c828449abe8cb7484",
+        "blob": "140261b8dc09421a4a8564ecf506152acf25c70e",
+        "archive": "first20-baseline.fixture"
+      },
+      "successor": {
+        "ref": "d7eb23e22d2357af838b6d4ba983971090ed8713",
+        "sha256": "bf5cc36e9ec4c02d5cc7c68c4a6777d22a9f423f4d862da01b310de9d678140b",
+        "blob": "62ab6ce739a035309f1fc8df54c5c687247ba726",
+        "archive": "first20-successor.fixture"
+      }
+    }
+  ]
+}
