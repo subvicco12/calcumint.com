@@ -1,7 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {assertTestOnlySuccessor,testOnlySuccessorPaths,exactRetainedWrapperTransformation,exactSecondPreviewTransformation,exactFirstFiveBatchTransformation} from './test-only-successor.mjs';
+import {execFileSync} from 'node:child_process';
+import {assertTestOnlySuccessor,testOnlySuccessorPaths,exactRetainedWrapperTransformation,exactSecondPreviewTransformation,exactFirstFiveBatchTransformation,exactFirstFiveAsyncTransformation} from './test-only-successor.mjs';
 const root='docs/parallel-five-20261110/authenticated/',source=JSON.parse(readFileSync(root+'final-source-version.json'));
 for(const file of testOnlySuccessorPaths)test('only exact committed test successor is admitted: '+file,async()=>{
  const baseline=source.currentBlobBindings[file].recordedBuildSourceSHA256,bytes=readFileSync(file);
@@ -49,4 +50,17 @@ test('finite first-five parent admission changes only fixed group argv and prese
  assert.equal(before.split(oldArgs).length,2);assert.equal(after,before.replace(oldArgs,newArgs),'Only the exact third-case child argv changes');
  for(const text of [before,after]){assert.equal((text.match(/^it\('/gm)||[]).length,5);assert.equal((text.match(/timeout:45000/g)||[]).length,2);assert.equal((text.match(/,60000\);/g)||[]).length,4);assert(text.includes("expect(output).toContain('# tests 21');expect(output).toContain('# fail 0');"));}
  assert.equal(after.slice(after.indexOf("it('binds fifteen genuine")),before.slice(before.indexOf("it('binds fifteen genuine")),'Authenticated artifact and coupled guard cases remain unchanged');
+});
+
+
+test('additive first-five async hop preserves prior binding, original claims, case bodies and child limits',async()=>{
+ const dir=root+'test-only-successor/first-five-async/',prior=JSON.parse(readFileSync(root+'test-only-successor/first-five-batch/binding.json')),binding=JSON.parse(readFileSync(dir+'binding.json')),row=binding.rows[0],before=readFileSync(dir+row.baseline.archive,'utf8'),after=readFileSync(dir+row.successor.archive,'utf8');
+ assert.equal(binding.rows.length,1);assert.equal(testOnlySuccessorPaths.length,10);for(const field of ['ref','blob','sha256'])assert.equal(row.baseline[field],prior.rows[0].successor[field]);
+ assert.equal(await exactFirstFiveAsyncTransformation(row.path,before),after);await assert.rejects(exactFirstFiveAsyncTransformation(row.path,before+'\n// assertion drift'),/Exact 02d/);await assert.rejects(exactFirstFiveAsyncTransformation('src/lib/unlisted.test.ts',before),/Only the named/);
+ const oldClaim=prior.rows[0].baseline.sha256;
+ await assert.rejects(assertTestOnlySuccessor(row.path,oldClaim,Buffer.from(before)),'Previous valid intermediate cannot replace current async source');
+ const current=Buffer.from(after);for(const ref of [prior.baselineGit,binding.baselineGit,binding.successorGit])await assert.rejects(assertTestOnlySuccessor(row.path,oldClaim,current,args=>{if(args.some(a=>a.startsWith(ref)))throw Error('Missing exact hop '+ref);return execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:4*1024*1024});}),/Missing exact hop/);
+ const titles=text=>text.split(/(?=^it\()/m).slice(1);const oldCases=titles(before),newCases=titles(after);assert.equal(oldCases.length,5);assert.equal(newCases.length,5);for(const i of [0,1,3])assert.equal(oldCases[i],newCases[i],'All unrelated original cases remain byte-identical');
+ for(const i of [2,4]){assert.equal(newCases[i],oldCases[i].replace(',()=>{',',async()=>{').replace('const output=execFileSync(','const {stdout:output}=await execFileAsync('),'Only awaited child execution changes');assert(newCases[i].includes('timeout:45000'));assert(newCases[i].endsWith('},60000);\n')||newCases[i].endsWith('},60000);\n\n'));}
+ assert.equal((after.match(/await execFileAsync\(/g)||[]).length,2);assert(after.includes("import {promisify} from 'node:util';\nconst execFileAsync=promisify(execFile);"));assert.equal((after.match(/timeout:45000/g)||[]).length,2);assert.equal((after.match(/,60000\);/g)||[]).length,4);
 });
