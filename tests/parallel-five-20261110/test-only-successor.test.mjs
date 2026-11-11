@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {assertTestOnlySuccessor,testOnlySuccessorPaths,exactRetainedWrapperTransformation,exactSecondPreviewTransformation} from './test-only-successor.mjs';
+import {assertTestOnlySuccessor,testOnlySuccessorPaths,exactRetainedWrapperTransformation,exactSecondPreviewTransformation,exactFirstFiveBatchTransformation} from './test-only-successor.mjs';
 const root='docs/parallel-five-20261110/authenticated/',source=JSON.parse(readFileSync(root+'final-source-version.json'));
 for(const file of testOnlySuccessorPaths)test('only exact committed test successor is admitted: '+file,async()=>{
  const baseline=source.currentBlobBindings[file].recordedBuildSourceSHA256,bytes=readFileSync(file);
@@ -11,7 +11,7 @@ for(const file of testOnlySuccessorPaths)test('only exact committed test success
  if(file.startsWith('src/lib/'))await assert.rejects(assertTestOnlySuccessor(file,baseline,bytes,()=>{throw Error('missing exact Git source')}),/missing exact Git source/);
 });
 test('no generic test path, missing original block or extra original assertion change is allowed',async()=>{
- await assert.rejects(assertTestOnlySuccessor('src/lib/unlisted.test.ts','0'.repeat(64),Buffer.from('')),/Only nine exact/);
+ await assert.rejects(assertTestOnlySuccessor('src/lib/unlisted.test.ts','0'.repeat(64),Buffer.from('')),/Only ten exact/);
  const binding=JSON.parse(readFileSync(root+'test-only-successor/retained-a7-wrappers/binding.json'));
  for(const row of binding.rows){const old=readFileSync(root+'test-only-successor/retained-a7-wrappers/'+row.baseline.archive,'utf8'),next=readFileSync(root+'test-only-successor/retained-a7-wrappers/'+row.successor.archive,'utf8');assert.equal(await exactRetainedWrapperTransformation(row.path,old),next);await assert.rejects(exactRetainedWrapperTransformation(row.path,old+'\n// changed assertion'),/Exact F042/);}
 });
@@ -25,7 +25,7 @@ test('preview admission preserves every case body and both original setup and ca
 
 test('two finite preview admissions retain security cases, default 5s limits and 30s setup',async()=>{
  const dir=root+'test-only-successor/second-preview-readiness/',binding=JSON.parse(readFileSync(dir+'binding.json'));
- assert.equal(binding.rows.length,2);assert.equal(testOnlySuccessorPaths.length,9);
+ assert.equal(binding.rows.length,2);assert.equal(testOnlySuccessorPaths.length,10);
  for(const row of binding.rows){
   const before=readFileSync(dir+row.baseline.archive,'utf8'),after=readFileSync(dir+row.successor.archive,'utf8');
   assert.equal(await exactSecondPreviewTransformation(row.path,before),after);
@@ -38,4 +38,15 @@ test('two finite preview admissions retain security cases, default 5s limits and
   const concurrent=after.slice(after.indexOf(third));assert(concurrent.includes('expect(other.origin).not.toBe(fixture.origin)'));assert(concurrent.includes('headers:{Authorization:fixture.authorization}'));assert(concurrent.includes('expect(response.status).toBe(401);await response.text()'));assert(!concurrent.includes('startFirst20Preview'));assert(!concurrent.includes('startCalculatorClosurePreview'));
  }
  await assert.rejects(exactSecondPreviewTransformation('src/lib/unlisted.test.ts',''),/Only two named/);
+});
+
+
+test('finite first-five parent admission changes only fixed group argv and preserves every assertion and deadline',async()=>{
+ const dir=root+'test-only-successor/first-five-batch/',binding=JSON.parse(readFileSync(dir+'binding.json')),row=binding.rows[0],before=readFileSync(dir+row.baseline.archive,'utf8'),after=readFileSync(dir+row.successor.archive,'utf8');
+ assert.equal(binding.rows.length,1);assert.equal(testOnlySuccessorPaths.length,10);assert.equal(row.path,'src/lib/first-five-engineering-evidence.test.ts');
+ assert.equal(await exactFirstFiveBatchTransformation(row.path,before),after);await assert.rejects(exactFirstFiveBatchTransformation(row.path,before+'\n// altered assertion'),/Exact F042/);await assert.rejects(exactFirstFiveBatchTransformation('src/lib/unlisted.test.ts',before),/Only the named/);
+ const oldArgs="['--test','--test-reporter=tap','tests/first-five-20261109/source-lineage.test.mjs','tests/first-five-20261109/crossed-dependency-source.test.mjs','tests/first-five-20261109/workflow-budget.test.mjs','tests/first-five-20261109/artifact-file.test.mjs','tests/first-five-20261109/lineage-portability.test.mjs','tests/ci-gate-recovery/batch17-budget-successor.test.mjs','tests/first-five-20261109/accepted-evolution-guard.test.mjs']",newArgs="['tests/parallel-source-20261110/historical-tests.mjs','--first-five-group']";
+ assert.equal(before.split(oldArgs).length,2);assert.equal(after,before.replace(oldArgs,newArgs),'Only the exact third-case child argv changes');
+ for(const text of [before,after]){assert.equal((text.match(/^it\('/gm)||[]).length,5);assert.equal((text.match(/timeout:45000/g)||[]).length,2);assert.equal((text.match(/,60000\);/g)||[]).length,4);assert(text.includes("expect(output).toContain('# tests 21');expect(output).toContain('# fail 0');"));}
+ assert.equal(after.slice(after.indexOf("it('binds fifteen genuine")),before.slice(before.indexOf("it('binds fifteen genuine")),'Authenticated artifact and coupled guard cases remain unchanged');
 });
