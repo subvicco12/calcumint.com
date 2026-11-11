@@ -2,6 +2,8 @@
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
+import {withSourceObjectLock} from './source-object-lock.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const allowed=new Set(['https://github.com/subvicco12/calcumint.com','https://github.com/subvicco12/calcumint.com.git']);
 const invoke=args=>execFileSync('git',['-c','protocol.file.allow=never','-c','protocol.ext.allow=never',...args],{cwd:root,env:{...process.env,GIT_TERMINAL_PROMPT:'0'},stdio:['ignore','pipe','pipe'],timeout:60000,maxBuffer:4*1024*1024});
@@ -12,6 +14,7 @@ export function ensureParallelSources(capture,git=invoke){
  for(const row of capture.guardSources)assert.match(row.ref,/^[0-9a-f]{40}$/);
  const selected=new Set([capture.baselineRef,capture.appRef,capture.codeRef,'05129e2a74e70e23160578c63a984c4bf035ed0f','b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3','756922bebd73e66a2900a35a92a3854ad2813d73',...capture.guardSources.map(r=>r.ref)]);
  for(const row of [...capture.currentSources,...capture.applicationSources])assert(selected.has(row.ref),'Unreviewed source revision outside approved exact source and finite test-successor revisions');
+ const availability=()=>{
  if(git===invoke&&ready)return true;
  const urls=git(['remote','get-url','--all','origin']).toString().trim().split('\n');assert(urls.length===1&&allowed.has(urls[0]),'Exact HTTPS CalcuMint repository origin required');
  function requireObject(ref){assert.match(ref,/^[0-9a-f]{40}$/);const present=()=>{let found;try{found=git(['rev-parse','--verify',ref+'^{commit}']).toString().trim();}catch{return false;}assert.equal(found,ref,'Source commit was substituted');return true;};if(!present())git(['fetch','--no-tags','--depth=1','origin',ref]);assert(present(),'Exact source unavailable after one bounded fetch');}
@@ -22,4 +25,8 @@ export function ensureParallelSources(capture,git=invoke){
  const rows=JSON.parse(match[1]),refs=new Set(rows.flatMap(r=>[r.predecessorRef,r.successorRef,...(r.intermediateSources??[]).map(s=>s.ref),...(r.supplementalSources??[]).map(s=>s.ref)]));assert(rows.length===28&&refs.size<120);
  for(const ref of refs)requireObject(ref);
  if(git===invoke)ready=true;return true;
+ };
+ if(git!==invoke)return availability();
+ const common=resolve(root,invoke(['rev-parse','--git-common-dir']).toString().trim());
+ return withSourceObjectLock(common,availability);
 }
