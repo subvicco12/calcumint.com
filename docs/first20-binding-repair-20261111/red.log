@@ -1,0 +1,24 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Current source binding drift: src/lib/first20/preview-security.test.ts
++ actual - expected
+
++ 'bf5cc36e9ec4c02d5cc7c68c4a6777d22a9f423f4d862da01b310de9d678140b'
+- 'a54520f4db68a6d208e3151987667aa9356052e9160a0f5c828449abe8cb7484'
+
+    at verifyExecutionManifest (file:///workspace/work/product-completion-20261108/scripts/first20-publication/evidence.mjs:18:127)
+    at file:///workspace/work/product-completion-20261108/scripts/first20-publication/evidence.mjs:40:38
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'bf5cc36e9ec4c02d5cc7c68c4a6777d22a9f423f4d862da01b310de9d678140b',
+  expected: 'a54520f4db68a6d208e3151987667aa9356052e9160a0f5c828449abe8cb7484',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4
