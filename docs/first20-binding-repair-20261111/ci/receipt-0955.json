@@ -1,0 +1,68 @@
+{
+  "checkedAtUTC": "2026-11-11T09:56:17.804745+00:00",
+  "run": 42997143084,
+  "expectedSourceHead": "3252a0c74e6e2762b68ff4ddc4cf80b51a9bc9ad",
+  "sourceHeadVerifiedBy": [
+    "commit-associated workflow query",
+    "factory checkout log Merge3252 into a955"
+  ],
+  "actualSyntheticMerge": "3f56745e1557f16d054f8c944f38c83157ff4140",
+  "runStatus": "IN_PROGRESS",
+  "publicationEligibilityOrCertificationGranted": false,
+  "allFiveAndAggregateSuccessful": false,
+  "jobStates": {
+    "publication-factory": {
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    "build": {
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "checks": {
+      "status": "in_progress",
+      "conclusion": null
+    },
+    "source-acceptance": {
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "full-product": {
+      "status": "in_progress",
+      "conclusion": null
+    }
+  },
+  "aggregateValidate": "NOT_YET_PRESENT",
+  "demonstratedFailure": {
+    "job": "publication-factory",
+    "jobId": 130443944904,
+    "step": 30,
+    "test": "tests/calculator-sprint-20261108/historical-source.test.mjs:14",
+    "cases": [
+      12,
+      18
+    ],
+    "expectedRegex": "source revision unavailable",
+    "actualError": "Git commit identity differs",
+    "failureClass": "Rejection diagnostic assertion mismatch; no timing failure established"
+  },
+  "receipts": [
+    {
+      "path": "run-0955.json",
+      "bytes": 655,
+      "sha256": "9df7b4e4bc7d1e12b478415dbd0b9bb94defe93460fe4383284a66c24f269587"
+    },
+    {
+      "path": "jobs-0955.json",
+      "bytes": 26369,
+      "sha256": "8aa155926ed300701a0d76a7fc6001279314ec35fce590ede6df5235255c8f59"
+    },
+    {
+      "path": "publication-factory-130443944904.log",
+      "bytes": 215195,
+      "sha256": "8f08d7c2bb819a86f295f4445de9713efd22ff910d43b0505daf31ad74948bf2"
+    }
+  ],
+  "codeChanges": false,
+  "rerunsRequested": false
+}
