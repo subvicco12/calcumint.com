@@ -1,6 +1,6 @@
 import {it,expect} from 'vitest';
 import {execFileSync} from 'node:child_process';
-import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,readFileSync,rmSync,readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {tmpdir} from 'node:os';
 it('executes fresh current-source, full-authority, reader, reversion and nomination negatives',()=>{
@@ -39,5 +39,16 @@ it('executes the actual first20 publication manifest consumer and successor refu
  try{
   execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/first20-publication/evidence.test.mjs','tests/first20-publication/source-admission.test.mjs'],{env,stdio:'inherit',timeout:60000});
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 22\b/);expect(tap).toMatch(/# pass 22\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
+ }finally{rmSync(directory,{recursive:true,force:true});}
+},65000);
+
+it('executes the actual calculator-sprint source consumers with strict Git refusal diagnostics',()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ const sourceDirectory='tests/calculator-sprint-20261108',files=readdirSync(sourceDirectory).filter(name=>name.endsWith('.test.mjs')).sort().map(name=>sourceDirectory+'/'+name);
+ expect(files).toHaveLength(5);
+ const directory=mkdtempSync(join(tmpdir(),'calcumint-sprint-current-')),report=join(directory,'cases.tap');
+ try{
+  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,...files],{env,stdio:'inherit',timeout:60000});
+  const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 32\b/);expect(tap).toMatch(/# pass 32\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
