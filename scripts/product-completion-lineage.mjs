@@ -589,12 +589,6 @@ const bindings=[
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
       },
       {
-        "path": "src/components/catalog-engineering-review.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "7fd8ee287cb05baea756f76639d5da9d8492057d",
-        "sha256": "aefd1a3896b2dec7b65a248cf863b953c1e89c2d745d08df7cbe37e38a54f5b3"
-      },
-      {
         "path": "src/app/business/shared/[id]/page.tsx",
         "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
         "blob": "9f1a1eb1d71a6b2ef5ee7127bfe974b66b0b328a",
@@ -1133,12 +1127,6 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
-      },
-      {
-        "path": "src/components/publication20-tool.tsx",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "e04f45cf07ae73e801520bf975488d06c433e9ac",
-        "sha256": "8b33b466dbe902dfe2f16e580f78c11482d3a960165e3649c3a20033cd51cb02"
       },
       {
         "path": "src/app/business/shared/[id]/page.tsx",
@@ -3328,12 +3316,6 @@ const bindings=[
         "sha256": "976ae7b0344b4379d47bdfd86181b8914ed5796792c70836edb9d7f237aa3489"
       },
       {
-        "path": "src/components/calculator-interactive.tsx",
-        "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
-        "blob": "db0c1d614cbafbc9468bafdd1fda5f064176fcad",
-        "sha256": "017a01294f2980d25deca43ff8dddb9ab6ea87ec1271dcb4755e91223ec8d142"
-      },
-      {
         "path": "src/components/technology-final-two-analysis.tsx",
         "ref": "25b56970c05aaffaad2dd856809aaf077ab70554",
         "blob": "faca71887e6458a619bba2ab754d704e919c721a",
@@ -4161,12 +4143,6 @@ const bindings=[
         "ref": "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
         "blob": "f3155670788906829c8a078c6eb693f63175a633",
         "sha256": "30f5410307616bb08e2c707044c538f7df7ebdf2769767ec526c6d0e8aa64b80"
-      },
-      {
-        "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
-        "blob": "3b376f0481a59a2e897ea01a8033ca2f5c857972",
-        "sha256": "24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c"
       },
       {
         "path": "src/app/business/shared/[id]/page.tsx",
