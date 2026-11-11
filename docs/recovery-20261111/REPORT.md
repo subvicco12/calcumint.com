@@ -20,7 +20,7 @@ Focused recovery:67 Vitest cases passed, including a bridge that executed50 Node
 
 Fresh isolated qualification: native9 SQL role/ACL/RLS/preimage/rollback checks passed; sharing32 checks passed with genuine GoTrue sessions and authenticated PostgREST. These ran in a separate detached worktree and disposable containers. Native SQL roles are not mislabeled as HTTP-authenticated proof; synthetic publication/math fixtures remain explicit. Actual mathematics/browser evidence is separately bound to the retained application source. Historical main receipts and held SQL remain byte-identical. Nothing was installed in production or active migrations. See `sql/RESULT.json`.
 
-Independent machine/software review found no material remaining source-admission finding; it is not competent mathematical/source certification.
+Independent machine/software review found no material remaining source-admission finding; it is not competent mathematical/source certification. Directory-scoped Git attributes preserve raw validation logs byte-for-byte, including terminal carriage returns and whitespace; the initial documentation import normalized two webpack logs, and the following explicit correction restores their original captured bytes without changing receipt hashes. Git-object hashes are rechecked before push.
 
 ## Dispositions and delivery
 
