@@ -17,5 +17,5 @@ for(const id of ids){assert.equal(personal.journeys.filter(j=>j.catalogId===id&&
 for(const[folder,receipt]of[['personal',personal],['prior/sharing',four],['sharing',fifth]])for(const d of receipt.downloads){const bytes=await readFile(path.join(directory,folder,d.file));assert.equal(bytes.length,d.bytes);assert.equal(sha(bytes),d.sha256);assert(d.events.some(e=>e.state==='completed'));}
 assert(fifth.foreignRLS&&fifth.revokedMemberReadAndWriteDenied&&fifth.directAuthenticatedRPCAndInsertDenied);
 const summary='PASS successful-scope composition: exact app source copies; five authentic API/embed identities, 15 personal journeys, 15 owner/admin/member shared captures, five team A/B recoveries/reports, 95 complete native download bytes, five metered signed webhook jobs; failed earlier whole-run remains failed; release hold retained';
-return {summary,downloads:95,identities:ids,testOnlySuccessors:6,priorFailedRunPromoted:false};
+return {summary,downloads:95,identities:ids,testOnlySuccessors:7,priorFailedRunPromoted:false};
 }

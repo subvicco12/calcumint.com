@@ -11,7 +11,13 @@ for(const file of testOnlySuccessorPaths)test('only exact committed test success
  if(file.startsWith('src/lib/'))await assert.rejects(assertTestOnlySuccessor(file,baseline,bytes,()=>{throw Error('missing exact Git source')}),/missing exact Git source/);
 });
 test('no generic test path, missing original block or extra original assertion change is allowed',async()=>{
- await assert.rejects(assertTestOnlySuccessor('src/lib/unlisted.test.ts','0'.repeat(64),Buffer.from('')),/Only six exact/);
+ await assert.rejects(assertTestOnlySuccessor('src/lib/unlisted.test.ts','0'.repeat(64),Buffer.from('')),/Only seven exact/);
  const binding=JSON.parse(readFileSync(root+'test-only-successor/retained-a7-wrappers/binding.json'));
  for(const row of binding.rows){const old=readFileSync(root+'test-only-successor/retained-a7-wrappers/'+row.baseline.archive,'utf8'),next=readFileSync(root+'test-only-successor/retained-a7-wrappers/'+row.successor.archive,'utf8');assert.equal(await exactRetainedWrapperTransformation(row.path,old),next);await assert.rejects(exactRetainedWrapperTransformation(row.path,old+'\n// changed assertion'),/Exact F042/);}
+});
+
+test('preview admission preserves every case body and both original setup and case limits',()=>{
+ const dir=root+'test-only-successor/preview-readiness/',binding=JSON.parse(readFileSync(dir+'binding.json')),before=readFileSync(dir+'baseline.fixture','utf8'),after=readFileSync(dir+'successor.fixture','utf8');
+ assert.equal(binding.rows.length,1);assert.equal(before.split(binding.replacement.from).length,2);assert.equal(before.replace(binding.replacement.from,binding.replacement.to),after);
+ assert.equal(before.slice(before.indexOf('afterAll(')),after.slice(after.indexOf('afterAll(')));assert.equal((after.match(/it\('/g)||[]).length,4);assert.equal(binding.replacement.from,';},30000);');assert(binding.replacement.to.endsWith(';},30000);'));
 });
