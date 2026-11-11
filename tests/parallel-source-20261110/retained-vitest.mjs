@@ -45,7 +45,14 @@ export function verifyRetainedA7Case(entry,name){
    const env={...process.env,FORCE_COLOR:'0'};delete env.NODE_TEST_CONTEXT;
    const escaped=retainedNames.map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
    const output=join(temporary,'original-vitest.json');
-   execFileSync(process.execPath,[join(root,'node_modules/vitest/vitest.mjs'),'run',entry,'--maxWorkers=1','--reporter=json','--outputFile='+output,'--testNamePattern=^('+escaped.join('|')+')$'],{cwd:tree,env,stdio:'inherit',timeout:120000});
+   try{
+    execFileSync(process.execPath,[join(root,'node_modules/vitest/vitest.mjs'),'run',entry,'--maxWorkers=1','--reporter=json','--outputFile='+output,'--testNamePattern=^('+escaped.join('|')+')$'],{cwd:tree,env,stdio:'inherit',timeout:120000});
+   }catch(cause){
+    let diagnostic;
+    try{const report=JSON.parse(readFileSync(output,'utf8'));diagnostic=JSON.stringify({numFailedTests:report.numFailedTests,numFailedTestSuites:report.numFailedTestSuites,testResults:report.testResults.map(result=>({name:result.name,message:result.message,failedAssertions:result.assertionResults.filter(assertion=>assertion.status==='failed').map(assertion=>({title:assertion.title,failureMessages:assertion.failureMessages}))}))});}
+    catch(reportError){diagnostic='Original JSON report unavailable: '+String(reportError);}
+    throw new Error('Original retained A7 Vitest execution failed: '+entry+'\n'+diagnostic,{cause});
+   }
    assertOriginalReport(entry,JSON.parse(readFileSync(output,'utf8')));
    completed.set(entry,new Set(retainedNames));
   }finally{try{if(added)sourceGit(['worktree','remove','--force',tree]);}finally{rmSync(temporary,{recursive:true,force:true});}}
