@@ -33,3 +33,7 @@ A normal fast-forward push to existing PR1538 is permitted only after these loca
 After recovery CI qualification, the next bounded engineering targets are368 IP Subnet and376 Screen PPI, reusing the technology-family architecture and existing exact contracts. Full-catalog remaining hours remain unqualified because495 full-contract proofs and43 authority cases cannot be estimated from aggregate test counts. First publication depends on actual competent and operator acceptance, not more broad inventory.
 
 RELEASE HOLD remains active. No merge, deployment, production SQL, credential change, certification, publication or live billing activation.
+
+## Hosted CI correction addendum
+
+The first pushed recovery head c59a6856 failed two hosted gates, despite its passing local baseline. Both demonstrated causes are corrected and independently reviewed; see `ci-repair/REPORT.md` for the exact stale-edge and concurrent-fetch causes, preserved RED evidence, source successors and successful delta validation. The successor must still pass all five hosted jobs plus aggregate. Canonical counts and release hold remain unchanged.

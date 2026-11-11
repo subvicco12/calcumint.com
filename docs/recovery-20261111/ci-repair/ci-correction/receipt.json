@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "head": "46fddcd1852ad85411ed2e00c1a06c825adaced5",
+  "startedAt": "2026-11-11T04:04:15.485707+00:00",
+  "checks": [
+    {
+      "name": "current-source",
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import{verifyParallelSource}from'./tests/parallel-source-20261110/core.mjs';if(verifyParallelSource()!==true)process.exit(1);console.log('Current graph admission PASS')"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/current-source.log",
+      "exitCode": 0,
+      "durationSeconds": 7.497581765000177,
+      "sha256": "7784ca3ac4ddf6d7834d386b92300ba50b89b9dff8a5f04b8c69edcf882f0448",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/current-source.log"
+    },
+    {
+      "name": "exact-ci-command",
+      "command": [
+        "node",
+        "scripts/check-shortest-publication20.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/exact-ci-command.log",
+      "exitCode": 0,
+      "durationSeconds": 5.849107752999771,
+      "sha256": "09f256baf207af1229f689037db6dfc9a73acc3bc27cadf5ef918a0cdcfb2cdf",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/exact-ci-command.log"
+    },
+    {
+      "name": "existing-node36",
+      "command": [
+        "node",
+        "--test",
+        "tests/shortest-publication-20/caller-lineage.test.mjs",
+        "tests/shortest-publication-20/frequency-presentation-lineage.test.mjs",
+        "tests/shortest-publication-20/completion-lineage.test.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/existing-node36.log",
+      "exitCode": 0,
+      "durationSeconds": 22.79018341899973,
+      "sha256": "a09f8e79d5c899b07fde7c66d928fc2f9a923a54d55256fff15bdc88b9d0f948",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/existing-node36.log"
+    },
+    {
+      "name": "focused",
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "src/lib/parallel-source-evidence.test.ts",
+        "src/lib/parallel-five-auth-evidence.test.ts",
+        "src/lib/execution-recovery-evidence.test.ts",
+        "--maxWorkers=1"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/focused.log",
+      "exitCode": 0,
+      "durationSeconds": 76.78951314400001,
+      "sha256": "f8f3e86c6dd4ecc34627225f07f5cbf6d63416621947d2ec0c8ecafb9e2a0dd0",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/focused.log"
+    },
+    {
+      "name": "python",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/shortest-publication-20",
+        "-p",
+        "test_*.py"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/python.log",
+      "exitCode": 0,
+      "durationSeconds": 0.1646035519997895,
+      "sha256": "af55efa5c3ceb122f8184c380aa405d3f3b4e7e0c1e892773d0eff31d0645c8a",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/python.log"
+    },
+    {
+      "name": "browser20",
+      "command": [
+        "node",
+        "tests/shortest-publication-20/browser.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/browser20.log",
+      "exitCode": 0,
+      "durationSeconds": 121.51321156499989,
+      "sha256": "fb104587148570571756a1ff1f0d74c9f9944c1cbf9da34411312d9dfdfa8acb",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/browser20.log"
+    },
+    {
+      "name": "critical440",
+      "command": [
+        "node",
+        "tests/critical440-browser/acceptance.mjs"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/critical440.log",
+      "exitCode": 0,
+      "durationSeconds": 8.237764470000002,
+      "sha256": "6d55d448edaa236188df66a0030a7dd6cb114886296155a44f0a1b6336dc290e",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/critical440.log"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npx",
+        "eslint",
+        "scripts/product-completion-lineage.mjs",
+        "tests/parallel-source-20261110/core.mjs",
+        "tests/parallel-source-20261110/bootstrap.mjs",
+        "tests/parallel-source-20261110/authority.mjs",
+        "tests/parallel-source-20261110/current.test.mjs",
+        "tests/shortest-publication-20/caller-lineage.test.mjs",
+        "src/lib/parallel-source-evidence.test.ts"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/lint.log",
+      "exitCode": 0,
+      "durationSeconds": 2.9324313649999567,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/lint.log"
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "status": "PASS",
+      "log": "/workspace/artifacts/parallel-completion-20261110/ci-correction/typecheck.log",
+      "exitCode": 0,
+      "durationSeconds": 8.280008835999979,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "retainedLog": "docs/recovery-20261111/ci-repair/ci-correction/typecheck.log"
+    }
+  ],
+  "finishedAt": "2026-11-11T04:08:29.550305+00:00",
+  "headAtEnd": "46fddcd1852ad85411ed2e00c1a06c825adaced5"
+}
