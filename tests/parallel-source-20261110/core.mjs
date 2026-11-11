@@ -8,7 +8,7 @@ import {retainedA7Proof,sourceGit,baselineRef} from './baseline-runtime.mjs';
 import {verifyParallelAuthority} from './authority.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
-export const capturePath='docs/parallel-source-20261110/capture-revision10.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision11.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -50,6 +50,13 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
  const before=parseRows(old),after=parseRows(current);assert.deepEqual(after.map(r=>r.path),before.map(r=>r.path));if(suppliedRows)assert.deepEqual(suppliedRows,after,'Only the reviewed parallel source rows are admitted');
  const apps=new Map(capture.applicationSources.map(r=>[r.path,r])),evolutions=new Map([...apps,...capture.guardSources.map(r=>[r.path,r])]);
+ const reviewedPath='src/lib/execution-recovery-evidence.test.ts',reviewedRef='05129e2a74e70e23160578c63a984c4bf035ed0f';
+ const reviewed=capture.currentSources.find(r=>r.path===reviewedPath);assert(reviewed,'Reviewed exact test successor must remain captured');
+ assert.equal(git(['rev-parse',reviewedRef+':'+reviewedPath]).toString().trim(),reviewed.blob);
+ assert.equal(hash(git(['show',reviewedRef+':'+reviewedPath])),reviewed.sha256);
+ const owners=before.filter(b=>b.supplementalSources?.some(d=>d.path===reviewedPath)).map(b=>b.path).sort();
+ assert.deepEqual(owners,['scripts/publication20-caller-lineage.mjs','tests/acceptance-closure-20261108/receipt-source-path.mjs']);
+ evolutions.set(reviewedPath,{...reviewed,ref:reviewedRef});
  const allowedExtras=new Map(apps);
  const retainedPaths=['src/components/technology-bounded-analysis.test.tsx','src/components/technology-bounded-analysis.tsx','src/components/technology-next-five-integration.test.tsx','src/lib/native-delivery/technology-next-five-catalog.ts','src/lib/native-delivery/technology-next-five-contract.test.ts','src/lib/native-delivery/technology-next-five-contract.ts','src/lib/technology-next-five-analysis.test.ts','src/lib/technology-next-five-analysis.ts'];
  for(const path of retainedPaths){const bytes=git(['show',baselineRef+':'+path]);allowedExtras.set(path,{path,ref:baselineRef,blob:git(['rev-parse',baselineRef+':'+path]).toString().trim(),sha256:hash(bytes)});}
@@ -60,6 +67,13 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
   if(expected.supplementalSources)expected.supplementalSources=expected.supplementalSources.map(d=>evolutions.has(d.path)?short(evolutions.get(d.path)):d);
   const count=expected.supplementalSources?.length??0,extras=(now.supplementalSources??[]).slice(count);for(const d of extras){assert(allowedExtras.has(d.path),'Unreviewed supplemental source');assert.deepEqual(d,short(allowedExtras.get(d.path)));}
   if(extras.length)expected.supplementalSources=[...(expected.supplementalSources??[]),...extras];assert.deepEqual(now,expected,'Only named app/data successors may advance: '+prior.path);
+ }
+ // A separately captured current file must also be the exact byte target of
+ // every declared live dependency edge; detached historical proofs cannot fill it.
+ const checkedEdges=new Set();
+ for(const row of after)for(const dep of row.supplementalSources??[]){
+  const identity=dep.ref+':'+dep.path+':'+dep.blob;if(checkedEdges.has(identity))continue;checkedEdges.add(identity);
+  const bytes=git(['cat-file','blob',dep.blob]);sourceRecord({...dep,bytes:bytes.length},read,git);
  }
  for(const r of capture.applicationSources)assert(after.some(b=>b.path===r.path||b.supplementalSources?.some(d=>d.path===r.path)),'Application dependency missing from current binding graph');
  return true;

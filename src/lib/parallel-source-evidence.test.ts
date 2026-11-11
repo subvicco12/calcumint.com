@@ -10,3 +10,9 @@ it('executes fresh current-source, full-authority, reader, reversion and nominat
   const tap=readFileSync(output,'utf8');expect(tap).toMatch(/# tests 50\b/);expect(tap).toMatch(/# pass 50\b/);expect(tap).toMatch(/# fail 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },160000);
+
+it('executes the actual shortest-publication CI consumer with current immutable graph edges',()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ const output=execFileSync(process.execPath,['scripts/check-shortest-publication20.mjs'],{env,encoding:'utf8',timeout:60000,maxBuffer:4000000});
+ expect(JSON.parse(output)).toMatchObject({identities:20,callerBindings:20,canonicalAccepted:0,publicationEligible:0,releaseHold:true});
+},65000);
