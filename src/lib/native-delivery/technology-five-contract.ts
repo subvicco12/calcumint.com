@@ -1,3 +1,4 @@
+import {technologyFinalTwoRequestSchema,runTechnologyFinalTwoCalculation} from './technology-final-two-contract';
 import {z} from 'zod';
 import {calculatorRegistry} from '@/calculators/registry';
 import {runCalculator} from '@/calculators/engine';
@@ -17,9 +18,10 @@ export const technologyFiveLegacyRequestSchema=z.discriminatedUnion('catalogId',
  z.object({catalogId:z.literal(373),version:z.literal(1),input:z.object({bandwidthMbps:decimal,timeSeconds:decimal}).strict()}).strict(),
  z.object({catalogId:z.literal(386),version:z.literal(1),input:z.object({inputBytes:decimal}).strict()}).strict()
 ]);
-export const technologyFiveRequestSchema=z.union([technologyFiveLegacyRequestSchema,technologyNextRequestSchema,technologyNextFiveRequestSchema]);
+export const technologyFiveRequestSchema=z.union([technologyFiveLegacyRequestSchema,technologyNextRequestSchema,technologyNextFiveRequestSchema,technologyFinalTwoRequestSchema]);
 /** Pure deterministic delivery contract only. Routes separately require actual publication and Business authority. */
 export function runTechnologyFiveCalculation(raw:unknown){
+ const finalTwo=technologyFinalTwoRequestSchema.safeParse(raw);if(finalTwo.success)return runTechnologyFinalTwoCalculation(finalTwo.data);
  const nextFive=technologyNextFiveRequestSchema.safeParse(raw);if(nextFive.success)return runTechnologyNextFiveCalculation(nextFive.data);
  const next=technologyNextRequestSchema.safeParse(raw);if(next.success)return runTechnologyNextCalculation(next.data);
  const parsed=technologyFiveLegacyRequestSchema.safeParse(raw);if(!parsed.success)throw new NativeDeliveryError(422,'Provide the exact supported Technology identity/version and decimal-string inputs');

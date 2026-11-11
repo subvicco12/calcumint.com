@@ -14,7 +14,8 @@ async function loadShared(rawId:string,rawQuery:Query){
   const result=await context.client.from(nextCohort?'technology_next_shared_snapshots':'technology_five_shared_snapshots').select('id,organization_id,project_id,title,calculator_slug,calculator_version,input_data,output_data').eq('id',id).maybeSingle();
   if(result.error)throw new TechnologyFiveSharingError(503,'Shared snapshot storage is awaiting schema adoption or temporarily unavailable.');
   if(!result.data)throw new TechnologyFiveSharingError(404,'This shared snapshot is unavailable.');
-  await(nextCohort?technologyNextSharingAccess:technologyFiveSharingAccess)(context,result.data.organization_id);
+  if(nextCohort)await technologyNextSharingAccess(context,result.data.organization_id,false,true,result.data.calculator_slug);
+  else await technologyFiveSharingAccess(context,result.data.organization_id);
   const snapshot=(nextCohort?readTechnologyNextSharedSnapshot:readTechnologyFiveSharedSnapshot)(result.data);
  return{id,context,query,row:result.data,snapshot};
 }

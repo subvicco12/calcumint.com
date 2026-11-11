@@ -1,19 +1,19 @@
 import {createSupabaseAdminClient} from '@/lib/supabase/admin';
 import {technologyFiveSharingSession,technologyFiveSharingAccess,TechnologyFiveSharingError} from './technology-five-sharing-server';
-import {TECHNOLOGY_NEXT_SHARING_REVISION,parseTechnologyNextShare} from './technology-next-sharing';
+import {technologyNextSharingCapabilitySupports,parseTechnologyNextShare} from './technology-next-sharing';
 export const technologyNextSharingSession=technologyFiveSharingSession;
-export async function technologyNextSharingAccess(context:Awaited<ReturnType<typeof technologyNextSharingSession>>,organizationId:string,write=false,requireCapability=true){
+export async function technologyNextSharingAccess(context:Awaited<ReturnType<typeof technologyNextSharingSession>>,organizationId:string,write=false,requireCapability=true,calculatorSlug?:string){
  const role=await technologyFiveSharingAccess(context,organizationId,write,false);
  if(!requireCapability)return role;
  const capability=await context.client.rpc('technology_next_sharing_capability',{target_org:organizationId});
  if(capability.error)throw new TechnologyFiveSharingError(503,'Shared snapshot storage is awaiting schema adoption. No snapshot was shared.');
- if(capability.data!==TECHNOLOGY_NEXT_SHARING_REVISION)throw new TechnologyFiveSharingError(403,'This Business workspace is unavailable.');
+ if(!technologyNextSharingCapabilitySupports(capability.data,calculatorSlug))throw new TechnologyFiveSharingError(403,'This Business workspace is unavailable.');
  return role;
 }
 export async function storeTechnologyNextShare(raw:unknown){
  const context=await technologyNextSharingSession();
  let payload:ReturnType<typeof parseTechnologyNextShare>;try{payload=parseTechnologyNextShare(raw);}catch{throw new TechnologyFiveSharingError(422,'Use an exact supported cohort-version recorded snapshot with valid finite precision.');}
- await technologyNextSharingAccess(context,payload.organizationId,true);
+ await technologyNextSharingAccess(context,payload.organizationId,true,true,payload.snapshot.calculatorSlug);
  const project=await context.client.from('business_projects').select('id,organization_id').eq('id',payload.projectId).eq('organization_id',payload.organizationId).eq('status','active').maybeSingle();
  if(project.error)throw new TechnologyFiveSharingError(503,'Project availability could not be verified.');
  if(!project.data||project.data.organization_id!==payload.organizationId)throw new TechnologyFiveSharingError(404,'Project unavailable.');
