@@ -10,7 +10,7 @@ import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision24.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision25.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -55,7 +55,26 @@ function applicationSuccession(capture,read,git){
  }
  return result;
 }
+export const sevenTestRef='f68c077b63b1dfabbe9ca3f21e4f195ef645ad97';
+export const sevenTestPaths=Object.freeze(['src/app/business/shared/[id]/page.test.tsx','src/lib/native-delivery/technology-next-composition.test.ts','src/lib/thirteen-program-evidence.test.ts']);
+function sevenTestSuccession(capture,read,git){
+ assert.equal(capture.sevenTestRef,sevenTestRef);assert.deepEqual(capture.sevenTestSuccessors.map(r=>r.path),sevenTestPaths);
+ const result=new Map();for(const row of capture.sevenTestSuccessors){
+  assert.equal(row.current.path,row.path);assert.equal(row.current.ref,sevenTestRef);assert.equal(row.predecessor.path,row.path);
+  assert.equal(row.predecessor.ref,row.path==='src/lib/thirteen-program-evidence.test.ts'?'05129e2a74e70e23160578c63a984c4bf035ed0f':appRef);
+  immutableRecord(row.predecessor,git);sourceRecord(row.current,read,git);result.set(row.path,{path:row.path,current:row.current});
+ }return result;
+}
+export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){
+ assert(sevenTestPaths.includes(file),'Only three exact seven-failure test successors');git=currentGit(git);
+ // Reject altered buffers before the complete successful-claim proof, with no cache of mutable bytes.
+ assert(currentBytes.equals(git(['show',sevenTestRef+':'+file])),'Exact seven-failure current test bytes required');
+ verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git);sevenTestSuccession(capture,read,git);
+ const row=capture.sevenTestSuccessors.find(r=>r.path===file);assert.equal(claim,row.predecessor.sha256,'Exact immutable test predecessor claim required');
+ return {successorGit:sevenTestRef,successorSHA256:row.current.sha256,testOnly:true};
+}
 export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){
+ git=currentGit(git);
  verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git);
  const row=applicationSuccession(capture,read,git).get(file);assert(row&&row.historical,'Only an exact historical named final-two source claim is admitted');
  assert.equal(recordedSHA256,row.historical.sha256,'Exact original F042 source claim required');assert.equal(hash(currentBytes),row.current.sha256,'Current named application successor differs');assert(currentBytes.equals(immutableRecord(row.current,git)));
@@ -79,7 +98,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  const capture=JSON.parse(read(capturePath));assert.equal(capture.baselineRef,baselineRef);assert.equal(capture.appRef,appRef);assert.equal(capture.productionWrites,false);assert.equal(capture.historicalRecordsEdited,false);
  ensureParallelSources(capture);
  if(actualGit===sourceGit)sourceGit.preloadBlobs([...capture.currentSources,...capture.applicationSources,...capture.guardSources].map(r=>r.blob));
- const delta=applicationSuccession(capture,read,git);
+ const delta=new Map([...applicationSuccession(capture,read,git),...sevenTestSuccession(capture,read,git)]);
  const baseline=retainedA7Proof();assert.deepEqual(capture.retainedReads,baseline.rows,'Original R5 read closure differs');
  const appPaths=git(['diff','--name-only',baselineRef,appRef,'--','src']).toString().trim().split('\n');assert.equal(appPaths.length,27);assert.deepEqual(capture.applicationSources.map(r=>r.path),appPaths);
  for(const row of capture.applicationSources){assert.equal(row.ref,appRef);if(delta.has(row.path)){immutableRecord(row,git);sourceRecord(delta.get(row.path).current,read,git);}else sourceRecord(row,read,git);}

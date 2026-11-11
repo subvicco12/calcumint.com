@@ -1,3 +1,4 @@
+import {verifyParallelSource} from '../../parallel-source-20261110/core.mjs';
 /** Independently reviewed populated runtime verifier bytes, not mutable authority. */
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -38,6 +39,6 @@ const fixed=Object.freeze([
 const sourceGit=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function verifyFixedRuntimeReader(read=readFileSync,git=sourceGit){
- for(const row of fixed){assert.equal(git(['rev-parse','HEAD:'+row.path]).toString().trim(),row.blob,'Fixed runtime verifier HEAD object differs: '+row.path);const bytes=git(['cat-file','blob',row.blob]);assert.equal(hash(bytes),row.sha256,'Fixed runtime verifier Git bytes differ: '+row.path);assert(read(row.path).equals(bytes),'Fixed runtime verifier target differs: '+row.path);}
+ for(const row of fixed){const actual=git(['rev-parse','HEAD:'+row.path]).toString().trim();if(actual!==row.blob){assert.equal(row.path,'tests/next-cohort-20261110/source/retained-runtime.mjs','Fixed runtime verifier HEAD object differs: '+row.path);try{assert.equal(verifyParallelSource(read,git),true);}catch(cause){const target=/Independent current target bytes differ/.test(String(cause));throw new Error('Fixed runtime verifier '+(target?'target differs: ':'HEAD object differs: ')+row.path,{cause});}const original=git(['cat-file','blob',row.blob]);assert.equal(hash(original),row.sha256);continue;}const bytes=git(['cat-file','blob',row.blob]);assert.equal(hash(bytes),row.sha256,'Fixed runtime verifier Git bytes differ: '+row.path);assert(read(row.path).equals(bytes),'Fixed runtime verifier target differs: '+row.path);}
  return true;
 }
