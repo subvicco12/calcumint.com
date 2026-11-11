@@ -8,7 +8,7 @@ import {retainedA7Proof,sourceGit,baselineRef} from './baseline-runtime.mjs';
 import {verifyParallelAuthority} from './authority.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
-export const capturePath='docs/parallel-source-20261110/capture-revision11.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision12.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -57,12 +57,17 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  const owners=before.filter(b=>b.supplementalSources?.some(d=>d.path===reviewedPath)).map(b=>b.path).sort();
  assert.deepEqual(owners,['scripts/publication20-caller-lineage.mjs','tests/acceptance-closure-20261108/receipt-source-path.mjs']);
  evolutions.set(reviewedPath,{...reviewed,ref:reviewedRef});
+ const nodePath='tests/shortest-publication-20/caller-lineage.test.mjs',nodeRef='756922bebd73e66a2900a35a92a3854ad2813d73';
+ const nodeRecord=capture.currentSources.find(r=>r.path===nodePath);assert(nodeRecord,'Exact current caller-tamper test must remain captured');
+ assert.equal(git(['rev-parse',nodeRef+':'+nodePath]).toString().trim(),nodeRecord.blob);assert.equal(hash(git(['show',nodeRef+':'+nodePath])),nodeRecord.sha256);
+ assert.deepEqual(before.filter(b=>b.supplementalSources?.some(d=>d.path===nodePath)).map(b=>b.path),['scripts/publication20-caller-lineage.mjs']);
+ const ownedEvolutions=new Map(apps);ownedEvolutions.set(nodePath,{...nodeRecord,ref:nodeRef});evolutions.set(nodePath,{...nodeRecord,ref:nodeRef});
  const allowedExtras=new Map(apps);
  const retainedPaths=['src/components/technology-bounded-analysis.test.tsx','src/components/technology-bounded-analysis.tsx','src/components/technology-next-five-integration.test.tsx','src/lib/native-delivery/technology-next-five-catalog.ts','src/lib/native-delivery/technology-next-five-contract.test.ts','src/lib/native-delivery/technology-next-five-contract.ts','src/lib/technology-next-five-analysis.test.ts','src/lib/technology-next-five-analysis.ts'];
  for(const path of retainedPaths){const bytes=git(['show',baselineRef+':'+path]);allowedExtras.set(path,{path,ref:baselineRef,blob:git(['rev-parse',baselineRef+':'+path]).toString().trim(),sha256:hash(bytes)});}
  const short=r=>({path:r.path,ref:r.ref,blob:r.blob,sha256:r.sha256});
  for(let i=0;i<before.length;i++){
-  const prior=before[i],now=after[i],expected=structuredClone(prior),app=apps.get(prior.path);
+  const prior=before[i],now=after[i],expected=structuredClone(prior),app=ownedEvolutions.get(prior.path);
   if(app){expected.intermediateSources??=[];expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});Object.assign(expected,{successorRef:app.ref,successorBlob:app.blob,successorSHA256:app.sha256});}
   if(expected.supplementalSources)expected.supplementalSources=expected.supplementalSources.map(d=>evolutions.has(d.path)?short(evolutions.get(d.path)):d);
   const count=expected.supplementalSources?.length??0,extras=(now.supplementalSources??[]).slice(count);for(const d of extras){assert(allowedExtras.has(d.path),'Unreviewed supplemental source');assert.deepEqual(d,short(allowedExtras.get(d.path)));}
