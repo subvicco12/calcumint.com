@@ -1,5 +1,7 @@
 import {it,expect} from 'vitest';
-import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';
+import {readFileSync} from 'node:fs';import {createHash} from 'node:crypto';import {execFileSync,execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+const execFileAsync=promisify(execFile);
 import {verifyCapturedSource} from '../../tests/acceptance-closure-20261108/receipt-source-path.mjs';
 const prefix='docs/first-five-20261109/',json=(p:string)=>JSON.parse(readFileSync(p,'utf8')),digest=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex');
 it('retains all540 identities and inherited criteria while recording only five individually scoped engineering deltas',()=>{
@@ -13,8 +15,8 @@ it('binds all15 actual analytical browser journeys without authenticated or prod
  for(const row of receipt.journeys){expect(row.primarySnapshotUnchanged).toBe(true);expect(row.independentSamples).toBe(true);expect(row.accessibleRegionAndTable).toBe(true);expect(row.viewportNoOverflow).toBe(true);expect(row.keyboardTargetRecovery).toBe(row.plan!=='free');}
  for(const [path,sha256] of Object.entries(receipt.sourceHashes))await expect(verifyCapturedSource({path,sha256:String(sha256)})).resolves.toBe(path);
 },60000);
-it('runs all twenty-one new exact-source and unchanged-verification CI budget checks in mandatory unit discovery',()=>{
- const env={...process.env};delete env.NODE_TEST_CONTEXT;const output=execFileSync(process.execPath,['tests/parallel-source-20261110/historical-tests.mjs','--first-five-group'],{encoding:'utf8',env,timeout:45000,maxBuffer:2000000});expect(output).toContain('# tests 21');expect(output).toContain('# fail 0');
+it('runs all twenty-one new exact-source and unchanged-verification CI budget checks in mandatory unit discovery',async()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;const {stdout:output}=await execFileAsync(process.execPath,['tests/parallel-source-20261110/historical-tests.mjs','--first-five-group'],{encoding:'utf8',env,timeout:45000,maxBuffer:2000000});expect(output).toContain('# tests 21');expect(output).toContain('# fail 0');
 },60000);
 
 it('binds fifteen genuine authenticated existing-route journeys and independently reads fifty native completed downloads',async()=>{
@@ -27,6 +29,6 @@ it('binds fifteen genuine authenticated existing-route journeys and independentl
  expect(receipt.limits.join(' ')).toContain('unexpired signed access JWT remains accepted');
 },60000);
 
-it('runs the complete coupled source-evolution guard before a late publication campaign can reach it',()=>{
- const env={...process.env};delete env.NODE_TEST_CONTEXT;const output=execFileSync(process.execPath,['--test','--test-reporter=tap','tests/acceptance-closure-20261108/converter-final-source.test.mjs'],{encoding:'utf8',env,timeout:45000,maxBuffer:3000000});expect(output).toContain('# tests 27');expect(output).toContain('# fail 0');
+it('runs the complete coupled source-evolution guard before a late publication campaign can reach it',async()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;const {stdout:output}=await execFileAsync(process.execPath,['--test','--test-reporter=tap','tests/acceptance-closure-20261108/converter-final-source.test.mjs'],{encoding:'utf8',env,timeout:45000,maxBuffer:3000000});expect(output).toContain('# tests 27');expect(output).toContain('# fail 0');
 },60000);
