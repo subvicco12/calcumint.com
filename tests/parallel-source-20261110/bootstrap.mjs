@@ -12,7 +12,7 @@ export function ensureParallelSources(capture,git=invoke){
  assert.equal(capture.baselineRef,'a7bab5b5534d51cea25ba5ffe4aa9b3630176909');assert.equal(capture.appRef,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.match(capture.codeRef,/^[0-9a-f]{40}$/);
  assert.equal(capture.guardSources.length,4);assert.equal(new Set(capture.guardSources.map(r=>r.ref)).size,1);
  for(const row of capture.guardSources)assert.match(row.ref,/^[0-9a-f]{40}$/);
- const selected=new Set([capture.baselineRef,capture.appRef,capture.codeRef,'05129e2a74e70e23160578c63a984c4bf035ed0f','b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3','756922bebd73e66a2900a35a92a3854ad2813d73',...capture.guardSources.map(r=>r.ref)]);
+ const selected=new Set([capture.baselineRef,capture.appRef,capture.codeRef,'05129e2a74e70e23160578c63a984c4bf035ed0f','b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3','756922bebd73e66a2900a35a92a3854ad2813d73','a963ef7aaa04664d07709cc431d6214511bc0573','d7eb23e22d2357af838b6d4ba983971090ed8713',...capture.guardSources.map(r=>r.ref)]);
  for(const row of [...capture.currentSources,...capture.applicationSources])assert(selected.has(row.ref),'Unreviewed source revision outside approved exact source and finite test-successor revisions');
  const availability=()=>{
  if(git===invoke&&ready)return true;

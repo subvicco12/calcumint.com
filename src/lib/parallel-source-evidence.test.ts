@@ -21,3 +21,12 @@ it('executes the actual shortest-publication CI consumer with current immutable 
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 36\b/);expect(tap).toMatch(/# pass 36\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
+
+it('executes the actual six-candidate CI lineage consumer with exact tamper refusals',()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ const directory=mkdtempSync(join(tmpdir(),'calcumint-six-lineage-')),report=join(directory,'cases.tap');
+ try{
+  execFileSync(process.execPath,['--test','--test-reporter=tap','--test-reporter-destination='+report,'tests/financial-safety-lineage.test.mjs','tests/product-completion-lineage.test.mjs','tests/source-lineage-bootstrap.test.mjs'],{env,stdio:'inherit',timeout:60000});
+  const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 43\b/);expect(tap).toMatch(/# pass 43\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
+ }finally{rmSync(directory,{recursive:true,force:true});}
+},65000);
