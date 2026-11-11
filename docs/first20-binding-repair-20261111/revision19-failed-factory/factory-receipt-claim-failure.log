@@ -1,0 +1,23 @@
+2026-11-11T11:34:48.0034350Z # Subtest: fresh exact-head authenticated receipt is required and fully verified
+2026-11-11T11:34:48.0035533Z not ok 57 - fresh exact-head authenticated receipt is required and fully verified
+2026-11-11T11:34:48.0036296Z   ---
+2026-11-11T11:34:48.0036682Z   duration_ms: 47.595018
+2026-11-11T11:34:48.0037131Z   type: 'test'
+2026-11-11T11:34:48.0038184Z   location: '/home/runner/work/calcumint.com/calcumint.com/tests/acceptance-closure-20261108/first-two-receipt.test.mjs:20:40'
+2026-11-11T11:34:48.0039490Z   failureType: 'testCodeFailure'
+2026-11-11T11:34:48.0040476Z   error: 'Captured source historical claim differs: src/lib/registered-snapshot-verification.ts'
+2026-11-11T11:34:48.0041375Z   code: 'ERR_TEST_FAILURE'
+2026-11-11T11:34:48.0041847Z   stack: |-
+2026-11-11T11:34:48.0042983Z     verifyCapturedSource (file:///home/runner/work/calcumint.com/calcumint.com/tests/acceptance-closure-20261108/receipt-source-path.mjs:43:57)
+2026-11-11T11:34:48.0044959Z     async verifyReceipt (file:///home/runner/work/calcumint.com/calcumint.com/tests/acceptance-closure-20261108/first-two-receipt.test.mjs:15:39)
+2026-11-11T11:34:48.0046997Z     async TestContext.<anonymous> (file:///home/runner/work/calcumint.com/calcumint.com/tests/acceptance-closure-20261108/first-two-receipt.test.mjs:21:2)
+2026-11-11T11:34:48.0048392Z     async Test.run (node:internal/test_runner/test:1054:7)
+2026-11-11T11:34:48.0049502Z     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+2026-11-11T11:34:48.0050246Z   ...
+2026-11-11T11:34:48.0051101Z # Subtest: 540 inherited dispositions reproduce with only source-scoped technical deltas
+2026-11-11T11:34:48.0052312Z ok 58 - 540 inherited dispositions reproduce with only source-scoped technical deltas
+2026-11-11T11:34:48.0053107Z   ---
+2026-11-11T11:34:48.0053488Z   duration_ms: 71.932659
+2026-11-11T11:34:48.0053912Z   type: 'test'
+2026-11-11T11:34:48.0054291Z   ...
+2026-11-11T11:34:48.0055090Z # Subtest: verifies the retained cache capture against the same canonical dependency bytes
