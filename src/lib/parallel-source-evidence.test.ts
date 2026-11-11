@@ -64,3 +64,15 @@ it('executes the actual calculator-sprint source consumers with strict Git refus
   const tap=readFileSync(report,'utf8');expect(tap).toMatch(/# tests 32\b/);expect(tap).toMatch(/# pass 32\b/);expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
  }finally{rmSync(directory,{recursive:true,force:true});}
 },65000);
+
+it('executes retained and exact-current authenticated receipt source claims with provenance refusals',async()=>{
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;
+ const directory=mkdtempSync(join(tmpdir(),'calcumint-receipt-source-')),report=join(directory,'cases.tap');
+ const files=readdirSync('tests/acceptance-closure-20261108').filter(name=>name.endsWith('.test.mjs')).sort().map(name=>'tests/acceptance-closure-20261108/'+name);
+ try{
+  await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+report,...files],{env,stdio:'inherit',timeout:60000});
+  const tap=readFileSync(report,'utf8'),count=98+(env.FIRST_TWO_FRESH_RECEIPT?1:0);
+  expect(tap).toMatch(new RegExp('# tests '+count+'\\b'));expect(tap).toMatch(new RegExp('# pass '+count+'\\b'));expect(tap).toMatch(/# fail 0\b/);expect(tap).toMatch(/# skipped 0\b/);
+ }catch(error){let diagnostic='';try{diagnostic=readFileSync(report,'utf8');}catch{}throw new Error('Actual authenticated receipt source group failed\n'+diagnostic,{cause:error});
+ }finally{rmSync(directory,{recursive:true,force:true});}
+},65000);

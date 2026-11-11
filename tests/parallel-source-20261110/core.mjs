@@ -8,7 +8,7 @@ import {retainedA7Proof,sourceGit,baselineRef} from './baseline-runtime.mjs';
 import {verifyParallelAuthority} from './authority.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
-export const capturePath='docs/parallel-source-20261110/capture-revision19.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision20.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -67,6 +67,12 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  assert.equal(git(['rev-parse',diagnosticRef+':'+diagnosticPath]).toString().trim(),diagnostic.blob);assert.equal(hash(git(['show',diagnosticRef+':'+diagnosticPath])),diagnostic.sha256);
  assert.deepEqual(before.filter(b=>b.supplementalSources?.some(d=>d.path===diagnosticPath)).map(b=>b.path),['scripts/check-current-six-candidate-evidence.mjs']);
  evolutions.set(diagnosticPath,{...diagnostic,ref:diagnosticRef});
+ const receiptPath='tests/acceptance-closure-20261108/receipt-source-path.mjs',receiptRef='881c62c140d881b8c7fe70ce9bd5dcc187b54c32';
+ const receipt=capture.currentSources.find(r=>r.path===receiptPath);assert(receipt,'Exact fresh-receipt claim verifier successor must remain captured');
+ assert.equal(git(['rev-parse',receiptRef+':'+receiptPath]).toString().trim(),receipt.blob);assert.equal(hash(git(['show',receiptRef+':'+receiptPath])),receipt.sha256);
+ assert.deepEqual(before.filter(b=>b.supplementalSources?.some(d=>d.path===receiptPath)).map(b=>b.path),['scripts/publication20-caller-lineage.mjs']);
+ assert.equal(before.filter(b=>b.path===receiptPath).length,1,'Exact owned receipt verifier predecessor required');
+ ownedEvolutions.set(receiptPath,{...receipt,ref:receiptRef});evolutions.set(receiptPath,{...receipt,ref:receiptRef});
  const allowedExtras=new Map(apps);
  const retainedPaths=['src/components/technology-bounded-analysis.test.tsx','src/components/technology-bounded-analysis.tsx','src/components/technology-next-five-integration.test.tsx','src/lib/native-delivery/technology-next-five-catalog.ts','src/lib/native-delivery/technology-next-five-contract.test.ts','src/lib/native-delivery/technology-next-five-contract.ts','src/lib/technology-next-five-analysis.test.ts','src/lib/technology-next-five-analysis.ts'];
  for(const path of retainedPaths){const bytes=git(['show',baselineRef+':'+path]);allowedExtras.set(path,{path,ref:baselineRef,blob:git(['rev-parse',baselineRef+':'+path]).toString().trim(),sha256:hash(bytes)});}
