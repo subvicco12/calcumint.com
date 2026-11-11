@@ -241,9 +241,9 @@ const bindings=[
       },
       {
         "path": "src/lib/execution-recovery-evidence.test.ts",
-        "ref": "346c314af8ae4593eb83ccffa6cbd06353617790",
-        "blob": "20c28061f8c8fdf5d020d49902a33fb3f03ffc98",
-        "sha256": "1686f5a9df0175c12762a1cecbe5cdf32186bc592732a56a946234da7e44f38a"
+        "ref": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+        "blob": "8bb490e90651b322e482e6f48f03d3031ff82035",
+        "sha256": "ba04aeec65362e5586697a8013ecf5c444b78480243150a332a84c8c245c3649"
       },
       {
         "path": "tests/next-cohort-20261110/source/current-caller-stage.mjs",
@@ -3596,9 +3596,9 @@ const bindings=[
       },
       {
         "path": "src/lib/execution-recovery-evidence.test.ts",
-        "ref": "346c314af8ae4593eb83ccffa6cbd06353617790",
-        "blob": "20c28061f8c8fdf5d020d49902a33fb3f03ffc98",
-        "sha256": "1686f5a9df0175c12762a1cecbe5cdf32186bc592732a56a946234da7e44f38a"
+        "ref": "05129e2a74e70e23160578c63a984c4bf035ed0f",
+        "blob": "8bb490e90651b322e482e6f48f03d3031ff82035",
+        "sha256": "ba04aeec65362e5586697a8013ecf5c444b78480243150a332a84c8c245c3649"
       },
       {
         "path": "src/components/calculator-interactive.tsx",
