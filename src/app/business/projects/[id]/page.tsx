@@ -32,11 +32,13 @@ async function loadProject(rawId:string,rawQuery:Query){
   context.client.from('calculation_history').select('id,calculator_slug,calculator_version,input_data,output_data').eq('user_id',context.user.id).in('calculator_slug',[...shareSlugs]).order('created_at',{ascending:false}).limit(50),
   sharedQuery.order('created_at',{ascending:false}).order('id',{ascending:false}).limit(51),
  ]);
+ // A partially rolled-back capability must not expose newer shared results through comparison or templates.
+ if(nextCohort&&(shared.data??[]).some(row=>capability.error||!technologyNextSharingCapabilitySupports(capability.data,row.calculator_slug)))throw new TechnologyFiveSharingError(403,'This project contains snapshots outside the currently adopted sharing capability.');
  const recorded=(history.data??[]).flatMap(row=>{try{return[{id:row.id,snapshot:readSnapshot(row)}];}catch{return[];}});
  const visible=(shared.data??[]).slice(0,50),verified=visible.flatMap(row=>{try{return[{id:row.id,title:row.title,snapshot:readSnapshot(row)}];}catch{return[];}});
  const last=visible.at(-1),next=(shared.data?.length??0)>50&&last?encodeDraftHistoryCursor({v:1,owner:cursorOwner,source:'scenario',limit:50,createdAt:last.created_at,id:last.id}):null;
  let template:undefined|{id:string;title:string;snapshot:ReturnType<typeof readTechnologyFiveSharedSnapshot>};
- if(query.templateId){const result=await context.client.from(table).select('id,title,calculator_slug,calculator_version,input_data,output_data').eq('id',query.templateId).eq('organization_id',project.data.organization_id).eq('project_id',id).maybeSingle();if(result.error)throw new TechnologyFiveSharingError(503,'Shared template storage is unavailable.');if(!result.data)throw new TechnologyFiveSharingError(404,'Shared template unavailable in this project.');template={id:result.data.id,title:result.data.title,snapshot:readSnapshot(result.data)};}
+ if(query.templateId){const result=await context.client.from(table).select('id,title,calculator_slug,calculator_version,input_data,output_data').eq('id',query.templateId).eq('organization_id',project.data.organization_id).eq('project_id',id).maybeSingle();if(result.error)throw new TechnologyFiveSharingError(503,'Shared template storage is unavailable.');if(!result.data)throw new TechnologyFiveSharingError(404,'Shared template unavailable in this project.');if(nextCohort&&(capability.error||!technologyNextSharingCapabilitySupports(capability.data,result.data.calculator_slug)))throw new TechnologyFiveSharingError(403,'This shared template requires its adopted sharing capability.');template={id:result.data.id,title:result.data.title,snapshot:readSnapshot(result.data)};}
  return{id,query,context,project:project.data,role,clients,history,shared,recorded,visible,verified,next,template};
 }
 export default async function Project({params,searchParams}:{params:Promise<{id:string}>;searchParams?:Promise<Query>}){
