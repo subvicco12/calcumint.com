@@ -3897,9 +3897,9 @@ const bindings=[
       },
       {
         "path": "tests/product-completion-lineage.test.mjs",
-        "ref": "80d18305104a9db4a015ea26199f8b916370467c",
-        "blob": "4667824f066c32c03303d0c1c454675451bc3f7d",
-        "sha256": "d32d67b95091149c2d5b1d579fa8d7b41043a3f0bc474d633081e51dfb8132b1"
+        "ref": "a963ef7aaa04664d07709cc431d6214511bc0573",
+        "blob": "be1bf8791e13857db88eee57a8f9fab0ff87cc11",
+        "sha256": "28dfdccfbaa65f31219a80bda8a4b82dc280f8c894b5290ce46c4473a6122efe"
       }
     ]
   },
