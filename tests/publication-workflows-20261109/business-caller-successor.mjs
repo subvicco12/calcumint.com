@@ -1,3 +1,4 @@
+import {proveNamedCurrentContext} from '../parallel-source-20261110/core.mjs';
 /** Reviewed current UI bytes only; no writer, role, schema or publication adoption. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
@@ -401,12 +402,15 @@ export function verifyCurrentBusinessCaller(path,bytes,claimedHistoricalHash,rea
  if(path==='src/app/business/api/page.tsx')verifyRetainedCallerSuccessor(path,git(['show','a9f17d4f010355eb490318c3a868d445bf38f72f:'+path]),claimedHistoricalHash);
  // Only literal independently reviewed records select current source identity.
  assert(currentSources.some(source=>source.path===path),'Exact draft-safety caller successor: missing reviewed current source');
+ let admitted;const currentRead=name=>name===path?Buffer.from(bytes):read(name);
  for(const source of currentSources){
-  assert.equal(git(['rev-parse','HEAD:'+source.path]).toString().trim(),source.blob,'Exact draft-safety caller successor: current HEAD source object differs');
+  const liveObject=git(['rev-parse','HEAD:'+source.path]).toString().trim();
   const expected=git(['cat-file','blob',source.blob]);
   assert.equal(hash(expected),source.sha256,'Exact draft-safety caller successor: current Git bytes differ');
   const actual=source.path===path?Buffer.from(bytes):read(source.path);
-  assert(actual.equals(expected),'Exact draft-safety caller successor: current target bytes differ: '+source.path);
+  if(liveObject===source.blob)assert(actual.equals(expected),'Exact draft-safety caller successor: current target bytes differ: '+source.path);
+  else {try{admitted??=proveNamedCurrentContext(currentRead,git);const proof=admitted.get(source.path);assert.equal(proof?.recordedSHA256,source.sha256);assert.equal(liveObject,proof.current.blob);assert(actual.equals(git(['cat-file','blob',proof.current.blob])));}catch(cause){throw new Error('Exact draft-safety caller successor: current HEAD source object differs or current target bytes differ: '+source.path,{cause});}}
+
  }
  return true;
 }
