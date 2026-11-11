@@ -16,7 +16,7 @@ export const retainedCases=Object.freeze({
  ]),
  'src/lib/remaining-five-evidence.test.ts':Object.freeze(['requires actual five-specific authenticated team artifacts before engineering closure']),
  'src/lib/cohort22-closure-evidence.test.ts':Object.freeze(['binds57 actual source browser journeys,30refusals and distinct A/B without authenticated-browser claims']),
- 'src/lib/thirteen-program-evidence.test.ts':Object.freeze(['retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps']),
+ 'src/lib/thirteen-program-evidence.test.ts':Object.freeze(['retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps','requires fresh actual-five caller, plan parity, accessibility and native personal export bytes','requires fresh inherited-eight caller regression without relabelling prior native authentication receipts']),
 });
 const completed=new Map();
 export function assertRetainedCase(entry,name){

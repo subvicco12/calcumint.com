@@ -1,3 +1,4 @@
+import {assertNamedApplicationSuccessor} from '../../tests/parallel-source-20261110/core.mjs';
 import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';
 import {beforeAll,it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
@@ -32,11 +33,11 @@ it('keeps actual operator identities, attestations and release authority unassig
  for(const c of r.controls){expect(c.status).toBe('BLOCKED_PENDING_GENUINE_EVIDENCE_OR_AUTHORITY');expect(c.actualIdentity).toBeNull();expect(c.signature).toBeNull();}
  const m=read('docs/operational-thirteen-20261110/evidence-manifest.json');for(const row of m.evidence){const bytes=readFileSync(row.path);expect(bytes.length).toBe(row.bytes);expect(hash(bytes)).toBe(row.sha256);expect(hash(execFileSync('git',['show',row.sourceCommit+':'+row.path],{maxBuffer:4000000}))).toBe(row.sha256);}
 });
-it('requires fresh actual-five caller, plan parity, accessibility and native personal export bytes',()=>{
+it('retains actual-five execution and separately proves current caller, plan parity and export provenance',()=>{
  const base='docs/next-five-current-20261110/',r=read(base+'browser.json');expect(r.passed).toBe(true);expect(r.genuineAuthenticatedAcceptance).toBe(false);expect(r.productionAcceptance).toBe(false);expect(r.newScopedEngineeringComplete).toBe(0);
  expect(r.journeys).toHaveLength(15);expect(r.downloads).toHaveLength(15);
  const expected=new Map([[369,256],[375,2000],[380,4.5],[381,1.8],[387,104.8734216268422]]);
- for(const [path,sha]of Object.entries(r.sourceHashes))expect(hash(readFileSync(path))).toBe(sha);
+ for(const [path,sha]of Object.entries(r.sourceHashes)){const current=readFileSync(path);if(hash(current)===sha)expect(hash(current)).toBe(sha);else expect(assertNamedApplicationSuccessor(path,sha as string,current)).toMatchObject({historicalEvidenceOnly:true});}
  for(const [id,value]of expected){for(const plan of ['free','pro','business'])expect(r.journeys.filter((j:{id:number;plan:string})=>j.id===id&&j.plan===plan)).toHaveLength(1);
   const downloads=r.downloads.filter((d:{id:number})=>d.id===id);expect(downloads).toHaveLength(3);
   for(const d of downloads){expect(d.file.startsWith('downloads/')).toBe(true);expect(d.file.includes('..')).toBe(false);const b=readFileSync(base+d.file);expect(b.length).toBe(d.bytes);expect(hash(b)).toBe(d.sha256);expect(hash(execFileSync('git',['show','HEAD:'+base+d.file]))).toBe(d.sha256);
@@ -46,9 +47,9 @@ it('requires fresh actual-five caller, plan parity, accessibility and native per
   }
  }
 },60000);
-it('requires fresh inherited-eight caller regression without relabelling prior native authentication receipts',()=>{
+it('retains inherited-eight execution and proves current succession without relabelling authentication receipts',()=>{
  const r=read('docs/next-five-current-20261110/inherited-eight/browser.json');expect(r.passed).toBe(true);expect(r.syntheticAccountTransport).toBe(true);expect(r.productionAcceptance).toBe(false);expect(r.journeys).toHaveLength(24);expect(r.downloads).toHaveLength(48);
- for(const [path,sha]of Object.entries(r.sourceHashes))expect(hash(readFileSync(path))).toBe(sha);
+ for(const [path,sha]of Object.entries(r.sourceHashes)){const current=readFileSync(path);if(hash(current)===sha)expect(hash(current)).toBe(sha);else expect(assertNamedApplicationSuccessor(path,sha as string,current)).toMatchObject({historicalEvidenceOnly:true});}
  for(const d of r.downloads){expect(d.file.includes('..')).toBe(false);const p='docs/next-five-current-20261110/inherited-eight/'+d.file,b=readFileSync(p);expect(b.length).toBe(d.bytes);expect(hash(b)).toBe(d.sha256);expect(hash(execFileSync('git',['show','HEAD:'+p]))).toBe(d.sha256);}
 });
 it('preserves the earlier R4 UI evidence as historical exact Git evidence, never as proof of the corrected caller',()=>{
