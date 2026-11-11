@@ -1,5 +1,5 @@
 {
-  "sourceQualifiedHead": "c715d0ee695c3224c4c34ffa0de56ff5e8d65033",
+  "sourceQualifiedHead": "a8b6c3a2fc4b519f156bc914e5a1684e588a93aa",
   "applicationGit": "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
   "canonicalCounts": {
     "COMPLETE_AND_CERTIFIED": 0,
@@ -24,7 +24,7 @@
       "slug": "cidr-calculator",
       "offeredScope": "IPv4 total address count only; no network/host/broadcast/range/IPv6/routability inference",
       "localEngineeringAcceptance": "PASS",
-      "hostedCI": "PENDING_NOT_STARTED",
+      "hostedCI": "SUCCESSOR_EXACT_HEAD_REQUIRED_SEE_DELIVERY_CHECKPOINT",
       "canonicalScopeApproval": "PENDING",
       "competentAcceptance": "UNAPPROVED",
       "certified": false,
@@ -33,7 +33,9 @@
         "docs/recovery-20261111/validation.json",
         "docs/recovery-20261111/sql/RESULT.json",
         "docs/parallel-five-20261110/authenticated/receipt.json",
-        "docs/parallel-completion-20261110/review-targets-five.json"
+        "docs/parallel-completion-20261110/review-targets-five.json",
+        "docs/recovery-20261111/latest-validation.json",
+        "docs/recovery-20261111/latest-qualification.json"
       ]
     },
     {
@@ -43,7 +45,7 @@
       "slug": "raid-capacity-calculator",
       "offeredScope": "Nominal equal-size capacity-only model; level1 returns one disk capacity;5>=3,6>=4,10even>=4; no vendor/filesystem/rebuild guarantees",
       "localEngineeringAcceptance": "PASS",
-      "hostedCI": "PENDING_NOT_STARTED",
+      "hostedCI": "SUCCESSOR_EXACT_HEAD_REQUIRED_SEE_DELIVERY_CHECKPOINT",
       "canonicalScopeApproval": "PENDING",
       "competentAcceptance": "UNAPPROVED",
       "certified": false,
@@ -52,7 +54,9 @@
         "docs/recovery-20261111/validation.json",
         "docs/recovery-20261111/sql/RESULT.json",
         "docs/parallel-five-20261110/authenticated/receipt.json",
-        "docs/parallel-completion-20261110/review-targets-five.json"
+        "docs/parallel-completion-20261110/review-targets-five.json",
+        "docs/recovery-20261111/latest-validation.json",
+        "docs/recovery-20261111/latest-qualification.json"
       ]
     },
     {
@@ -62,7 +66,7 @@
       "slug": "battery-runtime-calculator",
       "offeredScope": "Ideal suppliedWh*efficiencyFraction/loadW inhours; no chemistry/discharge/vendor curve",
       "localEngineeringAcceptance": "PASS",
-      "hostedCI": "PENDING_NOT_STARTED",
+      "hostedCI": "SUCCESSOR_EXACT_HEAD_REQUIRED_SEE_DELIVERY_CHECKPOINT",
       "canonicalScopeApproval": "PENDING",
       "competentAcceptance": "UNAPPROVED",
       "certified": false,
@@ -71,7 +75,9 @@
         "docs/recovery-20261111/validation.json",
         "docs/recovery-20261111/sql/RESULT.json",
         "docs/parallel-five-20261110/authenticated/receipt.json",
-        "docs/parallel-completion-20261110/review-targets-five.json"
+        "docs/parallel-completion-20261110/review-targets-five.json",
+        "docs/recovery-20261111/latest-validation.json",
+        "docs/recovery-20261111/latest-qualification.json"
       ]
     },
     {
@@ -81,7 +87,7 @@
       "slug": "ups-runtime-calculator",
       "offeredScope": "Ideal supplied batteryWh*efficiencyFraction/loadW inhours; no vendor runtime/ratedVA/powerfactor inference",
       "localEngineeringAcceptance": "PASS",
-      "hostedCI": "PENDING_NOT_STARTED",
+      "hostedCI": "SUCCESSOR_EXACT_HEAD_REQUIRED_SEE_DELIVERY_CHECKPOINT",
       "canonicalScopeApproval": "PENDING",
       "competentAcceptance": "UNAPPROVED",
       "certified": false,
@@ -90,7 +96,9 @@
         "docs/recovery-20261111/validation.json",
         "docs/recovery-20261111/sql/RESULT.json",
         "docs/parallel-five-20261110/authenticated/receipt.json",
-        "docs/parallel-completion-20261110/review-targets-five.json"
+        "docs/parallel-completion-20261110/review-targets-five.json",
+        "docs/recovery-20261111/latest-validation.json",
+        "docs/recovery-20261111/latest-qualification.json"
       ]
     },
     {
@@ -100,7 +108,7 @@
       "slug": "password-entropy-calculator",
       "offeredScope": "Theoretical independent uniform-random symbols, length*log2(poolSize), bits; no human password strength/cracktime/hashrate/profitability",
       "localEngineeringAcceptance": "PASS",
-      "hostedCI": "PENDING_NOT_STARTED",
+      "hostedCI": "SUCCESSOR_EXACT_HEAD_REQUIRED_SEE_DELIVERY_CHECKPOINT",
       "canonicalScopeApproval": "PENDING",
       "competentAcceptance": "UNAPPROVED",
       "certified": false,
@@ -109,7 +117,9 @@
         "docs/recovery-20261111/validation.json",
         "docs/recovery-20261111/sql/RESULT.json",
         "docs/parallel-five-20261110/authenticated/receipt.json",
-        "docs/parallel-completion-20261110/review-targets-five.json"
+        "docs/parallel-completion-20261110/review-targets-five.json",
+        "docs/recovery-20261111/latest-validation.json",
+        "docs/recovery-20261111/latest-qualification.json"
       ]
     }
   ],
@@ -126,5 +136,20 @@
       "IDENTITY_OR_SCOPE_BLOCKED": 43
     },
     "classificationUnchanged": true
-  }
+  },
+  "latestSourceQualifiedHead": "a8b6c3a2fc4b519f156bc914e5a1684e588a93aa",
+  "hostedHistory": [
+    {
+      "head": "c59a68565ad7cbb52f62ff62ecb166b9c848dac7",
+      "run": 42953019825,
+      "conclusion": "FAILURE"
+    },
+    {
+      "head": "5a869a9877368082cf130f13b6a75381ec978e3d",
+      "run": 42960521179,
+      "conclusion": "FAILURE"
+    }
+  ],
+  "latestQualification": "docs/recovery-20261111/latest-qualification.json",
+  "initialSourceQualifiedHead": "c715d0ee695c3224c4c34ffa0de56ff5e8d65033"
 }
