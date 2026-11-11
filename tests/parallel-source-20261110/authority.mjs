@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision13.json",
-    "blob": "cf5f194a1ffe720a30849f74bf58be97dadc02ed",
-    "sha256": "fb84b0bf7c393a56705f11b6d4214e73b9b391c1e2b552faa87f3e1ce7353241"
+    "path": "docs/parallel-source-20261110/capture-revision14.json",
+    "blob": "eae9c1635feb1779633e2218d120428ebb59b015",
+    "sha256": "ca13538e65b81c44227797c27d29bc8eaf4b23e09f45e425de5fbf8238e92bb2"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "b19adc5ac76eac63a97bc34a3401490ef07999ad",
-    "sha256": "b754656c7f4d77c78ee0f71fa38b09b0bc2eb1363c440809de6435b2abf2f9ed"
+    "blob": "a29aeb7dbc1f8c5a4027028cea079705496d326d",
+    "sha256": "d7334403af697ef2dd439eec04593444c465eacd1ae8000631a734a36bd4ff82"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "e895df6f0a05f7b1f9c6943e3d396b6a78f7219f",
-    "sha256": "2568af8db6bae5f39d6e3207e7eb2672488f1d577398ef88329b4fc69de0f5fc"
+    "blob": "b44c5eb2561a75729b3d414180b5a7441898655a",
+    "sha256": "d4f00bb8ed2d4324f59b6d3b574abb514de4377a39d6b3f8074260806ffce05b"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -39,8 +39,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "scripts/product-completion-lineage.mjs",
-    "blob": "7ec148d49e2acfa19d59370dce6dc1499546de9d",
-    "sha256": "13edce36e8896e7159b82f22730ea9d154a8f1398fa2057bf9322bcc163bee6f"
+    "blob": "41db59bdeee1fca80c3453831b5fb71e17ebf16d",
+    "sha256": "ca89c18f4dc77090c2e81cd4591537603ae95e2a40021198e222ee3cb442baca"
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
