@@ -187,9 +187,9 @@ const bindings=[
       },
       {
         "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
-        "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
-        "blob": "982d59e9105d8b727f7ddb2709a5f4586a5227fd",
-        "sha256": "361910419777e0c9e729c32e1b00693804c7e86eec5b05f769c68fb772de4552"
+        "ref": "756922bebd73e66a2900a35a92a3854ad2813d73",
+        "blob": "0baa48a322ee769c4a9f3cc936a3a9c0ba4d0c71",
+        "sha256": "a27e62cb3762bf8c374ffc9f5e7bb5c69e3e574c9800d100eca55532b54dac2b"
       },
       {
         "path": "tests/adoption1535/lineage.test.mjs",
@@ -1517,11 +1517,11 @@ const bindings=[
   {
     "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+    "successorRef": "756922bebd73e66a2900a35a92a3854ad2813d73",
     "predecessorBlob": "4db35005636145474cb7e53c75a0faeae9dd596f",
-    "successorBlob": "982d59e9105d8b727f7ddb2709a5f4586a5227fd",
+    "successorBlob": "0baa48a322ee769c4a9f3cc936a3a9c0ba4d0c71",
     "predecessorSHA256": "2c6296e886bc8a58f60b6c8c4ecd7e942301a6dc5479f43aa3cd3b21df1afb03",
-    "successorSHA256": "361910419777e0c9e729c32e1b00693804c7e86eec5b05f769c68fb772de4552",
+    "successorSHA256": "a27e62cb3762bf8c374ffc9f5e7bb5c69e3e574c9800d100eca55532b54dac2b",
     "supplementalSources": [
       {
         "path": "scripts/publication20-caller-lineage.mjs",
@@ -1751,6 +1751,11 @@ const bindings=[
         "ref": "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
         "blob": "3f435b99d732c75082508e8d0a8daa0e2081631c",
         "sha256": "c7963a31a40b4b49324b7c7d6d722577beba66c4bb0033a7af24859add6725f6"
+      },
+      {
+        "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+        "blob": "982d59e9105d8b727f7ddb2709a5f4586a5227fd",
+        "sha256": "361910419777e0c9e729c32e1b00693804c7e86eec5b05f769c68fb772de4552"
       }
     ]
   },

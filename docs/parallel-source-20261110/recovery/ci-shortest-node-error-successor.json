@@ -1,0 +1,75 @@
+{
+  "kind": "EXACT_NODE_ERROR_PREDICATE_SUCCESSOR_AND_CURRENT_GRAPH_EDGES",
+  "ciRun": 42953019825,
+  "redEvidence": {
+    "path": "/workspace/artifacts/parallel-completion-20261110/ci-shortest-node.log",
+    "sha256": "ea7c3ad82bb1bc0946684cbbf4ffad8a55d6305043ce8772886602434d17ce7b",
+    "passed": 35,
+    "total": 36,
+    "failed": "rejects presentation successor tamper src/components/publication20-tool.tsx",
+    "actualErrorMessage": "Completion supplemental source bytes differ: src/components/publication20-tool.tsx",
+    "priorExpectedRegex": "Completion current successor differs"
+  },
+  "source": {
+    "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
+    "before": {
+      "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+      "blob": "982d59e9105d8b727f7ddb2709a5f4586a5227fd",
+      "sha256": "361910419777e0c9e729c32e1b00693804c7e86eec5b05f769c68fb772de4552"
+    },
+    "after": {
+      "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
+      "ref": "756922bebd73e66a2900a35a92a3854ad2813d73",
+      "blob": "0baa48a322ee769c4a9f3cc936a3a9c0ba4d0c71",
+      "sha256": "a27e62cb3762bf8c374ffc9f5e7bb5c69e3e574c9800d100eca55532b54dac2b"
+    },
+    "exactSingleReplacement": {
+      "from": "name==='src/components/publication20-tool.tsx'?/Completion current successor differs/",
+      "to": "name==='src/components/publication20-tool.tsx'?(error=>error instanceof Error&&error.message==='Completion supplemental source bytes differ: src/components/publication20-tool.tsx')"
+    },
+    "allOtherTestBytesUnchanged": true,
+    "sourceCommit": "756922bebd73e66a2900a35a92a3854ad2813d73"
+  },
+  "metadata": {
+    "beforeSHA256": "b8e415ee3637c745979ab88d6c14e38f5a420f5ef45bb83034da3b8ee61f910b",
+    "afterSHA256": "13edce36e8896e7159b82f22730ea9d154a8f1398fa2057bf9322bcc163bee6f",
+    "changes": [
+      {
+        "kind": "incomingDependency",
+        "bindingPath": "scripts/publication20-caller-lineage.mjs",
+        "before": {
+          "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
+          "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+          "blob": "982d59e9105d8b727f7ddb2709a5f4586a5227fd",
+          "sha256": "361910419777e0c9e729c32e1b00693804c7e86eec5b05f769c68fb772de4552"
+        },
+        "after": {
+          "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
+          "ref": "756922bebd73e66a2900a35a92a3854ad2813d73",
+          "blob": "0baa48a322ee769c4a9f3cc936a3a9c0ba4d0c71",
+          "sha256": "a27e62cb3762bf8c374ffc9f5e7bb5c69e3e574c9800d100eca55532b54dac2b"
+        }
+      },
+      {
+        "kind": "ownedSuccessor",
+        "bindingPath": "tests/shortest-publication-20/caller-lineage.test.mjs",
+        "before": {
+          "ref": "2b3ce39a3670028601491baadf9b2b2c3462be89",
+          "blob": "982d59e9105d8b727f7ddb2709a5f4586a5227fd",
+          "sha256": "361910419777e0c9e729c32e1b00693804c7e86eec5b05f769c68fb772de4552"
+        },
+        "after": {
+          "ref": "756922bebd73e66a2900a35a92a3854ad2813d73",
+          "blob": "0baa48a322ee769c4a9f3cc936a3a9c0ba4d0c71",
+          "sha256": "a27e62cb3762bf8c374ffc9f5e7bb5c69e3e574c9800d100eca55532b54dac2b"
+        }
+      }
+    ],
+    "allOtherRowsAndExecutableTailUnchanged": true
+  },
+  "limits": "Syntax and exact Git/text/data proof only; actual Node group awaits strict root R12 admission, no fresh green group or CI claimed.",
+  "historicalRecordsEdited": false,
+  "productionWrites": false,
+  "certificationGranted": false,
+  "releaseHold": true
+}
