@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision25.json",
-    "blob": "2d7f17af6674f2f685d4eb4cb04b3174c99130bc",
-    "sha256": "e82bfb66d0d48748a6d8b5e4eae70c81b325d2f9c1d7c4d7100477868cf0f3f3"
+    "path": "docs/parallel-source-20261110/capture-revision26.json",
+    "blob": "9bb6592479724e40bcb26af25895b4d6d5874f6b",
+    "sha256": "4cd0dddf344b9944875a0a0d0e46190a3ed03ea49841c44cf6c926a346edc6ac"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "6e59d2a2a666bc70129b9ac7cbcc5e753044fb9e",
-    "sha256": "516cd66d222d537b41cc7f3a2dc9b3e57db68a984de03be4ad787329203fccba"
+    "blob": "13978116e1c18d8cd151cfe8ab551ebcd81905c0",
+    "sha256": "97402410795e02ad4333b893538a8fe3f02448a0e734fe862f689b2b9c90f6ab"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -49,8 +49,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
-    "blob": "d8c7b397b162216bf81da6a341a3afe632be70a2",
-    "sha256": "6d7f076e7832e4c8d65e7a277dbfd8c1497d723d518945da03b23a199a3c3193"
+    "blob": "23c210fceff89fbc219500aa0117d21287954822",
+    "sha256": "ceae7fd3912a124767ae815e7151fe42d6070be7dd4f7fa2523341bebf9ec716"
   },
   {
     "path": "tests/next-cohort-20261110/source/runtime-current-anchor.mjs",
