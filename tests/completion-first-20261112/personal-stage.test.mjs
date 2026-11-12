@@ -53,7 +53,7 @@ test('Stage2 captures and commits cannot nominate themselves or hide a later cur
  assert.throws(()=>verifyExactStage({...input,captureBytes:Buffer.from('{}')}),/digest differs/);
  assert.throws(()=>verifyExactStage({...input,git:a=>a[0]==='cat-file'&&a[1]==='commit'?Buffer.from('substituted commit'):sourceGit(a)}),/Commit content address differs/);
  const git=a=>a[0]==='diff'&&a[3]===workflowPolicy.codeRef?Buffer.from('src/unreviewed.ts\0'):sourceGit(a);
- assert.throws(()=>verifyWorkflowAndHistoricalCompletion({...input,git}),/Unreviewed current source delta/);
+ assert.throws(()=>verifyWorkflowAndHistoricalCompletion({...input,git}),/Unreviewed current source delta|Stage3 checkpoint must preserve entire frozen Stage2 SRC/);
  const guardRows=workflowGuardRecords(readFileSync);for(const row of guardRows.values())for(const bytes of [Buffer.from('tampered guard source'),sourceGit(['cat-file','blob',row.predecessor.blob])])assert.throws(()=>verifyWorkflowAndHistoricalCompletion({...input,read:p=>p===row.path?bytes:readFileSync(p)}),/Current guard source bytes differ|Current personal auxiliary source bytes differ/);
  const ns=nonSourceRecords(readFileSync);for(const row of ns.values()){for(const bytes of [Buffer.from('tampered NS current source'),...(row.predecessor?[sourceGit(['cat-file','blob',row.predecessor.blob])]:[])])assert.throws(()=>verifyNonSourceStage({...input,read:p=>p===row.path?bytes:readFileSync(p)}),/Current NS source bytes differ/);}
  const source=readFileSync('.github/workflows/ci.yml','utf8'),prior=sourceGit(['show',workflowPolicy.predecessorRef+':.github/workflows/ci.yml']).toString();assert.equal(historicalWorkflowWithoutLoginObservations(source),prior);
