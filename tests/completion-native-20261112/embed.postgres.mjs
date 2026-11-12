@@ -23,10 +23,25 @@ try{
  for(const [catalog,engine]of ids){const id=await grant(catalog,engine);grants.set(catalog,id);assert.equal(await debit(id),'denied');}
  assert.equal(await db.sql('SELECT count(*) FROM public.native_embed_usage;'),'0');
  pass('Real hosted publication reader denies every unapproved exact tuple without quota/audit debit');
- const reader=await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);");
+ const reader=await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_snapshot_v1(text,text,integer)'::regprocedure);");
+ const outerGate=await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);");
  // Conditional transport composition: only this lower hosted reader is replaced.
  // Actual product publication, certification and applicability remain unapproved.
- await db.sql(`CREATE TABLE public.fixture_factory_publication(catalog integer PRIMARY KEY,version integer NOT NULL);INSERT INTO public.fixture_factory_publication VALUES ${ids.map(([id])=>`(${id},1)`).join(',')};CREATE OR REPLACE FUNCTION public.factory_native_embed_publication_v1(p_catalog integer,p_version integer) RETURNS void LANGUAGE plpgsql SECURITY INVOKER SET search_path=pg_catalog AS $$ BEGIN PERFORM catalog FROM public.fixture_factory_publication WHERE catalog=p_catalog AND version=p_version FOR SHARE;IF NOT FOUND THEN RAISE EXCEPTION 'Isolated synthetic publication unavailable' USING ERRCODE='PT404';END IF;END $$;`);
+ await db.sql(`CREATE TABLE public.fixture_factory_publication(engine text NOT NULL,slug text NOT NULL,version integer NOT NULL,PRIMARY KEY(engine,slug,version));INSERT INTO public.fixture_factory_publication VALUES ${ids.map(([,engine,slug])=>`('${engine}','${slug}',1)`).join(',')};CREATE OR REPLACE FUNCTION public.factory_native_embed_publication_snapshot_v1(p_engine text,p_slug text,p_version integer) RETURNS boolean LANGUAGE plpgsql SECURITY INVOKER SET search_path=pg_catalog AS $$ BEGIN PERFORM engine FROM public.fixture_factory_publication WHERE engine=p_engine AND slug=p_slug AND version=p_version FOR SHARE;RETURN FOUND;END $$;`);
+ assert.equal(await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);"),outerGate);
+ for(const [catalog,version]of [[424,1],[218,2],[440,2]])await assert.rejects(db.sql(`SELECT public.factory_native_embed_publication_v1(${catalog},${version});`),/Exact publication unavailable/);
+ for(const column of ['engine','slug','version']){
+  const original=column==='engine'?"'conversion.length'":column==='slug'?"'length-converter'":'1';
+  const altered=column==='version'?'2':"'foreign'";
+  await db.sql(`UPDATE public.fixture_factory_publication SET ${column}=${altered} WHERE engine='conversion.length';`);
+  assert.equal(await debit(grants.get(423)),'denied');
+  await db.sql(`UPDATE public.fixture_factory_publication SET ${column}=${original} WHERE ${column}=${altered};`);
+ }
+ for(const role of ['anon','authenticated','service_role']){
+  await assert.rejects(db.sql(`SET ROLE ${role};SELECT public.factory_native_embed_publication_snapshot_v1('conversion.length','length-converter',1);`),/permission denied/);
+  await assert.rejects(db.sql(`SET ROLE ${role};SELECT public.factory_native_embed_publication_v1(423,1);`),/permission denied/);
+ }
+ pass('Only lower row-locked snapshot substituted; real nine-tuple/version/PT404 gate and private helper grants remain unchanged');
  for(const [catalog]of ids){const id=grants.get(catalog),request=randomUUID();assert.equal(await debit(id,request),'accepted');assert.equal(await debit(id,request),'replayed');assert.equal(await debit(id,request,other),'conflict');}
  assert.equal(await db.sql('SELECT count(*) FROM public.native_embed_usage;'),'9');
  assert.equal(await db.sql(`SELECT count(*) FROM public.api_usage_events WHERE api_key_id='${key}';`),'9');
@@ -50,7 +65,9 @@ try{
  await db.sql('DROP TRIGGER fixture_abort ON public.native_embed_usage;DROP FUNCTION public.fixture_abort_native_audit();');
  pass('Configured shared quota limits apply, concurrent last-slot redemptions admit one, and audit failure rolls quota debit back');
  await db.sql(reader);assert.equal(await debit(grants.get(438)),'denied');
+ assert.equal(await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);"),outerGate);
+ const functions=JSON.parse(await db.sql("SELECT jsonb_object_agg(proname,jsonb_build_object('bodySHA256',encode(sha256(convert_to(prosrc,'UTF8')),'hex'),'definitionSHA256',encode(sha256(convert_to(pg_get_functiondef(oid),'UTF8')),'hex'))) FROM pg_proc WHERE oid IN('public.factory_native_embed_publication_snapshot_v1(text,text,integer)'::regprocedure,'public.factory_native_embed_publication_v1(integer,integer)'::regprocedure,'public.consume_native_embed_v1(uuid,uuid,text,text)'::regprocedure,'public.factory_native_embed_identity_v1()'::regprocedure);"));
  const reverse=await readFile('docs/completion-native-20261112/embed-reverse-disable.sql','utf8');await assert.rejects(db.sql(reverse),/UNAPPLIED_FACTORY_NINE_EMBED_DISABLE/);await db.sql(unhold(reverse));await assert.rejects(debit(grants.get(440)),/permission denied/);
  assert.equal(await db.sql('SELECT count(*) FROM public.native_embed_usage;'),'10');pass('Source-bound reverse disables redemption while retaining durable audit rows for all nine identities');
- await writeFile(artifacts+'/receipt.json',JSON.stringify({passed:true,checks,successorSHA256:createHash('sha256').update(candidate).digest('hex'),realHostedReaderInitiallyDenied:true,conditionalSyntheticReaderOnly:true,scope:'Genuine isolated Postgres/auth-schema quota composition; no actual HTTP/browser-origin acceptance, no production equivalence, no approval or publication adoption',productionWrites:false},null,2)+'\n');
+ await writeFile(artifacts+'/receipt.json',JSON.stringify({passed:true,checks,successorSHA256:createHash('sha256').update(candidate).digest('hex'),realHostedReaderInitiallyDenied:true,conditionalSyntheticReaderOnly:true,outerGateUnmodified:true,functions,scope:'Genuine isolated Postgres/auth-schema quota composition; no actual HTTP/browser-origin acceptance, no production equivalence, no approval or publication adoption',productionWrites:false},null,2)+'\n');
 }catch(error){await writeFile(artifacts+'/failure.txt',error.stack);throw error;}finally{await db?.close();}

@@ -30,13 +30,18 @@ CREATE TRIGGER native_embed_grant_identity BEFORE UPDATE OR DELETE ON public.nat
 CREATE TRIGGER native_embed_usage_identity BEFORE UPDATE OR DELETE ON public.native_embed_usage FOR EACH ROW EXECUTE FUNCTION public.factory_native_embed_identity_v1();
 CREATE TRIGGER native_embed_attempt_identity BEFORE UPDATE OR DELETE ON public.native_embed_attempts FOR EACH ROW EXECUTE FUNCTION public.factory_native_embed_identity_v1();
 REVOKE ALL ON FUNCTION public.factory_native_embed_identity_v1() FROM PUBLIC,anon,authenticated,service_role;
+CREATE FUNCTION public.factory_native_embed_publication_snapshot_v1(p_engine text,p_slug text,p_version integer) RETURNS boolean LANGUAGE plpgsql SECURITY INVOKER SET search_path=pg_catalog AS $$
+BEGIN
+ PERFORM id FROM public.calculator_catalog_admin WHERE calculator_key=p_engine AND slug=p_slug AND version=p_version AND lifecycle='published' FOR SHARE;
+ RETURN FOUND;
+END $$;
+REVOKE ALL ON FUNCTION public.factory_native_embed_publication_snapshot_v1(text,text,integer) FROM PUBLIC,anon,authenticated,service_role;
 CREATE FUNCTION public.factory_native_embed_publication_v1(p_catalog integer,p_version integer) RETURNS void LANGUAGE plpgsql SECURITY INVOKER SET search_path=pg_catalog AS $$
 DECLARE engine text;expected_slug text;
 BEGIN
  SELECT t.engine,t.slug INTO engine,expected_slug FROM (VALUES(218,'launch-square-calculator','square-calculator'),(219,'launch-cube-calculator','cube-calculator'),(220,'launch-square-root-calculator','square-root-calculator'),(423,'conversion.length','length-converter'),(430,'conversion.energy','energy-converter'),(431,'conversion.power','power-converter'),(432,'conversion.time','time-converter'),(438,'conversion.force','force-converter'),(440,'conversion.frequency','frequency-converter'))t(catalog,engine,slug) WHERE t.catalog=p_catalog;
  IF NOT FOUND OR p_version IS DISTINCT FROM 1 THEN RAISE EXCEPTION 'Exact publication unavailable' USING ERRCODE='PT404';END IF;
- PERFORM id FROM public.calculator_catalog_admin WHERE calculator_key=engine AND calculator_catalog_admin.slug=expected_slug AND version=p_version AND lifecycle='published' FOR SHARE;
- IF NOT FOUND THEN RAISE EXCEPTION 'Exact publication unavailable' USING ERRCODE='PT404';END IF;
+ IF NOT public.factory_native_embed_publication_snapshot_v1(engine,expected_slug,p_version) THEN RAISE EXCEPTION 'Exact publication unavailable' USING ERRCODE='PT404';END IF;
 END $$;
 REVOKE ALL ON FUNCTION public.factory_native_embed_publication_v1(integer,integer) FROM PUBLIC,anon,authenticated,service_role;
 REVOKE ALL ON public.native_embed_grants,public.native_embed_usage,public.native_embed_attempts FROM PUBLIC,anon,authenticated,service_role;
