@@ -18,7 +18,13 @@ it('executes fresh current-source, full-authority, reader, reversion and nominat
  const directory=mkdtempSync(join(tmpdir(),'calcumint-r6-cases-')),output=join(directory,'cases.tap'),env={...process.env};delete env.NODE_TEST_CONTEXT;
  let eventLoopTicks=0;const heartbeat=setInterval(()=>{eventLoopTicks++;},10);
  try{
+  try {
   await runNode(['--test','--test-reporter=tap','--test-reporter-destination='+output,'tests/parallel-source-20261110/application-successor.test.mjs','tests/parallel-source-20261110/current.test.mjs','tests/parallel-source-20261110/git-reader.test.mjs','tests/parallel-source-20261110/retained-vitest.test.mjs','tests/parallel-source-20261110/source-object-lock.test.mjs','tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs','tests/parallel-source-20261110/historical-group.test.mjs'],{env,stdio:'inherit',timeout:150000});
+  } catch(cause) {
+    let diagnostic='TAP report unavailable';
+    try{diagnostic=readFileSync(output,'utf8');}catch{}
+    throw new Error('Exact source Node suite failed; retained TAP follows:\n'+diagnostic,{cause});
+  }
   expect(eventLoopTicks).toBeGreaterThan(0);
   // Preserve all 67 original cases and require every finite new source case plus its authority case.
   const requiredCases=67+factoryPolicy.paths.length+1;
