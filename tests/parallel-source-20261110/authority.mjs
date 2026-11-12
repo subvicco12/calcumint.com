@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "9f0e21d3a0f7d0ffad8deb373d809878f087ce26",
-    "sha256": "84f5b794801547b89defbac7761b2f51421762411dcd89bed1e2b2a91bad41e0"
+    "blob": "4a8e0f35dcecd59fbcd1147c5b3f8a7f4c1b85e2",
+    "sha256": "88fcb8abdfd68b5b49ca24e9ef8295cfca06c46c87f8e3dd3e7534a4a9721ce7"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "dc189501fb21cac6e1fcc7094708f72211233ad0",
-    "sha256": "a6090a2ff7b0d6735edbb0c86871de17538d1a9b14184c5a9fb871fffa04baa7"
+    "blob": "f6f995ab038d4dedfc0890bc75deed10637aca87",
+    "sha256": "5c97aa95ebded4a52b0c48e6e800e80beef7b35290cff27f3b3bbb2fb146259d"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -59,8 +59,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/git-reader.mjs",
-    "blob": "3ed19038c308c9be133087f844bdc3fda569bd2d",
-    "sha256": "19b2d5e81772d743b39a1d65dd42b23e4e3c5792c4aa1a7a5416843d892b4cba"
+    "blob": "3071b7f0292a0fe8f116ec0bd9eedf4b6353c22c",
+    "sha256": "7dca4c4f43c3b4d78792f22261af3e006c8e6491c46af96e8847bc335373e439"
   },
   {
     "path": "tests/parallel-source-20261110/retained-vitest.mjs",
@@ -299,13 +299,18 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/git-reader.test.mjs",
-    "blob": "ff8a12180b33a1fde6b8ffa67939a07ca85aad42",
-    "sha256": "deef9e2532884f0229fd63d79bac686f982480d931545e1a9bc295d5257dba6f"
+    "blob": "f2637ee773ffd1d3b80379db18373bb13924d9da",
+    "sha256": "78082c242a3b5263cbea0c99a7039026279ba28cbb2976efcb11d7c473f34213"
   },
   {
     "path": "docs/parallel-source-20261110/capture-revision42.json",
     "blob": "6786610ab5e4ed4dddda62ef7345dbd37a204b3c",
     "sha256": "1de2f25043b156d26457378765f5a5bf03754b0c4250ab8c6c17caff0d69067f"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision43.json",
+    "blob": "2eb705f87115d46ec0a61487bf4dcf5124c6648a",
+    "sha256": "5756781caaf71ec39a4426fe69c7e0a111db644b064f29d071e77d67a26e7284"
   }
 ]);
 export function verifyParallelAuthority(read,git){
