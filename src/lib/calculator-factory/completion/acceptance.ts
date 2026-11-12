@@ -33,7 +33,7 @@ export type CompletionReceipt = {
   })[];
 };
 
-const CORE = ["identity-scope", "formula-provenance-domain-precision", "three-plan-entitlements",
+const CORE = ["identity-scope", "native-feature-applicability", "formula-provenance-domain-precision", "three-plan-entitlements",
   "browser-interaction", "accessibility-recovery", "performance", "independent-review", "exact-source-ci"] as const;
 const BUSINESS = ["team-client-sharing", "api", "embed", "automation"] as const;
 const SHA = /^[a-f0-9]{40}$/;

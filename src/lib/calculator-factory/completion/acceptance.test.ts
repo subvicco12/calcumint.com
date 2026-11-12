@@ -5,7 +5,7 @@ function fixture(): CompletionReceipt {
   const identity = { catalogId: 218, engineId: "launch-square-calculator", slug: "square-calculator", version: 1 };
   const sourceSHA = "1".repeat(40);
   const evidence = (path: string): CompletionEvidence => ({ path, identity: { ...identity }, sourceSHA, sha256: "2".repeat(64) });
-  const criteria = ["identity-scope", "formula-provenance-domain-precision", "three-plan-entitlements", "browser-interaction",
+  const criteria = ["identity-scope", "native-feature-applicability", "formula-provenance-domain-precision", "three-plan-entitlements", "browser-interaction",
     "accessibility-recovery", "performance", "independent-review", "exact-source-ci"].map(id => ({
       id, source: "BP0655–0661", applicability: "required" as const, rationale: "Applies to the declared finite scalar delivery",
     }));
@@ -59,7 +59,7 @@ describe("completion evidence boundary", () => {
     expect(assessCompletionReceipt(receipt).failures).toContain("Missing observation: reverse-branch");
   });
   it("rejects unsupported exclusions and digestless evidence", () => {
-    const receipt = fixture(); receipt.criteria[8].rationale = ""; receipt.observations[0].evidence[0].sha256 = "passed";
+    const receipt = fixture(); receipt.criteria[9].rationale = ""; receipt.observations[0].evidence[0].sha256 = "passed";
     expect(assessCompletionReceipt(receipt).failures).toEqual(expect.arrayContaining([
       "Unreasoned applicability: team-client-sharing", "Unproven criterion: identity-scope",
     ]));
