@@ -28,4 +28,5 @@ test('completion capture substitution and immutable commit substitution cannot a
 test('new-stage historic projection cannot hide actual live SRC drift',()=>{
  const git=a=>a[0]==='diff'&&a[3]===completionPolicy.codeRef?Buffer.from('src/unreviewed.ts\0'):sourceGit(a);
  assert.throws(()=>verifyCompletionAndHistoricalFactory({...input,git}),/Unreviewed current source delta/);
+ for(const row of capture.auxiliaryRows)for(const bytes of [Buffer.from('tampered auxiliary source'),sourceGit(['cat-file','blob',row.predecessor.blob])])assert.throws(()=>verifyCompletionAndHistoricalFactory({...input,read:p=>p===row.path?bytes:readFileSync(p)}),/Current target source differs/);
 });
