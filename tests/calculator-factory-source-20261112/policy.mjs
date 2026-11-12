@@ -1,9 +1,9 @@
 /** Frozen runtime policy; independently pinned by parallel source authority. */
-export const factoryCapturePath="docs/calculator-factory/source-stage-20261112-revision2.json";
+export const factoryCapturePath="docs/calculator-factory/source-stage-20261112-revision3.json";
 export const factoryPolicy=Object.freeze({
-  "captureSHA256": "3e519facdcfde768083e3fd9d9c0a8d29d475d6b87cf19c59ba33e6709425b5a",
+  "captureSHA256": "39daa9dbed96c489ff8503ed2b5451c6e9a5afb1bc0e86cb9557b300e8a5263a",
   "predecessorRef": "9ad7e75641322696f75a018e53513c8158c39870",
-  "codeRef": "d77ec9376be228d13780abddcb048717a94d50ea",
+  "codeRef": "365991f460d43e3725959bb58e89e20bcb8ae900",
   "paths": [
     "src/app/admin/calculator-factory/page.test.tsx",
     "src/app/admin/calculator-factory/page.tsx",
@@ -26,9 +26,20 @@ export const factoryPolicy=Object.freeze({
     "src/lib/calculator-factory/registry.test.ts",
     "src/lib/calculator-factory/registry.ts",
     "src/lib/calculator-factory/workflows.test.ts",
-    "src/lib/calculator-factory/workflows.ts"
+    "src/lib/calculator-factory/workflows.ts",
+    "src/lib/parallel-source-evidence.test.ts"
   ],
   "ancestry": [
+    "365991f460d43e3725959bb58e89e20bcb8ae900",
+    "b8bfc995040678cc8298793ba523281e2cae0fff",
+    "41d23a8128e3eaf80c311cc39e7c9ff3feb7d155",
+    "77daa61b6e0c7de717416bd3a8a49315f7919eb9",
+    "6e41a56f5da0750f17620afec10e78c3f171cdc9",
+    "8109cb74c214ef0592f6cec259f601f208e9dafe",
+    "fcadd96cee240b6352fbbf05e3d61eb17ea81192",
+    "c4db7cb135bee10bee85d0d36b2aa672520f3d3c",
+    "6a88426160fdd4341b26dd1784097581da2a5158",
+    "723cb62594d17a2d055b3237a528ac504176c57e",
     "d77ec9376be228d13780abddcb048717a94d50ea",
     "26546039ff0501b9fe5ba82f939398d667349054",
     "433233ef9bce02579199517fa11a185daa3b0276",
