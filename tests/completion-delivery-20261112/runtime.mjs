@@ -5,7 +5,7 @@ import {spawn} from 'node:child_process';
 import {mkdtemp,cp,symlink,rm,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';import os from 'node:os';import net from 'node:net';
 /** Disposable lower-reader fixtures; production gate, composition and CSP stay byte-identical. */
-export async function startProductionRuntime({root,auth,db,artifacts}){
+export async function startProductionRuntime({root,auth,db,artifacts,conditionalPublicationFixture=true}){
  const dir=await mkdtemp(path.join(os.tmpdir(),'completion-nine-production-'));
  for(const entry of ['src','data','public','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.ts','postcss.config.mjs'])try{await cp(path.join(root,entry),path.join(dir,entry),{recursive:true})}catch(e){if(e.code!=='ENOENT')throw e}
  for(const entry of ['node_modules','docs','tests','scripts'])await symlink(path.join(root,entry),path.join(dir,entry));
@@ -13,10 +13,12 @@ export async function startProductionRuntime({root,auth,db,artifacts}){
  const registryPath=path.join(dir,'src/calculators/registry.ts'),registry=await readFile(registryPath,'utf8');
  const fixtureIds=['launch-square-calculator','launch-cube-calculator','launch-square-root-calculator','conversion.length','conversion.energy','conversion.power','conversion.time','conversion.force','conversion.frequency'];
  const reader='const fixtureRead=(d:RegistryCalculator|undefined):RegistryCalculator|undefined=>d&&'+JSON.stringify(fixtureIds)+'.includes(d.id)?{...d,reviewStatus:"certified"}:d;\n';
+ if(conditionalPublicationFixture){
  const fixtureRegistry=registry.replace('export const calculatorRegistry=',reader+'export const calculatorRegistry=').replace('=>definitions,getBySlug:', '=>definitions.map(d=>fixtureRead(d)!),getBySlug:').replace('=>bySlug.get(slug)', '=>fixtureRead(bySlug.get(slug))').replace('=>byId.get(id)', '=>fixtureRead(byId.get(id))');
  if(fixtureRegistry===registry)throw Error('Known lower registry fixture insertion did not apply');await writeFile(registryPath,fixtureRegistry);
+ }
  const files=(await import('node:child_process')).execFileSync('rg',['--files','src','data'],{cwd:root,encoding:'utf8'}).trim().split('\n');
- const builtSources={};for(const entry of [...files,'next.config.ts']){const original=await readFile(path.join(root,entry)),copy=await readFile(path.join(dir,entry));if(entry!=='src/calculators/registry.ts'&&!original.equals(copy))throw Error('Unexpected copied source difference: '+entry);builtSources[entry]={originalSHA256:createHash('sha256').update(original).digest('hex'),builtSHA256:createHash('sha256').update(copy).digest('hex'),explicitLowerPublicationFixture:entry==='src/calculators/registry.ts'};}
+ const builtSources={};for(const entry of [...files,'next.config.ts']){const original=await readFile(path.join(root,entry)),copy=await readFile(path.join(dir,entry));if((!conditionalPublicationFixture||entry!=='src/calculators/registry.ts')&&!original.equals(copy))throw Error('Unexpected copied source difference: '+entry);builtSources[entry]={originalSHA256:createHash('sha256').update(original).digest('hex'),builtSHA256:createHash('sha256').update(copy).digest('hex'),explicitLowerPublicationFixture:conditionalPublicationFixture&&entry==='src/calculators/registry.ts'};}
  await writeFile(path.join(artifacts,'build-source-sha256.json'),JSON.stringify(builtSources,null,2)+'\n');
  const actualPort=await new Promise(resolve=>{const s=net.createServer();s.listen(0,'127.0.0.1',()=>{const p=s.address().port;s.close(()=>resolve(p))})});
  if(new URL(auth.url).hostname!=='127.0.0.1')throw Error('Local-only fixture URL required');
@@ -33,6 +35,6 @@ export async function startProductionRuntime({root,auth,db,artifacts}){
  const build=run(['build','--webpack']);await new Promise((resolve,reject)=>{build.once('error',reject);build.once('exit',code=>code===0?resolve():reject(Error('Production fixture build failed: '+redactText(logs))))});
  await writeFile(path.join(artifacts,'build.log'),redactText(logs));
  child=run(['start','--hostname','127.0.0.1','--port',String(actualPort)]);
- const deadline=Date.now()+120000;while(Date.now()<deadline){if(child.exitCode!==null)throw Error(redactText(logs));try{if((await fetch(url+'/login')).status===200)return{dir,url,builtSources,logs:()=>logs,flush:()=>writeFile(path.join(artifacts,'production-next.log'),redactText(logs)),close:async()=>{child.kill('SIGTERM');await new Promise(r=>child.once('exit',r));proxy.closeAllConnections();await new Promise(resolve=>proxy.close(resolve));await writeFile(path.join(artifacts,'production-next.log'),redactText(logs));await rm(dir,{recursive:true,force:true})}}}catch{}await new Promise(r=>setTimeout(r,100))}throw Error('Production startup timeout');
+ const deadline=Date.now()+120000;while(Date.now()<deadline){if(child.exitCode!==null)throw Error(redactText(logs));try{if((await fetch(url+'/login')).status===200)return{dir,url,builtSources,conditionalPublicationFixture,logs:()=>logs,flush:()=>writeFile(path.join(artifacts,'production-next.log'),redactText(logs)),close:async()=>{child.kill('SIGTERM');await new Promise(r=>child.once('exit',r));proxy.closeAllConnections();await new Promise(resolve=>proxy.close(resolve));await writeFile(path.join(artifacts,'production-next.log'),redactText(logs));await rm(dir,{recursive:true,force:true})}}}catch{}await new Promise(r=>setTimeout(r,100))}throw Error('Production startup timeout');
  }catch(e){child?.kill('SIGTERM');proxy.closeAllConnections();await new Promise(resolve=>proxy.close(resolve));await writeFile(path.join(artifacts,'production-next.log'),redactText(logs));throw e}
 }
