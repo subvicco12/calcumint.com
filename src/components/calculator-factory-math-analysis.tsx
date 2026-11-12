@@ -1,13 +1,15 @@
 'use client';
 import {useId,useState} from 'react';
+import {getPlanEntitlements,type CalcuMintPlan} from '@/lib/entitlements';
 import {completeScalarMath,reverseScalarMath,type ScalarMathId,type MathGraphPoint} from '@/lib/calculator-factory/completion/math';
-type Props={catalogId:number;x:number};
+type Props={catalogId:number;x:number;plan?:CalcuMintPlan};
 const finite=(text:string)=>{if(!text.trim()||!Number.isFinite(Number(text)))throw Error('Enter a finite numeric value');return Number(text);};
 export function CalculatorFactoryMathAnalysis(props:Props){
  if(![218,219,220].includes(props.catalogId))return null;
- return <MathSession key={`${props.catalogId}:${props.x}`} catalogId={props.catalogId as ScalarMathId} x={props.x}/>;
+ return <MathSession key={`${props.catalogId}:${props.x}:${props.plan??'free'}`} catalogId={props.catalogId as ScalarMathId} x={props.x} plan={props.plan??'free'}/>;
 }
-function MathSession({catalogId,x}:{catalogId:ScalarMathId;x:number}){
+function MathSession({catalogId,x,plan}:{catalogId:ScalarMathId;x:number;plan:CalcuMintPlan}){
+ const reverseAllowed=getPlanEntitlements(plan).scenarios;
  const prefix=useId();
  const [target,setTarget]=useState(''),[solution,setSolution]=useState<readonly number[]|null>(null);
  const [minimum,setMinimum]=useState('-2'),[maximum,setMaximum]=useState('2'),[count,setCount]=useState('9');
@@ -25,10 +27,10 @@ function MathSession({catalogId,x}:{catalogId:ScalarMathId;x:number}){
   <h3>Arithmetic steps</h3>
   <table aria-label="Arithmetic steps"><thead><tr><th scope="col">Expression</th><th scope="col">Value</th></tr></thead><tbody>{analysis.steps.map((step,i)=><tr key={i}><th scope="row">{step.expression}</th><td>{String(step.value)}</td></tr>)}</tbody></table>
   <p>{analysis.rounding}</p>
-  <form aria-label="Reverse solve" onSubmit={event=>{event.preventDefault();setError('');setSolution(null);try{setSolution(reverseScalarMath(catalogId,finite(target)));}catch(e){setError(e instanceof Error?e.message:'Target refused');}}}>
+  <form aria-label="Reverse solve" onSubmit={event=>{event.preventDefault();setError('');setSolution(null);if(!reverseAllowed){setError('Reverse solve requires Pro or Business.');return;}try{setSolution(reverseScalarMath(catalogId,finite(target)));}catch(e){setError(e instanceof Error?e.message:'Target refused');}}}>
    <p>{analysis.inverse}</p>
-   <label htmlFor={`${prefix}-target`}>Target output</label><input id={`${prefix}-target`} inputMode="decimal" value={target} onChange={e=>{setTarget(e.target.value);setSolution(null);}}/>
-   <button type="submit">Solve target</button>
+   <label htmlFor={`${prefix}-target`}>Target output</label><input id={`${prefix}-target`} disabled={!reverseAllowed} inputMode="decimal" value={target} onChange={e=>{setTarget(e.target.value);setSolution(null);}}/>
+   <button type="submit" disabled={!reverseAllowed}>Solve target</button>{!reverseAllowed&&<p>Reverse solve requires Pro or Business.</p>}
   </form>
   {solution&&<p role="status">Candidate input values: {solution.map(String).join(', ')}. Approximate binary64 solutions; verified against forward output within 8 relative machine epsilons (about 1.78e-15). Current input and result are unchanged.</p>}
   <form aria-label="Graph sampling" onSubmit={event=>{event.preventDefault();setError('');setPoints([]);try{
