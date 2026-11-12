@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
-import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import {readFile,mkdir,writeFile,rm} from 'node:fs/promises';
 import {createHash,randomUUID} from 'node:crypto';
 import {startGoTrueFixture} from '../gotrue-runtime/fixture.mjs';
 import {initializeFullSchema} from '../gotrue-full-schema/schema.mjs';
-const artifacts=process.env.FACTORY_EMBED_ARTIFACTS||'/tmp/factory-nine-embed';await mkdir(artifacts,{recursive:true});
+const artifacts=process.env.FACTORY_EMBED_ARTIFACTS||'/tmp/factory-nine-embed';await mkdir(artifacts,{recursive:true});await rm(artifacts+'/failure.txt',{force:true});await rm(artifacts+'/receipt.json',{force:true});
 const checks=[],hash='a'.repeat(64),other='b'.repeat(64),ids=[[218,'launch-square-calculator','square-calculator'],[219,'launch-cube-calculator','cube-calculator'],[220,'launch-square-root-calculator','square-root-calculator'],[423,'conversion.length','length-converter'],[430,'conversion.energy','energy-converter'],[431,'conversion.power','power-converter'],[432,'conversion.time','time-converter'],[438,'conversion.force','force-converter'],[440,'conversion.frequency','frequency-converter']];
 const pass=message=>{checks.push(message);console.log('PASS '+message);};
 const unhold=text=>text.replace(/DO \$hold\$ BEGIN RAISE EXCEPTION '[A-Z_]+'; END \$hold\$;/,'-- isolated fixture only');
@@ -42,13 +42,15 @@ try{
  const expired=randomUUID();await db.sql(`INSERT INTO public.native_embed_grants(id,organization_id,issuer_id,api_key_id,token_hash,allowed_origin,catalog_id,engine_id,technical_version,issued_at,expires_at) VALUES('${expired}','${org}','${issuer}','${key}','${hash}','https://customer.example',430,'conversion.energy',1,now()-interval '2 hour',now()-interval '1 hour');`);assert.equal(await debit(expired),'denied');
  pass('Revocation is monotonic and expired grants cannot consume quota');
  await db.sql(`UPDATE public.business_api_keys SET monthly_quota=9 WHERE id='${key}';`);assert.equal(await debit(grants.get(431)),'limited');
+ await db.sql(`UPDATE public.business_api_keys SET monthly_quota=10 WHERE id='${key}';`);
+ const race=await Promise.all([debit(grants.get(430)),debit(grants.get(431))]);assert.deepEqual(race.sort(),['accepted','limited']);assert.equal(await db.sql(`SELECT count(*) FROM public.api_usage_events WHERE api_key_id='${key}';`),'10');
  await db.sql(`UPDATE public.business_api_keys SET monthly_quota=${configuredLimits.monthlyQuota},rate_limit_per_minute=${configuredLimits.rateLimit} WHERE id='${key}';`);
  await db.sql("CREATE FUNCTION public.fixture_abort_native_audit() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN RAISE EXCEPTION 'synthetic audit unavailable';END $$;CREATE TRIGGER fixture_abort BEFORE INSERT ON public.native_embed_usage FOR EACH ROW EXECUTE FUNCTION public.fixture_abort_native_audit();");
- await assert.rejects(debit(grants.get(432)),/synthetic audit unavailable/);assert.equal(await db.sql(`SELECT count(*) FROM public.api_usage_events WHERE api_key_id='${key}';`),'9');
+ await assert.rejects(debit(grants.get(432)),/synthetic audit unavailable/);assert.equal(await db.sql(`SELECT count(*) FROM public.api_usage_events WHERE api_key_id='${key}';`),'10');
  await db.sql('DROP TRIGGER fixture_abort ON public.native_embed_usage;DROP FUNCTION public.fixture_abort_native_audit();');
- pass('Existing configured shared quota limits apply and audit failure rolls the quota debit back');
+ pass('Configured shared quota limits apply, concurrent last-slot redemptions admit one, and audit failure rolls quota debit back');
  await db.sql(reader);assert.equal(await debit(grants.get(438)),'denied');
  const reverse=await readFile('docs/completion-native-20261112/embed-reverse-disable.sql','utf8');await assert.rejects(db.sql(reverse),/UNAPPLIED_FACTORY_NINE_EMBED_DISABLE/);await db.sql(unhold(reverse));await assert.rejects(debit(grants.get(440)),/permission denied/);
- assert.equal(await db.sql('SELECT count(*) FROM public.native_embed_usage;'),'9');pass('Source-bound reverse disables redemption while retaining all nine durable audit rows');
+ assert.equal(await db.sql('SELECT count(*) FROM public.native_embed_usage;'),'10');pass('Source-bound reverse disables redemption while retaining durable audit rows for all nine identities');
  await writeFile(artifacts+'/receipt.json',JSON.stringify({passed:true,checks,successorSHA256:createHash('sha256').update(candidate).digest('hex'),realHostedReaderInitiallyDenied:true,conditionalSyntheticReaderOnly:true,scope:'Genuine isolated Postgres/auth-schema quota composition; no actual HTTP/browser-origin acceptance, no production equivalence, no approval or publication adoption',productionWrites:false},null,2)+'\n');
 }catch(error){await writeFile(artifacts+'/failure.txt',error.stack);throw error;}finally{await db?.close();}
