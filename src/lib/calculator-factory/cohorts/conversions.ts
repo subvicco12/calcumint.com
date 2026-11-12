@@ -10,7 +10,7 @@ import {verifyRegisteredSnapshot} from '@/lib/registered-snapshot-verification';
 import {sameRecordedJson} from '@/lib/recorded-json-equality';
 
 export const conversionFactoryCatalogIds=Object.freeze([423,424,425,427,428,430,431,432,433,434,438,440] as const);
-const rawDecimal=z.string().min(1).max(4096).refine(value=>Number.isFinite(requiredCalculatorNumber(value)),'Enter a complete finite decimal without losing entered digits');
+const rawDecimal=z.string().min(1).max(4096).refine(value=>{try{return Number.isFinite(requiredCalculatorNumber(value));}catch{return false;}},'Enter a complete finite decimal without losing entered digits');
 export type ConversionFactoryRequest={catalogId:number;version:1;input:{value:string;fromUnit:string;toUnit:string}};
 function requestSchema(entry:Publication20Definition){
  const units=entry.fields.find(field=>field.key==='fromUnit')!.options!;

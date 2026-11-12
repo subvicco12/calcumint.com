@@ -13,7 +13,7 @@ describe('conversion factory delivery boundary',()=>{
  });
  it('refuses extra fields, revisions, non-string decimals and unit aliases',()=>{
   const good=request();for(const bad of [{...good,version:2},{...good,approved:true},{...good,input:{...good.input,extra:1}},{...good,input:{...good.input,value:1}},request(429),request(423,'1','M','cm'),request(434,'1','kb','B')])expect(()=>run(bad)).toThrow();
-  for(const value of ['',' ','0x10','1junk','Infinity','NaN','1e309','1e-999','9007199254740993','0.10000000000000001'])expect(()=>run(request(423,value))).toThrow();
+  for(const value of ['',' ','0x10','1junk','Infinity','NaN','1e309','1e-999','9007199254740993','0.10000000000000001']){expect(getConversionFactoryDefinition(423)!.requestSchema.safeParse(request(423,value)).success).toBe(false);expect(()=>run(request(423,value))).toThrow();}
  });
  it('preserves raw decimal provenance, byte case and snapshot replay',()=>{
   const raw=request(434,' +2.00e0 ','MiB','KB'),result=run(raw);expect(result.enteredInput).toEqual(raw.input);expect(result.output.result).toBe(2097.152);expect(result.unit).toBe('KB');expect(replay(raw,JSON.parse(JSON.stringify(result.snapshot)))).toEqual(result);
