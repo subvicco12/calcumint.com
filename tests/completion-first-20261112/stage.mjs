@@ -4,15 +4,23 @@ import {createHash} from 'node:crypto';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {factoryPolicy,factoryCapturePath} from '../calculator-factory-source-20261112/policy.mjs';
 import {completionPolicy,completionCapturePath} from './policy.mjs';
+const immutableCaptures=new Map();
+function deepFreeze(value){if(value&&typeof value==='object'){for(const child of Object.values(value))deepFreeze(child);Object.freeze(value);}return value;}
 export function completionRecords(read){
  const bytes=read(completionCapturePath);
  // Every mapping checks the literal capture digest. Callers additionally require
  // independent authority over this capture and literal policy module.
  assert.equal(createHash('sha256').update(bytes).digest('hex'),completionPolicy.captureSHA256,'Independent completion capture digest differs');
- const capture=JSON.parse(bytes);
- assert.equal(capture.predecessorRef,completionPolicy.predecessorRef);
- assert.equal(capture.codeRef,completionPolicy.codeRef);
- assert.deepEqual(capture.rows.map(r=>r.path),completionPolicy.paths);
+ let capture=immutableCaptures.get(completionPolicy.captureSHA256);
+ if(!capture){
+  capture=JSON.parse(bytes);
+  assert.equal(capture.predecessorRef,completionPolicy.predecessorRef);
+  assert.equal(capture.codeRef,completionPolicy.codeRef);
+  assert.deepEqual(capture.rows.map(r=>r.path),completionPolicy.paths);
+  immutableCaptures.set(completionPolicy.captureSHA256,deepFreeze(capture));
+ }
+ // Only immutable parsing is reused. Actual capture bytes above are read/hashed
+ // every time, and each caller gets its own mutable container of frozen records.
  return new Map(capture.rows.map(r=>[r.path,r]));
 }
 export function verifyCompletionAndHistoricalFactory({read,git,root}){

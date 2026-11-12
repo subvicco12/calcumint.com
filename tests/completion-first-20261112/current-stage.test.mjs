@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {completionPolicy,completionCapturePath} from './policy.mjs';
-import {verifyCompletionAndHistoricalFactory} from './stage.mjs';
+import {completionRecords,verifyCompletionAndHistoricalFactory} from './stage.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const captureBytes=readFileSync(completionCapturePath),capture=JSON.parse(captureBytes);
 const input={policy:completionPolicy,captureBytes,git:sourceGit,read:readFileSync,root};
@@ -13,6 +13,15 @@ test('completion predecessor is exact baseline and every Stage6 byte remains ind
  assert.equal(completionPolicy.predecessorRef,'16cb2804fa3e9731a7f39a761de9a7a27ee87e67');
  const {live,historical}=verifyCompletionAndHistoricalFactory(input);
  assert.equal(live.size,completionPolicy.paths.length);assert.equal(historical.size,23);
+ const first=completionRecords(readFileSync),path=completionPolicy.paths[0],row=first.get(path);
+ assert(Object.isFrozen(row)&&Object.isFrozen(row.current));if(row.predecessor)assert(Object.isFrozen(row.predecessor));
+ assert.throws(()=>{row.current.sha256='0'.repeat(64);},TypeError);
+ assert.throws(()=>{row.path='src/substitution.ts';},TypeError);
+ first.clear();const next=completionRecords(readFileSync);assert(next.has(path));assert.equal(next.get(path).current.sha256,capture.rows[0].current.sha256);
+ let reads=0;const reader=p=>{assert.equal(p,completionCapturePath);reads++;return captureBytes;};completionRecords(reader);completionRecords(reader);assert.equal(reads,2);
+ assert.throws(()=>completionRecords(()=>Buffer.from('{}')),/Independent completion capture digest differs/);
+ const mutable=Buffer.from(captureBytes);completionRecords(()=>mutable);mutable[0]^=1;assert.throws(()=>completionRecords(()=>mutable),/Independent completion capture digest differs/);
+
 });
 test('each finite successor rejects predecessor reversion or substituted current bytes',()=>{
  for(const row of capture.rows){
