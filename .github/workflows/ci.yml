@@ -326,6 +326,17 @@ jobs:
           BATCH16_FULL_SCHEMA: '1'
           GOTRUE_ARTIFACTS: ${{ runner.temp }}/batch16-full-schema-browser
           BATCH16_FINDER_ARTIFACTS: ${{ runner.temp }}/batch16-finder
+      - name: Preserve sanitized native login observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-login-observation-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/batch13-gotrue/login-observation.json
+            ${{ runner.temp }}/batch13-gotrue/failure-summary.json
+            ${{ runner.temp }}/batch16-full-schema-browser/login-observation.json
+            ${{ runner.temp }}/batch16-full-schema-browser/failure-summary.json
+          if-no-files-found: warn
       - name: Batch17 independent issuance capture and expiry acceptance
         timeout-minutes: 5
         run: |
