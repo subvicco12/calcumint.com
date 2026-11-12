@@ -22,7 +22,7 @@ const personalPaths=new Set(personalPolicy.paths),personalAuxiliaryPaths=new Set
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision41.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision42.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -205,5 +205,6 @@ export function preloadRetainedImmutableObjects(read,git){
  const ids=new Set();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);}Object.values(value).forEach(visit);}};
  const finite=[capturePath,personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath];
  for(const path of finite){assert(accepted.some(row=>row.path===path),"Preloaded capture must have independent authority");visit(JSON.parse(read(path)));}
+ git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry])]);
  git.preloadBlobs([...ids]);
 }

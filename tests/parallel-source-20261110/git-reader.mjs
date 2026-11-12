@@ -8,7 +8,7 @@ function verifyBlob(id,content){
 }
 /** Cache only objects addressed by full immutable Git identities. Symbolic requests stay live. */
 export function makeGitReader(invoke){
- const trees=new Map(),blobs=new Map(),commits=new Map();
+ const trees=new Map(),blobs=new Map(),commits=new Map(),commitObjects=new Map();
  function tree(ref){
   if(trees.has(ref))return trees.get(ref);
   const raw=bytes(invoke(['ls-tree','-rz','--full-tree',ref]));const entries=new Map();let offset=0;
@@ -29,6 +29,7 @@ export function makeGitReader(invoke){
  function reader(args,options){
   if(options!==undefined)return invoke(args,options);
   if(args.length===3&&args[0]==='cat-file'&&args[1]==='blob'&&objectId.test(args[2]))return blob(args[2]);
+  if(args.length===3&&args[0]==='cat-file'&&args[1]==='commit'&&objectId.test(args[2])&&commitObjects.has(args[2]))return Buffer.from(commitObjects.get(args[2]));
   if(args.length===3&&args[0]==='rev-parse'&&args[1]==='--verify'&&/^[0-9a-f]{40}\^\{commit\}$/.test(args[2])){
    const id=args[2].slice(0,40);
    if(!commits.has(id)){
@@ -58,6 +59,23 @@ export function makeGitReader(invoke){
   }
   if(offset!==output.length)throw Error('Unexpected trailing Git batch output');
   for(const [id,content]of loaded)blobs.set(id,content);
+ };
+ reader.preloadCommits=ids=>{
+  if(!Array.isArray(ids)||ids.some(id=>typeof id!=='string'||!objectId.test(id)))throw Error('Full immutable Git commit identities required');
+  const pending=[...new Set(ids)].filter(id=>!commitObjects.has(id));if(!pending.length)return;
+  const output=bytes(invoke(['cat-file','--batch'],{input:Buffer.from(pending.join('\n')+'\n'),stdio:['pipe','pipe','pipe'],maxBuffer:128*1024*1024,timeout:30000}));
+  const loaded=new Map();let offset=0;
+  for(const expected of pending){
+   const newline=output.indexOf(10,offset);if(newline<0)throw Error('Truncated Git commit batch header');
+   const header=output.subarray(offset,newline).toString('ascii'),match=/^([0-9a-f]{40}) commit (0|[1-9][0-9]*)$/.exec(header);
+   if(!match||match[1]!==expected)throw Error('Git batch commit identity/type unavailable: '+expected);
+   const length=Number(match[2]);if(!Number.isSafeInteger(length))throw Error('Invalid Git batch commit length');
+   const start=newline+1,end=start+length;if(end>=output.length||output[end]!==10)throw Error('Truncated Git commit batch or invalid delimiter');
+   const content=output.subarray(start,end),actual=createHash('sha1').update(Buffer.from(`commit ${content.length}\0`)).update(content).digest('hex');if(actual!==expected)throw Error('Git commit content address differs: '+expected);
+   loaded.set(expected,Buffer.from(content));offset=end+1;
+  }
+  if(offset!==output.length)throw Error('Unexpected trailing Git commit batch output');
+  for(const[id,content]of loaded){commitObjects.set(id,content);commits.set(id,Buffer.from(id+'\n'));}
  };
  return reader;
 }
