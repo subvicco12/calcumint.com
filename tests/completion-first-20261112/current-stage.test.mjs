@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
+import {verifyCurrentRuntimeContext} from '../next-cohort-20261110/source/retained-runtime.mjs';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {completionPolicy,completionCapturePath} from './policy.mjs';
 import {completionRecords,verifyCompletionAndHistoricalFactory} from './stage.mjs';
@@ -21,6 +22,15 @@ test('completion predecessor is exact baseline and every Stage6 byte remains ind
  let reads=0;const reader=p=>{assert.equal(p,completionCapturePath);reads++;return captureBytes;};completionRecords(reader);completionRecords(reader);assert.equal(reads,2);
  assert.throws(()=>completionRecords(()=>Buffer.from('{}')),/Independent completion capture digest differs/);
  const mutable=Buffer.from(captureBytes);completionRecords(()=>mutable);mutable[0]^=1;assert.throws(()=>completionRecords(()=>mutable),/Independent completion capture digest differs/);
+ const runtimePath='tests/next-cohort-20261110/source/retained-runtime.mjs',priorRuntime=sourceGit(['show',completionPolicy.predecessorRef+':'+runtimePath]).toString();
+ const expectedRuntime=priorRuntime.replace("import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';","import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';\nimport {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';").replace("const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});","const git=completionGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}));");
+ assert.notEqual(expectedRuntime,priorRuntime);assert.equal(readFileSync(runtimePath,'utf8'),expectedRuntime,'Only default same-cwd immutable transport wrapping may change; all historical arrays remain byte-identical');
+ verifyCurrentRuntimeContext();
+ const contextPath='src/app/api/business/technology-embeds/route.ts';
+ assert.throws(()=>verifyCurrentRuntimeContext(p=>p===contextPath?Buffer.from('tampered after warm proof'):readFileSync(p)),/current context target differs/);
+ assert.throws(()=>verifyCurrentRuntimeContext(readFileSync,()=>{throw Error('Missing custom provenance after warm default');}),/Missing custom provenance/);
+ assert.throws(()=>verifyCurrentRuntimeContext(readFileSync,a=>a[0]==='cat-file'&&a[1]==='blob'?Buffer.from('substituted custom object'):sourceGit(a)),/current context Git bytes differ/);
+
 
 });
 test('each finite successor rejects predecessor reversion or substituted current bytes',()=>{

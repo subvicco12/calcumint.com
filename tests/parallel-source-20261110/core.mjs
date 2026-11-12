@@ -10,7 +10,7 @@ import {ensureParallelSources} from './bootstrap.mjs';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {factoryPolicy,factoryCapturePath} from '../calculator-factory-source-20261112/policy.mjs';
 import {completionPolicy,completionCapturePath} from '../completion-first-20261112/policy.mjs';
-import {completionRecords,verifyCompletionAndHistoricalFactory} from '../completion-first-20261112/stage.mjs';
+import {completionRecords,completionAuxiliaryRecords,verifyCompletionAndHistoricalFactory} from '../completion-first-20261112/stage.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
@@ -24,6 +24,7 @@ function currentGit(source){
 }
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
 function sourceRecord(record,read,git){
+ if(record.path==='tests/next-cohort-20261110/source/retained-runtime.mjs'){const row=completionAuxiliaryRecords(read).get(record.path);assert(row);if(record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}
  if(record.path.startsWith('src/')){const row=completionRecords(read).get(record.path);if(row&&record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}
  assert.equal(typeof record.path,'string');assert(!isAbsolute(record.path)&&!record.path.split('/').includes('..'));
  assert.match(record.ref,/^[0-9a-f]{40}$/);assert.equal(git(['rev-parse','--verify',record.ref+'^{commit}']).toString().trim(),record.ref);

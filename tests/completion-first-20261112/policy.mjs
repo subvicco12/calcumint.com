@@ -1,7 +1,8 @@
 /** Independently pinned exact completion policy. */
 export const completionCapturePath="docs/completion-first-20261112/source-stage.json";
 export const completionPolicy=Object.freeze({
-  "captureSHA256": "7d49ee77a3f03ba94c043807ee9f3656a8e0f56191b2cd7cbaace0f778f75037",
+  "captureSHA256": "d6e6d63a35cbdfa096fcbc468987076608f14d2c38cbaddaf3e0d17e2cc8ad42",
+  "auxiliaryRef": "262d95b65369e913085ceb93ba821de69f7fef67",
   "predecessorRef": "16cb2804fa3e9731a7f39a761de9a7a27ee87e67",
   "codeRef": "79bf64466663cc961fdb80365143d0c750dccc6f",
   "paths": [
