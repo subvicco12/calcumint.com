@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "b5e8f4825b5cbf250e27e612c874aed3df15dbfd",
-    "sha256": "cf3c7336bcb97cad056232c1201bbbe25c542d07c8968f09405bcbc0dbcff26a"
+    "blob": "bdb6e0a8605a8d1c3ccfcec8f053f9b49c805524",
+    "sha256": "12a1ad9c5b45971f53728f2357ec7ae735340bfa247c743b87964a1934357b69"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -269,8 +269,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "docs/parallel-source-20261110/capture-revision40.json",
-    "blob": "05e99025ccaf67ff9035dc2b4bffe8dce4b296a4",
-    "sha256": "26d39ab1c4a8bdd6c641d168da33764aaeb88735b90b8a0d51608d6045b819b0"
+    "blob": "8b5a3c1462f4f1fe60f690e11a43f747d9d38d36",
+    "sha256": "9b42a1cba0eaab8559d47abab56f9626eadfc9da61bcc590283f01868b2de2c6"
   }
 ]);
 export function verifyParallelAuthority(read,git){
