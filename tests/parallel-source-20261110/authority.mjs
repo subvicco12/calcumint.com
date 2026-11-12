@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision31.json",
-    "blob": "893a4b66f25a34c158b4da955f96e28b11c32860",
-    "sha256": "f0408bf8aa725e3e0d0aaf7c6a70afe3679604b9e63daa4b13474459fe7802ba"
+    "path": "docs/parallel-source-20261110/capture-revision32.json",
+    "blob": "e801d200628c8d6dd5955cb915f3c38ad1524d97",
+    "sha256": "bd440c60f7f81b5904c5f073a2a9099873991f6a1e9a741cc3fda2140373f6a8"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "f4d03e37e628a4315fb289bae9a4526128f7802f",
-    "sha256": "fffac574c4a338e7817b1b58cef6186380bda45a95815c7d9a07f182ad03321b"
+    "blob": "fb8f2408f75f3c7acf83d4741fb3246c9cc352ed",
+    "sha256": "38488f60373c08f43bdbe315d988807458457a8d7761157a57dec8ee4f02fb27"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "6b0b100ff1aa32f657c609e92c8ec0d1d9b07d6b",
-    "sha256": "929b484fda3796a7b544dced8a74daa1ce0170a925688c0547664881249d99e3"
+    "blob": "ba727d1c194c578f85e8fc46bd23b8ad0310cbe7",
+    "sha256": "cb04e0b5f7be6a82ffa7d8bd341db5b9fa819082993393001e3f5d5c7f248972"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -71,6 +71,31 @@ export const accepted=Object.freeze([
     "path": "tests/parallel-source-20261110/source-object-lock.mjs",
     "blob": "5146f713d6e4466c550826d12cdfe4426d4203c6",
     "sha256": "e870d8f4d49591cfdf471bed129d9a628b254fa06cdf25de6a03b0fc373d0f8d"
+  },
+  {
+    "path": "tests/calculator-factory-source-20261112/policy.mjs",
+    "blob": "fb32ba6764158042801c49a931a22ab8786dfa63",
+    "sha256": "6904cdac4d590d1131c8bab6d7210bec9f745a56c0de2b45c68c5b9e490d585c"
+  },
+  {
+    "path": "tests/calculator-factory-source-20261112/exact-stage.mjs",
+    "blob": "dae92cf281731b3e68d1d740842b6eccdb429e95",
+    "sha256": "1683dd0e9325c29c18ff6bf2c288c9bc1633a681af064b53bf1b2834d91b7577"
+  },
+  {
+    "path": "tests/calculator-factory-source-20261112/exact-stage.test.mjs",
+    "blob": "c4b349b9a90a66fbc85f37e57d68010f96a406b7",
+    "sha256": "1f946cfa9de9ad1b3c8637e09d94fdaa0b0148003c3e7c14b1449c2a775c88d4"
+  },
+  {
+    "path": "tests/calculator-factory-source-20261112/objects.mjs",
+    "blob": "1f0c797f93aa6c9671143e7f7d85b559a5e576ac",
+    "sha256": "6577f703a4556d4dba055236e50d23891a05e93c5083f2b1e78c2ea9e63e5a23"
+  },
+  {
+    "path": "docs/calculator-factory/source-stage-20261112.json",
+    "blob": "b7ef922126e2d62ef4d728b22cdfd612b9336b71",
+    "sha256": "101889b6b9c1f058976f498c57bdd41951a72f9c7b7b763bc550e658bd11e207"
   }
 ]);
 export function verifyParallelAuthority(read,git){
