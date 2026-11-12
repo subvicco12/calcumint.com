@@ -12,8 +12,7 @@ import {initializeFullSchema} from '../gotrue-full-schema/schema.mjs';
 import {startProductionRuntime} from './runtime.mjs';
 import {startBrowser} from '../next-runtime/cdp.mjs';
 import {recordedDownload} from '../next-runtime/recorded-download.mjs';
-import {waitForNativeSchema} from '../native440/schema-readiness.mjs';
-import {registerCredentials,redactText,evidenceJSON,captureFixtureDiagnostics} from './evidence.mjs';
+import {registerCredentials,redactText,evidenceJSON,captureFixtureDiagnostics,waitForDeliveryReadiness} from './evidence.mjs';
 export const cases=[
  {id:218,engine:'launch-square-calculator',slug:'square-calculator',input:{x:'12'},edit:{x:'3'}},
  {id:219,engine:'launch-cube-calculator',slug:'cube-calculator',input:{x:'5'},edit:{x:'3'}},
@@ -38,7 +37,7 @@ async function main(){
  try{
   db=await startGoTrueFixture({initializeSchema:initializeFullSchema});registerCredentials(db.anonKey,db.serviceKey);
   const sqlFiles=['docs/native440/quota-readiness-wrapper.sql','docs/native440-remediation/embed-metering.sql','docs/completion-native-20261112/embed-successor.sql','docs/first-five-native-20261109/embed-metering-proposal.sql','docs/first-five-native-20261109/jobs-webhooks-proposal.sql','docs/first-five-native-20261109/embed-integrity-successor.sql','docs/next-cohort-native-20261110/contract-successor.sql','docs/parallel-five-20261110/native/contract-successor.sql','docs/technology-final-two-20261111/native/contract-successor.sql','docs/completion-first-20261112/automation/contract-successor.sql','docs/first-five-full-contract-20261109/sharing/review-only-sharing.sql','docs/next-cohort-sharing-20261110/review-only-sharing.sql','docs/parallel-five-20261110/sharing/contract-successor.sql','docs/technology-final-two-20261111/sharing/contract-successor.sql','docs/completion-sharing-20261112/contract-successor.sql'];
-  report.fixtureSQL=[];for(const file of sqlFiles){const source=await readFile(file,'utf8');await db.sql(unhold(source));report.fixtureSQL.push({file,sha256:sha(source),isolatedHoldRemovedOnly:true});}await db.sql("NOTIFY pgrst,'reload schema';");try{report.nativeSchemaReadiness=await waitForNativeSchema({url:db.url,serviceKey:db.serviceKey});}catch(error){report.schemaReadinessDiagnostics=await captureFixtureDiagnostics(db,out);throw error;}
+  report.fixtureSQL=[];for(const file of sqlFiles){const source=await readFile(file,'utf8');await db.sql(unhold(source));report.fixtureSQL.push({file,sha256:sha(source),isolatedHoldRemovedOnly:true});}await db.sql("NOTIFY pgrst,'reload schema';");
   const users={};for(const [name,plan]of [['free','free'],['owner','business'],['member','business'],['viewer','business'],['foreign','business']]){
    const sdk=createClient(db.url,db.anonKey,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}}),auth=await ok(sdk.auth.signUp({email:randomUUID()+'@example.invalid',password:'Isolated-'+randomUUID()}));
    await db.sql(`UPDATE public.profiles SET plan='${plan}' WHERE id='${auth.user.id}';INSERT INTO public.platform_admins(user_id,role,active) VALUES('${auth.user.id}','reviewer',true);`);
@@ -50,6 +49,7 @@ async function main(){
   const client=await ok(users.owner.sdk.from('client_workspaces').insert({organization_id:org,project_id:project.id,name:'Integrated exact nine client',created_by:users.owner.id}).select().single());
   const foreignOrg=await ok(users.foreign.sdk.rpc('create_business_organization',{org_name:'Separate Business tenant',org_slug:'foreign-'+randomUUID()}));
   const keySecret='cm_test_'+randomBytes(32).toString('hex');registerCredentials(keySecret);const apiKey=await ok(users.owner.sdk.from('business_api_keys').insert({organization_id:org,name:'Integrated scoped key',key_prefix:keySecret.slice(0,18),key_hash:sha(keySecret),scopes:['calculations:run','calculations:batch'],created_by:users.owner.id,rate_limit_per_minute:10000,monthly_quota:10000}).select().single());
+  try{report.readOnlySchemaReadiness=await waitForDeliveryReadiness({db,owner:users.owner,org,apiKey});}catch(error){report.schemaReadinessDiagnostics=await captureFixtureDiagnostics(db,out);report.fixtureHTTPRequests=db.requests;throw error;}
   const embeds=new Map();const makeParent=async()=>{const server=http.createServer((req,res)=>{const id=Number(new URL(req.url,'http://fixture').pathname.slice(1)),url=embeds.get(id);res.setHeader('Content-Type','text/html');res.end('<!doctype html><title>Actual external embed parent</title><iframe title="Native calculator" width="320" height="1000" src="'+(url||'about:blank')+'"></iframe>');});await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));return server;};
   parent=await makeParent();deniedParent=await makeParent();const parentOrigin='http://127.0.0.1:'+parent.address().port,deniedOrigin='http://127.0.0.1:'+deniedParent.address().port;
   next=await startProductionRuntime({root:process.cwd(),auth:{url:db.url},db,artifacts:out});report.runtimeDirectory=next.dir;
@@ -65,7 +65,7 @@ async function main(){
    catch(error){await next.flush();await writeFile(path.join(out,`attempt-${attempt}-failure.json`),evidenceJSON({...report,error:redactText(error.stack),browserErrors:browser.errors,body:await browser.text().catch(()=>null)}));console.log('ASSERTION PAUSED; same fixture and production runtime retained. Commit producer fix then write '+out+'/retry-request.json');if(attempt===3)throw error;let retry=false;const deadline=Date.now()+600000;while(Date.now()<deadline){try{await readFile(path.join(out,'retry-request.json'));await rm(path.join(out,'retry-request.json'));retry=true;break;}catch{}await new Promise(resolve=>setTimeout(resolve,500));}if(!retry)throw error;}
   }
   assert.equal(report.freeHistory.length,9);assert.equal(report.sharing.length,9);assert.equal(report.embed.length,9);assert.equal(report.api.length,9);report.passed=true;passed=true;assert.equal(sha(await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);")),report.originalOuterEmbedGateSHA256);report.fixture=db.provenance;report.requests=db.requests;report.browserErrors=browser.errors;report.copiedSources=next.builtSources;
- }catch(error){report.passed=false;report.error=redactText(error.stack);throw Error(redactText(error.stack));}
+ }catch(error){report.passed=false;report.error=redactText(error.stack);report.fixtureHTTPRequests=db?.requests;throw Error(redactText(error.stack));}
  finally{await next?.flush();await writeFile(path.join(out,'receipt.json'),evidenceJSON(report));await browser?.close();for(const server of [parent,deniedParent])if(server){server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}await next?.close();await db?.close();}
  console.log(JSON.stringify({passed,freeHistory:report.freeHistory.length,sharing:report.sharing.length,embed:report.embed.length,out}));
 }

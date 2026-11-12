@@ -13,3 +13,18 @@ export async function captureFixtureDiagnostics(db,directory){
  for(const [kind,name]of [['postgres',database],['postgrest',database.replace(/-db$/,'-rest')]]){const logs=await run('docker',['--host=unix:///var/run/docker.sock','logs','--tail','80',name]);await writeFile(path.join(directory,`fixture-${kind}.log`),redactText(logs.stdout+'\n'+logs.stderr));}
  await writeFile(path.join(directory,'fixture-readiness-diagnostics.json'),evidenceJSON(diagnostics));return diagnostics;
 }
+/** Small read-only probes for the actual role-visible contract, under the original10s bound.
+ * Usage/attempt tables intentionally have no service SELECT and are not readiness inputs.
+ */
+export async function waitForDeliveryReadiness({db,owner,org,apiKey,timeoutMs=10000}){
+ const started=Date.now(),deadline=started+timeoutMs,observations=[];
+ const specs=[
+  {name:'native-grant-columns',path:'/native_embed_grants?select=id,organization_id,issuer_id,api_key_id,token_hash,allowed_origin,catalog_id,engine_id,technical_version,issued_at,expires_at,revoked_at&limit=0',token:db.serviceKey,method:'GET',accept:value=>Array.isArray(value)&&value.length===0},
+  {name:'sharing-read-capability',path:'/rpc/factory_nine_sharing_capability',token:owner.session.access_token,method:'POST',body:{target_org:org},accept:value=>value==='factory-nine-sharing-private-1'},
+  {name:'existing-job-read-missing',path:'/rpc/read_technology_five_job_v1',token:db.serviceKey,method:'POST',body:{p_api_key_id:apiKey.id,p_key_hash:apiKey.key_hash,p_organization_id:org,p_request_id:'00000000-0000-4000-8000-000000000001'},accept:value=>value?.status==='missing'}
+ ];
+ for(;;){let ready=true;for(const spec of specs){const remaining=deadline-Date.now();if(remaining<=0)throw Error('Delivery read-only schema visibility deadline: '+JSON.stringify(observations));const began=Date.now(),response=await fetch(db.url+'/rest/v1'+spec.path,{method:spec.method,headers:{apikey:db.anonKey,Authorization:'Bearer '+spec.token,'Content-Type':'application/json'},...(spec.body?{body:JSON.stringify(spec.body)}:{}),signal:AbortSignal.timeout(remaining)}),headersMs=Date.now()-began,value=await response.json();observations.push({probe:spec.name,status:response.status,code:value?.code,headersMs,totalMs:Date.now()-began,elapsedMs:Date.now()-started});if(response.ok&&spec.accept(value))continue;assertTransient(value,response.status);ready=false;}
+  if(ready)return{elapsedMs:Date.now()-started,timeoutMs,observations,scope:'Only real role-visible grant columns and read-only sharing/job RPCs. Native consume interface is exercised later by genuine calculation; usage/attempt SELECT remains revoked.'};if(Date.now()>=deadline)throw Error('Delivery read-only schema visibility deadline: '+JSON.stringify(observations));await new Promise(resolve=>setTimeout(resolve,Math.min(50,deadline-Date.now())));
+ }
+}
+function assertTransient(value,status){if(![503,404].includes(status)||!['PGRST202','PGRST205','PGRST002'].includes(value?.code))throw Error('Nontransient delivery read-only probe failure: '+JSON.stringify({status,value}));}
