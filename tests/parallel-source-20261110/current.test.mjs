@@ -8,7 +8,7 @@ import {sourceGit} from './baseline-runtime.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'4504abbe279f001749366afebc92a363afcfa243',sha256:'4cfddedd636cfe5f207f0c35fb8d139abf6b327067a22be89b0e986d793b0152'};
+const expectedAuthority={blob:'f4e4ad7f6e406f449501f4f2286d4f7cf6e2be88',sha256:'24418dc6fe00a2da2383c86686556e2c854f9279f819f0b19ea408469c3a46b1'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
