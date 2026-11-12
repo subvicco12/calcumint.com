@@ -30,3 +30,12 @@ describe('portal client integration (mock action transport, not application auth
   expect(screen.getByText(/requires separately reviewed immutable-version adoption/)).toBeTruthy();expect(screen.queryByText('Save calculation')).toBeNull();expect(transport.save).not.toHaveBeenCalled();
  });
 });
+it('retries an uncertain history save with the same owner/packet request identity',async()=>{
+ transport.save.mockRejectedValueOnce(Error('Lost confirmation')).mockResolvedValueOnce('saved');
+ render(<CalculatorFactoryPortal ownerId="verified-owner" plan="pro"/>);fireEvent.click(screen.getByText('Calculate'));fireEvent.click(screen.getByText('Save calculation'));
+ await waitFor(()=>expect(screen.getByRole('alert').textContent).toContain('Lost confirmation'));
+ fireEvent.click(screen.getByText('Save calculation'));await waitFor(()=>expect(transport.save).toHaveBeenCalledTimes(2));
+ expect(transport.save.mock.calls[0][0].requestId).toBe(transport.save.mock.calls[1][0].requestId);
+ fireEvent.change(document.querySelector('input[name=old]')!,{target:{value:'200'}});fireEvent.click(screen.getByText('Calculate'));fireEvent.click(screen.getByText('Save calculation'));
+ await waitFor(()=>expect(transport.save).toHaveBeenCalledTimes(3));expect(transport.save.mock.calls[2][0].requestId).not.toBe(transport.save.mock.calls[0][0].requestId);
+});

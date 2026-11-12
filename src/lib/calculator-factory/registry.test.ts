@@ -22,3 +22,10 @@ describe('factory exact integration contracts',()=>{
   for(const row of factoryContracts){const workflows=getFactoryWorkflows(row.catalogId),raw=defaults(row),packet=workflows.execute(raw);expect(()=>workflows.exportPacket(packet,'json','free')).toThrow();expect(()=>workflows.scenario([],'A',packet,'','free')).toThrow();const pro=JSON.parse(workflows.exportPacket(packet,'json','pro')),business=JSON.parse(workflows.exportPacket(packet,'json','business'));expect(pro).toEqual(business);expect(pro.snapshot).toEqual(calculateFactory(row.catalogId,raw));}
  });
 });
+it('uses source-defined case-sensitive symbols in every scoped converter control and result',()=>{
+ for(const [id,code,symbol] of [[423,'km','km'],[430,'mj','MJ'],[431,'mw','MW'],[432,'week','wk'],[438,'kn','kN'],[440,'mhz','MHz']] as const){
+  const row=factoryContracts.find(row=>row.catalogId===id)!;
+  expect(row.fields.find(field=>field.key==='toUnit')?.optionLabels?.[code]).toBe(symbol);
+  expect(factoryResult(id,{value:'1',fromUnit:code,toUnit:code}).primaryResult.unit).toBe(symbol);
+ }
+});

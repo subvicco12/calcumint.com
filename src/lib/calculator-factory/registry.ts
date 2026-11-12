@@ -1,5 +1,6 @@
-import {frequencyPresentationUnit,frequencyUnitSymbol} from '../frequency-presentation';
+import {frequencyPresentationUnit} from '../frequency-presentation';
 import {basicMathContracts,basicMathCaptureRevision,calculateBasicMath,type BasicMathCatalogId} from './cohorts/basic-math';
+import {conversionCompletionContracts,conversionCompletionUnit} from './completion/conversion-contracts';
 import {conversionFactoryDefinitions} from './cohorts/conversions';
 import {physicsCandidates} from './cohorts/physics';
 import {createFactoryWorkflows,type FactoryRaw} from './workflows';
@@ -14,7 +15,14 @@ function numericInput(raw:FactoryRaw,fields:readonly FactoryWorkbenchField[]){
  return Object.fromEntries(fields.map(field=>{let value:number;try{value=requiredCalculatorNumber(raw[field.key]);}catch{throw Error(`Enter a complete finite value for ${field.label}`);}if(!Number.isFinite(value))throw Error(`Enter a complete finite value for ${field.label}`);return [field.key,value];}));
 }
 const math:FactoryContract[]=basicMathContracts.map(row=>({...row,registered:true,captureRevision:basicMathCaptureRevision,execute:(raw:FactoryRaw)=>calculateBasicMath(row.catalogId as BasicMathCatalogId,numericInput(raw,row.fields)).snapshot}));
-const conversions:FactoryContract[]=conversionFactoryDefinitions.map(row=>({catalogId:row.catalogId,engineId:row.engineId,slug:row.definition.slug,version:row.version,title:row.definition.title,registered:true,primaryKey:row.primaryKey,outputUnit:row.outputUnit,fields:row.fields.map(field=>row.catalogId===440&&field.options?{...field,optionLabels:Object.fromEntries(field.options.map(code=>[code,frequencyUnitSymbol(code)]))}:field),scope:row.scope,sourceEvidence:['src/lib/publication20/conversions.ts'],limitations:['Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance.'],execute:(raw:FactoryRaw)=>row.run({catalogId:row.catalogId,version:row.version,input:raw}).snapshot}));
+const conversions:FactoryContract[]=conversionFactoryDefinitions.map(row=>{
+ const scoped=conversionCompletionContracts.find(contract=>contract.catalogId===row.catalogId);
+ return {catalogId:row.catalogId,engineId:row.engineId,slug:row.definition.slug,version:row.version,title:row.definition.title,registered:true,primaryKey:row.primaryKey,
+ outputUnit:scoped?input=>conversionCompletionUnit(row.catalogId,String(input.toUnit)).symbol:row.outputUnit,
+ fields:row.fields.map(field=>scoped&&field.options?{...field,optionLabels:Object.fromEntries(field.options.map(code=>[code,conversionCompletionUnit(row.catalogId,code).symbol]))}:field),
+ scope:row.scope,sourceEvidence:['src/lib/publication20/conversions.ts',...(scoped?[scoped.source.path]:[])],
+ limitations:['Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance.'],execute:(raw:FactoryRaw)=>row.run({catalogId:row.catalogId,version:row.version,input:raw}).snapshot};
+});
 const physics:FactoryContract[]=physicsCandidates.map(row=>{
  const engine=row.engine;
  const fields:readonly FactoryWorkbenchField[]='fields' in row?row.fields as readonly FactoryWorkbenchField[]:[];

@@ -1,13 +1,18 @@
 'use client';
 import {useRef,useState,type ReactNode} from 'react';
 import type {FactoryWorkflows,FactoryExecutionPacket,FactoryScenario,FactoryBatchRow} from '@/lib/calculator-factory/workflows';
+import type {CalculationSnapshot} from '@/lib/calculation-snapshot';
+import {equalCompletionJson} from '@/calculators/completion-contracts';
+import {CalculatorFactoryDownloads} from './calculator-factory-downloads';
 import type {CalcuMintPlan} from '@/lib/entitlements';
 
 /** Private engineering workbench; caller supplies a compiled trusted workflow.
  * No account mutation or server authorization is implied by a local plan prop.
  */
 export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text';options?:readonly string[];optionLabels?:Readonly<Record<string,string>>;unit?:string}>;
-export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',renderResult,onSave}:{workflows:FactoryWorkflows;title:string;fields:readonly FactoryWorkbenchField[];plan?:CalcuMintPlan;renderResult?:(packet:FactoryExecutionPacket)=>ReactNode;onSave?:(packet:FactoryExecutionPacket)=>Promise<string>}){
+type WorkflowPanelProps={render:(packet:FactoryExecutionPacket|null,restore:(snapshot:CalculationSnapshot)=>void)=>ReactNode;packet:FactoryExecutionPacket|null;onRestore:(snapshot:CalculationSnapshot)=>void};
+function WorkflowPanel({render,packet,onRestore}:WorkflowPanelProps){return render(packet,onRestore);}
+export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',renderResult,renderWorkflows,onSave}:{workflows:FactoryWorkflows;title:string;fields:readonly FactoryWorkbenchField[];plan?:CalcuMintPlan;renderResult?:(packet:FactoryExecutionPacket)=>ReactNode;renderWorkflows?:(packet:FactoryExecutionPacket|null,restore:(snapshot:CalculationSnapshot)=>void)=>ReactNode;onSave?:(packet:FactoryExecutionPacket)=>Promise<string>}){
  const [raw,setRaw]=useState<Record<string,string>>(()=>Object.fromEntries(fields.map(f=>[f.key,String(f.defaultValue??'')])));
  const [packet,setPacket]=useState<FactoryExecutionPacket|null>(null),[scenarios,setScenarios]=useState<readonly FactoryScenario[]>([]),[rows,setRows]=useState<readonly FactoryBatchRow[]>([]);
  const [replayText,setReplayText]=useState(''),[batchText,setBatchText]=useState(''),[exportText,setExportText]=useState(''),[error,setError]=useState('');
@@ -29,10 +34,17 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
  {error&&<p role="alert">{error}</p>}
  {saveMessage&&<p role="status">{saveMessage}</p>}
  {packet&&<><h3>Result</h3>{renderResult?renderResult(packet):<pre style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere',maxWidth:'100%'}} aria-label="Exact result">{JSON.stringify(packet.snapshot.output,null,2)}</pre>}
+ <CalculatorFactoryDownloads workflows={workflows} packet={packet} title={title} plan={plan}/>
  {onSave&&<button disabled={saving} onClick={()=>void save()}>{saving?'Saving…':'Save calculation'}</button>}
  <button onClick={()=>act(()=>setExportText(workflows.exportPacket(packet,'json',plan)))}>Export JSON</button>
  <button onClick={()=>act(()=>setExportText(workflows.exportPacket(packet,'csv',plan)))}>Export CSV</button>
  {(['A','B','C'] as const).map(slot=><button key={slot} onClick={()=>act(()=>setScenarios(workflows.scenario(scenarios,slot,packet,'',plan)))}>Capture scenario {slot}</button>)}</>}
+ {renderWorkflows&&<WorkflowPanel render={renderWorkflows} packet={packet} onRestore={snapshot=>act(()=>{
+  const restoredRaw=Object.fromEntries(Object.entries(snapshot.input).map(([key,value])=>{if(typeof value!=='number'&&typeof value!=='string')throw Error('Unsupported stored input');return [key,typeof value==='number'&&Object.is(value,-0)?'-0':String(value)];}));
+  const restored=workflows.execute(restoredRaw);
+  if(!equalCompletionJson(restored.snapshot,snapshot))throw Error('Stored scenario does not match this exact engine version');
+  setRaw({...restored.raw});setPacket(restored);setExportText('');
+ })}/> }
  {scenarios.length>0&&<ul aria-label="Captured scenarios">{scenarios.map(row=><li key={row.slot}>Scenario {row.slot}<pre style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere',maxWidth:'100%'}}>{JSON.stringify(row.packet.snapshot.output)}</pre></li>)}</ul>}
  <label>Packet JSON to replay<textarea value={replayText} onChange={e=>{clearFeedback();setReplayText(e.target.value);}}/></label>
  <button onClick={()=>{setPacket(null);setExportText('');act(()=>{const checked=workflows.replay(replayText);setRaw({...checked.raw});setPacket(checked);});}}>Replay packet</button>

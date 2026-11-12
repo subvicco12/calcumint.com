@@ -39,7 +39,7 @@ it.each(conversionCompletionContracts)('proves all offered directed pairs for $c
    expect(Math.abs((actual.output.result as number)-expected)).toBeLessThanOrEqual(Math.max(Number.MIN_VALUE,Math.abs(expected)*Number.EPSILON*4));
    expect(replayConversionFactoryCalculation(raw,actual.snapshot).snapshot).toEqual(actual.snapshot);
    const entry=getConversionFactoryDefinition(contract.catalogId)!;
-   expect(actual.output).toEqual(entry.definition.calculate({value:Number(value),fromUnit:from,toUnit:to}));
+   expect(actual.output).toEqual(entry.definition.calculate({value:Number(value),fromUnit:from,toUnit:to},{}));
   }
  }
 });
