@@ -72,6 +72,8 @@ async function main(){
 
 export async function runJourneys(context){
  const {db,next,browser,users,org,project,client,embeds,parentOrigin,deniedOrigin,identify,issue,api,batch,report,out}=context;
+ const currentFiles=execFileSync('rg',['--files','src','data'],{encoding:'utf8'}).trim().split('\n'),drift=[];for(const file of [...new Set([...Object.keys(next.builtSources),...currentFiles])]){const expected=next.builtSources[file]?.originalSHA256;let current;try{current=sha(await readFile(file));}catch{current=null;}if(current!==expected)drift.push({file,expected,current});}if(drift.length){report.currentSourceDrift=drift;throw Error('Frozen production source differs from current checkout; a new qualified build is required: '+drift.map(row=>row.file).join(', '));}
+ report.currentSourceMatchesFrozenBuild=true;
  if(!report.conditionalPublicationReady){
   assert.equal((await issue(cases[0])).status,404,'Real hosted publication default must deny unapproved exact tuple');report.defaultHostedPublicationDenied=true;
   const outer=await db.sql("SELECT pg_get_functiondef('public.factory_native_embed_publication_v1(integer,integer)'::regprocedure);");report.originalOuterEmbedGateSHA256=sha(outer);
