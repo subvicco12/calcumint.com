@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision37.json",
-    "blob": "f124b9617cdef72c8ea161378653ad901ef63d9f",
-    "sha256": "b6dd6494b2a1d03963adcb57314d1650f0c96f3fb2fe8c36d5ede076a0d69119"
+    "path": "docs/parallel-source-20261110/capture-revision38.json",
+    "blob": "1b7161dd4ef21539d89deff34283349ee07b25c1",
+    "sha256": "b53766b3c37fc7ce9928315484be43ed7558cf68ff309731296a5a6382853345"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "ca4b180e555bfe991691719cdf8fd8c806a22153",
-    "sha256": "8dece170754b3e09232486beb31d36d18c381f6cdf7f5053d9f59341a9459876"
+    "blob": "a15e980d85dd72ea32ab65be095ef7cb0209efac",
+    "sha256": "9cdd18a0b000fae7cf9a8780c01ddbf18b86c760c2f88d729af3de9e505bc015"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "81a115054744a9850d88a00b9637ad06c7860c4c",
-    "sha256": "876dd261bfab2e1d9a1cae452935bf0268db9261c7f2683c8fd08d29803dcf70"
+    "blob": "31bb44583a3c3b3468ea54a89a836d161ef44e70",
+    "sha256": "c4d823f2e7f4efc62ee53166eb722e3edc4ba9f5d2aae4e652406a9e471402fe"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -39,8 +39,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "scripts/product-completion-lineage.mjs",
-    "blob": "edc38cf3e05b309e6cfb2300fb0dbe282d2906a7",
-    "sha256": "835f2572b04406471c5af8e5e4017f28a497f898a9986c9dfc3ac267635439d7"
+    "blob": "06d7c18e8869dc183414a57c16af3ab5954f2445",
+    "sha256": "61183cb81cdde79a7d9cbd5c6e48614be33b060553e9c1b3e427c835026dd671"
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
@@ -161,6 +161,31 @@ export const accepted=Object.freeze([
     "path": "docs/calculator-factory/unit-scheduler-successor.json",
     "blob": "b6c075bfc60bc19c43be8133e1cf66457f3c6823",
     "sha256": "4f647ea5bd51db95df01f94f332205cce134b0ebe8e2f4b3cfc5857adefa87ea"
+  },
+  {
+    "path": "tests/completion-first-20261112/current-stage.test.mjs",
+    "blob": "76fefef8382531cf98aa96d7df7be0711c958932",
+    "sha256": "432bf737ae0638bd45b1f412b3e69152d81476656a0b2b4a89204f37d2607832"
+  },
+  {
+    "path": "tests/completion-first-20261112/stage.mjs",
+    "blob": "1d1ad6fae7599837992260384ecf4a28df0153c2",
+    "sha256": "c0c8a038c13413b9d7bb152caf0ba7a4750dd03678f3b45035ceafeb45aea455"
+  },
+  {
+    "path": "tests/completion-first-20261112/policy.mjs",
+    "blob": "25f2ee70e2fa6e63e4cbdc50a2465825175ab89e",
+    "sha256": "f255f381d9eac01c4cf288c53174fee55483e586752b69d93ae426aeb52f904c"
+  },
+  {
+    "path": "docs/completion-first-20261112/source-stage.json",
+    "blob": "c7f6cbee4532fa9fdd398663cc07e6f9fae4c230",
+    "sha256": "ccc84b70df74dc886a73d41b5ae7f1e9508835e4cad20ca2dbeb5018e3ca656d"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision37.json",
+    "blob": "f124b9617cdef72c8ea161378653ad901ef63d9f",
+    "sha256": "b6dd6494b2a1d03963adcb57314d1650f0c96f3fb2fe8c36d5ede076a0d69119"
   }
 ]);
 export function verifyParallelAuthority(read,git){
