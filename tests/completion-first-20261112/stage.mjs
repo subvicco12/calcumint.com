@@ -1,0 +1,33 @@
+/** Exact completion successor and explicit historical factory proof. No historical bytes fill current claims. */
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
+import {factoryPolicy,factoryCapturePath} from '../calculator-factory-source-20261112/policy.mjs';
+import {completionPolicy,completionCapturePath} from './policy.mjs';
+export function completionRecords(read){
+ const bytes=read(completionCapturePath);
+ // Every mapping checks the literal capture digest. Callers additionally require
+ // independent authority over this capture and literal policy module.
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),completionPolicy.captureSHA256,'Independent completion capture digest differs');
+ const capture=JSON.parse(bytes);
+ assert.equal(capture.predecessorRef,completionPolicy.predecessorRef);
+ assert.equal(capture.codeRef,completionPolicy.codeRef);
+ assert.deepEqual(capture.rows.map(r=>r.path),completionPolicy.paths);
+ return new Map(capture.rows.map(r=>[r.path,r]));
+}
+export function verifyCompletionAndHistoricalFactory({read,git,root}){
+ const live=verifyExactStage({policy:completionPolicy,captureBytes:read(completionCapturePath),git,read,root});
+ const baseline=completionPolicy.predecessorRef;
+ assert.equal(git(['diff','--name-only','-z',factoryPolicy.codeRef,baseline,'--','src']).length,0,'Completion predecessor must preserve all Stage6 source');
+ for(const [path,row]of live){assert(row.current,'No deleted completion source');if(row.predecessor)assert.equal(git(['rev-parse',baseline+':'+path]).toString().trim(),row.predecessor.blob);}
+ // Explicit historical view limited to SRC and HEAD commit identity. Non-source objects
+ // and all immutable record checks remain real Git. This result is historical only.
+ const historicalGit=args=>{
+  if(args[0]==='rev-parse'&&args[1]==='--verify'&&args[2]==='HEAD^{commit}')return Buffer.from(baseline+'\n');
+  if(args[0]==='status'&&args.at(-1)==='src')return git(['status','--porcelain','--untracked-files=all','--','src']);
+  return git(args);
+ };
+ const historicalRead=path=>path.startsWith('src/')?git(['show',baseline+':'+path]):read(path);
+ const historical=verifyExactStage({policy:factoryPolicy,captureBytes:read(factoryCapturePath),git:historicalGit,read:historicalRead,root});
+ return {live,historical};
+}

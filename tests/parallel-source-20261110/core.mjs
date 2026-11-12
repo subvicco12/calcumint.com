@@ -9,10 +9,12 @@ import {verifyParallelAuthority} from './authority.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
 import {factoryPolicy,factoryCapturePath} from '../calculator-factory-source-20261112/policy.mjs';
+import {completionPolicy,completionCapturePath} from '../completion-first-20261112/policy.mjs';
+import {completionRecords,verifyCompletionAndHistoricalFactory} from '../completion-first-20261112/stage.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision37.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision38.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -22,6 +24,7 @@ function currentGit(source){
 }
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
 function sourceRecord(record,read,git){
+ if(record.path.startsWith('src/')){const row=completionRecords(read).get(record.path);if(row&&record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}
  assert.equal(typeof record.path,'string');assert(!isAbsolute(record.path)&&!record.path.split('/').includes('..'));
  assert.match(record.ref,/^[0-9a-f]{40}$/);assert.equal(git(['rev-parse','--verify',record.ref+'^{commit}']).toString().trim(),record.ref);
  assert.equal(git(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob,'Exact reviewed source object differs: '+record.path);
@@ -43,10 +46,11 @@ function applicationSuccession(capture,read,git){
  const changed=git(['diff','--name-only',applicationBaselineRef,applicationSuccessorRef,'--','src']).toString().trim().split('\n');
  assert.equal(changed.length,21);assert.deepEqual(capture.applicationSuccessors.map(r=>r.path),changed);
  assert.equal(git(['diff','--name-only',applicationBaselineRef,applicationSuccessorRef,'--','src/calculators']).toString().trim(),'','Historical mathematical engines must remain immutable');
- const factory=verifyExactStage({policy:factoryPolicy,captureBytes:read(factoryCapturePath),git,read,root});
+ const {historical:factory,live:completion}=verifyCompletionAndHistoricalFactory({git,read,root});
+ assert.deepEqual([...completion.values()].map(r=>r.current),capture.completionSources,'Completion sources must enter closed current capture');
  assert.deepEqual([...factory.values()].map(r=>r.current),capture.factorySources,'Factory sources must enter closed current capture');
  const appPaths=changed.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)));
- assert.equal(appPaths.length,14);assert.deepEqual(git(['diff','--name-only',applicationBaselineRef,'HEAD','--','src']).toString().trim().split('\n').filter(p=>p&&!(/\.test\.(?:ts|tsx)$/.test(p))),[...new Set([...appPaths,...factoryPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)))])].sort(),'Only historical app14 plus finite independently pinned factory stage may change non-test source');
+ assert.equal(appPaths.length,14);assert.deepEqual(git(['diff','--name-only',applicationBaselineRef,'HEAD','--','src']).toString().trim().split('\n').filter(p=>p&&!(/\.test\.(?:ts|tsx)$/.test(p))),[...new Set([...appPaths,...factoryPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...completionPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)))])].sort(),'Only historical app14 plus finite independently pinned factory stage may change non-test source');
  const parentPaths=new Set(git(['ls-tree','-r','--name-only',applicationBaselineRef,'--','src']).toString().trim().split('\n'));
  const originalPaths=new Set(git(['ls-tree','-r','--name-only',appRef,'--','src']).toString().trim().split('\n'));
  const result=new Map();
@@ -56,6 +60,7 @@ function applicationSuccession(capture,read,git){
   if(originalPaths.has(row.path)){assert.equal(row.historical.path,row.path);assert.equal(row.historical.ref,appRef);immutableRecord(row.historical,git);}else assert.equal(row.historical,null);
   sourceRecord(row.current,read,git);result.set(row.path,row);
  }
+ for(const [path,row]of completion)result.set(path,{path,current:row.current,historical:capture.applicationSuccessors.find(r=>r.path===path)?.historical});
  return result;
 }
 export const sevenTestRef='f68c077b63b1dfabbe9ca3f21e4f195ef645ad97';
@@ -125,6 +130,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  assert.equal(current.slice(current.indexOf('export const completionSourceRefs')),historicalTail.replace(insertion,insertion+'\n git=completionGitReader(git);'),'Only the independently bound immutable Git transport insertion may extend the unchanged executable guard');
  const before=parseRows(old),after=parseRows(current);assert.deepEqual(after.map(r=>r.path),before.map(r=>r.path));if(suppliedRows)assert.deepEqual(suppliedRows,after,'Only the reviewed parallel source rows are admitted');
  const apps=new Map(capture.applicationSources.map(r=>[r.path,delta.get(r.path)?.current??r]));for(const [path,row]of delta)apps.set(path,row.current);
+ for(const row of capture.completionSources)apps.set(row.path,row);
  const evolutions=new Map([...apps,...capture.guardSources.map(r=>[r.path,r])]);
  const reviewedPath='src/lib/execution-recovery-evidence.test.ts',reviewedRef='05129e2a74e70e23160578c63a984c4bf035ed0f';
  const reviewed=capture.currentSources.find(r=>r.path===reviewedPath);assert(reviewed,'Reviewed exact test successor must remain captured');
