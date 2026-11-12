@@ -26,6 +26,6 @@ test('completion capture substitution and immutable commit substitution cannot a
  assert.throws(()=>verifyExactStage({...input,git:a=>a[0]==='cat-file'&&a[1]==='commit'?Buffer.from('substituted commit'):sourceGit(a)}),/Commit content address differs/);
 });
 test('new-stage historic projection cannot hide actual live SRC drift',()=>{
- const git=a=>a[0]==='diff'&&a[2]===completionPolicy.codeRef?Buffer.from('src/unreviewed.ts\0'):sourceGit(a);
+ const git=a=>a[0]==='diff'&&a[3]===completionPolicy.codeRef?Buffer.from('src/unreviewed.ts\0'):sourceGit(a);
  assert.throws(()=>verifyCompletionAndHistoricalFactory({...input,git}),/Unreviewed current source delta/);
 });
