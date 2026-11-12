@@ -4,8 +4,8 @@ import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
     "path": "docs/parallel-source-20261110/capture-revision38.json",
-    "blob": "065218b67f5510d5d985e47677cfa50edc774977",
-    "sha256": "5b4cc31a0746b5188a9bca8352097c417a63879a2dcc8a52e941f3ca19bd29a3"
+    "blob": "0e129db4c7d35d536318c180b27ff977fc696b06",
+    "sha256": "7e5b0441bc89490fa6fb5fb08e2c8ecc8e0dcb68ec8b9c5a8303ada556aa8aca"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "31bb44583a3c3b3468ea54a89a836d161ef44e70",
-    "sha256": "c4d823f2e7f4efc62ee53166eb722e3edc4ba9f5d2aae4e652406a9e471402fe"
+    "blob": "38e285cec2d701f4efdcc0fb17dc7ef62eadd0d6",
+    "sha256": "9636b444fd6a5cca87dea02abc2bdd0a3bd22af7bd1eddc79eb1b2bf0ebafcd9"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
