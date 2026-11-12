@@ -4,8 +4,8 @@ import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
     "path": "docs/parallel-source-20261110/capture-revision38.json",
-    "blob": "1b7161dd4ef21539d89deff34283349ee07b25c1",
-    "sha256": "b53766b3c37fc7ce9928315484be43ed7558cf68ff309731296a5a6382853345"
+    "blob": "80ac5d238eeafae2a8106993da09cac7af3acc45",
+    "sha256": "f80ee6f613a9d460234bd7345fc4e8e4c101701425d2a144458e992e426e5628"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
@@ -164,8 +164,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-first-20261112/current-stage.test.mjs",
-    "blob": "76fefef8382531cf98aa96d7df7be0711c958932",
-    "sha256": "432bf737ae0638bd45b1f412b3e69152d81476656a0b2b4a89204f37d2607832"
+    "blob": "472fb9fb803ada1e122ced32fac240e4114df043",
+    "sha256": "fb6b2f4d505ac9214a7a9346a592a1dcf263b46865523fdfd37bf9400fe5dea7"
   },
   {
     "path": "tests/completion-first-20261112/stage.mjs",
@@ -181,6 +181,11 @@ export const accepted=Object.freeze([
     "path": "docs/completion-first-20261112/source-stage.json",
     "blob": "c7f6cbee4532fa9fdd398663cc07e6f9fae4c230",
     "sha256": "ccc84b70df74dc886a73d41b5ae7f1e9508835e4cad20ca2dbeb5018e3ca656d"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision38.json",
+    "blob": "f124b9617cdef72c8ea161378653ad901ef63d9f",
+    "sha256": "b6dd6494b2a1d03963adcb57314d1650f0c96f3fb2fe8c36d5ede076a0d69119"
   },
   {
     "path": "docs/parallel-source-20261110/capture-revision37.json",
