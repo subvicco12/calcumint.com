@@ -25,7 +25,7 @@ async function loadProject(rawId:string,rawQuery:Query){
  if(!capability.error&&!(nextCohort?technologyNextSharingCapabilitySupports(capability.data):capability.data===TECHNOLOGY_FIVE_SHARING_REVISION))throw new TechnologyFiveSharingError(403,'This Business organization is unavailable.');
  const cursorOwner=`shared:${context.user.id}:${project.data.organization_id}:${id}${nextCohort?':next':''}`;
  const cursor=query.cursor?decodeDraftHistoryCursor(query.cursor,cursorOwner,'scenario',50):null;
- let sharedQuery=context.client.from(table).select('id,title,calculator_slug,calculator_version,input_data,output_data,client_workspace_id,created_at').eq('organization_id',project.data.organization_id).eq('project_id',id);
+ let sharedQuery=context.client.from(table).select('id,title,calculator_slug,calculator_version,input_data,output_data,client_workspace_id,created_at').eq('organization_id',project.data.organization_id).eq('project_id',id).in('calculator_slug',[...shareSlugs]);
  if(cursor)sharedQuery=sharedQuery.or(draftHistorySeekFilter(cursor));
  const [clients,history,shared]=await Promise.all([
   context.client.from('client_workspaces').select('id,name,project_id').eq('organization_id',project.data.organization_id),
