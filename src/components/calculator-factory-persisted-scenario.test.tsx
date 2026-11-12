@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import {useState} from 'react';
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {afterEach,beforeEach,expect,it,vi} from 'vitest';
 const mocks=vi.hoisted(()=>({projects:vi.fn(),save:vi.fn(),restore:vi.fn()}));
@@ -47,4 +48,21 @@ it('disables controls in flight and ignores restore completion after unmount',as
  expect((screen.getByRole('button',{name:'Restore saved scenario'}) as HTMLButtonElement).disabled).toBe(true);
  expect((screen.getByLabelText('Scenario name') as HTMLInputElement).maxLength).toBe(120);
  view.unmount();await act(async()=>resolve({catalogId:218,snapshot:packet.snapshot}));expect(onRestore).not.toHaveBeenCalled();
+});
+
+it('retains restore success through a matching parent packet update and clears it on later edits',async()=>{
+ const restored=getFactoryWorkflows(218).execute({x:'5'});
+ mocks.restore.mockResolvedValue({catalogId:218,snapshot:restored.snapshot});
+ function Parent(){const [value,setValue]=useState(packet);return <><button onClick={()=>setValue(getFactoryWorkflows(218).execute({x:'6'}))}>Edit calculation</button><CalculatorFactoryPersistedScenario ownerId={owner} packet={value} onRestore={()=>setValue(restored)}/></>;}
+ render(<Parent/>);fireEvent.change(screen.getByLabelText('Saved scenario ID'),{target:{value:'scenario'}});fireEvent.click(screen.getByRole('button',{name:'Restore saved scenario'}));
+ await screen.findByText('Verified saved snapshot restored.');
+ fireEvent.click(screen.getByRole('button',{name:'Edit calculation'}));expect(screen.queryByText('Verified saved snapshot restored.')).toBeNull();
+});
+it('does not preserve restore success when the parent changes to a different snapshot',async()=>{
+ const restored=getFactoryWorkflows(218).execute({x:'5'}),different=getFactoryWorkflows(218).execute({x:'6'});
+ mocks.restore.mockResolvedValue({catalogId:218,snapshot:restored.snapshot});
+ function Parent(){const [value,setValue]=useState(packet);return <CalculatorFactoryPersistedScenario ownerId={owner} packet={value} onRestore={()=>setValue(different)}/>;}
+ render(<Parent/>);fireEvent.change(screen.getByLabelText('Saved scenario ID'),{target:{value:'scenario'}});fireEvent.click(screen.getByRole('button',{name:'Restore saved scenario'}));
+ await waitFor(()=>expect(mocks.restore).toHaveBeenCalled());await act(async()=>{});
+ expect(screen.queryByText('Verified saved snapshot restored.')).toBeNull();
 });

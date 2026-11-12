@@ -1,19 +1,29 @@
 'use client';
+import Link from 'next/link';
 import {useLayoutEffect,useRef,useState} from 'react';
 import {factoryProjects,factorySaveScenario,factoryRestoreScenario} from '@/app/admin/calculator-factory/actions';
 import type {FactoryExecutionPacket} from '@/lib/calculator-factory/workflows';
+import {equalCompletionJson} from '@/calculators/completion-contracts';
 import type {CalculationSnapshot} from '@/lib/calculation-snapshot';
 
 type Props={ownerId:string;packet:FactoryExecutionPacket|null;onRestore:(snapshot:CalculationSnapshot,catalogId:number)=>void};
 export function CalculatorFactoryPersistedScenario(props:Props){return <OwnedScenario key={props.ownerId} {...props}/>;}
 function OwnedScenario({ownerId,packet,onRestore}:Props){
- const [projects,setProjects]=useState<{id:string;name:string}[]>([]),[projectId,setProjectId]=useState(''),[name,setName]=useState(''),[restoreId,setRestoreId]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false);
+ const [projects,setProjects]=useState<{id:string;name:string}[]>([]),[projectId,setProjectId]=useState(''),[name,setName]=useState(''),[restoreId,setRestoreId]=useState('');
  const generation=useRef(0),mounted=useRef(false),pending=useRef(false),retry=useRef<{key:string;id:string}|null>(null);
  const packetKey=JSON.stringify(packet);
- const current=useRef('');current.current=packetKey;
- useLayoutEffect(()=>{mounted.current=true;return()=>{mounted.current=false;generation.current++;pending.current=false;};},[]);
- useLayoutEffect(()=>{generation.current++;pending.current=false;retry.current=null;setBusy(false);setMessage('');},[packetKey]);
- const start=()=>{if(pending.current)return null;pending.current=true;setBusy(true);setMessage('');return {generation:++generation.current,key:packetKey};};
+ type View={key:string;message:string;busy:boolean;restored:{snapshot:CalculationSnapshot;catalogId:number}|null};
+ const [view,setView]=useState<View>({key:packetKey,message:'',busy:false,restored:null});
+ const matches=view.restored&&packet?.identity.catalogId===view.restored.catalogId&&equalCompletionJson(packet.snapshot,view.restored.snapshot);
+ const activeView=view.key===packetKey?view:{key:packetKey,message:matches?view.message:'',busy:false,restored:null};
+ if(view.key!==packetKey)setView(activeView);
+ const {message,busy}=activeView;
+ const setMessage=(text:string)=>setView(old=>({...old,key:packetKey,message:text}));
+ const setBusy=(value:boolean)=>setView(old=>({...old,key:packetKey,busy:value}));
+ const current=useRef(packetKey);
+ useLayoutEffect(()=>{mounted.current=true;return()=>{mounted.current=false;};},[]);
+ useLayoutEffect(()=>{current.current=packetKey;generation.current++;pending.current=false;retry.current=null;},[packetKey]);
+ const start=()=>{if(pending.current)return null;pending.current=true;setView({key:packetKey,message:'',busy:true,restored:null});return {generation:++generation.current,key:packetKey};};
  const valid=(request:{generation:number;key:string})=>mounted.current&&generation.current===request.generation&&current.current===request.key;
  async function run(operation:(validNow:()=>boolean)=>Promise<void>){
   const request=start();if(!request)return;
@@ -24,11 +34,11 @@ function OwnedScenario({ownerId,packet,onRestore}:Props){
  function save(){if(!packet||!projectId||!name.trim())return;const key=JSON.stringify([ownerId,packet,projectId,name]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};const requestId=retry.current.id;
   void run(async validNow=>{const result=await factorySaveScenario({expectedOwnerId:ownerId,packet,projectId,name,requestId});if(!validNow())return;setRestoreId(result.scenarioId);setMessage(`Saved scenario ${result.scenarioId}.`);});
  }
- function restore(){void run(async validNow=>{const result=await factoryRestoreScenario({expectedOwnerId:ownerId,scenarioId:restoreId.trim()});if(!validNow())return;onRestore(result.snapshot,result.catalogId);setMessage('Verified saved snapshot restored.');});}
+ function restore(){void run(async validNow=>{const result=await factoryRestoreScenario({expectedOwnerId:ownerId,scenarioId:restoreId.trim()});if(!validNow())return;setView({key:packetKey,message:'Verified saved snapshot restored.',busy:false,restored:packet?.identity.catalogId===result.catalogId&&equalCompletionJson(packet.snapshot,result.snapshot)?null:{snapshot:result.snapshot,catalogId:result.catalogId}});onRestore(result.snapshot,result.catalogId);});}
  return <section aria-label="Persisted project scenarios">
   <h3>Saved project scenarios</h3>
   <p>Save a verified calculation to an owned Pro or Business project. Saved scenarios retain normalized inputs and results; original raw keystrokes are not retained.</p>
-  <button type="button" disabled={busy} onClick={load}>Load owned projects</button>{' '}<a href="/account/projects">Manage projects</a>
+  <button type="button" disabled={busy} onClick={load}>Load owned projects</button>{' '}<Link href="/account/projects">Manage projects</Link>
   <label>Owned project<select aria-label="Owned project" value={projectId} disabled={busy||!projects.length} onChange={event=>{setProjectId(event.target.value);retry.current=null;}}><option value="">Choose an owned project</option>{projects.map(project=><option key={project.id} value={project.id}>{project.name}</option>)}</select></label>
   <label>Scenario name<input maxLength={120} value={name} disabled={busy} onChange={event=>{setName(event.target.value);retry.current=null;}}/></label>
   <button type="button" disabled={busy||!packet||!projectId||!name.trim()} onClick={save}>Save project scenario</button>
