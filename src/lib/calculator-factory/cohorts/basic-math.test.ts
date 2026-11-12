@@ -1,3 +1,4 @@
+import {verifyRegisteredSnapshot} from '../../registered-snapshot-verification';
 import { describe, expect, it } from "vitest";
 import { launchDefinitions } from "../../../calculators/launch-portfolio";
 import { basicMathContracts, calculateBasicMath } from "./basic-math";
@@ -84,4 +85,15 @@ it('retains mathematically zero output for every calculator-specific zero case',
     [211,{a:0,b:4}],[212,{a:0,b:4}],[215,{numerator:0,denominator:4}],
     [216,{a:8,b:-8}],[218,{x:0}],[219,{x:0}],[220,{x:0}],
   ] as const) expect(calculateBasicMath(id,input).snapshot.output.result).toBe(0);
+});
+
+it('keeps historical registered v1 underflow snapshots replayable while refusing new captures',()=>{
+ for(const [id,input] of lostNonzero){
+  const contract=basicMathContracts.find(row=>row.catalogId===id)!;
+  const engine=launchDefinitions.find(row=>row.id===contract.engineId)!;
+  const parsed=engine.inputSchema.parse(input);
+  const historical={calculatorSlug:engine.slug,calculatorVersion:1,input:parsed,output:engine.calculate(parsed,{})};
+  expect(verifyRegisteredSnapshot(historical).snapshot).toEqual(historical);
+  expect(()=>calculateBasicMath(id,input)).toThrow('normal range');
+ }
 });
