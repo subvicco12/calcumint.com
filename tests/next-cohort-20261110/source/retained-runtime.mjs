@@ -1,4 +1,4 @@
-import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';
+import {proveNamedCurrentContext,preloadRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
 import {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';
 import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
@@ -479,7 +479,8 @@ const currentContext=Object.freeze([
 ]);
 const immutableObjects=new WeakMap();
 const hash=b=>createHash('sha256').update(b).digest('hex');
-const git=completionGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}));
+const git=completionGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));
+let immutableObjectsPreloaded=false;
 export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
  assert(currentContext.length>0,'Missing reviewed current runtime context');
  const head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
@@ -494,6 +495,7 @@ export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
 }
 export function retainedRuntimeBytes(path,read=readFileSync,sourceGit=git){
  const row=sources.find(source=>source.path===path);
+ if(sourceGit===git&&!immutableObjectsPreloaded&&(row||["src/lib/native-delivery/technology-five-job-storage.ts","src/lib/native-delivery/technology-five-webhook-worker.ts","tests/gotrue-runtime/acceptance.mjs"].includes(path))){preloadRetainedImmutableObjects(read,git);immutableObjectsPreloaded=true;}
  if(!row){const retained=readStage2HistoricalRuntime(path,read,sourceGit);return retained??read(path);}
  const admitted=verifyCurrentRuntimeContext(read,sourceGit);
  const current=read(path);
