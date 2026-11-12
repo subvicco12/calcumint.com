@@ -1,0 +1,84 @@
+{
+  "kind": "EXACT_COMPLETION_SOURCE_ADMISSION_NOT_CANONICAL_APPROVAL",
+  "recordedAt": "2026-11-12T14:15:54.614008+00:00",
+  "predecessorRef": "16cb2804fa3e9731a7f39a761de9a7a27ee87e67",
+  "frozenSourceRef": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "sourceCaptureSHA256": "7d49ee77a3f03ba94c043807ee9f3656a8e0f56191b2cd7cbaace0f778f75037",
+  "sourcePaths": [
+    "src/app/admin/calculator-factory/actions.test.ts",
+    "src/app/admin/calculator-factory/actions.ts",
+    "src/components/calculator-factory-conversion-methodology.test.tsx",
+    "src/components/calculator-factory-conversion-methodology.tsx",
+    "src/components/calculator-factory-downloads.test.tsx",
+    "src/components/calculator-factory-downloads.tsx",
+    "src/components/calculator-factory-math-analysis.test.tsx",
+    "src/components/calculator-factory-math-analysis.tsx",
+    "src/components/calculator-factory-persisted-scenario.test.tsx",
+    "src/components/calculator-factory-persisted-scenario.tsx",
+    "src/components/calculator-factory-portal.test.tsx",
+    "src/components/calculator-factory-portal.tsx",
+    "src/components/calculator-factory-workbench.test.tsx",
+    "src/components/calculator-factory-workbench.tsx",
+    "src/lib/calculator-factory/completion/acceptance.test.ts",
+    "src/lib/calculator-factory/completion/acceptance.ts",
+    "src/lib/calculator-factory/completion/business.test.ts",
+    "src/lib/calculator-factory/completion/business.ts",
+    "src/lib/calculator-factory/completion/conversion-contracts.test.ts",
+    "src/lib/calculator-factory/completion/conversion-contracts.ts",
+    "src/lib/calculator-factory/completion/exports.test.ts",
+    "src/lib/calculator-factory/completion/exports.ts",
+    "src/lib/calculator-factory/completion/math.test.ts",
+    "src/lib/calculator-factory/completion/math.ts",
+    "src/lib/calculator-factory/completion/physics.test.ts",
+    "src/lib/calculator-factory/completion/physics.ts",
+    "src/lib/calculator-factory/registry.test.ts",
+    "src/lib/calculator-factory/registry.ts"
+  ],
+  "auxiliaryPaths": [
+    "tests/calculator-factory-20261112/account-acceptance.mjs"
+  ],
+  "currentProofCapture": "docs/parallel-source-20261110/capture-revision38.json",
+  "historicalCapture37Unchanged": true,
+  "historicalFactoryStage6Unchanged": true,
+  "unitSchedulerMaxWorkers1Unchanged": true,
+  "wholeCurrentSRCEqualityMandatory": true,
+  "currentDirtyUnknownSourceRejected": true,
+  "evidenceDependencyRoot": "src/components/calculator-interactive.tsx",
+  "evidenceDependencyMeaning": "All28 exact frozen successor records are supplemental EVIDENCE closure edges. This does not assert that calculator-interactive imports the admin factory at runtime. Existing caller fixtures copy this declared evidence-root closure; no source assertion or fixture coverage was removed.",
+  "historicalProofMeaning": "The mandatory live baseline16-to-frozen proof checks actual current SRC first. Only then the unchanged Stage6 primitive verifies its historical source against an explicit immutable baseline16 SRC view. Historical bytes never fill current source claims.",
+  "validation": [
+    {
+      "consumer": "actual current-source consumer",
+      "cases": 91,
+      "nestedCompletionCases": 4,
+      "result": "PASS",
+      "head": "35c89317",
+      "log": "/workspace/artifacts/completion-first-20261112/publication/final-current-source-consumer.log"
+    },
+    {
+      "consumer": "actual shortest-publication consumer",
+      "cases": 36,
+      "result": "PASS",
+      "head": "35c89317",
+      "log": "/workspace/artifacts/completion-first-20261112/publication/shortest-source-consumer.log"
+    },
+    {
+      "consumer": "six-candidate / first20 / calculator-sprint / authenticated-receipt consumers",
+      "cases": [
+        43,
+        22,
+        32,
+        98
+      ],
+      "result": "PASS_BEFORE_FINAL_EVIDENCE_EDGE_RELOCATION",
+      "head": "42fe3b72",
+      "log": "/workspace/artifacts/completion-first-20261112/publication/actual-source-consumers.log"
+    }
+  ],
+  "finalFullUnitRevalidation": "ROOT_OWNED_PENDING",
+  "productionWrites": false,
+  "newCanonicalApprovals": 0,
+  "newCertifications": 0,
+  "newPublicationEligibility": 0,
+  "releaseHold": true
+}
