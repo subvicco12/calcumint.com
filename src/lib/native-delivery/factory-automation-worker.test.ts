@@ -20,3 +20,9 @@ it('rechecks issuer/publication/lease and refuses lost authority without success
  const deps=fixture();deps.check.mockResolvedValue(false);const send=vi.fn(async()=>204);
  expect(await processTechnologyFiveWebhooks(deps,send)).toMatchObject({failed:1});expect(send).not.toHaveBeenCalled();expect(deps.assertAuthority).toHaveBeenCalledOnce();
 });
+
+it('binds the replay packet to original request text even when substituted raw text has the same numeric result',async()=>{
+ const equivalent=JSON.parse(payload);equivalent.data.output_rows[0].result.packet.raw.x='03';
+ const deps=fixture(JSON.stringify(equivalent)),send=vi.fn(async()=>204);
+ expect(await processTechnologyFiveWebhooks(deps,send)).toMatchObject({failed:1});expect(send).not.toHaveBeenCalled();
+});

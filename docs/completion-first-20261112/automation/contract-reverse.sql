@@ -7,6 +7,18 @@ LOCK TABLE public.technology_five_embed_grants,public.technology_five_embed_usag
 CREATE TEMP TABLE expected_factory_automation_job (LIKE public.technology_five_jobs) ON COMMIT DROP;
 ALTER TABLE pg_temp.expected_factory_automation_job ADD CONSTRAINT expected_factory_nine_tuple_check CHECK ((catalog_id,engine_id,technical_version) IN ((370,'technology.bandwidth',1),(371,'technology.download-time',1),(372,'technology.upload-time',1),(373,'technology.data-transfer',1),(386,'technology.base64-size',1),(374,'technology.storage-conversion',1),(377,'technology.aspect-ratio',1),(378,'technology.resolution',1),(379,'technology.dpi',1),(382,'technology.power-supply',1),(383,'technology.website-bandwidth',2),(384,'technology.cloud-storage-cost',1),(385,'technology.cloud-data-transfer-cost',1),(369,'technology.cidr',1),(375,'technology.raid-capacity',1),(380,'technology.battery-runtime',1),(381,'technology.ups-runtime',1),(387,'technology.password-entropy',1),(368,'technology.ip-subnet',1),(376,'technology.screen-ppi',1),(218,'launch-square-calculator',1),(219,'launch-cube-calculator',1),(220,'launch-square-root-calculator',1),(423,'conversion.length',1),(430,'conversion.energy',1),(431,'conversion.power',1),(432,'conversion.time',1),(438,'conversion.force',1),(440,'conversion.frequency',1)));
 DO $pre$ BEGIN
+IF (SELECT prosrc FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='check_technology_five_dispatch_v1') IS DISTINCT FROM $expected$
+DECLARE d public.technology_five_webhook_outbox%ROWTYPE;k public.business_api_keys%ROWTYPE;e public.business_webhook_endpoints%ROWTYPE;j public.technology_five_jobs%ROWTYPE;
+BEGIN
+ IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;
+ SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;
+ IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;
+ SELECT * INTO k FROM public.business_api_keys WHERE id=d.api_key_id;
+ PERFORM public.technology_five_key_authority_v1(k.id,k.key_hash,d.organization_id);SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);
+ SELECT * INTO e FROM public.business_webhook_endpoints WHERE id=d.endpoint_id AND organization_id=d.organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;
+ RETURN FOUND AND d.payload_text::jsonb=d.payload AND j.payload->'rows'=j.input_rows AND j.payload->'catalogId'=to_jsonb(j.catalog_id) AND j.payload->'version'=to_jsonb(j.technical_version) AND d.issuer_id=k.created_by AND d.payload=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"'),'data',j.job_snapshot) AND j.job_snapshot=public.technology_five_job_snapshot_v1(j) AND d.endpoint_snapshot=jsonb_build_object('url',e.endpoint_url,'secret_ciphertext',e.secret_ciphertext,'created_by',e.created_by);
+EXCEPTION WHEN SQLSTATE 'PT403' OR SQLSTATE 'PT404' THEN RETURN false;
+END $expected$ THEN RAISE EXCEPTION 'Factory signed-byte dispatch source preimage differs';END IF;
 IF (SELECT conbin::text FROM pg_constraint WHERE conrelid='public.technology_five_jobs'::regclass AND conname='technology_five_jobs_exact_native_tuple_check') IS DISTINCT FROM (SELECT conbin::text FROM pg_constraint WHERE conrelid='pg_temp.expected_factory_automation_job'::regclass AND conname='expected_factory_nine_tuple_check') THEN RAISE EXCEPTION 'Exact29 job constraint preimage differs';END IF;
 IF (SELECT prosrc FROM pg_proc p JOIN pg_namespace n ON n.oid=p.pronamespace WHERE n.nspname='public' AND p.proname='technology_five_require_publication_v1') IS DISTINCT FROM $expected$
 DECLARE engine text;slug text;
@@ -94,4 +106,16 @@ BEGIN
  END IF;
  RETURN jsonb_build_object('status','completed','request_id',p_request_id,'duplicate',duplicate,'job',j.job_snapshot);
 END $function$;
+CREATE OR REPLACE FUNCTION public.check_technology_five_dispatch_v1(p_delivery_id uuid,p_lease_token uuid) RETURNS boolean LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$
+DECLARE d public.technology_five_webhook_outbox%ROWTYPE;k public.business_api_keys%ROWTYPE;e public.business_webhook_endpoints%ROWTYPE;j public.technology_five_jobs%ROWTYPE;
+BEGIN
+ IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;
+ SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;
+ IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;
+ SELECT * INTO k FROM public.business_api_keys WHERE id=d.api_key_id;
+ PERFORM public.technology_five_key_authority_v1(k.id,k.key_hash,d.organization_id);SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);
+ SELECT * INTO e FROM public.business_webhook_endpoints WHERE id=d.endpoint_id AND organization_id=d.organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;
+ RETURN FOUND AND d.issuer_id=k.created_by AND d.payload=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"'),'data',j.job_snapshot) AND j.job_snapshot=public.technology_five_job_snapshot_v1(j) AND d.endpoint_snapshot=jsonb_build_object('url',e.endpoint_url,'secret_ciphertext',e.secret_ciphertext,'created_by',e.created_by);
+EXCEPTION WHEN SQLSTATE 'PT403' OR SQLSTATE 'PT404' THEN RETURN false;
+END $$;
 COMMIT;

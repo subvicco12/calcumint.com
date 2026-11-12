@@ -61,4 +61,16 @@ BEGIN
  END IF;
  RETURN jsonb_build_object('status','completed','request_id',p_request_id,'duplicate',duplicate,'job',j.job_snapshot);
 END $function$;
+CREATE OR REPLACE FUNCTION public.check_technology_five_dispatch_v1(p_delivery_id uuid,p_lease_token uuid) RETURNS boolean LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$
+DECLARE d public.technology_five_webhook_outbox%ROWTYPE;k public.business_api_keys%ROWTYPE;e public.business_webhook_endpoints%ROWTYPE;j public.technology_five_jobs%ROWTYPE;
+BEGIN
+ IF current_setting('role',true) IS DISTINCT FROM 'service_role' THEN RAISE EXCEPTION 'Trusted service caller required' USING ERRCODE='PT403';END IF;
+ SELECT * INTO d FROM public.technology_five_webhook_outbox WHERE id=p_delivery_id FOR UPDATE;
+ IF NOT FOUND OR d.status<>'leased' OR d.lease_token IS DISTINCT FROM p_lease_token OR d.lease_until<=clock_timestamp() THEN RETURN false;END IF;
+ SELECT * INTO k FROM public.business_api_keys WHERE id=d.api_key_id;
+ PERFORM public.technology_five_key_authority_v1(k.id,k.key_hash,d.organization_id);SELECT * INTO j FROM public.technology_five_jobs WHERE id=d.event_id;PERFORM public.technology_five_require_publication_v1(j.catalog_id,j.technical_version);
+ SELECT * INTO e FROM public.business_webhook_endpoints WHERE id=d.endpoint_id AND organization_id=d.organization_id AND status='active' AND jsonb_typeof(event_types)='array' AND event_types ? 'calculation.completed' FOR SHARE;
+ RETURN FOUND AND d.payload_text::jsonb=d.payload AND j.payload->'rows'=j.input_rows AND j.payload->'catalogId'=to_jsonb(j.catalog_id) AND j.payload->'version'=to_jsonb(j.technical_version) AND d.issuer_id=k.created_by AND d.payload=jsonb_build_object('id',j.id,'type','calculation.completed','created_at',to_char(j.created_at AT TIME ZONE 'UTC','YYYY-MM-DD"T"HH24:MI:SS.US"Z"'),'data',j.job_snapshot) AND j.job_snapshot=public.technology_five_job_snapshot_v1(j) AND d.endpoint_snapshot=jsonb_build_object('url',e.endpoint_url,'secret_ciphertext',e.secret_ciphertext,'created_by',e.created_by);
+EXCEPTION WHEN SQLSTATE 'PT403' OR SQLSTATE 'PT404' THEN RETURN false;
+END $$;
 COMMIT;

@@ -18,3 +18,10 @@ it('reverse pins function source and refuses deleting retained factory history',
  expect(reverse).toContain('Retained factory history requires forward compatibility; reverse refused');
  expect(reverse).not.toMatch(/DELETE FROM|TRUNCATE/);
 });
+
+it('binds signed JSON bytes and normalized immutable snapshot back to original submitted rows',()=>{
+ expect(source).toContain('d.payload_text::jsonb=d.payload');
+ expect(source).toContain("j.payload->'rows'=j.input_rows");
+ expect(source).toContain("j.payload->'catalogId'=to_jsonb(j.catalog_id)");
+ expect(source).toContain("j.payload->'version'=to_jsonb(j.technical_version)");
+});
