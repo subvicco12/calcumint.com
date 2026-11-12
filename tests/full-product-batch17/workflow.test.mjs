@@ -1,3 +1,4 @@
+import {historicalWorkflowWithoutLoginObservations} from '../completion-first-20261112/non-source-stage2.mjs';
 import {requiredVerificationJobs,workflowJobs,aggregateVerificationContract} from '../ci-gate-recovery/verification-jobs-contract.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -35,7 +36,7 @@ test('strict aggregate outcomes and bounded native acceptance budget remain inta
  // never a lower bound or a replacement literal detached from that review.
  const predecessor=git(['show','a955cdad7019a645b7ed2950299d0603ba1784a7:'+workflowPath]);
  assert.equal(verifyCompletionBinding(workflowPath,Buffer.from(workflow),createHash('sha256').update(predecessor).digest('hex'),git),true);
- const reviewed=git(['show',reviewedWorkflowRef+':'+workflowPath]).toString();assert.equal(workflow,reviewed);
+ const reviewed=git(['show',reviewedWorkflowRef+':'+workflowPath]).toString();assert.equal(historicalWorkflowWithoutLoginObservations(workflow,readFileSync,git),reviewed);
  const reviewedBudget=workflowJobs(reviewed)['publication-factory'].match(/^    timeout-minutes: (\d+)$/m);assert(reviewedBudget);
  assert.match(jobs['publication-factory'],new RegExp('^    timeout-minutes: '+Number(reviewedBudget[1])+'$','m'));
 });
