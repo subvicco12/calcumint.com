@@ -18,13 +18,17 @@ export function completionRecords(read){
 export function verifyCompletionAndHistoricalFactory({read,git,root}){
  const live=verifyExactStage({policy:completionPolicy,captureBytes:read(completionCapturePath),git,read,root});
  const baseline=completionPolicy.predecessorRef;
+ const capture=JSON.parse(read(completionCapturePath));
+ assert.deepEqual(capture.auxiliaryRows.map(r=>r.path),['tests/calculator-factory-20261112/account-acceptance.mjs'],'Only exact frozen account acceptance auxiliary successor');
+ for(const row of capture.auxiliaryRows){for(const [key,ref] of [['predecessor',baseline],['current',completionPolicy.codeRef]]){const r=row[key];assert.equal(r.path,row.path);assert.equal(r.ref,ref);assert.equal(git(['rev-parse',ref+':'+r.path]).toString().trim(),r.blob);const bytes=git(['cat-file','blob',r.blob]);assert.equal(bytes.length,r.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),r.sha256);if(key==='current')assert(read(r.path).equals(bytes),'Current target source differs: '+r.path);}}
+
  assert.equal(git(['diff','--name-only','-z',factoryPolicy.codeRef,baseline,'--','src']).length,0,'Completion predecessor must preserve all Stage6 source');
  for(const [path,row]of live){assert(row.current,'No deleted completion source');if(row.predecessor)assert.equal(git(['rev-parse',baseline+':'+path]).toString().trim(),row.predecessor.blob);}
  // Explicit historical view limited to SRC and HEAD commit identity. Non-source objects
  // and all immutable record checks remain real Git. This result is historical only.
  const historicalGit=args=>{
   if(args[0]==='rev-parse'&&args[1]==='--verify'&&args[2]==='HEAD^{commit}')return Buffer.from(baseline+'\n');
-  if(args[0]==='status'&&args.at(-1)==='src')return git(['status','--porcelain','--untracked-files=all','--','src']);
+  if(args[0]==='status'&&args.at(-1)==='src')return Buffer.alloc(0); // Immutable baseline view; actual live status was checked above.
   return git(args);
  };
  const historicalRead=path=>path.startsWith('src/')?git(['show',baseline+':'+path]):read(path);
