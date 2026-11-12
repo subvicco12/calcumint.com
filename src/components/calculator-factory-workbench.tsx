@@ -28,12 +28,12 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
  <button type="submit">Calculate</button></form>
  {error&&<p role="alert">{error}</p>}
  {saveMessage&&<p role="status">{saveMessage}</p>}
- {packet&&<><h3>Result</h3>{renderResult?renderResult(packet):<pre aria-label="Exact result">{JSON.stringify(packet.snapshot.output,null,2)}</pre>}
+ {packet&&<><h3>Result</h3>{renderResult?renderResult(packet):<pre style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere',maxWidth:'100%'}} aria-label="Exact result">{JSON.stringify(packet.snapshot.output,null,2)}</pre>}
  {onSave&&<button disabled={saving} onClick={()=>void save()}>{saving?'Saving…':'Save calculation'}</button>}
  <button onClick={()=>act(()=>setExportText(workflows.exportPacket(packet,'json',plan)))}>Export JSON</button>
  <button onClick={()=>act(()=>setExportText(workflows.exportPacket(packet,'csv',plan)))}>Export CSV</button>
  {(['A','B','C'] as const).map(slot=><button key={slot} onClick={()=>act(()=>setScenarios(workflows.scenario(scenarios,slot,packet,'',plan)))}>Capture scenario {slot}</button>)}</>}
- {scenarios.length>0&&<ul aria-label="Captured scenarios">{scenarios.map(row=><li key={row.slot}>Scenario {row.slot}<pre>{JSON.stringify(row.packet.snapshot.output)}</pre></li>)}</ul>}
+ {scenarios.length>0&&<ul aria-label="Captured scenarios">{scenarios.map(row=><li key={row.slot}>Scenario {row.slot}<pre style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere',maxWidth:'100%'}}>{JSON.stringify(row.packet.snapshot.output)}</pre></li>)}</ul>}
  <label>Packet JSON to replay<textarea value={replayText} onChange={e=>{clearFeedback();setReplayText(e.target.value);}}/></label>
  <button onClick={()=>{setPacket(null);setExportText('');act(()=>{const checked=workflows.replay(replayText);setRaw({...checked.raw});setPacket(checked);});}}>Replay packet</button>
  <label>Batch rows (one JSON object of raw string fields per line)<textarea value={batchText} onChange={e=>{clearFeedback();setBatchText(e.target.value);setRows([]);setExportText('');}}/></label>
