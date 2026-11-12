@@ -12,10 +12,11 @@ export function verifyExactStage({policy,captureBytes,git,read,root}){
  for(const key of ['predecessorRef','codeRef']){assert.match(policy[key],oid);assert.equal(c[key],policy[key]);assert.equal(git(['rev-parse','--verify',c[key]+'^{commit}']).toString().trim(),c[key]);}
  assert.notEqual(c.predecessorRef,c.codeRef);assert.deepEqual(c.rows.map(r=>r.path),policy.paths);assert(policy.paths.length>0);assert.equal(new Set(policy.paths).size,policy.paths.length);
  for(const p of policy.paths)assert(/^src\/[A-Za-z0-9_./[\]-]+$/.test(p)&&!p.split('/').some(s=>s==='..'||s==='.'||s==='')&&!p.startsWith('src/calculators/'),'Exact safe non-mathematical source path required');
- assert.equal(git(['merge-base','--is-ancestor',c.predecessorRef,c.codeRef]).length,0,'Factory predecessor must be ancestor');
+ assert(Array.isArray(c.ancestry)&&c.ancestry.length>=2&&c.ancestry.length<=64,'Finite factory ancestry required');assert.equal(c.ancestry[0],c.codeRef);assert.equal(c.ancestry.at(-1),c.predecessorRef);assert.equal(new Set(c.ancestry).size,c.ancestry.length);
+ for(let i=0;i<c.ancestry.length;i++){const ref=c.ancestry[i];assert.match(ref,oid);const raw=git(['cat-file','commit',ref]);assert.equal(createHash('sha1').update(Buffer.from(`commit ${raw.length}\0`)).update(raw).digest('hex'),ref,'Commit content address differs');if(i<c.ancestry.length-1){const header=raw.toString().split('\n\n',1)[0];assert(header.split('\n').includes('parent '+c.ancestry[i+1]),'Factory parent chain differs');}}
  assert.deepEqual(paths(git(['diff','--name-only','-z',c.predecessorRef,c.codeRef,'--','src'])),policy.paths,'Factory source delta differs from finite reviewed paths');
  const head=git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,oid);
- assert.equal(git(['merge-base','--is-ancestor',c.codeRef,head]).length,0,'Current HEAD must descend from frozen factory code');
+ // Current source equality is established below; no shallow-sensitive ancestry inference from HEAD.
  assert.equal(git(['diff','--name-only','-z',c.codeRef,head,'--','src']).length,0,'Unreviewed current source delta');
  assert.equal(git(['status','--porcelain','--untracked-files=all','--','src']).length,0,'Dirty or unknown current source');
  const prior=new Set(paths(git(['ls-tree','-rz','--name-only',c.predecessorRef,'--','src']))),result=new Map();

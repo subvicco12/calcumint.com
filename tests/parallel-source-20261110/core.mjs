@@ -7,10 +7,12 @@ import {fileURLToPath} from 'node:url';
 import {retainedA7Proof,sourceGit,baselineRef} from './baseline-runtime.mjs';
 import {verifyParallelAuthority} from './authority.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
+import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stage.mjs';
+import {factoryPolicy,factoryCapturePath} from '../calculator-factory-source-20261112/policy.mjs';
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision31.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision32.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -41,8 +43,10 @@ function applicationSuccession(capture,read,git){
  const changed=git(['diff','--name-only',applicationBaselineRef,applicationSuccessorRef,'--','src']).toString().trim().split('\n');
  assert.equal(changed.length,21);assert.deepEqual(capture.applicationSuccessors.map(r=>r.path),changed);
  assert.equal(git(['diff','--name-only',applicationBaselineRef,applicationSuccessorRef,'--','src/calculators']).toString().trim(),'','Historical mathematical engines must remain immutable');
+ const factory=verifyExactStage({policy:factoryPolicy,captureBytes:read(factoryCapturePath),git,read,root});
+ assert.deepEqual([...factory.values()].map(r=>r.current),capture.factorySources,'Factory sources must enter closed current capture');
  const appPaths=changed.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)));
- assert.equal(appPaths.length,14);assert.deepEqual(git(['diff','--name-only',applicationBaselineRef,'HEAD','--','src']).toString().trim().split('\n').filter(p=>p&&!(/\.test\.(?:ts|tsx)$/.test(p))),appPaths,'Only the named current app delta may change non-test source');
+ assert.equal(appPaths.length,14);assert.deepEqual(git(['diff','--name-only',applicationBaselineRef,'HEAD','--','src']).toString().trim().split('\n').filter(p=>p&&!(/\.test\.(?:ts|tsx)$/.test(p))),[...new Set([...appPaths,...factoryPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)))])].sort(),'Only historical app14 plus finite independently pinned factory stage may change non-test source');
  assert.equal(git(['status','--porcelain','--untracked-files=all','--','src']).toString().trim(),'','Committed current src required; unknown or dirty app source is not admission');
  const parentPaths=new Set(git(['ls-tree','-r','--name-only',applicationBaselineRef,'--','src']).toString().trim().split('\n'));
  const originalPaths=new Set(git(['ls-tree','-r','--name-only',appRef,'--','src']).toString().trim().split('\n'));
