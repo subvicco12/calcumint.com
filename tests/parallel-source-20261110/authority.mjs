@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision32.json",
-    "blob": "e801d200628c8d6dd5955cb915f3c38ad1524d97",
-    "sha256": "bd440c60f7f81b5904c5f073a2a9099873991f6a1e9a741cc3fda2140373f6a8"
+    "path": "docs/parallel-source-20261110/capture-revision33.json",
+    "blob": "59aae79ef9e95da9c924c908e7b3e2b327e23249",
+    "sha256": "7f52151efbcd3d6817015ef6b92d2ef85a29b2dddab390dab0be2bfaf1208417"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "fb8f2408f75f3c7acf83d4741fb3246c9cc352ed",
-    "sha256": "38488f60373c08f43bdbe315d988807458457a8d7761157a57dec8ee4f02fb27"
+    "blob": "b6ed0e2e78209c47e8e0d3f24415179d082f80d8",
+    "sha256": "422cef6a8ab50bcca280a077ecaed36a5abb86ccea136acbfb9dcb6b72d7ba66"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -74,13 +74,13 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/calculator-factory-source-20261112/policy.mjs",
-    "blob": "fb32ba6764158042801c49a931a22ab8786dfa63",
-    "sha256": "6904cdac4d590d1131c8bab6d7210bec9f745a56c0de2b45c68c5b9e490d585c"
+    "blob": "cee3ec8df385d85fc4609bcb4d62a6619decab2b",
+    "sha256": "ff0e695186ff80756374d548e26da634014a748c14ad99bb0919c1d258f86cb3"
   },
   {
     "path": "tests/calculator-factory-source-20261112/exact-stage.mjs",
-    "blob": "dae92cf281731b3e68d1d740842b6eccdb429e95",
-    "sha256": "1683dd0e9325c29c18ff6bf2c288c9bc1633a681af064b53bf1b2834d91b7577"
+    "blob": "d88636bed1ea8d57ef4a4ffedbf06b6921f4c089",
+    "sha256": "32260ba7c6f81b5616ff5a7067e9a72fde065fe127caedb7ada2965565865910"
   },
   {
     "path": "tests/calculator-factory-source-20261112/exact-stage.test.mjs",
@@ -96,6 +96,16 @@ export const accepted=Object.freeze([
     "path": "docs/calculator-factory/source-stage-20261112.json",
     "blob": "b7ef922126e2d62ef4d728b22cdfd612b9336b71",
     "sha256": "101889b6b9c1f058976f498c57bdd41951a72f9c7b7b763bc550e658bd11e207"
+  },
+  {
+    "path": "docs/calculator-factory/source-stage-20261112-revision2.json",
+    "blob": "4120dd284d1d27f0922f23d98d505502366b0c8c",
+    "sha256": "3e519facdcfde768083e3fd9d9c0a8d29d475d6b87cf19c59ba33e6709425b5a"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision32.json",
+    "blob": "e801d200628c8d6dd5955cb915f3c38ad1524d97",
+    "sha256": "bd440c60f7f81b5904c5f073a2a9099873991f6a1e9a741cc3fda2140373f6a8"
   }
 ]);
 export function verifyParallelAuthority(read,git){
