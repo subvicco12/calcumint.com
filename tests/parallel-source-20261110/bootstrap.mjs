@@ -26,7 +26,8 @@ export function ensureParallelSources(capture,git=invoke){
  for(const ref of refs)requireObject(ref);
  if(git===invoke)ready=true;return true;
  };
- if(git!==invoke)return availability();
+ // Wrapped real Git readers share the same shallow metadata as the default reader.
+ // Resolve coordination through the actual repository, not an adapter-controlled path.
  const common=resolve(root,invoke(['rev-parse','--git-common-dir']).toString().trim());
  return withSourceObjectLock(common,availability);
 }

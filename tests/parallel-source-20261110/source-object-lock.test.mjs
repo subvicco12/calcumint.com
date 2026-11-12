@@ -5,8 +5,18 @@ import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {execFileSync,spawn} from 'node:child_process';
 import {withSourceObjectLock,sourceObjectLockName} from './source-object-lock.mjs';
+import {ensureParallelSources} from './bootstrap.mjs';
+import {capturePath} from './core.mjs';
+import {fileURLToPath} from 'node:url';
 const temp=()=>mkdtempSync(join(tmpdir(),'calcumint-source-lock-'));
-test('callback result propagates and owned empty lock is released after success or throw',()=>{const dir=temp();try{assert.equal(withSourceObjectLock(dir,()=>42),42);assert(!existsSync(join(dir,sourceObjectLockName)));assert.throws(()=>withSourceObjectLock(dir,()=>{throw Error('exact callback failure')}),/exact callback failure/);assert(!existsSync(join(dir,sourceObjectLockName)));}finally{rmSync(dir,{recursive:true,force:true});}});
+test('callback result propagates, owned locks release, and wrapped source preparation cannot bypass coordination',()=>{
+ const dir=temp();try{assert.equal(withSourceObjectLock(dir,()=>42),42);assert(!existsSync(join(dir,sourceObjectLockName)));assert.throws(()=>withSourceObjectLock(dir,()=>{throw Error('exact callback failure')}),/exact callback failure/);assert(!existsSync(join(dir,sourceObjectLockName)));}finally{rmSync(dir,{recursive:true,force:true});}
+ const root=fileURLToPath(new URL('../../',import.meta.url)),git=args=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe']});
+ const common=resolve(root,git(['rev-parse','--git-common-dir']).toString().trim());let reads=0;
+ const wrapped=args=>{assert(existsSync(join(common,sourceObjectLockName)),'Wrapped source adapter must execute inside the actual common-directory lock');reads++;return git(args);};
+ assert.equal(ensureParallelSources(JSON.parse(readFileSync(resolve(root,capturePath))),wrapped),true);assert(reads>1);
+ assert(!existsSync(join(common,sourceObjectLockName)),'Source preparation releases its owned lock');
+});
 test('bounded timeout leaves another owner directory and Git shallow.lock untouched',()=>{const dir=temp();try{mkdirSync(join(dir,sourceObjectLockName));writeFileSync(join(dir,'shallow.lock'),'untouched');let called=false;assert.throws(()=>withSourceObjectLock(dir,()=>{called=true},{timeoutMs:25}),/Timed out waiting/);assert.equal(called,false);assert(existsSync(join(dir,sourceObjectLockName)));assert.equal(readFileSync(join(dir,'shallow.lock'),'utf8'),'untouched');}finally{rmSync(dir,{recursive:true,force:true});}});
 test('unexpected filesystem errors propagate and a nonempty owned directory is never recursively removed',()=>{const dir=temp();try{assert.throws(()=>withSourceObjectLock(join(dir,'missing'),()=>{}));assert.throws(()=>withSourceObjectLock(dir,()=>writeFileSync(join(dir,sourceObjectLockName,'evidence'),'keep')),/ENOTEMPTY|EEXIST/);assert.equal(readFileSync(join(dir,sourceObjectLockName,'evidence'),'utf8'),'keep');for(const timeoutMs of [-1,60001,NaN])assert.throws(()=>withSourceObjectLock(dir,()=>{},{timeoutMs}));}finally{rmSync(dir,{recursive:true,force:true});}});
 test('replaced lock ownership is refused without removing the other empty directory',()=>{const dir=temp();try{const other=join(dir,'other');mkdirSync(other);assert.throws(()=>withSourceObjectLock(dir,()=>{rmdirSync(join(dir,sourceObjectLockName));renameSync(other,join(dir,sourceObjectLockName));}),/ownership changed/);assert(existsSync(join(dir,sourceObjectLockName)));}finally{rmSync(dir,{recursive:true,force:true});}});
