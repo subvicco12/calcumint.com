@@ -1,0 +1,231 @@
+{
+  "kind": "UNSIGNED_EXACT_VERSION_REVIEW_PREPARATION_NOT_ACCEPTANCE",
+  "catalogId": 220,
+  "engine": {
+    "catalogId": 220,
+    "engineId": "launch-square-root-calculator",
+    "calculatorSlug": "square-root-calculator",
+    "calculatorVersion": 1,
+    "sourceVersion": "factory-wave1-20261112.1/launch-square-root-calculator@1/private.basic-math-capture.normal-output.20261112.1"
+  },
+  "frozenRuntimeSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "canonicalTarget": {
+    "catalogPath": "docs/first20-publication/input/input/governing/01-CalcuMint_Master_Calculator_Catalog_2026-1-.xlsx",
+    "catalogRow": 221,
+    "blueprintPath": "docs/blueprint-reconciliation/native-paragraphs.txt"
+  },
+  "observedSnapshot": {
+    "calculatorSlug": "square-root-calculator",
+    "calculatorVersion": 1,
+    "input": {
+      "x": 144
+    },
+    "output": {
+      "result": 12
+    }
+  },
+  "rawExample": {
+    "x": "144"
+  },
+  "mathematicsEvidence": {
+    "path": "src/lib/calculator-factory/completion/math.test.ts",
+    "independentExpectedValues": true,
+    "historicalEngineChanged": false,
+    "sha256": "112c9074dd9c33aa61a22ce28a06271ca3fda236abdc9d2b3e4e70ddd1a5d361"
+  },
+  "sourceEvidence": {
+    "path": "src/lib/calculator-factory/completion/math.ts",
+    "nativeUCUMCapture": null,
+    "sha256": "3ff49cbb46695c4d7ff66c5a4d4d1378b799a58d4fc3a561282e8423562285bc"
+  },
+  "browserEvidence": {
+    "receipt": "../browser-receipt.json",
+    "syntheticAccountActions": true,
+    "journeys": [
+      {
+        "catalogId": 220,
+        "plan": "free",
+        "interactionElapsedMs": 34.5,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": true,
+        "conversionSource": false,
+        "persistedSyntheticSaveReloadRestore": false,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 220,
+        "plan": "pro",
+        "interactionElapsedMs": 42.600000001490116,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": true,
+        "conversionSource": false,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      },
+      {
+        "catalogId": 220,
+        "plan": "business",
+        "interactionElapsedMs": 27.300000000745058,
+        "performanceObservation": "Local visible calculation includes CDP latency; not hosted SLA",
+        "sourceBoundRealComponent": true,
+        "staleInvalidRefusal": true,
+        "keyboard": true,
+        "mobile": true,
+        "mathAnalysis": true,
+        "conversionSource": false,
+        "persistedSyntheticSaveReloadRestore": true,
+        "syntheticAuth": true
+      }
+    ],
+    "downloads": [
+      {
+        "catalogId": 220,
+        "plan": "pro",
+        "format": "json",
+        "bytes": 530,
+        "sha256": "564bf82b86a4ce66f7b4122b44f857a6f1ee35d74c41258ae5b7a44aa7be21c7",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 220,
+        "plan": "pro",
+        "format": "csv",
+        "bytes": 399,
+        "sha256": "43744268752d0986c198a678178316dc6bb1196b782756f69c9fe6fb6cae7546",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 220,
+        "plan": "pro",
+        "format": "pdf",
+        "bytes": 14671,
+        "sha256": "dbe4e260e51faf79a5906a4e1ec08859f1e70f1151abbe9c560cb909baf5642c",
+        "popplerReadback": true
+      },
+      {
+        "catalogId": 220,
+        "plan": "business",
+        "format": "json",
+        "bytes": 530,
+        "sha256": "564bf82b86a4ce66f7b4122b44f857a6f1ee35d74c41258ae5b7a44aa7be21c7",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 220,
+        "plan": "business",
+        "format": "csv",
+        "bytes": 399,
+        "sha256": "43744268752d0986c198a678178316dc6bb1196b782756f69c9fe6fb6cae7546",
+        "popplerReadback": false
+      },
+      {
+        "catalogId": 220,
+        "plan": "business",
+        "format": "pdf",
+        "bytes": 14671,
+        "sha256": "dbe4e260e51faf79a5906a4e1ec08859f1e70f1151abbe9c560cb909baf5642c",
+        "popplerReadback": true
+      }
+    ]
+  },
+  "genuineAccountRpcEvidence": {
+    "receipt": "../account-receipt.json",
+    "observations": [
+      {
+        "catalogId": 220,
+        "slug": "square-root-calculator",
+        "version": 1,
+        "plan": "free",
+        "input": {
+          "x": 144
+        },
+        "output": {
+          "result": 12
+        },
+        "historyId": "d72fb9a1-0403-4246-ab3a-06dccb253193",
+        "scenarioId": null,
+        "registeredRestoreVerified": false,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": true
+      },
+      {
+        "catalogId": 220,
+        "slug": "square-root-calculator",
+        "version": 1,
+        "plan": "pro",
+        "input": {
+          "x": 144
+        },
+        "output": {
+          "result": 12
+        },
+        "historyId": "57a52c93-8dd2-46cf-a5db-84be88cae6e1",
+        "scenarioId": "a180f395-2703-4f98-8042-a3eeff8f516d",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      },
+      {
+        "catalogId": 220,
+        "slug": "square-root-calculator",
+        "version": 1,
+        "plan": "business",
+        "input": {
+          "x": 144
+        },
+        "output": {
+          "result": 12
+        },
+        "historyId": "b3677c85-3be8-44bb-8426-122855a05eca",
+        "scenarioId": "fc638cf5-047d-4e9c-848b-7f8cb898914f",
+        "registeredRestoreVerified": true,
+        "realJWT": true,
+        "exactRetry": true,
+        "conflictDenied": true,
+        "foreignReadUpdateDeleteDenied": true,
+        "freeScenarioDenied": false
+      }
+    ],
+    "genuineBrowserServerActions": "SEE_SEPARATE_FINAL_VALIDATION"
+  },
+  "outstandingDecisions": [
+    "Accept/reject full canonical scope against exact catalog/Blueprint; offered bounded profile is not automatically complete",
+    "Accept/reject source applicability, formula/units, numerical precision/refusal and QA evidence",
+    "Resolve applicable organization-shared attachment and durable delivery/automation requirements; preserve proven capabilities",
+    "Record actual reviewer competence, independence, appointment authority and signed exact-version decision"
+  ],
+  "reviewerIdentity": null,
+  "appointment": null,
+  "competence": null,
+  "independence": null,
+  "signature": null,
+  "sourceDecision": "PENDING",
+  "formulaPrecisionDecision": "PENDING",
+  "canonicalQaDecision": "PENDING",
+  "canonicalAccepted": false,
+  "certified": false,
+  "publicationEligible": false,
+  "releaseHold": true,
+  "genuineNextPositiveEvidence": {
+    "path": "../genuine-browser-positive-receipt.json",
+    "sha256": "822a6c865a2aa4ffe6783a3ec377a292b2f6c13a279ea5ac8be33b5db094a088",
+    "observedPositiveJourneys": 3,
+    "paidDocumentReloadRestores": 2,
+    "wholeProducerPassed": false,
+    "ownerSwitchPostSqlVerified": false
+  }
+}

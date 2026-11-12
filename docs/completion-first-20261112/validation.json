@@ -1,0 +1,94 @@
+{
+  "kind": "LAYERED_VALIDATION_RECEIPTS_NO_CERTIFICATION",
+  "generatedAt": "2026-11-12T14:42:32.809414+00:00",
+  "baselineSHA": "16cb2804fa3e9731a7f39a761de9a7a27ee87e67",
+  "baselineCI": {
+    "run": 43196655094,
+    "conclusion": "SUCCESS"
+  },
+  "frozenApplicationSHA": "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "targetedUnit": {
+    "files": 22,
+    "passed": 170,
+    "log": "/workspace/artifacts/completion-first-20261112/targeted-integrated.log"
+  },
+  "launchTests": {
+    "passed": 45
+  },
+  "certificationGuards": {
+    "passed": 15,
+    "certificationGranted": false
+  },
+  "sourceConsumers": {
+    "passed": 6,
+    "counts": [
+      91,
+      36,
+      43,
+      22,
+      32,
+      98
+    ],
+    "nestedCompletionCases": 4,
+    "report": "source-admission.json"
+  },
+  "retainedFiveEvidence": {
+    "passed": 6,
+    "slowApiMs": 3878,
+    "limitMs": 5000,
+    "timeoutsChanged": false
+  },
+  "browser": {
+    "receipt": "browser-receipt.json",
+    "journeys": 27,
+    "actualDownloads": 54,
+    "pdfReadbacks": 18,
+    "sourceHashes": 94,
+    "accountTransportSynthetic": true
+  },
+  "genuineAccountRPC": {
+    "receipt": "account-receipt.json",
+    "observations": 66,
+    "paidScenarioRestores": 44,
+    "productionEquivalence": "UNKNOWN"
+  },
+  "genuineNextBrowser": {
+    "receipt": "genuine-browser-positive-receipt.json",
+    "positiveJourneysPassed": 27,
+    "paidDocumentReloadRestores": 18,
+    "wholeProducerPassed": false,
+    "limitations": [
+      "First18 positive observations lack contemporaneous per-attempt producer hashes; application source/build verified.",
+      "Owner-switch denial reached actual server; framework-redacted text caused harness failure before post-negative SQL count.",
+      "Future corrected negative producer was syntax-checked only; it was not executed."
+    ]
+  },
+  "productionWebpackBuild": {
+    "passed": true,
+    "command": "next build --webpack",
+    "applicationSourceUnchangedSinceBuild": true
+  },
+  "fullLocalUnitSuite": {
+    "executed": false,
+    "reason": "Layered testing: targeted/category/actual source consumers locally; entire mandatory unit/integration regression in exact-head hosted CI, avoiding a duplicate18-minute local campaign."
+  },
+  "hostedCI": {
+    "status": "NOT_STARTED",
+    "mandatoryJobs": [
+      "checks",
+      "build",
+      "full-product",
+      "source-acceptance",
+      "publication-factory"
+    ],
+    "aggregate": "validate",
+    "qualificationGranted": false
+  },
+  "sourceIntegrity": "EXACT_IMMUTABLE_PREDECESSOR_SUCCESSOR_WITH_LIVE_CURRENT_READS",
+  "independentAIReview": "No remaining demonstrated blocking code defect; no competent human signature granted.",
+  "newEngineeringCompletions": 0,
+  "canonicalAccepted": 0,
+  "newPublicationEligible": 0,
+  "productionWrites": false,
+  "releaseHold": true
+}

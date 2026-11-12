@@ -1,0 +1,7110 @@
+{
+  "passed": true,
+  "kind": "FACTORY_GENUINE_LOCAL_ACCOUNT_POSTGREST_ACCEPTANCE",
+  "sourceRoot": "/workspace/work/completion-first-20261112",
+  "producerSources": {
+    "tests/calculator-factory-20261112/account-acceptance.mjs": "14a0b897e83dede4d1ee138b05bf07addeb2592705c37acb5b1d59086d4f5fce",
+    "tests/gotrue-runtime/fixture.mjs": "98265ac37460e7676f6f5dae59a20110e82aefba1e9d567f880e0df6aa768387",
+    "tests/gotrue-full-schema/schema.mjs": "0185b1e41bb8e810296636cc633974ac4897e412cc597814a91b405c11019726"
+  },
+  "sourceHashes": {
+    "src/lib/calculator-factory/registry.ts": "974007013e46168a5075e1580df2b2cbc1714f25d8047d03c05b44235910fc36",
+    "src/lib/calculator-factory/completion/business.ts": "e76c776ce94051bfff458b0924fca1fb3af7fb90dcd5ed6eb016e3550dc3fc63",
+    "src/calculators/launch-portfolio.ts": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f",
+    "src/calculators/conversion/catalog-batch-1.ts": "e4c01d7544568d9ce3900b54b50895d3212824ec5ec6dbfcf3e49c92bb014da9",
+    "src/calculators/conversion/catalog-batch-2.ts": "8c8021714b27b2399ea4d27a6bec595e446426ca2e6ad846815e60a9a5b35467",
+    "src/calculators/conversion/catalog-batch-3.ts": "8605a98cbc051450fbd71089d77f174f961ea56d5ee6b743e38c8a473b87c165"
+  },
+  "catalogIds": [
+    208,
+    209,
+    210,
+    211,
+    212,
+    215,
+    216,
+    218,
+    219,
+    220,
+    423,
+    424,
+    425,
+    427,
+    428,
+    430,
+    431,
+    432,
+    433,
+    434,
+    438,
+    440
+  ],
+  "observations": [
+    {
+      "catalogId": 208,
+      "slug": "percentage-change-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "old": 100,
+        "next": 125
+      },
+      "output": {
+        "result": 25
+      },
+      "historyId": "faaa7c64-e521-4abd-b2e9-313781f9d6a1",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 208,
+      "slug": "percentage-change-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "old": 100,
+        "next": 125
+      },
+      "output": {
+        "result": 25
+      },
+      "historyId": "81793aba-8cad-4f20-89dd-540971c6c15b",
+      "scenarioId": "3afe52d5-3e0d-47c8-9b65-01c129e1ddae",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 208,
+      "slug": "percentage-change-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "old": 100,
+        "next": 125
+      },
+      "output": {
+        "result": 25
+      },
+      "historyId": "dc78db66-01e7-441f-97c4-235193cc5755",
+      "scenarioId": "9da202ee-f562-4ef8-bd64-27f7bd4e6dde",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 209,
+      "slug": "percentage-increase-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 120
+      },
+      "historyId": "3aa304f2-a2bf-4f50-b56a-9231f9d898e9",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 209,
+      "slug": "percentage-increase-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 120
+      },
+      "historyId": "e655d327-c97d-4521-b9f9-cfac51d2dd27",
+      "scenarioId": "e1ebe385-6b79-4e8d-ab19-698e3aa578af",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 209,
+      "slug": "percentage-increase-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 120
+      },
+      "historyId": "afd06883-6d1d-43c4-96f3-dcfcb5306e3c",
+      "scenarioId": "7dec7826-a452-4000-9b88-aa490075abfb",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 210,
+      "slug": "percentage-decrease-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 80
+      },
+      "historyId": "a638e52e-347a-4c96-9c09-95e86e6d5e94",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 210,
+      "slug": "percentage-decrease-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 80
+      },
+      "historyId": "894afdab-874f-438a-8b79-e3948cca2862",
+      "scenarioId": "ae97c249-80b8-4dbf-a5e5-1c4e87a34c37",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 210,
+      "slug": "percentage-decrease-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 100,
+        "percent": 20
+      },
+      "output": {
+        "result": 80
+      },
+      "historyId": "bcde61c0-6759-41cf-9832-0f4ea00b64e8",
+      "scenarioId": "68d7688d-260f-4fc0-860f-e607fd1a426e",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 211,
+      "slug": "ratio-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "a": 12,
+        "b": 18
+      },
+      "output": {
+        "result": 0.6666666666666666
+      },
+      "historyId": "2de39d22-c3c7-4f5d-ad44-e2fee21172a7",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 211,
+      "slug": "ratio-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "a": 12,
+        "b": 18
+      },
+      "output": {
+        "result": 0.6666666666666666
+      },
+      "historyId": "f8b8f14b-cc98-4974-81f4-d5621edb0d39",
+      "scenarioId": "82605cbd-97cf-4c28-8714-c450188d0ea3",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 211,
+      "slug": "ratio-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "a": 12,
+        "b": 18
+      },
+      "output": {
+        "result": 0.6666666666666666
+      },
+      "historyId": "82bb00de-2cb6-4c84-a8d4-284fa78f0721",
+      "scenarioId": "6284f17b-757e-4578-802a-cd8b6b6c6a9a",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 212,
+      "slug": "proportion-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "a": 3,
+        "b": 5
+      },
+      "output": {
+        "result": 0.6
+      },
+      "historyId": "5a7e4c7c-ed3b-4272-b851-8ad2c31dced4",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 212,
+      "slug": "proportion-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "a": 3,
+        "b": 5
+      },
+      "output": {
+        "result": 0.6
+      },
+      "historyId": "2da92883-662a-447e-b96c-cce500d96724",
+      "scenarioId": "76b1de27-d43f-4aee-a181-711a514c2836",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 212,
+      "slug": "proportion-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "a": 3,
+        "b": 5
+      },
+      "output": {
+        "result": 0.6
+      },
+      "historyId": "d1692526-40f5-44f0-a560-26a841052053",
+      "scenarioId": "abf96ec7-9cd8-47ff-9f5b-3669bf55ca9a",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 215,
+      "slug": "fraction-to-decimal-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "output": {
+        "result": 0.75
+      },
+      "historyId": "32d3eba2-4f4f-4fc2-a812-06546f3d3923",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 215,
+      "slug": "fraction-to-decimal-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "output": {
+        "result": 0.75
+      },
+      "historyId": "bc518c5f-fa32-4692-b399-2c11ba18a691",
+      "scenarioId": "afc27536-d4fb-4f03-8a80-959219958416",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 215,
+      "slug": "fraction-to-decimal-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "numerator": 3,
+        "denominator": 4
+      },
+      "output": {
+        "result": 0.75
+      },
+      "historyId": "89fec0a0-e97e-4e6e-a6dd-57b188c94b23",
+      "scenarioId": "589c07e7-62d5-4600-b989-2a362faed3e7",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 216,
+      "slug": "average-two-numbers-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "a": 10,
+        "b": 20
+      },
+      "output": {
+        "result": 15
+      },
+      "historyId": "fe99966a-0746-4f3c-bbc1-7cfb067d9b6d",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 216,
+      "slug": "average-two-numbers-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "a": 10,
+        "b": 20
+      },
+      "output": {
+        "result": 15
+      },
+      "historyId": "7e33119c-6e65-4876-90b4-0e505701d2d7",
+      "scenarioId": "eed318b1-175a-4ed4-a459-71e024d8df60",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 216,
+      "slug": "average-two-numbers-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "a": 10,
+        "b": 20
+      },
+      "output": {
+        "result": 15
+      },
+      "historyId": "2126807f-b7b2-44b9-ab6f-07640b898a86",
+      "scenarioId": "e8529533-b6ee-437c-ab47-f67b35226141",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 218,
+      "slug": "square-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "x": 12
+      },
+      "output": {
+        "result": 144
+      },
+      "historyId": "e1c8acdc-6ac1-4eff-8746-26e352f74adf",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 218,
+      "slug": "square-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "x": 12
+      },
+      "output": {
+        "result": 144
+      },
+      "historyId": "56884481-2dae-4fbe-ab78-fbf90652fb1b",
+      "scenarioId": "4c0902f0-5a76-45fb-81f5-4fec932100ba",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 218,
+      "slug": "square-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "x": 12
+      },
+      "output": {
+        "result": 144
+      },
+      "historyId": "1f3db504-db9a-4497-95e2-113b0c4d2d82",
+      "scenarioId": "d3fa1165-c297-41c7-a730-1a4bdf4d0176",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 219,
+      "slug": "cube-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "x": 5
+      },
+      "output": {
+        "result": 125
+      },
+      "historyId": "e893233f-0e5c-46df-879b-dac6529d833a",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 219,
+      "slug": "cube-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "x": 5
+      },
+      "output": {
+        "result": 125
+      },
+      "historyId": "a30ebaa9-bed4-46f2-aa54-640ac7d445b3",
+      "scenarioId": "b6eb655f-6bee-4ab1-9295-789d3d37a73f",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 219,
+      "slug": "cube-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "x": 5
+      },
+      "output": {
+        "result": 125
+      },
+      "historyId": "260d7ad0-7c32-4ea5-a8f6-6c83336db57f",
+      "scenarioId": "404a6fdc-7fbf-4bce-8e57-8075b8b01db3",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 220,
+      "slug": "square-root-calculator",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "x": 144
+      },
+      "output": {
+        "result": 12
+      },
+      "historyId": "d72fb9a1-0403-4246-ab3a-06dccb253193",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 220,
+      "slug": "square-root-calculator",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "x": 144
+      },
+      "output": {
+        "result": 12
+      },
+      "historyId": "57a52c93-8dd2-46cf-a5db-84be88cae6e1",
+      "scenarioId": "a180f395-2703-4f98-8042-a3eeff8f516d",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 220,
+      "slug": "square-root-calculator",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "x": 144
+      },
+      "output": {
+        "result": 12
+      },
+      "historyId": "b3677c85-3be8-44bb-8426-122855a05eca",
+      "scenarioId": "fc638cf5-047d-4e9c-848b-7f8cb898914f",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 423,
+      "slug": "length-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "mi",
+        "toUnit": "km"
+      },
+      "output": {
+        "result": 1.609344
+      },
+      "historyId": "8d9a6ebb-76f3-469c-b2b7-0eba4eaa9d41",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 423,
+      "slug": "length-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "mi",
+        "toUnit": "km"
+      },
+      "output": {
+        "result": 1.609344
+      },
+      "historyId": "1d883227-7a08-4a1b-a6b4-06016f9b3e52",
+      "scenarioId": "b4528cb2-a69f-4890-8b1a-1477372ff1ce",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 423,
+      "slug": "length-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "mi",
+        "toUnit": "km"
+      },
+      "output": {
+        "result": 1.609344
+      },
+      "historyId": "52b8322c-df5d-45e5-8ae8-4d352937f3b1",
+      "scenarioId": "175ab0e9-09cb-41e6-aac4-406c0f654f44",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 424,
+      "slug": "area-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "acre",
+        "toUnit": "m2"
+      },
+      "output": {
+        "result": 4046.8564224
+      },
+      "historyId": "471632a4-473d-4e5d-b3be-c5b88f7a16dd",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 424,
+      "slug": "area-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "acre",
+        "toUnit": "m2"
+      },
+      "output": {
+        "result": 4046.8564224
+      },
+      "historyId": "c4cbe61b-97bd-45e1-a915-ba6473fa68cc",
+      "scenarioId": "d7e8b790-fa41-40c1-89b3-d5fe3b9f77e2",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 424,
+      "slug": "area-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "acre",
+        "toUnit": "m2"
+      },
+      "output": {
+        "result": 4046.8564224
+      },
+      "historyId": "605cce22-5b10-4984-bd96-2d16e2af6474",
+      "scenarioId": "6f957118-d32b-4d98-86c2-a57ef2795252",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 425,
+      "slug": "volume-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "l",
+        "toUnit": "ml"
+      },
+      "output": {
+        "result": 1000.0000000000001
+      },
+      "historyId": "a94e8260-d984-47a0-a1d0-e490b37945b3",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 425,
+      "slug": "volume-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "l",
+        "toUnit": "ml"
+      },
+      "output": {
+        "result": 1000.0000000000001
+      },
+      "historyId": "93e33923-0f36-4694-bd95-1793817f11b1",
+      "scenarioId": "cc2e79a7-3298-44fc-8b02-2adc7b52e1b2",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 425,
+      "slug": "volume-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "l",
+        "toUnit": "ml"
+      },
+      "output": {
+        "result": 1000.0000000000001
+      },
+      "historyId": "50c0cbf0-3fe6-4bb5-8aaf-388a4cacd4d7",
+      "scenarioId": "70fd2223-3a53-46dd-816d-8dbc3b750f43",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 427,
+      "slug": "temperature-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 0,
+        "fromUnit": "c",
+        "toUnit": "f"
+      },
+      "output": {
+        "result": 32
+      },
+      "historyId": "626911a4-324b-402c-a428-9f8b60e0d4ca",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 427,
+      "slug": "temperature-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 0,
+        "fromUnit": "c",
+        "toUnit": "f"
+      },
+      "output": {
+        "result": 32
+      },
+      "historyId": "7e1cd975-0eeb-4c96-bbc2-c3fcdc42a84f",
+      "scenarioId": "9536409a-c962-4196-b20d-402543fca1c8",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 427,
+      "slug": "temperature-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 0,
+        "fromUnit": "c",
+        "toUnit": "f"
+      },
+      "output": {
+        "result": 32
+      },
+      "historyId": "a470e4aa-5b86-4f08-a8ae-b9ca95a8e364",
+      "scenarioId": "0f0135f8-c452-468f-9d2d-2941da1e6852",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 428,
+      "slug": "speed-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 36,
+        "fromUnit": "km_h",
+        "toUnit": "m_s"
+      },
+      "output": {
+        "result": 10
+      },
+      "historyId": "8e134a96-9bcc-431f-b222-d734f6708e77",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 428,
+      "slug": "speed-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 36,
+        "fromUnit": "km_h",
+        "toUnit": "m_s"
+      },
+      "output": {
+        "result": 10
+      },
+      "historyId": "160a61aa-588c-4788-9ddd-2d79ad1e09a7",
+      "scenarioId": "f92731cc-011d-4098-9de6-7188cb0ed4b8",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 428,
+      "slug": "speed-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 36,
+        "fromUnit": "km_h",
+        "toUnit": "m_s"
+      },
+      "output": {
+        "result": 10
+      },
+      "historyId": "068c03a9-657d-4e75-8ecf-7bff79fd12d3",
+      "scenarioId": "48994b3f-5487-4e8b-8679-0f067b1a40bd",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 430,
+      "slug": "energy-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "kwh",
+        "toUnit": "mj"
+      },
+      "output": {
+        "result": 3.6
+      },
+      "historyId": "34995e45-7cec-4a93-8f06-cb6dc76585be",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 430,
+      "slug": "energy-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "kwh",
+        "toUnit": "mj"
+      },
+      "output": {
+        "result": 3.6
+      },
+      "historyId": "6945197c-b300-4c3f-9f09-42c8bfafa4af",
+      "scenarioId": "38e4862c-ca98-4153-8604-9923cfc08fbf",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 430,
+      "slug": "energy-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "kwh",
+        "toUnit": "mj"
+      },
+      "output": {
+        "result": 3.6
+      },
+      "historyId": "795457f8-5189-4c87-973e-b6d4740cf4a5",
+      "scenarioId": "2f3def6a-5526-466c-b43a-c12cbc099825",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 431,
+      "slug": "power-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "kw",
+        "toUnit": "w"
+      },
+      "output": {
+        "result": 1000
+      },
+      "historyId": "3911a279-229d-4b69-8a4d-da3810219039",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 431,
+      "slug": "power-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "kw",
+        "toUnit": "w"
+      },
+      "output": {
+        "result": 1000
+      },
+      "historyId": "f901f128-4dd6-4137-8824-a1022a549152",
+      "scenarioId": "93704268-bb13-4bd9-9c0f-4d07dafb0479",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 431,
+      "slug": "power-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "kw",
+        "toUnit": "w"
+      },
+      "output": {
+        "result": 1000
+      },
+      "historyId": "3ef76c34-5b63-4195-b6ac-ab446dd01796",
+      "scenarioId": "4adcff30-8232-49e0-9137-0e743fa2d572",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 432,
+      "slug": "time-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 2,
+        "fromUnit": "h",
+        "toUnit": "min"
+      },
+      "output": {
+        "result": 120
+      },
+      "historyId": "383cd80a-c801-4d50-a4e4-e9aee37ba55f",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 432,
+      "slug": "time-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 2,
+        "fromUnit": "h",
+        "toUnit": "min"
+      },
+      "output": {
+        "result": 120
+      },
+      "historyId": "13e083e1-c5cc-431c-8a99-d13f9ffe5ec6",
+      "scenarioId": "0658e1a9-71eb-4845-91f7-896ac6de4729",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 432,
+      "slug": "time-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 2,
+        "fromUnit": "h",
+        "toUnit": "min"
+      },
+      "output": {
+        "result": 120
+      },
+      "historyId": "53218e1e-6eaf-41b4-82b1-f0734cd25598",
+      "scenarioId": "501aea8c-b042-4a29-b000-65de1a41250b",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 433,
+      "slug": "angle-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 180,
+        "fromUnit": "deg",
+        "toUnit": "rad"
+      },
+      "output": {
+        "result": 3.141592653589793
+      },
+      "historyId": "5fcb1495-e2b3-476c-86bf-28821216276d",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 433,
+      "slug": "angle-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 180,
+        "fromUnit": "deg",
+        "toUnit": "rad"
+      },
+      "output": {
+        "result": 3.141592653589793
+      },
+      "historyId": "07d39842-21fb-4c46-ad51-5479c12dd3ad",
+      "scenarioId": "3d02ce30-9c9e-4478-9319-d2584974291c",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 433,
+      "slug": "angle-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 180,
+        "fromUnit": "deg",
+        "toUnit": "rad"
+      },
+      "output": {
+        "result": 3.141592653589793
+      },
+      "historyId": "037a5183-162e-4f7d-969a-aa9763d05bfb",
+      "scenarioId": "f1f0fec1-965c-40c3-bd18-83b3c8d53322",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 434,
+      "slug": "data-storage-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "GiB",
+        "toUnit": "MiB"
+      },
+      "output": {
+        "result": 1024
+      },
+      "historyId": "ccf777de-ea3b-4b0a-8d05-0c3725d25f39",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 434,
+      "slug": "data-storage-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "GiB",
+        "toUnit": "MiB"
+      },
+      "output": {
+        "result": 1024
+      },
+      "historyId": "bafb6599-5d58-4153-9b8c-f455eb4fe917",
+      "scenarioId": "9c8c8d84-af84-4ef8-80a3-5cde7bef0544",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 434,
+      "slug": "data-storage-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "GiB",
+        "toUnit": "MiB"
+      },
+      "output": {
+        "result": 1024
+      },
+      "historyId": "13aba4fa-2711-47af-ba1c-e4f13492e249",
+      "scenarioId": "7aa12caa-2572-4ec9-8b1b-ae2e70411b23",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 438,
+      "slug": "force-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 1,
+        "fromUnit": "kn",
+        "toUnit": "n"
+      },
+      "output": {
+        "result": 1000
+      },
+      "historyId": "fc56ccfc-e625-441b-9df0-11bd267b2191",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 438,
+      "slug": "force-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 1,
+        "fromUnit": "kn",
+        "toUnit": "n"
+      },
+      "output": {
+        "result": 1000
+      },
+      "historyId": "004f6bce-20e3-4aa3-9299-999da71eff0f",
+      "scenarioId": "d642009a-86b7-4ce2-a607-8a9a8600f53a",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 438,
+      "slug": "force-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 1,
+        "fromUnit": "kn",
+        "toUnit": "n"
+      },
+      "output": {
+        "result": 1000
+      },
+      "historyId": "b46b173c-da4e-41bc-b603-af85c4dcf6dd",
+      "scenarioId": "6ecf0829-49cc-4cab-a2d8-131ef049d8c2",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 440,
+      "slug": "frequency-converter",
+      "version": 1,
+      "plan": "free",
+      "input": {
+        "value": 2.4,
+        "fromUnit": "ghz",
+        "toUnit": "mhz"
+      },
+      "output": {
+        "result": 2400
+      },
+      "historyId": "fb04a24e-613e-49d4-b220-5f2002260479",
+      "scenarioId": null,
+      "registeredRestoreVerified": false,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": true
+    },
+    {
+      "catalogId": 440,
+      "slug": "frequency-converter",
+      "version": 1,
+      "plan": "pro",
+      "input": {
+        "value": 2.4,
+        "fromUnit": "ghz",
+        "toUnit": "mhz"
+      },
+      "output": {
+        "result": 2400
+      },
+      "historyId": "dbaee707-b8ea-4ec9-822a-3f75bfc24341",
+      "scenarioId": "8f164bcf-ee91-48df-a907-97b018f13521",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    },
+    {
+      "catalogId": 440,
+      "slug": "frequency-converter",
+      "version": 1,
+      "plan": "business",
+      "input": {
+        "value": 2.4,
+        "fromUnit": "ghz",
+        "toUnit": "mhz"
+      },
+      "output": {
+        "result": 2400
+      },
+      "historyId": "6742d71c-f94f-49a7-9807-38e0ad33d7eb",
+      "scenarioId": "759efab8-f6ef-464e-bb12-ecb656ff6e87",
+      "registeredRestoreVerified": true,
+      "realJWT": true,
+      "exactRetry": true,
+      "conflictDenied": true,
+      "foreignReadUpdateDeleteDenied": true,
+      "freeScenarioDenied": false
+    }
+  ],
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/auth/v1/signup",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/profiles",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 403
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "DELETE",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_calculation_history_atomic",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/calculation_projects",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 403
+    },
+    {
+      "method": "POST",
+      "path": "/rest/v1/rpc/save_project_scenario_atomic",
+      "status": 400
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/saved_scenarios",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/calculation_history",
+      "status": 200
+    }
+  ],
+  "fixture": {
+    "images": {
+      "postgres": "postgres:17.6-alpine@sha256:ef257d85f76e48da1c64832459b59fcaba1a4dac97bf5d7450c77753542eee94",
+      "postgrest": "postgrest/postgrest:v12.2.3@sha256:729bf65c733b73f5b52777f0e4b853f22ed73aa67a22d38269d289779b0a8401",
+      "gotrue": "supabase/gotrue:v2.197.0@sha256:1736a63078f5922b198c4cbe50f80ab9a2d3b54fe8b7b6cfb2e9dc5dbbc12c6b"
+    },
+    "sourceCommit": "4eee58f296d9698a1c2c0ae14d7a0b379c7622d3",
+    "autoconfirm": true,
+    "scope": "Full repository candidate model plus locally adopted guarded review bundle; NOT raw historical-chain success or authentic captured production equivalence",
+    "authMigrationCount": 75,
+    "authUidOwner": "supabase_auth_admin",
+    "schemaCoverage": {
+      "tables": [
+        "admin_alerts",
+        "ai_usage_events",
+        "api_usage_events",
+        "batch_calculation_jobs",
+        "batch_request_receipts",
+        "billing_account_fences",
+        "billing_atomic_completions",
+        "billing_customers",
+        "billing_webhook_events",
+        "business_api_keys",
+        "business_projects",
+        "business_webhook_endpoints",
+        "calculation_history",
+        "calculation_projects",
+        "calculator_bulk_jobs",
+        "calculator_catalog_admin",
+        "calculator_qa_checks",
+        "calculator_review_events",
+        "calculator_source_evidence",
+        "client_workspaces",
+        "custom_calculator_runs",
+        "custom_calculator_versions",
+        "custom_calculators",
+        "embed_configs",
+        "embed_events",
+        "embed_lead_receipts",
+        "embed_leads",
+        "favorites",
+        "lead_consents",
+        "organization_audit_log",
+        "organization_invitations",
+        "organization_members",
+        "organizations",
+        "platform_admins",
+        "profiles",
+        "saved_scenarios",
+        "share_links",
+        "shared_calculations",
+        "subscriptions",
+        "user_preferences",
+        "webhook_deliveries"
+      ],
+      "policies": 86,
+      "publicFunctions": 88,
+      "tablesWithoutRls": null
+    },
+    "appliedHistoricalSources": [
+      "001_b3_accounts.sql",
+      "002_b4_billing.sql",
+      "003_b5_business.sql",
+      "004_b6_builder.sql",
+      "005_b7_delivery.sql",
+      "006_b8_api_automation.sql",
+      "007_b9_ai.sql",
+      "008_b10_admin_factory.sql",
+      "008b_b10_alert_automation.sql",
+      "010_b7_pro_workspace.sql",
+      "012_production_fk_indexes.sql",
+      "013_production_rpc_privilege_hardening_v2.sql",
+      "014_production_entitlement_rpc_sync.sql",
+      "016_final_certification_evidence_gate.sql",
+      "017_regulatory_rule_pack_evidence.sql",
+      "018_harden_rule_pack_required_metadata.sql",
+      "019_authoritative_lifecycle_enforcement.sql",
+      "020_post_certification_revalidation.sql",
+      "021_require_rule_pack_provenance.sql",
+      "022_harden_reviewer_waiver_authority.sql",
+      "023_structured_source_evidence.sql",
+      "024_reviewer_assignment_authority.sql",
+      "025_derived_source_count_authority.sql",
+      "026_publication_manifest_authority.sql",
+      "027_publication_trigger_privilege_hardening.sql",
+      "028_source_evidence_reviewer_index.sql",
+      "029_account_rls_auth_initplan.sql",
+      "030_billing_ai_rls_auth_initplan.sql",
+      "031_admin_identity_rls_auth_initplan.sql",
+      "032_business_builder_rls_auth_initplan.sql",
+      "033_pro_workspace_rls_auth_initplan.sql",
+      "034_billing_webhook_event_privileges.sql",
+      "035_split_overlapping_write_policies.sql",
+      "036_consolidate_ai_usage_read_policy.sql",
+      "037_builder_publish_business_entitlement.sql"
+    ],
+    "deferredToBundle": [
+      "009_country_preferences.sql",
+      "038_client_account_billing_privileges.sql",
+      "032_atomic_reviewer_qa_audit.sql",
+      "033_atomic_reviewer_assignment_audit.sql",
+      "034_atomic_lifecycle_transition_audit.sql",
+      "035_atomic_catalog_creation.sql"
+    ],
+    "legacy011": "unchanged broken source fingerprinted; existing missing-contract repair adopted only locally",
+    "sources": [
+      {
+        "path": "docs/audits/migration-contract-2026-10-20/inventory.json",
+        "sha256": "67e0cf0d7ee790de5de7cfa348f5b18ac20359dfca670ee8c1fb4870703e784b"
+      },
+      {
+        "path": "supabase/migrations/001_b3_accounts.sql",
+        "sha256": "44c6b84cbef90edd8bae8f97b9ee8f3ca3fe0a2b75c9a7bc81c40ab782641444"
+      },
+      {
+        "path": "supabase/migrations/002_b4_billing.sql",
+        "sha256": "3676dc52b3086a3445ccc96a6dc2e4aa7293d23f66736046bca22243a918df24"
+      },
+      {
+        "path": "supabase/migrations/003_b5_business.sql",
+        "sha256": "3b2a88f0cc96edcd84fda58250093eec823354748121c7eee88b3f77029cb8e5"
+      },
+      {
+        "path": "supabase/migrations/004_b6_builder.sql",
+        "sha256": "6a71738de1ccb5b57f0761fac772e7771d2736d390f81d92aed464810aad9899"
+      },
+      {
+        "path": "supabase/migrations/005_b7_delivery.sql",
+        "sha256": "5851dc2e24b1445526b2986f743fad11adeba4742667587efaf5249b882bb258"
+      },
+      {
+        "path": "supabase/migrations/006_b8_api_automation.sql",
+        "sha256": "637ec0680c7ac01f2f801cbcadd6c45c7ab1996e9db28afe35d0878c2950e1b5"
+      },
+      {
+        "path": "supabase/migrations/007_b9_ai.sql",
+        "sha256": "6b1cd86c7d45533a0a783541ca03c8a455e427e5386469557530b4fcee1bb429"
+      },
+      {
+        "path": "supabase/migrations/008_b10_admin_factory.sql",
+        "sha256": "7080c1d1d1125545f3fd4626d5881c28ed8e642100bb94d061889e0fefe94b36"
+      },
+      {
+        "path": "supabase/migrations/008b_b10_alert_automation.sql",
+        "sha256": "ee5df09520e3a4c8f8c9251bb0b7718df1cf56d861e256de96ab21c89e55d6aa"
+      },
+      {
+        "path": "supabase/migrations/010_b7_pro_workspace.sql",
+        "sha256": "a16d5bbe5092d0d0cda135aeb2e4c034512e8c85faccf3ed3ff9512b7d8b3f0e"
+      },
+      {
+        "path": "supabase/migrations/011_b8_free_save_quotas.sql",
+        "sha256": "4c0f9f7c3a2f8e7b9b343b252b586c2921cbb981ab819a323afccba5b2a29a50"
+      },
+      {
+        "path": "docs/architecture/proposals/20261020-v1-legacy-save-quota-repair.sql",
+        "sha256": "1befdc09dd6b2b7ab2d0a225cdec6e048c170f0d6d3add2a164c4a30c20d31a2"
+      },
+      {
+        "path": "supabase/migrations/012_production_fk_indexes.sql",
+        "sha256": "e953260b2a57aa83b1d050b7536f27ea4324a396aa84332593e72b727b1ee6d2"
+      },
+      {
+        "path": "supabase/migrations/013_production_rpc_privilege_hardening_v2.sql",
+        "sha256": "3e6d9402ee352faeba6af214b7650c3a31782be2ba2d74eef88d8d98d76592fa"
+      },
+      {
+        "path": "supabase/migrations/014_production_entitlement_rpc_sync.sql",
+        "sha256": "f5fe2f21ecc004231cf3e01010f96a853f281fc03864512341bea7fc49f0faff"
+      },
+      {
+        "path": "supabase/migrations/016_final_certification_evidence_gate.sql",
+        "sha256": "b2ffa0198bc303b38aa766ac7157e7c8f93a9009b42d52fe4fbd3c45bf521d5e"
+      },
+      {
+        "path": "supabase/migrations/017_regulatory_rule_pack_evidence.sql",
+        "sha256": "255266b6ac885463b09b48f70caaec1348ae3a4b7b919cfed86ee6271217f987"
+      },
+      {
+        "path": "supabase/migrations/018_harden_rule_pack_required_metadata.sql",
+        "sha256": "8de88ad1d1551adc19704660ac79ef8625c20d1197bd261f9938fa7167ee2e66"
+      },
+      {
+        "path": "supabase/migrations/019_authoritative_lifecycle_enforcement.sql",
+        "sha256": "fef6d250fe190e7ae508769d2037fcbeb79340de1837fd2c47010a854873c4f1"
+      },
+      {
+        "path": "supabase/migrations/020_post_certification_revalidation.sql",
+        "sha256": "8be8fad45bfa4ac03a0e1b6272825ec3eba7fcf75e8739039d25e462a83839d1"
+      },
+      {
+        "path": "supabase/migrations/021_require_rule_pack_provenance.sql",
+        "sha256": "2948349c3454f6533393c7f907d96b88a42157360ed10872912cc0393722fcbc"
+      },
+      {
+        "path": "supabase/migrations/022_harden_reviewer_waiver_authority.sql",
+        "sha256": "45ad7805d74f2c795c7ec6f92910e29d82851a1a7e614e86e721df3e0fda7818"
+      },
+      {
+        "path": "supabase/migrations/023_structured_source_evidence.sql",
+        "sha256": "df68de0942cb46eaa9cfabab5136297093c399319c8e78b94768752a5c649f01"
+      },
+      {
+        "path": "supabase/migrations/024_reviewer_assignment_authority.sql",
+        "sha256": "e04d659cda5b30351322831dd41cf37a3f0250e32323af6f5b5af6b04fa7e65e"
+      },
+      {
+        "path": "supabase/migrations/025_derived_source_count_authority.sql",
+        "sha256": "d979f0fbc012676c4ba18d633733db59d8400bf7a9125f171c08ac973caf01a4"
+      },
+      {
+        "path": "supabase/migrations/026_publication_manifest_authority.sql",
+        "sha256": "281590f74a5d4c3dad201612aa13bd4364f02f678d3d3429949e179aabe12c42"
+      },
+      {
+        "path": "supabase/migrations/027_publication_trigger_privilege_hardening.sql",
+        "sha256": "b001be015340eecebbacb5c5fd66ecae82347c150088a2f896c768d57d4ed070"
+      },
+      {
+        "path": "supabase/migrations/028_source_evidence_reviewer_index.sql",
+        "sha256": "c93164c647d0c015b426950a19da17c2409c74edb9cff5b3db0749fdb021d08a"
+      },
+      {
+        "path": "supabase/migrations/029_account_rls_auth_initplan.sql",
+        "sha256": "04de135a6a2c9ef351c0a7c364b81a6d8be82fecf919ca72b1af8d62f253910f"
+      },
+      {
+        "path": "supabase/migrations/030_billing_ai_rls_auth_initplan.sql",
+        "sha256": "a1d4e07e8db42a84885bfc95a5a3da0945d118c305a46125f5367f2ba3cb97a0"
+      },
+      {
+        "path": "supabase/migrations/031_admin_identity_rls_auth_initplan.sql",
+        "sha256": "9600a2261753c5cdcbb015baa04579d8063940afaccd11eaa5ac7c3f364b96c4"
+      },
+      {
+        "path": "supabase/migrations/032_business_builder_rls_auth_initplan.sql",
+        "sha256": "76da26bbc86622c664d4e322f45ea2b716357d38ec93a4e2ab238f50145e2dc9"
+      },
+      {
+        "path": "supabase/migrations/033_pro_workspace_rls_auth_initplan.sql",
+        "sha256": "4b13a12bbf5113a2605bae3d4be08ec785174f3afb9bd2806fb1c3e5b906241f"
+      },
+      {
+        "path": "supabase/migrations/034_billing_webhook_event_privileges.sql",
+        "sha256": "597177fba00c67f0ea0baca5a54c1cc44a2ab77886b7376fa9549e4d0ef3aaf4"
+      },
+      {
+        "path": "supabase/migrations/035_split_overlapping_write_policies.sql",
+        "sha256": "fedde50298d7230a29a0ae7c41afa5c8df95195e7473042fb8c1efb6fc56540d"
+      },
+      {
+        "path": "supabase/migrations/036_consolidate_ai_usage_read_policy.sql",
+        "sha256": "28edd1f34e9628f64bc255d9a9a3f643d367d0ffdcd430022d67d45f0f11d9e5"
+      },
+      {
+        "path": "supabase/migrations/037_builder_publish_business_entitlement.sql",
+        "sha256": "7582b31222aa28378cfe7e984228738a4b5bc704715f9b783f957ed23711636b"
+      }
+    ],
+    "bundle": {
+      "reviewVersion": "20261021.v1",
+      "deploymentVersion": null,
+      "productionExecutionAuthorized": false,
+      "requires": [
+        "owner dispositions for historical differences and external writers",
+        "trusted postgres ownership",
+        "reviewed write pause, timeouts, backup and restore plan",
+        "exact metadata freshness and schema/ledger preconditions"
+      ],
+      "excludes": [
+        "011 missing-only repair",
+        "historical029 replay",
+        "global default ACL changes",
+        "production execution"
+      ],
+      "sources": [
+        {
+          "path": "supabase/migrations/009_country_preferences.sql",
+          "sha256": "da461b18da708919e8679fc2e8d198234e71c46253a46d6915536c72ab412cab"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-authentic-account-security.sql",
+          "sha256": "a4075c12645710adf1bada346c85d1115984b88760318a7ec63a6d05a4ed2bc7"
+        },
+        {
+          "path": "supabase/migrations/032_atomic_reviewer_qa_audit.sql",
+          "sha256": "b548046cb0a3aa91dd2838a824a5a1155b7b4c317d65cc644b6c9673a26418f1"
+        },
+        {
+          "path": "supabase/migrations/033_atomic_reviewer_assignment_audit.sql",
+          "sha256": "74ce0f947c3922c4c7992880abd108a2900a6ce14933bd45c3a5762617f2fcd8"
+        },
+        {
+          "path": "supabase/migrations/034_atomic_lifecycle_transition_audit.sql",
+          "sha256": "745efcbcb731821dd82727e91a6fe46093413890122818eb0560fd05a3414c90"
+        },
+        {
+          "path": "supabase/migrations/035_atomic_catalog_creation.sql",
+          "sha256": "426de9383b1ca63f504adbdb9e515c239c8d2c4bd37f518a6b900667d2f30b47"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BILLING-TRANSACTION-PROPOSAL.md",
+          "sha256": "12b486c353f56007e7c65be18d50c30989d2cb784cdaf16cf53400cc6db06348"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-ACCOUNT-HISTORY.sql",
+          "sha256": "18b3ca55203fdd7709cc4d632a23d6727081ee9a0269175d1e7c87763b0e712c"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-API-QUOTA.sql",
+          "sha256": "2e3cd725261052be9c4bce71610a5912b235d2322b737c93cd87a4f74c86a436"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-BATCH-JOB.sql",
+          "sha256": "8f8113e98ee43b7f4e9c06682030d4020eb51760cf890b960587a3358d5eebe6"
+        },
+        {
+          "path": "docs/architecture/proposals/ATOMIC-EMBED-LEAD-CONSENT.sql",
+          "sha256": "c93ded8059a77f93b43c7c8931834a560b5b13cf1f4984d5d0efe54892f1a6a5"
+        },
+        {
+          "path": "docs/architecture/proposals/20261021-v1-atomic-object-privileges.sql",
+          "sha256": "929828b851598c019c4d77856291ec57a2ffe751dcbeecfb0248239c9008116a"
+        }
+      ],
+      "sha256": "07dda25c047f8e75059402f561c5e4988322f60ed40faaa23aa87740c36534a4"
+    },
+    "productionEquivalence": "UNKNOWN",
+    "captureAvailable": false
+  },
+  "releaseHold": true,
+  "productionWrites": false,
+  "certificationGranted": false,
+  "publicationGranted": false,
+  "limitations": [
+    "Real disposable GoTrue/PostgREST/Postgres repository candidate schema with existing guarded review bundle locally adopted; production equivalence UNKNOWN.",
+    "Direct actual atomic RPC acceptance, not browser or Next server-action journey.",
+    "Server-trusted SQL persists actual current engine snapshots; this does not prove SQL recomputes mathematics.",
+    "Plans assigned to disposable test profiles; same calculateFactory current engine called for each plan, no billing acceptance.",
+    "No synthetic public publication, certification or reviewer facts."
+  ]
+}
