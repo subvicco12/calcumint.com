@@ -34,7 +34,7 @@ function OwnedScenario({ownerId,packet,onRestore}:Props){
  function save(){if(!packet||!projectId||!name.trim())return;const key=JSON.stringify([ownerId,packet,projectId,name]);if(retry.current?.key!==key)retry.current={key,id:crypto.randomUUID()};const requestId=retry.current.id;
   void run(async validNow=>{const result=await factorySaveScenario({expectedOwnerId:ownerId,packet,projectId,name,requestId});if(!validNow())return;setRestoreId(result.scenarioId);setMessage(`Saved scenario ${result.scenarioId}.`);});
  }
- function restore(){void run(async validNow=>{const result=await factoryRestoreScenario({expectedOwnerId:ownerId,scenarioId:restoreId.trim()});if(!validNow())return;setView({key:packetKey,message:'Verified saved snapshot restored.',busy:false,restored:packet?.identity.catalogId===result.catalogId&&equalCompletionJson(packet.snapshot,result.snapshot)?null:{snapshot:result.snapshot,catalogId:result.catalogId}});onRestore(result.snapshot,result.catalogId);});}
+ function restore(){void run(async validNow=>{const result=await factoryRestoreScenario({expectedOwnerId:ownerId,scenarioId:restoreId.trim()});if(!validNow())return;setView({key:packetKey,message:'Verified saved snapshot restored.',busy:false,restored:{snapshot:result.snapshot,catalogId:result.catalogId}});onRestore(result.snapshot,result.catalogId);});}
  return <section aria-label="Persisted project scenarios">
   <h3>Saved project scenarios</h3>
   <p>Save a verified calculation to an owned Pro or Business project. Saved scenarios retain normalized inputs and results; original raw keystrokes are not retained.</p>

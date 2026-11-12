@@ -66,3 +66,24 @@ it('does not preserve restore success when the parent changes to a different sna
  await waitFor(()=>expect(mocks.restore).toHaveBeenCalled());await act(async()=>{});
  expect(screen.queryByText('Verified saved snapshot restored.')).toBeNull();
 });
+
+it('retains a personal restore acknowledgement when equal inputs normalize raw decimal text and field order',async()=>{
+ const initial=getFactoryWorkflows(440).execute({value:'01.000',toUnit:'khz',fromUnit:'hz'});
+ const normalized=getFactoryWorkflows(440).execute({fromUnit:'hz',toUnit:'khz',value:'1'});
+ expect(initial.snapshot.input).toEqual(normalized.snapshot.input);
+ expect(initial.snapshot.output).toEqual({result:0.001});
+ expect(initial.snapshot.output).toEqual(normalized.snapshot.output);
+ expect(JSON.stringify(initial)).not.toBe(JSON.stringify(normalized));
+ mocks.restore.mockResolvedValue({catalogId:440,snapshot:normalized.snapshot});
+ function Parent(){
+  const [value,setValue]=useState(initial);
+  return <><output aria-label="Parent raw fields">{JSON.stringify(value.raw)}</output><button onClick={()=>setValue(getFactoryWorkflows(440).execute({value:'2',fromUnit:'hz',toUnit:'khz'}))}>Edit actual value</button><CalculatorFactoryPersistedScenario ownerId={owner} packet={value} onRestore={()=>setValue(normalized)}/></>;
+ }
+ render(<Parent/>);
+ fireEvent.change(screen.getByLabelText('Saved scenario ID'),{target:{value:'personal-scenario'}});
+ fireEvent.click(screen.getByRole('button',{name:'Restore saved scenario'}));
+ await waitFor(()=>expect(screen.getByLabelText('Parent raw fields').textContent).toBe(JSON.stringify(normalized.raw)));
+ expect(screen.getByText('Verified saved snapshot restored.')).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'Edit actual value'}));
+ expect(screen.queryByText('Verified saved snapshot restored.')).toBeNull();
+});
