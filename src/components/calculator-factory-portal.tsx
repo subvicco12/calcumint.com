@@ -1,4 +1,5 @@
 'use client';
+import './calculator-factory-controls.css';
 import {useRef,useState} from 'react';
 import {factoryContracts,getFactoryContract,getFactoryWorkflows,factoryResult} from '@/lib/calculator-factory/registry';
 import {CalculatorFactoryWorkbench} from './calculator-factory-workbench';
@@ -16,7 +17,7 @@ export function CalculatorFactoryPortal({ownerId,plan}:{ownerId:string;plan:Calc
  const historyRetry=useRef<{key:string;requestId:string}|null>(null);
  const [catalogId,setCatalogId]=useState(factoryContracts[0].catalogId);
  const contract=getFactoryContract(catalogId)!;
- return <section style={{minWidth:0,overflowWrap:'anywhere'}}><label>Engineering contract<select value={catalogId} onChange={event=>setCatalogId(Number(event.target.value))}>{factoryContracts.map(row=><option key={row.catalogId} value={row.catalogId}>#{row.catalogId} {row.title}</option>)}</select></label>
+ return <section className="factory-delivery-controls" style={{minWidth:0,overflowWrap:'anywhere'}}><label>Engineering contract<select value={catalogId} onChange={event=>setCatalogId(Number(event.target.value))}>{factoryContracts.map(row=><option key={row.catalogId} value={row.catalogId}>#{row.catalogId} {row.title}</option>)}</select></label>
  <p>{contract.scope}</p><p>Exact engine: {contract.engineId}@{contract.version}. Canonical acceptance, certification and publication remain pending.</p>
  <CalculatorFactoryConversionMethodology catalogId={catalogId}/>
  <ul>{contract.limitations.map(limit=><li key={limit}>{limit}</li>)}</ul>
