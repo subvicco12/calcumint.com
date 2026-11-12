@@ -12,9 +12,12 @@ import { pathToFileURL } from 'node:url';
 if (Number(process.versions.node.split('.')[0]) !== 22) throw Error('Run with the operator Node22 runtime');
 const args = process.argv.slice(2);
 const check = args.includes('--check');
+const suffixIndex=args.indexOf('--output-suffix');
+const outputSuffix=suffixIndex<0?'':args[suffixIndex+1];
+if(suffixIndex>=0&&!/^[a-z0-9][a-z0-9-]{0,40}$/.test(outputSuffix??''))throw Error('A bounded output suffix is required');
 const refIndex = args.indexOf('--code-ref');
 const codeRef = refIndex < 0 ? undefined : args[refIndex + 1];
-if (args.some((arg, index) => arg !== '--check' && arg !== '--code-ref' && !(refIndex >= 0 && index === refIndex + 1)) || (refIndex >= 0 && !codeRef)) throw Error('Usage: generate.mjs --check | --code-ref <exact HEAD SHA>');
+if (args.some((arg, index) => arg !== '--check' && arg !== '--code-ref' && arg !== '--output-suffix' && !(suffixIndex>=0&&index===suffixIndex+1) && !(refIndex >= 0 && index === refIndex + 1)) || (refIndex >= 0 && !codeRef)) throw Error('Usage: generate.mjs --check | --code-ref <exact HEAD SHA> [--output-suffix <new-revision>]');
 const executeFile = promisify(execFile);
 const git = async (...command) => (await executeFile('git', command, { encoding: 'utf8' })).stdout.trim();
 const root = await git('rev-parse', '--show-toplevel');
@@ -90,8 +93,10 @@ try {
   else {
     const directory = path.join(root,'docs/calculator-factory/wave1');
     await mkdir(directory,{recursive:true});
-    await writeFile(path.join(directory,'contracts.json'),JSON.stringify(contracts,null,2)+'\n');
-    await writeFile(path.join(directory,'evidence.json'),JSON.stringify(evidence,null,2)+'\n');
-    process.stdout.write(JSON.stringify({sourceSHA,contracts:entries.length,written:['docs/calculator-factory/wave1/contracts.json','docs/calculator-factory/wave1/evidence.json']})+'\n');
+    const ending=outputSuffix?'-'+outputSuffix:'';
+    const names=['contracts'+ending+'.json','evidence'+ending+'.json'];
+    await writeFile(path.join(directory,names[0]),JSON.stringify(contracts,null,2)+'\n',{flag:'wx'});
+    await writeFile(path.join(directory,names[1]),JSON.stringify(evidence,null,2)+'\n',{flag:'wx'});
+    process.stdout.write(JSON.stringify({sourceSHA,contracts:entries.length,written:names.map(name=>'docs/calculator-factory/wave1/'+name)})+'\n');
   }
 } finally { await rm(temporary,{recursive:true,force:true}); }
