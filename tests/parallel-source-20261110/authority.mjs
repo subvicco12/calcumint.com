@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision38.json",
-    "blob": "ca7440c9483c617492db58690cacc3a0047dc39e",
-    "sha256": "f4ac754c0561527d74a6384248b9aeb3ed549f6f0a8f3d9a873ea1006ce9c583"
+    "path": "docs/parallel-source-20261110/capture-revision39.json",
+    "blob": "eb661248ffe7626b55b54e5a628bd73bf84427d1",
+    "sha256": "adcfa3cf4a82a0bf6cfa7a183454a2fc1c5d0c1eee3e70444924f85bc89ced8c"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "d38c18151ab1985ec61d59b572e04d1e533375c4",
-    "sha256": "299a0eac60154030926c05e273c3a7232dbaaea71a09682bf16145ea16c7c089"
+    "blob": "6dce66e4787738f7a897090321bd83fe009ac961",
+    "sha256": "931242014cefee31a44b0b590657931edfad938fa8a9fc65050601f6120bbb87"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "303b14d15335da8a316a1ae5a2e03601b27f0fe1",
-    "sha256": "ec04cf3c243686c23f818976c5c6cc9cb329d7b4305aba93fede81fb7d73397a"
+    "blob": "b5e8f4825b5cbf250e27e612c874aed3df15dbfd",
+    "sha256": "cf3c7336bcb97cad056232c1201bbbe25c542d07c8968f09405bcbc0dbcff26a"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -39,8 +39,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "scripts/product-completion-lineage.mjs",
-    "blob": "8972a9c53b86a433a800c387b161615751d7b288",
-    "sha256": "708533d2e3cf8e150e9a97110eaf76eb8e6f44065964796811baa66e244fa975"
+    "blob": "55755284d3b388e326fa26631a35f564d14cddaa",
+    "sha256": "76d16efedcee34eece376fe0299ee42f232c2602cff132cf68c29d62e4c8262a"
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
@@ -49,8 +49,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
-    "blob": "6f55706d1b68fd5ff89f71180906c054c39d3fde",
-    "sha256": "a36b6dbf5c7f093f6c0176d94f146c6641e0c2650bee59753a99b172f76b62a5"
+    "blob": "79e66a296cce5ed3d12edf29e7f51174de663964",
+    "sha256": "10ae650a587dc12312a119cf47a31168bb73fa8b055985121f31927328129457"
   },
   {
     "path": "tests/next-cohort-20261110/source/runtime-current-anchor.mjs",
@@ -186,6 +186,86 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision37.json",
     "blob": "f124b9617cdef72c8ea161378653ad901ef63d9f",
     "sha256": "b6dd6494b2a1d03963adcb57314d1650f0c96f3fb2fe8c36d5ede076a0d69119"
+  },
+  {
+    "path": "tests/completion-first-20261112/workflows-stage.mjs",
+    "blob": "0e8322c3352d0a252d8b906c60384d864567b58a",
+    "sha256": "f16ae4b15ddc18e7210a9afda1e96bd0982c4fd7cfc5e599d6a8a48a8bbd6dfe"
+  },
+  {
+    "path": "tests/completion-first-20261112/workflows-policy.mjs",
+    "blob": "1834309617feef36123525c0a6a35a3596c09071",
+    "sha256": "8b5fcd1def0d30dc1c5444532aa1c826b9c74ef936505711cc92ac6cfa0c5147"
+  },
+  {
+    "path": "tests/completion-first-20261112/workflows-stage.test.mjs",
+    "blob": "ec2db774c784f0d23bcb7aba36b288cc2cf44d93",
+    "sha256": "08c894db94d0b85a90b7136f9691f248ec363e869a73278106aaf2288a5b5d33"
+  },
+  {
+    "path": "tests/completion-first-20261112/retained-stage1-tests.mjs",
+    "blob": "91438e691d2f468ad450e978ff041ada394236d0",
+    "sha256": "a9c3cc58801358e2bda3eb9ce8d84ea700ef2a3851860562c9bb5a5c2c73a16d"
+  },
+  {
+    "path": "docs/completion-first-20261112/source-stage2.json",
+    "blob": "4ddb9e1fef1faec79babcc04bd37e4cee000d72b",
+    "sha256": "ab96b2e6e88044f5cd117021b18d2f2a4a5ae3e54558c21031b5ee2d8b4f7118"
+  },
+  {
+    "path": "tests/completion-first-20261112/non-source-stage2.mjs",
+    "blob": "92bcdb9056f368d72e0358632543960a8355099f",
+    "sha256": "d942cbe00ba421621032a45e39523fc61fe9a035ace3f73303d64163b6419d19"
+  },
+  {
+    "path": "tests/completion-first-20261112/non-source-policy.mjs",
+    "blob": "57430b53ba5ec6abf48052093c6457b1408e3ad7",
+    "sha256": "90a70bf5b5f6f487e5f8648de803005311198fdc37db5f9cbc3eceb638410667"
+  },
+  {
+    "path": "docs/completion-first-20261112/non-source-stage2.json",
+    "blob": "9e32aa7febe8f20395f8f5ac4a21e0c245974044",
+    "sha256": "c667b49755de80add4302f3cedeb7464befeb75c5d78d9b125e860d264d027e2"
+  },
+  {
+    "path": "tests/completion-first-20261112/retained-runtime-stage2.mjs",
+    "blob": "da40d83b18c2a416a49fc0d0fc6425da982c85f2",
+    "sha256": "8145b4b036e02de188e1660fffb033a9df72daec3a31bbab646c9ca025e88946"
+  },
+  {
+    "path": "tests/full-product-batch13/workflow.test.mjs",
+    "blob": "ace54035f9ad48b57e331b29ca63d6a5f3dd621d",
+    "sha256": "cbe05dd0a8c0bd7c81b0ff05451ce6329fb93d9b68c9dcfd84801f7df81b7c20"
+  },
+  {
+    "path": "tests/full-product-batch17/workflow.test.mjs",
+    "blob": "757970bba28d22dd97d326ab25d4f3380f010dfc",
+    "sha256": "5783934c2fe14c990b68d7667abd1eecc390681ceecfbb2f8fa2c2d148b29d91"
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
+    "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
+  },
+  {
+    "path": "tests/gotrue-runtime/acceptance.mjs",
+    "blob": "601c9c1a9c359184d2653188f4c1a55e112addd2",
+    "sha256": "2b537eee5d51eddddd9fcde15ed28b062f899d459bb8e24943f3f8ea168e2cdc"
+  },
+  {
+    "path": "tests/gotrue-runtime/login-diagnostics.mjs",
+    "blob": "9d75b49b3beacd70464ae3c5c24fb8ab36e54993",
+    "sha256": "34d2484e41e7da6ced41281c2215528b71acf4faf89000d11ce5c07764b5a24e"
+  },
+  {
+    "path": "tests/gotrue-runtime/login-diagnostics.test.mjs",
+    "blob": "6abd02b73cf502fbbbbb7696a8d0d62d17e26dab",
+    "sha256": "8c594340d1c5f657cb1c9ed600e1b1cc39f0a74cc569f99614199913f2cd2fab"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision38.json",
+    "blob": "ca7440c9483c617492db58690cacc3a0047dc39e",
+    "sha256": "f4ac754c0561527d74a6384248b9aeb3ed549f6f0a8f3d9a873ea1006ce9c583"
   }
 ]);
 export function verifyParallelAuthority(read,git){
