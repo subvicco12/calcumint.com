@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 export const accepted=Object.freeze([
   {
-    "path": "docs/parallel-source-20261110/capture-revision36.json",
-    "blob": "eebcc669f22971233daf41df1f9783436ad97a59",
-    "sha256": "4c8cb211b31fd3c3d17f735c20c1681cc6083e20a7d5227df392d37a94639dfa"
+    "path": "docs/parallel-source-20261110/capture-revision37.json",
+    "blob": "f124b9617cdef72c8ea161378653ad901ef63d9f",
+    "sha256": "b6dd6494b2a1d03963adcb57314d1650f0c96f3fb2fe8c36d5ede076a0d69119"
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "62949fe59650b468a9896c2ab9e00dbd651868d4",
-    "sha256": "cc39c6a9d2436cf135c26a382d3e251e9b7d86f4f1df499ca50891cb28d142df"
+    "blob": "ca4b180e555bfe991691719cdf8fd8c806a22153",
+    "sha256": "8dece170754b3e09232486beb31d36d18c381f6cdf7f5053d9f59341a9459876"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -74,8 +74,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/calculator-factory-source-20261112/policy.mjs",
-    "blob": "9ad5424ffdcd546976f1cd422b48a70c22d11474",
-    "sha256": "fac4f582414c538ab5829b80c0a8c1751ecd4b4764689f208ba786fc6eb4e909"
+    "blob": "98738e205b69d63563e37f09c0c224f8d2608342",
+    "sha256": "36d88f72076804a5c8cb91b62586f34bc3cbffd358a270d335b5d855f6ad4288"
   },
   {
     "path": "tests/calculator-factory-source-20261112/exact-stage.mjs",
@@ -141,6 +141,26 @@ export const accepted=Object.freeze([
     "path": "tests/calculator-factory-source-20261112/policy.d.mts",
     "blob": "17197468e0421056026b3b3fb01fb1b72ebd78a6",
     "sha256": "80387c926c5a29f0f26fc5608057e9fefc0bbcf725261282764ad0c1b085634c"
+  },
+  {
+    "path": "docs/calculator-factory/source-stage-20261112-revision6.json",
+    "blob": "fc797da9378b47703c481410723c8593d90a95ea",
+    "sha256": "54c5f2799cec646d160a3a67793d9bd30ce49d75a39c7b513f1b1337140d62d9"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision36.json",
+    "blob": "eebcc669f22971233daf41df1f9783436ad97a59",
+    "sha256": "4c8cb211b31fd3c3d17f735c20c1681cc6083e20a7d5227df392d37a94639dfa"
+  },
+  {
+    "path": "vitest.config.ts",
+    "blob": "ab88ef354102d823c7e0ee474a0b9672297f5a3b",
+    "sha256": "2009fa342160d4539d41811a0dc09eab07ec1ae0f3a31ce8efcd58b64a94aa6e"
+  },
+  {
+    "path": "docs/calculator-factory/unit-scheduler-successor.json",
+    "blob": "b6c075bfc60bc19c43be8133e1cf66457f3c6823",
+    "sha256": "4f647ea5bd51db95df01f94f332205cce134b0ebe8e2f4b3cfc5857adefa87ea"
   }
 ]);
 export function verifyParallelAuthority(read,git){
