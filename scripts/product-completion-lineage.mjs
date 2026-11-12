@@ -3526,15 +3526,15 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-factory-persisted-scenario.test.tsx",
-        "ref": "79bf64466663cc961fdb80365143d0c750dccc6f",
-        "blob": "0b81f63a734a4d97695ba5dbb041580f8cc16e90",
-        "sha256": "e3ba192a1e0c5308236eb25ac7af1c10a7ce49ad493436e3295bc8d5a9b8e086"
+        "ref": "12c266513db4d2a216823cba910478120f3a1cbd",
+        "blob": "b068f245075be28c55af9dda97d8b3f633aa16cb",
+        "sha256": "42e2721987da0a7d86fb7ef7d48308c547a7ebf44989e905d16f156b84e15a65"
       },
       {
         "path": "src/components/calculator-factory-persisted-scenario.tsx",
-        "ref": "79bf64466663cc961fdb80365143d0c750dccc6f",
-        "blob": "b21bae13bc46fee37bd99649caa43d36bb608dde",
-        "sha256": "8f81fefccc4acee5c3501e2ad4cfdd3f982150485b8aafb966a7ea117cd7d1a3"
+        "ref": "12c266513db4d2a216823cba910478120f3a1cbd",
+        "blob": "9a60c904a4e0de7d2b5cb8b8023fa272ee233606",
+        "sha256": "3e4d8ded1c3e0cb1eccd954f93ce599a24d25f5b2c22b6f6775484b3fffc00a5"
       },
       {
         "path": "src/components/calculator-factory-portal.test.tsx",
@@ -3940,9 +3940,9 @@ const bindings=[
       },
       {
         "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
-        "ref": "7a2895d81f6e331c13c7dae0c28ea0e72d12bc92",
-        "blob": "79e66a296cce5ed3d12edf29e7f51174de663964",
-        "sha256": "10ae650a587dc12312a119cf47a31168bb73fa8b055985121f31927328129457"
+        "ref": "054854bceed263ba59e8cd0052f1f3e9b1ea8e30",
+        "blob": "99666fd1d09a2b7f782b05d4dbd9f9656be08eea",
+        "sha256": "a6b0b939f5e5cee3072cc2776bc3dbf6663a7c70731419a3905d7904a2f87f0c"
       }
     ],
     "intermediateSources": [
