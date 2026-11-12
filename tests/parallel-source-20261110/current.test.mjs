@@ -5,8 +5,9 @@ import {createHash} from 'node:crypto';
 import {verifyParallelSource,capturePath,parseRows} from './core.mjs';
 import {sourceGit} from './baseline-runtime.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
+import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'db15e1ebd516429cc7f2c6201e35d2b8fbf95579',sha256:'6f9cff2c6ff512c4374c831a063ed86fd2b964a55e30f027a92592df90b8159d'};
+const expectedAuthority={blob:'821543116d5f15aed52eafcc149464b89743a9ec',sha256:'0b55e46a16fa095a7b07edbf5ddb0236ba878a2cb6784742dc4a532e758eeb2a'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
@@ -43,4 +44,8 @@ test('source availability refuses unsafe or multiple origins and substituted com
 });
 
 for(const record of capture.factorySources)test('finite factory stage rejects altered or reverted bytes '+record.path,()=>{for(const bytes of [Buffer.from('tamper'),Buffer.alloc(0)])assert.throws(()=>verifyParallelSource(name=>name===record.path?bytes:readFileSync(name)),/Current factory bytes differ|Current target source differs|Independent current target bytes differ/);});
-test('factory capture and literal policy are independently governed',()=>{for(const path of ['tests/calculator-factory-source-20261112/policy.mjs','docs/calculator-factory/source-stage-20261112.json','tests/calculator-factory-source-20261112/exact-stage.mjs'])assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/);});
+test('factory capture and literal policy are independently governed',()=>{
+ const scheduler=JSON.parse(readFileSync('docs/calculator-factory/unit-scheduler-successor.json'));assert.equal(scheduler.path,'vitest.config.ts');assert.equal(scheduler.predecessor.ref,'9ad7e75641322696f75a018e53513c8158c39870');assert.equal(factoryPolicy.codeRef,'b3f0844e8ec09010464afa3ea33306bc4f384c41');assert.equal(scheduler.current.ref,factoryPolicy.codeRef);
+ const contents=[];for(const record of [scheduler.predecessor,scheduler.current]){assert.equal(record.path,'vitest.config.ts');assert.equal(sourceGit(['rev-parse',record.ref+':'+record.path]).toString().trim(),record.blob);const bytes=sourceGit(['cat-file','blob',record.blob]);assert.equal(bytes.length,record.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);contents.push(bytes.toString());}
+ assert.equal(contents[0].split('  test: {').length,2);assert.equal(contents[1],contents[0].replace('  test: {','  test: {\n    // Retained source suites launch bounded child workers; avoid nested outer oversubscription.\n    maxWorkers: 1,'));
+ for(const path of ['vitest.config.ts','docs/calculator-factory/unit-scheduler-successor.json','tests/calculator-factory-source-20261112/policy.mjs','docs/calculator-factory/source-stage-20261112.json','tests/calculator-factory-source-20261112/exact-stage.mjs'])assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/);});
