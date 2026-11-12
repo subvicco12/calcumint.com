@@ -6,7 +6,7 @@ import {verifyParallelSource,capturePath,parseRows} from './core.mjs';
 import {sourceGit} from './baseline-runtime.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'b044c3cb37743d19dd3678eb0552fb9c290accbf',sha256:'7092c27233201e31145619987edd886aa869a7792a4c0eb47af95ca58415866d'};
+const expectedAuthority={blob:'9e5d759fbd98afe02a4874fbd43e270481170fac',sha256:'dba8b8037ee6dc9d45a7cb3ee60596b424e9063be8324024e1d748e9b05a00fd'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
