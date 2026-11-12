@@ -1,4 +1,5 @@
 import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';
+import {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';
 import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
 import assert from 'node:assert/strict';
@@ -493,7 +494,7 @@ export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
 }
 export function retainedRuntimeBytes(path,read=readFileSync,sourceGit=git){
  const row=sources.find(source=>source.path===path);
- if(!row)return read(path);
+ if(!row){const retained=readStage2HistoricalRuntime(path,read,sourceGit);return retained??read(path);}
  const admitted=verifyCurrentRuntimeContext(read,sourceGit);
  const current=read(path);
  const blob=sourceGit(['cat-file','blob',row.currentBlob]);assert.equal(hash(blob),row.currentSHA256,'Retained evidence current Git bytes differ: '+path);
