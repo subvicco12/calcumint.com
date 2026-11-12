@@ -67,7 +67,7 @@ export function makeGitReader(invoke){
   const loaded=new Map();let offset=0;
   for(const expected of pending){
    const newline=output.indexOf(10,offset);if(newline<0)throw Error('Truncated Git commit batch header');
-   const header=output.subarray(offset,newline).toString('ascii'),match=/^([0-9a-f]{40}) commit (0|[1-9][0-9]*)$/.exec(header);
+   const header=output.subarray(offset,newline).toString('ascii');if(header===expected+' missing'){const error=Error('Exact Git commit unavailable: '+expected);error.missingCommit=expected;throw error;}const match=/^([0-9a-f]{40}) commit (0|[1-9][0-9]*)$/.exec(header);
    if(!match||match[1]!==expected)throw Error('Git batch commit identity/type unavailable: '+expected);
    const length=Number(match[2]);if(!Number.isSafeInteger(length))throw Error('Invalid Git batch commit length');
    const start=newline+1,end=start+length;if(end>=output.length||output[end]!==10)throw Error('Truncated Git commit batch or invalid delimiter');
