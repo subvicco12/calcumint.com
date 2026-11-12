@@ -12,3 +12,23 @@ it('loads explicitly and keeps idempotent share identity on retry',async()=>{ren
 it('does not expose stale records after switching organization context',async()=>{render(<CalculatorFactorySharedWorkspace ownerId="owner" packet={packet} organizationId="org" projectId="project" onRestore={vi.fn()}/>);fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);fireEvent.change(screen.getByLabelText('Business organization'),{target:{value:''}});expect(screen.queryByText(/Project: Team/)).toBeNull();expect(screen.queryByRole('button',{name:'Share current verified snapshot'})).toBeNull();});
 
 it('retains verified template acknowledgement only across its matching parent packet update',async()=>{const restored=getFactoryWorkflows(218).execute({x:'5'});mock.load.mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[{id:'record',title:'Template',snapshot:restored.snapshot}]});mock.template.mockResolvedValue({catalogId:218,snapshot:restored.snapshot});function Parent(){const [value,setValue]=useState(packet);return <><button onClick={()=>setValue(getFactoryWorkflows(218).execute({x:'7'}))}>Edit calculation</button><CalculatorFactorySharedWorkspace ownerId="owner" packet={value} organizationId="org" projectId="project" onRestore={()=>setValue(restored)}/></>;}render(<Parent/>);fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);fireEvent.click(screen.getByRole('button',{name:'Open shared record as template'}));await screen.findByText('Verified shared snapshot opened as an independent working template.');fireEvent.click(screen.getByRole('button',{name:'Edit calculation'}));expect(screen.queryByText('Verified shared snapshot opened as an independent working template.')).toBeNull();});
+
+it('keeps template acknowledgement when an equal snapshot normalizes raw decimal text and field order',async()=>{
+ const initial=getFactoryWorkflows(423).execute({value:'01.000',toUnit:'cm',fromUnit:'m'});
+ const normalized=getFactoryWorkflows(423).execute({fromUnit:'m',toUnit:'cm',value:'1'});
+ expect(initial.snapshot.input).toEqual(normalized.snapshot.input);
+ expect(initial.snapshot.output).toEqual(normalized.snapshot.output);
+ expect(JSON.stringify(initial)).not.toBe(JSON.stringify(normalized));
+ mock.load.mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[{id:'same-record',title:'Same numeric template',snapshot:normalized.snapshot}]});
+ mock.template.mockResolvedValue({catalogId:423,snapshot:normalized.snapshot});
+ function Parent(){
+  const [value,setValue]=useState(initial);
+  return <><output aria-label="Parent raw input">{JSON.stringify(value.raw)}</output><button onClick={()=>setValue(getFactoryWorkflows(423).execute({value:'2',fromUnit:'m',toUnit:'cm'}))}>Edit real value</button><CalculatorFactorySharedWorkspace ownerId="owner" packet={value} organizationId="org" projectId="project" onRestore={()=>setValue(normalized)}/></>;
+ }
+ render(<Parent/>);fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));await screen.findByText(/Project: Team/);
+ fireEvent.click(screen.getByRole('button',{name:'Open shared record as template'}));
+ await waitFor(()=>expect(screen.getByLabelText('Parent raw input').textContent).toBe(JSON.stringify(normalized.raw)));
+ expect(screen.getByText('Verified shared snapshot opened as an independent working template.')).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'Edit real value'}));
+ expect(screen.queryByText('Verified shared snapshot opened as an independent working template.')).toBeNull();
+});
