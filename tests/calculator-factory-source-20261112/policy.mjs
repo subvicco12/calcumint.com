@@ -1,9 +1,9 @@
 /** Frozen runtime policy; independently pinned by parallel source authority. */
-export const factoryCapturePath="docs/calculator-factory/source-stage-20261112-revision4.json";
+export const factoryCapturePath="docs/calculator-factory/source-stage-20261112-revision5.json";
 export const factoryPolicy=Object.freeze({
-  "captureSHA256": "0076baf5662eae521306b71053e4603b8469986980a031d9f484ad1b6adc42cb",
+  "captureSHA256": "f58877dd162faf6c3ab7430d937436f67194d781058398deb7cc7631d2828da6",
   "predecessorRef": "9ad7e75641322696f75a018e53513c8158c39870",
-  "codeRef": "859d349a0d35d22e5ea69739cd7a9b3e2a49753e",
+  "codeRef": "8ca2fcee34ab5947f814b953d97a5866a7bcb03f",
   "paths": [
     "src/app/admin/calculator-factory/page.test.tsx",
     "src/app/admin/calculator-factory/page.tsx",
@@ -30,6 +30,12 @@ export const factoryPolicy=Object.freeze({
     "src/lib/parallel-source-evidence.test.ts"
   ],
   "ancestry": [
+    "8ca2fcee34ab5947f814b953d97a5866a7bcb03f",
+    "e608a5d2b4a2d37195b6f359d68519ee92cebce0",
+    "99158edc6201fff303f49f88cc3d9718912f3ba2",
+    "bbf0a1f8b4c8f06e7ff508298099fc2cd17177df",
+    "07868e7a9a062ba796d0fbabfbe61918840a90b5",
+    "cdfecd5edeca9a2d58df70dc18f47a6c1070ac5e",
     "859d349a0d35d22e5ea69739cd7a9b3e2a49753e",
     "25ceef56c09b365969f014f9ec9d713f2faf1e74",
     "48cea0dd5a18a7b814dfe5d62ad0a671e6d49b95",
