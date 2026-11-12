@@ -1,0 +1,29 @@
+import {frequencyPresentationUnit,frequencyUnitSymbol} from '../frequency-presentation';
+import {basicMathContracts,calculateBasicMath,type BasicMathCatalogId} from './cohorts/basic-math';
+import {conversionFactoryDefinitions} from './cohorts/conversions';
+import {physicsCandidates} from './cohorts/physics';
+import {createFactoryWorkflows,type FactoryRaw} from './workflows';
+import {createCalculationSnapshot} from '../calculation-snapshot';
+import {requiredCalculatorNumber} from '../registered-input-successor';
+import type {FactoryWorkbenchField} from '@/components/calculator-factory-workbench';
+import type {StructuredCalculationResult} from '@/calculators/final-framework/types';
+
+export type FactoryContract=Readonly<{catalogId:number;engineId:string;slug:string;version:number;title:string;registered:boolean;primaryKey:string;unit?:string;outputUnit?:(input:Record<string,unknown>)=>string;privateRevision?:string;fields:readonly FactoryWorkbenchField[];scope:string;sourceEvidence:readonly string[];limitations:readonly string[];execute:(raw:FactoryRaw)=>ReturnType<typeof createCalculationSnapshot>}>;
+function numericInput(raw:FactoryRaw,fields:readonly FactoryWorkbenchField[]){
+ if(Object.keys(raw).length!==fields.length||Object.keys(raw).some(key=>!fields.some(field=>field.key===key)))throw Error('Exact input fields required');
+ return Object.fromEntries(fields.map(field=>{let value:number;try{value=requiredCalculatorNumber(raw[field.key]);}catch{throw Error(`Enter a complete finite value for ${field.label}`);}if(!Number.isFinite(value))throw Error(`Enter a complete finite value for ${field.label}`);return [field.key,value];}));
+}
+const math:FactoryContract[]=basicMathContracts.map(row=>({...row,registered:true,execute:(raw:FactoryRaw)=>calculateBasicMath(row.catalogId as BasicMathCatalogId,numericInput(raw,row.fields)).snapshot}));
+const conversions:FactoryContract[]=conversionFactoryDefinitions.map(row=>({catalogId:row.catalogId,engineId:row.engineId,slug:row.definition.slug,version:row.version,title:row.definition.title,registered:true,primaryKey:row.primaryKey,outputUnit:row.outputUnit,fields:row.fields.map(field=>row.catalogId===440&&field.options?{...field,optionLabels:Object.fromEntries(field.options.map(code=>[code,frequencyUnitSymbol(code)]))}:field),scope:row.scope,sourceEvidence:['src/lib/publication20/conversions.ts'],limitations:['Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance.'],execute:(raw:FactoryRaw)=>row.run({catalogId:row.catalogId,version:row.version,input:raw}).snapshot}));
+const physics:FactoryContract[]=physicsCandidates.map(row=>{
+ const engine=row.engine;
+ const fields:readonly FactoryWorkbenchField[]='fields' in row?row.fields as readonly FactoryWorkbenchField[]:[];
+ return {catalogId:row.catalogId,engineId:row.engineId,slug:row.slug,...('privateRevision' in row?{privateRevision:String(row.privateRevision)}:{}),version:typeof row.version==='number'?row.version:1,title:engine.title??`Physics ${row.catalogId}`,registered:row.catalogId!==323&&row.catalogId!==324,primaryKey:row.primaryKey,fields,scope:row.scope,sourceEvidence:[row.sourceEvidence],limitations:[...row.limitations,...row.blockers],execute:(raw:FactoryRaw)=>{const input=engine.inputSchema.parse(numericInput(raw,fields));const output=engine.calculate(input as never,{});return createCalculationSnapshot({calculatorSlug:row.slug,calculatorVersion:typeof row.version==='number'?row.version:1,input,output});}};
+});
+export const factoryContracts:readonly FactoryContract[]=Object.freeze([...math,...conversions,...physics]);
+if(new Set(factoryContracts.map(row=>row.catalogId)).size!==factoryContracts.length)throw Error('Duplicate factory catalog identity');
+export function getFactoryContract(catalogId:number){return factoryContracts.find(row=>row.catalogId===catalogId);}
+export function getFactoryWorkflows(catalogId:number){const contract=getFactoryContract(catalogId);if(!contract)throw Error('Unknown factory identity');return createFactoryWorkflows({identity:{catalogId,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,sourceVersion:`factory-wave1-20261112.1/${contract.engineId}@${contract.version}${contract.privateRevision?`/${contract.privateRevision}`:''}`},execute:contract.execute});}
+export function runFactoryCalculation(catalogId:number,version:number,input:FactoryRaw){const contract=getFactoryContract(catalogId);if(!contract||contract.version!==version)throw Error('Exact factory identity/version unavailable');return getFactoryWorkflows(catalogId).execute(input);}
+export function calculateFactory(catalogId:number,input:FactoryRaw){const contract=getFactoryContract(catalogId);if(!contract)throw Error('Unknown factory identity');return runFactoryCalculation(catalogId,contract.version,input).snapshot;}
+export function factoryResult(catalogId:number,raw:FactoryRaw):StructuredCalculationResult{const contract=getFactoryContract(catalogId);if(!contract)throw Error('Unknown factory identity');const packet=runFactoryCalculation(catalogId,contract.version,raw);const key=contract.primaryKey;const unit=contract.outputUnit?.(packet.snapshot.input)??contract.unit;return {primaryResult:{id:key,label:'Result',value:packet.snapshot.output[key] as number,...(unit?{unit:frequencyPresentationUnit(contract.slug,contract.version,unit)}:{})},methodology:contract.scope,warnings:['Private engineering review; no certification or publication approval.',...contract.limitations]};}

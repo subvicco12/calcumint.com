@@ -6,7 +6,7 @@ import type {CalcuMintPlan} from '@/lib/entitlements';
 /** Private engineering workbench; caller supplies a compiled trusted workflow.
  * No account mutation or server authorization is implied by a local plan prop.
  */
-export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text';options?:readonly string[];unit?:string}>;
+export type FactoryWorkbenchField=Readonly<{key:string;label:string;defaultValue?:string|number;kind?:'select'|'number'|'text';options?:readonly string[];optionLabels?:Readonly<Record<string,string>>;unit?:string}>;
 export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',renderResult,onSave}:{workflows:FactoryWorkflows;title:string;fields:readonly FactoryWorkbenchField[];plan?:CalcuMintPlan;renderResult?:(packet:FactoryExecutionPacket)=>ReactNode;onSave?:(packet:FactoryExecutionPacket)=>Promise<string>}){
  const [raw,setRaw]=useState<Record<string,string>>(()=>Object.fromEntries(fields.map(f=>[f.key,String(f.defaultValue??'')])));
  const [packet,setPacket]=useState<FactoryExecutionPacket|null>(null),[scenarios,setScenarios]=useState<readonly FactoryScenario[]>([]),[rows,setRows]=useState<readonly FactoryBatchRow[]>([]);
@@ -24,7 +24,7 @@ export function CalculatorFactoryWorkbench({workflows,title,fields,plan='free',r
  };
  return <section aria-label={title}><h2>{title}</h2><p>Private engineering review. Replay checks consistency with the compiled engine and source version.</p>
  <form onSubmit={e=>{e.preventDefault();setPacket(null);setExportText('');act(()=>setPacket(workflows.execute(raw)));}}>
- {fields.map(field=>{const change=(value:string)=>{clearFeedback();setRaw({...raw,[field.key]:value});setPacket(null);setExportText('');};return <label key={field.key}>{field.label}{field.kind==='select'?<select name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}><option value="">Choose {field.label}</option>{field.options?.map(option=><option key={option} value={option}>{option}</option>)}</select>:<input type="text" inputMode={field.kind==='number'?'decimal':undefined} name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}/>} {field.unit&&<span>{field.unit}</span>}</label>;})}
+ {fields.map(field=>{const change=(value:string)=>{clearFeedback();setRaw({...raw,[field.key]:value});setPacket(null);setExportText('');};return <label key={field.key}>{field.label}{field.kind==='select'?<select name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}><option value="">Choose {field.label}</option>{field.options?.map(option=><option key={option} value={option}>{field.optionLabels?.[option]??option}</option>)}</select>:<input type="text" inputMode={field.kind==='number'?'decimal':undefined} name={field.key} value={raw[field.key]??''} onChange={e=>change(e.target.value)}/>} {field.unit&&<span>{field.unit}</span>}</label>;})}
  <button type="submit">Calculate</button></form>
  {error&&<p role="alert">{error}</p>}
  {saveMessage&&<p role="status">{saveMessage}</p>}
