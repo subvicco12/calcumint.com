@@ -19,7 +19,7 @@ const workflowPaths=new Set(workflowPolicy.paths),completionPaths=new Set(comple
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision39.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision40.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -70,7 +70,10 @@ function applicationSuccession(capture,read,git){
   sourceRecord(row.current,read,git);result.set(row.path,row);
  }
  for(const [path,row]of completion)result.set(path,{path,current:row.current,historical:capture.applicationSuccessors.find(r=>r.path===path)?.historical});
- for(const [path,row]of workflow)result.set(path,{path,current:row.current,historical:result.get(path)?.historical,contextPredecessor:row.predecessor});
+ const retainedWorkflowPaths=["src/app/api/business/native-embeds/route.ts","src/app/api/business/technology-embeds/route.ts","src/app/api/internal/technology-webhooks/process/route.ts","src/app/api/native-embed/[grant]/calculate/route.ts","src/app/embed/native/[grant]/page.tsx","src/components/native-embed-grant-form.tsx","src/components/native-frequency-embed.tsx","src/lib/native-delivery/contract.ts","src/lib/native-delivery/embed-request.ts","src/lib/native-delivery/grant.ts","src/lib/native-delivery/metering.ts","src/lib/native-delivery/publication.ts","src/lib/native-delivery/technology-five-job-storage.ts","src/lib/native-delivery/technology-five-webhook-worker.ts"];
+ assert.deepEqual(capture.workflowHistoricalClaims.map(row=>row.path),retainedWorkflowPaths);
+ const retainedWorkflow=new Map(capture.workflowHistoricalClaims.map(row=>{assert.equal(row.ref,appRef);assert(workflow.has(row.path));immutableRecord(row,git);return[row.path,row];}));
+ for(const [path,row]of workflow)result.set(path,{path,current:row.current,historical:result.get(path)?.historical??retainedWorkflow.get(path),contextPredecessor:row.predecessor});
  return result;
 }
 export const sevenTestRef='f68c077b63b1dfabbe9ca3f21e4f195ef645ad97';

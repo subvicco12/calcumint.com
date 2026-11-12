@@ -1,6 +1,7 @@
 /** Exact two-path retained evidence bridge, only after complete current source proof. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {nonSourceRecords} from './non-source-stage2.mjs';
 import {proveNamedCurrentContext} from '../parallel-source-20261110/core.mjs';
 const bindings=[
   {
@@ -19,6 +20,11 @@ const bindings=[
   }
 ];
 export function readStage2HistoricalRuntime(path,read,git){
+ if(path==='tests/gotrue-runtime/acceptance.mjs'){
+  proveNamedCurrentContext(read,git);
+  const row=nonSourceRecords(read).get(path);assert(row?.predecessor);assert.equal(row.predecessor.ref,'5008aa4cadd77f7a9a5dc1523cace694f3bbdf47');
+  const bytes=git(['cat-file','blob',row.predecessor.blob]);assert.equal(bytes.length,row.predecessor.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),'95fae5857935bae8098fa390df33f62342f06f4bf335640b9e19e124edbf6276');return bytes;
+ }
  const row=bindings.find(value=>value.path===path);if(!row)return undefined;
  const proof=proveNamedCurrentContext(read,git).get(path);
  assert(proof,'Explicit current Stage2 source proof required');
