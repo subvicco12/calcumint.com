@@ -59,3 +59,29 @@ describe("private basic math factory delivery", () => {
     for (const [id,input] of rejected) expect(() => calculateBasicMath(id,input)).toThrow();
   });
 });
+
+// Literal boundary proofs: all inputs are normal binary64 values; the exact
+// nonzero mathematical result is smaller than binary64 can represent.
+const lostNonzero = [
+  [218,{x:1e-200}], [219,{x:1e-120}],
+  [211,{a:1e-200,b:1e200}], [212,{a:1e-200,b:1e200}],
+  [215,{numerator:1e-200,denominator:1e200}],
+] as const;
+it.each(lostNonzero)('refuses lost nonzero capture without changing engine %s', (id,input) => {
+  const contract = basicMathContracts.find(row => row.catalogId === id)!;
+  const engine = launchDefinitions.find(row => row.id === contract.engineId)!;
+  expect(engine.calculate(engine.inputSchema.parse(input),{}).result).toBe(0);
+  expect(() => calculateBasicMath(id,input)).toThrow('normal range');
+});
+it('refuses nonzero subnormal output at the capture boundary', () => {
+  for (const [id,input] of [[218,{x:1e-160}],[219,{x:1e-105}],[211,{a:1e-200,b:1e110}],[212,{a:1e-200,b:1e110}],[215,{numerator:1e-200,denominator:1e110}]] as const)
+    expect(() => calculateBasicMath(id,input)).toThrow('normal range');
+});
+it('retains mathematically zero output for every calculator-specific zero case', () => {
+  for (const [id,input] of [
+    [208,{old:80,next:80}],[209,{value:0,percent:20}],
+    [210,{value:0,percent:20}],[210,{value:80,percent:100}],
+    [211,{a:0,b:4}],[212,{a:0,b:4}],[215,{numerator:0,denominator:4}],
+    [216,{a:8,b:-8}],[218,{x:0}],[219,{x:0}],[220,{x:0}],
+  ] as const) expect(calculateBasicMath(id,input).snapshot.output.result).toBe(0);
+});
