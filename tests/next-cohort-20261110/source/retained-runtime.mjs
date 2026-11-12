@@ -1,4 +1,5 @@
 import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';
+import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -477,7 +478,7 @@ const currentContext=Object.freeze([
 ]);
 const immutableObjects=new WeakMap();
 const hash=b=>createHash('sha256').update(b).digest('hex');
-const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
+const git=completionGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}));
 export function verifyCurrentRuntimeContext(read=readFileSync,sourceGit=git){
  assert(currentContext.length>0,'Missing reviewed current runtime context');
  const head=sourceGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[a-f0-9]{40}$/);
