@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "6dce66e4787738f7a897090321bd83fe009ac961",
-    "sha256": "931242014cefee31a44b0b590657931edfad938fa8a9fc65050601f6120bbb87"
+    "blob": "d77be3f2de76210b93fe6ec1bc18b9523214457b",
+    "sha256": "c63170add6f6ec90eb1f103f5b39634cbf89080cc551311b769738fd831f4d85"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -199,8 +199,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-first-20261112/workflows-stage.test.mjs",
-    "blob": "ec2db774c784f0d23bcb7aba36b288cc2cf44d93",
-    "sha256": "08c894db94d0b85a90b7136f9691f248ec363e869a73278106aaf2288a5b5d33"
+    "blob": "fc279392883d9377fdca2410c3b9cf3a703f437d",
+    "sha256": "c08432f80337125f04ccc5192428ce8d3c40810c286c4647099ddf90dd052a86"
   },
   {
     "path": "tests/completion-first-20261112/retained-stage1-tests.mjs",
@@ -229,8 +229,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-first-20261112/retained-runtime-stage2.mjs",
-    "blob": "da40d83b18c2a416a49fc0d0fc6425da982c85f2",
-    "sha256": "8145b4b036e02de188e1660fffb033a9df72daec3a31bbab646c9ca025e88946"
+    "blob": "66eaf0bbab36cc618efce156668c48cedc8f03a6",
+    "sha256": "73f2e444ef6d80f37e36f8b993e77cab069b685a397d1607b3b821763b9ef49e"
   },
   {
     "path": "tests/full-product-batch13/workflow.test.mjs",
@@ -266,6 +266,11 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision38.json",
     "blob": "ca7440c9483c617492db58690cacc3a0047dc39e",
     "sha256": "f4ac754c0561527d74a6384248b9aeb3ed549f6f0a8f3d9a873ea1006ce9c583"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision40.json",
+    "blob": "05e99025ccaf67ff9035dc2b4bffe8dce4b296a4",
+    "sha256": "26d39ab1c4a8bdd6c641d168da33764aaeb88735b90b8a0d51608d6045b819b0"
   }
 ]);
 export function verifyParallelAuthority(read,git){
