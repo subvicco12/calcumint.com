@@ -20,17 +20,33 @@
     },
     {
       "catalogId": 323,
-      "engineId": "physics.coulomb-force",
-      "version": "private.physics-scaled.20261112.1",
+      "engineId": "private.physics-scaled.coulomb-force",
+      "version": 1,
       "canonicalUnit": null,
-      "status": "BLOCKED_CANONICAL_ADOPTION"
+      "status": "BLOCKED_CANONICAL_ADOPTION",
+      "slug": "private-physics-scaled-coulomb-force",
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "historicalEngine": {
+        "id": "physics.coulomb-force",
+        "slug": "coulomb-force-calculator",
+        "version": 1
+      },
+      "registered": false
     },
     {
       "catalogId": 324,
-      "engineId": "physics.projectile-motion",
-      "version": "private.physics-scaled.20261112.1",
+      "engineId": "private.physics-scaled.projectile-range",
+      "version": 1,
       "canonicalUnit": null,
-      "status": "BLOCKED_CANONICAL_ADOPTION"
+      "status": "BLOCKED_CANONICAL_ADOPTION",
+      "slug": "private-physics-scaled-projectile-range",
+      "privateRevision": "private.physics-scaled.20261112.1",
+      "historicalEngine": {
+        "id": "physics.projectile-motion",
+        "slug": "projectile-motion-calculator",
+        "version": 1
+      },
+      "registered": false
     },
     {
       "catalogId": 325,
@@ -78,7 +94,7 @@
     "runtime": "Node 22.23.4",
     "command": "node node_modules/vitest/vitest.mjs run src/lib/calculator-factory/cohorts/physics.test.ts src/lib/calculator-factory/experimental/physics-scaled.test.ts --maxWorkers=1",
     "files": 2,
-    "passed": 34,
+    "passed": 36,
     "independentOracle": "Literal analytical vectors and BigInt exact decimal rational reduction; no model-generated expected values"
   },
   "limitations": [
