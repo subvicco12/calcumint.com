@@ -1,0 +1,11 @@
+# Held native embed engineering successor
+
+This extends the existing native frequency delivery mechanism to exactly catalog IDs 218, 219, 220, 423, 430, 431, 432, 438 and 440 at technical version 1. The signed token purpose, HMAC protocol, one-hour lifetime, configured key quota and original frequency response remain unchanged. Issuance, iframe loading and calculation each recheck current Business owner/issuer authority, membership, key and exact publication. The iframe page requires the signed allowed origin as its referring iframe parent; the shared CSP helper constrains every ancestor. Calculation POSTs require the configured site origin.
+
+The generic eight-calculator client sends raw input fields only. Its server identity comes from the signed grant; engine results and factory packets are retained without rewriting. Frequency retains its existing component, response, entered decimal text and SI symbol headers.
+
+`embed-successor.sql` is held outside active migrations. It verifies exact predecessor function hashes and table/RLS/ACL preimages, extends tuple constraints, binds usage attribution to its grant, prevents grant/audit rewriting, and adds a row-locked publication gate around the unchanged governed quota core. No product publication adoption SQL or commercial quota is changed. `embed-reverse-disable.sql` is a held, source-bound feature disable that retains audit history. It is deliberately not destructive schema rollback after new audit rows exist.
+
+`tests/completion-native-20261112/embed.postgres.mjs` is an isolated acceptance harness. It first exercises the actual hosted reader's refusal for all nine unapproved tuples, then explicitly substitutes only the lower hosted reader for conditional quota/audit composition. That substitution is synthetic and does not approve any product. It does not establish actual browser-origin acceptance. Focused unit/component tests cover native packet equality, signed identity/version/expiry, CSP ancestry, strict publication composition and stale client responses.
+
+Verification and actual isolated origin/auth/quota acceptance remain pending until the shared resource window permits them. This document grants no completion, canonical, certification, deployment or publication status.

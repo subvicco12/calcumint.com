@@ -1,0 +1,39 @@
+import {expect,it} from 'vitest';
+import {factoryDeliveryCatalog,factoryDeliveryIdentity} from './factory-delivery-catalog';
+import {runFactoryEmbedCalculation} from './factory-embed-contract';
+import {getFactoryContract,runFactoryCalculation} from '@/lib/calculator-factory/registry';
+import {runNativeCalculation} from './contract';
+import {issueNativeGrant,readNativeGrant} from './grant';
+const secret='test-only-native-secret-000000000000000000000000';
+const base={grantId:'00000000-0000-4000-8000-000000000001',apiKeyId:'00000000-0000-4000-8000-000000000002',organizationId:'00000000-0000-4000-8000-000000000003',issuerId:'00000000-0000-4000-8000-000000000004',version:1 as const,allowedOrigin:'https://customer.example'};
+it('closes the delivery catalog to the exact nine version-one tuples',()=>{
+ expect(factoryDeliveryCatalog.map(row=>row.catalogId)).toEqual([218,219,220,423,430,431,432,438,440]);
+ for(const id of [208,424,427,433,434,322,441])expect(factoryDeliveryIdentity(id,1)).toBeUndefined();
+ for(const row of factoryDeliveryCatalog)expect(factoryDeliveryIdentity(row.catalogId,2)).toBeUndefined();
+});
+it.each(factoryDeliveryCatalog)('uses exact existing engine data and binds signed grants for $catalogId',identity=>{
+ const contract=getFactoryContract(identity.catalogId)!;
+ const input=Object.fromEntries(contract.fields.map(field=>[field.key,String(field.defaultValue??field.options?.[0]??'')]));
+ const actual=runFactoryEmbedCalculation(identity.catalogId,1,input);
+ expect(actual.output).toEqual(runFactoryCalculation(identity.catalogId,1,input).snapshot.output);
+ expect(actual).toMatchObject(identity);
+ const token=issueNativeGrant({...base,catalogId:identity.catalogId},secret,100);
+ expect(readNativeGrant(token,secret,101)).toMatchObject({...base,catalogId:identity.catalogId});
+ expect(()=>readNativeGrant(token,secret,3700)).toThrow();
+ expect(()=>readNativeGrant(token+'x',secret,101)).toThrow();
+ expect(()=>runFactoryEmbedCalculation(identity.catalogId,2,input)).toThrow();
+ expect(()=>runFactoryEmbedCalculation(identity.catalogId,1,{...input,formula:'x*100'})).toThrow();
+});
+it('retains the exact frequency response including methodology and sources',()=>{
+ const input={value:'01.000',fromUnit:'hz',toUnit:'khz'};
+ expect(runFactoryEmbedCalculation(440,1,input)).toEqual(runNativeCalculation({catalogId:440,version:1,input}));
+ try{runFactoryEmbedCalculation(440,1,{...input,value:'bad'});throw Error('Expected refusal');}catch(error){expect(error).toMatchObject({status:422});}
+ expect(()=>issueNativeGrant({...base,catalogId:424},secret,100)).toThrow();
+});
+it.each(factoryDeliveryCatalog)('constrains every signed $catalogId frame to its exact origin',async identity=>{
+ const {nativeFramePolicy}=await import('./frame-policy');
+ const token=issueNativeGrant({...base,catalogId:identity.catalogId},secret);
+ expect(nativeFramePolicy(token,secret)).toContain('frame-ancestors https://customer.example');
+ expect(nativeFramePolicy(token+'x',secret)).toContain("frame-ancestors 'none'");
+ expect(()=>issueNativeGrant({...base,catalogId:identity.catalogId,allowedOrigin:'https://customer.example/path'},secret)).toThrow();
+});
