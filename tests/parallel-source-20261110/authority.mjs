@@ -269,8 +269,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "docs/parallel-source-20261110/capture-revision40.json",
-    "blob": "8b5a3c1462f4f1fe60f690e11a43f747d9d38d36",
-    "sha256": "9b42a1cba0eaab8559d47abab56f9626eadfc9da61bcc590283f01868b2de2c6"
+    "blob": "faf946b89d56fc23aa4236efa0991fe646e4433a",
+    "sha256": "18232a1f698f1b875861ddcc238750f635f25dcf50f9006b4f3603d0c302d0f4"
   }
 ]);
 export function verifyParallelAuthority(read,git){
