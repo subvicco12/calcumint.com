@@ -1,9 +1,9 @@
 {
   "kind": "EXACT_COMPLETION_SOURCE_ADMISSION_NOT_CANONICAL_APPROVAL",
-  "recordedAt": "2026-11-12T14:15:54.614008+00:00",
+  "recordedAt": "2026-11-12T14:39:01.315928+00:00",
   "predecessorRef": "16cb2804fa3e9731a7f39a761de9a7a27ee87e67",
   "frozenSourceRef": "79bf64466663cc961fdb80365143d0c750dccc6f",
-  "sourceCaptureSHA256": "7d49ee77a3f03ba94c043807ee9f3656a8e0f56191b2cd7cbaace0f778f75037",
+  "sourceCaptureSHA256": "d6e6d63a35cbdfa096fcbc468987076608f14d2c38cbaddaf3e0d17e2cc8ad42",
   "sourcePaths": [
     "src/app/admin/calculator-factory/actions.test.ts",
     "src/app/admin/calculator-factory/actions.ts",
@@ -35,7 +35,8 @@
     "src/lib/calculator-factory/registry.ts"
   ],
   "auxiliaryPaths": [
-    "tests/calculator-factory-20261112/account-acceptance.mjs"
+    "tests/calculator-factory-20261112/account-acceptance.mjs",
+    "tests/next-cohort-20261110/source/retained-runtime.mjs"
   ],
   "currentProofCapture": "docs/parallel-source-20261110/capture-revision38.json",
   "historicalCapture37Unchanged": true,
@@ -48,31 +49,29 @@
   "historicalProofMeaning": "The mandatory live baseline16-to-frozen proof checks actual current SRC first. Only then the unchanged Stage6 primitive verifies its historical source against an explicit immutable baseline16 SRC view. Historical bytes never fill current source claims.",
   "validation": [
     {
-      "consumer": "actual current-source consumer",
-      "cases": 91,
-      "nestedCompletionCases": 4,
-      "result": "PASS",
-      "head": "35c89317",
-      "log": "/workspace/artifacts/completion-first-20261112/publication/final-current-source-consumer.log"
-    },
-    {
-      "consumer": "actual shortest-publication consumer",
-      "cases": 36,
-      "result": "PASS",
-      "head": "35c89317",
-      "log": "/workspace/artifacts/completion-first-20261112/publication/shortest-source-consumer.log"
-    },
-    {
-      "consumer": "six-candidate / first20 / calculator-sprint / authenticated-receipt consumers",
+      "consumer": "all six actual source consumers",
       "cases": [
+        91,
+        36,
         43,
         22,
         32,
         98
       ],
-      "result": "PASS_BEFORE_FINAL_EVIDENCE_EDGE_RELOCATION",
-      "head": "42fe3b72",
-      "log": "/workspace/artifacts/completion-first-20261112/publication/actual-source-consumers.log"
+      "nestedCompletionCases": 4,
+      "result": "PASS",
+      "head": "7ea8f3c7",
+      "milliseconds": 140950,
+      "log": "/workspace/artifacts/completion-first-20261112/publication/final-six-after-cache.log"
+    },
+    {
+      "consumer": "all six retained-five evidence cases",
+      "cases": 6,
+      "result": "PASS",
+      "head": "7ea8f3c7",
+      "exactApiCaseMilliseconds": 3878,
+      "unchangedApiTimeoutMilliseconds": 5000,
+      "log": "/workspace/artifacts/completion-first-20261112/publication/five-full-contract-cache.log"
     }
   ],
   "finalFullUnitRevalidation": "ROOT_OWNED_PENDING",
@@ -80,5 +79,24 @@
   "newCanonicalApprovals": 0,
   "newCertifications": 0,
   "newPublicationEligibility": 0,
-  "releaseHold": true
+  "releaseHold": true,
+  "runtimeTransportFrozenRef": "262d95b65369e913085ceb93ba821de69f7fef67",
+  "runtimeTransportMeaning": "Only the default same-cwd original raw invoke is wrapped by the existing completionGitReader. Literal historical sources/currentContext arrays are byte-identical; custom caller transports and live HEAD/status/current file verification are preserved. No immutable-commit batching protocol was added.",
+  "immutableParseCacheMeaning": "Every completion capture access still reads and hashes actual bytes. Only validated deep-frozen parsing is cached by pinned SHA; callers get fresh Maps of frozen records. No current-file result is cached.",
+  "negativeChecks": [
+    "Fresh Map and deeply frozen record mutation refusal",
+    "Actual capture re-read/hash and tamper refusal after cache warm-up",
+    "Each exact source predecessor reversion/current byte substitution",
+    "Immutable commit substitution and unreviewed current SRC refusal",
+    "Both auxiliary source predecessor/current substitution refusal",
+    "Exact runtime diff preserves every byte outside import and default transport wrapper",
+    "Runtime current-file tamper after warm default transport still rejects",
+    "Custom missing/substituted Git provenance cannot reuse warm default cache"
+  ],
+  "localPerformanceEvidence": {
+    "initialExactApiMilliseconds": 5394,
+    "afterImmutableParseCacheMilliseconds": 5149,
+    "afterAuthorizedSameCwdTransportMilliseconds": 3878,
+    "productionPerformanceEstablished": false
+  }
 }
