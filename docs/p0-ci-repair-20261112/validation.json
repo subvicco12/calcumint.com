@@ -1,0 +1,257 @@
+{
+  "finalSourceHead": "fe88a3d327fd0e3a0a3ca3299f285c7b123150a5",
+  "finalQualification": {
+    "status": "PASS",
+    "sourceHead": "fe88a3d327fd0e3a0a3ca3299f285c7b123150a5",
+    "startedAt": "2026-11-12T03:34:39.635353+00:00",
+    "runtime": "v22.23.4",
+    "checks": [
+      {
+        "name": "p0-current",
+        "command": [
+          "node",
+          "--test",
+          "tests/owner-p0/adoption/bundle.test.mjs",
+          "tests/owner-p0/adoption/source-preflight.test.mjs",
+          "tests/p0-decision-contracts/adoption.test.mjs",
+          "tests/p0-decision-contracts/bindings.test.mjs",
+          "tests/p0-decision-contracts/business-current-source.test.mjs",
+          "tests/p0-decision-contracts/caller-successor.test.mjs",
+          "tests/p0-decision-contracts/membership-model.test.mjs",
+          "tests/p0-decision-contracts/next-cohort-runtime-successor.test.mjs",
+          "tests/p0-decision-contracts/next-five-runtime-successor.test.mjs",
+          "tests/owner-p0/authorization.test.mjs",
+          "tests/owner-p0/privileges/contract.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/p0-current.log",
+        "exitCode": 0,
+        "durationSeconds": 23.9416386339999,
+        "sha256": "26cd8be90817e30a86d43c1f3a54945186e797a9c466e85bdd8b484739aacf18"
+      },
+      {
+        "name": "source67",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-source-20261110/application-successor.test.mjs",
+          "tests/parallel-source-20261110/current.test.mjs",
+          "tests/parallel-source-20261110/git-reader.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest.test.mjs",
+          "tests/parallel-source-20261110/source-object-lock.test.mjs",
+          "tests/parallel-source-20261110/retained-vitest-diagnostics.test.mjs",
+          "tests/parallel-source-20261110/historical-group.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/source67.log",
+        "exitCode": 0,
+        "durationSeconds": 36.266216002999954,
+        "sha256": "2c56ba7f9d8b8e4be92e556932d2b611fa8b1f8c83d0447765a05dba501b0472"
+      },
+      {
+        "name": "runtime-context",
+        "command": [
+          "node",
+          "--test",
+          "tests/next-cohort-20261110/source/retained-runtime.test.mjs",
+          "tests/next-cohort-20261110/source/runtime-current-anchor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/runtime-context.log",
+        "exitCode": 0,
+        "durationSeconds": 15.034675078999953,
+        "sha256": "e65cbe2e8184e1f51420ee76d209dc242ee83da203b2d2230ba4bb024ceae165"
+      },
+      {
+        "name": "finite15",
+        "command": [
+          "node",
+          "--test",
+          "tests/parallel-five-20261110/test-only-successor.test.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/finite15.log",
+        "exitCode": 0,
+        "durationSeconds": 5.0512357459997475,
+        "sha256": "bb094de9f7a08e8bde8faae57c93c2a40985bffc107b2d83db5867874f92ce7b"
+      },
+      {
+        "name": "readback38",
+        "command": [
+          "node",
+          "tests/technology-final-two-20261111/verify.mjs",
+          "/workspace/artifacts/technology-final-two-20261111/auth-Q3-d6a4d2e3"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/readback38.log",
+        "exitCode": 0,
+        "durationSeconds": 1.3781406189996233,
+        "sha256": "41541a1f05ee4d87c6ea2ae8c9a5f3a62587e3ad520cf5889251500d76acaefa"
+      },
+      {
+        "name": "genuine-adoption",
+        "command": [
+          "node",
+          "tests/owner-p0/adoption/acceptance.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/genuine-adoption.log",
+        "exitCode": 0,
+        "durationSeconds": 33.33016925400034,
+        "sha256": "aff66c3dafd1391c8ea99a79d6ea640164ff537a18492f7741d9e9ac1dc87673"
+      },
+      {
+        "name": "full-serial",
+        "command": [
+          "npm",
+          "test",
+          "--",
+          "--maxWorkers=1"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/full-serial.log",
+        "exitCode": 0,
+        "durationSeconds": 1013.1802766599999,
+        "sha256": "31b26b7b1e53170f0e83a0dd7e77ac55bd74af2ba4ce2a81ff503de92702d19a"
+      },
+      {
+        "name": "lint",
+        "command": [
+          "npm",
+          "run",
+          "lint"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/lint.log",
+        "exitCode": 0,
+        "durationSeconds": 50.87029006800003,
+        "sha256": "408cee6e2de647d0f073702cf9e8886b21955441cfc8bc01d332bfed49781cd5"
+      },
+      {
+        "name": "typecheck",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/typecheck.log",
+        "exitCode": 0,
+        "durationSeconds": 9.280818243999875,
+        "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+      },
+      {
+        "name": "launch",
+        "command": [
+          "npm",
+          "run",
+          "test:launch"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/launch.log",
+        "exitCode": 0,
+        "durationSeconds": 2.965827300000001,
+        "sha256": "5ea6f0d908e7a86e5ad10b683935ea83168783054876ef6491d8642423d554e9"
+      },
+      {
+        "name": "certification",
+        "command": [
+          "npm",
+          "run",
+          "test:certification"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/certification.log",
+        "exitCode": 0,
+        "durationSeconds": 2.795175056000062,
+        "sha256": "904efb73531bcebdc2be08006074cae5372d9b17c4906f111771b49c42e2e358"
+      },
+      {
+        "name": "webpack",
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation-final/webpack.log",
+        "exitCode": 0,
+        "durationSeconds": 41.42223865899996,
+        "sha256": "1cc518859a36aa8772d3aaf380d59ea2b4dc8aea88183249233c6e539d69f16d"
+      }
+    ],
+    "scope": "Unchanged local pinned fixtures; no production, certification or publication acceptance",
+    "finishedAt": "2026-11-12T03:55:15.181913+00:00",
+    "headAtEnd": "fe88a3d327fd0e3a0a3ca3299f285c7b123150a5"
+  },
+  "reusedUnaffected": {
+    "sourceHead": "95cfd96ea4c1f2a8ce9978d98c4171232ca4dcaf",
+    "runtimeAndFixtureByteEquivalentPaths": [
+      "src",
+      "tests/gotrue-runtime",
+      "tests/gotrue-full-schema",
+      "tests/owner-p0/calculus",
+      "tests/owner-p0/membership",
+      "tests/owner-p0/privileges"
+    ],
+    "checks": [
+      {
+        "name": "calculus-supported-domain",
+        "command": [
+          "node",
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--config",
+          "tests/owner-p0/calculus/vitest.config.mts"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation/calculus-supported-domain.log",
+        "exitCode": 0,
+        "durationSeconds": 1.811580074999938,
+        "sha256": "d4a009c659212ef02931879a5bbe35ea67819e6bbd8cb3a89340f7ff38370010"
+      },
+      {
+        "name": "calculus-browser",
+        "command": [
+          "node",
+          "tests/owner-p0/calculus/browser.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation/calculus-browser.log",
+        "exitCode": 0,
+        "durationSeconds": 3.939527680000083,
+        "sha256": "47531faa136c7a10e36be4edd56807c6b8d6b7ed26faafc7c10bb8d399c13b5e"
+      },
+      {
+        "name": "genuine-membership",
+        "command": [
+          "node",
+          "tests/owner-p0/membership/acceptance.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation/genuine-membership.log",
+        "exitCode": 0,
+        "durationSeconds": 36.10201664800002,
+        "sha256": "a8f7d79b1c7bd821284ab7c4706e3728dd8fb5f99cfcc9ba1699046bb6aacb91"
+      },
+      {
+        "name": "genuine-privileges",
+        "command": [
+          "node",
+          "tests/owner-p0/privileges/acceptance.mjs"
+        ],
+        "status": "PASS",
+        "log": "/workspace/artifacts/p0-repair-20261112/validation/genuine-privileges.log",
+        "exitCode": 0,
+        "durationSeconds": 28.431453733000126,
+        "sha256": "857f17334e6b535475c250ea709957cc3986c4fefb84da72c36b729cc27196c2"
+      }
+    ],
+    "priorWholeChain": "FAIL at genuine adoption, preserved; successful component receipts are not relabelled as a new execution"
+  },
+  "originalFailedAdoptionLogSHA256": "5270744ec237c15f83ff87040ce78d97df0f698a8d51e7ca1e768acdaa32f01f",
+  "precommitCorrectedAdoptionLogSHA256": "aff66c3dafd1391c8ea99a79d6ea640164ff537a18492f7741d9e9ac1dc87673",
+  "precommitCorrectedAdoptionExecution": "95cfd96 HEAD plus the exact dirty acceptance bytes later committed at f4fa576c; final qualification reruns it committed",
+  "hostedCI": "REQUIRED AFTER NORMAL PUSH; NOT YET RUN AT THIS COMMIT",
+  "allFivePlusAggregateRequired": true
+}
