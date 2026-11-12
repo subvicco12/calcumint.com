@@ -39,7 +39,10 @@ const producerSources={};for(const p of ['tests/calculator-factory-20261112/acco
 const bundle=path.join(artifacts,'factory-registry.mjs');
 await build({entryPoints:[path.join(sourceRoot,'src/lib/calculator-factory/registry.ts')],outfile:bundle,bundle:true,platform:'node',format:'esm',alias:{'@':path.join(sourceRoot,'src')},banner:{js:"import {createRequire} from 'node:module';const require=createRequire(import.meta.url);"},logLevel:'silent'});
 const {calculateFactory}=await import(pathToFileURL(bundle));assert.equal(typeof calculateFactory,'function');
-const sourceHashes={};for(const p of ['src/lib/calculator-factory/registry.ts','src/calculators/launch-portfolio.ts','src/calculators/conversion/catalog-batch-1.ts','src/calculators/conversion/catalog-batch-2.ts','src/calculators/conversion/catalog-batch-3.ts'])sourceHashes[p]=sha(await readFile(path.join(sourceRoot,p)));
+const restoreBundle=path.join(artifacts,'factory-business-restore.mjs');
+await build({entryPoints:[path.join(sourceRoot,'src/lib/calculator-factory/completion/business.ts')],outfile:restoreBundle,bundle:true,platform:'node',format:'esm',alias:{'@':path.join(sourceRoot,'src')},banner:{js:"import {createRequire} from 'node:module';const require=createRequire(import.meta.url);"},logLevel:'silent'});
+const {verifyFactoryStoredSnapshot}=await import(pathToFileURL(restoreBundle));
+const sourceHashes={};for(const p of ['src/lib/calculator-factory/registry.ts','src/lib/calculator-factory/completion/business.ts','src/calculators/launch-portfolio.ts','src/calculators/conversion/catalog-batch-1.ts','src/calculators/conversion/catalog-batch-2.ts','src/calculators/conversion/catalog-batch-3.ts'])sourceHashes[p]=sha(await readFile(path.join(sourceRoot,p)));
 const ok=async q=>{const r=await q;assert.equal(r.error,null,JSON.stringify(r.error));return r.data;};
 const denied=async q=>{const r=await q;assert(r.error,'Expected authenticated boundary refusal');return{code:r.error.code,message:r.error.message};};
 let db;const observations=[];
@@ -78,12 +81,14 @@ try{
     assert.equal(await ok(user.sdk.rpc('save_project_scenario_atomic',args2)),scenarioId);
     assert.equal(await ok(user.sdk.rpc('save_project_scenario_atomic',args2)),scenarioId);
     scenario=await ok(user.sdk.from('saved_scenarios').select('*').eq('id',scenarioId).single());assert.deepEqual(scenario.input_data,row.input_data);assert.deepEqual(scenario.output_data,row.output_data);
+    const restored=verifyFactoryStoredSnapshot({calculatorSlug:scenario.calculator_slug,calculatorVersion:scenario.calculator_version,input:scenario.input_data,output:scenario.output_data});
+    assert.equal(restored.catalogId,c.catalogId);assert.deepEqual(restored.snapshot,snapshot);
     await denied(foreign.sdk.rpc('save_project_scenario_atomic',args2));
     await denied(foreign.sdk.rpc('save_project_scenario_atomic',{...args2,p_request_id:randomUUID(),p_expected_owner_id:foreign.id}));
     assert.deepEqual(await ok(foreign.sdk.from('saved_scenarios').select('id').eq('id',scenarioId)),[]);
    }
    const unchanged=await ok(user.sdk.from('calculation_history').select('*').eq('id',id).single());assert.deepEqual(unchanged.output_data,snapshot.output);
-   observations.push({catalogId:c.catalogId,slug:c.slug,version:1,plan,input:snapshot.input,output:snapshot.output,historyId:id,scenarioId:scenario?scenarioId:null,realJWT:true,exactRetry:true,conflictDenied:true,foreignReadUpdateDeleteDenied:true,freeScenarioDenied:plan==='free'});
+   observations.push({catalogId:c.catalogId,slug:c.slug,version:1,plan,input:snapshot.input,output:snapshot.output,historyId:id,scenarioId:scenario?scenarioId:null,registeredRestoreVerified:!!scenario,realJWT:true,exactRetry:true,conflictDenied:true,foreignReadUpdateDeleteDenied:true,freeScenarioDenied:plan==='free'});
   }
   assert.deepEqual(parity[0],parity[1]);assert.deepEqual(parity[0],parity[2]);console.log('PASS '+c.catalogId+' genuine history/scenario/RLS and Free/Pro/Business mathematical parity');
  }
