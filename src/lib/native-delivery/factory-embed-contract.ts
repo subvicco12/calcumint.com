@@ -1,4 +1,5 @@
-import {getFactoryContract,runFactoryCalculation} from '@/lib/calculator-factory/registry';
+import {conversionCompletionContracts} from '@/lib/calculator-factory/completion/conversion-contracts';
+import {factoryResult,getFactoryContract,runFactoryCalculation} from '@/lib/calculator-factory/registry';
 import {factoryDeliveryIdentity} from './factory-delivery-catalog';
 import {NativeDeliveryError,runNativeCalculation} from './contract';
 import {calculatorRegistry} from '@/calculators/registry';
@@ -12,6 +13,7 @@ export function runFactoryEmbedCalculation(catalogId:number,version:number,input
  if(!input||typeof input!=='object'||Array.isArray(input)||Object.values(input).some(value=>typeof value!=='string'))throw new NativeDeliveryError(422,'Exact decimal text input fields required');
  try{
   const packet=runFactoryCalculation(catalogId,version,input as Record<string,string>);
-  return {...identity,input:packet.snapshot.input,output:packet.snapshot.output,packet,methodology:definition.formulas,sources:definition.sources,limitations:contract.scope,warnings:['Binary64 range and precision limits apply. Display rounding does not change the native result or recorded packet.']};
+  const unit=factoryResult(catalogId,packet.raw).primaryResult.unit,scoped=conversionCompletionContracts.find(row=>row.catalogId===catalogId);
+  return {...identity,input:packet.snapshot.input,output:packet.snapshot.output,packet,...(unit?{unit}:{}),...(scoped?{applicability:scoped.applicability,numericalPolicy:scoped.numericalPolicy,refusalPolicy:scoped.refusalPolicy}:{}),methodology:definition.formulas,sources:definition.sources,limitations:contract.scope,warnings:['Binary64 range and precision limits apply. Display rounding does not change the native result or recorded packet.']};
  }catch{throw new NativeDeliveryError(422,'Value is outside the supported range, precision or exact input contract.');}
 }

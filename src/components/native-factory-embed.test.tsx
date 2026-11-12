@@ -24,3 +24,12 @@ it('ignores an old response when controls change and shows server denials',async
  fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
  expect(await screen.findByRole('alert')).toHaveProperty('textContent','Grant revoked');
 });
+
+it.each([['MJ',430],['MW',431],['wk',432],['kN',438]])('announces the native numeric result with source-bound %s presentation',async(unit)=>{
+ vi.stubGlobal('fetch',vi.fn(async()=>new Response(JSON.stringify({output:{result:2},unit,applicability:'Source scoped meaning',numericalPolicy:'Existing binary64 precision',refusalPolicy:'Refuse unsupported codes',methodology:[],sources:[],warnings:[],limitations:'Scoped units'}))));
+ render(<NativeFactoryEmbed {...props}/>);fireEvent.click(screen.getByRole('button',{name:'Calculate'}));
+ expect(await screen.findByLabelText('Calculated value')).toHaveProperty('textContent','2 '+unit);
+ expect(screen.getByRole('status').textContent).toContain('Source scoped meaning');
+ expect(screen.getByRole('status').textContent).toContain('Existing binary64 precision');
+ expect(screen.getByRole('status').textContent).toContain('Refuse unsupported codes');
+});

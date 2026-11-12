@@ -37,3 +37,12 @@ it.each(factoryDeliveryCatalog)('constrains every signed $catalogId frame to its
  expect(nativeFramePolicy(token+'x',secret)).toContain("frame-ancestors 'none'");
  expect(()=>issueNativeGrant({...base,catalogId:identity.catalogId,allowedOrigin:'https://customer.example/path'},secret)).toThrow();
 });
+it.each([[430,'mj','MJ'],[431,'mw','MW'],[432,'week','wk'],[438,'kn','kN']] as const)('presents source-bound result units and applicability for %s', (catalogId,toUnit,symbol)=>{
+ const contract=getFactoryContract(catalogId)!;
+ const fromUnit=contract.fields.find(field=>field.key==='fromUnit')!.options![0];
+ const actual=runFactoryEmbedCalculation(catalogId,1,{value:'1',fromUnit,toUnit});
+ expect(actual).toHaveProperty('unit',symbol);
+ expect(actual).toHaveProperty('applicability',expect.any(String));
+ expect(actual).toHaveProperty('numericalPolicy',expect.stringContaining('binary64'));
+ expect(actual).toHaveProperty('refusalPolicy',expect.stringContaining('Refuse'));
+});
