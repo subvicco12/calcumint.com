@@ -54,7 +54,7 @@ try{
   for(const plan of ['free','pro','business']){
    // Fresh Free identity preserves the actual20-row quota without overriding policy.
    const user=plan==='free'?await signup(plan):paid[plan];
-   const snapshot=calculateFactory(c.catalogId,c.input);
+   const snapshot=calculateFactory(c.catalogId,Object.fromEntries(Object.entries(c.input).map(([key,value])=>[key,String(value)])));
    assert.equal(snapshot.calculatorSlug,c.slug);assert.equal(snapshot.calculatorVersion,1);assert.deepEqual(snapshot.input,c.input);assert(snapshot.output&&typeof snapshot.output==='object');
    parity.push(snapshot.output);
    const id=randomUUID(),args={p_request_id:id,p_calculator_slug:c.slug,p_calculator_version:1,p_input_data:snapshot.input,p_output_data:snapshot.output,p_expected_owner_id:user.id};
