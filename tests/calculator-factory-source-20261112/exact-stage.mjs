@@ -18,7 +18,7 @@ export function verifyExactStage({policy,captureBytes,git,read,root}){
  const head=git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,oid);
  // Current source equality is established below; no shallow-sensitive ancestry inference from HEAD.
  assert.equal(git(['diff','--name-only','-z',c.codeRef,head,'--','src']).length,0,'Unreviewed current source delta');
- assert.equal(git(['status','--porcelain','--untracked-files=all','--','src']).length,0,'Dirty or unknown current source');
+ assert.equal(git(['status','--porcelain','--untracked-files=all','--','src']).length,0,'Committed current src required; Dirty or unknown current source');
  const prior=new Set(paths(git(['ls-tree','-rz','--name-only',c.predecessorRef,'--','src']))),result=new Map();
  function record(r,ref,path){assert.equal(r.path,path);assert.equal(r.ref,ref);assert.match(r.blob,oid);assert.equal(git(['rev-parse',ref+':'+path]).toString().trim(),r.blob);const bytes=git(['cat-file','blob',r.blob]);assert.equal(bytes.length,r.bytes);assert.equal(sha(bytes),r.sha256);return bytes;}
  if(c.retainedStage){for(const r of Object.values(c.retainedStage))record(r,r.ref,r.path);const retained=JSON.parse(git(['cat-file','blob',c.retainedStage.capture.blob]));assert.equal(retained.predecessorRef,c.predecessorRef);assert(c.ancestry.includes(retained.codeRef),'Original factory code must remain in finite ancestry');assert.deepEqual(retained.rows.map(r=>r.path),policy.paths,'Original finite factory paths remain retained');for(const row of retained.rows){assert.equal(row.predecessor,null);record(row.current,retained.codeRef,row.path);}}
