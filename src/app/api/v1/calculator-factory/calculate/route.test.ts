@@ -39,3 +39,9 @@ it('maps calculator validation failures to422 after authorization and publicatio
  lane.auth.mockRejectedValueOnce(new NativeDeliveryError(503,'Authority unavailable'));
  expect((await POST(request(valid))).status).toBe(503);
 });
+
+it('refuses serialized identity and version digits that JSON.parse would erase',async()=>{
+ for(const body of ['{"catalogId":208.0000000000000000001,"version":1,"input":{"old":"80","next":"100"}}','{"catalogId":208,"version":1.00000000000000001,"input":{"old":"80","next":"100"}}'])expect((await POST(new Request('https://local',{method:'POST',body}))).status).toBe(400);
+ expect(lane.publish).not.toHaveBeenCalled();expect(lane.execute).not.toHaveBeenCalled();
+ expect((await POST(request(valid))).status).toBe(200);
+});
