@@ -1,0 +1,178 @@
+{
+  "kind": "LOCAL_FILE_COVERAGE_PASS_HOSTED_UNINTERRUPTED_QUALIFICATION_PENDING",
+  "sourceHead": "612031e10d17fe1fe514012eede56b8a64475002",
+  "applicationSource": "12c266513db4d2a216823cba910478120f3a1cbd",
+  "lint": {
+    "status": "PASS",
+    "errors": 0,
+    "existingWarnings": 42
+  },
+  "typecheck": "PASS",
+  "ordinaryWebpackBuild": {
+    "status": "PASS",
+    "conditionalPublicationFixture": false,
+    "byteMatchedSourcePins": 2037
+  },
+  "genuineFunctionalIds": [
+    218,
+    219,
+    220,
+    423,
+    430,
+    431,
+    432,
+    438,
+    440
+  ],
+  "sourceConsumers": {
+    "status": "PASS",
+    "counts": [
+      91,
+      36,
+      43,
+      22,
+      32,
+      98
+    ]
+  },
+  "retainedEvidence": {
+    "status": "PASS",
+    "cases": 6,
+    "apiActualMs": 3922,
+    "unchangedApiBudgetMs": 5000
+  },
+  "hookRepair": {
+    "originalStandaloneMs": 38318,
+    "originalLimitMs": 30000,
+    "actualRepairedSuiteMs": 18687,
+    "actualRepairedSuite": "PASS",
+    "customTransportsUnchanged": true,
+    "currentSourceStateNeverCached": true
+  },
+  "completeRegression": {
+    "status": "ALL_DISCOVERED_FILES_COVERED_PASS_AFTER_RUNTIME_RESUMPTION",
+    "sourceHead": "612031e10d17fe1fe514012eede56b8a64475002",
+    "singleFullProcess": "INTERRUPTED_BY_RUNTIME_RESTART_EXIT_UNAVAILABLE",
+    "discoveryFiles": 1050,
+    "observedInitialCompletedFiles": 1035,
+    "initialTestsPassed": 9437,
+    "initialTestsSkipped": 4,
+    "remainingProcessExit": 0,
+    "remainingFilesPassed": 15,
+    "remainingTestsPassed": 85,
+    "combinedTestsPassed": 9522,
+    "combinedTestsSkipped": 4,
+    "combinedFilesPassed": 1048,
+    "combinedFilesSkipped": 2,
+    "mandatoryHostedUninterruptedRegressionStillRequired": true,
+    "timeoutsAssertionsOrConfigChanged": false,
+    "remainingPaths": [
+      "src/app/account/drafts/page.test.tsx",
+      "src/app/admin/calculator-factory/page.test.tsx",
+      "src/app/business/error.test.tsx",
+      "src/calculators/final-framework/draft-applied-quantities.test.tsx",
+      "src/calculators/final-framework/draft-four-contracts.test.tsx",
+      "src/calculators/final-framework/draft-math-conversion.test.tsx",
+      "src/calculators/final-framework/legacy-final-presentation-shared-semantics.test.ts",
+      "src/calculators/final-framework/renderer-schedule-accessibility.test.ts",
+      "src/components/authenticated-draft-workspace.test.tsx",
+      "src/components/contract-input-form.independent.test.tsx",
+      "src/components/frequency-worked-example.test.tsx",
+      "src/components/full-six/candidate-charts.test.tsx",
+      "src/components/launch-caller-recovery.test.tsx",
+      "src/components/parallel-converters-evidence.test.tsx",
+      "src/components/publication-factory-number-control.test.tsx"
+    ],
+    "fullLogSHA256": "5038da9f9fcc6c8709baea4f89af31bf63ab0835d6d6eb3ba9a8aa519fe2f483",
+    "remainingJSONSHA256": "375286c24c82661438ac1d843ce99b49ce98ecbfd8e22802c0d42d7929e19bde",
+    "previousAttempt": {
+      "filesPassed": 1047,
+      "filesFailed": 1,
+      "filesSkipped": 2,
+      "testsPassed": 9521,
+      "skipsReported": 5,
+      "failure": "Original30000ms verifyComposition setup hook; actual test assertions did not fail"
+    }
+  },
+  "exactHeadCI": "NOT_SUBMITTED_FINAL_CANDIDATE_YET",
+  "receipts": {
+    "sourceAndRetained": {
+      "path": "hook-repair/capture44-source-and-retained.log",
+      "sha256": "d8266108a712eb9ab743322dc6f752e2b2c34a662d63c4a96e43a916fbd0d246",
+      "bytes": 1338
+    },
+    "repairedOriginalHook": {
+      "path": "hook-repair/candidate-actual-hook.log",
+      "sha256": "88806a733ebb7cc414c81aad9dfb1f7683c2fcd5bd82fcf1c544fe85d68b27e7",
+      "bytes": 312
+    },
+    "fullUnitFailedAttempt": {
+      "path": "full-unit-cap43.log",
+      "sha256": "1b70c8ea257e0ee0b9d47eab7f4ce3f255e23518f63326b35b0cb15caf9da607",
+      "bytes": 292642
+    },
+    "lint": {
+      "path": "full-lint-cap44.log",
+      "sha256": "5d1a900c387936fcf9f96333e6b788cd4637135b3bb564334e379547e289f6e3",
+      "bytes": 8149
+    },
+    "typecheck": {
+      "path": "full-typecheck-cap44.log",
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d",
+      "bytes": 45
+    },
+    "ordinaryBuild": {
+      "path": "ordinary-personal-final/build.log",
+      "sha256": "d832eeddc4cd1fe1a29f1a36f7ab315e9502c52ccbc172eec7558c5e640da1e4",
+      "bytes": 2838
+    },
+    "ordinaryAuthenticatedReceipt": {
+      "path": "ordinary-personal-final/receipt.json",
+      "sha256": "72ed98ce898710dcb62dd6f2587ad7f17bd01718e410911b849cfd63b50a160c",
+      "bytes": 621606
+    },
+    "currentSourceBridge": {
+      "path": "final-source-bridge.json",
+      "sha256": "89ca5ae833ea20014503b82d1b3da2744222ec61fd80a554b4ea387ababa0ba6",
+      "bytes": 942
+    },
+    "fullCoverageAudit": {
+      "path": "full-unit-combined-summary.json",
+      "bytes": 1795,
+      "sha256": "0d9ffaff28b219ccfd121c1664c2e2ed063d390bd2b2c31d07dabf1ce2b0ea99"
+    },
+    "runtimeInterruptedLog": {
+      "path": "full-unit-cap44.log",
+      "bytes": 291348,
+      "sha256": "5038da9f9fcc6c8709baea4f89af31bf63ab0835d6d6eb3ba9a8aa519fe2f483"
+    },
+    "remaining15": {
+      "path": "full-unit-remaining-cap44.log",
+      "bytes": 1491,
+      "sha256": "b14a8b78c2d09ba07a4f71be45c35d01f247fa05eea07bb374a37f8a2e182377"
+    },
+    "launch": {
+      "path": "final-launch.log",
+      "bytes": 565,
+      "sha256": "e081391e93aef088eb628f95b990bf52684bc005769b2ca03a316c98c06eba2f"
+    },
+    "certification": {
+      "path": "final-certification.log",
+      "bytes": 499,
+      "sha256": "5279cd01202ea172eeeae6953a258bb3172ee579be3436d3d2394a2d91ebd18e"
+    }
+  },
+  "review": "Independent code/integrity review found no blockers; competent canonical signatures remain pending.",
+  "releaseHold": true,
+  "productionWrites": false,
+  "certification": false,
+  "publicationEligible": 0,
+  "launchGuards": {
+    "status": "PASS",
+    "tests": 45
+  },
+  "certificationGuards": {
+    "status": "PASS",
+    "tests": 15
+  }
+}
