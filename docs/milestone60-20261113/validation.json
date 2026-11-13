@@ -18,23 +18,20 @@
   },
   "applicationCommit": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
   "lastWholeSuiteAttempt": {
-    "commit": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+    "commit": "49810cb675b0827fcc2d7582ffcd398ba3b46bae",
     "passed": false,
     "exitCode": 1,
-    "testsPassed": 9858,
-    "testsFailed": 2,
+    "testsPassed": 9860,
+    "testsFailed": 1,
     "testsSkipped": 4,
-    "testFilesPassed": 1059,
-    "testFilesFailed": 2,
+    "testFilesPassed": 1060,
+    "testFilesFailed": 1,
     "testFilesSkipped": 2,
-    "durationSeconds": 1348.46,
-    "failures": [
-      "receipt-source-path.test.mjs stale F042 bytes == current source assertion; independently reviewed exact historical/current successor patch pending G5 admission",
-      "sql-successor.test.ts retained exact25 predecessor compared to expanded current44 catalog; explicit retained/current successor test pending review"
-    ],
+    "durationSeconds": 1404.82,
+    "failure": "Unchanged original API source-evidence case exceeded5000ms; measured5794ms in full run and5103ms focused reproduction.",
     "log": {
-      "path": "/workspace/artifacts/milestone60-20261113/full-unit.log",
-      "sha256": "ce9fe0b7f6f8ae06f545577f6328831f9099ab44fd31a77d1beda2828513d445"
+      "path": "/workspace/artifacts/milestone60-20261113/full-unit-final.log",
+      "sha256": "fd165c408f639c65745f2ab46f98c180a1b71425ba04bfff9be5d672b0a9f377"
     }
   },
   "focusedSource": {
@@ -296,8 +293,8 @@
     "sha256": "fc1c21e148f90bf38df40d59142ea1d0e6b49c9b47c837296aface57e50bef42"
   },
   "pending": [
-    "Run installed exact source/receipt98/API focused gates",
-    "Complete second full unit, launch/certification checks and final exact-head qualification",
+    "Final integrated documentation/source SHA freeze and actual final cold/CI qualification",
+    "Mandatory unfiltered unit regression on exact-head hosted CI",
     "All five required CI jobs plus aggregate at final integrated SHA"
   ],
   "finalQualifiedCommit": null,
@@ -375,7 +372,7 @@
       "errors": 0,
       "warnings": 62,
       "log": {
-        "path": "/workspace/artifacts/milestone60-20261113/lint-final.log",
+        "path": "/workspace/artifacts/milestone60-20261113/lint-prefetch-final.log",
         "sha256": "1f33744a685abe765e6bb534445d36c72825535d33e221b7793a620ef5cb4614"
       }
     },
@@ -386,7 +383,7 @@
         "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
       }
     },
-    "scope": "Completed local build/static checks; source/receipt98/API reruns, second full unit and final exact-head CI remain pending."
+    "scope": "Local webpack/typecheck passed; latest lint0errors62warnings and launch/certification60 tests pass. Focused source13/API6/operations7 pass. Final unfiltered qualification remains mandatory exact-head hosted CI."
   },
   "postAdmissionFocused": {
     "sourceCommit": "b5d9c4a53c02ae68e4eaebf59fdc6b20adbf22e1",
@@ -419,5 +416,142 @@
     },
     "fullUnfilteredRerun": "PENDING",
     "hostedExactHeadCI": "PENDING"
+  },
+  "retainedWholeSuiteAttempts": [
+    {
+      "commit": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+      "passed": false,
+      "exitCode": 1,
+      "testsPassed": 9858,
+      "testsFailed": 2,
+      "testsSkipped": 4,
+      "testFilesPassed": 1059,
+      "testFilesFailed": 2,
+      "testFilesSkipped": 2,
+      "durationSeconds": 1348.46,
+      "failures": [
+        "receipt-source-path.test.mjs stale F042 bytes == current source assertion; independently reviewed exact historical/current successor patch pending G5 admission",
+        "sql-successor.test.ts retained exact25 predecessor compared to expanded current44 catalog; explicit retained/current successor test pending review"
+      ],
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/full-unit.log",
+        "sha256": "ce9fe0b7f6f8ae06f545577f6328831f9099ab44fd31a77d1beda2828513d445"
+      }
+    },
+    {
+      "commit": "49810cb675b0827fcc2d7582ffcd398ba3b46bae",
+      "passed": false,
+      "exitCode": 1,
+      "testsPassed": 9860,
+      "testsFailed": 1,
+      "testsSkipped": 4,
+      "testFilesPassed": 1060,
+      "testFilesFailed": 1,
+      "testFilesSkipped": 2,
+      "durationSeconds": 1404.82,
+      "failure": "Unchanged original API source-evidence case exceeded5000ms; measured5794ms in full run and5103ms focused reproduction.",
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/full-unit-final.log",
+        "sha256": "fd165c408f639c65745f2ab46f98c180a1b71425ba04bfff9be5d672b0a9f377"
+      }
+    }
+  ],
+  "immutableHintSuccessor": {
+    "G6": "f35d489f32f72b465fdf3f548e918bc89a9a2350",
+    "reviewedHintEvidenceSHA256": "a4de8bf52bedb48a88ca42d556892e6b60c9efcfa010c84bd5586de1f87cf0ad",
+    "trackedHintSHA256": "a954aa0522f24041919d1589942a6ef5c71054765e0a594a56d1adc45978b99f",
+    "capture66SHA256": "d7ef794bebb51be6d27cd17432db51ee13fd73d19c47ab9f6e53740de06a4a4b",
+    "reviewedNewAuthorityRecords": 79,
+    "legacyPathHints": 221,
+    "coldBlobHints": 39,
+    "mutableChecksOrDeadlinesChanged": false,
+    "performanceBenefitVerified": true,
+    "actualPostAdmissionAPIPending": false,
+    "admittedSelfPinCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "authorityCommit": "36434788baf38632ca6e04d9b8867dc92e7ef1b8",
+    "qualificationScope": "One original unmodified isolated API-file run; no full-suite or production SLA conclusion."
+  },
+  "immutablePrefetchObservedResult": {
+    "receipt": "/workspace/artifacts/milestone60-20261113/source/pure-prefetch-original-api-comparison.json",
+    "sha256": "289fcfd49045db1b40eb8af4d9810822854d3e88b7ba2c132c658997798b4c12",
+    "qualifiedSourceHead": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "passed": true,
+    "testsPassed": 6,
+    "testsFailed": 0,
+    "APICaseMilliseconds": 4128,
+    "unchangedAPIDeadlineMilliseconds": 5000,
+    "marginMilliseconds": 872,
+    "observedReductionMilliseconds": 975,
+    "scope": "One original unmodified isolated API-file run; no full-suite or production SLA conclusion.",
+    "proofLogicOrMutableTargetReadCacheChanged": false,
+    "timeoutOrAssertionsChanged": false
+  },
+  "activeSourceAdmission": {
+    "APP2": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+    "G6": "f35d489f32f72b465fdf3f548e918bc89a9a2350",
+    "authorityCommit": "36434788baf38632ca6e04d9b8867dc92e7ef1b8",
+    "concreteSelfPinCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "capture66SHA256": "d7ef794bebb51be6d27cd17432db51ee13fd73d19c47ab9f6e53740de06a4a4b",
+    "authority79SHA256": "6d7592f29200b26a498c333b0876452fe9a305660d9caf245b72243ac9d232e2",
+    "authority79GitBlob": "b17ad92955b8f15479bc5a6c0c80aef10f26c623",
+    "newAuthorityRecords": 79,
+    "retainedAuthorityRecords": [
+      75,
+      66,
+      148
+    ],
+    "sourcePaths": 22,
+    "safeAddedBootstrapRefSet": 9,
+    "installed": true,
+    "immutablePrefetchOnly": true,
+    "currentTargetProofsAndDeadlinesUnchanged": true
+  },
+  "localFocusedQualification": {
+    "commit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+    "passed": true,
+    "outerCases": 13,
+    "outerCasesFailed": 0,
+    "outerCasesSkipped": 0,
+    "durationSeconds": 253.85,
+    "coverage": [
+      "Retained source115 and consumer/nomination/tamper/refusal bridge",
+      "Authenticated receipt98 with original historical claims and exact reviewed successors",
+      "Original mandatory22 source/cold cases plus2 additive literal-preservation cases",
+      "Exact retained25 and current44 held SQL test5"
+    ],
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/source/final-prefetch-all-source.log",
+      "sha256": "df6734b4e52cbd1b5bd70849a21b51cbecd4c79652e32951742f89d92790bfd4"
+    }
+  },
+  "localFocusedQualifiedCommit": "4fd05e0b4b9c005cef1704cef888133580f8c2cf",
+  "finalUnfilteredQualification": {
+    "status": "PENDING_MANDATORY_EXACT_HEAD_HOSTED_CI",
+    "localFullSuitePassClaimed": false,
+    "previousFailedUnfilteredAttemptsRetained": true,
+    "required": "Run unfiltered unit regression in mandatory hosted CI at the final integrated SHA; require all five jobs and aggregate success before promoting20 conditional."
+  },
+  "operationsReferencePreflight": {
+    "passed": true,
+    "cases": 7,
+    "failed": 0,
+    "skipped": 0,
+    "durationMilliseconds": 324.285186,
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/operations-final.log",
+      "sha256": "5f5413389e4a89027b4c9aba23a4470c858eb1b1e4bddc19876a7ad609c6b5fd"
+    },
+    "productionAuthorityGranted": false
+  },
+  "launchAndCertificationSoftwareTests": {
+    "passed": true,
+    "cases": 60,
+    "failed": 0,
+    "durationSeconds": 4.98,
+    "log": {
+      "path": "/workspace/artifacts/milestone60-20261113/launch-certification-final.log",
+      "sha256": "d9dbf1519f274a41bdadd8edd75b118292f5559378eb6c77be1668c9a7db2c71"
+    },
+    "canonicalCertificationGranted": false
   }
 }
