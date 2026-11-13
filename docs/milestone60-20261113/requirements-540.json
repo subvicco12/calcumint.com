@@ -8055,9 +8055,30 @@
   },
   "sourceQualifiedIntegration": null,
   "localQualification": {
-    "testsPassed": 9701,
-    "existingSkipped": 4,
-    "sourceColdProof": "PASS",
+    "status": "NOT_QUALIFIED_CURRENT_WHOLE_SUITE_FAILED",
+    "historicalBaseline": {
+      "testsPassed": 9701,
+      "existingSkipped": 4,
+      "sourceColdProof": "PASS",
+      "scope": "Inherited 9701-pass baseline summary only; not current clean-target regression or source qualification."
+    },
+    "currentWholeSuiteAttempt": {
+      "head": "f00acbfdb882688eb1d0c22bc68305eb4984ac41",
+      "passed": false,
+      "testsPassed": 9858,
+      "testsFailed": 2,
+      "testsSkipped": 4,
+      "testFilesPassed": 1059,
+      "testFilesFailed": 2,
+      "testFilesSkipped": 2,
+      "exitCode": 1,
+      "log": {
+        "path": "/workspace/artifacts/milestone60-20261113/full-unit.log",
+        "sha256": "ce9fe0b7f6f8ae06f545577f6328831f9099ab44fd31a77d1beda2828513d445"
+      },
+      "scope": "Executed whole-suite failure retained. Subsequent regression-test-only repairs require their own verification; no final regression success inferred."
+    },
+    "sourceColdProof": "FINAL_CURRENT_SOURCE_QUALIFICATION_NOT_ESTABLISHED_HERE",
     "confirmedIncrement": 0,
     "exactHeadCI": "PENDING"
   },
@@ -8067,7 +8088,8 @@
     "path": "docs/completion-wave-20261113/requirements-540.json",
     "sha256": "bae35d2a27f377ecc64ac68a52758c23867ea843cb5971842023dfcfea3084d7",
     "confirmedScopedEngineering": 29,
-    "conditionalScopedEngineering": 12
+    "conditionalScopedEngineering": 12,
+    "scope": "Historical prequalification preparation only;29confirmed/12conditional are not the current41confirmed/20conditional projection."
   },
   "newConfirmedAfterExactCI": 0,
   "confirmedScopedIds": [
