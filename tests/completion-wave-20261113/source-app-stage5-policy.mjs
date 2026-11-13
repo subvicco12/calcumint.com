@@ -1,11 +1,13 @@
-/** Independently reviewed exact APP8dc source successor; no engineering or publication approval. */
-export const appStage5CapturePath="docs/completion-wave-20261113/source-app-stage5.json";
+/** Independently reviewed exact APP8cbf revision2; prior8dc attempt remains unqualified. */
+export const appStage5CapturePath="docs/completion-wave-20261113/source-app-stage5-revision2.json";
 export const appStage5Policy=Object.freeze({
-  "captureSHA256": "5ed5112f1d046ed8df77d57434353b215584f133ec3142b58bd09f3f94a01799",
+  "captureSHA256": "07f59d591a5ed9a1de1b4bdc8483a0d4f2074552be5583055326da9ed5b6b397",
   "predecessorRef": "0c74b8135cca8892548a90eb497c46bdf022b228",
-  "codeRef": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+  "codeRef": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
   "paths": [
     "src/components/calculator-factory-portal.tsx",
+    "src/components/calculator-factory-shared-workspace.test.tsx",
+    "src/components/calculator-factory-shared-workspace.tsx",
     "src/components/completion-wave-analysis.test.tsx",
     "src/components/completion-wave-analysis.tsx",
     "src/lib/business/factory-nine-sharing.test.ts",
@@ -24,6 +26,7 @@ export const appStage5Policy=Object.freeze({
     "src/lib/native-delivery/factory-embed-contract.test.ts"
   ],
   "ancestry": [
+    "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
     "8dc215f20042f097bc198cc92f9473f1c30fc157",
     "150a45c6959a40cef0124b455fb323e61b67468a",
     "8c6b88934f3c3f7c6d47450e8218ef62916666cb",

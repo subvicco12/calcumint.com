@@ -3549,7 +3549,7 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-factory-portal.tsx",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "f04d256820c1b88ae5faf9fab53d8f9462eb8695",
         "sha256": "1f3671f3991157903f5e35a30026878fb8e48d3afe157b8451757a5b98c610e8"
       },
@@ -3711,15 +3711,15 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-factory-shared-workspace.test.tsx",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "9aa3c8330586568a85b68866352900dabaa726bb",
-        "sha256": "a1642d238c942f2c11067269a3700579682f9a9cbfa27a63fa99059e71865592"
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+        "blob": "e4eb135ddb3bb26f8d6f80eb2f60b658e483b88b",
+        "sha256": "ff66e40a5151b7f838ee06449755630b67f898a1ae855e60f737e2aa1a4a27b7"
       },
       {
         "path": "src/components/calculator-factory-shared-workspace.tsx",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "4ade1385c31a1e2d5c461c10835636d72228a31d",
-        "sha256": "66ed564414432c435b94006dff6112096c4a28dc7a9fc7c76ffcaa6245f132aa"
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+        "blob": "bd2c7aef011080fc231993594b22e46c1e770a81",
+        "sha256": "bee4c1908f37627870c525f06cbc87cccbd7f126404ecd699a54f6c1bfbe705d"
       },
       {
         "path": "src/components/native-embed-grant-form.tsx",
@@ -3759,7 +3759,7 @@ const bindings=[
       },
       {
         "path": "src/lib/business/factory-nine-sharing.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "ffb519e2f3072b66990f48e840865e3671f713c5",
         "sha256": "caac3118b79344fde38e43270e49df6bd9d9b8aa5d0ea02cf1eb2d28da9c34cb"
       },
@@ -3807,7 +3807,7 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-automation-contract.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "7954395236a6c1bd44e7e1d9cfe8461f5d61e471",
         "sha256": "74e105053da510642d0a8147d636e61cd8ded642ebced32ba2a154a890313617"
       },
@@ -3831,7 +3831,7 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-automation-sql.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "a5ec933a23400e8837e88c84c2005de31b22e434",
         "sha256": "12c4eea13dd813bd1868a1ef90ba5bc04ea4b637bd404da9475b6c059224fe78"
       },
@@ -3849,13 +3849,13 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "b981d7133e15c2b8291619c187e430e8131d871b",
         "sha256": "53875801eabe03375245190b2bdd4cfe8dca27283c5a65af8899b5f93f0c45d7"
       },
       {
         "path": "src/lib/native-delivery/factory-embed-contract.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "8c69d0a989f9257e867c6d5b621c258163559564",
         "sha256": "a8923777484a6ac3f16c18f0fa3a6ea285aa0cd1e567db2eb23da6a3c122fbb9"
       },
@@ -3951,67 +3951,67 @@ const bindings=[
       },
       {
         "path": "src/components/completion-wave-analysis.test.tsx",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "e5c6ea3c25f4f4f8be1e633589824a667e5a0a7e",
         "sha256": "d77994c3197e3f439440dd22d891f048eb8c28c90d242eb3b155e5d4f16c8b36"
       },
       {
         "path": "src/components/completion-wave-analysis.tsx",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "62b1ce93cf1b24cdda22720fe345fdd8e0ec0cd3",
         "sha256": "467ad4a17356b35f92255993284d04696861ff8c6c08f4f4fa6ad1f74ae15a5c"
       },
       {
         "path": "src/lib/completion-wave-20261113/business-cases.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "365880cc1fb83c70583bae8093ea552b3c097ab0",
         "sha256": "3af216f2019d8ef2879ddac13cc7b5036f4213c9c97d7b920c2811ae5ade5698"
       },
       {
         "path": "src/lib/completion-wave-20261113/business-cases.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "4844eb02a2ab214fc011c5c5f28529a0b89d36ce",
         "sha256": "f207d4517b4d79222fd8dde15f51fa5b77526a216707cf12cae9a32c823b4dd4"
       },
       {
         "path": "src/lib/completion-wave-20261113/conversion-workflows.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "17a451559ed0940b18807487f469876974177b77",
         "sha256": "ddc998f3f8ce6bb95f57b465cf663bf8861a9c6aff00c4c0c322109051e159e5"
       },
       {
         "path": "src/lib/completion-wave-20261113/engine-evidence.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "948c1f36007e213c1dd0d1c402897a24f4f39038",
         "sha256": "74fb11e67c4c08d81364d271090a12a6a3f9e1e8104d07ea9302cd80c41fabbf"
       },
       {
         "path": "src/lib/completion-wave-20261113/math-analysis.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "cb439f62d0e1529e717e353142eab6e4815a086d",
         "sha256": "d65ec76fe393ffdbb3c5aabf8084e03c7763218878b25463d6730eaf47a44ab0"
       },
       {
         "path": "src/lib/completion-wave-20261113/native-wave.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "a1d25cf972c6bc0e5397a71aa0eebd50260a4fb7",
         "sha256": "40397748a1cd9ce9b318582bcab276c38ef61dbf4ef8aa0ebe0609ea2466f5bd"
       },
       {
         "path": "src/lib/completion-wave-20261113/physics.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "98bf1a2dfa24058c1cd9c5a0b607335e426f938c",
         "sha256": "d675805de50a163d14a2ac0809edb0b9ad1ab4d1806b0f1f6fb71cbfa3d8aefa"
       },
       {
         "path": "src/lib/completion-wave-20261113/retained-nine-tuples.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "e59960ed20f50da2d4f39db00324763fd8631cd7",
         "sha256": "e84284138514b4267953fed4eb642db73323058d4329c9762a1b3e326bd18b78"
       },
       {
         "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
-        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "5a6c1698541635ae5f06f4c487f98872bc278c90",
         "sha256": "15f479cacb572a9b625f5522fb8961cd198dc5945f5f88298141651ff709869f"
       }
