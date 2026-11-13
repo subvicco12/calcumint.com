@@ -10,7 +10,7 @@ import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/
 import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'e472f80d66f54daf24d93e491fee650fe2f1964c',sha256:'77b23d94df15c91ea45499c69e32c2333ab17a074f19a2837827d120f07d998c'};
+const expectedAuthority={blob:'c2b5df7c2c06f13fbb62b7e61b61dd5df8c8d557',sha256:'cac1eed35a22b764bb3a665324392681689a8a0786618c6c82fdc89bba263408'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
@@ -76,7 +76,7 @@ for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests
 test('mandatory source guard regressions exercise exact source and immutable availability without skips',()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
  for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',6]]){
-  const tap=execFileSync(process.execPath,['tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});
+  let tap;try{tap=execFileSync(process.execPath,['tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});}catch(error){throw new Error('Mandatory source guard child failed: '+file+'\nstdout:\n'+(error.stdout??'')+'\nstderr:\n'+(error.stderr??''),{cause:error});}
   for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
  }
 });
