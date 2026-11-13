@@ -45,6 +45,6 @@ export function verifyBalancedWorkflow({read=readFileSync,git=gitDefault,root=re
  // Higher SRC stages intentionally project symbolic HEAD. Resolve actual HEAD
  // through the owned repository, then retain the supplied reader for explicit proofs.
  const actualHead=owned(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(actualHead,/^[a-f0-9]{40}$/);assert.equal(git(['rev-parse',actualHead+':'+c.current.path]).toString().trim(),c.current.blob,'Actual workflow HEAD differs');
- const target=resolve(root,c.current.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink());assert.equal(realpathSync(target),target);assert(read(c.current.path).equals(after),'Current workflow bytes differ');
+ const target=resolve(root,c.current.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink());assert.equal(realpathSync(target),target);assert(read(c.current.path).equals(after),'Current NS source bytes differ: .github/workflows/ci.yml (current workflow bytes differ)');
  assert(Buffer.from(historicalWorkflowBeforeBalance(after.toString(),read)).equals(before));return {current:c.current,retained:c.oldNS,actualHead};
 }
