@@ -5,13 +5,13 @@ import {spawn} from 'node:child_process';
 import {mkdtemp,cp,symlink,rm,readFile,writeFile} from 'node:fs/promises';
 import path from 'node:path';import os from 'node:os';import net from 'node:net';
 /** Disposable lower-reader fixtures; production gate, composition and CSP stay byte-identical. */
-export async function startProductionRuntime({root,auth,db,artifacts,conditionalPublicationFixture=true}){
+export async function startProductionRuntime({root,auth,db,artifacts,conditionalPublicationFixture=true,fixtureIds:requestedFixtureIds}){
  const dir=await mkdtemp(path.join(os.tmpdir(),'completion-nine-production-'));
  for(const entry of ['src','data','public','package.json','package-lock.json','tsconfig.json','next-env.d.ts','next.config.ts','postcss.config.mjs'])try{await cp(path.join(root,entry),path.join(dir,entry),{recursive:true})}catch(e){if(e.code!=='ENOENT')throw e}
  for(const entry of ['node_modules','docs','tests','scripts'])await symlink(path.join(root,entry),path.join(dir,entry));
  // This is a synthetic repository reader, never a certification record change.
  const registryPath=path.join(dir,'src/calculators/registry.ts'),registry=await readFile(registryPath,'utf8');
- const fixtureIds=['launch-square-calculator','launch-cube-calculator','launch-square-root-calculator','conversion.length','conversion.energy','conversion.power','conversion.time','conversion.force','conversion.frequency'];
+ const fixtureIds=requestedFixtureIds??['launch-square-calculator','launch-cube-calculator','launch-square-root-calculator','conversion.length','conversion.energy','conversion.power','conversion.time','conversion.force','conversion.frequency'];
  const reader='const fixtureRead=(d:RegistryCalculator|undefined):RegistryCalculator|undefined=>d&&'+JSON.stringify(fixtureIds)+'.includes(d.id)?{...d,reviewStatus:"certified"}:d;\n';
  if(conditionalPublicationFixture){
  const fixtureRegistry=registry.replace('export const calculatorRegistry=',reader+'export const calculatorRegistry=').replace('=>definitions,getBySlug:', '=>definitions.map(d=>fixtureRead(d)!),getBySlug:').replace('=>bySlug.get(slug)', '=>fixtureRead(bySlug.get(slug))').replace('=>byId.get(id)', '=>fixtureRead(byId.get(id))');

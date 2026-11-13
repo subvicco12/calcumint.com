@@ -11,6 +11,7 @@ export async function runBusinessWave(context,{cases,runJourneys}){
  const {report,batch,api,issue}=context;
  report.waveBatch??=[];
  for(const row of cases){
+  if(report.waveBatch.some(item=>item.catalogId===row.id))continue;
   const requestId=randomUUID(),submitted=await batch('POST',requestId,{catalogId:row.id,version:row.version,rows:[row.input,{...row.input,...row.edit}]});
   assert.equal(submitted.status,200,JSON.stringify(submitted));assert.equal(submitted.body.rows.length,2);assert(submitted.body.rows.every(row=>row.ok===true),JSON.stringify(submitted));
   assert.deepEqual(submitted.body.rows[0].result.packet.raw,row.input);
