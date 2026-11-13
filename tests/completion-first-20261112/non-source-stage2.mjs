@@ -7,6 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {completionGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import {aggregateVerificationContract,requiredVerificationJobs} from '../ci-gate-recovery/verification-jobs-contract.mjs';
 import {nonSourcePolicy,nonSourceCapturePath} from './non-source-policy.mjs';
+import {ensureNonSourceObjects} from '../parallel-source-20261110/bootstrap.mjs';
 const expectedPaths=['.github/workflows/ci.yml','tests/gotrue-runtime/acceptance.mjs','tests/gotrue-runtime/login-diagnostics.mjs','tests/gotrue-runtime/login-diagnostics.test.mjs'];
 const sha=b=>createHash('sha256').update(b).digest('hex'),cache=new Map();
 const gitDefault=completionGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}));
@@ -15,6 +16,7 @@ function captureFor(read){const bytes=read(nonSourceCapturePath);assert.equal(sh
 export function nonSourceRecords(read){return new Map(captureFor(read).rows.map(row=>[row.path,row]));}
 export function verifyNonSourceStage({read=readFileSync,git=gitDefault,root=process.cwd()}={}){
  const capture=captureFor(read);assert.equal(capture.predecessorRef,'5008aa4cadd77f7a9a5dc1523cace694f3bbdf47');assert.notEqual(capture.predecessorRef,capture.codeRef);
+ ensureNonSourceObjects(git);
  assert(capture.ancestry.length>=2&&capture.ancestry.length<=64);assert.equal(capture.ancestry[0],capture.codeRef);assert.equal(capture.ancestry.at(-1),capture.predecessorRef);assert.equal(new Set(capture.ancestry).size,capture.ancestry.length);
  for(let i=0;i<capture.ancestry.length;i++){const ref=capture.ancestry[i];assert.match(ref,/^[0-9a-f]{40}$/);assert.equal(git(['rev-parse','--verify',ref+'^{commit}']).toString().trim(),ref);const raw=git(['cat-file','commit',ref]);assert.equal(createHash('sha1').update(Buffer.from(`commit ${raw.length}\0`)).update(raw).digest('hex'),ref,'NS commit content address differs');if(i<capture.ancestry.length-1)assert(raw.toString().split('\n\n',1)[0].split('\n').includes('parent '+capture.ancestry[i+1]),'NS parent chain differs');}
  assert.deepEqual(git(['diff','--name-only','-z',capture.predecessorRef,capture.codeRef]).toString().split('\0').filter(Boolean),expectedPaths,'Only four exact observational NS files may change');

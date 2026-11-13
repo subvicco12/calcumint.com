@@ -13,6 +13,25 @@ const root=fileURLToPath(new URL('../../',import.meta.url));
 const allowed=new Set(['https://github.com/subvicco12/calcumint.com','https://github.com/subvicco12/calcumint.com.git']);
 const invoke=args=>execFileSync('git',['-c','protocol.file.allow=never','-c','protocol.ext.allow=never',...args],{cwd:root,env:{...process.env,GIT_TERMINAL_PROMPT:'0'},stdio:['ignore','pipe','pipe'],timeout:60000,maxBuffer:4*1024*1024});
 let ready=false;
+/** Standalone retained workflow readers run before the larger parallel bootstrap.
+ * Retrieve only the two independently pinned NS commits, never a caller-nominated ref.
+ * Availability does not replace the caller's complete content/ancestry/source proof.
+ */
+export function ensureNonSourceObjects(git=invoke){
+ const refs=['345c6cd6ed42aff39635d5e92d4adb48989b78ac','5008aa4cadd77f7a9a5dc1523cace694f3bbdf47'];
+ assert.deepEqual(nonSourcePolicy.ancestry,refs,'Exact independently governed NS ancestry required');
+ const common=resolve(root,invoke(['rev-parse','--git-common-dir']).toString().trim());
+ return withSourceObjectLock(common,()=>{
+  const urls=git(['remote','get-url','--all','origin']).toString().trim().split('\n');
+  assert(urls.length===1&&allowed.has(urls[0]),'Exact HTTPS CalcuMint repository origin required');
+  for(const ref of refs){
+   const present=()=>{let found;try{found=git(['rev-parse','--verify',ref+'^{commit}']).toString().trim();}catch{return false;}assert.equal(found,ref,'NS source commit was substituted');return true;};
+   if(!present())git(['fetch','--no-tags','--depth=1','origin',ref]);
+   assert(present(),'Exact NS source unavailable after one bounded fetch');
+  }
+  return true;
+ });
+}
 export function ensureParallelSources(capture,git=invoke,options={}){
  assert.equal(capture.baselineRef,'a7bab5b5534d51cea25ba5ffe4aa9b3630176909');assert.equal(capture.appRef,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.match(capture.codeRef,/^[0-9a-f]{40}$/);
  assert.equal(capture.guardSources.length,4);assert.equal(new Set(capture.guardSources.map(r=>r.ref)).size,1);
