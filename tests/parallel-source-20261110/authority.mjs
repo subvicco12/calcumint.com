@@ -1,6 +1,147 @@
 /** Filled only after independent review of an actual committed candidate. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+// Independently reviewed immutable cold prerequisites; populated after freezing pair code.
+export const additionalBootstrapPairProducer='ec8fdbe0ab3ef1e8c4484c0456b12497423a076c';
+export const additionalBootstrapRefs=Object.freeze([
+  "0180f2f3c70e16f2a26972a74b32d672c468e2ef",
+  "0213788bec5fddf89e72d5c4abe2a10f799f5c50",
+  "022a22bd84687c0197e4c362b33fea4da4f4876f",
+  "02d1a7eac0d7853197a4410520f548f0ce8b335f",
+  "07868e7a9a062ba796d0fbabfbe61918840a90b5",
+  "07cea5ec95b83134f71245100a1d04ef7db862cf",
+  "0940648d05dce0d53788aac7f66e852936cb0bd2",
+  "0b0e9c25c888463d2bbe5937eb1059cf10cdf7b8",
+  "0b40146584ebb8ac99cb1d0c65ff6e0442c37a4a",
+  "0cc135444d449a8e251ea23bbf7ce199743b0127",
+  "0e809980b294368584e1aa6340c3155c98440851",
+  "0e86e1cfbda14afcef6945c80e6eef3292ea4289",
+  "13d5ea4adcee1814ba9973c3525a05ac3d809744",
+  "16cb2804fa3e9731a7f39a761de9a7a27ee87e67",
+  "17982a51eb164314bd01c22aa1c2768aced52bd9",
+  "18fc0bdc24c81b36588c708eac284bc991379b53",
+  "1c48fe0852f35a45ce4b6fa1a2f2c05983d1fda2",
+  "1d228dd49d54ff275c6bbbf58a625407abc0b948",
+  "1ec2b50f5beb321e4577fe1fb7f20325d62901fd",
+  "224b9f6684d7e27a923c69d140ddc0104f1e58e7",
+  "257546f29b7915b10b6dcc7b6b0d3195f55db73d",
+  "25ceef56c09b365969f014f9ec9d713f2faf1e74",
+  "262d95b65369e913085ceb93ba821de69f7fef67",
+  "26546039ff0501b9fe5ba82f939398d667349054",
+  "29dd0aaee461e6ac1510cce6e92917545b3852d3",
+  "2aaa0a6320e41b33868c362e33f22795435a8fc8",
+  "2b835b7758db537a5710b4b29a53253e28443d69",
+  "2d96ff8775586ad0ae6683b4e71f06b16401a70e",
+  "31734690ed2121f381ed7f3186ca727b6185ae06",
+  "3267e2ae2ca2e23ab939fcb8f4287c22cc86c1ff",
+  "32f6c2a11efd9daf3207def406b1f2f8452c92d7",
+  "346c314af8ae4593eb83ccffa6cbd06353617790",
+  "365991f460d43e3725959bb58e89e20bcb8ae900",
+  "41d23a8128e3eaf80c311cc39e7c9ff3feb7d155",
+  "433233ef9bce02579199517fa11a185daa3b0276",
+  "4637daac2dc9ad60b4be93fe39c0373e0899b289",
+  "469e856824c4f752be1024b96519a0571a1a7632",
+  "46e1c764d121a964f5d840982829460bf4e45bd6",
+  "471fcde43fb64be784220e9e4a3e5cc92f80b04f",
+  "48cea0dd5a18a7b814dfe5d62ad0a671e6d49b95",
+  "5008aa4cadd77f7a9a5dc1523cace694f3bbdf47",
+  "50ac069ef8be504db29658d729339b4f3f1cf39b",
+  "50f2d0776c710e879981ee795416d0fa4e72c3b8",
+  "5160fa5eb01527a446dbcc666a71bdc354f51ff8",
+  "5416f8b4d169bf8579b3e502c1d31b0191735803",
+  "5692dd074713e75236ed7595460abad035acc388",
+  "5dc5f4518be37225cac49dd82da3874e86e719f8",
+  "5e4dbdb88957bffb9676362b4c69f4621553f62f",
+  "5f91c9f3837cef79edfa96b562e489b3c4d7db14",
+  "61bcbae72341a2f4979d9a1abee2cdf154554a19",
+  "64fbafa674bc3a41017abe60ce95e50e42fbbaa4",
+  "681c8b5a6138268649a9ae0aee21300601ac71d4",
+  "691d2f82218d329881512f4128a413021ef7bf06",
+  "69e6dfc33df698a55166d88a5c2409acca7994be",
+  "6a88426160fdd4341b26dd1784097581da2a5158",
+  "6afbe0325dfefedb869d17cf9bba0a19bfb77b23",
+  "6d049eed9a059c14713b56dc05fa9f1902590fa7",
+  "6e41a56f5da0750f17620afec10e78c3f171cdc9",
+  "6fad73b53a86ea3581763b7b4afb154089e1aa08",
+  "700da412ecb784b3b5cdc028af3a5a5f76d9bad7",
+  "7125bf30922a2ad1c6f38ccf00b333e41ef437de",
+  "723cb62594d17a2d055b3237a528ac504176c57e",
+  "7249c290180cccabde898e02e2234fe5ec7064d4",
+  "744a465bbd23b74d8401793ab2dff6cdff3cde1c",
+  "77daa61b6e0c7de717416bd3a8a49315f7919eb9",
+  "79b090f73d696c592663726b0c26b3f6596ec52a",
+  "79eb54a70bd7ec2e98bf058501d95f039e59966c",
+  "8109cb74c214ef0592f6cec259f601f208e9dafe",
+  "8365022206cb78c81ff513784e541924e27a34df",
+  "83d2e209e4e27af5b209a506065195fab9b4ea03",
+  "859d349a0d35d22e5ea69739cd7a9b3e2a49753e",
+  "86337ec8219325e59f7ec16db8861459119ac4eb",
+  "89aa138eec173fef8284bcc6575eca8edfd4a729",
+  "89dc87cbb786982bc45239af0b48e12accd4a33e",
+  "8ba5c83d683bd2eba743053fd347802a7ccbd980",
+  "8ca2fcee34ab5947f814b953d97a5866a7bcb03f",
+  "8d8c6b8de74387dcec483687ce205a4578773375",
+  "8e46f2b9fa48285595dfe583bc45b454956abbca",
+  "90610915bf5820174195ba3cb1551e011302c8d2",
+  "936ba16e9f7c4b204fe315d982b8af6e8b9d540f",
+  "94f5844c7084eda0cb886b4e68c2b20758622d2e",
+  "966acaaa1a7e02ff6503a8a6c9d2f4e11ab4a19d",
+  "99158edc6201fff303f49f88cc3d9718912f3ba2",
+  "9a1e759832a7f0ec1b3bf9a076f58a27f462a50a",
+  "9ad7e75641322696f75a018e53513c8158c39870",
+  "9aef014bbbc5f08cc2e6f03b557b2fe9636758cd",
+  "9e82c27f1c9c3c0edb92f209bcbd987cd5d9d7a8",
+  "a1014a3914977af8a8d9e85aa2bf08269fccf504",
+  "a1531e10a1a959d63c30639d4a3e48305d2e3ce2",
+  "a3c00204a5b8a503c7e231ea10796bc02774b7dc",
+  "a4b3a560af11dedc65dd6f7a97c5c6829c91de59",
+  "a4eea816bdf7b7adcb2e70a8774cd5cc69083e5c",
+  "a5cfb96af4564d90c6367ba0ee1f7c773e0f201b",
+  "a6a1b24e5c68a7dff39be5fbb4d30bc1d1dc84f1",
+  "a7461fc6014c7d93c49412fbd949c1b58ad9b25e",
+  "a7957e7dcdbf240526f8776f5b37932af8ba5dc3",
+  "b2f12b04b6ded9e84bb07d4d6c170ac157f8cad3",
+  "b341acdcea02d56abe10da52db1dfffe60196ec7",
+  "b3f0844e8ec09010464afa3ea33306bc4f384c41",
+  "b4767feb202b946519a999bda87324b432815b0f",
+  "b5ff704c4125e28afd6b7427bd3b5437216d444b",
+  "b8bfc995040678cc8298793ba523281e2cae0fff",
+  "b925f8d32d0fc36e9a64f19f5e40b88e5346e870",
+  "bad868f1d64aad7688d3758741ff61cc4b2b8b89",
+  "bbf0a1f8b4c8f06e7ff508298099fc2cd17177df",
+  "c4372902a6664cd3adafb98cce9e5e15ff9e5e4d",
+  "c4db7cb135bee10bee85d0d36b2aa672520f3d3c",
+  "c50ddd7d41d7f2cf3412d2401b33d5ea477a5bd6",
+  "c7b25d34566a6a206acf07ef2cb4c9bed71a212e",
+  "cc9c6b834e26b2cdf5369949d2dc5abc798e2bba",
+  "cdfecd5edeca9a2d58df70dc18f47a6c1070ac5e",
+  "ce1c1b023f7065a528b9ec6189b198392b405b90",
+  "cef0352fca135b252b981b959c3529170b1f0c81",
+  "d19788388bf011e59ad1c739f8dd5b68cceae3f6",
+  "d602c8187c7f926661f822c3ef7aed4996ec324b",
+  "d660b64669e960da672807080ce90a8ffdb0896d",
+  "d77ec9376be228d13780abddcb048717a94d50ea",
+  "d7eb23e22d2357af838b6d4ba983971090ed8713",
+  "dde2a1fbd5f2f00e11568f8543ca143202b28e11",
+  "de71a9bb2efbf697e2a7548c292378953b5c5316",
+  "e31add1e32a8e38a5576558e7b33b47507129858",
+  "e4a5602d719cf42e990e22db6a0382cfc735d907",
+  "e52f5d01105d8c357bc663fbec65659a6a1ec132",
+  "e608a5d2b4a2d37195b6f359d68519ee92cebce0",
+  "eb547dacbbd032537ff09a73f9bf3ca781230a3f",
+  "ec8fdbe0ab3ef1e8c4484c0456b12497423a076c",
+  "ecc70fa5b6532b3b1794132d35adc75b2626cd60",
+  "ecf6eeb84354c01b93e08c21fc01c4981665ff8f",
+  "f18c1b476ead99c58a24d8c6af5982193504d651",
+  "f41a510170877b9932ee9268c0bacc69e9dba839",
+  "f4fa576cb070a31a3408f46c267c13b1e7b1f4eb",
+  "f58995c1823e985ea494facc84e9d5000c8c3e5d",
+  "f75693d0d9987964ea105464050aa3966e377c55",
+  "f79a6dc7166fb2284cd5884d82c1007813a1ffdf",
+  "f9ffecc5bbe105e15724494048c737b79e3fe963",
+  "fcadd96cee240b6352fbbf05e3d61eb17ea81192",
+  "ff227a2d369036b877ba4222964735f04c3de7cf"
+]);
 export const accepted=Object.freeze([
   {
     "path": "docs/parallel-source-20261110/capture-revision39.json",
@@ -9,8 +150,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "4e51b926fa416ae91e6cad0aecaa5864ab8e6354",
-    "sha256": "92bb6adff5a8d06e66091e80228fbc4f01d745a6408d208d8e772639e31e83b1"
+    "blob": "0f4217924cf64b69745f06bf1a66f79103cd5307",
+    "sha256": "f8eee846148a5cfaab7bd89e3cd40b5cd62b17c75811f4cf67a891d927eb3382"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +165,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "0caab7b44bf4318f89ed48ad23dab01440e2839b",
-    "sha256": "45ff7cae15d2b5e2cc6e24de314216d96d5e6ac5da68caee20405983e12c582a"
+    "blob": "d11ac63a2502d78df9eb1006ac419ffdafc66937",
+    "sha256": "dc841e6053e926371aeece98d233eb1ded895675aa899095f330184d96765474"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -669,8 +810,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "scripts/fetch-source-lineage.mjs",
-    "blob": "6290bc8f210fc688df5d64241816ebc92cdaf913",
-    "sha256": "f1848f29e43e42243746446c7d19bf6949565409f8c8154bc9454903bd57cf4a"
+    "blob": "f1307a118fe0d3fcbcd30416058fe31c9397746d",
+    "sha256": "652c458a844c82a5e468702e9d9acf2e6a7afce3875c7808d82661bfb8dfcda9"
   },
   {
     "path": "tests/completion-wave-20261113/pro-gates.mjs",
@@ -689,8 +830,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-wave-20261113/source-preflight-stage.mjs",
-    "blob": "5cb2e61c15d564336e85921912d9aaf32c82001a",
-    "sha256": "68625510c33c20f51154943d83ad2f39a514a9f918a3b5f948478521d08f25d1"
+    "blob": "5f1d46fd33c93898494335e79ba13e605fd106f9",
+    "sha256": "3784a5b12a8f845d3822dd7e270f124711bad9ebf4b51c4ffd1e88044140d504"
   },
   {
     "path": "tests/completion-wave-20261113/source-preflight-stage.test.mjs",
@@ -699,8 +840,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-wave-20261113/source-preflight.test.mjs",
-    "blob": "04ba628aaba415bf251b838354ffbbb0c335a5eb",
-    "sha256": "294eebc0fcea2fe06bd5c3c73e401e217c9d7129d8f8c00e6a0df6b66110e872"
+    "blob": "e3301eee950081f410cb276b0b6dc334359eff0d",
+    "sha256": "c2cf8d95df7a6f56137ac1397f90871a2b35d05d7138e68ea278682382ca8602"
   },
   {
     "path": "tests/completion-wave-20261113/source-test-stage6-policy.mjs",
@@ -726,6 +867,16 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision60.json",
     "blob": "c3e4aecefaf2520b648e5dc1d7c7e03491654aa0",
     "sha256": "5683d1294b53e950209ad83433a5824860f2e6e6b68c7bee344448ae9112ca54"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision61.json",
+    "blob": "a39c98411bb37cd5833327e5c700e97c59e2cbc0",
+    "sha256": "c442dadafa050b6e9bbb84941412153dedda121a35041f037ae06e4581cb7e34"
+  },
+  {
+    "path": "tests/completion-wave-20261113/source-preflight-additional136.json",
+    "blob": "fa75c797b67ca7a1b2ac484d0c748f902de94bf1",
+    "sha256": "e5b12926c727144d9f1f5531b61ba1ea46227db19be97373c0b7508b70d52ba2"
   }
 ]);
 export function verifyParallelAuthority(read,git){
