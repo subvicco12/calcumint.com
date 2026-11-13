@@ -16,6 +16,8 @@ function captureFor({read,policy,capturePath}){
 export function appStage5Records(input){return new Map(captureFor(input).capture.rows.map(row=>[row.path,row]));}
 export function proveAppStage5AndHistoricalInputs({read,git,root,policy,capturePath}){
  const {capture,bytes}=captureFor({read,policy,capturePath});
+ // Preload immutable pinned commit objects only; live HEAD/filesystem proof still runs in full.
+ if(typeof git.preloadCommits==='function')git.preloadCommits(policy.ancestry);
  const live=verifyExactStage({policy,captureBytes:bytes,read,git,root});
  assert.equal(git(['diff','--name-only','-z',stage4SourceRef,policy.codeRef,'--','src/calculators']).length,0,'Historical mathematical engines remain immutable');
  const projected=new Map(capture.rows.map(row=>[row.path,row]));

@@ -47,3 +47,8 @@ test('parent-content substitution, altered row hashes and undeclared finite path
  const changed=structuredClone(f.capture);changed.rows[0].current.sha256='0'.repeat(64);const bytes=Buffer.from(JSON.stringify(changed));assert.throws(()=>proveAppStage5AndHistoricalInputs({...f,policy:{...f.policy,captureSHA256:sha(bytes)},read:path=>path===f.capturePath?bytes:f.read(path)}));
  assert.throws(()=>proveAppStage5AndHistoricalInputs({...f,policy:{...f.policy,paths:[f.file]}}),/finite paths/);
 }));
+test('owned immutable preload retains all raw content checks and receives only pinned ancestry',()=>withFixture(f=>{
+ let calls=0;f.git.preloadCommits=refs=>{calls++;assert.deepEqual(refs,f.policy.ancestry);};assert.equal(proveAppStage5AndHistoricalInputs(f).live.size,2);assert.equal(calls,1);
+ const substituted=args=>args[0]==='cat-file'&&args[1]==='commit'&&args[2]===f.policy.codeRef?Buffer.from('substituted after preload'):f.git(args);substituted.preloadCommits=f.git.preloadCommits;
+ assert.throws(()=>proveAppStage5AndHistoricalInputs({...f,git:substituted}),/content address/);assert.equal(calls,2);
+}));
