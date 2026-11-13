@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { sourceGit } from '../parallel-source-20261110/baseline-runtime.mjs';
 import { proveCurrentAppStage5AndHistoricalInputs } from '../completion-wave-20261113/source-test-stage6.mjs';
-import { sourceStage7Policy, sourceStage7CapturePath } from './source-stage7-policy.mjs';
+import { sourceStage7Policy, sourceStage7CapturePath } from './source-stage7-policy-v6.mjs';
 import { appStage5Policy } from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import { testStage6Policy } from '../completion-wave-20261113/source-test-stage6-policy.mjs';
 const root=resolve(new URL('../../',import.meta.url).pathname);

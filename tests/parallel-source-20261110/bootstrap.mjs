@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {makeGitReader} from './git-reader.mjs';
 import {appStage5Policy} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import {testStage6Policy} from '../completion-wave-20261113/source-test-stage6-policy.mjs';
-import {sourceStage7Policy} from '../milestone60-20261113/source-stage7-policy.mjs';
+import {sourceStage7Policy} from '../milestone60-20261113/source-stage7-policy-v6.mjs';
 import {additionalStage7BootstrapRefs} from './authority.mjs';
 import {balancePolicy} from '../ci-balance-20261113/policy.mjs';
 import {execFileSync} from 'node:child_process';

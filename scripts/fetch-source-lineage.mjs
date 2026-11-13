@@ -6,7 +6,7 @@ import {financialSafetySourceRefs} from './financial-safety-lineage.mjs';
 import {completionSourceRefs} from './product-completion-lineage.mjs';
 import {appStage5Policy} from '../tests/completion-wave-20261113/source-app-stage5-policy.mjs';
 import {testStage6Policy} from '../tests/completion-wave-20261113/source-test-stage6-policy.mjs';
-import {sourceStage7Policy} from '../tests/milestone60-20261113/source-stage7-policy.mjs';
+import {sourceStage7Policy} from '../tests/milestone60-20261113/source-stage7-policy-v6.mjs';
 import {additionalBootstrapRefs,additionalStage7BootstrapRefs} from '../tests/parallel-source-20261110/authority.mjs';
 // Actual governing predecessor refs consumed by the frequency and N1 verifiers.
 // These are provenance requirements, not fabricated completion successor stages.

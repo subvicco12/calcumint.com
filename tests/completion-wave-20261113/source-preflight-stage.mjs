@@ -13,7 +13,7 @@ export function expectedStage6PreflightSource(previous){
 export function expectedPreflightSource(previous){
  const retained=expectedStage6PreflightSource(previous);
  const imports="import {testStage6Policy} from '../tests/completion-wave-20261113/source-test-stage6-policy.mjs';";
- const extended=replaceOnce(replaceOnce(retained,imports,imports+"\nimport {sourceStage7Policy} from '../tests/milestone60-20261113/source-stage7-policy.mjs';"),'...testStage6Policy.ancestry,...additionalBootstrapRefs','...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs');
+ const extended=replaceOnce(replaceOnce(retained,imports,imports+"\nimport {sourceStage7Policy} from '../tests/milestone60-20261113/source-stage7-policy-v6.mjs';"),'...testStage6Policy.ancestry,...additionalBootstrapRefs','...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs');
  return replaceOnce(extended,"import {additionalBootstrapRefs} from '../tests/parallel-source-20261110/authority.mjs';","import {additionalBootstrapRefs,additionalStage7BootstrapRefs} from '../tests/parallel-source-20261110/authority.mjs';");
 }
 export function expectedPreflightAudit(previous){

@@ -35,6 +35,8 @@ test('original receipt and dependency lock retain their exact immutable capture 
 import {readFile as readCurrentSource} from 'node:fs/promises';
 import {execFileSync as exactSourceGit} from 'node:child_process';
 import {completionBindingDependencies} from '../../scripts/product-completion-lineage.mjs';
+import {readFileSync as readPinnedSource} from 'node:fs';
+import {pinnedSourceStage7Records} from '../milestone60-20261113/source-stage7-activation.mjs';
 const registeredPath='src/lib/registered-snapshot-verification.ts';
 const reviewedVerifierRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 const reviewedVerifierSHA='24bf6f31ef7283d9fc319598268c1047ff1c58cd95bda787d55b396e9e3bde4c';
@@ -42,8 +44,17 @@ const reviewedBinding=Object.freeze({path:registeredPath,sha256:reviewedVerifier
 const sha=source=>createHash('sha256').update(source).digest('hex');
 const gitSource=ref=>exactSourceGit('git',['show',ref+':'+registeredPath],{maxBuffer:8*1024*1024});
 const boundaryDependency='src/lib/technology-cidr-snapshot-verification.ts';
-test('the exact reviewed F042 verifier claim proves actual current source and every supplied dependency',async()=>{
- const original=gitSource(reviewedVerifierRef);assert.equal(sha(original),reviewedVerifierSHA);assert(original.equals(await readCurrentSource(registeredPath)));
+test('the exact F042 verifier claim preserves BASE2 history and proves the reviewed clean Stage7 successor and every dependency',async()=>{
+ const original=gitSource(reviewedVerifierRef);assert.equal(sha(original),reviewedVerifierSHA);
+ const retainedRef='2d5d105892134f8af46fc2a02edd5932c431b845',retained=gitSource(retainedRef);assert(original.equals(retained));assert.equal(sha(retained),reviewedVerifierSHA);
+ const successor=pinnedSourceStage7Records(readPinnedSource).get(registeredPath);assert(successor,'Reviewed exact Stage7 verifier record required');
+ assert.equal(successor.path,registeredPath);assert.equal(successor.current.path,registeredPath);const qualifiedRef='8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6';
+ const qualifiedBlob=exactSourceGit('git',['rev-parse',qualifiedRef+':'+registeredPath]).toString().trim();
+ assert.equal(successor.current.blob,qualifiedBlob,'Current admission must preserve the exact independently reviewed verifier object');
+ assert(gitSource(qualifiedRef).equals(gitSource(successor.current.ref)),'Current APP and qualified verifier bytes must be identical');
+ assert.equal(successor.predecessor.ref,retainedRef);assert.equal(successor.predecessor.sha256,reviewedVerifierSHA);assert.equal(successor.predecessor.blob,exactSourceGit('git',['rev-parse',reviewedVerifierRef+':'+registeredPath]).toString().trim());
+ assert.equal(exactSourceGit('git',['rev-parse',successor.current.ref+':'+registeredPath]).toString().trim(),successor.current.blob);
+ const reviewedCurrent=exactSourceGit('git',['cat-file','blob',successor.current.blob],{maxBuffer:8*1024*1024});assert.equal(reviewedCurrent.length,successor.current.bytes);assert.equal(sha(reviewedCurrent),successor.current.sha256);assert(reviewedCurrent.equals(await readCurrentSource(registeredPath)));
  const dependencies=completionBindingDependencies(registeredPath),names=[registeredPath,...dependencies],target=new Map(await Promise.all(names.map(async path=>[path,await readCurrentSource(path)]))),reads=[];
  assert.equal(await verifyCapturedSource(reviewedBinding,async path=>{assert(target.has(path),'Undeclared target reader path: '+path);reads.push(path);return target.get(path);}),registeredPath);
  assert.deepEqual(reads,names);

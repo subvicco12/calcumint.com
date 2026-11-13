@@ -534,7 +534,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -1080,7 +1080,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -1404,7 +1404,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -1733,7 +1733,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -2069,7 +2069,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -2410,7 +2410,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -3021,7 +3021,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -3549,7 +3549,7 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-factory-portal.tsx",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "b248df2fe674c5dcd2c70e193dbb328f92e7423f",
         "sha256": "f3d99ef0b2439f65189f4331c052301459fdf38d7f1c45327b588bd8c86c6e4c"
       },
@@ -3633,19 +3633,19 @@ const bindings=[
       },
       {
         "path": "src/lib/calculator-factory/completion/physics.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "403b0c7c1038d3489bf7ce13d9c367c3d76662ec",
         "sha256": "3af55773af7700ac2995bdc46d90714ff55bd1a2914dc4d082cf8b75b5798a30"
       },
       {
         "path": "src/lib/calculator-factory/registry.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "83b86d665f191a9b4a004f546d67ef8b9e7a476f",
         "sha256": "1aa8e998e89990e4ac06cef1a75ffb5c870d69e8b0a5c0ee565724b42358d032"
       },
       {
         "path": "src/lib/calculator-factory/registry.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "fd0267ce1a7cb017f940b172888a96568c8d01e6",
         "sha256": "7c214aeabc271bcbe4a5c25621fc5c6c678b74fec51a35933026e68c8d066f96"
       },
@@ -3759,7 +3759,7 @@ const bindings=[
       },
       {
         "path": "src/lib/business/factory-nine-sharing.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "014a4cf380ca2bd195a6aac422a640a7d379bfd0",
         "sha256": "87f59ea7f2f36fbec2aa637df21a351397d352eab00a2ffc6104e4867749b675"
       },
@@ -3849,13 +3849,13 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "0bb4a09821ffc21ca47f1819e468c11d46a930a2",
         "sha256": "171aa03828ca3adb5880123d0c303ca6b98d598c70ab906baef3c59ef5ed61c9"
       },
       {
         "path": "src/lib/native-delivery/factory-embed-contract.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "4c598859b6a2aeaab317b91aaf0a489f5e343264",
         "sha256": "331dfd6108b7028dbb5799c7f2b8e5e002da5b8a5ab06d2d1e02461f63115102"
       },
@@ -3975,7 +3975,7 @@ const bindings=[
       },
       {
         "path": "src/lib/completion-wave-20261113/conversion-workflows.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "513d226e17132f44236b6a76ab42684d0c5646ae",
         "sha256": "87e62d2ca3340b1243bb1dcb14f546fd053533a8198a8937f448c4a5af835215"
       },
@@ -4011,9 +4011,9 @@ const bindings=[
       },
       {
         "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
-        "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
-        "blob": "5a6c1698541635ae5f06f4c487f98872bc278c90",
-        "sha256": "15f479cacb572a9b625f5522fb8961cd198dc5945f5f88298141651ff709869f"
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+        "blob": "32c051c63b2a12da77366e64bfc3d41606358354",
+        "sha256": "c29305d172e6010148a527154f2bf983f578893ccd108c85264029aa04612674"
       },
       {
         "path": "src/lib/parallel-source-evidence.test.ts",
@@ -4023,73 +4023,73 @@ const bindings=[
       },
       {
         "path": "src/components/milestone-calculator-analysis.test.tsx",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "b44ec1fb507ba7ba71da54f24448fcaeb2139940",
         "sha256": "548cc5bed7e39ef9da812dc4f8dbe7615a48ddd7411f3128af2fc02534dd3f6c"
       },
       {
         "path": "src/components/milestone-calculator-analysis.tsx",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "7425a5d3fec9e9eaeeec5737bab240c9be318bea",
         "sha256": "ce30d5dccb97f9d8d01266a43a8c0361ae41659eb6a38b211e941fc264cf46ff"
       },
       {
         "path": "src/lib/calculator-factory/completion/conversion-next.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "0d66783db8aaaba9695fa6777f3ebfcba57dbf76",
         "sha256": "3517e30f9733cb9ec1d74208c6c353dc28346b5bf4bb819c4c30e0aa220120e1"
       },
       {
         "path": "src/lib/calculator-factory/completion/conversion-next.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "b2d63c323ed5c98403b7d85fb50b367efc5de117",
         "sha256": "5897a8e0ac464df7cc715fe50018644e8729f4a98d12b1dd68437ae5f7855350"
       },
       {
         "path": "src/lib/calculator-factory/completion/math-next.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "cd5b0300920efce030f877038665b31c42bf41e4",
         "sha256": "34a97da945503b43d93b43279db6fd411444aff5dc1f82d36739c46f9c459ac3"
       },
       {
         "path": "src/lib/calculator-factory/completion/math-next.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "8786923ff309d03afb8e92e4c17b69e36e564c5d",
         "sha256": "1c30d83f9e82ca111feb129dae95c27b39e5f1902e5aed81f293abc557ba8201"
       },
       {
         "path": "src/lib/calculator-factory/completion/milestone-native.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "8f8baeb3a678172bd2617134387b81182a56cad1",
         "sha256": "f596b9ce4f12489bb74099faac4bf087c98239e6f548d6b38ffa3fb71e71fad6"
       },
       {
         "path": "src/lib/calculator-factory/completion/milestone-registry.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "04587e352d28553869891fa8d8051783018bdbf0",
         "sha256": "4f55590d644ded84427c8a41b0c3e2c8d8b66406613ee07280396bff4d1a4eed"
       },
       {
         "path": "src/lib/calculator-factory/completion/milestone-source.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
-        "blob": "19379698a8ce3e6c35fab44d5346210d4551165e",
-        "sha256": "7167a873b7679df3181e11fd527ae5e05a1dcf495649369a04416dbba4c4fb8f"
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
+        "blob": "c62503b27346cd82dfa5cc58171d7234360e0b8d",
+        "sha256": "29e220ade77b6ca5bfc0715e261fbe71190b15b983aeb2fa78303effed79e14b"
       },
       {
         "path": "src/lib/calculator-factory/completion/physics-domain.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "e91bac9670bd578cc259bfbcd99ca3ed8a8c01db",
         "sha256": "95aacbc7352d634ec58980eb8ccb7bcd3130325fcc313a033df0e32ea0b3d59a"
       },
       {
         "path": "src/lib/cooking-snapshot-verification.test.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "83d7f9127075cdcf02a8f11d8f792e0e5c0af22c",
         "sha256": "3bdbf8a7f86c57d2b09ad500964c80324eb519f873955ac220b7b906c233570d"
       },
       {
         "path": "src/lib/cooking-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "3a01d2eb63fe9086925228c8b3ab0905c9fb93cf",
         "sha256": "a3591c9ece41e7fb6bccf2756dca8e025fe06d5c41683c8ca9db3478dd2a3170"
       }
@@ -4190,7 +4190,7 @@ const bindings=[
   {
     "path": "src/lib/registered-snapshot-verification.ts",
     "predecessorRef": "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
-    "successorRef": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+    "successorRef": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
     "predecessorBlob": "df44d2b717ec5ed647360cfbdb955c9b814b211b",
     "successorBlob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
     "predecessorSHA256": "a6ce5fdb736ccd748c99b703169ad5d931aea9ccb8460feb2b3cbab80a68bda6",
@@ -4977,7 +4977,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },
@@ -5565,7 +5565,7 @@ const bindings=[
       },
       {
         "path": "src/lib/registered-snapshot-verification.ts",
-        "ref": "8ecc4d72020228deaa4d8528b1e1e75cd28d6eb6",
+        "ref": "a251c3b8a60faf7bc77fe456581ecd54bda01bd0",
         "blob": "2abab8b66397fa0a0a0a73c0aef7d57dce473bca",
         "sha256": "0d96f1463c62163d8e070276f5dd5445e9ccd024ba6312f94333dc425167578a"
       },

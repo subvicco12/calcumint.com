@@ -5,7 +5,7 @@ import { financialSafetySourceRefs } from '../../scripts/financial-safety-lineag
 import { completionSourceRefs } from '../../scripts/product-completion-lineage.mjs';
 import { appStage5Policy } from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import { testStage6Policy } from '../completion-wave-20261113/source-test-stage6-policy.mjs';
-import { sourceStage7Policy } from './source-stage7-policy.mjs';
+import { sourceStage7Policy } from './source-stage7-policy-v6.mjs';
 import { additionalBootstrapRefs, additionalStage7BootstrapRefs } from '../parallel-source-20261110/authority.mjs';
 import { fetchStage6SourceLineage } from './source-preflight-retained-stage6.mjs';
 const governed=['761b850479ea36b2b4ebf8039664d8400c762555','ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7'];
