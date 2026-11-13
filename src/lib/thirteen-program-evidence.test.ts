@@ -1,5 +1,6 @@
 import {assertNamedApplicationSuccessor} from '../../tests/parallel-source-20261110/core.mjs';
-import {verifyRetainedA7Case} from '../../tests/parallel-source-20261110/retained-vitest.mjs';
+import {runVerifier} from '../../tests/ci-rpc-recovery-20261113/async-verifier.mjs';
+import {fileURLToPath} from 'node:url';
 import {beforeAll,it,expect} from 'vitest';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -15,7 +16,16 @@ it('runs all eight finite documentary source bootstrap negative checks',()=>{
  const output=execFileSync(process.execPath,['tests/thirteen-program-20261110/source-bootstrap.test.mjs'],{encoding:'utf8',env,timeout:30000,maxBuffer:1000000}).replace(/\u001b\[[0-9;]*m/g,'');
  expect(output).toMatch(/(?:#|ℹ) tests\s+8/);expect(output).toMatch(/(?:#|ℹ) pass\s+8/);expect(output).toMatch(/(?:#|ℹ) fail\s+0/);
 });
-it('RETAINED A7 — retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',()=>{expect(verifyRetainedA7Case('src/lib/thirteen-program-evidence.test.ts','retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps')).toBe(true);},150000);
+it('RETAINED A7 — retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps',async()=>{
+ // Keep the worker event loop available for Vitest's unchanged60second task-update RPC.
+ // The fixed child still executes the fresh current proof and every original retained assertion.
+ const result=await runVerifier(process.execPath,[fileURLToPath(new URL('../../tests/ci-rpc-recovery-20261113/retained-case.mjs',import.meta.url)),'src/lib/thirteen-program-evidence.test.ts','retains thirteen unsigned exact-version packets, original clause associations and genuine approval gaps'],{cwd:process.cwd(),env,timeout:120000});
+ expect(result.stdout).toContain('CALCUMINT_RETAINED_A7_CASE_PASS');
+},150000);
+it('keeps async verifier exit, bounded output, cancellation and descendant cleanup fail closed',()=>{
+ const output=execFileSync(process.execPath,['--test','tests/ci-rpc-recovery-20261113/async-verifier.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});
+ expect(output).toContain('# pass 5');expect(output).toContain('# fail 0');
+});
 
 it('retains exact-six invoker boundaries and new genuine isolated authority/retry checks without SQL activation',()=>{
  expect(execFileSync(process.execPath,['tests/publication-rpc-six-20261110/verify.mjs'],{encoding:'utf8',env,timeout:30000})).toContain('PASS exact six');
