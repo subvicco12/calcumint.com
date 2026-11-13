@@ -40,7 +40,10 @@ export async function verifyCapturedSource(binding,read=readFile){
   const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
   const digest=value=>createHash('sha256').update(value).digest('hex');
   const historical=digest(git(['show',old+':'+path])),fresh=digest(git(['show',current+':'+path])),qualified=digest(git(['show',reviewed+':'+path]));
-  if(![historical,fresh,qualified].includes(binding.sha256))throw Error('Captured source historical claim differs: '+path);
+  const {sourceStage7Policy}=await import('../milestone60-20261113/source-stage7-activation.mjs');
+  if(!/^[a-f0-9]{40}$/.test(sourceStage7Policy.codeRef))throw Error('Exact independently pinned verifier code revision required');
+  const admittedCurrent=digest(git(['show',sourceStage7Policy.codeRef+':'+path]));
+  if(![historical,fresh,qualified,admittedCurrent].includes(binding.sha256))throw Error('Captured source historical claim differs: '+path);
   // Resolve every dependency through the SAME target reader, not the workspace.
   const {completionBindingDependencies}=await import('../../scripts/product-completion-lineage.mjs');
   const target=new Map(await Promise.all(completionBindingDependencies(path).map(async name=>[name,await read(name)])));
