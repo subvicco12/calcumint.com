@@ -1,7 +1,7 @@
-/** Independently reviewed two-path source preflight successor; no application or release approval. */
-export const sourcePreflightCapturePath="docs/completion-wave-20261113/source-preflight.json";
+/** Independently reviewed two-path preflight for literal APP19 plus one test-only successor. */
+export const sourcePreflightCapturePath="docs/completion-wave-20261113/source-preflight-revision2.json";
 export const sourcePreflightPolicy=Object.freeze({
-  "captureSHA256": "ee324b7a4a93e963f490f736eaf4816f70cafbccea81b0dffc9e79205295a707",
+  "captureSHA256": "9607adadb65c1248903a09c5cd53159ccf3f627e85130e864b657e325286852f",
   "predecessorRef": "f0f6b507a18bf51d7c8925734d854a05120ade10",
-  "codeRef": "533a23d8927aaeba5b00522db35243580760525a"
+  "codeRef": "51c36ec38b948f7dedbb481a4ce1f619646b709e"
 });
