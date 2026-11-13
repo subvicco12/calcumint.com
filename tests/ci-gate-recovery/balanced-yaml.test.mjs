@@ -4,6 +4,8 @@ import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import yaml from 'js-yaml';
 import {balancePolicy} from '../ci-balance-20261113/policy.mjs';
+import {verifyBalancedWorkflow} from '../ci-balance-20261113/workflow.mjs';
+verifyBalancedWorkflow();
 const before=execFileSync('git',['show',balancePolicy.predecessorRef+':.github/workflows/ci.yml'],{encoding:'utf8',stdio:['ignore','pipe','pipe'],timeout:30000,maxBuffer:8000000});
 const current=readFileSync('.github/workflows/ci.yml','utf8');
 function exactGraph(source){
