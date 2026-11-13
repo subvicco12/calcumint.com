@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "23c886c4f95735758587527c39f7103ec0a8add6",
-    "sha256": "67084c8ef268de501a070c153933ac9795e6d71369ffd73c0f6cccea49223c9c"
+    "blob": "4e51b926fa416ae91e6cad0aecaa5864ab8e6354",
+    "sha256": "92bb6adff5a8d06e66091e80228fbc4f01d745a6408d208d8e772639e31e83b1"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "be239ddf2ccce37dd43575b8f2a163979374c4d3",
-    "sha256": "53c86a6d30d9bb691afc01c48396cbb9ad3b7ca6645b3c473f2f5fb6150f89c0"
+    "blob": "0caab7b44bf4318f89ed48ad23dab01440e2839b",
+    "sha256": "45ff7cae15d2b5e2cc6e24de314216d96d5e6ac5da68caee20405983e12c582a"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -709,18 +709,23 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-wave-20261113/source-test-stage6.mjs",
-    "blob": "92ddf265da61300266886f2331f0bef1c0e4bb06",
-    "sha256": "8b060bb8eff3bb01e37da618ae604a97a60f19d282725ebe80bf6220a878a788"
+    "blob": "f051cc3e9c153e04ed3d3e4d4de5393c49a9fb59",
+    "sha256": "ac7f4ea637e6c0e4c2054c75b20dca5c703f5a7e369977107e8b8ea92d561252"
   },
   {
     "path": "tests/completion-wave-20261113/source-test-stage6.test.mjs",
-    "blob": "b37ed389ef6f2c840b678537b0f89b141677b318",
-    "sha256": "0e8884ddb162a7d9440e8163952fa47f8a92f98db23b207f35dc9512467912f1"
+    "blob": "4e76ddb0ec3a816d89741cc6b31b3d86323f0eb2",
+    "sha256": "cf2fa2f2556ed4d0c9906ba7bcc594c62106c65781292a685fe52577df025e1c"
   },
   {
     "path": "tests/source-lineage-bootstrap.test.mjs",
     "blob": "413bd7b6bd607945bd2f70f094d1b85ed9188ff0",
     "sha256": "a2da675f9413324e0c6cadd05362d488be67c11946cc726dbc42796319d11b68"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision60.json",
+    "blob": "c3e4aecefaf2520b648e5dc1d7c7e03491654aa0",
+    "sha256": "5683d1294b53e950209ad83433a5824860f2e6e6b68c7bee344448ae9112ca54"
   }
 ]);
 export function verifyParallelAuthority(read,git){

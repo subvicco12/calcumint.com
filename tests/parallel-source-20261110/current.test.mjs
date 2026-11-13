@@ -10,7 +10,7 @@ import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/
 import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'3faec2f327aefe53f8ebf95f32e99fdb04c6a934',sha256:'12c88b71e865a3e707f66b2087828bf2dc4211d3f06867750d5709e73f6fdef3'};
+const expectedAuthority={blob:'3b2a68dc6c9e21c89e317fb345b9a76d055d5e93',sha256:'0bb11f68f226606c3e8662b3b3638c99a0670c41ea123ece3e75a37444e9f04d'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
