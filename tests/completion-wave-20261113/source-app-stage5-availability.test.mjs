@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {readFileSync,writeFileSync,mkdtempSync,chmodSync,rmSync,existsSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdtempSync,chmodSync,rmSync,existsSync,lstatSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {appStage5Policy} from './source-app-stage5-policy.mjs';
 import {prepareAppStage5Commits,ensureAppStage5Objects} from '../parallel-source-20261110/bootstrap.mjs';
-import {sourceObjectLockName} from '../parallel-source-20261110/source-object-lock.mjs';
+import {withSourceObjectLock,sourceObjectLockName} from '../parallel-source-20261110/source-object-lock.mjs';
 const root=resolve(new URL('../../',import.meta.url).pathname);
 const actual=args=>execFileSync('git',args,{cwd:root,stdio:['ignore','pipe','pipe']});
 const refs=appStage5Policy.ancestry,origin='https://github.com/subvicco12/calcumint.com.git\n';
@@ -28,13 +28,19 @@ test('failed batch is not a successful availability cache and a fresh retry vali
 test('custom source transports remain uncached and execute inside owned availability lock',()=>{
  const common=resolve(root,actual(['rev-parse','--git-common-dir']).toString().trim());let origins=0,checked=0;
  const git=args=>{assert(existsSync(join(common,sourceObjectLockName)));if(args[0]==='remote'){origins++;return Buffer.from(origin);}assert.equal(args[0],'rev-parse');checked++;return Buffer.from(args[2].slice(0,40)+'\n');};
- ensureAppStage5Objects(git);ensureAppStage5Objects(git);assert.equal(origins,2);assert.equal(checked,refs.length*4);assert(!existsSync(join(common,sourceObjectLockName)));
+ ensureAppStage5Objects(git);ensureAppStage5Objects(git);assert.equal(origins,2);assert.equal(checked,refs.length*4);
+ // A different client may acquire immediately after our release. Successful reacquisition
+ // proves our calls released their ownership without requiring global lock absence.
+ let reacquired=false;withSourceObjectLock(common,()=>{reacquired=true;assert(existsSync(join(common,sourceObjectLockName)));});assert(reacquired);
 });
 test('default batch transport forwards stdin and caches success only after owned lock release',()=>{
  const temporary=mkdtempSync(join(tmpdir(),'stage5-owned-batch-')),previousPath=process.env.PATH,previousLog=process.env.STAGE5_AVAILABILITY_LOG;
  try{
   const log=join(temporary,'calls.jsonl'),wrapper=join(temporary,'git');writeFileSync(wrapper,"#!/usr/bin/python3\nimport os,sys,json\nwith open(os.environ['STAGE5_AVAILABILITY_LOG'],'a') as f:f.write(json.dumps(sys.argv[1:])+'\\n')\nos.execv('/usr/bin/git',['git',*sys.argv[1:]])\n");chmodSync(wrapper,0o700);process.env.PATH=temporary+':'+previousPath;process.env.STAGE5_AVAILABILITY_LOG=log;
   ensureAppStage5Objects();const first=readFileSync(log,'utf8');const rows=first.trim().split('\n').map(JSON.parse);assert.equal(rows.filter(a=>a.includes('--batch')).length,1);assert(rows.findIndex(a=>a.includes('remote'))<rows.findIndex(a=>a.includes('--batch')));
-  const common=resolve(root,actual(['rev-parse','--git-common-dir']).toString().trim());assert(!existsSync(join(common,sourceObjectLockName)));const beforeSecond=readFileSync(log,'utf8');ensureAppStage5Objects();assert.equal(readFileSync(log,'utf8'),beforeSecond);
+  const common=resolve(root,actual(['rev-parse','--git-common-dir']).toString().trim());const beforeSecond=readFileSync(log,'utf8');
+  // Acquire a new owner's lock after the first call. Cached immutable availability
+  // must neither wait for nor remove this protected foreign owner, and emits no Git.
+  withSourceObjectLock(common,()=>{const lock=join(common,sourceObjectLockName),owner=lstatSync(lock);ensureAppStage5Objects();const after=lstatSync(lock);assert.equal(after.dev,owner.dev);assert.equal(after.ino,owner.ino);assert.equal(readFileSync(log,'utf8'),beforeSecond);});
  }finally{process.env.PATH=previousPath;if(previousLog===undefined)delete process.env.STAGE5_AVAILABILITY_LOG;else process.env.STAGE5_AVAILABILITY_LOG=previousLog;rmSync(temporary,{recursive:true,force:true});}
 });
