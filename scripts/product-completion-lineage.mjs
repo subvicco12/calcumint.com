@@ -51,11 +51,11 @@ const bindings=[
   {
     "path": ".github/workflows/ci.yml",
     "predecessorRef": "a955cdad7019a645b7ed2950299d0603ba1784a7",
-    "successorRef": "345c6cd6ed42aff39635d5e92d4adb48989b78ac",
+    "successorRef": "6016a500d429680401370a255fc7064d40e35cb9",
     "predecessorBlob": "938281abbbf9bbea928d6844d71b06f9dc423f7f",
-    "successorBlob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
+    "successorBlob": "657433d3a71a5ece42819edfa5cf2707d9465c7d",
     "predecessorSHA256": "6556a6d89c583ea1bb8ccd82ff47f379606850399da7600b59e274567b6d0416",
-    "successorSHA256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4",
+    "successorSHA256": "d5b6e2d5562a0385362ffd0f01b012d869b0771134193626bb12754b8b667632",
     "intermediateSources": [
       {
         "ref": "fb2531218dbf71e1116dbc90fc17367692213bdc",
@@ -106,6 +106,11 @@ const bindings=[
         "ref": "00651cc382be5dcbd596882071787fd6702c13d3",
         "blob": "5f1156c52ae6926860a61d529faaed825661bba4",
         "sha256": "39703e767294bee42f65f6495f2f9c3c8807c2f237cef79d1a48659196aca243"
+      },
+      {
+        "ref": "345c6cd6ed42aff39635d5e92d4adb48989b78ac",
+        "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
+        "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
       }
     ]
   },
@@ -3904,9 +3909,9 @@ const bindings=[
       },
       {
         "path": ".github/workflows/ci.yml",
-        "ref": "345c6cd6ed42aff39635d5e92d4adb48989b78ac",
-        "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
-        "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
+        "ref": "6016a500d429680401370a255fc7064d40e35cb9",
+        "blob": "657433d3a71a5ece42819edfa5cf2707d9465c7d",
+        "sha256": "d5b6e2d5562a0385362ffd0f01b012d869b0771134193626bb12754b8b667632"
       },
       {
         "path": "tests/gotrue-runtime/acceptance.mjs",
@@ -5568,9 +5573,9 @@ const bindings=[
     "supplementalSources": [
       {
         "path": ".github/workflows/ci.yml",
-        "ref": "345c6cd6ed42aff39635d5e92d4adb48989b78ac",
-        "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
-        "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
+        "ref": "6016a500d429680401370a255fc7064d40e35cb9",
+        "blob": "657433d3a71a5ece42819edfa5cf2707d9465c7d",
+        "sha256": "d5b6e2d5562a0385362ffd0f01b012d869b0771134193626bb12754b8b667632"
       },
       {
         "path": "tests/ci-gate-recovery/verification-jobs-contract.mjs",
