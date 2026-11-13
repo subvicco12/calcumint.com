@@ -553,5 +553,32 @@
       "sha256": "d9dbf1519f274a41bdadd8edd75b118292f5559378eb6c77be1668c9a7db2c71"
     },
     "canonicalCertificationGranted": false
+  },
+  "latestHostedAttempt": {
+    "head": "912abe1256680203bc7f44a0f06265f9af27481a",
+    "run": 43482554486,
+    "conclusion": "FAILURE",
+    "jobs": {
+      "checks": "SUCCESS",
+      "build": "SUCCESS",
+      "full-product": "SUCCESS",
+      "source-acceptance": "SUCCESS",
+      "publication-factory": "FAILURE",
+      "validate": "FAILURE"
+    },
+    "unfilteredUnitTests": {
+      "passed": 9861,
+      "failed": 0,
+      "existingSkipped": 4,
+      "durationSeconds": 974.3,
+      "originalApiCaseMs": 3540
+    },
+    "preciseFailure": "Fresh FIRST_TWO_FRESH_RECEIPT current registered-snapshot-verification SHA0d96 was absent from historical-only helper claim list.",
+    "remediation": "Only the exact source SHA from independently pinned Stage7 Git codeRef is additionally admitted; full dependency proof and historical/tamper/refusal assertions retained.",
+    "sourceApplicationUnchanged": true,
+    "remediationSourceRef": "c3aaff5bf19f2d073cf3aeb7ba9d0cdf74719b1c",
+    "capture67SHA256": "1d25a08384eefc54eb822598f78962e4a0120e681f3168683be6274fa0089e38",
+    "freshLocalProducerAnd99SourceCases": "PENDING",
+    "successorAllFiveAndAggregate": "PENDING"
   }
 }
