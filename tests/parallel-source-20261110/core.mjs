@@ -1,14 +1,17 @@
 /** Named exact-Git successor. Historical R5 executes unchanged; current targets never use its view. */
 import assert from 'node:assert/strict';
+import {selectStage7HistoricalSource} from '../milestone60-20261113/source-stage7-historical.mjs';
+import {verifyStage7Lineage} from '../milestone60-20261113/source-lineage-stage7.mjs';
+import {pinnedSourceStage7Records,sourceStage7Policy,sourceStage7CapturePath} from '../milestone60-20261113/source-stage7-activation.mjs';
 import {appStage5Records} from '../completion-wave-20261113/source-app-stage5.mjs';
 import {proveCurrentAppStage5AndHistoricalInputs,testStage6Records} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {testStage6Policy,testStage6CapturePath} from '../completion-wave-20261113/source-test-stage6-policy.mjs';
 import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import {ensureAppStage5Objects} from './bootstrap.mjs';
-const stage5Paths=new Set([...appStage5Policy.paths,...testStage6Policy.paths]);
+const stage5Paths=new Set([...appStage5Policy.paths,...testStage6Policy.paths,...sourceStage7Policy.paths]);
 const stage5Input=(read,git)=>({read,git,root,policy:appStage5Policy,capturePath:appStage5CapturePath});
-const stage5Rows=read=>new Map([...appStage5Records({read,policy:appStage5Policy,capturePath:appStage5CapturePath}),...testStage6Records(read)]);
-function proveStage5(read,git){ensureAppStage5Objects();return proveCurrentAppStage5AndHistoricalInputs(stage5Input(read,git)).actualCurrent;}
+const stage5Rows=read=>new Map([...appStage5Records({read,policy:appStage5Policy,capturePath:appStage5CapturePath}),...testStage6Records(read),...pinnedSourceStage7Records(read)]);
+function proveStage5(read,git){ensureAppStage5Objects();return proveCurrentAppStage5AndHistoricalInputs(stage5Input(read,git)).stage7Actual;}
 
 import {retainedWorkflowRecord} from '../ci-balance-20261113/workflow.mjs';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
@@ -36,13 +39,16 @@ const personalPaths=new Set(personalPolicy.paths),personalAuxiliaryPaths=new Set
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision62.json';
+export const retainedStage6CapturePath='docs/parallel-source-20261110/capture-revision62.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision64.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
  const head=source(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[0-9a-f]{40}$/);
  let cache=immutableCaches.get(source);if(!cache){cache=new Map();immutableCaches.set(source,cache);}
- return args=>{if(args[0]==='status')return source(args);const exact=args.map(a=>a.startsWith('HEAD:')?head+a.slice(4):a);if(exact.some(a=>a==='HEAD'||a.startsWith('HEAD^')))return source(exact);const key=JSON.stringify(exact);if(!cache.has(key))cache.set(key,source(exact));return cache.get(key);};
+ const reader=(args,options)=>{if(options!==undefined)return source(args,options);if(args[0]==='status')return source(args);const exact=args.map(a=>a.startsWith('HEAD:')?head+a.slice(4):a);if(exact.some(a=>a==='HEAD'||a.startsWith('HEAD^')))return source(exact);const key=JSON.stringify(exact);if(!cache.has(key))cache.set(key,source(exact));return cache.get(key);};
+ for(const name of ['preloadBlobs','preloadCommits','preloadPaths'])if(typeof source[name]==='function')reader[name]=values=>source[name](values);
+ return reader;
 }
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
 function sourceRecord(record,read,git){
@@ -86,7 +92,7 @@ function applicationSuccession(capture,read,git){
  assert.deepEqual([...completion.values()].map(r=>r.current),capture.completionSources,'Completion sources must enter closed current capture');
  assert.deepEqual([...factory.values()].map(r=>r.current),capture.factorySources,'Factory sources must enter closed current capture');
  const appPaths=changed.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)));
- assert.equal(appPaths.length,14);assert.deepEqual(git(['diff','--name-only',applicationBaselineRef,'HEAD','--','src']).toString().trim().split('\n').filter(p=>p&&!(/\.test\.(?:ts|tsx)$/.test(p))),[...new Set([...appPaths,...factoryPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...completionPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...workflowPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...personalPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...appStage5Policy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)))])].sort(),'Only historical app14 plus finite independently pinned factory stage may change non-test source');
+ assert.equal(appPaths.length,14);assert.deepEqual(git(['diff','--name-only',applicationBaselineRef,'HEAD','--','src']).toString().trim().split('\n').filter(p=>p&&!(/\.test\.(?:ts|tsx)$/.test(p))),[...new Set([...appPaths,...factoryPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...completionPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...workflowPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...personalPolicy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...appStage5Policy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p))),...sourceStage7Policy.paths.filter(p=>!(/\.test\.(?:ts|tsx)$/.test(p)))])].sort(),'Only historical app14 plus finite independently pinned factory stage may change non-test source');
  const parentPaths=new Set(git(['ls-tree','-r','--name-only',applicationBaselineRef,'--','src']).toString().trim().split('\n'));
  const originalPaths=new Set(git(['ls-tree','-r','--name-only',appRef,'--','src']).toString().trim().split('\n'));
  const result=new Map();
@@ -102,7 +108,12 @@ function applicationSuccession(capture,read,git){
  const retainedWorkflow=new Map(capture.workflowHistoricalClaims.map(row=>{assert.equal(row.ref,appRef);assert(workflow.has(row.path));immutableRecord(row,git);return[row.path,row];}));
  for(const [path,row]of workflow)result.set(path,{path,current:row.current,historical:result.get(path)?.historical??retainedWorkflow.get(path),contextPredecessor:row.predecessor});
  for(const [path,row]of personal)result.set(path,{path,current:row.current,historical:result.get(path)?.historical,contextPredecessor:row.predecessor});
- for(const [path,row]of proveStage5(read,git))result.set(path,{path,current:row.current,historical:result.get(path)?.historical,contextPredecessor:row.predecessor});
+ for(const [path,row]of proveStage5(read,git)){
+  const prior=result.get(path),original=capture.applicationSources.find(source=>source.path===path);
+  const historical=prior?.historical??selectStage7HistoricalSource({path,stage7Paths:sourceStage7Policy.paths,row,original,appRef});
+  if(historical)immutableRecord(historical,git);
+  result.set(path,{path,current:row.current,historical,contextPredecessor:row.predecessor});
+ }
  return result;
 }
 export const sevenTestRef='f68c077b63b1dfabbe9ca3f21e4f195ef645ad97';
@@ -168,6 +179,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  // Every byte observed by the old complete proof remains guarded in the new view.
  for(const row of baseline.rows)assert(all.some(r=>r.path===row.path),'Unbound original current source: '+row.path);
  const metadata='scripts/product-completion-lineage.mjs',old=git(['show',baselineRef+':'+metadata]).toString(),current=read(metadata).toString();
+ verifyStage7Lineage({previous:git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString(),current,records:pinnedSourceStage7Records(read)});
  const historicalTail=old.slice(old.indexOf('export const completionSourceRefs'));
  const insertion=" if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);";
  assert.equal(historicalTail.split(insertion).length,2,'Exact unchanged guard insertion preimage required');
@@ -211,7 +223,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  const short=r=>({path:r.path,ref:r.ref,blob:r.blob,sha256:r.sha256});
  for(let i=0;i<before.length;i++){
   const prior=before[i],now=after[i],expected=structuredClone(prior),app=ownedEvolutions.get(prior.path);
-  if(app){expected.intermediateSources??=[];if(prior.path===receiptPath){const ref='881c62c140d881b8c7fe70ce9bd5dcc187b54c32',bytes=git(['show',ref+':'+receiptPath]);expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});expected.intermediateSources.push({ref,blob:git(['rev-parse',ref+':'+receiptPath]).toString().trim(),sha256:hash(bytes)});}if(prior.path!==receiptPath)expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});if(workflowPaths.has(prior.path)||nonSourcePaths.has(prior.path)||capture.workflowGuardSources.some(row=>row.path===prior.path)){const middle=workflowPrior.find(r=>r.path===prior.path);assert(middle);if(middle.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:middle.successorRef,blob:middle.successorBlob,sha256:middle.successorSHA256});}if(prior.path==='.github/workflows/ci.yml'){const retained=retainedWorkflowRecord(read);immutableRecord(retained,git);expected.intermediateSources.push({ref:retained.ref,blob:retained.blob,sha256:retained.sha256});}Object.assign(expected,{successorRef:app.ref,successorBlob:app.blob,successorSHA256:app.sha256});}
+  if(app){expected.intermediateSources??=[];if(prior.path===receiptPath){const ref='881c62c140d881b8c7fe70ce9bd5dcc187b54c32',bytes=git(['show',ref+':'+receiptPath]);expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});expected.intermediateSources.push({ref,blob:git(['rev-parse',ref+':'+receiptPath]).toString().trim(),sha256:hash(bytes)});}if(prior.path!==receiptPath)expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});if(sourceStage7Policy.paths.includes(prior.path)){const retained=parseRows(git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString()).find(row=>row.path===prior.path);assert(retained,'Stage7 owned source must retain its Stage6 binding');if(retained.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:retained.successorRef,blob:retained.successorBlob,sha256:retained.successorSHA256});}if(workflowPaths.has(prior.path)||nonSourcePaths.has(prior.path)||capture.workflowGuardSources.some(row=>row.path===prior.path)){const middle=workflowPrior.find(r=>r.path===prior.path);assert(middle);if(middle.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:middle.successorRef,blob:middle.successorBlob,sha256:middle.successorSHA256});}if(prior.path==='.github/workflows/ci.yml'){const retained=retainedWorkflowRecord(read);immutableRecord(retained,git);expected.intermediateSources.push({ref:retained.ref,blob:retained.blob,sha256:retained.sha256});}Object.assign(expected,{successorRef:app.ref,successorBlob:app.blob,successorSHA256:app.sha256});}
   if(expected.supplementalSources)expected.supplementalSources=expected.supplementalSources.map(d=>evolutions.has(d.path)?short(evolutions.get(d.path)):d);
   const count=expected.supplementalSources?.length??0,extras=(now.supplementalSources??[]).slice(count);for(const d of extras){assert(allowedExtras.has(d.path),'Unreviewed supplemental source');assert.deepEqual(d,short(allowedExtras.get(d.path)));}
   if(extras.length)expected.supplementalSources=[...(expected.supplementalSources??[]),...extras];assert.deepEqual(now,expected,'Only named app/data successors may advance: '+prior.path);
@@ -229,9 +241,10 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
 
 export function preloadRetainedImmutableObjects(read,git){
  verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git,{defaultRetainedCommitBatch:true});
- const ids=new Set();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);}Object.values(value).forEach(visit);}};
- const finite=[capturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath];
+ const ids=new Set(),paths=new Map();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);if(typeof value.ref==='string'&&/^[a-f0-9]{40}$/.test(value.ref)&&typeof value.path==='string'){const key=value.ref+':'+value.path;assert(!paths.has(key)||paths.get(key).blob===value.blob,'Conflicting independently pinned path records');paths.set(key,{ref:value.ref,path:value.path,blob:value.blob});}}Object.values(value).forEach(visit);}};
+ const finite=[capturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath];
  for(const path of finite){assert(accepted.some(row=>row.path===path),"Preloaded capture must have independent authority");visit(JSON.parse(read(path)));}
- git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry])]);
+ git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry])]);
+ if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
  git.preloadBlobs([...ids]);
 }

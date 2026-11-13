@@ -1,0 +1,95 @@
+{
+  "kind": "UNSIGNED_CONDITIONAL_EXACT_VERSION_SCOPED_ENGINEERING_REVIEW_PACKET",
+  "catalogId": 271,
+  "catalogRow": {
+    "ID": 271,
+    "Domain": "Geometry",
+    "Calculator": "Cylinder Volume Calculator",
+    "Portfolio Status": "Planned",
+    "Roadmap Phase": "Foundation / Expansion 1",
+    "Presentation Family": "Math / solver",
+    "Presentation Level": "A \u2014 Essential",
+    "Free Core": "Full certified core calculation",
+    "Free Visualization": "Steps/graph when useful",
+    "Pro Differentiation": "Advanced steps; reverse solve; graphing; exports",
+    "Business Differentiation": "Pro analytics + team/client/embed/API/automation",
+    "Certification": "Required before publish",
+    "Customer Trust Label": "Formula verified after certification"
+  },
+  "identity": {
+    "engineId": "launch-cylinder-volume-calculator",
+    "slug": "cylinder-volume-calculator",
+    "version": 1
+  },
+  "declaredScope": "Nonnegative dimensions in one consistent length unit. V = \u03c0r\u00b2height. Area uses square units; volume uses cubic units.",
+  "limitations": [
+    "IEEE-754 binary64; finite normal results or witnessed zero only.",
+    "Reverse solves one named dimension with other dimensions fixed; degenerate nonunique solutions are refused."
+  ],
+  "sourceEvidence": [
+    "docs/calculator-first/authority-catalog.json",
+    "src/calculators/launch-portfolio.ts",
+    "data/verification/codex-a-standard-risk-goldens-2026-10-15.json"
+  ],
+  "actualEngineExample": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 271,
+      "engineId": "launch-cylinder-volume-calculator",
+      "calculatorSlug": "cylinder-volume-calculator",
+      "calculatorVersion": 1,
+      "sourceVersion": "factory-wave1-20261112.1/launch-cylinder-volume-calculator@1/private.geometry-completion.20261113.1"
+    },
+    "raw": {
+      "radius": "3",
+      "height": "10"
+    },
+    "snapshot": {
+      "calculatorSlug": "cylinder-volume-calculator",
+      "calculatorVersion": 1,
+      "input": {
+        "radius": 3,
+        "height": 10
+      },
+      "output": {
+        "result": 282.7433388230814
+      }
+    }
+  },
+  "acceptance": {
+    "scopedEngineering": "AWAITING_FINAL_GATES",
+    "canonicalScope": "PENDING_REQUIREMENT_SPECIFIC_COMPETENT_ADJUDICATION",
+    "sourceApplicability": "PENDING_FORMAL_ACCEPTANCE",
+    "competentReview": "PENDING_NO_APPOINTED_SIGNATURE_IN_THIS_PACKET",
+    "certification": false,
+    "publicationEligible": false
+  },
+  "applicableRequirements": {
+    "mathematicalEngine": "EXISTING_IMMUTABLE_V1_PRESERVED",
+    "numericalGoldenAndBoundaries": "src/lib/calculator-factory/completion/math-next.test.ts",
+    "geometryGraph": "IMPLEMENTED_AWAITING_GENUINE_PRO_BROWSER",
+    "accountPersistence": "business-account20-result.json",
+    "BusinessDelivery": "business-automation-result.json",
+    "browserAccessibilityExports": "PENDING_FINAL_FROZEN_BUILD_RECEIPT",
+    "sourceIntegrityAndCI": "PENDING_FINAL_ADMISSION_AND_ALL_FIVE_JOBS"
+  },
+  "reviewer": null,
+  "signature": null,
+  "releaseHold": true,
+  "productionWrites": false,
+  "preparationSourceSHA": "edb2463a87cacb4999762cc797ae546ca6a2b01e",
+  "sourceByteEvidence": [
+    {
+      "path": "docs/calculator-first/authority-catalog.json",
+      "sha256": "edd257b4d358411cbacf3f8e9012541bfa1ffa9247c7f4687f3183eab384565c"
+    },
+    {
+      "path": "src/calculators/launch-portfolio.ts",
+      "sha256": "dfb7ffe1547cf96f7608a11e3ef03a95cc8186ce91760dc3bf8754995cff868f"
+    },
+    {
+      "path": "data/verification/codex-a-standard-risk-goldens-2026-10-15.json",
+      "sha256": "e5a9b33a487bfa5c083dffd45bb039df459393b1a46a11346d000e11ca1c1ec6"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+/** Historical Stage6 preflight; original286 refs and literal fetch assertions remain retained. */
+import { financialSafetySourceRefs } from '../../scripts/financial-safety-lineage.mjs';
+import { appStage5Policy } from '../completion-wave-20261113/source-app-stage5-policy.mjs';
+import { testStage6Policy } from '../completion-wave-20261113/source-test-stage6-policy.mjs';
+import { additionalStage6BootstrapRefs } from '../parallel-source-20261110/authority.mjs';
+import { execFileSync } from 'node:child_process';
+export const stage6CompletionSourceRefs=Object.freeze([
+  "a955cdad7019a645b7ed2950299d0603ba1784a7",
+  "40097d77fb84dca53207534d528e7ed8f888b99a",
+  "e5542ff7e60351e46a352cebd12210b498d5ad00",
+  "4c0f33f290fc64cd17df984816f6e075bc146532",
+  "154d28f5d879856b02636c192ea2a81f334e7836",
+  "df82f28340d58e058d17e74937cd512283ccaed6",
+  "6016a500d429680401370a255fc7064d40e35cb9",
+  "fb2531218dbf71e1116dbc90fc17367692213bdc",
+  "a342492a6da420b64a2cf63aa2ef8d8496633def",
+  "e80a691e86b5bb996a0cd0863fc810b432d7303d",
+  "b6b1a72127d40712f0d3c212188d8ca84063721b",
+  "606c44e09799a89922e4c575d24a7798d33ee33b",
+  "b2d72aa66293b752739b7924745a57a51c4b5acb",
+  "00651cc382be5dcbd596882071787fd6702c13d3",
+  "345c6cd6ed42aff39635d5e92d4adb48989b78ac",
+  "eecc1b853e2ca6c160c999442d78836993565a83",
+  "d19b8de7d74c5f85cd296946bdb69a2e3b271167",
+  "2b3ce39a3670028601491baadf9b2b2c3462be89",
+  "80d18305104a9db4a015ea26199f8b916370467c",
+  "fc45ff9c99ad8dad4ede7b780e34f1ba963efa21",
+  "17a8715276ab514c9a0c6340fc8bf67318f547d6",
+  "719a104663c10154ad945051a6dd54093fc4b284",
+  "c0f994d109ae7a5e13062ff9755d2f7937ed9655",
+  "71f285544bd85b46e51da109897c12bfff7b798f",
+  "f2e9e1c030ef736c7fa567bbf6310a6b37bd6112",
+  "756922bebd73e66a2900a35a92a3854ad2813d73",
+  "d4b81fa30d0aab558ef5df7c67a76abf7e6a656d",
+  "05129e2a74e70e23160578c63a984c4bf035ed0f",
+  "cb90a94fbe1827c1be494edd55549dff72d24405",
+  "685aefc70066d3f95562b3c90b9af58ab857812c",
+  "fdd2e943328e175cb40b29cb546391bec2e06f3d",
+  "f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5",
+  "25b56970c05aaffaad2dd856809aaf077ab70554",
+  "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
+  "f68c077b63b1dfabbe9ca3f21e4f195ef645ad97",
+  "a7bab5b5534d51cea25ba5ffe4aa9b3630176909",
+  "0c74b8135cca8892548a90eb497c46bdf022b228",
+  "91b19c36521943a5423c37f2754480e654f884f5",
+  "e71294ac0f6521fed7f0841f1d59206dc3c72262",
+  "1a15d4cb83163fa1e7b39f5559e0507ef115ea31",
+  "95ad56ea67fcce8ef18d55a0a386d97e3ddd9061",
+  "877aa7584392bdde8530dbf6eae1aae30eab6c7b",
+  "4573902dde62f607ba33acd24e16837805559e02",
+  "4c67272e2c6b7ddcbdf59398b02e066c34456e78",
+  "9c0b5dc3e3aec18ed03fb6849562ebddc854db06",
+  "a7a656f71b04b50192485a49b0b56b3fa6bd86b9",
+  "7086b85437b025225f5736fb6b849415e518dc08",
+  "811bbd67bfcc635808101a351fa15eb133331369",
+  "3c2b768ecc9e6e0821df8e74c779d134e99c4f48",
+  "56763645c091743508c1b7a163c7c59dcb7f4b7d",
+  "d1ea2fd979fa02e1d107e48aedcba72086115f6e",
+  "955e2ed5df93e646275c4d94d33548cac5925380",
+  "d416617b5c0533fe5d4d8a3f9fa5b15b9b539cbb",
+  "1ec63cd11626df15063546c7e5bfedecec33f6ee",
+  "6a8f10cb628b6f2735b184c1ca17c92b947b1b52",
+  "1b2b0ca2b373dd654ecb19e2a456754f7209c9ce",
+  "3dede6fa4c084594c4f35b5b4b17dd469436d208",
+  "f0da9eb0d35ef0e7f95b566ac875716edf4fd276",
+  "2d0e2622292930d1992813998608d933ddf5024e",
+  "23f2860c16310385f6c37f7a2bc3c86890631c98",
+  "2188237e0900b27620bc832ade902d895d085cec",
+  "7a50c124fd46f0f356affd8defde535ab7c2594c",
+  "5c3d38e9454b9dbeb9b8d1220ea8b68532fa4e01",
+  "b282c57cc6b1e72adf7435fac1e849b2bdddd85a",
+  "79bf64466663cc961fdb80365143d0c750dccc6f",
+  "12c266513db4d2a216823cba910478120f3a1cbd",
+  "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+  "7a2895d81f6e331c13c7dae0c28ea0e72d12bc92",
+  "054854bceed263ba59e8cd0052f1f3e9b1ea8e30",
+  "e62f0e6a1aa798ef8798a2edf7a031ad6bf1c152",
+  "4467b5960ce73cd7851332f7248e4d2673dad70b",
+  "47c1297eee9ff8e61620c29957f4d55a014614e0",
+  "3d6a12a8b7df35929a16368ae5e1bbf7c6cf1353",
+  "d73ccb4811787793fc25cbf5b2b2f618a41b1318",
+  "3cc17e80924a502a67d8696e60ad6592ec631f4a",
+  "4ef258cdd52aebf6c6aa1da11e94b2530223bfeb",
+  "881c62c140d881b8c7fe70ce9bd5dcc187b54c32",
+  "a963ef7aaa04664d07709cc431d6214511bc0573",
+  "b96b1ac89971cb8418d2389fbd7c9571a57491f1",
+  "cab705d4f13e17a5ec0bb3450df704c9c226e817",
+  "591969f7f1f968e8bf0a45d16defb2c1b59043d6",
+  "a9f17d4f010355eb490318c3a868d445bf38f72f",
+  "e40e4f6f3e56859e72059d840c244319ece67eb2",
+  "b6bef87acdb24b14c355ad9523abc5ed77fb1958",
+  "98fc0bfcba9379bee299450c4f73ca49d346921e",
+  "f51685f193fd411f0ebd2f341ec7dac3ce4914ed",
+  "f41f3255facac47406be9c94912edade5cce760f",
+  "9fe66f65cd7da2536f9f2f21d32fbc771bee0892"
+]);
+const governedPublicationRefs=Object.freeze(['761b850479ea36b2b4ebf8039664d8400c762555','ee3d0a70cf5a908ce3588bb02b67bbb86576a8a7']);
+const refs=Object.freeze([...new Set([...financialSafetySourceRefs,...stage6CompletionSourceRefs,...governedPublicationRefs,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...additionalStage6BootstrapRefs])].sort());
+const invoke=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],timeout:60_000,maxBuffer:1024*1024});
+export function fetchStage6SourceLineage(git=invoke){
+ if(!refs.length||refs.some(ref=>!/^[a-f0-9]{40}$/.test(ref)))throw Error('Invalid exact source revision');
+ const present=ref=>{try{return git(['rev-parse','--verify',ref+'^{commit}']).toString().trim()===ref;}catch{return false;}};
+ const missing=refs.filter(ref=>!present(ref));
+ if(missing.length)git(['fetch','--no-tags','--depth=1','origin',...missing]);
+ if(refs.some(ref=>!present(ref)))throw Error('Exact source lineage unavailable after bounded fetch');
+ return {sourceRevisions:refs.length,fetched:missing.length,releaseHold:true,productionWrites:false};
+}

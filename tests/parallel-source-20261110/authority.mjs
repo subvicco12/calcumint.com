@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 // Independently reviewed immutable cold prerequisites; populated after freezing pair code.
 export const additionalBootstrapPairProducer='e1db536aa4f46b07fadcbf3fcadb92ff8dcb59da';
-export const additionalBootstrapRefs=Object.freeze([
+export const additionalStage6BootstrapRefs=Object.freeze([
   "0180f2f3c70e16f2a26972a74b32d672c468e2ef",
   "0213788bec5fddf89e72d5c4abe2a10f799f5c50",
   "022a22bd84687c0197e4c362b33fea4da4f4876f",
@@ -143,7 +143,9 @@ export const additionalBootstrapRefs=Object.freeze([
   "fcadd96cee240b6352fbbf05e3d61eb17ea81192",
   "ff227a2d369036b877ba4222964735f04c3de7cf"
 ]);
-export const accepted=Object.freeze([
+export const additionalStage7BootstrapRefs=Object.freeze([]);
+export const additionalBootstrapRefs=additionalStage6BootstrapRefs;
+export const acceptedStage6=Object.freeze([
   {
     "path": "docs/parallel-source-20261110/capture-revision39.json",
     "blob": "eb661248ffe7626b55b54e5a628bd73bf84427d1",
@@ -885,11 +887,15 @@ export const accepted=Object.freeze([
     "sha256": "3961a6783bf142bf278c851dcb3c52a75604c7e6c3d13b80e5f4f4962c23a926"
   }
 ]);
+/** Additive independently reviewed successor records. Historical Stage6 literals stay above. */
+export const acceptedStage7=Object.freeze([]);
+export const accepted=Object.freeze([...new Map([...acceptedStage6,...acceptedStage7].map(row=>[row.path,row])).values()]);
 export function verifyParallelAuthority(read,git){
  assert(accepted.length>0,'Reviewed parallel source authority is not installed');
  // Static independently pinned objects only; all live checks below still execute.
  if(typeof git.preloadBlobs==='function')git.preloadBlobs(accepted.map(record=>record.blob));
  const head=git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[0-9a-f]{40}$/);
+ if(typeof git.preloadPaths==='function')git.preloadPaths(accepted.map(record=>({ref:head,path:record.path,blob:record.blob})));
  for(const record of accepted){assert.equal(git(['rev-parse',head+':'+record.path]).toString().trim(),record.blob,'Independent parallel HEAD authority differs: '+record.path);const bytes=git(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);assert(read(record.path).equals(bytes),'Independent current target bytes differ: '+record.path);}
  return true;
 }

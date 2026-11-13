@@ -1,4 +1,5 @@
 /** Test-only outer stage proves actual SRC20 before retaining the literal APP19 Stage5. */
+import { provePinnedSourceStage7 } from '../milestone60-20261113/source-stage7-activation.mjs';
 import assert from 'node:assert/strict';import{createHash}from'node:crypto';
 import{verifyExactStage}from'../calculator-factory-source-20261112/exact-stage.mjs';
 import{proveAppStage5AndHistoricalInputs}from'./source-app-stage5.mjs';
@@ -16,6 +17,11 @@ export function proveSourceTestStage6AndHistoricalInputs({read,git,root,policy=t
  return{live,historicalInput:{read:historicalRead,git:historicalGit,root}};
 }
 export function proveCurrentAppStage5AndHistoricalInputs(input){
+ // Stage7 proves actual SRC first. The original body below receives only its exact historical view.
+ const result=provePinnedSourceStage7(input,proveLiteralCurrentAppStage5AndHistoricalInputs);
+ return {...result,actualCurrent:result.historicalStage6,stage7Actual:result.actualCurrent};
+}
+export function proveLiteralCurrentAppStage5AndHistoricalInputs(input){
  const outer=proveSourceTestStage6AndHistoricalInputs({read:input.read,git:input.git,root:input.root});
  if(typeof input.git.preloadCommits==='function')input.git.preloadCommits(appStage5Policy.ancestry);
  const app=proveAppStage5AndHistoricalInputs({...outer.historicalInput,policy:appStage5Policy,capturePath:appStage5CapturePath});

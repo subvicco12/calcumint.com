@@ -1,0 +1,86 @@
+{
+  "kind": "UNSIGNED_CONDITIONAL_EXACT_VERSION_SCOPED_ENGINEERING_REVIEW_PACKET",
+  "catalogId": 436,
+  "catalogRow": {
+    "ID": 436,
+    "Domain": "Conversion",
+    "Calculator": "Cooking Measurement Converter",
+    "Portfolio Status": "Planned",
+    "Roadmap Phase": "Foundation / Expansion 1",
+    "Presentation Family": "Utility / conversion",
+    "Presentation Level": "A \u2014 Essential",
+    "Free Core": "Full certified core calculation",
+    "Free Visualization": "Usually none",
+    "Pro Differentiation": "History; batch/advanced conversion where useful",
+    "Business Differentiation": "Pro analytics + team/client/embed/API/automation",
+    "Certification": "Required before publish",
+    "Customer Trust Label": "Formula verified after certification"
+  },
+  "identity": {
+    "engineId": "conversion.cooking-measurement",
+    "slug": "cooking-measurement-converter",
+    "version": 1
+  },
+  "declaredScope": "Approximate household US liquid capacities using frozen v1 decimal millilitre factors, within 4e-7 relative to UCUM derived units. No ingredient mass, metric cup, imperial capacities or precision metrology.",
+  "limitations": [
+    "Engineering evidence only; canonical adoption and human acceptance remain pending."
+  ],
+  "sourceEvidence": [
+    "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip"
+  ],
+  "actualEngineExample": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 436,
+      "engineId": "conversion.cooking-measurement",
+      "calculatorSlug": "cooking-measurement-converter",
+      "calculatorVersion": 1,
+      "sourceVersion": "factory-wave1-20261112.1/conversion.cooking-measurement@1"
+    },
+    "raw": {
+      "value": "1",
+      "fromUnit": "ml",
+      "toUnit": "l"
+    },
+    "snapshot": {
+      "calculatorSlug": "cooking-measurement-converter",
+      "calculatorVersion": 1,
+      "input": {
+        "value": 1,
+        "fromUnit": "ml",
+        "toUnit": "l"
+      },
+      "output": {
+        "result": 0.001
+      }
+    }
+  },
+  "acceptance": {
+    "scopedEngineering": "AWAITING_FINAL_GATES",
+    "canonicalScope": "PENDING_REQUIREMENT_SPECIFIC_COMPETENT_ADJUDICATION",
+    "sourceApplicability": "PENDING_FORMAL_ACCEPTANCE",
+    "competentReview": "PENDING_NO_APPOINTED_SIGNATURE_IN_THIS_PACKET",
+    "certification": false,
+    "publicationEligible": false
+  },
+  "applicableRequirements": {
+    "mathematicalEngine": "EXISTING_IMMUTABLE_V1_PRESERVED",
+    "numericalGoldenAndBoundaries": "src/lib/calculator-factory/completion/conversion-next.test.ts",
+    "geometryGraph": "CATALOG_USUALLY_NONE_NO_NA_WAIVER_INFERRED",
+    "accountPersistence": "business-account20-result.json",
+    "BusinessDelivery": "business-automation-result.json",
+    "browserAccessibilityExports": "PENDING_FINAL_FROZEN_BUILD_RECEIPT",
+    "sourceIntegrityAndCI": "PENDING_FINAL_ADMISSION_AND_ALL_FIVE_JOBS"
+  },
+  "reviewer": null,
+  "signature": null,
+  "releaseHold": true,
+  "productionWrites": false,
+  "preparationSourceSHA": "edb2463a87cacb4999762cc797ae546ca6a2b01e",
+  "sourceByteEvidence": [
+    {
+      "path": "docs/first-live-closure-20261108/source/ucum-v2.2-native-source.zip",
+      "sha256": "2b0496305b2caa4748859667519ff7ed10dc241fcdad5d2ff0a23801457a447b"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ function verifyBlob(id,content){
 }
 /** Cache only objects addressed by full immutable Git identities. Symbolic requests stay live. */
 export function makeGitReader(invoke){
- const trees=new Map(),blobs=new Map(),commits=new Map(),commitObjects=new Map();
+ const trees=new Map(),blobs=new Map(),commits=new Map(),commitObjects=new Map(),immutablePaths=new Map();
  function tree(ref){
   if(trees.has(ref))return trees.get(ref);
   const raw=bytes(invoke(['ls-tree','-rz','--full-tree',ref]));const entries=new Map();let offset=0;
@@ -39,10 +39,30 @@ export function makeGitReader(invoke){
   }
   if(args.length===2&&(args[0]==='rev-parse'||args[0]==='show')){
    const match=/^([0-9a-f]{40}):(.*)$/s.exec(args[1]);
-   if(match){const entry=tree(match[1]).get(match[2]);if(entry?.type==='blob')return args[0]==='rev-parse'?Buffer.from(entry.id+'\n'):blob(entry.id);}
+   if(match){const pinned=immutablePaths.get(args[1]);if(pinned)return args[0]==='rev-parse'?Buffer.from(pinned+'\n'):blob(pinned);const entry=tree(match[1]).get(match[2]);if(entry?.type==='blob')return args[0]==='rev-parse'?Buffer.from(entry.id+'\n'):blob(entry.id);}
   }
   return invoke(args);
  }
+ /** Exact immutable path mappings only. Symbolic/current requests never enter this cache. */
+ reader.preloadPaths=records=>{
+  if(!Array.isArray(records)||records.length>4096)throw Error('Finite independently pinned immutable path records required');
+  const nominated=new Map();let commandBytes=0;
+  for(const record of records){
+   const{ref,path,blob:expected}=record??{};
+   if(typeof ref!=='string'||!objectId.test(ref)||typeof expected!=='string'||!objectId.test(expected)||typeof path!=='string'||!path||path.length>1024||path.startsWith('/')||/[\0\r\n]/.test(path)||path.split('/').some(part=>!part||part==='.'||part==='..'))throw Error('Full immutable commit/path/blob identity required');
+   const spec=ref+':'+path;commandBytes+=Buffer.byteLength(spec)+1;if(commandBytes>512*1024)throw Error('Immutable path batch exceeds finite argument budget');
+   if(nominated.has(spec)&&nominated.get(spec)!==expected)throw Error('Conflicting immutable path nomination');
+   if(immutablePaths.has(spec)&&immutablePaths.get(spec)!==expected)throw Error('Immutable path cache poisoning refused');
+   nominated.set(spec,expected);
+  }
+  const pending=[...nominated].filter(([spec])=>!immutablePaths.has(spec));if(!pending.length)return;
+  const output=bytes(invoke(['rev-parse','--revs-only','--end-of-options',...pending.map(([spec])=>spec)],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,timeout:30000})).toString('utf8');
+  const lines=output.endsWith('\n')?output.slice(0,-1).split('\n'):[];
+  if(lines.length!==pending.length)throw Error('Immutable path batch output cardinality differs');
+  for(let index=0;index<pending.length;index++)if(!objectId.test(lines[index])||lines[index]!==pending[index][1])throw Error('Immutable path object substitution refused');
+  // Install nothing until every output has passed validation.
+  for(const[spec,expected]of pending)immutablePaths.set(spec,expected);
+ };
  reader.preloadBlobs=ids=>{
   if(!Array.isArray(ids)||ids.some(id=>typeof id!=='string'||!objectId.test(id)))throw Error('Full immutable Git blob identities required');
   const pending=[...new Set(ids)].filter(id=>!blobs.has(id));if(!pending.length)return;

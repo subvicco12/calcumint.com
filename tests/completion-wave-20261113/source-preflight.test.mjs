@@ -1,7 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import{readFileSync}from'node:fs';
-import {fetchSourceLineage} from '../../scripts/fetch-source-lineage.mjs';
+import {fetchStage6SourceLineage as fetchSourceLineage,stage6CompletionSourceRefs as completionSourceRefs} from '../milestone60-20261113/source-preflight-retained-stage6.mjs';
 import {financialSafetySourceRefs} from '../../scripts/financial-safety-lineage.mjs';
-import {completionSourceRefs} from '../../scripts/product-completion-lineage.mjs';
 import {appStage5Policy} from './source-app-stage5-policy.mjs';
 import {testStage6Policy} from './source-test-stage6-policy.mjs';
 import {additionalBootstrapRefs,additionalBootstrapPairProducer} from '../parallel-source-20261110/authority.mjs';

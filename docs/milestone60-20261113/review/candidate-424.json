@@ -1,0 +1,86 @@
+{
+  "kind": "UNSIGNED_CONDITIONAL_EXACT_VERSION_SCOPED_ENGINEERING_REVIEW_PACKET",
+  "catalogId": 424,
+  "catalogRow": {
+    "ID": 424,
+    "Domain": "Conversion",
+    "Calculator": "Area Converter",
+    "Portfolio Status": "Planned",
+    "Roadmap Phase": "Foundation / Expansion 1",
+    "Presentation Family": "Utility / conversion",
+    "Presentation Level": "A \u2014 Essential",
+    "Free Core": "Full certified core calculation",
+    "Free Visualization": "Usually none",
+    "Pro Differentiation": "History; batch/advanced conversion where useful",
+    "Business Differentiation": "Pro analytics + team/client/embed/API/automation",
+    "Certification": "Required before publish",
+    "Customer Trust Label": "Formula verified after certification"
+  },
+  "identity": {
+    "engineId": "conversion.area",
+    "slug": "area-converter",
+    "version": 1
+  },
+  "declaredScope": "Fixed-unit scalar conversion through the exact existing v1 factor table. Decimal input is represented by binary64; physical applicability, source review and complete canonical acceptance are separate. The caller must refuse nonzero input rounded to zero by a linear conversion. Squared international-length area factors; no land-jurisdiction assessment.",
+  "limitations": [
+    "Offered unit codes only; formal canonical and source applicability remain subject to competent acceptance."
+  ],
+  "sourceEvidence": [
+    "src/lib/publication20/conversions.ts"
+  ],
+  "actualEngineExample": {
+    "schemaVersion": 1,
+    "identity": {
+      "catalogId": 424,
+      "engineId": "conversion.area",
+      "calculatorSlug": "area-converter",
+      "calculatorVersion": 1,
+      "sourceVersion": "factory-wave1-20261112.1/conversion.area@1"
+    },
+    "raw": {
+      "value": "1",
+      "fromUnit": "acre",
+      "toUnit": "m2"
+    },
+    "snapshot": {
+      "calculatorSlug": "area-converter",
+      "calculatorVersion": 1,
+      "input": {
+        "value": 1,
+        "fromUnit": "acre",
+        "toUnit": "m2"
+      },
+      "output": {
+        "result": 4046.8564224
+      }
+    }
+  },
+  "acceptance": {
+    "scopedEngineering": "AWAITING_FINAL_GATES",
+    "canonicalScope": "PENDING_REQUIREMENT_SPECIFIC_COMPETENT_ADJUDICATION",
+    "sourceApplicability": "PENDING_FORMAL_ACCEPTANCE",
+    "competentReview": "PENDING_NO_APPOINTED_SIGNATURE_IN_THIS_PACKET",
+    "certification": false,
+    "publicationEligible": false
+  },
+  "applicableRequirements": {
+    "mathematicalEngine": "EXISTING_IMMUTABLE_V1_PRESERVED",
+    "numericalGoldenAndBoundaries": "src/lib/calculator-factory/completion/conversion-next.test.ts",
+    "geometryGraph": "CATALOG_USUALLY_NONE_NO_NA_WAIVER_INFERRED",
+    "accountPersistence": "business-account20-result.json",
+    "BusinessDelivery": "RETAINED_EXACT_V1_PLUS_CURRENT_GENUINE_BROWSER_PENDING",
+    "browserAccessibilityExports": "PENDING_FINAL_FROZEN_BUILD_RECEIPT",
+    "sourceIntegrityAndCI": "PENDING_FINAL_ADMISSION_AND_ALL_FIVE_JOBS"
+  },
+  "reviewer": null,
+  "signature": null,
+  "releaseHold": true,
+  "productionWrites": false,
+  "preparationSourceSHA": "edb2463a87cacb4999762cc797ae546ca6a2b01e",
+  "sourceByteEvidence": [
+    {
+      "path": "src/lib/publication20/conversions.ts",
+      "sha256": "33294ef227aa6e4a4a14f4282dcda1834a03396e62c6a0dbc5d4fb932472ec8c"
+    }
+  ]
+}

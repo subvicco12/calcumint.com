@@ -6,9 +6,15 @@ import{sourcePreflightCapturePath,sourcePreflightPolicy as policy}from'./source-
 const sourceRoot=fileURLToPath(new URL('../../',import.meta.url)),paths=['scripts/fetch-source-lineage.mjs','tests/source-lineage-bootstrap.test.mjs'];
 const hash=b=>createHash('sha256').update(b).digest('hex');
 function replaceOnce(text,before,after){assert.equal(text.split(before).length,2,'Exact preflight insertion preimage required');return text.replace(before,after);}
-export function expectedPreflightSource(previous){
+export function expectedStage6PreflightSource(previous){
  const imports="import {completionSourceRefs} from './product-completion-lineage.mjs';";
  return replaceOnce(replaceOnce(previous,imports,imports+"\nimport {appStage5Policy} from '../tests/completion-wave-20261113/source-app-stage5-policy.mjs';\nimport {testStage6Policy} from '../tests/completion-wave-20261113/source-test-stage6-policy.mjs';\nimport {additionalBootstrapRefs} from '../tests/parallel-source-20261110/authority.mjs';"),'...completionSourceRefs,...governedPublicationRefs])','...completionSourceRefs,...governedPublicationRefs,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...additionalBootstrapRefs])');
+}
+export function expectedPreflightSource(previous){
+ const retained=expectedStage6PreflightSource(previous);
+ const imports="import {testStage6Policy} from '../tests/completion-wave-20261113/source-test-stage6-policy.mjs';";
+ const extended=replaceOnce(replaceOnce(retained,imports,imports+"\nimport {sourceStage7Policy} from '../tests/milestone60-20261113/source-stage7-policy.mjs';"),'...testStage6Policy.ancestry,...additionalBootstrapRefs','...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs');
+ return replaceOnce(extended,"import {additionalBootstrapRefs} from '../tests/parallel-source-20261110/authority.mjs';","import {additionalBootstrapRefs,additionalStage7BootstrapRefs} from '../tests/parallel-source-20261110/authority.mjs';");
 }
 export function expectedPreflightAudit(previous){
  const imports="import {fetchSourceLineage} from '../scripts/fetch-source-lineage.mjs';";

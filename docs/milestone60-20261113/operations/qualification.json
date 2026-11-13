@@ -1,0 +1,30 @@
+{
+  "status": "OFFLINE_QUALIFIED_RELEASE_HELD",
+  "productionExecutionAuthorized": false,
+  "sourcePinsChecked": 19,
+  "unsignedControls": 10,
+  "referenceAssessment": {
+    "status": "BLOCKED_MISSING_EXTERNAL_EVIDENCE",
+    "missing": [
+      "writerRoster",
+      "ddlFreezePlan",
+      "pauseDrainResume",
+      "backupCheckpoint",
+      "testedRestoreReceipt",
+      "credentialCustody",
+      "deployedCommit",
+      "rpcClientCompatibility",
+      "reversalAuthority",
+      "withdrawalAuthority"
+    ],
+    "productionExecutionAuthorized": false,
+    "readOnly": true,
+    "limitations": "Reference syntax/presence only; does not verify truth, custody, freeze, backup availability, competence or deployment."
+  },
+  "retainedFixture": {
+    "startedAt": "2026-11-07T19:14:09.111Z",
+    "finishedAt": "2026-11-07T19:14:25.454Z",
+    "checks": 19
+  },
+  "limitations": "Offline byte integrity, retained finite fixture behavior and reference-schema validation only; no production truth, current freeze, recoverability, authority or client deployment attestation."
+}
