@@ -1,12 +1,14 @@
 /** Named exact-Git successor. Historical R5 executes unchanged; current targets never use its view. */
 import assert from 'node:assert/strict';
-import {appStage5Records,proveAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-app-stage5.mjs';
+import {appStage5Records} from '../completion-wave-20261113/source-app-stage5.mjs';
+import {proveCurrentAppStage5AndHistoricalInputs,testStage6Records} from '../completion-wave-20261113/source-test-stage6.mjs';
+import {testStage6Policy,testStage6CapturePath} from '../completion-wave-20261113/source-test-stage6-policy.mjs';
 import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import {ensureAppStage5Objects} from './bootstrap.mjs';
-const stage5Paths=new Set(appStage5Policy.paths);
+const stage5Paths=new Set([...appStage5Policy.paths,...testStage6Policy.paths]);
 const stage5Input=(read,git)=>({read,git,root,policy:appStage5Policy,capturePath:appStage5CapturePath});
-const stage5Rows=read=>appStage5Records({read,policy:appStage5Policy,capturePath:appStage5CapturePath});
-function proveStage5(read,git){ensureAppStage5Objects();return proveAppStage5AndHistoricalInputs(stage5Input(read,git)).live;}
+const stage5Rows=read=>new Map([...appStage5Records({read,policy:appStage5Policy,capturePath:appStage5CapturePath}),...testStage6Records(read)]);
+function proveStage5(read,git){ensureAppStage5Objects();return proveCurrentAppStage5AndHistoricalInputs(stage5Input(read,git)).actualCurrent;}
 
 import {retainedWorkflowRecord} from '../ci-balance-20261113/workflow.mjs';
 import {readFileSync,lstatSync,realpathSync} from 'node:fs';
@@ -34,7 +36,7 @@ const personalPaths=new Set(personalPolicy.paths),personalAuxiliaryPaths=new Set
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision58.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision59.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -228,8 +230,8 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
 export function preloadRetainedImmutableObjects(read,git){
  verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git,{defaultRetainedCommitBatch:true});
  const ids=new Set();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);}Object.values(value).forEach(visit);}};
- const finite=[capturePath,appStage5CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath];
+ const finite=[capturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath];
  for(const path of finite){assert(accepted.some(row=>row.path===path),"Preloaded capture must have independent authority");visit(JSON.parse(read(path)));}
- git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry])]);
+ git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry])]);
  git.preloadBlobs([...ids]);
 }
