@@ -7,10 +7,10 @@ import {verifyParallelSource,capturePath,parseRows} from './core.mjs';
 import {sourceGit} from './baseline-runtime.mjs';
 import {ensureParallelSources} from './bootstrap.mjs';
 import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
-import {proveAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-app-stage5.mjs';
+import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'c3f0fbb78d5f96bafffdae7e26f166af5c9fdb78',sha256:'47f15af52d9c413e21add385f80cf9df6b7274d331ebb69846dd767a57ac6ece'};
+const expectedAuthority={blob:'3faec2f327aefe53f8ebf95f32e99fdb04c6a934',sha256:'12c88b71e865a3e707f66b2087828bf2dc4211d3f06867750d5709e73f6fdef3'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
@@ -66,16 +66,16 @@ test('factory capture and literal policy are independently governed',()=>{
 
 // Stage5 reads actual complete current SRC before any literal Stage4 projection.
 test('exact Stage5 actual application source is live and finite',()=>{
- const result=proveAppStage5AndHistoricalInputs({read:readFileSync,git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath});
+ const result=proveCurrentAppStage5AndHistoricalInputs({read:readFileSync,git:sourceGit,root:process.cwd()});assert.equal(result.testOnly.size,1);assert.equal(result.actualCurrent.size,20);
  assert.deepEqual([...result.live.keys()],appStage5Policy.paths);assert.equal(result.live.size,19);assert.equal(appStage5Policy.ancestry.length,51);
 
 });
-for(const path of appStage5Policy.paths)test('Stage5 refuses altered actual current application bytes '+path,()=>assert.throws(()=>proveAppStage5AndHistoricalInputs({read:name=>name===path?Buffer.from('tampered actual frozen application'):readFileSync(name),git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath}),/Current factory bytes differ/));
+for(const path of appStage5Policy.paths)test('Stage5 refuses altered actual current application bytes '+path,()=>assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({read:name=>name===path?Buffer.from('tampered actual frozen application'):readFileSync(name),git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath}),/Current factory bytes differ/));
 for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests/completion-wave-20261113/source-app-stage5-policy.mjs',appStage5CapturePath])test('Stage5 proof imports and finite capture remain independent authority '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/));
 
 test('mandatory source guard regressions exercise exact source and immutable availability without skips',()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6]]){
+ for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',5]]){
   const tap=execFileSync(process.execPath,['tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});
   for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
  }
