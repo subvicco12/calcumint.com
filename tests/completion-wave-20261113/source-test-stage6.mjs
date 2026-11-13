@@ -17,6 +17,7 @@ export function proveSourceTestStage6AndHistoricalInputs({read,git,root,policy=t
 }
 export function proveCurrentAppStage5AndHistoricalInputs(input){
  const outer=proveSourceTestStage6AndHistoricalInputs({read:input.read,git:input.git,root:input.root});
+ if(typeof input.git.preloadCommits==='function')input.git.preloadCommits(appStage5Policy.ancestry);
  const app=proveAppStage5AndHistoricalInputs({...outer.historicalInput,policy:appStage5Policy,capturePath:appStage5CapturePath});
  return{...app,testOnly:outer.live,actualCurrent:new Map([...app.live,...outer.live])};
 }
