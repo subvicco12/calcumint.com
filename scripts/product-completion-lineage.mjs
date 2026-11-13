@@ -4014,6 +4014,12 @@ const bindings=[
         "ref": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
         "blob": "5a6c1698541635ae5f06f4c487f98872bc278c90",
         "sha256": "15f479cacb572a9b625f5522fb8961cd198dc5945f5f88298141651ff709869f"
+      },
+      {
+        "path": "src/lib/parallel-source-evidence.test.ts",
+        "ref": "e62f0e6a1aa798ef8798a2edf7a031ad6bf1c152",
+        "blob": "11db8552d453ebdb34d6207d7ed830a2d92df105",
+        "sha256": "bd6cd9876c48cde293086444e5821776f81c1df8eb1f44ab612bca7b17f46dc8"
       }
     ],
     "intermediateSources": [

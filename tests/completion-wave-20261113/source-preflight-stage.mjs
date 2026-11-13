@@ -8,7 +8,7 @@ const hash=b=>createHash('sha256').update(b).digest('hex');
 function replaceOnce(text,before,after){assert.equal(text.split(before).length,2,'Exact preflight insertion preimage required');return text.replace(before,after);}
 export function expectedPreflightSource(previous){
  const imports="import {completionSourceRefs} from './product-completion-lineage.mjs';";
- return replaceOnce(replaceOnce(previous,imports,imports+"\nimport {appStage5Policy} from '../tests/completion-wave-20261113/source-app-stage5-policy.mjs';"),'...completionSourceRefs,...governedPublicationRefs])','...completionSourceRefs,...governedPublicationRefs,...appStage5Policy.ancestry])');
+ return replaceOnce(replaceOnce(previous,imports,imports+"\nimport {appStage5Policy} from '../tests/completion-wave-20261113/source-app-stage5-policy.mjs';\nimport {testStage6Policy} from '../tests/completion-wave-20261113/source-test-stage6-policy.mjs';"),'...completionSourceRefs,...governedPublicationRefs])','...completionSourceRefs,...governedPublicationRefs,...appStage5Policy.ancestry,...testStage6Policy.ancestry])');
 }
 export function expectedPreflightAudit(previous){
  const imports="import {fetchSourceLineage} from '../scripts/fetch-source-lineage.mjs';";

@@ -1,6 +1,6 @@
 /** Live exact two-test proof precedes the unchanged Stage3 application proof. */
 import assert from 'node:assert/strict';
-import {proveAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-app-stage5.mjs';
+import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/source-app-stage5-policy.mjs';
 import {ensureAppStage5Objects} from '../parallel-source-20261110/bootstrap.mjs';
 import {createHash} from 'node:crypto';
@@ -11,7 +11,7 @@ import {personalPolicy} from './personal-policy.mjs';
 export function testStageRecords(read){const bytes=read(testStageCapturePath);assert.equal(createHash('sha256').update(bytes).digest('hex'),testStagePolicy.captureSHA256,'Exact test-only capture digest required');return new Map(JSON.parse(bytes).rows.map(row=>[row.path,row]));}
 export function proveTestStageAndHistoricalInputs(input){
  ensureAppStage5Objects();
- const stage5=proveAppStage5AndHistoricalInputs({...input,policy:appStage5Policy,capturePath:appStage5CapturePath});
+ const stage5=proveCurrentAppStage5AndHistoricalInputs(input);
  const {read,git,root}=stage5.historicalInput;
  const bytes=read(testStageCapturePath);
  assert.equal(createHash('sha256').update(bytes).digest('hex'),testStagePolicy.captureSHA256,'Exact test-only capture digest required');
