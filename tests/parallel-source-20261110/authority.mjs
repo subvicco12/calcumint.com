@@ -1,6 +1,9 @@
 /** Filled only after independent review of an actual committed candidate. */
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+// Independently reviewed immutable cold prerequisites; populated after freezing pair code.
+export const additionalBootstrapPairProducer=null;
+export const additionalBootstrapRefs=Object.freeze([]);
 export const accepted=Object.freeze([
   {
     "path": "docs/parallel-source-20261110/capture-revision39.json",
