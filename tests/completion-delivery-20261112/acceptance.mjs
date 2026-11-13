@@ -36,6 +36,7 @@ async function main(){
  await mkdir(out,{recursive:true});const producerCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
  assert.equal(execFileSync('git',['status','--porcelain','--','tests/completion-delivery-20261112'],{encoding:'utf8'}).trim(),'','Commit producer before invocation');
  const report={kind:'NINE_INTEGRATED_GENUINE_NEXT_ACCOUNT_SHARING_EMBED_BROWSER',producerCommit,applicationSourceCommit:producerCommit,freeHistory:[],sharing:[],embed:[],api:[],uiIssuedGrants:{},roleChecks:[],releaseHold:true,productionWrites:false,canonicalAccepted:false,limitations:['Genuine disposable GoTrue/PostgREST/Postgres and byte-bound production Next composition; hosted equivalence is unknown.','Conditional positive embed publication uses explicit lower repository-reader and hosted-manifest fixtures only; no approvals or lifecycle records created.','Prior54 download-byte receipts,66 RPC observations,27 genuine Next journeys and17 automation receiver checks are reused, not rerun.']};
+ if(waveCasesFile){report.kind='SIXTEEN_INTEGRATED_GENUINE_NEXT_ACCOUNT_SHARING_EMBED_BROWSER';report.disposableCommercialFixture={rateLimitPerMinute:1000,monthlyQuota:10000,scope:'Explicit isolated positive fixture values; no provider policy or entitlement claim'};report.exactCases=activeCases.map(({id,engine,slug,version})=>({catalogId:id,engine,slug,version}));}
  let db,next,browser,parent,deniedParent;let passed=false;
  try{
   db=await startGoTrueFixture({initializeSchema:initializeFullSchema});registerCredentials(db.anonKey,db.serviceKey);
