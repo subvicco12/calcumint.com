@@ -10,7 +10,7 @@ import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/
 import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'3faec2f327aefe53f8ebf95f32e99fdb04c6a934',sha256:'12c88b71e865a3e707f66b2087828bf2dc4211d3f06867750d5709e73f6fdef3'};
+const expectedAuthority={blob:'3b2a68dc6c9e21c89e317fb345b9a76d055d5e93',sha256:'0bb11f68f226606c3e8662b3b3638c99a0670c41ea123ece3e75a37444e9f04d'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
@@ -75,7 +75,7 @@ for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests
 
 test('mandatory source guard regressions exercise exact source and immutable availability without skips',()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',5]]){
+ for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',6]]){
   const tap=execFileSync(process.execPath,['tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});
   for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
  }

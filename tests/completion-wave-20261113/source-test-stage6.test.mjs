@@ -2,6 +2,8 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import{mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync,symlinkSync}from'node:fs';import{tmpdir}from'node:os';import{resolve,join}from'node:path';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';
 import{proveSourceTestStage6AndHistoricalInputs as prove,proveCurrentAppStage5AndHistoricalInputs}from'./source-test-stage6.mjs';
 import{sourceGit}from'../parallel-source-20261110/baseline-runtime.mjs';
+import{appStage5Policy}from'./source-app-stage5-policy.mjs';
+import{testStage6Policy}from'./source-test-stage6-policy.mjs';
 const repo=resolve(new URL('../../',import.meta.url).pathname),pre='8cbf39c4fd62e4c4a5cf08447cd669171ae32e79',path='src/lib/parallel-source-evidence.test.ts',sha=b=>createHash('sha256').update(b).digest('hex');
 const run=(cwd,args)=>execFileSync('git',args,{cwd,stdio:['ignore','pipe','pipe'],maxBuffer:16000000});
 function fixture(){
@@ -15,3 +17,12 @@ test('current bytes, retained-valid reversion, dirty state and unknown SRC canno
 test('malformed capture, substituted current HEAD path and commit parents cannot nominate themselves',()=>withFixture(f=>{assert.throws(()=>prove({...f,read:name=>name===f.capturePath?Buffer.from('{}'):f.read(name)}),/capture digest differs/);assert.throws(()=>prove({...f,git:args=>args[0]==='rev-parse'&&args[1]===f.policy.codeRef+':'+path?Buffer.from('0'.repeat(40)+'\n'):f.git(args)}));assert.throws(()=>prove({...f,git:args=>args[0]==='cat-file'&&args[1]==='commit'&&args[2]===f.policy.codeRef?Buffer.from('substituted parent'):f.git(args)}),/content address/);}));
 test('redirected filesystem target remains forbidden despite matching retained bytes',()=>withFixture(f=>{const target=join(f.root,path),bytes=f.read(path);rmSync(target);writeFileSync(join(f.root,'same-bytes'),bytes);symlinkSync(join(f.root,'same-bytes'),target);assert.throws(()=>prove(f));}));
 test('actual outer SRC20 composes literal Stage5 APP19 and one test-only successor',()=>{const p=proveCurrentAppStage5AndHistoricalInputs({read:readFileSync,git:sourceGit,root:repo});assert.equal(p.live.size,19);assert.equal(p.testOnly.size,1);assert.equal(p.actualCurrent.size,20);assert.equal(p.testOnly.get(path).predecessor.ref,pre);});
+
+test('APP immutable preload reaches the original reader only after outer success and cannot bypass current proof',()=>{
+ const calls=[],events=[];const git=(args,options)=>sourceGit(args,options);git.preloadCommits=refs=>{calls.push([...refs]);events.push(refs.length===appStage5Policy.ancestry.length?'app-preload':'test-preload');sourceGit.preloadCommits(refs);};
+ const read=name=>{if(name===path)events.push('actual-test-bytes');return readFileSync(name);};
+ proveCurrentAppStage5AndHistoricalInputs({read,git,root:repo});assert(calls.some(refs=>JSON.stringify(refs)===JSON.stringify(appStage5Policy.ancestry)),'APP51 must reach the original owned immutable reader');assert(events.indexOf('actual-test-bytes')<events.indexOf('app-preload'));
+ calls.length=0;const old=sourceGit(['show',pre+':'+path]);assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({read:name=>name===path?old:readFileSync(name),git,root:repo}),/Current factory bytes differ/);assert(!calls.some(refs=>refs.length===appStage5Policy.ancestry.length),'Outer current source refusal must happen before APP preload');
+ const target=appStage5Policy.ancestry.find(ref=>!testStage6Policy.ancestry.includes(ref));assert(target);const substituted=(args,options)=>args[0]==='cat-file'&&args[1]==='commit'&&args[2]===target?Buffer.from('substituted APP commit after preload'):sourceGit(args,options);substituted.preloadCommits=git.preloadCommits;
+ assert.throws(()=>proveCurrentAppStage5AndHistoricalInputs({read:readFileSync,git:substituted,root:repo}),/Commit content address differs/);
+});
