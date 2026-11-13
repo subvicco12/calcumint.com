@@ -41,7 +41,8 @@ export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
 export const retainedStage6CapturePath='docs/parallel-source-20261110/capture-revision62.json';
 export const retainedStage7CapturePath='docs/parallel-source-20261110/capture-revision64.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision65.json';
+export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-revision65.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision66.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -243,7 +244,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
 export function preloadRetainedImmutableObjects(read,git){
  verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git,{defaultRetainedCommitBatch:true});
  const ids=new Set(),paths=new Map();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);if(typeof value.ref==='string'&&/^[a-f0-9]{40}$/.test(value.ref)&&typeof value.path==='string'){const key=value.ref+':'+value.path;assert(!paths.has(key)||paths.get(key).blob===value.blob,'Conflicting independently pinned path records');paths.set(key,{ref:value.ref,path:value.path,blob:value.blob});}}Object.values(value).forEach(visit);}};
- const finite=[capturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath];
+ const finite=[capturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
  for(const path of finite){assert(accepted.some(row=>row.path===path),"Preloaded capture must have independent authority");visit(JSON.parse(read(path)));}
  git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
