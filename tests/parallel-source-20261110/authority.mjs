@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "e1773ffbf7d3de4a76b386a5cfb3857b6a9a7217",
-    "sha256": "4c75a61032d1385df08ecdea6e26655b4c1d0585e9008cf7583cbe60ebfdda35"
+    "blob": "b3d9f3b2de803f054fe0155a5af4087737998deb",
+    "sha256": "ecb3b926f07c87e02da233206cd7a1db963faaf6dadb32ab11db0a6432d6a592"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "52eae312760638131b04fce673a1014c167a172e",
-    "sha256": "aef85694285ea13210006d4f57cae15b84c0c2fad8fb10039c0ff2397dd48ab0"
+    "blob": "795782812594374a99896ae0fbd0b0c5b2906f2e",
+    "sha256": "400178f4ea0bfae85342997e18b5aacb7f5858539c2fdeb22b19cfab21febc18"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -214,8 +214,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-first-20261112/non-source-stage2.mjs",
-    "blob": "92bcdb9056f368d72e0358632543960a8355099f",
-    "sha256": "d942cbe00ba421621032a45e39523fc61fe9a035ace3f73303d64163b6419d19"
+    "blob": "1d7eda73e97958d1ec32d9b9933bc120d6ce744f",
+    "sha256": "e57ef0f2dc89e42d7070b8e5d65de90b72bc12d96c0b53ba48a79e9ed4d1c2ea"
   },
   {
     "path": "tests/completion-first-20261112/non-source-policy.mjs",
@@ -321,6 +321,41 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision44.json",
     "blob": "d49ab45bede2f911207002328a9dbce536a40444",
     "sha256": "a077d5afbbd4353f46e49af452a7ccdbb1aac9b4b235c51623e805f377a4fab5"
+  },
+  {
+    "path": "src/lib/ci-retained-workflow-availability.test.ts",
+    "blob": "be0c0f6700c40da9e07af425edc40829c8a7450f",
+    "sha256": "b43f4b461bafc29df67812606587fd2d6dbce7b323dc63c18ff5f98fa4ef6e8e"
+  },
+  {
+    "path": "src/lib/thirteen-program-evidence.test.ts",
+    "blob": "eec1656acc29e69ae8ed5b720840b69384756bfd",
+    "sha256": "625903e718b17eeb967c42b535e1b390cbefdf91fb70eaacd74ee6786d7c5e94"
+  },
+  {
+    "path": "tests/ci-rpc-recovery-20261113/async-verifier.mjs",
+    "blob": "7b9c56390e02e319f23fd8a558b12f68598cbc2b",
+    "sha256": "c9aece4566f35d0cd697b4377817eb068635bde4db242989789e4038255d6cf3"
+  },
+  {
+    "path": "tests/ci-rpc-recovery-20261113/async-verifier.test.mjs",
+    "blob": "4a5a749cecd349a337740bd37d2f6e452f5d18f7",
+    "sha256": "9ae0eb14f65ebe737ff3b849b131c6e02b22b4e67f5360900b03308bc86b56a2"
+  },
+  {
+    "path": "tests/ci-rpc-recovery-20261113/retained-case.mjs",
+    "blob": "a9a0dfc14adf6873432fc089f8a19eb91b6bb883",
+    "sha256": "ee250e132ff345f932f5c71b2299bb6c027d6c6587095cc423db4b4b35b1ba4d"
+  },
+  {
+    "path": "tests/completion-first-20261112/non-source-availability.test.mjs",
+    "blob": "f8f8d56987b148a24ff058e8eba5366bc0608316",
+    "sha256": "f081bd3d51477e38a2ebae37893a421cd1ac0456a037cd1b3612f7dde560be19"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision45.json",
+    "blob": "d63f4b27191bfff8d247c37ac1cb4502893abe28",
+    "sha256": "e10809269673ca33a65ba83bb4215c754eb71d50d6897cffcd701737000cda47"
   }
 ]);
 export function verifyParallelAuthority(read,git){
