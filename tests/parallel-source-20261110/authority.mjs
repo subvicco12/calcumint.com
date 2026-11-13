@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "ea8ecab58e8b9e67a9ea55dc7cd0b4d5abf21ecc",
-    "sha256": "a40c0aa294fe317df0bfb95cbe815b45935ced6489c1114ae5b43c3fa1603388"
+    "blob": "3a236e8e20cd0c10d2a5cd1a6c2e2203ead34284",
+    "sha256": "683163beea06109e139f5271c89bfdc20bc002d9cb56b7e33dd75eede3aaf2bc"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "deccb3da4e95c3d8e2fd2bd5a0daf81607eb7bca",
-    "sha256": "1b5c3dff0393d4ebee4e2c288402db486fff5c41c85e04c19480c53e1c18304f"
+    "blob": "de5c948a7c6528751a5143d4ea23eb7bc2a6faba",
+    "sha256": "4759215b07046911f902cf7dc2d569cf4d213f7d55e1d9ecb7023ae6eab3348d"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -419,8 +419,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/ci-balance-20261113/workflow.mjs",
-    "blob": "a2fae169269246e31d9efbbcfa15f0343d3e7417",
-    "sha256": "279fdbb094834efd0f88cad3bad91c9bd0818067490f3aac887c43eca9c19aa9"
+    "blob": "b38b8831f94a36780154856aee1d9b2d587fe0b6",
+    "sha256": "015fe6503e497362109e3afb8277556a43a87d880ff4dead087bf6a965f1750b"
   },
   {
     "path": "tests/ci-gate-recovery/balanced-workflow.test.mjs",
@@ -441,6 +441,11 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision51.json",
     "blob": "75255eb6db6a5f01e9a095188213745d02e34428",
     "sha256": "ad32720fc8c499312e40074c1d7c9fdaa147af28ec75f02c0474a515666c5dd3"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision52.json",
+    "blob": "62fda2b086a8965cc33194ae952e0b8b36b5676d",
+    "sha256": "05ffb5df0a02cd8f1ffa128ead807a68490e46799335a83eb7c6a080300c36d8"
   }
 ]);
 export function verifyParallelAuthority(read,git){
