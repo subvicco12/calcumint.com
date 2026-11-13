@@ -4,7 +4,7 @@ import{proveSourcePreflightAndHistoricalInputs as prove,expectedPreflightSource,
 import{sourcePreflightPolicy as policy,sourcePreflightCapturePath}from'./source-preflight-policy.mjs';
 const script='scripts/fetch-source-lineage.mjs',audit='tests/source-lineage-bootstrap.test.mjs',input={read:readFileSync,git};
 test('only exact two-line script and minimal historical audit wrapper derive from immutable predecessor',()=>{
- for(const[path,derive]of[[script,expectedPreflightSource],[audit,expectedPreflightAudit]]){const old=git(['show',policy.predecessorRef+':'+path]).toString();assert.equal(readFileSync(path,'utf8'),derive(old));assert.throws(()=>derive(old.replace('import {','import altered {')));}
+ for(const[path,derive]of[[script,expectedPreflightSource],[audit,expectedPreflightAudit]]){const old=git(['show',policy.predecessorRef+':'+path]).toString();assert.equal(readFileSync(path,'utf8'),derive(old));assert.throws(()=>derive(old.replace(path===script?'import {completionSourceRefs}':'import {fetchSourceLineage}','import altered {')));}
 });
 test('both current paths prove before two historical inputs; unknown read and Git requests remain live',()=>{
  const marked=path=>path==='unknown-retained-input'?Buffer.from('delegated'):readFileSync(path);const p=prove({...input,read:marked});assert.deepEqual(p.livePaths,[script,audit]);for(const path of p.livePaths){assert(p.historicalInput.read(path).equals(git(['show',policy.predecessorRef+':'+path])));assert.equal(p.historicalInput.git(['rev-parse','HEAD:'+path]).toString().trim(),git(['rev-parse',policy.predecessorRef+':'+path]).toString().trim());}
