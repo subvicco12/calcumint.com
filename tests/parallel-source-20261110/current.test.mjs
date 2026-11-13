@@ -10,8 +10,13 @@ import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/
 import {proveCurrentAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-test-stage6.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'c2b5df7c2c06f13fbb62b7e61b61dd5df8c8d557',sha256:'cac1eed35a22b764bb3a665324392681689a8a0786618c6c82fdc89bba263408'};
+const retainedStage6Authority={blob:'c2b5df7c2c06f13fbb62b7e61b61dd5df8c8d557',sha256:'cac1eed35a22b764bb3a665324392681689a8a0786618c6c82fdc89bba263408'};
+// Independently reviewed exact clean authority successor; the original anchor is still proved below.
+const expectedAuthority={blob:'398e63f1f3e7c465856ea9958095d2f5269f046d',sha256:'c4a951c795d43b20715d5b1ffeb1afd8d5fcea295bb3d72ffb3a56b7676813f2'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
+ const retainedRef='2d5d105892134f8af46fc2a02edd5932c431b845';
+ assert.equal(sourceGit(['rev-parse',retainedRef+':'+authority]).toString().trim(),retainedStage6Authority.blob);
+ const retained=sourceGit(['cat-file','blob',retainedStage6Authority.blob]);assert(retained.equals(sourceGit(['show',retainedRef+':'+authority])));assert.equal(createHash('sha256').update(retained).digest('hex'),retainedStage6Authority.sha256);
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
 test('actual current execution passes while unchanged R5 executes at literal A7',()=>assert.equal(verifyParallelSource(),true));
