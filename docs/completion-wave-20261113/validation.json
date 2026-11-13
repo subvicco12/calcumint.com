@@ -1,8 +1,8 @@
 {
   "kind": "CONDITIONAL_FUNCTIONAL_EVIDENCE_EXACT_HEAD_QUALIFICATION_PENDING",
-  "preparedAgainst": "02897a2080cf92a3b29682b9fb82021191440126",
+  "preparedAgainst": "b3cfc3a4866d85ea523df008af91896e1428e76c",
   "applicationSource": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
-  "finalQualificationHead": "PENDING",
+  "finalQualificationHead": "RECORDED_IN_EXTERNAL_EXACT_HEAD_CHECKPOINT_AFTER_COMMIT",
   "newConfirmed": 0,
   "confirmedScopedEngineering": 29,
   "conditionalFunctionalCandidates": [
@@ -47,11 +47,13 @@
     }
   },
   "ordinaryWebpackBuild": {
-    "status": "PASS_RECORDED_APPLICATION_BUILD_NOT_FINAL_HEAD_CI",
-    "artifact": {
-      "path": "/workspace/artifacts/completion-wave-20261113/webpack-build.log",
-      "bytes": 2908,
-      "sha256": "988f41fb450bc15600cabf4322f3c1d9b02d05aa688984d524ab9c446032eac4"
+    "status": "PASS",
+    "command": "next build --webpack",
+    "exitCode": 0,
+    "log": {
+      "path": "/workspace/artifacts/completion-wave-20261113/webpack-final.log",
+      "bytes": 2909,
+      "sha256": "d41757147636f52d352bc2512d0acc1d9eea04f9cea171f2129775a01646f029"
     }
   },
   "genuineFreeBusiness": {
@@ -98,29 +100,72 @@
     }
   },
   "completeRegression": {
-    "status": "INTERRUPTED_BY_TRANSPORT_AFTER_SOURCE_TEST_FAILURES",
-    "finalTotals": null,
-    "observedFailures": [
-      "mock fresh-status source-test behavior",
-      "seven-child concurrency under unchanged 45-second budget"
-    ],
-    "artifact": {
-      "path": "/workspace/artifacts/completion-wave-20261113/full-unit.log",
-      "bytes": 40930,
-      "sha256": "0ae0801d8982264769ae20eaeaa9b3c066daf2a6b6c536e0c8bd698429029c45"
+    "status": "PASS",
+    "testedHead": "b3cfc3a4866d85ea523df008af91896e1428e76c",
+    "passedTests": 9701,
+    "existingSkippedTests": 4,
+    "failedTests": 0,
+    "passedFiles": 1054,
+    "existingSkippedFiles": 2,
+    "discoveredFiles": 1056,
+    "durationSeconds": 1182.22,
+    "exitCode": 0,
+    "log": {
+      "path": "/workspace/artifacts/completion-wave-20261113/full-unit-final.log",
+      "bytes": 291558,
+      "sha256": "c88c33b9ffe680877043431cf1b9760d83184113e669d8206aff8d4819b62584"
     },
-    "greenFullRegressionEstablished": false
+    "limitation": "The original interrupted invocation is not relabelled; this is the new complete invocation. Later changes are documentation and an outside-SRC type-only declaration."
   },
   "sourceQualification": {
-    "stage6": "REPAIR_IN_PROGRESS_ISOLATED",
-    "revision59": "PENDING",
-    "revision60": "PENDING",
-    "acceptance": "PENDING",
-    "priorAttemptsAreAdmission": false
+    "status": "PASS_SCOPED_SOURCE_NOT_CANONICAL_APPROVAL",
+    "capture": "docs/parallel-source-20261110/capture-revision61.json",
+    "sourceRecords": 897,
+    "authorityPins": 147,
+    "applicationSource": "8cbf39c4fd62e4c4a5cf08447cd669171ae32e79",
+    "testOnlySource": "e62f0e6a1aa798ef8798a2edf7a031ad6bf1c152",
+    "producer": "ec8fdbe0ab3ef1e8c4484c0456b12497423a076c",
+    "freshCanonicalDepthOneClone": true,
+    "preNpmRevisionsFetchedOnce": 285,
+    "requiredObjectsMissing": 0,
+    "firstSourceProofApiTestsPassed": 6,
+    "apiCaseMilliseconds": 4606,
+    "apiCaseLimitMilliseconds": 5000,
+    "personalTestsPassed": 4,
+    "personalDurationSeconds": 37.169,
+    "personalLimitSeconds": 60,
+    "parentSourceTestsPassed": 6,
+    "parentNodeCasesPassed": 115,
+    "parentNodeMilliseconds": 109116,
+    "originalChildLimitMilliseconds": 150000,
+    "originalParentLimitMilliseconds": 160000,
+    "historicalChildLimitMilliseconds": 45000,
+    "receipt": {
+      "path": "/workspace/artifacts/completion-wave-20261113/source-admission/source61-qualification.json",
+      "bytes": 6123,
+      "sha256": "14a38db325d44b1d2511f4c920ee869586f83582d516c7f138ce20afea9f3adf"
+    },
+    "retainedFailures": [
+      "Interrupted original full-unit invocation: no final totals",
+      "Revision59 parent source suite: personal-stage 60-second timeout",
+      "Revision60 first cold API: 74931ms and worker RPC timeout"
+    ],
+    "oldEvidencePreserved": true
   },
   "mandatoryExactHeadCI": {
-    "fiveJobs": "PENDING",
-    "aggregate": "PENDING"
+    "status": "NOT_STARTED_FOR_NEW_DELIVERY_HEAD",
+    "requiredJobs": [
+      "checks",
+      "build",
+      "full-product",
+      "source-acceptance",
+      "publication-factory"
+    ],
+    "aggregate": "validate",
+    "baselineHead": "f0f6b507a18bf51d7c8925734d854a05120ade10",
+    "baselineRun": 43373216408,
+    "baselineConclusion": "success",
+    "limitation": "Baseline success is not successor success. No new engineering confirmation before all five exact-head jobs and aggregate succeed."
   },
   "actualWorkerLanes": [
     "math_and_analysis_UI",
@@ -140,5 +185,67 @@
   "canonicalAccepted": false,
   "certificationGranted": false,
   "publicationEligibilityEstablished": false,
-  "releaseHold": true
+  "releaseHold": true,
+  "lint": {
+    "status": "PASS",
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 46,
+    "log": {
+      "path": "/workspace/artifacts/completion-wave-20261113/lint-final.log",
+      "bytes": 8812,
+      "sha256": "d094a7143a80fd180ca3337b6b6ccbc1a2d9f407f3cb9d3d76bf61c6b4e2b27c"
+    }
+  },
+  "typecheck": {
+    "status": "PASS",
+    "exitCode": 0,
+    "log": {
+      "path": "/workspace/artifacts/completion-wave-20261113/typecheck-corrected.log",
+      "bytes": 45,
+      "sha256": "d0ec557aa70e8b1cc829da80bab6a5646660658a9b8c760c83ffb5e9a35fc46d"
+    },
+    "precedingFailure": {
+      "code": "TS7016",
+      "log": {
+        "path": "/workspace/artifacts/completion-wave-20261113/typecheck-final.log",
+        "bytes": 358,
+        "sha256": "9e9cb0b1667dee6a51151d6dde613b674b277e58422ce447f103c111a3de1551"
+      },
+      "correction": "Adjacent readonly source-app-stage5-policy.d.mts, following the existing factory policy declaration; no runtime policy or source guard change."
+    }
+  },
+  "independentSoftwareReview": {
+    "status": "NO_REPRODUCIBLE_BLOCKING_DEFECT_FOUND",
+    "receipt": {
+      "path": "/workspace/artifacts/completion-wave-20261113/independent-software-review-operations.json",
+      "bytes": 5931,
+      "sha256": "ce362d10758da140ed9b87db65cd946c3b6e91962f1c4d96ae2b0d18aa8e18fe"
+    },
+    "qualification": "AI software review, not competent human source/formula/QA approval or certification."
+  },
+  "deliveryArtifacts": {
+    "evidenceArchive": {
+      "id": "1HMCZjqZKH-bgMZqs0W4NYxM1cI6LOjvw",
+      "bytes": 2696544,
+      "sha256": "f5af90624bc8140f4fc41982ccb754707a05788208debf72aebdee6acb634d98",
+      "readbackVerified": true,
+      "zipCRCAnd100PayloadHashesVerified": true,
+      "unchangedExports": 96,
+      "leaseFieldsRemovedFromClearlyLabelledDerivative": 32
+    },
+    "unsignedAddenda": {
+      "id": "1AiV7a4oyBkpNJfiWHbZ05px-NcrX7uOR",
+      "bytes": 91210,
+      "sha256": "994c3a5dd5c020cd4b9a1a019940e2dd0987ac8a7b51c8920636c6498a13e613",
+      "readbackVerified": true
+    },
+    "sourceQualification": {
+      "id": "1Sx6oK8grdrkXgRFo9YGBOwlg7scPxDrQ",
+      "bytes": 6123,
+      "sha256": "14a38db325d44b1d2511f4c920ee869586f83582d516c7f138ce20afea9f3adf",
+      "readbackVerified": true
+    }
+  },
+  "integrationConflicts": 0
 }
