@@ -14,8 +14,9 @@ const retainedStage6Authority={blob:'c2b5df7c2c06f13fbb62b7e61b61dd5df8c8d557',s
 const retainedStage7Authority={ref:'f00acbfdb882688eb1d0c22bc68305eb4984ac41',blob:'398e63f1f3e7c465856ea9958095d2f5269f046d',sha256:'c4a951c795d43b20715d5b1ffeb1afd8d5fcea295bb3d72ffb3a56b7676813f2'};
 const retainedStage7V6Authority={ref:'49cac9941e81646aca6ef4a7e70acd7374e15d92',blob:'b2a71dd91b5d34c1e3271556004e258559fe7ef9',sha256:'7df9a80f58991d4cbd4b68758de242e62161088e01878ce318ed0273eca76691'};
 const retainedStage7V7Authority={ref:'36434788baf38632ca6e04d9b8867dc92e7ef1b8',blob:'b17ad92955b8f15479bc5a6c0c80aef10f26c623',sha256:'6d7592f29200b26a498c333b0876452fe9a305660d9caf245b72243ac9d232e2'};
+const retainedStage7V8Authority={ref:'63d2214c731332540c48d2c64c3793294d515980',blob:'9b8a853a577ffe5b424d955a732715c22569c11f',sha256:'5ff20f1e234aeb17670529b66577cef1b3e6b4d85a58a0e5ea22a48571779f5a'};
 // Independently reviewed exact clean authority successor; the original anchor is still proved below.
-const expectedAuthority={blob:'9b8a853a577ffe5b424d955a732715c22569c11f',sha256:'5ff20f1e234aeb17670529b66577cef1b3e6b4d85a58a0e5ea22a48571779f5a'};
+const expectedAuthority={blob:'75fd2d0ca34e940a865013a9e3d78e3908c00fdf',sha256:'786081f5301987911d4cfccd53cd5b7df31464ff511307c323e583e2a30d68b0'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const retainedRef='2d5d105892134f8af46fc2a02edd5932c431b845';
  assert.equal(sourceGit(['rev-parse',retainedRef+':'+authority]).toString().trim(),retainedStage6Authority.blob);
@@ -26,6 +27,8 @@ test('the entire populated independent authority is fixed before any candidate c
  const qualifiedV6=sourceGit(['cat-file','blob',retainedStage7V6Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV6).digest('hex'),retainedStage7V6Authority.sha256);assert(qualifiedV6.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority65.mjs')));
  assert.equal(sourceGit(['rev-parse',retainedStage7V7Authority.ref+':'+authority]).toString().trim(),retainedStage7V7Authority.blob);
  const qualifiedV7=sourceGit(['cat-file','blob',retainedStage7V7Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV7).digest('hex'),retainedStage7V7Authority.sha256);assert(qualifiedV7.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority66.mjs')));
+ assert.equal(sourceGit(['rev-parse',retainedStage7V8Authority.ref+':'+authority]).toString().trim(),retainedStage7V8Authority.blob);
+ const qualifiedV8=sourceGit(['cat-file','blob',retainedStage7V8Authority.blob]);assert.equal(createHash('sha256').update(qualifiedV8).digest('hex'),retainedStage7V8Authority.sha256);assert(qualifiedV8.equals(readFileSync('docs/milestone60-20261113/source-stage7-qualified-authority67.mjs')));
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
 test('actual current execution passes while unchanged R5 executes at literal A7',()=>assert.equal(verifyParallelSource(),true));
