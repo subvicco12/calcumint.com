@@ -17,7 +17,7 @@ test('test-only successor refuses substituted current Git identities',()=>{
  assert.throws(()=>proveTestStageAndHistoricalInputs({...input,git:args=>args[0]==='rev-parse'&&args[1].endsWith(':'+file)?Buffer.from('0'.repeat(40)+'\n'):git(args)}));
 });
 test('test-only successor refuses extra current source and dirty source',()=>{
- assert.throws(()=>proveTestStageAndHistoricalInputs({...input,git:args=>args[0]==='diff'&&args[2]!==testStagePolicy.codeRef&&args[1]===testStagePolicy.codeRef?Buffer.from('src/unauthorized.ts\0'):git(args)}));
+ assert.throws(()=>proveTestStageAndHistoricalInputs({...input,git:args=>args[0]==='diff'&&args[4]!==testStagePolicy.codeRef&&args[3]===testStagePolicy.codeRef?Buffer.from('src/unauthorized.ts\0'):git(args)}));
  assert.throws(()=>proveTestStageAndHistoricalInputs({...input,git:args=>args[0]==='status'?Buffer.from('?? src/unauthorized.ts\n'):git(args)}));
 });
 test('test-only successor refuses modified capture metadata before using any historical view',()=>{
