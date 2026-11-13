@@ -24,7 +24,7 @@ The original seven-test records remain immutable. The new wrapper is admitted af
 - Fresh shallow checkout: both NS objects absent initially, then both exact identities recovered and all four original rows proved at the owned-transport checkpoint f75693d0.
 - NS availability plus Stage4 negatives:8/8PASS; includes reversion, tampering, substituted identities, extra/dirty source and altered metadata.
 - Async adapter:5/5PASS, with real synchronousRED/asynchronousGREEN RPC reproduction.
-- Complete standalone current-source proof:PASS.
+- Complete standalone current-source proof:PASS at1181132a before the availability-only optimization; the final343eda06 full source-consumer campaign also passed its full current proof and negatives.
 - Original failing unit suite plus mandatory availability coverage:10/10PASS after admission.
 - Lint:PASS,0errors/42existingwarnings. Typecheck:PASS.
 - Broader source consumers, retained budget, uninterrupted regression and final hosted qualification:record actual outcomes in validation.json; pending at this draft checkpoint.
