@@ -137,6 +137,57 @@ jobs:
         run: npm run test:launch
       - name: Calculator and rule-pack certification
         run: npm run test:certification
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Fetch exact financial and caller source revisions
+        run: node scripts/fetch-source-lineage.mjs
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Production build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://calcumint.com
+      - name: Provision pinned isolated browser for contract acceptance
+        timeout-minutes: 4
+        run: |
+          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
+          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
+          "$browser" --version
+      - name: Reusable private canonical contract evidence and browser acceptance
+        run: |
+          python3 scripts/canonical-validation-source.py --check
+          node scripts/canonical-validation-evidence.mjs --check
+          node tests/canonical-validation/browser.mjs
+          node tests/canonical-validation/workflow-browser.mjs
+        env:
+          VALIDATION_EVIDENCE: ${{ runner.temp }}
+      - name: Expanded immutable validation revision and source acceptance
+        run: |
+          python3 scripts/scale-validation-source.py --check
+          python3 tests/validation-scale/source.test.py
+          node scripts/scale-validation-evidence.mjs --check
+          node tests/validation-scale/browser.mjs
+          node tests/validation-scale/workflow-browser.mjs
+        env:
+          SCALE_EVIDENCE: ${{ runner.temp }}
+      - name: Require independent PDF reader and renderer
+        run: |
+          if ! command -v pdftotext >/dev/null || ! command -v pdffonts >/dev/null || ! command -v pdftoppm >/dev/null || ! command -v pdfinfo >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends poppler-utils
+          fi
+          node scripts/assert-pdf-tools.mjs
       - name: Synthetic Reference Six browser acceptance
         run: |
           test -x "$CHROMIUM_PATH"
@@ -187,49 +238,6 @@ jobs:
           node tests/canonical-calculus-workbench/browser.mjs
         env:
           CALCULUS_EVIDENCE: ${{ runner.temp }}/canonical-calculus
-  build:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: Use Node.js 22
-        uses: actions/setup-node@v5
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Fetch exact financial and caller source revisions
-        run: node scripts/fetch-source-lineage.mjs
-      - name: Install dependencies
-        run: npm ci --no-audit --no-fund
-      - name: Production build
-        run: npm run build
-        env:
-          NEXT_PUBLIC_SITE_URL: https://calcumint.com
-      - name: Provision pinned isolated browser for contract acceptance
-        timeout-minutes: 4
-        run: |
-          browser=$(sh scripts/install-ci-browser.sh "$RUNNER_TEMP")
-          echo "CHROMIUM_PATH=$browser" >> "$GITHUB_ENV"
-          "$browser" --version
-      - name: Reusable private canonical contract evidence and browser acceptance
-        run: |
-          python3 scripts/canonical-validation-source.py --check
-          node scripts/canonical-validation-evidence.mjs --check
-          node tests/canonical-validation/browser.mjs
-          node tests/canonical-validation/workflow-browser.mjs
-        env:
-          VALIDATION_EVIDENCE: ${{ runner.temp }}
-      - name: Expanded immutable validation revision and source acceptance
-        run: |
-          python3 scripts/scale-validation-source.py --check
-          python3 tests/validation-scale/source.test.py
-          node scripts/scale-validation-evidence.mjs --check
-          node tests/validation-scale/browser.mjs
-          node tests/validation-scale/workflow-browser.mjs
-        env:
-          SCALE_EVIDENCE: ${{ runner.temp }}
   full-product:
     runs-on: ubuntu-latest
     timeout-minutes: 20
