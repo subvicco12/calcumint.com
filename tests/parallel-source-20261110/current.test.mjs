@@ -10,7 +10,7 @@ import {appStage5Policy,appStage5CapturePath} from '../completion-wave-20261113/
 import {proveAppStage5AndHistoricalInputs} from '../completion-wave-20261113/source-app-stage5.mjs';
 import {factoryPolicy} from '../calculator-factory-source-20261112/policy.mjs';
 const authority='tests/parallel-source-20261110/authority.mjs';
-const expectedAuthority={blob:'02fbbaf54d9f6b17417b5bd6181d19a75ae5baec',sha256:'c6c3fc6c0f1f216626ee7c926374fa327b159c625b829bd029d910582adc6c5c'};
+const expectedAuthority={blob:'3430782b6160f759095e09137a4b570886725d27',sha256:'a65130bd857c61c13559b3018840e551b19e77c74494e13573cc6768ff7f33a4'};
 test('the entire populated independent authority is fixed before any candidate can attest itself',()=>{
  const actual=readFileSync(authority);assert.equal(sourceGit(['rev-parse','HEAD:'+authority]).toString().trim(),expectedAuthority.blob);assert(actual.equals(sourceGit(['cat-file','blob',expectedAuthority.blob])));assert.equal(createHash('sha256').update(actual).digest('hex'),expectedAuthority.sha256);
 });
@@ -68,6 +68,8 @@ test('factory capture and literal policy are independently governed',()=>{
 test('exact Stage5 actual application source is live and finite',()=>{
  const result=proveAppStage5AndHistoricalInputs({read:readFileSync,git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath});
  assert.deepEqual([...result.live.keys()],appStage5Policy.paths);assert.equal(result.live.size,19);assert.equal(appStage5Policy.ancestry.length,51);
+ const env={...process.env};delete env.NODE_TEST_CONTEXT;const tap=execFileSync(process.execPath,['tests/completion-wave-20261113/source-app-stage5-availability.test.mjs'],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});
+ for(const [name,count]of [['tests',5],['pass',5],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+count+'\\b'));
 });
 for(const path of appStage5Policy.paths)test('Stage5 refuses altered actual current application bytes '+path,()=>assert.throws(()=>proveAppStage5AndHistoricalInputs({read:name=>name===path?Buffer.from('tampered actual frozen application'):readFileSync(name),git:sourceGit,root:process.cwd(),policy:appStage5Policy,capturePath:appStage5CapturePath}),/Current factory bytes differ/));
 for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests/completion-wave-20261113/source-app-stage5-policy.mjs',appStage5CapturePath])test('Stage5 proof imports and finite capture remain independent authority '+path,()=>assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('{}'):readFileSync(name)),/Independent current target bytes differ/));
