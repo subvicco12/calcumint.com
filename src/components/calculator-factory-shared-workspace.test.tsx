@@ -32,3 +32,17 @@ it('keeps template acknowledgement when an equal snapshot normalizes raw decimal
  fireEvent.click(screen.getByRole('button',{name:'Edit real value'}));
  expect(screen.queryByText('Verified shared snapshot opened as an independent working template.')).toBeNull();
 });
+
+it.each([322,325,327])('uses the immutable primary output for shared physics %s and scenario capture',async catalogId=>{
+ const {businessCases}=await import('@/lib/completion-wave-20261113/business-cases');
+ const row=businessCases().find(row=>row.id===catalogId)!;
+ const stored=getFactoryWorkflows(catalogId).execute(row.input);
+ mock.load.mockResolvedValue({organizationId:'org',project:{id:'project',name:'Team',status:'active'},role:'member',clients:[],records:[{id:'physics-record',title:'Physics',snapshot:stored.snapshot}]});
+ render(<CalculatorFactorySharedWorkspace ownerId="owner" packet={stored} organizationId="org" projectId="project" onRestore={vi.fn()}/>);
+ fireEvent.click(screen.getByRole('button',{name:'Load shared workspace'}));
+ await screen.findByText(`Recorded result: ${String(stored.snapshot.output.value)}`);
+ fireEvent.click(screen.getByRole('button',{name:'Capture baseline A'}));
+ await screen.findByRole('button',{name:'Replace baseline A'});
+ expect(screen.queryByText(/Could not capture this calculation/)).toBeNull();
+ expect(stored.snapshot.output).toHaveProperty('steps');
+});
