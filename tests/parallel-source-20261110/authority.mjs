@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "47fee1d29b4634e20410b2355edd728567cc0172",
-    "sha256": "09c971a76409fa5df9230f341ef4a5a14713922e06e82e148bf54b58bc80e8a8"
+    "blob": "ea8ecab58e8b9e67a9ea55dc7cd0b4d5abf21ecc",
+    "sha256": "a40c0aa294fe317df0bfb95cbe815b45935ced6489c1114ae5b43c3fa1603388"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "4fe6c43ea3a4ac5a537593f42985fcd7544ff4cd",
-    "sha256": "c4c69ef5abcbc74e4ee7ab6972229d316a9d87c41cbc9ccfefad06bb632b93c1"
+    "blob": "deccb3da4e95c3d8e2fd2bd5a0daf81607eb7bca",
+    "sha256": "1b5c3dff0393d4ebee4e2c288402db486fff5c41c85e04c19480c53e1c18304f"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -39,8 +39,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "scripts/product-completion-lineage.mjs",
-    "blob": "926279ab959ec70083d0647668007c9f5d6f7089",
-    "sha256": "34ed6526b90a1e87114262936bba35966df1668ef3489aea53bfffab0e47eca1"
+    "blob": "b99536197099d5aebbf6f75641866558fc3afbfe",
+    "sha256": "6ee2d6b5d4bf4fb7c6db9e56f6858db96c117a7a95e106d39a85726eef3935b7"
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
@@ -214,8 +214,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-first-20261112/non-source-stage2.mjs",
-    "blob": "1d7eda73e97958d1ec32d9b9933bc120d6ce744f",
-    "sha256": "e57ef0f2dc89e42d7070b8e5d65de90b72bc12d96c0b53ba48a79e9ed4d1c2ea"
+    "blob": "4cc0f4ca2faafef59419e57d81a5026f28a32f75",
+    "sha256": "3d99f5c6bdef2468d454af5f5bc983c03ba82ff6cce1d6a2bff5bc91b4b46d1e"
   },
   {
     "path": "tests/completion-first-20261112/non-source-policy.mjs",
@@ -244,8 +244,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": ".github/workflows/ci.yml",
-    "blob": "507033e51ce3fe41d91787d9cbb20c6c1d28a6bc",
-    "sha256": "de5e1479736932860cc59aac9ef59b37a8bdbf632c4300df5eaa0e22bc564de4"
+    "blob": "657433d3a71a5ece42819edfa5cf2707d9465c7d",
+    "sha256": "d5b6e2d5562a0385362ffd0f01b012d869b0771134193626bb12754b8b667632"
   },
   {
     "path": "tests/gotrue-runtime/acceptance.mjs",
@@ -406,6 +406,41 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision49.json",
     "blob": "f941a23fcf408d5976bf2479ce9ecd95c920b497",
     "sha256": "d36cd35fe1d8bd9ebab5e2692a47963fe11915f673f8a187551c367097941692"
+  },
+  {
+    "path": "docs/ci-balance-20261113/workflow-source.json",
+    "blob": "c7e27ba49f258085e3d7bb8507ad40d9440cf66e",
+    "sha256": "35f0c4fec861553cc28b7f738e7b3629b02a0ef4c6739ed7b9c6515f2c4bd24c"
+  },
+  {
+    "path": "tests/ci-balance-20261113/policy.mjs",
+    "blob": "e61cb9345397984f51f13fd8d81af1de13e48970",
+    "sha256": "83fd8541ad5563b2832b558e95f98d0ed84607386d12e6c5a1086c422727a5ff"
+  },
+  {
+    "path": "tests/ci-balance-20261113/workflow.mjs",
+    "blob": "a2fae169269246e31d9efbbcfa15f0343d3e7417",
+    "sha256": "279fdbb094834efd0f88cad3bad91c9bd0818067490f3aac887c43eca9c19aa9"
+  },
+  {
+    "path": "tests/ci-gate-recovery/balanced-workflow.test.mjs",
+    "blob": "8baee25d99ac510d884382e1d776d3410ae81c5a",
+    "sha256": "fa291d41d59ab7e238ef58400115bf12a45b54276beca212d75b7e63cc27348f"
+  },
+  {
+    "path": "tests/ci-gate-recovery/balanced-yaml.test.mjs",
+    "blob": "31dee46da5c0526c14e2db336d41401d7e667b54",
+    "sha256": "df481d2e38a5244de62a79849bfbf2b9db6adba11165c016a7cb77f3d88821e1"
+  },
+  {
+    "path": "tests/ci-gate-recovery/pdf-tools-contract.mjs",
+    "blob": "5fbb538c41423d38acd03bd853ffd2a96fa5d776",
+    "sha256": "e0f0657dc23193e1db90bc6d950bd8d00bd6e2e9c53df2740417e57a458bed57"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision51.json",
+    "blob": "75255eb6db6a5f01e9a095188213745d02e34428",
+    "sha256": "ad32720fc8c499312e40074c1d7c9fdaa147af28ec75f02c0474a515666c5dd3"
   }
 ]);
 export function verifyParallelAuthority(read,git){
