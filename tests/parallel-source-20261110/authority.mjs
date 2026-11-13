@@ -9,8 +9,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/core.mjs",
-    "blob": "b32be276e215d2312f1229fe22948b4cdaba1b3a",
-    "sha256": "5e096e36a2cf5202a63de16166d03f1e9a3b6ccdcd3f3f522906c1e5224f96c8"
+    "blob": "92e2fcee99621257a1357c9dc69da154f05f4e72",
+    "sha256": "4cf06e67a3d0e5e0cd7f7710c12be318890560fb69d1cb7615fbcda15fcab1cc"
   },
   {
     "path": "tests/parallel-source-20261110/baseline-runtime.mjs",
@@ -24,8 +24,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/parallel-source-20261110/bootstrap.mjs",
-    "blob": "ef7d8331b47e52c19f7c816620ae6d41cd6c7437",
-    "sha256": "44a0d995bdfcdc3a2623ab8293d00138d33476e6bb4d4e755424d01c52ddd2b6"
+    "blob": "de31423d7ee013ec4465ee3341e7767a621f0182",
+    "sha256": "069577f0d578b28e92546f9f38df2ed8534fdf60898801f9c12915aa81c10720"
   },
   {
     "path": "tests/parallel-source-20261110/historical-tests.mjs",
@@ -39,8 +39,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "scripts/product-completion-lineage.mjs",
-    "blob": "b99536197099d5aebbf6f75641866558fc3afbfe",
-    "sha256": "6ee2d6b5d4bf4fb7c6db9e56f6858db96c117a7a95e106d39a85726eef3935b7"
+    "blob": "9a3c4ee10f4e4ef9ae9565200e5796fde8210dd5",
+    "sha256": "196a9fb8ea7e1329d95db09185788589719d231cc40e51f27df4e1a6cd710ef5"
   },
   {
     "path": "tests/publication-workflows-20261109/business-caller-successor.mjs",
@@ -379,8 +379,8 @@ export const accepted=Object.freeze([
   },
   {
     "path": "tests/completion-first-20261112/test-stage.mjs",
-    "blob": "3acc1a2b7ecd0c044d12ba00b7ce0196edcde844",
-    "sha256": "c30c3f79c034e646c11cb61a3a0b29bde3bbd0c8771abd298c9ae8f612f016b3"
+    "blob": "f0856f86c0b850aa45d251b47c6521eb8f221466",
+    "sha256": "6bbf4f2ff93059c2b249b20092bf56d444a02b47e490cb8ef66a6abeb0e05c70"
   },
   {
     "path": "tests/completion-first-20261112/test-stage.test.mjs",
@@ -451,6 +451,166 @@ export const accepted=Object.freeze([
     "path": "docs/parallel-source-20261110/capture-revision53.json",
     "blob": "d2db1496ae088e7f9719f36341076f953fe9347d",
     "sha256": "f5e3281d50590d99fe1e7890f148a0e4c832c07bccf608325213ec4772bfb2f5"
+  },
+  {
+    "path": "docs/completion-wave-20261113/held-business-reverse.sql",
+    "blob": "d990211f5083a0be3491efee8cbba703b8d9f6a7",
+    "sha256": "169858355922c76cac0bb98b91d7bd9ece4883878f07a20d53739b80a826f02b"
+  },
+  {
+    "path": "docs/completion-wave-20261113/held-business-successor.sql",
+    "blob": "89604b2bd3e1b1894bcec0209876ef73d55b7268",
+    "sha256": "deb431b7e21a194e27f66e3b3ea06e575a8fe057ea739cb487403302b19ee8a8"
+  },
+  {
+    "path": "docs/completion-wave-20261113/source-app-stage5-revision2.json",
+    "blob": "68304b5e2008caa485763f28e6aa875d771ba6a9",
+    "sha256": "07f59d591a5ed9a1de1b4bdc8483a0d4f2074552be5583055326da9ed5b6b397"
+  },
+  {
+    "path": "docs/completion-wave-20261113/source-app-stage5.json",
+    "blob": "a65ee2b8c15ef226dcf8acee6c6a142bc8f7d60c",
+    "sha256": "5ed5112f1d046ed8df77d57434353b215584f133ec3142b58bd09f3f94a01799"
+  },
+  {
+    "path": "docs/completion-wave-20261113/source-attempts.json",
+    "blob": "8257559ab635f923294c5c3ccad0691dfbe15ee4",
+    "sha256": "12663fb0b81e0be09c8826e37a798cb2e88ee50e8087a72ccf727368246671f1"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision54.json",
+    "blob": "e8c742d4ed5e0345857f7b7a4e41ca8248841c98",
+    "sha256": "c021b550033f3c6ceba5f7a8a12c3f41cbfa4f2d25b2a964b2796a3541805dce"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision55.json",
+    "blob": "1552475fe4132151ed74f27315eb7574efc48669",
+    "sha256": "0f37f8c5b8d820bfee24f2c7876b47ce661f0ced41e86b8bdf3002d0fddb55f4"
+  },
+  {
+    "path": "src/components/completion-wave-analysis.test.tsx",
+    "blob": "e5c6ea3c25f4f4f8be1e633589824a667e5a0a7e",
+    "sha256": "d77994c3197e3f439440dd22d891f048eb8c28c90d242eb3b155e5d4f16c8b36"
+  },
+  {
+    "path": "src/components/completion-wave-analysis.tsx",
+    "blob": "62b1ce93cf1b24cdda22720fe345fdd8e0ec0cd3",
+    "sha256": "467ad4a17356b35f92255993284d04696861ff8c6c08f4f4fa6ad1f74ae15a5c"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/business-cases.test.ts",
+    "blob": "365880cc1fb83c70583bae8093ea552b3c097ab0",
+    "sha256": "3af216f2019d8ef2879ddac13cc7b5036f4213c9c97d7b920c2811ae5ade5698"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/business-cases.ts",
+    "blob": "4844eb02a2ab214fc011c5c5f28529a0b89d36ce",
+    "sha256": "f207d4517b4d79222fd8dde15f51fa5b77526a216707cf12cae9a32c823b4dd4"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/conversion-workflows.ts",
+    "blob": "17a451559ed0940b18807487f469876974177b77",
+    "sha256": "ddc998f3f8ce6bb95f57b465cf663bf8861a9c6aff00c4c0c322109051e159e5"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/engine-evidence.test.ts",
+    "blob": "948c1f36007e213c1dd0d1c402897a24f4f39038",
+    "sha256": "74fb11e67c4c08d81364d271090a12a6a3f9e1e8104d07ea9302cd80c41fabbf"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/math-analysis.ts",
+    "blob": "cb439f62d0e1529e717e353142eab6e4815a086d",
+    "sha256": "d65ec76fe393ffdbb3c5aabf8084e03c7763218878b25463d6730eaf47a44ab0"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/native-wave.test.ts",
+    "blob": "a1d25cf972c6bc0e5397a71aa0eebd50260a4fb7",
+    "sha256": "40397748a1cd9ce9b318582bcab276c38ef61dbf4ef8aa0ebe0609ea2466f5bd"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/physics.ts",
+    "blob": "98bf1a2dfa24058c1cd9c5a0b607335e426f938c",
+    "sha256": "d675805de50a163d14a2ac0809edb0b9ad1ab4d1806b0f1f6fb71cbfa3d8aefa"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/retained-nine-tuples.ts",
+    "blob": "e59960ed20f50da2d4f39db00324763fd8631cd7",
+    "sha256": "e84284138514b4267953fed4eb642db73323058d4329c9762a1b3e326bd18b78"
+  },
+  {
+    "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
+    "blob": "5a6c1698541635ae5f06f4c487f98872bc278c90",
+    "sha256": "15f479cacb572a9b625f5522fb8961cd198dc5945f5f88298141651ff709869f"
+  },
+  {
+    "path": "tests/completion-delivery-20261112/acceptance.mjs",
+    "blob": "b7bd02a40932529e47eae86decac0790cdb113ca",
+    "sha256": "1c1a8cdab6212ad6e48bd533139ce5ebe3d3c8d424f2b230d181434ad5d3681e"
+  },
+  {
+    "path": "tests/completion-delivery-20261112/runtime.mjs",
+    "blob": "316c496d43b2f2c040d9ec8e6f0baa4dbd5a6926",
+    "sha256": "56fe8ccc5817ee19ccafc9c71a9a9f0bea417934447fe7889dd12441549f9be8"
+  },
+  {
+    "path": "tests/completion-wave-20261113/business-acceptance.mjs",
+    "blob": "9705299853a50def9022ce0db6696f2e28b29af1",
+    "sha256": "de9f8268cb44d47cfbb6a3a2eb834c8e479e7dd1114a5576e34d711ef74fc618"
+  },
+  {
+    "path": "tests/completion-wave-20261113/business-automation.mjs",
+    "blob": "19793b0e1901b177f64ca10a3f38a27dd031200b",
+    "sha256": "cca2a485849385991e4dd50235e6b1a4ca1ce2a5708376ee80dae7957f512a28"
+  },
+  {
+    "path": "tests/completion-wave-20261113/business-capture.mjs",
+    "blob": "b38168915cadd614b719edc9b23c90f84ff1ae61",
+    "sha256": "512bd3e9bba512a69a57b3ed5315fc7f01e2303568121bae2c046a773d1cb908"
+  },
+  {
+    "path": "tests/completion-wave-20261113/conversion-workflows.test.ts",
+    "blob": "8d7bfa0365b000a87515cb0cf8753f14c5a15cc3",
+    "sha256": "64d04d977e99be5125541fc807288fbb615b2d443993b916e175ccf172fea710"
+  },
+  {
+    "path": "tests/completion-wave-20261113/math-analysis.test.ts",
+    "blob": "bd59998dd212a1eb9b7988cc13938b3bb5a71927",
+    "sha256": "e37c82b8610bd6da20ecb4c57c2fa9fe586d07714be4aeff81383be993553c5b"
+  },
+  {
+    "path": "tests/completion-wave-20261113/physics.test.ts",
+    "blob": "9f1b946291dbce7daa34408e89d5db1ee38da394",
+    "sha256": "1e177a9ff100304217ef10bdca919b6d4849ec9a6a833f75f5db6325a8d8235d"
+  },
+  {
+    "path": "tests/completion-wave-20261113/physics.tsconfig.json",
+    "blob": "ab053d023fb2df2daa98a53a5bb3f145990c2dfd",
+    "sha256": "6bcaf6fe8f61f2c91414045b0807714de09bd1151fdd8fb059c6c8187699eb0b"
+  },
+  {
+    "path": "tests/completion-wave-20261113/physics.vitest.config.ts",
+    "blob": "570df26fea674458ea887070af15b1c50456108c",
+    "sha256": "232ca90ad3492928b5475d21a25d0373f5004b88171b0d4d7346a1ca3d58ebbc"
+  },
+  {
+    "path": "tests/completion-wave-20261113/source-app-stage5-policy-template.mjs",
+    "blob": "961515e198e33ac1669ad9706393974d9dc15d70",
+    "sha256": "0a8f0199fcafde68a1cf2954d1d5c9ae42df35b9762ab51081dffc15f17efea2"
+  },
+  {
+    "path": "tests/completion-wave-20261113/source-app-stage5-policy.mjs",
+    "blob": "b85e2ac6985b3c803bacc44cbd0101c27ccbb4f8",
+    "sha256": "95e56f682bede4567909f34f4e39b69d23365707737b7ee5d476b68bb41285e4"
+  },
+  {
+    "path": "tests/completion-wave-20261113/source-app-stage5.mjs",
+    "blob": "31aded787c40458260b7a6dd63d041ae92e73949",
+    "sha256": "cdbb7acfd0d9c4cfdf9d4069942478f19b8645048676acc9c71f40fab290ff94"
+  },
+  {
+    "path": "tests/completion-wave-20261113/source-app-stage5.test.mjs",
+    "blob": "70c58a551dcf6919cf98f10e8b84cd3c974d77d6",
+    "sha256": "160424bc8ce43f2377a6462ea857deaa662d618c16fce7e99429f7db5b9582f4"
   }
 ]);
 export function verifyParallelAuthority(read,git){
