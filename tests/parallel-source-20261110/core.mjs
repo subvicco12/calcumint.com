@@ -16,13 +16,16 @@ import {workflowRecords,workflowGuardRecords,verifyWorkflowAndHistoricalCompleti
 import {nonSourcePolicy} from '../completion-first-20261112/non-source-policy.mjs';
 import {nonSourceRecords} from '../completion-first-20261112/non-source-stage2.mjs';
 const workflowPaths=new Set(workflowPolicy.paths),completionPaths=new Set(completionPolicy.paths),nonSourcePaths=new Set(nonSourcePolicy.paths),workflowGuardPaths=new Set(workflowPolicy.guardPaths);
+import {testStagePolicy} from '../completion-first-20261112/test-stage-policy.mjs';
+import {testStageRecords,proveTestStageAndHistoricalInputs} from '../completion-first-20261112/test-stage.mjs';
+import {ensureTestStageObjects} from './bootstrap.mjs';
 import {personalPolicy,personalCapturePath} from '../completion-first-20261112/personal-policy.mjs';
 import {personalRecords,personalAuxiliaryRecords,verifyPersonalAndHistoricalWorkflow} from '../completion-first-20261112/personal-stage.mjs';
 const personalPaths=new Set(personalPolicy.paths),personalAuxiliaryPaths=new Set(personalPolicy.auxiliaryPaths);
 export const appRef='f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5';
 export const applicationBaselineRef='cef0352fca135b252b981b959c3529170b1f0c81';
 export const applicationSuccessorRef='25b56970c05aaffaad2dd856809aaf077ab70554';
-export const capturePath='docs/parallel-source-20261110/capture-revision46.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision47.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -32,6 +35,7 @@ function currentGit(source){
 }
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
 function sourceRecord(record,read,git){
+ if(testStagePolicy.paths.includes(record.path)){const row=testStageRecords(read).get(record.path);assert(row);if(record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}
  if(personalAuxiliaryPaths.has(record.path)){const row=personalAuxiliaryRecords(read).get(record.path);assert(row);if(record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}else if(workflowGuardPaths.has(record.path)){const row=workflowGuardRecords(read).get(record.path);assert(row);if(record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}else if(nonSourcePaths.has(record.path)){const row=nonSourceRecords(read).get(record.path);assert(row);if(record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}else if(record.path==='tests/next-cohort-20261110/source/retained-runtime.mjs'){const row=completionAuxiliaryRecords(read).get(record.path);assert(row);if(record.ref!==row.current.ref){immutableRecord(record,git);record=row.current;}}
  if(record.path.startsWith('src/')){const row=personalPaths.has(record.path)?(record.ref===personalPolicy.codeRef?null:personalRecords(read).get(record.path)):workflowPaths.has(record.path)?(record.ref===workflowPolicy.codeRef?null:workflowRecords(read).get(record.path)):completionPaths.has(record.path)?(record.ref===completionPolicy.codeRef?null:completionRecords(read).get(record.path)):null;if(row){immutableRecord(record,git);record=row.current;}}
  assert.equal(typeof record.path,'string');assert(!isAbsolute(record.path)&&!record.path.split('/').includes('..'));
@@ -88,16 +92,18 @@ function sevenTestSuccession(capture,read,git){
  const result=new Map();for(const row of capture.sevenTestSuccessors){
   assert.equal(row.current.path,row.path);assert.equal(row.current.ref,sevenTestRef);assert.equal(row.predecessor.path,row.path);
   assert.equal(row.predecessor.ref,row.path==='src/lib/thirteen-program-evidence.test.ts'?'05129e2a74e70e23160578c63a984c4bf035ed0f':appRef);
-  immutableRecord(row.predecessor,git);sourceRecord(row.current,read,git);result.set(row.path,{path:row.path,current:row.current});
+  immutableRecord(row.predecessor,git);sourceRecord(row.current,read,git);result.set(row.path,{path:row.path,current:testStagePolicy.paths.includes(row.path)?testStageRecords(read).get(row.path).current:row.current});
  }return result;
 }
 export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){
  assert(sevenTestPaths.includes(file),'Only three exact seven-failure test successors');git=currentGit(git);
  // Reject altered buffers before the complete successful-claim proof, with no cache of mutable bytes.
- assert(currentBytes.equals(git(['show',sevenTestRef+':'+file])),'Exact seven-failure current test bytes required');
- verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git);sevenTestSuccession(capture,read,git);
+ const testOnly=testStagePolicy.paths.includes(file);if(testOnly)ensureTestStageObjects();
+ const current=testOnly?testStageRecords(read).get(file).current:null;
+ assert(currentBytes.equals(git(['show',(current?.ref??sevenTestRef)+':'+file])),'Exact seven-failure current test bytes required');
+ verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git);if(testOnly)proveTestStageAndHistoricalInputs({read,git,root});sevenTestSuccession(capture,read,git);
  const row=capture.sevenTestSuccessors.find(r=>r.path===file);assert.equal(claim,row.predecessor.sha256,'Exact immutable test predecessor claim required');
- return {successorGit:sevenTestRef,successorSHA256:row.current.sha256,testOnly:true};
+ return {successorGit:current?.ref??sevenTestRef,successorSHA256:current?.sha256??row.current.sha256,testOnly:true};
 }
 /** One invocation proves all named current bytes; callers must not retain this proof across reads. */
 export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){

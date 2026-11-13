@@ -5,6 +5,7 @@ import {verifyExactStage} from '../calculator-factory-source-20261112/exact-stag
 import {ensureTestStageObjects} from '../parallel-source-20261110/bootstrap.mjs';
 import {testStagePolicy,testStageCapturePath} from './test-stage-policy.mjs';
 import {personalPolicy} from './personal-policy.mjs';
+export function testStageRecords(read){const bytes=read(testStageCapturePath);assert.equal(createHash('sha256').update(bytes).digest('hex'),testStagePolicy.captureSHA256,'Exact test-only capture digest required');return new Map(JSON.parse(bytes).rows.map(row=>[row.path,row]));}
 export function proveTestStageAndHistoricalInputs({read,git,root}){
  const bytes=read(testStageCapturePath);
  assert.equal(createHash('sha256').update(bytes).digest('hex'),testStagePolicy.captureSHA256,'Exact test-only capture digest required');
