@@ -31,10 +31,11 @@ test('current mathematical dependencies outside the approved app delta remain ch
  assert.throws(()=>verifyParallelSource(name=>name===path?Buffer.from('export const definitions=[];'):readFileSync(name)),/Current target source differs|Independent current target bytes differ/);
 });
 test('mutable current-source cleanliness is rechecked rather than cached as an immutable object',()=>{
- let statuses=0;const git=args=>args[0]==='status'?Buffer.from(++statuses===1?'':'?? src/app/unreviewed/route.ts\n'):sourceGit(args);
+ let statuses=0,dirty=false;const git=args=>args[0]==='status'?(statuses++,Buffer.from(dirty?'?? src/app/unreviewed/route.ts\n':'')):sourceGit(args);
  assert.equal(verifyParallelSource(readFileSync,git),true);
+ const firstReads=statuses;assert(firstReads>=2,'Every fresh status read in the first invocation must remain clean');dirty=true;
  assert.throws(()=>verifyParallelSource(readFileSync,git),/Committed current src required/);
- assert.equal(statuses,2);
+ assert(statuses>firstReads,'The next invocation must read current cleanliness again');
 });
 test('retained genuine artifacts keep their original application claim and disclose the current successor',async()=>{
  const result=await verifyComposition();assert.equal(result.downloads,95);assert.equal(result.recordedApplicationGit,historical);assert.equal(result.currentApplicationGit,app);assert.equal(result.currentApplicationIdenticalToRecorded,false);assert.equal(result.retainedArtifactsAreFreshCurrentExecution,false);assert.equal(result.priorFailedRunPromoted,false);
