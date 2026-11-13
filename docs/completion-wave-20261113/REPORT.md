@@ -1,8 +1,18 @@
-# Completion wave — local qualification complete; hosted CI pending
+# Completion wave — scoped candidates and exact-head CI recovery
 
 Full integration tested at `b3cfc3a4866d85ea523df008af91896e1428e76c`. Application source is immutable `8cbf39c4fd62e4c4a5cf08447cd669171ae32e79`; its only subsequent SRC difference is the independently admitted test-only `e62f0e6a1aa798ef8798a2edf7a031ad6bf1c152` successor. Later delivery changes are documentation and a missing adjacent type declaration. The exact delivery commit and hosted result are recorded in the external checkpoint to avoid claiming a predecessor run for a new head.
 
 **New confirmed scoped completions: 0 at preparation; 12 locally complete candidates await exact-head CI. Confirmed overlay: 29; conditional potential: 41. Newly canonical-approved, certified and publication-eligible: 0. RELEASE HOLD remains active.**
+
+## Latest exact-head recovery
+
+Run 43424965860 at `6be28bef` completed with four required jobs successful and source-acceptance failed: 9,700 unit tests passed, one nested guard failed, four existing skips. Aggregate failed correctly. No new scoped confirmation is claimed from that run.
+
+The failed availability child was reproduced under real foreign-lock contention: the old test passed 4/5 and incorrectly required global lock absence after releasing its own lock. Another legitimate owner can already hold it. The correction proves owned release through subsequent acquisition, then checks a cached availability hit preserves the foreign owner and performs zero Git calls. The same real contention passes 5/5. All counts and deadlines remain unchanged. Failed children now preserve their TAP diagnostics and cause instead of hiding the inner assertion.
+
+Current capture 62 has 898 records/148 authority targets. The 286-revision closure retains the earlier 285 and adds only the reviewed producer. All 286 were fetched once in a fresh canonical depth-one clone before dependencies/proof; the first API six-test suite passed, with 4,190 ms against the unchanged 5,000 ms limit. The exact failed parent assertion passes all 115 child cases in 107.678 seconds; 34 mandatory child regressions also pass. The other five parent cases were not selected in that focused run. Application source, mathematical engines, policies, workflow and deadlines are unchanged.
+
+The full local 9,701 pass above remains explicitly bound to its original integration head; final successor full regression must be established by exact-head CI, not inferred from earlier results.
 
 ## Exact cohort reconciliation
 
@@ -52,6 +62,12 @@ Eighteen unsigned base packets are preserved; `review/current-evidence-addenda.j
 The authorized publication batch is **empty**. #218@1 is only a retained minimum-blast-radius conditional review proposal. #440 remains excluded from eligibility until genuine competent appointment/decisions and all operational controls are satisfied. No reviewer appointment or operator attestation was fabricated.
 
 Six publication RPCs and all database proposals remain held. Ten actual operator controls—including participating writers, DDL exclusion, target schema, backup/restore relevance, custody, deployment/client compatibility, lifecycle authority and postimage/resume evidence—remain unsigned. The old isolated results do not establish production readiness.
+
+## Read-only operational freshness
+
+An authentic read-only repeatable-read observation at 2026-11-13 12:29:11 UTC finds the same seven-relation projection hash and all six exact held RPC signatures absent. Missing-function grants are not reported as a denial test. This is a bounded current metadata observation, not participating-writer or DDL freeze, recovery, custody or operator attestation.
+
+Hostinger still reports completed build `caffafe639350ca0c2c2cf33ae1f099294f5af54` and auto-deploy enabled on `main`. An authenticated GitHub connector resolves current `main` to the same SHA. Neither is the candidate; provider metadata does not attest the serving-process SHA. The operational receipt corrects a mislabeled primary baseline to `a955cdad` with explicit retained original bytes/provenance; the provider observation itself is unchanged. No deployment or configuration change occurred.
 
 ## Execution, delivery and forecast
 
