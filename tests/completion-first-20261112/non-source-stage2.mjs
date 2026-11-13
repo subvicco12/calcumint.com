@@ -16,7 +16,9 @@ function captureFor(read){const bytes=read(nonSourceCapturePath);assert.equal(sh
 export function nonSourceRecords(read){return new Map(captureFor(read).rows.map(row=>[row.path,row]));}
 export function verifyNonSourceStage({read=readFileSync,git=gitDefault,root=process.cwd()}={}){
  const capture=captureFor(read);assert.equal(capture.predecessorRef,'5008aa4cadd77f7a9a5dc1523cace694f3bbdf47');assert.notEqual(capture.predecessorRef,capture.codeRef);
- ensureNonSourceObjects(git);
+ // Availability uses the owned timeout/protocol/prompt-protected transport.
+ // A supplied proof reader cannot replace or remove network execution bounds.
+ ensureNonSourceObjects();
  assert(capture.ancestry.length>=2&&capture.ancestry.length<=64);assert.equal(capture.ancestry[0],capture.codeRef);assert.equal(capture.ancestry.at(-1),capture.predecessorRef);assert.equal(new Set(capture.ancestry).size,capture.ancestry.length);
  for(let i=0;i<capture.ancestry.length;i++){const ref=capture.ancestry[i];assert.match(ref,/^[0-9a-f]{40}$/);assert.equal(git(['rev-parse','--verify',ref+'^{commit}']).toString().trim(),ref);const raw=git(['cat-file','commit',ref]);assert.equal(createHash('sha1').update(Buffer.from(`commit ${raw.length}\0`)).update(raw).digest('hex'),ref,'NS commit content address differs');if(i<capture.ancestry.length-1)assert(raw.toString().split('\n\n',1)[0].split('\n').includes('parent '+capture.ancestry[i+1]),'NS parent chain differs');}
  assert.deepEqual(git(['diff','--name-only','-z',capture.predecessorRef,capture.codeRef]).toString().split('\0').filter(Boolean),expectedPaths,'Only four exact observational NS files may change');
