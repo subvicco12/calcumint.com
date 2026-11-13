@@ -75,7 +75,7 @@ for(const path of ['tests/completion-wave-20261113/source-app-stage5.mjs','tests
 
 test('mandatory source guard regressions exercise exact source and immutable availability without skips',()=>{
  const env={...process.env};delete env.NODE_TEST_CONTEXT;
- for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',5]]){
+ for(const [file,count]of [['source-app-stage5.test.mjs',7],['source-app-stage5-availability.test.mjs',5],['source-authority-preload.test.mjs',6],['source-preflight.test.mjs',5],['source-preflight-stage.test.mjs',5],['source-test-stage6.test.mjs',6]]){
   const tap=execFileSync(process.execPath,['tests/completion-wave-20261113/'+file],{env,encoding:'utf8',timeout:30000,maxBuffer:1000000});
   for(const [name,value]of [['tests',count],['pass',count],['fail',0],['skipped',0]])assert.match(tap,new RegExp('# '+name+' '+value+'\\b'));
  }
