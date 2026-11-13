@@ -11,3 +11,9 @@ it('qualifies Stage7 actual current objects and literal retained Stage6 with all
  catch(cause){const error=cause as Error&{stdout?:Buffer|string;stderr?:Buffer|string};throw new Error(`${error.message}\n${String(error.stdout??'')}\n${String(error.stderr??'')}`,{cause});}
  expect(output).toMatch(/# tests 22\b/);expect(output).toMatch(/# pass 22\b/);expect(output).toMatch(/# fail 0\b/);expect(output).toMatch(/# skipped 0\b/);expect(output).toMatch(/# cancelled 0\b/);
 },50000);
+
+/** Additive preservation proof; the original twenty-two cases and budgets remain unchanged. */
+it('retains qualified Stage7 capture64 and its sixty-six authority records below the explicit successor',()=>{
+ const output=execFileSync(process.execPath,['--test','tests/milestone60-20261113/source-stage7-v6-preservation.test.mjs'],{cwd:process.cwd(),encoding:'utf8',timeout:45000,maxBuffer:2*1024*1024});
+ expect(output).toMatch(/# tests 2\b/);expect(output).toMatch(/# pass 2\b/);expect(output).toMatch(/# fail 0\b/);expect(output).toMatch(/# skipped 0\b/);expect(output).toMatch(/# cancelled 0\b/);
+},50000);
