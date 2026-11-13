@@ -15,7 +15,7 @@ import {personalPolicy} from '../completion-first-20261112/personal-policy.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
 const allowed=new Set(['https://github.com/subvicco12/calcumint.com','https://github.com/subvicco12/calcumint.com.git']);
 const invoke=args=>execFileSync('git',['-c','protocol.file.allow=never','-c','protocol.ext.allow=never',...args],{cwd:root,env:{...process.env,GIT_TERMINAL_PROMPT:'0'},stdio:['ignore','pipe','pipe'],timeout:60000,maxBuffer:4*1024*1024});
-let ready=false,nonSourceReady=false,testStageReady=false;
+let ready=false,nonSourceReady=false,testStageReady=false,appStage5Ready=false;
 /** Standalone retained workflow readers run before the larger parallel bootstrap.
  * Retrieve only the two independently pinned NS commits, never a caller-nominated ref.
  * Availability does not replace the caller's complete content/ancestry/source proof.
@@ -56,12 +56,15 @@ export function ensureAppStage5Objects(git=invoke){
  const refs=appStage5Policy.ancestry;
  assert(refs.length>=2&&refs.length<=64&&new Set(refs).size===refs.length,'Finite Stage5 ancestry required');
  assert.equal(refs[0],appStage5Policy.codeRef);assert.equal(refs.at(-1),'0c74b8135cca8892548a90eb497c46bdf022b228');
+ if(git===invoke&&appStage5Ready)return true;
  const common=resolve(root,invoke(['rev-parse','--git-common-dir']).toString().trim());
- return withSourceObjectLock(common,()=>{
+ const result=withSourceObjectLock(common,()=>{
   const urls=git(['remote','get-url','--all','origin']).toString().trim().split('\n');assert(urls.length===1&&allowed.has(urls[0]),'Exact HTTPS CalcuMint repository origin required');
   for(const ref of refs){assert.match(ref,/^[a-f0-9]{40}$/);const present=()=>{let found;try{found=git(['rev-parse','--verify',ref+'^{commit}']).toString().trim();}catch{return false;}assert.equal(found,ref,'Stage5 commit was substituted');return true;};if(!present())git(['fetch','--no-tags','--depth=1','origin',ref]);assert(present(),'Exact Stage5 source unavailable after bounded fetch');}
   return true;
  });
+ // Cache immutable object availability only after lock release; custom transports always recheck.
+ if(git===invoke)appStage5Ready=true;return result;
 }
 export function ensureParallelSources(capture,git=invoke,options={}){
  assert.equal(capture.baselineRef,'a7bab5b5534d51cea25ba5ffe4aa9b3630176909');assert.equal(capture.appRef,'f042748d08caa4f51c19b7cf6fc675a3a1fb5dd5');assert.match(capture.codeRef,/^[0-9a-f]{40}$/);
