@@ -1,5 +1,6 @@
 /** Mandatory exact two-path personal successor before the unchanged Stage2/Stage1/Stage6 historical proof. */
 import assert from 'node:assert/strict';
+import {proveTestStageAndHistoricalInputs} from './test-stage.mjs';
 import {createHash} from 'node:crypto';
 import {lstatSync,realpathSync} from 'node:fs';
 import {resolve} from 'node:path';
@@ -11,7 +12,8 @@ const hash=b=>createHash('sha256').update(b).digest('hex'),parsed=new Map();
 function captureFor(read){const bytes=read(personalCapturePath);assert.equal(hash(bytes),personalPolicy.captureSHA256,'Independent personal capture digest differs');let capture=parsed.get(personalPolicy.captureSHA256);if(!capture){capture=JSON.parse(bytes);assert.equal(capture.predecessorRef,personalPolicy.predecessorRef);assert.equal(capture.codeRef,personalPolicy.codeRef);assert.deepEqual(capture.rows.map(row=>row.path),personalPolicy.paths);assert.deepEqual(capture.auxiliaryRows.map(row=>row.path),personalPolicy.auxiliaryPaths);const freeze=value=>{if(value&&typeof value==='object'){Object.values(value).forEach(freeze);Object.freeze(value);}return value;};parsed.set(personalPolicy.captureSHA256,freeze(capture));}return capture;}
 export const personalRecords=read=>new Map(captureFor(read).rows.map(row=>[row.path,row]));
 export const personalAuxiliaryRecords=read=>new Map(captureFor(read).auxiliaryRows.map(row=>[row.path,row]));
-export function provePersonalAndHistoricalInputs({read,git,root}){
+export function provePersonalAndHistoricalInputs(input){
+ const {historicalInput:{read,git,root}}=proveTestStageAndHistoricalInputs(input);
  const c=captureFor(read),live=verifyExactStage({policy:personalPolicy,captureBytes:read(personalCapturePath),read,git,root});
  assert.equal(git(['diff','--name-only','-z',workflowPolicy.codeRef,c.predecessorRef,'--','src']).length,0,'Stage3 checkpoint must preserve entire frozen Stage2 SRC');
  assert.equal(git(['diff','--name-only','-z',c.codeRef,c.auxiliaryRef,'--','src']).length,0,'Default transport auxiliary successor cannot change frozen Stage3 SRC');
