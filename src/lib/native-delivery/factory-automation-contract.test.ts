@@ -10,7 +10,8 @@ describe('exact nine reuse unchanged factory engines in durable batch shape',()=
   const expected=runFactoryCalculation(identity.catalogId,identity.version,input);
   const rows=runFactoryAutomationBatch({catalogId:identity.catalogId,version:1,rows:[input]});
   expect(rows[0]).toMatchObject({index:0,ok:true,result:{engineId:identity.engineId,packet:expected,output:expected.snapshot.output}});
-  expect('value' in rows[0].result!.output).toBe(false);
+  if([322,325,327].includes(identity.catalogId))expect(rows[0].result!.output).toEqual({value:expected.snapshot.output.value,steps:expected.snapshot.output.steps});
+  else expect('value' in rows[0].result!.output).toBe(false);
   verifyFactoryAutomationRows(identity.catalogId,1,[input],rows);
   expect(()=>verifyFactoryAutomationRows(identity.catalogId,1,[input],[{...rows[0],result:{...rows[0].result,output:{result:123}}}])).toThrow();
  });
@@ -20,7 +21,7 @@ describe('exact nine reuse unchanged factory engines in durable batch shape',()=
   expect(automationIdentity(383,1)).toBeUndefined();expect(automationIdentity(383,2)?.engineId).toBe('technology.website-bandwidth');
  });
  it('rejects other factory and private physics identities, wrong versions, numeric JSON and arbitrary code',()=>{
-  for(const catalogId of [208,322,323,324,370])expect(factoryAutomationBatchSchema.safeParse({catalogId,version:1,rows:[{x:'2'}]}).success).toBe(false);
+  for(const catalogId of [323,324,370,441])expect(factoryAutomationBatchSchema.safeParse({catalogId,version:1,rows:[{x:'2'}]}).success).toBe(false);
   expect(factoryAutomationBatchSchema.safeParse({catalogId:218,version:2,rows:[{x:'2'}]}).success).toBe(false);
   expect(factoryAutomationBatchSchema.safeParse({catalogId:218,version:1,rows:[{x:2}]}).success).toBe(false);
   const rows=runFactoryAutomationBatch({catalogId:218,version:1,rows:[{x:'2',formula:'arbitrary'},{x:'1e-200'},{x:'3'}]});

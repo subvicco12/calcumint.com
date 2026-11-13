@@ -1,10 +1,12 @@
-import {readFileSync} from 'node:fs';import {it,expect} from 'vitest';import {factoryDeliveryCatalog} from './factory-delivery-catalog';
+import {readFileSync} from 'node:fs';import {it,expect} from 'vitest';import {retainedFactoryNineTuples} from '../completion-wave-20261113/retained-nine-tuples';
 const source=readFileSync('docs/completion-first-20261112/automation/contract-successor.sql','utf8');
 const reverse=readFileSync('docs/completion-first-20261112/automation/contract-reverse.sql','utf8');
 it('held exact-preimage successor extends job tuples without rewriting embed tables or authority/quota/worker',()=>{
  expect(source).toContain("RAISE EXCEPTION 'UNAPPLIED_FACTORY_NINE_AUTOMATION_SUCCESSOR'");
  expect(source).toContain("1a371a13355af3b186659076489269a887749f8d45c65e27610fd556628b8d85");
- for(const row of factoryDeliveryCatalog)expect(source).toContain(`(${row.catalogId},'${row.engineId}',1)`);
+ // This immutable predecessor remains nine. The independently guarded successor
+ // is checked in sql-successor.test.ts against every current registered tuple.
+ for(const row of retainedFactoryNineTuples)expect(source).toContain(`(${row.catalogId},'${row.engineId}',1)`);
  expect(source).not.toMatch(/ALTER TABLE public\.technology_five_embed_(grants|usage)/);
  expect(source).toContain("(383,'technology.website-bandwidth',2)");
  expect(source).toContain('public.consume_native_business_api_quota_v1(p_api_key_id)');
