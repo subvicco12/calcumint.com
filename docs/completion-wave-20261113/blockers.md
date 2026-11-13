@@ -1,0 +1,13 @@
+# Remaining qualification and release gates
+
+- **Exact-head qualification:** final head PENDING; uninterrupted full regression, source acceptance, all five mandatory CI jobs and aggregate remain required. The interrupted full-unit run has no final totals. Stage 6 is being repaired in isolation; source revisions 59/60 remain PENDING. Keep `newConfirmed = 0` and confirmed scoped overlay 29 until qualification succeeds.
+- **424:** international squared-length relationships and offered-unit workflows exist, but the acre mapping still needs source applicability review. No jurisdictional/survey-foot interpretation is established.
+- **322:** publisher-defined charge, voltage and output units, signed Q/V interpretation and competent applicability review remain unresolved. Actual retained registered-version journeys do not supply those decisions.
+- **323:** charge/distance/force units, medium, point-charge model, signed-force interpretation and constant precision remain unresolved. The private successor is unregistered/unadopted and lacks exact-private-revision authenticated product/native-export acceptance; registered journeys cannot be inherited.
+- **324:** speed/gravity/range units, level-ground applicability and trigonometric endpoint residual policy remain unresolved. The private successor is unregistered/unadopted and lacks exact-private-revision authenticated product/native-export acceptance.
+- **325:** time/gravity/distance units, from-rest/constant-gravity and zero-gravity applicability remain unresolved; broader acceptance and competent review are required.
+- **327:** angular displacement/time/output units and signed average-angular-velocity applicability remain unresolved; radians are not approved by these numeric samples.
+- **Twelve functional candidates:** 208/209/210/211/212/215/216/425/427/428/433/434 remain conditional. Quotient-only 211/212, exactly-two mean 216, binary64 approximation/refusal limits and OWN-427 algebraic scope remain explicit. Engineering evidence grants no unsigned canonical decisions.
+- **Authority and operations:** competent exact-version decisions, existing appointment prerequisites and held lifecycle/operator/backup/restore gates remain outstanding. No production activation or publication authorization was supplied. Preserve protected historical records, existing formula engines and all retained unsuccessful source attempts.
+
+Canonical counts remain 0 complete/certified, 2 implemented/review pending, 495 partial and 43 identity/scope blocked across 540 identities. Worker hours and engineering-day throughput were not measured; no supported release date is available.
