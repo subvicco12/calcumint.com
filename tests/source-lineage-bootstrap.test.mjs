@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {fetchSourceLineage} from '../scripts/fetch-source-lineage.mjs';
+import {proveSourcePreflightAndHistoricalInputs} from './completion-wave-20261113/source-preflight-stage.mjs';
 test('reuses verified revisions without redundant network fetch',()=>{
  let calls=0;const result=fetchSourceLineage(args=>{assert.equal(args[0],'rev-parse');calls++;return Buffer.from(args[2].slice(0,40));});
  assert.equal(result.fetched,0);assert.equal(calls,result.sourceRevisions*2);assert.equal(result.releaseHold,true);
@@ -22,6 +23,8 @@ test('fails closed on absent or substituted revisions after fetch',()=>{
 const sourceGit=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
 const sourceHash=bytes=>createHash('sha256').update(bytes).digest('hex');
 function verifyBootstrapSuccession(read=readFileSync,git=sourceGit){
+ const proved=proveSourcePreflightAndHistoricalInputs({read,git});
+ read=proved.historicalInput.read;git=proved.historicalInput.git;
  const capture=JSON.parse(readFileSync('docs/execution-recovery-20261109/source-successors/governed-bootstrap/capture.json','utf8'));
  assert.equal(capture.predecessor.ref,'a7a656f71b04b50192485a49b0b56b3fa6bd86b9');
  assert.equal(capture.predecessor.path,'scripts/fetch-source-lineage.mjs');
