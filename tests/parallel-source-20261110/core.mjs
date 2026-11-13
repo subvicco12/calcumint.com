@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import {selectStage7HistoricalSource} from '../milestone60-20261113/source-stage7-historical.mjs';
 import {verifyStage7Lineage} from '../milestone60-20261113/source-lineage-stage7.mjs';
+import {receiptLineagePolicy,verifyReceiptLineageExtension} from '../milestone60-20261113/source-receipt-lineage.mjs';
 import {pinnedSourceStage7Records,sourceStage7Policy,sourceStage7CapturePath} from '../milestone60-20261113/source-stage7-activation.mjs';
 import {appStage5Records} from '../completion-wave-20261113/source-app-stage5.mjs';
 import {proveCurrentAppStage5AndHistoricalInputs,testStage6Records} from '../completion-wave-20261113/source-test-stage6.mjs';
@@ -43,7 +44,8 @@ export const retainedStage6CapturePath='docs/parallel-source-20261110/capture-re
 export const retainedStage7CapturePath='docs/parallel-source-20261110/capture-revision64.json';
 export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-revision65.json';
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision67.json';
+export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision68.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -182,7 +184,9 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  // Every byte observed by the old complete proof remains guarded in the new view.
  for(const row of baseline.rows)assert(all.some(r=>r.path===row.path),'Unbound original current source: '+row.path);
  const metadata='scripts/product-completion-lineage.mjs',old=git(['show',baselineRef+':'+metadata]).toString(),current=read(metadata).toString();
- verifyStage7Lineage({previous:git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString(),current,records:pinnedSourceStage7Records(read)});
+ const qualifiedStage7Graph=git(['show',receiptLineagePolicy.retainedGraphRef+':'+metadata]).toString();
+ verifyStage7Lineage({previous:git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString(),current:qualifiedStage7Graph,records:pinnedSourceStage7Records(read)});
+ verifyReceiptLineageExtension({previous:qualifiedStage7Graph,current,git});
  const historicalTail=old.slice(old.indexOf('export const completionSourceRefs'));
  const insertion=" if(claim!==b.predecessorSHA256)throw Error('Completion predecessor claim differs: '+name);";
  assert.equal(historicalTail.split(insertion).length,2,'Exact unchanged guard insertion preimage required');
@@ -216,17 +220,20 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
  evolutions.set(diagnosticPath,{...diagnostic,ref:diagnosticRef});
  const receiptPath='tests/acceptance-closure-20261108/receipt-source-path.mjs',receiptRef='71f285544bd85b46e51da109897c12bfff7b798f';
  const receipt=capture.currentSources.find(r=>r.path===receiptPath);assert(receipt,'Exact fresh-receipt claim verifier successor must remain captured');
- assert.equal(git(['rev-parse',receiptRef+':'+receiptPath]).toString().trim(),receipt.blob);assert.equal(hash(git(['show',receiptRef+':'+receiptPath])),receipt.sha256);
+ const retainedReceipt=JSON.parse(read(retainedStage7V7CapturePath)).currentSources.find(row=>row.path===receiptPath);assert(retainedReceipt,'Literal capture66 receipt helper is required');
+ assert.equal(git(['rev-parse',receiptRef+':'+receiptPath]).toString().trim(),retainedReceipt.blob);assert.equal(hash(git(['show',receiptRef+':'+receiptPath])),retainedReceipt.sha256);
+ for(const key of ['path','blob','bytes','sha256']){assert.equal(retainedReceipt[key],receiptLineagePolicy.predecessor[key]);assert.equal(receipt[key],receiptLineagePolicy.current[key]);}
+ immutableRecord(receiptLineagePolicy.current,git);
  assert.deepEqual(before.filter(b=>b.supplementalSources?.some(d=>d.path===receiptPath)).map(b=>b.path),['scripts/publication20-caller-lineage.mjs']);
  assert.equal(before.filter(b=>b.path===receiptPath).length,1,'Exact owned receipt verifier predecessor required');
- ownedEvolutions.set(receiptPath,{...receipt,ref:receiptRef});evolutions.set(receiptPath,{...receipt,ref:receiptRef});
+ ownedEvolutions.set(receiptPath,{...receipt,ref:receiptLineagePolicy.current.ref});evolutions.set(receiptPath,{...receipt,ref:receiptLineagePolicy.current.ref});
  const allowedExtras=new Map([...apps,...auxiliary]);
  const retainedPaths=['src/components/technology-bounded-analysis.test.tsx','src/components/technology-bounded-analysis.tsx','src/components/technology-next-five-integration.test.tsx','src/lib/native-delivery/technology-next-five-catalog.ts','src/lib/native-delivery/technology-next-five-contract.test.ts','src/lib/native-delivery/technology-next-five-contract.ts','src/lib/technology-next-five-analysis.test.ts','src/lib/technology-next-five-analysis.ts'];
  for(const path of retainedPaths){const bytes=git(['show',baselineRef+':'+path]);allowedExtras.set(path,{path,ref:baselineRef,blob:git(['rev-parse',baselineRef+':'+path]).toString().trim(),sha256:hash(bytes)});}
  const short=r=>({path:r.path,ref:r.ref,blob:r.blob,sha256:r.sha256});
  for(let i=0;i<before.length;i++){
   const prior=before[i],now=after[i],expected=structuredClone(prior),app=ownedEvolutions.get(prior.path);
-  if(app){expected.intermediateSources??=[];if(prior.path===receiptPath){const ref='881c62c140d881b8c7fe70ce9bd5dcc187b54c32',bytes=git(['show',ref+':'+receiptPath]);expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});expected.intermediateSources.push({ref,blob:git(['rev-parse',ref+':'+receiptPath]).toString().trim(),sha256:hash(bytes)});}if(prior.path!==receiptPath)expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});if(sourceStage7Policy.paths.includes(prior.path)){const retained=parseRows(git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString()).find(row=>row.path===prior.path);assert(retained,'Stage7 owned source must retain its Stage6 binding');if(retained.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:retained.successorRef,blob:retained.successorBlob,sha256:retained.successorSHA256});}if(workflowPaths.has(prior.path)||nonSourcePaths.has(prior.path)||capture.workflowGuardSources.some(row=>row.path===prior.path)){const middle=workflowPrior.find(r=>r.path===prior.path);assert(middle);if(middle.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:middle.successorRef,blob:middle.successorBlob,sha256:middle.successorSHA256});}if(prior.path==='.github/workflows/ci.yml'){const retained=retainedWorkflowRecord(read);immutableRecord(retained,git);expected.intermediateSources.push({ref:retained.ref,blob:retained.blob,sha256:retained.sha256});}Object.assign(expected,{successorRef:app.ref,successorBlob:app.blob,successorSHA256:app.sha256});}
+  if(app){expected.intermediateSources??=[];if(prior.path===receiptPath){const ref='881c62c140d881b8c7fe70ce9bd5dcc187b54c32',bytes=git(['show',ref+':'+receiptPath]);expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});expected.intermediateSources.push({ref,blob:git(['rev-parse',ref+':'+receiptPath]).toString().trim(),sha256:hash(bytes)});expected.intermediateSources.push({ref:receiptLineagePolicy.predecessor.ref,blob:receiptLineagePolicy.predecessor.blob,sha256:receiptLineagePolicy.predecessor.sha256});}if(prior.path!==receiptPath)expected.intermediateSources.push({ref:prior.successorRef,blob:prior.successorBlob,sha256:prior.successorSHA256});if(sourceStage7Policy.paths.includes(prior.path)){const retained=parseRows(git(['show',sourceStage7Policy.predecessorRef+':'+metadata]).toString()).find(row=>row.path===prior.path);assert(retained,'Stage7 owned source must retain its Stage6 binding');if(retained.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:retained.successorRef,blob:retained.successorBlob,sha256:retained.successorSHA256});}if(workflowPaths.has(prior.path)||nonSourcePaths.has(prior.path)||capture.workflowGuardSources.some(row=>row.path===prior.path)){const middle=workflowPrior.find(r=>r.path===prior.path);assert(middle);if(middle.successorRef!==prior.successorRef)expected.intermediateSources.push({ref:middle.successorRef,blob:middle.successorBlob,sha256:middle.successorSHA256});}if(prior.path==='.github/workflows/ci.yml'){const retained=retainedWorkflowRecord(read);immutableRecord(retained,git);expected.intermediateSources.push({ref:retained.ref,blob:retained.blob,sha256:retained.sha256});}Object.assign(expected,{successorRef:app.ref,successorBlob:app.blob,successorSHA256:app.sha256});}
   if(expected.supplementalSources)expected.supplementalSources=expected.supplementalSources.map(d=>evolutions.has(d.path)?short(evolutions.get(d.path)):d);
   const count=expected.supplementalSources?.length??0,extras=(now.supplementalSources??[]).slice(count);for(const d of extras){assert(allowedExtras.has(d.path),'Unreviewed supplemental source');assert.deepEqual(d,short(allowedExtras.get(d.path)));}
   if(extras.length)expected.supplementalSources=[...(expected.supplementalSources??[]),...extras];assert.deepEqual(now,expected,'Only named app/data successors may advance: '+prior.path);
@@ -245,7 +252,7 @@ export function verifyParallelSource(read=readFileSync,git=sourceGit,suppliedRow
 export function preloadRetainedImmutableObjects(read,git){
  verifyParallelAuthority(read,git);const capture=JSON.parse(read(capturePath));ensureParallelSources(capture,git,{defaultRetainedCommitBatch:true});
  const ids=new Set(),paths=new Map();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);if(typeof value.ref==='string'&&/^[a-f0-9]{40}$/.test(value.ref)&&typeof value.path==='string'){const key=value.ref+':'+value.path;assert(!paths.has(key)||paths.get(key).blob===value.blob,'Conflicting independently pinned path records');paths.set(key,{ref:value.ref,path:value.path,blob:value.blob});}}Object.values(value).forEach(visit);}};
- const finite=[capturePath,retainedStage7V7CapturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
+ const finite=[capturePath,retainedStage7V8CapturePath,retainedStage7V7CapturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
  for(const path of finite){assert(accepted.some(row=>row.path===path),"Preloaded capture must have independent authority");visit(JSON.parse(read(path)));}
  git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
