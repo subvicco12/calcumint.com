@@ -3549,9 +3549,9 @@ const bindings=[
       },
       {
         "path": "src/components/calculator-factory-portal.tsx",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "116083dd95898d81503e3dd1df5778286fe2cf32",
-        "sha256": "7c88bd8cccfceb3d8e34e138fdbd49bb1062cbb86154893f5b1c374f10916791"
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "f04d256820c1b88ae5faf9fab53d8f9462eb8695",
+        "sha256": "1f3671f3991157903f5e35a30026878fb8e48d3afe157b8451757a5b98c610e8"
       },
       {
         "path": "src/components/calculator-factory-workbench.test.tsx",
@@ -3759,9 +3759,9 @@ const bindings=[
       },
       {
         "path": "src/lib/business/factory-nine-sharing.test.ts",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "a345b4a0afa5bdda60891ac68adb8b25cc81281b",
-        "sha256": "a29d101e6c309b27cd205518d9711c3ea047d1869e5a6d3d96c7276d1653f819"
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "ffb519e2f3072b66990f48e840865e3671f713c5",
+        "sha256": "caac3118b79344fde38e43270e49df6bd9d9b8aa5d0ea02cf1eb2d28da9c34cb"
       },
       {
         "path": "src/lib/business/factory-nine-sharing.ts",
@@ -3807,9 +3807,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-automation-contract.test.ts",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "fd582a99d922a26b7097cfaa5b318fe58e441dfa",
-        "sha256": "73e0914a1f8ae3ddc7787e27f0bf98d4f07edb00e119b6e71b75f40e94aa97c6"
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "7954395236a6c1bd44e7e1d9cfe8461f5d61e471",
+        "sha256": "74e105053da510642d0a8147d636e61cd8ded642ebced32ba2a154a890313617"
       },
       {
         "path": "src/lib/native-delivery/factory-automation-contract.ts",
@@ -3831,9 +3831,9 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-automation-sql.test.ts",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "5a0019a8162b64a222963c0dff371b9a7aef9185",
-        "sha256": "0c99c96b226fbea2886ee5a67cfe0d71fa00295fc866d080795fa1ae2a0cc894"
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "a5ec933a23400e8837e88c84c2005de31b22e434",
+        "sha256": "12c4eea13dd813bd1868a1ef90ba5bc04ea4b637bd404da9475b6c059224fe78"
       },
       {
         "path": "src/lib/native-delivery/factory-automation-storage.test.ts",
@@ -3849,15 +3849,15 @@ const bindings=[
       },
       {
         "path": "src/lib/native-delivery/factory-delivery-catalog.ts",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "9bc2aeba36e188bfe004f98126f13843763ee04f",
-        "sha256": "f7c415330cfeab3f74e6974a5ac912172fa69074214d86952d3326efe5c87292"
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "b981d7133e15c2b8291619c187e430e8131d871b",
+        "sha256": "53875801eabe03375245190b2bdd4cfe8dca27283c5a65af8899b5f93f0c45d7"
       },
       {
         "path": "src/lib/native-delivery/factory-embed-contract.test.ts",
-        "ref": "df0cc7633af57c126a9dec1d8a022d28c7a37eb4",
-        "blob": "9375129f4089745cb4488c6b1db8d62e93ef08e9",
-        "sha256": "312691f7ac876850b35a9632fcea155461f21865ea742b47854702738abc906c"
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "8c69d0a989f9257e867c6d5b621c258163559564",
+        "sha256": "a8923777484a6ac3f16c18f0fa3a6ea285aa0cd1e567db2eb23da6a3c122fbb9"
       },
       {
         "path": "src/lib/native-delivery/factory-embed-contract.ts",
@@ -3948,6 +3948,72 @@ const bindings=[
         "ref": "054854bceed263ba59e8cd0052f1f3e9b1ea8e30",
         "blob": "99666fd1d09a2b7f782b05d4dbd9f9656be08eea",
         "sha256": "a6b0b939f5e5cee3072cc2776bc3dbf6663a7c70731419a3905d7904a2f87f0c"
+      },
+      {
+        "path": "src/components/completion-wave-analysis.test.tsx",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "e5c6ea3c25f4f4f8be1e633589824a667e5a0a7e",
+        "sha256": "d77994c3197e3f439440dd22d891f048eb8c28c90d242eb3b155e5d4f16c8b36"
+      },
+      {
+        "path": "src/components/completion-wave-analysis.tsx",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "62b1ce93cf1b24cdda22720fe345fdd8e0ec0cd3",
+        "sha256": "467ad4a17356b35f92255993284d04696861ff8c6c08f4f4fa6ad1f74ae15a5c"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/business-cases.test.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "365880cc1fb83c70583bae8093ea552b3c097ab0",
+        "sha256": "3af216f2019d8ef2879ddac13cc7b5036f4213c9c97d7b920c2811ae5ade5698"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/business-cases.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "4844eb02a2ab214fc011c5c5f28529a0b89d36ce",
+        "sha256": "f207d4517b4d79222fd8dde15f51fa5b77526a216707cf12cae9a32c823b4dd4"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/conversion-workflows.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "17a451559ed0940b18807487f469876974177b77",
+        "sha256": "ddc998f3f8ce6bb95f57b465cf663bf8861a9c6aff00c4c0c322109051e159e5"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/engine-evidence.test.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "948c1f36007e213c1dd0d1c402897a24f4f39038",
+        "sha256": "74fb11e67c4c08d81364d271090a12a6a3f9e1e8104d07ea9302cd80c41fabbf"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/math-analysis.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "cb439f62d0e1529e717e353142eab6e4815a086d",
+        "sha256": "d65ec76fe393ffdbb3c5aabf8084e03c7763218878b25463d6730eaf47a44ab0"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/native-wave.test.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "a1d25cf972c6bc0e5397a71aa0eebd50260a4fb7",
+        "sha256": "40397748a1cd9ce9b318582bcab276c38ef61dbf4ef8aa0ebe0609ea2466f5bd"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/physics.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "98bf1a2dfa24058c1cd9c5a0b607335e426f938c",
+        "sha256": "d675805de50a163d14a2ac0809edb0b9ad1ab4d1806b0f1f6fb71cbfa3d8aefa"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/retained-nine-tuples.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "e59960ed20f50da2d4f39db00324763fd8631cd7",
+        "sha256": "e84284138514b4267953fed4eb642db73323058d4329c9762a1b3e326bd18b78"
+      },
+      {
+        "path": "src/lib/completion-wave-20261113/sql-successor.test.ts",
+        "ref": "8dc215f20042f097bc198cc92f9473f1c30fc157",
+        "blob": "5a6c1698541635ae5f06f4c487f98872bc278c90",
+        "sha256": "15f479cacb572a9b625f5522fb8961cd198dc5945f5f88298141651ff709869f"
       }
     ],
     "intermediateSources": [
