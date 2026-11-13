@@ -1,10 +1,12 @@
 import { physicsCandidates } from '../cohorts/physics';
+import { physicsObservedContracts } from './physics-domain';
 /** Review metadata only. Does not adopt a successor, assign units or alter replay. */
 export const physicsCompletionReview = physicsCandidates.map(candidate => ({
   catalogId: candidate.catalogId,
   identity: { id: candidate.engineId, slug: candidate.slug, version: candidate.version },
   ...('privateRevision' in candidate ? { privateRevision: candidate.privateRevision, historicalEngine: candidate.historicalEngine } : {}),
   registered: candidate.registered,
+  observedArithmetic: physicsObservedContracts[candidate.catalogId as keyof typeof physicsObservedContracts],
   canonicalUnit: null,
   fieldUnits: Object.fromEntries(candidate.fields.map(field => [field.key, null])),
   observedScope: candidate.scope,

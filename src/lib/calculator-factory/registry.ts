@@ -1,3 +1,5 @@
+import {nextMathContracts,calculateNextMath,type NextMathId} from './completion/math-next';
+import {conversionNextContracts} from './completion/conversion-next';
 import {frequencyPresentationUnit} from '../frequency-presentation';
 import {basicMathContracts,basicMathCaptureRevision,calculateBasicMath,type BasicMathCatalogId} from './cohorts/basic-math';
 import {conversionCompletionContracts,conversionCompletionUnit} from './completion/conversion-contracts';
@@ -28,7 +30,10 @@ const physics:FactoryContract[]=physicsCandidates.map(row=>{
  const fields:readonly FactoryWorkbenchField[]='fields' in row?row.fields as readonly FactoryWorkbenchField[]:[];
  return {catalogId:row.catalogId,engineId:row.engineId,slug:row.slug,...('privateRevision' in row?{privateRevision:String(row.privateRevision)}:{}),version:typeof row.version==='number'?row.version:1,title:engine.title??`Physics ${row.catalogId}`,registered:row.catalogId!==323&&row.catalogId!==324,primaryKey:row.primaryKey,fields,scope:row.scope,sourceEvidence:[row.sourceEvidence],limitations:[...row.limitations,...row.blockers],execute:(raw:FactoryRaw)=>{const input=engine.inputSchema.parse(numericInput(raw,fields));const output=engine.calculate(input as never,{});return createCalculationSnapshot({calculatorSlug:row.slug,calculatorVersion:typeof row.version==='number'?row.version:1,input,output});}};
 });
-export const factoryContracts:readonly FactoryContract[]=Object.freeze([...math,...conversions,...physics]);
+const nextMath:FactoryContract[]=nextMathContracts.map(row=>({...row,captureRevision:'private.geometry-completion.20261113.1',execute:(raw:FactoryRaw)=>calculateNextMath(row.catalogId as NextMathId,numericInput(raw,row.fields)).snapshot}));
+// Only registered scalar v1 converter tuples enter shared delivery. Private exact-decimal drafts retain separate workflows.
+const nextConversions=conversionNextContracts.filter(row=>row.registered);
+export const factoryContracts:readonly FactoryContract[]=Object.freeze([...math,...conversions,...physics,...nextMath,...nextConversions]);
 if(new Set(factoryContracts.map(row=>row.catalogId)).size!==factoryContracts.length)throw Error('Duplicate factory catalog identity');
 export function getFactoryContract(catalogId:number){return factoryContracts.find(row=>row.catalogId===catalogId);}
 export function getFactoryWorkflows(catalogId:number){const contract=getFactoryContract(catalogId);if(!contract)throw Error('Unknown factory identity');return createFactoryWorkflows({identity:{catalogId,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,sourceVersion:`factory-wave1-20261112.1/${contract.engineId}@${contract.version}${contract.privateRevision?`/${contract.privateRevision}`:''}${contract.captureRevision?`/${contract.captureRevision}`:''}`},execute:contract.execute});}

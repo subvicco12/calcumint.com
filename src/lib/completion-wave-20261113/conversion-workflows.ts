@@ -1,5 +1,6 @@
 /** Converter-specific controls over immutable v1 engines. No publication authority. */
 import {getConversionFactoryDefinition,runConversionFactoryCalculation,replayConversionFactoryCalculation,type ConversionFactoryRequest} from '@/lib/calculator-factory/cohorts/conversions';
+import acreSource from '../../../docs/milestone60-20261113/sources/nist-international-acre-manifest.json';
 import {conversionCompletionSource} from '@/lib/calculator-factory/completion/conversion-contracts';
 
 export const conversionWaveIds=Object.freeze([424,425,427,428,433,434] as const);
@@ -7,7 +8,7 @@ export type ConversionWaveId=typeof conversionWaveIds[number];
 type UnitDescription=Readonly<{symbol:string;meaning:string}>;
 const unit=(symbol:string,meaning:string):UnitDescription=>Object.freeze({symbol,meaning});
 export const conversionWaveContracts=Object.freeze({
- 424:{units:{m2:unit('m²','square metre'),km2:unit('km²','square kilometre'),cm2:unit('cm²','square centimetre'),ft2:unit('ft²','square international foot'),yd2:unit('yd²','square international yard'),acre:unit('acre','4046.8564224 m²; international acre interpretation'),ha:unit('ha','10000 m²'),mi2:unit('mi²','square international mile')},scope:'Scalar area; no jurisdiction or survey-foot interpretation.',sourceStatus:'PARTIAL_ACRE_MAPPING_REVIEW_REMAINS'},
+ 424:{units:{m2:unit('m²','square metre'),km2:unit('km²','square kilometre'),cm2:unit('cm²','square centimetre'),ft2:unit('ft²','square international foot'),yd2:unit('yd²','square international yard'),acre:unit('acre','43560 international ft² = 4046.8564224 m² exact (NIST)'),ha:unit('ha','10000 m²'),mi2:unit('mi²','square international mile')},scope:'Scalar area using the international acre = 43560 international ft² = 4046.8564224 m². No jurisdiction or survey-foot interpretation.',sourceStatus:'PARTIAL_FORMAL_APPLICABILITY_REVIEW_REMAINS',mappingStatus:'SOURCE_RELATIONSHIPS_ESTABLISHED'},
  425:{units:{m3:unit('m³','cubic metre'),l:unit('L','litre'),ml:unit('mL','millilitre'),cm3:unit('cm³','cubic centimetre'),ft3:unit('ft³','cubic international foot'),in3:unit('in³','cubic international inch'),gal_us:unit('US gal','US liquid gallon = 231 cubic international inches'),qt_us:unit('US qt','one quarter US liquid gallon')},scope:'US liquid gallon/quart only; no imperial or ingredient-density mode.',sourceStatus:'SOURCE_RELATIONSHIPS_ESTABLISHED'},
  427:{units:{c:unit('°C','Celsius temperature value'),f:unit('°F','Fahrenheit temperature value'),k:unit('K','Kelvin temperature value')},scope:'OWN-427 algebraic temperature values, including below absolute zero. No temperature-interval or physical-feasibility mode.',sourceStatus:'SOURCE_RELATIONSHIPS_ESTABLISHED'},
  428:{units:{m_s:unit('m/s','metres per second'),km_h:unit('km/h','kilometres per hour'),mph:unit('mph','international miles per hour'),ft_s:unit('ft/s','international feet per second'),knot:unit('kn','1852 metres per hour')},scope:'Scalar speed; no vector, journey or elapsed-time model.',sourceStatus:'SOURCE_RELATIONSHIPS_ESTABLISHED'},
@@ -17,7 +18,7 @@ export const conversionWaveContracts=Object.freeze({
 export function conversionWaveContract(catalogId:number){
  if(!conversionWaveIds.includes(catalogId as ConversionWaveId))throw Error('Unsupported conversion wave identity');
  const details=conversionWaveContracts[catalogId as ConversionWaveId];
- return Object.freeze({...details,catalogId,source:conversionCompletionSource,numericalPolicy:'Original binary64 output and existing precision refusals. Display rounding never changes snapshots.',reviewStatus:'COMPETENT_REVIEW_PENDING'});
+ return Object.freeze({...details,catalogId,source:conversionCompletionSource,...(catalogId===424?{additionalSource:acreSource}:{}),numericalPolicy:'Original binary64 output and existing precision refusals. Display rounding never changes snapshots.',reviewStatus:'COMPETENT_REVIEW_PENDING'});
 }
 function execute(request:ConversionFactoryRequest){conversionWaveContract(request.catalogId);return runConversionFactoryCalculation(request);}
 /** One independent engine execution per target; unsupported precision is visible per row. */

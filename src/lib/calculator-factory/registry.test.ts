@@ -4,8 +4,8 @@ import {calculateFactory,factoryResult,factoryContracts,getFactoryWorkflows,runF
 const ids=[208,209,210,211,212,215,216,218,219,220,423,424,425,427,428,430,431,432,433,434,438,440,322,323,324,325,327];
 const defaults=(row:(typeof factoryContracts)[number])=>Object.fromEntries(row.fields.map(field=>[field.key,String(field.defaultValue??'')]));
 describe('factory exact integration contracts',()=>{
- it('contains exactly27 unique narrow contracts with executable defaults',()=>{
-  expect(factoryContracts.map(row=>row.catalogId)).toEqual(ids);
+ it('retains all27 narrow contracts and admits exactly19 source-scoped registered successors with executable defaults',()=>{
+  expect(factoryContracts.map(row=>row.catalogId)).toEqual([...ids,...[255, 256, 259, 260, 263, 264, 265, 261, 262, 266, 267, 269, 270, 271, 273, 429, 436, 437, 439]]);
   for(const row of factoryContracts){expect(row.fields.length,row.title).toBeGreaterThan(0);const packet=getFactoryWorkflows(row.catalogId).execute(defaults(row));expect(packet.snapshot.calculatorSlug).toBe(row.slug);expect(packet.snapshot.calculatorVersion).toBe(row.version);expect(Object.values(packet.snapshot.output).some(value=>typeof value==='number'&&Number.isFinite(value))).toBe(true);expect(packet.raw).toEqual(defaults(row));}
  });
  it('rejects null, arrays, numeric coercion, extra fields and incomplete decimal tokens for every contract',()=>{

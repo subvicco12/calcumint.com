@@ -7,7 +7,7 @@ import {issueNativeGrant,readNativeGrant} from './grant';
 const secret='test-only-native-secret-000000000000000000000000';
 const base={grantId:'00000000-0000-4000-8000-000000000001',apiKeyId:'00000000-0000-4000-8000-000000000002',organizationId:'00000000-0000-4000-8000-000000000003',issuerId:'00000000-0000-4000-8000-000000000004',version:1 as const,allowedOrigin:'https://customer.example'};
 it('closes delivery to the original nine and exact sixteen registered successors',()=>{
- expect(factoryDeliveryCatalog.map(row=>row.catalogId)).toEqual([218,219,220,423,430,431,432,438,440,208,209,210,211,212,215,216,424,425,427,428,433,434,322,325,327]);
+ expect(factoryDeliveryCatalog.map(row=>row.catalogId)).toEqual([218,219,220,423,430,431,432,438,440,208,209,210,211,212,215,216,424,425,427,428,433,434,322,325,327] .concat([255, 256, 259, 260, 263, 264, 265, 429, 436, 437, 439, 261, 262, 266, 267, 269, 270, 271, 273]));
  for(const id of [323,324,441,999])expect(factoryDeliveryIdentity(id,1)).toBeUndefined();
  for(const row of factoryDeliveryCatalog)expect(factoryDeliveryIdentity(row.catalogId,2)).toBeUndefined();
 });

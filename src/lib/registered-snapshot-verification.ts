@@ -1,3 +1,4 @@
+import {verifyCookingSnapshot} from './cooking-snapshot-verification';
 import {technologyReplayBindings,verifyTechnologySnapshot} from './technology-snapshot-verification';
 import {launchReplaySlugs,verifyLaunchSnapshot} from './launch-snapshot-verification';
 import {batch22PhysicsReplayBindings,verifyBatch22PhysicsSnapshot} from './batch22-physics-replay';
@@ -10,6 +11,7 @@ import {verifyCidrSnapshot} from './technology-cidr-snapshot-verification';
 export function verifyRegisteredSnapshot(raw:unknown){
  const clean=copyCalculationData({value:raw},{}).input.value;
  const slug=clean&&typeof clean==='object'&&!Array.isArray(clean)?(clean as Record<string,unknown>).calculatorSlug:undefined;
+ if(slug==='cooking-measurement-converter')return verifyCookingSnapshot(clean);
  if(slug==='cidr-calculator')return verifyCidrSnapshot(clean);
  if(technologyReplayBindings.some(binding=>binding.slug===slug))return verifyTechnologySnapshot(clean);
  if(typeof slug==='string'&&launchReplaySlugs.includes(slug))return verifyLaunchSnapshot(clean);
