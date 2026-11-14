@@ -1,11 +1,13 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
-import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from './source-stage8-runtime-auxiliary.mjs';
+import {runtimeAuxiliarySource,runtimeAuxiliaryBatchSuccessor,proveRuntimeAuxiliarySuccessor} from './source-stage8-runtime-auxiliary.mjs';
 import {sourceGit} from '../parallel-source-20261110/baseline-runtime.mjs';
 import {provePinnedSourceStage8,sourceStage8Policy} from './source-stage8-activation.mjs';
 const root=process.cwd(),path='tests/next-cohort-20261110/source/retained-runtime.mjs',helper='tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 const args=()=>({record:runtimeAuxiliarySource.prior,currentBytes:readFileSync(path),input:{read:readFileSync,git:sourceGit,root}});
 test('the one current runtime object joins its literal personal auxiliary claim before historical projection',()=>{
  assert.equal(proveRuntimeAuxiliarySuccessor(args()),true);
+ assert.equal(sourceGit(['rev-parse',runtimeAuxiliaryBatchSuccessor.ref+':'+path]).toString().trim(),runtimeAuxiliaryBatchSuccessor.blob);
+ const falseNext=(commands,options)=>commands[0]==='rev-parse'&&commands[1]===runtimeAuxiliaryBatchSuccessor.ref+':'+path?Buffer.from('0'.repeat(40)+'\n'):sourceGit(commands,options);assert.throws(()=>proveRuntimeAuxiliarySuccessor({...args(),input:{...args().input,git:falseNext}}));
  const input=provePinnedSourceStage8(args().input).historicalInput;assert.equal(proveRuntimeAuxiliarySuccessor({...args(),input}),true);
 });
 test('unknown old tuples and caller-nominated current records cannot access Git',()=>{
@@ -15,8 +17,8 @@ test('unknown old tuples and caller-nominated current records cannot access Git'
  assert.throws(()=>proveRuntimeAuxiliarySuccessor({...args(),currentRecord:runtimeAuxiliarySource.current}),/Caller-nominated/);
 });
 test('current tamper and retained-valid old runtime bytes refuse',()=>{
- const old=sourceGit(['cat-file','blob','99666fd1d09a2b7f782b05d4dbd9f9656be08eea']);
- for(const bytes of [Buffer.from('tamper'),old]){
+ const old=sourceGit(['cat-file','blob','99666fd1d09a2b7f782b05d4dbd9f9656be08eea']),g20=sourceGit(['cat-file','blob',runtimeAuxiliarySource.current.blob]);
+ for(const bytes of [Buffer.from('tamper'),old,g20]){
   const input={...args().input,read:name=>name===path?bytes:readFileSync(name)};assert.throws(()=>proveRuntimeAuxiliarySuccessor({...args(),input,currentBytes:bytes}));
   assert.throws(()=>proveRuntimeAuxiliarySuccessor({...args(),currentBytes:bytes}));
  }

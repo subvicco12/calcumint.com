@@ -21,8 +21,8 @@ test('inherited retained-runtime row never overrides its original auxiliary succ
  const current=JSON.parse(readFileSync('docs/parallel-source-20261110/capture-revision83.json')),next=current.currentSources.find(row=>row.path===path);
  assert.equal(selectStage8GuardSuccessor(current,path),next,'An already-current owned row must select itself');assert.equal(next.ref,current.sourceStage8V16.guardRef);assert.notEqual(next.blob,actual.blob);
  assert.equal(sourceGit(['rev-parse','2a59a85c6e935c43e9a5a71ae15c9954e4fcab42:'+path]).toString().trim(),next.blob);
- assert.equal(sourceGit(['rev-parse','HEAD:'+path]).toString().trim(),next.blob);
- const bytes=sourceGit(['cat-file','blob',next.blob]);assert.equal(bytes.length,next.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),next.sha256);assert(readFileSync(path).equals(bytes));
+ const bytes=sourceGit(['cat-file','blob',next.blob]);assert.equal(bytes.length,next.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),next.sha256);
+ const successor=JSON.parse(readFileSync('docs/parallel-source-20261110/capture-revision86.json')),live=selectStage8GuardSuccessor(successor,path);assert(live);assert.equal(live.ref,successor.sourceStage8V19.guardRef);assert.equal(sourceGit(['rev-parse','9fa7614e903ef0027298ee6ac63be93bbae5eb47:'+path]).toString().trim(),live.blob);assert.equal(sourceGit(['rev-parse','HEAD:'+path]).toString().trim(),live.blob);const currentBytes=sourceGit(['cat-file','blob',live.blob]);assert.equal(currentBytes.length,live.bytes);assert.equal(createHash('sha256').update(currentBytes).digest('hex'),live.sha256);assert(readFileSync(path).equals(currentBytes));assert.notEqual(live.blob,next.blob);
 });
 test('only explicit Stage8 guard paths select their exact captured successor',()=>{
  const path='tests/parallel-source-20261110/core.mjs',row=capture.currentSources.find(row=>row.path===path);
