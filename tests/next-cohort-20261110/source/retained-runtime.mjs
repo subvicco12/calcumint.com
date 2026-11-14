@@ -1,3 +1,4 @@
+import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
 import {proveNamedCurrentContext,preloadRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
 import {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';
 import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
@@ -498,6 +499,9 @@ export function retainedRuntimeBytes(path,read=readFileSync,sourceGit=git){
  if(sourceGit===git&&!immutableObjectsPreloaded&&(row||["src/lib/native-delivery/technology-five-job-storage.ts","src/lib/native-delivery/technology-five-webhook-worker.ts","tests/gotrue-runtime/acceptance.mjs"].includes(path))){preloadRetainedImmutableObjects(read,git);immutableObjectsPreloaded=true;}
  if(!row){const retained=readStage2HistoricalRuntime(path,read,sourceGit);return retained??read(path);}
  const admitted=verifyCurrentRuntimeContext(read,sourceGit);
+ return retainedMappedRuntimeBytes(path,row,read,sourceGit,admitted);
+}
+function retainedMappedRuntimeBytes(path,row,read,sourceGit,admitted){
  const current=read(path);
  const blob=sourceGit(['cat-file','blob',row.currentBlob]);assert.equal(hash(blob),row.currentSHA256,'Retained evidence current Git bytes differ: '+path);
  if(sourceGit(['rev-parse','HEAD:'+path]).toString().trim()===row.currentBlob)assert(current.equals(blob),'Retained evidence current target bytes differ: '+path);
@@ -506,3 +510,28 @@ export function retainedRuntimeBytes(path,read=readFileSync,sourceGit=git){
  return predecessor;
 }
 export function readRuntimeEvidenceFile(path,encoding){const bytes=retainedRuntimeBytes(path);return encoding===undefined?bytes:bytes.toString(encoding);}
+
+// Explicit synchronous opt-in only. Default per-read entry points above remain unchanged.
+const rawActualState=()=>({head:execFileSync('git',['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}),status:execFileSync('git',['status','--porcelain=v1','--untracked-files=all'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})});
+function assertActualState(before){const after=rawActualState();assert(before.head.equals(after.head),'Evidence batch actual HEAD changed');assert(before.status.equals(after.status),'Evidence batch actual status changed');}
+function assertActualHead(before){assert(before.head.equals(execFileSync('git',['rev-parse','--verify','HEAD^{commit}'],{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024})),'Evidence batch actual HEAD changed');}
+export function withRuntimeEvidenceBatch(paths,run,...extra){
+ return runClosedSynchronousBatch(paths,run,{
+  begin(declared){
+   assert.equal(extra.length,0,'Custom evidence batch readers or arguments are forbidden');assertAPIEvidencePaths(declared);
+   const before=rawActualState();let admitted;
+   try{
+    if(!immutableObjectsPreloaded){preloadRetainedImmutableObjects(readFileSync,git);immutableObjectsPreloaded=true;}
+    admitted=verifyCurrentRuntimeContext();
+   }finally{assertActualState(before);}
+   return {before,admitted};
+  },
+  read(path,state){
+   const row=sources.find(source=>source.path===path);if(!row)return retainedRuntimeBytes(path);
+   assertActualHead(state.before);
+   try{return retainedMappedRuntimeBytes(path,row,readFileSync,git,state.admitted);}
+   finally{assertActualHead(state.before);}
+  },
+  end(state){try{verifyCurrentRuntimeContext();}finally{assertActualState(state.before);}}
+ });
+}
