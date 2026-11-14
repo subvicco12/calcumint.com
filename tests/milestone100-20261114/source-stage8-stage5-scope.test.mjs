@@ -12,7 +12,7 @@ function fixture(){
  const paths=['tests/milestone100-20261114/source-stage8.mjs','tests/milestone100-20261114/source-stage8-authority-scope.mjs','tests/milestone100-20261114/authority-observation-collector.mjs'];
  const path='src/example.ts',row={predecessor:null,current:{path:'src/example.ts',ref:'b'.repeat(40),sha256:'c'.repeat(64)}};
  const proof=()=>{state.calls++;if(state.calls===state.failAt)throw Error('fresh proof refused');return new Map([[path,structuredClone(row)]]);};
- const run=new Function('assert','sourceStage8HistoricalView','accepted','hash','verifyParallelAuthority','proveStage5','assertSourceStage8HeadStable','return function(read,git,run){'+body[1]+'\n}')(assert,()=>view,paths.map(path=>({path,sha256:hash(bytes)})),hash,()=>state.authority,proof,()=>assert(state.stable,'fresh actual HEAD moved'));
+ const run=new Function('assert','sourceStage8HistoricalView','accepted','hash','verifyParallelAuthority','proveStage5','assertSourceStage8HeadStable','compileStage8GuardScope','finishStage8GuardScope','clearStage8GuardScope','return function(read,git,run){'+body[1]+'\n}')(assert,()=>view,paths.map(path=>({path,sha256:hash(bytes)})),hash,()=>state.authority,proof,()=>assert(state.stable,'fresh actual HEAD moved'),()=>{},()=>{},()=>{});
  return{state,row,path,view,read,git,run:callback=>run(read,git,callback)};
 }
 test('private invocation proves authority and Stage5 before callback then proves Stage5 afresh',()=>{const f=fixture();let saved;assert.equal(f.run((w,map)=>{assert.equal(w,undefined);assert.equal(f.state.calls,1);saved=map;return 3;}),3);assert.equal(f.state.calls,2);assert.equal(saved.size,0);assert(!source.includes('export function withCoreAuthorityWitness'));});

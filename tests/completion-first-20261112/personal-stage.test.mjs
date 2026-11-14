@@ -1,3 +1,4 @@
+import {runtimeAuxiliarySource,proveRuntimeAuxiliarySuccessor} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -35,7 +36,8 @@ test('mandatory live Stage2 composes exact historical Stage1 at5008 and Stage6 w
  const expected=oldRuntime.replace("import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';","import {proveNamedCurrentContext} from '../../parallel-source-20261110/core.mjs';\nimport {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';").replace(' if(!row)return read(path);',' if(!row){const retained=readStage2HistoricalRuntime(path,read,sourceGit);return retained??read(path);}');
  assert.notEqual(expected,oldRuntime);assert.equal(sourceGit(['show',workflowPolicy.guardRef+':'+runtime]).toString(),expected,'Historical Stage2 runtime keeps both literal arrays/default transport');
  const next=expected.replace('import {proveNamedCurrentContext}', 'import {proveNamedCurrentContext,preloadRetainedImmutableObjects}').replace("const git=completionGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}));","const git=completionGitReader((args,options={})=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024,...options}));\nlet immutableObjectsPreloaded=false;").replace(' const row=sources.find(source=>source.path===path);',' const row=sources.find(source=>source.path===path);\n if(sourceGit===git&&!immutableObjectsPreloaded&&(row||["src/lib/native-delivery/technology-five-job-storage.ts","src/lib/native-delivery/technology-five-webhook-worker.ts","tests/gotrue-runtime/acceptance.mjs"].includes(path))){preloadRetainedImmutableObjects(read,git);immutableObjectsPreloaded=true;}');
- assert.notEqual(next,expected);assert.equal(readFileSync(runtime,'utf8'),next,'Exact default-only immutable preload/options successor preserves literal arrays and custom transport');
+ assert.notEqual(next,expected);assert.equal(sourceGit(['show',personalPolicy.auxiliaryRef+':'+runtime]).toString(),next,'Exact historical default-only immutable preload/options successor preserves literal arrays and custom transport');
+ assert.equal(proveRuntimeAuxiliarySuccessor({record:runtimeAuxiliarySource.prior,currentBytes:readFileSync(runtime),input:{read:readFileSync,git:sourceGit,root}}),true,'Current runtime independently qualifies through exact immutable successors');
 
 
 });

@@ -51,7 +51,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision90.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision91.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -63,15 +63,34 @@ function currentGit(source){
  return reader;
 }
 export function parseRows(text){const match=/const bindings=(\[[\s\S]*?\n\]);/.exec(text);assert(match,'Exact completion bindings required');return JSON.parse(match[1]);}
-function sourceRecord(record,read,git,stage5){
- if(stage5Paths.has(record.path)){const row=(stage5??proveStage5(read,git)).get(record.path);assert(row);assert.equal(row.current.path,record.path);if(row.predecessor)assert.equal(row.predecessor.path,record.path);immutableRecord(record,git);return currentSourceRecord(row.current,read,git);}
- return currentSourceRecord(record,read,git);
+// Private immutable guard metadata, scoped only to one authenticated Stage5 map.
+const stage5GuardScopes=new WeakMap();
+function compileStage8GuardScope(stage5,read,git,view){
+ const actual=view.actualInput,record=accepted.find(row=>row.path===capturePath);assert(record,'Independent current guard capture required');
+ const supplied=actual.read(capturePath);assert(Buffer.isBuffer(supplied),'Current guard capture must be bytes');const bytes=Buffer.from(supplied);assert.equal(hash(bytes),record.sha256,'Independent current guard capture bytes differ');
+ const capture=JSON.parse(bytes),rows=new Map(),freeze=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
+ for(const row of capture.currentSources){const selected=selectStage8GuardSuccessor(capture,row.path);if(!row.path.startsWith('src/')&&selected){assert.equal(selected.path,row.path,'Current guard map path differs');assert(!rows.has(row.path),'Duplicate current guard path');rows.set(row.path,freeze(JSON.parse(JSON.stringify(selected))));}}
+ stage5GuardScopes.set(stage5,Object.freeze({view,read,git,actual,actualRead:actual.read,actualGit:actual.git,root:actual.root,bytes,sha256:record.sha256,rows}));
 }
-function currentSourceRecord(record,read,git){
+function scopedStage8GuardSuccessor(stage5,read,git,view,path){
+ const scope=stage5GuardScopes.get(stage5);assert(scope,'Unknown or expired private guard scope');assert.equal(scope.view,view,'Private guard view differs');assert.equal(scope.read,read,'Private guard reader differs');assert.equal(scope.git,git,'Private guard Git differs');assert.equal(scope.actual,view.actualInput,'Private guard actual input differs');assert.equal(scope.actualRead,view.actualInput.read,'Private guard actual reader differs');assert.equal(scope.actualGit,view.actualInput.git,'Private guard actual Git differs');assert.equal(scope.root,view.actualInput.root,'Private guard root differs');return scope.rows.get(path);
+}
+function finishStage8GuardScope(stage5){
+ const scope=stage5GuardScopes.get(stage5);if(!scope)return;
+ const target=resolve(scope.root,capturePath),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current guard capture required');assert.equal(realpathSync(target),target,'Redirected current guard capture');
+ const fresh=scope.actualRead(capturePath);assert(Buffer.isBuffer(fresh)&&hash(fresh)===scope.sha256&&fresh.equals(scope.bytes),'Current guard capture changed during private scope');
+}
+function clearStage8GuardScope(stage5){const scope=stage5GuardScopes.get(stage5);if(scope)scope.rows.clear();stage5GuardScopes.delete(stage5);}
+// End private immutable guard metadata.
+function sourceRecord(record,read,git,stage5){
+ if(stage5Paths.has(record.path)){const row=(stage5??proveStage5(read,git)).get(record.path);assert(row);assert.equal(row.current.path,record.path);if(row.predecessor)assert.equal(row.predecessor.path,record.path);immutableRecord(record,git);return currentSourceRecord(row.current,read,git,stage5);}
+ return currentSourceRecord(record,read,git,stage5);
+}
+function currentSourceRecord(record,read,git,stage5){
  const stage8View=sourceStage8HistoricalView(git);
+ const scopedSuccessor=stage5!==undefined?scopedStage8GuardSuccessor(stage5,read,git,stage8View,record.path):undefined;
  if(stage8View&&!record.path.startsWith('src/')){
-  const currentCapture=JSON.parse(stage8View.actualInput.read(capturePath));
-  const successor=selectStage8GuardSuccessor(currentCapture,record.path);
+  const successor=stage5!==undefined?scopedSuccessor:selectStage8GuardSuccessor(JSON.parse(stage8View.actualInput.read(capturePath)),record.path);
   if(successor){immutableRecord(record,git);return exactCurrentSourceRecord(successor,read,git);}
  }
 
@@ -111,17 +130,19 @@ function withCoreAuthorityWitness(read,git,run){
  try{
   assert.equal(verifyParallelAuthority(read,git),true);
   stage5=new Map([...proveStage5(read,git)].map(([path,row])=>{assert.equal(row.current.path,path,'Stage5 map path differs');return[path,freeze(JSON.parse(JSON.stringify(row)))];}));
+  compileStage8GuardScope(stage5,read,git,view);
   result=run(undefined,stage5);assert.notEqual(result,stage5,'Private Stage5 map cannot escape');assert(!result||typeof result.then!=='function','Synchronous Stage5 scope required');
  }catch(error){errors.push(error);}
  finally{
   try{if(stage5){const fresh=proveStage5(read,git);assert.deepEqual([...fresh],[...stage5],'Stage5 scope current records changed');}}catch(error){errors.push(error);}
   finally{
+   try{if(stage5)finishStage8GuardScope(stage5);}catch(error){errors.push(error);}
    try{
     assert.equal(sourceStage8HistoricalView(git),view,'Stage5 view identity differs');assert.equal(view.historicalInput.read,read,'Stage5 reader identity differs');assert.equal(view.actualInput,actual,'Stage5 actual input identity differs');
     assert.equal(actual.read,actualRead,'Stage5 actual reader identity differs');assert.equal(actual.git,actualGit,'Stage5 actual Git identity differs');assert.equal(actual.root,actualRoot,'Stage5 actual root identity differs');
     assert.equal(actualGit(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),head,'Actual HEAD moved during Stage5 scope');
     assert.equal(actualGit(['status','--porcelain=v1','--untracked-files=all']).toString(),status,'Actual source status changed during Stage5 scope');assertSourceStage8HeadStable(view);
-   }catch(error){errors.push(error);}finally{stage5?.clear();}
+   }catch(error){errors.push(error);}finally{if(stage5)clearStage8GuardScope(stage5);stage5?.clear();}
   }
  }
  if(errors.length===1)throw errors[0];if(errors.length)throw new AggregateError(errors,errors.map(error=>error.message).join('\n'));return result;
