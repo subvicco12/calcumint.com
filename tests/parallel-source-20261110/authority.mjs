@@ -2917,13 +2917,18 @@ export function verifyParallelAuthority(read,git){
  provePinnedSourceStage8({read,git,root:process.cwd()});
  const actual=view?.actualInput??{read,git};
  const records=view?[...accepted.filter(row=>!row.path.startsWith('src/')),...retainedStage8Authority.filter(row=>row.path.startsWith('src/'))]:accepted;
+ // Symbolic identities are live once per invocation, never cached across calls.
+ const actualHead=actual.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(actualHead,/^[0-9a-f]{40}$/);
+ const historicalHead=view?git(['rev-parse','--verify','HEAD^{commit}']).toString().trim():actualHead;assert.match(historicalHead,/^[0-9a-f]{40}$/);
+ // Only an originally supplied capability may batch immutable objects/paths.
+ if(typeof actual.git.preloadBlobs==='function')actual.git.preloadBlobs(records.map(row=>row.blob));
+ if(typeof actual.git.preloadPaths==='function')actual.git.preloadPaths(records.map(row=>({ref:view&&row.path.startsWith('src/')?historicalHead:actualHead,path:row.path,blob:row.blob})));
  for(const record of records){
-  const input=view&&record.path.startsWith('src/')?{read,git}:actual;
-  const head=input.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim();assert.match(head,/^[0-9a-f]{40}$/);
+  const input=view&&record.path.startsWith('src/')?{read,git}:actual,head=view&&record.path.startsWith('src/')?historicalHead:actualHead;
   assert.equal(input.git(['rev-parse',head+':'+record.path]).toString().trim(),record.blob,'Independent parallel HEAD authority differs: '+record.path);
   if(!record.path.startsWith('src/')){const target=resolve(actual.root??process.cwd(),record.path),stat=lstatSync(target);assert(stat.isFile()&&!stat.isSymbolicLink(),'Regular current guard required: '+record.path);assert.equal(realpathSync(target),target,'Redirected current guard: '+record.path);}
   const bytes=input.git(['cat-file','blob',record.blob]);assert.equal(createHash('sha256').update(bytes).digest('hex'),record.sha256);
-  assert(input.read(record.path).equals(bytes),'Independent current target bytes differ: '+record.path);
+  const current=input.read(record.path);assert(current.equals(bytes),'Independent current target bytes differ: '+record.path);assert.equal(createHash('sha256').update(current).digest('hex'),record.sha256);
  }
  return true;
 }

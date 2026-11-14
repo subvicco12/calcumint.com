@@ -34,7 +34,7 @@ test('original receipt and dependency lock retain their exact immutable capture 
 
 import {readFile as readCurrentSource} from 'node:fs/promises';
 import {execFileSync as exactSourceGit} from 'node:child_process';
-import {completionBindingDependencies} from '../../scripts/product-completion-lineage.mjs';
+import {completionBindingDependencies} from '../../scripts/product-completion-stage8.mjs';
 import {readFileSync as readPinnedSource} from 'node:fs';
 import {pinnedSourceStage7Records,sourceStage7Policy} from '../milestone60-20261113/source-stage7-activation.mjs';
 const registeredPath='src/lib/registered-snapshot-verification.ts';
