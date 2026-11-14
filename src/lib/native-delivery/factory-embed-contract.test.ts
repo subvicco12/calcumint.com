@@ -7,8 +7,8 @@ import {issueNativeGrant,readNativeGrant} from './grant';
 const secret='test-only-native-secret-000000000000000000000000';
 const base={grantId:'00000000-0000-4000-8000-000000000001',apiKeyId:'00000000-0000-4000-8000-000000000002',organizationId:'00000000-0000-4000-8000-000000000003',issuerId:'00000000-0000-4000-8000-000000000004',version:1 as const,allowedOrigin:'https://customer.example'};
 it('closes delivery to the original nine and exact sixteen registered successors',()=>{
- expect(factoryDeliveryCatalog.map(row=>row.catalogId)).toEqual([218,219,220,423,430,431,432,438,440,208,209,210,211,212,215,216,424,425,427,428,433,434,322,325,327] .concat([255, 256, 259, 260, 263, 264, 265, 429, 436, 437, 439, 261, 262, 266, 267, 269, 270, 271, 273]));
- for(const id of [323,324,441,999])expect(factoryDeliveryIdentity(id,1)).toBeUndefined();
+ expect(factoryDeliveryCatalog.map(row=>row.catalogId)).toEqual([218,219,220,423,430,431,432,438,440,208,209,210,211,212,215,216,424,425,427,428,433,434,322,325,327] .concat([255, 256, 259, 260, 263, 264, 265, 429, 436, 437, 439, 261, 262, 266, 267, 269, 270, 271, 273]).concat([213,221,223,224,225,226,227,228,229,230,231,234,254,257,258,268,272,274,275,278,279,280,328,331,332]));
+ for(const id of [222,276,277,323,324,441,999])expect(factoryDeliveryIdentity(id,1)).toBeUndefined();
  for(const row of factoryDeliveryCatalog)expect(factoryDeliveryIdentity(row.catalogId,2)).toBeUndefined();
 });
 it.each(factoryDeliveryCatalog)('uses exact existing engine data and binds signed grants for $catalogId',identity=>{

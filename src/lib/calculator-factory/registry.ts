@@ -1,3 +1,6 @@
+import {next100MathContracts,calculateNext100Math,type Next100MathId} from './completion/math-next100';
+import {geometryNext100Contracts,calculateGeometryNext100,type GeometryNext100Id} from './completion/geometry-next100';
+import {nextScienceContracts,calculateNextScience,type NextScienceId} from './completion/science-next100';
 import {nextMathContracts,calculateNextMath,type NextMathId} from './completion/math-next';
 import {conversionNextContracts} from './completion/conversion-next';
 import {frequencyPresentationUnit} from '../frequency-presentation';
@@ -33,7 +36,10 @@ const physics:FactoryContract[]=physicsCandidates.map(row=>{
 const nextMath:FactoryContract[]=nextMathContracts.map(row=>({...row,captureRevision:'private.geometry-completion.20261113.1',execute:(raw:FactoryRaw)=>calculateNextMath(row.catalogId as NextMathId,numericInput(raw,row.fields)).snapshot}));
 // Only registered scalar v1 converter tuples enter shared delivery. Private exact-decimal drafts retain separate workflows.
 const nextConversions=conversionNextContracts.filter(row=>row.registered);
-export const factoryContracts:readonly FactoryContract[]=Object.freeze([...math,...conversions,...physics,...nextMath,...nextConversions]);
+const wave100Math:FactoryContract[]=next100MathContracts.map(row=>({...row,captureRevision:'private.math-next100.20261114.1',execute:(raw:FactoryRaw)=>calculateNext100Math(row.catalogId as Next100MathId,numericInput(raw,row.fields)).snapshot}));
+const wave100Geometry:FactoryContract[]=geometryNext100Contracts.map(row=>({...row,captureRevision:'private.geometry-next100.20261114.1',execute:(raw:FactoryRaw)=>calculateGeometryNext100(row.catalogId as GeometryNext100Id,numericInput(raw,row.fields)).snapshot}));
+const wave100Science:FactoryContract[]=nextScienceContracts.map(row=>({...row,captureRevision:'private.science-completion.20261114.1',execute:(raw:FactoryRaw)=>calculateNextScience(row.catalogId as NextScienceId,numericInput(raw,row.fields)).snapshot}));
+export const factoryContracts:readonly FactoryContract[]=Object.freeze([...math,...conversions,...physics,...nextMath,...nextConversions,...wave100Math,...wave100Geometry,...wave100Science]);
 if(new Set(factoryContracts.map(row=>row.catalogId)).size!==factoryContracts.length)throw Error('Duplicate factory catalog identity');
 export function getFactoryContract(catalogId:number){return factoryContracts.find(row=>row.catalogId===catalogId);}
 export function getFactoryWorkflows(catalogId:number){const contract=getFactoryContract(catalogId);if(!contract)throw Error('Unknown factory identity');return createFactoryWorkflows({identity:{catalogId,engineId:contract.engineId,calculatorSlug:contract.slug,calculatorVersion:contract.version,sourceVersion:`factory-wave1-20261112.1/${contract.engineId}@${contract.version}${contract.privateRevision?`/${contract.privateRevision}`:''}${contract.captureRevision?`/${contract.captureRevision}`:''}`},execute:contract.execute});}

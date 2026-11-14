@@ -1,3 +1,6 @@
+import {next100MathContracts} from '../calculator-factory/completion/math-next100';
+import {geometryNext100Contracts} from '../calculator-factory/completion/geometry-next100';
+import {nextScienceContracts} from '../calculator-factory/completion/science-next100';
 /** Closed immutable factory delivery tuples. This list grants no publication authority. */
 export const factoryDeliveryCatalog=Object.freeze([
  {catalogId:218,engineId:'launch-square-calculator',slug:'square-calculator',version:1},
@@ -44,5 +47,8 @@ export const factoryDeliveryCatalog=Object.freeze([
  {catalogId:270,engineId:'launch-sphere-surface-area-calculator',slug:'sphere-surface-area-calculator',version:1},
  {catalogId:271,engineId:'launch-cylinder-volume-calculator',slug:'cylinder-volume-calculator',version:1},
  {catalogId:273,engineId:'launch-rectangular-prism-volume-calculator',slug:'rectangular-prism-volume-calculator',version:1},
+...next100MathContracts.filter(row=>row.registered).map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
+...geometryNext100Contracts.filter(row=>row.registered&&row.version===1).map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
+...nextScienceContracts.map(({catalogId,engineId,slug,version})=>({catalogId,engineId,slug,version})),
 ].map(row=>Object.freeze(row)));
 export function factoryDeliveryIdentity(catalogId:number,version:number){return factoryDeliveryCatalog.find(row=>row.catalogId===catalogId&&row.version===version);}
