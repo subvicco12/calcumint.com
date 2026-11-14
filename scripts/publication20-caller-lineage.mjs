@@ -1,3 +1,4 @@
+import {completionGitReader} from '../tests/parallel-source-20261110/git-reader.mjs';
 import {verifyCompletionBinding} from './product-completion-stage8.mjs';
 import {verifyFinancialSafetyBinding} from './financial-safety-lineage.mjs';
 import {verifyN1PublicationBinding,n1PublicationSupplementalPath} from './n1-publication-lineage.mjs';
@@ -15,7 +16,7 @@ export function verifyPublication20CallerLineage(directory){
  const raw=safe(directory,'docs/shortest-publication-20/caller-lineage.json'),m=JSON.parse(raw);
  if(Object.keys(m).sort().join(',')!=='canonicalPromotion,kind,predecessorCallerSHA256,predecessorManifestSHA256,predecessorRef,releaseHold,sourceHashes'||m.kind!=='PUBLICATION20_CALLER_SUCCESSOR_ONLY'||m.predecessorRef!==predecessor||m.releaseHold!==true||m.canonicalPromotion!==false)throw Error('Caller predecessor/authority binding differs');
  if(JSON.stringify(Object.keys(m.sourceHashes??{}).sort())!==JSON.stringify(expectedPaths))throw Error('Caller source binding membership differs');
- const git=args=>execFileSync('git',args,{cwd:directory,maxBuffer:8*1024*1024,stdio:['pipe','pipe','pipe']});
+ const git=completionGitReader((args,options={})=>execFileSync('git',args,{cwd:directory,maxBuffer:8*1024*1024,stdio:['pipe','pipe','pipe'],...options}));
  if(git(['rev-parse','--verify',predecessor+'^{commit}']).toString().trim()!==predecessor)throw Error('Exact caller predecessor unavailable');
  const oldCaller=git(['show',predecessor+':'+caller]),oldManifest=git(['show',predecessor+':'+priorManifest]);
  if(hash(oldCaller)!==m.predecessorCallerSHA256||hash(oldManifest)!==m.predecessorManifestSHA256||!safe(directory,priorManifest).equals(oldManifest))throw Error('Original predecessor source/manifest hash differs');
