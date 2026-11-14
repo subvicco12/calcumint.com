@@ -10,6 +10,7 @@ const retainedSHA256='329d78ac427278582b45c6c59b8a38b730eb29a29ac3cef8086ebbf95b
 const sha=b=>createHash('sha256').update(b).digest('hex');
 export const stage8V16GuardPaths=Object.freeze([
  'src/lib/parallel-source-evidence.test.ts',
+ 'tests/completion-wave-20261113/source-authority-preload.test.mjs',
  'tests/ci-rpc-recovery-20261113/source-node.mjs',
  'tests/ci-rpc-recovery-20261113/source-node.d.mts',
  'tests/ci-rpc-recovery-20261113/source-node.test.mjs',
