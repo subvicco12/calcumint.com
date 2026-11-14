@@ -1,3 +1,4 @@
+import {runCompositionSourceEvidenceBatch} from '../milestone100-20261114/composition-source-evidence-batch.mjs';
 import {runtimeAuxiliaryImmutableChain} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
 import {rejectChangedCurrentStageSourceBytes} from '../milestone100-20261114/source-stage8-negative-current-src.mjs';
 import {apiRuntimeAnchor,assertApiRuntimeHistoricalObjectJoin} from '../milestone100-20261114/source-stage8-api-runtime-anchor.mjs';
@@ -53,7 +54,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision96.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision97.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -364,3 +365,6 @@ export function proveNamedCurrentContext(read=readFileSync,git=sourceGit){const 
 export function assertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>{const row=p.live.get(file);if(!row)return retainedAssertNamedApplicationSuccessor(file,recordedSHA256,currentBytes,p.historicalInput.read,p.historicalInput.git);const prior=retainedProveNamedCurrentContext(p.historicalInput.read,p.historicalInput.git).get(file);if(prior)assert.equal(recordedSHA256,prior.recordedSHA256);else if(file===apiRuntimeAnchor.fixed.path)assertApiRuntimeHistoricalObjectJoin({file,recordedSHA256,row,currentBytes,git});else proveSavedActionsClaim({file,recordedSHA256,row,currentBytes,git});assert(currentBytes.equals(git(['cat-file','blob',row.current.blob])),'Current named application successor differs');return {file,recordedApplicationGit:appRef,currentApplicationGit:row.current.ref,historicalEvidenceOnly:true};});}
 export function assertSevenTestSuccessor(file,claim,currentBytes,read=readFileSync,git=sourceGit){const p=currentStage8Input(read,git);return completeStage8(p,()=>retainedAssertSevenTestSuccessor(file,claim,currentBytes,p.historicalInput.read,p.historicalInput.git));}
 export function assertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,git=sourceGit){const p=currentStage8Input(readFileSync,git);return completeStage8(p,()=>retainedAssertFinalTwoScopeTestSuccessor(file,intermediateBytes,currentBytes,p.historicalInput.git,p.historicalInput.read));}
+
+/** Exact synchronous retained-composition source claim scope; no custom transports. */
+export function withCompositionSourceEvidenceBatch(run){return runCompositionSourceEvidenceBatch({prove:()=>proveNamedCurrentContext(),git:sourceGit,read:readFileSync},run,arguments.length);}

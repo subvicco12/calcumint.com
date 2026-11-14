@@ -7,14 +7,14 @@ const currentSourceStages=Object.freeze([{"path":"docs/calculator-factory/source
 export function rejectChangedCurrentStageSourceBytes(read){
  assert.equal(typeof read,'function','Explicit current source reader required');
  const current=new Map(),record=(row,path,ref)=>{assert.equal(row.path,path);assert(path.startsWith('src/')&&!path.split('/').includes('..'));assert.equal(row.ref,ref);assert.match(row.ref,/^[0-9a-f]{40}$/);assert.match(row.blob,/^[0-9a-f]{40}$/);assert(Number.isSafeInteger(row.bytes)&&row.bytes>=0);assert.match(row.sha256,/^[0-9a-f]{64}$/);current.set(path,{...row});};
- const suppliedBase=read(baseSourceCapture.path);assert(Buffer.isBuffer(suppliedBase),'Independent current source capture differs: '+baseSourceCapture.path);const original=Buffer.from(suppliedBase);assert(hash(original)===baseSourceCapture.sha256,'Independent current source capture differs: '+baseSourceCapture.path);
+ const suppliedBase=read(baseSourceCapture.path);assert(Buffer.isBuffer(suppliedBase),'Independent current target bytes differ: '+baseSourceCapture.path);const original=Buffer.from(suppliedBase);assert(hash(original)===baseSourceCapture.sha256,'Independent current target bytes differ: '+baseSourceCapture.path);
  const base=JSON.parse(original);assert.equal(base.appRef,baseSourceCapture.appRef);assert.equal(base.applicationSuccessorRef,baseSourceCapture.applicationSuccessorRef);assert.equal(base.sevenTestRef,baseSourceCapture.sevenTestRef);
  for(const [field,paths,ref]of [['applicationSources',baseSourceCapture.applicationPaths,baseSourceCapture.appRef],['applicationSuccessors',baseSourceCapture.successorPaths,baseSourceCapture.applicationSuccessorRef],['sevenTestSuccessors',baseSourceCapture.sevenPaths,baseSourceCapture.sevenTestRef]]){
   assert.deepEqual(base[field].map(row=>row.path),paths);assert.equal(new Set(paths).size,paths.length);
   for(const row of base[field])record(field==='applicationSources'?row:row.current,row.path,ref);
  }
  for(const stage of currentSourceStages){
-  const supplied=read(stage.path);assert(Buffer.isBuffer(supplied),'Independent current source capture differs: '+stage.path);const bytes=Buffer.from(supplied);assert(hash(bytes)===stage.sha256,'Independent current source capture differs: '+stage.path);
+  const supplied=read(stage.path);assert(Buffer.isBuffer(supplied),'Independent current target bytes differ: '+stage.path);const bytes=Buffer.from(supplied);assert(hash(bytes)===stage.sha256,'Independent current target bytes differ: '+stage.path);
   const capture=JSON.parse(bytes);assert.equal(capture.codeRef,stage.codeRef);assert.deepEqual(capture.rows.map(row=>row.path),stage.paths);assert.equal(new Set(stage.paths).size,stage.paths.length);
   for(const row of capture.rows)record(row.current,row.path,stage.codeRef);
  }
