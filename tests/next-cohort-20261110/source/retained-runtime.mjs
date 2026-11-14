@@ -537,9 +537,13 @@ const stage2BatchRows=Object.freeze([
   }
 ].map(Object.freeze));
 function retainedStage2BatchBytes(path,row,admitted){
- const proof=admitted.get(path);assert(proof,'Explicit current Stage2 batch proof required');assert.equal(proof.recordedSHA256,row.sha256,'Exact retained Stage2 source claim required');
- const current=readFileSync(path),currentGit=git(['cat-file','blob',proof.current.blob]);assert.equal(hash(currentGit),proof.current.sha256,'Current Stage2 Git digest differs');assert(current.equals(currentGit),'Current Stage2 source changed after proof');assert.equal(git(['rev-parse','HEAD:'+path]).toString().trim(),proof.current.blob,'Current Stage2 HEAD differs');
- if(path==='tests/gotrue-runtime/acceptance.mjs'){const predecessor=nonSourceRecords(readFileSync).get(path)?.predecessor;assert(predecessor,'Exact NS predecessor required');for(const field of ['path','ref','blob','bytes','sha256'])assert.equal(predecessor[field],row[field],'Exact NS predecessor differs: '+field);}
+ let currentRecord;
+ if(path==='tests/gotrue-runtime/acceptance.mjs'){
+  // The successful sealed global proof validates NS records; this path is not
+  // an application-map entry. Preserve the original explicit NS predecessor route.
+  const ns=nonSourceRecords(readFileSync).get(path),predecessor=ns?.predecessor;assert(predecessor&&ns.current,'Exact NS current and predecessor required');for(const field of ['path','ref','blob','bytes','sha256'])assert.equal(predecessor[field],row[field],'Exact NS predecessor differs: '+field);currentRecord=ns.current;
+ }else{const proof=admitted.get(path);assert(proof,'Explicit current Stage2 batch proof required');assert.equal(proof.recordedSHA256,row.sha256,'Exact retained Stage2 source claim required');currentRecord=proof.current;}
+ const current=readFileSync(path),currentGit=git(['cat-file','blob',currentRecord.blob]);assert.equal(hash(currentGit),currentRecord.sha256,'Current Stage2 Git digest differs');assert(current.equals(currentGit),'Current Stage2 source changed after proof');assert.equal(git(['rev-parse','HEAD:'+path]).toString().trim(),currentRecord.blob,'Current Stage2 HEAD differs');
  assert.equal(git(['rev-parse','--verify',row.ref+'^{commit}']).toString().trim(),row.ref,'Exact Stage2 old commit differs');assert.equal(git(['rev-parse',row.ref+':'+path]).toString().trim(),row.blob,'Exact Stage2 old path-to-blob differs');
  const historical=git(['cat-file','blob',row.blob]);assert.equal(historical.length,row.bytes,'Exact Stage2 old bytes differ');assert.equal(hash(historical),row.sha256,'Exact Stage2 old SHA differs');return Buffer.from(historical);
 }
