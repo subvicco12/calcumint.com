@@ -28,6 +28,31 @@ export function additionsFor(pre,tuples){
  assert.equal(new Set(tuples.map(t=>t.catalogId)).size,tuples.length);for(const t of tuples)assert.equal(t.version,1);
  return additions;
 }
+const shapeFields={
+ 'root-finder-calculator':{root:'number',residual:'number',iterations:'number',bracket:'number-pair',steps:'string-array'},
+ 'triangle-calculator':{area:'number',perimeter:'number',angleA:'number',angleB:'number',angleC:'number',steps:'string-array'},
+ 'right-triangle-calculator':{area:'number',perimeter:'number',angleA:'number',angleB:'number',angleC:'number',steps:'string-array'},
+ 'surface-area-calculator':{surfaceArea:'number',volume:'number',steps:'string-array'},
+ 'volume-calculator':{surfaceArea:'number',volume:'number',steps:'string-array'},
+ 'molarity-calculator':{value:'number',steps:'string-array'},
+ 'moles-calculator':{value:'number',steps:'string-array'},
+ 'dilution-calculator':{value:'number',steps:'string-array'},
+};
+export function sharingOutputShapeBranches(){return Object.entries(shapeFields).map(([slug,fields])=>{
+ const check=[`(SELECT count(*) FROM jsonb_object_keys(item->'output'))=${Object.keys(fields).length}`,`item->'output' ?& ARRAY[${Object.keys(fields).map(q).join(',')}]`];
+ for(const [field,type]of Object.entries(fields)){
+  const expr=`item->'output'->${q(field)}`;
+  if(type==='number'){check.push(`jsonb_typeof(${expr})='number'`,`CASE WHEN jsonb_typeof(${expr})='number' THEN abs((${expr}#>>'{}')::numeric)<=1.7976931348623157e308 ELSE false END`);if(field==='iterations')check.push(`CASE WHEN jsonb_typeof(${expr})='number' THEN (${expr}#>>'{}')::numeric=trunc((${expr}#>>'{}')::numeric) AND (${expr}#>>'{}')::numeric BETWEEN 0 AND 101 ELSE false END`);}
+  else{check.push(`jsonb_typeof(${expr})='array'`);if(type==='number-pair')check.push(`jsonb_array_length(${expr})=2`);check.push(`NOT EXISTS(SELECT FROM jsonb_array_elements(${expr}) e WHERE jsonb_typeof(e)<>${q(type==='number-pair'?'number':'string')}${type==='number-pair'?" OR NOT CASE WHEN jsonb_typeof(e)='number' THEN abs((e#>>'{}')::numeric)<=1.7976931348623157e308 ELSE false END":''})`);}
+ }
+ return `WHEN item->>'calculatorSlug'=${q(slug)} THEN (${check.join(' AND ')})`;
+}).join(' ');}
+export function retainedSharingShapeDelta(pre,post){
+ assert.equal(pre.rows.length,4);assert.equal(post.rows.length,4);
+ const before=pre.rows.find(row=>row.signature===signatures[3]),after=post.rows.find(row=>row.signature===signatures[3]);assert(before&&after);assert.notEqual(before.definition,after.definition);
+ for(const signature of signatures.filter(s=>s!==signatures[3]))assert.equal(pre.rows.find(r=>r.signature===signature).definition,post.rows.find(r=>r.signature===signature).definition);
+ return header('RETAINED_OUTPUT_SHAPES')+guard(pre)+after.definition+';\nCOMMIT;\n';
+}
 export function forwardSQL(pre,tuples){
  const additions=additionsFor(pre,tuples),ids=additions.map(t=>t.catalogId);assert(!ids.includes(435)&&!ids.includes(441));
  let sql=header('SUCCESSOR')+guard(pre);
@@ -37,7 +62,7 @@ export function forwardSQL(pre,tuples){
   if(row.signature===signatures[0]){assert.equal(d.split(')t(catalog,engine,slug)').length,2);d=d.replace(')t(catalog,engine,slug)',','+additions.map(t=>`(${t.catalogId},${q(t.engineId)},${q(t.slug)})`).join(',')+')t(catalog,engine,slug)');}
   if(row.signature===signatures[1]){assert.equal(d.split(')t(id,engine)').length,2);d=d.replace(')t(id,engine)',','+additions.map(t=>`(${t.catalogId},${q(t.engineId)})`).join(',')+')t(id,engine)');}
   if(row.signature===signatures[2]){assert.equal(d.split(')t(catalog,engine,slug,version)').length,2);d=d.replace(')t(catalog,engine,slug,version)',','+additions.map(t=>`(${t.catalogId},${q(t.engineId)},${q(t.slug)},${t.version})`).join(',')+')t(catalog,engine,slug,version)');}
-  if(row.signature===signatures[3]){const pattern=/(item->>'calculatorSlug' NOT IN\()([^\n]+)(\))/;assert(pattern.test(d));d=d.replace(pattern,(_m,a,b,c)=>a+b+','+additions.map(t=>q(t.slug)).join(',')+c);}
+  if(row.signature===signatures[3]){assert(d.includes("CASE WHEN item->>'calculatorSlug' IN("));d=d.replace("CASE WHEN item->>'calculatorSlug' IN(","CASE "+sharingOutputShapeBranches()+" WHEN item->>'calculatorSlug' IN(");const pattern=/(item->>'calculatorSlug' NOT IN\()([^\n]+)(\))/;assert(pattern.test(d));d=d.replace(pattern,(_m,a,b,c)=>a+b+','+additions.map(t=>q(t.slug)).join(',')+c);}
   assert.notEqual(d,row.definition);sql+=d+';\n';
  }
  return sql+'COMMIT;\n';
