@@ -6103,7 +6103,9 @@ export const acceptedStage8V28=Object.freeze([
   }
 ]);
 export const additionalStage8V28BootstrapRefs=Object.freeze(["054854bceed263ba59e8cd0052f1f3e9b1ea8e30","257a18f2ebab091410129a2fcd58bd7edff843e9","2a59a85c6e935c43e9a5a71ae15c9954e4fcab42","609307e285b35f95ea8306c6ab257711974ae2da","64c86e4fe5f77816f2b5b45ea2177ed56520b292","88de7068ba2674aab85df5611840c4b029ef68c0","9fa7614e903ef0027298ee6ac63be93bbae5eb47","f85bb169056489b27e4bf245f56df70e30adef95"]);
-export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28].map(row=>[row.path,row])).values()]);
+export const acceptedStage8V29=Object.freeze([]);
+export const additionalStage8V29BootstrapRefs=Object.freeze([]);
+export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19,...acceptedStage8V20,...acceptedStage8V21,...acceptedStage8V22,...acceptedStage8V23,...acceptedStage8V24,...acceptedStage8V25,...acceptedStage8V26,...acceptedStage8V27,...acceptedStage8V28,...acceptedStage8V29].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
  assert(acceptedStage8.length>0,'Independently reviewed Stage8 authority is not installed');

@@ -1,3 +1,5 @@
+import {runtimeAuxiliaryImmutableChain} from '../milestone100-20261114/source-stage8-runtime-auxiliary.mjs';
+import {rejectChangedCurrentStageSourceBytes} from '../milestone100-20261114/source-stage8-negative-current-src.mjs';
 import {apiRuntimeAnchor,assertApiRuntimeHistoricalObjectJoin} from '../milestone100-20261114/source-stage8-api-runtime-anchor.mjs';
 import {proveSavedActionsClaim} from '../milestone100-20261114/source-stage8-saved-actions-claim.mjs';
 import {selectStage8GuardSuccessor} from '../milestone100-20261114/source-stage8-guard-selection.mjs';
@@ -51,7 +53,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision95.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision96.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -322,9 +324,11 @@ function primeRetainedImmutableAvailability(read,git){
  const finite=[sourceStage8CapturePath,capturePath,'docs/parallel-source-20261110/capture-revision81.json','docs/parallel-source-20261110/capture-revision80.json','docs/parallel-source-20261110/capture-revision79.json','docs/parallel-source-20261110/capture-revision78.json','docs/parallel-source-20261110/capture-revision77.json','docs/parallel-source-20261110/capture-revision76.json','docs/parallel-source-20261110/capture-revision75.json','docs/parallel-source-20261110/capture-revision74.json','docs/parallel-source-20261110/capture-revision73.json','docs/parallel-source-20261110/capture-revision72.json','docs/parallel-source-20261110/capture-revision71.json','docs/parallel-source-20261110/capture-revision70.json','docs/parallel-source-20261110/capture-revision69.json',retainedStage8CapturePath,retainedStage7V8CapturePath,retainedStage7V7CapturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
  const captures=new Map();
  for(const path of finite){const record=accepted.find(row=>row.path===path);assert(record,"Preloaded capture must have independent authority");const supplied=read(path);assert(Buffer.isBuffer(supplied),'Preloaded capture must contain bytes');const bytes=Buffer.from(supplied);assert.equal(hash(bytes),record.sha256,'Independent preloaded capture bytes differ: '+path);captures.set(path,JSON.parse(bytes));}
+ const auxiliaryPath='tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs',auxiliaryAuthority=accepted.find(row=>row.path===auxiliaryPath);assert(auxiliaryAuthority,'Independent runtime auxiliary authority required');const auxiliarySupplied=read(auxiliaryPath);assert(Buffer.isBuffer(auxiliarySupplied),'Independent runtime auxiliary module must contain bytes');const auxiliaryBytes=Buffer.from(auxiliarySupplied);assert.equal(hash(auxiliaryBytes),auxiliaryAuthority.sha256,'Independent runtime auxiliary module bytes differ');
  ensureParallelSources(captures.get(retainedStage8CapturePath),git,{defaultRetainedCommitBatch:true});
  for(const capture of captures.values())visit(capture);
- git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry])]);
+ for(const record of runtimeAuxiliaryImmutableChain)visit(record);
+ git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...runtimeAuxiliaryImmutableChain.map(row=>row.ref)])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
  for(const record of accepted){assert.match(record.blob,/^[a-f0-9]{40}$/);ids.add(record.blob);}
  git.preloadBlobs([...ids]);
@@ -350,6 +354,8 @@ function rejectChangedCurrentAuthorityBytes(read,git){
  const view=sourceStage8HistoricalView(git);
  if(view)assert.equal(read,view.historicalInput.read,'Historical Stage8 reader capability differs');
  const currentRead=view?view.actualInput.read:read;
+ // Refusal only: unchanged bytes must still pass every original authority/Git/lock check.
+ rejectChangedCurrentStageSourceBytes(currentRead);
  for(const record of accepted){const current=currentRead(record.path);assert(Buffer.isBuffer(current)&&hash(current)===record.sha256,'Independent current target bytes differ: '+record.path);}
  rejectChangedUnchangedFactoryBytes(currentRead);
 }
