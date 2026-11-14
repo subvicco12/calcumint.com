@@ -1,4 +1,4 @@
-import {completionBindingDependencies} from '../../scripts/product-completion-lineage.mjs';
+import {completionBindingDependencies} from '../../scripts/product-completion-stage8.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mkdtempSync,mkdirSync,copyFileSync,readFileSync,writeFileSync,rmSync,symlinkSync} from 'node:fs';

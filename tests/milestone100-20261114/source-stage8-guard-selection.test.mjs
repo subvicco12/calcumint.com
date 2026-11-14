@@ -30,3 +30,9 @@ test('committed A2 capture69 and all115 installed authority records remain liter
  assert.equal(literal.length,115);assert.deepEqual(acceptedStage8,literal);
  for(const record of acceptedStage8.filter(row=>row.path===path)){assert.equal(createHash('sha256').update(readFileSync(path)).digest('hex'),record.sha256);}
 });
+
+test('only the independently captured V6 list adds new owned guard successors',()=>{
+ const path='tests/parallel-five-20261110/verify-composition.mjs',next=structuredClone(capture),row=next.currentSources.find(item=>item.path===path);assert(row);assert.equal(selectStage8GuardSuccessor(next,path),undefined);
+ next.sourceStage8V6={guardPaths:[path]};assert.equal(selectStage8GuardSuccessor(next,path),row);
+ assert.equal(selectStage8GuardSuccessor(next,'tests/next-cohort-20261110/source/retained-runtime.mjs'),undefined);
+});

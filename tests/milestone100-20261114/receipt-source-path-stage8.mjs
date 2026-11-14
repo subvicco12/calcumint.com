@@ -1,3 +1,5 @@
+import {savedActionsClaim,savedActionsReceiptHistoricalClaim} from './source-stage8-saved-actions-claim.mjs';
+import {assertNamedApplicationSuccessor} from '../parallel-source-20261110/core.mjs';
 import {completionGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
@@ -29,6 +31,12 @@ export async function verifyCapturedSource(binding,read=readFile){
   const {completionBindingDependencies}=await import('../../scripts/product-completion-stage8.mjs');
   const target=new Map(await Promise.all(completionBindingDependencies(path).map(async name=>[name,await read(name)])));
   verifyCapturedCurrentCaller(binding,name=>name===path?bytes:target.get(name));
+ }else if(path===savedActionsClaim.path){
+  const historicalClaim=savedActionsReceiptHistoricalClaim(binding,bytes);
+  const {completionBindingDependencies}=await import('../../scripts/product-completion-stage8.mjs');
+  const target=new Map(await Promise.all(completionBindingDependencies(currentCaller).map(async name=>[name,name===path?bytes:await read(name)])));
+  const sameRead=name=>{if(!target.has(name))throw Error('Supplied saved-actions dependency unavailable: '+name);return target.get(name);};
+  assertNamedApplicationSuccessor(path,historicalClaim,bytes,sameRead,sourceGit);
  }else if(path==='src/components/technology-five-analysis.tsx'){
   const historical=sourceHash(sourceGit(['show','00651cc382be5dcbd596882071787fd6702c13d3:'+path]));
   const {completionBindingDependencies}=await import('../../scripts/product-completion-stage8.mjs');

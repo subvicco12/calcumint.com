@@ -1,5 +1,5 @@
 import {verifyParallelSource,assertNamedApplicationSuccessor,assertSevenTestSuccessor,sevenTestPaths,applicationSuccessorRef,appRef} from '../parallel-source-20261110/core.mjs';
-import {assertTestOnlySuccessor,testOnlySuccessorPaths} from './test-only-successor.mjs';
+import {assertTestOnlySuccessor,testOnlySuccessorPaths} from '../milestone100-20261114/source-stage8-test-only-successor.mjs';
 import assert from 'node:assert/strict';import{readFile}from'node:fs/promises';import path from'node:path';import{createHash}from'node:crypto';
 export async function verifyComposition(directory='docs/parallel-five-20261110/authenticated'){
 assert.equal(verifyParallelSource(),true,'Fresh current source and exact object availability must precede retained artifact claims');

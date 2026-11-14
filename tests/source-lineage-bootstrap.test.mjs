@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {fetchSourceLineage} from '../scripts/fetch-source-lineage.mjs';
-import {proveSourcePreflightAndHistoricalInputs} from './completion-wave-20261113/source-preflight-stage.mjs';
+import {proveSourcePreflightAndHistoricalInputs} from './milestone100-20261114/source-preflight-stage8.mjs';
 test('reuses verified revisions without redundant network fetch',()=>{
  let calls=0;const result=fetchSourceLineage(args=>{assert.equal(args[0],'rev-parse');calls++;return Buffer.from(args[2].slice(0,40));});
  assert.equal(result.fetched,0);assert.equal(calls,result.sourceRevisions*2);assert.equal(result.releaseHold,true);
