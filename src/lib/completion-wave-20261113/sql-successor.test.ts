@@ -1,10 +1,13 @@
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {it,expect} from 'vitest';
-import {factoryDeliveryCatalog as currentFactoryDeliveryCatalog} from '@/lib/native-delivery/factory-delivery-catalog';
+import frozenCatalog44 from '../../../docs/milestone100-20261114/retained-catalog44.json';
+import newCases from '../../../docs/milestone100-20261114/business-account-cases.json';
+import {factoryDeliveryCatalog as liveFactoryDeliveryCatalog} from '@/lib/native-delivery/factory-delivery-catalog';
 import {execFileSync} from 'node:child_process';
 import {retainedFactoryNineTuples,retainedTechnologyTwentyTuples} from './retained-nine-tuples';
 
+const currentFactoryDeliveryCatalog=Object.freeze(frozenCatalog44);
 // Whole frozen25 fixture from the published BASE2 catalog; this never registers a tuple.
 const factoryDeliveryCatalog=Object.freeze([
  {catalogId:218,engineId:'launch-square-calculator',slug:'square-calculator',version:1},
@@ -123,7 +126,7 @@ it('pins both immutable historical SQL files and exact old-nine plus old20 maps 
  const frozenRows=[...retainedCatalogSource.matchAll(/\{catalogId:(\d+),engineId:'([^']+)',slug:'([^']+)',version:(\d+)\}/g)].map(m=>({catalogId:Number(m[1]),engineId:m[2],slug:m[3],version:Number(m[4])}));expect(frozenRows).toEqual(factoryDeliveryCatalog);
  expect(digest(next)).toBe('deb431b7e21a194e27f66e3b3ea06e575a8fe057ea739cb487403302b19ee8a8');expect(digest(undo)).toBe('169858355922c76cac0bb98b91d7bd9ece4883878f07a20d53739b80a826f02b');
  expect(digest(milestoneNext)).toBe('487113fa011516c89146ccf001368d69a9fc832f1aec0dda4e086664b401dbe9');expect(digest(milestoneUndo)).toBe('8d9027f3a0a47dd8fe4a8b1e0c13e64cb44951b608c775cd304f52f467791036');
- expect(digest(readFileSync('src/lib/native-delivery/factory-delivery-catalog.ts'))).toBe('171aa03828ca3adb5880123d0c303ca6b98d598c70ab906baef3c59ef5ed61c9');
+ expect(digest(execFileSync('git',['show','eac9a6c23ae4d8f1abb607e32f57ce0d422a3cb8:src/lib/native-delivery/factory-delivery-catalog.ts']))).toBe('171aa03828ca3adb5880123d0c303ca6b98d598c70ab906baef3c59ef5ed61c9');
  expect(milestoneResult).toMatchObject({passed:true,kind:'MILESTONE60_HELD_BUSINESS_SQL_EXACT_ROUNDTRIP',sourceSHA256:digest(milestoneNext),reverseSHA256:digest(milestoneUndo),receiptSHA256:'65f1010b854e09efb85b9a3f7ebf83102b262dcba20de72eb5daa39d8d5e7ee2',productionWrites:false,releaseHold:true});
 
 });
@@ -197,4 +200,10 @@ it('retains forward/reverse holds, four exact function/constraint preimages and 
 it('parser refuses duplicate or conflicting IDs and exposes unknown tuple additions',()=>{
  expect(()=>values("FROM(VALUES(218,'a'),(218,'b'))t(id,engine)",'id,engine')).toThrow();
  expect(values("FROM(VALUES(999,'unknown'))t(id,engine)",'id,engine')).toEqual([{id:999,engine:'unknown'}]);
+});
+
+it('closes the entire current roster against literal44 plus all25 exact successor witnesses without filtering',()=>{
+ expect(liveFactoryDeliveryCatalog).toEqual([...currentFactoryDeliveryCatalog,...newCases.map(row=>({catalogId:row.id,engineId:row.engine,slug:row.slug,version:row.version}))]);expect(liveFactoryDeliveryCatalog).toHaveLength(69);expect(new Set(liveFactoryDeliveryCatalog.map(row=>row.catalogId)).size).toBe(69);
+ const sql=functions(readFileSync('docs/milestone100-20261114/business-held-successor.sql','utf8')),complete=[...retainedTechnologyTwentyTuples,...liveFactoryDeliveryCatalog];
+ expect(values(sql.factory_native_embed_publication_v1,'catalog,engine,slug')).toEqual(publication(liveFactoryDeliveryCatalog).map(({version,...row})=>row));expect(values(sql.submit_technology_five_job_v1,'id,engine')).toEqual(sorted(complete).map(row=>({id:row.catalogId,engine:row.engineId})));expect(values(sql.technology_five_require_publication_v1,'catalog,engine,slug,version')).toEqual(publication(complete));
 });

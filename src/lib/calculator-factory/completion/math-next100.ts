@@ -22,7 +22,7 @@ export const next100MathContracts=Object.freeze(rows.map(([catalogId,slug,solveF
  const engine=launchDefinitions.find(row=>row.id===`launch-${slug}`&&row.slug===slug&&row.version===1);
  const spec=launchSpecs.find(row=>row.slug===slug);
  if(!engine||!spec)throw Error('Exact math engine binding unavailable');
- return Object.freeze({catalogId,slug,engineId:engine.id,version:1,title:engine.title,primaryKey:'result',registered:catalogId!==222,solveFor,scope,formula:spec.formula,
+ return Object.freeze({catalogId,slug,engineId:engine.id,version:1,title:engine.title,primaryKey:'result',unit:catalogId===234?'%':'',registered:catalogId!==222,solveFor,scope,formula:spec.formula,
  fields:Object.freeze(spec.fields.map(field=>Object.freeze({...field,kind:'number' as const}))),
  sourceEvidence:Object.freeze(['docs/calculator-first/authority-catalog.json','src/calculators/launch-portfolio.ts','data/verification/codex-a-standard-risk-goldens-2026-10-15.json','docs/milestone100-20261114/math/source-applicability.json']),
  limitations:Object.freeze(['IEEE-754 binary64; finite normal inputs/results or algebraically witnessed zero only. No arbitrary precision.','Reverse search is explicitly bounded and never claims an exhaustive inverse. Catalog scope and external certification remain subject to review.'])});

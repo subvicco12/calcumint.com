@@ -10,7 +10,7 @@ describe('exact nine reuse unchanged factory engines in durable batch shape',()=
   const expected=runFactoryCalculation(identity.catalogId,identity.version,input);
   const rows=runFactoryAutomationBatch({catalogId:identity.catalogId,version:1,rows:[input]});
   expect(rows[0]).toMatchObject({index:0,ok:true,result:{engineId:identity.engineId,packet:expected,output:expected.snapshot.output}});
-  if([322,325,327].includes(identity.catalogId))expect(rows[0].result!.output).toEqual({value:expected.snapshot.output.value,steps:expected.snapshot.output.steps});
+  if([322,325,327,328,331,332].includes(identity.catalogId))expect(rows[0].result!.output).toEqual({value:expected.snapshot.output.value,steps:expected.snapshot.output.steps});
   else expect('value' in rows[0].result!.output).toBe(false);
   verifyFactoryAutomationRows(identity.catalogId,1,[input],rows);
   expect(()=>verifyFactoryAutomationRows(identity.catalogId,1,[input],[{...rows[0],result:{...rows[0].result,output:{result:123}}}])).toThrow();

@@ -46,3 +46,7 @@ it.each([[430,'mj','MJ'],[431,'mw','MW'],[432,'week','wk'],[438,'kn','kN']] as c
  expect(actual).toHaveProperty('numericalPolicy',expect.stringContaining('binary64'));
  expect(actual).toHaveProperty('refusalPolicy',expect.stringContaining('Refuse'));
 });
+
+it('preserves exact output dimensions in shared rendering and native exports without changing values',()=>{
+ for(const [id,input,unit] of [[234,{observed:'102',actual:'100'},'%'],[279,{degrees:'180'},'radians'],[280,{radians:'3.141592653589793'},'degrees'],[272,{radius:'3',height:'5'},'cubic units'],[258,{a:'5',b:'12'},'square units']] as const){const result=runFactoryEmbedCalculation(id,1,input);expect('unit' in result?result.unit:undefined).toBe(unit);expect(result.output).toEqual(runFactoryCalculation(id,1,input).snapshot.output);}
+});
