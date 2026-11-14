@@ -1,3 +1,4 @@
+import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -5,7 +6,8 @@ import {ensureNonSourceObjects} from '../parallel-source-20261110/bootstrap.mjs'
 import {verifyNonSourceStage} from './non-source-stage2.mjs';
 const predecessor='5008aa4cadd77f7a9a5dc1523cace694f3bbdf47';
 const successor='345c6cd6ed42aff39635d5e92d4adb48989b78ac';
-const real=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024});
+const immutableGit=makeGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],maxBuffer:8*1024*1024}));
+const real=args=>immutableGit(args);
 function transport({missing=[predecessor],origin='https://github.com/subvicco12/calcumint.com.git',recover=true,substitute=false}={}){
  const absent=new Set(missing),fetches=[];
  const git=args=>{

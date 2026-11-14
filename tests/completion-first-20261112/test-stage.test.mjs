@@ -1,10 +1,12 @@
+import {makeGitReader} from '../parallel-source-20261110/git-reader.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {proveTestStageAndHistoricalInputs} from './test-stage.mjs';
 import {testStageCapturePath,testStagePolicy} from './test-stage-policy.mjs';
-const git=args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],timeout:30000,maxBuffer:8000000});
+const immutableGit=makeGitReader(args=>execFileSync('git',args,{stdio:['ignore','pipe','pipe'],timeout:30000,maxBuffer:8000000}));
+const git=args=>immutableGit(args);
 const input={read:readFileSync,git,root:process.cwd()},file='src/lib/thirteen-program-evidence.test.ts';
 test('test-only successor proves both exact tests before constructing its historical input',()=>{
  const proved=proveTestStageAndHistoricalInputs(input);assert.equal(proved.live.size,2);assert.equal(proved.historicalInput.git(['rev-parse','--verify','HEAD^{commit}']).toString().trim(),testStagePolicy.predecessorRef);
