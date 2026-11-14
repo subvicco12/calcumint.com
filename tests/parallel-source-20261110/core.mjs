@@ -51,7 +51,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision94.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision95.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -326,6 +326,7 @@ function primeRetainedImmutableAvailability(read,git){
  for(const capture of captures.values())visit(capture);
  git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
+ for(const record of accepted){assert.match(record.blob,/^[a-f0-9]{40}$/);ids.add(record.blob);}
  git.preloadBlobs([...ids]);
 }
 export function preloadRetainedImmutableObjects(read,git){verifyParallelAuthority(read,git);primeRetainedImmutableAvailability(read,git);}
