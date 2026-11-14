@@ -3888,8 +3888,84 @@ export const acceptedStage8V8=Object.freeze([
     "sha256": "8c5c8170c3f9af6bc15b30aebf6d7125fede00e7a8a08f0f75af132b2bc9da49"
   }
 ]);
-export const additionalStage8V9BootstrapRefs=Object.freeze([]);
-export const acceptedStage8V9=Object.freeze([]);
+export const additionalStage8V9BootstrapRefs=Object.freeze(["34a22620e62c4321dfbeda2a8fe0a6cea032daed","689a9d40deb03c21122b58e7fc6dd0fcb0153472"]);
+export const acceptedStage8V9=Object.freeze([
+  {
+    "path": "tests/milestone100-20261114/source-stage8-shortest-fixture.mjs",
+    "blob": "d8102f7fc645e0fa741cde1af0d7ac0dbce64ada",
+    "sha256": "23b05002a9a060318b2657b42f4b4ad5b24d8c0067c36f331cf9273b466ca4f3"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-shortest-fixture.test.mjs",
+    "blob": "69f5fcf97b7dec8f274a83cb60a454ff1cd0b5dd",
+    "sha256": "c6dd528b54f90b16ce7e016fb9cff9dee853782c0293cf4ca6fe0a58d07245b1"
+  },
+  {
+    "path": "tests/shortest-publication-20/caller-lineage.test.mjs",
+    "blob": "d2e39af5db165249f245459f7c40c5be1495a2f7",
+    "sha256": "274643b2825bf2a9e5d2009440eb5d251791b8514743d2ac3d19b9b71a23a14c"
+  },
+  {
+    "path": "scripts/product-completion-stage8.mjs",
+    "blob": "8305971c0ba8b6dfd1b6bf77f2898696203f0274",
+    "sha256": "81ec7d54853a0c1683513fa5fedaed0cd6717aacd9a8bec11af4a27f33c26865"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-named-dependencies.test.mjs",
+    "blob": "175a200a85bf619b3b7501c91a1326602492fd4b",
+    "sha256": "a89e9f273e553a0ac9fa2f1bd858544c9537e9f445fba03aba2a493c5eae7478"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "9d1abb4cb9c9e2397061ca6391d0ff34b837ce13",
+    "sha256": "fca2a10ba42a9cc487c3e2a5e344843ae448fc62c28d11f9584e6b947168d02a"
+  },
+  {
+    "path": "tests/source-lineage-bootstrap.test.mjs",
+    "blob": "3dffa81756891cba9fded2adc8a813193a7a6bae",
+    "sha256": "702c4c206e58c5bb7c0e6a406725a13afe5fc5ba8339d4a5722819560861d659"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "16783b9f279084c874f4ffb0d0615dffbb0e8eb8",
+    "sha256": "319836e434483338f58d5ba6a719e6cc7149db7d828f8e7002c611ae1ad1abd4"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "2ded6a97b23a760a895df44a2a8e5a11307876ef",
+    "sha256": "fd33330e6a72bc9aef6ff5ad619c226c8f4da7ec85110db99525d4b60c79d5e1"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v9.mjs",
+    "blob": "279488026687129c0046b4b95d183be374325d69",
+    "sha256": "bb4772667d7a0b2d6d9454aad43bf481345d23a04bb3e828cc579f2e78d0353a"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority75.mjs",
+    "blob": "48e6d4d432ac337ad63c38742a33fcbbdf2cfaa7",
+    "sha256": "e5578b7fdc8ab69fbedd627b643b0addeb0a610555b6167790be9ec46840545c"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "7de917c3198b6361611013d9c2f69b8627ea4d41",
+    "sha256": "92c8772ff1e2bdcc912e5c6dd6940db869f96b4caf7c0441726ed28c6fb1d077"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "333208d0be9ee306ea06cb20faa4539b06bc5f2f",
+    "sha256": "f9505c488b743f5863a43d2b241303f2ad8cd1d210c4079e3e2b2dc08d491065"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "3bb4eae3a06ed7d861dfdd761f74c4a1117cddd0",
+    "sha256": "084feb1ff787adea0ad91bc0e184c67dd733e058c4136846e787ea633f314230"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision76.json",
+    "blob": "63efb28910e9c3221c201530e0f4dce5b5a23403",
+    "sha256": "f6a25bbbaea71ef01d003e5cc07834be88e627dab77455858c7486d28abdd274"
+  }
+]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
