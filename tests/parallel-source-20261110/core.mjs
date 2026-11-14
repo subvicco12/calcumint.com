@@ -317,15 +317,20 @@ function retainedVerifyParallelSource(read=readFileSync,git=sourceGit,suppliedRo
  });
 }
 
-export function preloadRetainedImmutableObjects(read,git){
- verifyParallelAuthority(read,git);const capture=JSON.parse(read(retainedStage8CapturePath));ensureParallelSources(capture,git,{defaultRetainedCommitBatch:true});
+function primeRetainedImmutableAvailability(read,git){
  const ids=new Set(),paths=new Map();const visit=value=>{if(value&&typeof value==='object'){if(typeof value.blob==='string'){assert.match(value.blob,/^[a-f0-9]{40}$/);ids.add(value.blob);if(typeof value.ref==='string'&&/^[a-f0-9]{40}$/.test(value.ref)&&typeof value.path==='string'){const key=value.ref+':'+value.path;assert(!paths.has(key)||paths.get(key).blob===value.blob,'Conflicting independently pinned path records');paths.set(key,{ref:value.ref,path:value.path,blob:value.blob});}}Object.values(value).forEach(visit);}};
  const finite=[sourceStage8CapturePath,capturePath,'docs/parallel-source-20261110/capture-revision81.json','docs/parallel-source-20261110/capture-revision80.json','docs/parallel-source-20261110/capture-revision79.json','docs/parallel-source-20261110/capture-revision78.json','docs/parallel-source-20261110/capture-revision77.json','docs/parallel-source-20261110/capture-revision76.json','docs/parallel-source-20261110/capture-revision75.json','docs/parallel-source-20261110/capture-revision74.json','docs/parallel-source-20261110/capture-revision73.json','docs/parallel-source-20261110/capture-revision72.json','docs/parallel-source-20261110/capture-revision71.json','docs/parallel-source-20261110/capture-revision70.json','docs/parallel-source-20261110/capture-revision69.json',retainedStage8CapturePath,retainedStage7V8CapturePath,retainedStage7V7CapturePath,retainedStage7V6CapturePath,retainedStage7CapturePath,retainedStage6CapturePath,sourceStage7CapturePath,appStage5CapturePath,testStage6CapturePath,"docs/ci-balance-20261113/workflow-source.json",personalCapturePath,"docs/completion-first-20261112/source-stage2.json","docs/completion-first-20261112/non-source-stage2.json",completionCapturePath,factoryCapturePath,"docs/milestone60-20261113/source-immutable-prefetch-hints.json"];
- for(const path of finite){assert(accepted.some(row=>row.path===path),"Preloaded capture must have independent authority");visit(JSON.parse(read(path)));}
+ const captures=new Map();
+ for(const path of finite){const record=accepted.find(row=>row.path===path);assert(record,"Preloaded capture must have independent authority");const supplied=read(path);assert(Buffer.isBuffer(supplied),'Preloaded capture must contain bytes');const bytes=Buffer.from(supplied);assert.equal(hash(bytes),record.sha256,'Independent preloaded capture bytes differ: '+path);captures.set(path,JSON.parse(bytes));}
+ ensureParallelSources(captures.get(retainedStage8CapturePath),git,{defaultRetainedCommitBatch:true});
+ for(const capture of captures.values())visit(capture);
  git.preloadCommits([...new Set([...factoryPolicy.ancestry,...completionPolicy.ancestry,...workflowPolicy.ancestry,...workflowPolicy.guardAncestry,...personalPolicy.ancestry,...personalPolicy.auxiliaryAncestry,...nonSourcePolicy.ancestry,...appStage5Policy.ancestry,...testStage6Policy.ancestry,...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry])]);
  if(typeof git.preloadPaths==='function')git.preloadPaths([...paths.values()]);
  git.preloadBlobs([...ids]);
 }
+export function preloadRetainedImmutableObjects(read,git){verifyParallelAuthority(read,git);primeRetainedImmutableAvailability(read,git);}
+/** Availability only: immutable object transport setup never attests current source. */
+export function primeRetainedImmutableObjects(read,git){primeRetainedImmutableAvailability(read,git);}
 
 function currentStage8Input(read,git){return provePinnedSourceStage8({read,git,root});}
 function completeStage8(view,run){const result=run();assertSourceStage8HeadStable(view);return result;}

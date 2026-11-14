@@ -1,6 +1,6 @@
 import {nonSourceRecords} from '../../completion-first-20261112/non-source-stage2.mjs';
 import {runClosedSynchronousBatch,assertAPIEvidencePaths} from './runtime-evidence-batch.mjs';
-import {proveNamedCurrentContext,preloadRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
+import {proveNamedCurrentContext,preloadRetainedImmutableObjects,primeRetainedImmutableObjects} from '../../parallel-source-20261110/core.mjs';
 import {readStage2HistoricalRuntime} from '../../completion-first-20261112/retained-runtime-stage2.mjs';
 import {completionGitReader} from '../../parallel-source-20261110/git-reader.mjs';
 /** Historical receipts retain their exact byte claims; current successors prove separately. */
@@ -577,9 +577,10 @@ export function withRuntimeEvidenceBatch(paths,run,...extra){
    assert.equal(extra.length,0,'Custom evidence batch readers or arguments are forbidden');assertAPIEvidencePaths(declared);
    const before=rawActualState();let admitted;const boundHead=before.head.toString().trim();assert.match(boundHead,/^[a-f0-9]{40}$/);
    try{
-    if(!immutableObjectsPreloaded){preloadRetainedImmutableObjects(readFileSync,git);immutableObjectsPreloaded=true;}
+    if(!immutableObjectsPreloaded)primeRetainedImmutableObjects(readFileSync,git);
     admitted=verifyCurrentRuntimeContext();preloadBatchCurrentPaths(declared,admitted,boundHead);
    }finally{assertActualState(before);}
+   immutableObjectsPreloaded=true;
    return {before,admitted,boundHead};
   },
   read(path,state){
