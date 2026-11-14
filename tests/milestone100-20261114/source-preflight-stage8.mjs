@@ -18,7 +18,7 @@ const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 function once(source,before,after){assert.equal(source.split(before).length,2,'Exact retained preflight insertion required');return source.replace(before,after);}
 export function expectedStage8PreflightSource(previous){
  const oldNames='additionalBootstrapRefs,additionalStage7BootstrapRefs';
- const additions=['additionalStage8BootstrapRefs','additionalStage8V3BootstrapRefs','additionalStage8V4BootstrapRefs','additionalStage8V5BootstrapRefs','additionalStage8V6BootstrapRefs','additionalStage8V7BootstrapRefs','additionalStage8V8BootstrapRefs','additionalStage8V9BootstrapRefs','additionalStage8V10BootstrapRefs','additionalStage8V11BootstrapRefs','additionalStage8V12BootstrapRefs','additionalStage8V13BootstrapRefs','additionalStage8V14BootstrapRefs','additionalStage8V15BootstrapRefs','additionalStage8V16BootstrapRefs','additionalStage8V17BootstrapRefs','additionalStage8V18BootstrapRefs','additionalStage8V19BootstrapRefs','additionalStage8V20BootstrapRefs'];
+ const additions=['additionalStage8BootstrapRefs','additionalStage8V3BootstrapRefs','additionalStage8V4BootstrapRefs','additionalStage8V5BootstrapRefs','additionalStage8V6BootstrapRefs','additionalStage8V7BootstrapRefs','additionalStage8V8BootstrapRefs','additionalStage8V9BootstrapRefs','additionalStage8V10BootstrapRefs','additionalStage8V11BootstrapRefs','additionalStage8V12BootstrapRefs','additionalStage8V13BootstrapRefs','additionalStage8V14BootstrapRefs','additionalStage8V15BootstrapRefs','additionalStage8V16BootstrapRefs','additionalStage8V17BootstrapRefs','additionalStage8V18BootstrapRefs','additionalStage8V19BootstrapRefs','additionalStage8V20BootstrapRefs','additionalStage8V21BootstrapRefs'];
  let result="import {sourceStage8Policy} from '../tests/milestone100-20261114/source-stage8-policy-v3.mjs';\n"+previous;
  result=once(result,'{'+oldNames+'}', '{'+oldNames+','+additions.join(',')+'}');
  result=once(result,'...sourceStage7Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs]', '...sourceStage7Policy.ancestry,...sourceStage8Policy.ancestry,...additionalBootstrapRefs,...additionalStage7BootstrapRefs,'+additions.map(name=>'...'+name).join(',')+']');
@@ -45,10 +45,10 @@ export function proveSourcePreflightAndHistoricalInputs({read,git,root=rootDefau
  const proof=provePinnedSourceStage8({read,git,root});
  for(const path of paths){const row=accepted.find(row=>row.path===path);assert(row,'Independently admitted current preflight required');const bytes=read(path);assert(Buffer.isBuffer(bytes)&&sha(bytes)===row.sha256,'Exact current bootstrap source bytes differ');assert.equal(git(['rev-parse','HEAD:'+path]).toString().trim(),row.blob,'Exact current HEAD source object differs');}
  verifyParallelAuthority(read,git);
- const capture=JSON.parse(read(capturePath));assert(capture.sourceStage8V20,'Exact reviewed preflight successor required');
+ const capture=JSON.parse(read(capturePath));assert(capture.sourceStage8V21,'Exact reviewed preflight successor required');
  for(const path of paths){
-  assert(capture.sourceStage8V20.guardPaths.includes(path),'Preflight path outside reviewed successor');
-  const row=capture.currentSources.find(row=>row.path===path);assert(row);assert.equal(row.ref,capture.sourceStage8V20.guardRef);
+  assert(capture.sourceStage8V21.guardPaths.includes(path),'Preflight path outside reviewed successor');
+  const row=capture.currentSources.find(row=>row.path===path);assert(row);assert.equal(row.ref,capture.sourceStage8V21.guardRef);
   const current=immutable(row,git),target=resolve(root,path);assert(lstatSync(target).isFile()&&!lstatSync(target).isSymbolicLink());assert.equal(realpathSync(target),target);
   assert(read(path).equals(current),'Exact current bootstrap source bytes differ');
   const previous=git(['show',retainedRef+':'+path]);

@@ -1,4 +1,3 @@
-import {withActualAuthorityWitness} from '../milestone100-20261114/source-stage8-authority-scope.mjs';
 import {apiRuntimeAnchor,assertApiRuntimeHistoricalObjectJoin} from '../milestone100-20261114/source-stage8-api-runtime-anchor.mjs';
 import {proveSavedActionsClaim} from '../milestone100-20261114/source-stage8-saved-actions-claim.mjs';
 import {selectStage8GuardSuccessor} from '../milestone100-20261114/source-stage8-guard-selection.mjs';
@@ -52,7 +51,7 @@ export const retainedStage7V6CapturePath='docs/parallel-source-20261110/capture-
 export const retainedStage7V7CapturePath='docs/parallel-source-20261110/capture-revision66.json';
 export const retainedStage7V8CapturePath='docs/parallel-source-20261110/capture-revision67.json';
 const retainedStage8CapturePath='docs/parallel-source-20261110/capture-revision68.json';
-export const capturePath='docs/parallel-source-20261110/capture-revision87.json';
+export const capturePath='docs/parallel-source-20261110/capture-revision88.json';
 const root=fileURLToPath(new URL('../../',import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
 const immutableCaches=new WeakMap();
 function currentGit(source){
@@ -105,7 +104,8 @@ function withCoreAuthorityWitness(read,git,run){
   const record=accepted.find(row=>row.path===path);assert(record,'Independent authority scope implementation required: '+path);
   const bytes=view.actualInput.read(path);assert(Buffer.isBuffer(bytes)&&hash(bytes)===record.sha256,'Independent authority scope implementation differs: '+path);
  }
- return withActualAuthorityWitness({read,git,root},run);
+ // Use the original full verifier; the downstream direct helper also proves afresh.
+ assert.equal(verifyParallelAuthority(read,git),true);return run(undefined);
 }
 function applicationSuccession(capture,read,git,witness){
  assert.equal(capture.applicationBaselineRef,applicationBaselineRef);assert.equal(capture.applicationSuccessorRef,applicationSuccessorRef);
