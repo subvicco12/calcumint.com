@@ -4713,8 +4713,124 @@ export const acceptedStage8V18=Object.freeze([
     "sha256": "4145f350d792951f6d9d353cf3e4a665444408e2b6f9f4bb5b6fd7588137f185"
   }
 ]);
-export const acceptedStage8V19=Object.freeze([]);
-export const additionalStage8V19BootstrapRefs=Object.freeze([]);
+export const acceptedStage8V19=Object.freeze([
+  {
+    "path": "tests/next-cohort-20261110/source/retained-runtime.mjs",
+    "blob": "c729ed47e4feb489bc3eea33db8b6cef518c6154",
+    "sha256": "7a436834029725c7922bb8ee0500c4fd033d6ad00c3d56a301568ba9b2cd524e"
+  },
+  {
+    "path": "tests/next-cohort-20261110/source/runtime-stage2-batch.test.mjs",
+    "blob": "9c3215f47d56896a7544590e61484567d9f50089",
+    "sha256": "616ba20939a08f5d3e787ecc604589531f0997ec014b7f1fc573bbccbb30448c"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8.mjs",
+    "blob": "adb042a35db9c11418fd1f4154907000b90c3dd7",
+    "sha256": "09c70ed064f6f442860a60f500551950ff1b5b913a07a795db773ffc807b117c"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-authority-scope.mjs",
+    "blob": "18debb2fa853a67d9339b0af0bbead86f4c21e06",
+    "sha256": "c194fdd88512e4f8f85e4133aa12701dd1c5ba2faada37240394aabd52175f08"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-authority-scope.test.mjs",
+    "blob": "a37974f676035aea19f5ed0dfc987fb1edef931c",
+    "sha256": "8b160625b887a10a661df15997ab11228448587324c72aac30ac309030a04f77"
+  },
+  {
+    "path": "tests/milestone100-20261114/authority-observation-collector.mjs",
+    "blob": "4df2b52ee22a12879fac319d75eb53c1395b78d6",
+    "sha256": "2ab8b586acfc016598a6bea3ea1a668e8034ac813e2f2b616a4702c9a905b2e0"
+  },
+  {
+    "path": "tests/milestone100-20261114/authority-observation-collector.test.mjs",
+    "blob": "62966545c468fb05e2776a1e2caa4c44a0c3b3fe",
+    "sha256": "a2197ae2cb43f53d3e52dda60bfb8e30d32bfd8fe21f656992d7a5ea57858d67"
+  },
+  {
+    "path": "tests/completion-first-20261112/personal-stage.mjs",
+    "blob": "01dff750616b283decd4d15fa32e2d78b8201a26",
+    "sha256": "2851ce67be9f5fd28370d9ba256d00229f6b33797f7289fade84ba4673ab0346"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.mjs",
+    "blob": "592f6151c4f09577c5970225779a42283f873496",
+    "sha256": "fdc2e3a45025a485f761bf2661b6d9b29742215adb73ee1b3d19a095f4bc1ebb"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-runtime-auxiliary.test.mjs",
+    "blob": "5cbf9a53995c45ead93577b868df5b758f2d3d6e",
+    "sha256": "24707ab330efa3159908c1ecc9ec3810e76d45c7adc9eca05d9712d45acbd8b1"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.mjs",
+    "blob": "8417f5de9c8f1cd822acba5469458fc5a60f82a4",
+    "sha256": "0e079d63bd1db16385563f3b48c3e6d0575d6e65d944dcfaa93d4e9909f156fd"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-api-runtime-anchor.test.mjs",
+    "blob": "c6f46080037c3eb692bfc569f15d92284765766f",
+    "sha256": "29d1f797552adbddfacfbb2704c94f15e44e2d20349564fefd9f4f53fa855b7b"
+  },
+  {
+    "path": "tests/parallel-source-20261110/core.mjs",
+    "blob": "a68c66f20160a295b93e9dcbc595e5011afaf01b",
+    "sha256": "0e6aa961e952a1d36f44ab83ed46cb7add53f407604d5869ab4bfd9a7551f546"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-preflight-stage8.mjs",
+    "blob": "987ef8aa77b5841b0f98e90b20284df5570bdb75",
+    "sha256": "7c6613c97c8ba1a05bec219d08e582e5469858050882b0802b669a9fa0faa686"
+  },
+  {
+    "path": "tests/source-lineage-bootstrap.test.mjs",
+    "blob": "3dffa81756891cba9fded2adc8a813193a7a6bae",
+    "sha256": "702c4c206e58c5bb7c0e6a406725a13afe5fc5ba8339d4a5722819560861d659"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.mjs",
+    "blob": "a889b7ae113960298f3f96a1ae65691ff02a7917",
+    "sha256": "b5d775ec7bdaa4be7992127413614aef9fdd105a83d188f49b29ac6d50f6a8b4"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-stage8-guard-selection.test.mjs",
+    "blob": "a598e06f006cf7b9528d5431a10d13c42707c3f2",
+    "sha256": "ce3e3a2102e4487a70db4979876acef146b650ffe8782c90bec1026dedd4ea40"
+  },
+  {
+    "path": "tests/milestone100-20261114/source-proof-capture-stage8-v19.mjs",
+    "blob": "c601b4bf8ba198314c38ae12291c91fb8ac690ca",
+    "sha256": "48ad6fd4a97e818d0700f3a95009720f1e88976a6e2561a2ada307c27dc73176"
+  },
+  {
+    "path": "docs/milestone100-20261114/source-qualified-authority85.mjs",
+    "blob": "bc089b70e76f0a93501db985bb4439090bef6354",
+    "sha256": "4102ee4601c51c197f1867af6bc7e9a97ea2e3bb8c28505b7f4b0a57671d8b09"
+  },
+  {
+    "path": "tests/parallel-source-20261110/bootstrap.mjs",
+    "blob": "705ec416828bcaa6d8fa2f6c339c885c868b3982",
+    "sha256": "f050626f778bcf714555507e23b24065997d0b76aa684d3a08e7b0739f841656"
+  },
+  {
+    "path": "scripts/fetch-source-lineage.mjs",
+    "blob": "1c8f52406d482b9a3ea648cad5ad18f4f9a131b3",
+    "sha256": "130d4f4faa140697873482b6e01ab0a4a970de735bc598aa7989e90b0c25fa66"
+  },
+  {
+    "path": "tests/milestone60-20261113/source-cold-preflight.test.mjs",
+    "blob": "9e6d09b8eb49306c6462d30de571a371733ea673",
+    "sha256": "455c3da69797ce270472f30cc606f52fb7a7fd005d4b2409a6b1c437552c6d45"
+  },
+  {
+    "path": "docs/parallel-source-20261110/capture-revision86.json",
+    "blob": "3dd5b832e62dbc716148a5862e3f855b60e5e72a",
+    "sha256": "efecf83588a04b34efbe3f7d21daff711b9be671dfe7a8bfe7002c363bbdbb62"
+  }
+]);
+export const additionalStage8V19BootstrapRefs=Object.freeze(["3deafda9a9c10ccc26b1fb4372883e8ced5c2d4d","56be9b837561861d267e9ea62a14d10883755b1e"]);
 export const accepted=Object.freeze([...new Map([...acceptedBeforeStage8,...acceptedStage8,...acceptedStage8V3,...acceptedStage8V4,...acceptedStage8V5,...acceptedStage8V6,...acceptedStage8V7,...acceptedStage8V8,...acceptedStage8V9,...acceptedStage8V10,...acceptedStage8V11,...acceptedStage8V12,...acceptedStage8V13,...acceptedStage8V14,...acceptedStage8V15,...acceptedStage8V16,...acceptedStage8V17,...acceptedStage8V18,...acceptedStage8V19].map(row=>[row.path,row])).values()]);
 for(const record of accepted)Object.freeze(record);
 export function verifyParallelAuthority(read,git){
